@@ -161,19 +161,41 @@ A lesson is a sequence of typed cards, defined in content bundles (see the TRD).
 ### 5.4 Memory system
 Memory is a core system, not an add-on.
 
-1. **Spaced repetition** using the FSRS algorithm. Every learned Concept creates cards, and the daily review queue mixes them with new learning.
+1. **Adaptive spaced repetition.** The FSRS algorithm models a forgetting curve for every card. Cards are graded Fail, Hard, Good or Easy, and the engine predicts what the student will forget and when. Every learned Concept creates cards, and the daily review queue mixes them with new learning. It runs fully offline on the device.
 2. **Retrieval practice first.** Lessons ask questions before explaining whenever it helps.
-3. **Mnemonics, rhymes and songs.** Popular existing ones (for example VIBGYOR, "King Henry Died..." and its Hindi equivalents) plus AI-generated ones.
-4. **Memory palaces.** The student builds a palace, either their home or a provided 360° scene, and places facts in it. Review walks through the palace.
-5. **AI-generated memory cues.** On any fact, "Make it stick" asks the LLM for a mnemonic, a vivid story or an association, with an optional Agnes image. The student can save it to their own cards.
-6. **Emotion tagging.** The student attaches a feeling, a personal memory or an emoji to a fact. This uses the emotional-memory effect.
-7. **Confidence tagging (metacognition).** On every answer the student taps Sure, 50:50 or Guess. Analytics show overconfidence and underconfidence for each topic.
-8. **Pomodoro and spaced sessions.** Focus timer sessions (25/5 by default) and a nudge to spread study across the day. The pet "naps" during breaks.
-9. **Interleaving.** Mixed practice sets across topics once the basics are learned.
+3. **Mnemonics, rhymes and songs.** Popular existing ones (for example VIBGYOR, HOMES, "King Henry Died..." and Hindi equivalents) plus AI-generated ones.
+4. **AI mnemonic forge.** On any fact, "Make it stick" generates a custom story, acronym, memory-palace room, keyword image or rhyme, with an optional Agnes image. It is course-aware, so a UPSC student gets a different style from a JEE student. The student can save the result to their own cards. "Create a memory hook for Article 356" works as a free-text request too.
+5. **Interactive memory palace.** The student builds rooms (their home, their school, a famous monument, or a provided 360° scene), drags facts into them, and reviews by walking through. Simple illustrated rooms come first, and 3D rooms later.
+6. **Audio mnemonics and rhymes.** Text-to-speech turns lists and rhymes into catchy audio hooks, for audio-first learners and for visually impaired students.
+7. **Emotion tagging.** The student attaches a feeling, a personal memory or an emoji to a fact. This uses the emotional-memory effect.
+8. **Metacognitive dashboard.** On every answer the student taps Sure, 50:50 or Guess. A confidence heat map per topic and a calibration score (predicted versus actual performance) expose the "illusion of knowing".
+9. **Pomodoro and distributed practice.** Focus timer sessions (25/5 by default) and a nudge to spread short sessions across days instead of cramming. The pet "naps" during breaks.
+10. **Interleaved practice.** A session builder that mixes subjects once the basics are learned, such as Polity + Economy + Environment for UPSC or Physics + Maths for JEE.
+11. **Sleep review scheduling.** The app learns the student's usual bedtime from their usage pattern and offers the hardest 5 due cards about 20 minutes before it, for consolidation during sleep.
+12. **Predictive weak-area alerts.** From the forgetting-curve model: "You'll forget the IPC sections in 2 days. 4 cards are due tonight."
+
+**Technique library.** Each technique has a short explainer card, a worked example for the student's exam, and a matching card type or tool where it fits:
+
+| Technique | How it appears in the app |
+|---|---|
+| Acronym and acrostic mnemonics | Mnemonic cards and the mnemonic forge |
+| Narrative and story linking | "Explain as a story" and the forge's story mode |
+| Dual coding | Every explainer pairs words with an Agnes illustration or diagram |
+| Keyword (linkword) method | Forge mode for vocabulary, foreign terms and legal definitions, with a sounds-like image |
+| Chunking | Long lists (dates, formulae, constants) are shown and reviewed in chunks of 3–5 |
+| PAO (person–action–object) | Forge mode that packs three data points into one vivid scene |
+| Major system | Forge mode that turns numbers into words, for constants, dates and article or section numbers |
+| Peg system | A set of illustrated pegs (1 = bun, 2 = shoe, …) that new lists hang on |
+| Method of loci | The memory palace |
+| Elaborative interrogation | "Why is this true?" prompts inside lessons and reviews |
+| Feynman technique | The Feynman tutor mode (§5.5) |
+| Cornell notes | The smart Cornell notepad (§5.6) |
+| Mind mapping | The mind-map builder (§5.6) |
 
 ### 5.5 AI features
 - **AI tutor (chat).** Context-aware: it knows the current card, the student's mastery and the exam. It guides with hints before giving answers, and supports Hindi, English and Hinglish. It can generate diagrams through Agnes.
-- **Realtime voice tutor.** Talk through a doubt hands-free, with interruption support. Pro only, with a fair-use limit.
+- **Feynman tutor.** The student explains a concept in their own words, by typing or speaking. The AI grades clarity, asks follow-up questions and surfaces gaps, instead of only marking right or wrong.
+- **Realtime voice tutor.** Talk through a doubt hands-free, with interruption support (Gemini Live, see the TRD). Pro only, with a fair-use limit.
 - **Image-generation agent.** The tutor and the lesson runtime decide when a visual would help (to explain, to make a story, or to create a memory cue) and call Agnes AI. Generated images are cached and reused across users when the prompt is the same (see the TRD).
 - **Story generation.** "Explain this as a story" produces a short illustrated story for any concept.
 - **Doubt from photo.** Snap a textbook or question photo and get a step-by-step solution linked to the Concepts.
@@ -181,7 +203,10 @@ Memory is a core system, not an add-on.
 - **Safety.** Age-appropriate filters, no off-topic chats for under-13 users, and citations to the platform's content wherever possible.
 
 ### 5.6 Other study tools
-- Flashcards: auto-generated from lessons, plus the student's own.
+- Flashcards: auto-generated from lessons, plus the student's own. Any note can become a spaced-repetition deck in one tap.
+- **Smart Cornell notepad.** Notes in Cornell format (cue, notes, summary). The AI fills the cue column and the summary, then turns the note into flashcards.
+- **Mind-map builder.** The AI generates a topic mind map from the syllabus graph. Students annotate it and draw links across subjects.
+- **Video lessons.** YouTube playlist lessons, with flashcards generated from the lecture transcript.
 - Revision sheets and cheat sheets for each topic, chapter and exam.
 - **Export as PDF book**: any set of topics becomes a printable, illustrated revision book. Pro only.
 - Formula vault and shortcut vault, searchable.
@@ -195,6 +220,8 @@ Memory is a core system, not an add-on.
 - Practice sets for each concept, adaptive in difficulty.
 - PYQ bank filtered by exam, year, topic and difficulty. Each PYQ links to its Concepts.
 - "Weak spot" drills that are generated from analytics.
+- Mocks generated from weak areas, using the spaced-repetition and mastery data.
+- Every solution has a Feynman-style explanation: plain language first, then the formal steps.
 - Daily challenge: one shared puzzle per exam per day, with a leaderboard.
 
 ### 6.2 Mock tests
@@ -304,9 +331,9 @@ Per-exam apps skip step 3.
 | Lessons | All Quick Revision, plus Deep Dive for the first 2 chapters of every subject, plus daily rotating free chapters | All Deep Dives |
 | Practice | 30 questions/day, a sample of PYQs | Unlimited, full PYQ bank |
 | Mocks | 1 sectional mock a week, 1 sample full mock | All mocks, live all-India mocks, full analytics |
-| AI tutor | 5 messages/day, text only | Higher limits, voice tutor, photo doubts |
-| Memory | Spaced repetition and the community mnemonics | AI memory cues, memory palaces |
-| Tools | Cheat sheets in the app | PDF book export, offline downloads |
+| AI tutor | 5 messages/day, text only | Higher limits, voice tutor, Feynman tutor, photo doubts |
+| Memory | Spaced repetition, the community mnemonics, the technique library | AI mnemonic forge, memory palaces, audio mnemonics, sleep review |
+| Tools | Cheat sheets, flashcards, Cornell notes (manual) | PDF book export, offline downloads, AI Cornell fill, AI mind maps |
 | Gamification | Everything, including 1 streak freeze a month | 2 freezes a month, exclusive pets' outfits and plants |
 | Ads | None (no ads ever for minors) | None |
 
@@ -392,12 +419,13 @@ The quality bar is that **every** syllabus item in scope has at least one Concep
 
 ### 16.1 Performance
 - Runs well on 3 GB RAM Android phones.
-- App size under 40 MB before content. Content is downloaded on demand.
+- App size under 45 MB, including a small seed pack (onboarding lessons and the first chapter for the variant's exam) so the app teaches on first launch with no network. Everything else downloads on demand.
 - 60 fps for animations, with heavy 3D and blur effects turned off on low-end devices.
 
 ### 16.2 Offline
-- The current lesson, the review queue and downloaded packs work fully offline.
+- The current lesson, the review queue, the memory palace and downloaded packs work fully offline.
 - Progress syncs when the device is back online.
+- Content updates download as small patches (new or corrected cards), not whole packs again.
 
 ### 16.3 Reliability and observability
 - 99.9% API availability.
@@ -441,4 +469,4 @@ The quality bar is that **every** syllabus item in scope has at least one Concep
 | Exam patterns change | Blueprints are data, with a yearly review checklist |
 | Children's data rules (DPDP) | Consent flow, minimal tracking, legal review |
 | Brand name not final ("Smriti" domains are taken) | Decide before store submission. Brand strings are config. |
-| Voice-tutor vendor for Hindi | Decided in the TRD after an evaluation |
+| Voice quality in Hindi and Hinglish | Gemini Live for realtime voice and Deepgram for TTS and STT (owner's choice). Hindi coverage is checked in Phase 0, with a fallback behind the same interface. |

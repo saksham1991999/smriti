@@ -47,11 +47,11 @@ There are five tabs. Learn is always the default tab. The AI tutor and search op
 | Entry | Splash, Update prompt (soft/forced), Maintenance |
 | Onboarding | Welcome, Language, Goal (exam/class), Exam date, Placement quiz, Daily goal, Pick pet, Name pet, Plant seed, First lesson, Notification ask |
 | Auth | Login sheet (phone OTP, Google, Apple, email), OTP entry, Merge progress, Parent consent (for under-13s) |
-| Learn | Home, Today's plan, Subject map, Chapter, Topic card, Lesson player, Lesson complete, Review queue, Revision sheet, Cheat sheet, Formula/shortcut vault, Storybook reader, Video lesson |
+| Learn | Home, Today's plan, Subject map, Chapter, Topic card, Lesson player, Lesson complete, Review queue, Revision sheet, Cheat sheet, Formula/shortcut vault, Storybook reader, Video lesson, Cornell notepad, Mind map |
 | Labs | Lab hub, Sim player, 3D viewer, 360° viewer, Periodic table, Fun experiments |
-| Memory | Flashcard deck, Memory palace builder, Palace walk, "Make it stick" (AI cue), Confidence stats |
+| Memory | Flashcard deck, Memory palace builder, Palace walk, "Make it stick" (mnemonic forge), Technique library, Audio hooks, Metacognitive dashboard (confidence heat map, calibration), Focus timer |
 | Practice | Practice hub, Concept drill, PYQ bank, Daily challenge, Mock lobby, Mock instructions, Mock runner, Submit confirm, Mock report, Solutions review, Analytics dashboard |
-| AI | Tutor chat, Voice tutor, Photo doubt (camera), Generated story |
+| AI | Tutor chat, Feynman mode, Voice tutor, Photo doubt (camera), Generated story |
 | Social | Friends list, Friend profile, Add friends, League, Leaderboards, Duo, Squad, Challenge duel, Shared decks |
 | Me | Profile, Pet room, Plant garden, Card album, Badges, Shop (gems), Downloads, PDF export, Settings, Notifications settings, Language, Subscription, Parent mode, Help, Report content |
 | Monetisation | Paywall, Trial checkout, Payment status, Manage plan |
@@ -225,18 +225,20 @@ sequenceDiagram
   actor S as Student
   participant App
   participant API as FastAPI
-  participant LLM
-  participant Agnes as Agnes AI
+  participant LLM as Agnes AI (LLM)
+  participant Idx as Image index (pgvector)
+  participant Agnes as Agnes AI (image)
   participant R2 as R2 + CDN
   S->>App: Ask "why does the ball curve?"
   App->>API: POST /tutor/messages (card context, mastery, locale)
   API->>LLM: prompt + tools [search_content, generate_image, make_flashcard]
   LLM-->>API: tool call generate_image(style=sunny, prompt)
-  API->>R2: check prompt-hash cache
-  alt cache miss
+  API->>Idx: search similar images + prompt-hash cache
+  alt no good match
     API->>Agnes: generate
     Agnes-->>API: image
     API->>R2: store as webp
+    API->>Idx: index the new image
   end
   API-->>App: streamed answer + image URL
   App->>S: Answer with an illustrated diagram

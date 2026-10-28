@@ -19,9 +19,9 @@ This repo is in the planning phase. There is no application code yet.
 | [`docs/PRD.md`](docs/PRD.md) | Product requirements: scope, exams, learning design, gamification, monetisation, phases |
 | [`docs/APP_FLOW.md`](docs/APP_FLOW.md) | Screens, navigation and the main user journeys (diagrams) |
 | [`docs/UX_FLOW.md`](docs/UX_FLOW.md) | Screen-by-screen UI/UX in the chosen "Sunny Subjects" direction |
-| `docs/TRD.md` | Technical requirements *(next)* |
-| `docs/DB_SCHEMA.md` | Database schema *(next)* |
-| `docs/IMPLEMENTATION_PLAN.md` | Phased build plan *(next)* |
+| [`docs/TRD.md`](docs/TRD.md) | Technical requirements: architecture, stack, AI, sync, payments, observability |
+| [`docs/DB_SCHEMA.md`](docs/DB_SCHEMA.md) | Postgres, ClickHouse and on-device SQLite schemas, RLS, retention |
+| [`docs/IMPLEMENTATION_PLAN.md`](docs/IMPLEMENTATION_PLAN.md) | Phased build plan with epics, exit criteria and owner setup items |
 | `AGENTS.md`, `DESIGN.md`, `skills/` | Agent guide, design system, and content-generation skills *(next)* |
 
 Design mockups: [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF48w6kC4bv6PtJhHFzzZ). The chosen direction is board 7, "Sunny Subjects".

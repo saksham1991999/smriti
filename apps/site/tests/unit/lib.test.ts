@@ -111,6 +111,11 @@ describe("tokens css", () => {
     expect(neet).toContain("--on-primary:#151A2D");
   });
 
+  it("applies dark exam accents on <html> itself, above the dark :root block", () => {
+    expect(tokenCss).toContain(':root:not([data-theme="light"]).x-neet,:root:not([data-theme="light"]) .x-neet{--primary:#3FD08A');
+    expect(tokenCss).toContain(':root[data-theme="dark"].x-ssc,');
+  });
+
   it("maps subjects to colour families via subjectMap", () => {
     expect(subjectFamily("economy")).toBe("polity");
     expect(subjectFamily("quant")).toBe("maths");

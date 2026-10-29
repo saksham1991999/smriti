@@ -79,8 +79,10 @@ function scoped(mode: Mode): string {
   return families + accents;
 }
 
+// Scope each rule under the theme selector, both on the root itself (exam accents sit on <html>)
+// and on descendants (subject families), so the dark values win over the dark :root block.
 const nested = (prefix: string, css: string): string =>
-  css.replace(/(^|\})\s*([^{}]+)\{/g, (_m, close: string, sel: string) => `${close}${prefix} ${sel.trim()}{`);
+  css.replace(/(^|\})\s*([^{}]+)\{/g, (_m, close: string, sel: string) => `${close}${prefix}${sel.trim()},${prefix} ${sel.trim()}{`);
 
 const staticVars = (() => {
   const t = tokens.type;

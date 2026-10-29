@@ -34,6 +34,8 @@ packages/       config (variants, flags), tokens, ui-native, ui-web, app-core,
                 lesson-player-web, sim-bridge, i18n, analytics
 content/        Source content (JSON), written by agents through skills, validated in CI
 sims/           Self-contained simulation bundles, one folder each
+brand/          Logo master SVG, app icons, favicons and lockups (DESIGN.md §12)
+tools/          Build scripts (brand exports, animation builds)
 supabase/       SQL migrations, RLS, seed
 skills/         Agent skills for content, visuals, sims, 3D, animation and QA
 infra/          Railway, Cloudflare, EAS, GitHub Actions

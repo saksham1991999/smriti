@@ -292,11 +292,16 @@ Only in 360° scenes, 3D models and a light tilt (at most 6°) on the Home hero 
 
 ---
 
-## 12. Logo brief (pending)
+## 12. Logo
 
-The logo is made with Agnes once the final brand name is confirmed and the Agnes key and docs are available (TRD decision D6, D7).
+The owner chose the mark on 2026-10-29: **Sprout and spark**, option C of the first Agnes round. All files are in `brand/logo/` (see its README). If the final brand name changes (TRD decision D7), the mark stays and only the wordmark changes.
 
-- **Idea:** a sprout that is also a spark of memory. Two leaves forming a soft "S" (for Smriti), rising from a small dot that reads as both a seed and a lightbulb filament.
-- **Construction:** generated with Agnes as a flat, simple mark, then traced to clean SVG by a person for the final file. The app icon uses the same mark on the exam accent colour.
-- **Deliverables:** the mark, the wordmark in Plus Jakarta Sans 800 (and the Devanagari "स्मृति" in Noto Sans Devanagari 800), app icons per variant (the mark on that exam's accent), a monochrome version, and a favicon.
-- **Rules:** works at 16 px, no gradients in the core mark, clear space equal to the height of one leaf.
+- **The mark:** two plump leaves on a short curved stem, with three gold rays above them, the moment an idea clicks. It reads as growth and memory together.
+- **Colours** (`logo` in `tokens.json`): deep leaf `#3557E8` (primary), light leaf `#2BB5E8` (gem), stem `#2282C5`, spark `#F5A300` (streak). Flat fills only, never gradients.
+- **Wordmark:** "Smriti" in Plus Jakarta Sans 800 in `ink`, followed by "स्मृति" in Noto Sans Devanagari 800 in `inkMuted`. On dark grounds use `ink` and `inkMuted` from the dark palette.
+- **On colour:** on an exam-accent tile the leaves and stem turn white (the light leaf at 78% white so the two leaves stay distinct) and the spark stays gold. On the SSC orange the spark turns white too, because gold doesn't show on orange.
+- **Small sizes:** below 48 px use the favicon version, which drops the rays. The rays turn into specks at 16 px.
+- **One colour:** a solid silhouette in `ink` or white, for print, embossing and Android's themed icons.
+- **App icons:** one per variant, the white mark at 62% of a full-bleed square in that exam's accent. iOS and Android round the corners themselves.
+- **Rules:** clear space on every side equal to the height of the light leaf. Don't rotate, outline, add shadows or recolour the mark beyond the versions above. Don't put the full-colour mark on a colour other than white, `bg`, or the dark `bg`.
+- **How it was made:** generated with Agnes, then flattened to the brand colours and traced to SVG automatically with VTracer (MIT). The SVG is a draft: before store submission a designer cleans its curves, keeping the path classes (`leaf-deep`, `leaf-light`, `stem`, `spark`), and runs `tools/brand/build_pack.js` again to remake every export.

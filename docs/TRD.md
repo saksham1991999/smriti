@@ -511,5 +511,5 @@ Key environment variables (names only):
 | D3 | Hindi speech quality | Test Deepgram Hindi TTS and STT. Add a Hindi-only fallback only if needed. | Phase 0 |
 | D4 | Tracing backend | Grafana Cloud | Phase 0 |
 | D5 | SMS provider for OTP (DLT) | MSG91 | Phase 0 |
-| D6 | Agnes AI API details | Endpoints and models documented in §9.3. Still to confirm: streaming, tool calling, rate limits, and network access from the cloud environment. | Phase 0 |
+| D6 | Agnes AI API details | Endpoints and models documented in §9.3. Image generation confirmed working from the cloud environment on 29 Oct (about 12 s per 2K image; it returns 429 when called too fast, so the gateway retries with backoff). Still to confirm: streaming, tool calling and the exact rate limits. | Phase 0 |
 | D7 | Final brand name and domain | Owner | Before store submission |

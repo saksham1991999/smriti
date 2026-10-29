@@ -24,8 +24,8 @@ Some of these have lead times of several weeks, so they should start now.
 
 | Item | Why | Lead time |
 |---|---|---|
-| `AGNES_AI_API_KEY` saved in the cloud environment, and `apihub.agnes-ai.com` allowed in its network settings | LLM and images go through Agnes (TRD §9.3). The API docs are already in the TRD. | Blocks F-8 and the logo |
-| **Final brand name and domain** | Store listings, bundle IDs, the site domain and the logo all depend on it. Brand strings are config, so code can start with "Smriti". | Before store submission (week 16) |
+| `AGNES_AI_API_KEY` saved in the cloud environment, and `apihub.agnes-ai.com` allowed in its network settings | LLM and images go through Agnes (TRD §9.3). The API docs are already in the TRD. Network access works since 29 Oct; the key still has to be saved as an environment variable. | Blocks F-8 |
+| **Final brand name and domain** | Store listings, bundle IDs, the site domain and the wordmark depend on it (the logo mark stays). Brand strings are config, so code can start with "Smriti". | Before store submission (week 16) |
 | **DLT registration** (entity, sender ID, OTP template) with an SMS provider such as MSG91 | Phone OTP in India can't be sent without it | 1–3 weeks |
 | Apple Developer (organisation) and Google Play Console accounts | Store builds, in-app purchase products, TestFlight | 1–2 weeks (D-U-N-S number for Apple) |
 | Razorpay account with Subscriptions and UPI Autopay enabled | Web payments | 1–2 weeks (KYC) |

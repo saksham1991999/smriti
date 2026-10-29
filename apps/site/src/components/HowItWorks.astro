@@ -71,6 +71,11 @@ const steps: { key: keyof typeof m.how.steps; art: ArtName; family: string }[] =
     overflow: hidden;
     margin-bottom: 8px;
   }
+  @media (max-width: 767px) {
+    .frame {
+      aspect-ratio: 16 / 9;
+    }
+  }
   .frame :global(img) {
     height: 88%;
     width: auto;

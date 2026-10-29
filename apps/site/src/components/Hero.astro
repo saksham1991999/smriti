@@ -51,7 +51,7 @@ const exams = list(lang, idx.exams.map((e) => e.short_name[lang]));
 
 <style>
   .hero {
-    padding-block: 32px 56px;
+    padding-block: 28px 16px;
     overflow: clip;
   }
   .hero-grid {
@@ -156,7 +156,7 @@ const exams = list(lang, idx.exams.map((e) => e.short_name[lang]));
   }
   @media (min-width: 1024px) {
     .hero {
-      padding-block: 56px 96px;
+      padding-block: 48px 40px;
     }
     .hero-grid {
       grid-template-columns: 1.05fr 1fr;
@@ -174,8 +174,36 @@ const exams = list(lang, idx.exams.map((e) => e.short_name[lang]));
       display: grid;
       width: 100%;
     }
+    /* Phones: stack the cards around the pets so nothing covers their faces. */
+    .hero-art {
+      aspect-ratio: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 28px;
+    }
+    .sun {
+      inset: 22% auto auto 50%;
+    }
     .float {
-      max-width: 70%;
+      position: static;
+      max-width: 88%;
+      padding: 8px 12px 8px 8px;
+    }
+    .float-revise {
+      order: 0;
+      align-self: flex-end;
+    }
+    .hero-art :global(.pets) {
+      order: 1;
+      width: 82%;
+      margin: 0;
+    }
+    .float-plant {
+      order: 2;
+      align-self: flex-start;
     }
     .float .t-label {
       font-size: 13px;

@@ -171,6 +171,15 @@ const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, ex
     color: var(--primary-text);
     font-weight: 800;
   }
+  @media (max-width: 599px) {
+    .top {
+      min-height: 64px;
+    }
+    .top :global(.exam-art) {
+      width: 72px;
+      height: 72px;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .exam-card {
       transition: none;

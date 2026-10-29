@@ -1,0 +1,40 @@
+---
+// Free / Pro status chips with an icon and text (DESIGN §5 Pro chip; never colour alone).
+// Quick Revision is always free (R9). Deep Dive is free for chapters the index marks free.
+import Icon from "./Icon.astro";
+import type { Locale } from "../config/site";
+import { messages } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  deepDiveFree: boolean;
+}
+const { lang, deepDiveFree } = Astro.props;
+const m = messages(lang);
+---
+
+<ul class="access" role="list">
+  {
+    deepDiveFree ? (
+      <li class="chip free"><Icon name="check-circle" weight="fill" size={16} />{m.access.deepDiveFree}</li>
+    ) : (
+      <li class="chip pro"><Icon name="lock-simple" weight="bold" size={16} />{m.access.deepDivePro}</li>
+    )
+  }
+  <li class="chip free"><Icon name="lightning" weight="fill" size={16} />{m.topic.quickRevision} · {m.access.freeAlways}</li>
+</ul>
+
+<style>
+  .access {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .access .chip {
+    min-height: 28px;
+    font-size: 13px;
+    padding: 3px 10px;
+  }
+</style>

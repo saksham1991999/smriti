@@ -1,0 +1,97 @@
+/* Circuit scene. Token variables only. */
+
+.circuit .wire {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circuit .plate {
+  stroke: var(--ink);
+  stroke-linecap: round;
+}
+
+.circuit .plate-pos {
+  stroke-width: 4;
+}
+
+.circuit .plate-neg {
+  stroke-width: 9;
+}
+
+.circuit .pole {
+  font-size: 18px;
+}
+
+.circuit .res-pad {
+  fill: var(--s-tint);
+}
+
+.circuit .res {
+  fill: none;
+  stroke: var(--s-strong);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circuit .res-symbol {
+  fill: var(--s-text);
+}
+
+.circuit .meter {
+  fill: var(--surface);
+  stroke: var(--s-strong);
+  stroke-width: 4;
+}
+
+.circuit .meter-letter {
+  font-size: 22px;
+  font-weight: 800;
+  fill: var(--s-text);
+}
+
+.circuit .terminal {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.circuit .lever {
+  stroke: var(--ink);
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: all var(--d-base) var(--ease);
+}
+
+.circuit .node {
+  fill: var(--ink);
+}
+
+.circuit .hit {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.circuit .dot {
+  fill: var(--f-maths-strong);
+}
+
+.circuit .dots.idle {
+  opacity: 0;
+}
+
+.circuit .chev {
+  fill: none;
+  stroke: var(--f-maths-strong);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circuit.off .wire {
+  stroke-dasharray: none;
+  opacity: 0.75;
+}

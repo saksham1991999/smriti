@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+import type { Locale } from "../config/site";
+import { messages } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  items: { name: string; href: string }[];
+}
+const { lang, items } = Astro.props;
+const m = messages(lang);
+---
+
+<nav class="crumbs" aria-label={m.a11y.breadcrumb}>
+  <ol>
+    {
+      items.map((c, i) => (
+        <li>
+          {i > 0 && <Icon name="caret-right" size={16} />}
+          {i === items.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href}>{c.name}</a>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>

@@ -1,0 +1,2909 @@
+{
+  "schema": "site-index@1",
+  "fixture": true,
+  "fixture_note": "FIXTURE. Placeholder names and questions so the site builds before the content engine publishes the real index. No exam pattern data. Never ship this to production (SITE_REQUIRE_CONTENT_INDEX=1 fails the build).",
+  "generated_at": "fixture",
+  "exams": [
+    {
+      "id": "jee-main",
+      "slug": "jee-main",
+      "accent": "jee",
+      "name": {
+        "en": "JEE Main",
+        "hi": "जेईई मेन"
+      },
+      "short_name": {
+        "en": "JEE Main",
+        "hi": "जेईई मेन"
+      },
+      "category": "engineering",
+      "conducting_body": "NTA",
+      "official_url": null,
+      "summary": null,
+      "subjects": [
+        "phy",
+        "chem",
+        "math"
+      ],
+      "blueprint": null,
+      "try_lesson": {
+        "topic_id": "phy.sample-chapter-1.sample-topic-1",
+        "title": {
+          "en": "Sample lesson",
+          "hi": "नमूना पाठ"
+        },
+        "questions": [
+          {
+            "id": "fixture.phy.sample-chapter-1.sample-topic-1.q1",
+            "stem": {
+              "en": "Sample question 1. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 1। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "b",
+            "explanation": {
+              "en": "Placeholder feedback: option B is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प B सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.phy.sample-chapter-1.sample-topic-1.q2",
+            "stem": {
+              "en": "Sample question 2. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 2। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "a",
+            "explanation": {
+              "en": "Placeholder feedback: option A is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प A सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.phy.sample-chapter-1.sample-topic-1.q3",
+            "stem": {
+              "en": "Sample question 3. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 3। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "c",
+            "explanation": {
+              "en": "Placeholder feedback: option C is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प C सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "neet-ug",
+      "slug": "neet",
+      "accent": "neet",
+      "name": {
+        "en": "NEET UG",
+        "hi": "नीट यूजी"
+      },
+      "short_name": {
+        "en": "NEET",
+        "hi": "नीट"
+      },
+      "category": "medical",
+      "conducting_body": "NTA",
+      "official_url": null,
+      "summary": null,
+      "subjects": [
+        "phy",
+        "chem",
+        "bio"
+      ],
+      "blueprint": null,
+      "try_lesson": {
+        "topic_id": "phy.sample-chapter-1.sample-topic-1",
+        "title": {
+          "en": "Sample lesson",
+          "hi": "नमूना पाठ"
+        },
+        "questions": [
+          {
+            "id": "fixture.phy.sample-chapter-1.sample-topic-1.q1",
+            "stem": {
+              "en": "Sample question 1. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 1। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "b",
+            "explanation": {
+              "en": "Placeholder feedback: option B is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प B सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.phy.sample-chapter-1.sample-topic-1.q2",
+            "stem": {
+              "en": "Sample question 2. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 2। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "a",
+            "explanation": {
+              "en": "Placeholder feedback: option A is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प A सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.phy.sample-chapter-1.sample-topic-1.q3",
+            "stem": {
+              "en": "Sample question 3. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 3। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "c",
+            "explanation": {
+              "en": "Placeholder feedback: option C is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प C सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "upsc-cse",
+      "slug": "upsc",
+      "accent": "upsc",
+      "name": {
+        "en": "UPSC Civil Services Prelims",
+        "hi": "यूपीएससी सिविल सेवा प्रारंभिक परीक्षा"
+      },
+      "short_name": {
+        "en": "UPSC",
+        "hi": "यूपीएससी"
+      },
+      "category": "civil-services",
+      "conducting_body": "UPSC",
+      "official_url": null,
+      "summary": null,
+      "subjects": [
+        "history",
+        "polity",
+        "economy",
+        "geography"
+      ],
+      "blueprint": null,
+      "try_lesson": {
+        "topic_id": "history.sample-chapter-1.sample-topic-1",
+        "title": {
+          "en": "Sample lesson",
+          "hi": "नमूना पाठ"
+        },
+        "questions": [
+          {
+            "id": "fixture.history.sample-chapter-1.sample-topic-1.q1",
+            "stem": {
+              "en": "Sample question 1. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 1। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "b",
+            "explanation": {
+              "en": "Placeholder feedback: option B is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प B सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.history.sample-chapter-1.sample-topic-1.q2",
+            "stem": {
+              "en": "Sample question 2. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 2। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "a",
+            "explanation": {
+              "en": "Placeholder feedback: option A is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प A सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.history.sample-chapter-1.sample-topic-1.q3",
+            "stem": {
+              "en": "Sample question 3. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 3। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "c",
+            "explanation": {
+              "en": "Placeholder feedback: option C is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प C सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ssc-cgl",
+      "slug": "ssc",
+      "accent": "ssc",
+      "name": {
+        "en": "SSC CGL",
+        "hi": "एसएससी सीजीएल"
+      },
+      "short_name": {
+        "en": "SSC",
+        "hi": "एसएससी"
+      },
+      "category": "staff-selection",
+      "conducting_body": "SSC",
+      "official_url": null,
+      "summary": null,
+      "subjects": [
+        "reasoning",
+        "quant",
+        "english",
+        "gk"
+      ],
+      "blueprint": null,
+      "try_lesson": {
+        "topic_id": "reasoning.sample-chapter-1.sample-topic-1",
+        "title": {
+          "en": "Sample lesson",
+          "hi": "नमूना पाठ"
+        },
+        "questions": [
+          {
+            "id": "fixture.reasoning.sample-chapter-1.sample-topic-1.q1",
+            "stem": {
+              "en": "Sample question 1. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 1। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "b",
+            "explanation": {
+              "en": "Placeholder feedback: option B is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प B सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.reasoning.sample-chapter-1.sample-topic-1.q2",
+            "stem": {
+              "en": "Sample question 2. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 2। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "a",
+            "explanation": {
+              "en": "Placeholder feedback: option A is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प A सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          },
+          {
+            "id": "fixture.reasoning.sample-chapter-1.sample-topic-1.q3",
+            "stem": {
+              "en": "Sample question 3. The real question comes from the content index.",
+              "hi": "नमूना प्रश्न 3। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+            },
+            "options": [
+              {
+                "id": "a",
+                "text": {
+                  "en": "Option A",
+                  "hi": "विकल्प A"
+                }
+              },
+              {
+                "id": "b",
+                "text": {
+                  "en": "Option B",
+                  "hi": "विकल्प B"
+                }
+              },
+              {
+                "id": "c",
+                "text": {
+                  "en": "Option C",
+                  "hi": "विकल्प C"
+                }
+              },
+              {
+                "id": "d",
+                "text": {
+                  "en": "Option D",
+                  "hi": "विकल्प D"
+                }
+              }
+            ],
+            "answer": "c",
+            "explanation": {
+              "en": "Placeholder feedback: option C is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+              "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प C सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "subjects": [
+    {
+      "id": "phy",
+      "slug": "physics",
+      "name": {
+        "en": "Physics",
+        "hi": "भौतिकी"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "phy.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main",
+            "neet-ug"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "phy.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "phy.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "phy.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main",
+            "neet-ug"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "phy.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "phy.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "phy.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main",
+            "neet-ug"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "phy.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "phy.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem",
+      "slug": "chemistry",
+      "name": {
+        "en": "Chemistry",
+        "hi": "रसायन विज्ञान"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "chem.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main",
+            "neet-ug"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "chem.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "chem.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "chem.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main",
+            "neet-ug"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "chem.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "chem.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "chem.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main",
+            "neet-ug"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "chem.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "chem.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main",
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math",
+      "slug": "maths",
+      "name": {
+        "en": "Mathematics",
+        "hi": "गणित"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "math.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "math.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "math.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "math.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "math.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "math.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "math.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "jee-main"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "math.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "math.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "jee-main"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio",
+      "slug": "biology",
+      "name": {
+        "en": "Biology",
+        "hi": "जीव विज्ञान"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "bio.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "neet-ug"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "bio.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "bio.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "bio.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "neet-ug"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "bio.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "bio.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "bio.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "neet-ug"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "bio.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "bio.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "neet-ug"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "slug": "history",
+      "name": {
+        "en": "History",
+        "hi": "इतिहास"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "history.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "history.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "history.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "history.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "history.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "history.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "history.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "history.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "history.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "polity",
+      "slug": "polity",
+      "name": {
+        "en": "Polity",
+        "hi": "राजव्यवस्था"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "polity.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "polity.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "polity.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "polity.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "polity.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "polity.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "polity.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "polity.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "polity.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "economy",
+      "slug": "economy",
+      "name": {
+        "en": "Economy",
+        "hi": "अर्थव्यवस्था"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "economy.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "economy.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "economy.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "economy.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "economy.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "economy.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "economy.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "economy.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "economy.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "slug": "geography",
+      "name": {
+        "en": "Geography",
+        "hi": "भूगोल"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "geography.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "geography.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "geography.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "geography.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "geography.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "geography.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "geography.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "upsc-cse"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "geography.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "geography.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "upsc-cse"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "slug": "reasoning",
+      "name": {
+        "en": "Reasoning",
+        "hi": "तर्कशक्ति"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "reasoning.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "reasoning.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "reasoning.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "reasoning.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "reasoning.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "reasoning.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "reasoning.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "reasoning.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "reasoning.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quant",
+      "slug": "quantitative-aptitude",
+      "name": {
+        "en": "Quantitative aptitude",
+        "hi": "संख्यात्मक अभियोग्यता"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "quant.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "quant.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "quant.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "quant.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "quant.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "quant.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "quant.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "quant.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "quant.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "slug": "english",
+      "name": {
+        "en": "English",
+        "hi": "अंग्रेज़ी"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "english.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "english.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "english.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "english.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "english.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "english.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "english.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "english.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "english.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gk",
+      "slug": "general-awareness",
+      "name": {
+        "en": "General awareness",
+        "hi": "सामान्य जागरूकता"
+      },
+      "summary": null,
+      "chapters": [
+        {
+          "id": "gk.sample-chapter-1",
+          "slug": "sample-chapter-1",
+          "name": {
+            "en": "Sample chapter 1",
+            "hi": "नमूना अध्याय 1"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "gk.sample-chapter-1.sample-topic-1",
+              "slug": "sample-topic-1-1",
+              "name": {
+                "en": "Sample topic 1.1",
+                "hi": "नमूना टॉपिक 1.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "gk.sample-chapter-1.sample-topic-2",
+              "slug": "sample-topic-1-2",
+              "name": {
+                "en": "Sample topic 1.2",
+                "hi": "नमूना टॉपिक 1.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "gk.sample-chapter-2",
+          "slug": "sample-chapter-2",
+          "name": {
+            "en": "Sample chapter 2",
+            "hi": "नमूना अध्याय 2"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": true,
+          "topics": [
+            {
+              "id": "gk.sample-chapter-2.sample-topic-1",
+              "slug": "sample-topic-2-1",
+              "name": {
+                "en": "Sample topic 2.1",
+                "hi": "नमूना टॉपिक 2.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "gk.sample-chapter-2.sample-topic-2",
+              "slug": "sample-topic-2-2",
+              "name": {
+                "en": "Sample topic 2.2",
+                "hi": "नमूना टॉपिक 2.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "gk.sample-chapter-3",
+          "slug": "sample-chapter-3",
+          "name": {
+            "en": "Sample chapter 3",
+            "hi": "नमूना अध्याय 3"
+          },
+          "summary": null,
+          "exams": [
+            "ssc-cgl"
+          ],
+          "deep_dive_free": false,
+          "topics": [
+            {
+              "id": "gk.sample-chapter-3.sample-topic-1",
+              "slug": "sample-topic-3-1",
+              "name": {
+                "en": "Sample topic 3.1",
+                "hi": "नमूना टॉपिक 3.1"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            },
+            {
+              "id": "gk.sample-chapter-3.sample-topic-2",
+              "slug": "sample-topic-3-2",
+              "name": {
+                "en": "Sample topic 3.2",
+                "hi": "नमूना टॉपिक 3.2"
+              },
+              "summary": null,
+              "exams": [
+                "ssc-cgl"
+              ],
+              "modes": {
+                "deep_dive": {
+                  "minutes": null
+                },
+                "quick_revision": {
+                  "minutes": null
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "home_try_lesson": {
+    "topic_id": "phy.sample-chapter-1.sample-topic-1",
+    "title": {
+      "en": "Sample lesson",
+      "hi": "नमूना पाठ"
+    },
+    "questions": [
+      {
+        "id": "fixture.phy.sample-chapter-1.sample-topic-1.q1",
+        "stem": {
+          "en": "Sample question 1. The real question comes from the content index.",
+          "hi": "नमूना प्रश्न 1। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A",
+              "hi": "विकल्प A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B",
+              "hi": "विकल्प B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C",
+              "hi": "विकल्प C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D",
+              "hi": "विकल्प D"
+            }
+          }
+        ],
+        "answer": "b",
+        "explanation": {
+          "en": "Placeholder feedback: option B is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+          "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प B सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+        }
+      },
+      {
+        "id": "fixture.phy.sample-chapter-1.sample-topic-1.q2",
+        "stem": {
+          "en": "Sample question 2. The real question comes from the content index.",
+          "hi": "नमूना प्रश्न 2। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A",
+              "hi": "विकल्प A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B",
+              "hi": "विकल्प B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C",
+              "hi": "विकल्प C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D",
+              "hi": "विकल्प D"
+            }
+          }
+        ],
+        "answer": "a",
+        "explanation": {
+          "en": "Placeholder feedback: option A is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+          "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प A सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+        }
+      },
+      {
+        "id": "fixture.phy.sample-chapter-1.sample-topic-1.q3",
+        "stem": {
+          "en": "Sample question 3. The real question comes from the content index.",
+          "hi": "नमूना प्रश्न 3। असली प्रश्न कंटेंट इंडेक्स से आएगा।"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A",
+              "hi": "विकल्प A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B",
+              "hi": "विकल्प B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C",
+              "hi": "विकल्प C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D",
+              "hi": "विकल्प D"
+            }
+          }
+        ],
+        "answer": "c",
+        "explanation": {
+          "en": "Placeholder feedback: option C is marked correct in this sample. Real explanations come from the lesson skills, after review.",
+          "hi": "नमूना फ़ीडबैक: इस नमूने में विकल्प C सही माना गया है। असली व्याख्या लेसन स्किल से, समीक्षा के बाद आएगी।"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+---
+// Server wrapper for the quiz island: picks the localised lesson and strings, so the island
+// ships only what one page needs. Hydrates when scrolled into view.
+import TryLessonQuiz from "../islands/TryLessonQuiz";
+import { localiseLesson } from "../islands/quiz-logic";
+import { site, type Locale } from "../config/site";
+import { getIndex } from "../content-index";
+import type { TryLesson as TryLessonData } from "../content-index/schema";
+import { messages } from "../i18n";
+import { altText, art } from "../lib/art";
+import { startUrl } from "../lib/urls";
+
+interface Props {
+  lang: Locale;
+  lesson: TryLessonData;
+  exam?: string | undefined;
+}
+const { lang, lesson, exam } = Astro.props;
+const m = messages(lang);
+const view = localiseLesson(lesson, lang);
+const petArt = (name: "cat-thinking" | "cat-celebrate") => {
+  const a = art(name);
+  return { src: `/assets/w/${name}-320.webp`, alt: altText(name, lang, site.brand.name), width: 320, height: Math.round((a.height / a.width) * 320) };
+};
+const strings = { ...m.tryIt, fixtureBadge: m.fixture.badge };
+---
+
+<TryLessonQuiz
+  client:visible
+  lang={lang}
+  title={view.title}
+  questions={view.questions}
+  strings={strings}
+  continueHref={startUrl(site.webAppUrl, { lang, placement: "quiz_end", exam, topic: lesson.topic_id })}
+  fixture={getIndex().fixture === true}
+  pet={{ thinking: petArt("cat-thinking"), celebrate: petArt("cat-celebrate") }}
+/>

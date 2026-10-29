@@ -128,20 +128,50 @@ Built twice from the same tokens and this spec: `packages/ui-native` for the mob
 | **Button** | Variants: primary (filled, glow), secondary (surface with `line` border), ghost (text only), destructive (`error`). Sizes 56 and 40. Pressed state scales to 0.97. Loading state keeps the width and shows a spinner. |
 | **Subject tile** | Tint background, radius 20, illustration top-right (overlapping the edge is allowed), subject name in `heading`, a progress bar in `strong`, chapter count in `caption`. |
 | **Continue card** | Subject `strong` fill, `onStrong` text, large illustration overlapping the right edge, progress bar, [Resume]. Only one per screen. |
-| **Streak card** | `streakTint` background, plant illustration on the right, one-line state copy, daily-goal progress. Turns `warningTint` when the streak is at risk. |
-| **Option card** (question) | Full width, `surface`, radius 16, `line` border. Selected: `primary` border at 2 px. Correct: `successTint` with a check icon. Wrong: `errorTint` with a cross icon and a 2 × 6 px shake. |
+| **Streak card** | `streakTint` background, plant illustration on the right, one-line state copy, daily-goal progress, and the freeze slots row (up to 2 slots, `Snowflake` for a ready freeze, a dashed ring for an empty one). Turns `warningTint` when the streak is at risk. The streak pill and every streak icon is Phosphor `Plant` (fill) in `streak`, never a flame: the streak is the plant. |
+| **Option card** (question, and choice card) | Full width, `surface`, radius 16, `line` border. Selected: `primary` border at 2 px. Correct: `successTint` with a check icon. Wrong: `errorTint` with a cross icon and a 2 × 6 px shake. Used as a choice card (onboarding, settings), selected also shows a filled `CheckCircle` badge top-right, never colour alone. |
 | **Confidence row** | Three segmented chips: Sure, 50:50, Guess. Optional, never blocks [Check]. |
 | **Rating buttons** (review) | Again, Hard, Good, Easy, each with a text label and the next interval ("10 min", "2 d"). Colours: error, warning, success, primary. |
 | **Progress** | Bar (8 px, radius 4, `track` behind), ring (stroke 10–12), segmented lesson bar. |
 | **Chip** | 32 tall, fully round. Filter chips use `surfaceRaised`, and status chips use a tint with its `*Text` colour. |
 | **Sheet** | Radius 28 at the top, grabber, `scrim` behind. Heights: 40%, 60% and full. |
-| **Tab bar** | 82 tall with the safe area, five tabs, filled icon and `primary` for the active tab, outline icons and `inkMuted` otherwise. Always visible on main screens. |
+| **Tab bar** | 82 tall with the safe area. Five tabs (Learn, Labs, Practice, Friends, Me); Phase 1 ships four, without Friends; little learners get three (Learn, Labs, Me). Filled icon and `primary` for the active tab, outline icons and `inkMuted` otherwise. Always visible on main screens. |
 | **Pet line** | The pet's avatar (40 px) plus a speech bubble on `surface`. At most 2 lines. Used for tips, nudges and empty states. |
 | **Stat tile** | Number in `title` with tabular figures, label in `caption`, optional tint background. |
 | **Toast** | Bottom, above the tab bar, 4 s, one action at most. Errors stay until dismissed. |
 | **Empty state** | Illustration (pet or plant), one line of copy, one action. |
 | **Formula box** | Subject tint background, KaTeX SVG, tappable symbols, "Add to formula vault". |
 | **Mock palette cell** | 40 × 40, shapes and colours from §2.4, question number in `label`. |
+| **Picker** | A scrolling list for years, months and times: 56-tall rows in `heading` with tabular figures, inside a `surfaceSunken` panel, radius 16, 5 rows visible, nothing preselected unless the spec says so. Months and years are two listboxes. On web it becomes native `<select>` elements. |
+| **Choice chips** | A radio or checkbox group of Chips for short answers (daily goal minutes, exam cycles, review batch size). Selected: `primaryTint` with `primary` text and a check icon. |
+| **Meter** | A labelled bar for pet mood and energy: label and state word above in `label`, bar 10 px, `track` behind. Mood fills with `streak`, energy with `gem`, never `error` or `warning`, so a low meter never reads as an alarm. |
+| **DayDots** | 3 to 7 circles for revival quests and streak goals. Done: `success` fill with a check. Today: 2 px `primary` ring. To do: `track` outline. Weekday label in `caption` under each. |
+| **Banner** | Full-width strip under the top bar, 48 px minimum, radius 16, inset 16. Icon, one line, an optional action and close. Tones: info (`primaryTint`), warning (`warningTint` + `warningText`), offline (`surfaceSunken`). Never an `error` fill. One banner at a time. |
+| **Save-state chip** | Status Chip for where progress is saved: only on this phone, saving, saved to {email}, saved but offline (docs/ux/auth.md AUTH-33). Icon plus text, never colour alone. |
+| **Settings row** | 56 px minimum: leading Phosphor icon 24 in `inkMuted`, title in `label`, optional value in `caption` on the right, then a caret or a Switch. Rows group in a `surface` card, radius 20, with `line` dividers. |
+| **Price block** | The price as live text, never in an image. Price in `display`, the "then" line in `body`, fine print in `caption` `inkMuted`. Prices are tax-inclusive. |
+| **Trial timeline** | Three dated rows for the ₹1 trial: today ₹1, the reminder date ("we remind you by push and email"), the renewal date and price. Real dates, no countdown. Used on PAY-01, PAY-06, PAY-09 and PAY-12. |
+| **Pro chip** | Small status Chip "Pro" / "प्रो" (`primaryTint` fill, `primary` text, `LockSimple` 16) on a locked item. Other shared status chips (Free today, Needs internet, Downloaded, PYQ source) are listed in docs/ux/learn.md §0.2. Tapping the item opens a preview or LRN-05, never a dead end. Gold is not used for Pro. |
+| **Timer** | Count-down or count-up in `title` with tabular figures and a `Timer` icon. Warning (`warningText` + `Warning`) and final (`errorText` + `WarningOctagon`) states always add an icon. Count-up never uses warning colours. |
+| **Section tabs** | 40 px scrollable tabs with an "{answered}/{total}" badge. Active: 3 px `primary` underline. Locked: `inkDisabled` + `Lock`. |
+| **Numeric keypad** | 4 × 4 grid of 56 px keys on `surfaceSunken` (digits, decimal, minus, backspace, clear) under the answer field. Hardware keys work too. |
+| **OMR bubble row** | Question number and 32 px option bubbles in a 48 px hit area, with an optional flag. Empty: `line` border. Filled: `ink` fill. |
+| **Score ring** | The progress ring at stroke 12 with the score in `display`. Negative scores show "−{n}" with an empty ring and no special colour. |
+| **Heat map cell** | 44 × 44 cell with the percentage printed inside; "not enough data" cells are hatched. Never colour alone. |
+| **Time strip** | One bar per question (height = time), a result glyph under each bar, optional dashed target line, with a table view as the accessible alternative. |
+| **Leaderboard row** | Rank, 32 px avatar, name, score. The name arrives already resolved: display name for adults, an auto nickname with the pet avatar for minors, "You" for self. The component never receives a minor's real name. Self row is `primaryTint` and pinned. |
+| **Citation chip** | Chip with `FileText` and "{exam_short} {year} · {session_label}" on every PYQ, opening the source sheet. Dropped or changed keys add a `warningTint` state with an icon. |
+| **Limit meter** | One row: label, 8 px bar and "{used} of {limit}" for free limits. Never pulses or shakes. Under-13s get "Ask a grown-up" instead of a Pro link. |
+| **Third-party sign-in buttons** | Continue with Google and Continue with Apple. Height 56, full width, pill shape, the same size as each other (Google on top). Colours from `thirdParty.google.*` and `thirdParty.apple.*` only. The one documented brand exception to the tokens-only rule (below). |
+
+**Third-party sign-in buttons: brand exception.** These buttons follow Google's and Apple's rules, not our Button variants ([Google branding guidelines](https://developers.google.com/identity/branding-guidelines), [Apple Sign in with Apple HIG](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple)).
+- Their colours are Google's and Apple's own, kept in `tokens.json` under `thirdParty` so components still read tokens. Never use those values anywhere else, and never apply our colours, glow or press scale to these buttons.
+- Google: the light theme in light mode and the dark theme in Night Colour (neutral is allowed on tinted grounds). The standard-colour G logo, never recoloured, resized or shown alone. Label "Continue with Google" or "Sign in with Google" only, localised ("Google के साथ जारी रखें"). Padding per platform from the tokens.
+- On web, Google renders the button (`renderButton`); on mobile, use the sign-in library's button. Draw our own only for the redirect fallback, with Google's asset and these tokens.
+- Apple (iOS only): the system button (black in light mode, white in Night Colour), title "Continue with Apple", the same height and width as the Google button.
+- Both show the trust line under them on every sign-in surface (docs/ux/auth.md §0.2).
+
+**Pet avatars:** the pet portrait sits in a `primaryTint` circle for both the cat and the dog. Gold (`streak`) stays reserved for the streak, plant, gems and the ₹1 tag, so it is never used as a pet colour. Profiles are told apart by the pet art and the name, not by colour.
 
 **Icons:** Phosphor Icons (MIT; `phosphor-react-native` on mobile, `@phosphor-icons/react` on web), "bold" weight for outlines and "fill" for active states, at 20, 24 and 32 px. Icons that carry meaning always have a text label or an accessibility label.
 

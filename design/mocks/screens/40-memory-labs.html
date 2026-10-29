@@ -1,0 +1,1228 @@
+<section class="area" id="memory" data-title="Memory and labs">
+<style>
+/* Area helpers for MEM and LAB mocks. Tokens only (var(--…)); prefix .mk-mem- / .mk-lab- / .mk-pt-. */
+.sx .mk-top { flex: none; height: 52px; display: flex; align-items: center; gap: 6px; padding: 0 10px; }
+.sx .mk-top .ttl { flex: 1; min-width: 0; font: 800 18px/24px var(--f-latin); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx .mk-top .ttl.c { text-align: center; }
+.sx .mk-pro { height: 24px; padding: 0 8px; font-size: 11px; gap: 4px; background: var(--primary-tint); color: var(--primary); box-shadow: none; }
+.sx .mk-pro .ic { width: 14px; height: 14px; }
+.sx .mk-mem-today { background: var(--primary-tint); border-radius: 24px; padding: 18px; position: relative; display: flex; flex-direction: column; gap: 10px; }
+.sx .mk-mem-today .art { position: absolute; right: -6px; top: -22px; width: 120px; height: 120px; object-fit: contain; }
+.sx .mk-mem-tool { background: var(--surface); border-radius: 20px; box-shadow: var(--sh-card); padding: 14px; min-height: 112px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; }
+.sx .mk-mem-tool .art { position: absolute; right: 6px; top: 4px; width: 54px; height: 54px; object-fit: contain; }
+.sx .mk-mem-tool .art.round { width: 46px; height: 46px; border-radius: 16px; object-fit: cover; top: 10px; right: 10px; }
+.sx .mk-mem-tool .mk-pro { position: absolute; left: 12px; top: 12px; }
+.sx .mk-mem-rcard { background: var(--surface); border-radius: 24px; box-shadow: var(--sh-card); padding: 18px; display: flex; flex-direction: column; gap: 12px; flex: 1; min-height: 0; }
+.sx .mk-mem-rcard .pic { border-radius: 16px; background: var(--tint); height: 190px; display: grid; place-items: center; }
+.sx .mk-mem-rcard .pic img { height: 170px; width: auto; }
+.sx .rate > * { min-height: 66px; justify-content: center; align-items: center; }
+.sx .rate > * .ic { width: 18px; height: 18px; }
+.sx .mk-mem-streakchip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px 0 8px; border-radius: 999px; background: var(--streak-tint); color: var(--streak-text); font: 700 12px/1 var(--f-latin); white-space: nowrap; }
+.sx .mk-mem-streakchip .ic { color: var(--streak); width: 16px; height: 16px; }
+.sx .mk-pin { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%; background: var(--surface); box-shadow: inset 0 0 0 2px var(--line), var(--sh-raised); display: grid; place-items: center; font: 800 13px/1 var(--f-latin); color: var(--ink); z-index: 2; }
+.sx .mk-pin.on { box-shadow: inset 0 0 0 3px var(--strong), var(--sh-raised); }
+.sx .mk-pin.glow { box-shadow: inset 0 0 0 3px var(--streak), 0 0 0 6px color-mix(in srgb, var(--streak) 40%, transparent); width: 40px; height: 40px; margin: -20px 0 0 -20px; font-size: 15px; }
+.sx .mk-pin.dim { opacity: .55; }
+.sx .mk-pin.warn { box-shadow: inset 0 0 0 3px var(--warning), var(--sh-raised); }
+.sx .mk-pin-lbl { position: absolute; z-index: 2; transform: translateY(-50%); height: 24px; padding: 0 9px; border-radius: 12px; background: var(--strong); color: var(--on-strong); font: 700 11px/24px var(--f-latin); white-space: nowrap; }
+.sx .mk-canvas { position: relative; border-radius: 20px; overflow: hidden; flex: none; }
+.sx .mk-canvas > img.bg { width: 100%; height: 100%; object-fit: cover; }
+.sx .mk-canvas svg.path { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.sx .mk-canvas svg.path polyline, .sx .mk-canvas svg.path line { fill: none; stroke: var(--surface); stroke-width: 2.5; stroke-dasharray: 6 6; opacity: .9; }
+.sx .mk-ichip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 14px; background: var(--tint); color: var(--stext); font: 700 13px/16px var(--f-latin); }
+.sx .mk-ichip .ic { width: 16px; height: 16px; }
+.sx .mk-fact { background: var(--tint); border-radius: 16px; padding: 14px; font: 600 15px/22px var(--f-latin); display: flex; flex-direction: column; gap: 8px; }
+.sx .mk-check { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 12px; font: 700 13px/18px var(--f-latin); }
+.sx .mk-check.ok { background: var(--success-tint); color: var(--success-text); }
+.sx .mk-check.warn { background: var(--warning-tint); color: var(--warning-text); }
+.sx .mk-check .ic { width: 18px; height: 18px; }
+.sx .mk-act { display: flex; gap: 6px; flex-wrap: wrap; }
+.sx .mk-act > span { height: 34px; border-radius: 12px; padding: 0 10px; display: inline-flex; align-items: center; gap: 5px; font: 700 12px/1 var(--f-latin); background: var(--sunken); color: var(--ink); }
+.sx .mk-act > span .ic { width: 16px; height: 16px; }
+.sx .mk-act > span.pri { background: var(--primary); color: var(--on-primary); }
+.sx .mk-ph { color: var(--muted); }
+.sx .mk-line { height: 10px; border-radius: 5px; background: var(--sunken); }
+/* metacognitive chart (data UI) */
+.sx .mk-ch text { font-family: var(--f-latin); }
+.sx .mk-ch .lbl { fill: var(--ink); font-size: 12px; font-weight: 700; }
+.sx .mk-ch .val { fill: var(--muted); font-size: 11px; font-weight: 600; }
+.sx .mk-ch .tick { fill: var(--muted); font-size: 10px; font-weight: 600; }
+.sx .mk-ch .axt { fill: var(--muted); font-size: 11px; font-weight: 700; }
+.sx .mk-ch .trk { fill: var(--track); }
+.sx .mk-ch .bar { fill: var(--primary); }
+.sx .mk-ch .grid { stroke: var(--line); stroke-width: 1; }
+.sx .mk-ch .axis { stroke: var(--muted); stroke-width: 1; }
+.sx .mk-ch .tgt { stroke: var(--ink); stroke-width: 2; stroke-dasharray: 3 2; }
+.sx .mk-ch .tgtl { fill: var(--ink); font-size: 9px; font-weight: 700; }
+.sx .mk-heat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sx .mk-heat > div { min-height: 84px; border-radius: 14px; padding: 8px; display: flex; flex-direction: column; justify-content: space-between; font: 700 12px/15px var(--f-latin); }
+.sx .mk-heat .g { display: flex; align-items: center; gap: 4px; font: 700 10px/12px var(--f-latin); }
+.sx .mk-heat .g .ic { width: 14px; height: 14px; flex: none; }
+.sx .mk-heat .know { background: var(--success-tint); color: var(--success-text); }
+.sx .mk-heat .hid { background: var(--primary-tint); color: var(--primary); }
+.sx .mk-heat .ill { background: var(--error-tint); color: var(--error-text); }
+.sx .mk-heat .gap { background: var(--warning-tint); color: var(--warning-text); }
+.sx .mk-heat .more { background: var(--sunken); color: var(--muted); }
+/* labs */
+.sx .mk-lab-card { background: var(--surface); border-radius: 20px; box-shadow: var(--sh-card); overflow: hidden; display: flex; flex-direction: column; }
+.sx .mk-lab-card .poster { background: var(--tint); }
+.sx .mk-lab-card .poster img { width: 100%; height: 100%; object-fit: cover; }
+.sx .mk-lab-card .meta { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; }
+.sx .mk-kind { display: inline-flex; align-items: center; gap: 4px; font: 700 12px/16px var(--f-latin); color: var(--muted); }
+.sx .mk-kind .ic { width: 16px; height: 16px; color: var(--stext); }
+.sx .mk-tool { background: var(--tint); border-radius: 18px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font: 700 11px/14px var(--f-latin); color: var(--ink); }
+.sx .mk-tool .ico { width: 40px; height: 40px; border-radius: 14px; background: var(--surface); display: grid; place-items: center; color: var(--stext); }
+.sx .mk-view { position: relative; border-radius: 20px; overflow: hidden; background: var(--sunken); flex: none; }
+.sx .mk-view .scene img { width: 100%; height: 100%; object-fit: cover; }
+.sx .mk-fbtn { width: 44px; height: 44px; border-radius: 22px; background: color-mix(in srgb, var(--surface) 92%, transparent); box-shadow: var(--sh-raised); display: grid; place-items: center; color: var(--ink); }
+.sx .mk-slider { display: flex; align-items: center; gap: 10px; font: 700 12px/16px var(--f-latin); }
+.sx .mk-slider .trk { flex: 1; height: 6px; border-radius: 3px; background: var(--track); position: relative; }
+.sx .mk-slider .trk i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; background: var(--strong); }
+.sx .mk-slider .trk b { position: absolute; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 11px; background: var(--surface); box-shadow: inset 0 0 0 3px var(--strong), var(--sh-raised); }
+.sx .mk-task { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; font: 600 14px/20px var(--f-latin); }
+.sx .mk-task .st { width: 24px; height: 24px; border-radius: 12px; flex: none; display: grid; place-items: center; box-shadow: inset 0 0 0 2px var(--line); }
+.sx .mk-task .st.done { background: var(--success-tint); color: var(--success-text); box-shadow: none; }
+.sx .mk-task .st.cur { box-shadow: inset 0 0 0 3px var(--primary); }
+.sx .mk-task .st .ic { width: 14px; height: 14px; }
+.sx .mk-read { height: 32px; border-radius: 10px; padding: 0 10px; display: inline-flex; align-items: center; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font: 700 12px/1 var(--f-latin); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sx .mk-hpin { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 22px; background: var(--surface); box-shadow: var(--sh-raised); display: grid; place-items: center; color: var(--primary); z-index: 2; }
+.sx .mk-hpin .n { position: absolute; left: -4px; top: -4px; width: 20px; height: 20px; border-radius: 10px; background: var(--ink); color: var(--bg); font: 800 11px/20px var(--f-latin); text-align: center; }
+.sx .mk-hpin .ok { position: absolute; right: -4px; bottom: -4px; width: 20px; height: 20px; border-radius: 10px; background: var(--success); color: var(--surface); display: grid; place-items: center; }
+.sx .mk-hpin .ok .ic { width: 12px; height: 12px; }
+.sx .mk-pill { height: 40px; border-radius: 20px; padding: 0 14px; background: var(--surface); box-shadow: var(--sh-raised); display: inline-flex; align-items: center; gap: 8px; font: 700 13px/1 var(--f-latin); color: var(--ink); white-space: nowrap; }
+.sx .mk-pill .ic { width: 20px; height: 20px; }
+.sx .mk-safety { background: var(--warning-tint); color: var(--ink); border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.sx .mk-safety .h { display: flex; align-items: center; gap: 8px; font: 800 16px/20px var(--f-latin); color: var(--warning-text); }
+.sx .mk-safety .r { display: flex; gap: 8px; align-items: flex-start; font: 600 13px/18px var(--f-latin); }
+.sx .mk-safety .r .ic { width: 18px; height: 18px; color: var(--warning-text); margin-top: 1px; }
+.sx .mk-stop { background: var(--error-tint); color: var(--error-text); border-radius: 16px; padding: 10px 12px; display: flex; gap: 10px; align-items: center; font: 700 13px/18px var(--f-latin); }
+.sx .mk-stop .ic { width: 26px; height: 26px; flex: none; }
+.sx .mk-box { width: 24px; height: 24px; border-radius: 8px; box-shadow: inset 0 0 0 2px var(--line); flex: none; display: grid; place-items: center; }
+.sx .mk-box.on { background: var(--primary); color: var(--on-primary); box-shadow: none; }
+.sx .mk-box .ic { width: 14px; height: 14px; }
+/* periodic table (data UI: element symbols are text, not art) */
+.sx .mk-pt-grid { --c: 50px; display: grid; gap: 3px; grid-auto-rows: var(--c); }
+.sx .mk-pt-cell { position: relative; border-radius: 10px; background: var(--tint); color: var(--ink); display: grid; place-items: center; }
+.sx .mk-pt-z { position: absolute; left: 5px; top: 3px; font: 700 9px/1 var(--f-latin); color: var(--muted); font-variant-numeric: tabular-nums; }
+.sx .mk-pt-b { position: absolute; right: 5px; top: 3px; font: 800 9px/1 var(--f-latin); color: var(--stext); }
+.sx .mk-pt-s { font: 800 18px/1 var(--f-latin); margin-top: 6px; }
+.sx .mk-pt-mark .mk-pt-s { color: var(--stext); }
+.sx .mk-pt-empty { display: block; }
+.sx .mk-pt-land { --c: 34px; grid-auto-rows: 25px; gap: 2px; }
+.sx .mk-pt-land .mk-pt-cell { border-radius: 5px; width: var(--c); }
+.sx .mk-pt-land .mk-pt-s { font-size: 12px; margin-top: 4px; }
+.sx .mk-pt-land .mk-pt-z { font-size: 7px; left: 3px; top: 2px; }
+.sx .mk-pt-land .mk-pt-b { display: none; }
+.sx .mk-pt-mark .mk-pt-s { font-size: 10px; }
+.sx .mk-pt-land .mk-pt-mark .mk-pt-s { font-size: 7px; }
+.sx .mk-pt-fade { opacity: .35; }
+.sx .mk-pt-on { box-shadow: inset 0 0 0 2px var(--primary); }
+.sx .mk-pt-mini { position: relative; display: grid; grid-template-columns: repeat(18, 7px); grid-auto-rows: 5px; gap: 1px; }
+.sx .mk-pt-mini i { display: block; border-radius: 1px; background: var(--strong); opacity: .7; }
+.sx .mk-pt-mini i.e { background: transparent; }
+.sx .mk-pt-mini .mk-pt-vp { position: absolute; left: -2px; top: -2px; width: 47px; height: 37px; border-radius: 3px; box-shadow: inset 0 0 0 2px var(--ink); }
+.sx .mk-sw { width: 14px; height: 14px; border-radius: 4px; background: var(--strong); flex: none; }
+</style>
+<div class="wrap">
+<h2>Memory and labs</h2>
+<p class="lede">Reviews with Again / Hard / Good / Easy and Sure / 50:50 / Guess, the comeback plan, the 2-minute rescue, decks, palaces, the hook forge, the confidence dashboard and focus timer; then the Labs hub, sims, 3D, 360°, the periodic table and home experiments. Memory is not a tab (R17): it opens from Home, so its screens keep Learn active. Every lab is free (R19 revised); Pro chips (P2: primary tint, lock, the word Pro, never gold) appear only on palace building, the AI hook forge, audio hooks and sleep review.</p>
+<p class="spec">Specs: <code>docs/ux/memory-labs.md</code> · Flow: <code>docs/flows/memory-labs.md</code> · Rulings R11, R17–R22, R28, R37</p>
+<div class="wall">
+
+<!-- ============ MEM-01 Memory hub ============ -->
+<figure class="mock" data-id="MEM-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl t-title" style="font-size:22px">Memory</span>
+    <span class="iconbtn" aria-label="Review settings"><svg class="ic"><use href="#ph-gear-six-bold"/></svg></span>
+  </div>
+  <div class="body scroll-cut" style="padding-top:18px">
+    <div class="mk-mem-today">
+      <img class="art" src="assets/cat-reading.webp" alt="">
+      <span class="chip ok" style="height:26px;align-self:flex-start"><svg class="ic xs"><use href="#ph-clock-bold"/></svg>Due now</span>
+      <span class="t-title num" style="padding-right:92px">24 cards today · 6 min</span>
+      <div class="bar primary"><i style="width:25%"></i></div>
+      <span class="t-caption muted num">6 of 24 done today</span>
+      <span class="btn btn-primary">Start review</span>
+    </div>
+    <div class="row" style="gap:8px;padding:0 2px">
+      <img src="assets/plant-sapling.webp" alt="" style="width:34px;height:34px;object-fit:contain">
+      <span class="mk-mem-streakchip" role="status"><svg class="ic"><use href="#ph-plant-fill"/></svg>6 more reviews to keep your streak</span>
+    </div>
+    <div class="grid2">
+      <div class="mk-mem-tool"><img class="art" src="assets/badge-reviews-100.webp" alt=""><span class="t-label">Decks</span><span class="t-caption muted">6 decks · 42 due</span></div>
+      <div class="mk-mem-tool"><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span><img class="art" src="assets/badge-palace.webp" alt=""><span class="t-label">Memory palace</span><span class="t-caption muted">2 palaces</span></div>
+      <div class="mk-mem-tool"><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span><img class="art round" src="assets/memory-hook-sample.webp" alt=""><span class="t-label">Make it stick</span><span class="t-caption muted">Hooks for any fact</span></div>
+      <div class="mk-mem-tool"><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span><img class="art" src="assets/cat-headphones.webp" alt=""><span class="t-label">Audio hooks</span><span class="t-caption muted">Listen and recall</span></div>
+      <div class="mk-mem-tool"><img class="art" src="assets/badge-first-lesson.webp" alt=""><span class="t-label">Techniques</span><span class="t-caption muted">12 to try</span></div>
+      <div class="mk-mem-tool"><img class="art" src="assets/cat-thinking.webp" alt=""><span class="t-label">How well I know it</span><span class="t-caption muted">Sure vs right</span></div>
+    </div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">MEM-01</span><span class="nm">Memory hub, cards due</span><span class="ds">Today card leads with one main action, the P9 streak chip under it, then the tools grid (Focus timer and the weak-area strip scroll below). Pro chips only on palace, forge and audio hooks.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-02 Comeback plan (Hindi) ============ -->
+<figure class="mock" data-id="MEM-02">
+<div class="phone"><div class="screen sx" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut" style="padding-top:4px">
+    <div class="scene s-biology" style="height:150px;position:relative;flex:none">
+      <span class="iconbtn filled" aria-label="बंद करें" style="position:absolute;left:10px;top:10px;z-index:2"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+      <img src="assets/cat-watering.webp" alt="आपका पालतू आपके पौधे को पानी देकर स्वागत कर रहा है" style="position:absolute;left:50%;transform:translateX(-50%);bottom:-4px;height:150px">
+    </div>
+    <span class="t-title">फिर से स्वागत है, आरव!</span>
+    <span class="t-body muted" style="margin-top:-6px">120 कार्ड आपका इंतज़ार कर रहे थे। कोई जल्दी नहीं। इन्हें कुछ दिनों में बाँट लेते हैं।</span>
+    <div class="col" style="gap:4px">
+      <div class="seg" role="radiogroup" aria-label="प्लान की लंबाई"><span>3 दिन</span><span class="on">5 दिन</span><span>7 दिन</span></div>
+      <div class="grid3" style="gap:4px"><span></span><span class="t-caption center stext" style="color:var(--primary)">सुझाया गया</span><span></span></div>
+    </div>
+    <div class="grid2">
+      <div class="stat tint" style="background:var(--primary-tint)"><b class="num" style="font-size:19px">रोज़ 24 कार्ड</b><span>5 दिन तक</span></div>
+      <div class="stat tint" style="background:var(--primary-tint)"><b class="num" style="font-size:19px">लगभग 6 मिनट</b><span>हर दिन</span></div>
+    </div>
+    <div class="card col" style="gap:10px">
+      <div class="row top"><svg class="ic" style="color:var(--primary)"><use href="#ph-book-open-bold"/></svg><span class="t-label">18 कार्ड काफ़ी धुंधले हो गए हैं। 3 टॉपिक की क्विक रिवीज़न इन्हें पलटने से तेज़ है।</span></div>
+      <div class="row wrap" style="gap:6px"><span class="chip st s-physics">गति के नियम</span><span class="chip st s-chemistry">रासायनिक बंधन</span><span class="chip">+1 और</span></div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">हर पूरा दिन पौधे को पानी देगा। उसे जगाने में 2 दिन।</div></div>
+  </div>
+  <div class="bottom" style="padding-top:6px;gap:4px">
+    <span class="btn btn-primary">आज के 24 कार्ड शुरू करें</span>
+    <span class="btn btn-ghost" style="height:44px">सामान्य रिव्यू करें</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-02</span><span class="nm">Comeback plan, in Hindi</span><span class="ds">After a break, 120 cards become 24 a day over 5 days (3 / 5 / 7 to choose, 5 suggested). No review wall (R22). The pet waters the dry plant; 2 study days wake it (R12). आप register (R3).</span></figcaption>
+</figure>
+
+<!-- ============ MEM-03 front ============ -->
+<figure class="mock" data-id="MEM-03">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="bar primary grow"><i style="width:30%"></i></div>
+    <span class="t-caption muted num">6 / 20</span>
+    <span class="iconbtn" aria-label="Card actions"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-physics" style="padding-top:2px">
+    <div class="row wrap" style="gap:8px">
+      <span class="chip st" style="height:28px">Physics</span><span class="t-caption muted">Laws of motion</span>
+      <span class="mk-mem-streakchip" role="status"><svg class="ic"><use href="#ph-plant-fill"/></svg>4 more reviews to keep your streak</span>
+    </div>
+    <div class="mk-mem-rcard">
+      <div class="pic"><img src="assets/subject-physics.webp" alt="Picture from the card"></div>
+      <span class="t-title">Card prompt from the deck, shown here in up to three short lines</span>
+      <span class="sp"></span>
+      <span class="btn btn-secondary">Show answer</span>
+      <span class="t-caption muted center">How sure are you?</span>
+      <div class="conf" role="radiogroup" aria-label="How sure are you?"><span>Sure</span><span>50:50</span><span>Guess</span></div>
+    </div>
+  </div>
+  <div class="homebar"></div>
+</div></div>
+<figcaption><span class="id">MEM-03</span><span class="nm">Review session, card front</span><span class="ds">Front of a basic card with its picture. No rating yet: Show answer, or tap Sure / 50:50 / Guess to record confidence and flip in one tap (R21). The plant chip counts down to 10 reviews.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-03 back, dark ============ -->
+<figure class="mock" data-id="MEM-03">
+<div class="phone"><div class="screen sx dark">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="bar primary grow"><i style="width:30%"></i></div>
+    <span class="t-caption muted num">6 / 20</span>
+    <span class="iconbtn" aria-label="Card actions"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-physics" style="padding-top:2px">
+    <div class="row" style="gap:8px"><span class="chip st" style="height:28px">Physics</span><span class="t-caption muted">Laws of motion</span><span class="sp"></span><span class="chip" style="height:28px;background:var(--raised);box-shadow:none"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-check-circle-fill"/></svg>Sure</span></div>
+    <span class="mk-mem-streakchip" role="status" style="align-self:flex-start;margin-top:-4px"><svg class="ic"><use href="#ph-plant-fill"/></svg>4 more reviews to keep your streak</span>
+    <div class="mk-mem-rcard" style="box-shadow:none">
+      <span class="t-label muted">Card prompt from the deck, shown here in up to three short lines</span>
+      <div class="divider"></div>
+      <span class="t-title">The answer from the card appears under the line</span>
+      <span class="t-body muted">An optional second line of the answer, kept short.</span>
+      <div class="row wrap" style="gap:6px">
+        <span class="chip st"><svg class="ic xs"><use href="#ph-lightbulb-fill"/></svg>Your hook</span>
+        <span class="chip"><svg class="ic xs"><use href="#ph-smiley-bold"/></svg>Funny</span>
+      </div>
+      <span class="sp"></span>
+      <span class="link t-label row" style="gap:6px"><svg class="ic sm"><use href="#ph-chat-circle-text-bold"/></svg>Ask about this card</span>
+    </div>
+    <div class="row between"><span class="btn btn-ghost sm" style="padding:0 8px"><svg class="ic sm"><use href="#ph-arrow-u-up-left-bold"/></svg>Undo</span><span class="t-caption muted">Next review in</span></div>
+    <div class="rate">
+      <span class="again"><svg class="ic"><use href="#ph-arrow-counter-clockwise-bold"/></svg>Again<small class="num">10 min</small></span>
+      <span class="hard"><svg class="ic"><use href="#ph-barbell-bold"/></svg>Hard<small class="num">1 d</small></span>
+      <span class="good"><svg class="ic"><use href="#ph-check-bold"/></svg>Good<small class="num">3 d</small></span>
+      <span class="easy"><svg class="ic"><use href="#ph-lightning-bold"/></svg>Easy<small class="num">8 d</small></span>
+    </div>
+  </div>
+  <div class="homebar"></div>
+</div></div>
+<figcaption><span class="id">MEM-03</span><span class="nm">Card back with ratings, Night Colour</span><span class="ds">Dark mode. Answer under the line, "Your hook" chip in the subject tint (R11), Undo for the last card, and Again / Hard / Good / Easy each with icon, word and its scheduler interval (R18).</span></figcaption>
+</figure>
+
+<!-- ============ MEM-03 little learner ============ -->
+<figure class="mock" data-id="MEM-03">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="segbar s-biology"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <span class="t-label muted num" style="padding-right:8px">3 / 5</span>
+  </div>
+  <div class="body s-biology" style="padding-top:4px">
+    <div class="mk-mem-rcard" style="padding:14px;gap:10px">
+      <div class="pic" style="height:330px"><img src="assets/subject-evs.webp" alt="A magnifying glass over a leaf with a ladybird" style="height:300px"></div>
+      <div class="row" style="justify-content:center;gap:12px">
+        <span class="iconbtn" style="width:56px;height:56px;border-radius:28px;background:var(--strong);color:var(--on-strong)" aria-label="Play again"><svg class="ic lg"><use href="#ph-speaker-high-fill"/></svg></span>
+        <span class="t-display">Picture word</span>
+      </div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">Halfway there!</div></div>
+    <div class="grid2" style="gap:12px">
+      <span class="btn" style="height:76px;border-radius:24px;background:var(--warning-tint);color:var(--warning-text);font-size:20px;flex-direction:column;gap:2px"><svg class="ic lg"><use href="#ph-arrow-counter-clockwise-bold"/></svg>Not yet</span>
+      <span class="btn" style="height:76px;border-radius:24px;background:var(--success-tint);color:var(--success-text);font-size:20px;flex-direction:column;gap:2px"><svg class="ic lg"><use href="#ph-check-bold"/></svg>Got it!</span>
+    </div>
+  </div>
+  <div class="homebar"></div>
+</div></div>
+<figcaption><span class="id">MEM-03</span><span class="nm">Review, little learner (class 1–5)</span><span class="ds">Picture card fills the width, audio plays itself, and two big buttons replace the four ratings: "Got it!" and a gentle amber "Not yet" (never red). Session of 5, no intervals, no confidence chips.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-03 rescue mode ============ -->
+<figure class="mock" data-id="MEM-03">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="segbar" style="--strong:var(--primary)"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <img src="assets/plant-sapling-droopy.webp" alt="Your plant, a little droopy" style="width:30px;height:30px;object-fit:contain">
+    <span class="t-caption muted num">1 / 5</span>
+    <span class="iconbtn" aria-label="Card actions"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-chemistry" style="padding-top:2px">
+    <div class="row" style="gap:8px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-timer-bold"/></svg><span class="t-heading">2-minute rescue · 5 cards</span></div>
+    <span class="mk-mem-streakchip" style="align-self:flex-start"><svg class="ic"><use href="#ph-plant-fill"/></svg>10 more reviews to keep your streak</span>
+    <div class="petline"><div class="av"><img src="assets/cat-plant.webp" alt=""></div><div class="bubble">Five quick cards and your plant won't droop tonight.</div></div>
+    <div class="mk-mem-rcard">
+      <div class="row" style="gap:8px"><span class="chip st" style="height:26px">Chemistry</span><span class="t-caption muted">Fill the gap</span></div>
+      <span class="t-title" style="line-height:36px">A sentence from your lesson with one <span style="display:inline-block;width:96px;height:30px;border-radius:10px;background:var(--tint);box-shadow:inset 0 -3px 0 var(--strong);vertical-align:middle" aria-label="gap"></span> left out, to fill from memory</span>
+      <span class="sp"></span>
+      <span class="btn btn-secondary">Show answer</span>
+      <span class="t-caption muted center">How sure are you?</span>
+      <div class="conf"><span>Sure</span><span class="on">50:50</span><span>Guess</span></div>
+    </div>
+  </div>
+  <div class="homebar"></div>
+</div></div>
+<figcaption><span class="id">MEM-03 · rescue</span><span class="nm">2-minute rescue, first card</span><span class="ds">Opened from the thirsty-plant streak card or the evening streak-saver push. Five due cards, lowest recall first; a cloze card with 50:50 being tapped. No upsell anywhere in the session (R15).</span></figcaption>
+</figure>
+
+<!-- ============ MEM-32 Rescue complete ============ -->
+<figure class="mock" data-id="MEM-32">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="padding-top:20px;gap:14px">
+    <div style="position:relative;height:236px;flex:none;border-radius:28px;background:var(--streak-tint)">
+      <img src="assets/plant-sapling.webp" alt="Your plant, just watered" style="position:absolute;left:50%;transform:translateX(-50%);bottom:4px;height:222px">
+    </div>
+    <span class="t-display center">Plant watered!</span>
+    <span class="t-body center" style="margin-top:-6px">Your streak needs 5 more reviews before midnight.</span>
+    <span class="mk-mem-streakchip" role="status" style="align-self:center;margin-top:-4px"><svg class="ic"><use href="#ph-plant-fill"/></svg>5 more reviews to keep your streak</span>
+    <div class="grid2">
+      <div class="stat"><b class="num">5</b><span>Cards</span></div>
+      <div class="stat"><b class="num">2 min</b><span>Time</span></div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-celebrate.webp" alt=""></div><div class="bubble">Thanks for the water!</div></div>
+  </div>
+  <div class="bottom">
+    <span class="btn btn-primary">Keep going: 5 more</span>
+    <span class="btn btn-secondary">Done for today</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-32</span><span class="nm">2-minute rescue complete</span><span class="ds">The rescue keeps plant health for today but is not a streak day by itself, so one honest line says what is left (no freeze equipped: "needs 5 more reviews before midnight") with the P9 chip. No confetti, guilt words, gems, XP or upsell.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-04 Review complete ============ -->
+<figure class="mock" data-id="MEM-04">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="padding-top:16px;gap:14px">
+    <div class="scene" style="height:210px;flex:none;display:grid;place-items:center;background:var(--primary-tint)">
+      <img src="assets/cat-celebrate.webp" alt="Your pet celebrating" style="height:200px">
+    </div>
+    <span class="t-display center">Nice work!</span>
+    <div class="grid3">
+      <div class="stat"><b class="num">6 / 7</b><span>Remembered</span></div>
+      <div class="stat"><b class="num">2 min</b><span>Time</span></div>
+      <div class="stat"><b style="font-size:16px;line-height:28px">Tomorrow</b><span class="num">18 cards</span></div>
+    </div>
+    <div class="row between" style="gap:8px">
+      <span class="mk-mem-streakchip" role="status"><svg class="ic"><use href="#ph-plant-fill"/></svg>3 more reviews to keep your streak</span>
+      <span class="btn btn-secondary sm" style="height:36px;white-space:nowrap;flex:none">3 more</span>
+    </div>
+    <div class="list">
+      <div class="li"><span class="lead" style="background:var(--error-tint);color:var(--error-text)"><svg class="ic sm"><use href="#ph-warning-circle-bold"/></svg></span><span class="t-label grow">You were sure on 1 card you missed. <span class="link">See which</span></span></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span class="btn btn-primary">Done</span>
+    <span class="btn btn-secondary">Another 10 cards</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-04</span><span class="nm">Review complete, streak not yet kept</span><span class="ds">A 7-card session: no confetti under 10 cards, real counts only. The P9 streak chip says 3 more reviews keep the streak, and its [3 more] runs exactly that many; "Another 10 cards" is the normal next batch. A sure-but-wrong note links to MEM-26.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-05 Leech sheet (Hindi) ============ -->
+<figure class="mock" data-id="MEM-05">
+<div class="phone"><div class="screen sx" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="bar primary grow"><i style="width:55%"></i></div>
+    <span class="t-caption muted num">11 / 20</span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-chemistry">
+    <div class="mk-mem-rcard">
+      <span class="t-label muted">डेक से कार्ड का सवाल, दो-तीन छोटी लाइनों में</span>
+      <div class="divider"></div>
+      <span class="t-title">कार्ड का उत्तर लाइन के नीचे दिखता है</span>
+    </div>
+  </div>
+  <div class="scrim"></div>
+  <div class="sheet" role="dialog" aria-label="मुश्किल कार्ड में मदद">
+    <div class="grab"></div>
+    <div class="petline"><div class="av"><img src="assets/cat-thinking.webp" alt=""></div><div class="bubble">यह बार-बार भूल रहा है। चलो नई तरकीब आज़माते हैं।</div></div>
+    <div class="card line row" style="padding:12px 14px;box-shadow:inset 0 0 0 1.5px var(--line)">
+      <span class="t-label muted grow">डेक से कार्ड का सवाल, दो-तीन छोटी लाइनों में</span>
+      <span class="chip warn" style="height:28px"><svg class="ic xs"><use href="#ph-lightning-fill"/></svg>मुश्किल कार्ड</span>
+    </div>
+    <div class="list" style="box-shadow:none;background:transparent">
+      <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-lightbulb-fill"/></svg></span><span class="t-label grow">पक्का याद करें</span><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>प्रो</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-book-open-bold"/></svg></span><span class="t-label grow">पाठ का वह हिस्सा देखें</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-pencil-simple-bold"/></svg></span><span class="grow col" style="gap:2px"><span class="t-label">कार्ड बदलें</span><span class="t-caption muted">सुझाव: इसे दो छोटे कार्ड में बाँटें</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-pause-bold"/></svg></span><span class="t-label grow">अभी के लिए रोकें</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <span class="btn btn-ghost" style="height:44px">जारी रखें</span>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-05</span><span class="nm">Tricky card sheet, in Hindi</span><span class="ds">Rises after the answer was seen. No blame: a new trick (the forge, Pro), the lesson part, split the card, or pause it. Free users who tap the forge land on its free community tab.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-07 Decks ============ -->
+<figure class="mock" data-id="MEM-07">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl t-title" style="font-size:22px">Decks</span>
+    <span class="iconbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    <span class="iconbtn filled" aria-label="New deck"><svg class="ic"><use href="#ph-plus-bold"/></svg></span>
+  </div>
+  <div class="body scroll-cut" style="padding-top:4px">
+    <div class="row" style="gap:6px;overflow:hidden;flex:none"><span class="chip on">All</span><span class="chip">System</span><span class="chip">Mine</span><span class="chip">Shared with me</span></div>
+    <div class="card tint row" style="background:var(--primary-tint);padding:12px 14px">
+      <svg class="ic" style="color:var(--primary)"><use href="#ph-cards-fill"/></svg>
+      <span class="t-label grow num">42 due across your decks</span>
+      <span class="btn btn-ghost sm" style="padding:0 6px">Study all due</span>
+    </div>
+    <div class="row s-physics" style="gap:8px;margin-top:2px"><svg class="ic sm stext"><use href="#ph-atom-bold"/></svg><span class="t-heading stext">Physics</span></div>
+    <div class="card row s-physics" style="padding:12px">
+      <div style="width:56px;height:56px;border-radius:16px;background:var(--tint);display:grid;place-items:center;flex:none"><img src="assets/subject-physics.webp" alt="" style="width:46px"></div>
+      <div class="col grow" style="gap:4px"><div class="row between"><span class="t-label">Laws of motion</span><span class="chip st" style="height:22px;font-size:11px">Started</span></div><span class="t-caption muted num">48 cards · 12 due · 64% known</span><div class="bar"><i style="width:64%"></i></div></div>
+    </div>
+    <div class="card row s-physics" style="padding:12px">
+      <div style="width:56px;height:56px;border-radius:16px;background:var(--tint);display:grid;place-items:center;flex:none"><img src="assets/subject-maths.webp" alt="" style="width:46px"></div>
+      <div class="col grow" style="gap:4px"><div class="row between"><span class="t-label">Work and energy</span></div><span class="t-caption muted num">36 cards · 9 due · 41% known</span><div class="bar"><i style="width:41%"></i></div></div>
+    </div>
+    <div class="row s-chemistry" style="gap:8px;margin-top:2px"><svg class="ic sm stext"><use href="#ph-flask-bold"/></svg><span class="t-heading stext">Chemistry</span></div>
+    <div class="card row s-chemistry" style="padding:12px">
+      <div style="width:56px;height:56px;border-radius:16px;background:var(--tint);display:grid;place-items:center;flex:none"><img src="assets/subject-chemistry.webp" alt="" style="width:46px"></div>
+      <div class="col grow" style="gap:4px"><div class="row between"><span class="t-label">My formula cards</span></div><span class="t-caption muted num">22 cards · 14 due · 52% known</span><div class="bar"><i style="width:52%"></i></div></div>
+    </div>
+    <div class="card row s-chemistry" style="padding:12px">
+      <div style="width:56px;height:56px;border-radius:16px;background:var(--tint);display:grid;place-items:center;flex:none"><img src="assets/subject-chemistry.webp" alt="" style="width:46px"></div>
+      <div class="col grow" style="gap:4px"><div class="row between"><span class="t-label">Chemical bonding</span><span class="chip" style="height:22px;font-size:11px">Copy</span></div><span class="t-caption muted num">30 cards · 7 due · 23% known</span><div class="bar"><i style="width:23%"></i></div></div>
+    </div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">MEM-07</span><span class="nm">Decks</span><span class="ds">System, own and copied decks grouped by subject, each with its due count, % known and a thin bar in the subject colour. "Study all due" covers every deck. Decks are never Pro.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-07 Decks, Mine empty ============ -->
+<figure class="mock" data-id="MEM-07">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl t-title" style="font-size:22px">Decks</span>
+    <span class="iconbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    <span class="iconbtn filled" aria-label="New deck"><svg class="ic"><use href="#ph-plus-bold"/></svg></span>
+  </div>
+  <div class="body" style="padding-top:4px;gap:14px">
+    <div class="row" style="gap:6px;overflow:hidden;flex:none"><span class="chip">All</span><span class="chip">System</span><span class="chip on">Mine</span><span class="chip">Shared with me</span></div>
+    <div class="scene" style="height:290px;flex:none;display:grid;place-items:center;background:var(--primary-tint);margin-top:18px">
+      <img src="assets/cat-blank-cards.webp" alt="Your pet ready to make a new card" style="height:270px">
+    </div>
+    <span class="t-title center" style="padding:0 10px">No decks of your own yet.</span>
+    <span class="t-body muted center" style="margin-top:-8px;padding:0 16px">Make one for anything you want to remember.</span>
+    <span class="sp"></span>
+  </div>
+  <div class="bottom" style="padding-bottom:12px">
+    <span class="btn btn-primary"><svg class="ic"><use href="#ph-plus-bold"/></svg>Make a deck</span>
+  </div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">MEM-07 · empty</span><span class="nm">Decks, Mine filter empty</span><span class="ds">Empty state for own decks: the pet holds a fan of blank cards, one kind line from the spec and one action, Make a deck.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-09 Card editor ============ -->
+<figure class="mock" data-id="MEM-09">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl c">New card</span>
+    <span class="btn btn-ghost sm" style="padding:0 10px">Save</span>
+  </div>
+  <div class="body" style="padding-top:2px;gap:8px">
+    <div class="seg"><span class="on">Basic</span><span>Both ways</span><span>Fill the gap</span></div>
+    <span class="t-label">Front</span>
+    <div style="border-radius:16px;background:var(--sunken);padding:12px 14px;min-height:66px;font:600 15px/22px var(--f-latin);margin-top:-4px">My own prompt, typed in my words<span style="display:inline-block;width:2px;height:18px;background:var(--primary);vertical-align:-3px;margin-left:1px"></span></div>
+    <div class="row" style="gap:6px;margin-top:-4px"><span class="chip"><svg class="ic xs"><use href="#ph-math-operations-bold"/></svg>Formula</span><span class="chip"><svg class="ic xs"><use href="#ph-image-bold"/></svg>Add picture</span></div>
+    <span class="t-label">Back</span>
+    <div style="border-radius:16px;background:var(--sunken);padding:12px 14px;min-height:60px;font:600 15px/22px var(--f-latin);color:var(--muted);margin-top:-4px;box-shadow:inset 0 0 0 2px var(--primary)">Answer</div>
+    <div class="row" style="gap:10px">
+      <div style="width:56px;height:56px;border-radius:16px;background:var(--tint);display:grid;place-items:center;position:relative" class="s-chemistry"><img src="assets/subject-chemistry.webp" alt="Picture you picked" style="width:46px"><span style="position:absolute;right:-6px;top:-6px;width:24px;height:24px;border-radius:12px;background:var(--ink);color:var(--bg);display:grid;place-items:center"><svg class="ic xs" style="width:12px;height:12px"><use href="#ph-x-bold"/></svg></span></div>
+      <div class="col grow" style="gap:0"><span class="t-label">Picture</span><span class="t-caption muted">From approved pictures</span></div>
+    </div>
+    <div class="list">
+      <div class="li"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-cards-bold"/></svg></span><span class="grow col" style="gap:0"><span class="t-caption muted">Deck</span><span class="t-label">My formula cards</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><span class="lead"><svg class="ic sm"><use href="#ph-link-bold"/></svg></span><span class="grow col" style="gap:0"><span class="t-label">Link to a topic</span><span class="t-caption muted">Linked cards count toward your mastery.</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn btn-primary">Save card</span>
+    <span class="btn btn-secondary" style="height:48px">Save and add another</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-09</span><span class="nm">Card editor, new basic card</span><span class="ds">Kind, front (being typed), back still empty, a picture from the approved image index, deck and optional topic link. Adults only get the photo option; under-18s never do.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-14 Palace builder ============ -->
+<figure class="mock" data-id="MEM-14">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl">Courtyard palace <svg class="ic xs muted"><use href="#ph-pencil-simple-bold"/></svg></span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-history" style="padding-top:0;gap:10px">
+    <div class="row" style="gap:6px;flex:none;overflow:hidden"><span class="chip on">1 · Courtyard</span><span class="chip">2 · Kitchen</span><span class="chip"><svg class="ic xs"><use href="#ph-plus-bold"/></svg>Room</span></div>
+    <div class="mk-canvas" style="height:216px">
+      <img class="bg" src="assets/scene-memory-palace.webp" alt="A sunny Indian home courtyard with a tulsi planter, a swing and carved doors">
+      <svg class="path" viewBox="0 0 324 216" preserveAspectRatio="none" aria-hidden="true"><polyline points="26,104 97,125 168,78 246,114 168,172"/></svg>
+      <span class="mk-pin on" style="left:8%;top:48%">1</span><span class="mk-pin-lbl" style="left:13%;top:36%">Item one</span>
+      <span class="mk-pin on" style="left:30%;top:58%">2</span><span class="mk-pin-lbl" style="left:22%;top:72%">Item two</span>
+      <span class="mk-pin on" style="left:52%;top:36%">3</span><span class="mk-pin-lbl" style="left:57%;top:24%">Item three</span>
+      <span class="mk-pin" style="left:76%;top:53%;box-shadow:inset 0 0 0 3px var(--primary),var(--sh-raised)">4</span>
+      <span class="mk-pin" style="left:52%;top:80%">5</span>
+    </div>
+    <div class="card col" style="gap:10px;border-radius:24px;box-shadow:var(--sh-raised)">
+      <div class="grab" style="width:40px;height:5px;border-radius:3px;background:var(--line);margin:-4px auto 0"></div>
+      <div class="row between"><span class="t-heading">To place (2)</span><span class="btn btn-secondary sm"><svg class="ic sm"><use href="#ph-magic-wand-bold"/></svg>Auto-place</span></div>
+      <div class="row wrap" style="gap:8px">
+        <span class="mk-ichip" style="box-shadow:inset 0 0 0 2px var(--primary),var(--sh-raised)"><svg class="ic"><use href="#ph-dots-six-vertical-bold"/></svg>Item four</span>
+        <span class="mk-ichip"><svg class="ic"><use href="#ph-dots-six-vertical-bold"/></svg>Item five</span>
+      </div>
+      <span class="t-caption muted">Drag an item onto a spot. Or tap it, then tap a spot.</span>
+      <div class="petline"><div class="av"><img src="assets/cat-thinking.webp" alt=""></div><div class="bubble">Make each scene silly and vivid. Silly sticks!</div></div>
+      <div class="divider"></div>
+      <span class="t-label muted">Placed</span>
+      <div class="row" style="gap:6px;overflow:hidden"><span class="chip st" style="height:28px">1 · Item one</span><span class="chip st" style="height:28px">2 · Item two</span><span class="chip" style="height:28px">+1</span></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn btn-primary"><svg class="ic"><use href="#ph-person-simple-walk-bold"/></svg>Walk it</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-14</span><span class="nm">Palace builder, Pro student</span><span class="ds">The courtyard room with five numbered spot pins (UI chips) joined by a dashed walk path. Three spots hold items; "Item four" is lifted and spot 4 lights up as the drop target. Phase 2, Pro.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-17 Palace walk ============ -->
+<figure class="mock" data-id="MEM-17">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="col grow" style="gap:0"><span class="t-label">Courtyard palace</span><span class="t-caption muted num">Spot 3 of 5</span></div>
+    <span class="iconbtn" aria-label="Audio on"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg></span>
+  </div>
+  <div class="body s-history" style="padding-top:0;gap:12px">
+    <div class="mk-canvas" style="height:216px">
+      <img class="bg" src="assets/scene-memory-palace.webp" alt="A sunny Indian home courtyard with a tulsi planter, a swing and carved doors" style="transform:scale(1.3);transform-origin:52% 36%">
+      <span class="mk-pin dim" style="left:7%;top:50%">1</span>
+      <span class="mk-pin dim" style="left:24%;top:66%">2</span>
+      <span class="mk-pin glow" style="left:52%;top:36%">3</span>
+      <span class="mk-pin dim" style="left:86%;top:62%">4</span>
+    </div>
+    <div class="card col" style="gap:10px">
+      <div class="row" style="gap:12px">
+        <img src="assets/memory-hook-sample.webp" alt="Your picture for item three" style="width:72px;height:72px;border-radius:16px;object-fit:cover">
+        <div class="col grow" style="gap:4px"><span class="t-caption stext">AT THE CARVED DOOR</span><span class="t-title">Item three</span></div>
+      </div>
+      <span class="t-body muted">My scene note: what is happening at this spot, in my own words, as silly as I like.</span>
+      <div class="row" style="gap:6px"><span class="chip"><svg class="ic xs"><use href="#ph-smiley-bold"/></svg>Funny</span><span class="chip"><svg class="ic xs"><use href="#ph-pencil-simple-bold"/></svg>Edit</span></div>
+    </div>
+    <div class="row" style="gap:6px"><span class="chip st">1 · Courtyard</span><span class="chip">2 · Kitchen</span></div>
+    <div class="petline"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">Let's walk! Picture each scene for a moment.</div></div>
+  </div>
+  <div class="bottom" style="flex-direction:row;padding-top:4px;padding-bottom:30px">
+    <span class="btn btn-secondary" style="flex:1">Back</span>
+    <span class="btn btn-primary" style="flex:2">Next spot</span>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-17</span><span class="nm">Palace walk</span><span class="ds">The room zooms 1.3× toward the current spot, which glows in a gold ring while the others dim. The spot card shows the item, the student's own scene note, their hook picture and the feeling chip.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-19 Make it stick ============ -->
+<figure class="mock" data-id="MEM-19">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="scrim" style="background:var(--scrim)"></div>
+  <div class="sheet s-chemistry" style="top:44px;padding-top:10px;gap:10px;overflow:hidden;mask-image:linear-gradient(#000 90%,transparent)">
+    <div class="grab"></div>
+    <div class="row between"><span class="t-title">Make it stick</span><span class="iconbtn" style="width:36px;height:36px"><svg class="ic sm"><use href="#ph-x-bold"/></svg></span></div>
+    <div class="mk-fact">
+      <span class="chip st" style="height:24px;align-self:flex-start;background:var(--surface)">Chemistry</span>
+      <span>The fact from your lesson card, two to four lines, listing five items to remember in order.</span>
+    </div>
+    <div class="seg"><span class="on">Make my own</span><span>Known hooks</span><span>From students</span></div>
+    <div class="row" style="gap:6px;overflow:hidden;flex:none"><span class="t-caption muted" style="white-space:nowrap">Try a style</span><span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none">Acronym</span><span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none">Story</span><span class="chip">More styles</span></div>
+    <div class="petline"><div class="av"><img src="assets/cat-celebrate.webp" alt=""></div><div class="bubble">Pick the one that makes you smile. Funny sticks!</div></div>
+    <div class="card line col" style="gap:8px;padding:14px">
+      <span class="chip st" style="height:24px;align-self:flex-start">Acronym</span>
+      <span class="t-heading">Your acronym hook appears here, one or two lines</span>
+      <span class="mk-check ok"><svg class="ic"><use href="#ph-check-circle-fill"/></svg>Covers 5 of 5 items, in order</span>
+      <div class="mk-act"><span><svg class="ic"><use href="#ph-pencil-simple-bold"/></svg>Edit</span><span><svg class="ic"><use href="#ph-image-bold"/></svg>Make a picture</span><span><svg class="ic"><use href="#ph-speaker-high-bold"/></svg>Hear it</span><span class="pri">Save</span></div>
+    </div>
+    <div class="card line col" style="gap:8px;padding:14px">
+      <div class="row top" style="gap:10px">
+        <div class="col grow" style="gap:8px"><span class="chip st" style="height:24px;align-self:flex-start">Story</span><span class="t-heading">A short silly story hook, up to two lines long</span></div>
+        <img src="assets/memory-hook-sample.webp" alt="A giant elephant riding a tiny bicycle over a bridge of pencils" style="width:64px;height:64px;border-radius:14px;object-fit:cover">
+      </div>
+      <span class="mk-check warn"><svg class="ic"><use href="#ph-warning-circle-fill"/></svg>Misses "item four"</span>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-19</span><span class="nm">Make it stick, AI drafts (Pro)</span><span class="ds">Two drafts from the forge, each with its decode check: one covers all five items in order, the other names the item it misses. Hook picture from the image index. Free students see Known hooks and From students instead.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-21 Community mnemonics ============ -->
+<figure class="mock" data-id="MEM-21">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl">Hooks for Chemical bonding</span>
+  </div>
+  <div class="body scroll-cut s-chemistry" style="padding-top:0;gap:10px">
+    <div class="seg" style="flex:none"><span class="on">Top</span><span>New</span></div>
+    <div class="row" style="gap:6px;overflow:hidden;flex:none"><span class="chip on">All styles</span><span class="chip">Acronym</span><span class="chip">Story</span><span class="chip">Rhyme</span></div>
+    <div class="card col" style="gap:10px">
+      <div class="row" style="gap:6px"><span class="chip st" style="height:24px">Rhyme</span><span class="chip ok" style="height:24px"><svg class="ic xs"><use href="#ph-seal-check-fill"/></svg>Checked</span><span class="chip" style="height:24px">From a student</span></div>
+      <span class="t-heading">A student's rhyming hook, shown just as they wrote it, two lines</span>
+      <div class="row" style="gap:6px"><span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:inset 0 0 0 1.5px var(--primary)"><svg class="ic xs"><use href="#ph-thumbs-up-fill"/></svg>Helpful 128</span><span class="chip"><svg class="ic xs"><use href="#ph-bookmark-simple-bold"/></svg>Save</span><span class="iconbtn" style="width:32px;height:32px" aria-label="Hear it"><svg class="ic sm"><use href="#ph-speaker-high-bold"/></svg></span><span class="sp"></span><span class="iconbtn" style="width:32px;height:32px" aria-label="More, Report"><svg class="ic sm"><use href="#ph-dots-three-bold"/></svg></span></div>
+    </div>
+    <div class="card col" style="gap:10px">
+      <div class="row top" style="gap:10px">
+        <div class="col grow" style="gap:8px"><div class="row" style="gap:6px"><span class="chip st" style="height:24px">Story</span><span class="chip" style="height:24px">From a student</span></div><span class="t-heading">A short story hook another student shared</span></div>
+        <img src="assets/memory-hook-sample.webp" alt="A giant elephant riding a tiny bicycle over a bridge of pencils" style="width:64px;height:64px;border-radius:14px;object-fit:cover">
+      </div>
+      <div class="row" style="gap:6px"><span class="chip"><svg class="ic xs"><use href="#ph-thumbs-up-bold"/></svg>Helpful 74</span><span class="chip"><svg class="ic xs"><use href="#ph-bookmark-simple-bold"/></svg>Save</span><span class="sp"></span><span class="iconbtn" style="width:32px;height:32px"><svg class="ic sm"><use href="#ph-dots-three-bold"/></svg></span></div>
+    </div>
+    <div class="card col" style="gap:10px">
+      <div class="row" style="gap:6px"><span class="chip st" style="height:24px">Acronym</span><span class="chip gold" style="height:24px;background:var(--sunken);color:var(--muted)">Traditional</span></div>
+      <span class="t-heading">A well-known acronym hook from the content team</span>
+      <div class="row" style="gap:6px"><span class="chip"><svg class="ic xs"><use href="#ph-thumbs-up-bold"/></svg>Helpful 51</span><span class="chip"><svg class="ic xs"><use href="#ph-bookmark-simple-bold"/></svg>Save</span></div>
+    </div>
+    <span class="link t-label center">Have a better one? Make your own</span>
+  </div>
+  <div class="homebar"></div>
+</div></div>
+<figcaption><span class="id">MEM-21</span><span class="nm">Community hooks</span><span class="ds">Shared hooks with technique and check badges, no author names (R20), Helpful votes only (one toggled on) and Report in each row's overflow. Free for everyone; voting asks guests to sign in.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-25 Metacognitive dashboard ============ -->
+<figure class="mock" data-id="MEM-25">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl">How well I know it</span>
+    <span class="chip warn" style="height:26px">Sample data</span>
+  </div>
+  <div class="body scroll-cut" style="padding-top:0;gap:10px">
+    <div class="seg" style="flex:none"><span class="on">This week</span><span>30 days</span><span>All time</span></div>
+    <div class="grid2">
+      <div class="stat" style="background:var(--error-tint);box-shadow:none"><span class="row" style="gap:4px;color:var(--error-text)"><svg class="ic xs"><use href="#ph-warning-circle-bold"/></svg>Sure but wrong</span><b class="num">7</b></div>
+      <div class="stat" style="background:var(--warning-tint);box-shadow:none"><span class="row" style="gap:4px;color:var(--warning-text)"><svg class="ic xs"><use href="#ph-dice-five-bold"/></svg>Lucky guesses</span><b class="num">4</b></div>
+    </div>
+    <span class="t-label" style="margin-top:-2px">You were sure and wrong 7 times this week.</span>
+    <div class="card col" style="gap:6px;padding:14px 12px">
+      <div class="row between"><span class="t-heading">Sure vs right</span><span class="link t-caption">Show as table</span></div>
+      <svg class="mk-ch" viewBox="0 0 300 196" width="100%" role="img" aria-label="Calibration chart, sample data. Sure: 72 percent right from 54 answers, target 90. 50:50: 58 percent right from 31 answers, target 50. Guess: 41 percent right from 17 answers, target 33.">
+        <!-- x scale: 0% at x=58, 100% at x=290 (232 px) -->
+        <line class="grid" x1="58" y1="6" x2="58" y2="146"/><line class="grid" x1="116" y1="6" x2="116" y2="146"/><line class="grid" x1="174" y1="6" x2="174" y2="146"/><line class="grid" x1="232" y1="6" x2="232" y2="146"/><line class="grid" x1="290" y1="6" x2="290" y2="146"/>
+        <text class="lbl" x="50" y="40" text-anchor="end">Sure</text>
+        <text class="val" x="62" y="22">72% right · 54 answers</text>
+        <rect class="trk" x="58" y="30" width="232" height="14" rx="4"/><rect class="bar" x="58" y="30" width="167" height="14" rx="4"/>
+        <line class="tgt" x1="267" y1="25" x2="267" y2="49"/><text class="tgtl" x="267" y="58" text-anchor="middle">target</text>
+        <text class="lbl" x="50" y="85" text-anchor="end">50:50</text>
+        <text class="val" x="62" y="67">58% right · 31 answers</text>
+        <rect class="trk" x="58" y="75" width="232" height="14" rx="4"/><rect class="bar" x="58" y="75" width="135" height="14" rx="4"/>
+        <line class="tgt" x1="174" y1="70" x2="174" y2="94"/><text class="tgtl" x="174" y="103" text-anchor="middle">target</text>
+        <text class="lbl" x="50" y="130" text-anchor="end">Guess</text>
+        <text class="val" x="62" y="112">41% right · 17 answers</text>
+        <rect class="trk" x="58" y="120" width="232" height="14" rx="4"/><rect class="bar" x="58" y="120" width="95" height="14" rx="4"/>
+        <line class="tgt" x1="135" y1="115" x2="135" y2="139"/><text class="tgtl" x="135" y="148" text-anchor="middle">target</text>
+        <line class="axis" x1="58" y1="156" x2="290" y2="156"/>
+        <text class="tick" x="58" y="170" text-anchor="middle">0</text><text class="tick" x="116" y="170" text-anchor="middle">25</text><text class="tick" x="174" y="170" text-anchor="middle">50</text><text class="tick" x="232" y="170" text-anchor="middle">75</text><text class="tick" x="288" y="170" text-anchor="end">100</text>
+        <text class="axt" x="174" y="188" text-anchor="middle">% of answers right</text>
+        <text class="axt" x="6" y="12">How sure</text>
+      </svg>
+      <span class="t-caption muted">If your Sure answers are right less often than the target, you may be overconfident.</span>
+    </div>
+    <div class="card col" style="gap:8px;padding:14px 12px">
+      <span class="t-heading">Topic map</span>
+      <div class="mk-heat">
+        <div class="ill"><span>Laws of motion</span><span class="g"><svg class="ic"><use href="#ph-warning-circle-bold"/></svg>Illusion of knowing</span></div>
+        <div class="know"><span>Work and energy</span><span class="g"><svg class="ic"><use href="#ph-check-circle-bold"/></svg>Know it and sure</span></div>
+        <div class="hid"><span>Chemical bonding</span><span class="g"><svg class="ic"><use href="#ph-sparkle-bold"/></svg>Hidden strength</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn btn-primary">Practise sure-but-wrong topics</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-25</span><span class="nm">How well I know it, sample data</span><span class="ds">Calibration chart (data UI, not art): one bar per confidence level with % right, answer counts, labelled axes and a dashed target mark. All values are sample, marked as such. Topic map groups carry icon + word, never colour alone. Free (R19).</span></figcaption>
+</figure>
+
+<!-- ============ MEM-29 Focus ============ -->
+<figure class="mock" data-id="MEM-29">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl c t-label" style="font-size:14px">Round 2 of 4</span>
+    <span class="row" style="gap:5px;padding-right:14px"><span class="dot on" style="width:8px"></span><span class="dot on" style="width:8px"></span><span class="dot"></span><span class="dot"></span></span>
+  </div>
+  <div class="body" style="align-items:center;gap:14px;padding-top:18px">
+    <div class="ring" style="--p:49;--sz:240px;--w:12px;--strong:var(--primary)"><div class="col" style="align-items:center;gap:0"><span class="num" style="font:800 48px/56px var(--f-latin)">12:41</span><span class="t-heading" style="color:var(--primary)">Focus</span></div></div>
+    <img src="assets/cat-hourglass.webp" alt="Your pet studying beside a sand timer" style="height:160px;margin-top:-6px">
+    <div class="card row s-physics" style="width:100%;padding:12px 14px">
+      <span class="lead" style="width:36px;height:36px;border-radius:12px;background:var(--tint);color:var(--stext);display:grid;place-items:center"><svg class="ic sm"><use href="#ph-atom-bold"/></svg></span>
+      <span class="t-label grow">Studying: Physics · Laws of motion</span>
+      <span class="btn btn-ghost sm" style="padding:0 6px">Open</span>
+    </div>
+    <div class="grid2" style="width:100%">
+      <span class="btn btn-secondary sm" style="width:100%;height:44px"><svg class="ic sm"><use href="#ph-cards-bold"/></svg>Review cards</span>
+      <span class="btn btn-secondary sm" style="width:100%;height:44px"><svg class="ic sm"><use href="#ph-book-open-bold"/></svg>Lesson</span>
+    </div>
+  </div>
+  <div class="bottom">
+    <span class="btn btn-secondary"><svg class="ic"><use href="#ph-pause-fill"/></svg>Pause</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-29</span><span class="nm">Focus session, focus round</span><span class="ds">A 25-minute round, half done. The ring is primary and says "Focus" in words. The pet keeps you company beside its sand timer. Shortcuts jump to reviews or the lesson.</span></figcaption>
+</figure>
+
+<!-- ============ MEM-29 Break ============ -->
+<figure class="mock" data-id="MEM-29">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl c t-label" style="font-size:14px">Round 2 of 4</span>
+    <span class="row" style="gap:5px;padding-right:14px"><span class="dot on" style="width:8px;background:var(--success)"></span><span class="dot on" style="width:8px;background:var(--success)"></span><span class="dot"></span><span class="dot"></span></span>
+  </div>
+  <div class="body" style="align-items:center;gap:14px;padding-top:18px">
+    <div class="ring" style="--p:16;--sz:240px;--w:12px;--strong:var(--success)"><div class="col" style="align-items:center;gap:0"><span class="num" style="font:800 48px/56px var(--f-latin)">04:12</span><span class="t-heading" style="color:var(--success-text)">Break</span></div></div>
+    <img src="assets/cat-resting.webp" alt="Your pet napping during the break" style="height:200px;margin-top:-6px">
+    <div class="petline" style="width:100%"><div class="av"><img src="assets/cat-sleepy.webp" alt=""></div><div class="bubble">Stretch, drink water, look far away.</div></div>
+  </div>
+  <div class="bottom">
+    <span class="btn btn-secondary"><svg class="ic"><use href="#ph-pause-fill"/></svg>Pause</span>
+    <span class="btn btn-ghost" style="height:44px">Skip break</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">MEM-29</span><span class="nm">Focus session, break</span><span class="ds">Break state: the ring turns success green and says "Break", the pet naps in its basket, and a calm tip replaces the study shortcuts. Skip break is a quiet ghost button.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-01 Labs hub (Hindi, NEET accent) ============ -->
+<figure class="mock" data-id="LAB-01">
+<div class="phone"><div class="screen sx x-neet" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top" style="padding:0 18px">
+    <span class="ttl" style="font-size:24px;line-height:30px">लैब</span>
+    <span class="chip">NEET<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+    <span class="iconbtn" aria-label="खोजें"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+  </div>
+  <div class="body scroll-cut" style="padding-top:0;gap:10px">
+    <div class="row" style="gap:6px;overflow:hidden;flex:none"><span class="chip on">सभी</span><span class="chip"><svg class="ic xs"><use href="#ph-atom-bold"/></svg>भौतिकी</span><span class="chip"><svg class="ic xs"><use href="#ph-flask-bold"/></svg>रसायन</span><span class="chip"><svg class="ic xs"><use href="#ph-dna-bold"/></svg>जीव विज्ञान</span></div>
+    <div class="row" style="gap:6px;overflow:hidden;flex:none;margin-top:-2px"><span class="chip" style="height:28px">सिम</span><span class="chip" style="height:28px">3D</span><span class="chip" style="height:28px">360°</span><span class="chip" style="height:28px"><svg class="ic xs"><use href="#ph-download-simple-bold"/></svg>ऑफ़लाइन चलता है</span></div>
+    <div class="mk-lab-card s-physics" style="flex:none">
+      <div class="poster" style="height:150px;position:relative"><img src="assets/lab-circuit.webp" alt="एक बैटरी, स्विच और जलता बल्ब वाला सरल परिपथ"><span class="chip" style="position:absolute;left:12px;top:12px;height:26px;background:var(--surface);box-shadow:none">खास</span></div>
+      <div class="meta"><span class="t-heading">सरल परिपथ</span><div class="row" style="gap:10px"><span class="mk-kind"><svg class="ic"><use href="#ph-flask-bold"/></svg>सिम</span><span class="t-caption muted">भौतिकी · 8 मिनट</span><span class="sp"></span><span class="chip ok" style="height:24px;font-size:11px">ऑफ़लाइन चलता है</span></div></div>
+    </div>
+    <span class="t-heading">जारी रखें</span>
+    <div class="row" style="gap:10px;flex:none;overflow:hidden;align-items:stretch">
+      <div class="mk-lab-card s-physics" style="width:150px;flex:none"><div class="poster" style="height:78px"><img src="assets/lab-optics.webp" alt="मोमबत्ती, लेंस और पर्दे वाली प्रकाशिकी बेंच"></div><div class="meta" style="padding:8px 10px 10px"><span class="t-label">लेंस और पर्दा</span><span class="t-caption muted num">4 में से 2 काम</span></div></div>
+      <div class="mk-lab-card s-biology" style="width:150px;flex:none"><div class="poster" style="height:78px"><img src="assets/lab-heart.webp" alt="स्टैंड पर मानव हृदय का 3D मॉडल"></div><div class="meta" style="padding:8px 10px 10px"><span class="t-label">हृदय का मॉडल</span><span class="t-caption muted num">5 में से 3 हिस्से</span></div></div>
+      <div class="mk-lab-card s-chemistry" style="width:150px;flex:none"><div class="poster" style="height:78px"><img src="assets/lab-titration.webp" alt="ब्यूरेट और शंक्वाकार फ्लास्क"></div><div class="meta" style="padding:8px 10px 10px"><span class="t-label">अनुमापन</span></div></div>
+    </div>
+    <span class="t-heading">टूल</span>
+    <div class="grid2" style="grid-template-columns:repeat(4,1fr);gap:8px">
+      <div class="mk-tool s-chemistry"><span class="ico"><svg class="ic"><use href="#ph-squares-four-bold"/></svg></span>आवर्त सारणी</div>
+      <div class="mk-tool s-biology"><span class="ico"><svg class="ic"><use href="#ph-test-tube-bold"/></svg></span>मज़ेदार प्रयोग</div>
+      <div class="mk-tool s-maths"><span class="ico"><svg class="ic"><use href="#ph-ruler-bold"/></svg></span>इकाई बदलें</div>
+      <div class="mk-tool s-physics"><span class="ico"><svg class="ic"><use href="#ph-function-bold"/></svg></span>स्थिरांक</div>
+    </div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>सीखें</span>
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-flask-fill"/></svg></span>लैब</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>अभ्यास</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>दोस्त</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>मैं</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">LAB-01</span><span class="nm">Labs hub, in Hindi, NEET app</span><span class="ds">Fully Hindi with the NEET accent. Subject and kind filters, a featured sim, recently used labs, then the four free tools (By subject sections scroll below). No Pro chips anywhere: every lab is free (R19 revised).</span></figcaption>
+</figure>
+
+<!-- ============ LAB-03 Lab detail ============ -->
+<figure class="mock" data-id="LAB-03">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut s-physics" style="padding-top:4px;gap:12px">
+    <div class="scene" style="height:196px;flex:none;position:relative">
+      <img class="art-fill" src="assets/lab-optics.webp" alt="An optics bench with a candle, a lens and a screen">
+      <span class="iconbtn filled" style="position:absolute;left:10px;top:10px"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+      <span class="iconbtn filled" style="position:absolute;right:10px;top:10px" aria-label="About this lab"><svg class="ic"><use href="#ph-info-bold"/></svg></span>
+      <span class="chip" style="position:absolute;left:12px;bottom:12px;background:var(--surface);box-shadow:none"><svg class="ic xs stext"><use href="#ph-flask-bold"/></svg>Sim</span>
+    </div>
+    <div class="col" style="gap:2px"><span class="t-title">Lens and screen</span><span class="t-caption muted">Physics · Ray optics</span></div>
+    <div class="grid3">
+      <div class="stat tint"><b class="num">8 min</b><span>Time</span></div>
+      <div class="stat tint"><b class="num">4</b><span>Tasks</span></div>
+      <div class="stat tint"><b class="num">1.2 MB</b><span>Size</span></div>
+    </div>
+    <div class="card col" style="gap:2px;padding:12px 14px">
+      <span class="t-heading" style="margin-bottom:2px">What you'll do</span>
+      <div class="mk-task"><span class="st">1</span><span>First task prompt from the lab, one line</span></div>
+      <div class="mk-task" style="padding-top:2px"><span class="st">2</span><span>Second task prompt, a little longer so it wraps</span></div>
+      <div class="mk-task" style="padding-top:2px"><span class="st">3</span><span>Third task prompt</span></div>
+      <span class="t-caption muted" style="padding-left:34px">+1 more</span>
+    </div>
+    <div class="card row" style="padding:10px 14px"><svg class="ic stext"><use href="#ph-book-open-bold"/></svg><div class="col grow" style="gap:0"><span class="t-caption muted">From the topic</span><span class="t-label">Lenses</span></div><span class="btn btn-ghost sm" style="padding:0 6px">Open topic</span></div>
+    <span class="t-caption muted">Simulation by {attribution} · {licence}</span>
+  </div>
+  <div class="bottom" style="padding-top:4px;gap:6px">
+    <span class="btn btn-primary"><svg class="ic"><use href="#ph-play-fill"/></svg>Start lab</span>
+    <span class="btn btn-ghost" style="height:40px"><svg class="ic sm"><use href="#ph-download-simple-bold"/></svg>Download for offline</span>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-03</span><span class="nm">Lab detail, before launch</span><span class="ds">Says what the lab is, how long and how big it is before anything heavy loads. Free, so there is no lock state (R19 revised). The attribution line comes from the sim's metadata, never typed in code.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-04 portrait running ============ -->
+<figure class="mock" data-id="LAB-04">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top" style="background:var(--surface)">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl t-heading">Simple circuit</span>
+    <span class="iconbtn" aria-label="About this lab"><svg class="ic"><use href="#ph-info-bold"/></svg></span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-physics" style="padding-top:12px;gap:10px">
+    <div class="mk-view" role="region" aria-label="Simulation: Simple circuit">
+      <div class="scene" style="height:150px;border-radius:0"><img src="assets/lab-circuit.webp" alt="A simple circuit with a battery, a switch and a glowing bulb"></div>
+      <div class="col" style="gap:10px;padding:12px 14px 14px">
+        <div class="mk-slider"><span style="width:56px">Voltage</span><span class="trk"><i style="width:50%"></i><b style="left:50%"></b></span><span class="num" style="width:40px;text-align:right">3.0 V</span></div>
+        <div class="row between"><span class="t-caption" style="font-weight:700">Switch</span><span class="switch on"></span></div>
+      </div>
+      <span class="mk-fbtn" style="position:absolute;right:10px;top:10px" aria-label="Full screen"><svg class="ic sm"><use href="#ph-arrows-out-bold"/></svg></span>
+    </div>
+    <div class="row" style="gap:6px;flex:none"><span class="mk-read">Voltage: 3.0 V</span><span class="mk-read">Current: 0.25 A</span><span class="sp"></span><span class="link t-caption">Readings (2)</span></div>
+    <span class="btn btn-secondary sm" style="height:40px;align-self:flex-start"><svg class="ic sm"><use href="#ph-plus-circle-bold"/></svg>Record reading</span>
+    <div class="card col" style="gap:0;padding:10px 14px">
+      <span class="t-heading">Tasks · 1 of 4</span>
+      <div class="mk-task"><span class="st done"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="muted">First task prompt from the lab</span></div>
+      <div class="mk-task" style="padding-bottom:4px"><span class="st cur"></span><span>Second task prompt, a little longer so it wraps</span></div>
+      <span class="mk-check warn" style="margin-left:34px"><svg class="ic"><use href="#ph-warning-circle-fill"/></svg>Not quite. Check current again.</span>
+    </div>
+  </div>
+  <div class="fab" style="bottom:96px" aria-label="Ask the tutor"><img src="assets/cat-thinking.webp" alt=""></div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn btn-primary">Check task</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-04</span><span class="nm">Sim player, portrait, running</span><span class="ds">The sim's scene with its own controls below it (never on top), live readings chips, and the tasks card with "Not quite" feedback. The scene image is the lab's Agnes poster standing in for the running sim.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-04 loading ============ -->
+<figure class="mock" data-id="LAB-04">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top" style="background:var(--surface)">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl t-heading">Simple circuit</span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-info-bold"/></svg></span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="body s-physics" style="padding-top:12px;gap:12px">
+    <div class="mk-view" style="height:270px;background:var(--tint)">
+      <img src="assets/lab-circuit.webp" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.4">
+      <div class="col" style="position:absolute;left:20px;right:20px;bottom:22px;gap:8px;background:var(--surface);border-radius:18px;padding:14px 16px;box-shadow:var(--sh-raised)">
+        <div class="row between"><span class="t-label">Downloading</span><span class="t-caption muted num">0.8 of 1.2 MB</span></div>
+        <div class="bar primary"><i style="width:67%"></i></div>
+        <span class="t-caption muted">Then "Setting up the lab…"</span>
+      </div>
+    </div>
+    <div class="card col" style="gap:8px;padding:14px">
+      <span class="t-caption stext">FIRST TASK · READ AHEAD</span>
+      <span class="t-heading">First task prompt from the lab, one or two lines long</span>
+      <div class="divider"></div>
+      <span class="t-label muted">Then 3 more tasks</span>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">Try moving things around. See what changes!</div></div>
+  </div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn disabled">Check task</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-04 · loading</span><span class="nm">Sim player, loading layer</span><span class="ds">The poster shows at once, dimmed to 40% on the subject tint, with a real byte count (0.8 of 1.2 MB) before the indeterminate "Setting up" phase. The first task is readable while it loads.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-04 landscape full screen ============ -->
+<figure class="mock" data-id="LAB-04" style="max-width:none">
+<div class="phone" style="width:760px;height:360px"><div class="screen sx" style="flex-direction:row">
+  <div class="s-physics" style="flex:1;min-width:0;position:relative;display:flex;flex-direction:column;background:var(--sunken)">
+    <div class="statusbar" style="position:absolute;left:0;right:0;top:0;height:26px;z-index:3;padding-left:40px"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg></span></div>
+    <div style="flex:1;min-height:0"><img src="assets/lab-circuit.webp" alt="A simple circuit with a battery, a switch and a glowing bulb" style="width:100%;height:100%;object-fit:cover"></div>
+    <div class="row" style="gap:18px;padding:10px 18px 12px 40px;background:var(--surface)">
+      <div class="mk-slider grow"><span>Voltage</span><span class="trk"><i style="width:75%"></i><b style="left:75%"></b></span><span class="num">4.5 V</span></div>
+      <span class="t-caption" style="font-weight:700">Switch</span><span class="switch on"></span>
+    </div>
+    <span class="mk-fbtn" style="position:absolute;right:12px;top:30px" aria-label="Exit full screen"><svg class="ic sm"><use href="#ph-arrows-in-bold"/></svg></span>
+    <span class="chip" style="position:absolute;left:40px;top:32px;height:28px;background:var(--surface);box-shadow:none"><svg class="ic xs"><use href="#ph-battery-low-bold"/></svg>Battery saver</span>
+  </div>
+  <div style="width:280px;flex:none;background:var(--surface);border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px;padding:12px 30px 12px 14px">
+    <div class="row between"><span class="t-heading">Tasks · 2 of 4</span><span class="iconbtn" style="width:32px;height:32px" aria-label="Collapse panel"><svg class="ic sm"><use href="#ph-caret-right-bold"/></svg></span></div>
+    <div class="row wrap" style="gap:6px"><span class="mk-read">Voltage: 4.5 V</span><span class="mk-read">Current: 0.38 A</span></div>
+    <div class="col" style="gap:0">
+      <div class="mk-task" style="padding:4px 0"><span class="st done"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="muted">First task prompt</span></div>
+      <div class="mk-task" style="padding:4px 0"><span class="st done"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="muted">Second task prompt</span></div>
+      <div class="mk-task" style="padding:4px 0"><span class="st cur"></span><span>Third task prompt, a little longer</span></div>
+    </div>
+    <span class="sp"></span>
+    <span class="btn btn-primary" style="height:44px;border-radius:16px">Next task</span>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-04 · landscape</span><span class="nm">Sim player, full screen landscape</span><span class="ds">After Full screen: the top bar has auto-hidden, the sim fills the left with its controls along the bottom, and a 280 px side panel holds readings, tasks and the main action. Battery saver chip shown for a low-tier phone.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-05 Fallback explainer ============ -->
+<figure class="mock" data-id="LAB-05">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-wifi-slash-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl t-heading">Simple circuit</span>
+    <span class="chip" style="height:28px;margin-right:8px"><svg class="ic xs"><use href="#ph-wifi-slash-bold"/></svg>Offline</span>
+  </div>
+  <div class="body scroll-cut s-physics" style="padding-top:2px">
+    <div class="petline"><div class="av"><img src="assets/cat-worried.webp" alt=""></div><div class="bubble">This lab needs internet the first time. Here's what it shows.</div></div>
+    <div class="card col" style="gap:12px;padding:12px">
+      <div class="scene" style="height:200px;position:relative;border-radius:16px">
+        <img class="art-fill" src="assets/lab-circuit.webp" alt="A simple circuit with a battery, a switch and a glowing bulb">
+        <span class="chip" style="position:absolute;left:14%;top:22%;height:26px;background:var(--surface);box-shadow:var(--sh-raised)">Battery</span>
+        <span class="chip" style="position:absolute;left:42%;top:56%;height:26px;background:var(--surface);box-shadow:var(--sh-raised)">Switch</span>
+        <span class="chip" style="position:absolute;right:8%;top:10%;height:26px;background:var(--surface);box-shadow:var(--sh-raised)">Bulb</span>
+      </div>
+      <span class="t-body">The explainer text for this lab comes from its content: a short, plain walk-through of the same idea, so nothing is missed.</span>
+      <span class="t-heading">What you'd see</span>
+      <div class="row top" style="gap:8px"><svg class="ic sm stext"><use href="#ph-eye-bold"/></svg><span class="t-label">First expected observation, one line</span></div>
+      <div class="row top" style="gap:8px"><svg class="ic sm stext"><use href="#ph-eye-bold"/></svg><span class="t-label">Second expected observation</span></div>
+    </div>
+    <span class="t-caption muted center">Lab tasks are skipped, not marked wrong.</span>
+  </div>
+  <div class="bottom" style="padding-top:4px;gap:6px">
+    <span class="btn btn-primary">Continue</span>
+    <span class="btn btn-ghost" style="height:40px"><svg class="ic sm"><use href="#ph-download-simple-bold"/></svg>Download it when you're online</span>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-05</span><span class="nm">Lab fallback explainer, offline</span><span class="ds">The same idea without the live lab. The setup diagram (sunny-diagram) isn't generated yet, so the lab poster stands in, as the spec allows; part labels are app text over the image, so they translate.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-08 3D viewer ============ -->
+<figure class="mock" data-id="LAB-08">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top" style="background:var(--surface)">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <span class="ttl t-heading">Human heart</span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-info-bold"/></svg></span>
+    <span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
+  </div>
+  <div class="s-biology" style="flex:1;min-height:0;position:relative;background:var(--tint)">
+    <img src="assets/lab-heart.webp" alt="3D model of the human heart, 5 labelled parts" style="position:absolute;left:-280px;top:-10px;width:900px;max-width:none;height:600px">
+    <svg viewBox="0 0 340 654" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
+      <g style="stroke:var(--ink);stroke-width:1.5;opacity:.6"><line x1="50" y1="96" x2="142" y2="113"/><line x1="300" y1="86" x2="206" y2="122"/><line x1="28" y1="280" x2="77" y2="218"/><line x1="314" y1="320" x2="262" y2="252"/><line x1="50" y1="430" x2="123" y2="379"/></g>
+    </svg>
+    <span class="mk-pin" style="left:50px;top:96px">1</span>
+    <span class="mk-pin" style="left:300px;top:86px;width:40px;height:40px;margin:-20px 0 0 -20px;box-shadow:inset 0 0 0 3px var(--primary),var(--sh-raised)">2</span>
+    <span class="mk-pin" style="left:28px;top:280px">3</span>
+    <span class="mk-pin" style="left:314px;top:320px">4</span>
+    <span class="mk-pin" style="left:50px;top:430px">5</span>
+    <span class="mk-pill" style="position:absolute;left:50%;transform:translateX(-50%);top:14px;font-size:12px"><svg class="ic"><use href="#ph-hand-grabbing-bold"/></svg>Drag to turn. Pinch to zoom. Tap a number.</span>
+    <div class="col" style="position:absolute;right:12px;bottom:150px;gap:8px">
+      <span class="mk-fbtn" aria-label="Recenter"><svg class="ic sm"><use href="#ph-crosshair-bold"/></svg></span>
+      <span class="mk-fbtn" aria-label="Hide labels"><svg class="ic sm"><use href="#ph-tag-bold"/></svg></span>
+      <span class="mk-fbtn" aria-label="Move phone to look"><svg class="ic sm"><use href="#ph-device-rotate-bold"/></svg></span>
+    </div>
+    <div class="sheet" style="padding:8px 18px 22px;gap:8px">
+      <div class="grab"></div>
+      <div class="mk-slider"><span class="t-label" style="width:80px">Take apart</span><span class="trk"><i style="width:20%"></i><b style="left:20%"></b></span><span class="num t-caption muted" style="width:34px;text-align:right">20%</span></div>
+      <div class="row between"><span class="t-heading">Parts (5)</span><svg class="ic sm muted"><use href="#ph-caret-up-bold"/></svg></div>
+      <div class="row" style="gap:10px"><span class="mk-pin" style="position:static;margin:0;flex:none;box-shadow:inset 0 0 0 3px var(--primary)">2</span><span class="t-label grow">Part name from content</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-08</span><span class="nm">3D viewer with pins</span><span class="ds">The model (shown by its poster) with five numbered pins and thin leader lines; pin 2 is selected. Floating Recenter, Labels and Motion buttons, the Take apart slider and the peeking parts list. Part names come from content.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-10 360 viewer ============ -->
+<figure class="mock" data-id="LAB-10">
+<div class="phone"><div class="screen sx" style="background:var(--ink)">
+  <img src="assets/scene-360-fort.webp" alt="A sunny hill fort with sandstone walls on a green hill" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 50%">
+  <div class="statusbar on-dark" style="position:relative;z-index:2"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="position:relative;z-index:2;padding:4px 12px;gap:8px">
+    <span class="mk-fbtn" aria-label="Close"><svg class="ic sm"><use href="#ph-x-bold"/></svg></span>
+    <span class="mk-pill grow" style="justify-content:flex-start;min-width:0;overflow:hidden">Hill fort tour</span>
+    <span class="mk-pill" aria-label="Hotspots, 2 of 5 found" style="padding:0 12px"><svg class="ic"><use href="#ph-list-bullets-bold"/></svg><span class="num">2/5</span></span>
+    <span class="mk-fbtn" aria-label="About this scene"><svg class="ic sm"><use href="#ph-info-bold"/></svg></span>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;justify-content:center;margin-top:8px"><span class="chip ok num" style="box-shadow:var(--sh-raised)">2 of 5 found</span></div>
+  <span class="mk-hpin" style="left:30%;top:37%"><svg class="ic"><use href="#ph-info-bold"/></svg><span class="n">1</span><span class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></span></span>
+  <span class="mk-hpin" style="left:72%;top:33%"><svg class="ic"><use href="#ph-info-bold"/></svg><span class="n">2</span><span class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></span></span>
+  <span class="mk-hpin" style="left:22%;top:56%"><svg class="ic"><use href="#ph-castle-turret-bold"/></svg><span class="n">3</span></span>
+  <span class="mk-hpin" style="left:58%;top:70%"><svg class="ic"><use href="#ph-path-bold"/></svg><span class="n">4</span></span>
+  <div style="position:absolute;left:0;right:0;bottom:30px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px">
+    <span class="mk-pill" style="font-size:12px;background:var(--ink);color:var(--bg)"><svg class="ic"><use href="#ph-device-rotate-bold"/></svg>Move your phone to look around. Or drag.</span>
+    <div class="row" style="gap:10px">
+      <span class="mk-pill"><svg class="ic"><use href="#ph-crosshair-bold"/></svg>Recenter</span>
+      <span class="mk-pill"><svg class="ic" style="color:var(--primary)"><use href="#ph-device-rotate-bold"/></svg>Move phone<span class="switch on" style="transform:scale(.8);margin-right:-6px"></span></span>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-10</span><span class="nm">360° viewer with hotspots</span><span class="ds">Full screen: hotspot pins with numbers (two found, with check badges), a "2 of 5 found" pill, the first-time coach mark, Recenter and the Move phone / Drag toggle. The hill-fort scene is a 16:9 still standing in for the 2:1 pano.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-13 Periodic table, portrait ============ -->
+<figure class="mock" data-id="LAB-13">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl">Periodic table</span>
+    <span class="iconbtn" aria-label="Search by name, symbol or number"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+  </div>
+  <div class="body" style="padding-top:0;gap:10px">
+    <div class="row" style="gap:10px"><span class="t-caption muted">Colour by</span><div class="seg grow"><span class="on">Block</span><span>Family</span></div></div>
+    <div class="row" style="gap:6px">
+      <span class="chip s-language"><i class="mk-sw"></i>s block</span>
+      <span class="chip s-biology"><i class="mk-sw"></i>p</span>
+      <span class="chip s-physics"><i class="mk-sw"></i>d</span>
+      <span class="chip s-chemistry"><i class="mk-sw"></i>f</span>
+    </div>
+    <div style="overflow:hidden;border-radius:16px;background:var(--surface);box-shadow:var(--sh-card);padding:10px;flex:none;height:340px;position:relative">
+      <div class="mk-pt-grid" style="grid-template-columns:repeat(8,var(--c))"><div class="mk-pt-cell s-language"><span class="mk-pt-z">1</span><span class="mk-pt-b">s</span><span class="mk-pt-s">H</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-language"><span class="mk-pt-z">3</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Li</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">4</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Be</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-language"><span class="mk-pt-z">11</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Na</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">12</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Mg</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-language"><span class="mk-pt-z">19</span><span class="mk-pt-b">s</span><span class="mk-pt-s">K</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">20</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Ca</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">21</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Sc</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">22</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ti</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">23</span><span class="mk-pt-b">d</span><span class="mk-pt-s">V</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">24</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Cr</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">25</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Mn</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">26</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Fe</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">37</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Rb</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">38</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Sr</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">39</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Y</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">40</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Zr</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">41</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Nb</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">42</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Mo</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">43</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Tc</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">44</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ru</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">55</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Cs</span></div><div class="mk-pt-cell s-language"><span class="mk-pt-z">56</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Ba</span></div><div class="mk-pt-cell s-chemistry mk-pt-mark"><span class="mk-pt-b">f</span><span class="mk-pt-s">57–71</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">72</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Hf</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">73</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ta</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">74</span><span class="mk-pt-b">d</span><span class="mk-pt-s">W</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">75</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Re</span></div><div class="mk-pt-cell s-physics"><span class="mk-pt-z">76</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Os</span></div></div>
+    </div>
+    <div class="card row" style="padding:10px 14px;gap:14px">
+      <div class="mk-pt-mini"><i class="s-language"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="s-language"></i><i class="s-language"></i><i class="s-language"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-language"></i><i class="s-language"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-language"></i><i class="s-language"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-language"></i><i class="s-language"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-language"></i><i class="s-language"></i><i class="s-chemistry"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-language"></i><i class="s-language"></i><i class="s-chemistry"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-physics"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="s-biology"></i><i class="e"></i><i class="e"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="s-chemistry"></i><i class="e"></i><b class="mk-pt-vp"></b></div>
+      <div class="col grow" style="gap:2px"><span class="t-label num">Collected 12 of 118</span><span class="link t-caption">See my album</span></div>
+    </div>
+    <span class="t-caption muted center">Turn your phone to see the whole table</span>
+  </div>
+  <div class="homebar"></div>
+</div></div>
+<figcaption><span class="id">LAB-13</span><span class="nm">Periodic table, block colours</span><span class="ds">A real grid of cells (data UI, not art): number, symbol and the block letter in every cell, so colour is never alone. Zoomed on the left groups; the minimap shows where you are. Block tints use subject tokens until the G9 block tokens exist.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-13 landscape family ============ -->
+<figure class="mock" data-id="LAB-13" style="max-width:none">
+<div class="phone" style="width:760px;height:360px"><div class="screen sx">
+  <div class="statusbar" style="height:24px;padding:0 30px 0 40px"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="padding:0 30px 0 26px;gap:10px;height:44px;flex:none">
+    <span class="iconbtn" style="width:36px;height:36px"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="t-heading">Periodic table</span>
+    <span class="sp"></span>
+    <div class="seg" style="width:170px"><span>Block</span><span class="on">Family</span></div>
+    <span class="chip on">Alkali metals</span>
+    <span class="chip">Halogens</span>
+    <span class="chip">Noble gases</span>
+  </div>
+  <div style="padding:4px 0 0 40px">
+    <div class="mk-pt-grid mk-pt-land" style="grid-template-columns:repeat(18,var(--c))"><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">1</span><span class="mk-pt-b">s</span><span class="mk-pt-s">H</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">2</span><span class="mk-pt-b">s</span><span class="mk-pt-s">He</span></div><div class="mk-pt-cell s-language mk-pt-on"><span class="mk-pt-z">3</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Li</span></div><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">4</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Be</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">5</span><span class="mk-pt-b">p</span><span class="mk-pt-s">B</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">6</span><span class="mk-pt-b">p</span><span class="mk-pt-s">C</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">7</span><span class="mk-pt-b">p</span><span class="mk-pt-s">N</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">8</span><span class="mk-pt-b">p</span><span class="mk-pt-s">O</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">9</span><span class="mk-pt-b">p</span><span class="mk-pt-s">F</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">10</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Ne</span></div><div class="mk-pt-cell s-language mk-pt-on"><span class="mk-pt-z">11</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Na</span></div><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">12</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Mg</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">13</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Al</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">14</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Si</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">15</span><span class="mk-pt-b">p</span><span class="mk-pt-s">P</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">16</span><span class="mk-pt-b">p</span><span class="mk-pt-s">S</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">17</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Cl</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">18</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Ar</span></div><div class="mk-pt-cell s-language mk-pt-on"><span class="mk-pt-z">19</span><span class="mk-pt-b">s</span><span class="mk-pt-s">K</span></div><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">20</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Ca</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">21</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Sc</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">22</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ti</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">23</span><span class="mk-pt-b">d</span><span class="mk-pt-s">V</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">24</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Cr</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">25</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Mn</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">26</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Fe</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">27</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Co</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">28</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ni</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">29</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Cu</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">30</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Zn</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">31</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Ga</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">32</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Ge</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">33</span><span class="mk-pt-b">p</span><span class="mk-pt-s">As</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">34</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Se</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">35</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Br</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">36</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Kr</span></div><div class="mk-pt-cell s-language mk-pt-on"><span class="mk-pt-z">37</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Rb</span></div><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">38</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Sr</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">39</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Y</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">40</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Zr</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">41</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Nb</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">42</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Mo</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">43</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Tc</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">44</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ru</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">45</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Rh</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">46</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Pd</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">47</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ag</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">48</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Cd</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">49</span><span class="mk-pt-b">p</span><span class="mk-pt-s">In</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">50</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Sn</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">51</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Sb</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">52</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Te</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">53</span><span class="mk-pt-b">p</span><span class="mk-pt-s">I</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">54</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Xe</span></div><div class="mk-pt-cell s-language mk-pt-on"><span class="mk-pt-z">55</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Cs</span></div><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">56</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Ba</span></div><div class="mk-pt-cell s-chemistry mk-pt-mark"><span class="mk-pt-b">f</span><span class="mk-pt-s">57–71</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">72</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Hf</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">73</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ta</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">74</span><span class="mk-pt-b">d</span><span class="mk-pt-s">W</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">75</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Re</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">76</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Os</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">77</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ir</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">78</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Pt</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">79</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Au</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">80</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Hg</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">81</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Tl</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">82</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Pb</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">83</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Bi</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">84</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Po</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">85</span><span class="mk-pt-b">p</span><span class="mk-pt-s">At</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">86</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Rn</span></div><div class="mk-pt-cell s-language mk-pt-on"><span class="mk-pt-z">87</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Fr</span></div><div class="mk-pt-cell s-language mk-pt-fade"><span class="mk-pt-z">88</span><span class="mk-pt-b">s</span><span class="mk-pt-s">Ra</span></div><div class="mk-pt-cell s-chemistry mk-pt-mark"><span class="mk-pt-b">f</span><span class="mk-pt-s">89–103</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">104</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Rf</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">105</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Db</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">106</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Sg</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">107</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Bh</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">108</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Hs</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">109</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Mt</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">110</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Ds</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">111</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Rg</span></div><div class="mk-pt-cell s-physics mk-pt-fade"><span class="mk-pt-z">112</span><span class="mk-pt-b">d</span><span class="mk-pt-s">Cn</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">113</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Nh</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">114</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Fl</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">115</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Mc</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">116</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Lv</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">117</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Ts</span></div><div class="mk-pt-cell s-biology mk-pt-fade"><span class="mk-pt-z">118</span><span class="mk-pt-b">p</span><span class="mk-pt-s">Og</span></div></div><div style="height:4px"></div><div class="mk-pt-grid mk-pt-land" style="grid-template-columns:repeat(18,var(--c))"><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">57</span><span class="mk-pt-b">f</span><span class="mk-pt-s">La</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">58</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Ce</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">59</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Pr</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">60</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Nd</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">61</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Pm</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">62</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Sm</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">63</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Eu</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">64</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Gd</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">65</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Tb</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">66</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Dy</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">67</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Ho</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">68</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Er</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">69</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Tm</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">70</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Yb</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">71</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Lu</span></div><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><i class="mk-pt-empty"></i><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">89</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Ac</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">90</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Th</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">91</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Pa</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">92</span><span class="mk-pt-b">f</span><span class="mk-pt-s">U</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">93</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Np</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">94</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Pu</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">95</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Am</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">96</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Cm</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">97</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Bk</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">98</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Cf</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">99</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Es</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">100</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Fm</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">101</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Md</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">102</span><span class="mk-pt-b">f</span><span class="mk-pt-s">No</span></div><div class="mk-pt-cell s-chemistry mk-pt-fade"><span class="mk-pt-z">103</span><span class="mk-pt-b">f</span><span class="mk-pt-s">Lr</span></div><i class="mk-pt-empty"></i></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-13 · landscape</span><span class="nm">Periodic table, family highlight</span><span class="ds">Turned sideways the whole table fits. Family mode: the chosen family keeps full strength with a 2 px primary border and the rest fade to 35%, so the highlight never relies on colour alone.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-14 Element sheet ============ -->
+<figure class="mock" data-id="LAB-14">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top"><span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Periodic table</span></div>
+  <div class="scrim"></div>
+  <div class="sheet" style="top:70px;gap:12px">
+    <div class="grab"></div>
+    <div class="row s-physics" style="gap:14px">
+      <div style="width:104px;height:104px;border-radius:22px;background:var(--tint);position:relative;flex:none;display:grid;place-items:center">
+        <span class="t-label num" style="position:absolute;left:10px;top:8px;color:var(--muted)">29</span>
+        <span class="t-caption stext" style="position:absolute;right:10px;top:8px;font-weight:800">d</span>
+        <span style="font:800 44px/1 var(--f-latin);margin-top:10px">Cu</span>
+      </div>
+      <div class="col grow" style="gap:6px">
+        <span class="t-title">Copper · <span lang="hi">ताँबा</span></span>
+        <div class="row wrap" style="gap:6px"><span class="chip st" style="height:26px">d block</span><span class="chip" style="height:26px">{family_name}</span></div>
+      </div>
+    </div>
+    <div class="scene s-physics" style="height:118px;display:grid;place-items:center;flex:none"><span class="note">Agnes art: a copper pot and wires (3:2)</span></div>
+    <div class="col" style="gap:0">
+      <span class="t-heading" style="margin-bottom:4px">Key facts</span>
+      <div class="row between" style="padding:7px 0;border-top:1px solid var(--line)"><span class="t-label muted">Atomic mass</span><span class="t-label num">{atomic_mass} u</span></div>
+      <div class="row between" style="padding:7px 0;border-top:1px solid var(--line)"><span class="t-label muted">Electron configuration</span><span class="t-label">{electron_config}</span></div>
+      <div class="row between" style="padding:7px 0;border-top:1px solid var(--line)"><span class="t-label muted">Group · period</span><span class="t-label num">{group} · {period}</span></div>
+      <div class="row between" style="padding:7px 0;border-top:1px solid var(--line)"><span class="t-label muted">At room temperature</span><span class="t-label">{state}</span></div>
+    </div>
+    <div class="card tint s-chemistry col" style="gap:8px;padding:14px">
+      <div class="row" style="gap:8px"><svg class="ic sm stext"><use href="#ph-lightbulb-fill"/></svg><span class="t-label stext">Memory hook</span></div>
+      <span class="t-label">{mnemonic_text} for this element's group, from content</span>
+      <div class="row" style="gap:8px"><span class="btn btn-secondary sm">More hooks</span><span class="btn btn-ghost sm" style="padding:0 6px">Make my own<span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span></span></div>
+    </div>
+    <div class="row" style="gap:8px"><span class="btn btn-secondary sm grow"><svg class="ic sm"><use href="#ph-cube-bold"/></svg>3D atom</span><span class="btn btn-secondary sm grow"><svg class="ic sm"><use href="#ph-plus-circle-bold"/></svg>Collect card</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-14</span><span class="nm">Element sheet</span><span class="ds">Header tile with number, symbol, both names and the block letter; key-fact values are data placeholders ({atomic_mass}, {electron_config}…) filled from the dataset. The hook card uses the subject tint with a lightbulb (R11); only the AI "Make my own" is Pro.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-16 Experiment detail, before the safety check ============ -->
+<figure class="mock" data-id="LAB-16">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut s-physics" style="padding-top:4px;gap:12px">
+    <div class="scene" style="height:150px;position:relative;flex:none;display:grid;place-items:center">
+      <span class="note">Agnes art: the finished setup on a kitchen counter (3:2)</span>
+      <span class="iconbtn filled" style="position:absolute;left:10px;top:10px"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+      <span class="chip st" style="position:absolute;right:12px;top:16px;background:var(--surface)">Physics</span>
+    </div>
+    <div class="col" style="gap:6px">
+      <span class="t-title">Floating and sinking</span>
+      <div class="row" style="gap:10px"><span class="t-caption muted num">15 min · 5 things</span><span class="chip warn" style="height:26px"><svg class="ic xs"><use href="#ph-users-three-bold"/></svg>With a grown-up</span></div>
+    </div>
+    <div class="mk-safety" role="region" aria-label="Safety">
+      <span class="h"><svg class="ic"><use href="#ph-shield-warning-fill"/></svg>Stay safe</span>
+      <span class="r"><svg class="ic"><use href="#ph-users-three-bold"/></svg>Do this with a grown-up nearby.</span>
+      <span class="r"><svg class="ic"><use href="#ph-prohibit-bold"/></svg>Never taste or smell anything unless the steps say so.</span>
+      <span class="r"><svg class="ic"><use href="#ph-hand-soap-bold"/></svg>Clean up and wash your hands when you finish.</span>
+      <div class="divider" style="background:color-mix(in srgb,var(--warning) 35%,transparent)"></div>
+      <span class="r"><svg class="ic"><use href="#ph-drop-bold"/></svg><span><b>Water</b> · safety point from this experiment</span></span>
+      <span class="r"><svg class="ic"><use href="#ph-broom-bold"/></svg><span><b>Messy</b> · safety point from this experiment</span></span>
+    </div>
+    <span class="t-heading">You need</span>
+    <div class="list">
+      <div class="li" style="min-height:48px"><span class="mk-box"></span><span class="t-label grow">First material</span><span class="chip ok" style="height:22px;font-size:11px">usually at home</span></div>
+      <div class="li" style="min-height:48px"><span class="mk-box"></span><span class="t-label grow">Second material</span></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn btn-primary">Start</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-16</span><span class="nm">Experiment detail, safety first</span><span class="ds">The safety box comes first and never collapses: three general rules, then the experiment's own hazards, each with an icon and its word. Start opens the safety check (LAB-17) before any step unlocks.</span></figcaption>
+</figure>
+
+<!-- ============ LAB-16 Experiment detail, steps with STOP ============ -->
+<figure class="mock" data-id="LAB-16">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-top">
+    <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
+    <span class="ttl t-heading">Floating and sinking</span>
+    <span class="chip ok" style="height:28px;margin-right:8px"><svg class="ic xs"><use href="#ph-shield-check-bold"/></svg>Safe</span>
+  </div>
+  <div class="body scroll-cut s-physics" style="padding-top:2px;gap:10px">
+    <span class="t-heading">Guess first</span>
+    <span class="t-label muted" style="margin-top:-6px">What do you think will happen?</span>
+    <div class="row wrap" style="gap:6px"><span class="chip on">First guess</span><span class="chip">Second guess</span><span class="chip">Third guess</span></div>
+    <span class="t-heading" style="margin-top:4px">Steps</span>
+    <div class="mk-stop" role="note"><svg class="ic"><use href="#ph-hand-palm-fill"/></svg>Stop and tell a grown-up if anything gets hot, breaks or smells strange.</div>
+    <div class="card row top" style="gap:12px"><span class="mk-box on" style="border-radius:12px;width:28px;height:28px"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="t-label muted grow">Step one from the experiment, done</span></div>
+    <div class="card col" style="gap:10px;box-shadow:inset 0 0 0 2px var(--primary)">
+      <div class="row top" style="gap:12px"><span style="width:28px;height:28px;border-radius:12px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font:800 14px/1 var(--f-latin);flex:none">2</span><span class="t-label grow">Step two from the experiment, one or two lines with the action to do</span></div>
+      <div class="scene" style="height:110px;display:grid;place-items:center;border-radius:14px"><span class="note">Agnes art: step picture (sunny-object)</span></div>
+      <span class="btn btn-secondary sm" style="align-self:flex-end">Next step</span>
+    </div>
+    <div class="card row top" style="gap:12px;opacity:.55"><span style="width:28px;height:28px;border-radius:12px;background:var(--sunken);display:grid;place-items:center;font:800 14px/1 var(--f-latin);flex:none">3</span><span class="t-label grow">Step three</span></div>
+  </div>
+  <div class="bottom" style="padding-top:4px">
+    <span class="btn btn-primary">I did it!</span>
+    <div class="homebar" style="margin-bottom:0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LAB-16 · steps</span><span class="nm">Experiment steps with the STOP rule</span><span class="ds">After the safety check: a guess first, then steps revealed one at a time under a pinned STOP line. The main action becomes "I did it!".</span></figcaption>
+</figure>
+
+</div>
+</div>
+</section>

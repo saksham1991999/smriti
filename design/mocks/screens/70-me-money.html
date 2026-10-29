@@ -1,0 +1,1153 @@
+<section class="area" id="me" data-title="Me, Pro and notifications">
+<style>
+/* Area styles for 70-me-money (Me, Settings, Pro, Notifications). Tokens only. */
+.sx .mk-me-top { flex: none; height: 52px; display: flex; align-items: center; gap: 6px; padding: 0 12px 0 18px; }
+.sx .mk-me-top.back { padding-left: 6px; }
+.sx .mk-me-top .ttl { flex: 1; min-width: 0; font: 800 18px/24px var(--f-latin); }
+.sx .mk-me-top .ttl.big { font-size: 22px; line-height: 28px; }
+.sx .mk-me-grp { font: 800 12px/16px var(--f-latin); letter-spacing: .6px; text-transform: uppercase; color: var(--muted); margin: 4px 4px -4px; }
+.sx .mk-me-grp:lang(hi) { text-transform: none; letter-spacing: 0; font-size: 13px; }
+.sx .mk-me-list .li { min-height: 54px; padding: 9px 14px; gap: 12px; }
+.sx .mk-me-list .li > .ic:first-child { color: var(--muted); }
+.sx .mk-me-list .val { font: 600 13px/16px var(--f-latin); color: var(--muted); text-align: right; }
+.sx .mk-me-list .li .grow .t-caption { display: block; margin-top: 2px; }
+/* profile */
+.sx .mk-me-av { border-radius: 50%; background: var(--primary-tint); overflow: hidden; display: grid; place-items: center; flex: none; }
+.sx .mk-me-av img { width: 118%; height: 118%; max-width: none; object-fit: contain; margin-top: 14%; }
+.sx .mk-me-init { width: 48px; height: 48px; border-radius: 24px; background: var(--primary-tint); color: var(--primary); display: grid; place-items: center; font: 800 20px/1 var(--f-latin); flex: none; }
+.sx .mk-me-stat { background: var(--surface); border-radius: 16px; box-shadow: var(--sh-card); padding: 10px 12px; display: flex; align-items: center; gap: 10px; }
+.sx .mk-me-stat b { display: block; font: 800 20px/24px var(--f-latin); font-variant-numeric: tabular-nums; }
+.sx .mk-me-stat span { display: block; font: 600 12px/16px var(--f-latin); color: var(--muted); }
+.sx .mk-me-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.sx .mk-me-duo > div { border-radius: 20px; padding: 66px 12px 12px; position: relative; display: flex; flex-direction: column; gap: 6px; }
+.sx .mk-me-duo .pet { background: var(--primary-tint); }
+.sx .mk-me-duo .plant { background: var(--streak-tint); }
+.sx .mk-me-duo img { position: absolute; width: 104px; height: 104px; object-fit: contain; top: -30px; left: 50%; transform: translateX(-50%); }
+.sx .mk-me-duo .plant img { width: 128px; height: 128px; top: -40px; }
+/* meters */
+.sx .mk-me-meter { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+.sx .mk-me-meter .track { height: 10px; border-radius: 5px; background: var(--track); overflow: hidden; }
+.sx .mk-me-meter .track i { display: block; height: 100%; border-radius: 5px; background: var(--streak); }
+.sx .mk-me-meter.energy .track i { background: var(--gem); }
+/* pet room */
+.sx .mk-me-room { height: 330px; border-radius: 24px; overflow: hidden; position: relative; flex: none; }
+.sx .mk-me-room > .bg { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; }
+.sx .mk-me-room .petimg { position: absolute; width: 196px; height: 196px; object-fit: contain; left: 50%; bottom: -6px; transform: translateX(-42%); }
+.sx .mk-me-room .bub { position: absolute; left: 12px; top: 12px; max-width: 200px; background: var(--surface); border-radius: 18px 18px 18px 6px; padding: 9px 13px; box-shadow: var(--sh-raised); font: 600 14px/19px var(--f-latin); }
+.sx .mk-me-room .tag { position: absolute; right: 10px; top: 12px; }
+.sx.dark .mk-me-room::after { content: ""; position: absolute; inset: 0; background: var(--scrim); opacity: .4; pointer-events: none; }
+.sx .mk-me-care { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.sx .mk-me-care > div { display: flex; flex-direction: column; align-items: center; gap: 5px; font: 700 13px/16px var(--f-latin); text-align: center; }
+.sx .mk-me-care .rb { width: 60px; height: 60px; border-radius: 30px; background: var(--surface); box-shadow: var(--sh-card), inset 0 0 0 1.5px var(--line); display: grid; place-items: center; color: var(--primary); position: relative; }
+.sx .mk-me-care .rb .ic { width: 28px; height: 28px; }
+.sx .mk-me-care .cnt { position: absolute; top: -3px; right: -5px; min-width: 22px; height: 22px; border-radius: 11px; background: var(--streak); color: var(--on-streak); font: 800 12px/22px var(--f-latin); text-align: center; padding: 0 5px; }
+.sx .mk-me-care .done .rb { color: var(--disabled); background: var(--sunken); box-shadow: none; }
+.sx .mk-me-care small { font: 600 11px/14px var(--f-latin); color: var(--muted); }
+/* plant */
+.sx .mk-me-planthero { background: var(--streak-tint); border-radius: 24px; padding: 14px 16px; display: flex; align-items: center; gap: 4px; position: relative; flex: none; }
+.sx .mk-me-planthero img { width: 176px; height: 176px; object-fit: contain; margin: -18px -26px -24px -22px; flex: none; }
+.sx .mk-me-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; position: relative; }
+.sx .mk-me-steps::before { content: ""; position: absolute; left: 10%; right: 10%; top: 26px; height: 3px; border-radius: 2px; background: var(--track); }
+.sx .mk-me-steps .st { display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; position: relative; }
+.sx .mk-me-steps .th { width: 54px; height: 54px; border-radius: 27px; background: var(--surface); overflow: hidden; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--line); position: relative; }
+.sx .mk-me-steps .th img { width: 76px; height: 76px; max-width: none; object-fit: contain; margin-top: -2px; }
+.sx .mk-me-steps .cur .th { box-shadow: inset 0 0 0 3px var(--streak); background: var(--streak-tint); }
+.sx .mk-me-steps .fut .th img { opacity: .42; }
+.sx .mk-me-steps .ok { position: absolute; top: -2px; right: 4px; width: 18px; height: 18px; border-radius: 9px; background: var(--success); color: var(--surface); display: grid; place-items: center; z-index: 1; }
+.sx .mk-me-steps .ok .ic { width: 12px; height: 12px; }
+.sx .mk-me-steps b { font: 700 12px/15px var(--f-latin); }
+.sx .mk-me-steps small { font: 600 11px/13px var(--f-latin); color: var(--muted); }
+.sx .mk-me-steps .cur small { color: var(--streak-text); font-weight: 700; }
+.sx .mk-me-health { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; text-align: center; }
+.sx .mk-me-health > div { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.sx .mk-me-health .th { width: 52px; height: 52px; border-radius: 16px; background: var(--sunken); overflow: hidden; display: grid; place-items: center; }
+.sx .mk-me-health .th img { width: 74px; height: 74px; max-width: none; object-fit: contain; }
+.sx .mk-me-health .on .th { box-shadow: inset 0 0 0 2.5px var(--warning); }
+.sx .mk-me-health b { font: 700 11px/14px var(--f-latin); }
+.sx .mk-me-health small { font: 600 10px/13px var(--f-latin); color: var(--muted); }
+.sx .mk-me-days { display: flex; gap: 14px; }
+.sx .mk-me-days > div { display: flex; flex-direction: column; align-items: center; gap: 4px; font: 600 12px/16px var(--f-latin); color: var(--muted); }
+.sx .mk-me-days i { width: 34px; height: 34px; border-radius: 17px; display: grid; place-items: center; box-shadow: inset 0 0 0 2px var(--track); color: var(--on-strong); }
+.sx .mk-me-days .d i { background: var(--success); box-shadow: none; color: var(--surface); }
+.sx .mk-me-days .t i { box-shadow: inset 0 0 0 2.5px var(--primary); }
+.sx .mk-me-days .t { color: var(--primary); font-weight: 800; }
+/* badges, shop, quests */
+.sx .mk-me-badge { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; position: relative; }
+.sx .mk-me-badge img { width: 88px; height: 88px; object-fit: contain; }
+.sx .mk-me-badge .new { position: absolute; top: -4px; right: 2px; }
+.sx .mk-me-lockedbadge { width: 56px; height: 56px; object-fit: contain; filter: grayscale(1); opacity: .55; flex: none; }
+.sx .mk-me-item { background: var(--surface); border-radius: 20px; box-shadow: var(--sh-card); padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; position: relative; }
+.sx .mk-me-item .pic { height: 86px; border-radius: 14px; background: var(--sunken); display: grid; place-items: center; overflow: hidden; }
+.sx .mk-me-item .pic img { width: 84px; height: 84px; object-fit: contain; }
+.sx .mk-me-item .corner { position: absolute; top: 16px; right: 16px; }
+.sx .mk-me-price { display: inline-flex; align-items: center; gap: 4px; font: 800 14px/18px var(--f-latin); font-variant-numeric: tabular-nums; }
+.sx .mk-me-price .ic { color: var(--gem); }
+.sx .mk-me-feat { border-radius: 20px; padding: 12px; display: flex; flex-direction: column; gap: 6px; background: var(--surface); box-shadow: var(--sh-card); }
+.sx .mk-me-feat .disc { width: 44px; height: 44px; border-radius: 22px; display: grid; place-items: center; background: color-mix(in srgb, var(--gem) 18%, var(--surface)); color: var(--gem); }
+.sx .mk-me-slots { display: flex; gap: 6px; }
+.sx .mk-me-slots i { width: 24px; height: 24px; border-radius: 12px; display: grid; place-items: center; box-shadow: inset 0 0 0 1.5px var(--line); color: var(--disabled); }
+.sx .mk-me-slots i.on { background: var(--gem); box-shadow: none; color: var(--surface); }
+.sx .mk-me-slots .ic { width: 14px; height: 14px; }
+.sx .mk-me-quest { background: var(--surface); border-radius: 20px; box-shadow: var(--sh-card); padding: 12px 14px; display: flex; gap: 12px; align-items: center; }
+.sx .mk-me-quest .qi { width: 40px; height: 40px; border-radius: 14px; background: var(--primary-tint); color: var(--primary); display: grid; place-items: center; flex: none; }
+.sx .mk-me-quest.done { box-shadow: inset 0 0 0 2px var(--success); }
+.sx .mk-me-quest.done .qi { background: var(--success-tint); color: var(--success-text); }
+/* downloads */
+.sx .mk-me-stack { display: flex; height: 14px; border-radius: 7px; overflow: hidden; background: var(--track); gap: 2px; }
+.sx .mk-me-stack i:nth-child(1) { background: var(--primary); } .sx .mk-me-stack i:nth-child(2) { background: var(--gem); }
+.sx .mk-me-key { display: inline-flex; align-items: center; gap: 5px; font: 600 12px/16px var(--f-latin); color: var(--muted); }
+.sx .mk-me-key i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.sx .mk-me-subj { width: 36px; height: 36px; border-radius: 12px; background: var(--tint); display: grid; place-items: center; flex: none; overflow: hidden; }
+.sx .mk-me-subj img { width: 32px; height: 32px; object-fit: contain; }
+/* settings */
+.sx .mk-me-radio { width: 22px; height: 22px; border-radius: 11px; box-shadow: inset 0 0 0 2px var(--line); flex: none; }
+.sx .mk-me-radio.on { box-shadow: inset 0 0 0 7px var(--primary); }
+.sx .mk-me-lang { border-radius: 20px; background: var(--surface); box-shadow: inset 0 0 0 1.5px var(--line); padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center; position: relative; }
+.sx .mk-me-lang.sel { box-shadow: inset 0 0 0 2.5px var(--primary); background: var(--primary-tint); }
+.sx .mk-me-lang img { height: 84px; width: 100%; object-fit: contain; }
+.sx .mk-me-lang .chk { position: absolute; top: 8px; right: 8px; color: var(--primary); }
+.sx .mk-me-prev { border-radius: 16px; overflow: hidden; height: 250px; box-shadow: inset 0 0 0 1.5px var(--line); display: flex; }
+.sx .mk-me-prev.sel { box-shadow: 0 0 0 2.5px var(--primary); }
+.sx .mk-me-prev .half { flex: 1; background: var(--bg); padding: 8px 6px; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.sx .mk-me-prev .p1 { height: 30px; border-radius: 9px; background: var(--streak-tint); display: flex; align-items: center; justify-content: flex-end; padding-right: 2px; }
+.sx .mk-me-prev .p1 img { width: 30px; height: 30px; object-fit: contain; }
+.sx .mk-me-prev .p2 { height: 70px; border-radius: 10px; background: var(--strong); }
+.sx .mk-me-prev .p3 { height: 22px; border-radius: 8px; background: var(--surface); }
+.sx .mk-me-prev .p4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; } .sx .mk-me-prev .p4 i { height: 56px; border-radius: 8px; background: var(--tint); }
+/* parent */
+.sx .mk-me-chart { display: flex; align-items: flex-end; gap: 6px; height: 64px; }
+.sx .mk-me-chart > div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+.sx .mk-me-chart i { width: 100%; max-width: 22px; border-radius: 6px 6px 3px 3px; background: var(--primary); display: block; }
+.sx .mk-me-chart i.zero { height: 3px !important; background: var(--track); }
+.sx .mk-me-chart span { font: 700 10px/12px var(--f-latin); color: var(--muted); }
+.sx .mk-me-chart.big { height: 110px; } .sx .mk-me-chart.big i { max-width: 26px; } .sx .mk-me-chart em { font: 700 10px/12px var(--f-latin); font-style: normal; color: var(--ink); }
+.sx .mk-me-phase { position: absolute; z-index: 8; top: 40px; right: 14px; }
+/* paywall */
+.sx .mk-me-pwhero { background: var(--streak-tint); flex: none; height: 190px; position: relative; }
+.sx .mk-me-pwhero .close { position: absolute; left: 8px; top: 34px; }
+.sx .mk-me-pwhero .pet { position: absolute; left: 10px; bottom: -8px; width: 172px; height: 172px; }
+.sx .mk-me-pwhero .pet img { width: 100%; height: 100%; object-fit: contain; }
+.sx .mk-me-pwhero .pet .rs { position: absolute; left: 21.5%; top: 61.5%; transform: translate(-50%, -50%) rotate(-2deg); font: 800 11px/1 var(--f-latin); color: var(--on-streak); letter-spacing: -.2px; }
+.sx .mk-me-pwhero .bub { position: absolute; right: 14px; top: 58px; width: 152px; background: var(--surface); border-radius: 18px 18px 18px 6px; padding: 10px 12px; box-shadow: var(--sh-card); font: 600 14px/19px var(--f-latin); }
+.sx .mk-me-pwhero .bub:lang(hi) { line-height: 21px; }
+.sx .mk-me-plan { border-radius: 20px; background: var(--surface); box-shadow: inset 0 0 0 2px var(--primary); padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+.sx .mk-me-tl { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.sx .mk-me-tl li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; position: relative; align-items: start; }
+.sx .mk-me-tl li + li::before { content: ""; position: absolute; left: 13px; top: -10px; height: 12px; width: 2px; background: var(--line); }
+.sx .mk-me-tl .nd { width: 28px; height: 28px; border-radius: 14px; display: grid; place-items: center; background: var(--sunken); color: var(--muted); }
+.sx .mk-me-tl .nd .ic { width: 16px; height: 16px; }
+.sx .mk-me-tl .nd.now { background: var(--primary); color: var(--on-primary); }
+.sx .mk-me-tl .nd.gold { background: var(--streak-tint); color: var(--streak-text); }
+.sx .mk-me-tl b { display: block; font: 700 14px/18px var(--f-latin); }
+.sx .mk-me-tl span { display: block; font: 600 12px/16px var(--f-latin); color: var(--muted); }
+.sx .mk-me-tl :lang(hi) b, .sx .mk-me-tl:lang(hi) b { line-height: 20px; }
+.sx .mk-me-ben { display: flex; align-items: center; gap: 12px; }
+.sx .mk-me-ben .bi { width: 40px; height: 40px; border-radius: 14px; background: var(--primary-tint); color: var(--primary); display: grid; place-items: center; flex: none; }
+.sx .mk-me-stick { flex: none; background: var(--surface); border-top: 1px solid var(--line); padding: 10px 18px 14px; display: flex; flex-direction: column; gap: 4px; }
+.sx .mk-me-stick .btn-ghost { height: 40px; }
+.sx .mk-me-fine { font: 600 11px/15px var(--f-latin); color: var(--muted); text-align: center; }
+.sx .mk-me-fine:lang(hi) { line-height: 16px; }
+.sx .mk-me-links { font: 700 11px/14px var(--f-latin); color: var(--primary); text-align: center; }
+/* system and hosted sheets */
+.sx .mk-me-label { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 10px; border-radius: 12px; background: var(--ink); color: var(--bg); font: 800 10px/1 var(--f-latin); letter-spacing: .6px; text-transform: uppercase; align-self: center; }
+.sx .mk-me-sys { position: absolute; left: 8px; right: 8px; bottom: 8px; z-index: 6; background: var(--surface); border-radius: 26px; padding: 14px 18px 18px; display: flex; flex-direction: column; gap: 12px; font-family: Roboto, var(--f-latin); box-shadow: var(--sh-raised); }
+.sx .mk-me-sys .sysbtn { height: 44px; border-radius: 22px; background: var(--ink); color: var(--bg); display: grid; place-items: center; font: 500 15px/1 Roboto, var(--f-latin); }
+.sx .mk-me-appic { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; flex: none; }
+.sx .mk-me-appic.sm { width: 18px; height: 18px; border-radius: 5px; } .sx .mk-me-appic.sm .ic { width: 12px; height: 12px; }
+.sx .mk-me-appic:has(img) { background: none; overflow: hidden; } .sx .mk-me-appic img { width: 100%; height: 100%; display: block; border-radius: inherit; }
+.sx .mk-me-feat .disc.art { width: 52px; height: 52px; border-radius: 26px; overflow: hidden; } .sx .mk-me-feat .disc.art img { width: 48px; height: 48px; object-fit: contain; }
+.sx .mk-me-reward { position: absolute; left: 16px; right: 16px; top: 206px; z-index: 6; background: var(--surface); border-radius: 28px; padding: 18px 20px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: var(--sh-raised); text-align: center; }
+.sx .mk-me-reward .art { position: relative; width: 100%; height: 196px; display: flex; align-items: flex-end; justify-content: center; }
+.sx .mk-me-reward .art .main { width: 60%; height: 180px; object-fit: contain; margin-left: -34px; }
+.sx .mk-me-reward .art .pet { width: 118px; height: 118px; object-fit: contain; margin: 0 -16px -6px -20px; }
+.sx .mk-me-reward .bubble { position: absolute; right: -6px; top: 34px; background: var(--raised); border-radius: 16px 16px 6px 16px; padding: 6px 11px; box-shadow: var(--sh-card); font: 600 13px/17px var(--f-latin); }
+.sx .mk-me-url { flex: none; margin: 0 12px 6px; height: 34px; border-radius: 17px; background: var(--sunken); display: flex; align-items: center; gap: 6px; padding: 0 12px; font: 600 13px/1 var(--f-latin); color: var(--muted); }
+.sx .mk-me-host { position: absolute; left: 14px; right: 14px; top: 92px; z-index: 6; background: var(--surface); border-radius: 18px; overflow: hidden; box-shadow: var(--sh-raised); display: flex; flex-direction: column; }
+.sx .mk-me-host .hd { background: var(--primary); color: var(--on-primary); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+.sx .mk-me-host .opt { display: flex; align-items: center; gap: 12px; padding: 13px 16px; border-top: 1px solid var(--line); font: 600 15px/20px var(--f-latin); }
+.sx .mk-me-host .opt.sel { background: var(--primary-tint); }
+.sx .mk-me-host .opt .ic { color: var(--muted); }
+/* status checklist */
+.sx .mk-me-check { display: flex; flex-direction: column; gap: 12px; }
+.sx .mk-me-check > div { display: flex; gap: 12px; align-items: center; font: 600 15px/20px var(--f-latin); }
+.sx .mk-me-check i { width: 28px; height: 28px; border-radius: 14px; display: grid; place-items: center; flex: none; box-shadow: inset 0 0 0 2px var(--line); color: var(--muted); }
+.sx .mk-me-check .d i { background: var(--success); box-shadow: none; color: var(--surface); }
+.sx .mk-me-check .w i { background: var(--primary-tint); box-shadow: none; color: var(--primary); }
+.sx .mk-me-check .ic { width: 16px; height: 16px; }
+/* lock screen and home screen */
+.sx .mk-me-wall { position: absolute; inset: 0; z-index: 0; }
+.sx .mk-me-wall img { width: 100%; height: 100%; object-fit: cover; }
+.sx .mk-me-wall::after { content: ""; position: absolute; inset: 0; background: var(--scrim); }
+.sx .mk-me-wall.soft img { filter: blur(6px) saturate(1.1); transform: scale(1.08); }
+.sx .mk-me-wall.soft::after { opacity: .35; }
+.sx .mk-me-lockclock { position: relative; z-index: 1; text-align: center; color: var(--ink); padding-top: 14px; }
+.sx .mk-me-lockclock .d { font: 700 15px/20px var(--f-latin); }
+.sx .mk-me-lockclock .t { font: 700 76px/80px var(--f-latin); letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+.sx .mk-me-ntfs { position: relative; z-index: 1; padding: 0 10px; display: flex; flex-direction: column; gap: 8px; }
+.sx .mk-me-ntf { background: color-mix(in srgb, var(--surface) 94%, transparent); border-radius: 22px; padding: 11px 12px 12px 14px; display: flex; gap: 10px; align-items: center; color: var(--ink); }
+.sx .mk-me-ntf .meta { display: flex; align-items: center; gap: 6px; font: 600 11px/14px var(--f-latin); color: var(--muted); margin-bottom: 2px; }
+.sx .mk-me-ntf .tt { font: 700 14px/18px var(--f-latin); }
+.sx .mk-me-ntf .bd { font: 500 14px/19px var(--f-latin); }
+.sx .mk-me-ntf .bd:lang(hi), .sx .mk-me-ntf .tt:lang(hi) { line-height: 21px; }
+.sx .mk-me-ntf .lic { width: 46px; height: 46px; border-radius: 23px; overflow: hidden; background: var(--primary-tint); flex: none; display: grid; place-items: center; }
+.sx .mk-me-ntf .lic img { width: 56px; height: 56px; max-width: none; object-fit: contain; margin-top: 8px; }
+.sx .mk-me-ntf .act { margin-top: 8px; display: inline-flex; height: 30px; padding: 0 14px; border-radius: 15px; background: var(--primary-tint); color: var(--primary); align-items: center; font: 700 13px/1 var(--f-latin); }
+.sx .mk-me-home { position: relative; z-index: 1; padding: 14px 12px 0; display: flex; flex-direction: column; gap: 14px; }
+.sx .mk-me-w { border-radius: 24px; background: var(--surface); box-shadow: var(--sh-raised); overflow: hidden; position: relative; color: var(--ink); }
+.sx .mk-me-w.s { width: 150px; height: 150px; background: var(--streak-tint); display: flex; flex-direction: column; align-items: center; padding: 0 12px 10px; }
+.sx .mk-me-w.s.risk { background: var(--warning-tint); }
+.sx .mk-me-w.s img { width: 104px; height: 104px; object-fit: contain; margin: -8px 0 -10px; flex: none; }
+.sx .mk-me-w.s .ln { font: 600 11px/13px var(--f-latin); color: var(--muted); align-self: flex-start; }
+.sx .mk-me-w.s.risk .ln { color: var(--warning-text); font-weight: 700; }
+.sx .mk-me-w.m { height: 150px; display: flex; padding: 12px; gap: 10px; }
+.sx .mk-me-w.l { height: 300px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.sx .mk-me-wrow { display: flex; align-items: center; gap: 10px; min-height: 46px; padding: 6px 10px 6px 0; border-radius: 14px; background: var(--bg); overflow: hidden; }
+.sx .mk-me-wrow > .bar4 { width: 4px; align-self: stretch; background: var(--strong); flex: none; }
+.sx .mk-me-wrow .ic.subj { color: var(--stext); }
+.sx .mk-me-ringbig { --sz: 86px; --w: 10px; }
+.sx .mk-me-ringbig.ok { background: conic-gradient(var(--success) 100%, var(--track) 0); }
+.sx .mk-me-wpill { height: 32px; border-radius: 16px; background: var(--primary); color: var(--on-primary); display: flex; align-items: center; justify-content: center; gap: 6px; font: 700 13px/1 var(--f-latin); }
+.sx .mk-me-wpill.ok { background: var(--success-tint); color: var(--success-text); }
+.sx .mk-me-ntfs :lang(hi), .sx .mk-me-home :lang(hi) { font-family: var(--f-deva); }
+#me .sx .body > * { flex-shrink: 0; }
+.sx .mk-me-label { white-space: nowrap; }
+.sx .mk-me-act3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sx .mk-me-act3 > span { height: 58px; border-radius: 14px; background: var(--sunken); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font: 700 12px/15px var(--f-latin); color: var(--ink); text-align: center; }
+.sx .mk-me-act3 .ic { color: var(--primary); }
+</style>
+<div class="wrap">
+<h2>Me, Pro and notifications</h2>
+<p class="lede">The Me tab (pet, plant, badges, shop, quests, downloads), Settings and Parent mode, the ₹1 Pro offer from paywall to checkout and plan management, and the push notifications and home-screen widgets.</p>
+<p class="spec">Specs: <code>docs/ux/me-money.md</code> · Flow: <code>docs/flows/me-money.md</code> · Rulings R2, R12, R15, R28, R29, R33</p>
+<div class="wall">
+
+<!-- ============ ME ============ -->
+
+<figure class="mock" data-id="ME-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top"><span class="ttl big">Me</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span><span class="iconbtn" aria-label="Settings"><svg class="ic"><use href="#ph-gear-six-bold"/></svg></span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card lg" style="padding:16px">
+      <div class="row top" style="gap:14px">
+        <div class="mk-me-av" style="width:80px;height:80px"><img src="assets/cat-wave.webp" alt="Miso, your cat. Happy."></div>
+        <div class="col grow" style="gap:4px">
+          <div class="row between"><span class="t-title">Aarav</span><span class="btn sm btn-ghost" style="height:32px;padding:0 6px">Edit</span></div>
+          <span class="t-caption muted" style="margin-top:-4px">@aarav.s</span>
+          <div class="row wrap" style="gap:6px;margin-top:2px">
+            <span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none;height:28px">JEE Main</span>
+            <span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-cloud-check-fill"/></svg>Saved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-base.webp" alt=""></div><div class="bubble">Hi Aarav! Shall we study together?</div></div>
+    <div class="grid2" style="gap:10px">
+      <div class="mk-me-stat"><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><div><b>12</b><span>Day streak</span></div></div>
+      <div class="mk-me-stat"><svg class="ic" style="color:var(--primary)"><use href="#ph-lightning-fill"/></svg><div><b>4,280</b><span>Total XP</span></div></div>
+      <div class="mk-me-stat"><svg class="ic" style="color:var(--success)"><use href="#ph-books-bold"/></svg><div><b>86</b><span>Lessons</span></div></div>
+      <div class="mk-me-stat"><svg class="ic" style="color:var(--gem)"><use href="#ph-target-bold"/></svg><div><b>74%</b><span>Accuracy</span></div></div>
+    </div>
+    <div class="mk-me-duo">
+      <div class="pet"><img src="assets/cat-base.webp" alt="Miso is happy"><span class="t-label">Visit Miso</span><div class="mk-me-meter"><span class="t-caption muted">Mood · Happy</span><div class="track"><i style="width:82%"></i></div></div></div>
+      <div class="plant"><img src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving"><span class="t-label">Sapling</span><span class="chip ok" style="height:26px;align-self:flex-start"><svg class="ic xs"><use href="#ph-leaf-fill"/></svg>Thriving</span></div>
+    </div>
+    <div class="card"><div class="row between"><span class="t-label">Today's quests · 6 h left</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div></div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-user-circle-fill"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">ME-01</span><span class="nm">Me, signed in</span><span class="ds">Profile header with the AUTH-33 save-state chip ("Saved"), pet line, four stats (2×2 under 360 dp), pet and plant cards. Streak uses the Plant icon (R28).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-04">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Miso's room</span><span class="iconbtn" aria-label="About Miso"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="body" style="padding-top:0;gap:14px">
+    <div class="mk-me-room">
+      <img class="bg" src="assets/scene-pet-room.webp" alt="">
+      <img class="petimg" src="assets/cat-base.webp" alt="Miso is happy">
+      <div class="bub">Best day ever! What are we learning?</div>
+    </div>
+    <div class="row" style="gap:14px;align-items:flex-start">
+      <div class="mk-me-meter"><span class="t-label">Mood · Happy</span><div class="track"><i style="width:82%"></i></div></div>
+      <div class="mk-me-meter energy"><span class="t-label">Energy · Good</span><div class="track"><i style="width:64%"></i></div></div>
+    </div>
+    <div class="mk-me-care">
+      <div><span class="rb"><svg class="ic"><use href="#ph-hand-heart-bold"/></svg></span>Pet</div>
+      <div><span class="rb"><svg class="ic"><use href="#ph-basketball-bold"/></svg><span class="cnt">2</span></span>Play</div>
+      <div><span class="rb"><svg class="ic"><use href="#ph-fish-bold"/></svg><span class="cnt">3</span></span>Treat (3)</div>
+    </div>
+    <div class="list"><div class="li"><svg class="ic" style="color:var(--muted)"><use href="#ph-t-shirt-bold"/></svg><span class="t-label grow">Wardrobe</span><span class="t-caption muted">Scarf on</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div></div>
+  </div>
+  <div class="bottom" style="padding-top:4px;gap:6px"><span class="btn btn-primary">Study together</span><span class="t-caption muted center">24 reviews due</span></div>
+</div></div>
+<figcaption><span class="id">ME-04</span><span class="nm">Pet room, happy</span><span class="ds">Room backdrop, pet line, Mood (gold) and Energy (blue) meters as words, three care actions with counts left today, Study together pinned.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-07">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Your plant</span></div>
+  <div class="body" style="padding-top:0">
+    <div class="mk-me-planthero">
+      <img src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving">
+      <div class="col grow" style="gap:6px">
+        <span class="t-caption" style="color:var(--streak-text)">STAGE 3 OF 5</span>
+        <span class="t-display" style="font-size:28px">Sapling</span>
+        <span class="chip ok" style="align-self:flex-start"><svg class="ic xs"><use href="#ph-leaf-fill"/></svg>Thriving</span>
+      </div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-plant.webp" alt=""></div><div class="bubble">Watered today! See you tomorrow.</div></div>
+    <div class="card" style="display:flex;flex-direction:column;gap:12px">
+      <span class="t-heading">Journey</span>
+      <div class="mk-me-steps">
+        <div class="st"><span class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="th"><img src="assets/plant-seed.webp" alt=""></span><b>Seed</b><small>Day 0</small></div>
+        <div class="st"><span class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="th"><img src="assets/plant-sprout.webp" alt=""></span><b>Sprout</b><small>Day 1</small></div>
+        <div class="st cur"><span class="th"><img src="assets/plant-sapling.webp" alt=""></span><b>Sapling</b><small>Now</small></div>
+        <div class="st fut"><span class="th"><img src="assets/plant-flowering.webp" alt=""></span><b>Flowering</b><small>in 9 days</small></div>
+        <div class="st fut"><span class="th"><img src="assets/plant-tree.webp" alt=""></span><b>Tree</b><small>in 79 days</small></div>
+      </div>
+      <div class="col" style="gap:6px"><div class="bar gold"><i style="width:61%"></i></div><span class="t-caption muted">9 more study days to Flowering</span></div>
+    </div>
+    <div class="grid3">
+      <div class="stat"><b>21</b><span>Study days</span></div>
+      <div class="stat"><b>12</b><span>Current streak</span></div>
+      <div class="stat"><b>18</b><span>Longest streak</span></div>
+    </div>
+    <div class="list mk-me-list"><div class="li"><svg class="ic"><use href="#ph-calendar-blank-bold"/></svg><div class="grow"><span class="t-label">Streak calendar</span><span class="t-caption muted">1 freeze held · rest day: Sunday</span></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div></div>
+  </div>
+</div></div>
+<figcaption><span class="id">ME-07</span><span class="nm">Plant garden, thriving</span><span class="ds">Five-stage journey seed → sprout → sapling → flowering → tree (R2; no "budding"), current stage ringed, progress to the next stage, study-day facts. Watered today, so no CTA.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-07">
+<div class="phone"><div class="screen sx dark">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Your plant</span></div>
+  <div class="body scroll-cut" style="padding-top:0">
+    <div class="mk-me-planthero" style="padding:10px 16px">
+      <img src="assets/plant-sapling-wilted.webp" alt="Your plant: sapling, wilted" style="width:150px;height:150px">
+      <div class="col grow" style="gap:6px">
+        <span class="t-caption" style="color:var(--streak-text)">STAGE 3 OF 5</span>
+        <span class="t-title">Sapling</span>
+        <span class="chip warn" style="align-self:flex-start"><svg class="ic xs"><use href="#ph-drop-half-bottom-bold"/></svg>Wilted</span>
+      </div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-worried.webp" alt=""></div><div class="bubble">It's tired, not gone. A 3-day quest brings it back.</div></div>
+    <div class="card" style="background:var(--streak-tint);display:flex;flex-direction:column;gap:10px">
+      <div class="row between"><span class="t-heading">Let's perk your plant up</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="mk-me-days">
+        <div class="d"><i><svg class="ic sm"><use href="#ph-check-bold"/></svg></i>Wed</div>
+        <div class="t"><i></i>Today</div>
+        <div><i></i>Fri</div>
+      </div>
+      <span class="t-caption muted">Day 1 of 3 done · Meet your daily goal once a day.</span>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <span class="t-label">How your plant recovers</span>
+      <div class="mk-me-health">
+        <div><span class="th"><img src="assets/plant-sapling.webp" alt=""></span><b>Thriving</b><small>&nbsp;</small></div>
+        <div><span class="th"><img src="assets/plant-sapling-droopy.webp" alt=""></span><b>Droopy</b><small>1 study day</small></div>
+        <div><span class="th"><img src="assets/plant-sapling-dry.webp" alt=""></span><b>Dry</b><small>2 study days</small></div>
+        <div class="on"><span class="th"><img src="assets/plant-sapling-wilted.webp" alt=""></span><b>Wilted</b><small>3-day quest</small></div>
+        <div><span class="th"><img src="assets/plant-sapling-dormant.webp" alt=""></span><b>Resting</b><small>5-day quest</small></div>
+      </div>
+      <span class="t-caption muted">Your growth stage is never lost.</span>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:6px"><span class="btn btn-primary">Water it: start a lesson</span></div>
+</div></div>
+<figcaption><span class="id">ME-07 · ME-08</span><span class="nm">Plant garden, wilted (dark)</span><span class="ds">Wilted health, revival card with DayDots (day 1 of 3), and the five health states with recovery per R12: droopy 1 day, dry 2, wilted 3-day quest, resting 5-day quest. Stage kept. Night Colour.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-14">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Badges</span><span class="chip gold" style="margin-right:6px">3 earned</span></div>
+  <div class="body scroll-cut" style="padding-top:4px;gap:14px">
+    <span class="t-heading">Earned</span>
+    <div class="grid3" style="gap:8px">
+      <div class="mk-me-badge"><span class="chip ok new" style="height:22px;font-size:11px;padding:0 8px">New</span><img src="assets/badge-reviews-100.webp" alt="100 reviews, earned 27 Oct"><span class="t-label">100 reviews</span><span class="t-caption muted">27 Oct</span></div>
+      <div class="mk-me-badge"><img src="assets/badge-streak-7.webp" alt="7-day streak, earned 24 Oct"><span class="t-label">7-day streak</span><span class="t-caption muted">24 Oct</span></div>
+      <div class="mk-me-badge"><img src="assets/badge-first-lesson.webp" alt="First lesson, earned 8 Oct"><span class="t-label">First lesson</span><span class="t-caption muted">8 Oct</span></div>
+    </div>
+    <span class="t-heading" style="margin-top:4px">Up next</span>
+    <div class="card row" style="gap:12px"><img class="mk-me-lockedbadge" src="assets/badge-streak-7.webp" alt="Locked, 12 of 30"><div class="col grow" style="gap:5px"><div class="row between"><span class="t-label">30-day streak</span><span class="t-caption muted">Level 2</span></div><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">12 of 30</span></div></div>
+    <div class="card row" style="gap:12px"><img class="mk-me-lockedbadge" src="assets/badge-reviews-100.webp" alt="Locked, 230 of 500"><div class="col grow" style="gap:5px"><div class="row between"><span class="t-label">500 reviews</span><span class="t-caption muted">Level 2</span></div><div class="bar primary"><i style="width:46%"></i></div><span class="t-caption muted">230 of 500</span></div></div>
+    <div class="card row" style="gap:12px"><img class="mk-me-lockedbadge" src="assets/badge-first-lesson.webp" alt="Locked, 86 of 100"><div class="col grow" style="gap:5px"><div class="row between"><span class="t-label">100 lessons</span><span class="t-caption muted">Level 3</span></div><div class="bar ok"><i style="width:86%"></i></div><span class="t-caption muted">86 of 100</span></div></div>
+    <div class="petline"><div class="av"><img src="assets/cat-celebrate.webp" alt=""></div><div class="bubble">14 more lessons to your next badge!</div></div>
+  </div>
+</div></div>
+<figcaption><span class="id">ME-14</span><span class="nm">Badges</span><span class="ds">Earned emblems newest first with dates, then the next tiers as greyed emblems with progress "{x} of {y}".</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-16">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Quests</span></div>
+  <div class="body" style="padding-top:2px">
+    <div class="mk-me-quest done"><span class="qi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">Finish 10 lessons</span><div class="bar ok"><i style="width:100%"></i></div><span class="t-caption muted">10/10 · weekly chest</span></div></div>
+  </div>
+  <div class="scrim"></div>
+  <div class="mk-me-reward" role="alertdialog" aria-label="+50 gems, 1 of 2">
+    <span class="t-caption muted">1 of 2</span>
+    <div class="art">
+      <img class="main" src="assets/object-weekly-chest.webp" alt="Weekly chest, open, full of gems">
+      <img class="pet" src="assets/cat-gift.webp" alt="">
+      <span class="bubble">You did it!</span>
+    </div>
+    <div class="t-title" style="font-size:28px;line-height:34px">+50 gems</div>
+    <div class="t-body muted">Your weekly chest is open. A treat for Miso is next.</div>
+    <span class="btn btn-primary" style="align-self:stretch;margin-top:6px">Nice!</span>
+    <span class="btn btn-ghost" style="height:40px">Skip all</span>
+  </div>
+</div></div>
+<figcaption><span class="id">ME-16</span><span class="nm">Reward celebration, weekly chest</span><span class="ds">Opened from the ME-20 claim. One reward at a time on the scrim: the chest art centred, Miso with a gift beside it, the gem count, then Nice! and the queue "1 of 2" with Skip all. Confetti is Lottie and is off with reduced motion; taps outside the button do nothing.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-17">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Shop</span><span class="pill" style="margin-right:6px"><img src="assets/object-gems.webp" alt="">340</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="banner" style="background:var(--raised);box-shadow:inset 0 0 0 1px var(--line)"><svg class="ic sm"><use href="#ph-info-bold"/></svg>Earn gems from quests, badges, streak milestones and leagues.</div>
+    <div class="grid2" style="gap:10px">
+      <div class="mk-me-feat">
+        <div class="row between"><span class="disc art"><img src="assets/shop-freeze.webp" alt=""></span><span class="mk-me-slots" aria-label="1 of 2 freezes held"><i class="on"><svg class="ic"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic"><use href="#ph-plus-bold"/></svg></i></span></div>
+        <span class="t-label">Streak freeze</span>
+        <span class="t-caption muted">You have 1 of 2</span>
+        <span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>200</span>
+      </div>
+      <div class="mk-me-feat">
+        <div class="row between"><span class="disc art" style="background:var(--warning-tint)"><img src="assets/shop-fish-treat.webp" alt=""></span></div>
+        <span class="t-label">Treats for Miso</span>
+        <span class="t-caption muted">You have 3</span>
+        <span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>20</span>
+      </div>
+    </div>
+    <div class="row" style="gap:6px;overflow:hidden"><span class="chip on">All</span><span class="chip">Outfits</span><span class="chip">Pots</span><span class="chip">Rooms</span></div>
+    <div class="grid2" style="gap:10px">
+      <div class="mk-me-item"><span class="pic"><img src="assets/shop-hat.webp" alt="Blue knitted hat"></span><span class="t-label">Blue hat</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>300</span></div>
+      <div class="mk-me-item"><span class="pic"><img src="assets/shop-scarf.webp" alt="Striped scarf, owned"></span><span class="t-label">Striped scarf</span><span class="chip ok" style="height:24px;align-self:flex-start;font-size:12px"><svg class="ic xs"><use href="#ph-check-bold"/></svg>Owned</span></div>
+      <div class="mk-me-item"><span class="pic"><img src="assets/shop-bowtie.webp" alt="Pink bow tie, 450 gems, need 110 more"></span><span class="t-label">Dotty bow tie</span><span class="mk-me-price muted"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>450<span class="t-caption" style="font-weight:600">· need 110</span></span></div>
+      <div class="mk-me-item"><span class="chip pro corner" style="height:22px;font-size:11px">Pro</span><span class="pic"><img src="assets/shop-pro-pot.webp" alt="Gold-rimmed lotus pot, Pro only"></span><span class="t-label">Lotus pot</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>600</span></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:6px;padding-bottom:18px"><span class="t-caption muted center">Gems can't be bought with money. You earn them by learning.</span></div>
+</div></div>
+<figcaption><span class="id">ME-17</span><span class="nm">Shop</span><span class="ds">Gem balance, freeze card with two freeze slots (R28: up to 2 held), treats, accessories with owned, low-balance and Pro-only states. No gem packs.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-20">
+<div class="phone"><div class="screen sx x-neet" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="वापस"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">क्वेस्ट</span><span class="pill" style="margin-right:6px"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="row between"><span class="t-heading">रोज़ के</span><span class="chip"><svg class="ic xs"><use href="#ph-clock-bold"/></svg>6 घंटे में नए</span></div>
+    <div class="mk-me-quest done"><span class="qi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">2 पाठ पूरे करें</span><div class="bar ok"><i style="width:100%"></i></div><span class="t-caption muted">2/2 · +10 जेम्स · +20 XP</span></div><span class="btn sm btn-primary" style="flex:none;white-space:nowrap;padding:0 16px">लें</span></div>
+    <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">20 कार्ड दोहराएँ</span><div class="bar primary"><i style="width:60%"></i></div><span class="t-caption muted">12/20 · +10 जेम्स · +15 XP</span></div></div>
+    <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-timer-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">15 मिनट पढ़ें</span><div class="bar primary"><i style="width:40%"></i></div><span class="t-caption muted">6/15 · +5 जेम्स · +10 XP</span></div></div>
+    <div class="row between" style="margin-top:4px"><span class="t-heading">हफ़्ते के</span><span class="t-caption muted">सोमवार को नए</span></div>
+    <div class="card" style="background:var(--streak-tint);box-shadow:none;display:flex;gap:10px;align-items:center;padding:12px 14px">
+      <img src="assets/object-weekly-chest.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin:-8px -4px -8px -8px;flex:none">
+      <div class="col grow" style="gap:5px"><span class="t-label">10 पाठ पूरे करें</span><div class="bar gold"><i style="width:70%"></i></div><span class="t-caption" style="color:var(--streak-text)">7/10 · हफ़्ते का बक्सा: 50 जेम्स और एक ट्रीट</span></div>
+    </div>
+    <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-exam-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">एक मॉक सेक्शन पूरा करें</span><div class="bar primary"><i style="width:0%"></i></div><span class="t-caption muted">0/1 · +25 जेम्स · +40 XP</span></div></div>
+    <div class="row" style="gap:8px"><svg class="ic sm muted"><use href="#ph-info-bold"/></svg><span class="t-caption muted">न लिए गए इनाम रीसेट पर अपने-आप जुड़ जाते हैं।</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">ME-20</span><span class="nm">Quests, Hindi, NEET app</span><span class="ds">Three daily quests with rewards shown up front, one ready to claim, and the weekly chest with its contents listed (no mystery box). Smriti NEET accent.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="ME-21">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Downloads</span><span class="chip pro" style="margin-right:6px">Pro</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <div class="row between"><span class="t-heading">412 MB</span><span class="t-caption muted">of 1 GB used by Smriti</span></div>
+      <div class="mk-me-stack"><i style="width:29%"></i><i style="width:12%"></i></div>
+      <div class="row wrap" style="gap:12px"><span class="mk-me-key"><i style="background:var(--primary)"></i>Downloads</span><span class="mk-me-key"><i style="background:var(--gem)"></i>Saved automatically</span><span class="mk-me-key"><i style="background:var(--track)"></i>Free on phone</span></div>
+    </div>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-hard-drives-bold"/></svg><span class="t-label grow">Storage limit</span><span class="val">1 GB</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-wifi-high-bold"/></svg><span class="t-label grow">Download on Wi-Fi only</span><span class="switch on"></span></div>
+      <div class="li"><svg class="ic"><use href="#ph-translate-bold"/></svg><span class="t-label grow">Download language</span><span class="val">Both</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <span class="mk-me-grp">Downloaded</span>
+    <div class="list mk-me-list">
+      <div class="li s-physics"><span class="mk-me-subj"><img src="assets/subject-physics.webp" alt=""></span><div class="grow"><span class="t-label">Physics</span><span class="t-caption muted">21 chapters · 268 MB</span></div><span class="iconbtn" aria-label="Remove Physics"><svg class="ic sm muted"><use href="#ph-trash-bold"/></svg></span></div>
+      <div class="li s-chemistry"><span class="mk-me-subj"><img src="assets/subject-chemistry.webp" alt=""></span><div class="grow"><span class="t-label">Chemistry · Bonding</span><span class="t-caption muted">Downloading · 64%</span></div><span class="ring" style="--sz:34px;--w:4px;--p:64;margin-right:5px"><span></span></span></div>
+    </div>
+    <span class="mk-me-grp">Saved automatically</span>
+    <div class="card row" style="gap:12px;padding:12px 14px"><svg class="ic" style="color:var(--gem)"><use href="#ph-clock-counter-clockwise-bold"/></svg><span class="t-caption muted grow">124 MB of lessons you opened. Removed first when space runs low.</span><span class="btn sm btn-secondary">Clear</span></div>
+  </div>
+  <div class="bottom" style="padding-top:6px"><span class="btn btn-primary"><svg class="ic"><use href="#ph-download-simple-bold"/></svg>Download a subject</span></div>
+</div></div>
+<figcaption><span class="id">ME-21</span><span class="nm">Downloads and storage, Pro</span><span class="ds">Stacked storage bar with a word legend, limit and Wi-Fi settings, pinned subjects with size, one downloading with a ring, remove buttons labelled.</span></figcaption>
+</figure>
+
+<!-- ============ SET ============ -->
+
+<figure class="mock" data-id="SET-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Settings</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card row" style="gap:12px"><span class="mk-me-init">A</span><div class="grow"><div class="t-heading">Aarav Sharma</div><div class="t-caption muted">aarav.s@example.com</div><div class="row" style="gap:5px;margin-top:3px"><svg class="g" style="width:14px;height:14px"><use href="#g-logo"/></svg><span class="t-caption muted">Signed in with Google</span></div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="card row" style="gap:12px;padding:12px 16px"><img src="assets/cat-price-tag.webp" alt="" style="width:46px;height:46px;object-fit:contain;flex:none"><span class="t-label grow">Try Pro for ₹1</span><svg class="ic" style="color:var(--streak)"><use href="#ph-crown-simple-fill"/></svg><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <span class="mk-me-grp">Learning</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-sliders-horizontal-bold"/></svg><span class="t-label grow">Study preferences</span><span class="val">10 min a day</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-download-simple-bold"/></svg><span class="t-label grow">Downloads and storage</span><span class="val">412 MB</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <span class="mk-me-grp">App</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-bell-bold"/></svg><span class="t-label grow">Notifications</span><span class="val">On · 7:00 PM</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-translate-bold"/></svg><span class="t-label grow">Language</span><span class="val">English · Lessons <span lang="hi">हिन्दी</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-circle-half-bold"/></svg><span class="t-label grow">Appearance</span><span class="val">Match my phone</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg><span class="t-label grow">Sound and haptics</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-square-half-bottom-bold"/></svg><span class="t-label grow">Add a widget</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <span class="mk-me-grp">Privacy and family</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-shield-check-bold"/></svg><span class="t-label grow">Privacy and data</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">SET-01</span><span class="nm">Settings, free plan</span><span class="ds">Account card (initial, not the Google photo) → SET-02, the ₹1 Pro row → PAY-01, then grouped rows with their current values.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-02">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Account</span></div>
+  <div class="body" style="padding-top:2px">
+    <div class="card lg col" style="align-items:center;text-align:center;gap:6px;padding:20px">
+      <span class="mk-me-init" style="width:64px;height:64px;border-radius:32px;font-size:26px">A</span>
+      <span class="t-title">Aarav Sharma</span>
+      <span class="t-label muted">aarav.s@example.com</span>
+      <div class="row" style="gap:6px;margin-top:4px"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-fill"/></svg>Saved</span><span class="chip"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg>Google</span></div>
+    </div>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-device-mobile-bold"/></svg><span class="t-label grow" style="font-weight:600">Your account works in every Smriti app and on the web.</span></div>
+      <div class="li"><svg class="ic"><use href="#ph-at-bold"/></svg><span class="t-label grow">@aarav.s</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-apple-logo-fill"/></svg><span class="t-label grow">Add Apple sign-in</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-arrows-left-right-bold"/></svg><span class="t-label grow">Switch account</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <div class="banner" style="background:var(--primary-tint);color:var(--ink);align-items:flex-start;padding:12px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-info-bold"/></svg><span class="grow">Pro is billed by Google Play. Deleting your account doesn't cancel it. <span class="link">Manage Pro</span></span></div>
+    <span class="sp"></span>
+    <span class="btn btn-secondary"><svg class="ic"><use href="#ph-sign-out-bold"/></svg>Sign out</span>
+    <span class="btn btn-ghost" style="color:var(--error-text);height:44px">Delete account</span>
+  </div>
+</div></div>
+<figcaption><span class="id">SET-02</span><span class="nm">Account, Google with Pro from Play</span><span class="ds">Identity with the Google provider chip. Rows open AUTH-11 (add Apple, iPhone only), AUTH-12 (switch, sign out), AUTH-13/14 (delete, with the store note) and PAY-12 (Manage Pro).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-03">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Notifications</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card lg" style="display:flex;flex-direction:column;gap:10px">
+      <div class="row between"><span class="t-heading">Daily reminder</span><span class="switch on"></span></div>
+      <div class="row" style="gap:12px"><img src="assets/ui-notify-bell.webp" alt="" style="width:72px;height:56px;object-fit:contain;flex:none"><div class="grow"><span class="t-display" style="color:var(--primary)">7:00 PM</span><div class="t-caption muted">Tap to change</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="divider"></div>
+      <div class="row between top"><div class="grow"><div class="t-label">Smart timing</div><div class="t-caption muted">Moves the reminder close to when you usually study.</div></div><span class="switch"></span></div>
+    </div>
+    <span class="mk-me-grp">Streak and plant</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-plant-bold"/></svg><span class="t-label grow">Streak at risk (8 PM)</span><span class="switch on"></span></div>
+      <div class="li"><svg class="ic"><use href="#ph-paw-print-bold"/></svg><span class="t-label grow">Plant and pet nudges</span><span class="switch on"></span></div>
+    </div>
+    <span class="mk-me-grp">Learning</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-cards-bold"/></svg><span class="t-label grow">Reviews due</span><span class="switch on"></span></div>
+      <div class="li"><svg class="ic"><use href="#ph-target-bold"/></svg><span class="t-label grow">Weak-area alerts</span><span class="switch on"></span></div>
+      <div class="li"><svg class="ic"><use href="#ph-moon-bold"/></svg><div class="grow"><span class="t-label">Bedtime review</span><span class="t-caption muted">Your 5 hardest cards, about 20 minutes before your usual bedtime.</span></div><span class="switch"></span></div>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">SET-03</span><span class="nm">Notifications, adult</span><span class="ds">Daily reminder time as a large value (→ SET-04), smart timing off by default, then per-kind switches. Minors don't see smart timing (R34).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-06">
+<div class="phone"><div class="screen sx" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="वापस"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">भाषा</span></div>
+  <div class="body" style="padding-top:2px">
+    <div><div class="t-heading">ऐप की भाषा</div><div class="t-caption muted">मेन्यू, बटन और Miso के संदेश।</div></div>
+    <div class="grid2" style="gap:10px">
+      <div class="mk-me-lang"><img src="assets/cat-wave.webp" alt=""><span class="t-heading" lang="en">English</span><span class="mk-me-radio"></span></div>
+      <div class="mk-me-lang sel"><svg class="ic chk"><use href="#ph-check-circle-fill"/></svg><img src="assets/ui-language-hello.webp" alt=""><span class="t-heading">हिन्दी</span><span class="mk-me-radio on"></span></div>
+    </div>
+    <span class="mk-me-grp">पाठ किस भाषा में</span>
+    <div class="list mk-me-list">
+      <div class="li"><span class="t-label grow">ऐप जैसी</span><span class="mk-me-radio on"></span></div>
+      <div class="li"><span class="t-label grow" lang="en">English</span><span class="mk-me-radio"></span></div>
+      <div class="li"><span class="t-label grow">हिन्दी</span><span class="mk-me-radio"></span></div>
+    </div>
+    <span class="t-caption muted" style="margin-top:-4px">किसी भी पाठ के अंदर भाषा बदल सकते हैं। मॉक टेस्ट निर्देश वाले पेज पर पूछते हैं।</span>
+    <span class="mk-me-grp">ट्यूटर किस भाषा में जवाब दे</span>
+    <div class="row wrap" style="gap:6px"><span class="chip on">जैसे मैं लिखूँ, वैसे</span><span class="chip" lang="en">English</span><span class="chip">हिन्दी</span><span class="chip">हिंग्लिश</span></div>
+  </div>
+  <div class="toast" style="bottom:22px"><span class="avatar" style="width:28px;height:28px"><img src="assets/cat-wave.webp" alt="" style="width:34px;height:34px;margin-top:4px"></span>नमस्ते! अब हम हिंदी में बात करेंगे।</div>
+</div></div>
+<figcaption><span class="id">SET-06</span><span class="nm">Language, just switched to Hindi</span><span class="ds">App language as two cards (each name in its own script and lang), lesson language and tutor replies set separately. The pet confirms in the new language.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-07">
+<div class="phone"><div class="screen sx dark">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Appearance</span></div>
+  <div class="body" style="padding-top:6px;gap:16px">
+    <div class="grid3" style="gap:10px">
+      <div class="col" style="align-items:center;gap:8px">
+        <div class="mk-me-prev" style="width:100%">
+          <div class="half sx" style="padding-right:3px"><div class="p1"><img src="assets/plant-sapling.webp" alt=""></div><div class="p2"></div><div class="p3"></div><div class="p4"><i></i><i></i></div></div>
+          <div class="half sx dark" style="padding-left:3px"><div class="p1"></div><div class="p2"></div><div class="p3"></div><div class="p4"><i></i><i></i></div></div>
+        </div>
+        <span class="mk-me-radio"></span><span class="t-label center">Match my phone</span>
+      </div>
+      <div class="col" style="align-items:center;gap:8px">
+        <div class="mk-me-prev" style="width:100%"><div class="half sx"><div class="p1"><img src="assets/plant-sapling.webp" alt=""></div><div class="p2"></div><div class="p3"></div><div class="p4"><i></i><i></i></div></div></div>
+        <span class="mk-me-radio"></span><span class="t-label">Light</span>
+      </div>
+      <div class="col" style="align-items:center;gap:8px">
+        <div class="mk-me-prev sel" style="width:100%"><div class="half sx dark"><div class="p1"><img src="assets/plant-sapling.webp" alt=""></div><div class="p2"></div><div class="p3"></div><div class="p4"><i></i><i></i></div></div></div>
+        <span class="mk-me-radio on"></span><span class="t-label">Dark</span>
+      </div>
+    </div>
+    <div class="list mk-me-list">
+      <div class="li" style="align-items:flex-start;padding:14px"><svg class="ic"><use href="#ph-exam-bold"/></svg><div class="grow"><span class="t-label">Dark mode in mock tests</span><span class="t-caption muted">Off keeps mocks looking like the real exam.</span></div><span class="switch"></span></div>
+    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-sleepy.webp" alt="" style="width:50px;height:50px;margin-top:2px"></div><div class="bubble">Night Colour is easy on the eyes. Same colours, just cosier.</div></div>
+  </div>
+</div></div>
+<figcaption><span class="id">SET-07</span><span class="nm">Appearance, Dark selected</span><span class="ds">Three live previews built from the real tokens (not images), radios under each, and the mock-test exception switch. Shown in Night Colour.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-11">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Privacy and data</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card tint row" style="gap:8px;padding:14px 10px 14px 16px;align-items:center">
+      <span class="t-label grow" style="font-weight:600">What we keep: your progress, answers and study times, so we can teach you. We never sell your data or show ads.</span>
+      <img src="assets/cat-shield-key.webp" alt="Miso holding a shield and a key" style="width:88px;height:88px;object-fit:contain;flex:none;margin:-6px -4px -6px 0">
+    </div>
+    <span class="mk-me-grp">Your choices</span>
+    <div class="list mk-me-list">
+      <div class="li"><div class="grow"><span class="t-label">Saved account and sync</span><span class="t-caption muted">On since 12 Aug</span></div><span class="chip ok" style="height:26px"><svg class="ic xs"><use href="#ph-check-bold"/></svg>On</span></div>
+      <div class="li"><div class="grow"><span class="t-label">Friends and leagues</span><span class="t-caption muted">On since 3 Sep</span></div><span class="chip ok" style="height:26px"><svg class="ic xs"><use href="#ph-check-bold"/></svg>On</span></div>
+      <div class="li"><div class="grow"><span class="t-label">Voice tutor audio</span><span class="t-caption muted">Ask a guardian to allow it</span></div><span class="chip warn" style="height:26px"><svg class="ic xs"><use href="#ph-user-bold"/></svg>Needs a guardian</span></div>
+      <div class="li"><div class="grow"><span class="t-label">Photo doubts</span></div><span class="chip" style="height:26px">Off</span></div>
+    </div>
+    <div class="banner" style="align-items:flex-start;padding:12px"><svg class="ic sm"><use href="#ph-info-bold"/></svg>For students under 18 we only collect what's needed to teach and keep the app working.</div>
+    <div class="list mk-me-list"><div class="li"><svg class="ic"><use href="#ph-identification-card-bold"/></svg><div class="grow"><span class="t-label">How others see my name</span><span class="t-caption muted">First name and initial</span></div><svg class="ic sm muted"><use href="#ph-lock-simple-bold"/></svg></div></div>
+    <span class="btn btn-secondary">Request a copy of my data</span>
+    <div class="row" style="justify-content:center;gap:18px"><span class="link t-label">Privacy policy</span><span class="link t-label">Terms of use</span></div>
+    <span class="t-label center" style="color:var(--error-text)">Delete my account</span>
+  </div>
+</div></div>
+<figcaption><span class="id">SET-11</span><span class="nm">Privacy and data, student aged 13–17</span><span class="ds">Plain summary first, then each consent with a word chip and date. A scope without guardian consent says "Needs a guardian" (→ AUTH-18). No analytics switch for minors.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-14">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top"><span class="ttl big">Parent mode</span><span class="chip warn" style="height:26px;font-size:12px">Phase 3</span><span class="btn sm btn-ghost">Exit</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card" style="background:var(--primary-tint);box-shadow:none;display:flex;flex-direction:column;gap:10px">
+      <span class="t-caption" style="color:var(--primary)">NEEDS YOU</span>
+      <span class="t-label">Riya asked for 15 more minutes</span>
+      <div class="row" style="gap:8px"><span class="btn sm btn-primary">Allow 15 min</span><span class="btn sm btn-secondary">Not today</span></div>
+    </div>
+    <div class="card lg" style="display:flex;flex-direction:column;gap:12px">
+      <div class="row" style="gap:12px">
+        <div class="mk-me-av" style="width:56px;height:56px"><img src="assets/dog-wave.webp" alt="Riya's pet"></div>
+        <div class="grow"><div class="t-heading">Riya</div><div class="t-caption muted">Class 4</div></div>
+        <span class="chip pro">Pro</span>
+      </div>
+      <div class="row between"><span class="t-title">96 min <span class="t-label muted">this week</span></span><span class="chip gold" style="height:28px"><svg class="ic xs"><use href="#ph-plant-fill"/></svg>5 day streak</span></div>
+      <div class="mk-me-chart" aria-label="Most on Saturday, 28 minutes">
+        <div><i style="height:40%"></i><span>M</span></div><div><i style="height:55%"></i><span>T</span></div><div><i class="zero"></i><span>W</span></div><div><i style="height:35%"></i><span>T</span></div><div><i style="height:50%"></i><span>F</span></div><div><i style="height:100%"></i><span>S</span></div><div><i style="height:62%"></i><span>S</span></div>
+      </div>
+      <div class="mk-me-act3"><span><svg class="ic sm"><use href="#ph-chart-bar-bold"/></svg>Weekly report</span><span><svg class="ic sm"><use href="#ph-timer-bold"/></svg>Time limits</span><span><svg class="ic sm"><use href="#ph-shield-check-bold"/></svg>Consents</span></div>
+    </div>
+    <div class="card lg row" style="gap:12px">
+      <div class="mk-me-av" style="width:56px;height:56px"><img src="assets/cat-reading.webp" alt="Kabir's pet"></div>
+      <div class="grow"><div class="t-heading">Kabir</div><div class="t-caption muted">Class 8 · 142 min this week</div></div>
+      <span class="link t-label">Get Pro for Kabir</span>
+    </div>
+    <span class="btn btn-secondary"><svg class="ic"><use href="#ph-plus-bold"/></svg>Add a child</span>
+  </div>
+</div></div>
+<figcaption><span class="id">SET-14</span><span class="nm">Parent dashboard (Phase 3)</span><span class="ds">One request waiting, a card per child with the week's minutes, streak and a 7-day chart, and the actions to the weekly report, time limits and consents.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-15">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Riya's week</span><span class="chip warn" style="height:26px;font-size:12px;margin-right:6px">Phase 3</span></div>
+  <div class="body scroll-cut" style="padding-top:0">
+    <div class="row between" style="padding:0 2px"><span class="iconbtn filled" style="width:36px;height:36px" aria-label="Previous week"><svg class="ic sm"><use href="#ph-caret-left-bold"/></svg></span><span class="t-label">19 – 25 Oct</span><span class="iconbtn filled" style="width:36px;height:36px;opacity:.5" aria-label="Next week"><svg class="ic sm"><use href="#ph-caret-right-bold"/></svg></span></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+      <div class="stat" style="padding:10px 8px"><b>96</b><span>Minutes</span></div><div class="stat" style="padding:10px 8px"><b>11</b><span>Lessons</span></div>
+      <div class="stat" style="padding:10px 8px"><b>64</b><span>Reviews</span></div><div class="stat" style="padding:10px 8px"><b>5</b><span>Streak</span></div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <span class="t-label">Minutes each day</span>
+      <div class="mk-me-chart big">
+        <div><em>12</em><i style="height:40%"></i><span>Mon</span></div><div><em>16</em><i style="height:55%"></i><span>Tue</span></div><div><em>0</em><i class="zero"></i><span>Wed</span></div><div><em>10</em><i style="height:35%"></i><span>Thu</span></div><div><em>14</em><i style="height:50%"></i><span>Fri</span></div><div><em>28</em><i style="height:88%"></i><span>Sat</span></div><div><em>16</em><i style="height:55%"></i><span>Sun</span></div>
+      </div>
+    </div>
+    <span class="mk-me-grp">Subjects</span>
+    <div class="list mk-me-list">
+      <div class="li s-biology"><span class="mk-me-subj"><img src="assets/subject-evs.webp" alt=""></span><div class="grow"><span class="t-label">EVS · 42 min</span><span class="t-caption muted">Topic title · Topic title</span></div></div>
+      <div class="li s-maths"><span class="mk-me-subj"><img src="assets/subject-maths.webp" alt=""></span><div class="grow"><span class="t-label">Maths · 38 min</span><span class="t-caption muted">Topic title</span></div></div>
+    </div>
+    <div class="petline"><div class="av" style="background:var(--primary-tint)"><img src="assets/dog-celebrate.webp" alt=""></div><div class="bubble">We had a good week!</div></div>
+  </div>
+  <div class="bottom" style="padding-top:6px;gap:6px"><span class="btn btn-secondary"><svg class="ic"><use href="#ph-hands-clapping-bold"/></svg>Send a cheer</span><span class="t-caption muted center">Chats, notes and anything Riya types stay private.</span></div>
+</div></div>
+<figcaption><span class="id">SET-15</span><span class="nm">Weekly report (Phase 3)</span><span class="ds">Counts and topic names only: four tiles, minutes per day with values, subjects with their names (colour never alone), and a preset cheer, no free text.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="SET-16">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Time limits for Riya</span><span class="chip warn" style="height:26px;font-size:12px;margin-right:6px">Phase 3</span></div>
+  <div class="body" style="padding-top:2px">
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <span class="t-heading">Daily limit</span>
+      <div class="row wrap" style="gap:6px"><span class="chip">Off</span><span class="chip">15</span><span class="chip on">30 min</span><span class="chip">45</span><span class="chip">60</span><span class="chip">90</span><span class="chip">120</span></div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <div class="row between"><span class="t-heading">Only between</span><span class="switch on"></span></div>
+      <div class="grid2" style="gap:10px"><div class="input" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;height:58px"><span class="t-caption">From</span><span class="t-label" style="color:var(--ink)">4:00 PM</span></div><div class="input" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;height:58px"><span class="t-caption">To</span><span class="t-label" style="color:var(--ink)">7:30 PM</span></div></div>
+    </div>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-timer-bold"/></svg><span class="t-label grow">Remind Riya to take a break every 25 minutes</span><span class="switch on"></span></div>
+      <div class="li"><svg class="ic"><use href="#ph-bell-bold"/></svg><span class="t-label grow">Daily reminder</span><span class="val">5:00 PM</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-target-bold"/></svg><span class="t-label grow">Daily goal</span><span class="val">10 min</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-translate-bold"/></svg><span class="t-label grow">Lesson language</span><span class="val" lang="hi">हिन्दी</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <div class="row" style="gap:8px"><svg class="ic sm muted"><use href="#ph-info-bold"/></svg><span class="t-caption muted">A lesson card or mock section in progress always finishes first.</span></div>
+  </div>
+  <div class="bottom" style="padding-top:4px"><span class="btn btn-primary">Save</span></div>
+</div></div>
+<figcaption><span class="id">SET-16</span><span class="nm">Time limits (Phase 3)</span><span class="ds">Daily limit chips, allowed hours, break reminders, and the little-learner extras (reminder, goal, lesson language) that move here from the child's settings.</span></figcaption>
+</figure>
+
+<!-- ============ PAY ============ -->
+
+<figure class="mock" data-id="PAY-01">
+<div class="phone"><div class="screen sx">
+  <div class="mk-me-pwhero">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <span class="iconbtn close" aria-label="Maybe later"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="pet"><img src="assets/cat-price-tag.webp" alt="Miso holds a gold tag"><span class="rs" aria-hidden="true">₹1</span></div>
+    <div class="bub">Here's what Pro adds.</div>
+  </div>
+  <div class="body scroll-cut" style="padding-top:14px;gap:10px">
+    <div><div class="t-title" style="font-size:24px;line-height:30px">Try Pro for ₹1 for your first month.</div><div class="t-body muted" style="margin-top:2px">₹99/month after. Cancel anytime.</div></div>
+    <div class="mk-me-plan">
+      <div class="row between"><span class="row" style="gap:8px"><span class="mk-me-radio on"></span><span class="t-label">Pro monthly</span></span><span class="t-caption muted">₹1, then ₹99/month</span></div>
+      <ul class="mk-me-tl">
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct · all of Pro unlocks</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 Nov: we remind you by push and email</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b></div></li>
+      </ul>
+      <span class="t-caption" style="color:var(--primary)">Cancel anytime in 2 taps from Your plan.</span>
+    </div>
+    <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="grow"><div class="t-label">All Deep Dives</div><div class="t-caption muted">Every chapter, every subject.</div></div></div>
+    <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-exam-bold"/></svg></span><div class="grow"><div class="t-label">Unlimited practice and the full PYQ bank</div></div></div>
+  </div>
+  <div class="mk-me-stick">
+    <span class="btn btn-primary">Start for ₹1</span>
+    <span class="btn btn-ghost">Maybe later</span>
+    <span class="mk-me-fine">₹1 for the first month, then ₹99/month, billed by Google Play. Renews every month until you cancel.</span>
+    <span class="mk-me-links">Restore purchases · Terms · Privacy</span>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-01</span><span class="nm">Paywall, default (source me_card)</span><span class="ds">Trial timeline with real dates: ₹1 today, our push and email reminder 3 days before, ₹99/month from the renewal date, and "Cancel anytime in 2 taps" (R33). "Maybe later" always visible. No countdown, no anchor, no "% off". Android.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-01">
+<div class="phone"><div class="screen sx x-upsc">
+  <div class="mk-me-pwhero">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <span class="iconbtn close" aria-label="Maybe later"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="pet"><img src="assets/cat-price-tag.webp" alt="Miso holds a gold tag"><span class="rs" aria-hidden="true">₹1</span></div>
+    <div class="bub">We've used today's 5 free questions.</div>
+  </div>
+  <div class="body scroll-cut" style="padding-top:14px;gap:10px">
+    <div><div class="t-title" style="font-size:24px;line-height:30px">Try Pro for ₹1 for your first month.</div><div class="t-body muted" style="margin-top:2px">₹99/month after. Cancel anytime.</div></div>
+    <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-chat-circle-dots-bold"/></svg></span><div class="grow"><div class="t-label">Higher tutor limits</div><div class="t-caption muted">Keep asking today, in text or with a photo.</div></div></div>
+    <div class="mk-me-plan">
+      <div class="row between"><span class="row" style="gap:8px"><span class="mk-me-radio on"></span><span class="t-label">Pro monthly</span></span><span class="t-caption muted">₹1, then ₹99/month</span></div>
+      <ul class="mk-me-tl">
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct · all of Pro unlocks</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 Nov: we remind you by push and email</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b></div></li>
+      </ul>
+      <span class="t-caption" style="color:var(--primary)">Cancel anytime in 2 taps from Your plan.</span>
+    </div>
+    <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="grow"><div class="t-label">All Deep Dives</div></div></div>
+  </div>
+  <div class="mk-me-stick">
+    <span class="btn btn-primary">Start for ₹1</span>
+    <span class="btn btn-ghost">Maybe later</span>
+    <span class="mk-me-fine">₹1 for the first month, then ₹99/month, billed by Google Play. Renews every month until you cancel.</span>
+    <span class="mk-me-links">Restore purchases · Terms · Privacy</span>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-01</span><span class="nm">Paywall, tutor_limit trigger, UPSC app</span><span class="ds">Opened from AI-06 at the 6th tutor question: the pet line names the limit and the trigger's benefit is the first row. Smriti UPSC accent; "Pro works in every Smriti app" sits below the fold.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-01">
+<div class="phone"><div class="screen sx" lang="hi">
+  <div class="mk-me-pwhero">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <span class="iconbtn close" aria-label="अभी नहीं"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
+    <div class="pet"><img src="assets/cat-price-tag.webp" alt="Miso के हाथ में सुनहरा टैग"><span class="rs" aria-hidden="true">₹1</span></div>
+    <div class="bub">यह डीप डाइव Pro में है।</div>
+  </div>
+  <div class="body scroll-cut" style="padding-top:14px;gap:10px">
+    <div><div class="t-title" style="font-size:23px;line-height:32px">पहला महीना सिर्फ़ ₹1 में Pro आज़माएँ।</div><div class="t-body muted" style="margin-top:2px">उसके बाद ₹99/माह। कभी भी रद्द करें।</div></div>
+    <div class="mk-me-plan">
+      <div class="row between"><span class="row" style="gap:8px"><span class="mk-me-radio on"></span><span class="t-label">Pro मासिक</span></span><span class="t-caption muted">पहला महीना ₹1, फिर ₹99/माह</span></div>
+      <ul class="mk-me-tl">
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>आज: ₹1</b><span>गुरु 29 अक्टू · पूरा Pro खुल जाएगा</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 नवं: हम पुश और ईमेल से याद दिलाएँगे</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 नवं: ₹99/माह शुरू</b></div></li>
+      </ul>
+      <span class="t-caption" style="color:var(--primary)">"आपका प्लान" से 2 टैप में कभी भी रद्द करें।</span>
+    </div>
+    <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="grow"><div class="t-label">सारे डीप डाइव</div><div class="t-caption muted">हर विषय का हर चैप्टर।</div></div></div>
+  </div>
+  <div class="mk-me-stick">
+    <span class="btn btn-primary">₹1 में शुरू करें</span>
+    <span class="btn btn-ghost">अभी नहीं</span>
+    <span class="mk-me-fine">पहला महीना ₹1, फिर ₹99/माह, बिल Google Play से। रद्द करने तक हर महीने रिन्यू होगा।</span>
+    <span class="mk-me-links">खरीदारी वापस लाएँ · शर्तें · निजता</span>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-01</span><span class="nm">Paywall, Hindi (deep_dive_lock)</span><span class="ds">The same honest layout in Hindi with localised dates (29 अक्टू, 26 नवं, 29 नवं) and ₹99/माह, opened from a locked deep dive.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-04">
+<div class="phone"><div class="screen sx">
+  <div class="mk-me-pwhero">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <div class="pet"><img src="assets/cat-price-tag.webp" alt=""><span class="rs" aria-hidden="true">₹1</span></div>
+    <div class="bub">Here's what Pro adds.</div>
+  </div>
+  <div class="body" style="padding-top:14px">
+    <div class="t-title" style="font-size:24px;line-height:30px">Try Pro for ₹1 for your first month.</div>
+    <span class="btn btn-primary" style="opacity:.8"><svg class="ic" style="animation:none"><use href="#ph-circle-notch-bold"/></svg>Opening Google Play…</span>
+  </div>
+  <div class="scrim"></div>
+  <div class="mk-me-sys">
+    <span class="mk-me-label"><svg class="ic xs"><use href="#ph-device-mobile-bold"/></svg>System sheet · Google Play</span>
+    <div class="row" style="gap:12px"><span class="mk-me-appic"><img src="assets/app-icon.webp" alt="Smriti JEE app icon"></span><div class="grow"><div style="font:500 16px/22px Roboto,var(--f-latin)">Pro monthly</div><div class="t-caption muted" style="font-family:Roboto,var(--f-latin)">Smriti JEE</div></div></div>
+    <div class="divider"></div>
+    <div class="col" style="gap:2px;font-family:Roboto,var(--f-latin)"><div style="font:500 18px/24px Roboto,var(--f-latin)">₹1 for 1 month</div><div class="t-label muted" style="font-family:Roboto,var(--f-latin);font-weight:500">then ₹99/month</div></div>
+    <div class="row" style="gap:12px;font:400 14px/20px Roboto,var(--f-latin)"><svg class="ic" style="color:var(--muted)"><use href="#ph-credit-card-bold"/></svg><span class="grow">UPI · aarav@bank</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <span class="sysbtn">Subscribe</span>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-04</span><span class="nm">Checkout, Android (system sheet)</span><span class="ds">Our paywall dims with the CTA loading "Opening Google Play…"; Google Play's own sheet takes the payment. Its look is Google's; shown neutrally here and labelled.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-06">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-url"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>smriti.app/pro/checkout</div>
+  <div class="mk-me-top back" style="height:44px"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Review and pay</span></div>
+  <div class="body" style="padding-top:2px">
+    <div class="card lg" style="display:flex;flex-direction:column;gap:12px">
+      <div class="row between"><span class="t-heading">Pro monthly</span><span class="t-caption muted">For aarav.s@example.com</span></div>
+      <ul class="mk-me-tl">
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 Nov: we remind you by push and email</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b><span>Then every month until you cancel</span></div></li>
+      </ul>
+    </div>
+    <span class="mk-me-grp">How Autopay works</span>
+    <div class="col" style="gap:10px;padding:0 4px">
+      <div class="row top"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-device-mobile-bold"/></svg><span class="t-label" style="font-weight:600">Approve once in your UPI app.</span></div>
+      <div class="row top"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-bell-bold"/></svg><span class="t-label" style="font-weight:600">Your bank or UPI app tells you before each charge.</span></div>
+      <div class="row top"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-x-circle-bold"/></svg><span class="t-label" style="font-weight:600">Cancel anytime in Smriti or in your UPI app.</span></div>
+    </div>
+    <span class="t-caption muted" style="padding:0 4px">UPI Autopay, card or netbanking</span>
+    <div class="banner" style="background:var(--primary-tint);color:var(--ink);align-items:flex-start;padding:10px 12px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-info-bold"/></svg>Your UPI app will show the Autopay details before you approve.</div>
+  </div>
+  <div class="bottom" style="padding-top:4px;gap:4px"><span class="btn btn-primary">Continue to pay ₹1</span><span class="btn btn-ghost" style="height:40px">Back</span><span class="mk-me-links">Terms · Privacy</span></div>
+</div></div>
+<figcaption><span class="id">PAY-06</span><span class="nm">Web checkout review (phone browser)</span><span class="ds">Exactly what is charged and when, with the same three dates as the paywall, before Razorpay opens.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-07">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-url"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>smriti.app/pro/checkout</div>
+  <div class="body" style="padding-top:8px">
+    <div class="card lg" style="height:150px"></div>
+    <div class="card" style="height:120px"></div>
+  </div>
+  <div class="scrim"></div>
+  <div class="mk-me-host">
+    <div class="hd"><span class="t-caption" style="opacity:.9">SMRITI · PRO MONTHLY</span><span class="t-title">₹1 today</span><span class="t-caption" style="opacity:.9">Then UPI Autopay, ₹99 every month from 29 Nov</span></div>
+    <div class="opt sel"><svg class="ic"><use href="#ph-device-mobile-bold"/></svg><span class="grow">Pay with a UPI app</span><svg class="ic sm" style="color:var(--primary)"><use href="#ph-check-circle-fill"/></svg></div>
+    <div class="opt"><svg class="ic"><use href="#ph-at-bold"/></svg><span class="grow">UPI ID</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="opt"><svg class="ic"><use href="#ph-credit-card-bold"/></svg><span class="grow">Card</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="opt"><svg class="ic"><use href="#ph-bank-bold"/></svg><span class="grow">Netbanking</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+  </div>
+  <div style="position:absolute;left:14px;right:14px;bottom:20px;z-index:7;display:flex;flex-direction:column;gap:10px;align-items:center">
+    <span class="mk-me-label"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg>Razorpay hosted checkout · not our UI</span>
+    <div class="toast" style="position:static;width:100%"><svg class="ic sm"><use href="#ph-arrow-square-out-bold"/></svg>Finish in your UPI app, then come back here.</div>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-07</span><span class="nm">Web checkout, UPI Autopay hand-off</span><span class="ds">Razorpay's hosted Checkout over our review page (name, "Pro monthly", our primary colour as its theme). Shown neutrally without its logo. The return hint shows while the UPI app is open.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-09">
+<div class="phone"><div class="screen sx" style="background:var(--primary-tint)">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="padding-top:6px;gap:14px">
+    <div class="scene" style="height:210px;flex:none"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt="Miso is celebrating" style="object-position:50% 40%"></div>
+    <div class="center"><div class="t-display">Pro is on!</div><div class="t-body" style="margin-top:4px">Your plan: ₹1 until 29 Nov, then ₹99/month. We'll remind you on 26 Nov.</div><div class="link t-caption" style="margin-top:4px">Cancel anytime in Your plan</div></div>
+    <span class="mk-me-grp" style="color:var(--primary)">Try now</span>
+    <div class="list mk-me-list">
+      <div class="li s-physics"><span class="lead"><svg class="ic sm"><use href="#ph-books-bold"/></svg></span><span class="t-label grow">Continue your deep dive</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li s-maths"><span class="lead"><svg class="ic sm"><use href="#ph-exam-bold"/></svg></span><span class="t-label grow">Start a full mock</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:6px"><span class="btn btn-primary">Continue</span></div>
+</div></div>
+<figcaption><span class="id">PAY-09</span><span class="nm">Welcome to Pro</span><span class="ds">The celebration on primary tint (gold stays for streak, plant, gems and the ₹1 tag, R11) restates the plan once with the reminder date and Continue returns to the item that opened the paywall.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-10">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-url"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>smriti.app/pro/confirming</div>
+  <div class="body" style="padding-top:6px;gap:14px">
+    <div class="scene" style="height:200px;flex:none;display:grid;place-items:center"><img src="assets/cat-hourglass.webp" alt="Miso is waiting beside an hourglass" style="width:200px;height:200px;object-fit:contain"></div>
+    <div><div class="t-title">Your bank is confirming</div><div class="t-body muted" style="margin-top:4px">This can take a little while. We'll tell you as soon as Pro is on.</div></div>
+    <div class="card mk-me-check">
+      <div class="d"><i><svg class="ic"><use href="#ph-check-bold"/></svg></i>Autopay approved in your UPI app</div>
+      <div class="w"><i><svg class="ic"><use href="#ph-hourglass-medium-bold"/></svg></i>Bank confirming the ₹1</div>
+      <div class="muted"><i></i>Turning on Pro</div>
+    </div>
+    <div class="row" style="gap:8px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg><span class="t-label" style="font-weight:600">You can keep learning for free meanwhile.</span></div>
+  </div>
+  <div class="bottom" style="padding-top:4px;gap:4px"><span class="btn btn-primary">Back to learning</span><span class="btn btn-ghost" style="height:44px">Check status</span></div>
+</div></div>
+<figcaption><span class="id">PAY-10 · PAY-08</span><span class="nm">UPI mandate pending</span><span class="ds">No confirmation after 60 s: the checklist shows real server status, no fake progress bar or timer, and the student goes back to learning.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-11">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-url"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>smriti.app/pro/checkout</div>
+  <div class="body" style="padding-top:8px"><div class="t-title">Review and pay</div><div class="card lg" style="height:150px"></div></div>
+  <div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="hero" style="height:170px"><img src="assets/cat-wrench.webp" alt="Something went wrong" style="width:170px;height:170px"></div>
+    <div class="t-title center">That didn't go through</div>
+    <div class="t-body muted center">The UPI request timed out.</div>
+    <div class="row" style="justify-content:center;gap:6px;color:var(--success-text)"><svg class="ic sm"><use href="#ph-check-circle-fill"/></svg><span class="t-label">No money was taken.</span></div>
+    <span class="btn btn-primary">Try again</span>
+    <span class="btn btn-secondary">Use another way to pay</span>
+    <span class="link t-label center">Get help</span>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-11</span><span class="nm">Payment failed, UPI timeout</span><span class="ds">Plain reason, "No money was taken" only because the error code guarantees it, a retry and another way to pay. No error-red fills, no shake.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-12">
+<div class="phone"><div class="screen sx dark">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Your plan</span></div>
+  <div class="body" style="padding-top:2px">
+    <div class="banner" style="background:var(--primary-tint);color:var(--ink);min-height:48px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-calendar-check-bold"/></svg><span class="grow">Your ₹1 month ends 29 Nov. Then ₹99/month.</span></div>
+    <div class="card lg" style="display:flex;flex-direction:column;gap:10px">
+      <div class="row between"><span class="t-title">Pro monthly</span><span class="chip ok"><svg class="ic xs"><use href="#ph-check-bold"/></svg>Active</span></div>
+      <span class="t-body">₹1 month until 29 Nov, then ₹99/month</span>
+      <ul class="mk-me-tl">
+        <li><span class="nd"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>29 Oct: ₹1 paid</b></div></li>
+        <li><span class="nd now"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>Today, 26 Nov: your reminder</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b></div></li>
+      </ul>
+      <div class="divider"></div>
+      <div class="row" style="gap:10px"><svg class="ic sm muted"><use href="#ph-google-play-logo-bold"/></svg><span class="t-label muted grow" style="font-weight:600">Billed by Google Play in Smriti JEE</span></div>
+    </div>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-credit-card-bold"/></svg><span class="t-label grow">Change payment method</span><svg class="ic sm muted"><use href="#ph-arrow-square-out-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-arrows-clockwise-bold"/></svg><span class="t-label grow">Restore purchases</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-question-bold"/></svg><span class="t-label grow">Get help with Pro</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <span class="sp"></span>
+    <span class="btn btn-secondary" style="color:var(--error-text)">Cancel Pro</span>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-12</span><span class="nm">Manage plan, ₹1 month ending (dark)</span><span class="ds">On 26 Nov: our reminder banner, status card with the trial timeline (today marked) and the billing source, Restore purchases, and Cancel Pro always visible (2 taps to cancel, R33).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-13">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Your plan</span></div>
+  <div class="body"><div class="card lg" style="height:160px"></div></div>
+  <div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="t-title">Cancel Pro?</div>
+    <div class="banner" style="background:var(--primary-tint);color:var(--ink);padding:10px 12px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-info-bold"/></svg>During your ₹1 month: cancelling now means no ₹99 charge.</div>
+    <div class="row top" style="gap:10px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg><span class="t-label">You keep Pro until 29 Nov.</span></div>
+    <div class="row top" style="gap:10px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg><span class="t-label" style="font-weight:600">After that you're on the free plan. Your progress, streak, plant and cards stay.</span></div>
+    <span class="t-caption muted" style="margin-top:2px">Want to tell us why? (optional)</span>
+    <div class="row wrap" style="gap:6px"><span class="chip">Too expensive</span><span class="chip">Not using it enough</span><span class="chip">Exam is over</span><span class="chip">Other</span></div>
+    <span class="t-caption muted">Cancelling happens in Google Play. Come back here after.</span>
+    <span class="btn btn-primary">Go to Google Play</span>
+    <div class="row" style="justify-content:space-between"><div class="petline" style="align-items:center"><div class="av" style="width:36px;height:36px"><img src="assets/cat-base.webp" alt="" style="width:44px;height:44px"></div><span class="t-caption muted">I'll be here either way!</span></div><span class="btn sm btn-ghost">Keep Pro</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">PAY-13</span><span class="nm">Cancel Pro, Google Play</span><span class="ds">What is kept and when it ends, optional skippable reasons, and the hand-off to Play. Neutral pet, no guilt, no extra confirm step.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="PAY-15">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top"><span class="ttl big">Me</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span><span class="iconbtn" aria-label="Settings"><svg class="ic"><use href="#ph-gear-six-bold"/></svg></span></div>
+  <div class="banner warn" style="margin:0 16px 8px;min-height:48px;padding:8px 8px 8px 12px;border-radius:16px;flex:none"><svg class="ic sm"><use href="#ph-credit-card-bold"/></svg><span class="grow">Payment didn't go through. Fix it by 6 Dec.</span><span class="btn sm" style="height:34px;padding:0 12px;background:var(--surface);color:var(--warning-text)">Fix</span></div>
+  <div class="body scroll-cut" style="padding-top:2px">
+    <div class="card"><div class="row between"><span class="t-label">Today's quests · 6 h left</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="col" style="gap:8px;margin-top:10px"><div class="bar primary"><i style="width:100%"></i></div><div class="bar primary"><i style="width:60%"></i></div><div class="bar primary"><i style="width:40%"></i></div></div></div>
+    <span class="mk-me-grp">Collections</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-medal-bold"/></svg><span class="t-label grow">Badges</span><span class="val">3</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-cards-bold"/></svg><span class="t-label grow">Card album</span><span class="val">14 of 120</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><svg class="ic"><use href="#ph-calendar-blank-bold"/></svg><span class="t-label grow">Streak calendar</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <span class="mk-me-grp">Tools</span>
+    <div class="list mk-me-list">
+      <div class="li"><svg class="ic"><use href="#ph-download-simple-bold"/></svg><span class="t-label grow">Downloads · 412 MB used</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+    <div class="card row" style="background:var(--warning-tint);box-shadow:none;gap:12px"><svg class="ic" style="color:var(--warning-text)"><use href="#ph-credit-card-bold"/></svg><div class="grow"><div class="t-label">Payment needs a fix</div><div class="t-caption" style="color:var(--warning-text)">Pro keeps working until 6 Dec</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-user-circle-fill"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">NTF-04 · PAY-15</span><span class="nm">Billing issue banner on Me</span><span class="ds">Renewal failed, grace period: a warning-tone banner (never error red) with a CreditCard icon and [Fix] → PAY-15, and the Pro card turns warning tint.</span></figcaption>
+</figure>
+
+<!-- ============ NTF ============ -->
+
+<figure class="mock" data-id="NTF-01">
+<div class="phone"><div class="screen sx dark">
+  <div class="mk-me-wall"><img src="assets/scene-welcome.webp" alt=""></div>
+  <div class="statusbar on-dark" style="position:relative;z-index:1"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-lockclock"><div class="d">Thursday, 26 November</div><div class="t">9:41</div></div>
+  <div class="sx mk-me-ntfs" style="background:transparent;margin-top:18px">
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · now</div><div class="tt">Miso</div><div class="bd">Miso saved you a seat. 5-min lesson?</div></div><span class="lic"><img src="assets/cat-wave.webp" alt=""></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 1 h ago</div><div class="tt">Miso</div><div class="bd">Your plant is thirsty. One lesson waters it.</div></div><span class="lic"><img src="assets/cat-sleepy.webp" alt="" style="width:52px;height:52px;margin-top:4px"></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 2 h ago</div><div class="tt">Miso</div><div class="bd">Kabir challenged you to a duel!</div><span class="act">Accept</span></div><span class="lic"><img src="assets/cat-celebrate.webp" alt=""></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 10:00 AM</div><div class="tt">Smriti</div><div class="bd">Your ₹1 month ends 29 Nov. Then ₹99/month.</div></div><span class="mk-me-appic" style="width:46px;height:46px;border-radius:14px"><img src="assets/app-icon.webp" alt="Smriti JEE app icon"></span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">NTF-01</span><span class="nm">Push on the lock screen, English (light cards)</span><span class="ds">daily_reminder, daily_reminder_thirsty, duel_challenge (only kind with [Accept]) and trial_ending. Pet as the large icon and the pet's name as title; billing uses the brand and app icon. Every body ≤ 60 characters.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="NTF-01">
+<div class="phone"><div class="screen sx dark" lang="hi">
+  <div class="mk-me-wall"><img src="assets/scene-memory-palace.webp" alt=""></div>
+  <div class="statusbar on-dark" style="position:relative;z-index:1"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-lockclock"><div class="d">गुरुवार, 26 नवंबर</div><div class="t">9:41</div></div>
+  <div class="mk-me-ntfs" style="margin-top:18px">
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · अभी</div><div class="tt">Miso</div><div class="bd">Miso ने आपके लिए जगह रखी है। 5 मिनट का पाठ?</div></div><span class="lic"><img src="assets/cat-wave.webp" alt=""></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 1 घंटा पहले</div><div class="tt">Miso</div><div class="bd">आपका पौधा प्यासा है। एक पाठ से पानी मिलेगा।</div></div><span class="lic"><img src="assets/cat-sleepy.webp" alt="" style="width:52px;height:52px;margin-top:4px"></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 2 घंटे पहले</div><div class="tt">Miso</div><div class="bd">कबीर ने आपको मुकाबले की चुनौती दी है!</div><span class="act">स्वीकार करें</span></div><span class="lic"><img src="assets/cat-celebrate.webp" alt=""></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · सुबह 10:00</div><div class="tt">Smriti</div><div class="bd">आपका ₹1 वाला महीना 29 नवं को खत्म। फिर ₹99/माह।</div></div><span class="mk-me-appic" style="width:46px;height:46px;border-radius:14px"><img src="assets/app-icon.webp" alt="Smriti JEE app icon"></span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">NTF-01</span><span class="nm">Push on the lock screen, Hindi (dark)</span><span class="ds">The same four kinds in Hindi with आप (R3), dark system cards. Hindi bodies also stay within 60 characters.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="NTF-08">
+<div class="phone"><div class="screen sx">
+  <div class="mk-me-wall soft"><img src="assets/scene-welcome.webp" alt=""></div>
+  <div class="statusbar on-dark" style="position:relative;z-index:1"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-home">
+    <div class="row" style="gap:16px">
+      <div class="mk-me-w s"><img src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving. 12 day streak."><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-title num">12</span><span class="t-caption muted">day streak</span></div><span class="ln">Watered today</span></div>
+      <div class="mk-me-w s"><img src="assets/plant-sapling-droopy.webp" alt="Your plant: sapling, thirsty. 12 day streak."><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-title num">12</span><span class="t-caption muted">day streak</span></div><span class="ln">2 min keeps your plant happy</span></div>
+    </div>
+    <div class="mk-me-w m">
+      <div class="col" style="width:116px;align-items:center;gap:2px;flex:none"><div class="mk-me-av" style="width:96px;height:96px"><img src="assets/cat-wave.webp" alt="Miso is happy"></div><span class="t-label">Miso · Happy</span></div>
+      <div class="col grow" style="align-items:center;justify-content:center;gap:6px">
+        <div class="ring mk-me-ringbig" style="--p:60;--strong:var(--primary);--sz:76px;--w:9px"><span style="font-size:15px">6/10</span></div>
+        <div class="mk-me-wpill" style="width:100%"><svg class="ic xs"><use href="#ph-cards-bold"/></svg>Review 24</div>
+      </div>
+    </div>
+    <div class="mk-me-w l">
+      <div class="row between"><div><div class="t-heading">74 days to JEE Main</div><div class="t-caption muted">Today</div></div><div class="avatar"><img src="assets/cat-base.webp" alt=""></div></div>
+      <div class="mk-me-wrow s-physics"><span class="bar4"></span><svg class="ic sm subj"><use href="#ph-atom-bold"/></svg><span class="t-label grow">Projectile motion</span><span class="t-caption muted">10 min</span><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg></div>
+      <div class="mk-me-wrow s-chemistry"><span class="bar4"></span><svg class="ic sm subj"><use href="#ph-flask-bold"/></svg><span class="t-label grow">Chemical bonding</span><span class="t-caption muted">15 min</span></div>
+      <div class="mk-me-wrow s-maths"><span class="bar4"></span><svg class="ic sm subj"><use href="#ph-function-bold"/></svg><span class="t-label grow">Quadratic equations</span><span class="t-caption muted">10 min</span></div>
+      <span class="sp"></span>
+      <div class="row" style="gap:8px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-label num">12</span><div class="bar gold grow"><i style="width:60%"></i></div><span class="t-caption muted">6/10 min</span></div>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">NTF-08 · NTF-09 · NTF-10</span><span class="nm">Home-screen widgets, light (Phase 2)</span><span class="ds">Small plant (watered, and beside it the evening state for comparison: thirsty art and "2 min keeps your plant happy", tap → rescue review), medium pet + today with [Review 24], large plan with exam countdown and three subject-coded items.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="NTF-09">
+<div class="phone"><div class="screen sx dark" lang="hi">
+  <div class="mk-me-wall soft"><img src="assets/scene-memory-palace.webp" alt=""></div>
+  <div class="statusbar on-dark" style="position:relative;z-index:1"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-home">
+    <div class="row" style="gap:16px">
+      <div class="mk-me-w s"><img src="assets/plant-flowering.webp" alt="आपका पौधा: फूलों वाला, फल-फूल रहा। 34 दिन की स्ट्रीक।"><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-title num">34</span><span class="t-caption muted">दिन की स्ट्रीक</span></div><span class="ln">आज पानी मिला</span></div>
+      <div class="mk-me-w s"><img src="assets/plant-flowering.webp" alt="आराम का दिन"><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-moon-fill"/></svg><span class="t-title num">34</span><span class="t-caption muted">दिन की स्ट्रीक</span></div><span class="ln">आराम का दिन</span></div>
+    </div>
+    <div class="mk-me-w m">
+      <div class="col" style="width:116px;align-items:center;gap:2px;flex:none"><div class="mk-me-av" style="width:96px;height:96px"><img src="assets/cat-celebrate.webp" alt="Miso खुश है"></div><span class="t-label">Miso · खुश</span></div>
+      <div class="col grow" style="align-items:center;justify-content:center;gap:6px">
+        <div class="ring mk-me-ringbig ok" style="--sz:76px;--w:9px"><svg class="ic" style="color:var(--success)"><use href="#ph-check-bold"/></svg></div>
+        <div class="mk-me-wpill ok" style="width:100%">लक्ष्य पूरा!</div>
+      </div>
+    </div>
+    <div class="mk-me-w l">
+      <div class="row between"><div><div class="t-heading">NEET में 112 दिन</div><div class="t-caption muted">आज</div></div><div class="avatar"><img src="assets/cat-base.webp" alt=""></div></div>
+      <div class="mk-me-wrow s-biology"><span class="bar4"></span><svg class="ic sm subj"><use href="#ph-dna-bold"/></svg><span class="t-label grow">कोशिका विभाजन</span><span class="t-caption muted">10 मिनट</span><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg></div>
+      <div class="mk-me-wrow s-chemistry"><span class="bar4"></span><svg class="ic sm subj"><use href="#ph-flask-bold"/></svg><span class="t-label grow">रासायनिक आबंध</span><span class="t-caption muted">15 मिनट</span><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg></div>
+      <div class="mk-me-wrow s-physics"><span class="bar4"></span><svg class="ic sm subj"><use href="#ph-atom-bold"/></svg><span class="t-label grow">गति के नियम</span><span class="t-caption muted">10 मिनट</span><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg></div>
+      <span class="sp"></span>
+      <div class="row" style="gap:8px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-label num">34</span><div class="bar ok grow"><i style="width:100%"></i></div><span class="t-caption muted">20/20 मिनट</span></div>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">NTF-08 · NTF-09 · NTF-10</span><span class="nm">Home-screen widgets, Hindi (dark, Phase 2)</span><span class="ds">Night Colour following the system: watered and rest-day small widgets, goal met on the medium widget (ring in success with a check), and today's plan all done.</span></figcaption>
+</figure>
+
+</div>
+</div>
+</section>

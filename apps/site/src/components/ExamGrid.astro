@@ -1,0 +1,191 @@
+---
+import Art from "./Art.astro";
+import Icon from "./Icon.astro";
+import { site, type Locale } from "../config/site";
+import { getIndex, paths, subjectsForExam } from "../content-index";
+import { fmt, messages } from "../i18n";
+import { localePath } from "../lib/urls";
+import type { ArtName } from "../lib/art";
+
+interface Props {
+  lang: Locale;
+  headingLevel?: 1 | 2;
+  showHead?: boolean;
+}
+const { lang, headingLevel = 2, showHead = true } = Astro.props;
+const m = messages(lang);
+const idx = getIndex();
+const ACCENT_ART: Record<string, ArtName> = {
+  all: "subject-physics",
+  jee: "subject-physics",
+  neet: "subject-biology",
+  upsc: "subject-polity",
+  ssc: "subject-reasoning",
+};
+const Heading = headingLevel === 1 ? "h1" : "h2";
+const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, exam) }));
+---
+
+<section class="section" id="exams" aria-labelledby="exams-title">
+  <div class="wrap">
+    {
+      showHead && (
+        <div class="section-head">
+          <Heading id="exams-title" class="t-display">
+            {headingLevel === 1 ? m.exams.allTitle : m.exams.heading}
+          </Heading>
+          <p class="t-lead muted">{fmt(m.exams.sub, { brand: site.brand.name[lang] })}</p>
+        </div>
+      )
+    }
+    <ul class="exam-grid" role="list">
+      {
+        cards.map(({ exam, subjects }) => (
+          <li class:list={["exam-card", `x-${exam.accent}`]}>
+            <div class="top">
+              <span class="pill">{exam.short_name[lang]}</span>
+              <Art name={ACCENT_ART[exam.accent] ?? "subject-physics"} lang={lang} decorative sizes="120px" class="exam-art" />
+            </div>
+            <h3 class="t-title">
+              <a href={localePath(lang, paths.exam(exam))} class="stretched">
+                {exam.name[lang]}
+              </a>
+            </h3>
+            <ul class="subjects" role="list">
+              {subjects.map((s) => (
+                <li class="chip">{s.subject.name[lang]}</li>
+              ))}
+            </ul>
+            <span class="more t-label">
+              {fmt(m.exams.explore, { exam: exam.short_name[lang] })}
+              <Icon name="arrow-right" size={20} />
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .exam-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 600px) {
+    .exam-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .exam-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+  .exam-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 12px;
+    padding: 20px;
+    border-radius: var(--r-card-large);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--sh-card);
+    transition:
+      transform var(--dur-base) var(--ease),
+      box-shadow var(--dur-base) var(--ease);
+  }
+  .exam-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 6px;
+    border-radius: var(--r-card-large) var(--r-card-large) 0 0;
+    background: var(--primary);
+  }
+  .exam-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sh-raised);
+  }
+  .exam-card:focus-within {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+  }
+  .top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 88px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 4px 12px;
+    border-radius: var(--r-pill);
+    background: var(--primary);
+    color: var(--on-primary);
+    font-weight: 800;
+    font-size: var(--fs-label);
+  }
+  .top :global(.exam-art) {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    margin: -8px -8px 0 0;
+  }
+  .stretched {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .stretched::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .stretched:focus-visible {
+    outline: none;
+  }
+  .subjects {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-content: start;
+  }
+  .subjects .chip {
+    min-height: 28px;
+    font-size: 13px;
+    padding: 3px 10px;
+  }
+  .more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-text);
+    font-weight: 800;
+  }
+  @media (max-width: 599px) {
+    .top {
+      min-height: 64px;
+    }
+    .top :global(.exam-art) {
+      width: 72px;
+      height: 72px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .exam-card {
+      transition: none;
+    }
+    .exam-card:hover {
+      transform: none;
+    }
+  }
+</style>

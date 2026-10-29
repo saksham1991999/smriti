@@ -1,0 +1,65 @@
+<title>Smriti Screens</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@500;600;700;800&family=Roboto:wght@500&display=swap">
+<style>
+/* Gallery chrome: a wall of phone frames grouped by app area, with sticky area nav. Sunny Subjects neutrals. */
+:root {
+  --g-bg: #F6F7FB; --g-surface: #FFFFFF; --g-ink: #151A2D; --g-muted: #4A5470; --g-line: #E3E6EF; --g-accent: #3557E8; --g-accent-tint: #E7EEFF; --g-gold: #926100; --g-gold-tint: #FFF1B8;
+  --g-display: "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --g-bg: #11131C; --g-surface: #1B1E2B; --g-ink: #F3F4FA; --g-muted: #A3A8BF; --g-line: #2C3044; --g-accent: #7B93FF; --g-accent-tint: #1E2A4D; --g-gold: #FFC53D; --g-gold-tint: #3D3410; color-scheme: dark; } }
+:root[data-theme="dark"] { --g-bg: #11131C; --g-surface: #1B1E2B; --g-ink: #F3F4FA; --g-muted: #A3A8BF; --g-line: #2C3044; --g-accent: #7B93FF; --g-accent-tint: #1E2A4D; --g-gold: #FFC53D; --g-gold-tint: #3D3410; color-scheme: dark; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--g-bg); color: var(--g-ink); font-family: var(--g-display); font-size: 15px; line-height: 1.55; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--g-bg); }
+header.top.wrap, nav.areas .wrap, section.area > .wrap, footer.wrap { max-width: 1680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { padding-block: 40px 20px; display: grid; gap: 14px; }
+header.top .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; color: var(--g-muted); letter-spacing: .3px; }
+header.top h1 { margin: 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; font-weight: 800; letter-spacing: -1.2px; text-wrap: balance; max-width: 18ch; }
+header.top p { margin: 0; max-width: 72ch; color: var(--g-muted); font-size: 16px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.facts span { background: var(--g-surface); border: 1px solid var(--g-line); border-radius: 999px; padding: 5px 12px; font-weight: 700; font-size: 13px; }
+.facts span b { color: var(--g-accent); font-variant-numeric: tabular-nums; }
+nav.areas { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--g-bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--g-line); }
+nav.areas .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+nav.areas a { flex: none; text-decoration: none; color: var(--g-ink); font-weight: 700; font-size: 13px; padding: 7px 13px; border-radius: 999px; background: var(--g-surface); border: 1px solid var(--g-line); }
+nav.areas a:hover, nav.areas a:focus-visible { background: var(--g-accent-tint); color: var(--g-accent); border-color: transparent; outline: none; }
+section.area { padding-block: 44px 8px; border-top: 1px solid var(--g-line); }
+section.area > .wrap > h2 { margin: 0 0 4px; font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+section.area > .wrap > .lede { margin: 0 0 6px; color: var(--g-muted); max-width: 80ch; }
+section.area > .wrap > .spec { margin: 0 0 22px; font-size: 13px; font-weight: 700; color: var(--g-muted); }
+section.area > .wrap > .spec code { background: var(--g-surface); border: 1px solid var(--g-line); border-radius: 6px; padding: 1px 6px; font-size: 12px; }
+.wall { display: flex; flex-wrap: wrap; gap: 36px 28px; align-items: flex-start; }
+.wall.wide { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 12px; }
+figure.mock { margin: 0; display: flex; flex-direction: column; gap: 12px; max-width: 100%; }
+figure.mock.wide { overflow-x: auto; padding-bottom: 8px; width: 100%; }
+figure.mock figcaption { max-width: 360px; display: grid; gap: 3px; }
+figure.mock.wide figcaption { max-width: 72ch; }
+figure.mock figcaption .id { font-size: 12px; font-weight: 800; letter-spacing: .6px; color: var(--g-accent); }
+figure.mock figcaption .nm { font-size: 16px; font-weight: 800; }
+figure.mock figcaption .ds { font-size: 13px; color: var(--g-muted); line-height: 1.45; }
+.flowmap { background: var(--g-surface); border: 1px solid var(--g-line); border-radius: 20px; padding: 20px; overflow-x: auto; }
+footer { padding-block: 40px 60px; color: var(--g-muted); font-size: 13px; border-top: 1px solid var(--g-line); margin-top: 40px; }
+footer p { margin: 0 0 6px; max-width: 90ch; }
+@media (max-width: 420px) { .phone { transform: scale(.92); transform-origin: top left; margin-bottom: -60px; margin-right: -28px; } }
+/* ---- mock kit ---- */
+{{KIT}}
+</style>
+{{SPRITE}}
+<header class="top wrap">
+  <div class="brand">SMRITI · स्मृति · APP FLOW AND UI MOCKS</div>
+  <h1>Every screen, from first launch to the mock report</h1>
+  <p>Draft mocks in the Sunny Subjects style for the mobile apps and the web app. Each frame carries its screen ID from the specs in <code>docs/ux/</code>. Illustrations are draft Agnes AI images; the mascots and plant still need the owner's approval. Sign-in is Google only, with Sign in with Apple added on iPhone.</p>
+  <div class="facts"><span><b>{{COUNT}}</b> screens</span><span>English + हिन्दी</span><span>Light and Night Colour</span><span>Android, iOS, web</span></div>
+</header>
+<nav class="areas" aria-label="App areas"><div class="wrap">
+{{NAV}}
+</div></nav>
+{{SECTIONS}}
+<footer class="wrap">
+  <p>Source: <code>design/mocks/</code> in the saksham1991999/smriti repo. Rebuild with <code>cd tools/mocks &amp;&amp; npm install &amp;&amp; node build.mjs</code>.</p>
+  <p>Icons: Phosphor Icons (MIT). Illustrations: generated with Agnes AI (draft, owned). Google and Apple sign-in buttons follow each company's branding guidelines.</p>
+</footer>

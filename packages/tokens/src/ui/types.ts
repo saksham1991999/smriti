@@ -590,6 +590,8 @@ export interface TimeStripItem {
 export interface TimeStripContract extends BaseProps {
   items: TimeStripItem[];
   label: string;
+  /** Bar colour family (the section's subject). */
+  subject?: SubjectRef;
   selectedIndex?: number;
   onSelect?: (index: number) => void;
   showTarget?: boolean;

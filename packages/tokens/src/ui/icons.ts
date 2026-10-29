@@ -47,6 +47,7 @@ export const iconNames = [
   "Question",
   "ShieldCheck",
   "SignOut",
+  "Sliders",
   "Snowflake",
   "Sparkle",
   "SpeakerHigh",

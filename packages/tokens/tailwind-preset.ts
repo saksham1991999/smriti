@@ -53,10 +53,13 @@ for (const n of typeStyleNames) {
   ];
 }
 
-const spacing: Record<string, string> = { px: "1px" };
-for (const k of Object.keys(space)) spacing[k] = v(`space-${k}`);
-// Component sizes as spacing keys: h-touch, w-button, h-tab-bar ...
+// Tailwind's own 4 px spacing scale is kept (p-4 = 16 px, in rem so it follows the browser text size);
+// every token step (4, 8, 12 … 64) is on it. Component sizes are added as named keys: h-touch-min,
+// h-button-height, h-tab-bar …
+const spacing: Record<string, string> = {};
 for (const k of Object.keys(size)) spacing[kebab(k)] = v(`size${cap(k)}`);
+/** The token spacing steps, for consumers that want them by name: p-space-4 = var(--sm-space-4). */
+for (const k of Object.keys(space)) spacing[`space-${k}`] = v(`space-${k}`);
 
 const borderRadius: Record<string, string> = { none: "0px" };
 for (const k of Object.keys(radius)) borderRadius[kebab(k)] = v(`radius${cap(k)}`);
@@ -74,9 +77,9 @@ export const smritiPreset = {
     colors: colorEntries,
     fontFamily: { sans: v("fontSans"), deva: v("fontDeva"), mono: v("fontMono"), google: v("fontGoogle") },
     fontSize,
-    spacing,
     borderRadius,
     extend: {
+      spacing,
       boxShadow: {
         card: v("shadowCard"),
         raised: v("shadowRaised"),

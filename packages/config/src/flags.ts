@@ -1,0 +1,425 @@
+import { z } from 'zod';
+
+/**
+ * The feature-flag and tunable registry, served by `GET /v1/config` (`ops.flags`).
+ *
+ * Every key named in `docs/flows/*.md` is listed here with the default the docs or the
+ * orchestrator rulings give. `source` says where the default comes from:
+ *
+ * - `ruling`: DECISIONS.md (R-numbers)
+ * - `prd`: PRD starting values ("the exact free limits are flags")
+ * - `doc`: a value stated in a flow doc
+ * - `proposed`: a starting value proposed in a flow doc (or here) for the owner to confirm
+ * - `owner`: no number exists in any doc. The default is `null` and the app treats the
+ *   feature or limit as "not set" (practice flow §4.1: never ship a guessed default).
+ */
+export type FlagSource = 'ruling' | 'prd' | 'doc' | 'proposed' | 'owner';
+
+export interface FlagDef<S extends z.ZodType = z.ZodType, N extends boolean = boolean> {
+  readonly schema: S;
+  readonly default: N extends true ? null : z.infer<S>;
+  /** True for owner flags: the value may be `null` (not set). */
+  readonly nullable: N;
+  readonly source: FlagSource;
+  /** Where the key is named, e.g. `flows/auth.md §10.1`, `R29`. */
+  readonly ref: string;
+  /** Older spellings used in some docs. They are accepted from `/v1/config` and mapped here. */
+  readonly aliases?: readonly string[];
+}
+
+function def<S extends z.ZodType>(
+  schema: S,
+  dflt: z.infer<S>,
+  source: Exclude<FlagSource, 'owner'>,
+  ref: string,
+  aliases?: readonly string[],
+): FlagDef<S, false> {
+  const base = { schema, default: dflt as FlagDef<S, false>['default'], nullable: false as const, source, ref };
+  return aliases ? { ...base, aliases } : base;
+}
+
+/** An owner flag: no doc gives a number, so the default is `null` (not set). */
+function owner<S extends z.ZodType>(schema: S, ref: string, aliases?: readonly string[]): FlagDef<S, true> {
+  const base = { schema, default: null, nullable: true as const, source: 'owner' as const, ref };
+  return aliases ? { ...base, aliases } : base;
+}
+
+const int = z.number().int();
+const nonNegInt = int.min(0);
+const posInt = int.min(1);
+const fraction = z.number().min(0).max(1);
+const bool = z.boolean();
+const hour = int.min(0).max(23);
+const hhmm = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/);
+const strList = z.array(z.string());
+const intList = z.array(int);
+/** A value that differs by audience: adults, 13–17, under 13 (me-money §6.2). */
+const byAudience = <S extends z.ZodType>(s: S) => z.object({ adult: s, teen: s, child: s });
+const byPlatform = <S extends z.ZodType>(s: S) => z.object({ web: s, ios: s, android: s });
+const i18nText = z.object({ en: z.string().min(1), hi: z.string().min(1) });
+
+export const FLAG_REGISTRY = {
+  // ── Auth and accounts (flows/auth.md §10.1) ───────────────────────────────
+  'auth.soft_prompt_cooldown_days': def(posInt, 7, 'ruling', 'R29, auth §4'),
+  'auth.soft_prompt_later_limit': def(posInt, 2, 'ruling', 'R29, auth §4'),
+  'auth.soft_prompt_pause_days': def(posInt, 14, 'ruling', 'R29, auth §4'),
+  'auth.streak_prompt_hour': owner(hour, 'auth §4, learn §5.4'),
+  'auth.streak_prompt_push': def(bool, false, 'doc', 'auth §4'),
+  'auth.guardian_consent_gate': def(z.enum(['features', 'signin']), 'features', 'doc', 'auth §6.10, TRD §6'),
+  'auth.guardian_digilocker': def(bool, false, 'doc', 'auth §6.10'),
+  'auth.consent_pending_days': def(posInt, 7, 'proposed', 'auth §10.1'),
+  'auth.consent_claim_days': def(posInt, 7, 'proposed', 'auth §10.1'),
+  'auth.consent_handoff_ttl_min': def(posInt, 15, 'proposed', 'auth §10.1'),
+  'auth.consent_link_ttl_h': def(posInt, 72, 'proposed', 'auth §10.1'),
+  'auth.consent_retry_h': def(posInt, 24, 'proposed', 'auth §10.1'),
+  'auth.consent_decline_limit': def(posInt, 3, 'proposed', 'auth §10.1'),
+  'auth.consent_decline_pause_days': def(posInt, 30, 'proposed', 'auth §10.1'),
+  'auth.deletion_grace_days': def(posInt, 7, 'proposed', 'auth §6.8, PRD §16.4'),
+  'auth.merge_wait_s': def(posInt, 30, 'proposed', 'auth §6.4'),
+  'auth.merge_retries': def(nonNegInt, 3, 'proposed', 'auth §6.4'),
+  'auth.returning_check_timeout_ms': def(posInt, 1500, 'proposed', 'auth §6.12'),
+  'auth.chip_saving_max_s': def(posInt, 10, 'proposed', 'auth §6.13'),
+  'auth.signin_timeout_s': def(posInt, 15, 'proposed', 'auth §7'),
+  'auth.nonce_error_alert_rate': def(fraction, 0.005, 'proposed', 'auth §7'),
+  'auth.max_children_per_guardian': owner(posInt, 'auth §10.1, AUTH-26'),
+  'merge.keep_guest_pet': def(bool, true, 'doc', 'auth §6.4 step 7'),
+  'minor.defer_sync_until_consent': def(bool, false, 'doc', 'onboarding §6.2.1'),
+  'parent.ask_before_switching': def(bool, false, 'doc', 'auth §6.11'),
+  'onb.returning_account_check': def(bool, false, 'doc', 'onboarding §6.9.1 (A/B test)'),
+  'onb.outcome_line': def(bool, false, 'doc', 'onboarding §6.8 (test)'),
+  'goal.minutes_options': def(z.array(posInt).min(1), [5, 10, 20, 30], 'ruling', 'R6'),
+  'goal.default_minutes': def(posInt, 10, 'ruling', 'R6'),
+
+  // ── Streak, freezes and rest days (me-money §3.5, R1, R23, R28, R36) ─────
+  'streak.reviews_to_qualify': def(posInt, 10, 'ruling', 'R1, memory-labs §5.1'),
+  'streak.freeze_slots_max': def(nonNegInt, 2, 'ruling', 'R28, R36, learn §5.4', ['streak.freeze_slots']),
+  'streak.monthly_freezes': def(z.object({ free: nonNegInt, pro: nonNegInt }), { free: 1, pro: 2 }, 'prd', 'PRD §7, §11.1, R36'),
+  'streak.incident_freeze': def(bool, false, 'ruling', 'R28, me-money §3.5'),
+  'streak.rest_day_plan_ahead_days': def(posInt, 30, 'proposed', 'me-money §3.5'),
+  'streak.exam_day_protected': def(bool, true, 'proposed', 'me-money §3.5'),
+  'game.rest_days_per_week': def(nonNegInt, 1, 'ruling', 'R36, me-money Q10'),
+
+  // ── Plant (R2, R12, R37, me-money §3.4, APP_FLOW §3.6) ───────────────────
+  'game.plant.stage_days': def(
+    z.tuple([posInt, posInt, posInt, posInt]),
+    [1, 7, 30, 100],
+    'ruling',
+    'R37, me-money §3.4',
+    ['plant.thresholds'],
+  ),
+  'game.plant.health_missed_days': def(
+    z.object({ droopy: posInt, dry: posInt, wilted: posInt, dormant: posInt }),
+    { droopy: 1, dry: 3, wilted: 7, dormant: 21 },
+    'doc',
+    'APP_FLOW §3.6, me-money §3.4',
+  ),
+  'game.plant.revival_days': def(
+    z.object({ droopy: posInt, dry: posInt, wilted: posInt, dormant: posInt }),
+    { droopy: 1, dry: 2, wilted: 3, dormant: 5 },
+    'ruling',
+    'R12',
+  ),
+
+  // ── Pet (me-money §3.3; decay amounts are not in any doc: proposed here) ─
+  'game.pet.start': def(z.object({ mood: nonNegInt, energy: nonNegInt }), { mood: 80, energy: 80 }, 'doc', 'DB_SCHEMA game.pets defaults'),
+  'game.pet.decay_per_missed_day': def(z.object({ mood: nonNegInt, energy: nonNegInt }), { mood: 10, energy: 10 }, 'proposed', 'TRD §10'),
+  'game.pet.study_gain': def(z.object({ mood: nonNegInt, energy: nonNegInt }), { mood: 20, energy: 15 }, 'proposed', 'TRD §10, PRD §7'),
+  'game.pet.state_min_mood': def(
+    z.object({ happy: nonNegInt, content: nonNegInt, sleepy: nonNegInt, tired: nonNegInt }),
+    { happy: 70, content: 50, sleepy: 30, tired: 15 },
+    'proposed',
+    'me-money §3.3',
+  ),
+  'game.pet.missing_you_energy_below': def(nonNegInt, 30, 'proposed', 'me-money §3.3'),
+  'game.pet.care_mood_cap_per_day': def(nonNegInt, 5, 'doc', 'me-money §3.3'),
+  'game.pet.pet_mood_gain': def(nonNegInt, 2, 'proposed', 'me-money §3.3'),
+  'game.pet.plays_per_day': def(nonNegInt, 3, 'doc', 'me-money §3.3'),
+  'game.pet.play_energy_gain': def(nonNegInt, 3, 'proposed', 'me-money §3.3'),
+  'game.pet.treats_per_day': def(nonNegInt, 1, 'doc', 'me-money §3.3'),
+  'game.pet.treat_energy_gain': def(nonNegInt, 8, 'proposed', 'me-money §3.3'),
+  'game.pet.species_switch_days': def(posInt, 30, 'doc', 'me-money §3.3, Q15'),
+
+  // ── Gems, shop and economy (R36, me-money §3.6) ─────────────────────────
+  'game.economy.daily_quest_gems': def(z.object({ min: nonNegInt, max: nonNegInt }), { min: 5, max: 15 }, 'proposed', 'me-money §3.6'),
+  'game.economy.weekly_quest_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
+  'game.economy.badge_gems': def(z.tuple([nonNegInt, nonNegInt, nonNegInt]), [20, 50, 100], 'proposed', 'me-money §3.6'),
+  'game.economy.league_promotion_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
+  'game.economy.streak_milestone_gems': def(z.record(z.string().regex(/^\d+$/), nonNegInt), { '7': 25, '30': 50, '100': 100, '365': 200 }, 'proposed', 'me-money §3.6'),
+  'game.economy.first_revival_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
+  'game.economy.referral_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
+  'game.shop.treats_max_held': def(posInt, 10, 'proposed', 'me-money §3.6'),
+  'share.streak_milestones': def(intList, [7, 30, 100], 'ruling', 'R37, me-money §3.4'),
+  'comeback.long_gap_days': def(posInt, 30, 'ruling', 'R34, me-money §6.2'),
+
+  // ── Leagues and social (R30, R32, tutor-social) ──────────────────────────
+  'league.tier_names': def(
+    z.array(i18nText).length(10),
+    [
+      { en: 'Seed', hi: 'बीज' },
+      { en: 'Sprout', hi: 'अंकुर' },
+      { en: 'Leaf', hi: 'पत्ती' },
+      { en: 'Bud', hi: 'कली' },
+      { en: 'Bloom', hi: 'फूल' },
+      { en: 'Lotus', hi: 'कमल' },
+      { en: 'Mango', hi: 'आम' },
+      { en: 'Neem', hi: 'नीम' },
+      { en: 'Peepal', hi: 'पीपल' },
+      { en: 'Banyan', hi: 'बरगद' },
+    ],
+    'ruling',
+    'R30, PRD §7',
+    ['leagues.tiers'],
+  ),
+  'league.group_size': def(posInt, 30, 'ruling', 'R30, PRD §7', ['leagues.group_size']),
+  'social.duo_max_partners': def(posInt, 5, 'ruling', 'R32, tutor-social B8', ['duo_max_partners']),
+  'social.deck_listing': def(bool, false, 'doc', 'tutor-social B12'),
+
+  // ── Free vs Pro limits (PRD §11.1, R16, R25, R35) ────────────────────────
+  'free.practice_questions_per_day': def(nonNegInt, 30, 'prd', 'PRD §11.1, R25, practice §4.1'),
+  'free.sectional_mocks_per_week': def(nonNegInt, 1, 'prd', 'PRD §11.1, R25'),
+  'free.deep_dive_preview_cards': def(nonNegInt, 4, 'ruling', 'R16'),
+  'free.deep_dive_free_chapters_per_subject': def(nonNegInt, 2, 'prd', 'PRD §11.1, learn §6.2'),
+  'free.rotating_chapters': def(strList, [], 'doc', 'learn G6 (served in the manifest)'),
+  'free.tutor_messages_per_day': def(nonNegInt, 5, 'prd', 'PRD §11.1, R35', ['free_tutor_messages_per_day']),
+  'pro.tutor_messages_per_day': owner(posInt, 'tutor-social A6', ['pro_tutor_messages_per_day']),
+  'free.tutor_read_aloud_per_day': owner(nonNegInt, 'R35, tutor-social A6'),
+  'free.roleplay_chats_per_day': owner(nonNegInt, 'tutor-social A11'),
+  'roleplay.max_turns': owner(posInt, 'tutor-social A11', ['roleplay_max_turns']),
+  'free.forge_trials_lifetime': def(nonNegInt, 1, 'proposed', 'memory-labs §11, Q2'),
+  'free.pyq_mode': def(z.enum(['counted']), 'counted', 'ruling', 'R25, practice §4.1'),
+  'free.pyq_papers_free': def(strList, [], 'ruling', 'R25 (one paper id per exam, server data)'),
+  'free.mock_report_sections': def(
+    strList,
+    ['score', 'accuracy', 'time_lost_wrong', 'section_bars', 'subject_bars', 'attempt_summary', 'solutions', 'fix_next_top'],
+    'ruling',
+    'R25, R43, practice §4.1',
+  ),
+  'pro.custom_mocks': def(bool, true, 'doc', 'practice §4.1 (MOCK-26)'),
+  'billing.trial_reminder_days_before': def(posInt, 3, 'ruling', 'R33'),
+  'billing.offline_grace_days': def(nonNegInt, 3, 'doc', 'me-money §5.1'),
+  'pay.child_link.enabled': def(byPlatform(bool), { web: true, ios: false, android: false }, 'doc', 'me-money Q7'),
+  'pay.web_steering': def(bool, false, 'doc', 'me-money §5.6'),
+
+  // ── Features by phase (me-money §5.3, R8) ────────────────────────────────
+  'feature.live_mocks': def(bool, false, 'doc', 'Phase 3'),
+  'feature.voice_tutor': def(bool, false, 'doc', 'Phase 2'),
+  'feature.feynman': def(bool, false, 'doc', 'Phase 2'),
+  'feature.photo_doubt': def(bool, false, 'doc', 'Phase 1 or 2'),
+  'feature.pdf_export': def(bool, false, 'doc', 'Phase 2'),
+  'feature.ai_notes': def(bool, false, 'doc', 'Phase 2'),
+  'feature.pro_cosmetics': def(bool, true, 'doc', 'Phase 1'),
+  'live.enabled': def(bool, false, 'doc', 'practice §4.1 (per variant)'),
+  'practice.mixed_enabled': def(bool, false, 'doc', 'practice §5.3 (Phase 2)'),
+  'maintenance.active': def(bool, false, 'doc', 'onboarding §6.14'),
+  'perf.rive_enabled': def(bool, true, 'doc', 'onboarding §7 (per device class)'),
+
+  // ── Mocks and analytics thresholds (owner: practice §9.2) ────────────────
+  'mock.min_attempts_for_percentile': owner(posInt, 'R26, practice §6.10'),
+  'mock.free_grace_min': owner(posInt, 'practice §4.1, Q3'),
+  'analytics.min_answers_per_chapter': owner(posInt, 'practice §5.6'),
+  'analytics.min_answers_per_subject': owner(posInt, 'practice §5.6'),
+  'analytics.min_answers_total': owner(posInt, 'practice §5.6'),
+  'analytics.min_concepts_for_readiness': owner(posInt, 'practice §5.6'),
+  'analytics.min_mocks_for_trend': owner(posInt, 'practice §5.6'),
+  'analytics.min_tagged_answers': owner(posInt, 'practice §5.6'),
+
+  // ── Home, learn and plan (learn §5, §6, §7) ──────────────────────────────
+  'home.review_hero_min_cards': owner(posInt, 'learn §5.2'),
+  'home.streak_risk_hour': owner(hour, 'learn §5.2 (null: 1 h before quiet hours)'),
+  'home.continue_max_age_days': owner(posInt, 'learn §5.2'),
+  'home.strip_max_nodes': owner(posInt, 'learn §5.2'),
+  'home.strip_max_review_nodes': owner(posInt, 'learn §5.3'),
+  'learn.find_level_questions': def(posInt, 5, 'ruling', 'R27, learn §6.5'),
+  'learn.combo_streak_len': def(posInt, 5, 'doc', 'learn §7.3 (A19)'),
+  'learn.exit_nudge_cards_left': owner(nonNegInt, 'ux/learn LES-05'),
+  'learn.first_time_demo_max_s': owner(posInt, 'learn §7.3'),
+  'learn.fix_mistakes_max': owner(posInt, 'learn §7.1'),
+  'learn.prereq_mastery_min': owner(fraction, 'learn §6.3'),
+  'learn.prereq_snooze_days': owner(posInt, 'learn §6.3'),
+  'learn.resume_restart_days': owner(posInt, 'learn §7.7'),
+  'learn.test_out_questions_per_topic': owner(posInt, 'learn §6.4'),
+  'learn.video_complete_pct': owner(fraction, 'learn §8'),
+  'learn.weak_filter_min_attempts': owner(posInt, 'ux/learn'),
+  'plan.time_options': def(z.array(posInt).min(1), [5, 10, 20, 30], 'proposed', 'learn §8 (defaults to R6 goal options)'),
+  'plan.swap_alternatives_max': owner(posInt, 'learn §8'),
+  'search.recent_max': owner(posInt, 'learn §8'),
+
+  // ── Memory and labs (memory-labs §11) ────────────────────────────────────
+  'memory.rescue_cards': def(posInt, 5, 'proposed', 'memory-labs §5.13, Q14'),
+  'memory.comeback.first_session': def(posInt, 10, 'doc', 'memory-labs §5.2'),
+  'memory.queue_from_practice_max': def(posInt, 20, 'proposed', 'memory-labs §5.14'),
+  'memory.session_size': def(posInt, 20, 'doc', 'memory-labs §5.1'),
+  'memory.session_size_options': def(z.array(z.union([posInt, z.literal('all')])), [10, 20, 40, 'all'], 'doc', 'memory-labs §5.1'),
+  'memory.daily_review_cap': def(posInt, 200, 'proposed', 'memory-labs §5.1'),
+  'memory.new_cards_per_day': def(nonNegInt, 15, 'proposed', 'memory-labs §5.1'),
+  'memory.leech_lapses': def(posInt, 8, 'proposed', 'memory-labs §5.3'),
+  'memory.comeback.min_due': def(posInt, 60, 'proposed', 'memory-labs §5.2'),
+  'memory.comeback.relearn_below': def(fraction, 0.3, 'proposed', 'memory-labs §5.2'),
+  'memory.comeback.plan_lengths': def(z.array(posInt).min(1), [3, 5, 7], 'ruling', 'R22'),
+  'memory.default_seconds_per_card': def(posInt, 10, 'proposed', 'memory-labs §5.2'),
+  'memory.retention_presets': def(
+    z.object({ relaxed: fraction, standard: fraction, exam: fraction }),
+    { relaxed: 0.85, standard: 0.9, exam: 0.95 },
+    'proposed',
+    'memory-labs §11 (MEM-06)',
+  ),
+  'memory.fsrs.enable_fuzz': def(bool, true, 'doc', 'memory-labs §5.1 ("with fuzz applied")'),
+  'memory.fsrs.maximum_interval_days': def(posInt, 36500, 'proposed', 'ts-fsrs default'),
+  'metacog.min_tagged': def(posInt, 30, 'proposed', 'memory-labs §5.10'),
+  'metacog.min_tagged_per_topic': def(posInt, 5, 'proposed', 'memory-labs §5.10'),
+  'metacog.targets': def(
+    z.object({ sure: fraction, fifty: fraction, guess: fraction }),
+    { sure: 0.9, fifty: 0.5, guess: 0.25 },
+    'proposed',
+    'memory-labs §11, Q5',
+    ['metacog.target_sure'],
+  ),
+  'community.hide_after_reports': def(posInt, 3, 'proposed', 'memory-labs §5.7'),
+  'focus.presets': def(
+    z.array(z.object({ focus: posInt, break: posInt })),
+    [
+      { focus: 15, break: 3 },
+      { focus: 25, break: 5 },
+      { focus: 50, break: 10 },
+    ],
+    'doc',
+    'memory-labs §5.12, PRD §5.4',
+  ),
+  'focus.rounds_before_long_break': def(posInt, 4, 'proposed', 'memory-labs §5.12'),
+  'focus.long_break_min': def(posInt, 15, 'proposed', 'memory-labs §5.12'),
+  'focus.away_note_after_min': def(posInt, 3, 'proposed', 'memory-labs §5.12'),
+  'focus.cram_nudge_rounds': def(posInt, 4, 'proposed', 'memory-labs §5.12'),
+  'lab.confirm_download_mb': def(posInt, 5, 'proposed', 'memory-labs §6.1'),
+  'lab.low_power_battery_pct': def(int.min(0).max(100), 20, 'proposed', 'memory-labs §6.2'),
+  'sim.ready_timeout_ms': def(posInt, 8000, 'proposed', 'memory-labs §6.2'),
+  'sim.ready_timeout_ms_low': def(posInt, 12000, 'proposed', 'memory-labs §6.2'),
+  'sim.max_state_hz': def(posInt, 10, 'proposed', 'memory-labs §6.2'),
+  'sim.max_errors': def(posInt, 20, 'proposed', 'memory-labs §8'),
+  'labs.featured': def(strList, [], 'doc', 'memory-labs §6.1 (published item ids)'),
+
+  // ── Content downloads (TRD §3.2, me-money §3.8) ──────────────────────────
+  'content.cache_limit_mb': def(posInt, 500, 'doc', 'TRD §3.2'),
+
+  // ── Notifications (me-money §6.2; every number a flag) ───────────────────
+  'notify.cap.habit': def(byAudience(nonNegInt), { adult: 2, teen: 1, child: 1 }, 'doc', 'me-money §6.2'),
+  'notify.cap.learning': def(byAudience(nonNegInt), { adult: 1, teen: 0, child: 0 }, 'doc', 'me-money §6.2'),
+  'notify.cap.social': def(byAudience(nonNegInt), { adult: 3, teen: 2, child: 0 }, 'doc', 'me-money §6.2'),
+  'notify.cap.total': def(byAudience(nonNegInt), { adult: 4, teen: 3, child: 1 }, 'doc', 'me-money §6.2'),
+  'notify.quiet_hours': def(
+    byAudience(z.object({ start: hhmm, end: hhmm })),
+    { adult: { start: '22:00', end: '07:00' }, teen: { start: '21:00', end: '07:00' }, child: { start: '20:00', end: '08:00' } },
+    'doc',
+    'me-money §6.2, TRD §12',
+  ),
+  'notify.school_hours': def(z.object({ start: hhmm, end: hhmm }), { start: '08:00', end: '14:00' }, 'doc', 'me-money §6.2'),
+  'notify.smart.offset_hours': def(z.number().min(0), 23.5, 'doc', 'me-money §6.2'),
+  'notify.autopause_after_ignored': def(posInt, 7, 'ruling', 'R34, TRD §12'),
+  'notify.templates.min_per_kind': def(posInt, 3, 'doc', 'me-money §6.2'),
+  'notify.templates.repeat_gap_days': owner(posInt, 'me-money §6.2'),
+  'notify.bandit': def(bool, false, 'doc', 'me-money Q17'),
+  'notify.review_due.min_cards': owner(posInt, 'me-money §6.3'),
+  'notify.mock_reminder.lead_min': owner(posInt, 'me-money §6.3'),
+  'notify.sleep_review.lead_min': def(posInt, 20, 'prd', 'PRD §5.4 ("about 20 minutes")'),
+  'notify.plan_days': def(posInt, 7, 'doc', 'me-money §6.1'),
+  'widget.evening_hour': owner(hour, 'me-money §6.6'),
+} as const satisfies Record<string, FlagDef<z.ZodType, boolean>>;
+
+export type FlagKey = keyof typeof FLAG_REGISTRY;
+export type FlagValue<K extends FlagKey> = z.infer<(typeof FLAG_REGISTRY)[K]['schema']>;
+/** `null` only for owner flags (no default) that the server has not set. */
+export type FlagResult<K extends FlagKey> = (typeof FLAG_REGISTRY)[K]['nullable'] extends true
+  ? FlagValue<K> | null
+  : FlagValue<K>;
+
+export const FLAG_KEYS = Object.keys(FLAG_REGISTRY) as FlagKey[];
+
+export interface FlagIssue {
+  key: string;
+  problem: 'invalid' | 'unknown';
+  detail?: string;
+}
+
+export interface Flags {
+  /** The typed value: the server's value when valid, else the registry default. */
+  get<K extends FlagKey>(key: K): FlagResult<K>;
+  /** Like `get`, but throws when the value is not set (owner flags with no default). */
+  require<K extends FlagKey>(key: K): FlagValue<K>;
+  /** True when the server sent a valid value for this key. */
+  isFromServer(key: FlagKey): boolean;
+  /** Problems found while reading the server map (invalid values, unknown keys). Never values. */
+  readonly issues: readonly FlagIssue[];
+  /** A plain object of every key and its resolved value. */
+  toJSON(): { [K in FlagKey]: FlagResult<K> };
+}
+
+const ALIAS_TO_KEY: ReadonlyMap<string, FlagKey> = (() => {
+  const m = new Map<string, FlagKey>();
+  for (const key of FLAG_KEYS) {
+    const defn: FlagDef = FLAG_REGISTRY[key];
+    for (const alias of defn.aliases ?? []) m.set(alias, key);
+  }
+  return m;
+})();
+
+/**
+ * Builds the typed flag map from the `flags` object of `GET /v1/config`.
+ * Invalid or missing values fall back to the registry default and are reported in `issues`.
+ */
+export function createFlags(serverFlags: Record<string, unknown> | undefined = {}): Flags {
+  const values = new Map<FlagKey, unknown>();
+  const fromServer = new Set<FlagKey>();
+  const issues: FlagIssue[] = [];
+
+  for (const [rawKey, rawValue] of Object.entries(serverFlags ?? {})) {
+    const key = (rawKey in FLAG_REGISTRY ? rawKey : ALIAS_TO_KEY.get(rawKey)) as FlagKey | undefined;
+    if (!key) {
+      issues.push({ key: rawKey, problem: 'unknown' });
+      continue;
+    }
+    if (fromServer.has(key) && rawKey !== key) continue; // the canonical key wins over an alias
+    const defn: FlagDef = FLAG_REGISTRY[key];
+    if (rawValue === null && defn.nullable) {
+      values.set(key, null);
+      fromServer.add(key);
+      continue;
+    }
+    const parsed = defn.schema.safeParse(rawValue);
+    if (parsed.success) {
+      values.set(key, parsed.data);
+      fromServer.add(key);
+    } else {
+      issues.push({ key, problem: 'invalid', detail: parsed.error.issues[0]?.message ?? 'invalid' });
+    }
+  }
+
+  const resolve = (key: FlagKey): unknown => (values.has(key) ? values.get(key) : FLAG_REGISTRY[key].default);
+
+  return {
+    get: <K extends FlagKey>(key: K) => resolve(key) as FlagResult<K>,
+    require: <K extends FlagKey>(key: K) => {
+      const v = resolve(key);
+      if (v === null || v === undefined) throw new Error(`Flag ${key} is not set`);
+      return v as FlagValue<K>;
+    },
+    isFromServer: (key) => fromServer.has(key),
+    issues,
+    toJSON: () => {
+      const out: Record<string, unknown> = {};
+      for (const key of FLAG_KEYS) out[key] = resolve(key);
+      return out as { [K in FlagKey]: FlagResult<K> };
+    },
+  };
+}
+
+/** Defaults only (no server map yet): for first launch and tests. */
+export const defaultFlags: Flags = createFlags({});
+
+/** The flag map schema: a partial map of known keys to valid values. Unknown keys are rejected. */
+export const flagMapSchema = z
+  .object(
+    Object.fromEntries(FLAG_KEYS.map((k) => [k, FLAG_REGISTRY[k].schema.nullable().optional()])) as {
+      [K in FlagKey]: z.ZodOptional<z.ZodNullable<(typeof FLAG_REGISTRY)[K]['schema']>>;
+    },
+  )
+  .strict();
+export type FlagMap = z.infer<typeof flagMapSchema>;

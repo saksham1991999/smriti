@@ -132,7 +132,8 @@
 .sx .mk-lrn-pline { display: flex; align-items: center; gap: 10px; background: var(--streak-tint); border-radius: 18px; padding: 6px 12px 6px 6px; }
 .sx .mk-lrn-pline img { width: 48px; height: 48px; object-fit: contain; flex: none; }
 /* little learner */
-.sx .mk-lrn-ll { position: relative; flex: 1; min-height: 0; }
+.sx .mk-lrn-ll { position: relative; flex: 1; min-height: 0; margin: 8px 12px 0; border-radius: 28px; overflow: hidden; }
+.sx .mk-lrn-ll .isle { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
 .sx .mk-lrn-lln { position: absolute; width: 88px; height: 88px; border-radius: 44px; background: var(--surface); box-shadow: var(--sh-raised), inset 0 0 0 3px var(--surface); display: grid; place-items: center; overflow: visible; }
 .sx .mk-lrn-lln img { width: 74px; height: 74px; object-fit: contain; }
 .sx .mk-lrn-lln img.cover { width: 82px; height: 82px; border-radius: 41px; object-fit: cover; }
@@ -605,16 +606,16 @@
     <span class="iconbtn filled" aria-label="Hear it again" style="width:48px;height:48px;color:var(--primary)"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg></span>
   </div>
   <div class="mk-lrn-ll">
-    <i class="mk-lrn-pdot" style="left:168px;top:30px"></i><i class="mk-lrn-pdot" style="left:190px;top:44px"></i><i class="mk-lrn-pdot" style="left:208px;top:60px"></i>
-    <i class="mk-lrn-pdot" style="left:206px;top:146px"></i><i class="mk-lrn-pdot" style="left:186px;top:160px"></i><i class="mk-lrn-pdot" style="left:166px;top:172px"></i>
-    <i class="mk-lrn-pdot" style="left:138px;top:300px"></i><i class="mk-lrn-pdot" style="left:160px;top:316px"></i><i class="mk-lrn-pdot" style="left:184px;top:328px"></i>
-    <span class="mk-lrn-lln" style="left:76px;top:-4px"><img src="assets/subject-maths.webp" alt="Shapes, done, 3 stars"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
-    <span class="mk-lrn-lln" style="left:196px;top:66px"><img src="assets/subject-english.webp" alt="Story book, done, 3 stars"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
-    <span class="mk-lrn-lln big" style="left:44px;top:176px"><img class="cover" src="assets/storybook-village-pond.webp" alt="Today's story"></span>
-    <img src="assets/cat-celebrate.webp" alt="Miso is waiting for you" style="position:absolute;left:162px;top:164px;width:96px;height:96px;object-fit:contain">
-    <span class="btn btn-primary" style="position:absolute;left:24px;top:300px;width:152px;height:60px;border-radius:22px;font-size:20px"><svg class="ic"><use href="#ph-play-fill"/></svg>Play</span>
-    <span class="t-caption" style="position:absolute;left:50px;top:154px;color:var(--stext);background:var(--tint);padding:2px 8px;border-radius:8px">Today's story</span>
-    <span class="mk-lrn-lln" style="left:210px;top:290px"><img src="assets/subject-evs.webp" alt="Leaf hunt"><span class="lk" aria-label="Needs a grown-up"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg></span></span>
+    <img class="isle" src="assets/ll-path-island.webp" alt="An island with a stepping-stone path">
+
+
+    <span class="mk-lrn-lln" style="left:64px;top:8px"><img src="assets/subject-maths.webp" alt="Shapes, done, 3 stars"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
+    <span class="mk-lrn-lln" style="left:184px;top:78px"><img src="assets/subject-english.webp" alt="Story book, done, 3 stars"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
+    <span class="mk-lrn-lln big" style="left:32px;top:188px"><img class="cover" src="assets/storybook-village-pond.webp" alt="Today's story"></span>
+    <img src="assets/cat-celebrate.webp" alt="Miso is waiting for you" style="position:absolute;left:150px;top:176px;width:96px;height:96px;object-fit:contain">
+    <span class="btn btn-primary" style="position:absolute;left:12px;top:312px;width:152px;height:60px;border-radius:22px;font-size:20px"><svg class="ic"><use href="#ph-play-fill"/></svg>Play</span>
+    <span class="t-caption" style="position:absolute;left:38px;top:166px;color:var(--stext);background:var(--tint);padding:2px 8px;border-radius:8px">Today's story</span>
+    <span class="mk-lrn-lln" style="left:198px;top:302px"><img src="assets/subject-evs.webp" alt="Leaf hunt"><span class="lk" aria-label="Needs a grown-up"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg></span></span>
   </div>
   <div class="mk-lrn-subj">
     <span class="on s-biology"><i><img src="assets/subject-evs.webp" alt=""></i>EVS<small class="t-caption" style="color:var(--primary)">Now</small></span>
@@ -627,7 +628,46 @@
     <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
   </nav>
 </div></div></div>
-<figcaption><span class="id">HOME-06</span><span class="nm">Little learner Home (class 1–5, Phase 3)</span><span class="ds">One big [Play] under today's story, with the pet beside it. Picture nodes in a gentle zig-zag, stars on done nodes, nothing locked by order; a grown-up lock badge only on a Pro node. Three tabs (R14), no search, gems, prices or tutor button; "For grown-ups" is press-and-hold.</span></figcaption>
+<figcaption><span class="id">HOME-06</span><span class="nm">Little learner Home (class 1–5, Phase 3)</span><span class="ds">One big [Play] under today's story, with the pet beside it. Picture nodes in a gentle zig-zag on the island path (ll-path-island), stars on done nodes, nothing locked by order; a grown-up lock badge only on a Pro node. Three tabs (R14), no search, gems, prices or tutor button; "For grown-ups" is press-and-hold.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="HOME-06">
+<div class="phone"><div class="screen sx" lang="hi"><div class="s-biology mk-lrn-dc">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="padding:2px 16px 0;flex:none;min-height:60px">
+    <div class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="Miso" style="width:66px;height:66px"></div>
+    <span class="pill" aria-label="36 तारे" style="height:40px;font-size:17px;padding:0 12px 0 8px;background:var(--primary-tint);box-shadow:none"><svg class="ic" style="color:var(--primary)"><use href="#ph-star-fill"/></svg>36</span>
+    <span class="sp"></span>
+    <span class="t-caption muted row" style="gap:4px;min-height:48px" aria-label="बड़ों के लिए, दबाकर रखें"><svg class="ic xs"><use href="#ph-lock-bold"/></svg>बड़ों के लिए</span>
+  </div>
+  <div class="row" style="padding:4px 16px 0;flex:none;gap:8px">
+    <div class="bubble grow" style="background:var(--surface);border-radius:20px 20px 20px 6px;padding:12px 16px;box-shadow:var(--sh-card);font:700 18px/24px var(--f-latin)">चलो, आज तुम क्या खोजोगे?</div>
+    <span class="iconbtn filled" aria-label="फिर से सुनो" style="width:48px;height:48px;color:var(--primary)"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg></span>
+  </div>
+  <div class="mk-lrn-ll">
+    <img class="isle" src="assets/ll-path-island.webp" alt="पत्थरों के रास्ते वाला टापू">
+
+
+    <span class="mk-lrn-lln" style="left:64px;top:8px"><img src="assets/subject-maths.webp" alt="आकार, पूरा, 3 तारे"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
+    <span class="mk-lrn-lln" style="left:184px;top:78px"><img src="assets/subject-english.webp" alt="कहानी की किताब, पूरी, 3 तारे"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
+    <span class="mk-lrn-lln big" style="left:32px;top:188px"><img class="cover" src="assets/storybook-village-pond.webp" alt="आज की कहानी"></span>
+    <img src="assets/cat-celebrate.webp" alt="मीसो तुम्हारा इंतज़ार कर रहा है" style="position:absolute;left:150px;top:176px;width:96px;height:96px;object-fit:contain">
+    <span class="btn btn-primary" style="position:absolute;left:12px;top:312px;width:152px;height:60px;border-radius:22px;font-size:20px"><svg class="ic"><use href="#ph-play-fill"/></svg>खेलो</span>
+    <span class="t-caption" style="position:absolute;left:38px;top:166px;color:var(--stext);background:var(--tint);padding:2px 8px;border-radius:8px">आज की कहानी</span>
+    <span class="mk-lrn-lln" style="left:198px;top:302px"><img src="assets/subject-evs.webp" alt="पत्ती खोज"><span class="lk" aria-label="बड़ों की ज़रूरत"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg></span></span>
+  </div>
+  <div class="mk-lrn-subj">
+    <span class="on s-biology"><i><img src="assets/subject-evs.webp" alt=""></i>पर्यावरण<small class="t-caption" style="color:var(--primary)">अभी</small></span>
+    <span class="s-maths"><i><img src="assets/subject-maths.webp" alt=""></i>गणित</span>
+    <span class="s-language"><i><img src="assets/subject-english.webp" alt=""></i>अंग्रेज़ी</span>
+  </div>
+  <nav class="tabbar three">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>सीखो</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>लैब</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>मैं</span>
+  </nav>
+</div></div></div>
+<figcaption><span class="id">HOME-06</span><span class="nm">Little learner Home in Hindi (Phase 3)</span><span class="ds">Same screen in Hindi. Little learners are the R3 exception, so copy uses तुम, not आप: short, spoken-style lines the pet reads aloud. Tabs सीखो, लैब, मैं.</span></figcaption>
 </figure>
 
 <!-- ============ LRN-01 Subject map ============ -->
@@ -1181,7 +1221,7 @@
 <div class="browser"><div class="chrome"><i></i><i></i><i></i><span class="url">smriti.app/learn</span></div>
 <div class="screen sx">
   <aside class="sidebar mk-lrn-wside">
-    <div class="row" style="gap:8px;padding:2px 10px 14px"><span style="font:800 20px/1 var(--f-latin)">Smriti</span><span style="font:800 17px/1 var(--f-deva);color:var(--muted)">स्मृति</span></div>
+    <div class="row" style="gap:8px;padding:2px 10px 14px"><img src="assets/logo-lockup.webp" alt="Smriti स्मृति" style="height:60px;width:auto;margin:-10px 0 -10px -14px"></div>
     <span class="nav on"><svg class="ic"><use href="#ph-house-fill"/></svg>Learn</span>
     <span class="nav"><svg class="ic"><use href="#ph-flask-bold"/></svg>Labs</span>
     <span class="nav"><svg class="ic"><use href="#ph-exam-bold"/></svg>Practice</span>

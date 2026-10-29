@@ -20,7 +20,9 @@
 .mk-auth-icirc { width: 64px; height: 64px; border-radius: 32px; background: var(--primary-tint); color: var(--primary); display: grid; place-items: center; margin: 0 auto; flex: none; }
 .mk-auth-icirc.sm { width: 56px; height: 56px; border-radius: 28px; margin: 0; }
 .mk-auth-kick { display: flex; align-items: center; gap: 8px; font: 700 13px/18px var(--f-latin); color: var(--muted); }
-.mk-auth-word { font: 800 16px/1 var(--f-latin); color: var(--primary); letter-spacing: -0.2px; }
+.mk-auth-logo { --h: 20px; display: inline-block; position: relative; overflow: hidden; flex: none; height: var(--h); width: calc(var(--h) * 4.1); }
+.sx .mk-auth-logo img { position: absolute; max-width: none; height: calc(var(--h) * 1.702); width: auto; left: calc(var(--h) * -0.376); top: calc(var(--h) * -0.355); }
+.mk-auth-appic { width: 40px; height: 40px; border-radius: 10px; flex: none; }
 .mk-auth-cb { width: 24px; height: 24px; border-radius: 7px; box-shadow: inset 0 0 0 2px var(--line); display: grid; place-items: center; flex: none; background: var(--surface); }
 .mk-auth-cb.on { background: var(--primary); box-shadow: none; color: var(--on-primary); }
 .mk-auth-qr { width: 220px; height: 220px; margin: 2px auto; border-radius: 20px; background: var(--surface); box-shadow: var(--sh-card); padding: 14px; flex: none; }
@@ -46,7 +48,7 @@
 .mk-auth-sys-f { font: 400 12px/17px Roboto, var(--f-latin); color: var(--muted); }
 .mk-auth-fedcm { position: absolute; right: 20px; top: 12px; width: 340px; background: var(--surface); border-radius: 12px; box-shadow: var(--sh-raised), 0 0 0 1px var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; font-family: Roboto, var(--f-latin); z-index: 3; }
 .mk-auth-fedbtn { height: 36px; border-radius: 18px; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; font: 500 14px/1 Roboto, var(--f-latin); }
-.mk-auth-thead { width: 32px; height: 32px; border-radius: 16px; background: var(--streak-tint); overflow: hidden; flex: none; display: grid; place-items: center; }
+.mk-auth-thead { width: 32px; height: 32px; border-radius: 16px; background: var(--primary-tint); overflow: hidden; flex: none; display: grid; place-items: center; }
 .mk-auth-thead img { width: 40px; height: 40px; object-fit: contain; margin-top: 6px; }
 .mk-auth-spinner { width: 20px; height: 20px; border-radius: 10px; border: 2.5px solid color-mix(in srgb, currentColor 25%, transparent); border-top-color: currentColor; }
 .mk-auth-ios { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 270px; border-radius: 14px; background: color-mix(in srgb, var(--surface) 92%, var(--sunken)); z-index: 9; text-align: center; font-family: -apple-system, "SF Pro Text", var(--f-latin); overflow: hidden; }
@@ -290,7 +292,7 @@
   <div class="mk-auth-sys" role="dialog" aria-label="Sign in with Google, system sheet">
     <div class="mk-auth-sys-grab"></div>
     <div class="row" style="gap:8px"><svg class="g" style="width:18px;height:18px"><use href="#g-logo"/></svg><span class="mk-auth-sys-k">Sign in with Google</span></div>
-    <div><div class="mk-auth-sys-t">Choose an account</div><div class="mk-auth-sys-s">to continue to Smriti</div></div>
+    <div class="row" style="gap:14px"><img class="mk-auth-appic" src="assets/app-icon.webp" alt="Smriti app icon"><div><div class="mk-auth-sys-t">Choose an account</div><div class="mk-auth-sys-s">to continue to Smriti</div></div></div>
     <div class="col" style="gap:2px">
       <div class="mk-auth-acct"><span class="mk-auth-ini">A</span><div class="grow"><div class="mk-auth-sys-n">Aarav Kumar</div><div class="mk-auth-sys-e">aarav.k@gmail.com</div></div></div>
       <div class="mk-auth-sys-div"></div>
@@ -587,7 +589,7 @@
 <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span></div>
   <div class="body" style="justify-content:center;gap:20px;padding-top:0">
-    <div class="scene" style="height:240px;display:grid;place-items:center;padding:0 40px;text-align:center"><span class="note">Agnes art: a phone passed between two hands, diverse skin tones (sunny-object, 1:1, transparent)</span></div>
+    <div class="scene" style="height:240px;flex:none;display:flex;align-items:center;background:var(--primary-tint)"><img src="assets/object-phone-hands.webp" alt="Passing the phone" style="width:100%;height:100%;object-fit:cover"></div>
     <div class="t-title center">Hand the phone to your parent or guardian</div>
     <div class="petline" style="justify-content:center"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">It's quick, I promise!</div></div>
   </div>
@@ -600,7 +602,7 @@
 <div class="phone"><div class="screen sx" lang="hi">
 <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="body" style="gap:14px;padding-top:24px">
-    <div class="mk-auth-kick"><span class="mk-auth-word">Smriti</span><span>माता-पिता और अभिभावकों के लिए</span></div>
+    <div class="mk-auth-kick"><span class="mk-auth-logo"><img src="assets/logo-lockup.webp" alt="Smriti"></span><span>माता-पिता और अभिभावकों के लिए</span></div>
     <div class="t-title">नमस्ते! आरव Smriti पर दोस्त और लीग इस्तेमाल करना चाहते हैं</div>
     <div class="t-body">देखने और सहमति देने के लिए कृपया अपने Google अकाउंट से साइन इन करें।</div>
     <div class="card" style="background:var(--sunken);box-shadow:none;padding:12px"><div class="row wrap" style="gap:8px"><span class="chip"><svg class="ic xs"><use href="#ph-users-three-bold"/></svg>दोस्त और लीग</span><span class="chip"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>अकाउंट सेव करना</span></div></div>
@@ -616,13 +618,13 @@
     <div class="mk-auth-legal">आगे बढ़कर आप <span class="link">शर्तों</span> और <span class="link">निजता नीति</span> से सहमत होते हैं।</div>
   </div>
 </div></div>
-<figcaption><span class="id">AUTH-19</span><span class="nm">Hand the phone: guardian view, Hindi</span><span class="ds">After a cross-fade the copy speaks to the adult: no pet, the asked features as read-only chips, the account-stays-separate promise. Android, Google only.</span></figcaption>
+<figcaption><span class="id">AUTH-19</span><span class="nm">Hand the phone: guardian view, Hindi</span><span class="ds">After a cross-fade the copy speaks to the adult: no pet, the asked features as read-only chips, the account-stays-separate promise. Android, Google only. Logo lockup in the kicker.</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="AUTH-20">
 <div class="phone"><div class="screen sx">
 <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
-  <div class="appbar" style="padding-left:18px"><span class="mk-auth-kick"><span class="mk-auth-word">Smriti</span><span>For parents and guardians</span></span></div>
+  <div class="appbar" style="padding-left:18px"><span class="mk-auth-kick"><span class="mk-auth-logo"><img src="assets/logo-lockup.webp" alt="Smriti"></span><span>For parents and guardians</span></span></div>
   <div class="body scroll-cut" style="gap:10px;padding-top:0">
     <div class="t-title">What Aarav will be able to do</div>
     <div class="row" style="gap:6px"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg><span class="t-label muted" style="font-weight:500">Sunita, signed in with Google ·</span><span class="t-label link">Not you?</span></div>
@@ -688,7 +690,7 @@
 <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="mk-auth-kick" style="margin-left:4px">For parents and guardians</span></div>
   <div class="body" style="gap:12px;padding-top:0">
-    <div class="scene" style="height:168px;flex:none;display:grid;place-items:center;padding:0 24px;text-align:center"><span class="note">Agnes art: an Indian parent and a young child (6–9) at a table at home, with the cat and the dog nearby (sunny-scene, 3:2)</span></div>
+    <div class="scene" style="height:180px;flex:none"><img class="art-fill" src="assets/scene-grown-up-first.webp" alt="A parent and child with their study buddies"></div>
     <div class="t-title">Sign in as the parent</div>
     <div class="t-body" style="margin-top:-6px">Use your own Google account. Anaya's progress is saved under it, and you can bring it back on any phone.</div>
     <div class="sp"></div>
@@ -708,7 +710,7 @@
   <div class="body" style="gap:14px;padding-top:18px">
     <div class="t-display center">Who's learning?</div>
     <div class="petline" style="justify-content:center;margin-top:-4px"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">Tap your buddy to start!</div></div>
-    <div class="grid2" style="margin-top:2px"><div class="mk-auth-prof"><span class="pc" style="background:var(--streak-tint)"><img src="assets/cat-base.webp" alt=""></span><span class="t-heading">Anaya</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/dog-base.webp" alt=""></span><span class="t-heading">Kabir</span><span class="chip warn" style="height:24px;font-size:11px;padding:0 8px"><svg class="ic xs"><use href="#ph-warning-circle-fill"/></svg>Ask a grown-up</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--streak-tint)"><img src="assets/cat-sleepy.webp" alt=""></span><span class="t-heading">Ira</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/dog-wave.webp" alt=""></span><span class="t-heading">Neha</span><span class="chip" style="height:24px;font-size:11px;padding:0 8px;background:var(--sunken);box-shadow:none"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>Grown-up</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--streak-tint)"><img src="assets/cat-reading.webp" alt=""></span><span class="t-heading">Rohit</span><span class="chip" style="height:24px;font-size:11px;padding:0 8px;background:var(--sunken);box-shadow:none"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>Grown-up</span></div><div class="mk-auth-prof" style="background:var(--sunken);box-shadow:none"><span class="mk-auth-icirc" style="width:72px;height:72px;border-radius:36px;background:var(--surface);color:var(--ink)"><svg class="ic lg"><use href="#ph-user-gear-bold"/></svg></span><span class="t-heading">Grown-ups</span></div></div>
+    <div class="grid2" style="margin-top:2px"><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/cat-base.webp" alt=""></span><span class="t-heading">Anaya</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/dog-base.webp" alt=""></span><span class="t-heading">Kabir</span><span class="chip warn" style="height:24px;font-size:11px;padding:0 8px"><svg class="ic xs"><use href="#ph-warning-circle-fill"/></svg>Ask a grown-up</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/cat-sleepy.webp" alt=""></span><span class="t-heading">Ira</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/dog-wave.webp" alt=""></span><span class="t-heading">Neha</span><span class="chip" style="height:24px;font-size:11px;padding:0 8px;background:var(--sunken);box-shadow:none"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>Grown-up</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/cat-reading.webp" alt=""></span><span class="t-heading">Rohit</span><span class="chip" style="height:24px;font-size:11px;padding:0 8px;background:var(--sunken);box-shadow:none"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>Grown-up</span></div><div class="mk-auth-prof" style="background:var(--sunken);box-shadow:none"><span class="mk-auth-icirc" style="width:72px;height:72px;border-radius:36px;background:var(--surface);color:var(--ink)"><svg class="ic lg"><use href="#ph-user-gear-bold"/></svg></span><span class="t-heading">Grown-ups</span></div></div>
   </div>
 </div></div>
 <figcaption><span class="id">AUTH-25</span><span class="nm">Who's learning?</span><span class="ds">Profile picker on a family phone: three children and two grown-ups. Kabir's session ended, so his card asks for a grown-up (opens SET-13, then AUTH-28). No tab bar.</span></figcaption>
@@ -719,11 +721,12 @@
 <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="mk-auth-kick" style="margin-left:4px">For parents and guardians</span></div>
   <div class="body" style="gap:12px;padding-top:0">
+    <div class="scene" style="height:84px;flex:none"><img class="art-fill" src="assets/scene-grown-up-first.webp" alt="" style="object-position:50% 40%"></div>
     <div class="t-title">Whose progress should come back to this phone?</div>
     <div class="row" style="gap:6px;margin-top:-4px"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg><span class="t-label muted" style="font-weight:500">neha.sharma@gmail.com</span></div>
-    <div class="card row" style="min-height:88px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--streak-tint)"><img src="assets/cat-base.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Anaya</div><div class="t-caption muted">Class 3</div></div><span class="mk-auth-cb on" style="width:28px;height:28px"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span></div>
-    <div class="card row" style="min-height:88px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/dog-base.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Kabir</div><div class="t-caption muted">Class 6</div></div><span class="mk-auth-cb on" style="width:28px;height:28px"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span></div>
-    <div class="card row" style="min-height:88px;"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--streak-tint)"><img src="assets/cat-sleepy.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Ira</div><div class="t-caption muted">Class 1</div></div><span class="chip ok" style="height:26px">On this phone</span></div>
+    <div class="card row" style="min-height:76px;padding:12px 16px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/cat-base.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Anaya</div><div class="t-caption muted">Class 3</div></div><span class="mk-auth-cb on" style="width:28px;height:28px"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span></div>
+    <div class="card row" style="min-height:76px;padding:12px 16px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/dog-base.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Kabir</div><div class="t-caption muted">Class 6</div></div><span class="mk-auth-cb on" style="width:28px;height:28px"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span></div>
+    <div class="card row" style="min-height:76px;padding:12px 16px;"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/cat-sleepy.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Ira</div><div class="t-caption muted">Class 1</div></div><span class="chip ok" style="height:26px">On this phone</span></div>
     <div class="card" style="background:var(--sunken);box-shadow:none;margin-top:6px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
       <div class="row top" style="gap:10px"><svg class="ic sm" style="color:var(--muted);margin-top:2px"><use href="#ph-question-bold"/></svg><span class="t-label" style="font-weight:500">Not seeing your child? You may have used a different Google account.</span></div>
       <span class="t-label link" style="padding-left:30px">Use another account</span>
@@ -836,7 +839,7 @@
   </div><nav class="tabbar"><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav><div class="scrim"></div>
   <div class="sheet" style="gap:12px">
     <div class="grab" style="visibility:hidden"></div>
-    <div class="mk-auth-icirc"><svg class="ic lg"><use href="#ph-key-bold"/></svg></div>
+    <div class="mk-auth-ill" style="height:132px;"><img src="assets/cat-shield-key.webp" alt="Miso holding a key beside a shield"></div>
     <div class="t-heading center">Please sign in again</div>
     <div class="t-body muted center" style="margin-top:-6px">For your safety, you were signed out. Your progress on this phone is kept until you sign in.</div>
     <div class="btn btn-primary" style="margin-top:6px">Sign in again</div>
@@ -909,9 +912,9 @@
 <figure class="mock wide" data-id="AUTH-29">
 <div class="browser"><div class="chrome"><i></i><i></i><i></i><span class="url">app.smriti.app/login</span></div>
   <div class="screen sx" style="flex-direction:column">
-    <div class="row between" style="height:64px;padding:0 32px;flex:none"><span class="mk-auth-word" style="font-size:22px">Smriti</span><span class="seg" style="width:170px"><span class="on">English</span><span lang="hi">हिन्दी</span></span></div>
+    <div class="row between" style="height:64px;padding:0 32px;flex:none"><span class="mk-auth-logo" style="--h:30px"><img src="assets/logo-lockup.webp" alt="Smriti"></span><span class="seg" style="width:170px"><span class="on">English</span><span lang="hi">हिन्दी</span></span></div>
     <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:0 32px 32px;min-height:0">
-      <div class="scene" style="background:var(--primary-tint);display:grid;place-items:center;padding:28px"><img src="assets/scene-welcome.webp" alt="" style="border-radius:20px;width:100%;height:100%;object-fit:cover"></div>
+      <div class="scene" style="background:var(--primary-tint);display:grid;place-items:center;padding:28px"><img src="assets/scene-student-laptop.webp" alt="A student learning on a laptop at home" style="border-radius:20px;width:100%;height:100%;object-fit:cover"></div>
       <div style="display:flex;flex-direction:column;justify-content:center;align-items:center">
         <div class="col" style="width:400px;gap:14px">
           <div class="t-display">Sign in to Smriti</div>
@@ -927,12 +930,12 @@
       </div>
     </div>
     <div class="mk-auth-fedcm" aria-label="Browser sign-in prompt (FedCM), drawn by Chrome">
-      <div class="row" style="gap:8px"><svg class="g" style="width:18px;height:18px"><use href="#g-logo"/></svg><span class="mk-auth-sys-k grow">Sign in to smriti.app with google.com</span><svg class="ic xs" style="color:var(--muted)"><use href="#ph-x-bold"/></svg></div>
+      <div class="row" style="gap:8px"><svg class="g" style="width:18px;height:18px"><use href="#g-logo"/></svg><img src="assets/app-icon.webp" alt="" style="width:20px;height:20px;border-radius:5px"><span class="mk-auth-sys-k grow">Sign in to smriti.app with google.com</span><svg class="ic xs" style="color:var(--muted)"><use href="#ph-x-bold"/></svg></div>
       <div class="mk-auth-acct" style="padding:6px 0"><span class="mk-auth-ini" style="width:36px;height:36px">A</span><div class="grow"><div class="mk-auth-sys-n">Aarav Kumar</div><div class="mk-auth-sys-e">aarav.k@gmail.com</div></div></div>
       <div class="mk-auth-fedbtn">Continue as Aarav</div>
     </div>
   </div></div>
-<figcaption><span class="id">AUTH-29</span><span class="nm">Web sign-in, desktop</span><span class="ds">Two columns at 1024 and up: illustration on a primaryTint panel, 400 px content column. Chrome's FedCM One Tap prompt sits top right (browser UI, labelled). Stand-in art: scene-welcome.</span></figcaption>
+<figcaption><span class="id">AUTH-29</span><span class="nm">Web sign-in, desktop</span><span class="ds">Two columns at 1024 and up: illustration on a primaryTint panel, 400 px content column. Chrome's FedCM One Tap prompt sits top right (browser UI, labelled).</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="AUTH-29">
@@ -940,8 +943,8 @@
 <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-auth-urlbar"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg><span class="grow">app.smriti.app/login</span><svg class="ic xs"><use href="#ph-dots-three-vertical-bold"/></svg></div>
   <div class="body" style="gap:14px;padding-top:12px">
-    <div class="row between"><span class="mk-auth-word" style="font-size:20px">Smriti</span><span class="seg" style="width:150px"><span class="on">English</span><span lang="hi">हिन्दी</span></span></div>
-    <div class="scene" style="height:196px;flex:none"><img class="art-fill" src="assets/scene-welcome.webp" alt=""></div>
+    <div class="row between"><span class="mk-auth-logo" style="--h:26px"><img src="assets/logo-lockup.webp" alt="Smriti"></span><span class="seg" style="width:150px"><span class="on">English</span><span lang="hi">हिन्दी</span></span></div>
+    <div class="scene" style="height:260px;flex:none"><img class="art-fill" src="assets/scene-student-laptop.webp" alt=""></div>
     <div class="t-display" style="margin-top:4px">Sign in to Smriti</div>
     <div class="t-body muted" style="margin-top:-8px">Pick up where you left off, on any device.</div>
     <div class="btn btn-google mk-auth-gis"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div>
@@ -952,7 +955,7 @@
     <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
   </div>
 </div></div>
-<figcaption><span class="id">AUTH-29</span><span class="nm">Web sign-in, phone width</span><span class="ds">Single column under 600 px, in a phone browser. The spec hides the illustration below 600 px; shown here small, because the page reads bare without it (see report).</span></figcaption>
+<figcaption><span class="id">AUTH-29</span><span class="nm">Web sign-in, phone width</span><span class="ds">Single column under 600 px, in a phone browser. The spec hides the illustration below 600 px; shown here anyway, because the page reads bare without it (see report).</span></figcaption>
 </figure>
 
 </div>

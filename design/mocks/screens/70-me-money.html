@@ -31,7 +31,7 @@
 .sx .mk-me-meter.energy .track i { background: var(--gem); }
 /* pet room */
 .sx .mk-me-room { height: 330px; border-radius: 24px; overflow: hidden; position: relative; flex: none; }
-.sx .mk-me-room > .bg { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }
+.sx .mk-me-room > .bg { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; }
 .sx .mk-me-room .petimg { position: absolute; width: 196px; height: 196px; object-fit: contain; left: 50%; bottom: -6px; transform: translateX(-42%); }
 .sx .mk-me-room .bub { position: absolute; left: 12px; top: 12px; max-width: 200px; background: var(--surface); border-radius: 18px 18px 18px 6px; padding: 9px 13px; box-shadow: var(--sh-raised); font: 600 14px/19px var(--f-latin); }
 .sx .mk-me-room .tag { position: absolute; right: 10px; top: 12px; }
@@ -154,6 +154,13 @@
 .sx .mk-me-sys .sysbtn { height: 44px; border-radius: 22px; background: var(--ink); color: var(--bg); display: grid; place-items: center; font: 500 15px/1 Roboto, var(--f-latin); }
 .sx .mk-me-appic { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; flex: none; }
 .sx .mk-me-appic.sm { width: 18px; height: 18px; border-radius: 5px; } .sx .mk-me-appic.sm .ic { width: 12px; height: 12px; }
+.sx .mk-me-appic:has(img) { background: none; overflow: hidden; } .sx .mk-me-appic img { width: 100%; height: 100%; display: block; border-radius: inherit; }
+.sx .mk-me-feat .disc.art { width: 52px; height: 52px; border-radius: 26px; overflow: hidden; } .sx .mk-me-feat .disc.art img { width: 48px; height: 48px; object-fit: contain; }
+.sx .mk-me-reward { position: absolute; left: 16px; right: 16px; top: 206px; z-index: 6; background: var(--surface); border-radius: 28px; padding: 18px 20px 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: var(--sh-raised); text-align: center; }
+.sx .mk-me-reward .art { position: relative; width: 100%; height: 196px; display: flex; align-items: flex-end; justify-content: center; }
+.sx .mk-me-reward .art .main { width: 60%; height: 180px; object-fit: contain; margin-left: -34px; }
+.sx .mk-me-reward .art .pet { width: 118px; height: 118px; object-fit: contain; margin: 0 -16px -6px -20px; }
+.sx .mk-me-reward .bubble { position: absolute; right: -6px; top: 34px; background: var(--raised); border-radius: 16px 16px 6px 16px; padding: 6px 11px; box-shadow: var(--sh-card); font: 600 13px/17px var(--f-latin); }
 .sx .mk-me-url { flex: none; margin: 0 12px 6px; height: 34px; border-radius: 17px; background: var(--sunken); display: flex; align-items: center; gap: 6px; padding: 0 12px; font: 600 13px/1 var(--f-latin); color: var(--muted); }
 .sx .mk-me-host { position: absolute; left: 14px; right: 14px; top: 92px; z-index: 6; background: var(--surface); border-radius: 18px; overflow: hidden; box-shadow: var(--sh-raised); display: flex; flex-direction: column; }
 .sx .mk-me-host .hd { background: var(--primary); color: var(--on-primary); padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
@@ -264,10 +271,9 @@
   <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Miso's room</span><span class="iconbtn" aria-label="About Miso"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
   <div class="body" style="padding-top:0;gap:14px">
     <div class="mk-me-room">
-      <img class="bg" src="assets/scene-memory-palace.webp" alt="">
+      <img class="bg" src="assets/scene-pet-room.webp" alt="">
       <img class="petimg" src="assets/cat-base.webp" alt="Miso is happy">
       <div class="bub">Best day ever! What are we learning?</div>
-      <span class="chip tag" style="height:26px;font-size:11px"><svg class="ic xs"><use href="#ph-image-bold"/></svg>Courtyard</span>
     </div>
     <div class="row" style="gap:14px;align-items:flex-start">
       <div class="mk-me-meter"><span class="t-label">Mood · Happy</span><div class="track"><i style="width:82%"></i></div></div>
@@ -282,7 +288,7 @@
   </div>
   <div class="bottom" style="padding-top:4px;gap:6px"><span class="btn btn-primary">Study together</span><span class="t-caption muted center">24 reviews due</span></div>
 </div></div>
-<figcaption><span class="id">ME-04</span><span class="nm">Pet room, happy</span><span class="ds">Room backdrop, pet line, Mood (gold) and Energy (blue) meters as words, three care actions with counts left today, Study together pinned. Backdrop is a stand-in (see report).</span></figcaption>
+<figcaption><span class="id">ME-04</span><span class="nm">Pet room, happy</span><span class="ds">Room backdrop, pet line, Mood (gold) and Energy (blue) meters as words, three care actions with counts left today, Study together pinned.</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="ME-07">
@@ -382,6 +388,30 @@
 <figcaption><span class="id">ME-14</span><span class="nm">Badges</span><span class="ds">Earned emblems newest first with dates, then the next tiers as greyed emblems with progress "{x} of {y}".</span></figcaption>
 </figure>
 
+<figure class="mock" data-id="ME-16">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Quests</span></div>
+  <div class="body" style="padding-top:2px">
+    <div class="mk-me-quest done"><span class="qi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">Finish 10 lessons</span><div class="bar ok"><i style="width:100%"></i></div><span class="t-caption muted">10/10 · weekly chest</span></div></div>
+  </div>
+  <div class="scrim"></div>
+  <div class="mk-me-reward" role="alertdialog" aria-label="+50 gems, 1 of 2">
+    <span class="t-caption muted">1 of 2</span>
+    <div class="art">
+      <img class="main" src="assets/object-weekly-chest.webp" alt="Weekly chest, open, full of gems">
+      <img class="pet" src="assets/cat-gift.webp" alt="">
+      <span class="bubble">You did it!</span>
+    </div>
+    <div class="t-title" style="font-size:28px;line-height:34px">+50 gems</div>
+    <div class="t-body muted">Your weekly chest is open. A treat for Miso is next.</div>
+    <span class="btn btn-primary" style="align-self:stretch;margin-top:6px">Nice!</span>
+    <span class="btn btn-ghost" style="height:40px">Skip all</span>
+  </div>
+</div></div>
+<figcaption><span class="id">ME-16</span><span class="nm">Reward celebration, weekly chest</span><span class="ds">Opened from the ME-20 claim. One reward at a time on the scrim: the chest art centred, Miso with a gift beside it, the gem count, then Nice! and the queue "1 of 2" with Skip all. Confetti is Lottie and is off with reduced motion; taps outside the button do nothing.</span></figcaption>
+</figure>
+
 <figure class="mock" data-id="ME-17">
 <div class="phone"><div class="screen sx">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
@@ -390,13 +420,13 @@
     <div class="banner" style="background:var(--raised);box-shadow:inset 0 0 0 1px var(--line)"><svg class="ic sm"><use href="#ph-info-bold"/></svg>Earn gems from quests, badges, streak milestones and leagues.</div>
     <div class="grid2" style="gap:10px">
       <div class="mk-me-feat">
-        <div class="row between"><span class="disc"><svg class="ic"><use href="#ph-snowflake-fill"/></svg></span><span class="mk-me-slots" aria-label="1 of 2 freezes held"><i class="on"><svg class="ic"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic"><use href="#ph-plus-bold"/></svg></i></span></div>
+        <div class="row between"><span class="disc art"><img src="assets/shop-freeze.webp" alt=""></span><span class="mk-me-slots" aria-label="1 of 2 freezes held"><i class="on"><svg class="ic"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic"><use href="#ph-plus-bold"/></svg></i></span></div>
         <span class="t-label">Streak freeze</span>
         <span class="t-caption muted">You have 1 of 2</span>
         <span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>200</span>
       </div>
       <div class="mk-me-feat">
-        <div class="row between"><span class="disc" style="background:var(--warning-tint);color:var(--warning-text)"><svg class="ic"><use href="#ph-fish-fill"/></svg></span></div>
+        <div class="row between"><span class="disc art" style="background:var(--warning-tint)"><img src="assets/shop-fish-treat.webp" alt=""></span></div>
         <span class="t-label">Treats for Miso</span>
         <span class="t-caption muted">You have 3</span>
         <span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>20</span>
@@ -407,7 +437,7 @@
       <div class="mk-me-item"><span class="pic"><img src="assets/shop-hat.webp" alt="Blue knitted hat"></span><span class="t-label">Blue hat</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>300</span></div>
       <div class="mk-me-item"><span class="pic"><img src="assets/shop-scarf.webp" alt="Striped scarf, owned"></span><span class="t-label">Striped scarf</span><span class="chip ok" style="height:24px;align-self:flex-start;font-size:12px"><svg class="ic xs"><use href="#ph-check-bold"/></svg>Owned</span></div>
       <div class="mk-me-item"><span class="pic"><img src="assets/shop-bowtie.webp" alt="Pink bow tie, 450 gems, need 110 more"></span><span class="t-label">Dotty bow tie</span><span class="mk-me-price muted"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>450<span class="t-caption" style="font-weight:600">· need 110</span></span></div>
-      <div class="mk-me-item"><span class="chip pro corner" style="height:22px;font-size:11px">Pro</span><span class="pic"><span class="note" style="text-align:center;padding:0 8px">Agnes art: Pro plant pot</span></span><span class="t-label">Lotus pot</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>600</span></div>
+      <div class="mk-me-item"><span class="chip pro corner" style="height:22px;font-size:11px">Pro</span><span class="pic"><img src="assets/shop-pro-pot.webp" alt="Gold-rimmed lotus pot, Pro only"></span><span class="t-label">Lotus pot</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>600</span></div>
     </div>
   </div>
   <div class="bottom" style="padding-top:6px;padding-bottom:18px"><span class="t-caption muted center">Gems can't be bought with money. You earn them by learning.</span></div>
@@ -426,7 +456,7 @@
     <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-timer-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">15 मिनट पढ़ें</span><div class="bar primary"><i style="width:40%"></i></div><span class="t-caption muted">6/15 · +5 जेम्स · +10 XP</span></div></div>
     <div class="row between" style="margin-top:4px"><span class="t-heading">हफ़्ते के</span><span class="t-caption muted">सोमवार को नए</span></div>
     <div class="card" style="background:var(--streak-tint);box-shadow:none;display:flex;gap:10px;align-items:center;padding:12px 14px">
-      <img src="assets/object-gems.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin:-8px -4px -8px -8px;flex:none">
+      <img src="assets/object-weekly-chest.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin:-8px -4px -8px -8px;flex:none">
       <div class="col grow" style="gap:5px"><span class="t-label">10 पाठ पूरे करें</span><div class="bar gold"><i style="width:70%"></i></div><span class="t-caption" style="color:var(--streak-text)">7/10 · हफ़्ते का बक्सा: 50 जेम्स और एक ट्रीट</span></div>
     </div>
     <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-exam-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">एक मॉक सेक्शन पूरा करें</span><div class="bar primary"><i style="width:0%"></i></div><span class="t-caption muted">0/1 · +25 जेम्स · +40 XP</span></div></div>
@@ -611,7 +641,7 @@
   <div class="body scroll-cut" style="padding-top:2px">
     <div class="card tint row" style="gap:8px;padding:14px 10px 14px 16px;align-items:center">
       <span class="t-label grow" style="font-weight:600">What we keep: your progress, answers and study times, so we can teach you. We never sell your data or show ads.</span>
-      <div class="scene" style="width:84px;height:84px;flex:none;display:grid;place-items:center;background:var(--surface);border-radius:18px"><span class="note" style="text-align:center;font-size:10px;line-height:13px;padding:4px">Agnes art: cat-shield-key</span></div>
+      <img src="assets/cat-shield-key.webp" alt="Miso holding a shield and a key" style="width:88px;height:88px;object-fit:contain;flex:none;margin:-6px -4px -6px 0">
     </div>
     <span class="mk-me-grp">Your choices</span>
     <div class="list mk-me-list">
@@ -828,7 +858,7 @@
   <div class="scrim"></div>
   <div class="mk-me-sys">
     <span class="mk-me-label"><svg class="ic xs"><use href="#ph-device-mobile-bold"/></svg>System sheet · Google Play</span>
-    <div class="row" style="gap:12px"><span class="mk-me-appic"><svg class="ic"><use href="#ph-plant-fill"/></svg></span><div class="grow"><div style="font:500 16px/22px Roboto,var(--f-latin)">Pro monthly</div><div class="t-caption muted" style="font-family:Roboto,var(--f-latin)">Smriti JEE</div></div></div>
+    <div class="row" style="gap:12px"><span class="mk-me-appic"><img src="assets/app-icon.webp" alt="Smriti JEE app icon"></span><div class="grow"><div style="font:500 16px/22px Roboto,var(--f-latin)">Pro monthly</div><div class="t-caption muted" style="font-family:Roboto,var(--f-latin)">Smriti JEE</div></div></div>
     <div class="divider"></div>
     <div class="col" style="gap:2px;font-family:Roboto,var(--f-latin)"><div style="font:500 18px/24px Roboto,var(--f-latin)">₹1 for 1 month</div><div class="t-label muted" style="font-family:Roboto,var(--f-latin);font-weight:500">then ₹99/month</div></div>
     <div class="row" style="gap:12px;font:400 14px/20px Roboto,var(--f-latin)"><svg class="ic" style="color:var(--muted)"><use href="#ph-credit-card-bold"/></svg><span class="grow">UPI · aarav@bank</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
@@ -912,7 +942,7 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-me-url"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>smriti.app/pro/confirming</div>
   <div class="body" style="padding-top:6px;gap:14px">
-    <div class="scene" style="height:200px;flex:none;display:grid;place-items:center"><img src="assets/cat-reading.webp" alt="Miso is waiting with you" style="width:190px;height:190px;object-fit:contain"></div>
+    <div class="scene" style="height:200px;flex:none;display:grid;place-items:center"><img src="assets/cat-hourglass.webp" alt="Miso is waiting beside an hourglass" style="width:200px;height:200px;object-fit:contain"></div>
     <div><div class="t-title">Your bank is confirming</div><div class="t-body muted" style="margin-top:4px">This can take a little while. We'll tell you as soon as Pro is on.</div></div>
     <div class="card mk-me-check">
       <div class="d"><i><svg class="ic"><use href="#ph-check-bold"/></svg></i>Autopay approved in your UPI app</div>
@@ -1036,10 +1066,10 @@
   <div class="statusbar on-dark" style="position:relative;z-index:1"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-me-lockclock"><div class="d">Thursday, 26 November</div><div class="t">9:41</div></div>
   <div class="sx mk-me-ntfs" style="background:transparent;margin-top:18px">
-    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · now</div><div class="tt">Miso</div><div class="bd">Miso saved you a seat. 5-min lesson?</div></div><span class="lic"><img src="assets/cat-wave.webp" alt=""></span></div>
-    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · 1 h ago</div><div class="tt">Miso</div><div class="bd">Your plant is thirsty. One lesson waters it.</div></div><span class="lic"><img src="assets/cat-sleepy.webp" alt="" style="width:52px;height:52px;margin-top:4px"></span></div>
-    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · 2 h ago</div><div class="tt">Miso</div><div class="bd">Kabir challenged you to a duel!</div><span class="act">Accept</span></div><span class="lic"><img src="assets/cat-celebrate.webp" alt=""></span></div>
-    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · 10:00 AM</div><div class="tt">Smriti</div><div class="bd">Your ₹1 month ends 29 Nov. Then ₹99/month.</div></div><span class="mk-me-appic" style="width:46px;height:46px;border-radius:14px"><svg class="ic"><use href="#ph-plant-fill"/></svg></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · now</div><div class="tt">Miso</div><div class="bd">Miso saved you a seat. 5-min lesson?</div></div><span class="lic"><img src="assets/cat-wave.webp" alt=""></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 1 h ago</div><div class="tt">Miso</div><div class="bd">Your plant is thirsty. One lesson waters it.</div></div><span class="lic"><img src="assets/cat-sleepy.webp" alt="" style="width:52px;height:52px;margin-top:4px"></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 2 h ago</div><div class="tt">Miso</div><div class="bd">Kabir challenged you to a duel!</div><span class="act">Accept</span></div><span class="lic"><img src="assets/cat-celebrate.webp" alt=""></span></div>
+    <div class="mk-me-ntf"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 10:00 AM</div><div class="tt">Smriti</div><div class="bd">Your ₹1 month ends 29 Nov. Then ₹99/month.</div></div><span class="mk-me-appic" style="width:46px;height:46px;border-radius:14px"><img src="assets/app-icon.webp" alt="Smriti JEE app icon"></span></div>
   </div>
 </div></div>
 <figcaption><span class="id">NTF-01</span><span class="nm">Push on the lock screen, English (light cards)</span><span class="ds">daily_reminder, daily_reminder_thirsty, duel_challenge (only kind with [Accept]) and trial_ending. Pet as the large icon and the pet's name as title; billing uses the brand and app icon. Every body ≤ 60 characters.</span></figcaption>
@@ -1051,10 +1081,10 @@
   <div class="statusbar on-dark" style="position:relative;z-index:1"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-me-lockclock"><div class="d">गुरुवार, 26 नवंबर</div><div class="t">9:41</div></div>
   <div class="mk-me-ntfs" style="margin-top:18px">
-    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · अभी</div><div class="tt">Miso</div><div class="bd">Miso ने आपके लिए जगह रखी है। 5 मिनट का पाठ?</div></div><span class="lic"><img src="assets/cat-wave.webp" alt=""></span></div>
-    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · 1 घंटा पहले</div><div class="tt">Miso</div><div class="bd">आपका पौधा प्यासा है। एक पाठ से पानी मिलेगा।</div></div><span class="lic"><img src="assets/cat-sleepy.webp" alt="" style="width:52px;height:52px;margin-top:4px"></span></div>
-    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · 2 घंटे पहले</div><div class="tt">Miso</div><div class="bd">कबीर ने आपको मुकाबले की चुनौती दी है!</div><span class="act">स्वीकार करें</span></div><span class="lic"><img src="assets/cat-celebrate.webp" alt=""></span></div>
-    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><svg class="ic"><use href="#ph-plant-fill"/></svg></span>Smriti JEE · सुबह 10:00</div><div class="tt">Smriti</div><div class="bd">आपका ₹1 वाला महीना 29 नवं को खत्म। फिर ₹99/माह।</div></div><span class="mk-me-appic" style="width:46px;height:46px;border-radius:14px"><svg class="ic"><use href="#ph-plant-fill"/></svg></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · अभी</div><div class="tt">Miso</div><div class="bd">Miso ने आपके लिए जगह रखी है। 5 मिनट का पाठ?</div></div><span class="lic"><img src="assets/cat-wave.webp" alt=""></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 1 घंटा पहले</div><div class="tt">Miso</div><div class="bd">आपका पौधा प्यासा है। एक पाठ से पानी मिलेगा।</div></div><span class="lic"><img src="assets/cat-sleepy.webp" alt="" style="width:52px;height:52px;margin-top:4px"></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · 2 घंटे पहले</div><div class="tt">Miso</div><div class="bd">कबीर ने आपको मुकाबले की चुनौती दी है!</div><span class="act">स्वीकार करें</span></div><span class="lic"><img src="assets/cat-celebrate.webp" alt=""></span></div>
+    <div class="mk-me-ntf" style="background:color-mix(in srgb, var(--raised) 94%, transparent)"><div class="grow"><div class="meta"><span class="mk-me-appic sm"><img src="assets/app-icon.webp" alt=""></span>Smriti JEE · सुबह 10:00</div><div class="tt">Smriti</div><div class="bd">आपका ₹1 वाला महीना 29 नवं को खत्म। फिर ₹99/माह।</div></div><span class="mk-me-appic" style="width:46px;height:46px;border-radius:14px"><img src="assets/app-icon.webp" alt="Smriti JEE app icon"></span></div>
   </div>
 </div></div>
 <figcaption><span class="id">NTF-01</span><span class="nm">Push on the lock screen, Hindi (dark)</span><span class="ds">The same four kinds in Hindi with आप (R3), dark system cards. Hindi bodies also stay within 60 characters.</span></figcaption>

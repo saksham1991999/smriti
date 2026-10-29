@@ -2,7 +2,7 @@
   "$description": "Draft illustration kit for the UI mocks. Every image was generated with Agnes AI through the visual-director presets. Mock use only: nothing here is approved, and the mascots and plant still need the owner's approval (DESIGN.md §6.3-6.5).",
   "generated_by": "skills/visual-director (manual run for the mocks, before the AI gateway exists)",
   "post_processing": "rembg 2.0.86 (MIT) with the isnet-general-use model for transparent presets, small specks removed, trimmed and padded to the preset ratio (plant images keep the full frame so they stay aligned); WebP quality 82",
-  "count": 72,
+  "count": 117,
   "images": [
     {
       "file": "cat-base.webp",
@@ -493,19 +493,19 @@
         768,
         768
       ],
-      "bytes": 48270,
-      "sha256": "2c532776b62721dacfc74074d10ccf88ae295b4649141c7ad1d2278f8612b511",
+      "bytes": 48302,
+      "sha256": "a16fa3229a28789319ac26b8f45d86dc7b8801a2fd4acb3727ef03e03443a2ed",
       "agnes_task_id": "task_EGf57UJpGYnJBxdA3fCHfXQNSllFAabU",
       "candidates_generated": 1
     },
     {
       "file": "plant-seed.webp",
       "preset": "plant-stage",
-      "prompt": "Edit the reference image: remove the plant completely (no stem, no leaves, no sprout), leaving only smooth dark soil in the same pot with one single small brown seed resting on the soil surface. Keep the pot, its dotted cream band, the camera angle, scale, position and lighting exactly the same. Soft 3D illustration, on a plain flat pure white background, no text, no letters, no numbers, no logos. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "prompt": "Edit the reference image: keep the same pot at the same size and position, with soil only and a tiny seed mark on the soil, no plant: remove the sprout completely (no stem, no leaves). Keep the pot, its dotted cream band, camera angle, scale, position and lighting exactly the same. Soft 3D illustration, on a plain flat pure white background, no text, no letters, no numbers, no logos. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
       "ratio": "1:1",
       "size": "1K",
       "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:32:25+00:00",
+      "generated_at": "2026-10-29T14:42:08+00:00",
       "source": "agnes",
       "licence": "owned",
       "status": "draft (mock use, not approved)",
@@ -514,16 +514,17 @@
         "hi": "मिट्टी और एक बीज वाला टेराकोटा गमला, स्ट्रीक की शुरुआत।"
       },
       "transparent": true,
-      "reference_image": "plant-sapling.webp",
+      "reference_image": "plant-sprout.webp",
       "delivered_px": [
         768,
         768
       ],
-      "bytes": 13654,
-      "sha256": "6d40250a5721bc660a833aeff58e0a0816b3419107376ee37c9e72d260a976b2",
-      "agnes_task_id": "task_RdNcLHRmcpLKi6p99x7eZkohPpvj1tyU",
-      "candidates_generated": 4,
-      "review_note": "Weak: pot drawn smaller and lower than the sapling reference, so it will not cross-fade cleanly. Regenerate after the plant reference sheet is approved."
+      "bytes": 15728,
+      "sha256": "8f29b6ff927cab78e85429dec8a06d3dcb70606487664140b8a036136666b3c8",
+      "agnes_task_id": "task_0YT2DIGwN66JxJ9z2HmH6wn1JxKewzFA",
+      "candidates_generated": 5,
+      "use": "Streak plant stage 1",
+      "review_note": "Made as an image edit of plant-sprout, so the pot matches the sprout's size and position. The sapling pot sits a little higher in its frame."
     },
     {
       "file": "plant-sprout.webp",
@@ -549,32 +550,6 @@
       "bytes": 22766,
       "sha256": "9f96eea01b676b04672acbbdc6d0f967da70a6eb9d62c462fdc4186b3e73cb6b",
       "agnes_task_id": "task_FMDg9vM0E9djKfR3eAdKq6Cm2VQvzEu4",
-      "candidates_generated": 1
-    },
-    {
-      "file": "plant-budding.webp",
-      "preset": "plant-stage",
-      "prompt": "Soft 3D illustration of the Smriti streak plant, a tulsi-like herb in the reference terracotta pot, a bushy sapling with several small closed purple-pink flower buds at the tips, in a round terracotta pot with a simple cream band pattern of small dots around the rim, seen from a slightly high three-quarter front angle, pot centred in the lower half of the frame, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated fresh leaf green and terracotta palette with streak gold (#F5A300) and cream accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti streak plant, a tulsi-like herb in the reference terracotta pot, growth stage budding, health thriving, same camera and scale as the reference. Use exactly the same terracotta pot, camera angle and scale as the reference image; only the plant changes. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:20:17+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "The plant with small flower buds.",
-        "hi": "छोटी फूल-कलियों वाला पौधा।"
-      },
-      "transparent": true,
-      "reference_image": "plant-sapling.webp",
-      "delivered_px": [
-        768,
-        768
-      ],
-      "bytes": 56714,
-      "sha256": "cf9bc8681e6c09e082945c63b71d0c87dc316fdfb1da0dc99e01e3e4c199f1f1",
-      "agnes_task_id": "task_kManG8DdWZzipg7h8WIVRKoC0GFZ5AXK",
       "candidates_generated": 1
     },
     {
@@ -780,8 +755,8 @@
         768,
         768
       ],
-      "bytes": 35008,
-      "sha256": "fa7eea3951ffafdafb0f00fb8152f490df533824d1e06c6c74fa885972303d83",
+      "bytes": 35092,
+      "sha256": "886c92571b027aafce38c38c11552bc2298b5c3b363bcdcb16f43c6c72e6f658",
       "agnes_task_id": "task_OmONbTtCFX2rrBI7GoSh5ioLTAHtu9Aq",
       "candidates_generated": 1
     },
@@ -884,8 +859,8 @@
         768,
         768
       ],
-      "bytes": 59792,
-      "sha256": "af7d3023db00d3b427997159ccd64d9856a6890aa9f9a467e96b5491ab0c60c6",
+      "bytes": 59868,
+      "sha256": "f75e60a8f6fa06f5b9e71101d57de391a77d1f11e2d6731ea63117a33773a0bf",
       "agnes_task_id": "task_BGnpMhuIx18fgO60ZomvZa3LmvfpEmDk",
       "candidates_generated": 1
     },
@@ -936,8 +911,8 @@
         768,
         768
       ],
-      "bytes": 33864,
-      "sha256": "243642f64caf89eec8cca009128e611a1308b3ae24405819ccdb554aaa17f143",
+      "bytes": 33910,
+      "sha256": "24411e180a13614a2b183f5120869d109679d8ef0739adb17f84332b47d28425",
       "agnes_task_id": "task_PRLZPcrKTJbpajto0os308b9RJzCEl91",
       "candidates_generated": 1
     },
@@ -988,8 +963,8 @@
         768,
         768
       ],
-      "bytes": 38004,
-      "sha256": "3a73388a0978f641b9df0d95e6d12ac3d05bfa4eb03761de772402fe0373211f",
+      "bytes": 38000,
+      "sha256": "c4861bc51b0846148d82fc046673539212893a6e0ee19ef4e7ac7c4cc355457b",
       "agnes_task_id": "task_wF1pj7VPdqQ3sk56s4IhGAdcwmXi2JjH",
       "candidates_generated": 2
     },
@@ -1069,8 +1044,8 @@
         768,
         768
       ],
-      "bytes": 56398,
-      "sha256": "000a4aa5b9e6c70516fdaba4100907c26956d9b65c5f0981483d3ac694f1c6bb",
+      "bytes": 56314,
+      "sha256": "82bfb85264927f48f1f1cacbbed69388a03e4a96083de9303c3a396c4f9bd347",
       "agnes_task_id": "task_KEyENpRNoMpPp4pStGb2h0Nvj2hfbxgM",
       "candidates_generated": 1,
       "review_note": "Cut-out needed a flood-fill fallback (rembg made the blank page see-through)."
@@ -1478,28 +1453,32 @@
     {
       "file": "badge-streak-7.webp",
       "preset": "badge",
-      "prompt": "Soft 3D illustration of a shiny soft-3D achievement badge emblem showing a bright flame inside a ring of seven small gold dots, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated streak gold and orange (#F5A300) palette with warm red and cream accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing a bright flame inside a ring of seven small gold dots, simple rounded frame, centred. Readable at small sizes, bold simple shapes. No ribbon text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "prompt": "Soft 3D illustration of a shiny soft-3D achievement badge emblem showing a small terracotta pot with a cream dotted band and a gold sprout growing from it, a ring of seven small gold dots around it, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated streak gold (#F5A300) palette with leaf green and terracotta accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing the Smriti streak plant: the small terracotta pot from the second reference image with a shiny gold sprout growing from it, surrounded by a ring of seven small gold dots, simple rounded frame, centred. Use the same rounded-square badge frame shape and depth as the first reference badge, with a warm streak-gold frame. Readable at small sizes, bold simple shapes. No ribbon text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
       "ratio": "1:1",
       "size": "1K",
       "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:17:30+00:00",
+      "generated_at": "2026-10-29T17:42:41+00:00",
       "source": "agnes",
       "licence": "owned",
       "status": "draft (mock use, not approved)",
       "alt": {
-        "en": "Badge: a flame ringed by seven dots, for a seven-day streak.",
-        "hi": "बैज: सात बिंदुओं से घिरी लौ, सात दिन की स्ट्रीक के लिए।"
+        "en": "Badge: the streak plant pot with a gold sprout ringed by seven dots, for a seven-day streak.",
+        "hi": "बैज: सात बिंदुओं से घिरा सुनहरे अंकुर वाला गमला, सात दिन की स्ट्रीक के लिए।"
       },
       "transparent": true,
-      "reference_image": null,
+      "reference_image": [
+        "badge-first-lesson.webp",
+        "plant-sprout.webp"
+      ],
       "delivered_px": [
         512,
         512
       ],
-      "bytes": 67190,
-      "sha256": "8c58b71d444921e2ff0872327d744dbd8aa11ad5e7d3e8306cb718cd3bbbd847",
-      "agnes_task_id": "task_0Wp608Br3gxqkZhPwo1RUz609N8ImEJt",
-      "candidates_generated": 1
+      "bytes": 23576,
+      "sha256": "62d4d6224af86a64d10406478cb31432409ced4b99a94cc63c34377bc7aa0cf7",
+      "agnes_task_id": "task_lGclDdcjpYerRjCyAT17WxnZc4QOzRaT",
+      "candidates_generated": 3,
+      "use": "7-day streak badge (the plant, not a flame)"
     },
     {
       "file": "badge-reviews-100.webp",
@@ -1528,136 +1507,6 @@
       "candidates_generated": 1
     },
     {
-      "file": "league-bronze.webp",
-      "preset": "league-tier",
-      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated copper and soft brown palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier bronze, warm bronze metal finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:17:42+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "Bronze league crest, tier one.",
-        "hi": "कांस्य लीग का चिह्न, पहला स्तर।"
-      },
-      "transparent": true,
-      "reference_image": null,
-      "delivered_px": [
-        512,
-        512
-      ],
-      "bytes": 19910,
-      "sha256": "61b0c65db74d198c74f7e90ab4782eb059b3447558677030aac695aa5df05ba0",
-      "agnes_task_id": "task_MbYhX2uPo9P2KiTbR8N2OucIkPdrvBPP",
-      "candidates_generated": 1
-    },
-    {
-      "file": "league-silver.webp",
-      "preset": "league-tier",
-      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cool grey and white palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier silver, polished silver metal finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides. Keep exactly the same crest shape, wings and emblem as the reference image; only the material and colour change. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:21:23+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "Silver league crest, tier two.",
-        "hi": "रजत लीग का चिह्न, दूसरा स्तर।"
-      },
-      "transparent": true,
-      "reference_image": "league-bronze.webp",
-      "delivered_px": [
-        512,
-        512
-      ],
-      "bytes": 34510,
-      "sha256": "989c30c09333bfbf99fdda1e2387bb21427620d908afb16e837dadb243acd6ed",
-      "agnes_task_id": "task_cDPNcHcIvYxzdfbXUqQazG9051Fafhsk",
-      "candidates_generated": 1
-    },
-    {
-      "file": "league-gold.webp",
-      "preset": "league-tier",
-      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm yellow palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier gold, shiny gold metal finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides. Keep exactly the same crest shape, wings and emblem as the reference image; only the material and colour change. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:21:55+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "Gold league crest, tier three.",
-        "hi": "स्वर्ण लीग का चिह्न, तीसरा स्तर।"
-      },
-      "transparent": true,
-      "reference_image": "league-bronze.webp",
-      "delivered_px": [
-        512,
-        512
-      ],
-      "bytes": 22962,
-      "sha256": "aedae851ba5bb80dc85b09195b356519ef39f7156e8c77ca2323f7fb9fca35ed",
-      "agnes_task_id": "task_bS4V21Etu0lXU04h1cGOk4yM9NOV4GGb",
-      "candidates_generated": 1
-    },
-    {
-      "file": "league-sapphire.webp",
-      "preset": "league-tier",
-      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated royal blue and gold palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier sapphire, deep blue sapphire gemstone with gold trim finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides. Keep exactly the same crest shape, wings and emblem as the reference image; only the material and colour change. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:22:17+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "Sapphire league crest, a middle tier.",
-        "hi": "नीलम लीग का चिह्न, बीच का स्तर।"
-      },
-      "transparent": true,
-      "reference_image": "league-bronze.webp",
-      "delivered_px": [
-        512,
-        512
-      ],
-      "bytes": 20444,
-      "sha256": "bede43ba4afeb8e3afc84a8c9c1b45c0727112fe70dd6f9d4afedbd0b5ba45a7",
-      "agnes_task_id": "task_SKeLMvd0KvCyVhQf3hhn3nmtkwXsEgzy",
-      "candidates_generated": 1
-    },
-    {
-      "file": "league-diamond.webp",
-      "preset": "league-tier",
-      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated icy cyan and white palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier diamond, sparkling clear diamond crystal with platinum trim finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with a small leaf sprout emblem in the centre and two small wings at the sides. Keep exactly the same crest shape, wings and emblem as the reference image; only the material and colour change. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:22:42+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "Diamond league crest, the top tier.",
-        "hi": "हीरा लीग का चिह्न, सबसे ऊँचा स्तर।"
-      },
-      "transparent": true,
-      "reference_image": "league-bronze.webp",
-      "delivered_px": [
-        512,
-        512
-      ],
-      "bytes": 48762,
-      "sha256": "bef9884a844b22d7ecf13b297c3c33033e7d3707584bcd2cf070ba2a89cd9ef2",
-      "agnes_task_id": "task_ypdjM0zFeFmsiA9JzJr2fJLd43c1Kc3C",
-      "candidates_generated": 1
-    },
-    {
       "file": "object-gems.webp",
       "preset": "sunny-object",
       "prompt": "Soft 3D illustration of small pile of shiny faceted rounded gems, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated light cyan blue (#2BB5E8) palette with soft blue and white sparkle accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single small pile of shiny faceted rounded gems, three-quarter view, isolated on a transparent background. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
@@ -1683,32 +1532,6 @@
       "agnes_task_id": "task_hNS9tspCy4XnrCy9SWkPUQ9AqFuztcjT",
       "candidates_generated": 1,
       "review_note": "Gems read a little like pebbles."
-    },
-    {
-      "file": "object-streak-flame.webp",
-      "preset": "sunny-object",
-      "prompt": "Soft 3D illustration of chunky rounded cartoon flame with a soft warm glow, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated streak gold and orange (#F5A300) palette with warm red core accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single chunky rounded cartoon flame with a soft warm glow, three-quarter view, isolated on a transparent background. No face on the flame. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
-      "ratio": "1:1",
-      "size": "1K",
-      "model": "agnes-image-2.1-flash",
-      "generated_at": "2026-10-29T14:17:56+00:00",
-      "source": "agnes",
-      "licence": "owned",
-      "status": "draft (mock use, not approved)",
-      "alt": {
-        "en": "A bright streak flame.",
-        "hi": "चमकती स्ट्रीक लौ।"
-      },
-      "transparent": true,
-      "reference_image": null,
-      "delivered_px": [
-        768,
-        768
-      ],
-      "bytes": 27804,
-      "sha256": "cce1bbc4d7ad0eb968ea818a23d19b1814413706f46f0c782608f177d5f445bf",
-      "agnes_task_id": "task_BIa56MM0c2JTLxjUxZO8amIWY3id7sUh",
-      "candidates_generated": 1
     },
     {
       "file": "shop-hat.webp",
@@ -1757,8 +1580,8 @@
         768,
         768
       ],
-      "bytes": 68380,
-      "sha256": "03c6a4b43d36f34364f654a16751d78423f23419941af446bf72cfb1f22e4562",
+      "bytes": 68410,
+      "sha256": "853a6e162c53a417c07e2dcf83725462e21ec2ea27b10b8620fbf98b9e71f03f",
       "agnes_task_id": "task_qydiNFVValSsRnYwS7dXwQ9VBcHYWS4b",
       "candidates_generated": 1
     },
@@ -1893,6 +1716,1410 @@
       "agnes_task_id": "task_TAUWKhDar3QIcapxGyQtatnbSLdibc58",
       "candidates_generated": 2,
       "review_note": "The cat is large and the girl small; tree is generic rather than clearly a banyan."
+    },
+    {
+      "file": "badge-first-mock.webp",
+      "preset": "badge",
+      "prompt": "Soft 3D illustration of a shiny soft-3D achievement badge emblem showing a round stopwatch with a big check mark on its face, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated purple (#7B4DDB) palette with gold and white accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing a round stopwatch with a big check mark on its face, simple rounded frame, centred. Use the same rounded-square badge frame shape, depth and finish as the reference badge; only the colour and the symbol change. Readable at small sizes, bold simple shapes. No ribbon text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:42:31+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Badge: a stopwatch with a check mark, for the first mock test.",
+        "hi": "बैज: टिक वाली स्टॉपवॉच, पहले मॉक टेस्ट के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "badge-first-lesson.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 19888,
+      "sha256": "9b4ea0880e2c8dc402c1d095e33ccf0c4aeab9e916e1c04a5500de9ceb729220",
+      "agnes_task_id": "task_QWuHS2Vg4XDC90mqCfog2gF8AlejzMfv",
+      "candidates_generated": 1,
+      "use": "First mock test badge"
+    },
+    {
+      "file": "badge-palace.webp",
+      "preset": "badge",
+      "prompt": "Soft 3D illustration of a shiny soft-3D achievement badge emblem showing a little rounded house with a big golden key in front of it, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated amber and golden brown (#B7791F) palette with teal and cream accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing a little rounded house with a big golden key in front of it, simple rounded frame, centred. Use the same rounded-square badge frame shape, depth and finish as the reference badge; only the colour and the symbol change. Readable at small sizes, bold simple shapes. No ribbon text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:42:30+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Badge: a little house with a key, for the first memory palace.",
+        "hi": "बैज: चाबी वाला छोटा घर, पहले स्मृति महल के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "badge-first-lesson.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 16290,
+      "sha256": "5a05ce97b50bfe44d2cbb5408bf4d30662113f83024118e45f80c59a79c122fc",
+      "agnes_task_id": "task_3f9h0rwKmUOIsxNy5TWgJKZyjBIPoZAe",
+      "candidates_generated": 1,
+      "use": "First memory palace badge",
+      "review_note": "The cut-out needed the flood-fill fallback (rembg made the house wall see-through)."
+    },
+    {
+      "file": "badge-lab.webp",
+      "preset": "badge",
+      "prompt": "Soft 3D illustration of a shiny soft-3D achievement badge emblem showing a glass beaker of bubbling teal liquid with a small gold star above it, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated teal (#0E7C93) palette with gold and white accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing a glass beaker of bubbling teal liquid with a small gold star above it, simple rounded frame, centred. Use the same rounded-square badge frame shape, depth and finish as the reference badge; only the colour and the symbol change. Readable at small sizes, bold simple shapes. No ribbon text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:42:58+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Badge: a beaker with a star, for the first lab.",
+        "hi": "बैज: तारे वाला बीकर, पहली प्रयोगशाला के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "badge-first-lesson.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 15940,
+      "sha256": "ae25d7cd3c4b1d85d60b49c6198dd1fb1db5171aaa046d67d674b4ad8235a65e",
+      "agnes_task_id": "task_fSSIJJbElauf6c3begCm07zLjv955MSp",
+      "candidates_generated": 1,
+      "use": "First lab badge"
+    },
+    {
+      "file": "league-01-seed.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a single plump seed as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm grey-brown clay palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Seed, matte unglazed grey-brown clay finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a single plump seed as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a single plump seed and change the material to matte unglazed grey-brown clay. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:44:49+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Seed league crest, tier 1 of 10: a winged shield with a single plump seed.",
+        "hi": "बीज लीग का चिह्न, 10 में से स्तर 1।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 20312,
+      "sha256": "9540273853355402f6f216adf386d5d8d0d675b6e2d507e1da664f3875d74f54",
+      "agnes_task_id": "task_8QnQi9JaoqtpfZzEWXjTZchSCFDilI1H",
+      "candidates_generated": 1,
+      "use": "League tier 1 of 10 (Seed)"
+    },
+    {
+      "file": "league-02-sprout.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a tiny two-leaf sprout as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated terracotta orange palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Sprout, glossy glazed terracotta finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a tiny two-leaf sprout as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a tiny two-leaf sprout and change the material to glossy glazed terracotta. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:43:03+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Sprout league crest, tier 2 of 10: a winged shield with a tiny two-leaf sprout.",
+        "hi": "अंकुर लीग का चिह्न, 10 में से स्तर 2।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 18066,
+      "sha256": "cf6c5c2f8286e72e2df8fba059ea0d48a41192a7757ee41f5404a0ec72cf590d",
+      "agnes_task_id": "task_xEkqynRNjMeMWZUEziVEIUBLeAOLetV5",
+      "candidates_generated": 1,
+      "use": "League tier 2 of 10 (Sprout)"
+    },
+    {
+      "file": "league-03-leaf.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with one single large oval leaf lying diagonally with a central vein, no stem, no second leaf as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated bronze and copper palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Leaf, warm bronze metal finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with one single large oval leaf lying diagonally with a central vein, no stem, no second leaf as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with one single large oval leaf lying diagonally with a central vein, no stem, no second leaf and change the material to warm bronze metal. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:37:43+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Leaf league crest, tier 3 of 10: a winged shield with one single large oval leaf lying diagonally with a central vein, no stem, no second leaf.",
+        "hi": "पत्ती लीग का चिह्न, 10 में से स्तर 3।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 21252,
+      "sha256": "87b41c9648c316ee18443f922d276d718186f57f567509001a808560f31c4ce6",
+      "agnes_task_id": "task_owDZKA69kGQSO11zTBZJZjK3xp0RylUn",
+      "candidates_generated": 2,
+      "use": "League tier 3 of 10 (Leaf)"
+    },
+    {
+      "file": "league-04-bud.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a closed flower bud on a short stem as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cool silver and white palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Bud, polished silver metal finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a closed flower bud on a short stem as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a closed flower bud on a short stem and change the material to polished silver metal. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:44:25+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Bud league crest, tier 4 of 10: a winged shield with a closed flower bud on a short stem.",
+        "hi": "कली लीग का चिह्न, 10 में से स्तर 4।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 36258,
+      "sha256": "651625188637d5889b4e8737883ff6dba928a2efb0c96cce8e76d3e7108b3cf4",
+      "agnes_task_id": "task_AFrajA5mtSdFHRtAKcDxYltC4zCiyEsg",
+      "candidates_generated": 1,
+      "use": "League tier 4 of 10 (Bud)"
+    },
+    {
+      "file": "league-05-bloom.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with an open five-petal flower as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated silver and soft pink palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Bloom, bright silver with soft pink enamel inlay finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with an open five-petal flower as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with an open five-petal flower and change the material to bright silver with soft pink enamel inlay. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:43:56+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Bloom league crest, tier 5 of 10: a winged shield with an open five-petal flower.",
+        "hi": "फूल लीग का चिह्न, 10 में से स्तर 5।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 20654,
+      "sha256": "6c0fa636d9d0663757ba9375cd87f5cf2e819174c1ca7bf7dafe5d1748d82a80",
+      "agnes_task_id": "task_lJykWTkmmIJEpbr8C8DKCiNdMHFFxxuo",
+      "candidates_generated": 1,
+      "use": "League tier 5 of 10 (Bloom)",
+      "review_note": "The cut-out needed the flood-fill fallback for the shield panel."
+    },
+    {
+      "file": "league-06-lotus.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a lotus flower as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated gold and lotus pink palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Lotus, shiny gold with pink enamel inlay finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a lotus flower as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a lotus flower and change the material to shiny gold with pink enamel inlay. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:45:14+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Lotus league crest, tier 6 of 10: a winged shield with a lotus flower.",
+        "hi": "कमल लीग का चिह्न, 10 में से स्तर 6।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 21778,
+      "sha256": "887b9c523b61ae29f21552f74c608be698a0f4ce2fb91197b78c97ee33915149",
+      "agnes_task_id": "task_pNIayrR1PFSEIbvbgvU64bDf0BhsExOB",
+      "candidates_generated": 1,
+      "use": "League tier 6 of 10 (Lotus)",
+      "review_note": "The cut-out needed the flood-fill fallback for the shield panel."
+    },
+    {
+      "file": "league-07-mango.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a ripe mango with one leaf as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated gold, mango orange and leaf green palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Mango, shiny gold with green and orange enamel inlay finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a ripe mango with one leaf as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a ripe mango with one leaf and change the material to shiny gold with green and orange enamel inlay. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:45:36+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Mango league crest, tier 7 of 10: a winged shield with a ripe mango with one leaf.",
+        "hi": "आम लीग का चिह्न, 10 में से स्तर 7।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 22404,
+      "sha256": "943957f97eccbe5b6e72d9c79acab49b917bb00f7828437c5f9953914c061a4b",
+      "agnes_task_id": "task_0tBFpHPZtQoNkvBWGkET1c5NQJjaUFB5",
+      "candidates_generated": 1,
+      "use": "League tier 7 of 10 (Mango)"
+    },
+    {
+      "file": "league-08-neem.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a sprig of slender serrated neem leaves as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated jade green and gold palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Neem, polished green jade stone with gold trim finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a sprig of slender serrated neem leaves as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a sprig of slender serrated neem leaves and change the material to polished green jade stone with gold trim. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:45:13+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Neem league crest, tier 8 of 10: a winged shield with a sprig of slender serrated neem leaves.",
+        "hi": "नीम लीग का चिह्न, 10 में से स्तर 8।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 23512,
+      "sha256": "6ea20a2b0ad95d10a88a30df5d26e4e764f021ae7ba38abc191c8c7584c92198",
+      "agnes_task_id": "task_K3KmYKznwbU7p376UZz8g15IU7EdEqqw",
+      "candidates_generated": 1,
+      "use": "League tier 8 of 10 (Neem)"
+    },
+    {
+      "file": "league-09-peepal.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a raised gold peepal leaf: a broad heart-shaped leaf with clearly visible veins and a long thin tapering tail at its tip, clearly a leaf, not a heart symbol as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated deep jade green and rich gold palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Peepal, deep glowing jade stone with thick gold trim finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a raised gold peepal leaf: a broad heart-shaped leaf with clearly visible veins and a long thin tapering tail at its tip, clearly a leaf, not a heart symbol as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a raised gold peepal leaf: a broad heart-shaped leaf with clearly visible veins and a long thin tapering tail at its tip, clearly a leaf, not a heart symbol and change the material to deep glowing jade stone with thick gold trim. Higher tiers look more precious. No numbers, no letters, no ribbon text. The background is plain flat pure white, not green. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:08+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Peepal league crest, tier 9 of 10: a winged shield with a raised gold peepal leaf: a broad heart-shaped leaf with clearly visible veins and a long thin tapering tail at its tip, clearly a leaf, not a heart symbol.",
+        "hi": "पीपल लीग का चिह्न, 10 में से स्तर 9।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 23072,
+      "sha256": "6232081b0441f10ca27ebe1614ca20e07fa88aaaa741a0675db4faf2c2e5a496",
+      "agnes_task_id": "task_EsN0OzVETq6iTihPsiOIoMKbVWodaSJo",
+      "candidates_generated": 3,
+      "use": "League tier 9 of 10 (Peepal)",
+      "review_note": "Third attempt: earlier tries drew a heart symbol."
+    },
+    {
+      "file": "league-10-banyan.webp",
+      "preset": "league-tier",
+      "prompt": "Soft 3D illustration of a rounded shield-shaped crest with two small wings at the sides with a broad banyan tree with hanging aerial roots as the emblem in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated emerald green, platinum and gold palette with soft highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a league crest for tier Banyan, sparkling faceted emerald gemstone with platinum and gold trim and a soft sparkle finish, part of a consistent set of ten crests, centred. Crest design: a rounded shield-shaped crest with two small wings at the sides, with a broad banyan tree with hanging aerial roots as the raised emblem in the centre of the shield. Keep exactly the same winged-shield silhouette, proportions, wing shape and camera angle as the reference crest; replace its centre emblem with a broad banyan tree with hanging aerial roots and change the material to sparkling faceted emerald gemstone with platinum and gold trim and a soft sparkle. Higher tiers look more precious. No numbers, no letters, no ribbon text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:45:36+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Banyan league crest, tier 10 of 10: a winged shield with a broad banyan tree with hanging aerial roots.",
+        "hi": "बरगद लीग का चिह्न, 10 में से स्तर 10।"
+      },
+      "transparent": true,
+      "reference_image": "league-bronze.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 52478,
+      "sha256": "37029e127f3830ab92b87ff7cc3a4eff424fba434c382e11669e1f45a548285c",
+      "agnes_task_id": "task_9sgea4HsMOKZSlkq4JTtJZLs0SldQwc4",
+      "candidates_generated": 1,
+      "use": "League tier 10 of 10 (Banyan)"
+    },
+    {
+      "file": "cat-hourglass.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), sitting calmly beside a sand timer hourglass as tall as itself, sand flowing, one paw resting on the timer's wooden frame, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), sitting calmly beside a sand timer hourglass as tall as itself, sand flowing, one paw resting on the timer's wooden frame, calm, focused expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:46:01+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat sitting beside a sand timer, for focus time.",
+        "hi": "बिल्ली रेत घड़ी के पास बैठी है, ध्यान लगाने के समय के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 61984,
+      "sha256": "5c1e670a113cbd7b8450a733d557bdcdecc15c793060f25ea96701fccc9b88ac",
+      "agnes_task_id": "task_8iP7aBFCnYearS0E2CKQCPQq4qCzTLzn",
+      "candidates_generated": 1,
+      "use": "Focus timer (MEM)"
+    },
+    {
+      "file": "cat-camera.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), standing and holding a smartphone with both paws, pointing its camera down at an open notebook on the floor in front of it, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), standing and holding a smartphone with both paws, pointing its camera down at an open notebook on the floor in front of it, curious, helpful expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. The notebook pages are blank with faint grey lines only, no writing. The phone has no logo. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:46:01+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat photographing an open notebook with a phone, to ask a doubt.",
+        "hi": "बिल्ली फ़ोन से खुली कॉपी की फ़ोटो ले रही है, सवाल पूछने के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 41124,
+      "sha256": "45d6317ce95d2e500bd7ddd5ed8e2fda41ff9b046c534307e1cb84c9f052f714",
+      "agnes_task_id": "task_wbt6OF6V2vEZTbfzJW7vXdTgHv5zvOyA",
+      "candidates_generated": 1,
+      "use": "Photo doubt (AI)",
+      "review_note": "Enclosed holes were filled after rembg."
+    },
+    {
+      "file": "cat-watering.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), tilting a small watering can so a stream of water falls onto a droopy young plant whose leaves hang down limply, in a terracotta pot with a simple cream dotted band, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), tilting a small watering can so a stream of water falls onto a droopy young plant whose leaves hang down limply, in a terracotta pot with a simple cream dotted band, caring, hopeful expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:40:35+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat watering a droopy plant to bring it back.",
+        "hi": "बिल्ली झुके पौधे को पानी देकर फिर से हरा कर रही है।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 54460,
+      "sha256": "465cbebffc82c03649fe618af19ac79392a5ea06607d9aeb7c10babba2f1332b",
+      "agnes_task_id": "task_hKkfBuhZNp8Dcp9KL7KoQ9cPUK6A85J4",
+      "candidates_generated": 2,
+      "use": "Comeback and 2-minute plant rescue",
+      "review_note": "The plant is only slightly droopy."
+    },
+    {
+      "file": "cat-blank-cards.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), sitting and holding up a fanned stack of plain blank white flashcards in its paws, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), sitting and holding up a fanned stack of plain blank white flashcards in its paws, cheerful, inviting expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. The cards are completely blank. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:46:24+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat holding a fan of blank flashcards, ready to make a deck.",
+        "hi": "बिल्ली खाली फ़्लैशकार्ड पकड़े है, डेक बनाने को तैयार।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 41338,
+      "sha256": "38e9d16393beae9cbff283fdf2ff88178f81a346e9fb153422315b840e7e41a1",
+      "agnes_task_id": "task_LFoYnGD3C20MDo1R03tF9UhyLpelELyT",
+      "candidates_generated": 2,
+      "use": "Empty deck state",
+      "review_note": "A small stack rather than a wide fan; the fan retry split the cards into two hands. Enclosed holes were filled after rembg."
+    },
+    {
+      "file": "cat-gift.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), sitting beside a gift box wrapped in blue paper with a gold ribbon bow, one paw on the box, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), sitting beside a gift box wrapped in blue paper with a gold ribbon bow, one paw on the box, happy, generous expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. No tag, no writing on the box. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:46:23+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat with a wrapped gift box, for inviting friends.",
+        "hi": "बिल्ली उपहार के डिब्बे के साथ, दोस्तों को बुलाने के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 49048,
+      "sha256": "dd4c85b2afb63bf7054b4258305e9d9aa6b0b3b4eb28f4925015c898bb686a79",
+      "agnes_task_id": "task_pMPiAvTS8n0kNwVQ6m5HaL6HGOyMtbw7",
+      "candidates_generated": 1,
+      "use": "Referrals"
+    },
+    {
+      "file": "cat-shield-key.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), standing and holding a small shiny gold key up in one paw, a small soft blue shield resting beside it, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), standing and holding a small shiny gold key up in one paw, a small soft blue shield resting beside it, trustworthy, calm expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:46:36+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat holding a small gold key next to a blue shield, for privacy.",
+        "hi": "बिल्ली नीली ढाल के पास छोटी सुनहरी चाबी पकड़े है, निजता के लिए।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 45836,
+      "sha256": "bef6ef07f9ddd392ad70faf75d68240d1849f6d7660fc7f7959649e76838e5b0",
+      "agnes_task_id": "task_kS80mI4hptYv54V2b4GS9j59x6WWcCYQ",
+      "candidates_generated": 1,
+      "use": "Privacy settings (SET)"
+    },
+    {
+      "file": "dog-resting.webp",
+      "preset": "pet-dog",
+      "prompt": "Soft 3D illustration of the Smriti dog mascot (small, round, golden-brown puppy, floppy ears, big eyes, blue collar), lying curled in a round woven basket, tucked in under a soft blue blanket that covers its body up to the chin, only its head and front paws peeking out, eyes softly half closed, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm golden-brown and cream palette with royal blue (#3557E8) collar and soft gold accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti dog mascot (small, round, golden-brown puppy, floppy ears, big eyes, blue collar), lying curled in a round woven basket, tucked in under a soft blue blanket that covers its body up to the chin, only its head and front paws peeking out, eyes softly half closed, calm, peaceful, resting expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same puppy character as the reference image: same golden-brown fur, floppy ear shape, eyes and royal blue collar. Comfortable and content, never sick-looking, never distressed. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:46:46+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The puppy resting calmly in a woven basket under a blue blanket.",
+        "hi": "पिल्ला बुनी हुई टोकरी में नीले कंबल के नीचे आराम कर रहा है।"
+      },
+      "transparent": true,
+      "reference_image": "dog-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 49138,
+      "sha256": "f0f80ec5d993743a78bb72af8c4daa74da2bd38107a3c7cfa48938e57444a60e",
+      "agnes_task_id": "task_VclaDM0b9TOBVd7HdQV55x02UyQDT3Zl",
+      "candidates_generated": 1,
+      "use": "Dog resting or unwell state"
+    },
+    {
+      "file": "dog-headphones.webp",
+      "preset": "pet-dog",
+      "prompt": "Soft 3D illustration of the Smriti dog mascot (small, round, golden-brown puppy, floppy ears, big eyes, blue collar), sitting and wearing soft round over-ear headphones, mouth open as if talking, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm golden-brown and cream palette with royal blue (#3557E8) collar and soft gold accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti dog mascot (small, round, golden-brown puppy, floppy ears, big eyes, blue collar), sitting and wearing soft round over-ear headphones, mouth open as if talking, friendly, attentive expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same puppy character as the reference image: same golden-brown fur, floppy ear shape, eyes and royal blue collar. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:47:41+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The puppy wearing headphones, ready to talk.",
+        "hi": "पिल्ला हेडफ़ोन पहनकर बात करने को तैयार है।"
+      },
+      "transparent": true,
+      "reference_image": "dog-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 37618,
+      "sha256": "c6c7ccebe8ed426353c98b903d207275408493590837067cfe341eb589d0aa73",
+      "agnes_task_id": "task_z1qSm8RCkcNbWNwzHOMoMM4gRRpj2QNZ",
+      "candidates_generated": 1,
+      "use": "Voice tutor with the dog"
+    },
+    {
+      "file": "scene-grown-up-first.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of an Indian mother and her son of about seven sitting together on a sofa at home looking at a smartphone the mother holds, with the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) sitting happily on the sofa beside them, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated teal and warm cream palette with primary blue and soft gold accents, soft gradient background in soft teal (#E3F4F8) fading to warm cream, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing an Indian mother and her son of about seven sitting together on a sofa at home looking at a smartphone the mother holds, with the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) sitting happily on the sofa beside them, soft gradient background in soft teal (#E3F4F8) fading to warm cream, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Keep the cat and the puppy identical to the two reference images. The pets wear no clothes. Modest everyday clothing, natural skin tones, stylised soft 3D faces, the phone screen is plain and blank. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:42:43+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A parent and a young child looking at a phone together on a sofa, with the cat and the puppy beside them.",
+        "hi": "माता-पिता और छोटा बच्चा सोफ़े पर साथ फ़ोन देख रहे हैं, बिल्ली और पिल्ला पास बैठे हैं।"
+      },
+      "transparent": false,
+      "reference_image": [
+        "cat-base.webp",
+        "dog-base.webp"
+      ],
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 49032,
+      "sha256": "6625506cb9f3758fa91e255a877f239be91c9c975296f3b6d3e74750cbc5f852",
+      "agnes_task_id": "task_sX8HS5vfcndxsfc8dlTSSb6oOkZiVdz4",
+      "candidates_generated": 2,
+      "use": "Hand-the-phone to a grown-up; also AUTH-24, AUTH-26, AUTH-28"
+    },
+    {
+      "file": "scene-duel.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) facing off playfully across a small round table, each holding up a big plain blank question card, sparkles between them, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated purple and blue palette with warm orange and gold accents, soft gradient background in soft lavender (#F1E9FF) fading to sky blue, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) facing off playfully across a small round table, each holding up a big plain blank question card, sparkles between them, soft gradient background in soft lavender (#F1E9FF) fading to sky blue, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Keep the cat and the puppy identical to the two reference images. The pets wear no clothes. The cards are completely blank: no question marks, no writing, no symbols. No scoreboard, no screens. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:42:40+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat and the puppy facing off with question cards, ready for a friendly duel.",
+        "hi": "बिल्ली और पिल्ला सवाल-कार्ड लिए आमने-सामने, दोस्ताना मुकाबले के लिए तैयार।"
+      },
+      "transparent": false,
+      "reference_image": [
+        "cat-base.webp",
+        "dog-base.webp"
+      ],
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 31122,
+      "sha256": "5d08c1762781729781b315caf11beb02eed044084488ec4d7cafc2a89a765013",
+      "agnes_task_id": "task_DnS4R8CoJDAV58C3ED3QCz7Jp6zTlM5S",
+      "candidates_generated": 2,
+      "use": "Duel lobby (SOC)"
+    },
+    {
+      "file": "scene-friends-locked.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) peeking happily over a low wooden garden gate, paws resting on the top rail, flowers around the gate, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated leaf green and warm cream palette with pink and gold accents, soft gradient background in soft mint (#E2F6EA) fading to warm cream, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) peeking happily over a low wooden garden gate, paws resting on the top rail, flowers around the gate, soft gradient background in soft mint (#E2F6EA) fading to warm cream, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Keep the cat and the puppy identical to the two reference images. The pets wear no clothes. Gentle and friendly, no lock, no sign. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:47:16+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat and the puppy peeking over a garden gate.",
+        "hi": "बिल्ली और पिल्ला बगीचे के छोटे फाटक के ऊपर से झाँक रहे हैं।"
+      },
+      "transparent": false,
+      "reference_image": [
+        "cat-base.webp",
+        "dog-base.webp"
+      ],
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 41962,
+      "sha256": "5594ae34c5a28376ed3df168c9e49e8738e792ffb20cb068114ef66f6d8cd122",
+      "agnes_task_id": "task_zuLkVncBxVFlIc503aBH0sNlUcyRco7X",
+      "candidates_generated": 1,
+      "use": "Friends locked until guardian consent"
+    },
+    {
+      "file": "scene-maintenance.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) standing with a small red toolbox next to a big friendly rounded blue gear wheel taller than the cat, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue and cream palette with warm orange and gold accents, soft gradient background in soft blue (#E7EEFF) fading to warm cream, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) standing with a small red toolbox next to a big friendly rounded blue gear wheel taller than the cat, soft gradient background in soft blue (#E7EEFF) fading to warm cream, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:47:41+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat with a toolbox next to a big gear, fixing things.",
+        "hi": "बिल्ली औज़ार-पेटी के साथ बड़े गियर के पास, कुछ ठीक कर रही है।"
+      },
+      "transparent": false,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 26968,
+      "sha256": "a5a56d03db09b331050cda60f31eade3e2506a967c63e913c144c46ccea76daf",
+      "agnes_task_id": "task_d2O91pEYrNOhBYEHwd35x4LwwQTZz2tp",
+      "candidates_generated": 1,
+      "use": "Maintenance (ENT)"
+    },
+    {
+      "file": "scene-voice-tutor.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) wearing soft round headphones, sitting on a cushion in a cosy room with a warm lamp, soft rounded sound wave rings floating around its head, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated purple and warm cream palette with gold and soft blue accents, soft gradient background in soft lavender (#F1E9FF) fading to warm peach, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) wearing soft round headphones, sitting on a cushion in a cosy room with a warm lamp, soft rounded sound wave rings floating around its head, soft gradient background in soft lavender (#F1E9FF) fading to warm peach, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:48:35+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat with headphones and soft sound waves, ready to talk.",
+        "hi": "बिल्ली हेडफ़ोन लगाए, आवाज़ की लहरों के साथ बात करने को तैयार।"
+      },
+      "transparent": false,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 32390,
+      "sha256": "d605c5882fd1f01675ce092e1e315b96c61dd6457902e38a4a0dad77ed3bfa86",
+      "agnes_task_id": "task_48vH1YaNOqk3T8L7hwGdpR8gWALypd7F",
+      "candidates_generated": 1,
+      "use": "Voice tutor (AI)"
+    },
+    {
+      "file": "scene-notebook-desk.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of a flat-lay view looking straight down from directly above at a wooden study desk top filling the whole frame, with an open notebook with blank ruled pages, a yellow pencil beside it and a small clear glass tumbler of milky chai, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm wood and cream palette with soft blue and amber accents, soft gradient background in warm cream (#FFF1D6), Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing a flat-lay view looking straight down from directly above at a wooden study desk top filling the whole frame, with an open notebook with blank ruled pages, a yellow pencil beside it and a small clear glass tumbler of milky chai, soft gradient background in warm cream (#FFF1D6), rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. The notebook has only faint ruled lines, no writing or drawings at all. Leave the centre of the notebook pages empty. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:34:30+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A study desk from above with an open notebook, a pencil and a glass of tea.",
+        "hi": "ऊपर से दिखती पढ़ाई की मेज़, खुली कॉपी, पेंसिल और चाय का गिलास।"
+      },
+      "transparent": false,
+      "reference_image": null,
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 42316,
+      "sha256": "b0940f7bd5dfa557f3e9e88b5782e4db58ecedf9b225e49b1dab66ebb35826a7",
+      "agnes_task_id": "task_CTNX8s1CvlIvtPg9QcmKXHnDHHrhMiCs",
+      "candidates_generated": 2,
+      "use": "Cornell notes and drill headers"
+    },
+    {
+      "file": "scene-360-fort.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of a wide sunny view of an Indian hill fort with sandstone walls and round bastions on a green hilltop, a winding path leading up, blue sky with soft clouds, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated amber and golden brown (#B7791F) palette with leaf green and sky blue accents, soft gradient background in soft sky blue fading to warm sand, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing a wide sunny view of an Indian hill fort with sandstone walls and round bastions on a green hilltop, a winding path leading up, blue sky with soft clouds, soft gradient background in soft sky blue fading to warm sand, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. A generic fort, not a specific real monument. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "16:9",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T14:48:05+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A sunny hill fort with sandstone walls on a green hill.",
+        "hi": "हरी पहाड़ी पर बलुआ पत्थर की दीवारों वाला धूप भरा पहाड़ी किला।"
+      },
+      "transparent": false,
+      "reference_image": null,
+      "delivered_px": [
+        1280,
+        718
+      ],
+      "bytes": 54900,
+      "sha256": "4e9ce22a4ccde73ec09ed078bc2c7a3381cededd7f32491382533033e3123595",
+      "agnes_task_id": "task_acCpcUyODte3LgzCd1w8ClSUAico6dro",
+      "candidates_generated": 1,
+      "use": "360 degree scene thumbnail stand-in",
+      "review_note": "A 16:9 still, not an equirectangular pano (Agnes has no 2:1 ratio). A generic fort, not a real monument."
+    },
+    {
+      "file": "scene-paywall.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) standing side by side and together holding up a big blank shiny golden tag on a ribbon between them, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated streak gold and cream palette with royal blue and orange accents, soft gradient background in soft warm gold (#FFF1B8) fading to cream, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing the Smriti cat mascot (small round cream-and-orange cat, gold tail tip) and the Smriti dog mascot (small round golden-brown puppy, floppy ears, blue collar) standing side by side and together holding up a big blank shiny golden tag on a ribbon between them, soft gradient background in soft warm gold (#FFF1B8) fading to cream, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Keep the cat and the puppy identical to the two reference images. The pets wear no clothes. The tag is completely blank: no writing, no symbols, no price. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T15:03:45+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat and the puppy holding a big golden tag together.",
+        "hi": "बिल्ली और पिल्ला साथ में बड़ा सुनहरा टैग पकड़े हैं।"
+      },
+      "transparent": false,
+      "reference_image": [
+        "cat-base.webp",
+        "dog-base.webp"
+      ],
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 25374,
+      "sha256": "b2e46ca0e612499e5898e36c3d48f36a8bf1b77ef94be27e1fd73668169c7976",
+      "agnes_task_id": "task_9064fGXvC8pnAAWlFVGqILH9tooMv8MF",
+      "candidates_generated": 1,
+      "use": "Paywall hero (PAY)"
+    },
+    {
+      "file": "ll-path-island.webp",
+      "preset": "storybook",
+      "prompt": "Soft 3D illustration of a bright cheerful island in a calm turquoise sea with a winding path of round stepping stones leading from the bottom to the top, palm trees, small flowers and a little hut at the top, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated leaf green and turquoise palette with sunny yellow and coral accents, a full scene in a flatter 2.5D storybook finish, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a storybook illustration in a soft 2.5D style of a tall bright island that fills the whole tall frame, seen from above at an angle, with a long winding path of round flat stepping stones crossing the island in S-curves from the bottom edge of the frame to the top edge, grass, flowers and palm trees on both sides, a little hut at the very top, warm friendly colours. The stepping stones are plain and evenly spaced so the app can place lesson nodes on them. No characters, no text. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "9:16",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:34:46+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A bright island with a winding stepping-stone path, the little learners' map.",
+        "hi": "घुमावदार पत्थरों के रास्ते वाला चमकीला द्वीप, छोटे बच्चों का नक्शा।"
+      },
+      "transparent": false,
+      "reference_image": null,
+      "delivered_px": [
+        718,
+        1280
+      ],
+      "bytes": 109812,
+      "sha256": "7e504ce80efe335760056d47ec0a236e036b7ff04800d888c8cda1f801870450",
+      "agnes_task_id": "task_rsiGXgO5salvKqj0eiArowRLFFlfOquo",
+      "candidates_generated": 2,
+      "use": "Little learners home path background (class 1 to 5)",
+      "review_note": "The path runs fairly straight up the island rather than in S-curves."
+    },
+    {
+      "file": "water-cup.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of a small terracotta water cup (kulhad) filled with clear water, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue (#3557E8) palette with terracotta and white water highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single a small terracotta water cup (kulhad) filled with clear water, three-quarter view, isolated on a transparent background. Part of a set of four that grows in size; same style, lighting and camera angle. No markings. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:42:55+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Daily goal size one: a small cup of water.",
+        "hi": "रोज़ का लक्ष्य, पहला आकार: पानी का छोटा कुल्हड़।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 34798,
+      "sha256": "30d26788e1c8a4bdf6e0234aaf8f4ffb67028686e7559b9c2b79095650f4b999",
+      "agnes_task_id": "task_6eGhxCE4S2hhGlpEy5VQpeGcEP2Y1f1Z",
+      "candidates_generated": 1,
+      "use": "Daily goal, size 1",
+      "review_note": "The four water sizes are each framed to fill the image; the app shows the size difference by scale."
+    },
+    {
+      "file": "water-can-small.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of a small round blue watering can, toy-sized, with a short spout, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue (#3557E8) palette with terracotta and white water highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single a small round blue watering can, toy-sized, with a short spout, three-quarter view, isolated on a transparent background. Part of a set of four that grows in size; same style, lighting and camera angle. No markings. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:42:57+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Daily goal size two: a small watering can.",
+        "hi": "रोज़ का लक्ष्य, दूसरा आकार: छोटा पानी का डिब्बा।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 31192,
+      "sha256": "b7f48790b68b672b8c14bf7ea06e78b81d491ba4164ce77d637f7107ef30387a",
+      "agnes_task_id": "task_ng1xIoPKs3ftDzf1OoLvtiUuJtrPbn92",
+      "candidates_generated": 1,
+      "use": "Daily goal, size 2"
+    },
+    {
+      "file": "water-can-medium.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of a medium blue watering can with a curved handle and a longer spout, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue (#3557E8) palette with terracotta and white water highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single a medium blue watering can with a curved handle and a longer spout, three-quarter view, isolated on a transparent background. Part of a set of four that grows in size; same style, lighting and camera angle. No markings. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:13+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Daily goal size three: a medium watering can.",
+        "hi": "रोज़ का लक्ष्य, तीसरा आकार: मध्यम पानी का डिब्बा।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 40806,
+      "sha256": "ecb2207d3f1cf9e89077d1453a2d4f4faaf8ab81c59b5911680933c0e41655c7",
+      "agnes_task_id": "task_ZPBmWJxPxhKn8aVQzksVeAQtaTRzcbPl",
+      "candidates_generated": 1,
+      "use": "Daily goal, size 3"
+    },
+    {
+      "file": "water-can-large.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of a large blue watering can with a rose sprinkler head on a long spout, a few water drops, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue (#3557E8) palette with terracotta and white water highlights accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single a large blue watering can with a rose sprinkler head on a long spout, a few water drops, three-quarter view, isolated on a transparent background. Part of a set of four that grows in size; same style, lighting and camera angle. No markings. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:12+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Daily goal size four: a large watering can.",
+        "hi": "रोज़ का लक्ष्य, चौथा आकार: बड़ा पानी का डिब्बा।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 36898,
+      "sha256": "e3114da419d9b3a71f799f52ff4fbb834cd6ada693f81db99268dc31c7fb29be",
+      "agnes_task_id": "task_f9lS9qBuxF4ZG4C3guOQiqKTQ5OPG7eV",
+      "candidates_generated": 1,
+      "use": "Daily goal, size 4"
+    },
+    {
+      "file": "level-pencil.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of brand-new sharpened yellow pencil with a pink eraser, lying at a slight angle, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm yellow palette with pink and wood brown accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single brand-new sharpened yellow pencil with a pink eraser, lying at a slight angle, three-quarter view, isolated on a transparent background. No writing or logo on the pencil. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:24+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Level one: a fresh pencil.",
+        "hi": "पहला स्तर: नई पेंसिल।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 21180,
+      "sha256": "1f0b65659109802e6f69211ae7951fbf5294cd2f96660afc3a26d7e0acafe34c",
+      "agnes_task_id": "task_0RAtbeNiHGctE5qj3A3xZsUwF7pnecta",
+      "candidates_generated": 1,
+      "use": "Level object 1"
+    },
+    {
+      "file": "level-notebook.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of closed blue notebook with a red ribbon bookmark hanging out of it, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue (#3557E8) palette with red and cream accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single closed blue notebook with a red ribbon bookmark hanging out of it, three-quarter view, isolated on a transparent background. The cover is plain, no writing. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:27+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Level two: a notebook with a bookmark.",
+        "hi": "दूसरा स्तर: बुकमार्क वाली कॉपी।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 27868,
+      "sha256": "f0e43e97f337b75b9e1d71794c4a5010ad8d3a5b2c4250c421e72e434bd723f8",
+      "agnes_task_id": "task_4xT3aWQXQgFo1jWHl6dBTpxm8JMORUOK",
+      "candidates_generated": 1,
+      "use": "Level object 2"
+    },
+    {
+      "file": "level-highlighter.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of small stack of note pages with a few bright highlighted stripes and a yellow highlighter pen resting on top, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated sunny yellow palette with soft green and pink accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single small stack of note pages with a few bright highlighted stripes and a yellow highlighter pen resting on top, three-quarter view, isolated on a transparent background. The highlighted stripes are plain colour bands with no letters underneath; no writing anywhere. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:26+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Level three: study notes with a highlighter.",
+        "hi": "तीसरा स्तर: हाइलाइटर के साथ नोट्स।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 55100,
+      "sha256": "eb0eb285cb56c463276a98cde4766a81926d854c5a4d9e2ca6d27c233b3eb5eb",
+      "agnes_task_id": "task_qcc78CcyTLBcJGfrYGBxrDkZrpuvBq6m",
+      "candidates_generated": 1,
+      "use": "Level object 3"
+    },
+    {
+      "file": "object-phone-hands.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of smartphone being handed over between two different friendly cartoon hands, one hand coming from the left holding the phone and a second hand coming from the right reaching to take it, both hands visible, the screen plain and blank, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue (#3557E8) palette with warm skin tones and cream accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single smartphone being handed over between two different friendly cartoon hands, one hand coming from the left holding the phone and a second hand coming from the right reaching to take it, both hands visible, the screen plain and blank, three-quarter view, isolated on a transparent background. Simple stylised hands with five fingers each, no logo on the phone. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:45:57+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A phone passed from one hand to another.",
+        "hi": "एक हाथ से दूसरे हाथ में दिया जाता फ़ोन।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 25200,
+      "sha256": "cce4eb295bb1d15266af5e6ea1726874d5de4e5512dba6131ba1dc0e6a59c1fd",
+      "agnes_task_id": "task_vhBy9GaTNAFLM05jXIl9YqvisYokj09O",
+      "candidates_generated": 2,
+      "use": "Hand the phone over (guardian and second device)",
+      "review_note": "The arms are cut off at the frame edges. The cut-out needed the flood-fill fallback for the blank screen."
+    },
+    {
+      "file": "shop-pro-pot.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of terracotta plant pot with a shiny gold rim and a gold dotted band, empty with dark soil, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated terracotta and gold (#F5A300) palette with cream accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single terracotta plant pot with a shiny gold rim and a gold dotted band, empty with dark soil, three-quarter view, isolated on a transparent background. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:43+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Shop item: a gold-rimmed plant pot for Pro.",
+        "hi": "दुकान की चीज़: Pro के लिए सुनहरे किनारे वाला गमला।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 46820,
+      "sha256": "7968327eb0382564313730597dd27012acb54b57a95f37f0f30e584d73185820",
+      "agnes_task_id": "task_nLiy7TlmEOkXLqtORHFfsaeW9mWlJSzM",
+      "candidates_generated": 1,
+      "use": "Pro plant pot (shop)"
+    },
+    {
+      "file": "shop-freeze.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of small shiny ice-crystal charm shaped like a snowflake gem hanging from a tiny loop, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated icy light blue (#2BB5E8) palette with white and silver accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single small shiny ice-crystal charm shaped like a snowflake gem hanging from a tiny loop, three-quarter view, isolated on a transparent background. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:41+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Shop item: an ice-crystal charm that freezes your streak.",
+        "hi": "दुकान की चीज़: स्ट्रीक बचाने वाला बर्फ़ का क्रिस्टल।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 85216,
+      "sha256": "65a26b36a0731f7ccbb497c51d64c899846c1dffafdac6c3cc97d4c0ddba9e78",
+      "agnes_task_id": "task_kpr5HDNVlP9OapShNekukuWjPU8foekz",
+      "candidates_generated": 1,
+      "use": "Streak freeze (shop)"
+    },
+    {
+      "file": "shop-fish-treat.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of cute small fish-shaped pet treat biscuit, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm orange palette with cream and gold accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single cute small fish-shaped pet treat biscuit, three-quarter view, isolated on a transparent background. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:54+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Shop item: a fish-shaped treat for your pet.",
+        "hi": "दुकान की चीज़: पालतू के लिए मछली के आकार का बिस्कुट।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 41350,
+      "sha256": "6427dba6b2f2a778c864ee09cb6f9388667dc75d6fd419e166b520e149813a60",
+      "agnes_task_id": "task_w6P2zD5BQb8OicYzzCSWoSbt0SJq319E",
+      "candidates_generated": 1,
+      "use": "Pet treat (shop)"
+    },
+    {
+      "file": "object-weekly-chest.webp",
+      "preset": "sunny-object",
+      "prompt": "Soft 3D illustration of small rounded wooden treasure chest with gold trim, its lid slightly open with a soft golden glow and a few blue gems peeking out, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm wood brown and gold (#F5A300) palette with cyan gem blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a single small rounded wooden treasure chest with gold trim, its lid slightly open with a soft golden glow and a few blue gems peeking out, three-quarter view, isolated on a transparent background. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:43:58+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A weekly reward chest with gems inside.",
+        "hi": "अंदर रत्नों वाला साप्ताहिक इनाम संदूक।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 47308,
+      "sha256": "cdfb93fccba767106e45485b190df6f6a04a459718d64fe39b6ac8417074c957",
+      "agnes_task_id": "task_n7YkpCLrOSCJraQhKRQ7GgVhQ5QNjty8",
+      "candidates_generated": 1,
+      "use": "Weekly quest chest"
+    },
+    {
+      "file": "squad-crest-tulsi.webp",
+      "preset": "badge",
+      "prompt": "Soft 3D illustration of a simple round-bottomed shield emblem with a sprig of tulsi leaves in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated leaf green (#1F9D55) palette with cream and soft gold accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing a sprig of tulsi leaves on a simple round-bottomed shield, no wings, simple rounded frame, centred. Part of a set of three squad shields with the same shape; only the colour and the plant emblem change. Readable at small sizes. No ribbon, no text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:44:04+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Squad crest: a shield with tulsi leaves.",
+        "hi": "टोली का चिह्न: तुलसी की पत्तियों वाली ढाल।"
+      },
+      "transparent": true,
+      "reference_image": null,
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 22628,
+      "sha256": "289732c2e6c30ff96251f28a2dbdb71c4d83d60215545b4f63bd96b7b4a2803a",
+      "agnes_task_id": "task_8K6Ph4ByRvmVwX7yTNCZlpuedOLXqu9z",
+      "candidates_generated": 1,
+      "use": "Squad crest 1",
+      "review_note": "The cut-out needed the flood-fill fallback for the shield panel."
+    },
+    {
+      "file": "squad-crest-marigold.webp",
+      "preset": "badge",
+      "prompt": "Soft 3D illustration of a simple round-bottomed shield emblem with a marigold flower in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated marigold orange (#E8590C) palette with cream and soft gold accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing a marigold flower on a simple round-bottomed shield, no wings, simple rounded frame, centred. Exactly one single shield in the image, alone. Use the same shield shape as the reference; only the colour and the plant emblem change. Readable at small sizes. No ribbon, no text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:46:09+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Squad crest: a shield with a marigold.",
+        "hi": "टोली का चिह्न: गेंदे के फूल वाली ढाल।"
+      },
+      "transparent": true,
+      "reference_image": "squad-crest-tulsi.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 34848,
+      "sha256": "3c519c3ddc20d6cbed05c1827dd0f987013a5fa0dad4a02293a2c0c35566cdfc",
+      "agnes_task_id": "task_5CoZPxxvVYsYMju618I1Jv0RmQV1ycjx",
+      "candidates_generated": 2,
+      "use": "Squad crest 2"
+    },
+    {
+      "file": "squad-crest-bamboo.webp",
+      "preset": "badge",
+      "prompt": "Soft 3D illustration of a simple round-bottomed shield emblem with two bamboo stalks with leaves in the centre, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated teal (#0E7C93) palette with cream and soft gold accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a shiny soft-3D achievement badge emblem showing two bamboo stalks with leaves on a simple round-bottomed shield, no wings, simple rounded frame, centred. Exactly one single shield in the image, alone. Use the same shield shape as the reference; only the colour and the plant emblem change. Readable at small sizes. No ribbon, no text, no numbers. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:46:11+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "Squad crest: a shield with bamboo.",
+        "hi": "टोली का चिह्न: बाँस वाली ढाल।"
+      },
+      "transparent": true,
+      "reference_image": "squad-crest-tulsi.webp",
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 19168,
+      "sha256": "b94ce9a9dd3808390e5e06ead6ec1f5cbaa33d3c084057f779e1d0cde12a8e2e",
+      "agnes_task_id": "task_wrtsZG9eCnna8PUErutJrTSWA2MXuzlw",
+      "candidates_generated": 2,
+      "use": "Squad crest 3"
+    },
+    {
+      "file": "scene-student-laptop.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of an Indian teenage student sitting at a small desk at home studying on a laptop, a cup and a few books beside it, a window with soft daylight, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated primary blue and warm cream palette with soft gold and leaf green accents, soft gradient background in soft sky blue (#E7EEFF) fading to warm cream, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing an Indian teenage student sitting at a small desk at home studying on a laptop, a cup and a few books beside it, a window with soft daylight, soft gradient background in soft sky blue (#E7EEFF) fading to warm cream, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. Modest everyday clothing, natural skin tones, stylised soft 3D face, the laptop screen is plain and blank, no logo. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:44:07+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A student studying on a laptop at home.",
+        "hi": "घर पर लैपटॉप से पढ़ता एक विद्यार्थी।"
+      },
+      "transparent": false,
+      "reference_image": null,
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 33368,
+      "sha256": "9b39a318aef77dcf77a7e3b424ada06375b28640dc623148dff6c541301a4207",
+      "agnes_task_id": "task_RUtGsZ3upgJ0yqmpSGP2atnbzx3Fthc6",
+      "candidates_generated": 1,
+      "use": "Web and laptop study hero"
+    },
+    {
+      "file": "scene-pet-room.webp",
+      "preset": "sunny-scene",
+      "prompt": "Soft 3D illustration of an empty cosy pet room: a round cushion bed, a small rug, a low shelf with a potted plant in a terracotta pot, a window with soft daylight and a little food bowl, no animals, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated warm peach and cream palette with leaf green and soft blue accents, soft gradient background in warm peach (#FFF0E0) fading to cream, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. a simple scene showing an empty cosy pet room: a round cushion bed, a small rug, a low shelf with a potted plant in a terracotta pot, a window with soft daylight and a little food bowl, no animals, soft gradient background in warm peach (#FFF0E0) fading to cream, rounded simplified scenery. Keep the main subject inside the central 70% of the frame, at most five distinct objects. No cats, dogs or people. Keep the floor centre clear so a pet can be placed there. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "3:2",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:44:15+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "A cosy empty pet room with a cushion bed, a rug and a plant.",
+        "hi": "आरामदायक खाली पालतू कमरा, गद्दी वाला बिस्तर, दरी और पौधा।"
+      },
+      "transparent": false,
+      "reference_image": null,
+      "delivered_px": [
+        1280,
+        853
+      ],
+      "bytes": 45888,
+      "sha256": "c8315364d7274ac16b3654800e83398c6af3e3516349c403fd1149ce2d6fabe8",
+      "agnes_task_id": "task_wPW7rg0Hz1s2OfQhkd4sFaanXNPpOpzw",
+      "candidates_generated": 1,
+      "use": "Pet room backdrop (ME), no pets"
+    },
+    {
+      "file": "cat-proud.webp",
+      "preset": "pet-cat",
+      "prompt": "Soft 3D illustration of the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), standing tall with chest puffed out, chin up and eyes happily closed, paws on hips, rounded friendly shapes, clean minimal composition, soft key light from the top left, gentle ambient occlusion, subtle contact shadow, saturated cream, warm orange and gold palette with streak gold (#F5A300) and soft blue accents, on a plain flat pure white background, no shadow on the background, isolated subject, Indian context where people or places appear, no text, no letters, no numbers, no logos, high detail, centred, generous padding. the Smriti cat mascot (small, round, cream-and-orange, big friendly eyes, gold tail tip), standing tall with chest puffed out, chin up and eyes happily closed, paws on hips, proud, pleased expression, consistent with the reference sheet. Full body, with plain empty space above the head. No speech bubbles, no icons, no symbols floating around. Keep exactly the same cat character as the reference image: same colours, proportions, eye shape, face markings and tail. The tail tip is soft golden-yellow fur, never a metal ball or bead. Avoid: text, watermark, logo, signature, letters, numbers, photorealistic faces, clutter, harsh shadows, neon glow, dark horror tones, distorted hands, extra limbs.",
+      "ratio": "1:1",
+      "size": "1K",
+      "model": "agnes-image-2.1-flash",
+      "generated_at": "2026-10-29T17:44:34+00:00",
+      "source": "agnes",
+      "licence": "owned",
+      "status": "draft (mock use, not approved)",
+      "alt": {
+        "en": "The cat standing proudly with its chin up.",
+        "hi": "बिल्ली गर्व से सिर उठाकर खड़ी है।"
+      },
+      "transparent": true,
+      "reference_image": "cat-base.webp",
+      "delivered_px": [
+        768,
+        768
+      ],
+      "bytes": 37358,
+      "sha256": "a37813c3b49b9aeb990f387d9000e0299dabd42f2c87d42c9107728af0bf015b",
+      "agnes_task_id": "task_oUdKKm8rjW4AHeM1TAld9UOhYK2LvCLs",
+      "candidates_generated": 1,
+      "use": "Proud moments, level up"
+    },
+    {
+      "file": "app-icon.webp",
+      "preset": null,
+      "prompt": null,
+      "source": "brand/logo (owner-chosen Agnes mark, see brand/logo/README.md)",
+      "converted_from": "brand/logo/app-icons/all-1024.png",
+      "licence": "owned",
+      "status": "brand asset, converted only (not redrawn)",
+      "alt": {
+        "en": "The all-exams app icon.",
+        "hi": "सभी परीक्षाओं वाले ऐप का आइकन।"
+      },
+      "transparent": false,
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 6638,
+      "sha256": "7c483558d58a17d9584147fe976e77ad03064e0cb98895b80aee04d7b9ee4c8c",
+      "use": "App icon in mocks (store, splash, home screen)"
+    },
+    {
+      "file": "logo-mark.webp",
+      "preset": null,
+      "prompt": null,
+      "source": "brand/logo (owner-chosen Agnes mark, see brand/logo/README.md)",
+      "converted_from": "brand/logo/png/smriti-mark-512.png",
+      "licence": "owned",
+      "status": "brand asset, converted only (not redrawn)",
+      "alt": {
+        "en": "The Smriti logo mark: two leaves and a spark.",
+        "hi": "स्मृति का लोगो चिह्न: दो पत्तियाँ और एक चमक।"
+      },
+      "transparent": true,
+      "delivered_px": [
+        512,
+        512
+      ],
+      "bytes": 12824,
+      "sha256": "8fa3a85d1fc91b1a14c1d02cdf2367c95e725239d75d182d3df7951db1e72c5d",
+      "use": "Logo mark in headers"
+    },
+    {
+      "file": "logo-lockup.webp",
+      "preset": null,
+      "prompt": null,
+      "source": "brand/logo (owner-chosen Agnes mark, see brand/logo/README.md)",
+      "converted_from": "brand/logo/lockup/smriti-lockup-light.png",
+      "licence": "owned",
+      "status": "brand asset, converted only (not redrawn)",
+      "alt": {
+        "en": "Smriti logo with the name in English and Hindi.",
+        "hi": "अंग्रेज़ी और हिंदी नाम के साथ स्मृति का लोगो।"
+      },
+      "transparent": true,
+      "delivered_px": [
+        800,
+        240
+      ],
+      "bytes": 17100,
+      "sha256": "295f24e4f0da605efe032af9a138743b4bef06fe0a5e2ee7c510de19b269b4f9",
+      "use": "Logo lockup on light surfaces"
+    },
+    {
+      "file": "logo-lockup-dark.webp",
+      "preset": null,
+      "prompt": null,
+      "source": "brand/logo (owner-chosen Agnes mark, see brand/logo/README.md)",
+      "converted_from": "brand/logo/lockup/smriti-lockup-dark.png",
+      "licence": "owned",
+      "status": "brand asset, converted only (not redrawn)",
+      "alt": {
+        "en": "Smriti logo with the name in English and Hindi, for dark backgrounds.",
+        "hi": "गहरे रंग के लिए अंग्रेज़ी और हिंदी नाम के साथ स्मृति का लोगो।"
+      },
+      "transparent": true,
+      "delivered_px": [
+        800,
+        240
+      ],
+      "bytes": 17286,
+      "sha256": "b8bacb015d56c4d06e9bf9f716fa02e08a035e5c88348088acc3d9432bd9dc4d",
+      "use": "Logo lockup on dark surfaces"
     }
   ]
 }

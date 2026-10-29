@@ -141,6 +141,14 @@
 .sx .mk-onb-brand { display: flex; align-items: center; gap: 10px; font: 800 20px/1 var(--f-latin); margin-bottom: 18px; }
 .sx .mk-onb-brand i { width: 40px; height: 40px; border-radius: 12px; background: var(--primary); display: grid; place-items: center; }
 .sx .mk-onb-brand svg { width: 30px; height: 30px; }
+.sx .mk-onb-level .ph img { width: 64px; height: 64px; object-fit: contain; }
+.sx .mk-onb-level .ph { padding: 0; }
+.sx .mk-onb-stops img.can { object-fit: contain; margin-bottom: 2px; }
+.sx .mk-onb-stops span { justify-content: flex-end; }
+.sx .mk-onb-crop { position: relative; overflow: hidden; flex: none; }
+.sx .mk-onb-crop .plant { position: absolute; transform: translateX(-50%); object-fit: contain; z-index: 1; }
+.sx .mk-onb-crop .pet { position: absolute; object-fit: contain; }
+.sx .mk-onb-crop .ringa { position: absolute; border-radius: 50%; z-index: 2; box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 55%, transparent), 0 0 0 14px color-mix(in srgb, var(--primary) 16%, transparent); }
 /* ENT-08 parts */
 .sx .mk-onb-days { display: flex; justify-content: center; gap: 10px; }
 .sx .mk-onb-days span { display: flex; flex-direction: column; align-items: center; gap: 4px; font: 600 11px/14px var(--f-latin); color: var(--muted); }
@@ -383,7 +391,7 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-onb-top"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><div class="segbar" role="progressbar" aria-label="Question 1 of 3"><i class="cur"></i><i></i><i></i></div><span class="mk-onb-sp"></span></div>
   <div class="body" style="gap:12px;padding-top:0">
-    <div class="scene" style="height:176px;display:grid;place-items:center;padding:0 24px;text-align:center"><span class="note">Agnes art: scene-grown-up-first, a parent and a young child looking at a phone on a sofa, a pet peeking in</span></div>
+    <div class="scene" style="height:180px;flex:none"><img class="art-fill" src="assets/scene-grown-up-first.webp" alt="A parent and child setting up the app together" style="object-position:50% 55%"></div>
     <div class="mk-onb-h" style="font-size:26px;line-height:32px">First, a few words for grown-ups</div>
     <div class="mk-onb-rows" role="list">
       <div role="listitem"><i><svg class="ic sm"><use href="#ph-book-open-bold"/></svg></i>Short, story-led lessons for class 2.</div>
@@ -394,7 +402,7 @@
   </div>
   <div class="mk-onb-bottom" style="gap:4px"><span class="btn btn-primary" style="font-size:15px;padding:0 14px">I'm the parent or guardian. Continue</span><span class="mk-onb-ghost">Go back</span><div class="homebar"></div></div>
 </div></div>
-<figcaption><span class="id">ONB-05</span><span class="nm">Grown-up first, little learner · Phase 3</span><span class="ds">Branch after class 1–5 is picked (Phase 3). A 3-segment parent bar (ONB-05, ONB-08, ONB-15); no pet sounds; the button carries the parent-or-guardian declaration. Scene art pending (`scene-grown-up-first`).</span></figcaption>
+<figcaption><span class="id">ONB-05</span><span class="nm">Grown-up first, little learner · Phase 3</span><span class="ds">Branch after class 1–5 is picked (Phase 3). A 3-segment parent bar (ONB-05, ONB-08, ONB-15); no pet sounds; the button carries the parent-or-guardian declaration.</span></figcaption>
 </figure>
 
 <!-- ================= ONB-04 Birth year ================= -->
@@ -455,15 +463,15 @@
   <div class="body" style="gap:12px;padding-top:6px">
     <div class="mk-onb-h">Where are you now in JEE?</div>
     <div class="col" style="gap:10px;margin-top:4px" role="radiogroup" aria-label="Your level">
-      <div class="mk-onb-level" role="radio" aria-checked="false"><div class="ph">Agnes art: fresh pencil</div><div class="grow"><div class="t-heading">Just starting</div><div class="t-caption muted" style="font-size:13px">Most topics are new to me</div></div><span class="mk-onb-ring0"></span></div>
-      <div class="mk-onb-level sel" role="radio" aria-checked="true"><div class="ph" style="background:var(--surface)">Agnes art: notebook with bookmark</div><div class="grow"><div class="t-heading">Know the basics</div><div class="t-caption muted" style="font-size:13px">I've studied some chapters</div></div><svg class="mk-onb-badge"><use href="#ph-check-circle-fill"/></svg></div>
-      <div class="mk-onb-level" role="radio" aria-checked="false"><div class="ph">Agnes art: notes and highlighter</div><div class="grow"><div class="t-heading">Revising</div><div class="t-caption muted" style="font-size:13px">I've covered most of it</div></div><span class="mk-onb-ring0"></span></div>
+      <div class="mk-onb-level" role="radio" aria-checked="false"><div class="ph"><img src="assets/level-pencil.webp" alt=""></div><div class="grow"><div class="t-heading">Just starting</div><div class="t-caption muted" style="font-size:13px">Most topics are new to me</div></div><span class="mk-onb-ring0"></span></div>
+      <div class="mk-onb-level sel" role="radio" aria-checked="true"><div class="ph" style="background:var(--surface)"><img src="assets/level-notebook.webp" alt=""></div><div class="grow"><div class="t-heading">Know the basics</div><div class="t-caption muted" style="font-size:13px">I've studied some chapters</div></div><svg class="mk-onb-badge"><use href="#ph-check-circle-fill"/></svg></div>
+      <div class="mk-onb-level" role="radio" aria-checked="false"><div class="ph"><img src="assets/level-highlighter.webp" alt=""></div><div class="grow"><div class="t-heading">Revising</div><div class="t-caption muted" style="font-size:13px">I've covered most of it</div></div><span class="mk-onb-ring0"></span></div>
     </div>
     <div class="sp"></div><div class="petline"><div class="av"><img class="duo" src="assets/ui-language-hello.webp" alt=""></div><div class="bubble">Nice. Your first lesson starts a bit further in.</div></div>
   </div>
   <div class="mk-onb-bottom"><span class="btn btn-primary">Continue</span><div class="homebar"></div></div>
 </div></div>
-<figcaption><span class="id">ONB-07</span><span class="nm">Where are you now, self-rated</span><span class="ds">Question 4 of 5: three level cards, no quiz (R27). The reaction says where the real first lesson starts. "Find my level" lives on Home (HOME-08). Card art not generated yet.</span></figcaption>
+<figcaption><span class="id">ONB-07</span><span class="nm">Where are you now, self-rated</span><span class="ds">Question 4 of 5: three level cards, no quiz (R27). The reaction says where the real first lesson starts. "Find my level" lives on Home (HOME-08).</span></figcaption>
 </figure>
 
 <!-- ================= ONB-10 Pick and name buddy ================= -->
@@ -540,15 +548,15 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-onb-top"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><div class="segbar" role="progressbar" aria-label="Question 5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span class="mk-onb-sp"></span></div>
   <div class="body" style="gap:8px;padding-top:0;justify-content:center">
-    <div class="mk-onb-pot" role="button" aria-label="Plant your seed" style="height:430px">
-      <span class="ringa" style="top:64%;left:42%;width:196px;height:196px;margin:-98px 0 0 -98px"></span>
-      <img class="plant" src="assets/plant-seed.webp" alt="An empty terracotta pot with soil" style="width:350px;height:350px;margin-left:-40px">
-      <img class="pet" src="assets/cat-base.webp" alt="" style="width:124px;height:124px;right:-16px;bottom:30px">
+    <div class="mk-onb-crop" role="button" aria-label="Plant your seed" style="height:440px;margin:auto 0">
+      <span class="ringa" style="left:44%;top:232px;width:200px;height:200px;margin:-100px 0 0 -100px"></span>
+      <img class="plant" src="assets/plant-seed.webp" alt="A terracotta pot with soil, ready for a seed" style="width:480px;height:480px;left:44%;bottom:20px">
+      <img class="pet" src="assets/cat-base.webp" alt="" style="width:128px;height:128px;right:-14px;bottom:60px">
     </div>
   </div>
   <div class="mk-onb-bottom" style="gap:10px"><div class="t-heading center" style="font-size:20px">Tap the pot to plant your seed</div><div class="mk-onb-hint"><svg class="ic"><use href="#ph-hand-tap-bold"/></svg>The pot is the button</div><div class="homebar"></div></div>
 </div></div>
-<figcaption><span class="id">ONB-12</span><span class="nm">Plant your seed, before the tap</span><span class="ds">The bar is full. The pot is the button; a pulsing ring is the only hint and no primary button shows yet ("Plant and start" appears after 12 s). The pet's watering-can pose isn't generated yet, so the cat sits beside the pot.</span></figcaption>
+<figcaption><span class="id">ONB-12</span><span class="nm">Plant your seed, before the tap</span><span class="ds">The bar is full. The pot is the button; a pulsing ring is the only hint and no primary button shows yet ("Plant and start" appears after 12 s).</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="ONB-12">
@@ -556,9 +564,9 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-onb-top"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><div class="segbar" role="progressbar" aria-label="Question 5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span class="mk-onb-sp"></span></div>
   <div class="body" style="gap:10px;padding-top:0">
-    <div class="mk-onb-pot" style="height:330px">
-      <img class="plant" src="assets/plant-seed.webp" alt="A seed planted in a terracotta pot, your pet ready to water it" style="width:340px;height:340px;margin-left:-40px">
-      <img class="pet" src="assets/cat-plant.webp" alt="" style="width:128px;height:128px;right:-10px;bottom:28px">
+    <div class="mk-onb-crop" style="height:270px">
+      <img class="pet" src="assets/cat-watering.webp" alt="" style="width:190px;height:190px;right:36px;bottom:-8px">
+      <img class="plant" src="assets/plant-seed.webp" alt="A seed planted in a terracotta pot, your pet watering it" style="width:420px;height:420px;left:40%;bottom:-54px">
     </div>
     <div class="mk-onb-h center">Your seed is planted</div>
     <div class="t-body center muted" style="margin-top:-4px">One lesson a day helps it grow. Miss days and it gets thirsty, but it never dies.</div>
@@ -639,22 +647,22 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div style="padding:6px 18px 0;flex:none"><div class="mk-onb-petav"><img src="assets/cat-base.webp" alt="Miso"></div></div>
   <div class="body" style="gap:12px;padding-top:8px">
-    <div class="scene" style="height:164px;display:grid;place-items:center;padding:0 30px;text-align:center"><span class="note">Agnes art: medium watering can (one of four: cup, small, medium, large can, cross-faded per stop)</span></div>
+    <div class="scene" style="height:164px;flex:none;display:grid;place-items:center;background:var(--primary-tint)"><img src="assets/water-can-small.webp" alt="" style="width:170px;height:170px;object-fit:contain"></div>
     <div class="mk-onb-h">How much time a day?</div>
     <div class="mk-onb-help">You just did 2 minutes. Pick what feels easy.</div>
     <div class="mk-onb-slider" role="slider" aria-valuetext="10 minutes, Regular" style="margin-top:4px"><span class="tr"></span><span class="fl"></span><span class="tk" style="left:0"></span><span class="tk" style="left:66.6%"></span><span class="tk" style="left:100%"></span><span class="th"></span></div>
     <div class="mk-onb-stops" role="radiogroup">
-      <span>5 min<small>Casual</small></span>
-      <span class="on">10 min<small>Regular</small></span>
-      <span>20 min<small>Serious</small></span>
-      <span>30 min<small>Intense</small></span>
+      <span><img class="can" src="assets/water-cup.webp" alt="" style="width:24px;height:24px">5 min<small>Casual</small></span>
+      <span class="on"><img class="can" src="assets/water-can-small.webp" alt="" style="width:30px;height:30px">10 min<small>Regular</small></span>
+      <span><img class="can" src="assets/water-can-medium.webp" alt="" style="width:36px;height:36px">20 min<small>Serious</small></span>
+      <span><img class="can" src="assets/water-can-large.webp" alt="" style="width:42px;height:42px">30 min<small>Intense</small></span>
     </div>
     <div class="row" style="gap:8px;color:var(--streak-text);font:700 13px/18px var(--f-latin)"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>Your streak only needs one lesson a day.</div>
     <div class="petline"><div class="av"><img src="assets/cat-base.webp" alt=""></div><div class="bubble">A little every day beats a lot once in a while.</div></div>
   </div>
   <div class="mk-onb-bottom" style="gap:6px"><span class="t-caption muted center">You can change this any time.</span><span class="btn btn-primary">Set my goal</span><div class="homebar"></div></div>
 </div></div>
-<figcaption><span class="id">ONB-08</span><span class="nm">Daily goal, after the first win</span><span class="ds">Asked once the student has felt a real lesson (R27, D7): the helper uses its actual minutes. 10 min preselected (R6); slider and chips mirror each other. No bar and no back. The goal never decides the streak (R1). Watering-can art pending.</span></figcaption>
+<figcaption><span class="id">ONB-08</span><span class="nm">Daily goal, after the first win</span><span class="ds">Asked once the student has felt a real lesson (R27, D7): the helper uses its actual minutes. 10 min preselected (R6); slider and chips mirror each other. No bar and no back. The goal never decides the streak (R1). The can grows with each stop (cup, small, medium, large); never plant sizes (D10).</span></figcaption>
 </figure>
 
 <!-- ================= ONB-15 Reminder ask ================= -->
@@ -698,7 +706,7 @@
   <div class="scrim"></div>
   <div class="sheet" style="gap:10px;padding-bottom:10px">
     <div class="grab"></div>
-    <div class="mk-onb-sheetart"><img class="plant" src="assets/plant-sapling.webp" alt="Your sapling looks healthy; Miso is beside it"><img class="pet" src="assets/cat-base.webp" alt=""></div>
+    <div class="mk-onb-sheetart"><img class="plant" src="assets/plant-sapling.webp" alt="Your sapling looks healthy; Miso is beside it"><img class="pet" src="assets/cat-proud.webp" alt=""></div>
     <div class="t-title center">Your streak freeze kept your 12-day streak safe</div>
     <div class="petline" style="justify-content:center"><div class="bubble">Phew! The plant stayed cosy.</div></div>
     <div class="mk-onb-facts">
@@ -720,7 +728,7 @@
   <div class="scrim"></div>
   <div class="sheet" style="gap:10px;padding-bottom:10px">
     <div class="grab"></div>
-    <div class="mk-onb-sheetart"><img class="plant" src="assets/plant-sapling.webp" alt="आपका पौधा स्वस्थ है; मीसो पास में है"><img class="pet" src="assets/cat-wrench.webp" alt=""></div>
+    <div class="mk-onb-sheetart"><img class="plant" src="assets/plant-sapling.webp" alt="आपका पौधा स्वस्थ है; मीसो पास में है"><img class="pet" src="assets/cat-proud.webp" alt=""></div>
     <div class="t-title center" style="font-size:21px;line-height:30px">हमारी तरफ़ से दिक़्क़त थी, इसलिए आपकी स्ट्रीक सेफ़ रखी गई</div>
     <div class="mk-onb-facts">
       <div class="stat tint s-biology"><svg class="ic" style="color:var(--stext)"><use href="#ph-plant-fill"/></svg><div class="col" style="gap:0"><span>ग्रोथ बनी रही</span><b>छोटा पौधा</b></div></div>
@@ -731,7 +739,7 @@
     <div class="homebar"></div>
   </div>
 </div></div>
-<figcaption><span class="id">ENT-08</span><span class="nm">Streak check-in, incident freeze, Hindi</span><span class="ds">Our outage covered the day (R28 incident freeze), so no freeze was spent and the copy says plainly it was our side. The cat-with-wrench pose stands in for the `proud` mood.</span></figcaption>
+<figcaption><span class="id">ENT-08</span><span class="nm">Streak check-in, incident freeze, Hindi</span><span class="ds">Our outage covered the day (R28 incident freeze), so no freeze was spent and the copy says plainly it was our side.</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="ENT-08">
@@ -836,7 +844,7 @@
     <div class="mk-onb-web">
       <div class="l"><img src="assets/scene-welcome.webp" alt="A cat and a puppy waving hello in a sunny study corner"></div>
       <div class="r"><div class="col440">
-        <div class="mk-onb-brand"><i><svg aria-hidden="true"><use href="#mk-onb-mark"/></svg></i>Smriti</div>
+        <div class="mk-onb-brand"><img src="assets/logo-lockup.webp" alt="Smriti स्मृति" style="width:200px;height:60px;object-fit:cover;object-position:0 50%;margin-left:-13px"></div>
         <div class="t-display" style="font-size:40px;line-height:48px;letter-spacing:-0.8px">Learn anything. Remember everything.</div>
         <div style="height:10px"></div>
         <span class="btn btn-primary" lang="en">Start in English</span>

@@ -575,9 +575,9 @@ No name field, no school or city question, no pet sheet in either form.
 2. Title in `heading`.
 3. Body in `body`.
 4. Unsynced variant only: a card on `warningTint`, `CloudSlash` 24 in `warningText`, the question in `label` and the counts line under it (research §11.9).
-5. Primary action button: [Stay signed in] (Button primary) in the unsynced variant, [Sign out] (Button primary) otherwise. The unsynced variant adds [Sign out anyway] (Button destructive) under it.
-6. [Cancel], Button ghost.
-7. Default variant only: a small switch row "Sign out of all devices" (off by default), 48 tall.
+5. Default variant only: a small switch row "Sign out of all devices" (off by default), 48 tall. It sits above the buttons, so the choice is made before the tap that acts on it.
+6. Primary action button: [Stay signed in] (Button primary) in the unsynced variant, [Sign out] (Button primary) otherwise. The unsynced variant adds [Sign out anyway] (Button destructive) under it.
+7. [Cancel], Button ghost.
 
 **Copy:**
 | Key | EN | HI |
@@ -637,7 +637,7 @@ No name field, no school or city question, no pet sheet in either form.
 **Layout (top to bottom):**
 1. Top bar: back, step chip "Step 1 of 2" (`caption` on `surfaceSunken`). Deleting takes two screens and is never hidden (research X16).
 2. Title in `title`.
-3. "What will be deleted" heading in `heading`, then a list on `surface` (radius 20) with rows: icon 24 + `body` text. Icons: `Plant`, `NotePencil`, `UsersThree`, `ChatCircleText`, `Image`.
+3. "What will be deleted" heading in `heading`, then a list on `surface` (radius 20) with rows: icon 24 + `body` text. Icons: `Plant`, `NotePencil`, `UsersThree`, `ChatCircleText`, `Image`. Rows are 48 tall, and 42 tall on a 360-wide screen so the list and both pinned buttons fit without scrolling; text still wraps rather than truncates.
 4. "What we keep" heading, then one row with `Receipt` 24.
 5. Guardian variant: a card on `warningTint` with the child names.
 5a. Pro active: the AUTH-14 subscription panel, here, above the download link.
@@ -1034,7 +1034,7 @@ No name field, no school or city question, no pet sheet in either form.
 - **Answered:** moves to AUTH-23 automatically.
 - **Expired:** the QR fades to 30%, the line "This link expired", [Send a new link] replaces Share.
 - **Offline:** QR and link still show (they were created online), the waiting row says "Offline. We'll check when you're back online."
-- **App in background:** a push tells the teen the answer (NTF-01, kind `consent_decided`, transactional; TODO(ME): add the kind to the NTF catalogue).
+- **App in background:** a push tells the teen the answer (NTF-01, kind `consent_decided`, transactional, in the me-money NTF-01 catalogue).
 
 **Interaction and motion:** polling every 5 s while open. The spinner is a slow rotation; reduced motion shows a static `HourglassMedium` icon.
 
@@ -1349,7 +1349,7 @@ No name field, no school or city question, no pet sheet in either form.
 
 **Layout (top to bottom):**
 1. Top: logo lockup (DESIGN §12) left, language toggle right.
-2. At ≥ 1024 px a two-column layout: left, the illustration on a `primaryTint` panel; right, the content column (400 wide). Below 600 px a single column.
+2. At ≥ 1024 px a two-column layout: left, the illustration on a `primaryTint` panel; right, the content column (400 wide). Below 600 px a single column with the small illustration above the title.
 3. Title in `display`.
 4. Subtitle in `body` `inkMuted`.
 5. The Google-rendered button, personalised ("Continue as {name}") for a Google session that used the site before. One Tap with `context: 'signin'` also appears (top right on desktop Chrome, through FedCM); with one returning account and no sign-out it may sign in automatically. This is the only page where the marketing site sends people for One Tap (flow §5.3).
@@ -1371,7 +1371,7 @@ No name field, no school or city question, no pet sheet in either form.
 | Open in Chrome (Android) | Open in Chrome | Chrome में खोलें |
 | Copy link | Copy link | लिंक कॉपी करें |
 
-**Illustration slots:** `sunny-scene`, 3:2, a student at a desk with a laptop and the cat and dog beside a plant, warm. Alt text intent: "A student learning with their buddies". Decorative on phones (hidden below 600 px).
+**Illustration slots:** `sunny-scene`, 3:2, a student at a desk with a laptop and the cat and dog beside a plant, warm. Alt text intent: "A student learning with their buddies". Decorative. Below 600 px it stays, as a small image (about 120 tall) above the title, rather than being hidden.
 
 **States:** default; One Tap shown or not (button always present); callback loading; in-app browser; iOS browser (our branded button with the redirect flow); offline (button disabled, service-worker offline line); already signed in (redirects to `next` at once).
 

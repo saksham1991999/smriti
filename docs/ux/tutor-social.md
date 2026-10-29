@@ -99,7 +99,7 @@ Status: Draft v0.2 (revision 1), 29 Oct 2026. Owner of this file: tutor + social
 - Unread answer: dot. Cleared when AI-02 opens.
 - Hidden: per the flow doc §A4 rules (never in a runner: PRC-04, MOCK-07, MOCK-08), and when the student turned it off in SET-10.
 - Offline: shown, with the badge in `inkDisabled`. Tapping opens AI-02 in its offline state.
-- Little learner (class 1–5, Phase 3): hidden by default (R14). A parent can turn on "Ask {pet_name} (preset questions only)" in the parent dashboard (SET-14, TODO(ME): the toggle does not exist there yet). When on, it shows on HOME-06 and LES-01 only, 64 × 64 for small hands, and opens the little-learner variant of AI-02.
+- Little learner (class 1–5, Phase 3): hidden by default (R14). A parent can turn on "Ask {pet_name} (preset questions only)" in the parent dashboard (SET-14 "Tutor button for {child}"). When on, it shows on HOME-06 and LES-01 only, 64 × 64 for small hands, and opens the little-learner variant of AI-02.
 - Dark mode: dark `primary` fill, no shadow.
 
 **Interaction and motion:** Tap: press scale 0.97 over `fast` (120 ms), light haptic, then AI-02 rises (`slow` 300 ms, `standard` easing). On screen entry the button fades in over `base` after the content settles, so it never flashes during transitions. Scrolling down shrinks it to 48 × 48 (pet only, badge hidden) over `base`; scrolling up restores it. Long press (mobile): opens a small menu [Hide on this screen] [Settings]. No sound.
@@ -500,7 +500,7 @@ Crisis variant (a full-width card that replaces the tutor answer and stays pinne
 
 **Purpose:** Let the student find and reopen past chats, stories and voice transcripts, and delete them. **Main action:** Reopen a chat.
 
-**Entry → exits:** AI-02 overflow "Your chats", AI-15 [View transcript], ME-01 "Your chats" row (TODO(ME): ME-01 has no such row yet) → AI-02 (reopened session, read-only for voice transcripts), AI-20 (saved story), back.
+**Entry → exits:** AI-02 overflow "Your chats", AI-15 [View transcript], ME-01 "Your chats" row → AI-02 (reopened session, read-only for voice transcripts), AI-20 (saved story), back.
 
 **Layout (top to bottom):**
 1. Top bar: back, title "Your chats", overflow (Delete all).
@@ -613,7 +613,7 @@ Crisis variant (a full-width card that replaces the tutor answer and stays pinne
 | Bands | Needs work · Getting there · Clear | और मेहनत चाहिए · करीब हैं · बढ़िया |
 | Pet line, all clear | You could teach this to anyone! | यह आप किसी को भी समझा सकते हैं! |
 | Pet line, mixed | Good start. A couple of points are missing. | अच्छी शुरुआत। कुछ बातें छूट गईं। |
-| Pet line, needs work | Let's fill a few gaps together. | चलो साथ में कुछ कमियाँ भरें। |
+| Pet line, needs work | Let's fill a few gaps together. | आइए, साथ में कुछ कमियाँ भरें। |
 | Since last time | +{n} since last time | पिछली बार से +{n} |
 | You missed | You missed | ये बातें छूट गईं |
 | Not quite right | Not quite right | ये बात पूरी सही नहीं |
@@ -1330,10 +1330,14 @@ Every SOC screen except SOC-02 assumes the social gate has passed (flow doc §B4
 | Discoverable toggle | Let others find me by username | दूसरे मुझे यूज़रनेम से ढूँढ सकें |
 | Toggle explainer | If this is off, friends can still add you with your link or QR. | यह बंद हो, तब भी दोस्त आपको लिंक या QR से जोड़ सकते हैं। |
 | Continue | Continue | आगे बढ़ें |
+| Shuffle (minor) | Shuffle | बदलें |
+| Nickname row (minor) | Nickname {public_nickname} | निकनेम {public_nickname} |
 
 **Illustration slots:** `pet-*`, 1:1, the pet wearing a small name badge (blank, no letters). Alt: "{pet_name} with a name badge".
 
-**States:** Prefilled (default), editing, empty, checking, available, taken (suggestions), not allowed (blocklist or moderation), saving, error. Minor: a line under the field reads "Friends you add by link or QR see {pet_name}. Everyone else sees your nickname {public_nickname}. Your real name and this username are never shown in leagues or duels." / "लिंक या QR से जुड़े दोस्त {pet_name} देखेंगे। बाकी सब आपका निकनेम {public_nickname} देखेंगे। लीग और मुकाबलों में आपका असली नाम और यह यूज़रनेम कभी नहीं दिखता।" (R31); toggle default off; if the consent scope does not allow discoverability, the toggle is disabled with "Your parent can change this in parent mode." / "माता-पिता इसे पैरेंट मोड में बदल सकते हैं।" Offline: Continue disabled. Dark mode.
+**Minor variant (13 to 17, and 10 to 12 with consent; R31 amended):** no text field and no suggestion chips, because typed names can carry personal data. Items 4 to 6 become two read-only rows, "Username @{handle}" and "Nickname {public_nickname}", each with a secondary [Shuffle] button (`Shuffle` icon, label "Shuffle username" or "Shuffle nickname") that rolls a new one from the fixed word lists. Shuffling is unlimited before [Continue]; later changes follow `handle_change_days`.
+
+**States:** Prefilled (default), editing, empty, checking, available, taken (suggestions), not allowed (blocklist or moderation), saving, error. Minor: a line under the rows reads "Friends you add by link or QR see {pet_name}. Everyone else sees your nickname {public_nickname}. Your real name and this username are never shown in leagues or duels." / "लिंक या QR से जुड़े दोस्त {pet_name} देखेंगे। बाकी सब आपका निकनेम {public_nickname} देखेंगे। लीग और मुकाबलों में आपका असली नाम और यह यूज़रनेम कभी नहीं दिखता।" (R31); toggle default off; if the consent scope does not allow discoverability, the toggle is disabled with "Your parent can change this in parent mode." / "माता-पिता इसे पैरेंट मोड में बदल सकते हैं।" Offline: Continue disabled. Dark mode.
 
 **Interaction and motion:** Availability check debounced 400 ms. Suggestion chip tap fills the field. Success haptic on save.
 
@@ -1643,7 +1647,7 @@ Mini profile (non-friends, from a league, leaderboard or duel row): a 40% sheet 
 
 **Purpose:** Compare weekly XP with friends, a squad, a school or city, and all India. **Main action:** Switch scope and read the board.
 
-**Entry → exits:** SOC-01 link, SOC-14 → SOC-07 (friends), SOC-07 mini profile, ME-02 edit profile to pick a school or city (TODO(ME): ME-02 has no school or city field yet), back.
+**Entry → exits:** SOC-01 link, SOC-14 → SOC-07 (friends), SOC-07 mini profile, ME-02 edit profile to pick a school or city (ME-02 has the optional School or coaching and City fields), back.
 
 **Layout (top to bottom):**
 1. Top bar: back, title "Leaderboards".
@@ -2359,7 +2363,7 @@ Preview mode (a row tap or the deep link):
 | Message 4 | Duel me? | मुकाबला करें? |
 | Message 5 | Congrats on the promotion! | प्रमोशन की बधाई! |
 | Message 6 | Your plant looks thirsty! | आपका पौधा प्यासा लग रहा है! |
-| Squad message | Let's go, squad! | चलो स्क्वॉड, शुरू करते हैं! |
+| Squad message | Let's go, squad! | चलिए स्क्वॉड, शुरू करते हैं! |
 | Nudge title | Nudge {name} | {name} को याद दिलाएँ |
 | Nudge 1 | Our Duo needs you today! | आज हमारे Duo को आपकी ज़रूरत है! |
 | Nudge 2 | I've studied. Your turn! | मेरी पढ़ाई हो गई। अब आपकी बारी! |

@@ -214,7 +214,7 @@ stateDiagram-v2
 
 **After the tree.** At stage Tree the plant keeps growing points but stays a tree. From day 100 a "Plant a new seed" button appears in the garden. It retires the tree into the garden (ME-09, kept forever with its days and dates) and plants a new seed of a species the student has unlocked (tulsi first; rare species unlock at milestones per PRD §7; Pro gets exclusive species per PRD §11.1). The streak does not reset: the streak and the plant are separate numbers. `game.plants` is one row per user, so past plants need a new table, `game.plant_history` (§10).
 
-**Milestone moments and share cards (research A37).** Each stage-up and each streak day in `share.streak_milestones` gets a full-screen moment in ME-16 with an optional share card (13 and up). The card shows the pet, the plant and the streak number only. The research suggests stage changes at days 7, 21, 50 and 100 (APP_FLOW §3.6); R37 sets 1/7/30/100, so moments follow R37.
+**Milestone moments and share cards (research A37).** Each stage-up and each streak day in `share.streak_milestones` gets a full-screen moment in ME-16 with an optional share card (13 and up). The card shows the pet, the plant and the streak number only. The research suggests share moments at days 7, 21, 50 and 100 (A37); R37 sets the plant thresholds at 1/7/30/100, so `share.streak_milestones` is 7, 30 and 100 and the moments match the plant stages.
 
 **Seasonal variants** (`season` Rive input) follow a server flag per date range. They change leaves and pot details only, never the health reading.
 
@@ -379,7 +379,7 @@ The rules engine is described in §6. Settings expose:
 | Streak and plant | Streak saver (evening, only if today isn't a streak day yet) | on | not offered | not offered |
 | | Plant and pet nudges | on | not offered | not offered |
 | Learning | Reviews due, Weak-area alerts, Daily challenge | on, as their own pushes | folded into the daily reminder's copy | folded into the daily reminder's copy |
-| | Bedtime review (Pro, PRD §5.4, opt-in) | off | not offered (uses an inferred bedtime) | not offered |
+| | Bedtime review (Pro, PRD §5.4, opt-in) | off | the inferred-bedtime version is not offered; a bedtime review at a time they pick (MEM-06, `notify.prefs.bedtime_review_time`) is, off by default | not offered |
 | Focus timer | Round and break ends (local, for a session they started) | on | on | on |
 | Friends | Requests, accepts, cheers, Duo, duels, squads, leagues | on (once signed in and social is enabled) | on only after guardian consent | hidden (no social) |
 | Exam alerts | Live mocks joined, scheduled mocks, "report ready" | on | on | hidden |
@@ -432,7 +432,7 @@ flowchart TD
 - **Product analytics.** Learning events (answers, reviews, timings) are the service itself and can't be turned off without deleting the account; the screen says so plainly. Product events (screens and taps used for funnels) are optional:
   - Adults: "Help improve Smriti" toggle, on by default, can be turned off.
   - Minors (13–17 and under 13): product events are **off and the toggle isn't shown**. Only an essential allowlist is sent: crashes, sync health, purchase results, consent changes and notification opens (to enforce caps). The screen explains this. (Open question Q5 asks legal to confirm.)
-- **Name display:** "How others see my name": full display name or first name and initial for adults. Minors are locked to the auto nickname (R31 amended), which is stricter than PRD §16.4.
+- **Name display:** "How others see my name": full display name or first name and initial for adults. Minors are locked to the auto nickname and pet avatar (R31 amended, PRD §16.4).
 - **Delete account** opens AUTH-13.
 
 ### 4.7 Parent mode (SET-13 to SET-19)
@@ -591,6 +591,7 @@ flowchart TD
 
 - **Already Pro:** gates never show to Pro students. If the entitlement exists from another platform or another Smriti app, every buy button is replaced by PAY-16. This prevents double billing across Smriti JEE, Smriti NEET, the all-exams app and the web.
 - **₹1 eligibility** (PRD §11.2: once per person; the rule is the auth doc's §8 and TRD §11):
+  - **Guests (R38, auth flow §8):** a guest has no identity keys yet, so the endpoint answers from the device signal alone (`eligible_hint`), and PAY-01 may show ₹1 on that hint. The full check runs after AUTH-02 and before any payment sheet opens. If it says no, PAY-01 switches to "Get Pro" at ₹99/month first, with the line "The ₹1 month was already used on this account." No store or Razorpay sheet ever opens with a ₹1 promise the full check refused.
   - PAY-01 asks `GET /v1/billing/intro-eligibility` as a signed-in user. It says no when any hashed sign-in identity on the account already claimed a ₹1 month, when the account ever had a subscription, or when the device signal says this phone claimed one (DeviceCheck on iOS; Play Integrity device recall on Android once we have access).
   - Each variant sells two products: `pro_monthly_intro_{variant}` (₹1 first month) and `pro_monthly_{variant}`. The paywall offers the intro one only when the answer is yes. The stores still apply their own intro rules on top, so the store sheet is the final word on mobile.
   - If the eligibility call fails or times out (offline, server error), the paywall shows the not-eligible copy with "Get Pro", never a ₹1 promise it can't keep, and retries when the student comes back online.
@@ -838,6 +839,7 @@ Copy rules: the title is the pet's name (`{pet}`) for pet-voiced messages, and t
 | `parent_weekly_report` | parent | Sunday 19:00 parent local | Sunday 19:00 | `/parent` | 1 a week | to the parent's device |
 | `parent_time_request` | parent | Child taps "Ask for 15 more minutes" | Immediately | `/parent` | 3 a day per child | to the parent |
 | `parent_consent_needed` | parent | A teen asks for a consent scope | Immediately | `/parent` | 1 a day | to the parent |
+| `consent_decided` | transactional | A guardian agreed or declined while the teen's AUTH-21 wait screen was in the background (auth flow §6.10) | Immediately (quiet hours delay to the end) | AUTH-23 result for that request | per request | the teen (all ages that ask) |
 
 The guest `streak_day_2` sign-in push the auth doc mentions (§3, behind `auth.streak_prompt_push`, off by default) would be a habit send for adults and unknown ages only, inside the same caps; it is not in the catalogue until that flag is turned on.
 
@@ -847,10 +849,10 @@ Not pushed, on purpose: freeze used (ENT-08 in-app), quest about to expire, badg
 
 ```mermaid
 timeline
-  title Day 0 is the last study day (adult defaults; minors get only the picked-time reminder and the pause notice)
+  title Day 0 is the last study day (adult defaults, minors get only the picked-time reminder and the pause notice)
   Day 0 evening : streak saver, if today isn't a streak day
   Day 1 : daily_reminder
-  Day 2 : daily_reminder_thirsty (1 missed day; an equipped freeze is used silently instead)
+  Day 2 : daily_reminder_thirsty (1 missed day, an equipped freeze is used silently instead)
   Day 3 : pet_misses_you (replaces the reminder)
   Day 4 to 7 : daily_reminder_dry, rotating templates
   Day 8 : reminders_paused (after 7 ignored), then nothing
@@ -881,7 +883,7 @@ Phase 2 (implementation plan G-5, R8). All widgets are free, because they build 
 
 ```mermaid
 flowchart LR
-  Sync[Sync result / state change / app open] --> W[app-core widgetSnapshot()]
+  Sync[Sync result / state change / app open] --> W["app-core widgetSnapshot()"]
   W --> iOS[(App Group: widget.json)]
   W --> And[(SharedPreferences: widget.json)]
   iOS --> TL[WidgetKit timeline: now, 12:00, evening hour, 00:00]
@@ -953,7 +955,7 @@ No marketing email to minors, ever. Store receipts come from Apple and Google; R
 6. **Refund on web.** Support issues a Razorpay refund; webhook sets `cancelled`; PAY-18 shows on next open.
 7. **Price change by the store or tax change.** Show the store's price string. Existing subscribers get the store's own price-change consent flow. Web: a new plan is created and existing mandates stay at their price until migrated with notice (legal).
 8. **Intro used on Android, now on iOS.** Apple doesn't know about the Play claim, but our server does: the Google identity key is already in `billing.intro_claims`, so `intro-eligibility` says no and the iOS paywall sells `pro_monthly_{variant}` at ₹99 with the not-eligible copy. The fine print says "once per person".
-9. **Account merge (common brief decision 3).** Gems: summed. Inventory: union. Freezes held: summed up to the cap. Pet: the target account's pet is kept; if the guest's pet differs, AUTH-08 mentions "{guest pet} is now a friend in your garden" and the outfits move over. Plant: the higher growth points are kept, health from the more recent activity. Quests: the target's current quests, progress summed. Subscriptions: both kept; if both are active, the student is told one may need cancelling (PAY-16 variant).
+9. **Account merge (common brief decision 3).** Gems: summed. Inventory: union. Freezes held: summed up to the cap. Pet: the target account's pet is kept; if the guest's pet differs and `merge.keep_guest_pet` is on, AUTH-08 says "{pet_b} is visiting your pet room" (research §11.6, auth flow §13) and the outfits move over. Plant: the higher growth points are kept, health from the more recent activity. Quests: the target's current quests, progress summed. Subscriptions: both kept; if both are active, the student is told one may need cancelling (PAY-16 variant).
 10. **Account deletion with gems or Pro.** Gems and items are lost (stated in AUTH-13). Store subscriptions must be cancelled by the student (§4.2).
 11. **Pet name or display name becomes offensive later** (filter list updated). The server flags it; on next open the student is asked to pick a new name (ME-06) with a neutral line, never accusatory.
 12. **Widget with two children on a shared phone.** The widget shows the last active profile and says "{pet}'s plant"; switching profiles rewrites the snapshot.
@@ -1012,7 +1014,7 @@ No marketing email to minors, ever. Store receipts come from Apple and Google; R
 | DB `billing.subscriptions.status` | No state for a Razorpay mandate approved before the first charge, or for a pending retry | Add `authenticated` and `pending` (or map `pending` to `grace`) |
 | DB `billing.subscriptions.source` | No referral or promo source for the PRD §8 free week | Add `billing.promo_grants` (user, reason, starts_at, ends_at) and include it in the entitlement recompute |
 | DB `billing` | No payer record for a parent paying, no child payment links | `billing.subscriptions.payer` (`self`, `guardian_declared`, `guardian`), `billing.payment_links` |
-| DB `notify.prefs` | Missing `reminder_enabled`, `smart_timing`, `pet_plant_nudges`, `review_due`, `mocks`, `school_hours`, `email_reminders`; minor defaults need a trigger on `age_band` | Add the columns; set defaults from `age_band` in `app.handle_new_user()` and on age change |
+| DB `notify.prefs` | Missing `reminder_enabled`, `smart_timing`, `pet_plant_nudges`, `review_due`, `mocks`, `school_hours`, `email_reminders`; minor defaults need a trigger on `age_band` | Add the columns; set defaults from `age_band` in `app.handle_new_user()` and on age change. Resolved in consistency pass: DB_SCHEMA §10 adds the columns and §3 sets the defaults by age. |
 | DB `app.devices` | `push_token` only fits Expo tokens | Add `web_push_subscription jsonb` and `push_enabled` |
 | DB `game.plants` | One row per user, no past plants | Add `game.plant_history` |
 | DB `learn.activity_days` / `game` | No rest days | Add `rest_day boolean` to `learn.activity_days` |
@@ -1020,11 +1022,11 @@ No marketing email to minors, ever. Store receipts come from Apple and Google; R
 | DB `game.collections` | No item metadata | Cards carry metadata in content bundles (recommended), or add `game.collection_items` |
 | DB `app.*` | `app.guardian_links` now exists (auth agent). No limits or time requests | Add `app.parental_controls` (daily limit, allowed hours, break reminders, ask-before-switching) and `app.time_requests`, with the guardian-or-learner read RLS of `app.guardian_links` |
 | DB | Content reports exist as `learn.content_reports` (use it, as the learn doc recommends). No support tickets | Add `ops.support_tickets` (service-only RLS; the reporter can read their own). It stores the reply email from the auth identity with the ticket only, since the profile never copies the Google email |
-| DB `app.profiles` | No content language, tutor language, analytics opt-out | Keys in `settings` (`content_locale`, `tutor_locale`, `analytics_opt_out`), documented in DB_SCHEMA §3 |
+| DB `app.profiles` | No content language, tutor language, analytics opt-out | Keys in `settings` (`content_locale`, `tutor_locale`, `analytics_opt_out`), documented in DB_SCHEMA §3. Resolved in consistency pass: DB_SCHEMA §3 lists the documented `settings` keys. |
 | TRD §5 "Files", DB `app.profiles.avatar_asset_id` | Avatar uploads | Avatar is the pet portrait; no uploads |
-| TRD §5.1 | Many endpoints missing (§9 lists them) | Add them to the API surface |
-| TRD §12 | Local reminders "rescheduled on each open" but no 7-day plan, no copy by predicted health, no web path | Use §6.1 |
-| TRD §9.6 | Smart timing needs a "usual study hour" estimate | Add it to the bedtime job |
+| TRD §5.1 | Many endpoints missing (§9 lists them) | Add them to the API surface. Resolved in consistency pass: TRD §5.1 now carries a "still to merge" note pointing here; the merge itself is open. |
+| TRD §12 | Local reminders "rescheduled on each open" but no 7-day plan, no copy by predicted health, no web path | Use §6.1. Resolved in consistency pass: TRD §12 now describes the 7-day local plan. |
+| TRD §9.6 | Smart timing needs a "usual study hour" estimate | Add it to the bedtime job. Resolved in consistency pass: TRD §9.6 adds the usual study hour (adults only). |
 | TRD | No email provider | Pick one (Q9) |
 | UX_FLOW §5 | "[Download for later]" for everyone, but downloads are Pro (PRD §11.1) | Free: "Save when online" (cache), Pro: Download |
 | UX_FLOW §4.15 | Benefit list says "unlimited mocks" | Use PRD wording: "All mocks" and filter by live features |
@@ -1034,16 +1036,16 @@ No marketing email to minors, ever. Store receipts come from Apple and Google; R
 | `docs/flows/tutor-social.md` A6 | Added `tutor_read_aloud` and `tutor_image` paywall sources | Resolved by R35: read-aloud is free with a daily cap flag, so `tutor_read_aloud` is removed; "Draw it" (new Agnes images) is Pro and listed under "Higher limits" as `tutor_image` (§5.2) |
 | `docs/flows/memory-labs.md` (LAB-03 locked lab) | Earlier drafts put some labs behind Pro | Resolved by R19 (revised): every lab is free. `lab_lock` stays only for the inline card of a locked Deep Dive, and its paywall links to the same lab in LAB-03 |
 | `docs/ux/onboarding.md` ENT-08 vs NTF-06, NTF-07 | Both docs retired the sheet in favour of the other during revision 1 | Resolved by R41: ENT-08 owns the sheet with this area's rows built in; NTF-06 and NTF-07 are its triggers |
-| DECISIONS R37 vs `docs/research/COMPETITOR_FLOWS.md` A37 | A37 suggests share cards at 7/21/50/100 days | Share cards follow the R37 plant thresholds (7, 30, 100), so the milestones match the plant stages (§3.4) |
-| PRD §9.1 "Smart timing that learns the student's usual study hour" | R34 bans behaviour-predicted sends for minors (DPDP s.9(3)) | PRD §9.1 should say "for adults only"; minors get only the time they picked (§6.2) |
-| DB `learn.activity_days` | No `rescue_done` column, so a 2-minute rescue can't keep the plant healthy; `goal_met` is the daily ring only (comment already says so) | Add `rescue_done boolean not null default false` (memory-labs G23). Keep `goal_met` for the ring; the streak reads the R1 qualifying columns |
-| DB `learn.content_reports.reason` | Check list has no `spam`, which SET-24 needs for community mnemonics (`community_mnemonic`) | Add `spam` to the check, allowed only when `kind = 'community_mnemonic'` (enforced in the service) |
-| DB `learn.content_reports` | No `kind` column for the SET-24 kinds (`lesson_card`, `question`, `review_card`, `solution`, `tutor_message`, `generated_image`, `story_page`, `roleplay_turn`, `community_mnemonic`, `lab`, `album_card`) | Add `kind text not null` with that check list |
-| DB `billing` | No `billing.promo_grants` table and no `promo` value in `billing.subscriptions.source` (referral Pro week, §5.16) | Add the table (`user_id`, `reason` with `referral_week`, `starts_at`, `ends_at`) and `promo` as a source in the entitlement recompute |
-| DB_SCHEMA §11 (line "first name and initial on leaderboards") | Contradicts R31 (amended) and PRD §16.4, which now say auto nickname plus pet avatar after consent | DB_SCHEMA owner updates the sentence; leaderboards read a `public_nickname` generated server side |
-| R31 (amended) word list | No owner named for the fixed EN/HI nickname word list | Tutor-social owns it (SOC); it ships as config with both languages and a review for unsafe combinations. TODO(SOC) |
-| DB `notify.prefs` | New groups have no columns: `streak_saver`, `nudges`, `bedtime_review`, `focus_timer`, `friends`, `exam_alerts`, `news`, plus `paused_at` and `ignored_count` for auto-pause | Add the columns with defaults from `age_band` (minors: off except reminder, focus timer and exam alerts) |
-| APP_FLOW HOME-07 | Older docs still name HOME-07 for parental limits | Retired; the screen is SET-19 (parent time limits) in this doc |
+| DECISIONS R37 vs `docs/research/COMPETITOR_FLOWS.md` A37 | A37 suggests share cards at 7/21/50/100 days | Share cards follow the R37 plant thresholds (7, 30, 100), so the milestones match the plant stages (§3.4). Resolved in consistency pass: `share.streak_milestones` is 7, 30, 100. |
+| PRD §9.1 "Smart timing that learns the student's usual study hour" | R34 bans behaviour-predicted sends for minors (DPDP s.9(3)) | PRD §9.1 should say "for adults only"; minors get only the time they picked (§6.2). Resolved in consistency pass: PRD §9.1 now says smart timing is for adults only. |
+| DB `learn.activity_days` | No `rescue_done` column, so a 2-minute rescue can't keep the plant healthy; `goal_met` is the daily ring only (comment already says so) | Add `rescue_done boolean not null default false` (memory-labs G23). Keep `goal_met` for the ring; the streak reads the R1 qualifying columns. Resolved in consistency pass: column added in DB_SCHEMA §5.1, with the plant health days rule. |
+| DB `learn.content_reports.reason` | Check list has no `spam`, which SET-24 needs for community mnemonics (`community_mnemonic`) | Add `spam` to the check, allowed only when `kind = 'community_mnemonic'` (enforced in the service). Resolved in consistency pass: `spam` added to the check in DB_SCHEMA §5.4. |
+| DB `learn.content_reports` | No `kind` column for the SET-24 kinds (`lesson_card`, `question`, `review_card`, `solution`, `tutor_message`, `generated_image`, `story_page`, `roleplay_turn`, `community_mnemonic`, `lab`, `album_card`) | Add `kind text not null` with that check list. Resolved in consistency pass: `kind` added in DB_SCHEMA §5.4 with the 11 kinds. |
+| DB `billing` | No `billing.promo_grants` table and no `promo` value in `billing.subscriptions.source` (referral Pro week, §5.16) | Add the table (`user_id`, `reason` with `referral_week`, `starts_at`, `ends_at`) and `promo` as a source in the entitlement recompute. Resolved in consistency pass: table and `promo` source added in DB_SCHEMA §8. |
+| DB_SCHEMA §11 (line "first name and initial on leaderboards") | Contradicts R31 (amended) and PRD §16.4, which now say auto nickname plus pet avatar after consent | DB_SCHEMA owner updates the sentence; leaderboards read a `public_nickname` generated server side. Resolved in consistency pass: DB_SCHEMA §7 now has the R31 amended paragraph; the nickname is stored as `app.profiles.nickname_word_ids` and `nickname_number` and rendered server side. |
+| R31 (amended) word list | No owner named for the fixed EN/HI nickname word list | Tutor-social owns the feature; it ships as config with both languages and a review for unsafe combinations. Resolved in consistency pass: the owner question moves to `docs/flows/tutor-social.md` Q-B11, still open. |
+| DB `notify.prefs` | New groups have no columns: `streak_saver`, `nudges`, `bedtime_review`, `focus_timer`, `friends`, `exam_alerts`, `news`, plus `paused_at` and `ignored_count` for auto-pause | Add the columns with defaults from `age_band` (minors: off except reminder, focus timer and exam alerts). Resolved in consistency pass: DB_SCHEMA §10 adds them as `streak_saver`, `pet_plant_nudges`, `sleep_review`, `focus_timer`, `friends`, `exam_alerts`, `news`, `paused_at` and `ignored_count`. |
+| APP_FLOW HOME-07 | Older docs still name HOME-07 for parental limits | Retired; the screen is SET-19 (parent time limits) in this doc. Resolved in consistency pass: every flow and UX doc outside APP_FLOW now uses SET-19; APP_FLOW is being rewritten by the orchestrator. |
 | DESIGN §5 | No component for a meter (pet mood and energy), a day-dot quest tracker, or a banner | Add `Meter`, `DayDots`, `Banner` (spec in the UX doc) |
 
 ---

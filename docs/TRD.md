@@ -247,6 +247,8 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
 | Exports | `POST /v1/exports/pdf`, `GET /v1/exports/{id}` |
 | Admin (internal) | content publish, blueprint management, moderation queue, user support |
 
+**Still to merge into this table** (endpoints the area flow docs need): `docs/flows/practice.md` §12.2, `docs/flows/tutor-social.md` A14 and B15, `docs/flows/memory-labs.md` G16 and G25 (including `POST /v1/reviews/queue`), `docs/flows/me-money.md` §9, `docs/flows/learn.md` G4 and G5, and `docs/flows/onboarding.md` §8. Mutations that touch progress or money take an idempotency key.
+
 ## 6. Auth, accounts and guest mode
 
 The full lifecycle, with diagrams and every branch, is in `docs/flows/auth.md`. The screens are in `docs/ux/auth.md`. This section is the technical summary.
@@ -391,19 +393,20 @@ flowchart LR
 
 ### 9.6 Learning-science jobs
 - **Predictive weak-area alerts:** a nightly worker job computes each card's predicted recall (FSRS retrievability) for the next 3 days, groups cards that will drop below the target by topic, and queues one alert per user. The notification rules (§12) still cap frequency.
-- **Sleep review:** the worker estimates a usual bedtime from the last 14 days of session end times (median of the last session per day). If confidence is high enough, the app schedules a local notification 20 minutes before it with the 5 hardest due cards.
+- **Sleep review (adults only, R34):** the worker estimates a usual bedtime from the last 14 days of session end times (median of the last session per day). If confidence is high enough, the app schedules a local notification 20 minutes before it with the 5 hardest due cards. The same job estimates the usual study hour that adult smart timing uses (`notify.prefs.usual_study_hour`). Neither estimate is computed for minors; a teen can pick a fixed bedtime review time instead (`notify.prefs.bedtime_review_time`).
 - **Cornell fill and mind maps:** LLM jobs that write into the student's own note or map, never into published content.
 - **Transcript to flashcards:** Deepgram transcribes a YouTube lesson's audio (or the published caption track is used when available), then the LLM writes candidate cards linked to Concepts. Cards for published lessons go through `content-qa`.
 
 ## 10. Gamification engine
 - **Activity day:** a date, in the user's IANA timezone (the day ends at local midnight), on which they did at least one qualifying activity: one lesson, or 10 reviews, or one mock section, or the daily challenge (which rolls over at 00:00 IST). Meeting the daily goal (minutes, default 10) is a separate ring and does not decide the streak.
 - **Streak:**
-  - Consecutive activity days. A freeze counts as a day without activity.
+  - Consecutive activity days. An equipped freeze (up to `streak.freeze_slots`, 2), the weekly rest day and an incident freeze (`streak.incident_freeze`, for our outages) each protect a day without activity (R28, R36). There is no paid streak repair.
   - Computed incrementally on sync and checked again by the nightly roll-up.
 - **Plant:**
   - `growth_points` add up from activity days and never decrease, which gives the growth stage.
-  - `health` comes from days since the last activity: thriving, droopy, dry, wilted, dormant.
-  - It recovers through a revival streak (see `APP_FLOW.md` §3.6).
+  - Five growth stages: seed, sprout, sapling, flowering, tree, at 1, 7, 30 and 100 study days (flag, R2, R37). The stage is never lost.
+  - `health` comes from days since the last *health day*: thriving, droopy, dry, wilted, dormant (shown as "Resting"; never dead). A health day is an activity day or a day with a finished 2-minute rescue (`learn.activity_days.rescue_done`). A rescue keeps the plant healthy that night but never counts as a streak day or a revival day (memory-labs flow §5.13).
+  - It recovers through a revival quest of study days: droopy 1, dry 2, wilted 3, dormant 5 (R12, `APP_FLOW.md` §3.6).
 - **Pet:** `mood` and `energy` are 0–100. They decay per missed day, rise with care events and are clamped. The state label is derived from them. Under-10 mode applies a floor at "sleepy".
 - **XP and leagues:**
   - XP is credited from events.
@@ -425,13 +428,17 @@ flowchart LR
 - **Accounting:** every webhook is stored raw (`payment_events`) for audit and reconciliation.
 
 ## 12. Notifications
-- **Local:** the daily reminder at the student's chosen time, and "streak at risk" at 8 PM local if the goal isn't met. Both are rescheduled on each app open.
+- **Local:** the daily reminder at the student's chosen time, and the streak saver (`streak_risk`, adults only) at least 1 hour before quiet hours start when today isn't a streak day yet (R1, R23). The device keeps a 7-day plan of local sends and rebuilds it on each app open and after each sync (`docs/flows/me-money.md` §6.1).
+- **Minors (R34, R45):** only the reminder at the time they picked. No smart timing, no inferred bedtime and no copy chosen from predicted plant health. Friend-triggered pushes wait for that reminder window; in-app banners still show. Smart timing for adults uses the usual study hour from the §9.6 job.
+- **Web:** Web Push where the browser supports it (`app.devices.web_push_subscription`), otherwise an optional email reminder for adults.
 - **Server push:** the worker sends through Expo Push in batches of 100, retries with backoff, and prunes invalid tokens.
 - **Rules engine:**
-  - At most 1 re-engagement push a day, and at most 3 pushes a day in total.
+  - At most 1 re-engagement push a day, and at most 3 pushes a day in total. Exam alerts and transactional messages don't count against the caps.
   - Quiet hours run 22:00–07:00 by default, and are stricter for minors.
+  - Reminders auto-pause after `notify.autopause_after_ignored` (7) ignored sends in a row, and a comeback flow takes over after 30 or more days away (R34).
+  - Nothing is shown while a mock runner is open (R24).
   - Messages are localised and come from templates in the pet's voice.
-- Every send is logged in `notification_log` to measure open rates and cap frequency.
+- Every server send is logged in `notify.log` to measure open rates and cap frequency (DB_SCHEMA §10).
 
 ## 13. Observability, logging and tracing
 - **Tracing:** OpenTelemetry SDKs in the API and worker, with auto-instrumentation for FastAPI, SQLAlchemy, Redis and httpx.

@@ -85,14 +85,14 @@ Some of these have lead times of several weeks, so they should start now.
 - A small **fixture course** (one chapter, written by hand as test data, not real content) to exercise every card type.
 
 ### F-7 Mobile app shell (weeks 2–6)
-- Expo Router app with the five tabs, the variant config (`APP_VARIANT`) and EAS build profiles.
+- Expo Router app with the four Phase 1 tabs (Learn, Labs, Practice, Me; three for little learners), built so the Friends tab drops in with G-4, the variant config (`APP_VARIANT`) and EAS build profiles.
 - Supabase anonymous sign-in at first launch, encrypted MMKV session storage, excluded from backups.
 - **Google sign-in, end to end, on one variant:** Credential Manager on Android and the Google SDK on iOS through Universal Sign In, a nonce, `linkIdentity` on the guest, `signInWithIdToken` for restore, and the Custom Tab fallback without Play services. Sign in with Apple on iOS. The merge path (`merge_guest` job) with the shared-phone check, sign-out with the local wipe (`docs/flows/auth.md` §6).
 - **Spike: managed child sessions** (`docs/flows/auth.md` §6.11): a one-time token hash for an internal identity exchanged for a session on the device, the "before user created" hook, and converting an onboarding guest into a managed child in place. Decide the fallback (server-held secret) if it fails.
 - `packages/app-core`: the storage interface, the outbox and sync client (`POST /v1/sync/events`, `GET /v1/sync/state`), stores, and the streak, pet and plant rules, with no platform imports.
 - On-device SQLite implementing the storage interface, with migrations and every table from DB_SCHEMA §15.
 - The server sync handler: idempotent apply for progress, reviews, XP, activity days, streak, plant and pet.
-- Onboarding: language, goal, exam, exam date, daily goal, pick and name the pet, plant the seed, first lesson, notification ask.
+- Onboarding in the order of `docs/flows/onboarding.md` §5: welcome and language, goal, class or birth year and exam date as needed, self-rated level, pick and name the pet, plant the seed, first lesson, first win, daily goal, reminder ask.
 - Content download manager: manifest, bundles, patches, LRU cache, pinning, seed pack on first launch.
 - Sentry with trace propagation, and the analytics client with batching.
 
@@ -178,7 +178,7 @@ Some of these have lead times of several weeks, so they should start now.
 - Data export and account deletion endpoints (DPDP).
 
 ### M-8 Engagement (weeks 12–16)
-- Local daily reminder and "streak at risk", rescheduled on each open.
+- Local daily reminder and the adults-only streak saver (`streak_risk`, when today isn't a streak day yet), from a 7-day local plan rebuilt on each open (TRD §12). Minors get only the reminder at the time they picked.
 - Expo Push from the worker with the rules engine (caps, quiet hours, pet voice templates).
 - Streak freezes, daily and weekly quests, badges, the card album.
 - In-app update prompts (soft and forced) from `/config`.
@@ -213,7 +213,7 @@ Some of these have lead times of several weeks, so they should start now.
 | G-1 New exam apps | Smriti UPSC (Prelims GS and CSAT) and Smriti SSC (CGL Tier 1) variants. Content through the same skills. Classes 9–10. |
 | G-2 Voice tutor | Gemini Live ephemeral tokens, tool relay, transcripts, fair-use limits, Hindi and Hinglish checks (TRD §9.4) |
 | G-3 Feynman tutor | Explain-back mode in text and voice, scored against `content.concepts.key_points` |
-| G-4 Social | Friends, duo streaks, squads, weekly leagues with Sunday rollover, duels over Supabase Realtime, nudges and cheers, shared decks |
+| G-4 Social | The Friends tab and every SOC screen. Friends, duo streaks, squads, weekly leagues with Sunday rollover, duels over Supabase Realtime, nudges and cheers, shared decks |
 | G-5 Widgets | iOS WidgetKit and Android widgets showing streak, plant, pet and today's plan |
 | G-6 Memory palaces | Builder and walk-through, illustrated rooms first, 360° rooms next |
 | G-7 Study tools | Smart Cornell notepad with AI fill, mind-map builder, transcript-to-flashcards for YouTube lessons, audio mnemonics through Deepgram |

@@ -73,7 +73,7 @@ Placeholders:
 - PRC-17 (free limit sheet) is always dismissible: swipe down, back, tap outside or [Not now]. It never blocks reviews, lessons, solutions or the analytics dashboard.
 - Under-13s (the `10_12` age band) never see a price. Pro links and Pro chips become [Ask a grown-up], which opens SET-13 parent gate and then PAY-01 for the parent. Little learners (class 1–5) have no Practice tab (R14) and reach none of these screens.
 
-**Identity on leaderboards (R31).** On PRC-12 and MOCK-24, students under 18 appear to others only as pet name + pet avatar. Adults appear with their display name. A student always sees their own row as "You". No free-text messages between students anywhere.
+**Identity on leaderboards (R31 amended).** On PRC-12 and MOCK-24, students under 18 appear to others only after guardian consent, and then only as the pet avatar and an auto-generated nickname from the fixed word list, never a typed name or pet name. Adults appear with their display name. A student always sees their own row as "You". No free-text messages between students anywhere.
 
 **Tutor button.** The floating tutor button (AI-01) shows on Practice-look screens. It is hidden on MOCK-04 to MOCK-18, on PRC-11 before submit, and on PRC-04 until the student has tapped [Check] on the current question. From solutions it opens AI-02 with `context_ref = question:{question_id}`.
 
@@ -649,7 +649,7 @@ Placeholders:
 
 ### PRC-11 · Daily challenge
 **Purpose:** Give every student of an exam the same one question each day, timed for a fair leaderboard. **Main action:** [Start] then [Submit].
-**Entry → exits:** PRC-01, HOME-01, HOME-02, NTF-01 daily reminder (when its rotating template mentions the challenge, TODO(NTF)), home-screen widget (Phase 2), deep link `smriti.app/challenge` → PRC-12, PRC-03 (offline alternative), back.
+**Entry → exits:** PRC-01, HOME-01, HOME-02, NTF-01 `challenge_ready` (folded into the daily reminder for minors), home-screen widget (Phase 2), deep link `smriti.app/challenge` → PRC-12, PRC-03 (offline alternative), back.
 **Layout (top to bottom):**
 1. Top bar: close ✕, "Today's challenge", date "{date}".
 2. **Before start:** illustration (pet holding a puzzle piece), title "One question. Everyone gets the same one.", rules list (one try, fastest correct answers rank highest, ranks show once enough players join, it counts as today's streak day, a new one at 00:00 IST), players today "{count} players so far", Button primary 56 [Start]. No tutor button on this screen until after submit.
@@ -697,13 +697,13 @@ Placeholders:
 
 ### PRC-12 · Challenge result and leaderboard
 **Purpose:** Show the result, the solution and today's ranking, and tie it to the streak. **Main action:** [See solution] when wrong, [Share] when right.
-**Entry → exits:** PRC-11, PRC-01 card → PRC-05 (solution), PRC-13 (share), AUTH-01 soft sheet (guest link, reason TODO(AUTH) `leaderboard`; `save_progress` until it exists), AUTH-18 guardian consent (teen "Ask a parent"), SET-13 parent gate (under-13 "Ask a grown-up"), SOC-04 add friends (Friends tab empty, Phase 2), SOC-07 friend profile (tap a friend row, Phase 2), PRC-01 (Done).
+**Entry → exits:** PRC-11, PRC-01 card → PRC-05 (solution), PRC-13 (share), AUTH-01 soft sheet (guest link, reason `leaderboard`), AUTH-18 guardian consent (teen "Ask a parent"), SET-13 parent gate (under-13 "Ask a grown-up"), SOC-04 add friends (Friends tab empty, Phase 2), SOC-07 friend profile (tap a friend row, Phase 2), PRC-01 (Done).
 **Layout (top to bottom):**
 1. Top bar: close ✕.
 2. Result block: pet illustration by result; title "Solved!" or "Not this time"; Stat tiles "Time {m:ss}", "Rank #{rank}" (or "Rank soon"), "{pct}% got it right" (when the threshold is met).
 3. Streak line: Streak card mini variant with the Phosphor `Plant` (fill) icon in `streak` gold and "Your plant got its water today." (the challenge qualifies a streak day, R23), plus the daily goal ring mini variant "+{xp} XP toward today's goal" or "Today's goal is done."
 4. Button secondary 56 [See solution].
-5. Leaderboard: tabs "All-India" · "Friends" (Friends tab is Phase 2, with SOC). Top 10 Leaderboard rows, then the student's own row pinned. Adults show their display name; under-18s show only pet name and pet avatar (R31). Under the threshold: "{count} players so far. Ranks appear at {min_players}."
+5. Leaderboard: tabs "All-India" · "Friends" (Friends tab is Phase 2, with SOC). Top 10 Leaderboard rows, then the student's own row pinned. Adults show their display name; under-18s show only the pet avatar and an auto-generated nickname (R31 amended). Under the threshold: "{count} players so far. Ranks appear at {min_players}."
 6. Next challenge line in `caption`: "Next challenge in {hh:mm}".
 7. Button primary 56 [Share] and ghost [Done].
 
@@ -726,7 +726,7 @@ Placeholders:
 | You | You | आप |
 | Guest private rank | You'd be #{rank}. Sign in to appear on the leaderboard. | आपकी रैंक #{rank} होती। लीडरबोर्ड पर आने के लिए साइन इन करें। |
 | Minor private | Only you can see your row. | आपकी पंक्ति सिर्फ़ आपको दिखती है। |
-| Minor listed note | Others see your pet's name and picture, never your name. | दूसरों को आपका नाम नहीं, सिर्फ़ आपके पेट का नाम और तस्वीर दिखती है। |
+| Minor listed note | Others see a nickname and your pet, never your name. | दूसरों को आपका नाम नहीं, सिर्फ़ एक निकनेम और आपका पेट दिखता है। |
 | Ask a parent | Ask a parent | माता-पिता से पूछें |
 | Next | Next challenge in {hh:mm} | अगला चैलेंज {hh:mm} में |
 | Share | Share | शेयर करें |
@@ -740,17 +740,17 @@ Placeholders:
 - Right, wrong (above).
 - Ranks below threshold: rank tile shows "Rank soon"; the threshold line replaces the list; "{pct}% got it right" hidden.
 - Ranks pending (results computing): spinner in the rank tile for up to a few seconds, then "Rank soon".
-- Guest: own row is not on the public list; the private rank line with a link "Sign in" (opens AUTH-01 soft sheet; reason `leaderboard` is requested from AUTH, TODO(AUTH), and `save_progress` is used until it exists). Friends tab hidden.
+- Guest: own row is not on the public list; the private rank line with a link "Sign in" (opens AUTH-01 soft sheet with reason `leaderboard`). Friends tab hidden.
 - Minor (13–17) without guardian consent (`social` scope): the student's own row shows "You" and is visible only to them; the minor private line and a ghost [Ask a parent] → AUTH-18. Friends tab hidden.
 - Under 13 without the scope: the same, with [Ask a grown-up] → SET-13 parent gate, then SET-17 consents.
-- Minor with consent: listed to others by pet name and pet avatar only (R31); the minor listed note shows once under the list. Pet names are checked by the same moderation as SOC usernames before they appear publicly (flow §12.1).
+- Minor with consent: listed to others by the pet avatar and an auto-generated nickname only (R31 amended); the minor listed note shows once under the list. The typed pet name never appears on a public list.
 - Little learner: not reachable (R14).
 - Tutor button: shown again after submit; [See solution] → PRC-05 has [Ask why].
 - Offline after submit (rare: submit succeeded, then lost signal): cached result, leaderboard "Needs internet".
 - Dark mode: tokens.
 
 **Interaction and motion:** Right: the pet plays `celebrate`, check pops with spring `pop`, success haptic, soft ding. The streak plant plays its small watered animation once (UX_FLOW §3). Short Lottie confetti (`celebrate`, 1200 ms) only when right and only if the daily goal completes with it. Wrong: no shake (the result is already known), the pet plays `think`. Reduced motion: static poses, no confetti.
-**Accessibility:** The result title is announced. Leaderboard rows read "Rank {n}, {name}, {time}", where `{name}` is the display name or pet name shown. The pinned own row is reachable last in focus order with label "Your rank". Tabs are a tab list.
+**Accessibility:** The result title is announced. Leaderboard rows read "Rank {n}, {name}, {time}", where `{name}` is the display name or nickname shown. The pinned own row is reachable last in focus order with label "Your rank". Tabs are a tab list.
 **Analytics:** `daily_challenge_viewed {state: played}`, `daily_challenge_shared` (from Share), `solution_viewed {context: daily}`.
 **Web (≥ 600 px):** Two columns: the result, streak line and actions on the left; the leaderboard on the right.
 **Mock priority:** P0 · Phase 1
@@ -1016,7 +1016,7 @@ Placeholders:
 2. Resume card if a mock is in progress (as PRC-01 item 2).
 3. Type chips (scrollable): For you · Live · Full · Sectional · Chapter · PYQ papers · Custom. Chips for types with no published mocks are hidden.
 4. **Live strip** (when any live mock is scheduled): horizontally scrolling cards, each with "Live" status Chip, title, date and time window, "{registered} registered" (real count), and [Register] / [Registered] / [Join now].
-5. **Mock cards** for the selected chip: `surface`, radius `card`, `line` border. Each card: title in `heading`; a fact row with icons: `Timer` "{duration_min} min", `ListNumbers` "{question_count} Qs", `Scales` "{marking_summary}" (for example "+4 / −1", built from the blueprint); sections caption "{section_titles}"; a status on the right: "Free", "Pro" Chip, "Attempted · {score}/{max}", or "In progress"; [Start] or [View].
+5. **Mock cards** for the selected chip: `surface`, radius `card`, `line` border. Each card: title in `heading`; a fact row with icons: `Timer` "{duration_min} min", `ListNumbers` "{question_count} Qs", `Scales` "{marking_summary}" ("+{marking.correct} / −{marking.wrong}", built from the blueprint; never a hard-coded pattern); sections caption "{section_titles}"; a status on the right: "Free", "Pro" Chip, "Attempted · {score}/{max}", or "In progress"; [Start] or [View].
 6. Free usage line (guest and free): "Free this week: {used} of {free.sectional_mocks_per_week} sectional mock".
 7. **History** section: the last 3 attempts with title, date, "{score}/{max}", percentile when shown, chevron. "See all" → MOCK-25. A `caption` under the heading for signed-in students: "Your mocks are the same on every device you sign in to." (research A30).
 8. Custom mock card at the end of "For you" (Pro badge for free users): "Build a mock from your weak spots" → MOCK-26.
@@ -1177,7 +1177,7 @@ Placeholders:
 - Scheduled (not registered, registered), open, open-late (late start line shown before Start), taken (waiting for results), closed (results out: [See leaderboard] → MOCK-24).
 - Free or guest: [Register] reads "Unlock with Pro" and opens the PAY-01 paywall.
 - Offline: countdown keeps running from the last server offset; Start disabled with the needs-internet line (the start signal and paper key come from the server).
-- Minor: unchanged; on the leaderboard under-18s show only pet name and pet avatar (R31), as PRC-12.
+- Minor: unchanged; on the leaderboard under-18s show only the pet avatar and an auto-generated nickname (R31 amended), as PRC-12.
 - Under 13: [Register] reads "Ask a grown-up" → SET-13; no price.
 - Dark mode: Practice look.
 
@@ -1283,7 +1283,7 @@ Placeholders:
 **Interaction and motion:** None beyond scrolling and the select. [Next] is enabled immediately (some real interfaces require scrolling; we don't force it).
 **Accessibility:** Instructions are a real ordered list. Legend rows read "{shape} {colour} cell: {meaning}" so the shape is described in words. The select has a label. Keyboard: Tab order header → body → legend → buttons.
 **Analytics:** `mock_instructions_viewed {mock_id, page: 1, instruction_language}`.
-**Web (≥ 600 px):** The official-style layout: header bar across the top, instructions in a bordered scroll box, a candidate panel on the right with the student's avatar (pet avatar for privacy, or initials) and display name for adults ("Candidate"), and the buttons bottom right.
+**Web (≥ 600 px):** The official-style layout: header bar across the top, instructions in a bordered scroll box, a candidate panel on the right with the student's initials (never a pet avatar or mascot, R24) and the display name for adults, otherwise "Candidate", and the buttons bottom right.
 **Mock priority:** P0 · Phase 1
 
 ### MOCK-06 · Paper instructions and declaration
@@ -1408,8 +1408,8 @@ OMR mode (blueprint `mode = pen_paper`): the question header drops the palette s
 2. **Section tabs** row below, full width, with counts and lock icons, and the per-question language select at the far right ("View in: English ▾"), shown only when the blueprint's `language_switch` allows it (research A28).
 3. **Main area, two columns:**
    - **Left (question panel, flexible, min 560 px):** question header ("Question {n}", type, marking "+{correct} / {wrong}"), the stem and figures, answer area (option rows with radios, or the Numeric keypad below the answer field, or grids). Optional confidence row at the bottom of the panel.
-   - **Right (candidate and palette panel, 320 px fixed):** candidate block (pet avatar or initials, display name or "Candidate"); legend counts with the shapes of the states the interface profile lists ("{n} Answered", "{n} Not answered", ...); the section's palette grid (MOCK-09 content) in 5 or 6 columns of 40 × 40 cells with 8 px gaps; section name heading above the grid.
-4. **Bottom bar** across the left column: [Save & next] (primary), [Save & mark for review], [Clear response], [Mark for review & next], then [‹ Back] [Next ›]; [Submit] at the bottom of the right panel.
+   - **Right (candidate and palette panel, 320 px fixed):** candidate block (initials in a neutral circle, never a pet avatar, R24; display name or "Candidate"); legend counts with the shapes of the states the interface profile lists ("{n} Answered", "{n} Not answered", ...); the section's palette grid (MOCK-09 content) in 5 or 6 columns of 40 × 40 cells with 8 px gaps; section name heading above the grid.
+4. **Bottom bar** across the left column: [Save & next] (primary), [Save & mark for review], [Clear response], [Mark for review & next], then [‹ Back] [Next ›]; [Submit] at the bottom of the right panel. Below 1200 px window width, [‹ Back] and [Next ›] become icon-only buttons (`CaretLeft`, `CaretRight`, 48 px targets) with the accessible names "Previous question" and "Next question" and a tooltip, so the four action buttons keep their full labels on one row.
 5. Keyboard shortcut hint line in `caption` under the bottom bar (hidden in Exam-day mode): "1–4 choose · N save & next · M mark & next · C clear · ← → move · P palette".
 
 Portrait tablets (≥ 600 wide, taller than wide): the palette panel moves below the question as a collapsible drawer, open by default at ≥ 900 px height.
@@ -1425,6 +1425,7 @@ Portrait tablets (≥ 600 wide, taller than wide): the palette panel moves below
 | Clear response | Clear response | उत्तर हटाएँ |
 | Mark & next | Mark for review & next | रिव्यू के लिए मार्क करें और आगे |
 | Back / Next | Back / Next | पीछे / आगे |
+| Back / Next, icon-only (a11y) | Previous question / Next question | पिछला सवाल / अगला सवाल |
 | Submit | Submit | सबमिट |
 | Legend counts | {n} Answered · {n} Not answered · {n} Not visited · {n} Marked · {n} Answered and marked | {n} उत्तर दिए · {n} उत्तर नहीं दिए · {n} नहीं देखे · {n} मार्क किए · {n} उत्तर दिए और मार्क किए |
 | Shortcut hint | 1–4 choose · N save & next · M mark & next · C clear · ← → move · P palette | 1–4 चुनें · N सेव और आगे · M मार्क और आगे · C हटाएँ · ← → आगे-पीछे · P पैलेट |
@@ -1694,7 +1695,7 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 **Entry → exits:** MOCK-07 / MOCK-08 Submit, MOCK-09 Submit, MOCK-15 Submit now → MOCK-18, back to the runner ([Go back]).
 **Layout (top to bottom):**
 1. Full-screen modal, runner look, title "Submit your answers?", the Timer still running in the header.
-2. Summary table, one row per section and a total row. Columns: Section · Questions · then one column per palette state the interface profile lists (Answered · Not answered · Marked for review · Answered and marked · Not visited for NTA-style CBTs). Column headers carry the palette shapes. On phones the table scrolls horizontally with the section column frozen.
+2. Summary table, one row per section and a total row. Columns: Section · Questions · then one column per palette state the interface profile lists, in its order and with its labels (for example Answered · Not answered · Marked for review · Answered and marked · Not visited, when the profile has all five). Column headers carry the palette shapes. On phones (below 600 px) the state columns use shape-only headers (the palette cell shape with no text, each with its full label as the accessible name) and a legend row under the table maps each shape to its label, so the table fits without scrolling; if it still doesn't fit, it scrolls horizontally with the section column frozen.
 3. Evaluation note: "Answered and marked questions will be evaluated." or "...will not be evaluated." (from the interface profile).
 4. Locked-section note when relevant: "{section_title} is already closed."
 5. Warning line when not visited or not answered counts are above zero: "{n} questions have no answer."
@@ -1759,7 +1760,7 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 
 ### MOCK-18 · Submitted
 **Purpose:** Bridge from submitting to the report, honestly, whether online or offline. **Main action:** wait, then open the report automatically.
-**Entry → exits:** MOCK-16, MOCK-17 → MOCK-19 (when ready), MOCK-01 / PRC-01 ([Done] while offline), local notification "Your mock report is ready" → MOCK-19 (not in the NTF-01 catalogue yet: TODO(NTF) `mock_report_ready`, a local, transactional notification that the student caused, outside the daily reminder volume of R34).
+**Entry → exits:** MOCK-16, MOCK-17 → MOCK-19 (when ready), MOCK-01 / PRC-01 ([Done] while offline), local notification "Your mock report is ready" → MOCK-19 (NTF-01 `report_ready`, a local exam alert that the student caused, outside the daily reminder volume of R34).
 **Layout (top to bottom):**
 1. Full screen. This is the last runner-look screen: plain, no pet.
 2. `CheckCircle` icon in `successText`, title "Submitted".
@@ -1789,7 +1790,7 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 
 ### MOCK-19 · Mock report
 **Purpose:** Show how the mock went, from real scores, and turn the biggest losses into a drill. **Main action:** [Fix next] (start the drill for the top lost concepts).
-**Entry → exits:** MOCK-18, MOCK-25, MOCK-02, PRC-10, PRC-01 recent, report-ready local notification (TODO(NTF)) → MOCK-20, MOCK-21, MOCK-22, MOCK-23, MOCK-24 (Phase 3), PRC-03 (Fix next), PRC-14 ("See all analytics"), PRC-17 / PAY-01 paywall (locked sections, trigger `analytics_lock`), SET-13 (under 13), MEM-03 review session (cards added to the queue), SOC-15 duel setup ("Challenge a friend", Phase 2), back.
+**Entry → exits:** MOCK-18, MOCK-25, MOCK-02, PRC-10, PRC-01 recent, report-ready local notification (NTF-01 `report_ready`) → MOCK-20, MOCK-21, MOCK-22, MOCK-23, MOCK-24 (Phase 3), PRC-03 (Fix next), PRC-14 ("See all analytics"), PRC-17 / PAY-01 paywall (locked sections, trigger `analytics_lock`), SET-13 (under 13), MEM-03 review session (cards added to the queue), SOC-15 duel setup ("Challenge a friend", Phase 2), back.
 **Layout (top to bottom):**
 1. Header: back, "{mock_title}", "Attempt {n} · {date}", kebab (Retake, Share score: P2).
 2. **Three lead tiles** (research A29, free for everyone): Score "{score} / {max_score}" (Score ring), Accuracy "{accuracy}%" ("{correct} of {attempted} right"), and Time lost on wrong answers "{m} min" (time spent on questions answered wrong). The report is time-focused from the first screen.
@@ -1799,7 +1800,7 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 6. **Time per question strip:** the Time strip component across all questions, sections separated by gaps and labelled; a dashed line for the target time; tap a bar → MOCK-22 at that question.
 7. **Concept heat map preview:** the top 8 chapters as Heat map cells; [See all] → MOCK-21.
 8. **Confidence card:** three rows Sure / 50:50 / Guess (R21) with "{correct} of {n} right" (only if the student used the confidence row; else hidden).
-9. **Fix next card** (`primaryTint`): pet line, up to `{report.fix_next_count}` rows "{concept_name} · lost {marks} marks", Button primary 56 [Fix next: {n}-question drill] (PRC-03 with `concepts[]`, `source: mock_report`), and a confirmation line "{n} cards added to your reviews" with [Undo]. The cards join the MEM-03 review queue (memory-labs request).
+9. **Fix next card** (`primaryTint`): pet line, up to `{report.fix_next_count}` rows "{concept_name} · lost {marks} marks", Button primary 56 [Fix next: {n}-question drill] (PRC-03 with `concepts[]`, `source: mock_report`), and a confirmation line "{n} cards added to your reviews" with [Undo]. The cards join the MEM-03 review queue (memory-labs request). On phones (below 600 px) the button is pinned as the bottom CTA for the whole scroll instead of sitting in the card, so the main action is always visible; the card keeps its rows and the confirmation line. When the report has no Fix next rows, nothing is pinned.
 10. **Solutions** entry row: "Review solutions" with counts "{wrong} wrong · {skipped} skipped · {marked} marked" → MOCK-22.
 11. **More:** rows for "Compare with past attempts" (MOCK-23, when there's a previous attempt), "Compare with the top 10%" (MOCK-23 top 10% scope, Pro, shown only above the threshold), "Leaderboard" (MOCK-24, live mocks, Phase 3), "Challenge a friend" (SOC-15, Phase 2, signed-in and consented), "See all analytics" (PRC-14).
 
@@ -1871,7 +1872,7 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 - Offline: a report already downloaded is cached and fully viewable; else MOCK-18 offline state.
 - Loading: skeletons with fixed heights.
 - Error: "Couldn't load your report. [Try again]".
-- Minor: rank shows to the student; on any public list under-18s appear only by pet name and pet avatar (R31). "Challenge a friend" needs the guardian `social` scope; without it the row is hidden.
+- Minor: rank shows to the student; on any public list under-18s appear only by the pet avatar and an auto-generated nickname (R31 amended). "Challenge a friend" needs the guardian `social` scope; without it the row is hidden.
 - Dark mode: Practice look in dark tokens; chart colours from the proposed `dataViz` dark set.
 
 **Interaction and motion:** The ring and bars fill once with spring `gentle` (static in reduced motion). The time strip scrolls horizontally with momentum; tap targets are at least 24 px wide per bar with a 48 px tall hit area. Fix next: success haptic when cards are added.
@@ -2041,12 +2042,12 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 
 ### MOCK-24 · Live mock leaderboard
 **Purpose:** Show all-India and friends' ranks for a live mock, fairly and with privacy rules. **Main action:** find your own position.
-**Entry → exits:** MOCK-19 (live), MOCK-03 (closed) → SOC-07 friend profile (Friends tab, consented users, Phase 2), AUTH-01 soft sheet (guest link, TODO(AUTH) reason `leaderboard`), AUTH-18 guardian consent (teen), SET-13 (under 13), back.
+**Entry → exits:** MOCK-19 (live), MOCK-03 (closed) → SOC-07 friend profile (Friends tab, consented users, Phase 2), AUTH-01 soft sheet (guest link, reason `leaderboard`), AUTH-18 guardian consent (teen), SET-13 (under 13), back.
 **Layout (top to bottom):**
 1. Header: back, "{mock_title} leaderboard", "{ranked_count} ranked · results at {results_at}".
 2. Tabs: All-India · Friends · My city (city only if the student set one; P2).
 3. Top 3 block: three Leaderboard rows with larger avatars (pet avatars) and the rank in `title`.
-4. List: Leaderboard rows 4 to 100, cursor pagination; each row: rank, avatar, name (adults: display name; under-18s: pet name with pet avatar only, R31), score, percentile.
+4. List: Leaderboard rows 4 to 100, cursor pagination; each row: rank, avatar, name (adults: display name; under-18s: auto nickname with the pet avatar only, R31 amended), score, percentile.
 5. Own row pinned at the bottom: "You · Rank {rank} · {score} · {percentile} percentile".
 6. Footer caption: "Only first attempts made during the window are ranked."
 
@@ -2063,12 +2064,12 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 | Pending | Ranks come out at {results_at}. | रैंक {results_at} पर आएँगी। |
 | Guest | Sign in to appear on the leaderboard. | लीडरबोर्ड पर दिखने के लिए साइन इन करें। |
 | Minor private | Only you can see your row. | आपकी पंक्ति सिर्फ़ आपको दिखती है। |
-| Minor listed note | Others see your pet's name and picture, never your name. | दूसरों को आपका नाम नहीं, सिर्फ़ आपके पेट का नाम और तस्वीर दिखती है। |
+| Minor listed note | Others see a nickname and your pet, never your name. | दूसरों को आपका नाम नहीं, सिर्फ़ एक निकनेम और आपका पेट दिखता है। |
 | Ask a parent | Ask a parent | माता-पिता से पूछें |
 | Not ranked | You took this after the window, so it isn't ranked. | आपने यह विंडो के बाद दिया, इसलिए रैंक नहीं हुई। |
 
 **Illustration slots:** None beyond pet avatars (existing assets).
-**States:** Pending (before `results_at`); published; guest (no own public row, sign-in link; live mocks are Pro, so guests normally only reach this from a shared link); minor without consent (private row line, [Ask a parent] → AUTH-18, or [Ask a grown-up] → SET-13 for under-13s); minor with consent (pet name and pet avatar only, R31, with the minor listed note); not ranked (late attempt); offline cached; dark mode.
+**States:** Pending (before `results_at`); published; guest (no own public row, sign-in link; live mocks are Pro, so guests normally only reach this from a shared link); minor without consent (private row line, [Ask a parent] → AUTH-18, or [Ask a grown-up] → SET-13 for under-13s); minor with consent (auto nickname and pet avatar only, R31 amended, with the minor listed note); not ranked (late attempt); offline cached; dark mode.
 **Interaction and motion:** Scroll; the own row stays pinned. Tapping a friend opens SOC-07. Rows of non-friends are not tappable. No confetti for top ranks.
 **Accessibility:** Rows read "Rank {n}, {name}, score {s}, {p} percentile". The pinned row is announced as "Your rank".
 **Analytics:** `mock_leaderboard_viewed {mock_id, scope}`.
@@ -2157,7 +2158,7 @@ New components for this area, to add to DESIGN.md §5 and build in `ui-native` a
 | **Score ring** | `score`, `max`, `label`, `size: 'lg' \| 'md'`, `animate: boolean` | positive (ring fills to score / max), zero, negative (ring empty, number shows "−{n}"), loading (empty ring, skeleton number) | The DESIGN.md progress ring, stroke 12, number in `display`. Read "{score} out of {max}". No special colour for negative scores. |
 | **Heat map cell** | `value: number \| null`, `count`, `minCount` (flag `analytics.min_answers_per_chapter`), `label`, `onPress?` | filled (proposed `dataViz.sequential` step), too few (hatched pattern + "not enough data"), selected (2 px `ink` ring), disabled | 44 × 44 minimum, radius `xs`, percentage printed inside in `caption`. Never colour alone: the number is always printed. |
 | **Time strip** | `items: { questionNo, sectionCode, timeMs, targetMs?, result: 'right' \| 'wrong' \| 'skipped' \| 'not_scored' }[]`, `onSelect`, `showTarget` | default, selected bar, no target (dashed line hidden, caption explains), table view (the accessible alternative) | Horizontal bar chart, one bar per question, height = time, result glyph under each bar (check, cross, dash). Scrolls horizontally; each bar at least 24 px wide with a 48 px tall hit area. Target source caption from MOCK-19. |
-| **Leaderboard row** | `rank: number \| null`, `avatar: { kind: 'pet' \| 'initials', ref }`, `name` (already resolved by privacy rules: display name for adults, pet name for under-18s, "You" for self), `score`, `time?`, `percentile?`, `isSelf`, `pinned`, `tappable` (friends only) | default, self (`primaryTint`, pinned at the bottom), top 3 (larger avatar, rank in `title`), pending rank ("Rank soon"), not ranked | Rank in tabular `label`, 32 px pet avatar. The component never receives a real name for a minor, so it cannot show one (R31). Read "Rank {n}, {name}, {score}". |
+| **Leaderboard row** | `rank: number \| null`, `avatar: { kind: 'pet' \| 'initials', ref }`, `name` (already resolved by privacy rules: display name for adults, auto nickname for under-18s, "You" for self), `score`, `time?`, `percentile?`, `isSelf`, `pinned`, `tappable` (friends only) | default, self (`primaryTint`, pinned at the bottom), top 3 (larger avatar, rank in `title`), pending rank ("Rank soon"), not ranked | Rank in tabular `label`, 32 px pet avatar. The component never receives a real name or typed pet name for a minor, so it cannot show one (R31 amended). It is used only on leaderboards: the MOCK-08 candidate block is not a Leaderboard row and shows initials, never a pet avatar (R24). Read "Rank {n}, {name}, {score}". |
 | **Citation chip** | `examShort`, `year`, `sessionLabel`, `keyStatus: 'final' \| 'provisional' \| 'dropped' \| 'changed'`, `onPress` (opens PRC-18) | default, dropped (`warningTint` + icon + "Dropped"), changed (`warningTint` + icon + "Answer changed"), pressed | A Chip with a `FileText` icon and "{exam_short} {year} · {session_label}". Read "From {exam} {year}, {session}. Opens source details." |
 | **Limit meter** | `label`, `used`, `limit` (flag value), `resetsAt`, `proAction: 'pro_link' \| 'ask_grown_up' \| 'none'` | in range, last few (caption "{remaining} left today"), full ("Done for today. Resets at midnight."), hidden (Pro) | One-line row: label, Progress bar (8 px), "{used} of {limit}". Progress bar role with value text. Never animates attention (no pulse, no shake). The `ask_grown_up` action is used for under-13s. |
 

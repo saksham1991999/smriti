@@ -499,7 +499,7 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 **Entry → exits:** MEM-08 overflow, MEM-07 long press, SOC-21 [Share one of yours] via MEM-07 → OS share sheet, AUTH-02 (sign-in), AUTH-18 (guardian consent with the `community` scope), MEM-09 (fix a blocked card), back.
 **Layout (top to bottom):** Sheet at 60%.
 1. Title "Share this deck".
-2. A line: "Friends get their own copy. Your progress stays private."
+2. A line: "Shared without your name. Friends get their own copy, and your progress stays private." The deck never carries the owner's name, nickname or pet name (R20).
 3. **Check row:** while the cards pass the moderation pre-pass: spinner "Checking the cards…"; then `CheckCircle` "Ready to share", or `WarningCircle` "Some cards can't be shared" with the list of cards to fix (each opens MEM-09).
 4. **Audience line** in `caption` with an icon: under 18 "Only your friends can open it." (`Users`), adults "Anyone with the link can open it." (`LinkSimple`).
 5. Share code shown large in `title` with tabular figures and [Copy] icon button; QR code below it (a generated QR is a code, not an illustration).
@@ -510,7 +510,7 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | Key | EN | HI |
 |---|---|---|
 | title | Share this deck | यह डेक साझा करें |
-| line | Friends get their own copy. Your progress stays private. | दोस्तों को अपनी कॉपी मिलेगी। आपकी प्रगति निजी रहेगी। |
+| line | Shared without your name. Friends get their own copy, and your progress stays private. | आपके नाम के बिना शेयर होगा। दोस्तों को अपनी कॉपी मिलेगी, और आपकी प्रगति निजी रहेगी। |
 | code | Deck code | डेक कोड |
 | copy_done | Code copied | कोड कॉपी हुआ |
 | anyone | Anyone with the link can copy | लिंक वाला कोई भी कॉपी कर सकता है |

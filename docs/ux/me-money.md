@@ -190,7 +190,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 2. Avatar block: the pet portrait 120 px, caption "Your avatar is {pet}." and a secondary button [Change outfit] → ME-05.
 3. Display name input (radius 16, `surfaceSunken`, 56 tall), helper "Friends see this name." Counter "{n}/24".
 4. For minors: an info line "Other students see {nickname}. Friends you added by link or QR see {pet}." with an `Info` icon (R31 amended: an auto nickname from a fixed word list, never the typed name).
-5. Optional fields (PRD §10.3): School or coaching, City. Helper "Only you see this. It helps us suggest the right content." Never shown to other students, never on share cards, never in analytics. Hidden for under 13 (set by the parent, if at all).
+5. Optional fields (PRD §10.3): School or coaching (picked from a list, `app.institutions`; the directory source is open, tutor-social Q-B12), City (picked from a list). Helper "Only you see this. It helps us suggest the right content." Never shown to other students, never on share cards, never in analytics. Picking one does not put the student on a school or city board: that is the separate "Show me on this board" toggle in SOC-10, off by default. Hidden for under 13 (set by the parent, if at all).
 6. Row: "My exams" with the exam chips → ME-03.
 7. Primary button [Save] pinned at the bottom (56, glow).
 **Copy:**
@@ -1112,7 +1112,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Paused note | Reminders paused after a week without opening Smriti. They restart when you open it. | एक हफ़्ते तक Smriti न खोलने पर रिमाइंडर रुक गए थे। ऐप खोलते ही फिर चालू होंगे। |
 
 **Illustration slots:** none large. The permission card uses the pet line avatar.
-**States:** OS permission off (card on top; toggles still editable), guest (Friends group hidden), minor 13–17 (no Smart timing, no Streak and plant group, no Bedtime review; the Learning rows show "Included in your daily reminder"; Friends group visible only after guardian consent; News hidden; quiet hours default 21:00–07:00; School hours on), under 13 (only Daily reminder, Focus timer and Quiet hours visible, set from Parent mode SET-16), reminders auto-paused after `notify.autopause_after_ignored` ignored reminders (Paused note), offline (changes save locally and update the local scheduler at once), web (email row; smart timing hidden until Web Push is on), dark.
+**States:** OS permission off (card on top; toggles still editable), guest (Friends group hidden), minor 13–17 (no Smart timing, no Streak and plant group, no inferred-bedtime Bedtime review; instead a Bedtime review at a time they pick, set in MEM-06 and off by default; the Learning rows show "Included in your daily reminder"; Friends group visible only after guardian consent; News hidden; quiet hours default 21:00–07:00; School hours on), under 13 (only Daily reminder, Focus timer and Quiet hours visible, set from Parent mode SET-16), reminders auto-paused after `notify.autopause_after_ignored` ignored reminders (Paused note), offline (changes save locally and update the local scheduler at once), web (email row; smart timing hidden until Web Push is on), dark.
 **Interaction and motion:** each switch writes immediately (`PATCH /v1/notification-prefs`) and reschedules local notifications; a toast only on error.
 **Accessibility:** each switch has the full label and caption; group headings are headings.
 **Analytics:** `notification_pref_changed`.
@@ -1416,7 +1416,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 1. Full screen, `surface`.
 2. Illustration: a parent and child at a table with the pet.
 3. Title "For grown-ups", body "Parent mode lets you see weekly reports, set time limits and manage consent."
-4. First time on this device: primary [Continue with Google] (opens AUTH-24); on iOS, Apple under it per the auth agent.
+4. First time on this device: primary [Continue with Google] (opens AUTH-24); on iOS, Apple under it per the auth agent. Under the buttons, the trust line in `caption`, `inkMuted` (R40).
 5. Returning: [Continue as {parent first name}] (Google account picker re-confirm) and, if set, [Use parent PIN].
 6. Ghost [Back to {child or pet}].
 **Copy:**
@@ -1426,7 +1426,8 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Title | For grown-ups | बड़ों के लिए |
 | Body | Parent mode lets you see weekly reports, set time limits and manage consent. | पेरेंट मोड में आप हफ़्ते की रिपोर्ट देख सकते हैं, समय सीमा तय कर सकते हैं और अनुमतियाँ संभाल सकते हैं। |
 | Hand over (child view) | Please give the phone to a parent. | कृपया फ़ोन किसी अभिभावक को दें। |
-| Continue Google | Continue with Google | Google से आगे बढ़ें |
+| Continue Google | Continue with Google | Google के साथ जारी रखें |
+| Trust line (R40) | We never call you or share your email. | हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे। |
 | Continue as | Continue as {parent} | {parent} के रूप में आगे बढ़ें |
 | PIN | Use parent PIN | पेरेंट PIN इस्तेमाल करें |
 | Back | Back to {pet} | {pet} के पास वापस |
@@ -1849,7 +1850,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 **Entry → exits:** never during onboarding (research A38, X4). Any Pro gate (source table in the flow doc §5.2), PAY-19, ME-01, SET-01, `smriti.app/pro` → PAY-02, PAY-03, PAY-04, PAY-05, PAY-06, PAY-14, AUTH-02 (guest, hard login, reason `start_trial`), `return_to` ("Maybe later").
 **Layout (top to bottom):**
 1. Full-screen sheet (radius 28 at the top, `surface`). Top-left close icon button (`X`, labelled "Maybe later").
-2. Hero, about 30% of the height, on `streakTint`: the pet holding a blank gold tag; the app overlays "₹1" on the tag as text (hidden when not eligible; the pet then holds a gold star).
+2. Hero, about 30% of the height, on `streakTint`: the pet holding a blank gold tag; the app overlays "₹1" on the tag as text (hidden when not eligible; the pet then holds a star in `primary`, and the hero uses `primaryTint`, because gold is only for the ₹1 tag, R11).
 3. Pet line for the trigger (Pet line component).
 4. Headline in `display`; sub-line in `body` `inkMuted`.
 5. Benefit list, 4 to 5 rows: each row a 40 px `sunny-object` illustration, the benefit in `label`, one short caption. The first row is the trigger's benefit (flow doc §5.2); the rest follow the order in flow doc §5.3, only for features live on this platform.
@@ -1927,6 +1928,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | Offline | Connect to the internet to start Pro. | Pro शुरू करने के लिए इंटरनेट से जुड़ें। |
 | Store unavailable (Android) | Google Play isn't available on this phone right now. | अभी इस फ़ोन पर Google Play उपलब्ध नहीं है। |
 | Guest hint (under CTA) | You'll sign in with Google first. | पहले आप Google से साइन इन करेंगे। |
+| `intro_used` (after sign-in) | The ₹1 month was already used on this account. | इस अकाउंट पर ₹1 वाला महीना पहले ही इस्तेमाल हो चुका है। |
 | Teen consent caption | Needs a guardian's OK first | पहले अभिभावक की मंज़ूरी ज़रूरी |
 
 **Illustration slots:** (a) hero: `pet-cat`/`pet-dog`, 1:1, the pet proudly holding a blank gold price tag on a string (and a variant holding a gold star), transparent; the "₹1" is app text over the tag; alt "{pet} holds a gold tag" / "{pet} के हाथ में सुनहरा टैग". (b) benefit rows: `sunny-object`, 1:1, one per benefit (an open book with a magnifier for Deep Dives, a stopwatch on a paper for mocks, a microphone for the voice tutor, a printed booklet for PDF books, a cloud with a down arrow shape for offline: no text or letters), decorative because the row text carries the meaning.
@@ -1934,7 +1936,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 - Eligible vs not eligible: headline, sub, CTA, plan price, timeline, fine print and the hero tag change. Never mix them.
 - Source `lab_lock` (a lab card inside a locked Deep Dive): a link row under the benefits, "This lab is free in Labs. Open it there" → LAB-03, because labs are free (R19, R9).
 - Price loading: the plan price and CTA show a skeleton and the CTA is disabled until the store or API returns the price.
-- Guest: the "You'll sign in with Google first" hint shows; the CTA opens AUTH-02 (hard login) and then continues to checkout automatically.
+- Guest: the "You'll sign in with Google first" hint shows; ₹1 shows only when the device signal allows it (`eligible_hint`, R38). The CTA opens AUTH-02 (hard login), then the full eligibility check runs. If it says yes, checkout continues automatically. If it says no, PAY-01 re-renders in its not-eligible state with the `intro_used` line before any payment sheet opens, and the student taps [Get Pro] again.
 - Minor 13–17: the CTA opens PAY-03 first.
 - Teen without guardian consent for `voice` or `uploads`: the Voice tutor and Photo doubts rows keep their place and add the caption "Needs a guardian's OK first", because buying Pro doesn't skip consent (AUTH-18).
 - Under 13 (little learners and 10–12, all managed accounts): never shown. A gate shows a small "Ask a grown-up" sheet (pet line "This one needs a grown-up." / "इसके लिए बड़ों की ज़रूरत है।") with [Ask a grown-up] → SET-13 → PAY-17 for that child. In learn screens this is LRN-05's "Ask a grown-up" variant.
@@ -2556,9 +2558,9 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | `daily_reminder` (minor, learning folded in) | {n} reviews and today's challenge are ready. | {n} रिव्यू और आज का चैलेंज तैयार हैं। |
 | `daily_reminder_thirsty` (adults) | Your plant is thirsty. One lesson waters it. | आपका पौधा प्यासा है। एक पाठ से पानी मिलेगा। |
 | `daily_reminder_dry` (adults) | Your plant is a bit dry. Two study days fix it. | पौधा थोड़ा सूखा है। दो दिन की पढ़ाई से ठीक होगा। |
-| `streak_risk` streak saver pool 1 (adults) | 2 minutes keeps your {streak}-day streak going. | 2 मिनट, और {streak} दिन की स्ट्रीक जारी रहेगी। |
+| `streak_risk` streak saver pool 1 (adults) | One lesson keeps your {streak}-day streak going. | एक लेसन, और {streak} दिन की स्ट्रीक जारी रहेगी। |
 | `streak_risk` pool 2 | Your plant would love a drink before bed. | सोने से पहले पौधे को थोड़ा पानी दे दें। |
-| `streak_risk` pool 3 | One quick review counts for today. | आज के लिए एक छोटा रिव्यू काफ़ी है। |
+| `streak_risk` pool 3 | 10 quick reviews count for today. | आज के लिए 10 छोटे रिव्यू काफ़ी हैं। |
 | `reminders_paused` | I'll stop reminding you for now. Tap me anytime. | अभी के लिए रिमाइंडर बंद कर दिए हैं। जब चाहें, टैप करें। |
 | `review_due` (adults) | {n} cards are due. About {min} min. | {n} कार्ड दोहराने हैं। लगभग {min} मिनट। |
 | `weak_area` (adults) | Time to refresh {topic}. {n} cards today? | {topic} दोहराने का समय। आज {n} कार्ड? |
@@ -2592,6 +2594,8 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | `parent_weekly_report` | {child}'s week: {min} min, {n} lessons. | {child} का हफ़्ता: {min} मिनट, {n} पाठ। |
 | `parent_time_request` | {child} asked for 15 more minutes. | {child} ने 15 मिनट और माँगे हैं। |
 | `parent_consent_needed` | {child} asked for your OK in Smriti. | {child} ने Smriti में आपकी मंज़ूरी माँगी है। |
+| `consent_decided` (agreed) | Your grown-up said yes. Tap to continue. | आपके अभिभावक ने हाँ कह दी। आगे बढ़ने के लिए टैप करें। |
+| `consent_decided` (declined or expired) | Your grown-up's answer is in. Tap to see it. | आपके अभिभावक का जवाब आ गया है। देखने के लिए टैप करें। |
 | Action: accept duel | Accept | स्वीकार करें |
 | Action: allow time | Allow 15 min | 15 मिनट दें |
 | Action: decline time | Not today | आज नहीं |

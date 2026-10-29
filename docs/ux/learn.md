@@ -10,7 +10,7 @@ Status: Draft v0.3 (revision 1), 29 Oct 2026. Screen specs for the HOME, LRN and
 
 - **Top bar (main screens):** 56 tall on `bg`. Left: back (`CaretLeft`, 24), or on Home the exam chip (§HOME-01). Centre or left: the screen title in `title`. Right: search (`MagnifyingGlass`, 24) on every main screen (APP_FLOW §1), then one screen-specific action at most.
 - **Floating tutor button (AI-01):** 56 round, `primary` fill, the pet's head (Rive, static pose in reduced motion) with the accessibility label "Ask {pet_name}". Sits 16 above the pinned CTA or the tab bar, right edge, 16 from the side. Opens AI-02 with the current screen as context. Hidden for little learners unless a parent turns it on in SET-14 (R14).
-- **Tab bar:** DESIGN §5, Learn active. Five tabs (Learn, Labs, Practice, Friends, Me; R17); three for little learners (Learn, Labs, Me; R14). Hidden inside the lesson player, the storybook, the video player, the Cornell editor and the mind map.
+- **Tab bar:** DESIGN §5, Learn active. Phase 1 ships four tabs (Learn, Labs, Practice, Me; R46); the Friends tab joins in Phase 2 for the five-tab target (Learn, Labs, Practice, Friends, Me; R17). Three for little learners (Learn, Labs, Me; R14). Hidden inside the lesson player, the storybook, the video player, the Cornell editor and the mind map.
 - **Pinned primary CTA:** Button primary, 56 tall, full width minus 20 per side, 16 above the safe area or tab bar, with `ctaGlow`.
 - **Sheets:** Sheet component, radius `sheet` (28), grabber, `scrim`. Heights 40%, 60% or full.
 - **Phase:** every block is Phase 1 unless its title line says otherwise (R8).
@@ -91,9 +91,10 @@ The Pet line component (DESIGN §5): 40 px pet avatar plus a bubble on `surface`
 | Streak pill a11y | Streak, {n} days | स्ट्रीक, {n} दिन |
 | Gem pill a11y | {n} gems | {n} जेम्स |
 | Offline banner | Offline. Downloaded lessons still work. | ऑफ़लाइन हैं। डाउनलोड किए गए पाठ चलते रहेंगे। |
-| Streak card, not yet today | One lesson waters it today | आज एक पाठ से इसे पानी मिलेगा |
+| Streak card, not yet today | One lesson or 10 reviews waters it today | आज एक पाठ या 10 रिव्यू से इसे पानी मिलेगा |
 | Streak card, watered | Watered! See you tomorrow | पानी मिल गया! कल फिर मुलाक़ात! |
-| Streak card, at risk | Your plant is thirsty. One lesson before bed? | आपका पौधा प्यासा है। सोने से पहले एक पाठ? |
+| Streak card, at risk | Your plant is thirsty. One lesson or 10 reviews before bed? | आपका पौधा प्यासा है। सोने से पहले एक पाठ या 10 रिव्यू? |
+| Streak card, rescue link | 2-minute rescue | 2 मिनट में पौधे को पानी |
 | Streak card, droopy | A little droopy. One study day perks it up. | थोड़ा मुरझाया है। एक दिन की पढ़ाई से फिर खिल उठेगा। |
 | Streak card, dry | It misses you. Two study days bring it back. | इसे आपकी याद आ रही है। दो दिन की पढ़ाई से यह फिर हरा होगा। |
 | Streak card, wilted | Let's nurse it back: 3 short study days. | चलिए इसे फिर हरा करें: बस 3 छोटे दिन की पढ़ाई। |
@@ -156,6 +157,7 @@ The Pet line component (DESIGN §5): 40 px pet avatar plus a bubble on `surface`
 - **Rest day:** rest-day line, no at-risk state, no streak-saver hero.
 - **Incident freeze:** incident line; decay paused; no at-risk state.
 - **Plant thirsty / dry / wilted:** plant art and the line change. Card stays `streakTint` (not warning) unless also at risk.
+- **Rescue link:** when today is not yet a streak day and the card is in its at-risk state or the plant is droopy, dry or wilted, a ghost link "2-minute rescue" sits under the state line and opens `/review?set=rescue` (MEM-03 rescue mode, then MEM-32; memory-labs flow §5.13). Not shown when the plant is dormant, on a rest day or when no card is due or near due.
 - **Plant dormant:** revival card replaces the streak card (tap → ME-08). Hero is the shortest free bite.
 - **Review due:** hero `review` when today's capped count ≥ `home.review_hero_min_cards`, otherwise a secondary row. The count is always today's capped number (R22), never the backlog. Tap goes to MEM-03, or MEM-02 when the backlog rule or a comeback plan applies.
 - **Comeback plan active:** comeback copy on the review hero or row.
@@ -1653,7 +1655,7 @@ Shared: `prompt` at the top in `heading`, the widget, then feedback inline (the 
 7. **Fix mistakes row** (A22; only when the bite had misses): `surface` row 64, radius 16, `ArrowCounterClockwise` 24 in `primary`, "Fix {n} mistakes" `label`, "Free · about {minutes} min" `caption`, trailing [Fix] secondary 40 → LES-14. After LES-14 it shows "Mistakes fixed" / "{fixed} of {total} fixed" with a `Check`.
 8. Optional rows (max two): quest progress ("{quest_name} · {done}/{target}", → ME-20) and a badge earned (→ ME-16; ME owns art and rules).
 9. Buttons: [Continue] primary with the next step in `caption` under it ("Next: {bite_title}" / "Back to {chapter_title}" / "Back to your comeback plan"); a row of secondary actions: [Practise this topic] (`Target`, once the topic is learned; → PRC-03 prefilled), [Explain it back] (`ChatTeardropText`, Phase 2; when the topic was just learned; → AI-10, or AI-07 for free students), [Share] (`ShareNetwork`).
-10. **One extra, at most** (flow §7.5), below the buttons and never covering them, in this order: ONB-15 reminder ask (first lesson after onboarding's [Finish later]); AUTH-01 soft login sheet (guest, 3rd lesson, slides up 1.2 s after the counts finish); the little-learner save-stars row; **PAY-19 inline upsell card** (free, 13+, every 5th lesson; PAY-19 owns its look and copy).
+10. **One extra, at most** (flow §7.5), below the buttons and never covering them, in this order: the deferred onboarding pair, ONB-08 daily goal then ONB-15 reminder ask (first finished lesson after onboarding's [Finish later] or a direct lane; the pair counts as one extra); AUTH-01 soft login sheet (guest, 3rd lesson, slides up 1.2 s after the counts finish); the little-learner save-stars row; **PAY-19 inline upsell card** (free, 13+, every 5th lesson; PAY-19 owns its look and copy).
 11. **Little learner variant:** stars instead of XP ("You got {n} stars!"), no accuracy or time tiles, no Fix row (wrong answers were already retried with the pet), big [Next] button with `ArrowRight`, the pet says the line aloud. At the 3rd lesson a row "Ask a grown-up to save your stars" (`Lock`, hold to open SET-13, then AUTH-24).
 
 **Copy:**
@@ -1697,7 +1699,7 @@ PAY-19 brings its own art (the gold tag).
 - **Daily goal just met:** goal ring completes with `pop` and a second, smaller celebration.
 - **Mistakes in the bite:** Fix row; it is not "the one extra" and always shows when there were misses.
 - **Relearn (`source=comeback`):** caption "Back to your comeback plan"; [Continue] → MEM-02.
-- **First lesson after onboarding's [Finish later]:** ONB-15 is the extra.
+- **First lesson after onboarding's [Finish later] (or a direct lane):** ONB-08 then ONB-15 are the extra, counted as one.
 - **3rd lesson, guest:** AUTH-01 slides up 1.2 s after the counts finish (AUTH owns frequency, R29).
 - **Every 5th lesson, free, 13+:** PAY-19 below the buttons, if PAY-19's own rules allow (not in the first 3 days, at most 2 a day). If another extra takes the slot, PAY-19 waits for the 10th.
 - **Offline:** numbers are optimistic (computed by app-core) with the offline caption under the stats; no correction animation later (the server value quietly replaces it on Home). Practise, Explain it back and Share need the network.

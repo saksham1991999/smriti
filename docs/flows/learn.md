@@ -418,7 +418,7 @@ Three choices, ordered by the chapter's state:
 - Exit ✕ opens LES-05 in its onboarding variant ("Your seed is waiting for its first drink", [Keep going] / [Finish later]).
 - At the last card, LES-07 and LES-08 are skipped; the player returns `{completed, xp, accuracy, duration_ms}` to ONB-14.
 - It counts as a completed lesson for the 3rd-lesson soft login.
-- If onboarding ended with [Finish later], ONB-15 (reminder ask) is shown after the student's first LES-08, as that lesson's one prompt.
+- If onboarding ended with [Finish later] (or a direct lane skipped the first lesson), ONB-08 (daily goal) and then ONB-15 (reminder ask) are shown after the student's first LES-08. The pair counts as that lesson's one prompt (onboarding flow §6.7).
 
 ### 7.2 Opening a lesson
 
@@ -449,7 +449,7 @@ stateDiagram-v2
   [*] --> Card
   Card --> Card: Continue / swipe (no pending task)
   Card --> Question: question card
-  Question --> Checking: Check (+ optional Sure / 50:50 / Guess)
+  Question --> Checking: Check (+ optional Sure, 50-50 or Guess)
   Question --> DontKnow: "I don't know yet"
   Checking --> Correct: right
   Checking --> Wrong1: wrong, 1st try
@@ -522,7 +522,7 @@ flowchart TD
   Q1 -->|yes| ST[Streak +1 moment inline]
   Q1 -->|no| N
   ST --> N{One extra, in this order}
-  N -->|onboarding was 'Finish later', first lesson since| R15[[ONB-15 Reminder ask]]
+  N -->|onboarding was 'Finish later', first lesson since| R15[[ONB-08 Daily goal, then ONB-15 Reminder ask]]
   N -->|guest, lessons_completed = 3| Soft[[AUTH-01 Login sheet, soft, trigger lesson_3]]
   N -->|little learner, lessons_completed = 3| Grown[Ask a grown-up row → SET-13 → AUTH-24]
   N -->|free, 13+, lessons_completed % 5 = 0| Pro[[PAY-19 Inline upsell card]]
@@ -612,7 +612,7 @@ flowchart LR
 | Activity day, XP, streak, plant, pet | optimistic copy | `learn.activity_days`, `game.*` | sync returns authoritative state |
 | Bookmarks, vault items | local table (G9) | `learn.bookmarks` | sync |
 | Notes, mind maps | `notes`, `mind_maps` | `learn.notes`, `learn.mind_maps` | sync; AI jobs (G5) |
-| Content reports | outbox | per SET-24 (`ops.content_reports` proposed by me+money vs `learn.content_reports` in DB_SCHEMA) | sync |
+| Content reports | outbox | `learn.content_reports` (DB_SCHEMA §5.4), sent from SET-24 | sync |
 | Downloads | `bundles.pinned`, `asset_cache.pinned` | none | CDN |
 | Recent searches, prompt history | MMKV / localStorage | never | none |
 | Search index | local FTS | `content.search_docs` | gap G4 |
@@ -639,15 +639,15 @@ flowchart LR
 | # | Where | Issue | Proposed fix / status |
 |---|---|---|---|
 | G1 | `content-format.md` §7 vs `UX_FLOW.md` §4.6, `quality-bar.md` §1.3 | No `formula` card type | Add `formula`: `title`, `latex`, `symbols[]` (`symbol`, `meaning`, `unit`), `conditions`, `vault_id`. Fallback renders `$$…$$` blocks as Formula boxes. |
-| G2 | `content-format.md` §7, DB_SCHEMA §5.1 | No bite structure; `lesson_progress` has no bites | Add `bites[]` (`id`, `title`, `subtopic`, `card_ids[]`, `estimated_minutes`) and `learn.lesson_progress.bites_completed text[]`. Fallback: a bite ends at each `summary` card. |
+| G2 | `content-format.md` §7, DB_SCHEMA §5.1 | No bite structure; `lesson_progress` has no bites | Add `bites[]` (`id`, `title`, `subtopic`, `card_ids[]`, `estimated_minutes`) and `learn.lesson_progress.bites_completed text[]`. Fallback: a bite ends at each `summary` card. Resolved in consistency pass: `learn.lesson_progress.bites_completed` added (DB_SCHEMA §5.1); the `bites[]` content field is still open. |
 | G3 | `content-format.md` §8 | No `hints[]` on questions | Add optional localised `hints[]`. |
 | G4 | TRD §5.1 | No search endpoint | `GET /v1/search?q=&exam=&locale=&groups=` |
 | G5 | TRD §5.1 | No plan-change, AI Cornell, AI mind-map endpoints; sync coverage of user tables not stated | State that user-owned learn tables sync as events; add `POST /v1/plan/today/changes`, `POST /v1/ai/cornell-fill`, `POST /v1/ai/mind-map-links`. |
-| G6 | DB_SCHEMA §4.3 | Static `is_free` can't express rotating free chapters | `content.free_rotations (day, exam_profile_id, chapter_id)` or flag `free.rotating_chapters`, served in the manifest. |
-| G7 | DB_SCHEMA §4.4 | `content.questions.type` lacks `order_steps` | Add it. |
-| G8 | DB_SCHEMA §5.1 | `self_confidence` comment says topic; `question_attempts` has no `attempt_no` | Fix the comment; add `attempt_no smallint`. |
-| G9 | DB_SCHEMA §15 | No on-device `bookmarks` table | Add it. |
-| G10 | DB_SCHEMA §5.1 | No record of *how* a topic became learned (lesson, test out, placement, chapter test), needed to undo placement marks and to reset a chapter (X13) | Add `learn.topic_status (user_id, topic_id, status, learned_via, updated_at)` and a device mirror. |
+| G6 | DB_SCHEMA §4.3 | Static `is_free` can't express rotating free chapters | `content.free_rotations (day, exam_profile_id, chapter_id)` or flag `free.rotating_chapters`, served in the manifest. Resolved in consistency pass: flag `free.rotating_chapters` in the manifest, noted on `content.content_items.is_free`. |
+| G7 | DB_SCHEMA §4.4 | `content.questions.type` lacks `order_steps` | Add it. Resolved in consistency pass: `order_steps` added to `content.questions.type`. |
+| G8 | DB_SCHEMA §5.1 | `self_confidence` comment says topic; `question_attempts` has no `attempt_no` | Fix the comment; add `attempt_no smallint`. Resolved in consistency pass: comment fixed; `attempt_no` added to `learn.question_attempts`. |
+| G9 | DB_SCHEMA §15 | No on-device `bookmarks` table | Add it. Resolved in consistency pass: local `bookmarks` table added (DB_SCHEMA §15). |
+| G10 | DB_SCHEMA §5.1 | No record of *how* a topic became learned (lesson, test out, placement, chapter test), needed to undo placement marks and to reset a chapter (X13) | Add `learn.topic_status (user_id, topic_id, status, learned_via, updated_at)` and a device mirror. Resolved in consistency pass: `learn.topic_status` and its device mirror added. |
 | G11 | `content-format.md`, TRD §3.2 | Placement sets are study content but have no file home | Add `content/questions/.../placement.json` (or a `use: ["placement"]` value) and list "placement sets" in the seed pack (TRD §3.2). |
 | G12 | `content-format.md` §7 | No `fallback` field for labs | memory-labs G2 already asks for it; LES needs it for LAB-05 inline. |
 | C1 | APP_FLOW §2, UX_FLOW §4.14, PRD §10.3, TRD §6, DB `guardian_phone_hash` | Phone OTP and email | Auth agent. Resolved for this doc (only AUTH IDs referenced). |
@@ -659,12 +659,12 @@ flowchart LR
 | C7 | PRD §5.1 | Both modes per subtopic | Via bites (G2). |
 | C9 | UX_FLOW §4.5–4.6 | Gold memory-trick cards | Resolved by R11: subject tint with a lightbulb. |
 | C10 | UX_FLOW §5 | Dormant revival days | Resolved by R12; copy uses `{days}`. |
-| C11 | `docs/ux/me-money.md` PAY-19 | PAY-19 uses `streakTint` for the whole card; R11 reserves gold for the streak, plant, gems and the ₹1 tag | Me+money: use `surface` or `primaryTint` for the card and keep gold only on the tag art. |
-| C12 | `docs/flows/me-money.md` §3.4 (ME-08) | "A day counts when the daily goal is met" for revival, but R1/R12 count study days (qualifying activity) | Me+money: count qualifying days, as R12 says. |
-| C13 | `docs/flows/tutor-social.md` A4 | The tutor button shows for little learners on HOME and LES; R14 says no tutor button by default | Off by default; the parent can turn on the chips-only variant in SET-14. |
-| C14 | `docs/flows/onboarding.md` §6.6, `docs/ux/onboarding.md` ONB-13 | Still describe the placement quiz in ONB-13 (`kind=placement`) | R27 moves it to HOME-08. Onboarding to update. |
-| C15 | `docs/flows/me-money.md` §3.8 | A free Download button "opens PAY-01" directly | This doc puts LRN-05 first (honest sheet with a free alternative), then PAY-01 `offline_download`. Me+money to accept. |
-| C16 | `docs/ux/me-money.md` SET-24 vs DB_SCHEMA `learn.content_reports` | Me+money proposes `ops.content_reports`; DB already has `learn.content_reports` | Pick one; recommend the existing `learn.content_reports`. |
+| C11 | `docs/ux/me-money.md` PAY-19 | PAY-19 uses `streakTint` for the whole card; R11 reserves gold for the streak, plant, gems and the ₹1 tag | Me+money: use `surface` or `primaryTint` for the card and keep gold only on the tag art. Resolved in consistency pass: PAY-19 is `primaryTint`, gold only on the tag. |
+| C12 | `docs/flows/me-money.md` §3.4 (ME-08) | "A day counts when the daily goal is met" for revival, but R1/R12 count study days (qualifying activity) | Me+money: count qualifying days, as R12 says. Resolved in consistency pass: ME-08 and me-money §3.4 count streak days. |
+| C13 | `docs/flows/tutor-social.md` A4 | The tutor button shows for little learners on HOME and LES; R14 says no tutor button by default | Off by default; the parent can turn on the chips-only variant in SET-14. Resolved in consistency pass: tutor-social A4 and SET-14 say so. |
+| C14 | `docs/flows/onboarding.md` §6.6, `docs/ux/onboarding.md` ONB-13 | Still describe the placement quiz in ONB-13 (`kind=placement`) | R27 moves it to HOME-08. Resolved in consistency pass: ONB-07 and ONB-13 have no quiz. |
+| C15 | `docs/flows/me-money.md` §3.8 | A free Download button "opens PAY-01" directly | This doc puts LRN-05 first (honest sheet with a free alternative), then PAY-01 `offline_download`. Resolved in consistency pass: me-money §3.8 accepts. |
+| C16 | `docs/ux/me-money.md` SET-24 vs DB_SCHEMA `learn.content_reports` | Me+money proposes `ops.content_reports`; DB already has `learn.content_reports` | Pick one; recommend the existing `learn.content_reports`. Resolved in consistency pass: SET-24 writes `learn.content_reports`, which now has `kind` (DB_SCHEMA §5.4). |
 
 ---
 

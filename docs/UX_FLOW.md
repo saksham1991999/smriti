@@ -6,7 +6,7 @@ Status: Draft v0.2, 29 Oct 2026. Replaces v0.1 (28 Oct).
 - **This doc** is the short version: principles, the visual summary, the patterns every screen shares, and where each area's specs live.
 - **Screen specs:** every screen has a block in `docs/ux/<area>.md` with the same 12 headings: purpose and main action, entry and exits, layout, copy (EN + HI), states, interaction and motion, accessibility, analytics, web layout, illustration slots, phase and mock priority. The index of all 315 screens is [`SCREENS.md`](SCREENS.md).
 - **Navigation and logic:** [`APP_FLOW.md`](APP_FLOW.md). **Tokens and components:** `DESIGN.md` and `packages/tokens/tokens.json`.
-- **Visual mocks:** `design/mocks/` holds the P0 screens of every area, built into one gallery page by `cd tools/mocks && npm install && node build.mjs`. The illustrations in them are draft Agnes AI images.
+- **Visual mocks:** [Smriti Screens](https://claude.ai/artifact/Qo8oFPHZahA11hRgPEPxr7), 235 frames. The source is `design/mocks/`, which holds the P0 screens of every area, built into one gallery page by `cd tools/mocks && npm install && node build.mjs`. The illustrations in them are draft Agnes AI images.
 - **Earlier direction boards:** [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF48w6kC4bv6PtJhHFzzZ).
 
 ---

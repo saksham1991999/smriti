@@ -38,7 +38,7 @@ In this document, values in braces such as `{duration_min}`, `{section_timer_min
 | Photo doubt "Similar questions" (AI-19) | PRC-03 with a fixed `question_ids[]` set | No adaptive picking (§5.3) |
 | "Sure but wrong" list [Practise these] (MEM-26), metacognitive dashboard (MEM-25) | PRC-03 prefilled with `concepts[]` | |
 | Mock report "Fix next" (MOCK-19) | PRC-03 prefilled with the weakest concepts | |
-| Daily challenge card on Home (HOME-01), NTF-01 daily reminder when its template mentions the challenge (TODO(NTF)), home-screen widget (Phase 2) | PRC-11 Daily challenge | No separate challenge push (R34 fixed volume) |
+| Daily challenge card on Home (HOME-01), NTF-01 `challenge_ready` (folded into the daily reminder for minors), home-screen widget (Phase 2) | PRC-11 Daily challenge | No separate challenge push (R34 fixed volume) |
 | Live mock reminder push (NTF-01 `mock_reminder`) | MOCK-03 Live mock room | Phase 3 |
 | Shared link landing (ENT-06) for a mock or PYQ paper | MOCK-02 or PRC-10 | |
 | Deep link `smriti.app/mock/{mockId}` (APP_FLOW §4) | MOCK-02 Mock detail | A per-exam app uses its own prefix, for example `/jee/mock/{mockId}` |
@@ -144,7 +144,7 @@ The limits below are flags (PRD §11.1 says "the exact free limits are flags"). 
 ### 4.2 Guests
 
 - Guests are real Supabase users (`is_anonymous = true`, TRD §6), so attempts, mock answers and analytics are stored on the server under the same `user_id` from the start. Linking Google keeps the id. A merge (Google account already exists) replays the guest's events into the existing account (TRD §6, fixed decision 3). Mock attempts move with `user_id` re-pointed by the merge job; ranks are recomputed only for open live windows.
-- Guests never see a login wall in Practice. Login is offered only at the moments in the brief: starting the ₹1 trial (hard), second device (hard), friends (hard). Practice adds no new forced moment. It adds two **inline links the student must tap themselves**: "Sign in to appear on the leaderboard" (PRC-12, MOCK-24) and "Sign in to keep your mock history on every device" (MOCK-25 footer). These open AUTH-01 (soft sheet) with reason `save_progress`; a dedicated `leaderboard` reason is requested from AUTH (TODO(AUTH)). Soft-wall frequency rules from R29 apply (at most once per trigger per 7 days, and these are links, so they never pop up).
+- Guests never see a login wall in Practice. Login is offered only at the moments in the brief: starting the ₹1 trial (hard), second device (hard), friends (hard). Practice adds no new forced moment. It adds two **inline links the student must tap themselves**: "Sign in to appear on the leaderboard" (PRC-12, MOCK-24) and "Sign in to keep your mock history on every device" (MOCK-25 footer). These open AUTH-01 (soft sheet) with reason `leaderboard` (PRC-12, MOCK-24) or `save_progress` (MOCK-25). They are tap triggers: they never pop up by themselves, so they open whenever the student taps them and don't use the R29 pop-up budget (auth flow §4).
 - A guest who starts the ₹1 trial from PRC-17 or a Pro lock goes PAY-01 paywall → AUTH-02 (reason `start_trial`) → back to the exact screen and question (APP_FLOW §3.2).
 
 ### 4.3 Minors and little learners (DPDP, PRD §16.4)
@@ -152,12 +152,12 @@ The limits below are flags (PRD §11.1 says "the exact free limits are flags"). 
 | Age band (`app.profiles.age_band`) | Practice | Mocks | Leaderboards and sharing |
 |---|---|---|---|
 | `18p` | Everything | Everything | Display name as the student set it |
-| `13_17` | Everything | Everything | Without guardian consent (`social` scope, AUTH-18 to AUTH-23): the student sees the leaderboard and their own row marked "You", and other users never see them; an [Ask a parent] link opens AUTH-18. With consent: shown to others only by pet name and pet avatar (R31). Share card shows no name. |
-| `10_12` (managed account) | Everything, with no prices (Pro links read "Ask a grown-up" → SET-13) | Everything, no prices | As `13_17`, with consent given by the parent at account creation or in SET-17 (behind the SET-13 parent gate). Pet name and pet avatar only (R31) |
+| `13_17` | Everything | Everything | Without guardian consent (`social` scope, AUTH-18 to AUTH-23): the student sees the leaderboard and their own row marked "You", and other users never see them; an [Ask a parent] link opens AUTH-18. With consent: shown to others only by the pet avatar and an auto-generated nickname (R31 amended). Share card shows no name. |
+| `10_12` (managed account) | Everything, with no prices (Pro links read "Ask a grown-up" → SET-13) | Everything, no prices | As `13_17`, with consent given by the parent at account creation or in SET-17 (behind the SET-13 parent gate). Pet avatar and auto nickname only (R31 amended) |
 | Little learners (class 1–5, `u10`) | No Practice tab (R14). Practice happens inside lessons and HOME-06; no PRC or MOCK screen is reachable | Hidden. Class 1–5 profiles have no blueprints | None. Parents see progress in SET-14 (Phase 3) |
 
 - No behavioural tracking beyond what learning needs (PRD §16.4). Practice events carry only ids, counts, durations and enums. No free text, ever: rough-work notes, typed scratch text and the "report a problem" form never reach analytics.
-- Under-18s on any public list (PRC-12, MOCK-24) are shown by pet name and pet avatar only (R31). The API resolves the name before it reaches the client, so the Leaderboard row component never receives a minor's real name. Pet names are typed by students, so they pass the same moderation as SOC usernames before they appear publicly (§12.1).
+- Under-18s on any public list (PRC-12, MOCK-24) are shown only by the pet avatar and an auto-generated nickname from the fixed word list (R31 amended), and only after guardian consent. The API resolves the name before it reaches the client, so the Leaderboard row component never receives a minor's real name or typed pet name. Friends added by invite link or QR see the pet name (Phase 2, Friends tab).
 
 ### 4.4 Per-exam apps and the all-exams app
 
@@ -324,9 +324,9 @@ sequenceDiagram
 - **One attempt.** Leaving after Start counts as attempted. Coming back shows the question again with the clock still running from the server start.
 - **Rank.** Correct answers first, then faster time, then earlier submit. A rank and "You beat {pct}% of players" appear only when today's players for that exam reach `{daily.min_players_for_rank}` (owner flag). Below that: "{count} players so far. Ranks appear at {min_players} players."
 - **Streak tie-in.** Playing the challenge qualifies a streak day (R23, extending R1), whether the answer is right or wrong. It also awards XP toward the daily goal ring (`game.xp_ledger.source = 'challenge'`), which is separate from the streak. PRC-12 shows the streak with the Phosphor `Plant` (fill) icon in `streak` gold (R28) and "Your plant got its water today.", plus the goal ring line. `learn.activity_days` needs `challenge` as a qualifying source (§12.3).
-- **Leaderboard identity.** Adults show their display name. Under-18s show only pet name and pet avatar (R31), and only with guardian consent; without it their row is private to them. Guests see a private "you would be #n" line.
+- **Leaderboard identity.** Adults show their display name. Under-18s show only the pet avatar and an auto-generated nickname (R31 amended), and only with guardian consent; without it their row is private to them. Guests see a private "you would be #n" line.
 - **Tutor.** Hidden from PRC-11 open until submit. After submit, PRC-12 → PRC-05 offers [Ask why].
-- **Notifications.** There is no separate daily-challenge push (R34 fixed daily volume). NTF-01's rotating daily reminder templates may mention the challenge (requested, TODO(NTF)).
+- **Notifications.** There is no separate daily-challenge push (R34 fixed daily volume). NTF-01's `challenge_ready` covers it, folded into the daily reminder for minors (me-money flow §6.3).
 - **Share card.** PRC-13 renders a card on the device from UI components (not an Agnes image with text): exam, date, a correct or wrong icon, time, rank band when available, streak count, and the pet. It contains **no free text**, no name for minors, no question text (so it can't leak the answer before the day ends) and no link that identifies the user. The OS share sheet sends it. We log only `daily_challenge_shared` with the target category when the OS reports it.
 
 ### 5.6 Analytics dashboard (PRC-14, PRC-15)
@@ -600,7 +600,7 @@ flowchart LR
 - A live mock has a window (`window_start`, `window_end`). A student who starts by `window_end - duration` gets the full duration. Starting later gets a deadline capped at `window_end`, and MOCK-03 says so before they start ("You'll have {remaining} min. The window closes at {time}.").
 - Only attempts started inside the window are ranked. After the window the mock becomes a normal full mock with its leaderboard frozen.
 - Registration is a row in a new `learn.mock_registrations` table (§12.3). It enables the reminder (NTF-01 `mock_reminder`) and the room. Unregistered Pro users can still join while the window is open.
-- The leaderboard (MOCK-24) follows R31: adults by display name, under-18s by pet name and pet avatar only, with consent.
+- The leaderboard (MOCK-24) follows R31: adults by display name, under-18s by the pet avatar and an auto-generated nickname only, with consent (R31 amended).
 - Load: autosave and submit are the hot paths (k6 tests, TRD §16). The server fans out the start signal and clock over Supabase Realtime channel `mock:{id}` (DB_SCHEMA §12), and the client never depends on Realtime to run: if the channel drops, the runner continues on its local monotonic clock and the last offset.
 
 ---
@@ -738,16 +738,16 @@ All names are snake_case, carry no free text and no personal data, and are added
 | UX_FLOW §4.10 "Score ring, percentile and rank" | Implies they always show | Percentile and rank only above the threshold (§6.10) |
 | DESIGN.md §2.4 / `tokens.json` `mockPalette` | No dark values, but DESIGN.md §9 allows dark mode in the runner if the student turns it on | Add `mockPalette.dark` (owner of DESIGN.md) |
 | APP_FLOW §3.5 "A crash or call interruption resumes the mock with the timer intact" | Ambiguous: does the timer keep running? | Defined by time policy (§6.3) |
-| PRD §7 streak qualifying list vs the daily challenge | The challenge isn't a qualifying activity | Settled by R23: it qualifies. PRD §7 and `learn.activity_days` need the extra source |
+| PRD §7 streak qualifying list vs the daily challenge | The challenge isn't a qualifying activity | Settled by R23: it qualifies. Resolved in consistency pass: PRD §7 and `learn.activity_days.qualified` include it |
 | PRD §6.1 "Daily challenge: one shared puzzle per exam per day" vs `game.daily_challenges.day` | Timezone of `day` not stated | Settled by R23: rolls at 00:00 IST; streak days stay on local midnight |
-| `docs/ux/learn.md` PYQ search results "beyond the free sample show a Pro chip" | R25: all PYQs are viewable within the daily question count; nothing is locked | Learn removes the Pro chip on PYQ results. A PYQ opened from search counts as one question (§5.4) |
-| `docs/ux/me-money.md` PAY-01 trigger `practice_limit` "31st question or a locked PYQ" | R25: no PYQ is locked | `practice_limit` fires only for the daily question count. A timed PYQ paper beyond the free one uses `mock_limit` |
-| NTF-01 catalogue (`docs/ux/me-money.md`) | No local "Your mock report is ready" notification, and no daily-challenge mention | TODO(NTF): add `mock_report_ready` as a local, transactional notification (outside the R34 reminder volume, never during the runner), and let rotating reminder templates mention the challenge |
-| AUTH-01 soft sheet reasons (`docs/ux/auth.md`) | No `leaderboard` reason for "Sign in to appear on the leaderboard" | TODO(AUTH): add reason `leaderboard`. Until then PRC-12 and MOCK-24 use `save_progress` |
-| R31 pet names on public leaderboards | Pet names are typed by students (onboarding buddy naming), so they are free text shown to others | Run pet names through the SOC username moderation (blocklist, report, reset to a default name) before they appear on PRC-12, MOCK-24 or leagues. Owner: onboarding and social agents |
+| `docs/ux/learn.md` PYQ search results "beyond the free sample show a Pro chip" | R25: all PYQs are viewable within the daily question count; nothing is locked | Learn removes the Pro chip on PYQ results. A PYQ opened from search counts as one question (§5.4). Resolved in consistency pass: `docs/ux/learn.md` HOME-05 shows no Pro chip |
+| `docs/ux/me-money.md` PAY-01 trigger `practice_limit` "31st question or a locked PYQ" | R25: no PYQ is locked | `practice_limit` fires only for the daily question count. A timed PYQ paper beyond the free one uses `mock_limit`. Resolved in consistency pass: PAY-01 no longer mentions a locked PYQ |
+| NTF-01 catalogue (`docs/ux/me-money.md`) | No local "Your mock report is ready" notification, and no daily-challenge mention | Resolved in consistency pass: NTF-01 has `report_ready` (local, exam alert, never during the runner) and `challenge_ready`, which is folded into the daily reminder for minors |
+| AUTH-01 soft sheet reasons (`docs/ux/auth.md`) | No `leaderboard` reason for "Sign in to appear on the leaderboard" | Resolved in consistency pass: AUTH-01 has reason `leaderboard` (a tap trigger, auth flow §4) |
+| R31 pet names on public leaderboards | Pet names are typed by students (onboarding buddy naming), so they are free text shown to others | Resolved by R31 (amended) and in consistency pass: public lists show the pet avatar and an auto-generated nickname, never the typed pet name. Pet names reach only friends added by link or QR |
 | Old u10 simplified Practice hub (draft v0.1) | R14: little learners have no Practice tab | Removed here. Class 1–5 practice lives inside lessons and HOME-06 (learn agent) |
-| `docs/ux/tutor-social.md`, `docs/ux/me-money.md` Hindi copy using तुम for all students | R3: आप everywhere except little-learner mode | Their owners fix it. Practice copy uses आप throughout and avoids gendered verb forms |
-| R25 free report list vs the A29 "time lost on wrong answers" lead tile | R25 lists score, section bars, solutions and the top Fix next as free; A29 asks the report to lead with three tiles | Treated as part of the free score block: one number, not the deeper time analysis. Owner to confirm (Q16) |
+| `docs/ux/tutor-social.md`, `docs/ux/me-money.md` Hindi copy using तुम for all students | R3: आप everywhere except little-learner mode | Their owners fix it. Practice copy uses आप throughout and avoids gendered verb forms. Resolved in consistency pass: both docs use आप |
+| R25 free report list vs the A29 "time lost on wrong answers" lead tile | R25 lists score, section bars, solutions and the top Fix next as free; A29 asks the report to lead with three tiles | Treated as part of the free score block: one number, not the deeper time analysis. Resolved by R43: the tile is free |
 | APP_FLOW §4 `smriti.app/mock/{mockId}` opens "Mock lobby" | A link names one mock, so the lobby is one tap too far | Open MOCK-02 Mock detail, with MOCK-01 behind it in the back stack |
 | APP_FLOW §4 deep links | No `smriti.app/pyq/{paperId}`, `smriti.app/challenge` or `smriti.app/practice` | Add them, opening PRC-10, PRC-11 and PRC-01 |
 | APP_FLOW §2 Practice inventory | Lists 11 screens; this area needs 44 (weak spots, filters, paper view, source sheet, share card, pre-flight, runner tools, section change, resume, time up, compare, leaderboard, history, custom builder) | Replace the Practice row with the PRC and MOCK index in `docs/ux/practice.md` |
@@ -804,11 +804,11 @@ All names are snake_case, carry no free text and no personal data, and are added
 | LES (learn agent) | Lesson complete offers "Practise this topic" (PRC-03). The lesson question card renderers are reused by PRC-04. |
 | MEM (memory agent) | PRC-14's calibration card links to MEM-25, and the "Sure but wrong" callouts to MEM-26. MEM-26 [Practise these] opens PRC-03 with `concepts[]`. MOCK-19 Fix next adds cards to the MEM-03 review queue. Confidence chips are Sure / 50:50 / Guess everywhere (R21). |
 | AI (tutor agent) | [Ask why] on PRC-05 and [Ask tutor] on MOCK-22 open AI-02 with `context_ref = question:{id}`. The tutor never opens inside the runner, on PRC-11 before submit, or on PRC-04 before Check. `start_practice` opens PRC-03 with `concepts[]`. AI-19 "Similar questions" opens PRC-03 with `question_ids[]`. "Snap a doubt" on PRC-01 opens AI-16 or AI-07. |
-| SOC (social agent) | Friends scope on PRC-12 and MOCK-24 leaderboards (Phase 2, SOC-04, SOC-07). "Challenge a friend" from MOCK-19 opens SOC-15. Pet-name moderation for leaderboards (§12.1). |
+| SOC (social agent) | Friends scope on PRC-12 and MOCK-24 leaderboards (Phase 2, SOC-04, SOC-07). "Challenge a friend" from MOCK-19 opens SOC-15. Auto nicknames for minors on public lists (R31 amended). |
 | ME / SET (me+money agent) | "Report a problem" on questions uses SET-24 report content with `question_id`. SET-14 parent dashboard shows practice and mock summaries for children (Phase 3). ME-21 manages pinned practice downloads. SET-07 "Dark mode in mock tests" switches the runner to dark. |
 | PAY (me+money agent) | Paywall `trigger` values listed in §10: `practice_limit` covers the daily question count only (no locked PYQs, R25); timed PYQ papers use `mock_limit`. Return to the exact question or mock after purchase. Under-13 purchases only through SET-13. |
-| NTF (me+money agent) | TODO(NTF): `mock_report_ready` local notification after an offline submit; reminder templates that mention the daily challenge (no separate challenge push, R34). Live mocks use `mock_reminder`. No push, banner (NTF-04) or toast (NTF-05) while the runner is open (R24). |
-| AUTH (auth agent) | TODO(AUTH): a `leaderboard` reason on AUTH-01 for the inline sign-in link on PRC-12 and MOCK-24. Guardian consent (`social` scope, AUTH-18 to AUTH-23) gates minors' leaderboard visibility. |
+| NTF (me+money agent) | Done: `report_ready` local notification after an offline submit; `challenge_ready`, folded into the reminder for minors (R34). Live mocks use `mock_reminder`. No push, banner (NTF-04) or toast (NTF-05) while the runner is open (R24). |
+| AUTH (auth agent) | Done: the `leaderboard` reason on AUTH-01 for the inline sign-in link on PRC-12 and MOCK-24. Guardian consent (`social` scope, AUTH-18 to AUTH-23) gates minors' leaderboard visibility. |
 
 ---
 
@@ -822,7 +822,7 @@ All names are snake_case, carry no free text and no personal data, and are added
 | Q2 | What is "a sample of PYQs" for free users? | Every PYQ viewable within the 30-a-day question count, plus one free PYQ paper per exam as a timed mock | R25 |
 | Q4 | Is the analytics dashboard free? | Yes, and the MEM-25 metacognitive dashboard too. Deeper mock report sections are Pro | R25, R19 |
 | Q5 | Which report sections are free? | Score, section and subject bars, solutions and the top "Fix next" item (plus the three A29 lead tiles, see Q16). Deeper analysis is Pro | R25 |
-| Q6 | Inline "Sign in to..." links in Practice? | Yes, as links that open AUTH-01, never as pop-up sheets. Soft-wall frequency rules apply | R29, AUTH doc (`save_progress`; `leaderboard` reason TODO(AUTH)) |
+| Q6 | Inline "Sign in to..." links in Practice? | Yes, as links that open AUTH-01, never as pop-up sheets. Soft-wall frequency rules apply | R29, AUTH doc (`leaderboard` reason) |
 | Q7 | Does the daily challenge qualify a streak day? | Yes | R23 |
 | Q8 | Daily challenge day boundary? | 00:00 IST for the challenge; streak days stay on local midnight | R23 |
 | Q11 | Re-attempts, and do they count for rank? | Allowed for non-live mocks; only first attempts count for rank and percentile | R26, coordinator |
@@ -838,7 +838,7 @@ All names are snake_case, carry no free text and no personal data, and are added
 | Q12 | Do live mocks need a fixed start time, or a window? | A window, with a capped deadline for late starters (§6.11). Phase 3. |
 | Q14 | Threshold values for every `{...}` flag in this document | Owner sets them before launch from beta data; the app ships none. |
 | Q15 | Does a timed chapter mock (MOCK, `kind = chapter`) use the weekly free sectional mock? | Yes. The untimed LRN-06 chapter test already counts toward the daily questions, so the timed version should count as a mock, not as both. |
-| Q16 | Is "time lost on wrong answers" free, as one of the three A29 lead tiles? | Yes. It is one number that explains the score; the per-question time strip and time buckets stay Pro. |
+| Q16 | Is "time lost on wrong answers" free, as one of the three A29 lead tiles? | Closed by R43: yes. The per-question time strip and time buckets stay Pro. |
 
 ---
 
@@ -852,7 +852,7 @@ Rulings applied: R1, R3, R8, R14, R15, R19, R21 to R26, R28, R29, R31, R33, R34.
 - §3: the free limit sheet hangs off drill setup, not the runner.
 - §4.1: free tier settled per R25. Chapter tests count toward the daily questions. Sessions are sized up front (X1). PRC-17 and PAY-01 open only on a tap (X8). PAY trigger names used. Pinned downloads are Pro (`offline_download`). Under-13s see no prices.
 - §4.2: inline sign-in links open AUTH-01 (`save_progress`, `leaderboard` requested).
-- §4.3: R31 pet name and avatar for minors on leaderboards. R14: little learners have no Practice tab, and the u10 hub was removed.
+- §4.3: R31 identity for minors on leaderboards (now the auto nickname and pet avatar, R31 amended). R14: little learners have no Practice tab, and the u10 hub was removed.
 - §5.1: resume card shows the other device; "Snap a doubt" row; no upsell card.
 - §5.3: input contract (`concepts[]`, `topic_id`, `chapter_id`, chapter-test mode, `question_ids[]`). The diagram has no mid-session cap. Language toggle always allowed in practice (A28). Tutor after Check. The summary uses the daily goal ring, not the plant (R1).
 - §5.4: R25 free PYQs. Search opens a PYQ at its question. Pinned downloads are Pro.
@@ -877,7 +877,7 @@ Rulings applied: R1, R3, R8, R14, R15, R19, R21 to R26, R28, R29, R31, R33, R34.
 - PRC-06: daily goal ring line instead of the plant (R1), chapter-test variant.
 - PRC-07, PRC-09, PRC-10: R25 free PYQs, `mock_limit` on timed papers, pinned downloads are Pro, ENT-06 entry.
 - PRC-11: streak and 00:00 IST rules, tutor hidden, NTF-01 entry, u10 state removed.
-- PRC-12: `Plant` streak line (R23, R28), R31 identity, [Ask a parent] / [Ask a grown-up], Friends tab is Phase 2, AUTH reason TODO.
+- PRC-12: `Plant` streak line (R23, R28), R31 identity, [Ask a parent] / [Ask a grown-up], Friends tab is Phase 2, AUTH reason `leaderboard`.
 - PRC-13: `Plant` icon.
 - PRC-14: free, ME-01 entry, SET-14 for parents.
 - PRC-17: opens only on a tap, free alternative first, [Not now], under-13 variant, PAY triggers.
@@ -890,7 +890,7 @@ Rulings applied: R1, R3, R8, R14, R15, R19, R21 to R26, R28, R29, R31, R33, R34.
 - MOCK-07, MOCK-08: toggle per `language_switch` (A28), profile-driven legend, takeover state.
 - MOCK-09, MOCK-16: states and columns from the interface profile.
 - MOCK-14, MOCK-15, MOCK-25: device copy and sync copy (A30).
-- MOCK-18: report-ready notification marked TODO(NTF).
+- MOCK-18: report-ready local notification (`report_ready`).
 - MOCK-19: three lead tiles (A29), first-attempt rule, streak line, top 10%, "Challenge a friend", inline locks with `analytics_lock`.
 - MOCK-20, MOCK-21, MOCK-23: inline Pro locks, MEM-26 link, top 10% scope.
 - MOCK-22: [Ask tutor] with `context_ref`, "Learn this topic".

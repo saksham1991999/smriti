@@ -239,7 +239,7 @@ Each step writes its answer to the local onboarding state immediately (MMKV `onb
 | Per-exam app (Goal skipped) | Unknown | ONB-04 birth year |
 | ONB-04 "Prefer not to say" | Treated as `13_17` (minor defaults) | None |
 
-- The class-to-band mapping is a conservative default that errs young. A class 12 student who is 18 can correct it once from Settings (SET-02 Account, an "Age" row that re-runs the ONB-04 control, logged as `self_declared`; me-money owns the row, TODO(SET) if it isn't there yet).
+- The class-to-band mapping is a conservative default that errs young. A class 12 student who is 18 can correct it once from Settings (SET-02 Account, an "Age" row that re-runs the ONB-04 control, logged as `self_declared`; the row is in `docs/ux/me-money.md` SET-02).
 - **Why a birth year, not yes/no or a full date of birth.** A neutral question (no default, no hint of the "right" answer) is the accepted way to screen age without inviting a false tap; a full date of birth is more data than needed. The year is ambiguous only in the year the student turns 18, so ONB-04 asks the month only then, and an unanswered month is treated as the younger option. AUTH-03 uses the same control when sign-in needs an age.
 - **Under 10 from the birth year** in the all-exams app: ONB-04 offers the kids' version (opens ONB-03 at class 1–5, Phase 3). In Phase 1, or if declined, `u10` defaults apply without the little learner Home.
 - **Why not folded into ONB-02.** The Goal grid is up to 6 big cards in Phase 1. A year field there makes it scroll on a 360 × 640 phone and puts two questions on one screen. A separate step costs 4 s for those who see it and nothing for those who don't.
@@ -248,7 +248,7 @@ Each step writes its answer to the local onboarding state immediately (MMKV `onb
 | Band | Defaults from the first event |
 |---|---|
 | `u10` | Little learner mode if class 1–5 (§6.3). Pet moods limited to happy, excited, curious, sleepy (DESIGN.md §6.3). No prices (R14, R15). Learning-events-only analytics (learn doc §9). |
-| `10_12`, `13_17`, unknown | No social until guardian consent (AUTH-18 to AUTH-23, or SET-17 for managed under-13s). On leaderboards and duels they appear only as pet name and pet avatar (R31). No real-money gem packs. Quiet hours and caps per the me-money table (13–17: 21:00–07:00; under 13: 20:00–08:00; school hours on). Only the reminder time they picked, no smart timing (R34). Reduced analytics allowlist (§9). |
+| `10_12`, `13_17`, unknown | No social until guardian consent (AUTH-18 to AUTH-23, or SET-17 for managed under-13s). On leaderboards, leagues, duels and community content they appear only after guardian consent, as the pet avatar and an auto-generated nickname, never a typed name (R31 amended). No real-money gem packs. Quiet hours and caps per the me-money table (13–17: 21:00–07:00; under 13: 20:00–08:00; school hours on). Only the reminder time they picked, no smart timing (R34). Reduced analytics allowlist (§9). |
 | `18p` | Adult defaults. |
 
 No ad IDs are collected for anyone, and the AD_ID permission / iOS tracking prompt is never requested.
@@ -272,10 +272,10 @@ The research reads DPDP s.9(1) as requiring verifiable parental consent before p
 
 **The student's path to saving it (gentle, never a wall):**
 
-1. From the first Home after onboarding, the save chip "Only on this phone" sits in the Me header (ME-01) and Home shows a quiet card at the soft login moments (3rd lesson, before streak day 3; AUTH-01 rules R29: once per trigger per 7 days, stop for 14 days after two "Later" taps).
+1. From the first Home after onboarding, the save chip "Only on this phone" sits in the Me header (ME-01) and Home shows a quiet card at the soft login moments (3rd lesson, streak day 2; AUTH-01 rules R29: once per trigger per 7 days, stop for 14 days after two "Later" taps).
 2. The card reads "Ask a parent to save your progress" and explains why: "Your progress is only on this phone. If the app is removed, it's gone."
 3. Tapping it, by age:
-   - **13–17:** AUTH-01 (the teen's own Google sign-in, so there's an account to save to; with the flag on, nothing is synced yet) → AUTH-18 Guardian consent: ask → AUTH-19 hand the phone, or AUTH-21 link or QR → AUTH-20 the guardian reviews and agrees (scope `account` at least) → AUTH-23 result.
+   - **13–17:** consent comes first (auth flow §6.10). AUTH-18 Guardian consent: ask creates the request from the device, with no account yet → AUTH-19 hand the phone, or AUTH-21 link or QR → AUTH-20 the guardian reviews and agrees (scope `account` at least) → AUTH-23 result, whose [Continue with Google] signs the teen in. The new account then claims the consent with the device-held secret. No teen account exists before the guardian agrees.
    - **Under 13, or little learner:** AUTH-24 Parent sign-in (the parent's own Google account, behind the parent gate SET-13), which adopts the guest as a managed child (auth flow §6.11).
 4. On "agreed", the outbox flushes for the first time and the server takes over; AUTH-06 shows "Saved". On "declined" or "expired", nothing is lost on the phone and the card comes back at the next soft moment.
 
@@ -653,15 +653,15 @@ Me-money's NTF-06 and NTF-07 use these ENT-08 events.
 | TRD §10 | "Met the daily goal" decides the streak | R1 |
 | TRD §3.2 seed pack | No onboarding entries per level, no read-aloud audio | Add (§6.6, §6.3) |
 | TRD §5.1 | No user exams, pet create, guest-safe profile writes | §8 |
-| DB_SCHEMA §3 | `daily_goal_minutes default 15`; only `age_band` | Default 10 (R6); `birth_ym`, `age_source` |
-| DB_SCHEMA §4.1 | No official exam dates | `schedule jsonb` |
-| DB_SCHEMA §15 | Local db named by `user_id` | Install-id keyed db |
-| me-money SET-10 and flow §6 | Daily goal shows "plant sizes from onboarding" | Watering cans (D10); SET-10 should reuse the same four images |
-| me-money NTF-02 | Entry "after the first completed lesson on web" duplicates ONB-15 | NTF-02 for SET-03 and unsupported browsers only |
-| me-money NTF-06, NTF-07 vs this doc | Both docs retired the streak sheet in favour of the other (this doc's first revision-1 draft retired ENT-08; me-money now says "see ENT-08") | Resolved: ENT-08 owns it, with me-money's requested rows and strings built in. Me-money's flow index line 32 should read "ENT-08 (NTF-06 and NTF-07 are its variants)" |
-| auth AUTH-01 / AUTH-02 trust line | "We only get your name and email from Google. We never call you or post anything." differs from R29's "We never call you or share your email." | Use R29's line everywhere; ONB-01's card already does |
-| me-money NTF-03 | References `ONB-xx(notification-ask)` | ONB-15 |
-| tutor-social vs memory-labs | `/deck/{code}` goes to SOC-21 (social) or MEM-08 (memory) | SOC-21 preview first, MEM-08 after "Add" (§6.10). Both agents to confirm |
+| DB_SCHEMA §3 | `daily_goal_minutes default 15`; only `age_band` | Default 10 (R6); `birth_ym`, `age_source`. Resolved in consistency pass: DB_SCHEMA §3 has all three |
+| DB_SCHEMA §4.1 | No official exam dates | `schedule jsonb`. Resolved in consistency pass: `content.exam_profiles.schedule` added |
+| DB_SCHEMA §15 | Local db named by `user_id` | Install-id keyed db. Resolved in consistency pass: DB_SCHEMA §15 starts in `smriti-local.db` and renames on the first session |
+| me-money SET-10 and flow §6 | Daily goal shows "plant sizes from onboarding" | Watering cans (D10); SET-10 should reuse the same four images. Resolved in consistency pass: SET-10 uses the four watering cans |
+| me-money NTF-02 | Entry "after the first completed lesson on web" duplicates ONB-15 | NTF-02 for SET-03 and unsupported browsers only. Resolved in consistency pass: NTF-02's entry list says so |
+| me-money NTF-06, NTF-07 vs this doc | Both docs retired the streak sheet in favour of the other (this doc's first revision-1 draft retired ENT-08; me-money now says "see ENT-08") | Resolved: ENT-08 owns it, with me-money's requested rows and strings built in. Resolved in consistency pass: me-money's index now says NTF-06 and NTF-07 are ENT-08's triggers (R41) |
+| auth AUTH-01 / AUTH-02 trust line | "We only get your name and email from Google. We never call you or post anything." differs from R29's "We never call you or share your email." | Use R29's line everywhere; ONB-01's card already does. Resolved in consistency pass: every sign-in surface uses the R40 line in EN and HI |
+| me-money NTF-03 | Referenced a placeholder for the notification ask | ONB-15. Resolved in consistency pass: NTF-03 names ONB-15 |
+| tutor-social vs memory-labs | `/deck/{code}` goes to SOC-21 (social) or MEM-08 (memory) | SOC-21 preview first, MEM-08 after "Add" (§6.10). Resolved by R41 |
 | Hindi vocabulary | Other docs use पाठ, प्रगति, कक्षा, परीक्षा; this doc now uses लेसन, प्रोग्रेस, क्लास, एग्ज़ाम (R3, research A7) | `packages/i18n` glossary to pick one set for all docs |
 
 ## 11. Changes other areas need
@@ -686,7 +686,7 @@ Me-money's NTF-06 and NTF-07 use these ENT-08 events.
 | Q3 | Does one lesson keep the streak? | Decided by R1: yes. |
 | Q4 | Guest cleanup at 90 days | Handled by the auth agent's restore-snapshot upload (auth flow §6.9). No change needed here. |
 | Q5 | iOS provisional notifications for "Not now" students? | No for launch; revisit with data. |
-| Q6 | Several learners on one phone | Handled by AUTH-25 and AUTH-26 (auth agent), Phase 3. |
+| Q6 | Several learners on one phone | Handled by AUTH-25 and AUTH-26 (auth agent). The account part is Phase 1 (TRD §18 D9, auth Q2); only the Parent mode dashboard is Phase 3. |
 | Q7 | When is the invite reward credited? | Me-money owns it (PAY-09). Recommend: after the invitee signs in and finishes one lesson. |
 | Q8 | Earlier sign-in prompt for Safari web guests? | Yes, a soft sheet after the first lesson on Safari only (auth agent). |
 | Q9 | Offline study when a forced update is pending and the phone is offline? | Yes for downloaded lessons and reviews with sync paused, if the API accepts the old event schema for one version. |

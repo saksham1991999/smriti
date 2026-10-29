@@ -452,7 +452,7 @@ Full-screen mode (server-only action, or nothing on the device):
 4. Headline in `display`, centred, at most 2 lines.
 5. Two stacked Buttons, 56 tall, full width, 12 px apart: "Start in English" and "हिन्दी में शुरू करें". The one matching the device locale is primary (filled, glow); the other is secondary (surface with `line` border). Each always shows its own language and script.
 6. Ghost Button (40): "I already have an account" (per-exam: "Already use Smriti? Sign in").
-7. Legal line in `caption`, `inkMuted`, with two inline links: Terms, Privacy.
+7. Legal line in `caption`, `inkMuted`, with two inline links: Terms, Privacy. It always stays here, under the existing-account link, also while the returning-account card shows. The card carries only the trust line, never the legal line.
 8. Phone-size web only: a dismissible "Get the app" Chip at the very top.
 
 **Copy:**
@@ -494,9 +494,9 @@ Full-screen mode (server-only action, or nothing on the device):
 **Entry → exits:** ONB-01, or HOME-04 [Add an exam] in `add` mode → ONB-03 (School tapped), ONB-04, ONB-06, ONB-07, ONB-10; `add` mode → ONB-06 `add` → HOME-04; back → ONB-01.
 **Layout (top to bottom):**
 1. Top bar with progress (shared anatomy; n segments).
-2. Small illustration (160 px tall): both pets peek over a stack of books (no pet is chosen yet).
+2. Small illustration (160 px tall), tablet and web only: both pets peek over a stack of books (no pet is chosen yet). Phones drop this header art so all six cards and [Continue] fit on a 360 × 640 screen; the pets still appear in the pet line (item 7).
 3. Headline and helper.
-4. A 2-column grid of choice cards, each 156 × 132 minimum, radius 20: a `sunny-object` illustration (72 px) top-left, the exam name in `heading`, a `caption` line from the catalogue (for example the exam's full name). The cards are the goals live in `/v1/config` for this variant, in config order (R7; Phase 1: JEE, NEET, UPSC Prelims), then "School" and "Just curious" in the all-exams app. No "Coming soon" cards.
+4. A 2-column grid of choice cards, radius 20, each at least 156 × 132 on tablet and web and at least 98 px tall on phones (8 px gaps): a `sunny-object` illustration (72 px; 46 px on phones) top-left, the exam name in `heading`, a `caption` line from the catalogue (for example the exam's full name). The cards are the goals live in `/v1/config` for this variant, in config order (R7; Phase 1: JEE, NEET, UPSC Prelims), then "School" and "Just curious" in the all-exams app. No "Coming soon" cards.
 5. On the first selected card, a "Main" status Chip (`primaryTint` with `primary` text, `Star` icon). Other selected cards show only the check badge.
 6. "School" shows "Class {n}" in its caption once a class is picked.
 7. Pet line (shared anatomy): before the first tap it says "{n} quick questions"; after each tap it reacts to the card's catalogue `category`.

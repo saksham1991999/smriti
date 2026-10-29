@@ -88,7 +88,7 @@ The floating tutor button (AI-01) makes the tutor reachable from every study scr
 | ME-01 tab root, pet room, plant garden | Friends tab and every SOC screen: they are not study screens |
 | | SET settings, parent mode, privacy, delete account; ME shop and checkout flows |
 | | Any screen while the software keyboard is open (the button would sit on the keyboard) |
-| | Little learners (class 1–5, Phase 3): hidden by default (R14). A parent can turn on a "preset questions only" tutor in SET-14 (TODO(ME): the toggle does not exist yet); then it shows on HOME-06 and LES-01 only and opens the little-learner variant of AI-02 |
+| | Little learners (class 1–5, Phase 3): hidden by default (R14). A parent can turn on a "preset questions only" tutor in SET-14 ("Tutor button for {child}"); then it shows on HOME-06 and LES-01 only and opens the little-learner variant of AI-02 |
 | | When the student turned the button off in SET-10 ("Show the tutor button"). The tutor then opens from the top bar and card menus only |
 
 Rules:
@@ -446,7 +446,7 @@ All events go through the typed catalogue in `packages/analytics`. No free text,
 | Q-A3 | Do voice and photo uploads for under-18s need guardian consent? | **Closed:** yes, through the `voice` and `uploads` scopes (auth flow §6.10). Voice off for little learners. Legal review confirms. |
 | Q-A4 | How long are doubt photos kept? | 30 days, then deleted. Saved solutions keep only the recognised text. |
 | Q-A5 | What happens after a crisis flag? | A named safety lead reviews queued crisis flags within a set time. No automatic guardian contact. Legal review of the helpline list and copy before launch. |
-| Q-A6 | Should the tutor be available to little learners at all? | **Closed by R14:** no tutor button by default. A parent can turn on a "preset questions only" tutor in SET-14 (TODO(ME)); it is then chips only, read aloud, no free text. Phase 3. |
+| Q-A6 | Should the tutor be available to little learners at all? | **Closed by R14:** no tutor button by default. A parent can turn on a "preset questions only" tutor in SET-14; it is then chips only, read aloud, no free text. Phase 3. |
 | Q-A10 | Does role play count against the free tutor limit? | **Closed in revision 1:** no. It has its own small cap (`free.roleplay_chats_per_day`, `roleplay_max_turns`), as the coordinator preferred. Learn's open question on this is answered the same way. |
 | Q-A7 | Does Feynman mode feed mastery? | Yes, as a weak signal: a "clear" band on accuracy and completeness adds a mastery event. It never lowers mastery. |
 | Q-A8 | Generated stories for free users: one tutor message each, or a separate daily cap? | One tutor message each, with images only from the index for free users. |
@@ -461,11 +461,11 @@ All events go through the typed catalogue in `packages/analytics`. No free text,
 Social features turn studying into a shared habit (PRD §2.1 goal 2, §8) while keeping children safe (PRD §16.4, DPDP). The Friends tab holds: friends and requests, the weekly league, leaderboards, Duos (friend streaks, R32), squads, challenge duels, shared decks, preset cheers and nudges, and report and block. All of Part B is Phase 2 (R8); squad group mocks are Phase 3.
 
 **How students appear to each other (R31, amended).** Minors (under 18) appear nowhere social before guardian consent (AGENTS rule 8). After consent:
-- **Public surfaces** (leagues, random duels, the All India, school, city and squad boards, the PRC-12 challenge leaderboard, community content): the pet avatar plus an auto-generated nickname from a fixed word list, for example "Sunny Sprout 27" / "धूप अंकुर 27" (`app.profiles.public_nickname`, gap G-S12). Never the typed pet name and never a real name, because typed names can carry personal data.
+- **Public surfaces** (leagues, random duels, the All India, school, city and squad boards, the PRC-12 challenge leaderboard, community content): the pet avatar plus an auto-generated nickname from a fixed word list, for example "Sunny Sprout 27" / "धूप अंकुर 27" (rendered as `public_nickname` from `app.profiles.nickname_word_ids` and `nickname_number`, gap G-S12). Never the typed pet name and never a real name, because typed names can carry personal data.
 - **Friends added by invite link or QR** (real-world contact): the pet avatar and the pet name. Friends added any other way (a teen found by exact username search) see the nickname.
 - A minor's `@handle` is used only for exact search and is never shown on public surfaces. Usernames are generated from safe word lists, never from a real name.
 - **Adults** appear by display name.
-- A minor's real name, first name or initial is never shown to another student. This replaces PRD §16.4's "first name and initial" rule (recorded as a conflict for the PRD owner).
+- A minor's real name, first name or initial is never shown to another student. PRD §16.4 now says the same (R31 amended).
 - The UX doc writes this as `{name}`: the display name for adults; for minors the pet name or the nickname, by the rule above.
 - The nickname word list lives in config (EN and HI pairs plus a number), is checked by a person before use, and is fixed per account (it changes only if a moderator resets it).
 
@@ -549,7 +549,7 @@ flowchart TD
 | Username search | Adults search anyone discoverable. Teens (13 to 17) search adults and teens who are discoverable. Under-13s can't search | Exact handle match only (case-insensitive), no partial results, no suggestions, no browsing. Finds only profiles with "Others can find me by username" on. Default: on for adults, **off for minors**. Sends a request that the other person must accept. |
 | From a league row, duel result or squad | Adults only, and only to other adults | "Add friend" on the mini profile. Minors don't see this button, and adults don't see it on minors' rows. |
 
-**Adult and minor friendships.** An adult cannot find a minor by search (minors are not discoverable by default, and an adult never sees an add button on a minor). An adult and a minor become friends only through an invite link or QR, which needs real-world contact. The minor sees "Only add people you know in real life" on every confirm. Parent mode (SET-14) lists the minor's friends and can remove any of them (TODO(ME): SET-14 has no friends list yet).
+**Adult and minor friendships.** An adult cannot find a minor by search (minors are not discoverable by default, and an adult never sees an add button on a minor). An adult and a minor become friends only through an invite link or QR, which needs real-world contact. The minor sees "Only add people you know in real life" on every confirm. Parent mode (SET-14) lists the minor's friends and can remove any of them (SET-14 "{child}'s friends" row).
 
 **Requests.** Stored as `social.friendships` with `status = 'pending'` and `requested_by`. Requests appear in SOC-06 inbox. Accept, Decline (silent: the sender is not told) or Block. Pending requests expire after `friend_request_ttl_days` (flag). A cap on outgoing requests per day (`friend_requests_per_day`, flag) limits spam.
 
@@ -598,8 +598,8 @@ SOC-10 has scope tabs. All boards rank weekly XP for the current exam group, exc
 |---|---|---|---|
 | Friends | The student and accepted friends | Gate | On |
 | Squad | Members of each squad (a picker if the student is in several) | Squad membership | On if in a squad |
-| School or coaching | Students who picked the same school or coaching centre | School picked from a list in profile (gap G-S4: no column and no directory yet; TODO(ME) for the picker in ME-02) | Off until picked |
-| City | Students who picked the same city | City picked from a list in profile (gap G-S4) | Off until picked |
+| School or coaching | Students who picked the same school or coaching centre | School picked from a list in profile (`app.profiles.institution_id` from the `app.institutions` directory, picked in ME-02; the directory source is Q-B12) | Off until picked |
+| City | Students who picked the same city | City picked from a list in profile (`app.profiles.city`, picked in ME-02) | Off until picked |
 | All India | Everyone in the exam group who has not opted out | Gate | On |
 
 - Minors appear with the pet avatar and their nickname on every board; on the Friends board, friends added by invite or QR see the pet name (R31, amended). Adults appear by display name.
@@ -630,7 +630,7 @@ stateDiagram-v2
 - **Invites:** from SOC-07 [Start a Duo], SOC-12 [Add a Duo], or SOC-01's Duos row. Several friends can be invited at once, up to the free slots; each invite is a separate pair. `social.duos.status`: `invited` → `active`. Invites expire after `duo_invite_ttl_days` (flag). NTF-01 needs a new `duo_invite` template (me+money).
 - **The streak day (R1, R23):** a Duo day counts when **both** partners have a qualifying streak day: one lesson, or 10 reviews, or one mock section, or the daily challenge. The daily goal (minutes) does not decide it. Each partner's day uses their own local midnight (R23), tracked in `last_both_active`. If either partner misses, the Duo streak resets to 0 unless that partner's equipped streak freeze or rest day covered the day (R28), which covers their Duos too. Our outages never break a Duo (the incident freeze applies, R28). The Duo streak shows next to each partner's own streak, never instead of it, with the same Phosphor `Plant` icon (R28).
 - **Screens:** SOC-12 lists every Duo with today's status for both. SOC-25 is one Duo: the streak, best streak, today's tiles, this week's dots, and actions.
-- **Nudges (A34):** when the partner hasn't qualified today, the student can send a preset nudge (SOC-22 nudge set, `social.duo_nudges`), up to `duo_nudges_per_day` per pair. NTF-01 `duo_nudge` delivers it, subject to quiet hours (TRD §12) and, for minors, R34 (§B11). The current `duo_nudge` template text says "met today's goal"; it must say "studied today" to match R1 (recorded as a conflict for me-money).
+- **Nudges (A34):** when the partner hasn't qualified today, the student can send a preset nudge (SOC-22 nudge set, `social.nudges` with `kind = 'nudge'`), up to `duo_nudges_per_day` per pair. NTF-01 `duo_nudge` delivers it, subject to quiet hours (TRD §12) and, for minors, R34 (§B11). The current `duo_nudge` template text says "met today's goal"; it must say "studied today" to match R1 (recorded as a conflict for me-money).
 - **Ending:** either partner can end a Duo from SOC-25. The other partner's card shows "This Duo has ended" with no blame. `status = 'ended'`. Removing or blocking the friend, or a withdrawn consent, ends it too. A student's own streak is never affected.
 - **Data:** `social.duos` (one row per pair). The best streak per pair is kept for SOC-25 (gap G-S5 adds `best_streak`).
 
@@ -639,7 +639,7 @@ stateDiagram-v2
 - Adults and teens only (not under-13s). Small groups of up to `squad_max_members` (flag, DB default 20). One student can be in up to `squads_per_user` (flag, recommended 3).
 - **Create** (SOC-13): pick a name from the name picker (two-part names like "{adjective} {animal}" in English and Hindi, from a curated list; no free text), pick a crest (from a set of `badge`-preset crests), optionally lock it to an exam. Creating gives an invite code and link (`social.squads.invite_code`).
 - **Join:** by link, QR or code. Minors can join only by link or QR (real-world contact), and only after consent.
-- **Squad home** (SOC-14): members with today's status (minors as `{name}`, R31), the weekly squad leaderboard, the squad quest, and "Group mock" (Phase 3; TODO(PRACTICE): practice has no squad mock lobby yet).
+- **Squad home** (SOC-14): members with today's status (minors as the pet avatar and auto nickname, R31 amended), the weekly squad leaderboard, the squad quest, and "Group mock" (Phase 3; TODO(PRACTICE): practice has no squad mock lobby yet).
 - **Squad quest:** a weekly cooperative target from gamification config (for example a squad XP total or lesson count). Progress is the sum of members' qualifying events. Everyone who contributed gets the reward, announced by NTF-01 `squad_quest_done` (new template). Gap G-S6: no table for squad quests.
 - **Roles:** owner and admins can remove members and regenerate the invite code. If the owner leaves, the longest-standing admin, or else member, becomes owner.
 - **No chat.** Members can send preset cheers to the squad ("Let's go, squad!").
@@ -695,7 +695,7 @@ sequenceDiagram
   end
   API->>RT: broadcast finished {scores, winner}
   API->>API: check answer times against duel_min_answer_ms, set flagged_fast
-  API->>API: credit XP (xp_ledger source duel; flagged duels kept out of league and board totals), write social.duels
+  API->>API: credit XP (xp_ledger source duel, flagged duels kept out of league and board totals), write social.duels
 ```
 
 1. **Setup** (SOC-15): pick a friend (online friends first, shown by a "Studying now" dot only if they allow it) or "Random opponent". Pick a subject. Questions come from the published question bank for that exam profile and subject: single-answer MCQs, `duel_question_count` of them (flag; PRD §8 describes 10), chosen at a level close to both players' mastery. Questions with a known image or long passage are excluded so the duel stays fast.
@@ -804,7 +804,7 @@ Ownership after revision 1: memory-labs owns sharing (MEM-11 share deck sheet) a
 | `POST /v1/decks/{id}/share`, `DELETE /v1/decks/{id}/share`, `GET /v1/decks/shared/{code}`, `POST /v1/decks/shared/{code}/copy` | Shared decks (memory-labs owns these with MEM-11 and MEM-08) |
 | `GET /v1/decks/shared?scope=&cursor=` (scope `friends` or `exam`), `PUT /v1/decks/shared/{code}/helpful` | SOC-21 list and helpful votes |
 
-**Push templates needed in NTF-01** (me+money owns the catalogue): `friend_accepted`, `duo_invite`, `duel_result`, `league_result` (stayed or demoted), `squad_quest_done`. The existing `duo_nudge` text must change from "met today's goal" to "studied today" (R1).
+**Push templates needed in NTF-01** (me+money owns the catalogue): `friend_accepted`, `duo_invite`, `duel_result`, `league_result` (stayed or demoted), `squad_quest_done`. The existing `duo_nudge` text had to change from "met today's goal" to a qualifying day (R1). All done in the me-money catalogue.
 
 ### B16. Analytics events (social)
 
@@ -854,8 +854,10 @@ No names, handles, typed text or other users' ids in props. The counterpart is r
 | Q-B6 | Referral reward condition. | Grant when the invitee signs in and completes their first lesson, capped per inviter per month (flag), one reward per invitee account. |
 | Q-B7 | Is there any free-text chat? | No, for anyone (§B2). Revisit only with a separate adult-only product decision and a moderation budget. |
 | Q-B8 | Group mocks for squads (PRD §8). | Phase 3. A squad picks a mock and a window; results compare inside the squad only. Needs a practice screen (TODO(PRACTICE)). |
-| Q-B9 | Does R34 ("for minors, only the reminder time they picked") cover friend-triggered pushes (cheers, nudges, duel challenges) for teens? | This doc applies it strictly: no social pushes to minors outside their reminder time; in-app banners still show. Coordinator to confirm, because it makes live friend duels with teens rarer. |
+| Q-B9 | Does R34 ("for minors, only the reminder time they picked") cover friend-triggered pushes (cheers, nudges, duel challenges) for teens? | **Closed by R45:** yes. For minors, friend-triggered pushes (duels, Duo nudges, cheers) wait for the minor's own reminder window; in-app banners still show. |
 | Q-B10 | What are the duel anti-abuse values? | Flags: `duel_min_answer_ms`, `duel_quit_limit`, `duel_quit_window_hours`, `duel_quit_cooldown_minutes`. Set from real answer-time data in the first weeks; no defaults are proposed here. |
+| Q-B11 | Who owns the fixed EN and HI word list for minors' auto nicknames (R31 amended), and who reviews it for unsafe combinations? | Open, needs the owner. Tutor-social owns the feature and ships the list as config (`app.profiles.nickname_word_ids`), but a named content owner and a safety review of every word pair in both languages must sign it off before Phase 2. This doc does not write the list. Carried from me-money's TODO(SOC). |
+| Q-B12 | Which public directory feeds the optional school and coaching picker (`app.institutions`)? | Open, needs the owner: the source, its licence and how often it is refreshed. |
 
 ---
 
@@ -863,27 +865,35 @@ No names, handles, typed text or other users' ids in props. The counterpart is r
 
 | ID | Gap | Where | Who |
 |---|---|---|---|
-| G-1 | `ai.tutor_sessions.mode` lacks `roleplay` (and `story` if stories are sessions) | DB_SCHEMA §9 | DB owner |
-| G-2 | No table for thumbs up/down and reason codes | DB_SCHEMA §9 | DB owner |
+| G-1 | `ai.tutor_sessions.mode` lacks `roleplay` (and `story` if stories are sessions) | DB_SCHEMA §9 | DB owner. Resolved in consistency pass: `roleplay` added to `ai.tutor_sessions.mode`. |
+| G-2 | No table for thumbs up/down and reason codes | DB_SCHEMA §9 | DB owner. Resolved in consistency pass: `ai.message_feedback` added. |
 | G-3 | Voice board needs a `show_on_board` tool; Rive pet files need a `talking` or `speaking` input and a `listen` trigger | TRD §9.2/§9.4, DESIGN §7.2 | TRD owner, anim-maker |
 | G-4 | SSE event types for the tutor stream are not defined | TRD §5, §9.2 | TRD owner |
-| G-5 | No storage for generated stories | DB_SCHEMA §9 | DB owner |
-| G-6 | No on-device cache tables for tutor history and the social overview | DB_SCHEMA §15 | DB owner |
+| G-5 | No storage for generated stories | DB_SCHEMA §9 | DB owner. Resolved in consistency pass: `ai.generated_stories` added. |
+| G-6 | No on-device cache tables for tutor history and the social overview | DB_SCHEMA §15 | DB owner. Resolved in consistency pass: local `tutor_history` and `social_cache` tables added (DB_SCHEMA §15). |
 | G-7 | Mobile runtime maths rendering is not chosen (bundles have pre-rendered KaTeX SVG, but tutor answers need live rendering on React Native) | TRD §3, §4.2 | TRD owner |
 | G-8 | `POST /v1/uploads/sign`, STT, TTS, feedback, history and generation status endpoints missing | TRD §5.1 | TRD owner |
-| G-S1 | Guardian consent stores a phone hash and `phone_otp` method; this round's decision is Google-based guardian consent. Scope must include `social`, `voice`, `uploads` | DB_SCHEMA §3 `app.guardian_consents`, TRD §6 | Auth agent |
-| G-S2 | No reactions or activity tables | DB_SCHEMA §7 | DB owner |
-| G-S3 | Discoverable and league opt-out settings not modelled | DB_SCHEMA §3 | DB owner |
-| G-S4 | School, coaching and city are in PRD §10.3 profiles but not in `app.profiles`; no directory | DB_SCHEMA §3 | DB owner |
-| G-S5 | The per-user Duo cap (`duo_max_partners`, default 5) is not enforced; no `best_streak` per pair | DB_SCHEMA §7 | DB owner |
-| G-S6 | No squad quest tables; no name-picker list | DB_SCHEMA §6/§7 | DB owner, game config |
-| G-S7 | Duels: no `abandoned` status, `abandoned_by`, `flagged_fast` or `mode`, no per-question answers | DB_SCHEMA §7 | DB owner |
-| G-S8 | `social.user_reports.reason` is free text | DB_SCHEMA §7 | DB owner |
-| G-S9 | Shared decks have no moderation status, listing flag or helpful votes | DB_SCHEMA §5.2 | DB owner, memory-labs |
-| G-S10 | Referral Pro week has no billing source | DB_SCHEMA §8 | Me+money agent |
+| G-S1 | Guardian consent stores a phone hash and `phone_otp` method; this round's decision is Google-based guardian consent. Scope must include `social`, `voice`, `uploads` | DB_SCHEMA §3 `app.guardian_consents`, TRD §6 | Auth agent. Resolved in consistency pass: `app.guardian_consents` is Google-based with `account`, `social`, `community`, `voice` and `uploads` scopes. |
+| G-S2 | No reactions or activity tables | DB_SCHEMA §7 | DB owner. Resolved in consistency pass: `social.activity_items` and `social.reactions` added. |
+| G-S3 | Discoverable and league opt-out settings not modelled | DB_SCHEMA §3 | DB owner. Resolved in consistency pass: `app.profiles.discoverable` and `league_opt_out` added. |
+| G-S4 | School, coaching and city are in PRD §10.3 profiles but not in `app.profiles`; no directory | DB_SCHEMA §3 | DB owner. Resolved in consistency pass: `app.institutions` plus `app.profiles.institution_id` and `city` added; the directory source is an owner question. |
+| G-S5 | The per-user Duo cap (`duo_max_partners`, default 5) is not enforced; no `best_streak` per pair | DB_SCHEMA §7 | DB owner. Resolved in consistency pass: `social.duos.best_streak` and a cap trigger on `social.duo_max_partners` added. |
+| G-S6 | No squad quest tables; no name-picker list | DB_SCHEMA §6/§7 | DB owner, game config. Resolved in consistency pass: `game.squad_quests` and `game.squad_quest_progress` added; names stay in config. |
+| G-S7 | Duels: no `abandoned` status, `abandoned_by`, `flagged_fast` or `mode`, no per-question answers | DB_SCHEMA §7 | DB owner. Resolved in consistency pass: `social.duels.mode`, `abandoned` status, `abandoned_by`, `flagged_fast` and `social.duel_answers` added; the cooldown counts quits. |
+| G-S8 | `social.user_reports.reason` is free text | DB_SCHEMA §7 | DB owner. Resolved in consistency pass: `social.user_reports.reason` is a code list, with deck reports. |
+| G-S9 | Shared decks have no moderation status, listing flag or helpful votes | DB_SCHEMA §5.2 | DB owner, memory-labs. Resolved in consistency pass: `learn.decks.share_status`, `listed_for_exam` and `learn.deck_helpful_votes` added. |
+| G-S10 | Referral Pro week has no billing source | DB_SCHEMA §8 | Me+money agent. Resolved in consistency pass: `billing.promo_grants` and source `promo` added. |
 | G-S11 | Deep links for squads and shared decks are missing | APP_FLOW §4 | Onboarding agent (ENT deep-link landing) |
-| G-S12 | No `public_nickname` column or nickname word list for minors (R31, amended) | DB_SCHEMA §3, config | DB owner, content owner for the word list |
+| G-S12 | No `public_nickname` column or nickname word list for minors (R31, amended) | DB_SCHEMA §3, config | DB owner, content owner for the word list. Resolved in consistency pass: `app.profiles.nickname_word_ids` and `nickname_number`; the word list owner is open (Q-B11). |
 
+
+Resolved in consistency pass:
+- The tutor button is hidden for little learners by default (R14); a parent turns on the preset-questions tutor in SET-14 ("Tutor button for {child}"), which now exists (A4).
+- Shared deck reports from SOC-21 and MEM-08 open SOC-23 (R39); AI answers, images, story pages, role-play replies and community mnemonics open SET-24 (`learn.content_reports.kind`).
+- SOC-03 has a minor variant with [Shuffle] for the username and the auto nickname (R31 amended, auth flow §13).
+- NTF-01 has `friend_accepted`, `duo_invite`, `duel_result`, `league_result` and `squad_quest_done`, and `duo_nudge` reads "{friend} counted today" (R1).
+- ME-01 has the "Your chats" row (AI-09) and ME-02 has the optional school and city fields.
+- Still open: the XP rules page linked from the league info sheet (SOC-24 entry, `TODO(ME)` in the UX doc), the squad group mock lobby (`TODO(PRACTICE)`, Phase 3) and the nickname word list owner (Q-B11).
 ---
 
 ## Changelog (revision 1)

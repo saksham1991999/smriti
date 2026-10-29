@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Draft v0.1, 28 Oct 2026 |
+| Status | Draft v0.2, 29 Oct 2026 (consistency pass) |
 | Owner | Saksham Mittal |
 | Working name | Smriti (स्मृति, "memory"). Final brand TBD. |
 | Visual style | Sunny Subjects: light, colour-coded subjects, big illustrated cards (see `DESIGN.md`). Dark mode based on Night Colour. |
@@ -70,7 +70,7 @@ Under-18 users are a large share of the audience, so child-safety and consent ru
 
 | Track | Exams | Phase |
 |---|---|---|
-| School | Class 1–12 (CBSE first; state boards and ICSE later) | 1 (classes 9–12), 2 (1–8) |
+| School | Class 1–12 (CBSE first; state boards and ICSE later) | 1 (classes 9–12), 3 (1–8) |
 | Engineering | JEE Main, JEE Advanced | 1 |
 | Medical | NEET UG | 1 |
 | Civil services | UPSC CSE Prelims (GS + CSAT), then Mains GS | 1 (Prelims), 3 (Mains) |
@@ -161,7 +161,7 @@ A lesson is a sequence of typed cards, defined in content bundles (see the TRD).
 ### 5.4 Memory system
 Memory is a core system, not an add-on.
 
-1. **Adaptive spaced repetition.** The FSRS algorithm models a forgetting curve for every card. Cards are graded Fail, Hard, Good or Easy, and the engine predicts what the student will forget and when. Every learned Concept creates cards, and the daily review queue mixes them with new learning. It runs fully offline on the device.
+1. **Adaptive spaced repetition.** The FSRS algorithm models a forgetting curve for every card. Cards are graded Again, Hard, Good or Easy, and the engine predicts what the student will forget and when. Every learned Concept creates cards, and the daily review queue mixes them with new learning. It runs fully offline on the device.
 2. **Retrieval practice first.** Lessons ask questions before explaining whenever it helps.
 3. **Mnemonics, rhymes and songs.** Popular existing ones (for example VIBGYOR, HOMES, "King Henry Died..." and Hindi equivalents) plus AI-generated ones.
 4. **AI mnemonic forge.** On any fact, "Make it stick" generates a custom story, acronym, memory-palace room, keyword image or rhyme, with an optional Agnes image. It is course-aware, so a UPSC student gets a different style from a JEE student. The student can save the result to their own cards. "Create a memory hook for Article 356" works as a free-text request too.
@@ -171,7 +171,7 @@ Memory is a core system, not an add-on.
 8. **Metacognitive dashboard.** On every answer the student taps Sure, 50:50 or Guess. A confidence heat map per topic and a calibration score (predicted versus actual performance) expose the "illusion of knowing".
 9. **Pomodoro and distributed practice.** Focus timer sessions (25/5 by default) and a nudge to spread short sessions across days instead of cramming. The pet "naps" during breaks.
 10. **Interleaved practice.** A session builder that mixes subjects once the basics are learned, such as Polity + Economy + Environment for UPSC or Physics + Maths for JEE.
-11. **Sleep review scheduling.** The app learns the student's usual bedtime from their usage pattern and offers the hardest 5 due cards about 20 minutes before it, for consolidation during sleep.
+11. **Sleep review scheduling.** For adults, the app learns the student's usual bedtime from their usage pattern and offers the hardest 5 due cards about 20 minutes before it, for consolidation during sleep. Minors never get an inferred bedtime (§16.4); a teen can pick a fixed bedtime review time instead.
 12. **Predictive weak-area alerts.** From the forgetting-curve model: "You'll forget the IPC sections in 2 days. 4 cards are due tonight."
 
 **Technique library.** Each technique has a short explainer card, a worked example for the student's exam, and a matching card type or tool where it fits:
@@ -222,7 +222,7 @@ Memory is a core system, not an add-on.
 - "Weak spot" drills that are generated from analytics.
 - Mocks generated from weak areas, using the spaced-repetition and mastery data.
 - Every solution has a Feynman-style explanation: plain language first, then the formal steps.
-- Daily challenge: one shared puzzle per exam per day, with a leaderboard.
+- Daily challenge: one shared puzzle per exam per day, with a leaderboard. It rolls over at 00:00 IST.
 
 ### 6.2 Mock tests
 - **Full mocks** that replicate the real exam from its blueprint: section timers, section lock or switch rules, question palette states (not visited, not answered, answered, marked for review, answered and marked), language toggle, on-screen calculator where allowed, and auto-submit at time-up.
@@ -232,7 +232,7 @@ Memory is a core system, not an add-on.
 - **Exam-day simulation**: an optional full-screen mode with distractions blocked and a countdown that matches the real reporting time.
 
 ### 6.3 Analytics
-- Score, rank, percentile and predicted rank (once enough data exists).
+- Score, rank and percentile, shown only above a sample threshold (flag) and for first attempts only. Predicted rank comes later, once enough real data exists; it is not in Phase 1.
 - **Time analysis**: time per question, ideal versus actual, too slow when correct, too fast when wrong, the order in which the student attempted questions, and time lost on skipped questions.
 - **Concept analysis**: accuracy and speed per Concept, Topic and Subject, with a heat map over the syllabus.
 - **Confidence analysis**: accuracy split by Sure / 50:50 / Guess, plus a "lucky guesses" count.
@@ -245,8 +245,8 @@ Memory is a core system, not an add-on.
 | Element | Behaviour |
 |---|---|
 | XP | Earned for lessons, reviews, questions and mocks. Bonus for combos and perfect lessons. |
-| Streak | One qualifying activity a day: one lesson, or 10 reviews, or one mock section, or the daily challenge. The day ends at the student's local midnight. Streak freezes can be bought with gems or come with Pro. |
-| **Streak plant** | Grows through stages as the streak continues: seed → sprout → sapling → flowering → tree, with seasonal variants. A missed day makes it droop, a few days makes it dry, and a long gap makes it wilt to a dormant stump. **It is never permanently dead.** Watering it (studying) revives it over a few days. Rare plants unlock at milestones. |
+| Streak | One qualifying activity a day: one lesson, or 10 reviews, or one mock section, or the daily challenge. The day ends at the student's local midnight. The daily goal in minutes is a separate ring and never decides the streak. Freezes: 1 a month free, 2 a month with Pro, more with gems, and up to 2 equipped at once. One rest day a week is free. There is no paid streak repair, and our own outages never break a streak. The streak icon is the plant, never a flame. |
+| **Streak plant** | Five growth stages: seed → sprout → sapling → flowering → tree, reached at 1, 7, 30 and 100 study days (thresholds are a flag), with seasonal variants. A stage, once reached, is never lost. Health has five states: thriving, droopy, dry, wilted and dormant (shown to students as "Resting"). A missed day makes it droop, a few days make it dry, and a long gap makes it wilt and then rest. **It is never dead.** Studying revives it: 1 study day for droopy, 2 for dry, 3 for wilted, and a 5-day revival quest for dormant. Rare plants unlock at milestones. |
 | **Pet mascot** | A cat or a dog, chosen at onboarding, and named by the student. It has mood and health meters. It is happy and energetic with a regular habit, sleepy and then weak and sad with neglect, and at the lowest point it becomes "very sick" and rests in a basket. **Decline is recoverable:** care actions (studying, reviews) bring it back. It never dies permanently. It reacts to answers, cheers on streaks, narrates for young kids and appears throughout the app. |
 | Gems | Soft currency for freezes, pet accessories, plant pots and themes. Gems can never be bought with real money, by anyone. |
 | Leagues | Weekly leagues by XP, with promotion and demotion (Duolingo-style), in groups of 30 within one exam. Ten tiers named after plants and trees, lowest to highest: Seed बीज, Sprout अंकुर, Leaf पत्ती, Bud कली, Bloom फूल, Lotus कमल, Mango आम, Neem नीम, Peepal पीपल, Banyan बरगद. The names, order and group size live in config (`leagues.tiers`, `leagues.group_size`), so the owner can rename them without a release. Adults join automatically after sign-in and can opt out. No leagues for classes 1 to 5. Phase 2. |
@@ -262,9 +262,10 @@ Humane design rules:
 - The pet's sadness is gentle, never distressing for young kids. Under-10 mode uses only the "sleepy" states.
 
 ## 8. Social
+- Social features arrive in Phase 2 with the Friends tab. Phase 1 ships four tabs (Learn, Labs, Practice, Me); little learners (class 1–5) get three (Learn, Labs, Me) and no social features.
 - Friend profiles: avatar, pet, plant, streak, badges and exam.
 - **Minors appear on public surfaces only after guardian consent, and then only with their pet avatar and an auto-generated nickname** from a fixed word list (for example "Sunny Sprout 27"), never a typed pet name or real name: leaderboards, leagues, duels and community content. Friends added by invite link or QR see the pet name. Adults show their display name. No free-text chat between users for anyone.
-- **Duo / study buddy**: a paired streak with shared goals and nudges.
+- **Duo / study buddy**: a paired streak with preset nudges, with up to 5 friends (flag).
 - Friend quests (cooperative) and head-to-head challenges (live quiz duels).
 - Study groups / squads: a group leaderboard and group mocks.
 - Collaborative notes and decks: share flashcard decks and cheat sheets.
@@ -277,7 +278,8 @@ Humane design rules:
 - A daily reminder at a time the student picks, voiced by the pet.
 - "Plant is thirsty" and "pet misses you" nudges, capped at one a day.
 - Review-due, mock-scheduled and friend-activity notifications.
-- Smart timing that learns the student's usual study hour.
+- Smart timing that learns the student's usual study hour, for adults only. Minors get reminders only at the time they picked, never at a predicted time (DPDP s.9(3), §16.4).
+- A fixed daily volume with rotating templates, a kind streak saver for adults, auto-pause after 7 ignored reminders, and a comeback flow after 30 or more days away.
 - Quiet hours, with defaults stricter for minors.
 - Push on mobile and web push on desktop.
 
@@ -297,28 +299,30 @@ Humane design rules:
 - The app opens straight into onboarding. No login wall.
 - The guest can do lessons, quick revision, a limited number of practice questions and sample mocks. Progress is stored locally.
 - **Login prompts** appear only at moments of value. Soft prompts can be dismissed; hard prompts come before something that needs an account:
-  - saving progress across devices (soft)
-  - reaching the end of the 3rd lesson (soft)
-  - before streak day 3, "don't lose your plant" (soft)
-  - joining a league, adding friends, duels and sharing (hard)
-  - starting the ₹1 trial (hard)
+  - saving progress across devices, from a button the student taps (soft)
+  - reaching the end of the 3rd lesson (soft); on Safari and iOS browsers, the end of the 1st lesson, because browser storage there can be cleared (soft)
+  - the evening of streak day 2, before day 3, "save your plant" (soft)
+  - appearing on a leaderboard, from a link the student taps (soft)
+  - joining a league, adding friends, duels, Duos, squads, sharing a deck and submitting to the community (hard)
+  - starting Pro, with the ₹1 trial when eligible (hard)
   - signing in on a second device or after a reinstall (hard)
+- Soft prompts that pop up show at most once per trigger per 7 days and never mid-lesson; after two "Later" taps there are none for 14 days. Every login sheet says "We never call you or share your email." The full trigger table is in `docs/flows/auth.md` §4.
 - After signing in, the student returns to the exact screen they left, and a hard prompt's action carries on.
 - When the guest signs in, the guest becomes the account: the same user id, so nothing is copied or lost. If that Google account already has a Smriti account, the guest's progress is merged into it (union of events, the higher streak kept) and the student is told what happened. Details: `docs/flows/auth.md`.
 
 ### 10.2 Onboarding steps
-1. Welcome splash with the pet animation.
-2. Choose language (English / हिन्दी).
-3. "What are you preparing for?" (exam or class).
-4. Target year or exam date.
-5. Current level (a quick placement quiz, which can be skipped).
-6. Daily goal (5 / 10 / 20 / 30 min).
-7. Pick a pet (cat or dog), name it, and see it hatch or arrive.
-8. Plant the seed: the first streak-plant moment.
-9. First 2-minute lesson right away.
-10. Notification permission, framed by the pet: "Can I remind you?"
+1. Welcome, with the language choice on the same screen (two buttons: English and हिन्दी).
+2. "What are you preparing for?" (exam or class), with "{n} quick questions" shown.
+3. Class, birth year (only when age can't be inferred from the class) and exam date, as needed.
+4. Current level: self-rated cards, no quiz. A 5-question "Find my level" check is offered later on Home, is optional and never locks anything.
+5. Pick a pet (cat or dog) and name it, on one screen.
+6. Plant the seed: the first streak-plant moment.
+7. First lesson right away: always a real 2-minute lesson, starting later in the chapter for students who rated themselves past the basics.
+8. First win: the seed sprouts and streak day 1 is counted.
+9. Daily goal (5 / 10 / 20 / 30 min, default 10).
+10. Reminder ask, framed by the pet: "Can I remind you?"
 
-Per-exam apps skip step 3.
+The target is about 30 to 45 seconds before the first lesson. Per-exam apps with one exam profile skip step 2. Details: `docs/flows/onboarding.md`.
 
 ### 10.3 Accounts
 - **Google is the only sign-in method** on Android, the web app, the marketing site and every app variant. **iOS also offers Sign in with Apple**, under the Google button, because App Store guideline 4.8 requires an equivalent privacy-focused option. There is no phone OTP, no email sign-in and no password. Auth runs on Supabase (anonymous guests, then Google or Apple linked to the same user).
@@ -337,10 +341,11 @@ Per-exam apps skip step 3.
 | | Free (no login needed) | Pro, ₹99/month (first month ₹1) |
 |---|---|---|
 | Lessons | All Quick Revision, plus Deep Dive for the first 2 chapters of every subject, plus daily rotating free chapters | All Deep Dives |
-| Practice | 30 questions/day, a sample of PYQs | Unlimited, full PYQ bank |
-| Mocks | 1 sectional mock a week, 1 sample full mock | All mocks, live all-India mocks, full analytics |
-| AI tutor | 5 messages/day, text only | Higher limits, voice tutor, Feynman tutor, photo doubts |
-| Memory | Spaced repetition, the community mnemonics, the technique library | AI mnemonic forge, memory palaces, audio mnemonics, sleep review |
+| Practice | 30 questions/day; every PYQ can be opened within that count, plus one free timed PYQ paper per exam; the analytics dashboard | Unlimited questions and PYQ papers |
+| Mocks | 1 sectional mock a week, 1 sample full mock; the report's score, section and subject bars, solutions and top "Fix next" item | All mocks, live all-India mocks, the full mock analysis |
+| AI tutor | 5 text messages/day; existing images; read-aloud of answers (daily cap) | Higher limits, new images ("Draw it"), voice tutor, Feynman tutor, photo doubts |
+| Memory | Spaced repetition, quick revision, the community mnemonics, the technique library, the metacognitive dashboard | AI mnemonic forge, building memory palaces, audio mnemonics, sleep review |
+| Labs | Every lab: sims, 3D models, 360° scenes, the periodic table, experiments and tools | Downloading labs for offline use (with offline downloads) |
 | Tools | Cheat sheets, flashcards, Cornell notes (manual) | PDF book export, offline downloads, AI Cornell fill, AI mind maps |
 | Gamification | Everything, including 1 streak freeze a month | 2 freezes a month, exclusive pets' outfits and plants |
 | Ads | None (no ads ever for minors) | None |

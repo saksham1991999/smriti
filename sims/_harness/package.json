@@ -10,7 +10,7 @@
     "serve": "node serve.mjs --port 4173",
     "typecheck": "tsc --noEmit -p .",
     "lint": "tsc --noEmit -p .",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run --passWithNoTests --dir src",
     "test:e2e": "playwright test"
   },
   "dependencies": {

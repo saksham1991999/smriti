@@ -245,11 +245,11 @@ Memory is a core system, not an add-on.
 | Element | Behaviour |
 |---|---|
 | XP | Earned for lessons, reviews, questions and mocks. Bonus for combos and perfect lessons. |
-| Streak | One qualifying activity a day: one lesson, or 10 reviews, or one mock section. Streak freezes can be bought with gems or come with Pro. |
+| Streak | One qualifying activity a day: one lesson, or 10 reviews, or one mock section, or the daily challenge. The day ends at the student's local midnight. Streak freezes can be bought with gems or come with Pro. |
 | **Streak plant** | Grows through stages as the streak continues: seed → sprout → sapling → flowering → tree, with seasonal variants. A missed day makes it droop, a few days makes it dry, and a long gap makes it wilt to a dormant stump. **It is never permanently dead.** Watering it (studying) revives it over a few days. Rare plants unlock at milestones. |
 | **Pet mascot** | A cat or a dog, chosen at onboarding, and named by the student. It has mood and health meters. It is happy and energetic with a regular habit, sleepy and then weak and sad with neglect, and at the lowest point it becomes "very sick" and rests in a basket. **Decline is recoverable:** care actions (studying, reviews) bring it back. It never dies permanently. It reacts to answers, cheers on streaks, narrates for young kids and appears throughout the app. |
-| Gems | Soft currency for freezes, pet accessories, plant pots and themes. No real-money gem packs for under-18 users. |
-| Leagues | Weekly leagues by XP, with promotion and demotion (Duolingo-style), grouped by exam. |
+| Gems | Soft currency for freezes, pet accessories, plant pots and themes. Gems can never be bought with real money, by anyone. |
+| Leagues | Weekly leagues by XP, with promotion and demotion (Duolingo-style), in groups of 30 within one exam. Ten tiers named after plants and trees, lowest to highest: Seed बीज, Sprout अंकुर, Leaf पत्ती, Bud कली, Bloom फूल, Lotus कमल, Mango आम, Neem नीम, Peepal पीपल, Banyan बरगद. The names, order and group size live in config (`leagues.tiers`, `leagues.group_size`), so the owner can rename them without a release. Adults join automatically after sign-in and can opt out. No leagues for classes 1 to 5. Phase 2. |
 | Leaderboards | Friends, school or coaching group, city and all-India, per exam. |
 | Quests and badges | Daily and weekly quests and milestone badges such as "Periodic Table Master". |
 | Collections | Illustrated card albums collected from lessons (for example, every element of the periodic table). |
@@ -263,6 +263,7 @@ Humane design rules:
 
 ## 8. Social
 - Friend profiles: avatar, pet, plant, streak, badges and exam.
+- **Minors appear on public surfaces only after guardian consent, and then only with their pet avatar and an auto-generated nickname** from a fixed word list (for example "Sunny Sprout 27"), never a typed pet name or real name: leaderboards, leagues, duels and community content. Friends added by invite link or QR see the pet name. Adults show their display name. No free-text chat between users for anyone.
 - **Duo / study buddy**: a paired streak with shared goals and nudges.
 - Friend quests (cooperative) and head-to-head challenges (live quiz duels).
 - Study groups / squads: a group leaderboard and group mocks.
@@ -295,13 +296,15 @@ Humane design rules:
 ### 10.1 Guest-first
 - The app opens straight into onboarding. No login wall.
 - The guest can do lessons, quick revision, a limited number of practice questions and sample mocks. Progress is stored locally.
-- **Login prompts** appear only at moments of value:
-  - saving progress across devices
-  - reaching the end of the 3rd lesson
-  - joining a league or adding friends
-  - starting the ₹1 trial
-  - before streak day 3 ("don't lose your plant")
-- When the guest signs up, local progress merges into the new account.
+- **Login prompts** appear only at moments of value. Soft prompts can be dismissed; hard prompts come before something that needs an account:
+  - saving progress across devices (soft)
+  - reaching the end of the 3rd lesson (soft)
+  - before streak day 3, "don't lose your plant" (soft)
+  - joining a league, adding friends, duels and sharing (hard)
+  - starting the ₹1 trial (hard)
+  - signing in on a second device or after a reinstall (hard)
+- After signing in, the student returns to the exact screen they left, and a hard prompt's action carries on.
+- When the guest signs in, the guest becomes the account: the same user id, so nothing is copied or lost. If that Google account already has a Smriti account, the guest's progress is merged into it (union of events, the higher streak kept) and the student is told what happened. Details: `docs/flows/auth.md`.
 
 ### 10.2 Onboarding steps
 1. Welcome splash with the pet animation.
@@ -318,9 +321,14 @@ Humane design rules:
 Per-exam apps skip step 3.
 
 ### 10.3 Accounts
-- Auth through Supabase: phone OTP (the main method in India), Google, Apple, and email magic link.
-- Profiles hold a display name, avatar, pet, exams, class, school or coaching (optional), city and language.
-- Parent accounts for under-13 users: consent, time limits and weekly reports.
+- **Google is the only sign-in method** on Android, the web app, the marketing site and every app variant. **iOS also offers Sign in with Apple**, under the Google button, because App Store guideline 4.8 requires an equivalent privacy-focused option. There is no phone OTP, no email sign-in and no password. Auth runs on Supabase (anonymous guests, then Google or Apple linked to the same user).
+- **One account works everywhere:** the all-exams app, every per-exam app and the web app, with the same progress and the same Pro.
+- Profiles hold a display name, avatar, pet, exams, class, school or coaching (optional), city and language. We don't copy the Google email into the profile, and we never use the Google photo for a minor.
+- **Teens (13 to 17)** sign in with their own Google account. A parent or guardian then consents by signing in with **their own** Google account, on the same phone or through a link or QR on their phone, before social features, sharing, the voice tutor and photo uploads (§16.4).
+- **Under-13s** (little learners and ages 10 to 12) never sign in with their own Google account. A parent signs in with Google in Parent mode and owns the child's **managed account**. Each child still has its own account and progress, the parent can bring the child back on a new phone, and siblings can share one phone with a profile picker.
+- Parent mode also covers time limits and weekly reports (Phase 3).
+- Students can sign out (which clears the phone for the next person) and delete their account in the app (§16.4).
+- The full account lifecycle is in `docs/flows/auth.md`, and the screens in `docs/ux/auth.md`.
 
 ## 11. Monetisation
 
@@ -341,7 +349,7 @@ The exact free limits are flags (see the TRD) so they can be tuned.
 
 ### 11.2 Pricing and payments
 - ₹99/month is the default. A ₹799/year option is offered later.
-- The ₹1 first month is an **introductory offer** on each platform, once per account and device.
+- The ₹1 first month is an **introductory offer** on each platform, once per person. Without phone numbers, "person" means every Google or Apple identity on the account (hashed), plus a device signal on iOS and Android where the platform gives one (TRD §11).
 - Payment channels:
   - **Web:** Razorpay Subscriptions with UPI Autopay, cards and netbanking.
   - **Android:** Google Play Billing. User-choice billing is considered later.
@@ -434,12 +442,12 @@ The quality bar is that **every** syllabus item in scope has at least one Concep
 - Error tracking and product analytics.
 
 ### 16.4 Privacy and safety
-- India's **DPDP Act 2023** and the DPDP Rules apply. For users under 18:
-  - verifiable parental consent
+- India's **DPDP Act 2023** and the **DPDP Rules 2025** apply (the Rules' core duties, including Rule 10 on children, apply 18 months after their 13 Nov 2025 notification). For users under 18:
+  - verifiable parental consent: the guardian signs in with their own Google account (Apple on iOS) and declares they are the parent or legal guardian and an adult. A consent record is stored with the scopes agreed. A DigiLocker age token can be added if legal review requires it.
   - no behavioural ad targeting
   - no tracking or behavioural monitoring of children beyond what education needs
-- Data minimisation, and a data export and delete option in settings.
-- Leaderboards show only first name and initial for minors by default.
+- Data minimisation, and a data export and delete option in settings. Deleting an account signs it out everywhere at once and erases it after a 7-day grace period (legal review). A store subscription must be cancelled in the store; the app says so.
+- Minors (under 18) appear to other students only after guardian consent, and then only by pet avatar and an auto-generated nickname from a fixed word list (pet name for friends added by link or QR), on leaderboards, leagues, duels and community content. A minor's first name stays private to them and their guardian.
 
 ### 16.5 Security
 - OWASP MASVS for the mobile apps.
@@ -468,6 +476,8 @@ The quality bar is that **every** syllabus item in scope has at least one Concep
 | Image-generation cost and consistency | Prompt cache and reuse, a style guide, seeded character sheets for the pets |
 | Store billing fees (15–30%) on a ₹99 price | Accept for reach. Nudge to web or UPI where store policy allows. |
 | Exam patterns change | Blueprints are data, with a yearly review checklist |
-| Children's data rules (DPDP) | Consent flow, minimal tracking, legal review |
+| Children's data rules (DPDP) | Consent flow with the guardian's own Google sign-in, minimal tracking, legal review of whether a self-declaration is "verifiable" or a DigiLocker token is needed (TRD §18 D8) |
+| Google-only sign-in leaves out people without a Google account | Nearly every Android phone in India has one, and Google's own flow lets a student add an account. iPhone users also have Apple. Guests can use the free tier without any account. |
+| The Google sign-in consent screen shows the brand name | Google brand verification must be redone if the name changes, so it waits for the final brand (TRD §18 D7). |
 | Brand name not final ("Smriti" domains are taken) | Decide before store submission. Brand strings are config. |
 | Voice quality in Hindi and Hinglish | Gemini Live for realtime voice and Deepgram for TTS and STT (owner's choice). Hindi coverage is checked in Phase 0, with a fallback behind the same interface. |

@@ -1,0 +1,1332 @@
+<section class="area" id="learn" data-title="Home and lessons">
+<style>
+/* Learn area (HOME, LRN, LES): small helpers on top of kit.css. Tokens only, prefixed mk-lrn-. */
+.sx .mk-lrn-fab { background: var(--primary); }
+.sx .mk-lrn-fab img { width: 60px; height: 60px; margin-top: 12px; }
+.sx .mk-lrn-hd { display: flex; align-items: center; gap: 6px; min-height: 48px; flex: none; }
+.sx .mk-lrn-exam { display: inline-flex; align-items: center; gap: 2px; font: 700 12px/16px var(--f-latin); color: var(--primary); }
+.sx .mk-lrn-spill { background: var(--streak-tint); box-shadow: none; }
+.sx .mk-lrn-sbtn { width: 38px; height: 44px; display: grid; place-items: center; color: var(--ink); flex: none; }
+.sx .mk-lrn-streak { background: var(--streak-tint); border-radius: 20px; padding: 14px 16px; display: flex; gap: 6px; align-items: center; position: relative; flex: none; }
+.sx .mk-lrn-streak.risk { background: var(--warning-tint); }
+.sx .mk-lrn-streak .plant { width: 96px; height: 96px; object-fit: contain; flex: none; margin: -22px -8px -10px 0; }
+.sx .bar.warn > i { background: var(--warning); }
+.sx .mk-lrn-frz { display: flex; align-items: center; gap: 4px; font: 600 12px/16px var(--f-latin); color: var(--muted); }
+.sx .mk-lrn-frz i { width: 22px; height: 22px; border-radius: 8px; background: var(--surface); color: var(--gem); display: grid; place-items: center; font-style: normal; flex: none; }
+.sx .mk-lrn-frz i.off { background: transparent; border: 1.5px dashed var(--disabled); color: var(--disabled); }
+.sx .mk-lrn-hero { background: var(--strong); color: var(--on-strong); border-radius: 24px; padding: 18px; min-height: 168px; position: relative; display: flex; flex-direction: column; gap: 6px; flex: none; }
+.sx .mk-lrn-hero.pri { --strong: var(--primary); --on-strong: var(--on-primary); }
+.sx .mk-lrn-hero .art { position: absolute; right: -12px; top: -16px; width: 136px; height: 136px; object-fit: contain; pointer-events: none; }
+.sx .mk-lrn-hero .kick { font: 700 12px/16px var(--f-latin); letter-spacing: .2px; opacity: .92; display: flex; align-items: center; gap: 6px; }
+.sx .mk-lrn-hero .ttl { padding-right: 108px; }
+.sx .mk-lrn-hero .meta { font: 600 14px/20px var(--f-latin); opacity: .92; padding-right: 100px; }
+.sx .mk-lrn-hbtn { height: 48px; border-radius: 16px; background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; gap: 8px; padding: 0 18px; font: 700 15px/20px var(--f-latin); flex: none; }
+.sx .mk-lrn-strip { position: relative; display: flex; gap: 8px; margin: 0 -18px; padding: 0 18px; overflow: hidden; flex: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, var(--ink) 16px, var(--ink) 84%, transparent); mask-image: linear-gradient(90deg, transparent 0, var(--ink) 16px, var(--ink) 84%, transparent); }
+.sx .mk-lrn-strip .line { position: absolute; left: 0; width: 900px; top: 26px; height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--strong) var(--fill, 0px), var(--track) 0); }
+.sx .mk-lrn-node { position: relative; z-index: 1; width: 64px; flex: none; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.sx .mk-lrn-node .n { width: 56px; height: 56px; border-radius: 28px; display: grid; place-items: center; background: var(--surface); box-shadow: inset 0 0 0 2px var(--line); color: var(--muted); font: 800 16px/1 var(--f-latin); position: relative; }
+.sx .mk-lrn-node.done .n { background: var(--strong); color: var(--on-strong); box-shadow: none; }
+.sx .mk-lrn-node.next .n { background: var(--surface); box-shadow: inset 0 0 0 3px var(--strong), 0 0 0 5px var(--tint); color: var(--stext); }
+.sx .mk-lrn-node.rev .n { background: var(--primary-tint); color: var(--primary); box-shadow: inset 0 0 0 2px var(--primary); }
+.sx .mk-lrn-node .ring { --sz: 56px; --w: 5px; }
+.sx .mk-lrn-node .lab { font: 600 12px/15px var(--f-latin); text-align: center; color: var(--muted); max-width: 64px; }
+.sx .mk-lrn-node.cur .lab, .sx .mk-lrn-node.next .lab { color: var(--ink); font-weight: 700; }
+.sx .mk-lrn-node .off { position: absolute; right: -4px; bottom: -2px; width: 22px; height: 22px; border-radius: 11px; background: var(--sunken); color: var(--muted); display: grid; place-items: center; box-shadow: 0 0 0 2px var(--bg); }
+.sx .mk-lrn-row { background: var(--surface); border-radius: 16px; min-height: 56px; padding: 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: var(--sh-card); flex: none; }
+.sx .mk-lrn-row .lead { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; background: var(--primary-tint); color: var(--primary); flex: none; }
+.sx .mk-lrn-chs { height: 26px; padding: 0 9px; font-size: 12px; gap: 4px; }
+.sx .mk-lrn-pro { background: var(--primary-tint); color: var(--primary); box-shadow: none; }
+.sx .mk-lrn-net { background: var(--sunken); color: var(--muted); box-shadow: none; }
+.sx .mk-lrn-tile { min-height: 140px; }
+.sx .mk-lrn-tile .nx { font: 600 12px/16px var(--f-latin); color: var(--muted); padding-right: 30px; }
+.sx .mk-lrn-wide { grid-column: span 2; min-height: 108px; }
+.sx .mk-lrn-wide .art { width: 88px; height: 88px; right: 6px; top: -6px; }
+.sx .mk-lrn-wide .name, .sx .mk-lrn-wide .nx, .sx .mk-lrn-wide .bar { margin-right: 96px; }
+.sx .mk-lrn-qt { background: var(--surface); border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 4px; box-shadow: var(--sh-card); }
+.sx .mk-lrn-qt .lead { width: 40px; height: 40px; border-radius: 14px; background: var(--primary-tint); color: var(--primary); display: grid; place-items: center; margin-bottom: 4px; }
+/* subject, chapter and topic headers */
+.sx .mk-lrn-shead { background: var(--tint); flex: none; height: 200px; position: relative; display: flex; flex-direction: column; z-index: 2; }
+.sx .mk-lrn-shead .art { position: absolute; right: -6px; bottom: -26px; width: 160px; height: 160px; object-fit: contain; }
+.sx .mk-lrn-thead { background: var(--tint); flex: none; height: 240px; position: relative; display: flex; flex-direction: column; z-index: 2; }
+.sx .mk-lrn-thead .art { position: absolute; right: 2px; bottom: -22px; width: 176px; height: 176px; object-fit: contain; }
+.sx .mk-lrn-cart { width: 60px; height: 60px; border-radius: 30px; background: var(--tint); flex: none; overflow: hidden; display: grid; place-items: center; }
+.sx .mk-lrn-cart img { width: 52px; height: 52px; object-fit: contain; }
+.sx .mk-lrn-cart img.cover { width: 100%; height: 100%; object-fit: cover; }
+.sx .mk-lrn-tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; flex: none; }
+.sx .mk-lrn-tool { background: var(--surface); border-radius: 16px; box-shadow: var(--sh-card); height: 76px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font: 700 12px/14px var(--f-latin); text-align: center; padding: 0 4px; }
+.sx .mk-lrn-tool .ic { color: var(--stext); }
+.sx .mk-lrn-rail { position: relative; display: flex; flex-direction: column; gap: 10px; flex: none; }
+.sx .mk-lrn-rail::before { content: ""; position: absolute; left: 20px; top: 24px; bottom: 24px; width: 4px; border-radius: 2px; background: linear-gradient(var(--strong) var(--fill, 30%), var(--track) 0); }
+.sx .mk-lrn-tr { display: flex; align-items: center; gap: 10px; position: relative; }
+.sx .mk-lrn-tr > .nd { width: 44px; height: 44px; border-radius: 22px; flex: none; display: grid; place-items: center; background: var(--surface); box-shadow: inset 0 0 0 2px var(--line); color: var(--muted); font: 800 14px/1 var(--f-latin); position: relative; z-index: 1; }
+.sx .mk-lrn-tr.done > .nd { background: var(--strong); color: var(--on-strong); box-shadow: none; }
+.sx .mk-lrn-tr.next > .nd { box-shadow: inset 0 0 0 3px var(--strong), 0 0 0 4px var(--tint); color: var(--stext); }
+.sx .mk-lrn-tr.rev > .nd { background: var(--primary-tint); color: var(--primary); box-shadow: inset 0 0 0 2px var(--primary); }
+.sx .mk-lrn-tr > .ring { --sz: 44px; --w: 4px; z-index: 1; }
+.sx .mk-lrn-tr .wdot { position: absolute; right: -3px; top: -3px; width: 18px; height: 18px; border-radius: 9px; background: var(--warning); color: var(--on-streak); display: grid; place-items: center; box-shadow: 0 0 0 2px var(--bg); }
+.sx .mk-lrn-tr > .rc { flex: 1; min-width: 0; background: var(--surface); border-radius: 16px; box-shadow: var(--sh-card); padding: 10px 12px; min-height: 64px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.sx .mk-lrn-tr.next > .rc { box-shadow: inset 0 0 0 2px var(--strong); }
+.sx .mk-lrn-tr.rev > .rc { background: var(--primary-tint); box-shadow: none; }
+.sx .mk-lrn-mode { flex: 1; min-width: 0; background: var(--surface); border-radius: 20px; box-shadow: inset 0 0 0 2px var(--line); padding: 14px 12px; min-height: 150px; display: flex; flex-direction: column; gap: 3px; position: relative; }
+.sx .mk-lrn-mode.sel { box-shadow: inset 0 0 0 2px var(--strong); }
+.sx.dark .mk-lrn-mode.sel { background: var(--raised); }
+.sx .mk-lrn-mode .ck { position: absolute; top: 10px; right: 10px; color: var(--strong); }
+.sx .mk-lrn-mode > .ic.lg { color: var(--stext); margin-bottom: 4px; }
+.sx .mk-lrn-sub { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+.sx .mk-lrn-sub .c { width: 24px; height: 24px; border-radius: 12px; box-shadow: inset 0 0 0 2px var(--line); flex: none; display: grid; place-items: center; }
+.sx .mk-lrn-sub .c.ok { background: var(--success); color: var(--on-streak); box-shadow: none; }
+.sx .mk-lrn-sub .pl { width: 40px; height: 40px; border-radius: 20px; background: var(--tint); color: var(--stext); display: grid; place-items: center; flex: none; }
+.sx .mk-lrn-hook { background: var(--tint); border-radius: 20px; padding: 14px; display: flex; gap: 12px; align-items: center; }
+.sx .mk-lrn-hook img { width: 72px; height: 72px; border-radius: 14px; object-fit: cover; flex: none; }
+.sx .mk-lrn-kick { display: flex; align-items: center; gap: 6px; font: 700 12px/16px var(--f-latin); color: var(--stext); letter-spacing: .2px; }
+/* lesson player */
+.sx .mk-lrn-lbar { flex: none; height: 52px; display: flex; align-items: center; gap: 6px; padding: 0 6px; }
+.sx .mk-lrn-lbar .cnt { font: 700 12px/16px var(--f-latin); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sx .segbar { gap: 3px; } .sx .segbar i.half { background: linear-gradient(90deg, var(--strong) 50%, var(--track) 0); }
+.sx .segbar i.lock { flex: none; width: 18px; height: 18px; margin-top: -5px; background: none; color: var(--muted); display: grid; place-items: center; }
+.sx .mk-lrn-lcard { flex: 1; min-height: 0; margin: 4px 14px 0; background: var(--surface); border-radius: 24px; box-shadow: var(--sh-card); padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; position: relative; }
+.sx .mk-lrn-lcard.tint { background: var(--tint); box-shadow: none; }
+.sx .mk-lrn-lcard.cut { -webkit-mask-image: linear-gradient(var(--ink) 90%, transparent); mask-image: linear-gradient(var(--ink) 90%, transparent); }
+.sx .mk-lrn-narr { margin-left: auto; width: 40px; height: 40px; border-radius: 20px; background: var(--tint); color: var(--stext); display: grid; place-items: center; flex: none; }
+.sx .mk-lrn-term { background: var(--tint); color: var(--stext); font-weight: 700; border-radius: 6px; padding: 0 4px; text-decoration: underline dotted; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+.sx .mk-lrn-act { flex: none; padding: 10px 14px 18px; display: flex; flex-direction: column; gap: 4px; }
+.sx .mk-lrn-act .btn-ghost { height: 44px; }
+.sx .mk-lrn-lfab { bottom: 92px; }
+.sx .option.struck { opacity: .6; text-decoration: line-through; }
+.sx .mk-lrn-conf { display: flex; flex-direction: column; gap: 6px; }
+.sx .mk-lrn-ans { height: 60px; border-radius: 16px; background: var(--sunken); display: flex; align-items: center; padding: 0 16px; gap: 2px; font: 800 24px/28px var(--f-latin); font-variant-numeric: tabular-nums; box-shadow: inset 0 0 0 2px var(--primary); }
+.sx .mk-lrn-ans .caret { width: 2px; height: 28px; background: var(--primary); border-radius: 1px; }
+.sx .mk-lrn-ans .unit { margin-left: auto; font: 700 14px/20px var(--f-latin); color: var(--muted); background: var(--surface); border-radius: 10px; padding: 4px 10px; }
+.sx .mk-lrn-pad { flex: none; background: var(--sunken); padding: 10px 10px 18px; border-radius: 24px 24px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.sx .mk-lrn-pad > span { height: 52px; border-radius: 14px; background: var(--raised); box-shadow: var(--sh-card); display: grid; place-items: center; font: 700 20px/1 var(--f-latin); }
+.sx .mk-lrn-pad > .wide { grid-column: span 2; background: var(--primary); color: var(--on-primary); font-size: 16px; box-shadow: var(--glow); }
+.sx .mk-lrn-pad > .fn { color: var(--muted); }
+.sx .mk-lrn-sim { position: relative; border-radius: 20px; background: var(--sunken); padding: 0; }
+.sx .mk-lrn-sim img { width: 100%; height: 188px; object-fit: cover; border-radius: 20px; }
+.sx .mk-lrn-xp { position: absolute; right: 0; top: -46px; width: 40px; height: 40px; border-radius: 20px; background: var(--raised); box-shadow: inset 0 0 0 1.5px var(--line); display: grid; place-items: center; }
+.sx .mk-lrn-slider { position: relative; height: 6px; border-radius: 3px; background: var(--track); }
+.sx .mk-lrn-slider i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; background: var(--strong); }
+.sx .mk-lrn-slider b { position: absolute; top: -11px; width: 28px; height: 28px; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 3px var(--strong), var(--sh-card); }
+.sx .mk-lrn-fb { position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-radius: 28px 28px 0 0; box-shadow: var(--sh-raised); overflow: hidden; display: flex; flex-direction: column; }
+.sx.dark .mk-lrn-fb { background: var(--raised); }
+.sx .mk-lrn-fb .band { padding: 18px 20px 14px; display: flex; align-items: center; gap: 10px; }
+.sx .mk-lrn-fb .band.ok { background: var(--success-tint); color: var(--success-text); }
+.sx .mk-lrn-fb .band.bad { background: var(--error-tint); color: var(--error-text); }
+.sx .mk-lrn-fb .band .ic.lg { flex: none; }
+.sx .mk-lrn-fb .in { padding: 14px 20px 22px; display: flex; flex-direction: column; gap: 12px; }
+.sx .mk-lrn-call { border-radius: 16px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; font: 500 14px/20px var(--f-latin); }
+.sx .mk-lrn-call.pri { background: var(--primary-tint); } .sx .mk-lrn-call.pri > .ic { color: var(--primary); }
+.sx .mk-lrn-call.warn { background: var(--warning-tint); } .sx .mk-lrn-call.warn > .ic { color: var(--warning-text); }
+.sx .mk-lrn-call.ok { background: var(--success-tint); } .sx .mk-lrn-call.ok > .ic { color: var(--success-text); }
+.sx .mk-lrn-call b { display: block; font: 700 13px/18px var(--f-latin); }
+.sx .mk-lrn-step { display: flex; gap: 10px; align-items: flex-start; }
+.sx .mk-lrn-step > i { width: 26px; height: 26px; border-radius: 13px; background: var(--tint); color: var(--stext); font: 800 13px/26px var(--f-latin); text-align: center; font-style: normal; flex: none; }
+.sx .mk-lrn-fx { background: var(--tint); border-radius: 12px; padding: 8px 12px; font: 600 17px/24px "Times New Roman", serif; display: inline-block; }
+/* lesson complete */
+.sx .mk-lrn-done .scene { height: 214px; flex: none; margin: 0 14px; border-radius: 28px; }
+.sx .mk-lrn-done .scene img { width: 100%; height: 100%; object-fit: cover; }
+.sx .mk-lrn-pline { display: flex; align-items: center; gap: 10px; background: var(--streak-tint); border-radius: 18px; padding: 6px 12px 6px 6px; }
+.sx .mk-lrn-pline img { width: 48px; height: 48px; object-fit: contain; flex: none; }
+/* little learner */
+.sx .mk-lrn-ll { position: relative; flex: 1; min-height: 0; }
+.sx .mk-lrn-lln { position: absolute; width: 88px; height: 88px; border-radius: 44px; background: var(--surface); box-shadow: var(--sh-raised), inset 0 0 0 3px var(--surface); display: grid; place-items: center; overflow: visible; }
+.sx .mk-lrn-lln img { width: 74px; height: 74px; object-fit: contain; }
+.sx .mk-lrn-lln img.cover { width: 82px; height: 82px; border-radius: 41px; object-fit: cover; }
+.sx .mk-lrn-lln.big { width: 112px; height: 112px; border-radius: 56px; box-shadow: 0 0 0 5px var(--primary), var(--sh-raised); }
+.sx .mk-lrn-lln.big img.cover { width: 104px; height: 104px; border-radius: 52px; }
+.sx .mk-lrn-lln .st { position: absolute; right: -2px; top: -2px; width: 28px; height: 28px; border-radius: 14px; background: var(--streak); color: var(--on-streak); display: grid; place-items: center; box-shadow: 0 0 0 3px var(--bg); }
+.sx .mk-lrn-lln .lk { position: absolute; right: -2px; top: -2px; width: 28px; height: 28px; border-radius: 14px; background: var(--ink); color: var(--bg); display: grid; place-items: center; box-shadow: 0 0 0 3px var(--bg); }
+.sx .mk-lrn-pdot { position: absolute; width: 10px; height: 10px; border-radius: 5px; background: var(--track); }
+.sx .mk-lrn-subj { display: flex; justify-content: space-around; flex: none; padding: 6px 12px 10px; }
+.sx .mk-lrn-subj > span { display: flex; flex-direction: column; align-items: center; gap: 4px; font: 700 14px/18px var(--f-latin); }
+.sx .mk-lrn-subj i { width: 68px; height: 68px; border-radius: 34px; background: var(--tint); display: grid; place-items: center; }
+.sx .mk-lrn-subj i img { width: 56px; height: 56px; object-fit: contain; }
+.sx .mk-lrn-subj .on i { box-shadow: 0 0 0 3px var(--primary); }
+.sx .tabbar.three { grid-template-columns: repeat(3, 1fr); }
+/* web */
+.sx .mk-lrn-wmain { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sx .mk-lrn-wtop { height: 64px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 28px; border-bottom: 1px solid var(--line); background: var(--surface); }
+.sx .mk-lrn-wsearch { width: 380px; height: 42px; border-radius: 14px; background: var(--sunken); display: flex; align-items: center; gap: 10px; padding: 0 12px; color: var(--muted); font: 600 14px/1 var(--f-latin); }
+.sx .mk-lrn-kbd { margin-left: auto; min-width: 22px; height: 22px; border-radius: 6px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); display: grid; place-items: center; font: 700 12px/1 var(--f-mono); color: var(--muted); }
+.sx .mk-lrn-wcols { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(420px, 1.1fr) 1fr; gap: 24px; padding: 24px 28px; overflow: hidden; }
+.sx .mk-lrn-wplan { background: var(--surface); border-radius: 20px; box-shadow: var(--sh-card); padding: 6px 16px; }
+.sx .mk-lrn-wplan .it { display: flex; align-items: center; gap: 12px; min-height: 54px; border-top: 1px solid var(--line); }
+.sx .mk-lrn-wplan .it:first-of-type { border-top: 0; }
+.sx .mk-lrn-wplan .k { width: 34px; height: 34px; border-radius: 17px; display: grid; place-items: center; background: var(--primary-tint); color: var(--primary); flex: none; }
+.sx .mk-lrn-wside .nav .ic { width: 22px; height: 22px; }
+.sx .mk-lrn-wcard { background: var(--streak-tint); border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.sx .mk-lrn-tutor { width: 340px; flex: none; background: var(--surface); border-left: 1px solid var(--line); display: flex; flex-direction: column; }
+.sx .mk-lrn-msg { max-width: 260px; border-radius: 18px; padding: 10px 14px; font: 500 14px/20px var(--f-latin); }
+.sx .mk-lrn-msg.me { align-self: flex-end; background: var(--primary); color: var(--on-primary); border-radius: 18px 18px 6px 18px; }
+.sx .mk-lrn-msg.pet { background: var(--sunken); border-radius: 18px 18px 18px 6px; }
+.sx .mk-lrn-arrow { width: 44px; height: 44px; border-radius: 22px; background: var(--surface); box-shadow: var(--sh-card); display: grid; place-items: center; color: var(--muted); flex: none; }
+</style>
+<div class="wrap">
+<h2>Home and lessons</h2>
+<p class="lede">Home with its plan-driven hero card, the path strip, subjects, chapters, topic cards and the lesson player. "Locked" only ever means Pro, and a locked item always opens to a preview. Lesson text and questions here are neutral placeholders; real content comes from the content skills.</p>
+<p class="spec">Specs: <code>docs/ux/learn.md</code> · Flow: <code>docs/flows/learn.md</code> · Rulings R9, R10, R11, R14, R15, R16, R28</p>
+<div class="wall">
+
+<!-- ============ HOME-01 default (full scroll) ============ -->
+<figure class="mock" data-id="HOME-01">
+<div class="phone tall"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="padding-bottom:110px">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="Miso, looking happy"></div>
+      <div class="col grow" style="gap:0">
+        <span class="mk-lrn-exam" aria-label="Exam: JEE Main. Switch exam">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+        <span class="t-heading">Hi, Aarav</span>
+      </div>
+      <span class="pill mk-lrn-spill" aria-label="Streak, 12 days"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span>
+      <span class="pill" aria-label="340 gems"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span>
+      <span class="mk-lrn-sbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="mk-lrn-streak" style="margin-top:6px">
+      <div class="col grow" style="gap:6px">
+        <span class="t-heading">One lesson waters it today</span>
+        <div class="bar gold"><i style="width:40%"></i></div>
+        <span class="t-caption muted">4 of 10 min today</span>
+        <span class="mk-lrn-frz" aria-label="2 freezes ready"><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i>2 freezes ready</span>
+      </div>
+      <img class="plant" src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving">
+    </div>
+    <div class="mk-lrn-hero s-physics" style="margin-top:8px">
+      <img class="art" src="assets/subject-physics.webp" alt="">
+      <span class="kick">Continue</span>
+      <span class="t-title ttl">Topic title</span>
+      <span class="meta">Physics · 6 min left</span>
+      <div class="bar on-strong" style="margin:4px 0 6px"><i style="width:62%"></i></div>
+      <div class="row between"><span class="mk-lrn-hbtn">Resume<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span><span class="t-label">62% done</span></div>
+    </div>
+    <div class="col s-physics" style="gap:10px">
+      <div class="row between"><span class="t-label">Up next in Chapter title</span><span class="link t-label">See chapter</span></div>
+      <div class="row between" style="margin-top:-8px"><span class="t-caption muted">4 topics left</span><span class="chip mk-lrn-chs"><svg class="ic xs"><use href="#ph-note-bold"/></svg>Cheat sheet</span></div>
+      <div class="mk-lrn-strip">
+        <i class="line" style="--fill:194px"></i>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 2</span></span>
+        <span class="mk-lrn-node rev"><span class="n"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><span class="lab">Review 6</span></span>
+        <span class="mk-lrn-node cur"><span class="ring" style="--p:62"><svg class="ic sm stext"><use href="#ph-play-fill"/></svg></span><span class="lab">Topic 3</span></span>
+        <span class="mk-lrn-node next"><span class="n">4</span><span class="lab">Topic 4</span></span>
+        <span class="mk-lrn-node"><span class="n">5</span><span class="lab">Topic 5</span></span>
+      </div>
+    </div>
+    <div class="mk-lrn-row"><span class="lead"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><span class="grow t-label">24 cards due · 6 min</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="mk-lrn-row"><span class="ring" style="--p:25;--sz:36px;--w:5px;--strong:var(--primary)"></span><span class="col grow" style="gap:0"><span class="t-label">Today's plan</span><span class="t-caption muted">1 of 4 done</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <span class="t-heading" style="margin-top:6px">Your subjects</span>
+    <div class="grid2" style="margin-top:6px">
+      <div class="tile mk-lrn-tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span><span class="nx">Next: Topic title</span><div class="bar"><i style="width:34%"></i></div><span class="t-caption muted">21 chapters</span></div>
+      <div class="tile mk-lrn-tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="chip mk-lrn-chs" style="align-self:flex-start;margin-bottom:auto"><svg class="ic xs"><use href="#ph-gift-bold"/></svg>Free today</span><span class="name">Chemistry</span><span class="nx">Next: Topic title</span><div class="bar"><i style="width:18%"></i></div><span class="t-caption muted">20 chapters</span></div>
+      <div class="tile mk-lrn-wide s-maths"><img class="art" src="assets/subject-maths.webp" alt=""><span class="name">Mathematics</span><span class="nx">Next: Topic title</span><div class="bar"><i style="width:9%"></i></div><span class="t-caption muted">25 chapters</span></div>
+    </div>
+    <div class="grid2">
+      <div class="mk-lrn-qt"><span class="lead"><svg class="ic"><use href="#ph-brain-bold"/></svg></span><span class="t-label">Memory</span><span class="t-caption muted">Decks, palaces and focus timer</span></div>
+      <div class="mk-lrn-qt"><span class="lead"><svg class="ic"><use href="#ph-book-bookmark-bold"/></svg></span><span class="t-label">Your library</span><span class="t-caption muted">Formulas, notes and saved cards</span></div>
+    </div>
+  </div>
+  <div class="fab mk-lrn-fab" aria-label="Ask Miso"><img src="assets/cat-thinking.webp" alt=""></div>
+  <nav class="tabbar" style="position:absolute;left:0;right:0;bottom:0">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-01</span><span class="nm">Home, default (full scroll)</span><span class="ds">The whole page in one capture. Plant streak pill, streak card with daily goal and 2 freeze slots, plan-driven hero (`continue`), "Up next" path strip with a review node, one secondary row, plan row, subject tiles with each subject's next topic, then Memory and Library. No Pro upsell on Home (R15).</span></figcaption>
+</figure>
+
+<!-- ============ HOME-01 new user ============ -->
+<figure class="mock" data-id="HOME-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="Miso, looking happy"></div>
+      <div class="col grow" style="gap:0">
+        <span class="mk-lrn-exam">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+        <span class="t-heading">Hi, Aarav</span>
+      </div>
+      <span class="pill mk-lrn-spill" aria-label="Streak, 1 day"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>1</span>
+      <span class="pill" aria-label="20 gems"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>20</span>
+      <span class="mk-lrn-sbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="mk-lrn-streak" style="margin-top:6px">
+      <div class="col grow" style="gap:6px">
+        <span class="t-heading">Watered! See you tomorrow</span>
+        <div class="bar gold"><i style="width:20%"></i></div>
+        <span class="t-caption muted">2 of 10 min today</span>
+        <span class="mk-lrn-frz"><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i><i class="off"><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i>1 freeze ready</span>
+      </div>
+      <img class="plant" src="assets/plant-sprout.webp" alt="Your plant: sprout, thriving">
+    </div>
+    <div class="mk-lrn-hero s-physics" style="margin-top:8px;min-height:0">
+      <img class="art" src="assets/subject-physics.webp" alt="">
+      <span class="kick"><svg class="ic xs"><use href="#ph-flag-bold"/></svg>Start here</span>
+      <span class="t-title ttl">Topic title</span>
+      <span class="meta">Physics · 4 min</span>
+      <div class="row" style="gap:8px;margin-top:4px"><span class="mk-lrn-hbtn">Start<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span><span class="t-caption" style="opacity:.92;max-width:130px">Let's start with something short.</span></div>
+    </div>
+    <div class="col s-physics" style="gap:10px">
+      <div class="row between"><span class="t-label">Up next in Chapter title</span><span class="link t-label">See chapter</span></div>
+      <div class="mk-lrn-strip">
+        <i class="line" style="--fill:0px"></i>
+        <span class="mk-lrn-node next"><span class="n">1</span><span class="lab">Topic 1</span></span>
+        <span class="mk-lrn-node"><span class="n">2</span><span class="lab">Topic 2</span></span>
+        <span class="mk-lrn-node"><span class="n">3</span><span class="lab">Topic 3</span></span>
+        <span class="mk-lrn-node"><span class="n">4</span><span class="lab">Topic 4</span></span>
+        <span class="mk-lrn-node"><span class="n">5</span><span class="lab">Topic 5</span></span>
+      </div>
+    </div>
+    <div class="mk-lrn-row"><span class="ring" style="--p:0;--sz:36px;--w:5px;--strong:var(--primary)"></span><span class="col grow" style="gap:0"><span class="t-label">Today's plan</span><span class="t-caption muted">0 of 3 done</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="card row" style="gap:10px;padding:12px 14px;box-shadow:inset 0 0 0 1.5px var(--line)">
+      <img src="assets/cat-thinking.webp" alt="" style="width:56px;height:56px;object-fit:contain;flex:none">
+      <div class="col grow" style="gap:2px"><span class="t-label">Find my level</span><span class="t-caption muted">5 quick questions. Skip what you already know.</span></div>
+      <span class="col" style="gap:2px;align-items:center"><span class="btn sm btn-primary" style="box-shadow:none">Start</span><span class="t-caption muted">Not now</span></span>
+    </div>
+  </div>
+  <div class="fab mk-lrn-fab" aria-label="Ask Miso"><img src="assets/cat-thinking.webp" alt=""></div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-01</span><span class="nm">Home, new user</span><span class="ds">Just after onboarding: sprout on streak day 1, hero `start_here` with the pet's line, the suggested chapter with node 1 as Next, and the optional "Find my level" card for a student who rated themselves "Know the basics" (R27). It never locks anything.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-01 streak at risk ============ -->
+<figure class="mock" data-id="HOME-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--warning-tint)"><img src="assets/cat-worried.webp" alt="Miso, looking a little worried"></div>
+      <div class="col grow" style="gap:0">
+        <span class="mk-lrn-exam">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+        <span class="t-heading">Good evening</span>
+      </div>
+      <span class="pill mk-lrn-spill" aria-label="Streak, 12 days"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span>
+      <span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span>
+      <span class="mk-lrn-sbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="mk-lrn-streak risk" style="margin-top:6px">
+      <div class="col grow" style="gap:6px">
+        <span class="t-heading">Your plant is thirsty. One lesson before bed?</span>
+        <div class="bar warn"><i style="width:8%"></i></div>
+        <span class="t-caption muted">0 of 10 min today</span>
+        <span class="mk-lrn-frz"><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i>2 freezes ready</span>
+      </div>
+      <img class="plant" src="assets/plant-sapling.webp" alt="Your plant: sapling, needs water today">
+    </div>
+    <div class="petline">
+      <div class="av" style="background:var(--warning-tint)"><img src="assets/cat-worried.webp" alt=""></div>
+      <div class="bubble">One quick one and we're done for today!</div>
+    </div>
+    <div class="mk-lrn-hero pri">
+      <img class="art" src="assets/cat-plant.webp" alt="" style="width:124px;height:124px;top:-12px">
+      <span class="kick"><svg class="ic xs"><use href="#ph-drop-fill"/></svg>Save your streak</span>
+      <span class="t-title ttl">Just 3 min keeps your plant happy</span>
+      <span class="meta">10 reviews · 3 min</span>
+      <div class="row" style="margin-top:6px"><span class="mk-lrn-hbtn">Do it now<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span></div>
+    </div>
+    <div class="mk-lrn-row"><span class="lead" style="background:var(--tint);color:var(--stext)"><svg class="ic"><use href="#ph-play-fill"/></svg></span><span class="grow t-label">Or continue Topic title</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="mk-lrn-row"><span class="ring" style="--p:0;--sz:36px;--w:5px;--strong:var(--primary)"></span><span class="col grow" style="gap:0"><span class="t-label">Today's plan</span><span class="t-caption muted">0 of 4 done</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+  </div>
+  <div class="fab mk-lrn-fab" aria-label="Ask Miso"><img src="assets/cat-thinking.webp" alt=""></div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-01</span><span class="nm">Home, streak at risk (after 8 PM)</span><span class="ds">No qualifying activity yet at 9:41 PM: warning-tint streak card, worried pet, and the hero turns into `streak_saver` in primary with the fastest qualifier (10 reviews). The copy is kind, never guilt. The bite in progress drops to the secondary row.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-01 offline ============ -->
+<figure class="mock" data-id="HOME-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-x-bold"/></svg><svg class="ic xs"><use href="#ph-wifi-slash-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="Miso, looking happy"></div>
+      <div class="col grow" style="gap:0">
+        <span class="mk-lrn-exam">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+        <span class="t-heading">Hi, Aarav</span>
+      </div>
+      <span class="pill mk-lrn-spill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span>
+      <span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span>
+      <span class="mk-lrn-sbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="banner" style="flex:none"><svg class="ic sm"><use href="#ph-cloud-slash-bold"/></svg>Offline. Downloaded lessons still work.</div>
+    <div class="mk-lrn-streak">
+      <div class="col grow" style="gap:6px">
+        <span class="t-heading">One lesson waters it today</span>
+        <div class="bar gold"><i style="width:40%"></i></div>
+        <span class="t-caption muted">4 of 10 min today</span>
+      </div>
+      <img class="plant" src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving">
+    </div>
+    <div class="mk-lrn-hero s-physics" style="margin-top:4px">
+      <img class="art" src="assets/subject-physics.webp" alt="">
+      <span class="kick">Continue</span>
+      <span class="t-title ttl">Topic title</span>
+      <span class="meta">Physics · 6 min left</span>
+      <div class="bar on-strong" style="margin:4px 0 6px"><i style="width:62%"></i></div>
+      <div class="row between"><span class="mk-lrn-hbtn">Resume<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span><span class="t-label row" style="gap:4px"><svg class="ic xs"><use href="#ph-download-simple-bold"/></svg>On this phone</span></div>
+    </div>
+    <div class="col s-physics" style="gap:10px">
+      <div class="row between"><span class="t-label">Up next in Chapter title</span><span class="link t-label">See chapter</span></div>
+      <div class="mk-lrn-strip">
+        <i class="line" style="--fill:194px"></i>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 2</span></span>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 3</span></span>
+        <span class="mk-lrn-node cur"><span class="ring" style="--p:62"><svg class="ic sm stext"><use href="#ph-play-fill"/></svg></span><span class="lab">Topic 4</span></span>
+        <span class="mk-lrn-node"><span class="n" style="color:var(--disabled)">5</span><span class="off"><svg class="ic xs"><use href="#ph-cloud-slash-bold"/></svg></span><span class="lab">Needs internet</span></span>
+        <span class="mk-lrn-node"><span class="n" style="color:var(--disabled)">6</span><span class="lab">Topic 6</span></span>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="tile mk-lrn-tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span><div class="bar"><i style="width:34%"></i></div><span class="t-caption muted">21 chapters</span></div>
+      <div class="tile mk-lrn-tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt="" style="opacity:.6"><span class="chip mk-lrn-chs mk-lrn-net" style="align-self:flex-start;margin-bottom:auto"><svg class="ic xs"><use href="#ph-cloud-slash-bold"/></svg>Needs internet</span><span class="name">Chemistry</span><div class="bar"><i style="width:18%"></i></div><span class="t-caption muted">20 chapters</span></div>
+    </div>
+  </div>
+  <div class="fab mk-lrn-fab" aria-label="Ask Miso, needs internet" style="opacity:.55"><img src="assets/cat-sleepy.webp" alt=""></div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-01</span><span class="nm">Home, offline</span><span class="ds">Slim offline banner, not dismissible. The hero picks on-device content only. Strip nodes and subject tiles without a local bundle show "Needs internet" (icon plus words); tapping opens LRN-16.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-01 dark ============ -->
+<figure class="mock" data-id="HOME-01">
+<div class="phone"><div class="screen sx dark">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--primary-tint)"><img src="assets/dog-wave.webp" alt="Bruno, looking happy"></div>
+      <div class="col grow" style="gap:0">
+        <span class="mk-lrn-exam">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+        <span class="t-heading">Hi, Meera</span>
+      </div>
+      <span class="pill mk-lrn-spill" style="background:var(--streak-tint)"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>48</span>
+      <span class="pill" style="background:var(--raised)"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>1,205</span>
+      <span class="mk-lrn-sbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="mk-lrn-streak" style="margin-top:6px">
+      <div class="col grow" style="gap:6px">
+        <span class="t-heading">Watered! See you tomorrow</span>
+        <div class="bar gold"><i style="width:100%"></i></div>
+        <span class="t-caption muted">12 of 10 min today</span>
+        <span class="mk-lrn-frz"><i style="background:var(--raised)"><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i><i class="off"><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i>1 freeze ready</span>
+      </div>
+      <img class="plant" src="assets/plant-flowering.webp" alt="Your plant: flowering, thriving">
+    </div>
+    <div class="mk-lrn-hero pri" style="margin-top:8px">
+      <img class="art" src="assets/cat-reading.webp" alt="" style="width:120px;height:120px">
+      <span class="kick"><svg class="ic xs"><use href="#ph-cards-bold"/></svg>Review first</span>
+      <span class="t-title ttl">Review 32 cards</span>
+      <span class="meta">32 cards · 8 min</span>
+      <div class="row" style="margin-top:8px"><span class="mk-lrn-hbtn">Review<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span></div>
+    </div>
+    <div class="col s-maths" style="gap:10px">
+      <div class="row between"><span class="t-label">Up next in Chapter title</span><span class="link t-label">See chapter</span></div>
+      <div class="mk-lrn-strip">
+        <i class="line" style="--fill:122px"></i>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 6</span></span>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 7</span></span>
+        <span class="mk-lrn-node next"><span class="n">8</span><span class="lab">Topic 8</span></span>
+        <span class="mk-lrn-node"><span class="n">9</span><span class="lab">Topic 9</span></span>
+        <span class="mk-lrn-node"><span class="n">10</span><span class="lab">Topic 10</span></span>
+      </div>
+    </div>
+    <div class="mk-lrn-row" style="background:var(--surface)"><span class="lead" style="background:var(--tint);color:var(--stext)" ><svg class="ic"><use href="#ph-play-fill"/></svg></span><span class="grow t-label">Or continue Topic title</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="mk-lrn-row"><span class="ring" style="--p:50;--sz:36px;--w:5px;--strong:var(--primary)"></span><span class="col grow" style="gap:0"><span class="t-label">Today's plan</span><span class="t-caption muted">2 of 4 done</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+  </div>
+  <div class="fab mk-lrn-fab" aria-label="Ask Bruno"><img src="assets/dog-thinking.webp" alt=""></div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-01</span><span class="nm">Home, Night Colour (dark)</span><span class="ds">Dark tokens, no shadows. Goal met and flowering plant, one freeze used. Today's capped review count is above the threshold, so the hero is `review` in primary; the dog pet for variety.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-01 Hindi, NEET ============ -->
+<figure class="mock" data-id="HOME-01">
+<div class="phone"><div class="screen sx x-neet" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="मीसो, खुश"></div>
+      <div class="col grow" style="gap:0">
+        <span class="mk-lrn-exam">NEET<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+        <span class="t-heading">नमस्ते, आरव</span>
+      </div>
+      <span class="pill mk-lrn-spill" aria-label="स्ट्रीक, 12 दिन"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span>
+      <span class="pill" aria-label="340 जेम्स"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span>
+      <span class="mk-lrn-sbtn" aria-label="खोजें"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="mk-lrn-streak" style="margin-top:6px">
+      <div class="col grow" style="gap:7px">
+        <span class="t-heading">आज एक पाठ से इसे पानी मिलेगा</span>
+        <div class="bar gold"><i style="width:40%"></i></div>
+        <span class="t-caption muted">आज 10 में से 4 मिनट</span>
+        <span class="mk-lrn-frz"><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i>2 फ़्रीज़ तैयार</span>
+      </div>
+      <img class="plant" src="assets/plant-sapling.webp" alt="आपका पौधा: छोटा पौधा, हरा-भरा">
+    </div>
+    <div class="mk-lrn-hero s-biology" style="margin-top:8px">
+      <img class="art" src="assets/subject-biology.webp" alt="">
+      <span class="kick">अगला</span>
+      <span class="t-title ttl">टॉपिक का शीर्षक</span>
+      <span class="meta">जीव विज्ञान · 12 मिनट</span>
+      <div class="row" style="margin-top:8px"><span class="mk-lrn-hbtn">डीप डाइव शुरू करें<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span></div>
+    </div>
+    <div class="col s-biology" style="gap:10px">
+      <div class="row between"><span class="t-label">अध्याय 4 में आगे</span><span class="link t-label">अध्याय देखें</span></div>
+      <div class="mk-lrn-strip">
+        <i class="line" style="--fill:194px"></i>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">टॉपिक 1</span></span>
+        <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">टॉपिक 2</span></span>
+        <span class="mk-lrn-node next"><span class="n">3</span><span class="lab">टॉपिक 3</span></span>
+        <span class="mk-lrn-node"><span class="n">4</span><span class="lab">टॉपिक 4</span></span>
+        <span class="mk-lrn-node"><span class="n">5</span><span class="lab">टॉपिक 5</span></span>
+      </div>
+    </div>
+    <div class="mk-lrn-row"><span class="lead"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><span class="grow t-label">24 कार्ड दोहराने हैं · 6 मिनट</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="mk-lrn-row"><span class="ring" style="--p:25;--sz:36px;--w:5px;--strong:var(--primary)"></span><span class="col grow" style="gap:0"><span class="t-label">आज की योजना</span><span class="t-caption muted">4 में से 1 पूरे</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+  </div>
+  <div class="fab mk-lrn-fab" aria-label="मीसो से पूछें"><img src="assets/cat-thinking.webp" alt=""></div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>सीखें</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>लैब</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>अभ्यास</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>दोस्त</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>मैं</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-01</span><span class="nm">Home in Hindi, NEET app</span><span class="ds">Every string in Hindi with आप-register copy and the NEET green accent (primary only; Biology keeps its own green family). Hero `next_topic` with [डीप डाइव शुरू करें]; Devanagari at 1.15× line height, nothing truncated.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-02 Today's plan (Hindi) ============ -->
+<figure class="mock" data-id="HOME-02">
+<div class="phone"><div class="screen sx" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="पीछे"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="t-title grow">आज की योजना</span><span class="btn sm btn-ghost">योजना बदलें</span></div>
+  <div class="body">
+    <div class="card" style="background:var(--primary-tint);box-shadow:none;display:flex;align-items:center;gap:12px;padding:14px 16px;flex:none">
+      <img src="assets/object-calendar.webp" alt="" style="width:64px;height:64px;object-fit:contain;flex:none;margin:-8px 0">
+      <div class="col grow" style="gap:2px"><span class="t-heading">JEE Main में 84 दिन बाकी</span><span class="t-caption muted">रोज़ का लक्ष्य: 10 मिनट</span></div>
+      <div class="ring" style="--p:40;--sz:60px;--w:9px;--strong:var(--streak)"><span style="font-size:13px">4/10</span></div>
+    </div>
+    <div class="petline"><div class="av" style="background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">पहले दोहराई, फिर कुछ नया।</div></div>
+    <div class="col" style="gap:8px">
+      <div class="mk-lrn-row" style="min-height:72px"><span class="lead" style="width:40px;height:40px;border-radius:20px"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><span class="col grow" style="gap:2px"><span class="t-label">24 कार्ड दोहराएँ</span><span class="t-caption muted">6 मिनट · सभी विषय</span></span><span class="col" style="align-items:center;gap:2px"><span style="width:32px;height:32px;border-radius:16px;background:var(--success-tint);color:var(--success-text);display:grid;place-items:center"><svg class="ic sm"><use href="#ph-check-bold"/></svg></span><span class="t-caption" style="color:var(--success-text)">पूरा</span></span></div>
+      <div class="mk-lrn-row s-physics" style="min-height:72px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="lead" style="width:40px;height:40px;border-radius:20px;background:var(--tint);color:var(--stext)"><svg class="ic"><use href="#ph-book-open-bold"/></svg></span><span class="col grow" style="gap:2px"><span class="t-label">टॉपिक का शीर्षक सीखें</span><span class="t-caption muted">12 मिनट · भौतिकी</span></span><span class="btn sm btn-primary" style="box-shadow:none">शुरू करें</span></div>
+      <div class="mk-lrn-row" style="min-height:72px"><span class="lead" style="width:40px;height:40px;border-radius:20px"><svg class="ic"><use href="#ph-target-bold"/></svg></span><span class="col grow" style="gap:2px"><span class="t-label">अभ्यास: कॉन्सेप्ट का नाम</span><span class="t-caption muted">8 मिनट · गणित</span></span><span class="btn sm btn-secondary">शुरू करें</span></div>
+      <div class="mk-lrn-row s-chemistry" style="min-height:72px"><span class="lead" style="width:40px;height:40px;border-radius:20px;background:var(--tint);color:var(--stext)"><svg class="ic"><use href="#ph-lightning-bold"/></svg></span><span class="col grow" style="gap:2px"><span class="t-label">टॉपिक का शीर्षक दोहराएँ</span><span class="t-caption muted">5 मिनट · रसायन विज्ञान</span></span><span class="btn sm btn-secondary">शुरू करें</span></div>
+    </div>
+    <span class="t-caption muted center" style="margin-top:4px"><svg class="ic xs"><use href="#ph-device-mobile-bold"/></svg> यह योजना इस डिवाइस पर बनी है</span>
+  </div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>सीखें</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>लैब</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>अभ्यास</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>दोस्त</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>मैं</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-02</span><span class="nm">Today's plan, in Hindi</span><span class="ds">Countdown card with the daily-goal ring in streak gold, the pet's one-liner, and the plan in order: reviews done, then the first unfinished item gets the only primary [शुरू करें]. Built offline, so the footer says so.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-04 Exam switcher ============ -->
+<figure class="mock" data-id="HOME-04">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body">
+    <div class="mk-lrn-hd">
+      <div class="avatar" style="background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt=""></div>
+      <div class="col grow" style="gap:0"><span class="mk-lrn-exam">JEE Main<svg class="ic xs"><use href="#ph-caret-up-bold"/></svg></span><span class="t-heading">Hi, Aarav</span></div>
+      <span class="pill mk-lrn-spill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span>
+      <span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span>
+      <span class="mk-lrn-sbtn"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span>
+    </div>
+    <div class="mk-lrn-streak" style="margin-top:6px"><div class="col grow" style="gap:6px"><span class="t-heading">One lesson waters it today</span><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">4 of 10 min today</span></div><img class="plant" src="assets/plant-sapling.webp" alt=""></div>
+    <div class="mk-lrn-hero s-physics" style="margin-top:8px"><img class="art" src="assets/subject-physics.webp" alt=""><span class="kick">Continue</span><span class="t-title ttl">Topic title</span></div>
+  </div>
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <span class="t-heading">Your exams</span>
+    <div class="col" style="gap:8px" role="radiogroup" aria-label="Your exams">
+      <div class="choice sel" style="min-height:72px"><span style="width:44px;height:44px;border-radius:14px;background:var(--surface);color:var(--primary);display:grid;place-items:center;flex:none"><svg class="ic"><use href="#ph-exam-bold"/></svg></span><span class="col grow" style="gap:2px"><span class="t-label">JEE Main</span><span class="t-caption muted">84 days to go</span></span><svg class="ic" style="color:var(--primary)"><use href="#ph-radio-button-fill"/></svg></div>
+      <div class="choice" style="min-height:72px"><span style="width:44px;height:44px;border-radius:14px;background:var(--sunken);color:var(--muted);display:grid;place-items:center;flex:none"><svg class="ic"><use href="#ph-graduation-cap-bold"/></svg></span><span class="col grow" style="gap:2px"><span class="t-label">Class 12 (school)</span><span class="t-caption muted">Date not set</span></span><svg class="ic muted"><use href="#ph-circle-bold"/></svg></div>
+    </div>
+    <span class="t-caption muted row" style="gap:6px"><svg class="ic xs"><use href="#ph-info-bold"/></svg>Switching keeps your progress on shared topics.</span>
+    <span class="t-caption muted row" style="gap:6px;margin-top:-6px"><svg class="ic xs"><use href="#ph-trophy-bold"/></svg>Your league stays the same until Sunday.</span>
+    <span class="btn btn-secondary"><svg class="ic sm"><use href="#ph-plus-bold"/></svg>Add an exam</span>
+    <div class="homebar" style="margin:4px auto 0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">HOME-04</span><span class="nm">Exam switcher sheet</span><span class="ds">Opened from the exam chip at the top left of Home (A18). A radio group of the student's exams with days to go, the shared-progress and league notes, and [Add an exam]. Streak, plant and pet stay account-wide.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-05 search results ============ -->
+<figure class="mock" data-id="HOME-05">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="padding:6px 14px 0 18px;flex:none">
+    <div class="input grow" style="height:48px;color:var(--ink)"><svg class="ic sm muted"><use href="#ph-magnifying-glass-bold"/></svg><span class="grow">topic</span><svg class="ic sm muted"><use href="#ph-x-circle-fill"/></svg></div>
+    <span class="link t-label">Cancel</span>
+  </div>
+  <div class="row" style="gap:6px;padding:12px 18px 4px;overflow:hidden;flex:none">
+    <span class="chip on">All</span><span class="chip">Topics</span><span class="chip">Formulas</span><span class="chip">PYQs</span><span class="chip">Labs</span><span class="chip">Mine</span>
+  </div>
+  <div class="body scroll-cut" style="gap:8px">
+    <div class="row between" style="margin-top:4px"><span class="t-heading">Topics</span><span class="link t-caption">See all 12</span></div>
+    <div class="list">
+      <div class="li s-physics"><span class="lead" style="width:40px;height:40px"><img src="assets/subject-physics.webp" alt="" style="width:34px;height:34px;object-fit:contain"></span><span class="col grow" style="gap:0"><span class="t-label" style="font-weight:500"><b style="font-weight:800">Topic</b> title one</span><span class="t-caption muted">Physics · Chapter title</span></span></div>
+      <div class="li s-chemistry"><span class="lead" style="width:40px;height:40px"><img src="assets/subject-chemistry.webp" alt="" style="width:34px;height:34px;object-fit:contain"></span><span class="col grow" style="gap:0"><span class="t-label" style="font-weight:500"><b style="font-weight:800">Topic</b> title two</span><span class="t-caption muted">Chemistry · Chapter title</span></span></div>
+      <div class="li s-maths"><span class="lead" style="width:40px;height:40px"><img src="assets/subject-maths.webp" alt="" style="width:34px;height:34px;object-fit:contain"></span><span class="col grow" style="gap:0"><span class="t-label" style="font-weight:500">Another <b style="font-weight:800">topic</b> title</span><span class="t-caption muted">Mathematics · Chapter title</span></span></div>
+    </div>
+    <span class="t-heading" style="margin-top:4px">Formulas</span>
+    <div class="list"><div class="li s-physics"><span class="mk-lrn-fx" style="padding:4px 10px;font-size:15px">A = B · C</span><span class="col grow" style="gap:0"><span class="t-label">Formula name</span><span class="t-caption muted"><b>Topic</b> title one</span></span><svg class="ic sm muted"><use href="#ph-bookmark-simple-bold"/></svg></div></div>
+    <span class="t-heading" style="margin-top:4px">Previous-year questions</span>
+    <div class="list"><div class="li"><span class="lead" style="background:var(--sunken);color:var(--muted)"><svg class="ic sm"><use href="#ph-exam-bold"/></svg></span><span class="col grow" style="gap:0"><span class="t-caption muted">JEE Main 20XX · Session label</span><span class="t-label" style="font-weight:500">First line of the question stem…</span></span></div></div>
+    <span class="t-heading" style="margin-top:4px">Labs</span>
+    <div class="list"><div class="li"><img src="assets/lab-optics.webp" alt="" style="width:56px;height:40px;border-radius:10px;object-fit:cover;flex:none"><span class="t-label grow">Lab name</span></div></div>
+  </div>
+</div></div>
+<figcaption><span class="id">HOME-05</span><span class="nm">Search, grouped results</span><span class="ds">Results grouped Topics → Formulas → PYQs → Labs → your notes, at most 3 rows each with "See all". The match is bold, not only coloured. PYQs carry no Pro chip (R25).</span></figcaption>
+</figure>
+
+<!-- ============ HOME-05 no results ============ -->
+<figure class="mock" data-id="HOME-05">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="padding:6px 14px 0 18px;flex:none">
+    <div class="input grow" style="height:48px;color:var(--ink)"><svg class="ic sm muted"><use href="#ph-magnifying-glass-bold"/></svg><span class="grow">qwzx</span><svg class="ic sm muted"><use href="#ph-x-circle-fill"/></svg></div>
+    <span class="link t-label">Cancel</span>
+  </div>
+  <div class="row" style="gap:6px;padding:12px 18px 4px;overflow:hidden;flex:none">
+    <span class="chip on">All</span><span class="chip">Topics</span><span class="chip">Formulas</span><span class="chip">PYQs</span><span class="chip">Labs</span><span class="chip">Mine</span>
+  </div>
+  <div class="body" style="align-items:center;justify-content:center;gap:14px;padding-bottom:60px">
+    <img src="assets/ui-search-empty.webp" alt="Miso couldn't find it" style="width:240px;height:180px;object-fit:contain">
+    <span class="t-title center" style="max-width:270px">Couldn't find that. Ask the tutor instead?</span>
+    <span class="btn btn-primary" style="width:240px"><svg class="ic sm"><use href="#ph-chat-teardrop-dots-bold"/></svg>Ask Miso</span>
+    <span class="t-caption muted center">Try a shorter word or check the spelling.</span>
+  </div>
+</div></div>
+<figcaption><span class="id">HOME-05</span><span class="nm">Search, no results</span><span class="ds">Empty state with the magnifying-glass pet, one line, one action: [Ask Miso] opens the tutor with the query pre-filled. Only the query length is logged, never the query.</span></figcaption>
+</figure>
+
+<!-- ============ HOME-06 Little learner ============ -->
+<figure class="mock" data-id="HOME-06">
+<div class="phone"><div class="screen sx s-biology">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="padding:2px 16px 0;flex:none;min-height:60px">
+    <div class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="Miso" style="width:66px;height:66px"></div>
+    <span class="pill mk-lrn-spill" aria-label="36 stars" style="height:40px;font-size:17px;padding:0 12px 0 8px"><svg class="ic" style="color:var(--streak)"><use href="#ph-star-fill"/></svg>36</span>
+    <span class="sp"></span>
+    <span class="t-caption muted row" style="gap:4px;min-height:48px" aria-label="For grown-ups, press and hold"><svg class="ic xs"><use href="#ph-lock-bold"/></svg>For grown-ups</span>
+  </div>
+  <div class="row" style="padding:4px 16px 0;flex:none;gap:8px">
+    <div class="bubble grow" style="background:var(--surface);border-radius:20px 20px 20px 6px;padding:12px 16px;box-shadow:var(--sh-card);font:700 18px/24px var(--f-latin)">Ready for an adventure?</div>
+    <span class="iconbtn filled" aria-label="Hear it again" style="width:48px;height:48px;color:var(--primary)"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg></span>
+  </div>
+  <div class="mk-lrn-ll">
+    <i class="mk-lrn-pdot" style="left:168px;top:30px"></i><i class="mk-lrn-pdot" style="left:190px;top:44px"></i><i class="mk-lrn-pdot" style="left:208px;top:60px"></i>
+    <i class="mk-lrn-pdot" style="left:206px;top:146px"></i><i class="mk-lrn-pdot" style="left:186px;top:160px"></i><i class="mk-lrn-pdot" style="left:166px;top:172px"></i>
+    <i class="mk-lrn-pdot" style="left:138px;top:300px"></i><i class="mk-lrn-pdot" style="left:160px;top:316px"></i><i class="mk-lrn-pdot" style="left:184px;top:328px"></i>
+    <span class="mk-lrn-lln" style="left:76px;top:-4px"><img src="assets/subject-maths.webp" alt="Shapes, done, 3 stars"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
+    <span class="mk-lrn-lln" style="left:196px;top:66px"><img src="assets/subject-english.webp" alt="Story book, done, 3 stars"><span class="st"><svg class="ic xs"><use href="#ph-star-fill"/></svg></span></span>
+    <span class="mk-lrn-lln big" style="left:44px;top:176px"><img class="cover" src="assets/storybook-village-pond.webp" alt="Today's story"></span>
+    <img src="assets/cat-celebrate.webp" alt="Miso is waiting for you" style="position:absolute;left:162px;top:164px;width:96px;height:96px;object-fit:contain">
+    <span class="btn btn-primary" style="position:absolute;left:24px;top:300px;width:152px;height:60px;border-radius:22px;font-size:20px"><svg class="ic"><use href="#ph-play-fill"/></svg>Play</span>
+    <span class="t-caption" style="position:absolute;left:50px;top:154px;color:var(--stext);background:var(--tint);padding:2px 8px;border-radius:8px">Today's story</span>
+    <span class="mk-lrn-lln" style="left:210px;top:290px"><img src="assets/subject-evs.webp" alt="Leaf hunt"><span class="lk" aria-label="Needs a grown-up"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg></span></span>
+  </div>
+  <div class="mk-lrn-subj">
+    <span class="on s-biology"><i><img src="assets/subject-evs.webp" alt=""></i>EVS<small class="t-caption" style="color:var(--primary)">Now</small></span>
+    <span class="s-maths"><i><img src="assets/subject-maths.webp" alt=""></i>Maths</span>
+    <span class="s-language"><i><img src="assets/subject-english.webp" alt=""></i>English</span>
+  </div>
+  <nav class="tabbar three">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">HOME-06</span><span class="nm">Little learner Home (class 1–5, Phase 3)</span><span class="ds">One big [Play] under today's story, with the pet beside it. Picture nodes in a gentle zig-zag, stars on done nodes, nothing locked by order; a grown-up lock badge only on a Pro node. Three tabs (R14), no search, gems, prices or tutor button; "For grown-ups" is press-and-hold.</span></figcaption>
+</figure>
+
+<!-- ============ LRN-01 Subject map ============ -->
+<figure class="mock" data-id="LRN-01">
+<div class="phone"><div class="screen sx">
+  <div class="mk-lrn-shead s-physics">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="sp"></span><span class="iconbtn" aria-label="Search"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span><span class="iconbtn" aria-label="More"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+    <div class="col" style="padding:0 20px;gap:4px">
+      <span class="t-display stext">Physics</span>
+      <span class="t-label muted">4 of 21 chapters · 18%</span>
+      <div class="bar" style="width:168px;margin-top:4px"><i style="width:18%"></i></div>
+    </div>
+    <img class="art" src="assets/subject-physics.webp" alt="">
+  </div>
+  <div class="body scroll-cut s-physics" style="padding-top:18px;gap:10px">
+    <div class="row" style="gap:6px;flex:none"><span class="chip on">All</span><span class="chip">In progress</span><span class="chip">Not started</span><span class="chip">Weak</span></div>
+    <div class="row between" style="margin-top:4px"><span class="t-heading">Unit title</span><span class="t-caption muted">5 chapters</span></div>
+    <div class="card row" style="gap:12px;padding:14px">
+      <div class="mk-lrn-cart"><img src="assets/subject-physics.webp" alt=""></div>
+      <div class="col grow" style="gap:3px"><span class="t-caption stext">Chapter 1</span><span class="t-heading">Chapter title</span><div class="row wrap" style="gap:6px"><span class="chip mk-lrn-chs"><svg class="ic xs"><use href="#ph-gift-bold"/></svg>Free</span><span class="chip mk-lrn-chs mk-lrn-net"><svg class="ic xs"><use href="#ph-download-simple-bold"/></svg>Downloaded</span></div></div>
+      <div class="ring" style="--p:100;--sz:44px;--w:5px"><svg class="ic sm stext"><use href="#ph-check-bold"/></svg></div>
+    </div>
+    <div class="card row" style="gap:12px;padding:14px">
+      <div class="mk-lrn-cart"><img class="cover" src="assets/lab-optics.webp" alt=""></div>
+      <div class="col grow" style="gap:3px"><span class="t-caption stext">Chapter 2</span><span class="t-heading">Chapter title</span><div class="row wrap" style="gap:6px"><span class="chip mk-lrn-chs"><svg class="ic xs"><use href="#ph-gift-bold"/></svg>Free</span></div></div>
+      <div class="ring" style="--p:40;--sz:44px;--w:5px"><span style="font-size:12px">40%</span></div>
+    </div>
+    <div class="card row" style="gap:12px;padding:14px">
+      <div class="mk-lrn-cart"><img class="cover" src="assets/lab-circuit.webp" alt=""></div>
+      <div class="col grow" style="gap:3px"><span class="t-caption stext">Chapter 3</span><span class="t-heading">Chapter title</span><div class="row wrap" style="gap:6px"><span class="chip mk-lrn-chs"><svg class="ic xs"><use href="#ph-gift-bold"/></svg>Free today</span></div></div>
+      <div class="ring" style="--p:0;--sz:44px;--w:5px"><span style="font-size:12px">0%</span></div>
+    </div>
+    <div class="card row" style="gap:12px;padding:14px">
+      <div class="mk-lrn-cart"><img class="cover" src="assets/lab-solar-system.webp" alt=""></div>
+      <div class="col grow" style="gap:3px"><span class="t-caption stext">Chapter 4</span><span class="t-heading">Chapter title</span><div class="row wrap" style="gap:6px"><span class="chip mk-lrn-chs mk-lrn-pro"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg>Pro</span></div></div>
+      <div class="ring" style="--p:0;--sz:44px;--w:5px"><span style="font-size:12px">0%</span></div>
+    </div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">LRN-01</span><span class="nm">Subject map, Physics (free student)</span><span class="ds">Tinted header with the subject art, then chapter cards with one access chip each: Free for the first two, Free today for the rotating chapter, Pro (lock + word) for the rest. Pro chapters stay fully tappable and open to a preview (R9).</span></figcaption>
+</figure>
+
+<!-- ============ LRN-02 Chapter (full scroll) ============ -->
+<figure class="mock" data-id="LRN-02">
+<div class="phone tall"><div class="screen sx s-physics">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="t-heading grow">Chapter title</span><span class="iconbtn"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="body" style="gap:14px;padding-bottom:190px">
+    <div class="card tint" style="border-radius:24px;padding:18px 20px;margin-top:14px;flex:none">
+      <img src="assets/lab-circuit.webp" alt="" style="position:absolute;right:14px;top:-18px;width:104px;height:104px;object-fit:cover;border-radius:52px;box-shadow:0 0 0 4px var(--surface)">
+      <div class="col" style="gap:4px">
+        <span class="t-caption stext">Chapter 3 · Unit title</span>
+        <span class="t-title" style="padding-right:110px">Chapter title</span>
+        <span class="t-label muted">3 of 7 topics · about 24 min left</span>
+        <div class="bar" style="margin-top:6px"><i style="width:43%"></i></div>
+      </div>
+    </div>
+    <div class="mk-lrn-tools">
+      <span class="mk-lrn-tool"><svg class="ic"><use href="#ph-note-bold"/></svg>Cheat sheet</span>
+      <span class="mk-lrn-tool"><svg class="ic"><use href="#ph-math-operations-bold"/></svg>Formula sheet</span>
+      <span class="mk-lrn-tool"><svg class="ic"><use href="#ph-tree-structure-bold"/></svg>Mind map</span>
+      <span class="mk-lrn-tool"><svg class="ic"><use href="#ph-exam-bold"/></svg>Chapter test</span>
+    </div>
+    <div class="mk-lrn-rail" style="--fill:44%">
+      <div class="mk-lrn-tr done"><span class="nd"><svg class="ic sm"><use href="#ph-check-bold"/></svg></span><div class="rc"><span class="t-label">Topic title one</span><span class="t-caption muted">12 min · 3 parts · Learned</span></div></div>
+      <div class="mk-lrn-tr done"><span class="nd"><svg class="ic sm"><use href="#ph-check-bold"/></svg><span class="wdot"><svg class="ic" style="width:12px;height:12px"><use href="#ph-arrows-clockwise-bold"/></svg></span></span><div class="rc"><span class="t-label">Topic title two</span><div class="row" style="gap:6px"><span class="t-caption muted">9 min · 2 parts</span><span class="chip mk-lrn-chs warn"><svg class="ic xs"><use href="#ph-arrows-clockwise-bold"/></svg>Time to review</span></div></div></div>
+      <div class="mk-lrn-tr rev"><span class="nd"><svg class="ic sm"><use href="#ph-cards-bold"/></svg></span><div class="rc" style="flex-direction:row;align-items:center;min-height:52px"><span class="col grow" style="gap:0"><span class="t-label">Review 6 cards</span><span class="t-caption muted">About 2 min</span></span><svg class="ic sm" style="color:var(--primary)"><use href="#ph-caret-right-bold"/></svg></div></div>
+      <div class="mk-lrn-tr"><span class="ring" style="--p:40"><svg class="ic sm stext"><use href="#ph-play-fill"/></svg></span><div class="rc"><span class="t-label">Topic title three</span><span class="t-caption muted">14 min · 4 parts · 40% done</span></div></div>
+      <div class="mk-lrn-tr next"><span class="nd">4</span><div class="rc" style="min-height:120px;flex-direction:row;align-items:center;gap:10px"><span class="col grow" style="gap:4px"><span class="t-caption stext" style="font-weight:800">Next</span><span class="t-label">Topic title four</span><span class="t-caption muted">10 min · 3 parts</span><span class="btn sm btn-secondary" style="align-self:flex-start;margin-top:4px">Start</span></span><img src="assets/subject-physics.webp" alt="" style="width:64px;height:64px;object-fit:contain;flex:none"></div></div>
+      <div class="mk-lrn-tr"><span class="nd"><svg class="ic sm"><use href="#ph-lock-simple-bold"/></svg></span><div class="rc"><span class="t-label">Topic title five</span><div class="row" style="gap:6px"><span class="t-caption muted">11 min · 3 parts</span><span class="chip mk-lrn-chs mk-lrn-pro"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg>Pro · Preview free</span></div></div></div>
+      <div class="mk-lrn-tr"><span class="nd"><svg class="ic sm"><use href="#ph-lock-simple-bold"/></svg></span><div class="rc"><span class="t-label">Topic title six</span><div class="row" style="gap:6px"><span class="t-caption muted">8 min · 2 parts</span><span class="chip mk-lrn-chs mk-lrn-pro"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg>Pro · Preview free</span></div></div></div>
+      <div class="mk-lrn-tr"><span class="nd" style="color:var(--stext)"><svg class="ic sm"><use href="#ph-exam-bold"/></svg></span><div class="rc" style="flex-direction:row;align-items:center"><span class="col grow" style="gap:0"><span class="t-label">Chapter test · 15 questions</span><span class="t-caption muted">Best after the topics above</span></span><span class="btn sm btn-ghost">Start test</span></div></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:0;right:0;bottom:82px;padding:12px 18px 14px;background:linear-gradient(transparent, var(--bg) 30%)"><span class="btn btn-primary">Continue: Topic title three</span></div>
+  <nav class="tabbar" style="position:absolute;left:0;right:0;bottom:0">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">LRN-02</span><span class="nm">Chapter (full scroll)</span><span class="ds">Header card, four chapter tools, then the topic rail: learned, learned with "Time to review", an FSRS review node, in progress, the expanded Next row, two Pro rows (lock + "Pro · Preview free", never grey) and the chapter test, which is never locked. Pinned [Continue: …].</span></figcaption>
+</figure>
+
+<!-- ============ LRN-03 Topic card, new topic ============ -->
+<figure class="mock" data-id="LRN-03">
+<div class="phone"><div class="screen sx s-chemistry">
+  <div class="mk-lrn-thead">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="sp"></span><span class="iconbtn" aria-label="More"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+    <div class="col" style="padding:14px 20px 0;gap:8px;margin-top:auto;margin-bottom:22px;max-width:190px">
+      <span class="chip mk-lrn-chs" style="align-self:flex-start">In JEE Main</span>
+      <span class="t-title">Topic title</span>
+    </div>
+    <img class="art" src="assets/subject-chemistry.webp" alt="Topic illustration">
+  </div>
+  <div class="body scroll-cut" style="padding-top:26px">
+    <div class="row" style="gap:10px;align-items:stretch" role="radiogroup" aria-label="Choose how to study">
+      <div class="mk-lrn-mode sel"><svg class="ic sm ck"><use href="#ph-check-circle-fill"/></svg><svg class="ic lg"><use href="#ph-book-open-text-bold"/></svg><span class="t-heading">Deep dive</span><span class="t-caption muted">14 min · 4 parts</span><span class="t-caption muted">Story, visuals, practice</span></div>
+      <div class="mk-lrn-mode"><svg class="ic lg"><use href="#ph-lightning-bold"/></svg><span class="t-heading">Quick revision</span><span class="t-caption muted">5 min</span><span class="t-caption muted">Cheat sheet + rapid cards</span></div>
+    </div>
+    <span class="t-heading" style="margin-top:4px">What you'll learn</span>
+    <div class="col" style="gap:2px">
+      <div class="mk-lrn-sub"><span class="c"></span><span class="col grow" style="gap:0"><span class="t-label">Subtopic one</span><span class="t-caption muted">3 min</span></span><span class="pl" aria-label="Start here"><svg class="ic sm"><use href="#ph-play-fill"/></svg></span></div>
+      <div class="mk-lrn-sub"><span class="c"></span><span class="col grow" style="gap:0"><span class="t-label">Subtopic two</span><span class="t-caption muted">4 min</span></span><span class="pl"><svg class="ic sm"><use href="#ph-play-fill"/></svg></span></div>
+      <div class="mk-lrn-sub"><span class="c"></span><span class="col grow" style="gap:0"><span class="t-label">Subtopic three</span><span class="t-caption muted">4 min</span></span><span class="pl"><svg class="ic sm"><use href="#ph-play-fill"/></svg></span></div>
+    </div>
+    <div class="mk-lrn-hook"><img src="assets/memory-hook-sample.webp" alt=""><div class="col grow" style="gap:2px"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-lightbulb-fill"/></svg>Memory trick</span><span class="t-label">Mnemonic line goes here</span><span class="link t-caption">Show</span></div></div>
+  </div>
+  <div class="bottom" style="padding-top:8px"><span class="btn btn-primary">Start deep dive</span></div>
+</div></div>
+<figcaption><span class="id">LRN-03</span><span class="nm">Topic card, new topic</span><span class="ds">Tinted header with the topic art, then the mode choice as a radio pair with Deep dive selected, subtopics with direct start buttons, and the memory trick in the subject tint with a lightbulb (R11, not gold). Pinned [Start deep dive].</span></figcaption>
+</figure>
+
+<!-- ============ LRN-03 Topic card, Pro gated ============ -->
+<figure class="mock" data-id="LRN-03">
+<div class="phone"><div class="screen sx x-neet s-biology">
+  <div class="mk-lrn-thead">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="sp"></span><span class="iconbtn" aria-label="More"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+    <div class="col" style="padding:14px 20px 0;gap:8px;margin-top:auto;margin-bottom:22px;max-width:190px">
+      <span class="chip mk-lrn-chs" style="align-self:flex-start">In NEET</span>
+      <span class="t-title">Topic title</span>
+    </div>
+    <img class="art" src="assets/subject-biology.webp" alt="Topic illustration">
+  </div>
+  <div class="body scroll-cut" style="padding-top:26px">
+    <div class="row" style="gap:10px;align-items:stretch" role="radiogroup" aria-label="Choose how to study">
+      <div class="mk-lrn-mode"><svg class="ic lg"><use href="#ph-book-open-text-bold"/></svg><span class="t-heading">Deep dive</span><span class="t-caption muted">16 min · 5 parts</span><span class="chip mk-lrn-chs mk-lrn-pro" style="align-self:flex-start;margin-top:4px"><svg class="ic xs"><use href="#ph-lock-simple-bold"/></svg>Pro</span><span class="t-caption" style="color:var(--primary);font-weight:700">Preview free</span></div>
+      <div class="mk-lrn-mode sel"><svg class="ic sm ck"><use href="#ph-check-circle-fill"/></svg><svg class="ic lg"><use href="#ph-lightning-bold"/></svg><span class="t-heading">Quick revision</span><span class="t-caption muted">5 min</span><span class="t-caption muted">Cheat sheet + rapid cards</span><span class="chip mk-lrn-chs" style="align-self:flex-start;margin-top:4px"><svg class="ic xs"><use href="#ph-gift-bold"/></svg>Free</span></div>
+    </div>
+    <span class="t-heading" style="margin-top:4px">What you'll learn</span>
+    <div class="col" style="gap:2px">
+      <div class="mk-lrn-sub"><span class="c"></span><span class="col grow" style="gap:0"><span class="t-label">Subtopic one</span><span class="t-caption muted">3 min</span></span><span class="pl"><svg class="ic sm"><use href="#ph-play-fill"/></svg></span></div>
+      <div class="mk-lrn-sub"><span class="c"></span><span class="col grow" style="gap:0"><span class="t-label">Subtopic two</span><span class="t-caption muted">4 min</span></span><span class="pl"><svg class="ic sm"><use href="#ph-play-fill"/></svg></span></div>
+      <div class="mk-lrn-sub"><span class="c"></span><span class="col grow" style="gap:0"><span class="t-label">Subtopic three</span><span class="t-caption muted">5 min</span></span><span class="pl"><svg class="ic sm"><use href="#ph-play-fill"/></svg></span></div>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:8px"><span class="btn btn-primary">Start quick revision</span></div>
+</div></div>
+<figcaption><span class="id">LRN-03</span><span class="nm">Topic card, Pro-gated Deep dive (NEET)</span><span class="ds">A free student on a Pro chapter: Quick revision is pre-selected and free; Deep dive stays fully visible with "Pro" and "Preview free". Choosing it changes the CTA to [Preview deep dive] and opens LRN-05 once. NEET accent.</span></figcaption>
+</figure>
+
+<!-- ============ LRN-05 Pro preview sheet ============ -->
+<figure class="mock" data-id="LRN-05">
+<div class="phone"><div class="screen sx x-neet s-biology">
+  <div class="mk-lrn-thead" style="height:200px">
+    <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+    <div class="appbar"><span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span></div>
+    <div class="col" style="padding:0 20px;gap:8px;max-width:190px"><span class="t-title">Topic title</span></div>
+    <img class="art" src="assets/subject-biology.webp" alt="">
+  </div>
+  <div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <img src="assets/cat-price-tag.webp" alt="Miso holding the Pro offer" style="width:116px;height:116px;object-fit:contain;align-self:center;margin:-4px 0 -6px">
+    <span class="t-heading center">Deep dives here are part of Pro</span>
+    <span class="t-body muted center" style="margin-top:-4px">Try the first few cards free. Quick revision is always free.</span>
+    <div class="col" style="gap:6px;padding:4px 8px">
+      <span class="row t-label" style="gap:10px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-book-open-text-bold"/></svg>All deep dives</span>
+      <span class="row t-label" style="gap:10px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-download-simple-bold"/></svg>Offline downloads</span>
+      <span class="row t-label" style="gap:10px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-sparkle-bold"/></svg>AI tools</span>
+    </div>
+    <span class="btn btn-secondary">Preview free</span>
+    <span class="btn btn-primary">Try Pro for ₹1</span>
+    <span class="btn btn-ghost" style="height:40px">Do quick revision</span>
+    <span class="t-caption muted center">First month ₹1, then ₹99/month. Cancel anytime.</span>
+  </div>
+</div></div>
+<figcaption><span class="id">LRN-05</span><span class="nm">Pro preview sheet, Deep dive</span><span class="ds">An honest gate: what Pro adds, [Preview free] (first 4 cards, R16), [Try Pro for ₹1] and the free alternative, with the real price in text. No timers, no "% off". Not shown to under-13s, who get "Ask a grown-up".</span></figcaption>
+</figure>
+
+<!-- ============ LRN-07 Quick revision sheet ============ -->
+<figure class="mock" data-id="LRN-07">
+<div class="phone"><div class="screen sx s-maths">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="ttl">Quick revision</span><span class="iconbtn" aria-label="More"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div style="background:var(--tint);padding:12px 20px;flex:none;display:flex;align-items:center;gap:12px">
+    <div class="col grow" style="gap:0"><span class="t-heading">Topic title</span><span class="t-caption muted">8 cards · about 5 min</span></div>
+    <img src="assets/subject-maths.webp" alt="" style="width:56px;height:56px;object-fit:contain;margin:-8px 0">
+  </div>
+  <div class="body scroll-cut" style="padding-top:14px;gap:10px">
+    <div class="row between"><span class="t-heading">Key ideas</span><svg class="ic sm muted"><use href="#ph-caret-up-bold"/></svg></div>
+    <div class="col" style="gap:6px">
+      <span class="row top t-body" style="gap:8px"><svg class="ic xs stext" style="margin-top:4px"><use href="#ph-check-circle-fill"/></svg><span>First key idea in one short line, with a <span class="mk-lrn-term">key term</span>.</span></span>
+      <span class="row top t-body" style="gap:8px"><svg class="ic xs stext" style="margin-top:4px"><use href="#ph-check-circle-fill"/></svg><span>Second key idea goes here, also short.</span></span>
+    </div>
+    <div class="row between" style="margin-top:2px"><span class="t-heading">Key formulas</span><svg class="ic sm muted"><use href="#ph-caret-up-bold"/></svg></div>
+    <div class="formula" style="position:relative;padding:14px">P = Q / R<svg class="ic sm" style="position:absolute;right:12px;top:14px;color:var(--stext)" aria-label="Save Formula name to formula vault"><use href="#ph-bookmark-simple-bold"/></svg></div>
+    <div class="scene" style="height:118px;display:grid;place-items:center;flex:none"><span class="note">Agnes art: mini diagram (sunny-diagram, 3:2) with label overlays</span></div>
+    <span class="t-heading" style="margin-top:2px">Memory tricks</span>
+    <div class="mk-lrn-hook" style="padding:12px"><img src="assets/memory-hook-sample.webp" alt="" style="width:56px;height:56px"><div class="col grow" style="gap:2px"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-lightbulb-fill"/></svg>Memory trick</span><span class="t-label">Mnemonic line goes here</span></div></div>
+    <span class="t-heading" style="margin-top:2px">Common traps</span>
+    <div class="mk-lrn-call warn"><svg class="ic sm"><use href="#ph-warning-bold"/></svg><span><b>Mistake</b>A common slip, in one line.</span></div>
+  </div>
+  <div class="bottom" style="padding-top:8px"><span class="btn btn-primary"><svg class="ic sm"><use href="#ph-lightning-fill"/></svg>Start rapid cards</span></div>
+</div></div>
+<figcaption><span class="id">LRN-07</span><span class="nm">Quick revision sheet</span><span class="ds">One-screen recap before rapid cards: key ideas with key terms, a tappable formula box with save, the mini diagram, memory tricks in the subject tint (R11), and common traps. Always free (R9).</span></figcaption>
+</figure>
+
+<!-- ============ LRN-09 Library ============ -->
+<figure class="mock" data-id="LRN-09">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Library</span><span class="iconbtn" aria-label="Search your library"><svg class="ic"><use href="#ph-magnifying-glass-bold"/></svg></span></div>
+  <div class="row" style="gap:18px;padding:0 20px;border-bottom:1px solid var(--line);flex:none;overflow:hidden" role="tablist">
+    <span class="t-label" style="color:var(--primary);padding:10px 0;box-shadow:inset 0 -3px 0 var(--primary)">Formulas</span>
+    <span class="t-label muted" style="padding:10px 0">Shortcuts</span>
+    <span class="t-label muted" style="padding:10px 0">Saved</span>
+    <span class="t-label muted" style="padding:10px 0">Notes</span>
+    <span class="t-label muted" style="padding:10px 0;white-space:nowrap">Mind maps</span>
+  </div>
+  <div class="body scroll-cut" style="padding-top:14px;gap:10px">
+    <div class="seg" style="flex:none"><span class="on">Saved</span><span>All</span></div>
+    <div class="row" style="gap:6px;flex:none"><span class="chip on">All subjects</span><span class="chip">Physics</span><span class="chip">Chemistry</span><span class="chip">Maths</span></div>
+    <span class="t-caption muted" style="margin-top:4px">PHYSICS · CHAPTER TITLE</span>
+    <div class="list s-physics">
+      <div class="li"><span class="mk-lrn-fx">A = B · C</span><span class="col grow" style="gap:0"><span class="t-label">Formula name</span><span class="t-caption muted">Chapter title</span></span><svg class="ic stext" aria-label="Saved"><use href="#ph-bookmark-simple-fill"/></svg></div>
+      <div class="li"><span class="mk-lrn-fx">M = N + K</span><span class="col grow" style="gap:0"><span class="t-label">Formula name</span><span class="t-caption muted">Chapter title</span></span><svg class="ic stext"><use href="#ph-bookmark-simple-fill"/></svg></div>
+    </div>
+    <span class="t-caption muted" style="margin-top:4px">CHEMISTRY · CHAPTER TITLE</span>
+    <div class="list s-chemistry">
+      <div class="li"><span class="mk-lrn-fx">X = Y²</span><span class="col grow" style="gap:0"><span class="t-label">Formula name</span><span class="t-caption muted">Chapter title</span></span><svg class="ic stext"><use href="#ph-bookmark-simple-fill"/></svg></div>
+    </div>
+    <span class="t-caption muted" style="margin-top:4px">MATHS · CHAPTER TITLE</span>
+    <div class="list s-maths">
+      <div class="li"><span class="mk-lrn-fx">S = T − U</span><span class="col grow" style="gap:0"><span class="t-label">Formula name</span><span class="t-caption muted">Chapter title</span></span><svg class="ic stext"><use href="#ph-bookmark-simple-fill"/></svg></div>
+    </div>
+  </div>
+  <nav class="tabbar">
+    <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span>
+    <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
+  </nav>
+</div></div>
+<figcaption><span class="id">LRN-09</span><span class="nm">Library, saved formulas</span><span class="ds">Tabs for formulas, shortcuts, saved cards, notes and mind maps (the last two are Phase 2). Saved formulas grouped by chapter, each formula box tinted in its subject's colour, with a bookmark toggle. All free.</span></figcaption>
+</figure>
+
+<!-- ============ LES-01 explainer ============ -->
+<figure class="mock" data-id="LES-01">
+<div class="phone"><div class="screen sx s-biology">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close lesson"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar" aria-label="Card 3 of 8"><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i><i></i><i></i><i></i></div><span class="cnt">3 of 8</span><span class="iconbtn" aria-label="Card menu"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard">
+    <div class="row"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-book-open-bold"/></svg>Explainer</span><span class="mk-lrn-narr" aria-label="Listen"><svg class="ic sm"><use href="#ph-speaker-high-bold"/></svg></span></div>
+    <div class="scene" style="height:232px;flex:none;display:grid;place-items:center;position:relative">
+      <img src="assets/subject-biology.webp" alt="Illustration for this card" style="width:216px;height:216px;object-fit:contain">
+      <span class="chip mk-lrn-chs" style="position:absolute;left:10px;bottom:10px"><svg class="ic xs"><use href="#ph-eye-bold"/></svg>Labels on</span>
+    </div>
+    <span class="t-heading">Topic title</span>
+    <p class="t-body" style="margin:0">A short explanation of the idea goes here, two or three lines. A <span class="mk-lrn-term">key term</span> is highlighted, and so is <span class="mk-lrn-term">another term</span>. Tap one to see what it means.</p>
+  </div>
+  <div class="fab mk-lrn-fab mk-lrn-lfab" aria-label="Ask Miso about this card"><img src="assets/cat-thinking.webp" alt=""></div>
+  <div class="mk-lrn-act"><span class="btn btn-primary">Continue</span></div>
+</div></div>
+<figcaption><span class="id">LES-01</span><span class="nm">Lesson player, explainer card</span><span class="ds">Shell: close, segmented progress (current half-filled), "3 of 8", card menu. A large illustration with a labels toggle, the heading and body with key terms in the subject tint, bold and dotted-underlined, so never colour alone. Tutor button above [Continue].</span></figcaption>
+</figure>
+
+<!-- ============ LES-01 MCQ ============ -->
+<figure class="mock" data-id="LES-01">
+<div class="phone"><div class="screen sx s-physics">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close lesson"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i><i></i></div><span class="cnt">5 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard" style="gap:10px">
+    <div class="row between"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-question-bold"/></svg>Check your understanding</span><span class="chip mk-lrn-chs mk-lrn-net" style="color:var(--ink)"><svg class="ic xs"><use href="#ph-mountains-bold"/></svg>Tough one</span></div>
+    <span class="t-caption muted">Choose one</span>
+    <span class="t-body" style="font-weight:600">Question stem goes here. It asks one clear thing in one or two lines?</span>
+    <div class="col" style="gap:8px" role="radiogroup">
+      <div class="option"><span class="key">A</span>Option A</div>
+      <div class="option sel"><span class="key">B</span>Option B</div>
+      <div class="option"><span class="key">C</span>Option C</div>
+      <div class="option"><span class="key">D</span>Option D</div>
+    </div>
+    <div class="mk-lrn-conf" style="margin-top:2px"><span class="t-caption muted">How sure are you? (optional)</span><div class="conf"><span>Sure</span><span class="on">50:50</span><span>Guess</span></div></div>
+  </div>
+  <div class="mk-lrn-act"><span class="btn btn-ghost">I don't know yet</span><span class="btn btn-primary">Check</span></div>
+</div></div>
+<figcaption><span class="id">LES-01</span><span class="nm">Lesson player, single-answer MCQ</span><span class="ds">Question card with option B selected, the optional Sure / 50:50 / Guess row (R21), which never blocks [Check], and a "Tough one" chip, shown only for hard or cited PYQ questions. "I don't know yet" sits above [Check].</span></figcaption>
+</figure>
+
+<!-- ============ LES-01 numerical (dark) ============ -->
+<figure class="mock" data-id="LES-01">
+<div class="phone"><div class="screen sx dark s-maths">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close lesson"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i></div><span class="cnt">6 of 7</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard" style="gap:10px">
+    <span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-question-bold"/></svg>Check your understanding</span>
+    <span class="t-caption muted">Enter your answer</span>
+    <span class="t-body" style="font-weight:600">Question stem goes here. It asks for one number, and the unit is shown next to the answer box.</span>
+    <div class="mk-lrn-ans" style="margin-top:6px">12.5<i class="caret"></i><span class="unit">Unit: unit</span></div>
+    <div class="mk-lrn-conf" style="margin-top:4px"><span class="t-caption muted">How sure are you? (optional)</span><div class="conf"><span class="on">Sure</span><span>50:50</span><span>Guess</span></div></div>
+  </div>
+  <div class="mk-lrn-pad" style="margin-top:12px" aria-label="Number keypad">
+    <span>1</span><span>2</span><span>3</span><span class="fn" aria-label="Delete"><svg class="ic"><use href="#ph-backspace-bold"/></svg></span>
+    <span>4</span><span>5</span><span>6</span><span class="fn" aria-label="minus">−</span>
+    <span>7</span><span>8</span><span>9</span><span class="fn">.</span>
+    <span>0</span><span class="fn" style="font-size:15px" aria-label="times ten to the power">×10ⁿ</span><span class="wide">Check</span>
+  </div>
+</div></div>
+<figcaption><span class="id">LES-01</span><span class="nm">Lesson player, numerical with keypad (dark)</span><span class="ds">Large tabular answer field with the unit as a suffix, and our own keypad in place of the system keyboard: digits, minus, decimal, ×10ⁿ only when the answer format allows it, and [Check] as the wide bottom key. Night Colour.</span></figcaption>
+</figure>
+
+<!-- ============ LES-01 sim card ============ -->
+<figure class="mock" data-id="LES-01">
+<div class="phone"><div class="screen sx s-physics">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close lesson"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i><i></i><i></i></div><span class="cnt">4 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard" style="gap:10px">
+    <span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-flask-bold"/></svg>Lab</span>
+    <span class="t-heading" style="padding-right:44px">Sim title goes here</span>
+    <div class="mk-lrn-sim"><span class="mk-lrn-xp" aria-label="Expand"><svg class="ic sm"><use href="#ph-corners-out-bold"/></svg></span><img src="assets/lab-circuit.webp" alt="Simulation: a simple circuit with a battery, a switch and a bulb"></div>
+    <div class="col" style="gap:8px;padding:2px 2px 0">
+      <div class="row between"><span class="t-label">Control A</span><span class="chip mk-lrn-chs st num">40 unit</span></div>
+      <div class="mk-lrn-slider" style="margin:6px 4px"><i style="width:40%"></i><b style="left:calc(40% - 14px)"></b></div>
+    </div>
+    <div class="card tint" style="padding:12px;display:flex;flex-direction:column;gap:8px">
+      <span class="t-caption stext">Task 1 of 2</span>
+      <span class="t-label">Task prompt goes here, one short line.</span>
+      <div class="row" style="gap:6px"><span class="chip mk-lrn-chs num">Reading: 0.0 unit</span><span class="btn sm btn-secondary" style="height:32px;margin-left:auto">Record reading</span></div>
+    </div>
+  </div>
+  <div class="mk-lrn-act"><span class="btn btn-ghost">Skip lab</span><span class="btn btn-primary">Check task</span></div>
+</div></div>
+<figcaption><span class="id">LES-01</span><span class="nm">Lesson player, sim card</span><span class="ds">The sim frame (lab poster shown until it loads) with [Expand] outside the canvas edge, the sim's own controls below it, never on top, and the task with a reading chip. [Skip lab] is always there, and skipped tasks never count as wrong.</span></figcaption>
+</figure>
+
+<!-- ============ LES-01 memory hook ============ -->
+<figure class="mock" data-id="LES-01">
+<div class="phone"><div class="screen sx s-chemistry">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close lesson"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i></div><span class="cnt">7 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard tint" style="gap:10px">
+    <div class="row"><span class="mk-lrn-kick"><svg class="ic sm"><use href="#ph-lightbulb-fill"/></svg>Memory trick</span><span class="chip mk-lrn-chs" style="margin-left:auto">Acrostic</span></div>
+    <span class="t-title">Mnemonic line goes here, short and vivid</span>
+    <img src="assets/memory-hook-sample.webp" alt="Memory picture for this trick" style="width:100%;height:196px;object-fit:cover;border-radius:20px;flex:none">
+    <div class="card" style="padding:10px 14px">
+      <div class="row between"><span class="t-label">What it stands for</span><svg class="ic sm muted"><use href="#ph-caret-up-bold"/></svg></div>
+      <div class="col" style="gap:4px;margin-top:6px">
+        <span class="row t-body" style="gap:8px"><b class="stext num">1</b>First word → idea one</span>
+        <span class="row t-body" style="gap:8px"><b class="stext num">2</b>Second word → idea two</span>
+      </div>
+    </div>
+    <div class="row" style="gap:8px"><span class="btn sm btn-secondary grow"><svg class="ic sm"><use href="#ph-cards-bold"/></svg>Add to deck</span><span class="btn sm btn-secondary grow"><svg class="ic sm"><use href="#ph-sparkle-bold"/></svg>Make my own<span class="chip mk-lrn-chs mk-lrn-pro" style="height:20px;padding:0 6px">Pro</span></span></div>
+  </div>
+  <div class="mk-lrn-act"><span class="btn btn-primary">Continue</span></div>
+</div></div>
+<figcaption><span class="id">LES-01</span><span class="nm">Lesson player, memory hook card</span><span class="ds">The whole card in the subject tint with a lightbulb kicker, not gold (R11; gold stays for streak, plant, gems and the ₹1 tag). The mnemonic is real text over a memory-hook picture, with the decode list, [Add to deck] and [Make my own] (Pro for free students).</span></figcaption>
+</figure>
+
+<!-- ============ LES-02 correct ============ -->
+<figure class="mock" data-id="LES-02">
+<div class="phone"><div class="screen sx s-physics">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><span class="cnt">5 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard" style="gap:10px">
+    <span class="t-body" style="font-weight:600">Question stem goes here. It asks one clear thing in one or two lines?</span>
+    <div class="col" style="gap:8px">
+      <div class="option"><span class="key">A</span>Option A</div>
+      <div class="option ok"><span class="key"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span><span class="grow">Option B</span><span class="t-caption" style="color:var(--success-text)">Your answer</span></div>
+      <div class="option"><span class="key">C</span>Option C</div>
+    </div>
+  </div>
+  <div class="mk-lrn-fb">
+    <div class="band ok"><svg class="ic lg" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg><span class="t-heading grow">Correct!</span><span class="chip mk-lrn-chs" style="background:var(--surface);box-shadow:none;color:var(--ink)">+10 XP</span></div>
+    <div class="in">
+      <div class="petline"><div class="av"><img src="assets/cat-celebrate.webp" alt=""></div><div class="bubble" style="background:var(--sunken);box-shadow:none">Nailed it!</div></div>
+      <div class="row between" style="min-height:44px;border-top:1px solid var(--line);padding-top:6px"><span class="t-label">Why?</span><svg class="ic sm muted"><use href="#ph-caret-down-bold"/></svg></div>
+      <span class="btn btn-primary">Continue</span>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">LES-02</span><span class="nm">Feedback, correct</span><span class="ds">The sheet slides over the bottom of the card, so the question stays visible. Success band with icon and word, the pet's cheer, the XP chip, a "Why?" disclosure with the plain-words explanation, and [Continue]. Swipe down also continues.</span></figcaption>
+</figure>
+
+<!-- ============ LES-02 wrong, first try ============ -->
+<figure class="mock" data-id="LES-02">
+<div class="phone"><div class="screen sx s-physics">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i><i></i></div><span class="cnt">5 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard" style="gap:10px">
+    <span class="t-body" style="font-weight:600">Question stem goes here. It asks one clear thing in one or two lines?</span>
+    <div class="col" style="gap:8px">
+      <div class="option"><span class="key">A</span>Option A</div>
+      <div class="option bad"><span class="key"><svg class="ic xs"><use href="#ph-x-bold"/></svg></span><span class="grow">Option B</span><span class="t-caption" style="color:var(--error-text)">Your answer</span></div>
+      <div class="option"><span class="key">C</span>Option C</div>
+    </div>
+  </div>
+  <div class="mk-lrn-fb">
+    <div class="band bad"><svg class="ic lg" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg><span class="t-heading grow">Not quite</span></div>
+    <div class="in">
+      <div class="petline"><div class="av"><img src="assets/cat-thinking.webp" alt=""></div><div class="bubble" style="background:var(--sunken);box-shadow:none">Close! Look again.</div></div>
+      <div class="mk-lrn-call pri"><svg class="ic sm"><use href="#ph-lightbulb-fill"/></svg><span><b>Hint</b>A short hint that points back at the idea goes here.</span></div>
+      <span class="btn btn-primary">Try again</span>
+      <span class="btn btn-ghost" style="height:40px">Ask Miso for a hint</span>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">LES-02</span><span class="nm">Feedback, wrong on the first try</span><span class="ds">Error band with an X icon and "Not quite", the option shakes once, and a hint box from the picked option's trap. [Try again] strikes out the wrong option. This sheet can't be swiped away, and nothing costs hearts or quota.</span></figcaption>
+</figure>
+
+<!-- ============ LES-02 wrong, second try ============ -->
+<figure class="mock" data-id="LES-02">
+<div class="phone"><div class="screen sx s-physics">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i><i></i></div><span class="cnt">5 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard" style="gap:8px">
+    <div class="option struck" style="min-height:48px;padding:10px 14px"><span class="key">B</span>Option B</div>
+    <div class="option ok" style="min-height:48px;padding:10px 14px"><span class="key"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span><span class="grow">Option C</span><span class="t-caption" style="color:var(--success-text)">Correct answer</span></div>
+  </div>
+  <div class="mk-lrn-fb" style="top:196px">
+    <div class="band bad"><svg class="ic lg" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg><span class="t-heading grow">Here's how it works</span></div>
+    <div class="in" style="gap:10px;flex:1;min-height:0;overflow:hidden;-webkit-mask-image:linear-gradient(var(--ink) 94%, transparent);mask-image:linear-gradient(var(--ink) 94%, transparent)">
+      <span class="t-label">In simple words</span>
+      <span class="t-body muted" style="margin-top:-6px">A plain explanation of the idea goes here, two short lines.</span>
+      <span class="t-label">Step by step</span>
+      <div class="mk-lrn-step"><i>1</i><span class="col" style="gap:4px"><span class="t-body">First step, said simply.</span><span class="mk-lrn-fx">x = a + b</span></span></div>
+      <div class="mk-lrn-step"><i>2</i><span class="t-body">Second step, said simply.</span></div>
+      <div class="mk-lrn-call warn"><svg class="ic sm"><use href="#ph-warning-bold"/></svg><span><b>Common trap</b>Why option B looks right, in one line.</span></div>
+    </div>
+    <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px">
+      <span class="t-caption muted row" style="gap:6px"><svg class="ic xs"><use href="#ph-arrows-clockwise-bold"/></svg>We'll bring this back in your review.</span>
+      <div class="row" style="gap:8px"><span class="chip grow" style="justify-content:center;height:40px"><svg class="ic xs"><use href="#ph-flask-bold"/></svg>Try it in the sim</span><span class="chip grow" style="justify-content:center;height:40px"><svg class="ic xs"><use href="#ph-chat-teardrop-dots-bold"/></svg>Ask Miso why</span></div>
+      <span class="btn btn-primary">Got it</span>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">LES-02</span><span class="nm">Feedback, wrong on the second try</span><span class="ds">The worked solution: plain words first, then steps with a formula box, then the trap for the chosen option. The help ladder continues with [Try it in the sim] and [Ask Miso why] (A21); the concept comes back in reviews.</span></figcaption>
+</figure>
+
+<!-- ============ LES-05 exit confirm (Hindi) ============ -->
+<figure class="mock" data-id="LES-05">
+<div class="phone"><div class="screen sx s-biology" lang="hi">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="पाठ बंद करें"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i></div><span class="cnt">8 में से 6</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+  <div class="mk-lrn-lcard">
+    <span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-book-open-bold"/></svg>समझें</span>
+    <div class="scene" style="height:200px;flex:none;display:grid;place-items:center"><img src="assets/subject-biology.webp" alt="" style="width:180px;height:180px;object-fit:contain"></div>
+    <span class="t-heading">टॉपिक का शीर्षक</span>
+    <p class="t-body" style="margin:0">यहाँ विचार की छोटी-सी व्याख्या आएगी, दो या तीन पंक्तियों में।</p>
+  </div>
+  <div class="mk-lrn-act"><span class="btn btn-primary">आगे बढ़ें</span></div>
+  <div class="scrim"></div>
+  <div class="sheet" style="gap:12px">
+    <div class="grab"></div>
+    <div class="petline"><div class="av" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/cat-wave.webp" alt="" style="width:64px;height:64px"></div><div class="bubble" style="background:var(--sunken);box-shadow:none">बस 2 कार्ड बाकी!</div></div>
+    <span class="t-title">पाठ छोड़ना है?</span>
+    <span class="t-body muted" style="margin-top:-4px">आपकी प्रगति सेव है।</span>
+    <span class="btn btn-primary" style="margin-top:4px">पढ़ते रहें</span>
+    <span class="btn btn-secondary">बाहर निकलें</span>
+    <div class="homebar" style="margin:4px auto 0"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">LES-05</span><span class="nm">Exit confirm, in Hindi</span><span class="ds">Close, back gesture or Escape opens this sheet, never a silent drop. The pet notes how close the end is (only when 3 or fewer cards are left); progress is saved; [पढ़ते रहें] is the main action and swipe down keeps going. No guilt copy.</span></figcaption>
+</figure>
+
+<!-- ============ LES-08 lesson complete ============ -->
+<figure class="mock" data-id="LES-08">
+<div class="phone"><div class="screen sx mk-lrn-done">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="row" style="padding:0 8px;flex:none;height:40px"><span class="iconbtn" aria-label="Close" style="height:40px"><svg class="ic"><use href="#ph-x-bold"/></svg></span></div>
+  <div class="scene"><img src="assets/scene-lesson-complete.webp" alt="Miso is celebrating"></div>
+  <div class="body" style="gap:10px;padding-top:12px">
+    <span class="t-display center">Lesson complete!</span>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none;align-items:center"><b style="color:var(--primary)">+40</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none;align-items:center"><b style="color:var(--success-text)">83%</b><span>Accuracy</span></div>
+      <div class="stat" style="background:var(--sunken);box-shadow:none;align-items:center"><b>4:12</b><span>Time</span></div>
+    </div>
+    <div class="mk-lrn-pline"><img src="assets/plant-sapling.webp" alt="Your plant: sapling"><span class="col grow" style="gap:0"><span class="t-heading" style="color:var(--streak-text)">Streak 13 days!</span><span class="t-caption muted">Your plant grew a leaf</span></span><span class="ring" style="--p:100;--sz:40px;--w:5px;--strong:var(--streak)"><svg class="ic xs" style="color:var(--streak-text)"><use href="#ph-check-bold"/></svg></span></div>
+    <div class="mk-lrn-row" style="min-height:48px;padding:8px 14px"><span class="lead" style="width:32px;height:32px;background:var(--warning-tint);color:var(--warning-text)"><svg class="ic sm"><use href="#ph-arrow-counter-clockwise-bold"/></svg></span><span class="grow t-label">Fix 2 mistakes</span><span class="t-caption muted">Free</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+  </div>
+  <div class="bottom" style="gap:6px;padding-top:4px">
+    <span class="btn btn-primary">Continue</span>
+    <span class="t-caption muted center">Next: Bite title</span>
+  </div>
+</div></div>
+<figcaption><span class="id">LES-08</span><span class="nm">Lesson complete</span><span class="ds">Renders at once from local state: the pet's celebration, three stat tiles, the plant line for the first lesson of the day (streak +1, a new leaf, goal ring done), and the free "Fix 2 mistakes" row. At most one extra prompt per lesson complete (R15).</span></figcaption>
+</figure>
+
+<!-- ============ LES-10 rapid question ============ -->
+<figure class="mock" data-id="LES-10">
+<div class="phone"><div class="screen sx s-maths">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="t-label" style="white-space:nowrap">Rapid round</span><div class="bar" style="flex:1;margin:0 6px"><i style="width:45%"></i></div><span class="cnt">5 left</span></div>
+  <div class="mk-lrn-lcard" style="gap:10px">
+    <div class="row between"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-lightning-fill"/></svg>Quick check</span><span class="chip mk-lrn-chs" style="background:var(--primary-tint);color:var(--primary);box-shadow:none"><svg class="ic xs"><use href="#ph-lightning-fill"/></svg>3 in a row!</span></div>
+    <span class="t-body" style="font-weight:600">Short recall question goes here?</span>
+    <div class="grid2" style="gap:8px">
+      <div class="option" style="justify-content:center;min-height:64px">Option A</div>
+      <div class="option ok" style="justify-content:center;min-height:64px"><svg class="ic sm" style="color:var(--success-text)"><use href="#ph-check-circle-fill"/></svg>Option B</div>
+      <div class="option" style="justify-content:center;min-height:64px">Option C</div>
+      <div class="option" style="justify-content:center;min-height:64px">Option D</div>
+    </div>
+    <div class="mk-lrn-call ok" style="align-items:center"><svg class="ic sm"><use href="#ph-check-circle-fill"/></svg><span class="grow" style="font-weight:700;color:var(--success-text)">Correct! Next card in a moment.</span><span class="link t-caption">Why?</span></div>
+    <div class="divider" style="margin:4px 0"></div>
+    <span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-cards-bold"/></svg>Do you remember?</span>
+    <span class="t-body muted">A recall card shows its point, then you rate yourself.</span>
+    <div class="rate"><span class="again">Again<small>10 min</small></span><span class="hard">Hard<small>1 d</small></span><span class="good">Good<small>3 d</small></span><span class="easy">Easy<small>7 d</small></span></div>
+  </div>
+  <div class="mk-lrn-act"><span class="btn btn-primary">Continue</span></div>
+</div></div>
+<figcaption><span class="id">LES-10</span><span class="nm">Rapid cards, question and recall</span><span class="ds">Quick revision mode: "Rapid round" with a continuous bar and "5 left", a 2 × 2 option grid with a compact inline correct banner (auto-advance), the "3 in a row!" combo chip, and how a self-rated recall card's Again / Hard / Good / Easy row looks (R18).</span></figcaption>
+</figure>
+
+<!-- ============ LES-10 common traps ============ -->
+<figure class="mock" data-id="LES-10">
+<div class="phone"><div class="screen sx s-maths">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-lrn-lbar"><span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="t-label" style="white-space:nowrap">Rapid round</span><div class="bar" style="flex:1;margin:0 6px"><i style="width:96%"></i></div><span class="cnt">Last card</span></div>
+  <div class="mk-lrn-lcard" style="gap:12px">
+    <div class="row" style="gap:12px"><img src="assets/cat-thinking.webp" alt="" style="width:72px;height:72px;object-fit:contain;margin:-6px -4px -6px -6px"><div class="col grow" style="gap:0"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-warning-bold"/></svg>Common traps</span><span class="t-heading">Don't fall for these</span></div></div>
+    <div class="col" style="gap:8px">
+      <div class="card line" style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <span class="row top t-body" style="gap:8px"><svg class="ic sm" style="color:var(--warning-text);margin-top:2px"><use href="#ph-warning-bold"/></svg><span><b class="t-caption" style="display:block;color:var(--warning-text)">Mistake</b>A common slip, in one line.</span></span>
+        <span class="row top t-body" style="gap:8px"><svg class="ic sm" style="color:var(--success-text);margin-top:2px"><use href="#ph-check-circle-fill"/></svg><span><b class="t-caption" style="display:block;color:var(--success-text)">Correct idea</b>The right way to think about it.</span></span>
+      </div>
+      <div class="card line" style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <span class="row top t-body" style="gap:8px"><svg class="ic sm" style="color:var(--warning-text);margin-top:2px"><use href="#ph-warning-bold"/></svg><span><b class="t-caption" style="display:block;color:var(--warning-text)">Mistake</b>Another slip students make.</span></span>
+        <span class="row top t-body" style="gap:8px"><svg class="ic sm" style="color:var(--success-text);margin-top:2px"><use href="#ph-check-circle-fill"/></svg><span><b class="t-caption" style="display:block;color:var(--success-text)">Correct idea</b>What to remember instead.</span></span>
+      </div>
+      <div class="card line" style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <span class="row top t-body" style="gap:8px"><svg class="ic sm" style="color:var(--warning-text);margin-top:2px"><use href="#ph-warning-bold"/></svg><span><b class="t-caption" style="display:block;color:var(--warning-text)">Mistake</b>A third slip, kept short.</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="mk-lrn-act"><span class="btn btn-primary">Finish</span></div>
+</div></div>
+<figcaption><span class="id">LES-10</span><span class="nm">Rapid cards, common traps</span><span class="ds">The last card of a Quick revision: each trap as a "Mistake → Correct idea" pair, marked by icon and word as well as colour. [Finish] leads to the confidence check and then LES-08.</span></figcaption>
+</figure>
+
+</div>
+<div class="wall" style="margin-top:40px;flex-direction:column">
+
+<!-- ============ WEB: Desktop Home ============ -->
+<figure class="mock wide" data-id="HOME-01">
+<div class="browser"><div class="chrome"><i></i><i></i><i></i><span class="url">smriti.app/learn</span></div>
+<div class="screen sx">
+  <aside class="sidebar mk-lrn-wside">
+    <div class="row" style="gap:8px;padding:2px 10px 14px"><span style="font:800 20px/1 var(--f-latin)">Smriti</span><span style="font:800 17px/1 var(--f-deva);color:var(--muted)">स्मृति</span></div>
+    <span class="nav on"><svg class="ic"><use href="#ph-house-fill"/></svg>Learn</span>
+    <span class="nav"><svg class="ic"><use href="#ph-flask-bold"/></svg>Labs</span>
+    <span class="nav"><svg class="ic"><use href="#ph-exam-bold"/></svg>Practice</span>
+    <span class="nav"><svg class="ic"><use href="#ph-users-three-bold"/></svg>Friends</span>
+    <span class="nav"><svg class="ic"><use href="#ph-user-circle-bold"/></svg>Me</span>
+    <span class="sp"></span>
+    <div class="mk-lrn-wcard">
+      <div class="row" style="gap:6px"><img src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving" style="width:72px;height:72px;object-fit:contain;margin:-10px -6px -6px -8px"><div class="col grow" style="gap:0"><span class="row t-heading" style="gap:4px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12 days</span><span class="t-caption muted">One lesson waters it today</span></div></div>
+      <div class="bar gold"><i style="width:40%"></i></div>
+      <div class="row between"><span class="t-caption muted">4 of 10 min</span><span class="mk-lrn-frz"><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i><i><svg class="ic xs"><use href="#ph-snowflake-fill"/></svg></i>2 ready</span></div>
+      <div class="divider"></div>
+      <div class="row" style="gap:8px"><div class="avatar" style="background:var(--surface)"><img src="assets/cat-wave.webp" alt="Miso, looking happy"></div><div class="col grow" style="gap:0"><span class="t-label">Miso</span><span class="t-caption muted">Happy · Level 4</span></div></div>
+    </div>
+  </aside>
+  <div class="mk-lrn-wmain">
+    <div class="mk-lrn-wtop">
+      <span class="chip" style="height:36px;color:var(--primary);font-size:14px">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
+      <div class="mk-lrn-wsearch"><svg class="ic sm"><use href="#ph-magnifying-glass-bold"/></svg>Search topics, formulas, PYQs<span class="mk-lrn-kbd">/</span></div>
+      <span class="sp"></span>
+      <span class="pill" style="box-shadow:inset 0 0 0 1px var(--line)"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span>
+      <span class="t-heading">Hi, Aarav</span>
+    </div>
+    <div class="mk-lrn-wcols">
+      <div class="col" style="gap:16px;min-width:0">
+        <div class="mk-lrn-hero s-physics" style="min-height:190px;padding:22px 24px">
+          <img class="art" src="assets/subject-physics.webp" alt="" style="width:170px;height:170px;right:10px;top:10px">
+          <span class="kick">Continue</span>
+          <span class="t-title ttl" style="padding-right:180px;font-size:26px;line-height:32px">Topic title</span>
+          <span class="meta" style="padding-right:180px">Physics · 6 min left</span>
+          <div class="bar on-strong" style="margin:6px 180px 8px 0"><i style="width:62%"></i></div>
+          <div class="row" style="gap:14px"><span class="mk-lrn-hbtn">Resume<svg class="ic sm"><use href="#ph-arrow-right-bold"/></svg></span><span class="t-label">62% done</span></div>
+        </div>
+        <div class="col s-physics" style="gap:10px">
+          <div class="row between"><span class="t-label">Up next in Chapter title <span class="t-caption muted">· 4 topics left</span></span><span class="row" style="gap:12px"><span class="chip mk-lrn-chs"><svg class="ic xs"><use href="#ph-note-bold"/></svg>Cheat sheet</span><span class="link t-label">See chapter</span></span></div>
+          <div class="mk-lrn-strip" style="margin:0;padding:0 4px;-webkit-mask-image:none;mask-image:none;justify-content:space-between">
+            <i class="line" style="--fill:236px;left:32px;width:calc(100% - 64px)"></i>
+            <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 1</span></span>
+            <span class="mk-lrn-node done"><span class="n"><svg class="ic"><use href="#ph-check-bold"/></svg></span><span class="lab">Topic 2</span></span>
+            <span class="mk-lrn-node rev"><span class="n"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><span class="lab">Review 6</span></span>
+            <span class="mk-lrn-node cur"><span class="ring" style="--p:62"><svg class="ic sm stext"><use href="#ph-play-fill"/></svg></span><span class="lab">Topic 3</span></span>
+            <span class="mk-lrn-node next"><span class="n">4</span><span class="lab">Topic 4</span></span>
+            <span class="mk-lrn-node"><span class="n">5</span><span class="lab">Topic 5</span></span>
+            <span class="mk-lrn-node"><span class="n">6</span><span class="lab">Topic 6</span></span>
+          </div>
+        </div>
+        <div class="mk-lrn-wplan">
+          <div class="row between" style="min-height:44px"><span class="t-heading">Today's plan</span><span class="row" style="gap:10px"><span class="t-caption muted">1 of 4 done</span><span class="link t-label">See all</span></span></div>
+          <div class="it"><span class="k" style="background:var(--success-tint);color:var(--success-text)"><svg class="ic sm"><use href="#ph-check-bold"/></svg></span><span class="col grow" style="gap:0"><span class="t-label">Review 24 cards</span><span class="t-caption muted">6 min · All subjects</span></span><span class="t-caption" style="color:var(--success-text)">Done</span></div>
+          <div class="it s-physics"><span class="k" style="background:var(--tint);color:var(--stext)"><svg class="ic sm"><use href="#ph-book-open-bold"/></svg></span><span class="col grow" style="gap:0"><span class="t-label">Learn Topic title</span><span class="t-caption muted">12 min · Physics</span></span><span class="btn sm btn-primary" style="box-shadow:none">Start</span></div>
+          <div class="it"><span class="k"><svg class="ic sm"><use href="#ph-target-bold"/></svg></span><span class="col grow" style="gap:0"><span class="t-label">Drill: Concept name</span><span class="t-caption muted">8 min · Mathematics</span></span><span class="btn sm btn-secondary">Start</span></div>
+        </div>
+      </div>
+      <div class="col" style="gap:14px;min-width:0">
+        <span class="t-heading">Your subjects</span>
+        <div class="grid2">
+          <div class="tile mk-lrn-tile s-physics" style="min-height:150px"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span><span class="nx">Next: Topic title</span><div class="bar"><i style="width:34%"></i></div><span class="t-caption muted">21 chapters</span></div>
+          <div class="tile mk-lrn-tile s-chemistry" style="min-height:150px;box-shadow:var(--sh-raised)"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="chip mk-lrn-chs" style="align-self:flex-start;margin-bottom:auto"><svg class="ic xs"><use href="#ph-gift-bold"/></svg>Free today</span><span class="name">Chemistry</span><span class="nx">Next: Topic title</span><div class="bar"><i style="width:18%"></i></div><span class="t-caption muted">20 chapters</span></div>
+          <div class="tile mk-lrn-tile s-maths" style="min-height:150px"><img class="art" src="assets/subject-maths.webp" alt=""><span class="name">Mathematics</span><span class="nx">Next: Topic title</span><div class="bar"><i style="width:9%"></i></div><span class="t-caption muted">25 chapters</span></div>
+          <div class="mk-lrn-qt" style="justify-content:flex-end"><span class="lead"><svg class="ic"><use href="#ph-brain-bold"/></svg></span><span class="t-label">Memory</span><span class="t-caption muted">Decks, palaces and focus timer</span></div>
+        </div>
+        <div class="mk-lrn-row"><span class="lead"><svg class="ic"><use href="#ph-book-bookmark-bold"/></svg></span><span class="col grow" style="gap:0"><span class="t-label">Your library</span><span class="t-caption muted">Formulas, notes and saved cards</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="fab mk-lrn-fab" style="bottom:24px;right:24px" aria-label="Ask Miso"><img src="assets/cat-thinking.webp" alt=""></div>
+</div></div>
+<figcaption><span class="id">HOME-01 · WEB</span><span class="nm">Desktop Home (≥ 1024 px)</span><span class="ds">The sidebar holds navigation plus the compact streak, plant and pet card, so the streak card leaves the main column. Left column: hero, the path strip with a review node and [Cheat sheet], and today's plan inline (top 3). Right: subjects (the hovered tile is raised), Memory and Library. "/" focuses search.</span></figcaption>
+</figure>
+
+<!-- ============ WEB: Desktop lesson with tutor panel ============ -->
+<figure class="mock wide" data-id="LES-01">
+<div class="browser"><div class="chrome"><i></i><i></i><i></i><span class="url">smriti.app/learn/lesson</span></div>
+<div class="screen sx s-chemistry">
+  <div class="col" style="flex:1;min-width:0;gap:0;align-items:center">
+    <div class="mk-lrn-lbar" style="width:720px;height:64px;padding:0"><span class="iconbtn" aria-label="Close lesson (Escape)"><svg class="ic"><use href="#ph-x-bold"/></svg></span><div class="segbar"><i class="on"></i><i class="on"></i><i class="half"></i><i></i><i></i><i></i><i></i><i></i></div><span class="cnt">3 of 8</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-bold"/></svg></span></div>
+    <div class="row" style="gap:14px;flex:1;min-height:0;align-items:center;padding-bottom:8px">
+      <span class="mk-lrn-arrow" aria-label="Previous card"><svg class="ic sm"><use href="#ph-caret-left-bold"/></svg></span>
+      <div class="mk-lrn-lcard" style="width:640px;margin:0;height:100%;padding:24px;gap:14px;flex:none">
+        <div class="row"><span class="mk-lrn-kick"><svg class="ic xs"><use href="#ph-book-open-bold"/></svg>Explainer</span><span class="mk-lrn-narr"><svg class="ic sm"><use href="#ph-speaker-high-bold"/></svg></span></div>
+        <div class="scene" style="height:270px;flex:none;display:grid;place-items:center;position:relative"><img src="assets/subject-chemistry.webp" alt="Illustration for this card" style="width:250px;height:250px;object-fit:contain"><span class="chip mk-lrn-chs" style="position:absolute;left:12px;bottom:12px"><svg class="ic xs"><use href="#ph-eye-bold"/></svg>Labels on</span></div>
+        <span class="t-title">Topic title</span>
+        <p class="t-body" style="margin:0;max-width:60ch">A short explanation of the idea goes here, two or three lines. A <span class="mk-lrn-term">key term</span> is highlighted, and so is <span class="mk-lrn-term">another term</span>. Lines stay under about 60 characters on wide screens.</p>
+        <div class="row" style="margin-top:auto;gap:12px"><span class="t-caption muted row" style="gap:6px"><span class="mk-lrn-kbd" style="margin:0">←</span><span class="mk-lrn-kbd" style="margin:0">→</span>move · <span class="mk-lrn-kbd" style="margin:0;padding:0 6px">Enter</span>continue</span><span class="sp"></span><span class="btn btn-primary" style="width:200px">Continue</span></div>
+      </div>
+      <span class="mk-lrn-arrow" aria-label="Next card"><svg class="ic sm"><use href="#ph-caret-right-bold"/></svg></span>
+    </div>
+  </div>
+  <aside class="mk-lrn-tutor">
+    <div class="row" style="padding:14px 16px;border-bottom:1px solid var(--line);gap:10px"><div class="avatar" style="background:var(--primary-tint)"><img src="assets/cat-headphones.webp" alt="Miso"></div><div class="col grow" style="gap:0"><span class="t-label">Ask Miso</span><span class="t-caption muted">About card 3 · Topic title</span></div><span class="iconbtn" aria-label="Close tutor"><svg class="ic sm"><use href="#ph-x-bold"/></svg></span></div>
+    <div class="col" style="flex:1;padding:16px;gap:10px;overflow:hidden">
+      <div class="mk-lrn-msg pet">Hi! Ask me anything about this card.</div>
+      <div class="mk-lrn-msg me">Can you say it in simpler words?</div>
+      <div class="mk-lrn-msg pet">Sure. Here's the idea in two short steps, written by the tutor at the student's level.</div>
+      <div class="row wrap" style="gap:6px;margin-top:4px"><span class="chip">Give an example</span><span class="chip">Explain "key term"</span><span class="chip">Quiz me</span></div>
+      <span class="sp"></span>
+      <span class="t-caption muted center">Uses 1 of your free tutor questions today.</span>
+    </div>
+    <div class="row" style="padding:12px 14px 16px;gap:8px;border-top:1px solid var(--line)"><div class="input grow" style="height:44px">Type a question</div><span class="iconbtn filled" aria-label="Speak"><svg class="ic sm"><use href="#ph-microphone-bold"/></svg></span><span class="iconbtn" style="background:var(--primary);color:var(--on-primary)" aria-label="Send"><svg class="ic sm"><use href="#ph-paper-plane-right-fill"/></svg></span></div>
+  </aside>
+</div></div>
+<figcaption><span class="id">LES-01 · WEB</span><span class="nm">Desktop lesson with the tutor panel</span><span class="ds">The card column stays within 720 px on `bg`, with previous and next arrows beside it and keyboard hints. The tutor opens as a right-hand panel, not a sheet, scoped to the current card with suggestion chips and the free-quota line. No sidebar or tab bar inside the player.</span></figcaption>
+</figure>
+
+</div>
+</div>
+</section>

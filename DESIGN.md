@@ -142,6 +142,14 @@ Built twice from the same tokens and this spec: `packages/ui-native` for the mob
 | **Empty state** | Illustration (pet or plant), one line of copy, one action. |
 | **Formula box** | Subject tint background, KaTeX SVG, tappable symbols, "Add to formula vault". |
 | **Mock palette cell** | 40 × 40, shapes and colours from §2.4, question number in `label`. |
+| **Third-party sign-in buttons** | Continue with Google and Continue with Apple. Height 56, full width, pill shape, the same size as each other (Google on top). Colours from `thirdParty.google.*` and `thirdParty.apple.*` only. The one documented brand exception to the tokens-only rule (below). |
+
+**Third-party sign-in buttons: brand exception.** These buttons follow Google's and Apple's rules, not our Button variants ([Google branding guidelines](https://developers.google.com/identity/branding-guidelines), [Apple Sign in with Apple HIG](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple)).
+- Their colours are Google's and Apple's own, kept in `tokens.json` under `thirdParty` so components still read tokens. Never use those values anywhere else, and never apply our colours, glow or press scale to these buttons.
+- Google: the light theme in light mode and the dark theme in Night Colour (neutral is allowed on tinted grounds). The standard-colour G logo, never recoloured, resized or shown alone. Label "Continue with Google" or "Sign in with Google" only, localised ("Google के साथ जारी रखें"). Padding per platform from the tokens.
+- On web, Google renders the button (`renderButton`); on mobile, use the sign-in library's button. Draw our own only for the redirect fallback, with Google's asset and these tokens.
+- Apple (iOS only): the system button (black in light mode, white in Night Colour), title "Continue with Apple", the same height and width as the Google button.
+- Both show the trust line under them on every sign-in surface (docs/ux/auth.md §0.2).
 
 **Icons:** Phosphor Icons (MIT; `phosphor-react-native` on mobile, `@phosphor-icons/react` on web), "bold" weight for outlines and "fill" for active states, at 20, 24 and 32 px. Icons that carry meaning always have a text label or an accessibility label.
 

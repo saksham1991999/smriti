@@ -1,0 +1,960 @@
+<style>
+/* Sign-in area (20-auth). Tokens only; Google/Apple colours come from the kit's brand-exception classes. */
+#signin .btn-google, #signin .btn-apple { border-radius: 28px; }
+#signin .btn-google:lang(hi) { font-family: var(--f-deva); font-weight: 600; }
+#signin .wall > h3 { flex-basis: 100%; margin: 18px 0 -14px; font-size: 18px; font-weight: 800; }
+#signin .wall > p.grp { flex-basis: 100%; margin: 0 0 -10px; color: var(--g-muted); font-size: 13px; max-width: 90ch; }
+.mk-auth-ill { position: relative; display: flex; justify-content: center; align-items: center; flex: none; }
+.mk-auth-ill > img { height: 100%; width: auto; max-width: 100%; object-fit: contain; min-height: 0; }
+.mk-auth-bub { position: absolute; top: 10px; right: 2px; max-width: 128px; background: var(--surface); box-shadow: var(--sh-raised); border-radius: 16px 16px 16px 4px; padding: 8px 12px; font: 700 13px/18px var(--f-latin); color: var(--ink); text-align: left; }
+.sx :lang(hi) .mk-auth-bub, .sx .mk-auth-bub:lang(hi) { font-family: var(--f-deva); }
+.sx.dark .mk-auth-bub { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+.mk-auth-tag { position: absolute; left: calc(50% - 55px); top: 120px; font: 800 11px/1 var(--f-latin); color: var(--on-streak); transform: translate(-50%,-50%); }
+.mk-auth-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.mk-auth-stat { background: var(--sunken); border-radius: 16px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; font: 800 16px/20px var(--f-latin); font-variant-numeric: tabular-nums; }
+.mk-auth-stat small { font: 600 13px/18px var(--f-latin); color: var(--muted); }
+.sx.dark .sheet .mk-auth-stat { background: var(--surface); }
+.mk-auth-trust { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--muted); font: 600 12px/16px var(--f-latin); text-align: center; }
+.mk-auth-trust .ic { color: var(--success-text); }
+.mk-auth-legal { color: var(--muted); font: 600 11px/16px var(--f-latin); text-align: center; }
+.mk-auth-icirc { width: 64px; height: 64px; border-radius: 32px; background: var(--primary-tint); color: var(--primary); display: grid; place-items: center; margin: 0 auto; flex: none; }
+.mk-auth-icirc.sm { width: 56px; height: 56px; border-radius: 28px; margin: 0; }
+.mk-auth-kick { display: flex; align-items: center; gap: 8px; font: 700 13px/18px var(--f-latin); color: var(--muted); }
+.mk-auth-word { font: 800 16px/1 var(--f-latin); color: var(--primary); letter-spacing: -0.2px; }
+.mk-auth-cb { width: 24px; height: 24px; border-radius: 7px; box-shadow: inset 0 0 0 2px var(--line); display: grid; place-items: center; flex: none; background: var(--surface); }
+.mk-auth-cb.on { background: var(--primary); box-shadow: none; color: var(--on-primary); }
+.mk-auth-qr { width: 220px; height: 220px; margin: 2px auto; border-radius: 20px; background: var(--surface); box-shadow: var(--sh-card); padding: 14px; flex: none; }
+.mk-auth-qr > div { width: 100%; height: 100%; border-radius: 12px; border: 2px dashed var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; padding: 8px; }
+.mk-auth-spin { width: 22px; height: 22px; border-radius: 11px; border: 3px solid var(--track); border-top-color: var(--primary); flex: none; }
+.mk-auth-indet { position: relative; } .mk-auth-indet > i { width: 40%; margin-left: 30%; background: var(--primary); }
+.mk-auth-prof { height: 160px; border-radius: 24px; background: var(--surface); box-shadow: var(--sh-card); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.mk-auth-prof .pc { width: 96px; height: 96px; border-radius: 48px; overflow: hidden; display: grid; place-items: center; }
+.mk-auth-prof .pc img { width: 112px; height: 112px; object-fit: contain; margin-top: 20px; }
+.mk-auth-ret { margin: -40px 22px 0; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--sh-raised); z-index: 2; flex: none; }
+/* System UI stand-ins (Android Credential Manager, Chrome FedCM): neutral, Roboto, not our components */
+.mk-auth-scrim2 { position: absolute; inset: 0; background: var(--scrim); z-index: 8; }
+.mk-auth-sys { position: absolute; left: 0; right: 0; bottom: 0; z-index: 9; background: var(--surface); border-radius: 28px 28px 0 0; padding: 10px 22px 14px; display: flex; flex-direction: column; gap: 14px; font-family: Roboto, var(--f-latin); }
+.mk-auth-sys-grab { width: 32px; height: 4px; border-radius: 2px; background: var(--line); margin: 0 auto; }
+.mk-auth-sys-k { font: 500 13px/18px Roboto, var(--f-latin); color: var(--muted); }
+.mk-auth-sys-t { font: 500 22px/28px Roboto, var(--f-latin); color: var(--ink); letter-spacing: 0; }
+.mk-auth-sys-s { font: 500 14px/20px Roboto, var(--f-latin); color: var(--muted); margin-top: 2px; font-weight: 400; }
+.mk-auth-acct { display: flex; align-items: center; gap: 14px; padding: 10px 2px; }
+.mk-auth-ini { width: 40px; height: 40px; border-radius: 20px; display: grid; place-items: center; font: 500 17px/1 Roboto, var(--f-latin); background: var(--sunken); color: var(--ink); flex: none; }
+.mk-auth-sys-n { font: 500 15px/20px Roboto, var(--f-latin); color: var(--ink); }
+.mk-auth-sys-e { font: 400 13px/18px Roboto, var(--f-latin); color: var(--muted); }
+.mk-auth-sys-div { height: 1px; background: var(--line); margin-left: 56px; }
+.mk-auth-sys-f { font: 400 12px/17px Roboto, var(--f-latin); color: var(--muted); }
+.mk-auth-fedcm { position: absolute; right: 20px; top: 12px; width: 340px; background: var(--surface); border-radius: 12px; box-shadow: var(--sh-raised), 0 0 0 1px var(--line); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; font-family: Roboto, var(--f-latin); z-index: 3; }
+.mk-auth-fedbtn { height: 36px; border-radius: 18px; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; font: 500 14px/1 Roboto, var(--f-latin); }
+.mk-auth-thead { width: 32px; height: 32px; border-radius: 16px; background: var(--streak-tint); overflow: hidden; flex: none; display: grid; place-items: center; }
+.mk-auth-thead img { width: 40px; height: 40px; object-fit: contain; margin-top: 6px; }
+.mk-auth-spinner { width: 20px; height: 20px; border-radius: 10px; border: 2.5px solid color-mix(in srgb, currentColor 25%, transparent); border-top-color: currentColor; }
+.mk-auth-ios { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 270px; border-radius: 14px; background: color-mix(in srgb, var(--surface) 92%, var(--sunken)); z-index: 9; text-align: center; font-family: -apple-system, "SF Pro Text", var(--f-latin); overflow: hidden; }
+.mk-auth-ios-b { padding: 18px 16px 16px; display: flex; flex-direction: column; gap: 4px; }
+.mk-auth-ios-t { font: 600 17px/22px -apple-system, "SF Pro Text", var(--f-latin); color: var(--ink); }
+.mk-auth-ios-m { font: 400 13px/18px -apple-system, "SF Pro Text", var(--f-latin); color: var(--ink); }
+.mk-auth-ios-r { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+.mk-auth-ios-r span { height: 44px; display: grid; place-items: center; font: 400 17px/1 -apple-system, "SF Pro Text", var(--f-latin); color: var(--primary); }
+.mk-auth-ios-r span + span { border-left: 1px solid var(--line); }
+.mk-auth-noshrink > * { flex-shrink: 0; }
+.mk-auth-boards { display: grid; grid-template-columns: repeat(2, 360px); gap: 20px; }
+.mk-auth-board { background: var(--bg); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.mk-auth-chiprow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mk-auth-gis { height: 44px; font-size: 15px; }
+.mk-auth-urlbar { height: 40px; margin: 2px 12px 0; border-radius: 20px; background: var(--sunken); display: flex; align-items: center; gap: 8px; padding: 0 14px; color: var(--muted); font: 500 13px/1 Roboto, var(--f-latin); flex: none; }
+</style>
+<section class="area" id="signin" data-title="Sign-in and accounts">
+<div class="wrap">
+<h2>Sign-in and accounts</h2>
+<p class="lede">Guest first, then one tap on Google when saving matters. iPhone adds Sign in with Apple under Google at the same size; Android and web are Google only. Covers linking, merge, sign out, delete, guardian consent for 13 to 17, parent sign-in for under-13s, errors and the web page. Every login surface carries the trust line and only Google's approved label.</p>
+<p class="spec">Specs: <code>docs/ux/auth.md</code> · Flow: <code>docs/flows/auth.md</code> · Research: <code>docs/research/COMPETITOR_FLOWS.md</code> §11</p>
+<div class="wall">
+<h3>Soft login sheet</h3><p class="grp">AUTH-01 rises 1.2 s after the lesson-complete counts finish. Reason <code>lesson_3</code>. It is the only prompt on this lesson complete (R15) and is rationed by the soft-wall budget (R29).</p>
+<figure class="mock" data-id="AUTH-01">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:160px;"><img src="assets/cat-plant.webp" alt="Miso holding your plant"><span class="mk-auth-bub">Let's keep all of this safe!</span></div>
+    <div class="t-title center">Keep Miso and your plant safe on any phone.</div>
+    <div class="t-body muted center" style="margin-top:-4px">You've finished 3 lessons. Sign in once and they're saved to your Google account.</div>
+    <div class="mk-auth-stats">
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span><b>2-day</b> <small>streak</small></span></div>
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--primary)"><use href="#ph-book-open-bold"/></svg><span><b>3</b> <small>lessons</small></span></div>
+    </div>
+    
+    <div class="col" style="gap:12px;margin-top:10px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-secondary">Later</div></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+    
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-01</span><span class="nm">Soft login, Android</span><span class="ds">Reason lesson_3 over LES-08. Google is the only button on Android. Later is a full-size secondary button (flow A14), with the trust line from R29 and the legal footer.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-01">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:118px;"><img src="assets/cat-plant.webp" alt="Miso holding your plant"><span class="mk-auth-bub">Let's keep all of this safe!</span></div>
+    <div class="t-title center">Keep Miso and your plant safe on any phone.</div>
+    <div class="t-body muted center" style="margin-top:-4px">You've finished 3 lessons. Sign in once and they're saved to your Google account.</div>
+    <div class="mk-auth-stats">
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span><b>2-day</b> <small>streak</small></span></div>
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--primary)"><use href="#ph-book-open-bold"/></svg><span><b>3</b> <small>lessons</small></span></div>
+    </div>
+    <div class="mk-auth-trust" style="margin-top:2px"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg><span>Google will open for a moment.</span></div>
+    <div class="col" style="gap:12px;margin-top:4px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-apple"><svg class="ic sm"><use href="#ph-apple-logo-fill"/></svg><span>Continue with Apple</span></div><div class="btn btn-secondary">Later</div></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+    <div class="homebar" style="margin:2px auto -14px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-01</span><span class="nm">Soft login, iOS</span><span class="ds">Same sheet on iPhone: Sign in with Apple sits 12 below Google at the same size (guideline 4.8, Google's prominence rule).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-01">
+<div class="phone"><div class="screen sx" lang="hi">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">पाठ पूरा!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>सटीकता</span></div>
+      <div class="stat tint"><b>4:10</b><span>समय</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:160px;"><img src="assets/cat-plant.webp" alt="Miso आपका पौधा पकड़े है"><span class="mk-auth-bub">आइए, यह सब सुरक्षित रखें!</span></div>
+    <div class="t-title center">Miso और अपना पौधा हर फ़ोन पर सुरक्षित रखें।</div>
+    <div class="t-body muted center" style="margin-top:-4px">आपने 3 लेसन पूरे कर लिए। एक बार साइन इन करें, ये आपके Google अकाउंट में सेव हो जाएँगे।</div>
+    <div class="mk-auth-stats">
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span><b>2 दिन</b> <small>की स्ट्रीक</small></span></div>
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--primary)"><use href="#ph-book-open-bold"/></svg><span><b>3</b> <small>लेसन</small></span></div>
+    </div>
+    
+    <div class="col" style="gap:12px;margin-top:10px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Google के साथ जारी रखें</span></div><div class="btn btn-secondary">बाद में</div></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे।</span></div>
+    <div class="mk-auth-legal">आगे बढ़कर आप <span class="link">शर्तों</span> और <span class="link">निजता नीति</span> से सहमत होते हैं।</div>
+    
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-01</span><span class="nm">Soft login, Hindi</span><span class="ds">Hindi UI. The Google label is localised as Google allows (Noto Sans Devanagari, since Roboto has no Devanagari). Android.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-01">
+<div class="phone"><div class="screen sx dark">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:118px;"><img src="assets/cat-plant.webp" alt="Miso holding your plant"><span class="mk-auth-bub">Let's keep all of this safe!</span></div>
+    <div class="t-title center">Keep Miso and your plant safe on any phone.</div>
+    <div class="t-body muted center" style="margin-top:-4px">You've finished 3 lessons. Sign in once and they're saved to your Google account.</div>
+    <div class="mk-auth-stats">
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span><b>2-day</b> <small>streak</small></span></div>
+      <div class="mk-auth-stat"><svg class="ic" style="color:var(--primary)"><use href="#ph-book-open-bold"/></svg><span><b>3</b> <small>lessons</small></span></div>
+    </div>
+    <div class="mk-auth-trust" style="margin-top:2px"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg><span>Google will open for a moment.</span></div>
+    <div class="col" style="gap:12px;margin-top:4px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-apple"><svg class="ic sm"><use href="#ph-apple-logo-fill"/></svg><span>Continue with Apple</span></div><div class="btn btn-secondary">Later</div></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+    <div class="homebar" style="margin:2px auto -14px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-01</span><span class="nm">Soft login, Night Colour</span><span class="ds">Dark mode on iOS: Google's dark theme (#131314 fill, #8E918F stroke, #E3E3E3 text) and Apple's WHITE style. Sheet on surfaceRaised.</span></figcaption>
+</figure>
+
+<h3>Hard login sheet</h3><p class="grp">AUTH-02 is full height and always closable. After sign-in it closes and the pending action resumes in place.</p>
+<figure class="mock" data-id="AUTH-02">
+<div class="phone"><div class="screen sx x-neet">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="appbar"><span class="iconbtn"></span><span class="ttl">Friends</span><span class="iconbtn"><svg class="ic"><use href="#ph-user-plus-bold"/></svg></span></div>
+  <div class="body"><div class="card" style="height:120px"></div><div class="card" style="height:80px"></div></div>
+  <nav class="tabbar"><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-users-three-fill"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav><div class="scrim"></div>
+  <div class="sheet" style="top:42px;gap:10px;padding-top:8px">
+    <div class="row" style="justify-content:flex-end;margin-right:-8px"><span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span></div>
+    <div class="mk-auth-ill scene" style="height:236px;gap:0;display:flex;justify-content:center;align-items:flex-end;background:var(--primary-tint);padding-bottom:6px"><img src="assets/cat-wave.webp" alt="Miso waving to a friend" style="height:214px"><img src="assets/dog-wave.webp" alt="" style="height:132px;margin-left:-18px;margin-bottom:8px"></div>
+    <div class="t-title center" style="margin-top:4px">Sign in to add friends</div>
+    <div class="t-body muted center" style="margin-top:-4px">Friends and leagues need an account so others can find you.</div>
+    
+    <div class="sp"></div>
+    
+    <div class="col" style="gap:12px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-secondary">Back</div></div>
+    
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-02</span><span class="nm">Hard login: social</span><span class="ds">Reason social, opened from the Friends tab in the Smriti NEET app (exam accent on primary only; the Google button keeps Google's colours).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-02">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="appbar"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="ttl">Smriti Pro</span><span class="iconbtn"></span></div>
+  <div class="body"><div class="scene" style="height:200px"></div></div><div class="scrim"></div>
+  <div class="sheet" style="top:42px;gap:10px;padding-top:8px">
+    <div class="row" style="justify-content:flex-end;margin-right:-8px"><span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span></div>
+    <div class="mk-auth-ill" style="height:196px;"><img src="assets/cat-price-tag.webp" alt="Miso holding up a ₹1 tag"><span class="mk-auth-tag">₹1</span></div>
+    <div class="t-title center" style="margin-top:4px">Sign in to start Pro</div>
+    <div class="t-body muted center" style="margin-top:-4px">Your Pro plan is linked to your account, so it works on every Smriti app.</div>
+    <div class="center"><span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none"><svg class="ic xs"><use href="#ph-sparkle-fill"/></svg>₹1 for your first month, then ₹99/month</span></div>
+    <div class="sp"></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg><span>Google will open for a moment.</span></div>
+    <div class="col" style="gap:12px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-apple"><svg class="ic sm"><use href="#ph-apple-logo-fill"/></svg><span>Continue with Apple</span></div><div class="btn btn-secondary">Back</div></div>
+    
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-02</span><span class="nm">Hard login: start_trial</span><span class="ds">Reason start_trial over the paywall (PAY-01), iOS. The ₹1 on the tag is overlaid by the app; the art has no text. Trial chip from the spec.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-02">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="gap:12px">
+    <div class="row between">
+      <div class="row"><div class="avatar"><img src="assets/cat-wave.webp" alt=""></div><div class="col" style="gap:0"><span class="t-caption muted">Good evening</span><span class="t-heading">Aarav</span></div></div>
+      <div class="row" style="gap:6px"><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
+    </div>
+    
+    <div class="streakcard"><div class="col grow" style="gap:6px"><span class="t-heading">One lesson waters it today</span><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">4 of 10 min today</span></div><img class="art" src="assets/plant-sapling.webp" alt=""></div>
+    <div class="continue s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="t-caption" style="opacity:.9">CONTINUE · DEEP DIVE</span><span class="t-title" style="padding-right:96px">Topic title</span><div class="bar on-strong"><i style="width:62%"></i></div><div class="row between"><span class="t-label">62% · 6 min left</span><span class="btn sm btn-onstrong">Resume</span></div></div>
+    <div class="grid2"><div class="tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span></div><div class="tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="name">Chemistry</span></div></div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="top:42px;gap:10px;padding-top:8px">
+    <div class="row" style="justify-content:flex-end;margin-right:-8px"><span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span></div>
+    <div class="mk-auth-ill" style="height:168px;"><img src="assets/ui-signin-saved.webp" alt="Miso holding the plant safe inside a shield"></div>
+    <div class="t-title center" style="margin-top:4px">Welcome back!</div>
+    <div class="t-body muted center" style="margin-top:-4px">Sign in to bring back your streak, pet and notes.</div>
+    
+    <div class="sp"></div>
+    
+    <div class="col" style="gap:12px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-secondary">Back</div></div>
+    <div class="list" style="box-shadow:inset 0 0 0 1.5px var(--line)"><div class="li"><span class="lead" style="background:var(--primary-tint);color:var(--primary)"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span><span class="grow t-label">Restoring your child's account? Sign in with your own Google account</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div></div><div class="btn btn-ghost" style="height:40px;font-size:14px">Used Apple on your iPhone?</div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-02</span><span class="nm">Hard login: restore</span><span class="ds">Reason restore from ONB-01 "I already have an account", Android. Adds the child-restore row (to AUTH-24) and the AUTH-10 Apple help link.</span></figcaption>
+</figure>
+
+<h3>Google handoff and welcome</h3><p class="grp">Google's own UI runs first. Our sheet then shows a waiting state, and the result screens say plainly what happened.</p>
+<figure class="mock" data-id="AUTH-04">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:150px;"><img src="assets/cat-plant.webp" alt=""></div>
+    <div class="t-title center">Keep Miso and your plant safe on any phone.</div>
+    <div class="t-body muted center">You've finished 3 lessons. Sign in once and they're saved to your Google account.</div>
+    <div style="height:200px"></div>
+  </div><div class="mk-auth-scrim2"></div>
+  <div class="mk-auth-sys" role="dialog" aria-label="Sign in with Google, system sheet">
+    <div class="mk-auth-sys-grab"></div>
+    <div class="row" style="gap:8px"><svg class="g" style="width:18px;height:18px"><use href="#g-logo"/></svg><span class="mk-auth-sys-k">Sign in with Google</span></div>
+    <div><div class="mk-auth-sys-t">Choose an account</div><div class="mk-auth-sys-s">to continue to Smriti</div></div>
+    <div class="col" style="gap:2px">
+      <div class="mk-auth-acct"><span class="mk-auth-ini">A</span><div class="grow"><div class="mk-auth-sys-n">Aarav Kumar</div><div class="mk-auth-sys-e">aarav.k@gmail.com</div></div></div>
+      <div class="mk-auth-sys-div"></div>
+      <div class="mk-auth-acct"><span class="mk-auth-ini">S</span><div class="grow"><div class="mk-auth-sys-n">Sunita Kumar</div><div class="mk-auth-sys-e">sunita.kumar@gmail.com</div></div></div>
+    </div>
+    <div class="mk-auth-sys-f">To continue, Google will share your name, email address and profile picture with Smriti. See Smriti's privacy policy and terms of service.</div>
+    <div class="homebar" style="margin:4px auto -6px;background:var(--muted)"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-04</span><span class="nm">Google handoff, system sheet</span><span class="ds">Android Credential Manager bottom sheet over AUTH-01, drawn the way the system shows it (neutral, Google-owned; we draw nothing over it). Two accounts on the phone.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-04">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:118px;"><img src="assets/cat-plant.webp" alt=""></div>
+    <div class="t-title center">Keep Miso and your plant safe on any phone.</div>
+    <div class="t-body muted center" style="margin-top:-4px">You've finished 3 lessons. Sign in once and they're saved to your Google account.</div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg><span>Google will open for a moment.</span></div>
+    <div class="col" style="gap:12px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span class="mk-auth-spinner"></span></div><div class="btn btn-apple"><svg class="ic sm"><use href="#ph-apple-logo-fill"/></svg><span>Continue with Apple</span></div><div class="btn btn-secondary">Later</div></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="homebar" style="margin:4px auto -14px"></div>
+  </div><div class="mk-auth-scrim2" style="background:color-mix(in srgb, var(--scrim) 60%, transparent)"></div>
+  <div class="mk-auth-ios" role="alertdialog" aria-label="iOS system alert">
+    <div class="mk-auth-ios-b"><div class="mk-auth-ios-t">“Smriti” Wants to Use “google.com” to Sign In</div><div class="mk-auth-ios-m">This allows the app and website to share information about you.</div></div>
+    <div class="mk-auth-ios-r"><span>Cancel</span><span style="font-weight:600">Continue</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-04</span><span class="nm">Google handoff, iOS alert</span><span class="ds">iPhone: after the prep line and a tap, the Google button shows its spinner and iOS shows its own alert before ASWebAuthenticationSession opens (system UI; wording set by iOS).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-04">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:12px;align-items:center;padding-bottom:40px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:150px;"><img src="assets/cat-thinking.webp" alt=""></div>
+    <div class="t-heading center" aria-live="polite">Signing you in…</div>
+    <div class="bar mk-auth-indet" style="width:200px"><i></i></div>
+    <div class="t-caption muted center" style="max-width:240px;margin-top:4px">Still working. This can take a few seconds on a slow network.</div>
+    <div style="height:40px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-04</span><span class="nm">Signing you in</span><span class="ds">Our state once Google returns: thinking pose, indeterminate bar, and the slow-network caption that appears after 5 s. The sheet can't be dismissed.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-06">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+    <div class="streakcard" style="padding:12px 16px"><div class="col grow" style="gap:4px"><span class="t-label">Day 2 · Miso's plant is growing</span><div class="bar gold"><i style="width:66%"></i></div></div><img class="art" src="assets/plant-sprout.webp" alt="Your plant, a sprout" style="width:64px;height:64px;margin:-10px 0"></div>
+  </div>
+  <div class="bottom">
+    <div class="center"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved to aarav.k@gmail.com</span></div>
+    <div class="btn btn-primary">Continue</div>
+    <div class="t-caption muted center" style="margin-top:-4px">Next: Topic title</div>
+  </div><div class="toast" style="bottom:150px;align-items:flex-start;padding:12px 14px">
+    <span class="mk-auth-thead"><img src="assets/cat-celebrate.webp" alt=""></span>
+    <div class="grow"><div class="row" style="gap:6px;align-items:flex-start"><svg class="ic sm" style="color:var(--success);margin-top:1px"><use href="#ph-cloud-check-bold"/></svg><span style="font-weight:700">Saved! Miso, your plant and 2 days of progress are now in your Google account.</span></div><div class="t-caption" style="opacity:.8;margin-top:4px;padding-left:26px">You're signed in as aarav.k@gmail.com.</div></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-06</span><span class="nm">Saved (link)</span><span class="ds">After a link from LES-08: the toast with the pet's head, the saved line and "You're signed in as {email}" (no form, research A13), and the AUTH-33 chip turning to Saved. The student is back where they were.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-06">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="gap:12px">
+    <div class="row between">
+      <div class="row"><div class="avatar"><img src="assets/cat-wave.webp" alt=""></div><div class="col" style="gap:0"><span class="t-caption muted">Good evening</span><span class="t-heading">Aarav</span></div></div>
+      <div class="row" style="gap:6px"><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
+    </div>
+    
+    <div class="streakcard"><div class="col grow" style="gap:6px"><span class="t-heading">One lesson waters it today</span><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">4 of 10 min today</span></div><img class="art" src="assets/plant-sapling.webp" alt=""></div>
+    <div class="continue s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="t-caption" style="opacity:.9">CONTINUE · DEEP DIVE</span><span class="t-title" style="padding-right:96px">Topic title</span><div class="bar on-strong"><i style="width:62%"></i></div><div class="row between"><span class="t-label">62% · 6 min left</span><span class="btn sm btn-onstrong">Resume</span></div></div>
+    <div class="grid2"><div class="tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span></div><div class="tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="name">Chemistry</span></div></div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:176px;display:flex;justify-content:center;align-items:flex-end;gap:0">
+      <img src="assets/cat-celebrate.webp" alt="Miso is happy to see you" style="height:172px"><img src="assets/plant-sapling.webp" alt="" style="height:120px;margin-left:-26px">
+      <span class="mk-auth-bub">Yay! Now nothing gets lost.</span>
+    </div>
+    <div class="t-title center">Welcome back, Aarav!</div>
+    <div class="t-body muted center" style="margin-top:-4px">Your 12-day streak is safe.</div>
+    <div class="row" style="justify-content:center;gap:8px;margin-top:2px"><span class="chip gold"><svg class="ic xs"><use href="#ph-plant-fill"/></svg>12 days</span><span class="chip"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-paw-print-fill"/></svg>Miso</span><span class="chip"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-note-pencil-bold"/></svg>Notes</span></div>
+    <div class="btn btn-primary" style="margin-top:12px">Continue</div>
+    <div class="homebar" style="margin:6px auto -14px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-06</span><span class="nm">Welcome back (restore)</span><span class="ds">After ENT-09 on a new phone: celebrate pose with the plant, "Your 12-day streak is safe", then Home. Auto-dismisses after 4 s.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-08">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:128px;"><img src="assets/cat-plant.webp" alt="Miso with your plant"></div>
+    <div class="t-title center">Your progress is together now</div>
+    <div class="t-body muted center" style="margin-top:-4px">You already had an account with this Google account. We added this phone's progress to it.</div>
+    <div class="list" style="background:var(--sunken);box-shadow:none"><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic" style="color:var(--primary)"><use href="#ph-book-open-bold"/></svg><span class="grow t-label">Lessons added</span><span class="t-label num">+3</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic" style="color:var(--primary)"><use href="#ph-lightning-fill"/></svg><span class="grow t-label">XP added</span><span class="t-label num">+60</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="grow t-label">Streak · the longer one</span><span class="t-label num">12 days</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic" style="color:var(--primary)"><use href="#ph-paw-print-fill"/></svg><span class="grow t-label">Miso stays your buddy</span><span class="t-label num"></span></div></div>
+    <div class="btn btn-primary" style="margin-top:4px">Great</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-08</span><span class="nm">Merge notice</span><span class="ds">The Google account already had Smriti progress, so this phone's guest progress was merged into it, with exact numbers. Rows with zero are hidden.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-09">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="appbar"><span class="iconbtn"></span><span class="ttl">Friends</span><span class="iconbtn"><svg class="ic"><use href="#ph-user-plus-bold"/></svg></span></div>
+  <div class="body"><div class="card" style="height:120px"></div><div class="card" style="height:80px"></div></div>
+  <nav class="tabbar"><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-users-three-fill"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav><div class="scrim"></div>
+  <div class="sheet" style="gap:12px;padding-top:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-icirc" style="margin-top:12px"><svg class="ic lg"><use href="#ph-user-switch-bold"/></svg></div>
+    <div class="t-title center">This Google account is a parent account</div>
+    <div class="t-body center muted" style="margin-top:-4px">It's linked to 2 learners as their parent or guardian.</div>
+    <div class="col" style="gap:10px;margin-top:10px"><div class="btn btn-primary">Use a different Google account</div><div class="btn btn-secondary">It's me, I want to learn too</div></div>
+    <div class="homebar" style="margin:8px auto -14px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-09</span><span class="nm">Account in use: parent account</span><span class="ds">The chosen Google account is a guardian's (409 account_is_guardian), common when a teen picks a parent's account by mistake. A Phosphor icon, no art: a calm, serious moment.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-09">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="gap:12px">
+    <div class="row between">
+      <div class="row"><div class="avatar"><img src="assets/cat-wave.webp" alt=""></div><div class="col" style="gap:0"><span class="t-caption muted">Good evening</span><span class="t-heading">Aarav</span></div></div>
+      <div class="row" style="gap:6px"><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
+    </div>
+    
+    <div class="streakcard"><div class="col grow" style="gap:6px"><span class="t-heading">One lesson waters it today</span><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">4 of 10 min today</span></div><img class="art" src="assets/plant-sapling.webp" alt=""></div>
+    <div class="continue s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="t-caption" style="opacity:.9">CONTINUE · DEEP DIVE</span><span class="t-title" style="padding-right:96px">Topic title</span><div class="bar on-strong"><i style="width:62%"></i></div><div class="row between"><span class="t-label">62% · 6 min left</span><span class="btn sm btn-onstrong">Resume</span></div></div>
+    <div class="grid2"><div class="tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span></div><div class="tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="name">Chemistry</span></div></div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:12px;padding-top:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-icirc" style="margin-top:12px"><svg class="ic lg"><use href="#ph-user-switch-bold"/></svg></div>
+    <div class="t-title center">You signed in with a different account</div>
+    <div class="t-body center muted" style="margin-top:-4px">This phone has 3 unsaved lessons for the account that was signed in before. They'll be removed from this phone.</div>
+    <div class="col" style="gap:10px;margin-top:10px"><div class="btn btn-primary">Go back and use that account</div><div class="btn btn-destructive">Continue with this account</div></div>
+    <div class="homebar" style="margin:8px auto -14px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-09</span><span class="nm">Switch account: different account</span><span class="ds">A different account signed in after a session ended. Continue is destructive because unsaved lessons leave this phone.</span></figcaption>
+</figure>
+
+<h3>Account management</h3><p class="grp">Sign out clears this phone for the next person (shared phones). Delete has a 7-day grace period.</p>
+<figure class="mock" data-id="AUTH-12">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="appbar"><span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Account</span><span class="iconbtn"></span></div>
+  <div class="body" style="gap:14px">
+    <div class="card row"><div class="avatar" style="width:52px;height:52px;border-radius:26px"><img src="assets/cat-wave.webp" alt=""></div><div class="grow"><div class="t-heading">Aarav</div><span class="chip ok" style="height:26px;margin-top:4px"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved to aarav.k@gmail.com</span></div></div>
+    <div class="list">
+      <div class="li"><svg class="g" style="width:20px;height:20px"><use href="#g-logo"/></svg><span class="grow t-label">Google</span><span class="t-caption muted">Connected</span></div>
+      <div class="li"><span class="lead"><svg class="ic sm"><use href="#ph-user-switch-bold"/></svg></span><span class="grow t-label">Switch account</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><span class="lead"><svg class="ic sm"><use href="#ph-sign-out-bold"/></svg></span><span class="grow t-label">Sign out</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><span class="lead" style="background:var(--error-tint);color:var(--error-text)"><svg class="ic sm"><use href="#ph-trash-bold"/></svg></span><span class="grow t-label" style="color:var(--error-text)">Delete account</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:12px">
+    <div class="grab"></div>
+    <div class="petline"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">See you soon!</div></div>
+    <div class="t-heading" style="margin-top:4px">Sign out of Smriti?</div>
+    <div class="t-body muted" style="margin-top:-6px">Your progress is saved to your account. This phone will be cleared for the next person.</div>
+    <div class="row between" style="min-height:48px"><span class="t-label">Sign out of all devices</span><span class="switch"></span></div>
+    <div class="btn btn-primary">Sign out</div>
+    <div class="btn btn-ghost" style="height:48px">Cancel</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-12</span><span class="nm">Sign out, default</span><span class="ds">From SET-02. Everything is synced, so a plain confirm with the optional all-devices switch. (The switch sits above the buttons here; the spec lists it last.)</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-12">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-slash-bold"/></svg><b></b></span></div><div class="appbar"><span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Account</span><span class="iconbtn"></span></div>
+  <div class="body" style="gap:14px">
+    <div class="card row"><div class="avatar" style="width:52px;height:52px;border-radius:26px"><img src="assets/cat-wave.webp" alt=""></div><div class="grow"><div class="t-heading">Aarav</div><span class="chip ok" style="height:26px;margin-top:4px"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved to aarav.k@gmail.com</span></div></div>
+    <div class="list">
+      <div class="li"><svg class="g" style="width:20px;height:20px"><use href="#g-logo"/></svg><span class="grow t-label">Google</span><span class="t-caption muted">Connected</span></div>
+      <div class="li"><span class="lead"><svg class="ic sm"><use href="#ph-user-switch-bold"/></svg></span><span class="grow t-label">Switch account</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><span class="lead"><svg class="ic sm"><use href="#ph-sign-out-bold"/></svg></span><span class="grow t-label">Sign out</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li"><span class="lead" style="background:var(--error-tint);color:var(--error-text)"><svg class="ic sm"><use href="#ph-trash-bold"/></svg></span><span class="grow t-label" style="color:var(--error-text)">Delete account</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:12px">
+    <div class="grab"></div>
+    <div class="t-heading" style="margin-top:6px">Sign out of Smriti?</div>
+    <div class="t-body muted" style="margin-top:-6px">Your progress is saved to your account. This phone will be cleared for the next person.</div>
+    <div class="card row top" style="background:var(--warning-tint);box-shadow:none;gap:12px"><svg class="ic" style="color:var(--warning-text)"><use href="#ph-cloud-slash-bold"/></svg><div class="grow"><div class="t-label" style="color:var(--warning-text)">3 lessons and 12 reviews aren't saved yet</div><div class="t-caption" style="color:var(--warning-text);margin-top:2px">Connect to the internet to save them first.</div></div></div>
+    <div class="btn btn-primary">Try again</div>
+    <div class="btn btn-destructive">Sign out anyway</div>
+    <div class="btn btn-ghost" style="height:48px">Cancel</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-12</span><span class="nm">Sign out, unsynced and offline</span><span class="ds">The outbox still holds work and the phone is offline: Try again first, Sign out anyway is destructive and its label says what is lost.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-13">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="sp"></span><span class="chip" style="background:var(--sunken);box-shadow:none;color:var(--muted)">Step 1 of 3</span><span class="sp"></span><span class="iconbtn"></span></div>
+  <div class="body mk-auth-noshrink" style="gap:8px;padding-top:0">
+    <div class="t-title">Delete your account</div>
+    <div class="t-label muted" style="margin-top:2px">What will be deleted</div>
+    <div class="list"><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-plant-fill"/></svg><span class="t-label" style="font-weight:600">Your progress, streak, plant and pet</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-note-pencil-bold"/></svg><span class="t-label" style="font-weight:600">Your notes, decks, memory palaces and saved cards</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-users-three-bold"/></svg><span class="t-label" style="font-weight:600">Your friends, league and squads</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-chat-circle-text-bold"/></svg><span class="t-label" style="font-weight:600">Your tutor chats</span></div><div class="li" style="min-height:48px;padding:8px 14px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-image-bold"/></svg><span class="t-label" style="font-weight:600">Photos and files you uploaded</span></div></div>
+    <div class="t-label muted" style="margin-top:4px">What we keep</div>
+    <div class="list"><div class="li row top" style="padding:12px 14px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-receipt-bold"/></svg><span class="t-label" style="font-weight:600">Payment records, because tax law needs them. They don't include your learning.</span></div></div>
+    <div class="list"><div class="li"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-download-simple-bold"/></svg><span class="grow t-label" style="color:var(--primary)">Download your data first</span><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div></div>
+  </div>
+  <div class="bottom" style="padding-top:6px">
+    <div class="row" style="gap:8px;justify-content:center"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-clock-bold"/></svg><span class="t-label" style="font-weight:600">You'll have 7 days to change your mind.</span></div>
+    <div class="btn btn-secondary">Keep my account</div>
+    <div class="btn btn-destructive">Continue</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-13</span><span class="nm">Delete account, step 1</span><span class="ds">What goes and what is kept, before anything happens. No pet: a serious screen. Keep my account sits above the destructive Continue.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-16">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="justify-content:center;align-items:center;text-align:center;gap:14px;padding:0 24px">
+    <div class="mk-auth-ill" style="height:210px;width:100%">
+      <img src="assets/cat-wave.webp" alt="Miso waving goodbye">
+      <span class="mk-auth-bub" style="top:0;right:0">Take care! You're always welcome back.</span>
+    </div>
+    <div class="t-title">Your account will be deleted on 5 November 2026</div>
+    <div class="t-body muted">You're signed out on every device. If you change your mind, sign in before 5 November 2026.</div>
+    <div class="card row" style="text-align:left;box-shadow:inset 0 0 0 1.5px var(--line);width:100%"><svg class="ic" style="color:var(--primary)"><use href="#ph-clock-bold"/></svg><span class="t-label" style="font-weight:600">7 days to change your mind</span></div>
+  </div>
+  <div class="bottom"><div class="btn btn-primary">Done</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-16</span><span class="nm">Deletion scheduled</span><span class="ds">Full screen, no back. A gentle wave, not a sad pose (a goodbye shouldn't guilt). The date is spoken in full.</span></figcaption>
+</figure>
+
+<h3>Guardian consent (13 to 17)</h3><p class="grp">A teen's guardian says yes with their own Google account, on the same phone or through a link. The guardian side drops the pet and speaks to an adult.</p>
+<figure class="mock" data-id="AUTH-18">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span></div>
+  <div class="body" style="gap:12px;padding-top:0">
+    <div class="scene" style="height:164px;flex:none"><img class="art-fill" src="assets/scene-guardian-consent.webp" alt="A student and a parent looking at a phone together"></div>
+    <div class="t-title">Ask a parent or guardian</div>
+    <div class="t-body" style="margin-top:-6px">You're under 18, so a parent or guardian needs to say yes to <b>friends and leagues</b>. It takes a minute.</div>
+    <div class="choice" style="min-height:80px"><span class="mk-auth-icirc sm"><svg class="ic lg"><use href="#ph-hand-arrow-up-bold"/></svg></span><div class="grow"><div class="t-heading">My parent is here</div><div class="t-label muted" style="font-weight:500">Hand them this phone</div></div><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="choice" style="min-height:80px"><span class="mk-auth-icirc sm"><svg class="ic lg"><use href="#ph-paper-plane-tilt-bold"/></svg></span><div class="grow"><div class="t-heading">Send them a link</div><div class="t-label muted" style="font-weight:500">They say yes on their own phone</div></div><svg class="ic sm" style="color:var(--muted)"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="t-caption muted">They'll sign in with their own Google account and see exactly what you can use.</div>
+  </div>
+  <div class="bottom" style="padding-top:0"><div class="btn btn-ghost" style="height:48px;color:var(--muted)">Not now</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-18</span><span class="nm">Consent ask, teen side</span><span class="ds">Feature social. Two large choices: hand the phone over (AUTH-19) or send a link (AUTH-21).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-19">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span></div>
+  <div class="body" style="justify-content:center;gap:20px;padding-top:0">
+    <div class="scene" style="height:240px;display:grid;place-items:center;padding:0 40px;text-align:center"><span class="note">Agnes art: a phone passed between two hands, diverse skin tones (sunny-object, 1:1, transparent)</span></div>
+    <div class="t-title center">Hand the phone to your parent or guardian</div>
+    <div class="petline" style="justify-content:center"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">It's quick, I promise!</div></div>
+  </div>
+  <div class="bottom"><div class="btn btn-primary">They have it</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-19</span><span class="nm">Hand the phone: student view</span><span class="ds">The teen passes the phone. Pet line on the student side only.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-19">
+<div class="phone"><div class="screen sx" lang="hi">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="gap:14px;padding-top:24px">
+    <div class="mk-auth-kick"><span class="mk-auth-word">Smriti</span><span>माता-पिता और अभिभावकों के लिए</span></div>
+    <div class="t-title">नमस्ते! आरव Smriti पर दोस्त और लीग इस्तेमाल करना चाहते हैं</div>
+    <div class="t-body">देखने और सहमति देने के लिए कृपया अपने Google अकाउंट से साइन इन करें।</div>
+    <div class="card" style="background:var(--sunken);box-shadow:none;padding:12px"><div class="row wrap" style="gap:8px"><span class="chip"><svg class="ic xs"><use href="#ph-users-three-bold"/></svg>दोस्त और लीग</span><span class="chip"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>अकाउंट सेव करना</span></div></div>
+    <div class="row top" style="gap:8px"><svg class="ic sm" style="color:var(--muted);margin-top:2px"><use href="#ph-lock-key-bold"/></svg><span class="t-body muted">आपका अकाउंट अलग रहेगा। आप इस फ़ोन पर साइन इन नहीं रहेंगे।</span></div>
+    <div style="height:40px"></div>
+    <div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Google के साथ जारी रखें</span></div>
+    <div class="col" style="gap:0">
+      <div class="btn btn-ghost" style="height:44px">दूसरा अकाउंट इस्तेमाल करें</div>
+      <div class="btn btn-ghost" style="height:44px;color:var(--muted)">अभी नहीं, फ़ोन वापस दें</div>
+    </div>
+    <div class="sp"></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे।</span></div>
+    <div class="mk-auth-legal">आगे बढ़कर आप <span class="link">शर्तों</span> और <span class="link">निजता नीति</span> से सहमत होते हैं।</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-19</span><span class="nm">Hand the phone: guardian view, Hindi</span><span class="ds">After a cross-fade the copy speaks to the adult: no pet, the asked features as read-only chips, the account-stays-separate promise. Android, Google only.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-20">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar" style="padding-left:18px"><span class="mk-auth-kick"><span class="mk-auth-word">Smriti</span><span>For parents and guardians</span></span></div>
+  <div class="body scroll-cut" style="gap:10px;padding-top:0">
+    <div class="t-title">What Aarav will be able to do</div>
+    <div class="row" style="gap:6px"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg><span class="t-label muted" style="font-weight:500">Sunita, signed in with Google ·</span><span class="t-label link">Not you?</span></div>
+    <div class="list"><div class="li row top" style="padding:12px 14px;min-height:72px"><svg class="ic" style="color:var(--primary);margin-top:2px"><use href="#ph-cloud-check-bold"/></svg><div class="grow"><div class="t-label">Save progress to an account</div><div class="t-caption muted" style="font-weight:500;font-size:13px;line-height:18px">Keeps lessons and streaks safe across phones.</div></div><span class="chip" style="height:26px;background:var(--sunken);box-shadow:none">Needed</span></div><div class="li row top" style="padding:12px 14px;min-height:72px"><svg class="ic" style="color:var(--primary);margin-top:2px"><use href="#ph-users-three-bold"/></svg><div class="grow"><div class="t-label">Friends and leagues</div><div class="t-caption muted" style="font-weight:500;font-size:13px;line-height:18px">Preset messages only, no open chat. Others see only a pet name.</div></div><span class="switch on"></span></div><div class="li row top" style="padding:12px 14px;min-height:72px"><svg class="ic" style="color:var(--primary);margin-top:2px"><use href="#ph-camera-bold"/></svg><div class="grow"><div class="t-label">Photo doubts</div><div class="t-caption muted" style="font-weight:500;font-size:13px;line-height:18px">Photos of questions are used only to answer them.</div></div><span class="switch"></span></div></div>
+    <div class="row top" style="gap:12px;padding:4px 2px"><span class="mk-auth-cb on"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span><span class="t-label" style="font-weight:500">I am Aarav's parent or legal guardian, and I am 18 or older.</span></div>
+    <div class="row" style="gap:16px"><span class="t-label link">Read the full notice</span><span class="t-label link">What we never do</span></div>
+    <div class="t-caption muted">You can change this any time in Parent mode.</div>
+  </div>
+  <div class="bottom" style="padding-top:4px"><div class="btn btn-primary">I agree</div><div class="btn btn-ghost" style="height:40px;color:var(--muted)">No thanks</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-20</span><span class="nm">Review and agree</span><span class="ds">Guardian side, same phone. Each scope is its own switch; the asked one starts on, the account row is Needed. I agree unlocks once the declaration is ticked. Social row copy follows R31 (pet name only for minors).</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-21">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span></div>
+  <div class="body" style="gap:12px;padding-top:0">
+    <div class="t-title">Send this to your parent or guardian</div>
+    <div class="t-body muted" style="margin-top:-6px">They can scan the code or open the link on their phone. It works for 3 days.</div>
+    <div class="mk-auth-qr" aria-label="QR code for your guardian. Use Share link to send it instead."><div><svg class="ic lg" style="color:var(--muted)"><use href="#ph-qr-code-bold"/></svg><span class="t-label muted">QR code</span><span class="note">generated by the app from the link</span></div></div>
+    <div class="btn btn-primary"><svg class="ic sm"><use href="#ph-share-network-bold"/></svg>Share link</div>
+    <div class="btn btn-secondary"><svg class="ic sm"><use href="#ph-copy-bold"/></svg>Copy link</div>
+    <div class="card row" style="box-shadow:inset 0 0 0 1.5px var(--line);padding:12px 14px"><span class="mk-auth-spin"></span><div class="grow"><div class="t-label">Waiting for your guardian…</div><div class="t-caption muted">Expires in 3 days</div></div></div>
+    <div class="petline" style="justify-content:center"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">Let's wait together.</div></div>
+  </div>
+  <div class="bottom" style="padding-top:0"><div class="btn btn-ghost" style="height:44px;color:var(--muted)">Cancel request</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-21</span><span class="nm">Send a link or QR</span><span class="ds">Waiting state after sharing. The QR is a data mark the app generates from the link, shown here as a labelled placeholder. The app polls every 5 s.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-23">
+<div class="phone"><div class="screen sx" lang="hi">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="justify-content:center;align-items:center;text-align:center;gap:14px;padding:0 24px">
+    <div class="mk-auth-ill" style="height:256px;width:100%"><img src="assets/cat-celebrate.webp" alt="Miso खुशी से उछल रहा"><span class="mk-auth-bub" style="top:4px;right:0">वाह! चलिए!</span></div>
+    <div class="t-title">आपके अभिभावक ने हाँ कह दी!</div>
+    <div class="t-body muted" style="margin-top:-4px">ये अब चालू हैं:</div>
+    <div class="row wrap" style="justify-content:center;gap:8px"><span class="chip ok"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>दोस्त और लीग</span><span class="chip ok"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>अकाउंट सेव करना</span></div>
+  </div>
+  <div class="bottom"><div class="btn btn-primary">आगे बढ़ें</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-23</span><span class="nm">Consent result: agreed, Hindi</span><span class="ds">The guardian said yes. Confetti and the celebrate pose; the features now on are listed as chips with a check, read in full.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-23">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="justify-content:center;align-items:center;text-align:center;gap:14px;padding:0 24px">
+    <div class="mk-auth-ill" style="height:256px;width:100%"><img src="assets/cat-thinking.webp" alt="Miso, calm and curious"><span class="mk-auth-bub" style="top:4px;right:0">That's OK. Let's keep learning together.</span></div>
+    <div class="t-title">Your guardian said no for now</div>
+    <div class="t-body muted" style="margin-top:-4px">Everything else in Smriti still works. You can ask again tomorrow.</div>
+    
+  </div>
+  <div class="bottom"><div class="btn btn-primary">Continue</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-23</span><span class="nm">Consent result: declined</span><span class="ds">A gentle curious pose, never sad: the decision isn't the teen's fault. Everything else still works.</span></figcaption>
+</figure>
+
+<h3>Parents and children</h3><p class="grp">Under-13s never sign in with Google. A parent signs in with their own account and owns the child's account.</p>
+<figure class="mock" data-id="AUTH-24">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="mk-auth-kick" style="margin-left:4px">For parents and guardians</span></div>
+  <div class="body" style="gap:12px;padding-top:0">
+    <div class="scene" style="height:168px;flex:none;display:grid;place-items:center;padding:0 24px;text-align:center"><span class="note">Agnes art: an Indian parent and a young child (6–9) at a table at home, with the cat and the dog nearby (sunny-scene, 3:2)</span></div>
+    <div class="t-title">Sign in as the parent</div>
+    <div class="t-body" style="margin-top:-6px">Use your own Google account. Anaya's progress is saved under it, and you can bring it back on any phone.</div>
+    <div class="sp"></div>
+    <div class="col" style="gap:12px"><div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div><div class="btn btn-apple"><svg class="ic sm"><use href="#ph-apple-logo-fill"/></svg><span>Continue with Apple</span></div></div>
+    <div class="row between" style="min-height:48px"><span class="t-label">Stay signed in on this phone</span><span class="switch"></span></div>
+    <div class="t-caption muted center" style="margin-top:-6px">Your child never needs a Google account or a password.</div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+  </div>
+  <div class="homebar" style="margin:2px auto 8px"></div>
+</div></div>
+<figcaption><span class="id">AUTH-24</span><span class="nm">Parent sign-in, iOS</span><span class="ds">Reached through the parent gate. Child known (Anaya). Calm adult layout, no pet line. Stay signed in is off by default.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-25">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="gap:14px;padding-top:18px">
+    <div class="t-display center">Who's learning?</div>
+    <div class="petline" style="justify-content:center;margin-top:-4px"><div class="av"><img src="assets/cat-wave.webp" alt=""></div><div class="bubble">Tap your buddy to start!</div></div>
+    <div class="grid2" style="margin-top:2px"><div class="mk-auth-prof"><span class="pc" style="background:var(--streak-tint)"><img src="assets/cat-base.webp" alt=""></span><span class="t-heading">Anaya</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/dog-base.webp" alt=""></span><span class="t-heading">Kabir</span><span class="chip warn" style="height:24px;font-size:11px;padding:0 8px"><svg class="ic xs"><use href="#ph-warning-circle-fill"/></svg>Ask a grown-up</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--streak-tint)"><img src="assets/cat-sleepy.webp" alt=""></span><span class="t-heading">Ira</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--primary-tint)"><img src="assets/dog-wave.webp" alt=""></span><span class="t-heading">Neha</span><span class="chip" style="height:24px;font-size:11px;padding:0 8px;background:var(--sunken);box-shadow:none"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>Grown-up</span></div><div class="mk-auth-prof"><span class="pc" style="background:var(--streak-tint)"><img src="assets/cat-reading.webp" alt=""></span><span class="t-heading">Rohit</span><span class="chip" style="height:24px;font-size:11px;padding:0 8px;background:var(--sunken);box-shadow:none"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>Grown-up</span></div><div class="mk-auth-prof" style="background:var(--sunken);box-shadow:none"><span class="mk-auth-icirc" style="width:72px;height:72px;border-radius:36px;background:var(--surface);color:var(--ink)"><svg class="ic lg"><use href="#ph-user-gear-bold"/></svg></span><span class="t-heading">Grown-ups</span></div></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-25</span><span class="nm">Who's learning?</span><span class="ds">Profile picker on a family phone: three children and two grown-ups. Kabir's session ended, so his card asks for a grown-up (opens SET-13, then AUTH-28). No tab bar.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-28">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="mk-auth-kick" style="margin-left:4px">For parents and guardians</span></div>
+  <div class="body" style="gap:12px;padding-top:0">
+    <div class="t-title">Whose progress should come back to this phone?</div>
+    <div class="row" style="gap:6px;margin-top:-4px"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg><span class="t-label muted" style="font-weight:500">neha.sharma@gmail.com</span></div>
+    <div class="card row" style="min-height:88px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--streak-tint)"><img src="assets/cat-base.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Anaya</div><div class="t-caption muted">Class 3</div></div><span class="mk-auth-cb on" style="width:28px;height:28px"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span></div>
+    <div class="card row" style="min-height:88px;box-shadow:inset 0 0 0 2px var(--primary)"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--primary-tint)"><img src="assets/dog-base.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Kabir</div><div class="t-caption muted">Class 6</div></div><span class="mk-auth-cb on" style="width:28px;height:28px"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span></div>
+    <div class="card row" style="min-height:88px;"><span class="avatar" style="width:56px;height:56px;border-radius:28px;background:var(--streak-tint)"><img src="assets/cat-sleepy.webp" alt="" style="width:66px;height:66px"></span><div class="grow"><div class="t-heading">Ira</div><div class="t-caption muted">Class 1</div></div><span class="chip ok" style="height:26px">On this phone</span></div>
+    <div class="card" style="background:var(--sunken);box-shadow:none;margin-top:6px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+      <div class="row top" style="gap:10px"><svg class="ic sm" style="color:var(--muted);margin-top:2px"><use href="#ph-question-bold"/></svg><span class="t-label" style="font-weight:500">Not seeing your child? You may have used a different Google account.</span></div>
+      <span class="t-label link" style="padding-left:30px">Use another account</span>
+    </div>
+  </div>
+  <div class="bottom" style="padding-top:0"><div class="btn btn-primary">Bring back</div></div>
+</div></div>
+<figcaption><span class="id">AUTH-28</span><span class="nm">Restore a child</span><span class="ds">A signed-in parent on a new phone picks which children come back. Ira is already on this phone, so no checkbox.</span></figcaption>
+</figure>
+
+<h3>Errors and other states</h3><p class="grp">AUTH-30 replaces the buttons inside the sheet that was already open; it is never a new sheet. Cancel in Google's UI is not an error.</p>
+<figure class="mock" data-id="AUTH-30">
+<div class="phone"><div class="screen sx" lang="hi">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-slash-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">पाठ पूरा!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>सटीकता</span></div>
+      <div class="stat tint"><b>4:10</b><span>समय</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:104px;"><img src="assets/cat-plant.webp" alt=""></div>
+    <div class="t-heading center" style="color:var(--muted)">Miso और अपना पौधा हर फ़ोन पर सुरक्षित रखें।</div>
+    <div class="card" style="background:var(--sunken);box-shadow:none;display:flex;flex-direction:column;gap:10px;padding:16px">
+      <div class="petline"><div class="av"><img src="assets/cat-worried.webp" alt=""></div><div class="bubble">उफ़! चलिए, फिर से कोशिश करें।</div></div>
+      <div class="row top" style="gap:10px;margin-top:4px"><svg class="ic" style="color:var(--muted);margin-top:0"><use href="#ph-wifi-slash-bold"/></svg><div class="grow"><div class="t-heading" role="alert">आप ऑफ़लाइन हैं</div><div class="t-body muted" style="margin-top:2px">साइन इन के लिए इंटरनेट से जुड़ें। तब तक आप पढ़ाई जारी रख सकते हैं।</div></div></div>
+    </div>
+    <div class="btn btn-primary"><svg class="ic sm"><use href="#ph-arrows-clockwise-bold"/></svg>फिर से कोशिश करें</div>
+    <div class="btn btn-ghost" style="height:44px;color:var(--muted)">वापस</div>
+    
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे।</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-30</span><span class="nm">Sign-in problem: offline, Hindi</span><span class="ds">Tapped Continue with Google with no network. Learning carries on; the button retries.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-30">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:104px;"><img src="assets/cat-plant.webp" alt=""></div>
+    <div class="t-heading center" style="color:var(--muted)">Keep Miso and your plant safe on any phone.</div>
+    <div class="card" style="background:var(--sunken);box-shadow:none;display:flex;flex-direction:column;gap:10px;padding:16px">
+      <div class="petline"><div class="av"><img src="assets/cat-worried.webp" alt=""></div><div class="bubble">Oops! Let's try that again.</div></div>
+      <div class="row top" style="gap:10px;margin-top:4px"><svg class="ic" style="color:var(--muted);margin-top:0"><use href="#ph-google-play-logo-fill"/></svg><div class="grow"><div class="t-heading" role="alert">Google sign-in needs an update on this phone</div><div class="t-body muted" style="margin-top:2px">We'll sign you in through your browser instead.</div></div></div>
+    </div>
+    <div class="btn btn-primary"><svg class="ic sm"><use href="#ph-arrow-square-out-bold"/></svg>Continue in browser</div>
+    <div class="btn btn-ghost" style="height:44px;color:var(--muted)">Back</div>
+    
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-30</span><span class="nm">Sign-in problem: no Play services</span><span class="ds">The library reports PLAY_SERVICES_NOT_AVAILABLE, so we offer the browser fallback (Custom Tab, PKCE), never a WebView.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-30">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="padding-top:4px;gap:14px">
+    <div class="row between"><span class="iconbtn"><svg class="ic"><use href="#ph-x-bold"/></svg></span><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>2</span></div>
+    <div class="scene" style="height:178px"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt=""></div>
+    <div class="t-display center">Lesson complete!</div>
+    <div class="grid3">
+      <div class="stat" style="background:var(--primary-tint);box-shadow:none"><b>+20</b><span>XP</span></div>
+      <div class="stat" style="background:var(--success-tint);box-shadow:none"><b>90%</b><span>Accuracy</span></div>
+      <div class="stat tint"><b>4:10</b><span>Time</span></div>
+    </div>
+  </div><div class="scrim"></div>
+  <div class="sheet" style="gap:10px">
+    <div class="grab"></div>
+    <div class="mk-auth-ill" style="height:104px;"><img src="assets/cat-plant.webp" alt=""></div>
+    <div class="t-heading center" style="color:var(--muted)">Keep Miso and your plant safe on any phone.</div>
+    <div class="card" style="background:var(--sunken);box-shadow:none;display:flex;flex-direction:column;gap:10px;padding:16px">
+      <div class="petline"><div class="av"><img src="assets/cat-worried.webp" alt=""></div><div class="bubble">Oops! Let's try that again.</div></div>
+      <div class="row top" style="gap:10px;margin-top:4px"><svg class="ic" style="color:var(--muted);margin-top:0"><use href="#ph-warning-circle-bold"/></svg><div class="grow"><div class="t-heading" role="alert">Something went wrong on our side</div><div class="t-body muted" style="margin-top:2px">Try again in a bit.</div></div></div>
+    </div>
+    <div class="btn btn-primary"><svg class="ic sm"><use href="#ph-arrows-clockwise-bold"/></svg>Try again</div>
+    <div class="btn btn-ghost" style="height:44px;color:var(--muted)">Back</div>
+    <div class="t-caption muted center num">Code 7f3a9c21</div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-30</span><span class="nm">Sign-in problem: our side</span><span class="ds">A server or DEVELOPER_ERROR. The short trace code (first 8 characters) helps support.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-31">
+<div class="phone"><div class="screen sx dark">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="gap:12px">
+    <div class="row between">
+      <div class="row"><div class="avatar"><img src="assets/cat-wave.webp" alt=""></div><div class="col" style="gap:0"><span class="t-caption muted">Good evening</span><span class="t-heading">Aarav</span></div></div>
+      <div class="row" style="gap:6px"><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
+    </div>
+    
+    <div class="streakcard"><div class="col grow" style="gap:6px"><span class="t-heading">One lesson waters it today</span><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">4 of 10 min today</span></div><img class="art" src="assets/plant-sapling.webp" alt=""></div>
+    <div class="continue s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="t-caption" style="opacity:.9">CONTINUE · DEEP DIVE</span><span class="t-title" style="padding-right:96px">Topic title</span><div class="bar on-strong"><i style="width:62%"></i></div><div class="row between"><span class="t-label">62% · 6 min left</span><span class="btn sm btn-onstrong">Resume</span></div></div>
+    <div class="grid2"><div class="tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span></div><div class="tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="name">Chemistry</span></div></div>
+  </div><nav class="tabbar"><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav><div class="scrim"></div>
+  <div class="sheet" style="gap:12px">
+    <div class="grab" style="visibility:hidden"></div>
+    <div class="mk-auth-icirc"><svg class="ic lg"><use href="#ph-key-bold"/></svg></div>
+    <div class="t-heading center">Please sign in again</div>
+    <div class="t-body muted center" style="margin-top:-6px">For your safety, you were signed out. Your progress on this phone is kept until you sign in.</div>
+    <div class="btn btn-primary" style="margin-top:6px">Sign in again</div>
+    <div class="btn btn-ghost" style="height:44px;color:var(--muted)">Not now</div>
+    <div class="homebar" style="margin:4px auto -14px"></div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-31</span><span class="nm">Session ended, Night Colour</span><span class="ds">A refresh failed with an auth error. Not dismissible by swipe. Nothing on the phone is lost; Not now leaves a slim banner on main screens.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-31">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div><div class="body" style="gap:12px">
+    <div class="row between">
+      <div class="row"><div class="avatar"><img src="assets/cat-wave.webp" alt=""></div><div class="col" style="gap:0"><span class="t-caption muted">Good evening</span><span class="t-heading">Aarav</span></div></div>
+      <div class="row" style="gap:6px"><span class="pill"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>12</span><span class="pill"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
+    </div>
+    <div class="banner warn" style="min-height:36px"><svg class="ic sm"><use href="#ph-cloud-slash-bold"/></svg><span class="grow">Sign in to save your progress</span><svg class="ic xs"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="streakcard"><div class="col grow" style="gap:6px"><span class="t-heading">One lesson waters it today</span><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">4 of 10 min today</span></div><img class="art" src="assets/plant-sapling.webp" alt=""></div>
+    <div class="continue s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="t-caption" style="opacity:.9">CONTINUE · DEEP DIVE</span><span class="t-title" style="padding-right:96px">Topic title</span><div class="bar on-strong"><i style="width:62%"></i></div><div class="row between"><span class="t-label">62% · 6 min left</span><span class="btn sm btn-onstrong">Resume</span></div></div>
+    <div class="grid2"><div class="tile s-physics"><img class="art" src="assets/subject-physics.webp" alt=""><span class="name">Physics</span></div><div class="tile s-chemistry"><img class="art" src="assets/subject-chemistry.webp" alt=""><span class="name">Chemistry</span></div></div>
+  </div><nav class="tabbar"><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-house-fill"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-users-three-bold"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav>
+</div></div>
+<figcaption><span class="id">AUTH-31</span><span class="nm">After Not now: banner</span><span class="ds">Learning continues and events wait in the outbox. The banner (warningTint) opens AUTH-02 with reason session_expired.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-32">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body flush">
+    <div style="height:262px;flex:none;margin:0 12px;border-radius:24px;overflow:hidden"><img class="art-fill" src="assets/scene-welcome.webp" alt="A cat and a puppy waving hello in a sunny study corner" style="object-position:50% 70%"></div>
+    <div class="card lg mk-auth-ret">
+      <span class="iconbtn" style="position:absolute;right:4px;top:4px;width:40px;height:40px" aria-label="Close"><svg class="ic sm"><use href="#ph-x-bold"/></svg></span>
+      <div class="t-heading" style="padding-right:30px">Welcome back! Continue with Google to bring back your streak.</div>
+      <div class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div>
+      <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    </div>
+    <div class="col" style="padding:14px 18px 0;gap:10px">
+      <div class="t-title center">Learn anything. Remember everything.</div>
+      <div class="btn btn-primary">Start in English</div>
+      <div class="btn btn-secondary" lang="hi">हिन्दी में शुरू करें</div>
+      <div class="btn btn-ghost" style="height:36px;font-size:14px">I already have an account</div>
+      <div class="mk-auth-legal">By continuing, you agree to our <span class="link">Terms</span> and <span class="link">Privacy Policy</span>.</div>
+    </div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-32</span><span class="nm">Returning-account card on ONB-01</span><span class="ds">Android 14+, when a silent Credential Manager check finds an account that used Smriti before. Non-blocking: the language buttons still work. It can't name the account; Google's sheet does on tap. Goes straight to AUTH-04 (restore).</span></figcaption>
+</figure>
+
+<figure class="mock wide" data-id="AUTH-33">
+<div class="mk-auth-boards"><div class="sx mk-auth-board">
+      <span class="t-caption muted">Light</span>
+      <div class="mk-auth-chiprow"><span class="chip"><svg class="ic xs" style="color:var(--muted)"><use href="#ph-cloud-slash-bold"/></svg>Only on this phone</span><span class="t-caption muted">Guest</span></div>
+      <div class="mk-auth-chiprow"><span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none"><svg class="ic xs"><use href="#ph-cloud-arrow-up-bold"/></svg>Saving…</span><span class="t-caption muted">Outbox sending</span></div>
+      <div class="mk-auth-chiprow"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved to aarav.k@gmail.com</span><span class="t-caption muted">Linked</span></div>
+      <div class="mk-auth-chiprow"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved. New progress syncs when online</span></div>
+      <div class="mk-auth-chiprow" lang="hi"><span class="chip"><svg class="ic xs" style="color:var(--muted)"><use href="#ph-cloud-slash-bold"/></svg>सिर्फ़ इसी फ़ोन पर</span><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>aarav.k@gmail.com में सेव है</span></div>
+    </div><div class="sx dark mk-auth-board">
+      <span class="t-caption muted">Night Colour</span>
+      <div class="mk-auth-chiprow"><span class="chip"><svg class="ic xs" style="color:var(--muted)"><use href="#ph-cloud-slash-bold"/></svg>Only on this phone</span><span class="t-caption muted">Guest</span></div>
+      <div class="mk-auth-chiprow"><span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none"><svg class="ic xs"><use href="#ph-cloud-arrow-up-bold"/></svg>Saving…</span><span class="t-caption muted">Outbox sending</span></div>
+      <div class="mk-auth-chiprow"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved to aarav.k@gmail.com</span><span class="t-caption muted">Linked</span></div>
+      <div class="mk-auth-chiprow"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>Saved. New progress syncs when online</span></div>
+      <div class="mk-auth-chiprow" lang="hi"><span class="chip"><svg class="ic xs" style="color:var(--muted)"><use href="#ph-cloud-slash-bold"/></svg>सिर्फ़ इसी फ़ोन पर</span><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-bold"/></svg>aarav.k@gmail.com में सेव है</span></div>
+    </div></div>
+<figcaption><span class="id">AUTH-33</span><span class="nm">Save-state chip</span><span class="ds">One component in ME-01, SET-02 and LES-08: guest (Only on this phone), Saving…, Saved to {email}, and Saved while offline. Icon plus text, never colour alone. Hindi row at the bottom.</span></figcaption>
+</figure>
+
+<h3>Web sign-in</h3><p class="grp">AUTH-29 at <code>app.&lt;domain&gt;/login</code>. The button is rendered by Google (continue_with, pill, outline); One Tap runs here and on the guardian landing only.</p>
+<figure class="mock wide" data-id="AUTH-29">
+<div class="browser"><div class="chrome"><i></i><i></i><i></i><span class="url">app.smriti.app/login</span></div>
+  <div class="screen sx" style="flex-direction:column">
+    <div class="row between" style="height:64px;padding:0 32px;flex:none"><span class="mk-auth-word" style="font-size:22px">Smriti</span><span class="seg" style="width:170px"><span class="on">English</span><span lang="hi">हिन्दी</span></span></div>
+    <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:0 32px 32px;min-height:0">
+      <div class="scene" style="background:var(--primary-tint);display:grid;place-items:center;padding:28px"><img src="assets/scene-welcome.webp" alt="" style="border-radius:20px;width:100%;height:100%;object-fit:cover"></div>
+      <div style="display:flex;flex-direction:column;justify-content:center;align-items:center">
+        <div class="col" style="width:400px;gap:14px">
+          <div class="t-display">Sign in to Smriti</div>
+          <div class="t-body muted" style="margin-top:-6px">Pick up where you left off, on any device.</div>
+          <div class="btn btn-google mk-auth-gis" style="margin-top:12px"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div>
+          <div class="divider" style="margin:6px 0"></div>
+          <div class="t-label">New here? <span class="link">Start learning free</span></div>
+          <div class="t-label link">Used Apple on your iPhone?</div>
+          <div style="height:8px"></div>
+          <div class="mk-auth-trust" style="justify-content:flex-start"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+          <div class="mk-auth-legal" style="text-align:left">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+        </div>
+      </div>
+    </div>
+    <div class="mk-auth-fedcm" aria-label="Browser sign-in prompt (FedCM), drawn by Chrome">
+      <div class="row" style="gap:8px"><svg class="g" style="width:18px;height:18px"><use href="#g-logo"/></svg><span class="mk-auth-sys-k grow">Sign in to smriti.app with google.com</span><svg class="ic xs" style="color:var(--muted)"><use href="#ph-x-bold"/></svg></div>
+      <div class="mk-auth-acct" style="padding:6px 0"><span class="mk-auth-ini" style="width:36px;height:36px">A</span><div class="grow"><div class="mk-auth-sys-n">Aarav Kumar</div><div class="mk-auth-sys-e">aarav.k@gmail.com</div></div></div>
+      <div class="mk-auth-fedbtn">Continue as Aarav</div>
+    </div>
+  </div></div>
+<figcaption><span class="id">AUTH-29</span><span class="nm">Web sign-in, desktop</span><span class="ds">Two columns at 1024 and up: illustration on a primaryTint panel, 400 px content column. Chrome's FedCM One Tap prompt sits top right (browser UI, labelled). Stand-in art: scene-welcome.</span></figcaption>
+</figure>
+
+<figure class="mock" data-id="AUTH-29">
+<div class="phone"><div class="screen sx">
+<div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="mk-auth-urlbar"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg><span class="grow">app.smriti.app/login</span><svg class="ic xs"><use href="#ph-dots-three-vertical-bold"/></svg></div>
+  <div class="body" style="gap:14px;padding-top:12px">
+    <div class="row between"><span class="mk-auth-word" style="font-size:20px">Smriti</span><span class="seg" style="width:150px"><span class="on">English</span><span lang="hi">हिन्दी</span></span></div>
+    <div class="scene" style="height:196px;flex:none"><img class="art-fill" src="assets/scene-welcome.webp" alt=""></div>
+    <div class="t-display" style="margin-top:4px">Sign in to Smriti</div>
+    <div class="t-body muted" style="margin-top:-8px">Pick up where you left off, on any device.</div>
+    <div class="btn btn-google mk-auth-gis"><svg class="g"><use href="#g-logo"/></svg><span>Continue with Google</span></div>
+    <div class="t-label center">New here? <span class="link">Start learning free</span></div>
+    <div class="t-label link center" style="margin-top:-4px">Used Apple on your iPhone?</div>
+    <div class="divider" style="margin:4px 0"></div>
+    <div class="mk-auth-trust"><svg class="ic xs"><use href="#ph-shield-check-fill"/></svg><span>We never call you or share your email.</span></div>
+    <div class="mk-auth-legal">By continuing, you agree to the <span class="link">Terms</span> and the <span class="link">Privacy policy</span>.</div>
+  </div>
+</div></div>
+<figcaption><span class="id">AUTH-29</span><span class="nm">Web sign-in, phone width</span><span class="ds">Single column under 600 px, in a phone browser. The spec hides the illustration below 600 px; shown here small, because the page reads bare without it (see report).</span></figcaption>
+</figure>
+
+</div>
+</div>
+</section>

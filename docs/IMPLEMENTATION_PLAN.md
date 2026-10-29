@@ -26,11 +26,15 @@ Some of these have lead times of several weeks, so they should start now.
 |---|---|---|
 | `AGNES_AI_API_KEY` saved in the cloud environment, and `apihub.agnes-ai.com` allowed in its network settings | LLM and images go through Agnes (TRD §9.3). The API docs are already in the TRD. Network access works since 29 Oct; the key still has to be saved as an environment variable. | Blocks F-8 |
 | **Final brand name and domain** | Store listings, bundle IDs, the site domain and the wordmark depend on it (the logo mark stays). Brand strings are config, so code can start with "Smriti". | Before store submission (week 16) |
-| **DLT registration** (entity, sender ID, OTP template) with an SMS provider such as MSG91 | Phone OTP in India can't be sent without it | 1–3 weeks |
+| **Google Cloud project for sign-in** (one for production, one for staging): the OAuth consent screen (Google Auth Platform branding: app name, logo, support email, home page, privacy policy and terms URLs, authorised domains), scopes `openid`, `email` and `profile` only, then **brand verification**. OAuth clients: one **web** client (JavaScript origins `app.<domain>` and the staging origin, redirect URI on the Supabase auth domain), one **Android** client per variant package name and per signing SHA-1 (Play App Signing key, EAS upload key, development key), one **iOS** client per variant bundle id | Google is the only sign-in (TRD §6). Brand verification shows our name and logo on Google's sign-in screen, and must be redone if the name changes, so it waits for the final brand | Days for the clients. A few business days for brand verification, after the brand name is final |
+| **Sign in with Apple** on the Apple Developer account: the capability on every variant App ID, grouped under the all-exams app as the primary App ID; a Sign in with Apple key (.p8) for token revocation; the server-to-server notification URL (`/v1/webhooks/apple-signin`). A Services ID only if web Apple sign-in is approved later (TRD §18 D10) | App Store guideline 4.8, and Apple's rule to revoke tokens when an account is deleted | Days, after the Apple account exists |
+| **Supabase custom domain** for auth (for example `auth.<domain>`) | Google's consent screen and redirects show our domain instead of the Supabase project URL | Days (paid add-on) |
+| **Universal Sign In licence** for `@react-native-google-signin/google-signin` (or the free EAS-customer licence) | Credential Manager on Android with a nonce (TRD §18 D5) | Days |
+| **DigiLocker partner onboarding** (only if legal review asks for a DigiLocker age token, TRD §18 D8) | DPDP Rule 10 verifiable consent for minors | Weeks; start early so it is ready before Rule 10 applies (about May 2027) |
 | Apple Developer (organisation) and Google Play Console accounts | Store builds, in-app purchase products, TestFlight | 1–2 weeks (D-U-N-S number for Apple) |
 | Razorpay account with Subscriptions and UPI Autopay enabled | Web payments | 1–2 weeks (KYC) |
 | Accounts: Supabase, Railway, Cloudflare (R2, Workers), Expo (EAS), RevenueCat, Sentry, Grafana Cloud, ClickHouse Cloud, Deepgram, Google AI Studio (Gemini Live) | Infra and providers | Days |
-| Legal review: privacy policy, terms, DPDP consent flow for minors | Required before public launch | 3–4 weeks |
+| Legal review: privacy policy, terms, the DPDP consent flow for minors (is Google sign-in plus a self-declaration "verifiable"? should consent come at sign-in or before features?), the 7-day deletion grace period, keeping hashed sign-in ids for ₹1 trial dedup after deletion | Required before public launch | 3–4 weeks |
 
 ---
 
@@ -46,6 +50,7 @@ Some of these have lead times of several weeks, so they should start now.
 
 ### F-2 Infrastructure and environments (weeks 1–2)
 - Supabase projects for staging and production, with branching for previews. The Data API is turned off for the app schemas.
+- Supabase Auth config in code (`supabase/config.toml`): anonymous sign-ins on with a raised per-IP limit, manual linking on, Google and Apple providers (web client id first, then every iOS client id; every variant bundle id for Apple), nonce checks on, Turnstile for web, redirect URL allowlist, the "before user created" hook that blocks email sign-ups, the custom auth domain.
 - Railway services: `api`, `worker`, Redis. Preview environments per pull request.
 - Cloudflare: R2 buckets (`assets`, `content`, `uploads`, `staging`), `cdn.` domain with cache rules, Workers static hosting for `app.` and the site.
 - ClickHouse Cloud service and the `events` table (DB_SCHEMA §14). Grafana Cloud stack with the ClickHouse data source.
@@ -81,7 +86,9 @@ Some of these have lead times of several weeks, so they should start now.
 
 ### F-7 Mobile app shell (weeks 2–6)
 - Expo Router app with the five tabs, the variant config (`APP_VARIANT`) and EAS build profiles.
-- Supabase anonymous sign-in at first launch, MMKV session storage.
+- Supabase anonymous sign-in at first launch, encrypted MMKV session storage, excluded from backups.
+- **Google sign-in, end to end, on one variant:** Credential Manager on Android and the Google SDK on iOS through Universal Sign In, a nonce, `linkIdentity` on the guest, `signInWithIdToken` for restore, and the Custom Tab fallback without Play services. Sign in with Apple on iOS. The merge path (`merge_guest` job) with the shared-phone check, sign-out with the local wipe (`docs/flows/auth.md` §6).
+- **Spike: managed child sessions** (`docs/flows/auth.md` §6.11): a one-time token hash for an internal identity exchanged for a session on the device, the "before user created" hook, and converting an onboarding guest into a managed child in place. Decide the fallback (server-held secret) if it fails.
 - `packages/app-core`: the storage interface, the outbox and sync client (`POST /v1/sync/events`, `GET /v1/sync/state`), stores, and the streak, pet and plant rules, with no platform imports.
 - On-device SQLite implementing the storage interface, with migrations and every table from DB_SCHEMA §15.
 - The server sync handler: idempotent apply for progress, reviews, XP, activity days, streak, plant and pet.
@@ -101,7 +108,8 @@ Some of these have lead times of several weeks, so they should start now.
 ### F-10 Web app shell (weeks 3–6)
 - `apps/web`: Vite + React + TypeScript, TanStack Router, Tailwind with the token theme, Radix primitives, Sentry, analytics batching.
 - IndexedDB (Dexie) implementing the `app-core` storage interface, so the web app uses the same outbox and sync client as mobile.
-- Supabase anonymous sign-in, onboarding, Home and the lesson player on web, from the same `UX_FLOW.md` specs.
+- Supabase anonymous sign-in with Turnstile, onboarding, Home and the lesson player on web, from the same `UX_FLOW.md` specs.
+- Google sign-in on web: the GIS button and One Tap (FedCM) with a nonce, the OAuth redirect with PKCE on iOS browsers, the in-app browser notice, and `/login` (AUTH-29).
 - PWA: app shell caching and bundle caching in a service worker.
 - Deployed to `app.` on Cloudflare with preview deployments per pull request.
 - `docs/PARITY.md`: the screen and feature matrix for iOS, Android and web (TRD §2.1).
@@ -160,8 +168,11 @@ Some of these have lead times of several weeks, so they should start now.
 - A tutor eval set (English, Hindi, Hinglish; JEE and NEET questions) that runs in CI on every prompt or model-tier change.
 
 ### M-7 Accounts and payments (weeks 10–16)
-- Login sheet (phone OTP through the DLT SMS hook, Google, Apple, email), identity linking for guests, the merge job.
-- Guardian consent flow for under-18s, with legal review.
+- Login sheets (Google everywhere, Sign in with Apple on iOS) with every PRD §10.1 trigger and return to origin, the age check, identity linking for guests, the merge job and its notice, switching accounts, sign out with the local wipe, session-ended handling (`docs/ux/auth.md` AUTH-01 to AUTH-12, AUTH-29 to AUTH-31).
+- Account deletion in the app and at `app.<domain>/delete-account` (AUTH-13 to AUTH-17): re-sign-in, the 7-day grace, Apple token revocation, Razorpay cancellation, the erasure job (Postgres, R2, ClickHouse).
+- Guardian consent for 13 to 17 (AUTH-18 to AUTH-23): same-phone handoff with an in-memory guardian session, the link and QR path with `/guardian/{code}`, the consent record and withdrawal, with legal review. The DigiLocker step behind its flag if D8 needs it.
+- Managed accounts for under-13s if D9 is approved (AUTH-24 to AUTH-28): parent sign-in, converting the onboarding guest, adding a child, restore on a new phone, the "Who's learning?" picker.
+- ₹1 dedup (TRD §11): identity-key claims, DeviceCheck on iOS, device recall on Android when access is granted, intro and non-intro products per variant.
 - RevenueCat products per variant with the ₹1 intro offer. Razorpay Subscriptions with UPI Autopay on web.
 - Webhooks with HMAC verification and replay protection, entitlement recompute, the paywall and manage-plan screens.
 - Data export and account deletion endpoints (DPDP).
@@ -191,6 +202,7 @@ Some of these have lead times of several weeks, so they should start now.
 - [ ] Crash-free sessions above 99.5% in the beta. API p95 under 300 ms for non-AI routes. Tutor time to first token under 1.5 s.
 - [ ] Purchase, renewal, cancellation and refund tested on all three platforms in sandbox and with one real ₹1 purchase each.
 - [ ] Legal sign-off on privacy, terms and the consent flow.
+- [ ] Sign-in, linking, merge, sign-out wipe, deletion and guardian consent pass Maestro and Playwright flows on Android (with and without Google Play services), iOS (Google and Apple) and web (Chrome, Safari, an in-app browser), for every launch variant.
 
 ---
 
@@ -249,7 +261,9 @@ Some of these have lead times of several weeks, so they should start now.
 | Risk | Effect | Mitigation |
 |---|---|---|
 | Agnes access is blocked or lacks a feature (streaming, tool calling) | F-8, M-6 and every illustration slip | Build the gateway interfaces first, confirm streaming and tools in week 1, keep the provider swappable |
-| DLT registration delays | Phone OTP is late | Google, Apple and email login ship first. Guests keep working. |
+| Google brand verification waits for the final brand name (D7) | Google's sign-in screen shows a generic or unverified name at launch | Set up the clients and the staging consent screen in Phase 0. Submit verification the day the name is final. Guests keep working without sign-in. |
+| The managed child session spike fails | Under-13 accounts slip | The server-held secret fallback (TRD §6). Under-13s can still learn as guests on one device. |
+| Legal review says Google sign-in plus a declaration isn't verifiable consent | Social, sharing, voice and photo uploads stay locked for teens | The DigiLocker step is built behind a flag. Start DigiLocker onboarding early (§2). |
 | Content volume for two exams in 12 weeks | Launch slips | Start M-1 in week 7 with the skills from F-9. Ship subjects as they reach 100% coverage. |
 | Store review for ₹1 intro offers and per-exam apps | Launch slips | Submit early TestFlight and internal-track builds. Keep each variant's listing and content clearly distinct. |
 | Hindi speech quality | Voice features feel weak in Hindi | The Phase 0 check, with a Hindi-only speech fallback behind the same interface |

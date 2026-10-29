@@ -17,7 +17,7 @@ This document covers three stores:
 - **Migrations:** plain SQL in `supabase/migrations/`, applied with the Supabase CLI. This is the only place the schema changes. SQLAlchemy models in `apps/api` mirror it, and CI fails on drift.
 - **Schemas** group tables by domain: `app`, `content`, `learn`, `game`, `social`, `billing`, `ai`, `notify`, `ops`. Nothing lives in `public`, and none of these schemas is exposed through the Supabase Data API. Clients only reach data through FastAPI (TRD §1).
 - **IDs:**
-  - Users are `auth.users.id` (uuid). Guests are real users with `is_anonymous = true`, so every table uses the same `user_id` before and after sign-up.
+  - Users are `auth.users.id` (uuid). Guests are real users with `is_anonymous = true`, so every table uses the same `user_id` before and after sign-up. Managed children (under 13) are real users too, with an internal identity no person uses, so every table works for them unchanged (`docs/flows/auth.md` §6.11).
   - Content IDs are stable, readable slugs from the `content/` JSON (for example `phy.kinematics.relative-velocity-1d`), so git diffs and the database agree.
   - Rows created offline use a **client-generated UUIDv7** (time-ordered), which also makes sync idempotent.
   - Other rows use `gen_random_uuid()`.
@@ -89,16 +89,26 @@ erDiagram
 ```sql
 create table app.profiles (
   user_id                 uuid primary key references auth.users(id) on delete cascade,
-  handle                  citext unique,                 -- for friend search; null for guests
+  handle                  citext unique,                 -- for friend search; null for guests; adults only on public surfaces
+  nickname_word_ids       text[],                        -- minors: auto-generated public nickname from the fixed word list (config), rendered EN or HI
+  nickname_number         smallint,                      -- minors: the number part, e.g. "Sunny Sprout 27"; re-rollable, never typed
   display_name            text,
   avatar_asset_id         uuid,                          -- content.media_assets (private or preset)
   locale                  text not null default 'en' check (locale in ('en','hi')),
   timezone                text not null default 'Asia/Kolkata',
   age_band                text check (age_band in ('u10','10_12','13_17','18p')),
   is_minor                boolean generated always as (age_band in ('u10','10_12','13_17')) stored,
+  birth_ym                date,                          -- first of the birth month; only when the student gave a birth year (ONB-04, AUTH-03)
+  age_source              text check (age_source in ('class','birth_year','declined','guardian')),
+  account_kind            text not null default 'learner'
+                            check (account_kind in ('learner','managed','guardian')),
+  guardian_consent_state  text not null default 'not_required'
+                            check (guardian_consent_state in ('not_required','required','pending','granted','declined','revoked')),
+  signed_up_at            timestamptz,                   -- first Google or Apple identity linked; null for guests
+  deletion_scheduled_for  timestamptz,                   -- set by an erasure request; erased by the worker after it
   primary_exam_profile_id text,                          -- content.exam_profiles
   daily_goal_xp           smallint not null default 30,
-  daily_goal_minutes      smallint not null default 15,
+  daily_goal_minutes      smallint not null default 10 check (daily_goal_minutes in (5,10,20,30)),
   settings                jsonb not null default '{}',   -- sound, haptics, reduced motion, theme
   first_variant           text,                          -- app variant at first launch
   referral_code           text unique,
@@ -118,16 +128,54 @@ create table app.user_exams (
 );
 create unique index on app.user_exams (user_id) where is_primary;
 
-create table app.guardian_consents (
-  id                  uuid primary key default gen_random_uuid(),
-  user_id             uuid not null references auth.users(id) on delete cascade,
-  guardian_phone_hash text not null,            -- salted hash, never the raw number
-  method              text not null check (method in ('phone_otp','digilocker','other')),
-  scope               jsonb not null,           -- which processing was consented to
-  consented_at        timestamptz not null,
-  revoked_at          timestamptz,
-  evidence            jsonb not null default '{}'
+create table app.guardian_consent_requests (     -- a teen (or a parent) asks; the guardian decides
+  id                uuid primary key default gen_random_uuid(),
+  learner_user_id   uuid references auth.users(id) on delete cascade,  -- null until claimed when minor.defer_sync_until_consent is on
+  claim_secret_hash text unique,                   -- device-held secret for the consent-first variant (auth flow §6.10)
+  claimed_at        timestamptz,
+  initiated_by      text not null default 'learner' check (initiated_by in ('learner','guardian','device')),
+  channel           text not null check (channel in ('handoff','link')),
+  code_hash         text not null unique,          -- hash of the 8-character code in the link or QR
+  scopes            text[] not null,               -- asked: 'account','social','community','voice','uploads'
+  status            text not null default 'pending'
+                      check (status in ('pending','granted','declined','expired','cancelled')),
+  guardian_user_id  uuid references auth.users(id) on delete set null,
+  created_at        timestamptz not null default now(),
+  expires_at        timestamptz not null,          -- from auth.consent_handoff_ttl_min or auth.consent_link_ttl_h
+  resolved_at       timestamptz,
+  check (learner_user_id is not null or claim_secret_hash is not null)
 );
+create index on app.guardian_consent_requests (learner_user_id, created_at desc);
+
+create table app.guardian_consents (             -- the consent record (DPDP Rule 10)
+  id                  uuid primary key default gen_random_uuid(),
+  user_id             uuid not null references auth.users(id) on delete cascade,   -- the learner
+  guardian_user_id    uuid references auth.users(id) on delete set null,
+  guardian_sub_hash   text not null,             -- HMAC of the guardian's Google or Apple sub; proves who consented if the guardian account is deleted
+  request_id          uuid references app.guardian_consent_requests(id) on delete set null,
+  method              text not null check (method in ('google_same_device','google_own_device','parent_created')),
+  age_assurance       text not null check (age_assurance in ('self_declared','digilocker_token','known_adult')),
+  scope               jsonb not null,            -- {"account":true,"social":true,"community":false,"voice":false,"uploads":true}
+  notice_version      text not null,             -- version of the consent notice shown, per locale
+  consented_at        timestamptz not null,
+  revoked_at          timestamptz,               -- whole record withdrawn (per-scope changes write a new row)
+  superseded_by       uuid references app.guardian_consents(id),
+  evidence            jsonb not null default '{}' -- request id, app version, platform, declaration version; no IP, no email
+);
+create unique index on app.guardian_consents (user_id) where revoked_at is null and superseded_by is null;
+create index on app.guardian_consents (guardian_user_id);
+
+create table app.guardian_links (                -- who a guardian is responsible for
+  guardian_user_id  uuid not null references auth.users(id) on delete cascade,
+  learner_user_id   uuid not null references auth.users(id) on delete cascade,
+  kind              text not null check (kind in ('managed','consent')),   -- owns a managed child, or consented for a teen
+  relation          text not null default 'parent' check (relation in ('parent','guardian')),
+  created_at        timestamptz not null default now(),
+  revoked_at        timestamptz,
+  primary key (guardian_user_id, learner_user_id)
+);
+create unique index on app.guardian_links (learner_user_id) where kind = 'managed' and revoked_at is null;  -- one owner per managed child
+create index on app.guardian_links (learner_user_id);
 
 create table app.devices (
   id            uuid primary key default gen_random_uuid(),
@@ -148,7 +196,10 @@ create table app.account_merges (                -- guest identity already belon
   source_user_id  uuid not null,                 -- the guest; deleted after merge
   target_user_id  uuid not null references auth.users(id) on delete cascade,
   status          text not null check (status in ('queued','running','done','failed')),
-  stats           jsonb not null default '{}',
+  include_progress boolean not null default true, -- false when the student said "not mine" on AUTH-07
+  attempts        smallint not null default 0,
+  failure_code    text,
+  stats           jsonb not null default '{}',   -- numbers only: lessons_added, xp_added, days_added, streak_before, streak_after, pet_kept
   created_at      timestamptz not null default now(),
   finished_at     timestamptz
 );
@@ -179,6 +230,15 @@ create table app.data_requests (                 -- DPDP: access, correction, er
 ```
 
 **On sign-up**, a trigger on `auth.users` (`app.handle_new_user()`) creates `app.profiles`, `game.user_stats`, `game.plants` (stage `seed`) and `notify.prefs`. The pet row is created when the student picks a cat or a dog in onboarding.
+
+Trigger and auth notes (`docs/flows/auth.md`):
+- The trigger fires for **every** new `auth.users` row: anonymous guests at first launch, a Google or Apple sign-in that creates a new account (restore on a fresh install creates the guest first, so this is rare), a guardian's first sign-in, and a managed child created by the API. It must stay cheap and idempotent (`on conflict do nothing`).
+- **Linking** Google or Apple to a guest is an update, not an insert, so the trigger doesn't fire again. `POST /v1/auth/linked` sets `signed_up_at`, the display name and the handle (adults) or the nickname (minors, PRD §16.4).
+- A guardian's profile gets `account_kind = 'guardian'` from the API after their first consent or Parent-mode sign-in. The game rows the trigger made for them are harmless and stay empty.
+- A **"before user created" auth hook** rejects email sign-ups, except internal identities on `AUTH_MANAGED_IDENTITY_DOMAIN` created by the service role for managed children.
+- `guardian_consent_state` on the profile is a cache of the active `guardian_consents` row and pending request, kept by the API, so gates read one column.
+- A daily job moves `age_band` forward from `birth_ym`. When a teen turns 18, `guardian_consent_state` becomes `not_required` and the `consent` guardian link gets `revoked_at`.
+- **Erasure:** `app.guardian_consents` cascades with the learner. Whether consent records must be kept longer as proof needs legal review; if so, they move to the tombstone pattern used by billing (§8).
 
 ---
 
@@ -601,7 +661,10 @@ create table learn.activity_days (             -- source of truth for streaks an
   focus_sessions     smallint not null default 0,   -- Pomodoro
   cards_reviewed     smallint not null default 0,
   lessons_completed  smallint not null default 0,
-  goal_met           boolean not null default false,
+  mock_sections      smallint not null default 0,
+  daily_challenge    boolean not null default false,
+  qualified          boolean not null default false,  -- one lesson, or 10 reviews, or one mock section, or the daily challenge; drives the streak
+  goal_met           boolean not null default false,  -- the daily minutes goal ring only; never decides the streak
   freeze_used        boolean not null default false,
   first_event_at     timestamptz,
   last_event_at      timestamptz,              -- feeds bedtime estimation (TRD §9.6)
@@ -1183,15 +1246,19 @@ create table billing.payment_events (             -- every webhook, raw, kept fo
   unique (source, external_event_id)              -- replay protection
 );
 
-create table billing.intro_claims (               -- one ₹1 month per person
-  phone_hash  text primary key,                   -- survives erasure, so the offer can't be reclaimed
-  user_id     uuid,
-  source      text not null,
-  claimed_at  timestamptz not null default now()
+create table billing.intro_claims (               -- one ₹1 month per person (TRD §11)
+  claim_key    text primary key,                  -- HMAC-SHA256(pepper, 'google:'||sub) or (pepper, 'apple:'||sub); survives erasure
+  key_kind     text not null check (key_kind in ('google_sub','apple_sub')),
+  key_version  smallint not null default 1,       -- pepper version; a new pepper never rewrites old keys
+  user_id      uuid,                              -- cleared on erasure
+  source       text not null,                     -- 'play', 'app_store', 'razorpay'
+  variant_id   text,
+  claimed_at   timestamptz not null default now()
 );
+create index on billing.intro_claims (user_id);
 ```
 
-Billing rows (`subscriptions`, `payments`, `payment_events`) are kept for 8 years for tax records, even after account deletion, so they have no cascading foreign key to `auth.users`. On erasure, the deletion job replaces `user_id` with a tombstone ID and clears `intro_claims.user_id`. `entitlements` is derived, so it cascades. The retention period needs legal sign-off.
+Billing rows (`subscriptions`, `payments`, `payment_events`) are kept for 8 years for tax records, even after account deletion, so they have no cascading foreign key to `auth.users`. On erasure, the deletion job replaces `user_id` with a tombstone ID and clears `intro_claims.user_id`, keeping the hashed claim keys so a re-created account can't claim the ₹1 month again. Device signals for the same purpose live with Apple (DeviceCheck) and Google (Play Integrity device recall), not in our database. `entitlements` is derived, so it cascades. The retention period needs legal sign-off.
 
 ---
 
@@ -1332,7 +1399,7 @@ create table notify.log (
   user_id      uuid not null references auth.users(id) on delete cascade,
   device_id    uuid,
   template_id  text not null,
-  channel      text not null check (channel in ('push','email','sms','in_app')),
+  channel      text not null check (channel in ('push','email','in_app')),   -- no 'sms': we hold no phone numbers
   status       text not null check (status in ('queued','sent','failed','suppressed')),
   suppressed_reason text,                          -- cap, quiet hours, pref off
   sent_at      timestamptz not null default now(),
@@ -1396,14 +1463,19 @@ Policy patterns (each uses `(select auth.uid())` so Postgres evaluates it once p
 
 | Pattern | Tables | Policy |
 |---|---|---|
-| Owner only | `app.*` user tables, `learn.*`, `game.user_stats`, `plants`, `pets`, `ai.*`, `notify.prefs` | `using (user_id = (select auth.uid()))`, and the same `with check` for writes |
+| Owner only | `app.*` user tables (except the guardian tables below), `learn.*`, `game.user_stats`, `plants`, `pets`, `ai.*`, `notify.prefs` | `using (user_id = (select auth.uid()))`, and the same `with check` for writes |
 | Owner via parent | `learn.palace_rooms`, `palace_loci`, `learn.mock_answers` | `exists` on the parent row owned by the user |
+| Learner or guardian read, server write | `app.guardian_consents`, `app.guardian_links` | `select` when `user_id` (or `learner_user_id`) `= (select auth.uid())` or `guardian_user_id = (select auth.uid())`. Writes only through the API's service-role functions after its checks (flow §6.10). |
+| Learner read, server write | `app.guardian_consent_requests` | `select` for the learner. A guardian reads a request only through the `security definer` function `app.consent_request_by_code(code)`, which checks the code hash, status and expiry and returns the learner's first name, pet name and pet species, the app variant and the scopes only. |
+| Guardian reads a managed child | Child's `learn.*`, `game.*` summaries (Parent mode, Phase 3) | Through `security definer` views filtered by an active `app.guardian_links` row. Notes, tutor chats and uploads are never in these views. |
 | Public read | `content.*` (published rows), `game.badges`, `quests`, `shop_items`, `collections` | `select` to `anon, authenticated` with a status filter |
-| Service only | `content.question_keys`, `billing.payment_events`, `ops.*`, `ai.moderation_flags` | RLS on, no policies |
+| Service only | `content.question_keys`, `billing.payment_events`, `billing.intro_claims`, `app.account_merges` (the owner reads its merge through the API), `ops.*`, `ai.moderation_flags` | RLS on, no policies |
 | Owner read, server write | `billing.subscriptions`, `billing.entitlements`, `game.xp_ledger`, `gem_ledger`, `learn.mock_reports` | `select` for the owner. Writes only from the service role. Scores on `learn.mock_attempts` are set only by the scoring job. |
-| Social | `social.friendships`, `duos`, `duels` | Visible to either participant. Friend profiles are read through a `security definer` view that exposes only handle, display name, avatar, streak, league and pet. |
+| Social | `social.friendships`, `duos`, `duels` | Visible to either participant. Friend profiles are read through a `security definer` view that exposes only handle, display name, avatar, streak, league and pet. For a minor the view returns the nickname and pet avatar on public surfaces and the pet name only to friends added by link or QR, never the display name or handle. |
 | Squads | `social.squads`, `squad_members` | Visible to members. Writes by owner or admin. |
 | Realtime | `realtime.messages` | Private channels. A user may join `duel:{id}` only if they are a participant, and `mock:{id}` only if they have an attempt. |
+
+**RLS tests for the auth tables:** a teen can't read another teen's consent; a guardian sees only learners linked to them; a revoked link hides the learner at once; a guest JWT (`is_anonymous`) can't create consent requests; a managed child can't read its guardian's rows.
 
 ---
 
@@ -1466,11 +1538,29 @@ Materialised views built on `events`:
 
 Grafana reads ClickHouse directly through its ClickHouse data source. Guests and minors carry no ad IDs, and `props` never contains free text typed by the student.
 
+```sql
+CREATE TABLE user_aliases                     -- a merged guest's id points to the account it joined
+(
+    alias_user_id      UUID,
+    canonical_user_id  UUID,
+    merged_at          DateTime64(3, 'UTC')
+)
+ENGINE = ReplacingMergeTree(merged_at)
+ORDER BY alias_user_id;
+```
+
+Funnels join `events` to `user_aliases` so a guest's history counts towards the account after a merge (`docs/flows/auth.md` §6.4). On erasure, the user's events and aliases are removed in a weekly lightweight-delete batch (legal review on keeping pseudonymous events instead).
+
 ---
 
 ## 15. On-device storage (SQLite on mobile, IndexedDB on web)
 
-One database per signed-in user (`smriti-{user_id}.db`), in WAL mode. Migrations ship with the app and run at launch.
+One database per profile on the device (`smriti-{user_id}.db`: the guest, the signed-in student, or each managed child), in WAL mode. Migrations ship with the app and run at launch.
+
+- **Sessions:** one Supabase session per profile, in encrypted MMKV under its own key. A small **profile registry** in MMKV lists `{user_id, kind, display name, pet species}` for each profile with a session here, for the "Who's learning?" picker (AUTH-25). Nothing else about a profile lives outside its database.
+- **Sign out** deletes that profile's database, its MMKV namespace, its private files in the asset cache and its widget snapshot. Downloaded bundles and public media are shared by all profiles and stay.
+- **Merge:** after a guest is merged into an existing account, the device restores the account into a new database from `GET /v1/sync/state` and deletes the guest's database.
+- **Device flag:** `prior_signout_on_device` (boolean in MMKV) turns on the shared-phone check before a merge (AUTH-07). It never stores the old user id.
 
 The web app keeps the same tables as IndexedDB object stores (through Dexie), behind the same storage interface in `packages/app-core`, so the outbox, sync rules and conflict handling are identical on both.
 
@@ -1500,7 +1590,7 @@ The web app keeps the same tables as IndexedDB object stores (through Dexie), be
 
 1. `0001_extensions_domains.sql`: extensions, `i18n_text`, schemas, `touch_updated_at()`
 2. `0002_content.sql`: exams, graph, items, bundles, questions, mocks, media, search
-3. `0003_app.sql`: profiles, devices, consents, exports, the new-user trigger
+3. `0003_app.sql`: profiles, devices, guardian consent requests, consents and links, merges, exports, data requests, the new-user trigger, `app.consent_request_by_code()`
 4. `0004_learn.sql`: progress, mastery, SRS, practice, mocks, memory tools
 5. `0005_game.sql`: stats, plant, pet, ledgers, quests, badges, leagues
 6. `0006_social.sql`

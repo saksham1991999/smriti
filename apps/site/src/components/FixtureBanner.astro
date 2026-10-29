@@ -1,0 +1,25 @@
+---
+// Shown on every page while the build uses the fixture content index, so nobody mistakes
+// placeholder chapter names for real content.
+import Icon from "./Icon.astro";
+import { getIndex } from "../content-index";
+import { messages } from "../i18n";
+import type { Locale } from "../config/site";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const isFixture = getIndex().fixture === true;
+---
+
+{
+  isFixture && (
+    <div class="fixture-banner" role="note">
+      <div class="wrap">
+        <Icon name="info" size={20} />
+        <span>{messages(lang).fixture.banner}</span>
+      </div>
+    </div>
+  )
+}

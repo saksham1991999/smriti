@@ -1,0 +1,185 @@
+---
+import Art from "./Art.astro";
+import Icon from "./Icon.astro";
+import { site, type Locale } from "../config/site";
+import { getIndex } from "../content-index";
+import { fmt, list, messages } from "../i18n";
+import { localePath, startUrl } from "../lib/urls";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const m = messages(lang);
+const idx = getIndex();
+const exams = list(lang, idx.exams.map((e) => e.short_name[lang]));
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="chip tint eyebrow-chip"><Icon name="graduation-cap" size={20} />{fmt(m.hero.eyebrow, { exams })}</p>
+      <h1 id="hero-title" class="t-hero">{m.hero.title}</h1>
+      <p class="t-lead muted hero-body">{m.hero.body}</p>
+      <div class="hero-ctas">
+        <a class="btn" href={startUrl(site.webAppUrl, { lang, placement: "hero" })} data-cta="start" data-placement="hero">
+          {m.hero.ctaPrimary}
+          <Icon name="arrow-right" size={20} />
+        </a>
+        <a class="btn secondary" href={localePath(lang, "/exams/")}>{m.hero.ctaSecondary}</a>
+      </div>
+      <ul class="trust" role="list">
+        <li><Icon name="check-circle" weight="fill" size={20} />{m.hero.trustNoSignup}</li>
+        <li><Icon name="translate" size={20} />{m.hero.trustBilingual}</li>
+        <li><Icon name="prohibit" size={20} />{m.hero.trustNoAds}</li>
+      </ul>
+    </div>
+    <div class="hero-art">
+      <div class="sun" aria-hidden="true"></div>
+      <Art name="ui-language-hello" lang={lang} priority sizes="(min-width: 1024px) 560px, 92vw" class="pets" />
+      <div class="float float-plant card" aria-hidden="true">
+        <Art name="plant-sprout" lang={lang} decorative sizes="64px" class="float-img" />
+        <span class="t-label">{m.hero.floatPlant}</span>
+      </div>
+      <div class="float float-revise card" aria-hidden="true">
+        <span class="float-icon s-chemistry"><Icon name="lightning" weight="fill" size={20} /></span>
+        <span class="t-label">{m.hero.floatRevise}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: 32px 56px;
+    overflow: clip;
+  }
+  .hero-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-copy {
+    display: grid;
+    gap: 20px;
+    justify-items: start;
+  }
+  .eyebrow-chip {
+    font-size: var(--fs-label);
+  }
+  .hero-body {
+    max-width: 54ch;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .trust {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    color: var(--ink-muted);
+    font-size: var(--fs-label);
+    font-weight: 700;
+  }
+  .trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .trust li :global(.ic) {
+    color: var(--success);
+  }
+  .hero-art {
+    position: relative;
+    aspect-ratio: 4 / 3.2;
+    border-radius: 32px;
+    background: var(--primary-tint);
+    display: grid;
+    place-items: end center;
+    isolation: isolate;
+  }
+  .sun {
+    position: absolute;
+    inset: 9% auto auto 50%;
+    translate: -50% 0;
+    width: 64%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--surface);
+    opacity: 0.7;
+    z-index: -1;
+  }
+  .hero-art :global(.pets) {
+    width: 92%;
+    margin-bottom: 2%;
+  }
+  .float {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 10px 10px;
+    max-width: 62%;
+    border-radius: 18px;
+    box-shadow: var(--sh-raised);
+  }
+  .float-plant {
+    left: -4px;
+    bottom: 12%;
+    background: var(--streak-tint);
+    border-color: transparent;
+    color: var(--ink);
+  }
+  .float-plant :global(.float-img) {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+  }
+  .float-revise {
+    right: -4px;
+    top: 9%;
+  }
+  .float-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--tint);
+    color: var(--stext);
+    flex: none;
+  }
+  @media (min-width: 1024px) {
+    .hero {
+      padding-block: 56px 96px;
+    }
+    .hero-grid {
+      grid-template-columns: 1.05fr 1fr;
+      gap: 56px;
+    }
+    .float-plant {
+      left: -28px;
+    }
+    .float-revise {
+      right: -20px;
+    }
+  }
+  @media (max-width: 599px) {
+    .hero-ctas {
+      display: grid;
+      width: 100%;
+    }
+    .float {
+      max-width: 70%;
+    }
+    .float .t-label {
+      font-size: 13px;
+      line-height: 18px;
+    }
+  }
+</style>

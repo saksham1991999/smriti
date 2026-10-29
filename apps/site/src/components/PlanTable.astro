@@ -1,0 +1,156 @@
+---
+// Free vs Pro (PRD §11.1 with R9, R19, R25, R35). A real <table> for screen readers; on
+// phones each row becomes a card. Every cell is text plus an icon, never colour alone.
+import Icon from "./Icon.astro";
+import { site, type Locale } from "../config/site";
+import { fmt, messages } from "../i18n";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const m = messages(lang);
+const rows = Object.values(m.plans.rows);
+---
+
+<section class="section plans" id="plans" aria-labelledby="plans-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="plans-title" class="t-display">{m.plans.heading}</h2>
+      <p class="t-lead muted">{fmt(m.plans.sub, { brand: site.brand.name[lang] })}</p>
+    </div>
+    <div class="card table-card">
+      <table>
+        <caption class="visually-hidden">{m.plans.heading}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{m.plans.feature}</th>
+            <th scope="col"><span class="chip free">{m.plans.free}</span></th>
+            <th scope="col"><span class="chip pro"><Icon name="star" weight="fill" size={16} />{m.plans.pro}</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((r) => (
+              <tr>
+                <th scope="row">{r.label}</th>
+                <td data-col={m.plans.free}>
+                  <span class="cell">
+                    <Icon name="check-circle" weight="fill" size={20} class="ok" />
+                    <span>{r.free}</span>
+                  </span>
+                </td>
+                <td data-col={m.plans.pro}>
+                  <span class="cell">
+                    <Icon name="check-circle" weight="fill" size={20} class="ok pro" />
+                    <span>{r.pro}</span>
+                  </span>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="foot t-label muted">{m.plans.footnote}</p>
+  </div>
+</section>
+
+<style>
+  .table-card {
+    padding: 8px;
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 16px;
+  }
+  thead th {
+    padding-block: 12px;
+    font-size: var(--fs-label);
+    color: var(--ink-muted);
+  }
+  tbody tr + tr th,
+  tbody tr + tr td {
+    border-top: 1px solid var(--line);
+  }
+  tbody th {
+    font-weight: 800;
+  }
+  @media (min-width: 768px) {
+    tbody th {
+      width: 22%;
+    }
+  }
+  td {
+    width: 39%;
+    color: var(--ink);
+  }
+  .cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .cell :global(.ic) {
+    margin-top: 2px;
+  }
+  :global(.ok) {
+    color: var(--success);
+  }
+  :global(.ok.pro) {
+    color: var(--primary);
+  }
+  .foot {
+    margin-top: 16px;
+  }
+  @media (max-width: 767px) {
+    thead {
+      display: none;
+    }
+    table,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+      width: 100%;
+    }
+    tr {
+      padding: 12px 8px;
+    }
+    tbody tr + tr {
+      border-top: 1px solid var(--line);
+    }
+    tbody tr + tr th,
+    tbody tr + tr td {
+      border-top: 0;
+    }
+    th,
+    td {
+      padding: 6px 8px;
+    }
+    tbody th {
+      font-size: var(--fs-heading);
+    }
+    td::before {
+      content: attr(data-col);
+      display: block;
+      font-size: var(--fs-caption);
+      font-weight: 800;
+      color: var(--ink-muted);
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    :lang(hi) td::before {
+      text-transform: none;
+      letter-spacing: 0;
+    }
+  }
+</style>

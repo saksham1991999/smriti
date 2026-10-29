@@ -1,0 +1,94 @@
+---
+import Art from "./Art.astro";
+import { type Locale } from "../config/site";
+import { fmt, messages } from "../i18n";
+import type { ArtName } from "../lib/art";
+
+interface Props {
+  lang: Locale;
+  heading?: string;
+}
+const { lang, heading } = Astro.props;
+const m = messages(lang);
+const steps: { key: keyof typeof m.how.steps; art: ArtName; family: string }[] = [
+  { key: "goal", art: "scene-exam-goal", family: "s-physics" },
+  { key: "learn", art: "cat-thinking", family: "s-maths" },
+  { key: "grow", art: "plant-flowering", family: "s-biology" },
+];
+---
+
+<section class="section how" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="how-title" class="t-display">{heading ?? m.how.heading}</h2>
+    </div>
+    <ol class="steps" role="list">
+      {
+        steps.map((s, i) => (
+          <li class:list={["step", s.family]}>
+            <div class:list={["frame", { scene: s.art.startsWith("scene-") }]}>
+              <Art name={s.art} lang={lang} decorative sizes="(min-width: 1024px) 340px, 90vw" />
+            </div>
+            <p class="n t-caption">{fmt(m.how.step, { n: i + 1 })}</p>
+            <h3 class="t-title">{m.how.steps[s.key].title}</h3>
+            <p class="muted">{m.how.steps[s.key].body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--surface);
+    border-block: 1px solid var(--line);
+  }
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 28px;
+    counter-reset: none;
+  }
+  @media (min-width: 768px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+  .step {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+  }
+  .frame {
+    aspect-ratio: 3 / 2;
+    border-radius: var(--r-card);
+    background: var(--tint);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .frame :global(img) {
+    height: 88%;
+    width: auto;
+    object-fit: contain;
+  }
+  .frame.scene :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .n {
+    color: var(--stext);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  :lang(hi) .n {
+    text-transform: none;
+    letter-spacing: 0;
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import ExamGrid from "../../../components/ExamGrid.astro";
+import CtaBand from "../../../components/CtaBand.astro";
+import type { Locale } from "../../../config/site";
+import { fmt, messages } from "../../../i18n";
+import { brandName, crumbsFor } from "../../../lib/page-data";
+import { localeParams } from "../../../lib/routes";
+
+export const getStaticPaths = () => localeParams();
+
+const { lang } = Astro.props as { lang: Locale };
+const m = messages(lang);
+const brand = brandName(lang);
+const crumbs = crumbsFor(lang);
+---
+
+<Base
+  lang={lang}
+  path="/exams/"
+  title={fmt(m.meta.examsTitle, { brand })}
+  description={fmt(m.meta.examsDescription, { brand })}
+  pageType="exams"
+  og="exam"
+  jsonLd={[crumbs.jsonLd]}
+>
+  <div class="wrap crumb-row"><Breadcrumbs lang={lang} items={crumbs.visible} /></div>
+  <ExamGrid lang={lang} headingLevel={1} />
+  <CtaBand lang={lang} />
+</Base>
+
+<style>
+  .crumb-row {
+    padding-top: 20px;
+  }
+  .crumb-row + :global(.section) {
+    padding-top: 24px;
+  }
+</style>

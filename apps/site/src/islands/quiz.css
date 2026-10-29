@@ -1,0 +1,337 @@
+/* Try-a-lesson quiz island. Tokens only (DESIGN §5: Option card, Confidence row, Pet line). */
+.quiz {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card-large);
+  box-shadow: var(--sh-card);
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+}
+@media (min-width: 600px) {
+  .quiz {
+    padding: 28px;
+  }
+}
+.quiz-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.quiz-kicker {
+  color: var(--primary-text);
+  font-size: var(--fs-label);
+  font-weight: 800;
+}
+.quiz-title {
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+  font-weight: 800;
+}
+.quiz-fixture {
+  flex: none;
+  min-height: 28px;
+  font-size: 12px;
+}
+.quiz-bar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 6px;
+}
+.quiz-bar .seg {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--track);
+}
+.quiz-bar .seg.now {
+  background: var(--primary);
+  opacity: 0.45;
+}
+.quiz-bar .seg.ok {
+  background: var(--success);
+}
+.quiz-bar .seg.bad {
+  background: var(--error);
+}
+.quiz-body {
+  display: grid;
+  gap: 16px;
+}
+.quiz-progress {
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  font-weight: 700;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+.quiz-progress:focus {
+  outline: none;
+}
+.quiz fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.quiz-stem {
+  padding: 0;
+  font-size: var(--fs-heading);
+  line-height: 1.45;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.quiz-options {
+  display: grid;
+  gap: 10px;
+}
+@media (min-width: 600px) {
+  .quiz-options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.opt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
+}
+.opt input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.opt:hover {
+  border-color: var(--ink-disabled);
+}
+.opt:has(input:focus-visible) {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+.opt-key {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--surface-sunken);
+  font-weight: 800;
+  font-size: 14px;
+  flex: none;
+}
+.opt-text {
+  flex: 1;
+}
+.opt-icon {
+  flex: none;
+}
+.opt.sel {
+  border: 2px solid var(--primary);
+  padding: 9.5px 13.5px;
+}
+.opt.sel .opt-key {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.opt.ok {
+  background: var(--success-tint);
+  border-color: var(--success);
+}
+.opt.ok .opt-icon,
+.opt.ok .opt-key {
+  color: var(--success-text);
+}
+.opt.bad {
+  background: var(--error-tint);
+  border-color: var(--error);
+}
+.opt.bad .opt-icon,
+.opt.bad .opt-key {
+  color: var(--error-text);
+}
+.opt.dim {
+  opacity: 0.6;
+}
+.opt input:disabled ~ * {
+  cursor: default;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .opt.bad {
+    animation: quiz-shake 240ms var(--ease);
+  }
+}
+@keyframes quiz-shake {
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+.quiz-conf-label {
+  padding: 0;
+  font-size: var(--fs-label);
+  font-weight: 700;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+.conf-row {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  background: var(--surface-sunken);
+}
+.conf {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  min-width: 72px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: var(--fs-label);
+  color: var(--ink-muted);
+  cursor: pointer;
+}
+.conf input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.conf.on {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--sh-card);
+}
+.conf:has(input:focus-visible) {
+  outline: 3px solid var(--primary);
+  outline-offset: 1px;
+}
+.quiz-feedback:empty {
+  display: none;
+}
+.fb {
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  display: grid;
+  gap: 6px;
+}
+.fb.ok {
+  background: var(--success-tint);
+}
+.fb.bad {
+  background: var(--error-tint);
+}
+.fb-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+}
+.fb.ok .fb-title {
+  color: var(--success-text);
+}
+.fb.bad .fb-title {
+  color: var(--error-text);
+}
+.fb-answer {
+  color: var(--ink);
+  font-weight: 700;
+}
+.fb-body {
+  color: var(--ink);
+}
+.fb-nudge {
+  color: var(--warning-text);
+  font-weight: 700;
+}
+.quiz-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.quiz-foot .btn {
+  min-width: 160px;
+}
+@media (max-width: 599px) {
+  .quiz-foot .btn {
+    width: 100%;
+  }
+}
+.pet-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.pet-line img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: var(--primary-tint);
+  flex: none;
+}
+.bubble {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: var(--surface-sunken);
+  font-size: var(--fs-label);
+  line-height: 1.4;
+  font-weight: 600;
+}
+.quiz-done {
+  justify-items: center;
+  text-align: center;
+  padding-block: 8px;
+}
+.done-art {
+  width: 160px;
+  height: auto;
+}
+.done-title {
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  font-weight: 800;
+}
+.done-title:focus {
+  outline: none;
+}
+.done-body {
+  color: var(--ink-muted);
+  max-width: 44ch;
+}
+.done-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+:lang(hi) .quiz-stem,
+:lang(hi) .bubble,
+:lang(hi) .fb-body {
+  line-height: 1.6;
+}

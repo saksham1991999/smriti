@@ -1,0 +1,234 @@
+/* Periodic table teaser. Cells use subject families as block tints until block tokens exist
+   (memory-labs flow §12 G9). The block letter is printed in every cell. */
+.pt {
+  display: grid;
+  gap: 12px;
+}
+.pt-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border-radius: var(--r-card);
+  padding: 4px;
+  scrollbar-width: thin;
+}
+.pt-scroll:focus-visible {
+  outline: 3px solid var(--primary);
+}
+.pt-grid {
+  --cell: 44px;
+  display: grid;
+  grid-template-columns: repeat(18, var(--cell));
+  grid-template-rows: repeat(7, var(--cell)) 14px repeat(2, var(--cell));
+  gap: 3px;
+  width: max-content;
+}
+@media (min-width: 1024px) {
+  .pt-grid {
+    --cell: minmax(0, 1fr);
+    width: 100%;
+    grid-template-rows: repeat(7, 58px) 16px repeat(2, 58px);
+    gap: 4px;
+  }
+  .pt-hint {
+    display: none;
+  }
+}
+.pt-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  background: var(--tint);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.pt-cell:hover {
+  border-color: var(--strong);
+}
+.pt-cell.on {
+  border: 2px solid var(--primary);
+  background: var(--surface);
+  z-index: 1;
+}
+.pt-cell:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 1px;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pt-cell:hover {
+    transform: scale(1.06);
+  }
+}
+.pt-cell .z {
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 700;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--f-latin);
+}
+.pt-cell .b {
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 800;
+  color: var(--stext);
+  font-family: var(--f-latin);
+}
+.pt-cell .sym {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 800;
+  margin-top: 8px;
+  font-family: var(--f-latin);
+}
+@media (min-width: 1024px) {
+  .pt-cell .sym {
+    font-size: 19px;
+  }
+  .pt-cell .z,
+  .pt-cell .b {
+    font-size: 11px;
+  }
+}
+.pt-gap {
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1.5px dashed var(--line);
+  color: var(--ink-muted);
+  font-size: 9px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  font-family: var(--f-latin);
+}
+.pt-detail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 8px;
+  min-width: 0;
+}
+.pt-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 112px;
+  height: 112px;
+  flex: none;
+  border-radius: 18px;
+  background: var(--tint);
+  border: 2px solid var(--strong);
+}
+.pt-tile .z {
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+.pt-tile .sym {
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 800;
+  font-family: var(--f-latin);
+}
+.pt-tile .b {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--stext);
+  margin-top: 6px;
+}
+.pt-name {
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.pt-facts {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+}
+.pt-facts div {
+  display: flex;
+  gap: 8px;
+  font-size: var(--fs-label);
+}
+.pt-facts dt {
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.pt-facts dd {
+  margin: 0;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.pt-detail > div:last-child {
+  min-width: 0;
+}
+@media (max-width: 1023px) {
+  .pt-tile {
+    width: 92px;
+    height: 92px;
+  }
+  .pt-tile .sym {
+    font-size: 34px;
+  }
+}
+.pt-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+}
+.pt-legend {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: var(--fs-label);
+  font-weight: 700;
+}
+.pt-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pt-legend .sw {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--tint);
+  color: var(--stext);
+  font-weight: 800;
+  font-size: 13px;
+}
+.pt-hint,
+.pt-note {
+  color: var(--ink-muted);
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  font-weight: 600;
+}

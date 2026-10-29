@@ -1,0 +1,192 @@
+---
+// Subject landing page for one exam: its chapters from the content index, with Course schema.
+import Base from "../../../../../layouts/Base.astro";
+import PageHero from "../../../../../components/PageHero.astro";
+import AccessChips from "../../../../../components/AccessChips.astro";
+import CtaBand from "../../../../../components/CtaBand.astro";
+import Icon from "../../../../../components/Icon.astro";
+import { site, type Locale } from "../../../../../config/site";
+import { getIndex, paths, subjectsForExam, type Exam, type ExamSubject } from "../../../../../content-index";
+import { fmt, formatNumber, messages } from "../../../../../i18n";
+import { subjectArt } from "../../../../../lib/art";
+import { brandName, crumbsFor } from "../../../../../lib/page-data";
+import { withLocales } from "../../../../../lib/routes";
+import { course } from "../../../../../lib/seo";
+import { subjectClass } from "../../../../../lib/subjects";
+import { absolute, localePath, startUrl } from "../../../../../lib/urls";
+
+export function getStaticPaths() {
+  const idx = getIndex();
+  return withLocales(
+    idx.exams.flatMap((exam) =>
+      subjectsForExam(idx, exam).map((es) => ({ params: { exam: exam.slug, subject: es.subject.slug }, props: { exam, es } })),
+    ),
+  );
+}
+
+const { lang, exam, es } = Astro.props as { lang: Locale; exam: Exam; es: ExamSubject };
+const { subject, chapters } = es;
+const m = messages(lang);
+const brand = brandName(lang);
+const vars = { subject: subject.name[lang], exam: exam.short_name[lang], brand };
+const path = paths.subject(exam, subject);
+const crumbs = crumbsFor(lang, exam, subject);
+const description = fmt(m.meta.subjectDescription, vars);
+const firstTopic = chapters[0]?.topics[0];
+const jsonLd = [
+  course({
+    name: fmt(m.subject.title, vars),
+    description,
+    url: absolute(site.siteUrl, localePath(lang, path)),
+    lang,
+    providerName: brand,
+    siteUrl: site.siteUrl,
+    about: exam.name[lang],
+    parts: chapters.map((c) => c.chapter.name[lang]),
+  }),
+  crumbs.jsonLd,
+];
+---
+
+<Base
+  lang={lang}
+  path={path}
+  title={fmt(m.meta.subjectTitle, vars)}
+  description={description}
+  pageType="subject"
+  og="exam"
+  accent={`x-${exam.accent}`}
+  exam={exam.id}
+  jsonLd={jsonLd}
+>
+  <div class={subjectClass(subject.id)}>
+    <PageHero
+      lang={lang}
+      crumbs={crumbs.visible}
+      eyebrow={fmt(m.subject.eyebrow, vars)}
+      title={fmt(m.subject.title, vars)}
+      body={subject.summary?.[lang] ?? fmt(m.subject.fallbackBody, vars)}
+      art={subjectArt(subject.id)}
+      tone="subject"
+    >
+      <Fragment slot="actions">
+        <a
+          class="btn"
+          href={startUrl(site.webAppUrl, { lang, placement: "subject_hero", exam: exam.id, topic: firstTopic?.id })}
+          data-cta="start"
+          data-placement="subject_hero"
+        >
+          {fmt(m.subject.start, vars)}
+          <Icon name="arrow-right" size={20} />
+        </a>
+      </Fragment>
+    </PageHero>
+
+    <section class="section list-section" aria-labelledby="chapters-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="chapters-title" class="t-title">{m.subject.chaptersHeading}</h2>
+        </div>
+        <ol class="rows" role="list">
+          {
+            chapters.map(({ chapter, topics }, i) => (
+              <li class="row card">
+                <span class="num-badge num" aria-hidden="true">{formatNumber(lang, i + 1)}</span>
+                <div class="row-main">
+                  <h3 class="t-heading">
+                    <a href={localePath(lang, paths.chapter(exam, subject, chapter))}>{chapter.name[lang]}</a>
+                  </h3>
+                  <p class="t-caption muted">{fmt(m.exam.topics, { n: formatNumber(lang, topics.length) })}</p>
+                  <AccessChips lang={lang} deepDiveFree={chapter.deep_dive_free} />
+                </div>
+                <Icon name="caret-right" size={24} class="row-go" />
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+  </div>
+  <CtaBand lang={lang} exam={exam.id} topic={firstTopic?.id} />
+</Base>
+
+<style is:global>
+  .list-section {
+    padding-top: 8px;
+  }
+  .rows {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 900px) {
+    .rows {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    min-height: 88px;
+    transition:
+      transform var(--dur-base) var(--ease),
+      box-shadow var(--dur-base) var(--ease);
+  }
+  .row:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--sh-raised);
+  }
+  .row:focus-within {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+  }
+  .row-main {
+    display: grid;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+  }
+  .row h3 a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .row h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .row h3 a:focus-visible {
+    outline: none;
+  }
+  .row .access {
+    position: relative;
+  }
+  .num-badge {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: 14px;
+    background: var(--tint);
+    color: var(--stext);
+    font-weight: 800;
+    font-size: 17px;
+  }
+  .row-go {
+    color: var(--ink-muted);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .row {
+      transition: none;
+    }
+    .row:hover {
+      transform: none;
+    }
+  }
+</style>

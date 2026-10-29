@@ -1,0 +1,54 @@
+---
+import Brand from "./Brand.astro";
+import { site, type Locale } from "../config/site";
+import { conductingBodies, getIndex, paths } from "../content-index";
+import { fmt, listOr, messages } from "../i18n";
+import { localePath } from "../lib/urls";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const m = messages(lang);
+const idx = getIndex();
+const brand = site.brand.name[lang];
+const home = localePath(lang, "/");
+const bodies = conductingBodies(idx);
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="stack">
+        <Brand lang={lang} href={home} />
+        <p class="muted t-label">{m.footer.tagline}</p>
+      </div>
+      <nav aria-label={m.footer.examsHeading}>
+        <h2>{m.footer.examsHeading}</h2>
+        <ul>
+          {idx.exams.map((e) => <li><a href={localePath(lang, paths.exam(e))}>{e.short_name[lang]}</a></li>)}
+        </ul>
+      </nav>
+      <nav aria-label={m.footer.product}>
+        <h2>{m.footer.product}</h2>
+        <ul>
+          <li><a href={`${home}#how`}>{m.nav.how}</a></li>
+          <li><a href={`${home}#pricing`}>{m.nav.pricing}</a></li>
+          <li><a href={`${home}#faq`}>{m.nav.faq}</a></li>
+        </ul>
+      </nav>
+      <nav aria-label={m.footer.legal}>
+        <h2>{m.footer.legal}</h2>
+        <ul>
+          <li><a href={localePath(lang, "/privacy/")}>{m.footer.privacy}</a></li>
+          <li><a href={localePath(lang, "/terms/")}>{m.footer.terms}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="fine">
+      {bodies.length > 0 && <p>{fmt(m.footer.notAffiliated, { brand, bodies: listOr(lang, bodies) })}</p>}
+      <p>{fmt(m.footer.rights, { year, owner: site.brand.legalName ?? brand })}</p>
+    </div>
+  </div>
+</footer>

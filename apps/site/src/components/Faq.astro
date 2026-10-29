@@ -1,0 +1,104 @@
+---
+// FAQ with native <details> (works without JS). The same items feed the FAQPage JSON-LD,
+// built by faqItems() so the markup and the schema can never drift apart.
+import Art from "./Art.astro";
+import Icon from "./Icon.astro";
+import type { Locale } from "../config/site";
+import { messages } from "../i18n";
+import { faqItems } from "../lib/faq";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const m = messages(lang);
+const items = faqItems(lang);
+---
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="section-head">
+      <h2 id="faq-title" class="t-display">{m.faq.heading}</h2>
+      <Art name="dog-thinking" lang={lang} decorative sizes="200px" class="faq-art" />
+    </div>
+    <div class="faq-list">
+      {
+        items.map((i) => (
+          <details class="qa">
+            <summary>
+              <span>{i.q}</span>
+              <Icon name="caret-down" size={20} class="caret" />
+            </summary>
+            <p>{i.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-grid {
+    display: grid;
+    gap: 8px;
+  }
+  .faq-grid :global(.faq-art) {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .faq-grid {
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .faq-grid :global(.faq-art) {
+      display: block;
+      width: 200px;
+      margin-top: 16px;
+    }
+  }
+  .faq-list {
+    display: grid;
+    gap: 10px;
+  }
+  .qa {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    box-shadow: var(--sh-card);
+  }
+  .qa summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 60px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1.35;
+    border-radius: var(--r-card);
+  }
+  .qa summary::-webkit-details-marker {
+    display: none;
+  }
+  .qa :global(.caret) {
+    color: var(--ink-muted);
+    transition: transform var(--dur-base) var(--ease);
+  }
+  .qa[open] :global(.caret) {
+    transform: rotate(180deg);
+  }
+  .qa p {
+    padding: 0 20px 18px;
+    color: var(--ink-muted);
+    max-width: 68ch;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .qa :global(.caret) {
+      transition: none;
+    }
+  }
+</style>

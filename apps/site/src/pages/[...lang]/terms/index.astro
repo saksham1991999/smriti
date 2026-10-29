@@ -1,0 +1,10 @@
+---
+import LegalDraft from "../../../components/LegalDraft.astro";
+import type { Locale } from "../../../config/site";
+import { localeParams } from "../../../lib/routes";
+
+export const getStaticPaths = () => localeParams();
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<LegalDraft lang={lang} doc="terms" />

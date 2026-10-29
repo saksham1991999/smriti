@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 512 × 512 |
+| Agnes size and ratio | `1K`, `1:1`. Delivered at 512 × 512. |
 | Background | Transparent. |
 | Composition | A crest whose material and colour step up with the tier, all in one family. |
 

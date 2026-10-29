@@ -8,7 +8,7 @@ This document covers three stores:
 |---|---|---|
 | **Supabase Postgres** | Accounts, the content catalogue (a projection of `content/`), learning state, review history, gamification, social, billing, AI usage, notifications | Everything a user owns, and money |
 | **ClickHouse** | Every raw event (learning and product), forever | Analytics, dashboards, ML signals |
-| **On-device SQLite** | Cards, decks, the spaced-repetition schedule, memory palaces, notes, the profile snapshot, session state, the action queue, the asset cache index | Nothing; it is a cache plus an outbox, and the server wins on conflict |
+| **On-device storage** (SQLite on mobile, IndexedDB on web) | Cards, decks, the spaced-repetition schedule, memory palaces, notes, the profile snapshot, session state, the action queue, the asset cache index | Nothing; it is a cache plus an outbox, and the server wins on conflict |
 
 ---
 
@@ -1468,9 +1468,11 @@ Grafana reads ClickHouse directly through its ClickHouse data source. Guests and
 
 ---
 
-## 15. On-device SQLite (Expo)
+## 15. On-device storage (SQLite on mobile, IndexedDB on web)
 
 One database per signed-in user (`smriti-{user_id}.db`), in WAL mode. Migrations ship with the app and run at launch.
+
+The web app keeps the same tables as IndexedDB object stores (through Dexie), behind the same storage interface in `packages/app-core`, so the outbox, sync rules and conflict handling are identical on both.
 
 | Table | Purpose |
 |---|---|

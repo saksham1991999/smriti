@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1024 × 1024 |
+| Agnes size and ratio | `2K`, `1:1`. Delivered at 1024 × 1024. |
 | Background | Transparent. |
 | Composition | One object, centred, three-quarter view, about 70% of the frame, generous padding, a soft contact shadow under it. |
 

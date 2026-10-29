@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1536 × 1024. |
+| Agnes size and ratio | `2K`, `3:2`. Delivered at 1536 × 1024. |
 | Background | White or a very light tint, so labels overlaid by the app stay readable. |
 | Composition | Parts arranged clearly with space around each labelled part. The areas at label_anchors are left empty. |
 

@@ -26,10 +26,12 @@ Planning phase. The docs, design tokens and content skills exist. Application co
 ```
 apps/api        FastAPI service (Python 3.12, uv)
 apps/worker     Jobs and cron (arq): publish, roll-ups, AI, media, notifications, PDF
-apps/mobile     Expo app for iOS, Android and web (one build per exam variant)
+apps/mobile     Expo app for iOS and Android (one build per exam variant)
+apps/web        React (Vite) web app, its own screens on the shared packages
 apps/site       Astro marketing and SEO site
-packages/       config (variants, flags), tokens, ui, api-client, content-schema,
-                lesson-player, sim-bridge, i18n, analytics
+packages/       config (variants, flags), tokens, ui-native, ui-web, app-core,
+                api-client, content-schema, lesson-core, lesson-player-native,
+                lesson-player-web, sim-bridge, i18n, analytics
 content/        Source content (JSON), written by agents through skills, validated in CI
 sims/           Self-contained simulation bundles, one folder each
 supabase/       SQL migrations, RLS, seed
@@ -42,7 +44,7 @@ docs/           The planning docs above
 
 Don't swap these without the owner's approval:
 
-- FastAPI on Railway. Supabase for auth and Postgres. Astro for the marketing site. React (Expo / React Native) for the apps. Cloudflare for web hosting. Cloudflare R2 behind the CDN for files.
+- FastAPI on Railway. Supabase for auth and Postgres. Astro for the marketing site. React Native (Expo) for the mobile apps, and a separate React (Vite) web app. Cloudflare for web hosting. Cloudflare R2 behind the CDN for files.
 - **Agnes AI** for LLM calls and **all** image generation. **Gemini Live** for the realtime voice tutor. **Deepgram** for text-to-speech and speech-to-text.
 - **ClickHouse** as the analytics event store, with Grafana dashboards.
 - On-device SQLite with an action queue, on-device FSRS, versioned content packages with delta patches, and a seed pack in the app.
@@ -63,6 +65,7 @@ Don't swap these without the owner's approval:
 ## Conventions
 
 - **TypeScript:** strict mode, no `any` in shared packages. React components are function components. State: TanStack Query for server data, Zustand for UI state.
+- **Web and mobile parity:** business logic goes in `app-core` or `lesson-core`, never in a screen, so both apps share it. A feature added to one platform updates `docs/PARITY.md`.
 - **Python:** 3.12, Ruff (lint and format), mypy strict, Pydantic v2. Async SQLAlchemy 2. Business logic lives in services, not in route handlers.
 - **Database:** every change is a new SQL migration in `supabase/migrations/`. Every user table has RLS (see `docs/DB_SCHEMA.md` §12). Never edit an applied migration.
 - **API:** REST under `/v1`, Pydantic models are the OpenAPI source, and `packages/api-client` is regenerated from them. Mutations that touch progress or money take an idempotency key.

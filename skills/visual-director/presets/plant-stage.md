@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1024 × 1024 |
+| Agnes size and ratio | `2K`, `1:1`. Delivered at 1024 × 1024. |
 | Background | Transparent. |
 | Composition | The same terracotta pot, the same camera angle and the same scale in all 25 images, so they cross-fade cleanly. |
 

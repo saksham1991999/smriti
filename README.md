@@ -34,7 +34,7 @@ Design mockups: [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF
 | Backend API | FastAPI on Railway |
 | Auth and database | Supabase (Postgres, Auth) |
 | Marketing site | Astro on Cloudflare |
-| Web app | React on Cloudflare |
+| Web app | React (Vite) on Cloudflare, a separate app sharing the logic packages |
 | Mobile apps | React Native (Expo), one codebase with a build variant for each exam |
 | Assets | Cloudflare R2 behind Cloudflare CDN |
 | AI | Agnes AI (LLM and images), Gemini Live (realtime voice), Deepgram (speech) |

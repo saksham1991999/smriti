@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1024 × 768 |
+| Agnes size and ratio | `2K`, `4:3`. Delivered at 1024 × 768. |
 | Background | Transparent. |
 | Composition | The pet or plant in a gentle situation, with space above for one line of text. |
 

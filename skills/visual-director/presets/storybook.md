@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1536 × 1024 per page or panel. |
+| Agnes size and ratio | `2K`, `3:2`. Delivered at 1536 × 1024 per page or panel. |
 | Background | A full scene in a flatter 2.5D storybook finish. |
 | Composition | Keep the bottom 25% calm and simple: the app places the text there. |
 

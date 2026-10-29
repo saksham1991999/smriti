@@ -90,7 +90,7 @@ The mock runner deliberately looks like the real exam (UX_FLOW §4.10), so it us
 
 ## 3. Typography
 
-- **Latin:** Plus Jakarta Sans. **Devanagari:** Noto Sans Devanagari. Both are open-licence (SIL OFL), loaded with `expo-font` and self-hosted on web.
+- **Latin:** Plus Jakarta Sans. **Devanagari:** Noto Sans Devanagari. Both are open-licence (SIL OFL), loaded with `expo-font` on mobile and self-hosted as WOFF2 on web.
 - Hindi text uses the same size steps with a line height **1.15×** the Latin value, so matras never clip.
 - Numbers in stats, timers and leaderboards use tabular figures.
 - Maths is typeset with KaTeX (pre-rendered to SVG in bundles). Never fake formulas with plain text.
@@ -121,7 +121,7 @@ Body text in lessons is at most about 60 characters a line on tablets and web. S
 
 ## 5. Components
 
-Built once in `packages/ui` and shared by mobile and web.
+Built twice from the same tokens and this spec: `packages/ui-native` for the mobile apps and `packages/ui-web` for the web app (TRD §2.1). Each component has the same name, props and states on both, and logic lives in `packages/app-core`, not in components.
 
 | Component | Spec |
 |---|---|
@@ -143,7 +143,7 @@ Built once in `packages/ui` and shared by mobile and web.
 | **Formula box** | Subject tint background, KaTeX SVG, tappable symbols, "Add to formula vault". |
 | **Mock palette cell** | 40 × 40, shapes and colours from §2.4, question number in `label`. |
 
-**Icons:** Phosphor Icons (MIT), "bold" weight for outlines and "fill" for active states, at 20, 24 and 32 px. Icons that carry meaning always have a text label or an accessibility label.
+**Icons:** Phosphor Icons (MIT; `phosphor-react-native` on mobile, `@phosphor-icons/react` on web), "bold" weight for outlines and "fill" for active states, at 20, 24 and 32 px. Icons that carry meaning always have a text label or an accessibility label.
 
 ---
 
@@ -164,7 +164,7 @@ The design canvas uses Microsoft Fluent 3D emoji (MIT) as stand-ins. They may al
 
 ### 6.2 Presets
 
-Each preset is a named prompt template in `skills/visual-director/presets/`. The skill fills the `{placeholders}`. The exact parameter names follow the Agnes API docs once they arrive (TRD decision D6).
+Each preset is a named prompt template in `skills/visual-director/presets/`. The skill fills the `{placeholders}`. Each preset file also gives the Agnes `size` and `ratio` to request (TRD §9.3). Agnes returns opaque images, so "transparent" outputs are cut out after generation.
 
 | Preset | Use | Output |
 |---|---|---|

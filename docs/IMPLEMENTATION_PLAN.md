@@ -6,7 +6,7 @@ Status: Draft v0.1, 28 Oct 2026. Builds what `PRD.md` describes, using the archi
 
 - The work is split into **four phases** that match PRD §17. Each phase ends with exit criteria that must all be true before the next phase starts.
 - Inside a phase, work is grouped into **epics** with IDs (for example `F-3`). Each epic lists its tasks, so a coding agent or a developer can pick one up, open a branch and ship it as one pull request.
-- **Durations assume** a core team of 2 backend or full-stack engineers, 2 React Native engineers, 1 product designer, 1 content lead, and coding agents running the content skills. With a smaller team, the order stays the same and the dates move.
+- **Durations assume** a core team of 2 backend or full-stack engineers, 2 React Native engineers, 2 React web engineers (the web app is a separate React app, TRD §2.1), 1 product designer, 1 content lead, and coding agents running the content skills. With a smaller team, the order stays the same and the dates move.
 - **Content is not built by hand.** Phases build the machinery and the skills. Content for each exam is produced by agents running the skills in `skills/` and checked by `content-qa` and a human reviewer (PRD §14).
 
 | Phase | Weeks (estimate) | Outcome |
@@ -24,7 +24,7 @@ Some of these have lead times of several weeks, so they should start now.
 
 | Item | Why | Lead time |
 |---|---|---|
-| **Agnes AI API docs** and `AGNES_API_KEY` in the cloud environment | LLM, images and possibly embeddings all go through Agnes (TRD §9) | Blocks F-8 |
+| `AGNES_AI_API_KEY` saved in the cloud environment, and `apihub.agnes-ai.com` allowed in its network settings | LLM and images go through Agnes (TRD §9.3). The API docs are already in the TRD. | Blocks F-8 and the logo |
 | **Final brand name and domain** | Store listings, bundle IDs, the site domain and the logo all depend on it. Brand strings are config, so code can start with "Smriti". | Before store submission (week 16) |
 | **DLT registration** (entity, sender ID, OTP template) with an SMS provider such as MSG91 | Phone OTP in India can't be sent without it | 1–3 weeks |
 | Apple Developer (organisation) and Google Play Console accounts | Store builds, in-app purchase products, TestFlight | 1–2 weeks (D-U-N-S number for Apple) |
@@ -68,8 +68,8 @@ Some of these have lead times of several weeks, so they should start now.
 ### F-5 Design system in code (weeks 1–4)
 - `DESIGN.md` written first (Sunny Subjects tokens, components, the Agnes illustration style guide, Night Colour dark mode).
 - `packages/tokens`: one source of tokens compiled to TypeScript, CSS variables and the React Native theme.
-- `packages/ui`: buttons, cards, subject tiles, progress rings, chips, sheets, the tab bar, toasts, empty states, the streak pill, Plus Jakarta Sans and Noto Sans Devanagari.
-- A Storybook-style gallery screen in the app, used for design review.
+- `packages/ui-native` and `packages/ui-web`: the same component list from `DESIGN.md` §5 (buttons, cards, subject tiles, progress rings, chips, sheets, navigation, toasts, empty states, the streak pill) with the same names, props and states, and Plus Jakarta Sans and Noto Sans Devanagari.
+- A gallery screen in each app (and Storybook for `ui-web`), used for design review side by side.
 - Accessibility checks: touch target sizes, contrast tests on tokens, screen-reader labels.
 
 ### F-6 Content schema and publish pipeline (weeks 2–5)
@@ -82,20 +82,29 @@ Some of these have lead times of several weeks, so they should start now.
 ### F-7 Mobile app shell (weeks 2–6)
 - Expo Router app with the five tabs, the variant config (`APP_VARIANT`) and EAS build profiles.
 - Supabase anonymous sign-in at first launch, MMKV session storage.
-- On-device SQLite with migrations and every table from DB_SCHEMA §15, the outbox, and the sync client (`POST /v1/sync/events`, `GET /v1/sync/state`).
+- `packages/app-core`: the storage interface, the outbox and sync client (`POST /v1/sync/events`, `GET /v1/sync/state`), stores, and the streak, pet and plant rules, with no platform imports.
+- On-device SQLite implementing the storage interface, with migrations and every table from DB_SCHEMA §15.
 - The server sync handler: idempotent apply for progress, reviews, XP, activity days, streak, plant and pet.
 - Onboarding: language, goal, exam, exam date, daily goal, pick and name the pet, plant the seed, first lesson, notification ask.
 - Content download manager: manifest, bundles, patches, LRU cache, pinning, seed pack on first launch.
 - Sentry with trace propagation, and the analytics client with batching.
-- The web build of the same app (decision D1) deployed to `app.` on Cloudflare.
 
 ### F-8 Lesson player and memory core (weeks 3–6)
-- `packages/lesson-player`: renderers for every card type, Deep Dive and Quick Revision flows, confidence tagging (Sure / 50:50 / Guess), lesson complete screen.
+- `packages/lesson-core`: the lesson engine (card sequencing, depth filtering, answer checking, scoring, confidence tagging, events), fully unit-tested.
+- `packages/lesson-player-native` and `packages/lesson-player-web`: renderers for every card type, Deep Dive and Quick Revision flows, the lesson complete screen.
 - FSRS on device with `ts-fsrs` and on the server with the same parameters. Review queue screen.
 - Pet and plant engine (TRD §10) with Rive state machines. Placeholder Rive files until the final art is ready.
 - Agnes adapters (`AgnesLLMProvider`, `AgnesImageProvider`) behind the AI gateway, once the docs are in.
 - Deepgram adapter, and the Phase 0 Hindi check for TTS and STT (TRD §9.4, decision D3).
 - Embedding provider evaluation (D2).
+
+### F-10 Web app shell (weeks 3–6)
+- `apps/web`: Vite + React + TypeScript, TanStack Router, Tailwind with the token theme, Radix primitives, Sentry, analytics batching.
+- IndexedDB (Dexie) implementing the `app-core` storage interface, so the web app uses the same outbox and sync client as mobile.
+- Supabase anonymous sign-in, onboarding, Home and the lesson player on web, from the same `UX_FLOW.md` specs.
+- PWA: app shell caching and bundle caching in a service worker.
+- Deployed to `app.` on Cloudflare with preview deployments per pull request.
+- `docs/PARITY.md`: the screen and feature matrix for iOS, Android and web (TRD §2.1).
 
 ### F-9 Skills, dry run (weeks 2–6)
 - The skills in `skills/` are already written (planning phase). In Phase 0 they are run end to end on the fixture course: `syllabus-mapper`, `exam-blueprint`, `lesson-author`, `question-author`, `visual-director`, `audio-maker` and `content-qa`.
@@ -103,11 +112,12 @@ Some of these have lead times of several weeks, so they should start now.
 
 **Phase 0 exit criteria**
 - [ ] A guest completes onboarding and a fixture lesson on a 3 GB RAM Android phone, offline after the first launch.
+- [ ] The same guest flow works in the web app in Chrome, Safari and Firefox, and progress made on web syncs to mobile after sign-in.
 - [ ] Reviews scheduled offline sync correctly when the device reconnects, with no duplicates after forced retries.
 - [ ] The plant grows on consecutive days and droops after a missed day in a simulated timezone test.
 - [ ] One trace in Grafana spans app → API → Postgres → Agnes.
 - [ ] Every RLS test passes. The content pipeline publishes the fixture course to R2 and the app reads it.
-- [ ] Phase 0 decisions D1–D6 in TRD §18 are closed.
+- [ ] Phase 0 decisions D2–D6 in TRD §18 are closed (D1 was closed on 29 Oct 2026).
 
 ---
 
@@ -162,9 +172,11 @@ Some of these have lead times of several weeks, so they should start now.
 - Streak freezes, daily and weekly quests, badges, the card album.
 - In-app update prompts (soft and forced) from `/config`.
 
-### M-9 Web surfaces (weeks 11–17)
+### M-9 Web surfaces (weeks 7–17)
+- **Web app feature parity** for the MVP scope, built alongside each mobile epic (M-3 to M-8) and tracked in `docs/PARITY.md`: Learn, Labs (sims in iframes, 3D, 360°), practice, the tutor chat, accounts, the Razorpay paywall, reminders by Web Push.
+- **Desktop mock runner** that mirrors the official computer-based test screen, with keyboard shortcuts. JEE Main and SSC are taken on a computer, so this is the most realistic practice surface.
+- Responsive layouts for phone, tablet and desktop widths (UX_FLOW §4.17).
 - Astro site: exam, subject, chapter and topic pages from the published index, free cheat sheets and PYQ explanations, English and Hindi with `hreflang`, schema.org markup, React islands (mini quiz, periodic table, try a lesson).
-- Web app polish for desktop widths.
 
 ### M-10 Launch readiness (weeks 15–18)
 - Store listings per variant (keywords from PRD §12), screenshots, privacy labels, content rating.
@@ -236,8 +248,9 @@ Some of these have lead times of several weeks, so they should start now.
 
 | Risk | Effect | Mitigation |
 |---|---|---|
-| Agnes API details arrive late | F-8, M-6 and every illustration slip | Build the gateway interfaces first and test with a stub provider |
+| Agnes access is blocked or lacks a feature (streaming, tool calling) | F-8, M-6 and every illustration slip | Build the gateway interfaces first, confirm streaming and tools in week 1, keep the provider swappable |
 | DLT registration delays | Phone OTP is late | Google, Apple and email login ship first. Guests keep working. |
 | Content volume for two exams in 12 weeks | Launch slips | Start M-1 in week 7 with the skills from F-9. Ship subjects as they reach 100% coverage. |
 | Store review for ₹1 intro offers and per-exam apps | Launch slips | Submit early TestFlight and internal-track builds. Keep each variant's listing and content clearly distinct. |
 | Hindi speech quality | Voice features feel weak in Hindi | The Phase 0 check, with a Hindi-only speech fallback behind the same interface |
+| Web and mobile drift apart (two sets of screens) | Features and bugs differ by platform | Logic in `app-core` and `lesson-core`, one screen spec, the parity matrix, shared end-to-end scenarios |

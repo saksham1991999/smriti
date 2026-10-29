@@ -13,7 +13,7 @@ Read `DESIGN.md` §7 (motion tokens and the Rive state-machine contract) first.
 |---|---|---|
 | **Pet and plant** | Rive (`pet-cat.riv`, `pet-dog.riv`, `plant.riv`) with the fixed inputs and triggers in `DESIGN.md` §7.2 | The skill prepares the art pack, the spec and the tests. A person rigs it in the Rive editor. |
 | **Lesson explainers** (a heart pumping, a reaction happening, light refracting) | Lottie with image layers, or Rive for interactive ones | The skill builds them end to end |
-| **UI flourishes** (confetti, check pop, streak flame flip) | Lottie, or Reanimated code in `packages/ui` | The skill builds them |
+| **UI flourishes** (confetti, check pop, streak flame flip) | Lottie, or motion code: Reanimated in `packages/ui-native` and Motion in `packages/ui-web` | The skill builds them |
 
 ## Art comes from Agnes
 

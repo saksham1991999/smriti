@@ -68,7 +68,7 @@ The owner asked for these to be used alongside ours:
 
 | Variable | Needed by |
 |---|---|
-| `AGNES_API_KEY`, `AGNES_BASE_URL` | `visual-director`, `anim-maker` (art layers), and the LLM steps of any skill that runs through the gateway |
+| `AGNES_AI_API_KEY`, `AGNES_BASE_URL` | `visual-director`, `anim-maker` (art layers), and the LLM steps of any skill that runs through the gateway |
 | `DEEPGRAM_API_KEY` | `audio-maker` |
 | R2 staging credentials (`R2_*`) | Every media skill |
 

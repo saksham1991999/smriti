@@ -13,7 +13,25 @@ Read `DESIGN.md` §6 (house style, presets, mascots, plant, delivery) and `skill
 
 - Open requests in `content/media/requests/**` with `status: requested` and `kind` in `image`, `diagram`, `comic`, `pano360`.
 - Or a UI art need (onboarding, empty states, badges, league crests, the pets, the plant).
-- `AGNES_API_KEY` in the environment, and the Agnes API reference (TRD decision D6). If either is missing, stop and say which.
+- `AGNES_AI_API_KEY` in the environment, and network access to `apihub.agnes-ai.com`. If either is missing, stop and say which.
+
+## The Agnes call
+
+Use the AI gateway's image interface in app code. For one-off asset work outside the app (for example in a skill run before the gateway exists), call the API directly:
+
+```bash
+curl https://apihub.agnes-ai.com/v1/images/generations \
+  -H "Authorization: Bearer $AGNES_AI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "agnes-image-2.1-flash", "prompt": "…", "size": "2K", "ratio": "1:1",
+       "image": ["<reference sheet URL, for pets and the plant>"],
+       "extra_body": {"response_format": "url"}}'
+```
+
+- `size` is `1K`, `2K`, `3K` or `4K`, and `ratio` is one of `1:1`, `3:4`, `4:3`, `16:9`, `9:16`, `2:3`, `3:2`, `21:9`. Each preset names the pair to use.
+- The response is `{"data": [{"url": "…", "b64_json": null, "revised_prompt": null}]}`. Download the image straight away, because the returned URL is temporary storage, not ours.
+- Allow 60–360 s per call. Run calls one at a time or in small batches.
+- **Transparency:** Agnes returns opaque images. For presets marked transparent, prompt for "on a plain flat pure white background, no shadow on the background", then cut out the subject with `rembg` (MIT) and check the edges at 200% zoom.
 
 ## Steps
 

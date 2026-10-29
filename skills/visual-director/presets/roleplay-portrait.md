@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1024 × 1024 |
+| Agnes size and ratio | `2K`, `1:1`. Delivered at 1024 × 1024. |
 | Background | A simple period-appropriate backdrop. |
 | Composition | Head and shoulders, three-quarter view, a friendly neutral expression. |
 

@@ -227,6 +227,16 @@ Top to bottom (see board "7 · Home"):
   - **Large (plan):** the exam countdown plus 3 plan items.
   - All widgets use the subject and brand colours and render in light or dark mode.
 
+### 4.17 Web app layout
+The web app is a separate React app (TRD §2.1) built from the same screen specs above. Where it differs:
+- **Phone widths (< 600 px):** the same layouts as mobile, with the bottom tab bar.
+- **Tablet and desktop (≥ 600 px):** a left sidebar replaces the bottom tabs (Learn, Labs, Practice, Friends, Me), with the streak, plant and pet in a compact card at the top of the sidebar. Lists and details sit side by side (subject list and chapter, deck and card).
+- **Lessons:** the card column is capped at 720 px and centred. The tutor opens as a right-hand panel instead of a bottom sheet. Arrow keys move between cards, and Enter checks an answer.
+- **Mock runner:** laid out like the official computer-based test screen, with the question on the left, the palette on the right, and the section tabs and timer on top. Full keyboard support (number keys for options, M to mark, N for next).
+- **Labs, 3D and 360°:** the same sims and scenes in a larger frame, with mouse drag and scroll to zoom. Device orientation is used only on phones and tablets.
+- **Install and offline:** an install prompt after the second visit, a "Download for offline" action on topics, and the same offline banner as mobile.
+- **Reminders:** Web Push where the browser supports it, otherwise an opt-in email reminder.
+
 ## 5. Empty, error and edge states
 
 | State | Treatment |

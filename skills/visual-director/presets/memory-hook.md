@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1024 × 1024 |
+| Agnes size and ratio | `2K`, `1:1`. Delivered at 1024 × 1024. |
 | Background | A soft tint gradient. |
 | Composition | One clear, memorable, slightly absurd scene. Exaggeration helps memory. |
 

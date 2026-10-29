@@ -26,7 +26,7 @@ Everything else below is a recommendation. Each decision lists its alternatives 
 flowchart LR
   subgraph Clients
     M[Mobile apps<br/>Expo / React Native<br/>all-exams + per-exam variants]
-    W[Web app<br/>React]
+    W[Web app<br/>React + Vite SPA]
     S[Marketing site<br/>Astro, static + SSR islands]
   end
   subgraph Cloudflare
@@ -88,15 +88,19 @@ smriti/
 │  ├─ api/            FastAPI service (Python 3.12, uv)
 │  ├─ worker/         Background jobs + cron (shares the api package)
 │  ├─ mobile/         Expo app (iOS/Android), build variants per exam
-│  ├─ web/            React web app (see decision 2.1)
+│  ├─ web/            React (Vite) web app, its own screens (decision 2.1)
 │  └─ site/           Astro marketing + SEO site
 ├─ packages/
 │  ├─ config/         App variants (exam apps), feature flags schema, env schema
 │  ├─ tokens/         Design tokens (from DESIGN.md) → TS, CSS vars, RN theme
-│  ├─ ui/             Shared React Native (+ web) components
+│  ├─ ui-native/      React Native components (mobile)
+│  ├─ ui-web/         React DOM components (web), same names, props and states as ui-native
+│  ├─ app-core/       Platform-free logic: stores, sync client, FSRS, gamification rules, storage interface
 │  ├─ api-client/     Generated TS client from FastAPI OpenAPI + TanStack Query hooks
 │  ├─ content-schema/ JSON Schemas + TS types + Pydantic models for content bundles
-│  ├─ lesson-player/  Card renderers (shared mobile/web)
+│  ├─ lesson-core/    Lesson engine: card sequencing, answer checking, scoring, events (no UI)
+│  ├─ lesson-player-native/  Card renderers for mobile
+│  ├─ lesson-player-web/     Card renderers for web
 │  ├─ sim-bridge/     postMessage protocol for sims/labs
 │  ├─ i18n/           i18next setup + UI string catalogs (en, hi)
 │  └─ analytics/      Typed event catalogue, client batching, OTel helpers
@@ -112,10 +116,18 @@ smriti/
 
 | Option | How | Pros | Cons |
 |---|---|---|---|
-| **A. Expo universal app (recommended)** | The same Expo Router codebase builds iOS, Android and web (react-native-web). Web is deployed as static assets on Cloudflare. | One set of screens, one lesson player, one design system. Roughly 40% less UI work. Same behaviour everywhere. | The web UI feels a bit more "app-like". Some web libraries need wrappers. SEO doesn't matter because SEO lives in Astro. |
-| B. Separate React (Vite) SPA | Its own React DOM screens, sharing `api-client`, `content-schema`, `tokens` and logic hooks | The most web-native feel, with the full web ecosystem | Every screen is built twice, and the two drift apart |
+| A. Expo universal app | The same Expo Router codebase builds iOS, Android and web (react-native-web). Web is deployed as static assets on Cloudflare. | One set of screens, one lesson player, one design system. Roughly 40% less UI work. Same behaviour everywhere. | The web UI feels a bit more "app-like". Some web libraries need wrappers. SEO doesn't matter because SEO lives in Astro. |
+| **B. Separate React (Vite) SPA (chosen)** | Its own React DOM screens, sharing `api-client`, `content-schema`, `tokens` and logic hooks | The most web-native feel, with the full web ecosystem | Every screen is built twice, and the two drift apart |
 
-Recommendation: **A**. It is still React. Astro handles every SEO page, so the web app only needs to be a great logged-in experience. If option A ever falls short, `packages/*` keeps option B possible.
+**Decision (owner, 29 Oct 2026): B.** The web app is a separate React app in `apps/web`.
+
+To keep the cost of building screens twice down, and to stop the two apps drifting apart:
+- **Everything that isn't UI is shared** and written once in TypeScript with no platform imports: `app-core` (stores, the sync client and its outbox, FSRS, streak, pet and plant rules, entitlement checks, the free-limit logic), `lesson-core` (the lesson engine), `api-client`, `content-schema`, `i18n`, `analytics`, `config` and `tokens`.
+- **Storage is an interface** in `app-core`. Mobile implements it with SQLite and MMKV. Web implements it with IndexedDB (through Dexie) and `localStorage`.
+- **Only renderers are built twice:** `ui-native` and `ui-web` implement the same component list from `DESIGN.md` §5 with the same names, props and states. `lesson-player-native` and `lesson-player-web` render the same card types from `lesson-core`.
+- **One spec per screen.** `UX_FLOW.md` stays the single description of every screen, with web layout notes where they differ (UX_FLOW §4.17).
+- **A parity matrix** (`docs/PARITY.md`, created in Phase 0) lists every screen and feature with its status on iOS, Android and web. A pull request that adds a feature to one platform updates the matrix.
+- **Shared tests:** `lesson-core` and `app-core` carry most of the logic tests. End-to-end flows are written once as scenarios and run as Maestro (mobile) and Playwright (web).
 
 ## 3. Mobile app (Expo / React Native)
 
@@ -171,9 +183,28 @@ Recommendation: **A**. It is still React. Astro handles every SEO page, so the w
 - Deployed to Cloudflare (Workers static assets). Images go through Cloudflare image resizing from R2.
 - Interactive islands use React: an embeddable mini quiz, a periodic table, and a "try a lesson" widget. Fancy web motion uses React Bits components (web only).
 
-### 4.2 Web app
-- Built from the Expo universal app (decision 2.1A) and served as static assets from Cloudflare at `app.<domain>`.
-- Web push through the Push API, with service-worker-free fallback reminders by email. Optional.
+### 4.2 Web app (`apps/web`)
+
+| Concern | Choice |
+|---|---|
+| Framework | React 19 + TypeScript strict, built with Vite as a static single-page app |
+| Routing | TanStack Router (type-safe routes, search params for filters) |
+| Data and state | TanStack Query (persisted to IndexedDB) and Zustand, through `app-core` and `api-client` |
+| Styling | Tailwind CSS with a theme generated from `packages/tokens`, plus CSS variables for light and dark mode. No raw hex values in components. |
+| Accessible primitives | Radix UI primitives for dialogs, sheets, menus, tabs and tooltips, styled by `ui-web` |
+| Motion | Motion (Framer Motion) for UI. React Bits components for showpiece motion, used sparingly. Rive (`@rive-app/react-canvas`) for the pet and plant, dotLottie for confetti. |
+| 3D and 360° | `@react-three/fiber` + drei. Scene code is shared with mobile where possible. Device orientation for "look around" on phones and tablets, drag everywhere. |
+| Sims | Same sim bundles as mobile, in a sandboxed `iframe` through `sim-bridge` |
+| Maths | KaTeX (the SVGs from bundles, plus KaTeX at runtime for live input) |
+| Offline and install | Installable PWA. A service worker (Workbox) caches the app shell, downloaded bundles and media. Offline on web covers downloaded lessons and the review queue. |
+| Local data | IndexedDB (Dexie) implementing the `app-core` storage interface: the same outbox, cards, schedule, palaces and notes as the mobile SQLite tables (DB_SCHEMA §15) |
+| Auth | `@supabase/supabase-js` with anonymous sign-in, Google, email and phone OTP. Apple sign-in on web through Supabase's OAuth flow. |
+| Payments | Razorpay Checkout for the subscription with UPI Autopay (§11) |
+| Notifications | Web Push (VAPID) through the service worker where the browser supports it, with email reminders as an opt-in fallback |
+| Mock runner | Desktop-first layout that mirrors the official computer-based test screen (NTA and TCS style), with full keyboard support. This is where students practise for real CBT exams. |
+| Errors and traces | Sentry for React with tracing, sending `traceparent` to the API |
+| Hosting | Cloudflare Workers static assets at `app.<domain>`, preview deployments per pull request |
+| Tests | Vitest + React Testing Library for components, Playwright for flows and visual regression |
 
 ## 5. Backend (FastAPI)
 
@@ -316,7 +347,14 @@ flowchart LR
 - Streamed to the client by SSE. Messages are stored for continuity and for quality review, with retention limits.
 
 ### 9.3 Image generation (Agnes AI) and the image index
-- `AgnesLLMProvider` and `AgnesImageProvider` adapters are written once the API docs are available. Key: `AGNES_API_KEY`.
+- **Agnes API** (from the Agnes developer docs, checked 29 Oct 2026; re-check before Phase 0 work):
+  - Base URL `https://apihub.agnes-ai.com/v1`, header `Authorization: Bearer $AGNES_AI_API_KEY`. Key name: `AGNES_AI_API_KEY`.
+  - **Chat:** `POST /chat/completions`, OpenAI-compatible. Text and vision models include `agnes-2.5-flash` and `agnes-2.0-flash`. The tiers in §9.1 map to these by config. Streaming and tool calling still need to be confirmed in Phase 0, because the tutor depends on both.
+  - **Images:** `POST /images/generations` with model `agnes-image-2.1-flash`, `prompt`, `size` (`1K`, `2K`, `3K`, `4K`), `ratio` (`1:1`, `3:4`, `4:3`, `16:9`, `9:16`, `2:3`, `3:2`, `21:9`), and reference images for image-to-image and composition (`image`, a list of URLs or data URIs). `extra_body.response_format` is `url` or `b64_json`. The response is `{created, data: [{url, b64_json, revised_prompt}]}`. Timeouts of 60–360 s are recommended, so generation runs in the worker's `media` queue, not inside a request.
+  - **Video:** `POST /videos` (model `agnes-video-v2.0`), polled at `GET https://apihub.agnes-ai.com/agnesapi?video_id=…`. Useful later for short explainer clips and YouTube Shorts.
+  - **Not offered:** embeddings and text-to-speech. Those stay with the embedding provider (D2) and Deepgram.
+- `AgnesLLMProvider` and `AgnesImageProvider` implement the gateway interfaces. Agnes returns opaque images, so presets that need transparency are generated on a flat plain background and cut out in the delivery step (`skills/visual-director`).
+- Reference images keep characters consistent: the approved pet and plant reference sheets are passed in `image` on every pet or plant generation.
 - **Search before generating:** every image (generated or open-licence) is stored in R2 and indexed in the `image_assets` table with an image embedding (a CLIP-style multilingual model) in pgvector. Before calling Agnes, the agent searches the index by meaning. A close match is reused, and generation is the fallback.
 - **Style guide prompts:** every generated image starts from a named style preset (see `DESIGN.md` and `skills/visual-director`), such as "Sunny 3D object" or "Pet character sheet". The pets use a reference sheet, so the cat and dog stay consistent across images.
 - **Cache:** `key = sha256(normalized_prompt + style_preset + size + model_version)`. A cache hit returns the existing R2 URL, so shared prompts (for example "photosynthesis diagram, class 7") are generated once for everyone.
@@ -333,7 +371,7 @@ flowchart LR
 
 ### 9.5 Retrieval
 - `pgvector` in Supabase holds embeddings of published concept summaries, cards, questions and solutions, chunked per card, plus the image index (§9.3).
-- The embedding provider must be multilingual (English and Hindi). Use Agnes embeddings if Agnes offers them, otherwise pick one in Phase 0 by a small evaluation.
+- The embedding provider must be multilingual (English and Hindi). Agnes doesn't offer embeddings, so one is picked in Phase 0 by a small evaluation (text and image).
 - pgvector is enough for the first million vectors with HNSW indexes. Moving to a dedicated vector database (for example Qdrant) is a later option, behind the same interface.
 
 ### 9.6 Learning-science jobs
@@ -428,7 +466,7 @@ flowchart LR
 | Astro pages | LCP under 2.0 s on 4G, CLS under 0.05 |
 
 ## 16. Testing and CI/CD
-- **Unit:** pytest (API and worker), Vitest (packages), Jest with React Native Testing Library (components).
+- **Unit:** pytest (API and worker), Vitest (packages and web components with React Testing Library), Jest with React Native Testing Library (mobile components).
 - **Contract:** OpenAPI snapshot check. The generated client must compile.
 - **Content:** schema validation, coverage report (every syllabus concept has at least one explainer, question and card), broken media links, and a profanity and safety lint.
 - **E2E:** Maestro flows for mobile (onboarding, lesson, mock, paywall in sandbox), Playwright for web and site.
@@ -457,7 +495,7 @@ Key environment variables (names only):
 | Redis | `REDIS_URL` |
 | R2 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_ASSETS`, `_CONTENT`, `_UPLOADS`, `_STAGING` |
 | CDN | `CDN_BASE_URL` |
-| AI | `AGNES_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `GEMINI_API_KEY`, `DEEPGRAM_API_KEY`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` |
+| AI | `AGNES_AI_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `GEMINI_API_KEY`, `DEEPGRAM_API_KEY`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` |
 | Analytics | `CLICKHOUSE_URL`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `CLICKHOUSE_DATABASE` |
 | Payments | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `REVENUECAT_API_KEY`, `REVENUECAT_WEBHOOK_SECRET` |
 | Push | `EXPO_ACCESS_TOKEN` |
@@ -468,10 +506,10 @@ Key environment variables (names only):
 
 | # | Decision | Recommendation | Needed by |
 |---|---|---|---|
-| D1 | Web app approach (§2.1) | Expo universal app | Phase 0 |
-| D2 | Embedding provider (text and image) | Agnes embeddings if offered, otherwise a multilingual model chosen by an evaluation | Phase 0 |
+| D1 | Web app approach (§2.1) | **Decided:** separate React (Vite) web app | Closed 29 Oct 2026 |
+| D2 | Embedding provider (text and image) | A multilingual model chosen by an evaluation (Agnes has no embeddings API) | Phase 0 |
 | D3 | Hindi speech quality | Test Deepgram Hindi TTS and STT. Add a Hindi-only fallback only if needed. | Phase 0 |
 | D4 | Tracing backend | Grafana Cloud | Phase 0 |
 | D5 | SMS provider for OTP (DLT) | MSG91 | Phase 0 |
-| D6 | Agnes AI API details (LLM, image, embeddings, limits) | Need the docs link | Phase 0 |
+| D6 | Agnes AI API details | Endpoints and models documented in §9.3. Still to confirm: streaming, tool calling, rate limits, and network access from the cloud environment. | Phase 0 |
 | D7 | Final brand name and domain | Owner | Before store submission |

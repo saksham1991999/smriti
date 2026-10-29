@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 4096 × 2048 equirectangular (2:1). |
+| Agnes size and ratio | `4K`, `21:9`, then extended at the top and bottom to 2:1 with an image-to-image pass (Agnes has no 2:1 ratio). Delivered at 4096 × 2048 equirectangular. Validate this method in Phase 0. |
 | Background | The full scene. |
 | Composition | Horizon on the vertical centre line. Key points of interest spread around the full 360°. Calm areas at the zenith and nadir. |
 

@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 1536 × 1024 (3:2). The app crops to 16:9 and 4:3, so keep the subject inside the central 70%. |
+| Agnes size and ratio | `2K`, `3:2`. Delivered at 1536 × 1024. The app crops to 16:9 and 4:3, so keep the subject inside the central 70%. |
 | Background | A soft gradient in the subject's tint colour, with simple rounded scenery. |
 | Composition | One clear focal point, a simple foreground and background, people (if any) shown from the waist up or full figure at a small scale. |
 

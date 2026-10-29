@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Size | 512 × 512 |
+| Agnes size and ratio | `1K`, `1:1`. Delivered at 512 × 512. |
 | Background | Transparent. |
 | Composition | A centred emblem with a simple frame, readable at 64 px. |
 

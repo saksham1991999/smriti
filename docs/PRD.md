@@ -376,7 +376,8 @@ This phase builds the **machinery**, not the content. The repo ships **agent ski
 - `anim-maker`: makes Lottie or Rive animations and micro-interactions.
 - `exam-blueprint`: encodes an exam's pattern from its official notification.
 - `content-qa`: checks facts, coverage, language and accessibility.
-- External skills referenced: `anatomy` (MIT) for explanatory machine illustrations and `colorfigures` for interactive isometric figures.
+- `audio-maker`: narration, audio mnemonics and rhymes through Deepgram text-to-speech.
+- External skills the owner listed: `anatomy` (MIT), which explains an idea by building it as a working, interactive isometric figure (SVG, WebGL or 3D), and `colorfigures` (scope to be confirmed). Both are wired in through `skills/README.md`.
 
 The quality bar is that **every** syllabus item in scope has at least one Concept, one explainer, one practice question and one revision card. The coverage dashboard must be at 100% before an exam is published.
 

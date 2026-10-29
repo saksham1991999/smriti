@@ -97,9 +97,9 @@ Some of these have lead times of several weeks, so they should start now.
 - Deepgram adapter, and the Phase 0 Hindi check for TTS and STT (TRD §9.4, decision D3).
 - Embedding provider evaluation (D2).
 
-### F-9 Skills, round one (weeks 2–6)
-- `skills/` for `syllabus-mapper`, `exam-blueprint`, `lesson-author`, `question-author`, `visual-director` and `content-qa`, each with a `SKILL.md`, the schema it writes, examples and a checklist.
-- Each skill is tested by running it on the fixture course and passing CI.
+### F-9 Skills, dry run (weeks 2–6)
+- The skills in `skills/` are already written (planning phase). In Phase 0 they are run end to end on the fixture course: `syllabus-mapper`, `exam-blueprint`, `lesson-author`, `question-author`, `visual-director`, `audio-maker` and `content-qa`.
+- Fix whatever the dry run shows is unclear, and align `skills/_shared/content-format.md` with the JSON Schemas from F-6.
 
 **Phase 0 exit criteria**
 - [ ] A guest completes onboarding and a fixture lesson on a 3 GB RAM Android phone, offline after the first launch.
@@ -121,8 +121,8 @@ Some of these have lead times of several weeks, so they should start now.
 - Run `lesson-author`, `question-author`, `pyq-ingest`, `mnemonic-maker` and `visual-director` chapter by chapter, with `content-qa` and human review on every pull request.
 - The coverage dashboard must reach 100% for a subject before it ships (PRD §14).
 
-### M-2 Skills, round two (weeks 7–10)
-- `pyq-ingest`, `mnemonic-maker`, `sim-builder`, `model-3d-sourcer`, `anim-maker`, plus the wiring for the external `anatomy` and `colorfigures` skills.
+### M-2 Skills, second dry run (weeks 7–10)
+- Run `pyq-ingest`, `mnemonic-maker`, `sim-builder`, `model-3d-sourcer` and `anim-maker` on the first real chapter, and wire in the owner-listed `anatomy` and `colorfigures` skills (`skills/README.md`).
 
 ### M-3 Learn tab complete (weeks 7–12)
 - Home with today's plan, subject map, chapter and topic screens, revision and cheat sheets, formula and shortcut vaults, storybook reader, YouTube video lessons.

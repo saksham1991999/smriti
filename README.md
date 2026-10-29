@@ -12,7 +12,7 @@ The platform is built around four things:
 It's freemium. The free part works without login, and Pro is ₹99/month with the first month for ₹1.
 
 ## Status
-This repo is in the planning phase. There is no application code yet.
+This repo is in the planning phase. The docs, design tokens and content skills are here. Application code starts with Phase 0 of the implementation plan.
 
 | Doc | What it covers |
 |---|---|
@@ -22,7 +22,9 @@ This repo is in the planning phase. There is no application code yet.
 | [`docs/TRD.md`](docs/TRD.md) | Technical requirements: architecture, stack, AI, sync, payments, observability |
 | [`docs/DB_SCHEMA.md`](docs/DB_SCHEMA.md) | Postgres, ClickHouse and on-device SQLite schemas, RLS, retention |
 | [`docs/IMPLEMENTATION_PLAN.md`](docs/IMPLEMENTATION_PLAN.md) | Phased build plan with epics, exit criteria and owner setup items |
-| `AGENTS.md`, `DESIGN.md`, `skills/` | Agent guide, design system, and content-generation skills *(next)* |
+| [`AGENTS.md`](AGENTS.md) | Rules and conventions for coding agents working in this repo |
+| [`DESIGN.md`](DESIGN.md) + [`tokens.json`](packages/tokens/tokens.json) | Design system: colours, type, components, Agnes illustration style, motion, logo brief |
+| [`skills/`](skills/README.md) | Content-generation skills for coding agents |
 
 Design mockups: [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF48w6kC4bv6PtJhHFzzZ). The chosen direction is board 7, "Sunny Subjects".
 
@@ -35,4 +37,5 @@ Design mockups: [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF
 | Web app | React on Cloudflare |
 | Mobile apps | React Native (Expo), one codebase with a build variant for each exam |
 | Assets | Cloudflare R2 behind Cloudflare CDN |
-| AI | LLM tutor and content agents, Agnes AI for image generation |
+| AI | Agnes AI (LLM and images), Gemini Live (realtime voice), Deepgram (speech) |
+| Analytics | ClickHouse event store, Grafana dashboards |

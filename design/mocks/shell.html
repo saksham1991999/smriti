@@ -15,7 +15,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { background: var(--g-bg); color: var(--g-ink); font-family: var(--g-display); font-size: 15px; line-height: 1.55; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--g-bg); }
-.wrap { max-width: 1680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top.wrap, nav.areas .wrap, section.area > .wrap, footer.wrap { max-width: 1680px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 header.top { padding-block: 40px 20px; display: grid; gap: 14px; }
 header.top .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; color: var(--g-muted); letter-spacing: .3px; }
 header.top h1 { margin: 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; font-weight: 800; letter-spacing: -1.2px; text-wrap: balance; max-width: 18ch; }

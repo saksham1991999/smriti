@@ -501,7 +501,7 @@ That is 44 items. If the team needs a shorter list, the P0 subset is A1, A4, A5,
 | X4 | **Paywall during onboarding.** | India data above [22]; Duolingo's onboarding has several paywall screens [24]. | See A38. |
 | X5 | **Fake urgency and inflated anchors.** | "67% OFF", ₹1199 struck to ₹399, "Hurry up!" [67]; Play lists emphasising the trial over the charge as a violation [101]. | One honest price. Discounts only if a real previous price existed. No countdown timers (UX_FLOW §4.15 already says so). |
 | X6 | **A ₹1 trial that surprises people.** | Testbook reviews: auto-debits of ₹649 to ₹799, one "without any clear prior reminder or consent" [65]. | A39 timeline, own reminder 3 days before, cancel path in 2 taps from ME, and a "Your plan" line on the PAY status screen. |
-| X7 | **Phone-number logins used for sales calls.** | Unacademy and Adda247 reviews describe daily calls after one visit [76][70]. | Google only, never collect a phone number, never call. Say so on the login sheet: "We never call you or share your email." / "हम आपको कभी कॉल नहीं करेंगे, न आपका ईमेल शेयर करेंगे।" |
+| X7 | **Phone-number logins used for sales calls.** | Unacademy and Adda247 reviews describe daily calls after one visit [76][70]. | Google only, never collect a phone number, never call. Say so on the login sheet: "We never call you or share your email." / "हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे।" |
 | X8 | **Upsell pop-ups that block the screen.** | Adda247 and Testbook reviews [70][65]. | At most one Pro card every 5th lesson, below the buttons, never modal (UX_FLOW §4.7). No upsell inside MOCK runner or review. |
 | X9 | **Guilt and passive-aggressive notifications.** | The "these reminders don't seem to be working" line became a meme for a reason [31]. PRD forbids shame messaging. | Pet copy is warm and short. No "you let me down", no crying pet, no "your friends are ahead of you". |
 | X10 | **XP that rewards grinding easy content.** | Duolingo learners farmed XP at month end [10]. | A33. |
@@ -541,7 +541,7 @@ Fixed decisions this section works within (common brief): Google is the only log
 | Manual, from ME / SET | n/a | Account row | Not saved yet. Sign in so you don't lose it if you change phones. | अभी सेव नहीं है। फ़ोन बदलें तो भी न खोए, इसके लिए साइन इन करें। | [Continue with Google] |
 
 Rules for all sheets:
-- A trust line under the button: "We never call you or share your email." / "हम आपको कभी कॉल नहीं करेंगे, न आपका ईमेल शेयर करेंगे।" (Directly answers the Indian-app pain in §7.2.)
+- A trust line under the button: "We never call you or share your email." / "हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे।" (Directly answers the Indian-app pain in §7.2.)
 - Soft sheets appear at most once per trigger per 7 days. After two "Later" taps on soft sheets, stop soft sheets for 14 days and keep only the quiet ME row.
 - Never show a soft sheet mid-lesson, mid-review or mid-mock.
 - For minors, the hard social triggers lead to the guardian consent flow after sign-in (AUTH screens owned by the auth agent).

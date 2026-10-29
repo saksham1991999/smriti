@@ -467,7 +467,7 @@ Full-screen mode (server-only action, or nothing on the device):
 | Existing account (per-exam) | Already use Smriti? Sign in | पहले से Smriti पर अकाउंट है? साइन इन करें |
 | Returning card title | Welcome back! Continue with Google to bring back your streak. | फिर से स्वागत है! अपनी स्ट्रीक वापस लाने के लिए Google से जारी रखें। |
 | Returning card button | Continue with Google | Google के साथ जारी रखें |
-| Trust line (R29) | We never call you or share your email. | हम आपको कभी कॉल नहीं करते और आपका ईमेल किसी से शेयर नहीं करते। |
+| Trust line (R40) | We never call you or share your email. | हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे। |
 | Returning card close (a11y) | Close, start fresh instead | बंद करें, नए सिरे से शुरू करें |
 | Legal | By continuing, you agree to our Terms and Privacy Policy. | आगे बढ़ने पर हमारी Terms और Privacy Policy लागू होंगी। |
 | Offline note under existing-account link | Needs internet | इंटरनेट चाहिए |

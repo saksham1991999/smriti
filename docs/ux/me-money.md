@@ -8,7 +8,7 @@ Logic, branches, data and analytics definitions are in [`docs/flows/me-money.md`
 
 **Phase.** Each screen's **Mock priority** line also gives its phase (PRD §17, ruling R8). Screens without a phase note are Phase 1.
 
-**Other agents' screens referred to here:** AUTH-01 (login sheet, soft), AUTH-02 (login sheet, hard), AUTH-08 (merge notice), AUTH-11 (add another sign-in), AUTH-12 (sign out), AUTH-13 to AUTH-16 (delete account), AUTH-18 to AUTH-23 (guardian consent), AUTH-24 (parent sign-in), AUTH-25 (who's learning), AUTH-26 (add a child), AUTH-27 (link to your guardian), AUTH-28 (restore a child), AUTH-33 (save-state chip) in [`auth.md`](auth.md); HOME-01, HOME-02, HOME-06, LRN-05, LES-01, LES-04, LES-08 in [`learn.md`](learn.md); ONB-04, ONB-06, ONB-15 in [`onboarding.md`](onboarding.md); MEM-01, MEM-02, MEM-03, MEM-14, MEM-19, MEM-21, MEM-28, MEM-29, MEM-32, LAB-03, LAB-13, LAB-15 in [`memory-labs.md`](memory-labs.md); MOCK-01, MOCK-19, MOCK-22, PRC-11, PRC-17 in [`practice.md`](practice.md); AI-02, AI-03, AI-05, AI-06, AI-07, AI-20, AI-21, SOC-01, SOC-04, SOC-06, SOC-08, SOC-09, SOC-14, SOC-19, SOC-20, SOC-23, SOC-25 in [`tutor-social.md`](tutor-social.md).
+**Other agents' screens referred to here:** AUTH-01 (login sheet, soft), AUTH-02 (login sheet, hard), AUTH-08 (merge notice), AUTH-11 (add another sign-in), AUTH-12 (sign out), AUTH-13 to AUTH-16 (delete account), AUTH-18 to AUTH-23 (guardian consent), AUTH-24 (parent sign-in), AUTH-25 (who's learning), AUTH-26 (add a child), AUTH-27 (link to your guardian), AUTH-28 (restore a child), AUTH-33 (save-state chip) in [`auth.md`](auth.md); HOME-01, HOME-02, HOME-06, LRN-05, LES-01, LES-04, LES-08 in [`learn.md`](learn.md); ENT-08, ONB-04, ONB-06, ONB-15 in [`onboarding.md`](onboarding.md); MEM-01, MEM-02, MEM-03, MEM-14, MEM-19, MEM-21, MEM-28, MEM-29, MEM-32, LAB-03, LAB-13, LAB-15 in [`memory-labs.md`](memory-labs.md); MOCK-01, MOCK-19, MOCK-22, PRC-11, PRC-17 in [`practice.md`](practice.md); AI-02, AI-03, AI-05, AI-06, AI-07, AI-09, AI-20, AI-21, SOC-01, SOC-04, SOC-06, SOC-08, SOC-09, SOC-14, SOC-19, SOC-20, SOC-23, SOC-25 in [`tutor-social.md`](tutor-social.md).
 
 ## Screen index
 
@@ -86,8 +86,8 @@ Logic, branches, data and analytics definitions are in [`docs/flows/me-money.md`
 | NTF-03 | Turn on notifications | P1 | 1 |
 | NTF-04 | In-app banners | P1 | 1 |
 | NTF-05 | Toasts | P2 | 1 |
-| NTF-06 | Streak saved | P1 | 1 |
-| NTF-07 | Welcome back | P0 | 1 |
+| NTF-06 | Streak saved (trigger for ENT-08) | none | 1 |
+| NTF-07 | Welcome back (trigger for ENT-08) | none | 1 |
 | NTF-08 | Small widget (plant) | P0 | 2 |
 | NTF-09 | Medium widget (pet and today) | P0 | 2 |
 | NTF-10 | Large widget (plan) | P1 | 2 |
@@ -112,7 +112,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 
 ### ME-01 · Me
 **Purpose:** show the student their pet, plant and progress at a glance and lead to everything personal. **Main action:** open the pet room ("Visit {pet}").
-**Entry → exits:** Tab bar (Me), HOME-01 header name → ME-02, ME-04, ME-07, ME-10, ME-11, ME-14, ME-17, ME-20, ME-21, ME-22, MEM-01 (My memory), PAY-01, PAY-12, PAY-15, SET-01, SET-13, AUTH-01 (from the AUTH-33 chip or the guest card), AUTH-25 (profile switch, shared phones).
+**Entry → exits:** Tab bar (Me), HOME-01 header name → ME-02, ME-04, ME-07, ME-10, ME-11, ME-14, ME-17, ME-20, ME-21, ME-22, MEM-01 (My memory), AI-09 (Your chats), PAY-01, PAY-12, PAY-15, SET-01, SET-13, AUTH-01 (from the AUTH-33 chip or the guest card), AUTH-25 (profile switch, shared phones).
 **Layout (top to bottom):**
 1. Top bar: title "Me" in `title`; right, a gear icon button (Phosphor `GearSix`, 24, 48 × 48 target) → SET-01; the gem pill (Chip, `gem` icon + balance in tabular figures) → ME-17.
 2. Profile header (`surface`, radius `cardLarge` 24, `card` shadow, padding 20): the pet portrait avatar, 88 px circle on `primaryTint`; display name in `title`; under it the AUTH-33 save-state chip ("Only on this phone", "Saving…", "Saved", offline), owned by the auth agent; handle in `caption` `inkMuted` (signed in with a handle only); exam chips (status Chip, exam accent tint); [Edit] ghost button (40) → ME-02.
@@ -120,7 +120,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 4. Stat row: four Stat tiles in one row (two by two below 360 dp width): streak (Phosphor `Plant`, fill, in `streak` gold: the streak is the plant, never a flame, R28), total XP, lessons done, accuracy. Numbers in `title` with tabular figures.
 5. Two cards side by side, 12 px apart, radius 20: **Pet card** (`primaryTint`, pet illustration overlapping the top edge, state word, the mood Meter) → ME-04; **Plant card** (`streakTint`, plant illustration, stage name, health chip) → ME-07.
 6. Quests card (`surface`): "Today's quests" with three 8 px progress bars and the time left until reset → ME-20.
-7. Settings-row group "Learning": My memory → MEM-01 (memory is not a tab, R17), with the due count as a caption ("{n} reviews today").
+7. Settings-row group "Learning": My memory → MEM-01 (memory is not a tab, R17), with the due count as a caption ("{n} reviews today"); Your chats → AI-09 (tutor history), hidden for little learners unless the parent turned the tutor on (SET-14).
 8. Settings-row group "Collections": Badges ({n}), Card album ({n} of {m}), Streak calendar.
 9. Settings-row group "Tools": Downloads ({size} used), PDF books (Pro chip when free).
 10. Pro card (radius 20, ages 13 and up only): free: `surface` with a small gold-tag illustration (gold stays on the ₹1 tag only, R11), "Try Pro for ₹1" (or "Get Pro" when the ₹1 offer isn't available) and a secondary button; Pro: `surface` with "Pro · renews {date}" or "Pro · ends {date}" and a caret → PAY-12.
@@ -143,6 +143,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Learning group | Learning | पढ़ाई |
 | My memory | My memory | मेरी याद |
 | My memory caption | {n} reviews today | आज {n} रिव्यू |
+| Your chats | Your chats | आपकी चैट |
 | Collections | Collections | कलेक्शन |
 | Badges | Badges | बैज |
 | Card album | Card album | कार्ड एल्बम |
@@ -158,7 +159,8 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Guest name | Guest | मेहमान |
 | Guest card title | Save your progress | अपनी प्रगति सेव करें |
 | Guest card body | Sign in with Google to keep {pet} and your plant on every device. | Google से साइन इन करें, ताकि {pet} और आपका पौधा हर डिवाइस पर साथ रहें। |
-| Guest card button | Sign in with Google | Google से साइन इन करें |
+| Guest card button | Continue with Google | Google के साथ जारी रखें |
+| Trust line | We never call you or share your email. | हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे। |
 | For grown-ups (little learner) | For grown-ups | बड़ों के लिए |
 | Offline | Updated {time} | {time} पर अपडेट |
 
@@ -187,9 +189,10 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 1. Top bar: back, title "Edit profile".
 2. Avatar block: the pet portrait 120 px, caption "Your avatar is {pet}." and a secondary button [Change outfit] → ME-05.
 3. Display name input (radius 16, `surfaceSunken`, 56 tall), helper "Friends see this name." Counter "{n}/24".
-4. For minors: an info line "Others see {first name} {initial}." with an `Info` icon.
-5. Row: "My exams" with the exam chips → ME-03.
-6. Primary button [Save] pinned at the bottom (56, glow).
+4. For minors: an info line "Other students see {nickname}. Friends you added by link or QR see {pet}." with an `Info` icon (R31 amended: an auto nickname from a fixed word list, never the typed name).
+5. Optional fields (PRD §10.3): School or coaching, City. Helper "Only you see this. It helps us suggest the right content." Never shown to other students, never on share cards, never in analytics. Hidden for under 13 (set by the parent, if at all).
+6. Row: "My exams" with the exam chips → ME-03.
+7. Primary button [Save] pinned at the bottom (56, glow).
 **Copy:**
 
 | Key | EN | HI |
@@ -199,7 +202,10 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Change outfit | Change outfit | कपड़े बदलें |
 | Name label | Display name | दिखने वाला नाम |
 | Name helper | Friends see this name. | दोस्त यही नाम देखेंगे। |
-| Minor note | Others see "{first} {initial}." | दूसरों को "{first} {initial}." दिखेगा। |
+| Minor note | Other students see {nickname}. Friends you added by link or QR see {pet}. | दूसरे विद्यार्थियों को {nickname} दिखेगा। लिंक या QR से जुड़े दोस्तों को {pet} दिखेगा। |
+| School label | School or coaching (optional) | स्कूल या कोचिंग (ज़रूरी नहीं) |
+| City label | City (optional) | शहर (ज़रूरी नहीं) |
+| Private helper | Only you see this. It helps us suggest the right content. | यह सिर्फ़ आपको दिखता है। इससे सही कंटेंट सुझाने में मदद मिलती है। |
 | Name error: too short | Use at least 2 letters. | कम से कम 2 अक्षर लिखें। |
 | Name error: not allowed | Please pick a different name. | कृपया कोई दूसरा नाम चुनें। |
 | My exams | My exams | मेरी परीक्षाएँ |
@@ -423,7 +429,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 
 ### ME-08 · Revival quest
 **Purpose:** give a student coming back after a long break a short, kind path to bring the plant and pet back. **Main action:** [Start today's lesson].
-**Entry → exits:** ME-04 / ME-07 revival card, NTF-07 Welcome back → LES-01 or MEM-03, ME-16 on completion, back to the previous screen.
+**Entry → exits:** ME-04 / ME-07 revival card, ENT-08 (opened by the NTF-07 trigger) → LES-01 or MEM-03, ME-16 on completion, back to the previous screen.
 **Layout (top to bottom):**
 1. Sheet at full height (radius 28) or screen with back.
 2. Illustration: pet and plant together in the current resting or wilted state.
@@ -946,7 +952,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 **Entry → exits:** ME-01 gear, web sidebar → SET-02, PAY-12, PAY-01 (source `settings`), SET-10, ME-03, ME-21, SET-03, SET-06, SET-07, SET-08, SET-09, NTF-11, SET-11, SET-13, SET-21, SET-23, SET-25, AUTH-01.
 **Layout (top to bottom):**
 1. Top bar: back, title "Settings".
-2. Account card: signed in: Google avatar initial in a circle (not the Google photo), name, email, "Signed in with Google" → SET-02. Guest: pet line card "Sign in to keep your progress safe" with [Sign in with Google] → AUTH-01 (soft login).
+2. Account card: signed in: Google avatar initial in a circle (not the Google photo), name, email, "Signed in with Google" → SET-02. Guest: pet line card "Sign in to keep your progress safe" with [Continue with Google] and the R40 trust line → AUTH-01 (soft login).
 3. Pro row card: free: "Try Pro for ₹1" (or "Get Pro") with a gold `Crown` icon → PAY-01; Pro: "Pro · renews {date}" → PAY-12; billing issue: warning tone → PAY-15.
 4. Group "Learning": Study preferences, My exams (all-exams app), Downloads and storage.
 5. Group "App": Notifications (value: "On, {time}" or "Off"), Language (value: "English · Lessons in हिन्दी"), Appearance (value: System), Sound and haptics, Accessibility, Add a widget (mobile only).
@@ -962,7 +968,8 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Signed in | Signed in with Google | Google से साइन इन |
 | Signed in (Apple) | Signed in with Apple | Apple से साइन इन |
 | Guest card | Sign in to keep your progress safe on every device. | साइन इन करें, ताकि आपकी प्रगति हर डिवाइस पर सुरक्षित रहे। |
-| Guest button | Sign in with Google | Google से साइन इन करें |
+| Guest button | Continue with Google | Google के साथ जारी रखें |
+| Trust line | We never call you or share your email. | हम आपको कभी कॉल नहीं करेंगे और आपका ईमेल किसी से शेयर नहीं करेंगे। |
 | Pro row (free) | Try Pro for ₹1 | ₹1 में Pro आज़माएँ |
 | Pro row (not eligible) | Get Pro · ₹99/month | Pro लें · ₹99/माह |
 | Pro row (Pro) | Pro · renews {date} | Pro · {date} को रिन्यू होगा |
@@ -1036,7 +1043,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Managed child | Managed by a parent's Google account | एक अभिभावक के Google अकाउंट से मैनेज |
 
 **Illustration slots:** none.
-**States:** guest (identity card replaced by the guest card, [Sign in with Google] and the erase row), signed in with Google, signed in with Apple (iOS; name only, no email; "Add Google" row), both linked, managed child (no sign-out or delete; a row "Ask a grown-up" → SET-13), teen with consent, Pro from a store (note shown), offline (sign-out and delete need a connection; rows show "Needs internet").
+**States:** guest (identity card replaced by the guest card, [Continue with Google] with the R40 trust line under it, and the erase row), signed in with Google, signed in with Apple (iOS; name only, no email; "Add Google" row), both linked, managed child (no sign-out or delete; a row "Ask a grown-up" → SET-13), teen with consent, Pro from a store (note shown), offline (sign-out and delete need a connection; rows show "Needs internet").
 **Interaction and motion:** standard push and sheets owned by AUTH.
 **Interaction and motion (deletion):** [Delete account] is never hidden, never behind a support form and never blocked by an active subscription: SET-01 → SET-02 → AUTH-13 (research X16). AUTH-14 explains store billing, and AUTH-16 says when deletion completes.
 **Accessibility:** destructive actions are visually and verbally distinct ("Delete account, opens a confirmation").
@@ -1054,7 +1061,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 4. Group "Streak and plant": Streak saver (one kind evening reminder on a day that isn't a streak day yet, at least 1 hour before quiet hours), Plant and pet nudges. Adults only.
 5. Group "Learning": Reviews due, Weak-area alerts, Daily challenge. Adults get these as their own pushes; for minors they are folded into the daily reminder's copy at the picked time. Then Bedtime review (Pro, adults only, opt-in, with "Uses your usual bedtime" caption).
 6. Group "Focus timer": Round and break ends (local alarms for a session the student started in MEM-29). Everyone.
-7. Group "Friends" (signed in, social enabled; teens after guardian consent): Requests and accepts, Cheers and Duo, Duels, Squads, Leagues.
+7. Group "Friends" (signed in, social enabled; teens after guardian consent, and their friend pushes wait for their reminder window, R45): Requests and accepts, Cheers and Duo, Duels, Squads, Leagues.
 8. Group "Exam alerts" (its own Android channel and iOS category, research X20): Live mocks you joined, Scheduled mocks, "Your mock report is ready". Everyone who uses mocks.
 9. Group "News": Product news (adults only).
 10. Quiet hours row: "{start} to {end}" → SET-05; School hours switch (minors default on).
@@ -1085,6 +1092,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Group exam | Exam alerts | परीक्षा अलर्ट |
 | Exam row live | Live mocks you joined | आपके जुड़े लाइव मॉक |
 | Exam row report | Your mock report is ready | आपकी मॉक रिपोर्ट तैयार है |
+| Minor friends caption | Arrives with your daily reminder. | आपके रोज़ के रिमाइंडर के साथ आएगा। |
 | Friends rows | Requests and accepts · Cheers and Duo · Duels · Squads · Leagues | रिक्वेस्ट और मंज़ूरी · तालियाँ और Duo · मुकाबले · स्क्वॉड · लीग |
 | Bedtime | Bedtime review | सोने से पहले रिव्यू |
 | Bedtime caption | Your hardest cards, a little before your usual bedtime. Pro, adults only. | आपके सबसे मुश्किल कार्ड, सोने के आम समय से कुछ पहले। Pro, सिर्फ़ वयस्कों के लिए। |
@@ -1327,7 +1335,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 2. Plain summary card: "What we keep: your progress, answers and study times, to teach you. We never sell your data or show ads."
 3. Consents group: each row has the consent name, status chip (On, Off, Needs a guardian) and the date. Teens see the guardian scopes from the auth doc §6: Saved account (`account`), Friends and leagues (`social`), Sharing decks and community tips (`community`), Voice tutor (`voice`), Photo doubts (`uploads`). Everyone sees Product analytics (adults only) and New-feature news.
 4. Row: "Help improve Smriti" switch (adults). Minors see a line instead: "For students under 18 we only collect what's needed to teach and keep the app working."
-5. Row: "How others see my name": Full name · First name and initial (locked for minors).
+5. Row: "How others see my name": Full name · First name and initial. Minors see a locked line instead: "Other students see {nickname}" (R31 amended).
 6. [Request a copy of my data] secondary → SET-12.
 7. Links: Privacy policy, Terms of use.
 8. [Delete my account] destructive text → AUTH-13.
@@ -1356,6 +1364,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Name display | How others see my name | दूसरों को मेरा नाम कैसे दिखे |
 | Full | Full name | पूरा नाम |
 | Initial | First name and initial | पहला नाम और शुरुआती अक्षर |
+| Minor name line | Other students see {nickname} | दूसरे विद्यार्थियों को {nickname} दिखता है |
 | Export | Request a copy of my data | मेरे डेटा की कॉपी मँगाएँ |
 | Policy | Privacy policy | निजता नीति |
 | Terms | Terms of use | उपयोग की शर्तें |
@@ -1440,8 +1449,9 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 3. Child cards (one per child, radius 24, `surface`): the child's pet portrait, first name, class or exam, this week's minutes in `title`, streak, practice questions and the latest mock score (counts only), a 7-bar mini chart (bars in `primary`, labels by weekday), chips: "Pro" or [Get Pro for {child}] → PAY-17.
 4. Card actions row: [Weekly report] → SET-15, [Time limits] → SET-16, [Consents] → SET-17.
 5. [Add a child] secondary → SET-18.
-6. Settings rows: Weekly email (switch), Parent PIN (set or change), Restore a child on a new device → AUTH-28, Shared phone: ask before switching profiles (switch; when on, AUTH-25 opens SET-13 before switching), Picture rhymes (little learners only: lets the mnemonic forge make picture rhymes for this child; off by default).
-7. Per child, in the card's ⋯ menu: "Remove from this phone" (signs the child's profile out of this device only; nothing is deleted), "Move {child} to their own Google account" (shown when a managed child turns 13; the child then links their own Google sign-in to the same account through AUTH-04, and the parent's consent carries over as guardian consent, auth doc §6.11), "Delete {child}'s account" → AUTH-13 to AUTH-16 as the guardian.
+6. Settings rows: Weekly email (switch), Parent PIN (set or change), Restore a child on a new device → AUTH-28, Shared phone: ask before switching profiles (switch; when on, AUTH-25 opens SET-13 before switching), Picture rhymes (little learners only: lets the mnemonic forge make picture rhymes for this child; off by default), Tutor button (little learners only: shows the AI tutor button for this child; off by default, R14).
+7. Per child, a "Friends" row → a read-only list of the child's friends by nickname or pet name, with [Remove] per friend and the duel and Duo settings (teens with social consent; nothing for under 13, who have no social).
+8. Per child, in the card's ⋯ menu: "Remove from this phone" (signs the child's profile out of this device only; nothing is deleted), "Move {child} to their own Google account" (shown when a managed child turns 13; the child then links their own Google sign-in to the same account through AUTH-04, and the parent's consent carries over as guardian consent, auth doc §6.11), "Delete {child}'s account" → AUTH-13 to AUTH-16 as the guardian.
 **Copy:**
 
 | Key | EN | HI |
@@ -1467,6 +1477,10 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Ask before switching | Ask a grown-up before switching profiles | प्रोफ़ाइल बदलने से पहले बड़ों से पूछें |
 | Picture rhymes | Picture rhymes for {child} | {child} के लिए चित्र वाली तुकबंदी |
 | Picture rhymes caption | Lets the memory helper make picture rhymes. Off until you turn it on. | मेमोरी हेल्पर को चित्र वाली तुकबंदी बनाने देता है। आपके चालू करने तक बंद। |
+| Tutor button | Tutor button for {child} | {child} के लिए ट्यूटर बटन |
+| Tutor caption | Shows the AI tutor in {child}'s lessons. Off until you turn it on. | {child} के पाठों में AI ट्यूटर दिखाता है। आपके चालू करने तक बंद। |
+| Friends row | {child}'s friends | {child} के दोस्त |
+| Remove friend | Remove | हटाएँ |
 | Practice line | {q} practice questions · Last mock {score} | {q} अभ्यास सवाल · पिछला मॉक {score} |
 | Remove here | Remove from this phone | इस फ़ोन से हटाएँ |
 | Move to own | Move {child} to their own Google account | {child} को उनके अपने Google अकाउंट पर ले जाएँ |
@@ -1571,7 +1585,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Status allowed | Allowed on {date} | {date} को अनुमति दी |
 | Status not | Not allowed | अनुमति नहीं |
 | Effect social | {child} can add friends and join leagues. Messages stay preset only. | {child} दोस्त जोड़ सकते हैं और लीग में आ सकते हैं। संदेश सिर्फ़ पहले से तय होते हैं। |
-| Effect sharing | {child} can share decks and send tips to the community. Others see only first name and initial. | {child} डेक शेयर कर सकते हैं और कम्युनिटी को टिप भेज सकते हैं। दूसरों को सिर्फ़ पहला नाम और शुरुआती अक्षर दिखेगा। |
+| Effect sharing | {child} can share decks and send tips to the community. Others see only {child}'s nickname. | {child} डेक शेयर कर सकते हैं और कम्युनिटी को टिप भेज सकते हैं। दूसरों को सिर्फ़ {child} का निकनेम दिखेगा। |
 | Effect voice | The tutor can listen to {child}'s voice to answer. Audio isn't stored. | ट्यूटर जवाब देने के लिए {child} की आवाज़ सुन सकता है। ऑडियो सेव नहीं होता। |
 | Effect photo | {child} can send photos of questions. Photos are deleted after the answer. | {child} सवालों की फ़ोटो भेज सकते हैं। जवाब के बाद फ़ोटो हटा दी जाती है। |
 | Export child | Request a copy of {child}'s data | {child} के डेटा की कॉपी मँगाएँ |
@@ -2524,7 +2538,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 
 ### NTF-01 · Push notifications (catalogue)
 **Purpose:** bring the student back at the right moment with a short, warm line from their pet, at a fixed, low volume. **Main action:** tap opens the deep link.
-**Entry → exits:** the rules engine and the local scheduler (flow doc §6) → the deep link in each row of the flow doc §6.3 table (`/review`, `/review?set=rescue`, `/home`, `/garden`, `/pet`, `/challenge`, `/mock/{id}`, `/mock/{id}/report`, `/focus`, `/duel/{code}`, SOC screens, `/pro/manage`, `/pro/fix`, `/books/{id}`, `/privacy/export/{id}`, `/parent`).
+**Entry → exits:** the rules engine and the local scheduler (flow doc §6) → the deep link in each row of the flow doc §6.3 table (`/review`, `/review?set=rescue`, `/home`, `/garden`, `/pet`, `/challenge`, `/mock/{id}`, `/mock/{id}/report`, `/focus`, `/duel/{code}`, SOC-06, SOC-08, SOC-09, SOC-14, SOC-19, SOC-20, SOC-25, `/pro/manage`, `/pro/fix`, `/books/{id}`, `/privacy/export/{id}`, `/parent`).
 **Layout (top to bottom):**
 1. System notification. Title: the pet's name for pet-voiced kinds; the brand name from config for billing, account, exam-alert and parent kinds.
 2. Body: at most 60 characters with variables at their maximum length (`{pet}`, `{friend}`, `{child}` 12; `{topic}` and `{mock}` 20 plus "…"; `{n}`, `{min}` 3 digits; `{streak}` 4; `{time}` 8; `{date}` 6; `{tier}` 10). Every row below was checked at those lengths.
@@ -2560,13 +2574,14 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | `friend_accepted` | {friend} accepted your friend request. | {friend} ने आपकी फ़्रेंड रिक्वेस्ट मान ली। |
 | `friend_cheer` | {friend} cheered for your streak! | {friend} ने आपकी स्ट्रीक पर ताली बजाई! |
 | `duo_invite` | {friend} wants to start a Duo with you. | {friend} आपके साथ Duo शुरू करना चाहते हैं। |
-| `duo_nudge` | {friend} studied today. Your turn! | {friend} ने आज पढ़ाई कर ली। अब आपकी बारी! |
+| `duo_nudge` | {friend} counted today. Your turn! | {friend} का आज का दिन गिना गया। अब आपकी बारी! |
 | `duo_at_risk` | Your Duo with {friend} needs one lesson today. | {friend} के साथ आपके Duo को आज एक पाठ चाहिए। |
 | `duel_challenge` | {friend} challenged you to a duel! | {friend} ने आपको मुकाबले की चुनौती दी है! |
 | `duel_result` | Your duel with {friend} is done. See result | {friend} से मुकाबला पूरा हुआ। नतीजा देखें |
 | `squad_quest_done` | Your squad finished this week's quest! | आपके स्क्वॉड ने इस हफ़्ते का क्वेस्ट पूरा किया! |
 | `league_ending` | League ends tonight. You're #{rank}. | लीग आज रात खत्म होगी। आप #{rank} पर हैं। |
 | `league_promoted` | Promoted! Welcome to the {tier} league. | प्रमोशन! {tier} लीग में स्वागत है। |
+| `league_result` | Your league week is done. See how it went | आपका लीग हफ़्ता पूरा हुआ। देखें कैसा रहा |
 | `referral_joined` | {friend} joined! You both get a free Pro week. | {friend} जुड़ गए! दोनों को Pro का एक हफ़्ता मुफ़्त। |
 | `pro_activated` | Pro is on! Pick up where you left off. | Pro चालू हो गया! जहाँ छोड़ा था, वहीं से शुरू करें। |
 | `payment_not_completed` | Your payment didn't finish. Pro isn't on yet. | भुगतान पूरा नहीं हुआ। Pro अभी चालू नहीं है। |
@@ -2585,7 +2600,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 Copy rules for new templates: no guilt ("You failed", "Don't let {pet} down"), no fake urgency ("Last chance"), no comparisons with friends ("your friends are ahead"), no numbers we don't have, the pet never sounds hurt (research X9). `{tier}` comes from the league tier names in config (R30). `reminders_paused` is the last habit message until the student opens the app; `comeback_30` is the only later one, adults only.
 
 **Illustration slots:** the pet portrait set (`pet-cat`/`pet-dog`, 1:1, moods happy, excited, sleepy, curious), exported at 256 px for notification icons, decorative (the text carries the meaning). No plant image in notifications (too small to read).
-**States:** foreground app (becomes NTF-05 toast or nothing), quiet hours (held to the end, or dropped if stale, for example `streak_risk`), cap reached (suppressed, logged), a mock runner open (nothing is shown, local or server, until the runner closes; `report_ready` waits for the report screen to be closed too), adult vs minor (minors get the daily reminder only at the picked time, with learning items folded into it, plus exam alerts and focus alarms they set, social after consent and transactional; no smart timing, no plant-health or bedtime copy choices, flow doc §6.2), under 13 (the daily reminder and focus alarms only), guest (local kinds only plus transactional), offline (local kinds fire; server kinds arrive later only if still valid, each with a time-to-live from `notify.ttl.*`), notifications off (nothing; NTF-04 banner may suggest turning on), dark (system handles).
+**States:** foreground app (becomes NTF-05 toast or nothing), quiet hours (held to the end, or dropped if stale, for example `streak_risk`), cap reached (suppressed, logged), a mock runner open (nothing is shown, local or server, until the runner closes; `report_ready` waits for the report screen to be closed too), adult vs minor (minors get the daily reminder only at the picked time, with learning items folded into it, plus exam alerts and focus alarms they set, social after consent but held until their reminder window (R45; in-app banners still show) and transactional; no smart timing, no plant-health or bedtime copy choices, flow doc §6.2), under 13 (the daily reminder and focus alarms only), guest (local kinds only plus transactional), offline (local kinds fire; server kinds arrive later only if still valid, each with a time-to-live from `notify.ttl.*`), notifications off (nothing; NTF-04 banner may suggest turning on), dark (system handles).
 **Interaction and motion:** tap opens the deep link with the app's normal transition; if the target needs login (guest opening a social link) the login sheet shows first with the reason.
 **Accessibility:** bodies are complete sentences that make sense without the image; no emoji-only messages; the pet's name is the title so screen readers announce who is "speaking".
 **Analytics:** `notification_sent`, `notification_suppressed` (server), `notification_opened`, `reminders_auto_paused`.
@@ -2712,81 +2727,31 @@ Copy rules for new templates: no guilt ("You failed", "Don't let {pet} down"), n
 **Web (≥ 600 px):** bottom-left of the content column.
 **Mock priority:** P2 · Phase 1
 
-### NTF-06 · Streak saved
-**Purpose:** tell the student, on the first open after a freeze was used, that their streak is safe. **Main action:** [Great!].
-**Entry → exits:** ENT's launch routing (onboarding flow doc §6.13: at most once a day, only on launch to Home, never on onboarding day) after the nightly roll-up used a freeze → HOME-01 (or HOME-06), ME-10, ME-17.
-**Layout (top to bottom):**
-1. Sheet 60%.
-2. Illustration: the plant with a soft frost sparkle and the pet wrapped in a small scarf, cosy.
-3. Title in `title`, body with the freeze slots left and the next free one.
-4. Primary [Great!]; ghost [See streak] → ME-10.
-**Copy:**
+### NTF-06 · Streak saved (trigger for ENT-08)
+**Purpose:** the rule that opens ENT-08's freeze or incident variant (R41: ENT-08 in `onboarding.md` owns the streak check-in sheet; NTF-06 is its trigger, not a separate screen). **Main action:** as ENT-08 ([Keep it going]).
+**Entry → exits:** the nightly roll-up used a freeze, or `streak.incident_freeze` covered a day → on the next launch to Home, ENT's routing (onboarding flow doc §6.13: at most once a day, never on onboarding day, a deep link or MOCK-14 wins) opens ENT-08 freeze or incident variant → HOME-01, ME-10 ([See streak]).
+**Layout (top to bottom):** ENT-08. This area supplies the data: `freezes_left`, `freeze_slots`, `next_free_freeze_date`, `incident` (bool), `streak`.
+**Copy:** ENT-08 (it carries this area's strings: two-freeze title, "Next free freeze on {date}", the incident title).
+**Illustration slots:** ENT-08.
+**States:** trigger fires: one freeze used, two used in one gap, incident (no freeze spent), none left after this one. Doesn't fire: a rest day, or the student opened the app on the day itself.
+**Interaction and motion:** ENT-08.
+**Accessibility:** ENT-08.
+**Analytics:** ENT-08's `streak_checkin_shown` (`variant: freeze` or `incident`).
+**Web (≥ 600 px):** ENT-08.
+**Mock priority:** none here (mocked as ENT-08) · Phase 1
 
-| Key | EN | HI |
-|---|---|---|
-| Title | A freeze saved your {n}-day streak | फ़्रीज़ ने आपकी {n} दिन की स्ट्रीक बचा ली |
-| Title (two) | Two freezes kept your streak safe | दो फ़्रीज़ ने आपकी स्ट्रीक बचा ली |
-| Title (incident) | We had a problem, so we kept your streak safe | हमारी तरफ़ से दिक्कत थी, इसलिए आपकी स्ट्रीक सुरक्षित रखी |
-| Body | {left} of {slots} freeze slots still filled. Next free one on {date}. | {slots} में से {left} फ़्रीज़ स्लॉट अभी भरे हैं। अगला मुफ़्त {date} को। |
-| Body (none left) | That was your last freeze. Next free one on {date}. | यह आखिरी फ़्रीज़ था। अगला मुफ़्त {date} को। |
-| Body (incident) | No freeze was used. | कोई फ़्रीज़ इस्तेमाल नहीं हुआ। |
-| Pet line | Phew! Let's keep it going today. | शुक्र है! आज भी जारी रखें। |
-| Pet line (little learner) | Phew! Your plant is cosy. | शुक्र है! तुम्हारा पौधा आराम से है। |
-| Great | Great! | बढ़िया! |
-| See streak | See streak | स्ट्रीक देखें |
-
-**Illustration slots:** `empty-state`, 4:3, the plant with a light frost shimmer and the pet in a scarf beside it, warm and safe, alt "Your plant and {pet}, safe and cosy" / "आपका पौधा और {pet}, सुरक्षित और आराम से".
-**States:** freeze slots still filled, none left, two freezes used, incident freeze (`streak.incident_freeze`: no freeze spent, incident title), little learner (simpler copy, तुम register), dark.
-**Interaction and motion:** a short frost sparkle (Lottie) then the pet `hop`; reduced motion: static.
-**Accessibility:** announced on open; focus on [Great!].
-**Analytics:** `streak_saved_shown` (`freezes_left`, `incident`).
-**Web (≥ 600 px):** dialog.
-**Mock priority:** P1 · Phase 1
-
-### NTF-07 · Welcome back
-**Purpose:** greet a returning student after 2 or more missed days without shame, and give one easy first step. **Main action:** [Start a 2-minute lesson], or [Start the revival quest] when the plant is wilted or resting, or [See my comeback plan] after 30+ days.
-**Entry → exits:** ENT's launch routing (onboarding flow doc §6.13), `comeback_30` and other comeback pushes → ME-08, LES-01, MEM-02 (comeback plan), ONB-06 `edit` (update exam date), HOME-01.
-**Layout (top to bottom):**
-1. Full-screen sheet (radius 28).
-2. Illustration: the pet waking up and greeting the student, the plant in its current gentle state behind.
-3. Title in `display` and one line about what happened, framed forward.
-4. A "Kept safe" row: longest streak, plant stage, cards and progress (icons and words).
-5. Revival quest preview with DayDots (when wilted or resting).
-6. After 30+ days away (research A44, R22, R34): two offer rows: "Catch up gently" → MEM-02 (backlog spread over a few days, never a review wall) and "Is your exam date still {date}?" → ONB-06 `edit`.
-7. Primary per variant; ghost [Just look around].
-8. Line: "Reminders restart today. Change them in Settings." (when they had auto-paused).
-**Copy:**
-
-| Key | EN | HI |
-|---|---|---|
-| Title | Welcome back! | फिर से स्वागत है! |
-| Pet line | I missed you! Let's start small. | आपकी याद आई! छोटे से शुरू करें। |
-| Pet line (little learner) | I missed you! Let's play and learn. | तुम्हारी याद आई! चलो, खेलते-खेलते सीखें। |
-| Body (2–6 days) | Your plant is a little thirsty. One lesson perks it up. | पौधे को थोड़ी प्यास लगी है। एक पाठ से फिर हरा होगा। |
-| Body (7–20 days) | Your plant is tired, not gone. 3 short days bring it back. | पौधा थका है, खत्म नहीं। 3 छोटे दिन इसे वापस लाएँगे। |
-| Body (21–29 days) | Your plant is resting. Let's wake it up over {days} short days. | पौधा आराम कर रहा है। {days} छोटे दिनों में इसे जगाते हैं। |
-| Body (30+ days) | It's been a while, and that's fine. Everything is here. | काफ़ी समय हो गया, कोई बात नहीं। सब कुछ यहीं है। |
-| Kept safe | Kept safe for you | आपके लिए सुरक्षित |
-| Kept: longest | Longest streak: {n} days | सबसे लंबी स्ट्रीक: {n} दिन |
-| Kept: stage | Plant stage: {stage} | पौधे की अवस्था: {stage} |
-| Kept: progress | All your progress and cards | आपकी पूरी प्रगति और कार्ड |
-| Offer: plan | Catch up gently, a little each day | आराम से, रोज़ थोड़ा-थोड़ा करके पकड़ें |
-| Offer: exam date | Is your exam date still {date}? | क्या आपकी परीक्षा की तारीख अब भी {date} है? |
-| Start revival | Start the revival quest | रिवाइवल क्वेस्ट शुरू करें |
-| Start lesson | Start a 2-minute lesson | 2 मिनट का पाठ शुरू करें |
-| See plan | See my comeback plan | मेरा वापसी प्लान देखें |
-| Look around | Just look around | बस घूम लें |
-| Reminders line | Reminders restart today. Change them in Settings. | रिमाइंडर आज से फिर चालू। सेटिंग में बदल सकते हैं। |
-
-The "2-minute lesson" is the shortest Quick Revision or review set the planner can offer; the planner must return an item of about that length or the label uses `{min}`. The 30+ day threshold is `comeback.long_gap_days`.
-
-**Illustration slots:** `sunny-scene`, 3:2, the pet stretching awake in a sunny room with the plant pot behind (art for each plant health state comes from swapping the plant layer with the matching `plant-stage` image), alt "{pet} wakes up to say hello" / "{pet} से फिर मुलाकात".
-**States:** by days away (four bodies), with or without revival, 30+ days (offers shown), no exam date set (exam offer hidden), reminders auto-paused, little learner (only the first body; never the resting stage art; तुम register; no exam offer), guest, offline (predicted states; MEM-02 offer waits for a connection), dark.
-**Interaction and motion:** the pet wakes (Rive `wake`, then `wave`), the plant plays nothing until the first study; reduced motion: static.
-**Accessibility:** heading first, then the pet line; "Kept safe" is a list.
-**Analytics:** `welcome_back_shown` (`days_away_bucket`), `welcome_back_action` (`action`).
-**Web (≥ 600 px):** dialog 560 px.
-**Mock priority:** P0 · Phase 1
+### NTF-07 · Welcome back (trigger for ENT-08)
+**Purpose:** the rule that opens ENT-08's comeback, resting or long-break variant after 2 or more missed days (R41). **Main action:** as ENT-08 ([Water it now], [Start the revival quest]).
+**Entry → exits:** first launch to Home after 2 or more missed days with no freeze, or a tap on `comeback_30` → ENT-08 → LES-01, ME-08 (revival quest, when the plant is wilted or resting), MEM-02 and ONB-06 `edit` (the 30+ day rows), HOME-01.
+**Layout (top to bottom):** ENT-08. This area supplies: `days_away`, plant `stage` and `health`, `revival_days` (3 or 5, R12), `reminders_were_paused` (bool, so ENT-08 shows "Reminders restart today"), and the long-break flag (`days_away` ≥ `comeback.long_gap_days`).
+**Copy:** ENT-08 (it carries this area's strings: revival primary, the reminders-restart line, the long-break rows).
+**Illustration slots:** ENT-08.
+**States:** comeback (2 to 6 days), tired (7 to 20), resting (21 and more), long break (30 and more), reminders were paused, little learner (gentle variant only).
+**Interaction and motion:** ENT-08.
+**Accessibility:** ENT-08.
+**Analytics:** ENT-08's `streak_checkin_shown` and `streak_checkin_action`.
+**Web (≥ 600 px):** ENT-08.
+**Mock priority:** none here (mocked as ENT-08) · Phase 1
 
 ### NTF-08 · Small widget (plant)
 **Purpose:** show the plant and the streak on the home screen at a glance. **Main action:** tap opens ME-07.

@@ -4,7 +4,7 @@
 .sx .mk-top { flex: none; height: 52px; display: flex; align-items: center; gap: 6px; padding: 0 10px; }
 .sx .mk-top .ttl { flex: 1; min-width: 0; font: 800 18px/24px var(--f-latin); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sx .mk-top .ttl.c { text-align: center; }
-.sx .mk-pro { height: 24px; padding: 0 8px; font-size: 11px; gap: 4px; }
+.sx .mk-pro { height: 24px; padding: 0 8px; font-size: 11px; gap: 4px; background: var(--primary-tint); color: var(--primary); box-shadow: none; }
 .sx .mk-pro .ic { width: 14px; height: 14px; }
 .sx .mk-mem-today { background: var(--primary-tint); border-radius: 24px; padding: 18px; position: relative; display: flex; flex-direction: column; gap: 10px; }
 .sx .mk-mem-today .art { position: absolute; right: -6px; top: -22px; width: 120px; height: 120px; object-fit: contain; }
@@ -18,7 +18,7 @@
 .sx .rate > * { min-height: 66px; justify-content: center; align-items: center; }
 .sx .rate > * .ic { width: 18px; height: 18px; }
 .sx .mk-mem-streakchip { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px 0 8px; border-radius: 999px; background: var(--streak-tint); color: var(--streak-text); font: 700 12px/1 var(--f-latin); white-space: nowrap; }
-.sx .mk-mem-streakchip .ic { color: var(--streak); width: 18px; height: 18px; }
+.sx .mk-mem-streakchip .ic { color: var(--streak); width: 16px; height: 16px; }
 .sx .mk-pin { position: absolute; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%; background: var(--surface); box-shadow: inset 0 0 0 2px var(--line), var(--sh-raised); display: grid; place-items: center; font: 800 13px/1 var(--f-latin); color: var(--ink); z-index: 2; }
 .sx .mk-pin.on { box-shadow: inset 0 0 0 3px var(--strong), var(--sh-raised); }
 .sx .mk-pin.glow { box-shadow: inset 0 0 0 3px var(--streak), 0 0 0 6px color-mix(in srgb, var(--streak) 40%, transparent); width: 40px; height: 40px; margin: -20px 0 0 -20px; font-size: 15px; }
@@ -125,7 +125,7 @@
 </style>
 <div class="wrap">
 <h2>Memory and labs</h2>
-<p class="lede">Reviews with Again / Hard / Good / Easy and Sure / 50:50 / Guess, the comeback plan, the 2-minute rescue, decks, palaces, the hook forge, the confidence dashboard and focus timer; then the Labs hub, sims, 3D, 360°, the periodic table and home experiments. Memory is not a tab (R17): it opens from Home, so its screens keep Learn active. Every lab is free (R19 revised); Pro chips appear only on palace building, the AI hook forge, audio hooks and sleep review.</p>
+<p class="lede">Reviews with Again / Hard / Good / Easy and Sure / 50:50 / Guess, the comeback plan, the 2-minute rescue, decks, palaces, the hook forge, the confidence dashboard and focus timer; then the Labs hub, sims, 3D, 360°, the periodic table and home experiments. Memory is not a tab (R17): it opens from Home, so its screens keep Learn active. Every lab is free (R19 revised); Pro chips (P2: primary tint, lock, the word Pro, never gold) appear only on palace building, the AI hook forge, audio hooks and sleep review.</p>
 <p class="spec">Specs: <code>docs/ux/memory-labs.md</code> · Flow: <code>docs/flows/memory-labs.md</code> · Rulings R11, R17–R22, R28, R37</p>
 <div class="wall">
 
@@ -147,16 +147,15 @@
       <span class="t-caption muted num">6 of 24 done today</span>
       <span class="btn btn-primary">Start review</span>
     </div>
-    <div class="row" style="gap:8px;padding:0 4px">
+    <div class="row" style="gap:8px;padding:0 2px">
       <img src="assets/plant-sapling.webp" alt="" style="width:34px;height:34px;object-fit:contain">
-      <span class="t-label grow">10 reviews water your plant today</span>
-      <span class="chip gold num" style="height:26px">4 / 10</span>
+      <span class="mk-mem-streakchip" role="status"><svg class="ic"><use href="#ph-plant-fill"/></svg>6 more reviews to keep your streak</span>
     </div>
     <div class="grid2">
       <div class="mk-mem-tool"><img class="art" src="assets/badge-reviews-100.webp" alt=""><span class="t-label">Decks</span><span class="t-caption muted">6 decks · 42 due</span></div>
-      <div class="mk-mem-tool"><span class="chip pro mk-pro"><svg class="ic"><use href="#ph-crown-fill"/></svg>Pro</span><img class="art round" src="assets/scene-memory-palace.webp" alt=""><span class="t-label">Memory palace</span><span class="t-caption muted">2 palaces</span></div>
-      <div class="mk-mem-tool"><span class="chip pro mk-pro"><svg class="ic"><use href="#ph-crown-fill"/></svg>Pro</span><img class="art round" src="assets/memory-hook-sample.webp" alt=""><span class="t-label">Make it stick</span><span class="t-caption muted">Hooks for any fact</span></div>
-      <div class="mk-mem-tool"><span class="chip pro mk-pro"><svg class="ic"><use href="#ph-crown-fill"/></svg>Pro</span><img class="art" src="assets/cat-headphones.webp" alt=""><span class="t-label">Audio hooks</span><span class="t-caption muted">Listen and recall</span></div>
+      <div class="mk-mem-tool"><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span><img class="art round" src="assets/scene-memory-palace.webp" alt=""><span class="t-label">Memory palace</span><span class="t-caption muted">2 palaces</span></div>
+      <div class="mk-mem-tool"><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span><img class="art round" src="assets/memory-hook-sample.webp" alt=""><span class="t-label">Make it stick</span><span class="t-caption muted">Hooks for any fact</span></div>
+      <div class="mk-mem-tool"><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span><img class="art" src="assets/cat-headphones.webp" alt=""><span class="t-label">Audio hooks</span><span class="t-caption muted">Listen and recall</span></div>
       <div class="mk-mem-tool"><img class="art" src="assets/badge-first-lesson.webp" alt=""><span class="t-label">Techniques</span><span class="t-caption muted">12 to try</span></div>
       <div class="mk-mem-tool"><img class="art" src="assets/cat-thinking.webp" alt=""><span class="t-label">How well I know it</span><span class="t-caption muted">Sure vs right</span></div>
     </div>
@@ -169,7 +168,7 @@
     <span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span>
   </nav>
 </div></div>
-<figcaption><span class="id">MEM-01</span><span class="nm">Memory hub, cards due</span><span class="ds">Today card leads with one main action, the 10-review streak line under it, then the tools grid (Focus timer and the weak-area strip scroll below). Pro chips only on palace, forge and audio hooks.</span></figcaption>
+<figcaption><span class="id">MEM-01</span><span class="nm">Memory hub, cards due</span><span class="ds">Today card leads with one main action, the P9 streak chip under it, then the tools grid (Focus timer and the weak-area strip scroll below). Pro chips only on palace, forge and audio hooks.</span></figcaption>
 </figure>
 
 <!-- ============ MEM-02 Comeback plan (Hindi) ============ -->
@@ -218,10 +217,10 @@
     <span class="iconbtn" aria-label="Card actions"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
   </div>
   <div class="body s-physics" style="padding-top:2px">
-    <div class="row between">
-      <div class="row" style="gap:8px"><span class="chip st" style="height:28px">Physics</span><span class="t-caption muted">Laws of motion</span></div>
+    <div class="row wrap" style="gap:8px">
+      <span class="chip st" style="height:28px">Physics</span><span class="t-caption muted">Laws of motion</span>
+      <span class="mk-mem-streakchip" role="status"><svg class="ic"><use href="#ph-plant-fill"/></svg>4 more reviews to keep your streak</span>
     </div>
-    <span class="mk-mem-streakchip" style="align-self:flex-start"><svg class="ic"><use href="#ph-plant-fill"/></svg>4 more reviews to keep your streak</span>
     <div class="mk-mem-rcard">
       <div class="pic"><img src="assets/subject-physics.webp" alt="Picture from the card"></div>
       <span class="t-title">Card prompt from the deck, shown here in up to three short lines</span>
@@ -248,6 +247,7 @@
   </div>
   <div class="body s-physics" style="padding-top:2px">
     <div class="row" style="gap:8px"><span class="chip st" style="height:28px">Physics</span><span class="t-caption muted">Laws of motion</span><span class="sp"></span><span class="chip" style="height:28px;background:var(--raised);box-shadow:none"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-check-circle-fill"/></svg>Sure</span></div>
+    <span class="mk-mem-streakchip" role="status" style="align-self:flex-start;margin-top:-4px"><svg class="ic"><use href="#ph-plant-fill"/></svg>4 more reviews to keep your streak</span>
     <div class="mk-mem-rcard" style="box-shadow:none">
       <span class="t-label muted">Card prompt from the deck, shown here in up to three short lines</span>
       <div class="divider"></div>
@@ -308,6 +308,7 @@
   <div class="mk-top">
     <span class="iconbtn" aria-label="Close"><svg class="ic"><use href="#ph-x-bold"/></svg></span>
     <div class="segbar" style="--strong:var(--primary)"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    <img src="assets/plant-sapling-droopy.webp" alt="Your plant, a little droopy" style="width:30px;height:30px;object-fit:contain">
     <span class="t-caption muted num">1 / 5</span>
     <span class="iconbtn" aria-label="Card actions"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
   </div>
@@ -334,20 +335,17 @@
 <div class="phone"><div class="screen sx">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="body" style="padding-top:20px;gap:14px">
-    <div style="position:relative;height:270px;flex:none;border-radius:28px;background:var(--streak-tint)">
-      <img src="assets/plant-sapling.webp" alt="Your plant, a healthy sapling" style="position:absolute;left:50%;transform:translateX(-50%);bottom:4px;height:250px">
-      <img src="assets/cat-celebrate.webp" alt="" style="position:absolute;right:-6px;bottom:-14px;height:120px">
+    <div style="position:relative;height:236px;flex:none;border-radius:28px;background:var(--streak-tint)">
+      <img src="assets/plant-sapling.webp" alt="Your plant, just watered" style="position:absolute;left:50%;transform:translateX(-50%);bottom:4px;height:222px">
     </div>
     <span class="t-display center">Plant watered!</span>
-    <span class="t-body center muted" style="margin-top:-6px">Your plant stays happy tonight.</span>
+    <span class="t-body center" style="margin-top:-6px">Your streak needs 5 more reviews before midnight.</span>
+    <span class="mk-mem-streakchip" role="status" style="align-self:center;margin-top:-4px"><svg class="ic"><use href="#ph-plant-fill"/></svg>5 more reviews to keep your streak</span>
     <div class="grid2">
-      <div class="stat"><b class="num">4 / 5</b><span>Remembered</span></div>
+      <div class="stat"><b class="num">5</b><span>Cards</span></div>
       <div class="stat"><b class="num">2 min</b><span>Time</span></div>
     </div>
-    <div class="streakcard" style="padding:12px 14px">
-      <svg class="ic lg" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>
-      <span class="t-label grow">5 more reviews keep your streak too.</span>
-    </div>
+    <div class="petline"><div class="av"><img src="assets/cat-celebrate.webp" alt=""></div><div class="bubble">Thanks for the water!</div></div>
   </div>
   <div class="bottom">
     <span class="btn btn-primary">Keep going: 5 more</span>
@@ -355,7 +353,7 @@
     <div class="homebar" style="margin-bottom:0"></div>
   </div>
 </div></div>
-<figcaption><span class="id">MEM-32</span><span class="nm">2-minute rescue complete</span><span class="ds">The rescue keeps plant health for today but is not a streak day by itself, so one honest line says what's left: "5 more reviews keep your streak too." No guilt words, no gems or XP.</span></figcaption>
+<figcaption><span class="id">MEM-32</span><span class="nm">2-minute rescue complete</span><span class="ds">The rescue keeps plant health for today but is not a streak day by itself, so one honest line says what is left (no freeze equipped: "needs 5 more reviews before midnight") with the P9 chip. No confetti, guilt words, gems, XP or upsell.</span></figcaption>
 </figure>
 
 <!-- ============ MEM-04 Review complete ============ -->
@@ -372,9 +370,9 @@
       <div class="stat"><b class="num">2 min</b><span>Time</span></div>
       <div class="stat"><b style="font-size:16px;line-height:28px">Tomorrow</b><span class="num">18 cards</span></div>
     </div>
-    <div class="streakcard" style="padding:12px 14px">
-      <svg class="ic lg" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>
-      <div class="col grow" style="gap:6px"><span class="t-label">3 more reviews to keep your streak</span><div class="bar gold"><i style="width:70%"></i></div></div>
+    <div class="row between" style="gap:8px">
+      <span class="mk-mem-streakchip" role="status"><svg class="ic"><use href="#ph-plant-fill"/></svg>3 more reviews to keep your streak</span>
+      <span class="btn btn-secondary sm" style="height:36px;white-space:nowrap;flex:none">3 more</span>
     </div>
     <div class="list">
       <div class="li"><span class="lead" style="background:var(--error-tint);color:var(--error-text)"><svg class="ic sm"><use href="#ph-warning-circle-bold"/></svg></span><span class="t-label grow">You were sure on 1 card you missed. <span class="link">See which</span></span></div>
@@ -382,11 +380,11 @@
   </div>
   <div class="bottom">
     <span class="btn btn-primary">Done</span>
-    <span class="btn btn-secondary">Another 3 cards</span>
+    <span class="btn btn-secondary">Another 10 cards</span>
     <div class="homebar" style="margin-bottom:0"></div>
   </div>
 </div></div>
-<figcaption><span class="id">MEM-04</span><span class="nm">Review complete, streak not yet kept</span><span class="ds">A 7-card session: no confetti under 10 cards, real counts only. The plant chip says 3 more reviews keep the streak, and "Another 3 cards" offers exactly that. A sure-but-wrong note links to MEM-26.</span></figcaption>
+<figcaption><span class="id">MEM-04</span><span class="nm">Review complete, streak not yet kept</span><span class="ds">A 7-card session: no confetti under 10 cards, real counts only. The P9 streak chip says 3 more reviews keep the streak, and its [3 more] runs exactly that many; "Another 10 cards" is the normal next batch. A sure-but-wrong note links to MEM-26.</span></figcaption>
 </figure>
 
 <!-- ============ MEM-05 Leech sheet (Hindi) ============ -->
@@ -415,7 +413,7 @@
       <span class="chip warn" style="height:28px"><svg class="ic xs"><use href="#ph-lightning-fill"/></svg>मुश्किल कार्ड</span>
     </div>
     <div class="list" style="box-shadow:none;background:transparent">
-      <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-lightbulb-fill"/></svg></span><span class="t-label grow">पक्का याद करें</span><span class="chip pro mk-pro"><svg class="ic"><use href="#ph-crown-fill"/></svg>Pro</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-lightbulb-fill"/></svg></span><span class="t-label grow">पक्का याद करें</span><span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>प्रो</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-book-open-bold"/></svg></span><span class="t-label grow">पाठ का वह हिस्सा देखें</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-pencil-simple-bold"/></svg></span><span class="grow col" style="gap:2px"><span class="t-label">कार्ड बदलें</span><span class="t-caption muted">सुझाव: इसे दो छोटे कार्ड में बाँटें</span></span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="li" style="padding:8px 4px"><span class="lead s-chemistry"><svg class="ic sm"><use href="#ph-pause-bold"/></svg></span><span class="t-label grow">अभी के लिए रोकें</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
@@ -518,7 +516,6 @@
   </div>
   <div class="body s-history" style="padding-top:0;gap:10px">
     <div class="row" style="gap:6px;flex:none;overflow:hidden"><span class="chip on">1 · Courtyard</span><span class="chip">2 · Kitchen</span><span class="chip"><svg class="ic xs"><use href="#ph-plus-bold"/></svg>Room</span></div>
-    <div class="petline"><div class="av"><img src="assets/cat-thinking.webp" alt=""></div><div class="bubble">Make each scene silly and vivid. Silly sticks!</div></div>
     <div class="mk-canvas" style="height:216px">
       <img class="bg" src="assets/scene-memory-palace.webp" alt="A sunny Indian home courtyard with a tulsi planter, a swing and carved doors">
       <svg class="path" viewBox="0 0 324 216" preserveAspectRatio="none" aria-hidden="true"><polyline points="26,104 97,125 168,78 246,114 168,172"/></svg>
@@ -536,9 +533,10 @@
         <span class="mk-ichip"><svg class="ic"><use href="#ph-dots-six-vertical-bold"/></svg>Item five</span>
       </div>
       <span class="t-caption muted">Drag an item onto a spot. Or tap it, then tap a spot.</span>
+      <div class="petline"><div class="av"><img src="assets/cat-thinking.webp" alt=""></div><div class="bubble">Make each scene silly and vivid. Silly sticks!</div></div>
       <div class="divider"></div>
       <span class="t-label muted">Placed</span>
-      <div class="row wrap" style="gap:6px"><span class="chip st" style="height:28px">1 · Item one</span><span class="chip st" style="height:28px">2 · Item two</span><span class="chip st" style="height:28px">3 · Item three</span></div>
+      <div class="row" style="gap:6px;overflow:hidden"><span class="chip st" style="height:28px">1 · Item one</span><span class="chip st" style="height:28px">2 · Item two</span><span class="chip" style="height:28px">+1</span></div>
     </div>
   </div>
   <div class="bottom" style="padding-top:4px">
@@ -851,7 +849,7 @@
   </div>
   <div class="body s-physics" style="padding-top:12px;gap:10px">
     <div class="mk-view" role="region" aria-label="Simulation: Simple circuit">
-      <div class="scene" style="height:172px;border-radius:0"><img src="assets/lab-circuit.webp" alt="A simple circuit with a battery, a switch and a glowing bulb"></div>
+      <div class="scene" style="height:150px;border-radius:0"><img src="assets/lab-circuit.webp" alt="A simple circuit with a battery, a switch and a glowing bulb"></div>
       <div class="col" style="gap:10px;padding:12px 14px 14px">
         <div class="mk-slider"><span style="width:56px">Voltage</span><span class="trk"><i style="width:50%"></i><b style="left:50%"></b></span><span class="num" style="width:40px;text-align:right">3.0 V</span></div>
         <div class="row between"><span class="t-caption" style="font-weight:700">Switch</span><span class="switch on"></span></div>
@@ -983,15 +981,15 @@
     <span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span>
   </div>
   <div class="s-biology" style="flex:1;min-height:0;position:relative;background:var(--tint)">
-    <img src="assets/lab-heart.webp" alt="3D model of the human heart, 5 labelled parts" style="position:absolute;left:-190px;top:40px;width:720px;max-width:none;height:480px">
+    <img src="assets/lab-heart.webp" alt="3D model of the human heart, 5 labelled parts" style="position:absolute;left:-280px;top:-10px;width:900px;max-width:none;height:600px">
     <svg viewBox="0 0 340 654" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
-      <g style="stroke:var(--ink);stroke-width:1.5;opacity:.6"><line x1="50" y1="110" x2="147" y2="138"/><line x1="296" y1="100" x2="199" y2="146"/><line x1="36" y1="250" x2="96" y2="223"/><line x1="306" y1="290" x2="257" y2="241"/><line x1="60" y1="400" x2="132" y2="351"/></g>
+      <g style="stroke:var(--ink);stroke-width:1.5;opacity:.6"><line x1="50" y1="96" x2="142" y2="113"/><line x1="300" y1="86" x2="206" y2="122"/><line x1="28" y1="280" x2="77" y2="218"/><line x1="314" y1="320" x2="262" y2="252"/><line x1="50" y1="430" x2="123" y2="379"/></g>
     </svg>
-    <span class="mk-pin" style="left:50px;top:110px">1</span>
-    <span class="mk-pin" style="left:296px;top:100px;width:40px;height:40px;margin:-20px 0 0 -20px;box-shadow:inset 0 0 0 3px var(--primary),var(--sh-raised)">2</span>
-    <span class="mk-pin" style="left:36px;top:250px">3</span>
-    <span class="mk-pin" style="left:306px;top:290px">4</span>
-    <span class="mk-pin" style="left:60px;top:400px">5</span>
+    <span class="mk-pin" style="left:50px;top:96px">1</span>
+    <span class="mk-pin" style="left:300px;top:86px;width:40px;height:40px;margin:-20px 0 0 -20px;box-shadow:inset 0 0 0 3px var(--primary),var(--sh-raised)">2</span>
+    <span class="mk-pin" style="left:28px;top:280px">3</span>
+    <span class="mk-pin" style="left:314px;top:320px">4</span>
+    <span class="mk-pin" style="left:50px;top:430px">5</span>
     <span class="mk-pill" style="position:absolute;left:50%;transform:translateX(-50%);top:14px;font-size:12px"><svg class="ic"><use href="#ph-hand-grabbing-bold"/></svg>Drag to turn. Pinch to zoom. Tap a number.</span>
     <div class="col" style="position:absolute;right:12px;bottom:150px;gap:8px">
       <span class="mk-fbtn" aria-label="Recenter"><svg class="ic sm"><use href="#ph-crosshair-bold"/></svg></span>
@@ -1117,7 +1115,7 @@
     <div class="card tint s-chemistry col" style="gap:8px;padding:14px">
       <div class="row" style="gap:8px"><svg class="ic sm stext"><use href="#ph-lightbulb-fill"/></svg><span class="t-label stext">Memory hook</span></div>
       <span class="t-label">{mnemonic_text} for this element's group, from content</span>
-      <div class="row" style="gap:8px"><span class="btn btn-secondary sm">More hooks</span><span class="btn btn-ghost sm" style="padding:0 6px">Make my own<span class="chip pro mk-pro"><svg class="ic"><use href="#ph-crown-fill"/></svg>Pro</span></span></div>
+      <div class="row" style="gap:8px"><span class="btn btn-secondary sm">More hooks</span><span class="btn btn-ghost sm" style="padding:0 6px">Make my own<span class="chip mk-pro"><svg class="ic"><use href="#ph-lock-simple-bold"/></svg>Pro</span></span></div>
     </div>
     <div class="row" style="gap:8px"><span class="btn btn-secondary sm grow"><svg class="ic sm"><use href="#ph-cube-bold"/></svg>3D atom</span><span class="btn btn-secondary sm grow"><svg class="ic sm"><use href="#ph-plus-circle-bold"/></svg>Collect card</span></div>
   </div>
@@ -1169,7 +1167,7 @@
   <div class="mk-top">
     <span class="iconbtn"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span>
     <span class="ttl t-heading">Floating and sinking</span>
-    <span class="chip ok" style="height:28px;margin-right:8px"><svg class="ic xs"><use href="#ph-shield-check-bold"/></svg>Safety check done</span>
+    <span class="chip ok" style="height:28px;margin-right:8px"><svg class="ic xs"><use href="#ph-shield-check-bold"/></svg>Safe</span>
   </div>
   <div class="body scroll-cut s-physics" style="padding-top:2px;gap:10px">
     <span class="t-heading">Guess first</span>

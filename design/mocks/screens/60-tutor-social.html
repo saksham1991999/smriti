@@ -20,18 +20,20 @@
 .sx .mk-ts-ai ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
 .sx .mk-ts-who { display: flex; align-items: center; gap: 6px; font: 700 12px/16px var(--f-latin); color: var(--muted); }
 .sx .mk-ts-actions { display: flex; align-items: center; gap: 2px; color: var(--muted); margin: -4px -8px 0; }
-.sx .mk-ts-actions > span { height: 40px; min-width: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 12px; font: 700 13px/1 var(--f-latin); position: relative; }
+.sx .mk-ts-actions > span { height: 40px; min-width: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 12px; font: 700 13px/1 var(--f-latin); position: relative; white-space: nowrap; }
 .sx .mk-ts-actions .save { padding: 0 10px; color: var(--primary); background: var(--primary-tint); }
 .sx .mk-ts-lk { position: absolute; right: 3px; top: 4px; width: 14px; height: 14px; border-radius: 7px; background: var(--ink); color: var(--bg); display: grid; place-items: center; }
 .sx .mk-ts-lk .ic { width: 9px; height: 9px; }
 .sx .mk-ts-input { flex: none; display: flex; align-items: center; gap: 4px; padding: 8px 10px 18px; border-top: 1px solid var(--line); background: var(--surface); }
 .sx.dark .sheet .mk-ts-input { background: var(--raised); }
-.sx .mk-ts-input .fld { flex: 1; min-width: 0; height: 44px; border-radius: 16px; background: var(--sunken); display: flex; align-items: center; padding: 0 12px; color: var(--muted); font: 600 14px/1 var(--f-latin); white-space: nowrap; overflow: hidden; }
+.sx .mk-ts-input .fld { flex: 1; min-width: 0; height: 44px; border-radius: 16px; background: var(--sunken); display: block; padding: 0 12px; color: var(--muted); font: 600 14px/44px var(--f-latin); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sx .mk-ts-input .ib { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 22px; color: var(--muted); position: relative; flex: none; }
 .sx .mk-ts-send { width: 44px; height: 44px; border-radius: 22px; background: var(--primary); color: var(--on-primary); display: grid; place-items: center; flex: none; }
 .sx .mk-ts-send.stop { background: var(--sunken); color: var(--ink); }
 .sx .mk-ts-send.off { background: var(--sunken); color: var(--disabled); }
-.sx .mk-ts-sheethead { display: flex; align-items: center; gap: 10px; min-height: 48px; }
+.sx .mk-ts-sheethead { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+.sx .mk-ts-sheethead .iconbtn { width: 36px !important; }
+.sx .mk-ts-sheethead .t-caption { white-space: nowrap; }
 .sx .mk-ts-ctx { align-self: flex-start; height: 32px; border-radius: 999px; padding: 0 6px 0 10px; display: inline-flex; align-items: center; gap: 6px; background: var(--sunken); font: 700 13px/1 var(--f-latin); color: var(--ink); max-width: 100%; white-space: nowrap; }
 .sx .mk-ts-ctx .ic { color: var(--stext); }
 .sx .mk-ts-msgs { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 10px; justify-content: flex-end; }
@@ -63,7 +65,7 @@
 .sx .mk-ts-tier.cur { width: 58px; color: var(--ink); font-weight: 800; }
 .sx .mk-ts-tier.cur img { width: 50px; height: 50px; }
 .sx .mk-ts-strip { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
-.sx .mk-ts-lrow { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 12px; border-radius: 16px; }
+.sx .mk-ts-lrow { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 12px; border-radius: 16px; }
 .sx .mk-ts-lrow .rk { width: 22px; text-align: center; font: 800 14px/1 var(--f-latin); font-variant-numeric: tabular-nums; color: var(--muted); flex: none; }
 .sx .mk-ts-lrow .nm { flex: 1; min-width: 0; font: 700 15px/20px var(--f-latin); display: flex; align-items: center; gap: 6px; }
 .sx .mk-ts-lrow .xp { font: 800 14px/1 var(--f-latin); font-variant-numeric: tabular-nums; }
@@ -80,8 +82,8 @@
 .sx .mk-ts-pair { display: flex; flex: none; } .sx .mk-ts-pair > * + * { margin-left: -12px; box-shadow: 0 0 0 2px var(--streak-tint); }
 .sx .mk-ts-ok { color: var(--success); } .sx .mk-ts-no { color: var(--muted); }
 .sx .mk-ts-qr { width: 92px; height: 92px; border-radius: 12px; border: 2px dashed var(--line); background: var(--sunken); display: grid; place-items: center; text-align: center; font: 700 11px/14px var(--f-latin); color: var(--muted); flex: none; }
-.sx .mk-ts-dots { display: flex; gap: 4px; } .sx .mk-ts-dots i { width: 14px; height: 14px; border-radius: 7px; background: var(--track); display: grid; place-items: center; color: var(--surface); }
-.sx .mk-ts-dots i.ok { background: var(--success); } .sx .mk-ts-dots i.bad { background: var(--error); } .sx .mk-ts-dots i .ic { width: 10px; height: 10px; }
+.sx .mk-ts-dots { display: flex; gap: 3px; } .sx .mk-ts-dots i { width: 11px; height: 11px; border-radius: 6px; background: var(--track); display: grid; place-items: center; color: var(--surface); }
+.sx .mk-ts-dots i.ok { background: var(--success); } .sx .mk-ts-dots i.bad { background: var(--error); } .sx .mk-ts-dots i .ic { width: 8px; height: 8px; }
 .sx .mk-ts-vs { font: 800 120px/1 var(--f-latin); font-variant-numeric: tabular-nums; letter-spacing: -4px; }
 .sx .mk-ts-radio { width: 22px; height: 22px; border-radius: 11px; box-shadow: inset 0 0 0 2px var(--line); flex: none; }
 .sx .mk-ts-radio.on { box-shadow: inset 0 0 0 7px var(--primary); }
@@ -151,9 +153,8 @@
         <div class="mk-ts-who"><span class="mk-ts-av gold s24"><img src="assets/cat-wave.webp" alt=""></span>Miso</div>
         <div class="mk-ts-ai">
           <span>Here is the idea in two steps…</span>
-          <ol><li>Start from what the card shows.</li><li>Follow how each part changes, using this</li></ol>
-          <div class="formula" style="padding:12px;font-size:20px">y = k · x</div>
-          <div class="mk-ts-shim" style="width:60%;opacity:.7"></div>
+          <ol><li>Start from what the card shows.</li><li>Then follow this</li></ol>
+          <div class="formula" style="padding:10px;font-size:20px">y = k · x</div>
         </div>
       </div>
     </div>
@@ -165,7 +166,7 @@
     </div>
   </div>
 </div></div>
-<figcaption><span class="id">AI-02 · 60%</span><span class="nm">Tutor chat, answer streaming</span><span class="ds">Sheet at 60% over the lesson. Free counter, context chip, a streamed answer with a Formula box still arriving, Stop in place of Send, lock badges on camera and mic.</span></figcaption>
+<figcaption><span class="id">AI-02 · 60%</span><span class="nm">Tutor chat, answer streaming</span><span class="ds">Sheet at 60% over the lesson. Free counter (5 a day, R35), context chip, a streamed answer with a Formula box still arriving, Stop in place of Send, lock badges on camera and mic.</span></figcaption>
 </figure>
 
 <!-- ============ AI-02 full, finished with image ============ -->
@@ -188,17 +189,17 @@
         <div class="mk-ts-who"><span class="mk-ts-av gold s24"><img src="assets/cat-wave.webp" alt=""></span>Miso</div>
         <div class="mk-ts-ai">
           <span>Here is a picture of the setup. Look at each part from left to right, then try the card again.</span>
-          <div class="mk-ts-genimg" style="height:176px"><img src="assets/lab-optics.webp" alt="An optics bench with a candle, a lens and a screen."><span class="tag"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-sparkle-fill"/></svg>Made for your question</span></div>
+          <div class="mk-ts-genimg" style="height:176px"><img src="assets/lab-optics.webp" alt="An optics bench with a candle, a lens and a screen."><span class="tag"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-image-bold"/></svg>From the picture library</span></div>
           <span class="mk-ts-ailbl"><svg class="ic xs"><use href="#ph-info-bold"/></svg>Made by AI. It can make mistakes.</span>
           <div class="mk-ts-actions">
             <span aria-label="Good answer"><svg class="ic sm"><use href="#ph-thumbs-up-bold"/></svg></span>
             <span aria-label="Bad answer"><svg class="ic sm"><use href="#ph-thumbs-down-bold"/></svg></span>
             <span class="save"><svg class="ic sm"><use href="#ph-cards-bold"/></svg>Save as flashcard</span>
-            <span aria-label="Read aloud, Pro feature"><svg class="ic sm"><use href="#ph-speaker-high-bold"/></svg><span class="mk-ts-lk"><svg class="ic"><use href="#ph-lock-simple-fill"/></svg></span></span>
+            <span aria-label="Read aloud"><svg class="ic sm"><use href="#ph-speaker-high-bold"/></svg></span>
             <span><svg class="ic sm"><use href="#ph-dots-three-bold"/></svg></span>
           </div>
         </div>
-        <div class="row wrap" style="gap:8px"><span class="chip">Explain simpler</span><span class="chip">Quiz me on this</span><span class="chip">Make it a story</span></div>
+        <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip">Explain simpler</span><span class="chip">Quiz me on this</span><span class="chip">Draw it<span class="chip pro" style="height:20px;padding:0 6px;font-size:10px"><svg class="ic xs" style="width:10px;height:10px"><use href="#ph-lock-simple-fill"/></svg>Pro</span></span></div>
       </div>
     </div>
     <div class="mk-ts-input" style="margin-top:10px">
@@ -209,7 +210,7 @@
     </div>
   </div>
 </div></div>
-<figcaption><span class="id">AI-02 · full</span><span class="nm">Tutor chat, answer with a picture</span><span class="ds">Dragged to full height. A finished answer with an Agnes image card (lab image standing in for the generated one), the AI label, the action row with Save as flashcard, and three follow-up chips.</span></figcaption>
+<figcaption><span class="id">AI-02 · full</span><span class="nm">Tutor chat, answer with a picture</span><span class="ds">Dragged to full height, free student. A finished answer with an existing indexed picture (free, R35), the AI label, the action row with Save as flashcard and free read-aloud, and follow-up chips; "Draw it" (new Agnes picture) is Pro.</span></figcaption>
 </figure>
 
 <!-- ============ AI-02 Hindi drawing ============ -->
@@ -292,8 +293,7 @@
       </div>
     </div>
     <div class="mk-ts-input" style="margin-top:10px">
-      <span class="ib" style="color:var(--disabled)"><svg class="ic"><use href="#ph-camera-bold"/></svg></span>
-      <span class="fld" style="color:var(--disabled)">Free questions come back at 12:00 am</span>
+      <span class="fld" style="color:var(--disabled);margin-left:6px">Free questions come back at 12:00 am</span>
       <span class="mk-ts-send off"><svg class="ic sm"><use href="#ph-paper-plane-right-fill"/></svg></span>
     </div>
   </div>
@@ -348,7 +348,7 @@
       <div class="t-heading grow">Explain <span class="stext">image formation</span> as if you're teaching a friend.</div>
       <img src="assets/cat-reading.webp" alt="Miso listening with a book" style="width:118px;height:118px;object-fit:contain;margin:-24px -6px -18px 0;flex:none">
     </div>
-    <div class="row" style="gap:8px;overflow:hidden"><span class="chip on">Image formation</span><span class="chip">Focal point</span><span class="chip">Magnification</span></div>
+    <div class="row mk-ts-strip" style="gap:8px;mask-image:linear-gradient(90deg,#000 80%,transparent)"><span class="chip on">Image formation</span><span class="chip">Focal point</span><span class="chip">Magnification</span></div>
     <div class="seg"><span>Type</span><span class="on">Speak</span></div>
     <div class="col" style="align-items:center;gap:6px;padding:4px 0">
       <div class="row" style="gap:14px">
@@ -387,11 +387,10 @@
     </div>
     <span class="t-heading">You missed</span>
     <div class="mk-ts-step" style="flex-direction:row;align-items:center"><span class="grow t-label">The second key point of this concept</span><span class="btn btn-ghost sm" style="padding:0 6px">Learn this</span></div>
-    <div class="mk-ts-step" style="flex-direction:row;align-items:center"><span class="grow t-label">How the two parts link together</span><span class="btn btn-ghost sm" style="padding:0 6px">Learn this</span></div>
     <span class="t-heading">Miso asks</span>
-    <div class="mk-ts-step"><span class="t-label">What changes if you start from the other side?</span><div class="input" style="height:44px">Your answer…</div></div>
+    <div class="mk-ts-step" style="flex-direction:row;align-items:center"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-chat-circle-dots-fill"/></svg><span class="grow t-label">What changes if you start from the other side?</span><span class="btn btn-ghost sm" style="padding:0 6px">Answer</span></div>
   </div>
-  <div class="bottom" style="flex-direction:row;gap:10px"><span class="btn btn-secondary" style="width:40%">Try again</span><span class="btn btn-primary">Add gaps to review</span></div>
+  <div class="bottom" style="flex-direction:row;gap:10px"><span class="btn btn-secondary auto" style="white-space:nowrap;padding:0 16px">Try again</span><span class="btn btn-primary">Add gaps to review</span></div>
 </div></div>
 <figcaption><span class="id">AI-11</span><span class="nm">Feynman: feedback</span><span class="ds">Mixed result. Three meters with band words and icons (never colour alone), the gain since last time, the gaps with Learn this, and one follow-up question.</span></figcaption>
 </figure>
@@ -471,7 +470,7 @@
       <div class="t-body">The question text read from your photo appears here, over one or two lines, exactly as written.</div>
       <div class="formula">a·x² + b·x + c = 0</div>
       <div class="t-caption muted">Concepts</div>
-      <div class="row wrap" style="gap:8px"><span class="chip">Quadratic equations</span><span class="chip">Roots</span></div>
+      <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip">Quadratic equations</span><span class="chip">Roots</span></div>
     </div>
     <div class="petline"><span class="av"><img src="assets/cat-reading.webp" alt=""></span><span class="bubble">If anything looks off, fix it before I solve it.</span></div>
   </div>
@@ -492,7 +491,7 @@
     <div class="mk-ts-step"><span class="t-label stext">Step 2</span><span class="t-body">Pick the relation that links them.</span><div class="formula" style="padding:10px;font-size:20px">a·x² + b·x + c = 0</div><span class="t-caption" style="background:var(--tint);border-radius:10px;padding:6px 10px;color:var(--stext)"><b>Why?</b> This is the form the question is written in.</span></div>
     <div class="row" style="gap:10px"><span class="btn btn-primary" style="flex:1">Next step</span><span class="btn btn-ghost auto" style="padding:0 10px">I've got it</span></div>
     <div class="t-caption muted">Concepts used</div>
-    <div class="row wrap" style="gap:8px"><span class="chip st">Quadratic equations</span><span class="chip st">Roots</span></div>
+    <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip st">Quadratic equations</span><span class="chip st">Roots</span></div>
     <div class="row between"><span class="mk-ts-ailbl"><svg class="ic xs"><use href="#ph-info-bold"/></svg>Made by AI. It can make mistakes.</span><span class="row muted" style="gap:4px"><svg class="ic sm"><use href="#ph-thumbs-up-bold"/></svg><svg class="ic sm"><use href="#ph-thumbs-down-bold"/></svg></span></div>
   </div>
 </div></div>
@@ -509,17 +508,18 @@
     <div class="col" style="gap:10px">
       <p class="t-body" style="margin:0">Meera sat by the village pond with Miso. A small stone slipped from her hand and landed with a plop.</p>
       <p class="t-body" style="margin:0">"Look," said Miso. "Watch what the water does next."</p>
+      <p class="t-body" style="margin:0">Meera leaned closer and waited.</p>
     </div>
     <span class="mk-ts-ailbl"><svg class="ic xs"><use href="#ph-info-bold"/></svg>Made by AI. It can make mistakes.</span>
     <div class="sp"></div>
   </div>
   <div class="bottom" style="flex-direction:row;align-items:center;gap:12px">
-    <span class="btn btn-secondary sm" style="height:56px;border-radius:20px;position:relative"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg>Read aloud<span class="mk-ts-lk" style="right:6px;top:6px"><svg class="ic"><use href="#ph-lock-simple-fill"/></svg></span></span>
+    <span class="btn btn-secondary sm" style="height:56px;border-radius:20px"><svg class="ic"><use href="#ph-speaker-high-bold"/></svg>Read aloud</span>
     <div class="row grow" style="gap:5px;justify-content:center"><i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
     <span class="btn btn-primary auto" style="padding:0 22px">Next</span>
   </div>
 </div></div>
-<figcaption><span class="id">AI-20</span><span class="nm">Generated story</span><span class="ds">Page 1 of a tutor story in the shared storybook reader: 3:2 storybook image, short page text, the AI label, Read aloud with a Pro lock for free users.</span></figcaption>
+<figcaption><span class="id">AI-20</span><span class="nm">Generated story</span><span class="ds">Page 1 of a tutor story in the shared storybook reader: 3:2 storybook image, short page text, the AI label, and Read aloud (free within the daily cap, R35).</span></figcaption>
 </figure>
 
 <!-- ============ AI-21 ============ -->
@@ -545,21 +545,21 @@
       <span class="row t-label" style="gap:8px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>What a day of study looked like</span>
       <span class="row t-label" style="gap:8px"><svg class="ic sm muted"><use href="#ph-circle-bold"/></svg>Where the manuscripts were kept</span>
     </div>
-    <div class="mk-ts-msgs" style="gap:8px">
+    <div class="mk-ts-msgs" style="gap:8px;justify-content:flex-start">
       <div class="row top" style="gap:8px"><span class="mk-ts-av s24 portrait"><img src="assets/roleplay-mauryan-scholar.webp" alt=""></span><div class="mk-ts-ai" style="border-radius:6px 20px 20px 20px;padding:10px 12px">Welcome, young traveller. Ask me what you wish to know.</div></div>
       <div class="mk-ts-me">What do you study each day?</div>
       <div class="row top" style="gap:8px"><span class="mk-ts-av s24 portrait"><img src="assets/roleplay-mauryan-scholar.webp" alt=""></span><div class="mk-ts-ai" style="border-radius:6px 20px 20px 20px;padding:10px 12px">Many things. Which would you like to hear about first?</div></div>
     </div>
-    <div class="row wrap" style="gap:8px"><span class="chip" style="height:40px">Who teaches you?</span><span class="chip" style="height:40px">Show me your books</span><span class="chip" style="height:40px">Where do you keep them?</span></div>
+    <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip" style="height:40px">Who teaches you?</span><span class="chip" style="height:40px">Show me your books</span><span class="chip" style="height:40px">Where do you keep them?</span></div>
   </div>
   <div class="mk-ts-input" style="padding-bottom:10px">
     <span class="fld">Type your reply…</span>
     <span class="ib"><svg class="ic"><use href="#ph-microphone-bold"/></svg><span class="mk-ts-lk"><svg class="ic"><use href="#ph-lock-simple-fill"/></svg></span></span>
     <span class="mk-ts-send"><svg class="ic sm"><use href="#ph-paper-plane-right-fill"/></svg></span>
   </div>
-  <div class="row between" style="padding:0 12px 18px;background:var(--surface)"><span class="btn btn-ghost sm">Wrap up</span><span class="btn btn-ghost sm" style="color:var(--muted)">Skip</span></div>
+  <div class="row" style="padding:0 12px 18px;background:var(--surface);gap:4px"><span class="btn btn-ghost sm">Wrap up</span><span class="btn btn-ghost sm" style="color:var(--muted)">Skip</span><span class="sp"></span><span class="btn btn-primary sm" style="padding:0 22px">Continue</span></div>
 </div></div>
-<figcaption><span class="id">AI-21</span><span class="nm">Role play in a lesson</span><span class="ds">Inside the lesson player. Character portrait with era chip and AI label, the goals strip with one goal met, the chat, and three suggested replies. Mic shows the Pro badge for a free student.</span></figcaption>
+<figcaption><span class="id">AI-21</span><span class="nm">Role play in a lesson</span><span class="ds">Runs in place inside the lesson player (R45), not full screen. Character portrait with era chip and AI label, the goals strip with one goal met, the chat, and three suggested replies. Mic shows the Pro badge for a free student.</span></figcaption>
 </figure>
 
 <!-- ============ WEB tutor panel ============ -->
@@ -591,21 +591,20 @@
         <span class="mk-ts-ctx"><svg class="ic xs"><use href="#ph-book-open-bold"/></svg>Asking about: How the image forms<svg class="ic xs muted"><use href="#ph-x-bold"/></svg></span>
         <div class="mk-ts-msgs">
           <div class="mk-ts-me">Can you explain this card more simply?</div>
-          <div class="mk-ts-who"><span class="mk-ts-av gold s24"><img src="assets/cat-wave.webp" alt=""></span>Miso</div>
-          <div class="mk-ts-ai">
+                    <div class="mk-ts-ai">
             <span>Here is the idea in two steps…</span>
             <ol><li>Start from what the card shows.</li><li>Follow how each part changes.</li></ol>
-            <div class="formula" style="padding:10px;font-size:20px">y = k · x</div>
-            <div class="mk-ts-genimg" style="height:150px"><img src="assets/lab-optics.webp" alt="An optics bench with a candle, a lens and a screen."><span class="tag"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-sparkle-fill"/></svg>Made for your question</span></div>
+            <div class="formula" style="padding:6px;font-size:18px">y = k · x</div>
+            <div class="mk-ts-genimg" style="height:112px"><img src="assets/lab-optics.webp" alt="An optics bench with a candle, a lens and a screen."><span class="tag"><svg class="ic xs" style="color:var(--primary)"><use href="#ph-image-bold"/></svg>From the picture library</span></div>
             <span class="mk-ts-ailbl"><svg class="ic xs"><use href="#ph-info-bold"/></svg>Made by AI. It can make mistakes.</span>
             <div class="mk-ts-actions"><span><svg class="ic sm"><use href="#ph-thumbs-up-bold"/></svg></span><span><svg class="ic sm"><use href="#ph-thumbs-down-bold"/></svg></span><span class="save"><svg class="ic sm"><use href="#ph-cards-bold"/></svg>Save as flashcard</span></div>
           </div>
-          <div class="row wrap" style="gap:8px"><span class="chip">Explain simpler</span><span class="chip">Show an example</span><span class="chip">Quiz me on this</span></div>
+          <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip">Explain simpler</span><span class="chip">Show an example</span></div>
         </div>
       </div>
       <div class="mk-ts-input" style="padding-bottom:12px">
         <span class="ib"><svg class="ic"><use href="#ph-image-bold"/></svg><span class="mk-ts-lk"><svg class="ic"><use href="#ph-lock-simple-fill"/></svg></span></span>
-        <span class="fld">Ask anything about this card…  Enter to send</span>
+        <span class="fld">Ask anything about this card…</span>
         <span class="mk-ts-send"><svg class="ic sm"><use href="#ph-paper-plane-right-fill"/></svg></span>
       </div>
     </aside>
@@ -646,7 +645,40 @@
   </div>
   <nav class="tabbar"><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-users-three-fill"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav>
 </div></div>
-<figcaption><span class="id">SOC-01</span><span class="nm">Friends tab, signed in</span><span class="ds">League card with the Mango crest and zone chip, friends today (minors by pet name, the adult Kavya by display name), Duo chips, the Duel card. No tutor button on this tab.</span></figcaption>
+<figcaption><span class="id">SOC-01</span><span class="nm">Friends tab, signed in</span><span class="ds">League card with the Mango crest and zone chip, friends today (invite friends by pet name, the adult Kavya by display name), Duo chips, the Duel card. No tutor button on this tab.</span></figcaption>
+</figure>
+
+<!-- ============ SOC-01 teen, activity ============ -->
+<figure class="mock" data-id="SOC-01">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body scroll-cut" style="gap:12px;padding-top:4px">
+    <div class="row between"><span class="t-title">Friends</span>
+      <div class="row" style="gap:2px"><span class="iconbtn"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><span class="iconbtn"><svg class="ic"><use href="#ph-user-plus-bold"/></svg></span></div>
+    </div>
+    <div class="card lg" style="background:var(--primary-tint);overflow:visible;display:flex;flex-direction:column;gap:8px">
+      <img class="art" src="assets/league-bronze.webp" alt="Seed league crest" style="width:96px;height:96px;object-fit:contain;right:-4px;top:-12px">
+      <span class="t-heading" style="padding-right:84px">Join this week's league?</span>
+      <span class="t-caption muted" style="padding-right:84px">Leagues are your choice. You can take a break any time.</span>
+      <div class="row" style="gap:12px"><span class="btn btn-primary sm" style="padding:0 26px">Join</span><span class="link t-label">How leagues work</span></div>
+    </div>
+    <div class="row between"><span class="t-heading">Friend activity</span></div>
+    <div class="card col" style="gap:10px;padding:14px">
+      <div class="row" style="gap:10px"><span class="mk-ts-av s-maths"><img src="assets/dog-wave.webp" alt=""></span><div class="grow"><div class="t-label">Bholu reached a 23-day streak</div><div class="t-caption muted">2 h ago</div></div><svg class="ic" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg></div>
+      <div class="row" style="gap:4px"><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;background:var(--primary-tint);color:var(--primary);box-shadow:inset 0 0 0 1.5px var(--primary)"><svg class="ic xs"><use href="#ph-hands-clapping-fill"/></svg>Clap <span class="num muted" style="font-weight:600">4</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-star-fill"/></svg>Star <span class="num muted" style="font-weight:600">2</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-barbell-bold"/></svg>Strong <span class="num muted" style="font-weight:600">1</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-smiley-bold"/></svg>Smile <span class="num muted" style="font-weight:600">0</span></span></div>
+    </div>
+    <div class="card col" style="gap:10px;padding:14px">
+      <div class="row" style="gap:10px"><span class="mk-ts-av s-chemistry"><img src="assets/cat-celebrate.webp" alt=""></span><div class="grow"><div class="t-label">Kavya R. moved up to Lotus</div><div class="t-caption muted">Yesterday</div></div><img src="assets/league-gold.webp" alt="" style="width:28px;height:28px;object-fit:contain"></div>
+      <div class="row" style="gap:4px"><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-hands-clapping-fill"/></svg>Clap <span class="num muted" style="font-weight:600">6</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-star-fill"/></svg>Star <span class="num muted" style="font-weight:600">3</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-barbell-bold"/></svg>Strong <span class="num muted" style="font-weight:600">0</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-smiley-bold"/></svg>Smile <span class="num muted" style="font-weight:600">2</span></span></div>
+    </div>
+    <div class="card col" style="gap:10px;padding:14px">
+      <div class="row" style="gap:10px"><span class="mk-ts-av s-polity"><img src="assets/cat-reading.webp" alt=""></span><div class="grow"><div class="t-label">Chiku earned 100 reviews</div><div class="t-caption muted">Yesterday</div></div><img src="assets/badge-reviews-100.webp" alt="" style="width:30px;height:30px;object-fit:contain"></div>
+      <div class="row" style="gap:4px"><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-hands-clapping-fill"/></svg>Clap <span class="num muted" style="font-weight:600">1</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-star-fill"/></svg>Star <span class="num muted" style="font-weight:600">0</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-barbell-bold"/></svg>Strong <span class="num muted" style="font-weight:600">0</span></span><span class="chip" style="height:40px;padding:0 4px;gap:3px;font-size:11px;flex:1;min-width:0;justify-content:center;"><svg class="ic xs"><use href="#ph-smiley-bold"/></svg>Smile <span class="num muted" style="font-weight:600">1</span></span></div>
+    </div>
+  </div>
+  <nav class="tabbar"><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-users-three-fill"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav>
+</div></div>
+<figcaption><span class="id">SOC-01 · teen</span><span class="nm">Friends tab, teen not in a league yet</span><span class="ds">A teen with consent sees "Join this week's league?" (leagues are opt-in for 13–17). Friend activity with the four preset reactions, Clap, Star, Strong and Smile, each with its word and count; one already sent.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-02 guest ============ -->
@@ -655,7 +687,7 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="body" style="gap:12px;padding-top:4px">
     <span class="t-title">Friends</span>
-    <div class="scene" style="height:170px;flex:none"><img class="art-fill" src="assets/scene-welcome.webp" alt="Two pets waiting at a gate"></div>
+    <div class="scene" style="height:150px;flex:none"><img class="art-fill" src="assets/scene-welcome.webp" alt="Two pets waiting at a gate"></div>
     <div class="col" style="gap:4px"><span class="t-title">Study with friends</span><span class="t-body" style="font-size:15px;line-height:22px;color:var(--muted)">Sign in to join a weekly league, duel friends and keep streaks together. Your progress stays the same.</span></div>
     <div class="col" style="gap:8px">
       <span class="row t-label" style="gap:10px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-trophy-bold"/></svg>A weekly league</span>
@@ -664,12 +696,13 @@
     </div>
     <div class="grid2" style="gap:8px"><div class="stat" style="background:var(--streak-tint);box-shadow:none;padding:10px 12px"><b class="num" style="font-size:20px">140 XP</b><span>This week</span></div><div class="stat" style="background:var(--streak-tint);box-shadow:none;padding:10px 12px"><b class="num" style="font-size:20px">6 days</b><span>Streak</span></div></div>
     <div class="sp"></div>
-    <span class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg>Sign in with Google</span>
-    <span class="btn btn-ghost" style="height:32px;margin-top:-4px">Why do I need to sign in?</span>
+    <span class="btn btn-google"><svg class="g"><use href="#g-logo"/></svg>Continue with Google</span>
+    <span class="row t-caption muted" style="gap:6px;justify-content:center;margin-top:-2px"><svg class="ic xs"><use href="#ph-shield-check-bold"/></svg>We never call you or share your email.</span>
+    <span class="btn btn-ghost" style="height:28px;margin-top:-4px;font-size:14px">Why do I need to sign in?</span>
   </div>
   <nav class="tabbar"><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-house-bold"/></svg></span>Learn</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-flask-bold"/></svg></span>Labs</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-exam-bold"/></svg></span>Practice</span><span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-users-three-fill"/></svg></span>Friends</span><span class="tab"><span class="pip"><svg class="ic"><use href="#ph-user-circle-bold"/></svg></span>Me</span></nav>
 </div></div>
-<figcaption><span class="id">SOC-02 · guest</span><span class="nm">Friends locked: guest</span><span class="ds">Never an empty tab: what Friends offers, the guest's own real numbers on gold, and one step, Sign in with Google.</span></figcaption>
+<figcaption><span class="id">SOC-02 · guest</span><span class="nm">Friends locked: guest</span><span class="ds">Never an empty tab: what Friends offers, the guest's own real numbers on gold, and one step, Continue with Google, with the trust line (R40).</span></figcaption>
 </figure>
 
 <!-- ============ SOC-02 teen (Hindi) ============ -->
@@ -712,17 +745,17 @@
       <div class="col grow" style="gap:8px"><span class="t-label">Ask your friend to scan this</span><span class="btn btn-secondary sm" style="width:100%"><svg class="ic sm"><use href="#ph-scan-bold"/></svg>Scan a friend's QR</span></div>
     </div>
     <span class="t-heading">Find by username</span>
-    <div class="row" style="gap:8px"><div class="input grow" style="color:var(--ink)"><b style="color:var(--muted)">@</b>bholu_reads</div><span class="btn btn-secondary sm" style="height:52px;border-radius:16px">Search</span></div>
+    <div class="row" style="gap:8px"><div class="input grow" style="color:var(--ink)"><b style="color:var(--muted)">@</b>study_owl_9</div><span class="btn btn-secondary sm" style="height:52px;border-radius:16px">Search</span></div>
     <div class="card row" style="gap:12px;padding:12px">
-      <span class="mk-ts-av s48 s-maths"><img src="assets/dog-wave.webp" alt=""></span>
-      <div class="grow col" style="gap:2px"><span class="t-label">Bholu</span><span class="t-caption muted">@bholu_reads · Lotus league</span></div>
+      <span class="mk-ts-av s48 s-biology"><img src="assets/dog-base.webp" alt=""></span>
+      <div class="grow col" style="gap:2px"><span class="t-label">Quiet Lotus 52</span><span class="t-caption muted">Lotus league</span></div>
       <span class="btn btn-primary sm">Add friend</span>
     </div>
     <div class="sp"></div>
     <span class="row t-caption muted" style="gap:6px;justify-content:center"><svg class="ic xs"><use href="#ph-shield-check-bold"/></svg>We never read your contacts.</span>
   </div>
 </div></div>
-<figcaption><span class="id">SOC-04</span><span class="nm">Add friends</span><span class="ds">Invite link with code, a QR box (placeholder), and exact-username search. The result is a minor, so it shows only the pet name and pet avatar.</span></figcaption>
+<figcaption><span class="id">SOC-04</span><span class="nm">Add friends</span><span class="ds">Invite link with code, a QR box (placeholder), and exact-username search. The result is a minor found by username, so it shows the pet avatar and an auto nickname, never the handle (R31 amended).</span></figcaption>
 </figure>
 
 <!-- ============ SOC-07 ============ -->
@@ -734,7 +767,7 @@
     <div class="card lg col" style="background:var(--primary-tint);box-shadow:none;align-items:center;gap:2px;padding:6px 18px 16px">
       <img src="assets/dog-wave.webp" alt="Bholu, the pet" style="width:140px;height:140px;object-fit:contain">
       <span class="t-title">Bholu</span>
-      <span class="t-caption muted">@bholu_reads</span>
+      <span class="t-caption muted">Added by invite link</span>
       <span class="chip" style="margin-top:6px;height:28px">JEE Main</span>
     </div>
     <div class="grid2" style="grid-template-columns:repeat(4,1fr);gap:8px">
@@ -755,7 +788,7 @@
     <div class="row" style="gap:8px"><span class="btn btn-secondary" style="height:48px"><svg class="ic sm"><use href="#ph-hands-clapping-fill"/></svg>Cheer</span><span class="btn btn-secondary" style="height:48px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>Open Duo</span></div>
   </div>
 </div></div>
-<figcaption><span class="id">SOC-07</span><span class="nm">Friend profile</span><span class="ds">A minor friend, so only the pet name and pet appear. Streak (plant icon), league, weekly XP, badges and their plant from their own real data; Challenge is the main action.</span></figcaption>
+<figcaption><span class="id">SOC-07</span><span class="nm">Friend profile</span><span class="ds">A minor friend added by invite link, so the pet name and pet appear; no @handle for minors. Streak (plant icon), league, weekly XP, badges and their plant from their own real data; Challenge is the main action.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-08 light ============ -->
@@ -775,19 +808,19 @@
     </div>
     <div style="padding:0 18px"><div class="petline"><span class="av"><img src="assets/cat-celebrate.webp" alt=""></span><span class="bubble">You're in the promotion zone. Keep it up!</span></div></div>
     <div style="padding:0 10px;display:flex;flex-direction:column;gap:2px">
-      <div class="mk-ts-lrow"><span class="rk">1</span><span class="mk-ts-av s-chemistry"><img src="assets/cat-celebrate.webp" alt=""></span><span class="nm">Pixel</span><span class="xp">1,240 XP</span></div>
+      <div class="mk-ts-lrow"><span class="rk">1</span><span class="mk-ts-av s-chemistry"><img src="assets/cat-celebrate.webp" alt=""></span><span class="nm">Sunny Sprout 27</span><span class="xp">1,240 XP</span></div>
       <div class="mk-ts-lrow"><span class="rk">2</span><span class="mk-ts-av s-biology"><img src="assets/dog-celebrate.webp" alt=""></span><span class="nm">Neha S.</span><span class="xp">1,105 XP</span></div>
-      <div class="mk-ts-lrow"><span class="rk">3</span><span class="mk-ts-av s-polity"><img src="assets/dog-base.webp" alt=""></span><span class="nm">Toffee</span><span class="xp">980 XP</span></div>
+      <div class="mk-ts-lrow"><span class="rk">3</span><span class="mk-ts-av s-polity"><img src="assets/dog-base.webp" alt=""></span><span class="nm">Brave Mango 12</span><span class="xp">980 XP</span></div>
       <div class="mk-ts-lrow me"><span class="rk" style="color:var(--primary)">4</span><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="nm">Miso <span class="mk-ts-you">You</span></span><span class="xp">820 XP</span></div>
       <div class="mk-ts-lrow"><span class="rk">5</span><span class="mk-ts-av s-maths"><img src="assets/dog-wave.webp" alt=""></span><span class="nm">Bholu <svg class="ic xs muted" aria-label="Friend"><use href="#ph-user-circle-fill"/></svg></span><span class="xp">790 XP</span></div>
-      <div class="mk-ts-lrow"><span class="rk">6</span><span class="mk-ts-av s-physics"><img src="assets/cat-thinking.webp" alt=""></span><span class="nm">Gulab</span><span class="xp">760 XP</span></div>
+      <div class="mk-ts-lrow"><span class="rk">6</span><span class="mk-ts-av s-physics"><img src="assets/cat-thinking.webp" alt=""></span><span class="nm">Calm River 08</span><span class="xp">760 XP</span></div>
       <div class="mk-ts-lrow"><span class="rk">7</span><span class="mk-ts-av s-history"><img src="assets/dog-thinking.webp" alt=""></span><span class="nm">Arjun M.</span><span class="xp">702 XP</span></div>
       <div class="mk-ts-zone up"><svg class="ic xs"><use href="#ph-arrow-up-bold"/></svg>Promotion zone · top 7 move up</div>
       <div class="mk-ts-lrow"><span class="rk">8</span><span class="mk-ts-av s-language"><img src="assets/cat-reading.webp" alt=""></span><span class="nm">Chiku <svg class="ic xs muted"><use href="#ph-user-circle-fill"/></svg></span><span class="xp">655 XP</span></div>
     </div>
   </div>
 </div></div>
-<figcaption><span class="id">SOC-08</span><span class="nm">League, promotion zone</span><span class="ds">Mango, tier 7 of 10 in the plant-named strip (past tiers in colour, future ones faded). Pet-avatar rows: minors by pet name, adults (Neha S., Arjun M.) by display name, friends marked.</span></figcaption>
+<figcaption><span class="id">SOC-08</span><span class="nm">League, promotion zone</span><span class="ds">Mango, tier 7 of 10 in the plant-named strip (past tiers in colour, future ones faded). Pet-avatar rows: minors by auto nickname, invite friends (Bholu, Chiku) by pet name and marked, adults (Neha S., Arjun M.) by display name.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-08 dark ============ -->
@@ -807,12 +840,12 @@
     </div>
     <div style="padding:0 18px"><div class="petline"><span class="av"><img src="assets/cat-worried.webp" alt=""></span><span class="bubble" style="background:var(--raised)">A lesson or two lifts you out of this zone.</span></div></div>
     <div style="padding:0 10px;display:flex;flex-direction:column;gap:2px">
-      <div class="mk-ts-lrow"><span class="rk">23</span><span class="mk-ts-av s-polity"><img src="assets/dog-base.webp" alt=""></span><span class="nm">Mithai</span><span class="xp">210 XP</span></div>
+      <div class="mk-ts-lrow"><span class="rk">23</span><span class="mk-ts-av s-polity"><img src="assets/dog-base.webp" alt=""></span><span class="nm">Swift Neem 41</span><span class="xp">210 XP</span></div>
       <div class="mk-ts-lrow"><span class="rk">24</span><span class="mk-ts-av s-history"><img src="assets/cat-base.webp" alt=""></span><span class="nm">Rohit K.</span><span class="xp">196 XP</span></div>
       <div class="mk-ts-lrow me"><span class="rk" style="color:var(--primary)">25</span><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="nm">Miso <span class="mk-ts-you">You</span></span><span class="xp">188 XP</span></div>
       <div class="mk-ts-zone down"><svg class="ic xs"><use href="#ph-arrow-down-bold"/></svg>Demotion zone · bottom 5 move down</div>
-      <div class="mk-ts-lrow"><span class="rk">26</span><span class="mk-ts-av s-maths"><img src="assets/dog-sleepy.webp" alt=""></span><span class="nm">Peanut</span><span class="xp">170 XP</span></div>
-      <div class="mk-ts-lrow"><span class="rk">27</span><span class="mk-ts-av s-chemistry"><img src="assets/cat-sleepy.webp" alt=""></span><span class="nm">Jalebi</span><span class="xp">142 XP</span></div>
+      <div class="mk-ts-lrow"><span class="rk">26</span><span class="mk-ts-av s-maths"><img src="assets/dog-sleepy.webp" alt=""></span><span class="nm">Bright Leaf 19</span><span class="xp">170 XP</span></div>
+      <div class="mk-ts-lrow"><span class="rk">27</span><span class="mk-ts-av s-chemistry"><img src="assets/cat-sleepy.webp" alt=""></span><span class="nm">Kind Lotus 33</span><span class="xp">142 XP</span></div>
     </div>
   </div>
   <div class="bottom"><span class="btn btn-primary">Start a lesson</span></div>
@@ -845,7 +878,7 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="body"><span class="t-title">Friends</span></div>
   <div class="scrim"></div>
-  <div class="sheet" style="top:56px;gap:10px">
+  <div class="sheet" style="gap:10px">
     <div class="grab"></div>
     <div class="scene row" style="height:116px;justify-content:center;gap:0;background:var(--streak-tint);flex:none"><img src="assets/cat-plant.webp" alt="" style="width:120px;height:120px;object-fit:contain;margin-top:8px"><img src="assets/dog-wave.webp" alt="" style="width:110px;height:110px;object-fit:contain;margin-top:14px;transform:scaleX(-1)"></div>
     <div class="col" style="gap:2px"><span class="t-title">Start a Duo</span><span class="t-body" style="font-size:15px;line-height:22px;color:var(--muted)">A Duo is a streak you keep with a friend. It grows on days you both study.</span></div>
@@ -857,6 +890,7 @@
     </div>
     <div class="col" style="gap:6px">
       <span class="row t-caption" style="gap:8px"><svg class="ic xs muted"><use href="#ph-plant-fill"/></svg>Each Duo has its own streak.</span>
+      <span class="row t-caption" style="gap:8px"><svg class="ic xs muted"><use href="#ph-users-bold"/></svg>It grows on days you both study.</span>
       <span class="row t-caption" style="gap:8px"><svg class="ic xs muted"><use href="#ph-snowflake-bold"/></svg>A streak freeze covers your Duos too.</span>
     </div>
     <span class="btn btn-primary">Send invites (2)</span>
@@ -874,15 +908,15 @@
   <div class="body" style="gap:12px;padding-top:2px">
     <div class="petline"><span class="av"><img src="assets/cat-plant.webp" alt=""></span><span class="bubble">2 of your 3 Duos are done today.</span></div>
     <div class="card" style="background:var(--streak-tint);box-shadow:none;display:flex;flex-direction:column;gap:10px">
-      <div class="row" style="gap:10px"><span class="mk-ts-pair"><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="mk-ts-av s-maths"><img src="assets/dog-wave.webp" alt=""></span></span><div class="grow"><div class="t-label">Bholu</div><div class="t-heading num row" style="gap:5px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>9-day Duo streak</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="row" style="gap:10px"><span class="mk-ts-pair"><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="mk-ts-av s-maths"><img src="assets/dog-wave.webp" alt=""></span></span><div class="grow"><div class="t-label">Bholu</div><div class="t-heading num row" style="gap:5px;font-size:17px;white-space:nowrap"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>9-day Duo streak</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="row" style="gap:8px"><span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>You · Done</span><span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>Bholu · Done</span></div>
     </div>
     <div class="card" style="background:var(--streak-tint);box-shadow:none;display:flex;flex-direction:column;gap:10px">
-      <div class="row" style="gap:10px"><span class="mk-ts-pair"><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="mk-ts-av s-history"><img src="assets/dog-thinking.webp" alt=""></span></span><div class="grow"><div class="t-label">Arjun M.</div><div class="t-heading num row" style="gap:5px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>21-day Duo streak</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="row" style="gap:10px"><span class="mk-ts-pair"><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="mk-ts-av s-history"><img src="assets/dog-thinking.webp" alt=""></span></span><div class="grow"><div class="t-label">Arjun M.</div><div class="t-heading num row" style="gap:5px;font-size:17px;white-space:nowrap"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>21-day Duo streak</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="row" style="gap:8px"><span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>You · Done</span><span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>Arjun M. · Done</span></div>
     </div>
     <div class="card" style="background:var(--streak-tint);box-shadow:none;display:flex;flex-direction:column;gap:10px">
-      <div class="row" style="gap:10px"><span class="mk-ts-pair"><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="mk-ts-av s-polity"><img src="assets/cat-reading.webp" alt=""></span></span><div class="grow"><div class="t-label">Chiku</div><div class="t-heading num row" style="gap:5px"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>3-day Duo streak</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+      <div class="row" style="gap:10px"><span class="mk-ts-pair"><span class="mk-ts-av gold"><img src="assets/cat-wave.webp" alt=""></span><span class="mk-ts-av s-polity"><img src="assets/cat-reading.webp" alt=""></span></span><div class="grow"><div class="t-label">Chiku</div><div class="t-heading num row" style="gap:5px;font-size:17px;white-space:nowrap"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>3-day Duo streak</div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="row" style="gap:8px"><span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-check-circle-fill"/></svg>You · Done</span><span class="chip" style="height:28px;color:var(--muted)"><svg class="ic xs"><use href="#ph-circle-bold"/></svg>Chiku · Not yet</span></div>
     </div>
     <div class="row" style="height:56px;border-radius:20px;border:2px dashed var(--line);justify-content:center;gap:8px;color:var(--primary);font:700 15px/1 var(--f-latin)"><svg class="ic sm"><use href="#ph-plus-bold"/></svg>Start a Duo</div>
@@ -890,6 +924,43 @@
   </div>
 </div></div>
 <figcaption><span class="id">SOC-12</span><span class="nm">Duo friend streaks</span><span class="ds">Three of five Duos, each with its own plant-icon streak and today's status for both, in words and icons. Free slots show a dashed Start a Duo card.</span></figcaption>
+</figure>
+
+<!-- ============ SOC-25 ============ -->
+<figure class="mock" data-id="SOC-25">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="iconbtn"><svg class="ic"><use href="#ph-arrow-left-bold"/></svg></span><span class="ttl">Duo with Chiku</span><span class="iconbtn"><svg class="ic"><use href="#ph-dots-three-vertical-bold"/></svg></span></div>
+  <div class="body" style="gap:12px;padding-top:2px">
+    <div class="card lg col" style="background:var(--streak-tint);box-shadow:none;align-items:center;gap:4px;padding:14px 12px 16px">
+      <div class="row" style="gap:0;align-items:flex-end;justify-content:center">
+        <img src="assets/cat-wave.webp" alt="" style="width:100px;height:100px;object-fit:contain">
+        <img src="assets/plant-sprout.webp" alt="You and Chiku's Duo plant" style="width:92px;height:92px;object-fit:contain;margin:0 -6px">
+        <img src="assets/cat-reading.webp" alt="" style="width:96px;height:96px;object-fit:contain">
+      </div>
+      <span class="t-display num row" style="gap:6px"><svg class="ic lg" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg>3-day Duo streak</span>
+      <span class="t-caption muted num">Best: 14 days</span>
+    </div>
+    <span class="t-label">Today</span>
+    <div class="grid2" style="gap:8px">
+      <div class="stat" style="flex-direction:row;align-items:center;gap:8px"><svg class="ic" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg><div><b style="font-size:16px;line-height:20px">You</b><br><span>Done</span></div></div>
+      <div class="stat" style="flex-direction:row;align-items:center;gap:8px"><svg class="ic muted"><use href="#ph-circle-bold"/></svg><div><b style="font-size:16px;line-height:20px">Chiku</b><br><span>Not yet</span></div></div>
+    </div>
+    <div class="row between"><span class="t-label">This week</span><span class="t-caption muted num">4 of 7 days together</span></div>
+    <div class="row between" style="padding:0 4px">
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;background:var(--streak);display:grid;place-items:center;color:var(--on-streak)"><svg class="ic xs"><use href="#ph-check-bold"/></svg></i><span class="t-caption muted">M</span></span>
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;background:var(--streak);display:grid;place-items:center;color:var(--on-streak)"><svg class="ic xs"><use href="#ph-check-bold"/></svg></i><span class="t-caption muted">T</span></span>
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;box-shadow:inset 0 0 0 2px var(--line);display:block"></i><span class="t-caption muted">W</span></span>
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;background:var(--streak);display:grid;place-items:center;color:var(--on-streak)"><svg class="ic xs"><use href="#ph-check-bold"/></svg></i><span class="t-caption muted">T</span></span>
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;background:var(--streak);display:grid;place-items:center;color:var(--on-streak)"><svg class="ic xs"><use href="#ph-check-bold"/></svg></i><span class="t-caption muted">F</span></span>
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;box-shadow:inset 0 0 0 2px var(--primary);display:block"></i><span class="t-caption" style="color:var(--primary)">S</span></span>
+      <span class="col" style="align-items:center;gap:3px"><i style="width:30px;height:30px;border-radius:15px;box-shadow:inset 0 0 0 2px var(--line);display:block;opacity:.5"></i><span class="t-caption muted">S</span></span>
+    </div>
+    <div class="petline"><span class="av"><img src="assets/cat-plant.webp" alt=""></span><span class="bubble">Your part is done. Chiku still has time today.</span></div>
+  </div>
+  <div class="bottom" style="gap:8px"><span class="btn btn-primary"><svg class="ic sm"><use href="#ph-bell-ringing-bold"/></svg>Nudge Chiku</span><span class="btn btn-secondary" style="height:48px"><svg class="ic sm"><use href="#ph-hands-clapping-fill"/></svg>Cheer</span></div>
+</div></div>
+<figcaption><span class="id">SOC-25</span><span class="nm">Duo detail</span><span class="ds">One Duo: both pets either side of the shared plant (the sprout stands in for the Duo-plant art), today's status for each in words and icons, the week's together-days, and Nudge because the partner hasn't studied yet.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-13 ============ -->
@@ -907,11 +978,12 @@
     </div>
     <div class="row" style="gap:10px"><div class="divider grow"></div><span class="t-caption muted">or enter a code</span><div class="divider grow"></div></div>
     <div class="input num" style="height:56px;font-size:18px;letter-spacing:3px;justify-content:center;color:var(--disabled)">_ _ _ _ _ _</div>
-    <span class="btn btn-secondary" style="height:48px">Join</span>
-    <div class="banner"><svg class="ic sm"><use href="#ph-shield-check-bold"/></svg>Join only squads of people you know.</div>
+    <span class="btn disabled" style="height:48px">Join</span>
+    <div class="banner"><svg class="ic sm"><use href="#ph-shield-check-bold"/></svg>Ask your friend for the squad link or QR.</div>
+    <span class="t-caption muted center">Join only squads of people you know.</span>
   </div>
 </div></div>
-<figcaption><span class="id">SOC-13</span><span class="nm">Join a squad</span><span class="ds">Opened from a squad link: preview with members (minors by pet name) and Join, or a code. Squad crests are not generated yet, so the crest is a placeholder.</span></figcaption>
+<figcaption><span class="id">SOC-13</span><span class="nm">Join a squad</span><span class="ds">Opened from a squad link: teen viewer: preview with members and Join; joining by code is off for minors (link or QR only). Squad crests are not generated yet, so the crest is a placeholder.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-14 ============ -->
@@ -976,18 +1048,16 @@
 <figure class="mock" data-id="SOC-16">
 <div class="phone"><div class="screen sx">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
-  <div class="body" style="gap:14px;align-items:center;text-align:center;padding-top:56px">
+  <div class="body" style="gap:14px;align-items:center;text-align:center;justify-content:center">
     <div class="row" style="gap:18px;justify-content:center;align-items:center">
-      <div class="col" style="align-items:center;gap:4px"><img src="assets/cat-wave.webp" alt="Miso waiting for an opponent" style="width:120px;height:120px;object-fit:contain"><span class="t-label">Miso</span></div>
+      <div class="col" style="align-items:center;gap:4px"><img src="assets/cat-wave.webp" alt="Miso waiting for an opponent" style="width:150px;height:150px;object-fit:contain"><span class="t-label">Miso</span></div>
       <span class="t-heading muted">vs</span>
-      <div class="col" style="align-items:center;gap:4px"><span style="width:104px;height:104px;border-radius:52px;background:var(--sunken);display:grid;place-items:center;color:var(--disabled);font:800 44px/1 var(--f-latin);margin:8px 0">?</span><span class="t-label muted">Searching</span></div>
+      <div class="col" style="align-items:center;gap:4px"><span style="width:120px;height:120px;border-radius:60px;background:var(--sunken);display:grid;place-items:center;color:var(--disabled);font:800 44px/1 var(--f-latin);margin:8px 0">?</span><span class="t-label muted">Searching</span></div>
     </div>
     <span class="t-title" style="margin-top:12px">No one's free right now.</span>
     <span class="t-caption muted num row" style="gap:4px"><svg class="ic xs"><use href="#ph-timer-bold"/></svg>Searched for 0:12 · still looking</span>
-    <div class="card col" style="gap:4px;width:100%;margin-top:8px;text-align:left;background:var(--primary-tint);box-shadow:none"><span class="t-label row" style="gap:8px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-target-bold"/></svg>Practise solo</span><span class="t-caption muted">Same questions, no opponent. Not ranked.</span></div>
-    <div class="sp"></div>
   </div>
-  <div class="bottom" style="gap:8px"><span class="btn btn-primary">Practise solo</span><span class="btn btn-secondary" style="height:48px">Keep looking</span><span class="btn btn-ghost" style="height:36px">Challenge a friend instead</span></div>
+  <div class="bottom" style="gap:8px"><span class="t-caption muted center">Practise solo: same questions, no opponent. Not ranked.</span><span class="btn btn-primary"><svg class="ic sm"><use href="#ph-target-bold"/></svg>Practise solo</span><span class="btn btn-secondary" style="height:48px">Keep looking</span><span class="btn btn-ghost" style="height:36px">Challenge a friend instead</span></div>
 </div></div>
 <figcaption><span class="id">SOC-16</span><span class="nm">Duel matchmaking after 10 s</span><span class="ds">Random match, nobody found in 10 s: a clearly labelled Practise solo offer (never a hidden bot, R31). Matching keeps running behind Keep looking.</span></figcaption>
 </figure>
@@ -998,17 +1068,18 @@
   <div class="statusbar on-dark"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="body" style="align-items:center;text-align:center;gap:10px;padding-top:30px">
     <div class="row" style="width:100%;justify-content:space-between;align-items:flex-end">
-      <div class="col" style="align-items:center;gap:4px"><img src="assets/cat-celebrate.webp" alt="Miso versus Bholu" style="width:128px;height:128px;object-fit:contain"><span class="row t-label" style="gap:5px"><img src="assets/league-sapphire.webp" alt="" style="width:24px;height:24px;object-fit:contain">Miso</span></div>
+      <div class="col" style="align-items:center;gap:4px"><img src="assets/cat-celebrate.webp" alt="Miso versus Bholu" style="width:140px;height:140px;object-fit:contain"><span class="row t-label" style="gap:5px"><img src="assets/league-sapphire.webp" alt="" style="width:24px;height:24px;object-fit:contain">Miso</span></div>
       <span class="t-heading" style="padding-bottom:40px;opacity:.85">vs</span>
       <div class="col" style="align-items:center;gap:4px"><img src="assets/dog-celebrate.webp" alt="" style="width:128px;height:128px;object-fit:contain;transform:scaleX(-1)"><span class="row t-label" style="gap:5px"><img src="assets/league-gold.webp" alt="" style="width:24px;height:24px;object-fit:contain">Bholu</span></div>
     </div>
-    <span class="t-heading" style="margin-top:40px">Get ready!</span>
-    <span class="mk-ts-vs">3</span>
+    <div class="sp"></div>
+    <span class="t-heading">Get ready!</span>
+    <span class="mk-ts-vs" style="font-size:160px">3</span>
     <div class="sp"></div>
     <div class="row" style="gap:8px;padding-bottom:30px"><span class="chip" style="background:var(--surface);color:var(--ink);box-shadow:none">Physics</span><span class="t-label">10 questions</span></div>
   </div>
 </div></div>
-<figcaption><span class="id">SOC-17</span><span class="nm">Duel countdown</span><span class="ds">Both pets face each other with tier crests; minors by pet name. The 3, 2, 1, Go! numerals are synced to the server start time.</span></figcaption>
+<figcaption><span class="id">SOC-17</span><span class="nm">Duel countdown</span><span class="ds">Both pets face each other with tier crests. Bholu is an invite friend, so the pet name shows; a random minor opponent would show an auto nickname. The 3, 2, 1, Go! numerals are synced to the server start time.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-18 ============ -->
@@ -1024,11 +1095,11 @@
     <div class="grid2" style="gap:8px">
       <div class="card" style="padding:10px;box-shadow:inset 0 0 0 2px var(--primary);display:flex;flex-direction:column;gap:6px">
         <div class="row" style="gap:6px"><span class="mk-ts-av s32 gold"><img src="assets/cat-wave.webp" alt=""></span><span class="t-label grow">You</span><b class="num" style="font:800 20px/1 var(--f-latin)">3</b></div>
-        <div class="mk-ts-dots" style="gap:3px"><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="bad"><svg class="ic"><use href="#ph-x-bold"/></svg></i><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i></i><i></i><i></i><i></i></div>
+        <div class="mk-ts-dots" style="gap:3px"><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="bad"><svg class="ic"><use href="#ph-x-bold"/></svg></i><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
       <div class="card" style="padding:10px;display:flex;flex-direction:column;gap:6px">
         <div class="row" style="gap:6px"><span class="mk-ts-av s32 s-maths"><img src="assets/dog-wave.webp" alt=""></span><span class="t-label grow">Bholu</span><b class="num" style="font:800 20px/1 var(--f-latin)">2</b></div>
-        <div class="mk-ts-dots" style="gap:3px"><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="bad"><svg class="ic"><use href="#ph-x-bold"/></svg></i><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="bad"><svg class="ic"><use href="#ph-x-bold"/></svg></i><i></i><i></i><i></i><i></i></div>
+        <div class="mk-ts-dots" style="gap:3px"><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="bad"><svg class="ic"><use href="#ph-x-bold"/></svg></i><i class="ok"><svg class="ic"><use href="#ph-check-bold"/></svg></i><i class="bad"><svg class="ic"><use href="#ph-x-bold"/></svg></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </div>
     <div class="card lg"><span class="t-caption muted">Physics</span><div class="t-body" style="margin-top:4px">The duel question stem shows here, in one or two short lines, the same for both players.</div></div>
@@ -1042,6 +1113,27 @@
   </div>
 </div></div>
 <figcaption><span class="id">SOC-18</span><span class="nm">Duel live, reveal</span><span class="ds">You and the opponent side by side with per-question dots and scores. Reveal: your right answer, and the opponent's pick marked with their pet avatar. No tutor button or banners in a duel.</span></figcaption>
+</figure>
+
+<!-- ============ SOC-18 leave confirm ============ -->
+<figure class="mock" data-id="SOC-18">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="appbar"><span class="btn btn-ghost sm" style="color:var(--muted);padding:0 10px"><svg class="ic sm"><use href="#ph-sign-out-bold"/></svg>Leave</span><span class="ttl num" style="font-size:15px">Question 6 of 10</span><span class="ring" style="--p:70;--sz:40px;--w:5px;--strong:var(--primary);margin-right:8px"><span style="font-size:13px">14</span></span></div>
+  <div class="body" style="gap:12px">
+    <div class="card lg"><span class="t-caption muted">Physics</span><div class="t-body" style="margin-top:4px">The duel question stem shows here, in one or two short lines.</div></div>
+    <div class="option"><span class="key">A</span>First option</div><div class="option"><span class="key">B</span>Second option</div>
+  </div>
+  <div class="scrim"></div>
+  <div class="sheet" style="gap:12px">
+    <div class="grab"></div>
+    <div class="row" style="gap:12px"><span class="mk-ts-av s48 s-maths"><img src="assets/dog-wave.webp" alt=""></span><span class="t-heading grow">Leave this duel?</span></div>
+    <span class="t-body">If you leave, Bholu wins this duel. You won't lose XP.</span>
+    <span class="btn btn-primary">Keep playing</span>
+    <span class="btn btn-secondary" style="color:var(--error-text)">Leave</span>
+  </div>
+</div></div>
+<figcaption><span class="id">SOC-18 · leave</span><span class="nm">Leave a duel, confirm</span><span class="ds">Leaving gives the win to the other player but never costs XP. Keep playing is the main action; Leave is secondary in error text.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-19 ============ -->
@@ -1061,13 +1153,33 @@
       <div class="card row grow" style="padding:6px 6px 6px 10px;gap:8px;border-radius:999px"><span class="mk-ts-av s32 s-maths"><img src="assets/dog-wave.webp" alt=""></span><div class="grow" style="text-align:left"><div class="t-label" style="line-height:16px">Bholu</div><div class="t-caption muted" style="font-size:11px">Lotus league</div></div><span class="btn btn-ghost sm" style="height:32px;padding:0 8px;color:var(--muted)">Report</span></div>
     </div>
     <div class="list" style="width:100%;text-align:left">
-      <div class="li" style="min-height:44px;padding:6px 14px"><span class="t-label grow">Question 3</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg>You</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>Bholu</span><span class="btn btn-ghost sm" style="height:32px;padding:0 4px">Ask tutor why</span></div>
-      <div class="li" style="min-height:44px;padding:6px 14px"><span class="t-label grow">Question 4</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>You</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg>Bholu</span><span style="width:104px"></span></div>
+      <div class="li" style="min-height:44px;padding:6px 14px;gap:10px"><span class="t-label grow" style="white-space:nowrap">Q3</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg>You</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>Bholu</span><span class="btn btn-ghost sm" style="height:32px;padding:0 4px">Ask tutor why</span></div>
+      <div class="li" style="min-height:44px;padding:6px 14px;gap:10px"><span class="t-label grow">Q4</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>You</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg>Bholu</span><span style="width:98px"></span></div>
+      <div class="li" style="min-height:44px;padding:6px 14px;gap:10px"><span class="t-label grow">Q5</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>You</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--success)"><use href="#ph-check-circle-fill"/></svg>Bholu</span><span style="width:98px"></span></div>
     </div>
   </div>
   <div class="bottom" style="gap:8px;padding-top:6px"><span class="btn btn-primary">Rematch</span><div class="row" style="gap:8px"><span class="btn btn-secondary" style="height:44px">New opponent</span><span class="btn btn-ghost" style="height:44px;width:40%">Done</span></div></div>
 </div></div>
 <figcaption><span class="id">SOC-19</span><span class="nm">Duel result, won</span><span class="ds">Both pets, never a sad pose. Score with names, XP chip, the opponent card with a visible Report, and per-question review with "Ask tutor why" on your wrong ones.</span></figcaption>
+</figure>
+
+<!-- ============ SOC-19 solo ============ -->
+<figure class="mock" data-id="SOC-19">
+<div class="phone"><div class="screen sx">
+  <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
+  <div class="body" style="gap:12px;align-items:center;text-align:center;padding-top:30px">
+    <img src="assets/cat-reading.webp" alt="Miso after a practice round" style="width:170px;height:170px;object-fit:contain">
+    <span class="chip" style="height:28px;color:var(--muted)"><svg class="ic xs"><use href="#ph-target-bold"/></svg>Practise solo · not ranked</span>
+    <span class="t-display num">Practice done: 7 of 10</span>
+    <div class="list" style="width:100%;text-align:left">
+      <div class="li" style="min-height:44px"><span class="t-label grow">Q2</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg>Not this time</span><span class="btn btn-ghost sm" style="height:32px;padding:0 4px">Ask tutor why</span></div>
+      <div class="li" style="min-height:44px"><span class="t-label grow">Q6</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--error)"><use href="#ph-x-circle-fill"/></svg>Not this time</span><span class="btn btn-ghost sm" style="height:32px;padding:0 4px">Ask tutor why</span></div>
+      <div class="li" style="min-height:44px"><span class="t-label grow">Q9</span><span class="row t-caption" style="gap:4px"><svg class="ic sm" style="color:var(--muted)"><use href="#ph-timer-bold"/></svg>Time's up</span><span class="btn btn-ghost sm" style="height:32px;padding:0 4px">Ask tutor why</span></div>
+    </div>
+  </div>
+  <div class="bottom" style="gap:8px"><span class="btn btn-primary"><svg class="ic sm"><use href="#ph-sword-bold"/></svg>Try a real match</span><span class="btn btn-ghost" style="height:44px">Done</span></div>
+</div></div>
+<figcaption><span class="id">SOC-19 · solo</span><span class="nm">Duel result, practise solo</span><span class="ds">After "Practise solo": score only, no opponent, no pets facing off and no win XP. Clearly labelled not ranked; the main action offers a real match.</span></figcaption>
 </figure>
 
 <!-- ============ SOC-22 (Hindi) ============ -->
@@ -1102,7 +1214,7 @@
   <div class="scrim"></div>
   <div class="sheet" style="gap:10px">
     <div class="grab"></div>
-    <div class="row" style="gap:10px"><span class="mk-ts-av s-biology"><img src="assets/dog-celebrate.webp" alt=""></span><span class="t-heading grow">Report Laddoo</span></div>
+    <div class="row" style="gap:10px"><span class="mk-ts-av s-polity"><img src="assets/dog-base.webp" alt=""></span><span class="t-heading grow">Report Brave Mango 12</span></div>
     <span class="t-label">What's wrong?</span>
     <div class="col" style="gap:6px">
       <div class="option" style="min-height:48px;padding:10px 14px;font-size:15px"><span class="mk-ts-radio"></span>Inappropriate username</div>
@@ -1112,9 +1224,9 @@
       <div class="option" style="min-height:48px;padding:10px 14px;font-size:15px"><span class="mk-ts-radio"></span>Other</div>
     </div>
     <div class="banner"><svg class="ic sm"><use href="#ph-hand-heart-bold"/></svg>A grown-up you trust can help too.</div>
-    <div class="row" style="gap:10px;min-height:44px"><span class="mk-ts-chk on"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span><span class="t-label grow">Also block Laddoo</span></div>
+    <div class="row" style="gap:10px;min-height:44px"><span class="mk-ts-chk on"><svg class="ic xs"><use href="#ph-check-bold"/></svg></span><span class="t-label grow">Also block Brave Mango 12</span></div>
     <span class="btn btn-primary">Send report</span>
-    <span class="t-caption muted center">Laddoo won't know who reported.</span>
+    <span class="t-caption muted center">They won't know who reported.</span>
   </div>
 </div></div>
 <figcaption><span class="id">SOC-23</span><span class="nm">Report and block</span><span class="ds">A minor reporting from a league row: preset reasons only, no note field (the trusted-adult line instead), and "Also block" on by default for bullying.</span></figcaption>

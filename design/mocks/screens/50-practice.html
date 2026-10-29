@@ -1,7 +1,7 @@
 <section class="area" id="practice" data-title="Practice and mock tests">
 <style>
 /* Practice and mocks area helpers. Tokens only; prefix mk-prc-. */
-.mk-prc-ph { font-family: var(--f-mono); font-size: .82em; font-weight: 600; letter-spacing: -.3px; background: color-mix(in srgb, currentColor 11%, transparent); border-radius: 6px; padding: 1px 4px; white-space: nowrap; }
+.mk-prc-ph { font-family: inherit; font-size: .94em; font-weight: 700; letter-spacing: 0; color: inherit; background: color-mix(in srgb, currentColor 8%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 16%, transparent); border-radius: 6px; padding: 0 4px; white-space: nowrap; }
 .mk-prc-bar { flex: none; height: 52px; display: flex; align-items: center; gap: 6px; padding: 0 10px; }
 .mk-prc-bar .ttl { flex: 1; min-width: 0; font: 800 18px/24px var(--f-latin); }
 .mk-prc-sdot { width: 10px; height: 10px; border-radius: 5px; background: var(--strong); flex: none; display: inline-block; }
@@ -50,7 +50,7 @@
 .mk-prc-omr .n { width: 30px; font: 800 14px/1 var(--f-latin); font-variant-numeric: tabular-nums; }
 .mk-prc-omr.cur { background: var(--sunken); border-radius: 10px; border-top-color: transparent; }
 .mk-prc-tbl { width: 100%; border-collapse: collapse; font: 600 13px/18px var(--f-latin); font-variant-numeric: tabular-nums; }
-.mk-prc-tbl th, .mk-prc-tbl td { padding: 9px 2px; text-align: center; border-bottom: 1px solid var(--line); }
+.mk-prc-tbl th, .mk-prc-tbl td { padding: 13px 2px; text-align: center; border-bottom: 1px solid var(--line); }
 .mk-prc-tbl th { padding: 8px 2px; vertical-align: middle; }
 .mk-prc-tbl th .pcell { margin: 0 auto; }
 .mk-prc-tbl td:first-child, .mk-prc-tbl th:first-child { text-align: left; padding-left: 4px; }
@@ -83,7 +83,7 @@
 .mk-prc-svg .tx { fill: var(--muted); font: 600 10px var(--f-latin); }
 .mk-prc-svg .tq { fill: var(--muted); font: 700 9px var(--f-latin); }
 .mk-prc-svg .dot { fill: var(--strong); stroke: var(--surface); stroke-width: 2; }
-.mk-prc-svg .bar { fill: var(--strong); }
+.mk-prc-svg .br { fill: var(--strong); }
 .mk-prc-svg .tgt { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
 .mk-prc-svg .ln1 { stroke: var(--primary); stroke-width: 2; fill: none; }
 .mk-prc-svg .ln2 { stroke: var(--strong); stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
@@ -103,7 +103,8 @@
 .mk-prc-wtop { flex: none; height: 56px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: var(--sunken); border-bottom: 1px solid var(--line); }
 .mk-prc-tool { height: 34px; border-radius: 8px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; font: 700 13px/1 var(--f-latin); color: var(--ink); }
 .mk-prc-wgrid { display: grid; grid-template-columns: repeat(6, 40px); gap: 8px; }
-.mk-prc-wbtn { height: 42px; border-radius: 10px; font-size: 14px; padding: 0 14px; width: auto; box-shadow: none; }
+.mk-prc-wbtn { height: 40px; border-radius: 10px; font-size: 13px; padding: 0 12px; width: auto; white-space: nowrap; }
+.mk-prc-wbtn.btn-primary { box-shadow: none; }
 </style>
 <div class="wrap">
 <h2>Practice and mock tests</h2>
@@ -142,7 +143,7 @@
     </div>
     <div class="grid2">
       <div class="mk-prc-tile s-maths"><span class="badge"><svg class="ic lg"><use href="#ph-crosshair-bold"/></svg></span><span class="t-heading">Concept drill</span><span class="t-caption muted">Pick topics, set your pace</span></div>
-      <div class="mk-prc-tile s-history"><img class="art" src="assets/subject-history.webp" alt=""><span class="t-heading">PYQ bank</span><span class="t-caption muted">48 papers · 3,600 questions</span></div>
+      <div class="mk-prc-tile s-history"><img class="art" src="assets/subject-history.webp" alt=""><span class="t-heading">PYQ bank</span><span class="t-caption muted">48 papers ·<br>3,600 Qs</span></div>
       <div class="mk-prc-tile"><img class="art" src="assets/object-calendar.webp" alt=""><span class="t-heading">Mock tests</span><span class="t-caption muted">Next: Full mock 3</span></div>
       <div class="mk-prc-tile s-chemistry"><span class="badge"><svg class="ic lg"><use href="#ph-chart-line-up-bold"/></svg></span><span class="t-heading">Analytics</span><span class="t-caption muted">Readiness 58%</span></div>
     </div>
@@ -250,7 +251,7 @@
     <div class="option bad"><span class="key">B</span><span class="grow">Option B</span><svg class="ic sm" style="color:var(--error-text)"><use href="#ph-x-circle-fill"/></svg></div>
     <div class="option ok"><span class="key">C</span><span class="grow">Option C</span><svg class="ic sm" style="color:var(--success-text)"><use href="#ph-check-circle-fill"/></svg></div>
   </div>
-  <div class="sheet" style="top:200px;padding-top:0;gap:10px">
+  <div class="sheet" style="top:176px;padding-top:0;gap:10px">
     <div style="margin:0 -20px;padding:10px 20px 12px;background:var(--error-tint);border-radius:28px 28px 0 0">
       <div class="grab" style="background:color-mix(in srgb,var(--error) 30%,transparent)"></div>
       <div class="row">
@@ -262,7 +263,7 @@
     <div class="row t-caption muted num" style="gap:6px"><svg class="ic xs"><use href="#ph-timer-bold"/></svg>You took 1:48 · target 1:30</div>
     <div class="col" style="gap:6px">
       <span class="t-caption muted">What went wrong? (optional)</span>
-      <div class="row" style="gap:6px;overflow:hidden;flex-wrap:nowrap"><span class="chip">Concept</span><span class="chip on">Calculation</span><span class="chip">Misread</span><span class="chip">Silly mistake</span></div>
+      <div class="row wrap" style="gap:6px"><span class="chip">Concept</span><span class="chip on">Calculation</span><span class="chip">Misread</span><span class="chip">Silly mistake</span><span class="chip">Ran out of time</span></div>
     </div>
     <div class="list" style="box-shadow:inset 0 0 0 1.5px var(--line)">
       <div class="li" style="flex-direction:column;align-items:stretch;gap:6px;padding:12px 16px">
@@ -278,9 +279,8 @@
     </div>
     <span class="btn btn-primary">Next</span>
   </div>
-  <div class="fab" style="bottom:auto;top:132px;width:48px;height:48px" aria-label="Ask the tutor"><img src="assets/cat-thinking.webp" alt="" style="width:52px;height:52px"></div>
 </div></div>
-<figcaption><span class="id">PRC-05</span><span class="nm">Answer and solution sheet, wrong answer</span><span class="ds">Error-tint header, the answer shown in words and with an icon, an optional mistake tag, the plain-words solution open first. The tutor button appears now that Check was tapped.</span></figcaption>
+<figcaption><span class="id">PRC-05</span><span class="nm">Answer and solution sheet, wrong answer</span><span class="ds">Error-tint header, the answer shown in words and with an icon, an optional mistake tag, the plain-words solution open first. [Ask why] opens the tutor now that Check was tapped.</span></figcaption>
 </figure>
 
 <!-- ============ PRC-06 Drill summary ============ -->
@@ -334,9 +334,8 @@
     <div class="seg"><span>By topic</span><span class="on">By paper</span></div>
     <div class="row" style="gap:6px"><span class="chip">JEE Main<svg class="ic xs"><use href="#ph-x-bold"/></svg></span><span class="chip">Last 3 years<svg class="ic xs"><use href="#ph-x-bold"/></svg></span></div>
     <span class="t-heading"><span class="mk-prc-ph">{year}</span></span>
-    <div class="list s-history">
-      <div class="li" style="align-items:flex-start;padding:12px 14px">
-        <span class="lead"><svg class="ic sm"><use href="#ph-file-text-bold"/></svg></span>
+    <div class="list s-history" style="flex:none">
+      <div class="li" style="align-items:flex-start;padding:12px 14px;gap:8px">
         <div class="grow col" style="gap:3px">
           <span class="t-label">JEE Main <span class="mk-prc-ph">{year}</span> · <span class="mk-prc-ph">{session_label}</span></span>
           <span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> questions · held <span class="mk-prc-ph">{held_on}</span></span>
@@ -344,8 +343,7 @@
         </div>
         <span class="chip ok mk-prc-mini num">164/<span class="mk-prc-ph">{max}</span></span>
       </div>
-      <div class="li" style="align-items:flex-start;padding:12px 14px">
-        <span class="lead"><svg class="ic sm"><use href="#ph-file-text-bold"/></svg></span>
+      <div class="li" style="align-items:flex-start;padding:12px 14px;gap:8px">
         <div class="grow col" style="gap:3px">
           <span class="t-label">JEE Main <span class="mk-prc-ph">{year}</span> · <span class="mk-prc-ph">{session_label}</span></span>
           <span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> questions · held <span class="mk-prc-ph">{held_on}</span></span>
@@ -355,9 +353,16 @@
       </div>
     </div>
     <span class="t-heading"><span class="mk-prc-ph">{year − 1}</span></span>
-    <div class="list s-history">
-      <div class="li" style="align-items:flex-start;padding:12px 14px">
-        <span class="lead"><svg class="ic sm"><use href="#ph-file-text-bold"/></svg></span>
+    <div class="list s-history" style="flex:none">
+      <div class="li" style="align-items:flex-start;padding:12px 14px;gap:8px">
+        <div class="grow col" style="gap:3px">
+          <span class="t-label">JEE Main <span class="mk-prc-ph">{year}</span> · <span class="mk-prc-ph">{session_label}</span></span>
+          <span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> questions · held <span class="mk-prc-ph">{held_on}</span></span>
+          <span class="t-caption row" style="gap:4px;color:var(--success-text)"><svg class="ic xs"><use href="#ph-seal-check-fill"/></svg>Source: <span class="mk-prc-ph">{source_host}</span></span>
+        </div>
+        <span class="chip mk-prc-mini">Not started</span>
+      </div>
+      <div class="li" style="align-items:flex-start;padding:12px 14px;gap:8px">
         <div class="grow col" style="gap:3px">
           <span class="t-label">JEE Main <span class="mk-prc-ph">{year}</span> · <span class="mk-prc-ph">{session_label}</span></span>
           <span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> questions · held <span class="mk-prc-ph">{held_on}</span></span>
@@ -445,17 +450,16 @@
     <span class="chip" style="margin-right:6px">JEE Main<svg class="ic xs"><use href="#ph-caret-down-bold"/></svg></span>
   </div>
   <div class="body scroll-cut" style="padding-top:2px">
-    <div class="row between"><div class="row" style="gap:6px"><span class="chip">7 days</span><span class="chip on">30 days</span><span class="chip">All time</span></div></div>
-    <div class="row between"><span class="t-caption muted">Updated 10 min ago</span><span class="chip warn mk-prc-mini">Sample values</span></div>
+    <div class="row between"><div class="row" style="gap:6px"><span class="chip mk-prc-mini" style="height:30px">7 days</span><span class="chip on mk-prc-mini" style="height:30px">30 days</span><span class="chip mk-prc-mini" style="height:30px">All time</span></div><span class="chip warn mk-prc-mini">Sample values</span></div>
     <div class="card lg row" style="gap:14px;flex:none">
-      <div class="ring" style="--p:58;--sz:88px;--w:11px;--strong:var(--primary)"><span class="t-title num">58%</span></div>
+      <div class="ring" style="--p:58;--sz:80px;--w:10px;--strong:var(--primary)"><span class="t-title num">58%</span></div>
       <div class="grow col" style="gap:4px">
-        <div class="row between top"><span class="t-heading">Readiness for JEE Main</span><svg class="ic sm muted" aria-label="How this is worked out"><use href="#ph-info-bold"/></svg></div>
-        <span class="t-caption muted">Based on 212 of 540 concepts</span>
+        <div class="row between top"><span class="t-label">Readiness for JEE Main</span><svg class="ic sm muted" aria-label="How this is worked out"><use href="#ph-info-bold"/></svg></div>
+        <span class="t-caption muted">Based on 212 of 540 concepts · updated 10 min ago</span>
         <span class="btn sm btn-secondary" style="align-self:flex-start;height:36px">Practise weak spots</span>
       </div>
     </div>
-    <div class="card col" style="gap:12px;flex:none">
+    <div class="card col" style="gap:9px;flex:none;padding:14px 16px">
       <span class="t-heading">Subject mastery</span>
       <div class="col s-physics" style="gap:5px"><div class="row between"><span class="t-label">Physics</span><span class="row" style="gap:6px"><span class="t-label num">46%</span><span class="chip ok mk-prc-mini num" style="padding:0 7px"><svg class="ic xs"><use href="#ph-arrow-up-bold"/></svg>4</span></span></div><div class="bar"><i style="width:46%"></i></div></div>
       <div class="col s-chemistry" style="gap:5px"><div class="row between"><span class="t-label">Chemistry</span><span class="row" style="gap:6px"><span class="t-label num">38%</span><span class="chip warn mk-prc-mini num" style="padding:0 7px"><svg class="ic xs"><use href="#ph-arrow-down-bold"/></svg>2</span></span></div><div class="bar"><i style="width:38%"></i></div></div>
@@ -506,14 +510,6 @@
         <div class="grow col" style="gap:8px"><span class="t-label">Tap Sure, 50:50 or Guess on 12 more answers to see this.</span><span class="btn sm btn-secondary" style="align-self:flex-start;height:36px">Practise</span></div>
       </div>
     </div>
-    <div class="card col" style="gap:10px;flex:none">
-      <span class="t-heading">Your mistake types</span>
-      <div class="mk-prc-hb"><span>Concept</span><div class="bar primary"><i style="width:100%"></i></div><span class="num">12</span></div>
-      <div class="mk-prc-hb"><span>Calculation</span><div class="bar primary"><i style="width:66%"></i></div><span class="num">8</span></div>
-      <div class="mk-prc-hb"><span>Misread</span><div class="bar primary"><i style="width:42%"></i></div><span class="num">5</span></div>
-      <div class="mk-prc-hb"><span>Silly</span><div class="bar primary"><i style="width:25%"></i></div><span class="num">3</span></div>
-      <div class="mk-prc-hb"><span>Time</span><div class="bar primary"><i style="width:17%"></i></div><span class="num">2</span></div>
-    </div>
     <div class="card col s-chemistry" style="gap:8px;flex:none">
       <span class="t-heading">Trend</span>
       <svg class="mk-prc-svg" viewBox="0 0 290 130" role="img" aria-label="Mock scores and weekly accuracy over six weeks, sample data">
@@ -526,6 +522,14 @@
         <text class="tx" x="28" y="118">Wk 1</text><text class="tx" x="268" y="118">Wk 6</text>
       </svg>
       <div class="mk-prc-key"><span><i></i>Mock scores (% of max)</span><span><i class="dash"></i>Weekly accuracy</span></div>
+    </div>
+    <div class="card col" style="gap:10px;flex:none">
+      <span class="t-heading">Your mistake types</span>
+      <div class="mk-prc-hb"><span>Concept</span><div class="bar primary"><i style="width:100%"></i></div><span class="num">12</span></div>
+      <div class="mk-prc-hb"><span>Calculation</span><div class="bar primary"><i style="width:66%"></i></div><span class="num">8</span></div>
+      <div class="mk-prc-hb"><span>Misread</span><div class="bar primary"><i style="width:42%"></i></div><span class="num">5</span></div>
+      <div class="mk-prc-hb"><span>Silly</span><div class="bar primary"><i style="width:25%"></i></div><span class="num">3</span></div>
+      <div class="mk-prc-hb"><span>Time</span><div class="bar primary"><i style="width:17%"></i></div><span class="num">2</span></div>
     </div>
   </div>
 </div></div>
@@ -612,16 +616,16 @@
   <div class="mk-prc-bar"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-arrow-left-bold"/></svg></span></div>
   <div class="body scroll-cut" style="padding-top:0">
     <div class="row between top"><span class="t-title">JEE Main full mock 3</span><span class="chip st mk-prc-mini" style="margin-top:2px">Full</span></div>
-    <div class="grid3" style="gap:8px">
-      <div class="stat tint"><b style="font-size:16px"><span class="mk-prc-ph">{duration_min}</span></b><span>min</span></div>
-      <div class="stat tint"><b style="font-size:16px"><span class="mk-prc-ph">{question_count}</span></b><span>questions</span></div>
-      <div class="stat tint"><b style="font-size:16px"><span class="mk-prc-ph">{max_marks}</span></b><span>marks</span></div>
+    <div class="card tint col" style="gap:0;padding:6px 16px;flex:none">
+      <div class="row" style="padding:8px 0;gap:10px"><svg class="ic sm stext"><use href="#ph-timer-bold"/></svg><span class="t-label grow">Duration</span><span class="t-label"><span class="mk-prc-ph">{duration_min}</span> min</span></div>
+      <div class="row" style="padding:8px 0;gap:10px;border-top:1px solid color-mix(in srgb,var(--strong) 15%,transparent)"><svg class="ic sm stext"><use href="#ph-list-numbers-bold"/></svg><span class="t-label grow">Questions</span><span class="t-label"><span class="mk-prc-ph">{question_count}</span></span></div>
+      <div class="row" style="padding:8px 0;gap:10px;border-top:1px solid color-mix(in srgb,var(--strong) 15%,transparent)"><svg class="ic sm stext"><use href="#ph-medal-fill"/></svg><span class="t-label grow">Maximum marks</span><span class="t-label"><span class="mk-prc-ph">{max_marks}</span></span></div>
     </div>
     <div class="card col" style="gap:0;padding:12px 16px;flex:none">
       <span class="t-heading" style="margin-bottom:6px">Sections</span>
-      <div class="row between s-physics" style="padding:8px 0;border-top:1px solid var(--line)"><span class="t-label row" style="gap:8px"><i class="mk-prc-sdot"></i>Physics</span><span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> Qs · Shared time</span></div>
-      <div class="row between s-chemistry" style="padding:8px 0;border-top:1px solid var(--line)"><span class="t-label row" style="gap:8px"><i class="mk-prc-sdot"></i>Chemistry</span><span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> Qs · Shared time</span></div>
-      <div class="row between s-maths" style="padding:8px 0;border-top:1px solid var(--line)"><span class="t-label row" style="gap:8px"><i class="mk-prc-sdot"></i>Mathematics</span><span class="t-caption muted"><span class="mk-prc-ph">{question_count}</span> Qs · Shared time</span></div>
+      <div class="col s-physics" style="gap:2px;padding:8px 0;border-top:1px solid var(--line)"><span class="t-label row" style="gap:8px"><i class="mk-prc-sdot"></i>Physics</span><span class="t-caption muted" style="padding-left:18px"><span class="mk-prc-ph">{question_count}</span> Qs · <span class="mk-prc-ph">{timer_rule}</span> · Answer any <span class="mk-prc-ph">{attempt_any}</span></span></div>
+      <div class="col s-chemistry" style="gap:2px;padding:8px 0;border-top:1px solid var(--line)"><span class="t-label row" style="gap:8px"><i class="mk-prc-sdot"></i>Chemistry</span><span class="t-caption muted" style="padding-left:18px"><span class="mk-prc-ph">{question_count}</span> Qs · <span class="mk-prc-ph">{timer_rule}</span> · Answer any <span class="mk-prc-ph">{attempt_any}</span></span></div>
+      <div class="col s-maths" style="gap:2px;padding:8px 0;border-top:1px solid var(--line)"><span class="t-label row" style="gap:8px"><i class="mk-prc-sdot"></i>Mathematics</span><span class="t-caption muted" style="padding-left:18px"><span class="mk-prc-ph">{question_count}</span> Qs · <span class="mk-prc-ph">{timer_rule}</span> · Answer any <span class="mk-prc-ph">{attempt_any}</span></span></div>
     </div>
     <div class="card col" style="gap:0;padding:12px 16px;flex:none">
       <span class="t-heading" style="margin-bottom:6px">Marking</span>
@@ -656,6 +660,7 @@
     <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font:500 14px/21px var(--f-latin)">
       <li>General instruction 1 from the blueprint appears here, in the language chosen above.</li>
       <li>General instruction 2 appears here. It explains the clock and how answers are saved.</li>
+      <li>General instruction 3 appears here. It explains how to move between questions.</li>
     </ol>
     <div class="col" style="gap:0;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);padding:4px 12px">
       <span class="t-label" style="padding:8px 0 4px">The question palette</span>
@@ -681,11 +686,14 @@
     <div class="grow col" style="gap:2px"><span class="t-caption muted"><span class="mk-prc-ph">{exam_name}</span> प्रैक्टिस मॉक</span><span class="t-heading">अन्य ज़रूरी निर्देश</span></div>
   </div>
   <div class="mk-prc-qa" style="gap:10px;padding-top:12px">
-    <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px;font:500 14px/1.45 var(--f-deva)">
+    <span class="t-label">इस पेपर के नियम</span>
+    <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font:500 15px/1.5 var(--f-deva)">
       <li><span class="mk-prc-ph">{section_title}</span>: <span class="mk-prc-ph">{question_count}</span> सवाल</li>
       <li><span class="mk-prc-ph">{section_title}</span> में सिर्फ़ <span class="mk-prc-ph">{attempt_any}</span> उत्तर गिने जाएँगे।</li>
       <li><span class="mk-prc-ph">{type}</span>: सही पर +<span class="mk-prc-ph">{correct}</span>, गलत पर <span class="mk-prc-ph">{wrong}</span>, खाली छोड़ने पर <span class="mk-prc-ph">{unattempted}</span></li>
       <li>संख्यात्मक उत्तर ऑन-स्क्रीन कीपैड से लिखें।</li>
+      <li>कैलकुलेटर: <span class="mk-prc-ph">{calculator}</span></li>
+      <li>सेक्शन बदलना: <span class="mk-prc-ph">{section_navigation}</span></li>
     </ul>
     <div class="col" style="gap:6px;margin-top:2px">
       <span class="t-label">अपनी डिफ़ॉल्ट भाषा चुनें</span>
@@ -717,12 +725,13 @@
     <span class="on">Physics <span class="cnt">6</span></span><span>Chemistry <span class="cnt">0</span></span><span>Mathematics <span class="cnt">0</span></span>
   </div>
   <div class="mk-prc-qh">
-    <div class="grow col" style="gap:0"><span class="t-label">Question 9 <span class="t-caption muted">· Single correct</span></span><span class="t-caption muted">+<span class="mk-prc-ph">{marking.correct}</span> / −<span class="mk-prc-ph">{marking.wrong}</span></span></div>
-    <div class="seg" style="width:96px;padding:3px;background:var(--line)" aria-label="Question language"><span class="on" style="height:26px">EN</span><span lang="hi" style="height:26px">हिं</span></div>
+    <div class="grow col" style="gap:0"><span class="t-label">Question 9 <span class="t-caption muted">· Single correct</span></span><span class="t-caption muted" style="white-space:nowrap;font-size:11px">+<span class="mk-prc-ph">{marking.correct}</span> / −<span class="mk-prc-ph">{marking.wrong}</span></span></div>
+    <div class="seg" style="width:84px;padding:3px;background:var(--line)" aria-label="Question language"><span class="on" style="height:26px">EN</span><span lang="hi" style="height:26px">हिं</span></div>
     <span class="iconbtn" style="width:36px;height:36px" aria-label="Rough work"><svg class="ic sm"><use href="#ph-pencil-line-bold"/></svg></span>
   </div>
   <div class="mk-prc-qa">
     <p class="mk-prc-stem">Question 9 stem text appears here. It can run to two or three lines, with a formula or figure if the question has one.</p>
+    <div style="height:84px;border-radius:8px;background:var(--sunken);display:grid;place-items:center;margin-bottom:8px;flex:none"><span class="note">Question figure (the question's own media)</span></div>
     <div class="mk-prc-opt"><span class="mk-prc-radio"></span>(A) Option A</div>
     <div class="mk-prc-opt sel"><span class="mk-prc-radio"></span>(B) Option B</div>
     <div class="mk-prc-opt"><span class="mk-prc-radio"></span>(C) Option C</div>
@@ -754,8 +763,8 @@
   </div>
   <div class="banner warn" style="flex:none;border-radius:0;padding:7px 14px"><svg class="ic sm"><use href="#ph-warning-bold"/></svg>10 min left</div>
   <div class="mk-prc-qh">
-    <div class="grow col" style="gap:0"><span class="t-label">Question 24 <span class="t-caption muted">· Numerical answer</span></span><span class="t-caption muted">+<span class="mk-prc-ph">{marking.correct}</span> / −<span class="mk-prc-ph">{marking.wrong}</span></span></div>
-    <div class="seg" style="width:96px;padding:3px;background:var(--line)"><span style="height:26px">EN</span><span class="on" lang="hi" style="height:26px">हिं</span></div>
+    <div class="grow col" style="gap:0"><span class="t-label">Question 24 <span class="t-caption muted">· Numerical answer</span></span><span class="t-caption muted" style="white-space:nowrap;font-size:11px">+<span class="mk-prc-ph">{marking.correct}</span> / −<span class="mk-prc-ph">{marking.wrong}</span></span></div>
+    <div class="seg" style="width:84px;padding:3px;background:var(--line)"><span style="height:26px">EN</span><span class="on" lang="hi" style="height:26px">हिं</span></div>
   </div>
   <div class="mk-prc-qa" style="gap:10px">
     <p class="mk-prc-stem" lang="hi" style="margin:0">प्रश्न 24 का पाठ यहाँ दिखेगा। ज़रूरत हो तो इसमें सूत्र या चित्र भी होगा।</p>
@@ -799,7 +808,7 @@
       <span><i class="pcell mk mk-prc-pc"></i>Marked for review<b>1</b></span>
       <span style="grid-column:span 2"><i class="pcell am mk-prc-pc"></i>Answered and marked for review<b>1</b></span>
     </div>
-    <div class="row" style="gap:6px"><span class="chip on">All</span><span class="chip">Not answered</span><span class="chip">Marked</span><span class="chip">Not visited</span></div>
+    <div class="row" style="gap:6px"><span class="chip on mk-prc-mini" style="height:30px">All</span><span class="chip mk-prc-mini" style="height:30px">Not answered</span><span class="chip mk-prc-mini" style="height:30px">Marked</span><span class="chip mk-prc-mini" style="height:30px">Not visited</span></div>
     <div class="mk-prc-grid">
       <span class="mk-prc-cell"><span class="pcell an">1</span></span><span class="mk-prc-cell"><span class="pcell an">2</span></span><span class="mk-prc-cell"><span class="pcell na">3</span></span><span class="mk-prc-cell"><span class="pcell an">4</span></span><span class="mk-prc-cell"><span class="pcell mk">5</span></span><span class="mk-prc-cell"><span class="pcell an">6</span></span>
       <span class="mk-prc-cell"><span class="pcell am">7</span></span><span class="mk-prc-cell"><span class="pcell an">8</span></span><span class="mk-prc-cell cur" aria-label="Question 9, not answered, current"><span class="pcell na">9</span></span><span class="mk-prc-cell"><span class="pcell nv">10</span></span><span class="mk-prc-cell"><span class="pcell nv">11</span></span><span class="mk-prc-cell"><span class="pcell nv">12</span></span>
@@ -875,7 +884,7 @@
       <span><i class="pcell nv mk-prc-pc"></i>Not visited</span>
       <span style="grid-column:span 2"><i class="pcell am mk-prc-pc"></i>Answered and marked</span>
     </div>
-    <span class="row t-caption muted" style="gap:8px"><svg class="ic sm"><use href="#ph-info-bold"/></svg>Answered and marked questions will be evaluated.</span>
+    <span class="row t-caption muted" style="gap:8px;align-items:flex-start"><svg class="ic sm"><use href="#ph-info-bold"/></svg><span>Answered and marked questions will be evaluated. After you submit, answers can't be changed.</span></span>
     <div class="banner warn"><svg class="ic sm"><use href="#ph-warning-bold"/></svg>18 questions have no answer.</div>
   </div>
   <div class="mk-prc-bb" style="flex-direction:row"><span class="btn btn-secondary" style="width:118px">Go back</span><span class="btn btn-primary grow">Submit</span></div>
@@ -971,18 +980,18 @@
       <svg class="mk-prc-svg" viewBox="0 0 300 148" role="img" aria-label="Time per question, Physics questions 1 to 12, sample data">
         <line class="gl" x1="28" y1="26.3" x2="300" y2="26.3"/><line class="gl" x1="28" y1="54.9" x2="300" y2="54.9"/><line class="gl" x1="28" y1="83.4" x2="300" y2="83.4"/><line class="ax" x1="28" y1="112" x2="300" y2="112"/>
         <text class="tx" x="0" y="29">6 min</text><text class="tx" x="0" y="58">4 min</text><text class="tx" x="0" y="86">2 min</text>
-        <rect class="bar" x="34" y="89.4" width="14" height="22.6" rx="3"/>
-        <rect class="bar" x="56" y="78.7" width="14" height="33.3" rx="3"/>
-        <rect class="bar" x="78" y="97.7" width="14" height="14.3" rx="3"/>
-        <rect class="bar" x="100" y="62" width="14" height="50" rx="3"/>
-        <rect class="bar" x="122" y="94.1" width="14" height="17.9" rx="3"/>
-        <rect class="bar" x="144" y="81" width="14" height="31" rx="3"/>
-        <rect class="bar" x="166" y="16.8" width="14" height="95.2" rx="3" style="stroke:var(--ink);stroke-width:2"/>
-        <rect class="bar" x="188" y="91" width="14" height="21" rx="3"/>
-        <rect class="bar" x="210" y="73.9" width="14" height="38.1" rx="3"/>
-        <rect class="bar" x="232" y="101.3" width="14" height="10.7" rx="3"/>
-        <rect class="bar" x="254" y="52.5" width="14" height="59.5" rx="3"/>
-        <rect class="bar" x="276" y="83.4" width="14" height="28.6" rx="3"/>
+        <rect class="br" x="34" y="89.4" width="14" height="22.6" rx="3"/>
+        <rect class="br" x="56" y="78.7" width="14" height="33.3" rx="3"/>
+        <rect class="br" x="78" y="97.7" width="14" height="14.3" rx="3"/>
+        <rect class="br" x="100" y="62" width="14" height="50" rx="3"/>
+        <rect class="br" x="122" y="94.1" width="14" height="17.9" rx="3"/>
+        <rect class="br" x="144" y="81" width="14" height="31" rx="3"/>
+        <rect class="br" x="166" y="16.8" width="14" height="95.2" rx="3" style="stroke:var(--ink);stroke-width:2"/>
+        <rect class="br" x="188" y="91" width="14" height="21" rx="3"/>
+        <rect class="br" x="210" y="73.9" width="14" height="38.1" rx="3"/>
+        <rect class="br" x="232" y="101.3" width="14" height="10.7" rx="3"/>
+        <rect class="br" x="254" y="52.5" width="14" height="59.5" rx="3"/>
+        <rect class="br" x="276" y="83.4" width="14" height="28.6" rx="3"/>
         <line class="tgt" x1="28" y1="76.3" x2="300" y2="76.3"/>
         <use href="#ph-check-bold" class="gok" x="35" y="117" width="12" height="12"/>
         <use href="#ph-check-bold" class="gok" x="57" y="117" width="12" height="12"/>
@@ -1039,13 +1048,17 @@
     <div class="list" style="box-shadow:inset 0 0 0 1.5px var(--line)">
       <div class="li"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-lightbulb-bold"/></svg><span class="t-label grow">In plain words</span><svg class="ic sm muted"><use href="#ph-caret-down-bold"/></svg></div>
     </div>
+    <div class="grid3" style="gap:6px">
+      <span class="col t-caption" style="gap:2px;align-items:center;color:var(--primary)"><svg class="ic"><use href="#ph-chat-circle-bold"/></svg>Ask tutor</span>
+      <span class="col t-caption" style="gap:2px;align-items:center;color:var(--primary)"><svg class="ic"><use href="#ph-book-open-bold"/></svg>Learn this topic</span>
+      <span class="col t-caption" style="gap:2px;align-items:center;color:var(--primary)"><svg class="ic"><use href="#ph-crosshair-bold"/></svg>Drill this concept</span>
+    </div>
   </div>
   <div class="bottom" style="flex-direction:row;align-items:center;gap:10px;padding-top:8px">
     <span class="btn btn-secondary" style="width:auto;padding:0 14px"><svg class="ic sm"><use href="#ph-caret-left-bold"/></svg>Previous</span>
     <span class="t-caption muted num grow center">2 of 20</span>
     <span class="btn btn-primary" style="width:auto;padding:0 22px">Next<svg class="ic sm"><use href="#ph-caret-right-bold"/></svg></span>
   </div>
-  <div class="fab" style="bottom:96px" aria-label="Ask tutor"><img src="assets/cat-thinking.webp" alt=""></div>
 </div></div>
 <figcaption><span class="id">MOCK-22</span><span class="nm">Solutions review, Wrong filter, free</span><span class="ds">"Your answer" and "Correct answer" are words with icons, not just colours. Facts show time, visits and confidence; the Slow filter is Pro (lock, opens the paywall only when tapped). No pet in the content: the student is reading a serious result.</span></figcaption>
 </figure>
@@ -1085,14 +1098,14 @@
           <span class="btn btn-secondary mk-prc-wbtn">Clear response</span>
           <span class="btn btn-secondary mk-prc-wbtn">Mark for review &amp; next</span>
           <span class="sp"></span>
-          <span class="btn btn-ghost mk-prc-wbtn"><svg class="ic xs"><use href="#ph-caret-left-bold"/></svg>Back</span>
-          <span class="btn btn-ghost mk-prc-wbtn">Next<svg class="ic xs"><use href="#ph-caret-right-bold"/></svg></span>
+          <span class="btn btn-secondary mk-prc-wbtn" style="width:40px;padding:0" aria-label="Back"><svg class="ic sm"><use href="#ph-caret-left-bold"/></svg></span>
+          <span class="btn btn-secondary mk-prc-wbtn" style="width:40px;padding:0" aria-label="Next"><svg class="ic sm"><use href="#ph-caret-right-bold"/></svg></span>
         </div>
-        <div class="row between t-caption muted"><span>1–4 choose · N save &amp; next · M mark &amp; next · C clear · ← → move · P palette</span><span>Practice interface. Smriti is not affiliated with <span class="mk-prc-ph">{conducting_body}</span>.</span></div>
+        <div class="row between t-caption muted" style="flex-wrap:nowrap;gap:16px"><span style="white-space:nowrap">1–4 choose · N save &amp; next · M mark &amp; next · C clear · ← → move · P palette</span><span style="white-space:nowrap">Not affiliated with <span class="mk-prc-ph">{conducting_body}</span></span></div>
       </div>
     </div>
     <div style="width:320px;flex:none;background:var(--surface);border-left:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:12px">
-      <div class="row" style="gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)"><span class="avatar"><img src="assets/cat-base.webp" alt="Candidate avatar"></span><div class="col" style="gap:0"><span class="t-caption muted">Candidate</span><span class="t-label">Aarav</span></div></div>
+      <div class="row" style="gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)"><span class="mk-prc-ini" style="width:40px;height:40px;border-radius:20px">AA</span><div class="col" style="gap:0"><span class="t-caption muted">Candidate</span><span class="t-label">Aarav</span></div></div>
       <div class="mk-prc-leg">
         <span><i class="pcell an mk-prc-pc"></i>Answered<b>5</b></span>
         <span><i class="pcell na mk-prc-pc"></i>Not answered<b>2</b></span>
@@ -1138,10 +1151,10 @@
       <div class="col" style="gap:14px">
         <div class="card lg row" style="gap:14px">
           <div class="ring" style="--p:56;--sz:96px;--w:12px;--strong:var(--primary)"><div class="col" style="gap:0;align-items:center"><span class="t-title num">168</span><span class="t-caption muted">of <span class="mk-prc-ph">{max}</span></span></div></div>
-          <div class="col" style="gap:8px"><div class="col" style="gap:0"><span class="t-caption muted">Accuracy</span><span class="t-heading num">71% · 48 of 68</span></div><div class="col" style="gap:0"><span class="t-caption muted">Time lost on wrong answers</span><span class="t-heading num" style="color:var(--warning-text)">23 min</span></div></div>
+          <div class="col" style="gap:8px"><div class="col" style="gap:0"><span class="t-caption muted">Accuracy</span><span class="t-heading num">71%</span><span class="t-caption muted">48 of 68 right</span></div><div class="col" style="gap:0"><span class="t-caption muted">Time lost on wrong answers</span><span class="t-heading num" style="color:var(--warning-text)">23 min</span></div></div>
         </div>
         <div class="card col" style="gap:6px">
-          <span class="row t-caption" style="gap:8px;font-size:13px"><svg class="ic sm muted"><use href="#ph-ranking-bold"/></svg>Rank and percentile appear once <span class="mk-prc-ph">{min}</span> students have taken this mock. 214 so far.</span>
+          <div class="row top" style="gap:8px;padding:10px;border-radius:12px;background:var(--sunken)"><svg class="ic sm muted"><use href="#ph-ranking-bold"/></svg><span class="t-caption" style="font-size:13px;line-height:18px">Rank and percentile appear once <span class="mk-prc-ph">{min}</span> students have taken this mock. 214 so far.</span></div>
           <span class="t-label num">48 right · 20 wrong · 9 skipped</span>
           <span class="t-caption muted">Time used 2:41 of <span class="mk-prc-ph">{duration}</span></span>
         </div>
@@ -1163,7 +1176,7 @@
           <div class="row between"><span class="t-label">Time on each question</span><span class="t-caption stext">Physics</span></div>
           <svg class="mk-prc-svg" viewBox="0 0 300 130" role="img" aria-label="Time per question, sample data">
             <line class="gl" x1="0" y1="30" x2="300" y2="30"/><line class="gl" x1="0" y1="65" x2="300" y2="65"/><line class="ax" x1="0" y1="100" x2="300" y2="100"/>
-            <rect class="bar" x="6" y="78" width="14" height="22" rx="3"/><rect class="bar" x="30" y="68" width="14" height="32" rx="3"/><rect class="bar" x="54" y="86" width="14" height="14" rx="3"/><rect class="bar" x="78" y="52" width="14" height="48" rx="3"/><rect class="bar" x="102" y="83" width="14" height="17" rx="3"/><rect class="bar" x="126" y="70" width="14" height="30" rx="3"/><rect class="bar" x="150" y="8" width="14" height="92" rx="3"/><rect class="bar" x="174" y="80" width="14" height="20" rx="3"/><rect class="bar" x="198" y="63" width="14" height="37" rx="3"/><rect class="bar" x="222" y="90" width="14" height="10" rx="3"/><rect class="bar" x="246" y="43" width="14" height="57" rx="3"/><rect class="bar" x="270" y="72" width="14" height="28" rx="3"/>
+            <rect class="br" x="6" y="78" width="14" height="22" rx="3"/><rect class="br" x="30" y="68" width="14" height="32" rx="3"/><rect class="br" x="54" y="86" width="14" height="14" rx="3"/><rect class="br" x="78" y="52" width="14" height="48" rx="3"/><rect class="br" x="102" y="83" width="14" height="17" rx="3"/><rect class="br" x="126" y="70" width="14" height="30" rx="3"/><rect class="br" x="150" y="8" width="14" height="92" rx="3"/><rect class="br" x="174" y="80" width="14" height="20" rx="3"/><rect class="br" x="198" y="63" width="14" height="37" rx="3"/><rect class="br" x="222" y="90" width="14" height="10" rx="3"/><rect class="br" x="246" y="43" width="14" height="57" rx="3"/><rect class="br" x="270" y="72" width="14" height="28" rx="3"/>
             <line class="tgt" x1="0" y1="66" x2="300" y2="66"/>
             <use href="#ph-check-bold" class="gok" x="7" y="106" width="12" height="12"/><use href="#ph-check-bold" class="gok" x="31" y="106" width="12" height="12"/><use href="#ph-x-bold" class="gbad" x="55" y="106" width="12" height="12"/><use href="#ph-check-bold" class="gok" x="79" y="106" width="12" height="12"/><use href="#ph-minus-bold" class="gsk" x="103" y="106" width="12" height="12"/><use href="#ph-check-bold" class="gok" x="127" y="106" width="12" height="12"/><use href="#ph-x-bold" class="gbad" x="151" y="106" width="12" height="12"/><use href="#ph-check-bold" class="gok" x="175" y="106" width="12" height="12"/><use href="#ph-check-bold" class="gok" x="199" y="106" width="12" height="12"/><use href="#ph-x-bold" class="gbad" x="223" y="106" width="12" height="12"/><use href="#ph-check-bold" class="gok" x="247" y="106" width="12" height="12"/><use href="#ph-minus-bold" class="gsk" x="271" y="106" width="12" height="12"/>
           </svg>

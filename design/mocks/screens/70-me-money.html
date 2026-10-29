@@ -30,9 +30,9 @@
 .sx .mk-me-meter .track i { display: block; height: 100%; border-radius: 5px; background: var(--streak); }
 .sx .mk-me-meter.energy .track i { background: var(--gem); }
 /* pet room */
-.sx .mk-me-room { height: 286px; border-radius: 24px; overflow: hidden; position: relative; flex: none; }
+.sx .mk-me-room { height: 330px; border-radius: 24px; overflow: hidden; position: relative; flex: none; }
 .sx .mk-me-room > .bg { width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; }
-.sx .mk-me-room .petimg { position: absolute; width: 176px; height: 176px; object-fit: contain; left: 50%; bottom: -6px; transform: translateX(-42%); }
+.sx .mk-me-room .petimg { position: absolute; width: 196px; height: 196px; object-fit: contain; left: 50%; bottom: -6px; transform: translateX(-42%); }
 .sx .mk-me-room .bub { position: absolute; left: 12px; top: 12px; max-width: 200px; background: var(--surface); border-radius: 18px 18px 18px 6px; padding: 9px 13px; box-shadow: var(--sh-raised); font: 600 14px/19px var(--f-latin); }
 .sx .mk-me-room .tag { position: absolute; right: 10px; top: 12px; }
 .sx.dark .mk-me-room::after { content: ""; position: absolute; inset: 0; background: var(--scrim); opacity: .4; pointer-events: none; }
@@ -106,14 +106,14 @@
 .sx .mk-me-lang.sel { box-shadow: inset 0 0 0 2.5px var(--primary); background: var(--primary-tint); }
 .sx .mk-me-lang img { height: 84px; width: 100%; object-fit: contain; }
 .sx .mk-me-lang .chk { position: absolute; top: 8px; right: 8px; color: var(--primary); }
-.sx .mk-me-prev { border-radius: 16px; overflow: hidden; height: 196px; box-shadow: inset 0 0 0 1.5px var(--line); display: flex; }
+.sx .mk-me-prev { border-radius: 16px; overflow: hidden; height: 250px; box-shadow: inset 0 0 0 1.5px var(--line); display: flex; }
 .sx .mk-me-prev.sel { box-shadow: 0 0 0 2.5px var(--primary); }
 .sx .mk-me-prev .half { flex: 1; background: var(--bg); padding: 8px 6px; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .sx .mk-me-prev .p1 { height: 30px; border-radius: 9px; background: var(--streak-tint); display: flex; align-items: center; justify-content: flex-end; padding-right: 2px; }
 .sx .mk-me-prev .p1 img { width: 30px; height: 30px; object-fit: contain; }
-.sx .mk-me-prev .p2 { height: 52px; border-radius: 10px; background: var(--strong); }
+.sx .mk-me-prev .p2 { height: 70px; border-radius: 10px; background: var(--strong); }
 .sx .mk-me-prev .p3 { height: 22px; border-radius: 8px; background: var(--surface); }
-.sx .mk-me-prev .p4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; } .sx .mk-me-prev .p4 i { height: 40px; border-radius: 8px; background: var(--tint); }
+.sx .mk-me-prev .p4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; } .sx .mk-me-prev .p4 i { height: 56px; border-radius: 8px; background: var(--tint); }
 /* parent */
 .sx .mk-me-chart { display: flex; align-items: flex-end; gap: 6px; height: 64px; }
 .sx .mk-me-chart > div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
@@ -189,8 +189,8 @@
 .sx .mk-me-w { border-radius: 24px; background: var(--surface); box-shadow: var(--sh-raised); overflow: hidden; position: relative; color: var(--ink); }
 .sx .mk-me-w.s { width: 150px; height: 150px; background: var(--streak-tint); display: flex; flex-direction: column; align-items: center; padding: 0 12px 10px; }
 .sx .mk-me-w.s.risk { background: var(--warning-tint); }
-.sx .mk-me-w.s img { width: 118px; height: 118px; object-fit: contain; margin: -10px 0 -12px; flex: none; }
-.sx .mk-me-w.s .ln { font: 600 11px/14px var(--f-latin); color: var(--muted); align-self: flex-start; }
+.sx .mk-me-w.s img { width: 104px; height: 104px; object-fit: contain; margin: -8px 0 -10px; flex: none; }
+.sx .mk-me-w.s .ln { font: 600 11px/13px var(--f-latin); color: var(--muted); align-self: flex-start; }
 .sx .mk-me-w.s.risk .ln { color: var(--warning-text); font-weight: 700; }
 .sx .mk-me-w.m { height: 150px; display: flex; padding: 12px; gap: 10px; }
 .sx .mk-me-w.l { height: 300px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
@@ -202,6 +202,11 @@
 .sx .mk-me-wpill { height: 32px; border-radius: 16px; background: var(--primary); color: var(--on-primary); display: flex; align-items: center; justify-content: center; gap: 6px; font: 700 13px/1 var(--f-latin); }
 .sx .mk-me-wpill.ok { background: var(--success-tint); color: var(--success-text); }
 .sx .mk-me-ntfs :lang(hi), .sx .mk-me-home :lang(hi) { font-family: var(--f-deva); }
+#me .sx .body > * { flex-shrink: 0; }
+.sx .mk-me-label { white-space: nowrap; }
+.sx .mk-me-act3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sx .mk-me-act3 > span { height: 58px; border-radius: 14px; background: var(--sunken); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font: 700 12px/15px var(--f-latin); color: var(--ink); text-align: center; }
+.sx .mk-me-act3 .ic { color: var(--primary); }
 </style>
 <div class="wrap">
 <h2>Me, Pro and notifications</h2>
@@ -224,7 +229,7 @@
           <span class="t-caption muted" style="margin-top:-4px">@aarav.s</span>
           <div class="row wrap" style="gap:6px;margin-top:2px">
             <span class="chip" style="background:var(--primary-tint);color:var(--primary);box-shadow:none;height:28px">JEE Main</span>
-            <span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-cloud-check-fill"/></svg>Saved to Google</span>
+            <span class="chip ok" style="height:28px"><svg class="ic xs"><use href="#ph-cloud-check-fill"/></svg>Saved</span>
           </div>
         </div>
       </div>
@@ -250,7 +255,7 @@
     <span class="tab on"><span class="pip"><svg class="ic"><use href="#ph-user-circle-fill"/></svg></span>Me</span>
   </nav>
 </div></div>
-<figcaption><span class="id">ME-01</span><span class="nm">Me, signed in</span><span class="ds">Profile header with the "Saved to Google" saved-state chip, pet line, four stats (2×2 under 360 dp), pet and plant cards. Streak uses the Plant icon (R28).</span></figcaption>
+<figcaption><span class="id">ME-01</span><span class="nm">Me, signed in</span><span class="ds">Profile header with the AUTH-33 save-state chip ("Saved"), pet line, four stats (2×2 under 360 dp), pet and plant cards. Streak uses the Plant icon (R28).</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="ME-04">
@@ -310,6 +315,7 @@
       <div class="stat"><b>12</b><span>Current streak</span></div>
       <div class="stat"><b>18</b><span>Longest streak</span></div>
     </div>
+    <div class="list mk-me-list"><div class="li"><svg class="ic"><use href="#ph-calendar-blank-bold"/></svg><div class="grow"><span class="t-label">Streak calendar</span><span class="t-caption muted">1 freeze held · rest day: Sunday</span></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div></div>
   </div>
 </div></div>
 <figcaption><span class="id">ME-07</span><span class="nm">Plant garden, thriving</span><span class="ds">Five-stage journey seed → sprout → sapling → flowering → tree (R2; no "budding"), current stage ringed, progress to the next stage, study-day facts. Watered today, so no CTA.</span></figcaption>
@@ -370,6 +376,7 @@
     <div class="card row" style="gap:12px"><img class="mk-me-lockedbadge" src="assets/badge-streak-7.webp" alt="Locked, 12 of 30"><div class="col grow" style="gap:5px"><div class="row between"><span class="t-label">30-day streak</span><span class="t-caption muted">Level 2</span></div><div class="bar gold"><i style="width:40%"></i></div><span class="t-caption muted">12 of 30</span></div></div>
     <div class="card row" style="gap:12px"><img class="mk-me-lockedbadge" src="assets/badge-reviews-100.webp" alt="Locked, 230 of 500"><div class="col grow" style="gap:5px"><div class="row between"><span class="t-label">500 reviews</span><span class="t-caption muted">Level 2</span></div><div class="bar primary"><i style="width:46%"></i></div><span class="t-caption muted">230 of 500</span></div></div>
     <div class="card row" style="gap:12px"><img class="mk-me-lockedbadge" src="assets/badge-first-lesson.webp" alt="Locked, 86 of 100"><div class="col grow" style="gap:5px"><div class="row between"><span class="t-label">100 lessons</span><span class="t-caption muted">Level 3</span></div><div class="bar ok"><i style="width:86%"></i></div><span class="t-caption muted">86 of 100</span></div></div>
+    <div class="petline"><div class="av"><img src="assets/cat-celebrate.webp" alt=""></div><div class="bubble">14 more lessons to your next badge!</div></div>
   </div>
 </div></div>
 <figcaption><span class="id">ME-14</span><span class="nm">Badges</span><span class="ds">Earned emblems newest first with dates, then the next tiers as greyed emblems with progress "{x} of {y}".</span></figcaption>
@@ -399,7 +406,7 @@
     <div class="grid2" style="gap:10px">
       <div class="mk-me-item"><span class="pic"><img src="assets/shop-hat.webp" alt="Blue knitted hat"></span><span class="t-label">Blue hat</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>300</span></div>
       <div class="mk-me-item"><span class="pic"><img src="assets/shop-scarf.webp" alt="Striped scarf, owned"></span><span class="t-label">Striped scarf</span><span class="chip ok" style="height:24px;align-self:flex-start;font-size:12px"><svg class="ic xs"><use href="#ph-check-bold"/></svg>Owned</span></div>
-      <div class="mk-me-item"><span class="pic"><img src="assets/shop-bowtie.webp" alt="Pink bow tie, 450 gems, need 110 more"></span><span class="t-label">Dotty bow tie</span><span class="mk-me-price muted"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>450 · need 110 more</span></div>
+      <div class="mk-me-item"><span class="pic"><img src="assets/shop-bowtie.webp" alt="Pink bow tie, 450 gems, need 110 more"></span><span class="t-label">Dotty bow tie</span><span class="mk-me-price muted"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>450<span class="t-caption" style="font-weight:600">· need 110</span></span></div>
       <div class="mk-me-item"><span class="chip pro corner" style="height:22px;font-size:11px">Pro</span><span class="pic"><span class="note" style="text-align:center;padding:0 8px">Agnes art: Pro plant pot</span></span><span class="t-label">Lotus pot</span><span class="mk-me-price"><svg class="ic sm"><use href="#ph-diamond-fill"/></svg>600</span></div>
     </div>
   </div>
@@ -414,7 +421,7 @@
   <div class="mk-me-top back"><span class="iconbtn" aria-label="वापस"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">क्वेस्ट</span><span class="pill" style="margin-right:6px"><svg class="ic sm" style="color:var(--gem)"><use href="#ph-diamond-fill"/></svg>340</span></div>
   <div class="body scroll-cut" style="padding-top:2px">
     <div class="row between"><span class="t-heading">रोज़ के</span><span class="chip"><svg class="ic xs"><use href="#ph-clock-bold"/></svg>6 घंटे में नए</span></div>
-    <div class="mk-me-quest done"><span class="qi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">2 पाठ पूरे करें</span><div class="bar ok"><i style="width:100%"></i></div><span class="t-caption muted">2/2 · +10 जेम्स · +20 XP</span></div><span class="btn sm btn-primary">लें</span></div>
+    <div class="mk-me-quest done"><span class="qi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">2 पाठ पूरे करें</span><div class="bar ok"><i style="width:100%"></i></div><span class="t-caption muted">2/2 · +10 जेम्स · +20 XP</span></div><span class="btn sm btn-primary" style="flex:none;white-space:nowrap;padding:0 16px">लें</span></div>
     <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-cards-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">20 कार्ड दोहराएँ</span><div class="bar primary"><i style="width:60%"></i></div><span class="t-caption muted">12/20 · +10 जेम्स · +15 XP</span></div></div>
     <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-timer-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">15 मिनट पढ़ें</span><div class="bar primary"><i style="width:40%"></i></div><span class="t-caption muted">6/15 · +5 जेम्स · +10 XP</span></div></div>
     <div class="row between" style="margin-top:4px"><span class="t-heading">हफ़्ते के</span><span class="t-caption muted">सोमवार को नए</span></div>
@@ -422,6 +429,7 @@
       <img src="assets/object-gems.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin:-8px -4px -8px -8px;flex:none">
       <div class="col grow" style="gap:5px"><span class="t-label">10 पाठ पूरे करें</span><div class="bar gold"><i style="width:70%"></i></div><span class="t-caption" style="color:var(--streak-text)">7/10 · हफ़्ते का बक्सा: 50 जेम्स और एक ट्रीट</span></div>
     </div>
+    <div class="mk-me-quest"><span class="qi"><svg class="ic"><use href="#ph-exam-bold"/></svg></span><div class="col grow" style="gap:5px"><span class="t-label">एक मॉक सेक्शन पूरा करें</span><div class="bar primary"><i style="width:0%"></i></div><span class="t-caption muted">0/1 · +25 जेम्स · +40 XP</span></div></div>
     <div class="row" style="gap:8px"><svg class="ic sm muted"><use href="#ph-info-bold"/></svg><span class="t-caption muted">न लिए गए इनाम रीसेट पर अपने-आप जुड़ जाते हैं।</span></div>
   </div>
 </div></div>
@@ -447,8 +455,9 @@
     <div class="list mk-me-list">
       <div class="li s-physics"><span class="mk-me-subj"><img src="assets/subject-physics.webp" alt=""></span><div class="grow"><span class="t-label">Physics</span><span class="t-caption muted">21 chapters · 268 MB</span></div><span class="iconbtn" aria-label="Remove Physics"><svg class="ic sm muted"><use href="#ph-trash-bold"/></svg></span></div>
       <div class="li s-chemistry"><span class="mk-me-subj"><img src="assets/subject-chemistry.webp" alt=""></span><div class="grow"><span class="t-label">Chemistry · Bonding</span><span class="t-caption muted">Downloading · 64%</span></div><span class="ring" style="--sz:34px;--w:4px;--p:64;margin-right:5px"><span></span></span></div>
-      <div class="li s-maths"><span class="mk-me-subj"><img src="assets/subject-maths.webp" alt=""></span><div class="grow"><span class="t-label">Full mock 3</span><span class="t-caption muted">18 MB</span></div><span class="iconbtn" aria-label="Remove Full mock 3"><svg class="ic sm muted"><use href="#ph-trash-bold"/></svg></span></div>
     </div>
+    <span class="mk-me-grp">Saved automatically</span>
+    <div class="card row" style="gap:12px;padding:12px 14px"><svg class="ic" style="color:var(--gem)"><use href="#ph-clock-counter-clockwise-bold"/></svg><span class="t-caption muted grow">124 MB of lessons you opened. Removed first when space runs low.</span><span class="btn sm btn-secondary">Clear</span></div>
   </div>
   <div class="bottom" style="padding-top:6px"><span class="btn btn-primary"><svg class="ic"><use href="#ph-download-simple-bold"/></svg>Download a subject</span></div>
 </div></div>
@@ -463,7 +472,7 @@
   <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Settings</span></div>
   <div class="body scroll-cut" style="padding-top:2px">
     <div class="card row" style="gap:12px"><span class="mk-me-init">A</span><div class="grow"><div class="t-heading">Aarav Sharma</div><div class="t-caption muted">aarav.s@example.com</div><div class="row" style="gap:5px;margin-top:3px"><svg class="g" style="width:14px;height:14px"><use href="#g-logo"/></svg><span class="t-caption muted">Signed in with Google</span></div></div><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
-    <div class="card row" style="background:var(--streak-tint);box-shadow:none;gap:12px;padding:12px 16px"><img src="assets/cat-price-tag.webp" alt="" style="width:46px;height:46px;object-fit:contain;flex:none"><span class="t-label grow">Try Pro for ₹1</span><svg class="ic" style="color:var(--streak)"><use href="#ph-crown-simple-fill"/></svg><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
+    <div class="card row" style="gap:12px;padding:12px 16px"><img src="assets/cat-price-tag.webp" alt="" style="width:46px;height:46px;object-fit:contain;flex:none"><span class="t-label grow">Try Pro for ₹1</span><svg class="ic" style="color:var(--streak)"><use href="#ph-crown-simple-fill"/></svg><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
     <span class="mk-me-grp">Learning</span>
     <div class="list mk-me-list">
       <div class="li"><svg class="ic"><use href="#ph-sliders-horizontal-bold"/></svg><span class="t-label grow">Study preferences</span><span class="val">10 min a day</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
@@ -495,7 +504,7 @@
       <span class="mk-me-init" style="width:64px;height:64px;border-radius:32px;font-size:26px">A</span>
       <span class="t-title">Aarav Sharma</span>
       <span class="t-label muted">aarav.s@example.com</span>
-      <span class="chip" style="margin-top:4px"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg>Google</span>
+      <div class="row" style="gap:6px;margin-top:4px"><span class="chip ok"><svg class="ic xs"><use href="#ph-cloud-check-fill"/></svg>Saved</span><span class="chip"><svg class="g" style="width:16px;height:16px"><use href="#g-logo"/></svg>Google</span></div>
     </div>
     <div class="list mk-me-list">
       <div class="li"><svg class="ic"><use href="#ph-device-mobile-bold"/></svg><span class="t-label grow" style="font-weight:600">Your account works in every Smriti app and on the web.</span></div>
@@ -612,7 +621,10 @@
       <div class="li"><div class="grow"><span class="t-label">Photo doubts</span></div><span class="chip" style="height:26px">Off</span></div>
     </div>
     <div class="banner" style="align-items:flex-start;padding:12px"><svg class="ic sm"><use href="#ph-info-bold"/></svg>For students under 18 we only collect what's needed to teach and keep the app working.</div>
+    <div class="list mk-me-list"><div class="li"><svg class="ic"><use href="#ph-identification-card-bold"/></svg><div class="grow"><span class="t-label">How others see my name</span><span class="t-caption muted">First name and initial</span></div><svg class="ic sm muted"><use href="#ph-lock-simple-bold"/></svg></div></div>
     <span class="btn btn-secondary">Request a copy of my data</span>
+    <div class="row" style="justify-content:center;gap:18px"><span class="link t-label">Privacy policy</span><span class="link t-label">Terms of use</span></div>
+    <span class="t-label center" style="color:var(--error-text)">Delete my account</span>
   </div>
 </div></div>
 <figcaption><span class="id">SET-11</span><span class="nm">Privacy and data, student aged 13–17</span><span class="ds">Plain summary first, then each consent with a word chip and date. A scope without guardian consent says "Needs a guardian" (→ AUTH-18). No analytics switch for minors.</span></figcaption>
@@ -621,7 +633,7 @@
 <figure class="mock" data-id="SET-14">
 <div class="phone"><div class="screen sx">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
-  <div class="mk-me-top"><span class="ttl big">Parent mode</span><span class="btn sm btn-ghost">Exit</span></div>
+  <div class="mk-me-top"><span class="ttl big">Parent mode</span><span class="chip warn" style="height:26px;font-size:12px">Phase 3</span><span class="btn sm btn-ghost">Exit</span></div>
   <div class="body scroll-cut" style="padding-top:2px">
     <div class="card" style="background:var(--primary-tint);box-shadow:none;display:flex;flex-direction:column;gap:10px">
       <span class="t-caption" style="color:var(--primary)">NEEDS YOU</span>
@@ -638,15 +650,15 @@
       <div class="mk-me-chart" aria-label="Most on Saturday, 28 minutes">
         <div><i style="height:40%"></i><span>M</span></div><div><i style="height:55%"></i><span>T</span></div><div><i class="zero"></i><span>W</span></div><div><i style="height:35%"></i><span>T</span></div><div><i style="height:50%"></i><span>F</span></div><div><i style="height:100%"></i><span>S</span></div><div><i style="height:62%"></i><span>S</span></div>
       </div>
-      <div class="row" style="gap:6px"><span class="btn sm btn-secondary" style="flex:1;padding:0 6px;font-size:13px">Weekly report</span><span class="btn sm btn-secondary" style="flex:1;padding:0 6px;font-size:13px">Time limits</span><span class="btn sm btn-secondary" style="flex:1;padding:0 6px;font-size:13px">Consents</span></div>
+      <div class="mk-me-act3"><span><svg class="ic sm"><use href="#ph-chart-bar-bold"/></svg>Weekly report</span><span><svg class="ic sm"><use href="#ph-timer-bold"/></svg>Time limits</span><span><svg class="ic sm"><use href="#ph-shield-check-bold"/></svg>Consents</span></div>
     </div>
     <div class="card lg row" style="gap:12px">
       <div class="mk-me-av" style="width:56px;height:56px"><img src="assets/cat-reading.webp" alt="Kabir's pet"></div>
       <div class="grow"><div class="t-heading">Kabir</div><div class="t-caption muted">Class 8 · 142 min this week</div></div>
       <span class="link t-label">Get Pro for Kabir</span>
     </div>
+    <span class="btn btn-secondary"><svg class="ic"><use href="#ph-plus-bold"/></svg>Add a child</span>
   </div>
-  <span class="chip warn mk-me-phase">Phase 3</span>
 </div></div>
 <figcaption><span class="id">SET-14</span><span class="nm">Parent dashboard (Phase 3)</span><span class="ds">One request waiting, a card per child with the week's minutes, streak and a 7-day chart, and the actions to the weekly report, time limits and consents.</span></figcaption>
 </figure>
@@ -654,12 +666,12 @@
 <figure class="mock" data-id="SET-15">
 <div class="phone"><div class="screen sx">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
-  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Riya's week</span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Riya's week</span><span class="chip warn" style="height:26px;font-size:12px;margin-right:6px">Phase 3</span></div>
   <div class="body scroll-cut" style="padding-top:0">
     <div class="row between" style="padding:0 2px"><span class="iconbtn filled" style="width:36px;height:36px" aria-label="Previous week"><svg class="ic sm"><use href="#ph-caret-left-bold"/></svg></span><span class="t-label">19 – 25 Oct</span><span class="iconbtn filled" style="width:36px;height:36px;opacity:.5" aria-label="Next week"><svg class="ic sm"><use href="#ph-caret-right-bold"/></svg></span></div>
-    <div class="grid2" style="gap:10px">
-      <div class="stat"><b>96</b><span>Minutes</span></div><div class="stat"><b>11</b><span>Lessons</span></div>
-      <div class="stat"><b>64</b><span>Reviews</span></div><div class="stat"><b>5</b><span>Streak</span></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+      <div class="stat" style="padding:10px 8px"><b>96</b><span>Minutes</span></div><div class="stat" style="padding:10px 8px"><b>11</b><span>Lessons</span></div>
+      <div class="stat" style="padding:10px 8px"><b>64</b><span>Reviews</span></div><div class="stat" style="padding:10px 8px"><b>5</b><span>Streak</span></div>
     </div>
     <div class="card" style="display:flex;flex-direction:column;gap:10px">
       <span class="t-label">Minutes each day</span>
@@ -675,7 +687,6 @@
     <div class="petline"><div class="av" style="background:var(--primary-tint)"><img src="assets/dog-celebrate.webp" alt=""></div><div class="bubble">We had a good week!</div></div>
   </div>
   <div class="bottom" style="padding-top:6px;gap:6px"><span class="btn btn-secondary"><svg class="ic"><use href="#ph-hands-clapping-bold"/></svg>Send a cheer</span><span class="t-caption muted center">Chats, notes and anything Riya types stay private.</span></div>
-  <span class="chip warn mk-me-phase">Phase 3</span>
 </div></div>
 <figcaption><span class="id">SET-15</span><span class="nm">Weekly report (Phase 3)</span><span class="ds">Counts and topic names only: four tiles, minutes per day with values, subjects with their names (colour never alone), and a preset cheer, no free text.</span></figcaption>
 </figure>
@@ -683,7 +694,7 @@
 <figure class="mock" data-id="SET-16">
 <div class="phone"><div class="screen sx">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
-  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Time limits for Riya</span></div>
+  <div class="mk-me-top back"><span class="iconbtn" aria-label="Back"><svg class="ic"><use href="#ph-caret-left-bold"/></svg></span><span class="ttl">Time limits for Riya</span><span class="chip warn" style="height:26px;font-size:12px;margin-right:6px">Phase 3</span></div>
   <div class="body" style="padding-top:2px">
     <div class="card" style="display:flex;flex-direction:column;gap:10px">
       <span class="t-heading">Daily limit</span>
@@ -702,7 +713,6 @@
     <div class="row" style="gap:8px"><svg class="ic sm muted"><use href="#ph-info-bold"/></svg><span class="t-caption muted">A lesson card or mock section in progress always finishes first.</span></div>
   </div>
   <div class="bottom" style="padding-top:4px"><span class="btn btn-primary">Save</span></div>
-  <span class="chip warn mk-me-phase" style="top:84px">Phase 3</span>
 </div></div>
 <figcaption><span class="id">SET-16</span><span class="nm">Time limits (Phase 3)</span><span class="ds">Daily limit chips, allowed hours, break reminders, and the little-learner extras (reminder, goal, lesson language) that move here from the child's settings.</span></figcaption>
 </figure>
@@ -722,10 +732,11 @@
     <div class="mk-me-plan">
       <div class="row between"><span class="row" style="gap:8px"><span class="mk-me-radio on"></span><span class="t-label">Pro monthly</span></span><span class="t-caption muted">₹1, then ₹99/month</span></div>
       <ul class="mk-me-tl">
-        <li><span class="nd now"><svg class="ic"><use href="#ph-lock-key-open-bold"/></svg></span><div><b>Today, 29 Oct · ₹1</b><span>All of Pro unlocks now.</span></div></li>
-        <li><span class="nd"><svg class="ic"><use href="#ph-bell-ringing-bold"/></svg></span><div><b>26 Nov · We remind you</b><span>3 days before you pay ₹99.</span></div></li>
-        <li><span class="nd gold"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov · ₹99/month</b><span>Cancel before then and you pay nothing more.</span></div></li>
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct · all of Pro unlocks</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 Nov: we remind you by push and email</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b></div></li>
       </ul>
+      <span class="t-caption" style="color:var(--primary)">Cancel anytime in 2 taps from Your plan.</span>
     </div>
     <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="grow"><div class="t-label">All Deep Dives</div><div class="t-caption muted">Every chapter, every subject.</div></div></div>
     <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-exam-bold"/></svg></span><div class="grow"><div class="t-label">Unlimited practice and the full PYQ bank</div></div></div>
@@ -737,7 +748,7 @@
     <span class="mk-me-links">Restore purchases · Terms · Privacy</span>
   </div>
 </div></div>
-<figcaption><span class="id">PAY-01</span><span class="nm">Paywall, default (source me_card)</span><span class="ds">Trial timeline with real dates: ₹1 today, our reminder 3 days before, ₹99/month from the renewal date (R33). "Maybe later" always visible. No countdown, no anchor, no "% off". Android.</span></figcaption>
+<figcaption><span class="id">PAY-01</span><span class="nm">Paywall, default (source me_card)</span><span class="ds">Trial timeline with real dates: ₹1 today, our push and email reminder 3 days before, ₹99/month from the renewal date, and "Cancel anytime in 2 taps" (R33). "Maybe later" always visible. No countdown, no anchor, no "% off". Android.</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="PAY-01">
@@ -754,10 +765,11 @@
     <div class="mk-me-plan">
       <div class="row between"><span class="row" style="gap:8px"><span class="mk-me-radio on"></span><span class="t-label">Pro monthly</span></span><span class="t-caption muted">₹1, then ₹99/month</span></div>
       <ul class="mk-me-tl">
-        <li><span class="nd now"><svg class="ic"><use href="#ph-lock-key-open-bold"/></svg></span><div><b>Today, 29 Oct · ₹1</b><span>All of Pro unlocks now.</span></div></li>
-        <li><span class="nd"><svg class="ic"><use href="#ph-bell-ringing-bold"/></svg></span><div><b>26 Nov · We remind you</b><span>3 days before you pay ₹99.</span></div></li>
-        <li><span class="nd gold"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov · ₹99/month</b><span>Cancel before then and you pay nothing more.</span></div></li>
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct · all of Pro unlocks</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 Nov: we remind you by push and email</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b></div></li>
       </ul>
+      <span class="t-caption" style="color:var(--primary)">Cancel anytime in 2 taps from Your plan.</span>
     </div>
     <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="grow"><div class="t-label">All Deep Dives</div></div></div>
   </div>
@@ -784,10 +796,11 @@
     <div class="mk-me-plan">
       <div class="row between"><span class="row" style="gap:8px"><span class="mk-me-radio on"></span><span class="t-label">Pro मासिक</span></span><span class="t-caption muted">पहला महीना ₹1, फिर ₹99/माह</span></div>
       <ul class="mk-me-tl">
-        <li><span class="nd now"><svg class="ic"><use href="#ph-lock-key-open-bold"/></svg></span><div><b>आज, 29 अक्टू · ₹1</b><span>पूरा Pro अभी से खुल जाएगा।</span></div></li>
-        <li><span class="nd"><svg class="ic"><use href="#ph-bell-ringing-bold"/></svg></span><div><b>26 नवं · हम याद दिलाएँगे</b><span>₹99 कटने से 3 दिन पहले।</span></div></li>
-        <li><span class="nd gold"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 नवं · ₹99/माह</b><span>उससे पहले रद्द करें, तो आगे कुछ नहीं कटेगा।</span></div></li>
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>आज: ₹1</b><span>गुरु 29 अक्टू · पूरा Pro खुल जाएगा</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 नवं: हम पुश और ईमेल से याद दिलाएँगे</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 नवं: ₹99/माह शुरू</b></div></li>
       </ul>
+      <span class="t-caption" style="color:var(--primary)">"आपका प्लान" से 2 टैप में कभी भी रद्द करें।</span>
     </div>
     <div class="mk-me-ben"><span class="bi"><svg class="ic"><use href="#ph-books-bold"/></svg></span><div class="grow"><div class="t-label">सारे डीप डाइव</div><div class="t-caption muted">हर विषय का हर चैप्टर।</div></div></div>
   </div>
@@ -814,7 +827,7 @@
   </div>
   <div class="scrim"></div>
   <div class="mk-me-sys">
-    <span class="mk-me-label"><svg class="ic xs"><use href="#ph-device-mobile-bold"/></svg>System sheet · Google Play, not styled by us</span>
+    <span class="mk-me-label"><svg class="ic xs"><use href="#ph-device-mobile-bold"/></svg>System sheet · Google Play</span>
     <div class="row" style="gap:12px"><span class="mk-me-appic"><svg class="ic"><use href="#ph-plant-fill"/></svg></span><div class="grow"><div style="font:500 16px/22px Roboto,var(--f-latin)">Pro monthly</div><div class="t-caption muted" style="font-family:Roboto,var(--f-latin)">Smriti JEE</div></div></div>
     <div class="divider"></div>
     <div class="col" style="gap:2px;font-family:Roboto,var(--f-latin)"><div style="font:500 18px/24px Roboto,var(--f-latin)">₹1 for 1 month</div><div class="t-label muted" style="font-family:Roboto,var(--f-latin);font-weight:500">then ₹99/month</div></div>
@@ -834,9 +847,9 @@
     <div class="card lg" style="display:flex;flex-direction:column;gap:12px">
       <div class="row between"><span class="t-heading">Pro monthly</span><span class="t-caption muted">For aarav.s@example.com</span></div>
       <ul class="mk-me-tl">
-        <li><span class="nd now"><svg class="ic"><use href="#ph-check-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct</span></div></li>
-        <li><span class="nd"><svg class="ic"><use href="#ph-bell-ringing-bold"/></svg></span><div><b>26 Nov: we remind you</b><span>3 days before the first ₹99</span></div></li>
-        <li><span class="nd gold"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>From 29 Nov: ₹99 every month</b><span>Until you cancel</span></div></li>
+        <li><span class="nd now"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>Today: ₹1</b><span>Thu 29 Oct</span></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>26 Nov: we remind you by push and email</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b><span>Then every month until you cancel</span></div></li>
       </ul>
     </div>
     <span class="mk-me-grp">How Autopay works</span>
@@ -846,6 +859,7 @@
       <div class="row top"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-x-circle-bold"/></svg><span class="t-label" style="font-weight:600">Cancel anytime in Smriti or in your UPI app.</span></div>
     </div>
     <span class="t-caption muted" style="padding:0 4px">UPI Autopay, card or netbanking</span>
+    <div class="banner" style="background:var(--primary-tint);color:var(--ink);align-items:flex-start;padding:10px 12px"><svg class="ic sm" style="color:var(--primary)"><use href="#ph-info-bold"/></svg>Your UPI app will show the Autopay details before you approve.</div>
   </div>
   <div class="bottom" style="padding-top:4px;gap:4px"><span class="btn btn-primary">Continue to pay ₹1</span><span class="btn btn-ghost" style="height:40px">Back</span><span class="mk-me-links">Terms · Privacy</span></div>
 </div></div>
@@ -857,20 +871,19 @@
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="mk-me-url"><svg class="ic xs"><use href="#ph-lock-simple-fill"/></svg>smriti.app/pro/checkout</div>
   <div class="body" style="padding-top:8px">
-    <div class="t-title">Review and pay</div>
     <div class="card lg" style="height:150px"></div>
     <div class="card" style="height:120px"></div>
   </div>
   <div class="scrim"></div>
   <div class="mk-me-host">
-    <div class="hd"><span class="t-caption" style="opacity:.9">SMRITI · PRO MONTHLY</span><span class="t-title">₹1 today</span><span class="t-caption" style="opacity:.9">Then UPI Autopay, ₹99 every month</span></div>
+    <div class="hd"><span class="t-caption" style="opacity:.9">SMRITI · PRO MONTHLY</span><span class="t-title">₹1 today</span><span class="t-caption" style="opacity:.9">Then UPI Autopay, ₹99 every month from 29 Nov</span></div>
     <div class="opt sel"><svg class="ic"><use href="#ph-device-mobile-bold"/></svg><span class="grow">Pay with a UPI app</span><svg class="ic sm" style="color:var(--primary)"><use href="#ph-check-circle-fill"/></svg></div>
     <div class="opt"><svg class="ic"><use href="#ph-at-bold"/></svg><span class="grow">UPI ID</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
     <div class="opt"><svg class="ic"><use href="#ph-credit-card-bold"/></svg><span class="grow">Card</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
     <div class="opt"><svg class="ic"><use href="#ph-bank-bold"/></svg><span class="grow">Netbanking</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
   </div>
   <div style="position:absolute;left:14px;right:14px;bottom:20px;z-index:7;display:flex;flex-direction:column;gap:10px;align-items:center">
-    <span class="mk-me-label"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg>Hosted checkout · Razorpay's UI, configured by us</span>
+    <span class="mk-me-label"><svg class="ic xs"><use href="#ph-arrow-square-out-bold"/></svg>Razorpay hosted checkout · not our UI</span>
     <div class="toast" style="position:static;width:100%"><svg class="ic sm"><use href="#ph-arrow-square-out-bold"/></svg>Finish in your UPI app, then come back here.</div>
   </div>
 </div></div>
@@ -878,12 +891,12 @@
 </figure>
 
 <figure class="mock" data-id="PAY-09">
-<div class="phone"><div class="screen sx" style="background:var(--streak-tint)">
+<div class="phone"><div class="screen sx" style="background:var(--primary-tint)">
   <div class="statusbar"><span>9:41</span><span class="sb-icons"><svg class="ic xs"><use href="#ph-cell-signal-full-fill"/></svg><svg class="ic xs"><use href="#ph-wifi-high-bold"/></svg><b></b></span></div>
   <div class="body" style="padding-top:6px;gap:14px">
-    <div class="scene" style="height:236px;flex:none"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt="Miso is celebrating" style="object-position:50% 40%"></div>
-    <div class="center"><div class="t-display">Pro is on!</div><div class="t-body" style="margin-top:4px">Your ₹1 month ends on 29 Nov. Then ₹99/month.</div></div>
-    <span class="mk-me-grp" style="color:var(--streak-text)">Try now</span>
+    <div class="scene" style="height:210px;flex:none"><img class="art-fill" src="assets/scene-lesson-complete.webp" alt="Miso is celebrating" style="object-position:50% 40%"></div>
+    <div class="center"><div class="t-display">Pro is on!</div><div class="t-body" style="margin-top:4px">Your plan: ₹1 until 29 Nov, then ₹99/month. We'll remind you on 26 Nov.</div><div class="link t-caption" style="margin-top:4px">Cancel anytime in Your plan</div></div>
+    <span class="mk-me-grp" style="color:var(--primary)">Try now</span>
     <div class="list mk-me-list">
       <div class="li s-physics"><span class="lead"><svg class="ic sm"><use href="#ph-books-bold"/></svg></span><span class="t-label grow">Continue your deep dive</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="li s-maths"><span class="lead"><svg class="ic sm"><use href="#ph-exam-bold"/></svg></span><span class="t-label grow">Start a full mock</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
@@ -891,7 +904,7 @@
   </div>
   <div class="bottom" style="padding-top:6px"><span class="btn btn-primary">Continue</span></div>
 </div></div>
-<figcaption><span class="id">PAY-09</span><span class="nm">Welcome to Pro</span><span class="ds">The celebration restates the terms once (₹1 month ends 29 Nov, then ₹99/month) and Continue returns to the item that opened the paywall.</span></figcaption>
+<figcaption><span class="id">PAY-09</span><span class="nm">Welcome to Pro</span><span class="ds">The celebration on primary tint (gold stays for streak, plant, gems and the ₹1 tag, R11) restates the plan once with the reminder date and Continue returns to the item that opened the paywall.</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="PAY-10">
@@ -942,12 +955,15 @@
     <div class="card lg" style="display:flex;flex-direction:column;gap:10px">
       <div class="row between"><span class="t-title">Pro monthly</span><span class="chip ok"><svg class="ic xs"><use href="#ph-check-bold"/></svg>Active</span></div>
       <span class="t-body">₹1 month until 29 Nov, then ₹99/month</span>
+      <ul class="mk-me-tl">
+        <li><span class="nd"><svg class="ic"><use href="#ph-check-circle-bold"/></svg></span><div><b>29 Oct: ₹1 paid</b></div></li>
+        <li><span class="nd now"><svg class="ic"><use href="#ph-bell-bold"/></svg></span><div><b>Today, 26 Nov: your reminder</b></div></li>
+        <li><span class="nd"><svg class="ic"><use href="#ph-calendar-check-bold"/></svg></span><div><b>29 Nov: ₹99/month starts</b></div></li>
+      </ul>
       <div class="divider"></div>
       <div class="row" style="gap:10px"><svg class="ic sm muted"><use href="#ph-google-play-logo-bold"/></svg><span class="t-label muted grow" style="font-weight:600">Billed by Google Play in Smriti JEE</span></div>
-      <div class="row" style="gap:10px"><svg class="ic sm muted"><use href="#ph-receipt-bold"/></svg><span class="t-caption muted grow">Receipts are in your Google Play account.</span></div>
     </div>
     <div class="list mk-me-list">
-      <div class="li"><svg class="ic"><use href="#ph-sparkle-bold"/></svg><span class="t-label grow">What you get with Pro</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="li"><svg class="ic"><use href="#ph-credit-card-bold"/></svg><span class="t-label grow">Change payment method</span><svg class="ic sm muted"><use href="#ph-arrow-square-out-bold"/></svg></div>
       <div class="li"><svg class="ic"><use href="#ph-arrows-clockwise-bold"/></svg><span class="t-label grow">Restore purchases</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
       <div class="li"><svg class="ic"><use href="#ph-question-bold"/></svg><span class="t-label grow">Get help with Pro</span><svg class="ic sm muted"><use href="#ph-caret-right-bold"/></svg></div>
@@ -956,7 +972,7 @@
     <span class="btn btn-secondary" style="color:var(--error-text)">Cancel Pro</span>
   </div>
 </div></div>
-<figcaption><span class="id">PAY-12</span><span class="nm">Manage plan, ₹1 month ending (dark)</span><span class="ds">On 26 Nov: our reminder banner, status card with the next ₹99 on 29 Nov and the billing source, Restore purchases, and Cancel Pro always visible (2 taps to cancel, R33).</span></figcaption>
+<figcaption><span class="id">PAY-12</span><span class="nm">Manage plan, ₹1 month ending (dark)</span><span class="ds">On 26 Nov: our reminder banner, status card with the trial timeline (today marked) and the billing source, Restore purchases, and Cancel Pro always visible (2 taps to cancel, R33).</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="PAY-13">
@@ -1051,7 +1067,7 @@
   <div class="mk-me-home">
     <div class="row" style="gap:16px">
       <div class="mk-me-w s"><img src="assets/plant-sapling.webp" alt="Your plant: sapling, thriving. 12 day streak."><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-title num">12</span><span class="t-caption muted">day streak</span></div><span class="ln">Watered today</span></div>
-      <div class="mk-me-w s risk"><img src="assets/plant-sapling-droopy.webp" alt="Your plant: sapling, droopy. 12 day streak."><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--warning)"><use href="#ph-plant-fill"/></svg><span class="t-title num">12</span><span class="t-caption muted">day streak</span></div><span class="ln">One lesson keeps it</span></div>
+      <div class="mk-me-w s"><img src="assets/plant-sapling-droopy.webp" alt="Your plant: sapling, thirsty. 12 day streak."><div class="row" style="gap:5px;align-self:flex-start"><svg class="ic sm" style="color:var(--streak)"><use href="#ph-plant-fill"/></svg><span class="t-title num">12</span><span class="t-caption muted">day streak</span></div><span class="ln">2 min keeps your plant happy</span></div>
     </div>
     <div class="mk-me-w m">
       <div class="col" style="width:116px;align-items:center;gap:2px;flex:none"><div class="mk-me-av" style="width:96px;height:96px"><img src="assets/cat-wave.webp" alt="Miso is happy"></div><span class="t-label">Miso · Happy</span></div>
@@ -1070,7 +1086,7 @@
     </div>
   </div>
 </div></div>
-<figcaption><span class="id">NTF-08 · NTF-09 · NTF-10</span><span class="nm">Home-screen widgets, light (Phase 2)</span><span class="ds">Small plant (watered, and the 8 PM at-risk look beside it for comparison), medium pet + today with [Review 24], large plan with exam countdown and three subject-coded items.</span></figcaption>
+<figcaption><span class="id">NTF-08 · NTF-09 · NTF-10</span><span class="nm">Home-screen widgets, light (Phase 2)</span><span class="ds">Small plant (watered, and beside it the evening state for comparison: thirsty art and "2 min keeps your plant happy", tap → rescue review), medium pet + today with [Review 24], large plan with exam countdown and three subject-coded items.</span></figcaption>
 </figure>
 
 <figure class="mock" data-id="NTF-09">

@@ -1,6 +1,6 @@
 # Flows: Me, Settings, Pro and Notifications
 
-Status: Draft v0.4 (revision 1), 29 Oct 2026. Rulings R1 to R39 (orchestrator DECISIONS) and the research adopt and avoid lists (`docs/research/COMPETITOR_FLOWS.md` §9, §10) override anything older. Owner of this file: the me+money agent.
+Status: Draft v0.4 (revision 1), 29 Oct 2026. Rulings R1 to R45 (orchestrator DECISIONS, including the amended R31) and the research adopt and avoid lists (`docs/research/COMPETITOR_FLOWS.md` §9, §10) override anything older. Owner of this file: the me+money agent.
 
 This file covers the logic behind four screen areas:
 
@@ -9,7 +9,7 @@ This file covers the logic behind four screen areas:
 | **ME** | Profile, pet room, plant garden, streak calendar, card album, badges, shop and gems, quests, downloads, PDF books |
 | **SET** | Settings, account, notifications, language, appearance, sound and haptics, accessibility, study preferences, privacy and data, parent mode, help, report content, about |
 | **PAY** | Paywall, checkout on each platform, payment status, manage plan, cancel, restore, billing issues, Pro on another platform, a parent paying for a child |
-| **NTF** | The push catalogue, web push, in-app banners and toasts, the streak-saved and welcome-back sheets, home-screen widgets, email |
+| **NTF** | The push catalogue, web push, in-app banners and toasts, the streak-saved and welcome-back triggers for ENT-08, home-screen widgets, email |
 
 Screen-by-screen specs are in [`docs/ux/me-money.md`](../ux/me-money.md). Read with `PRD.md` §7, §9, §11, §13, §16.4, `APP_FLOW.md` §3.6, §3.7, `TRD.md` §3, §10, §11, §12 and `DB_SCHEMA.md` §3, §6, §8, §10.
 
@@ -29,7 +29,7 @@ Screen-by-screen specs are in [`docs/ux/me-money.md`](../ux/me-money.md). Read w
 | AUTH-28 | Restore a child on this device | `docs/ux/auth.md` |
 | HOME-01, HOME-02, HOME-06 | Home, Today's plan, Little learner Home (HOME-07 is retired; its break screen is SET-19 here) | `docs/ux/learn.md` |
 | LRN-05, LES-01, LES-04, LES-08 | Pro preview sheet, Lesson player, Card menu and report, Lesson complete | `docs/ux/learn.md` |
-| ONB-04, ONB-06, ONB-15 | Birth year, Exam date (`edit` mode), Reminder ask. ENT-08 is retired: the streak sheets are NTF-06 and NTF-07 here | `docs/ux/onboarding.md` |
+| ENT-08, ONB-04, ONB-06, ONB-15 | Streak check-in (R41: NTF-06 and NTF-07 here are its triggers), Birth year, Exam date (`edit` mode), Reminder ask | `docs/ux/onboarding.md` |
 | MEM-01, MEM-02, MEM-03, MEM-14, MEM-19, MEM-21, MEM-28, MEM-29, MEM-32 | Memory hub, Comeback plan, Review session, Palace builder, Make it stick, Community mnemonics, Focus timer setup, Focus session, 2-minute rescue complete | `docs/ux/memory-labs.md` |
 | LAB-01, LAB-03, LAB-13 to LAB-16 | Labs hub, Lab detail, Periodic table, Element sheet, Fun experiments, Experiment detail | `docs/ux/memory-labs.md` |
 | MOCK-01, MOCK-19, MOCK-22, PRC-11, PRC-17 | Mock lobby, Mock report, Solutions review, Daily challenge, Free limit sheet | `docs/ux/practice.md` |
@@ -69,8 +69,8 @@ flowchart LR
   Push[Push / widget tap] --> Deep{Deep link}
   Deep --> ME04 & ME07 & ME20[ME-20 Quests] & PAY15[PAY-15 Fix payment] & ME23[ME-23 My PDF books]
   CardMenu[Card ⋯ menu in lessons, reviews, mocks] --> SET24[SET-24 Report content]
-  Comeback[First open after 2+ missed days, routed by ENT] --> NTF07[NTF-07 Welcome back]
-  Freeze[First open after a freeze was used] --> NTF06[NTF-06 Streak saved]
+  Comeback[NTF-07 trigger: 2+ missed days] --> ENT08[ENT-08 Streak check-in]
+  Freeze[NTF-06 trigger: freeze or incident covered a day] --> ENT08
   Widget[Home-screen widget] --> NTF08[NTF-08/09/10]
 ```
 
@@ -133,7 +133,7 @@ flowchart TD
 | Free | Pro card: "Try Pro for ₹1" (or "Get Pro" when not eligible). Opens PAY-01 with source `me_card`. |
 | Pro | Pro card shows "Pro · renews {date}" or "Pro · ends {date}" and opens PAY-12. |
 | Billing issue | The Pro card turns to the billing-issue state and opens PAY-15. |
-| Minor 13–17 | Display name shows first name and initial wherever other people see it (PRD §16.4). On their own Me screen they see the full display name. |
+| Minor 13–17 | After guardian consent, other students see an auto nickname from a fixed word list with the pet avatar (R31 amended); friends added by link or QR see the pet name. Never the typed or real name. On their own Me screen they see the full display name. |
 | Little learner | Simplified layout: big pet, plant, sticker album (the card album), badges. No shop prices in rupees anywhere (there never are). No Pro card: Pro is handled in Parent mode. "For grown-ups" row opens SET-13. |
 | Per-exam app | Exam chips show the variant's exam only and are not editable here. |
 | Offline | Everything renders from `profile_snapshot`. Stats show "Updated {time}". |
@@ -157,7 +157,7 @@ Existing docs disagree on the label list (APP_FLOW §3.6: happy, content, sleepy
 | `content` | droopy | Okay / ठीक-ठाक | content (calm, sitting) |
 | `sleepy` | dry | Sleepy / नींद में | sleepy |
 | `tired` | wilted | Tired / थकान में | tired |
-| `missing_you` | wilted, energy low | Missing you / तुम्हारी याद में | sad-but-hopeful |
+| `missing_you` | wilted, energy low | Missing you / आपकी याद में | sad-but-hopeful |
 | `resting` | dormant | Resting / आराम में | resting (basket and blanket) |
 
 Transient reactions (`excited`, `proud`, `curious`, `thinking`) are Rive triggers, never stored. Under-10 mode clamps the persistent state at `sleepy` and only uses `happy`, `content`, `sleepy` plus the reactions `excited` and `curious`.
@@ -221,8 +221,8 @@ stateDiagram-v2
 ### 3.5 Streak, freezes and rest days (ME-10)
 
 - **Qualifying activity** (PRD §7, R1, R23): one lesson, or 10 reviews, or one mock section, or the daily challenge. The day boundary is the student's local midnight. The daily goal in minutes (onboarding, SET-10, default 10 per R6) drives the progress ring on Home and never decides the streak. `learn.activity_days.goal_met` is misnamed for this; TRD §10's "met the daily goal" is wrong (R1) and the column should read as "streak day".
-- **Freezes** (R28, R36). Free: 1 granted on the 1st of each month. Pro: 2 a month (PRD §11.1). Extra freezes can be bought with gems. Up to `streak.freeze_slots` (2) can be equipped, for everyone; ME-10 and the shop show the two slots. A grant that finds both slots full is kept for the next free slot within the month, then lapses (stated in help). A freeze is used automatically by the nightly roll-up on a missed day when one is equipped (`game.streak_freezes.used_on`). It protects the streak, plant health and pet mood for that day. The next open shows NTF-06.
-- **Incident freeze** (R28, research X15). `streak.incident_freeze` is a server switch for our outages: while on, no one's streak, plant or pet decays and no freezes are spent; after it, days are repaired from the event timestamps already queued in each outbox (APP_FLOW §3.10). NTF-06 shows its incident variant. ME-10 marks those days "Protected".
+- **Freezes** (R28, R36). Free: 1 granted on the 1st of each month. Pro: 2 a month (PRD §11.1). Extra freezes can be bought with gems. Up to `streak.freeze_slots` (2) can be equipped, for everyone; ME-10 and the shop show the two slots. A grant that finds both slots full is kept for the next free slot within the month, then lapses (stated in help). A freeze is used automatically by the nightly roll-up on a missed day when one is equipped (`game.streak_freezes.used_on`). It protects the streak, plant health and pet mood for that day. The next open shows ENT-08's freeze variant (NTF-06 trigger).
+- **Incident freeze** (R28, research X15). `streak.incident_freeze` is a server switch for our outages: while on, no one's streak, plant or pet decays and no freezes are spent; after it, days are repaired from the event timestamps already queued in each outbox (APP_FLOW §3.10). ENT-08 shows its incident variant (NTF-06 trigger). ME-10 marks those days "Protected".
 - **Rest day** (PRD §7 humane rules, research A43, R36). The student can mark a day as a rest day, one per calendar week (flag), from ME-10, up to `streak.rest_day_plan_ahead_days` ahead, so a festival or exam day can be protected in advance. The exam date in ME-03 is protected automatically when `streak.exam_day_protected` is on and doesn't use the week's rest day. It costs nothing. On a rest day the streak pauses (no +1, no break) and the pet and plant don't decay. If the student studies anyway, the rest day is cancelled and counts as a normal day. Rest days are separate from freezes: freezes catch unplanned misses, rest days are planned. Storage needs `learn.activity_days.rest_day boolean` or a `game.rest_days` table (§10).
 - **Calendar (ME-10).** Month grid. Each day shows one of: studied (leaf icon), freeze used (snowflake icon), rest day (moon icon), protected by an incident (shield icon), missed (empty circle), today (outlined). The streak symbol everywhere is Phosphor `Plant`, never a flame (R28). Icons plus labels, never colour alone. Current and longest streak at the top, freezes held and the next monthly grant date.
 - **Streak repair** (R36, research X3). There is no paid repair and no "buy back your streak" offer. A broken streak shows the longest streak kept forever, the plant's stage kept, and the revival quest. This is a deliberate humane choice (PRD §7: no shame messaging).
@@ -432,7 +432,7 @@ flowchart TD
 - **Product analytics.** Learning events (answers, reviews, timings) are the service itself and can't be turned off without deleting the account; the screen says so plainly. Product events (screens and taps used for funnels) are optional:
   - Adults: "Help improve Smriti" toggle, on by default, can be turned off.
   - Minors (13–17 and under 13): product events are **off and the toggle isn't shown**. Only an essential allowlist is sent: crashes, sync health, purchase results, consent changes and notification opens (to enforce caps). The screen explains this. (Open question Q5 asks legal to confirm.)
-- **Name display:** "How others see my name": full display name or first name and initial. Minors are locked to first name and initial (PRD §16.4).
+- **Name display:** "How others see my name": full display name or first name and initial for adults. Minors are locked to the auto nickname (R31 amended), which is stricter than PRD §16.4.
 - **Delete account** opens AUTH-13.
 
 ### 4.7 Parent mode (SET-13 to SET-19)
@@ -779,7 +779,7 @@ Applied to every server send, and mirrored in the local scheduler (`app-core`) f
 |---|---|---|---|
 | Habit pushes a day: reminder plus streak saver (`notify.cap.habit`) | 2 | 1 (the reminder) | 1 (the reminder) |
 | Learning pushes a day: review due, weak area, daily challenge, bedtime (`notify.cap.learning`) | 1 | 0 (folded into the reminder) | 0 |
-| Social pushes a day, after batching (`notify.cap.social`) | 3 | 2, after consent | 0 |
+| Social pushes a day, after batching (`notify.cap.social`) | 3 | 2, after consent, held and sent together in the minor's reminder window (R45) | 0 |
 | Total a day, not counting transactional, exam alerts or focus alarms (`notify.cap.total`) | 4 | 3 | 1 |
 | Timing | chosen time, or smart timing: about `notify.smart.offset_hours` (23.5) after the last session, inside the allowed hours, never more than 2 hours before the chosen time | the picked time only | the parent's time only |
 | Streak saver time | at least 1 hour before quiet hours start, only if today isn't a streak day | none | none |
@@ -790,11 +790,12 @@ Applied to every server send, and mirrored in the local scheduler (`app-core`) f
 
 More rules:
 - **Templates rotate** (research A40). Each kind has a pool in `notify.templates` (at least `notify.templates.min_per_kind`, 3, for habit kinds). Adults: the least recently sent template wins, with a novelty penalty so a line doesn't repeat within `notify.templates.repeat_gap_days`; an optional bandit (`notify.bandit`, adults only) learns which templates get opens across all adults. Minors: plain round robin, because learning from a child's responses would be behavioural monitoring.
-- **Auto-pause after ignored reminders** (R34, research A41). `notify.autopause_after_ignored` (7) habit sends in a row without an app open pause all habit and learning pushes. The pause is announced once by `reminders_paused` in the pet's voice ("I'll stop reminding you for now. Tap me anytime."), with no sad image. Any app open resets the count and restarts reminders; NTF-07 then says "Reminders restart today."
-- **Comeback after 30+ days** (R34, research A44): adults get one `comeback_30` push at `comeback.long_gap_days` (30), then silence. Minors get nothing after the pause. On return, ENT routes to NTF-07 with the 30+ day offers.
+- **Auto-pause after ignored reminders** (R34, research A41). `notify.autopause_after_ignored` (7) habit sends in a row without an app open pause all habit and learning pushes. The pause is announced once by `reminders_paused` in the pet's voice ("I'll stop reminding you for now. Tap me anytime."), with no sad image. Any app open resets the count and restarts reminders; ENT-08 then says "Reminders restart today."
+- **Comeback after 30+ days** (R34, research A44): adults get one `comeback_30` push at `comeback.long_gap_days` (30), then silence. Minors get nothing after the pause. On return, ENT routes to ENT-08's long-break variant.
 - **In-app wins.** If the app is in the foreground, a server push becomes an in-app toast (NTF-05) or nothing.
 - **Never while a mock runner is open** (R24, practice request). While an attempt is open (`learn.mock_attempts` or the device's `mock_local`), nothing is shown, local or server, including focus alarms. Server sends are held until the runner closes, then dropped if stale. `report_ready` fires only after the student leaves the runner.
 - **Daily reminder and nudges don't stack.** If a daily reminder fired today, a plant or pet nudge doesn't.
+- **Minors' friend pushes** (R45): duels, Duo nudges, cheers and the other social kinds are held and delivered together in the minor's own reminder window; the in-app banner and SOC-06 inbox show them at once.
 - **Transactional** (billing, exports, data export, guardian consent requests, time requests to a parent) skips caps but keeps quiet hours, except a parent's time request, which is only sent inside the child's allowed hours anyway.
 - **Exam alerts** (`mock_reminder`, `report_ready`) have their own channel (research X20) and their own per-event limit; they never count against the caps, but quiet hours apply except for a live mock the student joined that starts inside them.
 - **Every server send** writes `notify.log` with `status` and `suppressed_reason`. Opens come back as `notification_opened` (with `template_id`, never the text).
@@ -814,18 +815,19 @@ Copy rules: the title is the pet's name (`{pet}`) for pet-voiced messages, and t
 | `challenge_ready` | learning, server | The daily challenge rolled (00:00 IST, R23) and isn't done | Usual hour | `/challenge` (PRC-11) | shares the learning cap | folded into the reminder (practice request) |
 | `sleep_review` | learning, local, opt-in, Pro | Before the estimated bedtime | Bedtime minus `notify.sleep_review.lead_min`, never in quiet hours | `/review?set=bedtime` | 1 a day | no (adults only, memory-labs request, X17) |
 | `pet_misses_you` | re-engagement, local | Day 3 of a lapse (replaces that day's reminder) | Chosen time | `/pet` | once per lapse | no |
-| `comeback_30` | re-engagement, server | `comeback.long_gap_days` without an open | Chosen time | `/home` (NTF-07 opens) | once, then silence | no |
+| `comeback_30` | re-engagement, server | `comeback.long_gap_days` without an open | Chosen time | `/home` (ENT-08 opens) | once, then silence | no |
 | `mock_reminder` | exam alert, server | A mock the student scheduled, or a live mock they joined | `notify.mock_reminder.lead_min` before | `/mock/{id}` | per mock | yes |
 | `report_ready` | exam alert, local | A mock submitted offline or still scoring, and the report is now ready | After the runner closes | `/mock/{id}/report` (MOCK-19) | per attempt | yes |
 | `focus_round_end` / `focus_break_end` | focus, local | A focus session the student started (MEM-29) | At the end of the round or break | `/focus` | per session | yes |
 | `friend_request` / `friend_accepted` | social | Request received / accepted | Immediately (quiet hours delay to the end) | SOC-06 | batched after 3 a day | after consent |
 | `friend_cheer` | social | A friend cheers | Batched hourly | SOC-06 | 1 a day | after consent |
 | `duo_invite` | social | A friend invites to a Duo | Immediately | SOC-25 | per invite | after consent |
-| `duo_nudge` / `duo_at_risk` | social | Partner studied today / the Duo streak needs you today, after 18:00 | Once | `/home` | 1 a day | after consent |
+| `duo_nudge` / `duo_at_risk` | social | Partner's today is a streak day (R1) and yours isn't / the Duo streak needs you today, after 18:00 | Once | `/home` | 1 a day | after consent |
 | `duel_challenge` / `duel_result` | social | A friend challenges / an async duel finished | Immediately | SOC-20 / SOC-19 | 3 a day | after consent; no random duels under 13 |
 | `squad_quest_done` | social | The squad finished the weekly quest | Immediately | SOC-14 | 1 a week | after consent |
 | `league_ending` | social | Sunday 18:00 IST, in a league, rank near a promotion line | Sunday 18:00 IST | SOC-08 | 1 a week | after consent |
 | `league_promoted` | social | Monday rollover result = promoted, tier names from config (R30) | Monday 08:00 local | SOC-09 | 1 a week | after consent. Demotion is never pushed. |
+| `league_result` | social | Monday rollover, not promoted (stayed or moved down); the copy never says which | Monday 08:00 local | SOC-09 | 1 a week | after consent |
 | `referral_joined` | social | Invitee signed in and finished a lesson (§5.16) | Immediately | `/pro/manage` | per referral | after consent |
 | `pro_activated` | transactional | Pending payment confirmed while away | Immediately | the saved `return_to` | once | all (parent for under 13) |
 | `payment_not_completed` | transactional | Pending payment failed | Immediately | `/pro` | once | all |
@@ -839,7 +841,7 @@ Copy rules: the title is the pet's name (`{pet}`) for pet-voiced messages, and t
 
 The guest `streak_day_2` sign-in push the auth doc mentions (§3, behind `auth.streak_prompt_push`, off by default) would be a habit send for adults and unknown ages only, inside the same caps; it is not in the catalogue until that flag is turned on.
 
-Not pushed, on purpose: freeze used (NTF-06 in-app), quest about to expire, badge earned, demotion, Pro ended, content updates, app updates (ENT handles those in-app), anything comparing the student with friends (X9).
+Not pushed, on purpose: freeze used (ENT-08 in-app), quest about to expire, badge earned, demotion, Pro ended, content updates, app updates (ENT handles those in-app), anything comparing the student with friends (X9).
 
 ### 6.4 Comeback timeline
 
@@ -855,7 +857,7 @@ timeline
   Day 30 : comeback_30 (adults only, server), then silence until the student returns
 ```
 
-On the first open after 2 or more missed days, ENT's launch routing (onboarding doc §6.13) opens NTF-07 Welcome back, which shows the plant and pet state gently, opens the revival quest (ME-08) when the plant is wilted or resting, and after 30+ days adds the comeback plan (MEM-02, R22) and "Update your exam date" (ONB-06 `edit`). When reminders had auto-paused it says "Reminders restart today."
+On the first open after 2 or more missed days, the NTF-07 trigger has ENT's launch routing (onboarding doc §6.13) open ENT-08, which shows the plant and pet state gently, opens the revival quest (ME-08) when the plant is wilted or resting, and after 30+ days adds the comeback plan (MEM-02, R22) and "Update your exam date" (ONB-06 `edit`). When reminders had auto-paused it says "Reminders restart today."
 
 ### 6.5 In-app banners and toasts (NTF-04, NTF-05)
 
@@ -932,7 +934,7 @@ No marketing email to minors, ever. Store receipts come from Apple and Google; R
 | **Pro** | Unlocks. Pro card shows renewal. | Manage plan row. | No gates, no paywall, PAY-16 if a buy is attempted. | Billing transactional pushes. |
 | **Online** | Live data. | Writes go straight to the API. | Checkout. | Server and local. |
 | **Offline** | Snapshot data, shop read-only, care actions queued, quest claims queued. | Writes saved locally and queued. | Paywall shows, CTA disabled "Connect to the internet to start Pro". Manage plan shows cached status. | Local reminders still fire. |
-| **Minor 13–17** | Pet name and pet avatar to other students (R31). Share cards allowed (no personal data). | Stricter notification defaults, analytics toggle hidden, name display locked. | PAY-03 first. | Reminder at the picked time only (R34), learning folded in, exam alerts, focus alarms, social after consent, quiet 21:00, school hours. |
+| **Minor 13–17** | Auto nickname and pet avatar to other students, after consent (R31 amended). Share cards allowed (no personal data). | Stricter notification defaults, analytics toggle hidden, name display locked. | PAY-03 first. | Reminder at the picked time only (R34), learning folded in, exam alerts, focus alarms, social after consent and held for their reminder window (R45), quiet 21:00, school hours. |
 | **Little learner / under 13** | Simplified Me, no Pro card, no prices, no sharing, "For grown-ups". | Parent mode is the only way to change most settings. | No paywall: "Ask a grown-up" → SET-13 → PAY-17. | Daily reminder (parent's time) and focus alarms only. |
 | **Per-exam app** | Exam fixed. | Cross-promo row. | Variant's own store product, same `pro` entitlement. "Pro works in every Smriti app." | Same rules. Deep links carry the variant prefix. |
 | **All-exams app** | Exam chips editable. | | `pro_monthly_intro_all` / `pro_monthly_all` products. | |
@@ -1029,9 +1031,19 @@ No marketing email to minors, ever. Store receipts come from Apple and Google; R
 | UX_FLOW §4.16 | Medium widget "pet mood, today's progress ring and a [Review] deep link": fine. Large widget "exam countdown" assumes a day-precise date | Show "in {Month Year}" when only a month is known |
 | `docs/ux/learn.md` LES-04 vs SET-24 | LES-04 specs its own report sheet; `docs/flows/learn.md` §LES and `docs/flows/tutor-social.md` A5 route to SET-24 | One sheet: SET-24, with LES-04's title and six reasons (they match `learn.content_reports.reason`). LES-04 keeps the card menu |
 | `docs/flows/practice.md` §10 vs `docs/ux/practice.md` (PRC hub, MOCK-14) | Practice uses `practice_cap` and `mock_lock` in the flow but `practice_limit` and `mock_limit` in the UX doc | Use the flow names, which this doc now lists (§5.2) |
-| `docs/flows/tutor-social.md` A6 | Adds `tutor_read_aloud` and `tutor_image` sources; PRD §11.1 doesn't list read aloud or "Draw it" as Pro features | Sources added; the paywall names no new benefit until PRD §11.1 lists them. Owner to decide whether they are Pro |
-| `docs/flows/memory-labs.md` (LAB-03 locked lab) | PRD §11.1 doesn't put labs behind Pro | `lab_lock` only for a lab inside a locked Deep Dive chapter; labs on free chapters stay free |
-| `docs/ux/onboarding.md` ENT-08 | Owns the streak check-in that NTF-06 and NTF-07 drafted | Add a revival-quest primary (ME-08), the "Reminders restart today" line, a [See streak] link and the "next free freeze" line (strings in NTF-06 and NTF-07) |
+| `docs/flows/tutor-social.md` A6 | Added `tutor_read_aloud` and `tutor_image` paywall sources | Resolved by R35: read-aloud is free with a daily cap flag, so `tutor_read_aloud` is removed; "Draw it" (new Agnes images) is Pro and listed under "Higher limits" as `tutor_image` (§5.2) |
+| `docs/flows/memory-labs.md` (LAB-03 locked lab) | Earlier drafts put some labs behind Pro | Resolved by R19 (revised): every lab is free. `lab_lock` stays only for the inline card of a locked Deep Dive, and its paywall links to the same lab in LAB-03 |
+| `docs/ux/onboarding.md` ENT-08 vs NTF-06, NTF-07 | Both docs retired the sheet in favour of the other during revision 1 | Resolved by R41: ENT-08 owns the sheet with this area's rows built in; NTF-06 and NTF-07 are its triggers |
+| DECISIONS R37 vs `docs/research/COMPETITOR_FLOWS.md` A37 | A37 suggests share cards at 7/21/50/100 days | Share cards follow the R37 plant thresholds (7, 30, 100), so the milestones match the plant stages (§3.4) |
+| PRD §9.1 "Smart timing that learns the student's usual study hour" | R34 bans behaviour-predicted sends for minors (DPDP s.9(3)) | PRD §9.1 should say "for adults only"; minors get only the time they picked (§6.2) |
+| DB `learn.activity_days` | No `rescue_done` column, so a 2-minute rescue can't keep the plant healthy; `goal_met` is the daily ring only (comment already says so) | Add `rescue_done boolean not null default false` (memory-labs G23). Keep `goal_met` for the ring; the streak reads the R1 qualifying columns |
+| DB `learn.content_reports.reason` | Check list has no `spam`, which SET-24 needs for community mnemonics (`community_mnemonic`) | Add `spam` to the check, allowed only when `kind = 'community_mnemonic'` (enforced in the service) |
+| DB `learn.content_reports` | No `kind` column for the SET-24 kinds (`lesson_card`, `question`, `review_card`, `solution`, `tutor_message`, `generated_image`, `story_page`, `roleplay_turn`, `community_mnemonic`, `lab`, `album_card`) | Add `kind text not null` with that check list |
+| DB `billing` | No `billing.promo_grants` table and no `promo` value in `billing.subscriptions.source` (referral Pro week, §5.16) | Add the table (`user_id`, `reason` with `referral_week`, `starts_at`, `ends_at`) and `promo` as a source in the entitlement recompute |
+| DB_SCHEMA §11 (line "first name and initial on leaderboards") | Contradicts R31 (amended) and PRD §16.4, which now say auto nickname plus pet avatar after consent | DB_SCHEMA owner updates the sentence; leaderboards read a `public_nickname` generated server side |
+| R31 (amended) word list | No owner named for the fixed EN/HI nickname word list | Tutor-social owns it (SOC); it ships as config with both languages and a review for unsafe combinations. TODO(SOC) |
+| DB `notify.prefs` | New groups have no columns: `streak_saver`, `nudges`, `bedtime_review`, `focus_timer`, `friends`, `exam_alerts`, `news`, plus `paused_at` and `ignored_count` for auto-pause | Add the columns with defaults from `age_band` (minors: off except reminder, focus timer and exam alerts) |
+| APP_FLOW HOME-07 | Older docs still name HOME-07 for parental limits | Retired; the screen is SET-19 (parent time limits) in this doc |
 | DESIGN §5 | No component for a meter (pet mood and energy), a day-dot quest tracker, or a banner | Add `Meter`, `DayDots`, `Banner` (spec in the UX doc) |
 
 ---
@@ -1081,7 +1093,7 @@ Every event goes into the typed catalogue in `packages/analytics` first. No free
 | `time_request_sent` / `time_request_decided` | `decision` | E |
 | `help_article_viewed` | `article_id` | |
 | `support_ticket_sent` | `category`, `has_note` (bool) | |
-| `content_report_submitted` | `surface`, `kind`, `reason`, `has_note` (bool) | E |
+| `content_report_submitted` | `surface`, `kind` (one of the eleven SET-24 kinds), `reason` (LES-04 reasons, plus `spam` for community items), `has_note` (bool, never the note) | E |
 | `paywall_opened` | `source`, `platform`, `intro_eligible`, `variant`, `benefit_set_id` | E |
 | `paywall_cta_tapped` | `source`, `intro_eligible` | E |
 | `paywall_dismissed` | `source`, `method` (maybe_later, back, swipe) | E |
@@ -1095,14 +1107,23 @@ Every event goes into the typed catalogue in `packages/analytics` first. No free
 | `restore_tapped` / `restore_result` | `result` | E |
 | `billing_fix_opened` | `status` | E |
 | `upsell_card_shown` / `upsell_card_tapped` | `placement` | |
-| `notification_sent` (server, from `notify.log`) | `template_id`, `channel` | E |
-| `notification_suppressed` (server) | `template_id`, `reason` | E |
+| `notification_sent` (server, from `notify.log`) | `template_id`, `kind` (§6.4 catalogue, including `reminders_paused`, `challenge_ready`, `report_ready`, `focus_round_end`, `focus_break_end`, `friend_accepted`, `duo_invite`, `duo_at_risk`, `duel_result`, `squad_quest_done`, `league_result`), `channel` | E |
+| `notification_suppressed` (server) | `template_id`, `reason` (cap, quiet_hours, mock_runner_open, minor_window_wait, paused, prefs_off) | E |
 | `notification_opened` | `template_id`, `is_local` | E |
 | `notification_permission_result` | `surface` (settings, banner, web), `result` | E |
 | `banner_shown` / `banner_tapped` / `banner_dismissed` | `kind` | |
 | `widget_added` / `widget_removed` | `size` | |
 | `widget_tapped` | `size`, `target` | |
-| `streak_checkin_shown` / `streak_checkin_action` | owned by ENT-08 (onboarding); listed here because NTF-06 and NTF-07 point to it | |
+| `milestone_shown` | `milestone` (7, 30, 100), `kind` (streak, plant) | |
+| `share_card_shared` | `milestone`, `target` (system_sheet, save_image); 13+ only, never for under-13 | |
+| `reminders_auto_paused` (server) | `ignored_count` (bucketed) | E |
+| `reminders_resumed` | `source` (settings, banner) | E |
+| `comeback_started` / `comeback_completed` | `gap_bucket` (30_59, 60_plus); the in-app plan is for everyone, only the push is adults-only | |
+| `trial_timeline_viewed` | `source` (paywall, manage_plan, checkout) | E |
+| `trial_reminder_sent` (server) | `channel` (push, email) | E |
+| `freeze_equipped` | `slots_filled` | |
+| `incident_freeze_applied` (server) | `incident_id` | E |
+| `streak_checkin_shown` / `streak_checkin_action` | owned by ENT-08 (onboarding); NTF-06 and NTF-07 are its triggers (R41) | |
 
 ---
 
@@ -1110,8 +1131,8 @@ Every event goes into the typed catalogue in `packages/analytics` first. No free
 
 | # | Question | Recommended answer |
 |---|---|---|
-| Q1 | Can gems ever be bought with money? | No, for anyone, at launch (§3.6). Revisit for adults only, after a year of data. |
-| Q2 | Plant stage thresholds (study days to sprout, sapling, flowering, tree)? | 1 / 7 / 30 / 100 as a flag; drop "Budding". |
+| Q1 | Can gems ever be bought with money? | Decided (R36): no, for anyone. |
+| Q2 | Plant stage thresholds (study days to sprout, sapling, flowering, tree)? | Decided (R37): 1 / 7 / 30 / 100 as a flag; no "Budding". |
 | Q3 | The ₹1 rule is "once per person" (identity keys plus device signals, auth doc §8). What does the paywall do when the eligibility call fails? | Show the ₹99 "Get Pro" copy and retry later. Never promise ₹1 without a yes from the server. Fine print says "once per person". |
 | Q4 | Can a 13–17-year-old complete checkout themselves? | Yes, after PAY-03 ("Is a parent paying?"), relying on store family approvals and bank checks. Under 13 (all managed accounts, auth Q1): only a parent, through PAY-17. Legal to confirm. |
 | Q5 | Product analytics for minors? | Off, no toggle, only the essential allowlist in §11. Legal to confirm against the DPDP Rules for children. This costs funnel visibility for minors; accept it. |
@@ -1120,8 +1141,56 @@ Every event goes into the typed catalogue in `packages/analytics` first. No free
 | Q8 | After Pro ends, do reviews of cards from Pro lessons keep coming? | Yes. Only the Deep Dives re-lock. |
 | Q9 | Email provider for the parent report and transactional mail? | Any Indian-deliverability-tested provider behind a small interface in the worker; pick in Phase 2 with the parent report. |
 | Q10 | Rest days: one free per week, separate from freezes? | Yes, as a flag (`game.rest_days_per_week` = 1). |
-| Q11 | Do prices shown on web include GST? | Yes, show tax-inclusive prices everywhere (₹99 is the price paid), matching the stores. Finance to confirm invoicing. |
-| Q12 | Hindi register for the pet? | "तुम" for pet lines, "आप" for system, billing and legal. Gender-neutral constructions only. |
-| Q13 | Trial-ending push 3 days before the ₹1 month ends? | Yes, always on (transactional). |
-| Q14 | Should demotion in leagues ever notify? | No. Only promotion is pushed; the league screen shows the result neutrally. |
+| Q11 | Do prices shown on web include GST? | Decided (R38): tax-inclusive everywhere. Finance to confirm invoicing. |
+| Q12 | Hindi register for the pet? | Decided (R3): "आप" everywhere, pet lines included; "तुम" only in little-learner (class 1–5) strings. Gender-neutral constructions only. |
+| Q13 | Trial-ending push 3 days before the ₹1 month ends? | Decided (R33): yes, always on (transactional), by push and email (§5.15, §6.7). |
+| Q14 | Should demotion in leagues ever notify? | No. Promotion has its own push; everyone else gets the neutral `league_result` ("Your league week is done"), which never says stayed or moved down. |
 | Q15 | Can the student switch pet species? | Yes, once every 30 days, keeping mood and outfits. |
+| Q16 | For minors, should a friend push that waits for the reminder window (R45) be merged into the reminder, or sent just after it? | Merged into the reminder copy as one line ("{friend} sent a duel"), so the minor still gets one push a day. |
+| Q17 | Template bandit for adults (`notify.bandit`): on at launch? | Off at launch; turn it on after the rotating pools have four weeks of open-rate data. Minors never use it. |
+| Q18 | Who reviews the auto-nickname word list for unsafe combinations? | Tutor-social owns the list; trust and safety signs it off before Phase 2 social launch. |
+
+---
+
+## Changelog (revision 1)
+
+- **Rulings:** aligned to R1 to R45. Gem rule, plant thresholds, paywall honesty, age-gated checkout and minors' analytics allowlist accepted as R36 to R39. §12 Q1, Q2, Q11, Q12 and Q13 are marked decided.
+- **Hindi (R3):** आप everywhere, pet lines included; तुम only in little-learner strings. Gender-neutral throughout.
+- **Streak and plant (R1, R23, R28, R37):**
+  - Qualifying days are 1 lesson, 10 reviews, 1 mock section or the daily challenge.
+  - The `Plant` icon replaces the flame everywhere.
+  - 2 freeze slots, an incident freeze, rest days planned ahead and a protected exam day.
+  - Health counts health days, including a 2-minute rescue.
+  - Revival counts qualifying days.
+  - Milestone moments and share cards with no personal data (13+).
+- **ENT-08 (R41):** NTF-06 and NTF-07 are now trigger blocks for ENT-08's streak check-in sheet, not screens.
+- **Minors (R31 amended, R34, R45):**
+  - Public surfaces show the auto nickname and pet avatar; friends added by link or QR see the pet name.
+  - Only the picked reminder time, with no smart timing, streak saver, nudges, bedtime review or comeback push (the in-app comeback plan in ENT-08 is for everyone).
+  - Friend pushes wait for the reminder window.
+- **Notifications (R34, A40, A41, A44):**
+  - Fixed caps per group; rotating template pools with at least 3 per kind.
+  - Auto-pause after 7 ignored reminders, with a `reminders_paused` notice.
+  - Comeback flow after 30+ days (adults); no pushes while the mock runner is open.
+  - New kinds from practice, memory-labs and tutor-social; Focus timer and Exam alerts channels.
+  - NTF-02 is reached only from SET-03; NTF-03 reads ONB-15.
+- **Paywall and billing (R14, R15, R33, R35, R38, A38, A39, X3, X5, X6):**
+  - No paywall in onboarding; trial timeline with real dates; our reminder 3 days before; cancel in 2 taps (new §5.15).
+  - Tax-inclusive prices, and ₹1 only when the server says eligible.
+  - Labs are free, so `lab_lock` is only an inline Deep Dive card; read-aloud is free; "Draw it" is Pro under "Higher limits".
+  - The practice limit pet line (`practice_cap`) no longer says "locked PYQ"; PAY-19 uses `primaryTint` and shows only to 13+.
+  - Referral Pro week through `billing.promo_grants` (new §5.16).
+- **Me and Settings:**
+  - ME-01: AUTH-33 chip, My memory and Your chats rows, Continue with Google plus the R40 trust line.
+  - ME-02: optional school and city fields.
+  - ME-11: Elements and Experiments collections.
+  - ME-17: palace room packs.
+  - ME-21: downloads go to LRN-05 first and include labs.
+  - SET-02: one-time Age row; deletion is never hidden (X16).
+  - SET-03: groups regrouped; SET-07: mock dark mode; SET-09: global reduce motion; SET-10: watering cans, default 10 minutes.
+  - SET-14: practice counts, Picture rhymes and Tutor button toggles, parent friends list.
+  - SET-24: eleven kinds on `learn.content_reports`, LES-04 reasons plus Spam for community items.
+- **Widget (A42):** the plant widget changes through the day.
+- **Rest days (A43)** and **comeback (A44)** added.
+- **Phases:** every screen carries a phase note (R8).
+- **Docs:** §10 has new conflict rows (DB columns, PRD §9.1 smart timing, DB_SCHEMA nickname line, word-list owner, HOME-07); §11 has new events.

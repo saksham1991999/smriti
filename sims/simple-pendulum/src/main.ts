@@ -90,10 +90,10 @@ function mount(rt: SimRuntime): SimController {
     while (ruler.firstChild) ruler.firstChild.remove();
     ruler.append(svg('line', { x1: RULER_X, y1: PY, x2: RULER_X, y2: PY + RULER_PX, class: 'ruler-line' }));
     const minor = max / 20;
-    const decimals = max < 1 ? 2 : 1;
+    const decimals = 1;
     for (let k = 0; k <= 20; k += 1) {
       const y = PY + k * minor * pxPerM;
-      const major = k % 5 === 0;
+      const major = k % 4 === 0;
       ruler.append(svg('line', { x1: RULER_X, y1: y, x2: RULER_X + (major ? 12 : 6), y2: y, class: 'ruler-tick' }));
       if (major) ruler.append(svg('text', { x: RULER_X - 6, y, class: 'sv-text sv-muted ruler-label', 'text-anchor': 'end', 'dominant-baseline': 'central' }, i18n.num(k * minor, decimals)));
     }

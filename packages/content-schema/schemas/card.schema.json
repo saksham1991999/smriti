@@ -1,0 +1,1259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/card.schema.json",
+  "title": "Card",
+  "description": "One lesson card (PRD 5.2). Every card has id, type, concepts (at least one) and depth (1-5). Text fields are localised; media fields are media request ids, never URLs.",
+  "type": "object",
+  "required": ["type"],
+  "discriminator": {
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/StoryCard"
+    },
+    {
+      "$ref": "#/$defs/ExplainerCard"
+    },
+    {
+      "$ref": "#/$defs/FormulaCard"
+    },
+    {
+      "$ref": "#/$defs/AnimationCard"
+    },
+    {
+      "$ref": "#/$defs/InteractiveCard"
+    },
+    {
+      "$ref": "#/$defs/SimCard"
+    },
+    {
+      "$ref": "#/$defs/Model3dCard"
+    },
+    {
+      "$ref": "#/$defs/Pano360Card"
+    },
+    {
+      "$ref": "#/$defs/DerivationCard"
+    },
+    {
+      "$ref": "#/$defs/WorkedExampleCard"
+    },
+    {
+      "$ref": "#/$defs/QuestionCard"
+    },
+    {
+      "$ref": "#/$defs/MemoryHookCard"
+    },
+    {
+      "$ref": "#/$defs/RoleplayCard"
+    },
+    {
+      "$ref": "#/$defs/VideoCard"
+    },
+    {
+      "$ref": "#/$defs/ExperimentCard"
+    },
+    {
+      "$ref": "#/$defs/SummaryCard"
+    },
+    {
+      "$ref": "#/$defs/CheatSheetRefCard"
+    },
+    {
+      "$ref": "#/$defs/CommonTrapsCard"
+    }
+  ],
+  "$defs": {
+    "CardType": {
+      "type": "string",
+      "enum": [
+        "story",
+        "explainer",
+        "formula",
+        "animation",
+        "interactive",
+        "sim",
+        "model3d",
+        "pano360",
+        "derivation",
+        "worked_example",
+        "question",
+        "memory_hook",
+        "roleplay",
+        "video",
+        "experiment",
+        "summary",
+        "cheat_sheet_ref",
+        "common_traps"
+      ]
+    },
+    "CardBase": {
+      "type": "object",
+      "required": ["id", "type", "concepts", "depth"],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/CardId"
+        },
+        "type": {
+          "$ref": "#/$defs/CardType"
+        },
+        "concepts": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/ConceptId"
+          }
+        },
+        "depth": {
+          "$ref": "common.schema.json#/$defs/Depth"
+        },
+        "source": {
+          "$ref": "common.schema.json#/$defs/Source"
+        }
+      }
+    },
+    "LabFallback": {
+      "description": "What LAB-05 shows when a sim, 3D model or 360 scene cannot load (memory-labs G2).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["body"],
+      "properties": {
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "video_ref": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["youtube_id"],
+          "properties": {
+            "youtube_id": {
+              "$ref": "#/$defs/YoutubeId"
+            },
+            "start_s": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "YoutubeId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{11}$"
+    },
+    "NumericTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "common.schema.json#/$defs/Unit"
+        },
+        "tolerance": {
+          "$ref": "common.schema.json#/$defs/Tolerance"
+        }
+      }
+    },
+    "StoryCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "title", "body"],
+      "properties": {
+        "type": {
+          "const": "story"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "panels": {
+          "description": "Comic strip panels (2-4), each an image request.",
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["media"],
+            "properties": {
+              "media": {
+                "$ref": "common.schema.json#/$defs/ImageRef"
+              },
+              "caption": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        },
+        "narration": {
+          "$ref": "common.schema.json#/$defs/LocalizedAudioRef"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "ExplainerCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "title", "body", "media"],
+      "properties": {
+        "type": {
+          "const": "explainer"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "body": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "highlights": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["term", "definition"],
+            "properties": {
+              "term": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "definition": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "narration": {
+          "$ref": "common.schema.json#/$defs/LocalizedAudioRef"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "FormulaCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "title", "latex", "symbols"],
+      "properties": {
+        "type": {
+          "const": "formula"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "latex": {
+          "$ref": "common.schema.json#/$defs/Latex"
+        },
+        "spoken": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "symbols": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["symbol", "meaning", "unit"],
+            "properties": {
+              "symbol": {
+                "$ref": "common.schema.json#/$defs/Latex"
+              },
+              "meaning": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "unit": {
+                "$ref": "common.schema.json#/$defs/Unit"
+              }
+            }
+          }
+        },
+        "conditions": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "vault_id": {
+          "$ref": "common.schema.json#/$defs/DottedId"
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "AnimationCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "title", "media", "caption", "transcript"],
+      "properties": {
+        "type": {
+          "const": "animation"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/AnimationRef"
+        },
+        "poster": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "caption": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "transcript": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "InteractiveCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "prompt", "widget", "config"],
+      "properties": {
+        "type": {
+          "const": "interactive"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "widget": {
+          "type": "string",
+          "enum": ["drag_sort", "slider", "graph", "tap_reveal", "label_diagram", "order_steps"]
+        },
+        "config": {
+          "type": "object"
+        },
+        "feedback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "correct": {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            },
+            "wrong": {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            }
+          }
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        }
+      },
+      "discriminator": {
+        "propertyName": "widget"
+      },
+      "oneOf": [
+        {
+          "required": ["widget", "config"],
+          "properties": {
+            "widget": {
+              "const": "drag_sort"
+            },
+            "config": {
+              "$ref": "#/$defs/DragSortConfig"
+            }
+          }
+        },
+        {
+          "required": ["widget", "config"],
+          "properties": {
+            "widget": {
+              "const": "slider"
+            },
+            "config": {
+              "$ref": "#/$defs/SliderConfig"
+            }
+          }
+        },
+        {
+          "required": ["widget", "config"],
+          "properties": {
+            "widget": {
+              "const": "graph"
+            },
+            "config": {
+              "$ref": "#/$defs/GraphConfig"
+            }
+          }
+        },
+        {
+          "required": ["widget", "config"],
+          "properties": {
+            "widget": {
+              "const": "tap_reveal"
+            },
+            "config": {
+              "$ref": "#/$defs/TapRevealConfig"
+            }
+          }
+        },
+        {
+          "required": ["widget", "config"],
+          "properties": {
+            "widget": {
+              "const": "label_diagram"
+            },
+            "config": {
+              "$ref": "#/$defs/LabelDiagramConfig"
+            }
+          }
+        },
+        {
+          "required": ["widget", "config"],
+          "properties": {
+            "widget": {
+              "const": "order_steps"
+            },
+            "config": {
+              "$ref": "#/$defs/OrderStepsConfig"
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "DragSortConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items", "bins", "answer"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "bins": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        },
+        "answer": {
+          "description": "Which bin each item belongs in.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["item", "bin"],
+            "properties": {
+              "item": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "bin": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        }
+      }
+    },
+    "SliderConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max", "step", "unit"],
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "initial": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "common.schema.json#/$defs/Unit"
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "tolerance"],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "tolerance": {
+              "$ref": "common.schema.json#/$defs/Tolerance"
+            }
+          }
+        },
+        "guidance": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        }
+      }
+    },
+    "Axis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max", "step", "label"],
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "step": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "unit": {
+          "$ref": "common.schema.json#/$defs/Unit"
+        }
+      }
+    },
+    "GraphConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y", "handle"],
+      "properties": {
+        "x": {
+          "$ref": "#/$defs/Axis"
+        },
+        "y": {
+          "$ref": "#/$defs/Axis"
+        },
+        "handle": {
+          "type": "string",
+          "enum": ["point", "curve"]
+        },
+        "initial": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y"],
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "tolerance"],
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "tolerance": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "TapRevealConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tiles"],
+      "properties": {
+        "tiles": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "text"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "anchor": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        }
+      }
+    },
+    "LabelDiagramConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["media", "spots", "labels", "answer"],
+      "properties": {
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "spots": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "anchor"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "anchor": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        },
+        "labels": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "answer": {
+          "description": "Which label belongs on each spot.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["spot", "label"],
+            "properties": {
+              "spot": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        }
+      }
+    },
+    "OrderStepsConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps"],
+      "properties": {
+        "steps": {
+          "description": "In the correct order. The player shuffles them.",
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        }
+      }
+    },
+    "SimCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "sim", "tasks", "debrief", "fallback"],
+      "properties": {
+        "type": {
+          "const": "sim"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "sim": {
+          "$ref": "common.schema.json#/$defs/SimRef"
+        },
+        "params": {
+          "type": "object"
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "prompt", "measurement", "expected"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "prompt": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "measurement": {
+                "description": "The measurement name the sim reports (sim-bridge measurement.name).",
+                "type": "string",
+                "minLength": 1
+              },
+              "expected": {
+                "$ref": "#/$defs/NumericTarget"
+              }
+            }
+          }
+        },
+        "debrief": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "fallback": {
+          "$ref": "#/$defs/LabFallback"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Model3dCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "model", "prompt", "labels", "exploded_view", "fallback"],
+      "properties": {
+        "type": {
+          "const": "model3d"
+        },
+        "model": {
+          "$ref": "common.schema.json#/$defs/Model3dRef"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "poster": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["anchor", "text"],
+            "properties": {
+              "anchor": {
+                "description": "Label node name in the GLB, without the label: prefix.",
+                "type": "string",
+                "pattern": "^[a-z0-9_]+$"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        },
+        "exploded_view": {
+          "type": "boolean"
+        },
+        "fallback": {
+          "$ref": "#/$defs/LabFallback"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Pano360Card": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "pano", "prompt", "hotspots", "fallback"],
+      "properties": {
+        "type": {
+          "const": "pano360"
+        },
+        "pano": {
+          "$ref": "common.schema.json#/$defs/PanoRef"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "hotspots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "yaw", "pitch", "title", "body"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "yaw": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              },
+              "pitch": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+              },
+              "title": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "body": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        },
+        "fallback": {
+          "$ref": "#/$defs/LabFallback"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "DerivationCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "title", "steps"],
+      "properties": {
+        "type": {
+          "const": "derivation"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["latex", "say"],
+            "properties": {
+              "latex": {
+                "$ref": "common.schema.json#/$defs/Latex"
+              },
+              "say": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "why": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "common.schema.json#/$defs/I18nText"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "WorkedExampleCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "problem", "solution_steps", "answer"],
+      "properties": {
+        "type": {
+          "const": "worked_example"
+        },
+        "problem": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "solution_steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "answer": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "answer_value": {
+          "$ref": "#/$defs/NumericTarget"
+        },
+        "shortcut": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            }
+          ]
+        },
+        "common_trap": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            }
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "QuestionCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "question"],
+      "properties": {
+        "type": {
+          "const": "question"
+        },
+        "question": {
+          "$ref": "common.schema.json#/$defs/QuestionId"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "MemoryHookCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "mnemonic"],
+      "properties": {
+        "type": {
+          "const": "memory_hook"
+        },
+        "mnemonic": {
+          "$ref": "common.schema.json#/$defs/LocalizedRef"
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "RoleplayCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": [
+        "type",
+        "character",
+        "persona_prompt",
+        "goals",
+        "guardrails",
+        "opening_line",
+        "suggested_replies"
+      ],
+      "properties": {
+        "type": {
+          "const": "roleplay"
+        },
+        "character": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "era", "portrait"],
+          "properties": {
+            "name": {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            },
+            "era": {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            },
+            "portrait": {
+              "$ref": "common.schema.json#/$defs/ImageRef"
+            }
+          }
+        },
+        "persona_prompt": {
+          "description": "Instructions for the role-play model: documented views only, cited sources.",
+          "type": "string",
+          "minLength": 1
+        },
+        "goals": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "guardrails": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "opening_line": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "suggested_replies": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "script": {
+          "$ref": "common.schema.json#/$defs/ExtraId"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "VideoCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "youtube_id", "start_s", "end_s"],
+      "properties": {
+        "type": {
+          "const": "video"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "youtube_id": {
+          "$ref": "#/$defs/YoutubeId"
+        },
+        "start_s": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "concept_timestamps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["concept", "t_s"],
+            "properties": {
+              "concept": {
+                "$ref": "common.schema.json#/$defs/ConceptId"
+              },
+              "t_s": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "ExperimentCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": [
+        "type",
+        "title",
+        "materials",
+        "steps",
+        "safety",
+        "adult_supervision",
+        "why_it_works"
+      ],
+      "properties": {
+        "type": {
+          "const": "experiment"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "materials": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "safety": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "adult_supervision": {
+          "type": "boolean"
+        },
+        "why_it_works": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "SummaryCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "points"],
+      "properties": {
+        "type": {
+          "const": "summary"
+        },
+        "points": {
+          "description": "Key points. Each summary card becomes a spaced-repetition card (c:{card_id}).",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "media": {
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "CheatSheetRefCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "sheet"],
+      "properties": {
+        "type": {
+          "const": "cheat_sheet_ref"
+        },
+        "sheet": {
+          "type": "string",
+          "pattern": "^cs\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "CommonTrapsCard": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/CardBase"
+        }
+      ],
+      "required": ["type", "traps"],
+      "properties": {
+        "type": {
+          "const": "common_traps"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "traps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mistake", "correct"],
+            "properties": {
+              "mistake": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "correct": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

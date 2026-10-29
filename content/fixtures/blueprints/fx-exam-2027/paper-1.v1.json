@@ -1,0 +1,201 @@
+{
+  "schema": "blueprint@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "exam_profile": "fx-exam-2027",
+  "paper_code": "paper-1",
+  "version": 1,
+  "effective_from": "2026-10-01",
+  "verified_at": "2026-10-29",
+  "source": {
+    "url": "https://example.invalid/fixture-notification",
+    "title": "Fixture notification (test data)",
+    "published": "2026-09-01",
+    "retrieved": "2026-10-29",
+    "pages": "1-2"
+  },
+  "mode": "cbt",
+  "duration_min": 30,
+  "languages": [
+    "en",
+    "hi"
+  ],
+  "language_switch": "per_question",
+  "interface": "generic",
+  "interface_profile": {
+    "buttons": [
+      {
+        "action": "save_next",
+        "label": {
+          "en": "Save & next",
+          "hi": "सेव करें और आगे"
+        }
+      },
+      {
+        "action": "mark_review_next",
+        "label": {
+          "en": "Mark for review & next",
+          "hi": "समीक्षा के लिए चिह्नित करें और आगे"
+        }
+      },
+      {
+        "action": "clear_response",
+        "label": {
+          "en": "Clear response",
+          "hi": "उत्तर हटाएँ"
+        }
+      },
+      {
+        "action": "submit",
+        "label": {
+          "en": "Submit",
+          "hi": "जमा करें"
+        }
+      }
+    ],
+    "palette_states": [
+      {
+        "id": "not_visited",
+        "label": {
+          "en": "Not visited",
+          "hi": "देखा नहीं"
+        },
+        "colour_token": "mockPalette.notVisited",
+        "shape": "square"
+      },
+      {
+        "id": "not_answered",
+        "label": {
+          "en": "Not answered",
+          "hi": "उत्तर नहीं दिया"
+        },
+        "colour_token": "mockPalette.notAnswered",
+        "shape": "pentagon-down"
+      },
+      {
+        "id": "answered",
+        "label": {
+          "en": "Answered",
+          "hi": "उत्तर दिया"
+        },
+        "colour_token": "mockPalette.answered",
+        "shape": "pentagon-up"
+      },
+      {
+        "id": "marked",
+        "label": {
+          "en": "Marked for review",
+          "hi": "समीक्षा के लिए चिह्नित"
+        },
+        "colour_token": "mockPalette.marked",
+        "shape": "circle"
+      },
+      {
+        "id": "answered_marked",
+        "label": {
+          "en": "Answered and marked",
+          "hi": "उत्तर दिया और चिह्नित"
+        },
+        "colour_token": "mockPalette.answeredMarked",
+        "shape": "circle-tick"
+      }
+    ],
+    "save_requires_explicit_action": true,
+    "clear_keeps_mark": true,
+    "marked_answer_evaluated": true,
+    "keyboard_disabled_on_exam_day": true
+  },
+  "calculator": "none",
+  "section_navigation": "free",
+  "early_section_submit": null,
+  "numeric_input": "virtual_keypad",
+  "question_count": 6,
+  "max_marks": 24,
+  "sections": [
+    {
+      "code": "section-a",
+      "title": {
+        "en": "Fixture section A",
+        "hi": "फ़िक्स्चर खंड A"
+      },
+      "subject": "fx",
+      "timer_min": null,
+      "question_count": 4,
+      "attempt_rule": {
+        "attempt_any": null,
+        "over_attempt": null
+      },
+      "question_types": [
+        "mcq_single"
+      ],
+      "marking": {
+        "mcq_single": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0
+        }
+      }
+    },
+    {
+      "code": "section-b",
+      "title": {
+        "en": "Fixture section B",
+        "hi": "फ़िक्स्चर खंड B"
+      },
+      "subject": "fx",
+      "timer_min": null,
+      "question_count": 2,
+      "type_counts": {
+        "numerical": 1,
+        "mcq_multi": 1
+      },
+      "attempt_rule": {
+        "attempt_any": null,
+        "over_attempt": null
+      },
+      "question_types": [
+        "numerical",
+        "mcq_multi"
+      ],
+      "marking": {
+        "numerical": {
+          "correct": 4,
+          "wrong": 0,
+          "unattempted": 0,
+          "tolerance": "as_notified"
+        },
+        "mcq_multi": {
+          "correct": 4,
+          "wrong": -2,
+          "unattempted": 0,
+          "partial": {
+            "per_correct_option": 1,
+            "requires_no_wrong": true
+          }
+        }
+      }
+    }
+  ],
+  "qualifying": {
+    "rule": null
+  },
+  "exam_day": {
+    "reporting_lead_min": null
+  },
+  "accommodations": null,
+  "group": null,
+  "instructions": {
+    "en": "Fixture instructions (test data).",
+    "hi": "फ़िक्स्चर निर्देश (परीक्षण डेटा)।"
+  }
+}

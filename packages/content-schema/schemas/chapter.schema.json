@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/chapter.schema.json",
+  "title": "ChapterFile",
+  "description": "content/graph/{subject_id}/{chapter_slug}.json: chapter -> topics -> subtopics -> concepts (written by syllabus-mapper). Projects to content.chapters, topics, subtopics, concepts and concept_edges.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "id", "subject", "unit", "name", "topics"],
+  "properties": {
+    "schema": { "const": "chapter@1" },
+    "id": { "$ref": "common.schema.json#/$defs/DottedId" },
+    "subject": { "$ref": "common.schema.json#/$defs/Slug" },
+    "unit": { "$ref": "common.schema.json#/$defs/DottedId" },
+    "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+    "ncert_ref": { "type": ["string", "null"] },
+    "topics": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Topic" }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "Topic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "subtopics"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/TopicId" },
+        "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "summary": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "subtopics": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/Subtopic" }
+        }
+      }
+    },
+    "Subtopic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "concepts"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/DottedId" },
+        "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "concepts": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/Concept" }
+        }
+      }
+    },
+    "ConceptKind": {
+      "type": "string",
+      "enum": [
+        "fact",
+        "definition",
+        "formula",
+        "derivation",
+        "process",
+        "skill",
+        "date",
+        "list",
+        "diagram"
+      ]
+    },
+    "Concept": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "intrinsic_depth",
+        "summary",
+        "key_points",
+        "prerequisites",
+        "syllabus_refs"
+      ],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/ConceptId" },
+        "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "kind": { "$ref": "#/$defs/ConceptKind" },
+        "intrinsic_depth": { "$ref": "common.schema.json#/$defs/Depth" },
+        "summary": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "key_points": {
+          "description": "What a complete explanation must contain; the Feynman tutor grades against them.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "prerequisites": {
+          "description": "Concept ids this concept builds on. Edge kind prerequisite, from this concept to each prerequisite. Must form no cycle.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        },
+        "related": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        },
+        "contrasts": {
+          "description": "Confusable concepts (edge kind contrast).",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        },
+        "applies_in": {
+          "description": "Concepts where this one is applied (edge kind applies_in).",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        },
+        "aliases": {
+          "description": "Old ids kept after a concept was split or renamed. Never reused.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        },
+        "syllabus_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/SyllabusRef" }
+        }
+      }
+    }
+  }
+}

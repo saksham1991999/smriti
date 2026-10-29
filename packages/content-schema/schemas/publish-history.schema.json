@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/publish-history.schema.json",
+  "title": "PublishHistory",
+  "description": "publish-history.json in the output target: every hash ever published per bundle, manifest and content item, so versions stay monotonic and patches can be built from earlier versions. Mirrors content.bundle_history.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "bundles", "manifests", "items"],
+  "properties": {
+    "schema": { "const": "publish-history@1" },
+    "fixture": { "type": "boolean" },
+    "bundles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hash", "version", "size_bytes", "published_at"],
+          "properties": {
+            "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "version": { "type": "integer", "minimum": 1 },
+            "size_bytes": { "type": "integer", "minimum": 1 },
+            "published_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    },
+    "manifests": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hash", "version", "published_at"],
+          "properties": {
+            "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "version": { "type": "integer", "minimum": 1 },
+            "published_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "hashes", "published_at"],
+          "properties": {
+            "version": { "type": "integer", "minimum": 1 },
+            "hashes": {
+              "description": "locale -> content hash",
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            },
+            "published_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    }
+  }
+}

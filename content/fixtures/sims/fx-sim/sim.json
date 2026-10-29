@@ -1,0 +1,50 @@
+{
+  "schema": "sim@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx-sim",
+  "version": "0.0.1",
+  "title": {
+    "en": "Fixture sim",
+    "hi": "फ़िक्स्चर सिम"
+  },
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "entry": "index.html",
+  "bridge_version": 1,
+  "locales": [
+    "en",
+    "hi"
+  ],
+  "params_schema": {
+    "type": "object"
+  },
+  "measurements": [
+    {
+      "name": "current",
+      "unit": "A",
+      "label": {
+        "en": "Fixture current",
+        "hi": "फ़िक्स्चर धारा"
+      }
+    }
+  ],
+  "aspect": "4:3",
+  "size_bytes": 1024,
+  "supports_low_power": true,
+  "concepts": [
+    "fx.chapter-a.topic-b.sub-1.concept-1",
+    "fx.chapter-a.topic-b.sub-1.concept-2"
+  ]
+}

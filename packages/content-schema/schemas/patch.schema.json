@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/patch.schema.json",
+  "title": "BundlePatch",
+  "description": "A delta patch from one bundle version to another (TRD 3.2), at patches/{from_hash}-{to_hash}.json, immutable. Applying it to the from bundle gives exactly the to bundle (same canonical hash).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "bundle_id", "from_hash", "to_hash", "set", "unset", "cards", "maps"],
+  "properties": {
+    "schema": { "const": "patch@1" },
+    "bundle_id": { "type": "string" },
+    "from_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "to_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "set": {
+      "description": "Top-level fields (other than cards and the keyed maps) whose value changed, with the new value.",
+      "type": "object"
+    },
+    "unset": {
+      "description": "Top-level fields removed.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "upsert", "removed"],
+      "properties": {
+        "order": {
+          "description": "Every card id of the new version, in order.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "upsert": {
+          "description": "Added and changed cards, whole.",
+          "type": "array",
+          "items": { "type": "object", "required": ["id"] }
+        },
+        "removed": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "maps": {
+      "description": "Changes to the keyed maps (questions, mnemonics, sheets, media, math).",
+      "type": "object",
+      "propertyNames": { "enum": ["questions", "mnemonics", "sheets", "media", "math"] },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["upsert", "removed"],
+        "properties": {
+          "upsert": { "type": "object" },
+          "removed": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

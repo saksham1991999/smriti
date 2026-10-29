@@ -1,0 +1,146 @@
+{
+  "schema": "blueprint@1",
+  "exam_profile": "jee-main-2027",
+  "paper_code": "paper-2a",
+  "title": { "en": "JEE (Main) 2027 Paper 2A (B.Arch.)", "hi": "जेईई (मेन) 2027 पेपर 2A (बी.आर्क.)" },
+  "version": 1,
+  "effective_from": "2026-10-24",
+  "verified_at": "2026-10-29",
+  "source": {
+    "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/202610241890224107.pdf",
+    "title": "Information Bulletin - Joint Entrance Examination (Main) - 2027",
+    "published": "2026-10-24",
+    "retrieved": "2026-10-29",
+    "pages": "printed pp.15-20 (§2.1 mode, §2.3 scheme, §2.4 Paper 2A pattern and marking, §2.5 duration), p.31 (§8.14 drawing materials), pp.56-61 (Appendix III)"
+  },
+  "additional_sources": [
+    {
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024390682350.pdf",
+      "title": "Public Notice: Inviting Online Application Form for Joint Entrance Examination (Main) - 2027 (Session 1)",
+      "published": "2026-10-24",
+      "retrieved": "2026-10-29",
+      "pages": "p.2"
+    }
+  ],
+  "mode": "mixed",
+  "mode_detail": "Mathematics (Part I) and Aptitude Test (Part II) in CBT mode; Drawing Test (Part III) in pen and paper (offline) mode on an A4 drawing sheet (§2.1 b).",
+  "duration_min": 180,
+  "duration_rules": {
+    "pwbd_scribe_eligible_min": 240,
+    "both_2a_and_2b_min": 210,
+    "both_2a_and_2b_pwbd_min": 280,
+    "compensatory_rule": "Not less than 20 minutes per hour for candidates eligible for a scribe (Note 2.5)."
+  },
+  "shift_timings": [
+    { "start": "09:00", "end": "12:00", "tz": "Asia/Kolkata", "note": "Public notice p.2 lists Paper 2A in the first shift; both 2A and 2B together run 09:00-12:30." }
+  ],
+  "languages": ["en", "hi", "as", "bn", "gu", "kn", "ml", "mr", "or", "pa", "ta", "te", "ur"],
+  "language_rules": { "same_as": "content/blueprints/jee-main-2027/paper-1.v1.json#language_rules" },
+  "language_switch": {
+    "allowed": true,
+    "scope": "whole_paper",
+    "between": ["en", "opted_medium"],
+    "control": "profile_image_menu_top_right",
+    "applies_to": ["math-a", "math-b", "aptitude"],
+    "source_ref": "Appendix III item 5; Note 2.2"
+  },
+  "interface": "nta",
+  "interface_profile": { "same_as": "content/blueprints/jee-main-2027/paper-1.v1.json#interface_profile", "applies_to": ["math-a", "math-b", "aptitude"] },
+  "calculator": "none",
+  "section_navigation": "free",
+  "total_questions": 77,
+  "max_marks": 400,
+  "sections": [
+    {
+      "code": "math-a",
+      "title": { "en": "Part I Mathematics: Section A", "hi": "भाग I गणित: खंड A" },
+      "subject": "math",
+      "mode": "cbt",
+      "timer_min": null,
+      "question_count": 20,
+      "attempt_rule": { "attempt_any": null },
+      "question_types": ["mcq_single"],
+      "marking": { "mcq_single": { "correct": 4, "wrong": -1, "multiple_answers": -1, "unattempted": 0, "marked_for_review_unanswered": 0 } }
+    },
+    {
+      "code": "math-b",
+      "title": { "en": "Part I Mathematics: Section B", "hi": "भाग I गणित: खंड B" },
+      "subject": "math",
+      "mode": "cbt",
+      "timer_min": null,
+      "question_count": 5,
+      "attempt_rule": { "attempt_any": null },
+      "question_types": ["integer"],
+      "answer_format": { "entry": "on_screen_virtual_numeric_keypad", "value": "integer", "rounding": "round_off_to_nearest_integer" },
+      "marking": { "integer": { "correct": 4, "wrong": -1, "unattempted": 0, "marked_for_review_unanswered": 0, "tolerance": 0 } }
+    },
+    {
+      "code": "aptitude",
+      "title": { "en": "Part II Aptitude Test", "hi": "भाग II अभिक्षमता परीक्षा" },
+      "subject": null,
+      "mode": "cbt",
+      "timer_min": null,
+      "question_count": 50,
+      "marks": 200,
+      "attempt_rule": { "attempt_any": null },
+      "question_types": ["mcq_single"],
+      "marking": { "mcq_single": { "correct": 4, "wrong": -1, "multiple_answers": -1, "unattempted": 0, "marked_for_review_unanswered": 0 } }
+    },
+    {
+      "code": "drawing",
+      "title": { "en": "Part III Drawing Test", "hi": "भाग III ड्राइंग परीक्षा" },
+      "subject": null,
+      "mode": "pen_paper",
+      "timer_min": null,
+      "question_count": 2,
+      "marks": 100,
+      "attempt_rule": { "attempt_any": null },
+      "question_types": ["drawing"],
+      "marking": { "drawing": { "evaluated_out_of": 100, "negative": false, "rule": "Two questions are to be evaluated out of 100 marks (§2.4 Paper 2A item 3b)." } },
+      "materials": "Own geometry box set, pencils, erasers and colour pencils or crayons; water colours not allowed (§8.14)."
+    }
+  ],
+  "subject_totals": [
+    { "part": "Part I Mathematics", "questions": 25, "marks": 100 },
+    { "part": "Part II Aptitude Test", "questions": 50, "marks": 200 },
+    { "part": "Part III Drawing Test", "questions": 2, "marks": 100 }
+  ],
+  "key_anomaly_rules": { "same_as": "content/blueprints/jee-main-2027/paper-1.v1.json#key_anomaly_rules" },
+  "scoring": {
+    "normalization": "nta_percentile",
+    "merit": "Raw scores in Mathematics, Aptitude Test, Drawing Test and total are converted to NTA scores; merit merges NTA scores of both shifts of the two sessions (§2.4 Paper 2A item 4).",
+    "tie_break_order": [
+      "NTA score in Mathematics",
+      "NTA score in Aptitude Test",
+      "NTA score in Drawing Test",
+      "Lower ratio of attempted incorrect to correct answers in all subjects",
+      "Lower ratio of attempted incorrect to correct answers in Mathematics (Part I)",
+      "Lower ratio of attempted incorrect to correct answers in Aptitude Test (Part II)",
+      "Same rank if still tied"
+    ]
+  },
+  "qualifying": { "rule": null },
+  "instructions": {
+    "en": "Paper 2A has 77 questions for 400 marks in 180 minutes: Mathematics (20 MCQs in Section A and 5 numerical-value questions in Section B, 100 marks), Aptitude Test (50 MCQs, 200 marks) on the computer, and a Drawing Test (2 questions, 100 marks) on an A4 drawing sheet. MCQs and numerical-value questions carry +4 for a correct answer and -1 for an incorrect answer; unanswered questions get 0. There is no negative marking in the Drawing Test.",
+    "hi": "पेपर 2A में 180 मिनट में 400 अंकों के 77 प्रश्न हैं: कंप्यूटर पर गणित (खंड A में 20 बहुविकल्पीय प्रश्न और खंड B में 5 संख्यात्मक मान वाले प्रश्न, 100 अंक) और अभिक्षमता परीक्षा (50 बहुविकल्पीय प्रश्न, 200 अंक), तथा A4 ड्राइंग शीट पर ड्राइंग परीक्षा (2 प्रश्न, 100 अंक)। बहुविकल्पीय और संख्यात्मक मान वाले प्रश्नों में सही उत्तर पर +4 और गलत उत्तर पर -1 अंक हैं; बिना उत्तर वाले प्रश्नों पर 0 अंक। ड्राइंग परीक्षा में ऋणात्मक अंकन नहीं है।"
+  },
+  "instructions_hi_source": "translated",
+  "instructions_basis": "Summary in our own words of bulletin §2.4 (Paper 2A); not the official screen text.",
+  "notes": [
+    "Smriti has no subject IDs for the Aptitude Test or Drawing Test, so 'subject' is null for those sections. A new subject needs a subjectMap entry in packages/tokens.",
+    "The Aptitude Test marking table lists 'Incorrect Answer/Multiple Answer: -1' (§2.4 Paper 2A item 2); recorded as multiple_answers: -1.",
+    "Question type 'drawing' is not in the content-format question type list; it is used here because the Drawing Test is graded by examiners, not by the mock engine.",
+    "Section B: 5 questions, no attempt-any choice stated; integer value rounded off to the nearest integer."
+  ],
+  "open_questions": [
+    "The bulletin does not say how much of the 180 minutes is allotted to the offline Drawing Test or whether it is timed separately."
+  ],
+  "changes_from_previous": "First blueprint for this profile in the repo.",
+  "status": "draft",
+  "sources": [
+    { "kind": "official", "ref": "JEE (Main) 2027 Information Bulletin, §2.1-2.5", "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/202610241890224107.pdf" }
+  ],
+  "authored_by": "skill:exam-blueprint",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

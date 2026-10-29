@@ -1,0 +1,206 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.nuclei",
+  "subject": "phy",
+  "unit": "phy.modern-physics",
+  "name": {
+    "en": "Nuclei",
+    "hi": "नाभिक"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part II, Ch 13",
+  "topics": [
+    {
+      "id": "phy.nuclei.nuclear-composition",
+      "name": {
+        "en": "Atomic Masses, Composition and Size of the Nucleus",
+        "hi": "परमाणु द्रव्यमान, नाभिक की संरचना एवं साइज़"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 13 §13.2",
+        "NCERT Class 12 Physics Part II, Ch 13 §13.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.nuclei.nuclear-composition.core",
+          "name": {
+            "en": "Atomic Masses, Composition and Size of the Nucleus",
+            "hi": "परमाणु द्रव्यमान, नाभिक की संरचना एवं साइज़"
+          },
+          "concepts": [
+            {
+              "id": "phy.nuclei.nuclear-composition.core.nucleus-composition-size",
+              "name": {
+                "en": "Composition and size of the nucleus; atomic masses",
+                "hi": "नाभिक की संरचना एवं साइज़; परमाणु द्रव्यमान"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A nucleus of mass number A contains Z protons and A − Z neutrons, atomic masses are measured in atomic mass units, and nuclear radius grows as R = R₀A^(1/3), so nuclear density is nearly constant.",
+                "hi": "द्रव्यमान संख्या A के नाभिक में Z प्रोटॉन और A − Z न्यूट्रॉन होते हैं, परमाणु द्रव्यमान परमाणु द्रव्यमान मात्रक में मापे जाते हैं, और नाभिकीय त्रिज्या R = R₀A^(1/3) के रूप में बढ़ती है, इसलिए नाभिकीय घनत्व लगभग नियत रहता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish isotopes, isobars and isotones.",
+                  "hi": "समस्थानिकों, समभारिकों और समन्यूट्रॉनिकों में अंतर बताइए।"
+                },
+                {
+                  "en": "Show that nuclear density is independent of A.",
+                  "hi": "दिखाइए कि नाभिकीय घनत्व A पर निर्भर नहीं करता।"
+                }
+              ],
+              "prerequisites": [
+                "phy.atoms.rutherford.core.rutherford-model"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-18:item-3",
+                "neet-ug-2026:physics:unit-18:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.nuclei.binding-energy",
+      "name": {
+        "en": "Mass-Energy and Nuclear Binding Energy",
+        "hi": "द्रव्यमान-ऊर्जा तथा नाभिकीय बंधन-ऊर्जा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 13 §13.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.nuclei.binding-energy.core",
+          "name": {
+            "en": "Mass-Energy and Nuclear Binding Energy",
+            "hi": "द्रव्यमान-ऊर्जा तथा नाभिकीय बंधन-ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.nuclei.binding-energy.core.binding-energy-curve",
+              "name": {
+                "en": "Mass-energy relation, mass defect and binding energy per nucleon",
+                "hi": "द्रव्यमान-ऊर्जा संबंध, द्रव्यमान क्षति एवं प्रति न्यूक्लिऑन बंधन ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A nucleus weighs less than its separate nucleons; this mass defect Δm corresponds to binding energy Δmc², and the binding energy per nucleon peaks for medium-mass nuclei near iron.",
+                "hi": "नाभिक का द्रव्यमान उसके अलग-अलग न्यूक्लिऑनों से कम होता है; यह द्रव्यमान क्षति Δm बंधन ऊर्जा Δmc² के तुल्य है, और प्रति न्यूक्लिऑन बंधन ऊर्जा लोहे के निकट के मध्यम द्रव्यमान नाभिकों के लिए अधिकतम होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute binding energy using 1 u = 931.5 MeV/c².",
+                  "hi": "1 u = 931.5 MeV/c² से बंधन ऊर्जा निकालिए।"
+                },
+                {
+                  "en": "Interpret the binding-energy-per-nucleon curve to explain why both fission and fusion release energy.",
+                  "hi": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र की व्याख्या करके समझाइए कि विखंडन और संलयन दोनों में ऊर्जा क्यों निकलती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.nuclei.nuclear-composition.core.nucleus-composition-size"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-18:item-4",
+                "neet-ug-2026:physics:unit-18:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.nuclei.nuclear-energy",
+      "name": {
+        "en": "Nuclear Energy",
+        "hi": "नाभिकीय ऊर्जा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 13 §13.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.nuclei.nuclear-energy.core",
+          "name": {
+            "en": "Nuclear Energy",
+            "hi": "नाभिकीय ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.nuclei.nuclear-energy.core.fission-fusion",
+              "name": {
+                "en": "Nuclear fission and fusion",
+                "hi": "नाभिकीय विखंडन एवं संलयन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In fission a heavy nucleus such as uranium-235 splits after absorbing a neutron, and in fusion light nuclei combine at very high temperatures; both release energy because the products are more tightly bound.",
+                "hi": "विखंडन में यूरेनियम-235 जैसा भारी नाभिक न्यूट्रॉन अवशोषित करके टूटता है, और संलयन में हल्के नाभिक अति उच्च ताप पर जुड़ते हैं; दोनों में ऊर्जा निकलती है क्योंकि उत्पाद अधिक दृढ़ता से बंधे होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate the energy released in a reaction from the mass difference.",
+                  "hi": "द्रव्यमान अंतर से किसी अभिक्रिया में निकली ऊर्जा निकालिए।"
+                },
+                {
+                  "en": "Explain the chain reaction and the role of moderator and control rods, and why the sun's energy comes from fusion.",
+                  "hi": "शृंखला अभिक्रिया तथा मंदक और नियंत्रक छड़ों की भूमिका समझाइए, और बताइए कि सूर्य की ऊर्जा संलयन से क्यों आती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.nuclei.binding-energy.core.binding-energy-curve"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-18:item-5",
+                "neet-ug-2026:physics:unit-18:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part II, Ch 13",
+      "url": "https://ncert.nic.in/textbook/pdf/leph205.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph2, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 18: Atoms and Nuclei (PDF p.6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 18: ATOMS AND NUCLEI (PDF p.7)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

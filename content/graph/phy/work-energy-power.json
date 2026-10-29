@@ -1,0 +1,586 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.work-energy-power",
+  "subject": "phy",
+  "unit": "phy.mechanics",
+  "name": {
+    "en": "Work, Energy and Power",
+    "hi": "कार्य, ऊर्जा और शक्ति"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part I, Ch 5",
+  "topics": [
+    {
+      "id": "phy.work-energy-power.work",
+      "name": {
+        "en": "Work",
+        "hi": "कार्य"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.2",
+        "NCERT Class 11 Physics Part I, Ch 5 §5.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.work.core",
+          "name": {
+            "en": "Work",
+            "hi": "कार्य"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.work.core.scalar-product",
+              "name": {
+                "en": "Scalar (dot) product of vectors",
+                "hi": "सदिशों का अदिश (बिंदु) गुणनफल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The scalar product A·B = AB cos θ = AxBx + AyBy + AzBz is a scalar, and it gives the component of one vector along another.",
+                "hi": "अदिश गुणनफल A·B = AB cos θ = AxBx + AyBy + AzBz एक अदिश है, और इससे एक सदिश का दूसरे के अनुदिश घटक मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Use the dot product to find the angle between two vectors.",
+                  "hi": "दो सदिशों के बीच कोण निकालने के लिए बिंदु गुणनफल का उपयोग कीजिए।"
+                },
+                {
+                  "en": "State that the dot product is commutative and distributive, and zero for perpendicular vectors.",
+                  "hi": "बताइए कि बिंदु गुणनफल क्रमविनिमेय और वितरणात्मक है, और लंबवत सदिशों के लिए शून्य होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.resolution.core.unit-vector-resolution"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:physics:unit-2:item-5",
+                "jee-main-2027:physics:unit-4:item-1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.work-energy-power.work.core.work-constant-force",
+              "name": {
+                "en": "Work done by a constant force",
+                "hi": "नियत बल द्वारा किया गया कार्य"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Work done by a constant force is W = F·d = Fd cos θ; it can be positive, negative or zero depending on the angle between force and displacement.",
+                "hi": "नियत बल द्वारा किया गया कार्य W = F·d = Fd cos θ है; बल और विस्थापन के बीच कोण के अनुसार यह धनात्मक, ऋणात्मक या शून्य हो सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Give cases of zero work, such as a force perpendicular to displacement.",
+                  "hi": "शून्य कार्य की स्थितियाँ बताइए, जैसे विस्थापन के लंबवत बल।"
+                },
+                {
+                  "en": "State the SI unit of work (joule) and its dimensions.",
+                  "hi": "कार्य का SI मात्रक (जूल) और उसकी विमाएँ बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.work.core.scalar-product"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-1",
+                "neet-ug-2026:physics:unit-4:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy",
+      "name": {
+        "en": "Kinetic Energy and the Work-Energy Theorem",
+        "hi": "गतिज ऊर्जा एवं कार्य-ऊर्जा प्रमेय"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.4",
+        "NCERT Class 11 Physics Part I, Ch 5 §5.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.kinetic-energy.core",
+          "name": {
+            "en": "Kinetic Energy and the Work-Energy Theorem",
+            "hi": "गतिज ऊर्जा एवं कार्य-ऊर्जा प्रमेय"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.kinetic-energy.core.work-energy-theorem",
+              "name": {
+                "en": "Kinetic energy and the work-energy theorem",
+                "hi": "गतिज ऊर्जा एवं कार्य-ऊर्जा प्रमेय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Kinetic energy is K = mv²/2, and the net work done on a body equals the change in its kinetic energy.",
+                "hi": "गतिज ऊर्जा K = mv²/2 है, और किसी वस्तु पर किया गया नेट कार्य उसकी गतिज ऊर्जा में परिवर्तन के बराबर होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Prove the theorem for a constant force from v² = u² + 2as, and for a variable force by integration.",
+                  "hi": "नियत बल के लिए v² = u² + 2as से और परिवर्ती बल के लिए समाकलन से प्रमेय सिद्ध कीजिए।"
+                },
+                {
+                  "en": "Relate kinetic energy and momentum, K = p²/2m.",
+                  "hi": "गतिज ऊर्जा और संवेग को जोड़िए, K = p²/2m।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.work.core.work-constant-force",
+                "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-2",
+                "neet-ug-2026:physics:unit-4:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.variable-force",
+      "name": {
+        "en": "Work Done by a Variable Force",
+        "hi": "परिवर्ती बल द्वारा किया गया कार्य"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.variable-force.core",
+          "name": {
+            "en": "Work Done by a Variable Force",
+            "hi": "परिवर्ती बल द्वारा किया गया कार्य"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.variable-force.core.work-variable-force",
+              "name": {
+                "en": "Work done by a variable force",
+                "hi": "परिवर्ती बल द्वारा किया गया कार्य"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "When force varies with position, work is the integral of F dx, the area under the force-displacement graph.",
+                "hi": "जब बल स्थिति के साथ बदलता है, तो कार्य F dx का समाकल होता है, यानी बल-विस्थापन ग्राफ़ के नीचे का क्षेत्रफल।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute work as the area under an F-x graph made of straight-line segments.",
+                  "hi": "सरल रेखा खंडों से बने F-x ग्राफ़ के नीचे के क्षेत्रफल से कार्य निकालिए।"
+                },
+                {
+                  "en": "Evaluate ∫F dx for a force given as a function of x.",
+                  "hi": "x के फलन के रूप में दिए गए बल के लिए ∫F dx का मान निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.work.core.work-constant-force"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-1",
+                "neet-ug-2026:physics:unit-4:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy",
+      "name": {
+        "en": "The Concept of Potential Energy",
+        "hi": "स्थितिज ऊर्जा की अभिधारणा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.potential-energy.core",
+          "name": {
+            "en": "The Concept of Potential Energy",
+            "hi": "स्थितिज ऊर्जा की अभिधारणा"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.potential-energy.core.potential-energy",
+              "name": {
+                "en": "Potential energy",
+                "hi": "स्थितिज ऊर्जा"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Potential energy is energy stored because of position or configuration, defined for conservative forces with F = −dU/dx; near the earth it is mgh.",
+                "hi": "स्थितिज ऊर्जा स्थिति या विन्यास के कारण संचित ऊर्जा है, जो संरक्षी बलों के लिए F = −dU/dx से परिभाषित होती है; पृथ्वी के पास यह mgh होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive gravitational potential energy mgh near the surface.",
+                  "hi": "पृथ्वी तल के पास गुरुत्वीय स्थितिज ऊर्जा mgh व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find force from a potential-energy function using F = −dU/dx.",
+                  "hi": "F = −dU/dx से स्थितिज ऊर्जा फलन से बल निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.variable-force.core.work-variable-force"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-2",
+                "neet-ug-2026:physics:unit-4:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy",
+      "name": {
+        "en": "The Conservation of Mechanical Energy",
+        "hi": "यांत्रिक ऊर्जा का संरक्षण"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core",
+          "name": {
+            "en": "The Conservation of Mechanical Energy",
+            "hi": "यांत्रिक ऊर्जा का संरक्षण"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+              "name": {
+                "en": "Conservative and non-conservative forces",
+                "hi": "संरक्षी एवं असंरक्षी बल"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A force is conservative if its work depends only on the end points and is zero round any closed path; friction and air drag are non-conservative.",
+                "hi": "कोई बल संरक्षी है यदि उसका कार्य केवल प्रारंभिक और अंतिम बिंदुओं पर निर्भर करे और किसी बंद पथ पर शून्य हो; घर्षण और वायु प्रतिरोध असंरक्षी हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Give examples of conservative (gravity, spring) and non-conservative (friction) forces.",
+                  "hi": "संरक्षी (गुरुत्व, स्प्रिंग) और असंरक्षी (घर्षण) बलों के उदाहरण दीजिए।"
+                },
+                {
+                  "en": "Explain why potential energy can be defined only for conservative forces.",
+                  "hi": "समझाइए कि स्थितिज ऊर्जा केवल संरक्षी बलों के लिए ही क्यों परिभाषित की जा सकती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.potential-energy.core.potential-energy"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-5",
+                "neet-ug-2026:physics:unit-4:item-5"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+              "name": {
+                "en": "Conservation of mechanical energy",
+                "hi": "यांत्रिक ऊर्जा का संरक्षण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "If only conservative forces do work, the sum of kinetic and potential energy stays constant; work by non-conservative forces changes the mechanical energy.",
+                "hi": "यदि केवल संरक्षी बल कार्य करते हैं, तो गतिज और स्थितिज ऊर्जा का योग नियत रहता है; असंरक्षी बलों का कार्य यांत्रिक ऊर्जा को बदलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Use K + U = constant to find speeds at different heights, for example of a falling body or a pendulum bob.",
+                  "hi": "विभिन्न ऊँचाइयों पर चाल निकालने के लिए K + U = नियतांक का उपयोग कीजिए, जैसे गिरती वस्तु या लोलक के गोलक के लिए।"
+                },
+                {
+                  "en": "Include the work done by friction as a loss when energy is not conserved.",
+                  "hi": "जब ऊर्जा संरक्षित न हो, तब घर्षण द्वारा किए गए कार्य को हानि के रूप में शामिल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+                "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-5",
+                "neet-ug-2026:physics:unit-4:item-5"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.work-energy-power.mechanical-energy.core.vertical-circle",
+              "name": {
+                "en": "Motion in a vertical circle",
+                "hi": "ऊर्ध्वाधर वृत्त में गति"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "A body whirled in a vertical circle changes speed because gravity does work; to complete the loop on a string the speed at the top must be at least √(gr), and at the bottom at least √(5gr).",
+                "hi": "ऊर्ध्वाधर वृत्त में घुमाई गई वस्तु की चाल बदलती है क्योंकि गुरुत्व कार्य करता है; डोरी पर लूप पूरा करने के लिए शीर्ष पर चाल कम से कम √(gr) और तल पर कम से कम √(5gr) होनी चाहिए।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the minimum speeds at the top and bottom using energy conservation and the centripetal condition.",
+                  "hi": "ऊर्जा संरक्षण और अभिकेंद्र शर्त से शीर्ष और तल पर न्यूनतम चाल व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find the tension in the string at different positions.",
+                  "hi": "विभिन्न स्थितियों में डोरी का तनाव निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+                "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-6",
+                "neet-ug-2026:physics:unit-4:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy",
+      "name": {
+        "en": "The Potential Energy of a Spring",
+        "hi": "किसी स्प्रिंग की स्थितिज ऊर्जा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.9"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.spring-energy.core",
+          "name": {
+            "en": "The Potential Energy of a Spring",
+            "hi": "किसी स्प्रिंग की स्थितिज ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.spring-energy.core.spring-potential-energy",
+              "name": {
+                "en": "Potential energy of a spring",
+                "hi": "स्प्रिंग की स्थितिज ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A spring obeys F = −kx, and the energy stored when it is stretched or compressed by x is kx²/2.",
+                "hi": "स्प्रिंग F = −kx का पालन करती है, और x तक खींचने या दबाने पर उसमें संचित ऊर्जा kx²/2 होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive kx²/2 as the area under the F-x graph.",
+                  "hi": "F-x ग्राफ़ के नीचे के क्षेत्रफल के रूप में kx²/2 व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Solve a block hitting a spring using energy conservation.",
+                  "hi": "ऊर्जा संरक्षण से स्प्रिंग से टकराते ब्लॉक का प्रश्न हल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.variable-force.core.work-variable-force"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-4",
+                "neet-ug-2026:physics:unit-4:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.power",
+      "name": {
+        "en": "Power",
+        "hi": "शक्ति"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.10"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.power.core",
+          "name": {
+            "en": "Power",
+            "hi": "शक्ति"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.power.core.power-definition",
+              "name": {
+                "en": "Power",
+                "hi": "शक्ति"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Power is the rate of doing work, P = dW/dt = F·v, measured in watts.",
+                "hi": "शक्ति कार्य करने की दर है, P = dW/dt = F·v, जिसे वाट में मापा जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish average and instantaneous power.",
+                  "hi": "औसत और तात्क्षणिक शक्ति में अंतर बताइए।"
+                },
+                {
+                  "en": "Convert between watt, kilowatt-hour and horsepower.",
+                  "hi": "वाट, किलोवाट-घंटा और अश्वशक्ति के बीच रूपांतरण कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.work.core.work-constant-force"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-3",
+                "neet-ug-2026:physics:unit-4:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.collisions",
+      "name": {
+        "en": "Collisions",
+        "hi": "संघट्ट"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 5 §5.11"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.work-energy-power.collisions.core",
+          "name": {
+            "en": "Collisions",
+            "hi": "संघट्ट"
+          },
+          "concepts": [
+            {
+              "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+              "name": {
+                "en": "Elastic and inelastic collisions in one and two dimensions",
+                "hi": "एक एवं दो विमाओं में प्रत्यास्थ एवं अप्रत्यास्थ संघट्ट"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Momentum is conserved in every collision, but kinetic energy is conserved only in elastic ones; in a perfectly inelastic collision the bodies stick together.",
+                "hi": "हर संघट्ट में संवेग संरक्षित रहता है, पर गतिज ऊर्जा केवल प्रत्यास्थ संघट्ट में; पूर्णतः अप्रत्यास्थ संघट्ट में वस्तुएँ आपस में चिपक जाती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive final velocities for a one-dimensional elastic collision and show that equal masses exchange velocities.",
+                  "hi": "एक-विमीय प्रत्यास्थ संघट्ट के अंतिम वेग व्युत्पन्न कीजिए और दिखाइए कि समान द्रव्यमान वेगों का आदान-प्रदान करते हैं।"
+                },
+                {
+                  "en": "Find the kinetic energy lost in a perfectly inelastic collision.",
+                  "hi": "पूर्णतः अप्रत्यास्थ संघट्ट में गतिज ऊर्जा की हानि निकालिए।"
+                },
+                {
+                  "en": "Apply momentum conservation along two axes for a two-dimensional collision.",
+                  "hi": "द्वि-विमीय संघट्ट के लिए दो अक्षों के अनुदिश संवेग संरक्षण लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+                "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-4:item-7",
+                "neet-ug-2026:physics:unit-4:item-7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 4: Work, Energy and Power (PDF p.3)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 2: KINEMATICS (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 4: WORK, ENERGY, AND POWER (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

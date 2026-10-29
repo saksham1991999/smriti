@@ -1,0 +1,761 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.experimental-skills",
+  "subject": "phy",
+  "unit": "phy.experimental-skills",
+  "name": {
+    "en": "Experimental Skills",
+    "hi": "प्रायोगिक कौशल"
+  },
+  "hi_source": "translated",
+  "class": null,
+  "ncert_ref": null,
+  "note": "The official syllabus lists these experiments for both class 11 and class 12; the NCERT laboratory manuals are not yet mapped section by section.",
+  "topics": [
+    {
+      "id": "phy.experimental-skills.approach",
+      "name": {
+        "en": "Approach to Experiments",
+        "hi": "प्रयोगों का दृष्टिकोण"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.experimental-skills.approach.core",
+          "name": {
+            "en": "Approach to Experiments",
+            "hi": "प्रयोगों का दृष्टिकोण"
+          },
+          "concepts": [
+            {
+              "id": "phy.experimental-skills.approach.core.experiment-approach",
+              "name": {
+                "en": "Basic approach and observations of experiments",
+                "hi": "प्रयोगों का मूल दृष्टिकोण एवं प्रेक्षण"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Every experiment follows the same pattern: aim, apparatus, principle, procedure, observation table, graph or calculation, result with error, and precautions.",
+                "hi": "हर प्रयोग एक ही ढाँचे का पालन करता है: उद्देश्य, उपकरण, सिद्धांत, विधि, प्रेक्षण सारणी, ग्राफ़ या गणना, त्रुटि सहित परिणाम, और सावधानियाँ।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify the quantity measured, the formula used and the main source of error in a given experiment.",
+                  "hi": "दिए गए प्रयोग में मापी जाने वाली राशि, प्रयुक्त सूत्र और त्रुटि का मुख्य स्रोत पहचानिए।"
+                },
+                {
+                  "en": "Read and interpret an experimental graph, including its slope and intercept.",
+                  "hi": "प्रायोगिक ग्राफ़ पढ़िए और उसकी ढाल और अंतःखंड सहित उसकी व्याख्या कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.errors.core.measurement-errors"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-1",
+                "neet-ug-2026:physics:unit-20:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.experimental-skills.measuring-instruments",
+      "name": {
+        "en": "Measuring Instruments",
+        "hi": "मापन यंत्र"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.experimental-skills.measuring-instruments.core",
+          "name": {
+            "en": "Measuring Instruments",
+            "hi": "मापन यंत्र"
+          },
+          "concepts": [
+            {
+              "id": "phy.experimental-skills.measuring-instruments.core.vernier-callipers",
+              "name": {
+                "en": "Vernier callipers: internal and external diameter and depth",
+                "hi": "वर्नियर कैलिपर्स : आंतरिक एवं बाह्य व्यास तथा गहराई"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Vernier callipers measure lengths to the least count of one main-scale division minus one vernier division, using separate jaws for external and internal diameters and a strip for depth.",
+                "hi": "वर्नियर कैलिपर्स एक मुख्य पैमाने के खाने और एक वर्नियर खाने के अंतर के अल्पतमांक तक लंबाई मापते हैं, जिसमें बाह्य और आंतरिक व्यास के लिए अलग जबड़े और गहराई के लिए पट्टी होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute the least count and take a reading as main-scale reading plus coinciding division times least count.",
+                  "hi": "अल्पतमांक निकालिए और पाठ्यांक को मुख्य पैमाने का पाठ्यांक जमा संपाती खाना गुणा अल्पतमांक के रूप में लीजिए।"
+                },
+                {
+                  "en": "Correct for positive and negative zero error.",
+                  "hi": "धनात्मक और ऋणात्मक शून्यांक त्रुटि का संशोधन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.significant-figures.core.least-count"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-2",
+                "neet-ug-2026:physics:unit-20:item-2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.measuring-instruments.core.screw-gauge",
+              "name": {
+                "en": "Screw gauge: thickness of a sheet or diameter of a wire",
+                "hi": "स्क्रू गेज : पत्र की मोटाई या तार का व्यास"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A screw gauge has least count equal to pitch divided by the number of circular-scale divisions and measures small thicknesses and diameters.",
+                "hi": "स्क्रू गेज का अल्पतमांक चूड़ी अंतराल को वृत्तीय पैमाने के खानों की संख्या से भाग देने के बराबर होता है, और यह छोटी मोटाइयाँ तथा व्यास मापता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find pitch and least count and take a reading with zero correction.",
+                  "hi": "चूड़ी अंतराल और अल्पतमांक निकालिए और शून्य संशोधन सहित पाठ्यांक लीजिए।"
+                },
+                {
+                  "en": "Explain backlash error and how to avoid it.",
+                  "hi": "पश्चग्रस्त त्रुटि और उससे बचने का तरीका समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.significant-figures.core.least-count"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-3",
+                "neet-ug-2026:physics:unit-20:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.experimental-skills.mechanics-experiments",
+      "name": {
+        "en": "Mechanics and Properties of Matter Experiments",
+        "hi": "यांत्रिकी एवं द्रव्य के गुणों के प्रयोग"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.experimental-skills.mechanics-experiments.core",
+          "name": {
+            "en": "Mechanics and Properties of Matter Experiments",
+            "hi": "यांत्रिकी एवं द्रव्य के गुणों के प्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.pendulum-energy-dissipation",
+              "name": {
+                "en": "Simple pendulum: dissipation of energy from a graph of amplitude squared against time",
+                "hi": "सरल लोलक : आयाम के वर्ग एवं समय के ग्राफ़ से ऊर्जा का क्षय"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Because the energy of a pendulum is proportional to the square of its amplitude, plotting amplitude squared against time shows how its energy is lost to air resistance and friction.",
+                "hi": "लोलक की ऊर्जा उसके आयाम के वर्ग के अनुक्रमानुपाती होती है, इसलिए आयाम के वर्ग और समय का ग्राफ़ दिखाता है कि उसकी ऊर्जा वायु प्रतिरोध और घर्षण में कैसे घटती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Record amplitude at regular time intervals and plot A² against t.",
+                  "hi": "नियमित समय अंतरालों पर आयाम लिखिए और A² तथा t का ग्राफ़ बनाइए।"
+                },
+                {
+                  "en": "Interpret the decreasing graph as energy dissipation.",
+                  "hi": "घटते ग्राफ़ की व्याख्या ऊर्जा क्षय के रूप में कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.oscillations.simple-pendulum.core.simple-pendulum-period",
+                "phy.oscillations.shm-energy.core.shm-energy-def"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-4",
+                "neet-ug-2026:physics:unit-20:item-4"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.metre-scale-moments",
+              "name": {
+                "en": "Metre scale: mass of an object by the principle of moments",
+                "hi": "मीटर पैमाना : आघूर्णों के सिद्धांत से वस्तु का द्रव्यमान"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Balancing a metre scale with a known and an unknown mass on either side of the pivot gives the unknown mass from m₁d₁ = m₂d₂.",
+                "hi": "आलंब के दोनों ओर ज्ञात और अज्ञात द्रव्यमान रखकर मीटर पैमाने को संतुलित करने से m₁d₁ = m₂d₂ से अज्ञात द्रव्यमान मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Set up the balance and measure the distances from the pivot.",
+                  "hi": "संतुलन स्थापित कीजिए और आलंब से दूरियाँ मापिए।"
+                },
+                {
+                  "en": "Account for the scale's own weight acting at its centre of gravity.",
+                  "hi": "गुरुत्व केंद्र पर लगने वाले पैमाने के अपने भार का ध्यान रखिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-5",
+                "neet-ug-2026:physics:unit-20:item-5"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.youngs-modulus-expt",
+              "name": {
+                "en": "Young's modulus of the material of a wire",
+                "hi": "तार के पदार्थ का यंग गुणांक"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Loading a long wire and measuring its extension with a vernier gives Young's modulus Y = MgL/(πr²ΔL) from the slope of load against extension.",
+                "hi": "लंबे तार पर भार लटकाकर और वर्नियर से उसका प्रसार मापकर, भार और प्रसार के ग्राफ़ की ढाल से यंग गुणांक Y = MgL/(πr²ΔL) मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Measure the wire's radius with a screw gauge at several points.",
+                  "hi": "स्क्रू गेज से कई बिंदुओं पर तार की त्रिज्या मापिए।"
+                },
+                {
+                  "en": "Explain the use of a reference wire to cancel temperature and support effects.",
+                  "hi": "ताप और आधार के प्रभावों को निरस्त करने के लिए संदर्भ तार के उपयोग को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-solids.elastic-moduli.core.elastic-moduli-def",
+                "phy.experimental-skills.measuring-instruments.core.screw-gauge"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-6",
+                "neet-ug-2026:physics:unit-20:item-6"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.surface-tension-expt",
+              "name": {
+                "en": "Surface tension of water by capillary rise and the effect of detergents",
+                "hi": "केशिका उन्नयन द्वारा जल का पृष्ठ तनाव एवं अपमार्जकों का प्रभाव"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Measuring the rise of water in a capillary tube of known radius gives surface tension S = rhρg/2 cos θ, and adding detergent lowers the rise.",
+                "hi": "ज्ञात त्रिज्या की केशिका नली में जल का उन्नयन मापकर पृष्ठ तनाव S = rhρg/2 cos θ मिलता है, और अपमार्जक मिलाने से उन्नयन घटता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Measure capillary radius with a travelling microscope and height of the meniscus.",
+                  "hi": "चल सूक्ष्मदर्शी से केशिका की त्रिज्या और नवचंद्रक की ऊँचाई मापिए।"
+                },
+                {
+                  "en": "Explain why detergent reduces the capillary rise.",
+                  "hi": "समझाइए कि अपमार्जक केशिका उन्नयन को क्यों घटाता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.surface-tension.core.capillary-rise"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-7",
+                "neet-ug-2026:physics:unit-20:item-7"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.viscosity-expt",
+              "name": {
+                "en": "Coefficient of viscosity from the terminal velocity of a falling sphere",
+                "hi": "गिरते गोले के सीमांत वेग से श्यानता गुणांक"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Timing a small steel ball falling at terminal velocity through a viscous liquid gives η = 2r²(ρ − σ)g/9v.",
+                "hi": "श्यान द्रव में सीमांत वेग से गिरती छोटी इस्पात की गोली का समय मापकर η = 2r²(ρ − σ)g/9v मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Make sure the ball has reached terminal velocity before timing.",
+                  "hi": "समय मापने से पहले सुनिश्चित कीजिए कि गोली सीमांत वेग पा चुकी है।"
+                },
+                {
+                  "en": "Plot v against r² for balls of different radii.",
+                  "hi": "विभिन्न त्रिज्याओं की गोलियों के लिए v और r² का ग्राफ़ बनाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.viscosity.core.viscosity-stokes"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-8",
+                "neet-ug-2026:physics:unit-20:item-8"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.resonance-tube",
+              "name": {
+                "en": "Speed of sound in air using a resonance tube",
+                "hi": "अनुनाद नली से वायु में ध्वनि की चाल"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A tuning fork over an air column closed by water resonates at lengths differing by λ/2, so v = 2ν(l₂ − l₁), which removes the end correction.",
+                "hi": "जल से बंद वायु स्तंभ के ऊपर स्वरित्र उन लंबाइयों पर अनुनाद करता है जिनमें λ/2 का अंतर हो, इसलिए v = 2ν(l₂ − l₁), जिससे सिरा संशोधन हट जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the first and second resonance lengths.",
+                  "hi": "पहली और दूसरी अनुनाद लंबाई ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Explain the end correction e = (l₂ − 3l₁)/2.",
+                  "hi": "सिरा संशोधन e = (l₂ − 3l₁)/2 को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.waves.superposition.core.standing-waves"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-9",
+                "neet-ug-2026:physics:unit-20:item-9"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.mechanics-experiments.core.method-of-mixtures",
+              "name": {
+                "en": "Specific heat capacity of a solid and a liquid by the method of mixtures",
+                "hi": "मिश्रण विधि से ठोस एवं द्रव की विशिष्ट ऊष्मा धारिता"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Mixing a hot body with a cold liquid in a calorimeter and equating heat lost to heat gained gives the unknown specific heat capacity.",
+                "hi": "कैलोरीमीटर में गर्म वस्तु को ठंडे द्रव में मिलाकर और खोई ऊष्मा को ली गई ऊष्मा के बराबर रखकर अज्ञात विशिष्ट ऊष्मा धारिता मिलती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the heat balance equation including the calorimeter.",
+                  "hi": "कैलोरीमीटर सहित ऊष्मा संतुलन समीकरण लिखिए।"
+                },
+                {
+                  "en": "List precautions to reduce heat loss to the surroundings.",
+                  "hi": "परिवेश में ऊष्मा हानि घटाने की सावधानियाँ बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.specific-heat-calorimetry.core.specific-heat-capacity"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-10",
+                "neet-ug-2026:physics:unit-20:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.experimental-skills.electrical-experiments",
+      "name": {
+        "en": "Electricity Experiments",
+        "hi": "विद्युत के प्रयोग"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.experimental-skills.electrical-experiments.core",
+          "name": {
+            "en": "Electricity Experiments",
+            "hi": "विद्युत के प्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.experimental-skills.electrical-experiments.core.metre-bridge-resistivity",
+              "name": {
+                "en": "Resistivity of a wire using a metre bridge",
+                "hi": "मीटर सेतु से तार की प्रतिरोधकता"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Finding the balance point on a metre bridge gives the wire's resistance, and with its length and diameter the resistivity ρ = RA/L.",
+                "hi": "मीटर सेतु पर संतुलन बिंदु ज्ञात करने से तार का प्रतिरोध मिलता है, और उसकी लंबाई तथा व्यास से प्रतिरोधकता ρ = RA/L।"
+              },
+              "key_points": [
+                {
+                  "en": "Interchange the resistances to reduce end error.",
+                  "hi": "सिरा त्रुटि घटाने के लिए प्रतिरोधों को आपस में बदलिए।"
+                },
+                {
+                  "en": "Explain why the balance point should be near the middle of the wire.",
+                  "hi": "समझाइए कि संतुलन बिंदु तार के मध्य के निकट क्यों होना चाहिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.current-electricity.wheatstone.core.wheatstone-bridge",
+                "phy.current-electricity.resistivity.core.resistivity-conductivity"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-11",
+                "neet-ug-2026:physics:unit-20:item-11"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.electrical-experiments.core.ohms-law-expt",
+              "name": {
+                "en": "Resistance of a wire using Ohm's law",
+                "hi": "ओम के नियम से तार का प्रतिरोध"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Measuring current and voltage for several settings and plotting V against I gives a straight line whose slope is the resistance.",
+                "hi": "कई स्थितियों पर धारा और वोल्टता मापकर V और I का ग्राफ़ बनाने से एक सरल रेखा मिलती है जिसकी ढाल प्रतिरोध है।"
+              },
+              "key_points": [
+                {
+                  "en": "Connect the ammeter in series and the voltmeter in parallel.",
+                  "hi": "ऐमीटर को श्रेणी में और वोल्टमीटर को पार्श्व में जोड़िए।"
+                },
+                {
+                  "en": "Explain why the current is kept small during the experiment.",
+                  "hi": "समझाइए कि प्रयोग के दौरान धारा कम क्यों रखी जाती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.current-electricity.ohms-law.core.ohms-law-def"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-12",
+                "neet-ug-2026:physics:unit-20:item-12"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.electrical-experiments.core.galvanometer-half-deflection",
+              "name": {
+                "en": "Resistance and figure of merit of a galvanometer by half deflection",
+                "hi": "अर्ध-विक्षेप विधि से गैल्वेनोमीटर का प्रतिरोध एवं दक्षतांक"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Shunting the galvanometer until its deflection halves gives its resistance G = RS/(R − S), and the figure of merit is the current per division.",
+                "hi": "गैल्वेनोमीटर को शंट करके विक्षेप आधा करने पर उसका प्रतिरोध G = RS/(R − S) मिलता है, और दक्षतांक प्रति खाना धारा है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the half-deflection formula.",
+                  "hi": "अर्ध-विक्षेप सूत्र व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Compute the figure of merit k = E/[(R + G)θ].",
+                  "hi": "दक्षतांक k = E/[(R + G)θ] निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.moving-charges-magnetism.galvanometer.core.galvanometer-conversion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-13",
+                "neet-ug-2026:physics:unit-20:item-13"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.experimental-skills.optics-experiments",
+      "name": {
+        "en": "Optics Experiments",
+        "hi": "प्रकाशिकी के प्रयोग"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.experimental-skills.optics-experiments.core",
+          "name": {
+            "en": "Optics Experiments",
+            "hi": "प्रकाशिकी के प्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.experimental-skills.optics-experiments.core.parallax-focal-length",
+              "name": {
+                "en": "Focal length of convex mirror, concave mirror and convex lens by parallax",
+                "hi": "लंबन विधि से उत्तल दर्पण, अवतल दर्पण एवं उत्तल लेंस की फोकस दूरी"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Removing parallax between an image and a pin locates the image, and u and v readings then give the focal length; a convex mirror needs an auxiliary convex lens.",
+                "hi": "प्रतिबिंब और पिन के बीच लंबन हटाकर प्रतिबिंब की स्थिति ज्ञात की जाती है, और फिर u और v के पाठ्यांकों से फोकस दूरी मिलती है; उत्तल दर्पण के लिए सहायक उत्तल लेंस चाहिए।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the method of removing parallax.",
+                  "hi": "लंबन हटाने की विधि समझाइए।"
+                },
+                {
+                  "en": "Find f from a graph of 1/v against 1/u or of uv against u + v.",
+                  "hi": "1/v और 1/u के ग्राफ़ से या uv और u + v के ग्राफ़ से f निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.spherical-mirrors.core.mirror-formula",
+                "phy.ray-optics.spherical-refraction.core.lens-formulae"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-14",
+                "neet-ug-2026:physics:unit-20:item-14"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.optics-experiments.core.prism-deviation-expt",
+              "name": {
+                "en": "Graph of angle of deviation against angle of incidence for a prism",
+                "hi": "प्रिज़्म के लिए विचलन कोण एवं आपतन कोण का ग्राफ़"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Tracing rays through a triangular prism for several angles of incidence and plotting deviation shows a minimum, from which the refractive index is found.",
+                "hi": "कई आपतन कोणों के लिए त्रिभुजाकार प्रिज़्म से किरणें अनुरेखित करके विचलन का ग्राफ़ बनाने पर न्यूनतम मिलता है, जिससे अपवर्तनांक निकाला जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Trace the emergent ray with pins and measure the deviation.",
+                  "hi": "पिनों से निर्गत किरण अनुरेखित कीजिए और विचलन मापिए।"
+                },
+                {
+                  "en": "Read the angle of minimum deviation from the graph.",
+                  "hi": "ग्राफ़ से न्यूनतम विचलन कोण पढ़िए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.prism.core.prism-deviation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-15",
+                "neet-ug-2026:physics:unit-20:item-15"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.optics-experiments.core.travelling-microscope",
+              "name": {
+                "en": "Refractive index of a glass slab using a travelling microscope",
+                "hi": "चल सूक्ष्मदर्शी से काँच की पट्टी का अपवर्तनांक"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Focusing a travelling microscope on a mark with and without a glass slab and on the slab's top gives real and apparent thickness, and n = real/apparent.",
+                "hi": "चल सूक्ष्मदर्शी को काँच की पट्टी के बिना और सहित किसी चिह्न पर तथा पट्टी के ऊपरी तल पर फ़ोकस करने से वास्तविक और आभासी मोटाई मिलती है, और n = वास्तविक/आभासी।"
+              },
+              "key_points": [
+                {
+                  "en": "Take the three microscope readings and compute real and apparent thickness.",
+                  "hi": "सूक्ष्मदर्शी के तीन पाठ्यांक लीजिए और वास्तविक तथा आभासी मोटाई निकालिए।"
+                },
+                {
+                  "en": "Find the least count of the travelling microscope.",
+                  "hi": "चल सूक्ष्मदर्शी का अल्पतमांक निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.refraction.core.refraction-snell",
+                "phy.experimental-skills.measuring-instruments.core.vernier-callipers"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-16",
+                "neet-ug-2026:physics:unit-20:item-16"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.experimental-skills.electronics-experiments",
+      "name": {
+        "en": "Electronics Experiments",
+        "hi": "इलेक्ट्रॉनिकी के प्रयोग"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.experimental-skills.electronics-experiments.core",
+          "name": {
+            "en": "Electronics Experiments",
+            "hi": "इलेक्ट्रॉनिकी के प्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.experimental-skills.electronics-experiments.core.diode-characteristics-expt",
+              "name": {
+                "en": "Characteristic curves of a p-n junction diode",
+                "hi": "p-n संधि डायोड के अभिलक्षण वक्र"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Measuring current against voltage for a diode in forward and reverse bias gives its characteristic curves, from which knee voltage and dynamic resistance are read.",
+                "hi": "अग्र और पश्च बायस में डायोड की धारा और वोल्टता मापने से उसके अभिलक्षण वक्र मिलते हैं, जिनसे घुटना वोल्टता और गतिक प्रतिरोध पढ़े जाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Use a milliammeter for forward and a microammeter for reverse bias.",
+                  "hi": "अग्र बायस के लिए मिलीऐमीटर और पश्च बायस के लिए माइक्रोऐमीटर का उपयोग कीजिए।"
+                },
+                {
+                  "en": "Find dynamic resistance ΔV/ΔI from the forward curve.",
+                  "hi": "अग्र वक्र से गतिक प्रतिरोध ΔV/ΔI निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.pn-junction.core.pn-diode"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-17",
+                "neet-ug-2026:physics:unit-20:item-17"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.electronics-experiments.core.zener-characteristics-expt",
+              "name": {
+                "en": "Characteristic curve of a Zener diode and its reverse breakdown voltage",
+                "hi": "ज़ेनर डायोड का अभिलक्षण वक्र एवं पश्च भंजन वोल्टता"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Increasing reverse voltage across a Zener diode shows a sudden rise in current at the breakdown voltage, which is read from the curve.",
+                "hi": "ज़ेनर डायोड पर पश्च वोल्टता बढ़ाने पर भंजन वोल्टता पर धारा अचानक बढ़ती है, जिसे वक्र से पढ़ा जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Include a series resistor to protect the diode.",
+                  "hi": "डायोड की सुरक्षा के लिए श्रेणी प्रतिरोधक लगाइए।"
+                },
+                {
+                  "en": "Read the breakdown voltage from the knee of the reverse curve.",
+                  "hi": "पश्च वक्र के घुटने से भंजन वोल्टता पढ़िए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.zener.core.zener-regulator"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-18",
+                "neet-ug-2026:physics:unit-20:item-18"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.experimental-skills.electronics-experiments.core.component-identification",
+              "name": {
+                "en": "Identification of diode, LED, resistor and capacitor from a mixed collection",
+                "hi": "मिश्रित संग्रह से डायोड, LED, प्रतिरोधक एवं संधारित्र की पहचान"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Components are told apart by their behaviour with a multimeter: a resistor conducts both ways equally, a diode one way, an LED one way while glowing, and a capacitor shows a brief charging current.",
+                "hi": "घटकों को मल्टीमीटर के साथ उनके व्यवहार से पहचाना जाता है: प्रतिरोधक दोनों ओर बराबर चालन करता है, डायोड एक ओर, LED एक ओर चमकते हुए, और संधारित्र क्षणिक आवेशन धारा दिखाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe the multimeter test for each component.",
+                  "hi": "हर घटक के लिए मल्टीमीटर परीक्षण का वर्णन कीजिए।"
+                },
+                {
+                  "en": "Recognise each component's circuit symbol.",
+                  "hi": "हर घटक का परिपथ प्रतीक पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.pn-junction.core.pn-diode",
+                "phy.semiconductor-electronics.optoelectronic.core.led-photodiode-solar",
+                "phy.electrostatic-potential-capacitance.capacitance.core.capacitance-combination"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-20:item-19",
+                "neet-ug-2026:physics:unit-20:item-19"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 20: Experimental Skills (PDF p.6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 20: EXPERIMENTAL SKILLS (PDF p.7-8)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

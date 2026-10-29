@@ -1,0 +1,350 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.electromagnetic-induction",
+  "subject": "phy",
+  "unit": "phy.electricity-magnetism",
+  "name": {
+    "en": "Electromagnetic Induction",
+    "hi": "वैद्युतचुंबकीय प्रेरण"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part I, Ch 6",
+  "topics": [
+    {
+      "id": "phy.electromagnetic-induction.faraday-law",
+      "name": {
+        "en": "Faraday's Experiments, Magnetic Flux and Faraday's Law",
+        "hi": "फैराडे के प्रयोग, चुंबकीय फ्लक्स एवं फैराडे का नियम"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 6 §6.2",
+        "NCERT Class 12 Physics Part I, Ch 6 §6.3",
+        "NCERT Class 12 Physics Part I, Ch 6 §6.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-induction.faraday-law.core",
+          "name": {
+            "en": "Faraday's Experiments, Magnetic Flux and Faraday's Law",
+            "hi": "फैराडे के प्रयोग, चुंबकीय फ्लक्स एवं फैराडे का नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-induction.faraday-law.core.faraday-induction",
+              "name": {
+                "en": "Faraday's law: induced emf and current",
+                "hi": "फैराडे का नियम : प्रेरित वि.वा.ब. एवं धारा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A changing magnetic flux Φ = B·A through a circuit induces an emf ε = −N dΦ/dt, which drives a current if the circuit is closed.",
+                "hi": "किसी परिपथ से बदलता चुंबकीय फ्लक्स Φ = B·A वि.वा.ब. ε = −N dΦ/dt प्रेरित करता है, जो परिपथ बंद होने पर धारा चलाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe the experiments of Faraday and Henry with a magnet and coils.",
+                  "hi": "चुंबक और कुंडलियों के साथ फैराडे और हेनरी के प्रयोगों का वर्णन कीजिए।"
+                },
+                {
+                  "en": "Compute induced emf from a flux that changes through B, A or the angle.",
+                  "hi": "B, A या कोण बदलने से बदलते फ्लक्स से प्रेरित वि.वा.ब. निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.work-energy-power.work.core.scalar-product",
+                "phy.moving-charges-magnetism.ampere-law.core.ampere-circuital-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-1",
+                "neet-ug-2026:physics:unit-14:item-1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.electromagnetic-induction.faraday-law.core.motional-emf",
+              "name": {
+                "en": "Motional emf",
+                "hi": "गतिक वि.वा.ब."
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A rod of length l moving with speed v perpendicular to a field B has emf Blv across it, which can be explained by the Lorentz force on its charges.",
+                "hi": "क्षेत्र B के लंबवत v चाल से चलती l लंबाई की छड़ के सिरों पर Blv वि.वा.ब. होता है, जिसे उसके आवेशों पर लॉरेंज़ बल से समझा जा सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive ε = Blv from both the flux rule and the Lorentz force.",
+                  "hi": "फ्लक्स नियम और लॉरेंज़ बल दोनों से ε = Blv व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find the emf of a rod rotating about one end, Bωl²/2.",
+                  "hi": "एक सिरे के परितः घूमती छड़ का वि.वा.ब. Bωl²/2 निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-induction.faraday-law.core.faraday-induction",
+                "phy.moving-charges-magnetism.magnetic-force.core.lorentz-force"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-1",
+                "neet-ug-2026:physics:unit-14:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Physics Part I, Ch 6 §6.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electromagnetic-induction.lenz-law",
+      "name": {
+        "en": "Lenz's Law and Conservation of Energy",
+        "hi": "लेंज का नियम तथा ऊर्जा संरक्षण"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 6 §6.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-induction.lenz-law.core",
+          "name": {
+            "en": "Lenz's Law and Conservation of Energy",
+            "hi": "लेंज का नियम तथा ऊर्जा संरक्षण"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-induction.lenz-law.core.lenz-law-def",
+              "name": {
+                "en": "Lenz's law",
+                "hi": "लेंज का नियम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The induced current flows in the direction that opposes the change of flux producing it, as required by conservation of energy.",
+                "hi": "प्रेरित धारा उस दिशा में बहती है जो उसे उत्पन्न करने वाले फ्लक्स-परिवर्तन का विरोध करे, जैसा ऊर्जा संरक्षण के लिए आवश्यक है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the direction of induced current when a magnet approaches or recedes from a coil.",
+                  "hi": "चुंबक के कुंडली के पास आने या दूर जाने पर प्रेरित धारा की दिशा निकालिए।"
+                },
+                {
+                  "en": "Explain why Lenz's law is a consequence of energy conservation.",
+                  "hi": "समझाइए कि लेंज का नियम ऊर्जा संरक्षण का परिणाम क्यों है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-induction.faraday-law.core.faraday-induction"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-2",
+                "neet-ug-2026:physics:unit-14:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electromagnetic-induction.eddy-currents",
+      "name": {
+        "en": "Eddy Currents",
+        "hi": "भँवर धाराएँ"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-induction.eddy-currents.core",
+          "name": {
+            "en": "Eddy Currents",
+            "hi": "भँवर धाराएँ"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-induction.eddy-currents.core.eddy-currents-def",
+              "name": {
+                "en": "Eddy currents and their uses",
+                "hi": "भँवर धाराएँ एवं उनके उपयोग"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A changing flux through a bulk conductor induces circulating eddy currents that oppose the change and heat the conductor; laminated cores reduce them and brakes and induction furnaces use them.",
+                "hi": "किसी स्थूल चालक से बदलता फ्लक्स परिसंचारी भँवर धाराएँ प्रेरित करता है जो परिवर्तन का विरोध करती हैं और चालक को गर्म करती हैं; पटलित क्रोड इन्हें घटाते हैं और ब्रेक तथा प्रेरण भट्ठियाँ इनका उपयोग करती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain why transformer cores are laminated.",
+                  "hi": "समझाइए कि ट्रांसफॉर्मर के क्रोड पटलित क्यों होते हैं।"
+                },
+                {
+                  "en": "Give applications: electromagnetic damping, magnetic brakes in trains and induction furnaces.",
+                  "hi": "अनुप्रयोग बताइए: वैद्युतचुंबकीय अवमंदन, रेलगाड़ियों में चुंबकीय ब्रेक और प्रेरण भट्ठियाँ।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-induction.lenz-law.core.lenz-law-def"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-3",
+                "neet-ug-2026:physics:unit-14:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electromagnetic-induction.inductance",
+      "name": {
+        "en": "Inductance",
+        "hi": "प्रेरकत्व"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 6 §6.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-induction.inductance.core",
+          "name": {
+            "en": "Inductance",
+            "hi": "प्रेरकत्व"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-induction.inductance.core.self-mutual-inductance",
+              "name": {
+                "en": "Self and mutual inductance",
+                "hi": "स्वप्रेरकत्व एवं अन्योन्य प्रेरकत्व"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Self-inductance L relates a coil's own flux to its current, ε = −L dI/dt, and mutual inductance M links two coils; for a long solenoid L = μ₀n²Al and the stored energy is LI²/2.",
+                "hi": "स्वप्रेरकत्व L कुंडली के अपने फ्लक्स को उसकी धारा से जोड़ता है, ε = −L dI/dt, और अन्योन्य प्रेरकत्व M दो कुंडलियों को जोड़ता है; लंबी परिनालिका के लिए L = μ₀n²Al और संचित ऊर्जा LI²/2 है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the self-inductance of a long solenoid and the mutual inductance of two coaxial solenoids.",
+                  "hi": "लंबी परिनालिका का स्वप्रेरकत्व और दो समाक्ष परिनालिकाओं का अन्योन्य प्रेरकत्व व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain inductance as electrical inertia and derive the stored energy LI²/2.",
+                  "hi": "प्रेरकत्व को वैद्युत जड़त्व के रूप में समझाइए और संचित ऊर्जा LI²/2 व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-induction.faraday-law.core.faraday-induction",
+                "phy.moving-charges-magnetism.ampere-law.core.ampere-circuital-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-4",
+                "neet-ug-2026:physics:unit-14:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electromagnetic-induction.ac-generator",
+      "name": {
+        "en": "AC Generator",
+        "hi": "प्रत्यावर्ती धारा जनित्र"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 6 §6.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-induction.ac-generator.core",
+          "name": {
+            "en": "AC Generator",
+            "hi": "प्रत्यावर्ती धारा जनित्र"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-induction.ac-generator.core.ac-generator-principle",
+              "name": {
+                "en": "AC generator",
+                "hi": "प्रत्यावर्ती धारा जनित्र"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A coil rotating with angular speed ω in a magnetic field has flux NBA cos ωt, so it generates a sinusoidal emf ε = NBAω sin ωt.",
+                "hi": "चुंबकीय क्षेत्र में ω कोणीय चाल से घूमती कुंडली का फ्लक्स NBA cos ωt होता है, इसलिए वह ज्यावक्रीय वि.वा.ब. ε = NBAω sin ωt उत्पन्न करती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the peak emf NBAω.",
+                  "hi": "शिखर वि.वा.ब. NBAω व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Name the parts of a generator and the energy conversion it performs.",
+                  "hi": "जनित्र के भागों और उसके द्वारा किए जाने वाले ऊर्जा रूपांतरण के नाम बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-induction.faraday-law.core.faraday-induction"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-9",
+                "neet-ug-2026:physics:unit-14:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 6",
+      "url": "https://ncert.nic.in/textbook/pdf/leph106.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph1, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 14: Electromagnetic Induction and Alternating Currents (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 14: ELECTROMAGNETIC INDUCTION AND ALTERNATING CURRENTS (PDF p.6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

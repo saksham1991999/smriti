@@ -1,0 +1,322 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.thermal-properties-matter",
+  "subject": "phy",
+  "unit": "phy.properties-of-matter",
+  "name": {
+    "en": "Thermal Properties of Matter",
+    "hi": "द्रव्य के तापीय गुण"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part II, Ch 10",
+  "topics": [
+    {
+      "id": "phy.thermal-properties-matter.temperature-heat",
+      "name": {
+        "en": "Temperature and Heat",
+        "hi": "ताप तथा ऊष्मा"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 10 §10.2",
+        "NCERT Class 11 Physics Part II, Ch 10 §10.3",
+        "NCERT Class 11 Physics Part II, Ch 10 §10.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermal-properties-matter.temperature-heat.core",
+          "name": {
+            "en": "Temperature and Heat",
+            "hi": "ताप तथा ऊष्मा"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermal-properties-matter.temperature-heat.core.heat-temperature",
+              "name": {
+                "en": "Heat, temperature and temperature scales",
+                "hi": "ऊष्मा, ताप एवं ताप के पैमाने"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Temperature measures hotness and decides the direction of heat flow, while heat is energy transferred because of a temperature difference; Celsius, Fahrenheit and Kelvin scales are related linearly.",
+                "hi": "ताप गर्मी की मात्रा को मापता है और ऊष्मा प्रवाह की दिशा तय करता है, जबकि ऊष्मा ताप-अंतर के कारण स्थानांतरित ऊर्जा है; सेल्सियस, फ़ारेनहाइट और केल्विन पैमाने रैखिक रूप से संबंधित हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Convert between scales using t_F = (9/5)t_C + 32 and T = t_C + 273.15.",
+                  "hi": "t_F = (9/5)t_C + 32 और T = t_C + 273.15 से पैमानों के बीच रूपांतरण कीजिए।"
+                },
+                {
+                  "en": "Explain absolute zero from the extrapolation of a constant-volume gas thermometer.",
+                  "hi": "नियत आयतन गैस तापमापी के बहिर्वेशन से परम शून्य को समझाइए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-10",
+                "neet-ug-2026:physics:unit-7:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermal-properties-matter.thermal-expansion",
+      "name": {
+        "en": "Thermal Expansion",
+        "hi": "तापीय प्रसार"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 10 §10.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermal-properties-matter.thermal-expansion.core",
+          "name": {
+            "en": "Thermal Expansion",
+            "hi": "तापीय प्रसार"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermal-properties-matter.thermal-expansion.core.thermal-expansion-coefficients",
+              "name": {
+                "en": "Linear, area and volume expansion",
+                "hi": "रैखिक, क्षेत्रीय एवं आयतन प्रसार"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Most substances expand on heating, with ΔL/L = αΔT, ΔA/A = 2αΔT and ΔV/V = γΔT, where γ = 3α for an isotropic solid.",
+                "hi": "अधिकांश पदार्थ गर्म करने पर फैलते हैं, जहाँ ΔL/L = αΔT, ΔA/A = 2αΔT और ΔV/V = γΔT है, तथा समदैशिक ठोस के लिए γ = 3α।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the relation γ = 3α.",
+                  "hi": "संबंध γ = 3α व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain the anomalous expansion of water between 0 °C and 4 °C and its effect on aquatic life.",
+                  "hi": "0 °C और 4 °C के बीच जल के असंगत प्रसार और जलीय जीवन पर उसके प्रभाव को समझाइए।"
+                },
+                {
+                  "en": "Calculate thermal stress in a rod whose expansion is prevented.",
+                  "hi": "उस छड़ में तापीय प्रतिबल निकालिए जिसका प्रसार रोका गया हो।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.temperature-heat.core.heat-temperature"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-10",
+                "neet-ug-2026:physics:unit-7:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermal-properties-matter.specific-heat-calorimetry",
+      "name": {
+        "en": "Specific Heat Capacity and Calorimetry",
+        "hi": "विशिष्ट ऊष्मा धारिता एवं ऊष्मामिति"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 10 §10.6",
+        "NCERT Class 11 Physics Part II, Ch 10 §10.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermal-properties-matter.specific-heat-calorimetry.core",
+          "name": {
+            "en": "Specific Heat Capacity and Calorimetry",
+            "hi": "विशिष्ट ऊष्मा धारिता एवं ऊष्मामिति"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermal-properties-matter.specific-heat-calorimetry.core.specific-heat-capacity",
+              "name": {
+                "en": "Specific heat capacity and calorimetry",
+                "hi": "विशिष्ट ऊष्मा धारिता एवं ऊष्मामिति"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Heat needed to raise the temperature of mass m by ΔT is Q = mcΔT; in calorimetry, heat lost by hot bodies equals heat gained by cold ones when no heat escapes.",
+                "hi": "द्रव्यमान m का ताप ΔT बढ़ाने के लिए आवश्यक ऊष्मा Q = mcΔT है; ऊष्मामिति में, ऊष्मा बाहर न जाने पर गर्म वस्तुओं द्वारा खोई ऊष्मा ठंडी वस्तुओं द्वारा ली गई ऊष्मा के बराबर होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish heat capacity, specific heat capacity and molar specific heat capacity.",
+                  "hi": "ऊष्मा धारिता, विशिष्ट ऊष्मा धारिता और मोलर विशिष्ट ऊष्मा धारिता में अंतर बताइए।"
+                },
+                {
+                  "en": "Solve method-of-mixtures problems for the final temperature.",
+                  "hi": "मिश्रण विधि के प्रश्न हल करके अंतिम ताप निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.temperature-heat.core.heat-temperature"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-11",
+                "neet-ug-2026:physics:unit-7:item-11"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermal-properties-matter.change-of-state",
+      "name": {
+        "en": "Change of State",
+        "hi": "अवस्था परिवर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 10 §10.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermal-properties-matter.change-of-state.core",
+          "name": {
+            "en": "Change of State",
+            "hi": "अवस्था परिवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermal-properties-matter.change-of-state.core.latent-heat",
+              "name": {
+                "en": "Change of state and latent heat",
+                "hi": "अवस्था परिवर्तन एवं गुप्त ऊष्मा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "During melting or boiling the temperature stays constant while heat Q = mL is absorbed, where L is the latent heat of fusion or vaporisation.",
+                "hi": "गलन या क्वथन के दौरान ताप नियत रहता है जबकि ऊष्मा Q = mL अवशोषित होती है, जहाँ L गलन या वाष्पन की गुप्त ऊष्मा है।"
+              },
+              "key_points": [
+                {
+                  "en": "Interpret a temperature-time heating curve for ice turning into steam.",
+                  "hi": "बर्फ़ के भाप बनने के ताप-समय तापन वक्र की व्याख्या कीजिए।"
+                },
+                {
+                  "en": "Explain the effect of pressure on melting and boiling points and the meaning of the triple point.",
+                  "hi": "गलनांक और क्वथनांक पर दाब के प्रभाव तथा त्रिक बिंदु का अर्थ समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.specific-heat-calorimetry.core.specific-heat-capacity"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-12",
+                "neet-ug-2026:physics:unit-7:item-12"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermal-properties-matter.heat-transfer",
+      "name": {
+        "en": "Heat Transfer",
+        "hi": "ऊष्मा स्थानांतरण"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 10 §10.9"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermal-properties-matter.heat-transfer.core",
+          "name": {
+            "en": "Heat Transfer",
+            "hi": "ऊष्मा स्थानांतरण"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermal-properties-matter.heat-transfer.core.conduction-convection-radiation",
+              "name": {
+                "en": "Heat transfer by conduction, convection and radiation",
+                "hi": "चालन, संवहन एवं विकिरण द्वारा ऊष्मा स्थानांतरण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Heat flows by conduction through matter at rest at a rate KA ΔT/L, by convection through bulk flow of a fluid, and by radiation as electromagnetic waves needing no medium.",
+                "hi": "ऊष्मा विराम में स्थित द्रव्य से चालन द्वारा KA ΔT/L की दर से, तरल के स्थूल प्रवाह द्वारा संवहन से, और बिना माध्यम के विद्युतचुंबकीय तरंगों के रूप में विकिरण से बहती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Use the conduction equation H = KA(T₁ − T₂)/L, including slabs in series.",
+                  "hi": "चालन समीकरण H = KA(T₁ − T₂)/L का उपयोग कीजिए, श्रेणीक्रम में रखी पट्टियों सहित।"
+                },
+                {
+                  "en": "Explain natural and forced convection with examples such as sea breeze.",
+                  "hi": "समुद्री समीर जैसे उदाहरणों से प्राकृतिक और प्रणोदित संवहन समझाइए।"
+                },
+                {
+                  "en": "State the Stefan-Boltzmann law H = eσAT⁴ and Wien's displacement law λ_m T = constant.",
+                  "hi": "स्टीफ़न-बोल्ट्ज़मान नियम H = eσAT⁴ और वीन का विस्थापन नियम λ_m T = नियतांक बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.temperature-heat.core.heat-temperature"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-13",
+                "neet-ug-2026:physics:unit-7:item-13"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 10",
+      "url": "https://ncert.nic.in/textbook/pdf/keph203.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph2, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 7: Properties of Solids and Liquids (PDF p.3-4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 7: PROPERTIES OF SOLIDS AND LIQUIDS (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

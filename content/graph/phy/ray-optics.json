@@ -1,0 +1,427 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.ray-optics",
+  "subject": "phy",
+  "unit": "phy.optics",
+  "name": {
+    "en": "Ray Optics and Optical Instruments",
+    "hi": "किरण प्रकाशिकी एवं प्रकाशिक यंत्र"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part II, Ch 9",
+  "topics": [
+    {
+      "id": "phy.ray-optics.spherical-mirrors",
+      "name": {
+        "en": "Reflection of Light by Spherical Mirrors",
+        "hi": "गोलीय दर्पणों द्वारा प्रकाश का परावर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 9 §9.2"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.ray-optics.spherical-mirrors.core",
+          "name": {
+            "en": "Reflection of Light by Spherical Mirrors",
+            "hi": "गोलीय दर्पणों द्वारा प्रकाश का परावर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.ray-optics.spherical-mirrors.core.mirror-formula",
+              "name": {
+                "en": "Reflection, spherical mirrors and the mirror formula",
+                "hi": "परावर्तन, गोलीय दर्पण एवं दर्पण सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Light reflects with angle of incidence equal to angle of reflection; for spherical mirrors f = R/2 and 1/v + 1/u = 1/f with the Cartesian sign convention, and magnification m = −v/u.",
+                "hi": "प्रकाश आपतन कोण और परावर्तन कोण बराबर रखते हुए परावर्तित होता है; गोलीय दर्पणों के लिए f = R/2 और कार्तीय चिह्न-परिपाटी के साथ 1/v + 1/u = 1/f, तथा आवर्धन m = −v/u।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply the Cartesian sign convention consistently.",
+                  "hi": "कार्तीय चिह्न-परिपाटी एक जैसी लागू कीजिए।"
+                },
+                {
+                  "en": "Locate images formed by concave and convex mirrors with ray diagrams for different object positions.",
+                  "hi": "वस्तु की विभिन्न स्थितियों के लिए किरण आरेखों से अवतल और उत्तल दर्पणों द्वारा बने प्रतिबिंब ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-1",
+                "neet-ug-2026:physics:unit-16:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.ray-optics.refraction",
+      "name": {
+        "en": "Refraction",
+        "hi": "अपवर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 9 §9.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.ray-optics.refraction.core",
+          "name": {
+            "en": "Refraction",
+            "hi": "अपवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.ray-optics.refraction.core.refraction-snell",
+              "name": {
+                "en": "Refraction of light at a plane surface",
+                "hi": "समतल पृष्ठ पर प्रकाश का अपवर्तन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Light bends at a boundary according to Snell's law n₁ sin i = n₂ sin r, where refractive index n = c/v; this causes apparent depth and lateral shift.",
+                "hi": "सीमा पर प्रकाश स्नेल के नियम n₁ sin i = n₂ sin r के अनुसार मुड़ता है, जहाँ अपवर्तनांक n = c/v है; इससे आभासी गहराई और पार्श्व विस्थापन होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the apparent depth of an object under water, real depth divided by n.",
+                  "hi": "जल के नीचे रखी वस्तु की आभासी गहराई, वास्तविक गहराई को n से भाग देकर निकालिए।"
+                },
+                {
+                  "en": "Explain lateral shift through a glass slab.",
+                  "hi": "काँच की पट्टी से पार्श्व विस्थापन समझाइए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-2",
+                "neet-ug-2026:physics:unit-16:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.ray-optics.tir",
+      "name": {
+        "en": "Total Internal Reflection",
+        "hi": "पूर्ण आंतरिक परावर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 9 §9.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.ray-optics.tir.core",
+          "name": {
+            "en": "Total Internal Reflection",
+            "hi": "पूर्ण आंतरिक परावर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.ray-optics.tir.core.total-internal-reflection",
+              "name": {
+                "en": "Total internal reflection and its applications",
+                "hi": "पूर्ण आंतरिक परावर्तन एवं उसके अनुप्रयोग"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "When light travels from a denser to a rarer medium at an angle greater than the critical angle, sin c = 1/n, it is totally reflected; this explains mirages, sparkling diamonds, prisms and optical fibres.",
+                "hi": "जब प्रकाश सघन से विरल माध्यम में क्रांतिक कोण से अधिक कोण पर जाता है, जहाँ sin c = 1/n, तो वह पूर्णतः परावर्तित हो जाता है; इससे मरीचिका, हीरे की चमक, प्रिज़्म और प्रकाशिक तंतु समझे जाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "State the two conditions for total internal reflection.",
+                  "hi": "पूर्ण आंतरिक परावर्तन की दो शर्तें बताइए।"
+                },
+                {
+                  "en": "Explain how an optical fibre guides light.",
+                  "hi": "समझाइए कि प्रकाशिक तंतु प्रकाश को कैसे निर्देशित करता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.refraction.core.refraction-snell"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-4",
+                "neet-ug-2026:physics:unit-16:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.ray-optics.spherical-refraction",
+      "name": {
+        "en": "Refraction at Spherical Surfaces and by Lenses",
+        "hi": "गोलीय पृष्ठों तथा लेंसों द्वारा अपवर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 9 §9.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.ray-optics.spherical-refraction.core",
+          "name": {
+            "en": "Refraction at Spherical Surfaces and by Lenses",
+            "hi": "गोलीय पृष्ठों तथा लेंसों द्वारा अपवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.ray-optics.spherical-refraction.core.spherical-surface-refraction",
+              "name": {
+                "en": "Refraction at a spherical surface",
+                "hi": "गोलीय पृष्ठ पर अपवर्तन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For a single spherical surface of radius R separating media n₁ and n₂, n₂/v − n₁/u = (n₂ − n₁)/R.",
+                "hi": "n₁ और n₂ माध्यमों को अलग करने वाले R त्रिज्या के एकल गोलीय पृष्ठ के लिए n₂/v − n₁/u = (n₂ − n₁)/R।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the relation for small apertures using paraxial rays.",
+                  "hi": "उपाक्षीय किरणों से छोटे द्वारकों के लिए यह संबंध व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Apply it to find the image of a fish seen through a curved bowl.",
+                  "hi": "वक्र पात्र से देखी गई मछली का प्रतिबिंब निकालने में इसे लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.refraction.core.refraction-snell"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-2",
+                "neet-ug-2026:physics:unit-16:item-2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.ray-optics.spherical-refraction.core.lens-formulae",
+              "name": {
+                "en": "Thin lens formula and lens maker's formula",
+                "hi": "पतले लेंस का सूत्र एवं लेंस मेकर सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A thin lens obeys 1/v − 1/u = 1/f, and its focal length follows from the lens maker's formula 1/f = (n − 1)(1/R₁ − 1/R₂).",
+                "hi": "पतला लेंस 1/v − 1/u = 1/f का पालन करता है, और उसकी फोकस दूरी लेंस मेकर सूत्र 1/f = (n − 1)(1/R₁ − 1/R₂) से मिलती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the lens maker's formula from refraction at two surfaces.",
+                  "hi": "दो पृष्ठों पर अपवर्तन से लेंस मेकर सूत्र व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain how the focal length changes when a lens is placed in another medium.",
+                  "hi": "समझाइए कि लेंस को दूसरे माध्यम में रखने पर फोकस दूरी कैसे बदलती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.spherical-refraction.core.spherical-surface-refraction"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-3",
+                "neet-ug-2026:physics:unit-16:item-3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.ray-optics.spherical-refraction.core.lens-power-combination",
+              "name": {
+                "en": "Magnification, power of a lens and thin lenses in contact",
+                "hi": "आवर्धन, लेंस की क्षमता एवं संपर्क में पतले लेंस"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Linear magnification of a lens is m = v/u, power is P = 1/f in dioptres, and thin lenses in contact have 1/F = Σ1/fᵢ, so their powers add.",
+                "hi": "लेंस का रेखीय आवर्धन m = v/u है, क्षमता P = 1/f डायोप्टर में है, और संपर्क में पतले लेंसों के लिए 1/F = Σ1/fᵢ, यानी उनकी क्षमताएँ जुड़ती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute power in dioptres with focal length in metres.",
+                  "hi": "फोकस दूरी मीटर में लेकर डायोप्टर में क्षमता निकालिए।"
+                },
+                {
+                  "en": "Find the magnification of a combination as the product of individual magnifications.",
+                  "hi": "संयोजन का आवर्धन अलग-अलग आवर्धनों के गुणनफल के रूप में निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.spherical-refraction.core.lens-formulae"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-5",
+                "neet-ug-2026:physics:unit-16:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.ray-optics.prism",
+      "name": {
+        "en": "Refraction through a Prism",
+        "hi": "प्रिज़्म में अपवर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 9 §9.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.ray-optics.prism.core",
+          "name": {
+            "en": "Refraction through a Prism",
+            "hi": "प्रिज़्म में अपवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.ray-optics.prism.core.prism-deviation",
+              "name": {
+                "en": "Refraction through a prism",
+                "hi": "प्रिज़्म से अपवर्तन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A prism of angle A deviates light by δ = i + e − A, and at minimum deviation n = sin[(A + δ_m)/2]/sin(A/2); a thin prism deviates by (n − 1)A.",
+                "hi": "A कोण का प्रिज़्म प्रकाश को δ = i + e − A से विचलित करता है, और न्यूनतम विचलन पर n = sin[(A + δ_m)/2]/sin(A/2); पतला प्रिज़्म (n − 1)A से विचलित करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch the graph of deviation against angle of incidence and mark minimum deviation.",
+                  "hi": "आपतन कोण के सापेक्ष विचलन का ग्राफ़ बनाइए और न्यूनतम विचलन अंकित कीजिए।"
+                },
+                {
+                  "en": "Derive the refractive index from the angle of minimum deviation.",
+                  "hi": "न्यूनतम विचलन कोण से अपवर्तनांक व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.refraction.core.refraction-snell"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-6",
+                "neet-ug-2026:physics:unit-16:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.ray-optics.optical-instruments",
+      "name": {
+        "en": "Optical Instruments",
+        "hi": "प्रकाशिक यंत्र"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 9 §9.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.ray-optics.optical-instruments.core",
+          "name": {
+            "en": "Optical Instruments",
+            "hi": "प्रकाशिक यंत्र"
+          },
+          "concepts": [
+            {
+              "id": "phy.ray-optics.optical-instruments.core.microscope-telescope",
+              "name": {
+                "en": "Microscope and astronomical telescope and their magnifying powers",
+                "hi": "सूक्ष्मदर्शी एवं खगोलीय दूरदर्शक तथा उनकी आवर्धन क्षमताएँ"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A simple microscope magnifies by 1 + D/f; a compound microscope multiplies objective and eyepiece magnifications; a refracting telescope has m = f_o/f_e, and reflecting telescopes use a concave mirror as objective.",
+                "hi": "सरल सूक्ष्मदर्शी 1 + D/f गुना आवर्धन करता है; संयुक्त सूक्ष्मदर्शी अभिदृश्यक और नेत्रिका के आवर्धनों को गुणा करता है; अपवर्ती दूरदर्शक में m = f_o/f_e होता है, और परावर्ती दूरदर्शक अभिदृश्यक के रूप में अवतल दर्पण का उपयोग करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw ray diagrams for a compound microscope and a refracting telescope in normal adjustment.",
+                  "hi": "सामान्य समायोजन में संयुक्त सूक्ष्मदर्शी और अपवर्ती दूरदर्शक के किरण आरेख बनाइए।"
+                },
+                {
+                  "en": "State the advantages of reflecting telescopes, such as no chromatic aberration and easier support of large mirrors.",
+                  "hi": "परावर्ती दूरदर्शकों के लाभ बताइए, जैसे वर्ण विपथन का न होना और बड़े दर्पणों को सहारा देना आसान होना।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.spherical-refraction.core.lens-power-combination"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-7",
+                "neet-ug-2026:physics:unit-16:item-7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part II, Ch 9",
+      "url": "https://ncert.nic.in/textbook/pdf/leph201.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph2, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 16: Optics (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 16: OPTICS (PDF p.6-7)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

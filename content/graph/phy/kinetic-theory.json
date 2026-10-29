@@ -1,0 +1,335 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.kinetic-theory",
+  "subject": "phy",
+  "unit": "phy.thermal-physics",
+  "name": {
+    "en": "Kinetic Theory",
+    "hi": "अणुगति सिद्धांत"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part II, Ch 12",
+  "topics": [
+    {
+      "id": "phy.kinetic-theory.behaviour-of-gases",
+      "name": {
+        "en": "Molecular Nature of Matter and Behaviour of Gases",
+        "hi": "द्रव्य की आण्विक प्रकृति एवं गैसों का व्यवहार"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 12 §12.2",
+        "NCERT Class 11 Physics Part II, Ch 12 §12.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.kinetic-theory.behaviour-of-gases.core",
+          "name": {
+            "en": "Molecular Nature of Matter and Behaviour of Gases",
+            "hi": "द्रव्य की आण्विक प्रकृति एवं गैसों का व्यवहार"
+          },
+          "concepts": [
+            {
+              "id": "phy.kinetic-theory.behaviour-of-gases.core.perfect-gas-equation",
+              "name": {
+                "en": "Equation of state of a perfect gas",
+                "hi": "आदर्श गैस का अवस्था समीकरण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "An ideal gas obeys PV = nRT = Nk_BT, which combines Boyle's, Charles' and Avogadro's laws; real gases approach it at low pressure and high temperature.",
+                "hi": "आदर्श गैस PV = nRT = Nk_BT का पालन करती है, जो बॉयल, चार्ल्स और आवोगाद्रो के नियमों को मिलाता है; वास्तविक गैसें कम दाब और उच्च ताप पर इसके निकट पहुँचती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive Boyle's and Charles' laws as special cases of the ideal gas equation.",
+                  "hi": "आदर्श गैस समीकरण की विशेष स्थितियों के रूप में बॉयल और चार्ल्स के नियम व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Apply Dalton's law of partial pressures to a mixture of gases.",
+                  "hi": "गैसों के मिश्रण पर डाल्टन का आंशिक दाब नियम लागू कीजिए।"
+                },
+                {
+                  "en": "Compute work done on compressing a gas isothermally.",
+                  "hi": "किसी गैस को समतापीय रूप से संपीडित करने में किया गया कार्य निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.temperature-heat.core.heat-temperature"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-9:item-1",
+                "neet-ug-2026:physics:unit-9:item-1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.kinetic-theory.behaviour-of-gases.core.avogadro-number",
+              "name": {
+                "en": "Avogadro's number and the mole",
+                "hi": "आवोगाद्रो संख्या एवं मोल"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Equal volumes of all gases at the same temperature and pressure contain the same number of molecules, and one mole contains Avogadro's number of particles, about 6.02 × 10²³.",
+                "hi": "समान ताप और दाब पर सभी गैसों के समान आयतनों में अणुओं की संख्या समान होती है, और एक मोल में आवोगाद्रो संख्या, लगभग 6.02 × 10²³, कण होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "State Avogadro's hypothesis and relate R = N_A k_B.",
+                  "hi": "आवोगाद्रो की परिकल्पना बताइए और R = N_A k_B से संबंध जोड़िए।"
+                },
+                {
+                  "en": "Find the number of molecules in a given volume of gas.",
+                  "hi": "गैस के दिए गए आयतन में अणुओं की संख्या निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.kinetic-theory.behaviour-of-gases.core.perfect-gas-equation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-9:item-5",
+                "neet-ug-2026:physics:unit-9:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.kinetic-theory.kinetic-theory-ideal-gas",
+      "name": {
+        "en": "Kinetic Theory of an Ideal Gas",
+        "hi": "आदर्श गैसों का अणुगति सिद्धांत"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 12 §12.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.kinetic-theory.kinetic-theory-ideal-gas.core",
+          "name": {
+            "en": "Kinetic Theory of an Ideal Gas",
+            "hi": "आदर्श गैसों का अणुगति सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-theory-pressure",
+              "name": {
+                "en": "Assumptions of kinetic theory and the pressure of a gas",
+                "hi": "अणुगति सिद्धांत की मान्यताएँ एवं गैस का दाब"
+              },
+              "kind": "derivation",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Treating a gas as many tiny molecules in random motion making elastic collisions, kinetic theory derives P = (1/3)nm v̄², where v̄² is the mean square speed.",
+                "hi": "गैस को अनियमित गति में प्रत्यास्थ संघट्ट करने वाले असंख्य सूक्ष्म अणु मानकर, अणुगति सिद्धांत P = (1/3)nm v̄² व्युत्पन्न करता है, जहाँ v̄² माध्य वर्ग चाल है।"
+              },
+              "key_points": [
+                {
+                  "en": "List the assumptions of kinetic theory.",
+                  "hi": "अणुगति सिद्धांत की मान्यताएँ लिखिए।"
+                },
+                {
+                  "en": "Derive the pressure from the momentum transferred by molecules to a wall.",
+                  "hi": "अणुओं द्वारा दीवार को दिए गए संवेग से दाब व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.kinetic-theory.behaviour-of-gases.core.perfect-gas-equation",
+                "phy.laws-of-motion.second-law.core.momentum-second-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-9:item-2",
+                "neet-ug-2026:physics:unit-9:item-2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-temperature-rms",
+              "name": {
+                "en": "Kinetic interpretation of temperature and rms speed",
+                "hi": "ताप की अणुगतिक व्याख्या एवं वर्ग माध्य मूल चाल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The average kinetic energy of a molecule is (3/2)k_BT, so temperature measures molecular kinetic energy and the rms speed is √(3k_BT/m) = √(3RT/M).",
+                "hi": "एक अणु की औसत गतिज ऊर्जा (3/2)k_BT है, इसलिए ताप आण्विक गतिज ऊर्जा का माप है और वर्ग माध्य मूल चाल √(3k_BT/m) = √(3RT/M) है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the rms speed from the kinetic theory pressure and the gas equation.",
+                  "hi": "अणुगति दाब और गैस समीकरण से वर्ग माध्य मूल चाल व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Compare rms speeds of different gases at the same temperature.",
+                  "hi": "समान ताप पर विभिन्न गैसों की वर्ग माध्य मूल चालों की तुलना कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-theory-pressure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-9:item-3",
+                "neet-ug-2026:physics:unit-9:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.kinetic-theory.equipartition",
+      "name": {
+        "en": "Law of Equipartition of Energy and Specific Heat Capacity",
+        "hi": "ऊर्जा के समविभाजन का नियम एवं विशिष्ट ऊष्मा धारिता"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 12 §12.5",
+        "NCERT Class 11 Physics Part II, Ch 12 §12.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.kinetic-theory.equipartition.core",
+          "name": {
+            "en": "Law of Equipartition of Energy and Specific Heat Capacity",
+            "hi": "ऊर्जा के समविभाजन का नियम एवं विशिष्ट ऊष्मा धारिता"
+          },
+          "concepts": [
+            {
+              "id": "phy.kinetic-theory.equipartition.core.equipartition-specific-heats",
+              "name": {
+                "en": "Degrees of freedom, equipartition and specific heats of gases",
+                "hi": "स्वातंत्र्य कोटियाँ, समविभाजन एवं गैसों की विशिष्ट ऊष्माएँ"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Each quadratic degree of freedom carries k_BT/2 of energy on average, giving Cv = 3R/2 for monatomic and 5R/2 for rigid diatomic gases and γ = Cp/Cv.",
+                "hi": "हर द्विघाती स्वातंत्र्य कोटि औसतन k_BT/2 ऊर्जा रखती है, जिससे एकपरमाणुक गैस के लिए Cv = 3R/2 और दृढ़ द्विपरमाणुक गैस के लिए 5R/2 तथा γ = Cp/Cv मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Count translational, rotational and vibrational degrees of freedom for mono-, di- and polyatomic molecules.",
+                  "hi": "एक-, द्वि- और बहुपरमाणुक अणुओं के लिए स्थानांतरीय, घूर्णी और कंपन स्वातंत्र्य कोटियाँ गिनिए।"
+                },
+                {
+                  "en": "Compute γ for different gases and for a mixture.",
+                  "hi": "विभिन्न गैसों और मिश्रण के लिए γ निकालिए।"
+                },
+                {
+                  "en": "State the equipartition result for the specific heat of solids, 3R.",
+                  "hi": "ठोसों की विशिष्ट ऊष्मा के लिए समविभाजन परिणाम 3R बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-temperature-rms",
+                "phy.thermodynamics.first-law.core.first-law-thermo"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-9:item-4",
+                "neet-ug-2026:physics:unit-9:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.kinetic-theory.mean-free-path",
+      "name": {
+        "en": "Mean Free Path",
+        "hi": "माध्य मुक्त पथ"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 12 §12.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.kinetic-theory.mean-free-path.core",
+          "name": {
+            "en": "Mean Free Path",
+            "hi": "माध्य मुक्त पथ"
+          },
+          "concepts": [
+            {
+              "id": "phy.kinetic-theory.mean-free-path.core.mean-free-path-def",
+              "name": {
+                "en": "Mean free path",
+                "hi": "माध्य मुक्त पथ"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The mean free path is the average distance a molecule travels between collisions, l = 1/(√2 nπd²), so it grows as the gas becomes thinner.",
+                "hi": "माध्य मुक्त पथ वह औसत दूरी है जो एक अणु दो संघट्टों के बीच तय करता है, l = 1/(√2 nπd²), इसलिए गैस के विरल होने पर यह बढ़ता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State how the mean free path depends on number density and molecular diameter.",
+                  "hi": "बताइए कि माध्य मुक्त पथ संख्या घनत्व और आण्विक व्यास पर कैसे निर्भर करता है।"
+                },
+                {
+                  "en": "Estimate the mean free path of air molecules at ordinary conditions from given data.",
+                  "hi": "दिए गए आँकड़ों से सामान्य अवस्थाओं में वायु के अणुओं का माध्य मुक्त पथ आकलित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-theory-pressure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-9:item-5",
+                "neet-ug-2026:physics:unit-9:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 12",
+      "url": "https://ncert.nic.in/textbook/pdf/keph205.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph2, contents prelims p.xvi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 9: Kinetic Theory of Gases (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 9: KINETIC THEORY OF GASES (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

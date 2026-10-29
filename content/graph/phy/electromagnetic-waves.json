@@ -1,0 +1,207 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.electromagnetic-waves",
+  "subject": "phy",
+  "unit": "phy.electricity-magnetism",
+  "name": {
+    "en": "Electromagnetic Waves",
+    "hi": "वैद्युतचुंबकीय तरंगें"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part I, Ch 8",
+  "topics": [
+    {
+      "id": "phy.electromagnetic-waves.displacement-current",
+      "name": {
+        "en": "Displacement Current",
+        "hi": "विस्थापन धारा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 8 §8.2"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-waves.displacement-current.core",
+          "name": {
+            "en": "Displacement Current",
+            "hi": "विस्थापन धारा"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-waves.displacement-current.core.displacement-current-def",
+              "name": {
+                "en": "Displacement current",
+                "hi": "विस्थापन धारा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Maxwell added the displacement current i_d = ε₀ dΦ_E/dt to Ampere's law so that a changing electric field, as between capacitor plates, also produces a magnetic field.",
+                "hi": "मैक्सवेल ने ऐम्पियर के नियम में विस्थापन धारा i_d = ε₀ dΦ_E/dt जोड़ी, ताकि बदलता विद्युत क्षेत्र, जैसे संधारित्र की पट्टिकाओं के बीच, भी चुंबकीय क्षेत्र उत्पन्न करे।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the inconsistency in Ampere's law for a charging capacitor.",
+                  "hi": "आवेशित होते संधारित्र के लिए ऐम्पियर के नियम की असंगति समझाइए।"
+                },
+                {
+                  "en": "Show that the displacement current between the plates equals the conduction current in the wires.",
+                  "hi": "दिखाइए कि पट्टिकाओं के बीच विस्थापन धारा तारों में चालन धारा के बराबर होती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.moving-charges-magnetism.ampere-law.core.ampere-circuital-law",
+                "phy.electric-charges-fields.gauss.core.gauss-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-15:item-1",
+                "neet-ug-2026:physics:unit-15:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electromagnetic-waves.em-waves",
+      "name": {
+        "en": "Electromagnetic Waves",
+        "hi": "वैद्युतचुंबकीय तरंगें"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 8 §8.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-waves.em-waves.core",
+          "name": {
+            "en": "Electromagnetic Waves",
+            "hi": "वैद्युतचुंबकीय तरंगें"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-waves.em-waves.core.em-wave-properties",
+              "name": {
+                "en": "Electromagnetic waves and their characteristics",
+                "hi": "वैद्युतचुंबकीय तरंगें एवं उनके अभिलक्षण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Accelerated charges radiate electromagnetic waves in which E and B oscillate perpendicular to each other and to the direction of travel, moving in vacuum at c = 1/√(μ₀ε₀) with E₀ = cB₀.",
+                "hi": "त्वरित आवेश वैद्युतचुंबकीय तरंगें विकिरित करते हैं जिनमें E और B एक-दूसरे के तथा गति की दिशा के लंबवत दोलन करते हैं, और निर्वात में c = 1/√(μ₀ε₀) चाल से चलते हैं, जहाँ E₀ = cB₀।"
+              },
+              "key_points": [
+                {
+                  "en": "State that electromagnetic waves are transverse and need no medium.",
+                  "hi": "बताइए कि वैद्युतचुंबकीय तरंगें अनुप्रस्थ हैं और उन्हें माध्यम की आवश्यकता नहीं होती।"
+                },
+                {
+                  "en": "State that the waves carry energy and momentum and exert radiation pressure.",
+                  "hi": "बताइए कि ये तरंगें ऊर्जा और संवेग ले जाती हैं और विकिरण दाब लगाती हैं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-waves.displacement-current.core.displacement-current-def",
+                "phy.waves.wave-types.core.wave-motion-types"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-15:item-2",
+                "neet-ug-2026:physics:unit-15:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electromagnetic-waves.em-spectrum",
+      "name": {
+        "en": "Electromagnetic Spectrum",
+        "hi": "वैद्युतचुंबकीय स्पेक्ट्रम"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 8 §8.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electromagnetic-waves.em-spectrum.core",
+          "name": {
+            "en": "Electromagnetic Spectrum",
+            "hi": "वैद्युतचुंबकीय स्पेक्ट्रम"
+          },
+          "concepts": [
+            {
+              "id": "phy.electromagnetic-waves.em-spectrum.core.em-spectrum-uses",
+              "name": {
+                "en": "Electromagnetic spectrum and its applications",
+                "hi": "वैद्युतचुंबकीय स्पेक्ट्रम एवं उसके अनुप्रयोग"
+              },
+              "kind": "list",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "In order of decreasing wavelength the spectrum runs radio, microwave, infrared, visible, ultraviolet, X-ray and gamma ray, each with typical sources and uses.",
+                "hi": "घटती तरंगदैर्ध्य के क्रम में स्पेक्ट्रम रेडियो, सूक्ष्मतरंग, अवरक्त, दृश्य, पराबैंगनी, X-किरण और गामा किरण है, और हर एक के विशिष्ट स्रोत और उपयोग हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Arrange the bands by wavelength and frequency.",
+                  "hi": "बैंडों को तरंगदैर्ध्य और आवृत्ति के क्रम में व्यवस्थित कीजिए।"
+                },
+                {
+                  "en": "Give one source and one use of each band, such as microwaves for radar and X-rays for medical imaging.",
+                  "hi": "हर बैंड का एक स्रोत और एक उपयोग बताइए, जैसे रडार के लिए सूक्ष्मतरंगें और चिकित्सा प्रतिबिंबन के लिए X-किरणें।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-waves.em-waves.core.em-wave-properties"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-15:item-3",
+                "neet-ug-2026:physics:unit-15:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 8",
+      "url": "https://ncert.nic.in/textbook/pdf/leph108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph1, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 15: Electromagnetic Waves (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 15: ELECTROMAGNETIC WAVES (PDF p.6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

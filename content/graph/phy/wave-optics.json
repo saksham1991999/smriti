@@ -1,0 +1,300 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.wave-optics",
+  "subject": "phy",
+  "unit": "phy.optics",
+  "name": {
+    "en": "Wave Optics",
+    "hi": "तरंग-प्रकाशिकी"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part II, Ch 10",
+  "topics": [
+    {
+      "id": "phy.wave-optics.huygens",
+      "name": {
+        "en": "Huygens Principle and Reflection and Refraction of Plane Waves",
+        "hi": "हाइगेंस का सिद्धांत एवं समतल तरंगों का अपवर्तन तथा परावर्तन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 10 §10.2",
+        "NCERT Class 12 Physics Part II, Ch 10 §10.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.wave-optics.huygens.core",
+          "name": {
+            "en": "Huygens Principle and Reflection and Refraction of Plane Waves",
+            "hi": "हाइगेंस का सिद्धांत एवं समतल तरंगों का अपवर्तन तथा परावर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.wave-optics.huygens.core.huygens-principle",
+              "name": {
+                "en": "Wavefronts, Huygens' principle and the laws of reflection and refraction",
+                "hi": "तरंगाग्र, हाइगेंस का सिद्धांत एवं परावर्तन और अपवर्तन के नियम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Every point on a wavefront acts as a source of secondary wavelets, and the envelope of these wavelets gives the new wavefront; this construction reproduces the laws of reflection and of refraction with n₁/n₂ = v₂/v₁.",
+                "hi": "तरंगाग्र का हर बिंदु द्वितीयक तरंगिकाओं के स्रोत का कार्य करता है, और इन तरंगिकाओं का आवरण नया तरंगाग्र देता है; यह रचना परावर्तन के नियम और n₁/n₂ = v₂/v₁ के साथ अपवर्तन के नियम को पुनः प्राप्त करती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish spherical, cylindrical and plane wavefronts.",
+                  "hi": "गोलीय, बेलनाकार और समतल तरंगाग्रों में अंतर बताइए।"
+                },
+                {
+                  "en": "Derive Snell's law using Huygens' construction.",
+                  "hi": "हाइगेंस की रचना से स्नेल का नियम व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.ray-optics.refraction.core.refraction-snell",
+                "phy.waves.wave-types.core.wave-motion-types"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-8",
+                "neet-ug-2026:physics:unit-16:item-8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.wave-optics.coherent-interference",
+      "name": {
+        "en": "Coherent Addition and Young's Experiment",
+        "hi": "कला-संबद्ध योग एवं यंग का प्रयोग"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 10 §10.4",
+        "NCERT Class 12 Physics Part II, Ch 10 §10.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.wave-optics.coherent-interference.core",
+          "name": {
+            "en": "Coherent Addition and Young's Experiment",
+            "hi": "कला-संबद्ध योग एवं यंग का प्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.wave-optics.coherent-interference.core.coherent-sources",
+              "name": {
+                "en": "Coherent sources and sustained interference",
+                "hi": "कला-संबद्ध स्रोत एवं स्थायी व्यतिकरण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Sustained interference needs coherent sources with a constant phase difference; with incoherent sources the intensities simply add.",
+                "hi": "स्थायी व्यतिकरण के लिए नियत कलांतर वाले कला-संबद्ध स्रोत चाहिए; कला-असंबद्ध स्रोतों के साथ तीव्रताएँ केवल जुड़ जाती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the resultant intensity I = I₁ + I₂ + 2√(I₁I₂) cos φ.",
+                  "hi": "परिणामी तीव्रता I = I₁ + I₂ + 2√(I₁I₂) cos φ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain why two independent bulbs do not give an interference pattern.",
+                  "hi": "समझाइए कि दो स्वतंत्र बल्ब व्यतिकरण प्रतिरूप क्यों नहीं देते।"
+                }
+              ],
+              "prerequisites": [
+                "phy.wave-optics.huygens.core.huygens-principle",
+                "phy.waves.superposition.core.superposition-reflection"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-10",
+                "neet-ug-2026:physics:unit-16:item-10"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.wave-optics.coherent-interference.core.youngs-double-slit",
+              "name": {
+                "en": "Young's double-slit experiment and fringe width",
+                "hi": "यंग का द्वि-झिरी प्रयोग एवं फ्रिंज चौड़ाई"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Light from two slits a distance d apart forms bright fringes where the path difference is nλ, with fringe width β = λD/d on a screen at distance D.",
+                "hi": "d दूरी पर स्थित दो झिरियों से आए प्रकाश से वहाँ दीप्त फ्रिंज बनते हैं जहाँ पथांतर nλ हो, और D दूरी पर रखे पर्दे पर फ्रिंज चौड़ाई β = λD/d होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the positions of bright and dark fringes and the fringe width.",
+                  "hi": "दीप्त और अदीप्त फ्रिंजों की स्थितियाँ और फ्रिंज चौड़ाई व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Predict how the pattern changes with wavelength, slit separation, or immersion in a liquid.",
+                  "hi": "तरंगदैर्ध्य, झिरी-दूरी या द्रव में डुबोने पर प्रतिरूप में परिवर्तन बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.wave-optics.coherent-interference.core.coherent-sources"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-9",
+                "neet-ug-2026:physics:unit-16:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.wave-optics.diffraction",
+      "name": {
+        "en": "Diffraction",
+        "hi": "विवर्तन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 10 §10.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.wave-optics.diffraction.core",
+          "name": {
+            "en": "Diffraction",
+            "hi": "विवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.wave-optics.diffraction.core.single-slit-diffraction",
+              "name": {
+                "en": "Diffraction at a single slit and width of the central maximum",
+                "hi": "एकल झिरी पर विवर्तन एवं केंद्रीय उच्चिष्ठ की चौड़ाई"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "A single slit of width a gives a bright central maximum with minima at a sin θ = nλ, so the central maximum has angular width 2λ/a.",
+                "hi": "a चौड़ाई की एकल झिरी एक दीप्त केंद्रीय उच्चिष्ठ देती है जिसके निम्निष्ठ a sin θ = nλ पर होते हैं, इसलिए केंद्रीय उच्चिष्ठ की कोणीय चौड़ाई 2λ/a है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the condition for minima by dividing the slit into halves.",
+                  "hi": "झिरी को आधे भागों में बाँटकर निम्निष्ठ की शर्त व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Contrast the diffraction pattern with the double-slit interference pattern.",
+                  "hi": "विवर्तन प्रतिरूप की द्वि-झिरी व्यतिकरण प्रतिरूप से तुलना कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.wave-optics.huygens.core.huygens-principle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-11",
+                "neet-ug-2026:physics:unit-16:item-11"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.wave-optics.polarisation",
+      "name": {
+        "en": "Polarisation",
+        "hi": "ध्रुवण"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part II, Ch 10 §10.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.wave-optics.polarisation.core",
+          "name": {
+            "en": "Polarisation",
+            "hi": "ध्रुवण"
+          },
+          "concepts": [
+            {
+              "id": "phy.wave-optics.polarisation.core.polarisation-brewster",
+              "name": {
+                "en": "Polarisation: plane-polarised light, Brewster's law and Polaroids",
+                "hi": "ध्रुवण : समतल ध्रुवित प्रकाश, ब्रूस्टर का नियम एवं पोलेरॉइड"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Polarisation shows that light is transverse; a Polaroid passes one plane of vibration, transmitted intensity follows Malus's law I = I₀ cos²θ, and reflected light is fully polarised at Brewster's angle where tan i_B = n.",
+                "hi": "ध्रुवण दिखाता है कि प्रकाश अनुप्रस्थ है; पोलेरॉइड कंपन के एक तल को पार जाने देता है, पारगमित तीव्रता मैलस के नियम I = I₀ cos²θ का पालन करती है, और ब्रूस्टर कोण पर, जहाँ tan i_B = n, परावर्तित प्रकाश पूर्णतः ध्रुवित होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find intensity through two Polaroids at a given angle.",
+                  "hi": "किसी कोण पर रखे दो पोलेरॉइडों से तीव्रता निकालिए।"
+                },
+                {
+                  "en": "Derive that reflected and refracted rays are perpendicular at Brewster's angle.",
+                  "hi": "व्युत्पन्न कीजिए कि ब्रूस्टर कोण पर परावर्तित और अपवर्तित किरणें लंबवत होती हैं।"
+                },
+                {
+                  "en": "List uses of polarised light, such as sunglasses and photographic filters.",
+                  "hi": "ध्रुवित प्रकाश के उपयोग बताइए, जैसे धूप के चश्मे और फ़ोटोग्राफ़ी फ़िल्टर।"
+                }
+              ],
+              "prerequisites": [
+                "phy.wave-optics.huygens.core.huygens-principle",
+                "phy.electromagnetic-waves.em-waves.core.em-wave-properties"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-16:item-12",
+                "neet-ug-2026:physics:unit-16:item-12"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part II, Ch 10",
+      "url": "https://ncert.nic.in/textbook/pdf/leph202.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph2, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 16: Optics (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 16: OPTICS (PDF p.6-7)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

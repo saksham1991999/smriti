@@ -1,0 +1,491 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.electrostatic-potential-capacitance",
+  "subject": "phy",
+  "unit": "phy.electricity-magnetism",
+  "name": {
+    "en": "Electrostatic Potential and Capacitance",
+    "hi": "स्थिरवैद्युत विभव तथा धारिता"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part I, Ch 2",
+  "topics": [
+    {
+      "id": "phy.electrostatic-potential-capacitance.potential",
+      "name": {
+        "en": "Electrostatic Potential",
+        "hi": "स्थिरवैद्युत विभव"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.2",
+        "NCERT Class 12 Physics Part I, Ch 2 §2.3",
+        "NCERT Class 12 Physics Part I, Ch 2 §2.4",
+        "NCERT Class 12 Physics Part I, Ch 2 §2.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.potential.core",
+          "name": {
+            "en": "Electrostatic Potential",
+            "hi": "स्थिरवैद्युत विभव"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.potential.core.electric-potential",
+              "name": {
+                "en": "Electric potential of a point charge, a dipole and a system of charges",
+                "hi": "बिंदु आवेश, द्विध्रुव एवं आवेशों के निकाय का विद्युत विभव"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Potential is the work done per unit positive charge in bringing it from infinity, V = q/(4πε₀r) for a point charge, p cos θ/(4πε₀r²) for a dipole, and the algebraic sum for many charges.",
+                "hi": "विभव प्रति एकांक धनात्मक आवेश को अनंत से लाने में किया गया कार्य है, बिंदु आवेश के लिए V = q/(4πε₀r), द्विध्रुव के लिए p cos θ/(4πε₀r²), और कई आवेशों के लिए बीजगणितीय योग।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the potential of a point charge from the work done against the field.",
+                  "hi": "क्षेत्र के विरुद्ध किए गए कार्य से बिंदु आवेश का विभव व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Relate field and potential, E = −dV/dr.",
+                  "hi": "क्षेत्र और विभव को जोड़िए, E = −dV/dr।"
+                },
+                {
+                  "en": "Explain why potential is a scalar and adds algebraically.",
+                  "hi": "समझाइए कि विभव अदिश क्यों है और बीजगणितीय रूप से क्यों जुड़ता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electric-charges-fields.electric-field.core.electric-field-point",
+                "phy.electric-charges-fields.dipole.core.electric-dipole-field",
+                "phy.work-energy-power.potential-energy.core.potential-energy"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-8",
+                "neet-ug-2026:physics:unit-11:item-8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.equipotential",
+      "name": {
+        "en": "Equipotential Surfaces",
+        "hi": "समविभव पृष्ठ"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.equipotential.core",
+          "name": {
+            "en": "Equipotential Surfaces",
+            "hi": "समविभव पृष्ठ"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.equipotential.core.potential-difference-equipotentials",
+              "name": {
+                "en": "Potential difference and equipotential surfaces",
+                "hi": "विभवांतर एवं समविभव पृष्ठ"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Potential difference is the work per unit charge between two points; an equipotential surface has the same potential everywhere and the field is perpendicular to it.",
+                "hi": "विभवांतर दो बिंदुओं के बीच प्रति एकांक आवेश कार्य है; समविभव पृष्ठ पर हर जगह विभव समान होता है और क्षेत्र उसके लंबवत होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch equipotentials for a point charge, a dipole and a uniform field.",
+                  "hi": "बिंदु आवेश, द्विध्रुव और एकसमान क्षेत्र के समविभव पृष्ठ बनाइए।"
+                },
+                {
+                  "en": "Explain why no work is done moving a charge along an equipotential.",
+                  "hi": "समझाइए कि समविभव पृष्ठ के अनुदिश आवेश ले जाने में कार्य क्यों नहीं होता।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electrostatic-potential-capacitance.potential.core.electric-potential"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-9",
+                "neet-ug-2026:physics:unit-11:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.potential-energy-charges",
+      "name": {
+        "en": "Potential Energy of a System of Charges and in an External Field",
+        "hi": "आवेशों के निकाय की एवं बाह्य क्षेत्र में स्थितिज ऊर्जा"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.7",
+        "NCERT Class 12 Physics Part I, Ch 2 §2.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.potential-energy-charges.core",
+          "name": {
+            "en": "Potential Energy of a System of Charges and in an External Field",
+            "hi": "आवेशों के निकाय की एवं बाह्य क्षेत्र में स्थितिज ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.potential-energy-charges.core.electrostatic-potential-energy",
+              "name": {
+                "en": "Potential energy of two point charges and of a dipole in a field",
+                "hi": "दो बिंदु आवेशों की एवं क्षेत्र में द्विध्रुव की स्थितिज ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Two charges have potential energy q₁q₂/(4πε₀r), and a dipole in a uniform field has U = −p·E, lowest when aligned with the field.",
+                "hi": "दो आवेशों की स्थितिज ऊर्जा q₁q₂/(4πε₀r) है, और एकसमान क्षेत्र में द्विध्रुव की U = −p·E, जो क्षेत्र के समांतर होने पर न्यूनतम होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the energy of a system of three charges by summing pairs.",
+                  "hi": "जोड़ों का योग करके तीन आवेशों के निकाय की ऊर्जा निकालिए।"
+                },
+                {
+                  "en": "Compute work needed to rotate a dipole from one angle to another.",
+                  "hi": "द्विध्रुव को एक कोण से दूसरे कोण तक घुमाने में आवश्यक कार्य निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electrostatic-potential-capacitance.potential.core.electric-potential",
+                "phy.electric-charges-fields.dipole.core.dipole-torque"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-10",
+                "neet-ug-2026:physics:unit-11:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.conductors-electrostatics",
+      "name": {
+        "en": "Electrostatics of Conductors",
+        "hi": "चालक-स्थिरवैद्युतिकी"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.9"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.conductors-electrostatics.core",
+          "name": {
+            "en": "Electrostatics of Conductors",
+            "hi": "चालक-स्थिरवैद्युतिकी"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.conductors-electrostatics.core.conductor-electrostatics",
+              "name": {
+                "en": "Electrostatic properties of conductors",
+                "hi": "चालकों के स्थिरवैद्युत गुण"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Inside a conductor in equilibrium the field is zero, any excess charge resides on the surface, the surface is equipotential and the field just outside is σ/ε₀ normal to it.",
+                "hi": "साम्य में चालक के भीतर क्षेत्र शून्य होता है, अतिरिक्त आवेश सतह पर रहता है, सतह समविभव होती है और ठीक बाहर क्षेत्र सतह के लंबवत σ/ε₀ होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain electrostatic shielding by a hollow conductor.",
+                  "hi": "खोखले चालक द्वारा स्थिरवैद्युत परिरक्षण समझाइए।"
+                },
+                {
+                  "en": "Explain why charge density is higher at sharp points.",
+                  "hi": "समझाइए कि नुकीले बिंदुओं पर आवेश घनत्व अधिक क्यों होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electric-charges-fields.gauss.core.gauss-law",
+                "phy.electric-charges-fields.conductors-insulators.core.conductors-insulators-def"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-11",
+                "neet-ug-2026:physics:unit-11:item-11"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.dielectrics",
+      "name": {
+        "en": "Dielectrics and Polarisation",
+        "hi": "परावैद्युत तथा ध्रुवण"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.10"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.dielectrics.core",
+          "name": {
+            "en": "Dielectrics and Polarisation",
+            "hi": "परावैद्युत तथा ध्रुवण"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.dielectrics.core.dielectric-polarisation",
+              "name": {
+                "en": "Dielectrics and electric polarisation",
+                "hi": "परावैद्युत एवं वैद्युत ध्रुवण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In an external field a dielectric becomes polarised, its induced dipoles reducing the field inside by the dielectric constant K.",
+                "hi": "बाह्य क्षेत्र में परावैद्युत ध्रुवित हो जाता है और उसके प्रेरित द्विध्रुव भीतर के क्षेत्र को परावैद्युतांक K के अनुपात में घटाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish polar and non-polar molecules and how each is polarised.",
+                  "hi": "ध्रुवीय और अध्रुवीय अणुओं में अंतर तथा हर एक के ध्रुवण का तरीका बताइए।"
+                },
+                {
+                  "en": "Define polarisation as dipole moment per unit volume.",
+                  "hi": "ध्रुवण को प्रति एकांक आयतन द्विध्रुव आघूर्ण के रूप में परिभाषित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electric-charges-fields.dipole.core.electric-dipole-field"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-11",
+                "neet-ug-2026:physics:unit-11:item-11"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.capacitance",
+      "name": {
+        "en": "Capacitors and Capacitance",
+        "hi": "संधारित्र तथा धारिता"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.11",
+        "NCERT Class 12 Physics Part I, Ch 2 §2.14"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.capacitance.core",
+          "name": {
+            "en": "Capacitors and Capacitance",
+            "hi": "संधारित्र तथा धारिता"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.capacitance.core.capacitance-combination",
+              "name": {
+                "en": "Capacitance and combination of capacitors",
+                "hi": "धारिता एवं संधारित्रों का संयोजन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Capacitance is C = Q/V; capacitors in parallel add directly while in series their reciprocals add.",
+                "hi": "धारिता C = Q/V है; समांतर क्रम में संधारित्र सीधे जुड़ते हैं जबकि श्रेणीक्रम में उनके व्युत्क्रम जुड़ते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the equivalent capacitance for series and parallel combinations.",
+                  "hi": "श्रेणी और समांतर संयोजन के लिए तुल्य धारिता व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find charge and voltage on each capacitor in a network.",
+                  "hi": "किसी जाल में हर संधारित्र का आवेश और वोल्टता निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electrostatic-potential-capacitance.equipotential.core.potential-difference-equipotentials"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-12",
+                "neet-ug-2026:physics:unit-11:item-12"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.parallel-plate",
+      "name": {
+        "en": "The Parallel Plate Capacitor and Effect of Dielectric",
+        "hi": "समांतर पट्टिका संधारित्र एवं परावैद्युत का प्रभाव"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.12",
+        "NCERT Class 12 Physics Part I, Ch 2 §2.13"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.parallel-plate.core",
+          "name": {
+            "en": "The Parallel Plate Capacitor and Effect of Dielectric",
+            "hi": "समांतर पट्टिका संधारित्र एवं परावैद्युत का प्रभाव"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.parallel-plate.core.parallel-plate-capacitor",
+              "name": {
+                "en": "Parallel plate capacitor with and without a dielectric",
+                "hi": "परावैद्युत सहित एवं रहित समांतर पट्टिका संधारित्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A parallel plate capacitor has C = ε₀A/d, which becomes Kε₀A/d when filled with a dielectric of constant K.",
+                "hi": "समांतर पट्टिका संधारित्र की धारिता C = ε₀A/d होती है, जो परावैद्युतांक K के परावैद्युत से भरने पर Kε₀A/d हो जाती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive C = ε₀A/d from the field between the plates.",
+                  "hi": "पट्टिकाओं के बीच के क्षेत्र से C = ε₀A/d व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find the capacitance with a dielectric slab of thickness t < d, C = ε₀A/(d − t + t/K).",
+                  "hi": "t < d मोटाई की परावैद्युत पट्टी के साथ धारिता C = ε₀A/(d − t + t/K) निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electrostatic-potential-capacitance.capacitance.core.capacitance-combination",
+                "phy.electric-charges-fields.gauss-applications.core.gauss-applications-fields",
+                "phy.electrostatic-potential-capacitance.dielectrics.core.dielectric-polarisation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-13",
+                "neet-ug-2026:physics:unit-11:item-13"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.electrostatic-potential-capacitance.capacitor-energy",
+      "name": {
+        "en": "Energy Stored in a Capacitor",
+        "hi": "संधारित्र में संचित ऊर्जा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 2 §2.15"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.capacitor-energy.core",
+          "name": {
+            "en": "Energy Stored in a Capacitor",
+            "hi": "संधारित्र में संचित ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.electrostatic-potential-capacitance.capacitor-energy.core.capacitor-energy-density",
+              "name": {
+                "en": "Energy stored in a capacitor and energy density",
+                "hi": "संधारित्र में संचित ऊर्जा एवं ऊर्जा घनत्व"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A charged capacitor stores U = Q²/2C = CV²/2 = QV/2, and the energy density of the field is ε₀E²/2.",
+                "hi": "आवेशित संधारित्र U = Q²/2C = CV²/2 = QV/2 ऊर्जा संचित करता है, और क्षेत्र का ऊर्जा घनत्व ε₀E²/2 है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive U = Q²/2C by integrating work done while charging.",
+                  "hi": "आवेशन के समय किए गए कार्य के समाकलन से U = Q²/2C व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find the energy lost when two charged capacitors are connected.",
+                  "hi": "दो आवेशित संधारित्रों को जोड़ने पर ऊर्जा की हानि निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electrostatic-potential-capacitance.capacitance.core.capacitance-combination"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-11:item-14",
+                "neet-ug-2026:physics:unit-11:item-14"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 2",
+      "url": "https://ncert.nic.in/textbook/pdf/leph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph1, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 11: Electrostatics (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 11: ELECTROSTATICS (PDF p.5-6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

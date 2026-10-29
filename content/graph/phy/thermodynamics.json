@@ -1,0 +1,325 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.thermodynamics",
+  "subject": "phy",
+  "unit": "phy.thermal-physics",
+  "name": {
+    "en": "Thermodynamics",
+    "hi": "ऊष्मागतिकी"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part II, Ch 11",
+  "topics": [
+    {
+      "id": "phy.thermodynamics.zeroth-law",
+      "name": {
+        "en": "Thermal Equilibrium and the Zeroth Law",
+        "hi": "तापीय साम्य एवं शून्य कोटि नियम"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 11 §11.2",
+        "NCERT Class 11 Physics Part II, Ch 11 §11.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermodynamics.zeroth-law.core",
+          "name": {
+            "en": "Thermal Equilibrium and the Zeroth Law",
+            "hi": "तापीय साम्य एवं शून्य कोटि नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermodynamics.zeroth-law.core.zeroth-law-temperature",
+              "name": {
+                "en": "Thermal equilibrium, zeroth law and the concept of temperature",
+                "hi": "तापीय साम्य, शून्य कोटि नियम एवं ताप की अवधारणा"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Two systems each in thermal equilibrium with a third are in equilibrium with each other, and the zeroth law makes temperature the quantity that is equal for systems in equilibrium.",
+                "hi": "दो निकाय जो किसी तीसरे से तापीय साम्य में हैं, आपस में भी साम्य में होते हैं, और शून्य कोटि नियम ताप को वह राशि बनाता है जो साम्य में निकायों के लिए बराबर होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the zeroth law and explain how it justifies the use of thermometers.",
+                  "hi": "शून्य कोटि नियम बताइए और समझाइए कि यह तापमापियों के उपयोग को कैसे उचित ठहराता है।"
+                },
+                {
+                  "en": "Define thermal equilibrium in terms of unchanging macroscopic variables.",
+                  "hi": "तापीय साम्य को न बदलने वाले स्थूल चरों के रूप में परिभाषित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermal-properties-matter.temperature-heat.core.heat-temperature"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-8:item-1",
+                "neet-ug-2026:physics:unit-8:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermodynamics.heat-work-internal-energy",
+      "name": {
+        "en": "Heat, Internal Energy and Work",
+        "hi": "ऊष्मा, आंतरिक ऊर्जा तथा कार्य"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 11 §11.4",
+        "NCERT Class 11 Physics Part II, Ch 11 §11.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermodynamics.heat-work-internal-energy.core",
+          "name": {
+            "en": "Heat, Internal Energy and Work",
+            "hi": "ऊष्मा, आंतरिक ऊर्जा तथा कार्य"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermodynamics.heat-work-internal-energy.core.internal-energy-work",
+              "name": {
+                "en": "Heat, work and internal energy",
+                "hi": "ऊष्मा, कार्य एवं आंतरिक ऊर्जा"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Internal energy is the sum of molecular kinetic and potential energies and is a state variable, while heat and work are two ways of transferring energy and depend on the path.",
+                "hi": "आंतरिक ऊर्जा आण्विक गतिज और स्थितिज ऊर्जाओं का योग है और एक अवस्था चर है, जबकि ऊष्मा और कार्य ऊर्जा स्थानांतरण के दो तरीके हैं और पथ पर निर्भर करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find work done by a gas as the area under its P-V curve, W = ∫P dV.",
+                  "hi": "गैस द्वारा किया गया कार्य उसके P-V वक्र के नीचे के क्षेत्रफल W = ∫P dV के रूप में निकालिए।"
+                },
+                {
+                  "en": "Distinguish state variables (P, V, T, U) from path quantities (Q, W), and extensive from intensive variables.",
+                  "hi": "अवस्था चरों (P, V, T, U) को पथ राशियों (Q, W) से, और विस्तीर्ण चरों को गहन चरों से अलग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermodynamics.zeroth-law.core.zeroth-law-temperature"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-8:item-2",
+                "neet-ug-2026:physics:unit-8:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermodynamics.first-law",
+      "name": {
+        "en": "First Law of Thermodynamics",
+        "hi": "ऊष्मागतिकी का प्रथम नियम"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 11 §11.5",
+        "NCERT Class 11 Physics Part II, Ch 11 §11.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermodynamics.first-law.core",
+          "name": {
+            "en": "First Law of Thermodynamics",
+            "hi": "ऊष्मागतिकी का प्रथम नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermodynamics.first-law.core.first-law-thermo",
+              "name": {
+                "en": "First law of thermodynamics",
+                "hi": "ऊष्मागतिकी का प्रथम नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The first law, ΔQ = ΔU + ΔW, is energy conservation for thermal systems: heat supplied goes into raising internal energy and doing work.",
+                "hi": "प्रथम नियम ΔQ = ΔU + ΔW ऊष्मीय निकायों के लिए ऊर्जा संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा बढ़ाने और कार्य करने में लगती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply the sign conventions for heat absorbed and work done by the system.",
+                  "hi": "निकाय द्वारा अवशोषित ऊष्मा और किए गए कार्य की चिह्न-परिपाटी लागू कीजिए।"
+                },
+                {
+                  "en": "Derive Cp − Cv = R for an ideal gas from the first law.",
+                  "hi": "प्रथम नियम से आदर्श गैस के लिए Cp − Cv = R व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermodynamics.heat-work-internal-energy.core.internal-energy-work"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-8:item-3",
+                "neet-ug-2026:physics:unit-8:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermodynamics.thermodynamic-processes",
+      "name": {
+        "en": "Thermodynamic Processes",
+        "hi": "ऊष्मागतिकीय प्रक्रम"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 11 §11.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermodynamics.thermodynamic-processes.core",
+          "name": {
+            "en": "Thermodynamic Processes",
+            "hi": "ऊष्मागतिकीय प्रक्रम"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermodynamics.thermodynamic-processes.core.isothermal-adiabatic",
+              "name": {
+                "en": "Isothermal and adiabatic processes",
+                "hi": "समतापीय एवं रुद्धोष्म प्रक्रम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "In an isothermal process T is constant and W = nRT ln(V₂/V₁); in an adiabatic process no heat is exchanged, PV^γ is constant and W = (P₁V₁ − P₂V₂)/(γ − 1).",
+                "hi": "समतापीय प्रक्रम में T नियत रहता है और W = nRT ln(V₂/V₁); रुद्धोष्म प्रक्रम में ऊष्मा का आदान-प्रदान नहीं होता, PV^γ नियत रहता है और W = (P₁V₁ − P₂V₂)/(γ − 1)।"
+              },
+              "key_points": [
+                {
+                  "en": "Compare isothermal and adiabatic curves on a P-V diagram and explain why the adiabatic is steeper.",
+                  "hi": "P-V आरेख पर समतापीय और रुद्धोष्म वक्रों की तुलना कीजिए और समझाइए कि रुद्धोष्म अधिक ढलवाँ क्यों है।"
+                },
+                {
+                  "en": "Apply the first law to isochoric, isobaric and cyclic processes.",
+                  "hi": "समआयतनिक, समदाबी और चक्रीय प्रक्रमों पर प्रथम नियम लागू कीजिए।"
+                },
+                {
+                  "en": "Distinguish quasi-static processes from sudden ones.",
+                  "hi": "स्थैतिककल्प प्रक्रमों को अचानक होने वाले प्रक्रमों से अलग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermodynamics.first-law.core.first-law-thermo"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-8:item-4",
+                "neet-ug-2026:physics:unit-8:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.thermodynamics.second-law",
+      "name": {
+        "en": "Second Law; Reversible and Irreversible Processes",
+        "hi": "द्वितीय नियम; उत्क्रमणीय व अनुत्क्रमणीय प्रक्रम"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 11 §11.9",
+        "NCERT Class 11 Physics Part II, Ch 11 §11.10"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.thermodynamics.second-law.core",
+          "name": {
+            "en": "Second Law; Reversible and Irreversible Processes",
+            "hi": "द्वितीय नियम; उत्क्रमणीय व अनुत्क्रमणीय प्रक्रम"
+          },
+          "concepts": [
+            {
+              "id": "phy.thermodynamics.second-law.core.second-law-thermo",
+              "name": {
+                "en": "Second law of thermodynamics: reversible and irreversible processes",
+                "hi": "ऊष्मागतिकी का द्वितीय नियम : उत्क्रमणीय एवं अनुत्क्रमणीय प्रक्रम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The second law, in the Kelvin-Planck and Clausius forms, says no engine converts heat fully into work and heat does not flow by itself from cold to hot; real processes are irreversible.",
+                "hi": "द्वितीय नियम, केल्विन-प्लांक और क्लॉसियस रूपों में, कहता है कि कोई इंजन ऊष्मा को पूरी तरह कार्य में नहीं बदल सकता और ऊष्मा स्वयं ठंडे से गर्म की ओर नहीं बहती; वास्तविक प्रक्रम अनुत्क्रमणीय होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "State the Kelvin-Planck and Clausius statements and their equivalence.",
+                  "hi": "केल्विन-प्लांक और क्लॉसियस कथन तथा उनकी तुल्यता बताइए।"
+                },
+                {
+                  "en": "Explain what makes a process reversible and why friction and free expansion make it irreversible.",
+                  "hi": "समझाइए कि कोई प्रक्रम उत्क्रमणीय कैसे होता है और घर्षण तथा मुक्त प्रसार उसे अनुत्क्रमणीय क्यों बनाते हैं।"
+                },
+                {
+                  "en": "Define the efficiency of a heat engine η = W/Q₁ and the coefficient of performance of a refrigerator.",
+                  "hi": "ऊष्मा इंजन की दक्षता η = W/Q₁ और प्रशीतक का निष्पादन गुणांक परिभाषित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.thermodynamics.first-law.core.first-law-thermo"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-8:item-5",
+                "neet-ug-2026:physics:unit-8:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 11",
+      "url": "https://ncert.nic.in/textbook/pdf/keph204.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph2, contents prelims p.xvi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 8: Thermodynamics (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 8: THERMODYNAMICS (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

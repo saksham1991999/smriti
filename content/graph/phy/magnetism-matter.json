@@ -1,0 +1,255 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.magnetism-matter",
+  "subject": "phy",
+  "unit": "phy.electricity-magnetism",
+  "name": {
+    "en": "Magnetism and Matter",
+    "hi": "चुंबकत्व एवं द्रव्य"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part I, Ch 5",
+  "topics": [
+    {
+      "id": "phy.magnetism-matter.bar-magnet",
+      "name": {
+        "en": "The Bar Magnet",
+        "hi": "छड़ चुंबक"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 5 §5.2"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.magnetism-matter.bar-magnet.core",
+          "name": {
+            "en": "The Bar Magnet",
+            "hi": "छड़ चुंबक"
+          },
+          "concepts": [
+            {
+              "id": "phy.magnetism-matter.bar-magnet.core.bar-magnet-solenoid",
+              "name": {
+                "en": "Bar magnet as an equivalent solenoid; magnetic field lines",
+                "hi": "समतुल्य परिनालिका के रूप में छड़ चुंबक; चुंबकीय क्षेत्र रेखाएँ"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A bar magnet behaves like a current-carrying solenoid of the same magnetic moment, and its field lines form closed loops running from north to south outside and south to north inside.",
+                "hi": "छड़ चुंबक समान चुंबकीय आघूर्ण वाली धारावाही परिनालिका जैसा व्यवहार करता है, और उसकी क्षेत्र रेखाएँ बंद पाश बनाती हैं जो बाहर उत्तर से दक्षिण और भीतर दक्षिण से उत्तर चलती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Compare the field patterns of a bar magnet and a solenoid.",
+                  "hi": "छड़ चुंबक और परिनालिका के क्षेत्र प्रतिरूपों की तुलना कीजिए।"
+                },
+                {
+                  "en": "State the properties of magnetic field lines and how they differ from electric field lines.",
+                  "hi": "चुंबकीय क्षेत्र रेखाओं के गुण बताइए और वे विद्युत क्षेत्र रेखाओं से कैसे भिन्न हैं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.moving-charges-magnetism.current-loop-torque.core.loop-torque-dipole",
+                "phy.moving-charges-magnetism.ampere-law.core.ampere-circuital-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-13:item-8",
+                "neet-ug-2026:physics:unit-13:item-8"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.magnetism-matter.bar-magnet.core.magnetic-dipole-field",
+              "name": {
+                "en": "Field of a magnetic dipole along its axis and perpendicular to it",
+                "hi": "चुंबकीय द्विध्रुव का अक्ष पर एवं उसके लंबवत क्षेत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "At large distances a magnetic dipole m produces B = (μ₀/4π)(2m/r³) on its axis and (μ₀/4π)(m/r³) on its equatorial line, opposite to m.",
+                "hi": "अधिक दूरी पर चुंबकीय द्विध्रुव m अपने अक्ष पर B = (μ₀/4π)(2m/r³) और विषुवतीय रेखा पर m के विपरीत (μ₀/4π)(m/r³) क्षेत्र उत्पन्न करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the axial and equatorial fields by analogy with the electric dipole.",
+                  "hi": "वैद्युत द्विध्रुव से सादृश्य द्वारा अक्षीय और विषुवतीय क्षेत्र लिखिए।"
+                },
+                {
+                  "en": "Compare the field at the same distance on the axis and on the equator.",
+                  "hi": "समान दूरी पर अक्ष और विषुवत रेखा पर क्षेत्र की तुलना कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.magnetism-matter.bar-magnet.core.bar-magnet-solenoid",
+                "phy.electric-charges-fields.dipole.core.electric-dipole-field"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-13:item-9",
+                "neet-ug-2026:physics:unit-13:item-9"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.magnetism-matter.bar-magnet.core.magnetic-dipole-torque",
+              "name": {
+                "en": "Torque and potential energy of a magnetic dipole in a uniform field",
+                "hi": "एकसमान क्षेत्र में चुंबकीय द्विध्रुव का बल आघूर्ण एवं स्थितिज ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A magnetic dipole in a uniform field feels torque τ = m × B and has potential energy U = −m·B, so it oscillates about the field direction.",
+                "hi": "एकसमान क्षेत्र में चुंबकीय द्विध्रुव पर बल आघूर्ण τ = m × B लगता है और उसकी स्थितिज ऊर्जा U = −m·B होती है, इसलिए वह क्षेत्र की दिशा के परितः दोलन करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the period of small oscillations T = 2π√(I/mB).",
+                  "hi": "छोटे दोलनों का आवर्तकाल T = 2π√(I/mB) व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find work done in turning a magnet from one orientation to another.",
+                  "hi": "चुंबक को एक अभिविन्यास से दूसरे में घुमाने में किया गया कार्य निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.magnetism-matter.bar-magnet.core.bar-magnet-solenoid",
+                "phy.electric-charges-fields.dipole.core.dipole-torque"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-13:item-10",
+                "neet-ug-2026:physics:unit-13:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.magnetism-matter.magnetic-materials",
+      "name": {
+        "en": "Magnetisation and Magnetic Properties of Materials",
+        "hi": "चुंबकीकरण एवं पदार्थों के चुंबकीय गुण"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 5 §5.4",
+        "NCERT Class 12 Physics Part I, Ch 5 §5.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.magnetism-matter.magnetic-materials.core",
+          "name": {
+            "en": "Magnetisation and Magnetic Properties of Materials",
+            "hi": "चुंबकीकरण एवं पदार्थों के चुंबकीय गुण"
+          },
+          "concepts": [
+            {
+              "id": "phy.magnetism-matter.magnetic-materials.core.magnetisation-intensity",
+              "name": {
+                "en": "Magnetisation, magnetic intensity and susceptibility",
+                "hi": "चुंबकीकरण, चुंबकीय तीव्रता एवं प्रवृत्ति"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Magnetisation M is magnetic moment per unit volume; with magnetic intensity H, B = μ₀(H + M), M = χH and μ_r = 1 + χ classify materials.",
+                "hi": "चुंबकीकरण M प्रति एकांक आयतन चुंबकीय आघूर्ण है; चुंबकीय तीव्रता H के साथ B = μ₀(H + M), M = χH और μ_r = 1 + χ पदार्थों का वर्गीकरण करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Define H, M, χ and μ_r and relate them.",
+                  "hi": "H, M, χ और μ_r परिभाषित कीजिए और उन्हें आपस में जोड़िए।"
+                },
+                {
+                  "en": "State the sign and rough size of χ for dia-, para- and ferromagnets.",
+                  "hi": "प्रति-, अनु- और लौहचुंबकों के लिए χ का चिह्न और लगभग परिमाण बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.magnetism-matter.bar-magnet.core.bar-magnet-solenoid"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-13:item-11",
+                "neet-ug-2026:physics:unit-13:item-11"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.magnetism-matter.magnetic-materials.core.magnetic-material-types",
+              "name": {
+                "en": "Dia-, para- and ferromagnetic substances and the effect of temperature",
+                "hi": "प्रति-, अनु- एवं लौहचुंबकीय पदार्थ तथा ताप का प्रभाव"
+              },
+              "kind": "list",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Diamagnets are weakly repelled by a magnet, paramagnets weakly attracted and ferromagnets strongly attracted; paramagnetic susceptibility falls with temperature (Curie's law) and ferromagnets turn paramagnetic above the Curie temperature.",
+                "hi": "प्रतिचुंबक चुंबक से क्षीण प्रतिकर्षित, अनुचुंबक क्षीण आकर्षित और लौहचुंबक प्रबल आकर्षित होते हैं; अनुचुंबकीय प्रवृत्ति ताप के साथ घटती है (क्यूरी नियम) और लौहचुंबक क्यूरी ताप से ऊपर अनुचुंबक बन जाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Give examples of each type, such as bismuth, aluminium and iron.",
+                  "hi": "हर प्रकार के उदाहरण दीजिए, जैसे बिस्मथ, ऐलुमिनियम और लोहा।"
+                },
+                {
+                  "en": "Explain ferromagnetism with domains.",
+                  "hi": "डोमेनों के आधार पर लौहचुंबकत्व समझाइए।"
+                },
+                {
+                  "en": "State Curie's law χ = C/T.",
+                  "hi": "क्यूरी का नियम χ = C/T बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.magnetism-matter.magnetic-materials.core.magnetisation-intensity"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-13:item-11",
+                "neet-ug-2026:physics:unit-13:item-11"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 5",
+      "url": "https://ncert.nic.in/textbook/pdf/leph105.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 13: Magnetic Effects of Current and Magnetism (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 13: MAGNETIC EFFECTS OF CURRENT AND MAGNETISM (PDF p.6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

@@ -1,0 +1,343 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.units-measurement",
+  "subject": "phy",
+  "unit": "phy.measurement",
+  "name": {
+    "en": "Units and Measurement",
+    "hi": "मात्रक एवं मापन"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part I, Ch 1",
+  "topics": [
+    {
+      "id": "phy.units-measurement.si-units",
+      "name": {
+        "en": "The International System of Units",
+        "hi": "मात्रकों की अंतर्राष्ट्रीय प्रणाली"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 1 §1.2"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.units-measurement.si-units.core",
+          "name": {
+            "en": "The International System of Units",
+            "hi": "मात्रकों की अंतर्राष्ट्रीय प्रणाली"
+          },
+          "concepts": [
+            {
+              "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+              "name": {
+                "en": "Fundamental and derived units",
+                "hi": "मूल एवं व्युत्पन्न मात्रक"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A physical quantity is expressed as a number times a unit; seven base quantities have fundamental SI units, and every other unit is derived from them.",
+                "hi": "किसी भौतिक राशि को संख्या और मात्रक के गुणनफल के रूप में व्यक्त किया जाता है; सात मूल राशियों के SI मूल मात्रक हैं और बाकी सभी मात्रक इन्हीं से व्युत्पन्न होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Name the seven SI base quantities and their units: metre, kilogram, second, ampere, kelvin, mole, candela.",
+                  "hi": "सात SI मूल राशियों और उनके मात्रकों के नाम बताइए: मीटर, किलोग्राम, सेकंड, ऐम्पियर, केल्विन, मोल, कैन्डेला।"
+                },
+                {
+                  "en": "Show how a derived unit such as the newton is built from base units (kg m s⁻²).",
+                  "hi": "दिखाइए कि न्यूटन जैसा व्युत्पन्न मात्रक मूल मात्रकों से कैसे बनता है (kg m s⁻²)।"
+                },
+                {
+                  "en": "Distinguish systems of units (CGS, FPS, MKS, SI).",
+                  "hi": "मात्रकों की पद्धतियों (CGS, FPS, MKS, SI) में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-1:item-1",
+                "neet-ug-2026:physics:unit-1:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.significant-figures",
+      "name": {
+        "en": "Significant Figures",
+        "hi": "सार्थक अंक"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 1 §1.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.units-measurement.significant-figures.core",
+          "name": {
+            "en": "Significant Figures",
+            "hi": "सार्थक अंक"
+          },
+          "concepts": [
+            {
+              "id": "phy.units-measurement.significant-figures.core.least-count",
+              "name": {
+                "en": "Least count of an instrument",
+                "hi": "किसी यंत्र का अल्पतमांक"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The least count is the smallest value an instrument can measure, and it limits the precision of any reading taken with it.",
+                "hi": "अल्पतमांक वह सबसे छोटा मान है जिसे कोई यंत्र माप सकता है, और यह उस यंत्र से ली गई हर पाठ्यांक की परिशुद्धता को सीमित करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the least count of a metre scale, vernier callipers and screw gauge as set by their divisions.",
+                  "hi": "मीटर पैमाने, वर्नियर कैलिपर्स और स्क्रू गेज का अल्पतमांक उनके विभाजनों से कैसे निर्धारित होता है, बताइए।"
+                },
+                {
+                  "en": "Relate the uncertainty in a single reading to the least count.",
+                  "hi": "एक पाठ्यांक की अनिश्चितता को अल्पतमांक से जोड़िए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-1:item-2",
+                "neet-ug-2026:physics:unit-1:item-2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.units-measurement.significant-figures.core.significant-figure-rules",
+              "name": {
+                "en": "Rules for significant figures and rounding",
+                "hi": "सार्थक अंकों और पूर्णांकन के नियम"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Significant figures are the reliable digits of a measurement plus the first uncertain digit, and results of calculations keep only as many as the least precise input allows.",
+                "hi": "सार्थक अंक किसी माप के विश्वसनीय अंक और पहला अनिश्चित अंक होते हैं, और गणना के परिणाम में उतने ही अंक रखे जाते हैं जितने सबसे कम परिशुद्ध आँकड़ा अनुमति देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Count significant figures, including the treatment of leading zeros, trailing zeros and powers of ten.",
+                  "hi": "सार्थक अंक गिनिए, जिसमें आगे के शून्य, पीछे के शून्य और दस की घातों का नियम शामिल है।"
+                },
+                {
+                  "en": "Apply the rules for multiplication or division (fewest significant figures) and addition or subtraction (fewest decimal places).",
+                  "hi": "गुणा या भाग (सबसे कम सार्थक अंक) और जोड़ या घटाव (सबसे कम दशमलव स्थान) के नियम लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.significant-figures.core.least-count"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-1:item-2",
+                "neet-ug-2026:physics:unit-1:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.errors",
+      "name": {
+        "en": "Errors in Measurement",
+        "hi": "मापन में त्रुटियाँ"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "phy.units-measurement.errors.core",
+          "name": {
+            "en": "Errors in Measurement",
+            "hi": "मापन में त्रुटियाँ"
+          },
+          "concepts": [
+            {
+              "id": "phy.units-measurement.errors.core.measurement-errors",
+              "name": {
+                "en": "Absolute, relative and percentage error and their propagation",
+                "hi": "निरपेक्ष, आपेक्षिक एवं प्रतिशत त्रुटि और उनका संचरण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Every measurement carries an error; absolute, relative and percentage errors describe it, and set rules give the error in a sum, product or power of measured quantities.",
+                "hi": "हर माप में त्रुटि होती है; निरपेक्ष, आपेक्षिक और प्रतिशत त्रुटि इसे व्यक्त करती हैं, और मापी गई राशियों के योग, गुणनफल या घात में त्रुटि निश्चित नियमों से मिलती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish systematic and random errors, and accuracy from precision.",
+                  "hi": "क्रमबद्ध और यादृच्छिक त्रुटियों में, तथा यथार्थता और परिशुद्धता में अंतर बताइए।"
+                },
+                {
+                  "en": "For a sum or difference, absolute errors add; for a product or quotient, relative errors add; for a power n, the relative error is multiplied by n.",
+                  "hi": "योग या अंतर में निरपेक्ष त्रुटियाँ जुड़ती हैं; गुणनफल या भागफल में आपेक्षिक त्रुटियाँ जुड़ती हैं; घात n के लिए आपेक्षिक त्रुटि n गुना हो जाती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.significant-figures.core.least-count"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-1:item-3",
+                "neet-ug-2026:physics:unit-1:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.dimensions",
+      "name": {
+        "en": "Dimensions of Physical Quantities",
+        "hi": "भौतिक राशियों की विमाएँ"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 1 §1.4",
+        "NCERT Class 11 Physics Part I, Ch 1 §1.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.units-measurement.dimensions.core",
+          "name": {
+            "en": "Dimensions of Physical Quantities",
+            "hi": "भौतिक राशियों की विमाएँ"
+          },
+          "concepts": [
+            {
+              "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+              "name": {
+                "en": "Dimensional formula and dimensional equation",
+                "hi": "विमीय सूत्र एवं विमीय समीकरण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The dimensions of a quantity are the powers of the base quantities (M, L, T and others) that make it up, written as its dimensional formula.",
+                "hi": "किसी राशि की विमाएँ वे घातें हैं जिन पर मूल राशियाँ (M, L, T आदि) उसे बनाती हैं, और इन्हें उसके विमीय सूत्र के रूप में लिखा जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write dimensional formulae of common quantities such as velocity, force, energy and pressure.",
+                  "hi": "वेग, बल, ऊर्जा और दाब जैसी सामान्य राशियों के विमीय सूत्र लिखिए।"
+                },
+                {
+                  "en": "Identify dimensionless quantities and dimensional constants.",
+                  "hi": "विमाहीन राशियों और विमीय नियतांकों को पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.si-units.core.fundamental-derived-units"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-1:item-4",
+                "neet-ug-2026:physics:unit-1:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.dimensional-analysis",
+      "name": {
+        "en": "Dimensional Analysis and its Applications",
+        "hi": "विमीय विश्लेषण एवं इसके अनुप्रयोग"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 1 §1.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core",
+          "name": {
+            "en": "Dimensional Analysis and its Applications",
+            "hi": "विमीय विश्लेषण एवं इसके अनुप्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+              "name": {
+                "en": "Uses of dimensional analysis",
+                "hi": "विमीय विश्लेषण के उपयोग"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Dimensional analysis checks whether an equation is dimensionally consistent, converts units between systems, and deduces how a quantity depends on others.",
+                "hi": "विमीय विश्लेषण से जाँचा जाता है कि कोई समीकरण विमीय रूप से संगत है या नहीं, मात्रकों को एक पद्धति से दूसरी में बदला जाता है, और किसी राशि की अन्य राशियों पर निर्भरता निकाली जाती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply the principle of homogeneity: only terms with the same dimensions can be added or equated.",
+                  "hi": "समघातता का सिद्धांत लागू कीजिए: केवल समान विमा वाले पदों को जोड़ा या बराबर किया जा सकता है।"
+                },
+                {
+                  "en": "State the limits: the method cannot find dimensionless constants or handle sums of several terms or trigonometric and exponential functions.",
+                  "hi": "सीमाएँ बताइए: यह विधि विमाहीन नियतांक नहीं निकाल सकती, न ही कई पदों के योग या त्रिकोणमितीय और चरघातांकी फलनों को संभाल सकती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.units-measurement.dimensions.core.dimensional-formula"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-1:item-4",
+                "neet-ug-2026:physics:unit-1:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph1, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 1: Units and Measurements (PDF p.3)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 1: PHYSICS AND MEASUREMENT (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

@@ -1,0 +1,375 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.gravitation",
+  "subject": "phy",
+  "unit": "phy.mechanics",
+  "name": {
+    "en": "Gravitation",
+    "hi": "गुरुत्वाकर्षण"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part I, Ch 7",
+  "topics": [
+    {
+      "id": "phy.gravitation.kepler",
+      "name": {
+        "en": "Kepler's Laws",
+        "hi": "केप्लर के नियम"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 7 §7.2"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.gravitation.kepler.core",
+          "name": {
+            "en": "Kepler's Laws",
+            "hi": "केप्लर के नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.gravitation.kepler.core.kepler-laws",
+              "name": {
+                "en": "Kepler's laws of planetary motion",
+                "hi": "ग्रहीय गति के केप्लर के नियम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Planets move in ellipses with the sun at one focus, sweep equal areas in equal times, and have T² proportional to the cube of the semi-major axis.",
+                "hi": "ग्रह दीर्घवृत्तों में चलते हैं जिनकी एक नाभि पर सूर्य होता है, समान समय में समान क्षेत्रफल तय करते हैं, और उनका T² अर्ध-दीर्घ अक्ष के घन के अनुक्रमानुपाती होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the law of areas as a consequence of conservation of angular momentum.",
+                  "hi": "क्षेत्रफल के नियम को कोणीय संवेग संरक्षण के परिणाम के रूप में समझाइए।"
+                },
+                {
+                  "en": "Use T² ∝ a³ to compare the periods of two planets or satellites.",
+                  "hi": "दो ग्रहों या उपग्रहों के आवर्तकालों की तुलना के लिए T² ∝ a³ का उपयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-6:item-3",
+                "neet-ug-2026:physics:unit-6:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.gravitation.universal-law",
+      "name": {
+        "en": "Universal Law of Gravitation",
+        "hi": "गुरुत्वाकर्षण का सार्वत्रिक नियम"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 7 §7.3",
+        "NCERT Class 11 Physics Part I, Ch 7 §7.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.gravitation.universal-law.core",
+          "name": {
+            "en": "Universal Law of Gravitation",
+            "hi": "गुरुत्वाकर्षण का सार्वत्रिक नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.gravitation.universal-law.core.universal-gravitation",
+              "name": {
+                "en": "Newton's universal law of gravitation",
+                "hi": "न्यूटन का गुरुत्वाकर्षण का सार्वत्रिक नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Every two masses attract with a force F = Gm₁m₂/r² along the line joining them, where G is the universal gravitational constant measured by Cavendish.",
+                "hi": "हर दो द्रव्यमान उन्हें जोड़ने वाली रेखा के अनुदिश F = Gm₁m₂/r² बल से आकर्षित करते हैं, जहाँ G सार्वत्रिक गुरुत्वीय नियतांक है जिसे कैवेंडिश ने मापा।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply the superposition principle to find the net gravitational force from several masses.",
+                  "hi": "कई द्रव्यमानों से नेट गुरुत्वीय बल निकालने के लिए अध्यारोपण सिद्धांत लागू कीजिए।"
+                },
+                {
+                  "en": "State that a uniform spherical shell attracts an outside mass as if its mass were at the centre and exerts no force inside.",
+                  "hi": "बताइए कि एकसमान गोलीय कोश बाहर के द्रव्यमान को ऐसे आकर्षित करता है मानो उसका द्रव्यमान केंद्र पर हो, और भीतर कोई बल नहीं लगाता।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-6:item-1",
+                "neet-ug-2026:physics:unit-6:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.gravitation.acceleration-gravity",
+      "name": {
+        "en": "Acceleration due to Gravity and its Variation",
+        "hi": "गुरुत्वीय त्वरण एवं उसमें परिवर्तन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 7 §7.5",
+        "NCERT Class 11 Physics Part I, Ch 7 §7.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.gravitation.acceleration-gravity.core",
+          "name": {
+            "en": "Acceleration due to Gravity and its Variation",
+            "hi": "गुरुत्वीय त्वरण एवं उसमें परिवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.gravitation.acceleration-gravity.core.g-variation",
+              "name": {
+                "en": "Acceleration due to gravity and its variation with altitude and depth",
+                "hi": "गुरुत्वीय त्वरण एवं ऊँचाई और गहराई के साथ उसमें परिवर्तन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "At the surface g = GM/R²; it falls with height as g(1 − 2h/R) for small h and with depth as g(1 − d/R), becoming zero at the centre.",
+                "hi": "पृथ्वी तल पर g = GM/R² है; छोटी ऊँचाई h पर यह g(1 − 2h/R) और गहराई d पर g(1 − d/R) हो जाता है, तथा केंद्र पर शून्य हो जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the expressions for g at height h and at depth d.",
+                  "hi": "ऊँचाई h और गहराई d पर g के व्यंजक व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Compare the decrease of g with height and with depth for the same small distance.",
+                  "hi": "समान छोटी दूरी के लिए ऊँचाई और गहराई के साथ g की कमी की तुलना कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.gravitation.universal-law.core.universal-gravitation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-6:item-2",
+                "neet-ug-2026:physics:unit-6:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.gravitation.gravitational-pe",
+      "name": {
+        "en": "Gravitational Potential Energy",
+        "hi": "गुरुत्वीय स्थितिज ऊर्जा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 7 §7.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.gravitation.gravitational-pe.core",
+          "name": {
+            "en": "Gravitational Potential Energy",
+            "hi": "गुरुत्वीय स्थितिज ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.gravitation.gravitational-pe.core.gravitational-potential",
+              "name": {
+                "en": "Gravitational potential energy and gravitational potential",
+                "hi": "गुरुत्वीय स्थितिज ऊर्जा एवं गुरुत्वीय विभव"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The gravitational potential energy of two masses is −GMm/r, taking zero at infinity, and gravitational potential is potential energy per unit mass, −GM/r.",
+                "hi": "दो द्रव्यमानों की गुरुत्वीय स्थितिज ऊर्जा −GMm/r है, जिसमें अनंत पर शून्य माना जाता है, और गुरुत्वीय विभव प्रति एकांक द्रव्यमान स्थितिज ऊर्जा −GM/r है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain why the potential energy is negative and how mgh follows for small heights.",
+                  "hi": "समझाइए कि स्थितिज ऊर्जा ऋणात्मक क्यों है और छोटी ऊँचाई के लिए mgh कैसे प्राप्त होता है।"
+                },
+                {
+                  "en": "Compute the work needed to move a mass between two distances from the earth.",
+                  "hi": "पृथ्वी से दो दूरियों के बीच किसी द्रव्यमान को ले जाने में आवश्यक कार्य निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.gravitation.universal-law.core.universal-gravitation",
+                "phy.work-energy-power.potential-energy.core.potential-energy"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-6:item-4",
+                "neet-ug-2026:physics:unit-6:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.gravitation.escape-speed",
+      "name": {
+        "en": "Escape Speed",
+        "hi": "पलायन चाल"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 7 §7.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.gravitation.escape-speed.core",
+          "name": {
+            "en": "Escape Speed",
+            "hi": "पलायन चाल"
+          },
+          "concepts": [
+            {
+              "id": "phy.gravitation.escape-speed.core.escape-velocity",
+              "name": {
+                "en": "Escape velocity",
+                "hi": "पलायन वेग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The escape speed is the minimum launch speed for a body to reach infinity, v_e = √(2GM/R) = √(2gR), independent of the body's mass.",
+                "hi": "पलायन चाल वह न्यूनतम प्रक्षेपण चाल है जिससे कोई वस्तु अनंत तक पहुँच सके, v_e = √(2GM/R) = √(2gR), जो वस्तु के द्रव्यमान पर निर्भर नहीं करती।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the escape speed from energy conservation.",
+                  "hi": "ऊर्जा संरक्षण से पलायन चाल व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain why the moon has no atmosphere in terms of its low escape speed.",
+                  "hi": "चंद्रमा की कम पलायन चाल के आधार पर समझाइए कि उस पर वायुमंडल क्यों नहीं है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.gravitation.gravitational-pe.core.gravitational-potential"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-6:item-5",
+                "neet-ug-2026:physics:unit-6:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.gravitation.satellites",
+      "name": {
+        "en": "Earth Satellites and their Energy",
+        "hi": "भू उपग्रह एवं उनकी ऊर्जा"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 7 §7.9",
+        "NCERT Class 11 Physics Part I, Ch 7 §7.10"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.gravitation.satellites.core",
+          "name": {
+            "en": "Earth Satellites and their Energy",
+            "hi": "भू उपग्रह एवं उनकी ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.gravitation.satellites.core.satellite-motion",
+              "name": {
+                "en": "Orbital velocity, time period and energy of a satellite",
+                "hi": "उपग्रह का कक्षीय वेग, आवर्तकाल एवं ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For a circular orbit of radius r, gravity provides the centripetal force, giving v = √(GM/r), T = 2π√(r³/GM) and total energy −GMm/2r.",
+                "hi": "त्रिज्या r की वृत्तीय कक्षा में गुरुत्व अभिकेंद्र बल देता है, जिससे v = √(GM/r), T = 2π√(r³/GM) और कुल ऊर्जा −GMm/2r मिलती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Show that kinetic energy is GMm/2r and potential energy is twice the total energy.",
+                  "hi": "दिखाइए कि गतिज ऊर्जा GMm/2r है और स्थितिज ऊर्जा कुल ऊर्जा की दुगुनी है।"
+                },
+                {
+                  "en": "Relate orbital speed near the surface to escape speed, v_e = √2 v_o.",
+                  "hi": "पृथ्वी तल के पास कक्षीय चाल को पलायन चाल से जोड़िए, v_e = √2 v_o।"
+                },
+                {
+                  "en": "Describe geostationary and polar satellites.",
+                  "hi": "भूस्थिर और ध्रुवीय उपग्रहों का वर्णन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.gravitation.universal-law.core.universal-gravitation",
+                "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+                "phy.gravitation.gravitational-pe.core.gravitational-potential"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-6:item-6",
+                "neet-ug-2026:physics:unit-6:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 7",
+      "url": "https://ncert.nic.in/textbook/pdf/keph107.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 6: Gravitation (PDF p.3)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 6: GRAVITATION (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

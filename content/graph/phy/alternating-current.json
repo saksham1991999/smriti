@@ -1,0 +1,320 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.alternating-current",
+  "subject": "phy",
+  "unit": "phy.electricity-magnetism",
+  "name": {
+    "en": "Alternating Current",
+    "hi": "प्रत्यावर्ती धारा"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Physics Part I, Ch 7",
+  "topics": [
+    {
+      "id": "phy.alternating-current.ac-resistor",
+      "name": {
+        "en": "AC Voltage Applied to a Resistor; Phasors",
+        "hi": "प्रतिरोधक पर प्रयुक्त ac वोल्टता; फेज़र"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 7 §7.2",
+        "NCERT Class 12 Physics Part I, Ch 7 §7.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.alternating-current.ac-resistor.core",
+          "name": {
+            "en": "AC Voltage Applied to a Resistor; Phasors",
+            "hi": "प्रतिरोधक पर प्रयुक्त ac वोल्टता; फेज़र"
+          },
+          "concepts": [
+            {
+              "id": "phy.alternating-current.ac-resistor.core.rms-peak-values",
+              "name": {
+                "en": "Peak and rms values of alternating current and voltage",
+                "hi": "प्रत्यावर्ती धारा एवं वोल्टता के शिखर एवं वर्ग माध्य मूल मान"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A sinusoidal current i = i_m sin ωt has zero average over a cycle, so its rms value i_m/√2 is used, the steady current giving the same heating; phasors represent such quantities as rotating vectors.",
+                "hi": "ज्यावक्रीय धारा i = i_m sin ωt का एक चक्र पर औसत शून्य होता है, इसलिए इसका वर्ग माध्य मूल मान i_m/√2 उपयोग होता है, जो समान ऊष्मन देने वाली स्थायी धारा है; फेज़र ऐसी राशियों को घूर्णी सदिशों से दर्शाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive I_rms = I_m/√2 from the average of i².",
+                  "hi": "i² के औसत से I_rms = I_m/√2 व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Draw the phasor diagram for a resistor, with current in phase with voltage.",
+                  "hi": "प्रतिरोधक के लिए फेज़र आरेख बनाइए, जिसमें धारा वोल्टता के साथ समान कला में हो।"
+                }
+              ],
+              "prerequisites": [
+                "phy.current-electricity.ohms-law.core.ohms-law-def",
+                "phy.oscillations.shm.core.shm-equation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-5",
+                "neet-ug-2026:physics:unit-14:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.alternating-current.reactance",
+      "name": {
+        "en": "AC Voltage Applied to an Inductor and a Capacitor",
+        "hi": "प्रेरक एवं संधारित्र पर प्रयुक्त ac वोल्टता"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 7 §7.4",
+        "NCERT Class 12 Physics Part I, Ch 7 §7.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.alternating-current.reactance.core",
+          "name": {
+            "en": "AC Voltage Applied to an Inductor and a Capacitor",
+            "hi": "प्रेरक एवं संधारित्र पर प्रयुक्त ac वोल्टता"
+          },
+          "concepts": [
+            {
+              "id": "phy.alternating-current.reactance.core.reactance-impedance",
+              "name": {
+                "en": "Reactance and impedance",
+                "hi": "प्रतिघात एवं प्रतिबाधा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "An inductor has reactance X_L = ωL with current lagging voltage by π/2, a capacitor has X_C = 1/ωC with current leading by π/2, and impedance Z combines resistance and reactance.",
+                "hi": "प्रेरक का प्रतिघात X_L = ωL होता है और धारा वोल्टता से π/2 पीछे रहती है, संधारित्र का X_C = 1/ωC होता है और धारा π/2 आगे रहती है, तथा प्रतिबाधा Z प्रतिरोध और प्रतिघात को मिलाती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the phase relation between current and voltage for pure L and pure C.",
+                  "hi": "शुद्ध L और शुद्ध C के लिए धारा और वोल्टता के बीच कला संबंध व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain why a capacitor blocks DC and an inductor passes it.",
+                  "hi": "समझाइए कि संधारित्र DC को क्यों रोकता है और प्रेरक उसे क्यों जाने देता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.alternating-current.ac-resistor.core.rms-peak-values",
+                "phy.electromagnetic-induction.inductance.core.self-mutual-inductance",
+                "phy.electrostatic-potential-capacitance.capacitance.core.capacitance-combination"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-6",
+                "neet-ug-2026:physics:unit-14:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.alternating-current.lcr",
+      "name": {
+        "en": "AC Voltage Applied to a Series LCR Circuit",
+        "hi": "श्रेणीबद्ध LCR परिपथ पर प्रयुक्त ac वोल्टता"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 7 §7.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.alternating-current.lcr.core",
+          "name": {
+            "en": "AC Voltage Applied to a Series LCR Circuit",
+            "hi": "श्रेणीबद्ध LCR परिपथ पर प्रयुक्त ac वोल्टता"
+          },
+          "concepts": [
+            {
+              "id": "phy.alternating-current.lcr.core.lcr-resonance",
+              "name": {
+                "en": "Series LCR circuit and resonance",
+                "hi": "श्रेणी LCR परिपथ एवं अनुनाद"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "A series LCR circuit has Z = √[R² + (X_L − X_C)²] and phase tan φ = (X_L − X_C)/R; at resonance ω₀ = 1/√(LC) the impedance is minimum and current maximum, with sharpness set by the quality factor.",
+                "hi": "श्रेणी LCR परिपथ में Z = √[R² + (X_L − X_C)²] और कला tan φ = (X_L − X_C)/R होती है; अनुनाद ω₀ = 1/√(LC) पर प्रतिबाधा न्यूनतम और धारा अधिकतम होती है, और तीक्ष्णता गुणता गुणांक से तय होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the impedance using a phasor diagram.",
+                  "hi": "फेज़र आरेख से प्रतिबाधा व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find the resonant frequency and the quality factor Q = ω₀L/R.",
+                  "hi": "अनुनादी आवृत्ति और गुणता गुणांक Q = ω₀L/R निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.alternating-current.reactance.core.reactance-impedance"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-7",
+                "neet-ug-2026:physics:unit-14:item-7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.alternating-current.ac-power",
+      "name": {
+        "en": "Power in AC Circuit: the Power Factor",
+        "hi": "ac परिपथों में शक्ति : शक्ति गुणांक"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 7 §7.7"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.alternating-current.ac-power.core",
+          "name": {
+            "en": "Power in AC Circuit: the Power Factor",
+            "hi": "ac परिपथों में शक्ति : शक्ति गुणांक"
+          },
+          "concepts": [
+            {
+              "id": "phy.alternating-current.ac-power.core.ac-power-factor",
+              "name": {
+                "en": "Power in AC circuits and wattless current",
+                "hi": "प्रत्यावर्ती धारा परिपथों में शक्ति एवं वाटहीन धारा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Average power in an AC circuit is P = V_rms I_rms cos φ, where cos φ is the power factor; a purely reactive circuit draws a wattless current that does no average work.",
+                "hi": "प्रत्यावर्ती धारा परिपथ में औसत शक्ति P = V_rms I_rms cos φ है, जहाँ cos φ शक्ति गुणांक है; शुद्ध प्रतिघाती परिपथ वाटहीन धारा लेता है जो औसत कार्य नहीं करती।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the power factor for R, L, C and LCR circuits.",
+                  "hi": "R, L, C और LCR परिपथों के लिए शक्ति गुणांक निकालिए।"
+                },
+                {
+                  "en": "Explain wattless current as the component of current 90° out of phase with voltage.",
+                  "hi": "वाटहीन धारा को वोल्टता से 90° कलांतर वाले धारा घटक के रूप में समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.alternating-current.lcr.core.lcr-resonance",
+                "phy.current-electricity.energy-power.core.electrical-power"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-8",
+                "neet-ug-2026:physics:unit-14:item-8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.alternating-current.transformers",
+      "name": {
+        "en": "Transformers",
+        "hi": "ट्रांसफॉर्मर"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Physics Part I, Ch 7 §7.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.alternating-current.transformers.core",
+          "name": {
+            "en": "Transformers",
+            "hi": "ट्रांसफॉर्मर"
+          },
+          "concepts": [
+            {
+              "id": "phy.alternating-current.transformers.core.transformer",
+              "name": {
+                "en": "Transformer",
+                "hi": "ट्रांसफॉर्मर"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A transformer uses mutual induction to change AC voltage in the ratio of turns, V_s/V_p = N_s/N_p, with I_s/I_p = N_p/N_s for an ideal transformer.",
+                "hi": "ट्रांसफॉर्मर अन्योन्य प्रेरण से प्रत्यावर्ती वोल्टता को फेरों के अनुपात V_s/V_p = N_s/N_p में बदलता है, तथा आदर्श ट्रांसफॉर्मर के लिए I_s/I_p = N_p/N_s।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish step-up and step-down transformers.",
+                  "hi": "उच्चायी और अपचायी ट्रांसफॉर्मरों में अंतर बताइए।"
+                },
+                {
+                  "en": "List energy losses: copper loss, eddy currents, hysteresis and flux leakage.",
+                  "hi": "ऊर्जा हानियाँ बताइए: ताम्र हानि, भँवर धाराएँ, शैथिल्य और फ्लक्स क्षरण।"
+                }
+              ],
+              "prerequisites": [
+                "phy.electromagnetic-induction.inductance.core.self-mutual-inductance",
+                "phy.electromagnetic-induction.eddy-currents.core.eddy-currents-def"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-14:item-9",
+                "neet-ug-2026:physics:unit-14:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 7",
+      "url": "https://ncert.nic.in/textbook/pdf/leph107.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph1, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 14: Electromagnetic Induction and Alternating Currents (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 14: ELECTROMAGNETIC INDUCTION AND ALTERNATING CURRENTS (PDF p.6)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

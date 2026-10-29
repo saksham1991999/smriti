@@ -1,0 +1,420 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.mechanical-properties-fluids",
+  "subject": "phy",
+  "unit": "phy.properties-of-matter",
+  "name": {
+    "en": "Mechanical Properties of Fluids",
+    "hi": "तरलों के यांत्रिकी गुण"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part II, Ch 9",
+  "topics": [
+    {
+      "id": "phy.mechanical-properties-fluids.pressure",
+      "name": {
+        "en": "Pressure",
+        "hi": "दाब"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 9 §9.2"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.mechanical-properties-fluids.pressure.core",
+          "name": {
+            "en": "Pressure",
+            "hi": "दाब"
+          },
+          "concepts": [
+            {
+              "id": "phy.mechanical-properties-fluids.pressure.core.fluid-pressure",
+              "name": {
+                "en": "Pressure due to a fluid column and the effect of gravity",
+                "hi": "तरल स्तंभ के कारण दाब एवं गुरुत्व का प्रभाव"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Pressure in a fluid at rest increases with depth as P = P₀ + ρgh, is the same at all points at one level, and acts equally in all directions.",
+                "hi": "विराम में स्थित तरल में दाब गहराई के साथ P = P₀ + ρgh के अनुसार बढ़ता है, एक ही स्तर के सभी बिंदुओं पर समान होता है और सभी दिशाओं में बराबर लगता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish absolute and gauge pressure and describe the mercury barometer and open-tube manometer.",
+                  "hi": "निरपेक्ष और गेज दाब में अंतर बताइए तथा पारद दाबमापी और खुली नली मैनोमीटर का वर्णन कीजिए।"
+                },
+                {
+                  "en": "Explain the hydrostatic paradox: pressure depends on depth, not on the shape of the vessel.",
+                  "hi": "द्रवस्थैतिक विरोधाभास समझाइए: दाब गहराई पर निर्भर करता है, पात्र की आकृति पर नहीं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-solids.stress-strain.core.elastic-behaviour"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-3",
+                "neet-ug-2026:physics:unit-7:item-3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.mechanical-properties-fluids.pressure.core.pascals-law",
+              "name": {
+                "en": "Pascal's law and its applications",
+                "hi": "पास्कल का नियम एवं उसके अनुप्रयोग"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A change in pressure applied to an enclosed fluid is transmitted undiminished to every part of it, which is how hydraulic lifts and brakes multiply force.",
+                "hi": "किसी बंद तरल पर लगाया गया दाब-परिवर्तन बिना घटे उसके हर भाग तक पहुँचता है, इसी से द्रवचालित उत्थापक और ब्रेक बल को कई गुना करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate the force multiplication of a hydraulic lift, F₂ = F₁A₂/A₁.",
+                  "hi": "द्रवचालित उत्थापक में बल का गुणन F₂ = F₁A₂/A₁ निकालिए।"
+                },
+                {
+                  "en": "Explain hydraulic brakes using Pascal's law.",
+                  "hi": "पास्कल के नियम से द्रवचालित ब्रेक समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.pressure.core.fluid-pressure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-3",
+                "neet-ug-2026:physics:unit-7:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.mechanical-properties-fluids.streamline",
+      "name": {
+        "en": "Streamline Flow",
+        "hi": "धारारेखी प्रवाह"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 9 §9.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.mechanical-properties-fluids.streamline.core",
+          "name": {
+            "en": "Streamline Flow",
+            "hi": "धारारेखी प्रवाह"
+          },
+          "concepts": [
+            {
+              "id": "phy.mechanical-properties-fluids.streamline.core.streamline-turbulent",
+              "name": {
+                "en": "Streamline and turbulent flow, equation of continuity and critical velocity",
+                "hi": "धारारेखी एवं विक्षुब्ध प्रवाह, सांतत्य समीकरण एवं क्रांतिक वेग"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In streamline flow the velocity at each point is steady and Av is constant along a tube of flow; above a critical velocity, set by the Reynolds number, flow becomes turbulent.",
+                "hi": "धारारेखी प्रवाह में हर बिंदु पर वेग स्थिर रहता है और प्रवाह नलिका के अनुदिश Av नियत रहता है; रेनॉल्ड्स संख्या द्वारा तय क्रांतिक वेग से ऊपर प्रवाह विक्षुब्ध हो जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply the equation of continuity A₁v₁ = A₂v₂ to a pipe of varying cross-section.",
+                  "hi": "बदलते अनुप्रस्थ काट वाले पाइप पर सांतत्य समीकरण A₁v₁ = A₂v₂ लागू कीजिए।"
+                },
+                {
+                  "en": "State that flow is streamline for low Reynolds number Re = ρvd/η and turbulent for high values.",
+                  "hi": "बताइए कि कम रेनॉल्ड्स संख्या Re = ρvd/η पर प्रवाह धारारेखी और अधिक मान पर विक्षुब्ध होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.pressure.core.fluid-pressure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-5",
+                "neet-ug-2026:physics:unit-7:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.mechanical-properties-fluids.bernoulli",
+      "name": {
+        "en": "Bernoulli's Principle",
+        "hi": "बर्नूली का सिद्धांत"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 9 §9.4"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.mechanical-properties-fluids.bernoulli.core",
+          "name": {
+            "en": "Bernoulli's Principle",
+            "hi": "बर्नूली का सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "phy.mechanical-properties-fluids.bernoulli.core.bernoulli-principle",
+              "name": {
+                "en": "Bernoulli's principle and its applications",
+                "hi": "बर्नूली का सिद्धांत एवं उसके अनुप्रयोग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For steady, incompressible, non-viscous flow, P + ρv²/2 + ρgh is constant along a streamline, which explains Torricelli's law, the venturimeter and dynamic lift.",
+                "hi": "स्थिर, असंपीड्य, अश्यान प्रवाह में धारारेखा के अनुदिश P + ρv²/2 + ρgh नियत रहता है, जिससे टॉरिसेली का नियम, वेंचुरीमीटर और गतिक उत्थापन समझे जाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive Bernoulli's equation from the work-energy theorem.",
+                  "hi": "कार्य-ऊर्जा प्रमेय से बर्नूली समीकरण व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Derive the speed of efflux √(2gh) from Torricelli's law.",
+                  "hi": "टॉरिसेली के नियम से बहिःस्राव की चाल √(2gh) व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain lift on an aeroplane wing and the Magnus effect on a spinning ball.",
+                  "hi": "वायुयान के पंख पर उत्थापन और घूमती गेंद पर मैग्नस प्रभाव समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.streamline.core.streamline-turbulent",
+                "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-6",
+                "neet-ug-2026:physics:unit-7:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.mechanical-properties-fluids.viscosity",
+      "name": {
+        "en": "Viscosity",
+        "hi": "श्यानता"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 9 §9.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.mechanical-properties-fluids.viscosity.core",
+          "name": {
+            "en": "Viscosity",
+            "hi": "श्यानता"
+          },
+          "concepts": [
+            {
+              "id": "phy.mechanical-properties-fluids.viscosity.core.viscosity-stokes",
+              "name": {
+                "en": "Viscosity, Stokes' law and terminal velocity",
+                "hi": "श्यानता, स्टोक्स का नियम एवं सीमांत वेग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Viscosity is internal friction in a fluid with coefficient η; a sphere moving slowly through a fluid feels drag 6πηrv, so a falling sphere reaches terminal velocity 2r²(ρ − σ)g/9η.",
+                "hi": "श्यानता तरल का आंतरिक घर्षण है जिसका गुणांक η है; तरल में धीरे चलते गोले पर 6πηrv का कर्षण लगता है, इसलिए गिरता गोला सीमांत वेग 2r²(ρ − σ)g/9η प्राप्त करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Define the coefficient of viscosity from Newton's law of viscous flow and give its SI unit.",
+                  "hi": "श्यान प्रवाह के न्यूटन नियम से श्यानता गुणांक परिभाषित कीजिए और उसका SI मात्रक बताइए।"
+                },
+                {
+                  "en": "Derive the terminal velocity by balancing weight, buoyancy and viscous drag.",
+                  "hi": "भार, उत्प्लावन और श्यान कर्षण को संतुलित करके सीमांत वेग व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "State how viscosity of liquids and gases changes with temperature.",
+                  "hi": "बताइए कि ताप के साथ द्रवों और गैसों की श्यानता कैसे बदलती है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.pressure.core.fluid-pressure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-4",
+                "neet-ug-2026:physics:unit-7:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.mechanical-properties-fluids.surface-tension",
+      "name": {
+        "en": "Surface Tension",
+        "hi": "पृष्ठ तनाव"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part II, Ch 9 §9.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.mechanical-properties-fluids.surface-tension.core",
+          "name": {
+            "en": "Surface Tension",
+            "hi": "पृष्ठ तनाव"
+          },
+          "concepts": [
+            {
+              "id": "phy.mechanical-properties-fluids.surface-tension.core.surface-tension-energy",
+              "name": {
+                "en": "Surface energy, surface tension and angle of contact",
+                "hi": "पृष्ठ ऊर्जा, पृष्ठ तनाव एवं स्पर्श कोण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Surface tension is the force per unit length along a liquid surface, equal to the surface energy per unit area; the angle of contact decides whether a liquid wets a solid.",
+                "hi": "पृष्ठ तनाव द्रव-पृष्ठ के अनुदिश प्रति एकांक लंबाई बल है, जो प्रति एकांक क्षेत्रफल पृष्ठ ऊर्जा के बराबर है; स्पर्श कोण तय करता है कि द्रव ठोस को गीला करेगा या नहीं।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain surface tension from the extra energy of molecules at the surface.",
+                  "hi": "पृष्ठ पर स्थित अणुओं की अतिरिक्त ऊर्जा से पृष्ठ तनाव समझाइए।"
+                },
+                {
+                  "en": "Relate an acute angle of contact to wetting (water on glass) and an obtuse one to non-wetting (mercury on glass).",
+                  "hi": "न्यून स्पर्श कोण को गीला करने (काँच पर जल) और अधिक कोण को गीला न करने (काँच पर पारा) से जोड़िए।"
+                },
+                {
+                  "en": "Explain how detergents lower surface tension.",
+                  "hi": "समझाइए कि अपमार्जक पृष्ठ तनाव कैसे घटाते हैं।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-7",
+                "neet-ug-2026:physics:unit-7:item-7"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.mechanical-properties-fluids.surface-tension.core.excess-pressure",
+              "name": {
+                "en": "Excess pressure across a curved surface",
+                "hi": "वक्र पृष्ठ के आर-पार आधिक्य दाब"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The pressure inside a curved liquid surface exceeds that outside: by 2S/r for a drop or air bubble in a liquid and by 4S/r for a soap bubble with two surfaces.",
+                "hi": "वक्र द्रव-पृष्ठ के भीतर दाब बाहर से अधिक होता है: बूँद या द्रव के भीतर वायु के बुलबुले के लिए 2S/r और दो पृष्ठों वाले साबुन के बुलबुले के लिए 4S/r।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the excess pressure in a drop using surface energy.",
+                  "hi": "पृष्ठ ऊर्जा से बूँद में आधिक्य दाब व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Explain why a soap bubble has twice the excess pressure of a drop of the same radius.",
+                  "hi": "समझाइए कि साबुन के बुलबुले में उसी त्रिज्या की बूँद से दुगुना आधिक्य दाब क्यों होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.surface-tension.core.surface-tension-energy"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-8",
+                "neet-ug-2026:physics:unit-7:item-8"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "phy.mechanical-properties-fluids.surface-tension.core.capillary-rise",
+              "name": {
+                "en": "Applications of surface tension: drops, bubbles and capillary rise",
+                "hi": "पृष्ठ तनाव के अनुप्रयोग : बूँदें, बुलबुले एवं केशिका उन्नयन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A liquid rises in a narrow tube to height h = 2S cos θ/(ρgr); surface tension also explains the spherical shape of drops and the energy released when drops merge.",
+                "hi": "संकीर्ण नली में द्रव h = 2S cos θ/(ρgr) ऊँचाई तक चढ़ता है; पृष्ठ तनाव से बूँदों की गोलाकार आकृति और बूँदों के मिलने पर निकलने वाली ऊर्जा भी समझी जाती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the capillary rise formula and explain the depression of mercury.",
+                  "hi": "केशिका उन्नयन का सूत्र व्युत्पन्न कीजिए और पारे के अवनमन को समझाइए।"
+                },
+                {
+                  "en": "Compute the surface energy change when small drops coalesce into one large drop.",
+                  "hi": "छोटी बूँदों के मिलकर एक बड़ी बूँद बनने पर पृष्ठ ऊर्जा में परिवर्तन निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.mechanical-properties-fluids.surface-tension.core.excess-pressure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-7:item-9",
+                "neet-ug-2026:physics:unit-7:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 9",
+      "url": "https://ncert.nic.in/textbook/pdf/keph202.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph2, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 7: Properties of Solids and Liquids (PDF p.3-4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 7: PROPERTIES OF SOLIDS AND LIQUIDS (PDF p.5)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

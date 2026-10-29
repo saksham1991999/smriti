@@ -1,0 +1,373 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.motion-plane",
+  "subject": "phy",
+  "unit": "phy.mechanics",
+  "name": {
+    "en": "Motion in a Plane",
+    "hi": "समतल में गति"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Physics Part I, Ch 3",
+  "topics": [
+    {
+      "id": "phy.motion-plane.scalars-vectors",
+      "name": {
+        "en": "Scalars and Vectors",
+        "hi": "अदिश एवं सदिश"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 3 §3.2",
+        "NCERT Class 11 Physics Part I, Ch 3 §3.3"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.motion-plane.scalars-vectors.core",
+          "name": {
+            "en": "Scalars and Vectors",
+            "hi": "अदिश एवं सदिश"
+          },
+          "concepts": [
+            {
+              "id": "phy.motion-plane.scalars-vectors.core.scalar-vector",
+              "name": {
+                "en": "Scalars and vectors",
+                "hi": "अदिश एवं सदिश"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "A scalar has only magnitude, while a vector has magnitude and direction and adds by the triangle law.",
+                "hi": "अदिश में केवल परिमाण होता है, जबकि सदिश में परिमाण और दिशा दोनों होते हैं और वह त्रिभुज नियम से जुड़ता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Classify quantities such as displacement, speed, force and work as scalar or vector.",
+                  "hi": "विस्थापन, चाल, बल और कार्य जैसी राशियों को अदिश या सदिश में वर्गीकृत कीजिए।"
+                },
+                {
+                  "en": "Explain equal vectors, negative vectors, null vector and multiplication of a vector by a real number.",
+                  "hi": "समान सदिश, ऋण सदिश, शून्य सदिश और वास्तविक संख्या से सदिश के गुणन को समझाइए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:physics:unit-2:item-4",
+                "jee-main-2027:physics:unit-2:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.vector-addition",
+      "name": {
+        "en": "Addition and Subtraction of Vectors",
+        "hi": "सदिशों का संकलन व व्यवकलन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 3 §3.4",
+        "NCERT Class 11 Physics Part I, Ch 3 §3.6"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.motion-plane.vector-addition.core",
+          "name": {
+            "en": "Addition and Subtraction of Vectors",
+            "hi": "सदिशों का संकलन व व्यवकलन"
+          },
+          "concepts": [
+            {
+              "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+              "name": {
+                "en": "Triangle and parallelogram laws of vector addition",
+                "hi": "सदिश योग के त्रिभुज एवं समांतर चतुर्भुज नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Vectors add head to tail; the resultant of A and B at angle θ has magnitude √(A² + B² + 2AB cos θ), and subtraction adds the negative vector.",
+                "hi": "सदिश शीर्ष से पुच्छ जोड़कर जुड़ते हैं; θ कोण पर A और B के परिणामी का परिमाण √(A² + B² + 2AB cos θ) होता है, और व्यवकलन में ऋण सदिश जोड़ा जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the magnitude and direction of a resultant using the parallelogram law.",
+                  "hi": "समांतर चतुर्भुज नियम से परिणामी का परिमाण और दिशा निकालिए।"
+                },
+                {
+                  "en": "State that vector addition is commutative and associative.",
+                  "hi": "बताइए कि सदिश योग क्रमविनिमेय और साहचर्य है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.scalars-vectors.core.scalar-vector"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:physics:unit-2:item-4",
+                "jee-main-2027:physics:unit-2:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.resolution",
+      "name": {
+        "en": "Resolution of Vectors",
+        "hi": "सदिशों का वियोजन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 3 §3.5"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.motion-plane.resolution.core",
+          "name": {
+            "en": "Resolution of Vectors",
+            "hi": "सदिशों का वियोजन"
+          },
+          "concepts": [
+            {
+              "id": "phy.motion-plane.resolution.core.unit-vector-resolution",
+              "name": {
+                "en": "Unit vectors and resolution into components",
+                "hi": "एकांक सदिश एवं घटकों में वियोजन"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Any vector can be written as A = Ax î + Ay ĵ + Az k̂ using unit vectors along the axes, which makes addition component by component.",
+                "hi": "किसी भी सदिश को अक्षों के अनुदिश एकांक सदिशों से A = Ax î + Ay ĵ + Az k̂ लिखा जा सकता है, जिससे योग घटक-दर-घटक हो जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Resolve a vector into rectangular components A cos θ and A sin θ.",
+                  "hi": "किसी सदिश को समकोणिक घटकों A cos θ और A sin θ में वियोजित कीजिए।"
+                },
+                {
+                  "en": "Find a unit vector along a given vector by dividing it by its magnitude.",
+                  "hi": "किसी सदिश को उसके परिमाण से भाग देकर उसके अनुदिश एकांक सदिश निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.vector-addition.core.vector-addition-laws"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:physics:unit-2:item-6",
+                "jee-main-2027:physics:unit-2:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.motion-2d",
+      "name": {
+        "en": "Motion in a Plane",
+        "hi": "किसी समतल में गति"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 3 §3.7",
+        "NCERT Class 11 Physics Part I, Ch 3 §3.8"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.motion-plane.motion-2d.core",
+          "name": {
+            "en": "Motion in a Plane",
+            "hi": "किसी समतल में गति"
+          },
+          "concepts": [
+            {
+              "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+              "name": {
+                "en": "Position, velocity and acceleration vectors in a plane",
+                "hi": "समतल में स्थिति, वेग एवं त्वरण सदिश"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In two dimensions, position, velocity and acceleration are vectors, and constant-acceleration motion splits into independent x and y motions.",
+                "hi": "दो विमाओं में स्थिति, वेग और त्वरण सदिश हैं, और नियत त्वरण वाली गति स्वतंत्र x और y गतियों में बँट जाती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write r = r₀ + ut + at²/2 and v = u + at in vector form and apply them component-wise.",
+                  "hi": "r = r₀ + ut + at²/2 और v = u + at को सदिश रूप में लिखिए और घटकों में लागू कीजिए।"
+                },
+                {
+                  "en": "Find velocity and acceleration from a given position vector r(t) by differentiation.",
+                  "hi": "दिए गए स्थिति सदिश r(t) से अवकलन द्वारा वेग और त्वरण निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.resolution.core.unit-vector-resolution",
+                "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-2:item-6",
+                "neet-ug-2026:physics:unit-2:item-8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.projectile",
+      "name": {
+        "en": "Projectile Motion",
+        "hi": "प्रक्षेप्य गति"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 3 §3.9"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.motion-plane.projectile.core",
+          "name": {
+            "en": "Projectile Motion",
+            "hi": "प्रक्षेप्य गति"
+          },
+          "concepts": [
+            {
+              "id": "phy.motion-plane.projectile.core.projectile-motion",
+              "name": {
+                "en": "Projectile motion",
+                "hi": "प्रक्षेप्य गति"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A projectile moves with constant horizontal velocity and constant downward acceleration g, so its path is a parabola.",
+                "hi": "प्रक्षेप्य नियत क्षैतिज वेग और नियत अधोमुखी त्वरण g के साथ चलता है, इसलिए उसका पथ परवलय होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive time of flight 2u sin θ/g, maximum height u² sin²θ/2g and range u² sin 2θ/g.",
+                  "hi": "उड़ान का समय 2u sin θ/g, अधिकतम ऊँचाई u² sin²θ/2g और परास u² sin 2θ/g व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Show that range is maximum at 45° and equal for complementary angles.",
+                  "hi": "दिखाइए कि परास 45° पर अधिकतम होती है और पूरक कोणों के लिए बराबर होती है।"
+                },
+                {
+                  "en": "Write the equation of the trajectory y = x tan θ − gx²/(2u² cos²θ).",
+                  "hi": "प्रक्षेप-पथ का समीकरण y = x tan θ − gx²/(2u² cos²θ) लिखिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-2:item-7",
+                "neet-ug-2026:physics:unit-2:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics",
+      "name": {
+        "en": "Uniform Circular Motion",
+        "hi": "एकसमान वृत्तीय गति"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Physics Part I, Ch 3 §3.10"
+      ],
+      "subtopics": [
+        {
+          "id": "phy.motion-plane.circular-kinematics.core",
+          "name": {
+            "en": "Uniform Circular Motion",
+            "hi": "एकसमान वृत्तीय गति"
+          },
+          "concepts": [
+            {
+              "id": "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+              "name": {
+                "en": "Uniform circular motion and centripetal acceleration",
+                "hi": "एकसमान वृत्तीय गति एवं अभिकेंद्र त्वरण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "In uniform circular motion speed is constant but velocity changes direction, giving an acceleration v²/r = ω²r directed towards the centre.",
+                "hi": "एकसमान वृत्तीय गति में चाल नियत रहती है पर वेग की दिशा बदलती है, जिससे केंद्र की ओर v²/r = ω²r का त्वरण होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Relate angular speed, period and frequency: v = ωr, ω = 2π/T = 2πν.",
+                  "hi": "कोणीय चाल, आवर्तकाल और आवृत्ति को जोड़िए: v = ωr, ω = 2π/T = 2πν।"
+                },
+                {
+                  "en": "Derive the centripetal acceleration from the change in the velocity vector.",
+                  "hi": "वेग सदिश में परिवर्तन से अभिकेंद्र त्वरण व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-2:item-8",
+                "neet-ug-2026:physics:unit-2:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph1, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 2: Kinematics (PDF p.3)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 2: KINEMATICS (PDF p.4)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

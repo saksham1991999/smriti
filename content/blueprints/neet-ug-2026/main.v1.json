@@ -1,0 +1,170 @@
+{
+  "schema": "blueprint@1",
+  "exam_profile": "neet-ug-2026",
+  "paper_code": "main",
+  "title": { "en": "NEET (UG) 2026", "hi": "नीट (यूजी) 2026" },
+  "version": 1,
+  "effective_from": "2026-02-08",
+  "verified_at": "2026-10-29",
+  "source": {
+    "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf",
+    "title": "Information Bulletin NEET (UG)-2026",
+    "published": "2026-02-08",
+    "retrieved": "2026-10-29",
+    "pages": "printed p.2 (Timing and Pattern), Chapter 4 pp.21-23 (§1 syllabus, §2 pattern, §3 marking, §4 mode, §5 duration, §6 medium), Chapter 8 pp.39-40 (qualifying criteria, tie-break), Chapter 11 p.45 (barred items), Chapter 13 pp.47-48 (examination hall)"
+  },
+  "additional_sources": [
+    {
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/05/20260515960654684.pdf",
+      "title": "Public Notice: Conduct of Re-examination for National Eligibility-cum-Entrance Test [NEET (UG)] 2026 - Reg.",
+      "published": "2026-05-15",
+      "retrieved": "2026-10-29",
+      "pages": "pp.1-2"
+    },
+    {
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/06/202606121235115637.pdf",
+      "title": "Public Notice: Student-Friendly Measures Introduced for NEET (UG)-2026 Examination-reg.",
+      "published": "2026-06-12",
+      "retrieved": "2026-10-29",
+      "pages": "p.1, items 2-4"
+    }
+  ],
+  "mode": "pen_paper",
+  "duration_min": 180,
+  "duration_rules": {
+    "pwbd_compensatory_min": 60,
+    "compensatory_rule": "One hour of compensatory time for PwD/PwBD candidates with a physical limitation to write, whether or not a scribe is used (Ch.4 §5).",
+    "re_exam_window_min": 195,
+    "re_exam_window_note": "For the 21 June 2026 re-examination the window was 14:00-17:15 (195 minutes), which includes mandatory formalities such as signing attendance sheets (Public Notices 15 May 2026 and 12 June 2026). The test duration in the bulletin stays 180 minutes."
+  },
+  "shift_timings": [ { "start": "14:00", "end": "17:00", "tz": "Asia/Kolkata" } ],
+  "languages": ["as", "bn", "en", "gu", "hi", "kn", "ml", "mr", "or", "pa", "ta", "te", "ur"],
+  "language_rules": {
+    "medium_choice": "Chosen in the application form; cannot be changed (Ch.4 §6 ii).",
+    "booklets": {
+      "en": "Test Booklet in English only",
+      "hi": "Bilingual Test Booklet in English and Hindi",
+      "regional": "Test Booklet in English and the selected regional language"
+    },
+    "availability_table_ref": "Ch.4 §6 ix (pp.22-23): English at all centres in India and outside; English and Hindi at all centres in India; each regional medium with English and Hindi at the listed states' centres; English, Hindi and Urdu at all centres in India.",
+    "prevailing_version": "en"
+  },
+  "language_switch": {
+    "allowed": true,
+    "scope": "printed_bilingual_booklet",
+    "between": ["en", "opted_medium"],
+    "control": "both languages printed in the same booklet",
+    "source_ref": "Ch.4 §6 iii-v"
+  },
+  "interface": "nta_omr",
+  "interface_profile": {
+    "answer_sheet": "OMR, machine gradable; no re-checking or re-evaluation (Ch.15 §4, printed p.52)",
+    "rough_work": "Four rough-work pages in the Test Booklet: two after the instruction page and two at the end (Public Notice 12 June 2026, items 3-4).",
+    "signals": "A signal at the start, at half-time, and before the closing time (Ch.13 item 14).",
+    "booklet_check": "Candidate checks that the Test Booklet has the number of pages printed on the cover (Ch.13 item 16)."
+  },
+  "calculator": "none",
+  "section_navigation": "free",
+  "total_questions": 180,
+  "max_marks": 720,
+  "sections": [
+    {
+      "code": "phy",
+      "title": { "en": "Physics", "hi": "भौतिकी" },
+      "subject": "phy",
+      "timer_min": null,
+      "question_count": 45,
+      "marks": 180,
+      "attempt_rule": { "attempt_any": null, "all_compulsory": true },
+      "question_types": ["mcq_single"],
+      "options_per_question": 4,
+      "marking": { "mcq_single": { "correct": 4, "wrong": -1, "unattempted": 0 } }
+    },
+    {
+      "code": "chem",
+      "title": { "en": "Chemistry", "hi": "रसायन विज्ञान" },
+      "subject": "chem",
+      "timer_min": null,
+      "question_count": 45,
+      "marks": 180,
+      "attempt_rule": { "attempt_any": null, "all_compulsory": true },
+      "question_types": ["mcq_single"],
+      "options_per_question": 4,
+      "marking": { "mcq_single": { "correct": 4, "wrong": -1, "unattempted": 0 } }
+    },
+    {
+      "code": "bio",
+      "title": { "en": "Biology (Botany & Zoology)", "hi": "जीव विज्ञान (वनस्पति विज्ञान एवं प्राणि विज्ञान)" },
+      "subject": "bio",
+      "timer_min": null,
+      "question_count": 90,
+      "marks": 360,
+      "attempt_rule": { "attempt_any": null, "all_compulsory": true },
+      "question_types": ["mcq_single"],
+      "options_per_question": 4,
+      "marking": { "mcq_single": { "correct": 4, "wrong": -1, "unattempted": 0 } }
+    }
+  ],
+  "key_anomaly_rules": {
+    "mcq_single": [
+      "If more than one option is found correct, +4 only to those who marked any of the correct options.",
+      "If all options are found correct, +4 to all who attempted the question.",
+      "If none of the options is correct, or the question is wrong or dropped, +4 to all candidates who appeared, attempted or not."
+    ],
+    "source_ref": "Ch.4 §3"
+  },
+  "scoring": {
+    "normalization": null,
+    "merit": "All India Rank on marks obtained (Ch.8 §1 iii).",
+    "tie_break_order": [
+      "Higher marks/percentile score in Biology (Botany & Zoology)",
+      "Higher marks/percentile score in Chemistry",
+      "Higher marks/percentile score in Physics",
+      "Lower ratio of attempted incorrect to correct answers in all subjects",
+      "Lower ratio of attempted incorrect to correct answers in Biology (Botany & Zoology)",
+      "Lower ratio of attempted incorrect to correct answers in Chemistry",
+      "Lower ratio of attempted incorrect to correct answers in Physics",
+      "Random process under an independent expert committee if still tied"
+    ],
+    "tie_break_source_ref": "Ch.8 §2 (per UGMEB/NMC Public Notice 13.06.2023 and NMC UG Section email 28.01.2026)"
+  },
+  "qualifying": {
+    "rule": "percentile_of_all_india_merit",
+    "basis": "Percentile determined on the basis of the highest marks secured in the All India common merit list (Ch.8 §1 ii a).",
+    "thresholds": [
+      { "category": "general", "percentile": 50 },
+      { "category": "general_ews", "percentile": 50 },
+      { "category": "sc", "percentile": 40 },
+      { "category": "st", "percentile": 40 },
+      { "category": "obc", "percentile": 40 },
+      { "category": "pwbd_unreserved_or_general_ews", "percentile": 45 },
+      { "category": "pwbd_sc_st_obc_ncl", "percentile": 40 }
+    ],
+    "may_be_lowered": "The Central Government, in consultation with the regulators, may lower the minimum marks for an academic year (Ch.8 §1 ii b).",
+    "source_ref": "Ch.8 §1 ii (printed p.39)"
+  },
+  "instructions": {
+    "en": "The paper has 180 compulsory multiple-choice questions to be attempted in 180 minutes: Physics 45, Chemistry 45 and Biology (Botany & Zoology) 90, for 720 marks. Each question has four options with a single correct or best answer. Mark one option on the OMR answer sheet. A correct answer earns +4, an incorrect answer -1, and an unanswered question 0. The English version is final if a translation is ambiguous.",
+    "hi": "इस प्रश्न पत्र में 180 मिनट में हल किए जाने वाले 180 अनिवार्य बहुविकल्पीय प्रश्न हैं: भौतिकी 45, रसायन विज्ञान 45 और जीव विज्ञान (वनस्पति विज्ञान एवं प्राणि विज्ञान) 90, कुल 720 अंक। प्रत्येक प्रश्न के चार विकल्प हैं जिनमें एक सही या सर्वोत्तम उत्तर है। OMR उत्तर पत्रक पर एक विकल्प चिह्नित करें। सही उत्तर पर +4, गलत उत्तर पर -1 और बिना उत्तर वाले प्रश्न पर 0 अंक मिलते हैं। अनुवाद में अस्पष्टता होने पर अंग्रेज़ी संस्करण अंतिम माना जाएगा।"
+  },
+  "instructions_hi_source": "translated",
+  "instructions_basis": "Summary in our own words of bulletin Ch.4 §2-3 and §6 vi; not the official booklet text.",
+  "notes": [
+    "The bulletin states 180 compulsory questions in 180 minutes (Ch.4 §2, as per NMC letter CDN-20011/289/2024-Cordination-NMC dated 05.12.2025). There is no optional section.",
+    "Mode is pen and paper (OMR), single day, single shift (Ch.4 §4). interface 'nta_omr' is a new value: the skill's enum (nta | upsc_omr | ssc_tcs | generic) has no NTA pen-and-paper option.",
+    "Biology is one subject of 90 questions in the bulletin; Botany and Zoology are not given separate counts, so they are not split here.",
+    "Calculators, log tables and pens are barred items; the bulletin does not say how the pen is issued at the centre (Ch.11 §1).",
+    "Effective from the bulletin's first publication (08 Feb 2026); the uploaded PDF was revised on 23 Feb 2026 (PDF modification date)."
+  ],
+  "open_questions": [
+    "The NEET (UG) 2027 bulletin is not published yet (checked 2026-10-29). This blueprint is the latest official pattern; it must be re-verified and versioned for neet-ug-2027 when NTA notifies it."
+  ],
+  "changes_from_previous": "First blueprint for this profile in the repo.",
+  "status": "draft",
+  "sources": [
+    { "kind": "official", "ref": "Information Bulletin NEET (UG)-2026, Chapter 4 and Chapter 8", "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf" }
+  ],
+  "authored_by": "skill:exam-blueprint",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

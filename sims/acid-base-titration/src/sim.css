@@ -1,0 +1,122 @@
+/* Titration scene. UI colours are token variables; only the solution colour is
+   set at runtime from the indicator model (a physical colour, not a UI colour). */
+
+.titration .stand {
+  stroke: var(--ink-muted);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.titration .clamp {
+  stroke: var(--ink-muted);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.titration .glass {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.titration .flask {
+  stroke-width: 3;
+}
+
+.titration .liquid-base,
+.titration .liquid-water {
+  fill: var(--f-polity-tint);
+}
+
+.titration .liquid-tint {
+  stroke: none;
+}
+
+.titration .tick {
+  stroke: var(--ink-muted);
+  stroke-width: 1.2;
+}
+
+.titration .tick-label {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.titration .level-mark {
+  stroke: var(--s-strong);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.titration .stopcock {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--d-base) var(--ease);
+}
+
+.titration .stopcock.open {
+  transform: rotate(90deg);
+  fill: var(--s-strong);
+}
+
+.titration .drop {
+  fill: var(--f-polity-strong);
+  opacity: 0.6;
+}
+
+.titration .plot-bg {
+  fill: var(--surface);
+}
+
+.titration .grid-line {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.titration .grid-mid {
+  stroke: var(--ink-disabled);
+  stroke-dasharray: 3 4;
+}
+
+.titration .axis-num {
+  font-size: 10px;
+}
+
+.titration .axis-title {
+  font-size: 11px;
+  font-weight: 800;
+  fill: var(--ink-muted);
+}
+
+.titration .band {
+  fill: var(--s-tint);
+}
+
+.titration .band-label {
+  fill: var(--s-text);
+  font-weight: 700;
+}
+
+.titration .curve {
+  fill: none;
+  stroke: var(--s-strong);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.titration .now-dot {
+  fill: var(--surface);
+  stroke: var(--s-strong);
+  stroke-width: 3;
+}
+
+.add-row .btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 var(--sp-3);
+}

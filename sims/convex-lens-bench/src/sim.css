@@ -1,0 +1,105 @@
+/* Optics bench scene. Token variables only. Light rays use the amber family. */
+
+.bench .axis {
+  stroke: var(--ink-muted);
+  stroke-width: 2;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+}
+
+.bench .lens {
+  fill: var(--surface);
+  fill-opacity: 0.85;
+  stroke: var(--s-strong);
+  stroke-width: 3.5;
+}
+
+.bench .mark-dot {
+  fill: var(--ink-muted);
+}
+
+.bench .mark-label {
+  font-weight: 700;
+}
+
+.bench .ray {
+  stroke: var(--f-history-strong);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.bench .ray-head {
+  fill: var(--f-history-strong);
+}
+
+.bench .ray-virtual {
+  stroke: var(--f-history-strong);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+  opacity: 0.85;
+}
+
+.bench .ray-construction {
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 5;
+}
+
+.bench .object-arrow {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bench .image-arrow {
+  fill: none;
+  stroke: var(--s-strong);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bench .image-arrow.virtual {
+  stroke-dasharray: 6 6;
+  stroke-width: 4;
+}
+
+.bench .image-label {
+  fill: var(--s-text);
+}
+
+.bench .screen-body {
+  fill: var(--surface);
+  stroke: var(--ink-muted);
+  stroke-width: 2;
+}
+
+.bench .screen.sharp .screen-body {
+  stroke: var(--success);
+  stroke-width: 3;
+}
+
+.bench .screen-image {
+  fill: none;
+  stroke: var(--s-strong);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bench .hit {
+  fill: transparent;
+  cursor: grab;
+}
+
+.bench .hit.dragging {
+  cursor: grabbing;
+}
+
+.bench .ray-beyond {
+  stroke: var(--f-history-strong);
+  stroke-width: 1.5;
+  opacity: 0.3;
+}

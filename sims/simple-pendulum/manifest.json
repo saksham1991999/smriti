@@ -1,0 +1,256 @@
+{
+  "id": "simple-pendulum",
+  "version": "1.0.0",
+  "protocolVersion": "1.0.0",
+  "title": {
+    "en": "Simple pendulum",
+    "hi": "सरल लोलक"
+  },
+  "subject": "phy",
+  "concepts": [
+    "phy.oscillations.simple-pendulum",
+    "phy.oscillations.time-period",
+    "phy.gravitation.acceleration-due-to-gravity"
+  ],
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "aspect": "4:3",
+  "preferredOrientation": "any",
+  "entry": "index.html",
+  "capabilities": [
+    "tasks",
+    "record",
+    "pause",
+    "set_params",
+    "snapshot",
+    "resize"
+  ],
+  "params": {
+    "length": {
+      "type": "number",
+      "default": 0.5,
+      "min": 0.1,
+      "max": 2,
+      "step": 0.01,
+      "unit": "m"
+    },
+    "amplitude": {
+      "type": "number",
+      "default": 10,
+      "min": 2,
+      "max": 60,
+      "step": 1,
+      "unit": "°"
+    },
+    "mass": {
+      "type": "number",
+      "default": 0.2,
+      "min": 0.1,
+      "max": 1,
+      "step": 0.1,
+      "unit": "kg"
+    },
+    "planet": {
+      "type": "enum",
+      "default": "earth",
+      "values": [
+        "earth",
+        "moon",
+        "mars",
+        "jupiter"
+      ]
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "readings": [
+    {
+      "name": "length",
+      "unit": "m",
+      "label": {
+        "en": "Length L",
+        "hi": "लंबाई L"
+      }
+    },
+    {
+      "name": "gravity",
+      "unit": "m/s²",
+      "label": {
+        "en": "Gravity g",
+        "hi": "गुरुत्वीय त्वरण g"
+      }
+    },
+    {
+      "name": "amplitude",
+      "unit": "°",
+      "label": {
+        "en": "Amplitude",
+        "hi": "आयाम"
+      }
+    },
+    {
+      "name": "mass",
+      "unit": "kg",
+      "label": {
+        "en": "Mass",
+        "hi": "द्रव्यमान"
+      }
+    },
+    {
+      "name": "period",
+      "unit": "s",
+      "label": {
+        "en": "Period T",
+        "hi": "आवर्तकाल T"
+      }
+    },
+    {
+      "name": "oscillations",
+      "unit": "",
+      "label": {
+        "en": "Oscillations",
+        "hi": "दोलन"
+      }
+    },
+    {
+      "name": "elapsed",
+      "unit": "s",
+      "label": {
+        "en": "Time",
+        "hi": "समय"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "rule": "planet",
+      "args": {
+        "is": "earth | moon | mars | jupiter"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "period-two-seconds",
+      "prompt": {
+        "en": "On Earth, set the length so the period is 2.0 s.",
+        "hi": "पृथ्वी पर, लंबाई ऐसे रखें कि आवर्तकाल 2.0 s हो।"
+      },
+      "hint": {
+        "en": "A longer pendulum swings more slowly.",
+        "hi": "लंबा लोलक धीरे दोलन करता है।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "condition",
+            "rule": "planet",
+            "args": {
+              "is": "earth"
+            },
+            "quantity": "gravity"
+          },
+          {
+            "kind": "target",
+            "quantity": "period",
+            "value": 2,
+            "tolerance": 0.03
+          }
+        ]
+      }
+    },
+    {
+      "id": "halve-period",
+      "prompt": {
+        "en": "Stay on the same planet. Change the length so the period halves.",
+        "hi": "उसी ग्रह पर रहें। लंबाई ऐसे बदलें कि आवर्तकाल आधा हो जाए।"
+      },
+      "hint": {
+        "en": "Halving the length is not enough. Try shorter.",
+        "hi": "लंबाई आधी करना काफ़ी नहीं है। और छोटी करके देखें।"
+      },
+      "check": {
+        "kind": "ratio",
+        "quantity": "period",
+        "ratio": 0.5,
+        "tolerance": 0.03,
+        "hold": [
+          "gravity"
+        ]
+      }
+    },
+    {
+      "id": "mass-readings",
+      "prompt": {
+        "en": "Keep the length the same. Record the period for two different masses.",
+        "hi": "लंबाई एक जैसी रखें। दो अलग-अलग द्रव्यमानों के लिए आवर्तकाल दर्ज करें।"
+      },
+      "hint": {
+        "en": "Change only the mass, then tap Record reading each time.",
+        "hi": "केवल द्रव्यमान बदलें, फिर हर बार रीडिंग दर्ज करें दबाएँ।"
+      },
+      "check": {
+        "kind": "readings",
+        "quantity": "period",
+        "count": 2,
+        "distinctBy": "mass",
+        "sameBy": [
+          "length",
+          "gravity"
+        ]
+      }
+    },
+    {
+      "id": "moon-two-seconds",
+      "prompt": {
+        "en": "Take the pendulum to the Moon. Make the period 2.0 s there.",
+        "hi": "लोलक को चंद्रमा पर ले जाएँ। वहाँ आवर्तकाल 2.0 s कीजिए।"
+      },
+      "hint": {
+        "en": "Gravity is weaker on the Moon, so you need a shorter string.",
+        "hi": "चंद्रमा पर गुरुत्व कम है, इसलिए छोटी डोरी चाहिए।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "condition",
+            "rule": "planet",
+            "args": {
+              "is": "moon"
+            },
+            "quantity": "gravity"
+          },
+          {
+            "kind": "target",
+            "quantity": "period",
+            "value": 2,
+            "tolerance": 0.03
+          }
+        ]
+      }
+    }
+  ],
+  "third_party": [
+    {
+      "name": "Plus Jakarta Sans",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/plus-jakarta-sans 5.3.0"
+    },
+    {
+      "name": "Noto Sans Devanagari",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/noto-sans-devanagari 5.3.0"
+    },
+    {
+      "name": "Phosphor Icons",
+      "licence": "MIT",
+      "source": "@phosphor-icons/core 2.1.1"
+    }
+  ],
+  "size_bytes": 360842
+}

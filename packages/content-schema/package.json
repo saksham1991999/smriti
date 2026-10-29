@@ -17,7 +17,8 @@
     "test": "vitest run",
     "content:check": "tsx src/check/cli.ts",
     "gen:types": "tsx scripts/gen-types.ts",
-    "gen:python": "bash scripts/gen-python.sh"
+    "gen:python": "bash scripts/gen-python.sh",
+    "test:python": "uv run --project python --group dev pytest -q python/tests"
   },
   "dependencies": {
     "ajv": "8.20.0",

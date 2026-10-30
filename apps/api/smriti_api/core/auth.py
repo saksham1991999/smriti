@@ -25,6 +25,7 @@ from smriti_api.core.errors import ApiError
 log = structlog.get_logger(__name__)
 
 ASYMMETRIC_ALGS = ("ES256", "RS256", "EdDSA")
+DEV_REFRESH_AUDIENCE = "smriti-dev-refresh"
 
 
 class AmrEntry(BaseModel):
@@ -147,8 +148,11 @@ class JwtVerifier:
         provider: str = "anonymous",
         user_metadata: dict[str, Any] | None = None,
         ttl_s: int = 3600,
+        auth_time: int | None = None,
+        session_id: str | None = None,
     ) -> tuple[str, int]:
-        """A token shaped like a Supabase access token, signed with the dev key. Local/test only."""
+        """A token shaped like a Supabase access token, signed with the dev key. Local/test only.
+        ``auth_time`` keeps the original sign-in time in ``amr`` across refreshes, as Supabase does."""
         if not self._settings.is_dev:
             raise ApiError(404, "not_found", "Not found")
         now = int(time.time())
@@ -160,9 +164,14 @@ class JwtVerifier:
             "iat": now,
             "exp": now + ttl_s,
             "is_anonymous": is_anonymous,
-            "session_id": str(uuid.uuid4()),
+            "session_id": session_id or str(uuid.uuid4()),
             "aal": "aal1",
-            "amr": [{"method": "anonymous" if is_anonymous else "oauth", "timestamp": now}],
+            "amr": [
+                {
+                    "method": "anonymous" if is_anonymous else "oauth",
+                    "timestamp": auth_time if auth_time is not None else now,
+                }
+            ],
             "app_metadata": {"provider": provider, "providers": [provider]},
             "user_metadata": user_metadata or {},
         }
@@ -170,3 +179,41 @@ class JwtVerifier:
             claims["email"] = email
         token = jwt.encode(claims, self.dev_secret, algorithm="HS256")
         return token, now + ttl_s
+
+    def mint_dev_refresh_token(
+        self, user_id: uuid.UUID, *, auth_time: int, session_id: str, ttl_s: int = 30 * 86400
+    ) -> str:
+        """A dev refresh token. It has its own audience and no ``authenticated`` role, so
+        ``verify`` never accepts it as an access token."""
+        if not self._settings.is_dev:
+            raise ApiError(404, "not_found", "Not found")
+        now = int(time.time())
+        claims = {
+            "aud": DEV_REFRESH_AUDIENCE,
+            "sub": str(user_id),
+            "typ": "refresh",
+            "iat": now,
+            "exp": now + ttl_s,
+            "auth_time": auth_time,
+            "session_id": session_id,
+            "jti": secrets.token_urlsafe(12),
+        }
+        return jwt.encode(claims, self.dev_secret, algorithm="HS256")
+
+    def decode_dev_refresh_token(self, token: str) -> dict[str, Any]:
+        if not self._settings.is_dev or not self.dev_secret:
+            raise ApiError(404, "not_found", "Not found")
+        options: Options = {"require": ["exp", "sub", "auth_time"]}
+        try:
+            claims: dict[str, Any] = jwt.decode(
+                token,
+                key=self.dev_secret,
+                algorithms=["HS256"],
+                audience=DEV_REFRESH_AUDIENCE,
+                options=options,
+            )
+        except jwt.PyJWTError as exc:
+            raise ApiError(401, "invalid_grant", "The refresh token is not valid") from exc
+        if claims.get("typ") != "refresh":
+            raise ApiError(401, "invalid_grant", "The refresh token is not valid")
+        return claims

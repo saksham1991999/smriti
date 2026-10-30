@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import time
 import uuid
 from typing import Any
 
@@ -16,23 +17,39 @@ from sqlalchemy import text
 from smriti_api.core.auth import AuthContext, JwtVerifier
 from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
-from smriti_api.schemas.api import DevGoogleRequest, DevSession
+from smriti_api.schemas.api import DevGoogleRequest, DevSession, DevUser
 
 TOKEN_TTL_S = 3600
 
 
 def _session(
-    verifier: JwtVerifier, user_id: uuid.UUID, *, is_anonymous: bool, **kw: Any
+    verifier: JwtVerifier,
+    user_id: uuid.UUID,
+    *,
+    is_anonymous: bool,
+    email: str | None = None,
+    auth_time: int | None = None,
+    session_id: str | None = None,
+    **kw: Any,
 ) -> DevSession:
+    auth_time = auth_time if auth_time is not None else int(time.time())
+    session_id = session_id or str(uuid.uuid4())
     token, exp = verifier.mint_dev_token(
-        user_id, is_anonymous=is_anonymous, ttl_s=TOKEN_TTL_S, **kw
+        user_id,
+        is_anonymous=is_anonymous,
+        email=email,
+        ttl_s=TOKEN_TTL_S,
+        auth_time=auth_time,
+        session_id=session_id,
+        **kw,
     )
+    refresh = verifier.mint_dev_refresh_token(user_id, auth_time=auth_time, session_id=session_id)
     return DevSession(
         access_token=token,
-        expires_at=exp,
         expires_in=TOKEN_TTL_S,
-        user_id=user_id,
-        is_anonymous=is_anonymous,
+        expires_at=exp,
+        refresh_token=refresh,
+        user=DevUser(id=user_id, is_anonymous=is_anonymous, email=email),
     )
 
 
@@ -173,8 +190,45 @@ async def sign_in_with_google(
         is_anonymous=False,
         email=body.email.lower(),
         provider="google",
-        user_metadata={
-            k: meta[k]
-            for k in ("name", "full_name", "given_name", "email", "email_verified", "sub")
-        },
+        user_metadata=_token_metadata(meta),
+    )
+
+
+def _token_metadata(meta: dict[str, Any]) -> dict[str, Any]:
+    keys = ("name", "full_name", "given_name", "email", "email_verified", "sub")
+    return {k: meta[k] for k in keys if k in meta}
+
+
+async def refresh(db: Database, verifier: JwtVerifier, refresh_token: str) -> DevSession:
+    """Swap a refresh token for a new session. The user is re-read, so a guest who was linked
+    or merged away gets the right answer, and the original sign-in time carries over."""
+    claims = verifier.decode_dev_refresh_token(refresh_token)
+    try:
+        user_id = uuid.UUID(str(claims["sub"]))
+    except ValueError as exc:
+        raise ApiError(401, "invalid_grant", "The refresh token is not valid") from exc
+    async with db.admin_tx() as session:
+        row = (
+            await session.execute(
+                text(
+                    "select is_anonymous, email, raw_user_meta_data as meta, raw_app_meta_data as app"
+                    " from auth.users where id = :u"
+                ),
+                {"u": user_id},
+            )
+        ).one_or_none()
+    if row is None:
+        raise ApiError(401, "session_ended", "This session has ended; sign in again")
+    app = row.app if isinstance(row.app, dict) else {}
+    meta = row.meta if isinstance(row.meta, dict) else {}
+    provider = "anonymous" if row.is_anonymous else str(app.get("provider") or "google")
+    return _session(
+        verifier,
+        user_id,
+        is_anonymous=bool(row.is_anonymous),
+        email=None if row.is_anonymous else row.email,
+        auth_time=int(claims["auth_time"]),
+        session_id=str(claims.get("session_id") or uuid.uuid4()),
+        provider=provider,
+        user_metadata=_token_metadata(meta),
     )

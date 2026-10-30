@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from smriti_api.core.deps import OptionalUser, Services, rate_limited
-from smriti_api.schemas.api import DevGoogleRequest, DevSession
+from smriti_api.schemas.api import DevGoogleRequest, DevRefreshRequest, DevSession
 from smriti_api.services import dev_auth
 
 router = APIRouter(
@@ -34,3 +34,13 @@ async def anonymous(services: Services) -> DevSession:
 )
 async def google(body: DevGoogleRequest, services: Services, guest: OptionalUser) -> DevSession:
     return await dev_auth.sign_in_with_google(services.db, services.verifier, body, guest)
+
+
+@router.post(
+    "/refresh",
+    response_model=DevSession,
+    summary="Dev stand-in for Supabase's refresh_token grant",
+    responses={401: {"description": "invalid_grant or session_ended"}},
+)
+async def refresh(body: DevRefreshRequest, services: Services) -> DevSession:
+    return await dev_auth.refresh(services.db, services.verifier, body.refresh_token)

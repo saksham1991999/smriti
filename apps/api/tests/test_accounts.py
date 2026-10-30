@@ -31,9 +31,9 @@ async def signed_in(client: httpx.AsyncClient, address: str | None = None) -> Se
     r = await google(client, address or email())
     assert r.status_code == 200, r.text
     body = r.json()
-    assert body["is_anonymous"] is False
+    assert body["user"]["is_anonymous"] is False
     return Session(
-        token=body["access_token"], user_id=uuid.UUID(body["user_id"]), device_id=uuid.uuid4()
+        token=body["access_token"], user_id=uuid.UUID(body["user"]["id"]), device_id=uuid.uuid4()
     )
 
 
@@ -63,11 +63,11 @@ async def test_link_keeps_the_user_and_its_progress(client: httpx.AsyncClient) -
     assert r.status_code == 200, r.text
     linked = Session(
         token=r.json()["access_token"],
-        user_id=uuid.UUID(r.json()["user_id"]),
+        user_id=uuid.UUID(r.json()["user"]["id"]),
         device_id=guest.device_id,
     )
     assert linked.user_id == guest.user_id
-    assert r.json()["is_anonymous"] is False
+    assert r.json()["user"]["is_anonymous"] is False
 
     headers = {**linked.headers, "Idempotency-Key": "link-0001"}
     first = await client.post("/v1/auth/linked", json={}, headers=headers)

@@ -30,7 +30,7 @@ async def new_guest(client: httpx.AsyncClient) -> Session:
     assert r.status_code == 200, r.text
     body = r.json()
     return Session(
-        token=body["access_token"], user_id=uuid.UUID(body["user_id"]), device_id=uuid.uuid4()
+        token=body["access_token"], user_id=uuid.UUID(body["user"]["id"]), device_id=uuid.uuid4()
     )
 
 

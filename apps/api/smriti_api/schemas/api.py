@@ -251,13 +251,25 @@ class DevGoogleRequest(BaseModel):
     )
 
 
+class DevUser(BaseModel):
+    id: uuid.UUID
+    is_anonymous: bool
+    email: str | None = None
+
+
 class DevSession(BaseModel):
+    """The shape of Supabase's token endpoint (docs/contracts/sync.md "Dev auth")."""
+
     access_token: str
     token_type: Literal["bearer"] = "bearer"  # noqa: S105 - the OAuth token type, not a secret
-    expires_at: int
     expires_in: int
-    user_id: uuid.UUID
-    is_anonymous: bool
+    expires_at: int
+    refresh_token: str
+    user: DevUser
+
+
+class DevRefreshRequest(BaseModel):
+    refresh_token: Annotated[str, Field(min_length=10, max_length=4096)]
 
 
 # --- accounts --------------------------------------------------------------------------------

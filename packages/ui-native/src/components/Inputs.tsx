@@ -26,7 +26,7 @@ export function ConfidenceRow({ value, onChange, showLabel = true, disabled, tes
           {t("confidence.label")}
         </Text>
       )}
-      <View accessibilityRole="radiogroup" accessibilityLabel={t("confidence.label")} style={{ flexDirection: "row", gap: 6 }}>
+      <View accessibilityRole="radiogroup" accessibilityLabel={t("confidence.label")} style={{ flexDirection: "row", gap: 8 }}>
         {confidences.map((k) => {
           const on = value === k;
           return (
@@ -39,7 +39,9 @@ export function ConfidenceRow({ value, onChange, showLabel = true, disabled, tes
               onPress={() => onChange(on ? null : k)}
               style={{
                 flex: 1,
-                height: 48,
+                minHeight: 48,
+                paddingHorizontal: 12,
+                paddingVertical: 8,
                 borderRadius: 24,
                 alignItems: "center",
                 justifyContent: "center",

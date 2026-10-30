@@ -4,21 +4,27 @@ import {
   AppleButton,
   Banner,
   Button,
+  ChatBubble,
+  ChatInput,
+  CheerButton,
   CitationChip,
   Chip,
   ChoiceChips,
   ConfidenceRow,
   ContinueCard,
   DayDots,
+  DuelScoreBar,
   Dialog,
   EmptyState,
   FormulaBox,
+  FriendRow,
   GoogleButton,
   HeatMapCell,
   Icon,
   IconButton,
   Illustration,
   LeaderboardRow,
+  LeagueTierBadge,
   LimitMeter,
   Meter,
   MockPaletteCell,
@@ -35,6 +41,7 @@ import {
   ProgressBar,
   ProgressRing,
   RatingButtons,
+  RoomCard,
   SaveStateChip,
   ScoreRing,
   SectionTabs,
@@ -43,6 +50,7 @@ import {
   SettingsRow,
   Sheet,
   SidebarNav,
+  SquadCard,
   StatTile,
   StreakCard,
   StreakPill,
@@ -251,6 +259,99 @@ function TimeStripDemo({ c }: { c: GalleryCopy }) {
       targetCaption={c.targetCaption}
       items={times.map((s, i) => ({ questionNo: i + 1, timeMs: s * 1000, targetMs: 150_000, result: results[i] ?? "right" }))}
     />
+  );
+}
+
+
+function ChatDemo({ c }: { c: GalleryCopy }) {
+  const [value, setValue] = useState(c.chatDraft);
+  const [streaming, setStreaming] = useState(false);
+  return (
+    <Stack>
+      <div className="flex flex-col gap-3 rounded-card bg-bg p-3 ring-1 ring-line">
+        <ChatBubble role="system" text={c.chatSystem} />
+        <ChatBubble role="student" text={c.chatStudent} />
+        <ChatBubble
+          role="tutor"
+          authorName={c.petName}
+          avatar={{ species: "cat" }}
+          text={c.chatTutor}
+          citations={<CitationChip examShort="JEE Main" year={2025} sessionLabel="Jan S1" onPress={() => undefined} />}
+          actions={
+            <>
+              <IconButton icon="SpeakerHigh" label={c.petName} size={40} onPress={() => undefined} />
+              <IconButton icon="Cards" label={c.petName} size={40} onPress={() => undefined} />
+            </>
+          }
+        />
+        <ChatBubble role="tutor" authorName={c.petName} avatar={{ species: "cat", mood: "thinking" }} streaming />
+        <ChatBubble role="tutor" authorName={c.petName} text={c.chatPartial} stopped />
+      </div>
+      <div className="overflow-hidden rounded-card ring-1 ring-line">
+        <ChatInput
+          value={value}
+          onChange={setValue}
+          onSend={() => setStreaming(true)}
+          onStop={() => setStreaming(false)}
+          streaming={streaming}
+          label={c.chatLabel}
+          placeholder={c.chatPlaceholder}
+          maxLength={60}
+          attach={<IconButton icon="Plus" label={c.chatLabel} size={48} onPress={() => undefined} />}
+        />
+      </div>
+      <div className="overflow-hidden rounded-card ring-1 ring-line">
+        <ChatInput value="" onChange={() => undefined} onSend={() => undefined} label={c.chatLabel} placeholder={c.chatPlaceholder} disabled />
+      </div>
+    </Stack>
+  );
+}
+
+function SocialDemo({ c }: { c: GalleryCopy }) {
+  const [picked, setPicked] = useState(1);
+  const [cheered, setCheered] = useState<number[]>([1]);
+  const icons = ["HandsClapping", "Star", "Barbell", "Smiley"] as const;
+  const msgIcons = ["UsersThree", "Plant", "Sparkle", "Lightning"] as const;
+  return (
+    <Stack>
+      <div className="flex flex-col rounded-card bg-surface py-1 shadow-card">
+        <FriendRow name={c.friends[0] ?? ""} avatar={{ species: "dog" }} studiedToday streakDays={12} />
+        <FriendRow name={c.friends[1] ?? ""} avatar={{ species: "cat", mood: "curious" }} studiedToday={false} streakDays={3} />
+        <FriendRow name={c.friends[2] ?? ""} avatar={{ species: "dog", mood: "happy" }} studyingNow />
+      </div>
+      <Label>SOC-15 pick a friend</Label>
+      <div role="radiogroup" className="flex flex-col rounded-card bg-surface py-1 shadow-card">
+        {c.friends.map((f, i) => (
+          <FriendRow key={f} name={f} avatar={{ species: i % 2 ? "cat" : "dog" }} selectable selected={picked === i} disabled={i === 2} note={i === 2 ? c.friendNote : undefined} onPress={() => setPicked(i)} />
+        ))}
+      </div>
+      <Row>
+        {c.tiers.map((tier, i) => (
+          <LeagueTierBadge key={tier.crest} name={tier.name} crest={tier.crest} state={i === 0 ? "past" : i === 1 ? "current" : "future"} size="md" />
+        ))}
+        <LeagueTierBadge name={c.tiers[1]?.name ?? ""} crest={c.tiers[1]?.crest ?? ""} size="lg" showName={false} />
+      </Row>
+      <DuelScoreBar
+        count={7}
+        you={{ name: c.you, avatar: { species: "cat" }, score: 40, answers: ["right", "right", "wrong", "right", "answered"] }}
+        opponent={{ name: c.friends[1] ?? "", avatar: { species: "dog" }, score: 30, answers: ["right", "wrong", "right", "answered"] }}
+      />
+      <DuelScoreBar count={7} you={{ name: c.you, avatar: { species: "cat" }, score: 10, answers: ["right", "open"] }} opponent={{ name: c.friends[0] ?? "", avatar: { species: "dog" }, score: 0, answers: ["answered"], dropped: true }} />
+      <DuelScoreBar count={7} you={{ name: c.you, avatar: { species: "cat" }, score: 20, answers: ["right", "right", "answered"] }} />
+      {c.squads.map((sq, i) => (
+        <SquadCard key={sq.crest} name={sq.name} crest={sq.crest} done={i ? 400 : 240} target={400} daysLeft={i ? undefined : 3} onPress={() => undefined} />
+      ))}
+      <Row>
+        {c.reactions.map((r, i) => (
+          <CheerButton key={r} label={r} icon={icons[i] ?? "Star"} count={[3, 5, 1, 0][i]} sent={cheered.includes(i)} onPress={() => setCheered((x) => [...x, i])} />
+        ))}
+      </Row>
+      <div className="grid grid-cols-2 gap-2">
+        {c.cheerMessages.map((m, i) => (
+          <CheerButton key={m} kind="message" label={m} icon={msgIcons[i] ?? "Star"} sent={i === 1} disabled={i === 3} onPress={() => undefined} />
+        ))}
+      </div>
+    </Stack>
   );
 }
 
@@ -547,6 +648,8 @@ const sections: { id: string; title: string; render: Render }[] = [
         <LimitMeter label={c.limitLabel} used={12} limit={30} onProPress={() => undefined} />
         <LimitMeter label={c.limitLabel} used={27} limit={30} proAction="ask_grown_up" onProPress={() => undefined} />
         <LimitMeter label={c.limitLabel} used={30} limit={30} onProPress={() => undefined} />
+        <LimitMeter label={c.mockLimitLabel} used={1} limit={2} lastFewAt={1} period="week" onProPress={() => undefined} />
+        <LimitMeter label={c.mockLimitLabel} used={2} limit={2} period="week" onProPress={() => undefined} />
       </Stack>
     ),
   },
@@ -554,6 +657,26 @@ const sections: { id: string; title: string; render: Render }[] = [
     id: "nav",
     title: "Top bar, Tab bar, Sidebar",
     render: (c) => <NavDemo c={c} />,
+  },
+  {
+    id: "chat",
+    title: "Chat bubble, Chat input",
+    render: (c) => <ChatDemo c={c} />,
+  },
+  {
+    id: "social",
+    title: "Friend row, League tier, Duel score, Squad card, Cheer",
+    render: (c) => <SocialDemo c={c} />,
+  },
+  {
+    id: "palace",
+    title: "Memory palace card",
+    render: (c) => (
+      <Stack>
+        <RoomCard name={c.palaceName} image="scene-memory-palace" imageAlt={c.palaceAlt} meta={c.palaceMeta} due onPress={() => undefined} onWalk={() => undefined} onQuiz={() => undefined} />
+        <RoomCard name={c.palaceSystem} image="scene-pet-room" meta={c.palaceMeta} onWalk={() => undefined} />
+      </Stack>
+    ),
   },
 ];
 

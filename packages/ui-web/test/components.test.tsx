@@ -7,21 +7,27 @@ import {
   AppleButton,
   Banner,
   Button,
+  ChatBubble,
+  ChatInput,
+  CheerButton,
   CitationChip,
   Chip,
   ChoiceChips,
   ConfidenceRow,
   ContinueCard,
   DayDots,
+  DuelScoreBar,
   Dialog,
   EmptyState,
   FormulaBox,
+  FriendRow,
   GoogleButton,
   HeatMapCell,
   iconMap,
   IconButton,
   Illustration,
   LeaderboardRow,
+  LeagueTierBadge,
   LimitMeter,
   Meter,
   MockPaletteCell,
@@ -37,6 +43,7 @@ import {
   ProgressBar,
   ProgressRing,
   RatingButtons,
+  RoomCard,
   SaveStateChip,
   ScoreRing,
   SectionTabs,
@@ -45,6 +52,7 @@ import {
   SettingsRow,
   Sheet,
   SidebarNav,
+  SquadCard,
   StatTile,
   StreakCard,
   StreakPill,
@@ -523,6 +531,8 @@ describe("navigation and overlays", () => {
     expect(within(nav[1] as HTMLElement).getByRole("button", { name: "Labs" })).toHaveAttribute("aria-current", "page");
     await userEvent.click(within(nav[0] as HTMLElement).getByRole("button", { name: "Me" }));
     expect(onSelect).toHaveBeenCalledWith("me");
+    expect(screen.getByTestId("tab-labs")).toHaveAccessibleName("Labs");
+    expect(screen.getByTestId("sidebar-me")).toHaveAccessibleName("Me");
   });
 
   it("TopBar back button is labelled", () => {
@@ -549,5 +559,164 @@ describe("navigation and overlays", () => {
     wrap(<Dialog open onOpenChange={() => undefined} title="Sign out?" confirm={{ label: "Sign out", destructive: true, onPress: onConfirm }} cancel={{ label: "Cancel", onPress: () => undefined }} />);
     await userEvent.click(screen.getByRole("button", { name: "Sign out" }));
     expect(onConfirm).toHaveBeenCalled();
+  });
+});
+
+describe("tutor chat", () => {
+  it("ChatBubble: student, system and tutor with the AI label", () => {
+    wrap(
+      <>
+        <ChatBubble role="system" text="Chat started" testID="sys" />
+        <ChatBubble role="student" text="Why is the sky blue?" testID="me" />
+        <ChatBubble role="tutor" authorName="Mishti" avatar={{ species: "cat" }} text="Light scatters." testID="tutor" />
+      </>,
+    );
+    expect(screen.getByTestId("sys")).toHaveTextContent("Chat started");
+    expect(screen.getByTestId("me")).toHaveTextContent("You said: Why is the sky blue?");
+    const tutor = screen.getByTestId("tutor");
+    expect(within(tutor).getByText("AI")).toBeInTheDocument();
+    expect(within(tutor).getByText("Made by AI. It can make mistakes.")).toBeInTheDocument();
+  });
+
+  it("ChatBubble: thinking while streaming, announces once when complete", () => {
+    const { rerender } = wrap(<ChatBubble role="tutor" authorName="Mishti" streaming testID="t" />);
+    expect(screen.getByText("Mishti is thinking…")).toBeInTheDocument();
+    expect(screen.queryByText("Made by AI. It can make mistakes.")).not.toBeInTheDocument();
+    const ui = (streaming: boolean) => (
+      <UIProvider locale="en" assetBaseUrl="https://cdn.example/img/">
+        <ChatBubble role="tutor" authorName="Mishti" streaming={streaming} text="Light scatters." citations={<span>NCERT 11</span>} testID="t" />
+      </UIProvider>
+    );
+    rerender(ui(true));
+    expect(screen.getByTestId("t").querySelector("[aria-live]")).toHaveTextContent("");
+    rerender(ui(false));
+    expect(screen.getByTestId("t").querySelector("[aria-live]")).toHaveTextContent("Mishti, AI: Light scatters.");
+    expect(screen.getByText("Sources")).toBeInTheDocument();
+  });
+
+  it("ChatInput: sends on Enter, counter near the limit, Stop while streaming", async () => {
+    const onSend = vi.fn();
+    const onChange = vi.fn();
+    const { rerender } = wrap(<ChatInput value="" onChange={onChange} onSend={onSend} label="Ask Mishti" maxLength={100} />);
+    expect(screen.getByRole("button", { name: "Send" })).toBeDisabled();
+    await userEvent.type(screen.getByRole("textbox", { name: "Ask Mishti" }), "a");
+    expect(onChange).toHaveBeenCalledWith("a");
+    const ui = (value: string, streaming = false, onStop?: () => void) => (
+      <UIProvider locale="en" assetBaseUrl="https://cdn.example/img/">
+        <ChatInput value={value} onChange={onChange} onSend={onSend} label="Ask Mishti" maxLength={100} streaming={streaming} onStop={onStop} />
+      </UIProvider>
+    );
+    rerender(ui("x".repeat(85)));
+    expect(screen.getByText("15 characters left")).toBeInTheDocument();
+    fireEvent.keyDown(screen.getByRole("textbox"), { key: "Enter" });
+    expect(onSend).toHaveBeenCalledTimes(1);
+    fireEvent.keyDown(screen.getByRole("textbox"), { key: "Enter", shiftKey: true });
+    expect(onSend).toHaveBeenCalledTimes(1);
+    const onStop = vi.fn();
+    rerender(ui("hi", true, onStop));
+    await userEvent.click(screen.getByRole("button", { name: "Stop" }));
+    expect(onStop).toHaveBeenCalled();
+    expect(screen.queryByRole("button", { name: "Send" })).not.toBeInTheDocument();
+  });
+
+  it("ChatInput: disabled", () => {
+    wrap(<ChatInput value="hello" onChange={() => undefined} onSend={() => undefined} label="Ask" disabled />, "hi");
+    expect(screen.getByRole("textbox", { name: "Ask" })).toBeDisabled();
+    expect(screen.getByRole("button", { name: "भेजें" })).toBeDisabled();
+  });
+});
+
+describe("social and palace", () => {
+  it("FriendRow: status in words, streak, radio selection", async () => {
+    const onPress = vi.fn();
+    wrap(
+      <>
+        <FriendRow name="Aarav" avatar={{ species: "dog" }} studiedToday streakDays={12} testID="a" />
+        <FriendRow name="Diya" avatar={{ species: "cat" }} studiedToday={false} selectable selected={false} onPress={onPress} />
+        <FriendRow name="Kabir" avatar={{ species: "cat" }} selectable disabled note="Not in JEE" />
+      </>,
+    );
+    expect(screen.getByTestId("a")).toHaveTextContent("Studied");
+    expect(screen.getByLabelText("12-day streak")).toBeInTheDocument();
+    const diya = screen.getByRole("radio", { name: /Diya/ });
+    expect(diya).toHaveAttribute("aria-checked", "false");
+    expect(diya).toHaveTextContent("Not yet");
+    await userEvent.click(diya);
+    expect(onPress).toHaveBeenCalled();
+    expect(screen.getByRole("radio", { name: /Kabir/ })).toBeDisabled();
+  });
+
+  it("LeagueTierBadge: names come from props, state in the label", () => {
+    wrap(
+      <>
+        <LeagueTierBadge name="Mango" crest="league-05-mango" state="current" />
+        <LeagueTierBadge name="Banyan" crest="league-10-banyan" state="future" size="sm" />
+      </>,
+    );
+    expect(screen.getByRole("img", { name: "Mango league crest, current tier" })).toHaveAttribute("data-state", "current");
+    expect(screen.getByRole("img", { name: "Banyan league crest, not reached yet" })).toBeInTheDocument();
+  });
+
+  it("DuelScoreBar: two rows with scores, solo and dropped", () => {
+    const you = { name: "You", avatar: { species: "cat" as const }, score: 30, answers: ["right", "wrong", "open"] as const };
+    const { rerender } = wrap(<DuelScoreBar count={5} you={{ ...you, answers: [...you.answers] }} opponent={{ name: "Diya", avatar: { species: "dog" }, score: 20, answers: ["answered", "answered"], dropped: true }} />);
+    expect(screen.getByRole("group", { name: "You: 30 points, 2 of 5 answered" })).toBeInTheDocument();
+    expect(screen.getByRole("group", { name: "Diya: 20 points, 2 of 5 answered" })).toHaveTextContent("Connection dropped");
+    rerender(
+      <UIProvider locale="en" assetBaseUrl="https://cdn.example/img/">
+        <DuelScoreBar count={5} you={{ ...you, answers: [...you.answers] }} />
+      </UIProvider>,
+    );
+    expect(screen.getByText("Practise solo · not ranked")).toBeInTheDocument();
+  });
+
+  it("SquadCard: progress label and press", async () => {
+    const onPress = vi.fn();
+    wrap(<SquadCard name="Tulsi Squad" crest="squad-crest-tulsi" done={240} target={400} daysLeft={3} onPress={onPress} />);
+    const card = screen.getByRole("button", { name: "Tulsi Squad, squad quest, 240 of 400" });
+    expect(card).toHaveTextContent("3 days left");
+    await userEvent.click(card);
+    expect(onPress).toHaveBeenCalled();
+  });
+
+  it("CheerButton: reaction counts once, message shows Sent", async () => {
+    const onPress = vi.fn();
+    const { rerender } = wrap(<CheerButton label="Clap" icon="HandsClapping" count={3} onPress={onPress} />);
+    const btn = screen.getByRole("button", { name: "Clap, 3" });
+    expect(btn).toHaveAttribute("aria-pressed", "false");
+    await userEvent.click(btn);
+    expect(onPress).toHaveBeenCalledTimes(1);
+    rerender(
+      <UIProvider locale="en" assetBaseUrl="https://cdn.example/img/">
+        <CheerButton label="Clap" icon="HandsClapping" count={4} sent onPress={onPress} />
+        <CheerButton kind="message" label="Great streak!" icon="Plant" sent onPress={onPress} />
+      </UIProvider>,
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Clap, 4" }));
+    expect(onPress).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("button", { name: /Great streak!/ })).toHaveTextContent("Sent!");
+  });
+
+  it("RoomCard: due marker and the two buttons", async () => {
+    const onWalk = vi.fn();
+    const onQuiz = vi.fn();
+    wrap(<RoomCard name="My home" image="palace-room-living" meta="4 rooms · 12 items" due onWalk={onWalk} onQuiz={onQuiz} />, "hi");
+    const card = screen.getByRole("article", { name: "My home" });
+    expect(card).toHaveTextContent("बाकी");
+    await userEvent.click(within(card).getByRole("button", { name: "सैर करें" }));
+    await userEvent.click(within(card).getByRole("button", { name: "मुझसे पूछें" }));
+    expect(onWalk).toHaveBeenCalled();
+    expect(onQuiz).toHaveBeenCalled();
+  });
+
+  it("LimitMeter: weekly wording", () => {
+    wrap(
+      <>
+        <LimitMeter label="Sectional mocks" used={1} limit={2} period="week" />
+        <LimitMeter label="Sectional mocks" used={2} limit={2} period="week" />
+      </>,
+    );
+    expect(screen.getByText("1 left this week")).toBeInTheDocument();
+    expect(screen.getByText("Done for this week.")).toBeInTheDocument();
   });
 });

@@ -87,6 +87,17 @@
     transform: translateY(100%);
   }
 }
+/* Tutor thinking dots: each dot fades up and down in turn. Static dots in reduced motion. */
+@keyframes sm-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+}
 
 /* Reduced motion: movement becomes fades, nothing loops (DESIGN.md §7.1). */
 @media (prefers-reduced-motion: reduce) {

@@ -504,6 +504,36 @@ async def _apply_update(
     return uuid.UUID(str(user_id))
 
 
+async def _billing_pushes(
+    session: AsyncSession, user_id: uuid.UUID, prior: Any, ent: Entitlement, event_id: str
+) -> None:
+    """The transactional billing pushes (me-money §6.3): Pro on after a pending payment or a
+    first purchase, a pending payment that failed, and the first grace day of a billing issue."""
+    from smriti_api.services import notify
+
+    was_active = bool(prior.active) if prior is not None else False
+    was_status = prior.status if prior is not None else None
+    if ent.active and ent.status in ("active", "trialing") and not was_active:
+        await notify.enqueue(
+            session, user_id=user_id, kind="pro_activated", dedupe_key=f"pro_activated:{event_id}"
+        )
+    elif ent.status == "grace" and was_status != "grace":
+        day = ent.grace_until.date().isoformat() if ent.grace_until else "na"
+        await notify.enqueue(
+            session,
+            user_id=user_id,
+            kind="billing_issue",
+            dedupe_key=f"billing_issue:{user_id}:{day}",
+        )
+    elif was_status == "pending" and not ent.active:
+        await notify.enqueue(
+            session,
+            user_id=user_id,
+            kind="payment_not_completed",
+            dedupe_key=f"payment_not_completed:{event_id}",
+        )
+
+
 async def handle_webhook(
     db: Database, integrations: Integrations, event: WebhookEvent
 ) -> WebhookOutcome:
@@ -540,9 +570,19 @@ async def handle_webhook(
                 users.append(uid)
         changed: list[tuple[uuid.UUID, str]] = []
         for uid in users:
+            prior = (
+                await session.execute(
+                    text(
+                        "select active, status from billing.entitlements"
+                        " where user_id = :u and entitlement = 'pro'"
+                    ),
+                    {"u": uid},
+                )
+            ).first()
             ent, did_change = await recompute_entitlement(session, uid, now)
             if did_change:
                 changed.append((uid, ent.status or ("active" if ent.active else "free")))
+                await _billing_pushes(session, uid, prior, ent, event.external_event_id)
         await session.execute(
             text(
                 "update billing.payment_events set processed_at = now(), user_id = coalesce(user_id, :u) where id = :id"

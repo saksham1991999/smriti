@@ -167,7 +167,6 @@ async def razorpay_webhook(request: Request, services: Services, ints: Ints) -> 
     except BillingError as exc:
         raise ApiError(400, exc.code, exc.detail) from exc
     outcome = await billing.handle_webhook(services.db, ints, event)
-    await billing_notify(services, outcome)
     return b.WebhookAck(status=outcome.status)
 
 
@@ -188,10 +187,4 @@ async def revenuecat_webhook(request: Request, services: Services, ints: Ints) -
         status = 400 if exc.code == "invalid_payload" else 503
         raise ApiError(status, exc.code, exc.detail) from exc
     outcome = await billing.handle_webhook(services.db, ints, event)
-    await billing_notify(services, outcome)
     return b.WebhookAck(status=outcome.status)
-
-
-async def billing_notify(services: Services, outcome: billing.WebhookOutcome) -> None:
-    """Hook for the transactional pushes (pro_activated, payment_not_completed, billing_issue)."""
-    return None

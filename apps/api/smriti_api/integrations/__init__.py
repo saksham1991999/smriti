@@ -32,6 +32,7 @@ from smriti_api.integrations.push import (
     ExpoPushSender,
     FakePushSender,
     PushSender,
+    WebPushSender,
 )
 from smriti_api.integrations.settings import IntegrationSettings, get_integration_settings
 from smriti_api.integrations.storage import LocalStorage, ObjectStorage, R2Storage
@@ -54,6 +55,9 @@ class Integrations:
     storage: ObjectStorage
     identity_pepper: str
     billing_configured: bool
+    # Web Push for the web app (VAPID). None when not configured outside local and test.
+    web_push: PushSender | None = None
+    web_push_public_key: str | None = None
 
 
 def _mailer(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> Mailer:
@@ -79,6 +83,19 @@ def _push(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> PushS
     if provider == "expo" or (not provider and not dev):
         return ExpoPushSender(http, url=cfg.expo_push_url, access_token=cfg.expo_access_token)
     return FakePushSender() if dev or provider == "fake" else DisabledPushSender()
+
+
+def _web_push(
+    cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool
+) -> tuple[PushSender | None, str | None]:
+    if cfg.web_push_vapid_private_key and cfg.web_push_vapid_subject:
+        sender = WebPushSender(
+            http, private_key=cfg.web_push_vapid_private_key, subject=cfg.web_push_vapid_subject
+        )
+        return sender, sender.public_key
+    if dev:
+        return FakePushSender(name="fake-web"), None
+    return None, None
 
 
 def _storage(
@@ -145,6 +162,7 @@ def build_integrations(
         revenuecat = FakeRevenueCatProvider(
             http, webhook_auth=DEV_REVENUECAT_WEBHOOK_AUTH if dev else ""
         )
+    web_push, web_push_key = _web_push(cfg, http, dev)
     return Integrations(
         settings=cfg,
         razorpay=razorpay,
@@ -154,4 +172,6 @@ def build_integrations(
         storage=_storage(cfg, settings, http),
         identity_pepper=cfg.auth_identity_hash_pepper or (DEV_IDENTITY_PEPPER if dev else ""),
         billing_configured=configured or dev,
+        web_push=web_push,
+        web_push_public_key=web_push_key,
     )

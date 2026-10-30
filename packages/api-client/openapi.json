@@ -1505,6 +1505,479 @@
         }
       }
     },
+    "/v1/guardian/consent-requests": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "Ask a guardian: a code and link (AUTH-19/21), optionally emailed",
+        "operationId": "create_request_v1_guardian_consent_requests_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ConsentRequestCreate" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ConsentRequestCreated" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consent": {
+      "get": {
+        "tags": ["guardian"],
+        "summary": "The caller's own consent: state, scopes, a pending request, when to ask again",
+        "operationId": "my_consent_v1_guardian_consent_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MyConsentOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consent-requests/{ref}": {
+      "get": {
+        "tags": ["guardian"],
+        "summary": "By id: the teen's poll (AUTH-21). By code: what the guardian reviews (AUTH-20)",
+        "operationId": "read_request_v1_guardian_consent_requests__ref__get",
+        "parameters": [
+          {
+            "name": "ref",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 6, "maxLength": 36, "title": "Ref" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    { "$ref": "#/components/schemas/ConsentRequestStatus" },
+                    { "$ref": "#/components/schemas/ConsentRequestForGuardian" }
+                  ],
+                  "title": "Response Read Request V1 Guardian Consent Requests  Ref  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consent-requests/{code}/confirm": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "The guardian agrees (AUTH-20 [I agree]): consent stored with its evidence",
+        "operationId": "confirm_v1_guardian_consent_requests__code__confirm_post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "pattern": "^[A-Za-z0-9]+$",
+              "title": "Code"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ConsentConfirm" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ConsentDecision" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consent-requests/{code}/decline": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "The guardian says no for now (AUTH-20 [No thanks])",
+        "operationId": "decline_v1_guardian_consent_requests__code__decline_post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "pattern": "^[A-Za-z0-9]+$",
+              "title": "Code"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ConsentDecision" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consents/{consent_id}/scopes/{scope}": {
+      "delete": {
+        "tags": ["guardian"],
+        "summary": "Withdraw one scope (SET-17); `account` withdraws the whole consent",
+        "operationId": "withdraw_scope_v1_guardian_consents__consent_id__scopes__scope__delete",
+        "parameters": [
+          {
+            "name": "consent_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Consent Id" }
+          },
+          {
+            "name": "scope",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "enum": ["account", "social", "community", "voice", "uploads"],
+              "type": "string",
+              "title": "Scope"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ConsentOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners": {
+      "get": {
+        "tags": ["guardian"],
+        "summary": "Teens and managed children linked to the calling guardian (SET-14)",
+        "operationId": "learners_v1_guardian_learners_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LearnersOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/devices": {
+      "post": {
+        "tags": ["notifications"],
+        "summary": "Register this device (X-Device-Id) with its Expo token or Web Push subscription",
+        "operationId": "register_device_v1_devices_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DeviceRegister" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DeviceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/devices/{device_id}": {
+      "delete": {
+        "tags": ["notifications"],
+        "summary": "Stop pushes to a device (sign-out on it)",
+        "operationId": "forget_device_v1_devices__device_id__delete",
+        "parameters": [
+          {
+            "name": "device_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Device Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/web-push-key": {
+      "get": {
+        "tags": ["notifications"],
+        "summary": "The VAPID application server key for pushManager.subscribe (null when off)",
+        "operationId": "web_push_key_v1_notifications_web_push_key_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/WebPushKey" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/notification-prefs": {
+      "get": {
+        "tags": ["notifications"],
+        "summary": "Reminder, quiet hours and per-kind switches (SET-03 to SET-05)",
+        "operationId": "get_prefs_v1_notification_prefs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/NotificationPrefs" } }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["notifications"],
+        "summary": "Change notification settings; adult-only switches are refused for minors",
+        "operationId": "patch_prefs_v1_notification_prefs_patch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NotificationPrefsPatch" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/NotificationPrefs" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/notifications/opened": {
+      "post": {
+        "tags": ["notifications"],
+        "summary": "An app open or a tapped push: resets the ignored count and auto-pause (R34)",
+        "operationId": "opened_v1_notifications_opened_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/NotificationOpened" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -1702,6 +2175,228 @@
         ],
         "title": "ConfigResponse"
       },
+      "ConsentConfirm": {
+        "properties": {
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes"
+          },
+          "declaration": { "type": "boolean", "const": true, "title": "Declaration" },
+          "notice_version": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "title": "Notice Version"
+          },
+          "method": {
+            "type": "string",
+            "enum": ["google_same_device", "google_own_device"],
+            "title": "Method"
+          },
+          "app_version": {
+            "anyOf": [{ "type": "string", "maxLength": 40 }, { "type": "null" }],
+            "title": "App Version"
+          },
+          "platform": {
+            "anyOf": [{ "type": "string", "enum": ["ios", "android", "web"] }, { "type": "null" }],
+            "title": "Platform"
+          }
+        },
+        "type": "object",
+        "required": ["scopes", "declaration", "notice_version", "method"],
+        "title": "ConsentConfirm"
+      },
+      "ConsentDecision": {
+        "properties": {
+          "request_id": { "type": "string", "format": "uuid", "title": "Request Id" },
+          "status": { "type": "string", "enum": ["granted", "declined"], "title": "Status" },
+          "consent": {
+            "anyOf": [{ "$ref": "#/components/schemas/ConsentOut" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": ["request_id", "status", "consent"],
+        "title": "ConsentDecision"
+      },
+      "ConsentOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "learner_user_id": { "type": "string", "format": "uuid", "title": "Learner User Id" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "method": { "type": "string", "title": "Method" },
+          "age_assurance": { "type": "string", "title": "Age Assurance" },
+          "notice_version": { "type": "string", "title": "Notice Version" },
+          "consented_at": { "type": "string", "format": "date-time", "title": "Consented At" },
+          "revoked_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Revoked At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "learner_user_id",
+          "scopes",
+          "method",
+          "age_assurance",
+          "notice_version",
+          "consented_at",
+          "revoked_at"
+        ],
+        "title": "ConsentOut"
+      },
+      "ConsentRequestCreate": {
+        "properties": {
+          "channel": { "type": "string", "enum": ["handoff", "link"], "title": "Channel" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes"
+          },
+          "guardian_email": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 254,
+                "minLength": 3,
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+              },
+              { "type": "null" }
+            ],
+            "title": "Guardian Email"
+          },
+          "locale": { "type": "string", "enum": ["en", "hi"], "title": "Locale", "default": "en" }
+        },
+        "type": "object",
+        "required": ["channel", "scopes"],
+        "title": "ConsentRequestCreate"
+      },
+      "ConsentRequestCreated": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "code": { "type": "string", "title": "Code" },
+          "link": { "type": "string", "title": "Link" },
+          "channel": { "type": "string", "enum": ["handoff", "link"], "title": "Channel" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" },
+          "email_sent": { "type": "boolean", "title": "Email Sent" }
+        },
+        "type": "object",
+        "required": ["id", "code", "link", "channel", "scopes", "expires_at", "email_sent"],
+        "title": "ConsentRequestCreated"
+      },
+      "ConsentRequestForGuardian": {
+        "properties": {
+          "request_id": { "type": "string", "format": "uuid", "title": "Request Id" },
+          "learner_first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Learner First Name"
+          },
+          "pet_name": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Pet Name" },
+          "pet_species": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Pet Species"
+          },
+          "app_variant": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "App Variant"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": [
+          "request_id",
+          "learner_first_name",
+          "pet_name",
+          "pet_species",
+          "app_variant",
+          "scopes",
+          "expires_at"
+        ],
+        "title": "ConsentRequestForGuardian",
+        "description": "What AUTH-20 shows the guardian: no more than the screen needs (DB_SCHEMA §12)."
+      },
+      "ConsentRequestStatus": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "granted", "declined", "expired", "cancelled"],
+            "title": "Status"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "granted_scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Granted Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" },
+          "resolved_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Resolved At"
+          },
+          "retry_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Retry At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "scopes",
+          "granted_scopes",
+          "expires_at",
+          "resolved_at",
+          "retry_at"
+        ],
+        "title": "ConsentRequestStatus",
+        "description": "The teen's poll while AUTH-21 is open (every 5 s), and AUTH-23's data."
+      },
       "DeletionResponse": {
         "properties": {
           "scheduled_for": {
@@ -1779,6 +2474,66 @@
         "type": "object",
         "required": ["id", "is_anonymous"],
         "title": "DevUser"
+      },
+      "DeviceOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "platform": { "type": "string", "enum": ["ios", "android", "web"], "title": "Platform" },
+          "push_enabled": { "type": "boolean", "title": "Push Enabled" },
+          "notif_permission": {
+            "type": "string",
+            "enum": ["not_asked", "granted", "denied", "provisional", "not_required"],
+            "title": "Notif Permission"
+          },
+          "has_push_token": { "type": "boolean", "title": "Has Push Token" },
+          "has_web_push": { "type": "boolean", "title": "Has Web Push" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "platform",
+          "push_enabled",
+          "notif_permission",
+          "has_push_token",
+          "has_web_push"
+        ],
+        "title": "DeviceOut"
+      },
+      "DeviceRegister": {
+        "properties": {
+          "platform": { "type": "string", "enum": ["ios", "android", "web"], "title": "Platform" },
+          "app_version": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "App Version"
+          },
+          "push_token": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 10 }, { "type": "null" }],
+            "title": "Push Token"
+          },
+          "web_push_subscription": {
+            "anyOf": [{ "$ref": "#/components/schemas/WebPushSubscription" }, { "type": "null" }]
+          },
+          "notif_permission": {
+            "type": "string",
+            "enum": ["not_asked", "granted", "denied", "provisional", "not_required"],
+            "title": "Notif Permission",
+            "default": "not_asked"
+          },
+          "push_enabled": { "type": "boolean", "title": "Push Enabled", "default": true },
+          "timezone": {
+            "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+            "title": "Timezone"
+          },
+          "locale": {
+            "anyOf": [{ "type": "string", "enum": ["en", "hi"] }, { "type": "null" }],
+            "title": "Locale"
+          }
+        },
+        "type": "object",
+        "required": ["platform", "app_version"],
+        "title": "DeviceRegister"
       },
       "EntitlementOut": {
         "properties": {
@@ -1999,6 +2754,36 @@
         "required": ["eligible", "eligible_hint", "reason", "intro_price_paise", "price_paise"],
         "title": "IntroEligibilityOut"
       },
+      "LearnerOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name"
+          },
+          "age_band": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Age Band" },
+          "kind": { "type": "string", "enum": ["managed", "consent"], "title": "Kind" },
+          "linked_at": { "type": "string", "format": "date-time", "title": "Linked At" },
+          "consent": {
+            "anyOf": [{ "$ref": "#/components/schemas/ConsentOut" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": ["user_id", "first_name", "age_band", "kind", "linked_at", "consent"],
+        "title": "LearnerOut"
+      },
+      "LearnersOut": {
+        "properties": {
+          "learners": {
+            "items": { "$ref": "#/components/schemas/LearnerOut" },
+            "type": "array",
+            "title": "Learners"
+          }
+        },
+        "type": "object",
+        "required": ["learners"],
+        "title": "LearnersOut"
+      },
       "LinkedRequest": {
         "properties": {
           "referral_code": {
@@ -2213,6 +2998,202 @@
           "finished_at"
         ],
         "title": "MergeStatus"
+      },
+      "MyConsentOut": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": ["not_required", "required", "pending", "granted", "declined", "revoked"],
+            "title": "State"
+          },
+          "age_band": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Age Band" },
+          "needs_consent": { "type": "boolean", "title": "Needs Consent" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "consent_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Consent Id"
+          },
+          "consented_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Consented At"
+          },
+          "pending_request_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Pending Request Id"
+          },
+          "retry_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Retry At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "state",
+          "age_band",
+          "needs_consent",
+          "scopes",
+          "consent_id",
+          "consented_at",
+          "pending_request_id",
+          "retry_at"
+        ],
+        "title": "MyConsentOut"
+      },
+      "NotificationOpened": {
+        "properties": {
+          "id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "title": "NotificationOpened"
+      },
+      "NotificationPrefs": {
+        "properties": {
+          "reminder_enabled": { "type": "boolean", "title": "Reminder Enabled" },
+          "daily_reminder_at": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Daily Reminder At"
+          },
+          "smart_timing": { "type": "boolean", "title": "Smart Timing" },
+          "streak_saver": { "type": "boolean", "title": "Streak Saver" },
+          "pet_plant_nudges": { "type": "boolean", "title": "Pet Plant Nudges" },
+          "review_due": { "type": "boolean", "title": "Review Due" },
+          "weak_area_alerts": { "type": "boolean", "title": "Weak Area Alerts" },
+          "daily_challenge": { "type": "boolean", "title": "Daily Challenge" },
+          "sleep_review": { "type": "boolean", "title": "Sleep Review" },
+          "bedtime_review_time": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Bedtime Review Time"
+          },
+          "focus_timer": { "type": "boolean", "title": "Focus Timer" },
+          "friends": { "type": "boolean", "title": "Friends" },
+          "exam_alerts": { "type": "boolean", "title": "Exam Alerts" },
+          "news": { "type": "boolean", "title": "News" },
+          "email_reminders": { "type": "boolean", "title": "Email Reminders" },
+          "quiet_start": { "type": "string", "format": "time", "title": "Quiet Start" },
+          "quiet_end": { "type": "string", "format": "time", "title": "Quiet End" },
+          "school_hours": { "type": "boolean", "title": "School Hours" },
+          "focus_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Focus Until"
+          },
+          "paused": { "type": "boolean", "title": "Paused" },
+          "adult_only": { "items": { "type": "string" }, "type": "array", "title": "Adult Only" }
+        },
+        "type": "object",
+        "required": [
+          "reminder_enabled",
+          "daily_reminder_at",
+          "smart_timing",
+          "streak_saver",
+          "pet_plant_nudges",
+          "review_due",
+          "weak_area_alerts",
+          "daily_challenge",
+          "sleep_review",
+          "bedtime_review_time",
+          "focus_timer",
+          "friends",
+          "exam_alerts",
+          "news",
+          "email_reminders",
+          "quiet_start",
+          "quiet_end",
+          "school_hours",
+          "focus_until",
+          "paused",
+          "adult_only"
+        ],
+        "title": "NotificationPrefs"
+      },
+      "NotificationPrefsPatch": {
+        "properties": {
+          "reminder_enabled": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Reminder Enabled"
+          },
+          "daily_reminder_at": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Daily Reminder At"
+          },
+          "smart_timing": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Smart Timing"
+          },
+          "streak_saver": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Streak Saver"
+          },
+          "pet_plant_nudges": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Pet Plant Nudges"
+          },
+          "review_due": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Review Due"
+          },
+          "weak_area_alerts": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Weak Area Alerts"
+          },
+          "daily_challenge": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Daily Challenge"
+          },
+          "sleep_review": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Sleep Review"
+          },
+          "bedtime_review_time": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Bedtime Review Time"
+          },
+          "focus_timer": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Focus Timer"
+          },
+          "friends": { "anyOf": [{ "type": "boolean" }, { "type": "null" }], "title": "Friends" },
+          "exam_alerts": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Exam Alerts"
+          },
+          "news": { "anyOf": [{ "type": "boolean" }, { "type": "null" }], "title": "News" },
+          "email_reminders": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Email Reminders"
+          },
+          "quiet_start": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Quiet Start"
+          },
+          "quiet_end": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Quiet End"
+          },
+          "school_hours": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "School Hours"
+          },
+          "focus_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Focus Until"
+          },
+          "paused": {
+            "anyOf": [{ "type": "boolean", "const": false }, { "type": "null" }],
+            "title": "Paused"
+          }
+        },
+        "type": "object",
+        "title": "NotificationPrefsPatch"
       },
       "Page_GemLedgerEntry_": {
         "properties": {
@@ -3073,6 +4054,53 @@
         "type": "object",
         "required": ["xp_total", "xp_today", "gems"],
         "title": "WalletState"
+      },
+      "WebPushKey": {
+        "properties": {
+          "public_key": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Public Key"
+          }
+        },
+        "type": "object",
+        "required": ["public_key"],
+        "title": "WebPushKey"
+      },
+      "WebPushKeys": {
+        "properties": {
+          "p256dh": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 20,
+            "pattern": "^[A-Za-z0-9_-]+=*$",
+            "title": "P256Dh"
+          },
+          "auth": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 8,
+            "pattern": "^[A-Za-z0-9_-]+=*$",
+            "title": "Auth"
+          }
+        },
+        "type": "object",
+        "required": ["p256dh", "auth"],
+        "title": "WebPushKeys"
+      },
+      "WebPushSubscription": {
+        "properties": {
+          "endpoint": {
+            "type": "string",
+            "maxLength": 2083,
+            "minLength": 1,
+            "format": "uri",
+            "title": "Endpoint"
+          },
+          "keys": { "$ref": "#/components/schemas/WebPushKeys" }
+        },
+        "type": "object",
+        "required": ["endpoint", "keys"],
+        "title": "WebPushSubscription"
       },
       "WebhookAck": {
         "properties": {

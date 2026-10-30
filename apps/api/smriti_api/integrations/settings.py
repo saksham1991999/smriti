@@ -52,6 +52,9 @@ class IntegrationSettings(BaseSettings):
     push_provider: str = ""
     expo_push_url: str = "https://exp.host/--/api/v2/push/send"
     expo_access_token: str = ""
+    # Web Push (VAPID, RFC 8292): the private key (PEM or raw base64url) and a mailto: or https: contact.
+    web_push_vapid_private_key: str = ""
+    web_push_vapid_subject: str = ""
 
     # Files: r2 | local (TRD §8 buckets)
     storage_provider: str = ""

@@ -8,12 +8,23 @@ messages for local and test. Message data carries ids and deep links only, never
 from __future__ import annotations
 
 import asyncio
+import base64
+import json
+import os
+import struct
+import time
 from collections.abc import Sequence
 from dataclasses import dataclass, field
 from typing import Any, Literal, Protocol
+from urllib.parse import urlsplit
 
 import httpx
+import jwt
 import structlog
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
 log = structlog.get_logger(__name__)
 
@@ -154,3 +165,130 @@ class DisabledPushSender:
 
     async def send(self, messages: Sequence[PushMessage]) -> list[PushTicket]:
         return [PushTicket(m.token, False, error="push_not_configured") for m in messages]
+
+
+# --- Web Push (the web app; me-money §6.1) --------------------------------------------------------
+
+
+def _b64u_decode(value: str) -> bytes:
+    return base64.urlsafe_b64decode(value + "=" * (-len(value) % 4))
+
+
+def _b64u(data: bytes) -> str:
+    return base64.urlsafe_b64encode(data).rstrip(b"=").decode()
+
+
+def encrypt_aes128gcm(payload: bytes, p256dh: str, auth: str, *, record_size: int = 4096) -> bytes:
+    """Web Push message encryption (RFC 8291) with the aes128gcm content coding (RFC 8188)."""
+    ua_public = _b64u_decode(p256dh)
+    auth_secret = _b64u_decode(auth)
+    ua_key = ec.EllipticCurvePublicKey.from_encoded_point(ec.SECP256R1(), ua_public)
+    as_private = ec.generate_private_key(ec.SECP256R1())
+    as_public = as_private.public_key().public_bytes(
+        serialization.Encoding.X962, serialization.PublicFormat.UncompressedPoint
+    )
+    ecdh_secret = as_private.exchange(ec.ECDH(), ua_key)
+    ikm = HKDF(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=auth_secret,
+        info=b"WebPush: info\x00" + ua_public + as_public,
+    ).derive(ecdh_secret)
+    salt = os.urandom(16)
+    cek = HKDF(
+        algorithm=hashes.SHA256(), length=16, salt=salt, info=b"Content-Encoding: aes128gcm\x00"
+    ).derive(ikm)
+    nonce = HKDF(
+        algorithm=hashes.SHA256(), length=12, salt=salt, info=b"Content-Encoding: nonce\x00"
+    ).derive(ikm)
+    # One record: the payload, then the 0x02 "last record" delimiter.
+    ciphertext = AESGCM(cek).encrypt(nonce, payload + b"\x02", None)
+    header = salt + struct.pack("!I", record_size) + bytes([len(as_public)]) + as_public
+    return header + ciphertext
+
+
+def vapid_private_key(value: str) -> ec.EllipticCurvePrivateKey:
+    """Accepts a PEM key or the raw 32-byte private scalar in base64url (the usual VAPID export)."""
+    if "BEGIN" in value:
+        key = serialization.load_pem_private_key(value.encode(), password=None)
+        if not isinstance(key, ec.EllipticCurvePrivateKey):
+            raise ValueError("VAPID key must be an EC P-256 key")
+        return key
+    return ec.derive_private_key(int.from_bytes(_b64u_decode(value), "big"), ec.SECP256R1())
+
+
+class WebPushSender:
+    """Sends to Web Push subscriptions (``PushMessage.token`` is the subscription JSON:
+    ``{"endpoint", "keys": {"p256dh", "auth"}}``) with VAPID (RFC 8292). A 404 or 410 from the push
+    service means the subscription is gone, reported as ``DeviceNotRegistered`` like Expo."""
+
+    name = "webpush"
+
+    def __init__(
+        self,
+        http: httpx.AsyncClient,
+        *,
+        private_key: str,
+        subject: str,
+        ttl_s: int = 6 * 3600,
+    ) -> None:
+        self._http = http
+        self._key = vapid_private_key(private_key)
+        self._public = _b64u(
+            self._key.public_key().public_bytes(
+                serialization.Encoding.X962, serialization.PublicFormat.UncompressedPoint
+            )
+        )
+        self._subject = subject
+        self._ttl = ttl_s
+
+    @property
+    def public_key(self) -> str:
+        """The application server key the web app passes to ``pushManager.subscribe``."""
+        return self._public
+
+    def _vapid(self, endpoint: str) -> str:
+        parts = urlsplit(endpoint)
+        claims = {
+            "aud": f"{parts.scheme}://{parts.netloc}",
+            "exp": int(time.time()) + 12 * 3600,
+            "sub": self._subject,
+        }
+        token = jwt.encode(claims, self._key, algorithm="ES256")
+        return f"vapid t={token}, k={self._public}"
+
+    async def _send_one(self, m: PushMessage) -> PushTicket:
+        try:
+            sub = json.loads(m.token)
+            endpoint = str(sub["endpoint"])
+            keys = sub["keys"]
+            body = encrypt_aes128gcm(
+                json.dumps(
+                    {"title": m.title, "body": m.body, "data": m.data}, separators=(",", ":")
+                ).encode(),
+                str(keys["p256dh"]),
+                str(keys["auth"]),
+            )
+        except (ValueError, KeyError, TypeError):
+            return PushTicket(m.token, False, error="DeviceNotRegistered")
+        headers = {
+            "Authorization": self._vapid(endpoint),
+            "Content-Encoding": "aes128gcm",
+            "Content-Type": "application/octet-stream",
+            "TTL": str(m.ttl_s if m.ttl_s is not None else self._ttl),
+            "Urgency": "high" if m.priority == "high" else "normal",
+        }
+        try:
+            r = await self._http.post(endpoint, content=body, headers=headers, timeout=30)
+        except httpx.HTTPError as exc:
+            log.warning("push_failed", provider="webpush", reason=type(exc).__name__)
+            return PushTicket(m.token, False, error="transport")
+        if r.status_code in (404, 410):
+            return PushTicket(m.token, False, error="DeviceNotRegistered")
+        if r.status_code >= 400:
+            log.warning("push_failed", provider="webpush", status=r.status_code)
+            return PushTicket(m.token, False, error=f"http_{r.status_code}")
+        return PushTicket(m.token, True, ticket_id=r.headers.get("location"))
+
+    async def send(self, messages: Sequence[PushMessage]) -> list[PushTicket]:
+        return list(await asyncio.gather(*(self._send_one(m) for m in messages)))

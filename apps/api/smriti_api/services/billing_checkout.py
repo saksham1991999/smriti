@@ -115,17 +115,40 @@ async def start_razorpay(
         elig = await billing.intro_eligibility(
             session, auth.user_id, is_anonymous=False, pepper=integrations.identity_pepper
         )
-        intro = bool(elig.eligible)
-        product_id = "pro_monthly_intro_web" if intro else "pro_monthly_web"
+        # The ₹1 intro is for the monthly plan only (PRD §11.2).
+        intro = bool(elig.eligible) and body.plan == "monthly"
+        if body.plan == "monthly":
+            product_id = "pro_monthly_intro_web" if intro else "pro_monthly_web"
+        elif body.plan == "yearly":
+            product_id = "pro_yearly_web"
+        else:
+            product_id = f"{body.plan}_web"
         product = (
             await session.execute(
-                text("select price_paise, intro_price_paise from billing.products where id = :p"),
+                text(
+                    "select price_paise, intro_price_paise, period, plan from billing.products"
+                    " where id = :p and active"
+                ),
                 {"p": product_id},
             )
-        ).one()
+        ).one_or_none()
+        if product is None:
+            raise ApiError(404, "plan_unavailable", "This plan isn't offered")
+        price = product.price_paise
+        if product.plan == "family":
+            if buyer is not None and buyer.age_band != "18p":
+                raise ApiError(403, "guardian_required", "A grown-up buys the family plan")
+            offer = billing.family_offer(await flag_service.server_flags(session))
+            price = offer.price_for(product.period) if offer else None
+            if price is None:
+                raise ApiError(404, "plan_unavailable", "This plan isn't offered")
     try:
         sub = await integrations.razorpay.create_subscription(
-            user_id=auth.user_id, intro=intro, notes={"variant": variant or "web"}
+            user_id=auth.user_id,
+            intro=intro,
+            notes={"variant": variant or "web", "product": product_id},
+            product_id=product_id,
+            period=str(product.period),
         )
     except BillingError as exc:
         raise _provider_error(exc) from exc
@@ -148,14 +171,14 @@ async def start_razorpay(
                 "v": variant,
             },
         )
-    log.info("razorpay_subscription_created", intro=intro)
+    log.info("razorpay_subscription_created", intro=intro, plan=body.plan)
     return b.RazorpaySubscriptionOut(
         subscription_id=str(sub["id"]),
         key_id=integrations.razorpay.key_id,
         product_id=product_id,
         intro=intro,
-        amount_today_paise=int(product.intro_price_paise if intro else product.price_paise),
-        then_paise=int(product.price_paise),
+        amount_today_paise=int(product.intro_price_paise if intro else price),
+        then_paise=int(price),
         short_url=sub.get("short_url"),
     )
 
@@ -238,14 +261,17 @@ async def details(db: Database, user_id: uuid.UUID) -> b.SubscriptionDetailsOut:
                 await session.execute(
                     text(
                         """
-                        select s.*, p.price_paise, p.intro_price_paise
+                        select s.*, p.price_paise, p.intro_price_paise, p.period, p.plan
                           from billing.subscriptions s join billing.products p on p.id = s.product_id
-                         where s.id = :id
+                         where s.id = :id and s.user_id = :u
                         """
                     ),
-                    {"id": ent.subscription_id},
+                    # A family member's Pro comes from the payer's subscription, which only the
+                    # payer manages.
+                    {"id": ent.subscription_id, "u": user_id},
                 )
             ).first()
+        offer = billing.family_offer(await flag_service.server_flags(session))
         promo = (
             await session.execute(
                 text(
@@ -258,12 +284,16 @@ async def details(db: Database, user_id: uuid.UUID) -> b.SubscriptionDetailsOut:
     sub = None
     if row is not None:
         ending = bool(row.cancel_at_period_end) or row.status == "cancelled"
+        price = row.price_paise
+        if price is None and offer is not None:
+            price = offer.price_for(str(row.period))
+        price = price or 0
         sub = b.SubscriptionOut(
             id=row.id,
             source=row.source,
             status=row.status,
             product_id=row.product_id,
-            price_paise=int(row.price_paise),
+            price_paise=int(price),
             intro_price_paise=row.intro_price_paise,
             is_intro=bool(row.is_intro),
             payer=row.payer,
@@ -272,7 +302,7 @@ async def details(db: Database, user_id: uuid.UUID) -> b.SubscriptionDetailsOut:
             cancel_at_period_end=ending,
             next_charge_at=None if ending else row.current_period_end,
             # After the ₹1 month the plan renews at the full price (R33 timeline).
-            next_charge_paise=None if ending else int(row.price_paise),
+            next_charge_paise=None if ending else int(price),
             ends_at=row.current_period_end if ending else None,
             managed_in={"razorpay": "web", "play": "play", "app_store": "app_store"}.get(
                 row.source, "none"

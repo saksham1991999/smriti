@@ -3750,6 +3750,174 @@
         }
       }
     },
+    "/v1/billing/family": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "The family plan: seats, members and open invites (the payer), or membership",
+        "operationId": "family_v1_billing_family_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/members": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "The payer adds a child they are the linked guardian of",
+        "operationId": "family_add_child_v1_billing_family_members_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/FamilyAddChild" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/members/{user_id}": {
+      "delete": {
+        "tags": ["billing"],
+        "summary": "The payer removes someone, or a member leaves",
+        "operationId": "family_remove_v1_billing_family_members__user_id__delete",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/invites": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "A code an adult uses to join (shown once; only its hash is kept)",
+        "operationId": "family_invite_v1_billing_family_invites_post",
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyInviteOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/invites/{invite_id}": {
+      "delete": {
+        "tags": ["billing"],
+        "summary": "Withdraw an unused invite",
+        "operationId": "family_revoke_invite_v1_billing_family_invites__invite_id__delete",
+        "parameters": [
+          {
+            "name": "invite_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Invite Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/invites/{code}/accept": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "An adult joins a family plan with a code (children join through Parent mode)",
+        "operationId": "family_accept_v1_billing_family_invites__code__accept_post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "pattern": "^[A-Za-z0-9]+$",
+              "title": "Code"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/guardian/consent-requests": {
       "post": {
         "tags": ["guardian"],
@@ -6950,6 +7118,300 @@
         }
       }
     },
+    "/v1/guardian/dashboard": {
+      "get": {
+        "tags": ["parent"],
+        "summary": "SET-14 child cards: pet, minutes this week, streak, practice line, Needs you",
+        "operationId": "dashboard_v1_guardian_dashboard_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Dashboard" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/report": {
+      "get": {
+        "tags": ["parent"],
+        "summary": "SET-15 weekly report (counts and topic names only); week is any day in that week",
+        "operationId": "report_v1_guardian_learners__learner_id__report_get",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "week",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+              "title": "Week"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/WeekReport" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/controls": {
+      "get": {
+        "tags": ["parent"],
+        "summary": "SET-14 and SET-16 settings for one child",
+        "operationId": "get_controls_v1_guardian_learners__learner_id__controls_get",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ControlsOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["parent"],
+        "summary": "Set time limits, allowed hours, tutor, social, Picture rhymes and the weekly report",
+        "operationId": "put_controls_v1_guardian_learners__learner_id__controls_put",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/Controls" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ControlsOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/time-requests/{request_id}/decision": {
+      "post": {
+        "tags": ["parent"],
+        "summary": "SET-14 [Allow 15 min] or [Not today] on a child's SET-19 ask",
+        "operationId": "decide_time_v1_guardian_time_requests__request_id__decision_post",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/Decision" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/TimeRequestOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/friends": {
+      "get": {
+        "tags": ["parent"],
+        "summary": "The child's friends, as the child sees them (tutor-social B13)",
+        "operationId": "friends_v1_guardian_learners__learner_id__friends_get",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ParentFriend" },
+                  "title": "Response Friends V1 Guardian Learners  Learner Id  Friends Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/friends/{friend_id}": {
+      "delete": {
+        "tags": ["parent"],
+        "summary": "Remove a friend for the child (silent, like the child's own Remove)",
+        "operationId": "remove_friend_v1_guardian_learners__learner_id__friends__friend_id__delete",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "friend_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Friend Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/limits": {
+      "get": {
+        "tags": ["parent"],
+        "summary": "The child's own limits for today, cached by the device to enforce SET-16 offline",
+        "operationId": "my_limits_v1_me_limits_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MyLimits" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/time-requests": {
+      "post": {
+        "tags": ["parent"],
+        "summary": "SET-19 [Ask for 15 more minutes]: pushes every linked guardian",
+        "operationId": "ask_for_time_v1_me_time_requests_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/TimeRequestOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -7786,6 +8248,60 @@
         "required": ["correct", "partial", "response"],
         "title": "CheckOut"
       },
+      "ChildCard": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name"
+          },
+          "age_band": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Age Band" },
+          "kind": { "type": "string", "enum": ["managed", "consent"], "title": "Kind" },
+          "pet": { "anyOf": [{ "$ref": "#/components/schemas/PetOut" }, { "type": "null" }] },
+          "week_minutes": { "type": "integer", "title": "Week Minutes" },
+          "streak": { "type": "integer", "title": "Streak" },
+          "practice_questions": { "type": "integer", "title": "Practice Questions" },
+          "last_mock": {
+            "anyOf": [{ "$ref": "#/components/schemas/LastMock" }, { "type": "null" }]
+          },
+          "is_pro": { "type": "boolean", "title": "Is Pro", "default": false },
+          "needs_you": { "type": "boolean", "title": "Needs You" },
+          "time_requests": {
+            "items": { "$ref": "#/components/schemas/TimeRequestOut" },
+            "type": "array",
+            "title": "Time Requests"
+          },
+          "consent_pending": { "type": "boolean", "title": "Consent Pending", "default": false }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "first_name",
+          "age_band",
+          "kind",
+          "week_minutes",
+          "streak",
+          "practice_questions",
+          "needs_you"
+        ],
+        "title": "ChildCard",
+        "description": "SET-14: pet, name, this week's minutes, streak, the practice line and \"Needs you\"."
+      },
+      "ComingUp": {
+        "properties": {
+          "kind": { "type": "string", "const": "mock", "title": "Kind" },
+          "mock_id": { "type": "string", "title": "Mock Id" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "starts_at": { "type": "string", "format": "date-time", "title": "Starts At" }
+        },
+        "type": "object",
+        "required": ["kind", "mock_id", "title", "starts_at"],
+        "title": "ComingUp"
+      },
       "ConceptRow": {
         "properties": {
           "concept_id": { "type": "string", "title": "Concept Id" },
@@ -8164,6 +8680,71 @@
         "title": "ContextOut",
         "description": "What the tutor can see, for the context chip (tutor-social §A5 step 1)."
       },
+      "Controls": {
+        "properties": {
+          "daily_limit_min": {
+            "anyOf": [{ "type": "integer", "enum": [15, 30, 45, 60, 90, 120] }, { "type": "null" }],
+            "title": "Daily Limit Min"
+          },
+          "allowed_from": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Allowed From"
+          },
+          "allowed_to": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Allowed To"
+          },
+          "break_reminders": { "type": "boolean", "title": "Break Reminders", "default": false },
+          "ask_before_switching": {
+            "type": "boolean",
+            "title": "Ask Before Switching",
+            "default": false
+          },
+          "tutor_button": { "type": "boolean", "title": "Tutor Button", "default": false },
+          "picture_rhymes": { "type": "boolean", "title": "Picture Rhymes", "default": false },
+          "tutor_enabled": { "type": "boolean", "title": "Tutor Enabled", "default": true },
+          "social_enabled": { "type": "boolean", "title": "Social Enabled", "default": true },
+          "weekly_report": { "type": "boolean", "title": "Weekly Report", "default": true }
+        },
+        "type": "object",
+        "title": "Controls",
+        "description": "SET-14 and SET-16 for one child. ``weekly_report`` is the calling guardian's own switch."
+      },
+      "ControlsOut": {
+        "properties": {
+          "daily_limit_min": {
+            "anyOf": [{ "type": "integer", "enum": [15, 30, 45, 60, 90, 120] }, { "type": "null" }],
+            "title": "Daily Limit Min"
+          },
+          "allowed_from": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Allowed From"
+          },
+          "allowed_to": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Allowed To"
+          },
+          "break_reminders": { "type": "boolean", "title": "Break Reminders", "default": false },
+          "ask_before_switching": {
+            "type": "boolean",
+            "title": "Ask Before Switching",
+            "default": false
+          },
+          "tutor_button": { "type": "boolean", "title": "Tutor Button", "default": false },
+          "picture_rhymes": { "type": "boolean", "title": "Picture Rhymes", "default": false },
+          "tutor_enabled": { "type": "boolean", "title": "Tutor Enabled", "default": true },
+          "social_enabled": { "type": "boolean", "title": "Social Enabled", "default": true },
+          "weekly_report": { "type": "boolean", "title": "Weekly Report", "default": true },
+          "learner_user_id": { "type": "string", "format": "uuid", "title": "Learner User Id" },
+          "updated_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": ["learner_user_id"],
+        "title": "ControlsOut"
+      },
       "CopiedCard": {
         "properties": {
           "id": { "type": "string", "format": "uuid", "title": "Id" },
@@ -8315,6 +8896,33 @@
         "type": "object",
         "required": ["challenge_id", "players", "ranked", "min_players_for_rank", "rows", "you"],
         "title": "DailyLeaderboard"
+      },
+      "Dashboard": {
+        "properties": {
+          "learners": {
+            "items": { "$ref": "#/components/schemas/ChildCard" },
+            "type": "array",
+            "title": "Learners"
+          }
+        },
+        "type": "object",
+        "required": ["learners"],
+        "title": "Dashboard"
+      },
+      "DayMinutes": {
+        "properties": {
+          "day": { "type": "string", "format": "date", "title": "Day" },
+          "minutes": { "type": "integer", "title": "Minutes" }
+        },
+        "type": "object",
+        "required": ["day", "minutes"],
+        "title": "DayMinutes"
+      },
+      "Decision": {
+        "properties": { "allow": { "type": "boolean", "title": "Allow" } },
+        "type": "object",
+        "required": ["allow"],
+        "title": "Decision"
       },
       "DeckCopy": {
         "properties": {
@@ -8879,7 +9487,7 @@
           },
           "source": {
             "anyOf": [
-              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo"] },
+              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo", "family"] },
               { "type": "null" }
             ],
             "title": "Source"
@@ -8940,7 +9548,7 @@
           "is_intro": { "type": "boolean", "title": "Is Intro", "default": false },
           "source": {
             "anyOf": [
-              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo"] },
+              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo", "family"] },
               { "type": "null" }
             ],
             "title": "Source"
@@ -9072,6 +9680,60 @@
           "url"
         ],
         "title": "ExportOut"
+      },
+      "FamilyAddChild": {
+        "properties": {
+          "learner_id": { "type": "string", "format": "uuid", "title": "Learner Id" }
+        },
+        "type": "object",
+        "required": ["learner_id"],
+        "title": "FamilyAddChild"
+      },
+      "FamilyInviteOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "code": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Code" }
+        },
+        "type": "object",
+        "required": ["id", "created_at"],
+        "title": "FamilyInviteOut"
+      },
+      "FamilyMemberOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name"
+          },
+          "via": { "type": "string", "enum": ["guardian_link", "invite"], "title": "Via" },
+          "joined_at": { "type": "string", "format": "date-time", "title": "Joined At" }
+        },
+        "type": "object",
+        "required": ["user_id", "first_name", "via", "joined_at"],
+        "title": "FamilyMemberOut"
+      },
+      "FamilyOut": {
+        "properties": {
+          "group_id": { "type": "string", "format": "uuid", "title": "Group Id" },
+          "role": { "type": "string", "enum": ["owner", "member"], "title": "Role" },
+          "seats": { "type": "integer", "title": "Seats" },
+          "used": { "type": "integer", "title": "Used" },
+          "members": {
+            "items": { "$ref": "#/components/schemas/FamilyMemberOut" },
+            "type": "array",
+            "title": "Members"
+          },
+          "invites": {
+            "items": { "$ref": "#/components/schemas/FamilyInviteOut" },
+            "type": "array",
+            "title": "Invites"
+          }
+        },
+        "type": "object",
+        "required": ["group_id", "role", "seats", "used"],
+        "title": "FamilyOut",
+        "description": "The payer's view: seats (people besides the payer), members and open invites. A member\nsees ``role = member`` and the seat counts only."
       },
       "FeedItem": {
         "properties": {
@@ -9279,7 +9941,8 @@
               "u13_no_scope",
               "minor_no_consent",
               "consent_pending",
-              "consent_revoked"
+              "consent_revoked",
+              "parent_off"
             ],
             "title": "State"
           },
@@ -9549,6 +10212,31 @@
         "type": "object",
         "required": ["index", "text", "status"],
         "title": "KeyPointOut"
+      },
+      "LastMock": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "mock_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Mock Id" },
+          "title": {
+            "anyOf": [
+              { "additionalProperties": { "type": "string" }, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Title"
+          },
+          "score": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Score" },
+          "max_score": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Max Score"
+          },
+          "submitted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Submitted At"
+          }
+        },
+        "type": "object",
+        "required": ["attempt_id", "mock_id", "score", "max_score", "submitted_at"],
+        "title": "LastMock"
       },
       "Leaderboard": {
         "properties": {
@@ -10416,6 +11104,35 @@
         "required": ["attempt_id", "mock_id", "kind", "started_at", "server_deadline_at"],
         "title": "MockInProgress"
       },
+      "MockScore": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "mock_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Mock Id" },
+          "title": {
+            "anyOf": [
+              { "additionalProperties": { "type": "string" }, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Title"
+          },
+          "score": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Score" },
+          "max_score": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Max Score"
+          },
+          "percentile": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Percentile"
+          },
+          "submitted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Submitted At"
+          }
+        },
+        "type": "object",
+        "required": ["attempt_id", "mock_id", "score", "max_score", "percentile", "submitted_at"],
+        "title": "MockScore"
+      },
       "MockSection": {
         "properties": {
           "code": { "type": "string", "title": "Code" },
@@ -10522,6 +11239,52 @@
           "retry_at"
         ],
         "title": "MyConsentOut"
+      },
+      "MyLimits": {
+        "properties": {
+          "controlled": { "type": "boolean", "title": "Controlled" },
+          "daily_limit_min": {
+            "anyOf": [{ "type": "integer", "enum": [15, 30, 45, 60, 90, 120] }, { "type": "null" }],
+            "title": "Daily Limit Min"
+          },
+          "allowed_from": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Allowed From"
+          },
+          "allowed_to": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Allowed To"
+          },
+          "break_reminders": { "type": "boolean", "title": "Break Reminders", "default": false },
+          "ask_before_switching": {
+            "type": "boolean",
+            "title": "Ask Before Switching",
+            "default": false
+          },
+          "tutor_button": { "type": "boolean", "title": "Tutor Button", "default": false },
+          "picture_rhymes": { "type": "boolean", "title": "Picture Rhymes", "default": false },
+          "tutor_enabled": { "type": "boolean", "title": "Tutor Enabled", "default": true },
+          "social_enabled": { "type": "boolean", "title": "Social Enabled", "default": true },
+          "today": { "type": "string", "format": "date", "title": "Today" },
+          "minutes_today": { "type": "integer", "title": "Minutes Today", "default": 0 },
+          "extra_minutes": { "type": "integer", "title": "Extra Minutes", "default": 0 },
+          "limit_today": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Limit Today"
+          },
+          "remaining_minutes": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Remaining Minutes"
+          },
+          "within_hours": { "type": "boolean", "title": "Within Hours", "default": true },
+          "request": {
+            "anyOf": [{ "$ref": "#/components/schemas/TimeRequestOut" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": ["controlled", "today"],
+        "title": "MyLimits",
+        "description": "What the child's device caches to enforce SET-16 offline and to show SET-19."
       },
       "Name": {
         "properties": {
@@ -10818,6 +11581,19 @@
         "required": ["kind", "pairs"],
         "title": "PairsAnswerIn"
       },
+      "ParentFriend": {
+        "properties": {
+          "person": { "$ref": "#/components/schemas/Person" },
+          "since": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Since"
+          }
+        },
+        "type": "object",
+        "required": ["person", "since"],
+        "title": "ParentFriend",
+        "description": "A friend as the child sees them (B13: the parent sees and can remove friends)."
+      },
       "PauseIn": {
         "properties": {
           "at": {
@@ -10884,6 +11660,16 @@
         "type": "object",
         "required": ["action"],
         "title": "PetCareRequest"
+      },
+      "PetOut": {
+        "properties": {
+          "name": { "type": "string", "title": "Name" },
+          "species": { "type": "string", "title": "Species" },
+          "state": { "type": "string", "title": "State" }
+        },
+        "type": "object",
+        "required": ["name", "species", "state"],
+        "title": "PetOut"
       },
       "PetResponse": {
         "properties": {
@@ -11036,7 +11822,14 @@
             "title": "Intro Price Paise"
           },
           "period": { "type": "string", "enum": ["month", "year"], "title": "Period" },
-          "entitlement": { "type": "string", "title": "Entitlement" }
+          "entitlement": { "type": "string", "title": "Entitlement" },
+          "plan": {
+            "type": "string",
+            "enum": ["individual", "family"],
+            "title": "Plan",
+            "default": "individual"
+          },
+          "seats": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Seats" }
         },
         "type": "object",
         "required": [
@@ -11481,6 +12274,12 @@
             "enum": ["self", "guardian_declared"],
             "title": "Payer",
             "default": "self"
+          },
+          "plan": {
+            "type": "string",
+            "enum": ["monthly", "yearly", "family_monthly", "family_yearly"],
+            "title": "Plan",
+            "default": "monthly"
           }
         },
         "type": "object",
@@ -12448,6 +13247,25 @@
         ],
         "title": "SubjectRow"
       },
+      "SubjectWeek": {
+        "properties": {
+          "subject_id": { "type": "string", "title": "Subject Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "color_token": { "type": "string", "title": "Color Token" },
+          "topics": {
+            "items": { "additionalProperties": { "type": "string" }, "type": "object" },
+            "type": "array",
+            "title": "Topics"
+          }
+        },
+        "type": "object",
+        "required": ["subject_id", "name", "color_token", "topics"],
+        "title": "SubjectWeek"
+      },
       "SubscriptionDetailsOut": {
         "properties": {
           "entitlement": { "$ref": "#/components/schemas/EntitlementOut" },
@@ -12680,6 +13498,27 @@
           "ideal_time_source"
         ],
         "title": "TimeBuckets"
+      },
+      "TimeRequestOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "learner_user_id": { "type": "string", "format": "uuid", "title": "Learner User Id" },
+          "minutes": { "type": "integer", "title": "Minutes" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "allowed", "declined", "expired"],
+            "title": "Status"
+          },
+          "for_date": { "type": "string", "format": "date", "title": "For Date" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "decided_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Decided At"
+          }
+        },
+        "type": "object",
+        "required": ["id", "learner_user_id", "minutes", "status", "for_date", "created_at"],
+        "title": "TimeRequestOut"
       },
       "TimeResponse": {
         "properties": {
@@ -13350,6 +14189,60 @@
         "type": "object",
         "required": ["status"],
         "title": "WebhookAck"
+      },
+      "WeekReport": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name"
+          },
+          "week_start": { "type": "string", "format": "date", "title": "Week Start" },
+          "week_end": { "type": "string", "format": "date", "title": "Week End" },
+          "days": {
+            "items": { "$ref": "#/components/schemas/DayMinutes" },
+            "type": "array",
+            "title": "Days"
+          },
+          "minutes": { "type": "integer", "title": "Minutes" },
+          "lessons": { "type": "integer", "title": "Lessons" },
+          "reviews": { "type": "integer", "title": "Reviews" },
+          "practice_questions": { "type": "integer", "title": "Practice Questions" },
+          "streak": { "type": "integer", "title": "Streak" },
+          "subjects": {
+            "items": { "$ref": "#/components/schemas/SubjectWeek" },
+            "type": "array",
+            "title": "Subjects"
+          },
+          "mocks": {
+            "items": { "$ref": "#/components/schemas/MockScore" },
+            "type": "array",
+            "title": "Mocks"
+          },
+          "coming_up": {
+            "items": { "$ref": "#/components/schemas/ComingUp" },
+            "type": "array",
+            "title": "Coming Up"
+          }
+        },
+        "type": "object",
+        "required": [
+          "user_id",
+          "first_name",
+          "week_start",
+          "week_end",
+          "days",
+          "minutes",
+          "lessons",
+          "reviews",
+          "practice_questions",
+          "streak",
+          "subjects",
+          "mocks",
+          "coming_up"
+        ],
+        "title": "WeekReport",
+        "description": "SET-15. Counts and topic names only (never chat text, notes or anything typed)."
       },
       "smriti_api__schemas__practice__SessionCreate": {
         "properties": {

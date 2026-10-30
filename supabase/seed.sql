@@ -53,6 +53,21 @@ insert into billing.products (id, platform, variant_id, store_product_id, price_
   ('pro_monthly_intro_ios_all', 'ios',     'all', 'pending:app_store_product_intro', 9900, 100, 'month', true)
 on conflict (id) do nothing;
 
+-- The ₹799/year plan (PRD §11.2), no intro offer. Family plans (PRD §11.2, Phase 3) have no price
+-- here: it comes from the owner flags billing.family_{monthly,yearly}_price_paise, and the plan
+-- stays hidden while that flag or billing.family_seats is unset (migration 20261030500002).
+insert into billing.products (id, platform, variant_id, store_product_id, price_paise, intro_price_paise, period, active, plan) values
+  ('pro_yearly_web',            'web',     null,  'pending:razorpay_plan_yearly', 79900, null, 'year', true, 'individual'),
+  ('pro_yearly_android_all',    'android', 'all', 'pending:play_product_yearly', 79900, null, 'year', true, 'individual'),
+  ('pro_yearly_ios_all',        'ios',     'all', 'pending:app_store_product_yearly', 79900, null, 'year', true, 'individual'),
+  ('family_monthly_web',        'web',     null,  'pending:razorpay_plan_family_monthly', null, null, 'month', true, 'family'),
+  ('family_monthly_android_all','android', 'all', 'pending:play_product_family_monthly', null, null, 'month', true, 'family'),
+  ('family_monthly_ios_all',    'ios',     'all', 'pending:app_store_product_family_monthly', null, null, 'month', true, 'family'),
+  ('family_yearly_web',         'web',     null,  'pending:razorpay_plan_family_yearly', null, null, 'year', true, 'family'),
+  ('family_yearly_android_all', 'android', 'all', 'pending:play_product_family_yearly', null, null, 'year', true, 'family'),
+  ('family_yearly_ios_all',     'ios',     'all', 'pending:app_store_product_family_yearly', null, null, 'year', true, 'family')
+on conflict (id) do nothing;
+
 -- Gem shop basics (me-money flow §3.6 starting prices). Gems are never sold for money (R36).
 insert into game.shop_items (id, kind, price_gems, pro_only, active) values
   ('streak_freeze', 'freeze', 200, false, true),

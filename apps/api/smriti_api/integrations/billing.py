@@ -142,6 +142,8 @@ class RazorpayProvider:
         intro_offer_id: str = "",
         total_count: int = 120,
         grace_days: int = 7,
+        plans: Mapping[str, str] | None = None,
+        yearly_total_count: int = 10,
     ) -> None:
         self._http = http
         self._base = base_url.rstrip("/")
@@ -152,6 +154,20 @@ class RazorpayProvider:
         self.intro_offer_id = intro_offer_id
         self._total_count = total_count
         self.grace_days = grace_days
+        # Razorpay plan ids for our other web products (pro_yearly_web, family_*_web).
+        self.plans = {k: v for k, v in (plans or {}).items() if v}
+        self._yearly_total_count = yearly_total_count
+
+    def plan_for(self, product_id: str | None) -> str:
+        """The Razorpay plan for one of our web products; the monthly ones use ``plan_id``."""
+        if product_id is None or product_id.startswith("pro_monthly"):
+            if not self.plan_id:
+                raise BillingError("billing_not_configured", "RAZORPAY_PLAN_ID is not set")
+            return self.plan_id
+        plan = self.plans.get(product_id)
+        if not plan:
+            raise BillingError("billing_not_configured", f"no Razorpay plan for {product_id}")
+        return plan
 
     # signatures ---------------------------------------------------------------------------------
     def verify_webhook(self, body: bytes, headers: Mapping[str, str]) -> bool:
@@ -191,13 +207,18 @@ class RazorpayProvider:
         return data if isinstance(data, dict) else {}
 
     async def create_subscription(
-        self, *, user_id: uuid.UUID, intro: bool, notes: Mapping[str, str] | None = None
+        self,
+        *,
+        user_id: uuid.UUID,
+        intro: bool,
+        notes: Mapping[str, str] | None = None,
+        product_id: str | None = None,
+        period: str = "month",
     ) -> dict[str, Any]:
-        if not self.plan_id:
-            raise BillingError("billing_not_configured", "RAZORPAY_PLAN_ID is not set")
+        plan_id = self.plan_for(product_id)
         body: dict[str, Any] = {
-            "plan_id": self.plan_id,
-            "total_count": self._total_count,
+            "plan_id": plan_id,
+            "total_count": self._yearly_total_count if period == "year" else self._total_count,
             "quantity": 1,
             "customer_notify": 1,
             "notes": {"user_id": str(user_id), "intro": "1" if intro else "0", **(notes or {})},
@@ -300,12 +321,23 @@ class FakeRazorpayProvider(RazorpayProvider):
         self.cancelled: list[str] = []
 
     async def create_subscription(
-        self, *, user_id: uuid.UUID, intro: bool, notes: Mapping[str, str] | None = None
+        self,
+        *,
+        user_id: uuid.UUID,
+        intro: bool,
+        notes: Mapping[str, str] | None = None,
+        product_id: str | None = None,
+        period: str = "month",
     ) -> dict[str, Any]:
+        monthly = product_id is None or product_id.startswith("pro_monthly")
+        plan = (self.plan_id if monthly else self.plans.get(product_id or "")) or (
+            f"plan_fake_{product_id or 'monthly'}"
+        )
         sub = {
             "id": f"sub_fake{secrets.token_hex(6)}",
             "entity": "subscription",
-            "plan_id": self.plan_id or "plan_fake",
+            "plan_id": plan,
+            "period": period,
             "status": "created",
             "offer_id": (self.intro_offer_id or "offer_fake") if intro else None,
             "short_url": "https://example.invalid/rzp-fake",

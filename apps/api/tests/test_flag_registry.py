@@ -25,7 +25,7 @@ def test_defaults_come_from_the_shared_registry() -> None:
         "tutor.max_input_chars",
         "safety.helplines",
         "social.nickname_words",
-        "duel.min_answer_ms",
+        "xp.duel_per_correct",
     ):
         assert flag_registry.known(key), key
         assert f.get(key) is None, key

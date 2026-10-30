@@ -134,6 +134,12 @@ def build_integrations(
         "intro_offer_id": cfg.razorpay_intro_offer_id,
         "total_count": cfg.razorpay_total_count,
         "grace_days": cfg.razorpay_grace_days if grace_days is None else grace_days,
+        "plans": {
+            "pro_yearly_web": cfg.razorpay_yearly_plan_id,
+            "family_monthly_web": cfg.razorpay_family_monthly_plan_id,
+            "family_yearly_web": cfg.razorpay_family_yearly_plan_id,
+        },
+        "yearly_total_count": cfg.razorpay_yearly_total_count,
     }
     razorpay: RazorpayProvider
     configured = bool(cfg.razorpay_key_id and cfg.razorpay_key_secret)

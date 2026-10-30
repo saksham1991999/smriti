@@ -326,6 +326,108 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/billing/family": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The family plan: seats, members and open invites (the payer), or membership */
+    get: operations["family_v1_billing_family_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A code an adult uses to join (shown once; only its hash is kept) */
+    post: operations["family_invite_v1_billing_family_invites_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites/{code}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** An adult joins a family plan with a code (children join through Parent mode) */
+    post: operations["family_accept_v1_billing_family_invites__code__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites/{invite_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Withdraw an unused invite */
+    delete: operations["family_revoke_invite_v1_billing_family_invites__invite_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/members": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The payer adds a child they are the linked guardian of */
+    post: operations["family_add_child_v1_billing_family_members_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/members/{user_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** The payer removes someone, or a member leaves */
+    delete: operations["family_remove_v1_billing_family_members__user_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/billing/intro-eligibility": {
     parameters: {
       query?: never;
@@ -1369,6 +1471,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/dashboard": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SET-14 child cards: pet, minutes this week, streak, practice line, Needs you */
+    get: operations["dashboard_v1_guardian_dashboard_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/learners": {
     parameters: {
       query?: never;
@@ -1380,6 +1499,92 @@ export interface paths {
     get: operations["learners_v1_guardian_learners_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/controls": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SET-14 and SET-16 settings for one child */
+    get: operations["get_controls_v1_guardian_learners__learner_id__controls_get"];
+    /** Set time limits, allowed hours, tutor, social, Picture rhymes and the weekly report */
+    put: operations["put_controls_v1_guardian_learners__learner_id__controls_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/friends": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The child's friends, as the child sees them (tutor-social B13) */
+    get: operations["friends_v1_guardian_learners__learner_id__friends_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/friends/{friend_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Remove a friend for the child (silent, like the child's own Remove) */
+    delete: operations["remove_friend_v1_guardian_learners__learner_id__friends__friend_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SET-15 weekly report (counts and topic names only); week is any day in that week */
+    get: operations["report_v1_guardian_learners__learner_id__report_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/time-requests/{request_id}/decision": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** SET-14 [Allow 15 min] or [Not today] on a child's SET-19 ask */
+    post: operations["decide_time_v1_guardian_time_requests__request_id__decision_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1660,6 +1865,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/me/limits": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The child's own limits for today, cached by the device to enforce SET-16 offline */
+    get: operations["my_limits_v1_me_limits_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/me/summary": {
     parameters: {
       query?: never;
@@ -1671,6 +1893,23 @@ export interface paths {
     get: operations["get_summary_v1_me_summary_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/time-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** SET-19 [Ask for 15 more minutes]: pushes every linked guardian */
+    post: operations["ask_for_time_v1_me_time_requests_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -3545,6 +3784,67 @@ export interface components {
         [key: string]: unknown;
       } | null;
     };
+    /**
+     * ChildCard
+     * @description SET-14: pet, name, this week's minutes, streak, the practice line and "Needs you".
+     */
+    ChildCard: {
+      /** Age Band */
+      age_band: string | null;
+      /**
+       * Consent Pending
+       * @default false
+       */
+      consent_pending: boolean;
+      /** First Name */
+      first_name: string | null;
+      /**
+       * Is Pro
+       * @default false
+       */
+      is_pro: boolean;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "managed" | "consent";
+      last_mock?: components["schemas"]["LastMock"] | null;
+      /** Needs You */
+      needs_you: boolean;
+      pet?: components["schemas"]["PetOut"] | null;
+      /** Practice Questions */
+      practice_questions: number;
+      /** Streak */
+      streak: number;
+      /** Time Requests */
+      time_requests?: components["schemas"]["TimeRequestOut"][];
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /** Week Minutes */
+      week_minutes: number;
+    };
+    /** ComingUp */
+    ComingUp: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "mock";
+      /** Mock Id */
+      mock_id: string;
+      /**
+       * Starts At
+       * Format: date-time
+       */
+      starts_at: string;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+    };
     /** ConceptRow */
     ConceptRow: {
       /** Accuracy */
@@ -3851,6 +4151,104 @@ export interface components {
       /** Topic Id */
       topic_id?: string | null;
     };
+    /**
+     * Controls
+     * @description SET-14 and SET-16 for one child. ``weekly_report`` is the calling guardian's own switch.
+     */
+    Controls: {
+      /** Allowed From */
+      allowed_from?: string | null;
+      /** Allowed To */
+      allowed_to?: string | null;
+      /**
+       * Ask Before Switching
+       * @default false
+       */
+      ask_before_switching: boolean;
+      /**
+       * Break Reminders
+       * @default false
+       */
+      break_reminders: boolean;
+      /** Daily Limit Min */
+      daily_limit_min?: (15 | 30 | 45 | 60 | 90 | 120) | null;
+      /**
+       * Picture Rhymes
+       * @default false
+       */
+      picture_rhymes: boolean;
+      /**
+       * Social Enabled
+       * @default true
+       */
+      social_enabled: boolean;
+      /**
+       * Tutor Button
+       * @default false
+       */
+      tutor_button: boolean;
+      /**
+       * Tutor Enabled
+       * @default true
+       */
+      tutor_enabled: boolean;
+      /**
+       * Weekly Report
+       * @default true
+       */
+      weekly_report: boolean;
+    };
+    /** ControlsOut */
+    ControlsOut: {
+      /** Allowed From */
+      allowed_from?: string | null;
+      /** Allowed To */
+      allowed_to?: string | null;
+      /**
+       * Ask Before Switching
+       * @default false
+       */
+      ask_before_switching: boolean;
+      /**
+       * Break Reminders
+       * @default false
+       */
+      break_reminders: boolean;
+      /** Daily Limit Min */
+      daily_limit_min?: (15 | 30 | 45 | 60 | 90 | 120) | null;
+      /**
+       * Learner User Id
+       * Format: uuid
+       */
+      learner_user_id: string;
+      /**
+       * Picture Rhymes
+       * @default false
+       */
+      picture_rhymes: boolean;
+      /**
+       * Social Enabled
+       * @default true
+       */
+      social_enabled: boolean;
+      /**
+       * Tutor Button
+       * @default false
+       */
+      tutor_button: boolean;
+      /**
+       * Tutor Enabled
+       * @default true
+       */
+      tutor_enabled: boolean;
+      /** Updated At */
+      updated_at?: string | null;
+      /**
+       * Weekly Report
+       * @default true
+       */
+      weekly_report: boolean;
+    };
     /** CopiedCard */
     CopiedCard: {
       /** Back */
@@ -3977,6 +4375,26 @@ export interface components {
       /** Rows */
       rows: components["schemas"]["LeaderboardRow"][];
       you: components["schemas"]["LeaderboardRow"] | null;
+    };
+    /** Dashboard */
+    Dashboard: {
+      /** Learners */
+      learners: components["schemas"]["ChildCard"][];
+    };
+    /** DayMinutes */
+    DayMinutes: {
+      /**
+       * Day
+       * Format: date
+       */
+      day: string;
+      /** Minutes */
+      minutes: number;
+    };
+    /** Decision */
+    Decision: {
+      /** Allow */
+      allow: boolean;
     };
     /**
      * DeckCopy
@@ -4482,7 +4900,7 @@ export interface components {
       /** Pro Until */
       pro_until: string | null;
       /** Source */
-      source: ("razorpay" | "play" | "app_store" | "promo") | null;
+      source: ("razorpay" | "play" | "app_store" | "promo" | "family") | null;
       /** Status */
       status:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
@@ -4510,7 +4928,7 @@ export interface components {
       /** Pro Until */
       pro_until: string | null;
       /** Source */
-      source?: ("razorpay" | "play" | "app_store" | "promo") | null;
+      source?: ("razorpay" | "play" | "app_store" | "promo" | "family") | null;
       /** Status */
       status?:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
@@ -4600,6 +5018,74 @@ export interface components {
       template: string | null;
       /** Url */
       url: string | null;
+    };
+    /** FamilyAddChild */
+    FamilyAddChild: {
+      /**
+       * Learner Id
+       * Format: uuid
+       */
+      learner_id: string;
+    };
+    /** FamilyInviteOut */
+    FamilyInviteOut: {
+      /** Code */
+      code?: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+    };
+    /** FamilyMemberOut */
+    FamilyMemberOut: {
+      /** First Name */
+      first_name: string | null;
+      /**
+       * Joined At
+       * Format: date-time
+       */
+      joined_at: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /**
+       * Via
+       * @enum {string}
+       */
+      via: "guardian_link" | "invite";
+    };
+    /**
+     * FamilyOut
+     * @description The payer's view: seats (people besides the payer), members and open invites. A member
+     *     sees ``role = member`` and the seat counts only.
+     */
+    FamilyOut: {
+      /**
+       * Group Id
+       * Format: uuid
+       */
+      group_id: string;
+      /** Invites */
+      invites?: components["schemas"]["FamilyInviteOut"][];
+      /** Members */
+      members?: components["schemas"]["FamilyMemberOut"][];
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "owner" | "member";
+      /** Seats */
+      seats: number;
+      /** Used */
+      used: number;
     };
     /** FeedbackIn */
     FeedbackIn: {
@@ -4806,7 +5292,8 @@ export interface components {
         | "u13_no_scope"
         | "minor_no_consent"
         | "consent_pending"
-        | "consent_revoked";
+        | "consent_revoked"
+        | "parent_off";
     };
     /** GemLedgerEntry */
     GemLedgerEntry: {
@@ -4993,6 +5480,26 @@ export interface components {
       text: {
         [key: string]: string;
       };
+    };
+    /** LastMock */
+    LastMock: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Score */
+      score: number | null;
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Title */
+      title?: {
+        [key: string]: string;
+      } | null;
     };
     /** Leaderboard */
     Leaderboard: {
@@ -5714,6 +6221,28 @@ export interface components {
        */
       started_at: string;
     };
+    /** MockScore */
+    MockScore: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Percentile */
+      percentile: number | null;
+      /** Score */
+      score: number | null;
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Title */
+      title?: {
+        [key: string]: string;
+      } | null;
+    };
     /** MockSection */
     MockSection: {
       /** Attempt Any */
@@ -5764,6 +6293,75 @@ export interface components {
        * @enum {string}
        */
       state: "not_required" | "required" | "pending" | "granted" | "declined" | "revoked";
+    };
+    /**
+     * MyLimits
+     * @description What the child's device caches to enforce SET-16 offline and to show SET-19.
+     */
+    MyLimits: {
+      /** Allowed From */
+      allowed_from?: string | null;
+      /** Allowed To */
+      allowed_to?: string | null;
+      /**
+       * Ask Before Switching
+       * @default false
+       */
+      ask_before_switching: boolean;
+      /**
+       * Break Reminders
+       * @default false
+       */
+      break_reminders: boolean;
+      /** Controlled */
+      controlled: boolean;
+      /** Daily Limit Min */
+      daily_limit_min?: (15 | 30 | 45 | 60 | 90 | 120) | null;
+      /**
+       * Extra Minutes
+       * @default 0
+       */
+      extra_minutes: number;
+      /** Limit Today */
+      limit_today?: number | null;
+      /**
+       * Minutes Today
+       * @default 0
+       */
+      minutes_today: number;
+      /**
+       * Picture Rhymes
+       * @default false
+       */
+      picture_rhymes: boolean;
+      /** Remaining Minutes */
+      remaining_minutes?: number | null;
+      request?: components["schemas"]["TimeRequestOut"] | null;
+      /**
+       * Social Enabled
+       * @default true
+       */
+      social_enabled: boolean;
+      /**
+       * Today
+       * Format: date
+       */
+      today: string;
+      /**
+       * Tutor Button
+       * @default false
+       */
+      tutor_button: boolean;
+      /**
+       * Tutor Enabled
+       * @default true
+       */
+      tutor_enabled: boolean;
+      /**
+       * Within Hours
+       * @default true
+       */
+      within_hours: boolean;
     };
     /**
      * Name
@@ -5977,6 +6575,15 @@ export interface components {
       /** Pairs */
       pairs: components["schemas"]["PairIn"][];
     };
+    /**
+     * ParentFriend
+     * @description A friend as the child sees them (B13: the parent sees and can remove friends).
+     */
+    ParentFriend: {
+      person: components["schemas"]["Person"];
+      /** Since */
+      since: string | null;
+    };
     /** PauseIn */
     PauseIn: {
       /** At */
@@ -6027,6 +6634,15 @@ export interface components {
       action: "pet" | "feed" | "play";
       /** Item Id */
       item_id?: string | null;
+    };
+    /** PetOut */
+    PetOut: {
+      /** Name */
+      name: string;
+      /** Species */
+      species: string;
+      /** State */
+      state: string;
     };
     /** PetResponse */
     PetResponse: {
@@ -6150,6 +6766,12 @@ export interface components {
        */
       period: "month" | "year";
       /**
+       * Plan
+       * @default individual
+       * @enum {string}
+       */
+      plan: "individual" | "family";
+      /**
        * Platform
        * @enum {string}
        */
@@ -6158,6 +6780,8 @@ export interface components {
       price_paise: number;
       /** Product Id */
       product_id: string;
+      /** Seats */
+      seats?: number | null;
       /** Store Product Id */
       store_product_id: string;
       /** Variant Id */
@@ -6460,6 +7084,12 @@ export interface components {
        * @enum {string}
        */
       payer: "self" | "guardian_declared";
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly" | "family_monthly" | "family_yearly";
     };
     /** RazorpayVerifyRequest */
     RazorpayVerifyRequest: {
@@ -7306,6 +7936,21 @@ export interface components {
       /** Wrong */
       wrong: number;
     };
+    /** SubjectWeek */
+    SubjectWeek: {
+      /** Color Token */
+      color_token: string;
+      /** Name */
+      name: {
+        [key: string]: string;
+      };
+      /** Subject Id */
+      subject_id: string;
+      /** Topics */
+      topics: {
+        [key: string]: string;
+      }[];
+    };
     /** SubscriptionDetailsOut */
     SubscriptionDetailsOut: {
       entitlement: components["schemas"]["EntitlementOut"];
@@ -7466,6 +8111,38 @@ export interface components {
       right_but_slow: number;
       /** Skipped Time Ms */
       skipped_time_ms: number;
+    };
+    /** TimeRequestOut */
+    TimeRequestOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /** Decided At */
+      decided_at?: string | null;
+      /**
+       * For Date
+       * Format: date
+       */
+      for_date: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Learner User Id
+       * Format: uuid
+       */
+      learner_user_id: string;
+      /** Minutes */
+      minutes: number;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "allowed" | "declined" | "expired";
     };
     /** TimeResponse */
     TimeResponse: {
@@ -7959,6 +8636,47 @@ export interface components {
        */
       endpoint: string;
       keys: components["schemas"]["WebPushKeys"];
+    };
+    /**
+     * WeekReport
+     * @description SET-15. Counts and topic names only (never chat text, notes or anything typed).
+     */
+    WeekReport: {
+      /** Coming Up */
+      coming_up: components["schemas"]["ComingUp"][];
+      /** Days */
+      days: components["schemas"]["DayMinutes"][];
+      /** First Name */
+      first_name: string | null;
+      /** Lessons */
+      lessons: number;
+      /** Minutes */
+      minutes: number;
+      /** Mocks */
+      mocks: components["schemas"]["MockScore"][];
+      /** Practice Questions */
+      practice_questions: number;
+      /** Reviews */
+      reviews: number;
+      /** Streak */
+      streak: number;
+      /** Subjects */
+      subjects: components["schemas"]["SubjectWeek"][];
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /**
+       * Week End
+       * Format: date
+       */
+      week_end: string;
+      /**
+       * Week Start
+       * Format: date
+       */
+      week_start: string;
     };
   };
   responses: never;
@@ -8607,6 +9325,172 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+    };
+  };
+  family_v1_billing_family_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+    };
+  };
+  family_invite_v1_billing_family_invites_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyInviteOut"];
+        };
+      };
+    };
+  };
+  family_accept_v1_billing_family_invites__code__accept_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_revoke_invite_v1_billing_family_invites__invite_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        invite_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_add_child_v1_billing_family_members_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FamilyAddChild"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_remove_v1_billing_family_members__user_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };
@@ -10700,6 +11584,26 @@ export interface operations {
       };
     };
   };
+  dashboard_v1_guardian_dashboard_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Dashboard"];
+        };
+      };
+    };
+  };
   learners_v1_guardian_learners_get: {
     parameters: {
       query?: never;
@@ -10716,6 +11620,205 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["LearnersOut"];
+        };
+      };
+    };
+  };
+  get_controls_v1_guardian_learners__learner_id__controls_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ControlsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  put_controls_v1_guardian_learners__learner_id__controls_put: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Controls"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ControlsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  friends_v1_guardian_learners__learner_id__friends_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ParentFriend"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  remove_friend_v1_guardian_learners__learner_id__friends__friend_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        friend_id: string;
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  report_v1_guardian_learners__learner_id__report_get: {
+    parameters: {
+      query?: {
+        week?: string | null;
+      };
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WeekReport"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decide_time_v1_guardian_time_requests__request_id__decision_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Decision"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TimeRequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };
@@ -11205,6 +12308,26 @@ export interface operations {
       };
     };
   };
+  my_limits_v1_me_limits_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyLimits"];
+        };
+      };
+    };
+  };
   get_summary_v1_me_summary_get: {
     parameters: {
       query?: never;
@@ -11221,6 +12344,37 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["SummaryResponse"];
+        };
+      };
+    };
+  };
+  ask_for_time_v1_me_time_requests_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TimeRequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

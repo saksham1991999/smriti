@@ -105,6 +105,8 @@ uv run python -m smriti_worker content-publish  # also: ai, media, notifications
 | Queue | Jobs |
 |---|---|
 | default | `merge_guest`, `mocks_auto_submit` (strict and live attempts past their deadline; cron every minute at :30s), `tutor_retention` (deletes tutor messages older than `ai.tutor_retention_days`; cron 02:15 UTC), `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron), `league_assign` (hourly), `league_rollover` (Sunday after `league.close_time` IST; safe to re-run), `duo_rollup` (nightly), `duel_sweep` (every minute), `squad_quests` (hourly) |
+| ai | `deck_moderation` (retries minors' shared decks still `checking`; cron every 10 minutes on the default worker) |
+| notifications | `parent_digest` (the SET-15 weekly push to guardians; cron Sunday 13:00 UTC on the default worker, held until 19:00 in the guardian's zone) |
 | content-publish | `content_publish`: runs `CONTENT_PUBLISH_CMD`, or `tools/content-publish` (package.json `publish` script, `publish.sh` or `run.sh`) when it exists, with `CONTENT_PUBLISH_REF` set |
 | ai, media, notifications, pdf | `ping` until their jobs land |
 
@@ -252,3 +254,30 @@ students; minors show by pet avatar and auto nickname (pet name to invite or QR 
 | GET | `/v1/duels/{id}/events?after=`, `/v1/duels/{id}/stream` | the duel channel by polling or SSE |
 | POST, DELETE | `/v1/decks/{deck_id}/share` | share (moderated) or stop sharing |
 | GET, POST, PUT | `/v1/shared-decks`, `/v1/shared-decks/{code}`, `.../copy`, `.../helpful` | find, preview, copy, vote |
+
+A minor's deck that the model can't check stays `checking` with no link until the `deck_moderation` job gets a clear answer; adults' decks fail open.
+
+### Parent mode (Phase 3)
+
+Every guardian call needs a live `app.guardian_links` row and an active consent for the child; otherwise 404 `learner_not_found`.
+
+| Method | Path | What |
+|---|---|---|
+| GET | `/v1/guardian/dashboard` | SET-14 child cards: pet, minutes this week, streak, practice questions, last mock, "Needs you" |
+| GET | `/v1/guardian/learners/{id}/report?week=` | SET-15 weekly report (counts and topic names only) |
+| GET, PUT | `/v1/guardian/learners/{id}/controls` | time limit, allowed hours, break reminders, ask-before-switching, tutor button, Picture rhymes, tutor on/off, social on/off, weekly report |
+| POST | `/v1/guardian/time-requests/{id}/decision` | allow or decline a SET-19 ask |
+| GET, DELETE | `/v1/guardian/learners/{id}/friends`, `.../friends/{friend_id}` | the parent friends list (B13) |
+| GET | `/v1/me/limits` | the child's limits for today, cached by the device |
+| POST | `/v1/me/time-requests` | "Ask for 15 more minutes": pushes every linked guardian |
+
+### Plans (PRD §11.2)
+
+`POST /v1/billing/razorpay/subscription` takes `plan`: `monthly` (default, with the ₹1 intro), `yearly` (₹799) or `family_monthly` / `family_yearly` (hidden until the owner sets `billing.family_seats` and the price flag).
+
+| Method | Path | What |
+|---|---|---|
+| GET | `/v1/billing/family` | the payer's seats, members and invites, or a member's view |
+| POST, DELETE | `/v1/billing/family/members`, `.../members/{user_id}` | the payer adds a linked child; the payer removes someone or a member leaves |
+| POST, DELETE | `/v1/billing/family/invites`, `.../invites/{id}` | a code for an adult (shown once), or withdraw it |
+| POST | `/v1/billing/family/invites/{code}/accept` | an adult joins (minors join through Parent mode) |

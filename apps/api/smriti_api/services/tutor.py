@@ -42,8 +42,8 @@ from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
 from smriti_api.schemas import tutor as t
 from smriti_api.schemas.practice import QuotaOut
+from smriti_api.services import parent_mode, tutor_retrieval, tutor_safety
 from smriti_api.services import question_bank as bank
-from smriti_api.services import tutor_retrieval, tutor_safety
 from smriti_api.services.answers import AnswerFormatError, check_answer, parse_answer
 from smriti_api.services.usage import (
     Flags,
@@ -375,6 +375,8 @@ async def open_session(db: Database, auth: AuthContext, body: t.SessionCreate) -
     now = datetime.now(UTC)
     async with db.system_tx() as session:
         learner = await load_learner(session, auth.user_id, auth.is_anonymous)
+        await parent_mode.check_tutor(session, learner)
+        await parent_mode.check_study_time(session, learner)
         flags = await load_flags(session)
         if body.context_ref:
             await resolve_context(session, auth.user_id, body.context_ref)
@@ -707,6 +709,7 @@ async def prepare(
     plan = Plan(session_id=session_id, user_message_id=body.client_message_id)
     async with db.system_tx() as session:
         learner = await load_learner(session, auth.user_id, auth.is_anonymous)
+        await parent_mode.check_tutor(session, learner)
         flags = await load_flags(session)
         plan.learner, plan.flags = learner, flags
         row = await _session_row(session, auth.user_id, session_id)
@@ -1023,6 +1026,8 @@ async def open_for(
     now = datetime.now(UTC)
     async with db.system_tx() as session:
         learner = await load_learner(session, auth.user_id, auth.is_anonymous)
+        await parent_mode.check_tutor(session, learner)
+        await parent_mode.check_study_time(session, learner)
         flags = await load_flags(session)
         await resolve_context(session, auth.user_id, context_ref, answered_now=answered_now)
         row, resumed = await _open(

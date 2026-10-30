@@ -25,6 +25,13 @@ class IntegrationSettings(BaseSettings):
     razorpay_plan_id: str = ""
     razorpay_intro_offer_id: str = ""
     razorpay_total_count: int = 120
+    # The ₹799/year plan and the family plans (PRD §11.2), created in the dashboard. Empty: that
+    # checkout answers 503 billing_not_configured. Yearly billing cycles default to the same ten
+    # years as 120 monthly ones.
+    razorpay_yearly_plan_id: str = ""
+    razorpay_family_monthly_plan_id: str = ""
+    razorpay_family_yearly_plan_id: str = ""
+    razorpay_yearly_total_count: int = 10
     # Days of Pro kept after a failed web renewal (me-money §5.6, proposed; owner to confirm).
     razorpay_grace_days: int = 7
 

@@ -107,6 +107,11 @@ DefaultWorker = _settings(
         cron(jobs.duo_rollup, hour=19, minute=7, unique=True),
         cron(jobs.duel_sweep, second=45, unique=True),
         cron(jobs.squad_quests, minute=50, unique=True),
+        # Minors' shared decks still being checked (fail closed until a clear answer).
+        cron(jobs.deck_moderation, minute={3, 13, 23, 33, 43, 53}, unique=True),
+        # Parent mode: the Sunday report, enqueued at 13:00 UTC (18:30 IST) and held until
+        # 19:00 in each guardian's zone (me-money §6.7).
+        cron(jobs.parent_digest, weekday="sun", hour=13, minute=0, unique=True),
     ],
 )
 ContentPublishWorker = _settings(
@@ -118,12 +123,15 @@ ContentPublishWorker = _settings(
     max_tries=1,
 )
 # The AI queue's jobs arrive with the tutor work (Agent B).
-AiWorker = _settings("AiWorker", "ai", [jobs.ping])
+AiWorker = _settings("AiWorker", "ai", [jobs.deck_moderation, jobs.ping])
 MediaWorker = _settings(
     "MediaWorker", "media", [jobs.media_generate, jobs.ping], max_jobs=4, job_timeout=300
 )
 NotificationsWorker = _settings(
-    "NotificationsWorker", "notifications", [jobs.notify_dispatch, jobs.ping], max_tries=1
+    "NotificationsWorker",
+    "notifications",
+    [jobs.notify_dispatch, jobs.parent_digest, jobs.ping],
+    max_tries=1,
 )
 PdfWorker = _settings("PdfWorker", "pdf", [jobs.render_pdf, jobs.ping], max_jobs=2)
 

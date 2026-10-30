@@ -124,6 +124,13 @@ KINDS: dict[str, KindSpec] = {
     "mock_reminder": KindSpec(
         "exam_alert", ("NTF-01.mock_reminder",), deep_link="/mock/{mock_id}", ttl=timedelta(hours=2)
     ),
+    # Parent mode (me-money §4.7): the SET-15 weekly report and the SET-19 time request.
+    "parent_weekly_report": KindSpec(
+        "parent", ("NTF-01.parent_weekly_report",), deep_link="/parent", ttl=timedelta(days=1)
+    ),
+    "parent_time_request": KindSpec(
+        "parent", ("NTF-01.parent_time_request",), deep_link="/parent", ttl=timedelta(hours=6)
+    ),
     # Social (tutor-social B3, me-money §6.4). Class "social": consent, caps, and R45 for minors.
     "friend_request": KindSpec("social", ("NTF-01.friend_request",), deep_link="/friends"),
     "friend_accepted": KindSpec("social", ("NTF-01.friend_accepted",), deep_link="/friends"),

@@ -54,6 +54,7 @@ ANSWER_CONTEXT_DB = {
     "review": "practice",
     "challenge": "daily",
     "chapter_test": "chapter_test",
+    "mock": "mock",
 }
 SECTIONS_BY_TYPE: dict[str, set[str]] = {
     "lesson_started": {"topic_progress"},
@@ -447,13 +448,16 @@ async def _answer_submitted(ctx: BatchContext, event: s.SyncEventIn, p: BaseMode
     assert isinstance(p, s.AnswerSubmitted)
     if not p.question_id:
         return  # a lesson-card check: kept in sync_events (and analytics) only
+    if p.context == "mock":
+        await _check_mock_answer(ctx, p)
     conf = CONFIDENCE_DB.get(p.confidence) if p.confidence else None
     await ctx.session.execute(
         text(
             """
             insert into learn.question_attempts
-              (id, user_id, question_id, context, attempt_no, answer, is_correct, time_ms, confidence, answered_at)
-            values (:id, :u, :q, :ctx, :n, cast(:ans as jsonb), :ok, :ms, :conf, :at)
+              (id, user_id, question_id, context, session_id, attempt_no, answer, is_correct, time_ms,
+               confidence, answered_at)
+            values (:id, :u, :q, :ctx, :sid, :n, cast(:ans as jsonb), :ok, :ms, :conf, :at)
             on conflict do nothing
             """
         ),
@@ -461,6 +465,7 @@ async def _answer_submitted(ctx: BatchContext, event: s.SyncEventIn, p: BaseMode
             "id": event.event_id,
             "u": ctx.facts.user_id,
             "q": p.question_id,
+            "sid": p.attempt_id if p.context == "mock" else None,
             "ctx": ANSWER_CONTEXT_DB[p.context],
             "n": p.attempt,
             "ans": json.dumps({"response": p.response}),
@@ -515,6 +520,31 @@ async def _answer_submitted(ctx: BatchContext, event: s.SyncEventIn, p: BaseMode
                 "gc": int(conf == "guess" and p.correct),
             },
         )
+
+
+async def _check_mock_answer(ctx: BatchContext, p: s.AnswerSubmitted) -> None:
+    """Mock answers count for mastery once, and only from a submitted attempt that held the
+    question (the server sends them when the attempt is submitted, ``services/mocks``)."""
+    row = (
+        await ctx.session.execute(
+            text(
+                """
+                select exists (select 1 from learn.mock_attempts m
+                                 join learn.mock_answers a on a.attempt_id = m.id
+                                where m.id = :a and m.user_id = :u and a.question_id = :q
+                                  and m.status in ('submitted', 'auto_submitted')) as held,
+                       exists (select 1 from learn.question_attempts
+                                where user_id = :u and session_id = :a and question_id = :q
+                                  and context = 'mock') as seen
+                """
+            ),
+            {"a": p.attempt_id, "u": ctx.facts.user_id, "q": p.question_id},
+        )
+    ).one()
+    if not row.held:
+        raise EventRejected("invalid_payload", "No submitted mock attempt holds this question")
+    if row.seen:
+        raise EventRejected("already_recorded", "This mock answer is already recorded")
 
 
 async def _review_rated(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
@@ -640,6 +670,20 @@ async def _practice_completed(ctx: BatchContext, event: s.SyncEventIn, p: BaseMo
     assert isinstance(p, s.PracticeSessionCompleted)
     if p.correct > p.answered:
         raise EventRejected("invalid_payload", "correct is greater than answered")
+    # A session earns XP once, whether the device's outbox or the server's online session
+    # (``services/practice``) recorded its completion first.
+    seen = (
+        await ctx.session.execute(
+            text(
+                "select 1 from learn.sync_events where user_id = :u"
+                " and type = 'practice_session_completed' and status = 'applied'"
+                " and payload ->> 'session_id' = :s limit 1"
+            ),
+            {"u": ctx.facts.user_id, "s": str(p.session_id)},
+        )
+    ).first()
+    if seen is not None:
+        raise EventRejected("already_recorded", "This practice session is already recorded")
     started = event.occurred_at - timedelta(milliseconds=p.ms_total)
     await ctx.session.execute(
         text(

@@ -81,17 +81,22 @@ class AnswerSubmitted(_Payload):
     topic_id: Id | None = None
     card_id: Id | None = None
     question_id: Id | None = None
-    context: Literal["lesson", "practice", "review", "challenge", "chapter_test"]
+    # ``mock`` answers are recorded by the server when an attempt is submitted (v1.3).
+    context: Literal["lesson", "practice", "review", "challenge", "chapter_test", "mock"]
     response: list[ResponseKey] | ResponseKey | float | int | None = None
     correct: bool
     attempt: Literal[1, 2] = 1
     confidence: Confidence | None = None
     ms_to_answer: Ms
+    # The submitted mock attempt the answer belongs to; required with ``context: mock``.
+    attempt_id: uuid.UUID | None = None
 
     @model_validator(mode="after")
     def _needs_target(self) -> AnswerSubmitted:
         if not self.card_id and not self.question_id:
             raise ValueError("card_id or question_id is required")
+        if self.context == "mock" and (self.attempt_id is None or not self.question_id):
+            raise ValueError("a mock answer needs attempt_id and question_id")
         return self
 
 

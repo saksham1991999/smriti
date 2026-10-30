@@ -54,8 +54,8 @@ export function fixtureConfig(contentBaseUrl: string, now: number): Schemas["Con
     free_limits: {},
     // R38 and supabase/seed.sql: ₹99 a month, ₹1 first month, tax-inclusive.
     pricing: [
-      { product_id: "pro_monthly_web", platform: "web", variant_id: null, store_product_id: "fake", price_paise: 9900, intro_price_paise: null, period: "month", entitlement: "pro" },
-      { product_id: "pro_monthly_intro_web", platform: "web", variant_id: null, store_product_id: "fake", price_paise: 9900, intro_price_paise: 100, period: "month", entitlement: "pro" },
+      { product_id: "pro_monthly_web", platform: "web", variant_id: null, store_product_id: "fake", price_paise: 9900, intro_price_paise: null, period: "month", plan: "individual", entitlement: "pro" },
+      { product_id: "pro_monthly_intro_web", platform: "web", variant_id: null, store_product_id: "fake", price_paise: 9900, intro_price_paise: 100, period: "month", plan: "individual", entitlement: "pro" },
     ],
     content_base_url: contentBaseUrl.replace(/\/+$/, ""),
     server_time: new Date(now).toISOString(),

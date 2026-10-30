@@ -6,6 +6,7 @@
   "description": "App variants, the feature-flag registry with defaults, and the client env schema.",
   "main": "./dist/index.js",
   "types": "./src/index.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -17,7 +18,11 @@
     },
     "./variants/*.json": "./variants/*.json"
   },
-  "files": ["src", "dist", "variants"],
+  "files": [
+    "src",
+    "dist",
+    "variants"
+  ],
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:check": "node scripts/build.mjs --check",

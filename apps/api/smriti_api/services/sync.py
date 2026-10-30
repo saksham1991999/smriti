@@ -842,23 +842,34 @@ async def _freeze_equipped(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel
 
 
 async def _cards_queued(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
-    """New concept cards join the review queue, due now (state 0 = new, as in ts-fsrs).
-    Cards that already exist keep their schedule."""
+    """Mirror the client's queue (memory-labs §5.14): a card it started is a new card due now
+    (state 0, as in ts-fsrs); a started card is pulled into the queue (due no later than now).
+    Suspended cards are left alone. ``concept_ids`` alone queue nothing: cards live in bundles,
+    so the client resolves concepts to cards."""
     assert isinstance(p, s.CardsQueued)
+    if not p.card_refs:
+        return
     uid = ctx.facts.user_id
-    refs = sorted({f"c:{cid}" for cid in p.concept_ids})
-    result = await ctx.session.execute(
-        text(
-            """
-            insert into learn.srs_cards (user_id, card_ref, state, due_at, stability, difficulty)
-            select :u, ref, 0, :due, 0, 0 from unnest(cast(:refs as text[])) as ref
-            on conflict (user_id, card_ref) do nothing
-            returning card_ref
-            """
-        ),
-        {"u": uid, "due": event.occurred_at, "refs": refs},
+    refs = sorted(set(p.card_refs))
+    changed = (
+        (
+            await ctx.session.execute(
+                text(
+                    """
+                insert into learn.srs_cards as c (user_id, card_ref, state, due_at, stability, difficulty)
+                select :u, ref, 0, :due, 0, 0 from unnest(cast(:refs as text[])) as ref
+                on conflict (user_id, card_ref) do update set due_at = least(c.due_at, excluded.due_at)
+                  where not c.suspended and c.due_at > excluded.due_at
+                returning card_ref
+                """
+                ),
+                {"u": uid, "due": event.occurred_at, "refs": refs},
+            )
+        )
+        .scalars()
+        .all()
     )
-    inserted = [str(r) for r in result.scalars().all()]
+    inserted = [str(r) for r in changed]
     if inserted:
         await ctx.session.execute(
             text("delete from learn.srs_tombstones where user_id = :u and card_ref = any(:refs)"),

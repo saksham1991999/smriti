@@ -235,24 +235,51 @@ class FreezeEquipped(_Payload):
     slot: Annotated[int, Field(ge=0, le=10)] = 0
 
 
+# The three v1.1 events are accepted in both shapes in use: the one in docs/contracts/sync.md
+# and the one packages/app-core sends (src/sync/types.ts). Only ids and counts, never text.
+
+
 class RescueCompleted(_Payload):
     """The 2-minute rescue (R23): waters the plant for the day, never a streak day."""
 
     cards: Count
-    ms_total: Ms
+    ms_total: Ms | None = None
+    reached_qualify: bool | None = None
 
 
 ConceptId = Annotated[str, Field(pattern=r"^[A-Za-z0-9_.:\-]{1,200}$")]
+CardRef = Annotated[str, Field(pattern=CARD_REF_PATTERN)]
 
 
 class CardsQueued(_Payload):
-    concept_ids: Annotated[list[ConceptId], Field(min_length=1, max_length=200)]
-    source: Literal["lesson", "practice", "comeback"]
+    """memory-labs §5.14 "add cards to reviews". ``card_refs`` are the cards the client queued
+    (new ones start due now; started ones are pulled into the queue); ``concept_ids`` say why."""
+
+    source: Literal["lesson", "practice", "comeback", "mock_report", "practice_summary", "solution"]
+    concept_ids: Annotated[list[ConceptId], Field(max_length=200)] = Field(default_factory=list)
+    card_refs: Annotated[list[CardRef], Field(max_length=500)] = Field(default_factory=list)
+
+    @field_validator("card_refs")
+    @classmethod
+    def _aliases(cls, v: list[str]) -> list[str]:
+        return [normalize_card_ref(r) for r in v]
+
+    @model_validator(mode="after")
+    def _not_empty(self) -> CardsQueued:
+        if not self.concept_ids and not self.card_refs:
+            raise ValueError("concept_ids or card_refs is required")
+        return self
 
 
 class ComebackPlanStarted(_Payload):
-    days_away: Annotated[int, Field(ge=0, le=3650)]
-    cards: Count
+    """memory-labs §5.2: mirrors the comeback plan so a second device shows the same plan."""
+
+    days_away: Annotated[int, Field(ge=0, le=3650)] | None = None
+    cards: Count | None = None
+    start_day: date | None = None
+    plan_days: Annotated[int, Field(ge=1, le=60)] | None = None
+    daily_chunk: Annotated[int, Field(ge=0, le=1000)] | None = None
+    relearn_topics: Annotated[list[Id], Field(max_length=100)] = Field(default_factory=list)
 
 
 PAYLOAD_MODELS: dict[str, type[_Payload]] = {

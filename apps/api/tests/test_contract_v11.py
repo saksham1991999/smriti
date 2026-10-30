@@ -135,57 +135,82 @@ async def test_rescue_waters_the_plant_but_is_not_a_streak_day(
     assert current == 1
 
 
-async def test_cards_queued_adds_new_concept_cards_once(client: httpx.AsyncClient) -> None:
+async def test_cards_queued_starts_new_cards_and_pulls_started_ones_forward(
+    client: httpx.AsyncClient,
+) -> None:
     s = await new_guest(client)
+    # The shape packages/app-core sends (queueCardsForConcepts).
     queued = event(
         "cards_queued",
-        {"concept_ids": ["phy.kinematics.velocity", "phy.kinematics.speed"], "source": "lesson"},
+        {
+            "source": "practice_summary",
+            "concept_ids": ["phy.kinematics.velocity"],
+            "card_refs": ["c:card-velocity-1", "c:card-velocity-2"],
+        },
     )
     await post_events(client, s, [queued])
-    state = await get_state(client, s)
-    cards = {c["card_ref"]: c for c in state["srs"]["cards"]}
-    assert set(cards) == {"c:phy.kinematics.velocity", "c:phy.kinematics.speed"}
+    cards = {c["card_ref"]: c for c in (await get_state(client, s))["srs"]["cards"]}
+    assert set(cards) == {"c:card-velocity-1", "c:card-velocity-2"}
     assert all(c["state"] == 0 and c["reps"] == 0 for c in cards.values())
 
-    # A reviewed card keeps its schedule when the same concept is queued again.
-    await post_events(
-        client,
-        s,
-        [
-            event(
-                "review_rated",
-                {
-                    "card_ref": "c:phy.kinematics.speed",
-                    "rating": 4,
-                    "confidence": None,
-                    "ms_to_answer": 500,
-                },
-            )
-        ],
+    # A reviewed card keeps its history; queueing it again only pulls it into today's queue.
+    review = event(
+        "review_rated",
+        {"card_ref": "c:card-velocity-2", "rating": 4, "confidence": None, "ms_to_answer": 500},
     )
-    version = (await get_state(client, s))["state_version"]
-    again = await post_events(
-        client,
-        s,
-        [event("cards_queued", {"concept_ids": ["phy.kinematics.speed"], "source": "comeback"})],
-    )
-    assert len(again["accepted"]) == 1
-    delta = await get_state(client, s, since=version)
-    assert "srs" not in delta or delta["srs"]["cards"] == []
-    speed = next(
+    await post_events(client, s, [review])
+    reviewed = next(
         c
         for c in (await get_state(client, s))["srs"]["cards"]
-        if c["card_ref"] == "c:phy.kinematics.speed"
+        if c["card_ref"] == "c:card-velocity-2"
     )
-    assert speed["reps"] == 1
+    assert reviewed["due"] > datetime.now(UTC).isoformat()
+    again = event(
+        "cards_queued",
+        {"source": "mock_report", "concept_ids": [], "card_refs": ["c:card-velocity-2"]},
+    )
+    await post_events(client, s, [again])
+    pulled = next(
+        c
+        for c in (await get_state(client, s))["srs"]["cards"]
+        if c["card_ref"] == "c:card-velocity-2"
+    )
+    assert pulled["reps"] == 1
+    assert pulled["due"] <= datetime.now(UTC).isoformat()
 
 
-async def test_comeback_plan_started_is_accepted(client: httpx.AsyncClient) -> None:
+async def test_cards_queued_with_concepts_only_queues_nothing(client: httpx.AsyncClient) -> None:
     s = await new_guest(client)
+    # The shape in docs/contracts/sync.md: cards live in bundles, so concepts alone add no cards.
     result = await post_events(
-        client, s, [event("comeback_plan_started", {"days_away": 12, "cards": 30})]
+        client,
+        s,
+        [event("cards_queued", {"concept_ids": ["phy.kinematics.speed"], "source": "lesson"})],
     )
     assert len(result["accepted"]) == 1
+    assert (await get_state(client, s))["srs"]["cards"] == []
+
+
+async def test_new_events_accept_the_app_core_and_contract_shapes(
+    client: httpx.AsyncClient,
+) -> None:
+    s = await new_guest(client)
+    events = [
+        event("rescue_completed", {"cards": 5, "ms_total": 120000}),
+        event("rescue_completed", {"cards": 5, "reached_qualify": False}),
+        event("comeback_plan_started", {"days_away": 12, "cards": 30}),
+        event(
+            "comeback_plan_started",
+            {
+                "start_day": "2026-10-30",
+                "plan_days": 5,
+                "daily_chunk": 12,
+                "relearn_topics": ["t-1"],
+            },
+        ),
+    ]
+    result = await post_events(client, s, events)
+    assert len(result["accepted"]) == 4, result
     bad = await post_events(
         client, s, [event("cards_queued", {"concept_ids": [], "source": "lesson"})]
     )

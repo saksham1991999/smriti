@@ -126,3 +126,35 @@ export async function devGoogle(page: Page, email: string, name: string) {
   await page.getByTestId("dev-name").fill(name);
   await page.getByTestId("dev-submit").click();
 }
+
+/** PRC-01 → PRC-03 → PRC-04/05 → PRC-06 on the first drill tile; answers each question with its first option. */
+export async function drill(page: Page) {
+  await page.goto("/practice");
+  await expect(page.getByTestId("prc-01")).toBeVisible();
+  await expectAccessible(page, "PRC-01");
+  await page.locator("[data-testid^=drill-]").first().click();
+  await expect(page.getByTestId("prc-03")).toBeVisible();
+  await page.getByTestId("drill-start").click();
+  await expect(page.getByTestId("prc-04")).toBeVisible();
+  await expectAccessible(page, "PRC-04");
+  for (let i = 0; i < 30; i++) {
+    if (await visible(page.getByTestId("prc-06"), 200)) break;
+    const check = page.getByTestId("drill-check");
+    if (await visible(check, 200)) {
+      const q = page.getByTestId("drill-question");
+      const option = q.locator("[data-testid^=option-]").first();
+      if (await visible(option, 200)) await option.click();
+      else if (await visible(q.locator("input").first(), 200)) await q.locator("input").first().fill("1");
+      if (await check.isEnabled()) await check.click();
+      continue;
+    }
+    const next = page.getByTestId("drill-next");
+    if (await visible(next, 200)) {
+      await expect(page.getByTestId("prc-05")).toBeVisible();
+      await next.click();
+    }
+  }
+  await expect(page.getByTestId("prc-06")).toBeVisible();
+  await expectAccessible(page, "PRC-06");
+  await page.getByTestId("drill-done").click();
+}

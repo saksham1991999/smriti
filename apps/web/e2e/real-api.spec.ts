@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
 import { activateSubscription } from "../scripts/fake-razorpay.mjs";
-import { devGoogle, expectAccessible, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
+import { devGoogle, drill, expectAccessible, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
 
 const API = "http://127.0.0.1:8000";
 
@@ -73,7 +73,21 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await expect(page.getByTestId("home-streak")).toContainText("1");
     expect(seen.calls.some((c) => /GET \/v1\/sync\/state 200/.test(c))).toBe(true);
 
+    // A drill runs as a server practice session.
+    await drill(page);
+    // The session is asked of the server first. Until the publish job loads question bodies into
+    // content.question_bodies the server answers 404 no_questions, and the drill runs on the device
+    // with its answers in the outbox; once it has them, answers and completion go to the server.
+    const start = seen.calls.find((c) => c.startsWith("POST /v1/practice/sessions "));
+    expect(start).toMatch(/ (200|404)$/);
+    if (start?.endsWith(" 200")) {
+      expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/answers 200/.test(c))).toBe(true);
+      expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/complete 200/.test(c))).toBe(true);
+    }
+    expect(seen.calls.some((c) => /GET \/v1\/practice\/limits 200/.test(c))).toBe(true);
+
     // Soft prompt → link Google (dev auth) → paywall with the server's price and eligibility.
+    await page.goto("/learn");
     await page.getByTestId("save-plant-link").click();
     await devGoogle(page, `real-${locale}-${Date.now()}@example.test`, "Real API Student");
     await expect(page.getByTestId("auth-01")).toBeHidden();

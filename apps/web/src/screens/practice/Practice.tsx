@@ -6,8 +6,9 @@
  */
 import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
-import { countsTowardPracticeQuota, practiceQuota, sizePracticeSession } from "@smriti/app-core";
+import { countsTowardPracticeQuota, practiceQuota, sizePracticeSession, type Quota } from "@smriti/app-core";
 import { useAppStore } from "@smriti/app-core/react";
+import { useQueryClient } from "@tanstack/react-query";
 import { checkAnswer, workedSolution, type Answer, type AnyQuestion, type CheckResult } from "@smriti/lesson-core";
 import { PlayerProvider, QuestionView, RichText, canSubmit, contentUrl, initialDraft } from "@smriti/lesson-player-web";
 import { Banner, Button, Card, IconButton, Chip, Dialog, Icon, LimitMeter, PetLine, ProgressBar, StatTile, Text, TopBar } from "@smriti/ui-web";
@@ -16,14 +17,21 @@ import { findTopic, useBundle, useCatalog, type CatalogTopic } from "../../lib/c
 import { useDaily, usePracticeToday, useTodayMinutes } from "../../lib/daily";
 import { useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
+import { completeServerSession, startServerSession, submitServerAnswer, usePracticeLimits } from "../../lib/practice";
 import { useIsPro } from "../../lib/pro";
 import { LoadError, NotFound, RouteLoading } from "../../shell/States";
 
-function useQuota() {
+/** Today's practice quota: the server's counters when it has answered, else the device's (the higher count wins). */
+function useQuota(): Quota {
   const s = useServices();
   const pro = useIsPro();
   const used = usePracticeToday();
-  return practiceQuota(used, pro, s.flags);
+  const server = usePracticeLimits().data?.practice_questions;
+  if (!server) return practiceQuota(used, pro, s.flags);
+  const n = Math.max(server.used, used);
+  if (server.unlimited || server.limit === null) return { unlimited: true, limit: server.limit, used: n, remaining: Number.POSITIVE_INFINITY, allowed: true };
+  const remaining = Math.max(0, server.limit - n);
+  return { unlimited: false, limit: server.limit, used: n, remaining, allowed: remaining > 0 };
 }
 
 const mmss = (ms: number) => {
@@ -120,6 +128,10 @@ export function Drill() {
   const [answers, setAnswers] = useState<Answered[]>([]);
   const [leaving, setLeaving] = useState(false);
   const sessionId = useRef<string>("");
+  /** True when the server runs this session (`/v1/practice/sessions`); false: device only, via the outbox. */
+  const onServer = useRef(false);
+  const queryClient = useQueryClient();
+  const { locale } = useI18n();
   const started = useRef(0);
   const opened = useRef(0);
 
@@ -137,26 +149,35 @@ export function Drill() {
   const back = () => void navigate({ to: "/practice" });
   const size = sizePracticeSession(questions.length, quota);
 
-  const start = () => {
+  const start = async () => {
     sessionId.current = s.newId();
+    const server = await startServerSession(s, { sessionId: sessionId.current, topicId, count: questions.length, exam: s.store.getState().profile?.exam_profile_ids[0] ?? null });
+    const known = new Set(questions.map((q) => q.id));
+    const serverOrder = server ? server.questions.map((q) => q.question_id).filter((id) => known.has(id)) : [];
+    onServer.current = serverOrder.length > 0;
+    if (server) sessionId.current = server.id;
+    const ids = onServer.current ? serverOrder : questions.slice(0, size).map((q) => q.id);
     started.current = Date.now();
     opened.current = Date.now();
-    setOrder(questions.slice(0, size).map((q) => q.id));
+    setOrder(ids);
     setIndex(0);
     setAnswers([]);
-    setDraft(initialDraft(questions[0] ?? null));
+    setDraft(initialDraft(questions.find((q) => q.id === ids[0]) ?? null));
     setResult(null);
     setPhase("run");
-    s.analytics.track("drill_started", { session_id: sessionId.current, scope: "topic", concept_count: 0, question_count: size, difficulty_mode: "adaptive", timed: false, feedback_mode: "after_each" });
+    s.analytics.track("drill_started", { session_id: sessionId.current, scope: "topic", concept_count: 0, question_count: ids.length, difficulty_mode: "adaptive", timed: false, feedback_mode: "after_each" });
   };
 
   const finish = async (endedBy: "finished" | "closed", list: Answered[]) => {
     const correct = list.filter((a) => a.correct).length;
     const ms = Date.now() - started.current;
-    if (list.length > 0) {
+    if (onServer.current) {
+      await completeServerSession(s, sessionId.current, endedBy);
+      void queryClient.invalidateQueries({ queryKey: ["practice"] });
+    } else if (list.length > 0) {
       await s.record("practice_session_completed", { session_id: sessionId.current, kind: "drill", answered: list.length, correct, ms_total: ms });
-      useDaily.getState().add(ms);
     }
+    if (list.length > 0) useDaily.getState().add(ms);
     s.analytics.track("drill_completed", { session_id: sessionId.current, answered: list.length, correct, duration_ms: ms, ended_by: endedBy, free_cap: quota.unlimited ? "none" : String(quota.limit) });
   };
 
@@ -189,7 +210,7 @@ export function Drill() {
           {capReached ? (
             <Button label={t("practice:PRC-01.pro_link")} onPress={() => void navigate({ to: "/pro", search: { source: "practice_limit" } })} testID="drill-pro" />
           ) : (
-            <Button label={t("practice:PRC-03.start")} onPress={start} disabled={size === 0} testID="drill-start" />
+            <Button label={t("practice:PRC-03.start")} onPress={() => void start()} disabled={size === 0} testID="drill-start" />
           )}
         </main>
       </div>
@@ -199,7 +220,7 @@ export function Drill() {
   if (phase === "done") {
     const correct = answers.filter((a) => a.correct).length;
     const accuracy = answers.length ? Math.round((correct / answers.length) * 100) : 0;
-    return <DrillSummary answered={answers.length} total={order.length} accuracy={accuracy} ms={answers.reduce((n, a) => n + a.ms, 0)} onDone={back} onAgain={start} />;
+    return <DrillSummary answered={answers.length} total={order.length} accuracy={accuracy} ms={answers.reduce((n, a) => n + a.ms, 0)} onDone={back} onAgain={() => void start()} />;
   }
 
   const qid = order[index] as string;
@@ -211,6 +232,13 @@ export function Drill() {
     const ms = Date.now() - opened.current;
     setResult(r);
     setAnswers((xs) => [...xs, { qid, correct: r.correct, ms }]);
+    if (onServer.current) {
+      const res = await submitServerAnswer(s, sessionId.current, { questionId: qid, answer: draft, timeMs: ms, locale });
+      if (res) {
+        if (res.counted) useDaily.getState().addPractice(1);
+        return;
+      }
+    }
     await s.record("answer_submitted", {
       topic_id: topicId,
       question_id: qid,

@@ -1,0 +1,47 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Figures of ingested previous-year questions, to be recreated as diagrams through visual-director (never scanned). Each brief describes the official figure; labels are placed at anchors once an image exists.",
+  "requests": [
+    {
+      "id": "img.electric-charges-fields.pyq-crossed-dipoles",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "two short straight rods crossing at right angles at a point, like a plus sign: one horizontal rod and one vertical rod, each with a small dot at both ends; a long horizontal dashed line runs from the right end of the horizontal rod to a single dot far away on the right; plain white background, thin dark lines. Recreate the figure of NTA's JEE (Main) 2026 paper, 2 April Shift 1, question 36 faithfully (same parts, positions and directions); every letter, number, sign and arrow label is added by the app at label anchors.",
+      "must_show": [
+        "one horizontal rod and one vertical rod crossing at their midpoints",
+        "small dots at the four rod ends",
+        "a dashed line along the horizontal rod's axis to a distant dot on the right"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "a scan or copy of the original paper"
+      ],
+      "alt": {
+        "en": "Dipole A lies along a horizontal line with its positive end on the left; dipole B is vertical with its positive end at the top; both are centred at O. Point x lies far to the right on A's axis.",
+        "hi": "द्विध्रुव A क्षैतिज रेखा पर है, जिसका धनात्मक सिरा बाईं ओर है; द्विध्रुव B ऊर्ध्वाधर है, जिसका धनात्मक सिरा ऊपर है; दोनों का केंद्र O है। बिंदु x, A की अक्ष पर दाईं ओर दूर स्थित है।"
+      },
+      "used_by": [
+        "q.phy.electric-charges-fields.dipole.9001"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ]
+}

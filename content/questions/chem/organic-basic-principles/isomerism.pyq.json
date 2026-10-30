@@ -1,0 +1,82 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.organic-basic-principles.isomerism",
+  "questions": [
+    {
+      "id": "q.chem.organic-basic-principles.isomerism.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.organic-basic-principles.isomerism.core.organic-isomerism",
+          "weight": 0.5
+        },
+        {
+          "id": "chem.hydrocarbons.alkanes.core.alkanes-conformations",
+          "weight": 0.5
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Consider the isomers of hydrocarbon with molecular formula $\\ce{C5H10}$. These isomers do not decolourise $\\ce{KMnO4}$ solution. These isomers are subjected to chlorination with chlorine in presence of light to give monochloro compounds. The total number of monochloro compounds (structural isomers only) formed is ______.",
+        "hi": "आण्विक सूत्र $\\ce{C5H10}$ वाले हाइड्रोकार्बन के समावयवों पर विचार कीजिए। ये समावयव $\\ce{KMnO4}$ विलयन को रंगहीन नहीं करते। इन समावयवों का प्रकाश की उपस्थिति में क्लोरीन से क्लोरीनन करके मोनोक्लोरो यौगिक बनाए जाते हैं। बनने वाले मोनोक्लोरो यौगिकों (केवल संरचनात्मक समावयव) की कुल संख्या ______ है।"
+      },
+      "answer": {
+        "value": 14,
+        "unit": null
+      },
+      "solution": {
+        "feynman": {
+          "en": "Not decolourising $\\ce{KMnO4}$ rules out alkenes, so the isomers are the five cycloalkanes. For each, count the different kinds of hydrogen; each kind gives one monochloro product.",
+          "hi": "$\\ce{KMnO4}$ को रंगहीन न करना ऐल्कीनों को हटा देता है, अतः समावयव पाँच साइक्लोऐल्केन हैं। प्रत्येक में भिन्न प्रकार के हाइड्रोजन गिनिए; प्रत्येक प्रकार एक मोनोक्लोरो उत्पाद देता है।"
+        },
+        "steps": [
+          {
+            "en": "Cyclopentane $1$; methylcyclobutane $4$; ethylcyclopropane $4$.",
+            "hi": "साइक्लोपेन्टेन $1$; मेथिलसाइक्लोब्यूटेन $4$; एथिलसाइक्लोप्रोपेन $4$।"
+          },
+          {
+            "en": "1,1-dimethylcyclopropane $2$; 1,2-dimethylcyclopropane $3$. Total $1+4+4+2+3=14$.",
+            "hi": "1,1-डाइमेथिलसाइक्लोप्रोपेन $2$; 1,2-डाइमेथिलसाइक्लोप्रोपेन $3$। कुल $1+4+4+2+3=14$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 180,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 72
+      }
+    }
+  ]
+}

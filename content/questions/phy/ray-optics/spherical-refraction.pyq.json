@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.phy.ray-optics.spherical-refraction.9001 (paper Q41) needs its figure img.ray-optics.pyq-refracting-surface, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure.",
+  "hi_source": "translation",
+  "topic": "phy.ray-optics.spherical-refraction",
+  "questions": [
+    {
+      "id": "q.phy.ray-optics.spherical-refraction.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.ray-optics.spherical-refraction.core.spherical-surface-refraction",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Refer the figure given below. $\\mu_1$ and $\\mu_2$ are refractive indices of air and lens material. The height of image will be ______ $\\mathrm{cm}$.",
+        "hi": "नीचे दिए गए चित्र को देखिए। $\\mu_1$ और $\\mu_2$ क्रमशः वायु और लेंस पदार्थ के अपवर्तनांक हैं। प्रतिबिंब की ऊँचाई ______ $\\mathrm{cm}$ होगी।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$0.5$",
+            "hi": "$0.5$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$1.2$",
+            "hi": "$1.2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$0.25$",
+            "hi": "$0.25$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Use the single-surface formula $\\frac{\\mu_2}{v}-\\frac{\\mu_1}{u}=\\frac{\\mu_2-\\mu_1}{R}$. The centre of curvature is on the incoming side, so $R$ is negative. Magnification is $\\frac{\\mu_1v}{\\mu_2u}$.",
+          "hi": "एकल सतह सूत्र $\\frac{\\mu_2}{v}-\\frac{\\mu_1}{u}=\\frac{\\mu_2-\\mu_1}{R}$ का उपयोग कीजिए। वक्रता केंद्र आपतित प्रकाश की ओर है, अतः $R$ ऋणात्मक है। आवर्धन $\\frac{\\mu_1v}{\\mu_2u}$ है।"
+        },
+        "steps": [
+          {
+            "en": "$u=-40\\ \\mathrm{cm}$, $R=-20\\ \\mathrm{cm}$: $\\frac{1.54}{v}+\\frac{1}{40}=\\frac{0.54}{-20}$, so $v \\approx -29.6\\ \\mathrm{cm}$.",
+            "hi": "$u=-40\\ \\mathrm{cm}$, $R=-20\\ \\mathrm{cm}$: $\\frac{1.54}{v}+\\frac{1}{40}=\\frac{0.54}{-20}$, अतः $v \\approx -29.6\\ \\mathrm{cm}$।"
+          },
+          {
+            "en": "$m=\\frac{\\mu_1v}{\\mu_2u}=\\frac{29.6}{1.54 \\times 40} \\approx 0.48$, so the image height is $\\approx 0.96\\ \\mathrm{cm}$, closest to $1\\ \\mathrm{cm}$.",
+            "hi": "$m=\\frac{\\mu_1v}{\\mu_2u}=\\frac{29.6}{1.54 \\times 40} \\approx 0.48$, अतः प्रतिबिंब की ऊँचाई $\\approx 0.96\\ \\mathrm{cm}$ है, जो $1\\ \\mathrm{cm}$ के निकटतम है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": "img.ray-optics.pyq-refracting-surface",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 41
+      }
+    }
+  ]
+}

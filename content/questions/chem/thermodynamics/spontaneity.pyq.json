@@ -1,0 +1,78 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.thermodynamics.spontaneity",
+  "questions": [
+    {
+      "id": "q.chem.thermodynamics.spontaneity.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.thermodynamics.spontaneity.core.entropy-second-law",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "At the transition temperature $T$, $A \\rightleftharpoons B$ and $\\Delta G^0=105-35\\log T$ where $A$ and $B$ are two states of substance $X$. The transition temperature in $^\\circ\\mathrm{C}$ when pressure is $1\\ \\mathrm{atm}$ is ______. (Nearest integer)",
+        "hi": "संक्रमण ताप $T$ पर $A \\rightleftharpoons B$ और $\\Delta G^0=105-35\\log T$ हैं, जहाँ $A$ और $B$ पदार्थ $X$ की दो अवस्थाएँ हैं। संक्रमण ताप $^\\circ\\mathrm{C}$ में, जब दाब $1\\ \\mathrm{atm}$ हो, ______ है। (निकटतम पूर्णांक)"
+      },
+      "answer": {
+        "value": 727,
+        "unit": "°C"
+      },
+      "solution": {
+        "feynman": {
+          "en": "At the transition temperature the two states are in equilibrium, so $\\Delta G^0=0$.",
+          "hi": "संक्रमण ताप पर दोनों अवस्थाएँ साम्य में होती हैं, अतः $\\Delta G^0=0$।"
+        },
+        "steps": [
+          {
+            "en": "$105=35\\log T$ gives $\\log T=3$, $T=1000\\ \\mathrm{K}$.",
+            "hi": "$105=35\\log T$ से $\\log T=3$, $T=1000\\ \\mathrm{K}$।"
+          },
+          {
+            "en": "$1000-273=727\\ ^\\circ\\mathrm{C}$.",
+            "hi": "$1000-273=727\\ ^\\circ\\mathrm{C}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 75
+      }
+    }
+  ]
+}

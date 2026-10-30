@@ -1,0 +1,177 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.practical-chemistry.organic-detection",
+  "questions": [
+    {
+      "id": "q.chem.practical-chemistry.organic-detection.9001",
+      "type": "match_list",
+      "concepts": [
+        {
+          "id": "chem.practical-chemistry.organic-detection.core.functional-group-tests",
+          "weight": 0.5
+        },
+        {
+          "id": "chem.aldehydes-ketones-acids.carbonyl-reactions.core.aldehyde-ketone-tests",
+          "weight": 0.25
+        },
+        {
+          "id": "chem.amines.amines-prep-reactions.core.amine-basicity-tests",
+          "weight": 0.25
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Match List - I with List - II. List - I: Mixture of Compounds; List - II: Reagent used to distinguish. Choose the correct answer from the options given below :",
+        "hi": "सूची - I का सूची - II से मिलान कीजिए। सूची - I: यौगिकों का मिश्रण; सूची - II: विभेद के लिए प्रयुक्त अभिकर्मक। नीचे दिए गए विकल्पों में से सही उत्तर चुनिए :"
+      },
+      "list_i": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A. Diethyl amine + Ethyl amine",
+            "hi": "A. डाइएथिल ऐमीन + एथिल ऐमीन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "B. Acetaldehyde + Acetone",
+            "hi": "B. ऐसीटैल्डिहाइड + ऐसीटोन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "C. Ethanol + Phenol",
+            "hi": "C. एथेनॉल + फ़ीनॉल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "D. Benzoic acid + Cinnamic acid",
+            "hi": "D. बेन्ज़ोइक अम्ल + सिनैमिक अम्ल"
+          }
+        }
+      ],
+      "list_ii": [
+        {
+          "id": "i",
+          "text": {
+            "en": "I. Bromine water",
+            "hi": "I. ब्रोमीन जल"
+          }
+        },
+        {
+          "id": "ii",
+          "text": {
+            "en": "II. $\\ce{CHCl3 + KOH}, \\Delta$",
+            "hi": "II. $\\ce{CHCl3 + KOH}, \\Delta$"
+          }
+        },
+        {
+          "id": "iii",
+          "text": {
+            "en": "III. Neutral $\\ce{FeCl3}$",
+            "hi": "III. उदासीन $\\ce{FeCl3}$"
+          }
+        },
+        {
+          "id": "iv",
+          "text": {
+            "en": "IV. Ammonical silver nitrate",
+            "hi": "IV. अमोनियामय सिल्वर नाइट्रेट"
+          }
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A-IV, B-II, C-I, D-III",
+            "hi": "A-IV, B-II, C-I, D-III"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "A-IV, B-II, C-III, D-I",
+            "hi": "A-IV, B-II, C-III, D-I"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "A-II, B-IV, C-I, D-III",
+            "hi": "A-II, B-IV, C-I, D-III"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A-II, B-IV, C-III, D-I",
+            "hi": "A-II, B-IV, C-III, D-I"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Pick the test that only one member of each pair passes: the carbylamine test for a primary amine, Tollens' reagent for an aldehyde, neutral ferric chloride for a phenol, and bromine water for a carbon-carbon double bond.",
+          "hi": "प्रत्येक युग्म के लिए वह परीक्षण चुनिए जिसमें केवल एक सदस्य सफल हो: प्राथमिक ऐमीन के लिए कार्बिलऐमीन परीक्षण, ऐल्डिहाइड के लिए टॉलेन अभिकर्मक, फ़ीनॉल के लिए उदासीन फ़ेरिक क्लोराइड, और कार्बन-कार्बन द्विआबंध के लिए ब्रोमीन जल।"
+        },
+        "steps": [
+          {
+            "en": "A: ethyl amine is primary and gives the carbylamine test (II). B: acetaldehyde reduces Tollens' reagent (IV).",
+            "hi": "A: एथिल ऐमीन प्राथमिक है और कार्बिलऐमीन परीक्षण (II) देती है। B: ऐसीटैल्डिहाइड टॉलेन अभिकर्मक (IV) को अपचयित करता है।"
+          },
+          {
+            "en": "C: phenol gives a violet colour with neutral ferric chloride (III). D: cinnamic acid's double bond decolourises bromine water (I). So A-II, B-IV, C-III, D-I.",
+            "hi": "C: फ़ीनॉल उदासीन फ़ेरिक क्लोराइड (III) के साथ बैंगनी रंग देता है। D: सिनैमिक अम्ल का द्विआबंध ब्रोमीन जल (I) को रंगहीन करता है। अतः A-II, B-IV, C-III, D-I।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 67
+      }
+    }
+  ]
+}

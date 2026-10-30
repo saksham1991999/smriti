@@ -1,0 +1,105 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.electrostatic-potential-capacitance.conductors-electrostatics",
+  "questions": [
+    {
+      "id": "q.phy.electrostatic-potential-capacitance.conductors-electrostatics.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.conductors-electrostatics.core.conductor-electrostatics",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Two charged conducting spheres $S_1$ and $S_2$ of radii $8\\ \\mathrm{cm}$ and $18\\ \\mathrm{cm}$ are connected to each other by a wire. After equilibrium is established, the ratio of electric fields on $S_1$ and $S_2$ spheres are $E_{S1}$ and $E_{S2}$ respectively. The value of $\\frac{E_{S1}}{E_{S2}}$ is ______.",
+        "hi": "दो आवेशित चालक गोले $S_1$ और $S_2$, जिनकी त्रिज्याएँ $8\\ \\mathrm{cm}$ और $18\\ \\mathrm{cm}$ हैं, एक तार से परस्पर जोड़े गए हैं। साम्यावस्था स्थापित होने के बाद गोलों $S_1$ और $S_2$ पर विद्युत क्षेत्र क्रमशः $E_{S1}$ और $E_{S2}$ हैं। $\\frac{E_{S1}}{E_{S2}}$ का मान ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac32$",
+            "hi": "$\\frac32$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\frac23$",
+            "hi": "$\\frac23$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\frac49$",
+            "hi": "$\\frac49$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\frac94$",
+            "hi": "$\\frac94$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Connected conductors share one potential, $\\frac{kQ}{r}$. The surface field is $\\frac{kQ}{r^2}=\\frac{V}{r}$, so the smaller sphere has the stronger field.",
+          "hi": "जुड़े हुए चालकों का विभव एक ही होता है, $\\frac{kQ}{r}$। सतह पर क्षेत्र $\\frac{kQ}{r^2}=\\frac{V}{r}$ है, अतः छोटे गोले पर क्षेत्र अधिक होता है।"
+        },
+        "steps": [
+          {
+            "en": "$E=\\frac Vr$ with equal $V$, so $\\frac{E_{S1}}{E_{S2}}=\\frac{r_2}{r_1}=\\frac{18}{8}=\\frac94$.",
+            "hi": "$E=\\frac Vr$ और $V$ दोनों के लिए समान है, अतः $\\frac{E_{S1}}{E_{S2}}=\\frac{r_2}{r_1}=\\frac{18}{8}=\\frac94$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 34
+      }
+    }
+  ]
+}

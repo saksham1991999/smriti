@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.organic-basic-principles.classification-nomenclature",
+  "questions": [
+    {
+      "id": "q.chem.organic-basic-principles.classification-nomenclature.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.organic-basic-principles.classification-nomenclature.core.iupac-nomenclature",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In IUPAC nomenclature, the correct order of decreasing priority of functional group is :",
+        "hi": "IUPAC नामपद्धति में क्रियात्मक समूहों की घटती वरीयता का सही क्रम है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-\\mathrm{CONH_2},\\ {>}\\mathrm{C{=}O},\\ -\\mathrm{CHO},\\ -\\mathrm{NH_2},\\ -\\mathrm{C{\\equiv}C}-$",
+            "hi": "$-\\mathrm{CONH_2},\\ {>}\\mathrm{C{=}O},\\ -\\mathrm{CHO},\\ -\\mathrm{NH_2},\\ -\\mathrm{C{\\equiv}C}-$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$-\\mathrm{CONH_2},\\ -\\mathrm{COOCH_3},\\ -\\mathrm{CHO},\\ -\\mathrm{NH_2},\\ -\\mathrm{OH}$",
+            "hi": "$-\\mathrm{CONH_2},\\ -\\mathrm{COOCH_3},\\ -\\mathrm{CHO},\\ -\\mathrm{NH_2},\\ -\\mathrm{OH}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-\\mathrm{CONH_2},\\ -\\mathrm{CHO},\\ {>}\\mathrm{C{=}O},\\ -\\mathrm{NH_2},\\ -\\mathrm{C{\\equiv}C}-$",
+            "hi": "$-\\mathrm{CONH_2},\\ -\\mathrm{CHO},\\ {>}\\mathrm{C{=}O},\\ -\\mathrm{NH_2},\\ -\\mathrm{C{\\equiv}C}-$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-\\mathrm{CONH_2},\\ -\\mathrm{CHO},\\ -\\mathrm{CN},\\ -\\mathrm{NH_2},\\ -\\mathrm{C{\\equiv}C}-$",
+            "hi": "$-\\mathrm{CONH_2},\\ -\\mathrm{CHO},\\ -\\mathrm{CN},\\ -\\mathrm{NH_2},\\ -\\mathrm{C{\\equiv}C}-$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "IUPAC seniority runs: acids, esters, acid halides, amides, nitriles, aldehydes, ketones, alcohols, amines, then multiple bonds.",
+          "hi": "IUPAC वरीयता क्रम: अम्ल, एस्टर, अम्ल हैलाइड, ऐमाइड, नाइट्राइल, ऐल्डिहाइड, कीटोन, ऐल्कोहॉल, ऐमीन, फिर बहु-आबंध।"
+        },
+        "steps": [
+          {
+            "en": "Amide $>$ aldehyde $>$ ketone $>$ amine $>$ alkyne matches option (c).",
+            "hi": "ऐमाइड $>$ ऐल्डिहाइड $>$ कीटोन $>$ ऐमीन $>$ ऐल्काइन, विकल्प (c) से मेल खाता है।"
+          },
+          {
+            "en": "Option (b) puts the ester below the amide, and option (d) puts the nitrile below the aldehyde; both are wrong.",
+            "hi": "विकल्प (b) में एस्टर ऐमाइड से नीचे है, और विकल्प (d) में नाइट्राइल ऐल्डिहाइड से नीचे है; दोनों गलत हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 65
+      }
+    }
+  ]
+}

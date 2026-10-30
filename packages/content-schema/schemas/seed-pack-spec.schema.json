@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/seed-pack-spec.schema.json",
+  "title": "SeedPackSpecFile",
+  "description": "content/seed-packs/{variant_id}.json: what ships inside one app variant's build (TRD 3.2): the first chapter of its exam, onboarding lessons, placement sets and the pet and plant art. The whole pack stays under 8 MB.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "variant_id", "exam_profiles", "locales", "chapters", "art"],
+  "properties": {
+    "schema": { "const": "seed-pack-spec@1" },
+    "variant_id": { "$ref": "common.schema.json#/$defs/Slug" },
+    "exam_profiles": {
+      "description": "Matches examProfileIds in packages/config/variants/{variant_id}.json.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/ExamProfileId" }
+    },
+    "locales": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/Locale" }
+    },
+    "chapters": {
+      "description": "first: the first chapter (by sort) of the first subject of each profile. Or an explicit list of chapter ids.",
+      "oneOf": [
+        { "const": "first" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/DottedId" }
+        }
+      ]
+    },
+    "include_placement": {
+      "description": "Ship the practice bundles that hold Find my level placement questions.",
+      "type": "boolean"
+    },
+    "art": {
+      "description": "Media request ids for the pet and plant art and other UI art the app needs offline.",
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/ImageRef" }
+    },
+    "max_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8388608
+    }
+  },
+  "unevaluatedProperties": false
+}

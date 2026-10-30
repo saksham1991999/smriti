@@ -1,0 +1,58 @@
+"""The generated models accept the fixture course and reject bad documents."""
+
+from __future__ import annotations
+
+import copy
+import json
+from pathlib import Path
+from typing import Any
+
+import pytest
+from pydantic import ValidationError
+
+from smriti_content import DOCUMENT_MODELS, parse_document
+
+FIXTURES = Path(__file__).resolve().parents[4] / "content" / "fixtures"
+
+
+def _documents() -> list[Path]:
+    return sorted(p for p in FIXTURES.rglob("*.json") if "coverage" not in p.parts)
+
+
+def _load(path: Path) -> dict[str, Any]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert isinstance(data, dict)
+    return data
+
+
+def test_fixture_folder_exists() -> None:
+    assert len(_documents()) > 30
+
+
+@pytest.mark.parametrize("path", _documents(), ids=lambda p: str(p.relative_to(FIXTURES)))
+def test_fixture_parses(path: Path) -> None:
+    doc = _load(path)
+    assert doc.get("fixture") is True
+    model = parse_document(doc)
+    assert type(model) is DOCUMENT_MODELS[doc["schema"]]
+
+
+def test_unknown_schema_is_refused() -> None:
+    with pytest.raises(KeyError):
+        parse_document({"schema": "nope@1"})
+
+
+def test_bad_card_type_is_refused() -> None:
+    doc = _load(FIXTURES / "lessons" / "fx" / "chapter-a" / "topic-a.deep_dive.json")
+    bad = copy.deepcopy(doc)
+    bad["cards"][0]["type"] = "not_a_card"
+    with pytest.raises(ValidationError):
+        parse_document(bad)
+
+
+def test_bad_question_id_is_refused() -> None:
+    doc = _load(FIXTURES / "questions" / "fx" / "chapter-a" / "topic-a.json")
+    bad = copy.deepcopy(doc)
+    bad["questions"][0]["id"] = "Q 1"
+    with pytest.raises(ValidationError):
+        parse_document(bad)

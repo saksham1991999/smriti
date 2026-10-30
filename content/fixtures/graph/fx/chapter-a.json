@@ -1,0 +1,359 @@
+{
+  "schema": "chapter@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx.chapter-a",
+  "subject": "fx",
+  "unit": "fx.unit-a",
+  "name": {
+    "en": "Fixture chapter A",
+    "hi": "फ़िक्स्चर अध्याय A"
+  },
+  "ncert_ref": null,
+  "topics": [
+    {
+      "id": "fx.chapter-a.topic-a",
+      "name": {
+        "en": "Fixture topic A",
+        "hi": "फ़िक्स्चर टॉपिक A"
+      },
+      "summary": {
+        "en": "Fixture topic A summary.",
+        "hi": "फ़िक्स्चर टॉपिक A का सारांश।"
+      },
+      "subtopics": [
+        {
+          "id": "fx.chapter-a.topic-a.sub-1",
+          "name": {
+            "en": "Fixture subtopic A.1",
+            "hi": "फ़िक्स्चर उप-टॉपिक A.1"
+          },
+          "concepts": [
+            {
+              "id": "fx.chapter-a.topic-a.sub-1.concept-1",
+              "name": {
+                "en": "Fixture concept A1",
+                "hi": "फ़िक्स्चर अवधारणा A1"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "Fixture summary for concept A1.",
+                "hi": "अवधारणा A1 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point A1.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु A1.1"
+                },
+                {
+                  "en": "Fixture key point A1.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु A1.2"
+                }
+              ],
+              "prerequisites": [],
+              "related": [
+                "fx.chapter-a.topic-a.sub-1.concept-2"
+              ],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-a1"
+              ]
+            },
+            {
+              "id": "fx.chapter-a.topic-a.sub-1.concept-2",
+              "name": {
+                "en": "Fixture concept A2",
+                "hi": "फ़िक्स्चर अवधारणा A2"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Fixture summary for concept A2.",
+                "hi": "अवधारणा A2 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point A2.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु A2.1"
+                },
+                {
+                  "en": "Fixture key point A2.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु A2.2"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-a2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-b",
+      "name": {
+        "en": "Fixture topic B",
+        "hi": "फ़िक्स्चर टॉपिक B"
+      },
+      "summary": {
+        "en": "Fixture topic B summary.",
+        "hi": "फ़िक्स्चर टॉपिक B का सारांश।"
+      },
+      "subtopics": [
+        {
+          "id": "fx.chapter-a.topic-b.sub-1",
+          "name": {
+            "en": "Fixture subtopic B.1",
+            "hi": "फ़िक्स्चर उप-टॉपिक B.1"
+          },
+          "concepts": [
+            {
+              "id": "fx.chapter-a.topic-b.sub-1.concept-1",
+              "name": {
+                "en": "Fixture concept B1",
+                "hi": "फ़िक्स्चर अवधारणा B1"
+              },
+              "kind": "list",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "Fixture summary for concept B1.",
+                "hi": "अवधारणा B1 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point B1.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु B1.1"
+                },
+                {
+                  "en": "Fixture key point B1.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु B1.2"
+                }
+              ],
+              "prerequisites": [
+                "fx.chapter-a.topic-a.sub-1.concept-1"
+              ],
+              "related": [],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-b1"
+              ]
+            },
+            {
+              "id": "fx.chapter-a.topic-b.sub-1.concept-2",
+              "name": {
+                "en": "Fixture concept B2",
+                "hi": "फ़िक्स्चर अवधारणा B2"
+              },
+              "kind": "process",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Fixture summary for concept B2.",
+                "hi": "अवधारणा B2 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point B2.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु B2.1"
+                },
+                {
+                  "en": "Fixture key point B2.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु B2.2"
+                }
+              ],
+              "prerequisites": [
+                "fx.chapter-a.topic-a.sub-1.concept-2"
+              ],
+              "related": [],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-b2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-c",
+      "name": {
+        "en": "Fixture topic C",
+        "hi": "फ़िक्स्चर टॉपिक C"
+      },
+      "summary": {
+        "en": "Fixture topic C summary.",
+        "hi": "फ़िक्स्चर टॉपिक C का सारांश।"
+      },
+      "subtopics": [
+        {
+          "id": "fx.chapter-a.topic-c.sub-1",
+          "name": {
+            "en": "Fixture subtopic C.1",
+            "hi": "फ़िक्स्चर उप-टॉपिक C.1"
+          },
+          "concepts": [
+            {
+              "id": "fx.chapter-a.topic-c.sub-1.concept-1",
+              "name": {
+                "en": "Fixture concept C1",
+                "hi": "फ़िक्स्चर अवधारणा C1"
+              },
+              "kind": "date",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "Fixture summary for concept C1.",
+                "hi": "अवधारणा C1 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point C1.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु C1.1"
+                },
+                {
+                  "en": "Fixture key point C1.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु C1.2"
+                }
+              ],
+              "prerequisites": [
+                "fx.chapter-a.topic-b.sub-1.concept-1"
+              ],
+              "related": [],
+              "contrasts": [
+                "fx.chapter-a.topic-c.sub-1.concept-2"
+              ],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-c1"
+              ]
+            },
+            {
+              "id": "fx.chapter-a.topic-c.sub-1.concept-2",
+              "name": {
+                "en": "Fixture concept C2",
+                "hi": "फ़िक्स्चर अवधारणा C2"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Fixture summary for concept C2.",
+                "hi": "अवधारणा C2 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point C2.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु C2.1"
+                },
+                {
+                  "en": "Fixture key point C2.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु C2.2"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-c2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-d",
+      "name": {
+        "en": "Fixture topic D",
+        "hi": "फ़िक्स्चर टॉपिक D"
+      },
+      "summary": {
+        "en": "Fixture topic D summary.",
+        "hi": "फ़िक्स्चर टॉपिक D का सारांश।"
+      },
+      "subtopics": [
+        {
+          "id": "fx.chapter-a.topic-d.sub-1",
+          "name": {
+            "en": "Fixture subtopic D.1",
+            "hi": "फ़िक्स्चर उप-टॉपिक D.1"
+          },
+          "concepts": [
+            {
+              "id": "fx.chapter-a.topic-d.sub-1.concept-1",
+              "name": {
+                "en": "Fixture concept D1",
+                "hi": "फ़िक्स्चर अवधारणा D1"
+              },
+              "kind": "derivation",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Fixture summary for concept D1.",
+                "hi": "अवधारणा D1 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point D1.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु D1.1"
+                },
+                {
+                  "en": "Fixture key point D1.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु D1.2"
+                }
+              ],
+              "prerequisites": [
+                "fx.chapter-a.topic-a.sub-1.concept-2"
+              ],
+              "related": [],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-d1"
+              ]
+            },
+            {
+              "id": "fx.chapter-a.topic-d.sub-1.concept-2",
+              "name": {
+                "en": "Fixture concept D2",
+                "hi": "फ़िक्स्चर अवधारणा D2"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Fixture summary for concept D2.",
+                "hi": "अवधारणा D2 का फ़िक्स्चर सारांश।"
+              },
+              "key_points": [
+                {
+                  "en": "Fixture key point D2.1",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु D2.1"
+                },
+                {
+                  "en": "Fixture key point D2.2",
+                  "hi": "फ़िक्स्चर मुख्य बिंदु D2.2"
+                }
+              ],
+              "prerequisites": [
+                "fx.chapter-a.topic-d.sub-1.concept-1"
+              ],
+              "related": [],
+              "contrasts": [],
+              "syllabus_refs": [
+                "fx-exam-2027:fx:unit-a:item-d2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "schema": "questions@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "topic": "fx.chapter-a.topic-a",
+  "questions": [
+    {
+      "id": "q.fx.chapter-a.topic-a.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-a.sub-1.concept-1",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture stem A1",
+        "hi": "फ़िक्स्चर प्रश्न A1"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Option A",
+            "hi": "विकल्प A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Option B",
+            "hi": "विकल्प B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Option C",
+            "hi": "विकल्प C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Option D",
+            "hi": "विकल्प D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Fixture hint A1",
+          "hi": "फ़िक्स्चर संकेत A1"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation A1",
+          "hi": "फ़िक्स्चर व्याख्या A1"
+        },
+        "steps": [
+          {
+            "en": "Fixture step A1.1",
+            "hi": "फ़िक्स्चर चरण A1.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Fixture trap A1.b",
+              "hi": "फ़िक्स्चर आम गलती A1.b"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "lesson",
+        "practice"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.fx.chapter-a.topic-a.0002",
+      "type": "numerical",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-a.sub-1.concept-2",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture numerical stem: enter 2.5 (metres).",
+        "hi": "फ़िक्स्चर संख्यात्मक प्रश्न: 2.5 (मीटर) लिखें।"
+      },
+      "answer": {
+        "value": 2.5,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "m"
+      },
+      "answer_format": {
+        "allow_scientific": true,
+        "decimals": 2
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "lesson",
+        "practice"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation A2",
+          "hi": "फ़िक्स्चर व्याख्या A2"
+        },
+        "steps": [
+          {
+            "en": "Fixture step A2.1",
+            "hi": "फ़िक्स्चर चरण A2.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    },
+    {
+      "id": "q.fx.chapter-a.topic-a.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-a.sub-1.concept-1",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture stem A3",
+        "hi": "फ़िक्स्चर प्रश्न A3"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Option A",
+            "hi": "विकल्प A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Option B",
+            "hi": "विकल्प B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Option C",
+            "hi": "विकल्प C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Option D",
+            "hi": "विकल्प D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation A3",
+          "hi": "फ़िक्स्चर व्याख्या A3"
+        },
+        "steps": [
+          {
+            "en": "Fixture step A3.1",
+            "hi": "फ़िक्स्चर चरण A3.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    },
+    {
+      "id": "q.fx.chapter-a.topic-a.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-a.sub-1.concept-2",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture integer stem: enter 7.",
+        "hi": "फ़िक्स्चर पूर्णांक प्रश्न: 7 लिखें।"
+      },
+      "answer": {
+        "value": 7,
+        "unit": null
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "placement"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation A4",
+          "hi": "फ़िक्स्चर व्याख्या A4"
+        },
+        "steps": [
+          {
+            "en": "Fixture step A4.1",
+            "hi": "फ़िक्स्चर चरण A4.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    },
+    {
+      "id": "q.fx.chapter-a.topic-a.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-a.sub-1.concept-2",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture stem A5",
+        "hi": "फ़िक्स्चर प्रश्न A5"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Option A",
+            "hi": "विकल्प A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Option B",
+            "hi": "विकल्प B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Option C",
+            "hi": "विकल्प C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Option D",
+            "hi": "विकल्प D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "source": "pyq",
+      "pyq": {
+        "paper": "fx-exam-2025-s1",
+        "number": 1
+      },
+      "difficulty_estimate": "hard",
+      "ideal_time_s": 60,
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation A5",
+          "hi": "फ़िक्स्चर व्याख्या A5"
+        },
+        "steps": [
+          {
+            "en": "Fixture step A5.1",
+            "hi": "फ़िक्स्चर चरण A5.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "revision_sheet@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "rs.fx.chapter-a",
+  "scope": "chapter",
+  "title": {
+    "en": "Fixture title revision",
+    "hi": "फ़िक्स्चर शीर्षक revision"
+  },
+  "concepts": [
+    "fx.chapter-a.topic-a.sub-1.concept-1",
+    "fx.chapter-a.topic-a.sub-1.concept-2",
+    "fx.chapter-a.topic-b.sub-1.concept-1",
+    "fx.chapter-a.topic-b.sub-1.concept-2",
+    "fx.chapter-a.topic-c.sub-1.concept-1",
+    "fx.chapter-a.topic-c.sub-1.concept-2",
+    "fx.chapter-a.topic-d.sub-1.concept-1",
+    "fx.chapter-a.topic-d.sub-1.concept-2"
+  ],
+  "chapter": "fx.chapter-a",
+  "points": [
+    {
+      "en": "Fixture point 1",
+      "hi": "फ़िक्स्चर बिंदु 1"
+    },
+    {
+      "en": "Fixture point 2",
+      "hi": "फ़िक्स्चर बिंदु 2"
+    },
+    {
+      "en": "Fixture point 3",
+      "hi": "फ़िक्स्चर बिंदु 3"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Fixture name formula A",
+        "hi": "फ़िक्स्चर नाम formula A"
+      },
+      "latex": "y = 2x + 1",
+      "concept": "fx.chapter-a.topic-a.sub-1.concept-2"
+    }
+  ]
+}

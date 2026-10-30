@@ -1,0 +1,277 @@
+{
+  "schema": "lesson@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx.chapter-a.topic-b:deep_dive",
+  "topic": "fx.chapter-a.topic-b",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "fx.chapter-a.topic-b.sub-1.concept-1",
+    "fx.chapter-a.topic-b.sub-1.concept-2"
+  ],
+  "cards": [
+    {
+      "id": "fx.chapter-a.topic-b:dd:01",
+      "type": "animation",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Fixture title B1",
+        "hi": "फ़िक्स्चर शीर्षक B1"
+      },
+      "media": "anim.chapter-a.fx-anim-b",
+      "poster": "img.chapter-a.fx-poster-b",
+      "caption": {
+        "en": "Fixture caption B1",
+        "hi": "फ़िक्स्चर कैप्शन B1"
+      },
+      "transcript": {
+        "en": "Fixture body B1",
+        "hi": "फ़िक्स्चर पाठ B1"
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:02",
+      "type": "interactive",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Fixture stem B2",
+        "hi": "फ़िक्स्चर प्रश्न B2"
+      },
+      "widget": "slider",
+      "config": {
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "initial": 0,
+        "unit": "s",
+        "target": {
+          "value": 4,
+          "tolerance": {
+            "abs": 0.5
+          }
+        },
+        "guidance": {
+          "en": "Fixture hint B2",
+          "hi": "फ़िक्स्चर संकेत B2"
+        }
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Fixture stem B3",
+        "hi": "फ़िक्स्चर प्रश्न B3"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "s1",
+            "text": {
+              "en": "Fixture step 1",
+              "hi": "फ़िक्स्चर चरण 1"
+            }
+          },
+          {
+            "id": "s2",
+            "text": {
+              "en": "Fixture step 2",
+              "hi": "फ़िक्स्चर चरण 2"
+            }
+          },
+          {
+            "id": "s3",
+            "text": {
+              "en": "Fixture step 3",
+              "hi": "फ़िक्स्चर चरण 3"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:04",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "question": "q.fx.chapter-a.topic-b.0001"
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:05",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point B5.1",
+          "hi": "फ़िक्स्चर बिंदु B5.1"
+        },
+        {
+          "en": "Fixture point B5.2",
+          "hi": "फ़िक्स्चर बिंदु B5.2"
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:06",
+      "type": "memory_hook",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "mnemonic": {
+        "en": "m.fx.chapter-a.topic-b.sub-1.concept-1.1",
+        "hi": "m.fx.chapter-a.topic-b.sub-1.concept-1.2"
+      },
+      "media": "img.chapter-a.fx-hook"
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:07",
+      "type": "sim",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1",
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Fixture title B7",
+        "hi": "फ़िक्स्चर शीर्षक B7"
+      },
+      "sim": "sim.chapter-a.fx-sim-b",
+      "params": {
+        "fixture": true
+      },
+      "tasks": [
+        {
+          "id": "task-1",
+          "prompt": {
+            "en": "Fixture stem B7",
+            "hi": "फ़िक्स्चर प्रश्न B7"
+          },
+          "measurement": "current",
+          "expected": {
+            "value": 2,
+            "unit": "A",
+            "tolerance": {
+              "rel": 0.05
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "Fixture explanation B7",
+        "hi": "फ़िक्स्चर व्याख्या B7"
+      },
+      "fallback": {
+        "media": "img.chapter-a.fx-fallback-b",
+        "body": {
+          "en": "Fixture explanation 1",
+          "hi": "फ़िक्स्चर व्याख्या 1"
+        }
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:08",
+      "type": "interactive",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "prompt": {
+        "en": "Fixture stem B8",
+        "hi": "फ़िक्स्चर प्रश्न B8"
+      },
+      "widget": "tap_reveal",
+      "config": {
+        "tiles": [
+          {
+            "id": "t1",
+            "label": {
+              "en": "Fixture label 1",
+              "hi": "फ़िक्स्चर लेबल 1"
+            },
+            "text": {
+              "en": "Fixture statement 1",
+              "hi": "फ़िक्स्चर कथन 1"
+            }
+          },
+          {
+            "id": "t2",
+            "label": {
+              "en": "Fixture label 2",
+              "hi": "फ़िक्स्चर लेबल 2"
+            },
+            "text": {
+              "en": "Fixture statement 2",
+              "hi": "फ़िक्स्चर कथन 2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:09",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-b.0002"
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:10",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "question": "q.fx.chapter-a.topic-b.0003"
+    },
+    {
+      "id": "fx.chapter-a.topic-b:dd:11",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point B11.1",
+          "hi": "फ़िक्स्चर बिंदु B11.1"
+        },
+        {
+          "en": "Fixture point B11.2",
+          "hi": "फ़िक्स्चर बिंदु B11.2"
+        }
+      ]
+    }
+  ]
+}

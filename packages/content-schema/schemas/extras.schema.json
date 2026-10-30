@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/extras.schema.json",
+  "title": "ExtrasFile",
+  "description": "content/extras/{subject}/{chapter_slug}/...: cheat sheets, revision sheets, storybooks, experiments, role plays and mind-map templates (lesson-author). Each file holds one item; its schema field picks the shape.",
+  "type": "object",
+  "required": ["schema"],
+  "discriminator": { "propertyName": "schema" },
+  "oneOf": [
+    { "$ref": "#/$defs/CheatSheet" },
+    { "$ref": "#/$defs/RevisionSheet" },
+    { "$ref": "#/$defs/Storybook" },
+    { "$ref": "#/$defs/Experiment" },
+    { "$ref": "#/$defs/Roleplay" },
+    { "$ref": "#/$defs/MindMapTemplate" }
+  ],
+  "$defs": {
+    "Scope": {
+      "type": "object",
+      "required": ["id", "scope", "title", "concepts"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/ExtraId" },
+        "scope": { "type": "string", "enum": ["topic", "chapter"] },
+        "topic": { "$ref": "common.schema.json#/$defs/TopicId" },
+        "chapter": { "$ref": "common.schema.json#/$defs/DottedId" },
+        "title": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "concepts": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        }
+      }
+    },
+    "SheetFormula": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "latex"],
+      "properties": {
+        "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "latex": { "$ref": "common.schema.json#/$defs/Latex" },
+        "vault_id": { "$ref": "common.schema.json#/$defs/DottedId" },
+        "concept": { "$ref": "common.schema.json#/$defs/ConceptId" }
+      }
+    },
+    "Trap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mistake", "correct"],
+      "properties": {
+        "mistake": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "correct": { "$ref": "common.schema.json#/$defs/I18nText" }
+      }
+    },
+    "CheatSheet": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["key_ideas", "formulas", "mnemonics", "traps"],
+      "properties": {
+        "schema": { "const": "cheat_sheet@1" },
+        "key_ideas": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "formulas": { "type": "array", "items": { "$ref": "#/$defs/SheetFormula" } },
+        "diagram": { "$ref": "common.schema.json#/$defs/ImageRef" },
+        "mnemonics": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/LocalizedRef" }
+        },
+        "traps": { "type": "array", "items": { "$ref": "#/$defs/Trap" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "RevisionSheet": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["points"],
+      "properties": {
+        "schema": { "const": "revision_sheet@1" },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "formulas": { "type": "array", "items": { "$ref": "#/$defs/SheetFormula" } },
+        "diagram": { "$ref": "common.schema.json#/$defs/ImageRef" }
+      },
+      "unevaluatedProperties": false
+    },
+    "Storybook": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["pages"],
+      "properties": {
+        "schema": { "const": "storybook@1" },
+        "pages": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["text", "media"],
+            "properties": {
+              "text": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "media": { "$ref": "common.schema.json#/$defs/ImageRef" },
+              "narration": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Experiment": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["materials", "steps", "safety", "adult_supervision", "why_it_works"],
+      "properties": {
+        "schema": { "const": "experiment@1" },
+        "materials": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "safety": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "adult_supervision": { "type": "boolean" },
+        "why_it_works": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "media": { "$ref": "common.schema.json#/$defs/ImageRef" }
+      },
+      "unevaluatedProperties": false
+    },
+    "Roleplay": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": [
+        "character",
+        "documented_views",
+        "persona_prompt",
+        "goals",
+        "guardrails",
+        "opening_line"
+      ],
+      "properties": {
+        "schema": { "const": "roleplay@1" },
+        "character": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "era", "portrait"],
+          "properties": {
+            "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+            "era": { "$ref": "common.schema.json#/$defs/I18nText" },
+            "portrait": { "$ref": "common.schema.json#/$defs/ImageRef" }
+          }
+        },
+        "documented_views": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["view", "source"],
+            "properties": {
+              "view": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "source": { "$ref": "common.schema.json#/$defs/Source" }
+            }
+          }
+        },
+        "persona_prompt": { "type": "string", "minLength": 1 },
+        "goals": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "guardrails": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "opening_line": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "suggested_replies": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "MindMapTemplate": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["nodes", "edges"],
+      "properties": {
+        "schema": { "const": "mind_map_template@1" },
+        "nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/Slug" },
+              "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "concept": { "$ref": "common.schema.json#/$defs/ConceptId" }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from", "to"],
+            "properties": {
+              "from": { "$ref": "common.schema.json#/$defs/Slug" },
+              "to": { "$ref": "common.schema.json#/$defs/Slug" }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

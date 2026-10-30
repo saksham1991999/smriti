@@ -1,0 +1,339 @@
+{
+  "schema": "questions@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "topic": "fx.chapter-a.topic-c",
+  "questions": [
+    {
+      "id": "q.fx.chapter-a.topic-c.0001",
+      "type": "assertion_reason",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-c.sub-1.concept-2",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture stem C1",
+        "hi": "फ़िक्स्चर प्रश्न C1"
+      },
+      "assertion": {
+        "en": "Fixture statement C1-A",
+        "hi": "फ़िक्स्चर कथन C1-A"
+      },
+      "reason": {
+        "en": "Fixture statement C1-R",
+        "hi": "फ़िक्स्चर कथन C1-R"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Option A",
+            "hi": "विकल्प A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Option B",
+            "hi": "विकल्प B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Option C",
+            "hi": "विकल्प C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Option D",
+            "hi": "विकल्प D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "lesson",
+        "practice"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation C1",
+          "hi": "फ़िक्स्चर व्याख्या C1"
+        },
+        "steps": [
+          {
+            "en": "Fixture step C1.1",
+            "hi": "फ़िक्स्चर चरण C1.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    },
+    {
+      "id": "q.fx.chapter-a.topic-c.0002",
+      "type": "statement_based",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-c.sub-1.concept-1",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture: which of the statements given above is/are correct?",
+        "hi": "फ़िक्स्चर: ऊपर दिए गए कथनों में से कौन-सा/से सही है/हैं?"
+      },
+      "statements": [
+        {
+          "en": "Fixture statement 1",
+          "hi": "फ़िक्स्चर कथन 1"
+        },
+        {
+          "en": "Fixture statement 2",
+          "hi": "फ़िक्स्चर कथन 2"
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 only",
+            "hi": "केवल 1"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 only",
+            "hi": "केवल 2"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Both 1 and 2",
+            "hi": "1 और 2 दोनों"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Neither 1 nor 2",
+            "hi": "न 1, न 2"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "lesson",
+        "practice"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation C2",
+          "hi": "फ़िक्स्चर व्याख्या C2"
+        },
+        "steps": [
+          {
+            "en": "Fixture step C2.1",
+            "hi": "फ़िक्स्चर चरण C2.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    },
+    {
+      "id": "q.fx.chapter-a.topic-c.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-c.sub-1.concept-1",
+          "weight": 0.5
+        },
+        {
+          "id": "fx.chapter-a.topic-c.sub-1.concept-2",
+          "weight": 0.5
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture stem C3",
+        "hi": "फ़िक्स्चर प्रश्न C3"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Option A",
+            "hi": "विकल्प A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Option B",
+            "hi": "विकल्प B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Option C",
+            "hi": "विकल्प C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Option D",
+            "hi": "विकल्प D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation C3",
+          "hi": "फ़िक्स्चर व्याख्या C3"
+        },
+        "steps": [
+          {
+            "en": "Fixture step C3.1",
+            "hi": "फ़िक्स्चर चरण C3.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    },
+    {
+      "id": "q.fx.chapter-a.topic-c.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "fx.chapter-a.topic-c.sub-1.concept-2",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "fx-exam"
+      ],
+      "stem": {
+        "en": "Fixture stem C4",
+        "hi": "फ़िक्स्चर प्रश्न C4"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Option A",
+            "hi": "विकल्प A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Option B",
+            "hi": "विकल्प B"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Option C",
+            "hi": "विकल्प C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Option D",
+            "hi": "विकल्प D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original",
+      "solution": {
+        "feynman": {
+          "en": "Fixture explanation C4",
+          "hi": "फ़िक्स्चर व्याख्या C4"
+        },
+        "steps": [
+          {
+            "en": "Fixture step C4.1",
+            "hi": "फ़िक्स्चर चरण C4.1"
+          }
+        ],
+        "shortcut": null,
+        "common_traps": []
+      }
+    }
+  ]
+}

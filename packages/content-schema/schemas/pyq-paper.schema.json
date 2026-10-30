@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/pyq-paper.schema.json",
+  "title": "PyqPaperFile",
+  "description": "content/pyq/{exam_id}/{paper_id}.json: one previous-year paper from its official source (pyq-ingest). Projects to content.pyq_papers and content.pyq_questions. The questions themselves live in questions/ with source pyq.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "id", "exam", "year", "source", "rights_note", "items"],
+  "properties": {
+    "schema": { "const": "pyq-paper@1" },
+    "id": { "$ref": "common.schema.json#/$defs/Slug" },
+    "exam": { "$ref": "common.schema.json#/$defs/ExamId" },
+    "year": { "type": "integer", "minimum": 1950, "maximum": 2100 },
+    "session_label": { "type": ["string", "null"] },
+    "held_on": { "oneOf": [{ "type": "null" }, { "$ref": "common.schema.json#/$defs/IsoDate" }] },
+    "paper_code": {
+      "description": "Matches the blueprint paper_code in force on held_on.",
+      "oneOf": [{ "type": "null" }, { "$ref": "common.schema.json#/$defs/Slug" }]
+    },
+    "blueprint": {
+      "description": "The blueprint version in force on held_on.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["exam_profile", "paper_code", "version"],
+      "properties": {
+        "exam_profile": { "$ref": "common.schema.json#/$defs/ExamProfileId" },
+        "paper_code": { "$ref": "common.schema.json#/$defs/Slug" },
+        "version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "url", "retrieved"],
+      "properties": {
+        "kind": { "const": "official" },
+        "url": { "type": "string", "format": "uri" },
+        "answer_key_url": { "type": ["string", "null"], "format": "uri" },
+        "retrieved": { "$ref": "common.schema.json#/$defs/IsoDate" }
+      }
+    },
+    "rights_note": { "type": "string", "minLength": 1 },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["number", "question", "official_answer", "answer_challenged"],
+        "properties": {
+          "number": { "type": "integer", "minimum": 1 },
+          "question": { "$ref": "common.schema.json#/$defs/QuestionId" },
+          "section": { "type": ["string", "null"] },
+          "official_answer": {
+            "description": "The official final key as published (option ids, a number, or a note).",
+            "type": "string"
+          },
+          "answer_challenged": { "type": "boolean" },
+          "dropped": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

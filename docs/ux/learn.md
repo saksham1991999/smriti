@@ -1953,6 +1953,57 @@ The placement chip matches the string onboarding defined for ONB-13 ("छोट�
 
 ---
 
+### WEB-01 · Web app shell
+**Purpose:** The strings the web app's frame needs around every screen (TRD §4.2): the four tabs (R46), the skip link, the language and Night Colour switches, the offline banner, the error and not-found pages, and the development-only stand-ins for Google sign-in and payment (shown only in local and test builds, never in production). **Main action:** none (frame).
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Tab learn | Learn | सीखें |
+| Tab labs | Labs | लैब |
+| Tab practice | Practice | प्रैक्टिस |
+| Tab me | Me | मैं |
+| Main nav | Main | मुख्य |
+| Skip link | Skip to content | सामग्री पर जाएँ |
+| Language button | हिन्दी | English |
+| Language button a11y | Switch to Hindi | अंग्रेज़ी में बदलें |
+| Theme light a11y | Switch to light colours | हल्के रंगों पर जाएँ |
+| Theme dark a11y | Switch to Night Colour | नाइट कलर पर जाएँ |
+| Offline banner | You're offline. Your progress is saved on this device. | आप ऑफ़लाइन हैं। आपकी प्रगति इस डिवाइस पर सुरक्षित है। |
+| Back online | Back online. Saving your progress now. | फिर से ऑनलाइन। आपकी प्रगति सेव हो रही है। |
+| Error title | Something went wrong | कुछ गड़बड़ हो गई |
+| Error body | Your progress is safe. Try reloading the page. | आपकी प्रगति सुरक्षित है। पेज फिर से लोड करके देखें। |
+| Error action | Reload | फिर से लोड करें |
+| Not found title | We couldn't find that page | हमें यह पेज नहीं मिला |
+| Not found body | It may have moved. Let's get you back to learning. | शायद यह कहीं और चला गया है। चलिए, वापस पढ़ाई पर चलते हैं। |
+| Not found action | Go to Home | होम पर जाएँ |
+| Loading | Loading | लोड हो रहा है |
+| Load error | That didn't load. Check your internet and try again. | यह लोड नहीं हुआ। इंटरनेट देखकर फिर से कोशिश करें। |
+| Retry | Try again | फिर से कोशिश करें |
+| Fixture notice | Sample content for testing | टेस्टिंग के लिए नमूना सामग्री |
+| Dev sign in title | Test sign-in (development only) | टेस्ट साइन-इन (केवल डेवलपमेंट) |
+| Dev sign in body | There is no Google here. Type any test email to stand in for a Google account. | यहाँ Google नहीं है। Google खाते की जगह कोई भी टेस्ट ईमेल लिखें। |
+| Dev email | Test email | टेस्ट ईमेल |
+| Dev name | Name | नाम |
+| Dev submit | Continue | जारी रखें |
+| Dev email error | Type an email with an @ | @ वाला ईमेल लिखें |
+| Fake pay title | Test payment (development only) | टेस्ट पेमेंट (केवल डेवलपमेंट) |
+| Fake pay body | No money moves. Pick what the bank answers. | कोई पैसा नहीं कटेगा। चुनें कि बैंक क्या जवाब दे। |
+| Fake pay approve | Approve payment | पेमेंट मंज़ूर करें |
+| Fake pay decline | Decline payment | पेमेंट मना करें |
+| See all | See all | सभी देखें |
+| Your subjects | Your subjects | आपके विषय |
+| Chapters count | {n, plural, one {# chapter} other {# chapters}} | {n, plural, one {# अध्याय} other {# अध्याय}} |
+| Topics count | {n, plural, one {# topic} other {# topics}} | {n, plural, one {# टॉपिक} other {# टॉपिक}} |
+| Minutes | {n} min | {n} मिनट |
+| Learned | Learned | सीख लिया |
+| Start | Start | शुरू करें |
+| Back | Back | वापस |
+
+**Mock priority:** none (frame strings).
+
+---
+
 ## Appendix A · P0 screens for the visual mocks
 
 | Screen | States to mock |

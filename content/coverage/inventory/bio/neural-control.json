@@ -1,0 +1,56 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.neural-control",
+  "items": [
+    {
+      "id": "kebo1-18-1",
+      "kind": "list",
+      "title": "Neural System",
+      "source_ref": "NCERT Class 11 Biology, Ch 18 §18.1 (https://ncert.nic.in/textbook/pdf/kebo118.pdf)",
+      "concepts": [
+        "bio.neural-control.neural-system.core.human-neural-system"
+      ]
+    },
+    {
+      "id": "kebo1-18-2",
+      "kind": "list",
+      "title": "Human Neural System",
+      "source_ref": "NCERT Class 11 Biology, Ch 18 §18.2 (https://ncert.nic.in/textbook/pdf/kebo118.pdf)",
+      "concepts": [
+        "bio.neural-control.neural-system.core.human-neural-system"
+      ]
+    },
+    {
+      "id": "kebo1-18-3",
+      "kind": "diagram",
+      "title": "Neuron as Structural and Functional Unit of Neural System",
+      "source_ref": "NCERT Class 11 Biology, Ch 18 §18.3 (https://ncert.nic.in/textbook/pdf/kebo118.pdf)",
+      "concepts": [
+        "bio.neural-control.neuron.core.neuron-structure",
+        "bio.neural-control.neuron.core.nerve-impulse"
+      ]
+    },
+    {
+      "id": "kebo1-18-4",
+      "kind": "diagram",
+      "title": "Central Neural System",
+      "source_ref": "NCERT Class 11 Biology, Ch 18 §18.4 (https://ncert.nic.in/textbook/pdf/kebo118.pdf)",
+      "concepts": [
+        "bio.neural-control.cns.core.brain-parts"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 18 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo118.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

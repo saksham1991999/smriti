@@ -1,0 +1,75 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.breathing-gas-exchange",
+  "items": [
+    {
+      "id": "kebo1-14-1",
+      "kind": "fact",
+      "title": "Respiratory Organs",
+      "source_ref": "NCERT Class 11 Biology, Ch 14 §14.1 (https://ncert.nic.in/textbook/pdf/kebo114.pdf)",
+      "concepts": [
+        "bio.breathing-gas-exchange.respiratory-organs.core.respiratory-organs-animals",
+        "bio.breathing-gas-exchange.respiratory-organs.core.human-respiratory-system"
+      ]
+    },
+    {
+      "id": "kebo1-14-2",
+      "kind": "fact",
+      "title": "Mechanism of Breathing",
+      "source_ref": "NCERT Class 11 Biology, Ch 14 §14.2 (https://ncert.nic.in/textbook/pdf/kebo114.pdf)",
+      "concepts": [
+        "bio.breathing-gas-exchange.breathing.core.breathing-mechanism",
+        "bio.breathing-gas-exchange.breathing.core.respiratory-volumes"
+      ]
+    },
+    {
+      "id": "kebo1-14-3",
+      "kind": "fact",
+      "title": "Exchange of Gases",
+      "source_ref": "NCERT Class 11 Biology, Ch 14 §14.3 (https://ncert.nic.in/textbook/pdf/kebo114.pdf)",
+      "concepts": [
+        "bio.breathing-gas-exchange.gas-exchange.core.gas-exchange-transport"
+      ]
+    },
+    {
+      "id": "kebo1-14-4",
+      "kind": "fact",
+      "title": "Transport of Gases",
+      "source_ref": "NCERT Class 11 Biology, Ch 14 §14.4 (https://ncert.nic.in/textbook/pdf/kebo114.pdf)",
+      "concepts": [
+        "bio.breathing-gas-exchange.gas-exchange.core.gas-exchange-transport"
+      ]
+    },
+    {
+      "id": "kebo1-14-5",
+      "kind": "fact",
+      "title": "Regulation of Respiration",
+      "source_ref": "NCERT Class 11 Biology, Ch 14 §14.5 (https://ncert.nic.in/textbook/pdf/kebo114.pdf)",
+      "concepts": [
+        "bio.breathing-gas-exchange.regulation-respiration.core.respiration-regulation"
+      ]
+    },
+    {
+      "id": "kebo1-14-6",
+      "kind": "list",
+      "title": "Disorders of Respiratory System",
+      "source_ref": "NCERT Class 11 Biology, Ch 14 §14.6 (https://ncert.nic.in/textbook/pdf/kebo114.pdf)",
+      "concepts": [
+        "bio.breathing-gas-exchange.respiratory-disorders.core.respiratory-disorders"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 14 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo114.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

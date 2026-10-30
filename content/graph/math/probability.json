@@ -7,10 +7,7 @@
     "en": "Probability",
     "hi": "प्रायिकता"
   },
-  "hi_source": "ncert",
-  "class": 12,
   "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 13",
-  "note": "The NCERT 2026-27 reprint of this chapter ends with Bayes' theorem; the probability distribution of a random variable, listed in the JEE (Main) syllabus, has no section in it, so that concept carries no NCERT reference.",
   "topics": [
     {
       "id": "math.probability.conditional-probability",
@@ -18,10 +15,6 @@
         "en": "Conditional Probability",
         "hi": "सप्रतिबंध प्रायिकता"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 13 §13.2"
-      ],
       "subtopics": [
         {
           "id": "math.probability.conditional-probability.core",
@@ -39,17 +32,17 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The probability of E given that F has occurred is P(E|F) = P(E ∩ F)/P(F) for P(F) ≠ 0, and it obeys the same rules as ordinary probability on the reduced sample space F.",
-                "hi": "F के घटित होने पर E की प्रायिकता P(F) ≠ 0 के लिए P(E|F) = P(E ∩ F)/P(F) है, और यह घटे हुए प्रतिदर्श समष्टि F पर सामान्य प्रायिकता के नियमों का पालन करती है।"
+                "en": "For $P(F) \\ne 0$, the probability of E given that F has occurred is $P(E|F) = P(E \\cap F)/P(F)$, and it obeys the same rules as ordinary probability on the reduced sample space F.",
+                "hi": "F के घटित होने पर E की प्रायिकता $P(F) \\ne 0$ के लिए $P(E|F) = P(E \\cap F)/P(F)$ है, और यह घटे हुए प्रतिदर्श समष्टि F पर सामान्य प्रायिकता के नियमों का पालन करती है।"
               },
               "key_points": [
                 {
-                  "en": "Compute P(E|F) from a table or by restricting the sample space.",
-                  "hi": "सारणी से या प्रतिदर्श समष्टि को सीमित करके P(E|F) निकालिए।"
+                  "en": "Compute $P(E|F)$ from a table or by restricting the sample space.",
+                  "hi": "सारणी से या प्रतिदर्श समष्टि को सीमित करके $P(E|F)$ निकालिए।"
                 },
                 {
-                  "en": "Use P(E′|F) = 1 − P(E|F).",
-                  "hi": "P(E′|F) = 1 − P(E|F) का प्रयोग कीजिए।"
+                  "en": "Use $P(E'|F) = 1 - P(E|F)$.",
+                  "hi": "$P(E'|F) = 1 - P(E|F)$ का प्रयोग कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -58,11 +51,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-4"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 13 §13.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -74,11 +63,6 @@
         "en": "Multiplication Theorem and Independent Events",
         "hi": "प्रायिकता का गुणन नियम तथा स्वतंत्र घटनाएँ"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 13 §13.3",
-        "NCERT Class 12 Mathematics Part II, Ch 13 §13.4"
-      ],
       "subtopics": [
         {
           "id": "math.probability.multiplication-theorem.core",
@@ -96,8 +80,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "P(E ∩ F) = P(E)·P(F|E) = P(F)·P(E|F); events are independent when P(E ∩ F) = P(E)·P(F), so knowing one does not change the probability of the other.",
-                "hi": "P(E ∩ F) = P(E)·P(F|E) = P(F)·P(E|F); घटनाएँ स्वतंत्र होती हैं जब P(E ∩ F) = P(E)·P(F), अर्थात एक का ज्ञान दूसरी की प्रायिकता नहीं बदलता।"
+                "en": "$P(E \\cap F) = P(E)\\cdot P(F|E) = P(F)\\cdot P(E|F)$; events are independent when $P(E \\cap F) = P(E)\\cdot P(F)$, so knowing one does not change the probability of the other.",
+                "hi": "$P(E \\cap F) = P(E)\\cdot P(F|E) = P(F)\\cdot P(E|F)$; घटनाएँ स्वतंत्र होती हैं जब $P(E \\cap F) = P(E)\\cdot P(F)$, अर्थात एक का ज्ञान दूसरी की प्रायिकता नहीं बदलता।"
               },
               "key_points": [
                 {
@@ -115,12 +99,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-4"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 13 §13.3",
-                "NCERT Class 12 Mathematics Part II, Ch 13 §13.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -132,10 +111,6 @@
         "en": "Bayes' Theorem",
         "hi": "बेज़-प्रमेय"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 13 §13.5"
-      ],
       "subtopics": [
         {
           "id": "math.probability.bayes.core",
@@ -153,8 +128,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "If E₁, …, Eₙ partition the sample space then P(A) = Σ P(Eᵢ)P(A|Eᵢ), and Bayes' theorem gives P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ), revising prior probabilities in the light of A.",
-                "hi": "यदि E₁, …, Eₙ प्रतिदर्श समष्टि का विभाजन करें तो P(A) = Σ P(Eᵢ)P(A|Eᵢ), और बेज़ प्रमेय P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ) देता है, जो A के आलोक में पूर्व प्रायिकताओं को संशोधित करता है।"
+                "en": "If $E_{1}$, $\\dots$, $E_{n}$ partition the sample space then $P(A) = \\Sigma P(E_{i})P(A|E_{i})$, and Bayes' theorem gives $P(E_{i}|A) = P(E_{i})P(A|E_{i})/\\Sigma P(E_{j})P(A|E_{j})$, revising prior probabilities in the light of A.",
+                "hi": "यदि $E_{1}$, $\\dots$, $E_{n}$ प्रतिदर्श समष्टि का विभाजन करें तो $P(A) = \\Sigma P(E_{i})P(A|E_{i})$, और बेज़ प्रमेय $P(E_{i}|A) = P(E_{i})P(A|E_{i})/\\Sigma P(E_{j})P(A|E_{j})$ देता है, जो A के आलोक में पूर्व प्रायिकताओं को संशोधित करता है।"
               },
               "key_points": [
                 {
@@ -172,11 +147,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-5"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 13 §13.5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -188,7 +159,6 @@
         "en": "Random Variables and Probability Distributions",
         "hi": "यादृच्छिक चर तथा प्रायिकता बंटन"
       },
-      "hi_source": "translated",
       "subtopics": [
         {
           "id": "math.probability.random-variable.core",
@@ -225,8 +195,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-6"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -237,23 +206,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Mathematics Part II, Ch 13",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 13 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/lemh207.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xvi (chapter title)",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xvi"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 13: STATISTICS AND PROBABILITY (PDF p.2)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 13, STATISTICS AND PROBABILITY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. The NCERT 2026-27 reprint of this chapter ends with Bayes' theorem; the probability distribution of a random variable, listed in the JEE (Main) syllabus, has no section in it, so that concept carries no NCERT reference. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: conditional-probability (§13.2, lhmh2 contents prelims p.xvi), bayes (§13.5, lhmh2 contents prelims p.xvi). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/probability.json."
 }

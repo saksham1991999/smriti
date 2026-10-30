@@ -1,0 +1,66 @@
+{
+  "schema": "inventory@1",
+  "chapter": "math.vector-algebra",
+  "items": [
+    {
+      "id": "lemh2-10-2",
+      "kind": "definition",
+      "title": "Some Basic Concepts",
+      "source_ref": "NCERT Class 12 Mathematics Part II, Ch 10 §10.2 (https://ncert.nic.in/textbook/pdf/lemh204.pdf)",
+      "concepts": [
+        "math.vector-algebra.vector-basics.core.vectors-scalars"
+      ]
+    },
+    {
+      "id": "lemh2-10-3",
+      "kind": "definition",
+      "title": "Types of Vectors",
+      "source_ref": "NCERT Class 12 Mathematics Part II, Ch 10 §10.3 (https://ncert.nic.in/textbook/pdf/lemh204.pdf)",
+      "concepts": [
+        "math.vector-algebra.vector-basics.core.vectors-scalars"
+      ]
+    },
+    {
+      "id": "lemh2-10-4",
+      "kind": "fact",
+      "title": "Addition of Vectors",
+      "source_ref": "NCERT Class 12 Mathematics Part II, Ch 10 §10.4 (https://ncert.nic.in/textbook/pdf/lemh204.pdf)",
+      "concepts": [
+        "math.vector-algebra.vector-addition.core.vector-addition"
+      ]
+    },
+    {
+      "id": "lemh2-10-5",
+      "kind": "formula",
+      "title": "Multiplication of a Vector by a Scalar",
+      "source_ref": "NCERT Class 12 Mathematics Part II, Ch 10 §10.5 (https://ncert.nic.in/textbook/pdf/lemh204.pdf)",
+      "concepts": [
+        "math.vector-algebra.scalar-multiple.core.vector-components",
+        "math.vector-algebra.scalar-multiple.core.vector-section-formula"
+      ]
+    },
+    {
+      "id": "lemh2-10-6",
+      "kind": "formula",
+      "title": "Product of Two Vectors",
+      "source_ref": "NCERT Class 12 Mathematics Part II, Ch 10 §10.6 (https://ncert.nic.in/textbook/pdf/lemh204.pdf)",
+      "concepts": [
+        "math.vector-algebra.vector-products.core.dot-product",
+        "math.vector-algebra.vector-products.core.cross-product"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 10 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

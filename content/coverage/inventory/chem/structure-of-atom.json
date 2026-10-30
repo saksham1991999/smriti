@@ -1,0 +1,80 @@
+{
+  "schema": "inventory@1",
+  "chapter": "chem.structure-of-atom",
+  "items": [
+    {
+      "id": "kech1-2-1",
+      "kind": "fact",
+      "title": "Discovery of Sub-atomic Particles",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 2 §2.1 (https://ncert.nic.in/textbook/pdf/kech102.pdf)",
+      "concepts": [],
+      "out_of_syllabus": "Discovery of subatomic particles is not listed in either official chemistry syllabus (JEE Main 2027, NEET UG 2026)"
+    },
+    {
+      "id": "kech1-2-2",
+      "kind": "fact",
+      "title": "Atomic Models",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 2 §2.2 (https://ncert.nic.in/textbook/pdf/kech102.pdf)",
+      "concepts": [],
+      "out_of_syllabus": "Thomson's and Rutherford's atomic models are not listed in the chemistry syllabus; Rutherford's model is mapped in physics (phy.atoms) (JEE Main 2027, NEET UG 2026)"
+    },
+    {
+      "id": "kech1-2-3",
+      "kind": "definition",
+      "title": "Developments Leading to the Bohr Model",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 2 §2.3 (https://ncert.nic.in/textbook/pdf/kech102.pdf)",
+      "concepts": [
+        "chem.structure-of-atom.bohr-background.core.em-radiation-quantum",
+        "chem.structure-of-atom.bohr-background.core.hydrogen-spectrum"
+      ]
+    },
+    {
+      "id": "kech1-2-4",
+      "kind": "formula",
+      "title": "Bohr's Model for Hydrogen Atom",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 2 §2.4 (https://ncert.nic.in/textbook/pdf/kech102.pdf)",
+      "concepts": [
+        "chem.structure-of-atom.bohr-model.core.bohr-postulates-energy",
+        "chem.structure-of-atom.bohr-model.core.bohr-limitations"
+      ]
+    },
+    {
+      "id": "kech1-2-5",
+      "kind": "formula",
+      "title": "Towards Quantum Mechanical Model of the Atom",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 2 §2.5 (https://ncert.nic.in/textbook/pdf/kech102.pdf)",
+      "concepts": [
+        "chem.structure-of-atom.towards-qm.core.dual-nature-de-broglie",
+        "chem.structure-of-atom.towards-qm.core.heisenberg-uncertainty"
+      ]
+    },
+    {
+      "id": "kech1-2-6",
+      "kind": "definition",
+      "title": "Quantum Mechanical Model of Atom",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 2 §2.6 (https://ncert.nic.in/textbook/pdf/kech102.pdf)",
+      "concepts": [
+        "chem.structure-of-atom.qm-model.core.qm-model-features",
+        "chem.structure-of-atom.qm-model.core.orbitals-wavefunction",
+        "chem.structure-of-atom.qm-model.core.quantum-numbers",
+        "chem.structure-of-atom.qm-model.core.orbital-shapes",
+        "chem.structure-of-atom.qm-model.core.electron-spin",
+        "chem.structure-of-atom.qm-model.core.filling-rules",
+        "chem.structure-of-atom.qm-model.core.electronic-configuration"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 2 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kech102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

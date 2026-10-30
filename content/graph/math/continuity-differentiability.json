@@ -7,8 +7,6 @@
     "en": "Continuity and Differentiability",
     "hi": "सांतत्य तथा अवकलनीयता"
   },
-  "hi_source": "ncert",
-  "class": 12,
   "ncert_ref": "NCERT Class 12 Mathematics Part I, Ch 5",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Continuity",
         "hi": "सांतत्य"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 5 §5.2"
-      ],
       "subtopics": [
         {
           "id": "math.continuity-differentiability.continuity.core",
@@ -38,8 +32,8 @@
               "kind": "definition",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "f is continuous at c when lim_(x→c) f(x) = f(c); sums, differences, products, quotients (where defined) and composites of continuous functions are continuous.",
-                "hi": "f, c पर संतत है जब lim_(x→c) f(x) = f(c); संतत फलनों के योग, अंतर, गुणनफल, भागफल (जहाँ परिभाषित) और संयुक्त फलन संतत होते हैं।"
+                "en": "f is continuous at c when $\\lim_(x\\rightarrow c) f(x) = f(c)$; sums, differences, products, quotients (where defined) and composites of continuous functions are continuous.",
+                "hi": "f, c पर संतत है जब $\\lim_(x\\rightarrow c) f(x) = f(c)$; संतत फलनों के योग, अंतर, गुणनफल, भागफल (जहाँ परिभाषित) और संयुक्त फलन संतत होते हैं।"
               },
               "key_points": [
                 {
@@ -57,11 +51,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-6"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -73,10 +63,6 @@
         "en": "Differentiability",
         "hi": "अवकलनीयता"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 5 §5.3"
-      ],
       "subtopics": [
         {
           "id": "math.continuity-differentiability.differentiability.core",
@@ -94,8 +80,8 @@
               "kind": "definition",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "f is differentiable at c when the left and right derivatives there are equal; every differentiable function is continuous, but |x| at 0 shows that the converse fails.",
-                "hi": "f, c पर अवकलनीय है जब वहाँ बाएँ और दाएँ अवकलज बराबर हों; प्रत्येक अवकलनीय फलन संतत होता है, परंतु 0 पर |x| दिखाता है कि विलोम सत्य नहीं।"
+                "en": "f is differentiable at c when the left and right derivatives there are equal; every differentiable function is continuous, but $|x|$ at 0 shows that the converse fails.",
+                "hi": "f, c पर अवकलनीय है जब वहाँ बाएँ और दाएँ अवकलज बराबर हों; प्रत्येक अवकलनीय फलन संतत होता है, परंतु 0 पर $|x|$ दिखाता है कि विलोम सत्य नहीं।"
               },
               "key_points": [
                 {
@@ -114,11 +100,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-6"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.3"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.continuity-differentiability.differentiability.core.chain-rule-implicit",
@@ -129,17 +111,17 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "The chain rule gives (f∘g)′(x) = f′(g(x))·g′(x); for a curve given implicitly, differentiate both sides with respect to x, treating y as a function of x, and solve for dy/dx.",
-                "hi": "शृंखला नियम (f∘g)′(x) = f′(g(x))·g′(x) देता है; अस्पष्ट रूप से दिए वक्र के लिए y को x का फलन मानकर दोनों पक्षों का x के सापेक्ष अवकलन कीजिए और dy/dx के लिए हल कीजिए।"
+                "en": "The chain rule gives $(f\\circ g)'(x) = f'(g(x))\\cdot g'(x)$; for a curve given implicitly, differentiate both sides with respect to x, treating y as a function of x, and solve for $dy/dx$.",
+                "hi": "शृंखला नियम $(f\\circ g)'(x) = f'(g(x))\\cdot g'(x)$ देता है; अस्पष्ट रूप से दिए वक्र के लिए y को x का फलन मानकर दोनों पक्षों का x के सापेक्ष अवकलन कीजिए और $dy/dx$ के लिए हल कीजिए।"
               },
               "key_points": [
                 {
-                  "en": "Differentiate nested functions such as sin(x² + 1).",
-                  "hi": "sin(x² + 1) जैसे नीड़ित फलनों का अवकलन कीजिए।"
+                  "en": "Differentiate nested functions such as $\\sin(x^{2} + 1)$.",
+                  "hi": "$\\sin(x^{2} + 1)$ जैसे नीड़ित फलनों का अवकलन कीजिए।"
                 },
                 {
-                  "en": "Find dy/dx for equations such as x² + xy + y² = 1.",
-                  "hi": "x² + xy + y² = 1 जैसे समीकरणों के लिए dy/dx ज्ञात कीजिए।"
+                  "en": "For equations such as $x^{2} + xy + y^{2} = 1$, find $dy/dx$.",
+                  "hi": "$x^{2} + xy + y^{2} = 1$ जैसे समीकरणों के लिए $dy/dx$ ज्ञात कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -150,11 +132,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.3"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.continuity-differentiability.differentiability.core.derivative-inverse-trig",
@@ -165,13 +143,13 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "On their domains, d(sin⁻¹x)/dx = 1/√(1 − x²), d(cos⁻¹x)/dx = −1/√(1 − x²) and d(tan⁻¹x)/dx = 1/(1 + x²), with similar results for the other three.",
-                "hi": "अपने प्रांतों पर d(sin⁻¹x)/dx = 1/√(1 − x²), d(cos⁻¹x)/dx = −1/√(1 − x²) और d(tan⁻¹x)/dx = 1/(1 + x²), तथा शेष तीन के लिए इसी प्रकार के परिणाम हैं।"
+                "en": "On their domains, $d(\\sin^{-1}x)/dx = 1/\\sqrt{1 - x^{2}}$, $d(\\cos^{-1}x)/dx = -1/\\sqrt{1 - x^{2}}$ and $d(\\tan^{-1}x)/dx = 1/(1 + x^{2})$, with similar results for the other three.",
+                "hi": "अपने प्रांतों पर $d(\\sin^{-1}x)/dx = 1/\\sqrt{1 - x^{2}}$, $d(\\cos^{-1}x)/dx = -1/\\sqrt{1 - x^{2}}$ और $d(\\tan^{-1}x)/dx = 1/(1 + x^{2})$, तथा शेष तीन के लिए इसी प्रकार के परिणाम हैं।"
               },
               "key_points": [
                 {
-                  "en": "Derive d(sin⁻¹x)/dx by implicit differentiation.",
-                  "hi": "अस्पष्ट अवकलन से d(sin⁻¹x)/dx व्युत्पन्न कीजिए।"
+                  "en": "Derive $d(\\sin^{-1}x)/dx$ by implicit differentiation.",
+                  "hi": "अस्पष्ट अवकलन से $d(\\sin^{-1}x)/dx$ व्युत्पन्न कीजिए।"
                 },
                 {
                   "en": "Simplify with a trigonometric substitution before differentiating.",
@@ -185,11 +163,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -201,11 +175,6 @@
         "en": "Exponential and Logarithmic Functions",
         "hi": "चरघातांकी तथा लघुगणकीय फलन"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 5 §5.4",
-        "NCERT Class 12 Mathematics Part I, Ch 5 §5.5"
-      ],
       "subtopics": [
         {
           "id": "math.continuity-differentiability.exp-log.core",
@@ -223,13 +192,13 @@
               "kind": "definition",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The exponential function aˣ (a > 0, a ≠ 1) and its inverse logₐx have characteristic graphs; d(eˣ)/dx = eˣ and d(log x)/dx = 1/x for x > 0.",
-                "hi": "चरघातांकी फलन aˣ (a > 0, a ≠ 1) और उसके प्रतिलोम logₐx के विशिष्ट ग्राफ़ हैं; d(eˣ)/dx = eˣ और x > 0 के लिए d(log x)/dx = 1/x।"
+                "en": "The exponential function $a^{x}\\ (a > 0, a \\ne 1)$ and its inverse $\\log_{a}x$ have characteristic graphs; $d(e^{x})/dx = e^{x}$, and for $x > 0$, $d(\\log x)/dx = 1/x$.",
+                "hi": "चरघातांकी फलन $a^{x}\\ (a > 0, a \\ne 1)$ और उसके प्रतिलोम $\\log_{a}x$ के विशिष्ट ग्राफ़ हैं; $d(e^{x})/dx = e^{x}$ और $x > 0$ के लिए $d(\\log x)/dx = 1/x$।"
               },
               "key_points": [
                 {
-                  "en": "Sketch y = eˣ and y = log x and state their domains and ranges.",
-                  "hi": "y = eˣ और y = log x का ग्राफ़ खींचिए और उनके प्रांत तथा परिसर बताइए।"
+                  "en": "Sketch $y = e^{x}$ and $y = \\log x$ and state their domains and ranges.",
+                  "hi": "$y = e^{x}$ और $y = \\log x$ का ग्राफ़ खींचिए और उनके प्रांत तथा परिसर बताइए।"
                 },
                 {
                   "en": "Use the laws of logarithms to simplify before differentiating.",
@@ -243,11 +212,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-2",
                 "jee-main-2027:mathematics:unit-7:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.4"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.continuity-differentiability.exp-log.core.logarithmic-differentiation",
@@ -258,13 +223,13 @@
               "kind": "process",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "For functions such as [u(x)]^v(x) or long products, take logarithms first and then differentiate implicitly.",
-                "hi": "[u(x)]^v(x) जैसे फलनों या लंबे गुणनफलों के लिए पहले लघुगणक लीजिए और फिर अस्पष्ट अवकलन कीजिए।"
+                "en": "For functions such as $[u(x)]^v(x)$ or long products, take logarithms first and then differentiate implicitly.",
+                "hi": "$[u(x)]^v(x)$ जैसे फलनों या लंबे गुणनफलों के लिए पहले लघुगणक लीजिए और फिर अस्पष्ट अवकलन कीजिए।"
               },
               "key_points": [
                 {
-                  "en": "Differentiate xˣ and (sin x)^(cos x).",
-                  "hi": "xˣ और (sin x)^(cos x) का अवकलन कीजिए।"
+                  "en": "Differentiate $x^{x}$ and $(\\sin x)^{\\cos x}$.",
+                  "hi": "$x^{x}$ और $(\\sin x)^{\\cos x}$ का अवकलन कीजिए।"
                 },
                 {
                   "en": "Differentiate a product of several factors by taking logarithms.",
@@ -277,11 +242,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -293,10 +254,6 @@
         "en": "Second Order Derivative",
         "hi": "द्वितीय कोटि का अवकलज"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 5 §5.7"
-      ],
       "subtopics": [
         {
           "id": "math.continuity-differentiability.second-derivative.core",
@@ -314,17 +271,17 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The second derivative d²y/dx² is the derivative of dy/dx and measures how the slope changes.",
-                "hi": "द्वितीय अवकलज d²y/dx², dy/dx का अवकलज है और बताता है कि ढाल कैसे बदलती है।"
+                "en": "The second derivative $d^{2}y/dx^{2}$ is the derivative of $dy/dx$ and measures how the slope changes.",
+                "hi": "द्वितीय अवकलज $d^{2}y/dx^{2}$, $dy/dx$ का अवकलज है और बताता है कि ढाल कैसे बदलती है।"
               },
               "key_points": [
                 {
-                  "en": "Find d²y/dx² of explicit functions.",
-                  "hi": "स्पष्ट फलनों का d²y/dx² ज्ञात कीजिए।"
+                  "en": "Find $d^{2}y/dx^{2}$ of explicit functions.",
+                  "hi": "स्पष्ट फलनों का $d^{2}y/dx^{2}$ ज्ञात कीजिए।"
                 },
                 {
-                  "en": "Show that a given function satisfies a relation involving y, y′ and y″.",
-                  "hi": "दिखाइए कि दिया गया फलन y, y′ और y″ वाले संबंध को संतुष्ट करता है।"
+                  "en": "Show that a given function satisfies a relation involving y, $y'$ and y″.",
+                  "hi": "दिखाइए कि दिया गया फलन y, $y'$ और y″ वाले संबंध को संतुष्ट करता है।"
                 }
               ],
               "prerequisites": [
@@ -333,11 +290,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-9"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 5 §5.7"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -348,23 +301,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Mathematics Part I, Ch 5",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 5 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/lemh105.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Hindi-medium lhmh1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 12 Hindi-medium lhmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/lhmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 7: LIMIT, CONTINUITY AND DIFFERENTIABILITY (PDF p.1)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 7, LIMIT, CONTINUITY AND DIFFERENTIABILITY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: continuity (§5.2, lhmh1 contents prelims p.xiv), differentiability (§5.3, lhmh1 contents prelims p.xiv), second-derivative (§5.7, lhmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/continuity-differentiability.json."
 }

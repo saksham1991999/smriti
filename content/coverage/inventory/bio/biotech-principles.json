@@ -1,0 +1,46 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.biotech-principles",
+  "items": [
+    {
+      "id": "lebo1-9-1",
+      "kind": "definition",
+      "title": "Principles of Biotechnology",
+      "source_ref": "NCERT Class 12 Biology, Ch 9 §9.1 (https://ncert.nic.in/textbook/pdf/lebo109.pdf)",
+      "concepts": [
+        "bio.biotech-principles.principles.core.biotech-principles"
+      ]
+    },
+    {
+      "id": "lebo1-9-2",
+      "kind": "list",
+      "title": "Tools of Recombinant DNA Technology",
+      "source_ref": "NCERT Class 12 Biology, Ch 9 §9.2 (https://ncert.nic.in/textbook/pdf/lebo109.pdf)",
+      "concepts": [
+        "bio.biotech-principles.tools.core.rdna-tools"
+      ]
+    },
+    {
+      "id": "lebo1-9-3",
+      "kind": "fact",
+      "title": "Processes of Recombinant DNA Technology",
+      "source_ref": "NCERT Class 12 Biology, Ch 9 §9.3 (https://ncert.nic.in/textbook/pdf/lebo109.pdf)",
+      "concepts": [
+        "bio.biotech-principles.processes.core.rdna-process"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Biology, Ch 9 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

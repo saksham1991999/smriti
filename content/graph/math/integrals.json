@@ -7,8 +7,6 @@
     "en": "Integrals",
     "hi": "समाकलन"
   },
-  "hi_source": "ncert",
-  "class": 12,
   "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 7",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Integration as an Inverse Process of Differentiation",
         "hi": "समाकलन को अवकलन के व्युत्क्रम प्रक्रम के रूप में"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.2"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.antiderivative.core",
@@ -38,13 +32,13 @@
               "kind": "definition",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "If F′(x) = f(x) then ∫f(x)dx = F(x) + C; reversing standard derivatives gives the fundamental integrals of algebraic, trigonometric, exponential and logarithmic functions.",
-                "hi": "यदि F′(x) = f(x) तो ∫f(x)dx = F(x) + C; मानक अवकलजों को उलटने से बीजीय, त्रिकोणमितीय, चरघातांकी और लघुगणकीय फलनों के मूल समाकल मिलते हैं।"
+                "en": "If $F'(x) = f(x)$ then $\\int f(x)dx = F(x) + C$; reversing standard derivatives gives the fundamental integrals of algebraic, trigonometric, exponential and logarithmic functions.",
+                "hi": "यदि $F'(x) = f(x)$ तो $\\int f(x)dx = F(x) + C$; मानक अवकलजों को उलटने से बीजीय, त्रिकोणमितीय, चरघातांकी और लघुगणकीय फलनों के मूल समाकल मिलते हैं।"
               },
               "key_points": [
                 {
-                  "en": "Write the standard integrals of xⁿ, 1/x, eˣ, aˣ and the six trigonometric derivatives.",
-                  "hi": "xⁿ, 1/x, eˣ, aˣ तथा छह त्रिकोणमितीय अवकलजों के मानक समाकल लिखिए।"
+                  "en": "Write the standard integrals of $x^{n}$, $1/x$, $e^{x}$, $a^{x}$ and the six trigonometric derivatives.",
+                  "hi": "$x^{n}$, $1/x$, $e^{x}$, $a^{x}$ तथा छह त्रिकोणमितीय अवकलजों के मानक समाकल लिखिए।"
                 },
                 {
                   "en": "Use linearity of the integral.",
@@ -60,11 +54,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-1",
                 "jee-main-2027:mathematics:unit-8:item-2"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -76,10 +66,6 @@
         "en": "Methods of Integration",
         "hi": "समाकलन की विधियाँ"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.3"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.integration-methods.core",
@@ -97,8 +83,8 @@
               "kind": "process",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "Substituting t = g(x) turns ∫f(g(x))g′(x)dx into ∫f(t)dt, so a suitable substitution reduces an integral to a standard form.",
-                "hi": "t = g(x) प्रतिस्थापित करने से ∫f(g(x))g′(x)dx, ∫f(t)dt बन जाता है, अतः उपयुक्त प्रतिस्थापन समाकल को मानक रूप में बदल देता है।"
+                "en": "Substituting $t = g(x)$ turns $\\int f(g(x))g'(x)dx$ into $\\int f(t)dt$, so a suitable substitution reduces an integral to a standard form.",
+                "hi": "$t = g(x)$ प्रतिस्थापित करने से $\\int f(g(x))g'(x)dx$, $\\int f(t)dt$ बन जाता है, अतः उपयुक्त प्रतिस्थापन समाकल को मानक रूप में बदल देता है।"
               },
               "key_points": [
                 {
@@ -117,11 +103,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.3"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.integrals.integration-methods.core.integration-trig-identities",
@@ -137,8 +119,8 @@
               },
               "key_points": [
                 {
-                  "en": "Integrate sin²x, cos³x and sin 2x cos 3x.",
-                  "hi": "sin²x, cos³x और sin 2x cos 3x का समाकलन कीजिए।"
+                  "en": "Integrate $\\sin ^{2}x$, $\\cos ^{3}x$ and sin 2x cos 3x.",
+                  "hi": "$\\sin ^{2}x$, $\\cos ^{3}x$ और sin 2x cos 3x का समाकलन कीजिए।"
                 },
                 {
                   "en": "Pick the identity that lowers the power.",
@@ -152,11 +134,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-4"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -168,10 +146,6 @@
         "en": "Integrals of Some Particular Functions",
         "hi": "कुछ विशिष्ट फलनों के समाकलन"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.4"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.particular-integrals.core",
@@ -189,21 +163,21 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "Standard results for ∫dx/(x² ± a²), ∫dx/(a² − x²), ∫dx/√(x² ± a²) and ∫dx/√(a² − x²), together with completing the square and splitting px + q into a multiple of the derivative of the quadratic plus a constant, handle all the listed types.",
-                "hi": "∫dx/(x² ± a²), ∫dx/(a² − x²), ∫dx/√(x² ± a²) और ∫dx/√(a² − x²) के मानक परिणाम, वर्ग पूरा करने तथा px + q को द्विघात के अवकलज के गुणज और एक अचर में बाँटने के साथ, सभी सूचीबद्ध प्रकारों को हल करते हैं।"
+                "en": "Standard results for $\\int dx/(x^{2} \\pm a^{2})$, $\\int dx/(a^{2} - x^{2})$, $\\int dx/\\sqrt{x^{2} \\pm a^{2}}$ and $\\int dx/\\sqrt{a^{2} - x^{2}}$, together with completing the square and splitting $px + q$ into a multiple of the derivative of the quadratic plus a constant, handle all the listed types.",
+                "hi": "$\\int dx/(x^{2} \\pm a^{2})$, $\\int dx/(a^{2} - x^{2})$, $\\int dx/\\sqrt{x^{2} \\pm a^{2}}$ और $\\int dx/\\sqrt{a^{2} - x^{2}}$ के मानक परिणाम, वर्ग पूरा करने तथा $px + q$ को द्विघात के अवकलज के गुणज और एक अचर में बाँटने के साथ, सभी सूचीबद्ध प्रकारों को हल करते हैं।"
               },
               "key_points": [
                 {
-                  "en": "Complete the square in ax² + bx + c to reach a standard form.",
-                  "hi": "मानक रूप तक पहुँचने के लिए ax² + bx + c में वर्ग पूरा कीजिए।"
+                  "en": "Complete the square in $ax^{2} + bx + c$ to reach a standard form.",
+                  "hi": "मानक रूप तक पहुँचने के लिए $ax^{2} + bx + c$ में वर्ग पूरा कीजिए।"
                 },
                 {
-                  "en": "Split px + q as A·d(ax² + bx + c)/dx + B.",
-                  "hi": "px + q को A·d(ax² + bx + c)/dx + B के रूप में बाँटिए।"
+                  "en": "Split $px + q$ as $A\\cdot d(ax^{2} + bx + c)/dx + B$.",
+                  "hi": "$px + q$ को $A\\cdot d(ax^{2} + bx + c)/dx + B$ के रूप में बाँटिए।"
                 },
                 {
-                  "en": "Use the results for ∫√(a² − x²)dx and ∫√(x² ± a²)dx.",
-                  "hi": "∫√(a² − x²)dx और ∫√(x² ± a²)dx के परिणामों का प्रयोग कीजिए।"
+                  "en": "Use the results for $\\int\\sqrt{a^{2} - x^{2}}dx$ and $\\int\\sqrt{x^{2} \\pm a^{2}}dx$.",
+                  "hi": "$\\int\\sqrt{a^{2} - x^{2}}dx$ और $\\int\\sqrt{x^{2} \\pm a^{2}}dx$ के परिणामों का प्रयोग कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -212,12 +186,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-5"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.4",
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.6"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -229,10 +198,6 @@
         "en": "Integration by Partial Fractions",
         "hi": "आंशिक भिन्नों द्वारा समाकलन"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.5"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.partial-fractions.core",
@@ -269,11 +234,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -285,10 +246,6 @@
         "en": "Integration by Parts",
         "hi": "खंडशः समाकलन"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.6"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.by-parts.core",
@@ -306,17 +263,17 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "∫u v dx = u∫v dx − ∫[u′∫v dx]dx; choosing u well, and the special form ∫eˣ[f(x) + f′(x)]dx = eˣf(x) + C, makes products of different kinds of functions integrable.",
-                "hi": "∫u v dx = u∫v dx − ∫[u′∫v dx]dx; u का सही चयन तथा विशेष रूप ∫eˣ[f(x) + f′(x)]dx = eˣf(x) + C विभिन्न प्रकार के फलनों के गुणनफलों का समाकलन संभव बनाते हैं।"
+                "en": "$\\int u v dx = u\\int v dx - \\int[u'\\int v dx]dx$; choosing u well, and the special form $\\int e^{x}[f(x) + f'(x)]dx = e^{x}f(x) + C$, makes products of different kinds of functions integrable.",
+                "hi": "$\\int u v dx = u\\int v dx - \\int[u'\\int v dx]dx$; u का सही चयन तथा विशेष रूप $\\int e^{x}[f(x) + f'(x)]dx = e^{x}f(x) + C$ विभिन्न प्रकार के फलनों के गुणनफलों का समाकलन संभव बनाते हैं।"
               },
               "key_points": [
                 {
-                  "en": "Integrate x eˣ, x sin x, log x and tan⁻¹x.",
-                  "hi": "x eˣ, x sin x, log x और tan⁻¹x का समाकलन कीजिए।"
+                  "en": "Integrate $x e^{x}$, x sin x, log x and $\\tan^{-1}x$.",
+                  "hi": "$x e^{x}$, x sin x, log x और $\\tan^{-1}x$ का समाकलन कीजिए।"
                 },
                 {
-                  "en": "Recognise the eˣ[f(x) + f′(x)] pattern.",
-                  "hi": "eˣ[f(x) + f′(x)] प्रतिरूप पहचानिए।"
+                  "en": "Recognise the $e^{x}[f(x) + f'(x)]$ pattern.",
+                  "hi": "$e^{x}[f(x) + f'(x)]$ प्रतिरूप पहचानिए।"
                 }
               ],
               "prerequisites": [
@@ -326,11 +283,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.6"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -342,11 +295,6 @@
         "en": "Definite Integral and the Fundamental Theorem of Calculus",
         "hi": "निश्चित समाकलन तथा कलन की आधारभूत प्रमेय"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.7",
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.8"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.definite-integral.core",
@@ -364,8 +312,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "The definite integral ∫ₐᵇ f(x)dx is the signed area under the curve; the area function A(x) = ∫ₐˣ f(t)dt has A′(x) = f(x), and ∫ₐᵇ f(x)dx = F(b) − F(a) for any antiderivative F.",
-                "hi": "निश्चित समाकल ∫ₐᵇ f(x)dx वक्र के नीचे चिह्नित क्षेत्रफल है; क्षेत्रफल फलन A(x) = ∫ₐˣ f(t)dt के लिए A′(x) = f(x), और किसी भी प्रतिअवकलज F के लिए ∫ₐᵇ f(x)dx = F(b) − F(a)।"
+                "en": "The definite integral $\\int_{a}^{b} f(x)\\,dx$ is the signed area under the curve; the area function $A(x) = \\int_{a}^{x} f(t)\\,dt$ has $A'(x) = f(x)$, and $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$ for any antiderivative F.",
+                "hi": "निश्चित समाकल $\\int_{a}^{b} f(x)\\,dx$ वक्र के नीचे चिह्नित क्षेत्रफल है; क्षेत्रफल फलन $A(x) = \\int_{a}^{x} f(t)\\,dt$ के लिए $A'(x) = f(x)$, और किसी भी प्रतिअवकलज F के लिए $\\int_{a}^{b} f(x)\\,dx = F(b) - F(a)$।"
               },
               "key_points": [
                 {
@@ -384,12 +332,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-6",
                 "jee-main-2027:mathematics:unit-8:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.7",
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.8"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -401,10 +344,6 @@
         "en": "Evaluation of Definite Integrals by Substitution",
         "hi": "प्रतिस्थापन द्वारा निश्चित समाकलनों का मान ज्ञात करना"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.9"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.definite-substitution.core",
@@ -431,8 +370,8 @@
                   "hi": "प्रतिस्थापन के बाद सीमाओं को सही ढंग से बदलिए।"
                 },
                 {
-                  "en": "Evaluate integrals such as ∫₀¹ x/(x² + 1) dx.",
-                  "hi": "∫₀¹ x/(x² + 1) dx जैसे समाकलों का मान निकालिए।"
+                  "en": "Evaluate integrals such as $\\int _{0}^{1} x/(x^{2} + 1) dx$.",
+                  "hi": "$\\int _{0}^{1} x/(x^{2} + 1) dx$ जैसे समाकलों का मान निकालिए।"
                 }
               ],
               "prerequisites": [
@@ -442,11 +381,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.9"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -458,10 +393,6 @@
         "en": "Some Properties of Definite Integrals",
         "hi": "निश्चित समाकलनों के कुछ गुणधर्म"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 7 §7.10"
-      ],
       "subtopics": [
         {
           "id": "math.integrals.definite-properties.core",
@@ -479,13 +410,13 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "Properties such as ∫ₐᵇ f(x)dx = ∫ₐᵇ f(a + b − x)dx, splitting at an interior point, and the results for even and odd functions on [−a, a] simplify evaluation.",
-                "hi": "∫ₐᵇ f(x)dx = ∫ₐᵇ f(a + b − x)dx, किसी आंतरिक बिंदु पर विभाजन, तथा [−a, a] पर सम और विषम फलनों के परिणाम जैसे गुणधर्म मान निकालना सरल करते हैं।"
+                "en": "Properties such as $\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a + b - x)\\,dx$, splitting at an interior point, and the results for even and odd functions on $[-a, a]$ simplify evaluation.",
+                "hi": "$\\int_{a}^{b} f(x)\\,dx = \\int_{a}^{b} f(a + b - x)\\,dx$, किसी आंतरिक बिंदु पर विभाजन, तथा $[-a, a]$ पर सम और विषम फलनों के परिणाम जैसे गुणधर्म मान निकालना सरल करते हैं।"
               },
               "key_points": [
                 {
-                  "en": "Use ∫₀ᵃ f(x)dx = ∫₀ᵃ f(a − x)dx to evaluate symmetric integrals.",
-                  "hi": "सममित समाकलों के मान के लिए ∫₀ᵃ f(x)dx = ∫₀ᵃ f(a − x)dx का प्रयोग कीजिए।"
+                  "en": "Use $\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx$ to evaluate symmetric integrals.",
+                  "hi": "सममित समाकलों के मान के लिए $\\int_{0}^{a} f(x)\\,dx = \\int_{0}^{a} f(a - x)\\,dx$ का प्रयोग कीजिए।"
                 },
                 {
                   "en": "Split integrals of modulus and piecewise functions.",
@@ -503,11 +434,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-8:item-7",
                 "jee-main-2027:mathematics:unit-8:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 7 §7.10"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -518,23 +445,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Mathematics Part II, Ch 7",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 7 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xv (chapter title)",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 8: INTEGRAL CALCULAS (PDF p.1-2)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1-2: Mathematics Unit 8, INTEGRAL CALCULAS"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: antiderivative (§7.2, lhmh2 contents prelims p.xv), integration-methods (§7.3, lhmh2 contents prelims p.xv), particular-integrals (§7.4, lhmh2 contents prelims p.xv), partial-fractions (§7.5, lhmh2 contents prelims p.xv), by-parts (§7.6, lhmh2 contents prelims p.xv), definite-substitution (§7.9, lhmh2 contents prelims p.xv), definite-properties (§7.10, lhmh2 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/integrals.json."
 }

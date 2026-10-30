@@ -7,8 +7,6 @@
     "en": "Mechanical Properties of Solids",
     "hi": "ठोसों के यांत्रिक गुण"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Physics Part II, Ch 8",
   "topics": [
     {
@@ -17,12 +15,6 @@
         "en": "Stress, Strain and Hooke's Law",
         "hi": "प्रतिबल, विकृति एवं हुक का नियम"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 8 §8.2",
-        "NCERT Class 11 Physics Part II, Ch 8 §8.3",
-        "NCERT Class 11 Physics Part II, Ch 8 §8.4"
-      ],
       "subtopics": [
         {
           "id": "phy.mechanical-properties-solids.stress-strain.core",
@@ -58,8 +50,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-7:item-1",
                 "neet-ug-2026:physics:unit-7:item-1"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "phy.mechanical-properties-solids.stress-strain.core.hookes-law",
@@ -90,11 +81,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-7:item-1",
                 "neet-ug-2026:physics:unit-7:item-1"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Physics Part II, Ch 8 §8.6"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -106,10 +93,6 @@
         "en": "Elastic Moduli",
         "hi": "प्रत्यास्थता गुणांक"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 8 §8.5"
-      ],
       "subtopics": [
         {
           "id": "phy.mechanical-properties-solids.elastic-moduli.core",
@@ -127,8 +110,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "Young's modulus Y = (F/A)/(ΔL/L), the bulk modulus B = −p/(ΔV/V) and the shear modulus G = shear stress/shear strain describe a material's stiffness.",
-                "hi": "यंग गुणांक Y = (F/A)/(ΔL/L), आयतन गुणांक B = −p/(ΔV/V) और अपरूपण गुणांक G = अपरूपण प्रतिबल/अपरूपण विकृति किसी पदार्थ की दृढ़ता बताते हैं।"
+                "en": "Young's modulus $Y = (F/A)/(\\Delta L/L)$, the bulk modulus $B = -p/(\\Delta V/V)$ and the shear modulus $G =$ shear stress/shear strain describe a material's stiffness.",
+                "hi": "यंग गुणांक $Y = (F/A)/(\\Delta L/L)$, आयतन गुणांक $B = -p/(\\Delta V/V)$ और अपरूपण गुणांक $G =$ अपरूपण प्रतिबल/अपरूपण विकृति किसी पदार्थ की दृढ़ता बताते हैं।"
               },
               "key_points": [
                 {
@@ -136,8 +119,8 @@
                   "hi": "Y का उपयोग करके भार के कारण तार का प्रसार निकालिए।"
                 },
                 {
-                  "en": "Define compressibility as 1/B and Poisson's ratio as lateral strain over longitudinal strain.",
-                  "hi": "संपीड्यता को 1/B और प्वासों अनुपात को पार्श्व विकृति तथा अनुदैर्ध्य विकृति के अनुपात के रूप में परिभाषित कीजिए।"
+                  "en": "Define compressibility as $1/B$ and Poisson's ratio as lateral strain over longitudinal strain.",
+                  "hi": "संपीड्यता को $1/B$ और प्वासों अनुपात को पार्श्व विकृति तथा अनुदैर्ध्य विकृति के अनुपात के रूप में परिभाषित कीजिए।"
                 },
                 {
                   "en": "Find the elastic potential energy stored in a stretched wire, half of stress times strain per unit volume.",
@@ -151,8 +134,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-7:item-2",
                 "neet-ug-2026:physics:unit-7:item-2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -163,28 +145,34 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Physics Part II, Ch 8",
+      "ref": "NCERT Class 11 Physics Part II, Ch 8 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/keph201.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khph2, contents prelims p.xv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khph2 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 7: Properties of Solids and Liquids (PDF p.3-4)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.3-4: Physics Unit 7, Properties of Solids and Liquids"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 7: PROPERTIES OF SOLIDS AND LIQUIDS (PDF p.5)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.5: Physics Unit 7, PROPERTIES OF SOLIDS AND LIQUIDS"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: elastic-moduli (§8.5, khph2 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/mechanical-properties-solids.json."
 }

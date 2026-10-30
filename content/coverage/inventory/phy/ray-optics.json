@@ -1,0 +1,75 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.ray-optics",
+  "items": [
+    {
+      "id": "leph2-9-2",
+      "kind": "formula",
+      "title": "Reflection of Light by Spherical Mirrors",
+      "source_ref": "NCERT Class 12 Physics Part II, Ch 9 §9.2 (https://ncert.nic.in/textbook/pdf/leph201.pdf)",
+      "concepts": [
+        "phy.ray-optics.spherical-mirrors.core.mirror-formula"
+      ]
+    },
+    {
+      "id": "leph2-9-3",
+      "kind": "formula",
+      "title": "Refraction",
+      "source_ref": "NCERT Class 12 Physics Part II, Ch 9 §9.3 (https://ncert.nic.in/textbook/pdf/leph201.pdf)",
+      "concepts": [
+        "phy.ray-optics.refraction.core.refraction-snell"
+      ]
+    },
+    {
+      "id": "leph2-9-4",
+      "kind": "definition",
+      "title": "Total Internal Reflection",
+      "source_ref": "NCERT Class 12 Physics Part II, Ch 9 §9.4 (https://ncert.nic.in/textbook/pdf/leph201.pdf)",
+      "concepts": [
+        "phy.ray-optics.tir.core.total-internal-reflection"
+      ]
+    },
+    {
+      "id": "leph2-9-5",
+      "kind": "formula",
+      "title": "Refraction at Spherical Surfaces and by Lenses",
+      "source_ref": "NCERT Class 12 Physics Part II, Ch 9 §9.5 (https://ncert.nic.in/textbook/pdf/leph201.pdf)",
+      "concepts": [
+        "phy.ray-optics.spherical-refraction.core.spherical-surface-refraction",
+        "phy.ray-optics.spherical-refraction.core.lens-formulae",
+        "phy.ray-optics.spherical-refraction.core.lens-power-combination"
+      ]
+    },
+    {
+      "id": "leph2-9-6",
+      "kind": "formula",
+      "title": "Refraction through a Prism",
+      "source_ref": "NCERT Class 12 Physics Part II, Ch 9 §9.6 (https://ncert.nic.in/textbook/pdf/leph201.pdf)",
+      "concepts": [
+        "phy.ray-optics.prism.core.prism-deviation"
+      ]
+    },
+    {
+      "id": "leph2-9-7",
+      "kind": "formula",
+      "title": "Optical Instruments",
+      "source_ref": "NCERT Class 12 Physics Part II, Ch 9 §9.7 (https://ncert.nic.in/textbook/pdf/leph201.pdf)",
+      "concepts": [
+        "phy.ray-optics.optical-instruments.core.microscope-telescope"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part II, Ch 9 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/leph201.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

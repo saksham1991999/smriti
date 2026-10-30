@@ -1,0 +1,121 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.rotational-motion",
+  "items": [
+    {
+      "id": "keph1-6-2",
+      "kind": "formula",
+      "title": "Centre of Mass",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.2 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ]
+    },
+    {
+      "id": "keph1-6-3",
+      "kind": "formula",
+      "title": "Motion of Centre of Mass",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.3 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ]
+    },
+    {
+      "id": "keph1-6-4",
+      "kind": "formula",
+      "title": "Linear Momentum of a System of Particles",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.4 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ]
+    },
+    {
+      "id": "keph1-6-5",
+      "kind": "formula",
+      "title": "Vector Product of Two Vectors",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.5 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.vector-product.core.vector-product"
+      ]
+    },
+    {
+      "id": "keph1-6-6",
+      "kind": "definition",
+      "title": "Angular Velocity and its Relation with Linear Velocity",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.6 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ]
+    },
+    {
+      "id": "keph1-6-7",
+      "kind": "formula",
+      "title": "Torque and Angular Momentum",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.7 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque",
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ]
+    },
+    {
+      "id": "keph1-6-8",
+      "kind": "fact",
+      "title": "Equilibrium of a Rigid Body",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.8 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ]
+    },
+    {
+      "id": "keph1-6-9",
+      "kind": "definition",
+      "title": "Moment of Inertia",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.9 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+        "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+      ]
+    },
+    {
+      "id": "keph1-6-10",
+      "kind": "formula",
+      "title": "Kinematics of Rotational Motion About a Fixed Axis",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.10 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ]
+    },
+    {
+      "id": "keph1-6-11",
+      "kind": "formula",
+      "title": "Dynamics of Rotational Motion About a Fixed Axis",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.11 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ]
+    },
+    {
+      "id": "keph1-6-12",
+      "kind": "formula",
+      "title": "Angular Momentum in Case of Rotation About a Fixed Axis",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.12 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque",
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

@@ -7,10 +7,7 @@
     "en": "Straight Lines",
     "hi": "सरल रेखाएँ"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Mathematics, Ch 9",
-  "note": "The rationalised NCERT chapter starts from the slope of a line. The distance and section formulae, locus, concurrency of three lines and the centroid, orthocentre and circumcentre of a triangle are listed in the JEE (Main) syllabus but have no section in this chapter, so those concepts carry no NCERT reference.",
   "topics": [
     {
       "id": "math.straight-lines.plane-coordinates",
@@ -18,7 +15,6 @@
         "en": "Cartesian Coordinates in a Plane",
         "hi": "समतल में कार्तीय निर्देशांक"
       },
-      "hi_source": "translated",
       "subtopics": [
         {
           "id": "math.straight-lines.plane-coordinates.core",
@@ -36,8 +32,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The distance between (x₁, y₁) and (x₂, y₂) is √[(x₂ − x₁)² + (y₂ − y₁)²], and the point dividing the join in the ratio m : n internally is ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n)).",
-                "hi": "(x₁, y₁) और (x₂, y₂) के बीच की दूरी √[(x₂ − x₁)² + (y₂ − y₁)²] है, और उनको मिलाने वाले रेखाखंड को m : n में अंतःविभाजित करने वाला बिंदु ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n)) है।"
+                "en": "The distance between $(x_{1}, y_{1})$ and $(x_{2}, y_{2})$ is $\\sqrt{(x_{2} - x_{1})^{2} + (y_{2} - y_{1})^{2}}$, and the point dividing the join in the ratio m : n internally is $((mx_{2} + nx_{1})/(m + n), (my_{2} + ny_{1})/(m + n))$.",
+                "hi": "$(x_{1}, y_{1})$ और $(x_{2}, y_{2})$ के बीच की दूरी $\\sqrt{(x_{2} - x_{1})^{2} + (y_{2} - y_{1})^{2}}$ है, और उनको मिलाने वाले रेखाखंड को m : n में अंतःविभाजित करने वाला बिंदु $((mx_{2} + nx_{1})/(m + n), (my_{2} + ny_{1})/(m + n))$ है।"
               },
               "key_points": [
                 {
@@ -53,8 +49,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-1"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.straight-lines.plane-coordinates.core.locus-equation",
@@ -84,8 +79,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-2"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.straight-lines.plane-coordinates.core.triangle-centres",
@@ -116,8 +110,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-9"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -129,10 +122,6 @@
         "en": "Slope of a Line",
         "hi": "रेखा की ढाल"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 9 §9.2"
-      ],
       "subtopics": [
         {
           "id": "math.straight-lines.slope.core",
@@ -150,8 +139,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The slope m = tan θ = (y₂ − y₁)/(x₂ − x₁); lines are parallel when their slopes are equal and perpendicular when m₁m₂ = −1, and the acute angle between them satisfies tan θ = |(m₂ − m₁)/(1 + m₁m₂)|.",
-                "hi": "ढाल m = tan θ = (y₂ − y₁)/(x₂ − x₁); रेखाएँ समांतर होती हैं जब उनकी ढालें बराबर हों और लंब होती हैं जब m₁m₂ = −1, तथा उनके बीच का न्यून कोण tan θ = |(m₂ − m₁)/(1 + m₁m₂)| को संतुष्ट करता है।"
+                "en": "The slope $m = \\tan \\theta = (y_{2} - y_{1})/(x_{2} - x_{1})$; lines are parallel when their slopes are equal and perpendicular when $m_{1}m_{2} = -1$, and the acute angle between them satisfies $\\tan \\theta = |(m_{2} - m_{1})/(1 + m_{1}m_{2})|$.",
+                "hi": "ढाल $m = \\tan \\theta = (y_{2} - y_{1})/(x_{2} - x_{1})$; रेखाएँ समांतर होती हैं जब उनकी ढालें बराबर हों और लंब होती हैं जब $m_{1}m_{2} = -1$, तथा उनके बीच का न्यून कोण $\\tan \\theta = |(m_{2} - m_{1})/(1 + m_{1}m_{2})|$ को संतुष्ट करता है।"
               },
               "key_points": [
                 {
@@ -171,11 +160,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-3",
                 "jee-main-2027:mathematics:unit-10:item-6"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 9 §9.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -187,10 +172,6 @@
         "en": "Various Forms of the Equation of a Line",
         "hi": "रेखा के समीकरण के विविध रूप"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 9 §9.3"
-      ],
       "subtopics": [
         {
           "id": "math.straight-lines.line-forms.core",
@@ -208,8 +189,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "A line can be written as y − y₁ = m(x − x₁), through two points, as y = mx + c, as x/a + y/b = 1, or in the general form Ax + By + C = 0.",
-                "hi": "रेखा को y − y₁ = m(x − x₁), दो बिंदुओं से, y = mx + c, x/a + y/b = 1, या व्यापक रूप Ax + By + C = 0 में लिखा जा सकता है।"
+                "en": "A line can be written as $y - y_{1} = m(x - x_{1})$, through two points, as $y = mx + c$, as $x/a + y/b = 1$, or in the general form $Ax + By + C = 0$.",
+                "hi": "रेखा को $y - y_{1} = m(x - x_{1})$, दो बिंदुओं से, $y = mx + c$, $x/a + y/b = 1$, या व्यापक रूप $Ax + By + C = 0$ में लिखा जा सकता है।"
               },
               "key_points": [
                 {
@@ -227,11 +208,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-5"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 9 §9.3"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.straight-lines.line-forms.core.line-intercepts",
@@ -242,8 +219,8 @@
               "kind": "formula",
               "intrinsic_depth": 2,
               "summary": {
-                "en": "Putting y = 0 and x = 0 in the equation of a line gives its x- and y-intercepts, which lead directly to the intercept form x/a + y/b = 1.",
-                "hi": "रेखा के समीकरण में y = 0 और x = 0 रखने से उसके x- और y-अंतःखंड मिलते हैं, जिनसे सीधे अंतःखंड रूप x/a + y/b = 1 मिलता है।"
+                "en": "Putting $y = 0$ and $x = 0$ in the equation of a line gives its x- and y-intercepts, which lead directly to the intercept form $x/a + y/b = 1$.",
+                "hi": "रेखा के समीकरण में $y = 0$ और $x = 0$ रखने से उसके x- और y-अंतःखंड मिलते हैं, जिनसे सीधे अंतःखंड रूप $x/a + y/b = 1$ मिलता है।"
               },
               "key_points": [
                 {
@@ -261,11 +238,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-4"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 9 §9.3"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.straight-lines.line-forms.core.lines-intersection-concurrence",
@@ -297,8 +270,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-6",
                 "jee-main-2027:mathematics:unit-10:item-7"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -310,10 +282,6 @@
         "en": "Distance of a Point From a Line",
         "hi": "एक बिंदु की रेखा से दूरी"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 9 §9.4"
-      ],
       "subtopics": [
         {
           "id": "math.straight-lines.point-line-distance.core",
@@ -331,8 +299,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The distance of (x₁, y₁) from Ax + By + C = 0 is |Ax₁ + By₁ + C|/√(A² + B²), and parallel lines Ax + By + C₁ = 0 and Ax + By + C₂ = 0 are |C₁ − C₂|/√(A² + B²) apart.",
-                "hi": "(x₁, y₁) की Ax + By + C = 0 से दूरी |Ax₁ + By₁ + C|/√(A² + B²) है, और समांतर रेखाएँ Ax + By + C₁ = 0 तथा Ax + By + C₂ = 0 परस्पर |C₁ − C₂|/√(A² + B²) दूरी पर हैं।"
+                "en": "The distance of $(x_{1}, y_{1})$ from $Ax + By + C = 0$ is $|Ax_{1} + By_{1} + C|/\\sqrt{A^{2} + B^{2}}$, and parallel lines $Ax + By + C_{1} = 0$ and $Ax + By + C_{2} = 0$ are $|C_{1} - C_{2}|/\\sqrt{A^{2} + B^{2}}$ apart.",
+                "hi": "$(x_{1}, y_{1})$ की $Ax + By + C = 0$ से दूरी $|Ax_{1} + By_{1} + C|/\\sqrt{A^{2} + B^{2}}$ है, और समांतर रेखाएँ $Ax + By + C_{1} = 0$ तथा $Ax + By + C_{2} = 0$ परस्पर $|C_{1} - C_{2}|/\\sqrt{A^{2} + B^{2}}$ दूरी पर हैं।"
               },
               "key_points": [
                 {
@@ -350,11 +318,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-10:item-8"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 9 §9.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -365,23 +329,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Mathematics, Ch 9",
+      "ref": "NCERT Class 11 Mathematics, Ch 9 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/kemh109.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 10: CO-ORDINATE GEOMETRY (PDF p.2)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 10, CO-ORDINATE GEOMETRY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. The rationalised NCERT chapter starts from the slope of a line. The distance and section formulae, locus, concurrency of three lines and the centroid, orthocentre and circumcentre of a triangle are listed in the JEE (Main) syllabus but have no section in this chapter, so those concepts carry no NCERT reference. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: slope (§9.2, khmh1 contents prelims p.xiv), line-forms (§9.3, khmh1 contents prelims p.xiv), point-line-distance (§9.4, khmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/straight-lines.json."
 }

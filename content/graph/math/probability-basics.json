@@ -7,8 +7,6 @@
     "en": "Probability",
     "hi": "प्रायिकता"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Mathematics, Ch 14",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Event",
         "hi": "घटना"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 14 §14.1"
-      ],
       "subtopics": [
         {
           "id": "math.probability-basics.events.core",
@@ -38,8 +32,8 @@
               "kind": "definition",
               "intrinsic_depth": 2,
               "summary": {
-                "en": "The sample space lists all outcomes of a random experiment and an event is a subset of it; events can be impossible, sure, simple or compound, and are combined with set operations to give 'A or B', 'A and B' and 'not A', or classified as mutually exclusive and exhaustive.",
-                "hi": "प्रतिदर्श समष्टि किसी यादृच्छिक परीक्षण के सभी परिणामों की सूची है और घटना उसका उपसमुच्चय है; घटनाएँ असंभव, निश्चित, सरल या मिश्र हो सकती हैं, समुच्चय संक्रियाओं से 'A या B', 'A और B' तथा 'A नहीं' बनती हैं, या परस्पर अपवर्जी और निःशेष के रूप में वर्गीकृत होती हैं।"
+                "en": "The sample space lists all outcomes of a random experiment and an event is a subset of it; events can be impossible, sure, simple or compound, are combined with set operations into $A \\cup B$, $A \\cap B$ and $A'$, and can be mutually exclusive and exhaustive.",
+                "hi": "प्रतिदर्श समष्टि किसी यादृच्छिक परीक्षण के सभी परिणामों की सूची है और घटना उसका उपसमुच्चय है; घटनाएँ असंभव, निश्चित, सरल या मिश्र हो सकती हैं, समुच्चय संक्रियाओं से $A \\cup B$, $A \\cap B$ और $A'$ बनती हैं, और वे परस्पर अपवर्जी तथा निःशेष हो सकती हैं।"
               },
               "key_points": [
                 {
@@ -57,11 +51,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 14 §14.1"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -73,10 +63,6 @@
         "en": "Axiomatic Approach to Probability",
         "hi": "प्रायिकता की अभिगृहीतीय दृष्टिकोण"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 14 §14.2"
-      ],
       "subtopics": [
         {
           "id": "math.probability-basics.axiomatic-probability.core",
@@ -94,8 +80,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "Probability assigns each event a number between 0 and 1 with P(S) = 1; for equally likely outcomes P(E) = n(E)/n(S), and P(not E) = 1 − P(E).",
-                "hi": "प्रायिकता प्रत्येक घटना को 0 और 1 के बीच एक संख्या देती है जिसमें P(S) = 1; समसंभाव्य परिणामों के लिए P(E) = n(E)/n(S), और P(E नहीं) = 1 − P(E)।"
+                "en": "Probability assigns each event a number between 0 and 1 with $P(S) = 1$; for equally likely outcomes $P(E) = n(E)/n(S)$, and $P(E') = 1 - P(E)$.",
+                "hi": "प्रायिकता प्रत्येक घटना को 0 और 1 के बीच एक संख्या देती है जिसमें $P(S) = 1$; समसंभाव्य परिणामों के लिए $P(E) = n(E)/n(S)$, और $P(E') = 1 - P(E)$।"
               },
               "key_points": [
                 {
@@ -114,11 +100,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 14 §14.2"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.probability-basics.axiomatic-probability.core.addition-theorem",
@@ -129,13 +111,13 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "For any two events P(A ∪ B) = P(A) + P(B) − P(A ∩ B), which reduces to P(A) + P(B) for mutually exclusive events.",
-                "hi": "किन्हीं दो घटनाओं के लिए P(A ∪ B) = P(A) + P(B) − P(A ∩ B), जो परस्पर अपवर्जी घटनाओं के लिए P(A) + P(B) हो जाता है।"
+                "en": "For any two events $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, which reduces to $P(A) + P(B)$ for mutually exclusive events.",
+                "hi": "किन्हीं दो घटनाओं के लिए $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, जो परस्पर अपवर्जी घटनाओं के लिए $P(A) + P(B)$ हो जाता है।"
               },
               "key_points": [
                 {
-                  "en": "Find P(A or B) from P(A), P(B) and P(A and B).",
-                  "hi": "P(A), P(B) और P(A और B) से P(A या B) ज्ञात कीजिए।"
+                  "en": "From $P(A)$, $P(B)$ and $P(A \\cap B)$, find $P(A \\cup B)$.",
+                  "hi": "$P(A)$, $P(B)$ और $P(A \\cap B)$ से $P(A \\cup B)$ ज्ञात कीजिए।"
                 },
                 {
                   "en": "Use the complement to find 'at least one' probabilities.",
@@ -149,11 +131,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-13:item-4"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 14 §14.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -164,23 +142,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Mathematics, Ch 14",
+      "ref": "NCERT Class 11 Mathematics, Ch 14 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/kemh114.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 13: STATISTICS AND PROBABILITY (PDF p.2)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 13, STATISTICS AND PROBABILITY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: events (§14.1, khmh1 contents prelims p.xv), axiomatic-probability (§14.2, khmh1 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/probability-basics.json."
 }

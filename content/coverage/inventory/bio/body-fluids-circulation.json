@@ -1,0 +1,75 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.body-fluids-circulation",
+  "items": [
+    {
+      "id": "kebo1-15-1",
+      "kind": "list",
+      "title": "Blood",
+      "source_ref": "NCERT Class 11 Biology, Ch 15 §15.1 (https://ncert.nic.in/textbook/pdf/kebo115.pdf)",
+      "concepts": [
+        "bio.body-fluids-circulation.blood.core.blood-composition",
+        "bio.body-fluids-circulation.blood.core.blood-groups-coagulation"
+      ]
+    },
+    {
+      "id": "kebo1-15-2",
+      "kind": "definition",
+      "title": "Lymph (Tissue Fluid)",
+      "source_ref": "NCERT Class 11 Biology, Ch 15 §15.2 (https://ncert.nic.in/textbook/pdf/kebo115.pdf)",
+      "concepts": [
+        "bio.body-fluids-circulation.lymph.core.lymph"
+      ]
+    },
+    {
+      "id": "kebo1-15-3",
+      "kind": "diagram",
+      "title": "Circulatory Pathways",
+      "source_ref": "NCERT Class 11 Biology, Ch 15 §15.3 (https://ncert.nic.in/textbook/pdf/kebo115.pdf)",
+      "concepts": [
+        "bio.body-fluids-circulation.circulatory-pathways.core.human-heart",
+        "bio.body-fluids-circulation.circulatory-pathways.core.cardiac-cycle-ecg"
+      ]
+    },
+    {
+      "id": "kebo1-15-4",
+      "kind": "fact",
+      "title": "Double Circulation",
+      "source_ref": "NCERT Class 11 Biology, Ch 15 §15.4 (https://ncert.nic.in/textbook/pdf/kebo115.pdf)",
+      "concepts": [
+        "bio.body-fluids-circulation.double-circulation.core.double-circulation"
+      ]
+    },
+    {
+      "id": "kebo1-15-5",
+      "kind": "fact",
+      "title": "Regulation of Cardiac Activity",
+      "source_ref": "NCERT Class 11 Biology, Ch 15 §15.5 (https://ncert.nic.in/textbook/pdf/kebo115.pdf)",
+      "concepts": [
+        "bio.body-fluids-circulation.cardiac-regulation.core.cardiac-regulation"
+      ]
+    },
+    {
+      "id": "kebo1-15-6",
+      "kind": "list",
+      "title": "Disorders of Circulatory System",
+      "source_ref": "NCERT Class 11 Biology, Ch 15 §15.6 (https://ncert.nic.in/textbook/pdf/kebo115.pdf)",
+      "concepts": [
+        "bio.body-fluids-circulation.circulatory-disorders.core.circulatory-disorders"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 15 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo115.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

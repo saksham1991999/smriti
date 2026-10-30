@@ -1,0 +1,66 @@
+{
+  "schema": "inventory@1",
+  "chapter": "math.conic-sections",
+  "items": [
+    {
+      "id": "kemh1-10-2",
+      "kind": "definition",
+      "title": "Sections of a Cone",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 10 §10.2 (https://ncert.nic.in/textbook/pdf/kemh110.pdf)",
+      "concepts": [
+        "math.conic-sections.cone-sections.core.conic-as-sections"
+      ]
+    },
+    {
+      "id": "kemh1-10-3",
+      "kind": "formula",
+      "title": "Circle",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 10 §10.3 (https://ncert.nic.in/textbook/pdf/kemh110.pdf)",
+      "concepts": [
+        "math.conic-sections.circle.core.circle-equations",
+        "math.conic-sections.circle.core.circle-diameter-form",
+        "math.conic-sections.circle.core.line-circle-intersection"
+      ]
+    },
+    {
+      "id": "kemh1-10-4",
+      "kind": "formula",
+      "title": "Parabola",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 10 §10.4 (https://ncert.nic.in/textbook/pdf/kemh110.pdf)",
+      "concepts": [
+        "math.conic-sections.parabola-ellipse-hyperbola.core.conic-standard-forms"
+      ]
+    },
+    {
+      "id": "kemh1-10-5",
+      "kind": "formula",
+      "title": "Ellipse",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 10 §10.5 (https://ncert.nic.in/textbook/pdf/kemh110.pdf)",
+      "concepts": [
+        "math.conic-sections.parabola-ellipse-hyperbola.core.conic-standard-forms"
+      ]
+    },
+    {
+      "id": "kemh1-10-6",
+      "kind": "formula",
+      "title": "Hyperbola",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 10 §10.6 (https://ncert.nic.in/textbook/pdf/kemh110.pdf)",
+      "concepts": [
+        "math.conic-sections.parabola-ellipse-hyperbola.core.conic-standard-forms"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 10 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

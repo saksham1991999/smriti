@@ -1,0 +1,67 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.mechanical-properties-solids",
+  "items": [
+    {
+      "id": "keph2-8-2",
+      "kind": "definition",
+      "title": "Stress and Strain",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 8 §8.2 (https://ncert.nic.in/textbook/pdf/keph201.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-solids.stress-strain.core.elastic-behaviour",
+        "phy.mechanical-properties-solids.stress-strain.core.hookes-law"
+      ]
+    },
+    {
+      "id": "keph2-8-3",
+      "kind": "definition",
+      "title": "Hooke’s Law",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 8 §8.3 (https://ncert.nic.in/textbook/pdf/keph201.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-solids.stress-strain.core.elastic-behaviour",
+        "phy.mechanical-properties-solids.stress-strain.core.hookes-law"
+      ]
+    },
+    {
+      "id": "keph2-8-4",
+      "kind": "definition",
+      "title": "Stress-strain Curve",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 8 §8.4 (https://ncert.nic.in/textbook/pdf/keph201.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-solids.stress-strain.core.elastic-behaviour",
+        "phy.mechanical-properties-solids.stress-strain.core.hookes-law"
+      ]
+    },
+    {
+      "id": "keph2-8-5",
+      "kind": "formula",
+      "title": "Elastic Moduli",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 8 §8.5 (https://ncert.nic.in/textbook/pdf/keph201.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-solids.elastic-moduli.core.elastic-moduli-def"
+      ]
+    },
+    {
+      "id": "keph2-8-6",
+      "kind": "formula",
+      "title": "Applications of Elastic Behaviour of Materials",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 8 §8.6 (https://ncert.nic.in/textbook/pdf/keph201.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-solids.stress-strain.core.hookes-law"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 8 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/keph201.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

@@ -7,8 +7,6 @@
     "en": "Application of Derivatives",
     "hi": "अवकलज के अनुप्रयोग"
   },
-  "hi_source": "ncert",
-  "class": 12,
   "ncert_ref": "NCERT Class 12 Mathematics Part I, Ch 6",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Rate of Change of Quantities",
         "hi": "राशियों के परिवर्तन की दर"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 6 §6.2"
-      ],
       "subtopics": [
         {
           "id": "math.applications-of-derivatives.rate-of-change.core",
@@ -38,8 +32,8 @@
               "kind": "skill",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "dy/dx is the rate of change of y with respect to x, and related rates follow from the chain rule, dy/dt = (dy/dx)(dx/dt).",
-                "hi": "dy/dx, x के सापेक्ष y के परिवर्तन की दर है, और संबंधित दरें शृंखला नियम dy/dt = (dy/dx)(dx/dt) से मिलती हैं।"
+                "en": "$dy/dx$ is the rate of change of y with respect to x, and related rates follow from the chain rule, $dy/dt = (dy/dx)(dx/dt)$.",
+                "hi": "$dy/dx$, x के सापेक्ष y के परिवर्तन की दर है, और संबंधित दरें शृंखला नियम $dy/dt = (dy/dx)(dx/dt)$ से मिलती हैं।"
               },
               "key_points": [
                 {
@@ -57,11 +51,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-10"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 6 §6.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -73,10 +63,6 @@
         "en": "Increasing and Decreasing Functions",
         "hi": "वर्धमान और ह्रासमान फलन"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 6 §6.3"
-      ],
       "subtopics": [
         {
           "id": "math.applications-of-derivatives.increasing-decreasing.core",
@@ -94,8 +80,8 @@
               "kind": "process",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "A differentiable function is increasing on an interval where f′(x) > 0 and decreasing where f′(x) < 0, so the sign of f′ splits the domain into intervals of monotonicity.",
-                "hi": "अवकलनीय फलन उस अंतराल पर वर्धमान है जहाँ f′(x) > 0 और ह्रासमान है जहाँ f′(x) < 0, अतः f′ का चिह्न प्रांत को एकदिष्टता के अंतरालों में बाँटता है।"
+                "en": "A differentiable function is increasing on an interval where $f'(x) > 0$ and decreasing where $f'(x) < 0$, so the sign of $f'$ splits the domain into intervals of monotonicity.",
+                "hi": "अवकलनीय फलन उस अंतराल पर वर्धमान है जहाँ $f'(x) > 0$ और ह्रासमान है जहाँ $f'(x) < 0$, अतः $f'$ का चिह्न प्रांत को एकदिष्टता के अंतरालों में बाँटता है।"
               },
               "key_points": [
                 {
@@ -113,11 +99,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-11"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 6 §6.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -129,10 +111,6 @@
         "en": "Maxima and Minima",
         "hi": "उच्चतम और निम्नतम"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part I, Ch 6 §6.4"
-      ],
       "subtopics": [
         {
           "id": "math.applications-of-derivatives.maxima-minima.core",
@@ -174,11 +152,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-12"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part I, Ch 6 §6.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -189,23 +163,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Mathematics Part I, Ch 6",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 6 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/lemh106.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Hindi-medium lhmh1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 12 Hindi-medium lhmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/lhmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 7: LIMIT, CONTINUITY AND DIFFERENTIABILITY (PDF p.1)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 7, LIMIT, CONTINUITY AND DIFFERENTIABILITY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: rate-of-change (§6.2, lhmh1 contents prelims p.xiv), increasing-decreasing (§6.3, lhmh1 contents prelims p.xiv), maxima-minima (§6.4, lhmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/applications-of-derivatives.json."
 }

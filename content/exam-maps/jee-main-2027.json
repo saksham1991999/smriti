@@ -1,8 +1,7 @@
 {
   "schema": "exam-map@1",
   "exam_profile": "jee-main-2027",
-  "depth_rule": "depth 4 by default (highest level the exam needs, per syllabus-mapper depth table: L3 easy/medium, L4 hard); lowered only where the official syllabus line limits treatment (e.g. 'qualitative idea only', 'elementary idea', 'no derivation', 'brief account', 'recall only').",
-  "priority_rule": "core for every concept: the official syllabus marks nothing optional.",
+  "stats_basis": null,
   "concepts": [
     {
       "id": "chem.alcohols-phenols-ethers.alcohols-phenols.core.alcohol-identification-dehydration",
@@ -3236,11 +3235,13 @@
   "sources": [
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "Depth is 4 by default (the highest level the exam needs, per the syllabus-mapper depth table: L3 easy and medium, L4 hard); it is lowered only where the official syllabus line limits treatment (for example 'qualitative idea only', 'elementary idea', 'no derivation', 'brief account', 'recall only'). Priority is core for every concept: the official syllabus marks nothing optional. weightage and pyq_count stay null until pyq-ingest computes them."
 }

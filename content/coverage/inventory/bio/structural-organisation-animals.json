@@ -1,0 +1,37 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.structural-organisation-animals",
+  "items": [
+    {
+      "id": "kebo1-7-1",
+      "kind": "definition",
+      "title": "Organ and Organ System",
+      "source_ref": "NCERT Class 11 Biology, Ch 7 §7.1 (https://ncert.nic.in/textbook/pdf/kebo107.pdf)",
+      "concepts": [
+        "bio.structural-organisation-animals.organ-systems.core.organ-system-organisation"
+      ]
+    },
+    {
+      "id": "kebo1-7-2",
+      "kind": "list",
+      "title": "Frogs",
+      "source_ref": "NCERT Class 11 Biology, Ch 7 §7.2 (https://ncert.nic.in/textbook/pdf/kebo107.pdf)",
+      "concepts": [
+        "bio.structural-organisation-animals.frog.core.frog-morphology-anatomy"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 7 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo107.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

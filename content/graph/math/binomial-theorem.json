@@ -7,8 +7,6 @@
     "en": "Binomial Theorem",
     "hi": "द्विपद प्रमेय"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Mathematics, Ch 7",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Binomial Theorem for Positive Integral Indices",
         "hi": "धन पूर्णांकों के लिए द्विपद प्रमेय"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 7 §7.2"
-      ],
       "subtopics": [
         {
           "id": "math.binomial-theorem.binomial-positive.core",
@@ -38,17 +32,17 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "For a positive integer n, (a + b)ⁿ = Σ C(n, r) aⁿ⁻ʳ bʳ for r = 0 to n; the expansion has n + 1 terms and its coefficients form Pascal's triangle.",
-                "hi": "धन पूर्णांक n के लिए (a + b)ⁿ = Σ C(n, r) aⁿ⁻ʳ bʳ, r = 0 से n तक; इस प्रसार में n + 1 पद होते हैं और गुणांक पास्कल त्रिभुज बनाते हैं।"
+                "en": "For a positive integer n, $(a + b)^{n} = \\Sigma C(n, r) a^{n-r} b^{r}$ for $r = 0$ to n; the expansion has $n + 1$ terms and its coefficients form Pascal's triangle.",
+                "hi": "धन पूर्णांक n के लिए $(a + b)^{n} = \\Sigma C(n, r) a^{n-r} b^{r}$, $r = 0$ से n तक; इस प्रसार में $n + 1$ पद होते हैं और गुणांक पास्कल त्रिभुज बनाते हैं।"
               },
               "key_points": [
                 {
-                  "en": "Expand (a + b)ⁿ and (a − b)ⁿ.",
-                  "hi": "(a + b)ⁿ और (a − b)ⁿ का प्रसार कीजिए।"
+                  "en": "Expand $(a + b)^{n}$ and $(a - b)^{n}$.",
+                  "hi": "$(a + b)^{n}$ और $(a - b)^{n}$ का प्रसार कीजिए।"
                 },
                 {
-                  "en": "Use the expansion to compare or approximate numbers such as (1.01)ⁿ.",
-                  "hi": "(1.01)ⁿ जैसी संख्याओं की तुलना या सन्निकटन के लिए प्रसार का प्रयोग कीजिए।"
+                  "en": "Use the expansion to compare or approximate numbers such as $(1.01)^{n}$.",
+                  "hi": "$(1.01)^{n}$ जैसी संख्याओं की तुलना या सन्निकटन के लिए प्रसार का प्रयोग कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -58,11 +52,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-5:item-1",
                 "jee-main-2027:mathematics:unit-5:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 7 §7.2"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.binomial-theorem.binomial-positive.core.general-middle-term",
@@ -73,13 +63,13 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The (r + 1)th term of (a + b)ⁿ is T₍ᵣ₊₁₎ = C(n, r) aⁿ⁻ʳ bʳ; the middle term is the (n/2 + 1)th for even n, and there are two middle terms for odd n.",
-                "hi": "(a + b)ⁿ का (r + 1)वाँ पद T₍ᵣ₊₁₎ = C(n, r) aⁿ⁻ʳ bʳ है; सम n के लिए मध्य पद (n/2 + 1)वाँ है, और विषम n के लिए दो मध्य पद होते हैं।"
+                "en": "The general term of $(a + b)^{n}$ is $T_{r+1} = C(n, r) a^{n-r} b^{r}$; for even n the middle term is $T_{n/2+1}$, and for odd n there are two middle terms.",
+                "hi": "$(a + b)^{n}$ का व्यापक पद $T_{r+1} = C(n, r) a^{n-r} b^{r}$ है; सम n के लिए मध्य पद $T_{n/2+1}$ है, और विषम n के लिए दो मध्य पद होते हैं।"
               },
               "key_points": [
                 {
-                  "en": "Find a specified term, the term independent of x, or the coefficient of xᵏ.",
-                  "hi": "कोई विशेष पद, x से स्वतंत्र पद, या xᵏ का गुणांक ज्ञात कीजिए।"
+                  "en": "Find a specified term, the term independent of x, or the coefficient of $x^{k}$.",
+                  "hi": "कोई विशेष पद, x से स्वतंत्र पद, या $x^{k}$ का गुणांक ज्ञात कीजिए।"
                 },
                 {
                   "en": "Find the middle term or terms of an expansion.",
@@ -93,8 +83,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-5:item-2",
                 "jee-main-2027:mathematics:unit-5:item-3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -105,23 +94,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Mathematics, Ch 7",
+      "ref": "NCERT Class 11 Mathematics, Ch 7 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/kemh107.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 5: BINOMIAL THEOREM AND ITS SIMPLE APPLICATIONS (PDF p.1)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 5, BINOMIAL THEOREM AND ITS SIMPLE APPLICATIONS"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: binomial-positive (§7.2, khmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/binomial-theorem.json."
 }

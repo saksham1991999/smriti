@@ -7,8 +7,6 @@
     "en": "Permutations and Combinations",
     "hi": "क्रमचय और संचय"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Mathematics, Ch 6",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Fundamental Principle of Counting",
         "hi": "गणना का आधारभूत सिद्धांत"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 6 §6.2"
-      ],
       "subtopics": [
         {
           "id": "math.permutations-combinations.counting-principle.core",
@@ -38,8 +32,8 @@
               "kind": "formula",
               "intrinsic_depth": 2,
               "summary": {
-                "en": "If one event can occur in m ways and, after it, another in n ways, the two can occur together in m × n ways; the rule extends to any number of events.",
-                "hi": "यदि एक घटना m प्रकार से और उसके बाद दूसरी n प्रकार से घटित हो सकती है, तो दोनों मिलकर m × n प्रकार से घटित हो सकती हैं; यह नियम कितनी भी घटनाओं पर लागू होता है।"
+                "en": "If one event can occur in m ways and, after it, another in n ways, the two can occur together in $m \\times n$ ways; the rule extends to any number of events.",
+                "hi": "यदि एक घटना m प्रकार से और उसके बाद दूसरी n प्रकार से घटित हो सकती है, तो दोनों मिलकर $m \\times n$ प्रकार से घटित हो सकती हैं; यह नियम कितनी भी घटनाओं पर लागू होता है।"
               },
               "key_points": [
                 {
@@ -55,11 +49,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-4:item-1"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 6 §6.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -71,10 +61,6 @@
         "en": "Permutations",
         "hi": "क्रमचय"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 6 §6.3"
-      ],
       "subtopics": [
         {
           "id": "math.permutations-combinations.permutations.core",
@@ -92,8 +78,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The number of arrangements of r objects chosen from n distinct objects is P(n, r) = n!/(n − r)!; when some objects repeat, n! is divided by the factorials of the repeat counts.",
-                "hi": "n भिन्न वस्तुओं में से r वस्तुओं के विन्यासों की संख्या P(n, r) = n!/(n − r)! है; जब कुछ वस्तुएँ दोहराती हों, तो n! को पुनरावृत्ति-संख्याओं के क्रमगुणितों से भाग दिया जाता है।"
+                "en": "The number of arrangements of r objects chosen from n distinct objects is $P(n, r) = n!/(n - r)!$; when some objects repeat, n! is divided by the factorials of the repeat counts.",
+                "hi": "n भिन्न वस्तुओं में से r वस्तुओं के विन्यासों की संख्या $P(n, r) = n!/(n - r)!$ है; जब कुछ वस्तुएँ दोहराती हों, तो n! को पुनरावृत्ति-संख्याओं के क्रमगुणितों से भाग दिया जाता है।"
               },
               "key_points": [
                 {
@@ -111,11 +97,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-4:item-2"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 6 §6.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -127,10 +109,6 @@
         "en": "Combinations",
         "hi": "संचय"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 6 §6.4"
-      ],
       "subtopics": [
         {
           "id": "math.permutations-combinations.combinations.core",
@@ -148,8 +126,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The number of selections of r objects from n distinct objects is C(n, r) = n!/(r!(n − r)!), with C(n, r) = C(n, n − r) and C(n, r) + C(n, r − 1) = C(n + 1, r).",
-                "hi": "n भिन्न वस्तुओं में से r वस्तुओं के चयनों की संख्या C(n, r) = n!/(r!(n − r)!) है, जहाँ C(n, r) = C(n, n − r) और C(n, r) + C(n, r − 1) = C(n + 1, r)।"
+                "en": "The number of selections of r objects from n distinct objects is $C(n, r) = n!/(r!(n - r)!)$, with $C(n, r) = C(n, n - r)$ and $C(n, r) + C(n, r - 1) = C(n + 1, r)$.",
+                "hi": "n भिन्न वस्तुओं में से r वस्तुओं के चयनों की संख्या $C(n, r) = n!/(r!(n - r)!)$ है, जहाँ $C(n, r) = C(n, n - r)$ और $C(n, r) + C(n, r - 1) = C(n + 1, r)$।"
               },
               "key_points": [
                 {
@@ -168,11 +146,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-4:item-2",
                 "jee-main-2027:mathematics:unit-4:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 6 §6.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -183,23 +157,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Mathematics, Ch 6",
+      "ref": "NCERT Class 11 Mathematics, Ch 6 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/kemh106.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 4: PERMUTATIONS AND COMBINATIONS (PDF p.1)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 4, PERMUTATIONS AND COMBINATIONS"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: counting-principle (§6.2, khmh1 contents prelims p.xiv), permutations (§6.3, khmh1 contents prelims p.xiv), combinations (§6.4, khmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/permutations-combinations.json."
 }

@@ -1,0 +1,66 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.human-health-disease",
+  "items": [
+    {
+      "id": "lebo1-7-1",
+      "kind": "list",
+      "title": "Common Diseases in Humans",
+      "source_ref": "NCERT Class 12 Biology, Ch 7 §7.1 (https://ncert.nic.in/textbook/pdf/lebo107.pdf)",
+      "concepts": [
+        "bio.human-health-disease.common-diseases.core.common-diseases"
+      ]
+    },
+    {
+      "id": "lebo1-7-2",
+      "kind": "fact",
+      "title": "Immunity",
+      "source_ref": "NCERT Class 12 Biology, Ch 7 §7.2 (https://ncert.nic.in/textbook/pdf/lebo107.pdf)",
+      "concepts": [
+        "bio.human-health-disease.immunity.core.immunity-vaccines"
+      ]
+    },
+    {
+      "id": "lebo1-7-3",
+      "kind": "fact",
+      "title": "AIDS",
+      "source_ref": "NCERT Class 12 Biology, Ch 7 §7.3 (https://ncert.nic.in/textbook/pdf/lebo107.pdf)",
+      "concepts": [
+        "bio.human-health-disease.aids-cancer.core.hiv-aids",
+        "bio.human-health-disease.aids-cancer.core.cancer"
+      ]
+    },
+    {
+      "id": "lebo1-7-4",
+      "kind": "fact",
+      "title": "Cancer",
+      "source_ref": "NCERT Class 12 Biology, Ch 7 §7.4 (https://ncert.nic.in/textbook/pdf/lebo107.pdf)",
+      "concepts": [
+        "bio.human-health-disease.aids-cancer.core.cancer",
+        "bio.human-health-disease.aids-cancer.core.hiv-aids"
+      ]
+    },
+    {
+      "id": "lebo1-7-5",
+      "kind": "list",
+      "title": "Drugs and Alcohol Abuse",
+      "source_ref": "NCERT Class 12 Biology, Ch 7 §7.5 (https://ncert.nic.in/textbook/pdf/lebo107.pdf)",
+      "concepts": [
+        "bio.human-health-disease.drugs.core.drug-alcohol-abuse"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Biology, Ch 7 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lebo107.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

@@ -7,8 +7,6 @@
     "en": "Limits and Derivatives",
     "hi": "सीमा और अवकलज"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Mathematics, Ch 12",
   "topics": [
     {
@@ -17,11 +15,6 @@
         "en": "Intuitive Idea of Derivatives and Limits",
         "hi": "अवकलजों का सहजानुभूत बोध तथा सीमाएँ"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 12 §12.2",
-        "NCERT Class 11 Mathematics, Ch 12 §12.3"
-      ],
       "subtopics": [
         {
           "id": "math.limits-derivatives.limits-intro.core",
@@ -39,8 +32,8 @@
               "kind": "definition",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "lim_(x→a) f(x) = L means f(x) approaches L as x approaches a; the limit exists when the left- and right-hand limits are equal, and limits of sums, products and quotients are the sums, products and quotients of limits.",
-                "hi": "lim_(x→a) f(x) = L का अर्थ है कि x के a की ओर जाने पर f(x), L की ओर जाता है; सीमा तब अस्तित्व में होती है जब बाएँ और दाएँ पक्ष की सीमाएँ बराबर हों, और योग, गुणनफल तथा भागफल की सीमाएँ सीमाओं के योग, गुणनफल तथा भागफल होती हैं।"
+                "en": "$\\lim_(x\\rightarrow a) f(x) = L$ means $f(x)$ approaches L as x approaches a; the limit exists when the left- and right-hand limits are equal, and limits of sums, products and quotients are the sums, products and quotients of limits.",
+                "hi": "$\\lim_(x\\rightarrow a) f(x) = L$ का अर्थ है कि x के a की ओर जाने पर $f(x)$, L की ओर जाता है; सीमा तब अस्तित्व में होती है जब बाएँ और दाएँ पक्ष की सीमाएँ बराबर हों, और योग, गुणनफल तथा भागफल की सीमाएँ सीमाओं के योग, गुणनफल तथा भागफल होती हैं।"
               },
               "key_points": [
                 {
@@ -52,8 +45,8 @@
                   "hi": "बहुपद और परिमेय फलनों की सीमाएँ, गुणनखंडन से 0/0 रूपों सहित, निकालिए।"
                 },
                 {
-                  "en": "Use lim_(x→a) (xⁿ − aⁿ)/(x − a) = naⁿ⁻¹.",
-                  "hi": "lim_(x→a) (xⁿ − aⁿ)/(x − a) = naⁿ⁻¹ का प्रयोग कीजिए।"
+                  "en": "Use $\\lim_(x\\rightarrow a) (x^{n} - a^{n})/(x - a) = na^{n-1}$.",
+                  "hi": "$\\lim_(x\\rightarrow a) (x^{n} - a^{n})/(x - a) = na^{n-1}$ का प्रयोग कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -62,12 +55,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-5"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 12 §12.2",
-                "NCERT Class 11 Mathematics, Ch 12 §12.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -79,10 +67,6 @@
         "en": "Limits of Trigonometric Functions",
         "hi": "त्रिकोणमितीय फलनों की सीमाएँ"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 12 §12.4"
-      ],
       "subtopics": [
         {
           "id": "math.limits-derivatives.trig-limits.core",
@@ -100,13 +84,13 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The sandwich theorem gives lim_(x→0) (sin x)/x = 1 and lim_(x→0) (1 − cos x)/x = 0, from which many trigonometric limits follow.",
-                "hi": "सैंडविच प्रमेय से lim_(x→0) (sin x)/x = 1 और lim_(x→0) (1 − cos x)/x = 0 मिलते हैं, जिनसे अनेक त्रिकोणमितीय सीमाएँ निकलती हैं।"
+                "en": "The sandwich theorem gives $\\lim_(x\\rightarrow 0) (\\sin x)/x = 1$ and $\\lim_(x\\rightarrow 0) (1 - \\cos x)/x = 0$, from which many trigonometric limits follow.",
+                "hi": "सैंडविच प्रमेय से $\\lim_(x\\rightarrow 0) (\\sin x)/x = 1$ और $\\lim_(x\\rightarrow 0) (1 - \\cos x)/x = 0$ मिलते हैं, जिनसे अनेक त्रिकोणमितीय सीमाएँ निकलती हैं।"
               },
               "key_points": [
                 {
-                  "en": "Evaluate limits such as lim (sin ax)/(bx).",
-                  "hi": "lim (sin ax)/(bx) जैसी सीमाएँ निकालिए।"
+                  "en": "Evaluate limits such as $\\lim (\\sin ax)/(bx)$.",
+                  "hi": "$\\lim (\\sin ax)/(bx)$ जैसी सीमाएँ निकालिए।"
                 },
                 {
                   "en": "Reduce a trigonometric limit to the standard forms.",
@@ -120,11 +104,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-5"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 12 §12.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -136,10 +116,6 @@
         "en": "Derivatives",
         "hi": "अवकलज"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 12 §12.5"
-      ],
       "subtopics": [
         {
           "id": "math.limits-derivatives.derivatives-intro.core",
@@ -157,13 +133,13 @@
               "kind": "definition",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The derivative of f at a is f′(a) = lim_(h→0) [f(a + h) − f(a)]/h, the slope of the tangent at that point, and finding it from this limit is differentiation from first principles.",
-                "hi": "a पर f का अवकलज f′(a) = lim_(h→0) [f(a + h) − f(a)]/h है, जो उस बिंदु पर स्पर्शरेखा की ढाल है, और इस सीमा से इसे ज्ञात करना प्रथम सिद्धांत से अवकलन है।"
+                "en": "The derivative of f at a is $f'(a) = \\lim_(h\\rightarrow 0) [f(a + h) - f(a)]/h$, the slope of the tangent at that point, and finding it from this limit is differentiation from first principles.",
+                "hi": "a पर f का अवकलज $f'(a) = \\lim_(h\\rightarrow 0) [f(a + h) - f(a)]/h$ है, जो उस बिंदु पर स्पर्शरेखा की ढाल है, और इस सीमा से इसे ज्ञात करना प्रथम सिद्धांत से अवकलन है।"
               },
               "key_points": [
                 {
-                  "en": "Differentiate xⁿ, sin x and cos x from first principles.",
-                  "hi": "प्रथम सिद्धांत से xⁿ, sin x और cos x का अवकलन कीजिए।"
+                  "en": "Differentiate $x^{n}$, sin x and cos x from first principles.",
+                  "hi": "प्रथम सिद्धांत से $x^{n}$, sin x और cos x का अवकलन कीजिए।"
                 },
                 {
                   "en": "Interpret the derivative as a rate of change and a slope.",
@@ -177,12 +153,7 @@
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-5",
                 "jee-main-2027:mathematics:unit-7:item-7"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 12 §12.2",
-                "NCERT Class 11 Mathematics, Ch 12 §12.5"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.limits-derivatives.derivatives-intro.core.derivative-algebra-rules",
@@ -193,8 +164,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "(u ± v)′ = u′ ± v′, (uv)′ = u′v + uv′ and (u/v)′ = (u′v − uv′)/v² wherever v ≠ 0.",
-                "hi": "(u ± v)′ = u′ ± v′, (uv)′ = u′v + uv′ और जहाँ v ≠ 0 वहाँ (u/v)′ = (u′v − uv′)/v²।"
+                "en": "$(u \\pm v)' = u' \\pm v'$, $(uv)' = u'v + uv'$ and, wherever $v \\ne 0$, $(u/v)' = (u'v - uv')/v^{2}$.",
+                "hi": "$(u \\pm v)' = u' \\pm v'$, $(uv)' = u'v + uv'$ और जहाँ $v \\ne 0$ वहाँ $(u/v)' = (u'v - uv')/v^{2}$।"
               },
               "key_points": [
                 {
@@ -212,11 +183,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-7:item-7"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 12 §12.5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -227,23 +194,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Mathematics, Ch 12",
+      "ref": "NCERT Class 11 Mathematics, Ch 12 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/kemh112.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 7: LIMIT, CONTINUITY AND DIFFERENTIABILITY (PDF p.1)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 7, LIMIT, CONTINUITY AND DIFFERENTIABILITY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: trig-limits (§12.4, khmh1 contents prelims p.xv), derivatives-intro (§12.5, khmh1 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/limits-derivatives.json."
 }

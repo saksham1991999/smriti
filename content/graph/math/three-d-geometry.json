@@ -7,8 +7,6 @@
     "en": "Three Dimensional Geometry",
     "hi": "त्रि-विमीय ज्यामिति"
   },
-  "hi_source": "ncert",
-  "class": 12,
   "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 11",
   "topics": [
     {
@@ -17,10 +15,6 @@
         "en": "Direction Cosines and Direction Ratios of a Line",
         "hi": "रेखा के दिक्-कोसाइन और दिक्-अनुपात"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 11 §11.2"
-      ],
       "subtopics": [
         {
           "id": "math.three-d-geometry.direction-cosines.core",
@@ -38,8 +32,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "If a line makes angles α, β, γ with the axes, l = cos α, m = cos β, n = cos γ are its direction cosines with l² + m² + n² = 1; any numbers proportional to them are direction ratios, and the line through two points has direction ratios x₂ − x₁, y₂ − y₁, z₂ − z₁.",
-                "hi": "यदि कोई रेखा अक्षों से α, β, γ कोण बनाती है, तो l = cos α, m = cos β, n = cos γ उसकी दिक्-कोसाइन हैं और l² + m² + n² = 1; इनके समानुपाती कोई भी संख्याएँ दिक्-अनुपात हैं, और दो बिंदुओं से जाने वाली रेखा के दिक्-अनुपात x₂ − x₁, y₂ − y₁, z₂ − z₁ हैं।"
+                "en": "If a line makes angles $\\alpha$, $\\beta$, $\\gamma$ with the axes, $l = \\cos \\alpha$, $m = \\cos \\beta$, $n = \\cos \\gamma$ are its direction cosines with $l^{2} + m^{2} + n^{2} = 1$; any numbers proportional to them are direction ratios, and the line through two points has direction ratios $x_{2} - x_{1}$, $y_{2} - y_{1}$, $z_{2} - z_{1}$.",
+                "hi": "यदि कोई रेखा अक्षों से $\\alpha$, $\\beta$, $\\gamma$ कोण बनाती है, तो $l = \\cos \\alpha$, $m = \\cos \\beta$, $n = \\cos \\gamma$ उसकी दिक्-कोसाइन हैं और $l^{2} + m^{2} + n^{2} = 1$; इनके समानुपाती कोई भी संख्याएँ दिक्-अनुपात हैं, और दो बिंदुओं से जाने वाली रेखा के दिक्-अनुपात $x_{2} - x_{1}$, $y_{2} - y_{1}$, $z_{2} - z_{1}$ हैं।"
               },
               "key_points": [
                 {
@@ -58,11 +52,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-11:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 11 §11.2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -74,10 +64,6 @@
         "en": "Equation of a Line in Space",
         "hi": "अंतरिक्ष में रेखा का समीकरण"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 11 §11.3"
-      ],
       "subtopics": [
         {
           "id": "math.three-d-geometry.line-in-space.core",
@@ -95,8 +81,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "A line through a point with position vector a parallel to b is r = a + λb, or in Cartesian form (x − x₁)/a = (y − y₁)/b = (z − z₁)/c; the line through two points uses their difference as b.",
-                "hi": "स्थिति सदिश a वाले बिंदु से b के समांतर जाने वाली रेखा r = a + λb है, या कार्तीय रूप में (x − x₁)/a = (y − y₁)/b = (z − z₁)/c; दो बिंदुओं से जाने वाली रेखा में उनका अंतर b के रूप में लिया जाता है।"
+                "en": "A line through a point with position vector a parallel to b is $r = a + \\lambda b$, or in Cartesian form $(x - x_{1})/a = (y - y_{1})/b = (z - z_{1})/c$; the line through two points uses their difference as b.",
+                "hi": "स्थिति सदिश a वाले बिंदु से b के समांतर जाने वाली रेखा $r = a + \\lambda b$ है, या कार्तीय रूप में $(x - x_{1})/a = (y - y_{1})/b = (z - z_{1})/c$; दो बिंदुओं से जाने वाली रेखा में उनका अंतर b के रूप में लिया जाता है।"
               },
               "key_points": [
                 {
@@ -115,11 +101,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-11:item-5"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 11 §11.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -131,10 +113,6 @@
         "en": "Angle between Two Lines",
         "hi": "दो रेखाओं के मध्य कोण"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 11 §11.4"
-      ],
       "subtopics": [
         {
           "id": "math.three-d-geometry.angle-lines.core",
@@ -152,8 +130,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The angle θ between lines with direction ratios a₁, b₁, c₁ and a₂, b₂, c₂ satisfies cos θ = |a₁a₂ + b₁b₂ + c₁c₂|/(√(a₁² + b₁² + c₁²)·√(a₂² + b₂² + c₂²)), so the lines are perpendicular when a₁a₂ + b₁b₂ + c₁c₂ = 0.",
-                "hi": "दिक्-अनुपातों a₁, b₁, c₁ और a₂, b₂, c₂ वाली रेखाओं के बीच का कोण θ, cos θ = |a₁a₂ + b₁b₂ + c₁c₂|/(√(a₁² + b₁² + c₁²)·√(a₂² + b₂² + c₂²)) को संतुष्ट करता है, अतः a₁a₂ + b₁b₂ + c₁c₂ = 0 होने पर रेखाएँ लंब होती हैं।"
+                "en": "For lines with direction ratios $a_{1}, b_{1}, c_{1}$ and $a_{2}, b_{2}, c_{2}$, the angle $\\theta$ between them satisfies $\\cos \\theta = |a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2}|/(\\sqrt{a_{1}^{2} + b_{1}^{2} + c_{1}^{2}}\\cdot\\sqrt{a_{2}^{2} + b_{2}^{2} + c_{2}^{2}})$, so the lines are perpendicular when $a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2} = 0$.",
+                "hi": "दिक्-अनुपातों $a_{1}, b_{1}, c_{1}$ और $a_{2}, b_{2}, c_{2}$ वाली रेखाओं के बीच का कोण $\\theta$, $\\cos \\theta = |a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2}|/(\\sqrt{a_{1}^{2} + b_{1}^{2} + c_{1}^{2}}\\cdot\\sqrt{a_{2}^{2} + b_{2}^{2} + c_{2}^{2}})$ को संतुष्ट करता है, अतः $a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2} = 0$ होने पर रेखाएँ लंब होती हैं।"
               },
               "key_points": [
                 {
@@ -172,11 +150,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-11:item-4"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 11 §11.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -188,10 +162,6 @@
         "en": "Shortest Distance between Two Lines",
         "hi": "दो रेखाओं के मध्य न्यूनतम दूरी"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Mathematics Part II, Ch 11 §11.5"
-      ],
       "subtopics": [
         {
           "id": "math.three-d-geometry.shortest-distance.core",
@@ -209,8 +179,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "Lines that are neither parallel nor intersecting are skew; for r = a₁ + λb₁ and r = a₂ + μb₂ the shortest distance is |(b₁ × b₂)·(a₂ − a₁)|/|b₁ × b₂|, and for parallel lines it is |b × (a₂ − a₁)|/|b|.",
-                "hi": "जो रेखाएँ न समांतर हों न प्रतिच्छेदी, वे विषमतलीय हैं; r = a₁ + λb₁ और r = a₂ + μb₂ के लिए न्यूनतम दूरी |(b₁ × b₂)·(a₂ − a₁)|/|b₁ × b₂| है, और समांतर रेखाओं के लिए |b × (a₂ − a₁)|/|b|।"
+                "en": "Lines that are neither parallel nor intersecting are skew; for $r = a_{1} + \\lambda b_{1}$ and $r = a_{2} + \\mu b_{2}$ the shortest distance is $|(b_{1} \\times b_{2})\\cdot(a_{2} - a_{1})|/|b_{1} \\times b_{2}|$, and for parallel lines it is |b $\\times (a_{2} - a_{1})|/|b|$.",
+                "hi": "जो रेखाएँ न समांतर हों न प्रतिच्छेदी, वे विषमतलीय हैं; $r = a_{1} + \\lambda b_{1}$ और $r = a_{2} + \\mu b_{2}$ के लिए न्यूनतम दूरी $|(b_{1} \\times b_{2})\\cdot(a_{2} - a_{1})|/|b_{1} \\times b_{2}|$ है, और समांतर रेखाओं के लिए |b $\\times (a_{2} - a_{1})|/|b|$।"
               },
               "key_points": [
                 {
@@ -229,11 +199,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-11:item-6"
-              ],
-              "ncert_refs": [
-                "NCERT Class 12 Mathematics Part II, Ch 11 §11.5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -244,23 +210,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Mathematics Part II, Ch 11",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 11 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/lemh205.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xvi (chapter title)",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xvi"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 11: THREE DIMENSIONAL GEOMETRY (PDF p.2)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 11, THREE DIMENSIONAL GEOMETRY"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: direction-cosines (§11.2, lhmh2 contents prelims p.xvi), line-in-space (§11.3, lhmh2 contents prelims p.xvi), angle-lines (§11.4, lhmh2 contents prelims p.xvi), shortest-distance (§11.5, lhmh2 contents prelims p.xvi). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/three-d-geometry.json."
 }

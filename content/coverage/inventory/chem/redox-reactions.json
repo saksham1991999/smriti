@@ -1,0 +1,55 @@
+{
+  "schema": "inventory@1",
+  "chapter": "chem.redox-reactions",
+  "items": [
+    {
+      "id": "kech2-7-1",
+      "kind": "definition",
+      "title": "Redox Reactions and Electron Transfer",
+      "source_ref": "NCERT Class 11 Chemistry Part II, Ch 7 §7.1 (https://ncert.nic.in/textbook/pdf/kech201.pdf)",
+      "concepts": [
+        "chem.redox-reactions.redox-concepts.core.redox-electronic"
+      ]
+    },
+    {
+      "id": "kech2-7-2",
+      "kind": "definition",
+      "title": "Redox Reactions in Terms of Electron Transfer Reactions",
+      "source_ref": "NCERT Class 11 Chemistry Part II, Ch 7 §7.2 (https://ncert.nic.in/textbook/pdf/kech201.pdf)",
+      "concepts": [
+        "chem.redox-reactions.redox-concepts.core.redox-electronic"
+      ]
+    },
+    {
+      "id": "kech2-7-3",
+      "kind": "fact",
+      "title": "Oxidation Number",
+      "source_ref": "NCERT Class 11 Chemistry Part II, Ch 7 §7.3 (https://ncert.nic.in/textbook/pdf/kech201.pdf)",
+      "concepts": [
+        "chem.redox-reactions.oxidation-number.core.oxidation-number-balancing"
+      ]
+    },
+    {
+      "id": "kech2-7-4",
+      "kind": "definition",
+      "title": "Redox Reactions and Electrode Processes",
+      "source_ref": "NCERT Class 11 Chemistry Part II, Ch 7 §7.4 (https://ncert.nic.in/textbook/pdf/kech201.pdf)",
+      "concepts": [
+        "chem.redox-reactions.electrode-processes.core.redox-couple-electrode"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part II, Ch 7 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kech201.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

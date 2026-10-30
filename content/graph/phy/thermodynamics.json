@@ -7,8 +7,6 @@
     "en": "Thermodynamics",
     "hi": "ऊष्मागतिकी"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Physics Part II, Ch 11",
   "topics": [
     {
@@ -17,11 +15,6 @@
         "en": "Thermal Equilibrium and the Zeroth Law",
         "hi": "तापीय साम्य एवं शून्य कोटि नियम"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 11 §11.2",
-        "NCERT Class 11 Physics Part II, Ch 11 §11.3"
-      ],
       "subtopics": [
         {
           "id": "phy.thermodynamics.zeroth-law.core",
@@ -59,8 +52,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-8:item-1",
                 "neet-ug-2026:physics:unit-8:item-1"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -72,11 +64,6 @@
         "en": "Heat, Internal Energy and Work",
         "hi": "ऊष्मा, आंतरिक ऊर्जा तथा कार्य"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 11 §11.4",
-        "NCERT Class 11 Physics Part II, Ch 11 §11.7"
-      ],
       "subtopics": [
         {
           "id": "phy.thermodynamics.heat-work-internal-energy.core",
@@ -99,8 +86,8 @@
               },
               "key_points": [
                 {
-                  "en": "Find work done by a gas as the area under its P-V curve, W = ∫P dV.",
-                  "hi": "गैस द्वारा किया गया कार्य उसके P-V वक्र के नीचे के क्षेत्रफल W = ∫P dV के रूप में निकालिए।"
+                  "en": "Find work done by a gas as the area under its P-V curve, $W = \\int P dV$.",
+                  "hi": "गैस द्वारा किया गया कार्य उसके P-V वक्र के नीचे के क्षेत्रफल $W = \\int P dV$ के रूप में निकालिए।"
                 },
                 {
                   "en": "Distinguish state variables (P, V, T, U) from path quantities (Q, W), and extensive from intensive variables.",
@@ -114,8 +101,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-8:item-2",
                 "neet-ug-2026:physics:unit-8:item-2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -127,11 +113,6 @@
         "en": "First Law of Thermodynamics",
         "hi": "ऊष्मागतिकी का प्रथम नियम"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 11 §11.5",
-        "NCERT Class 11 Physics Part II, Ch 11 §11.6"
-      ],
       "subtopics": [
         {
           "id": "phy.thermodynamics.first-law.core",
@@ -149,8 +130,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "The first law, ΔQ = ΔU + ΔW, is energy conservation for thermal systems: heat supplied goes into raising internal energy and doing work.",
-                "hi": "प्रथम नियम ΔQ = ΔU + ΔW ऊष्मीय निकायों के लिए ऊर्जा संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा बढ़ाने और कार्य करने में लगती है।"
+                "en": "The first law, $\\Delta Q = \\Delta U + \\Delta W$, is energy conservation for thermal systems: heat supplied goes into raising internal energy and doing work.",
+                "hi": "प्रथम नियम $\\Delta Q = \\Delta U + \\Delta W$ ऊष्मीय निकायों के लिए ऊर्जा संरक्षण है: दी गई ऊष्मा आंतरिक ऊर्जा बढ़ाने और कार्य करने में लगती है।"
               },
               "key_points": [
                 {
@@ -158,8 +139,8 @@
                   "hi": "निकाय द्वारा अवशोषित ऊष्मा और किए गए कार्य की चिह्न-परिपाटी लागू कीजिए।"
                 },
                 {
-                  "en": "Derive Cp − Cv = R for an ideal gas from the first law.",
-                  "hi": "प्रथम नियम से आदर्श गैस के लिए Cp − Cv = R व्युत्पन्न कीजिए।"
+                  "en": "Derive $C_{p} - C_{v} = R$ for an ideal gas from the first law.",
+                  "hi": "प्रथम नियम से आदर्श गैस के लिए $C_{p} - C_{v} = R$ व्युत्पन्न कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -169,8 +150,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-8:item-3",
                 "neet-ug-2026:physics:unit-8:item-3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -182,10 +162,6 @@
         "en": "Thermodynamic Processes",
         "hi": "ऊष्मागतिकीय प्रक्रम"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 11 §11.8"
-      ],
       "subtopics": [
         {
           "id": "phy.thermodynamics.thermodynamic-processes.core",
@@ -203,8 +179,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "In an isothermal process T is constant and W = nRT ln(V₂/V₁); in an adiabatic process no heat is exchanged, PV^γ is constant and W = (P₁V₁ − P₂V₂)/(γ − 1).",
-                "hi": "समतापीय प्रक्रम में T नियत रहता है और W = nRT ln(V₂/V₁); रुद्धोष्म प्रक्रम में ऊष्मा का आदान-प्रदान नहीं होता, PV^γ नियत रहता है और W = (P₁V₁ − P₂V₂)/(γ − 1)।"
+                "en": "In an isothermal process T is constant and $W = nRT \\ln(V_{2}/V_{1})$; in an adiabatic process no heat is exchanged, $PV^\\gamma$ is constant and $W = (P_{1}V_{1} - P_{2}V_{2})/(\\gamma - 1)$.",
+                "hi": "समतापीय प्रक्रम में T नियत रहता है और $W = nRT \\ln(V_{2}/V_{1})$; रुद्धोष्म प्रक्रम में ऊष्मा का आदान-प्रदान नहीं होता, $PV^\\gamma$ नियत रहता है और $W = (P_{1}V_{1} - P_{2}V_{2})/(\\gamma - 1)$।"
               },
               "key_points": [
                 {
@@ -227,8 +203,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-8:item-4",
                 "neet-ug-2026:physics:unit-8:item-4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -240,11 +215,6 @@
         "en": "Second Law; Reversible and Irreversible Processes",
         "hi": "द्वितीय नियम; उत्क्रमणीय व अनुत्क्रमणीय प्रक्रम"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Physics Part II, Ch 11 §11.9",
-        "NCERT Class 11 Physics Part II, Ch 11 §11.10"
-      ],
       "subtopics": [
         {
           "id": "phy.thermodynamics.second-law.core",
@@ -275,8 +245,8 @@
                   "hi": "समझाइए कि कोई प्रक्रम उत्क्रमणीय कैसे होता है और घर्षण तथा मुक्त प्रसार उसे अनुत्क्रमणीय क्यों बनाते हैं।"
                 },
                 {
-                  "en": "Define the efficiency of a heat engine η = W/Q₁ and the coefficient of performance of a refrigerator.",
-                  "hi": "ऊष्मा इंजन की दक्षता η = W/Q₁ और प्रशीतक का निष्पादन गुणांक परिभाषित कीजिए।"
+                  "en": "Define the efficiency of a heat engine $\\eta = W/Q_{1}$ and the coefficient of performance of a refrigerator.",
+                  "hi": "ऊष्मा इंजन की दक्षता $\\eta = W/Q_{1}$ और प्रशीतक का निष्पादन गुणांक परिभाषित कीजिए।"
                 }
               ],
               "prerequisites": [
@@ -286,8 +256,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-8:item-5",
                 "neet-ug-2026:physics:unit-8:item-5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -298,28 +267,34 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Physics Part II, Ch 11",
+      "ref": "NCERT Class 11 Physics Part II, Ch 11 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/keph204.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khph2, contents prelims p.xvi (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khph2 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xvi"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 8: Thermodynamics (PDF p.4)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.4: Physics Unit 8, Thermodynamics"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 8: THERMODYNAMICS (PDF p.5)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.5: Physics Unit 8, THERMODYNAMICS"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: thermodynamic-processes (§11.8, khph2 contents prelims p.xvi). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/thermodynamics.json."
 }

@@ -1,0 +1,76 @@
+{
+  "schema": "inventory@1",
+  "chapter": "math.continuity-differentiability",
+  "items": [
+    {
+      "id": "lemh1-5-2",
+      "kind": "definition",
+      "title": "Continuity",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 5 §5.2 (https://ncert.nic.in/textbook/pdf/lemh105.pdf)",
+      "concepts": [
+        "math.continuity-differentiability.continuity.core.continuity-definition"
+      ]
+    },
+    {
+      "id": "lemh1-5-3",
+      "kind": "formula",
+      "title": "Differentiability",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 5 §5.3 (https://ncert.nic.in/textbook/pdf/lemh105.pdf)",
+      "concepts": [
+        "math.continuity-differentiability.differentiability.core.differentiability-relation",
+        "math.continuity-differentiability.differentiability.core.chain-rule-implicit",
+        "math.continuity-differentiability.differentiability.core.derivative-inverse-trig"
+      ]
+    },
+    {
+      "id": "lemh1-5-4",
+      "kind": "definition",
+      "title": "Exponential and Logarithmic Functions",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 5 §5.4 (https://ncert.nic.in/textbook/pdf/lemh105.pdf)",
+      "concepts": [
+        "math.continuity-differentiability.exp-log.core.exp-log-functions",
+        "math.continuity-differentiability.exp-log.core.logarithmic-differentiation"
+      ]
+    },
+    {
+      "id": "lemh1-5-5",
+      "kind": "fact",
+      "title": "Logarithmic Differentiation",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 5 §5.5 (https://ncert.nic.in/textbook/pdf/lemh105.pdf)",
+      "concepts": [
+        "math.continuity-differentiability.exp-log.core.logarithmic-differentiation",
+        "math.continuity-differentiability.exp-log.core.exp-log-functions"
+      ]
+    },
+    {
+      "id": "lemh1-5-6",
+      "kind": "fact",
+      "title": "Derivatives of Functions in Parametric Forms",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 5 §5.6 (https://ncert.nic.in/textbook/pdf/lemh105.pdf)",
+      "concepts": [],
+      "out_of_syllabus": "Derivatives of functions in parametric form are not listed in the JEE (Main) 2027 syllabus, whose Unit 7 lists the sum, difference, product and quotient rules and trigonometric, inverse trigonometric, logarithmic, exponential, composite and implicit functions (JEE Main 2027)"
+    },
+    {
+      "id": "lemh1-5-7",
+      "kind": "formula",
+      "title": "Second Order Derivative",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 5 §5.7 (https://ncert.nic.in/textbook/pdf/lemh105.pdf)",
+      "concepts": [
+        "math.continuity-differentiability.second-derivative.core.second-order-derivative"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 5 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh105.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

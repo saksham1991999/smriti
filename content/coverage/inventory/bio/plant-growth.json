@@ -1,0 +1,56 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.plant-growth",
+  "items": [
+    {
+      "id": "kebo1-13-1",
+      "kind": "fact",
+      "title": "Growth",
+      "source_ref": "NCERT Class 11 Biology, Ch 13 §13.1 (https://ncert.nic.in/textbook/pdf/kebo113.pdf)",
+      "concepts": [
+        "bio.plant-growth.growth.core.seed-germination",
+        "bio.plant-growth.growth.core.plant-growth-phases"
+      ]
+    },
+    {
+      "id": "kebo1-13-2",
+      "kind": "definition",
+      "title": "Differentiation, Dedifferentiation and Redifferentiation",
+      "source_ref": "NCERT Class 11 Biology, Ch 13 §13.2 (https://ncert.nic.in/textbook/pdf/kebo113.pdf)",
+      "concepts": [
+        "bio.plant-growth.differentiation.core.differentiation-dedifferentiation"
+      ]
+    },
+    {
+      "id": "kebo1-13-3",
+      "kind": "fact",
+      "title": "Development",
+      "source_ref": "NCERT Class 11 Biology, Ch 13 §13.3 (https://ncert.nic.in/textbook/pdf/kebo113.pdf)",
+      "concepts": [
+        "bio.plant-growth.development.core.plant-development"
+      ]
+    },
+    {
+      "id": "kebo1-13-4",
+      "kind": "list",
+      "title": "Plant Growth Regulators",
+      "source_ref": "NCERT Class 11 Biology, Ch 13 §13.4 (https://ncert.nic.in/textbook/pdf/kebo113.pdf)",
+      "concepts": [
+        "bio.plant-growth.growth-regulators.core.plant-growth-regulators"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 13 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo113.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

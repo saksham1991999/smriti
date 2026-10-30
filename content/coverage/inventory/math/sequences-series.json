@@ -1,0 +1,57 @@
+{
+  "schema": "inventory@1",
+  "chapter": "math.sequences-series",
+  "items": [
+    {
+      "id": "kemh1-8-2",
+      "kind": "definition",
+      "title": "Sequences",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 8 §8.2 (https://ncert.nic.in/textbook/pdf/kemh108.pdf)",
+      "concepts": [
+        "math.sequences-series.sequences.core.sequence-series-basics"
+      ]
+    },
+    {
+      "id": "kemh1-8-3",
+      "kind": "definition",
+      "title": "Series",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 8 §8.3 (https://ncert.nic.in/textbook/pdf/kemh108.pdf)",
+      "concepts": [
+        "math.sequences-series.sequences.core.sequence-series-basics"
+      ]
+    },
+    {
+      "id": "kemh1-8-4",
+      "kind": "formula",
+      "title": "Geometric Progression (G.P.)",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 8 §8.4 (https://ncert.nic.in/textbook/pdf/kemh108.pdf)",
+      "concepts": [
+        "math.sequences-series.progressions.core.geometric-progression",
+        "math.sequences-series.progressions.core.inserting-means",
+        "math.sequences-series.progressions.core.arithmetic-progression"
+      ]
+    },
+    {
+      "id": "kemh1-8-5",
+      "kind": "formula",
+      "title": "Relationship Between A.M. and G.M.",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 8 §8.5 (https://ncert.nic.in/textbook/pdf/kemh108.pdf)",
+      "concepts": [
+        "math.sequences-series.am-gm.core.am-gm-inequality"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 8 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh108.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

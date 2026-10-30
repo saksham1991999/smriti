@@ -1,0 +1,64 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.cell-cycle-division",
+  "items": [
+    {
+      "id": "kebo1-10-1",
+      "kind": "fact",
+      "title": "Cell Cycle",
+      "source_ref": "NCERT Class 11 Biology, Ch 10 §10.1 (https://ncert.nic.in/textbook/pdf/kebo110.pdf)",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ]
+    },
+    {
+      "id": "kebo1-10-2",
+      "kind": "fact",
+      "title": "M Phase",
+      "source_ref": "NCERT Class 11 Biology, Ch 10 §10.2 (https://ncert.nic.in/textbook/pdf/kebo110.pdf)",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ]
+    },
+    {
+      "id": "kebo1-10-3",
+      "kind": "fact",
+      "title": "Significance of Mitosis",
+      "source_ref": "NCERT Class 11 Biology, Ch 10 §10.3 (https://ncert.nic.in/textbook/pdf/kebo110.pdf)",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ]
+    },
+    {
+      "id": "kebo1-10-4",
+      "kind": "fact",
+      "title": "Meiosis",
+      "source_ref": "NCERT Class 11 Biology, Ch 10 §10.4 (https://ncert.nic.in/textbook/pdf/kebo110.pdf)",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ]
+    },
+    {
+      "id": "kebo1-10-5",
+      "kind": "fact",
+      "title": "Significance of Meiosis",
+      "source_ref": "NCERT Class 11 Biology, Ch 10 §10.5 (https://ncert.nic.in/textbook/pdf/kebo110.pdf)",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

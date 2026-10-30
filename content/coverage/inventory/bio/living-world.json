@@ -1,0 +1,39 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.living-world",
+  "items": [
+    {
+      "id": "kebo1-1-1",
+      "kind": "definition",
+      "title": "Diversity in the Living World",
+      "source_ref": "NCERT Class 11 Biology, Ch 1 §1.1 (https://ncert.nic.in/textbook/pdf/kebo101.pdf)",
+      "concepts": [
+        "bio.living-world.diversity.core.biodiversity-classification-need",
+        "bio.living-world.diversity.core.taxonomy-systematics",
+        "bio.living-world.diversity.core.binomial-nomenclature"
+      ]
+    },
+    {
+      "id": "kebo1-1-2",
+      "kind": "list",
+      "title": "Taxonomic Categories",
+      "source_ref": "NCERT Class 11 Biology, Ch 1 §1.2 (https://ncert.nic.in/textbook/pdf/kebo101.pdf)",
+      "concepts": [
+        "bio.living-world.categories.core.taxonomic-hierarchy"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 1 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

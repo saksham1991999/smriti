@@ -1,0 +1,73 @@
+{
+  "schema": "inventory@1",
+  "chapter": "math.matrices",
+  "items": [
+    {
+      "id": "lemh1-3-2",
+      "kind": "definition",
+      "title": "Matrix",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 3 §3.2 (https://ncert.nic.in/textbook/pdf/lemh103.pdf)",
+      "concepts": [
+        "math.matrices.matrix-basics.core.matrix-order-types"
+      ]
+    },
+    {
+      "id": "lemh1-3-3",
+      "kind": "definition",
+      "title": "Types of Matrices",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 3 §3.3 (https://ncert.nic.in/textbook/pdf/lemh103.pdf)",
+      "concepts": [
+        "math.matrices.matrix-basics.core.matrix-order-types"
+      ]
+    },
+    {
+      "id": "lemh1-3-4",
+      "kind": "fact",
+      "title": "Operations on Matrices",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 3 §3.4 (https://ncert.nic.in/textbook/pdf/lemh103.pdf)",
+      "concepts": [
+        "math.matrices.matrix-operations.core.matrix-algebra"
+      ]
+    },
+    {
+      "id": "lemh1-3-5",
+      "kind": "definition",
+      "title": "Transpose of a Matrix",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 3 §3.5 (https://ncert.nic.in/textbook/pdf/lemh103.pdf)",
+      "concepts": [
+        "math.matrices.transpose-symmetric.core.transpose-symmetric-skew"
+      ]
+    },
+    {
+      "id": "lemh1-3-6",
+      "kind": "definition",
+      "title": "Symmetric and Skew Symmetric Matrices",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 3 §3.6 (https://ncert.nic.in/textbook/pdf/lemh103.pdf)",
+      "concepts": [
+        "math.matrices.transpose-symmetric.core.transpose-symmetric-skew"
+      ]
+    },
+    {
+      "id": "lemh1-3-7",
+      "kind": "definition",
+      "title": "Invertible Matrices",
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 3 §3.7 (https://ncert.nic.in/textbook/pdf/lemh103.pdf)",
+      "concepts": [
+        "math.matrices.invertible-matrices.core.matrix-inverse-concept"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 3 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+}

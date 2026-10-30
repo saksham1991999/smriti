@@ -7,8 +7,6 @@
     "en": "Moving Charges and Magnetism",
     "hi": "गतिमान आवेश और चुंबकत्व"
   },
-  "hi_source": "ncert",
-  "class": 12,
   "ncert_ref": "NCERT Class 12 Physics Part I, Ch 4",
   "topics": [
     {
@@ -17,11 +15,6 @@
         "en": "Magnetic Force and Motion in a Magnetic Field",
         "hi": "चुंबकीय बल एवं चुंबकीय क्षेत्र में गति"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 12 Physics Part I, Ch 4 §4.2",
-        "NCERT Class 12 Physics Part I, Ch 4 §4.3"
-      ],
       "subtopics": [
         {
           "id": "phy.moving-charges-magnetism.magnetic-force.core",
@@ -39,21 +32,21 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "A charge moving in fields feels the Lorentz force F = q(E + v × B); in a uniform magnetic field alone it moves in a circle of radius mv/qB, or a helix if v has a component along B.",
-                "hi": "क्षेत्रों में चलते आवेश पर लॉरेंज़ बल F = q(E + v × B) लगता है; केवल एकसमान चुंबकीय क्षेत्र में यह mv/qB त्रिज्या के वृत्त में, या v का B के अनुदिश घटक होने पर कुंडलिनी पथ में चलता है।"
+                "en": "A charge moving in fields feels the Lorentz force $F = q(E + v \\times B)$; in a uniform magnetic field alone it moves in a circle of radius $mv/qB$, or a helix if v has a component along B.",
+                "hi": "क्षेत्रों में चलते आवेश पर लॉरेंज़ बल $F = q(E + v \\times B)$ लगता है; केवल एकसमान चुंबकीय क्षेत्र में यह $mv/qB$ त्रिज्या के वृत्त में, या v का B के अनुदिश घटक होने पर कुंडलिनी पथ में चलता है।"
               },
               "key_points": [
                 {
-                  "en": "Derive the radius and period of circular motion, T = 2πm/qB, and show the period does not depend on speed.",
-                  "hi": "वृत्तीय गति की त्रिज्या और आवर्तकाल T = 2πm/qB व्युत्पन्न कीजिए और दिखाइए कि आवर्तकाल चाल पर निर्भर नहीं करता।"
+                  "en": "Derive the radius and period of circular motion, $T = 2\\pi m/qB$, and show the period does not depend on speed.",
+                  "hi": "वृत्तीय गति की त्रिज्या और आवर्तकाल $T = 2\\pi m/qB$ व्युत्पन्न कीजिए और दिखाइए कि आवर्तकाल चाल पर निर्भर नहीं करता।"
                 },
                 {
                   "en": "Explain why the magnetic force does no work on a charge.",
                   "hi": "समझाइए कि चुंबकीय बल आवेश पर कार्य क्यों नहीं करता।"
                 },
                 {
-                  "en": "Find the velocity selected by crossed electric and magnetic fields, v = E/B.",
-                  "hi": "परस्पर लंबवत विद्युत और चुंबकीय क्षेत्रों द्वारा चयनित वेग v = E/B निकालिए।"
+                  "en": "Find the velocity selected by crossed electric and magnetic fields, $v = E/B$.",
+                  "hi": "परस्पर लंबवत विद्युत और चुंबकीय क्षेत्रों द्वारा चयनित वेग $v = E/B$ निकालिए।"
                 }
               ],
               "prerequisites": [
@@ -65,8 +58,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-13:item-3",
                 "neet-ug-2026:physics:unit-13:item-3"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "phy.moving-charges-magnetism.magnetic-force.core.force-on-conductor",
@@ -77,13 +69,13 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "A straight conductor of length L carrying current I in a uniform field feels F = I L × B, with magnitude BIL sin θ.",
-                "hi": "एकसमान क्षेत्र में धारा I वाले L लंबाई के सीधे चालक पर F = I L × B बल लगता है, जिसका परिमाण BIL sin θ है।"
+                "en": "A straight conductor of length L carrying current I in a uniform field feels $F = I L \\times B$, with magnitude $BIL \\sin \\theta$.",
+                "hi": "एकसमान क्षेत्र में धारा I वाले L लंबाई के सीधे चालक पर $F = I L \\times B$ बल लगता है, जिसका परिमाण $BIL \\sin \\theta$ है।"
               },
               "key_points": [
                 {
-                  "en": "Derive F = I L × B from the Lorentz force on drifting electrons.",
-                  "hi": "अपवाहित इलेक्ट्रॉनों पर लॉरेंज़ बल से F = I L × B व्युत्पन्न कीजिए।"
+                  "en": "Derive $F = I L \\times B$ from the Lorentz force on drifting electrons.",
+                  "hi": "अपवाहित इलेक्ट्रॉनों पर लॉरेंज़ बल से $F = I L \\times B$ व्युत्पन्न कीजिए।"
                 },
                 {
                   "en": "Find the direction of the force with Fleming's left-hand rule.",
@@ -98,8 +90,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-13:item-4",
                 "neet-ug-2026:physics:unit-13:item-4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -111,11 +102,6 @@
         "en": "Magnetic Field due to a Current Element: Biot-Savart Law",
         "hi": "विद्युत धारा अवयव के कारण चुंबकीय क्षेत्र, बायो-सावर्ट नियम"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 12 Physics Part I, Ch 4 §4.4",
-        "NCERT Class 12 Physics Part I, Ch 4 §4.5"
-      ],
       "subtopics": [
         {
           "id": "phy.moving-charges-magnetism.biot-savart.core",
@@ -133,8 +119,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "The Biot-Savart law dB = (μ₀/4π) I dl × r̂/r² gives the field of a current element; for a circular loop the axial field is μ₀IR²/[2(R² + x²)^(3/2)], μ₀I/2R at the centre.",
-                "hi": "बायो-सावर्ट नियम dB = (μ₀/4π) I dl × r̂/r² धारा अवयव का क्षेत्र देता है; वृत्ताकार पाश के अक्ष पर क्षेत्र μ₀IR²/[2(R² + x²)^(3/2)] और केंद्र पर μ₀I/2R होता है।"
+                "en": "The Biot-Savart law $dB = (\\mu_{0}/4\\pi)$ I $dl \\times \\hat{r}/r^{2}$ gives the field of a current element; for a circular loop the axial field is $\\mu_{0}IR^{2}/[2(R^{2} + x^{2})^{3/2}]$, $\\mu_{0}I/2R$ at the centre.",
+                "hi": "बायो-सावर्ट नियम $dB = (\\mu_{0}/4\\pi)$ I $dl \\times \\hat{r}/r^{2}$ धारा अवयव का क्षेत्र देता है; वृत्ताकार पाश के अक्ष पर क्षेत्र $\\mu_{0}IR^{2}/[2(R^{2} + x^{2})^{3/2}]$ और केंद्र पर $\\mu_{0}I/2R$ होता है।"
               },
               "key_points": [
                 {
@@ -153,8 +139,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-13:item-1",
                 "neet-ug-2026:physics:unit-13:item-1"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -166,11 +151,6 @@
         "en": "Ampere's Circuital Law and the Solenoid",
         "hi": "ऐम्पियर का परिपथीय नियम एवं परिनालिका"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 12 Physics Part I, Ch 4 §4.6",
-        "NCERT Class 12 Physics Part I, Ch 4 §4.7"
-      ],
       "subtopics": [
         {
           "id": "phy.moving-charges-magnetism.ampere-law.core",
@@ -188,8 +168,8 @@
               "kind": "formula",
               "intrinsic_depth": 4,
               "summary": {
-                "en": "Ampere's law ∮B·dl = μ₀I gives B = μ₀I/(2πr) round a long straight wire and B = μ₀nI inside a long solenoid.",
-                "hi": "ऐम्पियर का नियम ∮B·dl = μ₀I, लंबे सीधे तार के चारों ओर B = μ₀I/(2πr) और लंबी परिनालिका के भीतर B = μ₀nI देता है।"
+                "en": "Ampere's law $\\oint B\\cdot dl = \\mu_{0}I$ gives $B = \\mu_{0}I/(2\\pi r)$ round a long straight wire and $B = \\mu_{0}nI$ inside a long solenoid.",
+                "hi": "ऐम्पियर का नियम $\\oint B\\cdot dl = \\mu_{0}I$, लंबे सीधे तार के चारों ओर $B = \\mu_{0}I/(2\\pi r)$ और लंबी परिनालिका के भीतर $B = \\mu_{0}nI$ देता है।"
               },
               "key_points": [
                 {
@@ -209,8 +189,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-13:item-2",
                 "neet-ug-2026:physics:unit-13:item-2"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -222,10 +201,6 @@
         "en": "Force between Two Parallel Currents: the Ampere",
         "hi": "दो समांतर विद्युत धाराओं के बीच बल-ऐम्पियर"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Physics Part I, Ch 4 §4.8"
-      ],
       "subtopics": [
         {
           "id": "phy.moving-charges-magnetism.parallel-currents.core",
@@ -243,8 +218,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "Two long parallel wires carrying currents I₁ and I₂ a distance d apart exert a force per unit length μ₀I₁I₂/(2πd), attractive for currents in the same direction.",
-                "hi": "d दूरी पर स्थित धाराएँ I₁ और I₂ ले जाते दो लंबे समांतर तार प्रति एकांक लंबाई μ₀I₁I₂/(2πd) बल लगाते हैं, जो एक ही दिशा की धाराओं के लिए आकर्षी होता है।"
+                "en": "Two long parallel wires carrying currents $I_{1}$ and $I_{2}$ a distance d apart exert a force per unit length $\\mu_{0}I_{1}I_{2}/(2\\pi d)$, attractive for currents in the same direction.",
+                "hi": "d दूरी पर स्थित धाराएँ $I_{1}$ और $I_{2}$ ले जाते दो लंबे समांतर तार प्रति एकांक लंबाई $\\mu_{0}I_{1}I_{2}/(2\\pi d)$ बल लगाते हैं, जो एक ही दिशा की धाराओं के लिए आकर्षी होता है।"
               },
               "key_points": [
                 {
@@ -264,8 +239,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-13:item-5",
                 "neet-ug-2026:physics:unit-13:item-5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -277,10 +251,6 @@
         "en": "Torque on a Current Loop and the Magnetic Dipole",
         "hi": "विद्युत धारा पाश पर बल आघूर्ण, चुंबकीय द्विध्रुव"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Physics Part I, Ch 4 §4.9"
-      ],
       "subtopics": [
         {
           "id": "phy.moving-charges-magnetism.current-loop-torque.core",
@@ -298,13 +268,13 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "A loop of N turns and area A carrying current I has magnetic moment m = NIA and feels torque τ = m × B in a uniform field.",
-                "hi": "N फेरों और क्षेत्रफल A वाले धारा I के पाश का चुंबकीय आघूर्ण m = NIA है और एकसमान क्षेत्र में उस पर बल आघूर्ण τ = m × B लगता है।"
+                "en": "A loop of N turns and area A carrying current I has magnetic moment $m = NIA$ and feels torque $\\tau = m \\times B$ in a uniform field.",
+                "hi": "N फेरों और क्षेत्रफल A वाले धारा I के पाश का चुंबकीय आघूर्ण $m = NIA$ है और एकसमान क्षेत्र में उस पर बल आघूर्ण $\\tau = m \\times B$ लगता है।"
               },
               "key_points": [
                 {
-                  "en": "Derive τ = NIAB sin θ for a rectangular loop.",
-                  "hi": "आयताकार पाश के लिए τ = NIAB sin θ व्युत्पन्न कीजिए।"
+                  "en": "Derive $\\tau =$ NIAB $\\sin \\theta$ for a rectangular loop.",
+                  "hi": "आयताकार पाश के लिए $\\tau =$ NIAB $\\sin \\theta$ व्युत्पन्न कीजिए।"
                 },
                 {
                   "en": "Show that a current loop behaves like a magnetic dipole and find the magnetic moment of an orbiting electron.",
@@ -321,8 +291,7 @@
                 "neet-ug-2026:physics:unit-13:item-6",
                 "jee-main-2027:physics:unit-13:item-8",
                 "neet-ug-2026:physics:unit-13:item-8"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -334,10 +303,6 @@
         "en": "The Moving Coil Galvanometer",
         "hi": "चल कुंडली गैल्वेनोमीटर"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 12 Physics Part I, Ch 4 §4.10"
-      ],
       "subtopics": [
         {
           "id": "phy.moving-charges-magnetism.galvanometer.core",
@@ -360,12 +325,12 @@
               },
               "key_points": [
                 {
-                  "en": "Define current sensitivity NAB/k and voltage sensitivity, and explain why raising N need not raise voltage sensitivity.",
-                  "hi": "धारा सुग्राहिता NAB/k और वोल्टता सुग्राहिता परिभाषित कीजिए, और समझाइए कि N बढ़ाने से वोल्टता सुग्राहिता क्यों आवश्यक रूप से नहीं बढ़ती।"
+                  "en": "Define current sensitivity $NAB/k$ and voltage sensitivity, and explain why raising N need not raise voltage sensitivity.",
+                  "hi": "धारा सुग्राहिता $NAB/k$ और वोल्टता सुग्राहिता परिभाषित कीजिए, और समझाइए कि N बढ़ाने से वोल्टता सुग्राहिता क्यों आवश्यक रूप से नहीं बढ़ती।"
                 },
                 {
-                  "en": "Calculate the shunt S = I_gG/(I − I_g) and the series resistance R = V/I_g − G.",
-                  "hi": "शंट S = I_gG/(I − I_g) और श्रेणी प्रतिरोध R = V/I_g − G निकालिए।"
+                  "en": "Calculate the shunt $S = I_{gG}/(I - I_{g})$ and the series resistance $R =$ V/I_g $- G$.",
+                  "hi": "शंट $S = I_{gG}/(I - I_{g})$ और श्रेणी प्रतिरोध $R =$ V/I_g $- G$ निकालिए।"
                 }
               ],
               "prerequisites": [
@@ -376,8 +341,7 @@
               "syllabus_refs": [
                 "jee-main-2027:physics:unit-13:item-7",
                 "neet-ug-2026:physics:unit-13:item-7"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -388,28 +352,34 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Physics Part I, Ch 4",
+      "ref": "NCERT Class 12 Physics Part I, Ch 4 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/leph104.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 12 Hindi-medium lhph1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 12 Hindi-medium lhph1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/lhph1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Physics Unit 13: Magnetic Effects of Current and Magnetism (PDF p.5)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.5: Physics Unit 13, Magnetic Effects of Current and Magnetism"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Physics Unit 13: MAGNETIC EFFECTS OF CURRENT AND MAGNETISM (PDF p.6)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.6: Physics Unit 13, MAGNETIC EFFECTS OF CURRENT AND MAGNETISM"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: parallel-currents (§4.8, lhph1 contents prelims p.xiv), current-loop-torque (§4.9, lhph1 contents prelims p.xiv), galvanometer (§4.10, lhph1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/moving-charges-magnetism.json."
 }

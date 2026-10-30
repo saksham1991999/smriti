@@ -7,8 +7,6 @@
     "en": "Sequences and Series",
     "hi": "अनुक्रम तथा श्रेणी"
   },
-  "hi_source": "ncert",
-  "class": 11,
   "ncert_ref": "NCERT Class 11 Mathematics, Ch 8",
   "topics": [
     {
@@ -17,11 +15,6 @@
         "en": "Sequences and Series",
         "hi": "अनुक्रम तथा श्रेणी"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 8 §8.2",
-        "NCERT Class 11 Mathematics, Ch 8 §8.3"
-      ],
       "subtopics": [
         {
           "id": "math.sequences-series.sequences.core",
@@ -39,8 +32,8 @@
               "kind": "definition",
               "intrinsic_depth": 2,
               "summary": {
-                "en": "A sequence is a function on the natural numbers whose values a₁, a₂, … are its terms; the sum of its terms is a series, and a rule for aₙ fixes the sequence.",
-                "hi": "अनुक्रम प्राकृत संख्याओं पर एक फलन है जिसके मान a₁, a₂, … उसके पद हैं; पदों का योग श्रेणी है, और aₙ का नियम अनुक्रम को निर्धारित करता है।"
+                "en": "A sequence is a function on the natural numbers whose values $a_{1}$, $a_{2}$, $\\dots$ are its terms; the sum of its terms is a series, and a rule for $a_{n}$ fixes the sequence.",
+                "hi": "अनुक्रम प्राकृत संख्याओं पर एक फलन है जिसके मान $a_{1}$, $a_{2}$, $\\dots$ उसके पद हैं; पदों का योग श्रेणी है, और $a_{n}$ का नियम अनुक्रम को निर्धारित करता है।"
               },
               "key_points": [
                 {
@@ -58,12 +51,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-6:item-1"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 8 §8.2",
-                "NCERT Class 11 Mathematics, Ch 8 §8.3"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -75,10 +63,6 @@
         "en": "Arithmetic and Geometric Progressions",
         "hi": "समांतर तथा गुणोत्तर श्रेढ़ी"
       },
-      "hi_source": "translated",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 8 §8.4"
-      ],
       "subtopics": [
         {
           "id": "math.sequences-series.progressions.core",
@@ -96,8 +80,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "An arithmetic progression has a constant difference d, so aₙ = a + (n − 1)d and Sₙ = (n/2)[2a + (n − 1)d].",
-                "hi": "समांतर श्रेढ़ी में सार्व अंतर d अचर होता है, अतः aₙ = a + (n − 1)d और Sₙ = (n/2)[2a + (n − 1)d]।"
+                "en": "An arithmetic progression has a constant difference d, so $a_{n} = a + (n - 1)d$ and $S_{n} = (n/2)[2a + (n - 1)d]$.",
+                "hi": "समांतर श्रेढ़ी में सार्व अंतर d अचर होता है, अतः $a_{n} = a + (n - 1)d$ और $S_{n} = (n/2)[2a + (n - 1)d]$।"
               },
               "key_points": [
                 {
@@ -105,8 +89,8 @@
                   "hi": "किसी A.P. का nवाँ पद और n पदों का योग ज्ञात कीजिए।"
                 },
                 {
-                  "en": "Choose terms as a − d, a, a + d for problems on three terms.",
-                  "hi": "तीन पदों वाले प्रश्नों में पद a − d, a, a + d मानिए।"
+                  "en": "Choose terms as $a - d$, a, $a + d$ for problems on three terms.",
+                  "hi": "तीन पदों वाले प्रश्नों में पद $a - d$, a, $a + d$ मानिए।"
                 }
               ],
               "prerequisites": [
@@ -115,8 +99,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-6:item-1"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.sequences-series.progressions.core.geometric-progression",
@@ -127,8 +110,8 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "A geometric progression has a constant ratio r, so aₙ = arⁿ⁻¹ and Sₙ = a(rⁿ − 1)/(r − 1) for r ≠ 1.",
-                "hi": "गुणोत्तर श्रेढ़ी में सार्व अनुपात r अचर होता है, अतः aₙ = arⁿ⁻¹ और r ≠ 1 के लिए Sₙ = a(rⁿ − 1)/(r − 1)।"
+                "en": "A geometric progression has a constant ratio r, so $a_{n} = ar^{n-1}$, and for $r \\ne 1$ the sum is $S_{n} = a(r^{n} - 1)/(r - 1)$.",
+                "hi": "गुणोत्तर श्रेढ़ी में सार्व अनुपात r अचर होता है, अतः $a_{n} = ar^{n-1}$ और $r \\ne 1$ के लिए $S_{n} = a(r^{n} - 1)/(r - 1)$।"
               },
               "key_points": [
                 {
@@ -136,8 +119,8 @@
                   "hi": "किसी G.P. का nवाँ पद और n पदों का योग ज्ञात कीजिए।"
                 },
                 {
-                  "en": "Sum series such as 0.6 + 0.66 + 0.666 + … by reducing to a G.P.",
-                  "hi": "0.6 + 0.66 + 0.666 + … जैसी श्रेणियों को G.P. में बदलकर योग निकालिए।"
+                  "en": "Sum series such as $0.6 + 0.66 + 0.666 + \\dots$ by reducing to a G.P.",
+                  "hi": "$0.6 + 0.66 + 0.666 + \\dots$ जैसी श्रेणियों को G.P. में बदलकर योग निकालिए।"
                 }
               ],
               "prerequisites": [
@@ -146,11 +129,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-6:item-1"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 8 §8.4"
-              ],
-              "hi_source": "translated"
+              ]
             },
             {
               "id": "math.sequences-series.progressions.core.inserting-means",
@@ -161,8 +140,8 @@
               "kind": "process",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "To insert n arithmetic means between a and b, use the common difference (b − a)/(n + 1); to insert n geometric means, use the common ratio (b/a)^(1/(n + 1)).",
-                "hi": "a और b के बीच n समांतर माध्य डालने के लिए सार्व अंतर (b − a)/(n + 1) लीजिए; n गुणोत्तर माध्य डालने के लिए सार्व अनुपात (b/a)^(1/(n + 1)) लीजिए।"
+                "en": "To insert n arithmetic means between a and b, use the common difference $(b - a)/(n + 1)$; to insert n geometric means, use the common ratio $(b/a)^{1/(n + 1)}$.",
+                "hi": "a और b के बीच n समांतर माध्य डालने के लिए सार्व अंतर $(b - a)/(n + 1)$ लीजिए; n गुणोत्तर माध्य डालने के लिए सार्व अनुपात $(b/a)^{1/(n + 1)}$ लीजिए।"
               },
               "key_points": [
                 {
@@ -181,11 +160,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-6:item-2"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 8 §8.4"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -197,10 +172,6 @@
         "en": "Relationship Between A.M. and G.M.",
         "hi": "समांतर माध्य तथा गुणोत्तर माध्य के बीच संबंध"
       },
-      "hi_source": "ncert",
-      "ncert_refs": [
-        "NCERT Class 11 Mathematics, Ch 8 §8.5"
-      ],
       "subtopics": [
         {
           "id": "math.sequences-series.am-gm.core",
@@ -218,13 +189,13 @@
               "kind": "formula",
               "intrinsic_depth": 3,
               "summary": {
-                "en": "For positive numbers a and b, A = (a + b)/2 and G = √(ab) satisfy A ≥ G, with equality only when a = b.",
-                "hi": "धन संख्याओं a और b के लिए A = (a + b)/2 और G = √(ab), A ≥ G को संतुष्ट करते हैं, और समता केवल a = b पर होती है।"
+                "en": "For positive numbers a and b, $A = (a + b)/2$ and $G = \\sqrt{ab}$ satisfy $A \\ge G$, with equality only when $a = b$.",
+                "hi": "धन संख्याओं a और b के लिए $A = (a + b)/2$ और $G = \\sqrt{ab}$, $A \\ge G$ को संतुष्ट करते हैं, और समता केवल $a = b$ पर होती है।"
               },
               "key_points": [
                 {
-                  "en": "Prove A ≥ G from (√a − √b)² ≥ 0.",
-                  "hi": "(√a − √b)² ≥ 0 से A ≥ G सिद्ध कीजिए।"
+                  "en": "From $(\\sqrt{a} - \\sqrt{b})^{2} \\ge 0$, prove $A \\ge G$.",
+                  "hi": "$(\\sqrt{a} - \\sqrt{b})^{2} \\ge 0$ से $A \\ge G$ सिद्ध कीजिए।"
                 },
                 {
                   "en": "Recover two numbers from their A.M. and G.M.",
@@ -237,11 +208,7 @@
               "related": [],
               "syllabus_refs": [
                 "jee-main-2027:mathematics:unit-6:item-3"
-              ],
-              "ncert_refs": [
-                "NCERT Class 11 Mathematics, Ch 8 §8.5"
-              ],
-              "hi_source": "translated"
+              ]
             }
           ]
         }
@@ -252,23 +219,27 @@
   "sources": [
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Mathematics, Ch 8",
+      "ref": "NCERT Class 11 Mathematics, Ch 8 (2026-27 reprint)",
       "url": "https://ncert.nic.in/textbook/pdf/kemh108.pdf",
       "retrieved": "2026-10-29"
     },
     {
       "kind": "ncert",
-      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
       "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
-      "retrieved": "2026-10-29"
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
     },
     {
       "kind": "official",
-      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 6: SEQUENCE AND SERIES (PDF p.1)",
-      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 6, SEQUENCE AND SERIES"
     }
   ],
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: am-gm (§8.5, khmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/sequences-series.json."
 }

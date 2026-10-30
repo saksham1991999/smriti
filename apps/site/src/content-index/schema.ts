@@ -30,9 +30,12 @@ export const BlueprintSource = z.object({
   pages: z.string().nullable().optional(),
 });
 
+/** null inside a rule: the notice does not state it (shown as "Not stated in the notice"). */
 export const Marking = z.object({
-  correct: z.number(),
-  wrong: z.number(),
+  correct: z.number().nullable(),
+  wrong: z.number().nullable(),
+  /** A penalty stated as a fraction of the question's marks (UPSC: one-third). */
+  wrong_fraction: z.number().positive().max(1).nullable().optional(),
   unattempted: z.number(),
 });
 
@@ -41,6 +44,8 @@ export const BlueprintSection = z.object({
   title: Localised,
   subject: id.nullable(),
   question_count: z.number().int().nonnegative().nullable(),
+  /** A qualifying skill test (typing, data entry): no questions or marks. */
+  skill_test: z.boolean().optional(),
   marking: Marking.nullable(),
 });
 
@@ -52,7 +57,7 @@ export const Blueprint = z.object({
   title: Localised,
   source: BlueprintSource,
   reviewed_by: z.string().min(1),
-  mode: z.enum(["cbt", "pen_paper"]).nullable(),
+  mode: z.enum(["cbt", "pen_paper", "mixed"]).nullable(),
   duration_min: z.number().positive().nullable(),
   languages: z.array(z.string()).nullable(),
   total_questions: z.number().int().positive().nullable(),

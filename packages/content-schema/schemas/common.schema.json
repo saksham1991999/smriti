@@ -37,25 +37,37 @@
       "description": "Localised text keyed by locale, for example { \"en\": \"...\", \"hi\": \"...\" }. Which locales are required is checked per exam profile by the content check, so a new language adds keys, not schema changes.",
       "type": "object",
       "minProperties": 1,
-      "propertyNames": { "$ref": "#/$defs/Locale" },
-      "additionalProperties": { "type": "string", "minLength": 1 }
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
     },
     "I18nStringList": {
       "description": "A list of strings per locale (for example accepted fill-in answers).",
       "type": "object",
       "minProperties": 1,
-      "propertyNames": { "$ref": "#/$defs/Locale" },
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
       "additionalProperties": {
         "type": "array",
         "minItems": 1,
-        "items": { "type": "string", "minLength": 1 }
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "LocalizedRef": {
       "description": "One content id per locale, for content that is written separately per language (mnemonics).",
       "type": "object",
       "minProperties": 1,
-      "propertyNames": { "$ref": "#/$defs/Locale" },
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
       "additionalProperties": {
         "type": "string",
         "pattern": "^m\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*\\.[0-9]+$"
@@ -65,7 +77,9 @@
       "description": "One audio request per locale (narration is recorded separately for each language).",
       "type": "object",
       "minProperties": 1,
-      "propertyNames": { "$ref": "#/$defs/Locale" },
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
       "additionalProperties": {
         "type": "string",
         "pattern": "^audio\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
@@ -81,10 +95,18 @@
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$",
       "maxLength": 200
     },
-    "ConceptId": { "$ref": "#/$defs/DottedId" },
-    "TopicId": { "$ref": "#/$defs/DottedId" },
-    "ExamId": { "$ref": "#/$defs/Slug" },
-    "ExamProfileId": { "$ref": "#/$defs/Slug" },
+    "ConceptId": {
+      "$ref": "#/$defs/DottedId"
+    },
+    "TopicId": {
+      "$ref": "#/$defs/DottedId"
+    },
+    "ExamId": {
+      "$ref": "#/$defs/Slug"
+    },
+    "ExamProfileId": {
+      "$ref": "#/$defs/Slug"
+    },
     "CardId": {
       "description": "{topic_id}:{dd|qr}:{nn}",
       "type": "string",
@@ -145,7 +167,10 @@
       "minimum": 1,
       "maximum": 5
     },
-    "IsoDate": { "type": "string", "format": "date" },
+    "IsoDate": {
+      "type": "string",
+      "format": "date"
+    },
     "Latex": {
       "description": "A LaTeX expression without $ delimiters. Rendered to SVG at publish.",
       "type": "string",
@@ -165,12 +190,35 @@
       "additionalProperties": false,
       "required": ["kind", "ref"],
       "properties": {
-        "kind": { "$ref": "#/$defs/SourceKind" },
-        "ref": { "type": "string", "minLength": 1 },
-        "url": { "type": ["string", "null"], "format": "uri" },
-        "retrieved": { "$ref": "#/$defs/IsoDate" },
-        "pages": { "type": "string" },
-        "licence": { "type": "string" }
+        "kind": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "retrieved": {
+          "$ref": "#/$defs/IsoDate"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "licence": {
+          "type": "string"
+        },
+        "published": {
+          "description": "When the source was published by its author.",
+          "$ref": "#/$defs/IsoDate"
+        },
+        "linked_from": {
+          "description": "The official page the document is linked from, so a reviewer can find it again (a URL, optionally with the menu path).",
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
     "FileMeta": {
@@ -178,17 +226,46 @@
       "type": "object",
       "required": ["schema", "status", "authored_by", "updated"],
       "properties": {
-        "schema": { "type": "string", "pattern": "^[a-z_-]+@[0-9]+$" },
-        "status": { "$ref": "#/$defs/Status" },
-        "sources": { "type": "array", "items": { "$ref": "#/$defs/Source" } },
-        "authored_by": { "type": "string", "minLength": 1 },
-        "reviewed_by": { "type": ["string", "null"] },
-        "updated": { "$ref": "#/$defs/IsoDate" },
+        "schema": {
+          "type": "string",
+          "pattern": "^[a-z_-]+@[0-9]+$"
+        },
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Source"
+          }
+        },
+        "authored_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_by": {
+          "type": ["string", "null"]
+        },
+        "updated": {
+          "$ref": "#/$defs/IsoDate"
+        },
         "fixture": {
           "description": "Test data only. Fixture files live under content/fixtures/ and can never be published to a non-local target.",
           "type": "boolean"
         },
-        "notes": { "type": "string" }
+        "notes": {
+          "type": "string"
+        },
+        "open_questions": {
+          "description": "Facts the official sources do not state. Every exam fact left null names its field here.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OpenQuestion"
+          }
+        },
+        "hi_source": {
+          "$ref": "#/$defs/HiSource"
+        }
       }
     },
     "Tolerance": {
@@ -197,8 +274,15 @@
       "additionalProperties": false,
       "minProperties": 1,
       "properties": {
-        "abs": { "type": "number", "minimum": 0 },
-        "rel": { "type": "number", "minimum": 0, "maximum": 1 }
+        "abs": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
       }
     },
     "Unit": {
@@ -210,9 +294,19 @@
       "additionalProperties": false,
       "required": ["id", "x", "y"],
       "properties": {
-        "id": { "$ref": "#/$defs/Slug" },
-        "x": { "type": "number", "minimum": 0, "maximum": 1 },
-        "y": { "type": "number", "minimum": 0, "maximum": 1 }
+        "id": {
+          "$ref": "#/$defs/Slug"
+        },
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
       }
     },
     "IdText": {
@@ -221,15 +315,52 @@
       "additionalProperties": false,
       "required": ["id", "text"],
       "properties": {
-        "id": { "$ref": "#/$defs/Slug" },
-        "text": { "$ref": "#/$defs/I18nText" },
-        "media": { "$ref": "#/$defs/ImageRef" }
+        "id": {
+          "$ref": "#/$defs/Slug"
+        },
+        "text": {
+          "$ref": "#/$defs/I18nText"
+        },
+        "media": {
+          "$ref": "#/$defs/ImageRef"
+        }
       }
     },
     "SubjectFamily": {
       "description": "Colour family from packages/tokens/tokens.json `subject`.",
       "type": "string",
       "enum": ["physics", "chemistry", "biology", "maths", "history", "polity", "language"]
+    },
+    "OpenQuestion": {
+      "description": "Something the official source does not state (or that could not be checked). A null exam fact must have one, naming the field.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question"],
+      "properties": {
+        "field": {
+          "description": "The field left null or unset because of this question, as a dotted path from the file root. Blueprint sections are addressed by code: sections.gs1.marking.mcq_single.correct. null: a question about the file as a whole.",
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checked": {
+          "description": "When the sources were last checked for an answer.",
+          "$ref": "#/$defs/IsoDate"
+        },
+        "source_url": {
+          "description": "Where the answer is expected to appear.",
+          "type": ["string", "null"],
+          "format": "uri"
+        }
+      }
+    },
+    "HiSource": {
+      "description": "Where the Hindi text of the file comes from: official (the conducting body's Hindi document), ncert (NCERT Hindi-medium books) or translation (our translation of the official English).",
+      "type": "string",
+      "enum": ["official", "ncert", "translation"]
     }
   }
 }

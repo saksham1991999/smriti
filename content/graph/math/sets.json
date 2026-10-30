@@ -1,0 +1,320 @@
+{
+  "schema": "chapter@1",
+  "id": "math.sets",
+  "subject": "math",
+  "unit": "math.sets-functions",
+  "name": {
+    "en": "Sets",
+    "hi": "समुच्चय"
+  },
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 1",
+  "topics": [
+    {
+      "id": "math.sets.sets-representation",
+      "name": {
+        "en": "Sets and their Representations",
+        "hi": "समुच्चय और उनका निरूपण"
+      },
+      "subtopics": [
+        {
+          "id": "math.sets.sets-representation.core",
+          "name": {
+            "en": "Sets and their Representations",
+            "hi": "समुच्चय और उनका निरूपण"
+          },
+          "concepts": [
+            {
+              "id": "math.sets.sets-representation.core.set-notation",
+              "name": {
+                "en": "Sets and their roster and set-builder forms",
+                "hi": "समुच्चय तथा उनके सूचीरूप एवं समुच्चय-निर्माण रूप"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "A set is a well-defined collection of objects; it can be written in roster form by listing its elements or in set-builder form by stating the property its elements share.",
+                "hi": "समुच्चय वस्तुओं का सुपरिभाषित संग्रह है; इसे अवयवों को सूचीबद्ध करके सूचीरूप में या अवयवों के साझा गुण को बताकर समुच्चय-निर्माण रूप में लिखा जा सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Decide whether a given collection is well defined.",
+                  "hi": "तय कीजिए कि दिया गया संग्रह सुपरिभाषित है या नहीं।"
+                },
+                {
+                  "en": "Convert a set between roster and set-builder form.",
+                  "hi": "किसी समुच्चय को सूचीरूप और समुच्चय-निर्माण रूप के बीच बदलिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.sets.set-types",
+      "name": {
+        "en": "Empty, Finite, Infinite and Equal Sets",
+        "hi": "रिक्त, परिमित, अपरिमित और समान समुच्चय"
+      },
+      "subtopics": [
+        {
+          "id": "math.sets.set-types.core",
+          "name": {
+            "en": "Empty, Finite, Infinite and Equal Sets",
+            "hi": "रिक्त, परिमित, अपरिमित और समान समुच्चय"
+          },
+          "concepts": [
+            {
+              "id": "math.sets.set-types.core.empty-finite-equal-sets",
+              "name": {
+                "en": "Empty, finite, infinite and equal sets",
+                "hi": "रिक्त, परिमित, अपरिमित एवं समान समुच्चय"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "The empty set has no element; a finite set has a countable number of elements and an infinite set does not; two sets are equal when they have exactly the same elements.",
+                "hi": "रिक्त समुच्चय में कोई अवयव नहीं होता; परिमित समुच्चय के अवयव गिने जा सकते हैं और अपरिमित के नहीं; दो समुच्चय तब समान होते हैं जब उनके अवयव ठीक-ठीक एक जैसे हों।"
+              },
+              "key_points": [
+                {
+                  "en": "Classify given sets as empty, finite or infinite.",
+                  "hi": "दिए गए समुच्चयों को रिक्त, परिमित या अपरिमित में वर्गीकृत कीजिए।"
+                },
+                {
+                  "en": "Test two sets for equality, ignoring order and repetition of elements.",
+                  "hi": "अवयवों के क्रम और पुनरावृत्ति को छोड़कर दो समुच्चयों की समानता जाँचिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.sets-representation.core.set-notation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.sets.subsets",
+      "name": {
+        "en": "Subsets and Universal Set",
+        "hi": "उपसमुच्चय और सार्वत्रिक समुच्चय"
+      },
+      "subtopics": [
+        {
+          "id": "math.sets.subsets.core",
+          "name": {
+            "en": "Subsets and Universal Set",
+            "hi": "उपसमुच्चय और सार्वत्रिक समुच्चय"
+          },
+          "concepts": [
+            {
+              "id": "math.sets.subsets.core.subsets-intervals",
+              "name": {
+                "en": "Subsets, intervals of real numbers and the universal set",
+                "hi": "उपसमुच्चय, वास्तविक संख्याओं के अंतराल तथा सार्वत्रिक समुच्चय"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A is a subset of B when every element of A is in B; open, closed and half-open intervals are subsets of R, and the universal set contains all sets under discussion.",
+                "hi": "A, B का उपसमुच्चय है जब A का प्रत्येक अवयव B में हो; विवृत, संवृत और अर्ध-विवृत अंतराल R के उपसमुच्चय हैं, और सार्वत्रिक समुच्चय में विचाराधीन सभी समुच्चय होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Write an interval in set-builder form and on the number line.",
+                  "hi": "किसी अंतराल को समुच्चय-निर्माण रूप में और संख्या रेखा पर लिखिए।"
+                },
+                {
+                  "en": "Distinguish proper subsets from equal sets.",
+                  "hi": "उचित उपसमुच्चय और समान समुच्चय में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.set-types.core.empty-finite-equal-sets"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-1"
+              ]
+            },
+            {
+              "id": "math.sets.subsets.core.power-set",
+              "name": {
+                "en": "Power set",
+                "hi": "घात समुच्चय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The power set $P(A)$ is the set of all subsets of A; a set with n elements has $2^{n}$ subsets.",
+                "hi": "घात समुच्चय $P(A)$, A के सभी उपसमुच्चयों का समुच्चय है; n अवयवों वाले समुच्चय के $2^{n}$ उपसमुच्चय होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "List the power set of a small set.",
+                  "hi": "किसी छोटे समुच्चय का घात समुच्चय लिखिए।"
+                },
+                {
+                  "en": "Count subsets and proper subsets of an n-element set.",
+                  "hi": "n अवयवों वाले समुच्चय के उपसमुच्चय और उचित उपसमुच्चय गिनिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.subsets.core.subsets-intervals"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.sets.set-operations",
+      "name": {
+        "en": "Venn Diagrams and Operations on Sets",
+        "hi": "वेन आरेख और समुच्चयों पर संक्रियाएँ"
+      },
+      "subtopics": [
+        {
+          "id": "math.sets.set-operations.core",
+          "name": {
+            "en": "Venn Diagrams and Operations on Sets",
+            "hi": "वेन आरेख और समुच्चयों पर संक्रियाएँ"
+          },
+          "concepts": [
+            {
+              "id": "math.sets.set-operations.core.venn-diagrams",
+              "name": {
+                "en": "Venn diagrams",
+                "hi": "वेन आरेख"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "A Venn diagram shows the universal set as a rectangle and its subsets as circles, so relations and operations between sets can be seen.",
+                "hi": "वेन आरेख सार्वत्रिक समुच्चय को आयत और उसके उपसमुच्चयों को वृत्तों से दिखाता है, जिससे समुच्चयों के बीच संबंध और संक्रियाएँ दिखाई देती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Shade the region for a given set expression.",
+                  "hi": "दिए गए समुच्चय व्यंजक के लिए क्षेत्र छायांकित कीजिए।"
+                },
+                {
+                  "en": "Read a set expression from a shaded Venn diagram.",
+                  "hi": "छायांकित वेन आरेख से समुच्चय व्यंजक पढ़िए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.subsets.core.subsets-intervals"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-2"
+              ]
+            },
+            {
+              "id": "math.sets.set-operations.core.union-intersection-complement",
+              "name": {
+                "en": "Union, intersection, difference and complement",
+                "hi": "सम्मिलन, सर्वनिष्ठ, अंतर एवं पूरक"
+              },
+              "kind": "process",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "$A \\cup B$ holds elements in A or B, $A \\cap B$ those in both, $A - B$ those in A but not B, and the complement $A'$ those of the universal set not in A.",
+                "hi": "$A \\cup B$ में वे अवयव हैं जो A या B में हों, $A \\cap B$ में जो दोनों में हों, $A - B$ में जो A में हों पर B में नहीं, और पूरक $A'$ में सार्वत्रिक समुच्चय के वे अवयव जो A में नहीं हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute union, intersection, difference and complement of given sets.",
+                  "hi": "दिए गए समुच्चयों का सम्मिलन, सर्वनिष्ठ, अंतर और पूरक निकालिए।"
+                },
+                {
+                  "en": "Identify disjoint sets.",
+                  "hi": "असंयुक्त समुच्चय पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.set-operations.core.venn-diagrams"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-2"
+              ]
+            },
+            {
+              "id": "math.sets.set-operations.core.set-algebra-laws",
+              "name": {
+                "en": "Algebraic properties of set operations and De Morgan's laws",
+                "hi": "समुच्चय संक्रियाओं के बीजीय गुणधर्म तथा डी मॉर्गन के नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Union and intersection are commutative, associative and distributive over each other, and De Morgan's laws give $(A \\cup B)' = A' \\cap B'$ and $(A \\cap B)' = A' \\cup B'$.",
+                "hi": "सम्मिलन और सर्वनिष्ठ क्रमविनिमेय, साहचर्य और एक-दूसरे पर वितरित होते हैं, और डी मॉर्गन के नियम $(A \\cup B)' = A' \\cap B'$ तथा $(A \\cap B)' = A' \\cup B'$ देते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Simplify set expressions using the laws.",
+                  "hi": "नियमों से समुच्चय व्यंजकों को सरल कीजिए।"
+                },
+                {
+                  "en": "Use $n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$ in counting problems.",
+                  "hi": "गणना प्रश्नों में $n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$ का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.set-operations.core.union-intersection-complement"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 1, SETS, RELATIONS AND FUNCTIONS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: sets-representation (§1.2, khmh1 contents prelims p.xiii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/sets.json."
+}

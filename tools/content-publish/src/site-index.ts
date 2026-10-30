@@ -43,18 +43,28 @@ export interface SiteBlueprint {
   title: Localised;
   source: { url: string; title: string; published: string; retrieved: string; pages?: string | null };
   reviewed_by: string;
-  mode: "cbt" | "pen_paper" | null;
+  /** null: not stated in the notice. */
+  mode: "cbt" | "pen_paper" | "mixed" | null;
   duration_min: number | null;
   languages: string[] | null;
   total_questions: number | null;
   max_marks: number | null;
-  sections: {
-    code: string;
-    title: Localised;
-    subject: string | null;
-    question_count: number | null;
-    marking: { correct: number; wrong: number; unattempted: number } | null;
-  }[];
+  sections: SiteBlueprintSection[];
+}
+
+export interface SiteBlueprintSection {
+  code: string;
+  title: Localised;
+  subject: string | null;
+  /** null: not stated in the notice (or a skill test, which has no questions). */
+  question_count: number | null;
+  /** A qualifying skill test (typing, data entry): no questions or marks. */
+  skill_test?: boolean;
+  /**
+   * One rule for the whole section, or null when the section mixes rules. Inside it, null means
+   * not stated in the notice; `wrong_fraction` is a penalty as a fraction of the question's marks.
+   */
+  marking: { correct: number | null; wrong: number | null; wrong_fraction?: number | null; unattempted: number } | null;
 }
 
 export interface SiteExam {
@@ -146,21 +156,33 @@ export function siteBlueprint(bp: BlueprintFile, title: Localised): SiteBlueprin
     languages: bp.languages ?? null,
     total_questions: bp.question_count ?? null,
     max_marks: bp.max_marks ?? null,
-    sections: bp.sections.map((s) => {
-      const rules = Object.values(s.marking).filter((r): r is NonNullable<typeof r> => !!r);
+    sections: bp.sections.map((s): SiteBlueprintSection => {
+      const base = { code: s.code, title: bi(s.title, `${bp.paper_code} section ${s.code}`), subject: s.subject ?? null };
+      if (s.question_types.every((t) => t === "skill_test")) {
+        return { ...base, question_count: null, skill_test: true, marking: null };
+      }
+      const rules = Object.values(s.marking ?? {})
+        .filter((r): r is MarkingRule => !!r)
+        .map(siteMarking);
       const first = rules[0];
-      const uniform =
-        first &&
-        rules.every((r) => r.correct === first.correct && r.wrong === first.wrong && r.unattempted === first.unattempted);
-      return {
-        code: s.code,
-        title: bi(s.title, `${bp.paper_code} section ${s.code}`),
-        subject: s.subject ?? null,
-        question_count: s.question_count ?? null,
-        marking: uniform ? { correct: first.correct, wrong: first.wrong, unattempted: first.unattempted } : null,
-      };
+      const uniform = first !== undefined && rules.every((r) => markingKey(r) === markingKey(first));
+      return { ...base, question_count: s.question_count ?? null, marking: uniform ? first : null };
     }),
   };
+}
+
+type MarkingRule = NonNullable<NonNullable<BlueprintFile["sections"][number]["marking"]>[string]>;
+
+/** A marking rule for the site: marks the notice does not state stay null, never 0. */
+function siteMarking(r: MarkingRule): NonNullable<SiteBlueprintSection["marking"]> {
+  if (typeof r.wrong === "number") return { correct: r.correct, wrong: r.wrong, unattempted: r.unattempted };
+  const fraction = r.wrong.fraction_of_question_marks;
+  // The penalty in marks is known only when the marks per question are.
+  return { correct: r.correct, wrong: r.correct === null ? null : -fraction * r.correct, wrong_fraction: fraction, unattempted: r.unattempted };
+}
+
+function markingKey(m: NonNullable<SiteBlueprintSection["marking"]>): string {
+  return JSON.stringify([m.correct, m.wrong, m.wrong_fraction ?? null, m.unattempted]);
 }
 
 function plainText(...texts: (string | undefined)[]): boolean {

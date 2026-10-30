@@ -1,0 +1,639 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.equilibrium",
+  "subject": "chem",
+  "unit": "chem.physical",
+  "name": {
+    "en": "Equilibrium",
+    "hi": "साम्यावस्था"
+  },
+  "ncert_ref": "NCERT Class 11 Chemistry Part I, Ch 6",
+  "topics": [
+    {
+      "id": "chem.equilibrium.physical-equilibrium",
+      "name": {
+        "en": "Equilibrium in Physical Processes",
+        "hi": "भौतिक प्रक्रमों में साम्यावस्था"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.physical-equilibrium.core",
+          "name": {
+            "en": "Equilibrium in Physical Processes",
+            "hi": "भौतिक प्रक्रमों में साम्यावस्था"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.physical-equilibrium.core.physical-equilibria",
+              "name": {
+                "en": "Equilibria in physical processes and their general characteristics",
+                "hi": "भौतिक प्रक्रमों में साम्य एवं उनकी सामान्य विशेषताएँ"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Solid-liquid, liquid-gas, solid-gas and gas-in-liquid equilibria are dynamic, with equal opposing rates, constant measurable properties at fixed temperature, and are reached only in closed systems.",
+                "hi": "ठोस-द्रव, द्रव-गैस, ठोस-गैस और द्रव में गैस के साम्य गतिक होते हैं, जिनमें विपरीत दरें बराबर होती हैं, नियत ताप पर मापने योग्य गुण स्थिर रहते हैं, और ये केवल बंद निकायों में बनते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Give examples such as ice-water at its melting point and water-vapour at constant temperature.",
+                  "hi": "उदाहरण दीजिए, जैसे गलनांक पर बर्फ़-जल और नियत ताप पर जल-वाष्प।"
+                },
+                {
+                  "en": "List the general characteristics of equilibria in physical processes.",
+                  "hi": "भौतिक प्रक्रमों में साम्य की सामान्य विशेषताएँ बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.chemical-equilibrium.core.dynamic-equilibrium"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-2",
+                "neet-ug-2026:chemistry:unit-6:item-2",
+                "jee-main-2027:chemistry:unit-6:item-3",
+                "neet-ug-2026:chemistry:unit-6:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.chemical-equilibrium",
+      "name": {
+        "en": "Equilibrium in Chemical Processes – Dynamic Equilibrium",
+        "hi": "रासायनिक प्रक्रमों में साम्यावस्था-गतिक साम्य"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.chemical-equilibrium.core",
+          "name": {
+            "en": "Equilibrium in Chemical Processes – Dynamic Equilibrium",
+            "hi": "रासायनिक प्रक्रमों में साम्यावस्था-गतिक साम्य"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.chemical-equilibrium.core.dynamic-equilibrium",
+              "name": {
+                "en": "Meaning of equilibrium and dynamic equilibrium",
+                "hi": "साम्य का अर्थ एवं गतिक साम्य"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "At equilibrium the forward and backward reactions continue at equal rates, so concentrations stay constant though the reactions have not stopped.",
+                "hi": "साम्य पर अग्र और पश्च अभिक्रियाएँ समान दरों पर चलती रहती हैं, इसलिए सांद्रताएँ स्थिर रहती हैं, यद्यपि अभिक्रियाएँ रुकी नहीं होतीं।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain why equilibrium is called dynamic, using isotope-labelling evidence.",
+                  "hi": "समस्थानिक-चिह्नन के प्रमाण से समझाइए कि साम्य को गतिक क्यों कहा जाता है।"
+                },
+                {
+                  "en": "Show that equilibrium can be approached from either side.",
+                  "hi": "दिखाइए कि साम्य दोनों ओर से प्राप्त किया जा सकता है।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-1",
+                "neet-ug-2026:chemistry:unit-6:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.equilibrium-constant",
+      "name": {
+        "en": "Law of Chemical Equilibrium and Equilibrium Constants",
+        "hi": "रासायनिक साम्यावस्था का नियम तथा साम्यावस्था स्थिरांक"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.equilibrium-constant.core",
+          "name": {
+            "en": "Law of Chemical Equilibrium and Equilibrium Constants",
+            "hi": "रासायनिक साम्यावस्था का नियम तथा साम्यावस्था स्थिरांक"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.equilibrium-constant.core.kc-kp",
+              "name": {
+                "en": "Law of chemical equilibrium; Kc and Kp and their significance",
+                "hi": "रासायनिक साम्य का नियम; Kc एवं Kp तथा उनका महत्त्व"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For $aA + bB \\rightleftharpoons cC + dD$, $K_{c} = [C]^{c}[D]^{d}/[A]^{a}[B]^{b}$ at fixed temperature, $K_{p} = Kc(RT)^\\Delta n$ for gases, pure solids and liquids are left out in heterogeneous equilibria, and K tells the extent of reaction.",
+                "hi": "$aA + bB \\rightleftharpoons cC + dD$ के लिए नियत ताप पर $K_{c} = [C]^{c}[D]^{d}/[A]^{a}[B]^{b}$, गैसों के लिए $K_{p} = Kc(RT)^\\Delta n$, विषमांग साम्य में शुद्ध ठोस और द्रव छोड़े जाते हैं, और K अभिक्रिया की सीमा बताता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write K expressions for homogeneous and heterogeneous equilibria.",
+                  "hi": "समांग और विषमांग साम्यों के लिए K के व्यंजक लिखिए।"
+                },
+                {
+                  "en": "Use the reaction quotient Q to predict the direction of reaction and calculate equilibrium concentrations.",
+                  "hi": "अभिक्रिया की दिशा बताने के लिए अभिक्रिया भागफल Q का उपयोग कीजिए और साम्य सांद्रताएँ निकालिए।"
+                },
+                {
+                  "en": "State how K changes when an equation is reversed, multiplied or added.",
+                  "hi": "बताइए कि समीकरण को उलटने, गुणा करने या जोड़ने पर K कैसे बदलता है।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.chemical-equilibrium.core.dynamic-equilibrium"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-4",
+                "neet-ug-2026:chemistry:unit-6:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.k-q-g",
+      "name": {
+        "en": "Relationship between K, Q and Gibbs Energy",
+        "hi": "साम्यावस्था स्थिरांक K, अभिक्रिया भागफल Q तथा गिब्ज़ ऊर्जा G में संबंध"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.k-q-g.core",
+          "name": {
+            "en": "Relationship between K, Q and Gibbs Energy",
+            "hi": "साम्यावस्था स्थिरांक K, अभिक्रिया भागफल Q तथा गिब्ज़ ऊर्जा G में संबंध"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.k-q-g.core.delta-g-equilibrium",
+              "name": {
+                "en": "Significance of ΔG and ΔG° in chemical equilibrium",
+                "hi": "रासायनिक साम्य में ΔG एवं ΔG° का महत्त्व"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "$\\Delta G = \\Delta G^{\\circ} + RT \\ln Q$, so a reaction proceeds while $\\Delta G < 0$ and stops at equilibrium where $\\Delta G = 0$ and $Q = K$.",
+                "hi": "$\\Delta G = \\Delta G^{\\circ} + RT \\ln Q$, इसलिए अभिक्रिया तब तक चलती है जब तक $\\Delta G < 0$ है और साम्य पर रुकती है जहाँ $\\Delta G = 0$ और $Q = K$।"
+              },
+              "key_points": [
+                {
+                  "en": "Relate $\\Delta G$ to Q and K to predict direction.",
+                  "hi": "दिशा बताने के लिए $\\Delta G$ को Q और K से जोड़िए।"
+                },
+                {
+                  "en": "Distinguish $\\Delta G$ from $\\Delta G^{\\circ}$.",
+                  "hi": "$\\Delta G$ और $\\Delta G^{\\circ}$ में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.equilibrium-constant.core.kc-kp",
+                "chem.thermodynamics.gibbs-equilibrium.core.gibbs-equilibrium-constant"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-5",
+                "neet-ug-2026:chemistry:unit-6:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.le-chatelier",
+      "name": {
+        "en": "Factors Affecting Equilibria",
+        "hi": "साम्य को प्रभावित करने वाले कारक"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.le-chatelier.core",
+          "name": {
+            "en": "Factors Affecting Equilibria",
+            "hi": "साम्य को प्रभावित करने वाले कारक"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.le-chatelier.core.le-chatelier-principle",
+              "name": {
+                "en": "Factors affecting equilibrium and Le Chatelier's principle",
+                "hi": "साम्य को प्रभावित करने वाले कारक एवं ला-शातलिए सिद्धांत"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A system at equilibrium shifts to oppose any change in concentration, pressure or temperature; only temperature changes K, and a catalyst speeds up attainment without shifting equilibrium.",
+                "hi": "साम्य में स्थित निकाय सांद्रता, दाब या ताप में किसी भी परिवर्तन का विरोध करने के लिए खिसकता है; केवल ताप K को बदलता है, और उत्प्रेरक साम्य को खिसकाए बिना उसकी प्राप्ति तेज़ करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Predict shifts for the Haber process when pressure, temperature or concentration change.",
+                  "hi": "दाब, ताप या सांद्रता बदलने पर हाबर प्रक्रम में साम्य के खिसकने का अनुमान लगाइए।"
+                },
+                {
+                  "en": "Explain the effect of adding an inert gas at constant volume and at constant pressure.",
+                  "hi": "नियत आयतन और नियत दाब पर अक्रिय गैस मिलाने का प्रभाव समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.equilibrium-constant.core.kc-kp"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-6",
+                "neet-ug-2026:chemistry:unit-6:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.ionic-equilibrium",
+      "name": {
+        "en": "Ionic Equilibrium in Solution",
+        "hi": "विलयन में आयनिक साम्यावस्था"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.ionic-equilibrium.core",
+          "name": {
+            "en": "Ionic Equilibrium in Solution",
+            "hi": "विलयन में आयनिक साम्यावस्था"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.ionic-equilibrium.core.electrolytes",
+              "name": {
+                "en": "Strong and weak electrolytes and their ionisation",
+                "hi": "प्रबल एवं दुर्बल विद्युत-अपघट्य तथा उनका आयनन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Strong electrolytes ionise almost completely in water, while weak electrolytes ionise partially and set up an equilibrium between ions and un-ionised molecules.",
+                "hi": "प्रबल विद्युत-अपघट्य जल में लगभग पूर्णतः आयनित होते हैं, जबकि दुर्बल विद्युत-अपघट्य आंशिक रूप से आयनित होकर आयनों और अनआयनित अणुओं के बीच साम्य बनाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Classify common acids, bases and salts as strong or weak electrolytes.",
+                  "hi": "सामान्य अम्लों, क्षारकों और लवणों को प्रबल या दुर्बल विद्युत-अपघट्यों में वर्गीकृत कीजिए।"
+                },
+                {
+                  "en": "Define degree of ionisation.",
+                  "hi": "आयनन की मात्रा परिभाषित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.chemical-equilibrium.core.dynamic-equilibrium"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-7",
+                "neet-ug-2026:chemistry:unit-6:item-7"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.acids-bases",
+      "name": {
+        "en": "Acids, Bases and Salts",
+        "hi": "अम्ल, क्षारक एवं लवण"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.acids-bases.core",
+          "name": {
+            "en": "Acids, Bases and Salts",
+            "hi": "अम्ल, क्षारक एवं लवण"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.acids-bases.core.acid-base-concepts",
+              "name": {
+                "en": "Arrhenius, Brønsted-Lowry and Lewis concepts of acids and bases",
+                "hi": "अम्लों एवं क्षारकों की आरेनियस, ब्रॉन्स्टेड-लोरी एवं लूइस अवधारणाएँ"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Arrhenius acids give $\\mathrm{H^{+}}$ in water, Brønsted-Lowry acids donate protons and form conjugate pairs, and Lewis acids accept electron pairs.",
+                "hi": "आरेनियस अम्ल जल में $\\mathrm{H^{+}}$ देते हैं, ब्रॉन्स्टेड-लोरी अम्ल प्रोटॉन दान करते हैं और संयुग्मी युग्म बनाते हैं, और लूइस अम्ल इलेक्ट्रॉन युग्म ग्रहण करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify conjugate acid-base pairs in a reaction.",
+                  "hi": "किसी अभिक्रिया में संयुग्मी अम्ल-क्षारक युग्म पहचानिए।"
+                },
+                {
+                  "en": "Classify species such as $\\mathrm{BF_{3}}$, $\\mathrm{AlCl_{3}}$, $\\mathrm{NH_{3}}$ and $\\mathrm{OH^{-}}$ as Lewis acids or bases.",
+                  "hi": "$\\mathrm{BF_{3}}$, $\\mathrm{AlCl_{3}}$, $\\mathrm{NH_{3}}$ और $\\mathrm{OH^{-}}$ जैसी स्पीशीज़ को लूइस अम्ल या क्षारक में वर्गीकृत कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.ionic-equilibrium.core.electrolytes"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-8",
+                "neet-ug-2026:chemistry:unit-6:item-8"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.acid-base-ionisation",
+      "name": {
+        "en": "Ionization of Acids and Bases",
+        "hi": "अम्लों एवं क्षारकों का आयनन"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.acid-base-ionisation.core",
+          "name": {
+            "en": "Ionization of Acids and Bases",
+            "hi": "अम्लों एवं क्षारकों का आयनन"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.acid-base-ionisation.core.ionisation-constants",
+              "name": {
+                "en": "Acid-base equilibria, ionisation constants and multistage ionisation",
+                "hi": "अम्ल-क्षारक साम्य, आयनन स्थिरांक एवं बहुपदी आयनन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A weak acid has $K_{a} = [H^{+}][A^{-}]/[HA]$, and Ostwald's dilution law gives $\\alpha \\approx \\sqrt{Ka/c}$; polyprotic acids ionise in steps with $K_{a1} > K_{a2}$.",
+                "hi": "दुर्बल अम्ल का $K_{a} = [H^{+}][A^{-}]/[HA]$ है, और ओस्टवाल्ड का तनुता नियम $\\alpha \\approx \\sqrt{Ka/c}$ देता है; बहुप्रोटिक अम्ल चरणों में आयनित होते हैं जहाँ $K_{a1} > K_{a2}$।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate pH of a weak acid or weak base solution.",
+                  "hi": "दुर्बल अम्ल या दुर्बल क्षारक विलयन का pH निकालिए।"
+                },
+                {
+                  "en": "Relate $K_{a}$ and $K_{b}$ of a conjugate pair, $K_{a} \\times K_{b} = K_{w}$.",
+                  "hi": "संयुग्मी युग्म के $K_{a}$ और $K_{b}$ को जोड़िए, $K_{a} \\times K_{b} = K_{w}$।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.ionic-equilibrium.core.electrolytes",
+                "chem.equilibrium.acids-bases.core.acid-base-concepts"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-9",
+                "neet-ug-2026:chemistry:unit-6:item-9"
+              ]
+            },
+            {
+              "id": "chem.equilibrium.acid-base-ionisation.core.water-ionisation-ph",
+              "name": {
+                "en": "Ionisation of water and the pH scale",
+                "hi": "जल का आयनन एवं pH स्केल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Water self-ionises with $K_{w} = \\mathrm{[H^{+}][OH^{-}]} = 1.0 \\times 10^{-14}$ at 298 K, and $pH = -\\log[H^{+}]$, so $pH + pOH = 14$ at that temperature.",
+                "hi": "जल का स्व-आयनन होता है और 298 K पर $K_{w} = \\mathrm{[H^{+}][OH^{-}]} = 1.0 \\times 10^{-14}$, तथा $pH = -\\log[H^{+}]$, इसलिए उस ताप पर $pH + pOH = 14$।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate pH of strong acid and strong base solutions, including very dilute ones.",
+                  "hi": "प्रबल अम्ल और प्रबल क्षारक विलयनों का pH निकालिए, अत्यंत तनु विलयनों सहित।"
+                },
+                {
+                  "en": "Explain why $K_{w}$ increases with temperature.",
+                  "hi": "समझाइए कि ताप के साथ $K_{w}$ क्यों बढ़ता है।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.ionic-equilibrium.core.electrolytes"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-10",
+                "neet-ug-2026:chemistry:unit-6:item-10"
+              ]
+            },
+            {
+              "id": "chem.equilibrium.acid-base-ionisation.core.common-ion-effect",
+              "name": {
+                "en": "Common ion effect",
+                "hi": "सम आयन प्रभाव"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Adding an ion already present suppresses the ionisation of a weak electrolyte, as acetate suppresses ionisation of acetic acid.",
+                "hi": "पहले से उपस्थित आयन मिलाने पर दुर्बल विद्युत-अपघट्य का आयनन दब जाता है, जैसे ऐसीटेट ऐसीटिक अम्ल के आयनन को दबाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate the pH of a weak acid in the presence of its salt.",
+                  "hi": "उसके लवण की उपस्थिति में दुर्बल अम्ल का pH निकालिए।"
+                },
+                {
+                  "en": "Explain the common ion effect with Le Chatelier's principle.",
+                  "hi": "ला-शातलिए सिद्धांत से सम आयन प्रभाव समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.acid-base-ionisation.core.ionisation-constants",
+                "chem.equilibrium.le-chatelier.core.le-chatelier-principle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-11",
+                "neet-ug-2026:chemistry:unit-6:item-11"
+              ]
+            },
+            {
+              "id": "chem.equilibrium.acid-base-ionisation.core.salt-hydrolysis",
+              "name": {
+                "en": "Hydrolysis of salts and pH of their solutions",
+                "hi": "लवणों का जल-अपघटन एवं उनके विलयनों का pH"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Salts of a weak acid or weak base react with water, so solutions of salts like $\\mathrm{CH_{3}COONa}$ are basic and $\\mathrm{NH_{4}Cl}$ acidic, with pH given by standard expressions.",
+                "hi": "दुर्बल अम्ल या दुर्बल क्षारक के लवण जल से अभिक्रिया करते हैं, इसलिए $\\mathrm{CH_{3}COONa}$ जैसे लवणों के विलयन क्षारीय और $\\mathrm{NH_{4}Cl}$ के अम्लीय होते हैं, जिनका pH मानक व्यंजकों से मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Predict whether a salt solution is acidic, basic or neutral.",
+                  "hi": "बताइए कि कोई लवण विलयन अम्लीय, क्षारीय या उदासीन है।"
+                },
+                {
+                  "en": "Calculate pH of a salt of weak acid and strong base, $pH = 7 + (pK_{a} + \\log c)/2$.",
+                  "hi": "दुर्बल अम्ल और प्रबल क्षारक के लवण का pH निकालिए, $pH = 7 + (pK_{a} + \\log c)/2$।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.acid-base-ionisation.core.ionisation-constants",
+                "chem.equilibrium.acid-base-ionisation.core.water-ionisation-ph"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-12",
+                "neet-ug-2026:chemistry:unit-6:item-12"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.buffers",
+      "name": {
+        "en": "Buffer Solutions",
+        "hi": "बफ़र-विलयन"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.buffers.core",
+          "name": {
+            "en": "Buffer Solutions",
+            "hi": "बफ़र-विलयन"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.buffers.core.buffer-solutions",
+              "name": {
+                "en": "Buffer solutions",
+                "hi": "बफ़र विलयन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A buffer, a weak acid with its salt or a weak base with its salt, resists change in pH on adding a little acid or base, with $pH = pK_{a} + \\log(c_{s}/c_{a})$, where $c_{s}$ and $c_{a}$ are the salt and acid concentrations.",
+                "hi": "बफ़र, यानी दुर्बल अम्ल और उसका लवण या दुर्बल क्षारक और उसका लवण, थोड़ा अम्ल या क्षारक मिलाने पर pH में परिवर्तन का विरोध करता है, जहाँ $pH = pK_{a} + \\log(c_{s}/c_{a})$ है और $c_{s}$ तथा $c_{a}$ लवण और अम्ल की सांद्रताएँ हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Use the Henderson-Hasselbalch equation to design a buffer.",
+                  "hi": "बफ़र बनाने के लिए हेंडरसन-हैसलबाल्क समीकरण का उपयोग कीजिए।"
+                },
+                {
+                  "en": "Explain how a buffer neutralises added $\\mathrm{H^{+}}$ and $\\mathrm{OH^{-}}$.",
+                  "hi": "समझाइए कि बफ़र मिलाए गए $\\mathrm{H^{+}}$ और $\\mathrm{OH^{-}}$ को कैसे उदासीन करता है।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.acid-base-ionisation.core.common-ion-effect"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-14",
+                "neet-ug-2026:chemistry:unit-6:item-14"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.equilibrium.solubility",
+      "name": {
+        "en": "Solubility Equilibria of Sparingly Soluble Salts",
+        "hi": "अल्पविलेय लवणों की विलेयता साम्यावस्था"
+      },
+      "subtopics": [
+        {
+          "id": "chem.equilibrium.solubility.core",
+          "name": {
+            "en": "Solubility Equilibria of Sparingly Soluble Salts",
+            "hi": "अल्पविलेय लवणों की विलेयता साम्यावस्था"
+          },
+          "concepts": [
+            {
+              "id": "chem.equilibrium.solubility.core.solubility-product",
+              "name": {
+                "en": "Solubility of sparingly soluble salts and solubility product",
+                "hi": "अल्पविलेय लवणों की विलेयता एवं विलेयता गुणनफल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For a sparingly soluble salt the product of ion concentrations at saturation is the solubility product $K_{sp}$; precipitation occurs when the ionic product exceeds $K_{sp}$, and a common ion lowers solubility.",
+                "hi": "अल्पविलेय लवण के लिए संतृप्ति पर आयन सांद्रताओं का गुणनफल विलेयता गुणनफल $K_{sp}$ है; जब आयनिक गुणनफल $K_{sp}$ से अधिक हो तो अवक्षेपण होता है, और सम आयन विलेयता घटाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "For salts of types AB, $AB_{2}$ and $A_{2}B_{3}$, relate solubility s to $K_{sp}$.",
+                  "hi": "AB, $AB_{2}$ और $A_{2}B_{3}$ प्रकार के लवणों के लिए विलेयता s को $K_{sp}$ से जोड़िए।"
+                },
+                {
+                  "en": "Predict precipitation by comparing ionic product with $K_{sp}$.",
+                  "hi": "आयनिक गुणनफल की $K_{sp}$ से तुलना करके अवक्षेपण का अनुमान लगाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.equilibrium-constant.core.kc-kp",
+                "chem.equilibrium.acid-base-ionisation.core.common-ion-effect"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-13",
+                "neet-ug-2026:chemistry:unit-6:item-13"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 6 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech106.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khch1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khch1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.8: Chemistry Unit 6, EQUILIBRIUM"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.10: Chemistry Unit 6, EQUILIBRIUM"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: physical-equilibrium (§6.1, khch1 contents prelims p.xii), chemical-equilibrium (§6.2, khch1 contents prelims p.xii), k-q-g (§6.7, khch1 contents prelims p.xii), le-chatelier (§6.8, khch1 contents prelims p.xii), ionic-equilibrium (§6.9, khch1 contents prelims p.xii), acids-bases (§6.10, khch1 contents prelims p.xii), acid-base-ionisation (§6.11, khch1 contents prelims p.xii), buffers (§6.12, khch1 contents prelims p.xii), solubility (§6.13, khch1 contents prelims p.xii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/chem/equilibrium.json."
+}

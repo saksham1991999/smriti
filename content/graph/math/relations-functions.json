@@ -1,0 +1,233 @@
+{
+  "schema": "chapter@1",
+  "id": "math.relations-functions",
+  "subject": "math",
+  "unit": "math.sets-functions",
+  "name": {
+    "en": "Relations and Functions",
+    "hi": "संबंध एवं फलन"
+  },
+  "ncert_ref": "NCERT Class 12 Mathematics Part I, Ch 1",
+  "topics": [
+    {
+      "id": "math.relations-functions.relation-types",
+      "name": {
+        "en": "Types of Relations",
+        "hi": "संबंधों के प्रकार"
+      },
+      "subtopics": [
+        {
+          "id": "math.relations-functions.relation-types.core",
+          "name": {
+            "en": "Types of Relations",
+            "hi": "संबंधों के प्रकार"
+          },
+          "concepts": [
+            {
+              "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+              "name": {
+                "en": "Reflexive, symmetric, transitive and equivalence relations",
+                "hi": "स्वतुल्य, सममित, संक्रामक तथा तुल्यता संबंध"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A relation is reflexive if every a relates to itself, symmetric if aRb implies bRa, and transitive if aRb and bRc imply aRc; a relation with all three is an equivalence relation and splits the set into equivalence classes.",
+                "hi": "संबंध स्वतुल्य है यदि प्रत्येक a स्वयं से संबंधित हो, सममित है यदि aRb से bRa निकले, और संक्रामक है यदि aRb और bRc से aRc निकले; तीनों गुणों वाला संबंध तुल्यता संबंध है और समुच्चय को तुल्यता वर्गों में बाँटता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Test a given relation for each property.",
+                  "hi": "दिए गए संबंध की प्रत्येक गुण के लिए जाँच कीजिए।"
+                },
+                {
+                  "en": "Find the equivalence classes of an equivalence relation.",
+                  "hi": "किसी तुल्यता संबंध के तुल्यता वर्ग ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Recognise the empty and universal relations.",
+                  "hi": "रिक्त और सार्वत्रिक संबंध पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.relations-functions.function-types",
+      "name": {
+        "en": "Types of Functions",
+        "hi": "फलनों के प्रकार"
+      },
+      "subtopics": [
+        {
+          "id": "math.relations-functions.function-types.core",
+          "name": {
+            "en": "Types of Functions",
+            "hi": "फलनों के प्रकार"
+          },
+          "concepts": [
+            {
+              "id": "math.relations-functions.function-types.core.one-one-onto",
+              "name": {
+                "en": "One-one, many-one, into, onto and bijective functions",
+                "hi": "एकैकी, बहुएक, अंतःक्षेपी, आच्छादक तथा एकैकी आच्छादी फलन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A function is one-one if distinct inputs give distinct outputs and onto if its range equals its codomain; a function that is both is a bijection, and one that is not onto is into.",
+                "hi": "फलन एकैकी है यदि भिन्न निवेश भिन्न निर्गत दें, और आच्छादक है यदि उसका परिसर सहप्रांत के बराबर हो; दोनों गुणों वाला फलन एकैकी आच्छादी है, और जो आच्छादक न हो वह अंतःक्षेपी है।"
+              },
+              "key_points": [
+                {
+                  "en": "Prove a function one-one by showing $f(x_{1}) = f(x_{2})$ implies $x_{1} = x_{2}$.",
+                  "hi": "$f(x_{1}) = f(x_{2})$ से $x_{1} = x_{2}$ दिखाकर फलन को एकैकी सिद्ध कीजिए।"
+                },
+                {
+                  "en": "Prove onto by solving $y = f(x)$ for x in the domain.",
+                  "hi": "प्रांत में x के लिए $y = f(x)$ हल करके आच्छादकता सिद्ध कीजिए।"
+                },
+                {
+                  "en": "Use the horizontal-line test on a graph.",
+                  "hi": "ग्राफ़ पर क्षैतिज-रेखा परीक्षण का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.functions-intro.core.function-definition"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.relations-functions.composition-inverse",
+      "name": {
+        "en": "Composition of Functions and Invertible Function",
+        "hi": "फलनों का संयोजन तथा व्युत्क्रमणीय फलन"
+      },
+      "subtopics": [
+        {
+          "id": "math.relations-functions.composition-inverse.core",
+          "name": {
+            "en": "Composition of Functions and Invertible Function",
+            "hi": "फलनों का संयोजन तथा व्युत्क्रमणीय फलन"
+          },
+          "concepts": [
+            {
+              "id": "math.relations-functions.composition-inverse.core.composition-functions",
+              "name": {
+                "en": "Composition of functions",
+                "hi": "फलनों का संयोजन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For $f: A \\rightarrow B$ and $g: B \\rightarrow C$, the composite $g\\circ f: A \\rightarrow C$ is $(g\\circ f)(x) = g(f(x))$; composition is associative but not in general commutative.",
+                "hi": "$f: A \\rightarrow B$ और $g: B \\rightarrow C$ के लिए संयुक्त फलन $g\\circ f: A \\rightarrow C$, $(g\\circ f)(x) = g(f(x))$ है; संयोजन साहचर्य है पर सामान्यतः क्रमविनिमेय नहीं।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute $g\\circ f$ and $f\\circ g$ and compare them.",
+                  "hi": "$g\\circ f$ और $f\\circ g$ निकालकर उनकी तुलना कीजिए।"
+                },
+                {
+                  "en": "State the domain of a composite function.",
+                  "hi": "संयुक्त फलन का प्रांत बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions.function-types.core.one-one-onto"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-6"
+              ]
+            },
+            {
+              "id": "math.relations-functions.composition-inverse.core.invertible-function",
+              "name": {
+                "en": "Invertible functions and finding the inverse",
+                "hi": "व्युत्क्रमणीय फलन तथा प्रतिलोम ज्ञात करना"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A function is invertible exactly when it is a bijection; its inverse $f^{-1}$ satisfies $f^{-1}\\circ f = I$ and $f\\circ f^{-1} = I$ and is found by solving $y = f(x)$ for x.",
+                "hi": "फलन तभी व्युत्क्रमणीय है जब वह एकैकी आच्छादी हो; उसका प्रतिलोम $f^{-1}$, $f^{-1}\\circ f = I$ और $f\\circ f^{-1} = I$ को संतुष्ट करता है और $y = f(x)$ को x के लिए हल करके मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Check invertibility before finding an inverse.",
+                  "hi": "प्रतिलोम ज्ञात करने से पहले व्युत्क्रमणीयता जाँचिए।"
+                },
+                {
+                  "en": "Find $f^{-1}$ for linear and simple rational functions.",
+                  "hi": "रैखिक और सरल परिमेय फलनों के लिए $f^{-1}$ ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Relate the graph of $f^{-1}$ to that of f by reflection in $y = x$.",
+                  "hi": "$f^{-1}$ के ग्राफ़ को $y = x$ में परावर्तन द्वारा f के ग्राफ़ से जोड़िए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions.composition-inverse.core.composition-functions"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 1, SETS, RELATIONS AND FUNCTIONS"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 7, LIMIT, CONTINUITY AND DIFFERENTIABILITY"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: relation-types (§1.2, lhmh1 contents prelims p.xiii), function-types (§1.3, lhmh1 contents prelims p.xiii), composition-inverse (§1.4, lhmh1 contents prelims p.xiii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/relations-functions.json."
+}

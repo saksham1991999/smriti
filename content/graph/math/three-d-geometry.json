@@ -1,0 +1,236 @@
+{
+  "schema": "chapter@1",
+  "id": "math.three-d-geometry",
+  "subject": "math",
+  "unit": "math.vectors-3d",
+  "name": {
+    "en": "Three Dimensional Geometry",
+    "hi": "त्रि-विमीय ज्यामिति"
+  },
+  "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 11",
+  "topics": [
+    {
+      "id": "math.three-d-geometry.direction-cosines",
+      "name": {
+        "en": "Direction Cosines and Direction Ratios of a Line",
+        "hi": "रेखा के दिक्-कोसाइन और दिक्-अनुपात"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-geometry.direction-cosines.core",
+          "name": {
+            "en": "Direction Cosines and Direction Ratios of a Line",
+            "hi": "रेखा के दिक्-कोसाइन और दिक्-अनुपात"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-geometry.direction-cosines.core.direction-cosines-ratios",
+              "name": {
+                "en": "Direction cosines and direction ratios of a line",
+                "hi": "रेखा की दिक्-कोसाइन तथा दिक्-अनुपात"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "If a line makes angles $\\alpha$, $\\beta$, $\\gamma$ with the axes, $l = \\cos \\alpha$, $m = \\cos \\beta$, $n = \\cos \\gamma$ are its direction cosines with $l^{2} + m^{2} + n^{2} = 1$; any numbers proportional to them are direction ratios, and the line through two points has direction ratios $x_{2} - x_{1}$, $y_{2} - y_{1}$, $z_{2} - z_{1}$.",
+                "hi": "यदि कोई रेखा अक्षों से $\\alpha$, $\\beta$, $\\gamma$ कोण बनाती है, तो $l = \\cos \\alpha$, $m = \\cos \\beta$, $n = \\cos \\gamma$ उसकी दिक्-कोसाइन हैं और $l^{2} + m^{2} + n^{2} = 1$; इनके समानुपाती कोई भी संख्याएँ दिक्-अनुपात हैं, और दो बिंदुओं से जाने वाली रेखा के दिक्-अनुपात $x_{2} - x_{1}$, $y_{2} - y_{1}$, $z_{2} - z_{1}$ हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Convert direction ratios to direction cosines.",
+                  "hi": "दिक्-अनुपातों को दिक्-कोसाइन में बदलिए।"
+                },
+                {
+                  "en": "Find direction cosines of the line through two points.",
+                  "hi": "दो बिंदुओं से जाने वाली रेखा की दिक्-कोसाइन ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-intro.space-distance.core.space-distance",
+                "math.vector-algebra.scalar-multiple.core.vector-components"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-geometry.line-in-space",
+      "name": {
+        "en": "Equation of a Line in Space",
+        "hi": "अंतरिक्ष में रेखा का समीकरण"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-geometry.line-in-space.core",
+          "name": {
+            "en": "Equation of a Line in Space",
+            "hi": "अंतरिक्ष में रेखा का समीकरण"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-geometry.line-in-space.core.line-in-space",
+              "name": {
+                "en": "Vector and Cartesian equations of a line in space",
+                "hi": "अंतरिक्ष में रेखा के सदिश तथा कार्तीय समीकरण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "A line through a point with position vector a parallel to b is $r = a + \\lambda b$, or in Cartesian form $(x - x_{1})/a = (y - y_{1})/b = (z - z_{1})/c$; the line through two points uses their difference as b.",
+                "hi": "स्थिति सदिश a वाले बिंदु से b के समांतर जाने वाली रेखा $r = a + \\lambda b$ है, या कार्तीय रूप में $(x - x_{1})/a = (y - y_{1})/b = (z - z_{1})/c$; दो बिंदुओं से जाने वाली रेखा में उनका अंतर b के रूप में लिया जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write a line in vector and Cartesian form from given data.",
+                  "hi": "दिए गए आँकड़ों से रेखा को सदिश और कार्तीय रूप में लिखिए।"
+                },
+                {
+                  "en": "Convert between the two forms.",
+                  "hi": "दोनों रूपों के बीच रूपांतरण कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-geometry.direction-cosines.core.direction-cosines-ratios",
+                "math.vector-algebra.scalar-multiple.core.vector-section-formula"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-geometry.angle-lines",
+      "name": {
+        "en": "Angle between Two Lines",
+        "hi": "दो रेखाओं के मध्य कोण"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-geometry.angle-lines.core",
+          "name": {
+            "en": "Angle between Two Lines",
+            "hi": "दो रेखाओं के मध्य कोण"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-geometry.angle-lines.core.angle-between-lines-3d",
+              "name": {
+                "en": "Angle between two lines in space",
+                "hi": "अंतरिक्ष में दो रेखाओं के बीच का कोण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For lines with direction ratios $a_{1}, b_{1}, c_{1}$ and $a_{2}, b_{2}, c_{2}$, the angle $\\theta$ between them satisfies $\\cos \\theta = |a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2}|/(\\sqrt{a_{1}^{2} + b_{1}^{2} + c_{1}^{2}}\\cdot\\sqrt{a_{2}^{2} + b_{2}^{2} + c_{2}^{2}})$, so the lines are perpendicular when $a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2} = 0$.",
+                "hi": "दिक्-अनुपातों $a_{1}, b_{1}, c_{1}$ और $a_{2}, b_{2}, c_{2}$ वाली रेखाओं के बीच का कोण $\\theta$, $\\cos \\theta = |a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2}|/(\\sqrt{a_{1}^{2} + b_{1}^{2} + c_{1}^{2}}\\cdot\\sqrt{a_{2}^{2} + b_{2}^{2} + c_{2}^{2}})$ को संतुष्ट करता है, अतः $a_{1}a_{2} + b_{1}b_{2} + c_{1}c_{2} = 0$ होने पर रेखाएँ लंब होती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the angle between two lines from their equations.",
+                  "hi": "समीकरणों से दो रेखाओं के बीच का कोण ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find a parameter that makes two lines perpendicular or parallel.",
+                  "hi": "वह प्राचल ज्ञात कीजिए जिससे दो रेखाएँ लंब या समांतर हों।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-geometry.line-in-space.core.line-in-space",
+                "math.vector-algebra.vector-products.core.dot-product"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-geometry.shortest-distance",
+      "name": {
+        "en": "Shortest Distance between Two Lines",
+        "hi": "दो रेखाओं के मध्य न्यूनतम दूरी"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-geometry.shortest-distance.core",
+          "name": {
+            "en": "Shortest Distance between Two Lines",
+            "hi": "दो रेखाओं के मध्य न्यूनतम दूरी"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-geometry.shortest-distance.core.skew-lines-distance",
+              "name": {
+                "en": "Skew lines and the shortest distance between them",
+                "hi": "विषमतलीय रेखाएँ तथा उनके बीच की न्यूनतम दूरी"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Lines that are neither parallel nor intersecting are skew; for $r = a_{1} + \\lambda b_{1}$ and $r = a_{2} + \\mu b_{2}$ the shortest distance is $|(b_{1} \\times b_{2})\\cdot(a_{2} - a_{1})|/|b_{1} \\times b_{2}|$, and for parallel lines it is |b $\\times (a_{2} - a_{1})|/|b|$.",
+                "hi": "जो रेखाएँ न समांतर हों न प्रतिच्छेदी, वे विषमतलीय हैं; $r = a_{1} + \\lambda b_{1}$ और $r = a_{2} + \\mu b_{2}$ के लिए न्यूनतम दूरी $|(b_{1} \\times b_{2})\\cdot(a_{2} - a_{1})|/|b_{1} \\times b_{2}|$ है, और समांतर रेखाओं के लिए |b $\\times (a_{2} - a_{1})|/|b|$।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute the shortest distance between two skew lines.",
+                  "hi": "दो विषमतलीय रेखाओं के बीच की न्यूनतम दूरी निकालिए।"
+                },
+                {
+                  "en": "Decide whether two lines intersect by checking for zero shortest distance.",
+                  "hi": "न्यूनतम दूरी शून्य होने की जाँच करके तय कीजिए कि दो रेखाएँ प्रतिच्छेद करती हैं या नहीं।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-geometry.line-in-space.core.line-in-space",
+                "math.vector-algebra.vector-products.core.cross-product"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 11 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh205.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xvi"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 11, THREE DIMENSIONAL GEOMETRY"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: direction-cosines (§11.2, lhmh2 contents prelims p.xvi), line-in-space (§11.3, lhmh2 contents prelims p.xvi), angle-lines (§11.4, lhmh2 contents prelims p.xvi), shortest-distance (§11.5, lhmh2 contents prelims p.xvi). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/three-d-geometry.json."
+}

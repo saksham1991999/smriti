@@ -1,0 +1,71 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.magnetism-matter",
+  "items": [
+    {
+      "id": "leph1-5-2",
+      "kind": "formula",
+      "title": {
+        "en": "The Bar Magnet",
+        "hi": "छड़ चुंबक"
+      },
+      "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.2 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
+      "concepts": [
+        "phy.magnetism-matter.bar-magnet.core.bar-magnet-solenoid",
+        "phy.magnetism-matter.bar-magnet.core.magnetic-dipole-field",
+        "phy.magnetism-matter.bar-magnet.core.magnetic-dipole-torque"
+      ]
+    },
+    {
+      "id": "leph1-5-3",
+      "kind": "fact",
+      "title": {
+        "en": "Magnetism and Gauss’s Law",
+        "hi": "चुंबकत्व एवं गाउस नियम"
+      },
+      "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.3 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
+      "concepts": [],
+      "out_of_syllabus": "Gauss's law for magnetism is not listed in either official syllabus (JEE Main 2027, NEET UG 2026)"
+    },
+    {
+      "id": "leph1-5-4",
+      "kind": "definition",
+      "title": {
+        "en": "Magnetisation and Magnetic Intensity",
+        "hi": "चुंबकीकरण एवं चुंबकीय तीव्रता"
+      },
+      "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.4 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
+      "concepts": [
+        "phy.magnetism-matter.magnetic-materials.core.magnetisation-intensity",
+        "phy.magnetism-matter.magnetic-materials.core.magnetic-material-types"
+      ]
+    },
+    {
+      "id": "leph1-5-5",
+      "kind": "definition",
+      "title": {
+        "en": "Magnetic Properties of Materials",
+        "hi": "पदार्थों के चुंबकीय गुण"
+      },
+      "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.5 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
+      "concepts": [
+        "phy.magnetism-matter.magnetic-materials.core.magnetisation-intensity",
+        "phy.magnetism-matter.magnetic-materials.core.magnetic-material-types"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 5 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/leph105.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages.",
+  "hi_source": "ncert"
+}

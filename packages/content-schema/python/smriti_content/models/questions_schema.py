@@ -105,7 +105,12 @@ class McqSingle(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["mcq_single"]
+    type: Annotated[
+        Literal["mcq_single"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     options: Options
     answer: SingleOptionAnswer
     solution: Solution
@@ -115,7 +120,12 @@ class McqMulti(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["mcq_multi"]
+    type: Annotated[
+        Literal["mcq_multi"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     options: Options
     answer: OptionAnswer
     solution: Solution
@@ -125,7 +135,12 @@ class AssertionReason(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["assertion_reason"]
+    type: Annotated[
+        Literal["assertion_reason"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     assertion: common_schema.I18nText
     reason: common_schema.I18nText
     options: Options
@@ -137,7 +152,12 @@ class StatementBased(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["statement_based"]
+    type: Annotated[
+        Literal["statement_based"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     statements: Annotated[list[common_schema.I18nText], Field(min_length=2)]
     options: Options
     answer: SingleOptionAnswer
@@ -165,7 +185,12 @@ class Numerical(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["numerical"]
+    type: Annotated[
+        Literal["numerical"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     answer: Answer
     answer_format: AnswerFormat | None = None
     solution: Solution
@@ -183,7 +208,12 @@ class Integer(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["integer"]
+    type: Annotated[
+        Literal["integer"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     answer: Answer1
     solution: Solution
 
@@ -210,7 +240,12 @@ class MatrixMatch(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["matrix_match"]
+    type: Annotated[
+        Literal["matrix_match"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     rows: Annotated[list[common_schema.IdText], Field(min_length=2)]
     columns: Annotated[list[common_schema.IdText], Field(min_length=2)]
     answer: Answer2
@@ -239,7 +274,12 @@ class MatchList(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["match_list"]
+    type: Annotated[
+        Literal["match_list"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     list_i: Annotated[list[common_schema.IdText], Field(min_length=2)]
     list_ii: Annotated[list[common_schema.IdText], Field(min_length=2)]
     options: Options | None = None
@@ -302,7 +342,12 @@ class FillBlank(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["fill_blank"]
+    type: Annotated[
+        Literal["fill_blank"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     blanks: Annotated[
         list[Blank],
         Field(description="Blanks appear in the stem as {{blank:<id>}}.", min_length=1),
@@ -322,7 +367,12 @@ class OrderSteps(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["order_steps"]
+    type: Annotated[
+        Literal["order_steps"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     steps: Annotated[list[common_schema.IdText], Field(min_length=2)]
     answer: Answer5
     solution: Solution
@@ -347,7 +397,12 @@ class Paragraph(QuestionBase):
     model_config = ConfigDict(
         extra="forbid",
     )
-    type: Literal["paragraph"]
+    type: Annotated[
+        Literal["paragraph"],
+        Field(
+            description="drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+        ),
+    ]
     passage: common_schema.I18nText
     children: Annotated[
         list[ChildQuestion],

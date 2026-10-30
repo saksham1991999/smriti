@@ -1,0 +1,339 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.electrochemistry",
+  "subject": "chem",
+  "unit": "chem.physical",
+  "name": {
+    "en": "Electrochemistry",
+    "hi": "वैद्युतरसायन"
+  },
+  "ncert_ref": "NCERT Class 12 Chemistry Part I, Ch 2",
+  "topics": [
+    {
+      "id": "chem.electrochemistry.cells",
+      "name": {
+        "en": "Electrochemical and Galvanic Cells",
+        "hi": "वैद्युत रासायनिक सेल एवं गैल्वैनी सेल"
+      },
+      "subtopics": [
+        {
+          "id": "chem.electrochemistry.cells.core",
+          "name": {
+            "en": "Electrochemical and Galvanic Cells",
+            "hi": "वैद्युत रासायनिक सेल एवं गैल्वैनी सेल"
+          },
+          "concepts": [
+            {
+              "id": "chem.electrochemistry.cells.core.galvanic-electrolytic-cells",
+              "name": {
+                "en": "Electrolytic and galvanic cells and types of electrodes",
+                "hi": "वैद्युतअपघटनी एवं गैल्वैनी सेल तथा इलेक्ट्रोडों के प्रकार"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A galvanic cell turns the energy of a spontaneous redox reaction into electrical energy, while an electrolytic cell uses electrical energy to drive a non-spontaneous reaction; electrodes include metal-ion, gas (such as hydrogen) and redox electrodes.",
+                "hi": "गैल्वैनी सेल स्वतःप्रवर्तित अपचयोपचय अभिक्रिया की ऊर्जा को विद्युत ऊर्जा में बदलता है, जबकि वैद्युतअपघटनी सेल विद्युत ऊर्जा से अस्वतःप्रवर्तित अभिक्रिया चलाता है; इलेक्ट्रोडों में धातु-आयन, गैस (जैसे हाइड्रोजन) और अपचयोपचय इलेक्ट्रोड शामिल हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Write cell notation and identify anode and cathode with their signs in both cell types.",
+                  "hi": "सेल संकेतन लिखिए और दोनों प्रकार के सेलों में ऐनोड और कैथोड को उनके चिह्नों सहित पहचानिए।"
+                },
+                {
+                  "en": "Predict products of electrolysis of aqueous $\\mathrm{NaCl}$ and of molten salts.",
+                  "hi": "जलीय $\\mathrm{NaCl}$ और गलित लवणों के वैद्युतअपघटन के उत्पाद बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.redox-reactions.electrode-processes.core.redox-couple-electrode"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-5",
+                "neet-ug-2026:chemistry:unit-7:item-5"
+              ]
+            },
+            {
+              "id": "chem.electrochemistry.cells.core.electrode-potential-emf",
+              "name": {
+                "en": "Standard electrode potential, half-cell reactions and emf of a cell",
+                "hi": "मानक इलेक्ट्रोड विभव, अर्ध-सेल अभिक्रियाएँ एवं सेल का वि.वा.ब."
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Electrode potentials are measured against the standard hydrogen electrode (0 V), and the cell emf is $E^{\\circ}_{cell} = E^{\\circ}_{cathode} - E^{\\circ}_{anode}$, measured with a high-resistance voltmeter or potentiometer.",
+                "hi": "इलेक्ट्रोड विभव मानक हाइड्रोजन इलेक्ट्रोड (0 V) के सापेक्ष मापे जाते हैं, और सेल का वि.वा.ब. $E^{\\circ}_{cell} = E^{\\circ}_{cathode} - E^{\\circ}_{anode}$ है, जिसे उच्च प्रतिरोध वोल्टमीटर या विभवमापी से मापा जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate $E^{\\circ}_{cell}$ from standard reduction potentials.",
+                  "hi": "मानक अपचयन विभवों से $E^{\\circ}_{cell}$ निकालिए।"
+                },
+                {
+                  "en": "Use the electrochemical series to compare oxidising and reducing strengths.",
+                  "hi": "ऑक्सीकारक और अपचायक क्षमताओं की तुलना के लिए वैद्युत रासायनिक श्रेणी का उपयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.electrochemistry.cells.core.galvanic-electrolytic-cells"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-6",
+                "neet-ug-2026:chemistry:unit-7:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.electrochemistry.nernst",
+      "name": {
+        "en": "Nernst Equation",
+        "hi": "नेर्न्स्ट समीकरण"
+      },
+      "subtopics": [
+        {
+          "id": "chem.electrochemistry.nernst.core",
+          "name": {
+            "en": "Nernst Equation",
+            "hi": "नेर्न्स्ट समीकरण"
+          },
+          "concepts": [
+            {
+              "id": "chem.electrochemistry.nernst.core.nernst-equation",
+              "name": {
+                "en": "Nernst equation and its applications",
+                "hi": "नेर्न्स्ट समीकरण एवं उसके अनुप्रयोग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The Nernst equation $E = E^{\\circ} - (0.059/n) \\log Q$ at 298 K gives electrode and cell potentials at non-standard concentrations, and at equilibrium $E^{\\circ}_{cell} = (0.059/n) \\log K$.",
+                "hi": "नेर्न्स्ट समीकरण 298 K पर $E = E^{\\circ} - (0.059/n) \\log Q$, अमानक सांद्रताओं पर इलेक्ट्रोड और सेल विभव देता है, और साम्य पर $E^{\\circ}_{cell} = (0.059/n) \\log K$।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate cell emf for given ion concentrations.",
+                  "hi": "दी गई आयन सांद्रताओं के लिए सेल का वि.वा.ब. निकालिए।"
+                },
+                {
+                  "en": "Find the equilibrium constant from $E^{\\circ}_{cell}$.",
+                  "hi": "$E^{\\circ}_{cell}$ से साम्य स्थिरांक निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.electrochemistry.cells.core.electrode-potential-emf",
+                "chem.equilibrium.equilibrium-constant.core.kc-kp"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-7",
+                "neet-ug-2026:chemistry:unit-7:item-7"
+              ]
+            },
+            {
+              "id": "chem.electrochemistry.nernst.core.cell-gibbs",
+              "name": {
+                "en": "Relationship between cell potential and Gibbs energy change",
+                "hi": "सेल विभव एवं गिब्ज़ ऊर्जा परिवर्तन के बीच संबंध"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The maximum electrical work from a cell equals the decrease in Gibbs energy, $\\Delta_{r} G = -nFE_{cell}$, and $\\Delta_{r} G^{\\circ} = -nFE^{\\circ}_{cell} = -RT \\ln K$.",
+                "hi": "किसी सेल से अधिकतम विद्युत कार्य गिब्ज़ ऊर्जा की कमी के बराबर होता है, $\\Delta_{r} G = -nFE_{cell}$, और $\\Delta_{r} G^{\\circ} = -nFE^{\\circ}_{cell} = -RT \\ln K$।"
+              },
+              "key_points": [
+                {
+                  "en": "From $E^{\\circ}_{cell}$, calculate $\\Delta G^{\\circ}$ for a cell reaction.",
+                  "hi": "$E^{\\circ}_{cell}$ से सेल अभिक्रिया का $\\Delta G^{\\circ}$ निकालिए।"
+                },
+                {
+                  "en": "Relate the sign of $E_{cell}$ to spontaneity.",
+                  "hi": "$E_{cell}$ के चिह्न को स्वतःप्रवर्तिता से जोड़िए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.electrochemistry.nernst.core.nernst-equation",
+                "chem.thermodynamics.gibbs-equilibrium.core.gibbs-equilibrium-constant"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-8",
+                "neet-ug-2026:chemistry:unit-7:item-8"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.electrochemistry.conductance",
+      "name": {
+        "en": "Conductance of Electrolytic Solutions",
+        "hi": "वैद्युतअपघटनी विलयनों का चालकत्व"
+      },
+      "subtopics": [
+        {
+          "id": "chem.electrochemistry.conductance.core",
+          "name": {
+            "en": "Conductance of Electrolytic Solutions",
+            "hi": "वैद्युतअपघटनी विलयनों का चालकत्व"
+          },
+          "concepts": [
+            {
+              "id": "chem.electrochemistry.conductance.core.conductance-molar",
+              "name": {
+                "en": "Electrolytic and metallic conduction; molar conductivity and its variation with concentration",
+                "hi": "वैद्युतअपघटनी एवं धात्विक चालन; मोलर चालकता एवं सांद्रता के साथ उसमें परिवर्तन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Conductivity $\\kappa$ falls with dilution, while molar conductivity $\\Lambda_{m} = \\kappa/c$ rises; strong electrolytes follow $\\Lambda_{m} = \\Lambda_{m}^{\\circ} - A\\sqrt{c}$ and weak electrolytes rise steeply at high dilution.",
+                "hi": "तनुकरण के साथ चालकता $\\kappa$ घटती है जबकि मोलर चालकता $\\Lambda_{m} = \\kappa/c$ बढ़ती है; प्रबल विद्युत-अपघट्य $\\Lambda_{m} = \\Lambda_{m}^{\\circ} - A\\sqrt{c}$ का पालन करते हैं और दुर्बल विद्युत-अपघट्य अत्यधिक तनुता पर तेज़ी से बढ़ते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish electronic (metallic) and ionic (electrolytic) conduction.",
+                  "hi": "इलेक्ट्रॉनिक (धात्विक) और आयनिक (वैद्युतअपघटनी) चालन में अंतर बताइए।"
+                },
+                {
+                  "en": "Calculate conductivity and molar conductivity from cell constant and resistance.",
+                  "hi": "सेल स्थिरांक और प्रतिरोध से चालकता और मोलर चालकता निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.equilibrium.ionic-equilibrium.core.electrolytes",
+                "phy.current-electricity.resistivity.core.resistivity-conductivity"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-3",
+                "neet-ug-2026:chemistry:unit-7:item-3"
+              ]
+            },
+            {
+              "id": "chem.electrochemistry.conductance.core.kohlrausch-law",
+              "name": {
+                "en": "Kohlrausch's law and its applications",
+                "hi": "कोलराउश का नियम एवं उसके अनुप्रयोग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "At infinite dilution each ion contributes independently, $\\Lambda_{m}^{\\circ} = \\nu_{+}\\lambda_{+}^{\\circ} + \\nu_{-}\\lambda_{-}^{\\circ}$, which gives $\\Lambda_{m}^{\\circ}$ of weak electrolytes and their degree of dissociation $\\alpha = \\Lambda_{m}/\\Lambda_{m}^{\\circ}$.",
+                "hi": "अनंत तनुता पर हर आयन स्वतंत्र रूप से योगदान देता है, $\\Lambda_{m}^{\\circ} = \\nu_{+}\\lambda_{+}^{\\circ} + \\nu_{-}\\lambda_{-}^{\\circ}$, जिससे दुर्बल विद्युत-अपघट्यों का $\\Lambda_{m}^{\\circ}$ और उनके वियोजन की मात्रा $\\alpha = \\Lambda_{m}/\\Lambda_{m}^{\\circ}$ मिलती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate $\\Lambda_{m}^{\\circ}$ of acetic acid from those of strong electrolytes.",
+                  "hi": "ऐसीटिक अम्ल का $\\Lambda_{m}^{\\circ}$ प्रबल विद्युत-अपघट्यों के मानों से निकालिए।"
+                },
+                {
+                  "en": "Find the dissociation constant of a weak acid from conductivity data.",
+                  "hi": "चालकता के आँकड़ों से दुर्बल अम्ल का वियोजन स्थिरांक निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.electrochemistry.conductance.core.conductance-molar"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-4",
+                "neet-ug-2026:chemistry:unit-7:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.electrochemistry.batteries",
+      "name": {
+        "en": "Batteries and Fuel Cells",
+        "hi": "बैटरियाँ एवं ईंधन सेल"
+      },
+      "subtopics": [
+        {
+          "id": "chem.electrochemistry.batteries.core",
+          "name": {
+            "en": "Batteries and Fuel Cells",
+            "hi": "बैटरियाँ एवं ईंधन सेल"
+          },
+          "concepts": [
+            {
+              "id": "chem.electrochemistry.batteries.core.batteries-fuel-cells",
+              "name": {
+                "en": "Dry cell, lead accumulator and fuel cells",
+                "hi": "शुष्क सेल, सीसा संचायक एवं ईंधन सेल"
+              },
+              "kind": "process",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The dry (Leclanché) cell is a primary cell, the lead-acid accumulator is a rechargeable secondary cell, and a hydrogen-oxygen fuel cell converts the energy of combustion directly into electricity.",
+                "hi": "शुष्क (लेक्लांशे) सेल प्राथमिक सेल है, सीसा-अम्ल संचायक पुनः आवेशित होने वाला द्वितीयक सेल है, और हाइड्रोजन-ऑक्सीजन ईंधन सेल दहन की ऊर्जा को सीधे विद्युत में बदलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the electrode reactions of the lead accumulator during discharge and charging.",
+                  "hi": "निरावेशन और आवेशन के दौरान सीसा संचायक की इलेक्ट्रोड अभिक्रियाएँ लिखिए।"
+                },
+                {
+                  "en": "Write the reactions of the $H_{2}-O_{2}$ fuel cell and state its advantages.",
+                  "hi": "$H_{2}-O_{2}$ ईंधन सेल की अभिक्रियाएँ लिखिए और इसके लाभ बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.electrochemistry.cells.core.galvanic-electrolytic-cells"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-9",
+                "neet-ug-2026:chemistry:unit-7:item-9"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Chemistry Part I, Ch 2 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lech102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhch1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhch1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.8: Chemistry Unit 7, REDOX REACTIONS AND ELECTROCHEMISTRY"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.10: Chemistry Unit 7, REDOX REACTIONS AND ELECTROCHEMISTRY"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: nernst (§2.3, lhch1 contents prelims p.xiii), conductance (§2.4, lhch1 contents prelims p.xiii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/chem/electrochemistry.json."
+}

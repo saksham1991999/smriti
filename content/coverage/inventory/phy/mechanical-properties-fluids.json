@@ -1,0 +1,70 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.mechanical-properties-fluids",
+  "items": [
+    {
+      "id": "keph2-9-2",
+      "kind": "formula",
+      "title": {
+        "en": "Pressure",
+        "hi": "दाब"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 9 §9.2 (https://ncert.nic.in/textbook/pdf/keph202.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-fluids.pressure.core.fluid-pressure",
+        "phy.mechanical-properties-fluids.pressure.core.pascals-law"
+      ]
+    },
+    {
+      "id": "keph2-9-3",
+      "kind": "definition",
+      "title": "Streamline Flow",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 9 §9.3 (https://ncert.nic.in/textbook/pdf/keph202.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-fluids.streamline.core.streamline-turbulent"
+      ]
+    },
+    {
+      "id": "keph2-9-4",
+      "kind": "formula",
+      "title": "Bernoulli's Principle",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 9 §9.4 (https://ncert.nic.in/textbook/pdf/keph202.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-fluids.bernoulli.core.bernoulli-principle"
+      ]
+    },
+    {
+      "id": "keph2-9-5",
+      "kind": "formula",
+      "title": "Viscosity",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 9 §9.5 (https://ncert.nic.in/textbook/pdf/keph202.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-fluids.viscosity.core.viscosity-stokes"
+      ]
+    },
+    {
+      "id": "keph2-9-6",
+      "kind": "formula",
+      "title": "Surface Tension",
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 9 §9.6 (https://ncert.nic.in/textbook/pdf/keph202.pdf)",
+      "concepts": [
+        "phy.mechanical-properties-fluids.surface-tension.core.surface-tension-energy",
+        "phy.mechanical-properties-fluids.surface-tension.core.excess-pressure",
+        "phy.mechanical-properties-fluids.surface-tension.core.capillary-rise"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 9 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/keph202.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+}

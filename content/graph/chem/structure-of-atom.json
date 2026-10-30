@@ -1,0 +1,527 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.structure-of-atom",
+  "subject": "chem",
+  "unit": "chem.physical",
+  "name": {
+    "en": "Structure of Atom",
+    "hi": "परमाणु की संरचना"
+  },
+  "ncert_ref": "NCERT Class 11 Chemistry Part I, Ch 2",
+  "topics": [
+    {
+      "id": "chem.structure-of-atom.bohr-background",
+      "name": {
+        "en": "Developments Leading to the Bohr Model",
+        "hi": "बोर के परमाणु मॉडल के विकास की पृष्ठभूमि"
+      },
+      "subtopics": [
+        {
+          "id": "chem.structure-of-atom.bohr-background.core",
+          "name": {
+            "en": "Developments Leading to the Bohr Model",
+            "hi": "बोर के परमाणु मॉडल के विकास की पृष्ठभूमि"
+          },
+          "concepts": [
+            {
+              "id": "chem.structure-of-atom.bohr-background.core.em-radiation-quantum",
+              "name": {
+                "en": "Nature of electromagnetic radiation, Planck's quantum and the photoelectric effect",
+                "hi": "वैद्युतचुंबकीय विकिरण की प्रकृति, प्लांक का क्वांटम एवं प्रकाश-विद्युत प्रभाव"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Electromagnetic radiation has wave properties $c = \\nu \\lambda$, but black-body radiation and the photoelectric effect show it is emitted and absorbed in quanta of energy $E = h\\nu$.",
+                "hi": "वैद्युतचुंबकीय विकिरण में तरंग गुण $c = \\nu \\lambda$ होते हैं, पर कृष्णिका विकिरण और प्रकाश-विद्युत प्रभाव दिखाते हैं कि यह $E = h\\nu$ ऊर्जा के क्वांटा में उत्सर्जित और अवशोषित होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Interconvert wavelength, frequency, wavenumber and photon energy.",
+                  "hi": "तरंगदैर्ध्य, आवृत्ति, तरंग संख्या और फ़ोटॉन ऊर्जा के बीच रूपांतरण कीजिए।"
+                },
+                {
+                  "en": "Explain threshold frequency and kinetic energy of photoelectrons, $h\\nu = h\\nu_{0} + mv^{2}/2$.",
+                  "hi": "देहली आवृत्ति और प्रकाश-इलेक्ट्रॉनों की गतिज ऊर्जा समझाइए, $h\\nu = h\\nu_{0} + mv^{2}/2$।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [
+                "phy.dual-nature.einstein-equation.core.einstein-photoelectric"
+              ],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-1",
+                "neet-ug-2026:chemistry:unit-2:item-1"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.bohr-background.core.hydrogen-spectrum",
+              "name": {
+                "en": "Line spectrum of hydrogen",
+                "hi": "हाइड्रोजन का रेखा स्पेक्ट्रम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Hydrogen emits lines grouped into the Lyman, Balmer, Paschen, Brackett and Pfund series, all fitted by the Rydberg expression with wavenumber $109677(1/n_{1}^{2} - 1/n_{2}^{2}) cm^{-1}$.",
+                "hi": "हाइड्रोजन की रेखाएँ लाइमन, बामर, पाशन, ब्रैकेट और फुंड श्रेणियों में समूहित होती हैं, जो सभी रिडबर्ग व्यंजक में तरंग संख्या $109677(1/n_{1}^{2} - 1/n_{2}^{2}) cm^{-1}$ से मेल खाती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Name the series, their lower levels and their regions of the spectrum.",
+                  "hi": "श्रेणियों, उनके निचले स्तरों और स्पेक्ट्रम के उनके क्षेत्रों के नाम बताइए।"
+                },
+                {
+                  "en": "Calculate the wavelength of a given transition.",
+                  "hi": "किसी दिए गए संक्रमण की तरंगदैर्ध्य निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.bohr-background.core.em-radiation-quantum"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-2",
+                "neet-ug-2026:chemistry:unit-2:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.structure-of-atom.bohr-model",
+      "name": {
+        "en": "Bohr's Model for Hydrogen Atom",
+        "hi": "हाइड्रोजन परमाणु के लिए बोर मॉडल"
+      },
+      "subtopics": [
+        {
+          "id": "chem.structure-of-atom.bohr-model.core",
+          "name": {
+            "en": "Bohr's Model for Hydrogen Atom",
+            "hi": "हाइड्रोजन परमाणु के लिए बोर मॉडल"
+          },
+          "concepts": [
+            {
+              "id": "chem.structure-of-atom.bohr-model.core.bohr-postulates-energy",
+              "name": {
+                "en": "Bohr model: postulates, energy and radii of orbits",
+                "hi": "बोर मॉडल : अभिगृहीत, कक्षाओं की ऊर्जा एवं त्रिज्याएँ"
+              },
+              "kind": "derivation",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Bohr's stationary orbits give $r_{n} = 52.9 n^{2}/Z pm$ and $E_{n} = -2.18 \\times 10^{-18} (Z^{2}/n^{2}) J$ for hydrogen-like species, and transitions between them emit photons of energy $\\Delta E$.",
+                "hi": "बोर की स्थायी कक्षाएँ हाइड्रोजन-सम स्पीशीज़ के लिए $r_{n} = 52.9 n^{2}/Z pm$ और $E_{n} = -2.18 \\times 10^{-18} (Z^{2}/n^{2}) J$ देती हैं, और इनके बीच संक्रमण $\\Delta E$ ऊर्जा के फ़ोटॉन उत्सर्जित करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the radius and energy of the nth orbit from the postulates.",
+                  "hi": "अभिगृहीतों से n वीं कक्षा की त्रिज्या और ऊर्जा व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Compute ionisation energy and transition energies for H, $\\mathrm{He^{+}}$ and $\\mathrm{Li^{2+}}$.",
+                  "hi": "H, $\\mathrm{He^{+}}$ और $\\mathrm{Li^{2+}}$ के लिए आयनन ऊर्जा और संक्रमण ऊर्जाएँ निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.bohr-background.core.hydrogen-spectrum"
+              ],
+              "related": [
+                "phy.atoms.bohr.core.bohr-model-hydrogen"
+              ],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-3",
+                "neet-ug-2026:chemistry:unit-2:item-3"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.bohr-model.core.bohr-limitations",
+              "name": {
+                "en": "Limitations of Bohr's model",
+                "hi": "बोर मॉडल की सीमाएँ"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Bohr's model fails for multi-electron atoms, cannot explain fine structure or the Zeeman and Stark effects, and conflicts with the dual nature of matter and the uncertainty principle.",
+                "hi": "बोर का मॉडल बहु-इलेक्ट्रॉन परमाणुओं के लिए विफल है, सूक्ष्म संरचना या ज़ीमान और स्टार्क प्रभावों को नहीं समझा पाता, और द्रव्य की द्वैत प्रकृति तथा अनिश्चितता सिद्धांत से टकराता है।"
+              },
+              "key_points": [
+                {
+                  "en": "List the spectral observations Bohr's model cannot explain.",
+                  "hi": "वे स्पेक्ट्रमी प्रेक्षण बताइए जिन्हें बोर का मॉडल नहीं समझा सकता।"
+                },
+                {
+                  "en": "Explain why definite orbits contradict the uncertainty principle.",
+                  "hi": "समझाइए कि निश्चित कक्षाएँ अनिश्चितता सिद्धांत के विरुद्ध क्यों हैं।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.bohr-model.core.bohr-postulates-energy"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-4",
+                "neet-ug-2026:chemistry:unit-2:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.structure-of-atom.towards-qm",
+      "name": {
+        "en": "Towards Quantum Mechanical Model of the Atom",
+        "hi": "परमाणु के क्वांटम यांत्रिकीय मॉडल की ओर"
+      },
+      "subtopics": [
+        {
+          "id": "chem.structure-of-atom.towards-qm.core",
+          "name": {
+            "en": "Towards Quantum Mechanical Model of the Atom",
+            "hi": "परमाणु के क्वांटम यांत्रिकीय मॉडल की ओर"
+          },
+          "concepts": [
+            {
+              "id": "chem.structure-of-atom.towards-qm.core.dual-nature-de-broglie",
+              "name": {
+                "en": "Dual nature of matter and the de Broglie relationship",
+                "hi": "द्रव्य की द्वैत प्रकृति एवं दे ब्रॉग्ली संबंध"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "de Broglie proposed that matter has wave character with $\\lambda = h/mv$, confirmed by electron diffraction, which matters only for very small particles.",
+                "hi": "दे ब्रॉग्ली ने प्रस्तावित किया कि द्रव्य में तरंग गुण होता है जिसकी $\\lambda = h/mv$ है, जिसकी पुष्टि इलेक्ट्रॉन विवर्तन से हुई, और यह केवल अत्यंत छोटे कणों के लिए महत्त्वपूर्ण है।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate the de Broglie wavelength of an electron.",
+                  "hi": "इलेक्ट्रॉन की दे ब्रॉग्ली तरंगदैर्ध्य निकालिए।"
+                },
+                {
+                  "en": "Explain why wave nature is not noticed for everyday objects.",
+                  "hi": "समझाइए कि दैनिक वस्तुओं में तरंग प्रकृति क्यों नहीं दिखती।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.bohr-background.core.em-radiation-quantum"
+              ],
+              "related": [
+                "phy.dual-nature.matter-waves.core.de-broglie"
+              ],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-5",
+                "neet-ug-2026:chemistry:unit-2:item-5"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.towards-qm.core.heisenberg-uncertainty",
+              "name": {
+                "en": "Heisenberg uncertainty principle",
+                "hi": "हाइज़ेनबर्ग अनिश्चितता सिद्धांत"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "It is impossible to know both the exact position and momentum of an electron at the same time: $\\Delta x\\cdot \\Delta p \\ge h/4\\pi$.",
+                "hi": "किसी इलेक्ट्रॉन की सटीक स्थिति और संवेग एक साथ जानना असंभव है: $\\Delta x\\cdot \\Delta p \\ge h/4\\pi$।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate the minimum uncertainty in velocity for a given uncertainty in position.",
+                  "hi": "स्थिति की दी गई अनिश्चितता के लिए वेग में न्यूनतम अनिश्चितता निकालिए।"
+                },
+                {
+                  "en": "Explain its significance in ruling out fixed electron orbits.",
+                  "hi": "निश्चित इलेक्ट्रॉन कक्षाओं को अस्वीकार करने में इसका महत्त्व समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.towards-qm.core.dual-nature-de-broglie"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-6",
+                "neet-ug-2026:chemistry:unit-2:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.structure-of-atom.qm-model",
+      "name": {
+        "en": "Quantum Mechanical Model of Atom",
+        "hi": "परमाणु का क्वांटम यांत्रिकीय मॉडल"
+      },
+      "subtopics": [
+        {
+          "id": "chem.structure-of-atom.qm-model.core",
+          "name": {
+            "en": "Quantum Mechanical Model of Atom",
+            "hi": "परमाणु का क्वांटम यांत्रिकीय मॉडल"
+          },
+          "concepts": [
+            {
+              "id": "chem.structure-of-atom.qm-model.core.qm-model-features",
+              "name": {
+                "en": "Quantum mechanical model of the atom and its important features",
+                "hi": "परमाणु का क्वांटम यांत्रिकीय मॉडल एवं उसकी मुख्य विशेषताएँ"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Solving the Schrödinger equation gives quantised energies and wave functions; electrons occupy orbitals described by probabilities rather than fixed paths.",
+                "hi": "श्रोडिंगर समीकरण को हल करने से क्वांटीकृत ऊर्जाएँ और तरंग फलन मिलते हैं; इलेक्ट्रॉन निश्चित पथों के बजाय प्रायिकता से वर्णित कक्षकों में रहते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "List the important features of the quantum mechanical model.",
+                  "hi": "क्वांटम यांत्रिकीय मॉडल की मुख्य विशेषताएँ लिखिए।"
+                },
+                {
+                  "en": "Distinguish an orbit from an orbital.",
+                  "hi": "कक्षा और कक्षक में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.towards-qm.core.heisenberg-uncertainty"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-7",
+                "neet-ug-2026:chemistry:unit-2:item-7"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.qm-model.core.orbitals-wavefunction",
+              "name": {
+                "en": "Atomic orbitals as one-electron wave functions; ψ and ψ² against r for 1s and 2s",
+                "hi": "एक-इलेक्ट्रॉन तरंग फलन के रूप में परमाणु कक्षक; 1s एवं 2s के लिए r के सापेक्ष ψ एवं ψ²"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "An orbital is a one-electron wave function $\\psi$, and $\\psi^{2}$ gives the probability density; plots of $\\psi$ and $\\psi^{2}$ against r show that 1s has no node and 2s has one radial node.",
+                "hi": "कक्षक एक-इलेक्ट्रॉन तरंग फलन $\\psi$ है, और $\\psi^{2}$ प्रायिकता घनत्व देता है; r के सापेक्ष $\\psi$ और $\\psi^{2}$ के ग्राफ़ दिखाते हैं कि 1s में कोई नोड नहीं और 2s में एक त्रिज्य नोड है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch $\\psi$ and $\\psi^{2}$ against r for 1s and 2s orbitals.",
+                  "hi": "1s और 2s कक्षकों के लिए r के सापेक्ष $\\psi$ और $\\psi^{2}$ के ग्राफ़ बनाइए।"
+                },
+                {
+                  "en": "Count radial nodes $(n - l - 1)$ and angular nodes (l).",
+                  "hi": "त्रिज्य नोड $(n - l - 1)$ और कोणीय नोड (l) गिनिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.qm-model-features"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-8",
+                "neet-ug-2026:chemistry:unit-2:item-8"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.qm-model.core.quantum-numbers",
+              "name": {
+                "en": "Quantum numbers and their significance",
+                "hi": "क्वांटम संख्याएँ एवं उनका महत्त्व"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The principal (n), azimuthal (l) and magnetic (m_l) quantum numbers fix an orbital's shell, subshell and orientation, with $l = 0$ to $n - 1$ and $m_{l} = -l$ to +l.",
+                "hi": "मुख्य (n), दिगंशी (l) और चुंबकीय (m_l) क्वांटम संख्याएँ कक्षक का कोश, उपकोश और अभिविन्यास तय करती हैं, जहाँ $l = 0$ से $n - 1$ और $m_{l} = -l$ से +l।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the allowed sets of quantum numbers and the number of orbitals in a shell $(n^{2})$.",
+                  "hi": "क्वांटम संख्याओं के मान्य समुच्चय और किसी कोश में कक्षकों की संख्या $(n^{2})$ निकालिए।"
+                },
+                {
+                  "en": "Identify invalid quantum-number combinations.",
+                  "hi": "अमान्य क्वांटम संख्या संयोजन पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.orbitals-wavefunction"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-9",
+                "neet-ug-2026:chemistry:unit-2:item-9"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.qm-model.core.orbital-shapes",
+              "name": {
+                "en": "Shapes of s, p and d orbitals",
+                "hi": "s, p एवं d कक्षकों की आकृतियाँ"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "s orbitals are spherical, the three p orbitals are dumb-bell shaped along x, y and z, and the five d orbitals have four cloverleaf shapes and the $d_{z^{2}}$ shape.",
+                "hi": "s कक्षक गोलाकार होते हैं, तीन p कक्षक x, y और z के अनुदिश डंबल आकार के होते हैं, और पाँच d कक्षकों में चार तिपतिया आकार के और एक $d_{z^{2}}$ आकार का होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch the boundary surfaces of s, p and d orbitals.",
+                  "hi": "s, p और d कक्षकों के परिसीमा पृष्ठ बनाइए।"
+                },
+                {
+                  "en": "Explain the energy order of orbitals in hydrogen and in multi-electron atoms, including the $(n + l)$ rule.",
+                  "hi": "हाइड्रोजन और बहु-इलेक्ट्रॉन परमाणुओं में कक्षकों के ऊर्जा क्रम को $(n + l)$ नियम सहित समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.quantum-numbers"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-10",
+                "neet-ug-2026:chemistry:unit-2:item-10"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.qm-model.core.electron-spin",
+              "name": {
+                "en": "Electron spin and the spin quantum number",
+                "hi": "इलेक्ट्रॉन चक्रण एवं चक्रण क्वांटम संख्या"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "An electron has intrinsic spin with spin quantum number $m_{s} = +1/2$ or $-1/2$, so each orbital can hold two electrons of opposite spin.",
+                "hi": "इलेक्ट्रॉन का नैज चक्रण होता है जिसकी चक्रण क्वांटम संख्या $m_{s} = +1/2$ या $-1/2$ है, इसलिए हर कक्षक विपरीत चक्रण वाले दो इलेक्ट्रॉन रख सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the possible values of $m_{s}$.",
+                  "hi": "$m_{s}$ के संभव मान बताइए।"
+                },
+                {
+                  "en": "Relate spin to the capacity of an orbital.",
+                  "hi": "चक्रण को कक्षक की क्षमता से जोड़िए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.quantum-numbers"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-11",
+                "neet-ug-2026:chemistry:unit-2:item-11"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.qm-model.core.filling-rules",
+              "name": {
+                "en": "Aufbau principle, Pauli exclusion principle and Hund's rule",
+                "hi": "आफ़बाउ सिद्धांत, पाउली अपवर्जन सिद्धांत एवं हुंड नियम"
+              },
+              "kind": "list",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Electrons fill orbitals in order of increasing energy (Aufbau), no two electrons share all four quantum numbers (Pauli), and degenerate orbitals are singly filled with parallel spins before pairing (Hund).",
+                "hi": "इलेक्ट्रॉन बढ़ती ऊर्जा के क्रम में कक्षक भरते हैं (आफ़बाउ), किन्हीं दो इलेक्ट्रॉनों की चारों क्वांटम संख्याएँ समान नहीं होतीं (पाउली), और समभ्रंश कक्षक युग्मन से पहले समांतर चक्रण के साथ एकल रूप से भरते हैं (हुंड)।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the filling order 1s 2s 2p 3s 3p 4s 3d $4p \\dots$",
+                  "hi": "भरने का क्रम 1s 2s 2p 3s 3p 4s 3d $4p \\dots$ लिखिए।"
+                },
+                {
+                  "en": "Draw orbital diagrams obeying all three rules.",
+                  "hi": "तीनों नियमों का पालन करते हुए कक्षक आरेख बनाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.electron-spin",
+                "chem.structure-of-atom.qm-model.core.orbital-shapes"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-12",
+                "neet-ug-2026:chemistry:unit-2:item-12"
+              ]
+            },
+            {
+              "id": "chem.structure-of-atom.qm-model.core.electronic-configuration",
+              "name": {
+                "en": "Electronic configuration and extra stability of half-filled and filled subshells",
+                "hi": "इलेक्ट्रॉनिक विन्यास एवं अर्धपूरित तथा पूर्णपूरित उपकोशों का अतिरिक्त स्थायित्व"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Electronic configurations follow the filling rules, but half-filled and completely filled subshells are extra stable because of symmetry and exchange energy, as in $Cr (3d^{5}4s^{1})$ and $Cu (3d^{10}4s^{1})$.",
+                "hi": "इलेक्ट्रॉनिक विन्यास भरने के नियमों का पालन करते हैं, पर सममिति और विनिमय ऊर्जा के कारण अर्धपूरित और पूर्णपूरित उपकोश अधिक स्थायी होते हैं, जैसे $Cr (3d^{5}4s^{1})$ और $Cu (3d^{10}4s^{1})$ में।"
+              },
+              "key_points": [
+                {
+                  "en": "Write configurations of the first 30 elements and their common ions.",
+                  "hi": "पहले 30 तत्वों और उनके सामान्य आयनों के विन्यास लिखिए।"
+                },
+                {
+                  "en": "Explain the exceptional configurations of Cr and Cu.",
+                  "hi": "Cr और Cu के अपवादी विन्यासों को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.filling-rules"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-2:item-13",
+                "neet-ug-2026:chemistry:unit-2:item-13"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 2 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khch1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khch1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xi"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.7: Chemistry Unit 2, ATOMIC STRUCTURE"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.9: Chemistry Unit 2, ATOMIC STRUCTURE"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: bohr-background (§2.3, khch1 contents prelims p.xi), bohr-model (§2.4, khch1 contents prelims p.xi), towards-qm (§2.5, khch1 contents prelims p.xi), qm-model (§2.6, khch1 contents prelims p.xi). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/chem/structure-of-atom.json."
+}

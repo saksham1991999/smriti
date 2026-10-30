@@ -168,3 +168,94 @@ describe("bad samples", () => {
     expect(errorsOf(doc).some((e) => e.startsWith("/pages"))).toBe(true);
   });
 });
+
+describe("facts the notice does not state", () => {
+  type Profile = Record<string, unknown>;
+  const profileOf = (doc: Record<string, unknown>): Profile => (doc.profiles as Profile[])[0]!;
+
+  it("accepts exam sessions, shift times, paper names and the new schedule kinds", () => {
+    const doc = clone(load("exams/fx-exam.json"));
+    Object.assign(profileOf(doc), {
+      paper_names: { "paper-1": { en: "Paper 1", hi: "प्रश्नपत्र 1" } },
+      exam_languages: ["en", "hi"],
+      schedule: [
+        { kind: "correction_window", date: "2027-01-01", end_date: "2027-01-03", session: "s1", source_url: "https://example.invalid/n" },
+        { kind: "re_exam", date: "2027-02-01", source_url: "https://example.invalid/n" },
+      ],
+      sessions: [
+        {
+          id: "s1",
+          label: { en: "Session 1", hi: "सत्र 1" },
+          application_window: { from: "2026-12-01", to: "2026-12-20" },
+          exam_dates: ["2027-01-20"],
+          source_ref: "fixture p.1",
+        },
+      ],
+      shifts: [{ id: "shift-1", tz: "Asia/Kolkata", times: [{ start: "09:00", end: "12:00", duration_min: 180 }] }],
+    });
+    expect(errorsOf(doc)).toEqual([]);
+    // Unknown shift times stay null rather than a guess.
+    profileOf(doc).shifts = null;
+    expect(errorsOf(doc)).toEqual([]);
+    profileOf(doc).shifts = [{ id: "shift-1", tz: "Asia/Kolkata", times: [{ start: "9am", end: "12:00" }] }];
+    expect(errorsOf(doc).some((e) => e.includes("/shifts/0/times/0/start"))).toBe(true);
+  });
+
+  it("accepts null paper facts, a fraction penalty, a skill test and per-category cut-offs", () => {
+    const doc = clone(load("blueprints/fx-exam-2027/paper-1.v1.json"));
+    Object.assign(doc, {
+      mode: "mixed",
+      interface: "nta_omr",
+      calculator: null,
+      section_navigation: null,
+      numeric_input: null,
+      question_count: null,
+      qualifying: { rule: { kind: "percentile", by_category: [{ category: "general", value: 50 }] }, source_ref: "fixture" },
+      hi_source: "translation",
+      open_questions: [{ field: "calculator", question: "Not stated in the fixture notice." }],
+    });
+    const sections = doc.sections as Record<string, unknown>[];
+    Object.assign(sections[0]!, {
+      mode: "cbt",
+      question_count: null,
+      max_marks: null,
+      marking: { mcq_single: { correct: null, wrong: { fraction_of_question_marks: 1 / 3 }, unattempted: 0 } },
+      cutoff: { kind: "set_by_conducting_body", basis: "Set by the fixture body." },
+    });
+    sections.push({
+      code: "typing",
+      title: { en: "Typing test", hi: "टाइपिंग परीक्षा" },
+      mode: "cbt",
+      question_count: null,
+      question_types: ["skill_test"],
+      cutoff: { kind: "max_error_percent", value: 5 },
+    });
+    expect(errorsOf(doc)).toEqual([]);
+    (sections[0]!.marking as Record<string, Record<string, unknown>>).mcq_single!.wrong = { fraction_of_question_marks: 1.5 };
+    expect(errorsOf(doc).some((e) => e.includes("fraction_of_question_marks"))).toBe(true);
+  });
+
+  it("accepts an inventory with Hindi titles, and one that only lists excluded chapters", () => {
+    const doc = clone(load("coverage/inventory/fx/chapter-a.json"));
+    const item = (doc.items as Record<string, unknown>[])[0]!;
+    item.title = { en: "Section one", hi: "खंड एक" };
+    delete item.kind;
+    expect(errorsOf(doc)).toEqual([]);
+    const excluded = {
+      schema: "inventory@1",
+      subject: "fx",
+      excluded_chapters: [
+        { ref: "book:1:5", title: { en: "Chapter five", hi: "अध्याय पाँच" }, reason: "Not in the fixture syllabus", source_ref: "fixture" },
+      ],
+      status: "draft",
+      sources: [{ kind: "other", ref: "Fixture source", url: null }],
+      authored_by: "fixture",
+      reviewed_by: null,
+      updated: "2026-10-30",
+      hi_source: "ncert",
+    };
+    expect(errorsOf(excluded)).toEqual([]);
+    expect(errorsOf({ ...excluded, excluded_chapters: undefined }).length).toBeGreaterThan(0);
+    expect(errorsOf({ ...excluded, hi_source: "machine" }).some((e) => e.startsWith("/hi_source"))).toBe(true);
+  });
+});

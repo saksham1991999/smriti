@@ -1,0 +1,199 @@
+{
+  "schema": "chapter@1",
+  "id": "math.trigonometric-functions",
+  "subject": "math",
+  "unit": "math.trigonometry",
+  "name": {
+    "en": "Trigonometric Functions",
+    "hi": "त्रिकोणमितीय फलन"
+  },
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 3",
+  "topics": [
+    {
+      "id": "math.trigonometric-functions.angles",
+      "name": {
+        "en": "Angles",
+        "hi": "कोण"
+      },
+      "subtopics": [
+        {
+          "id": "math.trigonometric-functions.angles.core",
+          "name": {
+            "en": "Angles",
+            "hi": "कोण"
+          },
+          "concepts": [
+            {
+              "id": "math.trigonometric-functions.angles.core.degree-radian",
+              "name": {
+                "en": "Degree and radian measure of angles",
+                "hi": "कोणों की डिग्री तथा रेडियन माप"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "An angle of one radian subtends an arc equal to the radius, so $\\pi$ radians $= 180^{\\circ}$, and for $\\theta$ in radians the arc length is $l = r\\theta$.",
+                "hi": "एक रेडियन का कोण त्रिज्या के बराबर चाप अंतरित करता है, अतः $\\pi$ रेडियन $= 180^{\\circ}$ और $\\theta$ रेडियन में होने पर चाप की लंबाई $l = r\\theta$।"
+              },
+              "key_points": [
+                {
+                  "en": "Convert between degrees and radians.",
+                  "hi": "डिग्री और रेडियन के बीच रूपांतरण कीजिए।"
+                },
+                {
+                  "en": "Use $l = r\\theta$ to find arc length, radius or angle.",
+                  "hi": "चाप की लंबाई, त्रिज्या या कोण ज्ञात करने के लिए $l = r\\theta$ का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-14:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.trigonometric-functions.trig-functions",
+      "name": {
+        "en": "Trigonometric Functions",
+        "hi": "त्रिकोणमितीय फलन"
+      },
+      "subtopics": [
+        {
+          "id": "math.trigonometric-functions.trig-functions.core",
+          "name": {
+            "en": "Trigonometric Functions",
+            "hi": "त्रिकोणमितीय फलन"
+          },
+          "concepts": [
+            {
+              "id": "math.trigonometric-functions.trig-functions.core.trig-functions-unit-circle",
+              "name": {
+                "en": "Trigonometric functions of a real number, their signs, domains, ranges and graphs",
+                "hi": "वास्तविक संख्या के त्रिकोणमितीय फलन, उनके चिह्न, प्रांत, परिसर तथा ग्राफ़"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Using the unit circle, sin x and cos x are defined for every real x; the other four functions follow from them, each has a sign pattern by quadrant, a domain, a range and a period.",
+                "hi": "इकाई वृत्त से sin x और cos x प्रत्येक वास्तविक x के लिए परिभाषित हैं; शेष चार फलन इन्हीं से बनते हैं, और प्रत्येक का चतुर्थांश के अनुसार चिह्न, प्रांत, परिसर तथा आवर्त होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the sign of each function in the four quadrants.",
+                  "hi": "चारों चतुर्थांशों में प्रत्येक फलन का चिह्न बताइए।"
+                },
+                {
+                  "en": "State the domain, range and period of all six functions.",
+                  "hi": "सभी छह फलनों का प्रांत, परिसर और आवर्त बताइए।"
+                },
+                {
+                  "en": "Sketch $y = \\sin x$, $y = \\cos x$ and $y = \\tan x$.",
+                  "hi": "$y = \\sin x$, $y = \\cos x$ और $y = \\tan x$ का ग्राफ़ खींचिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.trigonometric-functions.angles.core.degree-radian",
+                "math.relations-functions-intro.functions-intro.core.function-definition"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-14:item-1",
+                "jee-main-2027:mathematics:unit-7:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.trigonometric-functions.sum-difference",
+      "name": {
+        "en": "Trigonometric Functions of Sum and Difference of Two Angles",
+        "hi": "दो कोणों के योग और अंतर का त्रिकोणमितीय फलन"
+      },
+      "subtopics": [
+        {
+          "id": "math.trigonometric-functions.sum-difference.core",
+          "name": {
+            "en": "Trigonometric Functions of Sum and Difference of Two Angles",
+            "hi": "दो कोणों के योग और अंतर का त्रिकोणमितीय फलन"
+          },
+          "concepts": [
+            {
+              "id": "math.trigonometric-functions.sum-difference.core.trig-identities",
+              "name": {
+                "en": "Trigonometric identities: sum, difference, multiple-angle and transformation formulae",
+                "hi": "त्रिकोणमितीय सर्वसमिकाएँ : योग, अंतर, अपवर्त्य कोण तथा रूपांतरण सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "From $\\cos(x + y) = \\cos x \\cos y - \\sin x \\sin y$ follow the sum and difference formulae, the double- and triple-angle formulae, and the formulae converting sums of sines and cosines into products and back.",
+                "hi": "$\\cos(x + y) = \\cos x \\cos y - \\sin x \\sin y$ से योग और अंतर सूत्र, द्विगुण और त्रिगुण कोण सूत्र, तथा ज्याओं और कोज्याओं के योग को गुणनफल में और गुणनफल को योग में बदलने वाले सूत्र निकलते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Prove identities using sum, difference and double-angle formulae.",
+                  "hi": "योग, अंतर और द्विगुण कोण सूत्रों से सर्वसमिकाएँ सिद्ध कीजिए।"
+                },
+                {
+                  "en": "Convert $\\sin A + \\sin B$ and similar sums to products.",
+                  "hi": "$\\sin A + \\sin B$ जैसे योगों को गुणनफल में बदलिए।"
+                },
+                {
+                  "en": "Find trigonometric ratios of allied angles such as $\\pi/2 \\pm x$ and $\\pi \\pm x$.",
+                  "hi": "$\\pi/2 \\pm x$ और $\\pi \\pm x$ जैसे संबद्ध कोणों के त्रिकोणमितीय अनुपात ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.trigonometric-functions.trig-functions.core.trig-functions-unit-circle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-14:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 3 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 7, LIMIT, CONTINUITY AND DIFFERENTIABILITY"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 14, TRIGONOMETRY"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: angles (§3.2, khmh1 contents prelims p.xiii), trig-functions (§3.3, khmh1 contents prelims p.xiii), sum-difference (§3.4, khmh1 contents prelims p.xiii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/trigonometric-functions.json."
+}

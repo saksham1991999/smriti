@@ -1,0 +1,66 @@
+{
+  "schema": "inventory@1",
+  "chapter": "chem.chemical-kinetics",
+  "items": [
+    {
+      "id": "lech1-3-1",
+      "kind": "definition",
+      "title": "Rate of a Chemical Reaction",
+      "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.1 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
+      "concepts": [
+        "chem.chemical-kinetics.rate.core.reaction-rate"
+      ]
+    },
+    {
+      "id": "lech1-3-2",
+      "kind": "list",
+      "title": "Factors Influencing Rate of a Reaction",
+      "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.2 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
+      "concepts": [
+        "chem.chemical-kinetics.rate-factors.core.rate-factors-def",
+        "chem.chemical-kinetics.rate-factors.core.order-molecularity",
+        "chem.chemical-kinetics.rate-factors.core.rate-law-constant"
+      ]
+    },
+    {
+      "id": "lech1-3-3",
+      "kind": "formula",
+      "title": "Integrated Rate Equations",
+      "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.3 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
+      "concepts": [
+        "chem.chemical-kinetics.integrated-rate.core.zero-first-order"
+      ]
+    },
+    {
+      "id": "lech1-3-4",
+      "kind": "formula",
+      "title": "Temperature Dependence of the Rate of a Reaction",
+      "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.4 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
+      "concepts": [
+        "chem.chemical-kinetics.temperature-rate.core.arrhenius"
+      ]
+    },
+    {
+      "id": "lech1-3-5",
+      "kind": "definition",
+      "title": "Collision Theory of Chemical Reactions",
+      "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.5 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
+      "concepts": [
+        "chem.chemical-kinetics.collision-theory.core.collision-theory-def"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Chemistry Part I, Ch 3 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lech103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+}

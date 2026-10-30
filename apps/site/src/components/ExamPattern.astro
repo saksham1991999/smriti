@@ -1,6 +1,6 @@
 ---
 // Exam pattern, shown only from a reviewed blueprint with its official source (AGENTS rule 3).
-// Every number here comes from the content index; a null field prints "Not stated", never a guess.
+// Every number here comes from the content index; a null field prints "Not stated in the notice", never a guess.
 import Icon from "./Icon.astro";
 import type { Locale } from "../config/site";
 import type { Blueprint } from "../content-index/schema";
@@ -15,8 +15,20 @@ const m = messages(lang);
 const e = m.exam;
 const n = (v: number | null) => (v === null ? e.notStated : formatNumber(lang, v));
 const signed = (v: number) => (v > 0 ? `+${formatNumber(lang, v)}` : v < 0 ? `−${formatNumber(lang, Math.abs(v))}` : "0");
+const modeLabel = { cbt: e.modeCbt, pen_paper: e.modePenPaper, mixed: e.modeMixed } as const;
+type SectionMarking = NonNullable<Blueprint["sections"][number]["marking"]>;
+// A fraction penalty reads as a fraction (one-third), not as a rounded decimal.
+const fraction = (f: number) => (Math.abs(f - 1 / 3) < 1e-6 ? "1/3" : Math.abs(f - 1 / 4) < 1e-6 ? "1/4" : formatNumber(lang, f));
+const wrongText = (m: SectionMarking) =>
+  m.wrong !== null ? signed(m.wrong) : m.wrong_fraction != null ? fmt(e.wrongFraction, { fraction: fraction(m.wrong_fraction) }) : e.notStated;
+const markingText = (m: SectionMarking) =>
+  fmt(e.markingValue, {
+    correct: m.correct === null ? e.notStated : formatNumber(lang, m.correct),
+    wrong: wrongText(m),
+    unattempted: signed(m.unattempted),
+  });
 const facts = [
-  { label: e.mode, value: bp.mode === null ? e.notStated : bp.mode === "cbt" ? e.modeCbt : e.modePenPaper },
+  { label: e.mode, value: bp.mode === null ? e.notStated : modeLabel[bp.mode] },
   { label: e.duration, value: bp.duration_min === null ? e.notStated : fmt(e.minutes, { n: formatNumber(lang, bp.duration_min) }) },
   { label: e.totalQuestions, value: n(bp.total_questions) },
   { label: e.maxMarks, value: n(bp.max_marks) },
@@ -54,16 +66,8 @@ const facts = [
               {bp.sections.map((s) => (
                 <tr>
                   <th scope="row">{s.title[lang]}</th>
-                  <td class="num">{n(s.question_count)}</td>
-                  <td class="num">
-                    {s.marking
-                      ? fmt(e.markingValue, {
-                          correct: formatNumber(lang, s.marking.correct),
-                          wrong: signed(s.marking.wrong),
-                          unattempted: signed(s.marking.unattempted),
-                        })
-                      : e.notStated}
-                  </td>
+                  <td class="num">{s.skill_test ? "—" : n(s.question_count)}</td>
+                  <td class="num">{s.skill_test ? e.skillTest : s.marking ? markingText(s.marking) : e.notStated}</td>
                 </tr>
               ))}
             </tbody>

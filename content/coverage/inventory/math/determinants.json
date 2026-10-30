@@ -1,0 +1,82 @@
+{
+  "schema": "inventory@1",
+  "chapter": "math.determinants",
+  "items": [
+    {
+      "id": "lemh1-4-2",
+      "kind": "fact",
+      "title": {
+        "en": "Determinant",
+        "hi": "सारणिक"
+      },
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 4 §4.2 (https://ncert.nic.in/textbook/pdf/lemh104.pdf)",
+      "concepts": [
+        "math.determinants.determinant.core.determinant-evaluation"
+      ]
+    },
+    {
+      "id": "lemh1-4-3",
+      "kind": "formula",
+      "title": {
+        "en": "Area of a Triangle",
+        "hi": "त्रिभुज का क्षेत्रफल"
+      },
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 4 §4.3 (https://ncert.nic.in/textbook/pdf/lemh104.pdf)",
+      "concepts": [
+        "math.determinants.triangle-area.core.area-triangle-determinant"
+      ]
+    },
+    {
+      "id": "lemh1-4-4",
+      "kind": "definition",
+      "title": {
+        "en": "Minors and Cofactors",
+        "hi": "उपसारणिक और सहखंड"
+      },
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 4 §4.4 (https://ncert.nic.in/textbook/pdf/lemh104.pdf)",
+      "concepts": [
+        "math.determinants.minors-adjoint.core.minors-cofactors",
+        "math.determinants.minors-adjoint.core.adjoint-inverse"
+      ]
+    },
+    {
+      "id": "lemh1-4-5",
+      "kind": "formula",
+      "title": {
+        "en": "Adjoint and Inverse of a Matrix",
+        "hi": "आव्यूह के सहखंडज और व्युत्क्रम"
+      },
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 4 §4.5 (https://ncert.nic.in/textbook/pdf/lemh104.pdf)",
+      "concepts": [
+        "math.determinants.minors-adjoint.core.adjoint-inverse",
+        "math.determinants.minors-adjoint.core.minors-cofactors"
+      ]
+    },
+    {
+      "id": "lemh1-4-6",
+      "kind": "fact",
+      "title": {
+        "en": "Applications of Determinants and Matrices",
+        "hi": "सारणिकों और आव्यूहों के अनुप्रयोग"
+      },
+      "source_ref": "NCERT Class 12 Mathematics Part I, Ch 4 §4.6 (https://ncert.nic.in/textbook/pdf/lemh104.pdf)",
+      "concepts": [
+        "math.determinants.det-applications.core.linear-system-matrix"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 4 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages.",
+  "hi_source": "ncert"
+}

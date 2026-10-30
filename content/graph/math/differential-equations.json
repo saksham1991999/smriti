@@ -1,0 +1,198 @@
+{
+  "schema": "chapter@1",
+  "id": "math.differential-equations",
+  "subject": "math",
+  "unit": "math.calculus",
+  "name": {
+    "en": "Differential Equations",
+    "hi": "अवकल समीकरण"
+  },
+  "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 9",
+  "topics": [
+    {
+      "id": "math.differential-equations.de-basics",
+      "name": {
+        "en": "Basic Concepts and Solutions",
+        "hi": "आधारभूत संकल्पनाएँ तथा हल"
+      },
+      "subtopics": [
+        {
+          "id": "math.differential-equations.de-basics.core",
+          "name": {
+            "en": "Basic Concepts and Solutions",
+            "hi": "आधारभूत संकल्पनाएँ तथा हल"
+          },
+          "concepts": [
+            {
+              "id": "math.differential-equations.de-basics.core.de-order-degree",
+              "name": {
+                "en": "Order, degree and solutions of an ordinary differential equation",
+                "hi": "साधारण अवकल समीकरण की कोटि, घात तथा हल"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The order of a differential equation is that of its highest derivative and the degree is that derivative's power once the equation is a polynomial in derivatives; a general solution has as many arbitrary constants as the order, and a particular solution fixes them.",
+                "hi": "अवकल समीकरण की कोटि उसके उच्चतम अवकलज की कोटि है और घात, समीकरण के अवकलजों में बहुपद होने पर उस अवकलज की घात है; व्यापक हल में कोटि जितने स्वेच्छ अचर होते हैं, और विशिष्ट हल उन्हें निश्चित करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the order and degree of a given equation, or say the degree is undefined.",
+                  "hi": "दिए गए समीकरण की कोटि और घात बताइए, या कहिए कि घात परिभाषित नहीं है।"
+                },
+                {
+                  "en": "Verify that a function is a solution of a given equation.",
+                  "hi": "जाँचिए कि कोई फलन दिए गए समीकरण का हल है।"
+                }
+              ],
+              "prerequisites": [
+                "math.continuity-differentiability.second-derivative.core.second-order-derivative"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-9:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.differential-equations.de-methods",
+      "name": {
+        "en": "Methods of Solving First Order, First Degree Differential Equations",
+        "hi": "प्रथम कोटि एवं प्रथम घात के अवकल समीकरणों को हल करने की विधियाँ"
+      },
+      "subtopics": [
+        {
+          "id": "math.differential-equations.de-methods.core",
+          "name": {
+            "en": "Methods of Solving First Order, First Degree Differential Equations",
+            "hi": "प्रथम कोटि एवं प्रथम घात के अवकल समीकरणों को हल करने की विधियाँ"
+          },
+          "concepts": [
+            {
+              "id": "math.differential-equations.de-methods.core.de-variables-separable",
+              "name": {
+                "en": "Variables separable method",
+                "hi": "चर पृथक्करणीय विधि"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "An equation $dy/dx = g(x)h(y)$ is solved by writing $dy/h(y) = g(x)\\,dx$ and integrating both sides.",
+                "hi": "समीकरण $dy/dx = g(x)h(y)$ को $dy/h(y) = g(x)\\,dx$ लिखकर और दोनों पक्षों का समाकलन करके हल किया जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Separate the variables and integrate.",
+                  "hi": "चरों को पृथक कीजिए और समाकलन कीजिए।"
+                },
+                {
+                  "en": "Use an initial condition to find a particular solution.",
+                  "hi": "प्रारंभिक शर्त से विशिष्ट हल ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.differential-equations.de-basics.core.de-order-degree",
+                "math.integrals.integration-methods.core.integration-substitution"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-9:item-2"
+              ]
+            },
+            {
+              "id": "math.differential-equations.de-methods.core.de-homogeneous",
+              "name": {
+                "en": "Homogeneous differential equations",
+                "hi": "समघातीय अवकल समीकरण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "When $dy/dx = F(x, y)$ with F homogeneous of degree zero, the substitution $y = vx$ turns the equation into one with separable variables.",
+                "hi": "जब $dy/dx = F(x, y)$ और F शून्य घात का समघातीय फलन हो, तो प्रतिस्थापन $y = vx$ समीकरण को पृथक्करणीय चरों वाला बना देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Test whether F(x, y) is homogeneous.",
+                  "hi": "जाँचिए कि F(x, y) समघातीय है या नहीं।"
+                },
+                {
+                  "en": "Solve using $y = vx$ and then separate variables.",
+                  "hi": "$y = vx$ से हल कीजिए और फिर चरों को पृथक कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.differential-equations.de-methods.core.de-variables-separable"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-9:item-3"
+              ]
+            },
+            {
+              "id": "math.differential-equations.de-methods.core.de-linear",
+              "name": {
+                "en": "Linear differential equations dy/dx + P(x)y = Q(x)",
+                "hi": "रैखिक अवकल समीकरण dy/dx + P(x)y = Q(x)"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Multiplying $dy/dx + Py = Q$ by the integrating factor $e^{\\int P dx}$ gives $y\\cdot(I.F.) = \\int Q\\cdot(I.F.)dx + C$.",
+                "hi": "$dy/dx + Py = Q$ को समाकलन गुणक $e^{\\int P dx}$ से गुणा करने पर $y\\cdot(I.F.) = \\int Q\\cdot(I.F.)dx + C$ मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the equation in standard linear form and find the integrating factor.",
+                  "hi": "समीकरण को मानक रैखिक रूप में लिखिए और समाकलन गुणक ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Solve and apply an initial condition.",
+                  "hi": "हल कीजिए और प्रारंभिक शर्त लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.differential-equations.de-methods.core.de-variables-separable",
+                "math.integrals.by-parts.core.integration-by-parts"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-9:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 9 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh203.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 9, DIFFRENTIAL EQUATIONS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: de-methods (§9.4, lhmh2 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/differential-equations.json."
+}

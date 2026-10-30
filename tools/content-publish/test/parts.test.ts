@@ -2,6 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import type { BlueprintFile } from "@smriti/content-schema";
 import { checkRoot } from "@smriti/content-schema/check";
 import { afterEach, describe, expect, it } from "vitest";
 
@@ -17,6 +18,7 @@ import {
   R2Store,
   r2ConfigFromEnv,
   resolveMedia,
+  siteBlueprint,
   uuidv5,
   type S3Like,
   type SiteIndex,
@@ -101,6 +103,42 @@ describe("site index (site-index@1)", () => {
     } finally {
       const { rmSync } = await import("node:fs");
       rmSync(local, { force: true });
+    }
+  });
+
+  // Real exam data: facts the notice does not state stay null on the site, never a guess.
+  const realBlueprint = (rel: string) => {
+    const bp = JSON.parse(readFileSync(join(repoRoot, "content", "blueprints", rel), "utf8")) as BlueprintFile;
+    const site = siteBlueprint({ ...bp, reviewed_by: "test-reviewer" }, { en: "Paper", hi: "प्रश्नपत्र" });
+    expect(site).not.toBeNull();
+    return site!;
+  };
+
+  it("carries unstated marks, fraction penalties, skill tests and mixed papers honestly", async () => {
+    const upsc = realBlueprint("upsc-cse-2026/prelims-gs1.v1.json");
+    expect(upsc.total_questions).toBeNull();
+    expect(upsc.sections[0]!.question_count).toBeNull();
+    expect(upsc.sections[0]!.marking).toEqual({ correct: null, wrong: null, wrong_fraction: 1 / 3, unattempted: 0 });
+
+    const ssc = realBlueprint("ssc-cgl-2026/tier-2-paper-1.v1.json");
+    const dest = ssc.sections.find((s) => s.code === "s4-dest")!;
+    expect(dest).toMatchObject({ skill_test: true, question_count: null, marking: null });
+
+    const barch = realBlueprint("jee-main-2027/paper-2a.v1.json");
+    expect(barch.mode).toBe("mixed");
+    // The bulletin does not state marks per drawing question, so correct stays null.
+    expect(barch.sections.find((s) => s.code === "drawing")!.marking).toMatchObject({ correct: null, wrong: 0 });
+
+    if (process.env.SITE_INDEX_SCHEMA || existsSync(siteSchema)) {
+      const local = join(__dirname, "..", ".site-schema-bp.tmp.ts");
+      writeFileSync(local, readFileSync(siteSchema, "utf8"));
+      try {
+        const mod = (await import(local)) as { Blueprint: { safeParse(v: unknown): { success: boolean; error?: unknown } } };
+        for (const bp of [upsc, ssc, barch]) expect(mod.Blueprint.safeParse(bp).error).toBeUndefined();
+      } finally {
+        const { rmSync } = await import("node:fs");
+        rmSync(local, { force: true });
+      }
     }
   });
 });

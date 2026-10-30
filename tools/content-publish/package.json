@@ -14,7 +14,8 @@
     "lint": "tsc --noEmit -p .",
     "test": "vitest run",
     "publish:local": "tsx src/cli.ts --target local",
-    "publish:fixtures": "tsx src/cli.ts --root content/fixtures --target local --out tools/content-publish/out"
+    "publish:fixtures": "tsx src/cli.ts --root content/fixtures --target local --out tools/content-publish/out",
+    "publish:dry-run": "tsx src/cli.ts --dry-run"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1150.0",

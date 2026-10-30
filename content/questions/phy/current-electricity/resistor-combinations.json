@@ -1,0 +1,421 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.resistor-combinations",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.resistor-combinations.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Resistors of 4 Ω and 6 Ω are joined in series. The equivalent resistance is",
+        "hi": "4 Ω और 6 Ω के प्रतिरोधक श्रेणीक्रम में जुड़े हैं। तुल्य प्रतिरोध है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 Ω",
+            "hi": "10 Ω"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2.4 Ω",
+            "hi": "2.4 Ω"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "24 Ω",
+            "hi": "24 Ω"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "5 Ω",
+            "hi": "5 Ω"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Series: add.",
+          "hi": "श्रेणी: जोड़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "In series the current has to go through both, one after the other, so the resistances simply add.",
+          "hi": "श्रेणीक्रम में धारा को दोनों से एक के बाद एक गुज़रना है, इसलिए प्रतिरोध सीधे जुड़ते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$R_s = 4 + 6 = 10$ Ω",
+            "hi": "$R_s = 4 + 6 = 10$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "2.4 Ω is the parallel value.",
+              "hi": "2.4 Ω पार्श्व मान है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Resistances are added, not multiplied.",
+              "hi": "प्रतिरोध जोड़े जाते हैं, गुणा नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This is the average, not the sum.",
+              "hi": "यह औसत है, योग नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.resistor-combinations.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 3 Ω and a 6 Ω resistor are joined in parallel across an ideal 12 V battery. The current drawn from the battery is",
+        "hi": "3 Ω और 6 Ω के प्रतिरोधक पार्श्वक्रम में एक आदर्श 12 V बैटरी के सिरों पर जुड़े हैं। बैटरी से ली गई धारा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "6 A",
+            "hi": "6 A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1.33 A",
+            "hi": "1.33 A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "4 A",
+            "hi": "4 A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2 A",
+            "hi": "2 A"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find $R_p$ first, or add the branch currents.",
+          "hi": "पहले $R_p$ निकालिए, या शाखा धाराएँ जोड़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each resistor gets the full 12 V. The 3 Ω takes 4 A and the 6 Ω takes 2 A; the battery supplies both.",
+          "hi": "हर प्रतिरोधक को पूरे 12 V मिलते हैं। 3 Ω 4 A लेता है और 6 Ω 2 A; बैटरी दोनों देती है।"
+        },
+        "steps": [
+          {
+            "en": "$R_p = \\frac{3 \\times 6}{3 + 6} = 2$ Ω",
+            "hi": "$R_p = \\frac{3 \\times 6}{3 + 6} = 2$ Ω"
+          },
+          {
+            "en": "$I = \\frac{12}{2} = 6$ A",
+            "hi": "$I = \\frac{12}{2} = 6$ A"
+          }
+        ],
+        "shortcut": {
+          "en": "For two resistors, $R_p = R_1R_2/(R_1 + R_2)$.",
+          "hi": "दो प्रतिरोधकों के लिए $R_p = R_1R_2/(R_1 + R_2)$।"
+        },
+        "shortcut_fails_when": {
+          "en": "It works only for two at a time; for three, use the full reciprocal sum or pair them step by step.",
+          "hi": "यह केवल दो के लिए है; तीन के लिए पूरा व्युत्क्रम योग लें या चरणों में जोड़ें।"
+        },
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "12/9 treats them as series.",
+              "hi": "12/9 उन्हें श्रेणी मानता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "4 A is only the current in the 3 Ω branch.",
+              "hi": "4 A केवल 3 Ω शाखा की धारा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "2 Ω is the equivalent resistance, not the current.",
+              "hi": "2 Ω तुल्य प्रतिरोध है, धारा नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.resistor-combinations.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 6 Ω resistor is in series with a parallel pair of 6 Ω and 3 Ω, across an ideal 16 V battery. The current through the 3 Ω resistor is",
+        "hi": "एक 6 Ω प्रतिरोधक, 6 Ω और 3 Ω के पार्श्व युग्म के साथ श्रेणीक्रम में, एक आदर्श 16 V बैटरी के सिरों पर है। 3 Ω प्रतिरोधक में धारा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4/3 A",
+            "hi": "4/3 A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2/3 A",
+            "hi": "2/3 A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2 A",
+            "hi": "2 A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "16/3 A",
+            "hi": "16/3 A"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The pair gets only part of the 16 V.",
+          "hi": "युग्म को 16 V का केवल एक भाग मिलता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Shrink the parallel pair to one resistor, find the main current, then find the voltage across the pair and share it out.",
+          "hi": "पार्श्व युग्म को एक प्रतिरोधक में बदलिए, मुख्य धारा निकालिए, फिर युग्म के सिरों की वोल्टता से बँटवारा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$R_p = \\frac{6 \\times 3}{6 + 3} = 2$ Ω; total $= 6 + 2 = 8$ Ω",
+            "hi": "$R_p = \\frac{6 \\times 3}{6 + 3} = 2$ Ω; कुल $= 6 + 2 = 8$ Ω"
+          },
+          {
+            "en": "$I = \\frac{16}{8} = 2$ A; voltage across the pair $= 2 \\times 2 = 4$ V",
+            "hi": "$I = \\frac{16}{8} = 2$ A; युग्म के सिरों पर वोल्टता $= 2 \\times 2 = 4$ V"
+          },
+          {
+            "en": "$I_3 = \\frac{4}{3}$ A",
+            "hi": "$I_3 = \\frac{4}{3}$ A"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "2/3 A is the current in the 6 Ω branch of the pair.",
+              "hi": "2/3 A युग्म की 6 Ω शाखा की धारा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "2 A is the total current, which splits between the branches.",
+              "hi": "2 A कुल धारा है, जो शाखाओं में बँटती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This applies the full 16 V across the 3 Ω.",
+              "hi": "यह पूरे 16 V को 3 Ω पर लगाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.resistor-combinations.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Two 12 Ω resistors in parallel are joined in series with a third 12 Ω resistor. The equivalent resistance, in ohm, is",
+        "hi": "पार्श्वक्रम में जुड़े दो 12 Ω प्रतिरोधक एक तीसरे 12 Ω प्रतिरोधक के साथ श्रेणीक्रम में जुड़े हैं। तुल्य प्रतिरोध, ओम में, है"
+      },
+      "answer": {
+        "value": 18,
+        "unit": "Ω"
+      },
+      "hints": [
+        {
+          "en": "$n$ equal resistors $R$ in parallel give $R/n$.",
+          "hi": "$n$ समान प्रतिरोधक $R$ पार्श्वक्रम में $R/n$ देते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Two equal resistors in parallel give half of one; then add the series one.",
+          "hi": "दो समान प्रतिरोधक पार्श्वक्रम में एक का आधा देते हैं; फिर श्रेणी वाला जोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "$R_p = \\frac{12}{2} = 6$ Ω",
+            "hi": "$R_p = \\frac{12}{2} = 6$ Ω"
+          },
+          {
+            "en": "$R = 6 + 12 = 18$ Ω",
+            "hi": "$R = 6 + 12 = 18$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding all three gives 36; the first two are in parallel.",
+              "hi": "तीनों जोड़ने पर 36 आता है; पहले दो पार्श्वक्रम में हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

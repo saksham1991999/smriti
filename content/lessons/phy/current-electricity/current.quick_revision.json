@@ -1,0 +1,108 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Quick Revision for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.current:quick_revision",
+  "topic": "phy.current-electricity.current",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.current.core.drift-velocity"
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.current:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.current-electricity.current"
+    },
+    {
+      "id": "phy.current-electricity.current:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.current.0004"
+    },
+    {
+      "id": "phy.current-electricity.current:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$I = \\Delta Q/\\Delta t$; unit ampere.",
+          "hi": "$I = \\Delta Q/\\Delta t$; मात्रक ऐम्पियर।"
+        },
+        {
+          "en": "$I = neA|v_d|$ with $|v_d| = eE\\tau/m$.",
+          "hi": "$I = neA|v_d|$, जहाँ $|v_d| = eE\\tau/m$।"
+        },
+        {
+          "en": "$\\mu = |v_d|/E$, unit m²/Vs.",
+          "hi": "$\\mu = |v_d|/E$, मात्रक m²/Vs।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.current:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A bulb lights at once because electrons rush through the wire.",
+            "hi": "बल्ब इसलिए तुरंत जलता है कि इलेक्ट्रॉन तार में तेज़ी से दौड़ते हैं।"
+          },
+          "correct": {
+            "en": "Electrons drift at about mm/s; the field is set up at nearly the speed of light.",
+            "hi": "इलेक्ट्रॉन लगभग mm/s से अपवाहित होते हैं; क्षेत्र लगभग प्रकाश की चाल से स्थापित होता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Area left in mm² in $I = neAv_d$.",
+            "hi": "$I = neAv_d$ में क्षेत्रफल mm² में ही छोड़ देना।"
+          },
+          "correct": {
+            "en": "Convert: 1 mm² = $10^{-6}$ m².",
+            "hi": "बदलिए: 1 mm² = $10^{-6}$ m²।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

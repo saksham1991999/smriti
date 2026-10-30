@@ -41,7 +41,10 @@
     {
       "id": "keph2-11-5",
       "kind": "formula",
-      "title": "First Law of Thermodynamics",
+      "title": {
+        "en": "First Law of Thermodynamics",
+        "hi": "ऊष्मागतिकी का प्रथम नियम"
+      },
       "source_ref": "NCERT Class 11 Physics Part II, Ch 11 §11.5 (https://ncert.nic.in/textbook/pdf/keph204.pdf)",
       "concepts": [
         "phy.thermodynamics.first-law.core.first-law-thermo"
@@ -125,5 +128,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
 }

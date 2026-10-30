@@ -1,0 +1,104 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Quick Revision for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.kirchhoff:quick_revision",
+  "topic": "phy.current-electricity.kirchhoff",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.kirchhoff:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.current-electricity.kirchhoff"
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.kirchhoff.0004"
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$\\Sigma I_{in} = \\Sigma I_{out}$ at a junction.",
+          "hi": "संधि पर $\\Sigma I_{in} = \\Sigma I_{out}$।"
+        },
+        {
+          "en": "$\\Sigma \\Delta V = 0$ round any closed loop.",
+          "hi": "किसी भी बंद पाश में $\\Sigma \\Delta V = 0$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Changing the assumed direction of a current halfway through.",
+            "hi": "बीच में ही किसी धारा की मानी गई दिशा बदल देना।"
+          },
+          "correct": {
+            "en": "Keep each assumed direction for all equations.",
+            "hi": "हर मानी गई दिशा सभी समीकरणों में वही रखें।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Adding $+IR$ when going through a resistor along the current.",
+            "hi": "धारा की दिशा में प्रतिरोधक पार करते समय $+IR$ जोड़ना।"
+          },
+          "correct": {
+            "en": "Along the current the potential falls: write $-IR$.",
+            "hi": "धारा की दिशा में विभव घटता है: $-IR$ लिखें।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

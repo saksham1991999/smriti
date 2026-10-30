@@ -16,7 +16,10 @@
     {
       "id": "kech1-1-2",
       "kind": "definition",
-      "title": "Nature of Matter",
+      "title": {
+        "en": "Nature of Matter",
+        "hi": "द्रव्य की प्रकृति"
+      },
       "source_ref": "NCERT Class 11 Chemistry Part I, Ch 1 §1.2 (https://ncert.nic.in/textbook/pdf/kech101.pdf)",
       "concepts": [
         "chem.basic-concepts.matter.core.matter-classification",
@@ -68,7 +71,10 @@
     {
       "id": "kech1-1-7",
       "kind": "definition",
-      "title": "Atomic and Molecular Masses",
+      "title": {
+        "en": "Atomic and Molecular Masses",
+        "hi": "परमाणु द्रव्यमान और आण्विक द्रव्यमान"
+      },
       "source_ref": "NCERT Class 11 Chemistry Part I, Ch 1 §1.7 (https://ncert.nic.in/textbook/pdf/kech101.pdf)",
       "concepts": [
         "chem.basic-concepts.atomic-masses.core.atomic-molecular-mass"
@@ -77,7 +83,10 @@
     {
       "id": "kech1-1-8",
       "kind": "formula",
-      "title": "Mole Concept and Molar Masses",
+      "title": {
+        "en": "Mole Concept and Molar Masses",
+        "hi": "मोल-संकल्पना और मोलर द्रव्यमान"
+      },
       "source_ref": "NCERT Class 11 Chemistry Part I, Ch 1 §1.8 (https://ncert.nic.in/textbook/pdf/kech101.pdf)",
       "concepts": [
         "chem.basic-concepts.mole.core.mole-concept"
@@ -86,7 +95,10 @@
     {
       "id": "kech1-1-9",
       "kind": "fact",
-      "title": "Percentage Composition",
+      "title": {
+        "en": "Percentage Composition",
+        "hi": "प्रतिशत-संघटन"
+      },
       "source_ref": "NCERT Class 11 Chemistry Part I, Ch 1 §1.9 (https://ncert.nic.in/textbook/pdf/kech101.pdf)",
       "concepts": [
         "chem.basic-concepts.percentage-composition.core.empirical-molecular-formula"
@@ -95,7 +107,10 @@
     {
       "id": "kech1-1-10",
       "kind": "fact",
-      "title": "Stoichiometry and Stoichiometric Calculations",
+      "title": {
+        "en": "Stoichiometry and Stoichiometric Calculations",
+        "hi": "स्टॉइकियोमीट्री और स्टॉइकियोमीट्रिक परिकलन"
+      },
       "source_ref": "NCERT Class 11 Chemistry Part I, Ch 1 §1.10 (https://ncert.nic.in/textbook/pdf/kech101.pdf)",
       "concepts": [
         "chem.basic-concepts.stoichiometry.core.stoichiometry-calc"
@@ -114,5 +129,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
 }

@@ -1,0 +1,84 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Cheat sheet for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "cs.phy.current-electricity.temperature-dependence",
+  "scope": "topic",
+  "topic": "phy.current-electricity.temperature-dependence",
+  "title": {
+    "en": "Temperature and resistivity",
+    "hi": "ताप और प्रतिरोधकता"
+  },
+  "concepts": [
+    "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+  ],
+  "key_ideas": [
+    {
+      "en": "Metals: $\\alpha > 0$, resistivity rises with temperature.",
+      "hi": "धातुएँ: $\\alpha > 0$, ताप के साथ प्रतिरोधकता बढ़ती है।"
+    },
+    {
+      "en": "Nichrome, manganin, constantan: weak temperature dependence, used in standard resistors.",
+      "hi": "निक्रोम, मैंगनिन, कांसटेंटन: ताप पर कम निर्भरता, मानक प्रतिरोधकों में उपयोग।"
+    },
+    {
+      "en": "Semiconductors: resistivity falls with temperature because $n$ rises.",
+      "hi": "अर्धचालक: $n$ बढ़ने से ताप के साथ प्रतिरोधकता घटती है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Temperature dependence",
+        "hi": "ताप पर निर्भरता"
+      },
+      "latex": "\\rho_T = \\rho_0 [1 + \\alpha (T - T_0)]"
+    }
+  ],
+  "mnemonics": [
+    {
+      "en": "m.phy.current-electricity.temperature-dependence.core.resistance-temperature.1",
+      "hi": "m.phy.current-electricity.temperature-dependence.core.resistance-temperature.2"
+    }
+  ],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Replacing $T - T_0$ by $T$ in the formula.",
+        "hi": "सूत्र में $T - T_0$ की जगह $T$ रखना।"
+      },
+      "correct": {
+        "en": "The formula uses the temperature difference from the reference.",
+        "hi": "सूत्र संदर्भ ताप से ताप-अंतर का उपयोग करता है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "All materials conduct worse when hot.",
+        "hi": "गरम होने पर सभी पदार्थ कम चालन करते हैं।"
+      },
+      "correct": {
+        "en": "Semiconductors conduct better when hot: their carrier density rises.",
+        "hi": "अर्धचालक गरम होने पर बेहतर चालन करते हैं: उनका वाहक घनत्व बढ़ता है।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

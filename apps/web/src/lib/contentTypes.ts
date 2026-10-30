@@ -22,16 +22,3 @@ export interface ConfigResponse {
   flags?: Record<string, unknown>;
 }
 
-export interface IntroEligibility {
-  eligible: boolean;
-  intro_price_paise: number;
-  price_paise: number;
-  currency: "INR";
-}
-
-export interface CheckoutSession {
-  checkout_id: string;
-  amount_paise: number;
-  intro: boolean;
-  provider: string;
-}

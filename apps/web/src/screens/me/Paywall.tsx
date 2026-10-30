@@ -11,7 +11,7 @@ import type { EntitlementSection } from "@smriti/app-core";
 import { useAppStore } from "@smriti/app-core/react";
 import { Button, Card, Chip, Icon, Illustration, PetLine, PriceBlock, Sheet, Spinner, Text, TopBar, TrialTimeline, TrustLine } from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
-import type { CheckoutSession } from "../../lib/contentTypes";
+import type { CheckoutOutcome, CheckoutSession } from "../../lib/billing";
 import { savedEmail } from "../../lib/auth";
 import { formatDate, useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
@@ -32,9 +32,8 @@ function addMonth(from: Date): Date {
 
 function useEligibility() {
   const s = useServices();
-  const guest = useAppStore((x) => x.session.isGuest);
   const userId = useAppStore((x) => x.session.userId);
-  return useQuery({ queryKey: ["billing", "eligibility", userId], enabled: !guest && !!userId, queryFn: () => s.billing.eligibility(), staleTime: 60_000 });
+  return useQuery({ queryKey: ["billing", "eligibility", userId], enabled: !!userId, queryFn: () => s.billing.eligibility(), staleTime: 60_000 });
 }
 
 /** Applies a new entitlement now (server wins on the next sync). */
@@ -62,7 +61,8 @@ export function Paywall() {
   const pet = useAppStore((x) => x.pet);
   const band = useAgeBand();
   const elig = useEligibility();
-  const eligible = guest ? true : (elig.data?.eligible ?? true);
+  // ₹1 only when the server says so; a guest sees the server's hint until sign-in.
+  const eligible = elig.data ? (elig.data.eligible ?? elig.data.eligibleHint) : false;
   const tracked = useRef(false);
   const now = new Date();
   const renew = addMonth(now);
@@ -185,7 +185,7 @@ export function Checkout() {
   const prices = usePrices();
   const elig = useEligibility();
   const [session, setSession] = useState<CheckoutSession | null>(null);
-  const [phase, setPhase] = useState<"review" | "approve" | "confirming">("review");
+  const [phase, setPhase] = useState<"review" | "approve" | "confirming" | "pending">("review");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -193,7 +193,7 @@ export function Checkout() {
   }, [guest, navigate]);
   if (guest || elig.isPending) return <Spinner label={t("learn:WEB-01.loading")} />;
 
-  const eligible = elig.data?.eligible ?? false;
+  const eligible = elig.data?.eligible === true;
   const renew = addMonth(new Date());
   const reminder = new Date(renew.getTime() - s.flags.get("billing.trial_reminder_days_before") * DAY);
   const email = savedEmail.get();
@@ -202,35 +202,47 @@ export function Checkout() {
     setBusy(true);
     try {
       const co = await s.billing.start();
-      s.analytics.track("checkout_started", { platform: "web", product_id: co.intro ? "pro_monthly_intro_web" : "pro_monthly_web", intro: String(co.intro) });
+      s.analytics.track("checkout_started", { platform: "web", product_id: co.productId, intro: String(co.intro) });
       setSession(co);
-      setPhase(s.billing.id === "fake" ? "approve" : "confirming");
-      if (s.billing.id !== "fake") await finish(co);
+      if (co.testMode) setPhase("approve");
+      else await finish(co);
     } catch {
       toast.show(t("learn:WEB-01.load_error"), { tone: "error" });
     } finally {
       setBusy(false);
     }
   };
-  const finish = async (co: CheckoutSession, simulate: "success" | "failure" = "success") => {
-    setPhase("confirming");
-    const r = await s.billing.pay(co, { simulate }).catch(() => ({ status: "failed" as const }));
-    s.analytics.track("checkout_result", { platform: "web", result: r.status === "active" ? "success" : r.status === "cancelled" ? "user_cancelled" : r.status === "pending" ? "pending" : "failed", error_code: r.status === "active" ? "none" : r.status });
+  const settle = (r: CheckoutOutcome) => {
+    s.analytics.track("checkout_result", { platform: "web", result: r.status === "active" ? "success" : r.status === "cancelled" ? "user_cancelled" : r.status === "pending" ? "pending" : "failed", error_code: r.status === "failed" ? r.code : "none" });
     if (r.status === "active") {
       applyEntitlement(s, r.entitlement);
       void navigate({ to: "/pro/welcome", replace: true });
+    } else if (r.status === "pending") {
+      setPhase("pending");
     } else {
-      toast.show(t("me_money:WEB-05.payment_failed"), { tone: "error" });
+      if (r.status === "failed") toast.show(t("me_money:WEB-05.payment_failed"), { tone: "error" });
       setPhase("review");
     }
+  };
+  const finish = async (co: CheckoutSession, simulate: "success" | "failure" = "success") => {
+    setPhase("confirming");
+    settle(await s.billing.pay(co, { simulate }).catch((): CheckoutOutcome => ({ status: "failed", code: "error" })));
+  };
+  const checkAgain = async () => {
+    setPhase("confirming");
+    settle(await s.billing.checkAgain().catch((): CheckoutOutcome => ({ status: "pending" })));
   };
 
   return (
     <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col gap-4 px-4 pb-6" data-testid="pay-06">
       <TopBar title={t("me_money:PAY-06.title")} onBack={() => void navigate({ to: "/pro" })} />
-      {phase === "confirming" ? (
+      {phase === "confirming" || phase === "pending" ? (
         <main id="main" className="flex flex-col items-center gap-4 py-8" data-testid="pay-08">
-          <Spinner label={t("me_money:PAY-08.title")} />
+          {phase === "confirming" ? (
+            <Spinner label={t("me_money:PAY-08.title")} />
+          ) : (
+            <Button variant="secondary" label={t("me_money:PAY-08.check_again")} onPress={() => void checkAgain()} testID="pay-08-check" />
+          )}
           <Text variant="heading" heading as="h1" align="center">
             {t("me_money:PAY-08.title")}
           </Text>

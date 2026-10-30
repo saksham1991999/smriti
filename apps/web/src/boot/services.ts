@@ -187,7 +187,7 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     srs: new SrsScheduler(),
     newId,
     softPrompt: new SoftPromptBudget(kv),
-    billing: createBillingProvider(env, api),
+    billing: createBillingProvider({ fakeApi: Boolean(opts.interceptor), api, client }),
     logger,
     fakeApi: Boolean(opts.interceptor),
     contentBaseUrl: contentBase(env.CDN_BASE_URL),

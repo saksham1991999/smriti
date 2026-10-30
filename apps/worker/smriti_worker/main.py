@@ -46,13 +46,35 @@ def _settings(name: str, queue: str, functions: list[Any], **overrides: Any) -> 
 DefaultWorker = _settings(
     "DefaultWorker",
     "default",
-    [jobs.merge_guest, jobs.purge_deleted_accounts, jobs.nightly_rollup, jobs.db_upkeep, jobs.ping],
+    [
+        jobs.merge_guest,
+        jobs.purge_deleted_accounts,
+        jobs.nightly_rollup,
+        jobs.db_upkeep,
+        jobs.notify_dispatch,
+        jobs.notify_plan_web,
+        jobs.guardian_expire,
+        jobs.guardian_age_up,
+        jobs.trial_reminders,
+        jobs.media_sweep,
+        jobs.ping,
+    ],
     cron_jobs=[
         # Every hour, close yesterday for the timezones whose local midnight just passed.
         cron(jobs.nightly_rollup, minute=5, run_at_startup=False, unique=True),
         cron(jobs.purge_deleted_accounts, minute=20, unique=True),
         # Partitions ahead and idle-guest cleanup when pg_cron is not installed.
         cron(jobs.db_upkeep, hour=3, minute=0, unique=True),
+        # Notifications: the outbox every minute, web reminders every 15 minutes (TRD §12).
+        cron(jobs.notify_dispatch, second=0, unique=True),
+        cron(jobs.notify_plan_web, minute={0, 15, 30, 45}, second=5, unique=True),
+        # Guardian consent: lapsed requests hourly, the turning-18 check daily (auth flow §6.10).
+        cron(jobs.guardian_expire, minute=10, unique=True),
+        cron(jobs.guardian_age_up, hour=1, minute=30, unique=True),
+        # R33: the trial-ending reminder, hourly.
+        cron(jobs.trial_reminders, minute=40, unique=True),
+        # Image requests waiting for the media queue.
+        cron(jobs.media_sweep, minute={2, 32}, unique=True),
     ],
 )
 ContentPublishWorker = _settings(
@@ -63,11 +85,15 @@ ContentPublishWorker = _settings(
     job_timeout=jobs.CONTENT_PUBLISH_TIMEOUT_S + 60,
     max_tries=1,
 )
-# Queues whose real jobs arrive in later phases (AI, media, notifications, PDF).
+# The AI queue's jobs arrive with the tutor work (Agent B).
 AiWorker = _settings("AiWorker", "ai", [jobs.ping])
-MediaWorker = _settings("MediaWorker", "media", [jobs.ping])
-NotificationsWorker = _settings("NotificationsWorker", "notifications", [jobs.ping])
-PdfWorker = _settings("PdfWorker", "pdf", [jobs.ping])
+MediaWorker = _settings(
+    "MediaWorker", "media", [jobs.media_generate, jobs.ping], max_jobs=4, job_timeout=300
+)
+NotificationsWorker = _settings(
+    "NotificationsWorker", "notifications", [jobs.notify_dispatch, jobs.ping], max_tries=1
+)
+PdfWorker = _settings("PdfWorker", "pdf", [jobs.render_pdf, jobs.ping], max_jobs=2)
 
 WORKERS: dict[str, WorkerSettings] = {
     "default": DefaultWorker,

@@ -15,8 +15,11 @@ os.environ.setdefault("AI_PROVIDER", "fake")
 os.environ.setdefault("JOBS_MODE", "inline")
 os.environ.setdefault("LOG_LEVEL", "WARNING")
 os.environ.setdefault("VARIANTS_DIR", "/nonexistent-variants-dir")
+# Many tests sign in fresh guests from one address; the per-IP dev sign-in limit is not under test.
+os.environ.setdefault("RATE_DEV_AUTH_PER_MIN", "100000")
 
 from collections.abc import AsyncIterator
+from pathlib import Path
 
 import httpx
 import pytest
@@ -77,3 +80,40 @@ async def client(settings: Settings, services: AppServices) -> AsyncIterator[htt
 @pytest.fixture(autouse=True)
 def _fresh_flag_cache() -> None:
     flag_service.clear_cache()
+
+
+# --- published fixture content (practice, mocks, tutor) ------------------------------------------
+
+FIXTURE_EXAM = "fx-exam-2027"
+
+
+def _published_fixture_sql() -> Path:
+    """Builds ``metadata.sql`` from ``content/fixtures`` when it is missing or out of date."""
+    import subprocess
+
+    from smriti_api.core.config import REPO_ROOT
+
+    sql_path = REPO_ROOT / "tools" / "content-publish" / "out" / "metadata.sql"
+    if not sql_path.exists() or "content.question_bodies" not in sql_path.read_text("utf-8"):
+        subprocess.run(
+            ["pnpm", "--filter", "@smriti/content-publish", "publish:fixtures"],  # noqa: S607
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+        )
+    return sql_path
+
+
+@pytest.fixture(scope="session")
+async def content(services: AppServices) -> str:
+    """Loads the fixture course into the content tables once per run, the way production does:
+    ``tools/content-publish`` builds ``metadata.sql`` from ``content/fixtures`` and it is applied
+    as is. The tests write no study content. Returns the fixture exam profile id."""
+    sql_path = _published_fixture_sql()
+    async with services.db.engine.connect() as conn:
+        raw = await conn.get_raw_connection()
+        driver = raw.driver_connection
+        assert driver is not None
+        # The script carries its own begin/commit, so it runs on the raw connection.
+        await driver.execute(sql_path.read_text("utf-8"))
+    return FIXTURE_EXAM

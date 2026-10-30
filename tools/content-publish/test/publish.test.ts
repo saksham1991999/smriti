@@ -71,7 +71,7 @@ describe("publishing the fixture course to a local folder", () => {
     const sql = readFileSync(join(out, "metadata.sql"), "utf8");
     expect(sql).toContain("-- FIXTURE COURSE");
     for (const [table, rows] of Object.entries(report.sql.rows)) if (rows > 0) expect(sql).toContain(`insert into ${table} `);
-    expect(Object.keys(report.sql.tables)).toHaveLength(28);
+    expect(Object.keys(report.sql.tables)).toHaveLength(29);
     expect(report.warnings).toEqual([]);
     expect(existsSync(join(out, "site-index.json"))).toBe(true);
   });

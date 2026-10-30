@@ -199,22 +199,20 @@ async def wallet_state(session: AsyncSession, facts: UserFacts, now: datetime) -
 
 
 async def entitlement_state(session: AsyncSession, user_id: uuid.UUID) -> s.EntitlementState:
-    row = (
-        await session.execute(
-            text(
-                "select active, expires_at, grace_until from billing.entitlements"
-                " where user_id = :u and entitlement = 'pro'"
-            ),
-            {"u": user_id},
-        )
-    ).one_or_none()
-    now = datetime.now(UTC)
-    if row is None or not row.active:
-        return s.EntitlementState(plan="free", pro_until=None)
-    until = row.grace_until or row.expires_at
-    if until is not None and until < now:
-        return s.EntitlementState(plan="free", pro_until=None)
-    return s.EntitlementState(plan="pro", pro_until=until)
+    """Computed from subscriptions and promo grants at read time, so an expiry or the end of a
+    grace period shows even before the next webhook or roll-up rewrites the stored row."""
+    from smriti_api.services.billing import compute_entitlement
+
+    ent = await compute_entitlement(session, user_id, datetime.now(UTC))
+    return s.EntitlementState(
+        plan="pro" if ent.active else "free",
+        pro_until=(ent.grace_until or ent.expires_at) if ent.active else None,
+        status=ent.status,
+        grace_until=ent.grace_until,
+        cancel_at_period_end=ent.cancel_at_period_end,
+        is_intro=ent.is_intro,
+        source=ent.source,
+    )
 
 
 async def _srs(session: AsyncSession, user_id: uuid.UUID, since: int | None) -> s.SrsState:

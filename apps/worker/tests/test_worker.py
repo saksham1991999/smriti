@@ -42,7 +42,17 @@ def test_arq_sees_every_setting() -> None:
 
 def test_crons_live_on_the_default_queue() -> None:
     names = {c.coroutine.__name__ for c in DefaultWorker.cron_jobs}  # type: ignore[attr-defined]
-    assert names == {"nightly_rollup", "purge_deleted_accounts", "db_upkeep"}
+    assert names == {
+        "nightly_rollup",
+        "purge_deleted_accounts",
+        "db_upkeep",
+        "notify_dispatch",
+        "notify_plan_web",
+        "guardian_expire",
+        "guardian_age_up",
+        "trial_reminders",
+        "media_sweep",
+    }
 
 
 def test_unknown_queue_is_refused() -> None:
@@ -188,7 +198,12 @@ def test_content_publish_command_prefers_the_env_override(
         "--dir",
         str(tmp_path),
         "run",
-        "publish",
+        "publish:local",
+        "--",
+        "--root",
+        str(jobs.content_root()),
+        "--report",
+        str(jobs.report_dir()),
     ]
     monkeypatch.setenv("CONTENT_PUBLISH_CMD", "node tools/x.mjs --dry-run")
     assert jobs.content_publish_command(ctx["settings"], tmp_path) == [
@@ -226,3 +241,44 @@ async def test_a_job_the_api_enqueues_runs_on_the_worker() -> None:
         assert result == {"status": "skipped"}  # no such merge: the job is a no-op
     finally:
         await queue.close()
+
+
+async def test_content_publish_applies_metadata_sql(
+    ctx: dict[str, Any], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.delenv("CONTENT_PUBLISH_CMD", raising=False)
+    tool = tmp_path / "tool"
+    tool.mkdir()
+    report = tmp_path / "report"
+    report.mkdir()
+    # The stand-in publish writes a two-statement metadata.sql where the real one would.
+    (tool / "publish.sh").write_text(
+        'printf "select 1;\nselect 2;\n" > "$CONTENT_PUBLISH_REPORT_DIR/metadata.sql"\n'
+    )
+    run = {
+        **ctx,
+        "content_publish_dir": tool,
+        "content_report_dir": report,
+        "content_root": tmp_path / "content",
+    }
+    result = await jobs.content_publish(run, "main@abc")
+    assert (result["status"], result["metadata"], result["card_index"]) == (
+        "done",
+        "applied",
+        "no_lessons",
+    )
+    (report / "metadata.sql").write_text("select nope_not_a_column from nowhere;")
+    (tool / "publish.sh").write_text("exit 0\n")
+    failed = await jobs.content_publish(run, None)
+    assert (failed["status"], failed["metadata"]) == ("failed", "failed")
+
+
+async def test_notification_guardian_billing_and_media_jobs(ctx: dict[str, Any]) -> None:
+    sent = await jobs.notify_dispatch(ctx)
+    assert {"sent", "held", "suppressed", "failed", "pruned"} <= set(sent)
+    assert isinstance(await jobs.notify_plan_web(ctx), int)
+    assert isinstance(await jobs.guardian_expire(ctx), int)
+    assert isinstance(await jobs.guardian_age_up(ctx), int)
+    assert isinstance(await jobs.trial_reminders(ctx), int)
+    assert await jobs.render_pdf(ctx, str(uuid.uuid4())) == {"status": "skipped"}
+    assert (await jobs.media_generate(ctx, str(uuid.uuid4())))["status"] == "skipped"

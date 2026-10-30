@@ -1,0 +1,2004 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "single right",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "c"
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "option_ids": [
+            "c"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "single wrong",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "b"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "option_ids": [
+            "b"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "single duplicate ids",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "c",
+          "c"
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "option_ids": [
+            "c"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "single two picked",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "c",
+          "a"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "option_ids": [
+            "a",
+            "c"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "single nothing picked",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": []
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "option_ids": []
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "single wrong kind",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "3"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": null,
+        "reason": "invalid"
+      }
+    },
+    {
+      "name": "assertion reason right",
+      "question": {
+        "id": "q.vector.assertion_reason",
+        "type": "assertion_reason",
+        "answer": {
+          "option_ids": [
+            "a"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a"
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "option_ids": [
+            "a"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "multi all right any order",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "d",
+          "a",
+          "c"
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "multi two of three",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a",
+          "c"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.6666666666666666,
+        "response": {
+          "option_ids": [
+            "a",
+            "c"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "multi one wrong picked",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a",
+          "b"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "option_ids": [
+            "a",
+            "b"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "match list by option",
+      "question": {
+        "id": "q.vector.match_list",
+        "type": "match_list",
+        "answer": {
+          "option_ids": [
+            "b"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "b"
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "option_ids": [
+            "b"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "match pairs right",
+      "question": {
+        "id": "q.vector.match_list",
+        "type": "match_list",
+        "answer": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "one"
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "pairs",
+        "pairs": [
+          {
+            "left": "q",
+            "right": "one"
+          },
+          {
+            "left": "p",
+            "right": "two"
+          }
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "one"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "match pairs half",
+      "question": {
+        "id": "q.vector.match_list",
+        "type": "match_list",
+        "answer": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "one"
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "pairs",
+        "pairs": [
+          {
+            "left": "p",
+            "right": "two"
+          },
+          {
+            "left": "q",
+            "right": "two"
+          }
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.5,
+        "response": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "two"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "match pairs extra left",
+      "question": {
+        "id": "q.vector.match_list",
+        "type": "match_list",
+        "answer": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "one"
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "pairs",
+        "pairs": [
+          {
+            "left": "p",
+            "right": "two"
+          },
+          {
+            "left": "q",
+            "right": "one"
+          },
+          {
+            "left": "r",
+            "right": "one"
+          }
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 1,
+        "response": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "one"
+            },
+            {
+              "left": "r",
+              "right": "one"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "match pairs as options",
+      "question": {
+        "id": "q.vector.match_list",
+        "type": "match_list",
+        "answer": {
+          "pairs": [
+            {
+              "left": "p",
+              "right": "two"
+            },
+            {
+              "left": "q",
+              "right": "one"
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": null,
+        "reason": "invalid"
+      }
+    },
+    {
+      "name": "numerical in tolerance",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "2.45"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 2.45,
+          "unit": "m"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical edge of tolerance",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "2.6"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 2.6,
+          "unit": "m"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical out of tolerance",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "2.7"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 2.7,
+          "unit": "m"
+        },
+        "reason": "out_of_tolerance"
+      }
+    },
+    {
+      "name": "numerical as a number",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": 2.5
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 2.5,
+          "unit": "m"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical converted unit",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "250",
+        "unit": "cm"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 250,
+          "unit": "cm"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical wrong dimension",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "2.5",
+        "unit": "s"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 2.5,
+          "unit": "s"
+        },
+        "reason": "unit"
+      }
+    },
+    {
+      "name": "numerical unknown unit",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "2.5",
+        "unit": "furlong"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 2.5,
+          "unit": "furlong"
+        },
+        "reason": "unit"
+      }
+    },
+    {
+      "name": "numerical unparsable",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "two"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": null,
+          "unit": "m"
+        },
+        "reason": "unparsable"
+      }
+    },
+    {
+      "name": "numerical empty",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": ""
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": null,
+          "unit": "m"
+        },
+        "reason": "unparsable"
+      }
+    },
+    {
+      "name": "numerical relative kg",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1500,
+          "unit": "g",
+          "tolerance": {
+            "rel": 0.01
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1.5",
+        "unit": "kg"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 1.5,
+          "unit": "kg"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical exponent",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1500,
+          "unit": "g",
+          "tolerance": {
+            "rel": 0.01
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1.5e3"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 1500,
+          "unit": "g"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical times ten",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1500,
+          "unit": "g",
+          "tolerance": {
+            "rel": 0.01
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1.5×10^3"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 1500,
+          "unit": "g"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical thousands separator",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1500,
+          "unit": "g",
+          "tolerance": {
+            "rel": 0.01
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1,500"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 1500,
+          "unit": "g"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical relative out",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1500,
+          "unit": "g",
+          "tolerance": {
+            "rel": 0.01
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1520"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 1520,
+          "unit": "g"
+        },
+        "reason": "out_of_tolerance"
+      }
+    },
+    {
+      "name": "numerical spaces and plus",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1500,
+          "unit": "g",
+          "tolerance": {
+            "rel": 0.01
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": " +1 500 "
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 1500,
+          "unit": "g"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical decimals rule in",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 0.33,
+          "unit": null
+        },
+        "answer_format": {
+          "decimals": 2
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "0.334"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 0.334,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical decimals rule out",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 0.33,
+          "unit": null
+        },
+        "answer_format": {
+          "decimals": 2
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "0.336"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 0.336,
+          "unit": null
+        },
+        "reason": "out_of_tolerance"
+      }
+    },
+    {
+      "name": "numerical leading dot",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 0.33,
+          "unit": null
+        },
+        "answer_format": {
+          "decimals": 2
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": ".33"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 0.33,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical no scientific",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1200,
+          "unit": null
+        },
+        "answer_format": {
+          "allow_scientific": false
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1.2e3"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": null,
+          "unit": null
+        },
+        "reason": "unparsable"
+      }
+    },
+    {
+      "name": "numerical no scientific plain",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 1200,
+          "unit": null
+        },
+        "answer_format": {
+          "allow_scientific": false
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1200"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 1200,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical exact no tolerance",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 9.81,
+          "unit": "m/s^2"
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "9.81"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 9.81,
+          "unit": "m/s^2"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical exact off",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 9.81,
+          "unit": "m/s^2"
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "9.8"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 9.8,
+          "unit": "m/s^2"
+        },
+        "reason": "out_of_tolerance"
+      }
+    },
+    {
+      "name": "numerical unit given without key unit",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 0.33,
+          "unit": null
+        },
+        "answer_format": {
+          "decimals": 2
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "0.33",
+        "unit": "m"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 0.33,
+          "unit": "m"
+        },
+        "reason": "unit"
+      }
+    },
+    {
+      "name": "numerical celsius to kelvin",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 300,
+          "unit": "K",
+          "tolerance": {
+            "abs": 0.5
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "26.85",
+        "unit": "°C"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 26.85,
+          "unit": "°C"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "numerical full width digits",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "２.５"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 2.5,
+          "unit": "m"
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "integer right",
+      "question": {
+        "id": "q.vector.integer",
+        "type": "integer",
+        "answer": {
+          "value": 7,
+          "unit": null
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "7"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 7,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "integer decimal zero",
+      "question": {
+        "id": "q.vector.integer",
+        "type": "integer",
+        "answer": {
+          "value": 7,
+          "unit": null
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "7.0"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": 7,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "integer near",
+      "question": {
+        "id": "q.vector.integer",
+        "type": "integer",
+        "answer": {
+          "value": 7,
+          "unit": null
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "7.0001"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": 7.0001,
+          "unit": null
+        },
+        "reason": "out_of_tolerance"
+      }
+    },
+    {
+      "name": "integer exponent refused",
+      "question": {
+        "id": "q.vector.integer",
+        "type": "integer",
+        "answer": {
+          "value": 7,
+          "unit": null
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "7e0"
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "value": null,
+          "unit": null
+        },
+        "reason": "unparsable"
+      }
+    },
+    {
+      "name": "integer unicode minus",
+      "question": {
+        "id": "q.vector.integer",
+        "type": "integer",
+        "answer": {
+          "value": -3,
+          "unit": null
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "−3"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": -3,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "integer en dash minus",
+      "question": {
+        "id": "q.vector.integer",
+        "type": "integer",
+        "answer": {
+          "value": -3,
+          "unit": null
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "–3"
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "value": -3,
+          "unit": null
+        },
+        "reason": "ok"
+      }
+    },
+    {
+      "name": "matrix right",
+      "question": {
+        "id": "q.vector.matrix_match",
+        "type": "matrix_match",
+        "answer": {
+          "pairs": [
+            {
+              "row": "p",
+              "columns": [
+                "one",
+                "three"
+              ]
+            },
+            {
+              "row": "q",
+              "columns": [
+                "two"
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "matrix",
+        "rows": [
+          {
+            "row": "q",
+            "columns": [
+              "two"
+            ]
+          },
+          {
+            "row": "p",
+            "columns": [
+              "three",
+              "one"
+            ]
+          }
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "rows": [
+            {
+              "row": "p",
+              "columns": [
+                "one",
+                "three"
+              ]
+            },
+            {
+              "row": "q",
+              "columns": [
+                "two"
+              ]
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "matrix one row short",
+      "question": {
+        "id": "q.vector.matrix_match",
+        "type": "matrix_match",
+        "answer": {
+          "pairs": [
+            {
+              "row": "p",
+              "columns": [
+                "one",
+                "three"
+              ]
+            },
+            {
+              "row": "q",
+              "columns": [
+                "two"
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "matrix",
+        "rows": [
+          {
+            "row": "p",
+            "columns": [
+              "one"
+            ]
+          },
+          {
+            "row": "q",
+            "columns": [
+              "two"
+            ]
+          }
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.5,
+        "response": {
+          "rows": [
+            {
+              "row": "p",
+              "columns": [
+                "one"
+              ]
+            },
+            {
+              "row": "q",
+              "columns": [
+                "two"
+              ]
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "matrix missing row",
+      "question": {
+        "id": "q.vector.matrix_match",
+        "type": "matrix_match",
+        "answer": {
+          "pairs": [
+            {
+              "row": "p",
+              "columns": [
+                "one",
+                "three"
+              ]
+            },
+            {
+              "row": "q",
+              "columns": [
+                "two"
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "matrix",
+        "rows": [
+          {
+            "row": "p",
+            "columns": [
+              "one",
+              "three"
+            ]
+          }
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.5,
+        "response": {
+          "rows": [
+            {
+              "row": "p",
+              "columns": [
+                "one",
+                "three"
+              ]
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "blanks right",
+      "question": {
+        "id": "q.vector.fill_blank",
+        "type": "fill_blank",
+        "answer": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "choice_id": "c2"
+            },
+            {
+              "blank": "b2",
+              "accepted": [
+                {
+                  "key": "word-key",
+                  "text": [
+                    "alpha",
+                    "alphas"
+                  ]
+                },
+                {
+                  "key": "alt-key",
+                  "text": [
+                    "अल्फ़ा"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "blanks",
+        "blanks": [
+          {
+            "blank": "b1",
+            "choiceId": "c2"
+          },
+          {
+            "blank": "b2",
+            "text": "alpha"
+          }
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "key": "c2"
+            },
+            {
+              "blank": "b2",
+              "key": "word-key"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "blanks typed normalised",
+      "question": {
+        "id": "q.vector.fill_blank",
+        "type": "fill_blank",
+        "answer": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "choice_id": "c2"
+            },
+            {
+              "blank": "b2",
+              "accepted": [
+                {
+                  "key": "word-key",
+                  "text": [
+                    "alpha",
+                    "alphas"
+                  ]
+                },
+                {
+                  "key": "alt-key",
+                  "text": [
+                    "अल्फ़ा"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "blanks",
+        "blanks": [
+          {
+            "blank": "b1",
+            "choiceId": "c2"
+          },
+          {
+            "blank": "b2",
+            "text": "  “ALPHAS.”  "
+          }
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "key": "c2"
+            },
+            {
+              "blank": "b2",
+              "key": "word-key"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "blanks zero width and danda",
+      "question": {
+        "id": "q.vector.fill_blank",
+        "type": "fill_blank",
+        "answer": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "choice_id": "c2"
+            },
+            {
+              "blank": "b2",
+              "accepted": [
+                {
+                  "key": "word-key",
+                  "text": [
+                    "alpha",
+                    "alphas"
+                  ]
+                },
+                {
+                  "key": "alt-key",
+                  "text": [
+                    "अल्फ़ा"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "blanks",
+        "blanks": [
+          {
+            "blank": "b1",
+            "choiceId": "c2"
+          },
+          {
+            "blank": "b2",
+            "text": "अल्‍फ़ा।"
+          }
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "key": "c2"
+            },
+            {
+              "blank": "b2",
+              "key": "alt-key"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "blanks wrong choice",
+      "question": {
+        "id": "q.vector.fill_blank",
+        "type": "fill_blank",
+        "answer": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "choice_id": "c2"
+            },
+            {
+              "blank": "b2",
+              "accepted": [
+                {
+                  "key": "word-key",
+                  "text": [
+                    "alpha",
+                    "alphas"
+                  ]
+                },
+                {
+                  "key": "alt-key",
+                  "text": [
+                    "अल्फ़ा"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "blanks",
+        "blanks": [
+          {
+            "blank": "b1",
+            "choiceId": "c1"
+          },
+          {
+            "blank": "b2",
+            "text": "alpha"
+          }
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.5,
+        "response": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "key": "c1"
+            },
+            {
+              "blank": "b2",
+              "key": "word-key"
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "blanks wrong text",
+      "question": {
+        "id": "q.vector.fill_blank",
+        "type": "fill_blank",
+        "answer": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "choice_id": "c2"
+            },
+            {
+              "blank": "b2",
+              "accepted": [
+                {
+                  "key": "word-key",
+                  "text": [
+                    "alpha",
+                    "alphas"
+                  ]
+                },
+                {
+                  "key": "alt-key",
+                  "text": [
+                    "अल्फ़ा"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "blanks",
+        "blanks": [
+          {
+            "blank": "b1",
+            "choiceId": "c2"
+          },
+          {
+            "blank": "b2",
+            "text": "beta"
+          }
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.5,
+        "response": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "key": "c2"
+            },
+            {
+              "blank": "b2",
+              "key": null
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "blanks missing",
+      "question": {
+        "id": "q.vector.fill_blank",
+        "type": "fill_blank",
+        "answer": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "choice_id": "c2"
+            },
+            {
+              "blank": "b2",
+              "accepted": [
+                {
+                  "key": "word-key",
+                  "text": [
+                    "alpha",
+                    "alphas"
+                  ]
+                },
+                {
+                  "key": "alt-key",
+                  "text": [
+                    "अल्फ़ा"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "answer": {
+        "kind": "blanks",
+        "blanks": []
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": {
+          "blanks": [
+            {
+              "blank": "b1",
+              "key": null
+            },
+            {
+              "blank": "b2",
+              "key": null
+            }
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "order right",
+      "question": {
+        "id": "q.vector.order_steps",
+        "type": "order_steps",
+        "answer": {
+          "order": [
+            "s2",
+            "s1",
+            "s4",
+            "s3"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "order",
+        "order": [
+          "s2",
+          "s1",
+          "s4",
+          "s3"
+        ]
+      },
+      "expect": {
+        "correct": true,
+        "partial": 1,
+        "response": {
+          "order": [
+            "s2",
+            "s1",
+            "s4",
+            "s3"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "order two in place",
+      "question": {
+        "id": "q.vector.order_steps",
+        "type": "order_steps",
+        "answer": {
+          "order": [
+            "s2",
+            "s1",
+            "s4",
+            "s3"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "order",
+        "order": [
+          "s2",
+          "s1",
+          "s3",
+          "s4"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0.5,
+        "response": {
+          "order": [
+            "s2",
+            "s1",
+            "s3",
+            "s4"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "order too long",
+      "question": {
+        "id": "q.vector.order_steps",
+        "type": "order_steps",
+        "answer": {
+          "order": [
+            "s2",
+            "s1",
+            "s4",
+            "s3"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "order",
+        "order": [
+          "s2",
+          "s1",
+          "s4",
+          "s3",
+          "s5"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 1,
+        "response": {
+          "order": [
+            "s2",
+            "s1",
+            "s4",
+            "s3",
+            "s5"
+          ]
+        },
+        "reason": null
+      }
+    },
+    {
+      "name": "paragraph parent",
+      "question": {
+        "id": "q.vector.paragraph",
+        "type": "paragraph"
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a"
+        ]
+      },
+      "expect": {
+        "correct": false,
+        "partial": 0,
+        "response": null,
+        "reason": "invalid"
+      }
+    }
+  ]
+}

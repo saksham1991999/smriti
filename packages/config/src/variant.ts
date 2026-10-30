@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/mini';
 
 import allJson from '../variants/all.json';
 import jeeJson from '../variants/jee.json';
@@ -10,10 +10,10 @@ import upscJson from '../variants/upsc.json';
 export const VARIANT_IDS = ['all', 'jee', 'neet', 'upsc', 'ssc'] as const;
 export type VariantId = (typeof VARIANT_IDS)[number];
 
-const localised = z.object({ en: z.string().min(1), hi: z.string().min(1) });
-const assetPath = z.string().regex(/^brand\/[a-z0-9/_.-]+\.png$/, 'a PNG under brand/');
-const tokenRef = z.string().regex(/^examAccent\.(all|jee|neet|upsc|ssc)(\.(light|dark))?$/, 'an examAccent token');
-const reverseDns = z.string().regex(/^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$/, 'a reverse-DNS id');
+const localised = z.object({ en: z.string().check(z.minLength(1)), hi: z.string().check(z.minLength(1)) });
+const assetPath = z.string().check(z.regex(/^brand\/[a-z0-9/_.-]+\.png$/, 'a PNG under brand/'));
+const tokenRef = z.string().check(z.regex(/^examAccent\.(all|jee|neet|upsc|ssc)(\.(light|dark))?$/, 'an examAccent token'));
+const reverseDns = z.string().check(z.regex(/^[a-z][a-z0-9]*(\.[a-z][a-z0-9_]*)+$/, 'a reverse-DNS id'));
 
 export const variantSchema = z
   .object({
@@ -22,9 +22,9 @@ export const variantSchema = z
     appName: localised,
     bundleId: reverseDns,
     androidPackage: reverseDns,
-    scheme: z.string().regex(/^smriti-[a-z]+$/),
-    authCallbackScheme: z.string().regex(/^smriti-[a-z]+$/),
-    deepLinkPrefix: z.string().url(),
+    scheme: z.string().check(z.regex(/^smriti-[a-z]+$/)),
+    authCallbackScheme: z.string().check(z.regex(/^smriti-[a-z]+$/)),
+    deepLinkPrefix: z.url(),
     icon: assetPath,
     androidAdaptiveIcon: z.object({
       foreground: assetPath,
@@ -35,37 +35,39 @@ export const variantSchema = z
     /** A token name in packages/tokens/tokens.json, never a raw hex value. */
     accentColor: tokenRef,
     /** Stable exam ids (`content.exams.id`). The API resolves each exam's active profile. */
-    examIds: z.array(z.string().regex(/^[a-z0-9-]+$/)).min(1),
+    examIds: z.array(z.string().check(z.regex(/^[a-z0-9-]+$/))).check(z.minLength(1)),
     /** Current-cycle exam profile ids (`content.exam_profiles.id`), refreshed each cycle. */
-    examProfileIds: z.array(z.string().regex(/^[a-z0-9-]+$/)),
+    examProfileIds: z.array(z.string().check(z.regex(/^[a-z0-9-]+$/))),
     showExamSwitcher: z.boolean(),
     /** Release phase (PRD §17, R7): SSC ships in Phase 2. */
-    phase: z.number().int().min(1).max(3),
+    phase: z.int().check(z.gte(1), z.lte(3)),
     storeListing: z.object({
       titleKey: z.string(),
       subtitleKey: z.string(),
       descriptionKey: z.string(),
     }),
-    revenuecatOfferingId: z.string().min(1),
-    products: z.object({ proMonthlyIntro: z.string().min(1), proMonthly: z.string().min(1) }),
+    revenuecatOfferingId: z.string().check(z.minLength(1)),
+    products: z.object({ proMonthlyIntro: z.string().check(z.minLength(1)), proMonthly: z.string().check(z.minLength(1)) }),
     /** Public ids, one iOS OAuth client per bundle id. Empty until the Google Cloud project exists. */
     googleIosClientId: z.string(),
     googleIosUrlScheme: z.string(),
   })
-  .superRefine((v, ctx) => {
-    if (v.scheme !== `smriti-${v.id}`) {
-      ctx.addIssue({ code: 'custom', path: ['scheme'], message: `scheme must be smriti-${v.id}` });
-    }
-    if (v.authCallbackScheme !== v.scheme) {
-      ctx.addIssue({ code: 'custom', path: ['authCallbackScheme'], message: 'must equal scheme' });
-    }
-    if (!v.accentColor.startsWith(`examAccent.${v.id}`)) {
-      ctx.addIssue({ code: 'custom', path: ['accentColor'], message: `must be examAccent.${v.id}` });
-    }
-    if (v.googleIosClientId !== '' && !v.googleIosClientId.endsWith('.apps.googleusercontent.com')) {
-      ctx.addIssue({ code: 'custom', path: ['googleIosClientId'], message: 'not a Google client id' });
-    }
-  });
+  .check(
+    z.superRefine((v, ctx) => {
+      if (v.scheme !== `smriti-${v.id}`) {
+        ctx.addIssue({ code: 'custom', path: ['scheme'], message: `scheme must be smriti-${v.id}` });
+      }
+      if (v.authCallbackScheme !== v.scheme) {
+        ctx.addIssue({ code: 'custom', path: ['authCallbackScheme'], message: 'must equal scheme' });
+      }
+      if (!v.accentColor.startsWith(`examAccent.${v.id}`)) {
+        ctx.addIssue({ code: 'custom', path: ['accentColor'], message: `must be examAccent.${v.id}` });
+      }
+      if (v.googleIosClientId !== '' && !v.googleIosClientId.endsWith('.apps.googleusercontent.com')) {
+        ctx.addIssue({ code: 'custom', path: ['googleIosClientId'], message: 'not a Google client id' });
+      }
+    }),
+  );
 
 export type Variant = z.infer<typeof variantSchema>;
 

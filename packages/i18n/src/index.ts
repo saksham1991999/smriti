@@ -7,9 +7,7 @@
  * `<SCREEN-ID>.<row>`, e.g. `auth:AUTH-01.title_lesson_3`. Messages are ICU (plural, select).
  * Hindi uses आप everywhere; तुम only in keys containing `little_learner` (R3).
  */
-import { createInstance, type i18n as I18nInstance } from 'i18next';
-import ICU from 'i18next-icu';
-
+import { createI18n as createI18nCore, type CreateI18nOptions, type Namespace, NAMESPACES, type Translator } from './core';
 import enAuth from './locales/en/auth.json';
 import enLearn from './locales/en/learn.json';
 import enMeMoney from './locales/en/me_money.json';
@@ -30,9 +28,7 @@ import screens from './locales/screens.json';
 
 export { GLOSSARY_HI } from './glossary';
 export { uiStringsEn, uiStringsHi, type UIStringKey, type UIStrings } from './ui';
-
-export const LOCALES = ['en', 'hi'] as const;
-export type Locale = (typeof LOCALES)[number];
+export * from './core';
 
 export const resources = {
   en: {
@@ -57,21 +53,6 @@ export const resources = {
   },
 } as const;
 
-export type Namespace = keyof (typeof resources)['en'];
-export const NAMESPACES = Object.keys(resources.en) as Namespace[];
-
-/** Keys of one namespace (`AUTH-01.title_lesson_3`). */
-export type KeyOf<N extends Namespace> = Extract<keyof (typeof resources)['en'][N], string>;
-/** A namespaced key (`auth:AUTH-01.title_lesson_3`), what `t` takes. */
-export type MessageKey = { [N in Namespace]: `${N}:${KeyOf<N>}` }[Namespace];
-
-/** Builds a typed key: `k('auth', 'AUTH-01.title_lesson_3')`. */
-export function k<N extends Namespace, K extends KeyOf<N>>(ns: N, key: K): `${N}:${K}` {
-  return `${ns}:${key}`;
-}
-
-export type MessageValues = Record<string, string | number | boolean | Date | null | undefined>;
-
 export interface ScreenInfo {
   ns: Namespace;
   title: string;
@@ -82,74 +63,12 @@ export interface ScreenInfo {
 /** Screen id → area, title and mock priority, from the UX docs. */
 export const SCREENS = screens as Record<string, ScreenInfo>;
 
-export interface CreateI18nOptions {
-  locale: Locale;
-  /** The app name for `{brand}` (from `@smriti/config` variant `appName`). */
-  brand: string;
-  /** Little-learner mode (class 1–5): `tr` prefers the `little_learner` variant of a key. */
-  littleLearner?: boolean;
-}
-
-export interface Translator {
-  readonly i18n: I18nInstance;
-  readonly locale: Locale;
-  /** Translates a key. `{brand}` is filled automatically. A missing key returns the key. */
-  t(key: MessageKey, values?: MessageValues): string;
-  /** Like `t`, but uses the little-learner variant of the key when the mode is on and one exists. */
-  tr(key: MessageKey, values?: MessageValues): string;
-  exists(key: string): boolean;
-  setLocale(locale: Locale): Promise<void>;
-  setLittleLearner(on: boolean): void;
-}
-
-/** Candidate little-learner keys for `ns:SCREEN.slug`, most specific first. */
-export function littleLearnerVariants(key: string): string[] {
-  const m = /^([^:]+):([^.]+)\.(.+)$/.exec(key);
-  if (!m) return [];
-  const [, ns, screen, slug] = m;
-  if (slug?.includes('little_learner')) return [];
-  return [`${ns}:${screen}.${slug}_little_learner`, `${ns}:${screen}.little_learner_${slug}`];
-}
-
-/** Creates an i18next instance with ICU and every catalogue bundled (no network, works offline). */
+/**
+ * Creates an i18next instance with ICU. Every catalogue is bundled (no network, works offline)
+ * unless `load` is given; for lazy loading without bundling them, import from `@smriti/i18n/core`.
+ */
 export function createI18n(opts: CreateI18nOptions): Translator {
-  const i18n = createInstance();
-  void i18n.use(new ICU()).init({
-    lng: opts.locale,
-    fallbackLng: 'en',
-    supportedLngs: [...LOCALES],
-    ns: NAMESPACES,
-    defaultNS: 'learn',
-    resources: resources as unknown as Record<string, Record<string, Record<string, string>>>,
-    keySeparator: false,
-    nsSeparator: ':',
-    initAsync: false,
-    returnNull: false,
-    returnEmptyString: false,
-    interpolation: { escapeValue: false },
-  });
-  let littleLearner = Boolean(opts.littleLearner);
-  const t = (key: string, values?: MessageValues) => i18n.t(key, { brand: opts.brand, ...values }) as string;
-  return {
-    i18n,
-    get locale() {
-      return (i18n.language as Locale) ?? opts.locale;
-    },
-    t,
-    tr(key, values) {
-      if (littleLearner) {
-        for (const v of littleLearnerVariants(key)) if (i18n.exists(v)) return t(v, values);
-      }
-      return t(key, values);
-    },
-    exists: (key) => i18n.exists(key),
-    async setLocale(locale) {
-      await i18n.changeLanguage(locale);
-    },
-    setLittleLearner(on) {
-      littleLearner = on;
-    },
-  };
+  return createI18nCore({ ...opts, resources: opts.resources ?? (opts.load ? undefined : resources) });
 }
 
 /** Every message as `[namespace, key, en, hi]` (lint, coverage, translation tools). */

@@ -22,7 +22,7 @@ import { useLessonResult } from "../../lib/lessonResult";
 import { useOnline } from "../../lib/network";
 import { useOnboarding } from "../../lib/onboarding";
 import { useIsPro } from "../../lib/pro";
-import { usePrices } from "../../lib/pricing";
+import { usePriceValues, usePrices } from "../../lib/pricing";
 import { qk, LOCAL_KEYS } from "../../lib/queries";
 import { intervalLabels } from "../../lib/srs";
 import { timeZone } from "../../platform/web";
@@ -80,6 +80,7 @@ function LessonRun({ loc, mode, biteId, bundle, hash, baseUrl }: { loc: TopicLoc
   const online = useOnline();
   const pro = useIsPro();
   const prices = usePrices();
+  const pv = usePriceValues();
   const pet = useAppStore((x) => x.pet);
   const level = useOnboarding((x) => x.level);
   const rotating = useCatalog().manifest?.free.deep_dive_chapters ?? [];
@@ -228,7 +229,7 @@ function LessonRun({ loc, mode, biteId, bundle, hash, baseUrl }: { loc: TopicLoc
           <Text tone="muted" align="center">
             {t("learn:LES-09.left", { n: Math.max(0, plan.cards.length - (plan.previewLimit ?? 0)), minutes: Math.max(1, Math.round((plan.cards.length * 20) / 60)) })}
           </Text>
-          <Button label={t("learn:LES-09.pro")} onPress={() => void navigate({ to: "/pro", search: { source: "deep_dive_preview" } })} testID="les-09-pro" />
+          <Button label={t("learn:LES-09.pro", pv)} onPress={() => void navigate({ to: "/pro", search: { source: "deep_dive_preview" } })} testID="les-09-pro" />
           <Button label={t("learn:LES-09.free")} variant="secondary" onPress={() => void navigate({ to: "/lesson/$topicId", params: { topicId: loc.topic.id }, search: { mode: "quick_revision" }, replace: true })} testID="les-09-free" />
           <Button label={t("learn:LES-09.back")} variant="ghost" onPress={() => void navigate({ to: "/learn/topic/$topicId", params: { topicId: loc.topic.id }, replace: true })} />
           <Text variant="caption" tone="muted" align="center">

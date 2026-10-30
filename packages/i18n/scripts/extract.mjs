@@ -119,11 +119,96 @@ export function brandToken(v) {
   return v.replace(/\bSmriti\b/g, '{brand}').replace(/स्मृति(?! महल)/g, '{brand}');
 }
 
-/** "Start here · [Start]": the parts of a composite row (labels, buttons in brackets). */
+/**
+ * Prices come from the server (`/v1/config`, `/v1/billing/intro-eligibility`), never from copy:
+ * the docs' illustrative `₹1` (the intro month) and `₹99` (the monthly price) become
+ * `{intro_price}` and `{price}`, which the apps fill with the formatted amount. Any other rupee
+ * amount is returned in `unknown` so the report flags it.
+ */
+export const PRICE_TOKENS = { 1: 'intro_price', 99: 'price' };
+export function priceToken(v) {
+  const unknown = [];
+  const value = v.replace(/₹\s?(\d[\d,]*)(?![\d])/g, (m, amount) => {
+    const name = PRICE_TOKENS[amount.replace(/,/g, '')];
+    if (!name) {
+      unknown.push(m);
+      return m;
+    }
+    return `{${name}}`;
+  });
+  return { value, unknown };
+}
+
+/**
+ * Countable nouns after a number placeholder get ICU plurals: "{n} lessons" becomes
+ * "{n, plural, one {# lesson} other {# lessons}}" (and "{n} more cards" keeps "more" inside).
+ * Hindi gets the same structure for the matching noun; most Hindi loanwords don't change, the
+ * table lists the ones that do.
+ */
+export const EN_PLURALS = {
+  answers: 'answer', cards: 'card', chapters: 'chapter', concepts: 'concept', days: 'day', Duos: 'Duo',
+  gems: 'gem', items: 'item', learners: 'learner', lessons: 'lesson', marks: 'mark', members: 'member',
+  mocks: 'mock', pages: 'page', papers: 'paper', parts: 'part', players: 'player', PYQs: 'PYQ',
+  questions: 'question', reviews: 'review', rooms: 'room', stars: 'star', students: 'student',
+  things: 'thing', times: 'time', topics: 'topic', words: 'word',
+};
+/** Hindi plural → singular where the word changes (direct case). Others are invariant. */
+export const HI_SINGULAR = { 'जेम्स': 'जेम', 'चीज़ें': 'चीज़', 'बातें': 'बात', 'कमरे': 'कमरा' };
+const HI_NOUNS = new Set([
+  'उत्तर', 'जवाब', 'कार्ड', 'अध्याय', 'कॉन्सेप्ट', 'दिन', 'Duo', 'जेम्स', 'चीज़ें', 'आइटम', 'लेसन', 'पाठ', 'अंक', 'मार्क',
+  'सदस्य', 'मॉक', 'पेज', 'पेपर', 'भाग', 'खिलाड़ी', 'PYQ', 'सवाल', 'प्रश्न', 'रिव्यू', 'कमरे', 'स्टार', 'छात्र', 'बार',
+  'टॉपिक', 'शब्द', 'लर्नर', 'कमरे',
+]);
+
+export function pluralizeCounts(en, hi) {
+  const counted = new Set();
+  const enOut = en.replace(/\{([a-z_][a-z0-9_]*)\}( more)? ([A-Za-z]+)\b/g, (m, name, more, word) => {
+    const one = EN_PLURALS[word];
+    if (!one) return m;
+    counted.add(name);
+    const pre = more ? ' more' : '';
+    return `{${name}, plural, one {#${pre} ${one}} other {#${pre} ${word}}}`;
+  });
+  if (!counted.size) return { en, hi };
+  const hiOut = hi.replace(/\{([a-z_][a-z0-9_]*)\}( और)? ([^\s{}।,.·?!:()]+)/g, (m, name, more, word) => {
+    if (!counted.has(name) || !HI_NOUNS.has(word)) return m;
+    const pre = more ? ' और' : '';
+    return `{${name}, plural, one {#${pre} ${HI_SINGULAR[word] ?? word}} other {#${pre} ${word}}}`;
+  });
+  return { en: enOut, hi: hiOut };
+}
+
+/** Splits " · " outside ICU braces. */
+function splitDots(v) {
+  const out = [];
+  let depth = 0;
+  let cur = '';
+  for (let i = 0; i < v.length; i++) {
+    const ch = v[i];
+    if (ch === '{') depth++;
+    if (ch === '}') depth--;
+    if (depth === 0 && v.startsWith(' · ', i)) {
+      out.push(cur);
+      cur = '';
+      i += 2;
+      continue;
+    }
+    cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
+
+/**
+ * "Start here · [Start]": the parts of a composite row (labels, buttons in brackets). A part with
+ * alternative buttons, "[Start deep dive] / [Start quick revision]", gives one part per button.
+ */
 export function compositeParts(en, hi) {
   if (!en.includes(' · ') || !hi.includes(' · ')) return null;
-  const e = en.split(' · ');
-  const h = hi.split(' · ');
+  const expand = (parts) =>
+    parts.flatMap((x) => (/^\s*\[[^\]]+\](\s*\/\s*\[[^\]]+\])+\s*$/.test(x) ? x.split(/\s*\/\s*/) : [x]));
+  const e = expand(splitDots(en));
+  const h = expand(splitDots(hi));
   if (e.length !== h.length) return null;
   const strip = (x) => x.trim().replace(/^\[(.*)\]$/, '$1');
   return e.map((x, i) => [strip(x), strip(h[i] ?? '')]);
@@ -162,6 +247,13 @@ export function extractFile(text, namespace) {
   let llBlock = false;
   const indexPriority = {};
   const timeFormats = {};
+  /** Prices to placeholders, then plurals for counted nouns. */
+  const finish = (e, h, key) => {
+    const pe = priceToken(e);
+    const ph = priceToken(h);
+    for (const amount of [...pe.unknown, ...ph.unknown]) issues.push({ kind: 'unknown_price', key, amount });
+    return pluralizeCounts(pe.value, ph.value);
+  };
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const sm = SCREEN_RE.exec(line);
@@ -222,11 +314,13 @@ export function extractFile(text, namespace) {
         const llKey = `${key}_little_learner`;
         if (inlineEn) enVal = enVal.replace(INLINE_LL_RE, '');
         if (inlineHi) hiVal = hiVal.replace(INLINE_LL_RE, '');
-        en[llKey] = inlineEn ? inlineEn[1].trim() : enVal;
-        hi[llKey] = inlineHi ? inlineHi[1].trim() : hiVal;
+        const ll = finish(inlineEn ? inlineEn[1].trim() : enVal, inlineHi ? inlineHi[1].trim() : hiVal, llKey);
+        en[llKey] = ll.en;
+        hi[llKey] = ll.hi;
       }
       if (!enVal) issues.push({ kind: 'empty_en', line: j + 1, key });
       if (!hiVal || /^(—|-|n\/a|same|\(same\))$/i.test(hiVal)) issues.push({ kind: 'missing_hi', line: j + 1, key });
+      ({ en: enVal, hi: hiVal } = finish(enVal, hiVal, key));
       en[key] = enVal;
       hi[key] = hiVal;
       if (Object.keys(enNorm.formats).length) timeFormats[`${namespace}:${key}`] = enNorm.formats;

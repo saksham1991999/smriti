@@ -13,6 +13,7 @@ import { SoftPromptSheet, useAgeBand, type SoftReason } from "../../components/S
 import { parts, useI18n } from "../../lib/i18n";
 import { useLessonResult } from "../../lib/lessonResult";
 import { useOnboarding } from "../../lib/onboarding";
+import { usePriceValues } from "../../lib/pricing";
 import { useIsPro } from "../../lib/pro";
 import { useTodayMinutes } from "../../lib/daily";
 
@@ -27,6 +28,7 @@ export function LessonComplete() {
   const result = useLessonResult((x) => x.result);
   const s = useServices();
   const { t } = useI18n();
+  const pv = usePriceValues();
   const navigate = useNavigate();
   const pet = useAppStore((x) => x.pet);
   const session = useAppStore((x) => x.session);
@@ -126,7 +128,7 @@ export function LessonComplete() {
           )}
           {extra === "upsell" && (
             <Card tone="tint" onPress={() => void navigate({ to: "/pro", search: { source: "lesson_end" } })} testID="les-08-upsell">
-              <Text variant="heading">{t("me_money:PAY-01.headline_eligible")}</Text>
+              <Text variant="heading">{t("me_money:PAY-01.headline_eligible", pv)}</Text>
             </Card>
           )}
           {pet && (

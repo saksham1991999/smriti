@@ -139,6 +139,7 @@ Status: Draft v0.2 (revision 1), 29 Oct 2026. Owner of this file: tutor + social
 
 | Key | EN | HI |
 |---|---|---|
+| Title | Tutor | ट्यूटर |
 | Greeting (pet line, empty chat) | Hi! What shall we figure out? | नमस्ते! आज क्या समझें? |
 | Input placeholder (with context) | Ask anything about this card… | इस कार्ड के बारे में कुछ भी पूछें… |
 | Input placeholder (no context) | Type your doubt… | अपना सवाल लिखें… |

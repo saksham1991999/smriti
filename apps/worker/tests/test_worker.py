@@ -52,6 +52,8 @@ def test_crons_live_on_the_default_queue() -> None:
         "guardian_age_up",
         "trial_reminders",
         "media_sweep",
+        "mocks_auto_submit",
+        "tutor_retention",
     }
 
 

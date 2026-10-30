@@ -57,6 +57,8 @@ DefaultWorker = _settings(
         jobs.guardian_age_up,
         jobs.trial_reminders,
         jobs.media_sweep,
+        jobs.mocks_auto_submit,
+        jobs.tutor_retention,
         jobs.ping,
     ],
     cron_jobs=[
@@ -75,6 +77,10 @@ DefaultWorker = _settings(
         cron(jobs.trial_reminders, minute=40, unique=True),
         # Image requests waiting for the media queue.
         cron(jobs.media_sweep, minute={2, 32}, unique=True),
+        # Mocks: strict and live attempts past their deadline, every minute.
+        cron(jobs.mocks_auto_submit, second=30, unique=True),
+        # Tutor: messages past ai.tutor_retention_days, daily.
+        cron(jobs.tutor_retention, hour=2, minute=15, unique=True),
     ],
 )
 ContentPublishWorker = _settings(

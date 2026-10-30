@@ -20,7 +20,17 @@ from smriti_api.core.config import REPO_ROOT, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.logging import configure_logging, hash_user_id
 from smriti_api.integrations import build_integrations
-from smriti_api.services import accounts, billing, card_index, exports, guardian, media, notify
+from smriti_api.services import (
+    accounts,
+    billing,
+    card_index,
+    exports,
+    guardian,
+    media,
+    mocks,
+    notify,
+    tutor,
+)
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import JobDeps
@@ -77,6 +87,22 @@ async def purge_deleted_accounts(ctx: Ctx) -> int:
     count = await accounts.purge_deleted_accounts(_deps(ctx))
     if count:
         log.info("accounts_purged", count=count)
+    return count
+
+
+async def mocks_auto_submit(ctx: Ctx) -> int:
+    """Strict and live mock attempts past their deadline, submitted so the report is ready."""
+    count = await mocks.auto_submit_expired_job(_deps(ctx))
+    if count:
+        log.info("mocks_auto_submitted", count=count)
+    return count
+
+
+async def tutor_retention(ctx: Ctx) -> int:
+    """Tutor messages older than ``ai.tutor_retention_days``."""
+    count = await tutor.purge_old_messages_job(_deps(ctx))
+    if count:
+        log.info("tutor_messages_purged", count=count)
     return count
 
 

@@ -167,7 +167,7 @@ export interface SaveStateChipProps extends SaveStateChipContract {
 }
 
 /** AUTH-33: whether progress is only on this phone, saving, saved, or saved but offline. Icon plus text. */
-export function SaveStateChip({ state, email, provider = "google", managed, layout = "chip", onPress, maxChars = 28, testID, className }: SaveStateChipProps) {
+export function SaveStateChip({ state, email, provider = "google", managed, layout = "chip", onPress, maxChars = 22, testID, className }: SaveStateChipProps) {
   const { t } = useUI();
   const full =
     state === "guest"

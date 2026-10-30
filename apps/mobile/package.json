@@ -7,6 +7,7 @@
   "main": "expo-router/entry",
   "scripts": {
     "seed": "node scripts/seed-pack.mjs",
+    "sims:stage": "node scripts/stage-sims.mjs",
     "dev": "node scripts/seed-pack.mjs && expo start",
     "web": "node scripts/seed-pack.mjs && expo start --web",
     "export:ios": "node scripts/seed-pack.mjs && expo export --platform ios --output-dir dist-ios",
@@ -38,6 +39,7 @@
     "expo-apple-authentication": "57.0.2",
     "expo-asset": "57.0.20",
     "expo-constants": "57.0.22",
+    "expo-file-system": "57.0.7",
     "expo-crypto": "57.0.4",
     "expo-font": "57.0.4",
     "expo-haptics": "57.0.3",

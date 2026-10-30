@@ -10,6 +10,7 @@ import { readClientEnv, readSwitches } from '../env';
 import { getVariant } from '@smriti/config';
 import { expoCrypto } from '../platform/crypto';
 import { expoPhotoSource } from '../platform/photos';
+import { deviceSimFiles } from '../platform/simFiles';
 import { installDeviceId } from '../platform/deviceId';
 import { NetInfoNetwork, onForeground } from '../platform/network';
 import { ExpoNotifier, MemoryNotifier } from '../platform/notifications';
@@ -86,6 +87,7 @@ async function createDeviceApp(): Promise<SmritiApp> {
     appVersion: Constants.expoConfig?.version ?? '1.0.0',
     ...(fake ? {} : { streamFetch: streamingFetch }),
     photos: expoPhotoSource,
+    simFiles: deviceSimFiles(),
   });
   await app.boot();
   onForeground(() => {

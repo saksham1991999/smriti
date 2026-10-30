@@ -54,6 +54,7 @@ import type { BillingProvider, PurchaseResult } from '../billing/types';
 import { CATALOGUE_SNAPSHOT, catalogueFromApi, type CatalogueExam } from '../content/catalogue';
 import type { ContentRepo } from '../content/repo';
 import type { PhotoSource } from '../platform/photos';
+import type { SimFiles } from './labs';
 import { addPendingStrings } from '../i18n/pending';
 import type { MobileSwitches } from '../env';
 import { applyNotificationPlan, type LocalNotifier } from '../platform/notifications';
@@ -139,6 +140,8 @@ export interface AppDeps {
   streamFetch?: (input: Request) => Promise<Response>;
   /** Camera and photo library for photo doubts; absent in Jest unless a fake is passed. */
   photos?: PhotoSource;
+  /** Where downloaded sims live (expo-file-system on phones); null on web, where sims run from the CDN. */
+  simFiles?: SimFiles | null;
 }
 
 /**

@@ -150,6 +150,12 @@ describe('streak', () => {
     expect(state).toMatchObject({ current: 0, longest: 10, freezesEquipped: 0 });
   });
 
+  it('keeps the freeze on a missed day when the streak is 0 (R52)', () => {
+    const r = closeDay({ ...EMPTY_STREAK, freezesEquipped: 1 }, { day: D0, qualified: false });
+    expect(r.outcome).toMatchObject({ status: 'missed', freezeUsed: false, current: 0 });
+    expect(r.state.freezesEquipped).toBe(1);
+  });
+
   it('refuses to close a day twice', () => {
     const s = closeDay(EMPTY_STREAK, { day: D0, qualified: true }).state;
     expect(() => closeDay(s, { day: D0, qualified: true })).toThrow(RangeError);
@@ -162,7 +168,7 @@ describe('streak', () => {
     s = grantMonthlyFreezes({ ...EMPTY_STREAK, freezesEquipped: 2 }, '2026-10-01', true);
     expect(s).toMatchObject({ freezesEquipped: 2, pendingFreezes: [{ source: 'pro_monthly', expiresAfter: '2026-10-31' }, { source: 'pro_monthly', expiresAfter: '2026-10-31' }] });
     // A freeze used on the 10th refills from pending.
-    s = closeDay({ ...s, closedThrough: '2026-10-09' }, { day: '2026-10-10', qualified: false }).state;
+    s = closeDay({ ...s, current: 3, closedThrough: '2026-10-09' }, { day: '2026-10-10', qualified: false }).state;
     expect(s).toMatchObject({ freezesEquipped: 2 });
     expect(s.pendingFreezes).toHaveLength(1);
     // In November, the October grant has lapsed.

@@ -1,0 +1,115 @@
+{
+  "schema": "blueprint@1",
+  "exam_profile": "upsc-cse-2026",
+  "paper_code": "prelims-gs1",
+  "title": {
+    "en": "Civil Services (Preliminary) Examination: General Studies Paper I",
+    "hi": "सिविल सेवा (प्रारंभिक) परीक्षा : सामान्य अध्ययन प्रश्नपत्र I"
+  },
+  "title_hi_source": "translated",
+  "version": 1,
+  "effective_from": "2026-02-04",
+  "verified_at": "2026-10-30",
+  "source": {
+    "kind": "official",
+    "title": "Examination Notice No. 05/2026-CSE dated 04.02.2026, Civil Services Examination, 2026",
+    "url": "https://www.upsc.gov.in/sites/default/files/Notif-CSP-2026-Engl-060226Rev.pdf",
+    "published": "2026-02-04",
+    "retrieved": "2026-10-30",
+    "publisher": "Union Public Service Commission",
+    "linked_from": "https://www.upsc.gov.in/ (Examination Notifications)",
+    "pages": "PDF p.1 (notice number and date), p.3 (§5 penalty for wrong answers), p.5 (Prelims date), p.25 (Appendix I Section I: plan of examination, Note I qualifying rule, Note II negative marking), p.26 (Section II A: scheme of the Preliminary Examination), p.31 (calculators), p.32 (Section III Part A: syllabus)"
+  },
+  "additional_sources": [],
+  "mode": "pen_paper",
+  "duration_min": 120,
+  "duration_rules": {
+    "source_ref": "Section II A Note (i) (PDF p.26): 'each will be of two hours duration'"
+  },
+  "exam_date": "2026-05-24",
+  "exam_date_source_ref": "PDF p.5: 'will be held by the Union Public Service Commission on 24th May, 2026'",
+  "shift_timings": null,
+  "languages": [
+    "en",
+    "hi"
+  ],
+  "language_rules": {
+    "paper_is_bilingual": "The question papers will be set both in Hindi and English (Section II A Note (iii), PDF p.26).",
+    "prevailing_version": null
+  },
+  "interface": "upsc_omr",
+  "calculator": "none",
+  "calculator_source_ref": "PDF p.31: candidates are not permitted to use calculators for answering objective type papers (Test Booklets)",
+  "section_navigation": "free",
+  "total_questions": null,
+  "max_marks": 200,
+  "sections": [
+    {
+      "code": "gs1",
+      "title": {
+        "en": "Civil Services (Preliminary) Examination: General Studies Paper I",
+        "hi": "सिविल सेवा (प्रारंभिक) परीक्षा : सामान्य अध्ययन प्रश्नपत्र I"
+      },
+      "subject": "gs1",
+      "timer_min": null,
+      "question_count": null,
+      "max_marks": 200,
+      "attempt_rule": {
+        "attempt_any": null,
+        "all_compulsory": null
+      },
+      "question_types": [
+        "mcq_single"
+      ],
+      "options_per_question": 4,
+      "options_source_ref": "Appendix I Section I Note II (i): 'There are four alternatives for the answers to every question' (PDF p.25)",
+      "marking": {
+        "mcq_single": {
+          "correct": null,
+          "wrong_fraction_of_question_marks": -0.33,
+          "wrong_rule_text": "one-third (0.33) of the marks assigned to that question will be deducted as penalty",
+          "multiple_answers": "treated_as_wrong",
+          "unattempted": 0,
+          "source_ref": "Appendix I, Section I, Note II (PDF p.25)"
+        }
+      }
+    }
+  ],
+  "key_anomaly_rules": null,
+  "scoring": {
+    "normalization": null,
+    "merit": "Screening test only: Prelims marks of qualified candidates are not counted for the final order of merit (Appendix I Section I para 2, PDF p.25).",
+    "main_admission": "About twelve to thirteen times the approximate number of vacancies are admitted to the Main Examination (Appendix I Section I para 2, PDF p.25).",
+    "both_papers_mandatory": "A candidate who does not appear in both papers is disqualified (Section III Part A Note 3, PDF p.32)."
+  },
+  "qualifying": {
+    "rule": "commission_determined_cutoff",
+    "basis": "Total qualifying marks of General Studies Paper-I as may be determined by the Commission, applied only to candidates who reach 33% in Paper-II (Appendix I Section I Note I, PDF p.25).",
+    "min_percent": null
+  },
+  "instructions": null,
+  "notes": [
+    "Both papers are objective multiple-choice papers of 200 marks and two hours each (Section II A, PDF p.26).",
+    "interface 'upsc_omr' and mode 'pen_paper': the notice calls them objective-type Test Booklets; it does not describe the answer sheet, so OMR is the skill's enum value for UPSC objective papers, not a quoted fact.",
+    "Marking is expressed as a fraction because the notice states the penalty as one-third (0.33) of the marks assigned to a question without stating those marks; 'correct' stays null until the marks per question are confirmed from an official question booklet."
+  ],
+  "open_questions": [
+    "The Civil Services Examination, 2027 notice is not published yet (checked 2026-10-30). This is the latest official pattern; re-verify and version it as upsc-cse-2027 when UPSC notifies it.",
+    "The UPSC Annual Calendar 2027 (https://www.upsc.gov.in/sites/default/files/Calendar-Year-2027-Engl-200526.pdf) could not be opened from this environment (HTTP 403), so the 2027 notification and Prelims dates are not recorded.",
+    "The number of questions in each paper and the marks per question are not stated in the notice. They are printed on the question booklets, which UPSC publishes on its exam page; those pages could not be opened from this environment (HTTP 403), so question_count stays null.",
+    "Session timings (forenoon and afternoon) are not stated in the notice; they appear on the e-Admit Card. shift_timings stays null.",
+    "The notice says the papers are set in Hindi and English but does not say which version prevails when they differ."
+  ],
+  "changes_from_previous": null,
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "Examination Notice No. 05/2026-CSE dated 04.02.2026, Civil Services Examination, 2026, Appendix I Sections I-III",
+      "url": "https://www.upsc.gov.in/sites/default/files/Notif-CSP-2026-Engl-060226Rev.pdf"
+    }
+  ],
+  "status": "draft",
+  "authored_by": "skill:exam-blueprint",
+  "reviewed_by": null,
+  "updated": "2026-10-30"
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": { "@fake-api": ["./src/dev/fake-api/index.ts"],
+      "@mock-blueprint": ["./src/dev/fixtureBlueprint.ts"] },
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "vite-plugin-pwa/client", "@testing-library/jest-dom/vitest", "node"]
+  },
+  "include": ["src", "test", "e2e", "scripts/*.ts", "vite.config.ts", "vitest.config.ts", "playwright.config.ts"]
+}

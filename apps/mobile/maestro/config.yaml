@@ -1,0 +1,18 @@
+# Maestro flows for the main mobile journeys (AGENTS.md: Maestro for mobile flows).
+# Run against a dev build of one variant with the local API:
+#   APP_VARIANT=jee eas build --profile development   (or: npx expo run:android)
+#   maestro test -e APP_ID=app.smriti.jee.dev -e SCHEME=smriti-jee apps/mobile/maestro
+# Selectors are React Native testIDs (`id:`); two taps use English text (the rating button and
+# the fake payment dialog), and onboarding picks English.
+flows:
+  - "*.yaml"
+executionOrder:
+  continueOnFailure: false
+  flowsOrder:
+    - 01-guest-first-lesson
+    - 02-learn-chapter
+    - 03-practice-drill
+    - 04-review-session
+    - 05-lab-sim
+    - 06-tutor
+    - 07-sign-in-and-pro

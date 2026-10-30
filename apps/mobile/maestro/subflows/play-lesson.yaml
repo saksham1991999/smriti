@@ -1,0 +1,52 @@
+# Plays a lesson to its end: skips sim tasks, continues cards, answers with the first option
+# and accepts the feedback. Stops when the lesson end (LES-08) or first win (ONB-14) shows.
+appId: ${APP_ID}
+---
+- repeat:
+    times: 60
+    while:
+      notVisible:
+        id: "ONB-14|LES-08"
+    commands:
+      - runFlow:
+          when:
+            visible:
+              id: "skip-task"
+          commands:
+            - tapOn:
+                id: "skip-task"
+      - runFlow:
+          when:
+            visible:
+              id: "lesson-got-it"
+          commands:
+            - tapOn:
+                id: "lesson-got-it"
+      - runFlow:
+          when:
+            visible:
+              id: "option-0"
+          commands:
+            - tapOn:
+                id: "option-0"
+            - runFlow:
+                when:
+                  visible:
+                    id: "lesson-check"
+                commands:
+                  - tapOn:
+                      id: "lesson-check"
+      - runFlow:
+          when:
+            visible:
+              id: "confidence-4"
+          commands:
+            - tapOn:
+                id: "confidence-4"
+      - runFlow:
+          when:
+            visible:
+              id: "lesson-continue"
+          commands:
+            - tapOn:
+                id: "lesson-continue"

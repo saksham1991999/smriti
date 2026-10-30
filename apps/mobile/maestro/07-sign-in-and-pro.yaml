@@ -1,0 +1,45 @@
+# Guest to signed in (the dev Google form, local API only) to Pro with FakeBilling (local only).
+appId: ${APP_ID}
+name: Sign in and go Pro
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 30000
+- tapOn:
+    id: "tab-bar-me"
+- tapOn:
+    id: "me-google"
+- tapOn:
+    id: "google-button"
+- tapOn:
+    id: "dev-email"
+- inputRandomEmail
+- tapOn:
+    id: "dev-name"
+- inputText: "Maestro Learner"
+- tapOn:
+    id: "dev-submit"
+- extendedWaitUntil:
+    visible:
+      id: "AUTH-06"
+    timeout: 20000
+- tapOn:
+    id: "auth-done"
+- tapOn:
+    id: "pro-card"
+- assertVisible:
+    id: "PAY-01"
+- tapOn:
+    id: "pay-cta"
+- assertVisible:
+    id: "fake-pay"
+- tapOn:
+    text: "Approve"
+- extendedWaitUntil:
+    visible:
+      id: "PAY-09"
+    timeout: 30000
+- tapOn:
+    id: "pro-continue"

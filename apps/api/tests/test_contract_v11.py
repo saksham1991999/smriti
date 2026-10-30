@@ -179,9 +179,9 @@ async def test_cards_queued_starts_new_cards_and_pulls_started_ones_forward(
     assert pulled["due"] <= datetime.now(UTC).isoformat()
 
 
-async def test_cards_queued_with_concepts_only_queues_nothing(client: httpx.AsyncClient) -> None:
+async def test_cards_queued_with_unknown_concepts_queues_nothing(client: httpx.AsyncClient) -> None:
     s = await new_guest(client)
-    # The shape in docs/contracts/sync.md: cards live in bundles, so concepts alone add no cards.
+    # No published system card teaches this concept (test_card_queue.py covers known ones).
     result = await post_events(
         client,
         s,

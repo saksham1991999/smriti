@@ -24,6 +24,7 @@ from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.core.redis import create_redis
 from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
+from smriti_api.routes import reviews as reviews_routes
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import ArqJobQueue, InlineJobQueue, JobDeps, JobQueue, job_registry
@@ -154,6 +155,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
         game.router,
     ):
         app.include_router(router)
+    app.include_router(reviews_routes.router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
     return app

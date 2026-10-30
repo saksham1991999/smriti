@@ -26,8 +26,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from smriti_api.core.db import Database
 from smriti_api.core.logging import hash_user_id
 from smriti_api.schemas import sync as s
+from smriti_api.services import card_index, game_ops, profile_rules
 from smriti_api.services import flags as flag_service
-from smriti_api.services import game_ops, profile_rules
 from smriti_api.services.badges import award_badges
 from smriti_api.services.errors import DomainError
 from smriti_api.services.gamify import GameRules
@@ -107,6 +107,8 @@ class BatchResult:
     rejected: list[s.RejectedEvent]
     state_version: int
     sections: set[str]
+    # Card refs whose schedule this batch changed (REST callers such as /v1/reviews/queue).
+    srs_changed: set[str] = field(default_factory=set)
 
 
 def _validation_detail(exc: ValidationError) -> str:
@@ -271,7 +273,11 @@ async def apply_batch(
         state_version=version,
     )
     return BatchResult(
-        accepted=accepted, rejected=rejected, state_version=version, sections=ctx.sections
+        accepted=accepted,
+        rejected=rejected,
+        state_version=version,
+        sections=ctx.sections,
+        srs_changed=set(ctx.srs_changed),
     )
 
 
@@ -842,41 +848,21 @@ async def _freeze_equipped(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel
 
 
 async def _cards_queued(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
-    """Mirror the client's queue (memory-labs §5.14): a card it started is a new card due now
-    (state 0, as in ts-fsrs); a started card is pulled into the queue (due no later than now).
-    Suspended cards are left alone. ``concept_ids`` alone queue nothing: cards live in bundles,
-    so the client resolves concepts to cards."""
+    """memory-labs §5.14 and R52: the system cards of ``concept_ids`` (from ``content.card_index``)
+    are started or pulled into today, exactly as app-core ``queueCardsForConcepts`` does on the
+    device; ``card_refs`` an older client named itself are queued too."""
     assert isinstance(p, s.CardsQueued)
-    if not p.card_refs:
-        return
-    uid = ctx.facts.user_id
-    refs = sorted(set(p.card_refs))
-    changed = (
-        (
-            await ctx.session.execute(
-                text(
-                    """
-                insert into learn.srs_cards as c (user_id, card_ref, state, due_at, stability, difficulty)
-                select :u, ref, 0, :due, 0, 0 from unnest(cast(:refs as text[])) as ref
-                on conflict (user_id, card_ref) do update set due_at = least(c.due_at, excluded.due_at)
-                  where not c.suspended and c.due_at > excluded.due_at
-                returning card_ref
-                """
-                ),
-                {"u": uid, "due": event.occurred_at, "refs": refs},
-            )
-        )
-        .scalars()
-        .all()
+    result = await card_index.queue_for_concepts(
+        ctx.session,
+        user_id=ctx.facts.user_id,
+        concept_ids=p.concept_ids,
+        card_refs=p.card_refs,
+        now=min(event.occurred_at, ctx.now),
+        tz=ctx.facts.tz,
+        flags=ctx.flags,
     )
-    inserted = [str(r) for r in changed]
-    if inserted:
-        await ctx.session.execute(
-            text("delete from learn.srs_tombstones where user_id = :u and card_ref = any(:refs)"),
-            {"u": uid, "refs": inserted},
-        )
-    ctx.srs_changed.update(inserted)
-    ctx.srs_deleted.difference_update(inserted)
+    ctx.srs_changed.update(result.changed)
+    ctx.srs_deleted.difference_update(result.changed)
 
 
 _HANDLERS = {

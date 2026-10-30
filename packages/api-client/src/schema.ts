@@ -429,6 +429,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/reviews/queue": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Queue the review cards of some concepts (Fix next, add cards to reviews) */
+    post: operations["queue_reviews_v1_reviews_queue_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/shop": {
     parameters: {
       query?: never;
@@ -1172,6 +1189,30 @@ export interface components {
        * Format: date
        */
       day: string;
+    };
+    /** ReviewQueueRequest */
+    ReviewQueueRequest: {
+      /** Card Refs */
+      card_refs?: string[];
+      /** Concept Ids */
+      concept_ids?: string[];
+      /**
+       * Source
+       * @enum {string}
+       */
+      source: "lesson" | "practice" | "comeback" | "mock_report" | "practice_summary" | "solution";
+    };
+    /** ReviewQueueResponse */
+    ReviewQueueResponse: {
+      /** Card Refs */
+      card_refs: string[];
+      /**
+       * Queued
+       * @description Cards started or moved into today's (or tomorrow's) queue
+       */
+      queued: number;
+      /** State Version */
+      state_version: number;
     };
     /** ShopItemOut */
     ShopItemOut: {
@@ -2264,6 +2305,45 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["QuestClaimResponse"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  queue_reviews_v1_reviews_queue_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReviewQueueRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ReviewQueueResponse"];
         };
       };
       /** @description Validation Error */

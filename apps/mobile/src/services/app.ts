@@ -410,6 +410,16 @@ export class SmritiApp {
     return localDate(this.deps.clock(), this.deps.timeZone());
   }
 
+  /**
+   * A readable name for a concept id the server sends without one (mock reports): the topic it
+   * belongs to, from the content on this device; the id itself when the topic is not here.
+   */
+  conceptName(conceptId: string): string {
+    const topics = this.deps.content.topics(this.ui.getState().locale, this.examProfileId());
+    const topic = topics.filter((t) => conceptId === t.id || conceptId.startsWith(`${t.id}.`)).sort((a, b) => b.id.length - a.id.length)[0];
+    return topic?.name ?? conceptId;
+  }
+
   examProfileId(): string | null {
     const goals = this.ui.getState().onboarding.goals.filter((g) => g !== 'school' && g !== 'curious');
     return goals[0] ?? this.store.getState().profile?.exam_profile_ids[0] ?? this.deps.variant.examProfileIds[0] ?? null;

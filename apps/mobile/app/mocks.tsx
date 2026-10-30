@@ -16,7 +16,6 @@ type Filter = 'all' | 'full' | 'sectional' | 'chapter' | 'pyq_paper';
 /**
  * MOCK-01, the mock list, from `/v1/mocks` (cards carry their own `access`, so a locked mock opens
  * the paywall with the server's `paywall_source`). The free sectional meter comes from the hub.
- * Taking a mock (MOCK-03 onwards) is not built in the app yet.
  */
 export default function Mocks() {
   const app = useApp();
@@ -34,9 +33,9 @@ export default function Mocks() {
   const sectional = hub.data?.limits.sectional_mocks;
 
   const open = (m: MockCard) => {
-    if (!m.access.allowed) {
-      router.push({ pathname: '/paywall', params: { from: m.access.paywall_source ?? 'mock_lock' } });
-    }
+    if (m.in_progress_attempt_id) router.push({ pathname: '/attempt/[id]', params: { id: m.in_progress_attempt_id } });
+    else if (!m.access.allowed) router.push({ pathname: '/paywall', params: { from: m.access.paywall_source ?? 'mock_lock' } });
+    else router.push({ pathname: '/mock/[id]', params: { id: m.id } });
   };
 
   return (
@@ -90,9 +89,8 @@ export default function Mocks() {
                 size="sm"
                 variant={m.access.allowed ? 'primary' : 'secondary'}
                 icon={m.access.allowed ? undefined : 'Lock'}
-                label={m.attempts > 0 && !m.in_progress_attempt_id ? t('practice:MOCK-01.view') : t('practice:MOCK-01.start')}
+                label={m.in_progress_attempt_id ? t('practice:MOCK-02.resume') : m.attempts > 0 ? t('practice:MOCK-01.view') : t('practice:MOCK-01.start')}
                 onPress={() => open(m)}
-                disabled={m.access.allowed}
                 testID={`mock-start-${m.id}`}
               />
             </View>
@@ -100,6 +98,10 @@ export default function Mocks() {
         </Card>
       ))}
 
+      <Card tone="tint" onPress={() => router.push('/custom-mock' as Href)} accessibilityLabel={t('practice:MOCK-01.custom_card')} testID="mock-custom">
+        <Text variant="heading">{t('practice:MOCK-01.custom_card')}</Text>
+      </Card>
+      <Button variant="secondary" label={t('practice:MOCK-01.history')} onPress={() => router.push('/mock-history' as Href)} testID="mock-history" />
       <Text variant="caption" tone="muted" align="center">
         {signedIn ? t('practice:MOCK-01.sync_line') : t('practice:MOCK-01.guest_sync_line')}
       </Text>

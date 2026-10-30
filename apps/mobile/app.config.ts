@@ -107,6 +107,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       // AI photo doubts (AI-07 / PRC-01 "Snap a doubt"): one photo of one question, never the mic.
       ['expo-image-picker', { photosPermission: 'Choose a photo of a question you want help with.', cameraPermission: 'Take a photo of a question you want help with.', microphonePermission: false }],
       ['expo-splash-screen', { image: brand(variant.splash.image), imageWidth: 160, backgroundColor: splashBg }],
+      // Home-screen widgets (G-5, NTF-08..10): WidgetKit extension and Android AppWidgets.
+      './plugins/widgets/index.cjs',
     ],
     experiments: { typedRoutes: false },
     extra: {

@@ -44,6 +44,10 @@ class ObjectStorage(Protocol):
 
     async def get(self, bucket: Bucket, key: str) -> bytes: ...
 
+    async def delete(self, bucket: Bucket, key: str) -> None:
+        """Removes the object; a missing object is not an error."""
+        ...
+
     def signed_url(self, bucket: Bucket, key: str, ttl_s: int) -> str: ...
 
 
@@ -80,6 +84,10 @@ class LocalStorage:
             return await asyncio.to_thread(path.read_bytes)
         except FileNotFoundError as exc:
             raise StorageError("not found") from exc
+
+    async def delete(self, bucket: Bucket, key: str) -> None:
+        path = self.path(bucket, key)
+        await asyncio.to_thread(path.unlink, missing_ok=True)
 
     def signature(self, bucket: str, key: str, expires: int) -> str:
         msg = f"{bucket}/{key}:{expires}".encode()
@@ -189,6 +197,18 @@ class R2Storage:
         if r.status_code >= 300:
             raise StorageError(f"r2 get status {r.status_code}")
         return r.content
+
+    async def delete(self, bucket: Bucket, key: str) -> None:
+        path = self._path(bucket, key)
+        headers = self._auth_headers(
+            "DELETE", path, hashlib.sha256(b"").hexdigest(), dt.datetime.now(dt.UTC), {}
+        )
+        try:
+            r = await self._http.delete(f"{self._endpoint}{path}", headers=headers, timeout=60)
+        except httpx.HTTPError as exc:
+            raise StorageError(f"r2 unreachable: {type(exc).__name__}") from exc
+        if r.status_code >= 300 and r.status_code != 404:
+            raise StorageError(f"r2 delete status {r.status_code}")
 
     def signed_url(self, bucket: Bucket, key: str, ttl_s: int) -> str:
         """A presigned GET (query-string SigV4), valid for ``ttl_s`` seconds (max 7 days)."""

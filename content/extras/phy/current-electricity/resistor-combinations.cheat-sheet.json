@@ -1,0 +1,91 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Cheat sheet for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "cs.phy.current-electricity.resistor-combinations",
+  "scope": "topic",
+  "topic": "phy.current-electricity.resistor-combinations",
+  "title": {
+    "en": "Series and parallel resistors",
+    "hi": "प्रतिरोधकों के श्रेणी और पार्श्व संयोजन"
+  },
+  "concepts": [
+    "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+  ],
+  "key_ideas": [
+    {
+      "en": "Series: same current, voltages add.",
+      "hi": "श्रेणी: एक ही धारा, वोल्टताएँ जुड़ती हैं।"
+    },
+    {
+      "en": "Parallel: same voltage, currents add; $R_p$ below the smallest.",
+      "hi": "पार्श्व: एक ही वोल्टता, धाराएँ जुड़ती हैं; $R_p$ सबसे छोटे से कम।"
+    },
+    {
+      "en": "A series circuit stops if one part fails; a parallel one does not.",
+      "hi": "श्रेणी परिपथ एक भाग खराब होने पर रुकता है; पार्श्व नहीं।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Series",
+        "hi": "श्रेणी"
+      },
+      "latex": "R_s = R_1 + R_2 + R_3"
+    },
+    {
+      "name": {
+        "en": "Parallel",
+        "hi": "पार्श्व"
+      },
+      "latex": "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}"
+    }
+  ],
+  "mnemonics": [
+    {
+      "en": "m.phy.current-electricity.resistor-combinations.core.resistors-series-parallel.1",
+      "hi": "m.phy.current-electricity.resistor-combinations.core.resistors-series-parallel.2"
+    }
+  ],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Adding resistances that are in parallel.",
+        "hi": "पार्श्वक्रम के प्रतिरोधों को जोड़ देना।"
+      },
+      "correct": {
+        "en": "In parallel the reciprocals add.",
+        "hi": "पार्श्वक्रम में व्युत्क्रम जुड़ते हैं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Stopping at $1/R_p$ and reporting it as the resistance.",
+        "hi": "$1/R_p$ पर रुककर उसे ही प्रतिरोध बता देना।"
+      },
+      "correct": {
+        "en": "Take the reciprocal at the end.",
+        "hi": "अंत में व्युत्क्रम लीजिए।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

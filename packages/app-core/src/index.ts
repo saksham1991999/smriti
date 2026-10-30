@@ -38,9 +38,15 @@ export * from './home/plan';
 
 export * from './entitlements/entitlement';
 export * from './entitlements/limits';
+export * from './entitlements/price';
 
 export * from './store/appStore';
 
 export * from './content/manager';
 export * from './notify/planner';
 export * from './notify/widget';
+
+export * from './little/experience';
+export * from './little/gentle';
+export * from './little/path';
+export * from './little/parent';

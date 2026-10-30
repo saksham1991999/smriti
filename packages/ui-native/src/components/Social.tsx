@@ -1,3 +1,4 @@
+import { pluralCategory } from "@smriti/tokens/ui";
 import { useEffect, useRef } from "react";
 import { View, type StyleProp, type ViewStyle } from "react-native";
 import Animated, { useAnimatedStyle, useSharedValue, withSequence, withTiming } from "react-native-reanimated";
@@ -240,7 +241,7 @@ export interface SquadCardProps extends SquadCardContract {
 /** A squad row (SOC-01): crest 40, name, the shared quest as "{done} of {target}" with a streak bar, days left. */
 export function SquadCard({ name, crest, done, target, daysLeft, onPress, testID, style }: SquadCardProps) {
   const theme = useTheme();
-  const { t } = useUI();
+  const { t, locale } = useUI();
   const bold = useWeight(700, name);
   const progress = t("squad.progress", { done, target });
   const box: StyleProp<ViewStyle> = [
@@ -263,14 +264,14 @@ export function SquadCard({ name, crest, done, target, daysLeft, onPress, testID
         <ProgressBar value={target > 0 ? Math.min(1, done / target) : 0} tone="streak" label={progress} />
         {daysLeft !== undefined && (
           <Text variant="caption" tone="muted">
-            {t("squad.daysLeft", { n: daysLeft })}
+            {t(pluralCategory(daysLeft, locale) === "one" ? "squad.daysLeft.one" : "squad.daysLeft.other", { n: daysLeft })}
           </Text>
         )}
       </View>
       {onPress && <Icon name="CaretRight" size={20} color="inkMuted" />}
     </>
   );
-  const label = t("squad.a11y", { name, done, target }) + (daysLeft !== undefined ? `, ${t("squad.daysLeft", { n: daysLeft })}` : "");
+  const label = t("squad.a11y", { name, done, target }) + (daysLeft !== undefined ? `, ${t(pluralCategory(daysLeft, locale) === "one" ? "squad.daysLeft.one" : "squad.daysLeft.other", { n: daysLeft })}` : "");
   return onPress ? (
     <PressableScale testID={testID} accessibilityRole="button" accessibilityLabel={label} onPress={onPress} style={box}>
       {body}

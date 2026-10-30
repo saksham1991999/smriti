@@ -21,6 +21,8 @@ from smriti_api.services.auth_admin import AuthAdmin
 if TYPE_CHECKING:
     from smriti_api.ai.gateway import AIGateway
     from smriti_api.integrations import Integrations
+    from smriti_api.integrations.analytics_store import AnalyticsStore
+    from smriti_api.integrations.realtime import RealtimePublisher
 
 log = structlog.get_logger(__name__)
 
@@ -36,6 +38,8 @@ QUEUE_BY_JOB = {
     "duo_rollup": "default",
     "duel_sweep": "default",
     "squad_quests": "default",
+    "deck_moderation": "ai",
+    "parent_digest": "notifications",
     "content_publish": "content-publish",
     "render_pdf": "pdf",
     "media_generate": "media",
@@ -55,6 +59,9 @@ class JobDeps:
     # Wave 2 (Agent A): notifications, PDF and media jobs need these; older jobs ignore them.
     integrations: Integrations | None = None
     ai: AIGateway | None = None
+    realtime: RealtimePublisher | None = None
+    # IRT and FSRS data jobs (G-11). ClickHouse, or Postgres locally.
+    analytics_store: AnalyticsStore | None = None
 
 
 JobFn = Callable[..., Awaitable[Any]]
@@ -120,6 +127,8 @@ def job_registry() -> dict[str, JobFn]:
         media,
         mocks,
         notify,
+        parent_mode,
+        shared_decks,
         social_duos,
         social_squads,
         tutor,
@@ -138,4 +147,6 @@ def job_registry() -> dict[str, JobFn]:
         "duo_rollup": social_duos.rollup_job,
         "duel_sweep": duels.sweep_job,
         "squad_quests": social_squads.quests_job,
+        "deck_moderation": shared_decks.moderation_job,
+        "parent_digest": parent_mode.digest_job,
     }

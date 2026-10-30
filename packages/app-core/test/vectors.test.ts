@@ -21,7 +21,15 @@ import {
   closePlantDay,
   derivePetState,
   grantMonthlyFreezes,
+  learnerExperience,
   newPet,
+  plantDisplay,
+  gentlePetState,
+  resolveAgeBand,
+  timeLimitState,
+  PET_STATES,
+  PLANT_HEALTH,
+  type AgeBandInput,
   type DayInput,
   type PetStats,
   type PlantDayInput,
@@ -213,6 +221,54 @@ describe('golden vectors', () => {
         runFsrs('hard and again on a new card', '2026-10-01T04:30:00.000Z', [{ afterDays: 0, rating: 2 }, { afterDays: 0.004, rating: 1 }, { afterDays: 0.001, rating: 3 }]),
         runFsrs('higher retention (0.95)', '2026-10-01T04:30:00.000Z', [{ afterDays: 0, rating: 3 }, { afterDays: 0.007, rating: 3 }, { afterDays: 2, rating: 3 }], { requestRetention: 0.95 }),
       ],
+    });
+  });
+  it('little_learner', () => {
+    const today = '2026-10-30';
+    const bandInputs: AgeBandInput[] = [
+      ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((c): AgeBandInput => ({ schoolClass: c, birth: null })),
+      { schoolClass: null, birth: { year: 2017 } },
+      { schoolClass: null, birth: { year: 2016 } },
+      { schoolClass: null, birth: { year: 2014 } },
+      { schoolClass: null, birth: { year: 2013 } },
+      { schoolClass: null, birth: { year: 2008 } },
+      { schoolClass: null, birth: { year: 2008, month: 10 } },
+      { schoolClass: null, birth: { year: 2008, month: 9 } },
+      { schoolClass: null, birth: 'declined' },
+      { schoolClass: null, birth: null },
+    ];
+    const bands = bandInputs.map((input) => ({ input, expected: resolveAgeBand(input, today) }));
+    const facts = [
+      { ageBand: 'u10', schoolClass: 3, managedChild: true },
+      { ageBand: 'u10', schoolClass: null },
+      { ageBand: '10_12', schoolClass: 5 },
+      { ageBand: '10_12', schoolClass: 7 },
+      { ageBand: '13_17', schoolClass: 8 },
+      { ageBand: '18p', schoolClass: null },
+      { ageBand: null, schoolClass: null },
+    ] as const;
+    const experiences = facts.flatMap((f) =>
+      [true, false].map((enabled) => ({ facts: f, littleLearnerEnabled: enabled, expected: learnerExperience(f, { littleLearnerEnabled: enabled }) })),
+    );
+    const plant = (health: (typeof PLANT_HEALTH)[number]) => ({ ...NEW_PLANT, health });
+    golden('little_learner', {
+      version: 1,
+      today,
+      age_bands: bands,
+      experiences,
+      gentle_pet: PET_STATES.map((s) => ({ state: s, shown: gentlePetState(s, true) })),
+      gentle_plant: PLANT_HEALTH.map((h) => ({ health: h, shown: plantDisplay(plant(h), true).health })),
+      time_limits: [
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 10, extra: 0, at: '2026-10-30T17:00:00+05:30', inActivity: false },
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 30, extra: 0, at: '2026-10-30T17:00:00+05:30', inActivity: true },
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 30, extra: 15, at: '2026-10-30T17:00:00+05:30', inActivity: false },
+        { limits: { dailyMinutes: 30, allowedHours: { start: '16:00', end: '20:00' } }, used: 0, extra: 0, at: '2026-10-30T20:00:00+05:30', inActivity: false },
+        { limits: { dailyMinutes: 0, allowedHours: null }, used: 300, extra: 0, at: '2026-10-30T23:00:00+05:30', inActivity: false },
+      ].map((c) => ({
+        ...c,
+        timeZone: 'Asia/Kolkata',
+        expected: timeLimitState(c.limits, { day: today, usedMinutes: c.used, extraMinutes: c.extra, requestsToday: 0 }, { now: c.at, timeZone: 'Asia/Kolkata', inActivity: c.inActivity }),
+      })),
     });
   });
 });

@@ -18,6 +18,7 @@ import {
   localDate,
   notifyConfigFromFlags,
   planLocalNotifications,
+  priceValues,
   silentLogger,
   stageForPoints,
   nextStageAt,
@@ -59,7 +60,7 @@ import { addPendingStrings } from '../i18n/pending';
 import type { MobileSwitches } from '../env';
 import { applyNotificationPlan, type LocalNotifier } from '../platform/notifications';
 import type { ProfileStores } from '../platform/profileDb';
-import { KvWidgetBridge, type WidgetBridge } from '../platform/widget';
+import { NativeWidgetBridge, type WidgetBridge } from '../platform/widget';
 import { createMobileApiClient, unwrap, type ApiClient } from './api';
 import { goalAnswer, toWireEnvelope } from './wire';
 import {
@@ -248,7 +249,13 @@ export class SmritiApp {
       onStateApplied: (state) => this.onServerState(state),
     });
     this.softPrompt = new SoftPromptBudget(stores.kv);
-    this.widget = deps.widget ?? new KvWidgetBridge(stores.kv);
+    this.widget =
+      deps.widget ??
+      new NativeWidgetBridge(stores.kv, () => ({
+        t: (key, values) => this.t(key, values),
+        scheme: variant.scheme,
+        goalMinutes: this.store.getState().profile?.daily_goal_minutes ?? this.ui.getState().onboarding.dailyGoalMinutes ?? 10,
+      }));
     this.billing =
       deps.billing ??
       (deps.switches.billing === 'fake'
@@ -401,7 +408,9 @@ export class SmritiApp {
 
   // ── Helpers ───────────────────────────────────────────────────────────────
 
-  t = (key: MessageKey, values?: MessageValues): string => this.i18n.t(key, { app_name: this.appName(), brand: this.appName(), ...values });
+  /** `{price}` and `{intro_price}` default to the `/v1/config` pricing; screens with an eligibility offer pass their own. */
+  t = (key: MessageKey, values?: MessageValues): string =>
+    this.i18n.t(key, { app_name: this.appName(), brand: this.appName(), ...priceValues(this.ui.getState().config.pricing), ...values });
 
   /** A language's own name ("English", "हिन्दी"): the catalogue's switch button names the other language. */
   languageName = (l: 'en' | 'hi'): string => this.i18n.i18n.t('learn:WEB-01.language_button', { lng: l === 'en' ? 'hi' : 'en' }) as string;

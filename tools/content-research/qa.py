@@ -232,6 +232,21 @@ inventoried = set()
 for p in files("coverage/inventory/*/*.json"):
     d = load(p)
     check_common(p, d)
+    if "excluded_chapters" in d:  # subject-level list of NCERT chapters with no graph chapter
+        for x in d["excluded_chapters"]:
+            if not x.get("reason") or not x.get("exam_profiles"):
+                add(
+                    "blocker",
+                    2,
+                    p,
+                    x["ref"],
+                    "excluded chapter needs a reason and its exam profiles",
+                )
+        continue
+    for it in d["items"]:
+        t = it["title"]
+        if isinstance(t, dict) and not (t.get("en") and t.get("hi")):
+            add("blocker", 2, p, it["id"], "paired title needs both en and hi")
     inventoried.add(d["chapter"])
     if d["chapter"] not in chapters_seen:
         add("blocker", 2, p, d["chapter"], "inventory for an unknown chapter")
@@ -282,16 +297,16 @@ for p in files("blueprints/*/*.json"):
         )
     parity(p, d["paper_code"], d.get("instructions"), "instructions")
     q = sum((s.get("question_count") or 0) for s in d["sections"])
+    named = {q.get("field") for q in d.get("open_questions") or []}
     if d.get("question_count") is None:
-        if "Open questions" not in d.get("notes", "") and "question_count left unset" not in d.get(
-            "notes", ""
-        ):
+        # "not stated" rule: a fact the notice does not state is null and an open question names it
+        if "question_count" not in named:
             add(
                 "blocker",
                 13,
                 p,
                 d["paper_code"],
-                "question_count missing without a note saying why",
+                "question_count is null without an open_questions entry for it",
             )
     elif q != d["question_count"]:
         add(
@@ -303,7 +318,10 @@ for p in files("blueprints/*/*.json"):
         )
     for s in d["sections"]:
         parity(p, s["code"], s["title"], "section title")
-        for t in s.get("question_types", []):
+        types = s.get("question_types", [])
+        if types and all(t == "skill_test" for t in types):
+            continue  # qualifying skill test: no questions or marks, judged by its cutoff
+        for t in types:
             if t not in s.get("marking", {}):
                 add("blocker", 13, p, s["code"], f"question type {t} has no marking rule")
 

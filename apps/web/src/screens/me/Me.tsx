@@ -12,6 +12,7 @@ import { savedEmail } from "../../lib/auth";
 import { useReviewQueue } from "../../lib/home";
 import { formatDate, useI18n } from "../../lib/i18n";
 import { useOnboarding } from "../../lib/onboarding";
+import { usePriceValues } from "../../lib/pricing";
 import { useIntroEligible, useIsPro } from "../../lib/pro";
 
 const STAGE = {
@@ -24,6 +25,7 @@ const STAGE = {
 
 export function Me() {
   const { t, locale } = useI18n();
+  const pv = usePriceValues();
   const navigate = useNavigate();
   const guest = useAppStore((x) => x.session.isGuest);
   const profile = useAppStore((x) => x.profile);
@@ -120,8 +122,8 @@ export function Me() {
                 ? t("me_money:ME-01.pro_card_ending", { date: formatDate(ent.pro_until, locale) })
                 : t("me_money:ME-01.pro_card_pro", { date: formatDate(ent.pro_until, locale) })
               : introEligible
-                ? t("me_money:ME-01.pro_card_eligible")
-                : t("me_money:ME-01.pro_card_not_eligible")}
+                ? t("me_money:ME-01.pro_card_eligible", pv)
+                : t("me_money:ME-01.pro_card_not_eligible", pv)}
           </Text>
           <Icon name="CaretRight" color="inkMuted" />
         </span>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NTF-08 small widget: plant, streak, one line. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/smriti_widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/smriti_widget_background"
+    android:padding="12dp">
+
+    <include layout="@layout/smriti_widget_placeholder" />
+
+    <FrameLayout
+        android:id="@+id/smriti_widget_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/smriti_widget_plant_block" />
+    </FrameLayout>
+</FrameLayout>

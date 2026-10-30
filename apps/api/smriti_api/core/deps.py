@@ -21,6 +21,7 @@ from smriti_api.core.idempotency import IdempotencyStore
 from smriti_api.core.logging import hash_user_id
 from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.integrations import Integrations
+from smriti_api.integrations.realtime import RealtimePublisher
 from smriti_api.services.analytics import AnalyticsSink
 from smriti_api.services.auth_admin import AuthAdmin
 from smriti_api.services.jobs import JobQueue
@@ -41,6 +42,8 @@ class AppServices:
     ai: AIGateway
     # Billing, mail, push and storage providers (Agent A, wave 2). Built in build_services.
     integrations: Integrations | None = None
+    # Live mock fan-out (practice §6.11). Built in build_services.
+    realtime: RealtimePublisher | None = None
 
 
 def get_services(request: Request) -> AppServices:
@@ -185,3 +188,52 @@ def idempotency_key(
 
 
 IdempotencyKey = Annotated[str | None, Depends(idempotency_key)]
+
+
+@dataclass(frozen=True)
+class IntegrityProof:
+    token: str | None
+    nonce: str | None
+    key_id: str | None
+
+
+def integrity_proof(
+    x_integrity_token: Annotated[str | None, Header(max_length=16_384)] = None,
+    x_integrity_nonce: Annotated[str | None, Header(max_length=128)] = None,
+    x_integrity_key_id: Annotated[str | None, Header(max_length=64)] = None,
+) -> IntegrityProof:
+    """Play Integrity token or App Attest assertion, the challenge nonce, and the iOS key id."""
+    return IntegrityProof(x_integrity_token, x_integrity_nonce, x_integrity_key_id)
+
+
+Proof = Annotated[IntegrityProof, Depends(integrity_proof)]
+
+
+async def check_attestation(
+    services: AppServices, auth: AuthContext, client: ClientInfo, proof: IntegrityProof, action: str
+) -> None:
+    """Device attestation when ``security.attestation_required`` is on (G-10, TRD §14)."""
+    from smriti_api.services import integrity
+
+    ints = services.integrations
+    await integrity.enforce(
+        services.db,
+        services.redis,
+        ints.attestation if ints is not None else None,
+        user_id=auth.user_id,
+        platform=client.platform,
+        variant=client.app_variant,
+        action=action,
+        token=proof.token,
+        nonce=proof.nonce,
+        key_id=proof.key_id,
+    )
+
+
+def require_attestation(action: str) -> Any:
+    """For sensitive endpoints: billing, duel submit and the like. Off until the flag is on."""
+
+    async def dep(services: Services, auth: CurrentUser, client: Client, proof: Proof) -> None:
+        await check_attestation(services, auth, client, proof, action)
+
+    return Depends(dep)

@@ -23,7 +23,10 @@
     {
       "id": "lech1-1-3",
       "kind": "formula",
-      "title": "Solubility",
+      "title": {
+        "en": "Solubility",
+        "hi": "विलेयता"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 1 §1.3 (https://ncert.nic.in/textbook/pdf/lech101.pdf)",
       "concepts": [
         "chem.solutions.solubility-gases.core.henrys-law"
@@ -52,7 +55,10 @@
     {
       "id": "lech1-1-6",
       "kind": "formula",
-      "title": "Colligative Properties and Determination of Molar Mass",
+      "title": {
+        "en": "Colligative Properties and Determination of Molar Mass",
+        "hi": "अणुसंख्य गुणधर्म और आण्विक द्रव्यमान की गणना"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 1 §1.6 (https://ncert.nic.in/textbook/pdf/lech101.pdf)",
       "concepts": [
         "chem.solutions.colligative.core.colligative-properties",
@@ -62,7 +68,10 @@
     {
       "id": "lech1-1-7",
       "kind": "formula",
-      "title": "Abnormal Molar Masses",
+      "title": {
+        "en": "Abnormal Molar Masses",
+        "hi": "असामान्य मोलर द्रव्यमान"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 1 §1.7 (https://ncert.nic.in/textbook/pdf/lech101.pdf)",
       "concepts": [
         "chem.solutions.abnormal.core.vant-hoff-factor"
@@ -81,5 +90,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
 }

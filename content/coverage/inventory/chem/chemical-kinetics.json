@@ -5,7 +5,10 @@
     {
       "id": "lech1-3-1",
       "kind": "definition",
-      "title": "Rate of a Chemical Reaction",
+      "title": {
+        "en": "Rate of a Chemical Reaction",
+        "hi": "रासायनिक अभिक्रिया वेग"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.1 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
       "concepts": [
         "chem.chemical-kinetics.rate.core.reaction-rate"
@@ -14,7 +17,10 @@
     {
       "id": "lech1-3-2",
       "kind": "list",
-      "title": "Factors Influencing Rate of a Reaction",
+      "title": {
+        "en": "Factors Influencing Rate of a Reaction",
+        "hi": "अभिक्रिया वेग को प्रभावित करने वाले कारक"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.2 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
       "concepts": [
         "chem.chemical-kinetics.rate-factors.core.rate-factors-def",
@@ -25,7 +31,10 @@
     {
       "id": "lech1-3-3",
       "kind": "formula",
-      "title": "Integrated Rate Equations",
+      "title": {
+        "en": "Integrated Rate Equations",
+        "hi": "समाकलित वेग समीकरण"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.3 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
       "concepts": [
         "chem.chemical-kinetics.integrated-rate.core.zero-first-order"
@@ -34,7 +43,10 @@
     {
       "id": "lech1-3-4",
       "kind": "formula",
-      "title": "Temperature Dependence of the Rate of a Reaction",
+      "title": {
+        "en": "Temperature Dependence of the Rate of a Reaction",
+        "hi": "अभिक्रिया वेग की ताप पर निर्भरता"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.4 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
       "concepts": [
         "chem.chemical-kinetics.temperature-rate.core.arrhenius"
@@ -43,7 +55,10 @@
     {
       "id": "lech1-3-5",
       "kind": "definition",
-      "title": "Collision Theory of Chemical Reactions",
+      "title": {
+        "en": "Collision Theory of Chemical Reactions",
+        "hi": "रासायनिक अभिक्रिया का संघट्ट सिद्धांत"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 3 §3.5 (https://ncert.nic.in/textbook/pdf/lech103.pdf)",
       "concepts": [
         "chem.chemical-kinetics.collision-theory.core.collision-theory-def"
@@ -62,5 +77,6 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv).",
+  "hi_source": "ncert"
 }

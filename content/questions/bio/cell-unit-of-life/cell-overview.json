@@ -1,0 +1,442 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "topic": "bio.cell-unit-of-life.cell-overview",
+  "questions": [
+    {
+      "id": "q.bio.cell-unit-of-life.cell-overview.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-overview.core.cell-overview",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which feature makes a cell eukaryotic?",
+        "hi": "कौन-सा लक्षण किसी कोशिका को यूकैरियोटी बनाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A membrane-bound nucleus",
+            "hi": "झिल्ली-युक्त केंद्रक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Ribosomes",
+            "hi": "राइबोसोम"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Cytoplasm",
+            "hi": "कोशिकाद्रव्य"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A cell membrane",
+            "hi": "कोशिका झिल्ली"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which of these do prokaryotes lack?",
+          "hi": "इनमें से प्रोकैरियोटी में क्या नहीं होता?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every cell has ribosomes, cytoplasm and a membrane. Only eukaryotic cells wrap their DNA in a membrane-bound nucleus.",
+          "hi": "हर कोशिका में राइबोसोम, कोशिकाद्रव्य और झिल्ली होती है। केवल यूकैरियोटी कोशिकाएँ अपने डीएनए को झिल्ली-युक्त केंद्रक में रखती हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.3: cells that have membrane-bound nuclei are called eukaryotic.",
+            "hi": "NCERT §8.3: झिल्ली-युक्त केंद्रक वाली कोशिकाएँ यूकैरियोटी कहलाती हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Ribosomes are found in all cells.",
+              "hi": "राइबोसोम सभी कोशिकाओं में मिलते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Cytoplasm fills both prokaryotic and eukaryotic cells.",
+              "hi": "कोशिकाद्रव्य प्रोकैरियोटी और यूकैरियोटी दोनों कोशिकाओं में होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Every cell has a cell membrane.",
+              "hi": "हर कोशिका में कोशिका झिल्ली होती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.cell-overview.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-overview.core.cell-overview",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Arrange in increasing order of size: a human red blood cell (diameter), a mycoplasma (length) and a bacterium (length).",
+        "hi": "माप के बढ़ते क्रम में लगाइए: मनुष्य की लाल रुधिर कोशिका (व्यास), माइकोप्लाज़्मा (लंबाई) और जीवाणु (लंबाई)।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Mycoplasma < bacterium < red blood cell",
+            "hi": "माइकोप्लाज़्मा < जीवाणु < लाल रुधिर कोशिका"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Bacterium < mycoplasma < red blood cell",
+            "hi": "जीवाणु < माइकोप्लाज़्मा < लाल रुधिर कोशिका"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Red blood cell < bacterium < mycoplasma",
+            "hi": "लाल रुधिर कोशिका < जीवाणु < माइकोप्लाज़्मा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Mycoplasma < red blood cell < bacterium",
+            "hi": "माइकोप्लाज़्मा < लाल रुधिर कोशिका < जीवाणु"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which is called the smallest cell?",
+          "hi": "सबसे छोटी कोशिका किसे कहते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Mycoplasma is the smallest cell of all, bacteria are about ten times longer, and a red blood cell is wider still.",
+          "hi": "माइकोप्लाज़्मा सबसे छोटी कोशिका है, जीवाणु उससे लगभग दस गुना लंबे हैं, और लाल रुधिर कोशिका उससे भी चौड़ी।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.3: mycoplasma 0.3 µm; bacteria 3 to 5 µm; human RBC about 7.0 µm.",
+            "hi": "NCERT §8.3: माइकोप्लाज़्मा 0.3 µm; जीवाणु 3 से 5 µm; मनुष्य की लाल रुधिर कोशिका लगभग 7.0 µm।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Mycoplasmas are the smallest cells, smaller than bacteria.",
+              "hi": "माइकोप्लाज़्मा सबसे छोटी कोशिकाएँ हैं, जीवाणु से भी छोटी।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is the decreasing order.",
+              "hi": "यह घटता क्रम है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "At 3 to 5 µm a bacterium is smaller than a 7.0 µm red blood cell.",
+              "hi": "3 से 5 µm का जीवाणु 7.0 µm की लाल रुधिर कोशिका से छोटा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.cell-overview.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-overview.core.cell-overview",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which pair of structures is present in plant cells but absent in animal cells?",
+        "hi": "कौन-सी संरचनाओं का जोड़ा पादप कोशिकाओं में होता है पर जंतु कोशिकाओं में नहीं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Cell wall and plastids",
+            "hi": "कोशिका भित्ति और लवक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Centrioles and plastids",
+            "hi": "तारककेंद्र और लवक"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Ribosomes and cell wall",
+            "hi": "राइबोसोम और कोशिका भित्ति"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Mitochondria and a large central vacuole",
+            "hi": "सूत्रकणिका और बड़ी केंद्रीय रसधानी"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Check each item of the pair separately.",
+          "hi": "जोड़े की हर चीज़ को अलग से जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Both items in the pair must be plant-only. Centrioles, ribosomes and mitochondria each spoil the other pairs.",
+          "hi": "जोड़े की दोनों चीज़ें केवल पादप की होनी चाहिए। तारककेंद्र, राइबोसोम और सूत्रकणिका बाकी जोड़ों को गलत कर देते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.5: plant cells possess cell walls, plastids and a large central vacuole, which are absent in animal cells.",
+            "hi": "NCERT §8.5: पादप कोशिकाओं में कोशिका भित्ति, लवक और बड़ी केंद्रीय रसधानी होती है, जो जंतु कोशिकाओं में नहीं होती।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Centrioles are in animal cells and absent in almost all plant cells.",
+              "hi": "तारककेंद्र जंतु कोशिकाओं में होते हैं और लगभग सभी पादप कोशिकाओं में नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Ribosomes are in all cells.",
+              "hi": "राइबोसोम सभी कोशिकाओं में होते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Mitochondria are in animal cells too.",
+              "hi": "सूत्रकणिका जंतु कोशिकाओं में भी होती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.cell-overview.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-overview.core.cell-overview",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about ribosomes is correct?",
+        "hi": "राइबोसोम के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "They are membrane-bound and occur only in eukaryotic cells.",
+            "hi": "ये झिल्ली-युक्त हैं और केवल यूकैरियोटी कोशिकाओं में होते हैं।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "They are not membrane-bound and occur in both prokaryotic and eukaryotic cells.",
+            "hi": "ये झिल्ली रहित हैं और प्रोकैरियोटी तथा यूकैरियोटी दोनों कोशिकाओं में होते हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "In eukaryotic cells they occur only in the cytoplasm.",
+            "hi": "यूकैरियोटी कोशिकाओं में ये केवल कोशिकाद्रव्य में होते हैं।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "They are absent from mitochondria.",
+            "hi": "ये सूत्रकणिका में नहीं होते।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is there any cell without ribosomes?",
+          "hi": "क्या कोई कोशिका राइबोसोम के बिना है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Ribosomes are the one organelle every cell has, and they have no membrane. Inside a eukaryotic cell they turn up in several places.",
+          "hi": "राइबोसोम वह अंगक है जो हर कोशिका में होता है, और इसकी कोई झिल्ली नहीं होती। यूकैरियोटी कोशिका में ये कई जगह मिलते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.3: ribosomes are non-membrane-bound organelles found in all cells, in the cytoplasm and also in chloroplasts, mitochondria and on rough ER.",
+            "hi": "NCERT §8.3: राइबोसोम झिल्ली रहित अंगक हैं जो सभी कोशिकाओं में, कोशिकाद्रव्य में और हरितलवक, सूत्रकणिका तथा खुरदरी अंतर्द्रव्यी जालिका पर भी मिलते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Ribosomes have no membrane, and prokaryotes have them too.",
+              "hi": "राइबोसोम में झिल्ली नहीं होती, और प्रोकैरियोटी में भी ये होते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "They also occur in chloroplasts, mitochondria and on rough ER.",
+              "hi": "ये हरितलवक, सूत्रकणिका और खुरदरी अंतर्द्रव्यी जालिका पर भी होते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Mitochondria contain ribosomes.",
+              "hi": "सूत्रकणिका में राइबोसोम होते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

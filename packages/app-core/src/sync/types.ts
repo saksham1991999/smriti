@@ -6,7 +6,8 @@
 export type Locale = 'en' | 'hi';
 export type Confidence = 'sure' | 'fifty_fifty' | 'guess';
 export type LessonMode = 'deep_dive' | 'quick_revision' | 'onboarding' | 'quick_check';
-export type AnswerContext = 'lesson' | 'practice' | 'review' | 'challenge' | 'chapter_test';
+/** `mock`: an answer in a submitted mock attempt (contract v1.3); it carries `attempt_id`. */
+export type AnswerContext = 'lesson' | 'practice' | 'review' | 'challenge' | 'chapter_test' | 'mock';
 export type ReviewRating = 1 | 2 | 3 | 4;
 export type AgeBand = 'u10' | '10_12' | '13_17' | '18p';
 
@@ -36,6 +37,8 @@ export interface SyncEventPayloads {
     attempt: 1 | 2;
     confidence: Confidence | null;
     ms_to_answer: number;
+    /** The submitted mock attempt; required with `context: 'mock'` (with `question_id`). */
+    attempt_id?: string;
   };
   lesson_completed: {
     topic_id: string;

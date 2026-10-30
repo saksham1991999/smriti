@@ -53,6 +53,21 @@ insert into billing.products (id, platform, variant_id, store_product_id, price_
   ('pro_monthly_intro_ios_all', 'ios',     'all', 'pending:app_store_product_intro', 9900, 100, 'month', true)
 on conflict (id) do nothing;
 
+-- The ₹799/year plan (PRD §11.2), no intro offer. Family plans (PRD §11.2, Phase 3) have no price
+-- here: it comes from the owner flags billing.family_{monthly,yearly}_price_paise, and the plan
+-- stays hidden while that flag or billing.family_seats is unset (migration 20261030500002).
+insert into billing.products (id, platform, variant_id, store_product_id, price_paise, intro_price_paise, period, active, plan) values
+  ('pro_yearly_web',            'web',     null,  'pending:razorpay_plan_yearly', 79900, null, 'year', true, 'individual'),
+  ('pro_yearly_android_all',    'android', 'all', 'pending:play_product_yearly', 79900, null, 'year', true, 'individual'),
+  ('pro_yearly_ios_all',        'ios',     'all', 'pending:app_store_product_yearly', 79900, null, 'year', true, 'individual'),
+  ('family_monthly_web',        'web',     null,  'pending:razorpay_plan_family_monthly', null, null, 'month', true, 'family'),
+  ('family_monthly_android_all','android', 'all', 'pending:play_product_family_monthly', null, null, 'month', true, 'family'),
+  ('family_monthly_ios_all',    'ios',     'all', 'pending:app_store_product_family_monthly', null, null, 'month', true, 'family'),
+  ('family_yearly_web',         'web',     null,  'pending:razorpay_plan_family_yearly', null, null, 'year', true, 'family'),
+  ('family_yearly_android_all', 'android', 'all', 'pending:play_product_family_yearly', null, null, 'year', true, 'family'),
+  ('family_yearly_ios_all',     'ios',     'all', 'pending:app_store_product_family_yearly', null, null, 'year', true, 'family')
+on conflict (id) do nothing;
+
 -- Gem shop basics (me-money flow §3.6 starting prices). Gems are never sold for money (R36).
 insert into game.shop_items (id, kind, price_gems, pro_only, active) values
   ('streak_freeze', 'freeze', 200, false, true),
@@ -116,6 +131,30 @@ insert into ops.flags (key, value, description) values
   ('auth.signin_timeout_s', '15', 'proposed'),
   ('minor.defer_sync_until_consent', 'false', 'onboarding doc'),
   ('merge.keep_guest_pet', 'true', 'auth §6.4 step 7 (owner Q9)'),
+  -- Phase 2 AI, learning science and security (doc values; proposed where marked)
+  ('feynman.max_follow_ups', '3', 'tutor-social §A8: 1 to 3 follow-up answers'),
+  ('feynman.mastery_weight', '0.1', 'proposed (G-3): weight of a Feynman score in mastery'),
+  ('notify.weak_area.horizon_days', '3', 'TRD §9.6: days of predicted recall checked'),
+  ('notify.weak_area.per_week', '2', 'me-money §6.3: weak_area sends a week'),
+  ('notify.sleep_review.lookback_days', '14', 'TRD §9.6: days of session ends for the bedtime estimate'),
+  ('notify.sleep_review.cards', '5', 'TRD §9.6: hardest due cards in a sleep review'),
+  ('practice.mixed_min_groups', '2', 'practice §5.3: chapters or subjects in a mixed drill'),
+  ('security.attestation_required', 'false', 'TRD §14: Play Integrity / App Attest on sensitive endpoints'),
+  -- Phase 2 and 3 proposed starting values (R54; the owner confirms)
+  ('pro.voice_daily_seconds', '900', 'proposed (R54): voice tutor seconds a day (fair use)'),
+  ('voice.session_max_seconds', '600', 'proposed (R54): longest voice session'),
+  ('voice.reconnect_seconds', '30', 'proposed (R54): voice reconnect window'),
+  ('voice.background_grace_seconds', '20', 'proposed (R54): voice grace in the background'),
+  ('pro.dictation_per_day', '30', 'proposed (R54): dictations a day'),
+  ('feynman.min_words', '30', 'proposed (R54): shortest explanation scored'),
+  ('feynman.max_record_seconds', '120', 'proposed (R54): longest spoken explanation'),
+  ('feynman.bands', '{"getting_there": 40, "clear": 70}', 'proposed (R54): band lower bounds on the 0-100 score'),
+  ('notify.sleep_review.min_confidence', '0.6', 'proposed (R54): bedtime estimate confidence for sleep review'),
+  ('anticheat.min_answer_ms', '700', 'proposed (R54): answers faster than this are flagged'),
+  ('anticheat.min_review_ms', '500', 'proposed (R54): card reviews faster than this are flagged'),
+  ('live.room_lead_min', '15', 'proposed (R54): live mock room opens this many minutes early'),
+  ('memory.fsrs.optimise_min_reviews', '400', 'proposed (R54): new reviews before a per-user FSRS fit'),
+  ('irt.min_responses', '200', 'proposed (R54): first answers before a question is IRT-calibrated'),
   -- Billing and PDF books (proposed starting values for the owner to confirm)
   ('billing.web_grace_days', '7', 'proposed: web (Razorpay) grace after a failed renewal'),
   ('export.books_per_day', '5', 'proposed (me-money §3.9): PDF books a student can make a day'),

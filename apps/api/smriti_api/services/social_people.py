@@ -2,7 +2,7 @@
 
 - :func:`load_member` and :func:`gate` run the social gate (B4) for every social surface: guests
   sign in, little learners (class 1-5) have no social features (R14), minors need guardian consent
-  with the ``social`` scope (``privacy.require_scope``, the consent gate Agent A owns).
+  with the ``social`` scope (:mod:`smriti_api.services.consent`, the consent gate).
 - :func:`people` is the one place that decides how a person shows to a viewer (R31 amended):
   adults by display name; minors by the pet avatar and an auto nickname, or by the pet name to
   friends added by invite link or QR; blocked people and unconsented minors are hidden.
@@ -27,7 +27,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from smriti_api.core.auth import AuthContext
 from smriti_api.core.errors import ApiError, login_required
 from smriti_api.schemas import social as so
-from smriti_api.services import notify, privacy
+from smriti_api.services import consent, notify
 from smriti_api.services.recompute import zone
 from smriti_api.services.usage import Flags
 
@@ -138,8 +138,20 @@ async def load_member(session: AsyncSession, user_id: uuid.UUID) -> Member:
     return _member(row)
 
 
+async def parent_turned_off(session: AsyncSession, user_id: uuid.UUID) -> bool:
+    """A guardian switched social off for this child in parent mode (SET-14)."""
+    value = (
+        await session.execute(
+            text("select not social_enabled from app.parental_controls where learner_user_id = :u"),
+            {"u": user_id},
+        )
+    ).scalar_one_or_none()
+    return bool(value)
+
+
 async def gate_state(session: AsyncSession, m: Member) -> str:
-    """B4 in order: guest, age, little learner, then consent for minors."""
+    """B4 in order: guest, age, little learner, then consent for minors, then the parent's
+    social switch (parent mode, SET-14)."""
     if m.is_guest:
         return "guest"
     if m.age_band is None:
@@ -148,9 +160,8 @@ async def gate_state(session: AsyncSession, m: Member) -> str:
         return "little_learner"
     if m.is_adult:
         return "ok"
-    scopes = await privacy.granted_scopes(session, m.user_id)
-    if "account" in scopes and "social" in scopes:
-        return "ok"
+    if await consent.has_social_consent(session, m.user_id):
+        return "parent_off" if await parent_turned_off(session, m.user_id) else "ok"
     if m.consent_state == "pending":
         return "consent_pending"
     if m.consent_state == "revoked":
@@ -172,7 +183,8 @@ async def gate(
 ) -> Member:
     """Passes, or raises what SOC-02 needs: 401 ``login_required`` (reason ``social``) for guests,
     403 ``age_required``, 403 ``social_not_available`` (little learners, or a feature the age band
-    doesn't have), 403 ``guardian_consent_required`` from the consent gate."""
+    doesn't have), 403 ``guardian_consent_required`` from the consent gate, 403
+    ``parent_turned_off`` when a guardian switched social off in parent mode."""
     if auth.is_anonymous:
         raise login_required("social")
     m = await load_member(session, auth.user_id)
@@ -183,9 +195,11 @@ async def gate(
         raise ApiError(403, "age_required", "Tell us your age first", gate_state=state)
     if state == "little_learner":
         raise ApiError(403, "social_not_available", "Friends aren't part of this app yet")
+    if state == "parent_off":
+        raise ApiError(403, "parent_turned_off", "A grown-up turned this off", feature="social")
     if state != "ok":
         # The consent gate decides (and words) this one.
-        await privacy.require_scope(session, m.user_id, "social")
+        await consent.require_social_consent(session, m.user_id)
     if feature is not None and feature not in features(m, "ok"):
         raise ApiError(
             403, "social_not_available", "This isn't available for your age", feature=feature
@@ -331,7 +345,8 @@ async def friend_ids(session: AsyncSession, user_id: uuid.UUID) -> list[uuid.UUI
 
 async def socially_visible(session: AsyncSession, ids: Iterable[uuid.UUID]) -> set[uuid.UUID]:
     """Adults, and minors (13-17, 10-12) whose guardian gave the ``social`` scope (R31: minors
-    appear nowhere social before consent; a withdrawn consent hides them at once)."""
+    appear nowhere social before consent; a withdrawn consent hides them at once). A child whose
+    parent switched social off (SET-14) is hidden too."""
     wanted = list(set(ids))
     if not wanted:
         return set()
@@ -348,7 +363,10 @@ async def socially_visible(session: AsyncSession, ids: Iterable[uuid.UUID]) -> s
                                where c.user_id = p.user_id and c.revoked_at is null
                                  and c.superseded_by is null
                                  and coalesce((c.scope ->> 'account')::boolean, false)
-                                 and coalesce((c.scope ->> 'social')::boolean, false))))
+                                 and coalesce((c.scope ->> 'social')::boolean, false))
+                        and not exists (
+                              select 1 from app.parental_controls pc
+                               where pc.learner_user_id = p.user_id and not pc.social_enabled)))
                 """
             ),
             {"ids": wanted},

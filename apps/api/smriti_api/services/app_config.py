@@ -21,6 +21,7 @@ from smriti_api.core.config import Settings
 from smriti_api.core.db import Database
 from smriti_api.schemas.api import AppVersionInfo, ConfigResponse, PriceInfo, VariantConfig
 from smriti_api.services import flags as flag_service
+from smriti_api.services.billing import family_offer
 from smriti_api.services.flags import FlagContext, parse_version
 
 log = structlog.get_logger(__name__)
@@ -106,7 +107,7 @@ async def build_config(
             await session.execute(
                 text(
                     "select id, platform, variant_id, store_product_id, price_paise, intro_price_paise, period,"
-                    " entitlement from billing.products where active"
+                    " entitlement, plan from billing.products where active"
                     " and (cast(:p as text) is null or platform = :p) order by id"
                 ),
                 {"p": platform},
@@ -144,20 +145,33 @@ async def build_config(
     )
     flags = flag_service.evaluate(flag_rows, FlagContext(cfg.id, platform, app_version))
     free_limits = {k.removeprefix("free."): v for k, v in flags.items() if k.startswith("free.")}
-    pricing = [
-        PriceInfo(
-            product_id=p.id,
-            platform=p.platform,
-            variant_id=p.variant_id,
-            store_product_id=p.store_product_id,
-            price_paise=p.price_paise,
-            intro_price_paise=p.intro_price_paise,
-            period=p.period,
-            entitlement=p.entitlement,
+    # A family plan's price and seats are owner flags; it is left out while they are unset.
+    offer = family_offer(flags)
+    pricing = []
+    for p in products:
+        if p.variant_id not in (None, cfg.id, DEFAULT_VARIANT):
+            continue
+        price = p.price_paise
+        seats = None
+        if p.plan == "family":
+            price = offer.price_for(p.period) if offer else None
+            if offer is None or price is None:
+                continue
+            seats = offer.seats
+        pricing.append(
+            PriceInfo(
+                product_id=p.id,
+                platform=p.platform,
+                variant_id=p.variant_id,
+                store_product_id=p.store_product_id,
+                price_paise=price,
+                intro_price_paise=p.intro_price_paise,
+                period=p.period,
+                entitlement=p.entitlement,
+                plan=p.plan,
+                seats=seats,
+            )
         )
-        for p in products
-        if p.variant_id in (None, cfg.id, DEFAULT_VARIANT)
-    ]
     return ConfigResponse(
         variant=cfg,
         variants=sorted(set(files) | {r.id for r in rows.values() if r.active}),

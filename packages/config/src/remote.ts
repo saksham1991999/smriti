@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/mini';
 
 import { createFlags, type Flags } from './flags';
 
@@ -6,18 +6,13 @@ import { createFlags, type Flags } from './flags';
  * The parts of `GET /v1/config` the shared packages read (TRD §5.1). The API's Pydantic model is
  * the source of truth; unknown fields pass through so a newer server never breaks an older app.
  */
-export const remoteConfigSchema = z
-  .object({
-    variant: z.string(),
-    min_version: z.string(),
-    latest_version: z.string(),
-    flags: z.record(z.string(), z.unknown()).default({}),
-    maintenance: z
-      .object({ active: z.boolean(), mode: z.string().optional(), until: z.string().optional() })
-      .partial()
-      .optional(),
-  })
-  .passthrough();
+export const remoteConfigSchema = z.looseObject({
+  variant: z.string(),
+  min_version: z.string(),
+  latest_version: z.string(),
+  flags: z._default(z.record(z.string(), z.unknown()), {}),
+  maintenance: z.optional(z.partial(z.object({ active: z.boolean(), mode: z.string(), until: z.string() }))),
+});
 
 export type RemoteConfig = z.infer<typeof remoteConfigSchema>;
 

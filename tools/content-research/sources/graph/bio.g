@@ -319,15 +319,15 @@ P cell-overview, monera
 N 8.4
 R N3.2, N3.3
 TO eukaryotic | en=Eukaryotic Cells | hi=यूकैरियोटी कोशिकाएँ | sec=8.5
-CO cell-membrane-wall | definition | 3 | en=Cell membrane (fluid mosaic model) and cell wall | hi=कोशिका झिल्ली (तरल मोज़ेक मॉडल) तथा कोशिका भित्ति
-S The plasma membrane is a lipid bilayer with embedded proteins whose quasi-fluid nature is described by the fluid mosaic model, controlling transport, while the plant cell wall of cellulose, hemicellulose and pectins gives shape and protection. || जीवद्रव्य झिल्ली अंतःस्थापित प्रोटीनों वाली लिपिड द्विपरत है जिसकी अर्ध-तरल प्रकृति को तरल मोज़ेक मॉडल समझाता है और यह परिवहन को नियंत्रित करती है, जबकि सेल्यूलोज़, हेमीसेल्यूलोज़ और पेक्टिन की पादप कोशिका भित्ति आकार और सुरक्षा देती है।
-K Describe the fluid mosaic model of Singer and Nicolson. || सिंगर और निकोल्सन का तरल मोज़ेक मॉडल वर्णित कीजिए।
+CO cell-membrane-wall | definition | 3 | en=Cell membrane (fluid mosaic model) and cell wall | hi=कोशिका झिल्ली (तरल किर्मीर नमूना) तथा कोशिका भित्ति
+S The plasma membrane is a lipid bilayer with embedded proteins whose quasi-fluid nature is described by the fluid mosaic model, controlling transport, while the plant cell wall of cellulose, hemicellulose and pectins gives shape and protection. || जीवद्रव्य झिल्ली अंतःस्थापित प्रोटीनों वाली लिपिड द्विपरत है जिसकी अर्ध-तरल प्रकृति को तरल किर्मीर नमूना समझाता है और यह परिवहन को नियंत्रित करती है, जबकि सेल्यूलोज़, हेमीसेल्यूलोज़ और पेक्टिन की पादप कोशिका भित्ति आकार और सुरक्षा देती है।
+K Describe the fluid mosaic model of Singer and Nicolson. || सिंगर और निकोल्सन का तरल किर्मीर नमूना वर्णित कीजिए।
 K Distinguish passive and active transport across the membrane. || झिल्ली के पार निष्क्रिय और सक्रिय परिवहन में अंतर बताइए।
 P cell-overview
 N 8.5
 R N3.3
-CO endomembrane-system | list | 3 | en=Endomembrane system: ER, Golgi apparatus, lysosomes and vacuoles | hi=अंतःझिल्ली तंत्र : अंतर्द्रव्यी जालिका, गॉल्जी उपकरण, लयनकाय तथा रिक्तिकाएँ
-S The endoplasmic reticulum (rough for protein synthesis, smooth for lipids), Golgi apparatus (packaging and glycosylation), lysosomes (hydrolytic enzymes) and vacuoles work together as the endomembrane system. || अंतर्द्रव्यी जालिका (प्रोटीन संश्लेषण के लिए खुरदरी, लिपिड के लिए चिकनी), गॉल्जी उपकरण (संवेष्टन और ग्लाइकोसिलेशन), लयनकाय (जल-अपघटनी एंजाइम) तथा रिक्तिकाएँ मिलकर अंतःझिल्ली तंत्र के रूप में काम करती हैं।
+CO endomembrane-system | list | 3 | en=Endomembrane system: ER, Golgi apparatus, lysosomes and vacuoles | hi=अंतः झिल्लिका तंत्र : अंतर्द्रव्यी जालिका, गॉल्जी उपकरण, लयनकाय तथा रसधानियाँ
+S The endoplasmic reticulum (rough for protein synthesis, smooth for lipids), Golgi apparatus (packaging, and the site where glycoproteins and glycolipids are formed), lysosomes (hydrolytic enzymes) and vacuoles work together as the endomembrane system. || अंतर्द्रव्यी जालिका (प्रोटीन संश्लेषण के लिए खुरदरी, लिपिड के लिए चिकनी), गॉल्जी उपकरण (संवेष्टन, और ग्लाइकोप्रोटीन तथा ग्लाइकोलिपिड बनने का स्थान), लयनकाय (जल-अपघटकीय एंजाइम) तथा रसधानियाँ मिलकर अंतः झिल्लिका तंत्र के रूप में काम करती हैं।
 K State the function of each component. || प्रत्येक घटक का कार्य बताइए।
 K Explain the cis and trans faces of the Golgi apparatus. || गॉल्जी उपकरण के सिस और ट्रांस फलकों को समझाइए।
 P cell-membrane-wall
@@ -336,19 +336,19 @@ R N3.4
 CO mitochondria-plastids | list | 3 | en=Mitochondria, plastids, ribosomes and microbodies | hi=सूत्रकणिका, लवक, राइबोसोम तथा सूक्ष्मकाय
 S Mitochondria are double-membraned sites of aerobic respiration with cristae, their own DNA and 70S ribosomes; plastids are chloroplasts, chromoplasts or leucoplasts; ribosomes (70S or 80S) make proteins; and microbodies are small membrane-bound vesicles of enzymes. || सूत्रकणिकाएँ दोहरी झिल्ली वाले वायवीय श्वसन के स्थल हैं जिनमें क्रिस्टी, अपना DNA और 70S राइबोसोम होते हैं; लवक हरितलवक, वर्णीलवक या अवर्णीलवक होते हैं; राइबोसोम (70S या 80S) प्रोटीन बनाते हैं; और सूक्ष्मकाय एंजाइमों के छोटे झिल्ली-आबद्ध पुटिकाएँ हैं।
 K Label the parts of a mitochondrion and a chloroplast. || सूत्रकणिका और हरितलवक के भागों को नामांकित कीजिए।
-K Explain why mitochondria and chloroplasts are semi-autonomous. || समझाइए कि सूत्रकणिका और हरितलवक अर्धस्वायत्त क्यों हैं।
+K State what the mitochondrial matrix and the chloroplast stroma contain besides enzymes. || बताइए कि सूत्रकणिका की आधात्री और हरित लवक की पीठिका में एंजाइमों के अलावा क्या होता है।
 P cell-membrane-wall
 N 8.5
 R N3.5
-CO cytoskeleton-cilia-centrioles | diagram | 3 | en=Cytoskeleton, cilia, flagella and centrioles: ultrastructure and function | hi=कोशिका कंकाल, पक्ष्माभ, कशाभिका तथा तारककेंद्र : परासंरचना तथा कार्य
-S The cytoskeleton of microtubules, microfilaments and intermediate filaments gives support and motility; cilia and flagella have a 9 + 2 axoneme, and centrioles have a 9 + 0 cartwheel of triplet microtubules and form basal bodies and spindle fibres. || सूक्ष्मनलिकाओं, सूक्ष्मतंतुओं और मध्यवर्ती तंतुओं का कोशिका कंकाल सहारा और गतिशीलता देता है; पक्ष्माभ और कशाभिका में 9 + 2 अक्षसूत्र होता है, और तारककेंद्र में त्रिक सूक्ष्मनलिकाओं की 9 + 0 गाड़ी-पहिया संरचना होती है जो आधारकाय और तर्कु तंतु बनाती है।
+CO cytoskeleton-cilia-centrioles | diagram | 3 | en=Cytoskeleton, cilia, flagella and centrioles: ultrastructure and function | hi=साइटोपंजर, पक्ष्माभ, कशाभिका तथा तारककेंद्र : परासंरचना तथा कार्य
+S The cytoskeleton of microtubules, microfilaments and intermediate filaments gives support and motility; cilia and flagella have a 9 + 2 axoneme, and centrioles have a cartwheel of nine evenly spaced peripheral triplets of tubulin and form basal bodies and spindle fibres. || सूक्ष्मनलिकाओं, सूक्ष्मतंतुओं और मध्यवर्ती तंतुओं का साइटोपंजर सहारा और गतिशीलता देता है; पक्ष्माभ और कशाभिका में 9 + 2 अक्षसूत्र होता है, और तारककेंद्र में ट्यूबुलिन के नौ समान दूरी वाले परिधीय त्रिक की गाड़ी के पहिए जैसी संरचना होती है जो आधारीकाय और तर्कु तंतु बनाती है।
 K Draw the 9 + 2 arrangement of an axoneme. || अक्षसूत्र की 9 + 2 व्यवस्था बनाइए।
 K Compare cilia and flagella. || पक्ष्माभ और कशाभिका की तुलना कीजिए।
 P mitochondria-plastids
 N 8.5
 R N3.6
-CO nucleus | diagram | 3 | en=Nucleus: nuclear envelope, chromatin and nucleolus | hi=केंद्रक : केंद्रक आवरण, क्रोमैटिन तथा केंद्रिका
-S The nucleus has a double nuclear envelope with pores, chromatin that condenses into chromosomes with centromeres, and a nucleolus that makes ribosomal RNA. || केंद्रक में छिद्रों वाला दोहरा केंद्रक आवरण, गुणसूत्रबिंदु वाले गुणसूत्रों में संघनित होने वाला क्रोमैटिन, और राइबोसोमल RNA बनाने वाली केंद्रिका होती है।
+CO nucleus | diagram | 3 | en=Nucleus: nuclear envelope, chromatin and nucleolus | hi=केंद्रक : केंद्रक आवरण, क्रोमेटिन तथा केंद्रिक
+S The nucleus has a double nuclear envelope with pores, chromatin that condenses into chromosomes with centromeres, and a nucleolus that makes ribosomal RNA. || केंद्रक में छिद्रों वाला दोहरा केंद्रक आवरण, गुणसूत्रबिंदु वाले गुणसूत्रों में संघनित होने वाला क्रोमेटिन, और राइबोसोमल RNA बनाने वाला केंद्रिक होता है।
 K Classify chromosomes by the position of the centromere. || गुणसूत्रबिंदु की स्थिति के आधार पर गुणसूत्रों का वर्गीकरण कीजिए।
 K State the role of nuclear pores. || केंद्रक छिद्रों की भूमिका बताइए।
 P cell-membrane-wall

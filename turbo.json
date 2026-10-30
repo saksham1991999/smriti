@@ -5,7 +5,7 @@
     "typecheck": { "dependsOn": ["^build"] },
     "lint": {},
     "test": { "dependsOn": ["^build"] },
-    "content:check": { "dependsOn": ["^build"] },
+    "content:check": { "dependsOn": ["^build"], "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/content/**", "$TURBO_ROOT$/skills/_shared/**"] },
     "dev": { "cache": false, "persistent": true }
   }
 }

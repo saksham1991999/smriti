@@ -430,7 +430,7 @@ class EntitlementState(BaseModel):
     grace_until: datetime | None = None
     cancel_at_period_end: bool = False
     is_intro: bool = False
-    source: Literal["razorpay", "play", "app_store", "promo"] | None = None
+    source: Literal["razorpay", "play", "app_store", "promo", "family"] | None = None
 
 
 class SyncStateResponse(BaseModel):

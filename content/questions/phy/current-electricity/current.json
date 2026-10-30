@@ -1,0 +1,411 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.current",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.current.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.current.core.drift-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A steady current of 2 A flows in a wire. How much charge crosses a cross-section in 5 s?",
+        "hi": "एक तार में 2 A की स्थायी धारा है। 5 s में किसी अनुप्रस्थ काट से कितना आवेश गुज़रेगा?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0.4 C",
+            "hi": "0.4 C"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2.5 C",
+            "hi": "2.5 C"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 C",
+            "hi": "10 C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "7 C",
+            "hi": "7 C"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $I = q/t$.",
+          "hi": "$I = q/t$ का उपयोग करें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Current tells you how many coulombs pass each second. Two coulombs every second for five seconds is ten coulombs.",
+          "hi": "धारा बताती है कि हर सेकंड कितने कूलॉम गुज़रते हैं। पाँच सेकंड तक हर सेकंड दो कूलॉम यानी दस कूलॉम।"
+        },
+        "steps": [
+          {
+            "en": "$q = It = 2 \\times 5 = 10$ C",
+            "hi": "$q = It = 2 \\times 5 = 10$ C"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This divides current by time; charge is current times time.",
+              "hi": "यह धारा को समय से भाग देता है; आवेश धारा गुणा समय है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This divides time by current.",
+              "hi": "यह समय को धारा से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Current and time are multiplied, not added.",
+              "hi": "धारा और समय गुणा होते हैं, जोड़े नहीं जाते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.current.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.current.core.drift-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A wire of cross-section 2.0 mm² carries 3.4 A. It has $8.5 \\times 10^{28}$ free electrons per m³ and $e = 1.6 \\times 10^{-19}$ C. The drift speed is",
+        "hi": "2.0 mm² अनुप्रस्थ काट वाले तार में 3.4 A धारा है। इसमें प्रति m³ $8.5 \\times 10^{28}$ मुक्त इलेक्ट्रॉन हैं और $e = 1.6 \\times 10^{-19}$ C है। अपवाह चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$1.25 \\times 10^{-4}$ m/s",
+            "hi": "$1.25 \\times 10^{-4}$ m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$1.25 \\times 10^{-7}$ m/s",
+            "hi": "$1.25 \\times 10^{-7}$ m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$1.25 \\times 10^{-10}$ m/s",
+            "hi": "$1.25 \\times 10^{-10}$ m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$3 \\times 10^{8}$ m/s",
+            "hi": "$3 \\times 10^{8}$ m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Rearrange $I = neAv_d$ for $v_d$.",
+          "hi": "$I = neAv_d$ से $v_d$ निकालें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Current is the number of electrons per volume times their charge, times the area they flow through, times how fast they drift. Solve for the speed, with the area in square metres.",
+          "hi": "धारा = प्रति आयतन इलेक्ट्रॉन × उनका आवेश × जिस क्षेत्रफल से वे बहते हैं × उनकी अपवाह चाल। क्षेत्रफल को वर्ग मीटर में लेकर चाल निकालिए।"
+        },
+        "steps": [
+          {
+            "en": "$A = 2.0$ mm² $= 2.0 \\times 10^{-6}$ m²",
+            "hi": "$A = 2.0$ mm² $= 2.0 \\times 10^{-6}$ m²"
+          },
+          {
+            "en": "$|v_d| = \\frac{I}{neA} = \\frac{3.4}{8.5 \\times 10^{28} \\times 1.6 \\times 10^{-19} \\times 2.0 \\times 10^{-6}}$",
+            "hi": "$|v_d| = \\frac{I}{neA} = \\frac{3.4}{8.5 \\times 10^{28} \\times 1.6 \\times 10^{-19} \\times 2.0 \\times 10^{-6}}$"
+          },
+          {
+            "en": "$|v_d| = \\frac{3.4}{27.2} = 1.25 \\times 10^{-4}$ m/s",
+            "hi": "$|v_d| = \\frac{3.4}{27.2} = 1.25 \\times 10^{-4}$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This converts mm² to m² with $10^{-3}$, as for length; area needs $10^{-6}$.",
+              "hi": "यह mm² को लंबाई की तरह $10^{-3}$ से बदलता है; क्षेत्रफल के लिए $10^{-6}$ चाहिए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This leaves the area as 2.0 without converting to m².",
+              "hi": "यह क्षेत्रफल 2.0 ही छोड़ देता है, m² में नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is roughly the speed at which the field is set up, not the drift speed.",
+              "hi": "यह लगभग वह चाल है जिससे क्षेत्र स्थापित होता है, अपवाह चाल नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.current.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.current.core.drift-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two wires of the same metal, with cross-sections $A$ and $2A$, are joined end to end and carry a steady current. The ratio of drift speeds $v_1 : v_2$ is",
+        "hi": "एक ही धातु के दो तार, जिनकी अनुप्रस्थ काट $A$ और $2A$ है, सिरे से सिरा जोड़े गए हैं और उनमें स्थायी धारा है। अपवाह चालों का अनुपात $v_1 : v_2$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 : 2",
+            "hi": "1 : 2"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 : 1",
+            "hi": "2 : 1"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 : 1",
+            "hi": "1 : 1"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 : 1",
+            "hi": "4 : 1"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$n$, $e$ and $I$ are the same in both wires.",
+          "hi": "दोनों तारों में $n$, $e$ और $I$ समान हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The same current flows through both, and the metal is the same, so the thinner wire must push the same charge through half the area: its electrons drift twice as fast.",
+          "hi": "दोनों में एक ही धारा है और धातु भी एक ही है, इसलिए पतले तार को आधे क्षेत्रफल से उतना ही आवेश भेजना है: उसके इलेक्ट्रॉन दोगुनी चाल से अपवाहित होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$I = neA_1v_1 = neA_2v_2$",
+            "hi": "$I = neA_1v_1 = neA_2v_2$"
+          },
+          {
+            "en": "$\\frac{v_1}{v_2} = \\frac{A_2}{A_1} = \\frac{2A}{A} = 2$",
+            "hi": "$\\frac{v_1}{v_2} = \\frac{A_2}{A_1} = \\frac{2A}{A} = 2$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Drift speed is inversely, not directly, proportional to area here.",
+              "hi": "यहाँ अपवाह चाल क्षेत्रफल के व्युत्क्रमानुपाती है, अनुक्रमानुपाती नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Same current does not mean same drift speed when the areas differ.",
+              "hi": "क्षेत्रफल अलग हों तो समान धारा का अर्थ समान अपवाह चाल नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Area doubles, not the radius; the ratio is 2, not 4.",
+              "hi": "क्षेत्रफल दोगुना है, त्रिज्या नहीं; अनुपात 2 है, 4 नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.current.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.current.core.drift-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Electrons in a conductor drift at $2.0 \\times 10^{-4}$ m/s in a field of 0.50 V/m. Their mobility, in units of $10^{-4}$ m²/Vs, is",
+        "hi": "किसी चालक में 0.50 V/m के क्षेत्र में इलेक्ट्रॉन $2.0 \\times 10^{-4}$ m/s से अपवाहित होते हैं। उनकी गतिशीलता, $10^{-4}$ m²/Vs के मात्रक में, है"
+      },
+      "answer": {
+        "value": 4,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$\\mu = |v_d|/E$.",
+          "hi": "$\\mu = |v_d|/E$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Mobility is how fast the electrons drift for each volt per metre of field.",
+          "hi": "गतिशीलता बताती है कि क्षेत्र के हर वोल्ट प्रति मीटर पर इलेक्ट्रॉन कितनी तेज़ी से अपवाहित होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\mu = \\frac{|v_d|}{E} = \\frac{2.0 \\times 10^{-4}}{0.50} = 4.0 \\times 10^{-4}$ m²/Vs",
+            "hi": "$\\mu = \\frac{|v_d|}{E} = \\frac{2.0 \\times 10^{-4}}{0.50} = 4.0 \\times 10^{-4}$ m²/Vs"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Multiplying $v_d$ by $E$ gives 1, which has the wrong unit.",
+              "hi": "$v_d$ को $E$ से गुणा करने पर 1 मिलता है, जिसका मात्रक गलत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

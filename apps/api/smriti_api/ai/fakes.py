@@ -112,10 +112,14 @@ class FakeSTTProvider:
 class FakeRealtimeVoiceProvider:
     name = "fake"
 
+    def __init__(self) -> None:
+        self.contexts: list[VoiceContext] = []
+
     async def create_session(self, context: VoiceContext) -> VoiceSession:
+        self.contexts.append(context)
         return VoiceSession(
             token="fake-voice-token",  # noqa: S106 - a fake's marker value
-            expires_at=datetime.now(UTC) + timedelta(minutes=10),
+            expires_at=datetime.now(UTC) + timedelta(seconds=context.ttl_s or 600),
             model="fake-voice",
             provider=self.name,
         )

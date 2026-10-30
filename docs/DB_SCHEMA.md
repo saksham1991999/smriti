@@ -1765,6 +1765,7 @@ Policy patterns (each uses `(select auth.uid())` so Postgres evaluates it once p
 | Social | `social.friendships`, `duos`, `duels`, `duel_answers` | Visible to either participant. `social.activity_items` and `social.reactions` are visible to the owner's accepted, unblocked friends; `social.nudges` to sender and recipient. Friend profiles are read through a `security definer` view that exposes only handle, display name, avatar, streak, league and pet. For a minor the view returns the nickname and pet avatar on public surfaces and the pet name only to friends added by link or QR, never the display name or handle. |
 | Squads | `social.squads`, `squad_members`, `game.squad_quest_progress` | Visible to members. Writes by owner or admin; quest progress by the service role only. |
 | Realtime | `realtime.messages` | Private channels. A user may join `duel:{id}` only if they are a participant, and `mock:{id}` only if they have an attempt. |
+| Later migrations (§17) | `social.members`, `social.duel_queue`, `game.league_players`, `game.daily_challenge_starts` (owner read); `social.duel_players`, `social.duel_events` (the two players); `social.handle_reservations`, `content.question_bodies` (service only); `billing.family_groups`, `family_members`, `family_invites` (payer, or member for their own rows) | Server write in every case. See §17 for each policy. |
 
 **RLS tests for the new tables:** a student can't read another student's `lab_progress`, `topic_status` or `content_reports`; a guardian reads `parental_controls` and `time_requests` only for linked learners; `mnemonic_votes` and `deck_helpful_votes` never reveal who voted; a blocked friend sees no `activity_items` or `reactions`.
 
@@ -1899,4 +1900,274 @@ The web app keeps the same tables as IndexedDB object stores (through Dexie), be
 9. `0009_rls.sql`: every policy, in one reviewable file
 10. `0010_partitions_cron.sql`: initial partitions and `pg_cron` jobs
 
+Later, dated migrations (each additive; §17 lists their tables and columns):
+
+- `20261030200001_practice_mocks_tutor.sql`, `20261030200002_mock_ranking.sql`, `20261030300001_mock_answer_context.sql`: question bodies, practice sessions, mock attempts and ranking, the daily challenge start, tutor message fields, `mock` question attempts
+- `20261030300002_social.sql`: social members, handle reservations, duel players, queue and events, league players
+- `20261030500001_parent_mode.sql`: parent controls for social and tutor, the weekly report switch, time requests per day
+- `20261030500002_family_plan.sql`: product plans, family groups, members and invites, the `family` entitlement source
+
 `supabase/seed.sql` loads two exams, one subject, a few concepts, a sample mock and test users, for local and preview environments.
+
+---
+
+## 17. Later migrations: practice, mocks, tutor, social, parent mode and plans
+
+Each migration below is additive: new tables, new nullable or defaulted columns, indexes and policies. Sections 3 to 12 describe the first schema; this section lists what was added after it, in migration order.
+
+### 17.1 `20261030200001_practice_mocks_tutor.sql` (practice §7.2, §12.3; tutor-social §A14; TRD §9.2)
+
+```sql
+-- Question bodies for the server (mock papers, the daily challenge, tutor context). Written by
+-- tools/content-publish like question_keys. Service only: `mock` and `daily` questions never
+-- ship to devices (content-format §8).
+create table content.question_bodies (
+  question_id  text primary key references content.questions(id) on delete cascade,
+  uses         text[] not null,
+  body         jsonb not null
+);
+create index on content.question_bodies using gin (uses);
+
+-- Full-text fallback for tutor retrieval while pgvector is not installed (TRD §9.5). The
+-- `simple` config keeps Hindi tokens intact.
+create index concepts_fts on content.concepts using gin (to_tsvector('simple', <name, summary, key_points in en and hi>));
+create index topics_fts   on content.topics   using gin (to_tsvector('simple', <name, summary in en and hi>));
+create index on content.mock_items (question_id);
+
+alter table learn.practice_sessions            -- practice §5.3, §12.3
+  add column exam_profile_id text,
+  add column source          text,
+  add column question_ids    text[] not null default '{}',
+  add column size            smallint;
+create index on learn.question_attempts (user_id, session_id) where session_id is not null;
+
+alter table learn.mock_attempts                -- practice §6.2 to §6.10
+  add column kind            text check (kind in ('full','sectional','chapter','pyq_paper','live','custom')),
+  add column exam_profile_id text,
+  add column attempt_no      smallint not null default 1,
+  add column paper           jsonb,            -- sections, items and marking pinned at the start (§6.6)
+  add column paused_at       timestamptz,
+  add column last_saved_at   timestamptz,
+  add column scored_at       timestamptz;
+create unique index mock_attempts_one_in_progress on learn.mock_attempts (user_id) where status = 'in_progress';
+create index on learn.mock_attempts (mock_id, attempt_no) where status in ('submitted','auto_submitted');
+create index on learn.mock_attempts (server_deadline_at) where status = 'in_progress';
+
+create table game.daily_challenge_starts (     -- the server start time; one attempt per challenge
+  challenge_id uuid not null references game.daily_challenges(id) on delete cascade,
+  user_id      uuid not null references auth.users(id) on delete cascade,
+  started_at   timestamptz not null default now(),
+  primary key (challenge_id, user_id)
+);
+create index on game.daily_challenge_starts (user_id);
+
+alter table game.daily_challenge_results
+  add column answer          jsonb,
+  add column confidence      text check (confidence in ('sure','fifty','guess')),
+  add column client_time_ms  integer,
+  add column local_day       date;
+create index on game.daily_challenge_results (challenge_id, correct desc, time_ms, submitted_at);
+
+alter table ai.tutor_sessions add column last_message_at timestamptz;
+alter table ai.tutor_messages                  -- tutor-social §A5, §A6
+  add column counted   boolean not null default false,   -- used the daily quota
+  add column status    text not null default 'ok' check (status in ('ok','stopped','refused','crisis','error')),
+  add column citations jsonb not null default '[]';      -- published content the answer cites
+create index on ai.tutor_messages (user_id, created_at) where counted;
+```
+
+RLS: `content.question_bodies` is service only; `game.daily_challenge_starts` is owner read, server write.
+
+### 17.2 `20261030200002_mock_ranking.sql` (practice §6.10, R26)
+
+```sql
+-- Percentile and rank compare first attempts on the same paper. Published mocks and PYQ papers
+-- carry a paper key; papers built for one student have none and never rank.
+create index mock_attempts_paper_key_idx on learn.mock_attempts ((paper ->> 'key'), score desc)
+  where attempt_no = 1 and status in ('submitted','auto_submitted');
+```
+
+### 17.3 `20261030300001_mock_answer_context.sql` (sync contract v1.3)
+
+```sql
+-- When an attempt is submitted, the server records each scored answer as a question attempt with
+-- context 'mock' and session_id = the attempt id, so mock answers update mastery.
+alter table learn.question_attempts add constraint question_attempts_context_check
+  check (context in ('practice','drill','daily','lesson','duel','pyq','chapter_test','mock'));
+create index question_attempts_mock_idx on learn.question_attempts (user_id, session_id, question_id)
+  where context = 'mock';
+```
+
+### 17.4 `20261030300002_social.sql` (Phase 2 social, tutor-social Part B)
+
+```sql
+alter table social.friendships
+  add column method text check (method in ('invite','qr','search','league_row','duel','squad'));  -- R31
+
+create table social.members (                    -- one row per student who opened social
+  user_id            uuid primary key references auth.users(id) on delete cascade,
+  first_visit_at     timestamptz,                -- SOC-03 shows once
+  inbox_seen_at      timestamptz,                -- SOC-06 unread count
+  league_joined_at   timestamptz,                -- teens tap Join (R30)
+  handle_changed_at  timestamptz,                -- `social.handle_change_days`
+  presence_visible   boolean not null default false,  -- "Studying now": adults only, opt-in
+  board_school       boolean not null default false,  -- B7 opt-ins
+  board_city         boolean not null default false,
+  created_at         timestamptz not null default now()
+);
+
+create table social.handle_reservations (        -- old handles are held for a while (B14)
+  handle       citext primary key,
+  user_id      uuid references auth.users(id) on delete cascade,
+  released_at  timestamptz not null
+);
+create unique index activity_items_once on social.activity_items (user_id, kind, ref);
+
+alter table social.duos
+  add column invited_by        uuid references auth.users(id) on delete set null,
+  add column invited_at        timestamptz not null default now(),
+  add column ended_by          uuid references auth.users(id) on delete set null,
+  add column evaluated_through date;            -- the last day the shared streak was settled for
+
+alter table social.squads
+  add column crest_id      text,
+  add column name_word_ids text[],              -- from the name picker
+  add column name_number   smallint;
+alter table social.squad_members
+  add column via text not null default 'code' check (via in ('create','link','qr','code'));
+
+alter table social.duels
+  add column code                 text unique,  -- smriti.app/duel/{code}
+  add column subject_id           text,
+  add column relation             text not null default 'friend' check (relation in ('friend','random','solo')),
+  add column settings             jsonb not null default '{}',  -- question seconds, count, speed bonus, XP at creation
+  add column start_at             timestamptz,  -- the synced 3-2-1 ends here
+  add column current_index        smallint not null default 0,
+  add column question_opened_at   timestamptz,
+  add column expires_at           timestamptz,
+  add column rematch_of           uuid references social.duels(id) on delete set null,
+  add column rematch_requested_by uuid references auth.users(id) on delete set null,
+  add column rematch_requested_at timestamptz;
+
+create table social.duel_players (               -- per-player clock, presence and score
+  duel_id            uuid not null references social.duels(id) on delete cascade,
+  user_id            uuid not null references auth.users(id) on delete cascade,
+  role               text not null check (role in ('challenger','opponent')),
+  joined_at          timestamptz,
+  last_seen_at       timestamptz,
+  current_index      smallint not null default 0,  -- async and solo: each player's own question
+  question_opened_at timestamptz,
+  finished_at        timestamptz,
+  score              integer not null default 0,
+  correct            smallint not null default 0,
+  flagged_fast       boolean not null default false,  -- an answer under `duel.min_answer_ms` (A36)
+  primary key (duel_id, user_id)
+);
+create index on social.duel_players (user_id);
+
+create table social.duel_queue (                 -- random matching (B10 §2): same exam and age group
+  user_id          uuid primary key references auth.users(id) on delete cascade,
+  exam_profile_id  text not null,
+  subject_id       text,
+  age_group        text not null check (age_group in ('adult','teen')),
+  tier             smallint not null default 1,
+  enqueued_at      timestamptz not null default now(),
+  matched_duel_id  uuid references social.duels(id) on delete set null
+);
+create index on social.duel_queue (exam_profile_id, age_group, enqueued_at) where matched_duel_id is null;
+
+create table social.duel_events (                -- what the realtime channel carries
+  id          bigint generated always as identity primary key,
+  duel_id     uuid not null references social.duels(id) on delete cascade,
+  kind        text not null,
+  payload     jsonb not null default '{}',
+  created_at  timestamptz not null default now()
+);
+create index on social.duel_events (duel_id, id);
+
+create table game.league_players (               -- tier and history between weeks (R30)
+  user_id          uuid primary key references auth.users(id) on delete cascade,
+  tier             smallint not null default 1 check (tier between 1 and 10),
+  best_week_xp     integer,
+  best_week_tier   smallint,
+  best_week_start  date,
+  last_week_start  date,
+  last_tier        smallint,
+  last_rank        smallint,
+  last_xp          integer,
+  last_result      text check (last_result in ('promoted','stayed','demoted')),
+  result_seen_at   timestamptz,
+  updated_at       timestamptz not null default now()
+);
+alter table game.league_members add column joined_at timestamptz not null default now();
+create index on game.league_cohorts (week_start, exam_group, tier) where status = 'open';
+```
+
+RLS: `social.members`, `social.duel_queue` and `game.league_players` are owner read, server write; `social.handle_reservations` is service only; `social.duel_players` and `social.duel_events` are readable by the two players only, through the `security definer` function `social.is_duel_player(duel, user)` (the realtime channel `duel:{id}` uses the same rule).
+
+### 17.5 `20261030500001_parent_mode.sql` (Phase 3 parent mode, me-money §4.7)
+
+```sql
+alter table app.parental_controls
+  add column social_enabled boolean not null default true,   -- SET-14: friends, duels and the rest
+  add column tutor_enabled  boolean not null default true,   -- SET-14: the AI tutor (older children)
+  add constraint parental_controls_hours_pair check ((allowed_from is null) = (allowed_to is null));
+
+alter table app.guardian_links
+  add column weekly_report boolean not null default true;    -- SET-14 "Weekly email report", per guardian
+
+alter table app.time_requests
+  add column for_date date not null,              -- the child's local day the extra minutes are for
+  add constraint time_requests_minutes check (minutes between 1 and 120);
+-- guardian_user_id stays null while the ask is open and records who allowed or declined it.
+create unique index time_requests_one_pending on app.time_requests (learner_user_id) where status = 'pending';
+```
+
+How the server uses them: the social gate answers `parent_off` (403 `parent_turned_off`) and hides the child everywhere social when `social_enabled` is false; the tutor refuses with 403 `parent_turned_off` when `tutor_enabled` is false or, for a little learner, `tutor_button` is not on; the tutor also refuses a new chat with `time_limit_reached` or `outside_allowed_hours` from `daily_limit_min` (plus today's allowed `time_requests`) and the synced `learn.activity_days.minutes`. RLS is unchanged (learner or guardian read, server write, §12).
+
+### 17.6 `20261030500002_family_plan.sql` (PRD §11.2: ₹799/year and the family plan, Phase 3)
+
+```sql
+alter table billing.products
+  add column plan text not null default 'individual' check (plan in ('individual','family')),
+  alter column price_paise drop not null,         -- a family product's price is an owner flag
+  add constraint products_price_set check (price_paise is not null or plan = 'family');
+
+alter table billing.entitlements                  -- Pro from someone else's family plan
+  add constraint entitlements_source_check check (source in ('razorpay','play','app_store','promo','family'));
+
+create table billing.family_groups (               -- one per paid family subscription
+  id               uuid primary key default gen_random_uuid(),
+  owner_user_id    uuid not null references auth.users(id) on delete cascade,   -- the payer
+  subscription_id  uuid not null unique references billing.subscriptions(id) on delete cascade,
+  created_at       timestamptz not null default now()
+);
+create index on billing.family_groups (owner_user_id);
+
+create table billing.family_members (              -- seats are people besides the payer
+  group_id    uuid not null references billing.family_groups(id) on delete cascade,
+  user_id     uuid not null references auth.users(id) on delete cascade,
+  added_by    uuid references auth.users(id) on delete set null,
+  via         text not null check (via in ('guardian_link','invite')),   -- children only via a guardian link
+  joined_at   timestamptz not null default now(),
+  removed_at  timestamptz,
+  primary key (group_id, user_id)
+);
+create unique index family_members_one_active on billing.family_members (user_id) where removed_at is null;
+
+create table billing.family_invites (              -- codes for adults; only the sha256 is stored
+  id           uuid primary key default gen_random_uuid(),
+  group_id     uuid not null references billing.family_groups(id) on delete cascade,
+  created_by   uuid not null references auth.users(id) on delete cascade,
+  code_hash    text not null unique,
+  created_at   timestamptz not null default now(),
+  accepted_by  uuid references auth.users(id) on delete set null,
+  accepted_at  timestamptz,
+  revoked_at   timestamptz
+);
+create index on billing.family_invites (group_id);
+```
+
+The product rows (`pro_yearly_*` at 79900 paise, `family_monthly_*` and `family_yearly_*` with no price) are in `supabase/seed.sql`. `/v1/config` and checkout leave a family product out until the owner sets `billing.family_seats` and that period's `billing.family_{monthly,yearly}_price_paise`.
+
+RLS: the payer reads the group, its members and its invites; a member reads the group and their own membership row (the members policy asks the `security definer` function `billing.owns_family_group(group)` so the two policies don't read each other); no client writes.

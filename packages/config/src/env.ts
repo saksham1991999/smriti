@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/mini';
 
 import { VARIANT_IDS } from './variant';
 
@@ -10,25 +10,21 @@ import { VARIANT_IDS } from './variant';
 export const APP_ENVS = ['local', 'test', 'preview', 'staging', 'production'] as const;
 export type AppEnv = (typeof APP_ENVS)[number];
 
-const optionalUrl = z
-  .string()
-  .url()
-  .optional()
-  .or(z.literal('').transform(() => undefined));
-const optionalString = z
-  .string()
-  .optional()
-  .transform((v) => (v === '' ? undefined : v));
+const optionalUrl = z.union([z.optional(z.url()), z.pipe(z.literal(''), z.transform(() => undefined))]);
+const optionalString = z.pipe(
+  z.optional(z.string()),
+  z.transform((v: string | undefined) => (v === '' ? undefined : v)),
+);
 
 export const clientEnvSchema = z
   .object({
-    APP_ENV: z.enum(APP_ENVS).default('local'),
-    APP_VARIANT: z.enum(VARIANT_IDS).default('all'),
+    APP_ENV: z._default(z.enum(APP_ENVS), 'local'),
+    APP_VARIANT: z._default(z.enum(VARIANT_IDS), 'all'),
     /** Base URL of the FastAPI service, without `/v1`. */
-    API_BASE_URL: z.string().url(),
+    API_BASE_URL: z.url(),
     CDN_BASE_URL: optionalUrl,
     /** `supabase` uses Supabase Auth; `dev` uses `/v1/dev/auth/*` (only APP_ENV local or test). */
-    AUTH_MODE: z.enum(['supabase', 'dev']).default('dev'),
+    AUTH_MODE: z._default(z.enum(['supabase', 'dev']), 'dev'),
     SUPABASE_URL: optionalUrl,
     /** The anon key is public by design (RLS protects data). */
     SUPABASE_ANON_KEY: optionalString,
@@ -41,17 +37,19 @@ export const clientEnvSchema = z
     /** Product analytics ingest (the API's event endpoint); empty turns product analytics off. */
     ANALYTICS_URL: optionalUrl,
   })
-  .superRefine((env, ctx) => {
-    if (env.AUTH_MODE === 'supabase') {
-      if (!env.SUPABASE_URL) ctx.addIssue({ code: 'custom', path: ['SUPABASE_URL'], message: 'required when AUTH_MODE=supabase' });
-      if (!env.SUPABASE_ANON_KEY) {
-        ctx.addIssue({ code: 'custom', path: ['SUPABASE_ANON_KEY'], message: 'required when AUTH_MODE=supabase' });
+  .check(
+    z.superRefine((env, ctx) => {
+      if (env.AUTH_MODE === 'supabase') {
+        if (!env.SUPABASE_URL) ctx.addIssue({ code: 'custom', path: ['SUPABASE_URL'], message: 'required when AUTH_MODE=supabase' });
+        if (!env.SUPABASE_ANON_KEY) {
+          ctx.addIssue({ code: 'custom', path: ['SUPABASE_ANON_KEY'], message: 'required when AUTH_MODE=supabase' });
+        }
       }
-    }
-    if (env.AUTH_MODE === 'dev' && env.APP_ENV !== 'local' && env.APP_ENV !== 'test') {
-      ctx.addIssue({ code: 'custom', path: ['AUTH_MODE'], message: 'dev auth only runs with APP_ENV local or test' });
-    }
-  });
+      if (env.AUTH_MODE === 'dev' && env.APP_ENV !== 'local' && env.APP_ENV !== 'test') {
+        ctx.addIssue({ code: 'custom', path: ['AUTH_MODE'], message: 'dev auth only runs with APP_ENV local or test' });
+      }
+    }),
+  );
 
 export type ClientEnv = z.infer<typeof clientEnvSchema>;
 

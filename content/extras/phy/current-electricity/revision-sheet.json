@@ -1,0 +1,296 @@
+{
+  "schema": "revision_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+      "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Revision sheet for the chapter, gathered from the topic cheat sheets. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "rs.phy.current-electricity",
+  "scope": "chapter",
+  "chapter": "phy.current-electricity",
+  "title": {
+    "en": "Current Electricity",
+    "hi": "विद्युत धारा"
+  },
+  "concepts": [
+    "phy.current-electricity.current.core.drift-velocity",
+    "phy.current-electricity.ohms-law.core.ohms-law-def",
+    "phy.current-electricity.resistivity.core.resistivity-conductivity",
+    "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+    "phy.current-electricity.energy-power.core.electrical-power",
+    "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+    "phy.current-electricity.cells.core.emf-internal-resistance",
+    "phy.current-electricity.kirchhoff.core.kirchhoff-laws",
+    "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+  ],
+  "points": [
+    {
+      "en": "Current is charge per unit time across a section; unit ampere.",
+      "hi": "किसी काट से प्रति एकांक समय आवेश धारा है; मात्रक ऐम्पियर।"
+    },
+    {
+      "en": "Electrons drift at about mm/s; the field is set up at nearly the speed of light.",
+      "hi": "इलेक्ट्रॉन लगभग mm/s से अपवाहित होते हैं; क्षेत्र लगभग प्रकाश की चाल से स्थापित होता है।"
+    },
+    {
+      "en": "Relaxation time $\\tau$ is the average time between collisions.",
+      "hi": "विश्रांति काल $\\tau$ दो टक्करों के बीच का औसत समय है।"
+    },
+    {
+      "en": "$V \\propto I$ for an ohmic conductor at fixed temperature; $R$ in ohm.",
+      "hi": "नियत ताप पर ओमीय चालक के लिए $V \\propto I$; $R$ ओम में।"
+    },
+    {
+      "en": "Deviations: non-proportional, sign-dependent (diode), non-unique (GaAs).",
+      "hi": "विचलन: अनुपात न रहना, चिह्न पर निर्भरता (डायोड), अद्वितीय न होना (GaAs)।"
+    },
+    {
+      "en": "$R \\propto l$ and $R \\propto 1/A$; $\\rho$ is a property of the material.",
+      "hi": "$R \\propto l$ और $R \\propto 1/A$; $\\rho$ पदार्थ का गुण है।"
+    },
+    {
+      "en": "Metals $10^{-8}$ to $10^{-6}$ Ω m; insulators $10^{18}$ times more or greater; semiconductors between.",
+      "hi": "धातुएँ $10^{-8}$ से $10^{-6}$ Ω m; विद्युतरोधी $10^{18}$ गुना या अधिक; अर्धचालक बीच में।"
+    },
+    {
+      "en": "Metals: $\\alpha > 0$, resistivity rises with temperature.",
+      "hi": "धातुएँ: $\\alpha > 0$, ताप के साथ प्रतिरोधकता बढ़ती है।"
+    },
+    {
+      "en": "Nichrome, manganin, constantan: weak temperature dependence, used in standard resistors.",
+      "hi": "निक्रोम, मैंगनिन, कांसटेंटन: ताप पर कम निर्भरता, मानक प्रतिरोधकों में उपयोग।"
+    },
+    {
+      "en": "Semiconductors: resistivity falls with temperature because $n$ rises.",
+      "hi": "अर्धचालक: $n$ बढ़ने से ताप के साथ प्रतिरोधकता घटती है।"
+    },
+    {
+      "en": "Energy lost in collisions heats a resistor: ohmic loss.",
+      "hi": "टक्करों में खोई ऊर्जा प्रतिरोधक को गरम करती है: ओमी क्षय।"
+    },
+    {
+      "en": "1 kW h $= 3.6 \\times 10^{6}$ J.",
+      "hi": "1 kW h $= 3.6 \\times 10^{6}$ J।"
+    },
+    {
+      "en": "High transmission voltage cuts line loss; a transformer steps it down for use.",
+      "hi": "उच्च संचरण वोल्टता लाइन क्षय घटाती है; ट्रांसफार्मर उपयोग के लिए उसे घटाता है।"
+    },
+    {
+      "en": "Series: same current, voltages add.",
+      "hi": "श्रेणी: एक ही धारा, वोल्टताएँ जुड़ती हैं।"
+    },
+    {
+      "en": "Parallel: same voltage, currents add; $R_p$ below the smallest.",
+      "hi": "पार्श्व: एक ही वोल्टता, धाराएँ जुड़ती हैं; $R_p$ सबसे छोटे से कम।"
+    },
+    {
+      "en": "A series circuit stops if one part fails; a parallel one does not.",
+      "hi": "श्रेणी परिपथ एक भाग खराब होने पर रुकता है; पार्श्व नहीं।"
+    },
+    {
+      "en": "Emf is the open-circuit potential difference of a cell.",
+      "hi": "वि.वा.ब. सेल का खुले परिपथ का विभवांतर है।"
+    },
+    {
+      "en": "Terminal voltage falls by $Ir$ when current flows.",
+      "hi": "धारा बहने पर टर्मिनल विभवांतर $Ir$ घटता है।"
+    },
+    {
+      "en": "Dry cells have much higher internal resistance than common electrolytic cells.",
+      "hi": "शुष्क सेलों का आंतरिक प्रतिरोध सामान्य विद्युत अपघटनी सेलों से बहुत अधिक है।"
+    },
+    {
+      "en": "Junction rule: charge does not accumulate at a junction.",
+      "hi": "संधि नियम: संधि पर आवेश संचित नहीं होता।"
+    },
+    {
+      "en": "Loop rule: potential depends only on the point, so the sum of changes round a loop is zero.",
+      "hi": "पाश नियम: विभव केवल बिंदु पर निर्भर है, इसलिए पाश में परिवर्तनों का योग शून्य।"
+    },
+    {
+      "en": "Balanced bridge: null deflection, $I_g = 0$.",
+      "hi": "संतुलित सेतु: शून्य विक्षेप, $I_g = 0$।"
+    },
+    {
+      "en": "Metre bridge: the wire's two parts form two arms; keep the null point between 30 cm and 70 cm.",
+      "hi": "मीटर सेतु: तार के दो भाग दो भुजाएँ बनाते हैं; शून्य बिंदु 30 cm और 70 cm के बीच रखें।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Current",
+        "hi": "धारा"
+      },
+      "latex": "I = \\frac{\\Delta Q}{\\Delta t}"
+    },
+    {
+      "name": {
+        "en": "Current and drift",
+        "hi": "धारा और अपवाह"
+      },
+      "latex": "I = neA|v_d|"
+    },
+    {
+      "name": {
+        "en": "Drift velocity",
+        "hi": "अपवाह वेग"
+      },
+      "latex": "|v_d| = \\frac{eE\\tau}{m}"
+    },
+    {
+      "name": {
+        "en": "Mobility",
+        "hi": "गतिशीलता"
+      },
+      "latex": "\\mu = \\frac{|v_d|}{E} = \\frac{e\\tau}{m}"
+    },
+    {
+      "name": {
+        "en": "Ohm's law",
+        "hi": "ओम का नियम"
+      },
+      "latex": "V = IR"
+    },
+    {
+      "name": {
+        "en": "Resistance",
+        "hi": "प्रतिरोध"
+      },
+      "latex": "R = \\rho \\frac{l}{A}"
+    },
+    {
+      "name": {
+        "en": "Ohm's law at a point",
+        "hi": "बिंदु पर ओम का नियम"
+      },
+      "latex": "j = \\sigma E"
+    },
+    {
+      "name": {
+        "en": "Resistivity from drift",
+        "hi": "अपवाह से प्रतिरोधकता"
+      },
+      "latex": "\\rho = \\frac{m}{ne^{2}\\tau}"
+    },
+    {
+      "name": {
+        "en": "Temperature dependence",
+        "hi": "ताप पर निर्भरता"
+      },
+      "latex": "\\rho_T = \\rho_0 [1 + \\alpha (T - T_0)]"
+    },
+    {
+      "name": {
+        "en": "Power",
+        "hi": "शक्ति"
+      },
+      "latex": "P = IV = I^{2}R = \\frac{V^{2}}{R}"
+    },
+    {
+      "name": {
+        "en": "Line loss",
+        "hi": "लाइन क्षय"
+      },
+      "latex": "P_c = \\frac{P^{2}R_c}{V^{2}}"
+    },
+    {
+      "name": {
+        "en": "Series",
+        "hi": "श्रेणी"
+      },
+      "latex": "R_s = R_1 + R_2 + R_3"
+    },
+    {
+      "name": {
+        "en": "Parallel",
+        "hi": "पार्श्व"
+      },
+      "latex": "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}"
+    },
+    {
+      "name": {
+        "en": "Terminal voltage",
+        "hi": "टर्मिनल विभवांतर"
+      },
+      "latex": "V = \\varepsilon - Ir"
+    },
+    {
+      "name": {
+        "en": "Current",
+        "hi": "धारा"
+      },
+      "latex": "I = \\frac{\\varepsilon}{R + r}"
+    },
+    {
+      "name": {
+        "en": "Series cells",
+        "hi": "श्रेणी सेल"
+      },
+      "latex": "\\varepsilon_{eq} = \\varepsilon_1 + \\varepsilon_2, \\; r_{eq} = r_1 + r_2"
+    },
+    {
+      "name": {
+        "en": "Parallel cells",
+        "hi": "पार्श्व सेल"
+      },
+      "latex": "\\frac{\\varepsilon_{eq}}{r_{eq}} = \\sum \\frac{\\varepsilon_i}{r_i}"
+    },
+    {
+      "name": {
+        "en": "Junction rule",
+        "hi": "संधि नियम"
+      },
+      "latex": "\\sum I_{in} = \\sum I_{out}"
+    },
+    {
+      "name": {
+        "en": "Loop rule",
+        "hi": "पाश नियम"
+      },
+      "latex": "\\sum \\Delta V = 0"
+    },
+    {
+      "name": {
+        "en": "Balance condition",
+        "hi": "संतुलन की शर्त"
+      },
+      "latex": "\\frac{R_2}{R_1} = \\frac{R_4}{R_3}"
+    },
+    {
+      "name": {
+        "en": "Metre bridge",
+        "hi": "मीटर सेतु"
+      },
+      "latex": "S = R\\,\\frac{l}{100 - l}"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Quick Revision for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.cells:quick_revision",
+  "topic": "phy.current-electricity.cells",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.cells.core.emf-internal-resistance"
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.cells:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.current-electricity.cells"
+    },
+    {
+      "id": "phy.current-electricity.cells:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.cells.0004"
+    },
+    {
+      "id": "phy.current-electricity.cells:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$V = \\varepsilon - Ir$; open circuit $V = \\varepsilon$.",
+          "hi": "$V = \\varepsilon - Ir$; खुले परिपथ में $V = \\varepsilon$।"
+        },
+        {
+          "en": "Series cells add emf and $r$; parallel cells use reciprocal sums.",
+          "hi": "श्रेणी सेल वि.वा.ब. और $r$ जोड़ते हैं; पार्श्व सेल व्युत्क्रम योग लेते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.cells:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A voltmeter across a cell in use reads its emf.",
+            "hi": "उपयोग में चल रहे सेल पर वोल्टमीटर उसका वि.वा.ब. पढ़ता है।"
+          },
+          "correct": {
+            "en": "It reads $\\varepsilon - Ir$; only with no current is it $\\varepsilon$.",
+            "hi": "यह $\\varepsilon - Ir$ पढ़ता है; केवल धारा न होने पर $\\varepsilon$।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Cells in parallel add their emfs.",
+            "hi": "पार्श्वक्रम में सेलों के वि.वा.ब. जुड़ते हैं।"
+          },
+          "correct": {
+            "en": "Only series cells add emfs; parallel cells give a weighted value.",
+            "hi": "केवल श्रेणी सेलों के वि.वा.ब. जुड़ते हैं; पार्श्व सेल भारित मान देते हैं।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

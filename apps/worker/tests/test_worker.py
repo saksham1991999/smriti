@@ -53,12 +53,19 @@ def test_crons_live_on_the_default_queue() -> None:
         "trial_reminders",
         "media_sweep",
         "mocks_auto_submit",
+        "live_mocks_tick",
+        "fsrs_optimise",
+        "irt_calibrate",
         "tutor_retention",
+        "weak_area_alerts",
+        "rhythm_estimates",
         "league_assign",
         "league_rollover",
         "duo_rollup",
         "duel_sweep",
         "squad_quests",
+        "deck_moderation",
+        "parent_digest",
     }
 
 

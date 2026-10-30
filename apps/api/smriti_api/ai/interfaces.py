@@ -97,6 +97,8 @@ class VoiceContext:
     system_instruction: str
     locale: str
     tools: Sequence[ToolSpec] = ()
+    # How long the minted token may be used; the provider's default when None.
+    ttl_s: int | None = None
 
 
 @dataclass(frozen=True)

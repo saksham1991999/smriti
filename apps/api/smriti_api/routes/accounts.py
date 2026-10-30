@@ -30,7 +30,7 @@ from smriti_api.schemas.api import (
     MergeRequest,
     MergeStatus,
 )
-from smriti_api.services import accounts
+from smriti_api.services import accounts, billing_checkout
 from smriti_api.services import flags as flag_service
 from smriti_api.services.jobs import JobDeps
 from smriti_api.services.state import profile_state
@@ -147,6 +147,10 @@ async def request_deletion(
             flags = await flag_service.server_flags(session)
         grace = int(flags.get("auth.deletion_grace_days", 7) or 7)
         when = await accounts.request_deletion(services.db, _deps(services), auth, grace)
+        if services.integrations is not None:  # stop web renewals (auth flow §6.8)
+            await billing_checkout.cancel_for_deletion(
+                services.db, services.integrations, auth.user_id
+            )
         return DeletionResponse(scheduled_for=when)
 
     return await idempotent(

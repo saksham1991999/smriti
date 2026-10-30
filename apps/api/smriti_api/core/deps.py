@@ -20,6 +20,7 @@ from smriti_api.core.errors import ApiError, login_required
 from smriti_api.core.idempotency import IdempotencyStore
 from smriti_api.core.logging import hash_user_id
 from smriti_api.core.ratelimit import RateLimiter
+from smriti_api.integrations import Integrations
 from smriti_api.services.analytics import AnalyticsSink
 from smriti_api.services.auth_admin import AuthAdmin
 from smriti_api.services.jobs import JobQueue
@@ -38,6 +39,8 @@ class AppServices:
     auth_admin: AuthAdmin
     analytics: AnalyticsSink
     ai: AIGateway
+    # Billing, mail, push and storage providers (Agent A, wave 2). Built in build_services.
+    integrations: Integrations | None = None
 
 
 def get_services(request: Request) -> AppServices:

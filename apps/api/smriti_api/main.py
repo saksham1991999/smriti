@@ -32,6 +32,7 @@ from smriti_api.routes import guardian as guardian_routes
 from smriti_api.routes import leagues as league_routes
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import notify as notify_routes
+from smriti_api.routes import parent_mode as parent_routes
 from smriti_api.routes import practice as practice_routes
 from smriti_api.routes import reviews as reviews_routes
 from smriti_api.routes import shared_decks as shared_deck_routes
@@ -192,6 +193,8 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
         league_routes.router,
         duel_routes.router,
         shared_deck_routes.router,
+        # Phase 3 parent mode (Agent B).
+        parent_routes.router,
     ):
         app.include_router(router)
     if settings.is_dev:

@@ -5,8 +5,8 @@
  *
  * It implements the client-facing slice of `docs/contracts/sync.md` v1.2 so the app can run its
  * whole journey without apps/api: dev auth (anonymous, Google, refresh), `POST /v1/sync/events`,
- * `GET /v1/sync/state`, plus `GET /v1/config`, `GET /v1/billing/intro-eligibility` and a dev
- * purchase endpoint that plays RevenueCat's webhook. State is recomputed from the stored events
+ * `GET /v1/sync/state`, plus `GET /v1/config`, `GET /v1/catalog/exams`,
+ * `GET /v1/billing/intro-eligibility`, `POST /v1/devices` and `POST /v1/webhooks/revenuecat`. State is recomputed from the stored events
  * with app-core's own rules (streak, plant, pet), the way the server's roll-up does (TRD §10).
  */
 import {
@@ -66,6 +66,8 @@ export interface FakeApiOptions {
   catalogue?: FakeCatalogueExam[];
   /** Simulate an outage: every sync call answers this status. */
   failSyncWith?: number | null;
+  /** The Authorization value `/v1/webhooks/revenuecat` accepts (FakeBilling sends it). */
+  revenuecatWebhookAuth?: string;
 }
 
 export type FakeCatalogueExam = CatalogueExam;
@@ -93,11 +95,15 @@ export class FakeApiServer {
   private seq = 0;
   private readonly clock: () => number;
   private readonly ttl: number;
+  private readonly revenuecatAuth: string;
+  /** Devices registered with `POST /v1/devices`, by user id. */
+  readonly devices = new Map<string, { pushToken: string | null; permission: string }>();
   failSyncWith: number | null;
 
   constructor(private readonly opts: FakeApiOptions = {}) {
     this.clock = opts.clock ?? (() => Date.now());
     this.ttl = opts.tokenTtlS ?? 3600;
+    this.revenuecatAuth = opts.revenuecatWebhookAuth ?? '';
     this.failSyncWith = opts.failSyncWith ?? null;
   }
 
@@ -137,30 +143,52 @@ export class FakeApiServer {
     if (method === 'GET' && p === '/v1/config') return json(200, this.config());
     if (method === 'GET' && p === '/v1/catalog/exams') return json(200, this.exams());
 
+    if (method === 'POST' && p === '/v1/webhooks/revenuecat') return this.revenuecat(body, init.headers?.Authorization ?? init.headers?.authorization ?? '');
+
     const user = bearer ? this.userByToken(bearer) : null;
     if (!user) return json(401, { code: 'unauthorized' });
 
     if (p.startsWith('/v1/sync/') && this.failSyncWith) return json(this.failSyncWith, { code: 'unavailable' });
     if (method === 'POST' && p === '/v1/sync/events') return this.events(user, body);
     if (method === 'GET' && p === '/v1/sync/state') return json(200, this.stateSince(user, u.searchParams.get('since')));
-    if (method === 'GET' && p === '/v1/billing/intro-eligibility') return json(200, { eligible: !user.introUsed && !user.isAnonymous });
-    if (method === 'POST' && p === '/v1/dev/billing/purchase') {
-      if (user.isAnonymous) return json(403, { code: 'sign_in_required' });
-      const now = this.clock();
-      const intro = !user.introUsed;
-      user.introUsed = true;
-      user.entitlement = {
-        plan: 'pro',
-        status: 'active',
-        pro_until: new Date(now + 30 * 86_400_000).toISOString(),
-        is_intro: intro,
-        cancel_at_period_end: false,
-        source: 'fake_store',
-      };
-      user.stateVersion = ++this.seq;
-      return json(200, { transaction_id: `fake-${this.seq}` });
+    if (method === 'GET' && p === '/v1/billing/intro-eligibility') {
+      // As the server: null for a guest (only the hint is known until sign-in).
+      const eligible = user.isAnonymous ? null : !user.introUsed;
+      return json(200, {
+        eligible,
+        eligible_hint: !user.introUsed,
+        reason: user.isAnonymous ? 'guest' : user.introUsed ? 'had_subscription' : null,
+        intro_price_paise: eligible === false ? null : 100,
+        price_paise: 9900,
+      });
+    }
+    if (method === 'POST' && p === '/v1/devices') {
+      const id = `dev-${user.id.slice(0, 8)}`;
+      this.devices.set(user.id, { pushToken: typeof body.push_token === 'string' ? body.push_token : null, permission: String(body.notif_permission ?? 'not_asked') });
+      return json(200, { id, has_push_token: typeof body.push_token === 'string', has_web_push: false, notif_permission: body.notif_permission ?? 'not_asked' });
     }
     return json(404, { code: 'not_found' });
+  }
+
+  /** As the server's RevenueCat webhook: the exact Authorization value, then INITIAL_PURCHASE → Pro. */
+  private revenuecat(body: Record<string, unknown>, authorization: string): HttpResponse {
+    if (!this.revenuecatAuth || authorization !== this.revenuecatAuth) return json(401, { code: 'invalid_signature' });
+    const ev = (body.event ?? {}) as Record<string, unknown>;
+    const user = this.users.get(String(ev.app_user_id ?? ''));
+    if (!user) return json(200, { status: 'ignored' });
+    if (ev.type !== 'INITIAL_PURCHASE') return json(200, { status: 'ignored' });
+    const intro = ev.period_type === 'INTRO' && !user.introUsed;
+    if (intro) user.introUsed = true;
+    user.entitlement = {
+      plan: 'pro',
+      status: intro ? 'trialing' : 'active',
+      pro_until: new Date(Number(ev.expiration_at_ms ?? this.clock() + 30 * 86_400_000)).toISOString(),
+      is_intro: intro,
+      cancel_at_period_end: false,
+      source: ev.store === 'APP_STORE' ? 'app_store' : 'play',
+    };
+    user.stateVersion = ++this.seq;
+    return json(200, { status: 'applied' });
   }
 
   private google(body: Record<string, unknown>, bearer: string | null): HttpResponse {

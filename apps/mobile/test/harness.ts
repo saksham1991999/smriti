@@ -16,6 +16,9 @@ export const nodeCrypto: CryptoLike = {
   subtle: { digest: (_alg, data) => webcrypto.subtle.digest('SHA-256', data as Uint8Array<ArrayBuffer>) },
 };
 
+/** The in-test fake API's RevenueCat webhook value (not the real API's). */
+const FAKE_WEBHOOK_AUTH = 'fake-test-revenuecat';
+
 export interface TestRig {
   app: SmritiApp;
   fake: FakeApiServer;
@@ -36,14 +39,22 @@ export function createTestApp(opts: { variant?: string; now?: number; fake?: Fak
       this.now += ms;
     },
   };
-  const fake = opts.fake ?? new FakeApiServer({ clock: () => clock.now });
+  const fake = opts.fake ?? new FakeApiServer({ clock: () => clock.now, revenuecatWebhookAuth: FAKE_WEBHOOK_AUTH });
   const env = parseClientEnv({ EXPO_PUBLIC_APP_ENV: 'test', EXPO_PUBLIC_API_BASE_URL: opts.live?.baseUrl ?? 'http://fake.local', EXPO_PUBLIC_AUTH_MODE: 'dev' });
   const network = new ManualNetwork(true);
   const notifier = new MemoryNotifier(true);
   const app = new SmritiApp({
     env,
     variant: getVariant(opts.variant ?? 'all'),
-    switches: { ...readSwitches(env), billing: 'fake', googleSignIn: 'dev', fakeApi: !opts.live },
+    switches: {
+      ...readSwitches(env),
+      billing: 'fake',
+      googleSignIn: 'dev',
+      fakeApi: !opts.live,
+      // Live runs post to the local API's webhook with its local-only header (apps/api
+      // integrations DEV_REVENUECAT_WEBHOOK_AUTH); override with SMRITI_LIVE_REVENUECAT_AUTH.
+      devRevenueCatWebhookAuth: opts.live ? (process.env.SMRITI_LIVE_REVENUECAT_AUTH ?? 'Bearer dev-revenuecat-webhook') : FAKE_WEBHOOK_AUTH,
+    },
     stores: { storage: new InMemoryStorage(), kv: new MemoryKeyValueStore(), secure: new MemoryKeyValueStore(), kind: 'memory' },
     deviceId: randomUuid(nodeCrypto),
     fetch: opts.live?.fetch ?? fake.asFetch(),

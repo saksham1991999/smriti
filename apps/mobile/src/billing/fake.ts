@@ -2,27 +2,39 @@ import type { Fetch } from '@smriti/app-core';
 
 import type { BillingProvider, Offer, PurchaseResult } from './types';
 
+/** What `/v1/billing/intro-eligibility` says (R38: ₹1 is shown only when the server says so). */
+export interface IntroEligibility {
+  eligible: boolean | null;
+  eligibleHint: boolean;
+  introPricePaise: number | null;
+  pricePaise: number;
+}
+
 /**
- * Dev and test billing: no store, no money. A purchase asks the dev API to record a store
- * purchase for this account (`POST /v1/dev/billing/purchase`, APP_ENV local or test only), which
- * plays the part of RevenueCat's webhook; the app then sees Pro arrive through `/v1/sync/state`
- * exactly as it will in production. Prices come from the variant's products in config (R38:
- * tax-inclusive, ₹1 intro then ₹99), passed in by the caller.
+ * Dev and test billing: no store, no money. It plays the part of the store and of RevenueCat: a
+ * purchase posts a RevenueCat-shaped `INITIAL_PURCHASE` webhook to `/v1/webhooks/revenuecat`
+ * with the API's local-only webhook header (`EXPO_PUBLIC_DEV_REVENUECAT_WEBHOOK_AUTH`; the API
+ * accepts it only when APP_ENV is local or test). The app then sees Pro arrive through
+ * `/v1/sync/state` exactly as it will in production. Prices and the ₹1 intro come from the
+ * server (`/v1/billing/intro-eligibility`), never from the app.
  */
 export class FakeBilling implements BillingProvider {
   readonly kind = 'fake' as const;
   private userId: string | null = null;
-  /** Tests flip this to simulate a cancelled store sheet. */
+  private lastEligibility: IntroEligibility | null = null;
+  /** Tests and the dev "test payment" dialog flip this to simulate the store sheet. */
   nextResult: 'purchase' | 'cancel' | 'pending' | 'fail' = 'purchase';
 
   constructor(
     private readonly o: {
       fetch: Fetch;
       baseUrl: string;
-      getAccessToken: () => Promise<string | null>;
+      platform: 'ios' | 'android' | 'web';
       products: { proMonthlyIntro: string; proMonthly: string };
-      prices: { introPaise: number; monthlyPaise: number };
-      introEligible: () => boolean;
+      introEligibility: () => Promise<IntroEligibility>;
+      /** The API's local-only RevenueCat webhook header; without it a purchase fails. */
+      devWebhookAuth?: string;
+      clock: () => number;
     },
   ) {}
 
@@ -31,14 +43,16 @@ export class FakeBilling implements BillingProvider {
   }
 
   async offers(): Promise<Offer[]> {
-    const eligible = this.o.introEligible();
+    const e = await this.o.introEligibility();
+    this.lastEligibility = e;
+    const intro = (e.eligible ?? e.eligibleHint) && e.introPricePaise !== null;
     return [
       {
-        productId: eligible ? this.o.products.proMonthlyIntro : this.o.products.proMonthly,
-        introPricePaise: eligible ? this.o.prices.introPaise : null,
-        pricePaise: this.o.prices.monthlyPaise,
+        productId: intro ? this.o.products.proMonthlyIntro : this.o.products.proMonthly,
+        introPricePaise: intro ? e.introPricePaise : null,
+        pricePaise: e.pricePaise,
         period: 'month',
-        introEligible: eligible,
+        introEligible: intro,
       },
     ];
   }
@@ -47,21 +61,42 @@ export class FakeBilling implements BillingProvider {
     if (this.nextResult === 'cancel') return { status: 'cancelled' };
     if (this.nextResult === 'pending') return { status: 'pending' };
     if (this.nextResult === 'fail') return { status: 'failed', code: 'store_error' };
-    const token = await this.o.getAccessToken();
-    if (!token || !this.userId) return { status: 'failed', code: 'not_allowed' };
+    if (!this.userId || !this.o.devWebhookAuth) return { status: 'failed', code: 'not_allowed' };
+    const now = this.o.clock();
+    const intro = productId === this.o.products.proMonthlyIntro && this.lastEligibility?.eligible === true;
+    const txn = `FAKE.${this.userId.replace(/-/g, '').slice(0, 20)}.${now}`;
+    const body = {
+      api_version: '1.0',
+      event: {
+        id: `fake-${txn}`,
+        type: 'INITIAL_PURCHASE',
+        event_timestamp_ms: now,
+        app_user_id: this.userId,
+        original_app_user_id: this.userId,
+        product_id: productId,
+        entitlement_ids: ['pro'],
+        period_type: intro ? 'INTRO' : 'NORMAL',
+        purchased_at_ms: now,
+        expiration_at_ms: now + 30 * 86_400_000,
+        environment: 'SANDBOX',
+        store: this.o.platform === 'ios' ? 'APP_STORE' : 'PLAY_STORE',
+        transaction_id: `${txn}..0`,
+        original_transaction_id: txn,
+        currency: 'INR',
+      },
+    };
     let res;
     try {
-      res = await this.o.fetch(`${this.o.baseUrl}/v1/dev/billing/purchase`, {
+      res = await this.o.fetch(`${this.o.baseUrl}/v1/webhooks/revenuecat`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ product_id: productId, store: 'fake' }),
+        headers: { 'Content-Type': 'application/json', Authorization: this.o.devWebhookAuth },
+        body: JSON.stringify(body),
       });
     } catch {
       return { status: 'failed', code: 'network' };
     }
     if (!res.ok) return { status: 'failed', code: 'store_error' };
-    const body = (await res.json()) as { transaction_id?: string };
-    return { status: 'purchased', productId, transactionId: body.transaction_id ?? 'fake' };
+    return { status: 'purchased', productId, transactionId: txn };
   }
 
   async restore() {

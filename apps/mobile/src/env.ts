@@ -34,6 +34,11 @@ export interface MobileSwitches {
   revenuecatAppleKey?: string;
   revenuecatGoogleKey?: string;
   simBaseUrl?: string;
+  /**
+   * Local only: the header the local API accepts on `/v1/webhooks/revenuecat`, so FakeBilling
+   * can play RevenueCat. Ignored outside APP_ENV local/test; the API refuses it elsewhere too.
+   */
+  devRevenueCatWebhookAuth?: string;
 }
 
 export function readSwitches(env: ClientEnv): MobileSwitches {
@@ -45,6 +50,7 @@ export function readSwitches(env: ClientEnv): MobileSwitches {
     revenuecatAppleKey: process.env.EXPO_PUBLIC_REVENUECAT_APPLE_KEY,
     revenuecatGoogleKey: process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE_KEY,
     simBaseUrl: process.env.EXPO_PUBLIC_SIM_BASE_URL,
+    ...(devLike && process.env.EXPO_PUBLIC_DEV_REVENUECAT_WEBHOOK_AUTH ? { devRevenueCatWebhookAuth: process.env.EXPO_PUBLIC_DEV_REVENUECAT_WEBHOOK_AUTH } : {}),
   };
 }
 

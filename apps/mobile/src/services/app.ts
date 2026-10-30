@@ -49,7 +49,7 @@ import { createStore, type StoreApi } from 'zustand/vanilla';
 
 import { withDevLinkFlag } from '../auth/devLinkFetch';
 import type { AppleSignInProvider, GoogleSignInProvider } from '../auth/providers';
-import { FakeBilling, RevenueCatBilling } from '../billing/fake';
+import { FakeBilling, RevenueCatBilling, type IntroEligibility } from '../billing/fake';
 import type { BillingProvider, PurchaseResult } from '../billing/types';
 import { CATALOGUE_SNAPSHOT, catalogueFromApi, type CatalogueExam } from '../content/catalogue';
 import type { ContentRepo } from '../content/repo';
@@ -241,10 +241,11 @@ export class SmritiApp {
         ? new FakeBilling({
             fetch: deps.fetch,
             baseUrl: env.API_BASE_URL,
-            getAccessToken: () => this.auth.getAccessToken(),
+            platform: deps.platform,
             products: variant.products,
-            prices: { introPaise: DEFAULT_PRICING.intro_paise, monthlyPaise: DEFAULT_PRICING.monthly_paise },
-            introEligible: () => true,
+            introEligibility: () => this.introEligibility(),
+            ...(deps.switches.devRevenueCatWebhookAuth ? { devWebhookAuth: deps.switches.devRevenueCatWebhookAuth } : {}),
+            clock: deps.clock,
           })
         : new RevenueCatBilling({
             apiKey: deps.platform === 'ios' ? deps.switches.revenuecatAppleKey : deps.switches.revenuecatGoogleKey,
@@ -313,6 +314,7 @@ export class SmritiApp {
     this.sync.start();
     void this.ensureSession();
     void this.loadConfig();
+    if (onboarding.completedAt) void this.registerDevice();
   }
 
   stop(): void {
@@ -596,6 +598,7 @@ export class SmritiApp {
     await this.updateOnboarding({ reminderAt: time && granted ? time : null, completedAt: new Date(this.deps.clock()).toISOString() }, 'reminder');
     await this.record('onboarding_answer', { step: 'reminder', value: (time && granted ? time : null) as OnboardingValue });
     await this.refreshReminders();
+    void this.registerDevice();
     return { granted };
   }
 
@@ -755,6 +758,51 @@ export class SmritiApp {
       if (this.store.getState().entitlement?.plan === 'pro') return this.setPurchase({ status: 'done' });
       if (this.deps.clock() >= deadline) return this.setPurchase({ status: 'pending' });
       await new Promise<void>((r) => this.deps.scheduler.setTimeout(r, opts.pollMs ?? 1500));
+    }
+  }
+
+  /**
+   * `/v1/billing/intro-eligibility`: the ₹1 month is offered only when the server says so (R38).
+   * Offline or as a guest before the first session, the price from `/v1/config` stands and no
+   * intro is promised.
+   */
+  async introEligibility(): Promise<IntroEligibility> {
+    const pricing = this.ui.getState().config.pricing;
+    try {
+      await this.ensureSession();
+      const e = await unwrap(this.api.GET('/v1/billing/intro-eligibility'));
+      return { eligible: e.eligible, eligibleHint: e.eligible_hint, introPricePaise: e.intro_price_paise, pricePaise: e.price_paise };
+    } catch {
+      return { eligible: false, eligibleHint: false, introPricePaise: null, pricePaise: pricing.monthly_paise };
+    }
+  }
+
+  /**
+   * Registers this install with `/v1/devices` (push token, permission, locale, time zone) so the
+   * server can send pushes the local plan cannot (TRD §12). Safe to call often; it is an upsert.
+   */
+  async registerDevice(): Promise<boolean> {
+    try {
+      await this.ensureSession();
+      if (!(await this.auth.getAccessToken())) return false;
+      const permission = await this.deps.notifier.permission();
+      const token = await this.deps.notifier.pushToken();
+      await unwrap(
+        this.api.POST('/v1/devices', {
+          body: {
+            app_version: this.deps.appVersion ?? '1.0.0',
+            platform: this.deps.platform,
+            locale: this.ui.getState().locale,
+            timezone: this.deps.timeZone(),
+            notif_permission: permission === 'granted' ? 'granted' : permission === 'denied' ? 'denied' : 'not_asked',
+            push_enabled: permission === 'granted' && token !== null,
+            push_token: token,
+          },
+        }),
+      );
+      return true;
+    } catch {
+      return false;
     }
   }
 

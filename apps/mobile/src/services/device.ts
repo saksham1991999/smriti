@@ -53,7 +53,9 @@ async function createDeviceApp(): Promise<SmritiApp> {
   const switches = readSwitches(env);
   // The web preview runs on the in-app fake API unless EXPO_PUBLIC_FAKE_API=0 points it at apps/api.
   const useFake = switches.fakeApi || (Platform.OS === 'web' && process.env.EXPO_PUBLIC_FAKE_API !== '0');
-  const fake = useFake ? new FakeApiServer() : null;
+  // The in-app fake has its own webhook value (it is not the API's); FakeBilling sends it.
+  const fakeWebhookAuth = 'fake-in-app-revenuecat';
+  const fake = useFake ? new FakeApiServer({ revenuecatWebhookAuth: fakeWebhookAuth }) : null;
   const network = new NetInfoNetwork();
   network.start();
   const stores = await openProfileStores(variant.id);
@@ -61,7 +63,7 @@ async function createDeviceApp(): Promise<SmritiApp> {
   const app = new SmritiApp({
     env: useFake ? { ...env, AUTH_MODE: 'dev', API_BASE_URL: 'http://fake.local' } : env,
     variant,
-    switches: useFake ? { ...switches, billing: 'fake', googleSignIn: 'dev' } : switches,
+    switches: useFake ? { ...switches, billing: 'fake', googleSignIn: 'dev', devRevenueCatWebhookAuth: fakeWebhookAuth } : switches,
     stores,
     deviceId,
     fetch: fake ? fake.asFetch() : platformFetch,

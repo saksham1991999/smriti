@@ -1,4 +1,5 @@
 import type { NotificationPlan, PlannedNotification } from '@smriti/app-core';
+import Constants from 'expo-constants';
 import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
@@ -9,6 +10,11 @@ export interface LocalNotifier {
   requestPermission(): Promise<boolean>;
   /** Replaces every scheduled habit notification with the plan. */
   replacePlan(items: { id: string; fireAt: string; title: string; body: string; deepLink: string }[]): Promise<void>;
+  /**
+   * The Expo push token for server pushes (TRD §12), or null when there is none: no permission,
+   * a simulator, the web preview, or no EAS project id yet (`EAS_PROJECT_ID`).
+   */
+  pushToken(): Promise<string | null>;
 }
 
 /** Copy for one planned send (already localised by the caller). */
@@ -57,6 +63,17 @@ export class ExpoNotifier implements LocalNotifier {
     }
   }
 
+  async pushToken() {
+    if (Platform.OS === 'web') return null;
+    const projectId = (Constants.expoConfig?.extra as { eas?: { projectId?: string } } | undefined)?.eas?.projectId;
+    if (!projectId || (await this.permission()) !== 'granted') return null;
+    try {
+      return (await Notifications.getExpoPushTokenAsync({ projectId })).data;
+    } catch {
+      return null;
+    }
+  }
+
   private async ensureChannel() {
     if (this.channelReady || Platform.OS !== 'android') return;
     await Notifications.setNotificationChannelAsync(HABIT_CHANNEL, { name: 'Habit', importance: Notifications.AndroidImportance.DEFAULT });
@@ -78,5 +95,10 @@ export class MemoryNotifier implements LocalNotifier {
   }
   async replacePlan(items: { id: string; fireAt: string; title: string; body: string; deepLink: string }[]) {
     this.scheduled = [...items];
+  }
+  /** Tests set a token to check registration with `/v1/devices`. */
+  token: string | null = null;
+  async pushToken() {
+    return this.status === 'granted' ? this.token : null;
   }
 }

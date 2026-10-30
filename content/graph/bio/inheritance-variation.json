@@ -1,0 +1,494 @@
+{
+  "schema": "chapter@1",
+  "id": "bio.inheritance-variation",
+  "subject": "bio",
+  "unit": "bio.genetics-evolution",
+  "name": {
+    "en": "Principles of Inheritance and Variation",
+    "hi": "वंशागति तथा विविधता के सिद्धांत"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Biology, Ch 4",
+  "topics": [
+    {
+      "id": "bio.inheritance-variation.mendel",
+      "name": {
+        "en": "Mendel's Laws and Inheritance of One and Two Genes",
+        "hi": "मेंडल के नियम तथा एक और दो जीनों की वंशागति"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 4 §4.1",
+        "NCERT Class 12 Biology, Ch 4 §4.2",
+        "NCERT Class 12 Biology, Ch 4 §4.3"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.inheritance-variation.mendel.core",
+          "name": {
+            "en": "Mendel's Laws and Inheritance of One and Two Genes",
+            "hi": "मेंडल के नियम तथा एक और दो जीनों की वंशागति"
+          },
+          "concepts": [
+            {
+              "id": "bio.inheritance-variation.mendel.core.mendelian-inheritance",
+              "name": {
+                "en": "Mendelian inheritance: monohybrid and dihybrid crosses",
+                "hi": "मेंडलीय वंशागति : एकसंकर तथा द्विसंकर संकरण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Mendel's pea crosses gave the laws of dominance, segregation and independent assortment, seen in the 3 : 1 monohybrid and 9 : 3 : 3 : 1 dihybrid ratios and tested by the test cross.",
+                "hi": "मेंडल के मटर संकरणों से प्रभाविता, पृथक्करण और स्वतंत्र अपव्यूहन के नियम मिले, जो 3 : 1 एकसंकर और 9 : 3 : 3 : 1 द्विसंकर अनुपात में दिखते हैं और परीक्षार्थ संकरण से जाँचे जाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Solve monohybrid and dihybrid crosses with a Punnett square.",
+                  "hi": "पुनेट वर्ग से एकसंकर और द्विसंकर संकरण हल कीजिए।"
+                },
+                {
+                  "en": "Explain the purpose of a test cross.",
+                  "hi": "परीक्षार्थ संकरण का उद्देश्य समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.cell-cycle-division.meiosis.core.meiosis"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.1",
+                "NCERT Class 12 Biology, Ch 4 §4.2",
+                "NCERT Class 12 Biology, Ch 4 §4.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.inheritance-variation.mendel.core.deviations-mendelism",
+              "name": {
+                "en": "Incomplete dominance, co-dominance, multiple alleles, blood group inheritance and pleiotropy",
+                "hi": "अपूर्ण प्रभाविता, सहप्रभाविता, बहुविकल्पी, रक्त समूह वंशागति तथा बहुप्रभाविता"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Incomplete dominance gives an intermediate phenotype (1 : 2 : 1), co-dominance expresses both alleles as in ABO groups controlled by multiple alleles, and pleiotropy is one gene affecting several traits.",
+                "hi": "अपूर्ण प्रभाविता मध्यवर्ती लक्षणप्रारूप (1 : 2 : 1) देती है, सहप्रभाविता दोनों युग्मविकल्पियों को व्यक्त करती है जैसे बहुविकल्पियों से नियंत्रित ABO समूहों में, और बहुप्रभाविता एक जीन का अनेक लक्षणों पर प्रभाव है।"
+              },
+              "key_points": [
+                {
+                  "en": "Predict blood groups of offspring from parents' genotypes.",
+                  "hi": "माता-पिता के जीनप्रारूपों से संतति के रक्त समूह बताइए।"
+                },
+                {
+                  "en": "Give the example of phenylketonuria for pleiotropy.",
+                  "hi": "बहुप्रभाविता के लिए फ़ीनाइलकीटोनूरिया का उदाहरण दीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mendel.core.mendelian-inheritance"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-2"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.2",
+                "NCERT Class 12 Biology, Ch 4 §4.5"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.inheritance-variation.mendel.core.chromosome-theory",
+              "name": {
+                "en": "Chromosome theory of inheritance; chromosomes and genes",
+                "hi": "वंशागति का गुणसूत्रीय सिद्धांत; गुणसूत्र तथा जीन"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Sutton and Boveri linked Mendel's factors to chromosomes, which occur in pairs and segregate at meiosis, and Morgan's Drosophila work gave experimental proof.",
+                "hi": "सटन और बोवेरी ने मेंडल के कारकों को गुणसूत्रों से जोड़ा, जो युग्मों में होते हैं और अर्धसूत्री विभाजन में पृथक होते हैं, और मॉर्गन के ड्रोसोफ़िला कार्य ने प्रायोगिक प्रमाण दिया।"
+              },
+              "key_points": [
+                {
+                  "en": "State the chromosome theory of inheritance.",
+                  "hi": "वंशागति का गुणसूत्रीय सिद्धांत बताइए।"
+                },
+                {
+                  "en": "Explain why Drosophila suits genetic experiments.",
+                  "hi": "समझाइए कि ड्रोसोफ़िला आनुवंशिक प्रयोगों के लिए उपयुक्त क्यों है।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mendel.core.mendelian-inheritance"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.inheritance-variation.mendel.core.linkage-crossing-over",
+              "name": {
+                "en": "Linkage and crossing over",
+                "hi": "सहलग्नता तथा जीन विनिमय"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Genes on the same chromosome tend to be inherited together (linkage), while crossing over during meiosis produces recombinants, and recombination frequency measures distance between genes.",
+                "hi": "एक ही गुणसूत्र पर स्थित जीन साथ-साथ वंशागत होते हैं (सहलग्नता), जबकि अर्धसूत्री विभाजन में जीन विनिमय पुनर्योगज बनाता है, और पुनर्योजन आवृत्ति जीनों के बीच की दूरी मापती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Compare tightly and loosely linked genes.",
+                  "hi": "दृढ़ता से और शिथिलता से सहलग्न जीनों की तुलना कीजिए।"
+                },
+                {
+                  "en": "Use recombination frequency to map genes.",
+                  "hi": "जीनों के मानचित्रण के लिए पुनर्योजन आवृत्ति का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mendel.core.chromosome-theory"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-6"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.inheritance-variation.polygenic",
+      "name": {
+        "en": "Polygenic Inheritance",
+        "hi": "बहुजीनी वंशागति"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 4 §4.4"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.inheritance-variation.polygenic.core",
+          "name": {
+            "en": "Polygenic Inheritance",
+            "hi": "बहुजीनी वंशागति"
+          },
+          "concepts": [
+            {
+              "id": "bio.inheritance-variation.polygenic.core.polygenic-inheritance",
+              "name": {
+                "en": "Polygenic inheritance (elementary idea)",
+                "hi": "बहुजीनी वंशागति (प्रारंभिक बोध)"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Traits such as human skin colour and height are controlled by several genes with additive effects and are influenced by the environment, giving continuous variation.",
+                "hi": "मानव त्वचा का रंग और ऊँचाई जैसे लक्षण योगात्मक प्रभाव वाले अनेक जीनों से नियंत्रित होते हैं और पर्यावरण से प्रभावित होते हैं, जिससे सतत विविधता उत्पन्न होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Give two examples of polygenic traits.",
+                  "hi": "बहुजीनी लक्षणों के दो उदाहरण दीजिए।"
+                },
+                {
+                  "en": "Explain why polygenic traits vary continuously.",
+                  "hi": "समझाइए कि बहुजीनी लक्षण सतत रूप से क्यों बदलते हैं।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mendel.core.mendelian-inheritance"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.inheritance-variation.sex-determination",
+      "name": {
+        "en": "Sex Determination",
+        "hi": "लिंग निर्धारण"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 4 §4.6"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.inheritance-variation.sex-determination.core",
+          "name": {
+            "en": "Sex Determination",
+            "hi": "लिंग निर्धारण"
+          },
+          "concepts": [
+            {
+              "id": "bio.inheritance-variation.sex-determination.core.sex-determination",
+              "name": {
+                "en": "Sex determination in humans, birds and honey bee",
+                "hi": "मनुष्य, पक्षियों तथा मधुमक्खी में लिंग निर्धारण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Humans have XX females and XY males, so the sperm decides sex; in birds females are ZW and males ZZ; in honey bees fertilised eggs become females and unfertilised eggs become haploid males (haplodiploidy).",
+                "hi": "मनुष्यों में मादा XX और नर XY होते हैं, अतः शुक्राणु लिंग तय करता है; पक्षियों में मादा ZW और नर ZZ होते हैं; मधुमक्खियों में निषेचित अंडे मादा और अनिषेचित अंडे अगुणित नर बनते हैं (अगुणित-द्विगुणिता)।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain why the father determines the sex of a human child.",
+                  "hi": "समझाइए कि मानव संतान का लिंग पिता क्यों तय करता है।"
+                },
+                {
+                  "en": "Describe haplodiploid sex determination.",
+                  "hi": "अगुणित-द्विगुणित लिंग निर्धारण का वर्णन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mendel.core.chromosome-theory"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-5"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.inheritance-variation.mutation",
+      "name": {
+        "en": "Mutation",
+        "hi": "उत्परिवर्तन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 4 §4.7"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.inheritance-variation.mutation.core",
+          "name": {
+            "en": "Mutation",
+            "hi": "उत्परिवर्तन"
+          },
+          "concepts": [
+            {
+              "id": "bio.inheritance-variation.mutation.core.mutation-genetics",
+              "name": {
+                "en": "Mutation as a source of variation",
+                "hi": "विविधता के स्रोत के रूप में उत्परिवर्तन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A mutation changes the DNA sequence, as point mutations, frameshifts or chromosomal aberrations, and mutagens such as UV radiation increase its rate.",
+                "hi": "उत्परिवर्तन DNA अनुक्रम में परिवर्तन है, जैसे बिंदु उत्परिवर्तन, फ्रेमशिफ़्ट या गुणसूत्री विपथन, और UV विकिरण जैसे उत्परिवर्तजन इसकी दर बढ़ाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Give sickle-cell anaemia as an example of a point mutation.",
+                  "hi": "बिंदु उत्परिवर्तन के उदाहरण के रूप में दात्र कोशिका अरक्तता बताइए।"
+                },
+                {
+                  "en": "Name physical and chemical mutagens.",
+                  "hi": "भौतिक और रासायनिक उत्परिवर्तजनों के नाम बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mendel.core.chromosome-theory"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-21"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.inheritance-variation.genetic-disorders",
+      "name": {
+        "en": "Genetic Disorders",
+        "hi": "आनुवंशिक विकार"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 4 §4.8"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.inheritance-variation.genetic-disorders.core",
+          "name": {
+            "en": "Genetic Disorders",
+            "hi": "आनुवंशिक विकार"
+          },
+          "concepts": [
+            {
+              "id": "bio.inheritance-variation.genetic-disorders.core.sex-linked-inheritance",
+              "name": {
+                "en": "Sex-linked inheritance: haemophilia and colour blindness",
+                "hi": "लिंग-सहलग्न वंशागति : हीमोफ़ीलिया तथा वर्णांधता"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Haemophilia and red-green colour blindness are X-linked recessive traits, so they appear far more often in males, and carrier mothers pass them to half their sons; pedigree analysis traces such traits.",
+                "hi": "हीमोफ़ीलिया और लाल-हरा वर्णांधता X-सहलग्न अप्रभावी लक्षण हैं, अतः वे नरों में कहीं अधिक दिखते हैं, और वाहक माताएँ उन्हें अपने आधे पुत्रों को देती हैं; वंशावली विश्लेषण ऐसे लक्षणों का पता लगाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Predict offspring of a carrier mother and a normal father.",
+                  "hi": "वाहक माता और सामान्य पिता की संतति का पूर्वानुमान कीजिए।"
+                },
+                {
+                  "en": "Read a pedigree chart for an X-linked trait.",
+                  "hi": "X-सहलग्न लक्षण के लिए वंशावली चार्ट पढ़िए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.sex-determination.core.sex-determination"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-7"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.8"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.inheritance-variation.genetic-disorders.core.mendelian-disorders",
+              "name": {
+                "en": "Mendelian disorders in humans including thalassemia",
+                "hi": "मनुष्यों में मेंडलीय विकार, थैलेसीमिया सहित"
+              },
+              "kind": "list",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Mendelian disorders arise from mutation in a single gene; thalassemia is an autosomal recessive disorder of reduced globin chain synthesis, alongside sickle-cell anaemia and phenylketonuria.",
+                "hi": "मेंडलीय विकार एक जीन में उत्परिवर्तन से होते हैं; थैलेसीमिया ग्लोबिन शृंखला के कम संश्लेषण का अलिंगसूत्री अप्रभावी विकार है, जैसे दात्र कोशिका अरक्तता और फ़ीनाइलकीटोनूरिया।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish α- and β-thalassemia.",
+                  "hi": "α- और β-थैलेसीमिया में अंतर बताइए।"
+                },
+                {
+                  "en": "Contrast thalassemia (quantitative) with sickle-cell anaemia (qualitative).",
+                  "hi": "थैलेसीमिया (मात्रात्मक) की दात्र कोशिका अरक्तता (गुणात्मक) से तुलना कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mutation.core.mutation-genetics"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-8"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.8"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.inheritance-variation.genetic-disorders.core.chromosomal-disorders",
+              "name": {
+                "en": "Chromosomal disorders: Down's, Turner's and Klinefelter's syndromes",
+                "hi": "गुणसूत्री विकार : डाउन, टर्नर तथा क्लाइनफ़ेल्टर सिंड्रोम"
+              },
+              "kind": "list",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Errors in chromosome number cause Down's syndrome (trisomy 21), Klinefelter's syndrome (XXY males) and Turner's syndrome (XO females), each with characteristic features.",
+                "hi": "गुणसूत्र संख्या की त्रुटियों से डाउन सिंड्रोम (ट्राइसोमी 21), क्लाइनफ़ेल्टर सिंड्रोम (XXY नर) और टर्नर सिंड्रोम (XO मादा) होते हैं, प्रत्येक के विशिष्ट लक्षण होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Give the karyotype of each syndrome.",
+                  "hi": "प्रत्येक सिंड्रोम का गुणसूत्र प्रारूप बताइए।"
+                },
+                {
+                  "en": "Explain aneuploidy arising from non-disjunction.",
+                  "hi": "अविसंयोजन से उत्पन्न असुगुणिता समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.inheritance-variation.mutation.core.mutation-genetics",
+                "bio.cell-cycle-division.meiosis.core.meiosis"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-9"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 4 §4.8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Biology, Ch 4",
+      "url": "https://ncert.nic.in/textbook/pdf/lebo104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhbo1, contents prelims p.xi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhbo1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Biology Unit 7: Genetics and Evolution (PDF p.17)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

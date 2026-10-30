@@ -1,0 +1,579 @@
+{
+  "schema": "chapter@1",
+  "id": "bio.molecular-basis",
+  "subject": "bio",
+  "unit": "bio.genetics-evolution",
+  "name": {
+    "en": "Molecular Basis of Inheritance",
+    "hi": "वंशागति के आणविक आधार"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Biology, Ch 5",
+  "topics": [
+    {
+      "id": "bio.molecular-basis.dna",
+      "name": {
+        "en": "The DNA",
+        "hi": "DNA"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.1"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.dna.core",
+          "name": {
+            "en": "The DNA",
+            "hi": "DNA"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.dna.core.dna-rna-structure",
+              "name": {
+                "en": "Structure of DNA and RNA",
+                "hi": "DNA तथा RNA की संरचना"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "DNA is a double helix of two antiparallel polynucleotide chains held by hydrogen bonds between A–T and G–C pairs (Watson and Crick, with Chargaff's rules), while RNA is usually single-stranded with uracil instead of thymine.",
+                "hi": "DNA दो प्रतिसमानांतर बहुन्यूक्लियोटाइड शृंखलाओं की द्विकुंडली है जो A–T और G–C युग्मों के बीच हाइड्रोजन बंधों से जुड़ी हैं (वॉटसन और क्रिक, चारगाफ़ के नियमों सहित), जबकि RNA प्रायः एकरज्जुक होता है जिसमें थायमीन के स्थान पर यूरैसिल होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the dimensions of the B-DNA helix.",
+                  "hi": "B-DNA कुंडली की विमाएँ बताइए।"
+                },
+                {
+                  "en": "Apply Chargaff's rules to base composition.",
+                  "hi": "क्षारक संघटन पर चारगाफ़ के नियम लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-11"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.molecular-basis.dna.core.dna-packaging",
+              "name": {
+                "en": "DNA packaging: nucleosomes and chromatin",
+                "hi": "DNA संवेष्टन : न्यूक्लियोसोम तथा क्रोमैटिन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In eukaryotes negatively charged DNA wraps around positively charged histone octamers to form nucleosomes, which coil further into chromatin fibres, euchromatin being active and heterochromatin inactive.",
+                "hi": "यूकैरियोट में ऋणावेशित DNA धनावेशित हिस्टोन अष्टकों के चारों ओर लिपटकर न्यूक्लियोसोम बनाता है, जो आगे कुंडलित होकर क्रोमैटिन तंतु बनाते हैं, जिसमें यूक्रोमैटिन सक्रिय और हेटेरोक्रोमैटिन निष्क्रिय होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe a nucleosome.",
+                  "hi": "न्यूक्लियोसोम का वर्णन कीजिए।"
+                },
+                {
+                  "en": "Distinguish euchromatin and heterochromatin.",
+                  "hi": "यूक्रोमैटिन और हेटेरोक्रोमैटिन में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.dna.core.dna-rna-structure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-11"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.genetic-material",
+      "name": {
+        "en": "The Search for Genetic Material and RNA World",
+        "hi": "आनुवंशिक पदार्थ की खोज तथा RNA संसार"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.2",
+        "NCERT Class 12 Biology, Ch 5 §5.3"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.genetic-material.core",
+          "name": {
+            "en": "The Search for Genetic Material and RNA World",
+            "hi": "आनुवंशिक पदार्थ की खोज तथा RNA संसार"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.genetic-material.core.genetic-material-search",
+              "name": {
+                "en": "Search for genetic material and DNA as genetic material",
+                "hi": "आनुवंशिक पदार्थ की खोज तथा आनुवंशिक पदार्थ के रूप में DNA"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Griffith's transforming principle, Avery, MacLeod and McCarty's enzyme experiments and the Hershey–Chase experiment showed DNA to be the genetic material; DNA is more stable than RNA, and RNA was probably the first genetic material.",
+                "hi": "ग्रिफ़िथ के रूपांतरण सिद्धांत, एवरी, मैकलॉड और मैकार्टी के एंजाइम प्रयोगों और हर्शे–चेस प्रयोग ने दिखाया कि DNA आनुवंशिक पदार्थ है; DNA RNA से अधिक स्थायी है, और RNA संभवतः पहला आनुवंशिक पदार्थ था।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe the Hershey–Chase experiment.",
+                  "hi": "हर्शे–चेस प्रयोग का वर्णन कीजिए।"
+                },
+                {
+                  "en": "List the properties a genetic material must have.",
+                  "hi": "आनुवंशिक पदार्थ में होने वाले गुण सूचीबद्ध कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.dna.core.dna-rna-structure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-10"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.2",
+                "NCERT Class 12 Biology, Ch 5 §5.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.replication",
+      "name": {
+        "en": "Replication",
+        "hi": "प्रतिकृतीयन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.4"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.replication.core",
+          "name": {
+            "en": "Replication",
+            "hi": "प्रतिकृतीयन"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.replication.core.dna-replication",
+              "name": {
+                "en": "DNA replication",
+                "hi": "DNA प्रतिकृतीयन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "DNA replicates semi-conservatively, as Meselson and Stahl showed; DNA polymerase extends only 5′ → 3′, so one strand is continuous and the other discontinuous, with fragments joined by DNA ligase at the replication fork.",
+                "hi": "DNA अर्धसंरक्षी रूप से प्रतिकृत होता है, जैसा मेसेल्सन और स्टाल ने दिखाया; DNA पॉलिमरेज़ केवल 5′ → 3′ दिशा में बढ़ाता है, अतः प्रतिकृति द्विशाख पर एक रज्जुक सतत और दूसरा असतत होता है, जिसके खंडों को DNA लाइगेज़ जोड़ता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the Meselson–Stahl experiment.",
+                  "hi": "मेसेल्सन–स्टाल प्रयोग समझाइए।"
+                },
+                {
+                  "en": "Explain why one strand is made discontinuously.",
+                  "hi": "समझाइए कि एक रज्जुक असतत रूप से क्यों बनता है।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.dna.core.dna-rna-structure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-12"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.transcription",
+      "name": {
+        "en": "Transcription",
+        "hi": "अनुलेखन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.5"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.transcription.core",
+          "name": {
+            "en": "Transcription",
+            "hi": "अनुलेखन"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.transcription.core.transcription",
+              "name": {
+                "en": "Central dogma and transcription",
+                "hi": "केंद्रीय सिद्धांत तथा अनुलेखन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The central dogma states DNA → RNA → protein; in transcription, RNA polymerase copies the template strand of a transcription unit (promoter, structural gene, terminator), and in eukaryotes the hnRNA is spliced, capped and tailed.",
+                "hi": "केंद्रीय सिद्धांत DNA → RNA → प्रोटीन बताता है; अनुलेखन में RNA पॉलिमरेज़ अनुलेखन इकाई (उन्नायक, संरचनात्मक जीन, समापक) के टेम्पलेट रज्जुक की प्रतिलिपि बनाता है, और यूकैरियोट में hnRNA का समबंधन, कैपिंग और टेलिंग होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish template and coding strands.",
+                  "hi": "टेम्पलेट और कोडिंग रज्जुकों में अंतर बताइए।"
+                },
+                {
+                  "en": "Explain splicing of introns.",
+                  "hi": "इंट्रॉन के समबंधन को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.replication.core.dna-replication"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-13"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.genetic-code",
+      "name": {
+        "en": "Genetic Code",
+        "hi": "आनुवंशिक कूट"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.6"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.genetic-code.core",
+          "name": {
+            "en": "Genetic Code",
+            "hi": "आनुवंशिक कूट"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.genetic-code.core.genetic-code",
+              "name": {
+                "en": "Genetic code",
+                "hi": "आनुवंशिक कूट"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The genetic code is a triplet code of 64 codons, 61 coding for amino acids and 3 stop codons; it is unambiguous, degenerate, nearly universal and read without commas, with AUG as the start codon.",
+                "hi": "आनुवंशिक कूट 64 कोडॉनों का त्रिक कूट है, जिनमें 61 ऐमीनो अम्लों के लिए और 3 समापन कोडॉन हैं; यह असंदिग्ध, अपह्रासित, लगभग सार्वत्रिक और बिना विराम के पढ़ा जाने वाला है, तथा AUG आरंभन कोडॉन है।"
+              },
+              "key_points": [
+                {
+                  "en": "List the properties of the genetic code.",
+                  "hi": "आनुवंशिक कूट के गुण सूचीबद्ध कीजिए।"
+                },
+                {
+                  "en": "Explain how frameshift mutations alter the reading frame.",
+                  "hi": "समझाइए कि फ्रेमशिफ़्ट उत्परिवर्तन पठन ढाँचे को कैसे बदलते हैं।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.transcription.core.transcription"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-13"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.translation",
+      "name": {
+        "en": "Translation",
+        "hi": "स्थानांतरण"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.7"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.translation.core",
+          "name": {
+            "en": "Translation",
+            "hi": "स्थानांतरण"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.translation.core.translation",
+              "name": {
+                "en": "Translation and protein biosynthesis",
+                "hi": "स्थानांतरण तथा प्रोटीन जैवसंश्लेषण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "In translation, charged tRNAs bring amino acids to the ribosome, anticodons pair with mRNA codons, and peptide bonds form through initiation, elongation and termination, using untranslated regions to aid efficiency.",
+                "hi": "स्थानांतरण में आवेशित tRNA ऐमीनो अम्लों को राइबोसोम तक लाते हैं, प्रतिकोडॉन mRNA कोडॉनों से युग्मित होते हैं, और आरंभन, दीर्घीकरण तथा समापन के माध्यम से पेप्टाइड बंध बनते हैं, जिसमें अस्थानांतरित क्षेत्र दक्षता बढ़ाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe the role of tRNA as an adapter.",
+                  "hi": "अनुकूलक के रूप में tRNA की भूमिका बताइए।"
+                },
+                {
+                  "en": "Name the three stages of translation.",
+                  "hi": "स्थानांतरण की तीन अवस्थाओं के नाम बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.genetic-code.core.genetic-code"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-13",
+                "neet-ug-2026:biology:unit-7:item-17"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.gene-regulation",
+      "name": {
+        "en": "Regulation of Gene Expression",
+        "hi": "जीन अभिव्यक्ति का नियमन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.8"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.gene-regulation.core",
+          "name": {
+            "en": "Regulation of Gene Expression",
+            "hi": "जीन अभिव्यक्ति का नियमन"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.gene-regulation.core.lac-operon",
+              "name": {
+                "en": "Gene expression and regulation: the lac operon",
+                "hi": "जीन अभिव्यक्ति तथा नियमन : लैक ओपेरॉन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "In E. coli the lac operon (promoter, operator, structural genes z, y, a) is switched off by a repressor and switched on when lactose, the inducer, binds the repressor.",
+                "hi": "ई. कोलाई में लैक ओपेरॉन (उन्नायक, प्रचालक, संरचनात्मक जीन z, y, a) एक दमनकारी द्वारा बंद रहता है और प्रेरक लैक्टोज़ के दमनकारी से जुड़ने पर चालू होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the products of the z, y and a genes.",
+                  "hi": "z, y और a जीनों के उत्पाद बताइए।"
+                },
+                {
+                  "en": "Explain negative regulation by the repressor.",
+                  "hi": "दमनकारी द्वारा ऋणात्मक नियमन समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.transcription.core.transcription"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-14"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.genome",
+      "name": {
+        "en": "Human Genome Project",
+        "hi": "मानव जीनोम परियोजना"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.9"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.genome.core",
+          "name": {
+            "en": "Human Genome Project",
+            "hi": "मानव जीनोम परियोजना"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.genome.core.human-genome-project",
+              "name": {
+                "en": "Genome and the Human Genome Project",
+                "hi": "जीनोम तथा मानव जीनोम परियोजना"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The Human Genome Project sequenced the human genome using expressed sequence tags and sequence annotation, and revealed features such as about 3 × 10⁹ base pairs, fewer than 2 per cent coding sequence and many repeated sequences.",
+                "hi": "मानव जीनोम परियोजना ने व्यक्त अनुक्रम टैग और अनुक्रम टिप्पणीकरण से मानव जीनोम का अनुक्रमण किया, और लगभग 3 × 10⁹ क्षारक युग्म, 2 प्रतिशत से कम कोडिंग अनुक्रम और अनेक पुनरावृत्त अनुक्रम जैसे लक्षण बताए।"
+              },
+              "key_points": [
+                {
+                  "en": "List the goals of the project.",
+                  "hi": "परियोजना के लक्ष्य सूचीबद्ध कीजिए।"
+                },
+                {
+                  "en": "State salient features of the human genome.",
+                  "hi": "मानव जीनोम के प्रमुख लक्षण बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.replication.core.dna-replication"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-15"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.molecular-basis.fingerprinting",
+      "name": {
+        "en": "DNA Fingerprinting",
+        "hi": "DNA अंगुलिछापी"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Biology, Ch 5 §5.10"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.molecular-basis.fingerprinting.core",
+          "name": {
+            "en": "DNA Fingerprinting",
+            "hi": "DNA अंगुलिछापी"
+          },
+          "concepts": [
+            {
+              "id": "bio.molecular-basis.fingerprinting.core.dna-fingerprinting",
+              "name": {
+                "en": "DNA fingerprinting",
+                "hi": "DNA अंगुलिछापी"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "DNA fingerprinting compares repetitive DNA such as VNTRs between individuals using restriction digestion, electrophoresis and probes, and is used in forensics and paternity testing.",
+                "hi": "DNA अंगुलिछापी व्यक्तियों के बीच VNTR जैसे पुनरावृत्त DNA की तुलना प्रतिबंधन पाचन, वैद्युतकण संचलन और प्रोबों द्वारा करती है, और न्यायालयिक विज्ञान तथा पितृत्व परीक्षण में प्रयुक्त होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "List the steps of DNA fingerprinting.",
+                  "hi": "DNA अंगुलिछापी के चरण सूचीबद्ध कीजिए।"
+                },
+                {
+                  "en": "Explain polymorphism as its basis.",
+                  "hi": "इसके आधार के रूप में बहुरूपता समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.molecular-basis.genome.core.human-genome-project"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-7:item-16"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Biology, Ch 5 §5.10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Biology, Ch 5",
+      "url": "https://ncert.nic.in/textbook/pdf/lebo105.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhbo1, contents prelims p.xi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhbo1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Biology Unit 7: Genetics and Evolution (PDF p.17)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

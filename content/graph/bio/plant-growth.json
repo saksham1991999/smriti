@@ -1,0 +1,296 @@
+{
+  "schema": "chapter@1",
+  "id": "bio.plant-growth",
+  "subject": "bio",
+  "unit": "bio.plant-physiology",
+  "name": {
+    "en": "Plant Growth and Development",
+    "hi": "पादप वृद्धि एवं परिवर्धन"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Biology, Ch 13",
+  "topics": [
+    {
+      "id": "bio.plant-growth.growth",
+      "name": {
+        "en": "Growth",
+        "hi": "वृद्धि"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Biology, Ch 13 §13.1"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.plant-growth.growth.core",
+          "name": {
+            "en": "Growth",
+            "hi": "वृद्धि"
+          },
+          "concepts": [
+            {
+              "id": "bio.plant-growth.growth.core.seed-germination",
+              "name": {
+                "en": "Seed germination as the first step of plant growth",
+                "hi": "पादप वृद्धि के प्रथम चरण के रूप में बीज अंकुरण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Plant growth begins when a seed germinates under favourable water, oxygen and temperature; when conditions are unfavourable the seed stays dormant.",
+                "hi": "पादप वृद्धि तब आरंभ होती है जब अनुकूल जल, ऑक्सीजन और ताप में बीज अंकुरित होता है; प्रतिकूल परिस्थितियों में बीज प्रसुप्त रहता है।"
+              },
+              "key_points": [
+                {
+                  "en": "List the conditions needed for germination.",
+                  "hi": "अंकुरण के लिए आवश्यक परिस्थितियाँ सूचीबद्ध कीजिए।"
+                },
+                {
+                  "en": "Relate germination to seedling development.",
+                  "hi": "अंकुरण को नवोद्भिद के विकास से जोड़िए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.morphology-flowering-plants.seed.core.seed-structure"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-4:item-10"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Biology, Ch 13 §13.1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "bio.plant-growth.growth.core.plant-growth-phases",
+              "name": {
+                "en": "Phases of growth, growth rates and conditions for growth",
+                "hi": "वृद्धि की प्रावस्थाएँ, वृद्धि दर तथा वृद्धि की परिस्थितियाँ"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Plant growth is indeterminate and measurable; it passes through meristematic, elongation and maturation phases, follows arithmetic or geometric (sigmoid) patterns, and needs water, oxygen, nutrients, light and suitable temperature.",
+                "hi": "पादप वृद्धि अनिश्चित और मापनीय होती है; यह विभज्योतकी, दीर्घीकरण और परिपक्वन प्रावस्थाओं से गुज़रती है, अंकगणितीय या ज्यामितीय (सिग्मॉइड) प्रतिरूप दिखाती है, और जल, ऑक्सीजन, पोषक तत्व, प्रकाश तथा उपयुक्त ताप की आवश्यकता होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish arithmetic and geometric growth with their equations.",
+                  "hi": "अंकगणितीय और ज्यामितीय वृद्धि को उनके समीकरणों सहित अलग कीजिए।"
+                },
+                {
+                  "en": "Distinguish absolute and relative growth rates.",
+                  "hi": "निरपेक्ष और सापेक्ष वृद्धि दरों में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.plant-growth.growth.core.seed-germination"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-4:item-10"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Biology, Ch 13 §13.1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.plant-growth.differentiation",
+      "name": {
+        "en": "Differentiation, Dedifferentiation and Redifferentiation",
+        "hi": "विभेदन, निर्विभेदन तथा पुनर्विभेदन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Biology, Ch 13 §13.2"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.plant-growth.differentiation.core",
+          "name": {
+            "en": "Differentiation, Dedifferentiation and Redifferentiation",
+            "hi": "विभेदन, निर्विभेदन तथा पुनर्विभेदन"
+          },
+          "concepts": [
+            {
+              "id": "bio.plant-growth.differentiation.core.differentiation-dedifferentiation",
+              "name": {
+                "en": "Differentiation, dedifferentiation and redifferentiation",
+                "hi": "विभेदन, निर्विभेदन तथा पुनर्विभेदन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Cells from meristems mature into specialised cells (differentiation); some regain the power to divide (dedifferentiation), as in interfascicular cambium, and their products lose it again (redifferentiation).",
+                "hi": "विभज्योतकों की कोशिकाएँ परिपक्व होकर विशिष्ट कोशिकाएँ बनती हैं (विभेदन); कुछ विभाजन की क्षमता पुनः प्राप्त करती हैं (निर्विभेदन), जैसे अंतरापूलीय एधा में, और उनके उत्पाद इसे फिर खो देते हैं (पुनर्विभेदन)।"
+              },
+              "key_points": [
+                {
+                  "en": "Give an example of each process.",
+                  "hi": "प्रत्येक प्रक्रम का एक उदाहरण दीजिए।"
+                },
+                {
+                  "en": "Explain why plant growth is described as open.",
+                  "hi": "समझाइए कि पादप वृद्धि को खुली क्यों कहा जाता है।"
+                }
+              ],
+              "prerequisites": [
+                "bio.plant-growth.growth.core.plant-growth-phases"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-4:item-11"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Biology, Ch 13 §13.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.plant-growth.development",
+      "name": {
+        "en": "Development",
+        "hi": "परिवर्धन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Biology, Ch 13 §13.3"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.plant-growth.development.core",
+          "name": {
+            "en": "Development",
+            "hi": "परिवर्धन"
+          },
+          "concepts": [
+            {
+              "id": "bio.plant-growth.development.core.plant-development",
+              "name": {
+                "en": "Sequence of developmental processes in a plant cell and plasticity",
+                "hi": "पादप कोशिका में परिवर्धन प्रक्रमों का अनुक्रम तथा सुघट्यता"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Development covers all changes from germination to senescence; a meristem cell divides, expands, differentiates and matures, and plants can follow different developmental paths in response to the environment (plasticity, as in heterophylly).",
+                "hi": "परिवर्धन में अंकुरण से जीर्णता तक के सभी परिवर्तन आते हैं; विभज्योतक कोशिका विभाजित होती, फैलती, विभेदित होती और परिपक्व होती है, और पौधे पर्यावरण के अनुसार भिन्न परिवर्धन पथ अपना सकते हैं (सुघट्यता, जैसे विषमपर्णता में)।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw the sequence of developmental processes in a plant cell.",
+                  "hi": "पादप कोशिका में परिवर्धन प्रक्रमों का अनुक्रम बनाइए।"
+                },
+                {
+                  "en": "Give an example of heterophylly.",
+                  "hi": "विषमपर्णता का एक उदाहरण दीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.plant-growth.differentiation.core.differentiation-dedifferentiation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-4:item-11"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Biology, Ch 13 §13.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bio.plant-growth.growth-regulators",
+      "name": {
+        "en": "Plant Growth Regulators",
+        "hi": "पादप वृद्धि नियामक"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Biology, Ch 13 §13.4"
+      ],
+      "subtopics": [
+        {
+          "id": "bio.plant-growth.growth-regulators.core",
+          "name": {
+            "en": "Plant Growth Regulators",
+            "hi": "पादप वृद्धि नियामक"
+          },
+          "concepts": [
+            {
+              "id": "bio.plant-growth.growth-regulators.core.plant-growth-regulators",
+              "name": {
+                "en": "Auxin, gibberellin, cytokinin, ethylene and ABA",
+                "hi": "ऑक्सिन, जिबरेलिन, साइटोकाइनिन, एथिलीन तथा ABA"
+              },
+              "kind": "list",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Auxins promote rooting and apical dominance, gibberellins stem elongation and bolting, cytokinins cell division and delayed senescence, ethylene ripening and abscission, and abscisic acid dormancy and stomatal closure.",
+                "hi": "ऑक्सिन जड़ निर्माण और शीर्ष प्रभाविता, जिबरेलिन तना दीर्घीकरण और बोल्टिंग, साइटोकाइनिन कोशिका विभाजन और विलंबित जीर्णता, एथिलीन पकने और विलगन, तथा ऐब्सिसिक अम्ल प्रसुप्ति और रंध्र बंद होने को बढ़ावा देते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Match each regulator with two physiological effects.",
+                  "hi": "प्रत्येक नियामक को दो कार्यिकीय प्रभावों से मिलाइए।"
+                },
+                {
+                  "en": "Name the discovery experiments for auxin and gibberellin.",
+                  "hi": "ऑक्सिन और जिबरेलिन की खोज के प्रयोग बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "bio.plant-growth.development.core.plant-development"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:biology:unit-4:item-12"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Biology, Ch 13 §13.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 13",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo113.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khbo1, contents prelims p.xii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Biology Unit 4: Plant Physiology (PDF p.15-16)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

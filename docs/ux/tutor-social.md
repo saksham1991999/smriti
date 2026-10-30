@@ -416,6 +416,8 @@ No free-text field: the reasons are enough, and typed text would need moderation
 | Primary | See Pro | Pro देखें |
 | Secondary | Not now | अभी नहीं |
 | Price line | ₹1 for your first month, then ₹99/month. Cancel anytime. | पहला महीना ₹1, फिर ₹99/महीना। कभी भी बंद करें। |
+| Voice alt | {pet_name} listening with headphones | हेडफ़ोन के साथ {pet_name} |
+| Feynman alt | A student teaching {pet_name} | {pet_name} को कुछ समझाते हुए एक विद्यार्थी |
 
 **Illustration slots:**
 - Voice: `sunny-scene`, 3:2, the pet with headphones, sound waves as soft shapes (no text). Alt: "{pet_name} listening with headphones".
@@ -572,6 +574,19 @@ Crisis variant (a full-width card that replaces the tutor answer and stays pinne
 | Demo title | How Teach it back works | मुझे समझाएँ कैसे काम करता है |
 | Demo skip | Skip | छोड़ें |
 | Help icon label | How this works | यह कैसे काम करता है |
+| No concepts | This topic has nothing to explain back yet. | इस टॉपिक में अभी समझाने के लिए कुछ नहीं है। |
+| Hero alt | A student teaching {pet_name} | {pet_name} को कुछ समझाते हुए एक विद्यार्थी |
+| Concept picker label | Concept to explain | किसे समझाना है |
+| Mode label | How to answer | जवाब कैसे देंगे |
+| Too short | Explain a little more: at least {min} words. | थोड़ा और समझाएँ: कम से कम {min} शब्द। |
+| Grade failed | That didn't go through. Your explanation is saved, so try again. | जाँच नहीं हो पाई। आपकी बात सेव है, फिर से कोशिश करें। |
+| Shortcut hint | Ctrl + Enter to check | जाँचने के लिए Ctrl + Enter |
+| Voice scope note | Ask a parent to turn on voice. | आवाज़ के लिए माता-पिता से अनुमति लें। |
+| Transcribe failed | Couldn't write that down. Say it again or type it. | लिख नहीं पाए। फिर से बोलें या टाइप करें। |
+| Record a11y | Hold to record, or press to start and stop | रिकॉर्ड करने के लिए दबाए रखें, या शुरू और बंद करने के लिए दबाएँ |
+| Speak offline | Needs internet | इंटरनेट चाहिए |
+| Demo line | Explain it in your own words. Then see what you got and what you missed. | अपने शब्दों में समझाइए। फिर देखिए क्या सही रहा और क्या छूट गया। |
+| Demo body | Three meters show how clear, complete and accurate it was. | तीन मीटर बताते हैं कि बात कितनी स्पष्ट, पूरी और सही थी। |
 
 **Illustration slots:** `sunny-scene`, 3:2, a student in modest school clothes explaining something to the pet in front of a blank board (no writing on it), subject tint background. Alt: "A student teaching {pet_name}".
 
@@ -625,6 +640,14 @@ Crisis variant (a full-width card that replaces the tutor answer and stays pinne
 | Try again | Try again | फिर से कोशिश करें |
 | Done | Done | हो गया |
 | Grading | Checking your explanation… | आपकी समझ जाँच रहे हैं… |
+| Follow-up failed | That answer didn't go through. Try again. | जवाब नहीं पहुँचा। फिर से कोशिश करें। |
+| Tutor deck name | From the tutor | ट्यूटर से |
+| Score | {score}/100 | {score}/100 |
+| Meter a11y | {meter}, {band}, {score} out of 100 | {meter}, {band}, 100 में से {score} |
+| No gaps | Nothing missed. You covered every key point. | कुछ नहीं छूटा। आपने हर मुख्य बात बताई। |
+| Added label | Added to review | रिव्यू में जुड़ गए |
+| Follow-up sent | Answered | जवाब दे दिया |
+| Answer | Answer | जवाब दें |
 
 **Illustration slots:** Top pet reaction: `pet-cat` / `pet-dog`, 1:1, "proud" (all clear), "thinking" (mixed) or "curious" (needs work), 96 px. Alt: decorative (the pet line is read).
 
@@ -673,6 +696,8 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Open settings | Open settings | सेटिंग्स खोलें |
 | Mic fallback | Type instead | टाइप करके पूछें |
 | Camera fallback | Pick from gallery | गैलरी से चुनें |
+| Denied body (web) | You can turn it on in your browser's site settings, next to the address bar. | इसे ब्राउज़र की साइट सेटिंग्स में चालू किया जा सकता है, जो एड्रेस बार के पास होती हैं। |
+| Mic alt | {pet_name} wearing headphones | हेडफ़ोन के साथ {pet_name} |
 
 **Illustration slots:** Mic: `pet-*`, 1:1, the pet with one ear up, holding a small microphone. Camera: `pet-*`, 1:1, the pet peeking through a toy camera. Both transparent, 160 px. Alt: "{pet_name} with a microphone" / "{pet_name} with a camera".
 
@@ -716,6 +741,7 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Try again | Try again | फिर से कोशिश करें |
 | Switch to text | Switch to text | टाइप करके बात करें |
 | No time left | You've used today's voice time. It comes back at {reset_time}. | आज का आवाज़ वाला समय पूरा हुआ। {reset_time} बजे फिर मिलेगा। |
+| Pet fallback | your buddy | आपका साथी |
 
 **Illustration slots:** The pet's Rive file in the `wake` → listening state (DESIGN §7.2); Agnes art from `pet-cat` / `pet-dog` reference sheets. Alt: "{pet_name} getting ready to listen".
 

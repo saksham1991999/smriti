@@ -199,6 +199,15 @@ const planRoute = createRoute({
   component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "YourPlan"),
 });
 
+// ── Phase 2 and 3 (screens/phase2): full screen, outside the tab shell ─────
+const feynmanRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/tutor/feynman/$topicId",
+  validateSearch: (s: Record<string, unknown>): { concept?: string } => ({ concept: typeof s.concept === "string" ? s.concept : undefined }),
+  component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/phase2/feynman/Feynman")), "Feynman"),
+});
+const phase2Routes = [feynmanRoute] as const;
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   welcomeRoute,
@@ -216,6 +225,7 @@ const routeTree = rootRoute.addChildren([
   loginRoute,
   mockRoute,
   drillRoute,
+  ...phase2Routes,
   shellRoute.addChildren([homeRoute, subjectRoute, chapterRoute, topicRoute, labsRoute, labRoute, practiceRoute, meRoute, settingsRoute, notificationsRoute, planRoute]),
 ]);
 

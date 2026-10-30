@@ -218,6 +218,7 @@ export class SmritiApp {
       getAccessToken: () => this.auth.getAccessToken(),
       variant: variant.id,
       platform: deps.platform,
+      deviceId: deps.deviceId,
       ...(deps.appVersion ? { appVersion: deps.appVersion } : {}),
     });
     this.outbox = new Outbox({ crypto: deps.crypto, clock: deps.clock, timeZone: deps.timeZone });

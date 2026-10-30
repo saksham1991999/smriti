@@ -1,5 +1,6 @@
 /**
- * The guest -> onboarding -> lesson -> streak -> link journey against a real local apps/api.
+ * The guest -> onboarding -> lesson -> streak -> link -> Pro (RevenueCat webhook) journey, then
+ * /v1/devices, the practice hub, mocks and a tutor answer, against a real local apps/api.
  * Skipped unless SMRITI_LIVE_API is set, for example:
  *
  *   SMRITI_LIVE_API=http://127.0.0.1:8000 pnpm --filter @smriti/mobile test:live
@@ -11,6 +12,7 @@ import { unsyncedSummary, type Fetch } from '@smriti/app-core';
 import http from 'node:http';
 
 import { firstTopicId, openLesson } from '../../src/services/lessons';
+import { fetchMocks, fetchPracticeHub, openTutorSession, sendTutorMessage, tutorAnswerText } from '../../src/services/practice';
 import { createTestApp } from '../harness';
 import { playToEnd } from '../play';
 
@@ -118,6 +120,35 @@ live('guest to streak against the real API', () => {
     expect(app.store.getState().streak?.current).toBe(1);
     // Every event the app sent was accepted by the real server.
     expect(refused).toEqual([]);
+
+    // R38: the ₹1 month only when /v1/billing/intro-eligibility says so; the price from config.
+    const eligibility = await app.introEligibility();
+    console.log('intro eligibility', eligibility);
+    expect(eligibility.pricePaise).toBe(app.ui.getState().config.pricing.monthly_paise);
+    const [offer] = await app.billing.offers();
+    expect(offer?.introEligible).toBe(eligibility.eligible === true && eligibility.introPricePaise !== null);
+
+    // PAY: FakeBilling plays RevenueCat through /v1/webhooks/revenuecat; Pro arrives via sync.
+    const purchase = await app.purchasePro({ pollMs: 200, confirmTimeoutMs: 15_000 });
+    expect(purchase.status).toBe('done');
+    expect(app.store.getState().entitlement?.plan).toBe('pro');
+
+    // /v1/devices (no push token on a test device, permission as answered)
+    expect(await app.registerDevice()).toBe(true);
+    await app.notificationOpened(null);
+
+    // Practice hub, mocks and the tutor through @smriti/api-client
+    const hub = await fetchPracticeHub(app);
+    expect(hub.exam).toBe('jee-main-2027');
+    expect(hub.limits.is_pro).toBe(true);
+    console.log('hub', JSON.stringify({ challenge: hub.daily_challenge, weak: hub.weak_spots.length, limits: hub.limits.practice_questions }));
+    const mocks = await fetchMocks(app);
+    expect(Array.isArray(mocks)).toBe(true);
+    console.log('mocks', mocks.length);
+    const tutor = await openTutorSession(app, null);
+    const events = await sendTutorMessage(app, tutor.id, 'What is a vector?');
+    console.log('tutor events', events.map((e) => e.type).join(','), JSON.stringify(tutorAnswerText(events).slice(0, 80)));
+    expect(events.some((e) => e.type === 'done' || e.type === 'quota')).toBe(true);
     app.stop();
   });
 });

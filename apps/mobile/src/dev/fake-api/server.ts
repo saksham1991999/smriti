@@ -165,6 +165,8 @@ export class FakeApiServer {
       });
     }
     if (method === 'POST' && p === '/v1/devices') {
+      // As the server: the per-install id header is required.
+      if (!(init.headers?.['X-Device-Id'] ?? init.headers?.['x-device-id'])) return json(422, { code: 'device_id_required' });
       const id = `dev-${user.id.slice(0, 8)}`;
       this.devices.set(user.id, { pushToken: typeof body.push_token === 'string' ? body.push_token : null, permission: String(body.notif_permission ?? 'not_asked') });
       return json(200, { id, has_push_token: typeof body.push_token === 'string', has_web_push: false, notif_permission: body.notif_permission ?? 'not_asked' });

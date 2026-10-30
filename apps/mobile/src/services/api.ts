@@ -27,6 +27,8 @@ export function createMobileApiClient(opts: {
   getAccessToken: () => Promise<string | null>;
   variant: string;
   platform: 'ios' | 'android' | 'web';
+  /** The per-install id (`X-Device-Id`); `/v1/devices` and the sync calls need it. */
+  deviceId: string;
   appVersion?: string;
 }): ApiClient {
   return createApiClient({
@@ -35,6 +37,7 @@ export function createMobileApiClient(opts: {
     getAccessToken: opts.getAccessToken,
     appVariant: opts.variant,
     platform: opts.platform,
+    deviceId: opts.deviceId,
     ...(opts.appVersion ? { appVersion: opts.appVersion } : {}),
   });
 }

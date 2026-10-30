@@ -288,8 +288,69 @@ function checkExamMaps(set: ContentSet, findings: Findings): void {
   }
 }
 
-function markingFor(section: BlueprintFile["sections"][number], type: string): MarkingRule | undefined {
-  return (section.marking as Record<string, MarkingRule | undefined>)[type];
+type BlueprintSection = BlueprintFile["sections"][number];
+
+function markingFor(section: BlueprintSection, type: string): MarkingRule | undefined {
+  return (section.marking as Record<string, MarkingRule | undefined> | undefined)?.[type];
+}
+
+/** A section of qualifying skill tests only (typing, data entry): no questions or marks. */
+export function isSkillTestSection(section: Pick<BlueprintSection, "question_types">): boolean {
+  return section.question_types.length > 0 && section.question_types.every((t) => t === "skill_test");
+}
+
+/** Marks from the per-question rules, or null when a count or a mark is not stated. */
+function computedSectionMarks(section: BlueprintSection, n: number | null): number | null {
+  const typeCounts = section.type_counts as Record<string, number> | undefined;
+  if (typeCounts) {
+    if (section.attempt_rule?.attempt_any) return null;
+    let sum = 0;
+    for (const [t, c] of Object.entries(typeCounts)) {
+      const correct = markingFor(section, t)?.correct;
+      if (correct === null || correct === undefined) return null;
+      sum += c * correct;
+    }
+    return sum;
+  }
+  if (section.question_types.length !== 1 || n === null) return null;
+  const correct = markingFor(section, section.question_types[0] as string)?.correct;
+  return correct === null || correct === undefined ? null : n * correct;
+}
+
+/** Dotted paths of the exam facts this blueprint leaves null ("not stated in the notice"). */
+export function blueprintNullFacts(doc: BlueprintFile): string[] {
+  const out: string[] = [];
+  for (const k of ["calculator", "section_navigation", "numeric_input", "question_count"] as const) {
+    if (doc[k] === null) out.push(k);
+  }
+  const ip = doc.interface_profile;
+  if (ip) {
+    for (const k of ["save_requires_explicit_action", "clear_keeps_mark", "marked_answer_evaluated", "keyboard_disabled_on_exam_day"] as const) {
+      if (ip[k] === null) out.push(`interface_profile.${k}`);
+    }
+  }
+  for (const section of doc.sections) {
+    if (isSkillTestSection(section)) continue;
+    if (section.question_count === null) out.push(`sections.${section.code}.question_count`);
+    for (const [t, rule] of Object.entries((section.marking ?? {}) as Record<string, MarkingRule | undefined>)) {
+      if (rule && rule.correct === null) out.push(`sections.${section.code}.marking.${t}.correct`);
+    }
+  }
+  return out;
+}
+
+/** AGENTS rule 3: a fact the notice does not state is null, and an open question says so. */
+function checkOpenQuestions(file: string, doc: BlueprintFile, findings: Findings): void {
+  const named = new Set((doc.open_questions ?? []).map((q) => q.field).filter((f): f is string => !!f));
+  for (const field of blueprintNullFacts(doc)) {
+    if (!named.has(field)) {
+      findings.error(
+        "open_question_missing",
+        file,
+        `${field} is null ("not stated in the notice"), so open_questions must have an entry with field "${field}"`,
+      );
+    }
+  }
 }
 
 function checkBlueprints(set: ContentSet, findings: Findings, tokens: Tokens): void {
@@ -310,57 +371,65 @@ function checkBlueprints(set: ContentSet, findings: Findings, tokens: Tokens): v
     list.push({ version: doc.version, from: doc.effective_from, file });
     versions.set(key, list);
 
+    checkOpenQuestions(file, doc, findings);
     let counted = 0;
+    let countKnown = doc.question_count !== null;
     let marks = 0;
     let marksKnown = true;
     doc.sections.forEach((section, i) => {
       const path = `/sections/${i}`;
-      const n = section.attempt_rule?.attempt_any ?? section.question_count;
-      if (section.attempt_rule?.attempt_any && section.attempt_rule.attempt_any > section.question_count) {
-        findings.error("blueprint_attempt_rule", file, `${section.code}: attempt_any exceeds question_count`, {
-          path,
-        });
+      const skillTest = isSkillTestSection(section);
+      if (doc.mode === "mixed" && !section.mode) {
+        findings.error("blueprint_section_mode", file, `${section.code}: a mixed paper names each section's mode`, { path });
       }
-      counted += n;
+      if (doc.mode !== "mixed" && section.mode && section.mode !== doc.mode) {
+        findings.error("blueprint_section_mode", file, `${section.code}: mode ${section.mode} differs from the paper's ${doc.mode}`, { path });
+      }
+      if (!section.marking && !skillTest) {
+        findings.error("blueprint_marking_missing", file, `${section.code}: only a skill test section may have no marking`, { path });
+      }
+      // A skill test carries no questions or marks; it never counts towards the paper's totals.
+      if (skillTest) return;
+      const count = section.question_count;
+      const attemptAny = section.attempt_rule?.attempt_any ?? null;
+      if (attemptAny !== null && count !== null && attemptAny > count) {
+        findings.error("blueprint_attempt_rule", file, `${section.code}: attempt_any exceeds question_count`, { path });
+      }
+      const n = attemptAny ?? count;
+      if (n === null) countKnown = false;
+      else counted += n;
       for (const t of section.question_types) {
         if (!markingFor(section, t)) {
-          findings.error("blueprint_marking_missing", file, `${section.code}: no marking rule for ${t}`, {
-            path,
-          });
+          findings.error("blueprint_marking_missing", file, `${section.code}: no marking rule for ${t}`, { path });
         }
       }
-      for (const t of Object.keys(section.marking)) {
+      for (const t of Object.keys(section.marking ?? {})) {
         if (!section.question_types.includes(t as never)) {
-          findings.warn("blueprint_marking_unused", file, `${section.code}: marking for unused type ${t}`, {
-            path,
-          });
+          findings.warn("blueprint_marking_unused", file, `${section.code}: marking for unused type ${t}`, { path });
         }
       }
       const typeCounts = section.type_counts as Record<string, number> | undefined;
-      if (typeCounts) {
+      if (typeCounts && count !== null) {
         const sum = Object.values(typeCounts).reduce((a, b) => a + b, 0);
-        if (sum !== section.question_count) {
-          findings.error(
-            "blueprint_count_mismatch",
-            file,
-            `${section.code}: type_counts add up to ${sum}, not ${section.question_count}`,
-            { path },
-          );
+        if (sum !== count) {
+          findings.error("blueprint_count_mismatch", file, `${section.code}: type_counts add up to ${sum}, not ${count}`, { path });
         }
-        if (section.attempt_rule?.attempt_any) marksKnown = false;
-        for (const [t, c] of Object.entries(typeCounts)) marks += c * (markingFor(section, t)?.correct ?? 0);
-      } else if (section.question_types.length === 1) {
-        marks += n * (markingFor(section, section.question_types[0] as string)?.correct ?? 0);
-      } else {
-        marksKnown = false;
       }
+      const computed = computedSectionMarks(section, n);
+      if (section.max_marks != null && computed !== null && Math.abs(computed - section.max_marks) > 1e-9) {
+        findings.error(
+          "blueprint_marks_mismatch",
+          file,
+          `${section.code}: the marking rules give ${computed} marks, the section says ${section.max_marks}`,
+          { path },
+        );
+      }
+      const sectionMarks = section.max_marks ?? computed;
+      if (sectionMarks === null) marksKnown = false;
+      else marks += sectionMarks;
     });
-    if (counted !== doc.question_count) {
-      findings.error(
-        "blueprint_count_mismatch",
-        file,
-        `sections count ${counted} questions, the paper says ${doc.question_count}`,
-      );
+    if (countKnown && counted !== doc.question_count) {
+      findings.error("blueprint_count_mismatch", file, `sections count ${counted} questions, the paper says ${doc.question_count}`);
     }
     if (marksKnown && Math.abs(marks - doc.max_marks) > 1e-9) {
       findings.error("blueprint_marks_mismatch", file, `sections add up to ${marks} marks, the paper says ${doc.max_marks}`);
@@ -368,7 +437,7 @@ function checkBlueprints(set: ContentSet, findings: Findings, tokens: Tokens): v
       findings.warn(
         "blueprint_marks_unverifiable",
         file,
-        "a section mixes question types without type_counts, so max_marks cannot be checked",
+        "some section marks are not stated (or a section mixes types without type_counts), so max_marks cannot be checked",
       );
     }
     const ids = new Set<string>();
@@ -985,8 +1054,20 @@ function checkCoverageInputs(set: ContentSet, findings: Findings): void {
     });
   }
   for (const { file, doc } of set.inventories) {
-    if (!set.chapters.some((c) => c.doc.id === doc.chapter)) findings.error("ref_unknown_chapter", file, `unknown chapter ${doc.chapter}`);
-    doc.items.forEach((item, i) => {
+    if (doc.chapter !== undefined && !set.chapters.some((c) => c.doc.id === doc.chapter)) {
+      findings.error("ref_unknown_chapter", file, `unknown chapter ${doc.chapter}`);
+    }
+    if (doc.subject !== undefined && !set.subjects.some((x) => x.doc.id === doc.subject)) {
+      findings.error("ref_unknown_subject", file, `unknown subject ${doc.subject}`);
+    }
+    doc.excluded_chapters?.forEach((x, i) => {
+      x.exam_profiles?.forEach((p, k) => {
+        if (!set.profiles.has(p)) {
+          findings.error("ref_unknown_profile", file, `unknown exam profile ${p}`, { path: `/excluded_chapters/${i}/exam_profiles/${k}` });
+        }
+      });
+    });
+    (doc.items ?? []).forEach((item, i) => {
       const path = `/items/${i}`;
       item.concepts.forEach((c, k) => conceptRef(set, findings, c, file, `${path}/concepts/${k}`));
       if (item.concepts.length > 0 && item.out_of_syllabus) {

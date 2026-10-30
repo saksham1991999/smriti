@@ -66,6 +66,20 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "m", "s")).toBeUndefined();
     expect(convertUnit(1, "furlong", "m")).toBeUndefined();
   });
+
+  it("converts the electricity units used by lessons", () => {
+    expect(convertUnit(2, "mm^2", "m^2")).toBeCloseTo(2e-6, 12);
+    expect(convertUnit(1, "m²", "cm^2")).toBeCloseTo(1e4);
+    expect(convertUnit(3, "kV/m", "V/m")).toBeCloseTo(3000);
+    expect(convertUnit(5, "N/C", "V/m")).toBeCloseTo(5);
+    expect(convertUnit(1, "A/mm^2", "A/m^2")).toBeCloseTo(1e6);
+    expect(convertUnit(1.7e-6, "Ω cm", "Ω m")).toBeCloseTo(1.7e-8, 14);
+    expect(convertUnit(1, "S/cm", "S/m")).toBeCloseTo(100);
+    expect(convertUnit(4e-3, "°C^-1", "K^-1")).toBeCloseTo(4e-3, 9);
+    expect(convertUnit(1000, "cm^2/(V s)", "m^2/(V s)")).toBeCloseTo(0.1);
+    expect(convertUnit(1, "Ω m", "S/m")).toBeUndefined();
+    expect(convertUnit(1, "°C^-1", "°C")).toBeUndefined();
+  });
 });
 
 describe("findCycles", () => {

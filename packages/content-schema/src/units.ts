@@ -104,6 +104,41 @@ const TABLE: Record<string, UnitInfo> = {
   "mol/L": U("concentration", 1),
   // ratio
   "%": U("ratio", 0.01),
+  // area (m^2)
+  "m^2": U("area", 1),
+  "m²": U("area", 1),
+  "cm^2": U("area", 1e-4),
+  "cm²": U("area", 1e-4),
+  "mm^2": U("area", 1e-6),
+  "mm²": U("area", 1e-6),
+  // electric field (V/m); N/C is the same unit
+  "V/m": U("electric_field", 1),
+  "N/C": U("electric_field", 1),
+  "kV/m": U("electric_field", 1e3),
+  "V/cm": U("electric_field", 1e2),
+  // current density (A/m^2)
+  "A/m^2": U("current_density", 1),
+  "A/m²": U("current_density", 1),
+  "A/cm^2": U("current_density", 1e4),
+  "A/mm^2": U("current_density", 1e6),
+  // resistivity (ohm m)
+  "Ω m": U("resistivity", 1),
+  "Ω·m": U("resistivity", 1),
+  "ohm m": U("resistivity", 1),
+  "Ω cm": U("resistivity", 1e-2),
+  // conductivity (S/m)
+  "S/m": U("conductivity", 1),
+  "S/cm": U("conductivity", 1e2),
+  // temperature coefficient (per kelvin): a temperature interval, so no offset; per °C equals per K
+  "K^-1": U("per_temperature", 1),
+  "K⁻¹": U("per_temperature", 1),
+  "°C^-1": U("per_temperature", 1),
+  "°C⁻¹": U("per_temperature", 1),
+  // mobility (m^2/(V s))
+  "m^2/(V s)": U("mobility", 1),
+  "m²/(V s)": U("mobility", 1),
+  "cm^2/(V s)": U("mobility", 1e-4),
+  "cm²/(V s)": U("mobility", 1e-4),
 };
 
 export function unitInfo(unit: string): UnitInfo | undefined {

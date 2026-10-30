@@ -30,7 +30,7 @@ from sqlalchemy import text
 from smriti_api.core.db import Database
 from smriti_api.core.logging import hash_user_id
 from smriti_api.integrations.analytics_store import AnalyticsStore, ResponseRow, ReviewRow
-from smriti_api.services.srs import TS_FSRS_DEFAULT_RETENTION
+from smriti_api.services.srs import TS_FSRS_DEFAULT_RETENTION, make_scheduler
 from smriti_api.services.usage import load_flags
 
 if TYPE_CHECKING:
@@ -104,6 +104,7 @@ async def fsrs_optimise(
             continue
         try:
             weights = [float(w) for w in fit(rows)]
+            make_scheduler(weights)  # refuses parameters outside FSRS's bounds
         except (ValueError, RuntimeError, ArithmeticError) as exc:
             log.warning(
                 "fsrs_fit_failed", user=hash_user_id(user_id), error_type=type(exc).__name__

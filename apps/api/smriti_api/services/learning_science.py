@@ -41,6 +41,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from smriti_api.core.auth import AuthContext
 from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
+from smriti_api.core.logging import hash_user_id
 from smriti_api.schemas import practice as p
 from smriti_api.services import notify, practice
 from smriti_api.services import question_bank as bank
@@ -121,7 +122,12 @@ async def predicted_drops(
     session: AsyncSession, user_id: uuid.UUID, now: datetime, horizon_days: int
 ) -> tuple[list[TopicDrop], float]:
     weights, target = await _params(session, user_id)
-    sched = make_scheduler(weights, target)
+    try:
+        sched = make_scheduler(weights, target)
+    except ValueError:
+        # Stored parameters outside FSRS's bounds: predict with the defaults instead.
+        log.warning("fsrs_params_invalid", user=hash_user_id(user_id))
+        sched = make_scheduler(None, target)
     rows = (
         await session.execute(
             text(

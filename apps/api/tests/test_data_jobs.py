@@ -9,6 +9,7 @@ from datetime import UTC, datetime, timedelta
 
 import httpx
 import pytest
+from fsrs.scheduler import DEFAULT_PARAMETERS
 from sqlalchemy import text
 
 from smriti_api.core.deps import AppServices
@@ -111,7 +112,22 @@ async def test_fsrs_optimise_on_postgres_review_logs(
 
         def fake_fit(rows: Sequence[st.ReviewRow]) -> list[float]:
             fits.append(len(rows))
-            return [0.5] * 21
+            return list(DEFAULT_PARAMETERS)  # stands in for a fit; py-fsrs's own defaults
+
+        def bad_fit(rows: Sequence[st.ReviewRow]) -> list[float]:
+            return [0.5] * len(DEFAULT_PARAMETERS)
+
+        other = await new_guest(client)
+        await _reviews(services, other.user_id, 6)
+        await data_jobs.fsrs_optimise(services.db, store, fit=bad_fit)
+        async with services.db.admin_tx() as session:
+            stored = (
+                await session.execute(
+                    text("select count(*) from learn.fsrs_params where user_id = :u"),
+                    {"u": other.user_id},
+                )
+            ).scalar_one()
+        assert stored == 0  # out-of-bounds parameters are never stored
 
         report = await data_jobs.fsrs_optimise(services.db, store, fit=fake_fit)
         assert report.status == "ok" and report.done >= 1 and 6 in fits
@@ -122,7 +138,7 @@ async def test_fsrs_optimise_on_postgres_review_logs(
                     {"u": s.user_id},
                 )
             ).one()
-        assert row.review_count == 6 and len(row.weights) == 21
+        assert row.review_count == 6 and len(row.weights) == len(DEFAULT_PARAMETERS)
         # No new reviews since the fit: not eligible again.
         fits.clear()
         await data_jobs.fsrs_optimise(services.db, store, fit=fake_fit)

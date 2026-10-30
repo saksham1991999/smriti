@@ -53,6 +53,10 @@
       "default": 30,
       "source": "proposed"
     },
+    "auth.consent_emails_per_day": {
+      "default": 3,
+      "source": "proposed"
+    },
     "auth.consent_handoff_ttl_min": {
       "default": 15,
       "source": "proposed"
@@ -133,6 +137,10 @@
       "default": 3,
       "source": "ruling"
     },
+    "billing.web_grace_days": {
+      "default": 7,
+      "source": "proposed"
+    },
     "comeback.long_gap_days": {
       "default": 30,
       "source": "ruling"
@@ -200,6 +208,14 @@
     "duel.speed_bonus_max": {
       "default": null,
       "source": "owner"
+    },
+    "export.books_per_day": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "export.expiry_days": {
+      "default": 30,
+      "source": "proposed"
     },
     "feature.ai_notes": {
       "default": false,

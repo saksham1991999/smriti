@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import {
+  FLAG_DEFAULTS_FILE,
   FLAG_KEYS,
   FLAG_REGISTRY,
   VARIANT_IDS,
@@ -12,6 +13,7 @@ import {
   createFlags,
   defaultFlags,
   findLeakedSecrets,
+  flagDefaultsDocument,
   flagMapSchema,
   getVariant,
   parseClientEnv,
@@ -121,6 +123,26 @@ describe('flags', () => {
     expect(createFlags({ free_tutor_messages_per_day: 3 }).get('free.tutor_messages_per_day')).toBe(3);
     expect(createFlags({ 'plant.thresholds': [2, 8, 31, 101] }).get('game.plant.stage_days')).toEqual([2, 8, 31, 101]);
     expect(createFlags({ 'streak.freeze_slots_max': 2, 'streak.freeze_slots': 1 }).get('streak.freeze_slots_max')).toBe(2);
+  });
+
+  it('flag-defaults.json (read by the API) matches the registry', () => {
+    const file = resolve(__dirname, '..', FLAG_DEFAULTS_FILE);
+    const expected = `${JSON.stringify(flagDefaultsDocument(), null, 2)}\n`;
+    expect(readFileSync(file, 'utf8'), 'run `pnpm --filter @smriti/config flags:export`').toBe(expected);
+  });
+
+  it('social, duel and tutor flags keep the ruling and doc values', () => {
+    expect(defaultFlags.get('league.group_size')).toBe(30);
+    expect(defaultFlags.get('league.promote_count')).toBe(7);
+    expect(defaultFlags.get('league.demote_count')).toBe(5);
+    expect(defaultFlags.get('league.close_time')).toBe('23:59');
+    expect(defaultFlags.get('duel.match_timeout_seconds')).toBe(10);
+    expect(defaultFlags.get('ai.tutor_retention_days')).toBe(180);
+    expect(defaultFlags.get('ai.tutor_session_reuse_min')).toBe(30);
+    // No word list ships before its safety review (Q-B11).
+    expect(defaultFlags.get('social.nickname_words')).toBeNull();
+    expect(defaultFlags.get('duel.min_answer_ms')).toBeNull();
+    expect(createFlags({ league_promote_count: 6 }).get('league.promote_count')).toBe(6);
   });
 
   it('the flag map schema accepts partial maps and rejects unknown keys', () => {

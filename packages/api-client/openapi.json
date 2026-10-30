@@ -4178,6 +4178,1877 @@
         }
       }
     },
+    "/v1/social/gate": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Which SOC-02 state applies (B4)",
+        "operationId": "gate_v1_social_gate_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Gate" } } }
+          }
+        }
+      }
+    },
+    "/v1/social/overview": {
+      "get": {
+        "tags": ["social"],
+        "summary": "SOC-01 in one call",
+        "operationId": "overview_v1_social_overview_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Overview" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/me": {
+      "get": {
+        "tags": ["social"],
+        "summary": "My social profile (SOC-03, SET-11)",
+        "operationId": "me_v1_social_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Me" } } }
+          }
+        }
+      }
+    },
+    "/v1/social/me/first-visit": {
+      "post": {
+        "tags": ["social"],
+        "summary": "SOC-03 was shown",
+        "operationId": "first_visit_v1_social_me_first_visit_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Me" } } }
+          }
+        }
+      }
+    },
+    "/v1/social/handles/{handle}": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Is a username free",
+        "operationId": "check_handle_v1_social_handles__handle__get",
+        "parameters": [
+          {
+            "name": "handle",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 40, "title": "Handle" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/HandleCheck" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/me/handle": {
+      "put": {
+        "tags": ["social"],
+        "summary": "Pick or change the username (adults)",
+        "operationId": "set_handle_v1_social_me_handle_put",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/HandleIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Me" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/me/privacy": {
+      "put": {
+        "tags": ["social"],
+        "summary": "Discoverable, presence, boards",
+        "operationId": "set_privacy_v1_social_me_privacy_put",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PrivacyIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Me" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends": {
+      "get": {
+        "tags": ["social"],
+        "summary": "My friends (SOC-04)",
+        "operationId": "friends_v1_friends_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/FriendRow" },
+                  "type": "array",
+                  "title": "Response Friends V1 Friends Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/search": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Find an adult by exact username",
+        "operationId": "search_v1_friends_search_get",
+        "parameters": [
+          {
+            "name": "handle",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "minLength": 3, "maxLength": 20, "title": "Handle" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Person" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/invite": {
+      "get": {
+        "tags": ["social"],
+        "summary": "My invite link and QR code",
+        "operationId": "invite_v1_friends_invite_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Invite" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/invite/{code}": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Who an invite link is from",
+        "operationId": "invite_preview_v1_friends_invite__code__get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/InvitePreview" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/invite/{code}/accept": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Add a friend from an invite link or QR code",
+        "operationId": "accept_invite_v1_friends_invite__code__accept_post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/InviteAccept" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FriendRow" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/requests": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Send a friend request",
+        "operationId": "request_v1_friends_requests_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/FriendRequestIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RequestOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/requests/{user_id}/accept": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Accept a request",
+        "operationId": "accept_request_v1_friends_requests__user_id__accept_post",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RequestOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/requests/{user_id}/decline": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Decline a request",
+        "operationId": "decline_request_v1_friends_requests__user_id__decline_post",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/friends/{user_id}": {
+      "delete": {
+        "tags": ["social"],
+        "summary": "Remove a friend (silent)",
+        "operationId": "remove_friend_v1_friends__user_id__delete",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/people/{user_id}": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Mini profile",
+        "operationId": "profile_v1_social_people__user_id__get",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MiniProfile" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/inbox": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Requests, invites, cheers (SOC-06)",
+        "operationId": "inbox_v1_social_inbox_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Inbox" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/inbox/seen": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Mark the inbox read",
+        "operationId": "inbox_seen_v1_social_inbox_seen_post",
+        "responses": { "204": { "description": "Successful Response" } }
+      }
+    },
+    "/v1/social/nudges": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Send a preset cheer or nudge",
+        "operationId": "nudge_v1_social_nudges_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/NudgeIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sent" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/feed": {
+      "get": {
+        "tags": ["social"],
+        "summary": "Friend activity (SOC-01)",
+        "operationId": "feed_v1_social_feed_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/FeedItem" },
+                  "type": "array",
+                  "title": "Response Feed V1 Social Feed Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/reactions": {
+      "post": {
+        "tags": ["social"],
+        "summary": "React to a friend's activity",
+        "operationId": "react_v1_social_reactions_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ReactionIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/reactions/{item_id}": {
+      "delete": {
+        "tags": ["social"],
+        "summary": "Take a reaction back",
+        "operationId": "unreact_v1_social_reactions__item_id__delete",
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Item Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/reports": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Report (SOC-23)",
+        "operationId": "report_v1_social_reports_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ReportIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ReportOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/blocks": {
+      "get": {
+        "tags": ["social"],
+        "summary": "People I blocked (SET-11)",
+        "operationId": "blocks_v1_social_blocks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/Person" },
+                  "type": "array",
+                  "title": "Response Blocks V1 Social Blocks Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["social"],
+        "summary": "Block someone (they aren't told)",
+        "operationId": "block_v1_social_blocks_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/BlockIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/social/blocks/{user_id}": {
+      "delete": {
+        "tags": ["social"],
+        "summary": "Unblock",
+        "operationId": "unblock_v1_social_blocks__user_id__delete",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duos": {
+      "get": {
+        "tags": ["social"],
+        "summary": "My Duos (SOC-11)",
+        "operationId": "duos_v1_duos_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/DuoOut" },
+                  "type": "array",
+                  "title": "Response Duos V1 Duos Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["social"],
+        "summary": "Invite friends to a Duo",
+        "operationId": "duo_invite_v1_duos_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DuoInvite" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuoInviteResult" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duos/{duo_id}/accept": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Accept a Duo",
+        "operationId": "duo_accept_v1_duos__duo_id__accept_post",
+        "parameters": [
+          {
+            "name": "duo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duo Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuoOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duos/{duo_id}/decline": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Decline a Duo",
+        "operationId": "duo_decline_v1_duos__duo_id__decline_post",
+        "parameters": [
+          {
+            "name": "duo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duo Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duos/{duo_id}": {
+      "delete": {
+        "tags": ["social"],
+        "summary": "End a Duo",
+        "operationId": "duo_end_v1_duos__duo_id__delete",
+        "parameters": [
+          {
+            "name": "duo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duo Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duos/{duo_id}/nudge": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Nudge a Duo partner",
+        "operationId": "duo_nudge_v1_duos__duo_id__nudge_post",
+        "parameters": [
+          {
+            "name": "duo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duo Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DuoNudgeIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sent" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/squads": {
+      "get": {
+        "tags": ["social"],
+        "summary": "My squads (SOC-12)",
+        "operationId": "squads_v1_squads_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/SquadOut" },
+                  "type": "array",
+                  "title": "Response Squads V1 Squads Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["social"],
+        "summary": "Create a squad",
+        "operationId": "squad_create_v1_squads_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/SquadCreate" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SquadOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/squads/join/{code}": {
+      "get": {
+        "tags": ["social"],
+        "summary": "A squad invite",
+        "operationId": "squad_preview_v1_squads_join__code__get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SquadPreview" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["social"],
+        "summary": "Join a squad",
+        "operationId": "squad_join_v1_squads_join__code__post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/SquadJoin" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SquadOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/squads/{squad_id}": {
+      "get": {
+        "tags": ["social"],
+        "summary": "A squad (SOC-13)",
+        "operationId": "squad_v1_squads__squad_id__get",
+        "parameters": [
+          {
+            "name": "squad_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Squad Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SquadOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/squads/{squad_id}/members/{user_id}": {
+      "delete": {
+        "tags": ["social"],
+        "summary": "Leave, or remove a member",
+        "operationId": "squad_remove_v1_squads__squad_id__members__user_id__delete",
+        "parameters": [
+          {
+            "name": "squad_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Squad Id" }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/squads/{squad_id}/code": {
+      "post": {
+        "tags": ["social"],
+        "summary": "A new invite code",
+        "operationId": "squad_new_code_v1_squads__squad_id__code_post",
+        "parameters": [
+          {
+            "name": "squad_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Squad Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SquadOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/squads/{squad_id}/cheer": {
+      "post": {
+        "tags": ["social"],
+        "summary": "Cheer the squad",
+        "operationId": "squad_cheer_v1_squads__squad_id__cheer_post",
+        "parameters": [
+          {
+            "name": "squad_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Squad Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/SquadCheerIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Sent" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leagues/current": {
+      "get": {
+        "tags": ["leagues"],
+        "summary": "This week's league (SOC-08)",
+        "operationId": "current_v1_leagues_current_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/League" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leagues/result": {
+      "get": {
+        "tags": ["leagues"],
+        "summary": "Last week's result (SOC-09)",
+        "operationId": "result_v1_leagues_result_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LeagueResult" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leagues/join": {
+      "post": {
+        "tags": ["leagues"],
+        "summary": "Join leagues (teens, R30)",
+        "operationId": "join_v1_leagues_join_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/League" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leagues/opt-out": {
+      "put": {
+        "tags": ["leagues"],
+        "summary": "Take a break from leagues",
+        "operationId": "opt_out_v1_leagues_opt_out_put",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/OptOutIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/League" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leaderboards": {
+      "get": {
+        "tags": ["leagues"],
+        "summary": "Leaderboards (SOC-10)",
+        "operationId": "leaderboard_v1_leaderboards_get",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": ["friends", "squad", "school", "city", "all_india"],
+              "type": "string",
+              "default": "friends",
+              "title": "Scope"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": ["week", "all_time"],
+              "type": "string",
+              "default": "week",
+              "title": "Period"
+            }
+          },
+          {
+            "name": "squad_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+              "title": "Squad Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Leaderboard" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels": {
+      "get": {
+        "tags": ["duels"],
+        "summary": "My recent duels",
+        "operationId": "list_duels_v1_duels_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/DuelListItem" },
+                  "type": "array",
+                  "title": "Response List Duels V1 Duels Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["duels"],
+        "summary": "Challenge a friend, or solo",
+        "operationId": "create_v1_duels_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DuelCreate" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/random": {
+      "get": {
+        "tags": ["duels"],
+        "summary": "Matching status",
+        "operationId": "random_state_v1_duels_random_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/QueueState" } }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["duels"],
+        "summary": "Find a random opponent",
+        "operationId": "random_v1_duels_random_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RandomIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/QueueState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["duels"],
+        "summary": "Stop looking",
+        "operationId": "random_leave_v1_duels_random_delete",
+        "responses": { "204": { "description": "Successful Response" } }
+      }
+    },
+    "/v1/duels/code/{code}": {
+      "get": {
+        "tags": ["duels"],
+        "summary": "Open smriti.app/duel/{code}",
+        "operationId": "by_code_v1_duels_code__code__get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 4, "maxLength": 40, "title": "Code" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}": {
+      "get": {
+        "tags": ["duels"],
+        "summary": "A duel, as I may see it",
+        "operationId": "get_v1_duels__duel_id__get",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/accept": {
+      "post": {
+        "tags": ["duels"],
+        "summary": "Accept a challenge",
+        "operationId": "accept_v1_duels__duel_id__accept_post",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/decline": {
+      "post": {
+        "tags": ["duels"],
+        "summary": "Decline a challenge",
+        "operationId": "decline_v1_duels__duel_id__decline_post",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/async": {
+      "post": {
+        "tags": ["duels"],
+        "summary": "Send it as a challenge instead",
+        "operationId": "send_async_v1_duels__duel_id__async_post",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/answers": {
+      "post": {
+        "tags": ["duels"],
+        "summary": "Answer the open question (idempotent by question, and by Idempotency-Key)",
+        "operationId": "answer_v1_duels__duel_id__answers_post",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DuelAnswerIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelAnswerOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/leave": {
+      "post": {
+        "tags": ["duels"],
+        "summary": "Leave (confirmed)",
+        "operationId": "leave_v1_duels__duel_id__leave_post",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/rematch": {
+      "post": {
+        "tags": ["duels"],
+        "summary": "Ask for a rematch",
+        "operationId": "rematch_v1_duels__duel_id__rematch_post",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/events": {
+      "get": {
+        "tags": ["duels"],
+        "summary": "Poll the duel channel",
+        "operationId": "events_v1_duels__duel_id__events_get",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "minimum": 0, "default": 0, "title": "After" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DuelEvents" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/duels/{duel_id}/stream": {
+      "get": {
+        "tags": ["duels"],
+        "summary": "Stream the duel channel (SSE); reconnect with ?after=",
+        "operationId": "stream_v1_duels__duel_id__stream_get",
+        "parameters": [
+          {
+            "name": "duel_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "minimum": 0, "default": 0, "title": "After" }
+          },
+          {
+            "name": "max_seconds",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 600,
+              "minimum": 1,
+              "default": 300,
+              "title": "Max Seconds"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server-sent duel events (started, question, answered, reveal, left, finished, expired, rematch_requested, rematch)",
+            "content": { "text/event-stream": { "schema": { "type": "string" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/decks/{deck_id}/share": {
+      "post": {
+        "tags": ["shared decks"],
+        "summary": "Share a deck",
+        "operationId": "share_v1_decks__deck_id__share_post",
+        "parameters": [
+          {
+            "name": "deck_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Deck Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DeckShareIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DeckShare" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["shared decks"],
+        "summary": "Stop sharing",
+        "operationId": "stop_share_v1_decks__deck_id__share_delete",
+        "parameters": [
+          {
+            "name": "deck_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Deck Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DeckShare" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shared-decks": {
+      "get": {
+        "tags": ["shared decks"],
+        "summary": "Decks to find (SOC-21)",
+        "operationId": "list_shared_v1_shared_decks_get",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": ["friends", "exam"],
+              "type": "string",
+              "default": "friends",
+              "title": "Scope"
+            }
+          },
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Exam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SharedDeckRow" },
+                  "title": "Response List Shared V1 Shared Decks Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shared-decks/{code}": {
+      "get": {
+        "tags": ["shared decks"],
+        "summary": "Preview a shared deck",
+        "operationId": "preview_v1_shared_decks__code__get",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SharedDeckPreview" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shared-decks/{code}/copy": {
+      "post": {
+        "tags": ["shared decks"],
+        "summary": "Add a copy",
+        "operationId": "copy_v1_shared_decks__code__copy_post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DeckCopy" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shared-decks/{code}/helpful": {
+      "put": {
+        "tags": ["shared decks"],
+        "summary": "Found this helpful",
+        "operationId": "helpful_v1_shared_decks__code__helpful_put",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 4,
+              "maxLength": 40,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Code"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/HelpfulIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SharedDeckRow" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -4764,6 +6635,17 @@
         ],
         "title": "AttemptSummary"
       },
+      "Avatar": {
+        "properties": {
+          "species": {
+            "anyOf": [{ "type": "string", "enum": ["cat", "dog"] }, { "type": "null" }],
+            "title": "Species"
+          },
+          "outfit_ids": { "items": { "type": "string" }, "type": "array", "title": "Outfit Ids" }
+        },
+        "type": "object",
+        "title": "Avatar"
+      },
       "BadgeOut": {
         "properties": {
           "id": { "type": "string", "title": "Id" },
@@ -4817,6 +6699,12 @@
         "required": ["kind", "blanks"],
         "title": "BlanksAnswerIn"
       },
+      "BlockIn": {
+        "properties": { "user_id": { "type": "string", "format": "uuid", "title": "User Id" } },
+        "type": "object",
+        "required": ["user_id"],
+        "title": "BlockIn"
+      },
       "BlueprintSource": {
         "properties": {
           "title": { "type": "string", "title": "Title" },
@@ -4826,6 +6714,16 @@
         "type": "object",
         "required": ["title", "url"],
         "title": "BlueprintSource"
+      },
+      "BoardRow": {
+        "properties": {
+          "rank": { "type": "integer", "title": "Rank" },
+          "person": { "$ref": "#/components/schemas/Person" },
+          "xp": { "type": "integer", "title": "Xp" }
+        },
+        "type": "object",
+        "required": ["rank", "person", "xp"],
+        "title": "BoardRow"
       },
       "BundleRef": {
         "properties": {
@@ -5268,6 +7166,16 @@
         "title": "ContextOut",
         "description": "What the tutor can see, for the context chip (tutor-social §A5 step 1)."
       },
+      "CopiedCard": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "front": { "type": "string", "title": "Front" },
+          "back": { "type": "string", "title": "Back" }
+        },
+        "type": "object",
+        "required": ["id", "front", "back"],
+        "title": "CopiedCard"
+      },
       "DailyChallenge": {
         "properties": {
           "id": { "type": "string", "format": "uuid", "title": "Id" },
@@ -5409,6 +7317,51 @@
         "type": "object",
         "required": ["challenge_id", "players", "ranked", "min_players_for_rank", "rows", "you"],
         "title": "DailyLeaderboard"
+      },
+      "DeckCopy": {
+        "properties": {
+          "deck_id": { "type": "string", "format": "uuid", "title": "Deck Id" },
+          "title": { "type": "string", "title": "Title" },
+          "cards": {
+            "items": { "$ref": "#/components/schemas/CopiedCard" },
+            "type": "array",
+            "title": "Cards"
+          }
+        },
+        "type": "object",
+        "required": ["deck_id", "title", "cards"],
+        "title": "DeckCopy",
+        "description": "The copy belongs to the student (``source = 'shared_copy'``); the device stores it."
+      },
+      "DeckShare": {
+        "properties": {
+          "deck_id": { "type": "string", "format": "uuid", "title": "Deck Id" },
+          "share_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Share Code"
+          },
+          "share_status": {
+            "type": "string",
+            "enum": ["checking", "shared", "blocked", "stopped"],
+            "title": "Share Status"
+          },
+          "path": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Path" }
+        },
+        "type": "object",
+        "required": ["deck_id", "share_code", "share_status", "path"],
+        "title": "DeckShare"
+      },
+      "DeckShareIn": {
+        "properties": {
+          "title": { "type": "string", "maxLength": 80, "minLength": 1, "title": "Title" },
+          "list_for_exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "List For Exam"
+          }
+        },
+        "type": "object",
+        "required": ["title"],
+        "title": "DeckShareIn"
       },
       "DeletionResponse": {
         "properties": {
@@ -5560,6 +7513,333 @@
         "type": "object",
         "required": ["exam", "question_ids"],
         "title": "DrillPreview"
+      },
+      "DuelAnswerIn": {
+        "properties": {
+          "question_id": { "type": "string", "maxLength": 120, "title": "Question Id" },
+          "option_ids": {
+            "anyOf": [
+              { "items": { "type": "string", "maxLength": 64 }, "type": "array", "maxItems": 26 },
+              { "type": "null" }
+            ],
+            "title": "Option Ids"
+          },
+          "client_ms": {
+            "anyOf": [{ "type": "integer", "maximum": 3600000, "minimum": 0 }, { "type": "null" }],
+            "title": "Client Ms"
+          }
+        },
+        "type": "object",
+        "required": ["question_id"],
+        "title": "DuelAnswerIn",
+        "description": "One answer to the open question; the server times it from the question's opening.\nRe-sending the same question returns the first answer's result (idempotent by question)."
+      },
+      "DuelAnswerOut": {
+        "properties": {
+          "index": { "type": "integer", "title": "Index" },
+          "correct": { "type": "boolean", "title": "Correct" },
+          "points": { "type": "integer", "title": "Points" },
+          "key": { "anyOf": [{}, { "type": "null" }], "title": "Key" },
+          "duel": { "$ref": "#/components/schemas/DuelState" }
+        },
+        "type": "object",
+        "required": ["index", "correct", "points", "duel"],
+        "title": "DuelAnswerOut"
+      },
+      "DuelCreate": {
+        "properties": {
+          "opponent_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Opponent Id"
+          },
+          "solo": { "type": "boolean", "title": "Solo", "default": false },
+          "exam_profile_id": {
+            "anyOf": [{ "type": "string", "maxLength": 80 }, { "type": "null" }],
+            "title": "Exam Profile Id"
+          },
+          "subject_id": {
+            "anyOf": [{ "type": "string", "maxLength": 80 }, { "type": "null" }],
+            "title": "Subject Id"
+          }
+        },
+        "type": "object",
+        "title": "DuelCreate",
+        "description": "A friend duel (``opponent_id``) or a labelled solo round (``solo``), never both."
+      },
+      "DuelEventOut": {
+        "properties": {
+          "id": { "type": "integer", "title": "Id" },
+          "kind": { "type": "string", "title": "Kind" },
+          "payload": { "additionalProperties": true, "type": "object", "title": "Payload" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+        },
+        "type": "object",
+        "required": ["id", "kind", "payload", "created_at"],
+        "title": "DuelEventOut"
+      },
+      "DuelEvents": {
+        "properties": {
+          "events": {
+            "items": { "$ref": "#/components/schemas/DuelEventOut" },
+            "type": "array",
+            "title": "Events"
+          },
+          "last_event_id": { "type": "integer", "title": "Last Event Id" }
+        },
+        "type": "object",
+        "required": ["events", "last_event_id"],
+        "title": "DuelEvents"
+      },
+      "DuelListItem": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "code": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Code" },
+          "mode": { "type": "string", "enum": ["live", "async", "solo"], "title": "Mode" },
+          "relation": {
+            "type": "string",
+            "enum": ["friend", "random", "solo"],
+            "title": "Relation"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "live", "finished", "expired", "declined", "abandoned"],
+            "title": "Status"
+          },
+          "opponent": { "anyOf": [{ "$ref": "#/components/schemas/Person" }, { "type": "null" }] },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "winner": {
+            "anyOf": [
+              { "type": "string", "enum": ["me", "them", "draw", "none"] },
+              { "type": "null" }
+            ],
+            "title": "Winner"
+          },
+          "my_turn": { "type": "boolean", "title": "My Turn", "default": false }
+        },
+        "type": "object",
+        "required": ["id", "code", "mode", "relation", "status", "opponent", "created_at"],
+        "title": "DuelListItem"
+      },
+      "DuelMyAnswer": {
+        "properties": {
+          "index": { "type": "integer", "title": "Index" },
+          "question_id": { "type": "string", "title": "Question Id" },
+          "correct": { "type": "boolean", "title": "Correct" },
+          "points": { "type": "integer", "title": "Points" },
+          "key": { "anyOf": [{}, { "type": "null" }], "title": "Key" }
+        },
+        "type": "object",
+        "required": ["index", "question_id", "correct", "points"],
+        "title": "DuelMyAnswer"
+      },
+      "DuelPlayer": {
+        "properties": {
+          "person": { "$ref": "#/components/schemas/Person" },
+          "role": { "type": "string", "enum": ["challenger", "opponent"], "title": "Role" },
+          "is_me": { "type": "boolean", "title": "Is Me" },
+          "score": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Score" },
+          "correct": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Correct" },
+          "answered_current": { "type": "boolean", "title": "Answered Current", "default": false },
+          "away": { "type": "boolean", "title": "Away", "default": false },
+          "finished": { "type": "boolean", "title": "Finished", "default": false }
+        },
+        "type": "object",
+        "required": ["person", "role", "is_me"],
+        "title": "DuelPlayer"
+      },
+      "DuelQuestion": {
+        "properties": {
+          "index": { "type": "integer", "title": "Index" },
+          "question_id": { "type": "string", "title": "Question Id" },
+          "body": { "additionalProperties": true, "type": "object", "title": "Body" },
+          "opens_at": { "type": "string", "format": "date-time", "title": "Opens At" },
+          "closes_at": { "type": "string", "format": "date-time", "title": "Closes At" },
+          "answered": { "type": "boolean", "title": "Answered", "default": false }
+        },
+        "type": "object",
+        "required": ["index", "question_id", "body", "opens_at", "closes_at"],
+        "title": "DuelQuestion"
+      },
+      "DuelRematch": {
+        "properties": {
+          "available": { "type": "boolean", "title": "Available" },
+          "requested_by_me": { "type": "boolean", "title": "Requested By Me", "default": false },
+          "requested_by_them": {
+            "type": "boolean",
+            "title": "Requested By Them",
+            "default": false
+          },
+          "open_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Open Until"
+          },
+          "duel_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Duel Id"
+          }
+        },
+        "type": "object",
+        "required": ["available"],
+        "title": "DuelRematch"
+      },
+      "DuelResult": {
+        "properties": {
+          "winner": { "type": "string", "enum": ["me", "them", "draw", "none"], "title": "Winner" },
+          "xp_earned": { "type": "integer", "title": "Xp Earned" },
+          "not_counted": { "type": "boolean", "title": "Not Counted", "default": false },
+          "abandoned_by_me": { "type": "boolean", "title": "Abandoned By Me", "default": false },
+          "abandoned_by_them": { "type": "boolean", "title": "Abandoned By Them", "default": false }
+        },
+        "type": "object",
+        "required": ["winner", "xp_earned"],
+        "title": "DuelResult"
+      },
+      "DuelState": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "code": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Code" },
+          "mode": { "type": "string", "enum": ["live", "async", "solo"], "title": "Mode" },
+          "relation": {
+            "type": "string",
+            "enum": ["friend", "random", "solo"],
+            "title": "Relation"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "live", "finished", "expired", "declined", "abandoned"],
+            "title": "Status"
+          },
+          "exam_profile_id": { "type": "string", "title": "Exam Profile Id" },
+          "subject_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Subject Id"
+          },
+          "question_count": { "type": "integer", "title": "Question Count" },
+          "question_seconds": { "type": "integer", "title": "Question Seconds" },
+          "start_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Start At"
+          },
+          "expires_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Expires At"
+          },
+          "server_time": { "type": "string", "format": "date-time", "title": "Server Time" },
+          "invite_timed_out": { "type": "boolean", "title": "Invite Timed Out", "default": false },
+          "players": {
+            "items": { "$ref": "#/components/schemas/DuelPlayer" },
+            "type": "array",
+            "title": "Players"
+          },
+          "current": {
+            "anyOf": [{ "$ref": "#/components/schemas/DuelQuestion" }, { "type": "null" }]
+          },
+          "my_answers": {
+            "items": { "$ref": "#/components/schemas/DuelMyAnswer" },
+            "type": "array",
+            "title": "My Answers"
+          },
+          "result": {
+            "anyOf": [{ "$ref": "#/components/schemas/DuelResult" }, { "type": "null" }]
+          },
+          "rematch": {
+            "anyOf": [{ "$ref": "#/components/schemas/DuelRematch" }, { "type": "null" }]
+          },
+          "last_event_id": { "type": "integer", "title": "Last Event Id", "default": 0 }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "code",
+          "mode",
+          "relation",
+          "status",
+          "exam_profile_id",
+          "subject_id",
+          "question_count",
+          "question_seconds",
+          "start_at",
+          "expires_at",
+          "server_time",
+          "players"
+        ],
+        "title": "DuelState"
+      },
+      "DuoInvite": {
+        "properties": {
+          "friend_ids": {
+            "items": { "type": "string", "format": "uuid" },
+            "type": "array",
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Friend Ids"
+          }
+        },
+        "type": "object",
+        "required": ["friend_ids"],
+        "title": "DuoInvite"
+      },
+      "DuoInviteResult": {
+        "properties": {
+          "invited": {
+            "items": { "$ref": "#/components/schemas/DuoOut" },
+            "type": "array",
+            "title": "Invited"
+          },
+          "failed": {
+            "items": { "additionalProperties": { "type": "string" }, "type": "object" },
+            "type": "array",
+            "title": "Failed"
+          },
+          "used": { "type": "integer", "title": "Used" },
+          "max": { "type": "integer", "title": "Max" }
+        },
+        "type": "object",
+        "required": ["invited", "failed", "used", "max"],
+        "title": "DuoInviteResult"
+      },
+      "DuoNudgeIn": {
+        "properties": {
+          "preset_id": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[a-z0-9_]+$",
+            "title": "Preset Id"
+          }
+        },
+        "type": "object",
+        "required": ["preset_id"],
+        "title": "DuoNudgeIn"
+      },
+      "DuoOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "partner": { "$ref": "#/components/schemas/Person" },
+          "status": { "type": "string", "enum": ["invited", "active", "ended"], "title": "Status" },
+          "invited_by_me": { "type": "boolean", "title": "Invited By Me" },
+          "shared_streak": { "type": "integer", "title": "Shared Streak" },
+          "best_streak": { "type": "integer", "title": "Best Streak" },
+          "me_today": { "type": "boolean", "title": "Me Today" },
+          "partner_today": { "type": "boolean", "title": "Partner Today" },
+          "started_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Started At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "partner",
+          "status",
+          "invited_by_me",
+          "shared_streak",
+          "best_streak",
+          "me_today",
+          "partner_today",
+          "started_at"
+        ],
+        "title": "DuoOut"
       },
       "EntitlementOut": {
         "properties": {
@@ -5782,6 +8062,34 @@
         ],
         "title": "ExportOut"
       },
+      "FeedItem": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "person": { "$ref": "#/components/schemas/Person" },
+          "kind": {
+            "type": "string",
+            "enum": ["streak_milestone", "league_promoted", "badge_earned", "duo_milestone"],
+            "title": "Kind"
+          },
+          "ref": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Ref" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "reactions": {
+            "additionalProperties": { "type": "integer" },
+            "type": "object",
+            "title": "Reactions"
+          },
+          "mine": {
+            "anyOf": [
+              { "type": "string", "enum": ["clap", "star", "strong", "smile"] },
+              { "type": "null" }
+            ],
+            "title": "Mine"
+          }
+        },
+        "type": "object",
+        "required": ["id", "person", "kind", "ref", "created_at", "reactions"],
+        "title": "FeedItem"
+      },
       "FeedbackIn": {
         "properties": {
           "rating": { "type": "string", "enum": ["up", "down"], "title": "Rating" },
@@ -5830,6 +8138,79 @@
         "type": "object",
         "required": ["concept_id", "marks_lost", "weightage", "drill"],
         "title": "FixNext"
+      },
+      "FriendRequestIn": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "source": {
+            "type": "string",
+            "enum": ["search", "league_row", "duel", "squad"],
+            "title": "Source",
+            "default": "search"
+          }
+        },
+        "type": "object",
+        "required": ["user_id"],
+        "title": "FriendRequestIn"
+      },
+      "FriendRow": {
+        "properties": {
+          "person": { "$ref": "#/components/schemas/Person" },
+          "since": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Since"
+          },
+          "streak": { "type": "integer", "title": "Streak" },
+          "studied_today": { "type": "boolean", "title": "Studied Today" },
+          "duo_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Duo Id"
+          }
+        },
+        "type": "object",
+        "required": ["person", "since", "streak", "studied_today"],
+        "title": "FriendRow"
+      },
+      "Gate": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "guest",
+              "age_unknown",
+              "little_learner",
+              "u13_no_scope",
+              "minor_no_consent",
+              "consent_pending",
+              "consent_revoked"
+            ],
+            "title": "State"
+          },
+          "features": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "friends",
+                "search",
+                "league",
+                "squad",
+                "duo",
+                "random_duel",
+                "friend_duel",
+                "cheer",
+                "share_deck"
+              ]
+            },
+            "type": "array",
+            "title": "Features"
+          },
+          "first_visit": { "type": "boolean", "title": "First Visit", "default": false }
+        },
+        "type": "object",
+        "required": ["state"],
+        "title": "Gate",
+        "description": "SOC-02 decides what to show from ``state``; ``features`` lists what this student may use."
       },
       "GemLedgerEntry": {
         "properties": {
@@ -5905,6 +8286,74 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "HandleCheck": {
+        "properties": {
+          "handle": { "type": "string", "title": "Handle" },
+          "available": { "type": "boolean", "title": "Available" },
+          "reason": {
+            "type": "string",
+            "enum": ["ok", "taken", "reserved", "invalid", "blocked"],
+            "title": "Reason",
+            "default": "ok"
+          }
+        },
+        "type": "object",
+        "required": ["handle", "available"],
+        "title": "HandleCheck"
+      },
+      "HandleIn": {
+        "properties": {
+          "handle": {
+            "type": "string",
+            "maxLength": 20,
+            "minLength": 3,
+            "pattern": "^[A-Za-z0-9_]+$",
+            "title": "Handle"
+          }
+        },
+        "type": "object",
+        "required": ["handle"],
+        "title": "HandleIn"
+      },
+      "HelpfulIn": {
+        "properties": { "on": { "type": "boolean", "title": "On" } },
+        "type": "object",
+        "required": ["on"],
+        "title": "HelpfulIn"
+      },
+      "Inbox": {
+        "properties": {
+          "items": {
+            "items": { "$ref": "#/components/schemas/InboxItem" },
+            "type": "array",
+            "title": "Items"
+          },
+          "unread": { "type": "integer", "title": "Unread" }
+        },
+        "type": "object",
+        "required": ["items", "unread"],
+        "title": "Inbox"
+      },
+      "InboxItem": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["friend_request", "duo_invite", "duel_challenge", "cheer", "nudge"],
+            "title": "Kind"
+          },
+          "id": { "type": "string", "title": "Id" },
+          "sender": { "$ref": "#/components/schemas/Person" },
+          "preset_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Preset Id"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "unread": { "type": "boolean", "title": "Unread" }
+        },
+        "type": "object",
+        "required": ["kind", "id", "sender", "created_at", "unread"],
+        "title": "InboxItem"
+      },
       "IntroEligibilityOut": {
         "properties": {
           "eligible": {
@@ -5930,6 +8379,56 @@
         "required": ["eligible", "eligible_hint", "reason", "intro_price_paise", "price_paise"],
         "title": "IntroEligibilityOut"
       },
+      "Invite": {
+        "properties": {
+          "code": { "type": "string", "title": "Code" },
+          "path": { "type": "string", "title": "Path" }
+        },
+        "type": "object",
+        "required": ["code", "path"],
+        "title": "Invite"
+      },
+      "InviteAccept": {
+        "properties": {
+          "via": { "type": "string", "enum": ["link", "qr"], "title": "Via", "default": "link" }
+        },
+        "type": "object",
+        "title": "InviteAccept"
+      },
+      "InvitePreview": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": ["ok", "self", "already_friends", "invalid"],
+            "title": "State"
+          },
+          "inviter": { "anyOf": [{ "$ref": "#/components/schemas/Person" }, { "type": "null" }] }
+        },
+        "type": "object",
+        "required": ["state"],
+        "title": "InvitePreview"
+      },
+      "Leaderboard": {
+        "properties": {
+          "scope": {
+            "type": "string",
+            "enum": ["friends", "squad", "school", "city", "all_india"],
+            "title": "Scope"
+          },
+          "period": { "type": "string", "enum": ["week", "all_time"], "title": "Period" },
+          "rows": {
+            "items": { "$ref": "#/components/schemas/BoardRow" },
+            "type": "array",
+            "title": "Rows"
+          },
+          "me": { "anyOf": [{ "$ref": "#/components/schemas/BoardRow" }, { "type": "null" }] },
+          "available": { "type": "boolean", "title": "Available", "default": true },
+          "reason": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Reason" }
+        },
+        "type": "object",
+        "required": ["scope", "period", "rows"],
+        "title": "Leaderboard"
+      },
       "LeaderboardRow": {
         "properties": {
           "rank": { "type": "integer", "title": "Rank" },
@@ -5946,6 +8445,94 @@
         "type": "object",
         "required": ["rank", "name", "avatar", "is_you", "correct", "time_ms"],
         "title": "LeaderboardRow"
+      },
+      "League": {
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": ["in_cohort", "not_joined", "opted_out", "join_available", "not_available"],
+            "title": "State"
+          },
+          "week_start": { "type": "string", "format": "date", "title": "Week Start" },
+          "closes_at": { "type": "string", "format": "date-time", "title": "Closes At" },
+          "tier": { "type": "integer", "title": "Tier" },
+          "tier_name": { "$ref": "#/components/schemas/TierName" },
+          "exam_group": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Exam Group"
+          },
+          "my_xp": { "type": "integer", "title": "My Xp", "default": 0 },
+          "my_rank": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "My Rank" },
+          "rows": {
+            "items": { "$ref": "#/components/schemas/LeagueRow" },
+            "type": "array",
+            "title": "Rows"
+          },
+          "promote_count": { "type": "integer", "title": "Promote Count" },
+          "demote_count": { "type": "integer", "title": "Demote Count" },
+          "best_week": {
+            "anyOf": [
+              {
+                "additionalProperties": { "anyOf": [{ "type": "integer" }, { "type": "string" }] },
+                "type": "object"
+              },
+              { "type": "null" }
+            ],
+            "title": "Best Week"
+          },
+          "updated_at": { "type": "string", "format": "date-time", "title": "Updated At" }
+        },
+        "type": "object",
+        "required": [
+          "state",
+          "week_start",
+          "closes_at",
+          "tier",
+          "tier_name",
+          "promote_count",
+          "demote_count",
+          "updated_at"
+        ],
+        "title": "League"
+      },
+      "LeagueResult": {
+        "properties": {
+          "week_start": { "type": "string", "format": "date", "title": "Week Start" },
+          "result": {
+            "type": "string",
+            "enum": ["promoted", "stayed", "demoted"],
+            "title": "Result"
+          },
+          "tier_before": { "type": "integer", "title": "Tier Before" },
+          "tier_now": { "type": "integer", "title": "Tier Now" },
+          "tier_name": { "$ref": "#/components/schemas/TierName" },
+          "rank": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Rank" },
+          "xp": { "type": "integer", "title": "Xp" },
+          "first_view": { "type": "boolean", "title": "First View" }
+        },
+        "type": "object",
+        "required": [
+          "week_start",
+          "result",
+          "tier_before",
+          "tier_now",
+          "tier_name",
+          "rank",
+          "xp",
+          "first_view"
+        ],
+        "title": "LeagueResult"
+      },
+      "LeagueRow": {
+        "properties": {
+          "rank": { "type": "integer", "title": "Rank" },
+          "person": { "$ref": "#/components/schemas/Person" },
+          "xp": { "type": "integer", "title": "Xp" },
+          "zone": { "type": "string", "enum": ["promote", "safe", "demote"], "title": "Zone" }
+        },
+        "type": "object",
+        "required": ["rank", "person", "xp", "zone"],
+        "title": "LeagueRow"
       },
       "LearnerOut": {
         "properties": {
@@ -6087,6 +8674,33 @@
         "type": "object",
         "required": ["row", "columns"],
         "title": "MatrixRowIn"
+      },
+      "Me": {
+        "properties": {
+          "handle": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Handle" },
+          "public_name": { "$ref": "#/components/schemas/Name" },
+          "discoverable": { "type": "boolean", "title": "Discoverable" },
+          "league_opt_out": { "type": "boolean", "title": "League Opt Out" },
+          "presence_visible": { "type": "boolean", "title": "Presence Visible" },
+          "board_school": { "type": "boolean", "title": "Board School" },
+          "board_city": { "type": "boolean", "title": "Board City" },
+          "handle_change_after": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Handle Change After"
+          }
+        },
+        "type": "object",
+        "required": [
+          "handle",
+          "public_name",
+          "discoverable",
+          "league_opt_out",
+          "presence_visible",
+          "board_school",
+          "board_city"
+        ],
+        "title": "Me",
+        "description": "SOC-03: the student's own handle, nickname and privacy."
       },
       "MePatch": {
         "properties": {
@@ -6287,6 +8901,18 @@
         "type": "object",
         "required": ["id", "role", "content", "status", "created_at"],
         "title": "MessageOut"
+      },
+      "MiniProfile": {
+        "properties": {
+          "person": { "$ref": "#/components/schemas/Person" },
+          "tier": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Tier" },
+          "streak": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Streak" },
+          "is_friend": { "type": "boolean", "title": "Is Friend" },
+          "request_pending": { "type": "boolean", "title": "Request Pending" }
+        },
+        "type": "object",
+        "required": ["person", "tier", "streak", "is_friend", "request_pending"],
+        "title": "MiniProfile"
       },
       "MockAccess": {
         "properties": {
@@ -6620,6 +9246,20 @@
         ],
         "title": "MyConsentOut"
       },
+      "Name": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["display_name", "pet_name", "nickname", "hidden", "deleted"],
+            "title": "Kind"
+          },
+          "text": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Text" }
+        },
+        "type": "object",
+        "required": ["kind"],
+        "title": "Name",
+        "description": "How a person is shown to the viewer (R31 amended): adults by display name; minors by the\nauto nickname, or by the pet name to friends added by invite link or QR."
+      },
       "NotificationOpened": {
         "properties": {
           "id": {
@@ -6769,6 +9409,22 @@
         "type": "object",
         "title": "NotificationPrefsPatch"
       },
+      "NudgeIn": {
+        "properties": {
+          "to_user_id": { "type": "string", "format": "uuid", "title": "To User Id" },
+          "kind": { "type": "string", "enum": ["cheer", "nudge"], "title": "Kind" },
+          "preset_id": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[a-z0-9_]+$",
+            "title": "Preset Id"
+          }
+        },
+        "type": "object",
+        "required": ["to_user_id", "kind", "preset_id"],
+        "title": "NudgeIn"
+      },
       "NumberAnswerIn": {
         "properties": {
           "kind": { "type": "string", "const": "number", "title": "Kind" },
@@ -6784,6 +9440,12 @@
         "type": "object",
         "required": ["kind", "value"],
         "title": "NumberAnswerIn"
+      },
+      "OptOutIn": {
+        "properties": { "on": { "type": "boolean", "title": "On" } },
+        "type": "object",
+        "required": ["on"],
+        "title": "OptOutIn"
       },
       "OptionIdsAnswer": {
         "properties": {
@@ -6812,6 +9474,33 @@
         "type": "object",
         "required": ["kind", "order"],
         "title": "OrderAnswerIn"
+      },
+      "Overview": {
+        "properties": {
+          "gate": { "$ref": "#/components/schemas/Gate" },
+          "me": { "additionalProperties": { "type": "integer" }, "type": "object", "title": "Me" },
+          "league": { "anyOf": [{ "$ref": "#/components/schemas/League" }, { "type": "null" }] },
+          "friends_today": {
+            "items": { "$ref": "#/components/schemas/FriendRow" },
+            "type": "array",
+            "title": "Friends Today"
+          },
+          "duos": {
+            "items": { "$ref": "#/components/schemas/DuoOut" },
+            "type": "array",
+            "title": "Duos"
+          },
+          "squads": {
+            "items": { "$ref": "#/components/schemas/SquadOut" },
+            "type": "array",
+            "title": "Squads"
+          },
+          "inbox_unread": { "type": "integer", "title": "Inbox Unread", "default": 0 }
+        },
+        "type": "object",
+        "required": ["gate", "me"],
+        "title": "Overview",
+        "description": "SOC-01 in one call; when locked, SOC-02 still shows the student's own numbers."
       },
       "Page_GemLedgerEntry_": {
         "properties": {
@@ -6891,6 +9580,21 @@
         "type": "object",
         "required": ["template"],
         "title": "PdfExportCreate"
+      },
+      "Person": {
+        "properties": {
+          "user_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "User Id"
+          },
+          "name": { "$ref": "#/components/schemas/Name" },
+          "avatar": { "anyOf": [{ "$ref": "#/components/schemas/Avatar" }, { "type": "null" }] },
+          "is_self": { "type": "boolean", "title": "Is Self", "default": false },
+          "can_add_friend": { "type": "boolean", "title": "Can Add Friend", "default": false }
+        },
+        "type": "object",
+        "required": ["user_id", "name"],
+        "title": "Person"
       },
       "PetCareRequest": {
         "properties": {
@@ -7069,6 +9773,28 @@
           "entitlement"
         ],
         "title": "PriceInfo"
+      },
+      "PrivacyIn": {
+        "properties": {
+          "discoverable": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Discoverable"
+          },
+          "presence_visible": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Presence Visible"
+          },
+          "board_school": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Board School"
+          },
+          "board_city": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Board City"
+          }
+        },
+        "type": "object",
+        "title": "PrivacyIn"
       },
       "ProfileState": {
         "properties": {
@@ -7389,6 +10115,24 @@
         ],
         "title": "QuestionRow"
       },
+      "QueueState": {
+        "properties": {
+          "state": { "type": "string", "enum": ["waiting", "matched", "idle"], "title": "State" },
+          "enqueued_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Enqueued At"
+          },
+          "timed_out": { "type": "boolean", "title": "Timed Out", "default": false },
+          "duel": { "anyOf": [{ "$ref": "#/components/schemas/DuelState" }, { "type": "null" }] },
+          "paused_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Paused Until"
+          }
+        },
+        "type": "object",
+        "required": ["state"],
+        "title": "QueueState"
+      },
       "QuotaOut": {
         "properties": {
           "unlimited": { "type": "boolean", "title": "Unlimited" },
@@ -7407,6 +10151,20 @@
         "required": ["unlimited", "limit", "used", "remaining"],
         "title": "QuotaOut",
         "description": "A free-tier counter (app-core ``Quota``). ``remaining`` is null when unlimited."
+      },
+      "RandomIn": {
+        "properties": {
+          "exam_profile_id": {
+            "anyOf": [{ "type": "string", "maxLength": 80 }, { "type": "null" }],
+            "title": "Exam Profile Id"
+          },
+          "subject_id": {
+            "anyOf": [{ "type": "string", "maxLength": 80 }, { "type": "null" }],
+            "title": "Subject Id"
+          }
+        },
+        "type": "object",
+        "title": "RandomIn"
       },
       "RazorpayCancelRequest": {
         "properties": {
@@ -7475,6 +10233,19 @@
         "type": "object",
         "required": ["razorpay_payment_id", "razorpay_subscription_id", "razorpay_signature"],
         "title": "RazorpayVerifyRequest"
+      },
+      "ReactionIn": {
+        "properties": {
+          "item_id": { "type": "string", "format": "uuid", "title": "Item Id" },
+          "reaction": {
+            "type": "string",
+            "enum": ["clap", "star", "strong", "smile"],
+            "title": "Reaction"
+          }
+        },
+        "type": "object",
+        "required": ["item_id", "reaction"],
+        "title": "ReactionIn"
       },
       "RejectedEvent": {
         "properties": {
@@ -7627,6 +10398,70 @@
         ],
         "title": "Report"
       },
+      "ReportIn": {
+        "properties": {
+          "target_kind": { "type": "string", "enum": ["person", "deck"], "title": "Target Kind" },
+          "user_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "User Id"
+          },
+          "deck_code": {
+            "anyOf": [{ "type": "string", "maxLength": 40 }, { "type": "null" }],
+            "title": "Deck Code"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "inappropriate_username",
+              "cheating",
+              "bullying",
+              "impersonation",
+              "wrong_facts",
+              "copied",
+              "inappropriate_words",
+              "spam",
+              "other"
+            ],
+            "title": "Reason"
+          },
+          "context": {
+            "type": "string",
+            "enum": ["profile", "league_row", "duel", "squad_member", "duo", "deck"],
+            "title": "Context",
+            "default": "profile"
+          },
+          "note": {
+            "anyOf": [{ "type": "string", "maxLength": 280 }, { "type": "null" }],
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": ["target_kind", "reason"],
+        "title": "ReportIn",
+        "description": "SOC-23. The note goes to the moderation team only, and only from adults (B11)."
+      },
+      "ReportOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["open", "actioned", "dismissed"],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": ["id", "status"],
+        "title": "ReportOut"
+      },
+      "RequestOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "status": { "type": "string", "enum": ["pending", "accepted"], "title": "Status" }
+        },
+        "type": "object",
+        "required": ["user_id", "status"],
+        "title": "RequestOut"
+      },
       "RestDayRequest": {
         "properties": { "day": { "type": "string", "format": "date", "title": "Day" } },
         "type": "object",
@@ -7686,6 +10521,15 @@
         "type": "object",
         "required": ["queued", "card_refs", "state_version"],
         "title": "ReviewQueueResponse"
+      },
+      "SampleCard": {
+        "properties": {
+          "front": { "type": "string", "title": "Front" },
+          "back": { "type": "string", "title": "Back" }
+        },
+        "type": "object",
+        "required": ["front", "back"],
+        "title": "SampleCard"
       },
       "SaveResult": {
         "properties": {
@@ -7806,6 +10650,15 @@
         ],
         "title": "SectionRow"
       },
+      "Sent": {
+        "properties": {
+          "sent": { "type": "boolean", "title": "Sent" },
+          "queued_push": { "type": "boolean", "title": "Queued Push" }
+        },
+        "type": "object",
+        "required": ["sent", "queued_push"],
+        "title": "Sent"
+      },
       "SessionComplete": {
         "properties": {
           "ended_by": {
@@ -7851,6 +10704,50 @@
           "concepts"
         ],
         "title": "SessionQuestion"
+      },
+      "SharedDeckPreview": {
+        "properties": {
+          "code": { "type": "string", "title": "Code" },
+          "title": { "type": "string", "title": "Title" },
+          "card_count": { "type": "integer", "title": "Card Count" },
+          "shared_by": { "type": "string", "enum": ["friend", "student"], "title": "Shared By" },
+          "helpful": { "type": "integer", "title": "Helpful" },
+          "i_found_helpful": { "type": "boolean", "title": "I Found Helpful", "default": false },
+          "topic_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Topic Id" },
+          "sample_cards": {
+            "items": { "$ref": "#/components/schemas/SampleCard" },
+            "type": "array",
+            "title": "Sample Cards"
+          },
+          "can_copy": { "type": "boolean", "title": "Can Copy" },
+          "is_mine": { "type": "boolean", "title": "Is Mine" }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "title",
+          "card_count",
+          "shared_by",
+          "helpful",
+          "sample_cards",
+          "can_copy",
+          "is_mine"
+        ],
+        "title": "SharedDeckPreview"
+      },
+      "SharedDeckRow": {
+        "properties": {
+          "code": { "type": "string", "title": "Code" },
+          "title": { "type": "string", "title": "Title" },
+          "card_count": { "type": "integer", "title": "Card Count" },
+          "shared_by": { "type": "string", "enum": ["friend", "student"], "title": "Shared By" },
+          "helpful": { "type": "integer", "title": "Helpful" },
+          "i_found_helpful": { "type": "boolean", "title": "I Found Helpful", "default": false },
+          "topic_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Topic Id" }
+        },
+        "type": "object",
+        "required": ["code", "title", "card_count", "shared_by", "helpful"],
+        "title": "SharedDeckRow"
       },
       "ShopItemOut": {
         "properties": {
@@ -7920,6 +10817,131 @@
         "type": "object",
         "required": ["attempt_id", "items"],
         "title": "Solutions"
+      },
+      "SquadCheerIn": {
+        "properties": {
+          "preset_id": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[a-z0-9_]+$",
+            "title": "Preset Id"
+          }
+        },
+        "type": "object",
+        "required": ["preset_id"],
+        "title": "SquadCheerIn"
+      },
+      "SquadCreate": {
+        "properties": {
+          "squad_id": { "type": "string", "format": "uuid", "title": "Squad Id" },
+          "name_word_ids": {
+            "items": { "type": "string", "maxLength": 40 },
+            "type": "array",
+            "maxItems": 2,
+            "title": "Name Word Ids"
+          },
+          "crest_id": {
+            "anyOf": [{ "type": "string", "maxLength": 60 }, { "type": "null" }],
+            "title": "Crest Id"
+          },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "Exam"
+          }
+        },
+        "type": "object",
+        "required": ["squad_id"],
+        "title": "SquadCreate"
+      },
+      "SquadJoin": {
+        "properties": {
+          "via": {
+            "type": "string",
+            "enum": ["link", "qr", "code"],
+            "title": "Via",
+            "default": "link"
+          }
+        },
+        "type": "object",
+        "title": "SquadJoin"
+      },
+      "SquadMember": {
+        "properties": {
+          "person": { "$ref": "#/components/schemas/Person" },
+          "role": { "type": "string", "enum": ["owner", "admin", "member"], "title": "Role" },
+          "studied_today": { "type": "boolean", "title": "Studied Today" },
+          "week_xp": { "type": "integer", "title": "Week Xp" }
+        },
+        "type": "object",
+        "required": ["person", "role", "studied_today", "week_xp"],
+        "title": "SquadMember"
+      },
+      "SquadOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "name": { "type": "string", "title": "Name" },
+          "crest_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Crest Id" },
+          "exam_profile_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Exam Profile Id"
+          },
+          "invite_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Invite Code"
+          },
+          "my_role": {
+            "anyOf": [
+              { "type": "string", "enum": ["owner", "admin", "member"] },
+              { "type": "null" }
+            ],
+            "title": "My Role"
+          },
+          "members": {
+            "items": { "$ref": "#/components/schemas/SquadMember" },
+            "type": "array",
+            "title": "Members"
+          },
+          "member_count": { "type": "integer", "title": "Member Count" },
+          "max_members": { "type": "integer", "title": "Max Members" },
+          "quest": { "anyOf": [{ "$ref": "#/components/schemas/SquadQuest" }, { "type": "null" }] }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "crest_id",
+          "exam_profile_id",
+          "invite_code",
+          "my_role",
+          "member_count",
+          "max_members"
+        ],
+        "title": "SquadOut"
+      },
+      "SquadPreview": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "name": { "type": "string", "title": "Name" },
+          "crest_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Crest Id" },
+          "member_count": { "type": "integer", "title": "Member Count" },
+          "max_members": { "type": "integer", "title": "Max Members" },
+          "already_member": { "type": "boolean", "title": "Already Member" }
+        },
+        "type": "object",
+        "required": ["id", "name", "crest_id", "member_count", "max_members", "already_member"],
+        "title": "SquadPreview"
+      },
+      "SquadQuest": {
+        "properties": {
+          "quest_id": { "type": "string", "title": "Quest Id" },
+          "target": { "type": "integer", "title": "Target" },
+          "progress": { "type": "integer", "title": "Progress" },
+          "completed": { "type": "boolean", "title": "Completed" }
+        },
+        "type": "object",
+        "required": ["quest_id", "target", "progress", "completed"],
+        "title": "SquadQuest"
       },
       "SrsCardState": {
         "properties": {
@@ -8269,6 +11291,15 @@
         "required": ["state_version"],
         "title": "SyncStateResponse",
         "description": "Sections that did not change since ``since`` are omitted."
+      },
+      "TierName": {
+        "properties": {
+          "en": { "type": "string", "title": "En" },
+          "hi": { "type": "string", "title": "Hi" }
+        },
+        "type": "object",
+        "required": ["en", "hi"],
+        "title": "TierName"
       },
       "TimeBuckets": {
         "properties": {

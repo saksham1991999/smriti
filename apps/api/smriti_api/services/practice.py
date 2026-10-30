@@ -539,27 +539,32 @@ async def complete_session(
             raise not_found("session_not_found", "No such practice session")
     if row.ended_at is None:
         wire_kind = {"pyq": "pyq", "weak_spots": "weak_spots"}.get(row.kind, "drill")
-        await apply_events(
-            db,
-            auth,
-            [
-                ServerEvent(
-                    game_ops.derived_event_id("practice_done", auth.user_id, session_id),
-                    "practice_session_completed",
-                    {
-                        "session_id": str(session_id),
-                        "kind": wire_kind,
-                        "answered": row.answered,
-                        "correct": row.correct,
-                        "ms_total": int(
-                            min((now - row.started_at).total_seconds() * 1000, 86_400_000)
-                        ),
-                    },
-                )
-            ],
-            device_id=device_id,
-            app_variant=app_variant,
-        )
+        try:
+            await apply_events(
+                db,
+                auth,
+                [
+                    ServerEvent(
+                        game_ops.derived_event_id("practice_done", auth.user_id, session_id),
+                        "practice_session_completed",
+                        {
+                            "session_id": str(session_id),
+                            "kind": wire_kind,
+                            "answered": row.answered,
+                            "correct": row.correct,
+                            "ms_total": int(
+                                min((now - row.started_at).total_seconds() * 1000, 86_400_000)
+                            ),
+                        },
+                    )
+                ],
+                device_id=device_id,
+                app_variant=app_variant,
+            )
+        except ApiError as exc:
+            # The device's outbox recorded the session first: it already counts once.
+            if exc.code != "already_recorded":
+                raise
         async with db.system_tx() as session:
             await session.execute(
                 text(

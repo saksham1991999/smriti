@@ -1,7 +1,7 @@
 import type { BundleQuestion } from "@smriti/content-schema";
 import { describe, expect, it } from "vitest";
 
-import { checkAnswer, findQuestion, normalizeTyped, parseNumber, scoreAnswer, type AnyQuestion } from "../src/index.js";
+import { checkAnswer, findQuestion, normalizeTyped, parseNumber, scoreAnswer, wrongMarks, type AnyQuestion } from "../src/index.js";
 import { fixtureBundle } from "./fixture.js";
 
 const pool: Record<string, BundleQuestion> = {
@@ -119,5 +119,20 @@ describe("helpers", () => {
     expect(scoreAnswer(multi, null, rule)).toBe(0);
     const single = q("a.0001");
     expect(scoreAnswer(single, checkAnswer(single, { kind: "options", optionIds: ["b"] }), { correct: 4, wrong: -1, unattempted: 0 })).toBe(-1);
+  });
+
+  it("scores a fraction penalty, and never guesses marks the notice does not state", () => {
+    const single = q("a.0001");
+    const wrong = checkAnswer(single, { kind: "options", optionIds: ["b"] });
+    const right = checkAnswer(single, { kind: "options", optionIds: ["c"] });
+    const third = { fraction_of_question_marks: 1 / 3 };
+    expect(wrongMarks({ correct: 2, wrong: third, unattempted: 0 })).toBeCloseTo(-2 / 3);
+    expect(scoreAnswer(single, wrong, { correct: 2, wrong: third, unattempted: 0 })).toBeCloseTo(-2 / 3);
+    // UPSC-style: the penalty is a fraction of marks the notice does not state, so neither can be scored.
+    const unstated = { correct: null, wrong: third, unattempted: 0 };
+    expect(wrongMarks(unstated)).toBeNull();
+    expect(scoreAnswer(single, wrong, unstated)).toBeNull();
+    expect(scoreAnswer(single, right, unstated)).toBeNull();
+    expect(scoreAnswer(single, null, unstated)).toBe(0);
   });
 });

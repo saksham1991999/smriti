@@ -269,11 +269,20 @@ function checkOrder(key: string[], given: string[]): CheckResult {
   };
 }
 
+/** Marks for a wrong answer: a fixed number, or a fraction of the question's marks (UPSC). */
+export function wrongMarks(rule: MarkingRule): number | null {
+  if (typeof rule.wrong === "number") return rule.wrong;
+  if (rule.correct === null) return null;
+  return -rule.wrong.fraction_of_question_marks * rule.correct;
+}
+
 /**
- * Marks for one answer under a blueprint marking rule (mock and chapter tests). `null` result
+ * Marks for one answer under a blueprint marking rule (mock and chapter tests). A `null` result
  * means unattempted. Partial marking applies to multi-select questions when the rule has it.
+ * Returns null when the notice does not state the marks needed (`correct: null`): a mock then
+ * shows "not stated in the notice" instead of a made-up score.
  */
-export function scoreAnswer(q: AnyQuestion, result: CheckResult | null, rule: MarkingRule): number {
+export function scoreAnswer(q: AnyQuestion, result: CheckResult | null, rule: MarkingRule): number | null {
   if (!result || result.response === null) return rule.unattempted;
   if (result.correct) return rule.correct;
   if (q.type === "mcq_multi" && rule.partial && result.detail.kind === "options") {
@@ -282,5 +291,5 @@ export function scoreAnswer(q: AnyQuestion, result: CheckResult | null, rule: Ma
       return rule.partial.per_correct_option * chosenCorrect.length;
     }
   }
-  return rule.wrong;
+  return wrongMarks(rule);
 }

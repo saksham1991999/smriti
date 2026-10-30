@@ -1,4 +1,4 @@
-export { checkAnswer, isSingleAnswer, normalizeTyped, parseNumber, scoreAnswer } from "./answers.js";
+export { checkAnswer, isSingleAnswer, normalizeTyped, parseNumber, scoreAnswer, wrongMarks } from "./answers.js";
 export type { Answer, AnyQuestion, CheckDetail, CheckResult, EventResponse, NumberReason } from "./answers.js";
 export { evaluatePlacement, evaluateTestOut } from "./check-result.js";
 export type { PlacementResult, TestOutResult } from "./check-result.js";

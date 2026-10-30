@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import UTC, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import httpx
 from sqlalchemy import text
@@ -195,7 +196,8 @@ async def test_duo_streak(client: httpx.AsyncClient, services: AppServices) -> N
     r = await client.post(f"/v1/duos/{duo_id}/accept", headers=b.headers)
     assert r.json()["status"] == "active"
 
-    today = datetime.now(UTC).date()
+    # Days are the partners' local days (profile timezone, default Asia/Kolkata), not UTC.
+    today = datetime.now(ZoneInfo("Asia/Kolkata")).date()
     async with services.db.admin_tx() as session:
         for uid in (a.user_id, b.user_id):
             for d in (today, today + timedelta(days=1)):

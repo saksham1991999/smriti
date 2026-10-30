@@ -86,8 +86,9 @@ describe("site index (site-index@1)", () => {
     expect(bp.sections[1]!.marking).toBeNull();
   });
 
-  // The site owns the zod schema. When it is in this checkout, validate against it directly.
-  const siteSchema = join(repoRoot, "apps", "site", "src", "content-index", "schema.ts");
+  // The site owns the zod schema. When it is in this checkout (or SITE_INDEX_SCHEMA names it),
+  // validate against it directly.
+  const siteSchema = process.env.SITE_INDEX_SCHEMA ?? join(repoRoot, "apps", "site", "src", "content-index", "schema.ts");
   it.skipIf(!existsSync(siteSchema))("passes the site's own zod schema", async () => {
     const local = join(__dirname, "..", ".site-schema.tmp.ts");
     writeFileSync(local, readFileSync(siteSchema, "utf8"));

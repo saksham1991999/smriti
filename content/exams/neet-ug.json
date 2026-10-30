@@ -1,95 +1,92 @@
 {
   "schema": "exam@1",
   "id": "neet-ug",
-  "name": { "en": "NEET (UG)", "hi": "नीट (यूजी)" },
-  "full_name": { "en": "National Eligibility-cum-Entrance Test (UG)", "hi": "राष्ट्रीय पात्रता-सह-प्रवेश परीक्षा (स्नातक)" },
-  "hi_source": "translated",
+  "name": {
+    "en": "NEET (UG)",
+    "hi": "नीट (यूजी)"
+  },
   "category": "medical",
   "conducting_body": "NTA",
-  "conducting_body_name": { "en": "National Testing Agency", "hi": "राष्ट्रीय परीक्षा एजेंसी" },
-  "syllabus_body": "NMC",
-  "syllabus_body_name": { "en": "National Medical Commission (Under Graduate Medical Education Board)", "hi": "राष्ट्रीय आयुर्विज्ञान आयोग" },
   "official_url": "https://neet.nta.nic.in/",
   "profiles": [
     {
       "id": "neet-ug-2026",
       "cycle": "2026",
-      "name": { "en": "NEET (UG) 2026", "hi": "नीट (यूजी) 2026" },
-      "locales": ["en", "hi"],
-      "status": "concluded",
-      "papers": ["main"],
-      "exam_languages": ["as", "bn", "en", "gu", "hi", "kn", "ml", "mr", "or", "pa", "ta", "te", "ur"],
-      "schedule": {
-        "application_window": { "from": "2026-02-08", "to": "2026-03-08" },
-        "correction_window": { "from": "2026-03-10", "to": "2026-03-12" },
-        "exam_date": "2026-05-03",
-        "exam_time": { "start": "14:00", "end": "17:00", "tz": "Asia/Kolkata" },
-        "re_examination": {
-          "date": "2026-06-21",
-          "window": { "start": "14:00", "end": "17:15", "tz": "Asia/Kolkata", "note": "195-minute window including time for examination formalities (Public Notice 12 June 2026)." },
-          "source_ref": "Public Notice 15 May 2026 'Conduct of Re-examination for NEET (UG) 2026'"
-        },
-        "source_ref": "Bulletin p.2 (Important Information and Dates at a Glance)"
+      "name": {
+        "en": "NEET (UG) 2026",
+        "hi": "नीट (यूजी) 2026"
       },
-      "blueprints": ["content/blueprints/neet-ug-2026/main.v1.json"],
-      "syllabus": "content/syllabus/neet-ug-2026.lines.json",
-      "sources": [
+      "locales": [
+        "en",
+        "hi"
+      ],
+      "papers": [
+        "main"
+      ],
+      "schedule": [
         {
-          "kind": "official",
-          "title": "Information Bulletin NEET (UG)-2026",
-          "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf",
-          "linked_from": "https://neet.nta.nic.in/ (Information Bulletin for NEET(UG)-2026)",
-          "published": "2026-02-08",
-          "revised": "2026-02-23",
-          "retrieved": "2026-10-29",
-          "ref": "p.2 (dates, pattern), Chapter 4 pp.21-23 (scheme), Chapter 8 pp.39-40 (qualifying, tie-break)"
+          "kind": "application_open",
+          "date": "2026-02-08",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf"
         },
         {
-          "kind": "official",
-          "title": "Public Notice: Inviting online Application Form for NEET (UG)-2026, dated 08 February 2026",
-          "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/20260208399987696.pdf",
-          "published": "2026-02-08",
-          "retrieved": "2026-10-29",
-          "ref": "p.1"
+          "kind": "application_close",
+          "date": "2026-03-08",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf"
         },
         {
-          "kind": "official",
-          "title": "Public Notice: Conduct of Re-examination for NEET (UG) 2026, dated 15 May 2026",
-          "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/05/20260515960654684.pdf",
-          "published": "2026-05-15",
-          "retrieved": "2026-10-29",
-          "ref": "pp.1-2"
+          "kind": "exam_day",
+          "date": "2026-05-03",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf"
         },
         {
-          "kind": "official",
-          "title": "Public Notice: Student-Friendly Measures Introduced for NEET (UG)-2026 Examination, dated 12 June 2026",
-          "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/06/202606121235115637.pdf",
-          "published": "2026-06-12",
-          "retrieved": "2026-10-29",
-          "ref": "items 2-4"
-        },
-        {
-          "kind": "official",
-          "title": "Syllabus for NEET (UG)-2026 Examination (NMC UGMEB public notice dated 22 December 2025, with the syllabus)",
-          "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
-          "linked_from": "https://neet.nta.nic.in/ (Public Notices, 'Syllabus for NEET (UG)-2026 Examination')",
-          "published": "2026-01-08",
-          "retrieved": "2026-10-29",
-          "ref": "PDF pp.4-18"
+          "kind": "exam_day",
+          "date": "2026-06-21",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/05/20260515960654684.pdf"
         }
       ]
     }
   ],
-  "open_questions": [
-    "The NEET (UG) 2027 information bulletin and syllabus are not yet published on neet.nta.nic.in or nmc.org.in (checked 2026-10-29). No neet-ug-2027 profile or blueprint is created; re-run exam-blueprint and syllabus-mapper when they are notified.",
-    "NTA/NMC have not published a Hindi version of the NEET (UG) 2026 syllabus that we could find. All Hindi strings here are translations (hi_source: translated).",
-    "The re-examination of 21 June 2026 followed an NTA press release of 12 May 2026 that we did not need for the pattern and did not encode."
-  ],
   "status": "draft",
   "sources": [
-    { "kind": "official", "ref": "Information Bulletin NEET (UG)-2026", "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf" }
+    {
+      "kind": "official",
+      "ref": "Information Bulletin NEET (UG)-2026; published 2026-02-08; revised 2026-02-23; linked from https://neet.nta.nic.in/ (Information Bulletin for NEET(UG)-2026)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/202602231394640855.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "p.2 (dates, pattern), Chapter 4 pp.21-23 (scheme), Chapter 8 pp.39-40 (qualifying, tie-break)"
+    },
+    {
+      "kind": "official",
+      "ref": "Public Notice: Inviting online Application Form for NEET (UG)-2026, dated 08 February 2026; published 2026-02-08",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/02/20260208399987696.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "p.1"
+    },
+    {
+      "kind": "official",
+      "ref": "Public Notice: Conduct of Re-examination for NEET (UG) 2026, dated 15 May 2026; published 2026-05-15",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/05/20260515960654684.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "pp.1-2"
+    },
+    {
+      "kind": "official",
+      "ref": "Public Notice: Student-Friendly Measures Introduced for NEET (UG)-2026 Examination, dated 12 June 2026; published 2026-06-12",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/06/202606121235115637.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "items 2-4"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 Examination (NMC UGMEB public notice dated 22 December 2025, with the syllabus); published 2026-01-08; linked from https://neet.nta.nic.in/ (Public Notices, 'Syllabus for NEET (UG)-2026 Examination')",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF pp.4-18"
+    }
   ],
   "authored_by": "skill:exam-blueprint",
   "reviewed_by": null,
-  "updated": "2026-10-29"
+  "updated": "2026-10-30",
+  "notes": "Schedule dates come from the profile sources; each entry names its notice. Open questions:\n- The NEET (UG) 2027 information bulletin and syllabus are not yet published on neet.nta.nic.in or nmc.org.in (checked 2026-10-29). No neet-ug-2027 profile or blueprint is created; re-run exam-blueprint and syllabus-mapper when they are notified.\n- NTA/NMC have not published a Hindi version of the NEET (UG) 2026 syllabus that we could find. All Hindi strings here are translations (hi_source: translated).\n- The re-examination of 21 June 2026 followed an NTA press release of 12 May 2026 that we did not need for the pattern and did not encode.\n\nFields with no slot in exam@1, kept verbatim from the cited sources (JSON):\n{\n \"full_name\": {\n  \"en\": \"National Eligibility-cum-Entrance Test (UG)\",\n  \"hi\": \"राष्ट्रीय पात्रता-सह-प्रवेश परीक्षा (स्नातक)\"\n },\n \"hi_source\": \"translated\",\n \"conducting_body_name\": {\n  \"en\": \"National Testing Agency\",\n  \"hi\": \"राष्ट्रीय परीक्षा एजेंसी\"\n },\n \"syllabus_body\": \"NMC\",\n \"syllabus_body_name\": {\n  \"en\": \"National Medical Commission (Under Graduate Medical Education Board)\",\n  \"hi\": \"राष्ट्रीय आयुर्विज्ञान आयोग\"\n },\n \"profiles\": {\n  \"neet-ug-2026\": {\n   \"status\": \"concluded\",\n   \"exam_languages\": [\n    \"as\",\n    \"bn\",\n    \"en\",\n    \"gu\",\n    \"hi\",\n    \"kn\",\n    \"ml\",\n    \"mr\",\n    \"or\",\n    \"pa\",\n    \"ta\",\n    \"te\",\n    \"ur\"\n   ],\n   \"schedule\": {\n    \"application_window\": {\n     \"from\": \"2026-02-08\",\n     \"to\": \"2026-03-08\"\n    },\n    \"correction_window\": {\n     \"from\": \"2026-03-10\",\n     \"to\": \"2026-03-12\"\n    },\n    \"exam_date\": \"2026-05-03\",\n    \"exam_time\": {\n     \"start\": \"14:00\",\n     \"end\": \"17:00\",\n     \"tz\": \"Asia/Kolkata\"\n    },\n    \"re_examination\": {\n     \"date\": \"2026-06-21\",\n     \"window\": {\n      \"start\": \"14:00\",\n      \"end\": \"17:15\",\n      \"tz\": \"Asia/Kolkata\",\n      \"note\": \"195-minute window including time for examination formalities (Public Notice 12 June 2026).\"\n     },\n     \"source_ref\": \"Public Notice 15 May 2026 'Conduct of Re-examination for NEET (UG) 2026'\"\n    },\n    \"source_ref\": \"Bulletin p.2 (Important Information and Dates at a Glance)\"\n   }\n  }\n }\n}"
 }

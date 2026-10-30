@@ -49,6 +49,8 @@ interface FakeUser {
   entitlement: EntitlementSection;
   introUsed: boolean;
   createdAt: number;
+  /** Last answer and version per state section, for `?since=`. */
+  sections: Record<string, { json: string; version: number }>;
 }
 
 interface FakeToken {
@@ -83,6 +85,8 @@ const ANSWER_CONTEXTS = new Set(['lesson', 'check', 'fix', 'practice', 'review',
 export class FakeApiServer {
   readonly users = new Map<string, FakeUser>();
   readonly log: FakeRequestLog[] = [];
+  /** Every refused event, by type and code (tests assert this stays empty). */
+  readonly rejections: { type: string; code: string }[] = [];
   private tokens = new Map<string, FakeToken>();
   private refreshTokens = new Map<string, string>();
   private byEmail = new Map<string, string>();
@@ -131,13 +135,14 @@ export class FakeApiServer {
       return json(200, this.issue(user));
     }
     if (method === 'GET' && p === '/v1/config') return json(200, this.config());
+    if (method === 'GET' && p === '/v1/catalog/exams') return json(200, this.exams());
 
     const user = bearer ? this.userByToken(bearer) : null;
     if (!user) return json(401, { code: 'unauthorized' });
 
     if (p.startsWith('/v1/sync/') && this.failSyncWith) return json(this.failSyncWith, { code: 'unavailable' });
     if (method === 'POST' && p === '/v1/sync/events') return this.events(user, body);
-    if (method === 'GET' && p === '/v1/sync/state') return json(200, this.state(user));
+    if (method === 'GET' && p === '/v1/sync/state') return json(200, this.stateSince(user, u.searchParams.get('since')));
     if (method === 'GET' && p === '/v1/billing/intro-eligibility') return json(200, { eligible: !user.introUsed && !user.isAnonymous });
     if (method === 'POST' && p === '/v1/dev/billing/purchase') {
       if (user.isAnonymous) return json(403, { code: 'sign_in_required' });
@@ -163,8 +168,12 @@ export class FakeApiServer {
     const name = typeof body.name === 'string' ? body.name.trim() : '';
     if (!email.includes('@')) return json(400, { code: 'invalid_credentials' });
     const owner = this.byEmail.get(email);
-    const current = bearer ? this.userByToken(bearer) : null;
-    if (current && current.isAnonymous && !owner) {
+    if (body.link === true) {
+      // As the real API: linking needs the guest's bearer; an owned identity is a 409 (merge path).
+      const current = bearer ? this.userByToken(bearer) : null;
+      if (!current) return json(401, { code: 'unauthorized' });
+      if (!current.isAnonymous) return json(409, { code: 'not_a_guest' });
+      if (owner && owner !== current.id) return json(409, { code: 'identity_already_exists' });
       // Link: the same user is converted, so no data moves (TRD §6).
       current.isAnonymous = false;
       current.email = email;
@@ -193,6 +202,7 @@ export class FakeApiServer {
       stateVersion: ++this.seq,
       entitlement: { plan: 'free', pro_until: null, status: 'active' },
       introUsed: false,
+      sections: {},
       createdAt: this.clock(),
     };
     this.users.set(id, user);
@@ -219,6 +229,7 @@ export class FakeApiServer {
       const code = validate(raw);
       if (code) {
         rejected.push({ event_id: String(raw?.event_id ?? ''), code });
+        this.rejections.push({ type: String(raw?.type ?? ''), code });
         continue;
       }
       accepted.push(raw.event_id);
@@ -230,7 +241,28 @@ export class FakeApiServer {
     return json(200, { accepted, rejected, state_version: user.stateVersion });
   }
 
-  /** The full state (the fake ignores `since` and always answers every section). */
+  /**
+   * As the API: with `since`, only sections whose version is newer are sent; null sections are
+   * left out, except `pet: null` in a full read (the student has no pet yet).
+   */
+  stateSince(user: FakeUser, since: string | null): Partial<SyncStateResponse> {
+    const full = this.state(user) as unknown as Record<string, unknown>;
+    const after = since === null ? null : Number(since);
+    const out: Record<string, unknown> = { state_version: user.stateVersion };
+    for (const [k, v] of Object.entries(full)) {
+      if (k === 'state_version') continue;
+      const json = JSON.stringify(v);
+      const prev = user.sections[k];
+      if (!prev || prev.json !== json) user.sections[k] = { json, version: user.stateVersion };
+      const version = user.sections[k]!.version;
+      if (after !== null && version <= after) continue;
+      if (v === null && !(k === 'pet' && after === null)) continue;
+      out[k] = v;
+    }
+    return out as Partial<SyncStateResponse>;
+  }
+
+  /** Every section, computed from the user's events with app-core's rules. */
   state(user: FakeUser): SyncStateResponse {
     const tz = user.events.at(-1)?.tz ?? 'Asia/Kolkata';
     const now = this.clock();
@@ -253,8 +285,8 @@ export class FakeApiServer {
     const pet = this.pet(user, plantRolled.health);
 
     const xp = user.events.filter((e) => e.type === 'lesson_completed') as WireEvent<'lesson_completed'>[];
-    const xpToday = xp.filter((e) => localDate(e.occurred_at, tz) === today).reduce((s, e) => s + e.payload.xp, 0);
-    const xpTotal = xp.reduce((s, e) => s + e.payload.xp, 0);
+    const xpToday = xp.filter((e) => localDate(e.occurred_at, tz) === today).reduce((s, e) => s + (e.payload.xp ?? 0), 0);
+    const xpTotal = xp.reduce((s, e) => s + (e.payload.xp ?? 0), 0);
 
     return {
       state_version: user.stateVersion,
@@ -291,7 +323,7 @@ export class FakeApiServer {
     const goals = Array.isArray(goal) ? goal.map(String) : typeof goal === 'string' ? [goal] : [];
     const dailyGoal = Number(last('daily_goal') ?? 10);
     const settings = user.events.filter((e) => e.type === 'settings_changed') as WireEvent<'settings_changed'>[];
-    const locale = [...settings].reverse().find((s) => s.payload.key === 'locale')?.payload.value;
+    const locale = [...settings].reverse().find((s) => s.payload.key === 'content_locale')?.payload.value;
     return {
       id: user.id,
       display_name: user.displayName,
@@ -348,15 +380,39 @@ export class FakeApiServer {
   }
 
   private config() {
+    // The subset of the API's ConfigResponse the app reads. Prices: PRD §11 and R33/R38.
+    const product = (platform: string, intro: boolean) => ({
+      product_id: `pro_monthly${intro ? '_intro' : ''}_${platform}_fake`,
+      platform,
+      variant_id: null,
+      store_product_id: 'fake',
+      price_paise: 9900,
+      intro_price_paise: intro ? 100 : null,
+      period: 'month',
+      entitlement: 'pro',
+    });
     return {
-      exams: (this.opts.catalogue ?? DEV_CATALOGUE).filter((e) => e.phase <= 1),
+      app_version: { min_version: '0.1.0', latest_version: '0.1.0', update_required: null },
       flags: {},
-      min_version: '1.0.0',
-      latest_version: '1.0.0',
-      // PRD §11 and R33/R38: ₹1 for the first month, then ₹99/month, tax-inclusive.
-      pricing: { intro_paise: 100, monthly_paise: 9900 },
-      fake: true,
+      free_limits: {},
+      pricing: ['ios', 'android', 'web'].flatMap((p) => [product(p, true), product(p, false)]),
+      content_base_url: 'http://fake.local/content',
+      server_time: new Date(this.clock()).toISOString(),
+      variants: ['all', 'jee', 'neet', 'upsc', 'ssc'],
     };
+  }
+
+  /** The API's `ExamOut[]` shape, built from the catalogue. */
+  private exams() {
+    return (this.opts.catalogue ?? DEV_CATALOGUE).map((e) => ({
+      id: e.exam_id,
+      category: e.category,
+      conducting_body: null,
+      official_url: null,
+      is_active: true,
+      name: e.name,
+      profiles: [{ id: e.exam_profile_id, cycle: '2027', name: e.name, locales: ['en', 'hi'], schedule: null, is_active: true }],
+    }));
   }
 }
 
@@ -366,19 +422,45 @@ function validate(e: WireEvent | undefined): string | null {
   if (typeof e.occurred_at !== 'string' || Number.isNaN(Date.parse(e.occurred_at))) return 'invalid_payload';
   if (!ACCEPTED_TYPES.has(e.type)) return 'unknown_type';
   if (!e.payload || typeof e.payload !== 'object') return 'invalid_payload';
+  // The rules below follow apps/api (schemas/sync.py, services/profile_rules.py).
   if (e.type === 'answer_submitted') {
-    const p = e.payload as SyncEventPayloads['answer_submitted'];
+    const p = e.payload as SyncEventPayloads['answer_submitted'] & { response: unknown };
     if (!ANSWER_CONTEXTS.has(p.context)) return 'invalid_payload';
-    if (typeof p.response === 'string' && p.response.length > 64) return 'free_text_not_allowed';
+    if (!p.card_id && !p.question_id) return 'invalid_payload';
+    if (!isResponse(p.response)) return 'invalid_payload';
   }
-  if (e.type === 'lesson_completed' && typeof (e.payload as { xp?: unknown }).xp !== 'number') return 'invalid_payload';
+  if (e.type === 'onboarding_answer') {
+    const { step, value } = e.payload as { step: string; value: unknown };
+    if (!ONBOARDING_RULES[step]?.(value)) return 'invalid_payload';
+  }
+  if (e.type === 'settings_changed' && !SETTINGS_KEYS.has((e.payload as { key: string }).key)) return 'invalid_payload';
   return null;
 }
+
+const RESPONSE_KEY = /^[A-Za-z0-9_.:-]{0,64}$/;
+/** "The option ids, number or text key, never free text": a key, a list of keys, a number or null. */
+function isResponse(r: unknown): boolean {
+  if (r === null || r === undefined || typeof r === 'number') return true;
+  if (typeof r === 'string') return RESPONSE_KEY.test(r);
+  return Array.isArray(r) && r.every((k) => typeof k === 'string' && RESPONSE_KEY.test(k));
+}
+
+const SETTINGS_KEYS = new Set(['sound', 'haptics', 'reduced_motion', 'theme', 'mock_dark_mode', 'content_locale', 'tutor_locale', 'analytics_opt_out', 'start_mode', 'name_display']);
+
+const ONBOARDING_RULES: Record<string, (v: unknown) => boolean> = {
+  goal: (v) => v === null || v === 'curious' || typeof v === 'string' || (Array.isArray(v) && v.every((x) => typeof x === 'string')),
+  class: (v) => typeof v === 'number' && Number.isInteger(v) && v >= 1 && v <= 12,
+  birth_year: (v) => v === null || (typeof v === 'number' && v >= 1900),
+  exam_date: (v) => v === null || typeof v === 'string',
+  level: (v) => v === 'starting' || v === 'basics' || v === 'revising',
+  daily_goal: (v) => v === 5 || v === 10 || v === 20 || v === 30,
+  reminder: (v) => v === null || (typeof v === 'string' && /^\d{2}:\d{2}$/.test(v)),
+};
 
 function ageBand(cls: unknown, birthYear: unknown, now: number): AgeBand | null {
   const c = Number(cls);
   if (Number.isFinite(c) && c > 0) return c <= 5 ? 'u10' : c <= 7 ? '10_12' : '13_17';
-  if (birthYear === 'declined') return '13_17';
+  if (birthYear === null || birthYear === undefined) return null;
   const y = Number(birthYear);
   if (!Number.isFinite(y) || y < 1900) return null;
   const age = new Date(now).getUTCFullYear() - y;

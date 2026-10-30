@@ -14,7 +14,8 @@
     "export:web": "node scripts/seed-pack.mjs && expo export --platform web --output-dir dist-web",
     "typecheck": "node scripts/seed-pack.mjs && tsc --noEmit -p .",
     "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs",
-    "test": "node scripts/seed-pack.mjs && jest"
+    "test": "node scripts/seed-pack.mjs && jest",
+    "test:live": "node scripts/seed-pack.mjs && jest test/live"
   },
   "dependencies": {
     "@expo-google-fonts/noto-sans-devanagari": "0.4.2",
@@ -22,6 +23,7 @@
     "@expo/metro-runtime": "57.0.17",
     "@react-native-community/netinfo": "12.0.1",
     "@smriti/analytics": "workspace:*",
+    "@smriti/api-client": "workspace:*",
     "@smriti/app-core": "workspace:*",
     "@smriti/config": "workspace:*",
     "@smriti/content-schema": "workspace:*",

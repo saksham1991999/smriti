@@ -8,6 +8,7 @@ import { FakeApiServer } from '../dev/fake-api/server';
 import { readClientEnv, readSwitches } from '../env';
 import { getVariant } from '@smriti/config';
 import { expoCrypto } from '../platform/crypto';
+import { installDeviceId } from '../platform/deviceId';
 import { NetInfoNetwork, onForeground } from '../platform/network';
 import { ExpoNotifier, MemoryNotifier } from '../platform/notifications';
 import { openProfileStores } from '../platform/profileDb';
@@ -45,17 +46,19 @@ async function createDeviceApp(): Promise<SmritiApp> {
   const env = readClientEnv();
   const variant = getVariant(process.env.EXPO_PUBLIC_APP_VARIANT ?? extraVariant ?? env.APP_VARIANT);
   const switches = readSwitches(env);
-  // The web preview has no apps/api next to it, so it always runs on the in-app fake API.
-  const useFake = switches.fakeApi || Platform.OS === 'web';
+  // The web preview runs on the in-app fake API unless EXPO_PUBLIC_FAKE_API=0 points it at apps/api.
+  const useFake = switches.fakeApi || (Platform.OS === 'web' && process.env.EXPO_PUBLIC_FAKE_API !== '0');
   const fake = useFake ? new FakeApiServer() : null;
   const network = new NetInfoNetwork();
   network.start();
   const stores = await openProfileStores(variant.id);
+  const deviceId = await installDeviceId(stores.kv, expoCrypto);
   const app = new SmritiApp({
     env: useFake ? { ...env, AUTH_MODE: 'dev', API_BASE_URL: 'http://fake.local' } : env,
     variant,
     switches: useFake ? { ...switches, billing: 'fake', googleSignIn: 'dev' } : switches,
     stores,
+    deviceId,
     fetch: fake ? fake.asFetch() : platformFetch,
     network,
     crypto: expoCrypto,

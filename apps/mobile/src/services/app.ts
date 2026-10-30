@@ -47,15 +47,18 @@ import { createI18n, type MessageKey, type MessageValues, type Translator } from
 import type { EventEnvelope, LessonSummary } from '@smriti/lesson-core';
 import { createStore, type StoreApi } from 'zustand/vanilla';
 
+import { withDevLinkFlag } from '../auth/devLinkFetch';
 import type { AppleSignInProvider, GoogleSignInProvider } from '../auth/providers';
 import { FakeBilling, RevenueCatBilling } from '../billing/fake';
 import type { BillingProvider, PurchaseResult } from '../billing/types';
-import { CATALOGUE_SNAPSHOT, type CatalogueExam } from '../content/catalogue';
+import { CATALOGUE_SNAPSHOT, catalogueFromApi, type CatalogueExam } from '../content/catalogue';
 import type { ContentRepo } from '../content/repo';
 import type { MobileSwitches } from '../env';
 import { applyNotificationPlan, type LocalNotifier } from '../platform/notifications';
 import type { ProfileStores } from '../platform/profileDb';
 import { KvWidgetBridge, type WidgetBridge } from '../platform/widget';
+import { createMobileApiClient, unwrap, type ApiClient } from './api';
+import { goalAnswer, toWireEnvelope } from './wire';
 import {
   ageBandFrom,
   nextStep,
@@ -108,10 +111,18 @@ export interface AppDeps {
   platform: 'ios' | 'android' | 'web';
   billing?: BillingProvider;
   widget?: WidgetBridge;
+  /** Per-install UUID (sync `device_id`), from `installDeviceId`. */
+  deviceId: string;
   analyticsTransport?: Transport;
   logger?: Logger;
   appVersion?: string;
 }
+
+/**
+ * The API takes null for "declined" and "not now" (profile_rules); app-core's payload type has no
+ * null yet (reported under "Contract changes"), so those values are cast.
+ */
+type OnboardingValue = SyncEventPayloads['onboarding_answer']['value'];
 
 const PREFS_KEY = 'prefs.v1';
 const LESSONS_KEY = 'lessons.completed.v1';
@@ -141,6 +152,8 @@ export class SmritiApp {
   readonly billing: BillingProvider;
   readonly analytics: AnalyticsClient;
   readonly widget: WidgetBridge;
+  /** Typed REST client for non-sync calls (@smriti/api-client). */
+  readonly api: ApiClient;
   flags: Flags = defaultFlags;
   i18n: Translator;
   private readonly logger: Logger;
@@ -177,9 +190,17 @@ export class SmritiApp {
       });
       this.auth = new SupabaseAuthClient(client);
     } else {
-      this.auth = new DevAuthClient({ baseUrl: env.API_BASE_URL, fetch: deps.fetch, store: stores.secure, clock: deps.clock });
+      this.auth = new DevAuthClient({ baseUrl: env.API_BASE_URL, fetch: withDevLinkFlag(deps.fetch), store: stores.secure, clock: deps.clock });
     }
 
+    this.api = createMobileApiClient({
+      baseUrl: env.API_BASE_URL,
+      fetch: deps.fetch,
+      getAccessToken: () => this.auth.getAccessToken(),
+      variant: variant.id,
+      platform: deps.platform,
+      ...(deps.appVersion ? { appVersion: deps.appVersion } : {}),
+    });
     this.outbox = new Outbox({ crypto: deps.crypto, clock: deps.clock, timeZone: deps.timeZone });
     this.sync = new SyncClient({
       storage: stores.storage,
@@ -187,7 +208,7 @@ export class SmritiApp {
       baseUrl: env.API_BASE_URL,
       network: deps.network,
       tokens: { getAccessToken: () => this.auth.getAccessToken(), refresh: async () => (await this.auth.refreshSession())?.accessToken ?? null },
-      deviceId: 'pending',
+      deviceId: deps.deviceId,
       variant: variant.id,
       scheduler: deps.scheduler,
       clock: deps.clock,
@@ -312,20 +333,33 @@ export class SmritiApp {
 
   /** `GET /v1/config`: the live goal catalogue (R7), flags and pricing. Cached; never blocks. */
   async loadConfig(): Promise<void> {
+    const prev = this.ui.getState().config;
+    let next: RemoteConfig = prev;
     try {
-      const res = await this.deps.fetch(`${this.deps.env.API_BASE_URL}/v1/config`, { method: 'GET', headers: { Accept: 'application/json', 'X-App-Variant': this.deps.variant.id } });
-      if (!res.ok) return;
-      const body = (await res.json()) as Partial<RemoteConfig>;
-      const config: RemoteConfig = {
-        exams: Array.isArray(body.exams) && body.exams.length ? body.exams : CATALOGUE_SNAPSHOT,
-        pricing: body.pricing ?? DEFAULT_PRICING,
-        flags: body.flags ?? {},
+      const body = await unwrap(this.api.GET('/v1/config'));
+      // The store product for this platform and variant; the intro product carries both prices.
+      const mine = body.pricing.filter((p) => p.platform === this.deps.platform && (p.variant_id === this.deps.variant.id || p.variant_id === null));
+      const intro = mine.find((p) => p.intro_price_paise !== null);
+      const monthly = mine.find((p) => p.intro_price_paise === null) ?? intro;
+      next = {
+        ...next,
+        flags: body.flags,
+        pricing: {
+          intro_paise: intro?.intro_price_paise ?? DEFAULT_PRICING.intro_paise,
+          monthly_paise: monthly?.price_paise ?? DEFAULT_PRICING.monthly_paise,
+        },
       };
-      this.flags = createFlags(config.flags);
-      this.ui.setState({ config });
+      this.flags = createFlags(body.flags);
+    } catch {
+      /* offline or older server: keep the cached values */
+    }
+    try {
+      const exams = catalogueFromApi(await unwrap(this.api.GET('/v1/catalog/exams')));
+      if (exams.length) next = { ...next, exams };
     } catch {
       /* offline: keep the snapshot */
     }
+    if (next !== prev) this.ui.setState({ config: next });
   }
 
   // ── Helpers ───────────────────────────────────────────────────────────────
@@ -384,7 +418,8 @@ export class SmritiApp {
   }
 
   /** Lesson events from lesson-core's `LessonSession`, already in the sync envelope. */
-  async recordEnvelope(env: EventEnvelope, also?: (tx: StorageTables) => Promise<void>): Promise<void> {
+  async recordEnvelope(event: EventEnvelope, also?: (tx: StorageTables) => Promise<void>): Promise<void> {
+    const env = toWireEnvelope(event);
     await this.deps.stores.storage.transaction(async (tx) => {
       await tx.outbox.append({ event_id: env.event_id, type: env.type, payload: env.payload as never, occurred_at: env.occurred_at, tz: env.tz });
       if (also) await also(tx);
@@ -459,7 +494,7 @@ export class SmritiApp {
     this.ui.setState({ locale });
     await this.savePrefs({ locale });
     await this.updateOnboarding({ locale }, 'welcome');
-    await this.record('settings_changed', { key: 'locale', value: locale });
+    await this.record('settings_changed', { key: 'content_locale', value: locale });
     this.track('onboarding_step_completed', { step: 'ONB-01' });
   }
 
@@ -467,7 +502,7 @@ export class SmritiApp {
     await this.i18n.setLocale(locale);
     this.ui.setState({ locale });
     await this.savePrefs({ locale });
-    await this.record('settings_changed', { key: 'locale', value: locale });
+    await this.record('settings_changed', { key: 'content_locale', value: locale });
   }
 
   /** Skips Goal in a per-exam app with one exam profile (onboarding §5.1). */
@@ -481,14 +516,14 @@ export class SmritiApp {
 
   async answerGoal(goals: string[], schoolClass: number | null): Promise<OnboardingState> {
     const s = await this.updateOnboarding({ goals, schoolClass }, 'goal');
-    await this.record('onboarding_answer', { step: 'goal', value: goals });
+    await this.record('onboarding_answer', { step: 'goal', value: goalAnswer(goals) as OnboardingValue });
     if (schoolClass !== null) await this.record('onboarding_answer', { step: 'class', value: schoolClass });
     return s;
   }
 
   async answerBirthYear(year: number | 'declined'): Promise<OnboardingState> {
     const s = await this.updateOnboarding({ birthYear: year }, 'birth_year');
-    await this.record('onboarding_answer', { step: 'birth_year', value: year === 'declined' ? 'declined' : year });
+    await this.record('onboarding_answer', { step: 'birth_year', value: (year === 'declined' ? null : year) as OnboardingValue });
     return s;
   }
 
@@ -536,7 +571,7 @@ export class SmritiApp {
     if (time) granted = await this.deps.notifier.requestPermission();
     this.track('os_notification_result', { result: time ? (granted ? 'granted' : 'denied') : 'not_now' } as never);
     await this.updateOnboarding({ reminderAt: time && granted ? time : null, completedAt: new Date(this.deps.clock()).toISOString() }, 'reminder');
-    await this.record('onboarding_answer', { step: 'reminder', value: time && granted ? time : false });
+    await this.record('onboarding_answer', { step: 'reminder', value: (time && granted ? time : null) as OnboardingValue });
     await this.refreshReminders();
     return { granted };
   }

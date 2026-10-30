@@ -77,6 +77,7 @@ describe('guest to Pro (services)', () => {
     expect(purchase.status).toBe('done');
     expect(app.store.getState().entitlement?.plan).toBe('pro');
     expect(app.isPro()).toBe(true);
+    expect(fake.rejections).toEqual([]);
     app.stop();
   });
 

@@ -10,7 +10,8 @@
     "title": "Staff Selection Commission, Notice: Combined Graduate Level Examination, 2026 (F. No. HQ-C11018/1/2026-C-1, uploaded 21-05-2026)",
     "published": "2026-05-21",
     "retrieved": "2026-10-30",
-    "pages": "PDF p.1 (title, dates at a glance), p.24 (para 13.1-13.7), p.25 (table 13.8, paras 13.8.1-13.8.2), pp.30-31 (para 13.10 Tier-I syllabus), p.41 (paras 16.1, 16.3), p.42 (para 16.10), p.48 (para 23(a))"
+    "pages": "PDF p.1 (title, dates at a glance), p.24 (para 13.1-13.7), p.25 (table 13.8, paras 13.8.1-13.8.2), pp.30-31 (para 13.10 Tier-I syllabus), p.41 (paras 16.1, 16.3), p.42 (para 16.10), p.48 (para 23(a))",
+    "linked_from": "https://ssc.gov.in/ (Notice Board)"
   },
   "mode": "cbt",
   "duration_min": 60,
@@ -44,7 +45,8 @@
           "wrong": -0.5,
           "unattempted": 0
         }
-      }
+      },
+      "max_marks": 50
     },
     {
       "code": "general-awareness",
@@ -67,7 +69,8 @@
           "wrong": -0.5,
           "unattempted": 0
         }
-      }
+      },
+      "max_marks": 50
     },
     {
       "code": "quant",
@@ -90,7 +93,8 @@
           "wrong": -0.5,
           "unattempted": 0
         }
-      }
+      },
+      "max_marks": 50
     },
     {
       "code": "english",
@@ -113,7 +117,8 @@
           "wrong": -0.5,
           "unattempted": 0
         }
-      }
+      },
+      "max_marks": 50
     }
   ],
   "accommodations": {
@@ -124,6 +129,29 @@
     "en": "Tier-I has 100 multiple-choice questions for 200 marks in 60 minutes: General Intelligence and Reasoning, General Awareness, Quantitative Aptitude and English Comprehension, with 25 questions and 50 marks each and a 15-minute timer for each subject. Each wrong answer costs 0.50 marks. Questions are in English and Hindi, except English Comprehension. Tier-I is used only to shortlist candidates for Tier-II.",
     "hi": "टियर-I में 200 अंकों के 100 बहुविकल्पीय प्रश्न हैं, जिनके लिए 60 मिनट मिलते हैं: सामान्य बुद्धि एवं तर्कशक्ति, सामान्य जागरूकता, मात्रात्मक योग्यता और अंग्रेज़ी बोध, प्रत्येक में 25 प्रश्न और 50 अंक, और हर विषय के लिए 15 मिनट का अलग टाइमर। हर गलत उत्तर पर 0.50 अंक कटते हैं। अंग्रेज़ी बोध को छोड़कर प्रश्न अंग्रेज़ी और हिंदी में होते हैं। टियर-I का उपयोग केवल टियर-II के लिए उम्मीदवारों को शॉर्टलिस्ट करने में होता है।"
   },
+  "calculator": null,
+  "section_navigation": null,
+  "numeric_input": null,
+  "qualifying": {
+    "rule": {
+      "kind": "percent_of_max",
+      "by_category": [
+        {
+          "category": "UR",
+          "value": 30
+        },
+        {
+          "category": "OBC/EWS",
+          "value": 25
+        },
+        {
+          "category": "all_other_categories",
+          "value": 20
+        }
+      ]
+    },
+    "source_ref": "para 16.1 (PDF p.41)"
+  },
   "status": "draft",
   "sources": [
     {
@@ -133,14 +161,46 @@
     },
     {
       "kind": "official",
-      "ref": "Staff Selection Commission, Important Notice F.No. HQ-EC033/7/2025-EC dated 12.09.2026 (schedule of CGL 2026 Tier-I); published 2026-09-12",
+      "ref": "Staff Selection Commission, Important Notice F.No. HQ-EC033/7/2025-EC dated 12.09.2026 (schedule of CGL 2026 Tier-I)",
       "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Important%20Notice%202026_cgle_2026_12092026.pdf",
       "retrieved": "2026-10-30",
-      "pages": "p.1"
+      "pages": "p.1",
+      "published": "2026-09-12"
     }
   ],
   "authored_by": "skill:exam-blueprint",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "Mapping decisions:\n- language_switch per_question: questions are set in English and Hindi (except the English parts) (notice paras 13.8.1 and 13.9.7, PDF pp.25, 28).\n- calculator left unset: the notice does not state it.\n- section_navigation left unset: the notice does not state it.\n- numeric_input left unset: the paper has no numeric-entry questions, and the schema requires a value (schema change requested).\n- qualifying left unset: the rule (minimum_percent_by_category) depends on category or on the Commission, which the schema cannot express (schema change requested).\n- instructions: summary in our own words of the notice paragraphs cited in the source; Hindi translated.\n\nOpen questions:\n- The notice is printed in English and Hindi (para 23(a), PDF p.48), but only the English notice was retrieved. Hindi titles here are translations (title_hi_source: translated); replace them with the official Hindi wording.\n- Normalisation of multi-shift scores follows the SSC procedure published in the Notice dated 02-06-2025 (para 13.2, PDF p.24). That notice was not retrieved, so scoring.normalization only names it.\n- The notice does not say whether a calculator (on-screen or physical) is allowed. calculator stays null.\n- Shift timings are not stated in the notice; they appear on the Admission Certificate. shift_timings stays null.\n- The number of options per question is not stated in the notice. options_per_question stays null.\n- The order of the four subjects on screen and whether candidates can move between them within the hour are not stated. section_navigation stays null.\n\nFields with no slot in blueprint@1, kept verbatim from the cited sources (JSON):\n{\n \"title\": {\n  \"en\": \"Combined Graduate Level Examination: Tier-I\",\n  \"hi\": \"संयुक्त स्नातक स्तरीय परीक्षा : टियर-I\"\n },\n \"title_hi_source\": \"translated\",\n \"duration_rules\": {\n  \"scribe_eligible_min\": 80,\n  \"source_ref\": \"table 13.8 (PDF p.25): 1 hour with a sectional timer of 15 minutes for each subject; 1 hour 20 minutes with 15+5=20 minutes per subject for candidates eligible for a scribe (paras 7.1-7.3)\"\n },\n \"shift_timings\": null,\n \"language_rules\": {\n  \"paper_is_bilingual\": \"Questions are set in English and Hindi except English Comprehension (para 13.8.1, PDF p.25).\",\n  \"prevailing_version\": \"For the notice itself the English version prevails in a dispute (para 23(a), PDF p.48); the notice says nothing about the question paper.\"\n },\n \"section_navigation_source_ref\": \"Not stated. Table 13.8 gives a 15-minute sectional timer for each subject but not the order of subjects or whether a candidate may move between subjects.\",\n \"key_anomaly_rules\": {\n  \"tentative_key_challenge\": \"Tentative answer keys are placed on the SSC website after the examination; representations are made online within the stated time on payment of Rs 100 per question, non-refundable (para 13.3, PDF p.24).\",\n  \"guidelines\": \"Guidelines regarding Challenge / Objection Management System, SSC Notice dated 10.04.2026 (para 13.4, PDF p.24); not retrieved.\",\n  \"re_evaluation\": \"No re-evaluation or re-checking of scores of any stage (para 13.7, PDF p.24).\"\n },\n \"scoring\": {\n  \"normalization\": \"Scores from multiple shifts are normalised by the procedure in the SSC Notice dated 02-06-2025 (para 13.2, PDF p.24).\",\n  \"merit\": \"Tier-I is for shortlisting only: the final merit list is prepared on Tier-II performance only (para 16.10, PDF p.42).\"\n },\n \"notes\": [\n  \"interface 'ssc_tcs' and mode 'cbt': the notice says Computer Based Examination (para 13.1, PDF p.24) but does not name the test vendor or describe the screen, so 'ssc_tcs' is the skill's enum value for SSC CBTs, not a quoted fact.\",\n  \"instructions is null: the notice does not reproduce the instructions screen.\",\n  \"Tier-I is objective multiple-choice (para 13.8.1, PDF p.25).\",\n  \"Marks per question (2) are derived from the table: each subject has 25 questions and 50 maximum marks.\",\n  \"Question level: Parts A, B and D at graduation level, Part C (Quantitative Aptitude) at 10th standard level (para 13.10.5, PDF p.31).\"\n ],\n \"changes_from_previous\": null,\n \"exam_window\": {\n  \"from\": \"2026-09-30\",\n  \"to\": \"2026-10-30\",\n  \"source_ref\": \"Important Notice dated 12.09.2026, p.1\"\n },\n \"language_switch\": null,\n \"qualifying\": {\n  \"rule\": \"minimum_percent_by_category\",\n  \"min_percent\": {\n   \"UR\": 30,\n   \"OBC/EWS\": 25,\n   \"all_other_categories\": 20\n  },\n  \"source_ref\": \"para 16.1 (PDF p.41)\",\n  \"shortlisting\": \"Candidates are shortlisted category-wise for Tier-II on Tier-I marks, with separate cut-offs for JSO and Statistical Investigator Grade-II (Paper-I and Paper-II), for Assistant Audit Officer and Assistant Accounts Officer (Paper-I and Paper-III), and for all other posts (Paper-I) (para 16.3, PDF p.41).\"\n },\n \"sections\": {\n  \"reasoning\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"max_marks\": 50,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  },\n  \"general-awareness\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"max_marks\": 50,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  },\n  \"quant\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"max_marks\": 50,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  },\n  \"english\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"max_marks\": 50,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  }\n }\n}\n\nsource fields with no slot in blueprint@1 (JSON):\n{\n \"kind\": \"official\",\n \"publisher\": \"Staff Selection Commission\",\n \"linked_from\": \"https://ssc.gov.in/ (Notice Board)\",\n \"url_note\": \"The file name on the SSC server says 'cgl_2025' but the document is the 2026 notice (header and every date say 2026).\"\n}"
+  "hi_source": "translation",
+  "open_questions": [
+    {
+      "field": null,
+      "question": "The notice is printed in English and Hindi (para 23(a), PDF p.48), but only the English notice was retrieved. Hindi titles here are translations (hi_source: translation); replace them with the official Hindi wording."
+    },
+    {
+      "field": null,
+      "question": "Normalisation of multi-shift scores follows the SSC procedure published in the Notice dated 02-06-2025 (para 13.2, PDF p.24). That notice was not retrieved, so scoring.normalization only names it."
+    },
+    {
+      "field": "calculator",
+      "question": "The notice does not say whether a calculator (on-screen or physical) is allowed. calculator stays null."
+    },
+    {
+      "field": null,
+      "question": "Shift timings are not stated in the notice; they appear on the Admission Certificate. shift_timings stays null."
+    },
+    {
+      "field": null,
+      "question": "The number of options per question is not stated in the notice. options_per_question stays null."
+    },
+    {
+      "field": "section_navigation",
+      "question": "The order of the four subjects on screen and whether candidates can move between them within the hour are not stated. section_navigation stays null."
+    },
+    {
+      "field": "numeric_input",
+      "question": "The paper has no numeric-entry questions, so the notice states no way of typing numbers."
+    }
+  ],
+  "notes": "Mapping decisions:\n- language_switch per_question: questions are set in English and Hindi (except the English parts) (notice paras 13.8.1 and 13.9.7, PDF pp.25, 28).\n- instructions: summary in our own words of the notice paragraphs cited in the source; Hindi translated.\n\nFields with no slot in blueprint@1, kept verbatim from the cited sources (JSON):\n{\n \"title\": {\n  \"en\": \"Combined Graduate Level Examination: Tier-I\",\n  \"hi\": \"संयुक्त स्नातक स्तरीय परीक्षा : टियर-I\"\n },\n \"duration_rules\": {\n  \"scribe_eligible_min\": 80,\n  \"source_ref\": \"table 13.8 (PDF p.25): 1 hour with a sectional timer of 15 minutes for each subject; 1 hour 20 minutes with 15+5=20 minutes per subject for candidates eligible for a scribe (paras 7.1-7.3)\"\n },\n \"language_rules\": {\n  \"paper_is_bilingual\": \"Questions are set in English and Hindi except English Comprehension (para 13.8.1, PDF p.25).\",\n  \"prevailing_version\": \"For the notice itself the English version prevails in a dispute (para 23(a), PDF p.48); the notice says nothing about the question paper.\"\n },\n \"section_navigation_source_ref\": \"Not stated. Table 13.8 gives a 15-minute sectional timer for each subject but not the order of subjects or whether a candidate may move between subjects.\",\n \"key_anomaly_rules\": {\n  \"tentative_key_challenge\": \"Tentative answer keys are placed on the SSC website after the examination; representations are made online within the stated time on payment of Rs 100 per question, non-refundable (para 13.3, PDF p.24).\",\n  \"guidelines\": \"Guidelines regarding Challenge / Objection Management System, SSC Notice dated 10.04.2026 (para 13.4, PDF p.24); not retrieved.\",\n  \"re_evaluation\": \"No re-evaluation or re-checking of scores of any stage (para 13.7, PDF p.24).\"\n },\n \"scoring\": {\n  \"normalization\": \"Scores from multiple shifts are normalised by the procedure in the SSC Notice dated 02-06-2025 (para 13.2, PDF p.24).\",\n  \"merit\": \"Tier-I is for shortlisting only: the final merit list is prepared on Tier-II performance only (para 16.10, PDF p.42).\"\n },\n \"notes\": [\n  \"interface 'ssc_tcs' and mode 'cbt': the notice says Computer Based Examination (para 13.1, PDF p.24) but does not name the test vendor or describe the screen, so 'ssc_tcs' is the skill's enum value for SSC CBTs, not a quoted fact.\",\n  \"instructions is null: the notice does not reproduce the instructions screen.\",\n  \"Tier-I is objective multiple-choice (para 13.8.1, PDF p.25).\",\n  \"Marks per question (2) are derived from the table: each subject has 25 questions and 50 maximum marks.\",\n  \"Question level: Parts A, B and D at graduation level, Part C (Quantitative Aptitude) at 10th standard level (para 13.10.5, PDF p.31).\"\n ],\n \"changes_from_previous\": null,\n \"exam_window\": {\n  \"from\": \"2026-09-30\",\n  \"to\": \"2026-10-30\",\n  \"source_ref\": \"Important Notice dated 12.09.2026, p.1\"\n },\n \"language_switch\": null,\n \"qualifying\": {\n  \"shortlisting\": \"Candidates are shortlisted category-wise for Tier-II on Tier-I marks, with separate cut-offs for JSO and Statistical Investigator Grade-II (Paper-I and Paper-II), for Assistant Audit Officer and Assistant Accounts Officer (Paper-I and Paper-III), and for all other posts (Paper-I) (para 16.3, PDF p.41).\"\n },\n \"sections\": {\n  \"reasoning\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  },\n  \"general-awareness\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  },\n  \"quant\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  },\n  \"english\": {\n   \"timer_min_scribe_eligible\": 20,\n   \"options_per_question\": null,\n   \"languages\": [\n    \"en\"\n   ],\n   \"attempt_rule\": {\n    \"all_compulsory\": true\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct_source_ref\": \"derived: 50 maximum marks for 25 questions in each subject (table 13.8, PDF p.25); the notice does not print marks per question for Tier-I\",\n     \"wrong_source_ref\": \"para 13.8.2 (PDF p.25): 'negative marking of 0.50 marks for each wrong answer'\"\n    }\n   }\n  }\n }\n}\n\nsource fields with no slot in blueprint@1 (JSON):\n{\n \"publisher\": \"Staff Selection Commission\",\n \"url_note\": \"The file name on the SSC server says 'cgl_2025' but the document is the 2026 notice (header and every date say 2026).\"\n}"
 }

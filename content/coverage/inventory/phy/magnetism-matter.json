@@ -5,7 +5,10 @@
     {
       "id": "leph1-5-2",
       "kind": "formula",
-      "title": "The Bar Magnet",
+      "title": {
+        "en": "The Bar Magnet",
+        "hi": "छड़ चुंबक"
+      },
       "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.2 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
       "concepts": [
         "phy.magnetism-matter.bar-magnet.core.bar-magnet-solenoid",
@@ -16,7 +19,10 @@
     {
       "id": "leph1-5-3",
       "kind": "fact",
-      "title": "Magnetism and Gauss’s Law",
+      "title": {
+        "en": "Magnetism and Gauss’s Law",
+        "hi": "चुंबकत्व एवं गाउस नियम"
+      },
       "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.3 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
       "concepts": [],
       "out_of_syllabus": "Gauss's law for magnetism is not listed in either official syllabus (JEE Main 2027, NEET UG 2026)"
@@ -24,7 +30,10 @@
     {
       "id": "leph1-5-4",
       "kind": "definition",
-      "title": "Magnetisation and Magnetic Intensity",
+      "title": {
+        "en": "Magnetisation and Magnetic Intensity",
+        "hi": "चुंबकीकरण एवं चुंबकीय तीव्रता"
+      },
       "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.4 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
       "concepts": [
         "phy.magnetism-matter.magnetic-materials.core.magnetisation-intensity",
@@ -34,7 +43,10 @@
     {
       "id": "leph1-5-5",
       "kind": "definition",
-      "title": "Magnetic Properties of Materials",
+      "title": {
+        "en": "Magnetic Properties of Materials",
+        "hi": "पदार्थों के चुंबकीय गुण"
+      },
       "source_ref": "NCERT Class 12 Physics Part I, Ch 5 §5.5 (https://ncert.nic.in/textbook/pdf/leph105.pdf)",
       "concepts": [
         "phy.magnetism-matter.magnetic-materials.core.magnetisation-intensity",
@@ -54,5 +66,6 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages.",
+  "hi_source": "ncert"
 }

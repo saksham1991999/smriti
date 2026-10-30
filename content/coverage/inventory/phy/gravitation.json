@@ -5,7 +5,10 @@
     {
       "id": "keph1-7-2",
       "kind": "definition",
-      "title": "Kepler's Laws",
+      "title": {
+        "en": "Kepler's Laws",
+        "hi": "केप्लर के नियम"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 7 §7.2 (https://ncert.nic.in/textbook/pdf/keph107.pdf)",
       "concepts": [
         "phy.gravitation.kepler.core.kepler-laws"
@@ -32,7 +35,10 @@
     {
       "id": "keph1-7-5",
       "kind": "formula",
-      "title": "Acceleration Due to Gravity of the Earth",
+      "title": {
+        "en": "Acceleration Due to Gravity of the Earth",
+        "hi": "पृथ्वी का गुरुत्वीय त्वरण"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 7 §7.5 (https://ncert.nic.in/textbook/pdf/keph107.pdf)",
       "concepts": [
         "phy.gravitation.acceleration-gravity.core.g-variation"
@@ -41,7 +47,10 @@
     {
       "id": "keph1-7-6",
       "kind": "formula",
-      "title": "Acceleration Due to Gravity Below and Above the Surface of Earth",
+      "title": {
+        "en": "Acceleration Due to Gravity Below and Above the Surface of Earth",
+        "hi": "पृथ्वी के पृष्ठ के नीचे तथा ऊपर गुरुत्वीय त्वरण"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 7 §7.6 (https://ncert.nic.in/textbook/pdf/keph107.pdf)",
       "concepts": [
         "phy.gravitation.acceleration-gravity.core.g-variation"
@@ -68,7 +77,10 @@
     {
       "id": "keph1-7-9",
       "kind": "formula",
-      "title": "Earth Satellites",
+      "title": {
+        "en": "Earth Satellites",
+        "hi": "भू उपग्रह"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 7 §7.9 (https://ncert.nic.in/textbook/pdf/keph107.pdf)",
       "concepts": [
         "phy.gravitation.satellites.core.satellite-motion"
@@ -77,7 +89,10 @@
     {
       "id": "keph1-7-10",
       "kind": "formula",
-      "title": "Energy of an Orbiting Satellite",
+      "title": {
+        "en": "Energy of an Orbiting Satellite",
+        "hi": "कक्षा में गतिशील उपग्रह की ऊर्जा"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 7 §7.10 (https://ncert.nic.in/textbook/pdf/keph107.pdf)",
       "concepts": [
         "phy.gravitation.satellites.core.satellite-motion"
@@ -96,5 +111,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
 }

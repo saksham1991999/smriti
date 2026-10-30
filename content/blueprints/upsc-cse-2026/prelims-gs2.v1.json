@@ -10,7 +10,8 @@
     "title": "Examination Notice No. 05/2026-CSE dated 04.02.2026, Civil Services Examination, 2026",
     "published": "2026-02-04",
     "retrieved": "2026-10-30",
-    "pages": "PDF p.1 (notice number and date), p.3 (§5 penalty for wrong answers), p.5 (Prelims date), p.25 (Appendix I Section I: plan of examination, Note I qualifying rule, Note II negative marking), p.26 (Section II A: scheme of the Preliminary Examination), p.31 (calculators), p.32 (Section III Part A: syllabus)"
+    "pages": "PDF p.1 (notice number and date), p.3 (§5 penalty for wrong answers), p.5 (Prelims date), p.25 (Appendix I Section I: plan of examination, Note I qualifying rule, Note II negative marking), p.26 (Section II A: scheme of the Preliminary Examination), p.31 (calculators), p.32 (Section III Part A: syllabus)",
+    "linked_from": "https://www.upsc.gov.in/ (Examination Notifications)"
   },
   "mode": "pen_paper",
   "duration_min": 120,
@@ -40,16 +41,23 @@
       ],
       "marking": {
         "mcq_single": {
-          "unattempted": 0
+          "unattempted": 0,
+          "correct": null,
+          "wrong": {
+            "fraction_of_question_marks": 0.3333333333333333
+          }
         }
-      }
+      },
+      "max_marks": 200,
+      "question_count": null
     }
   ],
   "qualifying": {
     "rule": {
       "kind": "percent_of_max",
       "value": 33
-    }
+    },
+    "basis": "Paper-II is a qualifying paper with minimum qualifying marks fixed at 33% (Section II A Note (ii), PDF p.26; Section III Part A Note 1, PDF p.32)."
   },
   "group": {
     "id": "prelims",
@@ -60,6 +68,8 @@
     "en": "General Studies Paper II is an objective paper of two hours for 200 marks. It is qualifying: a candidate needs at least 33% in it, and its marks do not count towards the cut-off. Every question has four answer options. A wrong answer costs one-third (0.33) of the marks for that question, more than one answer counts as a wrong answer, and a blank costs nothing. Questions are set in Hindi and English. Calculators are not allowed.",
     "hi": "सामान्य अध्ययन प्रश्नपत्र II दो घंटे का 200 अंकों का वस्तुनिष्ठ प्रश्नपत्र है। यह क्वालीफ़ाइंग है: इसमें कम से कम 33% अंक चाहिए, और इसके अंक कट-ऑफ़ में नहीं जुड़ते। हर प्रश्न के चार उत्तर विकल्प होते हैं। गलत उत्तर पर उस प्रश्न के अंकों का एक-तिहाई (0.33) काटा जाता है, एक से अधिक उत्तर देने को गलत उत्तर माना जाता है, और खाली छोड़े गए प्रश्न पर कोई अंक नहीं कटता। प्रश्न हिंदी और अंग्रेज़ी दोनों में होते हैं। कैलकुलेटर की अनुमति नहीं है।"
   },
+  "numeric_input": null,
+  "question_count": null,
   "status": "draft",
   "sources": [
     {
@@ -71,5 +81,41 @@
   "authored_by": "skill:exam-blueprint",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "Mapping decisions:\n- language_switch per_question: the question papers are set both in Hindi and English (notice Section II A Note (iii), PDF p.26).\n- numeric_input left unset: the paper has no numeric-entry questions, and the schema requires a value (schema change requested).\n- question_count left unset: the notice does not state the number of questions.\n- group prelims: both papers are on the same day (notice PDF p.5); order follows the official paper numbers (Paper I, Paper II); the break is not stated.\n- instructions: summary in our own words of the notice paragraphs cited in the source; Hindi translated.\n\nOpen questions:\n- The Civil Services Examination, 2027 notice is not published yet (checked 2026-10-30). This is the latest official pattern; re-verify and version it as upsc-cse-2027 when UPSC notifies it.\n- The UPSC Annual Calendar 2027 (https://www.upsc.gov.in/sites/default/files/Calendar-Year-2027-Engl-200526.pdf) could not be opened from this environment (HTTP 403), so the 2027 notification and Prelims dates are not recorded.\n- The number of questions in each paper and the marks per question are not stated in the notice. They are printed on the question booklets, which UPSC publishes on its exam page; those pages could not be opened from this environment (HTTP 403), so question_count stays null.\n- Session timings (forenoon and afternoon) are not stated in the notice; they appear on the e-Admit Card. shift_timings stays null.\n- The notice says the papers are set in Hindi and English but does not say which version prevails when they differ.\n\nFields with no slot in blueprint@1, kept verbatim from the cited sources (JSON):\n{\n \"title\": {\n  \"en\": \"Civil Services (Preliminary) Examination: General Studies Paper II\",\n  \"hi\": \"सिविल सेवा (प्रारंभिक) परीक्षा : सामान्य अध्ययन प्रश्नपत्र II\"\n },\n \"title_hi_source\": \"translated\",\n \"duration_rules\": {\n  \"source_ref\": \"Section II A Note (i) (PDF p.26): 'each will be of two hours duration'\"\n },\n \"exam_date\": \"2026-05-24\",\n \"exam_date_source_ref\": \"PDF p.5: 'will be held by the Union Public Service Commission on 24th May, 2026'\",\n \"shift_timings\": null,\n \"language_rules\": {\n  \"paper_is_bilingual\": \"The question papers will be set both in Hindi and English (Section II A Note (iii), PDF p.26).\",\n  \"prevailing_version\": null\n },\n \"calculator_source_ref\": \"PDF p.31: candidates are not permitted to use calculators for answering objective type papers (Test Booklets)\",\n \"key_anomaly_rules\": null,\n \"scoring\": {\n  \"normalization\": null,\n  \"merit\": \"Screening test only: Prelims marks of qualified candidates are not counted for the final order of merit (Appendix I Section I para 2, PDF p.25).\",\n  \"main_admission\": \"About twelve to thirteen times the approximate number of vacancies are admitted to the Main Examination (Appendix I Section I para 2, PDF p.25).\",\n  \"both_papers_mandatory\": \"A candidate who does not appear in both papers is disqualified (Section III Part A Note 3, PDF p.32).\"\n },\n \"notes\": [\n  \"Both papers are objective multiple-choice papers of 200 marks and two hours each (Section II A, PDF p.26).\",\n  \"interface 'upsc_omr' and mode 'pen_paper': the notice calls them objective-type Test Booklets; it does not describe the answer sheet, so OMR is the skill's enum value for UPSC objective papers, not a quoted fact.\",\n  \"Marking is expressed as a fraction because the notice states the penalty as one-third (0.33) of the marks assigned to a question without stating those marks; 'correct' stays null until the marks per question are confirmed from an official question booklet.\",\n  \"Paper II is commonly called CSAT; the notice itself only says 'General Studies Paper-II'.\"\n ],\n \"changes_from_previous\": null,\n \"language_switch\": null,\n \"qualifying\": {\n  \"rule\": \"minimum_percent\",\n  \"min_percent\": 33,\n  \"basis\": \"Paper-II is a qualifying paper with minimum qualifying marks fixed at 33% (Section II A Note (ii), PDF p.26; Section III Part A Note 1, PDF p.32).\",\n  \"counts_for_cutoff\": false\n },\n \"sections\": {\n  \"gs2\": {\n   \"max_marks\": 200,\n   \"options_per_question\": 4,\n   \"options_source_ref\": \"Appendix I Section I Note II (i): 'There are four alternatives for the answers to every question' (PDF p.25)\",\n   \"attempt_rule\": {\n    \"all_compulsory\": null\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"correct\": null,\n     \"wrong_fraction_of_question_marks\": -0.33,\n     \"wrong_rule_text\": \"one-third (0.33) of the marks assigned to that question will be deducted as penalty\",\n     \"multiple_answers\": \"treated_as_wrong\",\n     \"source_ref\": \"Appendix I, Section I, Note II (PDF p.25)\"\n    }\n   }\n  }\n }\n}\n\nsource fields with no slot in blueprint@1 (JSON):\n{\n \"kind\": \"official\",\n \"publisher\": \"Union Public Service Commission\",\n \"linked_from\": \"https://www.upsc.gov.in/ (Examination Notifications)\"\n}"
+  "hi_source": "translation",
+  "open_questions": [
+    {
+      "field": null,
+      "question": "The Civil Services Examination, 2027 notice is not published yet (checked 2026-10-30). This is the latest official pattern; re-verify and version it as upsc-cse-2027 when UPSC notifies it.",
+      "checked": "2026-10-30"
+    },
+    {
+      "field": null,
+      "question": "The UPSC Annual Calendar 2027 (https://www.upsc.gov.in/sites/default/files/Calendar-Year-2027-Engl-200526.pdf) could not be opened from this environment (HTTP 403), so the 2027 notification and Prelims dates are not recorded."
+    },
+    {
+      "field": "question_count",
+      "question": "The number of questions in each paper and the marks per question are not stated in the notice. They are printed on the question booklets, which UPSC publishes on its exam page; those pages could not be opened from this environment (HTTP 403), so question_count stays null."
+    },
+    {
+      "field": null,
+      "question": "Session timings (forenoon and afternoon) are not stated in the notice; they appear on the e-Admit Card. shift_timings stays null."
+    },
+    {
+      "field": null,
+      "question": "The notice says the papers are set in Hindi and English but does not say which version prevails when they differ."
+    },
+    {
+      "field": "numeric_input",
+      "question": "The paper has no numeric-entry questions, so the notice states no way of typing numbers."
+    },
+    {
+      "field": "sections.gs2.question_count",
+      "question": "The notice does not state the number of questions in this section (see the open question on question_count)."
+    },
+    {
+      "field": "sections.gs2.marking.mcq_single.correct",
+      "question": "The notice does not state the marks for each question; the penalty for a wrong answer is one-third (0.33) of those marks (Appendix I Section I Note II, PDF p.25)."
+    }
+  ],
+  "notes": "Mapping decisions:\n- language_switch per_question: the question papers are set both in Hindi and English (notice Section II A Note (iii), PDF p.26).\n- group prelims: both papers are on the same day (notice PDF p.5); order follows the official paper numbers (Paper I, Paper II); the break is not stated.\n- instructions: summary in our own words of the notice paragraphs cited in the source; Hindi translated.\n\nFields with no slot in blueprint@1, kept verbatim from the cited sources (JSON):\n{\n \"title\": {\n  \"en\": \"Civil Services (Preliminary) Examination: General Studies Paper II\",\n  \"hi\": \"सिविल सेवा (प्रारंभिक) परीक्षा : सामान्य अध्ययन प्रश्नपत्र II\"\n },\n \"duration_rules\": {\n  \"source_ref\": \"Section II A Note (i) (PDF p.26): 'each will be of two hours duration'\"\n },\n \"exam_date\": \"2026-05-24\",\n \"exam_date_source_ref\": \"PDF p.5: 'will be held by the Union Public Service Commission on 24th May, 2026'\",\n \"language_rules\": {\n  \"paper_is_bilingual\": \"The question papers will be set both in Hindi and English (Section II A Note (iii), PDF p.26).\",\n  \"prevailing_version\": null\n },\n \"calculator_source_ref\": \"PDF p.31: candidates are not permitted to use calculators for answering objective type papers (Test Booklets)\",\n \"key_anomaly_rules\": null,\n \"scoring\": {\n  \"normalization\": null,\n  \"merit\": \"Screening test only: Prelims marks of qualified candidates are not counted for the final order of merit (Appendix I Section I para 2, PDF p.25).\",\n  \"main_admission\": \"About twelve to thirteen times the approximate number of vacancies are admitted to the Main Examination (Appendix I Section I para 2, PDF p.25).\",\n  \"both_papers_mandatory\": \"A candidate who does not appear in both papers is disqualified (Section III Part A Note 3, PDF p.32).\"\n },\n \"notes\": [\n  \"Both papers are objective multiple-choice papers of 200 marks and two hours each (Section II A, PDF p.26).\",\n  \"interface 'upsc_omr' and mode 'pen_paper': the notice calls them objective-type Test Booklets; it does not describe the answer sheet, so OMR is the skill's enum value for UPSC objective papers, not a quoted fact.\",\n  \"Marking is expressed as a fraction because the notice states the penalty as one-third (0.33) of the marks assigned to a question without stating those marks; 'correct' stays null until the marks per question are confirmed from an official question booklet.\",\n  \"Paper II is commonly called CSAT; the notice itself only says 'General Studies Paper-II'.\"\n ],\n \"changes_from_previous\": null,\n \"language_switch\": null,\n \"sections\": {\n  \"gs2\": {\n   \"options_per_question\": 4,\n   \"options_source_ref\": \"Appendix I Section I Note II (i): 'There are four alternatives for the answers to every question' (PDF p.25)\",\n   \"attempt_rule\": {\n    \"all_compulsory\": null\n   },\n   \"marking\": {\n    \"mcq_single\": {\n     \"wrong_rule_text\": \"one-third (0.33) of the marks assigned to that question will be deducted as penalty\",\n     \"multiple_answers\": \"treated_as_wrong\",\n     \"source_ref\": \"Appendix I, Section I, Note II (PDF p.25)\"\n    }\n   }\n  }\n }\n}\n\nsource fields with no slot in blueprint@1 (JSON):\n{\n \"publisher\": \"Union Public Service Commission\"\n}"
 }

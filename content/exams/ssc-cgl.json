@@ -26,6 +26,28 @@
         "tier-2-paper-2",
         "tier-2-paper-3"
       ],
+      "paper_names": {
+        "tier-1": {
+          "en": "Tier-I",
+          "hi": "टियर-I"
+        },
+        "tier-2-paper-1": {
+          "en": "Tier-II Paper-I",
+          "hi": "टियर-II प्रश्नपत्र-I"
+        },
+        "tier-2-paper-2": {
+          "en": "Tier-II Paper-II (Statistics)",
+          "hi": "टियर-II प्रश्नपत्र-II (सांख्यिकी)"
+        },
+        "tier-2-paper-3": {
+          "en": "Tier-II Paper-III (Finance and Economics)",
+          "hi": "टियर-II प्रश्नपत्र-III (वित्त एवं अर्थशास्त्र)"
+        }
+      },
+      "exam_languages": [
+        "en",
+        "hi"
+      ],
       "schedule": [
         {
           "kind": "application_open",
@@ -38,6 +60,12 @@
           "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2025.pdf"
         },
         {
+          "kind": "correction_window",
+          "date": "2026-06-29",
+          "end_date": "2026-07-01",
+          "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2025.pdf"
+        },
+        {
           "kind": "exam_window_start",
           "date": "2026-09-30",
           "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Important%20Notice%202026_cgle_2026_12092026.pdf"
@@ -47,28 +75,47 @@
           "date": "2026-10-30",
           "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Important%20Notice%202026_cgle_2026_12092026.pdf"
         }
-      ]
+      ],
+      "shifts": null
     }
   ],
   "status": "draft",
   "sources": [
     {
       "kind": "official",
-      "ref": "Staff Selection Commission, Notice: Combined Graduate Level Examination, 2026 (F. No. HQ-C11018/1/2026-C-1, uploaded 21-05-2026); published 2026-05-21; publisher: Staff Selection Commission; linked from https://ssc.gov.in/ (Notice Board); The file name on the SSC server says 'cgl_2025' but the document is the 2026 notice (header and every date say 2026).",
+      "ref": "Staff Selection Commission, Notice: Combined Graduate Level Examination, 2026 (F. No. HQ-C11018/1/2026-C-1, uploaded 21-05-2026); publisher: Staff Selection Commission; The file name on the SSC server says 'cgl_2025' but the document is the 2026 notice (header and every date say 2026).",
       "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2025.pdf",
       "retrieved": "2026-10-30",
-      "pages": "PDF pp.1, 24-36, 41-43, 48"
+      "pages": "PDF pp.1, 24-36, 41-43, 48",
+      "published": "2026-05-21",
+      "linked_from": "https://ssc.gov.in/ (Notice Board)"
     },
     {
       "kind": "official",
-      "ref": "Staff Selection Commission, Important Notice F.No. HQ-EC033/7/2025-EC dated 12.09.2026 (schedule of CGL 2026 Tier-I); published 2026-09-12",
+      "ref": "Staff Selection Commission, Important Notice F.No. HQ-EC033/7/2025-EC dated 12.09.2026 (schedule of CGL 2026 Tier-I)",
       "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Important%20Notice%202026_cgle_2026_12092026.pdf",
       "retrieved": "2026-10-30",
-      "pages": "p.1"
+      "pages": "p.1",
+      "published": "2026-09-12"
     }
   ],
   "authored_by": "skill:exam-blueprint",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "Schedule dates come from the profile sources; each entry names its notice. Open questions:\n- The notice is printed in English and Hindi (para 23(a), PDF p.48), but only the English notice was retrieved. Hindi titles here are translations (title_hi_source: translated); replace them with the official Hindi wording.\n- Tier-II dates are only 'December, 2026' (tentative); no dated schedule notice was found on 2026-10-30.\n\nFields with no slot in exam@1, kept verbatim from the cited sources (JSON):\n{\n \"hi_source\": \"translated\",\n \"conducting_body_name\": {\n  \"en\": \"Staff Selection Commission\",\n  \"hi\": \"कर्मचारी चयन आयोग\",\n  \"hi_source\": \"official (notice letterhead, PDF p.1)\"\n },\n \"stages\": [\n  \"tier-1\",\n  \"tier-2\",\n  \"document_verification\"\n ],\n \"profiles\": {\n  \"ssc-cgl-2026\": {\n   \"status\": \"in_progress\",\n   \"paper_names\": {\n    \"tier-1\": {\n     \"en\": \"Tier-I\",\n     \"hi\": \"टियर-I\"\n    },\n    \"tier-2-paper-1\": {\n     \"en\": \"Tier-II Paper-I\",\n     \"hi\": \"टियर-II प्रश्नपत्र-I\"\n    },\n    \"tier-2-paper-2\": {\n     \"en\": \"Tier-II Paper-II (Statistics)\",\n     \"hi\": \"टियर-II प्रश्नपत्र-II (सांख्यिकी)\"\n    },\n    \"tier-2-paper-3\": {\n     \"en\": \"Tier-II Paper-III (Finance and Economics)\",\n     \"hi\": \"टियर-II प्रश्नपत्र-III (वित्त एवं अर्थशास्त्र)\"\n    }\n   },\n   \"exam_languages\": [\n    \"en\",\n    \"hi\"\n   ],\n   \"schedule\": {\n    \"application_window\": {\n     \"from\": \"2026-05-21\",\n     \"to\": \"2026-06-22\"\n    },\n    \"fee_payment_last_date\": \"2026-06-23\",\n    \"correction_window\": {\n     \"from\": \"2026-06-29\",\n     \"to\": \"2026-07-01\"\n    },\n    \"tier_1\": {\n     \"from\": \"2026-09-30\",\n     \"to\": \"2026-10-30\",\n     \"source_ref\": \"Important Notice dated 12.09.2026, p.1 (replaces the tentative 'August-September, 2026' on PDF p.1 of the notice)\"\n    },\n    \"tier_2\": {\n     \"tentative\": \"December, 2026\",\n     \"from\": null,\n     \"to\": null\n    },\n    \"source_ref\": \"Notice PDF p.1 (dates at a glance)\"\n   }\n  }\n }\n}"
+  "notes": "Schedule dates come from the profile sources; each entry names its notice.\n\nFields with no slot in exam@1, kept verbatim from the cited sources (JSON):\n{\n \"conducting_body_name\": {\n  \"en\": \"Staff Selection Commission\",\n  \"hi\": \"कर्मचारी चयन आयोग\",\n  \"hi_source\": \"official (notice letterhead, PDF p.1)\"\n },\n \"stages\": [\n  \"tier-1\",\n  \"tier-2\",\n  \"document_verification\"\n ],\n \"profiles\": {\n  \"ssc-cgl-2026\": {\n   \"status\": \"in_progress\",\n   \"schedule\": {\n    \"fee_payment_last_date\": \"2026-06-23\",\n    \"tier_1\": {\n     \"from\": \"2026-09-30\",\n     \"to\": \"2026-10-30\",\n     \"source_ref\": \"Important Notice dated 12.09.2026, p.1 (replaces the tentative 'August-September, 2026' on PDF p.1 of the notice)\"\n    },\n    \"tier_2\": {\n     \"tentative\": \"December, 2026\",\n     \"from\": null,\n     \"to\": null\n    },\n    \"source_ref\": \"Notice PDF p.1 (dates at a glance)\"\n   }\n  }\n }\n}",
+  "hi_source": "translation",
+  "open_questions": [
+    {
+      "field": null,
+      "question": "The notice is printed in English and Hindi (para 23(a), PDF p.48), but only the English notice was retrieved. Hindi titles here are translations (hi_source: translation); replace them with the official Hindi wording."
+    },
+    {
+      "field": null,
+      "question": "Tier-II dates are only 'December, 2026' (tentative); no dated schedule notice was found on 2026-10-30."
+    },
+    {
+      "field": "profiles.ssc-cgl-2026.shifts",
+      "question": "Shift timings are not stated in the notice; they appear on the admit card."
+    }
+  ]
 }

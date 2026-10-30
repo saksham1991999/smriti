@@ -5,7 +5,10 @@
     {
       "id": "keph1-6-2",
       "kind": "formula",
-      "title": "Centre of Mass",
+      "title": {
+        "en": "Centre of Mass",
+        "hi": "द्रव्यमान केन्द्र"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.2 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
@@ -14,7 +17,10 @@
     {
       "id": "keph1-6-3",
       "kind": "formula",
-      "title": "Motion of Centre of Mass",
+      "title": {
+        "en": "Motion of Centre of Mass",
+        "hi": "द्रव्यमान केन्द्र की गति"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.3 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
@@ -23,7 +29,10 @@
     {
       "id": "keph1-6-4",
       "kind": "formula",
-      "title": "Linear Momentum of a System of Particles",
+      "title": {
+        "en": "Linear Momentum of a System of Particles",
+        "hi": "कणों के निकाय का रेखीय संवेग"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.4 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
@@ -32,7 +41,10 @@
     {
       "id": "keph1-6-5",
       "kind": "formula",
-      "title": "Vector Product of Two Vectors",
+      "title": {
+        "en": "Vector Product of Two Vectors",
+        "hi": "दो सदिशों का सदिश गुणनफल"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.5 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.vector-product.core.vector-product"
@@ -60,7 +72,10 @@
     {
       "id": "keph1-6-8",
       "kind": "fact",
-      "title": "Equilibrium of a Rigid Body",
+      "title": {
+        "en": "Equilibrium of a Rigid Body",
+        "hi": "दृढ़ पिण्डों का संतुलन"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.8 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
@@ -69,7 +84,10 @@
     {
       "id": "keph1-6-9",
       "kind": "definition",
-      "title": "Moment of Inertia",
+      "title": {
+        "en": "Moment of Inertia",
+        "hi": "जड़त्व आघूर्ण"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.9 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
@@ -79,7 +97,10 @@
     {
       "id": "keph1-6-10",
       "kind": "formula",
-      "title": "Kinematics of Rotational Motion About a Fixed Axis",
+      "title": {
+        "en": "Kinematics of Rotational Motion About a Fixed Axis",
+        "hi": "अचल अक्ष के परितः शुद्ध घूर्णी गतिकी"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.10 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
@@ -88,7 +109,10 @@
     {
       "id": "keph1-6-11",
       "kind": "formula",
-      "title": "Dynamics of Rotational Motion About a Fixed Axis",
+      "title": {
+        "en": "Dynamics of Rotational Motion About a Fixed Axis",
+        "hi": "अचल अक्ष के परितः घूर्णी गतिकी"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.11 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
@@ -97,7 +121,10 @@
     {
       "id": "keph1-6-12",
       "kind": "formula",
-      "title": "Angular Momentum in Case of Rotation About a Fixed Axis",
+      "title": {
+        "en": "Angular Momentum in Case of Rotation About a Fixed Axis",
+        "hi": "अचल अक्ष के परितः घूर्णी गति का कोणीय संवेग"
+      },
       "source_ref": "NCERT Class 11 Physics Part I, Ch 6 §6.12 (https://ncert.nic.in/textbook/pdf/keph106.pdf)",
       "concepts": [
         "phy.rotational-motion.torque-angular-momentum.core.torque",
@@ -117,5 +144,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
 }

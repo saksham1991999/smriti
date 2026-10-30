@@ -209,6 +209,12 @@ export interface TopicProgress {
   learned_via?: 'lesson' | 'test_out' | 'placement' | 'chapter_test' | null;
 }
 
+/**
+ * Where Pro comes from (the API's `EntitlementOut.source`): a store or web subscription, a promo
+ * grant, or a seat on someone else's family plan (`family`, managed only by the payer).
+ */
+export type EntitlementSource = 'razorpay' | 'play' | 'app_store' | 'promo' | 'family';
+
 export interface EntitlementSection {
   plan: 'free' | 'pro';
   pro_until: string | null;
@@ -216,7 +222,7 @@ export interface EntitlementSection {
   grace_until?: string | null;
   cancel_at_period_end?: boolean;
   is_intro?: boolean;
-  source?: string;
+  source?: EntitlementSource | null;
 }
 
 export interface SyncStateResponse {

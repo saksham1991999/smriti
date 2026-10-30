@@ -94,7 +94,10 @@ def _published_fixture_sql() -> Path:
     from smriti_api.core.config import REPO_ROOT
 
     sql_path = REPO_ROOT / "tools" / "content-publish" / "out" / "metadata.sql"
-    if not sql_path.exists() or "content.question_bodies" not in sql_path.read_text("utf-8"):
+    # Rebuilt when missing, older than the newest table the tests read (search_docs), or not the
+    # fixture course (the local stack publishes real content to its own folder, never this one).
+    current = sql_path.read_text("utf-8") if sql_path.exists() else ""
+    if "insert into content.search_docs" not in current or "-- FIXTURE COURSE" not in current:
         subprocess.run(
             ["pnpm", "--filter", "@smriti/content-publish", "publish:fixtures"],  # noqa: S607
             cwd=REPO_ROOT,

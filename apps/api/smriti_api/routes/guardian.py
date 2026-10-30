@@ -14,7 +14,7 @@ from smriti_api.core.errors import ApiError
 from smriti_api.integrations import Integrations
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import guardian as g
-from smriti_api.services import guardian
+from smriti_api.services import billing_checkout, guardian, managed_children
 
 router = APIRouter(prefix="/v1/guardian", tags=["guardian"])
 
@@ -168,3 +168,74 @@ async def withdraw_scope(
 )
 async def learners(services: Services, auth: Guardian) -> g.LearnersOut:
     return await guardian.learners(services.db, auth)
+
+
+# --- managed children (auth flow §6.11) -----------------------------------------------------------
+
+Parent = Annotated[AuthContext, signed_in("parent_mode")]
+
+
+@router.post(
+    "/children",
+    response_model=g.ManagedChildOut,
+    status_code=201,
+    summary="AUTH-24/26: create a managed child (adopting this device's guest, or a new account)",
+)
+async def create_child(
+    body: g.ChildCreate, services: Services, ints: Ints, auth: Parent, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="managed_child_create",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        required=True,
+        status=201,
+        fn=lambda: managed_children.create_child(
+            services.db,
+            services.settings,
+            ints,
+            services.auth_admin,
+            services.verifier,
+            auth,
+            body,
+        ),
+    )
+
+
+@router.post(
+    "/children/{child_id}/session",
+    response_model=g.ChildSessionOut,
+    summary="A one-time token hash for a child session on this device (sign-in in the last 10 min)",
+)
+async def child_session(child_id: uuid.UUID, services: Services, auth: Parent) -> g.ChildSessionOut:
+    return await managed_children.child_session(
+        services.db, services.settings, services.auth_admin, auth, child_id
+    )
+
+
+@router.delete(
+    "/children/{child_id}",
+    response_model=g.ChildDeletionOut,
+    status_code=202,
+    summary="Delete a managed child: erasure after the grace period, devices signed out",
+)
+async def delete_child(
+    child_id: uuid.UUID, services: Services, auth: Parent, key: IdempotencyKey
+) -> JSONResponse:
+    async def run() -> g.ChildDeletionOut:
+        out = await managed_children.delete_child(services.db, services.auth_admin, auth, child_id)
+        if services.integrations is not None:  # stop web renewals, as for any deletion
+            await billing_checkout.cancel_for_deletion(services.db, services.integrations, child_id)
+        return out
+
+    return await idempotent(
+        services,
+        scope="managed_child_delete",
+        subject=auth.user_id,
+        key=key,
+        body={"child_id": str(child_id)},
+        status=202,
+        fn=run,
+    )

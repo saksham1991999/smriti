@@ -232,3 +232,24 @@ async def refresh(db: Database, verifier: JwtVerifier, refresh_token: str) -> De
         provider=provider,
         user_metadata=_token_metadata(meta),
     )
+
+
+async def verify_token_hash(
+    db: Database, verifier: JwtVerifier, auth_admin: Any, token_hash: str
+) -> DevSession:
+    """Dev stand-in for supabase-js ``verifyOtp({ token_hash, type: 'email' })``: a managed
+    child's one-time session hash from ``POST /v1/guardian/children/{id}/session``."""
+    consume = getattr(auth_admin, "consume_token_hash", None)
+    user_id = consume(token_hash) if consume is not None else None
+    if user_id is None:
+        raise ApiError(401, "otp_expired", "This sign-in link has expired or was used")
+    async with db.admin_tx() as session:
+        email = (
+            await session.execute(
+                text("select email from auth.users where id = :u and not is_anonymous"),
+                {"u": user_id},
+            )
+        ).scalar_one_or_none()
+    if email is None:
+        raise ApiError(401, "otp_expired", "This sign-in link has expired or was used")
+    return _session(verifier, user_id, is_anonymous=False, email=str(email), provider="email")

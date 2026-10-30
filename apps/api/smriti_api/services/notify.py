@@ -28,6 +28,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from smriti_api.core.db import Database
+from smriti_api.integrations.mail import Email, Mailer, MailError
 from smriti_api.integrations.push import PushMessage, PushSender, PushTicket
 from smriti_api.services import copy
 from smriti_api.services import flags as flag_service
@@ -57,6 +58,9 @@ class KindSpec:
     # noise).
     drop_in_quiet: bool = False
     ttl: timedelta = timedelta(days=2)
+    # "email" kinds go to the account's sign-in address through the Mailer (me-money §6.7),
+    # looked up at send time so the outbox never holds it.
+    channel: Literal["push", "email"] = "push"
 
 
 KINDS: dict[str, KindSpec] = {
@@ -128,8 +132,24 @@ KINDS: dict[str, KindSpec] = {
     "parent_weekly_report": KindSpec(
         "parent", ("NTF-01.parent_weekly_report",), deep_link="/parent", ttl=timedelta(days=1)
     ),
+    # The same report by email (me-money §6.7 "Parent weekly report", Sunday 19:00 local).
+    "parent_weekly_email": KindSpec(
+        "parent",
+        ("SET-15.title",),
+        deep_link="/parent?learner={learner_id}",
+        ttl=timedelta(days=1),
+        channel="email",
+    ),
     "parent_time_request": KindSpec(
         "parent", ("NTF-01.parent_time_request",), deep_link="/parent", ttl=timedelta(hours=6)
+    ),
+    # The child hears the answer to SET-19 [Ask for 15 more minutes]: the SET-19 line for it.
+    "time_request_decided": KindSpec(
+        "transactional",
+        ("SET-19.approved",),
+        title="pet",
+        deep_link="/home",
+        ttl=timedelta(hours=6),
     ),
     # Social (tutor-social B3, me-money §6.4). Class "social": consent, caps, and R45 for minors.
     "friend_request": KindSpec("social", ("NTF-01.friend_request",), deep_link="/friends"),
@@ -145,8 +165,9 @@ KINDS: dict[str, KindSpec] = {
     "league_promoted": KindSpec("social", ("NTF-01.league_promoted",), deep_link="/friends"),
     "league_result": KindSpec("social", ("NTF-01.league_result",), deep_link="/friends"),
 }
-# consent_decided picks its line from the outcome, not from rotation.
+# consent_decided and time_request_decided pick their line from the outcome, not from rotation.
 CONSENT_DECIDED_OTHER = "NTF-01.consent_decided_declined_or_expired"
+TIME_REQUEST_DECLINED = "SET-19.declined"
 
 # Defaults mirror packages/config (me-money §6.2); the server reads the same flags.
 DEFAULT_CAPS: dict[str, dict[Audience, int]] = {
@@ -459,6 +480,8 @@ async def pick_template(
     spec = KINDS[kind]
     if kind == "consent_decided":
         return spec.pool[0] if payload.get("outcome") == "granted" else CONSENT_DECIDED_OTHER
+    if kind == "time_request_decided":
+        return spec.pool[0] if payload.get("outcome") == "allowed" else TIME_REQUEST_DECLINED
     if len(spec.pool) == 1:
         return spec.pool[0]
     last = (
@@ -528,6 +551,10 @@ def render(
 class Senders:
     expo: PushSender
     web: PushSender | None = None
+    # Email kinds (me-money §6.7); without a mailer they are suppressed with ``no_mailer``.
+    mailer: Mailer | None = None
+    # The web app's address, for the links in emails (WEB_APP_URL).
+    web_app_url: str = ""
 
 
 @dataclass(frozen=True)
@@ -598,9 +625,10 @@ async def _log(
     await session.execute(
         text(
             "insert into notify.log (user_id, device_id, template_id, channel, status, suppressed_reason,"
-            " sent_at, kind, class, outbox_id) values (:u, :d, :t, 'push', :s, :r, :at, :k, :c, :o)"
+            " sent_at, kind, class, outbox_id) values (:u, :d, :t, :ch, :s, :r, :at, :k, :c, :o)"
         ),
         {
+            "ch": KINDS[kind].channel,
             "u": user_id,
             "d": device_id,
             "t": template_id,
@@ -688,6 +716,37 @@ async def dispatch_due(
                 await _finish(session, item.id, "suppressed", decision.reason, now)
                 result.suppressed += 1
                 continue
+            if KINDS[item.kind].channel == "email":
+                status, reason = await _send_email(
+                    session,
+                    senders,
+                    item.id,
+                    item.user_id,
+                    item.kind,
+                    template,
+                    ctx,
+                    payload,
+                    brand,
+                )
+                await _log(
+                    session,
+                    user_id=item.user_id,
+                    device_id=None,
+                    template_id=template,
+                    kind=item.kind,
+                    status=status,
+                    reason=reason,
+                    outbox_id=item.id,
+                    now=now,
+                )
+                await _finish(session, item.id, status, reason, now)
+                if status == "sent":
+                    result.sent += 1
+                elif status == "failed":
+                    result.failed += 1
+                else:
+                    result.suppressed += 1
+                continue
             devices = await devices_for(session, item.user_id, web_only=KINDS[item.kind].web_only)
             if not devices:
                 await _log(
@@ -763,6 +822,69 @@ async def dispatch_due(
     if result.sent or result.failed:
         log.info("notify_dispatch", **result.__dict__)
     return result
+
+
+def _email_lines(kind: str, locale: str, values: dict[str, Any]) -> list[str]:
+    """The body of an email kind, line by line, from the catalogue (no text lives in code)."""
+    if kind == "parent_weekly_email":
+        return [
+            f"{copy.text(NS, 'SET-15.minutes', locale)}: {values.get('min', 0)}",
+            f"{copy.text(NS, 'SET-15.lessons', locale)}: {values.get('n', 0)}",
+            f"{copy.text(NS, 'SET-15.reviews', locale)}: {values.get('reviews', 0)}",
+            f"{copy.text(NS, 'SET-15.streak', locale)}: {values.get('streak', 0)}",
+            "",
+            copy.text(NS, "SET-15.privacy_line", locale, **values),
+        ]
+    return []
+
+
+async def _send_email(
+    session: AsyncSession,
+    senders: Senders,
+    outbox_id: uuid.UUID,
+    user_id: uuid.UUID,
+    kind: str,
+    template: str,
+    ctx: UserCtx,
+    payload: dict[str, Any],
+    brand: str,
+) -> tuple[str, str | None]:
+    """Sends one email kind to the account's sign-in address. Returns (status, reason). The
+    address is read here and never stored in the outbox or logged."""
+    if senders.mailer is None:
+        return "suppressed", "no_mailer"
+    address = (
+        await session.execute(
+            text("select email from auth.users where id = :u and not is_anonymous"),
+            {"u": user_id},
+        )
+    ).scalar_one_or_none()
+    if not address:
+        return "suppressed", "no_email"
+    try:
+        # The kind's template is the subject line (render's body); the title is the brand.
+        _, subject, link = render(kind, template, ctx, payload, brand)
+        values = {"brand": brand, **payload}
+        lines = [subject, "", *_email_lines(kind, ctx.locale, values)]
+    except copy.MissingCopy:
+        log.error("notify_copy_missing", kind=kind, template=template)
+        return "failed", "copy_missing"
+    if senders.web_app_url:
+        lines += ["", senders.web_app_url.rstrip("/") + link]
+    try:
+        await senders.mailer.send(
+            Email(
+                to=str(address),
+                subject=subject,
+                text="\n".join(lines),
+                template_id=kind,
+                idempotency_key=f"notify-{outbox_id}",
+            )
+        )
+    except MailError:
+        log.warning("notify_email_failed", kind=kind)
+        return "failed", "send_failed"
+    return "sent", None
 
 
 async def _finish(
@@ -862,7 +984,14 @@ def local_day(now: datetime, tz: str) -> date:
 
 
 def senders_from(ints: Any) -> Senders:
-    return Senders(expo=ints.push, web=ints.web_push)
+    from smriti_api.core.config import get_settings
+
+    return Senders(
+        expo=ints.push,
+        web=ints.web_push,
+        mailer=ints.mailer,
+        web_app_url=get_settings().web_app_url,
+    )
 
 
 async def dispatch_job(deps: Any) -> dict[str, int]:

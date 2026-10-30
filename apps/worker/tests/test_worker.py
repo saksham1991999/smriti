@@ -196,3 +196,33 @@ def test_content_publish_command_prefers_the_env_override(
         "tools/x.mjs",
         "--dry-run",
     ]
+
+
+async def test_a_job_the_api_enqueues_runs_on_the_worker() -> None:
+    """End to end through Redis: the API's ArqJobQueue enqueues, a burst worker runs it."""
+    from arq.jobs import Job
+    from arq.worker import Worker, get_kwargs
+    from smriti_api.core.config import get_settings
+    from smriti_api.services.jobs import ArqJobQueue
+
+    queue = ArqJobQueue(get_settings().redis_url)
+    merge_id = str(uuid.uuid4())
+    job_id = f"merge_guest:{merge_id}"
+    try:
+        await queue.enqueue("merge_guest", merge_id, job_id=job_id)
+        settings: dict[str, Any] = {
+            **get_kwargs(DefaultWorker),
+            "cron_jobs": [],
+            "burst": True,
+            "poll_delay": 0.05,
+        }
+        worker = Worker(**settings)
+        try:
+            await worker.main()
+        finally:
+            await worker.close()
+        pool = await queue._get_pool()
+        result = await Job(job_id, pool, _queue_name=arq_queue_name("default")).result(timeout=5)
+        assert result == {"status": "skipped"}  # no such merge: the job is a no-op
+    finally:
+        await queue.close()

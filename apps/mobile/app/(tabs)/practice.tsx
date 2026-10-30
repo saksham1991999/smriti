@@ -108,6 +108,7 @@ export default function Practice() {
         <Tile icon="FileText" title={t('practice:PRC-01.tile_pyq_bank')} onPress={() => router.push('/pyq' as Href)} testID="prc-tile-pyq" />
         <Tile icon="Exam" title={t('practice:PRC-01.tile_mock_tests')} onPress={() => router.push('/mocks' as Href)} testID="prc-tile-mocks" />
         <Tile icon="Sparkle" title={t('tutor_social:AI-02.history')} caption={t('tutor_social:AI-02.input_placeholder_no_context')} onPress={() => router.push('/tutor' as Href)} testID="prc-tile-tutor" />
+        <Tile icon="TrendUp" title={t('practice:PRC-01.tile_analytics')} onPress={() => router.push('/progress' as Href)} testID="prc-tile-analytics" />
       </View>
 
       {app.ageBand() !== '10_12' && app.ageBand() !== 'u10' ? (
@@ -139,7 +140,12 @@ export default function Practice() {
 
       {data && data.recent_sessions.length > 0 ? (
         <View style={styles.gap} testID="prc-recent">
-          <Text variant="heading">{t('practice:PRC-01.recent')}</Text>
+          <View style={styles.row}>
+            <Text variant="heading" style={styles.grow}>
+              {t('practice:PRC-01.recent')}
+            </Text>
+            <Button size="sm" variant="ghost" label={t('practice:PRC-16.title')} onPress={() => router.push('/practice-history' as Href)} testID="prc-history" />
+          </View>
           {data.recent_sessions.map((r) => (
             <Card key={r.id} outlined onPress={() => router.push({ pathname: r.ended_at ? '/session-summary/[id]' : '/session/[id]', params: { id: r.id } })} accessibilityLabel={t('practice:PRC-01.resume_card.2', { answered: r.correct, total: r.answered })}>
               <Text variant="body" numeric>
@@ -182,7 +188,7 @@ function ChallengeCard({ hub, examShort }: { hub: PracticeHub; examShort: string
   );
 }
 
-function Tile({ icon, title, caption, onPress, testID }: { icon: 'Barbell' | 'FileText' | 'Exam' | 'Sparkle'; title: string; caption?: string; onPress?: () => void; testID: string }) {
+function Tile({ icon, title, caption, onPress, testID }: { icon: 'Barbell' | 'FileText' | 'Exam' | 'Sparkle' | 'TrendUp'; title: string; caption?: string; onPress?: () => void; testID: string }) {
   const body = (
     <Card outlined {...(onPress ? { onPress, accessibilityLabel: title } : {})} testID={testID}>
       <View style={styles.tileBody}>

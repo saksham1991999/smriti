@@ -1,13 +1,22 @@
 """Profile rules shared by onboarding events and ``PATCH /v1/me`` (onboarding flow §8, R5, R6).
 
-Age bands: under 10, 10-12, 13-17, 18 and over. A class is mapped to a band only when the
-student gave no birth year (R5): class n is taken as about n + 5 years old, so classes 1-4 are
-under 10, 5-7 are 10-12 and 8-12 are 13-17. This is an approximation for defaults only; the
-birth year, when given, always wins.
+Age bands: under 10, 10-12, 13-17, 18 and over. The order (R56, the same as app-core's
+``resolveAgeBand``; both run ``packages/app-core/test-vectors/age_band.json``):
+
+1. A known age: the birth year, or a stored band whose source states an age (birth year,
+   guardian, the SET-02 self-declaration). DPDP is about age.
+2. The class, erring young (onboarding section 6.2): classes 1-5 are under 10, 6-7 are 10-12
+   and 8-12 are 13-17.
+3. Any other stored band.
+4. "Prefer not to say" with nothing else: 13-17. Otherwise unknown (treated as a minor).
+
+An unknown birth month is the younger option: December, and an age counts from the last day of
+the birth month (as the guardian job does).
 """
 
 from __future__ import annotations
 
+import calendar
 import re
 from datetime import UTC, date, datetime, time
 from typing import Any
@@ -20,6 +29,7 @@ from smriti_api.services.recompute import UserFacts
 DAILY_GOAL_OPTIONS = (5, 10, 20, 30)
 LEVELS = ("starting", "basics", "revising")
 STRONG_AGE_SOURCES = ("birth_year", "guardian", "self_declared")
+CLASS_U10_MAX = 5
 
 
 class ProfileValueError(ValueError):
@@ -37,7 +47,7 @@ def band_for_age(age: int) -> str:
 
 
 def band_for_class(grade: int) -> str:
-    if grade <= 4:
+    if grade <= CLASS_U10_MAX:
         return "u10"
     if grade <= 7:
         return "10_12"
@@ -45,24 +55,59 @@ def band_for_class(grade: int) -> str:
 
 
 def age_on(birth: date, today: date) -> int:
+    """Whole years on ``today`` for a birth month (``birth_ym``), counted from its last day."""
+    last_day = calendar.monthrange(birth.year, birth.month)[1]
     years = today.year - birth.year
-    if (today.month, today.day) < (birth.month, birth.day):
+    if (today.month, today.day) < (birth.month, last_day):
         years -= 1
-    return years
+    return max(0, years)
 
 
 def parse_birth(value: Any, today: date) -> date:
+    """ONB-04's answer as the first of the birth month; an unknown month is December."""
     year: Any
-    month: Any = 1
+    month: Any = None
     if isinstance(value, dict):
-        year, month = value.get("year"), value.get("month", 1)
+        year, month = value.get("year"), value.get("month")
     else:
         year = value
-    if not isinstance(year, int) or not isinstance(month, int) or not 1 <= month <= 12:
+    if month is None:
+        month = 12
+    if (
+        not isinstance(year, int)
+        or isinstance(year, bool)
+        or not isinstance(month, int)
+        or not 1 <= month <= 12
+    ):
         raise ProfileValueError("birth_year must be a year or {year, month}")
     if not today.year - 100 <= year <= today.year:
         raise ProfileValueError("birth_year is out of range")
     return date(year, month, 1)
+
+
+def resolve_age_band(
+    *,
+    birth: Any,
+    school_class: int | None,
+    stored_band: str | None,
+    stored_source: str | None,
+    today: date,
+) -> str | None:
+    """The band to apply, in the R56 order (see the module docstring).
+
+    ``birth`` is ONB-04's answer: a year, ``{year, month}``, ``"declined"`` or ``None``.
+    """
+    if birth is not None and birth != "declined":
+        return band_for_age(age_on(parse_birth(birth, today), today))
+    if stored_band and stored_source in STRONG_AGE_SOURCES:
+        return stored_band
+    if school_class is not None:
+        return band_for_class(school_class)
+    if stored_band:
+        return stored_band
+    if birth == "declined":
+        return "13_17"
+    return None
 
 
 def parse_target_date(value: Any) -> date | None:

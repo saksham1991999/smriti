@@ -175,7 +175,7 @@ describe('widget plugin: whole config', () => {
       name: 'Smriti JEE (local)',
       slug: 'smriti-jee',
       version: '1.0.0',
-      ios: { bundleIdentifier: 'app.smriti.jee.dev', entitlements: { 'com.apple.security.application-groups': ['group.app.smriti.jee'] } },
+      ios: { bundleIdentifier: 'app.smriti.jee.dev', entitlements: { 'com.apple.security.application-groups': ['group.app.smriti.jee.dev'] } },
       android: { package: 'app.smriti.jee.dev' },
       extra: { variantId: 'jee' },
     };
@@ -184,7 +184,7 @@ describe('widget plugin: whole config', () => {
       {
         targetName: 'SmritiWidget',
         bundleIdentifier: 'app.smriti.jee.dev.widget',
-        entitlements: { 'com.apple.security.application-groups': ['group.app.smriti.jee'] },
+        entitlements: { 'com.apple.security.application-groups': ['group.app.smriti.jee.dev'] },
       },
     ]);
     expect(Object.keys(out.mods.ios).sort()).toEqual(['dangerous', 'infoPlist', 'xcodeproj']);

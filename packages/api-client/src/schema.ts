@@ -787,6 +787,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/dev/auth/verify-otp": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Dev stand-in for verifyOtp with a token hash (a managed child's session) */
+    post: operations["verify_otp_v1_dev_auth_verify_otp_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/devices": {
     parameters: {
       query?: never;
@@ -1369,6 +1386,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/children": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-24/26: create a managed child (adopting this device's guest, or a new account) */
+    post: operations["create_child_v1_guardian_children_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/children/{child_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete a managed child: erasure after the grace period, devices signed out */
+    delete: operations["delete_child_v1_guardian_children__child_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/children/{child_id}/session": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A one-time token hash for a child session on this device (sign-in in the last 10 min) */
+    post: operations["child_session_v1_guardian_children__child_id__session_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/consent": {
     parameters: {
       query?: never;
@@ -1552,6 +1620,58 @@ export interface paths {
     post?: never;
     /** Remove a friend for the child (silent, like the child's own Remove) */
     delete: operations["remove_friend_v1_guardian_learners__learner_id__friends__friend_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PAY-17 and SET-14: the child's plan, as the guardian who manages it sees it */
+    get: operations["child_pro_v1_guardian_learners__learner_id__pro_get"];
+    put?: never;
+    /** PAY-17 [Continue to pay]: a web subscription on the child's account, payer guardian */
+    post: operations["child_pro_start_v1_guardian_learners__learner_id__pro_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Cancel the plan the guardian pays for, at the end of the paid period */
+    post: operations["child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout signature for the child's plan; Pro follows the webhook */
+    post: operations["child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post"];
+    delete?: never;
     options?: never;
     head?: never;
     patch?: never;
@@ -3826,6 +3946,81 @@ export interface components {
       /** Week Minutes */
       week_minutes: number;
     };
+    /**
+     * ChildCreate
+     * @description AUTH-24/AUTH-26: the parent creates a managed child, adopting the guest that did onboarding
+     *     on this device (``adopt_guest`` is that guest's access token) or making a new account.
+     */
+    ChildCreate: {
+      /** Adopt Guest */
+      adopt_guest?: string | null;
+      /**
+       * Age Band
+       * @enum {string}
+       */
+      age_band: "u10" | "10_12";
+      /**
+       * Declaration
+       * @constant
+       */
+      declaration: true;
+      /** First Name */
+      first_name: string;
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /** Notice Version */
+      notice_version: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /** ChildDeletionOut */
+    ChildDeletionOut: {
+      /**
+       * Scheduled For
+       * Format: date-time
+       */
+      scheduled_for: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
+    /**
+     * ChildProRequest
+     * @description PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
+     *     the parent's own and adds the child as a member instead).
+     */
+    ChildProRequest: {
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+    };
+    /**
+     * ChildSessionOut
+     * @description Exchanged once, within ``expires_in`` seconds, with supabase-js
+     *     ``verifyOtp({ token_hash, type: 'email' })`` (locally ``POST /v1/dev/auth/verify-otp``).
+     */
+    ChildSessionOut: {
+      /** Expires In */
+      expires_in: number;
+      /** Token Hash */
+      token_hash: string;
+      /**
+       * Type
+       * @default email
+       * @constant
+       */
+      type: "email";
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
     /** ComingUp */
     ComingUp: {
       /**
@@ -4544,6 +4739,17 @@ export interface components {
       id: string;
       /** Is Anonymous */
       is_anonymous: boolean;
+    };
+    /** DevVerifyOtpRequest */
+    DevVerifyOtpRequest: {
+      /** Token Hash */
+      token_hash: string;
+      /**
+       * Type
+       * @default email
+       * @constant
+       */
+      type: "email";
     };
     /** DictationOut */
     DictationOut: {
@@ -5780,6 +5986,24 @@ export interface components {
        * Format: date-time
        */
       window_start: string;
+    };
+    /** ManagedChildOut */
+    ManagedChildOut: {
+      /** Adopted */
+      adopted: boolean;
+      /**
+       * Age Band
+       * @enum {string}
+       */
+      age_band: "u10" | "10_12";
+      consent: components["schemas"]["ConsentOut"];
+      /** First Name */
+      first_name: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
     };
     /** ManifestResponse */
     ManifestResponse: {
@@ -10240,6 +10464,46 @@ export interface operations {
       };
     };
   };
+  verify_otp_v1_dev_auth_verify_otp_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DevVerifyOtpRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DevSession"];
+        };
+      };
+      /** @description otp_expired: used, unknown or older than 5 minutes */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   register_device_v1_devices_post: {
     parameters: {
       query?: never;
@@ -11388,6 +11652,105 @@ export interface operations {
       };
     };
   };
+  create_child_v1_guardian_children_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ManagedChildOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_child_v1_guardian_children__child_id__delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        child_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildDeletionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_session_v1_guardian_children__child_id__session_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        child_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildSessionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   my_consent_v1_guardian_consent_get: {
     parameters: {
       query?: never;
@@ -11741,6 +12104,152 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_v1_guardian_learners__learner_id__pro_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SubscriptionDetailsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_start_v1_guardian_learners__learner_id__pro_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildProRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayCancelRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
       };
       /** @description Validation Error */
       422: {

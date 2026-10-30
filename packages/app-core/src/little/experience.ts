@@ -72,25 +72,37 @@ export function bandForAge(age: number): AgeBand {
   return '18p';
 }
 
+/** `profile.age_source` (DB_SCHEMA `app.profiles`). */
+export type AgeSource = 'class' | 'birth_year' | 'declined' | 'guardian' | 'self_declared';
+
+/** Sources that state an age rather than guess it: they rank with a birth year. */
+export const DECLARED_AGE_SOURCES: readonly AgeSource[] = ['birth_year', 'guardian', 'self_declared'];
+
 export interface AgeBandInput {
-  /** The server's `profile.age_band`, once synced: it always wins. */
-  storedBand?: AgeBand | null;
-  schoolClass: number | null;
   /** ONB-04: a birth, "declined" (Prefer not to say), or null when never asked. */
   birth: BirthAnswer | 'declined' | null;
+  schoolClass: number | null;
+  /** The server's `profile.age_band`, once synced. */
+  storedBand?: AgeBand | null;
+  /** The server's `profile.age_source` for `storedBand`. */
+  storedSource?: AgeSource | null;
 }
 
 /**
- * The band to apply from the first event (onboarding §6.2). A picked class decides (ONB-04 is
- * not asked then); otherwise the birth year; "Prefer not to say" gives `13_17`. Null means
- * unknown, which every rule treats as a minor.
+ * The band to apply (R56). DPDP is about age, so a known age decides: the birth year, or a
+ * stored band whose source states an age (birth year, guardian, the SET-02 self-declaration).
+ * Then the class, erring young (class 5 is `u10`). Then any other stored band. "Prefer not to
+ * say" with nothing else gives `13_17`. Null means unknown, which every rule treats as a minor.
+ * The server's `profile_rules.resolve_age_band` follows the same order; both run
+ * `test-vectors/age_band.json`.
  */
 export function resolveAgeBand(input: AgeBandInput, today: LocalDate): AgeBand | null {
-  if (input.storedBand) return input.storedBand;
+  if (input.birth !== null && input.birth !== 'declined') return bandForAge(ageOn(input.birth, today));
+  if (input.storedBand && input.storedSource && DECLARED_AGE_SOURCES.includes(input.storedSource)) return input.storedBand;
   if (input.schoolClass !== null) return bandForClass(input.schoolClass);
+  if (input.storedBand) return input.storedBand;
   if (input.birth === 'declined') return '13_17';
-  if (input.birth === null) return null;
-  return bandForAge(ageOn(input.birth, today));
+  return null;
 }
 
 export type TabKey = 'learn' | 'labs' | 'practice' | 'friends' | 'me';

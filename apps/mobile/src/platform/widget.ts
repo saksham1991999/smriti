@@ -36,6 +36,8 @@ import { routeForLink } from '../services/links';
 export interface WidgetBridge {
   write(snapshot: WidgetSnapshot): Promise<void>;
   read(): Promise<WidgetSnapshot | null>;
+  /** Sign-out, account deletion, profile switch: the widgets fall back to the placeholder. */
+  clear(): Promise<void>;
 }
 
 export const WIDGET_KEY = 'widget.snapshot.v1';
@@ -52,6 +54,9 @@ export class KvWidgetBridge implements WidgetBridge {
   async read() {
     const raw = await this.kv.get(WIDGET_KEY);
     return raw ? (JSON.parse(raw) as WidgetSnapshot) : null;
+  }
+  async clear() {
+    await this.kv.delete(WIDGET_KEY);
   }
 }
 
@@ -329,6 +334,7 @@ export class NativeWidgetBridge implements WidgetBridge {
     return this.kvBridge.read();
   }
   async clear() {
+    await this.kvBridge.clear();
     await this.native?.clear();
   }
 }

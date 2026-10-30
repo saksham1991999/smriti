@@ -60,10 +60,13 @@ describe('age bands', () => {
     expect([9, 10, 12, 13, 17, 18].map(bandForAge)).toEqual(['u10', '10_12', '10_12', '13_17', '13_17', '18p']);
   });
 
-  it('resolves stored band, then class, then birth year, then "Prefer not to say"', () => {
+  it('resolves a known age, then class, then the stored band, then "Prefer not to say" (R56)', () => {
     const today = '2026-10-30';
-    expect(resolveAgeBand({ storedBand: '18p', schoolClass: 3, birth: null }, today)).toBe('18p');
-    expect(resolveAgeBand({ schoolClass: 4, birth: { year: 2000 } }, today)).toBe('u10');
+    expect(resolveAgeBand({ schoolClass: 4, birth: { year: 2000 } }, today)).toBe('18p');
+    expect(resolveAgeBand({ storedBand: '18p', storedSource: 'self_declared', schoolClass: 12, birth: null }, today)).toBe('18p');
+    expect(resolveAgeBand({ storedBand: '18p', storedSource: 'class', schoolClass: 3, birth: null }, today)).toBe('u10');
+    expect(resolveAgeBand({ storedBand: '13_17', schoolClass: null, birth: 'declined' }, today)).toBe('13_17');
+    expect(resolveAgeBand({ schoolClass: 5, birth: null }, today)).toBe('u10');
     expect(resolveAgeBand({ schoolClass: null, birth: { year: 2018 } }, today)).toBe('u10');
     expect(resolveAgeBand({ schoolClass: null, birth: 'declined' }, today)).toBe('13_17');
     expect(resolveAgeBand({ schoolClass: null, birth: null }, today)).toBeNull();

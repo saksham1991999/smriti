@@ -17,6 +17,7 @@ import {
   type SmritiWidgetNativeModule,
   type WidgetLocalizer,
 } from '../src/platform/widget';
+import { createTestApp } from './harness';
 
 const TZ = 'Asia/Kolkata';
 const HOUR = 3_600_000;
@@ -259,6 +260,56 @@ describe('NativeWidgetBridge', () => {
     const bridge = new NativeWidgetBridge(kv, () => localizer('en'), null);
     await bridge.write(widgetSnapshot(input()));
     expect(kv.data.has(WIDGET_KEY)).toBe(true);
-    await expect(bridge.clear()).resolves.toBeUndefined();
+    await bridge.clear();
+    expect(kv.data.has(WIDGET_KEY)).toBe(false);
+  });
+});
+
+describe('SmritiApp.writeWidget', () => {
+  const card = (ref: string, dueAt: string) => ({
+    card_ref: ref,
+    deck_id: null,
+    state: 2 as const,
+    due_at: dueAt,
+    stability: 3,
+    difficulty: 5,
+    elapsed_days: 3,
+    scheduled_days: 3,
+    learning_steps: 0,
+    reps: 3,
+    lapses: 0,
+    last_review_at: '2026-10-27T04:30:00.000Z',
+    suspended: false,
+    flags: 0,
+    buried_until: null,
+    updated_at: '2026-10-27T04:30:00.000Z',
+  });
+
+  it("writes the pet state, today's due cards and plan, and clears on sign-out", async () => {
+    const { app } = createTestApp({ variant: 'all' });
+    await app.boot();
+    await app.ensureSession();
+    await app.chooseLocale('en');
+    await app.answerGoal(['jee-main-2027'], null);
+    await app.nameBuddy('cat', 'Miko');
+    await app.plantSeed();
+    app.store.setState({ pet: { species: 'cat', name: 'Miko', mood: 40, energy: 40, state: 'sleepy' } });
+    await app.deps.stores.storage.srs_cards.putMany([
+      card('c1', '2026-10-30T02:00:00.000Z'),
+      card('c2', '2026-10-30T17:00:00.000Z'), // 22:30 IST, still today
+      card('c3', '2026-10-31T05:00:00.000Z'), // tomorrow
+    ]);
+
+    await app.writeWidget();
+    const snapshot = (await app.widget.read())!;
+    expect(snapshot.pet?.state).toBe('sleepy');
+    expect(snapshot.due_cards).toBe(2);
+    expect(snapshot.plan_items[0]).toEqual({ title: 'Review 2 cards', subject_family: 'memory', minutes: 1, deep_link: '/memory' });
+    expect(snapshot.plan_items[1]?.deep_link).toMatch(/^\/lesson\//);
+    expect(snapshot.plan_items[1]?.title).toMatch(/^Learn /);
+    expect(snapshot.exam).toBeNull();
+
+    await app.signOut();
+    expect(await app.deps.stores.kv.get(WIDGET_KEY)).toBeNull();
   });
 });

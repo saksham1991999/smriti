@@ -22,6 +22,9 @@
     "lint": "tsc --noEmit -p .",
     "test": "vitest run"
   },
+  "dependencies": {
+    "@smriti/i18n": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "22.20.3",
     "tsx": "4.23.15",

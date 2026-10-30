@@ -2,7 +2,8 @@
  * `@smriti/i18n`: English and Hindi UI strings for web and mobile.
  *
  * The catalogues in `src/locales/{en,hi}/<area>.json` are generated from the copy tables in
- * `docs/ux/*.md` by `scripts/extract.mjs` (never edited by hand: fix the doc, then re-run). Keys are
+ * `docs/ux/*.md` by `scripts/extract.mjs` (never edited by hand: fix the doc, then re-run). The
+ * exception is the `ui` namespace (component strings, see `./ui`), which is maintained by hand. Keys are
  * `<SCREEN-ID>.<row>`, e.g. `auth:AUTH-01.title_lesson_3`. Messages are ICU (plural, select).
  * Hindi uses आप everywhere; तुम only in keys containing `little_learner` (R3).
  */
@@ -16,6 +17,7 @@ import enMemoryLabs from './locales/en/memory_labs.json';
 import enOnboarding from './locales/en/onboarding.json';
 import enPractice from './locales/en/practice.json';
 import enTutorSocial from './locales/en/tutor_social.json';
+import enUi from './locales/en/ui.json';
 import hiAuth from './locales/hi/auth.json';
 import hiLearn from './locales/hi/learn.json';
 import hiMeMoney from './locales/hi/me_money.json';
@@ -23,9 +25,11 @@ import hiMemoryLabs from './locales/hi/memory_labs.json';
 import hiOnboarding from './locales/hi/onboarding.json';
 import hiPractice from './locales/hi/practice.json';
 import hiTutorSocial from './locales/hi/tutor_social.json';
+import hiUi from './locales/hi/ui.json';
 import screens from './locales/screens.json';
 
 export { GLOSSARY_HI } from './glossary';
+export { uiStringsEn, uiStringsHi, type UIStringKey, type UIStrings } from './ui';
 
 export const LOCALES = ['en', 'hi'] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -39,6 +43,7 @@ export const resources = {
     onboarding: enOnboarding,
     practice: enPractice,
     tutor_social: enTutorSocial,
+    ui: enUi,
   },
   hi: {
     auth: hiAuth,
@@ -48,6 +53,7 @@ export const resources = {
     onboarding: hiOnboarding,
     practice: hiPractice,
     tutor_social: hiTutorSocial,
+    ui: hiUi,
   },
 } as const;
 

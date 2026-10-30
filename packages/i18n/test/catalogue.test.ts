@@ -6,6 +6,7 @@ import { parse, TYPE, type MessageFormatElement } from '@formatjs/icu-messagefor
 import { describe, expect, it } from 'vitest';
 
 import { GLOSSARY_HI, NAMESPACES, SCREENS, allMessages, createI18n, k, littleLearnerVariants, resources } from '../src';
+import { uiStringsEn, uiStringsHi } from '../src/ui';
 // @ts-expect-error: plain ESM script without types
 import { brandToken, compositeParts, extractFile, slugify, splitCombined, splitRow } from '../scripts/extract.mjs';
 
@@ -81,8 +82,9 @@ describe('catalogue lint', () => {
     }
   });
 
-  it('screens index covers every key prefix', () => {
-    for (const [, key] of messages) {
+  it('screens index covers every key prefix (the hand-kept ui namespace has no screens)', () => {
+    for (const [ns, key] of messages) {
+      if (ns === 'ui') continue;
       const screen = key.split('.')[0] ?? '';
       const sub = /^([A-Z]+-\d+[A-Za-z]?\.\d+)\./.exec(key)?.[1];
       expect(SCREENS[screen] ?? (sub ? SCREENS[sub] : undefined), key).toBeDefined();
@@ -116,6 +118,16 @@ describe('runtime', () => {
     expect(tr.locale).toBe('hi');
     expect(tr.t('auth:AUTH-01.later')).toBe('बाद में');
     expect(tr.t('auth:NOPE.missing' as never)).toBe('NOPE.missing');
+  });
+
+  it('serves the component strings as the ui namespace, also from the light ./ui entry', async () => {
+    const tr = createI18n({ locale: 'en', brand: 'Smriti' });
+    expect(tr.t('ui:streak.pill', { n: 4 })).toBe('4-day streak');
+    expect(tr.t('ui:rating.a11y', { label: 'Good', interval: '3 days' })).toBe('Good, next review in 3 days');
+    await tr.setLocale('hi');
+    expect(tr.t('ui:common.back')).toBe(uiStringsHi['common.back']);
+    expect(uiStringsEn['common.back']).toBe('Back');
+    expect(Object.keys(uiStringsHi).sort()).toEqual(Object.keys(uiStringsEn).sort());
   });
 
   it('tr() picks the little-learner variant', () => {

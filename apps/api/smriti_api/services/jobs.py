@@ -10,13 +10,17 @@ from __future__ import annotations
 import asyncio
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
-from typing import Any, Protocol
+from typing import TYPE_CHECKING, Any, Protocol
 
 import structlog
 
 from smriti_api.core.db import Database
 from smriti_api.services.analytics import AnalyticsSink
 from smriti_api.services.auth_admin import AuthAdmin
+
+if TYPE_CHECKING:
+    from smriti_api.ai.gateway import AIGateway
+    from smriti_api.integrations import Integrations
 
 log = structlog.get_logger(__name__)
 
@@ -38,6 +42,9 @@ class JobDeps:
     db: Database
     auth_admin: AuthAdmin
     analytics: AnalyticsSink
+    # Wave 2 (Agent A): notifications, PDF and media jobs need these; older jobs ignore them.
+    integrations: Integrations | None = None
+    ai: AIGateway | None = None
 
 
 JobFn = Callable[..., Awaitable[Any]]

@@ -29,8 +29,9 @@ import {
 import { AnalyticsClient, MemoryTransport, audienceFromAgeBand, type Transport } from "@smriti/analytics";
 import { createFlags, getVariant, parseClientEnv, type ClientEnv, type Flags, type Variant } from "@smriti/config";
 import { DexieStorage } from "../platform/dexieStorage";
-import { BrowserNetwork, LocalStorageKeyValueStore, createFetch, deviceId, prefs, timeZone, type RequestInterceptor } from "../platform/web";
+import { BrowserNetwork, LocalStorageKeyValueStore, createFetch, deviceId, prefs, timeZone, requestFetch, withDevLinkFlag, type RequestInterceptor } from "../platform/web";
 import { createApi, type Api } from "../lib/api";
+import { createApiClient, type ApiClient } from "@smriti/api-client";
 import { createBillingProvider, type BillingProvider } from "../lib/billing";
 import { contentBase } from "../lib/content";
 
@@ -46,7 +47,10 @@ export interface Services {
   store: AppStore;
   analytics: AnalyticsClient;
   analyticsTransport: Transport;
+  /** Our small REST helper (billing and account routes not in the OpenAPI document yet). */
   api: Api;
+  /** The generated, typed client for apps/api (config, catalog, manifest, me). */
+  client: ApiClient;
   fetch: Fetch;
   srs: SrsScheduler;
   softPrompt: SoftPromptBudget;
@@ -100,7 +104,7 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
       createSupabaseClientForProfile({ url: env.SUPABASE_URL, anonKey: env.SUPABASE_ANON_KEY, storage: kv, storageKey: "smriti-web-auth", detectSessionInUrl: true }),
     );
   } else {
-    auth = new DevAuthClient({ baseUrl: env.API_BASE_URL, fetch: fetchImpl, store: kv, clock });
+    auth = new DevAuthClient({ baseUrl: env.API_BASE_URL, fetch: withDevLinkFlag(fetchImpl), store: kv, clock });
   }
 
   const sync = new SyncClient({
@@ -120,6 +124,14 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
   sync.onStatus((s) => store.getState().setSyncStatus(s));
 
   const api = createApi({ baseUrl: env.API_BASE_URL, fetch: fetchImpl, token: () => auth.getAccessToken(), variant: variant.id });
+  const client = createApiClient({
+    baseUrl: env.API_BASE_URL,
+    getAccessToken: () => auth.getAccessToken(),
+    appVariant: variant.id,
+    deviceId: deviceId(),
+    platform: "web",
+    fetch: requestFetch(opts.interceptor),
+  });
 
   const analyticsTransport: Transport = new MemoryTransport();
   const newId = createIdGenerator(globalThis.crypto, clock);
@@ -168,6 +180,7 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     analytics,
     analyticsTransport,
     api,
+    client,
     fetch: fetchImpl,
     srs: new SrsScheduler(),
     softPrompt: new SoftPromptBudget(kv),

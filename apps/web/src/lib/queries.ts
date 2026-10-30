@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { unwrap, type Schemas } from "@smriti/api-client";
 import { useAppStore } from "@smriti/app-core/react";
 import { localDate, todayActivity, type LessonProgressRow, type OutboxRow, type TopicStatusRow } from "@smriti/app-core";
 import { useServices } from "../boot/context";
 import { timeZone } from "../platform/web";
-import { profileIdsFor, useOnboarding } from "./onboarding";
-import type { ConfigResponse } from "./contentTypes";
+import { useOnboarding } from "./onboarding";
 
 export const qk = {
-  config: ["config"] as const,
+  config: ["smriti", "config"] as const,
+  exams: ["smriti", "catalog", "exams"] as const,
   topicStatus: ["local", "topic_status"] as const,
   lessonProgress: ["local", "lesson_progress"] as const,
   outbox: ["local", "outbox"] as const,
@@ -18,25 +19,38 @@ export const qk = {
 /** Every local query, refreshed after a lesson or a sync pull. */
 export const LOCAL_KEYS = [qk.topicStatus, qk.lessonProgress, qk.outbox, qk.srs];
 
+export type AppConfig = Schemas["ConfigResponse"];
+export type Exam = Schemas["ExamOut"];
+
+/** `GET /v1/config` through the generated client; its flags replace the defaults. */
 export function useConfig() {
   const s = useServices();
-  const q = useQuery({ queryKey: qk.config, queryFn: () => s.api.get<ConfigResponse>("/v1/config"), staleTime: 60 * 60_000 });
+  const q = useQuery({ queryKey: qk.config, queryFn: () => unwrap(s.client.GET("/v1/config"), s.client), staleTime: 60 * 60_000 });
   useEffect(() => {
     if (q.data) s.applyServerFlags(q.data.flags);
   }, [q.data, s]);
   return q;
 }
 
-/** Exam profile ids the student studies: from the server profile, else the onboarding answers. */
+/** `GET /v1/catalog/exams`: exam names and their active profiles (onboarding and the exam switcher). */
+export function useExams() {
+  const s = useServices();
+  return useQuery({ queryKey: qk.exams, queryFn: () => unwrap(s.client.GET("/v1/catalog/exams"), s.client), staleTime: 10 * 60_000 });
+}
+
+/**
+ * Exam profile ids the student studies: the server profile, else the onboarding goals (which are
+ * profile ids, as the API's `onboarding_answer` goal expects), else the variant's first profile.
+ */
 export function useProfileIds(): string[] {
   const serverIds = useAppStore((s) => s.profile?.exam_profile_ids);
   const goals = useOnboarding((s) => s.goals);
   const config = useConfig().data;
-  const exams = config?.exams ?? [];
-  const ids = serverIds && serverIds.length ? profileIdsFor(serverIds, exams) : profileIdsFor(goals, exams);
-  if (ids.length) return [...new Set(ids)];
-  // Before a goal is chosen (or for "curious"), the first published profile.
-  return exams[0] ? [exams[0].profileId] : [];
+  const local = goals.filter((g) => g !== "curious");
+  if (local.length) return [...new Set(local)];
+  if (serverIds && serverIds.length) return [...new Set(serverIds)];
+  const first = config?.variant.exam_profile_ids[0];
+  return first ? [first] : [];
 }
 
 export function useTopicStatuses() {

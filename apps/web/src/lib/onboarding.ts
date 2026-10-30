@@ -6,7 +6,8 @@ import type { AgeBand } from "@smriti/app-core";
  * once and also sent as an `onboarding_answer` event, so a reload resumes at the same step and
  * nothing is lost offline. Kept in localStorage synchronously so route guards can read it.
  */
-export type Goal = string; // exam id, "school" or "curious"
+/** An exam profile id (what the API's onboarding_answer goal expects), or "curious". */
+export type Goal = string;
 export type Level = "starting" | "basics" | "revising";
 
 export interface OnboardingData {
@@ -96,11 +97,6 @@ export function ageBandFrom(d: Pick<OnboardingData, "classNo" | "birthYear">, no
 }
 
 export const isMinor = (band: AgeBand | null) => band !== "18p";
-
-/** The exam profile ids the goals map to (catalogue and Home). */
-export function profileIdsFor(goals: readonly Goal[], exams: readonly { id: string; profileId: string }[]): string[] {
-  return goals.map((g) => exams.find((e) => e.id === g)?.profileId ?? g);
-}
 
 /** Which question steps this student sees before the lesson (onboarding §5.1): drives the bar. */
 export function questionSteps(d: Pick<OnboardingData, "goals" | "classNo">): string[] {

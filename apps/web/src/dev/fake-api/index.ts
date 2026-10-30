@@ -9,7 +9,7 @@
  */
 import { getResponse, http, HttpResponse, type RequestHandler } from "msw";
 import type { SyncEventsRequest, WireEvent } from "@smriti/app-core";
-import { FIXTURE_CONFIG } from "./fixtures";
+import { FIXTURE_EXAMS, fixtureConfig } from "./fixtures";
 import { computeState, emptyDb, validateEvent, type FakeDbData, type FakeUser } from "./state";
 
 export interface FakeApiOptions {
@@ -25,6 +25,8 @@ export interface FakeApiOptions {
    * content (tools/content-publish/out, served at /c/ in dev and e2e; read from disk in tests).
    */
   loadContent: (path: string) => Promise<unknown>;
+  /** Where the fixture content is served (`/c` in the browser); goes out as `content_base_url`. */
+  contentBaseUrl: string;
 }
 
 export interface FakeApi {
@@ -36,6 +38,9 @@ export interface FakeApi {
 
 const b64url = (s: string) => btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 const rid = () => crypto.randomUUID();
+/** RFC 7807 problem details, as apps/api returns every error. */
+const problem = (status: number, code: string) =>
+  HttpResponse.json({ type: code, title: code, status, code }, { status, headers: { "Content-Type": "application/problem+json" } });
 
 function jwt(user: FakeUser, now: number, method: string): string {
   const header = b64url(JSON.stringify({ alg: "none", typ: "JWT", kid: "fake" }));
@@ -117,12 +122,15 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
     // ── Dev auth (sync contract "Dev auth") ──────────────────────────────────
     http.post(url("/v1/dev/auth/anonymous"), () => session(newUser(true, null, null), "anonymous")),
     http.post(url("/v1/dev/auth/google"), async ({ request }) => {
-      const body = (await request.json()) as { email?: string; name?: string };
+      const body = (await request.json()) as { email?: string; name?: string; link?: boolean };
       const email = (body.email ?? "").trim().toLowerCase();
       if (!email.includes("@")) return HttpResponse.json({ code: "invalid_email" }, { status: 422 });
       const owner = byEmail(email);
       const current = authed(request);
-      if (current) {
+      // Like the real API: only `link: true` links the guest; otherwise it is a plain sign-in.
+      if (body.link) {
+        if (!current) return unauthorized();
+        if (!current.isAnonymous) return HttpResponse.json({ code: "not_a_guest" }, { status: 409 });
         // Link: the identity already belongs to another account → identity_already_exists.
         if (owner && owner.id !== current.id) return HttpResponse.json({ code: "identity_already_exists" }, { status: 409 });
         current.isAnonymous = false;
@@ -169,17 +177,33 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
     }),
 
     // ── Config and content (published fixture manifests) ──────────────────────
-    http.get(url("/v1/config"), () => HttpResponse.json(FIXTURE_CONFIG)),
+    http.get(url("/v1/config"), () => HttpResponse.json(fixtureConfig(opts.contentBaseUrl, now()))),
+    http.get(url("/v1/catalog/exams"), () => HttpResponse.json(FIXTURE_EXAMS)),
+    // Shaped like apps/api's ManifestResponse: the manifest inlined, files under base_url.
     http.get(url("/v1/content/manifest"), async ({ request }) => {
       const q = new URL(request.url).searchParams;
       const exam = q.get("exam") ?? "";
       const locale = q.get("locale") === "hi" ? "hi" : "en";
-      if (!/^[a-z0-9-]+$/.test(exam)) return HttpResponse.json({ code: "invalid_exam" }, { status: 422 });
+      if (!FIXTURE_EXAMS.some((e) => e.profiles.some((p) => p.id === exam))) return problem(404, "exam_not_found");
+      let manifest: Record<string, unknown>;
       try {
-        return HttpResponse.json(await opts.loadContent(`manifests/${exam}.${locale}.json`));
+        manifest = (await opts.loadContent(`manifests/${exam}.${locale}.json`)) as Record<string, unknown>;
       } catch {
-        return HttpResponse.json({ code: "not_found" }, { status: 404 });
+        return problem(404, "manifest_not_published");
       }
+      const base = opts.contentBaseUrl.replace(/\/+$/, "");
+      return HttpResponse.json({
+        exam_profile_id: exam,
+        locale,
+        version: typeof manifest.version === "number" ? manifest.version : null,
+        hash: null,
+        url: `${base}/manifests/${exam}.${locale}.json`,
+        base_url: base,
+        bundle_url_template: `${base}/bundles/{hash}.json`,
+        patch_url_template: `${base}/patches/{from_hash}-{to_hash}.json`,
+        free_rotating_chapters: [],
+        manifest,
+      });
     }),
 
     // ── Billing (FakeBilling's server side; never charges) ───────────────────
@@ -296,6 +320,7 @@ export function createBrowserFakeApi(baseUrl: string, contentBaseUrl: string): F
   return createFakeApi({
     baseUrl,
     latencyMs: 120,
+    contentBaseUrl,
     loadContent: async (path) => {
       const res = await fetch(new URL(path, new URL(contentBaseUrl, location.origin)));
       if (!res.ok) throw new Error(`content ${res.status}`);

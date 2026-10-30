@@ -108,6 +108,35 @@ export function createFetch(interceptor?: RequestInterceptor): Fetch {
   };
 }
 
+/** A standard `fetch` (Request-based, for openapi-fetch) that the interceptor can answer. */
+export function requestFetch(interceptor?: RequestInterceptor): typeof fetch {
+  return async (input, init) => {
+    const req = new Request(input, init);
+    if (interceptor) {
+      const res = await interceptor(req.clone());
+      if (res) return res;
+    }
+    return fetch(req);
+  };
+}
+
+/**
+ * The API's dev Google route links the guest only when the body says `link: true` (Supabase's
+ * linkIdentity). app-core's DevAuthClient sends the guest's bearer without that field, so this
+ * adds it to bearer-carrying calls. Remove once app-core sends it (reported as a contract gap).
+ */
+export function withDevLinkFlag(inner: Fetch): Fetch {
+  return (url, init) => {
+    const headers = (init?.headers ?? {}) as Record<string, string>;
+    const bearer = Object.keys(headers).some((k) => k.toLowerCase() === "authorization");
+    if (bearer && url.endsWith("/v1/dev/auth/google") && init?.method === "POST" && typeof init.body === "string") {
+      const body = JSON.parse(init.body) as Record<string, unknown>;
+      return inner(url, { ...init, body: JSON.stringify({ ...body, link: true }) });
+    }
+    return inner(url, init);
+  };
+}
+
 export function timeZone(): string {
   try {
     return Intl.DateTimeFormat().resolvedOptions().timeZone || "Asia/Kolkata";

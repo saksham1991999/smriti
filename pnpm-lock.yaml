@@ -81,15 +81,24 @@ importers:
       '@smriti/analytics':
         specifier: workspace:*
         version: link:../../packages/analytics
+      '@smriti/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
       '@smriti/app-core':
         specifier: workspace:*
         version: link:../../packages/app-core
       '@smriti/config':
         specifier: workspace:*
         version: link:../../packages/config
+      '@smriti/content-schema':
+        specifier: workspace:*
+        version: link:../../packages/content-schema
       '@smriti/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
+      '@smriti/lesson-core':
+        specifier: workspace:*
+        version: link:../../packages/lesson-core
       '@smriti/lesson-player-web':
         specifier: workspace:*
         version: link:../../packages/lesson-player-web
@@ -11035,9 +11044,7 @@ snapshots:
       metro-runtime: 0.84.6
     transitivePeerDependencies:
       - '@babel/core'
-      - bufferutil
       - supports-color
-      - utf-8-validate
 
   '@react-native/normalize-colors@0.86.3': {}
 

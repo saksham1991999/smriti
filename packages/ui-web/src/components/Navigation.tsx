@@ -22,6 +22,7 @@ export function TabBar({ items, activeKey, onSelect, testID, className }: TabBar
           <button
             key={it.key}
             type="button"
+            data-testid={`${testID ?? "tab"}-${it.key}`}
             aria-current={on ? "page" : undefined}
             onClick={() => onSelect(it.key)}
             className={cx("relative flex min-h-12 flex-col items-center gap-[3px] rounded-md text-caption font-bold", on ? "text-primary-text" : "text-ink-muted", focusRing)}
@@ -56,6 +57,7 @@ export function SidebarNav({ items, activeKey, onSelect, header, footer, testID,
           <button
             key={it.key}
             type="button"
+            data-testid={`${testID ?? "sidebar"}-${it.key}`}
             aria-current={on ? "page" : undefined}
             onClick={() => onSelect(it.key)}
             className={cx("flex h-12 items-center gap-3 rounded-[14px] px-3 text-start text-label font-bold", on ? "bg-primary-tint text-primary-text" : "text-ink-muted hover:bg-surface-sunken", focusRing)}

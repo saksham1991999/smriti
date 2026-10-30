@@ -482,6 +482,8 @@ export interface LimitMeterContract extends BaseProps {
   onProPress?: () => void;
   /** Pro students see no meter. */
   hidden?: boolean;
+  /** Which quota this is: daily (questions) or weekly (sectional mocks). Changes the "left" and "full" wording. */
+  period?: "day" | "week";
 }
 
 export interface CitationChipContract extends BaseProps {
@@ -629,4 +631,135 @@ export interface FormulaBoxContract extends BaseProps {
   onSymbolPress?: (id: string) => void;
   inVault?: boolean;
   onAddToVault?: () => void;
+}
+
+// ---------- Tutor chat (docs/ux/tutor-social.md AI-02) ----------
+// Slots (`citations`, `actions` on ChatBubble; `attach`, `trailing` on ChatInput) are React nodes added by
+// each platform with the same names; a rich message body (KaTeX, images, lists) is passed as children.
+
+export type ChatRole = "student" | "tutor" | "system";
+export interface ChatBubbleContract extends BaseProps {
+  role: ChatRole;
+  /** Plain text body. Rich bodies are passed as children instead. */
+  text?: string;
+  /** The tutor's name ({pet_name}) for the thinking line and the spoken label. */
+  authorName?: string;
+  /** Pet avatar above the first tutor message of a turn (24 px). */
+  avatar?: { species: PetSpecies; mood?: PetMood };
+  /** The answer is still arriving: thinking dots before the first token, then the text grows. Announced once, when it completes. */
+  streaming?: boolean;
+  /** The student stopped the answer. */
+  stopped?: boolean;
+  /** "Made by AI. It can make mistakes." under a finished tutor answer (default true for tutor). */
+  showAiLabel?: boolean;
+  /** Announce the finished answer politely (default true). */
+  live?: boolean;
+}
+
+export interface ChatInputContract extends BaseProps {
+  value: string;
+  onChange: (value: string) => void;
+  onSend: () => void;
+  /** Accessible name of the field. */
+  label: string;
+  placeholder?: string;
+  /** Character limit from config; the counter shows when 20% or less is left. */
+  maxLength?: number;
+  /** Grows up to this many lines (default 5). */
+  maxLines?: number;
+  disabled?: boolean;
+  /** While the answer streams, Send becomes Stop. */
+  streaming?: boolean;
+  onStop?: () => void;
+}
+
+// ---------- Social (docs/ux/tutor-social.md Part B) ----------
+
+export interface FriendRowContract extends BaseProps {
+  /** Already resolved by app-core privacy rules (R31). Minors always have the pet avatar. */
+  name: string;
+  avatar: { species: PetSpecies; mood?: PetMood };
+  /** Today's status, shown with an icon and a word (SOC-01). Omit to hide. */
+  studiedToday?: boolean;
+  /** Streak days with the Plant icon (R28). */
+  streakDays?: number;
+  /** "Studying now" presence: adults who allow it only (SOC-15). The screen decides. */
+  studyingNow?: boolean;
+  /** Radio selection (SOC-15 friend list). */
+  selectable?: boolean;
+  selected?: boolean;
+  disabled?: boolean;
+  /** A line under the name, e.g. the SOC-15 mismatch line. */
+  note?: string;
+  onPress?: () => void;
+}
+
+export interface LeagueTierBadgeContract extends BaseProps {
+  /** Tier name from config (`league.tier_names`), never hard-coded. */
+  name: string;
+  /** Illustration name of the tier crest (`league-tier` preset). */
+  crest: string;
+  /** past: full colour; current: enlarged and labelled; future: inkDisabled outline (SOC-08 tier strip). */
+  state?: "past" | "current" | "future";
+  /** sm 40, md 56, lg 96 (header band), xl 120 (league card). */
+  size?: "sm" | "md" | "lg" | "xl";
+  showName?: boolean;
+}
+
+export type DuelAnswer = "open" | "answered" | "right" | "wrong";
+export interface DuelSide {
+  name: string;
+  avatar: { species: PetSpecies; mood?: PetMood };
+  score: number;
+  /** One per question, in order. */
+  answers: DuelAnswer[];
+  /** Connection dropped: the dots stop and the row says so. */
+  dropped?: boolean;
+}
+export interface DuelScoreBarContract extends BaseProps {
+  /** Questions in the duel ({count}). */
+  count: number;
+  you: DuelSide;
+  /** Omit for the solo variant ("Practise solo · not ranked"). */
+  opponent?: DuelSide;
+}
+
+export interface SquadCardContract extends BaseProps {
+  name: string;
+  /** Squad crest illustration name (`badge` preset). */
+  crest: string;
+  /** Squad quest progress. */
+  done: number;
+  target: number;
+  daysLeft?: number;
+  onPress?: () => void;
+}
+
+export interface CheerButtonContract extends BaseProps {
+  /** The word ("Clap") or the preset message ("Great streak!"); also the accessible label. */
+  label: string;
+  icon: IconName;
+  /** reaction: 40 tall with a count (SOC-01 activity); message: 48-tall preset chip (SOC-22). */
+  kind?: "reaction" | "message";
+  count?: number;
+  /** Already cheered: one per item, tapping again does nothing. */
+  sent?: boolean;
+  disabled?: boolean;
+  onPress?: () => void;
+}
+
+export interface RoomCardContract extends BaseProps {
+  /** Palace name (MEM-12 palace card). */
+  name: string;
+  /** The first room's image (template room, `sunny-scene` 3:2). */
+  image: string;
+  imageAlt?: string;
+  /** "{rooms} rooms · {items} items · next walk {when}", formatted by the screen. */
+  meta?: string;
+  /** The earliest spot is due: Clock icon and "Due". */
+  due?: boolean;
+  onWalk?: () => void;
+  /** Omit for read-only system walks ("From your lessons"). */
+  onQuiz?: () => void;
+  onPress?: () => void;
 }

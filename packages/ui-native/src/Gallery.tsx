@@ -9,6 +9,7 @@ import type { Confidence, Locale, NavItem } from "@smriti/tokens/ui";
 import { ThemeScope, useTheme } from "./theme";
 import { AppleButton, GoogleButton, TrustLine } from "./components/SignInButtons";
 import { Button, IconButton } from "./components/Button";
+import { ChatBubble, ChatInput } from "./components/Chat";
 import { Card, ContinueCard, EmptyState, OptionCard, StatTile, StreakCard, SubjectTile } from "./components/Cards";
 import { Chip, ChoiceChips, CitationChip, ProChip, SaveStateChip, StreakPill } from "./components/Chips";
 import { Banner, DayDots, Meter, PetLine, Toast } from "./components/Feedback";
@@ -20,6 +21,8 @@ import { SidebarNav, TabBar, TopBar } from "./components/Navigation";
 import { Dialog, Sheet, Tooltip } from "./components/Overlays";
 import { HeatMapCell, LeaderboardRow, LimitMeter, MockPaletteCell, NumericKeypad, OmrBubbleRow, ScoreRing, SectionTabs, Timer, TimeStrip } from "./components/Practice";
 import { ProgressBar, ProgressRing, SegmentedProgress } from "./components/Progress";
+import { RoomCard } from "./components/Palace";
+import { CheerButton, DuelScoreBar, FriendRow, LeagueTierBadge, SquadCard } from "./components/Social";
 import { PriceBlock, SettingsGroup, SettingsRow, TrialTimeline } from "./components/Settings";
 import { Text } from "./components/Text";
 import { galleryCopy, type GalleryCopy } from "./gallery/copy";
@@ -438,7 +441,114 @@ export const gallerySections: { id: string; title: string; render: Render }[] = 
     render: (c) => <AnalyticsDemo c={c} />,
   },
   { id: "nav", title: "Top bar, Tab bar, Sidebar", render: (c) => <NavDemo c={c} /> },
+  { id: "chat", title: "Chat bubble, Chat input", render: (c) => <ChatDemo c={c} /> },
+  { id: "social", title: "Friend row, League tier, Duel score, Squad card, Cheer", render: (c) => <SocialDemo c={c} /> },
+  {
+    id: "palace",
+    title: "Memory palace card",
+    render: (c) => (
+      <Stack>
+        <RoomCard name={c.palaceName} image="scene-memory-palace" imageAlt={c.palaceAlt} meta={c.palaceMeta} due onPress={() => undefined} onWalk={() => undefined} onQuiz={() => undefined} />
+        <RoomCard name={c.palaceSystem} image="scene-pet-room" meta={c.palaceMeta} onWalk={() => undefined} />
+      </Stack>
+    ),
+  },
 ];
+
+function ChatDemo({ c }: { c: GalleryCopy }) {
+  const theme = useTheme();
+  const [value, setValue] = useState(c.chatDraft);
+  const [streaming, setStreaming] = useState(false);
+  return (
+    <Stack>
+      <View style={{ gap: 12, borderRadius: theme.radius.card, backgroundColor: theme.colors.bg, padding: 12, borderWidth: 1, borderColor: theme.colors.line }}>
+        <ChatBubble role="system" text={c.chatSystem} />
+        <ChatBubble role="student" text={c.chatStudent} />
+        <ChatBubble
+          role="tutor"
+          authorName={c.petName}
+          avatar={{ species: "cat" }}
+          text={c.chatTutor}
+          citations={<CitationChip examShort="JEE Main" year={2025} sessionLabel="Jan S1" onPress={() => undefined} />}
+          actions={
+            <>
+              <IconButton icon="SpeakerHigh" label={c.petName} size={40} onPress={() => undefined} />
+              <IconButton icon="Cards" label={c.petName} size={40} onPress={() => undefined} />
+            </>
+          }
+        />
+        <ChatBubble role="tutor" authorName={c.petName} avatar={{ species: "cat", mood: "thinking" }} streaming />
+        <ChatBubble role="tutor" authorName={c.petName} text={c.chatPartial} stopped />
+      </View>
+      <View style={{ overflow: "hidden", borderRadius: theme.radius.card, borderWidth: 1, borderColor: theme.colors.line }}>
+        <ChatInput
+          value={value}
+          onChange={setValue}
+          onSend={() => setStreaming(true)}
+          onStop={() => setStreaming(false)}
+          streaming={streaming}
+          label={c.chatLabel}
+          placeholder={c.chatPlaceholder}
+          maxLength={60}
+          attach={<IconButton icon="Plus" label={c.chatLabel} size={48} onPress={() => undefined} />}
+        />
+      </View>
+      <View style={{ overflow: "hidden", borderRadius: theme.radius.card, borderWidth: 1, borderColor: theme.colors.line }}>
+        <ChatInput value="" onChange={() => undefined} onSend={() => undefined} label={c.chatLabel} placeholder={c.chatPlaceholder} disabled />
+      </View>
+    </Stack>
+  );
+}
+
+function SocialDemo({ c }: { c: GalleryCopy }) {
+  const theme = useTheme();
+  const [picked, setPicked] = useState(1);
+  const [cheered, setCheered] = useState<number[]>([1]);
+  const icons = ["HandsClapping", "Star", "Barbell", "Smiley"] as const;
+  const msgIcons = ["UsersThree", "Plant", "Sparkle", "Lightning"] as const;
+  const listBox = [{ borderRadius: theme.radius.card, backgroundColor: theme.colors.surface, paddingVertical: 4 }, theme.shadow.card];
+  return (
+    <Stack>
+      <View style={listBox}>
+        <FriendRow name={c.friends[0] ?? ""} avatar={{ species: "dog" }} studiedToday streakDays={12} />
+        <FriendRow name={c.friends[1] ?? ""} avatar={{ species: "cat", mood: "curious" }} studiedToday={false} streakDays={3} />
+        <FriendRow name={c.friends[2] ?? ""} avatar={{ species: "dog" }} studyingNow />
+      </View>
+      <Label>SOC-15 pick a friend</Label>
+      <View accessibilityRole="radiogroup" style={listBox}>
+        {c.friends.map((f, i) => (
+          <FriendRow key={f} name={f} avatar={{ species: i % 2 ? "cat" : "dog" }} selectable selected={picked === i} disabled={i === 2} note={i === 2 ? c.friendNote : undefined} onPress={() => setPicked(i)} />
+        ))}
+      </View>
+      <Row>
+        {c.tiers.map((tier, i) => (
+          <LeagueTierBadge key={tier.crest} name={tier.name} crest={tier.crest} state={i === 0 ? "past" : i === 1 ? "current" : "future"} size="md" />
+        ))}
+        <LeagueTierBadge name={c.tiers[1]?.name ?? ""} crest={c.tiers[1]?.crest ?? ""} size="lg" showName={false} />
+      </Row>
+      <DuelScoreBar
+        count={7}
+        you={{ name: c.you, avatar: { species: "cat" }, score: 40, answers: ["right", "right", "wrong", "right", "answered"] }}
+        opponent={{ name: c.friends[1] ?? "", avatar: { species: "dog" }, score: 30, answers: ["right", "wrong", "right", "answered"] }}
+      />
+      <DuelScoreBar count={7} you={{ name: c.you, avatar: { species: "cat" }, score: 10, answers: ["right", "open"] }} opponent={{ name: c.friends[0] ?? "", avatar: { species: "dog" }, score: 0, answers: ["answered"], dropped: true }} />
+      <DuelScoreBar count={7} you={{ name: c.you, avatar: { species: "cat" }, score: 20, answers: ["right", "right", "answered"] }} />
+      {c.squads.map((sq, i) => (
+        <SquadCard key={sq.crest} name={sq.name} crest={sq.crest} done={i ? 400 : 240} target={400} daysLeft={i ? undefined : 3} onPress={() => undefined} />
+      ))}
+      <Row>
+        {c.reactions.map((r, i) => (
+          <CheerButton key={r} label={r} icon={icons[i] ?? "Star"} count={[3, 5, 1, 0][i]} sent={cheered.includes(i)} onPress={() => setCheered((x) => [...x, i])} />
+        ))}
+      </Row>
+      <Grid cols={2}>
+        {c.cheerMessages.map((m, i) => (
+          <CheerButton key={m} kind="message" label={m} icon={msgIcons[i] ?? "Star"} sent={i === 1} disabled={i === 3} onPress={() => undefined} />
+        ))}
+      </Grid>
+    </Stack>
+  );
+}
 
 function TypeDemo({ c }: { c: GalleryCopy }) {
   const theme = useTheme();
@@ -539,6 +649,8 @@ function AnalyticsDemo({ c }: { c: GalleryCopy }) {
       <LimitMeter label={c.limitLabel} used={12} limit={30} onProPress={() => undefined} />
       <LimitMeter label={c.limitLabel} used={27} limit={30} proAction="ask_grown_up" onProPress={() => undefined} />
       <LimitMeter label={c.limitLabel} used={30} limit={30} onProPress={() => undefined} />
+      <LimitMeter label={c.mockLimitLabel} used={1} limit={2} lastFewAt={1} period="week" onProPress={() => undefined} />
+      <LimitMeter label={c.mockLimitLabel} used={2} limit={2} period="week" onProPress={() => undefined} />
     </Stack>
   );
 }

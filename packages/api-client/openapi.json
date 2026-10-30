@@ -1228,6 +1228,283 @@
         }
       }
     },
+    "/v1/billing/entitlement": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "Pro or free, with status, source, grace and renewal (PAY-08 polls this)",
+        "operationId": "entitlement_v1_billing_entitlement_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/intro-eligibility": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "Whether the ₹1 first month may be offered (auth flow §8, R38)",
+        "operationId": "intro_eligibility_v1_billing_intro_eligibility_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/IntroEligibilityOut" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/subscription": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "Manage plan details: source, status, next charge or end date (PAY-12)",
+        "operationId": "subscription_v1_billing_subscription_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SubscriptionDetailsOut" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/razorpay/subscription": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Start a web subscription: ₹1 first month when eligible, then ₹99/month",
+        "operationId": "razorpay_subscription_v1_billing_razorpay_subscription_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpaySubscriptionRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RazorpaySubscriptionOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/razorpay/verify": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Check the Checkout handler's signature; Pro follows the webhook",
+        "operationId": "razorpay_verify_v1_billing_razorpay_verify_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayVerifyRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/razorpay/cancel": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Cancel the web subscription at the end of the paid period (PAY-13)",
+        "operationId": "razorpay_cancel_v1_billing_razorpay_cancel_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayCancelRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/restore": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Re-read store purchases from RevenueCat and apply them (PAY-14 Restore)",
+        "operationId": "restore_v1_billing_restore_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RestoreOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/webhooks/razorpay": {
+      "post": {
+        "tags": ["billing", "webhooks"],
+        "summary": "Razorpay subscription and refund events (HMAC-checked, idempotent)",
+        "operationId": "razorpay_webhook_v1_webhooks_razorpay_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/WebhookAck" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/webhooks/revenuecat": {
+      "post": {
+        "tags": ["billing", "webhooks"],
+        "summary": "RevenueCat store events, confirmed against RevenueCat's REST API",
+        "operationId": "revenuecat_webhook_v1_webhooks_revenuecat_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/WebhookAck" } }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -1503,12 +1780,98 @@
         "required": ["id", "is_anonymous"],
         "title": "DevUser"
       },
+      "EntitlementOut": {
+        "properties": {
+          "plan": { "type": "string", "enum": ["free", "pro"], "title": "Plan" },
+          "pro_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Pro Until"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "trialing",
+                  "grace",
+                  "on_hold",
+                  "cancelled",
+                  "expired",
+                  "pending"
+                ]
+              },
+              { "type": "null" }
+            ],
+            "title": "Status"
+          },
+          "source": {
+            "anyOf": [
+              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo"] },
+              { "type": "null" }
+            ],
+            "title": "Source"
+          },
+          "grace_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Grace Until"
+          },
+          "cancel_at_period_end": { "type": "boolean", "title": "Cancel At Period End" },
+          "is_intro": { "type": "boolean", "title": "Is Intro" }
+        },
+        "type": "object",
+        "required": [
+          "plan",
+          "pro_until",
+          "status",
+          "source",
+          "grace_until",
+          "cancel_at_period_end",
+          "is_intro"
+        ],
+        "title": "EntitlementOut"
+      },
       "EntitlementState": {
         "properties": {
           "plan": { "type": "string", "enum": ["free", "pro"], "title": "Plan" },
           "pro_until": {
             "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
             "title": "Pro Until"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "trialing",
+                  "grace",
+                  "on_hold",
+                  "cancelled",
+                  "expired",
+                  "pending"
+                ]
+              },
+              { "type": "null" }
+            ],
+            "title": "Status"
+          },
+          "grace_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Grace Until"
+          },
+          "cancel_at_period_end": {
+            "type": "boolean",
+            "title": "Cancel At Period End",
+            "default": false
+          },
+          "is_intro": { "type": "boolean", "title": "Is Intro", "default": false },
+          "source": {
+            "anyOf": [
+              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo"] },
+              { "type": "null" }
+            ],
+            "title": "Source"
           }
         },
         "type": "object",
@@ -1610,6 +1973,31 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "IntroEligibilityOut": {
+        "properties": {
+          "eligible": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Eligible",
+            "description": "null for a guest: only the hint is known until sign-in (auth flow §8)"
+          },
+          "eligible_hint": { "type": "boolean", "title": "Eligible Hint" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["guest", "had_subscription", "intro_already_claimed"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "intro_price_paise": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Intro Price Paise"
+          },
+          "price_paise": { "type": "integer", "title": "Price Paise" }
+        },
+        "type": "object",
+        "required": ["eligible", "eligible_hint", "reason", "intro_price_paise", "price_paise"],
+        "title": "IntroEligibilityOut"
       },
       "LinkedRequest": {
         "properties": {
@@ -2048,6 +2436,74 @@
         ],
         "title": "QuestOut"
       },
+      "RazorpayCancelRequest": {
+        "properties": {
+          "reason": {
+            "anyOf": [{ "type": "string", "pattern": "^[a-z0-9_]{1,40}$" }, { "type": "null" }],
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "title": "RazorpayCancelRequest"
+      },
+      "RazorpaySubscriptionOut": {
+        "properties": {
+          "subscription_id": { "type": "string", "title": "Subscription Id" },
+          "key_id": { "type": "string", "title": "Key Id" },
+          "product_id": { "type": "string", "title": "Product Id" },
+          "intro": { "type": "boolean", "title": "Intro" },
+          "amount_today_paise": { "type": "integer", "title": "Amount Today Paise" },
+          "then_paise": { "type": "integer", "title": "Then Paise" },
+          "short_url": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Short Url" }
+        },
+        "type": "object",
+        "required": [
+          "subscription_id",
+          "key_id",
+          "product_id",
+          "intro",
+          "amount_today_paise",
+          "then_paise"
+        ],
+        "title": "RazorpaySubscriptionOut"
+      },
+      "RazorpaySubscriptionRequest": {
+        "properties": {
+          "payer": {
+            "type": "string",
+            "enum": ["self", "guardian_declared"],
+            "title": "Payer",
+            "default": "self"
+          }
+        },
+        "type": "object",
+        "title": "RazorpaySubscriptionRequest"
+      },
+      "RazorpayVerifyRequest": {
+        "properties": {
+          "razorpay_payment_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 3,
+            "title": "Razorpay Payment Id"
+          },
+          "razorpay_subscription_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 3,
+            "title": "Razorpay Subscription Id"
+          },
+          "razorpay_signature": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 16,
+            "title": "Razorpay Signature"
+          }
+        },
+        "type": "object",
+        "required": ["razorpay_payment_id", "razorpay_subscription_id", "razorpay_signature"],
+        "title": "RazorpayVerifyRequest"
+      },
       "RejectedEvent": {
         "properties": {
           "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
@@ -2063,6 +2519,15 @@
         "type": "object",
         "required": ["day"],
         "title": "RestDayRequest"
+      },
+      "RestoreOut": {
+        "properties": {
+          "restored": { "type": "boolean", "title": "Restored" },
+          "entitlement": { "$ref": "#/components/schemas/EntitlementOut" }
+        },
+        "type": "object",
+        "required": ["restored", "entitlement"],
+        "title": "RestoreOut"
       },
       "ReviewQueueRequest": {
         "properties": {
@@ -2221,6 +2686,89 @@
         "type": "object",
         "required": ["id", "name", "color_token", "sort", "chapter_count"],
         "title": "SubjectOut"
+      },
+      "SubscriptionDetailsOut": {
+        "properties": {
+          "entitlement": { "$ref": "#/components/schemas/EntitlementOut" },
+          "subscription": {
+            "anyOf": [{ "$ref": "#/components/schemas/SubscriptionOut" }, { "type": "null" }]
+          },
+          "promo_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Promo Until"
+          }
+        },
+        "type": "object",
+        "required": ["entitlement", "subscription", "promo_until"],
+        "title": "SubscriptionDetailsOut"
+      },
+      "SubscriptionOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "source": {
+            "type": "string",
+            "enum": ["razorpay", "play", "app_store", "promo"],
+            "title": "Source"
+          },
+          "status": { "type": "string", "title": "Status" },
+          "product_id": { "type": "string", "title": "Product Id" },
+          "price_paise": { "type": "integer", "title": "Price Paise" },
+          "intro_price_paise": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Intro Price Paise"
+          },
+          "is_intro": { "type": "boolean", "title": "Is Intro" },
+          "payer": {
+            "type": "string",
+            "enum": ["self", "guardian_declared", "guardian"],
+            "title": "Payer"
+          },
+          "current_period_end": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Current Period End"
+          },
+          "grace_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Grace Until"
+          },
+          "cancel_at_period_end": { "type": "boolean", "title": "Cancel At Period End" },
+          "next_charge_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Next Charge At"
+          },
+          "next_charge_paise": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Next Charge Paise"
+          },
+          "ends_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Ends At"
+          },
+          "managed_in": {
+            "type": "string",
+            "enum": ["web", "play", "app_store", "none"],
+            "title": "Managed In"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "source",
+          "status",
+          "product_id",
+          "price_paise",
+          "intro_price_paise",
+          "is_intro",
+          "payer",
+          "current_period_end",
+          "grace_until",
+          "cancel_at_period_end",
+          "next_charge_at",
+          "next_charge_paise",
+          "ends_at",
+          "managed_in"
+        ],
+        "title": "SubscriptionOut"
       },
       "SubtopicOut": {
         "properties": {
@@ -2525,6 +3073,18 @@
         "type": "object",
         "required": ["xp_total", "xp_today", "gems"],
         "title": "WalletState"
+      },
+      "WebhookAck": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["applied", "duplicate", "ignored"],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": ["status"],
+        "title": "WebhookAck"
       }
     }
   }

@@ -15,6 +15,8 @@ os.environ.setdefault("AI_PROVIDER", "fake")
 os.environ.setdefault("JOBS_MODE", "inline")
 os.environ.setdefault("LOG_LEVEL", "WARNING")
 os.environ.setdefault("VARIANTS_DIR", "/nonexistent-variants-dir")
+# Many tests sign in through the dev auth route from one test IP within a minute.
+os.environ.setdefault("RATE_DEV_AUTH_PER_MIN", "100000")
 
 from collections.abc import AsyncIterator
 

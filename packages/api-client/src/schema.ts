@@ -122,6 +122,125 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/billing/entitlement": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Pro or free, with status, source, grace and renewal (PAY-08 polls this) */
+    get: operations["entitlement_v1_billing_entitlement_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/intro-eligibility": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Whether the ₹1 first month may be offered (auth flow §8, R38) */
+    get: operations["intro_eligibility_v1_billing_intro_eligibility_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/razorpay/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Cancel the web subscription at the end of the paid period (PAY-13) */
+    post: operations["razorpay_cancel_v1_billing_razorpay_cancel_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/razorpay/subscription": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start a web subscription: ₹1 first month when eligible, then ₹99/month */
+    post: operations["razorpay_subscription_v1_billing_razorpay_subscription_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/razorpay/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout handler's signature; Pro follows the webhook */
+    post: operations["razorpay_verify_v1_billing_razorpay_verify_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/restore": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Re-read store purchases from RevenueCat and apply them (PAY-14 Restore) */
+    post: operations["restore_v1_billing_restore_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/subscription": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Manage plan details: source, status, next charge or end date (PAY-12) */
+    get: operations["subscription_v1_billing_subscription_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/catalog/chapters/{chapter_id}": {
     parameters: {
       query?: never;
@@ -588,6 +707,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/webhooks/razorpay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Razorpay subscription and refund events (HMAC-checked, idempotent) */
+    post: operations["razorpay_webhook_v1_webhooks_razorpay_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/webhooks/revenuecat": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** RevenueCat store events, confirmed against RevenueCat's REST API */
+    post: operations["revenuecat_webhook_v1_webhooks_revenuecat_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -740,8 +893,14 @@ export interface components {
       /** Is Anonymous */
       is_anonymous: boolean;
     };
-    /** EntitlementState */
-    EntitlementState: {
+    /** EntitlementOut */
+    EntitlementOut: {
+      /** Cancel At Period End */
+      cancel_at_period_end: boolean;
+      /** Grace Until */
+      grace_until: string | null;
+      /** Is Intro */
+      is_intro: boolean;
       /**
        * Plan
        * @enum {string}
@@ -749,6 +908,40 @@ export interface components {
       plan: "free" | "pro";
       /** Pro Until */
       pro_until: string | null;
+      /** Source */
+      source: ("razorpay" | "play" | "app_store" | "promo") | null;
+      /** Status */
+      status:
+        | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
+        | null;
+    };
+    /** EntitlementState */
+    EntitlementState: {
+      /**
+       * Cancel At Period End
+       * @default false
+       */
+      cancel_at_period_end: boolean;
+      /** Grace Until */
+      grace_until?: string | null;
+      /**
+       * Is Intro
+       * @default false
+       */
+      is_intro: boolean;
+      /**
+       * Plan
+       * @enum {string}
+       */
+      plan: "free" | "pro";
+      /** Pro Until */
+      pro_until: string | null;
+      /** Source */
+      source?: ("razorpay" | "play" | "app_store" | "promo") | null;
+      /** Status */
+      status?:
+        | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
+        | null;
     };
     /** ExamOut */
     ExamOut: {
@@ -818,6 +1011,22 @@ export interface components {
     HTTPValidationError: {
       /** Detail */
       detail?: components["schemas"]["ValidationError"][];
+    };
+    /** IntroEligibilityOut */
+    IntroEligibilityOut: {
+      /**
+       * Eligible
+       * @description null for a guest: only the hint is known until sign-in (auth flow §8)
+       */
+      eligible: boolean | null;
+      /** Eligible Hint */
+      eligible_hint: boolean;
+      /** Intro Price Paise */
+      intro_price_paise: number | null;
+      /** Price Paise */
+      price_paise: number;
+      /** Reason */
+      reason: ("guest" | "had_subscription" | "intro_already_claimed") | null;
     };
     /** LinkedRequest */
     LinkedRequest: {
@@ -1170,6 +1379,46 @@ export interface components {
       /** Target */
       target: number;
     };
+    /** RazorpayCancelRequest */
+    RazorpayCancelRequest: {
+      /** Reason */
+      reason?: string | null;
+    };
+    /** RazorpaySubscriptionOut */
+    RazorpaySubscriptionOut: {
+      /** Amount Today Paise */
+      amount_today_paise: number;
+      /** Intro */
+      intro: boolean;
+      /** Key Id */
+      key_id: string;
+      /** Product Id */
+      product_id: string;
+      /** Short Url */
+      short_url?: string | null;
+      /** Subscription Id */
+      subscription_id: string;
+      /** Then Paise */
+      then_paise: number;
+    };
+    /** RazorpaySubscriptionRequest */
+    RazorpaySubscriptionRequest: {
+      /**
+       * Payer
+       * @default self
+       * @enum {string}
+       */
+      payer: "self" | "guardian_declared";
+    };
+    /** RazorpayVerifyRequest */
+    RazorpayVerifyRequest: {
+      /** Razorpay Payment Id */
+      razorpay_payment_id: string;
+      /** Razorpay Signature */
+      razorpay_signature: string;
+      /** Razorpay Subscription Id */
+      razorpay_subscription_id: string;
+    };
     /** RejectedEvent */
     RejectedEvent: {
       /** Code */
@@ -1189,6 +1438,12 @@ export interface components {
        * Format: date
        */
       day: string;
+    };
+    /** RestoreOut */
+    RestoreOut: {
+      entitlement: components["schemas"]["EntitlementOut"];
+      /** Restored */
+      restored: boolean;
     };
     /** ReviewQueueRequest */
     ReviewQueueRequest: {
@@ -1302,6 +1557,58 @@ export interface components {
       };
       /** Sort */
       sort: number;
+    };
+    /** SubscriptionDetailsOut */
+    SubscriptionDetailsOut: {
+      entitlement: components["schemas"]["EntitlementOut"];
+      /** Promo Until */
+      promo_until: string | null;
+      subscription: components["schemas"]["SubscriptionOut"] | null;
+    };
+    /** SubscriptionOut */
+    SubscriptionOut: {
+      /** Cancel At Period End */
+      cancel_at_period_end: boolean;
+      /** Current Period End */
+      current_period_end: string | null;
+      /** Ends At */
+      ends_at: string | null;
+      /** Grace Until */
+      grace_until: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Intro Price Paise */
+      intro_price_paise: number | null;
+      /** Is Intro */
+      is_intro: boolean;
+      /**
+       * Managed In
+       * @enum {string}
+       */
+      managed_in: "web" | "play" | "app_store" | "none";
+      /** Next Charge At */
+      next_charge_at: string | null;
+      /** Next Charge Paise */
+      next_charge_paise: number | null;
+      /**
+       * Payer
+       * @enum {string}
+       */
+      payer: "self" | "guardian_declared" | "guardian";
+      /** Price Paise */
+      price_paise: number;
+      /** Product Id */
+      product_id: string;
+      /**
+       * Source
+       * @enum {string}
+       */
+      source: "razorpay" | "play" | "app_store" | "promo";
+      /** Status */
+      status: string;
     };
     /** SubtopicOut */
     SubtopicOut: {
@@ -1522,6 +1829,14 @@ export interface components {
       xp_today: number;
       /** Xp Total */
       xp_total: number;
+    };
+    /** WebhookAck */
+    WebhookAck: {
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "applied" | "duplicate" | "ignored";
     };
   };
   responses: never;
@@ -1756,6 +2071,206 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["BadgeOut"][];
+        };
+      };
+    };
+  };
+  entitlement_v1_billing_entitlement_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+    };
+  };
+  intro_eligibility_v1_billing_intro_eligibility_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["IntroEligibilityOut"];
+        };
+      };
+    };
+  };
+  razorpay_cancel_v1_billing_razorpay_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayCancelRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  razorpay_subscription_v1_billing_razorpay_subscription_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpaySubscriptionRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  razorpay_verify_v1_billing_razorpay_verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  restore_v1_billing_restore_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RestoreOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  subscription_v1_billing_subscription_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SubscriptionDetailsOut"];
         };
       };
     };
@@ -2600,6 +3115,46 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["TimeResponse"];
+        };
+      };
+    };
+  };
+  razorpay_webhook_v1_webhooks_razorpay_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WebhookAck"];
+        };
+      };
+    };
+  };
+  revenuecat_webhook_v1_webhooks_revenuecat_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WebhookAck"];
         };
       };
     };

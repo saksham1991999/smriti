@@ -280,9 +280,9 @@ function Explain(p: {
           />
         </label>
       )}
-      <Text variant="caption" tone={ready ? "success" : "muted"} numeric aria-live="polite" testID="ai-10-counter">
+      <p aria-live="polite" className={cx("m-0 text-caption tabular-nums", ready ? "text-success-text" : "text-ink-muted")} data-testid="ai-10-counter">
         {t("tutor_social:AI-10.word_counter", { n: words, min: p.minWords })}
-      </Text>
+      </p>
       {pet && <PetLine pet={{ species: pet.species }} petName={pet.name} text={t("tutor_social:AI-10.tip_pet_line")} className="min-[600px]:hidden" />}
       {p.error && (
         <div role="alert" className="rounded-card bg-error-tint p-3 text-error-text" data-testid="ai-10-error">

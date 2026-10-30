@@ -742,6 +742,12 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Switch to text | Switch to text | टाइप करके बात करें |
 | No time left | You've used today's voice time. It comes back at {reset_time}. | आज का आवाज़ वाला समय पूरा हुआ। {reset_time} बजे फिर मिलेगा। |
 | Pet fallback | your buddy | आपका साथी |
+| Pet alt | {pet_name} getting ready to listen | सुनने के लिए तैयार {pet_name} |
+| Unavailable title | Voice isn't available right now | अभी आवाज़ वाली बातचीत उपलब्ध नहीं है |
+| Unavailable body | You can still ask {pet_name} by typing. | {pet_name} से टाइप करके पूछा जा सकता है। |
+| Consent needed | A parent needs to turn on voice for you first. | पहले माता-पिता को आपके लिए आवाज़ चालू करनी होगी। |
+| Needs internet | Voice needs internet. | आवाज़ वाली बातचीत के लिए इंटरनेट चाहिए। |
+| Test voice note | Test voice: captions only, no audio. | टेस्ट वॉइस: सिर्फ़ कैप्शन, आवाज़ नहीं। |
 
 **Illustration slots:** The pet's Rive file in the `wake` → listening state (DESIGN §7.2); Agnes art from `pet-cat` / `pet-dog` reference sheets. Alt: "{pet_name} getting ready to listen".
 
@@ -790,6 +796,12 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Flashcard toast | Flashcard saved | फ़्लैशकार्ड सेव हो गया |
 | Toast action | Edit | बदलें |
 | Paused (phone call) | Paused. Tap to continue. | रुका हुआ है। जारी रखने के लिए टैप करें। |
+| Session timer label | Time talked | बातचीत का समय |
+| Captions off | Captions off | कैप्शन बंद |
+| Push to talk | Push to talk | दबाकर बोलें |
+| Push to talk hint | Hold Space to talk. | बोलने के लिए Space दबाए रखें। |
+| End confirm title | End the call? | बातचीत खत्म करें? |
+| End confirm keep | Keep talking | बात जारी रखें |
 
 **Illustration slots:** The pet Rive file with listening, thinking, speaking and interrupted states. This needs a `speaking` input and a `listen` trigger added to DESIGN §7.2 (gap G-3); art from the `pet-*` reference sheets via Agnes and `anim-maker`. Board images come from the tutor (TRD §9.3). Alt: "{pet_name} is {state}" (EN and HI), updated per state.
 
@@ -841,6 +853,11 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Continue in text | Continue in text | टाइप करके जारी रखें |
 | View transcript | View transcript | पूरी बातचीत पढ़ें |
 | Time cap line | Voice comes back at {reset_time}. You can keep going in text. | आवाज़ {reset_time} बजे फिर मिलेगी। तब तक टाइप करके जारी रखा जा सकता है। |
+| Back (no source) | Done | हो गया |
+| Stats a11y | {minutes, plural, one {# minute} other {# minutes}}, {cards, plural, one {# flashcard} other {# flashcards}} | {minutes} मिनट, {cards} फ़्लैशकार्ड |
+| Transcript title | Transcript | पूरी बातचीत |
+| Transcript processing | Getting the transcript… | बातचीत तैयार कर रहे हैं… |
+| No transcript | There's no transcript for this call. | इस कॉल की कोई बातचीत सेव नहीं है। |
 
 **Illustration slots:** `pet-*`, 1:1, "happy waving goodbye" (normal and cap) or "thinking, holding a phone" (dropped). Alt: decorative.
 

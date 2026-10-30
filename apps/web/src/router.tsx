@@ -206,7 +206,16 @@ const feynmanRoute = createRoute({
   validateSearch: (s: Record<string, unknown>): { concept?: string } => ({ concept: typeof s.concept === "string" ? s.concept : undefined }),
   component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/phase2/feynman/Feynman")), "Feynman"),
 });
-const phase2Routes = [feynmanRoute] as const;
+const voiceRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/tutor/voice",
+  validateSearch: (s: Record<string, unknown>): { context?: string; from?: string } => ({
+    context: typeof s.context === "string" ? s.context : undefined,
+    from: typeof s.from === "string" && /^\/(?!\/)/.test(s.from) ? s.from : undefined,
+  }),
+  component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/phase2/voice/Voice")), "Voice"),
+});
+const phase2Routes = [feynmanRoute, voiceRoute] as const;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

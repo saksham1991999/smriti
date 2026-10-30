@@ -26,7 +26,45 @@ export interface Phase2Context {
 interface UserState {
   feynman: Record<string, { clarity: number; completeness: number; accuracy: number }>;
   feynmanAttempts: Record<string, Schemas["FeynmanOut"]>;
+  /** Voice sessions by the client's session id. */
+  voice?: Record<string, { id: string; startedAt: number; seconds: number | null; turns: Schemas["TranscriptTurn"][]; flashcards: number }>;
 }
+
+/**
+ * Dev and e2e switch for the voice states the local API can return: `localStorage
+ * ["smriti.fake-api.voice"]` = `unavailable` (503 voice_unavailable) or `no_time` (429).
+ */
+function voiceMode(): "ok" | "unavailable" | "no_time" {
+  try {
+    const v = globalThis.localStorage?.getItem("smriti.fake-api.voice");
+    return v === "unavailable" || v === "no_time" ? v : "ok";
+  } catch {
+    return "ok";
+  }
+}
+
+/** 0.1 s of silence, for the fake read-aloud link. */
+const SILENT_WAV = (() => {
+  const samples = 1600;
+  const bytes = new Uint8Array(44 + samples * 2);
+  const dv = new DataView(bytes.buffer);
+  const str = (o: number, s: string) => [...s].forEach((c, i) => dv.setUint8(o + i, c.charCodeAt(0)));
+  str(0, "RIFF");
+  dv.setUint32(4, 36 + samples * 2, true);
+  str(8, "WAVEfmt ");
+  dv.setUint32(16, 16, true);
+  dv.setUint16(20, 1, true);
+  dv.setUint16(22, 1, true);
+  dv.setUint32(24, 16000, true);
+  dv.setUint32(28, 32000, true);
+  dv.setUint16(32, 2, true);
+  dv.setUint16(34, 16, true);
+  str(36, "data");
+  dv.setUint32(40, samples * 2, true);
+  let bin = "";
+  for (const b of bytes) bin += String.fromCharCode(b);
+  return `data:audio/wav;base64,${btoa(bin)}`;
+})();
 
 const STORE_KEY = "smriti.fake-api.phase2.v1";
 
@@ -60,6 +98,26 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
     }
   };
   const state = (u: FakeUser): UserState => (store[u.id] ??= { feynman: {}, feynmanAttempts: {} });
+
+  /** Half an hour of voice a day in the fake (the real limits are owner flags). */
+  const voiceQuota = (u: FakeUser): Schemas["VoiceQuota"] => {
+    const daily = 1800;
+    const used = Object.values(state(u).voice ?? {}).reduce((a, v) => a + (v.seconds ?? 0), 0);
+    const midnight = new Date(now());
+    midnight.setHours(24, 0, 0, 0);
+    const mode = voiceMode();
+    return {
+      available: mode !== "unavailable",
+      reason: mode === "unavailable" ? "not_configured" : null,
+      daily_seconds: daily,
+      used_seconds: mode === "no_time" ? daily : used,
+      remaining_seconds: mode === "no_time" ? 0 : Math.max(0, daily - used),
+      session_max_seconds: 600,
+      reconnect_seconds: 30,
+      background_grace_seconds: 20,
+      resets_at: midnight.toISOString(),
+    };
+  };
 
   /** A concept's key points in both languages, from the published fixture bundles. */
   const keyPoints = async (conceptId: string): Promise<{ en: string; hi: string }[] | null> => {
@@ -129,6 +187,87 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
       st.feynmanAttempts[body.client_attempt_id] = result;
       save();
       return HttpResponse.json(result);
+    }),
+
+    // ── G-2 voice (the fake provider: a fake token, no real model) ─────────
+    http.get(url("/v1/voice/quota"), ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      return HttpResponse.json(voiceQuota(u));
+    }),
+    http.post(url("/v1/voice/sessions"), async ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (!isPro(u, now())) return problem(403, "pro_required", { paywall_trigger: "tutor_tool", paywall_source: "tutor_voice" });
+      const mode = voiceMode();
+      if (mode === "unavailable") return problem(503, "voice_unavailable", { reason: "not_configured" });
+      const q = voiceQuota(u);
+      if (mode === "no_time") return problem(429, "voice_daily_limit", { resets_at: q.resets_at });
+      const body = (await request.json()) as Schemas["VoiceSessionCreate"];
+      const st = state(u);
+      st.voice ??= {};
+      const existing = st.voice[body.client_session_id];
+      const id = existing?.id ?? crypto.randomUUID();
+      const max = Math.min(q.session_max_seconds ?? 600, q.remaining_seconds ?? 600);
+      st.voice[body.client_session_id] = existing ?? { id, startedAt: now(), seconds: null, turns: [], flashcards: 0 };
+      save();
+      const out: Schemas["VoiceSessionOut"] = {
+        id,
+        tutor_session_id: id,
+        token: "fake-voice-token",
+        token_expires_at: new Date(now() + (max + 60) * 1000).toISOString(),
+        provider: "fake",
+        model: "fake-voice",
+        max_seconds: max,
+        warn_at_seconds: Math.max(0, max - 120),
+        locale: u.locale,
+        tools: [],
+        resumed: !!existing,
+        quota: q,
+      };
+      return HttpResponse.json(out);
+    }),
+    http.post(url("/v1/voice/sessions/:id/tools"), async ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const body = (await request.json()) as Schemas["ToolCallIn"];
+      return HttpResponse.json({ call_id: body.call_id, name: body.name, result: { ok: true } });
+    }),
+    http.post(url("/v1/voice/sessions/:id/end"), async ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const body = (await request.json()) as Schemas["VoiceSessionEnd"];
+      const st = state(u);
+      const entry = Object.values(st.voice ?? {}).find((v) => v.id === params.id);
+      if (!entry) return problem(404, "voice_session_not_found");
+      entry.seconds = body.seconds;
+      entry.turns = body.turns ?? [];
+      entry.flashcards = body.flashcards_made ?? 0;
+      save();
+      const summary: Schemas["VoiceSummary"] = {
+        id: entry.id,
+        tutor_session_id: entry.id,
+        context_ref: null,
+        started_at: new Date(entry.startedAt).toISOString(),
+        ended_at: new Date(now()).toISOString(),
+        seconds: body.seconds,
+        flashcards_made: entry.flashcards,
+        has_transcript: entry.turns.length > 0,
+        status: "ended",
+      };
+      return HttpResponse.json(summary);
+    }),
+    http.get(url("/v1/voice/sessions/:id/transcript"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const entry = Object.values(state(u).voice ?? {}).find((v) => v.id === params.id);
+      if (!entry?.turns.length) return problem(404, "no_transcript");
+      return HttpResponse.json({ session_id: entry.id, locale: u.locale, turns: entry.turns });
+    }),
+    http.post(url("/v1/speech/read-aloud"), async ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      return HttpResponse.json({ url: SILENT_WAV, mime: "audio/wav", cached: false, quota: quota() });
     }),
 
     // ── Speech (dictation returns a fixture sentence; no audio is kept) ─────

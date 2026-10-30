@@ -233,6 +233,10 @@
       "default": false,
       "source": "doc"
     },
+    "feature.little_learner": {
+      "default": false,
+      "source": "doc"
+    },
     "feature.live_mocks": {
       "default": false,
       "source": "doc"
@@ -904,6 +908,30 @@
     },
     "parent.ask_before_switching": {
       "default": false,
+      "source": "doc"
+    },
+    "parent.gate_hold_ms": {
+      "default": 2000,
+      "source": "doc"
+    },
+    "parent.time_limit_options": {
+      "default": [
+        0,
+        15,
+        30,
+        45,
+        60,
+        90,
+        120
+      ],
+      "source": "doc"
+    },
+    "parent.time_request_minutes": {
+      "default": 15,
+      "source": "doc"
+    },
+    "parent.time_requests_per_day": {
+      "default": 3,
       "source": "doc"
     },
     "pay.child_link.enabled": {

@@ -90,6 +90,10 @@ export const FLAG_REGISTRY = {
   'merge.keep_guest_pet': def(bool, true, 'doc', 'auth §6.4 step 7'),
   'minor.defer_sync_until_consent': def(bool, false, 'doc', 'onboarding §6.2.1'),
   'parent.ask_before_switching': def(bool, false, 'doc', 'auth §6.11'),
+  'parent.time_limit_options': def(z.array(nonNegInt).check(z.minLength(1)), [0, 15, 30, 45, 60, 90, 120], 'doc', 'me-money §4.7 SET-16 (0 = Off)'),
+  'parent.time_request_minutes': def(posInt, 15, 'doc', 'me-money §4.7 SET-19'),
+  'parent.time_requests_per_day': def(posInt, 3, 'doc', 'me-money §6 parent_time_request'),
+  'parent.gate_hold_ms': def(posInt, 2000, 'doc', 'learn HOME-06 accessibility (hold 2 s)'),
   'onb.returning_account_check': def(bool, false, 'doc', 'onboarding §6.9.1 (A/B test)'),
   'onb.outcome_line': def(bool, false, 'doc', 'onboarding §6.8 (test)'),
   'goal.minutes_options': def(z.array(posInt).check(z.minLength(1)), [5, 10, 20, 30], 'ruling', 'R6'),
@@ -248,6 +252,7 @@ export const FLAG_REGISTRY = {
 
   // ── Features by phase (me-money §5.3, R8) ────────────────────────────────
   'feature.live_mocks': def(bool, false, 'doc', 'Phase 3'),
+  'feature.little_learner': def(bool, false, 'doc', 'Phase 3 (onboarding §6.3, learn §5.6)'),
   'feature.voice_tutor': def(bool, false, 'doc', 'Phase 2'),
   'feature.feynman': def(bool, false, 'doc', 'Phase 2'),
   'feature.photo_doubt': def(bool, false, 'doc', 'Phase 1 or 2'),

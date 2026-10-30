@@ -104,7 +104,7 @@ uv run python -m smriti_worker content-publish  # also: ai, media, notifications
 
 | Queue | Jobs |
 |---|---|
-| default | `merge_guest`, `mocks_auto_submit` (strict and live attempts past their deadline; needs a worker cron entry), `tutor_retention` (deletes tutor messages older than `ai.tutor_retention_days`; needs a worker cron entry), `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron) |
+| default | `merge_guest`, `mocks_auto_submit` (strict and live attempts past their deadline; needs a worker cron entry), `tutor_retention` (deletes tutor messages older than `ai.tutor_retention_days`; needs a worker cron entry), `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron), `league_assign` (hourly), `league_rollover` (Sunday after `league.close_time` IST; safe to re-run), `duo_rollup` (nightly), `duel_sweep` (every minute), `squad_quests` (hourly): the social jobs need worker cron entries |
 | content-publish | `content_publish`: runs `CONTENT_PUBLISH_CMD`, or `tools/content-publish` (package.json `publish` script, `publish.sh` or `run.sh`) when it exists, with `CONTENT_PUBLISH_REF` set |
 | ai, media, notifications, pdf | `ping` until their jobs land |
 
@@ -220,3 +220,35 @@ pnpm --filter @smriti/api-client generate     # writes packages/api-client/opena
 | POST | `/v1/tutor/ask/card`, `/v1/tutor/ask/question` | ask about a card or a question (SSE, `session` event first) |
 | POST | `/v1/tutor/messages/{message_id}/feedback` | thumbs up or down with reasons |
 | POST, GET | `/v1/content/reports` | report content (SET-24); my reports |
+
+### Social (Phase 2)
+
+Every route runs the social gate: guests get `login_required`, class 1-5 `social_not_available`,
+minors without the guardian's `social` scope `guardian_consent_required`. No free text between
+students; minors show by pet avatar and auto nickname (pet name to invite or QR friends).
+
+| Method | Path | What |
+|---|---|---|
+| GET | `/v1/social/gate`, `/v1/social/overview` | the SOC-02 state; SOC-01 in one call |
+| GET, PUT | `/v1/social/me`, `/v1/social/me/handle`, `/v1/social/me/privacy` | handle, nickname, privacy; `POST /v1/social/me/first-visit` |
+| GET | `/v1/social/handles/{handle}` | is a username free |
+| GET | `/v1/friends`, `/v1/friends/search?handle=` | friends; exact-handle search for adults |
+| GET, POST | `/v1/friends/invite`, `/v1/friends/invite/{code}`, `.../accept` | invite link and QR; preview; add |
+| POST | `/v1/friends/requests`, `.../{user_id}/accept`, `.../decline` | requests between adults |
+| DELETE | `/v1/friends/{user_id}` | remove a friend (silent) |
+| GET | `/v1/social/people/{user_id}` | mini profile (pet, tier, streak) |
+| GET, POST | `/v1/social/inbox`, `/v1/social/inbox/seen` | requests, invites, cheers |
+| POST | `/v1/social/nudges` | preset cheer or nudge (rate limited by flag) |
+| GET, POST, DELETE | `/v1/social/feed`, `/v1/social/reactions` | friend activity and reactions |
+| POST | `/v1/social/reports` | report a person or a deck |
+| GET, POST, DELETE | `/v1/social/blocks` | block and unblock |
+| GET, POST, DELETE | `/v1/duos`, `/v1/duos/{id}/accept`, `/decline`, `/nudge` | Duo streaks |
+| GET, POST, DELETE | `/v1/squads`, `/v1/squads/join/{code}`, `/v1/squads/{id}`, `.../members/{user_id}`, `.../code`, `.../cheer` | squads |
+| GET, POST, PUT | `/v1/leagues/current`, `/v1/leagues/result`, `/v1/leagues/join`, `/v1/leagues/opt-out` | weekly leagues |
+| GET | `/v1/leaderboards?scope=&period=&squad_id=` | friends, squad, school, city, all India |
+| GET, POST | `/v1/duels`, `/v1/duels/{id}`, `/v1/duels/code/{code}` | create (friend or solo), read |
+| POST, GET, DELETE | `/v1/duels/random` | random matching queue |
+| POST | `/v1/duels/{id}/accept`, `/decline`, `/async`, `/answers`, `/leave`, `/rematch` | duel actions (answers take an idempotency key) |
+| GET | `/v1/duels/{id}/events?after=`, `/v1/duels/{id}/stream` | the duel channel by polling or SSE |
+| POST, DELETE | `/v1/decks/{deck_id}/share` | share (moderated) or stop sharing |
+| GET, POST, PUT | `/v1/shared-decks`, `/v1/shared-decks/{code}`, `.../copy`, `.../helpful` | find, preview, copy, vote |

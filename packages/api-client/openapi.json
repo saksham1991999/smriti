@@ -2003,6 +2003,905 @@
         }
       }
     },
+    "/v1/mocks": {
+      "get": {
+        "tags": ["mocks"],
+        "summary": "Mocks for an exam (MOCK-01)",
+        "operationId": "list_mocks_v1_mocks_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/MockCard" },
+                  "title": "Response List Mocks V1 Mocks Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/mocks/generate": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Start a custom weak-area mock (Pro) or a timed chapter mock",
+        "operationId": "generate_mock_v1_mocks_generate_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/GenerateMock" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/mocks/{mock_id}": {
+      "get": {
+        "tags": ["mocks"],
+        "summary": "Mock detail from its blueprint",
+        "operationId": "get_mock_v1_mocks__mock_id__get",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 300, "title": "Mock Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MockDetail" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/mocks/{mock_id}/attempts": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Begin a mock: the timer starts and the paper is pinned",
+        "operationId": "start_attempt_v1_mocks__mock_id__attempts_post",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 300, "title": "Mock Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AttemptCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts": {
+      "get": {
+        "tags": ["mocks"],
+        "summary": "Past attempts (MOCK-25)",
+        "operationId": "list_attempts_v1_attempts_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+              "title": "Before"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/AttemptSummary" },
+                  "title": "Response List Attempts V1 Attempts Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}": {
+      "get": {
+        "tags": ["mocks"],
+        "summary": "An attempt with its paper and saved answers, for resume or takeover",
+        "operationId": "get_attempt_v1_attempts__attempt_id__get",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/answers": {
+      "put": {
+        "tags": ["mocks"],
+        "summary": "Autosave changed answers; the newest client_updated_at wins",
+        "operationId": "save_answers_v1_attempts__attempt_id__answers_put",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AnswersPut" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SaveResult" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/pause": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Pause the timer (practice time policy only)",
+        "operationId": "pause_attempt_v1_attempts__attempt_id__pause_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PauseIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/resume": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Resume (MOCK-14)",
+        "operationId": "resume_attempt_v1_attempts__attempt_id__resume_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/takeover": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Continue the attempt on this device",
+        "operationId": "takeover_attempt_v1_attempts__attempt_id__takeover_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/sections/{section_code}/submit": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Submit the open section early, where the blueprint allows it",
+        "operationId": "submit_section_v1_attempts__attempt_id__sections__section_code__submit_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "section_code",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 64, "title": "Section Code" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/abandon": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Leave the mock and discard it (MOCK-15)",
+        "operationId": "abandon_attempt_v1_attempts__attempt_id__abandon_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Attempt" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/submit": {
+      "post": {
+        "tags": ["mocks"],
+        "summary": "Submit the paper; scored on the server with the blueprint's marking",
+        "operationId": "submit_attempt_v1_attempts__attempt_id__submit_post",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Report" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/report": {
+      "get": {
+        "tags": ["mocks"],
+        "summary": "The report; deeper sections are Pro (free.mock_report_sections)",
+        "operationId": "get_report_v1_attempts__attempt_id__report_get",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Report" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/attempts/{attempt_id}/solutions": {
+      "get": {
+        "tags": ["mocks"],
+        "summary": "Keys and solutions after submit (MOCK-22)",
+        "operationId": "get_solutions_v1_attempts__attempt_id__solutions_get",
+        "parameters": [
+          {
+            "name": "attempt_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Attempt Id" }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "enum": ["en", "hi"], "type": "string" }, { "type": "null" }],
+              "title": "Locale"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Solutions" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -2114,6 +3013,76 @@
         ],
         "title": "AnswerResult"
       },
+      "AnswerSave": {
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Question Id"
+          },
+          "answer": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/OptionIdsAnswer" },
+              { "$ref": "#/components/schemas/NumberAnswerIn" },
+              { "$ref": "#/components/schemas/PairsAnswerIn" },
+              { "$ref": "#/components/schemas/MatrixAnswerIn" },
+              { "$ref": "#/components/schemas/BlanksAnswerIn" },
+              { "$ref": "#/components/schemas/OrderAnswerIn" },
+              { "type": "null" }
+            ],
+            "title": "Answer"
+          },
+          "palette_status": {
+            "type": "string",
+            "enum": ["not_visited", "not_answered", "answered", "marked", "answered_marked"],
+            "title": "Palette Status"
+          },
+          "time_spent_ms": {
+            "type": "integer",
+            "maximum": 86400000,
+            "minimum": 0,
+            "title": "Time Spent Ms"
+          },
+          "visits": {
+            "type": "integer",
+            "maximum": 32000,
+            "minimum": 0,
+            "title": "Visits",
+            "default": 0
+          },
+          "answer_changes": {
+            "type": "integer",
+            "maximum": 32000,
+            "minimum": 0,
+            "title": "Answer Changes",
+            "default": 0
+          },
+          "first_seen_seq": {
+            "anyOf": [{ "type": "integer", "maximum": 32000, "minimum": 0 }, { "type": "null" }],
+            "title": "First Seen Seq"
+          },
+          "answered_seq": {
+            "anyOf": [{ "type": "integer", "maximum": 32000, "minimum": 0 }, { "type": "null" }],
+            "title": "Answered Seq"
+          },
+          "confidence": {
+            "anyOf": [
+              { "type": "string", "enum": ["sure", "fifty_fifty", "guess"] },
+              { "type": "null" }
+            ],
+            "title": "Confidence"
+          },
+          "client_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Client Updated At"
+          }
+        },
+        "type": "object",
+        "required": ["question_id", "palette_status", "time_spent_ms", "client_updated_at"],
+        "title": "AnswerSave"
+      },
       "AnswerSubmit": {
         "properties": {
           "question_id": {
@@ -2163,6 +3132,20 @@
         "required": ["question_id", "time_ms"],
         "title": "AnswerSubmit"
       },
+      "AnswersPut": {
+        "properties": {
+          "answers": {
+            "items": { "$ref": "#/components/schemas/AnswerSave" },
+            "type": "array",
+            "maxItems": 300,
+            "minItems": 1,
+            "title": "Answers"
+          }
+        },
+        "type": "object",
+        "required": ["answers"],
+        "title": "AnswersPut"
+      },
       "AppVersionInfo": {
         "properties": {
           "min_version": { "type": "string", "title": "Min Version" },
@@ -2175,6 +3158,268 @@
         "type": "object",
         "required": ["min_version", "latest_version"],
         "title": "AppVersionInfo"
+      },
+      "Attempt": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "mock_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Mock Id" },
+          "kind": {
+            "type": "string",
+            "enum": ["full", "sectional", "chapter", "pyq_paper", "live", "custom"],
+            "title": "Kind"
+          },
+          "exam_profile_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Exam Profile Id"
+          },
+          "blueprint_id": { "type": "string", "format": "uuid", "title": "Blueprint Id" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["in_progress", "submitted", "auto_submitted", "abandoned"],
+            "title": "Status"
+          },
+          "attempt_no": { "type": "integer", "title": "Attempt No" },
+          "time_policy": {
+            "type": "string",
+            "enum": ["practice", "strict", "live"],
+            "title": "Time Policy"
+          },
+          "language": { "type": "string", "enum": ["en", "hi"], "title": "Language" },
+          "language_switch": {
+            "type": "string",
+            "enum": ["per_question", "fixed"],
+            "title": "Language Switch"
+          },
+          "calculator": { "type": "string", "title": "Calculator" },
+          "interface": { "type": "string", "title": "Interface" },
+          "interface_profile": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Interface Profile"
+          },
+          "section_navigation": {
+            "type": "string",
+            "enum": ["free", "locked_in_order", "free_within_timer"],
+            "title": "Section Navigation"
+          },
+          "early_section_submit": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Early Section Submit"
+          },
+          "marked_answer_evaluated": { "type": "boolean", "title": "Marked Answer Evaluated" },
+          "started_at": { "type": "string", "format": "date-time", "title": "Started At" },
+          "server_deadline_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Server Deadline At"
+          },
+          "server_time": { "type": "string", "format": "date-time", "title": "Server Time" },
+          "remaining_ms": { "type": "integer", "title": "Remaining Ms" },
+          "paused": { "type": "boolean", "title": "Paused" },
+          "paused_ms": { "type": "integer", "title": "Paused Ms" },
+          "pause_count": { "type": "integer", "title": "Pause Count" },
+          "active_device": {
+            "anyOf": [{ "type": "string", "enum": ["this", "other"] }, { "type": "null" }],
+            "title": "Active Device"
+          },
+          "submitted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Submitted At"
+          },
+          "score": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Score" },
+          "max_score": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Max Score"
+          },
+          "sections": {
+            "items": { "$ref": "#/components/schemas/AttemptSection" },
+            "type": "array",
+            "title": "Sections"
+          },
+          "questions": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/AttemptQuestion" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Questions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "mock_id",
+          "kind",
+          "exam_profile_id",
+          "blueprint_id",
+          "title",
+          "status",
+          "attempt_no",
+          "time_policy",
+          "language",
+          "language_switch",
+          "calculator",
+          "interface",
+          "interface_profile",
+          "section_navigation",
+          "early_section_submit",
+          "marked_answer_evaluated",
+          "started_at",
+          "server_deadline_at",
+          "server_time",
+          "remaining_ms",
+          "paused",
+          "paused_ms",
+          "pause_count",
+          "active_device",
+          "submitted_at",
+          "score",
+          "max_score",
+          "sections"
+        ],
+        "title": "Attempt"
+      },
+      "AttemptCreate": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "language": { "type": "string", "enum": ["en", "hi"], "title": "Language" },
+          "time_policy": {
+            "type": "string",
+            "enum": ["practice", "strict"],
+            "title": "Time Policy",
+            "default": "practice"
+          },
+          "started_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Started At"
+          }
+        },
+        "type": "object",
+        "required": ["attempt_id", "language"],
+        "title": "AttemptCreate",
+        "description": "Created when [I am ready to begin] is tapped (practice §6.4 step 5), with the client's\nUUIDv7 so a retry or an offline replay is the same attempt."
+      },
+      "AttemptQuestion": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "section_code": { "type": "string", "title": "Section Code" },
+          "position": { "type": "integer", "title": "Position" },
+          "type": { "type": "string", "title": "Type" },
+          "marking": { "$ref": "#/components/schemas/MarkingOut" },
+          "body": { "additionalProperties": true, "type": "object", "title": "Body" },
+          "saved": { "anyOf": [{ "$ref": "#/components/schemas/SavedAnswer" }, { "type": "null" }] }
+        },
+        "type": "object",
+        "required": ["question_id", "section_code", "position", "type", "marking", "body"],
+        "title": "AttemptQuestion"
+      },
+      "AttemptSection": {
+        "properties": {
+          "code": { "type": "string", "title": "Code" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "status": { "type": "string", "enum": ["open", "upcoming", "closed"], "title": "Status" },
+          "opened_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Opened At"
+          },
+          "closes_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Closes At"
+          },
+          "closed_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Closed At"
+          },
+          "closed_by": {
+            "anyOf": [
+              { "type": "string", "enum": ["timer", "student", "submit"] },
+              { "type": "null" }
+            ],
+            "title": "Closed By"
+          },
+          "question_ids": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Question Ids"
+          },
+          "attempt_any": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Attempt Any"
+          },
+          "over_attempt": {
+            "anyOf": [
+              { "type": "string", "enum": ["block", "evaluate_first_n"] },
+              { "type": "null" }
+            ],
+            "title": "Over Attempt"
+          },
+          "answered": { "type": "integer", "title": "Answered" }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "title",
+          "status",
+          "opened_at",
+          "closes_at",
+          "closed_at",
+          "closed_by",
+          "question_ids",
+          "attempt_any",
+          "over_attempt",
+          "answered"
+        ],
+        "title": "AttemptSection"
+      },
+      "AttemptSummary": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "mock_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Mock Id" },
+          "kind": {
+            "type": "string",
+            "enum": ["full", "sectional", "chapter", "pyq_paper", "live", "custom"],
+            "title": "Kind"
+          },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["in_progress", "submitted", "auto_submitted", "abandoned"],
+            "title": "Status"
+          },
+          "attempt_no": { "type": "integer", "title": "Attempt No" },
+          "started_at": { "type": "string", "format": "date-time", "title": "Started At" },
+          "submitted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Submitted At"
+          },
+          "score": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Score" },
+          "max_score": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Max Score" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "mock_id",
+          "kind",
+          "title",
+          "status",
+          "attempt_no",
+          "started_at",
+          "submitted_at",
+          "score",
+          "max_score"
+        ],
+        "title": "AttemptSummary"
       },
       "BadgeOut": {
         "properties": {
@@ -2228,6 +3473,16 @@
         "type": "object",
         "required": ["kind", "blanks"],
         "title": "BlanksAnswerIn"
+      },
+      "BlueprintSource": {
+        "properties": {
+          "title": { "type": "string", "title": "Title" },
+          "url": { "type": "string", "title": "Url" },
+          "published": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Published" }
+        },
+        "type": "object",
+        "required": ["title", "url"],
+        "title": "BlueprintSource"
       },
       "BundleRef": {
         "properties": {
@@ -2291,6 +3546,32 @@
         "type": "object",
         "required": ["correct", "partial", "response"],
         "title": "CheckOut"
+      },
+      "ConceptRow": {
+        "properties": {
+          "concept_id": { "type": "string", "title": "Concept Id" },
+          "attempted": { "type": "integer", "title": "Attempted" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "accuracy": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Accuracy" },
+          "marks_lost": { "type": "number", "title": "Marks Lost" }
+        },
+        "type": "object",
+        "required": ["concept_id", "attempted", "correct", "accuracy", "marks_lost"],
+        "title": "ConceptRow"
+      },
+      "ConfidenceRow": {
+        "properties": {
+          "confidence": {
+            "type": "string",
+            "enum": ["sure", "fifty_fifty", "guess", "none"],
+            "title": "Confidence"
+          },
+          "correct": { "type": "integer", "title": "Correct" },
+          "wrong": { "type": "integer", "title": "Wrong" }
+        },
+        "type": "object",
+        "required": ["confidence", "correct", "wrong"],
+        "title": "ConfidenceRow"
       },
       "ConfigResponse": {
         "properties": {
@@ -2638,6 +3919,20 @@
         "required": ["exam_profile_ids"],
         "title": "ExamsPut"
       },
+      "FixNext": {
+        "properties": {
+          "concept_id": { "type": "string", "title": "Concept Id" },
+          "marks_lost": { "type": "number", "title": "Marks Lost" },
+          "weightage": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Weightage"
+          },
+          "drill": { "additionalProperties": true, "type": "object", "title": "Drill" }
+        },
+        "type": "object",
+        "required": ["concept_id", "marks_lost", "weightage", "drill"],
+        "title": "FixNext"
+      },
       "GemLedgerEntry": {
         "properties": {
           "id": { "type": "string", "format": "uuid", "title": "Id" },
@@ -2649,6 +3944,57 @@
         "type": "object",
         "required": ["id", "delta", "reason", "ref", "created_at"],
         "title": "GemLedgerEntry"
+      },
+      "GenerateMock": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "kind": {
+            "type": "string",
+            "enum": ["custom", "chapter"],
+            "title": "Kind",
+            "default": "custom"
+          },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Exam"
+          },
+          "paper_code": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Paper Code"
+          },
+          "chapter_id": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Chapter Id"
+          },
+          "concepts": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "maxLength": 200, "minLength": 1 },
+                "type": "array",
+                "maxItems": 50
+              },
+              { "type": "null" }
+            ],
+            "title": "Concepts"
+          },
+          "question_count": {
+            "type": "integer",
+            "maximum": 200,
+            "minimum": 1,
+            "title": "Question Count"
+          },
+          "language": { "type": "string", "enum": ["en", "hi"], "title": "Language" },
+          "time_policy": {
+            "type": "string",
+            "enum": ["practice", "strict"],
+            "title": "Time Policy",
+            "default": "practice"
+          }
+        },
+        "type": "object",
+        "required": ["attempt_id", "question_count", "language"],
+        "title": "GenerateMock",
+        "description": "MOCK-26 custom weak-area mock (Pro) or a timed chapter mock (counts as sectional, Q15)."
       },
       "HTTPValidationError": {
         "properties": {
@@ -2744,6 +4090,22 @@
           "free_rotating_chapters"
         ],
         "title": "ManifestResponse"
+      },
+      "MarkingOut": {
+        "properties": {
+          "correct": { "type": "number", "title": "Correct" },
+          "wrong": { "type": "number", "title": "Wrong" },
+          "unattempted": { "type": "number", "title": "Unattempted" },
+          "partial": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Partial"
+          },
+          "tolerance": { "title": "Tolerance" }
+        },
+        "type": "object",
+        "required": ["correct", "wrong", "unattempted"],
+        "title": "MarkingOut",
+        "description": "A blueprint marking rule for one question type (skills/exam-blueprint)."
       },
       "MatrixAnswerIn": {
         "properties": {
@@ -2933,6 +4295,215 @@
         ],
         "title": "MergeStatus"
       },
+      "MockAccess": {
+        "properties": {
+          "allowed": { "type": "boolean", "title": "Allowed" },
+          "paywall_trigger": {
+            "anyOf": [{ "type": "string", "const": "mock_limit" }, { "type": "null" }],
+            "title": "Paywall Trigger"
+          },
+          "paywall_source": {
+            "anyOf": [
+              { "type": "string", "enum": ["mock_lock", "pyq_paper", "live_mock", "custom_mock"] },
+              { "type": "null" }
+            ],
+            "title": "Paywall Source"
+          },
+          "reason": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Reason" }
+        },
+        "type": "object",
+        "required": ["allowed"],
+        "title": "MockAccess",
+        "description": "app-core ``mockAccess``. A locked mock names the paywall source; the client opens PAY-01 only\non a tap (practice §4.1)."
+      },
+      "MockCard": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "kind": {
+            "type": "string",
+            "enum": ["full", "sectional", "chapter", "pyq_paper", "live", "custom"],
+            "title": "Kind"
+          },
+          "exam_profile_id": { "type": "string", "title": "Exam Profile Id" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "blueprint_id": { "type": "string", "format": "uuid", "title": "Blueprint Id" },
+          "paper_code": { "type": "string", "title": "Paper Code" },
+          "section_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Section Code"
+          },
+          "duration_min": { "type": "integer", "title": "Duration Min" },
+          "question_count": { "type": "integer", "title": "Question Count" },
+          "max_marks": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Max Marks"
+          },
+          "is_free": { "type": "boolean", "title": "Is Free" },
+          "access": { "$ref": "#/components/schemas/MockAccess" },
+          "window_start": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Window Start"
+          },
+          "window_end": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Window End"
+          },
+          "results_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Results At"
+          },
+          "attempts": { "type": "integer", "title": "Attempts", "default": 0 },
+          "in_progress_attempt_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "In Progress Attempt Id"
+          },
+          "ranked": { "type": "boolean", "title": "Ranked" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "exam_profile_id",
+          "title",
+          "blueprint_id",
+          "paper_code",
+          "duration_min",
+          "question_count",
+          "max_marks",
+          "is_free",
+          "access",
+          "ranked"
+        ],
+        "title": "MockCard"
+      },
+      "MockDetail": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "kind": {
+            "type": "string",
+            "enum": ["full", "sectional", "chapter", "pyq_paper", "live", "custom"],
+            "title": "Kind"
+          },
+          "exam_profile_id": { "type": "string", "title": "Exam Profile Id" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "blueprint_id": { "type": "string", "format": "uuid", "title": "Blueprint Id" },
+          "paper_code": { "type": "string", "title": "Paper Code" },
+          "section_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Section Code"
+          },
+          "duration_min": { "type": "integer", "title": "Duration Min" },
+          "question_count": { "type": "integer", "title": "Question Count" },
+          "max_marks": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Max Marks"
+          },
+          "is_free": { "type": "boolean", "title": "Is Free" },
+          "access": { "$ref": "#/components/schemas/MockAccess" },
+          "window_start": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Window Start"
+          },
+          "window_end": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Window End"
+          },
+          "results_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Results At"
+          },
+          "attempts": { "type": "integer", "title": "Attempts", "default": 0 },
+          "in_progress_attempt_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "In Progress Attempt Id"
+          },
+          "ranked": { "type": "boolean", "title": "Ranked" },
+          "mode": { "type": "string", "enum": ["cbt", "pen_paper"], "title": "Mode" },
+          "languages": { "items": { "type": "string" }, "type": "array", "title": "Languages" },
+          "language_switch": {
+            "type": "string",
+            "enum": ["per_question", "fixed"],
+            "title": "Language Switch"
+          },
+          "calculator": { "type": "string", "title": "Calculator" },
+          "interface": { "type": "string", "title": "Interface" },
+          "interface_profile": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Interface Profile"
+          },
+          "section_navigation": {
+            "type": "string",
+            "enum": ["free", "locked_in_order", "free_within_timer"],
+            "title": "Section Navigation"
+          },
+          "early_section_submit": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Early Section Submit"
+          },
+          "marked_answer_evaluated": { "type": "boolean", "title": "Marked Answer Evaluated" },
+          "sections": {
+            "items": { "$ref": "#/components/schemas/MockSection" },
+            "type": "array",
+            "title": "Sections"
+          },
+          "instructions": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Instructions"
+          },
+          "qualifying": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Qualifying"
+          },
+          "source": { "$ref": "#/components/schemas/BlueprintSource" },
+          "verified_at": { "type": "string", "title": "Verified At" },
+          "past_attempts": {
+            "items": { "$ref": "#/components/schemas/AttemptSummary" },
+            "type": "array",
+            "title": "Past Attempts"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "exam_profile_id",
+          "title",
+          "blueprint_id",
+          "paper_code",
+          "duration_min",
+          "question_count",
+          "max_marks",
+          "is_free",
+          "access",
+          "ranked",
+          "mode",
+          "languages",
+          "language_switch",
+          "calculator",
+          "interface",
+          "interface_profile",
+          "section_navigation",
+          "early_section_submit",
+          "marked_answer_evaluated",
+          "sections",
+          "instructions",
+          "qualifying",
+          "source",
+          "verified_at",
+          "past_attempts"
+        ],
+        "title": "MockDetail",
+        "description": "MOCK-02: everything the blueprint says, never a fallback value (practice §9.1)."
+      },
       "MockInProgress": {
         "properties": {
           "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
@@ -2948,6 +4519,66 @@
         "type": "object",
         "required": ["attempt_id", "mock_id", "kind", "started_at", "server_deadline_at"],
         "title": "MockInProgress"
+      },
+      "MockSection": {
+        "properties": {
+          "code": { "type": "string", "title": "Code" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "subject_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Subject Id"
+          },
+          "question_count": { "type": "integer", "title": "Question Count" },
+          "question_types": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Question Types"
+          },
+          "type_counts": {
+            "anyOf": [
+              { "additionalProperties": { "type": "integer" }, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Type Counts"
+          },
+          "timer_min": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Timer Min"
+          },
+          "attempt_any": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Attempt Any"
+          },
+          "over_attempt": {
+            "anyOf": [
+              { "type": "string", "enum": ["block", "evaluate_first_n"] },
+              { "type": "null" }
+            ],
+            "title": "Over Attempt"
+          },
+          "marking": {
+            "additionalProperties": { "$ref": "#/components/schemas/MarkingOut" },
+            "type": "object",
+            "title": "Marking"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "title",
+          "subject_id",
+          "question_count",
+          "question_types",
+          "timer_min",
+          "attempt_any",
+          "over_attempt",
+          "marking"
+        ],
+        "title": "MockSection"
       },
       "NumberAnswerIn": {
         "properties": {
@@ -3031,6 +4662,16 @@
         "type": "object",
         "required": ["kind", "pairs"],
         "title": "PairsAnswerIn"
+      },
+      "PauseIn": {
+        "properties": {
+          "at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "At"
+          }
+        },
+        "type": "object",
+        "title": "PauseIn"
       },
       "PetCareRequest": {
         "properties": {
@@ -3483,6 +5124,50 @@
         ],
         "title": "QuestOut"
       },
+      "QuestionRow": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "section_code": { "type": "string", "title": "Section Code" },
+          "position": { "type": "integer", "title": "Position" },
+          "status": {
+            "type": "string",
+            "enum": ["correct", "partial", "wrong", "skipped", "not_counted", "not_scored"],
+            "title": "Status"
+          },
+          "marks": { "type": "number", "title": "Marks" },
+          "time_spent_ms": { "type": "integer", "title": "Time Spent Ms" },
+          "confidence": {
+            "anyOf": [
+              { "type": "string", "enum": ["sure", "fifty_fifty", "guess"] },
+              { "type": "null" }
+            ],
+            "title": "Confidence"
+          },
+          "answered_seq": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Answered Seq"
+          },
+          "ideal_time_s": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Ideal Time S"
+          },
+          "slow": { "anyOf": [{ "type": "boolean" }, { "type": "null" }], "title": "Slow" }
+        },
+        "type": "object",
+        "required": [
+          "question_id",
+          "section_code",
+          "position",
+          "status",
+          "marks",
+          "time_spent_ms",
+          "confidence",
+          "answered_seq",
+          "ideal_time_s",
+          "slow"
+        ],
+        "title": "QuestionRow"
+      },
       "QuotaOut": {
         "properties": {
           "unlimited": { "type": "boolean", "title": "Unlimited" },
@@ -3512,11 +5197,271 @@
         "required": ["event_id", "code"],
         "title": "RejectedEvent"
       },
+      "RejectedRow": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "code": {
+            "type": "string",
+            "enum": [
+              "not_in_paper",
+              "after_deadline",
+              "section_closed",
+              "section_locked",
+              "over_attempt",
+              "invalid_answer",
+              "clock_skew"
+            ],
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": ["question_id", "code"],
+        "title": "RejectedRow"
+      },
+      "Report": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "mock_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Mock Id" },
+          "kind": {
+            "type": "string",
+            "enum": ["full", "sectional", "chapter", "pyq_paper", "live", "custom"],
+            "title": "Kind"
+          },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "attempt_no": { "type": "integer", "title": "Attempt No" },
+          "status": {
+            "type": "string",
+            "enum": ["in_progress", "submitted", "auto_submitted", "abandoned"],
+            "title": "Status"
+          },
+          "time_policy": {
+            "type": "string",
+            "enum": ["practice", "strict", "live"],
+            "title": "Time Policy"
+          },
+          "submitted_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Submitted At"
+          },
+          "generated_at": { "type": "string", "format": "date-time", "title": "Generated At" },
+          "locked": { "items": { "type": "string" }, "type": "array", "title": "Locked" },
+          "score": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Score" },
+          "max_score": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Max Score"
+          },
+          "standing": {
+            "anyOf": [{ "$ref": "#/components/schemas/Standing" }, { "type": "null" }]
+          },
+          "accuracy": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Accuracy" },
+          "time_lost_wrong_ms": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Time Lost Wrong Ms"
+          },
+          "summary": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Summary"
+          },
+          "sections": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/SectionRow" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Sections"
+          },
+          "subjects": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/SubjectRow" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Subjects"
+          },
+          "topics": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/TopicRow" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Topics"
+          },
+          "concepts": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/ConceptRow" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Concepts"
+          },
+          "questions": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/QuestionRow" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Questions"
+          },
+          "time_buckets": {
+            "anyOf": [{ "$ref": "#/components/schemas/TimeBuckets" }, { "type": "null" }]
+          },
+          "confidence": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/ConfidenceRow" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Confidence"
+          },
+          "fix_next": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/FixNext" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Fix Next"
+          },
+          "qualifying": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Qualifying"
+          }
+        },
+        "type": "object",
+        "required": [
+          "attempt_id",
+          "mock_id",
+          "kind",
+          "title",
+          "attempt_no",
+          "status",
+          "time_policy",
+          "submitted_at",
+          "generated_at",
+          "locked"
+        ],
+        "title": "Report"
+      },
       "RestDayRequest": {
         "properties": { "day": { "type": "string", "format": "date", "title": "Day" } },
         "type": "object",
         "required": ["day"],
         "title": "RestDayRequest"
+      },
+      "SaveResult": {
+        "properties": {
+          "saved": { "items": { "type": "string" }, "type": "array", "title": "Saved" },
+          "kept_newer": { "items": { "type": "string" }, "type": "array", "title": "Kept Newer" },
+          "rejected": {
+            "items": { "$ref": "#/components/schemas/RejectedRow" },
+            "type": "array",
+            "title": "Rejected"
+          },
+          "server_time": { "type": "string", "format": "date-time", "title": "Server Time" },
+          "server_deadline_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Server Deadline At"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["in_progress", "submitted", "auto_submitted", "abandoned"],
+            "title": "Status"
+          },
+          "sections": {
+            "items": { "$ref": "#/components/schemas/AttemptSection" },
+            "type": "array",
+            "title": "Sections"
+          }
+        },
+        "type": "object",
+        "required": [
+          "saved",
+          "kept_newer",
+          "rejected",
+          "server_time",
+          "server_deadline_at",
+          "status",
+          "sections"
+        ],
+        "title": "SaveResult"
+      },
+      "SavedAnswer": {
+        "properties": {
+          "answer": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Answer"
+          },
+          "palette_status": {
+            "type": "string",
+            "enum": ["not_visited", "not_answered", "answered", "marked", "answered_marked"],
+            "title": "Palette Status"
+          },
+          "time_spent_ms": { "type": "integer", "title": "Time Spent Ms" },
+          "visits": { "type": "integer", "title": "Visits" },
+          "answer_changes": { "type": "integer", "title": "Answer Changes" },
+          "first_seen_seq": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "First Seen Seq"
+          },
+          "answered_seq": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Answered Seq"
+          },
+          "confidence": {
+            "anyOf": [
+              { "type": "string", "enum": ["sure", "fifty_fifty", "guess"] },
+              { "type": "null" }
+            ],
+            "title": "Confidence"
+          },
+          "client_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Client Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "answer",
+          "palette_status",
+          "time_spent_ms",
+          "visits",
+          "answer_changes",
+          "first_seen_seq",
+          "answered_seq",
+          "confidence",
+          "client_updated_at"
+        ],
+        "title": "SavedAnswer"
+      },
+      "SectionRow": {
+        "properties": {
+          "marks": { "type": "number", "title": "Marks" },
+          "max_marks": { "type": "number", "title": "Max Marks" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "partial": { "type": "integer", "title": "Partial" },
+          "wrong": { "type": "integer", "title": "Wrong" },
+          "skipped": { "type": "integer", "title": "Skipped" },
+          "accuracy": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Accuracy" },
+          "time_ms": { "type": "integer", "title": "Time Ms" },
+          "code": { "type": "string", "title": "Code" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          }
+        },
+        "type": "object",
+        "required": [
+          "marks",
+          "max_marks",
+          "correct",
+          "partial",
+          "wrong",
+          "skipped",
+          "accuracy",
+          "time_ms",
+          "code",
+          "title"
+        ],
+        "title": "SectionRow"
       },
       "SessionComplete": {
         "properties": {
@@ -3683,6 +5628,50 @@
         "required": ["gems", "items"],
         "title": "ShopResponse"
       },
+      "SolutionItem": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "section_code": { "type": "string", "title": "Section Code" },
+          "position": { "type": "integer", "title": "Position" },
+          "status": {
+            "type": "string",
+            "enum": ["correct", "partial", "wrong", "skipped", "not_counted", "not_scored"],
+            "title": "Status"
+          },
+          "marks": { "type": "number", "title": "Marks" },
+          "your_answer": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Your Answer"
+          },
+          "question": { "additionalProperties": true, "type": "object", "title": "Question" },
+          "solution": { "additionalProperties": true, "type": "object", "title": "Solution" }
+        },
+        "type": "object",
+        "required": [
+          "question_id",
+          "section_code",
+          "position",
+          "status",
+          "marks",
+          "your_answer",
+          "question",
+          "solution"
+        ],
+        "title": "SolutionItem"
+      },
+      "Solutions": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "items": {
+            "items": { "$ref": "#/components/schemas/SolutionItem" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["attempt_id", "items"],
+        "title": "Solutions"
+      },
       "SrsCardState": {
         "properties": {
           "card_ref": { "type": "string", "title": "Card Ref" },
@@ -3722,6 +5711,39 @@
         "type": "object",
         "required": ["cards", "deleted"],
         "title": "SrsState"
+      },
+      "Standing": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "percentile": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Percentile"
+          },
+          "rank": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Rank" },
+          "of": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Of" },
+          "counted": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Counted" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "personal_paper",
+                  "not_first_attempt",
+                  "threshold_unset",
+                  "below_threshold",
+                  "results_pending"
+                ]
+              },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": ["shown"],
+        "title": "Standing",
+        "description": "R26: percentile and rank only from real first attempts, above the owner's threshold."
       },
       "StreakFreezeRequest": {
         "properties": {
@@ -3770,6 +5792,32 @@
         "type": "object",
         "required": ["id", "name", "color_token", "sort", "chapter_count"],
         "title": "SubjectOut"
+      },
+      "SubjectRow": {
+        "properties": {
+          "marks": { "type": "number", "title": "Marks" },
+          "max_marks": { "type": "number", "title": "Max Marks" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "partial": { "type": "integer", "title": "Partial" },
+          "wrong": { "type": "integer", "title": "Wrong" },
+          "skipped": { "type": "integer", "title": "Skipped" },
+          "accuracy": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Accuracy" },
+          "time_ms": { "type": "integer", "title": "Time Ms" },
+          "subject_id": { "type": "string", "title": "Subject Id" }
+        },
+        "type": "object",
+        "required": [
+          "marks",
+          "max_marks",
+          "correct",
+          "partial",
+          "wrong",
+          "skipped",
+          "accuracy",
+          "time_ms",
+          "subject_id"
+        ],
+        "title": "SubjectRow"
       },
       "SubtopicOut": {
         "properties": {
@@ -3890,6 +5938,28 @@
         "title": "SyncStateResponse",
         "description": "Sections that did not change since ``since`` are omitted."
       },
+      "TimeBuckets": {
+        "properties": {
+          "right_but_slow": { "type": "integer", "title": "Right But Slow" },
+          "fast_and_wrong": { "type": "integer", "title": "Fast And Wrong" },
+          "lucky_guesses": { "type": "integer", "title": "Lucky Guesses" },
+          "skipped_time_ms": { "type": "integer", "title": "Skipped Time Ms" },
+          "ideal_time_source": {
+            "type": "string",
+            "enum": ["authors", "cohort"],
+            "title": "Ideal Time Source"
+          }
+        },
+        "type": "object",
+        "required": [
+          "right_but_slow",
+          "fast_and_wrong",
+          "lucky_guesses",
+          "skipped_time_ms",
+          "ideal_time_source"
+        ],
+        "title": "TimeBuckets"
+      },
       "TimeResponse": {
         "properties": {
           "server_time": { "type": "string", "format": "date-time", "title": "Server Time" }
@@ -3998,6 +6068,32 @@
         "type": "object",
         "required": ["topic_id", "status", "percent"],
         "title": "TopicProgressState"
+      },
+      "TopicRow": {
+        "properties": {
+          "marks": { "type": "number", "title": "Marks" },
+          "max_marks": { "type": "number", "title": "Max Marks" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "partial": { "type": "integer", "title": "Partial" },
+          "wrong": { "type": "integer", "title": "Wrong" },
+          "skipped": { "type": "integer", "title": "Skipped" },
+          "accuracy": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Accuracy" },
+          "time_ms": { "type": "integer", "title": "Time Ms" },
+          "topic_id": { "type": "string", "title": "Topic Id" }
+        },
+        "type": "object",
+        "required": [
+          "marks",
+          "max_marks",
+          "correct",
+          "partial",
+          "wrong",
+          "skipped",
+          "accuracy",
+          "time_ms",
+          "topic_id"
+        ],
+        "title": "TopicRow"
       },
       "ValidationError": {
         "properties": {

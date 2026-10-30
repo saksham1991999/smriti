@@ -88,6 +88,193 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/attempts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Past attempts (MOCK-25) */
+    get: operations["list_attempts_v1_attempts_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** An attempt with its paper and saved answers, for resume or takeover */
+    get: operations["get_attempt_v1_attempts__attempt_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/abandon": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Leave the mock and discard it (MOCK-15) */
+    post: operations["abandon_attempt_v1_attempts__attempt_id__abandon_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/answers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** Autosave changed answers; the newest client_updated_at wins */
+    put: operations["save_answers_v1_attempts__attempt_id__answers_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/pause": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Pause the timer (practice time policy only) */
+    post: operations["pause_attempt_v1_attempts__attempt_id__pause_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The report; deeper sections are Pro (free.mock_report_sections) */
+    get: operations["get_report_v1_attempts__attempt_id__report_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/resume": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Resume (MOCK-14) */
+    post: operations["resume_attempt_v1_attempts__attempt_id__resume_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/sections/{section_code}/submit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Submit the open section early, where the blueprint allows it */
+    post: operations["submit_section_v1_attempts__attempt_id__sections__section_code__submit_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/solutions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Keys and solutions after submit (MOCK-22) */
+    get: operations["get_solutions_v1_attempts__attempt_id__solutions_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/submit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Submit the paper; scored on the server with the blueprint's marking */
+    post: operations["submit_attempt_v1_attempts__attempt_id__submit_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/takeover": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Continue the attempt on this device */
+    post: operations["takeover_attempt_v1_attempts__attempt_id__takeover_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/auth/linked": {
     parameters: {
       query?: never;
@@ -406,6 +593,74 @@ export interface paths {
     get: operations["get_summary_v1_me_summary_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Mocks for an exam (MOCK-01) */
+    get: operations["list_mocks_v1_mocks_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks/{mock_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Mock detail from its blueprint */
+    get: operations["get_mock_v1_mocks__mock_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks/{mock_id}/attempts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Begin a mock: the timer starts and the paper is pinned */
+    post: operations["start_attempt_v1_mocks__mock_id__attempts_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks/generate": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start a custom weak-area mock (Pro) or a timed chapter mock */
+    post: operations["generate_mock_v1_mocks_generate_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -853,6 +1108,53 @@ export interface components {
         [key: string]: unknown;
       };
     };
+    /** AnswerSave */
+    AnswerSave: {
+      /** Answer */
+      answer?:
+        | components["schemas"]["OptionIdsAnswer"]
+        | components["schemas"]["NumberAnswerIn"]
+        | components["schemas"]["PairsAnswerIn"]
+        | components["schemas"]["MatrixAnswerIn"]
+        | components["schemas"]["BlanksAnswerIn"]
+        | components["schemas"]["OrderAnswerIn"]
+        | null;
+      /**
+       * Answer Changes
+       * @default 0
+       */
+      answer_changes: number;
+      /** Answered Seq */
+      answered_seq?: number | null;
+      /**
+       * Client Updated At
+       * Format: date-time
+       */
+      client_updated_at: string;
+      /** Confidence */
+      confidence?: ("sure" | "fifty_fifty" | "guess") | null;
+      /** First Seen Seq */
+      first_seen_seq?: number | null;
+      /**
+       * Palette Status
+       * @enum {string}
+       */
+      palette_status: "not_visited" | "not_answered" | "answered" | "marked" | "answered_marked";
+      /** Question Id */
+      question_id: string;
+      /** Time Spent Ms */
+      time_spent_ms: number;
+      /**
+       * Visits
+       * @default 0
+       */
+      visits: number;
+    };
+    /** AnswersPut */
+    AnswersPut: {
+      /** Answers */
+      answers: components["schemas"]["AnswerSave"][];
+    };
     /** AnswerSubmit */
     AnswerSubmit: {
       /**
@@ -893,6 +1195,215 @@ export interface components {
       /** Update Required */
       update_required?: boolean | null;
     };
+    /** Attempt */
+    Attempt: {
+      /** Active Device */
+      active_device: ("this" | "other") | null;
+      /** Attempt No */
+      attempt_no: number;
+      /**
+       * Blueprint Id
+       * Format: uuid
+       */
+      blueprint_id: string;
+      /** Calculator */
+      calculator: string;
+      /** Early Section Submit */
+      early_section_submit: boolean | null;
+      /** Exam Profile Id */
+      exam_profile_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Interface */
+      interface: string;
+      /** Interface Profile */
+      interface_profile: {
+        [key: string]: unknown;
+      } | null;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /**
+       * Language
+       * @enum {string}
+       */
+      language: "en" | "hi";
+      /**
+       * Language Switch
+       * @enum {string}
+       */
+      language_switch: "per_question" | "fixed";
+      /** Marked Answer Evaluated */
+      marked_answer_evaluated: boolean;
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Pause Count */
+      pause_count: number;
+      /** Paused */
+      paused: boolean;
+      /** Paused Ms */
+      paused_ms: number;
+      /** Questions */
+      questions?: components["schemas"]["AttemptQuestion"][] | null;
+      /** Remaining Ms */
+      remaining_ms: number;
+      /** Score */
+      score: number | null;
+      /**
+       * Section Navigation
+       * @enum {string}
+       */
+      section_navigation: "free" | "locked_in_order" | "free_within_timer";
+      /** Sections */
+      sections: components["schemas"]["AttemptSection"][];
+      /**
+       * Server Deadline At
+       * Format: date-time
+       */
+      server_deadline_at: string;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+      /** Submitted At */
+      submitted_at: string | null;
+      /**
+       * Time Policy
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict" | "live";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+    };
+    /**
+     * AttemptCreate
+     * @description Created when [I am ready to begin] is tapped (practice §6.4 step 5), with the client's
+     *     UUIDv7 so a retry or an offline replay is the same attempt.
+     */
+    AttemptCreate: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /**
+       * Language
+       * @enum {string}
+       */
+      language: "en" | "hi";
+      /** Started At */
+      started_at?: string | null;
+      /**
+       * Time Policy
+       * @default practice
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict";
+    };
+    /** AttemptQuestion */
+    AttemptQuestion: {
+      /** Body */
+      body: {
+        [key: string]: unknown;
+      };
+      marking: components["schemas"]["MarkingOut"];
+      /** Position */
+      position: number;
+      /** Question Id */
+      question_id: string;
+      saved?: components["schemas"]["SavedAnswer"] | null;
+      /** Section Code */
+      section_code: string;
+      /** Type */
+      type: string;
+    };
+    /** AttemptSection */
+    AttemptSection: {
+      /** Answered */
+      answered: number;
+      /** Attempt Any */
+      attempt_any: number | null;
+      /** Closed At */
+      closed_at: string | null;
+      /** Closed By */
+      closed_by: ("timer" | "student" | "submit") | null;
+      /** Closes At */
+      closes_at: string | null;
+      /** Code */
+      code: string;
+      /** Opened At */
+      opened_at: string | null;
+      /** Over Attempt */
+      over_attempt: ("block" | "evaluate_first_n") | null;
+      /** Question Ids */
+      question_ids: string[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "upcoming" | "closed";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+    };
+    /** AttemptSummary */
+    AttemptSummary: {
+      /** Attempt No */
+      attempt_no: number;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Score */
+      score: number | null;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+    };
     /** BadgeOut */
     BadgeOut: {
       /** Description */
@@ -928,6 +1439,15 @@ export interface components {
        * @constant
        */
       kind: "blanks";
+    };
+    /** BlueprintSource */
+    BlueprintSource: {
+      /** Published */
+      published?: string | null;
+      /** Title */
+      title: string;
+      /** Url */
+      url: string;
     };
     /** BundleRef */
     BundleRef: {
@@ -979,6 +1499,31 @@ export interface components {
       response: {
         [key: string]: unknown;
       } | null;
+    };
+    /** ConceptRow */
+    ConceptRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Attempted */
+      attempted: number;
+      /** Concept Id */
+      concept_id: string;
+      /** Correct */
+      correct: number;
+      /** Marks Lost */
+      marks_lost: number;
+    };
+    /** ConfidenceRow */
+    ConfidenceRow: {
+      /**
+       * Confidence
+       * @enum {string}
+       */
+      confidence: "sure" | "fifty_fifty" | "guess" | "none";
+      /** Correct */
+      correct: number;
+      /** Wrong */
+      wrong: number;
     };
     /** ConfigResponse */
     ConfigResponse: {
@@ -1239,6 +1784,19 @@ export interface components {
       /** Primary */
       primary?: string | null;
     };
+    /** FixNext */
+    FixNext: {
+      /** Concept Id */
+      concept_id: string;
+      /** Drill */
+      drill: {
+        [key: string]: unknown;
+      };
+      /** Marks Lost */
+      marks_lost: number;
+      /** Weightage */
+      weightage: number | null;
+    };
     /** GemLedgerEntry */
     GemLedgerEntry: {
       /**
@@ -1257,6 +1815,44 @@ export interface components {
       reason: string;
       /** Ref */
       ref: string | null;
+    };
+    /**
+     * GenerateMock
+     * @description MOCK-26 custom weak-area mock (Pro) or a timed chapter mock (counts as sectional, Q15).
+     */
+    GenerateMock: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Chapter Id */
+      chapter_id?: string | null;
+      /** Concepts */
+      concepts?: string[] | null;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Kind
+       * @default custom
+       * @enum {string}
+       */
+      kind: "custom" | "chapter";
+      /**
+       * Language
+       * @enum {string}
+       */
+      language: "en" | "hi";
+      /** Paper Code */
+      paper_code?: string | null;
+      /** Question Count */
+      question_count: number;
+      /**
+       * Time Policy
+       * @default practice
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict";
     };
     /** HTTPValidationError */
     HTTPValidationError: {
@@ -1337,6 +1933,24 @@ export interface components {
       url: string | null;
       /** Version */
       version: number | null;
+    };
+    /**
+     * MarkingOut
+     * @description A blueprint marking rule for one question type (skills/exam-blueprint).
+     */
+    MarkingOut: {
+      /** Correct */
+      correct: number;
+      /** Partial */
+      partial?: {
+        [key: string]: unknown;
+      } | null;
+      /** Tolerance */
+      tolerance?: unknown;
+      /** Unattempted */
+      unattempted: number;
+      /** Wrong */
+      wrong: number;
     };
     /** MatrixAnswerIn */
     MatrixAnswerIn: {
@@ -1467,6 +2081,166 @@ export interface components {
        */
       status: "queued" | "running" | "done" | "failed";
     };
+    /**
+     * MockAccess
+     * @description app-core ``mockAccess``. A locked mock names the paywall source; the client opens PAY-01 only
+     *     on a tap (practice §4.1).
+     */
+    MockAccess: {
+      /** Allowed */
+      allowed: boolean;
+      /** Paywall Source */
+      paywall_source?: ("mock_lock" | "pyq_paper" | "live_mock" | "custom_mock") | null;
+      /** Paywall Trigger */
+      paywall_trigger?: "mock_limit" | null;
+      /** Reason */
+      reason?: string | null;
+    };
+    /** MockCard */
+    MockCard: {
+      access: components["schemas"]["MockAccess"];
+      /**
+       * Attempts
+       * @default 0
+       */
+      attempts: number;
+      /**
+       * Blueprint Id
+       * Format: uuid
+       */
+      blueprint_id: string;
+      /** Duration Min */
+      duration_min: number;
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      /** Id */
+      id: string;
+      /** In Progress Attempt Id */
+      in_progress_attempt_id?: string | null;
+      /** Is Free */
+      is_free: boolean;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /** Max Marks */
+      max_marks: number | null;
+      /** Paper Code */
+      paper_code: string;
+      /** Question Count */
+      question_count: number;
+      /** Ranked */
+      ranked: boolean;
+      /** Results At */
+      results_at?: string | null;
+      /** Section Code */
+      section_code?: string | null;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Window End */
+      window_end?: string | null;
+      /** Window Start */
+      window_start?: string | null;
+    };
+    /**
+     * MockDetail
+     * @description MOCK-02: everything the blueprint says, never a fallback value (practice §9.1).
+     */
+    MockDetail: {
+      access: components["schemas"]["MockAccess"];
+      /**
+       * Attempts
+       * @default 0
+       */
+      attempts: number;
+      /**
+       * Blueprint Id
+       * Format: uuid
+       */
+      blueprint_id: string;
+      /** Calculator */
+      calculator: string;
+      /** Duration Min */
+      duration_min: number;
+      /** Early Section Submit */
+      early_section_submit: boolean | null;
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      /** Id */
+      id: string;
+      /** In Progress Attempt Id */
+      in_progress_attempt_id?: string | null;
+      /** Instructions */
+      instructions: {
+        [key: string]: string;
+      };
+      /** Interface */
+      interface: string;
+      /** Interface Profile */
+      interface_profile: {
+        [key: string]: unknown;
+      } | null;
+      /** Is Free */
+      is_free: boolean;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /**
+       * Language Switch
+       * @enum {string}
+       */
+      language_switch: "per_question" | "fixed";
+      /** Languages */
+      languages: string[];
+      /** Marked Answer Evaluated */
+      marked_answer_evaluated: boolean;
+      /** Max Marks */
+      max_marks: number | null;
+      /**
+       * Mode
+       * @enum {string}
+       */
+      mode: "cbt" | "pen_paper";
+      /** Paper Code */
+      paper_code: string;
+      /** Past Attempts */
+      past_attempts: components["schemas"]["AttemptSummary"][];
+      /** Qualifying */
+      qualifying: {
+        [key: string]: unknown;
+      } | null;
+      /** Question Count */
+      question_count: number;
+      /** Ranked */
+      ranked: boolean;
+      /** Results At */
+      results_at?: string | null;
+      /** Section Code */
+      section_code?: string | null;
+      /**
+       * Section Navigation
+       * @enum {string}
+       */
+      section_navigation: "free" | "locked_in_order" | "free_within_timer";
+      /** Sections */
+      sections: components["schemas"]["MockSection"][];
+      source: components["schemas"]["BlueprintSource"];
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Verified At */
+      verified_at: string;
+      /** Window End */
+      window_end?: string | null;
+      /** Window Start */
+      window_start?: string | null;
+    };
     /** MockInProgress */
     MockInProgress: {
       /**
@@ -1488,6 +2262,35 @@ export interface components {
        * Format: date-time
        */
       started_at: string;
+    };
+    /** MockSection */
+    MockSection: {
+      /** Attempt Any */
+      attempt_any: number | null;
+      /** Code */
+      code: string;
+      /** Marking */
+      marking: {
+        [key: string]: components["schemas"]["MarkingOut"];
+      };
+      /** Over Attempt */
+      over_attempt: ("block" | "evaluate_first_n") | null;
+      /** Question Count */
+      question_count: number;
+      /** Question Types */
+      question_types: string[];
+      /** Subject Id */
+      subject_id: string | null;
+      /** Timer Min */
+      timer_min: number | null;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Type Counts */
+      type_counts?: {
+        [key: string]: number;
+      } | null;
     };
     /** NumberAnswerIn */
     NumberAnswerIn: {
@@ -1544,6 +2347,11 @@ export interface components {
       kind: "pairs";
       /** Pairs */
       pairs: components["schemas"]["PairIn"][];
+    };
+    /** PauseIn */
+    PauseIn: {
+      /** At */
+      at?: string | null;
     };
     /** PetCareRequest */
     PetCareRequest: {
@@ -1845,6 +2653,32 @@ export interface components {
       /** Xp */
       xp: number;
     };
+    /** QuestionRow */
+    QuestionRow: {
+      /** Answered Seq */
+      answered_seq: number | null;
+      /** Confidence */
+      confidence: ("sure" | "fifty_fifty" | "guess") | null;
+      /** Ideal Time S */
+      ideal_time_s: number | null;
+      /** Marks */
+      marks: number;
+      /** Position */
+      position: number;
+      /** Question Id */
+      question_id: string;
+      /** Section Code */
+      section_code: string;
+      /** Slow */
+      slow: boolean | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "correct" | "partial" | "wrong" | "skipped" | "not_counted" | "not_scored";
+      /** Time Spent Ms */
+      time_spent_ms: number;
+    };
     /** QuestOut */
     QuestOut: {
       /** Claimed */
@@ -1907,6 +2741,95 @@ export interface components {
        */
       event_id: string;
     };
+    /** RejectedRow */
+    RejectedRow: {
+      /**
+       * Code
+       * @enum {string}
+       */
+      code:
+        | "not_in_paper"
+        | "after_deadline"
+        | "section_closed"
+        | "section_locked"
+        | "over_attempt"
+        | "invalid_answer"
+        | "clock_skew";
+      /** Question Id */
+      question_id: string;
+    };
+    /** Report */
+    Report: {
+      /** Accuracy */
+      accuracy?: number | null;
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Attempt No */
+      attempt_no: number;
+      /** Concepts */
+      concepts?: components["schemas"]["ConceptRow"][] | null;
+      /** Confidence */
+      confidence?: components["schemas"]["ConfidenceRow"][] | null;
+      /** Fix Next */
+      fix_next?: components["schemas"]["FixNext"][] | null;
+      /**
+       * Generated At
+       * Format: date-time
+       */
+      generated_at: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /** Locked */
+      locked: string[];
+      /** Max Score */
+      max_score?: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Qualifying */
+      qualifying?: {
+        [key: string]: unknown;
+      } | null;
+      /** Questions */
+      questions?: components["schemas"]["QuestionRow"][] | null;
+      /** Score */
+      score?: number | null;
+      /** Sections */
+      sections?: components["schemas"]["SectionRow"][] | null;
+      standing?: components["schemas"]["Standing"] | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+      /** Subjects */
+      subjects?: components["schemas"]["SubjectRow"][] | null;
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Summary */
+      summary?: {
+        [key: string]: unknown;
+      } | null;
+      time_buckets?: components["schemas"]["TimeBuckets"] | null;
+      /** Time Lost Wrong Ms */
+      time_lost_wrong_ms?: number | null;
+      /**
+       * Time Policy
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict" | "live";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Topics */
+      topics?: components["schemas"]["TopicRow"][] | null;
+    };
     /** RestDayRequest */
     RestDayRequest: {
       /**
@@ -1914,6 +2837,86 @@ export interface components {
        * Format: date
        */
       day: string;
+    };
+    /** SavedAnswer */
+    SavedAnswer: {
+      /** Answer */
+      answer: {
+        [key: string]: unknown;
+      } | null;
+      /** Answer Changes */
+      answer_changes: number;
+      /** Answered Seq */
+      answered_seq: number | null;
+      /**
+       * Client Updated At
+       * Format: date-time
+       */
+      client_updated_at: string;
+      /** Confidence */
+      confidence: ("sure" | "fifty_fifty" | "guess") | null;
+      /** First Seen Seq */
+      first_seen_seq: number | null;
+      /**
+       * Palette Status
+       * @enum {string}
+       */
+      palette_status: "not_visited" | "not_answered" | "answered" | "marked" | "answered_marked";
+      /** Time Spent Ms */
+      time_spent_ms: number;
+      /** Visits */
+      visits: number;
+    };
+    /** SaveResult */
+    SaveResult: {
+      /** Kept Newer */
+      kept_newer: string[];
+      /** Rejected */
+      rejected: components["schemas"]["RejectedRow"][];
+      /** Saved */
+      saved: string[];
+      /** Sections */
+      sections: components["schemas"]["AttemptSection"][];
+      /**
+       * Server Deadline At
+       * Format: date-time
+       */
+      server_deadline_at: string;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+    };
+    /** SectionRow */
+    SectionRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Code */
+      code: string;
+      /** Correct */
+      correct: number;
+      /** Marks */
+      marks: number;
+      /** Max Marks */
+      max_marks: number;
+      /** Partial */
+      partial: number;
+      /** Skipped */
+      skipped: number;
+      /** Time Ms */
+      time_ms: number;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Wrong */
+      wrong: number;
     };
     /** SessionComplete */
     SessionComplete: {
@@ -2034,6 +3037,44 @@ export interface components {
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
     };
+    /** SolutionItem */
+    SolutionItem: {
+      /** Marks */
+      marks: number;
+      /** Position */
+      position: number;
+      /** Question */
+      question: {
+        [key: string]: unknown;
+      };
+      /** Question Id */
+      question_id: string;
+      /** Section Code */
+      section_code: string;
+      /** Solution */
+      solution: {
+        [key: string]: unknown;
+      };
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "correct" | "partial" | "wrong" | "skipped" | "not_counted" | "not_scored";
+      /** Your Answer */
+      your_answer: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** Solutions */
+    Solutions: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Items */
+      items: components["schemas"]["SolutionItem"][];
+    };
     /** SrsCardState */
     SrsCardState: {
       /** Card Ref */
@@ -2062,6 +3103,34 @@ export interface components {
       cards: components["schemas"]["SrsCardState"][];
       /** Deleted */
       deleted: string[];
+    };
+    /**
+     * Standing
+     * @description R26: percentile and rank only from real first attempts, above the owner's threshold.
+     */
+    Standing: {
+      /** Counted */
+      counted?: number | null;
+      /** Needed */
+      needed?: number | null;
+      /** Of */
+      of?: number | null;
+      /** Percentile */
+      percentile?: number | null;
+      /** Rank */
+      rank?: number | null;
+      /** Reason */
+      reason?:
+        | (
+            | "personal_paper"
+            | "not_first_attempt"
+            | "threshold_unset"
+            | "below_threshold"
+            | "results_pending"
+          )
+        | null;
+      /** Shown */
+      shown: boolean;
     };
     /** StreakFreezeRequest */
     StreakFreezeRequest: {
@@ -2102,6 +3171,27 @@ export interface components {
       };
       /** Sort */
       sort: number;
+    };
+    /** SubjectRow */
+    SubjectRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Correct */
+      correct: number;
+      /** Marks */
+      marks: number;
+      /** Max Marks */
+      max_marks: number;
+      /** Partial */
+      partial: number;
+      /** Skipped */
+      skipped: number;
+      /** Subject Id */
+      subject_id: string;
+      /** Time Ms */
+      time_ms: number;
+      /** Wrong */
+      wrong: number;
     };
     /** SubtopicOut */
     SubtopicOut: {
@@ -2189,6 +3279,22 @@ export interface components {
       topic_progress?: components["schemas"]["TopicProgressState"][] | null;
       wallet?: components["schemas"]["WalletState"] | null;
     };
+    /** TimeBuckets */
+    TimeBuckets: {
+      /** Fast And Wrong */
+      fast_and_wrong: number;
+      /**
+       * Ideal Time Source
+       * @enum {string}
+       */
+      ideal_time_source: "authors" | "cohort";
+      /** Lucky Guesses */
+      lucky_guesses: number;
+      /** Right But Slow */
+      right_but_slow: number;
+      /** Skipped Time Ms */
+      skipped_time_ms: number;
+    };
     /** TimeResponse */
     TimeResponse: {
       /**
@@ -2268,6 +3374,27 @@ export interface components {
       status: "not_started" | "in_progress" | "learned";
       /** Topic Id */
       topic_id: string;
+    };
+    /** TopicRow */
+    TopicRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Correct */
+      correct: number;
+      /** Marks */
+      marks: number;
+      /** Max Marks */
+      max_marks: number;
+      /** Partial */
+      partial: number;
+      /** Skipped */
+      skipped: number;
+      /** Time Ms */
+      time_ms: number;
+      /** Topic Id */
+      topic_id: string;
+      /** Wrong */
+      wrong: number;
     };
     /** ValidationError */
     ValidationError: {
@@ -2536,6 +3663,400 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MergeStatus"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_attempts_v1_attempts_get: {
+    parameters: {
+      query?: {
+        before?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AttemptSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_attempt_v1_attempts__attempt_id__get: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  abandon_attempt_v1_attempts__attempt_id__abandon_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  save_answers_v1_attempts__attempt_id__answers_put: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AnswersPut"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SaveResult"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  pause_attempt_v1_attempts__attempt_id__pause_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PauseIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_report_v1_attempts__attempt_id__report_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Report"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  resume_attempt_v1_attempts__attempt_id__resume_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  submit_section_v1_attempts__attempt_id__sections__section_code__submit_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+        section_code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_solutions_v1_attempts__attempt_id__solutions_get: {
+    parameters: {
+      query?: {
+        locale?: ("en" | "hi") | null;
+      };
+      header?: never;
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Solutions"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  submit_attempt_v1_attempts__attempt_id__submit_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Report"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  takeover_attempt_v1_attempts__attempt_id__takeover_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
         };
       };
       /** @description Validation Error */
@@ -3159,6 +4680,147 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["SummaryResponse"];
+        };
+      };
+    };
+  };
+  list_mocks_v1_mocks_get: {
+    parameters: {
+      query?: {
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MockCard"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_mock_v1_mocks__mock_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MockDetail"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  start_attempt_v1_mocks__mock_id__attempts_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AttemptCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  generate_mock_v1_mocks_generate_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GenerateMock"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

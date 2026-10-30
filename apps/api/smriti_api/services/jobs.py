@@ -25,6 +25,7 @@ QUEUE_BY_JOB = {
     "merge_guest": "default",
     "purge_deleted_accounts": "default",
     "nightly_rollup": "default",
+    "mocks_auto_submit": "default",
     "content_publish": "content-publish",
 }
 
@@ -95,9 +96,10 @@ class ArqJobQueue:
 
 
 def job_registry() -> dict[str, JobFn]:
-    from smriti_api.services import accounts
+    from smriti_api.services import accounts, mocks
 
     return {
         "merge_guest": accounts.merge_guest_job,
         "purge_deleted_accounts": accounts.purge_deleted_accounts_job,
+        "mocks_auto_submit": mocks.auto_submit_expired_job,
     }

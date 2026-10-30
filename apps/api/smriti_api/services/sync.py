@@ -667,6 +667,24 @@ async def _noop(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
     return None
 
 
+async def _mock_section_submitted(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """A section qualifies the day and earns XP once, whether the device's outbox or the server's
+    mock runner (``services/mocks``) recorded it first."""
+    assert isinstance(p, s.MockSectionSubmitted)
+    seen = (
+        await ctx.session.execute(
+            text(
+                "select 1 from learn.sync_events where user_id = :u and type = 'mock_section_submitted'"
+                " and status = 'applied' and payload ->> 'attempt_id' = :a"
+                " and payload ->> 'section_code' = :c limit 1"
+            ),
+            {"u": ctx.facts.user_id, "a": str(p.attempt_id), "c": p.section_code},
+        )
+    ).first()
+    if seen is not None:
+        raise EventRejected("already_recorded", "This mock section is already recorded")
+
+
 async def _pet_care(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
     assert isinstance(p, s.PetCare)
     uid = ctx.facts.user_id
@@ -887,7 +905,7 @@ _HANDLERS = {
     "review_rated": _review_rated,
     "practice_session_completed": _practice_completed,
     "daily_challenge_completed": _noop,
-    "mock_section_submitted": _noop,
+    "mock_section_submitted": _mock_section_submitted,
     "pet_care": _pet_care,
     "pet_named": _pet_named,
     "plant_seeded": _noop,

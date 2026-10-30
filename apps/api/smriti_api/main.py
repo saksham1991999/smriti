@@ -24,6 +24,7 @@ from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.core.redis import create_redis
 from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
+from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import practice as practice_routes
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
@@ -154,6 +155,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
         accounts.router,
         game.router,
         practice_routes.router,
+        mock_routes.router,
     ):
         app.include_router(router)
     if settings.is_dev:

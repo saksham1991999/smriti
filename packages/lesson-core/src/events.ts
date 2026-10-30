@@ -1,12 +1,12 @@
 /**
- * Lesson events, typed to docs/contracts/sync.md (v1). lesson-core produces payloads; the session
+ * Lesson events, typed to docs/contracts/sync.md (v1.2). lesson-core produces payloads; the session
  * wraps them in the sync envelope; app-core's outbox sends them.
  */
 import type { EventResponse } from "./answers.js";
 
 export type Confidence = "sure" | "fifty_fifty" | "guess";
 export type EventLessonMode = "deep_dive" | "quick_revision" | "onboarding" | "quick_check";
-export type AnswerContext = "lesson" | "practice" | "review" | "challenge" | "chapter_test";
+export type AnswerContext = "lesson" | "check" | "fix" | "practice" | "review" | "challenge" | "chapter_test";
 
 export interface LessonStartedPayload {
   topic_id: string;

@@ -21,7 +21,7 @@ export { hintFor, simCardFor, struckOptions, toughOne, workedSolution } from "./
 export type { Hint } from "./help.js";
 export { checkInteractive, checkSimTask, widgetHasTask } from "./interactive.js";
 export type { WidgetResponse, WidgetResult } from "./interactive.js";
-export { currentCard, initialState, isReadOnly, reduce, resumePoint } from "./machine.js";
+export { answerContext, currentCard, initialState, isReadOnly, reduce, resumePoint } from "./machine.js";
 export type { CardOutcome, LessonAction, LessonState, LessonSummary, Phase, Rating, ReviewItem, TimedAction } from "./machine.js";
 export {
   cardVisible,

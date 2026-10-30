@@ -20,4 +20,7 @@ export * from "./components/Overlays";
 export * from "./components/Navigation";
 export * from "./components/Settings";
 export * from "./components/Practice";
+export * from "./components/Chat";
+export * from "./components/Social";
+export * from "./components/Palace";
 export type * from "@smriti/tokens/ui";

@@ -591,7 +591,7 @@ export interface LimitMeterProps extends LimitMeterContract {
 }
 
 /** Label, 8 px bar and "{used} of {limit}". Never pulses or shakes. Under-13s get "Ask a grown-up". */
-export function LimitMeter({ label, used, limit, lastFewAt, proAction = "pro_link", onProPress, hidden, testID, style }: LimitMeterProps) {
+export function LimitMeter({ label, used, limit, lastFewAt, proAction = "pro_link", onProPress, hidden, period = "day", testID, style }: LimitMeterProps) {
   const { t } = useUI();
   const bold = useWeight(700);
   if (hidden) return null;
@@ -609,7 +609,7 @@ export function LimitMeter({ label, used, limit, lastFewAt, proAction = "pro_lin
       {(s.phase !== "in_range" || proAction !== "none") && (
         <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
           <Text variant="caption" tone="muted">
-            {s.phase === "full" ? t("limit.full") : s.phase === "last_few" ? t("limit.left", { remaining: s.remaining }) : ""}
+            {s.phase === "full" ? t(period === "week" ? "limit.fullWeek" : "limit.full") : s.phase === "last_few" ? t(period === "week" ? "limit.leftWeek" : "limit.left", { remaining: s.remaining }) : ""}
           </Text>
           {proAction !== "none" && onProPress && (
             <Pressable accessibilityRole="button" onPress={onProPress} hitSlop={hitSlopFor(40, 24)}>

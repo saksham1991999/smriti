@@ -9,7 +9,7 @@ import httpx
 from sqlalchemy import text
 
 from smriti_api.core.deps import AppServices
-from tests.helpers import get_state
+from tests.helpers import event, get_state, post_events
 from tests.practice_helpers import flags, learner, make_pro, opts
 
 TOPIC_A = "fx.chapter-a.topic-a"
@@ -131,6 +131,21 @@ async def test_drill_session_answers_and_mastery(
     assert state["wallet"]["xp_total"] > 0
     listed = await client.get("/v1/practice/sessions", headers=s.headers)
     assert {x["id"] for x in listed.json()} == {sid, fsid}
+
+    # The device's outbox sends the same completion: it counts once (sync v1.3).
+    payload = {"session_id": fsid, "kind": "drill", "answered": 2, "correct": 2, "ms_total": 60_000}
+    dup = await post_events(client, s, [event("practice_session_completed", payload)])
+    assert dup["rejected"][0]["code"] == "already_recorded"
+    assert (await get_state(client, s))["wallet"]["xp_total"] == state["wallet"]["xp_total"]
+    # And the other way round: the device first, then the server's complete is a no-op.
+    other = (
+        await client.post("/v1/practice/sessions", json={"question_ids": [Q_A1]}, headers=s.headers)
+    ).json()["id"]
+    payload = {"session_id": other, "kind": "drill", "answered": 0, "correct": 0, "ms_total": 1000}
+    first = await post_events(client, s, [event("practice_session_completed", payload)])
+    assert first["rejected"] == []
+    again = await client.post(f"/v1/practice/sessions/{other}/complete", json={}, headers=s.headers)
+    assert again.status_code == 200, again.text
 
 
 async def test_answers_are_checked_against_the_session(

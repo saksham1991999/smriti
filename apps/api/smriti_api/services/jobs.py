@@ -31,6 +31,11 @@ QUEUE_BY_JOB = {
     "nightly_rollup": "default",
     "mocks_auto_submit": "default",
     "tutor_retention": "default",
+    "league_assign": "default",
+    "league_rollover": "default",
+    "duo_rollup": "default",
+    "duel_sweep": "default",
+    "squad_quests": "default",
     "content_publish": "content-publish",
     "render_pdf": "pdf",
     "media_generate": "media",
@@ -107,7 +112,18 @@ class ArqJobQueue:
 
 
 def job_registry() -> dict[str, JobFn]:
-    from smriti_api.services import accounts, exports, media, mocks, notify, tutor
+    from smriti_api.services import (
+        accounts,
+        duels,
+        exports,
+        leagues,
+        media,
+        mocks,
+        notify,
+        social_duos,
+        social_squads,
+        tutor,
+    )
 
     return {
         "merge_guest": accounts.merge_guest_job,
@@ -117,4 +133,9 @@ def job_registry() -> dict[str, JobFn]:
         "render_pdf": exports.render_export,
         "media_generate": media.generate_job,
         "notify_dispatch": notify.dispatch_job,
+        "league_assign": leagues.assign_job,
+        "league_rollover": leagues.rollover_job,
+        "duo_rollup": social_duos.rollup_job,
+        "duel_sweep": duels.sweep_job,
+        "squad_quests": social_squads.quests_job,
     }

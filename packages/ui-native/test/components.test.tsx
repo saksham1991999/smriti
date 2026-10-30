@@ -1,3 +1,5 @@
+import { AccessibilityInfo } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { fireEvent, screen } from "@testing-library/react-native";
 import { iconNames } from "@smriti/tokens/ui";
 import { nativeThemes } from "@smriti/tokens/native";
@@ -6,14 +8,19 @@ import {
   AppleButton,
   Banner,
   Button,
+  ChatBubble,
+  ChatInput,
+  CheerButton,
   CitationChip,
   ChoiceChips,
   ConfidenceRow,
   ContinueCard,
   DayDots,
+  DuelScoreBar,
   Dialog,
   EmptyState,
   FormulaBox,
+  FriendRow,
   GoogleButton,
   HeatMapCell,
   Icon,
@@ -21,6 +28,7 @@ import {
   IconButton,
   Illustration,
   LeaderboardRow,
+  LeagueTierBadge,
   LimitMeter,
   Meter,
   MockPaletteCell,
@@ -37,6 +45,7 @@ import {
   ProgressBar,
   ProgressRing,
   RatingButtons,
+  RoomCard,
   SaveStateChip,
   ScoreRing,
   SectionTabs,
@@ -45,6 +54,7 @@ import {
   SettingsRow,
   Sheet,
   SidebarNav,
+  SquadCard,
   StatTile,
   StreakCard,
   StreakPill,
@@ -60,6 +70,7 @@ import {
   TopBar,
   TrialTimeline,
   TrustLine,
+  UIProvider,
   useTheme,
 } from "../src";
 import { Gallery } from "../src/Gallery";
@@ -297,6 +308,12 @@ describe("inputs", () => {
     expect(onChange).toHaveBeenLastCalledWith("guess");
   });
 
+  it("ConfidenceRow chips fill the row with 48 px targets and padding", async () => {
+    await renderUI(<ConfidenceRow value={null} onChange={() => undefined} />);
+    const chip = flat(screen.getByRole("radio", { name: "Guess" }).props.style);
+    expect(chip).toMatchObject({ flex: 1, minHeight: 48, paddingHorizontal: 12 });
+  });
+
   it("RatingButtons speak the next interval", async () => {
     const onRate = jest.fn();
     await renderUI(<RatingButtons intervals={{ again: "10 min", hard: "1 d", good: "3 d", easy: "8 d" }} onRate={onRate} />);
@@ -410,6 +427,8 @@ describe("navigation", () => {
     expect(screen.getAllByRole("tab", { name: "Learn" })[0]!.props.accessibilityState).toMatchObject({ selected: true });
     await fireEvent.press(screen.getAllByRole("tab", { name: "Me, 2" })[0]!);
     expect(onSelect).toHaveBeenCalledWith("me");
+    expect(screen.getByTestId("tab-learn")).toBeTruthy();
+    expect(screen.getByTestId("sidebar-me")).toBeTruthy();
   });
 });
 
@@ -512,6 +531,148 @@ describe("practice and mocks", () => {
   it("TrialTimeline shows the real dates", async () => {
     await renderUI(<TrialTimeline eligible reminderDate="26 Nov" renewDate="29 Nov" trialPrice="₹1" renewPrice="₹99/month" />);
     expect(screen.getByText("26 Nov: we remind you by push and email")).toBeTruthy();
+  });
+});
+
+describe("tutor chat", () => {
+  it("ChatBubble: student, system and tutor with the AI label", async () => {
+    await renderUI(
+      <>
+        <ChatBubble role="system" text="Chat started" />
+        <ChatBubble role="student" text="Why is the sky blue?" />
+        <ChatBubble role="tutor" authorName="Mishti" avatar={{ species: "cat" }} text="Light scatters." />
+      </>,
+    );
+    expect(screen.getByText("Chat started")).toBeTruthy();
+    expect(screen.getByLabelText("You said: Why is the sky blue?")).toBeTruthy();
+    expect(screen.getByText("AI")).toBeTruthy();
+    expect(screen.getByText("Made by AI. It can make mistakes.")).toBeTruthy();
+  });
+
+  it("ChatBubble: thinking while streaming, announces once when complete", async () => {
+    const announce = jest.spyOn(AccessibilityInfo, "announceForAccessibility").mockImplementation(() => undefined);
+    const r = await renderUI(<ChatBubble role="tutor" authorName="Mishti" streaming />);
+    expect(screen.getByLabelText("Mishti is thinking…")).toBeTruthy();
+    expect(screen.queryByText("Made by AI. It can make mistakes.")).toBeNull();
+    const wrapUI = (streaming: boolean) => (
+      <SafeAreaProvider initialMetrics={{ frame: { x: 0, y: 0, width: 390, height: 844 }, insets: { top: 0, left: 0, right: 0, bottom: 0 } }}>
+        <UIProvider mode="light" locale="en" reducedMotion assetBaseUrl="https://cdn.example.test/assets/">
+          <ChatBubble role="tutor" authorName="Mishti" streaming={streaming} text="Light scatters." />
+        </UIProvider>
+      </SafeAreaProvider>
+    );
+    await r.rerender(wrapUI(true));
+    expect(announce).not.toHaveBeenCalled();
+    await r.rerender(wrapUI(false));
+    expect(announce).toHaveBeenCalledWith("Mishti, AI: Light scatters.");
+    announce.mockRestore();
+  });
+
+  it("ChatInput: send, counter near the limit, stop while streaming, disabled", async () => {
+    const onSend = jest.fn();
+    const onChange = jest.fn();
+    const r = await renderUI(<ChatInput testID="ci" value={"x".repeat(85)} onChange={onChange} onSend={onSend} label="Ask Mishti" maxLength={100} />);
+    await fireEvent.changeText(screen.getByLabelText("Ask Mishti"), "hello");
+    expect(onChange).toHaveBeenCalledWith("hello");
+    expect(screen.getByText("15 characters left")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Send" }));
+    expect(onSend).toHaveBeenCalled();
+    const onStop = jest.fn();
+    await r.rerender(
+      <SafeAreaProvider initialMetrics={{ frame: { x: 0, y: 0, width: 390, height: 844 }, insets: { top: 0, left: 0, right: 0, bottom: 0 } }}>
+        <UIProvider mode="light" locale="hi" reducedMotion assetBaseUrl="https://cdn.example.test/assets/">
+          <ChatInput value="" onChange={onChange} onSend={onSend} label="पूछें" streaming onStop={onStop} />
+          <ChatInput value="hi" onChange={onChange} onSend={onSend} label="बंद" disabled />
+        </UIProvider>
+      </SafeAreaProvider>,
+    );
+    await fireEvent.press(screen.getByRole("button", { name: "रोकें" }));
+    expect(onStop).toHaveBeenCalled();
+    expect(screen.getByRole("button", { name: "भेजें" }).props.accessibilityState).toMatchObject({ disabled: true });
+  });
+});
+
+describe("social and palace", () => {
+  it("FriendRow: status in words, streak, radio selection", async () => {
+    const onPress = jest.fn();
+    await renderUI(
+      <>
+        <FriendRow name="Aarav" avatar={{ species: "dog" }} studiedToday streakDays={12} />
+        <FriendRow name="Diya" avatar={{ species: "cat" }} studiedToday={false} selectable selected={false} onPress={onPress} />
+        <FriendRow name="Kabir" avatar={{ species: "cat" }} selectable disabled note="Not in JEE" />
+      </>,
+    );
+    expect(screen.getByLabelText("Aarav, Studied, 12-day streak")).toBeTruthy();
+    const diya = screen.getByRole("radio", { name: "Diya, Not yet" });
+    expect(diya.props.accessibilityState).toMatchObject({ checked: false });
+    await fireEvent.press(diya);
+    expect(onPress).toHaveBeenCalled();
+    expect(screen.getByRole("radio", { name: "Kabir, Not in JEE" }).props.accessibilityState).toMatchObject({ disabled: true });
+  });
+
+  it("LeagueTierBadge: names come from props, state in the label", async () => {
+    await renderUI(
+      <>
+        <LeagueTierBadge name="Mango" crest="league-05-mango" state="current" />
+        <LeagueTierBadge name="Banyan" crest="league-10-banyan" state="future" size="sm" />
+      </>,
+    );
+    expect(screen.getByRole("image", { name: "Mango league crest, current tier" })).toBeTruthy();
+    expect(screen.getByRole("image", { name: "Banyan league crest, not reached yet" })).toBeTruthy();
+  });
+
+  it("DuelScoreBar: rows with scores, solo and dropped", async () => {
+    await renderUI(
+      <>
+        <DuelScoreBar count={5} you={{ name: "You", avatar: { species: "cat" }, score: 30, answers: ["right", "wrong"] }} opponent={{ name: "Diya", avatar: { species: "dog" }, score: 20, answers: ["answered"], dropped: true }} />
+        <DuelScoreBar count={5} you={{ name: "Solo", avatar: { species: "cat" }, score: 0, answers: [] }} />
+      </>,
+    );
+    expect(screen.getByLabelText("You: 30 points, 2 of 5 answered")).toBeTruthy();
+    expect(screen.getByLabelText("Diya: 20 points, 1 of 5 answered, Connection dropped")).toBeTruthy();
+    expect(screen.getByText("Practise solo · not ranked")).toBeTruthy();
+  });
+
+  it("SquadCard and CheerButton", async () => {
+    const onSquad = jest.fn();
+    const onCheer = jest.fn();
+    await renderUI(
+      <>
+        <SquadCard name="Tulsi Squad" crest="squad-crest-tulsi" done={240} target={400} daysLeft={3} onPress={onSquad} />
+        <CheerButton label="Clap" icon="HandsClapping" count={3} onPress={onCheer} />
+        <CheerButton label="Star" icon="Star" count={5} sent onPress={onCheer} />
+        <CheerButton kind="message" label="Great streak!" icon="Plant" sent />
+      </>,
+    );
+    await fireEvent.press(screen.getByRole("button", { name: "Tulsi Squad, squad quest, 240 of 400, 3 days left" }));
+    expect(onSquad).toHaveBeenCalled();
+    await fireEvent.press(screen.getByRole("button", { name: "Clap, 3" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Star, 5" }));
+    expect(onCheer).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("button", { name: "Great streak!, Sent!" })).toBeTruthy();
+  });
+
+  it("RoomCard: due marker and the two buttons", async () => {
+    const onWalk = jest.fn();
+    const onQuiz = jest.fn();
+    await renderUI(<RoomCard testID="room" name="My home" image="palace-room-living" meta="4 rooms · 12 items" due onWalk={onWalk} onQuiz={onQuiz} />, { locale: "hi" });
+    expect(screen.getByText("बाकी")).toBeTruthy();
+    await fireEvent.press(screen.getByTestId("room-walk"));
+    await fireEvent.press(screen.getByTestId("room-quiz"));
+    expect(onWalk).toHaveBeenCalled();
+    expect(onQuiz).toHaveBeenCalled();
+    expect(screen.getByText("सैर करें")).toBeTruthy();
+  });
+
+  it("LimitMeter: weekly wording", async () => {
+    await renderUI(
+      <>
+        <LimitMeter label="Sectional mocks" used={1} limit={2} period="week" />
+        <LimitMeter label="Sectional mocks" used={2} limit={2} period="week" />
+      </>,
+    );
+    expect(screen.getByText("1 left this week")).toBeTruthy();
+    expect(screen.getByText("Done for this week.")).toBeTruthy();
   });
 });
 

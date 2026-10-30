@@ -10,13 +10,17 @@ from __future__ import annotations
 import asyncio
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
-from typing import Any, Protocol
+from typing import TYPE_CHECKING, Any, Protocol
 
 import structlog
 
 from smriti_api.core.db import Database
 from smriti_api.services.analytics import AnalyticsSink
 from smriti_api.services.auth_admin import AuthAdmin
+
+if TYPE_CHECKING:
+    from smriti_api.ai.gateway import AIGateway
+    from smriti_api.integrations import Integrations
 
 log = structlog.get_logger(__name__)
 
@@ -28,6 +32,9 @@ QUEUE_BY_JOB = {
     "mocks_auto_submit": "default",
     "tutor_retention": "default",
     "content_publish": "content-publish",
+    "render_pdf": "pdf",
+    "media_generate": "media",
+    "notify_dispatch": "notifications",
 }
 
 
@@ -40,6 +47,9 @@ class JobDeps:
     db: Database
     auth_admin: AuthAdmin
     analytics: AnalyticsSink
+    # Wave 2 (Agent A): notifications, PDF and media jobs need these; older jobs ignore them.
+    integrations: Integrations | None = None
+    ai: AIGateway | None = None
 
 
 JobFn = Callable[..., Awaitable[Any]]
@@ -97,11 +107,14 @@ class ArqJobQueue:
 
 
 def job_registry() -> dict[str, JobFn]:
-    from smriti_api.services import accounts, mocks, tutor
+    from smriti_api.services import accounts, exports, media, mocks, notify, tutor
 
     return {
         "merge_guest": accounts.merge_guest_job,
         "purge_deleted_accounts": accounts.purge_deleted_accounts_job,
         "mocks_auto_submit": mocks.auto_submit_expired_job,
         "tutor_retention": tutor.purge_old_messages_job,
+        "render_pdf": exports.render_export,
+        "media_generate": media.generate_job,
+        "notify_dispatch": notify.dispatch_job,
     }

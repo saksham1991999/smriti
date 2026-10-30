@@ -1586,6 +1586,89 @@
         "pendingFreezes": [],
         "lastGrantMonth": null
       }
+    },
+    {
+      "name": "no freeze is spent when the streak is 0",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 1,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 0,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 0,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 2,
+        "longest": 2,
+        "lastStudiedDay": "2026-10-05",
+        "closedThrough": "2026-10-05",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
     }
   ]
 }

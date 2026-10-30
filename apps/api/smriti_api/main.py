@@ -23,13 +23,20 @@ from smriti_api.core.logging import configure_logging
 from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.core.redis import create_redis
 from smriti_api.core.telemetry import configure_tracing, instrument_app
+from smriti_api.integrations import build_integrations
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
+from smriti_api.routes import billing as billing_routes
+from smriti_api.routes import exports as exports_routes
+from smriti_api.routes import guardian as guardian_routes
 from smriti_api.routes import mocks as mock_routes
+from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import practice as practice_routes
+from smriti_api.routes import reviews as reviews_routes
 from smriti_api.routes import tutor as tutor_routes
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import ArqJobQueue, InlineJobQueue, JobDeps, JobQueue, job_registry
+from smriti_api.services.privacy import ConsentAwareAnalytics
 
 log = structlog.get_logger("smriti_api")
 
@@ -43,11 +50,20 @@ async def build_services(settings: Settings) -> AppServices:
     redis = create_redis(settings.redis_url)
     http = httpx.AsyncClient(timeout=30)
     auth_admin = build_auth_admin(settings, db, http)
-    analytics = LogAnalyticsSink()
+    analytics = ConsentAwareAnalytics(LogAnalyticsSink(), db)
+    integrations = build_integrations(settings, http)
+    ai = build_gateway(settings, db, http)
     jobs: JobQueue
     if settings.effective_jobs_mode == JobsMode.inline:
         jobs = InlineJobQueue(
-            JobDeps(db=db, auth_admin=auth_admin, analytics=analytics), job_registry()
+            JobDeps(
+                db=db,
+                auth_admin=auth_admin,
+                analytics=analytics,
+                integrations=integrations,
+                ai=ai,
+            ),
+            job_registry(),
         )
     else:
         jobs = ArqJobQueue(settings.redis_url)
@@ -62,7 +78,8 @@ async def build_services(settings: Settings) -> AppServices:
         jobs=jobs,
         auth_admin=auth_admin,
         analytics=analytics,
-        ai=build_gateway(settings, db, http),
+        ai=ai,
+        integrations=integrations,
     )
 
 
@@ -160,8 +177,14 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
         tutor_routes.router,
     ):
         app.include_router(router)
+    app.include_router(reviews_routes.router)
+    app.include_router(billing_routes.router)
+    app.include_router(guardian_routes.router)
+    app.include_router(notify_routes.router)
+    app.include_router(exports_routes.router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
+        app.include_router(exports_routes.dev_router)
     return app
 
 

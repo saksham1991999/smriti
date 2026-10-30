@@ -423,6 +423,14 @@ class TopicProgressState(BaseModel):
 class EntitlementState(BaseModel):
     plan: Literal["free", "pro"]
     pro_until: datetime | None
+    # The optional fields app-core's EntitlementSection knows (me-money §5.1 "Server truth").
+    status: (
+        Literal["active", "trialing", "grace", "on_hold", "cancelled", "expired", "pending"] | None
+    ) = None
+    grace_until: datetime | None = None
+    cancel_at_period_end: bool = False
+    is_intro: bool = False
+    source: Literal["razorpay", "play", "app_store", "promo"] | None = None
 
 
 class SyncStateResponse(BaseModel):

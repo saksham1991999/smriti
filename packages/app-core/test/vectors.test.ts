@@ -82,6 +82,8 @@ const streakCases: StreakCase[] = [
     days: [S(true), S(true), S(true, { grant: 'pro' }), S(false), S(false), S(false), S(true)],
   },
   { name: 'long break of 45 days', start: '2026-09-01', initial: { ...EMPTY_STREAK, freezesEquipped: 2 }, days: [...studied(10), ...missed(45), S(true)] },
+  // R52: with the streak at 0 there is nothing to protect, so a missed day keeps the freeze.
+  { name: 'no freeze is spent when the streak is 0', start: '2026-10-01', initial: { ...EMPTY_STREAK, freezesEquipped: 1 }, days: [S(false), S(false), S(true), S(false), S(true)] },
 ];
 
 function runStreak(c: StreakCase) {

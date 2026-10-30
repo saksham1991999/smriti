@@ -1,0 +1,758 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/questions.schema.json",
+  "title": "QuestionsFile",
+  "description": "content/questions/{subject}/{chapter_slug}/{topic_slug}.json (question-author, pyq-ingest). Projects to content.questions, question_keys and question_concepts. Practice and lesson answers ship in bundles; mock and daily answers never ship to devices.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/FileMeta"
+    }
+  ],
+  "required": ["schema", "topic", "questions"],
+  "properties": {
+    "schema": {
+      "const": "questions@1"
+    },
+    "topic": {
+      "$ref": "common.schema.json#/$defs/TopicId"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Question"
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "QuestionType": {
+      "$ref": "blueprint.schema.json#/$defs/QuestionType"
+    },
+    "QuestionUse": {
+      "description": "practice: practice bank and drills. lesson: lesson check cards. placement: Find my level sets. mock and daily: keys stay on the server, so a question with mock or daily cannot also be practice, lesson or placement.",
+      "type": "string",
+      "enum": ["practice", "lesson", "placement", "mock", "daily"]
+    },
+    "Solution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["feynman", "steps"],
+      "properties": {
+        "feynman": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "shortcut": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            }
+          ]
+        },
+        "shortcut_fails_when": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/I18nText"
+            }
+          ]
+        },
+        "common_traps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["why"],
+            "properties": {
+              "option_id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "why": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        }
+      }
+    },
+    "QuestionBase": {
+      "type": "object",
+      "required": ["id", "type", "concepts", "depth", "stem", "use"],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/QuestionId"
+        },
+        "type": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "concepts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "weight"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/ConceptId"
+              },
+              "weight": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              }
+            }
+          }
+        },
+        "depth": {
+          "$ref": "common.schema.json#/$defs/Depth"
+        },
+        "exam_styles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/ExamId"
+          }
+        },
+        "stem": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "hints": {
+          "description": "Hints for the first wrong try, used when the picked option has no common_traps entry (learn G3).",
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "solution": {
+          "$ref": "#/$defs/Solution"
+        },
+        "ideal_time_s": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "difficulty_estimate": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"]
+        },
+        "media": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/ImageRef"
+            }
+          ]
+        },
+        "use": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/QuestionUse"
+          }
+        },
+        "source": {
+          "type": "string",
+          "enum": ["original", "pyq", "ncert_exemplar", "adapted"]
+        },
+        "pyq": {
+          "description": "Back-link to the paper, required when source is pyq.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["paper", "number"],
+          "properties": {
+            "paper": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "number": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "Options": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "$ref": "common.schema.json#/$defs/IdText"
+      }
+    },
+    "OptionAnswer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["option_ids"],
+      "properties": {
+        "option_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/Slug"
+          }
+        }
+      }
+    },
+    "SingleOptionAnswer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["option_ids"],
+      "properties": {
+        "option_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "$ref": "common.schema.json#/$defs/Slug"
+          }
+        }
+      }
+    },
+    "McqSingle": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "options", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "mcq_single"
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        },
+        "answer": {
+          "$ref": "#/$defs/SingleOptionAnswer"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "McqMulti": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "options", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "mcq_multi"
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        },
+        "answer": {
+          "$ref": "#/$defs/OptionAnswer"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "AssertionReason": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "assertion", "reason", "options", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "assertion_reason"
+        },
+        "assertion": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        },
+        "answer": {
+          "$ref": "#/$defs/SingleOptionAnswer"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "StatementBased": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "statements", "options", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "statement_based"
+        },
+        "statements": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        },
+        "answer": {
+          "$ref": "#/$defs/SingleOptionAnswer"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Numerical": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "numerical"
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "unit"],
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "tolerance": {
+              "$ref": "common.schema.json#/$defs/Tolerance"
+            },
+            "unit": {
+              "$ref": "common.schema.json#/$defs/Unit"
+            }
+          }
+        },
+        "answer_format": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "allow_scientific": {
+              "type": "boolean"
+            },
+            "decimals": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Integer": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "integer"
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value"],
+          "properties": {
+            "value": {
+              "type": "integer"
+            },
+            "unit": {
+              "$ref": "common.schema.json#/$defs/Unit"
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "MatrixMatch": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "rows", "columns", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "matrix_match"
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "columns": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pairs"],
+          "properties": {
+            "pairs": {
+              "description": "Each row with the column ids that match it.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["row", "columns"],
+                "properties": {
+                  "row": {
+                    "$ref": "common.schema.json#/$defs/Slug"
+                  },
+                  "columns": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "$ref": "common.schema.json#/$defs/Slug"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "MatchList": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "list_i", "list_ii", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "match_list"
+        },
+        "list_i": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "list_ii": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "options": {
+          "$ref": "#/$defs/Options"
+        },
+        "answer": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SingleOptionAnswer"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["pairs"],
+              "properties": {
+                "pairs": {
+                  "description": "Each list_i id with its list_ii id.",
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["left", "right"],
+                    "properties": {
+                      "left": {
+                        "$ref": "common.schema.json#/$defs/Slug"
+                      },
+                      "right": {
+                        "$ref": "common.schema.json#/$defs/Slug"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "FillBlank": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "blanks", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "fill_blank"
+        },
+        "blanks": {
+          "description": "Blanks appear in the stem as {{blank:<id>}}.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "choices": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/IdText"
+                }
+              }
+            }
+          }
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["blanks"],
+          "properties": {
+            "blanks": {
+              "description": "The key for each blank: a choice id, or the accepted typed answers.",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["blank", "choice_id"],
+                    "properties": {
+                      "blank": {
+                        "$ref": "common.schema.json#/$defs/Slug"
+                      },
+                      "choice_id": {
+                        "$ref": "common.schema.json#/$defs/Slug"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["blank", "accepted"],
+                    "properties": {
+                      "blank": {
+                        "$ref": "common.schema.json#/$defs/Slug"
+                      },
+                      "accepted": {
+                        "description": "Accepted typed answers. The event sends only the matched key, never the typed text.",
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": ["key", "text"],
+                          "properties": {
+                            "key": {
+                              "$ref": "common.schema.json#/$defs/Slug"
+                            },
+                            "text": {
+                              "$ref": "common.schema.json#/$defs/I18nStringList"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "OrderSteps": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "steps", "answer", "solution"],
+      "properties": {
+        "type": {
+          "const": "order_steps"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "common.schema.json#/$defs/IdText"
+          }
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["order"],
+          "properties": {
+            "order": {
+              "type": "array",
+              "minItems": 2,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Paragraph": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/QuestionBase"
+        }
+      ],
+      "required": ["type", "passage", "children"],
+      "properties": {
+        "type": {
+          "const": "paragraph"
+        },
+        "passage": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "children": {
+          "description": "Child questions sharing the passage, one card each in the player.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/ChildQuestion"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "ChildQuestion": {
+      "type": "object",
+      "required": ["type"],
+      "discriminator": {
+        "propertyName": "type"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/McqSingle"
+        },
+        {
+          "$ref": "#/$defs/McqMulti"
+        },
+        {
+          "$ref": "#/$defs/Numerical"
+        },
+        {
+          "$ref": "#/$defs/Integer"
+        },
+        {
+          "$ref": "#/$defs/MatrixMatch"
+        },
+        {
+          "$ref": "#/$defs/MatchList"
+        },
+        {
+          "$ref": "#/$defs/AssertionReason"
+        },
+        {
+          "$ref": "#/$defs/StatementBased"
+        },
+        {
+          "$ref": "#/$defs/FillBlank"
+        },
+        {
+          "$ref": "#/$defs/OrderSteps"
+        }
+      ]
+    },
+    "Question": {
+      "type": "object",
+      "required": ["type"],
+      "discriminator": {
+        "propertyName": "type"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/McqSingle"
+        },
+        {
+          "$ref": "#/$defs/McqMulti"
+        },
+        {
+          "$ref": "#/$defs/Numerical"
+        },
+        {
+          "$ref": "#/$defs/Integer"
+        },
+        {
+          "$ref": "#/$defs/MatrixMatch"
+        },
+        {
+          "$ref": "#/$defs/MatchList"
+        },
+        {
+          "$ref": "#/$defs/AssertionReason"
+        },
+        {
+          "$ref": "#/$defs/StatementBased"
+        },
+        {
+          "$ref": "#/$defs/Paragraph"
+        },
+        {
+          "$ref": "#/$defs/FillBlank"
+        },
+        {
+          "$ref": "#/$defs/OrderSteps"
+        }
+      ]
+    }
+  }
+}

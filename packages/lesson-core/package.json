@@ -1,0 +1,26 @@
+{
+  "name": "@smriti/lesson-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Platform-free lesson logic shared by the web and native players: card plans, answer checking, the help ladder, scoring, XP and lesson events.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "lint": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@smriti/content-schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@smriti/content-publish": "workspace:*",
+    "@types/node": "24.19.2",
+    "typescript": "5.6.3",
+    "vitest": "4.1.11"
+  }
+}

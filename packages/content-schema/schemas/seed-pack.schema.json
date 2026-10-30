@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/seed-pack.schema.json",
+  "title": "SeedPack",
+  "description": "seed/{variant_id}/{locale}/seed.json: the index of a built seed pack that ships inside the app build. Projects to content.seed_packs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "variant_id",
+    "locale",
+    "hash",
+    "total_bytes",
+    "manifests",
+    "bundles",
+    "assets"
+  ],
+  "properties": {
+    "schema": { "const": "seed-pack@1" },
+    "variant_id": { "type": "string" },
+    "locale": { "$ref": "common.schema.json#/$defs/Locale" },
+    "fixture": { "type": "boolean" },
+    "hash": {
+      "description": "sha256 over the sorted file hashes in the pack.",
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "total_bytes": { "type": "integer", "minimum": 0, "maximum": 8388608 },
+    "manifests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["exam_profile", "path", "hash", "version"],
+        "properties": {
+          "exam_profile": { "type": "string" },
+          "path": { "type": "string" },
+          "hash": { "type": "string" },
+          "version": { "type": "integer" }
+        }
+      }
+    },
+    "bundles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "hash", "path", "size_bytes"],
+        "properties": {
+          "id": { "type": "string" },
+          "hash": { "type": "string" },
+          "path": { "type": "string" },
+          "size_bytes": { "type": "integer" }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ref", "sha256", "path", "bytes"],
+        "properties": {
+          "ref": { "type": "string" },
+          "sha256": { "type": "string" },
+          "path": { "type": "string" },
+          "bytes": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

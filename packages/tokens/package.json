@@ -1,0 +1,34 @@
+{
+  "name": "@smriti/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Smriti design tokens: typed TypeScript, CSS variables, a Tailwind preset, the React Native theme, and the shared component contracts used by ui-web and ui-native.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ui": "./src/ui/index.ts",
+    "./tailwind-preset": "./tailwind-preset.ts",
+    "./native": "./native.ts",
+    "./tokens.json": "./tokens.json",
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": ["src", "tokens.json", "tailwind-preset.ts", "native.ts", "dist"],
+  "scripts": {
+    "build": "tsx scripts/generate.ts",
+    "generate": "tsx scripts/generate.ts",
+    "typecheck": "tsc --noEmit -p .",
+    "lint": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@smriti/i18n": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.3",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.4"
+  }
+}

@@ -1,11 +1,13 @@
 // Loads the site content index at build time and exposes the selectors the pages use.
 //
-// Source order: CONTENT_INDEX_PATH (written by the content-engine publish job), else the
-// local fixture (marked `"fixture": true`). With SITE_REQUIRE_CONTENT_INDEX=1 a fixture fails
-// the build, so production can never ship placeholder pages.
+// Source order: CONTENT_INDEX_PATH (written by the content-engine publish job); else the
+// publisher's local output, tools/content-publish/out/site-index.json, when it exists; else the
+// local fixture (marked `"fixture": true`). CONTENT_INDEX_PATH=fixture forces the local fixture
+// (the e2e smoke tests expect its pages). With SITE_REQUIRE_CONTENT_INDEX=1 any fixture fails the
+// build, so production can never ship placeholder pages.
 
-import { readFileSync } from "node:fs";
-import { isAbsolute, resolve } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, isAbsolute, join, resolve } from "node:path";
 import { site } from "../config/site";
 import fixture from "./fixture/site-index.fixture.json";
 import { SiteIndex, type Blueprint, type Chapter, type Exam, type Subject, type Topic } from "./schema";
@@ -52,9 +54,34 @@ export function loadIndexFrom(opts: LoadOptions = {}): SiteIndex {
   return idx;
 }
 
+/** Where `pnpm --filter @smriti/content-publish publish:local` writes the index, from the repo root. */
+export const PUBLISHER_INDEX = join("tools", "content-publish", "out", "site-index.json");
+
+/**
+ * The publisher's local output, found by walking up from `start` to the workspace root
+ * (the folder with pnpm-workspace.yaml). Undefined when nothing has been published.
+ */
+export function findPublisherIndex(start: string = process.cwd()): string | undefined {
+  let dir = resolve(start);
+  for (;;) {
+    const candidate = join(dir, PUBLISHER_INDEX);
+    if (existsSync(candidate)) return candidate;
+    if (existsSync(join(dir, "pnpm-workspace.yaml"))) return undefined;
+    const up = dirname(dir);
+    if (up === dir) return undefined;
+    dir = up;
+  }
+}
+
+/** The index file to load: the configured path, `fixture` for the local fixture, else the publisher's output. */
+export function resolveIndexPath(configured: string | undefined, start?: string): string | undefined {
+  if (configured === "fixture") return undefined;
+  return configured ?? findPublisherIndex(start);
+}
+
 let cached: SiteIndex | undefined;
 export function getIndex(): SiteIndex {
-  cached ??= loadIndexFrom({ path: site.contentIndexPath, requireReal: site.requireContentIndex });
+  cached ??= loadIndexFrom({ path: resolveIndexPath(site.contentIndexPath), requireReal: site.requireContentIndex });
   return cached;
 }
 

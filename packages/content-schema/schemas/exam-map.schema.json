@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/exam-map.schema.json",
+  "title": "ExamMapFile",
+  "description": "content/exam-maps/{exam_profile_id}.json: which concepts an exam profile includes, to what depth, with priority and computed PYQ stats. Projects to content.exam_concepts.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "exam_profile", "concepts"],
+  "properties": {
+    "schema": { "const": "exam-map@1" },
+    "exam_profile": { "$ref": "common.schema.json#/$defs/ExamProfileId" },
+    "released_subjects": {
+      "description": "Subjects marked for release. The content check fails when one of them is below 100% coverage, and the publisher ships only these to a non-local target.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/Slug" }
+    },
+    "stats_basis": {
+      "description": "Set by pyq-ingest: the papers weightage and pyq_count were computed from.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["papers", "computed_at"],
+      "properties": {
+        "papers": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "computed_at": { "$ref": "common.schema.json#/$defs/IsoDate" },
+        "method": { "type": "string" }
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "depth", "priority", "weightage", "pyq_count"],
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/ConceptId" },
+          "depth": {
+            "$ref": "common.schema.json#/$defs/Depth"
+          },
+          "priority": {
+            "description": "core by default, optional only when the syllabus marks it so, high_yield only when computed from real PYQ data.",
+            "type": "string",
+            "enum": ["core", "high_yield", "optional"]
+          },
+          "weightage": {
+            "description": "Share of marks over stats_basis.papers. null until pyq-ingest computes it. Never estimated.",
+            "type": ["number", "null"],
+            "minimum": 0,
+            "maximum": 100
+          },
+          "pyq_count": { "type": ["integer", "null"], "minimum": 0 }
+        }
+      }
+    }
+  },
+  "unevaluatedProperties": false
+}

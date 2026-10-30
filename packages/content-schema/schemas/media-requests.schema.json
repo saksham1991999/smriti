@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/media-requests.schema.json",
+  "title": "MediaRequestsFile",
+  "description": "content/media/requests/{subject_id}/{chapter_slug}.json: every media item the content needs. Content files point to request ids; the media skills fulfil them (image presets go to Agnes through visual-director).",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "requests"],
+  "properties": {
+    "schema": { "const": "media-requests@1" },
+    "requests": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/MediaRequest" }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "MediaKind": {
+      "type": "string",
+      "enum": [
+        "image",
+        "diagram",
+        "comic",
+        "pano360",
+        "animation_rive",
+        "animation_lottie",
+        "model3d",
+        "sim",
+        "audio_tts",
+        "audio_song"
+      ]
+    },
+    "Preset": {
+      "description": "DESIGN.md 6.2 illustration presets (image kinds only).",
+      "type": "string",
+      "enum": [
+        "sunny-object",
+        "sunny-scene",
+        "sunny-diagram",
+        "pet-cat",
+        "pet-dog",
+        "plant-stage",
+        "storybook",
+        "roleplay-portrait",
+        "memory-hook",
+        "pano-360",
+        "badge",
+        "league-tier",
+        "empty-state"
+      ]
+    },
+    "MediaResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "reused"],
+      "properties": {
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "asset_id": { "type": ["string", "null"] },
+        "reused": { "type": "boolean" },
+        "mime": { "type": "string" },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "duration_ms": { "type": "integer", "minimum": 1 },
+        "sim_id": {
+          "description": "kind sim: the sims/{sim_id} bundle.",
+          "type": "string"
+        },
+        "sim_version": { "type": "string" },
+        "source_path": {
+          "description": "Fixture files only: a repo path under design/mocks/assets/ the publisher copies for local output.",
+          "type": "string",
+          "pattern": "^design/mocks/assets/[A-Za-z0-9._-]+$"
+        },
+        "licence": { "type": "string" },
+        "attribution": { "type": ["string", "null"] }
+      }
+    },
+    "MediaRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "brief", "used_by", "status", "result"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/MediaRef" },
+        "kind": { "$ref": "#/$defs/MediaKind" },
+        "preset": { "$ref": "#/$defs/Preset" },
+        "subject_family": { "$ref": "common.schema.json#/$defs/SubjectFamily" },
+        "brief": { "type": "string", "minLength": 1 },
+        "must_show": { "type": "array", "items": { "type": "string" } },
+        "must_not_show": { "type": "array", "items": { "type": "string" } },
+        "label_anchors": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/LabelAnchor" }
+        },
+        "alt": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "decorative": { "type": "boolean" },
+        "transcript": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "locale": {
+          "$ref": "common.schema.json#/$defs/Locale"
+        },
+        "used_by": {
+          "description": "Card, question or mnemonic ids that use this request.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "status": { "type": "string", "enum": ["requested", "generated", "approved", "rejected"] },
+        "rejected_reason": { "type": ["string", "null"] },
+        "result": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/MediaResult" }] }
+      }
+    }
+  }
+}

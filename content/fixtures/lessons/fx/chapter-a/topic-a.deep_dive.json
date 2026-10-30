@@ -1,0 +1,385 @@
+{
+  "schema": "lesson@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx.chapter-a.topic-a:deep_dive",
+  "topic": "fx.chapter-a.topic-a",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 5,
+  "concepts": [
+    "fx.chapter-a.topic-a.sub-1.concept-1",
+    "fx.chapter-a.topic-a.sub-1.concept-2"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Fixture title bite A1",
+        "hi": "फ़िक्स्चर शीर्षक bite A1"
+      },
+      "subtopic": "fx.chapter-a.topic-a.sub-1",
+      "card_ids": [
+        "fx.chapter-a.topic-a:dd:01",
+        "fx.chapter-a.topic-a:dd:02",
+        "fx.chapter-a.topic-a:dd:03",
+        "fx.chapter-a.topic-a:dd:04",
+        "fx.chapter-a.topic-a:dd:05"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Fixture title bite A2",
+        "hi": "फ़िक्स्चर शीर्षक bite A2"
+      },
+      "subtopic": "fx.chapter-a.topic-a.sub-1",
+      "card_ids": [
+        "fx.chapter-a.topic-a:dd:06",
+        "fx.chapter-a.topic-a:dd:07",
+        "fx.chapter-a.topic-a:dd:08",
+        "fx.chapter-a.topic-a:dd:09",
+        "fx.chapter-a.topic-a:dd:10",
+        "fx.chapter-a.topic-a:dd:11"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "fx.chapter-a.topic-a:dd:01",
+      "type": "story",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Fixture title A1",
+        "hi": "फ़िक्स्चर शीर्षक A1"
+      },
+      "body": {
+        "en": "Fixture body A1",
+        "hi": "फ़िक्स्चर पाठ A1"
+      },
+      "media": "img.chapter-a.fx-scene-a",
+      "narration": {
+        "en": "audio.chapter-a.fx-narration-a-en",
+        "hi": "audio.chapter-a.fx-narration-a-hi"
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Fixture title A2",
+        "hi": "फ़िक्स्चर शीर्षक A2"
+      },
+      "body": {
+        "en": "Fixture body A2 with inline maths $x_1 + x_2$.",
+        "hi": "फ़िक्स्चर पाठ A2, गणित $x_1 + x_2$ के साथ।"
+      },
+      "highlights": [
+        {
+          "term": {
+            "en": "Fixture term",
+            "hi": "फ़िक्स्चर शब्द"
+          },
+          "definition": {
+            "en": "Fixture explanation 1",
+            "hi": "फ़िक्स्चर व्याख्या 1"
+          }
+        }
+      ],
+      "media": "img.chapter-a.fx-diagram-a"
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-1"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Fixture stem A3",
+        "hi": "फ़िक्स्चर प्रश्न A3"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Fixture item 1",
+              "hi": "फ़िक्स्चर आइटम 1"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Fixture item 2",
+              "hi": "फ़िक्स्चर आइटम 2"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Fixture item 3",
+              "hi": "फ़िक्स्चर आइटम 3"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "b1",
+            "label": {
+              "en": "Fixture label 1",
+              "hi": "फ़िक्स्चर लेबल 1"
+            }
+          },
+          {
+            "id": "b2",
+            "label": {
+              "en": "Fixture label 2",
+              "hi": "फ़िक्स्चर लेबल 2"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "b1"
+          },
+          {
+            "item": "i2",
+            "bin": "b2"
+          },
+          {
+            "item": "i3",
+            "bin": "b1"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Fixture explanation correct",
+          "hi": "फ़िक्स्चर व्याख्या correct"
+        },
+        "wrong": {
+          "en": "Fixture explanation wrong",
+          "hi": "फ़िक्स्चर व्याख्या wrong"
+        }
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:04",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-1"
+      ],
+      "depth": 2,
+      "question": "q.fx.chapter-a.topic-a.0001"
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:05",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point A5.1",
+          "hi": "फ़िक्स्चर बिंदु A5.1"
+        },
+        {
+          "en": "Fixture point A5.2",
+          "hi": "फ़िक्स्चर बिंदु A5.2"
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:06",
+      "type": "formula",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Fixture title A6",
+        "hi": "फ़िक्स्चर शीर्षक A6"
+      },
+      "latex": "y = 2x + 1",
+      "spoken": {
+        "en": "y equals two x plus one",
+        "hi": "y बराबर दो x धन एक"
+      },
+      "symbols": [
+        {
+          "symbol": "y",
+          "meaning": {
+            "en": "Fixture name y",
+            "hi": "फ़िक्स्चर नाम y"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "x",
+          "meaning": {
+            "en": "Fixture name x",
+            "hi": "फ़िक्स्चर नाम x"
+          },
+          "unit": "m"
+        }
+      ],
+      "conditions": {
+        "en": "Fixture line A6",
+        "hi": "फ़िक्स्चर पंक्ति A6"
+      },
+      "vault_id": "fx.vault.formula-a"
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Fixture problem: find y when $x = 2$.",
+        "hi": "फ़िक्स्चर प्रश्न: $x = 2$ पर y ज्ञात करें।"
+      },
+      "hints": [
+        {
+          "en": "Fixture hint 1",
+          "hi": "फ़िक्स्चर संकेत 1"
+        },
+        {
+          "en": "Fixture hint 2",
+          "hi": "फ़िक्स्चर संकेत 2"
+        }
+      ],
+      "solution_steps": [
+        {
+          "en": "Fixture step $y = 2(2) + 1$",
+          "hi": "फ़िक्स्चर चरण $y = 2(2) + 1$"
+        },
+        {
+          "en": "Fixture step 2",
+          "hi": "फ़िक्स्चर चरण 2"
+        }
+      ],
+      "answer": {
+        "en": "$y = 5$ m",
+        "hi": "$y = 5$ m"
+      },
+      "answer_value": {
+        "value": 5,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "shortcut": {
+        "en": "Fixture hint 1",
+        "hi": "फ़िक्स्चर संकेत 1"
+      },
+      "common_trap": {
+        "en": "Fixture trap 1",
+        "hi": "फ़िक्स्चर आम गलती 1"
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:08",
+      "type": "derivation",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Fixture title A8",
+        "hi": "फ़िक्स्चर शीर्षक A8"
+      },
+      "steps": [
+        {
+          "latex": "y - 1 = 2x",
+          "say": {
+            "en": "Fixture step 1",
+            "hi": "फ़िक्स्चर चरण 1"
+          },
+          "why": {
+            "en": "Fixture explanation 1",
+            "hi": "फ़िक्स्चर व्याख्या 1"
+          }
+        },
+        {
+          "latex": "x = \\frac{y - 1}{2}",
+          "say": {
+            "en": "Fixture step 2",
+            "hi": "फ़िक्स्चर चरण 2"
+          },
+          "why": null
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:09",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-a.0002"
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ],
+      "depth": 5,
+      "title": {
+        "en": "Fixture going further",
+        "hi": "फ़िक्स्चर और आगे"
+      },
+      "body": {
+        "en": "Fixture body A10",
+        "hi": "फ़िक्स्चर पाठ A10"
+      },
+      "media": "img.chapter-a.fx-diagram-a"
+    },
+    {
+      "id": "fx.chapter-a.topic-a:dd:11",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Fixture point A11.1",
+          "hi": "फ़िक्स्चर बिंदु A11.1"
+        },
+        {
+          "en": "Fixture point A11.2",
+          "hi": "फ़िक्स्चर बिंदु A11.2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -6,9 +6,12 @@ import fixture from "../../src/content-index/fixture/site-index.fixture.json";
 import {
   allTopicRefs,
   conductingBodies,
+  findPublisherIndex,
   loadIndexFrom,
   parseIndex,
   paths,
+  PUBLISHER_INDEX,
+  resolveIndexPath,
   subjectsForExam,
   visibleBlueprint,
 } from "../../src/content-index";
@@ -132,6 +135,25 @@ describe("site content index", () => {
     writeFileSync(file, JSON.stringify(real));
     const idx = loadIndexFrom({ path: file, requireReal: true });
     expect(idx.fixture).toBe(false);
+  });
+
+  it("defaults to the publisher's local output, found from anywhere in the workspace", () => {
+    const root = mkdtempSync(join(tmpdir(), "site-ws-"));
+    writeFileSync(join(root, "pnpm-workspace.yaml"), "packages: []\n");
+    const site = join(root, "apps", "site");
+    mkdirSync(site, { recursive: true });
+    expect(findPublisherIndex(site)).toBeUndefined();
+    expect(resolveIndexPath(undefined, site)).toBeUndefined();
+
+    const published = join(root, PUBLISHER_INDEX);
+    mkdirSync(join(published, ".."), { recursive: true });
+    writeFileSync(published, JSON.stringify(fixture));
+    expect(findPublisherIndex(site)).toBe(published);
+    expect(resolveIndexPath(undefined, site)).toBe(published);
+    // An explicit path wins, and `fixture` forces the local fixture.
+    expect(resolveIndexPath("/elsewhere/index.json", site)).toBe("/elsewhere/index.json");
+    expect(resolveIndexPath("fixture", site)).toBeUndefined();
+    expect(loadIndexFrom({ path: resolveIndexPath(undefined, site) }).exams.length).toBeGreaterThan(0);
   });
 
   it("explains an unreadable index path", () => {

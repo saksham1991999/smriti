@@ -1,0 +1,11 @@
+/* Self-hosted WOFF2 (DESIGN.md §3): Plus Jakarta Sans and Noto Sans Devanagari, both SIL OFL 1.1,
+   from @fontsource. Only the weights the type scale uses (500, 600, 700, 800). Each file declares
+   unicode-range subsets, so browsers download only the scripts a page uses. */
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+@import "@fontsource/noto-sans-devanagari/500.css";
+@import "@fontsource/noto-sans-devanagari/600.css";
+@import "@fontsource/noto-sans-devanagari/700.css";
+@import "@fontsource/noto-sans-devanagari/800.css";

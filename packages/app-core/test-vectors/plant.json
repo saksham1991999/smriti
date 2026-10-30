@@ -1,0 +1,919 @@
+{
+  "version": 1,
+  "config": {
+    "stage_days": [
+      1,
+      7,
+      30,
+      100
+    ],
+    "health_missed_days": {
+      "droopy": 1,
+      "dry": 3,
+      "wilted": 7,
+      "dormant": 21
+    },
+    "revival_days": {
+      "droopy": 1,
+      "dry": 2,
+      "wilted": 3,
+      "dormant": 5
+    }
+  },
+  "cases": [
+    {
+      "name": "seed to sapling",
+      "initial": {
+        "growthPoints": 0,
+        "stage": "seed",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sprout",
+          "health": "thriving",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "stage_up",
+              "stage": "sprout"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sprout",
+          "health": "thriving",
+          "growth_points": 2,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sprout",
+          "health": "thriving",
+          "growth_points": 3,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sprout",
+          "health": "thriving",
+          "growth_points": 4,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sprout",
+          "health": "thriving",
+          "growth_points": 5,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sprout",
+          "health": "thriving",
+          "growth_points": 6,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 7,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "stage_up",
+              "stage": "sapling"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-08",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 8,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        }
+      ],
+      "final": {
+        "growthPoints": 8,
+        "stage": "sapling",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": "2026-10-08",
+        "closedThrough": "2026-10-08"
+      }
+    },
+    {
+      "name": "health falls 1/3/7/21 and never dies",
+      "initial": {
+        "growthPoints": 1,
+        "stage": "sprout",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "droopy",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 1,
+          "events": [
+            {
+              "kind": "health_dropped",
+              "from": "thriving",
+              "to": "droopy"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "droopy",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 2,
+          "events": []
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dry",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 3,
+          "events": [
+            {
+              "kind": "health_dropped",
+              "from": "droopy",
+              "to": "dry"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dry",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 4,
+          "events": []
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dry",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 5,
+          "events": []
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dry",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 6,
+          "events": []
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 7,
+          "events": [
+            {
+              "kind": "health_dropped",
+              "from": "dry",
+              "to": "wilted"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-08",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 8,
+          "events": []
+        },
+        {
+          "day": "2026-10-09",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 9,
+          "events": []
+        },
+        {
+          "day": "2026-10-10",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 10,
+          "events": []
+        },
+        {
+          "day": "2026-10-11",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 11,
+          "events": []
+        },
+        {
+          "day": "2026-10-12",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 12,
+          "events": []
+        },
+        {
+          "day": "2026-10-13",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 13,
+          "events": []
+        },
+        {
+          "day": "2026-10-14",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 14,
+          "events": []
+        },
+        {
+          "day": "2026-10-15",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 15,
+          "events": []
+        },
+        {
+          "day": "2026-10-16",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 16,
+          "events": []
+        },
+        {
+          "day": "2026-10-17",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 17,
+          "events": []
+        },
+        {
+          "day": "2026-10-18",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 18,
+          "events": []
+        },
+        {
+          "day": "2026-10-19",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 19,
+          "events": []
+        },
+        {
+          "day": "2026-10-20",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "wilted",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 20,
+          "events": []
+        },
+        {
+          "day": "2026-10-21",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dormant",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 21,
+          "events": [
+            {
+              "kind": "health_dropped",
+              "from": "wilted",
+              "to": "dormant"
+            }
+          ]
+        },
+        {
+          "day": "2026-10-22",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dormant",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 22,
+          "events": []
+        },
+        {
+          "day": "2026-10-23",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dormant",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 23,
+          "events": []
+        },
+        {
+          "day": "2026-10-24",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dormant",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 24,
+          "events": []
+        },
+        {
+          "day": "2026-10-25",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sprout",
+          "health": "dormant",
+          "growth_points": 1,
+          "revival_progress": 0,
+          "missed_streak": 25,
+          "events": []
+        }
+      ],
+      "final": {
+        "growthPoints": 1,
+        "stage": "sprout",
+        "health": "dormant",
+        "revivalProgress": 0,
+        "missedStreak": 25,
+        "lastHealthDay": null,
+        "closedThrough": "2026-10-25"
+      }
+    },
+    {
+      "name": "droopy revives in 1 study day",
+      "initial": {
+        "growthPoints": 12,
+        "stage": "sapling",
+        "health": "droopy",
+        "revivalProgress": 0,
+        "missedStreak": 1,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 13,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revived",
+              "from": "droopy"
+            }
+          ]
+        }
+      ],
+      "final": {
+        "growthPoints": 13,
+        "stage": "sapling",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": "2026-10-01",
+        "closedThrough": "2026-10-01"
+      }
+    },
+    {
+      "name": "dry revives in 2 study days in a row",
+      "initial": {
+        "growthPoints": 12,
+        "stage": "sapling",
+        "health": "dry",
+        "revivalProgress": 0,
+        "missedStreak": 3,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "dry",
+          "growth_points": 13,
+          "revival_progress": 1,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 1,
+              "of": 2
+            }
+          ]
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sapling",
+          "health": "dry",
+          "growth_points": 13,
+          "revival_progress": 0,
+          "missed_streak": 1,
+          "events": []
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "dry",
+          "growth_points": 14,
+          "revival_progress": 1,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 1,
+              "of": 2
+            }
+          ]
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 15,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revived",
+              "from": "dry"
+            }
+          ]
+        }
+      ],
+      "final": {
+        "growthPoints": 15,
+        "stage": "sapling",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": "2026-10-04",
+        "closedThrough": "2026-10-04"
+      }
+    },
+    {
+      "name": "wilted revival quest keeps its dots",
+      "initial": {
+        "growthPoints": 12,
+        "stage": "sapling",
+        "health": "wilted",
+        "revivalProgress": 0,
+        "missedStreak": 7,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "wilted",
+          "growth_points": 13,
+          "revival_progress": 1,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 1,
+              "of": 3
+            }
+          ]
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sapling",
+          "health": "wilted",
+          "growth_points": 13,
+          "revival_progress": 1,
+          "missed_streak": 1,
+          "events": []
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "wilted",
+          "growth_points": 14,
+          "revival_progress": 2,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 2,
+              "of": 3
+            }
+          ]
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 15,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revived",
+              "from": "wilted"
+            }
+          ]
+        }
+      ],
+      "final": {
+        "growthPoints": 15,
+        "stage": "sapling",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": "2026-10-04",
+        "closedThrough": "2026-10-04"
+      }
+    },
+    {
+      "name": "dormant revives in 5 study days",
+      "initial": {
+        "growthPoints": 12,
+        "stage": "sapling",
+        "health": "dormant",
+        "revivalProgress": 0,
+        "missedStreak": 21,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "dormant",
+          "growth_points": 13,
+          "revival_progress": 1,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 1,
+              "of": 5
+            }
+          ]
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "dormant",
+          "growth_points": 14,
+          "revival_progress": 2,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 2,
+              "of": 5
+            }
+          ]
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sapling",
+          "health": "dormant",
+          "growth_points": 14,
+          "revival_progress": 2,
+          "missed_streak": 1,
+          "events": []
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "dormant",
+          "growth_points": 15,
+          "revival_progress": 3,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 3,
+              "of": 5
+            }
+          ]
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "dormant",
+          "growth_points": 16,
+          "revival_progress": 4,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revival_day",
+              "progress": 4,
+              "of": 5
+            }
+          ]
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 17,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revived",
+              "from": "dormant"
+            }
+          ]
+        }
+      ],
+      "final": {
+        "growthPoints": 17,
+        "stage": "sapling",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": "2026-10-06",
+        "closedThrough": "2026-10-06"
+      }
+    },
+    {
+      "name": "rescue and protected days water without reviving",
+      "initial": {
+        "growthPoints": 12,
+        "stage": "sapling",
+        "health": "droopy",
+        "revivalProgress": 0,
+        "missedStreak": 1,
+        "lastHealthDay": null,
+        "closedThrough": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false,
+            "rescue": true
+          },
+          "stage": "sapling",
+          "health": "droopy",
+          "growth_points": 12,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false,
+            "protected": true
+          },
+          "stage": "sapling",
+          "health": "droopy",
+          "growth_points": 12,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": []
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false
+          },
+          "stage": "sapling",
+          "health": "droopy",
+          "growth_points": 12,
+          "revival_progress": 0,
+          "missed_streak": 1,
+          "events": []
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "stage": "sapling",
+          "health": "thriving",
+          "growth_points": 13,
+          "revival_progress": 0,
+          "missed_streak": 0,
+          "events": [
+            {
+              "kind": "revived",
+              "from": "droopy"
+            }
+          ]
+        }
+      ],
+      "final": {
+        "growthPoints": 13,
+        "stage": "sapling",
+        "health": "thriving",
+        "revivalProgress": 0,
+        "missedStreak": 0,
+        "lastHealthDay": "2026-10-04",
+        "closedThrough": "2026-10-04"
+      }
+    }
+  ]
+}

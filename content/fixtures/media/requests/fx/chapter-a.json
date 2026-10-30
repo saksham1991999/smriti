@@ -1,0 +1,529 @@
+{
+  "schema": "media-requests@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "requests": [
+    {
+      "id": "img.chapter-a.fx-scene-a",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "Fixture brief 1 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 1",
+        "hi": "फ़िक्स्चर चित्र 1"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-a:dd:01"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "7e504ce80efe335760056d47ec0a236e036b7ff04800d888c8cda1f801870450",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 109812,
+        "width": 718,
+        "height": 1280,
+        "source_path": "design/mocks/assets/ll-path-island.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-diagram-a",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "Fixture brief 2 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 2",
+        "hi": "फ़िक्स्चर चित्र 2"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-a:dd:02",
+        "fx.chapter-a.topic-a:dd:10"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "708c3435251b56f97260b69a19be241d14f5e0a8888d93f838580909e24878bf",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 31526,
+        "width": 1280,
+        "height": 853,
+        "source_path": "design/mocks/assets/lab-circuit.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-poster-b",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "Fixture brief 3 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 3",
+        "hi": "फ़िक्स्चर चित्र 3"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-b:dd:01"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "7e64d01e4d19af96a7eb5bfc4aeaf2f9dc918ef5b941b9fe72083f03389734a5",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 74580,
+        "width": 1280,
+        "height": 853,
+        "source_path": "design/mocks/assets/lab-optics.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-fallback-b",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "Fixture brief 4 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 4",
+        "hi": "फ़िक्स्चर चित्र 4"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-b:dd:07",
+        "fx.chapter-a.topic-c:dd:01",
+        "fx.chapter-a.topic-c:dd:02"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "a1e3c61a4a5aa6925fdc7bf3b26bf04d3ac1547d1a492a027caf4a98062c8a45",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 23764,
+        "width": 1280,
+        "height": 853,
+        "source_path": "design/mocks/assets/lab-heart.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-diagram-c",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "Fixture brief 5 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [
+        {
+          "id": "spot-1",
+          "x": 0.3,
+          "y": 0.4
+        },
+        {
+          "id": "spot-2",
+          "x": 0.7,
+          "y": 0.6
+        }
+      ],
+      "alt": {
+        "en": "Fixture image 5",
+        "hi": "फ़िक्स्चर चित्र 5"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-c:dd:03"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "3e602bbc5c6080d8b2f2a835906aa1d43675cf62761cb68531dbd0de937b6dd3",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 30866,
+        "width": 1280,
+        "height": 853,
+        "source_path": "design/mocks/assets/lab-solar-system.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-portrait-c",
+      "kind": "image",
+      "preset": "roleplay-portrait",
+      "subject_family": "physics",
+      "brief": "Fixture brief 6 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 6",
+        "hi": "फ़िक्स्चर चित्र 6"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-c:dd:10"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "97813a3e6bdd6f6adac5e2d01b65923a1bdf20c8f2a06a3c014218455bc38f12",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 47372,
+        "width": 1024,
+        "height": 1024,
+        "source_path": "design/mocks/assets/roleplay-mauryan-scholar.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-object-c",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "Fixture brief 7 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 7",
+        "hi": "फ़िक्स्चर चित्र 7"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-c:dd:11",
+        "fx.chapter-a.topic-d:dd:08",
+        "fx.chapter-a.topic-d:dd:09"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "82bfb85264927f48f1f1cacbbed69388a03e4a96083de9303c3a396c4f9bd347",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 56314,
+        "width": 768,
+        "height": 768,
+        "source_path": "design/mocks/assets/object-calendar.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-hook",
+      "kind": "image",
+      "preset": "memory-hook",
+      "subject_family": "physics",
+      "brief": "Fixture brief 8 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 8",
+        "hi": "फ़िक्स्चर चित्र 8"
+      },
+      "used_by": [
+        "m.fx.chapter-a.topic-b.sub-1.concept-1.1",
+        "m.fx.chapter-a.topic-b.sub-1.concept-1.2"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "088fa72f756ae9bf10c273f4fd729c7c17ec712b03d2710e7ae850bbe13a519b",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 39222,
+        "width": 1024,
+        "height": 1024,
+        "source_path": "design/mocks/assets/memory-hook-sample.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-story-page",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "physics",
+      "brief": "Fixture brief 9 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 9",
+        "hi": "फ़िक्स्चर चित्र 9"
+      },
+      "used_by": [
+        "sb.fx.chapter-a"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "57abeb733e7adf0c25c00a0c5ea93a15bff42bfdf39da431b97c55417fabc777",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 88434,
+        "width": 1280,
+        "height": 853,
+        "source_path": "design/mocks/assets/storybook-village-pond.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.ui.pet-cat-base",
+      "kind": "image",
+      "preset": "pet-cat",
+      "subject_family": "physics",
+      "brief": "Fixture brief 10 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 10",
+        "hi": "फ़िक्स्चर चित्र 10"
+      },
+      "used_by": [
+        "seed-pack:fx"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "4202f58513f5ec1b749365adca06239281071bd1ae7ba2f14577bcf7ebe9c9c7",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 67806,
+        "width": 768,
+        "height": 768,
+        "source_path": "design/mocks/assets/cat-base.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.ui.pet-dog-base",
+      "kind": "image",
+      "preset": "pet-dog",
+      "subject_family": "physics",
+      "brief": "Fixture brief 11 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 11",
+        "hi": "फ़िक्स्चर चित्र 11"
+      },
+      "used_by": [
+        "seed-pack:fx"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "5c01a87be173ab2cc2f6b1bb0fecf3f613097b889ad3a84692bccd30f615b20a",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 34906,
+        "width": 768,
+        "height": 768,
+        "source_path": "design/mocks/assets/dog-base.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.ui.plant-seed",
+      "kind": "image",
+      "preset": "plant-stage",
+      "subject_family": "physics",
+      "brief": "Fixture brief 12 (test data; reuses a mock asset)",
+      "must_show": [],
+      "must_not_show": [
+        "text",
+        "numbers"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image 12",
+        "hi": "फ़िक्स्चर चित्र 12"
+      },
+      "used_by": [
+        "seed-pack:fx"
+      ],
+      "status": "approved",
+      "result": {
+        "sha256": "8f29b6ff927cab78e85429dec8a06d3dcb70606487664140b8a036136666b3c8",
+        "asset_id": null,
+        "reused": true,
+        "mime": "image/webp",
+        "bytes": 15728,
+        "width": 768,
+        "height": 768,
+        "source_path": "design/mocks/assets/plant-seed.webp",
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chapter-a.fx-pending",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "Fixture brief for an image not generated yet",
+      "must_show": [],
+      "must_not_show": [
+        "text"
+      ],
+      "label_anchors": [],
+      "alt": {
+        "en": "Fixture image pending",
+        "hi": "फ़िक्स्चर चित्र बाकी"
+      },
+      "used_by": [
+        "fx.chapter-a.topic-d:dd:02"
+      ],
+      "status": "requested",
+      "result": null
+    },
+    {
+      "id": "anim.chapter-a.fx-anim-b",
+      "kind": "animation_lottie",
+      "brief": "Fixture brief for animation_lottie (test data)",
+      "used_by": [
+        "fx.chapter-a.topic-b:dd:01"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Fixture caption 1",
+        "hi": "फ़िक्स्चर कैप्शन 1"
+      }
+    },
+    {
+      "id": "sim.chapter-a.fx-sim-b",
+      "kind": "sim",
+      "brief": "Fixture brief for sim (test data)",
+      "used_by": [
+        "fx.chapter-a.topic-b:dd:07"
+      ],
+      "status": "requested",
+      "result": null
+    },
+    {
+      "id": "m3d.chapter-a.fx-model-c",
+      "kind": "model3d",
+      "brief": "Fixture brief for model3d (test data)",
+      "used_by": [
+        "fx.chapter-a.topic-c:dd:02"
+      ],
+      "status": "requested",
+      "result": null
+    },
+    {
+      "id": "pano.chapter-a.fx-pano-c",
+      "kind": "pano360",
+      "brief": "Fixture brief for pano360 (test data)",
+      "used_by": [
+        "fx.chapter-a.topic-c:dd:01"
+      ],
+      "status": "requested",
+      "result": null,
+      "alt": {
+        "en": "Fixture 360 scene",
+        "hi": "फ़िक्स्चर 360 दृश्य"
+      }
+    },
+    {
+      "id": "audio.chapter-a.fx-narration-a-en",
+      "kind": "audio_tts",
+      "brief": "Fixture brief for audio_tts (test data)",
+      "used_by": [
+        "fx.chapter-a.topic-a:dd:01"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "Fixture narration",
+        "hi": "फ़िक्स्चर वर्णन"
+      }
+    },
+    {
+      "id": "audio.chapter-a.fx-narration-a-hi",
+      "kind": "audio_tts",
+      "brief": "Fixture brief for audio_tts (test data)",
+      "used_by": [
+        "fx.chapter-a.topic-a:dd:01"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "en": "Fixture narration",
+        "hi": "फ़िक्स्चर वर्णन"
+      }
+    }
+  ]
+}

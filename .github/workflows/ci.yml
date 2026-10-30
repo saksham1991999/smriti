@@ -1,0 +1,84 @@
+# Workspace CI: lint, typecheck and test for every pnpm package, and the Python apps when they exist.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  UV_VERSION: "0.11.32"
+  PYTHON_VERSION: "3.12"
+  RUFF_VERSION: "0.13.3"
+  MYPY_VERSION: "1.18.2"
+  PYTEST_VERSION: "8.4.2"
+
+jobs:
+  node:
+    name: pnpm lint, typecheck, test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4.2.2
+      # Reads the pnpm version from package.json "packageManager".
+      - uses: pnpm/action-setup@v4.1.0
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+
+  python:
+    name: uv sync, ruff, mypy, pytest (apps/api, apps/worker)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: Find the Python apps
+        id: apps
+        run: |
+          dirs=""
+          for d in apps/api apps/worker; do
+            if [ -f "$d/pyproject.toml" ]; then dirs="$dirs $d"; fi
+          done
+          dirs="${dirs# }"
+          echo "dirs=$dirs" >> "$GITHUB_OUTPUT"
+          if [ -z "$dirs" ]; then echo "No Python apps yet; skipping."; fi
+      - if: steps.apps.outputs.dirs != ''
+        uses: astral-sh/setup-uv@v6.4.3
+        with:
+          version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-cache: true
+      - if: steps.apps.outputs.dirs != ''
+        name: uv sync
+        run: uv sync --all-packages --all-groups
+      - if: steps.apps.outputs.dirs != ''
+        name: ruff
+        run: |
+          uv run --with "ruff==$RUFF_VERSION" ruff check ${{ steps.apps.outputs.dirs }}
+          uv run --with "ruff==$RUFF_VERSION" ruff format --check ${{ steps.apps.outputs.dirs }}
+      - if: steps.apps.outputs.dirs != ''
+        name: mypy
+        run: uv run --with "mypy==$MYPY_VERSION" mypy ${{ steps.apps.outputs.dirs }}
+      - if: steps.apps.outputs.dirs != ''
+        name: pytest
+        run: |
+          for d in ${{ steps.apps.outputs.dirs }}; do
+            set +e
+            uv run --with "pytest==$PYTEST_VERSION" pytest -q "$d"
+            code=$?
+            set -e
+            # 5 means no tests were collected, which is fine for a new app.
+            if [ "$code" -ne 0 ] && [ "$code" -ne 5 ]; then exit "$code"; fi
+          done

@@ -1,0 +1,81 @@
+# Content CI: runs when content or the content tooling changes.
+#   - the content check (schemas, links, coverage) on content/ and the fixture course
+#   - the generated Pydantic models against every fixture
+#   - a publisher dry run (everything built in memory) for real content and the fixtures
+#   - the publisher's site index against the site's own zod schema
+name: Content
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/**"
+      - "packages/content-schema/**"
+      - "tools/content-publish/**"
+      - "apps/site/src/content-index/**"
+      - ".github/workflows/content.yml"
+  pull_request:
+    paths:
+      - "content/**"
+      - "packages/content-schema/**"
+      - "tools/content-publish/**"
+      - "apps/site/src/content-index/**"
+      - ".github/workflows/content.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: content-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  UV_VERSION: "0.11.32"
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  content:
+    name: content check, models, publish dry run
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: astral-sh/setup-uv@v6.4.3
+        with:
+          version: ${{ env.UV_VERSION }}
+          python-version: ${{ env.PYTHON_VERSION }}
+          enable-cache: true
+      - run: pnpm install --frozen-lockfile
+
+      - name: Content check
+        run: pnpm content:check
+
+      - name: Pydantic models
+        run: pnpm --filter @smriti/content-schema test:python
+
+      - name: Publisher dry run (content/)
+        run: pnpm --filter @smriti/content-publish publish:dry-run --report tools/content-publish/dry-run/content
+
+      - name: Publisher dry run (fixture course)
+        run: pnpm --filter @smriti/content-publish publish:dry-run --root content/fixtures --report tools/content-publish/dry-run/fixtures
+
+      - name: Site index against the site's zod schema
+        env:
+          SITE_INDEX_SCHEMA: ${{ github.workspace }}/apps/site/src/content-index/schema.ts
+        run: pnpm --filter @smriti/content-publish exec vitest run test/parts.test.ts -t "zod"
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: content-reports
+          path: |
+            packages/content-schema/.reports/
+            tools/content-publish/dry-run/
+          if-no-files-found: ignore
+          retention-days: 14

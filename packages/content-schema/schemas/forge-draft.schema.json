@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/forge-draft.schema.json",
+  "title": "ForgeDraft",
+  "description": "A Make it stick draft (memory-labs 5.7, gap G26), shared by POST /v1/ai/memory-cue and the tutor's forge_mnemonic tool.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["draft_id", "locale", "exam_style", "technique", "text", "decode", "origin"],
+  "properties": {
+    "draft_id": { "type": "string", "format": "uuid" },
+    "concept_id": { "$ref": "common.schema.json#/$defs/ConceptId" },
+    "card_ref": { "type": "string", "pattern": "^(c|u|q):.+$" },
+    "source_card_id": { "type": "string" },
+    "locale": { "$ref": "common.schema.json#/$defs/Locale" },
+    "exam_style": { "type": ["string", "null"] },
+    "technique": { "$ref": "mnemonics.schema.json#/$defs/Technique" },
+    "text": { "type": "string", "minLength": 1 },
+    "decode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["covered", "total", "in_order", "missing"],
+      "properties": {
+        "covered": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 },
+        "in_order": { "type": "boolean" },
+        "missing": { "type": "array", "items": { "type": "integer", "minimum": 0 } }
+      }
+    },
+    "image_request": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["preset", "prompt_ref"],
+      "properties": {
+        "preset": { "const": "memory-hook" },
+        "prompt_ref": { "type": "string" }
+      }
+    },
+    "audio_ref": { "type": ["string", "null"] },
+    "origin": { "type": "string", "enum": ["ai", "user"] }
+  }
+}

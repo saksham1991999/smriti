@@ -97,7 +97,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     web: { bundler: 'metro', output: 'single' },
     plugins: [
-      'expo-router',
+      // Web preview: each route is its own chunk, loaded when opened (heavy screens such as the
+      // mock runner, labs and the tutor stay out of the first load). Native keeps one bundle.
+      ['expo-router', { asyncRoutes: { web: true, default: 'development' } }],
       'expo-font',
       'expo-secure-store',
       'expo-sqlite',

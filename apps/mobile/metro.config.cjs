@@ -1,10 +1,12 @@
 // Metro for the pnpm monorepo. Expo's default config already watches the workspace root and
-// follows pnpm symlinks. Two additions:
+// follows pnpm symlinks. Additions:
 // 1. Workspace packages written for Node ESM import "./file.js" from TypeScript sources
 //    (lesson-core, content-schema). When "./file.js" does not exist, retry as "./file".
 // 2. One React: some workspace packages pin a newer patch of react as a dev dependency, so
 //    react and react/* always resolve from this app (two Reacts break hooks).
 // 3. The seed pack JSON and the bundled illustrations are assets of the app (src/seed/).
+// 4. Bundle size: `@smriti/content-schema` resolves to its runtime helpers only (no ajv, no JSON
+//    schemas), and `phosphor-react-native` to the icons ui-native uses (scripts/phosphor-lite.mjs).
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { getDefaultConfig } = require('expo/metro-config');
@@ -14,12 +16,26 @@ const { getDefaultConfig } = require('expo/metro-config');
 execFileSync(process.execPath, [path.join(__dirname, 'scripts', 'seed-pack.mjs')], { stdio: 'inherit' });
 
 const appOrigin = path.join(__dirname, 'package.json');
+const contentSchemaLite = path.join(__dirname, 'src', 'shims', 'content-schema-lite.ts');
+const phosphorLite = path.join(__dirname, 'src', 'shims', 'phosphor-lite.generated.ts');
+const uiNativeOrigin = path.join(__dirname, '..', '..', 'packages', 'ui-native', 'package.json');
+execFileSync(process.execPath, [path.join(__dirname, 'scripts', 'phosphor-lite.mjs')], { stdio: 'inherit' });
 
 const config = getDefaultConfig(__dirname);
 
 const defaultResolve = config.resolver.resolveRequest;
 config.resolver.resolveRequest = (context, moduleName, platform) => {
   const resolve = defaultResolve ?? context.resolveRequest;
+  if (moduleName === '@smriti/content-schema') {
+    return { type: 'sourceFile', filePath: contentSchemaLite };
+  }
+  if (moduleName === 'phosphor-react-native' && !context.originModulePath.includes(`${path.sep}phosphor-react-native${path.sep}`) && context.originModulePath !== phosphorLite) {
+    return { type: 'sourceFile', filePath: phosphorLite };
+  }
+  // The shim's per-icon imports resolve where ui-native's dependency lives.
+  if (moduleName.startsWith('phosphor-react-native/') && context.originModulePath === phosphorLite) {
+    return resolve({ ...context, originModulePath: uiNativeOrigin }, moduleName, platform);
+  }
   if (moduleName === 'react' || moduleName.startsWith('react/')) {
     return resolve({ ...context, originModulePath: appOrigin }, moduleName, platform);
   }

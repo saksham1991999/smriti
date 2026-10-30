@@ -3,11 +3,27 @@
   "compilerOptions": {
     "noEmit": true,
     "jsx": "react-jsx",
-    "lib": ["ES2022", "DOM"],
-    "types": ["jest", "node"],
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "jest",
+      "node"
+    ],
     "allowImportingTsExtensions": false,
     "declaration": false,
     "sourceMap": false
   },
-  "include": ["app", "src", "test", "app.config.ts", "jest.setup.ts", "expo-env.d.ts"]
+  "include": [
+    "app",
+    "src",
+    "test",
+    "app.config.ts",
+    "jest.setup.ts",
+    "expo-env.d.ts"
+  ],
+  "exclude": [
+    "src/shims/phosphor-lite.generated.ts"
+  ]
 }

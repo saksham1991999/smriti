@@ -14,7 +14,7 @@
     "export:android": "node scripts/seed-pack.mjs && expo export --platform android --output-dir dist-android",
     "export:web": "node scripts/seed-pack.mjs && expo export --platform web --output-dir dist-web",
     "typecheck": "node scripts/seed-pack.mjs && tsc --noEmit -p .",
-    "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs",
+    "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs && node scripts/phosphor-lite.mjs --check",
     "test": "node scripts/seed-pack.mjs && jest",
     "test:live": "node scripts/seed-pack.mjs && jest test/live"
   },

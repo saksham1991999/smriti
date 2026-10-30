@@ -64,6 +64,13 @@ export function topicOfRef(kind: 'content' | 'question', id: string): string | n
   return m ? m[1]! : null;
 }
 
+/** The topic a scheduled card belongs to. */
+export function cardTopic(row: SrsCardRow): string | null {
+  if (row.topic_id) return row.topic_id;
+  const ref = parseCardRef(row.card_ref);
+  return ref && ref.kind !== 'user' ? topicOfRef(ref.kind, ref.id) : null;
+}
+
 /** What a card shows, from the bundles and the decks on this device; null when it isn't here. */
 export async function cardFace(app: SmritiApp, row: SrsCardRow): Promise<CardFace | null> {
   const ref = parseCardRef(row.card_ref);
@@ -144,10 +151,11 @@ export class Reviews {
     return { ...q, plan: null };
   }
 
-  /** One session's cards: the queue sliced to `memory.session_size`. */
-  async session(kind: 'normal' | 'rescue'): Promise<SrsCardRow[]> {
+  /** One session's cards: the queue sliced to `memory.session_size`; `topic` keeps one topic's (LRN-02 review row). */
+  async session(kind: 'normal' | 'rescue', topic?: string): Promise<SrsCardRow[]> {
     if (kind === 'rescue') return buildRescueSet(await this.cards(), this.app.now(), this.scheduler, this.config.rescueCards);
-    return sessionSlice((await this.queue()).cards, this.config.sessionSize);
+    const cards = (await this.queue()).cards;
+    return sessionSlice(topic ? cards.filter((c) => cardTopic(c) === topic) : cards, this.config.sessionSize);
   }
 
   preview(row: SrsCardRow): IntervalPreview[] {

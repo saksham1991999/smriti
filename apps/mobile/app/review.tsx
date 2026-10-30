@@ -35,7 +35,7 @@ export default function Review() {
   const t = useT();
   const theme = useTheme();
   const queries = useQueryClient();
-  const params = useLocalSearchParams<{ kind?: string }>();
+  const params = useLocalSearchParams<{ kind?: string; topic?: string }>();
   const rescue = params.kind === 'rescue';
   const reviews = useMemo(() => new Reviews(app), [app]);
   const streak = useAppStore((s) => s.streak);
@@ -56,7 +56,7 @@ export default function Review() {
   useEffect(() => {
     let alive = true;
     void (async () => {
-      const rows = await reviews.session(rescue ? 'rescue' : 'normal');
+      const rows = await reviews.session(rescue ? 'rescue' : 'normal', params.topic);
       const out: Item[] = [];
       let missing = 0;
       for (const row of rows) {
@@ -73,7 +73,7 @@ export default function Review() {
     return () => {
       alive = false;
     };
-  }, [app, reviews, rescue]);
+  }, [app, reviews, rescue, params.topic]);
 
   const item = items?.[index] ?? null;
   const previews = useMemo<IntervalPreview[]>(() => (item ? reviews.preview(item.row) : []), [item, reviews]);

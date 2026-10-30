@@ -192,6 +192,23 @@ export async function mockAttempt(page: Page, mockId: string) {
   await expectAccessible(page, "MOCK-22");
 }
 
+/** PRC-01 card → PRC-11 start → answer with the first option → PRC-12 result and board. */
+export async function dailyChallenge(page: Page) {
+  await page.goto("/practice");
+  await page.getByTestId("challenge-card").click();
+  await expect(page.getByTestId("prc-11")).toBeVisible();
+  await expectAccessible(page, "PRC-11");
+  await page.getByTestId("challenge-start").click();
+  await expect(page.getByTestId("challenge-clock")).toBeVisible();
+  await page.getByTestId("challenge-question").locator("[data-testid^=option-]").first().click();
+  await page.getByTestId("challenge-submit").click();
+  await expect(page.getByTestId("prc-12")).toBeVisible();
+  await expect(page.getByTestId("challenge-result")).toBeVisible();
+  await expectAccessible(page, "PRC-12");
+  await page.getByTestId("challenge-solution").click();
+  await expect(page.getByTestId("prc-12").getByTestId("prc-05")).toBeVisible();
+}
+
 /**
  * From MOCK-22, AI-02 on question 1: a starter chip streams an answer, then a typed follow-up.
  * The free counter drops by one per answer (the server counts).

@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
 import { activateSubscription } from "../scripts/fake-razorpay.mjs";
-import { askTutor, devGoogle, drill, expectAccessible, finishFirstWin, mockAttempt, onboard, playLesson, type Locale } from "./journey";
+import { askTutor, dailyChallenge, devGoogle, drill, expectAccessible, finishFirstWin, mockAttempt, onboard, playLesson, type Locale } from "./journey";
 
 const API = "http://127.0.0.1:8000";
 
@@ -81,6 +81,10 @@ for (const locale of ["en", "hi"] as Locale[]) {
     expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/answers 200/.test(c))).toBe(true);
     expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/complete 200/.test(c))).toBe(true);
     expect(seen.calls.some((c) => /GET \/v1\/practice\/limits 200/.test(c))).toBe(true);
+
+    // Today's challenge: start, answer once, result from the server.
+    await dailyChallenge(page);
+    expect(seen.calls.some((c) => /POST \/v1\/daily-challenge\/[^/]+\/answer 200/.test(c))).toBe(true);
 
     // A sectional mock on the attempts API: start, save answers, submit, report, solutions.
     await mockAttempt(page, "bp:fx-exam-2027:paper-1:section-a");

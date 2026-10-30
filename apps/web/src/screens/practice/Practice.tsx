@@ -17,6 +17,8 @@ import { useServices } from "../../boot/context";
 import { findTopic, useBundle, useCatalog, type CatalogTopic } from "../../lib/content";
 import { useTodayMinutes } from "../../lib/daily";
 import { toast } from "../../lib/toast";
+import { useDailyChallenge } from "../../lib/challenge";
+import { useProfileIds } from "../../lib/queries";
 import type { MessageKey } from "@smriti/i18n";
 import { useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
@@ -48,7 +50,9 @@ export function PracticeHub() {
   const online = useOnline();
   const pet = useAppStore((x) => x.pet);
   const quota = useQuota();
-  const weak = useWeakSpots(useAppStore((x) => x.profile?.exam_profile_ids[0] ?? null));
+  const exam = useProfileIds()[0] ?? null;
+  const weak = useWeakSpots(exam);
+  const challenge = useDailyChallenge(exam);
   if (catalog.isError) return <LoadError onRetry={() => void catalog.refetch()} />;
   if (catalog.isPending) return <RouteLoading />;
   const drills: { topic: CatalogTopic; subject: string; family: string }[] = [];
@@ -56,6 +60,7 @@ export function PracticeHub() {
     for (const ch of subject.chapters) for (const topic of ch.topics) if (topic.practiceCount > 0) drills.push({ topic, subject: subject.name, family: subject.family });
   const capReached = !quota.unlimited && !quota.allowed;
   const spots = weak.data?.items.slice(0, 2) ?? [];
+  const examName = catalog.manifest?.exam.name ?? "";
   const firstSpot = spots[0];
   const petText = capReached
     ? t("practice:PRC-01.pet_line_cap_reached")
@@ -69,6 +74,26 @@ export function PracticeHub() {
       </Text>
       {!online && <Banner tone="offline" text={t("practice:PRC-01.offline_banner")} />}
       {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={petText} />}
+      {challenge.data && (
+        <Card tone="tint" onPress={() => void navigate({ to: "/practice/challenge" })} testID="challenge-card">
+          <span className="flex items-center gap-3">
+            <Icon name="Lightning" color="primary" />
+            <span className="flex min-w-0 flex-1 flex-col">
+              <Text variant="heading">{t("practice:PRC-01.challenge_title")}</Text>
+              <Text variant="caption" tone="muted">
+                {challenge.data.result
+                  ? challenge.data.result.correct
+                    ? t("practice:PRC-01.played_correct", { time: mmss(challenge.data.result.time_ms) })
+                    : t("practice:PRC-01.played_wrong")
+                  : t("practice:PRC-01.challenge_sub_line", { exam_short: examName })}
+              </Text>
+            </span>
+            <Text variant="label" tone="primary">
+              {challenge.data.result ? t("practice:PRC-01.see_result") : t("practice:PRC-01.play")}
+            </Text>
+          </span>
+        </Card>
+      )}
       {spots.length > 0 && (
         <Card testID="weak-spots">
           <section className="flex flex-col gap-3">
@@ -134,6 +159,26 @@ export function PracticeHub() {
           <Icon name="CaretRight" color="inkMuted" />
         </span>
       </Card>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <Card onPress={() => void navigate({ to: "/practice/pyq" })} testID="pyq-tile">
+          <span className="flex items-center gap-3">
+            <Icon name="FileText" color="primary" />
+            <Text variant="heading" className="flex-1">
+              {t("practice:PRC-01.tile_pyq_bank")}
+            </Text>
+            <Icon name="CaretRight" color="inkMuted" />
+          </span>
+        </Card>
+        <Card onPress={() => void navigate({ to: "/practice/progress" })} testID="progress-tile">
+          <span className="flex items-center gap-3">
+            <Icon name="TrendUp" color="primary" />
+            <Text variant="heading" className="flex-1">
+              {t("practice:PRC-01.tile_analytics")}
+            </Text>
+            <Icon name="CaretRight" color="inkMuted" />
+          </span>
+        </Card>
+      </div>
     </div>
   );
 }

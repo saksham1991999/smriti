@@ -193,6 +193,21 @@ const practiceRoute = createRoute({
   path: "/practice",
   component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Practice")), "PracticeHub"),
 });
+const challengeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/practice/challenge",
+  component: lazyRouteComponent(withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Challenge")), "DailyChallengeScreen"),
+});
+const pyqRoute = createRoute({
+  getParentRoute: () => shellRoute,
+  path: "/practice/pyq",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Pyq")), "PyqBank"),
+});
+const progressRoute = createRoute({
+  getParentRoute: () => shellRoute,
+  path: "/practice/progress",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Progress")), "ProgressScreen"),
+});
 const mocksRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/practice/mocks",
@@ -238,8 +253,9 @@ const routeTree = rootRoute.addChildren([
   attemptRoute,
   reportRoute,
   solutionsRoute,
+  challengeRoute,
   drillRoute,
-  shellRoute.addChildren([homeRoute, subjectRoute, chapterRoute, topicRoute, labsRoute, labRoute, practiceRoute, mocksRoute, meRoute, settingsRoute, notificationsRoute, planRoute]),
+  shellRoute.addChildren([homeRoute, subjectRoute, chapterRoute, topicRoute, labsRoute, labRoute, practiceRoute, mocksRoute, pyqRoute, progressRoute, meRoute, settingsRoute, notificationsRoute, planRoute]),
 ]);
 
 export function createAppRouter(context: RouterContext) {

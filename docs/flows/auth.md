@@ -818,6 +818,8 @@ All tunables come from `/v1/config` (`packages/config` defaults), so none is har
 | `POST /v1/guardian/children`, `DELETE /v1/guardian/children/{id}` | Guardian | Create or delete a managed child |
 | `POST /v1/guardian/children/{id}/session` | Guardian | Token hash for a child session on this device |
 | `POST /v1/guardian/link-requests` | Guardian | Start linking an existing teen (AUTH-27) |
+| `GET /v1/guardian/link-requests`, `DELETE /v1/guardian/link-requests/{id}` | Guardian | List or withdraw link requests |
+| `GET /v1/me/link-requests`, `POST /v1/me/link-requests/claim`, `POST /v1/me/link-requests/{id}/accept`, `/decline` | Teen | See, claim (QR), accept or decline a link request (AUTH-27) |
 | `GET /v1/billing/intro-eligibility` | Signed-in user | ₹1 eligibility (§8) |
 | `POST /v1/webhooks/apple-signin` | Apple | Server-to-server notifications: consent revoked, account deleted, email relay changes |
 

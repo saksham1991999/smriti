@@ -4537,6 +4537,231 @@
         }
       }
     },
+    "/v1/guardian/link-requests": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "SET-18 path 2: ask to link an existing teen by their email or invite code, or as a QR",
+        "operationId": "create_link_request_v1_guardian_link_requests_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkRequestCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/LinkRequestCreated" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["guardian"],
+        "summary": "The calling guardian's link requests, newest first (the teen's name once accepted)",
+        "operationId": "my_link_requests_v1_guardian_link_requests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GuardianLinkRequestOut" },
+                  "title": "Response My Link Requests V1 Guardian Link Requests Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/link-requests/{request_id}": {
+      "delete": {
+        "tags": ["guardian"],
+        "summary": "Withdraw an open link request",
+        "operationId": "cancel_link_request_v1_guardian_link_requests__request_id__delete",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests": {
+      "get": {
+        "tags": ["guardian"],
+        "summary": "AUTH-27: open requests from guardians to link this teen",
+        "operationId": "teen_link_requests_v1_me_link_requests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/TeenLinkRequestOut" },
+                  "type": "array",
+                  "title": "Response Teen Link Requests V1 Me Link Requests Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests/claim": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "The teen scanned or typed the guardian's code: the request becomes theirs",
+        "operationId": "claim_link_request_v1_me_link_requests_claim_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkClaim" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TeenLinkRequestOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests/{request_id}/accept": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "AUTH-27 [Yes, link]: record the teen's OK and open the consent request for AUTH-20",
+        "operationId": "accept_link_request_v1_me_link_requests__request_id__accept_post",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkAccept" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LinkDecision" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/link-requests/{request_id}/decline": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "AUTH-27 [This isn't my parent]: nothing is linked",
+        "operationId": "decline_link_request_v1_me_link_requests__request_id__decline_post",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LinkDecision" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/devices": {
       "post": {
         "tags": ["notifications"],
@@ -10476,6 +10701,46 @@
         "title": "GenerateMock",
         "description": "MOCK-26 custom weak-area mock (Pro) or a timed chapter mock (counts as sectional, Q15)."
       },
+      "GuardianLinkRequestOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "accepted", "declined", "expired", "cancelled"],
+            "title": "Status"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "learner_first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Learner First Name"
+          },
+          "consent_request_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Consent Request Id"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "scopes",
+          "learner_first_name",
+          "consent_request_id",
+          "created_at",
+          "expires_at"
+        ],
+        "title": "GuardianLinkRequestOut",
+        "description": "The guardian's own list (SET-18). The teen's name shows only after the teen accepts."
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -10847,6 +11112,112 @@
         "type": "object",
         "required": ["is_pro", "day", "practice_questions", "tutor_messages", "sectional_mocks"],
         "title": "Limits"
+      },
+      "LinkAccept": {
+        "properties": {
+          "notice_version": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "title": "Notice Version"
+          },
+          "app_version": {
+            "anyOf": [{ "type": "string", "maxLength": 40 }, { "type": "null" }],
+            "title": "App Version"
+          },
+          "platform": {
+            "anyOf": [{ "type": "string", "enum": ["ios", "android", "web"] }, { "type": "null" }],
+            "title": "Platform"
+          }
+        },
+        "type": "object",
+        "required": ["notice_version"],
+        "title": "LinkAccept",
+        "description": "The teen's confirmation, kept as the request's evidence (no free text)."
+      },
+      "LinkClaim": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 12,
+            "minLength": 6,
+            "pattern": "^[A-Za-z0-9]+$",
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": ["code"],
+        "title": "LinkClaim"
+      },
+      "LinkDecision": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": { "type": "string", "enum": ["accepted", "declined"], "title": "Status" },
+          "consent_request_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Consent Request Id"
+          }
+        },
+        "type": "object",
+        "required": ["id", "status", "consent_request_id"],
+        "title": "LinkDecision"
+      },
+      "LinkRequestCreate": {
+        "properties": {
+          "teen_email": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 254,
+                "minLength": 3,
+                "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+              },
+              { "type": "null" }
+            ],
+            "title": "Teen Email"
+          },
+          "teen_code": {
+            "anyOf": [
+              { "type": "string", "maxLength": 16, "minLength": 4, "pattern": "^[A-Za-z0-9]+$" },
+              { "type": "null" }
+            ],
+            "title": "Teen Code"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes"
+          }
+        },
+        "type": "object",
+        "required": ["scopes"],
+        "title": "LinkRequestCreate",
+        "description": "SET-18 path 2. At most one of ``teen_email`` (the teen's sign-in email) and ``teen_code``\n(the teen's invite code, as on their friend QR); with neither, the teen claims the returned\ncode. The answer never says whether an account matched."
+      },
+      "LinkRequestCreated": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "code": { "type": "string", "title": "Code" },
+          "link": { "type": "string", "title": "Link" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": ["id", "code", "link", "scopes", "expires_at"],
+        "title": "LinkRequestCreated"
       },
       "LinkedRequest": {
         "properties": {
@@ -11679,6 +12050,11 @@
           "retry_at": {
             "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
             "title": "Retry At"
+          },
+          "pending_link_requests": {
+            "type": "integer",
+            "title": "Pending Link Requests",
+            "default": 0
           }
         },
         "type": "object",
@@ -13921,6 +14297,33 @@
         "required": ["state_version"],
         "title": "SyncStateResponse",
         "description": "Sections that did not change since ``since`` are omitted."
+      },
+      "TeenLinkRequestOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "accepted", "declined", "expired", "cancelled"],
+            "title": "Status"
+          },
+          "parent_first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Parent First Name"
+          },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "title": "Scopes"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": ["id", "status", "parent_first_name", "scopes", "expires_at"],
+        "title": "TeenLinkRequestOut",
+        "description": "AUTH-27 on the teen's phone: \"Link {parent_first_name} as your guardian?\"."
       },
       "TierName": {
         "properties": {

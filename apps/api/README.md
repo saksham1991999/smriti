@@ -270,6 +270,11 @@ Every guardian call needs a live `app.guardian_links` row and an active consent 
 | POST | `/v1/guardian/children` | AUTH-24/26: create a managed child, adopting this device's guest (`adopt_guest`) or a new account; consent `parent_created` |
 | POST | `/v1/guardian/children/{id}/session` | one-time token hash for a child session (`verifyOtp` type `email`; locally `/v1/dev/auth/verify-otp`); needs a sign-in in the last 10 minutes |
 | DELETE | `/v1/guardian/children/{id}` | schedule the child's erasure after the grace period |
+| POST | `/v1/guardian/link-requests` | AUTH-27 (SET-18 path 2): ask to link an existing teen by their sign-in email or invite code, or as a QR code the teen claims; `Idempotency-Key` required; `auth.link_requests_per_day` per guardian (429 `rate_limited`), open for `auth.link_request_ttl_h`; the answer never says whether an account matched |
+| GET, DELETE | `/v1/guardian/link-requests`, `.../link-requests/{id}` | the guardian's requests (the teen's name only once accepted), or withdraw an open one |
+| GET | `/v1/me/link-requests` | the teen's open requests ("Link {parent_first_name} as your guardian?"); also counted as `pending_link_requests` on `GET /v1/guardian/consent`, and pushed as `guardian_link_request` |
+| POST | `/v1/me/link-requests/claim` | the teen scanned or typed the guardian's code |
+| POST | `/v1/me/link-requests/{id}/accept`, `.../decline` | accept records the teen's evidence and opens the §6.10 consent request (`initiated_by = 'guardian'`, same code) that only that guardian can confirm on AUTH-20; decline links nothing |
 | GET, POST | `/v1/guardian/learners/{id}/pro`, `.../pro/verify`, `.../pro/cancel` | PAY-17: a plan on the child's account with `payer = guardian`; only the guardian manages it |
 | GET, DELETE | `/v1/guardian/learners/{id}/friends`, `.../friends/{friend_id}` | the parent friends list (B13) |
 | GET | `/v1/me/limits` | the child's limits for today, cached by the device |

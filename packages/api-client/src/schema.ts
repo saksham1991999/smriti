@@ -1694,6 +1694,41 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/link-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The calling guardian's link requests, newest first (the teen's name once accepted) */
+    get: operations["my_link_requests_v1_guardian_link_requests_get"];
+    put?: never;
+    /** SET-18 path 2: ask to link an existing teen by their email or invite code, or as a QR */
+    post: operations["create_link_request_v1_guardian_link_requests_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/link-requests/{request_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Withdraw an open link request */
+    delete: operations["cancel_link_request_v1_guardian_link_requests__request_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/time-requests/{request_id}/decision": {
     parameters: {
       query?: never;
@@ -1996,6 +2031,74 @@ export interface paths {
     get: operations["my_limits_v1_me_limits_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** AUTH-27: open requests from guardians to link this teen */
+    get: operations["teen_link_requests_v1_me_link_requests_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests/{request_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-27 [Yes, link]: record the teen's OK and open the consent request for AUTH-20 */
+    post: operations["accept_link_request_v1_me_link_requests__request_id__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests/{request_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-27 [This isn't my parent]: nothing is linked */
+    post: operations["decline_link_request_v1_me_link_requests__request_id__decline_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/link-requests/claim": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The teen scanned or typed the guardian's code: the request becomes theirs */
+    post: operations["claim_link_request_v1_me_link_requests_claim_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -5558,6 +5661,38 @@ export interface components {
        */
       time_policy: "practice" | "strict";
     };
+    /**
+     * GuardianLinkRequestOut
+     * @description The guardian's own list (SET-18). The teen's name shows only after the teen accepts.
+     */
+    GuardianLinkRequestOut: {
+      /** Consent Request Id */
+      consent_request_id: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Learner First Name */
+      learner_first_name: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "accepted" | "declined" | "expired" | "cancelled";
+    };
     /** HandleCheck */
     HandleCheck: {
       /** Available */
@@ -5871,6 +6006,38 @@ export interface components {
       sectional_mocks: components["schemas"]["QuotaOut"];
       tutor_messages: components["schemas"]["QuotaOut"];
     };
+    /**
+     * LinkAccept
+     * @description The teen's confirmation, kept as the request's evidence (no free text).
+     */
+    LinkAccept: {
+      /** App Version */
+      app_version?: string | null;
+      /** Notice Version */
+      notice_version: string;
+      /** Platform */
+      platform?: ("ios" | "android" | "web") | null;
+    };
+    /** LinkClaim */
+    LinkClaim: {
+      /** Code */
+      code: string;
+    };
+    /** LinkDecision */
+    LinkDecision: {
+      /** Consent Request Id */
+      consent_request_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "accepted" | "declined";
+    };
     /** LinkedRequest */
     LinkedRequest: {
       /** Referral Code */
@@ -5883,6 +6050,39 @@ export interface components {
       profile: components["schemas"]["ProfileState"];
       /** Show Shared Phone Check */
       show_shared_phone_check: boolean;
+    };
+    /**
+     * LinkRequestCreate
+     * @description SET-18 path 2. At most one of ``teen_email`` (the teen's sign-in email) and ``teen_code``
+     *     (the teen's invite code, as on their friend QR); with neither, the teen claims the returned
+     *     code. The answer never says whether an account matched.
+     */
+    LinkRequestCreate: {
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /** Teen Code */
+      teen_code?: string | null;
+      /** Teen Email */
+      teen_email?: string | null;
+    };
+    /** LinkRequestCreated */
+    LinkRequestCreated: {
+      /** Code */
+      code: string;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Link */
+      link: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
     };
     /** LiveLeaderboard */
     LiveLeaderboard: {
@@ -6506,6 +6706,11 @@ export interface components {
       consented_at: string | null;
       /** Needs Consent */
       needs_consent: boolean;
+      /**
+       * Pending Link Requests
+       * @default 0
+       */
+      pending_link_requests: number;
       /** Pending Request Id */
       pending_request_id: string | null;
       /** Retry At */
@@ -8312,6 +8517,31 @@ export interface components {
       /** Topic Progress */
       topic_progress?: components["schemas"]["TopicProgressState"][] | null;
       wallet?: components["schemas"]["WalletState"] | null;
+    };
+    /**
+     * TeenLinkRequestOut
+     * @description AUTH-27 on the teen's phone: "Link {parent_first_name} as your guardian?".
+     */
+    TeenLinkRequestOut: {
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Parent First Name */
+      parent_first_name: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "accepted" | "declined" | "expired" | "cancelled";
     };
     /** TierName */
     TierName: {
@@ -12295,6 +12525,90 @@ export interface operations {
       };
     };
   };
+  my_link_requests_v1_guardian_link_requests_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GuardianLinkRequestOut"][];
+        };
+      };
+    };
+  };
+  create_link_request_v1_guardian_link_requests_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkRequestCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkRequestCreated"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  cancel_link_request_v1_guardian_link_requests__request_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   decide_time_v1_guardian_time_requests__request_id__decision_post: {
     parameters: {
       query?: never;
@@ -12833,6 +13147,129 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MyLimits"];
+        };
+      };
+    };
+  };
+  teen_link_requests_v1_me_link_requests_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TeenLinkRequestOut"][];
+        };
+      };
+    };
+  };
+  accept_link_request_v1_me_link_requests__request_id__accept_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkAccept"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkDecision"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decline_link_request_v1_me_link_requests__request_id__decline_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkDecision"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  claim_link_request_v1_me_link_requests_claim_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkClaim"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TeenLinkRequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

@@ -1,0 +1,125 @@
+{
+  "schema": "blueprint@1",
+  "exam_profile": "ssc-cgl-2026",
+  "paper_code": "tier-2-paper-2",
+  "title": {
+    "en": "Combined Graduate Level Examination: Tier-II Paper-II (Statistics)",
+    "hi": "संयुक्त स्नातक स्तरीय परीक्षा : टियर-II प्रश्नपत्र-II (सांख्यिकी)"
+  },
+  "title_hi_source": "translated",
+  "version": 1,
+  "effective_from": "2026-05-21",
+  "verified_at": "2026-10-30",
+  "source": {
+    "kind": "official",
+    "title": "Staff Selection Commission, Notice: Combined Graduate Level Examination, 2026 (F. No. HQ-C11018/1/2026-C-1, uploaded 21-05-2026)",
+    "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2025.pdf",
+    "published": "2026-05-21",
+    "retrieved": "2026-10-30",
+    "publisher": "Staff Selection Commission",
+    "linked_from": "https://ssc.gov.in/ (Notice Board)",
+    "url_note": "The file name on the SSC server says 'cgl_2025' but the document is the 2026 notice (header and every date say 2026).",
+    "pages": "p.24 (paras 13.1-13.7), p.27 (table 13.9, paras 13.9.1-13.9.3), pp.28-29 (paras 13.9.7-13.9.8), pp.33-34 (para 13.11.6), pp.41-43 (paras 16.1, 16.4, 16.11)"
+  },
+  "additional_sources": [],
+  "mode": "cbt",
+  "duration_min": 120,
+  "duration_rules": {
+    "scribe_eligible_min": 160,
+    "source_ref": "table 13.9 (PDF p.27): 2 hours; 2 hours 40 minutes for candidates eligible for a scribe"
+  },
+  "shift_timings": null,
+  "languages": [
+    "en",
+    "hi"
+  ],
+  "language_rules": {
+    "paper_is_bilingual": "Questions are set in English and Hindi (para 13.9.7, PDF p.28).",
+    "prevailing_version": null
+  },
+  "interface": "ssc_tcs",
+  "calculator": null,
+  "section_navigation": "free",
+  "section_navigation_source_ref": "Single section, so there is nothing to navigate between.",
+  "total_questions": 100,
+  "max_marks": 200,
+  "sections": [
+    {
+      "code": "statistics",
+      "title": {
+        "en": "Statistics",
+        "hi": "सांख्यिकी"
+      },
+      "subject": "statistics",
+      "timer_min": null,
+      "timer_min_scribe_eligible": null,
+      "question_count": 100,
+      "max_marks": 200,
+      "attempt_rule": {
+        "attempt_any": null,
+        "all_compulsory": true
+      },
+      "question_types": [
+        "mcq_single"
+      ],
+      "options_per_question": null,
+      "marking": {
+        "mcq_single": {
+          "correct": 2,
+          "wrong": -0.5,
+          "unattempted": 0,
+          "correct_source_ref": "table 13.9 (PDF p.27): '100*2 = 200'",
+          "wrong_source_ref": "para 13.9.8 (PDF p.29): '0.50 marks for each wrong answer in Paper-II and Paper-III'"
+        }
+      },
+      "languages": [
+        "en",
+        "hi"
+      ]
+    }
+  ],
+  "key_anomaly_rules": {
+    "tentative_key_challenge": "Tentative answer keys are placed on the SSC website after the examination; representations are made online within the stated time on payment of Rs 100 per question, non-refundable (para 13.3, PDF p.24).",
+    "guidelines": "Guidelines regarding Challenge / Objection Management System, SSC Notice dated 10.04.2026 (para 13.4, PDF p.24); not retrieved.",
+    "re_evaluation": "No re-evaluation or re-checking of scores of any stage (para 13.7, PDF p.24)."
+  },
+  "scoring": {
+    "normalization": "Scores from multiple shifts are normalised by the procedure in the SSC Notice dated 02-06-2025 (para 13.2, PDF p.24).",
+    "merit": "Added to Section-I and Section-II of Paper-I for the JSO and Statistical Investigator Grade-II merit lists (para 16.11.1, PDF pp.42-43)."
+  },
+  "qualifying": {
+    "rule": "minimum_percent_by_category",
+    "min_percent": {
+      "UR": 30,
+      "OBC/EWS": 25,
+      "all_other_categories": 20
+    },
+    "source_ref": "para 16.1 (PDF p.41)"
+  },
+  "instructions": null,
+  "notes": [
+    "interface 'ssc_tcs' and mode 'cbt': the notice says Computer Based Examination (para 13.1, PDF p.24) but does not name the test vendor or describe the screen, so 'ssc_tcs' is the skill's enum value for SSC CBTs, not a quoted fact.",
+    "instructions is null: the notice does not reproduce the instructions screen.",
+    "Only for candidates shortlisted in Tier-I for Junior Statistical Officer and Statistical Investigator Grade-II (para 13.9.3, PDF p.27). Objective multiple choice, set in English and Hindi (para 13.9.7, PDF p.28). Graduation level (para 13.11.8, PDF p.36)."
+  ],
+  "open_questions": [
+    "The notice is printed in English and Hindi (para 23(a), PDF p.48), but only the English notice was retrieved. Hindi titles here are translations (title_hi_source: translated); replace them with the official Hindi wording.",
+    "Normalisation of multi-shift scores follows the SSC procedure published in the Notice dated 02-06-2025 (para 13.2, PDF p.24). That notice was not retrieved, so scoring.normalization only names it.",
+    "The notice does not say whether a calculator (on-screen or physical) is allowed. calculator stays null.",
+    "Shift timings are not stated in the notice; they appear on the Admission Certificate. shift_timings stays null.",
+    "The number of options per question is not stated in the notice. options_per_question stays null.",
+    "Tier-II dates: the notice only says 'December, 2026' (tentative)."
+  ],
+  "changes_from_previous": null,
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "Staff Selection Commission, Notice: Combined Graduate Level Examination, 2026 (F. No. HQ-C11018/1/2026-C-1, uploaded 21-05-2026), para 13 (Scheme of the Examination) and para 16 (Mode of Selection)",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2025.pdf"
+    }
+  ],
+  "status": "draft",
+  "authored_by": "skill:exam-blueprint",
+  "reviewed_by": null,
+  "updated": "2026-10-30"
+}

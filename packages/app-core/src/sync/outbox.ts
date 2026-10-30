@@ -2,7 +2,7 @@ import { createIdGenerator, type CryptoLike } from '../crypto';
 import type { Clock } from '../platform';
 import type { NewOutboxRow, OutboxRow, StorageTables } from '../storage/types';
 import { toIso } from '../time';
-import type { SyncEventPayloads, SyncEventType, WireEvent } from './types';
+import { canonicalCardRef, type SyncEventPayloads, type SyncEventType, type WireEvent } from './types';
 
 export interface OutboxOptions {
   crypto: Pick<CryptoLike, 'getRandomValues'>;
@@ -27,10 +27,12 @@ export class Outbox {
     payload: SyncEventPayloads[T],
     at?: { occurredAt?: number | string | Date; eventId?: string },
   ): NewOutboxRow<T> {
+    const p = payload as SyncEventPayloads[T] & { card_ref?: unknown };
+    const wirePayload = typeof p.card_ref === 'string' ? { ...p, card_ref: canonicalCardRef(p.card_ref) } : payload;
     return {
       event_id: at?.eventId ?? this.nextId(),
       type,
-      payload,
+      payload: wirePayload,
       occurred_at: toIso(at?.occurredAt ?? this.opts.clock()),
       tz: this.opts.timeZone(),
     };

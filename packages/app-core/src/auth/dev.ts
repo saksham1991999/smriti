@@ -2,7 +2,6 @@ import type { Clock, Fetch } from '../platform';
 import type { KeyValueStore } from '../storage/types';
 import {
   AuthError,
-  decodeJwtClaims,
   type AuthClient,
   type AuthEvent,
   type AuthSession,
@@ -34,40 +33,45 @@ function parseDevIdToken(token: string): DevIdentity {
   return { email: parsed.email, name: parsed.name };
 }
 
-interface DevTokenResponse {
-  /** The contract says the endpoints "return a JWT"; the field name is not fixed yet. */
-  access_token?: string;
-  token?: string;
-  jwt?: string;
-  refresh_token?: string | null;
-  expires_in?: number;
-  expires_at?: number;
-  user?: { id: string; is_anonymous?: boolean };
+/** The dev token response (sync contract v1.1 "Dev auth"), shaped like Supabase's token endpoint. */
+export interface DevTokenResponse {
+  access_token: string;
+  token_type: 'bearer';
+  expires_in: number;
+  refresh_token: string;
+  user: { id: string; is_anonymous: boolean };
 }
 
 const SESSION_KEY = 'auth.dev.session';
+/** Refresh this many seconds before expiry, as supabase-js does. */
+const REFRESH_MARGIN_S = 60;
 
 /**
- * `AuthClient` against the API's dev endpoints (`APP_ENV=local` or `test` only). The JWTs it
- * gets are shaped like Supabase access tokens, so the rest of the app cannot tell the
- * difference. There is no refresh endpoint: an expired dev session ends and the app signs in again.
+ * `AuthClient` against the API's dev endpoints (`APP_ENV=local` or `test` only). The tokens are
+ * shaped like Supabase's, so the rest of the app cannot tell the difference. An expiring session
+ * is refreshed through `POST /v1/dev/auth/refresh`; a refused refresh ends the session.
  */
 export class DevAuthClient implements AuthClient {
   private listeners = new Set<(event: AuthEvent, session: AuthSession | null) => void>();
   private cached: AuthSession | null | undefined;
+  private refreshing: Promise<AuthSession | null> | null = null;
 
   constructor(
     private readonly opts: { baseUrl: string; fetch: Fetch; store: KeyValueStore; clock: Clock },
   ) {}
 
   async getSession(): Promise<AuthSession | null> {
-    if (this.cached === undefined) {
-      const raw = await this.opts.store.get(SESSION_KEY);
-      this.cached = raw ? (JSON.parse(raw) as AuthSession) : null;
+    const s = await this.load();
+    if (!s) return null;
+    const nowS = this.opts.clock() / 1000;
+    if (s.expiresAt === null || s.expiresAt - REFRESH_MARGIN_S > nowS) return s;
+    try {
+      return await this.refreshSession();
+    } catch (err) {
+      // Offline: keep using the token until it actually expires.
+      if (err instanceof AuthError && err.code === 'network') return s.expiresAt > nowS ? s : null;
+      throw err;
     }
-    const s = this.cached;
-    if (s && s.expiresAt !== null && s.expiresAt * 1000 <= this.opts.clock()) return null;
-    return s;
   }
 
   async getAccessToken() {
@@ -76,7 +80,7 @@ export class DevAuthClient implements AuthClient {
 
   async signInAnonymously() {
     const session = await this.request('/v1/dev/auth/anonymous', {}, null);
-    await this.store(session, 'SIGNED_IN');
+    await this.save(session, 'SIGNED_IN');
     return session;
   }
 
@@ -94,23 +98,28 @@ export class DevAuthClient implements AuthClient {
       // The dev identity belongs to another account: same branch as Supabase's identity_already_exists.
       return { status: 'identity_already_exists' };
     }
-    await this.store(session, 'USER_UPDATED');
+    await this.save(session, 'USER_UPDATED');
     return { status: 'linked', session };
   }
 
   async signInWithIdToken(c: IdTokenCredential) {
     const session = await this.request('/v1/dev/auth/google', parseDevIdToken(c.idToken), null);
-    await this.store(session, 'SIGNED_IN');
+    await this.save(session, 'SIGNED_IN');
     return session;
   }
 
-  async refreshSession() {
-    return this.getSession();
+  /** Refreshes now (one request shared by concurrent callers). A 400 or 401 ends the session. */
+  refreshSession(): Promise<AuthSession | null> {
+    if (!this.refreshing) {
+      this.refreshing = this.doRefresh().finally(() => {
+        this.refreshing = null;
+      });
+    }
+    return this.refreshing;
   }
 
   async signOut() {
-    this.cached = null;
-    await this.opts.store.delete(SESSION_KEY);
+    await this.clear();
     this.emit('SIGNED_OUT', null);
   }
 
@@ -119,11 +128,42 @@ export class DevAuthClient implements AuthClient {
     return () => this.listeners.delete(listener);
   }
 
+  private async doRefresh(): Promise<AuthSession | null> {
+    const s = await this.load();
+    if (!s?.refreshToken) return null;
+    let session: AuthSession;
+    try {
+      session = await this.request('/v1/dev/auth/refresh', { refresh_token: s.refreshToken }, null);
+    } catch (err) {
+      if (err instanceof AuthError && err.code === 'session_ended') {
+        await this.clear();
+        this.emit('SIGNED_OUT', null);
+        return null;
+      }
+      throw err;
+    }
+    await this.save(session, 'TOKEN_REFRESHED');
+    return session;
+  }
+
+  private async load(): Promise<AuthSession | null> {
+    if (this.cached === undefined) {
+      const raw = await this.opts.store.get(SESSION_KEY);
+      this.cached = raw ? (JSON.parse(raw) as AuthSession) : null;
+    }
+    return this.cached;
+  }
+
+  private async clear() {
+    this.cached = null;
+    await this.opts.store.delete(SESSION_KEY);
+  }
+
   private emit(event: AuthEvent, session: AuthSession | null) {
     for (const l of [...this.listeners]) l(event, session);
   }
 
-  private async store(session: AuthSession, event: AuthEvent) {
+  private async save(session: AuthSession, event: AuthEvent) {
     this.cached = session;
     await this.opts.store.set(SESSION_KEY, JSON.stringify(session));
     this.emit(event, session);
@@ -146,25 +186,20 @@ export class DevAuthClient implements AuthClient {
     }
     if (res.status === 429) throw new AuthError('rate_limited', undefined, 429);
     if (res.status === 409) throw new AuthError('identity_already_exists', undefined, 409);
+    if (res.status === 400 || res.status === 401) throw new AuthError('session_ended', undefined, res.status);
     if (!res.ok) throw new AuthError('unknown', `http_${res.status}`, res.status);
     return this.toSession((await res.json()) as DevTokenResponse);
   }
 
   private toSession(r: DevTokenResponse): AuthSession {
-    const accessToken = r.access_token ?? r.token ?? r.jwt;
-    if (!accessToken) throw new AuthError('unknown', 'no token in response');
-    const claims = decodeJwtClaims(accessToken) ?? {};
-    const id = r.user?.id ?? (typeof claims['sub'] === 'string' ? claims['sub'] : undefined);
-    if (!id) throw new AuthError('unknown', 'token has no sub');
-    const exp =
-      r.expires_at ??
-      (r.expires_in !== undefined ? Math.floor(this.opts.clock() / 1000) + r.expires_in : undefined) ??
-      (typeof claims['exp'] === 'number' ? claims['exp'] : null);
+    if (typeof r.access_token !== 'string' || typeof r.user?.id !== 'string' || typeof r.expires_in !== 'number') {
+      throw new AuthError('unknown', 'bad dev token response');
+    }
     return {
-      accessToken,
+      accessToken: r.access_token,
       refreshToken: r.refresh_token ?? null,
-      expiresAt: exp ?? null,
-      user: { id, isAnonymous: r.user?.is_anonymous ?? claims['is_anonymous'] === true },
+      expiresAt: Math.floor(this.opts.clock() / 1000) + r.expires_in,
+      user: { id: r.user.id, isAnonymous: r.user.is_anonymous === true },
     };
   }
 }

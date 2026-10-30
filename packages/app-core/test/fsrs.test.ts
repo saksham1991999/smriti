@@ -7,7 +7,10 @@ import {
   buildComebackPlan,
   buildDailyQueue,
   buildRescueSet,
+  canonicalCardRef,
+  cardsQueuedSource,
   comebackChunkFor,
+  comebackStartedPayload,
   displayInterval,
   interleaveTopics,
   isLeechMoment,
@@ -16,6 +19,7 @@ import {
   queueCardsForConcepts,
   quickReviewSet,
   ratingFromLabel,
+  rescueCompletedPayload,
   rescueOutcome,
   secondsPerCard,
   sessionSlice,
@@ -203,7 +207,22 @@ describe('daily queue', () => {
     expect(r.started.map((c) => c.due_at)).toEqual([NOW, NOW]);
     expect(r.pulledForward.map((c) => c.card_ref)).toEqual(['c:weak']);
     expect(r.pulledForward[0]?.due_at).toBe('2026-10-29T18:30:00.000Z'); // today full → tomorrow 00:00 IST
-    expect(r.event).toEqual({ source: 'mock_report', concept_ids: ['k-m'], card_refs: ['c:n1', 'c:n2', 'c:weak'] });
+    expect(r.event).toEqual({ concept_ids: ['k-m'], source: 'practice' });
+  });
+
+  it('maps queue origins to the wire cards_queued.source (contract v1.1)', () => {
+    expect(['mock_report', 'practice_summary', 'solution', 'lesson', 'comeback'].map((s) => cardsQueuedSource(s as never))).toEqual([
+      'practice', 'practice', 'practice', 'lesson', 'comeback',
+    ]);
+  });
+
+  it('builds the contract v1.1 payloads for rescue and comeback, and canonical card refs', () => {
+    expect(rescueCompletedPayload(6.7, 118_400.4)).toEqual({ cards: 6, ms_total: 118_400 });
+    expect(rescueCompletedPayload(-1, -5)).toEqual({ cards: 0, ms_total: 0 });
+    expect(comebackStartedPayload({ total: 240 }, 12.9)).toEqual({ days_away: 12, cards: 240 });
+    expect(canonicalCardRef('u:abc')).toBe('d:abc');
+    expect(canonicalCardRef('d:abc')).toBe('d:abc');
+    expect(canonicalCardRef('c:u:x')).toBe('c:u:x');
   });
 });
 

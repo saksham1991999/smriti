@@ -32,29 +32,48 @@ describe('decodeJwtClaims', () => {
 });
 
 describe('DevAuthClient', () => {
+  /** A fake dev auth API with the sync contract v1.1 response shape. */
   function setup() {
     const accounts = new Map<string, string>(); // email → user id
+    const refreshTokens = new Map<string, string>(); // refresh token → user id
     let n = 0;
+    let refreshStatus = 200;
+    const issue = (id: string, anon: boolean) => {
+      const rt = `rt-${++n}`;
+      refreshTokens.set(rt, id);
+      return jsonResponse(200, {
+        access_token: jwt({ sub: id, is_anonymous: anon, n }),
+        token_type: 'bearer',
+        expires_in: 3600,
+        refresh_token: rt,
+        user: { id, is_anonymous: anon },
+      });
+    };
     const server = fakeFetch((url, init, body) => {
-      if (url.endsWith('/v1/dev/auth/anonymous')) {
-        const id = `anon-${++n}`;
-        return jsonResponse(200, { access_token: jwt({ sub: id, is_anonymous: true }), expires_in: 3600, user: { id, is_anonymous: true } });
-      }
+      if (url.endsWith('/v1/dev/auth/anonymous')) return issue(`anon-${++n}`, true);
       if (url.endsWith('/v1/dev/auth/google')) {
         const { email } = body as { email: string };
         const bearer = init?.headers?.Authorization?.replace('Bearer ', '');
         const owner = accounts.get(email);
-        if (owner) return jsonResponse(200, { access_token: jwt({ sub: owner, is_anonymous: false }), expires_in: 3600 });
+        if (owner) return issue(owner, false);
         const current = bearer ? (decodeJwtClaims(bearer)?.['sub'] as string) : `user-${++n}`;
         accounts.set(email, current);
-        return jsonResponse(200, { access_token: jwt({ sub: current, is_anonymous: false }), expires_in: 3600 });
+        return issue(current, false);
+      }
+      if (url.endsWith('/v1/dev/auth/refresh')) {
+        if (refreshStatus !== 200) return jsonResponse(refreshStatus, {});
+        const { refresh_token } = body as { refresh_token: string };
+        const id = refreshTokens.get(refresh_token);
+        if (!id) return jsonResponse(401, {});
+        refreshTokens.delete(refresh_token);
+        return issue(id, id.startsWith('anon-'));
       }
       return jsonResponse(404, {});
     });
     let now = NOW;
     const store = new MemoryKeyValueStore();
     const client = new DevAuthClient({ baseUrl: 'http://localhost:8000', fetch: server.fetch, store, clock: () => now });
-    return { client, server, store, setNow: (t: number) => (now = t), accounts };
+    return { client, server, store, setNow: (t: number) => (now = t), setRefreshStatus: (s: number) => (refreshStatus = s), accounts };
   }
 
   it('signs in anonymously, persists the session and reads it back', async () => {
@@ -64,6 +83,7 @@ describe('DevAuthClient', () => {
     const s = await client.signInAnonymously();
     expect(s.user).toEqual({ id: 'anon-1', isAnonymous: true });
     expect(s.expiresAt).toBe(Math.floor(NOW / 1000) + 3600);
+    expect(s.refreshToken).toBe('rt-2');
     const again = new DevAuthClient({ baseUrl: 'http://localhost:8000', fetch: server.fetch, store, clock: () => NOW });
     expect((await again.getSession())?.user.id).toBe('anon-1');
     expect(events).toEqual(['SIGNED_IN']);
@@ -91,7 +111,9 @@ describe('DevAuthClient', () => {
     const store = new MemoryKeyValueStore();
     let status = 409;
     const server = fakeFetch((url) =>
-      url.endsWith('/anonymous') ? jsonResponse(200, { access_token: jwt({ sub: 'g' }), user: { id: 'g', is_anonymous: true } }) : jsonResponse(status, {}),
+      url.endsWith('/anonymous')
+        ? jsonResponse(200, { access_token: jwt({ sub: 'g' }), token_type: 'bearer', expires_in: 3600, refresh_token: 'r', user: { id: 'g', is_anonymous: true } })
+        : jsonResponse(status, {}),
     );
     const client = new DevAuthClient({ baseUrl: '', fetch: server.fetch, store, clock: () => NOW });
     await client.signInAnonymously();
@@ -100,13 +122,80 @@ describe('DevAuthClient', () => {
     await expect(client.signInWithIdToken({ provider: 'google', idToken: devIdToken({ email: 'x@y', name: 'x' }), nonce: '' })).rejects.toMatchObject({ code: 'rate_limited' });
   });
 
-  it('expired sessions read as signed out; sign-out clears storage', async () => {
-    const { client, setNow, store } = setup();
+  it('refreshes a session about to expire through the refresh endpoint', async () => {
+    const { client, server, setNow } = setup();
+    const events: string[] = [];
+    const first = await client.signInAnonymously();
+    client.onAuthStateChange((e) => events.push(e));
+    setNow(NOW + 3550_000); // inside the 60 s margin
+    const token = await client.getAccessToken();
+    expect(token).not.toBe(first.accessToken);
+    expect(server.calls.at(-1)?.url).toBe('http://localhost:8000/v1/dev/auth/refresh');
+    expect(server.calls.at(-1)?.body).toEqual({ refresh_token: first.refreshToken });
+    expect(events).toEqual(['TOKEN_REFRESHED']);
+    expect((await client.getSession())?.expiresAt).toBe(Math.floor((NOW + 3550_000) / 1000) + 3600);
+  });
+
+  it('shares one refresh between concurrent callers', async () => {
+    const { client, server, setNow } = setup();
     await client.signInAnonymously();
     setNow(NOW + 3601_000);
+    const [a, b] = await Promise.all([client.getAccessToken(), client.refreshSession()]);
+    expect(a).toBe(b?.accessToken);
+    expect(server.calls.filter((c) => c.url.endsWith('/refresh'))).toHaveLength(1);
+  });
+
+  it('a refused refresh ends the session', async () => {
+    const { client, store, setNow, setRefreshStatus } = setup();
+    const events: string[] = [];
+    await client.signInAnonymously();
+    client.onAuthStateChange((e) => events.push(e));
+    setRefreshStatus(401);
+    setNow(NOW + 3601_000);
     expect(await client.getAccessToken()).toBeNull();
+    expect(await store.get('auth.dev.session')).toBeNull();
+    expect(events).toEqual(['SIGNED_OUT']);
+  });
+
+  it('offline: keeps a still-valid token, drops an expired one', async () => {
+    let online = true;
+    const { client, server, store } = setup();
+    let now = NOW;
+    const flaky = new DevAuthClient({
+      baseUrl: 'http://localhost:8000',
+      fetch: async (url, init) => {
+        if (!online) throw new TypeError('offline');
+        return server.fetch(url, init);
+      },
+      store,
+      clock: () => now,
+    });
+    void client;
+    const s = await flaky.signInAnonymously();
+    online = false;
+    now = NOW + 3570_000; // in the margin, not expired
+    expect(await flaky.getAccessToken()).toBe(s.accessToken);
+    now = NOW + 3601_000;
+    expect(await flaky.getAccessToken()).toBeNull();
+    expect(await store.get('auth.dev.session')).not.toBeNull(); // kept for when the network is back
+  });
+
+  it('sign-out clears storage; a session without a refresh token cannot refresh', async () => {
+    const { client, store } = setup();
+    await client.signInAnonymously();
     await client.signOut();
     expect(await store.get('auth.dev.session')).toBeNull();
+    expect(await client.refreshSession()).toBeNull();
+  });
+
+  it('rejects a malformed token response', async () => {
+    const client = new DevAuthClient({
+      baseUrl: '',
+      fetch: fakeFetch(() => jsonResponse(200, { token: 'x' })).fetch,
+      store: new MemoryKeyValueStore(),
+      clock: () => NOW,
+    });
+    await expect(client.signInAnonymously()).rejects.toMatchObject({ code: 'unknown' });
   });
 
   it('rejects a non-dev id token and linking while signed out', async () => {

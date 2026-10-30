@@ -254,7 +254,7 @@ export const FLAG_REGISTRY = {
   'memory.new_cards_per_day': def(nonNegInt, 15, 'proposed', 'memory-labs §5.1'),
   'memory.leech_lapses': def(posInt, 8, 'proposed', 'memory-labs §5.3'),
   'memory.comeback.min_due': def(posInt, 60, 'proposed', 'memory-labs §5.2'),
-  'memory.comeback.relearn_below': def(fraction, 0.3, 'proposed', 'memory-labs §5.2'),
+  'memory.comeback.relearn_below': def(fraction, 0.5, 'ruling', 'memory-labs §5.2; 0.5 per the coordinator ruling of 30 Oct 2026'),
   'memory.comeback.plan_lengths': def(z.array(posInt).min(1), [3, 5, 7], 'ruling', 'R22'),
   'memory.default_seconds_per_card': def(posInt, 10, 'proposed', 'memory-labs §5.2'),
   'memory.retention_presets': def(

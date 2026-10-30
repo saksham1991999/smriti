@@ -22,6 +22,7 @@ import {
 import { fakeFetch, jsonResponse, nodeCrypto } from './helpers';
 
 const T0 = Date.UTC(2026, 9, 29, 6, 0, 0);
+const T0Iso = new Date(T0).toISOString();
 
 function setup(opts: { online?: boolean; tokens?: TokenSource; handler?: Parameters<typeof fakeFetch>[0] } = {}) {
   const storage = new InMemoryStorage();
@@ -70,6 +71,19 @@ describe('outbox', () => {
     expect(rows.map((r) => r.seq)).toEqual([1, 2, 3]);
     expect(rows.every((r) => UUID_RE.test(r.event_id) && r.tz === 'Asia/Kolkata')).toBe(true);
     expect(rows[0]?.occurred_at).toBe(new Date(T0).toISOString());
+  });
+
+  it('sends own-card refs in the canonical d: form', () => {
+    const { outbox } = setup();
+    const row = outbox.create('review_rated', {
+      card_ref: 'u:abc',
+      rating: 3,
+      confidence: 'fifty_fifty',
+      ms_to_answer: 900,
+      fsrs_state: { due: T0Iso, stability: 1, difficulty: 5, elapsed_days: 0, scheduled_days: 1, reps: 1, lapses: 0, state: 2 },
+    });
+    expect(row.payload.card_ref).toBe('d:abc');
+    expect(row.payload.confidence).toBe('fifty_fifty');
   });
 
   it('is idempotent on event_id', async () => {

@@ -75,6 +75,19 @@ class IntegrationSettings(BaseSettings):
     r2_endpoint: str = ""
     signed_url_ttl_s: int = 3600
 
+    # Device attestation (G-10, TRD §14): Play Integrity on Android, App Attest on iOS. Each runs
+    # for real once its env is set; ATTESTATION_PROVIDER=fake forces the fake (local and test).
+    attestation_provider: str = ""
+    play_integrity_service_account_json: str = ""
+    # variant=package pairs, e.g. "jee=<android package>,neet=<android package>"
+    play_integrity_packages: str = ""
+    # variant=TEAMID.bundle.id pairs (the App ID App Attest hashes into rpIdHash)
+    app_attest_app_ids: str = ""
+    app_attest_environment: str = "production"
+    # Optional override of the bundled Apple App Attestation Root CA (PEM).
+    app_attest_root_ca_pem: str = ""
+    attestation_nonce_ttl_s: int = 300
+
     # Public links in emails and pushes
     guardian_link_base_url: str = "https://smriti.app/guardian/"
     brand_name: str = "Smriti"

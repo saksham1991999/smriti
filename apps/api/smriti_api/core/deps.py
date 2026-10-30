@@ -185,3 +185,52 @@ def idempotency_key(
 
 
 IdempotencyKey = Annotated[str | None, Depends(idempotency_key)]
+
+
+@dataclass(frozen=True)
+class IntegrityProof:
+    token: str | None
+    nonce: str | None
+    key_id: str | None
+
+
+def integrity_proof(
+    x_integrity_token: Annotated[str | None, Header(max_length=16_384)] = None,
+    x_integrity_nonce: Annotated[str | None, Header(max_length=128)] = None,
+    x_integrity_key_id: Annotated[str | None, Header(max_length=64)] = None,
+) -> IntegrityProof:
+    """Play Integrity token or App Attest assertion, the challenge nonce, and the iOS key id."""
+    return IntegrityProof(x_integrity_token, x_integrity_nonce, x_integrity_key_id)
+
+
+Proof = Annotated[IntegrityProof, Depends(integrity_proof)]
+
+
+async def check_attestation(
+    services: AppServices, auth: AuthContext, client: ClientInfo, proof: IntegrityProof, action: str
+) -> None:
+    """Device attestation when ``security.attestation_required`` is on (G-10, TRD §14)."""
+    from smriti_api.services import integrity
+
+    ints = services.integrations
+    await integrity.enforce(
+        services.db,
+        services.redis,
+        ints.attestation if ints is not None else None,
+        user_id=auth.user_id,
+        platform=client.platform,
+        variant=client.app_variant,
+        action=action,
+        token=proof.token,
+        nonce=proof.nonce,
+        key_id=proof.key_id,
+    )
+
+
+def require_attestation(action: str) -> Any:
+    """For sensitive endpoints: billing, duel submit and the like. Off until the flag is on."""
+
+    async def dep(services: Services, auth: CurrentUser, client: Client, proof: Proof) -> None:
+        await check_attestation(services, auth, client, proof, action)
+
+    return Depends(dep)

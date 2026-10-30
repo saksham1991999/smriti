@@ -9,7 +9,14 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import JSONResponse
 
 from smriti_api.core.auth import AuthContext
-from smriti_api.core.deps import Client, CurrentUser, IdempotencyKey, Services, signed_in
+from smriti_api.core.deps import (
+    Client,
+    CurrentUser,
+    IdempotencyKey,
+    Services,
+    require_attestation,
+    signed_in,
+)
 from smriti_api.core.errors import ApiError
 from smriti_api.integrations import Integrations
 from smriti_api.integrations.billing import BillingError
@@ -89,6 +96,7 @@ async def razorpay_subscription(
     "/billing/razorpay/verify",
     response_model=b.EntitlementOut,
     summary="Check the Checkout handler's signature; Pro follows the webhook",
+    dependencies=[require_attestation("billing_verify")],
 )
 async def razorpay_verify(
     body: b.RazorpayVerifyRequest,
@@ -134,6 +142,7 @@ async def razorpay_cancel(
     "/billing/restore",
     response_model=b.RestoreOut,
     summary="Re-read store purchases from RevenueCat and apply them (PAY-14 Restore)",
+    dependencies=[require_attestation("billing_restore")],
 )
 async def restore(
     services: Services, ints: Ints, auth: SignedInBuyer, key: IdempotencyKey

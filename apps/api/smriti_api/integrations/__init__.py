@@ -14,6 +14,7 @@ from pathlib import Path
 import httpx
 
 from smriti_api.core.config import REPO_ROOT, Settings
+from smriti_api.integrations.attestation import AttestationVerifier, build_attestation
 from smriti_api.integrations.billing import (
     FakeRazorpayProvider,
     FakeRevenueCatProvider,
@@ -58,6 +59,8 @@ class Integrations:
     # Web Push for the web app (VAPID). None when not configured outside local and test.
     web_push: PushSender | None = None
     web_push_public_key: str | None = None
+    # Play Integrity and App Attest (G-10). Built in build_integrations.
+    attestation: AttestationVerifier | None = None
 
 
 def _mailer(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> Mailer:
@@ -174,4 +177,14 @@ def build_integrations(
         billing_configured=configured or dev,
         web_push=web_push,
         web_push_public_key=web_push_key,
+        attestation=build_attestation(
+            http,
+            dev=dev,
+            provider=cfg.attestation_provider,
+            play_service_account_json=cfg.play_integrity_service_account_json,
+            play_packages=cfg.play_integrity_packages,
+            app_attest_app_ids=cfg.app_attest_app_ids,
+            app_attest_environment=cfg.app_attest_environment,
+            app_attest_root_ca_pem=cfg.app_attest_root_ca_pem,
+        ),
     )

@@ -29,6 +29,7 @@ from smriti_api.routes import billing as billing_routes
 from smriti_api.routes import exports as exports_routes
 from smriti_api.routes import guardian as guardian_routes
 from smriti_api.routes import insights as insights_routes
+from smriti_api.routes import integrity as integrity_routes
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import practice as practice_routes
@@ -186,6 +187,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(exports_routes.router)
     app.include_router(voice_routes.router)
     app.include_router(insights_routes.router)
+    app.include_router(integrity_routes.router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
         app.include_router(exports_routes.dev_router)

@@ -6,7 +6,12 @@
 //    react and react/* always resolve from this app (two Reacts break hooks).
 // 3. The seed pack JSON and the bundled illustrations are assets of the app (src/seed/).
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const { getDefaultConfig } = require('expo/metro-config');
+
+// The app bundles the generated seed pack (src/seed/generated). EAS native builds and a direct
+// `expo export` reach Metro without the package scripts, so make the seed here as well.
+execFileSync(process.execPath, [path.join(__dirname, 'scripts', 'seed-pack.mjs')], { stdio: 'inherit' });
 
 const appOrigin = path.join(__dirname, 'package.json');
 

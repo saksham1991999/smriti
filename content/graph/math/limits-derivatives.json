@@ -1,0 +1,249 @@
+{
+  "schema": "chapter@1",
+  "id": "math.limits-derivatives",
+  "subject": "math",
+  "unit": "math.calculus",
+  "name": {
+    "en": "Limits and Derivatives",
+    "hi": "सीमा और अवकलज"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 12",
+  "topics": [
+    {
+      "id": "math.limits-derivatives.limits-intro",
+      "name": {
+        "en": "Intuitive Idea of Derivatives and Limits",
+        "hi": "अवकलजों का सहजानुभूत बोध तथा सीमाएँ"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 12 §12.2",
+        "NCERT Class 11 Mathematics, Ch 12 §12.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.limits-derivatives.limits-intro.core",
+          "name": {
+            "en": "Intuitive Idea of Derivatives and Limits",
+            "hi": "अवकलजों का सहजानुभूत बोध तथा सीमाएँ"
+          },
+          "concepts": [
+            {
+              "id": "math.limits-derivatives.limits-intro.core.limit-definition",
+              "name": {
+                "en": "Limit of a function, left and right limits and the algebra of limits",
+                "hi": "फलन की सीमा, बाएँ और दाएँ पक्ष की सीमाएँ तथा सीमाओं का बीजगणित"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "lim_(x→a) f(x) = L means f(x) approaches L as x approaches a; the limit exists when the left- and right-hand limits are equal, and limits of sums, products and quotients are the sums, products and quotients of limits.",
+                "hi": "lim_(x→a) f(x) = L का अर्थ है कि x के a की ओर जाने पर f(x), L की ओर जाता है; सीमा तब अस्तित्व में होती है जब बाएँ और दाएँ पक्ष की सीमाएँ बराबर हों, और योग, गुणनफल तथा भागफल की सीमाएँ सीमाओं के योग, गुणनफल तथा भागफल होती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find left- and right-hand limits from a formula or graph.",
+                  "hi": "सूत्र या ग्राफ़ से बाएँ और दाएँ पक्ष की सीमाएँ ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Evaluate limits of polynomial and rational functions, including 0/0 forms by factorising.",
+                  "hi": "बहुपद और परिमेय फलनों की सीमाएँ, गुणनखंडन से 0/0 रूपों सहित, निकालिए।"
+                },
+                {
+                  "en": "Use lim_(x→a) (xⁿ − aⁿ)/(x − a) = naⁿ⁻¹.",
+                  "hi": "lim_(x→a) (xⁿ − aⁿ)/(x − a) = naⁿ⁻¹ का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-5"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 12 §12.2",
+                "NCERT Class 11 Mathematics, Ch 12 §12.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.limits-derivatives.trig-limits",
+      "name": {
+        "en": "Limits of Trigonometric Functions",
+        "hi": "त्रिकोणमितीय फलनों की सीमाएँ"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 12 §12.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.limits-derivatives.trig-limits.core",
+          "name": {
+            "en": "Limits of Trigonometric Functions",
+            "hi": "त्रिकोणमितीय फलनों की सीमाएँ"
+          },
+          "concepts": [
+            {
+              "id": "math.limits-derivatives.trig-limits.core.trig-limits-standard",
+              "name": {
+                "en": "Standard limits of trigonometric, exponential and logarithmic functions",
+                "hi": "त्रिकोणमितीय, चरघातांकी तथा लघुगणकीय फलनों की मानक सीमाएँ"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The sandwich theorem gives lim_(x→0) (sin x)/x = 1 and lim_(x→0) (1 − cos x)/x = 0, from which many trigonometric limits follow.",
+                "hi": "सैंडविच प्रमेय से lim_(x→0) (sin x)/x = 1 और lim_(x→0) (1 − cos x)/x = 0 मिलते हैं, जिनसे अनेक त्रिकोणमितीय सीमाएँ निकलती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Evaluate limits such as lim (sin ax)/(bx).",
+                  "hi": "lim (sin ax)/(bx) जैसी सीमाएँ निकालिए।"
+                },
+                {
+                  "en": "Reduce a trigonometric limit to the standard forms.",
+                  "hi": "किसी त्रिकोणमितीय सीमा को मानक रूपों में बदलिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.limits-derivatives.limits-intro.core.limit-definition",
+                "math.trigonometric-functions.trig-functions.core.trig-functions-unit-circle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-5"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 12 §12.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.limits-derivatives.derivatives-intro",
+      "name": {
+        "en": "Derivatives",
+        "hi": "अवकलज"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 12 §12.5"
+      ],
+      "subtopics": [
+        {
+          "id": "math.limits-derivatives.derivatives-intro.core",
+          "name": {
+            "en": "Derivatives",
+            "hi": "अवकलज"
+          },
+          "concepts": [
+            {
+              "id": "math.limits-derivatives.derivatives-intro.core.derivative-first-principle",
+              "name": {
+                "en": "Derivative from first principles",
+                "hi": "प्रथम सिद्धांत से अवकलज"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The derivative of f at a is f′(a) = lim_(h→0) [f(a + h) − f(a)]/h, the slope of the tangent at that point, and finding it from this limit is differentiation from first principles.",
+                "hi": "a पर f का अवकलज f′(a) = lim_(h→0) [f(a + h) − f(a)]/h है, जो उस बिंदु पर स्पर्शरेखा की ढाल है, और इस सीमा से इसे ज्ञात करना प्रथम सिद्धांत से अवकलन है।"
+              },
+              "key_points": [
+                {
+                  "en": "Differentiate xⁿ, sin x and cos x from first principles.",
+                  "hi": "प्रथम सिद्धांत से xⁿ, sin x और cos x का अवकलन कीजिए।"
+                },
+                {
+                  "en": "Interpret the derivative as a rate of change and a slope.",
+                  "hi": "अवकलज की परिवर्तन की दर और ढाल के रूप में व्याख्या कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.limits-derivatives.limits-intro.core.limit-definition"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-5",
+                "jee-main-2027:mathematics:unit-7:item-7"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 12 §12.2",
+                "NCERT Class 11 Mathematics, Ch 12 §12.5"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.limits-derivatives.derivatives-intro.core.derivative-algebra-rules",
+              "name": {
+                "en": "Sum, difference, product and quotient rules",
+                "hi": "योग, अंतर, गुणनफल तथा भागफल नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "(u ± v)′ = u′ ± v′, (uv)′ = u′v + uv′ and (u/v)′ = (u′v − uv′)/v² wherever v ≠ 0.",
+                "hi": "(u ± v)′ = u′ ± v′, (uv)′ = u′v + uv′ और जहाँ v ≠ 0 वहाँ (u/v)′ = (u′v − uv′)/v²।"
+              },
+              "key_points": [
+                {
+                  "en": "Differentiate polynomials and rational functions using the rules.",
+                  "hi": "नियमों से बहुपदों और परिमेय फलनों का अवकलन कीजिए।"
+                },
+                {
+                  "en": "Differentiate products and quotients of trigonometric functions.",
+                  "hi": "त्रिकोणमितीय फलनों के गुणनफलों और भागफलों का अवकलन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.limits-derivatives.derivatives-intro.core.derivative-first-principle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-7"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 12 §12.5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 12",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh112.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 7: LIMIT, CONTINUITY AND DIFFERENTIABILITY (PDF p.1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "chapter@1",
+  "id": "math.binomial-theorem",
+  "subject": "math",
+  "unit": "math.algebra",
+  "name": {
+    "en": "Binomial Theorem",
+    "hi": "द्विपद प्रमेय"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 7",
+  "topics": [
+    {
+      "id": "math.binomial-theorem.binomial-positive",
+      "name": {
+        "en": "Binomial Theorem for Positive Integral Indices",
+        "hi": "धन पूर्णांकों के लिए द्विपद प्रमेय"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 7 §7.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.binomial-theorem.binomial-positive.core",
+          "name": {
+            "en": "Binomial Theorem for Positive Integral Indices",
+            "hi": "धन पूर्णांकों के लिए द्विपद प्रमेय"
+          },
+          "concepts": [
+            {
+              "id": "math.binomial-theorem.binomial-positive.core.binomial-expansion",
+              "name": {
+                "en": "Binomial theorem for a positive integral index",
+                "hi": "धन पूर्णांक घातांक के लिए द्विपद प्रमेय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For a positive integer n, (a + b)ⁿ = Σ C(n, r) aⁿ⁻ʳ bʳ for r = 0 to n; the expansion has n + 1 terms and its coefficients form Pascal's triangle.",
+                "hi": "धन पूर्णांक n के लिए (a + b)ⁿ = Σ C(n, r) aⁿ⁻ʳ bʳ, r = 0 से n तक; इस प्रसार में n + 1 पद होते हैं और गुणांक पास्कल त्रिभुज बनाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Expand (a + b)ⁿ and (a − b)ⁿ.",
+                  "hi": "(a + b)ⁿ और (a − b)ⁿ का प्रसार कीजिए।"
+                },
+                {
+                  "en": "Use the expansion to compare or approximate numbers such as (1.01)ⁿ.",
+                  "hi": "(1.01)ⁿ जैसी संख्याओं की तुलना या सन्निकटन के लिए प्रसार का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.permutations-combinations.combinations.core.combinations-ncr"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-5:item-1",
+                "jee-main-2027:mathematics:unit-5:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 7 §7.2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.binomial-theorem.binomial-positive.core.general-middle-term",
+              "name": {
+                "en": "General term and middle term",
+                "hi": "व्यापक पद तथा मध्य पद"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The (r + 1)th term of (a + b)ⁿ is T₍ᵣ₊₁₎ = C(n, r) aⁿ⁻ʳ bʳ; the middle term is the (n/2 + 1)th for even n, and there are two middle terms for odd n.",
+                "hi": "(a + b)ⁿ का (r + 1)वाँ पद T₍ᵣ₊₁₎ = C(n, r) aⁿ⁻ʳ bʳ है; सम n के लिए मध्य पद (n/2 + 1)वाँ है, और विषम n के लिए दो मध्य पद होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find a specified term, the term independent of x, or the coefficient of xᵏ.",
+                  "hi": "कोई विशेष पद, x से स्वतंत्र पद, या xᵏ का गुणांक ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the middle term or terms of an expansion.",
+                  "hi": "किसी प्रसार का मध्य पद या पद ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.binomial-theorem.binomial-positive.core.binomial-expansion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-5:item-2",
+                "jee-main-2027:mathematics:unit-5:item-3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 7",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh107.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 5: BINOMIAL THEOREM AND ITS SIMPLE APPLICATIONS (PDF p.1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

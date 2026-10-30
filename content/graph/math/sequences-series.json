@@ -1,0 +1,274 @@
+{
+  "schema": "chapter@1",
+  "id": "math.sequences-series",
+  "subject": "math",
+  "unit": "math.algebra",
+  "name": {
+    "en": "Sequences and Series",
+    "hi": "अनुक्रम तथा श्रेणी"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 8",
+  "topics": [
+    {
+      "id": "math.sequences-series.sequences",
+      "name": {
+        "en": "Sequences and Series",
+        "hi": "अनुक्रम तथा श्रेणी"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 8 §8.2",
+        "NCERT Class 11 Mathematics, Ch 8 §8.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.sequences-series.sequences.core",
+          "name": {
+            "en": "Sequences and Series",
+            "hi": "अनुक्रम तथा श्रेणी"
+          },
+          "concepts": [
+            {
+              "id": "math.sequences-series.sequences.core.sequence-series-basics",
+              "name": {
+                "en": "Sequences, series and the general term",
+                "hi": "अनुक्रम, श्रेणी तथा व्यापक पद"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A sequence is a function on the natural numbers whose values a₁, a₂, … are its terms; the sum of its terms is a series, and a rule for aₙ fixes the sequence.",
+                "hi": "अनुक्रम प्राकृत संख्याओं पर एक फलन है जिसके मान a₁, a₂, … उसके पद हैं; पदों का योग श्रेणी है, और aₙ का नियम अनुक्रम को निर्धारित करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write terms from a general-term formula or a recurrence.",
+                  "hi": "व्यापक पद सूत्र या पुनरावृत्ति संबंध से पद लिखिए।"
+                },
+                {
+                  "en": "Use sigma notation for a series.",
+                  "hi": "श्रेणी के लिए सिग्मा संकेतन का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.functions-intro.core.function-definition"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-6:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 8 §8.2",
+                "NCERT Class 11 Mathematics, Ch 8 §8.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.sequences-series.progressions",
+      "name": {
+        "en": "Arithmetic and Geometric Progressions",
+        "hi": "समांतर तथा गुणोत्तर श्रेढ़ी"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 8 §8.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.sequences-series.progressions.core",
+          "name": {
+            "en": "Arithmetic and Geometric Progressions",
+            "hi": "समांतर तथा गुणोत्तर श्रेढ़ी"
+          },
+          "concepts": [
+            {
+              "id": "math.sequences-series.progressions.core.arithmetic-progression",
+              "name": {
+                "en": "Arithmetic progression: nth term and sum",
+                "hi": "समांतर श्रेढ़ी : nवाँ पद तथा योग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "An arithmetic progression has a constant difference d, so aₙ = a + (n − 1)d and Sₙ = (n/2)[2a + (n − 1)d].",
+                "hi": "समांतर श्रेढ़ी में सार्व अंतर d अचर होता है, अतः aₙ = a + (n − 1)d और Sₙ = (n/2)[2a + (n − 1)d]।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the nth term and the sum of n terms of an A.P.",
+                  "hi": "किसी A.P. का nवाँ पद और n पदों का योग ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Choose terms as a − d, a, a + d for problems on three terms.",
+                  "hi": "तीन पदों वाले प्रश्नों में पद a − d, a, a + d मानिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sequences-series.sequences.core.sequence-series-basics"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-6:item-1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.sequences-series.progressions.core.geometric-progression",
+              "name": {
+                "en": "Geometric progression: nth term and sum",
+                "hi": "गुणोत्तर श्रेढ़ी : nवाँ पद तथा योग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A geometric progression has a constant ratio r, so aₙ = arⁿ⁻¹ and Sₙ = a(rⁿ − 1)/(r − 1) for r ≠ 1.",
+                "hi": "गुणोत्तर श्रेढ़ी में सार्व अनुपात r अचर होता है, अतः aₙ = arⁿ⁻¹ और r ≠ 1 के लिए Sₙ = a(rⁿ − 1)/(r − 1)।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the nth term and the sum of n terms of a G.P.",
+                  "hi": "किसी G.P. का nवाँ पद और n पदों का योग ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Sum series such as 0.6 + 0.66 + 0.666 + … by reducing to a G.P.",
+                  "hi": "0.6 + 0.66 + 0.666 + … जैसी श्रेणियों को G.P. में बदलकर योग निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sequences-series.sequences.core.sequence-series-basics"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-6:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 8 §8.4"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.sequences-series.progressions.core.inserting-means",
+              "name": {
+                "en": "Inserting arithmetic and geometric means between two numbers",
+                "hi": "दो संख्याओं के बीच समांतर तथा गुणोत्तर माध्य डालना"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "To insert n arithmetic means between a and b, use the common difference (b − a)/(n + 1); to insert n geometric means, use the common ratio (b/a)^(1/(n + 1)).",
+                "hi": "a और b के बीच n समांतर माध्य डालने के लिए सार्व अंतर (b − a)/(n + 1) लीजिए; n गुणोत्तर माध्य डालने के लिए सार्व अनुपात (b/a)^(1/(n + 1)) लीजिए।"
+              },
+              "key_points": [
+                {
+                  "en": "Insert a given number of A.M.s between two numbers.",
+                  "hi": "दो संख्याओं के बीच दी गई संख्या में A.M. डालिए।"
+                },
+                {
+                  "en": "Insert a given number of G.M.s between two positive numbers.",
+                  "hi": "दो धन संख्याओं के बीच दी गई संख्या में G.M. डालिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sequences-series.progressions.core.arithmetic-progression",
+                "math.sequences-series.progressions.core.geometric-progression"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-6:item-2"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 8 §8.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.sequences-series.am-gm",
+      "name": {
+        "en": "Relationship Between A.M. and G.M.",
+        "hi": "समांतर माध्य तथा गुणोत्तर माध्य के बीच संबंध"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 8 §8.5"
+      ],
+      "subtopics": [
+        {
+          "id": "math.sequences-series.am-gm.core",
+          "name": {
+            "en": "Relationship Between A.M. and G.M.",
+            "hi": "समांतर माध्य तथा गुणोत्तर माध्य के बीच संबंध"
+          },
+          "concepts": [
+            {
+              "id": "math.sequences-series.am-gm.core.am-gm-inequality",
+              "name": {
+                "en": "Relation between A.M. and G.M.",
+                "hi": "A.M. तथा G.M. के बीच संबंध"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For positive numbers a and b, A = (a + b)/2 and G = √(ab) satisfy A ≥ G, with equality only when a = b.",
+                "hi": "धन संख्याओं a और b के लिए A = (a + b)/2 और G = √(ab), A ≥ G को संतुष्ट करते हैं, और समता केवल a = b पर होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Prove A ≥ G from (√a − √b)² ≥ 0.",
+                  "hi": "(√a − √b)² ≥ 0 से A ≥ G सिद्ध कीजिए।"
+                },
+                {
+                  "en": "Recover two numbers from their A.M. and G.M.",
+                  "hi": "दो संख्याओं को उनके A.M. और G.M. से पुनः प्राप्त कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sequences-series.progressions.core.inserting-means"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-6:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 8 §8.5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 8",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 6: SEQUENCE AND SERIES (PDF p.1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

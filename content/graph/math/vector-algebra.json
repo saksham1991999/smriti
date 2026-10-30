@@ -1,0 +1,338 @@
+{
+  "schema": "chapter@1",
+  "id": "math.vector-algebra",
+  "subject": "math",
+  "unit": "math.vectors-3d",
+  "name": {
+    "en": "Vector Algebra",
+    "hi": "सदिश बीजगणित"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 10",
+  "topics": [
+    {
+      "id": "math.vector-algebra.vector-basics",
+      "name": {
+        "en": "Some Basic Concepts and Types of Vectors",
+        "hi": "कुछ आधारभूत संकल्पनाएँ तथा सदिशों के प्रकार"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 10 §10.2",
+        "NCERT Class 12 Mathematics Part II, Ch 10 §10.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.vector-algebra.vector-basics.core",
+          "name": {
+            "en": "Some Basic Concepts and Types of Vectors",
+            "hi": "कुछ आधारभूत संकल्पनाएँ तथा सदिशों के प्रकार"
+          },
+          "concepts": [
+            {
+              "id": "math.vector-algebra.vector-basics.core.vectors-scalars",
+              "name": {
+                "en": "Vectors and scalars; types of vectors",
+                "hi": "सदिश तथा अदिश; सदिशों के प्रकार"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A scalar has magnitude only and a vector has magnitude and direction; zero, unit, coinitial, collinear, equal and negative vectors are the main types, and a vector's direction cosines locate it relative to the axes.",
+                "hi": "अदिश में केवल परिमाण होता है और सदिश में परिमाण तथा दिशा; शून्य, मात्रक, सह-आदिम, संरेख, समान और ऋणात्मक सदिश मुख्य प्रकार हैं, और सदिश की दिक्-कोसाइन अक्षों के सापेक्ष उसकी स्थिति बताती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Classify quantities as scalars or vectors.",
+                  "hi": "राशियों को अदिश या सदिश में वर्गीकृत कीजिए।"
+                },
+                {
+                  "en": "Identify equal, collinear and coinitial vectors in a figure.",
+                  "hi": "किसी आकृति में समान, संरेख और सह-आदिम सदिश पहचानिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-12:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.2",
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.vector-algebra.vector-addition",
+      "name": {
+        "en": "Addition of Vectors",
+        "hi": "सदिशों का योगफल"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 10 §10.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.vector-algebra.vector-addition.core",
+          "name": {
+            "en": "Addition of Vectors",
+            "hi": "सदिशों का योगफल"
+          },
+          "concepts": [
+            {
+              "id": "math.vector-algebra.vector-addition.core.vector-addition",
+              "name": {
+                "en": "Addition of vectors: triangle and parallelogram laws",
+                "hi": "सदिशों का योग : त्रिभुज तथा समांतर चतुर्भुज नियम"
+              },
+              "kind": "process",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Vectors add by the triangle law (head to tail) or equivalently the parallelogram law; addition is commutative and associative, and subtraction adds the negative vector.",
+                "hi": "सदिश त्रिभुज नियम (शीर्ष से पुच्छ) से, या समतुल्य रूप से समांतर चतुर्भुज नियम से, जुड़ते हैं; योग क्रमविनिमेय और साहचर्य है, और व्यवकलन ऋणात्मक सदिश को जोड़ना है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the resultant of vectors along the sides of a polygon.",
+                  "hi": "किसी बहुभुज की भुजाओं के अनुदिश सदिशों का परिणामी ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Express one side of a triangle in terms of the other two.",
+                  "hi": "त्रिभुज की एक भुजा को अन्य दो के पदों में व्यक्त कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.vector-algebra.vector-basics.core.vectors-scalars"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-12:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.vector-algebra.scalar-multiple",
+      "name": {
+        "en": "Multiplication of a Vector by a Scalar",
+        "hi": "एक अदिश से सदिश का गुणन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 10 §10.5"
+      ],
+      "subtopics": [
+        {
+          "id": "math.vector-algebra.scalar-multiple.core",
+          "name": {
+            "en": "Multiplication of a Vector by a Scalar",
+            "hi": "एक अदिश से सदिश का गुणन"
+          },
+          "concepts": [
+            {
+              "id": "math.vector-algebra.scalar-multiple.core.vector-components",
+              "name": {
+                "en": "Components of a vector in two and three dimensions",
+                "hi": "दो तथा तीन विमाओं में सदिश के घटक"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Any vector in space can be written as xî + yĵ + zk̂, with magnitude √(x² + y² + z²); the vector from P to Q is the difference of their position vectors, and scaling multiplies each component.",
+                "hi": "अंतरिक्ष में किसी भी सदिश को xî + yĵ + zk̂ लिखा जा सकता है, जिसका परिमाण √(x² + y² + z²) है; P से Q तक का सदिश उनके स्थिति सदिशों का अंतर है, और अदिश से गुणा प्रत्येक घटक को गुणा करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find a unit vector along a given vector.",
+                  "hi": "दिए गए सदिश के अनुदिश मात्रक सदिश ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Write the vector joining two points in component form.",
+                  "hi": "दो बिंदुओं को मिलाने वाले सदिश को घटक रूप में लिखिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.vector-algebra.vector-addition.core.vector-addition",
+                "math.three-d-intro.space-coordinates.core.space-coordinates"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-12:item-2"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.5"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.vector-algebra.scalar-multiple.core.vector-section-formula",
+              "name": {
+                "en": "Section formula in vector form",
+                "hi": "सदिश रूप में विभाजन सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The point dividing the join of points with position vectors a and b internally in the ratio m : n has position vector (mb + na)/(m + n), and externally (mb − na)/(m − n).",
+                "hi": "स्थिति सदिशों a और b वाले बिंदुओं को मिलाने वाले रेखाखंड को m : n में अंतःविभाजित करने वाले बिंदु का स्थिति सदिश (mb + na)/(m + n) और बाह्य विभाजन पर (mb − na)/(m − n) है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the position vector of a dividing point.",
+                  "hi": "विभाजक बिंदु का स्थिति सदिश ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Prove that three points are collinear using position vectors.",
+                  "hi": "स्थिति सदिशों से सिद्ध कीजिए कि तीन बिंदु संरेख हैं।"
+                }
+              ],
+              "prerequisites": [
+                "math.vector-algebra.scalar-multiple.core.vector-components"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-2",
+                "jee-main-2027:mathematics:unit-12:item-2"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.vector-algebra.vector-products",
+      "name": {
+        "en": "Product of Two Vectors",
+        "hi": "दो सदिशों का गुणनफल"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 10 §10.6"
+      ],
+      "subtopics": [
+        {
+          "id": "math.vector-algebra.vector-products.core",
+          "name": {
+            "en": "Product of Two Vectors",
+            "hi": "दो सदिशों का गुणनफल"
+          },
+          "concepts": [
+            {
+              "id": "math.vector-algebra.vector-products.core.dot-product",
+              "name": {
+                "en": "Scalar (dot) product and projection",
+                "hi": "अदिश (बिंदु) गुणनफल तथा प्रक्षेप"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "a·b = |a||b| cos θ = a₁b₁ + a₂b₂ + a₃b₃; it is zero for perpendicular vectors and gives the projection of a on b as a·b/|b|.",
+                "hi": "a·b = |a||b| cos θ = a₁b₁ + a₂b₂ + a₃b₃; लंब सदिशों के लिए यह शून्य है और b पर a का प्रक्षेप a·b/|b| देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the angle between two vectors.",
+                  "hi": "दो सदिशों के बीच का कोण ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the projection of one vector on another.",
+                  "hi": "एक सदिश का दूसरे पर प्रक्षेप ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.vector-algebra.scalar-multiple.core.vector-components"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-12:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.6"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.vector-algebra.vector-products.core.cross-product",
+              "name": {
+                "en": "Vector (cross) product",
+                "hi": "सदिश (क्रॉस) गुणनफल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "a × b has magnitude |a||b| sin θ and direction perpendicular to both by the right-hand rule; it is computed as a determinant, vanishes for parallel vectors, satisfies a × b = −b × a, and |a × b| is the area of the parallelogram on a and b.",
+                "hi": "a × b का परिमाण |a||b| sin θ है और दिशा दक्षिण-हस्त नियम से दोनों के लंबवत; इसकी गणना सारणिक से होती है, समांतर सदिशों के लिए यह शून्य है, a × b = −b × a, और |a × b|, a तथा b पर बने समांतर चतुर्भुज का क्षेत्रफल है।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute a × b with the determinant form.",
+                  "hi": "सारणिक रूप से a × b निकालिए।"
+                },
+                {
+                  "en": "Find a unit vector perpendicular to two vectors and the area of a triangle.",
+                  "hi": "दो सदिशों के लंबवत मात्रक सदिश और त्रिभुज का क्षेत्रफल ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.vector-algebra.vector-products.core.dot-product",
+                "math.determinants.determinant.core.determinant-evaluation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-12:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 10 §10.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 10",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh204.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xvi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 11: THREE DIMENSIONAL GEOMETRY (PDF p.2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 12: VECTOR ALGEBRA (PDF p.2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

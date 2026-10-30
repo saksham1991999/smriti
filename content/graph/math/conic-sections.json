@@ -1,0 +1,282 @@
+{
+  "schema": "chapter@1",
+  "id": "math.conic-sections",
+  "subject": "math",
+  "unit": "math.coordinate-geometry",
+  "name": {
+    "en": "Conic Sections",
+    "hi": "शंकु परिच्छेद"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 10",
+  "topics": [
+    {
+      "id": "math.conic-sections.cone-sections",
+      "name": {
+        "en": "Sections of a Cone",
+        "hi": "शंकु के परिच्छेद"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 10 §10.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.conic-sections.cone-sections.core",
+          "name": {
+            "en": "Sections of a Cone",
+            "hi": "शंकु के परिच्छेद"
+          },
+          "concepts": [
+            {
+              "id": "math.conic-sections.cone-sections.core.conic-as-sections",
+              "name": {
+                "en": "Conic sections as sections of a double cone",
+                "hi": "द्वि-शंकु के परिच्छेद के रूप में शंकु परिच्छेद"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Cutting a double-napped cone with a plane at different angles to its axis gives a circle, an ellipse, a parabola or a hyperbola, and degenerate cases give a point, a line or a pair of lines.",
+                "hi": "द्वि-नापी शंकु को उसके अक्ष से विभिन्न कोणों पर समतल से काटने पर वृत्त, दीर्घवृत्त, परवलय या अतिपरवलय मिलता है, और अपभ्रष्ट स्थितियों में एक बिंदु, एक रेखा या रेखा-युग्म मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Relate the angle of the cutting plane to the type of conic.",
+                  "hi": "काटने वाले समतल के कोण को शंकु परिच्छेद के प्रकार से जोड़िए।"
+                },
+                {
+                  "en": "Name the degenerate conics.",
+                  "hi": "अपभ्रष्ट शंकु परिच्छेदों के नाम बताइए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-13"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 10 §10.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.conic-sections.circle",
+      "name": {
+        "en": "Circle",
+        "hi": "वृत्त"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 10 §10.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.conic-sections.circle.core",
+          "name": {
+            "en": "Circle",
+            "hi": "वृत्त"
+          },
+          "concepts": [
+            {
+              "id": "math.conic-sections.circle.core.circle-equations",
+              "name": {
+                "en": "Standard and general equations of a circle; centre and radius",
+                "hi": "वृत्त के मानक तथा व्यापक समीकरण; केंद्र तथा त्रिज्या"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A circle with centre (h, k) and radius r is (x − h)² + (y − k)² = r²; the general form x² + y² + 2gx + 2fy + c = 0 has centre (−g, −f) and radius √(g² + f² − c).",
+                "hi": "केंद्र (h, k) और त्रिज्या r वाला वृत्त (x − h)² + (y − k)² = r² है; व्यापक रूप x² + y² + 2gx + 2fy + c = 0 का केंद्र (−g, −f) और त्रिज्या √(g² + f² − c) है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find centre and radius from the general equation.",
+                  "hi": "व्यापक समीकरण से केंद्र और त्रिज्या ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find a circle through three given points.",
+                  "hi": "तीन दिए गए बिंदुओं से होकर जाने वाला वृत्त ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.plane-coordinates.core.distance-section-formula",
+                "math.conic-sections.cone-sections.core.conic-as-sections"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-10"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 10 §10.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.conic-sections.circle.core.circle-diameter-form",
+              "name": {
+                "en": "Circle on a given diameter",
+                "hi": "दिए गए व्यास पर वृत्त"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The circle whose diameter has endpoints (x₁, y₁) and (x₂, y₂) is (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0.",
+                "hi": "जिस वृत्त के व्यास के अंत्य बिंदु (x₁, y₁) और (x₂, y₂) हैं, उसका समीकरण (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0 है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the form from the right angle in a semicircle.",
+                  "hi": "अर्धवृत्त में समकोण से यह रूप व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Write the circle on a given diameter directly.",
+                  "hi": "दिए गए व्यास पर वृत्त सीधे लिखिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.conic-sections.circle.core.circle-equations",
+                "math.straight-lines.slope.core.slope-parallel-perpendicular"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-11"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 10 §10.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.conic-sections.circle.core.line-circle-intersection",
+              "name": {
+                "en": "Points of intersection of a line and a circle centred at the origin",
+                "hi": "मूलबिंदु पर केंद्रित वृत्त तथा रेखा के प्रतिच्छेद बिंदु"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Substituting the line into x² + y² = r² gives a quadratic whose roots are the intersection points; its discriminant shows whether the line cuts, touches or misses the circle, matching the comparison of the centre's distance from the line with r.",
+                "hi": "रेखा को x² + y² = r² में प्रतिस्थापित करने पर एक द्विघात मिलता है जिसके मूल प्रतिच्छेद बिंदु हैं; इसका विविक्तकर बताता है कि रेखा वृत्त को काटती है, स्पर्श करती है या नहीं मिलती, जो केंद्र की रेखा से दूरी की r से तुलना से मेल खाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the points where a line meets x² + y² = r².",
+                  "hi": "वे बिंदु ज्ञात कीजिए जहाँ रेखा x² + y² = r² से मिलती है।"
+                },
+                {
+                  "en": "Find the condition for y = mx + c to touch x² + y² = r².",
+                  "hi": "y = mx + c के x² + y² = r² को स्पर्श करने की शर्त ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.conic-sections.circle.core.circle-equations",
+                "math.straight-lines.point-line-distance.core.point-line-distance",
+                "math.complex-numbers.quadratic-equations.core.roots-coefficients"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-12"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.conic-sections.parabola-ellipse-hyperbola",
+      "name": {
+        "en": "Parabola, Ellipse and Hyperbola",
+        "hi": "परवलय, दीर्घवृत्त तथा अतिपरवलय"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 10 §10.4",
+        "NCERT Class 11 Mathematics, Ch 10 §10.5",
+        "NCERT Class 11 Mathematics, Ch 10 §10.6"
+      ],
+      "subtopics": [
+        {
+          "id": "math.conic-sections.parabola-ellipse-hyperbola.core",
+          "name": {
+            "en": "Parabola, Ellipse and Hyperbola",
+            "hi": "परवलय, दीर्घवृत्त तथा अतिपरवलय"
+          },
+          "concepts": [
+            {
+              "id": "math.conic-sections.parabola-ellipse-hyperbola.core.conic-standard-forms",
+              "name": {
+                "en": "Standard equations of the parabola, ellipse and hyperbola",
+                "hi": "परवलय, दीर्घवृत्त तथा अतिपरवलय के मानक समीकरण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "In standard position y² = 4ax is a parabola with focus (a, 0) and directrix x = −a, x²/a² + y²/b² = 1 (a > b) is an ellipse with c² = a² − b², and x²/a² − y²/b² = 1 is a hyperbola with c² = a² + b²; each has an eccentricity e and a latus rectum.",
+                "hi": "मानक स्थिति में y² = 4ax नाभि (a, 0) और नियता x = −a वाला परवलय है, x²/a² + y²/b² = 1 (a > b) दीर्घवृत्त है जिसमें c² = a² − b², और x²/a² − y²/b² = 1 अतिपरवलय है जिसमें c² = a² + b²; प्रत्येक की एक उत्केंद्रता e और एक नाभिलंब होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find focus, directrix, vertices, eccentricity and latus rectum from a standard equation.",
+                  "hi": "मानक समीकरण से नाभि, नियता, शीर्ष, उत्केंद्रता और नाभिलंब ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the standard equation from given foci, vertices or eccentricity.",
+                  "hi": "दी गई नाभियों, शीर्षों या उत्केंद्रता से मानक समीकरण ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Recognise the orientation from the equation.",
+                  "hi": "समीकरण से अभिविन्यास पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.conic-sections.cone-sections.core.conic-as-sections",
+                "math.straight-lines.plane-coordinates.core.distance-section-formula"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-13"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 10 §10.4",
+                "NCERT Class 11 Mathematics, Ch 10 §10.5",
+                "NCERT Class 11 Mathematics, Ch 10 §10.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 10",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh110.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 10: CO-ORDINATE GEOMETRY (PDF p.2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

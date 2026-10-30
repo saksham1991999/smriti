@@ -1,0 +1,259 @@
+{
+  "schema": "chapter@1",
+  "id": "math.probability",
+  "subject": "math",
+  "unit": "math.statistics-probability",
+  "name": {
+    "en": "Probability",
+    "hi": "प्रायिकता"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 13",
+  "note": "The NCERT 2026-27 reprint of this chapter ends with Bayes' theorem; the probability distribution of a random variable, listed in the JEE (Main) syllabus, has no section in it, so that concept carries no NCERT reference.",
+  "topics": [
+    {
+      "id": "math.probability.conditional-probability",
+      "name": {
+        "en": "Conditional Probability",
+        "hi": "सप्रतिबंध प्रायिकता"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 13 §13.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.probability.conditional-probability.core",
+          "name": {
+            "en": "Conditional Probability",
+            "hi": "सप्रतिबंध प्रायिकता"
+          },
+          "concepts": [
+            {
+              "id": "math.probability.conditional-probability.core.conditional-probability",
+              "name": {
+                "en": "Conditional probability",
+                "hi": "सप्रतिबंध प्रायिकता"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The probability of E given that F has occurred is P(E|F) = P(E ∩ F)/P(F) for P(F) ≠ 0, and it obeys the same rules as ordinary probability on the reduced sample space F.",
+                "hi": "F के घटित होने पर E की प्रायिकता P(F) ≠ 0 के लिए P(E|F) = P(E ∩ F)/P(F) है, और यह घटे हुए प्रतिदर्श समष्टि F पर सामान्य प्रायिकता के नियमों का पालन करती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute P(E|F) from a table or by restricting the sample space.",
+                  "hi": "सारणी से या प्रतिदर्श समष्टि को सीमित करके P(E|F) निकालिए।"
+                },
+                {
+                  "en": "Use P(E′|F) = 1 − P(E|F).",
+                  "hi": "P(E′|F) = 1 − P(E|F) का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.probability-basics.axiomatic-probability.core.probability-of-event"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 13 §13.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.probability.multiplication-theorem",
+      "name": {
+        "en": "Multiplication Theorem and Independent Events",
+        "hi": "प्रायिकता का गुणन नियम तथा स्वतंत्र घटनाएँ"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 13 §13.3",
+        "NCERT Class 12 Mathematics Part II, Ch 13 §13.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.probability.multiplication-theorem.core",
+          "name": {
+            "en": "Multiplication Theorem and Independent Events",
+            "hi": "प्रायिकता का गुणन नियम तथा स्वतंत्र घटनाएँ"
+          },
+          "concepts": [
+            {
+              "id": "math.probability.multiplication-theorem.core.multiplication-theorem",
+              "name": {
+                "en": "Multiplication theorem and independent events",
+                "hi": "गुणन प्रमेय तथा स्वतंत्र घटनाएँ"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "P(E ∩ F) = P(E)·P(F|E) = P(F)·P(E|F); events are independent when P(E ∩ F) = P(E)·P(F), so knowing one does not change the probability of the other.",
+                "hi": "P(E ∩ F) = P(E)·P(F|E) = P(F)·P(E|F); घटनाएँ स्वतंत्र होती हैं जब P(E ∩ F) = P(E)·P(F), अर्थात एक का ज्ञान दूसरी की प्रायिकता नहीं बदलता।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the probability of successive draws without replacement.",
+                  "hi": "बिना प्रतिस्थापन के क्रमागत निकालों की प्रायिकता ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Test two events for independence and distinguish independence from mutual exclusion.",
+                  "hi": "दो घटनाओं की स्वतंत्रता जाँचिए और स्वतंत्रता को परस्पर अपवर्जिता से अलग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.probability.conditional-probability.core.conditional-probability"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 13 §13.3",
+                "NCERT Class 12 Mathematics Part II, Ch 13 §13.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.probability.bayes",
+      "name": {
+        "en": "Bayes' Theorem",
+        "hi": "बेज़-प्रमेय"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 13 §13.5"
+      ],
+      "subtopics": [
+        {
+          "id": "math.probability.bayes.core",
+          "name": {
+            "en": "Bayes' Theorem",
+            "hi": "बेज़-प्रमेय"
+          },
+          "concepts": [
+            {
+              "id": "math.probability.bayes.core.total-probability-bayes",
+              "name": {
+                "en": "Theorem of total probability and Bayes' theorem",
+                "hi": "संपूर्ण प्रायिकता प्रमेय तथा बेज़ प्रमेय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "If E₁, …, Eₙ partition the sample space then P(A) = Σ P(Eᵢ)P(A|Eᵢ), and Bayes' theorem gives P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ), revising prior probabilities in the light of A.",
+                "hi": "यदि E₁, …, Eₙ प्रतिदर्श समष्टि का विभाजन करें तो P(A) = Σ P(Eᵢ)P(A|Eᵢ), और बेज़ प्रमेय P(Eᵢ|A) = P(Eᵢ)P(A|Eᵢ)/Σ P(Eⱼ)P(A|Eⱼ) देता है, जो A के आलोक में पूर्व प्रायिकताओं को संशोधित करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify the partition and the likelihoods in a word problem.",
+                  "hi": "शाब्दिक प्रश्न में विभाजन और संभाविताएँ पहचानिए।"
+                },
+                {
+                  "en": "Compute a posterior probability with a tree or table.",
+                  "hi": "वृक्ष आरेख या सारणी से उत्तर प्रायिकता निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.probability.multiplication-theorem.core.multiplication-theorem"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-5"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 13 §13.5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.probability.random-variable",
+      "name": {
+        "en": "Random Variables and Probability Distributions",
+        "hi": "यादृच्छिक चर तथा प्रायिकता बंटन"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "math.probability.random-variable.core",
+          "name": {
+            "en": "Random Variables and Probability Distributions",
+            "hi": "यादृच्छिक चर तथा प्रायिकता बंटन"
+          },
+          "concepts": [
+            {
+              "id": "math.probability.random-variable.core.random-variable-distribution",
+              "name": {
+                "en": "Random variable and its probability distribution",
+                "hi": "यादृच्छिक चर तथा उसका प्रायिकता बंटन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A random variable assigns a real number to each outcome; its probability distribution lists each value with its probability, each probability lying between 0 and 1 and all of them summing to 1.",
+                "hi": "यादृच्छिक चर प्रत्येक परिणाम को एक वास्तविक संख्या देता है; उसका प्रायिकता बंटन प्रत्येक मान को उसकी प्रायिकता के साथ सूचीबद्ध करता है, जिसमें प्रत्येक प्रायिकता 0 और 1 के बीच होती है और सबका योग 1 होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Tabulate the distribution of a discrete random variable such as the number of heads.",
+                  "hi": "चितों की संख्या जैसे असतत यादृच्छिक चर का बंटन सारणीबद्ध कीजिए।"
+                },
+                {
+                  "en": "Find an unknown probability from the condition that the total is 1.",
+                  "hi": "कुल योग 1 होने की शर्त से अज्ञात प्रायिकता ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.probability-basics.axiomatic-probability.core.probability-of-event"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 13",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh207.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xvi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 13: STATISTICS AND PROBABILITY (PDF p.2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

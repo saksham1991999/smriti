@@ -1,0 +1,211 @@
+{
+  "schema": "chapter@1",
+  "id": "math.applications-of-derivatives",
+  "subject": "math",
+  "unit": "math.calculus",
+  "name": {
+    "en": "Application of Derivatives",
+    "hi": "अवकलज के अनुप्रयोग"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Mathematics Part I, Ch 6",
+  "topics": [
+    {
+      "id": "math.applications-of-derivatives.rate-of-change",
+      "name": {
+        "en": "Rate of Change of Quantities",
+        "hi": "राशियों के परिवर्तन की दर"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part I, Ch 6 §6.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.applications-of-derivatives.rate-of-change.core",
+          "name": {
+            "en": "Rate of Change of Quantities",
+            "hi": "राशियों के परिवर्तन की दर"
+          },
+          "concepts": [
+            {
+              "id": "math.applications-of-derivatives.rate-of-change.core.rate-of-change",
+              "name": {
+                "en": "Rate of change of quantities",
+                "hi": "राशियों के परिवर्तन की दर"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "dy/dx is the rate of change of y with respect to x, and related rates follow from the chain rule, dy/dt = (dy/dx)(dx/dt).",
+                "hi": "dy/dx, x के सापेक्ष y के परिवर्तन की दर है, और संबंधित दरें शृंखला नियम dy/dt = (dy/dx)(dx/dt) से मिलती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the rate at which an area or volume changes as a length changes.",
+                  "hi": "लंबाई बदलने पर क्षेत्रफल या आयतन के बदलने की दर ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Solve related-rate problems with time as the parameter.",
+                  "hi": "समय को प्राचल मानकर संबंधित दरों के प्रश्न हल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.continuity-differentiability.differentiability.core.chain-rule-implicit"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-10"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part I, Ch 6 §6.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.applications-of-derivatives.increasing-decreasing",
+      "name": {
+        "en": "Increasing and Decreasing Functions",
+        "hi": "वर्धमान और ह्रासमान फलन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part I, Ch 6 §6.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.applications-of-derivatives.increasing-decreasing.core",
+          "name": {
+            "en": "Increasing and Decreasing Functions",
+            "hi": "वर्धमान और ह्रासमान फलन"
+          },
+          "concepts": [
+            {
+              "id": "math.applications-of-derivatives.increasing-decreasing.core.monotonic-functions",
+              "name": {
+                "en": "Increasing and decreasing functions",
+                "hi": "वर्धमान तथा ह्रासमान फलन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "A differentiable function is increasing on an interval where f′(x) > 0 and decreasing where f′(x) < 0, so the sign of f′ splits the domain into intervals of monotonicity.",
+                "hi": "अवकलनीय फलन उस अंतराल पर वर्धमान है जहाँ f′(x) > 0 और ह्रासमान है जहाँ f′(x) < 0, अतः f′ का चिह्न प्रांत को एकदिष्टता के अंतरालों में बाँटता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the intervals on which a function increases or decreases.",
+                  "hi": "वे अंतराल ज्ञात कीजिए जिन पर फलन वर्धमान या ह्रासमान है।"
+                },
+                {
+                  "en": "Prove a function is monotonic on a given interval.",
+                  "hi": "सिद्ध कीजिए कि फलन दिए गए अंतराल पर एकदिष्ट है।"
+                }
+              ],
+              "prerequisites": [
+                "math.continuity-differentiability.differentiability.core.differentiability-relation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-11"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part I, Ch 6 §6.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.applications-of-derivatives.maxima-minima",
+      "name": {
+        "en": "Maxima and Minima",
+        "hi": "उच्चतम और निम्नतम"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part I, Ch 6 §6.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.applications-of-derivatives.maxima-minima.core",
+          "name": {
+            "en": "Maxima and Minima",
+            "hi": "उच्चतम और निम्नतम"
+          },
+          "concepts": [
+            {
+              "id": "math.applications-of-derivatives.maxima-minima.core.maxima-minima",
+              "name": {
+                "en": "Local and absolute maxima and minima of functions of one variable",
+                "hi": "एक चर के फलनों के स्थानीय तथा निरपेक्ष उच्चतम और निम्नतम"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Local extrema occur at critical points, classified by the first-derivative sign change or by the sign of f″; on a closed interval the absolute extrema are found by comparing values at critical points and endpoints.",
+                "hi": "स्थानीय चरम मान क्रांतिक बिंदुओं पर होते हैं, जिनका वर्गीकरण प्रथम अवकलज के चिह्न-परिवर्तन या f″ के चिह्न से होता है; संवृत अंतराल पर निरपेक्ष चरम मान क्रांतिक बिंदुओं और अंत्य बिंदुओं पर मानों की तुलना से मिलते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Classify critical points with the first and second derivative tests.",
+                  "hi": "प्रथम और द्वितीय अवकलज परीक्षणों से क्रांतिक बिंदुओं का वर्गीकरण कीजिए।"
+                },
+                {
+                  "en": "Find absolute extrema on a closed interval.",
+                  "hi": "संवृत अंतराल पर निरपेक्ष चरम मान ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Solve optimisation problems on areas, volumes and distances.",
+                  "hi": "क्षेत्रफल, आयतन और दूरी पर इष्टतमीकरण प्रश्न हल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.applications-of-derivatives.increasing-decreasing.core.monotonic-functions",
+                "math.continuity-differentiability.second-derivative.core.second-order-derivative"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-12"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part I, Ch 6 §6.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 6",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh106.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 7: LIMIT, CONTINUITY AND DIFFERENTIABILITY (PDF p.1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

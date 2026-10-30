@@ -1,0 +1,95 @@
+{
+  "schema": "chapter@1",
+  "id": "math.application-of-integrals",
+  "subject": "math",
+  "unit": "math.calculus",
+  "name": {
+    "en": "Application of Integrals",
+    "hi": "समाकलनों के अनुप्रयोग"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 8",
+  "topics": [
+    {
+      "id": "math.application-of-integrals.area-curves",
+      "name": {
+        "en": "Area under Simple Curves",
+        "hi": "साधारण वक्रों के अंतर्गत क्षेत्रफल"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 8 §8.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.application-of-integrals.area-curves.core",
+          "name": {
+            "en": "Area under Simple Curves",
+            "hi": "साधारण वक्रों के अंतर्गत क्षेत्रफल"
+          },
+          "concepts": [
+            {
+              "id": "math.application-of-integrals.area-curves.core.area-under-curves",
+              "name": {
+                "en": "Areas of regions bounded by simple curves in standard form",
+                "hi": "मानक रूप में साधारण वक्रों से घिरे क्षेत्रों के क्षेत्रफल"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The area between y = f(x), the x-axis and x = a, x = b is ∫ₐᵇ |f(x)|dx, and similar strips in y or between two curves give areas bounded by lines, circles, parabolas and ellipses.",
+                "hi": "y = f(x), x-अक्ष तथा x = a, x = b के बीच का क्षेत्रफल ∫ₐᵇ |f(x)|dx है, और y में या दो वक्रों के बीच इसी प्रकार की पट्टियाँ रेखाओं, वृत्तों, परवलयों और दीर्घवृत्तों से घिरे क्षेत्रफल देती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch the region before setting up the integral.",
+                  "hi": "समाकल बनाने से पहले क्षेत्र का रेखाचित्र बनाइए।"
+                },
+                {
+                  "en": "Find the area enclosed by an ellipse or by a parabola and a line.",
+                  "hi": "दीर्घवृत्त से, या परवलय और रेखा से घिरा क्षेत्रफल ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.definite-integral.core.fundamental-theorem",
+                "math.conic-sections.parabola-ellipse-hyperbola.core.conic-standard-forms"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-9"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 8 §8.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 8",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh202.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 8: INTEGRAL CALCULAS (PDF p.1-2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

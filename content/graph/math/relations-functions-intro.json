@@ -1,0 +1,281 @@
+{
+  "schema": "chapter@1",
+  "id": "math.relations-functions-intro",
+  "subject": "math",
+  "unit": "math.sets-functions",
+  "name": {
+    "en": "Relations and Functions",
+    "hi": "संबंध एवं फलन"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 2",
+  "topics": [
+    {
+      "id": "math.relations-functions-intro.cartesian-product",
+      "name": {
+        "en": "Cartesian Products of Sets",
+        "hi": "समुच्चयों का कार्तीय गुणन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 2 §2.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core",
+          "name": {
+            "en": "Cartesian Products of Sets",
+            "hi": "समुच्चयों का कार्तीय गुणन"
+          },
+          "concepts": [
+            {
+              "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+              "name": {
+                "en": "Ordered pairs and the Cartesian product of sets",
+                "hi": "क्रमित युग्म तथा समुच्चयों का कार्तीय गुणन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The Cartesian product A × B is the set of all ordered pairs (a, b) with a in A and b in B; if n(A) = p and n(B) = q then n(A × B) = pq.",
+                "hi": "कार्तीय गुणन A × B उन सभी क्रमित युग्मों (a, b) का समुच्चय है जिनमें a, A में और b, B में हो; यदि n(A) = p और n(B) = q तो n(A × B) = pq।"
+              },
+              "key_points": [
+                {
+                  "en": "Write A × B for two small sets.",
+                  "hi": "दो छोटे समुच्चयों के लिए A × B लिखिए।"
+                },
+                {
+                  "en": "Use equality of ordered pairs to find unknowns.",
+                  "hi": "क्रमित युग्मों की समानता से अज्ञात राशियाँ ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.sets-representation.core.set-notation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 2 §2.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro",
+      "name": {
+        "en": "Relations",
+        "hi": "संबंध"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 2 §2.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core",
+          "name": {
+            "en": "Relations",
+            "hi": "संबंध"
+          },
+          "concepts": [
+            {
+              "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+              "name": {
+                "en": "Relation, its domain, codomain and range",
+                "hi": "संबंध, उसका प्रांत, सहप्रांत तथा परिसर"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A relation from A to B is a subset of A × B; its domain is the set of first elements, its range the set of second elements, and B is its codomain.",
+                "hi": "A से B तक संबंध A × B का एक उपसमुच्चय है; उसका प्रांत प्रथम अवयवों का समुच्चय, परिसर द्वितीय अवयवों का समुच्चय, और B उसका सहप्रांत है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write a relation in roster form from a rule.",
+                  "hi": "किसी नियम से संबंध को सूचीरूप में लिखिए।"
+                },
+                {
+                  "en": "Count the relations from A to B as 2^(pq).",
+                  "hi": "A से B तक के संबंधों की संख्या 2^(pq) निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 2 §2.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro",
+      "name": {
+        "en": "Functions",
+        "hi": "फलन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 2 §2.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core",
+          "name": {
+            "en": "Functions",
+            "hi": "फलन"
+          },
+          "concepts": [
+            {
+              "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+              "name": {
+                "en": "Function as a special relation; real-valued functions",
+                "hi": "विशेष संबंध के रूप में फलन; वास्तविक मान फलन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A function from A to B relates every element of A to exactly one element of B; a real-valued function has a subset of R as its range.",
+                "hi": "A से B तक फलन A के प्रत्येक अवयव को B के ठीक एक अवयव से जोड़ता है; वास्तविक मान फलन का परिसर R का उपसमुच्चय होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Decide whether a relation given by pairs or a graph is a function.",
+                  "hi": "तय कीजिए कि युग्मों या ग्राफ़ से दिया गया संबंध फलन है या नहीं।"
+                },
+                {
+                  "en": "Find the domain and range of a real function given by a formula.",
+                  "hi": "सूत्र से दिए गए वास्तविक फलन का प्रांत और परिसर ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-1:item-5",
+                "jee-main-2027:mathematics:unit-7:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 2 §2.4"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+              "name": {
+                "en": "Standard functions and their graphs",
+                "hi": "मानक फलन तथा उनके ग्राफ़"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Identity, constant, polynomial, rational, modulus, signum and greatest integer functions each have a characteristic graph, domain and range.",
+                "hi": "तत्समक, अचर, बहुपद, परिमेय, मापांक, चिह्न और महत्तम पूर्णांक फलनों में से प्रत्येक का एक विशिष्ट ग्राफ़, प्रांत और परिसर होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch the graph of each standard function.",
+                  "hi": "प्रत्येक मानक फलन का ग्राफ़ खींचिए।"
+                },
+                {
+                  "en": "Read domain and range from a graph.",
+                  "hi": "ग्राफ़ से प्रांत और परिसर पढ़िए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.functions-intro.core.function-definition"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-2",
+                "jee-main-2027:mathematics:unit-7:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 2 §2.4"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+              "name": {
+                "en": "Algebra of real functions",
+                "hi": "वास्तविक फलनों का बीजगणित"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Real functions f and g with a common domain can be added, subtracted, multiplied and divided pointwise, with f/g defined only where g(x) ≠ 0.",
+                "hi": "समान प्रांत वाले वास्तविक फलन f और g को बिंदुवार जोड़ा, घटाया, गुणा और भाग किया जा सकता है, जिसमें f/g केवल वहाँ परिभाषित है जहाँ g(x) ≠ 0।"
+              },
+              "key_points": [
+                {
+                  "en": "Form f + g, f − g, fg and f/g with their domains.",
+                  "hi": "f + g, f − g, fg और f/g तथा उनके प्रांत बनाइए।"
+                },
+                {
+                  "en": "Multiply a function by a scalar.",
+                  "hi": "किसी फलन को अदिश से गुणा कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.relations-functions-intro.functions-intro.core.function-definition"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-7:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 2 §2.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 1: SETS, RELATIONS AND FUNCTIONS (PDF p.1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 7: LIMIT, CONTINUITY AND DIFFERENTIABILITY (PDF p.1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

@@ -1,0 +1,387 @@
+{
+  "schema": "chapter@1",
+  "id": "math.straight-lines",
+  "subject": "math",
+  "unit": "math.coordinate-geometry",
+  "name": {
+    "en": "Straight Lines",
+    "hi": "सरल रेखाएँ"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 9",
+  "note": "The rationalised NCERT chapter starts from the slope of a line. The distance and section formulae, locus, concurrency of three lines and the centroid, orthocentre and circumcentre of a triangle are listed in the JEE (Main) syllabus but have no section in this chapter, so those concepts carry no NCERT reference.",
+  "topics": [
+    {
+      "id": "math.straight-lines.plane-coordinates",
+      "name": {
+        "en": "Cartesian Coordinates in a Plane",
+        "hi": "समतल में कार्तीय निर्देशांक"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "math.straight-lines.plane-coordinates.core",
+          "name": {
+            "en": "Cartesian Coordinates in a Plane",
+            "hi": "समतल में कार्तीय निर्देशांक"
+          },
+          "concepts": [
+            {
+              "id": "math.straight-lines.plane-coordinates.core.distance-section-formula",
+              "name": {
+                "en": "Distance formula and section formula in a plane",
+                "hi": "समतल में दूरी सूत्र तथा विभाजन सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The distance between (x₁, y₁) and (x₂, y₂) is √[(x₂ − x₁)² + (y₂ − y₁)²], and the point dividing the join in the ratio m : n internally is ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n)).",
+                "hi": "(x₁, y₁) और (x₂, y₂) के बीच की दूरी √[(x₂ − x₁)² + (y₂ − y₁)²] है, और उनको मिलाने वाले रेखाखंड को m : n में अंतःविभाजित करने वाला बिंदु ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n)) है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find distances and test for special triangles and quadrilaterals.",
+                  "hi": "दूरियाँ निकालिए और विशेष त्रिभुजों तथा चतुर्भुजों की जाँच कीजिए।"
+                },
+                {
+                  "en": "Find internal and external division points and the midpoint.",
+                  "hi": "अंतः और बाह्य विभाजन बिंदु तथा मध्य-बिंदु ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-1"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.straight-lines.plane-coordinates.core.locus-equation",
+              "name": {
+                "en": "Locus and its equation",
+                "hi": "बिंदुपथ तथा उसका समीकरण"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A locus is the path of a point moving under a condition; writing the condition in terms of the moving point (h, k) and replacing h, k by x, y gives the equation of the locus.",
+                "hi": "बिंदुपथ किसी शर्त के अधीन गतिमान बिंदु का पथ है; शर्त को गतिमान बिंदु (h, k) के पदों में लिखकर और h, k को x, y से बदलकर बिंदुपथ का समीकरण मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the locus of a point equidistant from two given points.",
+                  "hi": "दो दिए गए बिंदुओं से समदूरस्थ बिंदु का बिंदुपथ ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the locus of a point satisfying a distance-ratio condition.",
+                  "hi": "दूरी-अनुपात की शर्त को संतुष्ट करने वाले बिंदु का बिंदुपथ ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.plane-coordinates.core.distance-section-formula"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.straight-lines.plane-coordinates.core.triangle-centres",
+              "name": {
+                "en": "Centroid, orthocentre and circumcentre of a triangle",
+                "hi": "त्रिभुज का केन्द्रक, लंबकेंद्र तथा परिकेंद्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The centroid is the mean of the three vertices; the circumcentre is equidistant from them and the orthocentre is the meeting point of the altitudes, both found by intersecting two lines.",
+                "hi": "केन्द्रक तीनों शीर्षों का माध्य है; परिकेंद्र उनसे समदूरस्थ है और लंबकेंद्र शीर्षलंबों का मिलन बिंदु है, दोनों दो रेखाओं के प्रतिच्छेदन से मिलते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the centroid from the vertices.",
+                  "hi": "शीर्षों से केन्द्रक ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the orthocentre and circumcentre by intersecting altitudes or perpendicular bisectors.",
+                  "hi": "शीर्षलंबों या लंब समद्विभाजकों के प्रतिच्छेदन से लंबकेंद्र और परिकेंद्र ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.plane-coordinates.core.distance-section-formula",
+                "math.straight-lines.line-forms.core.line-equation-forms"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.straight-lines.slope",
+      "name": {
+        "en": "Slope of a Line",
+        "hi": "रेखा की ढाल"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 9 §9.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.straight-lines.slope.core",
+          "name": {
+            "en": "Slope of a Line",
+            "hi": "रेखा की ढाल"
+          },
+          "concepts": [
+            {
+              "id": "math.straight-lines.slope.core.slope-parallel-perpendicular",
+              "name": {
+                "en": "Slope of a line; parallel and perpendicular lines; angle between two lines",
+                "hi": "रेखा की ढाल; समांतर तथा लंब रेखाएँ; दो रेखाओं के बीच का कोण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The slope m = tan θ = (y₂ − y₁)/(x₂ − x₁); lines are parallel when their slopes are equal and perpendicular when m₁m₂ = −1, and the acute angle between them satisfies tan θ = |(m₂ − m₁)/(1 + m₁m₂)|.",
+                "hi": "ढाल m = tan θ = (y₂ − y₁)/(x₂ − x₁); रेखाएँ समांतर होती हैं जब उनकी ढालें बराबर हों और लंब होती हैं जब m₁m₂ = −1, तथा उनके बीच का न्यून कोण tan θ = |(m₂ − m₁)/(1 + m₁m₂)| को संतुष्ट करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the slope from two points or from an inclination.",
+                  "hi": "दो बिंदुओं से या झुकाव से ढाल ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the angle between two lines and test collinearity using slopes.",
+                  "hi": "दो रेखाओं के बीच का कोण ज्ञात कीजिए और ढालों से संरेखता जाँचिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.plane-coordinates.core.distance-section-formula",
+                "math.trigonometric-functions.trig-functions.core.trig-functions-unit-circle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-3",
+                "jee-main-2027:mathematics:unit-10:item-6"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 9 §9.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.straight-lines.line-forms",
+      "name": {
+        "en": "Various Forms of the Equation of a Line",
+        "hi": "रेखा के समीकरण के विविध रूप"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 9 §9.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.straight-lines.line-forms.core",
+          "name": {
+            "en": "Various Forms of the Equation of a Line",
+            "hi": "रेखा के समीकरण के विविध रूप"
+          },
+          "concepts": [
+            {
+              "id": "math.straight-lines.line-forms.core.line-equation-forms",
+              "name": {
+                "en": "Point-slope, two-point, slope-intercept, intercept and normal forms",
+                "hi": "बिंदु-ढाल, दो-बिंदु, ढाल-अंतःखंड, अंतःखंड तथा अभिलंब रूप"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A line can be written as y − y₁ = m(x − x₁), through two points, as y = mx + c, as x/a + y/b = 1, or in the general form Ax + By + C = 0.",
+                "hi": "रेखा को y − y₁ = m(x − x₁), दो बिंदुओं से, y = mx + c, x/a + y/b = 1, या व्यापक रूप Ax + By + C = 0 में लिखा जा सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Choose the form that matches the given data.",
+                  "hi": "दिए गए आँकड़ों से मेल खाने वाला रूप चुनिए।"
+                },
+                {
+                  "en": "Convert the general form to slope-intercept and intercept forms.",
+                  "hi": "व्यापक रूप को ढाल-अंतःखंड और अंतःखंड रूपों में बदलिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.slope.core.slope-parallel-perpendicular"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-5"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 9 §9.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.straight-lines.line-forms.core.line-intercepts",
+              "name": {
+                "en": "Intercepts of a line on the coordinate axes",
+                "hi": "निर्देशांक अक्षों पर रेखा के अंतःखंड"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Putting y = 0 and x = 0 in the equation of a line gives its x- and y-intercepts, which lead directly to the intercept form x/a + y/b = 1.",
+                "hi": "रेखा के समीकरण में y = 0 और x = 0 रखने से उसके x- और y-अंतःखंड मिलते हैं, जिनसे सीधे अंतःखंड रूप x/a + y/b = 1 मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the intercepts of a line on both axes.",
+                  "hi": "दोनों अक्षों पर रेखा के अंतःखंड ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find a line from conditions on its intercepts.",
+                  "hi": "अंतःखंडों पर दी गई शर्तों से रेखा ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.line-forms.core.line-equation-forms"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 9 §9.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.straight-lines.line-forms.core.lines-intersection-concurrence",
+              "name": {
+                "en": "Intersection of lines and the condition for concurrence of three lines",
+                "hi": "रेखाओं का प्रतिच्छेदन तथा तीन रेखाओं के संगामी होने की शर्त"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Two non-parallel lines meet at the solution of their equations; three lines are concurrent when the intersection of two of them lies on the third, equivalently when the determinant of their coefficients is zero.",
+                "hi": "दो असमांतर रेखाएँ अपने समीकरणों के हल पर मिलती हैं; तीन रेखाएँ संगामी होती हैं जब उनमें से दो का प्रतिच्छेद बिंदु तीसरी पर स्थित हो, अर्थात जब उनके गुणांकों का सारणिक शून्य हो।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the point of intersection of two lines.",
+                  "hi": "दो रेखाओं का प्रतिच्छेद बिंदु ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Test three lines for concurrence.",
+                  "hi": "तीन रेखाओं की संगामिता जाँचिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.line-forms.core.line-equation-forms",
+                "math.determinants.determinant.core.determinant-evaluation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-6",
+                "jee-main-2027:mathematics:unit-10:item-7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.straight-lines.point-line-distance",
+      "name": {
+        "en": "Distance of a Point From a Line",
+        "hi": "एक बिंदु की रेखा से दूरी"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 9 §9.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.straight-lines.point-line-distance.core",
+          "name": {
+            "en": "Distance of a Point From a Line",
+            "hi": "एक बिंदु की रेखा से दूरी"
+          },
+          "concepts": [
+            {
+              "id": "math.straight-lines.point-line-distance.core.point-line-distance",
+              "name": {
+                "en": "Distance of a point from a line and between parallel lines",
+                "hi": "बिंदु की रेखा से दूरी तथा समांतर रेखाओं के बीच की दूरी"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The distance of (x₁, y₁) from Ax + By + C = 0 is |Ax₁ + By₁ + C|/√(A² + B²), and parallel lines Ax + By + C₁ = 0 and Ax + By + C₂ = 0 are |C₁ − C₂|/√(A² + B²) apart.",
+                "hi": "(x₁, y₁) की Ax + By + C = 0 से दूरी |Ax₁ + By₁ + C|/√(A² + B²) है, और समांतर रेखाएँ Ax + By + C₁ = 0 तथा Ax + By + C₂ = 0 परस्पर |C₁ − C₂|/√(A² + B²) दूरी पर हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the perpendicular distance from a point to a line.",
+                  "hi": "किसी बिंदु से रेखा तक की लंबवत दूरी ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the distance between two parallel lines.",
+                  "hi": "दो समांतर रेखाओं के बीच की दूरी ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.straight-lines.line-forms.core.line-equation-forms"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-10:item-8"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 9 §9.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 9",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh109.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xiv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 10: CO-ORDINATE GEOMETRY (PDF p.2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

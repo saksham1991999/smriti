@@ -1,0 +1,204 @@
+{
+  "schema": "chapter@1",
+  "id": "math.three-d-intro",
+  "subject": "math",
+  "unit": "math.vectors-3d",
+  "name": {
+    "en": "Introduction to Three Dimensional Geometry",
+    "hi": "त्रिविमीय ज्यामिति का परिचय"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 11",
+  "topics": [
+    {
+      "id": "math.three-d-intro.space-coordinates",
+      "name": {
+        "en": "Coordinate Axes, Planes and Points in Space",
+        "hi": "अंतरिक्ष में निर्देशांक अक्ष, तल तथा बिंदु"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 11 §11.2",
+        "NCERT Class 11 Mathematics, Ch 11 §11.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.three-d-intro.space-coordinates.core",
+          "name": {
+            "en": "Coordinate Axes, Planes and Points in Space",
+            "hi": "अंतरिक्ष में निर्देशांक अक्ष, तल तथा बिंदु"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-intro.space-coordinates.core.space-coordinates",
+              "name": {
+                "en": "Coordinate axes, coordinate planes and coordinates of a point in space",
+                "hi": "अंतरिक्ष में निर्देशांक अक्ष, निर्देशांक तल तथा बिंदु के निर्देशांक"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Three mutually perpendicular axes divide space into eight octants, and a point is located by its signed distances (x, y, z) from the yz-, zx- and xy-planes.",
+                "hi": "तीन परस्पर लंब अक्ष अंतरिक्ष को आठ अष्टांशों में बाँटते हैं, और किसी बिंदु की स्थिति yz-, zx- और xy-तलों से उसकी चिह्नित दूरियों (x, y, z) से तय होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Name the octant of a point from the signs of its coordinates.",
+                  "hi": "निर्देशांकों के चिह्नों से बिंदु का अष्टांश बताइए।"
+                },
+                {
+                  "en": "Write coordinates of points on the axes and the coordinate planes.",
+                  "hi": "अक्षों और निर्देशांक तलों पर स्थित बिंदुओं के निर्देशांक लिखिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 11 §11.2",
+                "NCERT Class 11 Mathematics, Ch 11 §11.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-intro.space-distance",
+      "name": {
+        "en": "Distance between Two Points",
+        "hi": "दो बिंदुओं के बीच की दूरी"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Mathematics, Ch 11 §11.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.three-d-intro.space-distance.core",
+          "name": {
+            "en": "Distance between Two Points",
+            "hi": "दो बिंदुओं के बीच की दूरी"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-intro.space-distance.core.space-distance",
+              "name": {
+                "en": "Distance between two points in space",
+                "hi": "अंतरिक्ष में दो बिंदुओं के बीच की दूरी"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The distance between (x₁, y₁, z₁) and (x₂, y₂, z₂) is √[(x₂ − x₁)² + (y₂ − y₁)² + (z₂ − z₁)²].",
+                "hi": "(x₁, y₁, z₁) और (x₂, y₂, z₂) के बीच की दूरी √[(x₂ − x₁)² + (y₂ − y₁)² + (z₂ − z₁)²] है।"
+              },
+              "key_points": [
+                {
+                  "en": "Test whether three points are collinear using distances.",
+                  "hi": "दूरियों से जाँचिए कि तीन बिंदु संरेख हैं या नहीं।"
+                },
+                {
+                  "en": "Find the locus of points at a fixed distance from a point.",
+                  "hi": "किसी बिंदु से निश्चित दूरी पर स्थित बिंदुओं का बिंदुपथ ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-intro.space-coordinates.core.space-coordinates",
+                "math.straight-lines.plane-coordinates.core.distance-section-formula"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-1"
+              ],
+              "ncert_refs": [
+                "NCERT Class 11 Mathematics, Ch 11 §11.4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-intro.space-section",
+      "name": {
+        "en": "Section Formula in Space",
+        "hi": "अंतरिक्ष में विभाजन सूत्र"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "math.three-d-intro.space-section.core",
+          "name": {
+            "en": "Section Formula in Space",
+            "hi": "अंतरिक्ष में विभाजन सूत्र"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-intro.space-section.core.space-section-formula",
+              "name": {
+                "en": "Section formula in three dimensions",
+                "hi": "त्रिविमीय विभाजन सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The point dividing the join of P(x₁, y₁, z₁) and Q(x₂, y₂, z₂) internally in the ratio m : n is ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n), (mz₂ + nz₁)/(m + n)).",
+                "hi": "P(x₁, y₁, z₁) और Q(x₂, y₂, z₂) को मिलाने वाले रेखाखंड को m : n में अंतःविभाजित करने वाला बिंदु ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n), (mz₂ + nz₁)/(m + n)) है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the point dividing a segment internally or externally.",
+                  "hi": "रेखाखंड को अंतः या बाह्य रूप से विभाजित करने वाला बिंदु ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the ratio in which a coordinate plane divides a segment.",
+                  "hi": "वह अनुपात ज्ञात कीजिए जिसमें कोई निर्देशांक तल रेखाखंड को विभाजित करता है।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-intro.space-distance.core.space-distance",
+                "math.straight-lines.plane-coordinates.core.distance-section-formula"
+              ],
+              "related": [
+                "math.vector-algebra.scalar-multiple.core.vector-section-formula"
+              ],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 11",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh111.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 11: THREE DIMENSIONAL GEOMETRY (PDF p.2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

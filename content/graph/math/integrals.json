@@ -1,0 +1,540 @@
+{
+  "schema": "chapter@1",
+  "id": "math.integrals",
+  "subject": "math",
+  "unit": "math.calculus",
+  "name": {
+    "en": "Integrals",
+    "hi": "समाकलन"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Mathematics Part II, Ch 7",
+  "topics": [
+    {
+      "id": "math.integrals.antiderivative",
+      "name": {
+        "en": "Integration as an Inverse Process of Differentiation",
+        "hi": "समाकलन को अवकलन के व्युत्क्रम प्रक्रम के रूप में"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.2"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.antiderivative.core",
+          "name": {
+            "en": "Integration as an Inverse Process of Differentiation",
+            "hi": "समाकलन को अवकलन के व्युत्क्रम प्रक्रम के रूप में"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.antiderivative.core.antiderivative",
+              "name": {
+                "en": "Integral as an anti-derivative and standard integrals",
+                "hi": "प्रतिअवकलज के रूप में समाकल तथा मानक समाकल"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "If F′(x) = f(x) then ∫f(x)dx = F(x) + C; reversing standard derivatives gives the fundamental integrals of algebraic, trigonometric, exponential and logarithmic functions.",
+                "hi": "यदि F′(x) = f(x) तो ∫f(x)dx = F(x) + C; मानक अवकलजों को उलटने से बीजीय, त्रिकोणमितीय, चरघातांकी और लघुगणकीय फलनों के मूल समाकल मिलते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the standard integrals of xⁿ, 1/x, eˣ, aˣ and the six trigonometric derivatives.",
+                  "hi": "xⁿ, 1/x, eˣ, aˣ तथा छह त्रिकोणमितीय अवकलजों के मानक समाकल लिखिए।"
+                },
+                {
+                  "en": "Use linearity of the integral.",
+                  "hi": "समाकल की रैखिकता का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.limits-derivatives.derivatives-intro.core.derivative-algebra-rules",
+                "math.continuity-differentiability.exp-log.core.exp-log-functions",
+                "math.continuity-differentiability.differentiability.core.derivative-inverse-trig"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-1",
+                "jee-main-2027:mathematics:unit-8:item-2"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.integration-methods",
+      "name": {
+        "en": "Methods of Integration",
+        "hi": "समाकलन की विधियाँ"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.3"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.integration-methods.core",
+          "name": {
+            "en": "Methods of Integration",
+            "hi": "समाकलन की विधियाँ"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.integration-methods.core.integration-substitution",
+              "name": {
+                "en": "Integration by substitution",
+                "hi": "प्रतिस्थापन द्वारा समाकलन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Substituting t = g(x) turns ∫f(g(x))g′(x)dx into ∫f(t)dt, so a suitable substitution reduces an integral to a standard form.",
+                "hi": "t = g(x) प्रतिस्थापित करने से ∫f(g(x))g′(x)dx, ∫f(t)dt बन जाता है, अतः उपयुक्त प्रतिस्थापन समाकल को मानक रूप में बदल देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Choose a substitution by spotting a function and its derivative.",
+                  "hi": "किसी फलन और उसके अवकलज को पहचानकर प्रतिस्थापन चुनिए।"
+                },
+                {
+                  "en": "Integrate tan x, cot x, sec x and cosec x.",
+                  "hi": "tan x, cot x, sec x और cosec x का समाकलन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.antiderivative.core.antiderivative",
+                "math.continuity-differentiability.differentiability.core.chain-rule-implicit"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "math.integrals.integration-methods.core.integration-trig-identities",
+              "name": {
+                "en": "Integration using trigonometric identities",
+                "hi": "त्रिकोणमितीय सर्वसमिकाओं द्वारा समाकलन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Powers and products of sines and cosines are integrated after rewriting them with double-angle and product-to-sum identities.",
+                "hi": "ज्याओं और कोज्याओं की घातों और गुणनफलों का समाकलन उन्हें द्विगुण कोण और गुणनफल-से-योग सर्वसमिकाओं से पुनः लिखने के बाद किया जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Integrate sin²x, cos³x and sin 2x cos 3x.",
+                  "hi": "sin²x, cos³x और sin 2x cos 3x का समाकलन कीजिए।"
+                },
+                {
+                  "en": "Pick the identity that lowers the power.",
+                  "hi": "घात घटाने वाली सर्वसमिका चुनिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.integration-methods.core.integration-substitution",
+                "math.trigonometric-functions.sum-difference.core.trig-identities"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-4"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.3"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.particular-integrals",
+      "name": {
+        "en": "Integrals of Some Particular Functions",
+        "hi": "कुछ विशिष्ट फलनों के समाकलन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.4"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.particular-integrals.core",
+          "name": {
+            "en": "Integrals of Some Particular Functions",
+            "hi": "कुछ विशिष्ट फलनों के समाकलन"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.particular-integrals.core.special-integrals",
+              "name": {
+                "en": "Integrals of the types dx/(x² ± a²), dx/√(ax² + bx + c), (px + q)/(ax² + bx + c) and √(a² ± x²)",
+                "hi": "dx/(x² ± a²), dx/√(ax² + bx + c), (px + q)/(ax² + bx + c) तथा √(a² ± x²) प्रकार के समाकल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Standard results for ∫dx/(x² ± a²), ∫dx/(a² − x²), ∫dx/√(x² ± a²) and ∫dx/√(a² − x²), together with completing the square and splitting px + q into a multiple of the derivative of the quadratic plus a constant, handle all the listed types.",
+                "hi": "∫dx/(x² ± a²), ∫dx/(a² − x²), ∫dx/√(x² ± a²) और ∫dx/√(a² − x²) के मानक परिणाम, वर्ग पूरा करने तथा px + q को द्विघात के अवकलज के गुणज और एक अचर में बाँटने के साथ, सभी सूचीबद्ध प्रकारों को हल करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Complete the square in ax² + bx + c to reach a standard form.",
+                  "hi": "मानक रूप तक पहुँचने के लिए ax² + bx + c में वर्ग पूरा कीजिए।"
+                },
+                {
+                  "en": "Split px + q as A·d(ax² + bx + c)/dx + B.",
+                  "hi": "px + q को A·d(ax² + bx + c)/dx + B के रूप में बाँटिए।"
+                },
+                {
+                  "en": "Use the results for ∫√(a² − x²)dx and ∫√(x² ± a²)dx.",
+                  "hi": "∫√(a² − x²)dx और ∫√(x² ± a²)dx के परिणामों का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.integration-methods.core.integration-substitution"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-5"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.4",
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.partial-fractions",
+      "name": {
+        "en": "Integration by Partial Fractions",
+        "hi": "आंशिक भिन्नों द्वारा समाकलन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.5"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.partial-fractions.core",
+          "name": {
+            "en": "Integration by Partial Fractions",
+            "hi": "आंशिक भिन्नों द्वारा समाकलन"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.partial-fractions.core.partial-fractions",
+              "name": {
+                "en": "Integration by partial fractions",
+                "hi": "आंशिक भिन्नों द्वारा समाकलन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "A proper rational function is split into partial fractions according to its linear, repeated and quadratic factors, and each fraction is integrated separately.",
+                "hi": "उचित परिमेय फलन को उसके रैखिक, पुनरावृत्त और द्विघात गुणनखंडों के अनुसार आंशिक भिन्नों में बाँटा जाता है, और प्रत्येक भिन्न का अलग से समाकलन किया जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the partial-fraction form for each type of denominator.",
+                  "hi": "हर के प्रत्येक प्रकार के लिए आंशिक भिन्न रूप लिखिए।"
+                },
+                {
+                  "en": "Divide first when the rational function is improper.",
+                  "hi": "परिमेय फलन विषम होने पर पहले भाग दीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.antiderivative.core.antiderivative"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.by-parts",
+      "name": {
+        "en": "Integration by Parts",
+        "hi": "खंडशः समाकलन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.6"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.by-parts.core",
+          "name": {
+            "en": "Integration by Parts",
+            "hi": "खंडशः समाकलन"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.by-parts.core.integration-by-parts",
+              "name": {
+                "en": "Integration by parts",
+                "hi": "खंडशः समाकलन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "∫u v dx = u∫v dx − ∫[u′∫v dx]dx; choosing u well, and the special form ∫eˣ[f(x) + f′(x)]dx = eˣf(x) + C, makes products of different kinds of functions integrable.",
+                "hi": "∫u v dx = u∫v dx − ∫[u′∫v dx]dx; u का सही चयन तथा विशेष रूप ∫eˣ[f(x) + f′(x)]dx = eˣf(x) + C विभिन्न प्रकार के फलनों के गुणनफलों का समाकलन संभव बनाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Integrate x eˣ, x sin x, log x and tan⁻¹x.",
+                  "hi": "x eˣ, x sin x, log x और tan⁻¹x का समाकलन कीजिए।"
+                },
+                {
+                  "en": "Recognise the eˣ[f(x) + f′(x)] pattern.",
+                  "hi": "eˣ[f(x) + f′(x)] प्रतिरूप पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.antiderivative.core.antiderivative",
+                "math.limits-derivatives.derivatives-intro.core.derivative-algebra-rules"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-3"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.definite-integral",
+      "name": {
+        "en": "Definite Integral and the Fundamental Theorem of Calculus",
+        "hi": "निश्चित समाकलन तथा कलन की आधारभूत प्रमेय"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.7",
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.8"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.definite-integral.core",
+          "name": {
+            "en": "Definite Integral and the Fundamental Theorem of Calculus",
+            "hi": "निश्चित समाकलन तथा कलन की आधारभूत प्रमेय"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.definite-integral.core.fundamental-theorem",
+              "name": {
+                "en": "Definite integral and the fundamental theorem of calculus",
+                "hi": "निश्चित समाकल तथा कलन की आधारभूत प्रमेय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The definite integral ∫ₐᵇ f(x)dx is the signed area under the curve; the area function A(x) = ∫ₐˣ f(t)dt has A′(x) = f(x), and ∫ₐᵇ f(x)dx = F(b) − F(a) for any antiderivative F.",
+                "hi": "निश्चित समाकल ∫ₐᵇ f(x)dx वक्र के नीचे चिह्नित क्षेत्रफल है; क्षेत्रफल फलन A(x) = ∫ₐˣ f(t)dt के लिए A′(x) = f(x), और किसी भी प्रतिअवकलज F के लिए ∫ₐᵇ f(x)dx = F(b) − F(a)।"
+              },
+              "key_points": [
+                {
+                  "en": "Evaluate definite integrals using an antiderivative.",
+                  "hi": "प्रतिअवकलज से निश्चित समाकल का मान निकालिए।"
+                },
+                {
+                  "en": "Differentiate an integral with a variable upper limit.",
+                  "hi": "चर ऊपरी सीमा वाले समाकल का अवकलन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.antiderivative.core.antiderivative"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-6",
+                "jee-main-2027:mathematics:unit-8:item-8"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.7",
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.definite-substitution",
+      "name": {
+        "en": "Evaluation of Definite Integrals by Substitution",
+        "hi": "प्रतिस्थापन द्वारा निश्चित समाकलनों का मान ज्ञात करना"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.9"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.definite-substitution.core",
+          "name": {
+            "en": "Evaluation of Definite Integrals by Substitution",
+            "hi": "प्रतिस्थापन द्वारा निश्चित समाकलनों का मान ज्ञात करना"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.definite-substitution.core.definite-substitution",
+              "name": {
+                "en": "Evaluating definite integrals by substitution",
+                "hi": "प्रतिस्थापन द्वारा निश्चित समाकलों का मान निकालना"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "When substituting in a definite integral, change the limits to the new variable so that there is no need to return to x.",
+                "hi": "निश्चित समाकल में प्रतिस्थापन करते समय सीमाओं को नए चर में बदल दीजिए, जिससे x पर लौटने की आवश्यकता न रहे।"
+              },
+              "key_points": [
+                {
+                  "en": "Change limits correctly after a substitution.",
+                  "hi": "प्रतिस्थापन के बाद सीमाओं को सही ढंग से बदलिए।"
+                },
+                {
+                  "en": "Evaluate integrals such as ∫₀¹ x/(x² + 1) dx.",
+                  "hi": "∫₀¹ x/(x² + 1) dx जैसे समाकलों का मान निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.definite-integral.core.fundamental-theorem",
+                "math.integrals.integration-methods.core.integration-substitution"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-8"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.integrals.definite-properties",
+      "name": {
+        "en": "Some Properties of Definite Integrals",
+        "hi": "निश्चित समाकलनों के कुछ गुणधर्म"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Mathematics Part II, Ch 7 §7.10"
+      ],
+      "subtopics": [
+        {
+          "id": "math.integrals.definite-properties.core",
+          "name": {
+            "en": "Some Properties of Definite Integrals",
+            "hi": "निश्चित समाकलनों के कुछ गुणधर्म"
+          },
+          "concepts": [
+            {
+              "id": "math.integrals.definite-properties.core.definite-properties",
+              "name": {
+                "en": "Properties of definite integrals",
+                "hi": "निश्चित समाकलों के गुणधर्म"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Properties such as ∫ₐᵇ f(x)dx = ∫ₐᵇ f(a + b − x)dx, splitting at an interior point, and the results for even and odd functions on [−a, a] simplify evaluation.",
+                "hi": "∫ₐᵇ f(x)dx = ∫ₐᵇ f(a + b − x)dx, किसी आंतरिक बिंदु पर विभाजन, तथा [−a, a] पर सम और विषम फलनों के परिणाम जैसे गुणधर्म मान निकालना सरल करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Use ∫₀ᵃ f(x)dx = ∫₀ᵃ f(a − x)dx to evaluate symmetric integrals.",
+                  "hi": "सममित समाकलों के मान के लिए ∫₀ᵃ f(x)dx = ∫₀ᵃ f(a − x)dx का प्रयोग कीजिए।"
+                },
+                {
+                  "en": "Split integrals of modulus and piecewise functions.",
+                  "hi": "मापांक और खंडशः फलनों के समाकलों को विभाजित कीजिए।"
+                },
+                {
+                  "en": "Apply the even-odd property on symmetric limits.",
+                  "hi": "सममित सीमाओं पर सम-विषम गुणधर्म लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.integrals.definite-integral.core.fundamental-theorem"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-8:item-7",
+                "jee-main-2027:mathematics:unit-8:item-8"
+              ],
+              "ncert_refs": [
+                "NCERT Class 12 Mathematics Part II, Ch 7 §7.10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 7",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh201.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh2, contents prelims p.xv (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Mathematics Unit 8: INTEGRAL CALCULAS (PDF p.1-2)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

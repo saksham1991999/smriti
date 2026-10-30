@@ -105,8 +105,8 @@ uv run python -m smriti_worker content-publish  # also: ai, media, notifications
 | Queue | Jobs |
 |---|---|
 | default | `merge_guest`, `mocks_auto_submit` (strict and live attempts past their deadline; cron every minute at :30s), `tutor_retention` (deletes tutor messages older than `ai.tutor_retention_days`; cron 02:15 UTC), `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron), `league_assign` (hourly), `league_rollover` (Sunday after `league.close_time` IST; safe to re-run), `duo_rollup` (nightly), `duel_sweep` (every minute), `squad_quests` (hourly) |
-| ai | `deck_moderation` (retries minors' shared decks still `checking`; suggested every 10 minutes) |
-| notifications | `parent_digest` (the SET-15 weekly push to guardians; suggested Sunday 13:00 UTC, held until 19:00 in the guardian's zone) |
+| ai | `deck_moderation` (retries minors' shared decks still `checking`; cron every 10 minutes on the default worker) |
+| notifications | `parent_digest` (the SET-15 weekly push to guardians; cron Sunday 13:00 UTC on the default worker, held until 19:00 in the guardian's zone) |
 | content-publish | `content_publish`: runs `CONTENT_PUBLISH_CMD`, or `tools/content-publish` (package.json `publish` script, `publish.sh` or `run.sh`) when it exists, with `CONTENT_PUBLISH_REF` set |
 | ai, media, notifications, pdf | `ping` until their jobs land |
 

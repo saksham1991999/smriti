@@ -31,6 +31,8 @@ from smriti_api.services import (
     media,
     mocks,
     notify,
+    parent_mode,
+    shared_decks,
     social_duos,
     social_squads,
     tutor,
@@ -133,6 +135,16 @@ async def duel_sweep(ctx: Ctx) -> int:
 async def squad_quests(ctx: Ctx) -> int:
     """Hourly: settles this week's squad quests."""
     return await social_squads.quests_job(_deps(ctx))
+
+
+async def deck_moderation(ctx: Ctx) -> int:
+    """Every 10 minutes: retries minors' shared decks still waiting for a clear model answer."""
+    return await shared_decks.moderation_job(_deps(ctx))
+
+
+async def parent_digest(ctx: Ctx) -> int:
+    """Sunday: the SET-15 weekly push to guardians, held until 19:00 in each guardian's zone."""
+    return await parent_mode.digest_job(_deps(ctx))
 
 
 async def ping(ctx: Ctx) -> str:

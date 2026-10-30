@@ -59,6 +59,8 @@ def test_crons_live_on_the_default_queue() -> None:
         "duo_rollup",
         "duel_sweep",
         "squad_quests",
+        "deck_moderation",
+        "parent_digest",
     }
 
 

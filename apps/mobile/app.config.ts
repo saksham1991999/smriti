@@ -105,6 +105,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       'expo-apple-authentication',
       ['expo-notifications', { color: accent }],
       ['expo-splash-screen', { image: brand(variant.splash.image), imageWidth: 160, backgroundColor: splashBg }],
+      // Home-screen widgets (G-5, NTF-08..10): WidgetKit extension and Android AppWidgets.
+      './plugins/widgets/index.cjs',
     ],
     experiments: { typedRoutes: false },
     extra: {

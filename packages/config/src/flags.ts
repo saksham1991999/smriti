@@ -197,6 +197,7 @@ export const FLAG_REGISTRY = {
   'social.nickname_words': owner(wordPairs, 'R31 amended, tutor-social B1, Q-B11 (safety review pending)'),
   'social.nickname_fallback': def(i18nText, { en: 'Learner', hi: 'शिक्षार्थी' }, 'proposed', 'R31 amended (until Q-B11 is closed)'),
   'social.squad_name_words': owner(wordPairs, 'tutor-social B9, G-S6 (name picker list in config)'),
+  'social.squad_name_fallback': def(i18nText, { en: 'Squad', hi: 'स्क्वॉड' }, 'proposed', 'tutor-social B9 (until the name list is set)'),
 
   // ── Duels (tutor-social B10; anti-abuse values are owner flags, Q-B10) ────
   'duel.question_count': def(posInt, 10, 'prd', 'PRD §8, tutor-social B10', ['duel_question_count']),

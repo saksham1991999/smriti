@@ -407,6 +407,45 @@ async def standing(
     )
 
 
+async def live_standing(
+    session: AsyncSession, *, attempt_id: uuid.UUID, mock_id: str, attempt_no: int, flags: Flags
+) -> m.Standing:
+    """Live mocks (practice §6.11): rank and percentile wait for the frozen results, and only
+    first attempts started inside the window have them."""
+    needed = flags.int_or_none("mock.min_attempts_for_percentile")
+    if attempt_no != 1:
+        return m.Standing(shown=False, reason="not_first_attempt", needed=needed)
+    run = (
+        await session.execute(
+            text(
+                "select ranks_published_at, ranked, unranked_reason from ops.live_mock_runs"
+                " where mock_id = :m"
+            ),
+            {"m": mock_id},
+        )
+    ).one_or_none()
+    if run is None or run.ranks_published_at is None:
+        return m.Standing(shown=False, reason="results_pending", needed=needed)
+    if run.unranked_reason is not None:
+        return m.Standing(shown=False, reason=run.unranked_reason, needed=needed)
+    mine = (
+        await session.execute(
+            text("select rank, percentile from learn.mock_attempts where id = :a"),
+            {"a": attempt_id},
+        )
+    ).one()
+    if mine.rank is None:
+        return m.Standing(shown=False, reason="outside_window", needed=needed)
+    return m.Standing(
+        shown=True,
+        percentile=float(mine.percentile) if mine.percentile is not None else None,
+        rank=int(mine.rank),
+        of=int(run.ranked),
+        counted=int(run.ranked),
+        needed=needed,
+    )
+
+
 # Report blocks and the ``free.mock_report_sections`` names that unlock them (R25, R43).
 SECTION_OF = {
     "score": "score",

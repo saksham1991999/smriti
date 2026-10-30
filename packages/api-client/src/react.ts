@@ -10,50 +10,15 @@
  * app-core's outbox and `/v1/sync/*`; these hooks cover the REST reads and actions around it.
  * Mutations that touch progress or money send an `Idempotency-Key`, one per mutation call.
  */
-import {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-  useQueryClient,
-  type QueryClient,
-} from "@tanstack/react-query";
-import { createContext, createElement, useContext, type ReactNode } from "react";
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { newIdempotencyKey, unwrap, type ApiClient, type Schemas } from "./client";
+import { newIdempotencyKey, unwrap, type Schemas } from "./client";
+import { invalidate, queryKeys, useApiClient } from "./react-core";
 
-const ApiContext = createContext<ApiClient | null>(null);
-
-export function ApiProvider(props: { client: ApiClient; children?: ReactNode }) {
-  return createElement(ApiContext.Provider, { value: props.client }, props.children);
-}
-
-export function useApiClient(): ApiClient {
-  const client = useContext(ApiContext);
-  if (!client) throw new Error("useApiClient: wrap the app in <ApiProvider client={…}>");
-  return client;
-}
-
-/** Query keys, so screens can invalidate exactly what changed. */
-export const queryKeys = {
-  all: ["smriti"] as const,
-  config: (variant?: string) => ["smriti", "config", variant ?? null] as const,
-  me: () => ["smriti", "me"] as const,
-  summary: () => ["smriti", "me", "summary"] as const,
-  syncState: () => ["smriti", "sync-state"] as const,
-  exams: () => ["smriti", "catalog", "exams"] as const,
-  subjects: (exam?: string) => ["smriti", "catalog", "subjects", exam ?? null] as const,
-  chapter: (id: string) => ["smriti", "catalog", "chapter", id] as const,
-  topic: (id: string) => ["smriti", "catalog", "topic", id] as const,
-  manifest: (exam: string, locale?: string) =>
-    ["smriti", "content", "manifest", exam, locale ?? null] as const,
-  pet: () => ["smriti", "pet"] as const,
-  plant: () => ["smriti", "plant"] as const,
-  shop: () => ["smriti", "shop"] as const,
-  gemLedger: () => ["smriti", "gems", "ledger"] as const,
-  quests: () => ["smriti", "quests"] as const,
-  badges: () => ["smriti", "badges"] as const,
-  merge: (id: string) => ["smriti", "account", "merge", id] as const,
-};
+export { ApiProvider, invalidate, queryKeys, useApiClient } from "./react-core";
+export * from "./react-practice";
+export * from "./react-tutor";
+export * from "./react-account";
 
 // ── Reads ─────────────────────────────────────────────────────────────────────
 
@@ -203,10 +168,6 @@ export function useMergeStatus(mergeId: string | undefined, intervalMs = 1500) {
 }
 
 // ── Actions ───────────────────────────────────────────────────────────────────
-
-function invalidate(qc: QueryClient, ...keys: ReadonlyArray<readonly unknown[]>) {
-  return Promise.all(keys.map((queryKey) => qc.invalidateQueries({ queryKey })));
-}
 
 export function usePatchMe() {
   const api = useApiClient();

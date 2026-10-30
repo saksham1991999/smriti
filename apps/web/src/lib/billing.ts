@@ -64,7 +64,7 @@ function toEntitlement(e: { plan: "free" | "pro"; pro_until: string | null; stat
     grace_until: e.grace_until ?? null,
     cancel_at_period_end: e.cancel_at_period_end ?? false,
     is_intro: e.is_intro ?? false,
-    source: e.source ?? undefined,
+    source: (e.source ?? null) as EntitlementSection["source"],
   };
 }
 
@@ -101,8 +101,8 @@ export class RazorpayBilling implements BillingProvider {
     return { eligible: r.eligible, eligibleHint: r.eligible_hint, introPricePaise: r.intro_price_paise ?? null, pricePaise: r.price_paise ?? null };
   }
 
-  async start(payer: "self" | "guardian_declared" = "self"): Promise<CheckoutSession> {
-    const r = await unwrap(this.client.POST("/v1/billing/razorpay/subscription", { body: { payer }, params: idem() }), this.client);
+  async start(payer: "self" | "guardian_declared" = "self", plan: "monthly" | "yearly" = "monthly"): Promise<CheckoutSession> {
+    const r = await unwrap(this.client.POST("/v1/billing/razorpay/subscription", { body: { payer, plan }, params: idem() }), this.client);
     return {
       id: r.subscription_id,
       keyId: r.key_id,

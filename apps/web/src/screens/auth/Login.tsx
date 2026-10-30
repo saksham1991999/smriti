@@ -7,7 +7,7 @@ import { Button, Chip, IconButton, Illustration, Text, TrustLine } from "@smriti
 import { useServices } from "../../boot/context";
 import { GoogleStep, useSignedInToast } from "../../components/SignIn";
 import { useI18n } from "../../lib/i18n";
-import { usePrices } from "../../lib/pricing";
+import { usePriceValues, usePrices } from "../../lib/pricing";
 import { savedEmail } from "../../lib/auth";
 import type { LoginSearch } from "../../router";
 
@@ -17,6 +17,7 @@ export function Login() {
   const { t } = useI18n();
   const navigate = useNavigate();
   const prices = usePrices();
+  const pv = usePriceValues();
   const signedIn = useSignedInToast();
   const app = s.variant.appName;
 
@@ -50,7 +51,7 @@ export function Login() {
         <Text tone="muted" align="center">
           {copy.body}
         </Text>
-        {reason === "start_trial" && prices && <Chip kind="status" tone="primary" label={t("auth:AUTH-02.trial_chip_eligible")} />}
+        {reason === "start_trial" && prices && <Chip kind="status" tone="primary" label={t("auth:AUTH-02.trial_chip_eligible", pv)} />}
         <div className="flex w-full flex-col gap-3">
           <GoogleStep
             reason={reason ?? "web_sign_in"}

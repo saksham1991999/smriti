@@ -1,0 +1,564 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+      "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as 1536x1024 WebP; originals kept outside the repo.",
+  "requests": [
+    {
+      "id": "img.current-electricity.power-cut-torch",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a teenage Indian student at a study desk at home at night during a power cut, switching on a small handheld torch whose beam instantly lights up an open notebook on the desk",
+      "must_show": [
+        "torch switched on with a visible light beam",
+        "open notebook lit by the beam",
+        "dark room"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "logos",
+        "writing in the notebook"
+      ],
+      "alt": {
+        "en": "A boy at his desk in a dark room shines a torch on an open book.",
+        "hi": "अँधेरे कमरे में मेज़ पर बैठा एक लड़का खुली किताब पर टॉर्च की रोशनी डाल रहा है।"
+      },
+      "used_by": [
+        "phy.current-electricity.current:dd:01",
+        "phy.current-electricity.current:dd:10"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e90ecaa4ddff872b2dec6b98c7b28c5f5e8c6178c45d032b4cb770e3c5fd924a",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 47138,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.electron-drift",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a cutaway section of a thick straight copper wire seen from the side: inside, a regular grid of large fixed spheres (metal ions) and many small free spheres (electrons) between them; one highlighted small electron leaves a dotted zigzag trail made of short straight segments between the large spheres, the trail slowly drifting from right to left along the wire",
+      "must_show": [
+        "regular grid of large fixed ions",
+        "many small free electrons",
+        "one zigzag trail of straight segments that drifts along the wire"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "plus or minus signs",
+        "arrows with labels",
+        "battery"
+      ],
+      "alt": {
+        "en": "A copper wire cut open: a lattice of fixed ions with small electrons between them, and one electron's zigzag path drifting slowly along the wire.",
+        "hi": "कटा हुआ ताँबे का तार: स्थिर आयनों की जाली और उनके बीच छोटे इलेक्ट्रॉन, और एक इलेक्ट्रॉन का टेढ़ा-मेढ़ा रास्ता जो धीरे-धीरे तार के साथ खिसकता है।"
+      },
+      "used_by": [
+        "phy.current-electricity.current:dd:02",
+        "phy.current-electricity.current:dd:06",
+        "phy.current-electricity.resistivity:dd:03",
+        "phy.current-electricity.temperature-dependence:dd:10"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "77fa80fe9389fe34c02688277d34965c8aa5841959c865d360b8f71bacf21a9a",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 48460,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.meters-circuit",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a simple electric circuit lying flat on a plain white surface, seen from directly above, drawn as a neat rectangle of blue wire: on the top side a battery of two cells; on the right side a round dial meter (the ammeter) placed in the wire itself, so the current must pass through it; on the bottom side a small board with a coil of copper resistance wire, also in the wire itself; a second, different-coloured round dial meter (the voltmeter) sits below the rectangle and is joined by two short separate wires to the two ends of the coil only",
+      "must_show": [
+        "one rectangular loop: battery, then ammeter, then coil, all in the loop",
+        "the ammeter is inside the loop on its own side",
+        "a second meter outside the loop joined only to the two ends of the coil",
+        "blank meter dials"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters on the meter dials",
+        "loose wires",
+        "plus or minus signs"
+      ],
+      "label_anchors": [
+        {
+          "id": "battery",
+          "x": 0.5,
+          "y": 0.19
+        },
+        {
+          "id": "ammeter",
+          "x": 0.74,
+          "y": 0.42
+        },
+        {
+          "id": "coil",
+          "x": 0.5,
+          "y": 0.62
+        },
+        {
+          "id": "voltmeter",
+          "x": 0.49,
+          "y": 0.8
+        }
+      ],
+      "alt": {
+        "en": "A circuit seen from above: a battery, a round meter placed in the wire loop itself, a resistance coil, and a second round meter connected across the coil.",
+        "hi": "ऊपर से दिखता परिपथ: एक बैटरी, तार के लूप में ही लगा एक गोल मीटर, एक प्रतिरोध कुंडली, और कुंडली के सिरों के बीच जुड़ा दूसरा गोल मीटर।"
+      },
+      "used_by": [
+        "phy.current-electricity.kirchhoff:dd:03",
+        "phy.current-electricity.ohms-law:dd:01",
+        "phy.current-electricity.ohms-law:dd:02",
+        "phy.current-electricity.ohms-law:dd:04",
+        "phy.current-electricity.ohms-law:dd:08"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e85ce580399981b11cbfd004de90a06d59fd88a3b9144db1c1d6bfc160422998",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 28454,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.slabs",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "three straight copper wires lying flat and parallel, one above another, on a plain white background, all starting at the same left edge: the top wire is medium length and medium thickness; the middle wire is exactly as thick as the top wire but twice as long; the bottom wire is exactly as long as the top wire but clearly much thicker, like a rod",
+      "must_show": [
+        "top: medium wire",
+        "middle: same thickness, twice as long",
+        "bottom: same length as the top wire, much thicker",
+        "all three start at the same left edge"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "rulers",
+        "batteries",
+        "coils"
+      ],
+      "alt": {
+        "en": "Three copper wires side by side: a short thin wire, a thin wire twice as long, and a thick wire as long as the second.",
+        "hi": "तीन ताँबे के तार अगल-बगल: एक छोटा पतला तार, उससे दोगुना लंबा पतला तार, और दूसरे जितना लंबा एक मोटा तार।"
+      },
+      "used_by": [
+        "phy.current-electricity.resistivity:dd:01",
+        "phy.current-electricity.resistivity:dd:10"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "359d76a26f4af3b651b2b205c15f862ce90c11a0ba3e5e2f2903beca67b74da8",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 13920,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.toaster",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "an electric pop-up toaster on an Indian kitchen counter seen from above at an angle so its slots are visible, the coiled nichrome heating wires inside the slots glowing bright orange-red, two slices of bread waiting beside it",
+      "must_show": [
+        "toaster with visible glowing orange-red heating coils inside the slots",
+        "bread slices"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "brand logos",
+        "flames",
+        "smoke"
+      ],
+      "alt": {
+        "en": "A toaster with two slices of bread above its glowing red heating coils.",
+        "hi": "टोस्टर जिसकी लाल चमकती तापन कुंडलियों के ऊपर ब्रेड के दो टुकड़े हैं।"
+      },
+      "used_by": [
+        "phy.current-electricity.energy-power:dd:01",
+        "phy.current-electricity.energy-power:dd:02",
+        "phy.current-electricity.energy-power:dd:08",
+        "phy.current-electricity.temperature-dependence:dd:01",
+        "phy.current-electricity.temperature-dependence:dd:02",
+        "phy.current-electricity.temperature-dependence:dd:08"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "cd37929832ab067a944d892224b01b11fe737a8b5725a82d04edef5e19d35c3b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 52604,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.transmission",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "tall steel lattice high-voltage transmission towers carrying long cables across green Indian farm fields towards a small town on the horizon, with a small transformer on a pole near the first houses",
+      "must_show": [
+        "high-voltage transmission towers with cables",
+        "fields",
+        "distant town",
+        "small pole-mounted transformer near houses"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "danger signs with writing",
+        "logos"
+      ],
+      "alt": {
+        "en": "High-voltage transmission towers carrying lines across green fields towards a distant village.",
+        "hi": "हरे खेतों के पार दूर गाँव की ओर तार ले जाते उच्च वोल्टता संचरण टावर।"
+      },
+      "used_by": [
+        "phy.current-electricity.energy-power:dd:11"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "5e7957df4b4cf80b4aab37def7973a7747354b8a57ef962aeff86b7cd012d73b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 137782,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.fairy-lights",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "the balcony of an Indian apartment at dusk decorated for Diwali with three strings of tiny fairy lights hung one above another: the top string and the bottom string glow warmly along their whole length, while the middle string is completely dark, every single bulb on it unlit; a young electrician in everyday clothes holds the middle dark string and checks its bulbs one by one",
+      "must_show": [
+        "two strings fully glowing",
+        "the middle string with every bulb dark",
+        "a person checking the dark string"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "logos",
+        "fireworks",
+        "flames"
+      ],
+      "alt": {
+        "en": "A boy on a rooftop holds a string of decorative bulbs; one string has gone completely dark while the others glow.",
+        "hi": "छत पर एक लड़का सजावटी बल्बों की लड़ी पकड़े है; एक लड़ी पूरी बुझ गई है जबकि बाकी जल रही हैं।"
+      },
+      "used_by": [
+        "phy.current-electricity.resistor-combinations:dd:01"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "3e9f19f9d6326c8f541cfb70f3ab00f2c3f81fc5fb42cf042d55f38f7146374c",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 91352,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.series-parallel",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "two separate small circuits side by side on a white background, each a neat loop of blue wire. Left circuit: one battery at the bottom and two small glowing bulbs on the top side of the same single loop, one after the other, with no other wires. Right circuit: one battery at the bottom; above it the wire splits into exactly two separate branches, the upper branch carries one glowing bulb and the middle branch carries one glowing bulb, and the two branches join again at both sides before returning to the battery; there is no third plain wire across the top",
+      "must_show": [
+        "left: two bulbs one after another in one loop",
+        "right: two bulbs, each on its own branch, branches joined at both ends",
+        "a battery in each circuit",
+        "plain battery cases with no markings"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "plus sign",
+        "minus sign",
+        "switches",
+        "loose wires",
+        "a plain wire joining the two branches that bypasses the bulbs"
+      ],
+      "alt": {
+        "en": "Two circuits side by side, each with a battery and two glowing bulbs: on the left the bulbs are in one loop one after another, on the right each bulb has its own branch.",
+        "hi": "दो परिपथ अगल-बगल, हर एक में एक बैटरी और दो जलते बल्ब: बाईं ओर बल्ब एक ही लूप में एक के बाद एक, दाईं ओर हर बल्ब की अपनी शाखा।"
+      },
+      "used_by": [
+        "phy.current-electricity.resistor-combinations:dd:02",
+        "phy.current-electricity.resistor-combinations:dd:08",
+        "phy.current-electricity.resistor-combinations:dd:11",
+        "phy.current-electricity.resistor-combinations:dd:13"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "ebcb08f0ed5bb77abde56b4c9e65397a8f69d93ebf6f138dc1c9b4854dde6faf",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 30188,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.electrolytic-cell",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a clear glass beaker filled with a pale blue liquid electrolyte, with two flat metal electrode plates dipped into the liquid, one on the left and one on the right, not touching each other; a wire from the top of each plate goes up and out of the beaker to the two ends of a small coil of resistance wire held above the beaker, making one closed loop",
+      "must_show": [
+        "beaker of electrolyte",
+        "two separate electrode plates dipped in it",
+        "wires from both plates to the two ends of one resistor coil"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "plus or minus signs",
+        "bubbles",
+        "flames"
+      ],
+      "alt": {
+        "en": "A glass beaker of liquid with two metal plates dipping in it, joined outside by a wire through a small coil.",
+        "hi": "द्रव से भरा काँच का बीकर जिसमें दो धातु की प्लेटें डूबी हैं, बाहर एक छोटी कुंडली वाले तार से जुड़ी हुई।"
+      },
+      "used_by": [
+        "phy.current-electricity.cells:dd:01",
+        "phy.current-electricity.cells:dd:02",
+        "phy.current-electricity.cells:dd:05",
+        "phy.current-electricity.cells:dd:10",
+        "phy.current-electricity.cells:dd:11"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "136f488608b3cdc3087704a9d7d4b704fc421ebdc8cea7a8f6d634d62e13aef8",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 32990,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.pipe-junction",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a transparent water pipe shaped like the letter Y lying flat: one wide pipe comes in from the left and splits at a junction into two narrower pipes going to the right, blue water visibly flowing through all three pipes, small flow arrows drawn as plain shapes inside the pipes pointing from the wide pipe into the two narrow pipes",
+      "must_show": [
+        "one wide pipe splitting into two narrower pipes at a single junction",
+        "water flowing in all three pipes",
+        "plain flow arrows pointing away from the wide pipe into the two branches"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "taps",
+        "leaks"
+      ],
+      "alt": {
+        "en": "A clear pipe of flowing water that splits into two branches at a junction, with arrows showing the flow dividing.",
+        "hi": "बहते पानी का पारदर्शी पाइप जो एक संधि पर दो शाखाओं में बँटता है, तीर प्रवाह के बँटने को दिखाते हैं।"
+      },
+      "used_by": [
+        "phy.current-electricity.kirchhoff:dd:01"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6ad59acad79cb869075130d18c3c7c71cb36b809efcf4eda72a51f0024787d56",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 41670,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.galvanometer-null",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a school laboratory moving-coil galvanometer standing on a white bench, seen from the front: a round blank white dial with a centre-zero design, its single thin needle pointing straight up at the exact middle of the dial, two brass terminal screws at the bottom with a short wire attached to each, the wires going out of the frame",
+      "must_show": [
+        "round blank dial",
+        "needle pointing straight up at the middle",
+        "two terminals with wires"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "digits or words on the dial",
+        "logos"
+      ],
+      "alt": {
+        "en": "A laboratory galvanometer with a blank dial and its needle pointing straight up at the centre: no deflection.",
+        "hi": "प्रयोगशाला गैल्वेनोमीटर जिसका डायल खाली है और सुई बीच में सीधी ऊपर है: कोई विक्षेप नहीं।"
+      },
+      "used_by": [
+        "phy.current-electricity.wheatstone:dd:01",
+        "phy.current-electricity.wheatstone:dd:08"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "197c0e7aa2900f075975b7302fd203f4d09e18dccf311b7325242cf7fb898cfa",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 48880,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.current-electricity.metre-bridge",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a school metre bridge seen from directly above on a plain white surface: a long rectangular wooden board; near its front edge one thin bare straight wire stretched tight from the left end to the right end, with a plain tick-mark scale printed on the board just in front of it; along the back edge a thick flat brass strip made of three separate pieces with two clear gaps between them, the end pieces bent forward at the left and right to hold the two ends of the thin wire; across the left gap a small separate coil resistor whose two leads are fixed to the brass pieces on either side of that gap; across the right gap a small resistance box with brass plugs, also fixed to the brass pieces on either side of its gap; a small sliding contact key resting on the thin wire near the middle; nothing else touches the thin wire",
+      "must_show": [
+        "thin straight wire along the front",
+        "tick-mark scale under the wire",
+        "thick brass strip in three pieces with two gaps at the back",
+        "coil resistor bridging the left gap, not on the thin wire",
+        "resistance box bridging the right gap",
+        "sliding contact on the thin wire"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "digits on the scale",
+        "meters",
+        "battery",
+        "a coil wound on the thin wire"
+      ],
+      "alt": {
+        "en": "A metre bridge seen from above: a bare wire stretched along a wooden board, a jockey on the wire and two gaps for resistances.",
+        "hi": "ऊपर से दिखता मीटर सेतु: लकड़ी के बोर्ड पर तना एक नग्न तार, तार पर जॉकी और प्रतिरोधों के लिए दो खाली स्थान।"
+      },
+      "used_by": [],
+      "status": "rejected",
+      "rejected_reason": "Three rounds failed: every candidate drew a coil on the bridge wire. Escalated to a person; no card uses it.",
+      "result": null
+    },
+    {
+      "id": "sim.current-electricity.ohms-law-circuit",
+      "kind": "sim",
+      "brief": "Reuse the existing ohms-law-circuit sim: battery, one or two resistors (single, series, parallel), switch and internal resistance, reporting voltage, total resistance, current and terminal voltage.",
+      "used_by": [
+        "phy.current-electricity.cells:dd:05",
+        "phy.current-electricity.ohms-law:dd:04",
+        "phy.current-electricity.resistor-combinations:dd:11"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "b2fc67b905356524931d5d64bddaab89b2a89a01c19065393eb299fbb05c05e0",
+        "asset_id": null,
+        "reused": true,
+        "sim_id": "ohms-law-circuit",
+        "sim_version": "1.0.0",
+        "licence": "owned",
+        "attribution": null
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1919,7 +1919,9 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | Fine print: Android | ₹1 for the first month, then ₹99/month, billed by Google Play. Renews every month until you cancel. Cancel anytime in Google Play › Subscriptions. The ₹1 offer is once per person. | पहला महीना ₹1, फिर ₹99/माह, बिल Google Play से। रद्द करने तक हर महीने रिन्यू होगा। Google Play › सब्सक्रिप्शन में कभी भी रद्द करें। ₹1 ऑफ़र हर व्यक्ति के लिए एक बार। |
 | Fine print: iOS | ₹1 for the first month, then ₹99/month. Payment is charged to your Apple ID when you confirm. It renews every month unless you cancel at least 24 hours before the current period ends. Manage or cancel in your App Store account settings. The ₹1 offer is once per person. | पहला महीना ₹1, फिर ₹99/माह। पुष्टि करते ही भुगतान आपके Apple ID से होगा। मौजूदा अवधि खत्म होने से कम से कम 24 घंटे पहले रद्द न करने पर यह हर महीने रिन्यू होगा। App Store अकाउंट सेटिंग में मैनेज या रद्द करें। ₹1 ऑफ़र हर व्यक्ति के लिए एक बार। |
 | Fine print: web | Pay ₹1 today with UPI Autopay, a card or netbanking. Then ₹99 on {date} and every month after. Your bank or UPI app tells you before each charge. Cancel anytime in Smriti or in your UPI app. The ₹1 offer is once per person. | आज ₹1 UPI ऑटोपे, कार्ड या नेटबैंकिंग से दें। फिर {date} को और उसके बाद हर महीने ₹99। हर कटौती से पहले आपका बैंक या UPI ऐप आपको बताएगा। Smriti या अपने UPI ऐप में कभी भी रद्द करें। ₹1 ऑफ़र हर व्यक्ति के लिए एक बार। |
-| Fine print (not eligible) | Same as above without the ₹1 sentences: "₹99/month, billed by {store}…" | ऊपर जैसा, ₹1 वाले वाक्यों के बिना: "₹99/माह, बिल {store} से…" |
+| Fine print (not eligible): Android | ₹99/month, billed by Google Play. Renews every month until you cancel. Cancel anytime in Google Play › Subscriptions. | ₹99/माह, बिल Google Play से। रद्द करने तक हर महीने रिन्यू होगा। Google Play › सब्सक्रिप्शन में कभी भी रद्द करें। |
+| Fine print (not eligible): iOS | ₹99/month. Payment is charged to your Apple ID when you confirm. It renews every month unless you cancel at least 24 hours before the current period ends. Manage or cancel in your App Store account settings. | ₹99/माह। पुष्टि करते ही भुगतान आपके Apple ID से होगा। मौजूदा अवधि खत्म होने से कम से कम 24 घंटे पहले रद्द न करने पर यह हर महीने रिन्यू होगा। App Store अकाउंट सेटिंग में मैनेज या रद्द करें। |
+| Fine print (not eligible): web | Pay ₹99 today with UPI Autopay, a card or netbanking, and then every month. Your bank or UPI app tells you before each charge. Cancel anytime in Smriti or in your UPI app. | आज ₹99 UPI ऑटोपे, कार्ड या नेटबैंकिंग से दें, और फिर हर महीने। हर कटौती से पहले आपका बैंक या UPI ऐप आपको बताएगा। Smriti या अपने UPI ऐप में कभी भी रद्द करें। |
 | GST (flagged) | Prices include GST. | कीमतों में GST शामिल है। |
 | Restore | Restore purchases | खरीदारी वापस लाएँ |
 | Terms | Terms | शर्तें |
@@ -1930,6 +1932,8 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | Guest hint (under CTA) | You'll sign in with Google first. | पहले आप Google से साइन इन करेंगे। |
 | `intro_used` (after sign-in) | The ₹1 month was already used on this account. | इस अकाउंट पर ₹1 वाला महीना पहले ही इस्तेमाल हो चुका है। |
 | Teen consent caption | Needs a guardian's OK first | पहले अभिभावक की मंज़ूरी ज़रूरी |
+
+The "not eligible" fine print rows are the platform rows without the ₹1 sentences; show them when `intro_eligible` is false and never mix the two sets.
 
 Pet line sources that share a row: `deep_dive_preview` and `lab_lock` use "Pet: deep_dive_lock"; `tutor_image`, `me_card`, `settings` and `deeplink` use "Pet: general".
 

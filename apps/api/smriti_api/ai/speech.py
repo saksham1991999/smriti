@@ -80,7 +80,9 @@ class GeminiLiveVoiceProvider:
 
     name = "gemini_live"
 
-    def __init__(self, http: httpx.AsyncClient, api_key: str, model: str, ttl_s: int = 600) -> None:
+    def __init__(
+        self, http: httpx.AsyncClient, api_key: str, model: str, ttl_s: int = 1800
+    ) -> None:
         if not api_key or not model:
             raise AIConfigError("GEMINI_API_KEY and GEMINI_LIVE_MODEL are required")
         self._http = http
@@ -90,15 +92,31 @@ class GeminiLiveVoiceProvider:
 
     async def create_session(self, context: VoiceContext) -> VoiceSession:
         now = datetime.now(UTC)
-        expires = now + timedelta(seconds=self._ttl_s)
+        ttl = min(context.ttl_s or self._ttl_s, self._ttl_s)
+        expires = now + timedelta(seconds=ttl)
+        setup: dict[str, object] = {
+            "model": f"models/{self._model}",
+            "generationConfig": {"responseModalities": ["AUDIO"]},
+            "systemInstruction": {"parts": [{"text": context.system_instruction}]},
+            # Captions on both sides (tutor-social §A9 step 4) come from Live's transcription.
+            "inputAudioTranscription": {},
+            "outputAudioTranscription": {},
+        }
+        if context.tools:
+            setup["tools"] = [
+                {
+                    "functionDeclarations": [
+                        {"name": t.name, "description": t.description, "parameters": t.parameters}
+                        for t in context.tools
+                    ]
+                }
+            ]
         body = {
             "uses": 1,
             "expireTime": expires.isoformat().replace("+00:00", "Z"),
             "newSessionExpireTime": (now + timedelta(minutes=1)).isoformat().replace("+00:00", "Z"),
-            "bidiGenerateContentSetup": {
-                "model": f"models/{self._model}",
-                "systemInstruction": {"parts": [{"text": context.system_instruction}]},
-            },
+            # The token is locked to this setup, so a device can't change the instructions.
+            "bidiGenerateContentSetup": setup,
         }
         resp = await self._http.post(
             f"{GEMINI_BASE}/auth_tokens",

@@ -135,6 +135,8 @@ Placeholders:
 | Tile: Mock tests | Mock tests | मॉक टेस्ट |
 | Tile: Analytics | Analytics | विश्लेषण |
 | Analytics caption, no data | Answer a few to unlock | कुछ सवाल हल करें, फिर दिखेगा |
+| Tile: Tutor | Tutor | ट्यूटर |
+| Tile caption, tutor | Ask {pet_name} about any doubt | {pet_name} से कोई भी सवाल पूछें |
 | Recent | Recent | हाल का अभ्यास |
 | Limit meter | Practice today: {used} of {limit} | आज का अभ्यास: {limit} में से {used} |
 | Pro link | Unlimited with Pro | Pro में असीमित |

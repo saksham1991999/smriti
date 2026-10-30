@@ -1,0 +1,436 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "id": "bio.cell-unit-of-life.cell-overview:deep_dive",
+  "topic": "bio.cell-unit-of-life.cell-overview",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Inside every cell",
+        "hi": "हर कोशिका के भीतर"
+      },
+      "subtopic": "bio.cell-unit-of-life.cell-overview.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.cell-overview:dd:01",
+        "bio.cell-unit-of-life.cell-overview:dd:02",
+        "bio.cell-unit-of-life.cell-overview:dd:03",
+        "bio.cell-unit-of-life.cell-overview:dd:04",
+        "bio.cell-unit-of-life.cell-overview:dd:05"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Sizes and shapes",
+        "hi": "माप और आकृतियाँ"
+      },
+      "subtopic": "bio.cell-unit-of-life.cell-overview.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.cell-overview:dd:06",
+        "bio.cell-unit-of-life.cell-overview:dd:07",
+        "bio.cell-unit-of-life.cell-overview:dd:08"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Wall, membrane, nucleus, cytoplasm",
+        "hi": "भित्ति, झिल्ली, केंद्रक, कोशिकाद्रव्य"
+      },
+      "body": {
+        "en": "An onion cell, a typical plant cell, has a distinct cell wall as its outer boundary, with the cell membrane just inside it. A human cheek cell has only an outer membrane as its boundary.\n\nInside each is a dense membrane-bound nucleus holding the chromosomes, which contain the genetic material, DNA. Cells with membrane-bound nuclei are eukaryotic; cells that lack one are prokaryotic. In both, a semi-fluid matrix called cytoplasm fills the cell and is the main arena of cellular activities.",
+        "hi": "प्याज़ की कोशिका, जो एक प्रारूपी पादप कोशिका है, की बाहरी सीमा एक स्पष्ट कोशिका भित्ति होती है और ठीक उसके भीतर कोशिका झिल्ली। मनुष्य की गाल की कोशिका की सीमा केवल बाहरी झिल्ली होती है।\n\nहर कोशिका के भीतर एक सघन झिल्ली-युक्त केंद्रक होता है, जिसमें गुणसूत्र होते हैं, और उनमें आनुवंशिक पदार्थ डीएनए। झिल्ली-युक्त केंद्रक वाली कोशिकाएँ यूकैरियोटी हैं और जिनमें यह नहीं होता वे प्रोकैरियोटी। दोनों में एक अर्धतरल आधात्री, कोशिकाद्रव्य, कोशिका को भरता है और कोशिकीय क्रियाओं का मुख्य स्थल है।"
+      },
+      "media": "img.cell-unit-of-life.plant-animal-cells",
+      "highlights": [
+        {
+          "term": {
+            "en": "eukaryotic",
+            "hi": "यूकैरियोटी"
+          },
+          "definition": {
+            "en": "cells with a membrane-bound nucleus",
+            "hi": "झिल्ली-युक्त केंद्रक वाली कोशिकाएँ"
+          }
+        },
+        {
+          "term": {
+            "en": "prokaryotic",
+            "hi": "प्रोकैरियोटी"
+          },
+          "definition": {
+            "en": "cells without a membrane-bound nucleus",
+            "hi": "झिल्ली-युक्त केंद्रक रहित कोशिकाएँ"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.3"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Organelles with and without membranes",
+        "hi": "झिल्ली वाले और बिना झिल्ली वाले अंगक"
+      },
+      "body": {
+        "en": "Besides the nucleus, eukaryotic cells have membrane-bound organelles: the endoplasmic reticulum, the Golgi complex, lysosomes, mitochondria, microbodies and vacuoles. Prokaryotic cells lack them.\n\nRibosomes are not membrane-bound and are found in all cells. In a cell they occur in the cytoplasm and also in chloroplasts (in plants), in mitochondria and on rough ER.\n\nAnimal cells have another non-membrane-bound organelle, the centrosome, which helps in cell division.",
+        "hi": "केंद्रक के अतिरिक्त यूकैरियोटी कोशिकाओं में झिल्ली-युक्त अंगक होते हैं: अंतर्द्रव्यी जालिका, गॉल्जी सम्मिश्र, लयनकाय, सूत्रकणिका, सूक्ष्मकाय और रसधानी। प्रोकैरियोटी कोशिकाओं में ये नहीं होते।\n\nराइबोसोम झिल्ली रहित होते हैं और सभी कोशिकाओं में मिलते हैं। कोशिका में ये कोशिकाद्रव्य में, और हरितलवक (पौधों में), सूत्रकणिका और खुरदरी अंतर्द्रव्यी जालिका पर भी मिलते हैं।\n\nजंतु कोशिकाओं में एक और झिल्ली रहित अंगक, तारककाय, होता है जो कोशिका विभाजन में सहायता करता है।"
+      },
+      "media": "img.cell-unit-of-life.plant-animal-cells",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.3"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort each structure by where it is found.",
+        "hi": "हर संरचना को इस आधार पर छाँटिए कि वह कहाँ मिलती है।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "wall",
+            "text": {
+              "en": "Cell wall",
+              "hi": "कोशिका भित्ति"
+            }
+          },
+          {
+            "id": "plastids",
+            "text": {
+              "en": "Plastids",
+              "hi": "लवक"
+            }
+          },
+          {
+            "id": "vacuole",
+            "text": {
+              "en": "Large central vacuole",
+              "hi": "बड़ी केंद्रीय रसधानी"
+            }
+          },
+          {
+            "id": "centrioles",
+            "text": {
+              "en": "Centrioles",
+              "hi": "तारककेंद्र"
+            }
+          },
+          {
+            "id": "nucleus",
+            "text": {
+              "en": "Nucleus",
+              "hi": "केंद्रक"
+            }
+          },
+          {
+            "id": "ribosomes",
+            "text": {
+              "en": "Ribosomes",
+              "hi": "राइबोसोम"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "plant",
+            "label": {
+              "en": "Plant cells, not animal cells",
+              "hi": "पादप कोशिका में, जंतु कोशिका में नहीं"
+            }
+          },
+          {
+            "id": "animal",
+            "label": {
+              "en": "Animal cells, absent in almost all plant cells",
+              "hi": "जंतु कोशिका में, लगभग सभी पादप कोशिकाओं में अनुपस्थित"
+            }
+          },
+          {
+            "id": "both",
+            "label": {
+              "en": "Both",
+              "hi": "दोनों में"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "wall",
+            "bin": "plant"
+          },
+          {
+            "item": "plastids",
+            "bin": "plant"
+          },
+          {
+            "item": "vacuole",
+            "bin": "plant"
+          },
+          {
+            "item": "centrioles",
+            "bin": "animal"
+          },
+          {
+            "item": "nucleus",
+            "bin": "both"
+          },
+          {
+            "item": "ribosomes",
+            "bin": "both"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: wall, plastids and a big central vacuole mark a plant cell; centrioles mark an animal cell.",
+          "hi": "सही: भित्ति, लवक और बड़ी केंद्रीय रसधानी पादप कोशिका की पहचान हैं; तारककेंद्र जंतु कोशिका की।"
+        },
+        "wrong": {
+          "en": "Three of these are plant-only and one is found in animal cells but in almost no plant cells.",
+          "hi": "इनमें तीन केवल पादप कोशिका में हैं और एक जंतु कोशिका में है पर लगभग किसी पादप कोशिका में नहीं।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the plant cell and the animal cell.",
+        "hi": "पादप कोशिका और जंतु कोशिका को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.plant-animal-cells",
+        "spots": [
+          {
+            "id": "wall",
+            "anchor": "cell-wall"
+          },
+          {
+            "id": "vacuole",
+            "anchor": "vacuole"
+          },
+          {
+            "id": "chloroplast",
+            "anchor": "chloroplast"
+          },
+          {
+            "id": "membrane",
+            "anchor": "animal-membrane"
+          },
+          {
+            "id": "centriole",
+            "anchor": "centriole"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-wall",
+            "text": {
+              "en": "Cell wall",
+              "hi": "कोशिका भित्ति"
+            }
+          },
+          {
+            "id": "l-vacuole",
+            "text": {
+              "en": "Large central vacuole",
+              "hi": "बड़ी केंद्रीय रसधानी"
+            }
+          },
+          {
+            "id": "l-chloroplast",
+            "text": {
+              "en": "Chloroplast",
+              "hi": "हरितलवक"
+            }
+          },
+          {
+            "id": "l-membrane",
+            "text": {
+              "en": "Plasma membrane",
+              "hi": "जीवद्रव्य झिल्ली"
+            }
+          },
+          {
+            "id": "l-centriole",
+            "text": {
+              "en": "Centriole",
+              "hi": "तारककेंद्र"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "wall",
+            "label": "l-wall"
+          },
+          {
+            "spot": "vacuole",
+            "label": "l-vacuole"
+          },
+          {
+            "spot": "chloroplast",
+            "label": "l-chloroplast"
+          },
+          {
+            "spot": "membrane",
+            "label": "l-membrane"
+          },
+          {
+            "spot": "centriole",
+            "label": "l-centriole"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. The plant cell has a wall outside its membrane; the animal cell's membrane is its boundary.",
+          "hi": "सही। पादप कोशिका में झिल्ली के बाहर भित्ति है; जंतु कोशिका की सीमा उसकी झिल्ली ही है।"
+        },
+        "wrong": {
+          "en": "The thick outer box belongs to the plant cell only.",
+          "hi": "मोटा बाहरी खाना केवल पादप कोशिका का है।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:05",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 1,
+      "question": "q.bio.cell-unit-of-life.cell-overview.0001"
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "From mycoplasma to the ostrich egg",
+        "hi": "माइकोप्लाज़्मा से शुतुरमुर्ग के अंडे तक"
+      },
+      "body": {
+        "en": "Cells differ greatly in size, shape and activity. Mycoplasmas, the smallest cells, are only 0.3 µm long, while bacteria could be 3 to 5 µm. The largest isolated single cell is the egg of an ostrich. Human red blood cells are about 7.0 µm in diameter, and nerve cells are some of the longest cells.\n\nCells may be disc-like, polygonal, columnar, cuboid, thread-like or even irregular. The shape of a cell may vary with the function it performs.",
+        "hi": "कोशिकाएँ माप, आकृति और कार्य में बहुत भिन्न होती हैं। सबसे छोटी कोशिका माइकोप्लाज़्मा केवल 0.3 µm लंबी होती है, जबकि जीवाणु 3 से 5 µm के हो सकते हैं। पृथक की गई सबसे बड़ी एकल कोशिका शुतुरमुर्ग का अंडा है। मनुष्य की लाल रुधिर कोशिका का व्यास लगभग 7.0 µm होता है, और तंत्रिका कोशिकाएँ सबसे लंबी कोशिकाओं में हैं।\n\nकोशिकाएँ बिंबाकार, बहुभुजी, स्तंभी, घनाभ, धागे जैसी या अनियमित आकृति की हो सकती हैं। कोशिका की आकृति उसके कार्य के अनुसार भिन्न हो सकती है।"
+      },
+      "media": "img.cell-unit-of-life.cell-shapes",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.3, Figure 8.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:07",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.cell-overview.0002"
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-overview:dd:08",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-overview.core.cell-overview"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Eukaryotic cells have a membrane-bound nucleus and organelles; prokaryotic cells do not.",
+          "hi": "यूकैरियोटी कोशिकाओं में झिल्ली-युक्त केंद्रक और अंगक होते हैं; प्रोकैरियोटी में नहीं।"
+        },
+        {
+          "en": "Ribosomes have no membrane and occur in all cells.",
+          "hi": "राइबोसोम झिल्ली रहित हैं और सभी कोशिकाओं में मिलते हैं।"
+        },
+        {
+          "en": "Plant cells: wall, plastids, large central vacuole. Animal cells: centrioles.",
+          "hi": "पादप कोशिका: भित्ति, लवक, बड़ी केंद्रीय रसधानी। जंतु कोशिका: तारककेंद्र।"
+        },
+        {
+          "en": "Mycoplasma 0.3 µm, bacteria 3 to 5 µm, human RBC about 7.0 µm; ostrich egg is the largest single cell.",
+          "hi": "माइकोप्लाज़्मा 0.3 µm, जीवाणु 3 से 5 µm, मनुष्य की लाल रुधिर कोशिका लगभग 7.0 µm; शुतुरमुर्ग का अंडा सबसे बड़ी एकल कोशिका।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.3, §8.5"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

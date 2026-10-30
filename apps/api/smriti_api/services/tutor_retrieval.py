@@ -107,7 +107,13 @@ class FullTextRetriever:
             )
         ).all()
         out = []
+        seen: set[tuple[str, str]] = set()
         for r in rows:
+            # A topic or concept can match both its own row and its search document (the
+            # publisher writes both); the best-ranked one is kept.
+            if (r.kind, r.id) in seen:
+                continue
+            seen.add((r.kind, r.id))
             body = r.body
             if isinstance(body, dict):
                 parts = [_text(body.get("summary"), locale)]

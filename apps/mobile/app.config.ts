@@ -74,8 +74,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         // One OAuth URL scheme per variant bundle id (public, not a secret).
         CFBundleURLTypes: variant.googleIosUrlScheme ? [{ CFBundleURLSchemes: [variant.googleIosUrlScheme] }] : [],
       },
-      // Widgets (NTF-08..10) are Phase 2: the App Group the snapshot is written to.
-      entitlements: { 'com.apple.security.application-groups': [`group.${variant.bundleId}`] },
+      // Widgets (NTF-08..10): the App Group the snapshot is written to, one per environment so
+      // dev, preview and production builds installed side by side keep their own data.
+      entitlements: { 'com.apple.security.application-groups': [`group.${variant.bundleId}${suffix}`] },
     },
     android: {
       package: `${variant.androidPackage}${suffix}`,
@@ -105,6 +106,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       'expo-apple-authentication',
       ['expo-notifications', { color: accent }],
       ['expo-splash-screen', { image: brand(variant.splash.image), imageWidth: 160, backgroundColor: splashBg }],
+      // Home-screen widgets (G-5, NTF-08..10): WidgetKit extension and Android AppWidgets.
+      './plugins/widgets/index.cjs',
     ],
     experiments: { typedRoutes: false },
     extra: {

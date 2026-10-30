@@ -141,7 +141,17 @@ describe('flags', () => {
     expect(defaultFlags.get('ai.tutor_session_reuse_min')).toBe(30);
     // No word list ships before its safety review (Q-B11).
     expect(defaultFlags.get('social.nickname_words')).toBeNull();
-    expect(defaultFlags.get('duel.min_answer_ms')).toBeNull();
+    // Duels run on proposed values (R53) until the owner confirms them.
+    expect(defaultFlags.get('duel.question_seconds')).toBe(20);
+    expect(defaultFlags.get('duel.question_seconds_u13')).toBe(30);
+    expect(defaultFlags.get('duel.min_answer_ms')).toBe(800);
+    expect(defaultFlags.get('duel.speed_bonus_max')).toBe(5);
+    expect(defaultFlags.get('xp.duel_play')).toBe(5);
+    expect(defaultFlags.get('xp.duel_win')).toBe(20);
+    expect(defaultFlags.get('duel.quit_limit')).toBe(3);
+    expect(defaultFlags.get('duel.rematch_wait_seconds')).toBe(60);
+    expect(defaultFlags.get('xp.duel_per_correct')).toBeNull();
+    expect(defaultFlags.get('duel.quit_cooldown_minutes')).toBeNull();
     expect(createFlags({ league_promote_count: 6 }).get('league.promote_count')).toBe(6);
   });
 

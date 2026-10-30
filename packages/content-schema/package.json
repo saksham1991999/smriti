@@ -6,6 +6,7 @@
   "description": "JSON Schemas, TypeScript types, Ajv validators and the content check for Smriti content.",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
     "./check": "./src/check/index.ts",

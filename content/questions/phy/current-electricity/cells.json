@@ -1,0 +1,403 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.cells",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.cells.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.cells.core.emf-internal-resistance",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A cell has emf 1.5 V. When no current is drawn from it, the potential difference between its terminals is",
+        "hi": "एक सेल का वि.वा.ब. 1.5 V है। उससे कोई धारा न लेने पर उसके टर्मिनलों के बीच विभवांतर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1.5 V",
+            "hi": "1.5 V"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0 V",
+            "hi": "0 V"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "less than 1.5 V",
+            "hi": "1.5 V से कम"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "more than 1.5 V",
+            "hi": "1.5 V से अधिक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Put $I = 0$ in $V = \\varepsilon - Ir$.",
+          "hi": "$I = 0$ रखिए, $V = \\varepsilon - Ir$ में।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Volts are lost inside a cell only when current flows through its internal resistance. With no current nothing is lost.",
+          "hi": "सेल के अंदर वोल्ट तभी खोते हैं जब आंतरिक प्रतिरोध से धारा बहती है। धारा न हो तो कुछ नहीं खोता।"
+        },
+        "steps": [
+          {
+            "en": "$V = \\varepsilon - Ir$ with $I = 0$ gives $V = \\varepsilon = 1.5$ V",
+            "hi": "$V = \\varepsilon - Ir$ में $I = 0$ रखने पर $V = \\varepsilon = 1.5$ V"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "An open cell still has a potential difference between its electrodes.",
+              "hi": "खुले सेल के इलेक्ट्रोडों के बीच भी विभवांतर होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is less only while a current flows.",
+              "hi": "यह केवल धारा बहते समय कम होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "With no current, $V$ equals the emf exactly.",
+              "hi": "धारा न होने पर $V$ ठीक वि.वा.ब. के बराबर है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.cells.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.cells.core.emf-internal-resistance",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A cell of emf 6 V and internal resistance 1 Ω is connected to a 5 Ω resistor. The terminal voltage is",
+        "hi": "6 V वि.वा.ब. और 1 Ω आंतरिक प्रतिरोध वाला सेल 5 Ω प्रतिरोधक से जुड़ा है। टर्मिनल विभवांतर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "5 V",
+            "hi": "5 V"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 V",
+            "hi": "6 V"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 V",
+            "hi": "1 V"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "7 V",
+            "hi": "7 V"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find $I$ first.",
+          "hi": "पहले $I$ निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The current is 1 A through 6 Ω in total. One volt is used up on the 1 Ω inside the cell, leaving 5 V at the terminals.",
+          "hi": "कुल 6 Ω से 1 A धारा बहती है। सेल के अंदर 1 Ω पर एक वोल्ट खर्च होता है, टर्मिनलों पर 5 V बचते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$I = \\frac{6}{5 + 1} = 1$ A",
+            "hi": "$I = \\frac{6}{5 + 1} = 1$ A"
+          },
+          {
+            "en": "$V = 6 - 1 \\times 1 = 5$ V",
+            "hi": "$V = 6 - 1 \\times 1 = 5$ V"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "6 V is the emf; current is flowing, so $V$ is less.",
+              "hi": "6 V वि.वा.ब. है; धारा बह रही है, इसलिए $V$ कम है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "1 V is the drop inside the cell, $Ir$.",
+              "hi": "1 V सेल के अंदर का पतन $Ir$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Adding $Ir$ to the emf is wrong for a cell supplying current.",
+              "hi": "धारा देने वाले सेल में वि.वा.ब. में $Ir$ जोड़ना गलत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.cells.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.cells.core.emf-internal-resistance",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A cell of emf 2 V and internal resistance 1 Ω is joined in parallel (positive to positive) with a cell of emf 1 V and internal resistance 1 Ω. The equivalent emf is",
+        "hi": "2 V वि.वा.ब. और 1 Ω आंतरिक प्रतिरोध वाला सेल, 1 V वि.वा.ब. और 1 Ω आंतरिक प्रतिरोध वाले सेल के साथ पार्श्वक्रम में (धन से धन) जुड़ा है। तुल्य वि.वा.ब. है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1.5 V",
+            "hi": "1.5 V"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "3 V",
+            "hi": "3 V"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 V",
+            "hi": "1 V"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.5 V",
+            "hi": "0.5 V"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $\\varepsilon_{eq} = (\\varepsilon_1 r_2 + \\varepsilon_2 r_1)/(r_1 + r_2)$.",
+          "hi": "$\\varepsilon_{eq} = (\\varepsilon_1 r_2 + \\varepsilon_2 r_1)/(r_1 + r_2)$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With equal internal resistances, the parallel pair settles halfway between the two emfs.",
+          "hi": "समान आंतरिक प्रतिरोधों पर पार्श्व युग्म दोनों वि.वा.ब. के ठीक बीच में रहता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\varepsilon_{eq} = \\frac{\\varepsilon_1 r_2 + \\varepsilon_2 r_1}{r_1 + r_2} = \\frac{2 \\times 1 + 1 \\times 1}{1 + 1} = 1.5$ V",
+            "hi": "$\\varepsilon_{eq} = \\frac{\\varepsilon_1 r_2 + \\varepsilon_2 r_1}{r_1 + r_2} = \\frac{2 \\times 1 + 1 \\times 1}{1 + 1} = 1.5$ V"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Emfs add only in series.",
+              "hi": "वि.वा.ब. केवल श्रेणी में जुड़ते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The difference applies to cells in series opposing each other.",
+              "hi": "अंतर एक-दूसरे के विरुद्ध श्रेणी में जुड़े सेलों पर लागू है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "0.5 Ω is the equivalent internal resistance, not the emf.",
+              "hi": "0.5 Ω तुल्य आंतरिक प्रतिरोध है, वि.वा.ब. नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.cells.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.cells.core.emf-internal-resistance",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A battery of emf 9 V has internal resistance 0.5 Ω. The maximum current, in ampere, that could be drawn from it is",
+        "hi": "9 V वि.वा.ब. वाली बैटरी का आंतरिक प्रतिरोध 0.5 Ω है। उससे ली जा सकने वाली अधिकतम धारा, ऐम्पियर में, है"
+      },
+      "answer": {
+        "value": 18,
+        "unit": "A"
+      },
+      "hints": [
+        {
+          "en": "Set $R = 0$ in $I = \\varepsilon/(R + r)$.",
+          "hi": "$R = 0$ रखिए, $I = \\varepsilon/(R + r)$ में।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The current is largest when the outside resistance is zero; only the internal resistance limits it.",
+          "hi": "बाहरी प्रतिरोध शून्य होने पर धारा सबसे अधिक होती है; केवल आंतरिक प्रतिरोध उसे सीमित करता है।"
+        },
+        "steps": [
+          {
+            "en": "$I_{max} = \\frac{\\varepsilon}{r} = \\frac{9}{0.5} = 18$ A",
+            "hi": "$I_{max} = \\frac{\\varepsilon}{r} = \\frac{9}{0.5} = 18$ A"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Multiplying gives 4.5; divide emf by $r$.",
+              "hi": "गुणा करने पर 4.5 आता है; वि.वा.ब. को $r$ से भाग दीजिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

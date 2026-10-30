@@ -27,6 +27,7 @@ import { ApiError } from "../../lib/api";
 import { useManifest } from "../../lib/content";
 import { eraseGuest, requestDeletion, savedEmail, signOut } from "../../lib/auth";
 import { formatDate, parts, useI18n } from "../../lib/i18n";
+import { usePriceValues } from "../../lib/pricing";
 import { useIsPro } from "../../lib/pro";
 import { useTheme, type ThemeMode } from "../../lib/theme";
 import { toast } from "../../lib/toast";
@@ -102,6 +103,7 @@ const GOALS = [5, 10, 20, 30] as const;
 export function Settings() {
   const s = useServices();
   const { t, locale, setLocale } = useI18n();
+  const pv = usePriceValues();
   const navigate = useNavigate();
   const guest = useAppStore((x) => x.session.isGuest);
   const profile = useAppStore((x) => x.profile);
@@ -200,7 +202,7 @@ export function Settings() {
             title={
               pro && ent?.pro_until
                 ? t("me_money:SET-01.pro_row_pro", { date: formatDate(ent.pro_until, locale) })
-                : t("me_money:SET-01.pro_row_free")
+                : t("me_money:SET-01.pro_row_free", pv)
             }
             icon="Diamond"
             onPress={() =>

@@ -1,3 +1,4 @@
+import { pluralCategory } from "@smriti/tokens/ui";
 import { useEffect, useRef, useState } from "react";
 import type {
   CheerButtonContract,
@@ -202,7 +203,7 @@ export interface SquadCardProps extends SquadCardContract {
 
 /** A squad row (SOC-01): crest 40, name, the shared quest as "{done} of {target}" with a streak bar, days left. */
 export function SquadCard({ name, crest, done, target, daysLeft, onPress, testID, className }: SquadCardProps) {
-  const { t } = useUI();
+  const { t, locale } = useUI();
   const Tag = onPress ? "button" : "div";
   return (
     <Tag
@@ -219,7 +220,7 @@ export function SquadCard({ name, crest, done, target, daysLeft, onPress, testID
           <span className="shrink-0 text-label text-ink-muted tabular-nums">{t("squad.progress", { done, target })}</span>
         </span>
         <ProgressBar value={target > 0 ? Math.min(1, done / target) : 0} tone="streak" label={t("squad.progress", { done, target })} />
-        {daysLeft !== undefined && <span className="text-caption text-ink-muted">{t("squad.daysLeft", { n: daysLeft })}</span>}
+        {daysLeft !== undefined && <span className="text-caption text-ink-muted">{t(pluralCategory(daysLeft, locale) === "one" ? "squad.daysLeft.one" : "squad.daysLeft.other", { n: daysLeft })}</span>}
       </span>
       {onPress && <Icon name="CaretRight" size={20} className="shrink-0 text-ink-muted rtl:rotate-180" />}
     </Tag>

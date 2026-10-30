@@ -26,7 +26,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from smriti_api.core.db import Database
 from smriti_api.core.logging import hash_user_id
 from smriti_api.schemas import sync as s
-from smriti_api.services import card_index, game_ops, profile_rules
+from smriti_api.services import card_index, game_ops, integrity, profile_rules
 from smriti_api.services import flags as flag_service
 from smriti_api.services.badges import award_badges
 from smriti_api.services.errors import DomainError
@@ -40,6 +40,7 @@ from smriti_api.services.recompute import (
     zone,
 )
 from smriti_api.services.srs import ReviewInput, make_scheduler, replay
+from smriti_api.services.usage import Flags
 from smriti_api.services.versioning import bump, lock_state
 from smriti_api.services.xp import XpRules, xp_for_event
 
@@ -100,6 +101,10 @@ class BatchContext:
     srs_changed: set[str] = field(default_factory=set)
     srs_deleted: set[str] = field(default_factory=set)
     topics_changed: set[str] = field(default_factory=set)
+    # Anti-cheat (TRD §10): owner thresholds, and what this batch tripped. Flagged, never rejected.
+    min_answer_ms: int | None = None
+    min_review_ms: int | None = None
+    suspicious: dict[str, list[tuple[uuid.UUID, int]]] = field(default_factory=dict)
 
 
 @dataclass
@@ -143,6 +148,8 @@ async def apply_batch(
             rules=GameRules.from_flags(flags),
             xp_rules=XpRules.from_flags(flags),
             now=now,
+            min_answer_ms=Flags(flags).int_or_none("anticheat.min_answer_ms"),
+            min_review_ms=Flags(flags).int_or_none("anticheat.min_review_ms"),
         )
         await _first_sync(ctx, events, app_variant)
 
@@ -236,6 +243,7 @@ async def apply_batch(
                 ctx.sections.add("streak")
                 await refresh_week_xp(session, facts, now)
             await award_badges(session, user_id)
+        await _flag_suspicious(ctx)
         version = await bump(session, user_id, ctx.sections)
         if ctx.srs_changed:
             await session.execute(
@@ -333,11 +341,12 @@ def _validate(event: s.SyncEventIn, now: datetime) -> BaseModel:
 async def _apply(ctx: BatchContext, event: s.SyncEventIn, payload: BaseModel, day: date) -> None:
     handler = _HANDLERS[event.type]
     await handler(ctx, event, payload)
+    _check_timing(ctx, event, payload)
     award = xp_for_event(event.type, payload.model_dump(), ctx.xp_rules)
     if award is not None:
         amount, source = award
         ref = getattr(payload, "topic_id", None) or getattr(payload, "card_ref", None)
-        await game_ops.add_xp(
+        credited = await game_ops.add_xp(
             ctx.session,
             ctx.facts.user_id,
             event.event_id,
@@ -346,6 +355,62 @@ async def _apply(ctx: BatchContext, event: s.SyncEventIn, payload: BaseModel, da
             str(ref) if ref else None,
             event.occurred_at,
             ctx.xp_rules.hourly_cap,
+        )
+        if credited < amount:
+            ctx.suspicious.setdefault("xp_hourly_cap", []).append(
+                (event.event_id, amount - credited)
+            )
+
+
+# --- anti-cheat (TRD §10) ----------------------------------------------------------------------
+
+
+def _per_item_ms(ms_total: int, items: int) -> int | None:
+    return ms_total // items if items > 0 else None
+
+
+def _check_timing(ctx: BatchContext, event: s.SyncEventIn, payload: BaseModel) -> None:
+    """Answers and cards faster than a person can plausibly manage are flagged for review. The
+    thresholds are owner flags; while unset nothing is checked."""
+    checks: list[tuple[str, int | None, int | None]] = []
+    if isinstance(payload, s.AnswerSubmitted):
+        checks.append(("fast_answer", payload.ms_to_answer, ctx.min_answer_ms))
+    elif isinstance(payload, s.ReviewRated):
+        checks.append(("fast_review", payload.ms_to_answer, ctx.min_review_ms))
+    elif isinstance(payload, s.LessonCompleted):
+        per_card = _per_item_ms(payload.ms_total, payload.cards_seen)
+        checks.append(("fast_lesson", per_card, ctx.min_review_ms))
+    elif isinstance(payload, s.PracticeSessionCompleted):
+        per_answer = _per_item_ms(payload.ms_total, payload.answered)
+        checks.append(("fast_practice", per_answer, ctx.min_answer_ms))
+    for kind, ms, minimum in checks:
+        if ms is not None and minimum is not None and ms < minimum:
+            ctx.suspicious.setdefault(kind, []).append((event.event_id, int(ms)))
+
+
+async def _flag_suspicious(ctx: BatchContext) -> None:
+    thresholds = {
+        "fast_answer": ctx.min_answer_ms,
+        "fast_practice": ctx.min_answer_ms,
+        "fast_review": ctx.min_review_ms,
+        "fast_lesson": ctx.min_review_ms,
+        "xp_hourly_cap": ctx.xp_rules.hourly_cap,
+    }
+    for kind, hits in sorted(ctx.suspicious.items()):
+        values = [v for _, v in hits]
+        detail: dict[str, Any] = {"threshold": thresholds.get(kind)}
+        if kind == "xp_hourly_cap":
+            detail["xp_held_back"] = sum(values)
+        else:
+            detail["min_ms"] = min(values)
+        await integrity.record_flag(
+            ctx.session,
+            ctx.facts.user_id,
+            source="sync",
+            kind=kind,
+            events=len(hits),
+            event_ids=[e for e, _ in hits],
+            detail=detail,
         )
 
 

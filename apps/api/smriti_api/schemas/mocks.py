@@ -344,6 +344,7 @@ class Standing(BaseModel):
             "threshold_unset",
             "below_threshold",
             "results_pending",
+            "outside_window",
         ]
         | None
     ) = None

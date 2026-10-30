@@ -19,7 +19,7 @@ import json
 import uuid
 from collections.abc import Mapping
 from datetime import UTC, datetime
-from typing import Any
+from typing import TYPE_CHECKING, Any, Literal
 
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -35,6 +35,9 @@ from smriti_api.services import social_friends as sf
 from smriti_api.services import social_people as sp
 from smriti_api.services import social_squads as ss
 from smriti_api.services.usage import Flags, load_flags
+
+if TYPE_CHECKING:
+    from smriti_api.services.jobs import JobDeps
 
 SHAREABLE_SOURCES = ("user", "note", "transcript", "tutor")
 SAMPLE_CARDS = 3  # B12: "three sample cards"
@@ -99,25 +102,64 @@ async def _cards(session: AsyncSession, deck_id: uuid.UUID, limit: int | None = 
     )
 
 
-async def _moderate(ai: AIGateway, words: str, user_id: uuid.UUID) -> bool:
-    """True when the text may be shared."""
+Outcome = Literal["shared", "blocked", "retry"]
+
+
+async def _moderate(ai: AIGateway, words: str, user_id: uuid.UUID, *, minor: bool) -> Outcome:
+    """Personal data and the keyword screen block at once. The model check (``cheap`` tier) fails
+    open for adults, as the tutor does, but closed for minors: if the model can't give a clear
+    answer, a minor's deck stays unshared and the ``deck_moderation`` job tries again."""
     _, had_personal_data = tutor_safety.redact(words)
     if had_personal_data:
-        return False
+        return "blocked"
     verdict = tutor_safety.screen(words)
     if verdict.blocked or verdict.crisis:
-        return False
-    verdict = await tutor_safety.moderate(ai, words, user_id, under_13=False)
-    return not (verdict.blocked or verdict.crisis)
+        return "blocked"
+    try:
+        model = await tutor_safety.moderate_or_none(
+            ai, words, user_id, under_13=False, feature="deck_moderation"
+        )
+    except ApiError:  # the AI budget said no: same as a failed call
+        model = None
+    if model is None:
+        return "retry" if minor else "shared"
+    return "blocked" if (model.blocked or model.crisis) else "shared"
 
 
-def _share_out(row: Any) -> so.DeckShare:
-    live = row.share_status == "shared" and row.share_code is not None
-    return so.DeckShare(
-        deck_id=row.id,
-        share_code=row.share_code if live else None,
-        share_status=row.share_status or "stopped",
-        path=f"/deck/{row.share_code}" if live else None,
+async def _deck_words(session: AsyncSession, deck_id: uuid.UUID, title: str) -> str:
+    cards = await _cards(session, deck_id)
+    return " \n".join([title, *(f"{card_text(c.front)} {card_text(c.back)}" for c in cards)])[
+        :MODERATION_CHARS
+    ]
+
+
+async def _settle(session: AsyncSession, deck_id: uuid.UUID, outcome: Outcome) -> None:
+    """Writes a moderation outcome to a deck that is still waiting for one."""
+    deck = (
+        await session.execute(
+            text("select share_code, share_status from learn.decks where id = :d for update"),
+            {"d": deck_id},
+        )
+    ).one()
+    if deck.share_status != "checking" or outcome == "retry":
+        return  # stopped meanwhile, or still waiting
+    if outcome == "blocked":
+        await session.execute(
+            text("update learn.decks set share_status = 'blocked' where id = :d"), {"d": deck_id}
+        )
+        return
+    code = deck.share_code
+    while code is None:
+        candidate = sp.new_code(8)
+        taken = (
+            await session.execute(
+                text("select 1 from learn.decks where share_code = :c"), {"c": candidate}
+            )
+        ).scalar_one_or_none()
+        code = None if taken else candidate
+    await session.execute(
+        text("update learn.decks set share_status = 'shared', share_code = :c where id = :d"),
+        {"c": code, "d": deck_id},
     )
 
 
@@ -129,8 +171,7 @@ async def share(
         deck = await _own_deck(session, deck_id, m.user_id)
         if deck.source not in SHAREABLE_SOURCES:
             raise conflict("deck_not_shareable", "This deck can't be shared")
-        cards = await _cards(session, deck_id)
-        if not cards:
+        if not await _cards(session, deck_id, 1):
             raise conflict("deck_empty", "Add a card before sharing")
         listed = body.list_for_exam if m.is_adult else None
         await session.execute(
@@ -140,33 +181,52 @@ async def share(
             ),
             {"t": body.title, "l": listed, "d": deck_id},
         )
-        words = " \n".join(
-            [body.title, *(f"{card_text(c.front)} {card_text(c.back)}" for c in cards)]
-        )[:MODERATION_CHARS]
-    ok = await _moderate(ai, words, m.user_id)
+        words = await _deck_words(session, deck_id, body.title)
+    outcome = await _moderate(ai, words, m.user_id, minor=m.is_minor)
     async with db.system_tx() as session:
-        if ok:
-            code = deck.share_code
-            while code is None:
-                candidate = sp.new_code(8)
-                taken = (
-                    await session.execute(
-                        text("select 1 from learn.decks where share_code = :c"), {"c": candidate}
-                    )
-                ).scalar_one_or_none()
-                code = None if taken else candidate
+        await _settle(session, deck_id, outcome)
+        return _share_out(await _own_deck(session, deck_id, m.user_id))
+
+
+async def retry_checking(db: Database, ai: AIGateway, limit: int = 100) -> int:
+    """Decks still ``checking`` (a minor's deck whose model check failed, or a crash between the
+    two steps of :func:`share`) get another moderation pass. Returns how many were settled."""
+    async with db.system_tx() as session:
+        rows = (
             await session.execute(
                 text(
-                    "update learn.decks set share_status = 'shared', share_code = :c where id = :d"
+                    "select d.id, d.title, d.owner_user_id, p.age_band from learn.decks d"
+                    " join app.profiles p on p.user_id = d.owner_user_id"
+                    " where d.share_status = 'checking' and d.deleted_at is null"
+                    " order by d.created_at limit :n"
                 ),
-                {"c": code, "d": deck_id},
+                {"n": limit},
             )
-        else:
-            await session.execute(
-                text("update learn.decks set share_status = 'blocked' where id = :d"),
-                {"d": deck_id},
-            )
-        return _share_out(await _own_deck(session, deck_id, m.user_id))
+        ).all()
+        work = [(r, await _deck_words(session, r.id, r.title)) for r in rows]
+    settled = 0
+    for r, words in work:
+        outcome = await _moderate(ai, words, r.owner_user_id, minor=r.age_band != sp.ADULT)
+        async with db.system_tx() as session:
+            await _settle(session, r.id, outcome)
+        settled += outcome != "retry"
+    return settled
+
+
+async def moderation_job(deps: JobDeps) -> int:
+    if deps.ai is None:
+        return 0
+    return await retry_checking(deps.db, deps.ai)
+
+
+def _share_out(row: Any) -> so.DeckShare:
+    live = row.share_status == "shared" and row.share_code is not None
+    return so.DeckShare(
+        deck_id=row.id,
+        share_code=row.share_code if live else None,
+        share_status=row.share_status or "stopped",
+        path=f"/deck/{row.share_code}" if live else None,
+    )
 
 
 async def stop_share(db: Database, auth: AuthContext, deck_id: uuid.UUID) -> so.DeckShare:

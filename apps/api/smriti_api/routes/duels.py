@@ -16,7 +16,7 @@ from fastapi.responses import JSONResponse, StreamingResponse
 
 from smriti_api.core.auth import AuthContext
 from smriti_api.core.db import Database
-from smriti_api.core.deps import CurrentUser, IdempotencyKey, Services
+from smriti_api.core.deps import CurrentUser, IdempotencyKey, Services, require_attestation
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import social as so
 from smriti_api.services import duels
@@ -98,6 +98,8 @@ async def send_async(duel_id: DuelId, services: Services, auth: CurrentUser) -> 
     "/duels/{duel_id}/answers",
     response_model=so.DuelAnswerOut,
     summary="Answer the open question (idempotent by question, and by Idempotency-Key)",
+    # Duel submit is a sensitive endpoint (TRD §14): a device check while the flag is on.
+    dependencies=[require_attestation("duel_submit")],
 )
 async def answer(
     duel_id: DuelId,

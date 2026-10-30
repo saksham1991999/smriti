@@ -7,14 +7,20 @@ import json
 import uuid
 from collections.abc import Iterator, Sequence
 from contextlib import contextmanager
+from typing import Any
 
 import httpx
+from sqlalchemy import text
 
 from smriti_api.ai.fakes import FakeLLMProvider
+from smriti_api.ai.interfaces import AIError, ChatMessage, LLMResult
 from smriti_api.core.deps import AppServices
+from smriti_api.services import shared_decks
 from tests.helpers import Session, event, new_guest, post_events
 from tests.practice_helpers import flags
 from tests.social_helpers import befriend, person
+
+OK = '{"category": "ok"}'
 
 
 @contextmanager
@@ -25,6 +31,29 @@ def fake_llm(services: AppServices, replies: Sequence[str] | None = None) -> Ite
         yield
     finally:
         services.ai.llm = old
+
+
+class _DownLLM(FakeLLMProvider):
+    async def complete(self, messages: Sequence[ChatMessage], **kw: Any) -> LLMResult:
+        raise AIError("down")
+
+
+@contextmanager
+def broken_llm(services: AppServices) -> Iterator[None]:
+    old = services.ai.llm
+    services.ai.llm = _DownLLM()
+    try:
+        yield
+    finally:
+        services.ai.llm = old
+
+
+async def test_adult_decks_fail_open(client: httpx.AsyncClient, services: AppServices) -> None:
+    adult = await person(client, services)
+    deck_id = await make_deck(client, adult, cards=1)
+    with broken_llm(services):
+        r = await share(client, adult, deck_id)
+    assert r.json()["share_status"] == "shared"
 
 
 async def make_deck(client: httpx.AsyncClient, s: Session, cards: int = 4) -> str:
@@ -161,9 +190,31 @@ async def test_minors_and_sharing(client: httpx.AsyncClient, services: AppServic
     stranger = await person(client, services)
     await befriend(client, sharer, friend)
     deck_id = await make_deck(client, sharer)
-    with fake_llm(services):
+    # A minor's deck fails closed: no clear answer from the model, no link. It stays
+    # "checking" until the deck_moderation job gets a clear answer.
+    with broken_llm(services):
         r = await share(client, sharer, deck_id, list_for_exam="fx-deck-exam")
-    code = r.json()["share_code"]
+    assert r.json()["share_status"] == "checking" and r.json()["share_code"] is None
+    with fake_llm(services, ["not json"]):
+        await shared_decks.retry_checking(services.db, services.ai)
+    async with services.db.admin_tx() as session:
+        status = (
+            await session.execute(
+                text("select share_status from learn.decks where id = :d"), {"d": deck_id}
+            )
+        ).scalar_one()
+    assert status == "checking"
+    with fake_llm(services, [OK] * 50):
+        assert await shared_decks.retry_checking(services.db, services.ai) >= 1
+    async with services.db.admin_tx() as session:
+        code = (
+            await session.execute(
+                text(
+                    "select share_code from learn.decks where id = :d and share_status = 'shared'"
+                ),
+                {"d": deck_id},
+            )
+        ).scalar_one()
     assert code
     # A teen's deck opens for the teen's friends only.
     assert (await client.get(f"/v1/shared-decks/{code}", headers=friend.headers)).status_code == 200

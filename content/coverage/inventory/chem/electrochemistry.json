@@ -25,7 +25,10 @@
     {
       "id": "lech1-2-3",
       "kind": "formula",
-      "title": "Nernst Equation",
+      "title": {
+        "en": "Nernst Equation",
+        "hi": "नेर्न्स्ट समीकरण"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 2 §2.3 (https://ncert.nic.in/textbook/pdf/lech102.pdf)",
       "concepts": [
         "chem.electrochemistry.nernst.core.nernst-equation",
@@ -35,7 +38,10 @@
     {
       "id": "lech1-2-4",
       "kind": "formula",
-      "title": "Conductance of Electrolytic Solutions",
+      "title": {
+        "en": "Conductance of Electrolytic Solutions",
+        "hi": "वैद्युतअपघटनी विलयनों का चालकत्व"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part I, Ch 2 §2.4 (https://ncert.nic.in/textbook/pdf/lech102.pdf)",
       "concepts": [
         "chem.electrochemistry.conductance.core.conductance-molar",
@@ -94,5 +100,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
 }

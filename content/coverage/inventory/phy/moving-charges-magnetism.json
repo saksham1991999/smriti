@@ -31,7 +31,10 @@
     {
       "id": "leph1-4-4",
       "kind": "formula",
-      "title": "Magnetic Field due to a Current Element: Biot-Savart Law",
+      "title": {
+        "en": "Magnetic Field due to a Current Element: Biot-Savart Law",
+        "hi": "विद्युत धारा अवयव के कारण चुंबकीय क्षेत्र, बायो-सावर्ट नियम"
+      },
       "source_ref": "NCERT Class 12 Physics Part I, Ch 4 §4.4 (https://ncert.nic.in/textbook/pdf/leph104.pdf)",
       "concepts": [
         "phy.moving-charges-magnetism.biot-savart.core.biot-savart-loop"
@@ -88,7 +91,10 @@
     {
       "id": "leph1-4-9",
       "kind": "formula",
-      "title": "Torque on a Current Loop and the Magnetic Dipole",
+      "title": {
+        "en": "Torque on a Current Loop and the Magnetic Dipole",
+        "hi": "विद्युत धारा पाश पर बल आघूर्ण, चुंबकीय द्विध्रुव"
+      },
       "source_ref": "NCERT Class 12 Physics Part I, Ch 4 §4.9 (https://ncert.nic.in/textbook/pdf/leph104.pdf)",
       "concepts": [
         "phy.moving-charges-magnetism.current-loop-torque.core.loop-torque-dipole"
@@ -119,5 +125,6 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv).",
+  "hi_source": "ncert"
 }

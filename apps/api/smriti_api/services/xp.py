@@ -7,6 +7,18 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any
 
+# Events that credit more than a point or two of XP. A sync batch carrying one is "XP-heavy" and
+# needs device attestation when security.attestation_required is on (G-10, TRD §14); single
+# reviews earn 1 XP each and stay under the hourly cap.
+XP_HEAVY_TYPES = frozenset(
+    {
+        "lesson_completed",
+        "practice_session_completed",
+        "daily_challenge_completed",
+        "mock_section_submitted",
+    }
+)
+
 
 @dataclass(frozen=True)
 class XpRules:

@@ -1,0 +1,442 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "topic": "bio.cell-unit-of-life.cell-theory",
+  "questions": [
+    {
+      "id": "q.bio.cell-unit-of-life.cell-theory.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-theory.core.cell-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Who first saw and described a live cell?",
+        "hi": "सबसे पहले जीवित कोशिका किसने देखी और उसका वर्णन किया?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Robert Brown",
+            "hi": "रॉबर्ट ब्राउन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Antonie von Leeuwenhoek",
+            "hi": "एंटोनी वॉन ल्यूवेनहॉक"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Rudolf Virchow",
+            "hi": "रुडोल्फ विर्चो"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Matthias Schleiden",
+            "hi": "मैथियस श्लाइडेन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Brown's discovery was inside the cell.",
+          "hi": "ब्राउन की खोज कोशिका के भीतर की थी।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The first person to look at a living cell and describe it was Leeuwenhoek. The others came later with other discoveries.",
+          "hi": "जीवित कोशिका को देखकर उसका वर्णन करने वाले पहले व्यक्ति ल्यूवेनहॉक थे। बाकी लोग बाद में दूसरी खोजों के साथ आए।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.1: Leeuwenhoek first saw and described a live cell; Robert Brown later discovered the nucleus.",
+            "hi": "NCERT §8.1: ल्यूवेनहॉक ने सबसे पहले जीवित कोशिका देखी और वर्णन किया; रॉबर्ट ब्राउन ने बाद में केंद्रक खोजा।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Robert Brown discovered the nucleus, not the cell.",
+              "hi": "रॉबर्ट ब्राउन ने केंद्रक खोजा, कोशिका नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Virchow explained that new cells come from pre-existing cells.",
+              "hi": "विर्चो ने बताया कि नई कोशिकाएँ पूर्व स्थित कोशिकाओं से आती हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Schleiden showed that plants are made of cells.",
+              "hi": "श्लाइडेन ने दिखाया कि पौधे कोशिकाओं से बने हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.cell-theory.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-theory.core.cell-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about the cell theory is correct?",
+        "hi": "कोशिका सिद्धांत के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Schleiden and Schwann explained how new cells are formed.",
+            "hi": "श्लाइडेन और श्वान ने बताया कि नई कोशिकाएँ कैसे बनती हैं।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Virchow modified the hypothesis by explaining that new cells form from pre-existing cells.",
+            "hi": "विर्चो ने यह बताकर परिकल्पना में संशोधन किया कि नई कोशिकाएँ पूर्व स्थित कोशिकाओं से बनती हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Schwann concluded that animal cells have a cell wall.",
+            "hi": "श्वान ने निष्कर्ष निकाला कि जंतु कोशिकाओं में कोशिका भित्ति होती है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The cell theory states that cells can arise from non-living matter.",
+            "hi": "कोशिका सिद्धांत कहता है कि कोशिकाएँ निर्जीव पदार्थ से बन सकती हैं।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Who answered the question 'where do new cells come from'?",
+          "hi": "'नई कोशिकाएँ कहाँ से आती हैं' का उत्तर किसने दिया?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The first version said what living things are made of. Virchow added where cells come from, and that finished the theory.",
+          "hi": "पहले रूप ने बताया कि सजीव किससे बने हैं। विर्चो ने जोड़ा कि कोशिकाएँ कहाँ से आती हैं, और सिद्धांत पूरा हुआ।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.2: the theory of Schleiden and Schwann did not explain how new cells form; Virchow (1855) did.",
+            "hi": "NCERT §8.2: श्लाइडेन और श्वान का सिद्धांत नई कोशिकाओं का बनना नहीं बता सका; विर्चो (1855) ने बताया।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This is exactly what their theory could not explain.",
+              "hi": "यही तो उनका सिद्धांत नहीं बता सका।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Schwann concluded the cell wall is unique to plant cells.",
+              "hi": "श्वान ने निष्कर्ष निकाला कि कोशिका भित्ति केवल पादप कोशिकाओं की विशेषता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "All cells arise from pre-existing cells.",
+              "hi": "सभी कोशिकाएँ पूर्व स्थित कोशिकाओं से बनती हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.cell-theory.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-theory.core.cell-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "'Omnis cellula-e cellula' was first explained by",
+        "hi": "'ओमनिस सेलुला-ई सेलुला' को पहली बार किसने समझाया?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Schleiden, 1838",
+            "hi": "श्लाइडेन, 1838"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Schwann, 1839",
+            "hi": "श्वान, 1839"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Virchow, 1855",
+            "hi": "विर्चो, 1855"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Robert Brown, 1831",
+            "hi": "रॉबर्ट ब्राउन, 1831"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "It is the latest of these dates.",
+          "hi": "यह इन तिथियों में सबसे बाद की है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The phrase means every cell comes from a cell. That idea came last, from Virchow.",
+          "hi": "इस वाक्यांश का अर्थ है हर कोशिका किसी कोशिका से आती है। यह विचार सबसे बाद में विर्चो से आया।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.2: Rudolf Virchow (1855) first explained that new cells form from pre-existing cells (Omnis cellula-e cellula).",
+            "hi": "NCERT §8.2: रुडोल्फ विर्चो (1855) ने पहली बार बताया कि नई कोशिकाएँ पूर्व स्थित कोशिकाओं से बनती हैं (ओमनिस सेलुला-ई सेलुला)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Schleiden worked on plants being made of cells.",
+              "hi": "श्लाइडेन का काम पौधों के कोशिकाओं से बने होने पर था।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Schwann worked on animal cells and the cell theory itself.",
+              "hi": "श्वान का काम जंतु कोशिकाओं और स्वयं कोशिका सिद्धांत पर था।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Robert Brown described the nucleus in 1831.",
+              "hi": "रॉबर्ट ब्राउन ने 1831 में केंद्रक का वर्णन किया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.cell-theory.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.cell-theory.core.cell-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Why is the cell called the fundamental structural and functional unit of life?",
+        "hi": "कोशिका को जीवन की मूलभूत संरचनात्मक और क्रियात्मक इकाई क्यों कहते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Every cell has a membrane-bound nucleus.",
+            "hi": "हर कोशिका में झिल्ली-आबद्ध केंद्रक होता है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "A unicellular organism can live independently and perform the essential functions of life, and nothing less than a complete cell ensures independent living.",
+            "hi": "एककोशिकीय जीव स्वतंत्र रूप से रह सकता है और जीवन के आवश्यक कार्य कर सकता है, और पूरी कोशिका से कम कुछ भी स्वतंत्र जीवन सुनिश्चित नहीं करता।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Every cell has a cell wall.",
+            "hi": "हर कोशिका में कोशिका भित्ति होती है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "All cells have the same size and shape.",
+            "hi": "सभी कोशिकाओं का आकार और आकृति एक जैसी होती है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think about what a unicellular organism can do.",
+          "hi": "सोचिए कि एककोशिकीय जीव क्या-क्या कर सकता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A single cell can be a whole organism. Break it into parts and no part can live on its own. That makes the cell the smallest living unit.",
+          "hi": "एक कोशिका अपने आप में पूरा जीव हो सकती है। उसे टुकड़ों में तोड़ें तो कोई टुकड़ा अपने दम पर नहीं जी सकता। इसीलिए कोशिका सबसे छोटी जीवित इकाई है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.1: unicellular organisms are capable of independent existence and of performing the essential functions of life; anything less than a complete cell does not ensure independent living.",
+            "hi": "NCERT §8.1: एककोशिकीय जीव स्वतंत्र अस्तित्व और जीवन के आवश्यक कार्यों में सक्षम हैं; पूरी कोशिका से कम कुछ भी स्वतंत्र जीवन सुनिश्चित नहीं करता।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Prokaryotic cells have no membrane-bound nucleus, and some mature cells lack a nucleus.",
+              "hi": "प्रोकैरियोटी कोशिकाओं में झिल्ली-आबद्ध केंद्रक नहीं होता, और कुछ परिपक्व कोशिकाओं में केंद्रक ही नहीं होता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Animal cells have no cell wall.",
+              "hi": "जंतु कोशिकाओं में कोशिका भित्ति नहीं होती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Cells vary greatly in size and shape.",
+              "hi": "कोशिकाओं का आकार और आकृति बहुत भिन्न होती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

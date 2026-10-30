@@ -9,6 +9,7 @@ from typing import Annotated, Literal
 from pydantic import BaseModel, Field
 
 Code = Annotated[str, Field(pattern=r"^[a-z0-9_]{1,40}$")]
+PlanChoice = Literal["monthly", "yearly", "family_monthly", "family_yearly"]
 
 
 class EntitlementOut(BaseModel):
@@ -17,7 +18,7 @@ class EntitlementOut(BaseModel):
     status: (
         Literal["active", "trialing", "grace", "on_hold", "cancelled", "expired", "pending"] | None
     )
-    source: Literal["razorpay", "play", "app_store", "promo"] | None
+    source: Literal["razorpay", "play", "app_store", "promo", "family"] | None
     grace_until: datetime | None
     cancel_at_period_end: bool
     is_intro: bool
@@ -36,6 +37,16 @@ class IntroEligibilityOut(BaseModel):
 class RazorpaySubscriptionRequest(BaseModel):
     # PAY-03: a 13 to 17 year old says whether a parent or guardian is paying.
     payer: Literal["self", "guardian_declared"] = "self"
+    # PRD §11.2: ₹99/month (the default, with the ₹1 intro), ₹799/year, or a family plan (hidden
+    # until the owner sets its seats and price).
+    plan: PlanChoice = "monthly"
+
+
+class ChildProRequest(BaseModel):
+    """PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
+    the parent's own and adds the child as a member instead)."""
+
+    plan: Literal["monthly", "yearly"] = "monthly"
 
 
 class RazorpaySubscriptionOut(BaseModel):
@@ -90,3 +101,36 @@ class RestoreOut(BaseModel):
 
 class WebhookAck(BaseModel):
     status: Literal["applied", "duplicate", "ignored"]
+
+
+# --- family plan (PRD §11.2, Phase 3) ------------------------------------------------------------
+
+
+class FamilyMemberOut(BaseModel):
+    user_id: uuid.UUID
+    first_name: str | None
+    via: Literal["guardian_link", "invite"]
+    joined_at: datetime
+
+
+class FamilyInviteOut(BaseModel):
+    id: uuid.UUID
+    created_at: datetime
+    # Only in the response that creates it; only a hash is stored.
+    code: str | None = None
+
+
+class FamilyOut(BaseModel):
+    """The payer's view: seats (people besides the payer), members and open invites. A member
+    sees ``role = member`` and the seat counts only."""
+
+    group_id: uuid.UUID
+    role: Literal["owner", "member"]
+    seats: int
+    used: int
+    members: list[FamilyMemberOut] = Field(default_factory=list)
+    invites: list[FamilyInviteOut] = Field(default_factory=list)
+
+
+class FamilyAddChild(BaseModel):
+    learner_id: uuid.UUID

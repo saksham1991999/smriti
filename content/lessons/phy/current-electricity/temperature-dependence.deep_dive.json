@@ -1,0 +1,351 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.temperature-dependence:deep_dive",
+  "topic": "phy.current-electricity.temperature-dependence",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Resistance changes with temperature",
+        "hi": "ताप के साथ प्रतिरोध बदलता है"
+      },
+      "subtopic": "phy.current-electricity.temperature-dependence.core",
+      "card_ids": [
+        "phy.current-electricity.temperature-dependence:dd:01",
+        "phy.current-electricity.temperature-dependence:dd:02",
+        "phy.current-electricity.temperature-dependence:dd:03",
+        "phy.current-electricity.temperature-dependence:dd:04",
+        "phy.current-electricity.temperature-dependence:dd:05",
+        "phy.current-electricity.temperature-dependence:dd:06",
+        "phy.current-electricity.temperature-dependence:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Alloys, semiconductors and the reason",
+        "hi": "मिश्रातु, अर्धचालक और कारण"
+      },
+      "subtopic": "phy.current-electricity.temperature-dependence.core",
+      "card_ids": [
+        "phy.current-electricity.temperature-dependence:dd:08",
+        "phy.current-electricity.temperature-dependence:dd:09",
+        "phy.current-electricity.temperature-dependence:dd:10",
+        "phy.current-electricity.temperature-dependence:dd:11",
+        "phy.current-electricity.temperature-dependence:dd:12"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The glowing toaster",
+        "hi": "चमकता टोस्टर"
+      },
+      "body": {
+        "en": "A toaster's nichrome element measures 75.3 Ω at 27.0 °C with a tiny current. On 230 V it settles at 2.68 A, which means about 85.8 Ω. The same wire, a higher resistance. What changed?",
+        "hi": "टोस्टर का नाइक्रोम तत्व बहुत छोटी धारा पर 27.0 °C पर 75.3 Ω मापा जाता है। 230 V पर उसकी धारा 2.68 A पर स्थिर होती है, यानी लगभग 85.8 Ω। वही तार, अधिक प्रतिरोध। क्या बदला?"
+      },
+      "media": "img.current-electricity.toaster",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.3"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Resistivity rises with temperature in metals",
+        "hi": "धातुओं में ताप के साथ प्रतिरोधकता बढ़ती है"
+      },
+      "body": {
+        "en": "Over a limited range of temperature, the resistivity of a metal is approximately $\\rho_T = \\rho_0[1 + \\alpha(T - T_0)]$, where $\\alpha$ is the temperature coefficient of resistivity, with dimension $(\\text{temperature})^{-1}$. For metals $\\alpha$ is positive.\n\nThe relation is only approximately linear; at temperatures much lower than 0 °C the graph deviates considerably from a straight line.",
+        "hi": "ताप के सीमित परास में किसी धातु की प्रतिरोधकता लगभग $\\rho_T = \\rho_0[1 + \\alpha(T - T_0)]$ होती है, जहाँ $\\alpha$ प्रतिरोधकता ताप-गुणांक है, जिसकी विमा $(\\text{temperature})^{-1}$ है। धातुओं के लिए $\\alpha$ धनात्मक है।\n\nयह संबंध केवल लगभग रैखिक है; 0 °C से बहुत कम ताप पर ग्राफ़ सरल रेखा से काफ़ी हट जाता है।"
+      },
+      "media": "img.current-electricity.toaster",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.8"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Temperature dependence",
+        "hi": "ताप पर निर्भरता"
+      },
+      "latex": "\\rho_T = \\rho_0 [1 + \\alpha (T - T_0)]",
+      "symbols": [
+        {
+          "symbol": "\\rho_T",
+          "meaning": {
+            "en": "resistivity at $T$",
+            "hi": "$T$ पर प्रतिरोधकता"
+          },
+          "unit": "Ω m"
+        },
+        {
+          "symbol": "\\rho_0",
+          "meaning": {
+            "en": "resistivity at reference $T_0$",
+            "hi": "संदर्भ ताप $T_0$ पर प्रतिरोधकता"
+          },
+          "unit": "Ω m"
+        },
+        {
+          "symbol": "\\alpha",
+          "meaning": {
+            "en": "temperature coefficient of resistivity",
+            "hi": "प्रतिरोधकता ताप-गुणांक"
+          },
+          "unit": "°C^-1"
+        },
+        {
+          "symbol": "T",
+          "meaning": {
+            "en": "temperature",
+            "hi": "ताप"
+          },
+          "unit": "°C"
+        }
+      ],
+      "conditions": {
+        "en": "Valid over a limited temperature range. For a given wire, $R_T = R_0[1 + \\alpha(T - T_0)]$ to the same approximation.",
+        "hi": "ताप के सीमित परास में मान्य। किसी दिए तार के लिए उसी सन्निकटन में $R_T = R_0[1 + \\alpha(T - T_0)]$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.8, Eq. 3.26"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "The toaster above: 75.3 Ω at 27.0 °C, and a steady 2.68 A on 230 V. Take $\\alpha = 1.70 \\times 10^{-4}$ °C⁻¹ for nichrome. Find the steady temperature of the element.",
+        "hi": "ऊपर वाला टोस्टर: 27.0 °C पर 75.3 Ω, और 230 V पर स्थिर 2.68 A। नाइक्रोम के लिए $\\alpha = 1.70 \\times 10^{-4}$ °C⁻¹ लें। तत्व का स्थिर ताप ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Hot resistance: $R_2 = \\frac{230}{2.68} = 85.8$ Ω",
+          "hi": "गरम प्रतिरोध: $R_2 = \\frac{230}{2.68} = 85.8$ Ω"
+        },
+        {
+          "en": "$R_2 = R_1[1 + \\alpha(T_2 - T_1)]$ gives $T_2 - T_1 = \\frac{R_2 - R_1}{R_1\\alpha}$",
+          "hi": "$R_2 = R_1[1 + \\alpha(T_2 - T_1)]$ से $T_2 - T_1 = \\frac{R_2 - R_1}{R_1\\alpha}$"
+        },
+        {
+          "en": "$T_2 - T_1 = \\frac{85.8 - 75.3}{75.3 \\times 1.70 \\times 10^{-4}} = 820$ °C",
+          "hi": "$T_2 - T_1 = \\frac{85.8 - 75.3}{75.3 \\times 1.70 \\times 10^{-4}} = 820$ °C"
+        },
+        {
+          "en": "$T_2 = 820 + 27.0 = 847$ °C",
+          "hi": "$T_2 = 820 + 27.0 = 847$ °C"
+        }
+      ],
+      "answer": {
+        "en": "about 847 °C",
+        "hi": "लगभग 847 °C"
+      },
+      "answer_value": {
+        "value": 847,
+        "unit": "°C",
+        "tolerance": {
+          "abs": 3
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting to add the starting 27.0 °C gives the temperature rise, not the temperature.",
+        "hi": "प्रारंभिक 27.0 °C जोड़ना भूलने पर ताप-वृद्धि मिलती है, ताप नहीं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.3"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:05",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.temperature-dependence.0001"
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.temperature-dependence.0002"
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "For metals, $\\rho_T = \\rho_0[1 + \\alpha(T - T_0)]$ with $\\alpha > 0$, over a limited range.",
+          "hi": "धातुओं के लिए सीमित परास में $\\rho_T = \\rho_0[1 + \\alpha(T - T_0)]$, जहाँ $\\alpha > 0$।"
+        },
+        {
+          "en": "A hot filament has a higher resistance than a cold one.",
+          "hi": "गरम तंतु का प्रतिरोध ठंडे से अधिक होता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Alloys that barely change",
+        "hi": "मिश्रातु जो लगभग नहीं बदलते"
+      },
+      "body": {
+        "en": "Nichrome (an alloy of nickel, iron and chromium) has a very high resistivity with a very weak dependence on temperature. Manganin and constantan behave similarly, so they are widely used in wire-bound standard resistors.\n\nUnlike metals, the resistivities of semiconductors decrease as the temperature rises.",
+        "hi": "निक्रोम (निकेल, लोहा और क्रोमियम की मिश्रातु) की प्रतिरोधकता बहुत अधिक होती है और ताप पर उसकी निर्भरता बहुत कम। मैंगनिन और कांसटेंटन भी ऐसे ही हैं, इसलिए ये तार से बने मानक प्रतिरोधकों में खूब उपयोग होते हैं।\n\nधातुओं के विपरीत, ताप बढ़ने पर अर्धचालकों की प्रतिरोधकता घटती है।"
+      },
+      "media": "img.current-electricity.toaster",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.8"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:09",
+      "type": "memory_hook",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.phy.current-electricity.temperature-dependence.core.resistance-temperature.1",
+        "hi": "m.phy.current-electricity.temperature-dependence.core.resistance-temperature.2"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Why metals and semiconductors differ",
+        "hi": "धातु और अर्धचालक अलग क्यों हैं"
+      },
+      "body": {
+        "en": "From $\\rho = m/(ne^{2}\\tau)$: as temperature rises, electrons move faster and collide more often, so $\\tau$ decreases.\n\nIn a metal, $n$ hardly depends on temperature, so the fall in $\\tau$ makes $\\rho$ rise. In insulators and semiconductors, $n$ increases with temperature, and this more than compensates the fall in $\\tau$, so $\\rho$ decreases.",
+        "hi": "$\\rho = m/(ne^{2}\\tau)$ से: ताप बढ़ने पर इलेक्ट्रॉन तेज़ चलते हैं और अधिक बार टकराते हैं, इसलिए $\\tau$ घटता है।\n\nधातु में $n$ ताप पर लगभग निर्भर नहीं करता, इसलिए $\\tau$ घटने से $\\rho$ बढ़ता है। विद्युतरोधियों और अर्धचालकों में ताप के साथ $n$ बढ़ता है, और यह वृद्धि $\\tau$ की कमी की भरपाई से भी अधिक होती है, इसलिए $\\rho$ घटता है।"
+      },
+      "media": "img.current-electricity.electron-drift",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.8"
+      }
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:11",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.temperature-dependence.0003"
+    },
+    {
+      "id": "phy.current-electricity.temperature-dependence:dd:12",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.temperature-dependence.core.resistance-temperature"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Nichrome, manganin and constantan: resistivity weakly dependent on temperature; used in standard resistors.",
+          "hi": "निक्रोम, मैंगनिन और कांसटेंटन: प्रतिरोधकता ताप पर कम निर्भर; मानक प्रतिरोधकों में उपयोग।"
+        },
+        {
+          "en": "Metals: $\\tau$ falls, $n$ steady, so $\\rho$ rises. Semiconductors: $n$ rises more, so $\\rho$ falls.",
+          "hi": "धातु: $\\tau$ घटता, $n$ स्थिर, इसलिए $\\rho$ बढ़ता। अर्धचालक: $n$ अधिक बढ़ता, इसलिए $\\rho$ घटता।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

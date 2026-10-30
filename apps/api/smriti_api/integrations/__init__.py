@@ -14,6 +14,7 @@ from pathlib import Path
 import httpx
 
 from smriti_api.core.config import REPO_ROOT, Settings
+from smriti_api.integrations.attestation import AttestationVerifier, build_attestation
 from smriti_api.integrations.billing import (
     FakeRazorpayProvider,
     FakeRevenueCatProvider,
@@ -58,6 +59,8 @@ class Integrations:
     # Web Push for the web app (VAPID). None when not configured outside local and test.
     web_push: PushSender | None = None
     web_push_public_key: str | None = None
+    # Play Integrity and App Attest (G-10). Built in build_integrations.
+    attestation: AttestationVerifier | None = None
 
 
 def _mailer(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> Mailer:
@@ -131,6 +134,12 @@ def build_integrations(
         "intro_offer_id": cfg.razorpay_intro_offer_id,
         "total_count": cfg.razorpay_total_count,
         "grace_days": cfg.razorpay_grace_days if grace_days is None else grace_days,
+        "plans": {
+            "pro_yearly_web": cfg.razorpay_yearly_plan_id,
+            "family_monthly_web": cfg.razorpay_family_monthly_plan_id,
+            "family_yearly_web": cfg.razorpay_family_yearly_plan_id,
+        },
+        "yearly_total_count": cfg.razorpay_yearly_total_count,
     }
     razorpay: RazorpayProvider
     configured = bool(cfg.razorpay_key_id and cfg.razorpay_key_secret)
@@ -174,4 +183,14 @@ def build_integrations(
         billing_configured=configured or dev,
         web_push=web_push,
         web_push_public_key=web_push_key,
+        attestation=build_attestation(
+            http,
+            dev=dev,
+            provider=cfg.attestation_provider,
+            play_service_account_json=cfg.play_integrity_service_account_json,
+            play_packages=cfg.play_integrity_packages,
+            app_attest_app_ids=cfg.app_attest_app_ids,
+            app_attest_environment=cfg.app_attest_environment,
+            app_attest_root_ca_pem=cfg.app_attest_root_ca_pem,
+        ),
     )

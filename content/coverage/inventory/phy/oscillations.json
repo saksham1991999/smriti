@@ -17,7 +17,10 @@
     {
       "id": "keph2-13-3",
       "kind": "formula",
-      "title": "Simple Harmonic Motion",
+      "title": {
+        "en": "Simple Harmonic Motion",
+        "hi": "सरल आवर्त गति"
+      },
       "source_ref": "NCERT Class 11 Physics Part II, Ch 13 §13.3 (https://ncert.nic.in/textbook/pdf/keph206.pdf)",
       "concepts": [
         "phy.oscillations.shm.core.shm-equation"
@@ -47,7 +50,10 @@
     {
       "id": "keph2-13-6",
       "kind": "formula",
-      "title": "Force Law for Simple Harmonic Motion",
+      "title": {
+        "en": "Force Law for Simple Harmonic Motion",
+        "hi": "सरल आवर्त गति के लिए बल का नियम"
+      },
       "source_ref": "NCERT Class 11 Physics Part II, Ch 13 §13.6 (https://ncert.nic.in/textbook/pdf/keph206.pdf)",
       "concepts": [
         "phy.oscillations.force-law.core.spring-oscillation"
@@ -87,5 +93,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
 }

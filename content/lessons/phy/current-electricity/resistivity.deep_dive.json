@@ -1,0 +1,514 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.resistivity:deep_dive",
+  "topic": "phy.current-electricity.resistivity",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.resistivity.core.resistivity-conductivity"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Length, area and resistivity",
+        "hi": "लंबाई, क्षेत्रफल और प्रतिरोधकता"
+      },
+      "subtopic": "phy.current-electricity.resistivity.core",
+      "card_ids": [
+        "phy.current-electricity.resistivity:dd:01",
+        "phy.current-electricity.resistivity:dd:02",
+        "phy.current-electricity.resistivity:dd:03",
+        "phy.current-electricity.resistivity:dd:04",
+        "phy.current-electricity.resistivity:dd:05",
+        "phy.current-electricity.resistivity:dd:06",
+        "phy.current-electricity.resistivity:dd:07",
+        "phy.current-electricity.resistivity:dd:08",
+        "phy.current-electricity.resistivity:dd:09"
+      ],
+      "estimated_minutes": 6
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Conductors, semiconductors, insulators",
+        "hi": "चालक, अर्धचालक, विद्युतरोधी"
+      },
+      "subtopic": "phy.current-electricity.resistivity.core",
+      "card_ids": [
+        "phy.current-electricity.resistivity:dd:10",
+        "phy.current-electricity.resistivity:dd:11",
+        "phy.current-electricity.resistivity:dd:12",
+        "phy.current-electricity.resistivity:dd:13"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.resistivity:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Longer wire, more resistance; thicker wire, less",
+        "hi": "लंबा तार, अधिक प्रतिरोध; मोटा तार, कम"
+      },
+      "body": {
+        "en": "Compare the short thin wire with the long thin one: the same current must flow through twice the length, so the potential difference doubles and the resistance doubles: $R \\propto l$.\n\nNow compare the long thin wire with the long thick one: a larger cross-section is like several thin strips side by side, each carrying part of the current, so $R \\propto 1/A$. Together $R = \\rho l/A$, where $\\rho$, the resistivity, depends only on the material (and its temperature).",
+        "hi": "छोटे पतले तार की तुलना लंबे पतले तार से कीजिए: उतनी ही धारा को दोगुनी लंबाई से गुज़रना है, इसलिए विभवांतर दोगुना और प्रतिरोध दोगुना होता है: $R \\propto l$।\n\nअब लंबे पतले तार की तुलना लंबे मोटे तार से कीजिए: बड़ी अनुप्रस्थ काट कई पतली पट्टियों के साथ-साथ रखे होने जैसी है, हर एक धारा का कुछ भाग ले जाती है, इसलिए $R \\propto 1/A$। दोनों मिलाकर $R = \\rho l/A$, जहाँ प्रतिरोधकता $\\rho$ केवल पदार्थ (और उसके ताप) पर निर्भर है।"
+      },
+      "media": "img.current-electricity.slabs",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:02",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Resistance of a wire",
+        "hi": "तार का प्रतिरोध"
+      },
+      "latex": "R = \\rho \\frac{l}{A}",
+      "symbols": [
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "resistance",
+            "hi": "प्रतिरोध"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "\\rho",
+          "meaning": {
+            "en": "resistivity",
+            "hi": "प्रतिरोधकता"
+          },
+          "unit": "Ω m"
+        },
+        {
+          "symbol": "l",
+          "meaning": {
+            "en": "length",
+            "hi": "लंबाई"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "A",
+          "meaning": {
+            "en": "area of cross-section",
+            "hi": "अनुप्रस्थ काट का क्षेत्रफल"
+          },
+          "unit": "m^2"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Current density and conductivity",
+        "hi": "धारा घनत्व और चालकता"
+      },
+      "body": {
+        "en": "Current per unit area normal to the current is the current density $j = I/A$, in A/m². Since $V = El$ and $V = I\\rho l/A$, we get $E = j\\rho$, or $j = \\sigma E$, where $\\sigma = 1/\\rho$ is the conductivity. This is Ohm's law written for a point in the material.",
+        "hi": "धारा के अभिलंब प्रति एकांक क्षेत्रफल धारा, धारा घनत्व $j = I/A$ है, मात्रक A/m²। चूँकि $V = El$ और $V = I\\rho l/A$, इसलिए $E = j\\rho$, या $j = \\sigma E$, जहाँ $\\sigma = 1/\\rho$ चालकता है। यह पदार्थ के किसी बिंदु के लिए लिखा गया ओम का नियम है।"
+      },
+      "media": "img.current-electricity.electron-drift",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Ohm's law at a point",
+        "hi": "बिंदु पर ओम का नियम"
+      },
+      "latex": "\\mathbf{j} = \\sigma \\mathbf{E}, \\quad \\sigma = \\frac{1}{\\rho}",
+      "symbols": [
+        {
+          "symbol": "j",
+          "meaning": {
+            "en": "current density",
+            "hi": "धारा घनत्व"
+          },
+          "unit": "A/m^2"
+        },
+        {
+          "symbol": "\\sigma",
+          "meaning": {
+            "en": "conductivity",
+            "hi": "चालकता"
+          },
+          "unit": "S/m"
+        },
+        {
+          "symbol": "E",
+          "meaning": {
+            "en": "electric field",
+            "hi": "विद्युत क्षेत्र"
+          },
+          "unit": "V/m"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:05",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Resistivity from electron drift",
+        "hi": "इलेक्ट्रॉन अपवाह से प्रतिरोधकता"
+      },
+      "steps": [
+        {
+          "latex": "I = neA|v_d|, \\quad |v_d| = \\frac{eE\\tau}{m}",
+          "say": {
+            "en": "Start from the drift picture.",
+            "hi": "अपवाह के चित्र से शुरू करें।"
+          },
+          "why": null
+        },
+        {
+          "latex": "I = \\frac{ne^{2}\\tau A}{m} E",
+          "say": {
+            "en": "Substitute the drift velocity.",
+            "hi": "अपवाह वेग रखें।"
+          },
+          "why": null
+        },
+        {
+          "latex": "j = \\frac{I}{A} = \\frac{ne^{2}\\tau}{m} E",
+          "say": {
+            "en": "Divide by the area.",
+            "hi": "क्षेत्रफल से भाग दें।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\sigma = \\frac{ne^{2}\\tau}{m}, \\quad \\rho = \\frac{m}{ne^{2}\\tau}",
+          "say": {
+            "en": "Compare with $j = \\sigma E$.",
+            "hi": "$j = \\sigma E$ से तुलना करें।"
+          },
+          "why": {
+            "en": "So resistivity is small when there are many free electrons and long relaxation times.",
+            "hi": "इसलिए अधिक मुक्त इलेक्ट्रॉनों और लंबे विश्रांति काल पर प्रतिरोधकता कम होती है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.5"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A wire of resistance 4 Ω is stretched uniformly to twice its length. Its volume does not change. Find the new resistance.",
+        "hi": "4 Ω प्रतिरोध वाले तार को समान रूप से खींचकर उसकी लंबाई दोगुनी की जाती है। उसका आयतन नहीं बदलता। नया प्रतिरोध ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Volume $Al$ fixed, so $l \\to 2l$ gives $A \\to A/2$.",
+          "hi": "आयतन $Al$ नियत है, इसलिए $l \\to 2l$ होने पर $A \\to A/2$।"
+        },
+        {
+          "en": "$R' = \\rho \\frac{2l}{A/2} = 4\\rho\\frac{l}{A} = 4R$",
+          "hi": "$R' = \\rho \\frac{2l}{A/2} = 4\\rho\\frac{l}{A} = 4R$"
+        },
+        {
+          "en": "$R' = 4 \\times 4 = 16$ Ω",
+          "hi": "$R' = 4 \\times 4 = 16$ Ω"
+        }
+      ],
+      "answer": {
+        "en": "16 Ω",
+        "hi": "16 Ω"
+      },
+      "answer_value": {
+        "value": 16,
+        "unit": "Ω",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "shortcut": {
+        "en": "Stretching by a factor $n$ at constant volume multiplies $R$ by $n^{2}$.",
+        "hi": "नियत आयतन पर $n$ गुना खींचने से $R$, $n^{2}$ गुना हो जाता है।"
+      },
+      "common_trap": {
+        "en": "Doubling only the length and forgetting that the area halves gives 8 Ω.",
+        "hi": "केवल लंबाई दोगुनी करना और क्षेत्रफल का आधा होना भूलना 8 Ω देता है।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.resistivity.0001"
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.resistivity.0002"
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:09",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$R = \\rho l/A$; $\\rho$ depends on the material and temperature, not on the shape.",
+          "hi": "$R = \\rho l/A$; $\\rho$ पदार्थ और ताप पर निर्भर है, आकार पर नहीं।"
+        },
+        {
+          "en": "$j = I/A$ and $j = \\sigma E$ with $\\sigma = 1/\\rho$.",
+          "hi": "$j = I/A$ और $j = \\sigma E$, जहाँ $\\sigma = 1/\\rho$।"
+        },
+        {
+          "en": "$\\rho = m/(ne^{2}\\tau)$.",
+          "hi": "$\\rho = m/(ne^{2}\\tau)$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A huge range of resistivity",
+        "hi": "प्रतिरोधकता का विशाल परास"
+      },
+      "body": {
+        "en": "Materials are classed by resistivity. Metals have low resistivities, $10^{-8}$ Ω m to $10^{-6}$ Ω m. Insulators such as ceramic, rubber and plastics have resistivities $10^{18}$ times greater than metals or more.\n\nSemiconductors such as Si and Ge lie in between. Their resistivity falls as temperature rises, and adding small amounts of suitable impurities lowers it, which is why they are used in electronic devices.",
+        "hi": "पदार्थों को प्रतिरोधकता से वर्गीकृत किया जाता है। धातुओं की प्रतिरोधकता कम होती है, $10^{-8}$ Ω m से $10^{-6}$ Ω m तक। सिरेमिक, रबर और प्लास्टिक जैसे विद्युतरोधियों की प्रतिरोधकता धातुओं से $10^{18}$ गुना या उससे भी अधिक होती है।\n\nSi और Ge जैसे अर्धचालक बीच में हैं। ताप बढ़ने पर इनकी प्रतिरोधकता घटती है, और उपयुक्त अशुद्धियों की थोड़ी मात्रा मिलाने से भी घटती है, इसीलिए ये इलेक्ट्रॉनिक युक्तियों में उपयोग होते हैं।"
+      },
+      "media": "img.current-electricity.slabs",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.7 and Summary point 5"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:11",
+      "type": "interactive",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort by resistivity class.",
+        "hi": "प्रतिरोधकता के वर्ग के अनुसार छाँटिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "metals",
+              "hi": "धातुएँ"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Si and Ge",
+              "hi": "Si और Ge"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "rubber",
+              "hi": "रबर"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "ceramic",
+              "hi": "सिरेमिक"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "low",
+            "label": {
+              "en": "conductor",
+              "hi": "चालक"
+            }
+          },
+          {
+            "id": "mid",
+            "label": {
+              "en": "semiconductor",
+              "hi": "अर्धचालक"
+            }
+          },
+          {
+            "id": "high",
+            "label": {
+              "en": "insulator",
+              "hi": "विद्युतरोधी"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "low"
+          },
+          {
+            "item": "i2",
+            "bin": "mid"
+          },
+          {
+            "item": "i3",
+            "bin": "high"
+          },
+          {
+            "item": "i4",
+            "bin": "high"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: metals low, Si and Ge in between, rubber and ceramic high.",
+          "hi": "सही: धातुएँ कम, Si और Ge बीच में, रबर और सिरेमिक अधिक।"
+        },
+        "wrong": {
+          "en": "Insulators have resistivities at least $10^{18}$ times those of metals.",
+          "hi": "विद्युतरोधियों की प्रतिरोधकता धातुओं से कम से कम $10^{18}$ गुना होती है।"
+        }
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.resistivity.0003"
+    },
+    {
+      "id": "phy.current-electricity.resistivity:dd:13",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.resistivity.core.resistivity-conductivity"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Metals: $10^{-8}$ to $10^{-6}$ Ω m; insulators $10^{18}$ times more or greater; semiconductors in between.",
+          "hi": "धातुएँ: $10^{-8}$ से $10^{-6}$ Ω m; विद्युतरोधी $10^{18}$ गुना या अधिक; अर्धचालक बीच में।"
+        },
+        {
+          "en": "Impurities lower the resistivity of semiconductors.",
+          "hi": "अशुद्धियाँ अर्धचालकों की प्रतिरोधकता घटाती हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.7"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -6,7 +6,8 @@
 export type Locale = 'en' | 'hi';
 export type Confidence = 'sure' | 'fifty_fifty' | 'guess';
 export type LessonMode = 'deep_dive' | 'quick_revision' | 'onboarding' | 'quick_check';
-export type AnswerContext = 'lesson' | 'practice' | 'review' | 'challenge' | 'chapter_test';
+/** `mock`: an answer in a submitted mock attempt (contract v1.3); it carries `attempt_id`. */
+export type AnswerContext = 'lesson' | 'practice' | 'review' | 'challenge' | 'chapter_test' | 'mock';
 export type ReviewRating = 1 | 2 | 3 | 4;
 export type AgeBand = 'u10' | '10_12' | '13_17' | '18p';
 
@@ -36,6 +37,8 @@ export interface SyncEventPayloads {
     attempt: 1 | 2;
     confidence: Confidence | null;
     ms_to_answer: number;
+    /** The submitted mock attempt; required with `context: 'mock'` (with `question_id`). */
+    attempt_id?: string;
   };
   lesson_completed: {
     topic_id: string;
@@ -206,6 +209,12 @@ export interface TopicProgress {
   learned_via?: 'lesson' | 'test_out' | 'placement' | 'chapter_test' | null;
 }
 
+/**
+ * Where Pro comes from (the API's `EntitlementOut.source`): a store or web subscription, a promo
+ * grant, or a seat on someone else's family plan (`family`, managed only by the payer).
+ */
+export type EntitlementSource = 'razorpay' | 'play' | 'app_store' | 'promo' | 'family';
+
 export interface EntitlementSection {
   plan: 'free' | 'pro';
   pro_until: string | null;
@@ -213,7 +222,7 @@ export interface EntitlementSection {
   grace_until?: string | null;
   cancel_at_period_end?: boolean;
   is_intro?: boolean;
-  source?: string;
+  source?: EntitlementSource | null;
 }
 
 export interface SyncStateResponse {

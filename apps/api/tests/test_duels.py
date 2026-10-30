@@ -4,6 +4,7 @@ flagged XP left out of leagues."""
 
 from __future__ import annotations
 
+import uuid
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime, timedelta
@@ -18,14 +19,10 @@ from tests.helpers import Session
 from tests.practice_helpers import flags
 from tests.social_helpers import befriend, outbox, person
 
-DUEL_FLAGS: dict[str, Any] = {
-    "duel.question_seconds": 30,
-    "duel.question_count": 3,
-    "duel.speed_bonus_max": 0,
-    "xp.duel_per_correct": 2,
-    "xp.duel_win": 5,
-    "duel.rematch_wait_seconds": 60,
-}
+# The fixture course has only a few duel questions; everything else runs on the proposed
+# defaults (R53): 20 s a question, speed bonus up to 5, 800 ms too-fast line, 5 XP to play,
+# 20 XP to win, rematch within 60 s, 3 random quits a day.
+DUEL_FLAGS: dict[str, Any] = {"duel.question_count": 3}
 
 
 @asynccontextmanager
@@ -58,6 +55,20 @@ async def start_now(services: AppServices, duel_id: str) -> None:
         )
 
 
+async def think(services: AppServices, duel_id: str, seconds: float = 2.0) -> None:
+    """Move every open clock back, as if the player took ``seconds`` to answer."""
+    async with services.db.admin_tx() as session:
+        for table in ("social.duels", "social.duel_players"):
+            await session.execute(
+                text(
+                    f"update {table} set question_opened_at = question_opened_at - make_interval(secs => :s)"
+                    f" where {'id' if table == 'social.duels' else 'duel_id'} = :d"
+                    " and question_opened_at is not null"
+                ),
+                {"s": seconds, "d": duel_id},
+            )
+
+
 async def answer(
     client: httpx.AsyncClient,
     services: AppServices,
@@ -78,13 +89,14 @@ async def answer(
     return out
 
 
-async def test_duels_need_config_and_friends(
+async def test_duels_need_questions_and_friends(
     client: httpx.AsyncClient, services: AppServices, content: str
 ) -> None:
     a = await person(client, services, exam=content)
     b = await person(client, services, exam=content)
+    # With the default 10 questions the small fixture course can't fill a duel.
     r = await client.post("/v1/duels", json={"solo": True}, headers=a.headers)
-    assert r.status_code == 409 and r.json()["code"] == "duel_unavailable"
+    assert r.status_code == 409 and r.json()["reason"] == "not_enough_questions"
     async with duel_flags(services):
         r = await client.post("/v1/duels", json={"opponent_id": str(b.user_id)}, headers=a.headers)
         assert r.status_code == 403 and r.json()["code"] == "not_friends"
@@ -105,8 +117,11 @@ async def test_solo_round(client: httpx.AsyncClient, services: AppServices, cont
         duel = r.json()
         assert duel["relation"] == "solo" and duel["status"] == "live"
         assert duel["current"]["index"] == 0 and "answer" not in str(duel["current"]["body"])
+        assert duel["question_seconds"] == 20
+        await think(services, duel["id"])
         out = await answer(client, services, a, duel, right=True)
-        assert out["correct"] and out["points"] == 1 and out["key"] is not None
+        # 1 for correct plus the speed bonus: 5 x (18 s left of 20 s), rounded.
+        assert out["correct"] and out["points"] == 1 + round(5 * 18 / 20) and out["key"]
         duel = out["duel"]
         # Same question again: the first answer stands.
         r = await client.post(
@@ -115,10 +130,14 @@ async def test_solo_round(client: httpx.AsyncClient, services: AppServices, cont
             headers=a.headers,
         )
         assert r.status_code == 200 and r.json()["correct"] is True
+        await think(services, duel["id"])
         duel = (await answer(client, services, a, duel, right=False))["duel"]
+        await think(services, duel["id"])
         duel = (await answer(client, services, a, duel, right=True))["duel"]
         assert duel["status"] == "finished"
-        assert duel["result"]["winner"] == "none" and duel["result"]["xp_earned"] == 4  # no win XP
+        assert duel["result"]["winner"] == "none"
+        assert duel["result"]["xp_earned"] == 5  # play XP only: no win XP in a solo round
+        assert duel["result"]["not_counted"] is False  # every answer took over 800 ms
         rematch = (await client.post(f"/v1/duels/{duel['id']}/rematch", headers=a.headers)).json()
         assert rematch["relation"] == "solo" and rematch["id"] != duel["id"]
 
@@ -129,7 +148,7 @@ async def test_friend_live_duel_with_events_and_flags(
     a = await person(client, services, name="Asha Verma", exam=content)
     b = await person(client, services, name="Kabir Rao", exam=content)
     await befriend(client, a, b)
-    async with duel_flags(services, **{"duel.min_answer_ms": 3_600_000}):
+    async with duel_flags(services):
         r = await client.post("/v1/duels", json={"opponent_id": str(b.user_id)}, headers=a.headers)
         assert r.status_code == 201, r.text
         duel = r.json()
@@ -156,15 +175,28 @@ async def test_friend_live_duel_with_events_and_flags(
             da = (await client.get(f"/v1/duels/{duel['id']}", headers=a.headers)).json()
             db_ = out_b["duel"]
         assert da["status"] == "finished"
-        assert da["result"]["winner"] == "me" and da["result"]["xp_earned"] == 3 * 2 + 5
-        assert db_["result"]["winner"] == "them" and db_["result"]["xp_earned"] == 2
-        # Every answer was "too fast" for this flag, so both are flagged: the result stands,
-        # each sees the neutral "not counted" line, and leagues leave the XP out.
+        assert da["result"]["winner"] == "me" and da["result"]["xp_earned"] == 5 + 20
+        assert db_["result"]["winner"] == "them" and db_["result"]["xp_earned"] == 5
+        # These answers came within 800 ms of the reveal, so both players are flagged: the
+        # result stands, each sees the neutral "not counted" line, and leagues leave the XP out.
         assert da["result"]["not_counted"] is True
         week = leagues.week_opens(leagues.week_start(datetime.now(UTC)))
         async with services.db.admin_tx() as session:
             counted = await leagues.counted_xp(session, [a.user_id], week, datetime.now(UTC))
         assert counted[a.user_id] == 0
+        # One anti-cheat flag per flagged player and duel (TRD §10), ids and numbers only.
+        async with services.db.admin_tx() as session:
+            flagged = (
+                await session.execute(
+                    text(
+                        "select user_id, event_ids from ops.integrity_flags"
+                        " where source = 'duel' and kind = 'fast_duel_answer' and user_id = any(:u)"
+                    ),
+                    {"u": [a.user_id, b.user_id]},
+                )
+            ).all()
+        assert sorted(str(f.user_id) for f in flagged) == sorted([str(a.user_id), str(b.user_id)])
+        assert all(f.event_ids == [uuid.UUID(duel["id"])] for f in flagged)
 
         ev = (await client.get(f"/v1/duels/{duel['id']}/events", headers=a.headers)).json()
         kinds = [e["kind"] for e in ev["events"]]
@@ -253,12 +285,9 @@ async def test_random_matching_and_quit_pause(
     a = await person(client, services, exam=exam)
     b = await person(client, services, exam=exam)
     teen = await person(client, services, band="13_17", exam=exam)
-    quit_flags = {
-        "duel.quit_limit": 1,
-        "duel.quit_window_hours": 24,
-        "duel.quit_cooldown_minutes": 30,
-    }
-    async with duel_flags(services, **quit_flags):
+    # One quit is enough here (the default is 3 a day); with no cooldown set, the pause lasts
+    # until that quit is 24 hours old.
+    async with duel_flags(services, **{"duel.quit_limit": 1}):
         r = await client.post("/v1/duels/random", json={}, headers=a.headers)
         assert r.json()["state"] == "waiting" and r.json()["timed_out"] is False
         # Adults with adults, teens with teens.
@@ -278,6 +307,8 @@ async def test_random_matching_and_quit_pause(
         assert r.json()["status"] == "abandoned"
         r = await client.post("/v1/duels/random", json={}, headers=b.headers)
         assert r.status_code == 409 and r.json()["code"] == "duel_paused"
+        until = datetime.fromisoformat(r.json()["until"])
+        assert timedelta(hours=23) < until - datetime.now(UTC) <= timedelta(hours=24)
         friend_ok = await client.post("/v1/duels", json={"solo": True}, headers=b.headers)
         assert friend_ok.status_code == 201
 

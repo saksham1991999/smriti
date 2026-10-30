@@ -13,14 +13,15 @@ clock and scores; clients only send answers and read state.
   have answered or its time is up; the server advances lazily on every request and in the
   ``duel_sweep`` job. A player away longer than ``duel.disconnect_grace_seconds`` keeps
   scoring 0; when both are away the duel expires with no result and no XP.
-- **Scoring:** a correct answer scores 1 plus a speed bonus of up to ``duel.speed_bonus_max``
-  (none while unset). XP is ``xp.duel_per_correct`` per correct answer plus ``xp.duel_win`` for
-  the winner (none while unset), credited once per duel as ``source = 'duel'``,
-  ``ref = 'duel:{id}'``. Answers faster than ``duel.min_answer_ms`` flag the player
-  (``flagged_fast``); the result stands but leagues and boards leave that XP out (A36).
+- **Scoring:** a correct answer scores 1 plus a speed bonus of up to ``duel.speed_bonus_max``.
+  XP is ``xp.duel_play`` for playing (at least one answer), ``xp.duel_win`` for the winner (not
+  in solo rounds) and ``xp.duel_per_correct`` per correct answer (off unless the owner sets it),
+  credited once per duel as ``source = 'duel'``, ``ref = 'duel:{id}'``. Answers faster than
+  ``duel.min_answer_ms`` flag the player (``flagged_fast``); the result stands but leagues and
+  boards leave that XP out (A36). The values are proposed defaults (R53) for the owner to confirm.
 - **Quits:** [Leave] in a live duel gives the other player the win; quitting ``duel.quit_limit``
-  random duels within ``duel.quit_window_hours`` pauses random matching for
-  ``duel.quit_cooldown_minutes``. Each of these is off while its flag is unset.
+  random duels within ``duel.quit_window_hours`` pauses random matching, for
+  ``duel.quit_cooldown_minutes`` when set, otherwise until the window clears.
 
 Every change is published on the duel's channel (:mod:`smriti_api.services.duel_channel`).
 """
@@ -44,7 +45,7 @@ from smriti_api.core.auth import AuthContext
 from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError, conflict, not_found
 from smriti_api.schemas import social as so
-from smriti_api.services import game_ops
+from smriti_api.services import game_ops, integrity
 from smriti_api.services import question_bank as bank
 from smriti_api.services import social_people as sp
 from smriti_api.services.answers import AnswerFormatError, OptionsAnswer, check_answer
@@ -74,6 +75,7 @@ class Settings:
     xp_correct: int
     xp_win: int
     min_ms: int | None
+    xp_play: int = 0
 
     def as_json(self) -> dict[str, Any]:
         return {
@@ -81,6 +83,7 @@ class Settings:
             "seconds": self.seconds,
             "bonus_max": self.bonus_max,
             "xp_correct": self.xp_correct,
+            "xp_play": self.xp_play,
             "xp_win": self.xp_win,
             "min_ms": self.min_ms,
         }
@@ -92,6 +95,7 @@ class Settings:
             seconds=int(raw["seconds"]),
             bonus_max=int(raw.get("bonus_max") or 0),
             xp_correct=int(raw.get("xp_correct") or 0),
+            xp_play=int(raw.get("xp_play") or 0),
             xp_win=int(raw.get("xp_win") or 0),
             min_ms=raw.get("min_ms"),
         )
@@ -112,6 +116,7 @@ def _settings(flags: Flags, *, young: bool) -> Settings:
         seconds=seconds,
         bonus_max=flags.int_or("duel.speed_bonus_max", 0),
         xp_correct=flags.int_or("xp.duel_per_correct", 0),
+        xp_play=flags.int_or("xp.duel_play", 0),
         xp_win=flags.int_or("xp.duel_win", 0),
         min_ms=flags.int_or_none("duel.min_answer_ms"),
     )
@@ -469,7 +474,7 @@ async def _paused_until(
     limit = flags.int_or_none("duel.quit_limit")
     window = flags.int_or_none("duel.quit_window_hours")
     cooldown = flags.int_or_none("duel.quit_cooldown_minutes")
-    if not (limit and window and cooldown):
+    if not (limit and window):
         return None
     quits = list(
         (
@@ -484,7 +489,13 @@ async def _paused_until(
     )
     if len(quits) < limit:
         return None
-    until: datetime = quits[0] + timedelta(minutes=cooldown)
+    # With a cooldown: that long after the last quit. Without one: until the quit that made the
+    # limit leaves the window (quits are newest first).
+    until: datetime = (
+        quits[0] + timedelta(minutes=cooldown)
+        if cooldown
+        else quits[limit - 1] + timedelta(hours=window)
+    )
     return until if until > now else None
 
 
@@ -805,8 +816,11 @@ async def _finish(
         ),
         {"n": now, "d": duel.id},
     )
+    answered = {a.user_id for a in await _answers(session, duel.id)}
     for uid, p in players.items():
         amount = int(p.correct) * settings.xp_correct
+        if uid in answered:  # play XP needs at least one answer, so an instant quit earns none
+            amount += settings.xp_play
         if uid == winner and duel.relation != "solo":
             amount += settings.xp_win
         await game_ops.add_xp(
@@ -956,6 +970,16 @@ async def answer(
             ),
             {"p": points, "c": int(correct), "f": fast, "d": duel_id, "u": m.user_id},
         )
+        if fast and not player.flagged_fast:
+            # The first too-fast answer in a duel goes to the anti-cheat review (TRD §10, A36).
+            await integrity.record_flag(
+                session,
+                m.user_id,
+                source="duel",
+                kind="fast_duel_answer",
+                event_ids=[duel_id],
+                detail={"threshold": settings.min_ms, "min_ms": time_ms},
+            )
         if duel.mode == "live":
             await _publish(
                 session, duel_id, "answered", {"role": _role(duel, m.user_id), "index": index}

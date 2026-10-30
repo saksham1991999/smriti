@@ -1,0 +1,407 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.ohms-law",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.ohms-law.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.ohms-law.core.ohms-law-def",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 12 Ω resistor is connected across 6 V. The current through it is",
+        "hi": "एक 12 Ω प्रतिरोधक 6 V के सिरों पर जुड़ा है। उसमें धारा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0.5 A",
+            "hi": "0.5 A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 A",
+            "hi": "2 A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "72 A",
+            "hi": "72 A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "18 A",
+            "hi": "18 A"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $V = IR$.",
+          "hi": "$V = IR$ का उपयोग करें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Resistance tells you how many volts are needed per ampere. Twelve volts per ampere, and only six volts are available, so half an ampere flows.",
+          "hi": "प्रतिरोध बताता है कि प्रति ऐम्पियर कितने वोल्ट चाहिए। बारह वोल्ट प्रति ऐम्पियर, और उपलब्ध केवल छह वोल्ट, इसलिए आधा ऐम्पियर बहता है।"
+        },
+        "steps": [
+          {
+            "en": "$I = \\frac{V}{R} = \\frac{6}{12} = 0.5$ A",
+            "hi": "$I = \\frac{V}{R} = \\frac{6}{12} = 0.5$ A"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is $R/V$, upside down.",
+              "hi": "यह $R/V$ है, उलटा।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This multiplies $V$ and $R$.",
+              "hi": "यह $V$ और $R$ का गुणा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Voltage and resistance are not added.",
+              "hi": "वोल्टता और प्रतिरोध जोड़े नहीं जाते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.ohms-law.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.ohms-law.core.ohms-law-def",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these does NOT obey Ohm's law?",
+        "hi": "इनमें से कौन ओम के नियम का पालन नहीं करता?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a metal wire at constant temperature",
+            "hi": "नियत ताप पर धातु का तार"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a diode",
+            "hi": "डायोड"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a nichrome wire at constant temperature",
+            "hi": "नियत ताप पर नाइक्रोम का तार"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a manganin wire at constant temperature",
+            "hi": "नियत ताप पर मैंगनिन का तार"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think about what happens when you reverse the battery.",
+          "hi": "सोचिए कि बैटरी उलटने पर क्या होता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "For a diode, turning the battery round does not just send the same current the other way. The relation depends on the sign of the voltage, so Ohm's law fails.",
+          "hi": "डायोड में बैटरी उलटने पर वही धारा बस उलटी दिशा में नहीं बहती। संबंध वोल्टता के चिह्न पर निर्भर है, इसलिए ओम का नियम विफल है।"
+        },
+        "steps": [
+          {
+            "en": "Ohm's law needs $V \\propto I$ with the same $R$ for both signs of $V$.",
+            "hi": "ओम के नियम के लिए $V \\propto I$ चाहिए, $R$ एक ही रहे, $V$ के दोनों चिह्नों पर।"
+          },
+          {
+            "en": "Metal and alloy wires at constant temperature satisfy it; a diode does not.",
+            "hi": "नियत ताप पर धातु और मिश्रातु के तार इसे मानते हैं; डायोड नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "At constant temperature a metal wire is ohmic.",
+              "hi": "नियत ताप पर धातु का तार ओमीय है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Nichrome is an alloy; at constant temperature it is ohmic.",
+              "hi": "नाइक्रोम मिश्रातु है; नियत ताप पर यह ओमीय है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Manganin is used in standard resistors precisely because it is ohmic and stable.",
+              "hi": "मैंगनिन मानक प्रतिरोधकों में इसीलिए उपयोग होता है कि यह ओमीय और स्थिर है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.ohms-law.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.ohms-law.core.ohms-law-def",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In a sample of GaAs the same current is measured at two different voltages. Which departure from Ohm's law is this?",
+        "hi": "GaAs के एक नमूने में एक ही धारा दो अलग-अलग वोल्टता पर मापी जाती है। यह ओम के नियम से कौन-सा विचलन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the relation between $V$ and $I$ is not unique",
+            "hi": "$V$ और $I$ का संबंध अद्वितीय नहीं है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the relation depends on the sign of $V$",
+            "hi": "संबंध $V$ के चिह्न पर निर्भर है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the resistance rises with temperature",
+            "hi": "प्रतिरोध ताप के साथ बढ़ता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the current is too small to measure",
+            "hi": "धारा मापने के लिए बहुत कम है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count how many voltages match one current.",
+          "hi": "गिनिए कि एक धारा से कितनी वोल्टता मेल खाती हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Ohm's law gives one voltage for each current. Here one current has two voltages, so the relation is not unique.",
+          "hi": "ओम का नियम हर धारा के लिए एक ही वोल्टता देता है। यहाँ एक धारा की दो वोल्टता हैं, इसलिए संबंध अद्वितीय नहीं है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT lists three deviations; more than one $V$ for the same $I$ is the non-unique case, shown by GaAs.",
+            "hi": "NCERT तीन विचलन बताती है; $V$ के एक से अधिक मान एक ही $I$ के लिए होना अद्वितीय न होने वाली स्थिति है, जो GaAs में दिखती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Sign dependence is the diode case: reversing $V$ changes the size of $I$.",
+              "hi": "चिह्न पर निर्भरता डायोड की स्थिति है: $V$ उलटने पर $I$ का परिमाण बदलता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Temperature is not part of this observation.",
+              "hi": "इस प्रेक्षण में ताप की बात नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The current was measured, so this is not the issue.",
+              "hi": "धारा मापी गई, तो यह समस्या नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.ohms-law.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.ohms-law.core.ohms-law-def",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A resistor carries 0.25 A when 5 V is applied. At the same temperature, the current on 7 V, in mA, is",
+        "hi": "5 V लगाने पर एक प्रतिरोधक में 0.25 A धारा है। उसी ताप पर 7 V पर धारा, mA में, है"
+      },
+      "answer": {
+        "value": 350,
+        "unit": "mA"
+      },
+      "hints": [
+        {
+          "en": "$R$ does not change at constant temperature.",
+          "hi": "नियत ताप पर $R$ नहीं बदलता।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the resistance once, then use it for the new voltage.",
+          "hi": "प्रतिरोध एक बार निकालिए, फिर नई वोल्टता पर उसका उपयोग कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$R = \\frac{5}{0.25} = 20$ Ω",
+            "hi": "$R = \\frac{5}{0.25} = 20$ Ω"
+          },
+          {
+            "en": "$I = \\frac{7}{20} = 0.35$ A $= 350$ mA",
+            "hi": "$I = \\frac{7}{20} = 0.35$ A $= 350$ mA"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Answering 0.35 forgets to convert to mA.",
+              "hi": "0.35 लिखना mA में बदलना भूल जाना है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

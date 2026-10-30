@@ -17,3 +17,12 @@ export function usePrices(): { trial: string; monthly: string; trialPaise: numbe
   const trialPaise = intro?.intro_price_paise ?? monthly.price_paise;
   return { trial: rupees(trialPaise, locale), monthly: rupees(monthly.price_paise, locale), trialPaise, monthlyPaise: monthly.price_paise };
 }
+
+/**
+ * `{ intro_price, price }` for catalogue strings that name a price (`{intro_price}`, `{price}`).
+ * While the server hasn't answered, both read "…" so no string shows a made-up amount.
+ */
+export function usePriceValues(): { intro_price: string; price: string } {
+  const prices = usePrices();
+  return { intro_price: prices?.trial ?? "…", price: prices?.monthly ?? "…" };
+}

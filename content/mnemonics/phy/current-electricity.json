@@ -1,0 +1,101 @@
+{
+  "schema": "mnemonics@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:mnemonic-maker",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "System mnemonics; each locale written separately. decodes_to checked against the cited NCERT section.",
+  "chapter": "phy.current-electricity",
+  "items": [
+    {
+      "id": "m.phy.current-electricity.temperature-dependence.core.resistance-temperature.1",
+      "concept": "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+      "technique": "acronym",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "No Mood Change: Nichrome, Manganin, Constantan. Warm them up and their resistivity hardly changes its mood.",
+      "decodes_to": [
+        "Nichrome",
+        "Manganin",
+        "Constantan"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 12 Physics §3.8: alloys with a very weak dependence of resistivity on temperature, used in wire-bound standard resistors."
+    },
+    {
+      "id": "m.phy.current-electricity.temperature-dependence.core.resistance-temperature.2",
+      "concept": "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+      "technique": "acronym",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "नमक: नि-क्रोम, मैं-गनिन, कां-सटेंटन। नमक की तरह गरम होने पर भी इनका स्वाद (प्रतिरोधकता) लगभग नहीं बदलता।",
+      "decodes_to": [
+        "निक्रोम",
+        "मैंगनिन",
+        "कांसटेंटन"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 12 भौतिकी §3.8: ताप पर बहुत कम निर्भर प्रतिरोधकता वाली मिश्रातुएँ।"
+    },
+    {
+      "id": "m.phy.current-electricity.resistor-combinations.core.resistors-series-parallel.1",
+      "concept": "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "S-S, P-P: Series shares the Same current; Parallel shares the same Potential difference.",
+      "decodes_to": [
+        "series: the same current through each resistor",
+        "parallel: the same potential difference across each resistor"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 10 Science §11.6.1 and §11.6.2 (resistors in series and in parallel)."
+    },
+    {
+      "id": "m.phy.current-electricity.resistor-combinations.core.resistors-series-parallel.2",
+      "concept": "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "श्रेणी में धारा एक, पार्श्व में वोल्टता एक।",
+      "decodes_to": [
+        "श्रेणीक्रम: हर प्रतिरोधक से एक ही धारा",
+        "पार्श्वक्रम: हर प्रतिरोधक के सिरों पर एक ही विभवांतर"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 10 विज्ञान §11.6.1 और §11.6.2 (प्रतिरोधकों का श्रेणी और पार्श्व संयोजन)।"
+    }
+  ]
+}

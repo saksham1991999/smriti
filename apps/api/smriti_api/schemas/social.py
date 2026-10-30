@@ -22,6 +22,8 @@ GateState = Literal[
     "minor_no_consent",
     "consent_pending",
     "consent_revoked",
+    # Parent mode (SET-14): a guardian switched social off for this child.
+    "parent_off",
 ]
 Feature = Literal[
     "friends",

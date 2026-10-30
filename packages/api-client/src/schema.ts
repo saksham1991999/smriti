@@ -326,6 +326,108 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/billing/family": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The family plan: seats, members and open invites (the payer), or membership */
+    get: operations["family_v1_billing_family_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A code an adult uses to join (shown once; only its hash is kept) */
+    post: operations["family_invite_v1_billing_family_invites_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites/{code}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** An adult joins a family plan with a code (children join through Parent mode) */
+    post: operations["family_accept_v1_billing_family_invites__code__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites/{invite_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Withdraw an unused invite */
+    delete: operations["family_revoke_invite_v1_billing_family_invites__invite_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/members": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The payer adds a child they are the linked guardian of */
+    post: operations["family_add_child_v1_billing_family_members_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/members/{user_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** The payer removes someone, or a member leaves */
+    delete: operations["family_remove_v1_billing_family_members__user_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/billing/intro-eligibility": {
     parameters: {
       query?: never;
@@ -679,6 +781,23 @@ export interface paths {
     put?: never;
     /** Dev stand-in for Supabase's refresh_token grant */
     post: operations["refresh_v1_dev_auth_refresh_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/dev/auth/verify-otp": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Dev stand-in for verifyOtp with a token hash (a managed child's session) */
+    post: operations["verify_otp_v1_dev_auth_verify_otp_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1063,6 +1182,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/feynman/attempts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Explain a concept back; graded against its key points (AI-10, AI-11) */
+    post: operations["feynman_attempt_v1_feynman_attempts_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/feynman/concepts/{concept_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Earlier explanations of a concept, newest first */
+    get: operations["feynman_history_v1_feynman_concepts__concept_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/friends": {
     parameters: {
       query?: never;
@@ -1233,6 +1386,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/children": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AUTH-24/26: create a managed child (adopting this device's guest, or a new account) */
+    post: operations["create_child_v1_guardian_children_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/children/{child_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete a managed child: erasure after the grace period, devices signed out */
+    delete: operations["delete_child_v1_guardian_children__child_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/children/{child_id}/session": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A one-time token hash for a child session on this device (sign-in in the last 10 min) */
+    post: operations["child_session_v1_guardian_children__child_id__session_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/consent": {
     parameters: {
       query?: never;
@@ -1335,6 +1539,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/dashboard": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SET-14 child cards: pet, minutes this week, streak, practice line, Needs you */
+    get: operations["dashboard_v1_guardian_dashboard_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/learners": {
     parameters: {
       query?: never;
@@ -1346,6 +1567,229 @@ export interface paths {
     get: operations["learners_v1_guardian_learners_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/controls": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SET-14 and SET-16 settings for one child */
+    get: operations["get_controls_v1_guardian_learners__learner_id__controls_get"];
+    /** Set time limits, allowed hours, tutor, social, Picture rhymes and the weekly report */
+    put: operations["put_controls_v1_guardian_learners__learner_id__controls_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/friends": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The child's friends, as the child sees them (tutor-social B13) */
+    get: operations["friends_v1_guardian_learners__learner_id__friends_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/friends/{friend_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Remove a friend for the child (silent, like the child's own Remove) */
+    delete: operations["remove_friend_v1_guardian_learners__learner_id__friends__friend_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PAY-17 and SET-14: the child's plan, as the guardian who manages it sees it */
+    get: operations["child_pro_v1_guardian_learners__learner_id__pro_get"];
+    put?: never;
+    /** PAY-17 [Continue to pay]: a web subscription on the child's account, payer guardian */
+    post: operations["child_pro_start_v1_guardian_learners__learner_id__pro_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Cancel the plan the guardian pays for, at the end of the paid period */
+    post: operations["child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/pro/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout signature for the child's plan; Pro follows the webhook */
+    post: operations["child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners/{learner_id}/report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SET-15 weekly report (counts and topic names only); week is any day in that week */
+    get: operations["report_v1_guardian_learners__learner_id__report_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/time-requests/{request_id}/decision": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** SET-14 [Allow 15 min] or [Not today] on a child's SET-19 ask */
+    post: operations["decide_time_v1_guardian_time_requests__request_id__decision_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/insights/calibration": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Confidence against correctness, from your own answers */
+    get: operations["calibration_v1_insights_calibration_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/insights/sleep-review": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Tonight's sleep review: when to remind and the hardest due cards (adults, Pro) */
+    get: operations["sleep_review_v1_insights_sleep_review_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/insights/weak-areas": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Topics whose cards are predicted to drop below your target recall soon */
+    get: operations["weak_areas_v1_insights_weak_areas_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/integrity/app-attest/keys": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Register this install's App Attest key (once per key) */
+    post: operations["register_key_v1_integrity_app_attest_keys_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/integrity/challenge": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A one-time nonce for Play Integrity or App Attest */
+    post: operations["challenge_v1_integrity_challenge_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1437,6 +1881,75 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/live/mocks/{mock_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The live mock room (MOCK-03): status, server time and your deadline if you start now */
+    get: operations["room_v1_live_mocks__mock_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Server-Sent Events for channel mock:{id} (start, clock, closed, results) */
+    get: operations["events_v1_live_mocks__mock_id__events_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}/leaderboard": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Frozen ranks after results (MOCK-24, R31) */
+    get: operations["leaderboard_v1_live_mocks__mock_id__leaderboard_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}/registration": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Register for a live mock (Pro); the reminder comes when the room opens */
+    post: operations["register_v1_live_mocks__mock_id__registration_post"];
+    /** Cancel a live mock registration and its reminder */
+    delete: operations["unregister_v1_live_mocks__mock_id__registration_delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/me": {
     parameters: {
       query?: never;
@@ -1472,6 +1985,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/me/limits": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The child's own limits for today, cached by the device to enforce SET-16 offline */
+    get: operations["my_limits_v1_me_limits_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/me/summary": {
     parameters: {
       query?: never;
@@ -1483,6 +2013,23 @@ export interface paths {
     get: operations["get_summary_v1_me_summary_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/me/time-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** SET-19 [Ask for 15 more minutes]: pushes every linked guardian */
+    post: operations["ask_for_time_v1_me_time_requests_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1688,6 +2235,23 @@ export interface paths {
     get: operations["get_hub_v1_practice_hub_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/interleaved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start a mixed drill across chapters or subjects you have learned (practice §5.3) */
+    post: operations["interleaved_v1_practice_interleaved_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -2291,6 +2855,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/speech/dictation": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Speech to text for voice answers and spoken explanations (audio is not stored) */
+    post: operations["dictation_v1_speech_dictation_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/speech/read-aloud": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Read a tutor answer aloud (Deepgram TTS, cached); free within a daily cap */
+    post: operations["read_aloud_v1_speech_read_aloud_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/squads": {
     parameters: {
       query?: never;
@@ -2457,7 +3055,8 @@ export interface paths {
     put?: never;
     /**
      * Upload a batch of outbox events
-     * @description Idempotent by ``event_id``: a repeated event is accepted again with no effect.
+     * @description Idempotent by ``event_id``: a repeated event is accepted again with no effect. A batch
+     *     with XP-heavy events needs a device check when ``security.attestation_required`` is on.
      */
     post: operations["post_events_v1_sync_events_post"];
     delete?: never;
@@ -2607,6 +3206,92 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/voice/quota": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Voice time left today (AI-13) */
+    get: operations["voice_quota_v1_voice_quota_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Voice history (AI-09) */
+    get: operations["list_voice_sessions_v1_voice_sessions_get"];
+    put?: never;
+    /** Start (or reconnect) a voice tutor session: a single-use Gemini Live token */
+    post: operations["create_voice_session_v1_voice_sessions_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions/{session_id}/end": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** End the session and upload its transcript (AI-15) */
+    post: operations["end_voice_session_v1_voice_sessions__session_id__end_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions/{session_id}/tools": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Run a tool the voice tutor called; send the result back to Gemini Live */
+    post: operations["voice_tool_v1_voice_sessions__session_id__tools_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions/{session_id}/transcript": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The stored transcript (AI-15 View transcript) */
+    get: operations["voice_transcript_v1_voice_sessions__session_id__transcript_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/webhooks/razorpay": {
     parameters: {
       query?: never;
@@ -2744,6 +3429,28 @@ export interface components {
       question_id: string;
       /** Time Ms */
       time_ms: number;
+    };
+    /** AppAttestKeyIn */
+    AppAttestKeyIn: {
+      /**
+       * Attestation
+       * @description The attestation object from attestKey, base64
+       */
+      attestation: string;
+      /** Key Id */
+      key_id: string;
+      /** Nonce */
+      nonce: string;
+    };
+    /** AppAttestKeyOut */
+    AppAttestKeyOut: {
+      /**
+       * Environment
+       * @enum {string}
+       */
+      environment: "production" | "development";
+      /** Key Id */
+      key_id: string;
     };
     /** AppVersionInfo */
     AppVersionInfo: {
@@ -3109,6 +3816,62 @@ export interface components {
       /** Url */
       url: string | null;
     };
+    /** CalibrationLevel */
+    CalibrationLevel: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Answers */
+      answers: number;
+      /** Confidence */
+      confidence: string;
+      /** Correct */
+      correct: number;
+    };
+    /**
+     * CalibrationOut
+     * @description Confidence against correctness from real answers only (practice and mocks).
+     */
+    CalibrationOut: {
+      /** By Subject */
+      by_subject?: {
+        [key: string]: unknown;
+      }[];
+      /** Levels */
+      levels?: components["schemas"]["CalibrationLevel"][];
+      /** Needed */
+      needed: number | null;
+      /**
+       * Overconfident
+       * @description Share of 'sure' answers that were wrong
+       */
+      overconfident?: number | null;
+      /** Reason */
+      reason?: string | null;
+      /** Shown */
+      shown: boolean;
+      /** Tagged */
+      tagged: number;
+      /**
+       * Underconfident
+       * @description Share of 'guess' answers that were right
+       */
+      underconfident?: number | null;
+    };
+    /** ChallengeOut */
+    ChallengeOut: {
+      /** Expires In S */
+      expires_in_s: number;
+      /**
+       * Headers
+       * @description Headers a sensitive call carries: the token (or App Attest assertion, base64), this nonce, and on iOS the App Attest key id
+       */
+      headers: string[];
+      /**
+       * Nonce
+       * @description One-time value to bind into Play Integrity or App Attest
+       */
+      nonce: string;
+    };
     /** ChapterOut */
     ChapterOut: {
       /** Id */
@@ -3140,6 +3903,142 @@ export interface components {
       response: {
         [key: string]: unknown;
       } | null;
+    };
+    /**
+     * ChildCard
+     * @description SET-14: pet, name, this week's minutes, streak, the practice line and "Needs you".
+     */
+    ChildCard: {
+      /** Age Band */
+      age_band: string | null;
+      /**
+       * Consent Pending
+       * @default false
+       */
+      consent_pending: boolean;
+      /** First Name */
+      first_name: string | null;
+      /**
+       * Is Pro
+       * @default false
+       */
+      is_pro: boolean;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "managed" | "consent";
+      last_mock?: components["schemas"]["LastMock"] | null;
+      /** Needs You */
+      needs_you: boolean;
+      pet?: components["schemas"]["PetOut"] | null;
+      /** Practice Questions */
+      practice_questions: number;
+      /** Streak */
+      streak: number;
+      /** Time Requests */
+      time_requests?: components["schemas"]["TimeRequestOut"][];
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /** Week Minutes */
+      week_minutes: number;
+    };
+    /**
+     * ChildCreate
+     * @description AUTH-24/AUTH-26: the parent creates a managed child, adopting the guest that did onboarding
+     *     on this device (``adopt_guest`` is that guest's access token) or making a new account.
+     */
+    ChildCreate: {
+      /** Adopt Guest */
+      adopt_guest?: string | null;
+      /**
+       * Age Band
+       * @enum {string}
+       */
+      age_band: "u10" | "10_12";
+      /**
+       * Declaration
+       * @constant
+       */
+      declaration: true;
+      /** First Name */
+      first_name: string;
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /** Notice Version */
+      notice_version: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /** ChildDeletionOut */
+    ChildDeletionOut: {
+      /**
+       * Scheduled For
+       * Format: date-time
+       */
+      scheduled_for: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
+    /**
+     * ChildProRequest
+     * @description PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
+     *     the parent's own and adds the child as a member instead).
+     */
+    ChildProRequest: {
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+    };
+    /**
+     * ChildSessionOut
+     * @description Exchanged once, within ``expires_in`` seconds, with supabase-js
+     *     ``verifyOtp({ token_hash, type: 'email' })`` (locally ``POST /v1/dev/auth/verify-otp``).
+     */
+    ChildSessionOut: {
+      /** Expires In */
+      expires_in: number;
+      /** Token Hash */
+      token_hash: string;
+      /**
+       * Type
+       * @default email
+       * @constant
+       */
+      type: "email";
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
+    /** ComingUp */
+    ComingUp: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "mock";
+      /** Mock Id */
+      mock_id: string;
+      /**
+       * Starts At
+       * Format: date-time
+       */
+      starts_at: string;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
     };
     /** ConceptRow */
     ConceptRow: {
@@ -3447,6 +4346,104 @@ export interface components {
       /** Topic Id */
       topic_id?: string | null;
     };
+    /**
+     * Controls
+     * @description SET-14 and SET-16 for one child. ``weekly_report`` is the calling guardian's own switch.
+     */
+    Controls: {
+      /** Allowed From */
+      allowed_from?: string | null;
+      /** Allowed To */
+      allowed_to?: string | null;
+      /**
+       * Ask Before Switching
+       * @default false
+       */
+      ask_before_switching: boolean;
+      /**
+       * Break Reminders
+       * @default false
+       */
+      break_reminders: boolean;
+      /** Daily Limit Min */
+      daily_limit_min?: (15 | 30 | 45 | 60 | 90 | 120) | null;
+      /**
+       * Picture Rhymes
+       * @default false
+       */
+      picture_rhymes: boolean;
+      /**
+       * Social Enabled
+       * @default true
+       */
+      social_enabled: boolean;
+      /**
+       * Tutor Button
+       * @default false
+       */
+      tutor_button: boolean;
+      /**
+       * Tutor Enabled
+       * @default true
+       */
+      tutor_enabled: boolean;
+      /**
+       * Weekly Report
+       * @default true
+       */
+      weekly_report: boolean;
+    };
+    /** ControlsOut */
+    ControlsOut: {
+      /** Allowed From */
+      allowed_from?: string | null;
+      /** Allowed To */
+      allowed_to?: string | null;
+      /**
+       * Ask Before Switching
+       * @default false
+       */
+      ask_before_switching: boolean;
+      /**
+       * Break Reminders
+       * @default false
+       */
+      break_reminders: boolean;
+      /** Daily Limit Min */
+      daily_limit_min?: (15 | 30 | 45 | 60 | 90 | 120) | null;
+      /**
+       * Learner User Id
+       * Format: uuid
+       */
+      learner_user_id: string;
+      /**
+       * Picture Rhymes
+       * @default false
+       */
+      picture_rhymes: boolean;
+      /**
+       * Social Enabled
+       * @default true
+       */
+      social_enabled: boolean;
+      /**
+       * Tutor Button
+       * @default false
+       */
+      tutor_button: boolean;
+      /**
+       * Tutor Enabled
+       * @default true
+       */
+      tutor_enabled: boolean;
+      /** Updated At */
+      updated_at?: string | null;
+      /**
+       * Weekly Report
+       * @default true
+       */
+      weekly_report: boolean;
+    };
     /** CopiedCard */
     CopiedCard: {
       /** Back */
@@ -3573,6 +4570,26 @@ export interface components {
       /** Rows */
       rows: components["schemas"]["LeaderboardRow"][];
       you: components["schemas"]["LeaderboardRow"] | null;
+    };
+    /** Dashboard */
+    Dashboard: {
+      /** Learners */
+      learners: components["schemas"]["ChildCard"][];
+    };
+    /** DayMinutes */
+    DayMinutes: {
+      /**
+       * Day
+       * Format: date
+       */
+      day: string;
+      /** Minutes */
+      minutes: number;
+    };
+    /** Decision */
+    Decision: {
+      /** Allow */
+      allow: boolean;
     };
     /**
      * DeckCopy
@@ -3722,6 +4739,25 @@ export interface components {
       id: string;
       /** Is Anonymous */
       is_anonymous: boolean;
+    };
+    /** DevVerifyOtpRequest */
+    DevVerifyOtpRequest: {
+      /** Token Hash */
+      token_hash: string;
+      /**
+       * Type
+       * @default email
+       * @constant
+       */
+      type: "email";
+    };
+    /** DictationOut */
+    DictationOut: {
+      /** Confidence */
+      confidence: number | null;
+      quota: components["schemas"]["QuotaOut"];
+      /** Text */
+      text: string;
     };
     /** DrillPreview */
     DrillPreview: {
@@ -4070,7 +5106,7 @@ export interface components {
       /** Pro Until */
       pro_until: string | null;
       /** Source */
-      source: ("razorpay" | "play" | "app_store" | "promo") | null;
+      source: ("razorpay" | "play" | "app_store" | "promo" | "family") | null;
       /** Status */
       status:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
@@ -4098,7 +5134,7 @@ export interface components {
       /** Pro Until */
       pro_until: string | null;
       /** Source */
-      source?: ("razorpay" | "play" | "app_store" | "promo") | null;
+      source?: ("razorpay" | "play" | "app_store" | "promo" | "family") | null;
       /** Status */
       status?:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
@@ -4189,6 +5225,74 @@ export interface components {
       /** Url */
       url: string | null;
     };
+    /** FamilyAddChild */
+    FamilyAddChild: {
+      /**
+       * Learner Id
+       * Format: uuid
+       */
+      learner_id: string;
+    };
+    /** FamilyInviteOut */
+    FamilyInviteOut: {
+      /** Code */
+      code?: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+    };
+    /** FamilyMemberOut */
+    FamilyMemberOut: {
+      /** First Name */
+      first_name: string | null;
+      /**
+       * Joined At
+       * Format: date-time
+       */
+      joined_at: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /**
+       * Via
+       * @enum {string}
+       */
+      via: "guardian_link" | "invite";
+    };
+    /**
+     * FamilyOut
+     * @description The payer's view: seats (people besides the payer), members and open invites. A member
+     *     sees ``role = member`` and the seat counts only.
+     */
+    FamilyOut: {
+      /**
+       * Group Id
+       * Format: uuid
+       */
+      group_id: string;
+      /** Invites */
+      invites?: components["schemas"]["FamilyInviteOut"][];
+      /** Members */
+      members?: components["schemas"]["FamilyMemberOut"][];
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "owner" | "member";
+      /** Seats */
+      seats: number;
+      /** Used */
+      used: number;
+    };
     /** FeedbackIn */
     FeedbackIn: {
       /**
@@ -4249,6 +5353,77 @@ export interface components {
       };
       /** Ref */
       ref: string | null;
+    };
+    /** FeynmanIn */
+    FeynmanIn: {
+      /**
+       * Client Attempt Id
+       * Format: uuid
+       */
+      client_attempt_id: string;
+      /** Concept Id */
+      concept_id: string;
+      /** Explanation */
+      explanation: string;
+      /**
+       * Follow Up Of
+       * @description The score this answers a follow-up question of
+       */
+      follow_up_of?: string | null;
+      /**
+       * Input Mode
+       * @default text
+       * @enum {string}
+       */
+      input_mode: "text" | "voice";
+    };
+    /**
+     * FeynmanOut
+     * @description AI-11: three meters (0-100), the key points with their status, follow-ups, and the last
+     *     score for this concept when one exists (never a made-up comparison).
+     */
+    FeynmanOut: {
+      /** Accuracy */
+      accuracy: number;
+      /** Attempt No */
+      attempt_no: number;
+      /** Clarity */
+      clarity: number;
+      /** Completeness */
+      completeness: number;
+      /** Concept Id */
+      concept_id: string;
+      /** Follow Ups */
+      follow_ups: string[];
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Key Points */
+      key_points: components["schemas"]["KeyPointOut"][];
+      /** Mastery Delta */
+      mastery_delta: number;
+      /** Previous */
+      previous: {
+        [key: string]: number;
+      } | null;
+      quota: components["schemas"]["QuotaOut"];
+      /** Safety */
+      safety?: {
+        [key: string]: unknown;
+      } | null;
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /**
+       * Status
+       * @default graded
+       * @enum {string}
+       */
+      status: "graded" | "crisis" | "refused";
     };
     /** FixNext */
     FixNext: {
@@ -4323,7 +5498,8 @@ export interface components {
         | "u13_no_scope"
         | "minor_no_consent"
         | "consent_pending"
-        | "consent_revoked";
+        | "consent_revoked"
+        | "parent_off";
     };
     /** GemLedgerEntry */
     GemLedgerEntry: {
@@ -4437,6 +5613,23 @@ export interface components {
       /** Unread */
       unread: boolean;
     };
+    /** InterleavedIn */
+    InterleavedIn: {
+      /**
+       * Count
+       * @default 10
+       */
+      count: number;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Group By
+       * @default chapter
+       */
+      group_by: string;
+      /** Session Id */
+      session_id?: string | null;
+    };
     /** IntroEligibilityOut */
     IntroEligibilityOut: {
       /**
@@ -4477,6 +5670,42 @@ export interface components {
        * @enum {string}
        */
       state: "ok" | "self" | "already_friends" | "invalid";
+    };
+    /** KeyPointOut */
+    KeyPointOut: {
+      /** Index */
+      index: number;
+      /** Note */
+      note?: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "covered" | "missing" | "misconception";
+      /** Text */
+      text: {
+        [key: string]: string;
+      };
+    };
+    /** LastMock */
+    LastMock: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Score */
+      score: number | null;
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Title */
+      title?: {
+        [key: string]: string;
+      } | null;
     };
     /** Leaderboard */
     Leaderboard: {
@@ -4654,6 +5883,127 @@ export interface components {
       profile: components["schemas"]["ProfileState"];
       /** Show Shared Phone Check */
       show_shared_phone_check: boolean;
+    };
+    /** LiveLeaderboard */
+    LiveLeaderboard: {
+      /** Mock Id */
+      mock_id: string;
+      /** Published */
+      published: boolean;
+      /** Ranked */
+      ranked: number;
+      /** Reason */
+      reason?: ("results_pending" | "threshold_unset" | "below_threshold") | null;
+      /** Rows */
+      rows: components["schemas"]["LiveLeaderboardRow"][];
+      you: components["schemas"]["LiveLeaderboardRow"] | null;
+    };
+    /** LiveLeaderboardRow */
+    LiveLeaderboardRow: {
+      /** Avatar */
+      avatar: string | null;
+      /** Is You */
+      is_you: boolean;
+      /**
+       * Name
+       * @description Adults: display name. Minors: auto nickname (R31)
+       */
+      name: string | null;
+      /** Percentile */
+      percentile: number | null;
+      /** Rank */
+      rank: number;
+      /** Score */
+      score: number;
+    };
+    /**
+     * LiveRoom
+     * @description MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset.
+     */
+    LiveRoom: {
+      /** Attempt Id */
+      attempt_id: string | null;
+      /** Attempt Status */
+      attempt_status: string | null;
+      /** Can Start */
+      can_start: boolean;
+      /**
+       * Channel
+       * @description Supabase Realtime channel (start, clock, results)
+       */
+      channel: string;
+      /** Deadline If Started Now */
+      deadline_if_started_now: string | null;
+      /** Duration S */
+      duration_s: number | null;
+      /**
+       * Events Url
+       * @description Server-Sent Events fallback for the same events
+       */
+      events_url: string;
+      /**
+       * Full Duration Until
+       * @description Start by this time for the full duration; later starts end at window_end
+       */
+      full_duration_until: string | null;
+      /** Mock Id */
+      mock_id: string;
+      /** Ranks Published */
+      ranks_published: boolean;
+      /** Registered */
+      registered: boolean;
+      /** Registrations */
+      registrations: number;
+      /** Results At */
+      results_at: string | null;
+      /**
+       * Room Opens At
+       * Format: date-time
+       * @description window_start minus live.room_lead_min
+       */
+      room_opens_at: string;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "scheduled" | "room_open" | "live" | "closed" | "results";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /**
+       * Window End
+       * Format: date-time
+       */
+      window_end: string;
+      /**
+       * Window Start
+       * Format: date-time
+       */
+      window_start: string;
+    };
+    /** ManagedChildOut */
+    ManagedChildOut: {
+      /** Adopted */
+      adopted: boolean;
+      /**
+       * Age Band
+       * @enum {string}
+       */
+      age_band: "u10" | "10_12";
+      consent: components["schemas"]["ConsentOut"];
+      /** First Name */
+      first_name: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
     };
     /** ManifestResponse */
     ManifestResponse: {
@@ -5095,6 +6445,28 @@ export interface components {
        */
       started_at: string;
     };
+    /** MockScore */
+    MockScore: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Percentile */
+      percentile: number | null;
+      /** Score */
+      score: number | null;
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Title */
+      title?: {
+        [key: string]: string;
+      } | null;
+    };
     /** MockSection */
     MockSection: {
       /** Attempt Any */
@@ -5145,6 +6517,75 @@ export interface components {
        * @enum {string}
        */
       state: "not_required" | "required" | "pending" | "granted" | "declined" | "revoked";
+    };
+    /**
+     * MyLimits
+     * @description What the child's device caches to enforce SET-16 offline and to show SET-19.
+     */
+    MyLimits: {
+      /** Allowed From */
+      allowed_from?: string | null;
+      /** Allowed To */
+      allowed_to?: string | null;
+      /**
+       * Ask Before Switching
+       * @default false
+       */
+      ask_before_switching: boolean;
+      /**
+       * Break Reminders
+       * @default false
+       */
+      break_reminders: boolean;
+      /** Controlled */
+      controlled: boolean;
+      /** Daily Limit Min */
+      daily_limit_min?: (15 | 30 | 45 | 60 | 90 | 120) | null;
+      /**
+       * Extra Minutes
+       * @default 0
+       */
+      extra_minutes: number;
+      /** Limit Today */
+      limit_today?: number | null;
+      /**
+       * Minutes Today
+       * @default 0
+       */
+      minutes_today: number;
+      /**
+       * Picture Rhymes
+       * @default false
+       */
+      picture_rhymes: boolean;
+      /** Remaining Minutes */
+      remaining_minutes?: number | null;
+      request?: components["schemas"]["TimeRequestOut"] | null;
+      /**
+       * Social Enabled
+       * @default true
+       */
+      social_enabled: boolean;
+      /**
+       * Today
+       * Format: date
+       */
+      today: string;
+      /**
+       * Tutor Button
+       * @default false
+       */
+      tutor_button: boolean;
+      /**
+       * Tutor Enabled
+       * @default true
+       */
+      tutor_enabled: boolean;
+      /**
+       * Within Hours
+       * @default true
+       */
+      within_hours: boolean;
     };
     /**
      * Name
@@ -5358,6 +6799,15 @@ export interface components {
       /** Pairs */
       pairs: components["schemas"]["PairIn"][];
     };
+    /**
+     * ParentFriend
+     * @description A friend as the child sees them (B13: the parent sees and can remove friends).
+     */
+    ParentFriend: {
+      person: components["schemas"]["Person"];
+      /** Since */
+      since: string | null;
+    };
     /** PauseIn */
     PauseIn: {
       /** At */
@@ -5408,6 +6858,15 @@ export interface components {
       action: "pet" | "feed" | "play";
       /** Item Id */
       item_id?: string | null;
+    };
+    /** PetOut */
+    PetOut: {
+      /** Name */
+      name: string;
+      /** Species */
+      species: string;
+      /** State */
+      state: string;
     };
     /** PetResponse */
     PetResponse: {
@@ -5531,6 +6990,12 @@ export interface components {
        */
       period: "month" | "year";
       /**
+       * Plan
+       * @default individual
+       * @enum {string}
+       */
+      plan: "individual" | "family";
+      /**
        * Platform
        * @enum {string}
        */
@@ -5539,6 +7004,8 @@ export interface components {
       price_paise: number;
       /** Product Id */
       product_id: string;
+      /** Seats */
+      seats?: number | null;
       /** Store Product Id */
       store_product_id: string;
       /** Variant Id */
@@ -5841,6 +7308,12 @@ export interface components {
        * @enum {string}
        */
       payer: "self" | "guardian_declared";
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly" | "family_monthly" | "family_yearly";
     };
     /** RazorpayVerifyRequest */
     RazorpayVerifyRequest: {
@@ -5863,6 +7336,41 @@ export interface components {
        * @enum {string}
        */
       reaction: "clap" | "star" | "strong" | "smile";
+    };
+    /** ReadAloudIn */
+    ReadAloudIn: {
+      /**
+       * Locale
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /** Text */
+      text: string;
+    };
+    /** ReadAloudOut */
+    ReadAloudOut: {
+      /** Cached */
+      cached: boolean;
+      /** Mime */
+      mime: string;
+      quota: components["schemas"]["QuotaOut"];
+      /**
+       * Url
+       * @description Signed, short-lived link to the audio
+       */
+      url: string;
+    };
+    /** Registration */
+    Registration: {
+      /** Mock Id */
+      mock_id: string;
+      /** Registered */
+      registered: boolean;
+      /**
+       * Reminder At
+       * @description When the mock_reminder push is due (the room opening)
+       */
+      reminder_at: string | null;
     };
     /** RejectedEvent */
     RejectedEvent: {
@@ -6263,6 +7771,41 @@ export interface components {
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
     };
+    /** SleepCard */
+    SleepCard: {
+      /** Card Ref */
+      card_ref: string;
+      /** Difficulty */
+      difficulty: number;
+      /**
+       * Due At
+       * Format: date-time
+       */
+      due_at: string;
+    };
+    /**
+     * SleepReviewOut
+     * @description Tonight's sleep review for the app to schedule as a local notification.
+     */
+    SleepReviewOut: {
+      /** Bedtime */
+      bedtime?: string | null;
+      /** Cards */
+      cards?: components["schemas"]["SleepCard"][];
+      /** Confidence */
+      confidence?: number | null;
+      /** Eligible */
+      eligible: boolean;
+      /** Notify At */
+      notify_at?: string | null;
+      /** Reason */
+      reason?: string | null;
+      /**
+       * Source
+       * @description estimate or fixed (a teen's own time)
+       */
+      source?: string | null;
+    };
     /**
      * SessionCreate
      * @description PRC-03's input contract (practice §5.3): exactly one of ``concepts``, ``topic_id``,
@@ -6550,6 +8093,7 @@ export interface components {
             | "threshold_unset"
             | "below_threshold"
             | "results_pending"
+            | "outside_window"
           )
         | null;
       /** Shown */
@@ -6615,6 +8159,21 @@ export interface components {
       time_ms: number;
       /** Wrong */
       wrong: number;
+    };
+    /** SubjectWeek */
+    SubjectWeek: {
+      /** Color Token */
+      color_token: string;
+      /** Name */
+      name: {
+        [key: string]: string;
+      };
+      /** Subject Id */
+      subject_id: string;
+      /** Topics */
+      topics: {
+        [key: string]: string;
+      }[];
     };
     /** SubscriptionDetailsOut */
     SubscriptionDetailsOut: {
@@ -6777,6 +8336,38 @@ export interface components {
       /** Skipped Time Ms */
       skipped_time_ms: number;
     };
+    /** TimeRequestOut */
+    TimeRequestOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /** Decided At */
+      decided_at?: string | null;
+      /**
+       * For Date
+       * Format: date
+       */
+      for_date: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Learner User Id
+       * Format: uuid
+       */
+      learner_user_id: string;
+      /** Minutes */
+      minutes: number;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "allowed" | "declined" | "expired";
+    };
     /** TimeResponse */
     TimeResponse: {
       /**
@@ -6806,6 +8397,48 @@ export interface components {
       qualified: boolean;
       /** Reviews To Qualify */
       reviews_to_qualify: number;
+    };
+    /** ToolCallIn */
+    ToolCallIn: {
+      /** Args */
+      args?: {
+        [key: string]: unknown;
+      };
+      /** Call Id */
+      call_id: string;
+      /**
+       * Name
+       * @enum {string}
+       */
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+    };
+    /** ToolCallOut */
+    ToolCallOut: {
+      /** Call Id */
+      call_id: string;
+      /**
+       * Name
+       * @enum {string}
+       */
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+      /**
+       * Result
+       * @description Send back to Gemini Live as the function response
+       */
+      result: {
+        [key: string]: unknown;
+      };
+    };
+    /** ToolDeclaration */
+    ToolDeclaration: {
+      /** Description */
+      description: string;
+      /** Name */
+      name: string;
+      /** Parameters */
+      parameters: {
+        [key: string]: unknown;
+      };
     };
     /** TopicBrief */
     TopicBrief: {
@@ -6877,6 +8510,21 @@ export interface components {
       topic_id: string;
       /** Wrong */
       wrong: number;
+    };
+    /** TranscriptTurn */
+    TranscriptTurn: {
+      /**
+       * At Ms
+       * @default 0
+       */
+      at_ms: number;
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "student" | "tutor";
+      /** Text */
+      text: string;
     };
     /** TutorSession */
     TutorSession: {
@@ -6955,6 +8603,164 @@ export interface components {
     } & {
       [key: string]: unknown;
     };
+    /**
+     * VoiceQuota
+     * @description AI-13 shows the remaining daily time. ``available`` is false with a ``reason`` when voice
+     *     can't start for this student right now.
+     */
+    VoiceQuota: {
+      /** Available */
+      available: boolean;
+      /** Background Grace Seconds */
+      background_grace_seconds: number | null;
+      /** Daily Seconds */
+      daily_seconds: number | null;
+      /** Reason */
+      reason?: string | null;
+      /** Reconnect Seconds */
+      reconnect_seconds: number | null;
+      /** Remaining Seconds */
+      remaining_seconds: number | null;
+      /**
+       * Resets At
+       * Format: date-time
+       */
+      resets_at: string;
+      /** Session Max Seconds */
+      session_max_seconds: number | null;
+      /** Used Seconds */
+      used_seconds: number;
+    };
+    /** VoiceSessionCreate */
+    VoiceSessionCreate: {
+      /**
+       * Client Session Id
+       * Format: uuid
+       * @description Client UUID; asking again with the same id mints a fresh token (reconnect)
+       */
+      client_session_id: string;
+      /** Context Ref */
+      context_ref?: string | null;
+      /** Exam */
+      exam?: string | null;
+    };
+    /** VoiceSessionEnd */
+    VoiceSessionEnd: {
+      /**
+       * End Reason
+       * @default user
+       * @enum {string}
+       */
+      end_reason: "user" | "session_cap" | "daily_cap" | "network" | "background" | "phone_call";
+      /**
+       * Flashcards Made
+       * @default 0
+       */
+      flashcards_made: number;
+      /** Seconds */
+      seconds: number;
+      /** Turns */
+      turns?: components["schemas"]["TranscriptTurn"][];
+    };
+    /** VoiceSessionOut */
+    VoiceSessionOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Locale */
+      locale: string;
+      /**
+       * Max Seconds
+       * @description This session ends at this many seconds of talk
+       */
+      max_seconds: number;
+      /**
+       * Model
+       * @description From GEMINI_LIVE_MODEL (config), for the client's connect call
+       */
+      model: string;
+      /** Provider */
+      provider: string;
+      quota: components["schemas"]["VoiceQuota"];
+      /**
+       * Resumed
+       * @default false
+       */
+      resumed: boolean;
+      /**
+       * Token
+       * @description Single-use Gemini Live token; never stored by the server
+       */
+      token: string;
+      /**
+       * Token Expires At
+       * Format: date-time
+       */
+      token_expires_at: string;
+      /** Tools */
+      tools: components["schemas"]["ToolDeclaration"][];
+      /**
+       * Tutor Session Id
+       * Format: uuid
+       */
+      tutor_session_id: string;
+      /**
+       * Warn At Seconds
+       * @description Show the 'about 2 minutes left' banner here
+       */
+      warn_at_seconds: number;
+    };
+    /**
+     * VoiceSummary
+     * @description AI-15.
+     */
+    VoiceSummary: {
+      /** Context Ref */
+      context_ref: string | null;
+      /** Ended At */
+      ended_at: string | null;
+      /** Flashcards Made */
+      flashcards_made: number;
+      /** Has Transcript */
+      has_transcript: boolean;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Safety
+       * @description Present when the transcript showed a crisis signal
+       */
+      safety?: {
+        [key: string]: unknown;
+      } | null;
+      /** Seconds */
+      seconds: number | null;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+      /** Status */
+      status: string;
+      /** Tutor Session Id */
+      tutor_session_id: string | null;
+    };
+    /** VoiceTranscript */
+    VoiceTranscript: {
+      /** Locale */
+      locale: string | null;
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /** Turns */
+      turns: components["schemas"]["TranscriptTurn"][];
+    };
     /** WalletState */
     WalletState: {
       /** Gems */
@@ -6963,6 +8769,24 @@ export interface components {
       xp_today: number;
       /** Xp Total */
       xp_total: number;
+    };
+    /** WeakAreaOut */
+    WeakAreaOut: {
+      /** Cards */
+      cards: number;
+      /** Min Retrievability */
+      min_retrievability: number;
+      /** Topic Id */
+      topic_id: string;
+    };
+    /** WeakAreasOut */
+    WeakAreasOut: {
+      /** Horizon Days */
+      horizon_days: number;
+      /** Target Retention */
+      target_retention: number;
+      /** Topics */
+      topics: components["schemas"]["WeakAreaOut"][];
     };
     /** WeakSpot */
     WeakSpot: {
@@ -7036,6 +8860,47 @@ export interface components {
        */
       endpoint: string;
       keys: components["schemas"]["WebPushKeys"];
+    };
+    /**
+     * WeekReport
+     * @description SET-15. Counts and topic names only (never chat text, notes or anything typed).
+     */
+    WeekReport: {
+      /** Coming Up */
+      coming_up: components["schemas"]["ComingUp"][];
+      /** Days */
+      days: components["schemas"]["DayMinutes"][];
+      /** First Name */
+      first_name: string | null;
+      /** Lessons */
+      lessons: number;
+      /** Minutes */
+      minutes: number;
+      /** Mocks */
+      mocks: components["schemas"]["MockScore"][];
+      /** Practice Questions */
+      practice_questions: number;
+      /** Reviews */
+      reviews: number;
+      /** Streak */
+      streak: number;
+      /** Subjects */
+      subjects: components["schemas"]["SubjectWeek"][];
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /**
+       * Week End
+       * Format: date
+       */
+      week_end: string;
+      /**
+       * Week Start
+       * Format: date
+       */
+      week_start: string;
     };
   };
   responses: never;
@@ -7688,6 +9553,172 @@ export interface operations {
       };
     };
   };
+  family_v1_billing_family_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+    };
+  };
+  family_invite_v1_billing_family_invites_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyInviteOut"];
+        };
+      };
+    };
+  };
+  family_accept_v1_billing_family_invites__code__accept_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_revoke_invite_v1_billing_family_invites__invite_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        invite_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_add_child_v1_billing_family_members_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FamilyAddChild"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_remove_v1_billing_family_members__user_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   intro_eligibility_v1_billing_intro_eligibility_get: {
     parameters: {
       query?: never;
@@ -7787,6 +9818,13 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
+        "x-platform"?: string | null;
       };
       path?: never;
       cookie?: never;
@@ -7822,6 +9860,13 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
+        "x-platform"?: string | null;
       };
       path?: never;
       cookie?: never;
@@ -8419,6 +10464,46 @@ export interface operations {
       };
     };
   };
+  verify_otp_v1_dev_auth_verify_otp_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DevVerifyOtpRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DevSession"];
+        };
+      };
+      /** @description otp_expired: used, unknown or older than 5 minutes */
+      401: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   register_device_v1_devices_post: {
     parameters: {
       query?: never;
@@ -8606,6 +10691,13 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
+        "x-platform"?: string | null;
       };
       path: {
         duel_id: string;
@@ -9203,6 +11295,72 @@ export interface operations {
       };
     };
   };
+  feynman_attempt_v1_feynman_attempts_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FeynmanIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeynmanOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  feynman_history_v1_feynman_concepts__concept_id__get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path: {
+        concept_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeynmanOut"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   friends_v1_friends_get: {
     parameters: {
       query?: never;
@@ -9494,6 +11652,105 @@ export interface operations {
       };
     };
   };
+  create_child_v1_guardian_children_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ManagedChildOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_child_v1_guardian_children__child_id__delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        child_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildDeletionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_session_v1_guardian_children__child_id__session_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        child_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildSessionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   my_consent_v1_guardian_consent_get: {
     parameters: {
       query?: never;
@@ -9690,6 +11947,26 @@ export interface operations {
       };
     };
   };
+  dashboard_v1_guardian_dashboard_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Dashboard"];
+        };
+      };
+    };
+  };
   learners_v1_guardian_learners_get: {
     parameters: {
       query?: never;
@@ -9706,6 +11983,469 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["LearnersOut"];
+        };
+      };
+    };
+  };
+  get_controls_v1_guardian_learners__learner_id__controls_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ControlsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  put_controls_v1_guardian_learners__learner_id__controls_put: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Controls"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ControlsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  friends_v1_guardian_learners__learner_id__friends_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ParentFriend"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  remove_friend_v1_guardian_learners__learner_id__friends__friend_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        friend_id: string;
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_v1_guardian_learners__learner_id__pro_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SubscriptionDetailsOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_start_v1_guardian_learners__learner_id__pro_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildProRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayCancelRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  report_v1_guardian_learners__learner_id__report_get: {
+    parameters: {
+      query?: {
+        week?: string | null;
+      };
+      header?: never;
+      path: {
+        learner_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WeekReport"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decide_time_v1_guardian_time_requests__request_id__decision_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["Decision"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TimeRequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  calibration_v1_insights_calibration_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CalibrationOut"];
+        };
+      };
+    };
+  };
+  sleep_review_v1_insights_sleep_review_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SleepReviewOut"];
+        };
+      };
+    };
+  };
+  weak_areas_v1_insights_weak_areas_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WeakAreasOut"];
+        };
+      };
+    };
+  };
+  register_key_v1_integrity_app_attest_keys_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AppAttestKeyIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppAttestKeyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  challenge_v1_integrity_challenge_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChallengeOut"];
         };
       };
     };
@@ -9836,6 +12576,161 @@ export interface operations {
       };
     };
   };
+  room_v1_live_mocks__mock_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveRoom"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  events_v1_live_mocks__mock_id__events_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  leaderboard_v1_live_mocks__mock_id__leaderboard_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveLeaderboard"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  register_v1_live_mocks__mock_id__registration_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Registration"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  unregister_v1_live_mocks__mock_id__registration_delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Registration"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   get_me_v1_me_get: {
     parameters: {
       query?: never;
@@ -9922,6 +12817,26 @@ export interface operations {
       };
     };
   };
+  my_limits_v1_me_limits_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyLimits"];
+        };
+      };
+    };
+  };
   get_summary_v1_me_summary_get: {
     parameters: {
       query?: never;
@@ -9938,6 +12853,37 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["SummaryResponse"];
+        };
+      };
+    };
+  };
+  ask_for_time_v1_me_time_requests_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TimeRequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };
@@ -10320,6 +13266,39 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["PracticeHub"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  interleaved_v1_practice_interleaved_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["InterleavedIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PracticeSession"];
         };
       };
       /** @description Validation Error */
@@ -11421,6 +14400,74 @@ export interface operations {
       };
     };
   };
+  dictation_v1_speech_dictation_post: {
+    parameters: {
+      query?: {
+        locale?: "en" | "hi";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "audio/*": string;
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DictationOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_aloud_v1_speech_read_aloud_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReadAloudIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ReadAloudOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   squads_v1_squads_get: {
     parameters: {
       query?: never;
@@ -11777,6 +14824,9 @@ export interface operations {
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
         "x-platform"?: string | null;
       };
       path?: never;
@@ -12107,6 +15157,203 @@ export interface operations {
         };
         content: {
           "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  voice_quota_v1_voice_quota_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceQuota"];
+        };
+      };
+    };
+  };
+  list_voice_sessions_v1_voice_sessions_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  create_voice_session_v1_voice_sessions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["VoiceSessionCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceSessionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+      /** @description voice_unavailable (not configured, off, or no limit set) */
+      503: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  end_voice_session_v1_voice_sessions__session_id__end_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["VoiceSessionEnd"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceSummary"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  voice_tool_v1_voice_sessions__session_id__tools_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ToolCallIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ToolCallOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  voice_transcript_v1_voice_sessions__session_id__transcript_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceTranscript"];
         };
       };
       /** @description Validation Error */

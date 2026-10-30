@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NTF-10 large widget: plant and streak, exam countdown, today's plan and one action. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/smriti_widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/smriti_widget_background"
+    android:padding="12dp">
+
+    <include layout="@layout/smriti_widget_placeholder" />
+
+    <LinearLayout
+        android:id="@+id/smriti_widget_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/smriti_widget_plant_block" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/smriti_widget_countdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/smriti_widget_ink"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/smriti_widget_progress_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:maxLines="1"
+                    android:textColor="@color/smriti_widget_ink_muted"
+                    android:textSize="14sp" />
+
+                <ProgressBar
+                    android:id="@+id/smriti_widget_progress_bar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="4dp"
+                    android:importantForAccessibility="no"
+                    android:max="100"
+                    android:progressBackgroundTint="@color/smriti_widget_track"
+                    android:progressTint="@color/smriti_widget_accent" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/smriti_widget_plan_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:textColor="@color/smriti_widget_ink"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/smriti_widget_plan_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/smriti_widget_success_text"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/smriti_widget_row_1"
+            style="@style/SmritiWidgetRow" />
+
+        <TextView
+            android:id="@+id/smriti_widget_row_2"
+            style="@style/SmritiWidgetRow" />
+
+        <TextView
+            android:id="@+id/smriti_widget_row_3"
+            style="@style/SmritiWidgetRow" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/smriti_widget_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="32dp"
+            android:background="@drawable/smriti_widget_pill"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textColor="@color/smriti_widget_on_accent"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</FrameLayout>

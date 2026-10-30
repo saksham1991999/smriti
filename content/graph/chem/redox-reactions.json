@@ -1,0 +1,208 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.redox-reactions",
+  "subject": "chem",
+  "unit": "chem.physical",
+  "name": {
+    "en": "Redox Reactions",
+    "hi": "अपचयोपचय अभिक्रियाएँ"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Chemistry Part II, Ch 7",
+  "topics": [
+    {
+      "id": "chem.redox-reactions.redox-concepts",
+      "name": {
+        "en": "Redox Reactions and Electron Transfer",
+        "hi": "अपचयोपचय अभिक्रियाएँ एवं इलेक्ट्रॉन स्थानांतरण"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part II, Ch 7 §7.1",
+        "NCERT Class 11 Chemistry Part II, Ch 7 §7.2"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.redox-reactions.redox-concepts.core",
+          "name": {
+            "en": "Redox Reactions and Electron Transfer",
+            "hi": "अपचयोपचय अभिक्रियाएँ एवं इलेक्ट्रॉन स्थानांतरण"
+          },
+          "concepts": [
+            {
+              "id": "chem.redox-reactions.redox-concepts.core.redox-electronic",
+              "name": {
+                "en": "Electronic concepts of oxidation and reduction",
+                "hi": "ऑक्सीकरण एवं अपचयन की इलेक्ट्रॉनिक अवधारणा"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Oxidation is loss of electrons and reduction is gain of electrons; they occur together in redox reactions, with an oxidising agent accepting electrons from a reducing agent.",
+                "hi": "ऑक्सीकरण इलेक्ट्रॉनों का त्याग और अपचयन इलेक्ट्रॉनों का ग्रहण है; अपचयोपचय अभिक्रियाओं में ये साथ-साथ होते हैं, जहाँ ऑक्सीकारक अपचायक से इलेक्ट्रॉन ग्रहण करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify the oxidising and reducing agents in a reaction.",
+                  "hi": "किसी अभिक्रिया में ऑक्सीकारक और अपचायक पहचानिए।"
+                },
+                {
+                  "en": "Relate the classical definitions (oxygen and hydrogen transfer) to electron transfer.",
+                  "hi": "शास्त्रीय परिभाषाओं (ऑक्सीजन और हाइड्रोजन स्थानांतरण) को इलेक्ट्रॉन स्थानांतरण से जोड़िए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-1",
+                "neet-ug-2026:chemistry:unit-7:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.redox-reactions.oxidation-number",
+      "name": {
+        "en": "Oxidation Number",
+        "hi": "ऑक्सीकरण-संख्या"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part II, Ch 7 §7.3"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.redox-reactions.oxidation-number.core",
+          "name": {
+            "en": "Oxidation Number",
+            "hi": "ऑक्सीकरण-संख्या"
+          },
+          "concepts": [
+            {
+              "id": "chem.redox-reactions.oxidation-number.core.oxidation-number-balancing",
+              "name": {
+                "en": "Oxidation number rules and balancing redox reactions",
+                "hi": "ऑक्सीकरण संख्या के नियम एवं अपचयोपचय अभिक्रियाओं का संतुलन"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Oxidation numbers follow set rules, a rise means oxidation, and redox equations are balanced by the oxidation-number method or the half-reaction (ion-electron) method in acidic or basic medium.",
+                "hi": "ऑक्सीकरण संख्याएँ निश्चित नियमों का पालन करती हैं, इनकी वृद्धि ऑक्सीकरण दर्शाती है, और अपचयोपचय समीकरण अम्लीय या क्षारीय माध्यम में ऑक्सीकरण-संख्या विधि या अर्ध-अभिक्रिया (आयन-इलेक्ट्रॉन) विधि से संतुलित किए जाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Assign oxidation numbers, including in compounds such as K₂Cr₂O₇, H₂O₂ and Fe₃O₄.",
+                  "hi": "ऑक्सीकरण संख्याएँ निर्धारित कीजिए, K₂Cr₂O₇, H₂O₂ और Fe₃O₄ जैसे यौगिकों सहित।"
+                },
+                {
+                  "en": "Balance a redox equation by both methods.",
+                  "hi": "दोनों विधियों से अपचयोपचय समीकरण संतुलित कीजिए।"
+                },
+                {
+                  "en": "Recognise combination, decomposition, displacement and disproportionation reactions.",
+                  "hi": "संयोजन, अपघटन, विस्थापन और असमानुपातन अभिक्रियाएँ पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.redox-reactions.redox-concepts.core.redox-electronic"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-2",
+                "neet-ug-2026:chemistry:unit-7:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.redox-reactions.electrode-processes",
+      "name": {
+        "en": "Redox Reactions and Electrode Processes",
+        "hi": "अपचयोपचन अभिक्रियाएँ तथा इलेक्ट्रोड प्रक्रम"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part II, Ch 7 §7.4"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.redox-reactions.electrode-processes.core",
+          "name": {
+            "en": "Redox Reactions and Electrode Processes",
+            "hi": "अपचयोपचन अभिक्रियाएँ तथा इलेक्ट्रोड प्रक्रम"
+          },
+          "concepts": [
+            {
+              "id": "chem.redox-reactions.electrode-processes.core.redox-couple-electrode",
+              "name": {
+                "en": "Redox couples and electrode processes",
+                "hi": "अपचयोपचय युग्म एवं इलेक्ट्रोड प्रक्रम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A redox reaction can be split between two beakers connected by a salt bridge, each holding a redox couple, so the electron transfer drives a current; the tendency of each couple is its electrode potential.",
+                "hi": "अपचयोपचय अभिक्रिया को लवण सेतु से जुड़े दो बीकरों में बाँटा जा सकता है, जिनमें हर एक में एक अपचयोपचय युग्म होता है, जिससे इलेक्ट्रॉन स्थानांतरण धारा चलाता है; हर युग्म की यह प्रवृत्ति उसका इलेक्ट्रोड विभव है।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe the Zn-Cu cell set-up and the role of the salt bridge.",
+                  "hi": "Zn-Cu सेल की व्यवस्था और लवण सेतु की भूमिका का वर्णन कीजिए।"
+                },
+                {
+                  "en": "Use the electrochemical series to predict which metal displaces another.",
+                  "hi": "यह बताने के लिए कि कौन-सी धातु दूसरी को विस्थापित करेगी, वैद्युत रासायनिक श्रेणी का उपयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.redox-reactions.redox-concepts.core.redox-electronic"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-7:item-5",
+                "neet-ug-2026:chemistry:unit-7:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part II, Ch 7",
+      "url": "https://ncert.nic.in/textbook/pdf/kech201.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khch2, contents prelims p.xi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khch2ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Chemistry Unit 7: REDOX REACTIONS AND ELECTROCHEMISTRY (PDF p.8)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Chemistry Unit 7: REDOX REACTIONS AND ELECTROCHEMISTRY (PDF p.10)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

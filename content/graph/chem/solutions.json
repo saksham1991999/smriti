@@ -1,0 +1,390 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.solutions",
+  "subject": "chem",
+  "unit": "chem.physical",
+  "name": {
+    "en": "Solutions",
+    "hi": "विलयन"
+  },
+  "hi_source": "ncert",
+  "class": 12,
+  "ncert_ref": "NCERT Class 12 Chemistry Part I, Ch 1",
+  "topics": [
+    {
+      "id": "chem.solutions.concentration",
+      "name": {
+        "en": "Types of Solutions and Expressing Concentration",
+        "hi": "विलयनों के प्रकार एवं सांद्रता को व्यक्त करना"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.1",
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.2"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.solutions.concentration.core",
+          "name": {
+            "en": "Types of Solutions and Expressing Concentration",
+            "hi": "विलयनों के प्रकार एवं सांद्रता को व्यक्त करना"
+          },
+          "concepts": [
+            {
+              "id": "chem.solutions.concentration.core.concentration-terms",
+              "name": {
+                "en": "Concentration of solutions: molality, molarity, mole fraction and percentage",
+                "hi": "विलयनों की सांद्रता : मोललता, मोलरता, मोल अंश एवं प्रतिशत"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Concentration can be expressed as mass or volume percentage, mole fraction, molarity (mol per litre of solution) or molality (mol per kg of solvent); molality and mole fraction do not change with temperature.",
+                "hi": "सांद्रता को द्रव्यमान या आयतन प्रतिशत, मोल अंश, मोलरता (प्रति लीटर विलयन मोल) या मोललता (प्रति kg विलायक मोल) में व्यक्त किया जा सकता है; मोललता और मोल अंश ताप के साथ नहीं बदलते।"
+              },
+              "key_points": [
+                {
+                  "en": "Interconvert molarity, molality and mole fraction using density.",
+                  "hi": "घनत्व का उपयोग करके मोलरता, मोललता और मोल अंश के बीच रूपांतरण कीजिए।"
+                },
+                {
+                  "en": "Explain why molarity depends on temperature but molality does not.",
+                  "hi": "समझाइए कि मोलरता ताप पर निर्भर करती है पर मोललता क्यों नहीं।"
+                }
+              ],
+              "prerequisites": [
+                "chem.basic-concepts.mole.core.mole-concept"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-5:item-1",
+                "neet-ug-2026:chemistry:unit-5:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.solutions.solubility-gases",
+      "name": {
+        "en": "Solubility",
+        "hi": "विलेयता"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.3"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.solutions.solubility-gases.core",
+          "name": {
+            "en": "Solubility",
+            "hi": "विलेयता"
+          },
+          "concepts": [
+            {
+              "id": "chem.solutions.solubility-gases.core.henrys-law",
+              "name": {
+                "en": "Henry's law: solubility of gases in liquids",
+                "hi": "हेनरी का नियम : द्रवों में गैसों की विलेयता"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The partial pressure of a gas above a solution is proportional to its mole fraction in the solution, p = K_H x, so gas solubility rises with pressure and falls with temperature.",
+                "hi": "विलयन के ऊपर गैस का आंशिक दाब विलयन में उसके मोल अंश के अनुक्रमानुपाती होता है, p = K_H x, इसलिए गैस की विलेयता दाब के साथ बढ़ती और ताप के साथ घटती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply Henry's law to calculate gas solubility.",
+                  "hi": "गैस की विलेयता निकालने के लिए हेनरी का नियम लागू कीजिए।"
+                },
+                {
+                  "en": "Explain applications such as soda bottles, the bends in deep-sea divers and low oxygen at altitude.",
+                  "hi": "सोडा की बोतलें, गहरे गोताखोरों में बेंड्स और ऊँचाई पर कम ऑक्सीजन जैसे अनुप्रयोग समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.solutions.concentration.core.concentration-terms",
+                "chem.equilibrium.physical-equilibrium.core.physical-equilibria"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-6:item-2",
+                "neet-ug-2026:chemistry:unit-6:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.solutions.vapour-pressure",
+      "name": {
+        "en": "Vapour Pressure of Liquid Solutions; Ideal and Non-ideal Solutions",
+        "hi": "द्रवीय विलयनों का वाष्प दाब; आदर्श एवं अनादर्श विलयन"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.4",
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.5"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.solutions.vapour-pressure.core",
+          "name": {
+            "en": "Vapour Pressure of Liquid Solutions; Ideal and Non-ideal Solutions",
+            "hi": "द्रवीय विलयनों का वाष्प दाब; आदर्श एवं अनादर्श विलयन"
+          },
+          "concepts": [
+            {
+              "id": "chem.solutions.vapour-pressure.core.raoult-law",
+              "name": {
+                "en": "Vapour pressure of solutions and Raoult's law",
+                "hi": "विलयनों का वाष्प दाब एवं राउल्ट का नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For a solution of volatile liquids each component's partial vapour pressure is proportional to its mole fraction, p₁ = p₁°x₁, and total pressure varies linearly with composition for an ideal solution.",
+                "hi": "वाष्पशील द्रवों के विलयन में हर घटक का आंशिक वाष्प दाब उसके मोल अंश के अनुक्रमानुपाती होता है, p₁ = p₁°x₁, और आदर्श विलयन में कुल दाब संघटन के साथ रैखिक रूप से बदलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate total vapour pressure and vapour-phase composition.",
+                  "hi": "कुल वाष्प दाब और वाष्प प्रावस्था का संघटन निकालिए।"
+                },
+                {
+                  "en": "Show that Raoult's law becomes a special case of Henry's law.",
+                  "hi": "दिखाइए कि राउल्ट का नियम हेनरी के नियम की एक विशेष स्थिति बन जाता है।"
+                }
+              ],
+              "prerequisites": [
+                "chem.solutions.concentration.core.concentration-terms"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-5:item-2",
+                "neet-ug-2026:chemistry:unit-5:item-2"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "chem.solutions.vapour-pressure.core.ideal-nonideal",
+              "name": {
+                "en": "Ideal and non-ideal solutions and their vapour pressure-composition plots",
+                "hi": "आदर्श एवं अनादर्श विलयन तथा उनके वाष्प दाब-संघटन ग्राफ़"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Ideal solutions obey Raoult's law with ΔmixH = 0 and ΔmixV = 0; non-ideal solutions show positive deviations (weaker A-B attraction) or negative deviations (stronger A-B attraction), and large deviations give azeotropes.",
+                "hi": "आदर्श विलयन ΔmixH = 0 और ΔmixV = 0 के साथ राउल्ट नियम का पालन करते हैं; अनादर्श विलयन धनात्मक विचलन (दुर्बल A-B आकर्षण) या ऋणात्मक विचलन (प्रबल A-B आकर्षण) दिखाते हैं, और बड़े विचलन स्थिरक्वाथी बनाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch vapour pressure-composition plots for ideal and both kinds of non-ideal solution.",
+                  "hi": "आदर्श और दोनों प्रकार के अनादर्श विलयनों के वाष्प दाब-संघटन ग्राफ़ बनाइए।"
+                },
+                {
+                  "en": "Give examples: ethanol-acetone (positive) and chloroform-acetone (negative).",
+                  "hi": "उदाहरण दीजिए: एथेनॉल-ऐसीटोन (धनात्मक) और क्लोरोफ़ॉर्म-ऐसीटोन (ऋणात्मक)।"
+                }
+              ],
+              "prerequisites": [
+                "chem.solutions.vapour-pressure.core.raoult-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-5:item-2",
+                "neet-ug-2026:chemistry:unit-5:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.solutions.colligative",
+      "name": {
+        "en": "Colligative Properties and Determination of Molar Mass",
+        "hi": "अणुसंख्य गुणधर्म और आण्विक द्रव्यमान की गणना"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.6"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.solutions.colligative.core",
+          "name": {
+            "en": "Colligative Properties and Determination of Molar Mass",
+            "hi": "अणुसंख्य गुणधर्म और आण्विक द्रव्यमान की गणना"
+          },
+          "concepts": [
+            {
+              "id": "chem.solutions.colligative.core.colligative-properties",
+              "name": {
+                "en": "Colligative properties of dilute solutions",
+                "hi": "तनु विलयनों के अणुसंख्य गुणधर्म"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Relative lowering of vapour pressure (= x₂), elevation of boiling point ΔTb = Kb m, depression of freezing point ΔTf = Kf m and osmotic pressure π = CRT depend only on the number of solute particles.",
+                "hi": "वाष्प दाब का आपेक्षिक अवनमन (= x₂), क्वथनांक उन्नयन ΔTb = Kb m, हिमांक अवनमन ΔTf = Kf m और परासरण दाब π = CRT केवल विलेय कणों की संख्या पर निर्भर करते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "State the four colligative properties and their expressions.",
+                  "hi": "चारों अणुसंख्य गुणधर्म और उनके व्यंजक बताइए।"
+                },
+                {
+                  "en": "Explain osmosis, reverse osmosis and isotonic solutions.",
+                  "hi": "परासरण, उत्क्रम परासरण और समपरासारी विलयनों को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.solutions.vapour-pressure.core.raoult-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-5:item-3",
+                "neet-ug-2026:chemistry:unit-5:item-3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "chem.solutions.colligative.core.molar-mass-colligative",
+              "name": {
+                "en": "Determination of molecular mass from colligative properties",
+                "hi": "अणुसंख्य गुणधर्मों से आण्विक द्रव्यमान का निर्धारण"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Measuring a colligative property of a solution of known mass of solute gives its molar mass, for example M₂ = Kf w₂ × 1000/(ΔTf w₁).",
+                "hi": "विलेय के ज्ञात द्रव्यमान वाले विलयन का कोई अणुसंख्य गुणधर्म मापकर उसका मोलर द्रव्यमान मिलता है, जैसे M₂ = Kf w₂ × 1000/(ΔTf w₁)।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate molar mass from freezing-point depression or osmotic pressure data.",
+                  "hi": "हिमांक अवनमन या परासरण दाब के आँकड़ों से मोलर द्रव्यमान निकालिए।"
+                },
+                {
+                  "en": "Explain why osmotic pressure suits macromolecules such as proteins.",
+                  "hi": "समझाइए कि परासरण दाब प्रोटीन जैसे वृहदणुओं के लिए क्यों उपयुक्त है।"
+                }
+              ],
+              "prerequisites": [
+                "chem.solutions.colligative.core.colligative-properties"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-5:item-4",
+                "neet-ug-2026:chemistry:unit-5:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.solutions.abnormal",
+      "name": {
+        "en": "Abnormal Molar Masses",
+        "hi": "असामान्य मोलर द्रव्यमान"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 12 Chemistry Part I, Ch 1 §1.7"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.solutions.abnormal.core",
+          "name": {
+            "en": "Abnormal Molar Masses",
+            "hi": "असामान्य मोलर द्रव्यमान"
+          },
+          "concepts": [
+            {
+              "id": "chem.solutions.abnormal.core.vant-hoff-factor",
+              "name": {
+                "en": "Abnormal molar mass and the van't Hoff factor",
+                "hi": "असामान्य मोलर द्रव्यमान एवं वान्ट हॉफ़ गुणक"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Dissociation or association of the solute changes the number of particles, so observed colligative properties differ; the van't Hoff factor i corrects for this, ΔTf = iKf m.",
+                "hi": "विलेय के वियोजन या संगुणन से कणों की संख्या बदलती है, इसलिए प्रेक्षित अणुसंख्य गुणधर्म भिन्न होते हैं; वान्ट हॉफ़ गुणक i इसका संशोधन करता है, ΔTf = iKf m।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate i and the degree of dissociation or association.",
+                  "hi": "i और वियोजन या संगुणन की मात्रा निकालिए।"
+                },
+                {
+                  "en": "Predict i for electrolytes such as NaCl, K₂SO₄ and for acetic acid dimerising in benzene.",
+                  "hi": "NaCl, K₂SO₄ जैसे विद्युत-अपघट्यों और बेंज़ीन में द्वितयन करते ऐसीटिक अम्ल के लिए i बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.solutions.colligative.core.colligative-properties"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-5:item-5",
+                "neet-ug-2026:chemistry:unit-5:item-5"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Chemistry Part I, Ch 1",
+      "url": "https://ncert.nic.in/textbook/pdf/lech101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhch1, contents prelims p.xiii (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhch1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Chemistry Unit 5: SOLUTIONS (PDF p.7)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Chemistry Unit 6: EQUILIBRIUM (PDF p.8)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Chemistry Unit 5: SOLUTIONS (PDF p.10)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Chemistry Unit 6: EQUILIBRIUM (PDF p.10)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

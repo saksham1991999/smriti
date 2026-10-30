@@ -1,0 +1,600 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.chemical-bonding",
+  "subject": "chem",
+  "unit": "chem.inorganic",
+  "name": {
+    "en": "Chemical Bonding and Molecular Structure",
+    "hi": "रासायनिक आबंधन तथा आण्विक संरचना"
+  },
+  "hi_source": "ncert",
+  "class": 11,
+  "ncert_ref": "NCERT Class 11 Chemistry Part I, Ch 4",
+  "topics": [
+    {
+      "id": "chem.chemical-bonding.kossel-lewis",
+      "name": {
+        "en": "Kossel-Lewis Approach to Chemical Bonding",
+        "hi": "रासायनिक आबंधन की कॉसेल-लूइस अवधारणा"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.1"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.kossel-lewis.core",
+          "name": {
+            "en": "Kossel-Lewis Approach to Chemical Bonding",
+            "hi": "रासायनिक आबंधन की कॉसेल-लूइस अवधारणा"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+              "name": {
+                "en": "Kossel-Lewis approach: octet rule, ionic and covalent bonds",
+                "hi": "कॉसेल-लूइस अवधारणा : अष्टक नियम, आयनिक एवं सहसंयोजी आबंध"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Atoms combine to reach a stable octet, either by transferring electrons (ionic bond) or by sharing them (covalent bond), shown by Lewis structures and formal charges.",
+                "hi": "परमाणु स्थायी अष्टक पाने के लिए जुड़ते हैं, या तो इलेक्ट्रॉन स्थानांतरित करके (आयनिक आबंध) या साझा करके (सहसंयोजी आबंध), जिन्हें लूइस संरचनाओं और औपचारिक आवेशों से दिखाया जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw Lewis structures and calculate formal charge.",
+                  "hi": "लूइस संरचनाएँ बनाइए और औपचारिक आवेश निकालिए।"
+                },
+                {
+                  "en": "State the limitations of the octet rule with examples (incomplete octet, expanded octet, odd-electron molecules).",
+                  "hi": "उदाहरणों सहित अष्टक नियम की सीमाएँ बताइए (अपूर्ण अष्टक, विस्तारित अष्टक, विषम-इलेक्ट्रॉन अणु)।"
+                }
+              ],
+              "prerequisites": [
+                "chem.structure-of-atom.qm-model.core.electronic-configuration"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-1",
+                "neet-ug-2026:chemistry:unit-3:item-1"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond",
+      "name": {
+        "en": "Ionic or Electrovalent Bond",
+        "hi": "आयनिक या वैद्युत् संयोजी आबंध"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.2"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.ionic-bond.core",
+          "name": {
+            "en": "Ionic or Electrovalent Bond",
+            "hi": "आयनिक या वैद्युत् संयोजी आबंध"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+              "name": {
+                "en": "Ionic bond formation and lattice enthalpy",
+                "hi": "आयनिक आबंध का बनना एवं जालक एन्थैल्पी"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Ionic bonds form easily between atoms with low ionisation enthalpy and highly negative electron gain enthalpy, and the large lattice enthalpy released stabilises the crystal; it can be found with a Born-Haber cycle.",
+                "hi": "आयनिक आबंध कम आयनन एन्थैल्पी और अधिक ऋणात्मक इलेक्ट्रॉन लब्धि एन्थैल्पी वाले परमाणुओं के बीच आसानी से बनते हैं, और मुक्त होने वाली बड़ी जालक एन्थैल्पी क्रिस्टल को स्थायी बनाती है; इसे बॉर्न-हाबर चक्र से निकाला जा सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "List the factors favouring ionic bond formation.",
+                  "hi": "आयनिक आबंध बनने के अनुकूल कारक बताइए।"
+                },
+                {
+                  "en": "Calculate lattice enthalpy from a Born-Haber cycle.",
+                  "hi": "बॉर्न-हाबर चक्र से जालक एन्थैल्पी निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+                "chem.periodic-classification.periodic-trends.core.ionisation-electron-gain"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-2",
+                "neet-ug-2026:chemistry:unit-3:item-2"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters",
+      "name": {
+        "en": "Bond Parameters",
+        "hi": "आबंध प्राचल"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.3"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core",
+          "name": {
+            "en": "Bond Parameters",
+            "hi": "आबंध प्राचल"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+              "name": {
+                "en": "Electronegativity, bond polarity, dipole moment and Fajans' rules",
+                "hi": "विद्युत्-ऋणात्मकता, आबंध ध्रुवता, द्विध्रुव आघूर्ण एवं फ़ायान्स नियम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Unequal electronegativity makes a covalent bond polar with a dipole moment μ = q × d, and Fajans' rules say small, highly charged cations polarise large anions, giving ionic bonds covalent character.",
+                "hi": "असमान विद्युत्-ऋणात्मकता सहसंयोजी आबंध को ध्रुवीय बनाती है जिसका द्विध्रुव आघूर्ण μ = q × d है, और फ़ायान्स नियम कहते हैं कि छोटे, अधिक आवेशित धनायन बड़े ऋणायनों को ध्रुवित करते हैं, जिससे आयनिक आबंधों में सहसंयोजी गुण आ जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Predict the dipole moment of molecules such as CO₂, H₂O, NH₃ and NF₃ from geometry.",
+                  "hi": "ज्यामिति से CO₂, H₂O, NH₃ और NF₃ जैसे अणुओं के द्विध्रुव आघूर्ण का अनुमान लगाइए।"
+                },
+                {
+                  "en": "Compare covalent character of salts using Fajans' rules.",
+                  "hi": "फ़ायान्स नियमों से लवणों के सहसंयोजी गुण की तुलना कीजिए।"
+                },
+                {
+                  "en": "Define bond length, bond angle, bond enthalpy and bond order.",
+                  "hi": "आबंध लंबाई, आबंध कोण, आबंध एन्थैल्पी और आबंध कोटि परिभाषित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-3",
+                "neet-ug-2026:chemistry:unit-3:item-3"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "chem.chemical-bonding.bond-parameters.core.resonance-structures",
+              "name": {
+                "en": "Resonance",
+                "hi": "अनुनाद"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "When one Lewis structure cannot describe a molecule, it is a resonance hybrid of several canonical structures, as in O₃ and CO₃²⁻, and the hybrid is more stable than any one of them.",
+                "hi": "जब एक लूइस संरचना किसी अणु का वर्णन नहीं कर पाती, तो वह कई विहित संरचनाओं का अनुनाद संकर होता है, जैसे O₃ और CO₃²⁻ में, और संकर इनमें से किसी भी एक से अधिक स्थायी होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw resonance structures for ozone, carbonate and nitrate ions.",
+                  "hi": "ओज़ोन, कार्बोनेट और नाइट्रेट आयनों की अनुनाद संरचनाएँ बनाइए।"
+                },
+                {
+                  "en": "Explain equal bond lengths in a resonance hybrid.",
+                  "hi": "अनुनाद संकर में समान आबंध लंबाइयों को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-7",
+                "neet-ug-2026:chemistry:unit-3:item-7"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr",
+      "name": {
+        "en": "VSEPR Theory",
+        "hi": "संयोजकता कोश इलेक्ट्रॉन युग्म प्रतिकर्षण सिद्धांत"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.4"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.vsepr.core",
+          "name": {
+            "en": "VSEPR Theory",
+            "hi": "संयोजकता कोश इलेक्ट्रॉन युग्म प्रतिकर्षण सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.vsepr.core.vsepr-shapes",
+              "name": {
+                "en": "VSEPR theory and shapes of simple molecules",
+                "hi": "VSEPR सिद्धांत एवं सरल अणुओं की आकृतियाँ"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Electron pairs round a central atom repel and take positions that minimise repulsion, with lone pair-lone pair > lone pair-bond pair > bond pair-bond pair, which fixes molecular shapes.",
+                "hi": "केंद्रीय परमाणु के चारों ओर इलेक्ट्रॉन युग्म एक-दूसरे को प्रतिकर्षित करते हैं और ऐसी स्थितियाँ लेते हैं जिनमें प्रतिकर्षण न्यूनतम हो, जहाँ एकाकी युग्म-एकाकी युग्म > एकाकी युग्म-आबंध युग्म > आबंध युग्म-आबंध युग्म, और इससे अणु की आकृति तय होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Predict shapes of molecules such as BeCl₂, BF₃, CH₄, NH₃, H₂O, PCl₅, SF₆, ClF₃ and XeF₄.",
+                  "hi": "BeCl₂, BF₃, CH₄, NH₃, H₂O, PCl₅, SF₆, ClF₃ और XeF₄ जैसे अणुओं की आकृतियाँ बताइए।"
+                },
+                {
+                  "en": "Explain bond angle reduction caused by lone pairs.",
+                  "hi": "एकाकी युग्मों के कारण आबंध कोण में कमी को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-4",
+                "neet-ug-2026:chemistry:unit-3:item-4"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.vbt",
+      "name": {
+        "en": "Valence Bond Theory",
+        "hi": "संयोजकता आबंध सिद्धांत"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.5"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.vbt.core",
+          "name": {
+            "en": "Valence Bond Theory",
+            "hi": "संयोजकता आबंध सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.vbt.core.valence-bond-theory",
+              "name": {
+                "en": "Valence bond theory; sigma and pi bonds",
+                "hi": "संयोजकता आबंध सिद्धांत; सिग्मा एवं पाई आबंध"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Valence bond theory explains a covalent bond as overlap of half-filled atomic orbitals; head-on overlap gives a sigma bond and sideways overlap gives a weaker pi bond.",
+                "hi": "संयोजकता आबंध सिद्धांत सहसंयोजी आबंध को अर्धपूरित परमाणु कक्षकों के अतिव्यापन के रूप में समझाता है; सम्मुख अतिव्यापन से सिग्मा आबंध और पार्श्व अतिव्यापन से दुर्बल पाई आबंध बनता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the potential energy curve for formation of H₂.",
+                  "hi": "H₂ के बनने का स्थितिज ऊर्जा वक्र समझाइए।"
+                },
+                {
+                  "en": "Count sigma and pi bonds in a molecule.",
+                  "hi": "किसी अणु में सिग्मा और पाई आबंध गिनिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds",
+                "chem.structure-of-atom.qm-model.core.orbital-shapes"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-5",
+                "neet-ug-2026:chemistry:unit-3:item-5",
+                "jee-main-2027:chemistry:unit-3:item-8",
+                "neet-ug-2026:chemistry:unit-3:item-8"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.hybridisation",
+      "name": {
+        "en": "Hybridisation",
+        "hi": "संकरण"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.6"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.hybridisation.core",
+          "name": {
+            "en": "Hybridisation",
+            "hi": "संकरण"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.hybridisation.core.hybridisation-spd",
+              "name": {
+                "en": "Hybridisation involving s, p and d orbitals",
+                "hi": "s, p एवं d कक्षकों से जुड़ा संकरण"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Atomic orbitals of similar energy mix to form equivalent hybrid orbitals: sp (linear), sp² (trigonal planar), sp³ (tetrahedral), sp³d (trigonal bipyramidal) and sp³d² (octahedral).",
+                "hi": "समान ऊर्जा वाले परमाणु कक्षक मिलकर समतुल्य संकर कक्षक बनाते हैं: sp (रैखिक), sp² (त्रिकोणीय समतलीय), sp³ (चतुष्फलकीय), sp³d (त्रिकोणीय द्विपिरामिडी) और sp³d² (अष्टफलकीय)।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the hybridisation of the central atom from the number of electron pairs.",
+                  "hi": "इलेक्ट्रॉन युग्मों की संख्या से केंद्रीय परमाणु का संकरण निकालिए।"
+                },
+                {
+                  "en": "Describe hybridisation in C₂H₆, C₂H₄, C₂H₂, PCl₅ and SF₆.",
+                  "hi": "C₂H₆, C₂H₄, C₂H₂, PCl₅ और SF₆ में संकरण का वर्णन कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.vbt.core.valence-bond-theory",
+                "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-6",
+                "neet-ug-2026:chemistry:unit-3:item-6"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.mot",
+      "name": {
+        "en": "Molecular Orbital Theory",
+        "hi": "आण्विक कक्षक सिद्धांत"
+      },
+      "hi_source": "translated",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.7",
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.8"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.mot.core",
+          "name": {
+            "en": "Molecular Orbital Theory",
+            "hi": "आण्विक कक्षक सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.mot.core.mo-theory",
+              "name": {
+                "en": "Molecular orbital theory: LCAO, bonding and antibonding orbitals",
+                "hi": "आण्विक कक्षक सिद्धांत : LCAO, आबंधी एवं प्रतिआबंधी कक्षक"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Atomic orbitals combine linearly to form molecular orbitals spread over the molecule: constructive combination gives lower-energy bonding orbitals and destructive combination gives higher-energy antibonding orbitals.",
+                "hi": "परमाणु कक्षक रैखिक रूप से जुड़कर पूरे अणु पर फैले आण्विक कक्षक बनाते हैं: संपोषी संयोजन से कम ऊर्जा वाले आबंधी और विनाशी संयोजन से अधिक ऊर्जा वाले प्रतिआबंधी कक्षक बनते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "State the conditions for combination of atomic orbitals.",
+                  "hi": "परमाणु कक्षकों के संयोजन की शर्तें बताइए।"
+                },
+                {
+                  "en": "Distinguish σ and π molecular orbitals and their antibonding counterparts.",
+                  "hi": "σ और π आण्विक कक्षकों तथा उनके प्रतिआबंधी रूपों में अंतर बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.vbt.core.valence-bond-theory"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-8",
+                "neet-ug-2026:chemistry:unit-3:item-8"
+              ],
+              "hi_source": "translated"
+            },
+            {
+              "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+              "name": {
+                "en": "MO configurations of homonuclear diatomic molecules and bond order",
+                "hi": "समनाभिकीय द्विपरमाणुक अणुओं के आण्विक कक्षक विन्यास एवं आबंध कोटि"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Filling MOs in order gives configurations of H₂ to Ne₂; bond order (N_b − N_a)/2 predicts stability, bond length and bond energy, and unpaired electrons explain paramagnetism of O₂.",
+                "hi": "आण्विक कक्षकों को क्रम से भरने से H₂ से Ne₂ तक के विन्यास मिलते हैं; आबंध कोटि (N_b − N_a)/2 स्थायित्व, आबंध लंबाई और आबंध ऊर्जा का अनुमान देती है, और अयुग्मित इलेक्ट्रॉन O₂ के अनुचुंबकत्व को समझाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Use the different MO energy orders for molecules up to N₂ and for O₂ and F₂.",
+                  "hi": "N₂ तक के अणुओं और O₂ तथा F₂ के लिए भिन्न आण्विक कक्षक ऊर्जा क्रमों का उपयोग कीजिए।"
+                },
+                {
+                  "en": "Relate bond order to bond length and bond energy and predict magnetic behaviour.",
+                  "hi": "आबंध कोटि को आबंध लंबाई और आबंध ऊर्जा से जोड़िए तथा चुंबकीय व्यवहार बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.mot.core.mo-theory"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-9",
+                "neet-ug-2026:chemistry:unit-3:item-9"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.metallic-bonding",
+      "name": {
+        "en": "Metallic Bonding",
+        "hi": "धात्विक आबंधन"
+      },
+      "hi_source": "translated",
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.metallic-bonding.core",
+          "name": {
+            "en": "Metallic Bonding",
+            "hi": "धात्विक आबंधन"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.metallic-bonding.core.metallic-bond",
+              "name": {
+                "en": "Elementary idea of metallic bonding",
+                "hi": "धात्विक आबंधन का प्रारंभिक बोध"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "In metals, positive ions sit in a sea of delocalised valence electrons, which explains their conductivity, lustre, malleability and ductility.",
+                "hi": "धातुओं में धनात्मक आयन विस्थानीकृत संयोजकता इलेक्ट्रॉनों के समुद्र में स्थित होते हैं, जिससे उनकी चालकता, चमक, आघातवर्ध्यता और तन्यता समझी जाती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Describe the electron-sea model.",
+                  "hi": "इलेक्ट्रॉन-समुद्र मॉडल का वर्णन कीजिए।"
+                },
+                {
+                  "en": "Explain metallic properties using the model.",
+                  "hi": "इस मॉडल से धात्विक गुण समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-10",
+                "neet-ug-2026:chemistry:unit-3:item-10"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.hydrogen-bonding",
+      "name": {
+        "en": "Hydrogen Bonding",
+        "hi": "हाइड्रोजन आबंधन"
+      },
+      "hi_source": "ncert",
+      "ncert_refs": [
+        "NCERT Class 11 Chemistry Part I, Ch 4 §4.9"
+      ],
+      "subtopics": [
+        {
+          "id": "chem.chemical-bonding.hydrogen-bonding.core",
+          "name": {
+            "en": "Hydrogen Bonding",
+            "hi": "हाइड्रोजन आबंधन"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-bonding.hydrogen-bonding.core.hydrogen-bond",
+              "name": {
+                "en": "Hydrogen bonding and its applications",
+                "hi": "हाइड्रोजन आबंधन एवं उसके अनुप्रयोग"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A hydrogen atom bonded to a highly electronegative atom (F, O, N) is attracted to a lone pair on another such atom; intermolecular hydrogen bonds raise boiling points and solubility, while intramolecular ones lower them.",
+                "hi": "अत्यधिक विद्युत्-ऋणात्मक परमाणु (F, O, N) से जुड़ा हाइड्रोजन परमाणु दूसरे ऐसे परमाणु के एकाकी युग्म से आकर्षित होता है; अंतराअणुक हाइड्रोजन आबंध क्वथनांक और विलेयता बढ़ाते हैं, जबकि अंतःअणुक इन्हें घटाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the high boiling point of water and HF and the lower density of ice.",
+                  "hi": "जल और HF के उच्च क्वथनांक तथा बर्फ़ के कम घनत्व को समझाइए।"
+                },
+                {
+                  "en": "Compare o-nitrophenol and p-nitrophenol in volatility.",
+                  "hi": "वाष्पशीलता में o-नाइट्रोफ़ीनॉल और p-नाइट्रोफ़ीनॉल की तुलना कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-3:item-11",
+                "neet-ug-2026:chemistry:unit-3:item-11"
+              ],
+              "hi_source": "translated"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khch1, contents prelims p.xi (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khch1ps.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027, Chemistry Unit 3: CHEMICAL BONDING AND MOLECULAR STRUCTURE (PDF p.7)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025), Chemistry Unit 3: CHEMICAL BONDING AND MOLECULAR STRUCTURE (PDF p.9)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-29"
+}

@@ -12,6 +12,8 @@ export type Level = "starting" | "basics" | "revising";
 
 export interface OnboardingData {
   goals: Goal[];
+  /** The School card was picked (ONB-03 asks the class). */
+  school: boolean;
   classNo: number | null;
   birthYear: number | "prefer_not" | null;
   examMonth: string | null;
@@ -32,6 +34,7 @@ export interface OnboardingData {
 const KEY = "smriti.onboarding.v1";
 const empty = (): OnboardingData => ({
   goals: [],
+  school: false,
   classNo: null,
   birthYear: null,
   examMonth: null,
@@ -98,13 +101,29 @@ export function ageBandFrom(d: Pick<OnboardingData, "classNo" | "birthYear">, no
 
 export const isMinor = (band: AgeBand | null) => band !== "18p";
 
+/** A school board profile (`cbse-10-2027`): picked through the class step, not as an exam card. */
+export const isSchoolProfile = (g: Goal) => /^cbse-\d+-/.test(g);
+
+export type QuestionStep = "goal" | "class" | "birth-year" | "exam-date" | "level" | "buddy";
+
 /** Which question steps this student sees before the lesson (onboarding §5.1): drives the bar. */
-export function questionSteps(d: Pick<OnboardingData, "goals" | "classNo">): string[] {
-  const steps = ["goal"];
-  const competitive = d.goals.some((g) => g !== "school" && g !== "curious");
+export function questionSteps(d: Pick<OnboardingData, "goals" | "classNo" | "school">): QuestionStep[] {
+  const steps: QuestionStep[] = ["goal"];
+  if (d.school) steps.push("class");
+  const competitive = d.goals.some((g) => g !== "curious" && !isSchoolProfile(g));
   if (d.classNo === null) steps.push("birth-year");
   if (competitive || d.classNo === 10 || d.classNo === 12) steps.push("exam-date");
   if (!(d.goals.length === 1 && d.goals[0] === "curious")) steps.push("level");
   steps.push("buddy");
   return steps;
 }
+
+/** The step after `current`, or "plant" (ONB-12) after the last question. */
+export function nextStep(d: Pick<OnboardingData, "goals" | "classNo" | "school">, current: QuestionStep): QuestionStep | "plant" {
+  const steps = questionSteps(d);
+  const i = steps.indexOf(current);
+  return steps[i + 1] ?? "plant";
+}
+
+/** onboarding_answer values in the API's formats (apps/api profile_rules). */
+export type AnswerValue = string | number | string[] | { year: number; month: number } | null;

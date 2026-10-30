@@ -46,6 +46,7 @@ export interface FakeDbData {
   users: Record<string, FakeUser>;
   refresh: Record<string, string>;
   mergeIntents: Record<string, { guestId: string; email: string }>;
+  merges?: Record<string, { userId: string; at: number; include: boolean }>;
   checkouts: Record<string, { userId: string; intro: boolean; amount: number }>;
 }
 

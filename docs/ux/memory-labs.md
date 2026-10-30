@@ -1982,6 +1982,32 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 
 ---
 
+### WEB-03 · Web review intervals
+**Purpose:** Short interval labels under the web review rating buttons (MEM-03) when the FSRS preview is in hours or years; the minute, day and month labels already exist.
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Interval hour | {n} h | {n} घं |
+| Interval year | {n} y | {n} वर्ष |
+
+**Mock priority:** P1.
+
+---
+
+### WEB-04 · Web Labs subject filter
+**Purpose:** The subject chips on the web Labs hub (LAB-01), one per subject that has a sim.
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Subject physics | Physics | भौतिकी |
+| Subject chemistry | Chemistry | रसायन |
+
+**Mock priority:** P1.
+
+---
+
 ## P0 screens for the visual mocks
 
 MEM-01 Memory hub · MEM-02 Comeback plan · MEM-03 Review session (front, back with the streak chip, rescue mode, little learner) · MEM-04 Review session complete · MEM-07 Decks · MEM-14 Palace builder · MEM-19 Make it stick · MEM-25 Metacognitive dashboard · MEM-29 Focus session · LAB-01 Labs hub · LAB-04 Sim player (portrait, loading layer, landscape full screen) · LAB-05 Lab fallback explainer · LAB-08 3D viewer · LAB-10 360° viewer · LAB-13 Periodic table · LAB-14 Element sheet · LAB-16 Experiment detail.

@@ -2914,3 +2914,15 @@ Copy rules for new templates: no guilt ("You failed", "Don't let {pet} down"), n
 **Analytics:** `notification_sent` (`channel = email`), opens via the deep link only (no tracking pixels, especially for parents of minors).
 **Web (≥ 600 px):** not applicable.
 **Mock priority:** P2 · Phase 1 (parent report: Phase 3)
+
+---
+
+### WEB-05 · Web checkout messages
+**Purpose:** What the web checkout (PAY-06, PAY-08) says when the payment doesn't go through.
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Payment failed | The payment didn't go through. Nothing was charged. Try again? | भुगतान नहीं हो पाया। कोई पैसा नहीं कटा। फिर से कोशिश करें? |
+
+**Mock priority:** P1.

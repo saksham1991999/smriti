@@ -53,6 +53,8 @@ export interface Services {
   client: ApiClient;
   fetch: Fetch;
   srs: SrsScheduler;
+  /** UUIDv7 ids (sessions, events). */
+  newId: () => string;
   softPrompt: SoftPromptBudget;
   billing: BillingProvider;
   logger: Logger;
@@ -183,6 +185,7 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     client,
     fetch: fetchImpl,
     srs: new SrsScheduler(),
+    newId,
     softPrompt: new SoftPromptBudget(kv),
     billing: createBillingProvider(env, api),
     logger,

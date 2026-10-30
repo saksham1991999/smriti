@@ -1,0 +1,365 @@
+/**
+ * PAY-01 paywall, PAY-06 review and pay, PAY-08 confirming, PAY-09 Pro is on, PAY-12 Your plan.
+ * Prices come from `GET /v1/config` (tax-inclusive paise) and eligibility from the billing
+ * provider; dates come from the product's period and the entitlement, never typed in.
+ * `FakeBilling` (local and e2e) shows a test approve/decline step where Razorpay's frame would be.
+ */
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearch } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import type { EntitlementSection } from "@smriti/app-core";
+import { useAppStore } from "@smriti/app-core/react";
+import { Button, Card, Chip, Icon, Illustration, PetLine, PriceBlock, Sheet, Spinner, Text, TopBar, TrialTimeline, TrustLine } from "@smriti/ui-web";
+import { useServices } from "../../boot/context";
+import type { CheckoutSession } from "../../lib/contentTypes";
+import { savedEmail } from "../../lib/auth";
+import { formatDate, useI18n } from "../../lib/i18n";
+import { useOnline } from "../../lib/network";
+import { usePrices } from "../../lib/pricing";
+import { useIsPro } from "../../lib/pro";
+import { toast } from "../../lib/toast";
+import { useAgeBand } from "../../components/SignIn";
+import type { PaywallSearch } from "../../router";
+
+const DAY = 86_400_000;
+
+/** One billing period (the product's `period: month`) from `from`. */
+function addMonth(from: Date): Date {
+  const d = new Date(from);
+  d.setMonth(d.getMonth() + 1);
+  return d;
+}
+
+function useEligibility() {
+  const s = useServices();
+  const guest = useAppStore((x) => x.session.isGuest);
+  const userId = useAppStore((x) => x.session.userId);
+  return useQuery({ queryKey: ["billing", "eligibility", userId], enabled: !guest && !!userId, queryFn: () => s.billing.eligibility(), staleTime: 60_000 });
+}
+
+/** Applies a new entitlement now (server wins on the next sync). */
+function applyEntitlement(s: ReturnType<typeof useServices>, ent: EntitlementSection) {
+  s.store.getState().patch("entitlement", ent);
+  void s.refreshState().catch(() => undefined);
+}
+
+const PET_LINE: Record<string, "me_money:PAY-01.pet_deep_dive_lock" | "me_money:PAY-01.pet_practice_cap" | "me_money:PAY-01.pet_mock_lock"> = {
+  deep_dive_preview: "me_money:PAY-01.pet_deep_dive_lock",
+  deep_dive_lock: "me_money:PAY-01.pet_deep_dive_lock",
+  practice_limit: "me_money:PAY-01.pet_practice_cap",
+  mock_lock: "me_money:PAY-01.pet_mock_lock",
+};
+
+export function Paywall() {
+  const { source } = useSearch({ strict: false }) as PaywallSearch;
+  const s = useServices();
+  const { t, locale } = useI18n();
+  const navigate = useNavigate();
+  const online = useOnline();
+  const prices = usePrices();
+  const pro = useIsPro();
+  const guest = useAppStore((x) => x.session.isGuest);
+  const pet = useAppStore((x) => x.pet);
+  const band = useAgeBand();
+  const elig = useEligibility();
+  const eligible = guest ? true : (elig.data?.eligible ?? true);
+  const tracked = useRef(false);
+  const now = new Date();
+  const renew = addMonth(now);
+  const reminder = new Date(renew.getTime() - s.flags.get("billing.trial_reminder_days_before") * DAY);
+  const limit = s.flags.get("free.practice_questions_per_day");
+
+  useEffect(() => {
+    if (tracked.current) return;
+    tracked.current = true;
+    s.analytics.track("paywall_opened", { source: source ?? "deeplink", platform: "web", intro_eligible: String(eligible), variant: "default" });
+  }, [s, source, eligible]);
+
+  const close = () => {
+    s.analytics.track("paywall_dismissed", { source: source ?? "deeplink", method: "maybe_later" });
+    if (window.history.length > 1) window.history.back();
+    else void navigate({ to: "/learn" });
+  };
+  const cta = () => {
+    s.analytics.track("paywall_cta_tapped", { source: source ?? "deeplink", intro_eligible: String(eligible) });
+    if (guest) void navigate({ to: "/login", search: { reason: "start_trial", next: "/pro/checkout" } });
+    else void navigate({ to: "/pro/checkout" });
+  };
+
+  if (pro) {
+    return (
+      <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col gap-4 px-4" data-testid="pay-01">
+        <TopBar onBack={close} backIcon="X" />
+        <main id="main" className="flex flex-col gap-4">
+          <Text variant="title" heading as="h1">
+            {t("me_money:PAY-09.title")}
+          </Text>
+          <Button label={t("me_money:PAY-12.title")} onPress={() => void navigate({ to: "/me/plan" })} />
+        </main>
+      </div>
+    );
+  }
+
+  const petKey = (source && PET_LINE[source]) || "me_money:PAY-01.pet_general";
+  const benefits = [
+    "me_money:PAY-01.benefit_deep_dives",
+    "me_money:PAY-01.benefit_practice",
+    "me_money:PAY-01.benefit_mocks",
+    "me_money:PAY-01.benefit_tutor",
+    "me_money:PAY-01.benefit_offline",
+    "me_money:PAY-01.benefit_freezes",
+  ] as const;
+  const teen = band === "13_17" || band === "10_12" || band === "u10";
+
+  return (
+    <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col px-4 pb-40" data-testid="pay-01">
+      <TopBar onBack={close} backIcon="X" />
+      <main id="main" className="flex flex-col gap-4">
+        <Illustration name="scene-paywall" width={320} height={200} decorative className="mx-auto" />
+        <Text variant="title" heading as="h1" align="center">
+          {eligible ? t("me_money:PAY-01.headline_eligible") : t("me_money:PAY-01.headline_not_eligible")}
+        </Text>
+        <Text tone="muted" align="center">
+          {eligible ? t("me_money:PAY-01.sub_eligible") : t("me_money:PAY-01.sub_not_eligible")}
+        </Text>
+        {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={t(petKey, { limit: limit ?? 0 })} />}
+        <ul className="m-0 flex list-none flex-col gap-2 p-0">
+          {benefits.map((k) => (
+            <li key={k} className="flex items-center gap-2">
+              <Icon name="CheckCircle" color="success" weight="fill" />
+              <Text>{t(k)}</Text>
+            </li>
+          ))}
+        </ul>
+        {prices ? (
+          <>
+            <PriceBlock
+              price={eligible ? t("me_money:PAY-01.plan_price_eligible") : t("me_money:PAY-01.plan_price_not_eligible")}
+              thenLine={t("me_money:PAY-01.plan_name")}
+              finePrint={t("me_money:PAY-01.gst_flagged")}
+              testID="price-block"
+            />
+            <TrialTimeline
+              eligible={eligible}
+              todayLabel={t("me_money:PAY-01.timeline_today")}
+              reminderDate={formatDate(reminder, locale)}
+              renewDate={formatDate(renew, locale)}
+              trialPrice={prices.trial}
+              renewPrice={prices.monthly}
+              testID="trial-timeline"
+            />
+          </>
+        ) : (
+          <Text tone="muted">{t("me_money:PAY-01.price_loading")}</Text>
+        )}
+        <Text variant="caption" tone="muted">
+          {t("me_money:PAY-01.everywhere", { brand: s.variant.appName[locale] })}
+        </Text>
+      </main>
+      <footer className="fixed inset-x-0 bottom-0 border-t border-hairline bg-surface px-4 py-3">
+        <div className="mx-auto flex max-w-[560px] flex-col gap-2">
+          {!online && <Text variant="caption" tone="muted">{t("me_money:PAY-01.offline")}</Text>}
+          <Button label={eligible ? t("me_money:PAY-01.cta_eligible") : t("me_money:PAY-01.cta_not_eligible")} onPress={cta} disabled={!online || !prices} testID="pay-cta" />
+          {guest && (
+            <Text variant="caption" tone="muted" align="center">
+              {t("me_money:PAY-01.guest_hint_under_cta")}
+            </Text>
+          )}
+          {teen && (
+            <Text variant="caption" tone="muted" align="center">
+              {t("me_money:PAY-01.teen_consent_caption")}
+            </Text>
+          )}
+          <Button variant="ghost" label={t("me_money:PAY-01.maybe_later")} onPress={close} testID="pay-later" />
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export function Checkout() {
+  const s = useServices();
+  const { t, locale } = useI18n();
+  const navigate = useNavigate();
+  const guest = useAppStore((x) => x.session.isGuest);
+  const prices = usePrices();
+  const elig = useEligibility();
+  const [session, setSession] = useState<CheckoutSession | null>(null);
+  const [phase, setPhase] = useState<"review" | "approve" | "confirming">("review");
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (guest) void navigate({ to: "/login", search: { reason: "start_trial", next: "/pro/checkout" }, replace: true });
+  }, [guest, navigate]);
+  if (guest || elig.isPending) return <Spinner label={t("learn:WEB-01.loading")} />;
+
+  const eligible = elig.data?.eligible ?? false;
+  const renew = addMonth(new Date());
+  const reminder = new Date(renew.getTime() - s.flags.get("billing.trial_reminder_days_before") * DAY);
+  const email = savedEmail.get();
+
+  const start = async () => {
+    setBusy(true);
+    try {
+      const co = await s.billing.start();
+      s.analytics.track("checkout_started", { platform: "web", product_id: co.intro ? "pro_monthly_intro_web" : "pro_monthly_web", intro: String(co.intro) });
+      setSession(co);
+      setPhase(s.billing.id === "fake" ? "approve" : "confirming");
+      if (s.billing.id !== "fake") await finish(co);
+    } catch {
+      toast.show(t("learn:WEB-01.load_error"), { tone: "error" });
+    } finally {
+      setBusy(false);
+    }
+  };
+  const finish = async (co: CheckoutSession, simulate: "success" | "failure" = "success") => {
+    setPhase("confirming");
+    const r = await s.billing.pay(co, { simulate }).catch(() => ({ status: "failed" as const }));
+    s.analytics.track("checkout_result", { platform: "web", result: r.status === "active" ? "success" : r.status === "cancelled" ? "user_cancelled" : r.status === "pending" ? "pending" : "failed", error_code: r.status === "active" ? "none" : r.status });
+    if (r.status === "active") {
+      applyEntitlement(s, r.entitlement);
+      void navigate({ to: "/pro/welcome", replace: true });
+    } else {
+      toast.show(t("me_money:WEB-05.payment_failed"), { tone: "error" });
+      setPhase("review");
+    }
+  };
+
+  return (
+    <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col gap-4 px-4 pb-6" data-testid="pay-06">
+      <TopBar title={t("me_money:PAY-06.title")} onBack={() => void navigate({ to: "/pro" })} />
+      {phase === "confirming" ? (
+        <main id="main" className="flex flex-col items-center gap-4 py-8" data-testid="pay-08">
+          <Spinner label={t("me_money:PAY-08.title")} />
+          <Text variant="heading" heading as="h1" align="center">
+            {t("me_money:PAY-08.title")}
+          </Text>
+          <Text tone="muted" align="center">
+            {t("me_money:PAY-08.pet_line")}
+          </Text>
+        </main>
+      ) : (
+        <main id="main" className="flex flex-col gap-4">
+          <Card tone="sunken">
+            <span className="flex flex-col gap-2">
+              <Text variant="heading">{t("me_money:PAY-06.plan")}</Text>
+              {eligible ? (
+                <>
+                  <Text>{t("me_money:PAY-06.today")}</Text>
+                  <Text tone="muted">{t("me_money:PAY-06.reminder", { reminder_date: formatDate(reminder, locale) })}</Text>
+                  <Text tone="muted">{t("me_money:PAY-06.then", { date: formatDate(renew, locale) })}</Text>
+                </>
+              ) : (
+                <Text>{t("me_money:PAY-06.today_not_eligible", { day: renew.getDate() })}</Text>
+              )}
+              {email && (
+                <Text variant="caption" tone="muted">
+                  {t("me_money:PAY-06.account", { email })}
+                </Text>
+              )}
+            </span>
+          </Card>
+          <ul className="m-0 flex list-none flex-col gap-2 p-0">
+            {(["me_money:PAY-06.autopay_1", "me_money:PAY-06.autopay_2", "me_money:PAY-06.autopay_3"] as const).map((k) => (
+              <li key={k} className="flex items-center gap-2">
+                <Icon name="CheckCircle" color="success" />
+                <Text>{t(k, { brand: s.variant.appName[locale] })}</Text>
+              </li>
+            ))}
+          </ul>
+          <Text variant="caption" tone="muted">
+            {t("me_money:PAY-06.methods")} · {t("me_money:PAY-01.gst_flagged")}
+          </Text>
+          <Button label={eligible ? t("me_money:PAY-06.cta") : t("me_money:PAY-06.cta_not_eligible")} onPress={() => void start()} disabled={busy || !prices} testID="pay-06-cta" />
+          <TrustLine />
+        </main>
+      )}
+      <Sheet open={phase === "approve" && !!session} onOpenChange={(o) => !o && setPhase("review")} title={t("learn:WEB-01.fake_pay_title")} description={t("learn:WEB-01.fake_pay_body")} testID="fake-pay">
+        <div className="flex flex-col gap-3 pb-2">
+          <Chip kind="status" tone="warning" icon="Info" label={t("learn:WEB-01.fixture_notice")} />
+          <Button label={t("learn:WEB-01.fake_pay_approve")} onPress={() => session && void finish(session, "success")} testID="fake-pay-approve" />
+          <Button variant="secondary" label={t("learn:WEB-01.fake_pay_decline")} onPress={() => session && void finish(session, "failure")} testID="fake-pay-decline" />
+        </div>
+      </Sheet>
+    </div>
+  );
+}
+
+export function ProWelcome() {
+  const s = useServices();
+  const { t, locale } = useI18n();
+  const navigate = useNavigate();
+  const ent = useAppStore((x) => x.entitlement);
+  const pet = useAppStore((x) => x.pet);
+  const until = ent?.pro_until ? new Date(ent.pro_until) : null;
+  const reminder = until ? new Date(until.getTime() - s.flags.get("billing.trial_reminder_days_before") * DAY) : null;
+  return (
+    <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col items-center gap-4 px-4 py-8 text-center" data-testid="pay-09">
+      <main id="main" className="flex flex-col items-center gap-4">
+        <Illustration name={pet?.species === "dog" ? "dog-celebrate" : "cat-celebrate"} width={240} height={240} decorative />
+        <Text variant="title" heading as="h1" align="center" testID="pro-on">
+          {t("me_money:PAY-09.title")}
+        </Text>
+        {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={t("me_money:PAY-09.pet_line")} />}
+        {until && (
+          <Text tone="muted" align="center">
+            {ent?.is_intro && reminder
+              ? t("me_money:PAY-09.terms_intro", { date: formatDate(until, locale), reminder_date: formatDate(reminder, locale) })
+              : t("me_money:PAY-09.terms_regular", { date: formatDate(until, locale) })}
+          </Text>
+        )}
+        <Button label={t("me_money:PAY-09.continue")} onPress={() => void navigate({ to: "/learn", replace: true })} testID="pay-09-continue" />
+        <Button variant="ghost" label={t("me_money:PAY-09.cancel_link")} onPress={() => void navigate({ to: "/me/plan" })} />
+      </main>
+    </div>
+  );
+}
+
+export function YourPlan() {
+  const s = useServices();
+  const { t, locale } = useI18n();
+  const navigate = useNavigate();
+  const pro = useIsPro();
+  const ent = useAppStore((x) => x.entitlement);
+  const [busy, setBusy] = useState(false);
+  const until = ent?.pro_until ? new Date(ent.pro_until) : null;
+  const cancel = async () => {
+    setBusy(true);
+    try {
+      applyEntitlement(s, await s.billing.cancel());
+    } catch {
+      toast.show(t("learn:WEB-01.load_error"), { tone: "error" });
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="flex flex-col gap-4 pb-6" data-testid="pay-12">
+      <TopBar title={t("me_money:PAY-12.title")} onBack={() => void navigate({ to: "/me" })} />
+      <div className="flex flex-col gap-4 px-4 md:px-8">
+        {pro && until ? (
+          <>
+            <Card tone="tint">
+              <span className="flex flex-col gap-2">
+                <span className="flex items-center gap-2">
+                  <Text variant="heading">{t("me_money:PAY-12.plan")}</Text>
+                  <Chip kind="status" tone="success" label={t("me_money:PAY-12.active")} />
+                </span>
+                <Text tone="muted">
+                  {ent?.cancel_at_period_end
+                    ? t("me_money:PAY-12.ends", { date: formatDate(until, locale) })
+                    : ent?.is_intro
+                      ? t("me_money:PAY-12.intro_line", { date: formatDate(until, locale) })
+                      : t("me_money:PAY-12.next_charge", { date: formatDate(until, locale) })}
+                </Text>
+              </span>
+            </Card>
+            {!ent?.cancel_at_period_end && <Button variant="destructive" label={t("me_money:PAY-12.cancel")} onPress={() => void cancel()} disabled={busy} testID="pay-12-cancel" />}
+          </>
+        ) : (
+          <Button label={t("me_money:PAY-12.get_again")} onPress={() => void navigate({ to: "/pro", search: { source: "settings" } })} testID="pay-12-get" />
+        )}
+      </div>
+    </div>
+  );
+}

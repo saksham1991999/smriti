@@ -7,7 +7,6 @@
 import {
   nextStageAt,
   stageForPoints,
-  toFsrsStatePayload,
   type Confidence,
   type Json,
   type NewOutboxRow,
@@ -22,6 +21,7 @@ import {
 import type { TypedBundle } from "@smriti/content-schema";
 import { visibleBites, type EventEnvelope, type LessonPlan, type LessonState } from "@smriti/lesson-core";
 import type { Services } from "../boot/services";
+import { useDaily } from "./daily";
 import { useOnboarding } from "./onboarding";
 
 const EMPTY_STREAK: StreakSection = { current: 0, longest: 0, today_qualified: false, freezes_equipped: 1, freezes_available: 0, rest_day: null, at_risk: false };
@@ -171,8 +171,8 @@ export async function finishLesson(s: Services, args: { plan: LessonPlan; state:
       const row = existing.get(cardRef) ?? rows.find((r) => r.card_ref === cardRef);
       if (!row) continue;
       const res = s.srs.schedule(row, rating, now);
-      await tx.srs_cards.put(res.row);
-      const ev = s.outbox.create("review_rated", { card_ref: cardRef, rating, confidence: null, ms_to_answer: 0, fsrs_state: toFsrsStatePayload(res.row) });
+      await tx.srs_cards.put(res.card);
+      const ev = s.outbox.create("review_rated", { card_ref: cardRef, rating, confidence: null, ms_to_answer: 0, fsrs_state: res.fsrsState });
       reviewEvents.push(ev);
       await tx.outbox.append(ev);
     }
@@ -183,10 +183,11 @@ export async function finishLesson(s: Services, args: { plan: LessonPlan; state:
     }
   });
   if (counts) s.store.setState({ streak, plant, wallet });
+  useDaily.getState().add(summary.msTotal);
   if (reviewEvents.length) void s.sync.flush();
   const lessonsCompleted = useOnboarding.getState().lessonsCompleted + (counts ? 1 : 0);
   useOnboarding.getState().update({ lessonsCompleted });
-  s.analytics.track("lesson_completed", { topic_id: plan.topicId, mode: plan.mode, xp: summary.xp });
+  s.analytics.track("lesson_completed", { topic_id: plan.topicId, mode: plan.mode, xp_estimate: summary.xp, cards_seen: String(summary.cardsSeen), lesson_count: lessonsCompleted });
   return {
     xp: summary.xp,
     streakBefore: streakBefore.current,
@@ -223,8 +224,9 @@ export async function rateCard(s: Services, row: SrsCardRow, rating: ReviewRatin
   const result = s.srs.schedule(row, rating, new Date());
   await s.record(
     "review_rated",
-    { card_ref: row.card_ref, rating, confidence, ms_to_answer: Math.round(ms), fsrs_state: toFsrsStatePayload(result.row) },
-    (tx) => tx.srs_cards.put(result.row),
+    { card_ref: row.card_ref, rating, confidence, ms_to_answer: Math.round(ms), fsrs_state: result.fsrsState },
+    (tx) => tx.srs_cards.put(result.card),
   );
-  return result.row;
+  useDaily.getState().add(ms);
+  return result.card;
 }

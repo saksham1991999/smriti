@@ -103,6 +103,8 @@ export interface CatalogTopic {
   hasQuickRevision: boolean;
   deepDiveFree: boolean;
   cardCount: number;
+  /** Questions in the topic's practice bundle (0 when there is none). */
+  practiceCount: number;
 }
 export interface CatalogChapter {
   id: string;
@@ -153,6 +155,7 @@ export function catalogFrom(m: Manifest | undefined): CatalogSubject[] {
                 hasQuickRevision: !!t.bundles.quick_revision,
                 deepDiveFree: dd?.is_free ?? false,
                 cardCount: dd?.card_count ?? 0,
+                practiceCount: t.bundles.practice?.card_count ?? 0,
               };
             }),
         })),

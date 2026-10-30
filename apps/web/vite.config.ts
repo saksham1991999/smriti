@@ -2,7 +2,7 @@
 //   production (default `vite build`) talks to the real API from VITE_API_BASE_URL and must never
 //   contain the fake API: the `no-fake-api` plugin fails the build if anything under src/dev/ is pulled in.
 //   fake (`pnpm dev`) and e2e (`pnpm build:e2e`) run against the in-process fake in src/dev/fake-api.
-import { createReadStream, existsSync, statSync } from "node:fs";
+import { createReadStream, existsSync, readFileSync, statSync } from "node:fs";
 import type { ServerResponse } from "node:http";
 import { dirname, join, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,6 +13,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const devDir = join(here, "src", "dev");
+const pkgVersion = (JSON.parse(readFileSync(join(here, "package.json"), "utf8")) as { version: string }).version;
 
 /** Fails a production build that includes the fake API or any other dev-only module. */
 function noFakeApi(mode: string): Plugin {
@@ -63,7 +64,21 @@ function fixtureContent(mode: string): Plugin | null {
   };
 }
 
+/** Modes that may run the in-process fake API. Every other mode gets a stub that throws. */
+const FAKE_MODES = new Set(["fake", "e2e", "test"]);
+/** Modes that run on the fixture content, so the mock runner shell can use the fixture blueprint. */
+const FIXTURE_MODES = new Set(["fake", "e2e", "e2e-real", "test"]);
+
 export default defineConfig(({ mode }) => ({
+  define: { __APP_VERSION__: JSON.stringify(pkgVersion) },
+  resolve: {
+    alias: {
+      "@fake-api": FAKE_MODES.has(mode) ? join(here, "src", "dev", "fake-api", "index.ts") : join(here, "src", "boot", "noFakeApi.ts"),
+      // Blueprints are not in the published manifest or an API route yet; until they are, only the
+      // fixture modes get one (content/fixtures, labelled fixture) and production shows MOCK-01's empty state.
+      "@mock-blueprint": FIXTURE_MODES.has(mode) ? join(here, "src", "dev", "fixtureBlueprint.ts") : join(here, "src", "boot", "noBlueprint.ts"),
+    },
+  },
   plugins: [
     noFakeApi(mode),
     fixtureContent(mode),

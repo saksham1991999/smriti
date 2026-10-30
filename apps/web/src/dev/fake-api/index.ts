@@ -246,46 +246,74 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
       return HttpResponse.json({ entitlement: u.entitlement });
     }),
 
-    // ── Account: merge, deletion, guardian consent ───────────────────────────
-    http.post(url("/v1/account/merge-intents"), async ({ request }) => {
+    // ── Account: link, merge, deletion (shaped like apps/api routes/accounts.py) ─
+    http.post(url("/v1/auth/linked"), ({ request }) => {
       const u = authed(request);
-      if (!u?.isAnonymous) return HttpResponse.json({ code: "not_a_guest" }, { status: 403 });
-      const body = (await request.json()) as { email?: string };
-      const id = rid();
-      data.mergeIntents[id] = { guestId: u.id, email: (body.email ?? "").toLowerCase() };
+      if (!u || u.isAnonymous) return problem(403, "sign_in_required");
+      const st = computeState(u, now());
+      return HttpResponse.json({ profile: st.profile, consent_needed: false, show_shared_phone_check: false });
+    }),
+    http.post(url("/v1/account/merge-intents"), ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (!u.isAnonymous) return problem(409, "not_a_guest");
+      const token = `${rid()}${rid()}`.replace(/-/g, "");
+      data.mergeIntents[token] = { guestId: u.id, email: "" };
       save();
-      return HttpResponse.json({ intent_id: id, expires_in: 600 });
+      return HttpResponse.json({ merge_intent: token, expires_at: new Date(now() + 600_000).toISOString() });
     }),
     http.post(url("/v1/account/merges"), async ({ request }) => {
       const u = authed(request);
-      if (!u || u.isAnonymous) return unauthorized();
-      const body = (await request.json()) as { intent_id?: string };
-      const intent = body.intent_id ? data.mergeIntents[body.intent_id] : undefined;
+      if (!u || u.isAnonymous) return problem(403, "sign_in_required");
+      const body = (await request.json()) as { merge_intent?: string; include_progress?: boolean };
+      const intent = body.merge_intent ? data.mergeIntents[body.merge_intent] : undefined;
       const guest = intent ? data.users[intent.guestId] : undefined;
-      if (!intent || !guest || intent.email !== u.email) return HttpResponse.json({ code: "invalid_intent" }, { status: 409 });
+      if (!intent || !guest) return problem(409, "merge_intent_invalid");
+      if (guest.id === u.id) return problem(409, "same_account");
       // Union of events (event ids keep it idempotent). The account keeps its own pet and profile.
-      const have = new Set(u.events.map((e) => e.event_id));
-      const keepTypes = new Set(["pet_named", "onboarding_answer"]);
-      const accountHasPet = u.events.some((e) => e.type === "pet_named");
-      for (const e of guest.events) {
-        if (have.has(e.event_id)) continue;
-        if (accountHasPet && keepTypes.has(e.type)) continue;
-        u.events.push(e);
+      if (body.include_progress !== false) {
+        const have = new Set(u.events.map((e) => e.event_id));
+        const keepTypes = new Set(["pet_named", "onboarding_answer"]);
+        const accountHasPet = u.events.some((e) => e.type === "pet_named");
+        for (const e of guest.events) {
+          if (have.has(e.event_id)) continue;
+          if (accountHasPet && keepTypes.has(e.type)) continue;
+          u.events.push(e);
+        }
+        u.events.sort((a, b) => a.occurred_at.localeCompare(b.occurred_at));
       }
-      u.events.sort((a, b) => a.occurred_at.localeCompare(b.occurred_at));
       u.version += 1;
       guest.deletedAt = now();
-      delete data.mergeIntents[body.intent_id ?? ""];
+      delete data.mergeIntents[body.merge_intent ?? ""];
+      const mergeId = rid();
+      data.merges = { ...(data.merges ?? {}), [mergeId]: { userId: u.id, at: now(), include: body.include_progress !== false } };
       save();
-      return HttpResponse.json({ status: "merged", state_version: u.version });
+      return HttpResponse.json({ merge_id: mergeId, status: "queued" }, { status: 202 });
+    }),
+    http.get(url("/v1/account/merges/:id"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const m = data.merges?.[String(params.id)];
+      if (!m || m.userId !== u.id) return problem(404, "not_found");
+      const at = new Date(m.at).toISOString();
+      return HttpResponse.json({ merge_id: params.id, status: "done", include_progress: m.include, attempts: 1, failure_code: null, stats: null, created_at: at, finished_at: at });
+    }),
+    http.delete(url("/v1/account"), ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (!u.isAnonymous) return problem(409, "not_a_guest");
+      u.deletedAt = now();
+      save();
+      return new HttpResponse(null, { status: 204 });
     }),
     http.post(url("/v1/account/deletion"), ({ request }) => {
       const u = authed(request);
-      if (!u) return unauthorized();
+      if (!u || u.isAnonymous) return problem(403, "sign_in_required");
       u.deletedAt = now();
       save();
-      return HttpResponse.json({ status: "scheduled", erase_after: new Date(now() + 7 * 86_400_000).toISOString() });
+      return HttpResponse.json({ scheduled_for: new Date(now() + 7 * 86_400_000).toISOString() }, { status: 202 });
     }),
+
     http.post(url("/v1/guardian/consents"), async ({ request }) => {
       const u = authed(request);
       if (!u) return unauthorized();

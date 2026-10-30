@@ -95,7 +95,7 @@ class DexieOutbox implements OutboxTable {
     const existing = await this.table().where("event_id").equals(row.event_id).first();
     if (existing) return existing as OutboxRow<T>;
     const stored = { ...row, attempts: 0, last_error: null, sent_at: null } as Omit<OutboxRow<T>, "seq">;
-    const seq = await this.table().add(stored as OutboxRow);
+    const seq = await this.table().add(stored as unknown as OutboxRow);
     return { ...stored, seq } as OutboxRow<T>;
   }
   async peek(limit: number) {
@@ -179,11 +179,13 @@ export class DexieStorage implements Storage {
   get asset_cache() { return this.t.asset_cache; }
 
   transaction<T>(fn: (tx: StorageTables) => Promise<T>): Promise<T> {
-    return this.db.transaction("rw", this.db.tables, (tx) => fn(buildTables(this.db, tx)));
+    // Dexie's overloads recurse too deeply on our table map; call through a plain signature.
+    const tx = this.db.transaction.bind(this.db) as unknown as (mode: "rw", tables: DexieTable[], scope: (t: Transaction) => Promise<T>) => Promise<T>;
+    return tx("rw", this.db.tables, (t) => fn(buildTables(this.db, t)));
   }
 
   async wipe() {
-    await this.db.transaction("rw", this.db.tables, async () => {
+    await this.transaction(async () => {
       for (const table of this.db.tables) await table.clear();
     });
   }

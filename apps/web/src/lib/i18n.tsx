@@ -23,9 +23,10 @@ export function initialLocale(): Locale {
   return "en";
 }
 
-export function I18nProvider({ brand, children, onLocaleChange }: { brand: string; children: ReactNode; onLocaleChange?: (l: Locale) => void }) {
+export function I18nProvider({ brand, children, onLocaleChange }: { brand: Localised; children: ReactNode; onLocaleChange?: (l: Locale) => void }) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
-  const translator = useMemo(() => createI18n({ locale, brand }), [locale, brand]);
+  const brandName = brand[locale];
+  const translator = useMemo(() => createI18n({ locale, brand: brandName }), [locale, brandName]);
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);

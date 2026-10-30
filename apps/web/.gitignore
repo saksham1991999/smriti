@@ -1,8 +1,11 @@
 dist/
 dist-e2e/
 public/sims/
+public/assets/
+dist-e2e-real/
 playwright-report/
 test-results/
 # Public, secret-free mode files for the fake API (the root ignores .env.*).
 !.env.fake
 !.env.e2e
+!.env.e2e-real

@@ -1,13 +1,24 @@
 import { useStoreSelector } from '@smriti/app-core/react';
 import type { MessageKey, MessageValues } from '@smriti/i18n';
-import { createContext, useCallback, useContext, type ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { createContext, useCallback, useContext, useState, type ReactNode } from 'react';
 
 import type { SmritiApp, UiState } from './app';
 
 const AppContext = createContext<SmritiApp | null>(null);
 
+/** Server data that is not progress (practice hub, mocks, tutor) goes through TanStack Query. */
+function newQueryClient(): QueryClient {
+  return new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 30_000, gcTime: 5 * 60_000 } } });
+}
+
 export function AppProvider({ app, children }: { app: SmritiApp; children: ReactNode }) {
-  return <AppContext.Provider value={app}>{children}</AppContext.Provider>;
+  const [queries] = useState(newQueryClient);
+  return (
+    <AppContext.Provider value={app}>
+      <QueryClientProvider client={queries}>{children}</QueryClientProvider>
+    </AppContext.Provider>
+  );
 }
 
 export function useApp(): SmritiApp {

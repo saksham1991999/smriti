@@ -15,6 +15,11 @@ export interface LocalNotifier {
    * a simulator, the web preview, or no EAS project id yet (`EAS_PROJECT_ID`).
    */
   pushToken(): Promise<string | null>;
+  /**
+   * Calls back when the student taps a notification: its deep link (`data.url`) and, for a server
+   * push, the outbox id (`data.id`) that `/v1/notifications/opened` stamps. Returns an unsubscribe.
+   */
+  onOpened(listener: (tap: { url: string | null; id: string | null }) => void): () => void;
 }
 
 /** Copy for one planned send (already localised by the caller). */
@@ -74,6 +79,15 @@ export class ExpoNotifier implements LocalNotifier {
     }
   }
 
+  onOpened(listener: (tap: { url: string | null; id: string | null }) => void) {
+    if (Platform.OS === 'web') return () => undefined;
+    const sub = Notifications.addNotificationResponseReceivedListener((r) => {
+      const data = (r.notification.request.content.data ?? {}) as { url?: unknown; id?: unknown; class?: unknown };
+      listener({ url: typeof data.url === 'string' ? data.url : null, id: data.class !== 'habit' && typeof data.id === 'string' ? data.id : null });
+    });
+    return () => sub.remove();
+  }
+
   private async ensureChannel() {
     if (this.channelReady || Platform.OS !== 'android') return;
     await Notifications.setNotificationChannelAsync(HABIT_CHANNEL, { name: 'Habit', importance: Notifications.AndroidImportance.DEFAULT });
@@ -100,5 +114,14 @@ export class MemoryNotifier implements LocalNotifier {
   token: string | null = null;
   async pushToken() {
     return this.status === 'granted' ? this.token : null;
+  }
+  private listeners = new Set<(tap: { url: string | null; id: string | null }) => void>();
+  onOpened(listener: (tap: { url: string | null; id: string | null }) => void) {
+    this.listeners.add(listener);
+    return () => void this.listeners.delete(listener);
+  }
+  /** Tests: simulates a tap. */
+  tap(t: { url: string | null; id: string | null }) {
+    for (const l of this.listeners) l(t);
   }
 }

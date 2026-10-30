@@ -3,7 +3,7 @@ import type { ExamKey } from '@smriti/tokens';
 import { UIProvider } from '@smriti/ui-native';
 import { smritiFonts } from '@smriti/ui-native/fonts';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { router, Stack, type Href } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ import { bundledIllustrations } from '../src/seed/illustrations';
 import type { SmritiApp } from '../src/services/app';
 import { AppProvider, useUiState } from '../src/services/context';
 import { getDeviceApp } from '../src/services/device';
+import { routeForLink } from '../src/services/links';
 
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
@@ -33,6 +34,14 @@ export default function RootLayout() {
       alive = false;
     };
   }, []);
+  useEffect(() => {
+    if (!app) return;
+    // A tapped reminder or push: report it (R34) and open its screen.
+    return app.deps.notifier.onOpened(({ url, id }) => {
+      void app.notificationOpened(id);
+      if (app.ui.getState().onboarding.completedAt) router.push(routeForLink(url) as Href);
+    });
+  }, [app]);
   const ready = Boolean(app) && fontsLoaded;
   useEffect(() => {
     if (ready) void SplashScreen.hideAsync().catch(() => undefined);

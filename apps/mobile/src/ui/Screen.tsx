@@ -1,4 +1,4 @@
-import { useTheme } from '@smriti/ui-native';
+import { IconButton, Text, useTheme } from '@smriti/ui-native';
 import type { ReactNode } from 'react';
 import { ScrollView, StyleSheet, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -45,7 +45,21 @@ export function Stack({ gap = 12, children, style, row }: { gap?: number; childr
   return <View style={[{ gap, flexDirection: row ? 'row' : 'column' }, row ? styles.rowAlign : null, style]}>{children}</View>;
 }
 
+/** Back button and title for pushed screens. */
+export function BackHeader({ title, backLabel, onBack, trailing }: { title: string; backLabel: string; onBack: () => void; trailing?: ReactNode }) {
+  return (
+    <View style={styles.header}>
+      <IconButton icon="CaretLeft" label={backLabel} onPress={onBack} testID="back" />
+      <Text variant="title" heading style={styles.grow}>
+        {title}
+      </Text>
+      {trailing}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
+  header: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   root: { flex: 1 },
   grow: { flex: 1 },
   content: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 24, gap: 16 },

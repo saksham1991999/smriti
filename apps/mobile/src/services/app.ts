@@ -169,6 +169,8 @@ export class SmritiApp {
   readonly widget: WidgetBridge;
   /** Typed REST client for non-sync calls (@smriti/api-client). */
   readonly api: ApiClient;
+  /** UUIDv7 ids for client-made records (tutor message ids, idempotency). */
+  readonly newId: () => string;
   flags: Flags = defaultFlags;
   i18n: Translator;
   private readonly logger: Logger;
@@ -252,6 +254,7 @@ export class SmritiApp {
             offeringId: variant.revenuecatOfferingId,
           }));
     const newId = createIdGenerator(deps.crypto, deps.clock);
+    this.newId = newId;
     this.analytics = new AnalyticsClient({
       transport: deps.analyticsTransport ?? { send: async () => undefined },
       clock: deps.clock,
@@ -314,7 +317,10 @@ export class SmritiApp {
     this.sync.start();
     void this.ensureSession();
     void this.loadConfig();
-    if (onboarding.completedAt) void this.registerDevice();
+    if (onboarding.completedAt) {
+      void this.registerDevice();
+      void this.notificationOpened(null);
+    }
   }
 
   stop(): void {
@@ -803,6 +809,20 @@ export class SmritiApp {
       return true;
     } catch {
       return false;
+    }
+  }
+
+  /**
+   * `/v1/notifications/opened`: an app open resets the ignored-push count and any auto-pause
+   * (R34); a tapped server push also passes its outbox id. Best effort.
+   */
+  async notificationOpened(outboxId: string | null): Promise<void> {
+    try {
+      await this.ensureSession();
+      if (!(await this.auth.getAccessToken())) return;
+      await unwrap(this.api.POST('/v1/notifications/opened', { body: { id: outboxId } }));
+    } catch {
+      // Offline or signed out: the next open reports again.
     }
   }
 

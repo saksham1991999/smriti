@@ -96,6 +96,8 @@ export class FakeApiServer {
   private readonly clock: () => number;
   private readonly ttl: number;
   private readonly revenuecatAuth: string;
+  /** Outbox ids reported to `POST /v1/notifications/opened` (null for a plain app open). */
+  readonly opened: (string | null)[] = [];
   /** Devices registered with `POST /v1/devices`, by user id. */
   readonly devices = new Map<string, { pushToken: string | null; permission: string }>();
   failSyncWith: number | null;
@@ -166,6 +168,48 @@ export class FakeApiServer {
       const id = `dev-${user.id.slice(0, 8)}`;
       this.devices.set(user.id, { pushToken: typeof body.push_token === 'string' ? body.push_token : null, permission: String(body.notif_permission ?? 'not_asked') });
       return json(200, { id, has_push_token: typeof body.push_token === 'string', has_web_push: false, notif_permission: body.notif_permission ?? 'not_asked' });
+    }
+    if (method === 'POST' && p === '/v1/notifications/opened') {
+      this.opened.push(typeof body.id === 'string' ? body.id : null);
+      return raw(204, '', 'application/json');
+    }
+    // Practice, mocks and the tutor, shaped as apps/api returns them for a student with no
+    // practice history and no published question bank. Quotas are unlimited: the fake invents
+    // no limits (the real ones come from the API's flags).
+    if (method === 'GET' && p === '/v1/practice/hub') {
+      const unlimited = { used: 0, limit: null, remaining: null, unlimited: true };
+      const day = new Date(this.clock()).toISOString().slice(0, 10);
+      return json(200, {
+        exam: u.searchParams.get('exam') ?? '',
+        limits: { day, is_pro: user.entitlement.plan === 'pro', practice_questions: unlimited, sectional_mocks: unlimited, tutor_messages: unlimited },
+        weak_spots: [],
+        daily_challenge: { challenge_id: null, day, state: 'unavailable' },
+        mock_in_progress: null,
+        recent_sessions: [],
+      });
+    }
+    if (method === 'GET' && p === '/v1/mocks') return json(200, []);
+    if (method === 'GET' && p === '/v1/daily-challenge/today') return json(404, { code: 'not_found' });
+    if (method === 'POST' && p === '/v1/tutor/sessions') {
+      return json(200, {
+        id: `00000000-0000-7000-8000-${user.id.replace(/-/g, '').slice(0, 12)}`,
+        context: null,
+        exam_profile_id: typeof body.exam === 'string' ? body.exam : null,
+        last_message_at: null,
+        locale: 'en',
+        message_count: 0,
+        messages: [],
+        mode: 'chat',
+        quota: { used: 0, limit: null, remaining: null, unlimited: true },
+        resumed: false,
+        started_at: new Date(this.clock()).toISOString(),
+      });
+    }
+    if (method === 'POST' && /^\/v1\/tutor\/sessions\/[^/]+\/messages$/.test(p)) {
+      const sse = (event: string, data: unknown) => `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
+      // Marked like the API's FakeLLMProvider so it can never pass for a real answer.
+      const text = sse('delta', { text: `[fake] ${String(body.text ?? '')}` }) + sse('quota', { used: 0, limit: null, remaining: null, unlimited: true }) + sse('done', {});
+      return raw(200, text, 'text/event-stream');
     }
     return json(404, { code: 'not_found' });
   }
@@ -517,6 +561,16 @@ function b64url(text: string): string {
     if (i + 2 < bytes.length) out += alphabet[n & 63]!;
   }
   return out;
+}
+
+function raw(status: number, text: string, contentType: string): HttpResponse {
+  return {
+    status,
+    ok: status >= 200 && status < 300,
+    json: async () => JSON.parse(text) as unknown,
+    text: async () => text,
+    headers: { get: (n: string) => (n.toLowerCase() === 'content-type' ? contentType : null) },
+  };
 }
 
 function json(status: number, data: unknown): HttpResponse {

@@ -1,7 +1,8 @@
 import type { TypedBundle } from '@smriti/content-schema';
-import { LessonSession, lessonConfig, nextBite, planLesson, uuidv7, type EventEnvelope, type LessonConfig, type LessonPlan } from '@smriti/lesson-core';
+import { LessonSession, lessonConfig, nextBite, planLesson, uuidv7, type EventEnvelope, type LessonConfig, type LessonPlan, type LessonSummary } from '@smriti/lesson-core';
 
-import type { SmritiApp } from './app';
+import type { LessonEnd, SmritiApp } from './app';
+import { loadTopicStates, nextBiteFor, saveLessonResult } from './progress';
 
 export type LessonRunMode = 'deep_dive' | 'quick_revision' | 'onboarding';
 
@@ -47,19 +48,22 @@ export function firstTopicId(app: SmritiApp): string | null {
   return app.deps.content.topics(locale, app.examProfileId()).find((t) => t.hasDeepDive)?.id ?? null;
 }
 
-/**
- * Opens a lesson from the bundle on the device and wires lesson-core's session to the outbox.
- * Every envelope goes to the outbox in order; the caller awaits `drain()` before reading progress.
- */
-export function openLesson(
-  app: SmritiApp,
-  opts: { topicId: string; mode: LessonRunMode; biteId?: string; completedBites?: string[] },
-): LessonRun | null {
+export interface PreparedLesson {
+  plan: LessonPlan;
+  bundle: TypedBundle;
+  config: LessonConfig;
+  subject: string | undefined;
+  topicTitle: string;
+}
+
+/** Plans a lesson from the bundle on the device (lesson-core `planLesson`), or null when it is not here. */
+export function prepareLesson(app: SmritiApp, opts: { topicId: string; mode: LessonRunMode; biteId?: string; completedBites?: string[] }): PreparedLesson | null {
   const locale = app.ui.getState().locale;
-  const loaded = app.deps.content.load(locale, opts.topicId, opts.mode === 'quick_revision' ? 'quick_revision' : 'deep_dive', app.examProfileId());
+  const exam = app.examProfileId();
+  const loaded = app.deps.content.load(locale, opts.topicId, opts.mode === 'quick_revision' ? 'quick_revision' : 'deep_dive', exam);
   if (!loaded) return null;
   const config = lessonConfigFrom(app);
-  const topic = app.deps.content.topic(locale, opts.topicId, app.examProfileId());
+  const topic = app.deps.content.topic(locale, opts.topicId, exam);
   const previewLimited = opts.mode === 'deep_dive' && !app.isPro() && !(topic?.freeDeepDive ?? true);
   const biteId = opts.biteId ?? (opts.mode === 'deep_dive' && opts.completedBites ? nextBite(loaded.bundle, loaded.examDepth, opts.completedBites)?.id : undefined);
   const plan = planLesson(loaded.bundle, {
@@ -72,15 +76,69 @@ export function openLesson(
     level: toPlanLevel(app.ui.getState().onboarding.level),
     config,
   });
+  const subject = app.deps.content.subjectOf(locale, opts.topicId, exam)?.colorFamily;
+  return { plan, bundle: loaded.bundle, config, subject, topicTitle: topic?.name ?? loaded.bundle.topic.name };
+}
+
+/** Writes lesson envelopes to the outbox one after another; `drain()` waits for the last one. */
+export function eventSink(app: SmritiApp): { push: (env: EventEnvelope) => void; drain: () => Promise<void> } {
   let chain: Promise<void> = Promise.resolve();
+  // The host may hand over the same envelope twice (exit after LES-05 re-reads `session.emitted`).
+  const seen = new Set<string>();
+  return {
+    push: (env) => {
+      if (seen.has(env.event_id)) return;
+      seen.add(env.event_id);
+      chain = chain.then(() => app.recordEnvelope(env)).catch(() => undefined);
+    },
+    drain: () => chain,
+  };
+}
+
+/**
+ * Opens a lesson without a screen (tests and the live journey): lesson-core's session wired to
+ * the outbox. The caller awaits `drain()` before reading progress.
+ */
+export function openLesson(
+  app: SmritiApp,
+  opts: { topicId: string; mode: LessonRunMode; biteId?: string; completedBites?: string[] },
+): LessonRun | null {
+  const prepared = prepareLesson(app, opts);
+  if (!prepared) return null;
+  const sink = eventSink(app);
   const session = new LessonSession({
-    config,
+    config: prepared.config,
     clock: () => app.now(),
     tz: app.deps.timeZone(),
     newId: (now) => uuidv7(now),
-    onEvent: (env: EventEnvelope) => {
-      chain = chain.then(() => app.recordEnvelope(env)).catch(() => undefined);
-    },
+    onEvent: sink.push,
   });
-  return { session, plan, bundle: loaded.bundle, config, drain: () => chain };
+  return { session, plan: prepared.plan, bundle: prepared.bundle, config: prepared.config, drain: sink.drain };
+}
+
+/**
+ * After the player reaches `complete`: every event in the outbox, local progress saved, then the
+ * optimistic Home header and the one extra prompt (`app.completeLesson`). Returns what LES-08 shows.
+ */
+export async function finishLesson(app: SmritiApp, prepared: Pick<PreparedLesson, 'plan' | 'bundle' | 'topicTitle'>, summary: LessonSummary, sink: { drain: () => Promise<void> }): Promise<LessonEnd> {
+  await sink.drain();
+  await saveLessonResult(app, prepared.plan, summary);
+  const onboarding = prepared.plan.mode === 'onboarding';
+  const r = await app.completeLesson(summary, { onboarding });
+  const states = await loadTopicStates(app);
+  const done = states.get(prepared.plan.topicId)?.bitesCompleted ?? [];
+  const nextId = nextBiteFor(app, prepared.plan.topicId, done);
+  const nextBiteTitle = nextId && nextId !== prepared.plan.biteId ? (prepared.bundle.bites.find((b) => b.id === nextId)?.title ?? null) : null;
+  const end: LessonEnd = {
+    topicId: prepared.plan.topicId,
+    topicTitle: prepared.topicTitle,
+    mode: prepared.plan.mode === 'quick_revision' ? 'quick_revision' : onboarding ? 'onboarding' : 'deep_dive',
+    summary,
+    extra: r.extra,
+    streakUp: r.streakUp,
+    stageUp: r.stageUp,
+    nextBiteTitle,
+  };
+  app.ui.setState({ lessonEnd: end });
+  return end;
 }

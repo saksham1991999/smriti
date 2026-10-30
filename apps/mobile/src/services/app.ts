@@ -91,6 +91,20 @@ export interface UiState {
   /** Purchase flow (PAY-08 confirming, PAY-09 welcome). */
   purchase: { status: 'idle' | 'confirming' | 'done' | 'pending' | 'failed' | 'cancelled'; code?: string };
   upsellsToday: { day: string; count: number };
+  /** The lesson that just ended, for LES-08 (memory only). */
+  lessonEnd: LessonEnd | null;
+}
+
+export interface LessonEnd {
+  topicId: string;
+  topicTitle: string;
+  mode: 'deep_dive' | 'quick_revision' | 'onboarding';
+  summary: LessonSummary;
+  extra: LessonEndExtra;
+  streakUp: boolean;
+  stageUp: boolean;
+  /** The next bite of the same topic, if there is one. */
+  nextBiteTitle: string | null;
 }
 
 export interface AppDeps {
@@ -177,6 +191,7 @@ export class SmritiApp {
       lastAuth: null,
       purchase: { status: 'idle' },
       upsellsToday: { day: '', count: 0 },
+      lessonEnd: null,
     }));
     this.i18n = createI18n({ locale: 'en', brand: variant.appName.en });
 

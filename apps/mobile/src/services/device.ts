@@ -41,6 +41,11 @@ export function getDeviceApp(): Promise<SmritiApp> {
   return singleton;
 }
 
+/** Tests render the real routes on a test-built app (in-memory storage and the dev fake API). */
+export function provideAppForTests(app: SmritiApp | null): void {
+  singleton = app ? Promise.resolve(app) : null;
+}
+
 async function createDeviceApp(): Promise<SmritiApp> {
   const extraVariant = (Constants.expoConfig?.extra as { variantId?: string } | undefined)?.variantId;
   const env = readClientEnv();

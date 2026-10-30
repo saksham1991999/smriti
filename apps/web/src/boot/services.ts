@@ -120,7 +120,7 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     scheduler: realScheduler,
     clock,
     logger,
-    headers: () => ({ "X-App-Platform": "web" }),
+    headers: () => ({ "X-Platform": "web" }),
     onStateApplied: (state) => store.getState().applyServerState(state, new Date().toISOString()),
   });
   sync.onStatus((s) => store.getState().setSyncStatus(s));

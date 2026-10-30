@@ -16,7 +16,8 @@ from smriti_api.core.errors import ApiError
 from smriti_api.integrations import Integrations
 from smriti_api.integrations.billing import BillingError, SubscriptionUpdate, WebhookEvent, _iso
 from smriti_api.schemas import billing as b
-from smriti_api.services import billing
+from smriti_api.services import billing, privacy
+from smriti_api.services import flags as flag_service
 
 log = structlog.get_logger(__name__)
 
@@ -101,6 +102,11 @@ async def start_razorpay(
             # Under 13: never reaches checkout; a parent buys in Parent mode (me-money §5.4).
             raise ApiError(403, "guardian_required", "A grown-up buys Pro from Parent mode")
         payer = body.payer if buyer is not None and buyer.age_band == "13_17" else "self"
+        if buyer is not None and buyer.age_band == "13_17":
+            flags = await flag_service.server_flags(session)
+            if flags.get("auth.guardian_consent_gate", "features") == "signin":
+                # With the strict gate, Pro waits for the guardian's consent (auth flow §6.10).
+                await privacy.require_scope(session, auth.user_id, "account")
         ent = await billing.compute_entitlement(session, auth.user_id, now)
         if ent.active and ent.source != "promo":
             raise ApiError(

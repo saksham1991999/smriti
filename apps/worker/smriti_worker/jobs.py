@@ -30,6 +30,7 @@ from smriti_api.services import (
     mocks,
     notify,
     tutor,
+    voice,
 )
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
@@ -99,8 +100,10 @@ async def mocks_auto_submit(ctx: Ctx) -> int:
 
 
 async def tutor_retention(ctx: Ctx) -> int:
-    """Tutor messages older than ``ai.tutor_retention_days``."""
+    """Tutor messages and voice transcripts older than ``ai.tutor_retention_days``."""
     count = await tutor.purge_old_messages_job(_deps(ctx))
+    # Voice sessions and their stored transcripts share the tutor's retention.
+    count += await voice.purge_job(_deps(ctx))
     if count:
         log.info("tutor_messages_purged", count=count)
     return count

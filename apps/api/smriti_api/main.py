@@ -33,6 +33,7 @@ from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import practice as practice_routes
 from smriti_api.routes import reviews as reviews_routes
 from smriti_api.routes import tutor as tutor_routes
+from smriti_api.routes import voice as voice_routes
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import ArqJobQueue, InlineJobQueue, JobDeps, JobQueue, job_registry
@@ -182,6 +183,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(guardian_routes.router)
     app.include_router(notify_routes.router)
     app.include_router(exports_routes.router)
+    app.include_router(voice_routes.router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
         app.include_router(exports_routes.dev_router)

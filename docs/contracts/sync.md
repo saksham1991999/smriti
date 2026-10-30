@@ -1,6 +1,6 @@
 # Sync contract (client outbox ↔ API)
 
-Status: v1, 29 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
+Status: v1.1, 30 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
 
 ## Envelope
 
@@ -57,8 +57,20 @@ Status: v1, 29 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (
 | `focus_session_completed` | `minutes`, `rounds` |
 | `quest_claimed` | `quest_id` |
 | `freeze_equipped` | `slot` |
+| `rescue_completed` | `cards` (count), `ms_total` (the 2-minute rescue, R23) |
+| `cards_queued` | `concept_ids`, `source` (`lesson` \| `practice` \| `comeback`) |
+| `comeback_plan_started` | `days_away`, `cards` (count) |
 
 The server recomputes XP, mastery, FSRS schedules, activity days, the streak, plant health and growth, and pet mood from events (TRD §10). A streak day counts when the student's local day has one qualifying activity: `lesson_completed`, 10 `review_rated`, a `mock_section_submitted`, or a `daily_challenge_completed` (rulings R1 and R23).
+
+## Wire rules (v1.1)
+
+- `tz` is required on every event (an IANA zone). The server uses it to place the event on the student's local day (R1, R23).
+- Card refs use `c:`, `d:` and `q:`. Servers also accept `u:` as an alias of `d:`.
+- Confidence on the wire is `sure`, `fifty_fifty` or `guess`. The database stores `fifty` for `fifty_fifty`.
+- Pet care on the wire is `pet`, `feed` or `play`. The UI word "treat" maps to `feed`.
+- When a whole batch gets a `4xx` other than `401`, the client halves the batch until it finds the bad event, then drops only that one. A `401` refreshes the token and retries.
+- Content bundle hashes are sha256 of canonical JSON (keys sorted, no whitespace), in lowercase hex. The publish job and `ContentManager` must hash the same way.
 
 ## State
 
@@ -82,4 +94,4 @@ Server values win on conflict. The client replaces its local copy of each sectio
 
 ## Dev auth
 
-Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/anonymous` and `POST /v1/dev/auth/google` (body `{ "email": "...", "name": "..." }`) only when `APP_ENV=local` or `test`. They return a JWT signed with the dev key and shaped exactly like a Supabase access token (`sub`, `role: authenticated`, `is_anonymous`, `aud`, `exp`, `amr`). Clients use them through the same auth interface they use for Supabase, so switching to real Supabase is config only.
+Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/anonymous` and `POST /v1/dev/auth/google` (body `{ "email": "...", "name": "..." }`) only when `APP_ENV=local` or `test`. They return `{ "access_token": "...", "token_type": "bearer", "expires_in": 3600, "refresh_token": "...", "user": { "id": "uuid", "is_anonymous": true } }`, like Supabase's token endpoint. `POST /v1/dev/auth/refresh` (body `{ "refresh_token": "..." }`) returns the same shape. The access token is a JWT signed with the dev key and shaped exactly like a Supabase access token (`sub`, `role: authenticated`, `is_anonymous`, `aud`, `exp`, `amr`). Clients use them through the same auth interface they use for Supabase, so switching to real Supabase is config only.

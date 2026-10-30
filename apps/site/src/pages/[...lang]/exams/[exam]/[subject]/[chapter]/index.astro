@@ -1,0 +1,115 @@
+---
+// Chapter landing page: its topics for this exam, with Course schema.
+import Base from "../../../../../../layouts/Base.astro";
+import PageHero from "../../../../../../components/PageHero.astro";
+import AccessChips from "../../../../../../components/AccessChips.astro";
+import CtaBand from "../../../../../../components/CtaBand.astro";
+import Icon from "../../../../../../components/Icon.astro";
+import { site, type Locale } from "../../../../../../config/site";
+import { getIndex, paths, subjectsForExam, type Exam, type ExamChapter, type Subject } from "../../../../../../content-index";
+import { fmt, formatNumber, messages } from "../../../../../../i18n";
+import { subjectArt } from "../../../../../../lib/art";
+import { brandName, crumbsFor } from "../../../../../../lib/page-data";
+import { withLocales } from "../../../../../../lib/routes";
+import { course } from "../../../../../../lib/seo";
+import { subjectClass } from "../../../../../../lib/subjects";
+import { absolute, localePath, startUrl } from "../../../../../../lib/urls";
+
+export function getStaticPaths() {
+  const idx = getIndex();
+  return withLocales(
+    idx.exams.flatMap((exam) =>
+      subjectsForExam(idx, exam).flatMap(({ subject, chapters }) =>
+        chapters.map((ec) => ({
+          params: { exam: exam.slug, subject: subject.slug, chapter: ec.chapter.slug },
+          props: { exam, subject, ec },
+        })),
+      ),
+    ),
+  );
+}
+
+const { lang, exam, subject, ec } = Astro.props as { lang: Locale; exam: Exam; subject: Subject; ec: ExamChapter };
+const { chapter, topics } = ec;
+const m = messages(lang);
+const brand = brandName(lang);
+const vars = { chapter: chapter.name[lang], subject: subject.name[lang], exam: exam.short_name[lang], brand };
+const path = paths.chapter(exam, subject, chapter);
+const crumbs = crumbsFor(lang, exam, subject, chapter);
+const description = fmt(m.meta.chapterDescription, vars);
+const jsonLd = [
+  course({
+    name: chapter.name[lang],
+    description,
+    url: absolute(site.siteUrl, localePath(lang, path)),
+    lang,
+    providerName: brand,
+    siteUrl: site.siteUrl,
+    about: `${subject.name[lang]} · ${exam.name[lang]}`,
+    parts: topics.map((t) => t.name[lang]),
+  }),
+  crumbs.jsonLd,
+];
+---
+
+<Base
+  lang={lang}
+  path={path}
+  title={fmt(m.meta.chapterTitle, vars)}
+  description={description}
+  pageType="chapter"
+  og="exam"
+  accent={`x-${exam.accent}`}
+  exam={exam.id}
+  jsonLd={jsonLd}
+>
+  <div class={subjectClass(subject.id)}>
+    <PageHero
+      lang={lang}
+      crumbs={crumbs.visible}
+      eyebrow={fmt(m.chapter.eyebrow, vars)}
+      title={chapter.name[lang]}
+      body={chapter.summary?.[lang] ?? fmt(m.chapter.fallbackBody, vars)}
+      art={subjectArt(subject.id)}
+      tone="subject"
+    >
+      <Fragment slot="actions">
+        <a
+          class="btn"
+          href={startUrl(site.webAppUrl, { lang, placement: "subject_hero", exam: exam.id, topic: topics[0]?.id })}
+          data-cta="start"
+          data-placement="subject_hero"
+        >
+          {m.topic.tryThis}
+          <Icon name="arrow-right" size={20} />
+        </a>
+      </Fragment>
+    </PageHero>
+
+    <section class="section list-section" aria-labelledby="topics-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="topics-title" class="t-title">{m.chapter.topicsHeading}</h2>
+        </div>
+        <ol class="rows" role="list">
+          {
+            topics.map((t, i) => (
+              <li class="row card">
+                <span class="num-badge num" aria-hidden="true">{formatNumber(lang, i + 1)}</span>
+                <div class="row-main">
+                  <h3 class="t-heading">
+                    <a href={localePath(lang, paths.topic(exam, subject, chapter, t))}>{t.name[lang]}</a>
+                  </h3>
+                  {t.summary && <p class="t-label muted">{t.summary[lang]}</p>}
+                  <AccessChips lang={lang} deepDiveFree={chapter.deep_dive_free} />
+                </div>
+                <Icon name="caret-right" size={24} class="row-go" />
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+  </div>
+  <CtaBand lang={lang} exam={exam.id} topic={topics[0]?.id} />
+</Base>

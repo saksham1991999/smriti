@@ -1,0 +1,120 @@
+---
+// Hero for exam, subject, chapter and topic pages: breadcrumb, eyebrow, title, body,
+// actions (slot "actions") and one illustration on a tinted panel.
+import Art from "./Art.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import type { Locale } from "../config/site";
+import type { ArtName } from "../lib/art";
+
+interface Props {
+  lang: Locale;
+  crumbs: { name: string; href: string }[];
+  eyebrow: string;
+  title: string;
+  body: string;
+  art?: ArtName | undefined;
+  /** "primary" uses the exam accent tint; "subject" uses the current s-* family tint. */
+  tone?: "primary" | "subject";
+  family?: string | undefined;
+}
+const { lang, crumbs, eyebrow, title, body, art, tone = "primary", family } = Astro.props;
+const scene = art?.startsWith("scene-") ?? false;
+---
+
+<section class:list={["page-hero", family, `tone-${tone}`]} aria-labelledby="page-title">
+  <div class="wrap">
+    <Breadcrumbs lang={lang} items={crumbs} />
+    <div class="ph-grid">
+      <div class="ph-copy">
+        <p class="eyebrow">{eyebrow}</p>
+        <h1 id="page-title" class="t-display">{title}</h1>
+        <p class="t-lead muted">{body}</p>
+        <div class="ph-actions"><slot name="actions" /></div>
+      </div>
+      {
+        art && (
+          <div class:list={["ph-art", { scene }]}>
+            <Art name={art} lang={lang} priority decorative sizes="(min-width: 1024px) 440px, 70vw" />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: 20px 48px;
+  }
+  .tone-primary {
+    --panel: var(--primary-tint);
+    --eyebrow: var(--primary-text);
+  }
+  .tone-subject {
+    --panel: var(--tint);
+    --eyebrow: var(--stext);
+  }
+  .eyebrow {
+    color: var(--eyebrow);
+  }
+  .ph-grid {
+    display: grid;
+    gap: 28px;
+    margin-top: 20px;
+    align-items: center;
+  }
+  .ph-copy {
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    max-width: 60ch;
+  }
+  .ph-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .ph-actions:empty {
+    display: none;
+  }
+  .ph-art {
+    border-radius: 28px;
+    background: var(--panel);
+    aspect-ratio: 3 / 2;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .ph-art :global(img) {
+    width: 62%;
+    height: auto;
+  }
+  .ph-art.scene :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (min-width: 1024px) {
+    .page-hero {
+      padding-block: 24px 72px;
+    }
+    .ph-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 56px;
+    }
+  }
+  @media (max-width: 599px) {
+    .ph-actions {
+      display: grid;
+      width: 100%;
+    }
+    .ph-art {
+      aspect-ratio: 16 / 9;
+    }
+    .ph-art :global(img) {
+      width: auto;
+      height: 86%;
+    }
+  }
+</style>

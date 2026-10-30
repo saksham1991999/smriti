@@ -1,0 +1,228 @@
+{
+  "id": "convex-lens-bench",
+  "version": "1.0.0",
+  "protocolVersion": "1.0.0",
+  "title": {
+    "en": "Optics bench: convex lens",
+    "hi": "प्रकाशिक बेंच: उत्तल लेंस"
+  },
+  "subject": "phy",
+  "concepts": [
+    "phy.light-refraction.convex-lens-image-formation",
+    "phy.light-refraction.lens-formula",
+    "phy.light-refraction.magnification"
+  ],
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "aspect": "16:10",
+  "preferredOrientation": "landscape",
+  "entry": "index.html",
+  "capabilities": [
+    "tasks",
+    "record",
+    "pause",
+    "set_params",
+    "snapshot",
+    "resize"
+  ],
+  "params": {
+    "focalLength": {
+      "type": "number",
+      "default": 10,
+      "min": 5,
+      "max": 15,
+      "step": 1,
+      "unit": "cm"
+    },
+    "objectDistance": {
+      "type": "number",
+      "default": 30,
+      "min": 2,
+      "max": 45,
+      "step": 0.5,
+      "unit": "cm"
+    },
+    "screenDistance": {
+      "type": "number",
+      "default": 25,
+      "min": 2,
+      "max": 45,
+      "step": 0.5,
+      "unit": "cm"
+    },
+    "objectHeight": {
+      "type": "number",
+      "default": 3,
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "unit": "cm"
+    },
+    "showRays": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "readings": [
+    {
+      "name": "object_distance",
+      "unit": "cm",
+      "label": {
+        "en": "Object distance u",
+        "hi": "बिंब दूरी u"
+      }
+    },
+    {
+      "name": "focal_length",
+      "unit": "cm",
+      "label": {
+        "en": "Focal length f",
+        "hi": "फोकस दूरी f"
+      }
+    },
+    {
+      "name": "image_distance",
+      "unit": "cm",
+      "label": {
+        "en": "Image distance v",
+        "hi": "प्रतिबिंब दूरी v"
+      }
+    },
+    {
+      "name": "magnification",
+      "unit": "",
+      "label": {
+        "en": "Magnification m",
+        "hi": "आवर्धन m"
+      }
+    },
+    {
+      "name": "screen_distance",
+      "unit": "cm",
+      "label": {
+        "en": "Screen distance",
+        "hi": "परदे की दूरी"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "rule": "object_region",
+      "args": {
+        "is": "beyond_2f | at_2f | between_f_2f | at_f | within_f"
+      }
+    },
+    {
+      "rule": "image_real"
+    },
+    {
+      "rule": "image_virtual"
+    },
+    {
+      "rule": "screen_sharp"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "between-f-2f-sharp",
+      "prompt": {
+        "en": "Place the object between F₁ and 2F₁. Then move the screen until the image on it is sharp.",
+        "hi": "बिंब को F₁ और 2F₁ के बीच रखें। फिर परदे को तब तक खिसकाएँ जब तक उस पर प्रतिबिंब स्पष्ट न हो जाए।"
+      },
+      "hint": {
+        "en": "Follow the rays to where they meet. Put the screen there.",
+        "hi": "किरणों को देखें कि वे कहाँ मिलती हैं। परदा वहीं रखें।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "condition",
+            "rule": "object_region",
+            "args": {
+              "is": "between_f_2f"
+            },
+            "quantity": "object_distance"
+          },
+          {
+            "kind": "condition",
+            "rule": "screen_sharp",
+            "quantity": "screen_distance"
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-size",
+      "prompt": {
+        "en": "Make a real image that is the same size as the object.",
+        "hi": "बिंब के बराबर साइज़ का वास्तविक प्रतिबिंब बनाएँ।"
+      },
+      "hint": {
+        "en": "Move the object and watch the magnification m.",
+        "hi": "बिंब को खिसकाएँ और आवर्धन m देखें।"
+      },
+      "check": {
+        "kind": "target",
+        "quantity": "magnification",
+        "value": -1,
+        "tolerance": 0.02
+      }
+    },
+    {
+      "id": "virtual-image",
+      "prompt": {
+        "en": "Make a virtual, upright image.",
+        "hi": "आभासी और सीधा प्रतिबिंब बनाएँ।"
+      },
+      "hint": {
+        "en": "Bring the object closer to the lens.",
+        "hi": "बिंब को लेंस के और पास लाएँ।"
+      },
+      "check": {
+        "kind": "condition",
+        "rule": "image_virtual",
+        "quantity": "object_distance"
+      }
+    },
+    {
+      "id": "record-u-v",
+      "prompt": {
+        "en": "Keep the focal length fixed. For three object positions, get a sharp image on the screen and record v each time.",
+        "hi": "फोकस दूरी एक जैसी रखें। बिंब की तीन अलग स्थितियों के लिए परदे पर स्पष्ट प्रतिबिंब लाएँ और हर बार v दर्ज करें।"
+      },
+      "hint": {
+        "en": "A reading counts only when the image on the screen is sharp.",
+        "hi": "रीडिंग तभी गिनी जाती है जब परदे पर प्रतिबिंब स्पष्ट हो।"
+      },
+      "check": {
+        "kind": "readings",
+        "quantity": "image_distance",
+        "count": 3,
+        "distinctBy": "object_distance",
+        "sameBy": [
+          "focal_length"
+        ]
+      }
+    }
+  ],
+  "third_party": [
+    {
+      "name": "Plus Jakarta Sans",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/plus-jakarta-sans 5.3.0"
+    },
+    {
+      "name": "Noto Sans Devanagari",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/noto-sans-devanagari 5.3.0"
+    },
+    {
+      "name": "Phosphor Icons",
+      "licence": "MIT",
+      "source": "@phosphor-icons/core 2.1.1"
+    }
+  ],
+  "size_bytes": 363777
+}

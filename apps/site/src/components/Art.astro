@@ -1,0 +1,31 @@
+---
+// An Agnes illustration with width/height (no layout shift), srcset, lazy loading and alt
+// text in the page's language. `decorative` hides it from screen readers.
+import { site, type Locale } from "../config/site";
+import { altText, art, srcset, type ArtName } from "../lib/art";
+
+interface Props {
+  name: ArtName;
+  lang: Locale;
+  sizes?: string;
+  priority?: boolean;
+  decorative?: boolean;
+  class?: string;
+}
+
+const { name, lang, sizes = "(min-width: 1024px) 480px, 80vw", priority = false, decorative = false, class: className } = Astro.props;
+const m = art(name);
+---
+
+<img
+  class:list={["art", className]}
+  src={`/assets/${m.file}`}
+  srcset={srcset(name)}
+  sizes={sizes}
+  width={m.width}
+  height={m.height}
+  alt={decorative ? "" : altText(name, lang, site.brand.name)}
+  loading={priority ? "eager" : "lazy"}
+  fetchpriority={priority ? "high" : "auto"}
+  decoding={priority ? "sync" : "async"}
+/>

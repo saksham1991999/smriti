@@ -1,0 +1,1081 @@
+{
+ "$meta": {
+  "source": "PubChem Periodic Table (NCBI, NLM, NIH)",
+  "source_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/periodictable/JSON",
+  "retrieved": "2026-10-29",
+  "fields_used": [
+   "AtomicNumber",
+   "Symbol",
+   "Name"
+  ],
+  "derived": "period, group, f_col and block are computed from the atomic number with the standard 18-column long form (scripts in the build notes).",
+  "licence": "PubChem data is provided by NCBI without copyright restrictions on the element facts used here (number, symbol, English name). Attribution kept as good practice.",
+  "attribution": "Element data: PubChem, National Library of Medicine",
+  "hindi_names": "Not included. Hindi element names must come from the reviewed chemistry content (LAB-13 data), not from this file.",
+  "licence_review": "pending owner sign-off (docs/flows/memory-labs.md Q10)"
+ },
+ "elements": [
+  {
+   "z": 1,
+   "symbol": "H",
+   "name_en": "Hydrogen",
+   "period": 1,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 2,
+   "symbol": "He",
+   "name_en": "Helium",
+   "period": 1,
+   "group": 18,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 3,
+   "symbol": "Li",
+   "name_en": "Lithium",
+   "period": 2,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 4,
+   "symbol": "Be",
+   "name_en": "Beryllium",
+   "period": 2,
+   "group": 2,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 5,
+   "symbol": "B",
+   "name_en": "Boron",
+   "period": 2,
+   "group": 13,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 6,
+   "symbol": "C",
+   "name_en": "Carbon",
+   "period": 2,
+   "group": 14,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 7,
+   "symbol": "N",
+   "name_en": "Nitrogen",
+   "period": 2,
+   "group": 15,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 8,
+   "symbol": "O",
+   "name_en": "Oxygen",
+   "period": 2,
+   "group": 16,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 9,
+   "symbol": "F",
+   "name_en": "Fluorine",
+   "period": 2,
+   "group": 17,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 10,
+   "symbol": "Ne",
+   "name_en": "Neon",
+   "period": 2,
+   "group": 18,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 11,
+   "symbol": "Na",
+   "name_en": "Sodium",
+   "period": 3,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 12,
+   "symbol": "Mg",
+   "name_en": "Magnesium",
+   "period": 3,
+   "group": 2,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 13,
+   "symbol": "Al",
+   "name_en": "Aluminum",
+   "period": 3,
+   "group": 13,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 14,
+   "symbol": "Si",
+   "name_en": "Silicon",
+   "period": 3,
+   "group": 14,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 15,
+   "symbol": "P",
+   "name_en": "Phosphorus",
+   "period": 3,
+   "group": 15,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 16,
+   "symbol": "S",
+   "name_en": "Sulfur",
+   "period": 3,
+   "group": 16,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 17,
+   "symbol": "Cl",
+   "name_en": "Chlorine",
+   "period": 3,
+   "group": 17,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 18,
+   "symbol": "Ar",
+   "name_en": "Argon",
+   "period": 3,
+   "group": 18,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 19,
+   "symbol": "K",
+   "name_en": "Potassium",
+   "period": 4,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 20,
+   "symbol": "Ca",
+   "name_en": "Calcium",
+   "period": 4,
+   "group": 2,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 21,
+   "symbol": "Sc",
+   "name_en": "Scandium",
+   "period": 4,
+   "group": 3,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 22,
+   "symbol": "Ti",
+   "name_en": "Titanium",
+   "period": 4,
+   "group": 4,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 23,
+   "symbol": "V",
+   "name_en": "Vanadium",
+   "period": 4,
+   "group": 5,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 24,
+   "symbol": "Cr",
+   "name_en": "Chromium",
+   "period": 4,
+   "group": 6,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 25,
+   "symbol": "Mn",
+   "name_en": "Manganese",
+   "period": 4,
+   "group": 7,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 26,
+   "symbol": "Fe",
+   "name_en": "Iron",
+   "period": 4,
+   "group": 8,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 27,
+   "symbol": "Co",
+   "name_en": "Cobalt",
+   "period": 4,
+   "group": 9,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 28,
+   "symbol": "Ni",
+   "name_en": "Nickel",
+   "period": 4,
+   "group": 10,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 29,
+   "symbol": "Cu",
+   "name_en": "Copper",
+   "period": 4,
+   "group": 11,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 30,
+   "symbol": "Zn",
+   "name_en": "Zinc",
+   "period": 4,
+   "group": 12,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 31,
+   "symbol": "Ga",
+   "name_en": "Gallium",
+   "period": 4,
+   "group": 13,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 32,
+   "symbol": "Ge",
+   "name_en": "Germanium",
+   "period": 4,
+   "group": 14,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 33,
+   "symbol": "As",
+   "name_en": "Arsenic",
+   "period": 4,
+   "group": 15,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 34,
+   "symbol": "Se",
+   "name_en": "Selenium",
+   "period": 4,
+   "group": 16,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 35,
+   "symbol": "Br",
+   "name_en": "Bromine",
+   "period": 4,
+   "group": 17,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 36,
+   "symbol": "Kr",
+   "name_en": "Krypton",
+   "period": 4,
+   "group": 18,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 37,
+   "symbol": "Rb",
+   "name_en": "Rubidium",
+   "period": 5,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 38,
+   "symbol": "Sr",
+   "name_en": "Strontium",
+   "period": 5,
+   "group": 2,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 39,
+   "symbol": "Y",
+   "name_en": "Yttrium",
+   "period": 5,
+   "group": 3,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 40,
+   "symbol": "Zr",
+   "name_en": "Zirconium",
+   "period": 5,
+   "group": 4,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 41,
+   "symbol": "Nb",
+   "name_en": "Niobium",
+   "period": 5,
+   "group": 5,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 42,
+   "symbol": "Mo",
+   "name_en": "Molybdenum",
+   "period": 5,
+   "group": 6,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 43,
+   "symbol": "Tc",
+   "name_en": "Technetium",
+   "period": 5,
+   "group": 7,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 44,
+   "symbol": "Ru",
+   "name_en": "Ruthenium",
+   "period": 5,
+   "group": 8,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 45,
+   "symbol": "Rh",
+   "name_en": "Rhodium",
+   "period": 5,
+   "group": 9,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 46,
+   "symbol": "Pd",
+   "name_en": "Palladium",
+   "period": 5,
+   "group": 10,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 47,
+   "symbol": "Ag",
+   "name_en": "Silver",
+   "period": 5,
+   "group": 11,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 48,
+   "symbol": "Cd",
+   "name_en": "Cadmium",
+   "period": 5,
+   "group": 12,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 49,
+   "symbol": "In",
+   "name_en": "Indium",
+   "period": 5,
+   "group": 13,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 50,
+   "symbol": "Sn",
+   "name_en": "Tin",
+   "period": 5,
+   "group": 14,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 51,
+   "symbol": "Sb",
+   "name_en": "Antimony",
+   "period": 5,
+   "group": 15,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 52,
+   "symbol": "Te",
+   "name_en": "Tellurium",
+   "period": 5,
+   "group": 16,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 53,
+   "symbol": "I",
+   "name_en": "Iodine",
+   "period": 5,
+   "group": 17,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 54,
+   "symbol": "Xe",
+   "name_en": "Xenon",
+   "period": 5,
+   "group": 18,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 55,
+   "symbol": "Cs",
+   "name_en": "Cesium",
+   "period": 6,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 56,
+   "symbol": "Ba",
+   "name_en": "Barium",
+   "period": 6,
+   "group": 2,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 57,
+   "symbol": "La",
+   "name_en": "Lanthanum",
+   "period": 6,
+   "group": null,
+   "f_col": 0,
+   "block": "f"
+  },
+  {
+   "z": 58,
+   "symbol": "Ce",
+   "name_en": "Cerium",
+   "period": 6,
+   "group": null,
+   "f_col": 1,
+   "block": "f"
+  },
+  {
+   "z": 59,
+   "symbol": "Pr",
+   "name_en": "Praseodymium",
+   "period": 6,
+   "group": null,
+   "f_col": 2,
+   "block": "f"
+  },
+  {
+   "z": 60,
+   "symbol": "Nd",
+   "name_en": "Neodymium",
+   "period": 6,
+   "group": null,
+   "f_col": 3,
+   "block": "f"
+  },
+  {
+   "z": 61,
+   "symbol": "Pm",
+   "name_en": "Promethium",
+   "period": 6,
+   "group": null,
+   "f_col": 4,
+   "block": "f"
+  },
+  {
+   "z": 62,
+   "symbol": "Sm",
+   "name_en": "Samarium",
+   "period": 6,
+   "group": null,
+   "f_col": 5,
+   "block": "f"
+  },
+  {
+   "z": 63,
+   "symbol": "Eu",
+   "name_en": "Europium",
+   "period": 6,
+   "group": null,
+   "f_col": 6,
+   "block": "f"
+  },
+  {
+   "z": 64,
+   "symbol": "Gd",
+   "name_en": "Gadolinium",
+   "period": 6,
+   "group": null,
+   "f_col": 7,
+   "block": "f"
+  },
+  {
+   "z": 65,
+   "symbol": "Tb",
+   "name_en": "Terbium",
+   "period": 6,
+   "group": null,
+   "f_col": 8,
+   "block": "f"
+  },
+  {
+   "z": 66,
+   "symbol": "Dy",
+   "name_en": "Dysprosium",
+   "period": 6,
+   "group": null,
+   "f_col": 9,
+   "block": "f"
+  },
+  {
+   "z": 67,
+   "symbol": "Ho",
+   "name_en": "Holmium",
+   "period": 6,
+   "group": null,
+   "f_col": 10,
+   "block": "f"
+  },
+  {
+   "z": 68,
+   "symbol": "Er",
+   "name_en": "Erbium",
+   "period": 6,
+   "group": null,
+   "f_col": 11,
+   "block": "f"
+  },
+  {
+   "z": 69,
+   "symbol": "Tm",
+   "name_en": "Thulium",
+   "period": 6,
+   "group": null,
+   "f_col": 12,
+   "block": "f"
+  },
+  {
+   "z": 70,
+   "symbol": "Yb",
+   "name_en": "Ytterbium",
+   "period": 6,
+   "group": null,
+   "f_col": 13,
+   "block": "f"
+  },
+  {
+   "z": 71,
+   "symbol": "Lu",
+   "name_en": "Lutetium",
+   "period": 6,
+   "group": null,
+   "f_col": 14,
+   "block": "f"
+  },
+  {
+   "z": 72,
+   "symbol": "Hf",
+   "name_en": "Hafnium",
+   "period": 6,
+   "group": 4,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 73,
+   "symbol": "Ta",
+   "name_en": "Tantalum",
+   "period": 6,
+   "group": 5,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 74,
+   "symbol": "W",
+   "name_en": "Tungsten",
+   "period": 6,
+   "group": 6,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 75,
+   "symbol": "Re",
+   "name_en": "Rhenium",
+   "period": 6,
+   "group": 7,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 76,
+   "symbol": "Os",
+   "name_en": "Osmium",
+   "period": 6,
+   "group": 8,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 77,
+   "symbol": "Ir",
+   "name_en": "Iridium",
+   "period": 6,
+   "group": 9,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 78,
+   "symbol": "Pt",
+   "name_en": "Platinum",
+   "period": 6,
+   "group": 10,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 79,
+   "symbol": "Au",
+   "name_en": "Gold",
+   "period": 6,
+   "group": 11,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 80,
+   "symbol": "Hg",
+   "name_en": "Mercury",
+   "period": 6,
+   "group": 12,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 81,
+   "symbol": "Tl",
+   "name_en": "Thallium",
+   "period": 6,
+   "group": 13,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 82,
+   "symbol": "Pb",
+   "name_en": "Lead",
+   "period": 6,
+   "group": 14,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 83,
+   "symbol": "Bi",
+   "name_en": "Bismuth",
+   "period": 6,
+   "group": 15,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 84,
+   "symbol": "Po",
+   "name_en": "Polonium",
+   "period": 6,
+   "group": 16,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 85,
+   "symbol": "At",
+   "name_en": "Astatine",
+   "period": 6,
+   "group": 17,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 86,
+   "symbol": "Rn",
+   "name_en": "Radon",
+   "period": 6,
+   "group": 18,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 87,
+   "symbol": "Fr",
+   "name_en": "Francium",
+   "period": 7,
+   "group": 1,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 88,
+   "symbol": "Ra",
+   "name_en": "Radium",
+   "period": 7,
+   "group": 2,
+   "f_col": null,
+   "block": "s"
+  },
+  {
+   "z": 89,
+   "symbol": "Ac",
+   "name_en": "Actinium",
+   "period": 7,
+   "group": null,
+   "f_col": 0,
+   "block": "f"
+  },
+  {
+   "z": 90,
+   "symbol": "Th",
+   "name_en": "Thorium",
+   "period": 7,
+   "group": null,
+   "f_col": 1,
+   "block": "f"
+  },
+  {
+   "z": 91,
+   "symbol": "Pa",
+   "name_en": "Protactinium",
+   "period": 7,
+   "group": null,
+   "f_col": 2,
+   "block": "f"
+  },
+  {
+   "z": 92,
+   "symbol": "U",
+   "name_en": "Uranium",
+   "period": 7,
+   "group": null,
+   "f_col": 3,
+   "block": "f"
+  },
+  {
+   "z": 93,
+   "symbol": "Np",
+   "name_en": "Neptunium",
+   "period": 7,
+   "group": null,
+   "f_col": 4,
+   "block": "f"
+  },
+  {
+   "z": 94,
+   "symbol": "Pu",
+   "name_en": "Plutonium",
+   "period": 7,
+   "group": null,
+   "f_col": 5,
+   "block": "f"
+  },
+  {
+   "z": 95,
+   "symbol": "Am",
+   "name_en": "Americium",
+   "period": 7,
+   "group": null,
+   "f_col": 6,
+   "block": "f"
+  },
+  {
+   "z": 96,
+   "symbol": "Cm",
+   "name_en": "Curium",
+   "period": 7,
+   "group": null,
+   "f_col": 7,
+   "block": "f"
+  },
+  {
+   "z": 97,
+   "symbol": "Bk",
+   "name_en": "Berkelium",
+   "period": 7,
+   "group": null,
+   "f_col": 8,
+   "block": "f"
+  },
+  {
+   "z": 98,
+   "symbol": "Cf",
+   "name_en": "Californium",
+   "period": 7,
+   "group": null,
+   "f_col": 9,
+   "block": "f"
+  },
+  {
+   "z": 99,
+   "symbol": "Es",
+   "name_en": "Einsteinium",
+   "period": 7,
+   "group": null,
+   "f_col": 10,
+   "block": "f"
+  },
+  {
+   "z": 100,
+   "symbol": "Fm",
+   "name_en": "Fermium",
+   "period": 7,
+   "group": null,
+   "f_col": 11,
+   "block": "f"
+  },
+  {
+   "z": 101,
+   "symbol": "Md",
+   "name_en": "Mendelevium",
+   "period": 7,
+   "group": null,
+   "f_col": 12,
+   "block": "f"
+  },
+  {
+   "z": 102,
+   "symbol": "No",
+   "name_en": "Nobelium",
+   "period": 7,
+   "group": null,
+   "f_col": 13,
+   "block": "f"
+  },
+  {
+   "z": 103,
+   "symbol": "Lr",
+   "name_en": "Lawrencium",
+   "period": 7,
+   "group": null,
+   "f_col": 14,
+   "block": "f"
+  },
+  {
+   "z": 104,
+   "symbol": "Rf",
+   "name_en": "Rutherfordium",
+   "period": 7,
+   "group": 4,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 105,
+   "symbol": "Db",
+   "name_en": "Dubnium",
+   "period": 7,
+   "group": 5,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 106,
+   "symbol": "Sg",
+   "name_en": "Seaborgium",
+   "period": 7,
+   "group": 6,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 107,
+   "symbol": "Bh",
+   "name_en": "Bohrium",
+   "period": 7,
+   "group": 7,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 108,
+   "symbol": "Hs",
+   "name_en": "Hassium",
+   "period": 7,
+   "group": 8,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 109,
+   "symbol": "Mt",
+   "name_en": "Meitnerium",
+   "period": 7,
+   "group": 9,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 110,
+   "symbol": "Ds",
+   "name_en": "Darmstadtium",
+   "period": 7,
+   "group": 10,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 111,
+   "symbol": "Rg",
+   "name_en": "Roentgenium",
+   "period": 7,
+   "group": 11,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 112,
+   "symbol": "Cn",
+   "name_en": "Copernicium",
+   "period": 7,
+   "group": 12,
+   "f_col": null,
+   "block": "d"
+  },
+  {
+   "z": 113,
+   "symbol": "Nh",
+   "name_en": "Nihonium",
+   "period": 7,
+   "group": 13,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 114,
+   "symbol": "Fl",
+   "name_en": "Flerovium",
+   "period": 7,
+   "group": 14,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 115,
+   "symbol": "Mc",
+   "name_en": "Moscovium",
+   "period": 7,
+   "group": 15,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 116,
+   "symbol": "Lv",
+   "name_en": "Livermorium",
+   "period": 7,
+   "group": 16,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 117,
+   "symbol": "Ts",
+   "name_en": "Tennessine",
+   "period": 7,
+   "group": 17,
+   "f_col": null,
+   "block": "p"
+  },
+  {
+   "z": 118,
+   "symbol": "Og",
+   "name_en": "Oganesson",
+   "period": 7,
+   "group": 18,
+   "f_col": null,
+   "block": "p"
+  }
+ ]
+}

@@ -1,0 +1,87 @@
+---
+import Art from "./Art.astro";
+import Icon from "./Icon.astro";
+import { site, type Locale } from "../config/site";
+import { messages } from "../i18n";
+import { startUrl } from "../lib/urls";
+import type { Placement } from "../lib/analytics";
+
+interface Props {
+  lang: Locale;
+  title?: string;
+  body?: string;
+  button?: string;
+  exam?: string | undefined;
+  topic?: string | undefined;
+  placement?: Placement;
+}
+const { lang, exam, topic, placement = "cta_band" } = Astro.props;
+const m = messages(lang);
+const title = Astro.props.title ?? m.cta.title;
+const body = Astro.props.body ?? m.cta.body;
+const button = Astro.props.button ?? m.cta.button;
+---
+
+<section class="section cta-section" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="band">
+      <div class="band-copy">
+        <h2 id="cta-title" class="t-display">{title}</h2>
+        <p class="t-lead">{body}</p>
+        <a class="btn invert" href={startUrl(site.webAppUrl, { lang, placement, exam, topic })} data-cta="start" data-placement={placement}>
+          {button}
+          <Icon name="arrow-right" size={20} />
+        </a>
+      </div>
+      <Art name="cat-celebrate" lang={lang} decorative sizes="(min-width: 1024px) 300px, 50vw" class="band-art" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .band {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    padding: 32px 24px 0;
+    border-radius: 32px;
+    background: var(--primary);
+    color: var(--on-primary);
+    overflow: hidden;
+  }
+  .band-copy {
+    display: grid;
+    gap: 14px;
+    justify-items: start;
+    max-width: 40ch;
+  }
+  .band .t-lead {
+    opacity: 0.92;
+  }
+  .btn.invert {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: none;
+    margin-top: 6px;
+  }
+  .btn.invert:hover {
+    background: var(--surface-sunken);
+  }
+  .band :global(.band-art) {
+    width: 200px;
+    justify-self: end;
+    margin-bottom: -6px;
+  }
+  @media (min-width: 768px) {
+    .band {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 48px 56px;
+    }
+    .band :global(.band-art) {
+      width: 280px;
+      margin: -24px 0 -56px;
+      align-self: end;
+    }
+  }
+</style>

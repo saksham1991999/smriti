@@ -1,0 +1,1591 @@
+{
+  "version": 1,
+  "config": {
+    "freeze_slots_max": 2,
+    "monthly_freezes": {
+      "free": 1,
+      "pro": 2
+    }
+  },
+  "cases": [
+    {
+      "name": "seven study days",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 4,
+          "longest": 4,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 5,
+          "longest": 5,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 6,
+          "longest": 6,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 7,
+          "longest": 7,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 7,
+        "longest": 7,
+        "lastStudiedDay": "2026-10-07",
+        "closedThrough": "2026-10-07",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "missed day breaks the streak",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 2,
+        "longest": 3,
+        "lastStudiedDay": "2026-10-06",
+        "closedThrough": "2026-10-06",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "freeze covers one missed day",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 1,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 4,
+          "longest": 4,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 5,
+          "longest": 5,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 5,
+        "longest": 5,
+        "lastStudiedDay": "2026-10-06",
+        "closedThrough": "2026-10-06",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "two freezes cover two days, the third breaks",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 2,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 1,
+        "longest": 2,
+        "lastStudiedDay": "2026-10-06",
+        "closedThrough": "2026-10-06",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "rest day keeps the freeze",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 1,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": false,
+            "restDay": true
+          },
+          "status": "rest",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-08",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 3,
+        "longest": 3,
+        "lastStudiedDay": "2026-10-08",
+        "closedThrough": "2026-10-08",
+        "freezesEquipped": 1,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "studying on a rest day counts",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": true,
+            "restDay": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 3,
+        "longest": 3,
+        "lastStudiedDay": "2026-10-07",
+        "closedThrough": "2026-10-07",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "incident freeze",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false,
+            "incident": true
+          },
+          "status": "incident",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 3,
+        "longest": 3,
+        "lastStudiedDay": "2026-10-04",
+        "closedThrough": "2026-10-04",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "protected exam day",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false,
+            "examDay": true
+          },
+          "status": "exam_day",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 3,
+        "longest": 3,
+        "lastStudiedDay": "2026-10-04",
+        "closedThrough": "2026-10-04",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    },
+    {
+      "name": "monthly grant across a month boundary (free)",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": "2026-10"
+      },
+      "steps": [
+        {
+          "day": "2026-10-29",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-30",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-31",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-01",
+          "input": {
+            "qualified": false,
+            "grant": "free"
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 4,
+          "longest": 4,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-03",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 4,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-04",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 4,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 1,
+        "longest": 4,
+        "lastStudiedDay": "2026-11-04",
+        "closedThrough": "2026-11-04",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": "2026-11"
+      }
+    },
+    {
+      "name": "pro grant with full slots waits in pending and refills a used slot",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 1,
+        "pendingFreezes": [],
+        "lastGrantMonth": "2026-10"
+      },
+      "steps": [
+        {
+          "day": "2026-10-30",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-31",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-01",
+          "input": {
+            "qualified": true,
+            "grant": "pro"
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 2,
+          "freezes_pending": 1
+        },
+        {
+          "day": "2026-11-02",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-03",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-04",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-11-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 4,
+          "longest": 4,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 4,
+        "longest": 4,
+        "lastStudiedDay": "2026-11-05",
+        "closedThrough": "2026-11-05",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": "2026-11"
+      }
+    },
+    {
+      "name": "long break of 45 days",
+      "initial": {
+        "current": 0,
+        "longest": 0,
+        "lastStudiedDay": null,
+        "closedThrough": null,
+        "freezesEquipped": 2,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      },
+      "steps": [
+        {
+          "day": "2026-09-01",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 1,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-02",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 2,
+          "longest": 2,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-03",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 3,
+          "longest": 3,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-04",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 4,
+          "longest": 4,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-05",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 5,
+          "longest": 5,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-06",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 6,
+          "longest": 6,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-07",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 7,
+          "longest": 7,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-08",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 8,
+          "longest": 8,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-09",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 9,
+          "longest": 9,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-10",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 10,
+          "longest": 10,
+          "freezes_equipped": 2,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-11",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 10,
+          "longest": 10,
+          "freezes_equipped": 1,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-12",
+          "input": {
+            "qualified": false
+          },
+          "status": "freeze",
+          "freeze_used": true,
+          "current": 10,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-13",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-14",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-15",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-16",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-17",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-18",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-19",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-20",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-21",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-22",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-23",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-24",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-25",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-26",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-27",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-28",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-29",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-09-30",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-08",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-09",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-10",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-11",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-12",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-13",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-14",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-15",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-16",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-17",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-18",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-19",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-20",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-21",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-22",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-23",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-24",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-25",
+          "input": {
+            "qualified": false
+          },
+          "status": "missed",
+          "freeze_used": false,
+          "current": 0,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        },
+        {
+          "day": "2026-10-26",
+          "input": {
+            "qualified": true
+          },
+          "status": "studied",
+          "freeze_used": false,
+          "current": 1,
+          "longest": 10,
+          "freezes_equipped": 0,
+          "freezes_pending": 0
+        }
+      ],
+      "final": {
+        "current": 1,
+        "longest": 10,
+        "lastStudiedDay": "2026-10-26",
+        "closedThrough": "2026-10-26",
+        "freezesEquipped": 0,
+        "pendingFreezes": [],
+        "lastGrantMonth": null
+      }
+    }
+  ]
+}

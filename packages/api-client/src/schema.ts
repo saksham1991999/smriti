@@ -428,6 +428,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/exports": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The student's exports (ME-23) */
+    get: operations["list_exports_v1_exports_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/exports/{export_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Status and signed link */
+    get: operations["get_export_v1_exports__export_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/exports/pdf": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Make a PDF (formula sheet book or progress report); ready later (export_ready) */
+    post: operations["create_pdf_v1_exports_pdf_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/gems/ledger": {
     parameters: {
       query?: never;
@@ -1407,6 +1458,46 @@ export interface components {
       /** Primary */
       primary?: string | null;
     };
+    /** ExportList */
+    ExportList: {
+      /** Exports */
+      exports: components["schemas"]["ExportOut"][];
+    };
+    /** ExportOut */
+    ExportOut: {
+      /** Bytes */
+      bytes: number | null;
+      /** Completed At */
+      completed_at: string | null;
+      /** Expires At */
+      expires_at: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "pdf_book" | "data_export";
+      /** Pages */
+      pages: number | null;
+      /**
+       * Requested At
+       * Format: date-time
+       */
+      requested_at: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "queued" | "rendering" | "ready" | "failed" | "expired";
+      /** Template */
+      template: string | null;
+      /** Url */
+      url: string | null;
+    };
     /** GemLedgerEntry */
     GemLedgerEntry: {
       /**
@@ -1758,6 +1849,25 @@ export interface components {
       items: components["schemas"]["GemLedgerEntry"][];
       /** Next Cursor */
       next_cursor?: string | null;
+    };
+    /** PdfExportCreate */
+    PdfExportCreate: {
+      /**
+       * Language
+       * @default en
+       * @enum {string}
+       */
+      language: "en" | "hi" | "both";
+      /**
+       * Template
+       * @enum {string}
+       */
+      template: "formula_sheet" | "progress_report";
+      /**
+       * Topic Ids
+       * @default []
+       */
+      topic_ids: string[];
     };
     /** PetCareRequest */
     PetCareRequest: {
@@ -3203,6 +3313,103 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_exports_v1_exports_get: {
+    parameters: {
+      query?: {
+        kind?: ("pdf_book" | "data_export") | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ExportList"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_export_v1_exports__export_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        export_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ExportOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  create_pdf_v1_exports_pdf_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PdfExportCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ExportOut"];
+        };
       };
       /** @description Validation Error */
       422: {

@@ -791,3 +791,17 @@ def _due_in_window(local: datetime, at: time, window_min: int) -> bool:
 
 def local_day(now: datetime, tz: str) -> date:
     return now.astimezone(ZoneInfo(tz)).date()
+
+
+def senders_from(ints: Any) -> Senders:
+    return Senders(expo=ints.push, web=ints.web_push)
+
+
+async def dispatch_job(deps: Any) -> dict[str, int]:
+    """The ``notify_dispatch`` job (notifications queue; also run every minute by cron)."""
+    if deps.integrations is None:
+        return {"skipped": 1}
+    result = await dispatch_due(
+        deps.db, senders_from(deps.integrations), brand=deps.integrations.settings.brand_name
+    )
+    return dict(result.__dict__)

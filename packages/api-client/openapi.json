@@ -1978,6 +1978,114 @@
         }
       }
     },
+    "/v1/exports/pdf": {
+      "post": {
+        "tags": ["exports"],
+        "summary": "Make a PDF (formula sheet book or progress report); ready later (export_ready)",
+        "operationId": "create_pdf_v1_exports_pdf_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PdfExportCreate" } }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ExportOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/exports/{export_id}": {
+      "get": {
+        "tags": ["exports"],
+        "summary": "Status and signed link",
+        "operationId": "get_export_v1_exports__export_id__get",
+        "parameters": [
+          {
+            "name": "export_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Export Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ExportOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/exports": {
+      "get": {
+        "tags": ["exports"],
+        "summary": "The student's exports (ME-23)",
+        "operationId": "list_exports_v1_exports_get",
+        "parameters": [
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "enum": ["pdf_book", "data_export"], "type": "string" },
+                { "type": "null" }
+              ],
+              "title": "Kind"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ExportList" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -2706,6 +2814,56 @@
         "required": ["exam_profile_ids"],
         "title": "ExamsPut"
       },
+      "ExportList": {
+        "properties": {
+          "exports": {
+            "items": { "$ref": "#/components/schemas/ExportOut" },
+            "type": "array",
+            "title": "Exports"
+          }
+        },
+        "type": "object",
+        "required": ["exports"],
+        "title": "ExportList"
+      },
+      "ExportOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "kind": { "type": "string", "enum": ["pdf_book", "data_export"], "title": "Kind" },
+          "template": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Template" },
+          "status": {
+            "type": "string",
+            "enum": ["queued", "rendering", "ready", "failed", "expired"],
+            "title": "Status"
+          },
+          "pages": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Pages" },
+          "bytes": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Bytes" },
+          "requested_at": { "type": "string", "format": "date-time", "title": "Requested At" },
+          "completed_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Completed At"
+          },
+          "expires_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Expires At"
+          },
+          "url": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Url" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "template",
+          "status",
+          "pages",
+          "bytes",
+          "requested_at",
+          "completed_at",
+          "expires_at",
+          "url"
+        ],
+        "title": "ExportOut"
+      },
       "GemLedgerEntry": {
         "properties": {
           "id": { "type": "string", "format": "uuid", "title": "Id" },
@@ -3210,6 +3368,36 @@
         "type": "object",
         "required": ["items"],
         "title": "Page[GemLedgerEntry]"
+      },
+      "PdfExportCreate": {
+        "properties": {
+          "template": {
+            "type": "string",
+            "enum": ["formula_sheet", "progress_report"],
+            "title": "Template"
+          },
+          "topic_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 120,
+              "minLength": 1,
+              "pattern": "^[a-z0-9][a-z0-9._-]*$"
+            },
+            "type": "array",
+            "maxItems": 40,
+            "title": "Topic Ids",
+            "default": []
+          },
+          "language": {
+            "type": "string",
+            "enum": ["en", "hi", "both"],
+            "title": "Language",
+            "default": "en"
+          }
+        },
+        "type": "object",
+        "required": ["template"],
+        "title": "PdfExportCreate"
       },
       "PetCareRequest": {
         "properties": {

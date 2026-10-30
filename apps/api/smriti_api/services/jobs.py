@@ -30,6 +30,9 @@ QUEUE_BY_JOB = {
     "purge_deleted_accounts": "default",
     "nightly_rollup": "default",
     "content_publish": "content-publish",
+    "render_pdf": "pdf",
+    "media_generate": "media",
+    "notify_dispatch": "notifications",
 }
 
 
@@ -102,9 +105,12 @@ class ArqJobQueue:
 
 
 def job_registry() -> dict[str, JobFn]:
-    from smriti_api.services import accounts
+    from smriti_api.services import accounts, exports, media, notify
 
     return {
         "merge_guest": accounts.merge_guest_job,
         "purge_deleted_accounts": accounts.purge_deleted_accounts_job,
+        "render_pdf": exports.render_export,
+        "media_generate": media.generate_job,
+        "notify_dispatch": notify.dispatch_job,
     }

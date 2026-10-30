@@ -26,6 +26,7 @@ from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.integrations import build_integrations
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
 from smriti_api.routes import billing as billing_routes
+from smriti_api.routes import exports as exports_routes
 from smriti_api.routes import guardian as guardian_routes
 from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import reviews as reviews_routes
@@ -174,8 +175,10 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(billing_routes.router)
     app.include_router(guardian_routes.router)
     app.include_router(notify_routes.router)
+    app.include_router(exports_routes.router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
+        app.include_router(exports_routes.dev_router)
     return app
 
 

@@ -7,10 +7,25 @@
  * Colours come from `packages/tokens/tokens.json` by token name, never as raw hex here.
  * Public env (`EXPO_PUBLIC_*`) is validated by `parseClientEnv` at runtime (src/env.ts).
  */
-import type { ConfigContext, ExpoConfig } from 'expo/config';
-import { getVariant } from '@smriti/config';
+import { createRequire } from 'node:module';
 
-import tokens from '../../packages/tokens/tokens.json';
+import type { ConfigContext, ExpoConfig } from 'expo/config';
+import type { Variant } from '@smriti/config';
+
+// Expo loads this file with Node's own TypeScript support, which cannot follow @smriti/config's
+// extensionless imports and JSON imports. So the variant JSON is read directly here; the app
+// itself uses getVariant (with its zod validation), and `pnpm test` checks the two agree.
+const require = createRequire(import.meta.url);
+const tokens = require('../../packages/tokens/tokens.json') as unknown;
+const VARIANT_IDS = ['all', 'jee', 'neet', 'upsc', 'ssc'] as const;
+
+function readVariant(id: string | undefined, overrides: { googleIosClientId?: string; googleIosUrlScheme?: string }): Variant {
+  const key = id === undefined || id === '' ? 'all' : id;
+  if (!(VARIANT_IDS as readonly string[]).includes(key)) throw new Error(`Unknown APP_VARIANT "${key}". Expected one of ${VARIANT_IDS.join(', ')}`);
+  const v = require(`../../packages/config/variants/${key}.json`) as Variant;
+  if (v.id !== key || v.scheme !== `smriti-${key}`) throw new Error(`packages/config/variants/${key}.json is not variant ${key}`);
+  return { ...v, googleIosClientId: overrides.googleIosClientId ?? v.googleIosClientId, googleIosUrlScheme: overrides.googleIosUrlScheme ?? v.googleIosUrlScheme };
+}
 
 type AccentRef = `examAccent.${string}`;
 
@@ -28,7 +43,7 @@ function accentHex(ref: AccentRef, mode: 'light' | 'dark' = 'light'): string {
 const brand = (path: string) => `../../${path}`;
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  const variant = getVariant(process.env.APP_VARIANT, {
+  const variant = readVariant(process.env.APP_VARIANT, {
     googleIosClientId: process.env[`GOOGLE_IOS_CLIENT_ID_${(process.env.APP_VARIANT ?? 'all').toUpperCase()}`],
     googleIosUrlScheme: process.env[`GOOGLE_IOS_URL_SCHEME_${(process.env.APP_VARIANT ?? 'all').toUpperCase()}`],
   });

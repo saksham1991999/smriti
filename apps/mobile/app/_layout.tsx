@@ -61,7 +61,7 @@ function Themed({ variant }: { variant: ExamKey }) {
       <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
       <Stack screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
         <Stack.Screen name="lesson/[topicId]" options={{ gestureEnabled: false, animation: 'slide_from_bottom' }} />
-        <Stack.Screen name="sign-in" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="sign-in" options={{ presentation: 'transparentModal', animation: 'fade' }} />
         <Stack.Screen name="paywall" options={{ presentation: 'modal' }} />
       </Stack>
     </UIProvider>

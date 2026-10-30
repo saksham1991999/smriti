@@ -1,8 +1,9 @@
 import { useAppStore } from '@smriti/app-core/react';
-import { AppleButton, Button, Chip, GoogleButton, Illustration, Sheet, Text, TrustLine, useTheme } from '@smriti/ui-native';
+import { AppleButton, Button, Chip, GoogleButton, Illustration, Text, TrustLine, useTheme } from '@smriti/ui-native';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Platform, StyleSheet, TextInput, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, TextInput, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type { LinkOutcome } from '../src/services/app';
 import { useApp, useT, useUiState } from '../src/services/context';
@@ -20,7 +21,8 @@ export default function SignIn() {
   const app = useApp();
   const t = useT();
   const theme = useTheme();
-  const params = useLocalSearchParams<{ mode?: string; reason?: string; then?: string }>();
+  const insets = useSafeAreaInsets();
+  const params = useLocalSearchParams<{ mode?: string; reason?: string; then?: string; from?: string }>();
   const reason: Reason = (['lesson_3', 'streak_day_2', 'save_progress', 'start_trial', 'restore'] as const).find((r) => r === params.reason) ?? (params.mode === 'hard' ? 'restore' : 'save_progress');
   const soft = params.mode !== 'hard';
   const pet = useAppStore((s) => s.pet);
@@ -39,7 +41,7 @@ export default function SignIn() {
     if (Platform.OS === 'ios') void app.deps.apple.isAvailable().then(setApple).catch(() => setApple(false));
   }, [app]);
 
-  const close = () => (router.canGoBack() ? router.back() : router.replace('/learn' as Href));
+  const close = () => (params.from !== 'lesson_end' && router.canGoBack() ? router.back() : router.replace('/learn' as Href));
   const done = () => {
     if (params.then === 'paywall') router.replace({ pathname: '/paywall', params: { from: 'sign_in' } });
     else close();
@@ -105,24 +107,43 @@ export default function SignIn() {
   const title = soft ? t(`auth:AUTH-01.title_${reason === 'lesson_3' || reason === 'streak_day_2' ? reason : 'save_progress'}`, { pet_name: petName }) : t(`auth:AUTH-02.title_${reason === 'start_trial' ? 'start_trial' : 'restore'}`);
   const line = soft ? t(`auth:AUTH-01.reason_${reason === 'lesson_3' || reason === 'streak_day_2' ? reason : 'save_progress'}`, { pet_name: petName }) : t(`auth:AUTH-02.reason_${reason === 'start_trial' ? 'start_trial' : 'restore'}`);
 
-  return (
-    <Screen
-      testID={soft ? 'AUTH-01' : 'AUTH-02'}
-      footer={
-        <>
-          <GoogleButton loading={busy} disabled={busy} onPress={google} platform={Platform.OS === 'web' ? 'web' : Platform.OS === 'ios' ? 'ios' : 'android'} testID="google-button" />
-          {apple ? <AppleButton loading={busy} disabled={busy} onPress={() => void run(() => app.continueWithApple())} testID="apple-button" /> : null}
-          <Button variant="ghost" label={soft ? t('auth:AUTH-01.later') : t('auth:AUTH-02.back')} onPress={() => void later()} fullWidth testID="auth-later" />
-          <TrustLine />
-          <Text variant="caption" tone="muted" align="center">
-            {t('auth:AUTH-01.legal_footer')}
-          </Text>
-        </>
-      }
-    >
+  const input = [styles.input, { backgroundColor: theme.colors.surfaceSunken, color: theme.colors.ink, borderRadius: theme.radius.md }];
+  // Locally there is no Google: the dev form stands in for the account picker (sync contract "Dev auth").
+  const devForm = (
+    <View style={styles.form} testID="dev-google">
+      <Text variant="heading">{app.tPending('learn:WEB-01.dev_sign_in_title')}</Text>
+      <Text variant="caption" tone="muted">
+        {app.tPending('learn:WEB-01.dev_sign_in_body')}
+      </Text>
+      <TextInput value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address" placeholder={app.tPending('learn:WEB-01.dev_email')} placeholderTextColor={theme.colors.inkMuted} accessibilityLabel={app.tPending('learn:WEB-01.dev_email')} style={input} testID="dev-email" />
+      {email && !email.includes('@') ? (
+        <Text variant="caption" tone="error">
+          {app.tPending('learn:WEB-01.dev_email_error')}
+        </Text>
+      ) : null}
+      <TextInput value={name} onChangeText={setName} placeholder={app.tPending('learn:WEB-01.dev_name')} placeholderTextColor={theme.colors.inkMuted} accessibilityLabel={app.tPending('learn:WEB-01.dev_name')} style={input} testID="dev-name" />
+      <Button label={app.tPending('learn:WEB-01.dev_submit')} disabled={!email.includes('@')} onPress={submitDev} fullWidth testID="dev-submit" />
+      <Button variant="ghost" size="sm" label={t('ui:common.back')} onPress={() => setDevOpen(false)} fullWidth />
+    </View>
+  );
+  const actions = devOpen ? (
+    devForm
+  ) : (
+    <>
+      <GoogleButton loading={busy} disabled={busy} onPress={google} platform={Platform.OS === 'web' ? 'web' : Platform.OS === 'ios' ? 'ios' : 'android'} testID="google-button" />
+      {apple ? <AppleButton loading={busy} disabled={busy} onPress={() => void run(() => app.continueWithApple())} testID="apple-button" /> : null}
+      <Button variant="secondary" label={soft ? t('auth:AUTH-01.later') : t('auth:AUTH-02.back')} onPress={() => void later()} fullWidth testID="auth-later" />
+      <TrustLine />
+      <Text variant="caption" tone="muted" align="center">
+        {t('auth:AUTH-01.legal_footer')}
+      </Text>
+    </>
+  );
+  const body = (
+    <>
       <View style={styles.center}>
-        <Illustration name="cat-shield-key" decorative width={180} height={150} />
-        <Text variant="display" heading align="center">
+        <Illustration name={soft ? 'cat-plant' : 'cat-shield-key'} decorative width={soft ? 150 : 180} height={soft ? 130 : 150} />
+        <Text variant={soft ? 'title' : 'display'} heading align="center">
           {title}
         </Text>
         <Text variant="body" tone="muted" align="center">
@@ -132,7 +153,7 @@ export default function SignIn() {
       {soft && (streak?.current || lessons) ? (
         <View style={styles.tiles}>
           <Chip kind="status" tone="streak" icon="Plant" label={t('auth:AUTH-01.stat_tiles.1', { n: streak?.current ?? 0 })} />
-          <Chip kind="status" tone="primary" icon="BookBookmark" label={t('auth:AUTH-01.stat_tiles.2', { n: lessons })} />
+          <Chip kind="status" tone="sunken" icon="BookBookmark" label={t('auth:AUTH-01.stat_tiles.2', { n: lessons })} />
         </View>
       ) : null}
       {busy ? (
@@ -150,40 +171,29 @@ export default function SignIn() {
           {app.deps.network.isOnline() ? t('learn:LES-11.error') : t('auth:AUTH-01.offline_line')}
         </Text>
       ) : null}
+    </>
+  );
 
-      <Sheet open={devOpen} onOpenChange={setDevOpen} title={app.tPending('learn:WEB-01.dev_sign_in_title')} description={app.tPending('learn:WEB-01.dev_sign_in_body')} testID="dev-google">
-        <View style={styles.form}>
-          <Text variant="label" tone="muted">
-            {app.tPending('learn:WEB-01.dev_email')}
-          </Text>
-          <TextInput
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-            autoComplete="email"
-            keyboardType="email-address"
-            accessibilityLabel={app.tPending('learn:WEB-01.dev_email')}
-            style={[styles.input, { backgroundColor: theme.colors.surfaceSunken, color: theme.colors.ink, borderRadius: theme.radius.md }]}
-            testID="dev-email"
-          />
-          {email && !email.includes('@') ? (
-            <Text variant="caption" tone="error">
-              {app.tPending('learn:WEB-01.dev_email_error')}
-            </Text>
-          ) : null}
-          <Text variant="label" tone="muted">
-            {app.tPending('learn:WEB-01.dev_name')}
-          </Text>
-          <TextInput
-            value={name}
-            onChangeText={setName}
-            accessibilityLabel={app.tPending('learn:WEB-01.dev_name')}
-            style={[styles.input, { backgroundColor: theme.colors.surfaceSunken, color: theme.colors.ink, borderRadius: theme.radius.md }]}
-            testID="dev-name"
-          />
-          <Button label={app.tPending('learn:WEB-01.dev_submit')} disabled={!email.includes('@')} onPress={submitDev} fullWidth testID="dev-submit" />
+  if (soft) {
+    // AUTH-01 is a bottom sheet over the screen that asked (LES-08, Home, Me): this route is a
+    // transparent modal, so the scrim shows that screen underneath.
+    return (
+      <View style={[styles.scrimRoot, { backgroundColor: theme.colors.scrim }]} testID="AUTH-01">
+        <Pressable style={styles.fill} accessibilityRole="button" accessibilityLabel={t('ui:common.close')} onPress={() => void later()} />
+        <View style={[styles.sheet, { backgroundColor: theme.colors.surface, paddingBottom: Math.max(insets.bottom, 16) }]}>
+          <View style={[styles.grabber, { backgroundColor: theme.colors.line }]} />
+          <ScrollView contentContainerStyle={styles.sheetBody} keyboardShouldPersistTaps="handled">
+            {body}
+            {actions}
+          </ScrollView>
         </View>
-      </Sheet>
+      </View>
+    );
+  }
+
+  return (
+    <Screen testID="AUTH-02" footer={actions}>
+      {body}
     </Screen>
   );
 }
@@ -191,6 +201,11 @@ export default function SignIn() {
 const styles = StyleSheet.create({
   center: { alignItems: 'center', gap: 10 },
   tiles: { flexDirection: 'row', gap: 8, justifyContent: 'center', flexWrap: 'wrap' },
-  form: { gap: 8 },
+  form: { gap: 10 },
+  scrimRoot: { flex: 1, justifyContent: 'flex-end' },
+  fill: { flex: 1 },
+  sheet: { borderTopLeftRadius: 28, borderTopRightRadius: 28, maxHeight: '92%' },
+  grabber: { alignSelf: 'center', width: 40, height: 4, borderRadius: 2, marginTop: 8 },
+  sheetBody: { padding: 20, gap: 14 },
   input: { minHeight: 52, paddingHorizontal: 16, fontSize: 18 },
 });

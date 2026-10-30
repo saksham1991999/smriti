@@ -42,7 +42,6 @@ export default function Learn() {
   const exam = app.examProfileId();
   const curious = ob.goals.length > 0 && ob.goals.every((g) => g === 'curious');
   const name = profile?.display_name?.split(' ')[0] ?? null;
-  const goalMin = profile?.daily_goal_minutes ?? ob.dailyGoalMinutes ?? 10;
   const topicName = (id: string) => app.deps.content.topic(locale, id, exam)?.name ?? '';
   const subjectOf = (id: string) => app.deps.content.subjectOf(locale, id, exam);
   const openLesson = (topicId: string, mode: 'deep_dive' | 'quick_revision') => router.push({ pathname: '/lesson/[topicId]', params: { topicId, mode } });
@@ -93,7 +92,6 @@ export default function Learn() {
       <StreakCard
         message={streakMsg}
         atRisk={streak?.at_risk ?? false}
-        goal={{ done: streak?.today_qualified ? goalMin : 0, target: goalMin, label: t('learn:HOME-01.daily_goal', { done: streak?.today_qualified ? goalMin : 0, goal: goalMin }) }}
         freezes={{ ready: streak?.freezes_equipped ?? 0, slots: 2, label: (streak?.freezes_equipped ?? 0) > 0 ? t('learn:HOME-01.freeze_slots.1', { n: streak?.freezes_equipped ?? 0 }) : t('learn:HOME-01.freeze_slots.2') }}
         plant={{ stage: plant?.stage ?? 'seed', health: plant?.health ?? 'thriving' }}
         testID="streak-card"

@@ -118,10 +118,7 @@ export default function Paywall() {
               {t('me_money:PAY-01.guest_hint_under_cta')}
             </Text>
           ) : null}
-          <Button variant="ghost" label={t('me_money:PAY-01.maybe_later')} onPress={close} fullWidth testID="pay-later" />
-          <Text variant="caption" tone="muted" align="center">
-            {Platform.OS === 'ios' ? t('me_money:PAY-01.fine_print_ios') : t('me_money:PAY-01.fine_print_android')}
-          </Text>
+          <Button variant="ghost" size="sm" label={t('me_money:PAY-01.maybe_later')} onPress={close} fullWidth testID="pay-later" />
         </>
       }
     >
@@ -144,7 +141,10 @@ export default function Paywall() {
         ))}
       </View>
       <PriceBlock price={eligible ? intro : monthly} thenLine={eligible ? t('me_money:PAY-01.plan_price_eligible') : t('me_money:PAY-01.plan_price_not_eligible')} finePrint={t('me_money:PAY-01.gst_flagged')} testID="price" />
-      <TrialTimeline eligible={eligible} todayLabel={t('ui:trial.today', { price: intro })} reminderDate={fmt(remind)} renewDate={fmt(renew)} trialPrice={intro} renewPrice={monthly} />
+      <TrialTimeline eligible={eligible} reminderDate={fmt(remind)} renewDate={fmt(renew)} trialPrice={intro} renewPrice={monthly} />
+      <Text variant="caption" tone="muted" align="center">
+        {Platform.OS === 'ios' ? t('me_money:PAY-01.fine_print_ios') : t('me_money:PAY-01.fine_print_android')}
+      </Text>
       {!online ? (
         <Text variant="caption" tone="error" align="center">
           {t('me_money:PAY-01.offline')}

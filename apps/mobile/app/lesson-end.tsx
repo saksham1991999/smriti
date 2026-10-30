@@ -25,7 +25,7 @@ export default function LessonEnd() {
   const s = end.summary;
   const petLine = t(`learn:LES-08.pet_lines_rotate.${((app.ui.getState().lessonsCompleted % 3) + 1) as 1 | 2 | 3}`);
   const next = () => {
-    if (end.extra === 'soft_login') router.replace({ pathname: '/sign-in', params: { mode: 'soft', reason: 'lesson_3' } });
+    if (end.extra === 'soft_login') router.push({ pathname: '/sign-in', params: { mode: 'soft', reason: 'lesson_3', from: 'lesson_end' } });
     else if (end.extra === 'upsell') router.replace({ pathname: '/paywall', params: { from: 'lesson_end' } });
     else router.replace('/learn' as Href);
   };

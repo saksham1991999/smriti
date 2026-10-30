@@ -126,7 +126,7 @@ function GoalTile({ title, caption, illustration, selected, onPress, testID }: {
 const styles = StyleSheet.create({
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },
   tile: { width: '47.5%' },
-  tileBody: { gap: 6, minHeight: 104 },
+  tileBody: { gap: 6, minHeight: 84 },
   tileTop: { flexDirection: 'row', justifyContent: 'space-between' },
   sheet: { gap: 16 },
   group: { gap: 8 },

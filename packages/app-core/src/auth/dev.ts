@@ -35,7 +35,10 @@ function parseDevIdToken(token: string): DevIdentity {
 }
 
 interface DevTokenResponse {
-  access_token: string;
+  /** The contract says the endpoints "return a JWT"; the field name is not fixed yet. */
+  access_token?: string;
+  token?: string;
+  jwt?: string;
   refresh_token?: string | null;
   expires_in?: number;
   expires_at?: number;
@@ -148,7 +151,9 @@ export class DevAuthClient implements AuthClient {
   }
 
   private toSession(r: DevTokenResponse): AuthSession {
-    const claims = decodeJwtClaims(r.access_token) ?? {};
+    const accessToken = r.access_token ?? r.token ?? r.jwt;
+    if (!accessToken) throw new AuthError('unknown', 'no token in response');
+    const claims = decodeJwtClaims(accessToken) ?? {};
     const id = r.user?.id ?? (typeof claims['sub'] === 'string' ? claims['sub'] : undefined);
     if (!id) throw new AuthError('unknown', 'token has no sub');
     const exp =
@@ -156,7 +161,7 @@ export class DevAuthClient implements AuthClient {
       (r.expires_in !== undefined ? Math.floor(this.opts.clock() / 1000) + r.expires_in : undefined) ??
       (typeof claims['exp'] === 'number' ? claims['exp'] : null);
     return {
-      accessToken: r.access_token,
+      accessToken,
       refreshToken: r.refresh_token ?? null,
       expiresAt: exp ?? null,
       user: { id, isAnonymous: r.user?.is_anonymous ?? claims['is_anonymous'] === true },

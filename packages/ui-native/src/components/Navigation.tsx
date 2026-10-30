@@ -31,6 +31,7 @@ export function TabBar({ items, activeKey, onSelect, testID, style }: TabBarProp
         return (
           <Pressable
             key={it.key}
+            testID={`${testID ?? "tab"}-${it.key}`}
             accessibilityRole="tab"
             accessibilityLabel={it.badge ? `${it.label}, ${it.badge}` : it.label}
             accessibilityState={{ selected: on }}
@@ -76,6 +77,7 @@ export function SidebarNav({ items, activeKey, onSelect, header, footer, testID,
         return (
           <Pressable
             key={it.key}
+            testID={`${testID ?? "sidebar"}-${it.key}`}
             accessibilityRole="tab"
             accessibilityLabel={it.badge ? `${it.label}, ${it.badge}` : it.label}
             accessibilityState={{ selected: on }}

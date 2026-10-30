@@ -8,9 +8,19 @@ export type Locale = "en" | "hi";
 export async function expectAccessible(page: Page, screen: string) {
   // Let entrance motion and lazy chunks settle first.
   await page.waitForTimeout(300);
-  const result = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+  const result = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
   const bad = result.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
-  expect(bad.map((v) => `${screen}: ${v.id} (${v.impact}) ${v.nodes.map((n) => n.target.join(" ")).slice(0, 3).join(" | ")}`)).toEqual([]);
+  expect(
+    bad.map(
+      (v) =>
+        `${screen}: ${v.id} (${v.impact}) ${v.nodes
+          .map((n) => n.target.join(" "))
+          .slice(0, 3)
+          .join(" | ")}`,
+    ),
+  ).toEqual([]);
 }
 
 async function visible(l: Locator, ms = 400): Promise<boolean> {
@@ -23,7 +33,11 @@ async function visible(l: Locator, ms = 400): Promise<boolean> {
 }
 
 /** ONB-01 → ONB-12: language, goal, birth year (an adult, so no guardian gates), level, buddy, plant. */
-export async function onboard(page: Page, locale: Locale, opts: { petName: string; exam?: string; birthYear?: string } = { petName: "Mitti" }) {
+export async function onboard(
+  page: Page,
+  locale: Locale,
+  opts: { petName: string; exam?: string; birthYear?: string } = { petName: "Mitti" },
+) {
   await page.goto("/");
   await expect(page).toHaveURL(/\/welcome/);
   await expectAccessible(page, "ONB-01");
@@ -40,10 +54,17 @@ export async function onboard(page: Page, locale: Locale, opts: { petName: strin
       await page.getByRole("radio").first().click();
       await page.getByTestId("class-continue").click();
     } else if (/\/onboarding\/birth-year/.test(url)) {
-      await page.getByTestId("birth-year").locator("select").selectOption(opts.birthYear ?? "1998");
+      await page
+        .getByTestId("birth-year")
+        .locator("select")
+        .selectOption(opts.birthYear ?? "1998");
       await page.getByTestId("birth-continue").click();
     } else if (/\/onboarding\/exam-date/.test(url)) {
-      await page.getByTestId("exam-not-sure").locator("[role=radio],[role=checkbox]").first().click();
+      await page
+        .getByTestId("exam-not-sure")
+        .locator("[role=radio],[role=checkbox]")
+        .first()
+        .click();
       await page.getByTestId("exam-date-continue").click();
     } else if (/\/onboarding\/level/.test(url)) {
       await page.getByTestId("level-starting").click();
@@ -83,7 +104,9 @@ export async function playLesson(page: Page, until: RegExp) {
       for (let i = 0; i < (await selects.count()); i++) {
         const sel = selects.nth(i);
         if ((await sel.inputValue()) === "") {
-          const values = await sel.locator("option:not([disabled])").evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).value).filter(Boolean));
+          const values = await sel
+            .locator("option:not([disabled])")
+            .evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).value).filter(Boolean));
           if (values[0]) await sel.selectOption(values[0]);
         }
       }
@@ -93,7 +116,14 @@ export async function playLesson(page: Page, until: RegExp) {
         continue;
       }
     }
-    for (const id of ["lesson-dont-know", "lesson-skip-task", "lesson-skip-online", "lesson-try-again", "lesson-continue", "rapid-rating"]) {
+    for (const id of [
+      "lesson-dont-know",
+      "lesson-skip-task",
+      "lesson-skip-online",
+      "lesson-try-again",
+      "lesson-continue",
+      "rapid-rating",
+    ]) {
       const l = page.getByTestId(id).first();
       if ((await visible(l, 150)) && (await l.isEnabled())) {
         if (id === "rapid-rating") await l.getByRole("button").first().click();
@@ -144,7 +174,8 @@ export async function drill(page: Page) {
       const q = page.getByTestId("drill-question");
       const option = q.locator("[data-testid^=option-]").first();
       if (await visible(option, 200)) await option.click();
-      else if (await visible(q.locator("input").first(), 200)) await q.locator("input").first().fill("1");
+      else if (await visible(q.locator("input").first(), 200))
+        await q.locator("input").first().fill("1");
       if (await check.isEnabled()) await check.click();
       continue;
     }
@@ -182,7 +213,11 @@ export async function mockAttempt(page: Page, mockId: string) {
   await expectAccessible(page, "MOCK-08");
   await page.getByTestId("mock-submit").click();
   await expect(page.getByTestId("mock-16")).toBeVisible();
-  await page.getByTestId("mock-16").getByRole("button", { name: /submit|सबमिट/i }).last().click();
+  await page
+    .getByTestId("mock-16")
+    .getByRole("button", { name: /submit|सबमिट/i })
+    .last()
+    .click();
   await expect(page.getByTestId("mock-19")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("mock-score")).toBeVisible();
   await expectAccessible(page, "MOCK-19");
@@ -219,14 +254,108 @@ export async function askTutor(page: Page) {
   await expect(panel).toBeVisible();
   await expect(panel.getByTestId("tutor-context")).toBeVisible();
   await panel.locator("[data-testid^=tutor-starter-]").first().click();
-  await expect(panel.getByTestId("tutor-answer").last()).toHaveAttribute("data-status", "ok", { timeout: 30_000 });
+  await expect(panel.getByTestId("tutor-answer").last()).toHaveAttribute("data-status", "ok", {
+    timeout: 30_000,
+  });
   await expect(panel.getByTestId("tutor-bubble").last()).not.toBeEmpty();
   await expect(panel.getByTestId("tutor-counter")).toBeVisible();
   await expectAccessible(page, "AI-02");
   await panel.getByTestId("tutor-input").locator("textarea").fill("Why is option A not right?");
   await panel.getByTestId("tutor-input").locator("textarea").press("Enter");
   await expect(panel.getByTestId("tutor-answer")).toHaveCount(2);
-  await expect(panel.getByTestId("tutor-answer").last()).toHaveAttribute("data-status", "ok", { timeout: 30_000 });
+  await expect(panel.getByTestId("tutor-answer").last()).toHaveAttribute("data-status", "ok", {
+    timeout: 30_000,
+  });
   await panel.getByTestId("tutor-close").click();
   await expect(panel).toBeHidden();
+}
+
+/**
+ * A teen asks from SET-11 → AUTH-18 → AUTH-19 (hand the phone) → the guardian signs in on the
+ * separate session → AUTH-20 → done → AUTH-23 "said yes" → back to settings.
+ */
+export async function guardianHandoff(
+  page: Page,
+  scope: string,
+  guardian: { email: string; name: string },
+) {
+  await page.goto("/me/settings");
+  await page.getByTestId(`set-consent-${scope}`).click();
+  await expect(page.getByTestId("auth-18")).toBeVisible();
+  await expectAccessible(page, "AUTH-18");
+  await page.getByTestId("consent-handoff").click();
+  await expect(page.getByTestId("auth-19")).toHaveAttribute("data-view", "student");
+  await expectAccessible(page, "AUTH-19 student");
+  await page.getByTestId("handoff-they-have-it").click();
+  await expect(page.locator("[data-view=guardian]")).toBeVisible();
+  await expectAccessible(page, "AUTH-19 guardian");
+  await devGoogle(page, guardian.email, guardian.name);
+  await expect(page.getByTestId("auth-20")).toBeVisible();
+  await expect(page.getByTestId(`consent-row-${scope}`)).toBeVisible();
+  await expectAccessible(page, "AUTH-20");
+  await expect(page.getByTestId("consent-agree")).toBeDisabled();
+  await page.getByTestId("consent-declaration").click();
+  await page.getByTestId("consent-agree").click();
+  await expect(page.getByTestId("auth-20-done")).toBeVisible();
+  await page.getByTestId("handoff-given-back").click();
+  await expect(page.getByTestId("auth-23")).toHaveAttribute("data-status", "granted");
+  await expectAccessible(page, "AUTH-23");
+  await page.getByTestId("consent-result-continue").click();
+  await expect(page).toHaveURL(/\/me\/settings/);
+}
+
+/**
+ * AUTH-21 on the teen's page; the guardian opens the link in their own browser (AUTH-22), signs
+ * in and agrees (AUTH-20); the teen's page sees the answer by polling (AUTH-23).
+ */
+export async function guardianLink(
+  page: Page,
+  guardianPage: Page,
+  scope: string,
+  guardian: { email: string; name: string },
+) {
+  await page.goto("/me/settings");
+  await page.getByTestId(`set-consent-${scope}`).click();
+  await expect(page.getByTestId("auth-18")).toBeVisible();
+  await page.getByTestId("consent-link").click();
+  await expect(page.getByTestId("auth-21")).toBeVisible();
+  await expectAccessible(page, "AUTH-21");
+  const link = (await page.getByTestId("consent-link-url").textContent()) ?? "";
+  const code = link.trim().split("/").filter(Boolean).pop() ?? "";
+  expect(code).toMatch(/^[A-Za-z0-9]{6,12}$/);
+  await guardianPage.goto(`/guardian/${code}`);
+  await expect(guardianPage.getByTestId("auth-22")).toBeVisible();
+  await expectAccessible(guardianPage, "AUTH-22");
+  await devGoogle(guardianPage, guardian.email, guardian.name);
+  await expect(guardianPage.getByTestId("auth-20")).toBeVisible();
+  await guardianPage.getByTestId("consent-declaration").click();
+  await guardianPage.getByTestId("consent-agree").click();
+  await expect(guardianPage.getByTestId("auth-20-done")).toBeVisible();
+  await expect(page.getByTestId("auth-23")).toHaveAttribute("data-status", "granted", {
+    timeout: 20_000,
+  });
+  await page.getByTestId("consent-result-continue").click();
+}
+
+/** AUTH-24 → SET-14: the guardian sees the teen and turns one scope off (SET-17). */
+export async function parentTurnsOff(
+  page: Page,
+  scope: string,
+  guardian: { email: string; name: string },
+) {
+  await page.goto("/parent");
+  await expect(page.getByTestId("auth-24")).toBeVisible();
+  await expectAccessible(page, "AUTH-24");
+  await devGoogle(page, guardian.email, guardian.name);
+  await expect(page.getByTestId("set-14")).toBeVisible();
+  const row = page.locator(`[data-testid=learner-scope-${scope}]`).first();
+  await expect(row).toHaveAttribute("data-on", "true");
+  await expectAccessible(page, "SET-14");
+  await page.getByTestId(`learner-off-${scope}`).first().click();
+  await page
+    .getByTestId("learner-off-confirm")
+    .getByRole("button", { name: /turn off|बंद करें/i })
+    .click();
+  await expect(row).toHaveAttribute("data-on", "false");
+  await page.getByTestId("parent-exit").click();
 }

@@ -15,23 +15,59 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
 import { activateSubscription } from "../scripts/fake-razorpay.mjs";
-import { askTutor, dailyChallenge, devGoogle, drill, expectAccessible, finishFirstWin, mockAttempt, onboard, playLesson, type Locale } from "./journey";
+import {
+  askTutor,
+  dailyChallenge,
+  devGoogle,
+  drill,
+  expectAccessible,
+  finishFirstWin,
+  guardianHandoff,
+  guardianLink,
+  mockAttempt,
+  onboard,
+  parentTurnsOff,
+  playLesson,
+  type Locale,
+} from "./journey";
 
 const API = "http://127.0.0.1:8000";
 
 // The local dev database (scripts/dev/db.sh); the fixture exam's metadata is loaded when missing.
 const DB_URL = process.env.SMRITI_DEV_DB_URL ?? "postgres://postgres@127.0.0.1:54322/smriti";
-const METADATA = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "tools", "content-publish", "out", "metadata.sql");
+const METADATA = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "..",
+  "tools",
+  "content-publish",
+  "out",
+  "metadata.sql",
+);
 
 test.beforeAll(async ({ request }) => {
   const r = await request.get(`${API}/healthz`).catch(() => null);
   test.skip(!r || !r.ok(), `apps/api is not running on ${API}`);
   const exams = (await (await request.get(`${API}/v1/catalog/exams`)).json()) as { id: string }[];
   if (!exams.some((e) => e.id === "fx-exam")) {
-    execFileSync("psql", [DB_URL, "-v", "ON_ERROR_STOP=1", "-q", "-f", METADATA], { stdio: "inherit" });
+    execFileSync("psql", [DB_URL, "-v", "ON_ERROR_STOP=1", "-q", "-f", METADATA], {
+      stdio: "inherit",
+    });
   }
   // The publisher loads the fixture blueprint as a draft; mocks are built from active blueprints only.
-  execFileSync("psql", [DB_URL, "-v", "ON_ERROR_STOP=1", "-q", "-c", "update content.exam_blueprints set status = 'active' where exam_profile_id = 'fx-exam-2027' and status = 'draft'"], { stdio: "inherit" });
+  execFileSync(
+    "psql",
+    [
+      DB_URL,
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-q",
+      "-c",
+      "update content.exam_blueprints set status = 'active' where exam_profile_id = 'fx-exam-2027' and status = 'draft'",
+    ],
+    { stdio: "inherit" },
+  );
 });
 
 interface Seen {
@@ -65,10 +101,13 @@ for (const locale of ["en", "hi"] as Locale[]) {
 
     // The server has the events and agrees on the streak.
     await expect
-      .poll(async () => {
-        await page.evaluate(() => window.dispatchEvent(new Event("online")));
-        return seen.calls.filter((c) => /POST \/v1\/sync\/events 20\d/.test(c)).length;
-      }, { timeout: 30_000 })
+      .poll(
+        async () => {
+          await page.evaluate(() => window.dispatchEvent(new Event("online")));
+          return seen.calls.filter((c) => /POST \/v1\/sync\/events 20\d/.test(c)).length;
+        },
+        { timeout: 30_000 },
+      )
       .toBeGreaterThan(0);
     await page.reload();
     await expect(page.getByTestId("home-streak")).toBeVisible();
@@ -78,13 +117,19 @@ for (const locale of ["en", "hi"] as Locale[]) {
     // A drill runs as a server practice session: the server picks, checks and counts.
     await drill(page);
     expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions 20\d/.test(c))).toBe(true);
-    expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/answers 200/.test(c))).toBe(true);
-    expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/complete 200/.test(c))).toBe(true);
+    expect(
+      seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/answers 200/.test(c)),
+    ).toBe(true);
+    expect(
+      seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/complete 200/.test(c)),
+    ).toBe(true);
     expect(seen.calls.some((c) => /GET \/v1\/practice\/limits 200/.test(c))).toBe(true);
 
     // Today's challenge: start, answer once, result from the server.
     await dailyChallenge(page);
-    expect(seen.calls.some((c) => /POST \/v1\/daily-challenge\/[^/]+\/answer 200/.test(c))).toBe(true);
+    expect(seen.calls.some((c) => /POST \/v1\/daily-challenge\/[^/]+\/answer 200/.test(c))).toBe(
+      true,
+    );
 
     // A sectional mock on the attempts API: start, save answers, submit, report, solutions.
     await mockAttempt(page, "bp:fx-exam-2027:paper-1:section-a");
@@ -96,7 +141,9 @@ for (const locale of ["en", "hi"] as Locale[]) {
     // AI-02 from MOCK-22 (question context): two answers stream from /v1/tutor.
     await askTutor(page);
     expect(seen.calls.some((c) => /POST \/v1\/tutor\/sessions 200/.test(c))).toBe(true);
-    expect(seen.calls.filter((c) => /POST \/v1\/tutor\/sessions\/[^/]+\/messages 200/.test(c)).length).toBe(2);
+    expect(
+      seen.calls.filter((c) => /POST \/v1\/tutor\/sessions\/[^/]+\/messages 200/.test(c)).length,
+    ).toBe(2);
 
     // Soft prompt → link Google (dev auth) → paywall with the server's price and eligibility.
     await page.goto("/learn");
@@ -116,7 +163,12 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await expect.poll(() => seen.subscription !== null && seen.userId !== null).toBe(true);
     const sub = seen.subscription as { id: string; intro: boolean } | null;
     if (!sub || !seen.userId) throw new Error("no subscription or user id seen");
-    await activateSubscription({ api: API, subscriptionId: sub.id, userId: seen.userId, intro: sub.intro });
+    await activateSubscription({
+      api: API,
+      subscriptionId: sub.id,
+      userId: seen.userId,
+      intro: sub.intro,
+    });
     await expect(page.getByTestId("pro-on")).toBeVisible({ timeout: 30_000 });
     await expectAccessible(page, "PAY-09");
     await page.goto("/me/plan");
@@ -125,3 +177,40 @@ for (const locale of ["en", "hi"] as Locale[]) {
     expect(seen.calls.filter((c) => / 5\d\d$/.test(c))).toEqual([]);
   });
 }
+
+// A teen (born 2011) saves their account, then asks a guardian: on the same phone for friends and
+// leagues, by link for the voice tutor; the guardian then turns the voice tutor off in Parent mode.
+test("teen asks a guardian on the real API (en)", async ({ page, browser }) => {
+  const calls: string[] = [];
+  page.on("response", (r) => {
+    if (r.url().startsWith(API))
+      calls.push(`${r.request().method()} ${new URL(r.url()).pathname} ${r.status()}`);
+  });
+  const stamp = Date.now();
+  const guardian = { email: `guardian-${stamp}@example.test`, name: "Asha Guardian" };
+  await onboard(page, "en", { petName: "Mitti", birthYear: "2011" });
+  await playLesson(page, /\/onboarding\/first-win/);
+  await finishFirstWin(page);
+  await page.getByTestId("save-plant-link").click();
+  await devGoogle(page, `teen-${stamp}@example.test`, "Ravi Teen");
+  await expect(page.getByTestId("auth-01")).toBeHidden();
+
+  await guardianHandoff(page, "social", guardian);
+  expect(calls.some((c) => /POST \/v1\/guardian\/consent-requests 201/.test(c))).toBe(true);
+  expect(
+    calls.some((c) => /POST \/v1\/guardian\/consent-requests\/[^/]+\/confirm 200/.test(c)),
+  ).toBe(true);
+  await expect(page.getByTestId("set-consent-social")).toBeVisible();
+
+  const guardianContext = await browser.newContext();
+  const guardianPage = await guardianContext.newPage();
+  await guardianLink(page, guardianPage, "voice", guardian);
+  await guardianContext.close();
+
+  await parentTurnsOff(page, "voice", guardian);
+  expect(calls.some((c) => /GET \/v1\/guardian\/learners 200/.test(c))).toBe(true);
+  expect(
+    calls.some((c) => /DELETE \/v1\/guardian\/consents\/[^/]+\/scopes\/voice 200/.test(c)),
+  ).toBe(true);
+  expect(calls.filter((c) => / 5\d\d$/.test(c))).toEqual([]);
+});

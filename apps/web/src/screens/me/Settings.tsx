@@ -7,7 +7,18 @@
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useAppStore } from "@smriti/app-core/react";
-import { Button, Card, ChoiceChips, Dialog, Icon, SettingsGroup, SettingsRow, Text, TopBar, TrustLine } from "@smriti/ui-web";
+import {
+  Button,
+  Card,
+  ChoiceChips,
+  Dialog,
+  Icon,
+  SettingsGroup,
+  SettingsRow,
+  Text,
+  TopBar,
+  TrustLine,
+} from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
 import { SoftPromptSheet, useAgeBand } from "../../components/SignIn";
 import { ApiError } from "../../lib/api";
@@ -18,6 +29,60 @@ import { useIsPro } from "../../lib/pro";
 import { useTheme, type ThemeMode } from "../../lib/theme";
 import { toast } from "../../lib/toast";
 import { prefs } from "../../platform/web";
+import { FEATURE_SCOPES, useMyConsent, type Scope } from "../../lib/guardian";
+
+const CONSENT_ROW: Record<
+  Scope,
+  | "me_money:SET-11.account_scope"
+  | "me_money:SET-11.social"
+  | "me_money:SET-11.sharing"
+  | "me_money:SET-11.voice"
+  | "me_money:SET-11.photo"
+> = {
+  account: "me_money:SET-11.account_scope",
+  social: "me_money:SET-11.social",
+  community: "me_money:SET-11.sharing",
+  voice: "me_money:SET-11.voice",
+  uploads: "me_money:SET-11.photo",
+};
+
+/** SET-11 "Your choices" for a teen: each scope's state; one that needs a guardian opens AUTH-18. */
+function ConsentRows() {
+  const { t, locale } = useI18n();
+  const navigate = useNavigate();
+  const consent = useMyConsent();
+  const c = consent.data;
+  if (!c || c.age_band === "18p" || c.state === "not_required") return null;
+  return (
+    <>
+      <Text variant="label" className="px-4 pt-3">
+        {t("me_money:SET-11.consents")}
+      </Text>
+      {FEATURE_SCOPES.map((scope) => {
+        const on = c.state === "granted" && c.scopes.includes(scope);
+        return (
+          <SettingsRow
+            key={scope}
+            title={t(CONSENT_ROW[scope])}
+            value={
+              on && c.consented_at
+                ? t("me_money:SET-11.status_on", { date: formatDate(c.consented_at, locale) })
+                : t("me_money:SET-11.status_guardian")
+            }
+            trailing={on ? "none" : "caret"}
+            onPress={
+              on
+                ? undefined
+                : () =>
+                    void navigate({ to: "/guardian/ask", search: { scope, from: "/me/settings" } })
+            }
+            testID={`set-consent-${scope}`}
+          />
+        );
+      })}
+    </>
+  );
+}
 
 const GOALS = [5, 10, 20, 30] as const;
 
@@ -68,10 +133,15 @@ export function Settings() {
     try {
       const r = await requestDeletion(s);
       setDialog(null);
-      if (r.scheduled_for) toast.show(t("auth:AUTH-17.title", { date: formatDate(r.scheduled_for, locale) }));
+      if (r.scheduled_for)
+        toast.show(t("auth:AUTH-17.title", { date: formatDate(r.scheduled_for, locale) }));
     } catch (err) {
       setDialog(null);
-      if (err instanceof ApiError && err.code === "reauth_required") void navigate({ to: "/login", search: { reason: "session_expired", next: "/me/settings" } });
+      if (err instanceof ApiError && err.code === "reauth_required")
+        void navigate({
+          to: "/login",
+          search: { reason: "session_expired", next: "/me/settings" },
+        });
       else toast.show(t("learn:WEB-01.load_error"), { tone: "error" });
     } finally {
       setBusy(false);
@@ -87,22 +157,44 @@ export function Settings() {
             <span className="flex flex-col gap-2">
               <Text variant="heading">{t("me_money:SET-02.guest_title", { brand })}</Text>
               <Text tone="muted">{t("me_money:SET-01.guest_card")}</Text>
-              <Button label={t("me_money:SET-01.guest_button")} onPress={() => setPrompt(true)} testID="set-sign-in" />
+              <Button
+                label={t("me_money:SET-01.guest_button")}
+                onPress={() => setPrompt(true)}
+                testID="set-sign-in"
+              />
               <TrustLine />
             </span>
           </Card>
         ) : (
           <SettingsGroup title={t("me_money:SET-02.title")}>
-            <SettingsRow title={t("me_money:SET-01.signed_in")} icon="ShieldCheck" value={email ?? undefined} trailing="none" />
-            <SettingsRow title={t("me_money:SET-02.sign_out")} icon="SignOut" onPress={() => setDialog("sign_out")} testID="set-sign-out" />
+            <SettingsRow
+              title={t("me_money:SET-01.signed_in")}
+              icon="ShieldCheck"
+              value={email ?? undefined}
+              trailing="none"
+            />
+            <SettingsRow
+              title={t("me_money:SET-02.sign_out")}
+              icon="SignOut"
+              onPress={() => setDialog("sign_out")}
+              testID="set-sign-out"
+            />
           </SettingsGroup>
         )}
 
         <SettingsGroup>
           <SettingsRow
-            title={pro && ent?.pro_until ? t("me_money:SET-01.pro_row_pro", { date: formatDate(ent.pro_until, locale) }) : t("me_money:SET-01.pro_row_free")}
+            title={
+              pro && ent?.pro_until
+                ? t("me_money:SET-01.pro_row_pro", { date: formatDate(ent.pro_until, locale) })
+                : t("me_money:SET-01.pro_row_free")
+            }
             icon="Diamond"
-            onPress={() => void navigate(pro ? { to: "/me/plan" } : { to: "/pro", search: { source: "settings" } })}
+            onPress={() =>
+              void navigate(
+                pro ? { to: "/me/plan" } : { to: "/pro", search: { source: "settings" } },
+              )
+            }
             testID="set-pro"
           />
         </SettingsGroup>
@@ -125,7 +217,12 @@ export function Settings() {
         </SettingsGroup>
 
         <SettingsGroup title={t("me_money:SET-01.group_app")}>
-          <SettingsRow title={t("me_money:SET-01.notifications")} icon="Bell" onPress={() => void navigate({ to: "/me/notifications" })} testID="set-notifications" />
+          <SettingsRow
+            title={t("me_money:SET-01.notifications")}
+            icon="Bell"
+            onPress={() => void navigate({ to: "/me/notifications" })}
+            testID="set-notifications"
+          />
           <div className="flex flex-col gap-2 p-4">
             <Text variant="label">{t("me_money:SET-06.app_language")}</Text>
             <ChoiceChips
@@ -145,7 +242,10 @@ export function Settings() {
             <ChoiceChips
               label={t("me_money:SET-07.title")}
               hideLabel
-              options={(["system", "light", "dark"] as const).map((m) => ({ value: m, label: t(`me_money:SET-07.${m}`) }))}
+              options={(["system", "light", "dark"] as const).map((m) => ({
+                value: m,
+                label: t(`me_money:SET-07.${m}`),
+              }))}
               value={[theme.mode]}
               onChange={(v) => v[0] && theme.setMode(v[0] as ThemeMode)}
               testID="set-theme"
@@ -173,15 +273,39 @@ export function Settings() {
               {t("me_money:SET-11.analytics_caption")}
             </Text>
           )}
+          {band === "13_17" && !guest && <ConsentRows />}
+          <SettingsRow
+            title={t("me_money:SET-13.title")}
+            icon="ShieldCheck"
+            onPress={() => void navigate({ to: "/parent" })}
+            testID="set-parent"
+          />
           {guest ? (
-            <SettingsRow title={t("me_money:SET-02.guest_erase")} icon="Trash" destructive onPress={() => setDialog("erase")} testID="set-erase" />
+            <SettingsRow
+              title={t("me_money:SET-02.guest_erase")}
+              icon="Trash"
+              destructive
+              onPress={() => setDialog("erase")}
+              testID="set-erase"
+            />
           ) : (
-            <SettingsRow title={t("me_money:SET-02.delete")} icon="Trash" destructive onPress={() => setDialog("delete")} testID="set-delete" />
+            <SettingsRow
+              title={t("me_money:SET-02.delete")}
+              icon="Trash"
+              destructive
+              onPress={() => setDialog("delete")}
+              testID="set-delete"
+            />
           )}
         </SettingsGroup>
 
         <Text variant="caption" tone="muted" align="center">
-          {t("me_money:SET-01.footer", { app: brand, version: __APP_VERSION__, build: "web", content_version: contentVersion ?? "–" })}
+          {t("me_money:SET-01.footer", {
+            app: brand,
+            version: __APP_VERSION__,
+            build: "web",
+            content_version: contentVersion ?? "–",
+          })}
         </Text>
       </div>
 
@@ -190,7 +314,11 @@ export function Settings() {
         onOpenChange={(o) => !o && setDialog(null)}
         title={t("auth:AUTH-12.title", { app_name: brand })}
         description={t("auth:AUTH-12.web_body")}
-        confirm={{ label: t("auth:AUTH-12.sign_out"), onPress: () => void doSignOut(), destructive: true }}
+        confirm={{
+          label: t("auth:AUTH-12.sign_out"),
+          onPress: () => void doSignOut(),
+          destructive: true,
+        }}
         cancel={{ label: t("auth:AUTH-12.cancel"), onPress: () => setDialog(null) }}
         testID="auth-12"
       />
@@ -199,7 +327,11 @@ export function Settings() {
         onOpenChange={(o) => !o && setDialog(null)}
         title={t("auth:AUTH-12.guest_erase_title")}
         description={t("auth:AUTH-12.guest_erase_body")}
-        confirm={{ label: t("auth:AUTH-12.guest_erase_erase"), onPress: () => void doErase(), destructive: true }}
+        confirm={{
+          label: t("auth:AUTH-12.guest_erase_erase"),
+          onPress: () => void doErase(),
+          destructive: true,
+        }}
         cancel={{ label: t("auth:AUTH-12.cancel"), onPress: () => setDialog(null) }}
         testID="auth-12-erase"
       />
@@ -207,14 +339,28 @@ export function Settings() {
         open={dialog === "delete"}
         onOpenChange={(o) => !o && setDialog(null)}
         title={t("auth:AUTH-13.title")}
-        description={t("auth:AUTH-13.grace_line", { grace_days: s.flags.get("auth.deletion_grace_days") })}
-        confirm={{ label: t("auth:AUTH-13.continue"), onPress: () => void doDelete(), destructive: true }}
+        description={t("auth:AUTH-13.grace_line", {
+          grace_days: s.flags.get("auth.deletion_grace_days"),
+        })}
+        confirm={{
+          label: t("auth:AUTH-13.continue"),
+          onPress: () => void doDelete(),
+          destructive: true,
+        }}
         cancel={{ label: t("auth:AUTH-13.keep"), onPress: () => setDialog(null) }}
         testID="auth-13"
       >
         <div className="flex flex-col gap-1">
           <Text variant="label">{t("auth:AUTH-13.deleted_heading")}</Text>
-          {(["auth:AUTH-13.row_1", "auth:AUTH-13.row_2", "auth:AUTH-13.row_3", "auth:AUTH-13.row_4", "auth:AUTH-13.row_5"] as const).map((k) => (
+          {(
+            [
+              "auth:AUTH-13.row_1",
+              "auth:AUTH-13.row_2",
+              "auth:AUTH-13.row_3",
+              "auth:AUTH-13.row_4",
+              "auth:AUTH-13.row_5",
+            ] as const
+          ).map((k) => (
             <span key={k} className="flex items-center gap-2">
               <Icon name="Trash" size={16} color="inkMuted" />
               <Text variant="caption">{t(k)}</Text>
@@ -226,7 +372,11 @@ export function Settings() {
           </Text>
         </div>
       </Dialog>
-      {busy && <span className="sr-only" aria-live="polite">{t("auth:AUTH-12.saving")}</span>}
+      {busy && (
+        <span className="sr-only" aria-live="polite">
+          {t("auth:AUTH-12.saving")}
+        </span>
+      )}
       <SoftPromptSheet open={prompt} reason="save_progress" onClose={() => setPrompt(false)} />
     </div>
   );
@@ -240,7 +390,9 @@ export function NotificationSettings() {
   const navigate = useNavigate();
   const band = useAgeBand();
   const minor = band !== "18p";
-  const [perm, setPerm] = useState<NotificationPermission | "unsupported">(typeof Notification === "undefined" ? "unsupported" : Notification.permission);
+  const [perm, setPerm] = useState<NotificationPermission | "unsupported">(
+    typeof Notification === "undefined" ? "unsupported" : Notification.permission,
+  );
   const [time, setTime] = useState<string | null>(prefs.get("reminder_time"));
   const [rows, setRows] = useState<Record<string, boolean>>(() => {
     try {
@@ -269,19 +421,37 @@ export function NotificationSettings() {
     void s.record("settings_changed", { key: `notify.${key}`, value: on });
   };
   const row = (key: string, title: string) => (
-    <SettingsRow key={key} title={title} trailing="switch" checked={rows[key] ?? true} onCheckedChange={(on) => toggle(key, on)} testID={`notify-${key}`} />
+    <SettingsRow
+      key={key}
+      title={title}
+      trailing="switch"
+      checked={rows[key] ?? true}
+      onCheckedChange={(on) => toggle(key, on)}
+      testID={`notify-${key}`}
+    />
   );
 
   return (
     <div className="flex flex-col gap-4 pb-6" data-testid="set-03">
-      <TopBar title={t("me_money:SET-03.title")} onBack={() => void navigate({ to: "/me/settings" })} />
+      <TopBar
+        title={t("me_money:SET-03.title")}
+        onBack={() => void navigate({ to: "/me/settings" })}
+      />
       <div className="flex flex-col gap-4 px-4 md:px-8">
         {perm !== "granted" && (
           <Card tone="tint" testID="notify-off">
             <span className="flex flex-col gap-2">
               <Text variant="heading">{t("me_money:SET-03.off_card", { brand })}</Text>
-              <Text tone="muted">{t("me_money:SET-03.off_card_body", { pet: pet?.name ?? "" })}</Text>
-              {perm === "default" && <Button label={t("me_money:SET-03.turn_on")} onPress={() => void ask()} testID="notify-turn-on" />}
+              <Text tone="muted">
+                {t("me_money:SET-03.off_card_body", { pet: pet?.name ?? "" })}
+              </Text>
+              {perm === "default" && (
+                <Button
+                  label={t("me_money:SET-03.turn_on")}
+                  onPress={() => void ask()}
+                  testID="notify-turn-on"
+                />
+              )}
             </span>
           </Card>
         )}
@@ -290,7 +460,10 @@ export function NotificationSettings() {
             <ChoiceChips
               label={t("me_money:SET-03.daily_reminder")}
               hideLabel
-              options={[...TIMES.map((v, i) => ({ value: v, label: chips[i] ?? v })), { value: "off", label: t("me_money:SET-01.off") }]}
+              options={[
+                ...TIMES.map((v, i) => ({ value: v, label: chips[i] ?? v })),
+                { value: "off", label: t("me_money:SET-01.off") },
+              ]}
               value={[time ?? "off"]}
               onChange={(v) => pick(v[0] && v[0] !== "off" ? v[0] : null)}
               testID="notify-time"

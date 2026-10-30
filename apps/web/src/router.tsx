@@ -3,7 +3,13 @@
  * are the only eager parts. Onboarding, the lesson player, the paywall and sign-in are full-screen;
  * everything else sits in the four-tab shell (R46: Learn, Labs, Practice, Me).
  */
-import { createRootRouteWithContext, createRoute, createRouter, lazyRouteComponent, redirect } from "@tanstack/react-router";
+import {
+  createRootRouteWithContext,
+  createRoute,
+  createRouter,
+  lazyRouteComponent,
+  redirect,
+} from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
 import type { Services } from "./boot/services";
 import { withNamespaces } from "./lib/i18n";
@@ -17,7 +23,8 @@ export interface RouterContext {
   queryClient: QueryClient;
 }
 
-const onboarded = () => useOnboarding.getState().completedAt !== null || useOnboarding.getState().firstWinAt !== null;
+const onboarded = () =>
+  useOnboarding.getState().completedAt !== null || useOnboarding.getState().firstWinAt !== null;
 
 const rootRoute = createRootRouteWithContext<RouterContext>()({
   component: RootLayout,
@@ -39,7 +46,15 @@ const welcomeRoute = createRoute({
   path: "/welcome",
   component: lazyRouteComponent(() => import("./screens/onboarding/Welcome"), "Welcome"),
 });
-export const ONBOARDING_STEPS = ["goal", "class", "birth-year", "exam-date", "level", "buddy", "plant"] as const;
+export const ONBOARDING_STEPS = [
+  "goal",
+  "class",
+  "birth-year",
+  "exam-date",
+  "level",
+  "buddy",
+  "plant",
+] as const;
 export type OnboardingStepId = (typeof ONBOARDING_STEPS)[number];
 const onboardingStepRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -49,7 +64,10 @@ const onboardingStepRoute = createRoute({
 const firstLessonRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/onboarding/first-lesson",
-  component: lazyRouteComponent(withNamespaces(["memory_labs", "me_money"], () => import("./screens/lesson/LessonScreen")), "FirstLesson"),
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs", "me_money"], () => import("./screens/lesson/LessonScreen")),
+    "FirstLesson",
+  ),
 });
 const firstWinRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -76,20 +94,37 @@ const lessonRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/lesson/$topicId",
   validateSearch: (s: Record<string, unknown>): LessonSearch => ({
-    mode: s.mode === "quick_revision" ? "quick_revision" : s.mode === "deep_dive" ? "deep_dive" : undefined,
+    mode:
+      s.mode === "quick_revision"
+        ? "quick_revision"
+        : s.mode === "deep_dive"
+          ? "deep_dive"
+          : undefined,
     bite: typeof s.bite === "string" ? s.bite : undefined,
   }),
-  component: lazyRouteComponent(withNamespaces(["memory_labs", "me_money"], () => import("./screens/lesson/LessonScreen")), "LessonScreen"),
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs", "me_money"], () => import("./screens/lesson/LessonScreen")),
+    "LessonScreen",
+  ),
 });
 const lessonCompleteRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/lesson-complete",
-  component: lazyRouteComponent(withNamespaces(["me_money", "memory_labs", "auth"], () => import("./screens/lesson/LessonComplete")), "LessonComplete"),
+  component: lazyRouteComponent(
+    withNamespaces(
+      ["me_money", "memory_labs", "auth"],
+      () => import("./screens/lesson/LessonComplete"),
+    ),
+    "LessonComplete",
+  ),
 });
 const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/review",
-  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/memory/Review")), "Review"),
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs"], () => import("./screens/memory/Review")),
+    "Review",
+  ),
 });
 export interface PaywallSearch {
   source?: string;
@@ -97,18 +132,29 @@ export interface PaywallSearch {
 const paywallRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/pro",
-  validateSearch: (s: Record<string, unknown>): PaywallSearch => ({ source: typeof s.source === "string" ? s.source : undefined }),
-  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "Paywall"),
+  validateSearch: (s: Record<string, unknown>): PaywallSearch => ({
+    source: typeof s.source === "string" ? s.source : undefined,
+  }),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money"], () => import("./screens/me/Paywall")),
+    "Paywall",
+  ),
 });
 const checkoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/pro/checkout",
-  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "Checkout"),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money"], () => import("./screens/me/Paywall")),
+    "Checkout",
+  ),
 });
 const proWelcomeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/pro/welcome",
-  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "ProWelcome"),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money"], () => import("./screens/me/Paywall")),
+    "ProWelcome",
+  ),
 });
 export interface LoginSearch {
   reason?: string;
@@ -119,34 +165,97 @@ const loginRoute = createRoute({
   path: "/login",
   validateSearch: (s: Record<string, unknown>): LoginSearch => ({
     reason: typeof s.reason === "string" ? s.reason : undefined,
-    next: typeof s.next === "string" && s.next.startsWith("/") && !s.next.startsWith("//") ? s.next : undefined,
+    next:
+      typeof s.next === "string" && s.next.startsWith("/") && !s.next.startsWith("//")
+        ? s.next
+        : undefined,
   }),
-  component: lazyRouteComponent(withNamespaces(["auth"], () => import("./screens/auth/Login")), "Login"),
+  component: lazyRouteComponent(
+    withNamespaces(["auth"], () => import("./screens/auth/Login")),
+    "Login",
+  ),
+});
+const guardianNs = ["auth", "me_money"] as const;
+const guardian = (name: string) =>
+  lazyRouteComponent(
+    withNamespaces(guardianNs, () => import("./screens/auth/Guardian")),
+    name as "ConsentAsk",
+  );
+export interface ConsentSearch {
+  scope?: string;
+  from?: string;
+}
+const consentAskRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/guardian/ask",
+  validateSearch: (s: Record<string, unknown>): ConsentSearch => ({
+    scope: typeof s.scope === "string" ? s.scope : undefined,
+    from:
+      typeof s.from === "string" && s.from.startsWith("/") && !s.from.startsWith("//")
+        ? s.from
+        : undefined,
+  }),
+  component: guardian("ConsentAsk"),
+});
+const consentHandoffRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/guardian/handoff",
+  component: guardian("ConsentHandoff"),
+});
+const consentLinkRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/guardian/link",
+  component: guardian("ConsentLink"),
+});
+const guardianLandingRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/guardian/$code",
+  component: guardian("GuardianLanding"),
+});
+const parentRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/parent",
+  component: guardian("ParentMode"),
 });
 const mockRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/mock/$mockId",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockInstructionsRoute"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Mock")),
+    "MockInstructionsRoute",
+  ),
 });
 const attemptRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/attempt/$attemptId",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockAttemptRoute"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Mock")),
+    "MockAttemptRoute",
+  ),
 });
 const reportRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/attempt/$attemptId/report",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockReportRoute"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Mock")),
+    "MockReportRoute",
+  ),
 });
 const solutionsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/attempt/$attemptId/solutions",
-  component: lazyRouteComponent(withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Mock")), "MockSolutionsRoute"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Mock")),
+    "MockSolutionsRoute",
+  ),
 });
 const drillRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/drill/$topicId",
-  component: lazyRouteComponent(withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Practice")), "Drill"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Practice")),
+    "Drill",
+  ),
 });
 
 // ── The tab shell ─────────────────────────────────────────────────────────
@@ -161,7 +270,10 @@ const shellRoute = createRoute({
 const homeRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/learn",
-  component: lazyRouteComponent(withNamespaces(["memory_labs", "practice", "auth"], () => import("./screens/home/Home")), "Home"),
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs", "practice", "auth"], () => import("./screens/home/Home")),
+    "Home",
+  ),
 });
 const subjectRoute = createRoute({
   getParentRoute: () => shellRoute,
@@ -176,62 +288,98 @@ const chapterRoute = createRoute({
 const topicRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/learn/topic/$topicId",
-  component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/learn/Learn")), "TopicScreen"),
+  component: lazyRouteComponent(
+    withNamespaces(["tutor_social"], () => import("./screens/learn/Learn")),
+    "TopicScreen",
+  ),
 });
 const labsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/labs",
-  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/labs/Labs")), "LabsHub"),
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs"], () => import("./screens/labs/Labs")),
+    "LabsHub",
+  ),
 });
 const labRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/labs/$simId",
-  component: lazyRouteComponent(withNamespaces(["memory_labs", "tutor_social"], () => import("./screens/labs/Labs")), "LabScreen"),
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs", "tutor_social"], () => import("./screens/labs/Labs")),
+    "LabScreen",
+  ),
 });
 const practiceRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/practice",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Practice")), "PracticeHub"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Practice")),
+    "PracticeHub",
+  ),
 });
 const challengeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/challenge",
-  component: lazyRouteComponent(withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Challenge")), "DailyChallengeScreen"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Challenge")),
+    "DailyChallengeScreen",
+  ),
 });
 const pyqRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/practice/pyq",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Pyq")), "PyqBank"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Pyq")),
+    "PyqBank",
+  ),
 });
 const progressRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/practice/progress",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Progress")), "ProgressScreen"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Progress")),
+    "ProgressScreen",
+  ),
 });
 const mocksRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/practice/mocks",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockLobby"),
+  component: lazyRouteComponent(
+    withNamespaces(["practice"], () => import("./screens/practice/Mock")),
+    "MockLobby",
+  ),
 });
 const meRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me",
-  component: lazyRouteComponent(withNamespaces(["me_money", "auth"], () => import("./screens/me/Me")), "Me"),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money", "auth"], () => import("./screens/me/Me")),
+    "Me",
+  ),
 });
 const settingsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/settings",
-  component: lazyRouteComponent(withNamespaces(["me_money", "auth"], () => import("./screens/me/Settings")), "Settings"),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money", "auth"], () => import("./screens/me/Settings")),
+    "Settings",
+  ),
 });
 const notificationsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/notifications",
-  component: lazyRouteComponent(withNamespaces(["me_money", "auth"], () => import("./screens/me/Settings")), "NotificationSettings"),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money", "auth"], () => import("./screens/me/Settings")),
+    "NotificationSettings",
+  ),
 });
 const planRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/plan",
-  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "YourPlan"),
+  component: lazyRouteComponent(
+    withNamespaces(["me_money"], () => import("./screens/me/Paywall")),
+    "YourPlan",
+  ),
 });
 
 const routeTree = rootRoute.addChildren([
@@ -249,13 +397,33 @@ const routeTree = rootRoute.addChildren([
   checkoutRoute,
   proWelcomeRoute,
   loginRoute,
+  consentAskRoute,
+  consentHandoffRoute,
+  consentLinkRoute,
+  guardianLandingRoute,
+  parentRoute,
   mockRoute,
   attemptRoute,
   reportRoute,
   solutionsRoute,
   challengeRoute,
   drillRoute,
-  shellRoute.addChildren([homeRoute, subjectRoute, chapterRoute, topicRoute, labsRoute, labRoute, practiceRoute, mocksRoute, pyqRoute, progressRoute, meRoute, settingsRoute, notificationsRoute, planRoute]),
+  shellRoute.addChildren([
+    homeRoute,
+    subjectRoute,
+    chapterRoute,
+    topicRoute,
+    labsRoute,
+    labRoute,
+    practiceRoute,
+    mocksRoute,
+    pyqRoute,
+    progressRoute,
+    meRoute,
+    settingsRoute,
+    notificationsRoute,
+    planRoute,
+  ]),
 ]);
 
 export function createAppRouter(context: RouterContext) {

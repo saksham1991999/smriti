@@ -1,0 +1,164 @@
+---
+import Art from "./Art.astro";
+import Icon from "./Icon.astro";
+import { site, type Locale } from "../config/site";
+import { fmt, messages } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  heading?: string;
+}
+const { lang, heading } = Astro.props;
+const m = messages(lang);
+const p = m.promises.items;
+---
+
+<section class="section" id="promises" aria-labelledby="promises-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="promises-title" class="t-display">{heading ?? m.promises.heading}</h2>
+      <p class="t-lead muted">{fmt(m.promises.sub, { brand: site.brand.name[lang] })}</p>
+    </div>
+    <ul class="promises" role="list">
+      <li class="promise s-physics">
+        <div class="copy">
+          <span class="badge"><Icon name="book-open" size={24} /></span>
+          <h3 class="t-title">{p.modes.title}</h3>
+          <p class="muted">{p.modes.body}</p>
+        </div>
+        <Art name="cat-reading" lang={lang} sizes="(min-width: 1024px) 220px, 40vw" class="pic" />
+      </li>
+      <li class="promise s-chemistry">
+        <div class="copy">
+          <span class="badge"><Icon name="flask" size={24} /></span>
+          <h3 class="t-title">{p.subjects.title}</h3>
+          <p class="muted">{p.subjects.body}</p>
+        </div>
+        <div class="trio">
+          <Art name="subject-physics" lang={lang} sizes="120px" class="t1" />
+          <Art name="subject-history" lang={lang} sizes="120px" class="t2" />
+          <Art name="subject-geography" lang={lang} sizes="120px" class="t3" />
+        </div>
+      </li>
+      <li class="promise s-language">
+        <div class="copy">
+          <span class="badge"><Icon name="lightbulb" size={24} /></span>
+          <h3 class="t-title">{p.memory.title}</h3>
+          <p class="muted">{p.memory.body}</p>
+        </div>
+        <Art name="memory-hook-sample" lang={lang} sizes="(min-width: 1024px) 220px, 40vw" class="pic framed" />
+      </li>
+      <li class="promise plant">
+        <div class="copy">
+          <span class="badge"><Icon name="plant" weight="fill" size={24} /></span>
+          <h3 class="t-title">{p.pet.title}</h3>
+          <p class="muted">{p.pet.body}</p>
+        </div>
+        <Art name="cat-plant" lang={lang} sizes="(min-width: 1024px) 220px, 40vw" class="pic" />
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .promises {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .promises {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+  .promise {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 8px;
+    padding: 24px;
+    border-radius: var(--r-card-large);
+    background: var(--tint);
+    min-height: 260px;
+    overflow: hidden;
+  }
+  .promise.plant {
+    background: var(--streak-tint);
+    --stext: var(--streak-text);
+  }
+  .copy {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    align-self: start;
+    max-width: 34ch;
+  }
+  .badge {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    background: var(--surface);
+    color: var(--stext);
+    margin-bottom: 4px;
+  }
+  .copy p {
+    color: var(--ink-muted);
+  }
+  .promise :global(.pic) {
+    width: clamp(120px, 30vw, 200px);
+    align-self: end;
+    margin: 0 -8px -16px 0;
+  }
+  .promise :global(.pic.framed) {
+    border-radius: 20px;
+    margin: 0;
+    width: clamp(110px, 26vw, 170px);
+    box-shadow: var(--sh-card);
+  }
+  .trio {
+    position: relative;
+    width: clamp(120px, 30vw, 200px);
+    aspect-ratio: 1;
+    align-self: end;
+  }
+  .trio :global(img) {
+    position: absolute;
+    width: 58%;
+  }
+  .trio :global(.t1) {
+    left: 0;
+    top: 0;
+  }
+  .trio :global(.t2) {
+    right: 0;
+    top: 22%;
+  }
+  .trio :global(.t3) {
+    left: 14%;
+    bottom: -4%;
+  }
+  @media (max-width: 599px) {
+    .promise {
+      grid-template-columns: 1fr;
+      min-height: 0;
+      padding: 20px 20px 0;
+    }
+    .promise :global(.pic),
+    .trio {
+      justify-self: end;
+      width: 140px;
+    }
+    .promise :global(.pic.framed) {
+      margin-bottom: 20px;
+      width: 132px;
+    }
+    .copy {
+      max-width: none;
+    }
+  }
+</style>

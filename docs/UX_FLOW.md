@@ -1,265 +1,121 @@
 # Smriti — UI/UX Flow
 
-Status: Draft v0.1, 28 Oct 2026.
+Status: Draft v0.2, 29 Oct 2026. Replaces v0.1 (28 Oct).
 
-- **Chosen direction:** "Sunny Subjects". Light, simple and colourful. Every subject has its own colour, and cards carry big illustrations.
-- **Dark mode:** follows the "Night Colour" direction.
-- **Reference mockups:** [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF48w6kC4bv6PtJhHFzzZ), boards 7 and 10.
-- **Related docs:**
-  - `APP_FLOW.md` covers navigation and logic.
-  - `DESIGN.md` covers tokens and components.
-  - This document covers how each screen looks, moves and feels.
+- **Chosen direction:** "Sunny Subjects". Light, simple and colourful. Every subject has its own colour, and cards carry big illustrations. Dark mode follows "Night Colour".
+- **This doc** is the short version: principles, the visual summary, the patterns every screen shares, and where each area's specs live.
+- **Screen specs:** every screen has a block in `docs/ux/<area>.md` with the same 12 headings: purpose and main action, entry and exits, layout, copy (EN + HI), states, interaction and motion, accessibility, analytics, web layout, illustration slots, phase and mock priority. The index of all 315 screens is [`SCREENS.md`](SCREENS.md).
+- **Navigation and logic:** [`APP_FLOW.md`](APP_FLOW.md). **Tokens and components:** `DESIGN.md` and `packages/tokens/tokens.json`.
+- **Visual mocks:** [Smriti Screens](https://claude.ai/artifact/Qo8oFPHZahA11hRgPEPxr7), 235 frames. The source is `design/mocks/`, which holds the P0 screens of every area, built into one gallery page by `cd tools/mocks && npm install && node build.mjs`. The illustrations in them are draft Agnes AI images.
+- **Earlier direction boards:** [Smriti Mobile Directions canvas](https://claude.ai/artifact/BQF48w6kC4bv6PtJhHFzzZ).
 
 ---
 
 ## 1. Principles
 
 1. **Simple first.** Each screen has one main action. Everything else is secondary. No decorative styles: no clay, no glass gimmicks, no fake paper.
-2. **Colour means something.** Each subject owns a colour, used the same way everywhere: its card tint, its progress bar, its lesson header, its icons.
-3. **Illustration on every screen.** Every key screen has at least one large illustration: the pet, the plant, a subject object, or the lesson's own visual. Illustrations explain or reward. They are never filler.
-4. **The pet is the voice.** System messages, tips and nudges come from the cat or dog in short, warm lines, for example "Halfway there!" instead of "50% complete".
-5. **Fast on cheap phones.** Flat colours, soft shadows and PNG/WebP illustrations. Heavy effects (blur, 3D) only appear inside labs.
-6. **Thumb-friendly.** Primary actions sit in the bottom third of the screen, touch targets are at least 48 px, and the bottom tab bar is always visible on main screens.
-7. **Bilingual by design.** Every layout must fit Hindi strings, which run about 20–30% longer, without truncation.
+2. **Colour means something.** Each subject owns a colour, used the same way everywhere: its card tint, progress bar, lesson header and icons. Gold is reserved for the streak, the plant, gems and the ₹1 offer tag.
+3. **Illustration on every key screen.** The pet, the plant, a subject object or the lesson's own visual. Illustrations explain or reward, and are never filler. Every one comes from Agnes AI through `skills/visual-director`. Icons are Phosphor.
+4. **The pet is the voice.** System messages, tips and nudges come from the cat or dog in short, warm lines. The pet never states a fact or a number it can't back up.
+5. **Fast on cheap phones.** Flat colours, soft shadows and WebP illustrations. Heavy effects (blur, 3D) appear only inside labs.
+6. **Thumb-friendly.** The main action sits in the bottom third, touch targets are at least 48 px, and the tab bar is always visible on main screens.
+7. **Bilingual by design.** Every layout fits Hindi strings, which run 20–30% longer, without truncation. No text is baked into images.
+8. **Honest by default.** No fake timers, anchors or "% off". Limits are shown up front. Locked items always open a preview. Deleting an account is never hidden.
 
 ## 2. Visual language summary
-`DESIGN.md` is the source of truth. This is the short version.
 
-| Token | Value | Use |
+`DESIGN.md` and the tokens are the source of truth. This is the short version.
+
+| Token | Light | Night Colour | Use |
+|---|---|---|---|
+| `bg` | `#F6F7FB` | `#11131C` | App background |
+| `surface` | `#FFFFFF` | `#1B1E2B` | Cards, sheets, tab bar |
+| `ink` | `#151A2D` | `#F3F4FA` | Primary text |
+| `inkMuted` | `#4A5470` | `#A3A8BF` | Secondary text, at least 4.5:1 on white and on tints |
+| `primary` | `#3557E8` | `#7B93FF` | Main buttons, links, the active tab, Pro chips |
+| `streak` on `streakTint` | `#F5A300` on `#FFF1B8` | `#FFC53D` on `#3D3410` | Streak, plant, gems, the ₹1 tag only |
+| `success` | `#2FB463` | `#4ADE80` | Correct, done |
+| `error` | `#D6363C` | `#FF6B6B` | Wrong answers, destructive buttons. Always with an icon |
+| `warning` | `#F08C00` | `#FF9F43` | Streak at risk, timer warnings. Always with an icon |
+
+- **Subjects:** each has a `tint` and a `strong` value in `tokens.subject`, mapped by `subjectMap`. The mocks use the classes `.s-physics`, `.s-chemistry` and so on.
+- **Exam accents:** the all-exams app uses `primary` blue. Each exam app swaps the primary colour from `tokens.examAccent`. Subject colours stay the same in every app. The mock runner keeps all-exams blue in every app.
+- **Type:** Plus Jakarta Sans for Latin text and Noto Sans Devanagari for Hindi. The scale is in `tokens.type` (display, title, heading, body, label, caption).
+- **Shape:** cards 20–24 px radius, buttons 20 px, sheets 28 px at the top, chips fully round.
+- **Depth:** one soft card shadow and a coloured glow for the primary button.
+- **Google and Apple buttons** follow each company's rules, with colours from `tokens.thirdParty`. This is the one documented exception to the tokens-only rule (DESIGN.md §5).
+
+## 3. Patterns every screen shares
+
+| Pattern | Rule | Where it is specified |
 |---|---|---|
-| Background | `#F6F7FB` | App background |
-| Surface | `#FFFFFF` | Cards, sheets, tab bar |
-| Ink | `#151A2D` | Primary text |
-| Ink muted | `#4A5470` | Secondary text. Contrast ≥ 4.5:1 on white and on tints. |
-| Primary | `#3557E8` | Main buttons, links, the active tab |
-| Streak gold | `#F5A300` on `#FFF1B8` | Streak, plant, gems |
-| Success | `#2FB463` | Correct answers, done states |
-| Error | `#E5484D` | Wrong answers. Always paired with an icon, never colour alone. |
-| Physics | tint `#E7EEFF` / strong `#3557E8` | |
-| Chemistry | tint `#F1E9FF` / strong `#7B4DDB` | |
-| Biology | tint `#E2F6EA` / strong `#1F9D55` | |
-| Maths | tint `#FFEBDC` / strong `#E8590C` | |
-| History / Social science | tint `#FFF1D6` / strong `#B7791F` | |
-| Polity / Economy | tint `#E3F4F8` / strong `#0E7C93` | |
-| English / Reasoning | tint `#FFE4EC` / strong `#C2255C` | |
+| **Hindi register** | आप everywhere; तुम only in little-learner (class 1–5) copy. Plain spoken Hindi with the loanwords students use (लेसन, मॉक टेस्ट, स्ट्रीक). Gender-neutral lines for the student, pets and friends, with ICU `select` where unavoidable | each `docs/ux/*.md` copy table |
+| **Names of minors** | Under-18s appear to other students only after guardian consent, with the pet avatar and an auto-generated nickname ("Sunny Sprout 27" / "धूप अंकुर 27"). Friends added by invite link or QR see the pet name. A typed name is never public | `docs/flows/tutor-social.md`, `docs/flows/auth.md` §6.10 |
+| **Pro chip and locks** | "Locked" only means Pro. A Pro chip on the item; tapping opens a preview or the LRN-05 sheet, never a dead end. Little learners see "Ask a grown-up" and never a price | `docs/ux/learn.md` §0.2, LRN-05 |
+| **Upsell placement** | No Pro upsell on Home. At most one prompt per lesson complete. The inline Pro card every 5th lesson, 13+ only. No upsell inside reviews or mocks | `docs/flows/learn.md` §7.5, PAY-19 |
+| **Login sheets** | Soft (AUTH-01, can say Later) or hard (AUTH-02, always has Back). Google first, Apple under it on iOS, then the trust line "We never call you or share your email." | `docs/ux/auth.md` §0.2 |
+| **Save-state chip** | Shows whether progress is only on this phone, saving, saved to {email}, or saved but offline | AUTH-33 |
+| **Tutor button** | Floats on main screens and in lessons. Hidden in the mock runner, during onboarding, and for little learners unless a parent turns it on | AI-01 |
+| **Streak and plant** | The streak pill uses the `Plant` icon in gold, never a flame. Freeze slots sit on the streak card. The plant has five stages (seed, sprout, sapling, flowering, tree) and is never shown dead; a long break shows it "Resting" | HOME-01, ME-07, ME-10, ENT-08 |
+| **Confidence and ratings** | Sure / 50:50 / Guess in lessons, reviews, drills and mocks where allowed. Review ratings are Again / Hard / Good / Easy, each with a label and the next interval | `docs/ux/memory-labs.md` P1 |
+| **Mock runner** | Plain on purpose: light by default, all-exams blue, no mascots, confetti, tutor or pushes, a "not affiliated with {conducting_body}" footer, and no exam-body logos | `docs/ux/practice.md` MOCK-05 to MOCK-18 |
+| **Reports** | One shared report sheet (SET-24) for content, tutor answers and community items. SOC-23 is for people and decks | SET-24, SOC-23 |
+| **Notifications** | Push copy comes from the pet, in the student's language, at most 60 characters. Minors get only the reminder time they picked; friend pushes wait for that window | NTF-01 |
+| **Empty and error states** | Illustration, one line, one action. Our-side errors show the pet with a wrench and a short code. Offline shows a slim banner, and downloaded content keeps working | each area's states section |
 
-- **Type:** Plus Jakarta Sans for Latin text (800 for headings, 600–700 for UI, 500 for body) and Noto Sans Devanagari for Hindi.
-  - Scale: 30 / 22 / 18 / 16 / 14 / 12.
-- **Shape:** cards 20–24 px radius, buttons 20 px radius (pill-like), chips fully round.
-- **Depth:** one soft shadow level for cards (`0 2px 10px rgba(21,26,45,.06)`) and a coloured glow for primary CTAs (`0 10px 24px` in the primary colour at 35%).
-- **Illustrations:** soft 3D, rounded, colourful objects and characters, lit from the top-left, on transparent backgrounds. Agnes AI generates them from the style guide in `DESIGN.md`.
-  - The canvas uses Microsoft Fluent 3D emoji (MIT licence) as stand-ins. They can also be shipped for small icons.
-- **Per-exam accent:**
-  - The all-exams app uses Primary blue.
-  - Each exam app can swap the primary colour: JEE indigo `#3557E8`, NEET green `#1F9D55`, UPSC teal `#0E7C93`, SSC coral `#E8590C`.
-  - Subject colours stay the same in every app.
+## 4. Areas
 
-## 3. Motion, sound and haptics
+| Area | Main screens | Screen specs |
+|---|---|---|
+| Entry and onboarding | ENT-01 splash, ONB-01 welcome and language, ONB-02 goal, ONB-07 level, ONB-10 pick and name your buddy, ONB-12 plant your seed, ONB-14 first win, ONB-08 daily goal, ONB-15 reminder, ENT-08 streak check-in | [`ux/onboarding.md`](ux/onboarding.md) |
+| Sign-in and accounts | AUTH-01 / AUTH-02 login sheets, AUTH-04 Google handoff, AUTH-06 saved, AUTH-08 merge, AUTH-12 sign out, AUTH-13 delete, AUTH-18 to AUTH-23 guardian consent, AUTH-24 to AUTH-28 parents and children, AUTH-29 web sign-in | [`ux/auth.md`](ux/auth.md) |
+| Home, learning and lessons | HOME-01 Home, HOME-02 Today's plan, LRN-01 subject map, LRN-02 chapter, LRN-03 topic card, LES-01 lesson player, LES-08 lesson complete, LES-10 rapid cards | [`ux/learn.md`](ux/learn.md) |
+| Memory tools and labs | MEM-01 memory hub, MEM-03 review session, MEM-02 comeback plan, MEM-14 palace builder, MEM-19 make it stick, MEM-25 how well I know it, LAB-01 Labs hub, LAB-04 sim player, LAB-08 3D viewer, LAB-13 periodic table | [`ux/memory-labs.md`](ux/memory-labs.md) |
+| Practice and mock tests | PRC-01 Practice hub, PRC-04 practice runner, PRC-07 PYQ bank, PRC-11 daily challenge, PRC-14 analytics, MOCK-01 lobby, MOCK-07 / MOCK-08 runner, MOCK-09 palette, MOCK-19 report | [`ux/practice.md`](ux/practice.md) |
+| AI tutor and friends | AI-02 tutor chat, AI-14 voice, AI-19 photo doubt, AI-21 role play, SOC-01 Friends, SOC-08 league, SOC-12 Duos, SOC-18 duel | [`ux/tutor-social.md`](ux/tutor-social.md) |
+| Me, settings, Pro and notifications | ME-01 Me, ME-04 pet room, ME-07 plant garden, ME-17 shop, SET-01 settings, SET-02 account, PAY-01 paywall, PAY-12 manage plan, NTF-01 pushes, NTF-08 to NTF-10 widgets | [`ux/me-money.md`](ux/me-money.md) |
+
+## 5. Motion, sound and haptics
 
 | Moment | Motion | Sound | Haptic |
 |---|---|---|---|
 | Tap a button | Scale to 0.97, then back in 120 ms | none | light |
-| Correct answer | Option turns green, a check pops in with a spring, and the pet does a small hop | soft "ding" | success |
-| Wrong answer | Option shakes (2 × 6 px), turns red with an ✕ icon, then the hint card slides up | soft "bonk" | warning |
-| Lesson complete | Confetti burst for 1.2 s, the pet's celebration loop, and XP counting up | short jingle | success |
-| Streak +1 | Plant grows a leaf (Rive state change) and the flame counter flips | chime | medium |
-| Pet mood change | Rive state-machine blend over 400 ms | optional purr or bark | none |
-| Page transitions | Native stack push (iOS) and shared-axis X (Android). Lesson cards slide horizontally. | none | none |
-| Pull to refresh | The pet peeks down from the top | none | light |
+| Correct answer | Option turns green, a check pops in with a spring, the pet hops | soft "ding" | success |
+| Wrong answer | Option shakes (2 × 6 px), turns red with a cross icon, the hint slides up | soft "bonk" | warning |
+| Lesson complete | Confetti for 1.2 s, the pet's celebration, XP counting up | short jingle | success |
+| Streak day counted | The plant grows a leaf (Rive state change) and the plant pill's number flips | chime | medium |
+| Pet mood change | Rive blend over 400 ms | optional purr or bark | none |
+| Page transitions | Native push on iOS, shared-axis X on Android. Lesson cards slide horizontally | none | none |
 
-- **Reduced motion:** confetti, shakes and parallax are replaced by fades, and Rive animations switch to their static poses.
-- **Sounds:** off by default when the phone is in silent mode. There's a separate toggle for sound and for haptics.
-- **Gyroscope:** used only in 360° scenes, 3D models and a light tilt on the home hero illustration (at most 6°). Always paired with a drag fallback and a "Recenter" button.
-- **Animation formats:**
-  - Rive for the pet and plant: one state machine each, with inputs `mood`, `energy`, `stage` and `health`.
-  - Lottie for confetti and small UI flourishes.
-  - Reanimated for UI motion.
+- **Reduced motion:** confetti, shakes and parallax become fades, and Rive animations switch to static poses. The setting applies everywhere, sims included.
+- **Sound** is off when the phone is silent, with separate toggles for sound and haptics.
+- **Gyroscope** only in 360° scenes, 3D models and a light tilt on the Home hero (at most 6°), always with a drag fallback and [Recenter].
+- **Formats:** Rive for the pet and plant, Lottie for confetti and small flourishes, Reanimated for UI motion.
 
-## 4. Screen-by-screen
+## 6. Web app
 
-### 4.1 Splash and update prompt
-- **Splash:** brand colour background, the logo, and the pet waving (Rive). It shows for under 1 s, or for as long as the config loads.
-- **Soft update:** a bottom sheet. Pet line: "I learned new tricks! Update for the best experience." Buttons: [Update] [Later].
-- **Forced update:** a full screen with a single [Update] button. Shown only when the app is below the minimum version.
+The web app (`apps/web`) is built from the same screen specs. Each spec block has a "Web" section. In general:
 
-### 4.2 Onboarding (about 90 seconds in total)
-Each step is one screen:
-- a big illustration in the top half
-- a short question
-- big tappable cards
-- a primary button pinned to the bottom
-- a progress bar at the top
-- "Skip" where it makes sense
+- **Under 600 px:** the mobile layouts with the bottom tab bar.
+- **600 px and wider:** a left sidebar replaces the tabs, with the streak, plant and pet in a compact card at its top. Lists and details sit side by side.
+- **Lessons:** the card column is capped at 720 px. The tutor opens as a right-hand panel. Arrow keys move between cards and Enter checks an answer.
+- **Mock runner:** the official computer-based test layout, with the question on the left, the palette on the right, and the tabs and timer on top. Full keyboard support.
+- **Sign-in:** Google One Tap first, then the AUTH-01 sheet, and AUTH-29 as the sign-in page.
+- **Reminders:** Web Push where supported, otherwise an opt-in email reminder.
 
-1. **Welcome.** Both pets wave. Title: "Learn anything. Remember everything." Buttons: [Get started] and "I already have an account".
-2. **Language.** Two large cards, "English" and "हिन्दी", each with a greeting illustration. This sets the UI and content language, and the student can change it later.
-3. **Goal.** A grid of exam cards with icons: JEE, NEET, UPSC, SSC, Banking, Railways, School (class 1–12), and "Just curious". Multi-select is allowed. *Skipped in per-exam apps.*
-4. **When is your exam?** A month and year wheel, or "Not sure yet". Shows "Your exam is in 186 days" with a calendar illustration.
-5. **Where are you now?** Three cards: "Just starting", "Know the basics", "Revising". Then an optional 5-question placement quiz in the same lesson player.
-6. **Daily goal.** A slider with stops at 5 / 10 / 20 / 30 min. Each stop shows a different plant size ("Casual → Intense").
-7. **Pick your buddy.** Cat or dog, each on a large card that bounces when tapped. Then a naming field with suggestions (Miso, Bruno, Laddoo, Chiku).
-8. **Plant your seed.** The student taps to plant. The pet waters it, the seed sprouts, and the screen says "Study daily and it grows. Miss days and it gets thirsty."
-9. **First lesson.** A 2-minute lesson in the goal's subject, which ends with streak day 1 and a celebration.
-10. **Reminders.** The pet asks "Can I remind you at 7 PM?" with a time picker, then the system permission prompt. If the student says no, they can still continue.
+## 7. Dark mode
 
-**No login anywhere in onboarding.** The student lands on Home as a guest.
+- Night Colour tokens (`tokens.color.dark`). Background `#11131C`, surfaces `#1B1E2B`.
+- Subject colours use their brighter values for fills, with dark ink on them.
+- Illustrations stay the same; their bright colours work on dark.
+- The mode follows the system by default, with a manual override in SET-07, and a separate "Dark mode in mocks" toggle because the runner is light by default.
 
-### 4.3 Home (Learn tab)
-Top to bottom (see board "7 · Home"):
-1. **Header.** Pet avatar in a coloured circle, a greeting with the name, then streak 🔥 and gem pills on the right. Tapping the pet opens the Pet room.
-2. **Streak card.** Gold tint with the plant illustration on the right. One line about today's state, for example "One lesson waters it today" or "Watered! See you tomorrow", plus progress toward the daily goal.
-3. **Continue card.** In the subject's strong colour, with the topic name, mode and percentage, a [Resume] button, and the subject illustration overlapping the edge.
-4. **Review due.** Shown only when cards are due: "24 cards · 5 min".
-5. **Subjects grid.** A 2 × N grid of tinted cards, each with an illustration, name, percentage and chapter count. The exam switcher chip sits above the grid in the all-exams app.
-6. **Bottom tabs (five):** Learn (this Home screen) · Labs · Practice (mocks and PYQs) · Friends · Me. They match `APP_FLOW.md`. Subjects and chapters open from Home, so there's no separate "Learn" tab beyond Home.
+## 8. Accessibility checklist
 
-**States:**
-- **New user:** a "Start here" card in place of Continue.
-- **Streak at risk** (after 8 PM, goal not met): the streak card turns warm orange and the pet looks worried.
-- **Plant thirsty or dry:** the plant illustration changes, and the copy turns gentle and encouraging.
-- **Offline:** a slim banner reads "Offline. Downloaded lessons still work."
-
-### 4.4 Subject map and chapter
-- **Subject map.** A header in the subject's colour with the subject illustration, then the chapter list as cards with a progress ring, chapter illustration, "high-yield" chip and PYQ count. Filters: All · In progress · Not started · Weak.
-- **Chapter.** A topic list with done, next and locked states (see board "7 · Topic"), chapter cheat-sheet and formula-sheet buttons, and a chapter test.
-
-### 4.5 Topic card
-- A coloured header with a large illustration, the topic title, the exam relevance chip, and a back button.
-- **Mode choice:** two big cards.
-  - **Deep dive** (selected by default for new topics) shows its duration and contents.
-  - **Quick revision** (the default once the topic is learned) shows its duration and contents.
-- A subtopic checklist with times.
-- A memory-trick card (gold) and a YouTube video card (red play icon). The video opens the YouTube app or an in-app player.
-- A pinned primary CTA: "Start deep dive" or "Start quick revision".
-
-### 4.6 Lesson player
-- **Top bar:** close (✕), a segmented progress bar, and a "3 of 8" counter.
-- **Body:** a single card per screen. The student moves forward with [Continue] or by swiping. Card types and their layouts:
-  - **Story / explainer:** a large illustration (about 40% of the height), a heading of up to 2 lines, and body text of at most 3 short paragraphs. Key terms are highlighted in the subject tint, and tapping one opens a definition.
-  - **Formula:** rendered with KaTeX in a tinted box. Each symbol is tappable to see its meaning and units, and "Add to formula vault" saves it.
-  - **Interactive or sim:** the sim is full width and keeps a 4:3 or 1:1 aspect ratio. Controls sit below it, never on top. There's an "Expand" button for full screen.
-  - **3D or 360°:** opens full screen with drag and gyroscope, labels as pins, and [Recenter] and [Close] buttons.
-  - **Derivation:** steps reveal one at a time, with "Why?" chips on each step.
-  - **Question:**
-    - The stem sits at the top. Options are full-width cards, or a 2 × 2 grid when they're short. A numerical question gets a keypad.
-    - A confidence row (Sure / 50:50 / Guess) sits under the options.
-    - [Check] is pinned at the bottom.
-    - The result appears in a bottom sheet: green "Correct!" with an explanation link, or red with a hint and [Try again].
-  - **Memory hook:** a gold card with the mnemonic in big type and an optional illustration. Buttons: [Make my own] (AI) and [Add to deck].
-  - **Role play:** a chat layout with the character's avatar, suggested replies as chips, and a microphone button.
-- **Floating tutor button** (bottom right, above the CTA): opens the AI tutor sheet at 60% height, which the student can expand.
-- **Exit confirmation:** a sheet that says "Your progress is saved."
-
-### 4.7 Lesson complete
-- A big pet celebration illustration with confetti.
-- Three stat tiles: XP, accuracy and time.
-- A plant update line, for example "Your plant grew a leaf".
-- [Continue] (primary) and [Share] (secondary).
-- Every 5th lesson, a gentle Pro upsell card for free users, shown below the buttons and never blocking them.
-
-### 4.8 Review (spaced repetition)
-- A card stack with the front showing first. Tap to flip. The back shows the answer and an illustration.
-- Four rating buttons with next-interval labels (Again / Hard / Good / Easy), coloured red, amber, green and indigo, and labelled with text.
-- A progress bar at the top. The pet comments at 50% and at the end.
-- An end screen shows how many cards were remembered and when the next review is due.
-
-### 4.9 Labs tab
-- A hub grid of lab cards with illustrations, filterable by subject. Featured at the top: Periodic table, Virtual titration, Circuit builder, Optics bench, Human body 3D.
-- **Lab screen:** the scene is full width at the top, then the tasks list ("1. Fill the burette…"). Readings appear as stat chips. Buttons: [Record reading] and [Ask tutor].
-- **Periodic table:** a horizontally scrollable grid coloured by block or family. Tapping an element opens a sheet with an illustration, properties, uses, a mnemonic and a 3D atom view.
-
-### 4.10 Practice and mocks
-- **Practice hub:** a weak-spots card (from analytics), concept drills, a PYQ bank (filter by year and topic), and the daily challenge.
-- **Mock lobby:** cards for upcoming live mocks, full mocks, sectional mocks and PYQ papers. Each card shows duration, questions and marking. History is shown below.
-- **Instructions:** these replicate the official instructions screen (NTA or SSC style), with a language select and an "I have read the instructions" checkbox.
-- **Mock runner:**
-  - It is deliberately **plainer** than the rest of the app, so students practise in an interface that looks like the real exam.
-  - Header: exam name and a large timer. Below it, section tabs.
-  - The question area takes most of the screen.
-  - The palette opens as a sheet with exam-standard colours plus shapes (answered, not answered, marked, answered and marked, not visited).
-  - Buttons at the bottom: [Mark for review & next] [Clear] [Save & next].
-  - Mascots and confetti never appear inside the runner.
-- **Report:** see board "10 · Mock report", restyled in light mode.
-  - Score ring, percentile and rank.
-  - Subject bars in subject colours.
-  - Time analysis tiles: right but slow, fast and wrong, lucky guesses.
-  - A time-per-question strip chart, then concept heat map, confidence breakdown and solutions.
-  - A "Fix next" card that leads to a drill.
-
-### 4.11 AI tutor
-- **Chat sheet:** the pet avatar answers. Messages support KaTeX, images (Agnes) and "Save as flashcard".
-- The input row has a text field, a camera button (photo doubt) and a microphone button (voice).
-- **Voice mode:** a full-screen pet illustration that animates while speaking, live captions, a big mic button and [End].
-- **Limits:** free users see "3 of 5 free questions left today". At the limit, a soft paywall appears.
-
-### 4.12 Friends
-- A league card (tier illustration, rank, time left), friends' streaks in a row (pet avatars), the duo partner card, and squads.
-- **Duel:** pick a friend or random opponent, then a 3-2-1 countdown, then 10 quick questions side by side, then a result with both pets.
-
-### 4.13 Me
-- A profile header: avatar and pet, then stats (streak, XP, lessons, accuracy).
-- **Pet room:** see board "9 · Pet and plant", restyled in Sunny colours. It shows mood and plant health meters, the plant journey timeline, care actions, and accessories (gems).
-- Badges and the card album, downloads, PDF export, subscription, settings, and parent mode.
-
-### 4.14 Login sheet (whenever triggered)
-- A bottom sheet with the pet holding the plant, and the line "Save Miso and your plant forever."
-- Buttons: [Continue with phone] (OTP), [Continue with Google] and, on iOS, [Continue with Apple]. "Email instead" is a link.
-- **OTP screen:** 6 boxes with auto-read on Android. "Resend in 0:30".
-- **After login:** "Welcome back! Your 12-day streak is safe." Then the student returns to where they were.
-
-### 4.15 Paywall
-- A full-screen sheet. At the top, the pet holds a gold ₹1 tag.
-- **Headline:** "Try Pro for ₹1 for your first month." Then "₹99/month after. Cancel anytime."
-- A 4–5 row benefit list with illustrations: all deep dives, unlimited mocks, voice tutor, PDF books, offline.
-- **Plan card:** monthly, with yearly added later.
-- [Start for ₹1], with platform-specific fine print: UPI Autopay on web, store billing in apps.
-- "Maybe later" is always visible. There are no dark patterns and no fake timers.
-
-### 4.16 Notifications and widgets
-- **Push copy** always comes from the pet, in the student's language, and is at most 60 characters. Examples:
-  - "Miso saved you a seat. 5-min lesson?"
-  - "Your plant is thirsty."
-  - "Riya challenged you!"
-- **Rich notification:** the pet image as the large icon.
-- **Widgets:**
-  - **Small (plant):** the plant illustration plus the streak number.
-  - **Medium (pet + today):** pet mood, today's progress ring and a [Review] deep link.
-  - **Large (plan):** the exam countdown plus 3 plan items.
-  - All widgets use the subject and brand colours and render in light or dark mode.
-
-### 4.17 Web app layout
-The web app is a separate React app (TRD §2.1) built from the same screen specs above. Where it differs:
-- **Phone widths (< 600 px):** the same layouts as mobile, with the bottom tab bar.
-- **Tablet and desktop (≥ 600 px):** a left sidebar replaces the bottom tabs (Learn, Labs, Practice, Friends, Me), with the streak, plant and pet in a compact card at the top of the sidebar. Lists and details sit side by side (subject list and chapter, deck and card).
-- **Lessons:** the card column is capped at 720 px and centred. The tutor opens as a right-hand panel instead of a bottom sheet. Arrow keys move between cards, and Enter checks an answer.
-- **Mock runner:** laid out like the official computer-based test screen, with the question on the left, the palette on the right, and the section tabs and timer on top. Full keyboard support (number keys for options, M to mark, N for next).
-- **Labs, 3D and 360°:** the same sims and scenes in a larger frame, with mouse drag and scroll to zoom. Device orientation is used only on phones and tablets.
-- **Install and offline:** an install prompt after the second visit, a "Download for offline" action on topics, and the same offline banner as mobile.
-- **Reminders:** Web Push where the browser supports it, otherwise an opt-in email reminder.
-
-## 5. Empty, error and edge states
-
-| State | Treatment |
-|---|---|
-| No internet on a non-downloaded lesson | Sleeping-pet illustration, "This lesson needs internet", and [Download for later] when back online |
-| Server error | Pet holding a wrench, "Something broke on our side", [Try again]. Logs the trace ID. |
-| No reviews due | Pet relaxing, "All caught up! Next review in 3 h" |
-| Plant dormant (long break) | A gentle illustration of the plant resting. "Welcome back! Let's wake your plant up: 3 short days." Never shows a dead plant. |
-| Pet unwell (long break) | Pet resting in a basket with a blanket, never shown in distress. A "Nurse back to health" quest. |
-| Search with no results | "Couldn't find that. Ask the tutor instead?" |
-| Guest hits a social feature | Login sheet with the reason shown |
-
-## 6. Dark mode
-- Based on Night Colour. Background `#11131C`, surfaces `#1B1E2B`.
-- Subject colours shift to their brighter "strong" values for fills, with dark ink on them.
-- Illustrations stay the same. Their bright colours work on dark.
-- The mode follows the system by default, with a manual override in settings.
-
-## 7. Accessibility checklist
-- Text contrast ≥ 4.5:1, including muted text on tinted cards. Check every subject tint.
-- Status is never shown by colour alone. Correct, wrong and marked each carry an icon or shape.
+- Text contrast at least 4.5:1, including muted text on tinted cards. Contrast comes from token pairs only.
+- Status is never shown by colour alone. Correct, wrong, marked and locked each carry an icon, a shape or a word.
 - Dynamic type up to 200% without clipping. Cards grow, and grids switch to one column.
-- Screen-reader labels on every illustration (or `importantForAccessibility="no"` when decorative), and on the pet's lines.
+- Screen-reader labels on every icon and illustration (or hidden when decorative), and on the pet's lines.
 - Captions on all audio and video, and transcripts for the voice tutor.
-- Reduced-motion and reduced-sound settings are respected.
-- Focus order follows the visual order. The mock runner is fully operable with a hardware keyboard on tablets.
+- Reduced motion and reduced sound are respected.
+- Focus order follows the visual order. The mock runner works fully from a hardware keyboard.

@@ -1,0 +1,114 @@
+---
+// A legal page skeleton for counsel to fill in. It is headed "Draft, pending legal review",
+// carries noindex, and contains no legal text that could be read as final.
+import Base from "../layouts/Base.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import Icon from "./Icon.astro";
+import { site, type Locale } from "../config/site";
+import { fmt, messages } from "../i18n";
+import { localePath } from "../lib/urls";
+
+interface Props {
+  lang: Locale;
+  doc: "privacy" | "terms";
+}
+const { lang, doc } = Astro.props;
+const m = messages(lang);
+const d = m.legal[doc];
+const brand = site.brand.name[lang];
+const path = `/${doc}/`;
+const title = fmt(doc === "privacy" ? m.meta.privacyTitle : m.meta.termsTitle, { brand });
+const sections = Object.entries(d.sections);
+---
+
+<Base lang={lang} path={path} title={title} description={m.legal.draftBadge} pageType="legal" noindex>
+  <article class="wrap legal">
+    <Breadcrumbs lang={lang} items={[{ name: m.nav.home, href: localePath(lang, "/") }, { name: d.title, href: localePath(lang, path) }]} />
+    <p class="draft" role="note"><Icon name="warning" weight="fill" size={20} />{m.legal.draftBadge}</p>
+    <h1 class="t-display">{d.title}</h1>
+    <p class="t-lead muted intro">{fmt(m.legal.draftIntro, { doc: d.doc })}</p>
+    <p class="contact t-label">
+      {site.brand.supportEmail ? fmt(m.legal.contact, { email: site.brand.supportEmail }) : m.legal.contactPending}
+    </p>
+    <ol class="toc" aria-label={d.title}>
+      {sections.map(([key, s]) => <li><a href={`#${key}`}>{s.title}</a></li>)}
+    </ol>
+    {
+      sections.map(([key, s], i) => (
+        <section id={key} class="block card" aria-labelledby={`${key}-h`}>
+          <h2 id={`${key}-h`} class="t-title">
+            <span class="n num">{i + 1}.</span> {s.title}
+          </h2>
+          <p class="to-write t-caption">
+            <Icon name="pencil-simple" size={16} />
+            {m.legal.toWrite}
+          </p>
+          <ul>
+            {s.items.map((it) => (
+              <li>{it}</li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </article>
+</Base>
+
+<style>
+  .legal {
+    display: grid;
+    gap: 16px;
+    padding-block: 20px 72px;
+    max-width: 840px;
+  }
+  .draft {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px 14px;
+    border-radius: var(--r-pill);
+    background: var(--warning-tint);
+    color: var(--warning-text);
+    font-weight: 800;
+  }
+  .intro {
+    max-width: 64ch;
+  }
+  .contact {
+    color: var(--ink-muted);
+  }
+  .toc {
+    display: grid;
+    gap: 4px;
+    padding: 16px 16px 16px 40px;
+    border-radius: var(--r-card);
+    background: var(--surface-sunken);
+    font-weight: 700;
+  }
+  .toc a {
+    color: var(--ink);
+  }
+  .block {
+    padding: 20px 24px;
+    display: grid;
+    gap: 8px;
+  }
+  .n {
+    color: var(--ink-muted);
+  }
+  .to-write {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--warning-text);
+    font-weight: 800;
+  }
+  .block ul {
+    padding-left: 20px;
+    display: grid;
+    gap: 4px;
+    color: var(--ink-muted);
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+// The logo lockup: the existing mark from brand/logo plus the live-text wordmark
+// (DESIGN §12: name in Plus Jakarta Sans 800 in ink, then the Hindi name in inkMuted).
+import { site, type Locale } from "../config/site";
+
+interface Props {
+  lang: Locale;
+  href: string;
+}
+const { lang, href } = Astro.props;
+const name = site.brand.name;
+---
+
+<a class="brand" href={href} aria-label={lang === "hi" ? `${name.hi} (${name.en}), होम` : `${name.en} (${name.hi}), home`}>
+  <img src="/brand/smriti-mark.svg" width="34" height="34" alt="" />
+  <span class="wm" aria-hidden="true">
+    <span class="wm-en" lang="en">{name.en}</span>
+    <span class="wm-hi" lang="hi">{name.hi}</span>
+  </span>
+</a>

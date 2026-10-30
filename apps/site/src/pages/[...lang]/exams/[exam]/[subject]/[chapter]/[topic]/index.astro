@@ -1,0 +1,192 @@
+---
+// Topic landing page: the two modes, a "Try this lesson" hand-off to the web app
+// (/start?topic=…, onboarding §6.12), sibling topics, and Course schema.
+import Base from "../../../../../../../layouts/Base.astro";
+import PageHero from "../../../../../../../components/PageHero.astro";
+import CtaBand from "../../../../../../../components/CtaBand.astro";
+import Icon from "../../../../../../../components/Icon.astro";
+import { site, type Locale } from "../../../../../../../config/site";
+import { allTopicRefs, getIndex, paths, subjectsForExam, type TopicRef } from "../../../../../../../content-index";
+import { fmt, formatNumber, messages } from "../../../../../../../i18n";
+import { subjectArt } from "../../../../../../../lib/art";
+import { brandName, crumbsFor } from "../../../../../../../lib/page-data";
+import { withLocales } from "../../../../../../../lib/routes";
+import { course } from "../../../../../../../lib/seo";
+import { subjectClass } from "../../../../../../../lib/subjects";
+import { absolute, localePath, startUrl } from "../../../../../../../lib/urls";
+
+export function getStaticPaths() {
+  return withLocales(
+    allTopicRefs(getIndex()).map((ref) => ({
+      params: { exam: ref.exam.slug, subject: ref.subject.slug, chapter: ref.chapter.slug, topic: ref.topic.slug },
+      props: { ref },
+    })),
+  );
+}
+
+const { lang, ref } = Astro.props as { lang: Locale; ref: TopicRef };
+const { exam, subject, chapter, topic } = ref;
+const m = messages(lang);
+const brand = brandName(lang);
+const vars = { topic: topic.name[lang], chapter: chapter.name[lang], subject: subject.name[lang], exam: exam.short_name[lang], brand };
+const path = paths.topic(exam, subject, chapter, topic);
+const crumbs = crumbsFor(lang, exam, subject, chapter, topic);
+const description = fmt(m.meta.topicDescription, vars);
+const dd = topic.modes.deep_dive;
+const qr = topic.modes.quick_revision;
+const minutes = (dd?.minutes ?? 0) + (qr?.minutes ?? 0);
+const siblings =
+  subjectsForExam(getIndex(), exam)
+    .find((s) => s.subject.id === subject.id)
+    ?.chapters.find((c) => c.chapter.id === chapter.id)
+    ?.topics.filter((t) => t.id !== topic.id) ?? [];
+const tryHref = startUrl(site.webAppUrl, { lang, placement: "topic_hero", exam: exam.id, topic: topic.id });
+const jsonLd = [
+  course({
+    name: topic.name[lang],
+    description,
+    url: absolute(site.siteUrl, localePath(lang, path)),
+    lang,
+    providerName: brand,
+    siteUrl: site.siteUrl,
+    about: `${subject.name[lang]} · ${exam.name[lang]}`,
+    minutes: minutes > 0 ? minutes : null,
+  }),
+  crumbs.jsonLd,
+];
+---
+
+<Base
+  lang={lang}
+  path={path}
+  title={fmt(m.meta.topicTitle, vars)}
+  description={description}
+  pageType="topic"
+  og="exam"
+  accent={`x-${exam.accent}`}
+  exam={exam.id}
+  jsonLd={jsonLd}
+>
+  <div class={subjectClass(subject.id)}>
+    <PageHero
+      lang={lang}
+      crumbs={crumbs.visible}
+      eyebrow={fmt(m.topic.eyebrow, vars)}
+      title={topic.name[lang]}
+      body={topic.summary?.[lang] ?? fmt(m.topic.fallbackBody, vars)}
+      art={subjectArt(subject.id)}
+      tone="subject"
+    >
+      <Fragment slot="actions">
+        <a class="btn" href={tryHref} data-cta="try_lesson" data-placement="topic_hero">
+          {m.topic.tryThis}
+          <Icon name="arrow-right" size={20} />
+        </a>
+      </Fragment>
+    </PageHero>
+
+    <section class="section modes-section" aria-label={`${m.topic.deepDive}, ${m.topic.quickRevision}`}>
+      <div class="wrap modes">
+        {
+          dd && (
+            <article class="mode card">
+              <span class="mode-icon"><Icon name="book-open" size={24} /></span>
+              <h2 class="t-title">{m.topic.deepDive}</h2>
+              <p class="muted">{m.topic.deepDiveBody}</p>
+              <ul class="meta" role="list">
+                {chapter.deep_dive_free ? (
+                  <li class="chip free"><Icon name="check-circle" weight="fill" size={16} />{m.access.free}</li>
+                ) : (
+                  <li class="chip pro"><Icon name="lock-simple" size={16} />{m.access.pro}</li>
+                )}
+                {dd.minutes !== null && (
+                  <li class="chip"><Icon name="timer" size={16} />{fmt(m.topic.minutes, { n: formatNumber(lang, dd.minutes) })}</li>
+                )}
+              </ul>
+            </article>
+          )
+        }
+        {
+          qr && (
+            <article class="mode card">
+              <span class="mode-icon"><Icon name="lightning" weight="fill" size={24} /></span>
+              <h2 class="t-title">{m.topic.quickRevision}</h2>
+              <p class="muted">{m.topic.quickRevisionBody}</p>
+              <ul class="meta" role="list">
+                <li class="chip free"><Icon name="check-circle" weight="fill" size={16} />{m.access.freeAlways}</li>
+                {qr.minutes !== null && (
+                  <li class="chip"><Icon name="timer" size={16} />{fmt(m.topic.minutes, { n: formatNumber(lang, qr.minutes) })}</li>
+                )}
+              </ul>
+            </article>
+          )
+        }
+      </div>
+    </section>
+
+    {
+      siblings.length > 0 && (
+        <section class="section list-section" aria-labelledby="more-title">
+          <div class="wrap">
+            <div class="section-head">
+              <h2 id="more-title" class="t-title">{fmt(m.topic.moreInChapter, vars)}</h2>
+            </div>
+            <ul class="rows" role="list">
+              {siblings.map((t) => (
+                <li class="row card">
+                  <div class="row-main">
+                    <h3 class="t-heading">
+                      <a href={localePath(lang, paths.topic(exam, subject, chapter, t))}>{t.name[lang]}</a>
+                    </h3>
+                  </div>
+                  <Icon name="caret-right" size={24} class="row-go" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )
+    }
+  </div>
+  <CtaBand lang={lang} exam={exam.id} topic={topic.id} button={m.topic.tryThis} placement="cta_band" />
+</Base>
+
+<style>
+  .modes-section {
+    padding-top: 8px;
+  }
+  .modes {
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 768px) {
+    .modes {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+  .mode {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    padding: 24px;
+    border-radius: var(--r-card-large);
+  }
+  .mode-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    background: var(--tint);
+    color: var(--stext);
+  }
+  .meta {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+</style>

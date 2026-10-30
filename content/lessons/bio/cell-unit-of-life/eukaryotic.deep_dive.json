@@ -1,0 +1,1930 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "id": "bio.cell-unit-of-life.eukaryotic:deep_dive",
+  "topic": "bio.cell-unit-of-life.eukaryotic",
+  "mode": "deep_dive",
+  "estimated_minutes": 28,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall",
+    "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system",
+    "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids",
+    "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles",
+    "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "The plasma membrane",
+        "hi": "जीवद्रव्य झिल्ली"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:01",
+        "bio.cell-unit-of-life.eukaryotic:dd:02",
+        "bio.cell-unit-of-life.eukaryotic:dd:03",
+        "bio.cell-unit-of-life.eukaryotic:dd:04"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Moving things across",
+        "hi": "झिल्ली के पार परिवहन"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:05",
+        "bio.cell-unit-of-life.eukaryotic:dd:06",
+        "bio.cell-unit-of-life.eukaryotic:dd:07"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "The cell wall",
+        "hi": "कोशिका भित्ति"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:08",
+        "bio.cell-unit-of-life.eukaryotic:dd:09",
+        "bio.cell-unit-of-life.eukaryotic:dd:10"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-4",
+      "title": {
+        "en": "One system, four parts",
+        "hi": "एक तंत्र, चार भाग"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:11",
+        "bio.cell-unit-of-life.eukaryotic:dd:12",
+        "bio.cell-unit-of-life.eukaryotic:dd:13",
+        "bio.cell-unit-of-life.eukaryotic:dd:14",
+        "bio.cell-unit-of-life.eukaryotic:dd:15",
+        "bio.cell-unit-of-life.eukaryotic:dd:16"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-5",
+      "title": {
+        "en": "Golgi, lysosomes and vacuoles",
+        "hi": "गॉल्जीकाय, लयनकाय और रसधानी"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:17",
+        "bio.cell-unit-of-life.eukaryotic:dd:18",
+        "bio.cell-unit-of-life.eukaryotic:dd:19",
+        "bio.cell-unit-of-life.eukaryotic:dd:20",
+        "bio.cell-unit-of-life.eukaryotic:dd:21"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-6",
+      "title": {
+        "en": "Mitochondria",
+        "hi": "सूत्रकणिका"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:22",
+        "bio.cell-unit-of-life.eukaryotic:dd:23",
+        "bio.cell-unit-of-life.eukaryotic:dd:24"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-7",
+      "title": {
+        "en": "Plastids",
+        "hi": "लवक"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:25",
+        "bio.cell-unit-of-life.eukaryotic:dd:26",
+        "bio.cell-unit-of-life.eukaryotic:dd:27",
+        "bio.cell-unit-of-life.eukaryotic:dd:28",
+        "bio.cell-unit-of-life.eukaryotic:dd:29"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-8",
+      "title": {
+        "en": "Ribosomes and microbodies",
+        "hi": "राइबोसोम और सूक्ष्मकाय"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:30",
+        "bio.cell-unit-of-life.eukaryotic:dd:31",
+        "bio.cell-unit-of-life.eukaryotic:dd:32",
+        "bio.cell-unit-of-life.eukaryotic:dd:33"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-9",
+      "title": {
+        "en": "Cytoskeleton, cilia and flagella",
+        "hi": "साइटोपंजर, पक्ष्माभ और कशाभिका"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:34",
+        "bio.cell-unit-of-life.eukaryotic:dd:35",
+        "bio.cell-unit-of-life.eukaryotic:dd:36",
+        "bio.cell-unit-of-life.eukaryotic:dd:37"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-10",
+      "title": {
+        "en": "Centrosome and centrioles",
+        "hi": "तारककाय और तारककेंद्र"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:38",
+        "bio.cell-unit-of-life.eukaryotic:dd:39",
+        "bio.cell-unit-of-life.eukaryotic:dd:40",
+        "bio.cell-unit-of-life.eukaryotic:dd:41"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-11",
+      "title": {
+        "en": "The nucleus",
+        "hi": "केंद्रक"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:42",
+        "bio.cell-unit-of-life.eukaryotic:dd:43",
+        "bio.cell-unit-of-life.eukaryotic:dd:44",
+        "bio.cell-unit-of-life.eukaryotic:dd:45"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-12",
+      "title": {
+        "en": "Chromosomes by centromere",
+        "hi": "गुणसूत्रबिंदु के आधार पर गुणसूत्र"
+      },
+      "subtopic": "bio.cell-unit-of-life.eukaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.eukaryotic:dd:46",
+        "bio.cell-unit-of-life.eukaryotic:dd:47",
+        "bio.cell-unit-of-life.eukaryotic:dd:48",
+        "bio.cell-unit-of-life.eukaryotic:dd:49",
+        "bio.cell-unit-of-life.eukaryotic:dd:50"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Lipids, proteins and a little sugar",
+        "hi": "लिपिड, प्रोटीन और थोड़ी शर्करा"
+      },
+      "body": {
+        "en": "Chemical studies, especially on human red blood cells, showed that the cell membrane is mainly lipids and proteins. The major lipids are phospholipids, arranged in a bilayer with the polar heads towards the outer sides and the hydrophobic tails towards the inside, so the nonpolar tails are protected from the watery surroundings. The membrane also contains cholesterol, and proteins and carbohydrates.\n\nThe ratio of protein to lipid varies between cell types: the human erythrocyte membrane has about 52 per cent protein and 40 per cent lipids.\n\nBy the ease of extraction, membrane proteins are integral or peripheral. Peripheral proteins lie on the surface; integral proteins are partly or totally buried in the membrane.",
+        "hi": "रासायनिक अध्ययनों, विशेषकर मनुष्य की लाल रुधिर कोशिकाओं पर, से पता चला कि कोशिका झिल्ली मुख्यतः लिपिड और प्रोटीन की बनी है। प्रमुख लिपिड फॉस्फोलिपिड हैं, जो द्विसतह में व्यवस्थित होते हैं: ध्रुवीय सिरा बाहर की ओर और जल भीरु पुच्छ भीतर की ओर, जिससे अध्रुवीय पुच्छ जलीय वातावरण से सुरक्षित रहती है। झिल्ली में कोलेस्टेरॉल, और प्रोटीन तथा कार्बोहाइड्रेट भी होते हैं।\n\nप्रोटीन और लिपिड का अनुपात कोशिका के प्रकार के अनुसार बदलता है: मनुष्य की रुधिराणु की झिल्ली में लगभग 52 प्रतिशत प्रोटीन और 40 प्रतिशत लिपिड होता है।\n\nअलग करने की सुविधा के आधार पर झिल्ली प्रोटीन अंगभूत या परिधीय होते हैं। परिधीय प्रोटीन झिल्ली की सतह पर होते हैं; अंगभूत प्रोटीन आंशिक या पूर्ण रूप से झिल्ली में धँसे होते हैं।"
+      },
+      "media": "img.cell-unit-of-life.fluid-mosaic",
+      "highlights": [
+        {
+          "term": {
+            "en": "integral protein",
+            "hi": "अंगभूत प्रोटीन"
+          },
+          "definition": {
+            "en": "partly or totally buried in the membrane",
+            "hi": "झिल्ली में आंशिक या पूर्ण रूप से धँसा"
+          }
+        },
+        {
+          "term": {
+            "en": "peripheral protein",
+            "hi": "परिधीय प्रोटीन"
+          },
+          "definition": {
+            "en": "lies on the surface of the membrane",
+            "hi": "झिल्ली की सतह पर"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "The fluid mosaic model",
+        "hi": "तरल किर्मीर नमूना"
+      },
+      "body": {
+        "en": "Singer and Nicolson (1972) proposed the widely accepted fluid mosaic model. The quasi-fluid nature of the lipid lets proteins move sideways within the bilayer; this ability to move is measured as the membrane's fluidity.\n\nThe fluid nature matters for cell growth, formation of intercellular junctions, secretion, endocytosis and cell division.",
+        "hi": "सिंगर और निकोल्सन (1972) ने तरल किर्मीर नमूना दिया, जो व्यापक रूप से स्वीकार किया गया। लिपिड की अर्धतरल प्रकृति के कारण प्रोटीन द्विसतह के भीतर पार्श्विक गति कर पाते हैं; गति करने की इस क्षमता को झिल्ली की तरलता कहते हैं।\n\nझिल्ली की तरल प्रकृति कोशिका वृद्धि, अंतरकोशिकीय संयोजन के निर्माण, स्रवण, अंतःकोशिकी और कोशिका विभाजन के लिए महत्वपूर्ण है।"
+      },
+      "media": "img.cell-unit-of-life.fluid-mosaic",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the fluid mosaic model.",
+        "hi": "तरल किर्मीर नमूने को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.fluid-mosaic",
+        "spots": [
+          {
+            "id": "head",
+            "anchor": "head"
+          },
+          {
+            "id": "tail",
+            "anchor": "tail"
+          },
+          {
+            "id": "integral",
+            "anchor": "integral"
+          },
+          {
+            "id": "peripheral",
+            "anchor": "peripheral"
+          },
+          {
+            "id": "sugar",
+            "anchor": "sugar"
+          },
+          {
+            "id": "cholesterol",
+            "anchor": "cholesterol"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-head",
+            "text": {
+              "en": "Polar head",
+              "hi": "ध्रुवीय सिरा"
+            }
+          },
+          {
+            "id": "l-tail",
+            "text": {
+              "en": "Hydrophobic tail",
+              "hi": "जल भीरु पुच्छ"
+            }
+          },
+          {
+            "id": "l-integral",
+            "text": {
+              "en": "Integral protein",
+              "hi": "अंगभूत प्रोटीन"
+            }
+          },
+          {
+            "id": "l-peripheral",
+            "text": {
+              "en": "Peripheral protein",
+              "hi": "परिधीय प्रोटीन"
+            }
+          },
+          {
+            "id": "l-sugar",
+            "text": {
+              "en": "Sugar",
+              "hi": "शर्करा"
+            }
+          },
+          {
+            "id": "l-cholesterol",
+            "text": {
+              "en": "Cholesterol",
+              "hi": "कोलेस्टेरॉल"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "head",
+            "label": "l-head"
+          },
+          {
+            "spot": "tail",
+            "label": "l-tail"
+          },
+          {
+            "spot": "integral",
+            "label": "l-integral"
+          },
+          {
+            "spot": "peripheral",
+            "label": "l-peripheral"
+          },
+          {
+            "spot": "sugar",
+            "label": "l-sugar"
+          },
+          {
+            "spot": "cholesterol",
+            "label": "l-cholesterol"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Heads face the water on both sides; tails hide in the middle.",
+          "hi": "सही। सिरे दोनों ओर पानी की ओर हैं; पुच्छ बीच में छिपी हैं।"
+        },
+        "wrong": {
+          "en": "The protein that spans the bilayer is integral; one on the surface is peripheral.",
+          "hi": "जो प्रोटीन द्विसतह के आर-पार है वह अंगभूत है; सतह वाला परिधीय।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:04",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0001"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Passive and active transport",
+        "hi": "निष्क्रिय और सक्रिय परिवहन"
+      },
+      "body": {
+        "en": "The membrane is selectively permeable. Many molecules cross it without using energy: this is passive transport. Neutral solutes move by simple diffusion along the concentration gradient, from higher to lower concentration. Water also moves from higher to lower concentration; movement of water by diffusion is osmosis.\n\nPolar molecules cannot pass through the nonpolar lipid bilayer, so they need a carrier protein of the membrane.\n\nA few ions or molecules are moved against their concentration gradient, from lower to higher concentration. This uses ATP and is called active transport, for example the Na⁺/K⁺ pump.",
+        "hi": "झिल्ली चयनित पारगम्य है। बहुत से अणु बिना ऊर्जा लगे इसे पार करते हैं: यह निष्क्रिय परिवहन है। उदासीन विलेय सांद्रता प्रवणता के अनुसार, उच्च से निम्न सांद्रता की ओर, साधारण विसरण से जाते हैं। जल भी उच्च से निम्न सांद्रता की ओर जाता है; विसरण द्वारा जल का प्रवाह परासरण कहलाता है।\n\nध्रुवीय अणु अध्रुवीय लिपिड द्विसतह से होकर नहीं जा सकते, इसलिए उन्हें झिल्ली की वाहक प्रोटीन की आवश्यकता होती है।\n\nकुछ आयन या अणु सांद्रता प्रवणता के विपरीत, निम्न से उच्च सांद्रता की ओर, ले जाए जाते हैं। इसमें एटीपी का उपयोग होता है और इसे सक्रिय परिवहन कहते हैं, जैसे Na⁺/K⁺ पंप।"
+      },
+      "media": "img.cell-unit-of-life.fluid-mosaic",
+      "highlights": [
+        {
+          "term": {
+            "en": "osmosis",
+            "hi": "परासरण"
+          },
+          "definition": {
+            "en": "movement of water by diffusion",
+            "hi": "विसरण द्वारा जल का प्रवाह"
+          }
+        },
+        {
+          "term": {
+            "en": "active transport",
+            "hi": "सक्रिय परिवहन"
+          },
+          "definition": {
+            "en": "movement against the concentration gradient using ATP",
+            "hi": "एटीपी का उपयोग करके सांद्रता प्रवणता के विपरीत परिवहन"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:06",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort each movement: passive or active?",
+        "hi": "हर परिवहन को छाँटिए: निष्क्रिय या सक्रिय?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "solute",
+            "text": {
+              "en": "A neutral solute diffusing from higher to lower concentration",
+              "hi": "उदासीन विलेय का उच्च से निम्न सांद्रता की ओर विसरण"
+            }
+          },
+          {
+            "id": "water",
+            "text": {
+              "en": "Osmosis of water",
+              "hi": "जल का परासरण"
+            }
+          },
+          {
+            "id": "pump",
+            "text": {
+              "en": "The Na⁺/K⁺ pump",
+              "hi": "Na⁺/K⁺ पंप"
+            }
+          },
+          {
+            "id": "uphill",
+            "text": {
+              "en": "An ion moved from lower to higher concentration",
+              "hi": "किसी आयन का निम्न से उच्च सांद्रता की ओर जाना"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "passive",
+            "label": {
+              "en": "Passive (no energy)",
+              "hi": "निष्क्रिय (ऊर्जा नहीं)"
+            }
+          },
+          {
+            "id": "active",
+            "label": {
+              "en": "Active (uses ATP)",
+              "hi": "सक्रिय (एटीपी लगता है)"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "solute",
+            "bin": "passive"
+          },
+          {
+            "item": "water",
+            "bin": "passive"
+          },
+          {
+            "item": "pump",
+            "bin": "active"
+          },
+          {
+            "item": "uphill",
+            "bin": "active"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: downhill is free, uphill costs ATP.",
+          "hi": "सही: ढलान की ओर मुफ़्त, चढ़ाई में एटीपी लगता है।"
+        },
+        "wrong": {
+          "en": "Ask: is the movement with or against the concentration gradient?",
+          "hi": "पूछिए: परिवहन सांद्रता प्रवणता के साथ है या विपरीत?"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:07",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0002"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A rigid, non-living cover",
+        "hi": "दृढ़ निर्जीव आवरण"
+      },
+      "body": {
+        "en": "A non-living rigid cell wall covers the plasma membrane of fungi and plants. It gives shape, protects from mechanical damage and infection, helps in cell-to-cell interaction and is a barrier to undesirable macromolecules.\n\nThe algal wall is made of cellulose, galactans, mannans and minerals like calcium carbonate; in other plants it is cellulose, hemicellulose, pectins and proteins. A young cell's primary wall can grow; this ability fades as the cell matures and the secondary wall forms on the inner side, towards the membrane.\n\nThe middle lamella, mainly calcium pectate, glues neighbouring cells together. Plasmodesmata cross the wall and middle lamella and connect the cytoplasm of neighbouring cells.",
+        "hi": "कवक और पौधों की जीवद्रव्य झिल्ली के बाहर दृढ़ निर्जीव आवरण कोशिका भित्ति है। यह कोशिका को आकार देती है, यांत्रिक क्षति और संक्रमण से रक्षा करती है, कोशिकाओं के बीच आपसी संपर्क में मदद करती है और अवांछनीय वृहद अणुओं के लिए अवरोध है।\n\nशैवाल की भित्ति सेल्यूलोज़, गैलेक्टेन्स, मैनान्स और कैल्सियम कार्बोनेट जैसे खनिजों की बनी होती है; दूसरे पौधों में यह सेल्यूलोज़, हेमीसेल्यूलोज़, पेक्टिन और प्रोटीन की। नव पादप कोशिका की प्राथमिक भित्ति में वृद्धि की क्षमता होती है, जो कोशिका की परिपक्वता के साथ घटती है, और कोशिका के भीतर की ओर (झिल्ली की तरफ़) द्वितीय भित्ति बनती है।\n\nमध्यपटलिका, मुख्यतः कैल्सियम पेक्टेट, आस-पास की कोशिकाओं को आपस में चिपकाए रखती है। जीवद्रव्य तंतु (प्लाज़्मोडेस्मेटा) भित्ति और मध्यपटलिका को पार करके आस-पास की कोशिकाओं के कोशिकाद्रव्य को जोड़ते हैं।"
+      },
+      "media": "img.cell-unit-of-life.plant-animal-cells",
+      "highlights": [
+        {
+          "term": {
+            "en": "middle lamella",
+            "hi": "मध्यपटलिका"
+          },
+          "definition": {
+            "en": "mainly calcium pectate; glues neighbouring cells",
+            "hi": "मुख्यतः कैल्सियम पेक्टेट; पड़ोसी कोशिकाओं को चिपकाती है"
+          }
+        },
+        {
+          "term": {
+            "en": "plasmodesmata",
+            "hi": "जीवद्रव्य तंतु"
+          },
+          "definition": {
+            "en": "connect the cytoplasm of neighbouring cells",
+            "hi": "पड़ोसी कोशिकाओं के कोशिकाद्रव्य को जोड़ते हैं"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:09",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0003"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:10",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cell-membrane-wall"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Phospholipid bilayer: polar heads outside, hydrophobic tails inside; also cholesterol, proteins, carbohydrates.",
+          "hi": "फॉस्फोलिपिड द्विसतह: ध्रुवीय सिरे बाहर, जल भीरु पुच्छ भीतर; कोलेस्टेरॉल, प्रोटीन, कार्बोहाइड्रेट भी।"
+        },
+        {
+          "en": "Fluid mosaic model (Singer and Nicolson, 1972): proteins move sideways in a quasi-fluid lipid.",
+          "hi": "तरल किर्मीर नमूना (सिंगर और निकोल्सन, 1972): अर्धतरल लिपिड में प्रोटीन पार्श्विक गति करते हैं।"
+        },
+        {
+          "en": "Passive: diffusion and osmosis, no energy. Active: against the gradient, uses ATP (Na⁺/K⁺ pump).",
+          "hi": "निष्क्रिय: विसरण और परासरण, ऊर्जा नहीं। सक्रिय: प्रवणता के विपरीत, एटीपी (Na⁺/K⁺ पंप)।"
+        },
+        {
+          "en": "Plant wall: cellulose, hemicellulose, pectins, proteins; middle lamella: calcium pectate.",
+          "hi": "पादप भित्ति: सेल्यूलोज़, हेमीसेल्यूलोज़, पेक्टिन, प्रोटीन; मध्यपटलिका: कैल्सियम पेक्टेट।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.1, §8.5.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The endomembrane system",
+        "hi": "अंतः झिल्लिका तंत्र"
+      },
+      "body": {
+        "en": "Each membranous organelle has its own structure and function, but several are taken together as the endomembrane system because their functions are coordinated: the endoplasmic reticulum (ER), the Golgi complex, lysosomes and vacuoles.\n\nMitochondria, chloroplasts and peroxisomes are not part of it, because their functions are not coordinated with these.",
+        "hi": "हर झिल्लीदार अंगक की अपनी संरचना और कार्य है, पर कई अंगकों को साथ लेकर अंतः झिल्लिका तंत्र कहते हैं क्योंकि उनके कार्य एक-दूसरे से जुड़े हैं: अंतर्द्रव्यी जालिका, गॉल्जीकाय, लयनकाय और रसधानी।\n\nसूत्रकणिका, हरितलवक और परऑक्सीसोम इसके भाग नहीं हैं, क्योंकि उनके कार्य इन अंगों से संबंधित नहीं हैं।"
+      },
+      "media": "img.cell-unit-of-life.er-golgi",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.3"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:12",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.eukaryotic.core.endomembrane-system.1",
+        "hi": "m.bio.cell-unit-of-life.eukaryotic.core.endomembrane-system.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:13",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Rough and smooth ER",
+        "hi": "खुरदरी और चिकनी अंतर्द्रव्यी जालिका"
+      },
+      "body": {
+        "en": "The endoplasmic reticulum is a network of tiny tubular structures in the cytoplasm. It divides the space inside the cell into two compartments: luminal (inside the ER) and extra-luminal (cytoplasm).\n\nER bearing ribosomes on its outer surface is rough ER (RER); without ribosomes it looks smooth and is smooth ER (SER). RER is common in cells active in protein synthesis and secretion, and is continuous with the outer membrane of the nucleus. SER is the major site of lipid synthesis; in animal cells, lipid-like steroidal hormones are made in SER.",
+        "hi": "अंतर्द्रव्यी जालिका कोशिकाद्रव्य में बिखरी छोटी नलिकाकार संरचनाओं का जाल है। यह कोशिका के भीतर के स्थान को दो भागों में बाँटती है: अवकाशिका (जालिका के भीतर) और बाह्य अवकाशिका (कोशिकाद्रव्य)।\n\nजिस जालिका की बाहरी सतह पर राइबोसोम होते हैं वह खुरदरी अंतर्द्रव्यी जालिका है; राइबोसोम न होने पर वह चिकनी दिखती है और चिकनी अंतर्द्रव्यी जालिका कहलाती है। खुरदरी जालिका प्रोटीन संश्लेषण और स्रवण में सक्रिय कोशिकाओं में बहुतायत से मिलती है और केंद्रक की बाह्य झिल्ली तक फैली होती है। चिकनी जालिका लिपिड संश्लेषण का मुख्य स्थल है; प्राणियों में लिपिड जैसे स्टीरॉयडल हार्मोन इसी में बनते हैं।"
+      },
+      "media": "img.cell-unit-of-life.er-golgi",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.3.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:14",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the parts of the endomembrane system.",
+        "hi": "अंतः झिल्लिका तंत्र के भागों को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.er-golgi",
+        "spots": [
+          {
+            "id": "nucleus",
+            "anchor": "nucleus"
+          },
+          {
+            "id": "rer",
+            "anchor": "rer"
+          },
+          {
+            "id": "ser",
+            "anchor": "ser"
+          },
+          {
+            "id": "golgi",
+            "anchor": "golgi"
+          },
+          {
+            "id": "vesicle",
+            "anchor": "vesicle"
+          },
+          {
+            "id": "lysosome",
+            "anchor": "lysosome"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-nucleus",
+            "text": {
+              "en": "Nucleus",
+              "hi": "केंद्रक"
+            }
+          },
+          {
+            "id": "l-rer",
+            "text": {
+              "en": "Rough ER",
+              "hi": "खुरदरी अंतर्द्रव्यी जालिका"
+            }
+          },
+          {
+            "id": "l-ser",
+            "text": {
+              "en": "Smooth ER",
+              "hi": "चिकनी अंतर्द्रव्यी जालिका"
+            }
+          },
+          {
+            "id": "l-golgi",
+            "text": {
+              "en": "Golgi apparatus",
+              "hi": "गॉल्जीकाय"
+            }
+          },
+          {
+            "id": "l-vesicle",
+            "text": {
+              "en": "Vesicle",
+              "hi": "पुटिका"
+            }
+          },
+          {
+            "id": "l-lysosome",
+            "text": {
+              "en": "Lysosome",
+              "hi": "लयनकाय"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "nucleus",
+            "label": "l-nucleus"
+          },
+          {
+            "spot": "rer",
+            "label": "l-rer"
+          },
+          {
+            "spot": "ser",
+            "label": "l-ser"
+          },
+          {
+            "spot": "golgi",
+            "label": "l-golgi"
+          },
+          {
+            "spot": "vesicle",
+            "label": "l-vesicle"
+          },
+          {
+            "spot": "lysosome",
+            "label": "l-lysosome"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. The dotted sheets are rough ER; the dot-free tubes are smooth ER.",
+          "hi": "सही। बिंदुओं वाली परतें खुरदरी जालिका हैं; बिना बिंदु वाली नलिकाएँ चिकनी जालिका।"
+        },
+        "wrong": {
+          "en": "The dots are ribosomes. Which ER has them?",
+          "hi": "बिंदु राइबोसोम हैं। किस जालिका पर हैं?"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:15",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0005"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:16",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0006"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:17",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "The Golgi apparatus packs and ships",
+        "hi": "गॉल्जीकाय संवेष्टन और भेजने का काम करता है"
+      },
+      "body": {
+        "en": "Camillo Golgi (1898) first saw densely stained reticular structures near the nucleus, later named Golgi bodies. They are flat, disc-shaped sacs, the cisternae, 0.5 µm to 1.0 µm across, stacked parallel to each other and arranged near the nucleus, with a convex cis or forming face and a concave trans or maturing face.\n\nThe Golgi apparatus mainly packages materials for targets inside the cell or for secretion. Vesicles from the ER fuse with the cis face and move towards the maturing face, which is why the Golgi stays close to the ER. Many proteins made by ribosomes on the ER are modified in the cisternae before release from the trans face. The Golgi apparatus is the important site of formation of glycoproteins and glycolipids.",
+        "hi": "कैमिलो गॉल्जी (1898) ने केंद्रक के पास घनी रंजित जालिकावत संरचनाएँ देखीं, जिन्हें बाद में उनके नाम पर गॉल्जीकाय कहा गया। ये चपटी डिस्क जैसी थैलियाँ, कुंड, हैं जिनका व्यास 0.5 µm से 1.0 µm होता है; ये एक-दूसरे के समानांतर ढेर में केंद्रक के पास व्यवस्थित होती हैं, जिनमें निर्माणकारी सतह (उन्नतोदर सिस) और परिपक्व सतह (अवतल ट्रांस) होती है।\n\nगॉल्जीकाय का मुख्य कार्य पदार्थों का संवेष्टन है, कोशिका के भीतर के लक्ष्यों तक पहुँचाने या बाहर स्रवण के लिए। अंतर्द्रव्यी जालिका से आई पुटिकाएँ सिस सिरे से जुड़कर परिपक्व सतह की ओर बढ़ती हैं, इसीलिए गॉल्जीकाय जालिका के पास रहता है। जालिका पर राइबोसोम द्वारा बने कई प्रोटीन ट्रांस सिरे से निकलने से पहले कुंडों में रूपांतरित होते हैं। गॉल्जीकाय ग्लाइकोप्रोटीन और ग्लाइकोलिपिड निर्माण का प्रमुख स्थल है।"
+      },
+      "media": "img.cell-unit-of-life.er-golgi",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.3.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:18",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Put the path of a secreted protein in order.",
+        "hi": "स्रावित होने वाले प्रोटीन के मार्ग को क्रम में लगाइए।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "made",
+            "text": {
+              "en": "Made by ribosomes on the rough ER",
+              "hi": "खुरदरी अंतर्द्रव्यी जालिका पर राइबोसोम द्वारा बनना"
+            }
+          },
+          {
+            "id": "vesicle",
+            "text": {
+              "en": "Packed into a vesicle from the ER",
+              "hi": "जालिका से निकली पुटिका में पैक होना"
+            }
+          },
+          {
+            "id": "cis",
+            "text": {
+              "en": "Vesicle fuses with the cis face of the Golgi",
+              "hi": "पुटिका का गॉल्जीकाय के सिस सिरे से जुड़ना"
+            }
+          },
+          {
+            "id": "modified",
+            "text": {
+              "en": "Modified in the cisternae while moving to the trans face",
+              "hi": "ट्रांस सिरे की ओर बढ़ते हुए कुंडों में रूपांतरित होना"
+            }
+          },
+          {
+            "id": "released",
+            "text": {
+              "en": "Released from the trans face for secretion",
+              "hi": "स्रवण के लिए ट्रांस सिरे से निकलना"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: ER, vesicle, cis, cisternae, trans.",
+          "hi": "सही: जालिका, पुटिका, सिस, कुंड, ट्रांस।"
+        },
+        "wrong": {
+          "en": "Materials enter the Golgi at the forming face and leave from the maturing face.",
+          "hi": "पदार्थ निर्माणकारी सतह से गॉल्जीकाय में आते हैं और परिपक्व सतह से निकलते हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:19",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Lysosomes digest, vacuoles store",
+        "hi": "लयनकाय पचाते हैं, रसधानियाँ संचित करती हैं"
+      },
+      "body": {
+        "en": "Lysosomes are membrane-bound vesicles formed by packaging in the Golgi apparatus. They are very rich in hydrolytic enzymes (lipases, proteases, carbohydrases) that work best at acidic pH and can digest carbohydrates, proteins, lipids and nucleic acids.\n\nThe vacuole is a membrane-bound space in the cytoplasm holding water, sap, excretory product and other materials not useful for the cell. Its single membrane is the tonoplast. In plant cells vacuoles can occupy up to 90 per cent of the cell's volume, and the tonoplast moves ions against concentration gradients into the vacuole, so their concentration is much higher there than in the cytoplasm.\n\nIn Amoeba the contractile vacuole is important for osmoregulation and excretion; in many protists food vacuoles form by engulfing food.",
+        "hi": "लयनकाय झिल्ली-युक्त पुटिकाएँ हैं जो गॉल्जीकाय में संवेष्टन विधि से बनती हैं। इनमें लगभग सभी प्रकार के जल-अपघटकीय एंजाइम (लाइपेज़, प्रोटिएज़, कार्बोहाइड्रेज़) भरपूर होते हैं जो अम्लीय परिस्थितियों में सबसे सक्रिय होते हैं और कार्बोहाइड्रेट, प्रोटीन, लिपिड और न्यूक्लिक अम्ल पचा सकते हैं।\n\nरसधानी कोशिकाद्रव्य में झिल्ली से घिरा स्थान है जिसमें पानी, रस, उत्सर्जित पदार्थ और कोशिका के लिए अनुपयोगी दूसरे पदार्थ होते हैं। इसकी एकल झिल्ली टोनोप्लास्ट है। पादप कोशिकाओं में रसधानी कोशिका का 90 प्रतिशत तक स्थान घेर सकती है, और टोनोप्लास्ट आयनों को सांद्रता प्रवणता के विपरीत रसधानी में ले जाता है, इसलिए वहाँ इनकी सांद्रता कोशिकाद्रव्य से काफी अधिक होती है।\n\nअमीबा में संकुचनशील रसधानी परासरण नियमन और उत्सर्जन के लिए महत्वपूर्ण है; बहुत से प्रोटिस्टों में खाद्य पदार्थ निगलने से खाद्य रसधानी बनती है।"
+      },
+      "media": "img.cell-unit-of-life.plant-animal-cells",
+      "highlights": [
+        {
+          "term": {
+            "en": "tonoplast",
+            "hi": "टोनोप्लास्ट"
+          },
+          "definition": {
+            "en": "the single membrane around a vacuole",
+            "hi": "रसधानी को घेरने वाली एकल झिल्ली"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.3.3, §8.5.3.4"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:20",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0007"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:21",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.endomembrane-system"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Endomembrane system: ER, Golgi complex, lysosomes, vacuoles. Not mitochondria, chloroplasts, peroxisomes.",
+          "hi": "अंतः झिल्लिका तंत्र: अंतर्द्रव्यी जालिका, गॉल्जीकाय, लयनकाय, रसधानी। सूत्रकणिका, हरितलवक, परऑक्सीसोम नहीं।"
+        },
+        {
+          "en": "RER: ribosomes, protein synthesis and secretion. SER: lipids, steroidal hormones.",
+          "hi": "खुरदरी जालिका: राइबोसोम, प्रोटीन संश्लेषण और स्रवण। चिकनी जालिका: लिपिड, स्टीरॉयडल हार्मोन।"
+        },
+        {
+          "en": "Golgi: in at the cis face, out at the trans face; glycoproteins and glycolipids form here.",
+          "hi": "गॉल्जीकाय: सिस सिरे से अंदर, ट्रांस सिरे से बाहर; ग्लाइकोप्रोटीन और ग्लाइकोलिपिड यहीं बनते हैं।"
+        },
+        {
+          "en": "Lysosomes: hydrolases active at acidic pH. Vacuole: bounded by the tonoplast.",
+          "hi": "लयनकाय: अम्लीय pH पर सक्रिय जल-अपघटकीय एंजाइम। रसधानी: टोनोप्लास्ट से घिरी।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.3"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:22",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Power houses with their own DNA",
+        "hi": "अपने डीएनए वाले शक्ति गृह"
+      },
+      "body": {
+        "en": "Mitochondria are not easily seen under the microscope unless stained. Their number per cell depends on the cell's physiological activity. Typically sausage-shaped or cylindrical, they are 0.2-1.0 µm across (average 0.5 µm) and 1.0-4.1 µm long.\n\nEach is bounded by a double membrane. The outer membrane is the continuous limiting boundary; the inner membrane forms infoldings, the cristae, towards the matrix, which increase the surface area. The two membranes divide the lumen into an outer and an inner compartment; the inner one is filled with the dense, homogeneous matrix.\n\nMitochondria are the sites of aerobic respiration and make cellular energy as ATP, so they are called the power houses of the cell. The matrix has a single circular DNA molecule, a few RNA molecules, 70S ribosomes and what is needed to make proteins. Mitochondria divide by fission.",
+        "hi": "सूत्रकणिका को जब तक विशेष रूप से अभिरंजित न किया जाए, सूक्ष्मदर्शी से आसानी से नहीं देखा जा सकता। प्रति कोशिका इनकी संख्या कोशिका की कार्यिकी सक्रियता पर निर्भर करती है। ये प्रायः तश्तरीनुमा या बेलनाकार होती हैं, 0.2-1.0 µm (औसत 0.5 µm) व्यास और 1.0-4.1 µm लंबी।\n\nहर सूत्रकणिका दोहरी झिल्ली से घिरी होती है। बाह्य झिल्ली इसकी सतत सीमा बनाती है; भीतरी झिल्ली आधात्री की ओर अंतर्वलन बनाती है, जिन्हें क्रिस्टी कहते हैं, जो क्षेत्रफल बढ़ाते हैं। दोनों झिल्लियाँ अवकाशिका को बाह्य कक्ष और भीतरी कक्ष में बाँटती हैं; भीतरी कक्ष घने और समांगी आधात्री से भरा होता है।\n\nसूत्रकणिका वायवीय श्वसन का स्थल है और एटीपी के रूप में कोशिकीय ऊर्जा बनाती है, इसलिए इसे कोशिका का शक्ति गृह कहते हैं। आधात्री में एकल वृत्ताकार डीएनए अणु, कुछ आरएनए अणु, 70S राइबोसोम और प्रोटीन संश्लेषण के आवश्यक घटक होते हैं। सूत्रकणिका विखंडन द्वारा विभाजित होती है।"
+      },
+      "media": "img.cell-unit-of-life.mitochondrion",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.4"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:23",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the mitochondrion.",
+        "hi": "सूत्रकणिका को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.mitochondrion",
+        "spots": [
+          {
+            "id": "outer",
+            "anchor": "outer"
+          },
+          {
+            "id": "cristae",
+            "anchor": "cristae"
+          },
+          {
+            "id": "matrix",
+            "anchor": "matrix"
+          },
+          {
+            "id": "intermembrane",
+            "anchor": "intermembrane"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-outer",
+            "text": {
+              "en": "Outer membrane",
+              "hi": "बाह्य झिल्ली"
+            }
+          },
+          {
+            "id": "l-cristae",
+            "text": {
+              "en": "Crista",
+              "hi": "क्रिस्टी"
+            }
+          },
+          {
+            "id": "l-matrix",
+            "text": {
+              "en": "Matrix",
+              "hi": "आधात्री"
+            }
+          },
+          {
+            "id": "l-intermembrane",
+            "text": {
+              "en": "Inter-membrane space",
+              "hi": "अंतर झिल्ली अवकाशिका"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "outer",
+            "label": "l-outer"
+          },
+          {
+            "spot": "cristae",
+            "label": "l-cristae"
+          },
+          {
+            "spot": "matrix",
+            "label": "l-matrix"
+          },
+          {
+            "spot": "intermembrane",
+            "label": "l-intermembrane"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. The folds are cristae, made by the inner membrane.",
+          "hi": "सही। तहें क्रिस्टी हैं, जो भीतरी झिल्ली से बनती हैं।"
+        },
+        "wrong": {
+          "en": "The smooth outside layer is the outer membrane.",
+          "hi": "चिकनी बाहरी परत बाह्य झिल्ली है।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:24",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0010"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:25",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Three kinds of plastids",
+        "hi": "तीन प्रकार के लवक"
+      },
+      "body": {
+        "en": "Plastids are found in all plant cells and in euglenoides. They are large and easy to see, and their pigments give plants their colours. By pigment, plastids are chloroplasts, chromoplasts or leucoplasts.\n\nChloroplasts have chlorophyll and carotenoid pigments that trap the light energy needed for photosynthesis. Chromoplasts have fat-soluble carotenoids such as carotene and xanthophylls, which colour parts of the plant yellow, orange or red. Leucoplasts are colourless and store nutrients: amyloplasts store carbohydrates (starch), as in potato; elaioplasts store oils and fats; aleuroplasts store proteins.",
+        "hi": "लवक सभी पादप कोशिकाओं और यूग्लिना जैसे कुछ प्रोटोज़ोआ में मिलते हैं। ये बड़े होने के कारण आसानी से दिखते हैं, और इनके वर्णक पौधों को भिन्न-भिन्न रंग देते हैं। वर्णकों के आधार पर लवक हरितलवक, वर्णीलवक या अवर्णीलवक होते हैं।\n\nहरितलवक में पर्णहरित और कैरोटीनॉइड वर्णक होते हैं जो प्रकाश-संश्लेषण के लिए आवश्यक प्रकाशीय ऊर्जा को संचित करते हैं। वर्णीलवक में वसा विलेय कैरोटीनॉइड वर्णक, जैसे कैरोटीन और ज़ैंथोफिल, होते हैं जो पौधों के भागों को पीला, नारंगी या लाल रंग देते हैं। अवर्णीलवक रंगहीन होते हैं और खाद्य पदार्थ संचित करते हैं: मंडलवक में मंड के रूप में कार्बोहाइड्रेट, जैसे आलू में; तेल लवक में तेल और वसा; प्रोटीन लवक में प्रोटीन।"
+      },
+      "media": "img.cell-unit-of-life.chloroplast",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.5"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:26",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids.3",
+        "hi": "m.bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids.4"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:27",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Inside a chloroplast",
+        "hi": "हरितलवक के भीतर"
+      },
+      "body": {
+        "en": "Most chloroplasts of green plants are in the mesophyll cells of leaves. They are lens-shaped, oval, spherical, discoid or even ribbon-like, 5-10 µm long and 2-4 µm wide. Their number ranges from 1 per cell in the green alga Chlamydomonas to 20-40 per cell in the mesophyll.\n\nLike mitochondria, chloroplasts are double membrane bound; the inner membrane is relatively less permeable. The space inside the inner membrane is the stroma. In it lie flattened membranous sacs, the thylakoids, stacked like piles of coins into grana (singular granum). Flat membranous tubules, the stroma lamellae, connect the thylakoids of different grana. The thylakoid membrane encloses a space called the lumen.\n\nThe stroma contains enzymes for making carbohydrates and proteins, small double-stranded circular DNA and ribosomes. Chlorophyll is in the thylakoids. Chloroplast ribosomes (70S) are smaller than cytoplasmic ribosomes (80S).",
+        "hi": "हरे पौधों के अधिकतर हरितलवक पत्ती की पर्णमध्योतक कोशिकाओं में होते हैं। ये लेंस के आकार, अंडाकार, गोलाकार, चक्रिक या फीते के आकार के होते हैं, 5-10 µm लंबे और 2-4 µm चौड़े। इनकी संख्या हरित शैवाल क्लैमाइडोमोनास में प्रति कोशिका 1 से लेकर पर्णमध्योतक में प्रति कोशिका 20-40 तक होती है।\n\nसूत्रकणिका की तरह हरितलवक भी द्विझिल्लिका-युक्त हैं; भीतरी झिल्ली अपेक्षाकृत कम पारगम्य है। भीतरी झिल्ली से घिरा स्थान पीठिका है। इसमें चपटी झिल्लीदार थैलियाँ, थाइलेकॉइड, होती हैं जो सिक्कों के ढेर की तरह ग्रेना (एकवचन ग्रेनम) बनाती हैं। चपटी झिल्लीदार नलिकाएँ, पीठिका पटलिकाएँ, विभिन्न ग्रेना के थाइलेकॉइड को जोड़ती हैं। थाइलेकॉइड की झिल्ली एक स्थान घेरती है जिसे अवकाशिका कहते हैं।\n\nपीठिका में कार्बोहाइड्रेट और प्रोटीन संश्लेषण के एंजाइम, छोटे द्विरज्जुकी वृत्ताकार डीएनए अणु और राइबोसोम होते हैं। पर्णहरित थाइलेकॉइड में होता है। हरितलवक के राइबोसोम (70S) कोशिकाद्रव्य के राइबोसोम (80S) से छोटे हैं।"
+      },
+      "media": "img.cell-unit-of-life.chloroplast",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.5"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:28",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the chloroplast.",
+        "hi": "हरितलवक को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.chloroplast",
+        "spots": [
+          {
+            "id": "envelope",
+            "anchor": "envelope"
+          },
+          {
+            "id": "granum",
+            "anchor": "granum"
+          },
+          {
+            "id": "lamella",
+            "anchor": "stroma-lamella"
+          },
+          {
+            "id": "stroma",
+            "anchor": "stroma"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-envelope",
+            "text": {
+              "en": "Double membrane envelope",
+              "hi": "दोहरी झिल्ली"
+            }
+          },
+          {
+            "id": "l-granum",
+            "text": {
+              "en": "Granum",
+              "hi": "ग्रेनम"
+            }
+          },
+          {
+            "id": "l-lamella",
+            "text": {
+              "en": "Stroma lamella",
+              "hi": "पीठिका पटलिका"
+            }
+          },
+          {
+            "id": "l-stroma",
+            "text": {
+              "en": "Stroma",
+              "hi": "पीठिका"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "envelope",
+            "label": "l-envelope"
+          },
+          {
+            "spot": "granum",
+            "label": "l-granum"
+          },
+          {
+            "spot": "lamella",
+            "label": "l-lamella"
+          },
+          {
+            "spot": "stroma",
+            "label": "l-stroma"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. The coin stacks are grana; the thin tubes joining them are stroma lamellae.",
+          "hi": "सही। सिक्कों के ढेर ग्रेना हैं; इन्हें जोड़ने वाली पतली नलिकाएँ पीठिका पटलिकाएँ।"
+        },
+        "wrong": {
+          "en": "The pale filling around the stacks is the stroma.",
+          "hi": "ढेरों के चारों ओर का हल्का भराव पीठिका है।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:29",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0011"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:30",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "70S and 80S",
+        "hi": "70S और 80S"
+      },
+      "body": {
+        "en": "Ribosomes were first seen under the electron microscope as dense particles by George Palade (1953). They are made of RNA and proteins and have no membrane.\n\nEukaryotic ribosomes are 80S and prokaryotic ribosomes 70S. Each has a larger and a smaller subunit: 60S and 40S for 80S, and 50S and 30S for 70S. 'S' (Svedberg's unit) stands for the sedimentation coefficient, an indirect measure of density and size, which is why the subunit values do not simply add up.\n\nMicrobodies are many minute membrane-bound vesicles containing various enzymes, present in both plant and animal cells.",
+        "hi": "जार्ज पैलेड (1953) ने इलेक्ट्रॉन सूक्ष्मदर्शी से सघन कणिकामय संरचना के रूप में राइबोसोम को सबसे पहले देखा। ये राइबोन्यूक्लिक अम्ल और प्रोटीन के बने होते हैं और किसी झिल्ली से घिरे नहीं होते।\n\nयूकैरियोटी राइबोसोम 80S और प्रोकैरियोटी राइबोसोम 70S होते हैं। हर राइबोसोम में बड़ी और छोटी उपइकाई होती है: 80S में 60S और 40S, तथा 70S में 50S और 30S। 'S' (स्वेडबर्ग इकाई) अवसादन गुणांक है, जो अप्रत्यक्ष रूप से घनत्व और आकार को व्यक्त करता है, इसीलिए उपइकाइयों के मान सीधे नहीं जुड़ते।\n\nसूक्ष्मकाय झिल्ली से घिरी बहुत सारी सूक्ष्म थैलियाँ हैं जिनमें विभिन्न एंजाइम होते हैं; ये पादप और जंतु दोनों कोशिकाओं में पाई जाती हैं।"
+      },
+      "media": "img.cell-unit-of-life.plant-animal-cells",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.6, §8.5.11"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:31",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 3,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids.1",
+        "hi": "m.bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:32",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0012"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:33",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.mitochondria-plastids"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Mitochondria: double membrane, cristae, matrix with circular DNA and 70S ribosomes; aerobic respiration, ATP.",
+          "hi": "सूत्रकणिका: दोहरी झिल्ली, क्रिस्टी, वृत्ताकार डीएनए और 70S राइबोसोम वाली आधात्री; वायवीय श्वसन, एटीपी।"
+        },
+        {
+          "en": "Plastids: chloroplasts, chromoplasts, leucoplasts (amyloplasts, elaioplasts, aleuroplasts).",
+          "hi": "लवक: हरितलवक, वर्णीलवक, अवर्णीलवक (मंडलवक, तेल लवक, प्रोटीन लवक)।"
+        },
+        {
+          "en": "Chloroplast: stroma, thylakoids in grana, stroma lamellae; stroma has DNA and 70S ribosomes.",
+          "hi": "हरितलवक: पीठिका, ग्रेना में थाइलेकॉइड, पीठिका पटलिकाएँ; पीठिका में डीएनए और 70S राइबोसोम।"
+        },
+        {
+          "en": "80S = 60S + 40S; 70S = 50S + 30S. Microbodies: membrane-bound vesicles of enzymes.",
+          "hi": "80S = 60S + 40S; 70S = 50S + 30S। सूक्ष्मकाय: एंजाइम वाली झिल्ली-युक्त थैलियाँ।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.4-§8.5.6, §8.5.11"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:34",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The cell's scaffolding",
+        "hi": "कोशिका का ढाँचा"
+      },
+      "body": {
+        "en": "The cytoskeleton is an elaborate network of filamentous protein structures in the cytoplasm: microtubules, microfilaments and intermediate filaments. It is involved in mechanical support, motility and maintaining the shape of the cell.",
+        "hi": "साइटोपंजर कोशिकाद्रव्य में प्रोटीनयुक्त तंतुओं का विस्तृत जाल है: सूक्ष्मनलिकाएँ, सूक्ष्मतंतु और मध्यवर्ती तंतु। यह यांत्रिक सहायता, गति और कोशिका के आकार को बनाए रखने में भाग लेता है।"
+      },
+      "media": "img.cell-unit-of-life.cilia-flagella",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.7"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:35",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Oars and whips: the 9 + 2 axoneme",
+        "hi": "चप्पू और चाबुक: 9 + 2 अक्षसूत्र"
+      },
+      "body": {
+        "en": "Cilia and flagella are hair-like outgrowths of the cell membrane. Cilia are small and work like oars, moving the cell or the fluid around it. Flagella are longer and move the cell. Prokaryotic bacteria also have flagella, but these are structurally different.\n\nBoth are covered with plasma membrane. Their core, the axoneme, usually has nine doublets of radially arranged peripheral microtubules and a pair of central microtubules: the 9 + 2 array. The central tubules are joined by bridges and enclosed by a central sheath, which is connected to one tubule of each peripheral doublet by a radial spoke, so there are nine radial spokes. Linkers join the peripheral doublets. Cilia and flagella emerge from centriole-like structures called basal bodies.",
+        "hi": "पक्ष्माभ और कशाभिका कोशिका झिल्ली पर रोम सदृश अपवृद्धि हैं। पक्ष्माभ छोटे होते हैं और चप्पू की तरह काम करते हैं, कोशिका या उसके चारों ओर के द्रव को गति देते हैं। कशाभिका अपेक्षाकृत लंबी होती है और कोशिका को गति देती है। प्रोकैरियोटी जीवाणुओं में भी कशाभिका होती है, पर वह संरचना में भिन्न है।\n\nदोनों जीवद्रव्य झिल्ली से ढके होते हैं। इनका कोर, अक्षसूत्र, प्रायः नौ द्विक अरीय परिधीय सूक्ष्मनलिकाओं और केंद्र में एक जोड़ा सूक्ष्मनलिकाओं का बना होता है: 9 + 2 प्रणाली। केंद्रीय नलिकाएँ सेतु से जुड़ी और केंद्रीय आवरण से ढकी होती हैं, जो हर परिधीय द्विक की एक नलिका से अरीय दंड द्वारा जुड़ा होता है, इसलिए नौ अरीय दंड होते हैं। परिधीय द्विक आपस में जुड़े होते हैं। पक्ष्माभ और कशाभिका तारककेंद्र जैसी संरचना, आधारीकाय, से निकलते हैं।"
+      },
+      "media": "img.cell-unit-of-life.cilia-flagella",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.8, Figure 8.10"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:36",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0014"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:37",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0015"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:38",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "A cartwheel of triplets",
+        "hi": "त्रिकों का बैलगाड़ी जैसा पहिया"
+      },
+      "body": {
+        "en": "The centrosome usually contains two cylindrical centrioles, surrounded by amorphous pericentriolar material. The two centrioles lie perpendicular to each other, and each is organised like a cartwheel.\n\nA centriole is made of nine evenly spaced peripheral fibrils of tubulin protein, and each fibril is a triplet; adjacent triplets are linked. The proteinaceous central part of the proximal region, the hub, is joined to the peripheral triplets by radial spokes of protein.\n\nCentrioles form the basal body of cilia or flagella, and the spindle fibres that give rise to the spindle apparatus during cell division in animal cells.",
+        "hi": "तारककाय में प्रायः दो बेलनाकार संरचनाएँ, तारककेंद्र, होती हैं जो अक्रिस्टलीय परिकेंद्रीय द्रव्य से घिरी होती हैं। दोनों तारककेंद्र एक-दूसरे के लंबवत होते हैं और हर एक की संरचना बैलगाड़ी के पहिए जैसी होती है।\n\nतारककेंद्र ट्यूबुलिन प्रोटीन के नौ समान दूरी पर स्थित परिधीय सूत्रों का बना होता है, और हर सूत्र एक त्रिक है; पास के त्रिक आपस में जुड़े होते हैं। अग्र भीतरी भाग प्रोटीन का बना होता है और धुरी कहलाता है, जो परिधीय त्रिकों से प्रोटीन के अरीय दंडों द्वारा जुड़ा होता है।\n\nतारककेंद्र पक्ष्माभ और कशाभिका का आधारीकाय बनाते हैं, और तर्कु तंतु जो जंतु कोशिका विभाजन के समय तर्कु उपकरण बनाते हैं।"
+      },
+      "media": "img.cell-unit-of-life.plant-animal-cells",
+      "highlights": [
+        {
+          "term": {
+            "en": "hub",
+            "hi": "धुरी"
+          },
+          "definition": {
+            "en": "the protein centre of the centriole's proximal region",
+            "hi": "तारककेंद्र के अग्र भीतरी भाग का प्रोटीन केंद्र"
+          }
+        },
+        {
+          "term": {
+            "en": "basal body",
+            "hi": "आधारीकाय"
+          },
+          "definition": {
+            "en": "the centriole-like structure cilia and flagella emerge from",
+            "hi": "तारककेंद्र जैसी संरचना जिससे पक्ष्माभ और कशाभिका निकलते हैं"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.9"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:39",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Doublets or triplets? Sort each structure.",
+        "hi": "द्विक या त्रिक? हर संरचना को छाँटिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "axoneme",
+            "text": {
+              "en": "Peripheral microtubules of a cilium's axoneme",
+              "hi": "पक्ष्माभ के अक्षसूत्र की परिधीय सूक्ष्मनलिकाएँ"
+            }
+          },
+          {
+            "id": "flagellum",
+            "text": {
+              "en": "Peripheral microtubules of a eukaryotic flagellum's axoneme",
+              "hi": "यूकैरियोटी कशाभिका के अक्षसूत्र की परिधीय सूक्ष्मनलिकाएँ"
+            }
+          },
+          {
+            "id": "centriole",
+            "text": {
+              "en": "Peripheral fibrils of a centriole",
+              "hi": "तारककेंद्र के परिधीय सूत्र"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "doublets",
+            "label": {
+              "en": "Nine doublets",
+              "hi": "नौ द्विक"
+            }
+          },
+          {
+            "id": "triplets",
+            "label": {
+              "en": "Nine triplets",
+              "hi": "नौ त्रिक"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "axoneme",
+            "bin": "doublets"
+          },
+          {
+            "item": "flagellum",
+            "bin": "doublets"
+          },
+          {
+            "item": "centriole",
+            "bin": "triplets"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: axonemes have doublets (9 + 2); centrioles have triplets.",
+          "hi": "सही: अक्षसूत्र में द्विक (9 + 2); तारककेंद्र में त्रिक।"
+        },
+        "wrong": {
+          "en": "Cilia and flagella share one plan; the centriole has its own.",
+          "hi": "पक्ष्माभ और कशाभिका की एक ही योजना है; तारककेंद्र की अपनी।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:40",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0016"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:41",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.cytoskeleton-cilia-centrioles"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Cytoskeleton: microtubules, microfilaments, intermediate filaments; support, motility, shape.",
+          "hi": "साइटोपंजर: सूक्ष्मनलिकाएँ, सूक्ष्मतंतु, मध्यवर्ती तंतु; सहायता, गति, आकार।"
+        },
+        {
+          "en": "Axoneme: nine peripheral doublets plus a central pair (9 + 2), nine radial spokes; arises from a basal body.",
+          "hi": "अक्षसूत्र: नौ परिधीय द्विक और एक केंद्रीय जोड़ा (9 + 2), नौ अरीय दंड; आधारीकाय से निकलता है।"
+        },
+        {
+          "en": "Centriole: cartwheel of nine peripheral triplets of tubulin with a central hub; forms basal bodies and spindle fibres.",
+          "hi": "तारककेंद्र: ट्यूबुलिन के नौ परिधीय त्रिकों और केंद्रीय धुरी वाला पहिया; आधारीकाय और तर्कु तंतु बनाता है।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.7-§8.5.9"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:42",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Envelope, pores and chromatin",
+        "hi": "आवरण, छिद्र और क्रोमेटिन"
+      },
+      "body": {
+        "en": "Robert Brown first described the nucleus in 1831. Later, Flemming named the material of the nucleus stained by basic dyes chromatin.\n\nThe interphase nucleus (of a cell that is not dividing) has extended nucleoprotein fibres called chromatin, a nuclear matrix and one or more spherical nucleoli. The nuclear envelope is two parallel membranes with a 10 to 50 nm space between them, the perinuclear space. The outer membrane is usually continuous with the ER and bears ribosomes.\n\nAt many places the envelope has minute pores, formed by fusion of its two membranes. RNA and protein molecules move through these nuclear pores in both directions between nucleus and cytoplasm.\n\nNormally a cell has one nucleus, but the number varies. Some mature cells lack a nucleus, for example the erythrocytes of many mammals and the sieve tube cells of vascular plants.",
+        "hi": "कोशिकीय अंगक केंद्रक की खोज सर्वप्रथम रॉबर्ट ब्राउन ने 1831 में की। बाद में फ्लेमिंग ने केंद्रक के उस पदार्थ को, जो क्षारीय रंग से रंजित होता है, क्रोमेटिन नाम दिया।\n\nअंतरावस्था केंद्रक (जिस कोशिका का विभाजन नहीं हो रहा) में फैले केंद्रकीय प्रोटीन तंतु, क्रोमेटिन, केंद्रकीय आधात्री और एक या अधिक गोलाकार केंद्रिक होते हैं। केंद्रक आवरण दो समानांतर झिल्लियों का बना होता है, जिनके बीच 10 से 50 nm का रिक्त स्थान, परिकेंद्रकी अवकाश, होता है। बाह्य झिल्ली प्रायः अंतर्द्रव्यी जालिका से सतत रहती है और उस पर राइबोसोम होते हैं।\n\nकई स्थानों पर आवरण में छिद्र होते हैं, जो इसकी दोनों झिल्लियों के संगलन से बनते हैं। इन केंद्रक छिद्रों से होकर आरएनए और प्रोटीन अणु केंद्रक और कोशिकाद्रव्य के बीच दोनों दिशाओं में आते-जाते हैं।\n\nसामान्यतः एक कोशिका में एक केंद्रक होता है, पर संख्या बदल भी सकती है। कुछ परिपक्व कोशिकाओं में केंद्रक नहीं होता, जैसे बहुत से स्तनधारियों की रक्ताणु और संवहनी पौधों की चालनी नलिका कोशिकाएँ।"
+      },
+      "media": "img.cell-unit-of-life.nucleus",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.10"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:43",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the nucleus.",
+        "hi": "केंद्रक को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.nucleus",
+        "spots": [
+          {
+            "id": "envelope",
+            "anchor": "envelope"
+          },
+          {
+            "id": "pore",
+            "anchor": "pore"
+          },
+          {
+            "id": "ribosome",
+            "anchor": "ribosome"
+          },
+          {
+            "id": "chromatin",
+            "anchor": "chromatin"
+          },
+          {
+            "id": "nucleolus",
+            "anchor": "nucleolus"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-envelope",
+            "text": {
+              "en": "Nuclear envelope",
+              "hi": "केंद्रक आवरण"
+            }
+          },
+          {
+            "id": "l-pore",
+            "text": {
+              "en": "Nuclear pore",
+              "hi": "केंद्रक छिद्र"
+            }
+          },
+          {
+            "id": "l-ribosome",
+            "text": {
+              "en": "Ribosomes on the outer membrane",
+              "hi": "बाह्य झिल्ली पर राइबोसोम"
+            }
+          },
+          {
+            "id": "l-chromatin",
+            "text": {
+              "en": "Chromatin",
+              "hi": "क्रोमेटिन"
+            }
+          },
+          {
+            "id": "l-nucleolus",
+            "text": {
+              "en": "Nucleolus",
+              "hi": "केंद्रिक"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "envelope",
+            "label": "l-envelope"
+          },
+          {
+            "spot": "pore",
+            "label": "l-pore"
+          },
+          {
+            "spot": "ribosome",
+            "label": "l-ribosome"
+          },
+          {
+            "spot": "chromatin",
+            "label": "l-chromatin"
+          },
+          {
+            "spot": "nucleolus",
+            "label": "l-nucleolus"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. The nucleolus has no membrane of its own.",
+          "hi": "सही। केंद्रिक की अपनी कोई झिल्ली नहीं होती।"
+        },
+        "wrong": {
+          "en": "The round body inside is the nucleolus; the threads are chromatin.",
+          "hi": "भीतर का गोल पिंड केंद्रिक है; धागे क्रोमेटिन।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:44",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Nucleolus and chromatin",
+        "hi": "केंद्रिक और क्रोमेटिन"
+      },
+      "body": {
+        "en": "The nucleoli are spherical bodies in the nucleoplasm. A nucleolus has no membrane, so its contents are continuous with the rest of the nucleoplasm. It is a site of active ribosomal RNA synthesis; cells actively making proteins have larger and more numerous nucleoli.\n\nChromatin contains DNA, some basic proteins called histones, some non-histone proteins and RNA. A single human cell has about two metres of DNA thread distributed among its 46 (23 pairs) chromosomes.",
+        "hi": "केंद्रिक केंद्रकद्रव्य में गोलाकार पिंड हैं। केंद्रिक झिल्ली रहित है, इसलिए इसका पदार्थ बाकी केंद्रकद्रव्य से सतत रहता है। यह सक्रिय राइबोसोमल आरएनए संश्लेषण का स्थल है; जो कोशिकाएँ अधिक सक्रिय रूप से प्रोटीन बनाती हैं, उनमें बड़े और अधिक केंद्रिक होते हैं।\n\nक्रोमेटिन में डीएनए, कुछ क्षारीय प्रोटीन जिन्हें हिस्टोन कहते हैं, कुछ अहिस्टोन प्रोटीन और आरएनए होते हैं। मनुष्य की एक कोशिका में लगभग दो मीटर लंबा डीएनए सूत्र 46 (23 जोड़े) गुणसूत्रों में बिखरा होता है।"
+      },
+      "media": "img.cell-unit-of-life.nucleus",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.10"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:45",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0018"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:46",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Four kinds of chromosomes",
+        "hi": "चार प्रकार के गुणसूत्र"
+      },
+      "body": {
+        "en": "Chromosomes are visible only in dividing cells. Every chromosome has a primary constriction, the centromere, with disc-shaped kinetochores on its sides. The centromere holds the two chromatids of a chromosome.\n\nBy the position of the centromere there are four types. Metacentric: centromere in the middle, two equal arms. Sub-metacentric: slightly away from the middle, one shorter and one longer arm. Acrocentric: close to the end, one extremely short and one very long arm. Telocentric: a terminal centromere.\n\nSome chromosomes have non-staining secondary constrictions at a constant place, which look like a small fragment called the satellite.",
+        "hi": "गुणसूत्र केवल विभाजित होती कोशिकाओं में दिखते हैं। हर गुणसूत्र में एक प्राथमिक संकीर्णन, गुणसूत्रबिंदु, होता है जिसके दोनों ओर बिंब आकार की संरचना, काइनेटोकोर, होती है। गुणसूत्रबिंदु गुणसूत्र के दो अर्धगुणसूत्रों को पकड़कर रखता है।\n\nगुणसूत्रबिंदु की स्थिति के आधार पर चार प्रकार हैं। मध्यकेंद्री: गुणसूत्रबिंदु बीच में, दोनों भुजाएँ बराबर। उपमध्यकेंद्री: बीच से थोड़ा हटकर, एक भुजा छोटी और एक बड़ी। अग्रबिंदु: किनारे के पास, एक भुजा अत्यंत छोटी और एक बहुत बड़ी। अंतकेंद्री: गुणसूत्रबिंदु शीर्ष पर।\n\nकुछ गुणसूत्रों में निश्चित स्थान पर अरंजित द्वितीयक संकीर्णन होता है, जो एक छोटे टुकड़े जैसा दिखता है जिसे सेटेलाइट कहते हैं।"
+      },
+      "media": "img.cell-unit-of-life.nucleus",
+      "highlights": [
+        {
+          "term": {
+            "en": "centromere",
+            "hi": "गुणसूत्रबिंदु"
+          },
+          "definition": {
+            "en": "the primary constriction that holds the two chromatids",
+            "hi": "प्राथमिक संकीर्णन जो दो अर्धगुणसूत्रों को पकड़े रहता है"
+          }
+        },
+        {
+          "term": {
+            "en": "kinetochore",
+            "hi": "काइनेटोकोर"
+          },
+          "definition": {
+            "en": "disc-shaped structure on the sides of the centromere",
+            "hi": "गुणसूत्रबिंदु के दोनों ओर बिंब आकार की संरचना"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.10, Figure 8.13"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:47",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Order the chromosome types as the centromere moves from the middle to the tip.",
+        "hi": "गुणसूत्रबिंदु के बीच से सिरे की ओर जाने के क्रम में गुणसूत्रों के प्रकार लगाइए।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "meta",
+            "text": {
+              "en": "Metacentric",
+              "hi": "मध्यकेंद्री"
+            }
+          },
+          {
+            "id": "submeta",
+            "text": {
+              "en": "Sub-metacentric",
+              "hi": "उपमध्यकेंद्री"
+            }
+          },
+          {
+            "id": "acro",
+            "text": {
+              "en": "Acrocentric",
+              "hi": "अग्रबिंदु"
+            }
+          },
+          {
+            "id": "telo",
+            "text": {
+              "en": "Telocentric",
+              "hi": "अंतकेंद्री"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: middle, slightly off, near the end, at the end.",
+          "hi": "सही: बीच में, थोड़ा हटकर, किनारे के पास, शीर्ष पर।"
+        },
+        "wrong": {
+          "en": "Telocentric means the centromere is at the very end.",
+          "hi": "अंतकेंद्री का अर्थ है गुणसूत्रबिंदु बिल्कुल सिरे पर।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:48",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 3,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.eukaryotic.core.nucleus.1",
+        "hi": "m.bio.cell-unit-of-life.eukaryotic.core.nucleus.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:49",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.eukaryotic.0019"
+    },
+    {
+      "id": "bio.cell-unit-of-life.eukaryotic:dd:50",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.eukaryotic.core.nucleus"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Nuclear envelope: two membranes, perinuclear space 10 to 50 nm, outer one continuous with ER; pores carry RNA and protein both ways.",
+          "hi": "केंद्रक आवरण: दो झिल्लियाँ, 10 से 50 nm का परिकेंद्रकी अवकाश, बाह्य झिल्ली जालिका से सतत; छिद्रों से आरएनए और प्रोटीन दोनों दिशाओं में।"
+        },
+        {
+          "en": "Nucleolus: no membrane; site of active rRNA synthesis.",
+          "hi": "केंद्रिक: झिल्ली रहित; सक्रिय rRNA संश्लेषण का स्थल।"
+        },
+        {
+          "en": "Chromatin: DNA, histones, non-histone proteins, RNA.",
+          "hi": "क्रोमेटिन: डीएनए, हिस्टोन, अहिस्टोन प्रोटीन, आरएनए।"
+        },
+        {
+          "en": "Centromere position: metacentric, sub-metacentric, acrocentric, telocentric.",
+          "hi": "गुणसूत्रबिंदु की स्थिति: मध्यकेंद्री, उपमध्यकेंद्री, अग्रबिंदु, अंतकेंद्री।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.5.10"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

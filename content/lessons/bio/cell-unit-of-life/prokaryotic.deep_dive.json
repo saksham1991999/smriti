@@ -1,0 +1,490 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "id": "bio.cell-unit-of-life.prokaryotic:deep_dive",
+  "topic": "bio.cell-unit-of-life.prokaryotic",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Small and fast",
+        "hi": "छोटी और तेज़"
+      },
+      "subtopic": "bio.cell-unit-of-life.prokaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.prokaryotic:dd:01",
+        "bio.cell-unit-of-life.prokaryotic:dd:02",
+        "bio.cell-unit-of-life.prokaryotic:dd:03",
+        "bio.cell-unit-of-life.prokaryotic:dd:04"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "The cell envelope",
+        "hi": "कोशिका आवरण"
+      },
+      "subtopic": "bio.cell-unit-of-life.prokaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.prokaryotic:dd:05",
+        "bio.cell-unit-of-life.prokaryotic:dd:06",
+        "bio.cell-unit-of-life.prokaryotic:dd:07",
+        "bio.cell-unit-of-life.prokaryotic:dd:08",
+        "bio.cell-unit-of-life.prokaryotic:dd:09"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Appendages, ribosomes and inclusions",
+        "hi": "उपांग, राइबोसोम और अंतर्विष्ट"
+      },
+      "subtopic": "bio.cell-unit-of-life.prokaryotic.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.prokaryotic:dd:10",
+        "bio.cell-unit-of-life.prokaryotic:dd:11",
+        "bio.cell-unit-of-life.prokaryotic:dd:12",
+        "bio.cell-unit-of-life.prokaryotic:dd:13",
+        "bio.cell-unit-of-life.prokaryotic:dd:14"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Who the prokaryotes are",
+        "hi": "प्रोकैरियोटी कौन हैं"
+      },
+      "body": {
+        "en": "Prokaryotic cells are represented by bacteria, blue-green algae, mycoplasma and PPLO (Pleuro Pneumonia Like Organisms). They are generally smaller and multiply more rapidly than eukaryotic cells.\n\nThe four basic shapes of bacteria are bacillus (rod-like), coccus (spherical), vibrio (comma-shaped) and spirillum (spiral).",
+        "hi": "प्रोकैरियोटी कोशिकाएँ जीवाणु, नीलहरित शैवाल, माइकोप्लाज़्मा और प्ल्यूरो निमोनिया सम जीव (PPLO) में मिलती हैं। ये सामान्यतः यूकैरियोटी कोशिकाओं से छोटी होती हैं और तेज़ी से विभाजित होती हैं।\n\nजीवाणु के चार मूल आकार हैं: दंडाकार (बेसिलस), गोलाकार (कोकस), कोमाकार (विब्रो) और सर्पिल (स्पाइरल)।"
+      },
+      "media": "img.cell-unit-of-life.bacterial-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:02",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 1,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell.1",
+        "hi": "m.bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "No nucleus, but plenty inside",
+        "hi": "केंद्रक नहीं, पर भीतर बहुत कुछ"
+      },
+      "body": {
+        "en": "All prokaryotes have a cell wall around the cell membrane, except mycoplasma. There is no well-defined nucleus: the genetic material is naked, not enveloped by a nuclear membrane.\n\nBesides the genomic DNA (a single circular chromosome), many bacteria have small circular DNA outside it, called plasmids. Plasmids give the bacterium certain unique characters, such as resistance to antibiotics.\n\nApart from ribosomes, prokaryotes have none of the organelles of eukaryotes. They have inclusions, and a specialised infolding of the cell membrane, the mesosome, is characteristic of them.",
+        "hi": "माइकोप्लाज़्मा को छोड़कर सभी प्रोकैरियोटी में कोशिका झिल्ली को घेरे हुए कोशिका भित्ति होती है। इनमें कोई स्पष्ट केंद्रक नहीं होता: आनुवंशिक पदार्थ नग्न होता है, केंद्रक झिल्ली से घिरा नहीं।\n\nजीनोमिक डीएनए (एकल वृत्ताकार गुणसूत्र) के अलावा बहुत से जीवाणुओं में उसके बाहर छोटे वृत्ताकार डीएनए होते हैं, जिन्हें प्लाज़्मिड कहते हैं। प्लाज़्मिड जीवाणु को कुछ विशिष्ट लक्षण देते हैं, जैसे प्रतिजैविक के प्रति प्रतिरोध।\n\nराइबोसोम के अलावा प्रोकैरियोटी में यूकैरियोटी जैसे अंगक नहीं होते। इनमें अंतर्विष्ट होते हैं, और कोशिका झिल्ली का एक विशिष्ट अंतर्वलन, मीसोसोम, इनकी पहचान है।"
+      },
+      "media": "img.cell-unit-of-life.bacterial-cell",
+      "highlights": [
+        {
+          "term": {
+            "en": "plasmid",
+            "hi": "प्लाज़्मिड"
+          },
+          "definition": {
+            "en": "small circular DNA outside the genomic DNA",
+            "hi": "जीनोमिक डीएनए के बाहर छोटा वृत्ताकार डीएनए"
+          }
+        },
+        {
+          "term": {
+            "en": "mesosome",
+            "hi": "मीसोसोम"
+          },
+          "definition": {
+            "en": "an infolding of the cell membrane",
+            "hi": "कोशिका झिल्ली का अंतर्वलन"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:04",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.prokaryotic.0001"
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Three layers, one shield",
+        "hi": "तीन परतें, एक ढाल"
+      },
+      "body": {
+        "en": "Most bacterial cells have a chemically complex cell envelope: a tightly bound three-layered structure of the outermost glycocalyx, then the cell wall, then the plasma membrane. Each layer has its own job, but together they act as a single protective unit.\n\nBacteria that take up the Gram stain are Gram positive; those that do not are Gram negative. The difference lies in their cell envelopes.\n\nThe glycocalyx may be a loose sheath, the slime layer, or thick and tough, the capsule. The cell wall decides the shape of the cell and stops the bacterium from bursting or collapsing. The plasma membrane is selectively permeable and is similar in structure to that of eukaryotes.",
+        "hi": "अधिकांश जीवाणु कोशिकाओं में एक जटिल रासायनिक कोशिका आवरण होता है: दृढ़ता से बँधी तीन परतें, सबसे बाहर ग्लाइकोकैलिक्स, फिर कोशिका भित्ति, फिर जीवद्रव्य झिल्ली। हर परत का अपना कार्य है, पर तीनों मिलकर एक सुरक्षा इकाई बनाती हैं।\n\nजो जीवाणु ग्राम अभिरंजक ले लेते हैं वे ग्राम धनात्मक हैं, और जो नहीं लेते वे ग्राम ऋणात्मक। यह अंतर उनके कोशिका आवरण के कारण है।\n\nग्लाइकोकैलिक्स ढीली आच्छद, अवपंक पर्त, हो सकती है या मोटी और कठोर, संपुटिका। कोशिका भित्ति कोशिका का आकार निर्धारित करती है और जीवाणु को फटने या निपतित होने से बचाती है। जीवद्रव्य झिल्ली चयनित पारगम्य है और संरचना में यूकैरियोटी झिल्ली जैसी है।"
+      },
+      "media": "img.cell-unit-of-life.bacterial-cell",
+      "highlights": [
+        {
+          "term": {
+            "en": "slime layer",
+            "hi": "अवपंक पर्त"
+          },
+          "definition": {
+            "en": "a loose glycocalyx sheath",
+            "hi": "ढीली ग्लाइकोकैलिक्स आच्छद"
+          }
+        },
+        {
+          "term": {
+            "en": "capsule",
+            "hi": "संपुटिका"
+          },
+          "definition": {
+            "en": "a thick, tough glycocalyx",
+            "hi": "मोटी और कठोर ग्लाइकोकैलिक्स"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:06",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell.3",
+        "hi": "m.bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell.4"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Mesosomes and chromatophores",
+        "hi": "मीसोसोम और वर्णकी लवक"
+      },
+      "body": {
+        "en": "Mesosomes are extensions of the plasma membrane into the cell, in the form of vesicles, tubules and lamellae. They help in cell wall formation, DNA replication and distribution to daughter cells, respiration and secretion, and they increase the surface area of the plasma membrane and its enzymatic content.\n\nIn some prokaryotes such as cyanobacteria, other membranous extensions into the cytoplasm, the chromatophores, contain pigments.",
+        "hi": "मीसोसोम जीवद्रव्य झिल्ली के कोशिका के भीतर फैलाव हैं, जो पुटिका, नलिका और पटलिका के रूप में होते हैं। ये कोशिका भित्ति निर्माण, डीएनए प्रतिकृति और संतति कोशिकाओं में उसके वितरण, श्वसन और स्रावण में सहायता करते हैं, और जीवद्रव्य झिल्ली का पृष्ठ क्षेत्र तथा एंजाइम मात्रा बढ़ाते हैं।\n\nकुछ प्रोकैरियोटी, जैसे नीलहरित जीवाणु, में कोशिकाद्रव्य में झिल्ली के दूसरे विस्तार, वर्णकी लवक, होते हैं जिनमें वर्णक होते हैं।"
+      },
+      "media": "img.cell-unit-of-life.bacterial-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:08",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.prokaryotic.0002"
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:09",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.prokaryotic.0003"
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Flagella, pili and fimbriae",
+        "hi": "कशाभिका, रोम और झालर"
+      },
+      "body": {
+        "en": "Motile bacteria have thin filamentous extensions from the cell wall called flagella. A bacterial flagellum has three parts: filament, hook and basal body. The filament is the longest part and extends from the cell surface to the outside.\n\nPili and fimbriae are surface structures that play no role in motility. Pili are elongated tubular structures made of a special protein. Fimbriae are small bristle-like fibres sprouting out of the cell; in some bacteria they help the bacteria attach to rocks in streams and to host tissues.",
+        "hi": "चलायमान जीवाणुओं में कोशिका भित्ति से निकली पतली तंतुमय संरचनाएँ होती हैं जिन्हें कशाभिका कहते हैं। जीवाणु कशाभिका के तीन भाग हैं: तंतु, अंकुश और आधारीय शरीर। तंतु सबसे लंबा भाग है और कोशिका सतह से बाहर की ओर फैला होता है।\n\nरोम और झालर सतह की संरचनाएँ हैं जो गति में सहायक नहीं होतीं। रोम लंबी नलिकाकार संरचनाएँ हैं जो विशेष प्रोटीन की बनी होती हैं। झालर छोटे शूक जैसे तंतु हैं जो कोशिका से बाहर निकले होते हैं; कुछ जीवाणुओं में ये उन्हें पानी की धारा में चट्टानों और पोषक ऊतकों से चिपकने में सहायता करते हैं।"
+      },
+      "media": "img.cell-unit-of-life.bacterial-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "70S ribosomes and stored food",
+        "hi": "70S राइबोसोम और संचित भोजन"
+      },
+      "body": {
+        "en": "In prokaryotes, ribosomes are associated with the plasma membrane. They are about 15 nm by 20 nm and are made of two subunits, 50S and 30S, which together form the 70S ribosome. Several ribosomes may attach to one mRNA and form a chain, the polyribosome or polysome, which translates the mRNA into proteins.\n\nReserve material is stored in the cytoplasm as inclusion bodies, which are not bound by any membrane: phosphate granules, cyanophycean granules and glycogen granules. Gas vacuoles are found in blue-green and purple and green photosynthetic bacteria.",
+        "hi": "प्रोकैरियोटी में राइबोसोम कोशिका की जीवद्रव्य झिल्ली से जुड़े होते हैं। ये लगभग 15 nm × 20 nm के होते हैं और दो उपइकाइयों, 50S और 30S, से बने होते हैं जो मिलकर 70S राइबोसोम बनाती हैं। कई राइबोसोम एक mRNA से जुड़कर शृंखला बना सकते हैं, जिसे बहुराइबोसोम या बहुसूत्र कहते हैं, जो mRNA को प्रोटीन में बदलती है।\n\nसंचित पदार्थ कोशिकाद्रव्य में अंतर्विष्ट पिंडों के रूप में रहते हैं, जो किसी झिल्ली से घिरे नहीं होते: फॉस्फेट कणिकाएँ, साइनोफाइसिन कणिकाएँ और ग्लाइकोजन कणिकाएँ। गैस रसधानी नीलहरित, बैंगनी और हरी प्रकाश-संश्लेषी जीवाणुओं में मिलती है।"
+      },
+      "media": "img.cell-unit-of-life.bacterial-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:12",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Label the bacterial cell.",
+        "hi": "जीवाणु कोशिका को नामांकित कीजिए।"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.cell-unit-of-life.bacterial-cell",
+        "spots": [
+          {
+            "id": "capsule",
+            "anchor": "capsule"
+          },
+          {
+            "id": "mesosome",
+            "anchor": "mesosome"
+          },
+          {
+            "id": "dna",
+            "anchor": "dna"
+          },
+          {
+            "id": "plasmid",
+            "anchor": "plasmid"
+          },
+          {
+            "id": "flagellum",
+            "anchor": "flagellum"
+          },
+          {
+            "id": "pilus",
+            "anchor": "pilus"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l-capsule",
+            "text": {
+              "en": "Capsule (glycocalyx)",
+              "hi": "संपुटिका (ग्लाइकोकैलिक्स)"
+            }
+          },
+          {
+            "id": "l-mesosome",
+            "text": {
+              "en": "Mesosome",
+              "hi": "मीसोसोम"
+            }
+          },
+          {
+            "id": "l-dna",
+            "text": {
+              "en": "Genomic DNA",
+              "hi": "जीनोमिक डीएनए"
+            }
+          },
+          {
+            "id": "l-plasmid",
+            "text": {
+              "en": "Plasmid",
+              "hi": "प्लाज़्मिड"
+            }
+          },
+          {
+            "id": "l-flagellum",
+            "text": {
+              "en": "Flagellum",
+              "hi": "कशाभिका"
+            }
+          },
+          {
+            "id": "l-pilus",
+            "text": {
+              "en": "Pilus",
+              "hi": "रोम"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "capsule",
+            "label": "l-capsule"
+          },
+          {
+            "spot": "mesosome",
+            "label": "l-mesosome"
+          },
+          {
+            "spot": "dna",
+            "label": "l-dna"
+          },
+          {
+            "spot": "plasmid",
+            "label": "l-plasmid"
+          },
+          {
+            "spot": "flagellum",
+            "label": "l-flagellum"
+          },
+          {
+            "spot": "pilus",
+            "label": "l-pilus"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Note the DNA lies free, with no nuclear membrane around it.",
+          "hi": "सही। ध्यान दीजिए कि डीएनए मुक्त पड़ा है, उसके चारों ओर केंद्रक झिल्ली नहीं।"
+        },
+        "wrong": {
+          "en": "The long whip is the flagellum; the short hairs are pili.",
+          "hi": "लंबा चाबुक कशाभिका है; छोटे बाल रोम हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:13",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-unit-of-life.prokaryotic.0004"
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:dd:14",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Prokaryotes: bacteria, blue-green algae, mycoplasma, PPLO; no membrane-bound nucleus.",
+          "hi": "प्रोकैरियोटी: जीवाणु, नीलहरित शैवाल, माइकोप्लाज़्मा, PPLO; झिल्ली-युक्त केंद्रक नहीं।"
+        },
+        {
+          "en": "Envelope from outside: glycocalyx, cell wall, plasma membrane.",
+          "hi": "आवरण बाहर से: ग्लाइकोकैलिक्स, कोशिका भित्ति, जीवद्रव्य झिल्ली।"
+        },
+        {
+          "en": "Mesosomes: infoldings of the plasma membrane that help in wall formation, DNA replication and distribution, respiration and secretion.",
+          "hi": "मीसोसोम: जीवद्रव्य झिल्ली के अंतर्वलन जो भित्ति निर्माण, डीएनए प्रतिकृति और वितरण, श्वसन और स्रावण में सहायक हैं।"
+        },
+        {
+          "en": "70S ribosome = 50S + 30S subunits; inclusion bodies have no membrane.",
+          "hi": "70S राइबोसोम = 50S + 30S उपइकाइयाँ; अंतर्विष्ट पिंडों में झिल्ली नहीं होती।"
+        },
+        {
+          "en": "Flagella move the cell; pili and fimbriae do not.",
+          "hi": "कशाभिका कोशिका को गति देती है; रोम और झालर नहीं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.4"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,128 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Quick Revision for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "id": "bio.cell-unit-of-life.prokaryotic:quick_revision",
+  "topic": "bio.cell-unit-of-life.prokaryotic",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 1,
+      "sheet": "cs.bio.cell-unit-of-life.prokaryotic"
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:qr:02",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.prokaryotic.0005"
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:qr:03",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Bacterial shapes: bacillus, coccus, vibrio, spirillum.",
+          "hi": "जीवाणु के आकार: दंडाकार, गोलाकार, कोमाकार, सर्पिल।"
+        },
+        {
+          "en": "Envelope from outside: glycocalyx, cell wall, plasma membrane.",
+          "hi": "आवरण बाहर से: ग्लाइकोकैलिक्स, कोशिका भित्ति, जीवद्रव्य झिल्ली।"
+        },
+        {
+          "en": "70S = 50S + 30S.",
+          "hi": "70S = 50S + 30S।"
+        }
+      ]
+    },
+    {
+      "id": "bio.cell-unit-of-life.prokaryotic:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Pili help bacteria swim.",
+            "hi": "रोम जीवाणु को तैरने में मदद करते हैं।"
+          },
+          "correct": {
+            "en": "Pili and fimbriae play no role in motility; flagella do.",
+            "hi": "रोम और झालर गति में भूमिका नहीं निभाते; कशाभिका निभाती है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Plasmids are part of the genomic DNA.",
+            "hi": "प्लाज़्मिड जीनोमिक डीएनए का भाग हैं।"
+          },
+          "correct": {
+            "en": "Plasmids are small circular DNA outside the genomic DNA.",
+            "hi": "प्लाज़्मिड जीनोमिक डीएनए के बाहर के छोटे वृत्ताकार डीएनए हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Inclusion bodies are enclosed in a membrane.",
+            "hi": "अंतर्विष्ट पिंड झिल्ली से घिरे होते हैं।"
+          },
+          "correct": {
+            "en": "They are not bound by any membrane and lie free in the cytoplasm.",
+            "hi": "ये किसी झिल्ली से घिरे नहीं होते और कोशिकाद्रव्य में मुक्त रहते हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "All prokaryotes have a cell wall.",
+            "hi": "सभी प्रोकैरियोटी में कोशिका भित्ति होती है।"
+          },
+          "correct": {
+            "en": "Mycoplasma has no cell wall.",
+            "hi": "माइकोप्लाज़्मा में कोशिका भित्ति नहीं होती।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

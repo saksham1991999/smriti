@@ -49,7 +49,10 @@ class BundlePatch(BaseModel):
     unset: Annotated[list[str], Field(description="Top-level fields removed.")]
     cards: Cards
     maps: Annotated[
-        dict[Literal["questions", "mnemonics", "sheets", "media", "math"], Maps],
+        dict[
+            Literal["questions", "mnemonics", "sheets", "media", "math", "pyq_papers"],
+            Maps,
+        ],
         Field(
             description="Changes to the keyed maps (questions, mnemonics, sheets, media, math)."
         ),

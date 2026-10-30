@@ -54,6 +54,16 @@ class Questions(BaseModel):
     type: blueprint_schema.QuestionType
 
 
+class PyqPapers(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    exam: str
+    exam_name: str
+    year: int
+    session_label: str | None = None
+
+
 type BundleMode = Annotated[
     Literal["deep_dive", "quick_revision", "practice"],
     Field(
@@ -155,6 +165,12 @@ class Bundle(BaseModel):
     questions: dict[str, Questions]
     mnemonics: dict[str, dict[str, Any]]
     sheets: dict[str, dict[str, Any]]
+    pyq_papers: Annotated[
+        dict[str, PyqPapers] | None,
+        Field(
+            description='Papers the bundle\'s PYQ questions come from, for the Tough one chip ("Asked in {exam_name} {year}").'
+        ),
+    ] = None
     media: dict[str, ResolvedMedia]
     math: Annotated[
         dict[str, RenderedMath],

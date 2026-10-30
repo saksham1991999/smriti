@@ -2444,6 +2444,19 @@ export interface Bundle {
   sheets: {
     [k: string]: {} | undefined;
   };
+  /**
+   * Papers the bundle's PYQ questions come from, for the Tough one chip ("Asked in {exam_name} {year}").
+   */
+  pyq_papers?: {
+    [k: string]:
+      | {
+          exam: string;
+          exam_name: string;
+          year: number;
+          session_label?: string | null;
+        }
+      | undefined;
+  };
   media: {
     [k: string]: ResolvedMedia | undefined;
   };

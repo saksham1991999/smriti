@@ -53,6 +53,7 @@ import { FakeBilling, RevenueCatBilling } from '../billing/fake';
 import type { BillingProvider, PurchaseResult } from '../billing/types';
 import { CATALOGUE_SNAPSHOT, catalogueFromApi, type CatalogueExam } from '../content/catalogue';
 import type { ContentRepo } from '../content/repo';
+import { addPendingStrings } from '../i18n/pending';
 import type { MobileSwitches } from '../env';
 import { applyNotificationPlan, type LocalNotifier } from '../platform/notifications';
 import type { ProfileStores } from '../platform/profileDb';
@@ -194,6 +195,7 @@ export class SmritiApp {
       lessonEnd: null,
     }));
     this.i18n = createI18n({ locale: 'en', brand: variant.appName.en });
+    addPendingStrings(this.i18n);
 
     if (env.AUTH_MODE === 'supabase' && env.SUPABASE_URL && env.SUPABASE_ANON_KEY) {
       const client = createSupabaseClientForProfile({
@@ -380,6 +382,12 @@ export class SmritiApp {
   // ── Helpers ───────────────────────────────────────────────────────────────
 
   t = (key: MessageKey, values?: MessageValues): string => this.i18n.t(key, { app_name: this.appName(), brand: this.appName(), ...values });
+
+  /** A language's own name ("English", "हिन्दी"): the catalogue's switch button names the other language. */
+  languageName = (l: 'en' | 'hi'): string => this.i18n.i18n.t('learn:WEB-01.language_button', { lng: l === 'en' ? 'hi' : 'en' }) as string;
+
+  /** Only for the keys in `src/i18n/pending-learn.json` (not yet in the shared catalogue's types). */
+  tPending = (key: `learn:WEB-01.${string}` | `learn:WEB-02.${string}`, values?: MessageValues): string => this.t(key as MessageKey, values);
 
   appName(): string {
     return this.deps.variant.appName[this.ui.getState().locale];

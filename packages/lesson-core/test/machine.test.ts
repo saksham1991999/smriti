@@ -135,6 +135,14 @@ describe("Deep Dive bite", () => {
     expect(st.phase).toBe("explain");
     expect(st.reviewQueue[0]!.reason).toBe("dont_know");
     expect(s.emitted.at(-1)!.payload).toMatchObject({ response: null, correct: false, attempt: 1, confidence: null });
+    expect(s.emitted.at(-1)!.payload).toMatchObject({ context: "lesson" });
+
+    // The same in a check is sent with context `check`, and nothing is queued.
+    const practice = fixtureBundle("a", "practice");
+    const check = session();
+    check.run({ type: "start", plan: planCheck(selectTestOut([practice.bundle], 1), { scopeId: A, bundleVersion: practice.hash, locale: "en" }) });
+    expect(check.run({ type: "dont_know" }).reviewQueue).toEqual([]);
+    expect(check.s.emitted.at(-1)!.payload).toMatchObject({ context: "check", response: null, topic_id: A });
   });
 
   it("fires the combo once after five first-try answers in a row", () => {
@@ -305,7 +313,10 @@ describe("checks", () => {
     expect(done.phase).toBe("complete");
     expect(evaluateTestOut(done)).toEqual({ kind: "test_out", passed: [], worthALesson: [A], unfinished: false });
     expect(s.emitted[0]!.payload).toMatchObject({ mode: "quick_check", topic_id: A });
-    expect(s.emitted.filter((e) => e.type === "answer_submitted").every((e) => "question_id" in e.payload)).toBe(true);
+    const answers = s.emitted.filter((e) => e.type === "answer_submitted");
+    expect(answers.every((e) => "question_id" in e.payload)).toBe(true);
+    // sync.md v1.2: checks answer in context `check`.
+    expect(answers.map((e) => (e.payload as { context: string }).context)).toEqual(["check", "check", "check"]);
   });
 
   it("Test out passes a topic only when every answer is right first time and not a guess", () => {
@@ -338,10 +349,11 @@ describe("checks", () => {
       [],
       { topicId: A, bundleVersion: practiceA.hash, locale: "en", config: config() },
     );
-    const { run, types } = session();
+    const { s, run, types } = session();
     run({ type: "start", plan }, { type: "submit", answer: opts("a") }, { type: "continue" });
     expect(run().phase).toBe("complete");
     expect(types()).toEqual(["answer_submitted"]);
+    expect(s.emitted[0]!.payload).toMatchObject({ context: "fix", question_id: "q.fx.chapter-a.topic-a.0003" });
   });
 });
 

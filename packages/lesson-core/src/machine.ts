@@ -164,6 +164,10 @@ export function isReadOnly(s: LessonState): boolean {
   return s.viewIndex < s.index;
 }
 
+/** The student is on a card or an open question (not feedback, an overlay or the end). */
+const browsing = (s: LessonState): boolean => s.phase === "card" || s.phase === "question";
+
+// Fix mistakes sends no lesson events (lessonEvents is false); the mapping only keeps the type total.
 const eventMode = (p: LessonPlan): EventLessonMode =>
   p.mode === "fix_mistakes" ? "quick_check" : p.mode;
 
@@ -322,17 +326,19 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
     case "offline":
       return s.phase === "loading" ? { ...s, phase: "needs_net" } : s;
 
+    // Going back is only possible from a card or an open question; earlier cards are read-only.
     case "back":
-      if (s.phase !== "card" && s.phase !== "question") return s;
+      if (!browsing(s)) return s;
       return s.viewIndex > 0 ? { ...s, viewIndex: s.viewIndex - 1 } : s;
 
     case "forward":
+      if (!browsing(s)) return s;
       return s.viewIndex < s.index ? { ...s, viewIndex: s.viewIndex + 1 } : s;
 
     case "next": {
+      if (!browsing(s)) return s;
       if (isReadOnly(s)) return { ...s, viewIndex: s.viewIndex + 1 };
       if (s.phase === "question") return { ...s, blocked: "question" };
-      if (s.phase !== "card") return s;
       if (s.pendingTask) return { ...s, blocked: "task" };
       return advance(s, now);
     }
@@ -365,8 +371,9 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
     }
 
     case "skip_online": {
+      if (s.phase !== "card" || isReadOnly(s)) return s;
       const card = s.plan!.cards[s.index]!;
-      if (!card.onlineOnly || isReadOnly(s)) return s;
+      if (!card.onlineOnly) return s;
       return advance({ ...s, pendingTask: false, outcomes: withOutcome(s, card, { skipped: true }) }, now);
     }
 
@@ -429,7 +436,7 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
           outcomes: withOutcome(s, card, { attempts, confidence }),
         };
       }
-      return missed(s, card, result, events, attempts, confidence, false, now);
+      return missed(s, card, result, events, attempts, confidence, false);
     }
 
     case "dont_know": {
@@ -446,7 +453,7 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
         confidence: null,
         ms_to_answer: now - (s.questionShownAt ?? now),
       } as AnswerSubmittedPayload;
-      return missed(s, card, null, [{ type: "answer_submitted", at: now, payload }], s.attempt, null, true, now);
+      return missed(s, card, null, [{ type: "answer_submitted", at: now, payload }], s.attempt, null, true);
     }
 
     case "try_again":
@@ -499,7 +506,6 @@ function missed(
   attempts: number,
   confidence: Confidence | null,
   dontKnow: boolean,
-  _now: number,
 ): LessonState {
   const plan = s.plan!;
   const ref = cardRef(card);

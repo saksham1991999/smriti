@@ -1,0 +1,352 @@
+{
+  "schema": "chapter@1",
+  "id": "chem.chemical-kinetics",
+  "subject": "chem",
+  "unit": "chem.physical",
+  "name": {
+    "en": "Chemical Kinetics",
+    "hi": "रासायनिक बलगतिकी"
+  },
+  "ncert_ref": "NCERT Class 12 Chemistry Part I, Ch 3",
+  "topics": [
+    {
+      "id": "chem.chemical-kinetics.rate",
+      "name": {
+        "en": "Rate of a Chemical Reaction",
+        "hi": "रासायनिक अभिक्रिया वेग"
+      },
+      "subtopics": [
+        {
+          "id": "chem.chemical-kinetics.rate.core",
+          "name": {
+            "en": "Rate of a Chemical Reaction",
+            "hi": "रासायनिक अभिक्रिया वेग"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-kinetics.rate.core.reaction-rate",
+              "name": {
+                "en": "Rate of a chemical reaction",
+                "hi": "रासायनिक अभिक्रिया का वेग"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Reaction rate is the change in concentration per unit time, average over an interval or instantaneous as a slope, written with stoichiometric coefficients so it is the same for every species.",
+                "hi": "अभिक्रिया वेग प्रति एकांक समय सांद्रता में परिवर्तन है, किसी अंतराल पर औसत या ढाल के रूप में तात्क्षणिक, जिसे रससमीकरणमितीय गुणांकों के साथ लिखा जाता है ताकि यह हर स्पीशीज़ के लिए समान हो।"
+              },
+              "key_points": [
+                {
+                  "en": "Express rate in terms of each reactant and product for a given equation.",
+                  "hi": "दिए गए समीकरण के लिए हर अभिकारक और उत्पाद के रूप में वेग व्यक्त कीजिए।"
+                },
+                {
+                  "en": "Find instantaneous rate from a concentration-time graph.",
+                  "hi": "सांद्रता-समय ग्राफ़ से तात्क्षणिक वेग निकालिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-1",
+                "neet-ug-2026:chemistry:unit-8:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-kinetics.rate-factors",
+      "name": {
+        "en": "Factors Influencing Rate of a Reaction",
+        "hi": "अभिक्रिया वेग को प्रभावित करने वाले कारक"
+      },
+      "subtopics": [
+        {
+          "id": "chem.chemical-kinetics.rate-factors.core",
+          "name": {
+            "en": "Factors Influencing Rate of a Reaction",
+            "hi": "अभिक्रिया वेग को प्रभावित करने वाले कारक"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-kinetics.rate-factors.core.rate-factors-def",
+              "name": {
+                "en": "Factors affecting rate: concentration, temperature, pressure and catalyst",
+                "hi": "वेग को प्रभावित करने वाले कारक : सांद्रता, ताप, दाब एवं उत्प्रेरक"
+              },
+              "kind": "list",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Rate depends on reactant concentration (or pressure for gases), temperature and the presence of a catalyst, which provides a lower-energy pathway without being consumed.",
+                "hi": "वेग अभिकारकों की सांद्रता (गैसों के लिए दाब), ताप और उत्प्रेरक की उपस्थिति पर निर्भर करता है, जो स्वयं खर्च हुए बिना कम ऊर्जा वाला पथ देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain the effect of each factor qualitatively.",
+                  "hi": "हर कारक के प्रभाव को गुणात्मक रूप से समझाइए।"
+                },
+                {
+                  "en": "State that a catalyst does not change $\\Delta G$ or the equilibrium constant.",
+                  "hi": "बताइए कि उत्प्रेरक $\\Delta G$ या साम्य स्थिरांक को नहीं बदलता।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-kinetics.rate.core.reaction-rate"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-2",
+                "neet-ug-2026:chemistry:unit-8:item-2"
+              ]
+            },
+            {
+              "id": "chem.chemical-kinetics.rate-factors.core.order-molecularity",
+              "name": {
+                "en": "Elementary and complex reactions, order and molecularity",
+                "hi": "प्राथमिक एवं जटिल अभिक्रियाएँ, कोटि एवं आण्विकता"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Order is the sum of exponents in the experimental rate law and may be zero or fractional, while molecularity is the number of species colliding in an elementary step and is a small whole number; a complex reaction's rate is set by its slowest step.",
+                "hi": "कोटि प्रायोगिक वेग नियम में घातांकों का योग है और शून्य या भिन्नात्मक हो सकती है, जबकि आण्विकता किसी प्राथमिक पद में टकराने वाली स्पीशीज़ की संख्या है और छोटी पूर्ण संख्या होती है; जटिल अभिक्रिया का वेग उसके सबसे धीमे पद से तय होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish order from molecularity with examples, including pseudo-first-order reactions.",
+                  "hi": "उदाहरणों सहित कोटि और आण्विकता में अंतर बताइए, छद्म प्रथम कोटि अभिक्रियाओं सहित।"
+                },
+                {
+                  "en": "Identify the rate-determining step of a mechanism.",
+                  "hi": "किसी क्रियाविधि का वेग-निर्धारक पद पहचानिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-kinetics.rate.core.reaction-rate"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-3",
+                "neet-ug-2026:chemistry:unit-8:item-3"
+              ]
+            },
+            {
+              "id": "chem.chemical-kinetics.rate-factors.core.rate-law-constant",
+              "name": {
+                "en": "Rate law, rate constant and its units",
+                "hi": "वेग नियम, वेग स्थिरांक एवं उसके मात्रक"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The rate law rate $= k[A]^{x}[B]^{y}$ is found by experiment, and the units of k, $(mol L^{-1})^{1-n}\\,\\mathrm{s}^{-1}$, reveal the overall order n.",
+                "hi": "वेग नियम वेग $= k[A]^{x}[B]^{y}$ प्रयोग से निकाला जाता है, और k के मात्रक $(mol L^{-1})^{1-n}\\,\\mathrm{s}^{-1}$ समग्र कोटि n बताते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Determine order from initial-rate data.",
+                  "hi": "प्रारंभिक वेग के आँकड़ों से कोटि निकालिए।"
+                },
+                {
+                  "en": "Write units of k for zero, first and second order.",
+                  "hi": "शून्य, प्रथम और द्वितीय कोटि के लिए k के मात्रक लिखिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-kinetics.rate-factors.core.order-molecularity"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-4",
+                "neet-ug-2026:chemistry:unit-8:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-kinetics.integrated-rate",
+      "name": {
+        "en": "Integrated Rate Equations",
+        "hi": "समाकलित वेग समीकरण"
+      },
+      "subtopics": [
+        {
+          "id": "chem.chemical-kinetics.integrated-rate.core",
+          "name": {
+            "en": "Integrated Rate Equations",
+            "hi": "समाकलित वेग समीकरण"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-kinetics.integrated-rate.core.zero-first-order",
+              "name": {
+                "en": "Zero and first order reactions: integrated forms and half-lives",
+                "hi": "शून्य एवं प्रथम कोटि अभिक्रियाएँ : समाकलित रूप एवं अर्धायु"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "For zero order $[A] = [A]_{0} - kt$ and $t_{1/2} = [A]_{0}/2k$; for first order $\\ln([A]_{0}/[A]) = kt$ and $t_{1/2} = 0.693/k$, independent of initial concentration.",
+                "hi": "शून्य कोटि के लिए $[A] = [A]_{0} - kt$ और $t_{1/2} = [A]_{0}/2k$; प्रथम कोटि के लिए $\\ln([A]_{0}/[A]) = kt$ और $t_{1/2} = 0.693/k$, जो प्रारंभिक सांद्रता पर निर्भर नहीं करती।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive both integrated rate laws and their graphs.",
+                  "hi": "दोनों समाकलित वेग नियम और उनके ग्राफ़ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Calculate the time for a given fraction of a first-order reaction to complete.",
+                  "hi": "प्रथम कोटि अभिक्रिया के किसी दिए गए अंश के पूरा होने का समय निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-kinetics.rate-factors.core.rate-law-constant"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-5",
+                "neet-ug-2026:chemistry:unit-8:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-kinetics.temperature-rate",
+      "name": {
+        "en": "Temperature Dependence of the Rate of a Reaction",
+        "hi": "अभिक्रिया वेग की ताप पर निर्भरता"
+      },
+      "subtopics": [
+        {
+          "id": "chem.chemical-kinetics.temperature-rate.core",
+          "name": {
+            "en": "Temperature Dependence of the Rate of a Reaction",
+            "hi": "अभिक्रिया वेग की ताप पर निर्भरता"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-kinetics.temperature-rate.core.arrhenius",
+              "name": {
+                "en": "Arrhenius equation and activation energy",
+                "hi": "आरेनियस समीकरण एवं सक्रियण ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "$k = A e^{-Ea/RT}$: raising temperature increases the fraction of molecules with energy above $E_{a}$, and $\\log(k_{2}/k_{1}) = (Ea/2.303R)(1/T_{1} - 1/T_{2})$ gives $E_{a}$ from rates at two temperatures.",
+                "hi": "$k = A e^{-Ea/RT}$: ताप बढ़ाने से $E_{a}$ से अधिक ऊर्जा वाले अणुओं का अंश बढ़ता है, और $\\log(k_{2}/k_{1}) = (Ea/2.303R)(1/T_{1} - 1/T_{2})$ दो तापों पर वेगों से $E_{a}$ देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Calculate activation energy from two rate constants.",
+                  "hi": "दो वेग स्थिरांकों से सक्रियण ऊर्जा निकालिए।"
+                },
+                {
+                  "en": "Interpret the energy profile diagram and the effect of a catalyst on it.",
+                  "hi": "ऊर्जा प्रोफ़ाइल आरेख और उस पर उत्प्रेरक के प्रभाव की व्याख्या कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-kinetics.rate-factors.core.rate-law-constant"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-6",
+                "neet-ug-2026:chemistry:unit-8:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-kinetics.collision-theory",
+      "name": {
+        "en": "Collision Theory of Chemical Reactions",
+        "hi": "रासायनिक अभिक्रिया का संघट्ट सिद्धांत"
+      },
+      "subtopics": [
+        {
+          "id": "chem.chemical-kinetics.collision-theory.core",
+          "name": {
+            "en": "Collision Theory of Chemical Reactions",
+            "hi": "रासायनिक अभिक्रिया का संघट्ट सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "chem.chemical-kinetics.collision-theory.core.collision-theory-def",
+              "name": {
+                "en": "Collision theory of bimolecular gaseous reactions",
+                "hi": "द्विअणुक गैसीय अभिक्रियाओं का संघट्ट सिद्धांत"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Molecules react only if they collide with energy above a threshold and with proper orientation, so rate $= P Z_{AB} e^{-Ea/RT}$; no derivation is required.",
+                "hi": "अणु तभी अभिक्रिया करते हैं जब वे देहली से अधिक ऊर्जा और उचित अभिविन्यास के साथ टकराएँ, इसलिए वेग $= P Z_{AB} e^{-Ea/RT}$; इसकी व्युत्पत्ति आवश्यक नहीं है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain collision frequency, threshold energy and the steric factor.",
+                  "hi": "संघट्ट आवृत्ति, देहली ऊर्जा और त्रिविम गुणक को समझाइए।"
+                },
+                {
+                  "en": "State why not all collisions lead to reaction.",
+                  "hi": "बताइए कि सभी संघट्ट अभिक्रिया क्यों नहीं करते।"
+                }
+              ],
+              "prerequisites": [
+                "chem.chemical-kinetics.temperature-rate.core.arrhenius"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:chemistry:unit-8:item-7",
+                "neet-ug-2026:chemistry:unit-8:item-7"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Chemistry Part I, Ch 3 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lech103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhch1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhch1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.8: Chemistry Unit 8, CHEMICAL KINETICS"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.10-11: Chemistry Unit 8, CHEMICAL KINETICS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: rate (§3.1, lhch1 contents prelims p.xiii), rate-factors (§3.2, lhch1 contents prelims p.xiii), integrated-rate (§3.3, lhch1 contents prelims p.xiii), temperature-rate (§3.4, lhch1 contents prelims p.xiii), collision-theory (§3.5, lhch1 contents prelims p.xiii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/chem/chemical-kinetics.json."
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "inventory@1",
+  "subject": "math",
+  "excluded_chapters": [
+    {
+      "ref": "ncert:kemh1:5",
+      "title": {
+        "en": "Linear Inequalities",
+        "hi": "रैखिक असमिकाएँ"
+      },
+      "reason": "Linear inequalities are not listed in the JEE (Main) 2027 mathematics syllabus",
+      "source_ref": "NCERT Class 11 Mathematics, Ch 5 (https://ncert.nic.in/textbook/pdf/kemh105.pdf)",
+      "exam_profiles": [
+        "jee-main-2027"
+      ]
+    },
+    {
+      "ref": "ncert:lemh2:12",
+      "title": {
+        "en": "Linear Programming",
+        "hi": "रैखिक प्रोग्रामन"
+      },
+      "reason": "Linear programming is not listed in the JEE (Main) 2027 mathematics syllabus",
+      "source_ref": "NCERT Class 12 Mathematics Part II, Ch 12 (https://ncert.nic.in/textbook/pdf/lemh206.pdf)",
+      "exam_profiles": [
+        "jee-main-2027"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 5 (https://ncert.nic.in/textbook/pdf/kemh105.pdf)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh105.pdf"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part II, Ch 12 (https://ncert.nic.in/textbook/pdf/lemh206.pdf)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh206.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "published": "2026-10-24",
+      "linked_from": "https://jeemain.nta.nic.in/"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "hi_source": "ncert",
+  "notes": "Moved from graph/math/subject.json notes. Hindi chapter titles are from the NCERT Hindi-medium contents pages."
+}

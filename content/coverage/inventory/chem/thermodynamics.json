@@ -1,0 +1,84 @@
+{
+  "schema": "inventory@1",
+  "chapter": "chem.thermodynamics",
+  "items": [
+    {
+      "id": "kech1-5-1",
+      "kind": "definition",
+      "title": "Thermodynamic Terms",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.1 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.terms.core.system-state-functions"
+      ]
+    },
+    {
+      "id": "kech1-5-2",
+      "kind": "formula",
+      "title": "First Law: Work, Heat, Internal Energy and Enthalpy",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.2 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.first-law.core.first-law-enthalpy",
+        "chem.thermodynamics.first-law.core.heat-capacity-calorimetry"
+      ]
+    },
+    {
+      "id": "kech1-5-3",
+      "kind": "formula",
+      "title": "First Law: Work, Heat, Internal Energy and Enthalpy",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.3 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.first-law.core.first-law-enthalpy",
+        "chem.thermodynamics.first-law.core.heat-capacity-calorimetry"
+      ]
+    },
+    {
+      "id": "kech1-5-4",
+      "kind": "formula",
+      "title": "Enthalpy Change of a Reaction",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.4 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.reaction-enthalpy.core.hess-law"
+      ]
+    },
+    {
+      "id": "kech1-5-5",
+      "kind": "list",
+      "title": "Enthalpies for Different Types of Reactions",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.5 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.enthalpy-types.core.enthalpy-types-def"
+      ]
+    },
+    {
+      "id": "kech1-5-6",
+      "kind": "formula",
+      "title": "Spontaneity",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.6 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.spontaneity.core.entropy-second-law"
+      ]
+    },
+    {
+      "id": "kech1-5-7",
+      "kind": "formula",
+      "title": "Gibbs Energy Change and Equilibrium",
+      "source_ref": "NCERT Class 11 Chemistry Part I, Ch 5 §5.7 (https://ncert.nic.in/textbook/pdf/kech105.pdf)",
+      "concepts": [
+        "chem.thermodynamics.gibbs-equilibrium.core.gibbs-equilibrium-constant"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 5 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kech105.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+}

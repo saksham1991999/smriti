@@ -160,10 +160,69 @@ describe("content check fails on a broken copy", () => {
       d.max_marks = 300;
       d.question_count = 7;
       d.interface_profile.palette_states[0].colour_token = "mockPalette.purple";
+    });
+    expect(codes(root)).toEqual(expect.arrayContaining(["blueprint_marks_mismatch", "blueprint_count_mismatch", "unknown_token"]));
+
+    const missing = copy();
+    edit(missing, "blueprints/fx-exam-2027/paper-1.v1.json", (d) => {
       delete d.sections[1].marking.mcq_multi;
     });
+    expect(codes(missing)).toContain("blueprint_marking_missing");
+  });
+
+  it("a fact left null needs an open question naming it", () => {
+    const root = copy();
+    const file = "blueprints/fx-exam-2027/paper-1.v1.json";
+    edit(root, file, (d) => {
+      d.calculator = null;
+      d.question_count = null;
+      d.sections[0].question_count = null;
+      d.sections[0].marking.mcq_single = { correct: null, wrong: { fraction_of_question_marks: 1 / 3 }, unattempted: 0 };
+      d.interface_profile.clear_keeps_mark = null;
+    });
+    const errors = () => checkRoot(root, repoRoot).report.findings.filter((f) => f.code === "open_question_missing").map((f) => f.message);
+    const before = errors();
+    expect(before).toHaveLength(5);
+    for (const field of ["calculator", "question_count", "sections.section-a.question_count", "sections.section-a.marking.mcq_single.correct", "interface_profile.clear_keeps_mark"]) {
+      expect(before.some((m) => m.startsWith(`${field} is null`))).toBe(true);
+    }
+    edit(root, file, (d) => {
+      d.open_questions = [
+        { field: "calculator", question: "The notice does not say whether a calculator is allowed." },
+        { field: "question_count", question: "The notice does not state the number of questions." },
+        { field: "sections.section-a.question_count", question: "Not stated." },
+        { field: "sections.section-a.marking.mcq_single.correct", question: "Marks per question are not stated." },
+        { field: "interface_profile.clear_keeps_mark", question: "Not stated." },
+      ];
+    });
+    expect(errors()).toEqual([]);
+    // With counts and marks unknown, the totals are not checked (a warning says so).
     const c = codes(root);
-    expect(c).toEqual(expect.arrayContaining(["blueprint_marks_mismatch", "blueprint_count_mismatch", "unknown_token", "blueprint_marking_missing"]));
+    expect(c).not.toContain("blueprint_count_mismatch");
+    expect(c).not.toContain("blueprint_marks_mismatch");
+    expect(c).not.toContain("schema_error");
+  });
+
+  it("skill test sections, mixed papers and qualifying rules", () => {
+    const root = copy();
+    edit(root, "blueprints/fx-exam-2027/paper-1.v1.json", (d) => {
+      d.mode = "mixed";
+      d.sections[0].mode = "cbt";
+      d.sections.push({
+        code: "typing",
+        title: { en: "Fixture typing test", hi: "फ़िक्स्चर टाइपिंग परीक्षा" },
+        subject: null,
+        timer_min: 15,
+        question_count: null,
+        question_types: ["skill_test"],
+        mode: "cbt",
+        cutoff: { kind: "max_error_percent", by_category: [{ category: "UR", value: 20 }, { category: "SC", value: 30 }] },
+      });
+      d.qualifying = { rule: { kind: "set_by_conducting_body", basis: "Fixture basis" }, source_ref: "Fixture p.1" };
+    });
+    const findings = checkRoot(root, repoRoot).report.findings;
+    // Section B has no mode in a mixed paper; the skill test needs no marking and counts nothing.
+    expect(findings.filter((f) => f.severity === "error").map((f) => f.code)).toEqual(["blueprint_section_mode"]);
   });
 
   it("bites that skip a card and a card outside the lesson's depth range", () => {

@@ -37,6 +37,52 @@ class Trap(BaseModel):
     correct: common_schema.I18nText
 
 
+class Page(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    text: common_schema.I18nText
+    media: common_schema.ImageRef
+    narration: common_schema.LocalizedAudioRef | None = None
+
+
+class Character(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    name: common_schema.I18nText
+    era: common_schema.I18nText
+    portrait: common_schema.ImageRef
+
+
+class DocumentedView(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    view: common_schema.I18nText
+    source: common_schema.Source
+
+
+type Guardrail = Annotated[str, Field(min_length=1)]
+
+
+class Node(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    id: common_schema.Slug
+    label: common_schema.I18nText
+    concept: common_schema.ConceptId | None = None
+
+
+class Edge(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    from_: Annotated[common_schema.Slug, Field(alias="from")]
+    to: common_schema.Slug
+
+
 class CheatSheet(FileMeta, Scope):
     model_config = ConfigDict(
         extra="forbid",
@@ -61,15 +107,6 @@ class RevisionSheet(FileMeta, Scope):
     points: Annotated[list[common_schema.I18nText], Field(min_length=1)]
     formulas: list[SheetFormula] | None = None
     diagram: common_schema.ImageRef | None = None
-
-
-class Page(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    text: common_schema.I18nText
-    media: common_schema.ImageRef
-    narration: common_schema.LocalizedAudioRef | None = None
 
 
 class Storybook(FileMeta, Scope):
@@ -97,26 +134,6 @@ class Experiment(FileMeta, Scope):
     media: common_schema.ImageRef | None = None
 
 
-class Character(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    name: common_schema.I18nText
-    era: common_schema.I18nText
-    portrait: common_schema.ImageRef
-
-
-class DocumentedView(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    view: common_schema.I18nText
-    source: common_schema.Source
-
-
-type Guardrail = Annotated[str, Field(min_length=1)]
-
-
 class Roleplay(FileMeta, Scope):
     model_config = ConfigDict(
         extra="forbid",
@@ -131,23 +148,6 @@ class Roleplay(FileMeta, Scope):
     guardrails: Annotated[list[Guardrail], Field(min_length=1)]
     opening_line: common_schema.I18nText
     suggested_replies: list[common_schema.I18nText] | None = None
-
-
-class Node(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    id: common_schema.Slug
-    label: common_schema.I18nText
-    concept: common_schema.ConceptId | None = None
-
-
-class Edge(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    from_: Annotated[common_schema.Slug, Field(alias="from")]
-    to: common_schema.Slug
 
 
 class MindMapTemplate(FileMeta, Scope):

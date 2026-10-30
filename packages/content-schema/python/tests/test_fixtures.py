@@ -56,3 +56,41 @@ def test_bad_question_id_is_refused() -> None:
     bad["questions"][0]["id"] = "Q 1"
     with pytest.raises(ValidationError):
         parse_document(bad)
+
+
+CONTENT = FIXTURES.parent
+
+
+def _real(folder: str) -> list[Path]:
+    return sorted((CONTENT / folder).rglob("*.json"))
+
+
+@pytest.mark.parametrize(
+    "path",
+    _real("exams") + _real("blueprints") + _real("coverage/inventory/math"),
+    ids=lambda p: str(p.relative_to(CONTENT)),
+)
+def test_real_exam_files_parse(path: Path) -> None:
+    """Official exam data, with its "not stated in the notice" nulls, parses with the generated models."""
+    doc = _load(path)
+    model = parse_document(doc)
+    assert model.model_dump(by_alias=True)["schema"] == doc["schema"]
+
+
+def test_inventory_shapes() -> None:
+    chapter = parse_document(_load(CONTENT / "coverage" / "inventory" / "math" / "sets.json"))
+    excluded = parse_document(
+        _load(CONTENT / "coverage" / "inventory" / "math" / "excluded-chapters.json")
+    )
+    assert getattr(chapter, "items", None)
+    assert getattr(excluded, "excluded_chapters", None)
+
+
+def test_unstated_marks_stay_none() -> None:
+    doc = _load(CONTENT / "blueprints" / "upsc-cse-2026" / "prelims-gs1.v1.json")
+    model = parse_document(doc).model_dump(mode="json")
+    rule = model["sections"][0]["marking"]["mcq_single"]
+    assert rule["correct"] is None
+    assert rule["wrong"]["fraction_of_question_marks"] == pytest.approx(1 / 3)
+    fields = {q["field"] for q in model["open_questions"]}
+    assert "sections.gs1.marking.mcq_single.correct" in fields

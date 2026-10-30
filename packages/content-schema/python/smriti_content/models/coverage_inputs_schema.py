@@ -19,6 +19,140 @@ class Line(BaseModel):
     concepts: list[common_schema.ConceptId]
 
 
+type Title = Annotated[
+    str,
+    Field(
+        description="A plain string (the source language) or localised text.",
+        min_length=1,
+    ),
+]
+
+
+class Item(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    id: common_schema.Slug
+    kind: (
+        Literal[
+            "definition",
+            "law",
+            "formula",
+            "constant",
+            "named_reaction",
+            "date",
+            "list",
+            "diagram",
+            "solved_example",
+            "exercise_type",
+            "fact",
+        ]
+        | None
+    ) = None
+    title: Annotated[
+        Title | common_schema.I18nText,
+        Field(description="A plain string (the source language) or localised text."),
+    ]
+    source_ref: Annotated[str, Field(min_length=1)]
+    concepts: list[common_schema.ConceptId]
+    out_of_syllabus: Annotated[
+        str | None,
+        Field(
+            description="Why the item maps to no concept. Either concepts or this must be set."
+        ),
+    ] = None
+
+
+type Title1 = Annotated[str, Field(min_length=1)]
+
+
+class ExcludedChapter(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    ref: Annotated[
+        str,
+        Field(
+            description="The reference chapter, for example ncert:kemh1:5.",
+            min_length=1,
+        ),
+    ]
+    title: Title1 | common_schema.I18nText
+    reason: Annotated[str, Field(min_length=1)]
+    source_ref: Annotated[str, Field(min_length=1)]
+    exam_profiles: Annotated[
+        list[common_schema.ExamProfileId] | None,
+        Field(description="The profiles the reason applies to."),
+    ] = None
+
+
+type Title2 = Annotated[
+    str,
+    Field(
+        description="A plain string (the source language) or localised text.",
+        min_length=1,
+    ),
+]
+
+
+class Item1(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    id: common_schema.Slug
+    kind: (
+        Literal[
+            "definition",
+            "law",
+            "formula",
+            "constant",
+            "named_reaction",
+            "date",
+            "list",
+            "diagram",
+            "solved_example",
+            "exercise_type",
+            "fact",
+        ]
+        | None
+    ) = None
+    title: Annotated[
+        Title2 | common_schema.I18nText,
+        Field(description="A plain string (the source language) or localised text."),
+    ]
+    source_ref: Annotated[str, Field(min_length=1)]
+    concepts: list[common_schema.ConceptId]
+    out_of_syllabus: Annotated[
+        str | None,
+        Field(
+            description="Why the item maps to no concept. Either concepts or this must be set."
+        ),
+    ] = None
+
+
+type Title3 = Annotated[str, Field(min_length=1)]
+
+
+class ExcludedChapter1(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    ref: Annotated[
+        str,
+        Field(
+            description="The reference chapter, for example ncert:kemh1:5.",
+            min_length=1,
+        ),
+    ]
+    title: Title3 | common_schema.I18nText
+    reason: Annotated[str, Field(min_length=1)]
+    source_ref: Annotated[str, Field(min_length=1)]
+    exam_profiles: Annotated[
+        list[common_schema.ExamProfileId] | None,
+        Field(description="The profiles the reason applies to."),
+    ] = None
+
+
 class Syllabus(FileMeta):
     model_config = ConfigDict(
         extra="forbid",
@@ -30,36 +164,11 @@ class Syllabus(FileMeta):
     lines: Annotated[list[Line], Field(min_length=1)]
 
 
-class Item(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-    )
-    id: common_schema.Slug
-    kind: Literal[
-        "definition",
-        "law",
-        "formula",
-        "constant",
-        "named_reaction",
-        "date",
-        "list",
-        "diagram",
-        "solved_example",
-        "exercise_type",
-        "fact",
-    ]
-    title: Annotated[str, Field(min_length=1)]
-    source_ref: Annotated[str, Field(min_length=1)]
-    concepts: list[common_schema.ConceptId]
-    out_of_syllabus: Annotated[
-        str | None,
-        Field(
-            description="Why the item maps to no concept. Either concepts or this must be set."
-        ),
-    ] = None
+class Inventory1(FileMeta):
+    """
+    A chapter inventory (chapter + items) or a subject's list of reference chapters with no graph chapter (subject + excluded_chapters, at coverage/inventory/{subject}/excluded-chapters.json).
+    """
 
-
-class Inventory(FileMeta):
     model_config = ConfigDict(
         extra="forbid",
     )
@@ -68,6 +177,43 @@ class Inventory(FileMeta):
     ]
     chapter: common_schema.DottedId
     items: Annotated[list[Item], Field(min_length=1)]
+    subject: common_schema.Slug | None = None
+    excluded_chapters: Annotated[
+        list[ExcludedChapter] | None,
+        Field(
+            description="Whole reference chapters with no graph chapter, each with the reason."
+        ),
+    ] = None
+
+
+class Inventory2(FileMeta):
+    """
+    A chapter inventory (chapter + items) or a subject's list of reference chapters with no graph chapter (subject + excluded_chapters, at coverage/inventory/{subject}/excluded-chapters.json).
+    """
+
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    schema_: Annotated[
+        Literal["inventory@1"], Field(alias="schema")
+    ]
+    chapter: common_schema.DottedId | None = None
+    items: Annotated[list[Item1] | None, Field(min_length=1)] = None
+    subject: common_schema.Slug
+    excluded_chapters: Annotated[
+        list[ExcludedChapter1],
+        Field(
+            description="Whole reference chapters with no graph chapter, each with the reason."
+        ),
+    ]
+
+
+type Inventory = Annotated[
+    Inventory1 | Inventory2,
+    Field(
+        description="A chapter inventory (chapter + items) or a subject's list of reference chapters with no graph chapter (subject + excluded_chapters, at coverage/inventory/{subject}/excluded-chapters.json)."
+    ),
+]
 
 
 type CoverageInputFile = Annotated[

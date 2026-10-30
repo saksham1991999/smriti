@@ -9,9 +9,10 @@ that read content and published artefacts: the worker's publish job and the API.
 
 from __future__ import annotations
 
+from functools import cache
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, TypeAdapter
 
 from smriti_content.models import (
     blueprint_schema,
@@ -38,8 +39,10 @@ from smriti_content.models import (
 
 __all__ = ["DOCUMENT_MODELS", "parse_document"]
 
-#: The model for each ``schema`` value a content document carries.
-DOCUMENT_MODELS: dict[str, type[BaseModel]] = {
+#: The model for each ``schema`` value a content document carries. Most are model classes; a
+#: schema with alternative shapes (``inventory@1``: a chapter inventory or a subject's excluded
+#: chapters) is a union type alias, which ``parse_document`` validates through a ``TypeAdapter``.
+DOCUMENT_MODELS: dict[str, Any] = {
     "exam@1": exam_schema.ExamFile,
     "blueprint@1": blueprint_schema.BlueprintFile,
     "subject@1": subject_schema.SubjectFile,
@@ -77,4 +80,11 @@ def parse_document(doc: dict[str, Any]) -> BaseModel:
     tag = doc.get("schema")
     if not isinstance(tag, str) or tag not in DOCUMENT_MODELS:
         raise KeyError(f"unknown content schema: {tag!r}")
-    return DOCUMENT_MODELS[tag].model_validate(doc)
+    model = _adapter(tag).validate_python(doc)
+    assert isinstance(model, BaseModel)
+    return model
+
+
+@cache
+def _adapter(tag: str) -> TypeAdapter[Any]:
+    return TypeAdapter(DOCUMENT_MODELS[tag])

@@ -1,0 +1,230 @@
+{
+  "schema": "chapter@1",
+  "id": "math.matrices",
+  "subject": "math",
+  "unit": "math.algebra",
+  "name": {
+    "en": "Matrices",
+    "hi": "आव्यूह"
+  },
+  "ncert_ref": "NCERT Class 12 Mathematics Part I, Ch 3",
+  "topics": [
+    {
+      "id": "math.matrices.matrix-basics",
+      "name": {
+        "en": "Matrix and Types of Matrices",
+        "hi": "आव्यूह तथा आव्यूहों के प्रकार"
+      },
+      "subtopics": [
+        {
+          "id": "math.matrices.matrix-basics.core",
+          "name": {
+            "en": "Matrix and Types of Matrices",
+            "hi": "आव्यूह तथा आव्यूहों के प्रकार"
+          },
+          "concepts": [
+            {
+              "id": "math.matrices.matrix-basics.core.matrix-order-types",
+              "name": {
+                "en": "Matrix, its order and types of matrices",
+                "hi": "आव्यूह, उसकी कोटि तथा आव्यूहों के प्रकार"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A matrix is a rectangular array of numbers with m rows and n columns (order $m \\times n$); column, row, square, diagonal, scalar, identity and zero matrices are special types, and equal matrices agree entry by entry.",
+                "hi": "आव्यूह m पंक्तियों और n स्तंभों में संख्याओं की आयताकार व्यवस्था है (कोटि $m \\times n$); स्तंभ, पंक्ति, वर्ग, विकर्ण, अदिश, तत्समक और शून्य आव्यूह विशेष प्रकार हैं, और समान आव्यूहों की संगत प्रविष्टियाँ बराबर होती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the order of a matrix and name its type.",
+                  "hi": "आव्यूह की कोटि लिखिए और उसका प्रकार बताइए।"
+                },
+                {
+                  "en": "Construct a matrix from a rule for $a_{ij}$.",
+                  "hi": "$a_{ij}$ के नियम से आव्यूह बनाइए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.matrices.matrix-operations",
+      "name": {
+        "en": "Operations on Matrices",
+        "hi": "आव्यूहों पर संक्रियाएँ"
+      },
+      "subtopics": [
+        {
+          "id": "math.matrices.matrix-operations.core",
+          "name": {
+            "en": "Operations on Matrices",
+            "hi": "आव्यूहों पर संक्रियाएँ"
+          },
+          "concepts": [
+            {
+              "id": "math.matrices.matrix-operations.core.matrix-algebra",
+              "name": {
+                "en": "Addition, scalar multiplication and multiplication of matrices",
+                "hi": "आव्यूहों का योग, अदिश गुणन तथा गुणन"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Matrices of the same order add entry by entry; the product AB is defined when A has as many columns as B has rows, with $(AB)_{ik} = \\Sigma a_{ij}b_{jk}$, and multiplication is associative and distributive but not commutative.",
+                "hi": "समान कोटि के आव्यूह प्रविष्टिवार जुड़ते हैं; गुणनफल AB तब परिभाषित है जब A के स्तंभों की संख्या B की पंक्तियों के बराबर हो, $(AB)_{ik} = \\Sigma a_{ij}b_{jk}$, और गुणन साहचर्य तथा वितरणीय है पर क्रमविनिमेय नहीं।"
+              },
+              "key_points": [
+                {
+                  "en": "Multiply two matrices and check whether $AB = BA$.",
+                  "hi": "दो आव्यूहों का गुणन कीजिए और जाँचिए कि $AB = BA$ है या नहीं।"
+                },
+                {
+                  "en": "Show that $AB = O$ does not force $A = O$ or $B = O$.",
+                  "hi": "दिखाइए कि $AB = O$ होने से $A = O$ या $B = O$ आवश्यक नहीं।"
+                }
+              ],
+              "prerequisites": [
+                "math.matrices.matrix-basics.core.matrix-order-types"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.matrices.transpose-symmetric",
+      "name": {
+        "en": "Transpose, Symmetric and Skew Symmetric Matrices",
+        "hi": "परिवर्त, सममित तथा विषम सममित आव्यूह"
+      },
+      "subtopics": [
+        {
+          "id": "math.matrices.transpose-symmetric.core",
+          "name": {
+            "en": "Transpose, Symmetric and Skew Symmetric Matrices",
+            "hi": "परिवर्त, सममित तथा विषम सममित आव्यूह"
+          },
+          "concepts": [
+            {
+              "id": "math.matrices.transpose-symmetric.core.transpose-symmetric-skew",
+              "name": {
+                "en": "Transpose; symmetric and skew-symmetric matrices",
+                "hi": "परिवर्त; सममित तथा विषम सममित आव्यूह"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The transpose $A'$ swaps rows and columns, with $(AB)' = B'A'$; A is symmetric if $A' = A$ and skew-symmetric if $A' = -A$, and every square matrix is the sum of one of each.",
+                "hi": "परिवर्त $A'$ पंक्तियों और स्तंभों को आपस में बदलता है, $(AB)' = B'A'$; A सममित है यदि $A' = A$ और विषम सममित है यदि $A' = -A$, और प्रत्येक वर्ग आव्यूह दोनों प्रकार के एक-एक आव्यूह का योग है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write a square matrix as the sum of a symmetric and a skew-symmetric matrix.",
+                  "hi": "वर्ग आव्यूह को एक सममित और एक विषम सममित आव्यूह के योग के रूप में लिखिए।"
+                },
+                {
+                  "en": "Use the fact that diagonal entries of a skew-symmetric matrix are zero.",
+                  "hi": "इस तथ्य का प्रयोग कीजिए कि विषम सममित आव्यूह की विकर्ण प्रविष्टियाँ शून्य होती हैं।"
+                }
+              ],
+              "prerequisites": [
+                "math.matrices.matrix-operations.core.matrix-algebra"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.matrices.invertible-matrices",
+      "name": {
+        "en": "Invertible Matrices",
+        "hi": "व्युत्क्रमणीय आव्यूह"
+      },
+      "subtopics": [
+        {
+          "id": "math.matrices.invertible-matrices.core",
+          "name": {
+            "en": "Invertible Matrices",
+            "hi": "व्युत्क्रमणीय आव्यूह"
+          },
+          "concepts": [
+            {
+              "id": "math.matrices.invertible-matrices.core.matrix-inverse-concept",
+              "name": {
+                "en": "Invertible matrices and uniqueness of the inverse",
+                "hi": "व्युत्क्रमणीय आव्यूह तथा प्रतिलोम की अद्वितीयता"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A square matrix A is invertible if some B gives $AB = BA = I$; the inverse is unique and $(AB)^{-1} = B^{-1}A^{-1}$.",
+                "hi": "वर्ग आव्यूह A व्युत्क्रमणीय है यदि कोई B ऐसा हो कि $AB = BA = I$; प्रतिलोम अद्वितीय होता है और $(AB)^{-1} = B^{-1}A^{-1}$।"
+              },
+              "key_points": [
+                {
+                  "en": "Verify that two given matrices are inverses of each other.",
+                  "hi": "जाँचिए कि दिए गए दो आव्यूह एक-दूसरे के प्रतिलोम हैं।"
+                },
+                {
+                  "en": "Apply $(AB)^{-1} = B^{-1}A^{-1}$.",
+                  "hi": "$(AB)^{-1} = B^{-1}A^{-1}$ लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.matrices.matrix-operations.core.matrix-algebra"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 3 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 3, MATRICES AND DETERMINANTS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: matrix-operations (§3.4, lhmh1 contents prelims p.xiii), invertible-matrices (§3.7, lhmh1 contents prelims p.xiii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/matrices.json."
+}

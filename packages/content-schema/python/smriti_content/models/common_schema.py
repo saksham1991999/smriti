@@ -281,26 +281,17 @@ class Source(BaseModel):
     retrieved: IsoDate | None = None
     pages: str | None = None
     licence: str | None = None
-
-
-class FileMeta(BaseModel):
-    """
-    Fields every content file carries.
-    """
-
-    schema_: Annotated[str, Field(alias="schema", pattern="^[a-z_-]+@[0-9]+$")]
-    status: Status
-    sources: list[Source] | None = None
-    authored_by: Annotated[str, Field(min_length=1)]
-    reviewed_by: str | None = None
-    updated: IsoDate
-    fixture: Annotated[
-        bool | None,
+    published: Annotated[
+        IsoDate | None,
+        Field(description="When the source was published by its author."),
+    ] = None
+    linked_from: Annotated[
+        str | None,
         Field(
-            description="Test data only. Fixture files live under content/fixtures/ and can never be published to a non-local target."
+            description="The official page the document is linked from, so a reviewer can find it again (a URL, optionally with the menu path).",
+            min_length=1,
         ),
     ] = None
-    notes: str | None = None
 
 
 class Tolerance(BaseModel):
@@ -351,3 +342,63 @@ type SubjectFamily = Annotated[
     ],
     Field(description="Colour family from packages/tokens/tokens.json `subject`."),
 ]
+
+
+class OpenQuestion(BaseModel):
+    """
+    Something the official source does not state (or that could not be checked). A null exam fact must have one, naming the field.
+    """
+
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    field: Annotated[
+        str | None,
+        Field(
+            description="The field left null or unset because of this question, as a dotted path from the file root. Blueprint sections are addressed by code: sections.gs1.marking.mcq_single.correct. null: a question about the file as a whole.",
+            min_length=1,
+        ),
+    ] = None
+    question: Annotated[str, Field(min_length=1)]
+    checked: Annotated[
+        IsoDate | None,
+        Field(description="When the sources were last checked for an answer."),
+    ] = None
+    source_url: Annotated[
+        AnyUrl | None, Field(description="Where the answer is expected to appear.")
+    ] = None
+
+
+type HiSource = Annotated[
+    Literal["official", "ncert", "translation"],
+    Field(
+        description="Where the Hindi text of the file comes from: official (the conducting body's Hindi document), ncert (NCERT Hindi-medium books) or translation (our translation of the official English)."
+    ),
+]
+
+
+class FileMeta(BaseModel):
+    """
+    Fields every content file carries.
+    """
+
+    schema_: Annotated[str, Field(alias="schema", pattern="^[a-z_-]+@[0-9]+$")]
+    status: Status
+    sources: list[Source] | None = None
+    authored_by: Annotated[str, Field(min_length=1)]
+    reviewed_by: str | None = None
+    updated: IsoDate
+    fixture: Annotated[
+        bool | None,
+        Field(
+            description="Test data only. Fixture files live under content/fixtures/ and can never be published to a non-local target."
+        ),
+    ] = None
+    notes: str | None = None
+    open_questions: Annotated[
+        list[OpenQuestion] | None,
+        Field(
+            description="Facts the official sources do not state. Every exam fact left null names its field here."
+        ),
+    ] = None
+    hi_source: HiSource | None = None

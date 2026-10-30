@@ -1,0 +1,186 @@
+{
+  "schema": "chapter@1",
+  "id": "math.three-d-intro",
+  "subject": "math",
+  "unit": "math.vectors-3d",
+  "name": {
+    "en": "Introduction to Three Dimensional Geometry",
+    "hi": "त्रिविमीय ज्यामिति का परिचय"
+  },
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 11",
+  "topics": [
+    {
+      "id": "math.three-d-intro.space-coordinates",
+      "name": {
+        "en": "Coordinate Axes, Planes and Points in Space",
+        "hi": "अंतरिक्ष में निर्देशांक अक्ष, तल तथा बिंदु"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-intro.space-coordinates.core",
+          "name": {
+            "en": "Coordinate Axes, Planes and Points in Space",
+            "hi": "अंतरिक्ष में निर्देशांक अक्ष, तल तथा बिंदु"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-intro.space-coordinates.core.space-coordinates",
+              "name": {
+                "en": "Coordinate axes, coordinate planes and coordinates of a point in space",
+                "hi": "अंतरिक्ष में निर्देशांक अक्ष, निर्देशांक तल तथा बिंदु के निर्देशांक"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Three mutually perpendicular axes divide space into eight octants, and a point is located by its signed distances (x, y, z) from the yz-, zx- and xy-planes.",
+                "hi": "तीन परस्पर लंब अक्ष अंतरिक्ष को आठ अष्टांशों में बाँटते हैं, और किसी बिंदु की स्थिति yz-, zx- और xy-तलों से उसकी चिह्नित दूरियों (x, y, z) से तय होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Name the octant of a point from the signs of its coordinates.",
+                  "hi": "निर्देशांकों के चिह्नों से बिंदु का अष्टांश बताइए।"
+                },
+                {
+                  "en": "Write coordinates of points on the axes and the coordinate planes.",
+                  "hi": "अक्षों और निर्देशांक तलों पर स्थित बिंदुओं के निर्देशांक लिखिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-intro.space-distance",
+      "name": {
+        "en": "Distance between Two Points",
+        "hi": "दो बिंदुओं के बीच की दूरी"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-intro.space-distance.core",
+          "name": {
+            "en": "Distance between Two Points",
+            "hi": "दो बिंदुओं के बीच की दूरी"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-intro.space-distance.core.space-distance",
+              "name": {
+                "en": "Distance between two points in space",
+                "hi": "अंतरिक्ष में दो बिंदुओं के बीच की दूरी"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The distance between $(x_{1}, y_{1}, z_{1})$ and $(x_{2}, y_{2}, z_{2})$ is $\\sqrt{(x_{2} - x_{1})^{2} + (y_{2} - y_{1})^{2} + (z_{2} - z_{1})^{2}}$.",
+                "hi": "$(x_{1}, y_{1}, z_{1})$ और $(x_{2}, y_{2}, z_{2})$ के बीच की दूरी $\\sqrt{(x_{2} - x_{1})^{2} + (y_{2} - y_{1})^{2} + (z_{2} - z_{1})^{2}}$ है।"
+              },
+              "key_points": [
+                {
+                  "en": "Test whether three points are collinear using distances.",
+                  "hi": "दूरियों से जाँचिए कि तीन बिंदु संरेख हैं या नहीं।"
+                },
+                {
+                  "en": "Find the locus of points at a fixed distance from a point.",
+                  "hi": "किसी बिंदु से निश्चित दूरी पर स्थित बिंदुओं का बिंदुपथ ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-intro.space-coordinates.core.space-coordinates",
+                "math.straight-lines.plane-coordinates.core.distance-section-formula"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.three-d-intro.space-section",
+      "name": {
+        "en": "Section Formula in Space",
+        "hi": "अंतरिक्ष में विभाजन सूत्र"
+      },
+      "subtopics": [
+        {
+          "id": "math.three-d-intro.space-section.core",
+          "name": {
+            "en": "Section Formula in Space",
+            "hi": "अंतरिक्ष में विभाजन सूत्र"
+          },
+          "concepts": [
+            {
+              "id": "math.three-d-intro.space-section.core.space-section-formula",
+              "name": {
+                "en": "Section formula in three dimensions",
+                "hi": "त्रिविमीय विभाजन सूत्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The point dividing the join of $P(x_{1}, y_{1}, z_{1})$ and $Q(x_{2}, y_{2}, z_{2})$ internally in the ratio m : n is $((mx_{2} + nx_{1})/(m + n), (my_{2} + ny_{1})/(m + n), (mz_{2} + nz_{1})/(m + n))$.",
+                "hi": "$P(x_{1}, y_{1}, z_{1})$ और $Q(x_{2}, y_{2}, z_{2})$ को मिलाने वाले रेखाखंड को m : n में अंतःविभाजित करने वाला बिंदु $((mx_{2} + nx_{1})/(m + n), (my_{2} + ny_{1})/(m + n), (mz_{2} + nz_{1})/(m + n))$ है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the point dividing a segment internally or externally.",
+                  "hi": "रेखाखंड को अंतः या बाह्य रूप से विभाजित करने वाला बिंदु ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the ratio in which a coordinate plane divides a segment.",
+                  "hi": "वह अनुपात ज्ञात कीजिए जिसमें कोई निर्देशांक तल रेखाखंड को विभाजित करता है।"
+                }
+              ],
+              "prerequisites": [
+                "math.three-d-intro.space-distance.core.space-distance",
+                "math.straight-lines.plane-coordinates.core.distance-section-formula"
+              ],
+              "related": [
+                "math.vector-algebra.scalar-multiple.core.vector-section-formula"
+              ],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-11:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 11 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh111.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 11, THREE DIMENSIONAL GEOMETRY"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: space-distance (§11.4, khmh1 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/three-d-intro.json."
+}

@@ -1,0 +1,521 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.rotational-motion",
+  "subject": "phy",
+  "unit": "phy.mechanics",
+  "name": {
+    "en": "Systems of Particles and Rotational Motion",
+    "hi": "कणों के निकाय तथा घूर्णी गति"
+  },
+  "ncert_ref": "NCERT Class 11 Physics Part I, Ch 6",
+  "topics": [
+    {
+      "id": "phy.rotational-motion.centre-of-mass",
+      "name": {
+        "en": "Centre of Mass",
+        "hi": "द्रव्यमान केन्द्र"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.centre-of-mass.core",
+          "name": {
+            "en": "Centre of Mass",
+            "hi": "द्रव्यमान केन्द्र"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+              "name": {
+                "en": "Centre of mass of a two-particle system and of a rigid body",
+                "hi": "दो-कण निकाय एवं दृढ़ पिंड का द्रव्यमान केंद्र"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The centre of mass is the mass-weighted average position, $R = \\Sigma m_{i}r_{i}/M$, and for a continuous body $R = \\int r dm/M$.",
+                "hi": "द्रव्यमान केंद्र द्रव्यमान-भारित औसत स्थिति है, $R = \\Sigma m_{i}r_{i}/M$, और संतत पिंड के लिए $R = \\int r dm/M$।"
+              },
+              "key_points": [
+                {
+                  "en": "Locate the centre of mass of two particles and of symmetric bodies such as a rod, ring and disc.",
+                  "hi": "दो कणों तथा छड़, वलय और चकती जैसे सममित पिंडों का द्रव्यमान केंद्र ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Show that the centre of mass moves as if all external forces acted on the total mass placed there.",
+                  "hi": "दिखाइए कि द्रव्यमान केंद्र ऐसे चलता है मानो सभी बाह्य बल वहाँ रखे कुल द्रव्यमान पर लगे हों।"
+                },
+                {
+                  "en": "State that the total momentum of a system is M times the velocity of its centre of mass.",
+                  "hi": "बताइए कि निकाय का कुल संवेग M गुणा उसके द्रव्यमान केंद्र के वेग के बराबर होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-1",
+                "neet-ug-2026:physics:unit-5:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.vector-product",
+      "name": {
+        "en": "Vector Product of Two Vectors",
+        "hi": "दो सदिशों का सदिश गुणनफल"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.vector-product.core",
+          "name": {
+            "en": "Vector Product of Two Vectors",
+            "hi": "दो सदिशों का सदिश गुणनफल"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.vector-product.core.vector-product",
+              "name": {
+                "en": "Vector (cross) product",
+                "hi": "सदिश (क्रॉस) गुणनफल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The vector product $A\\times B$ has magnitude $AB \\sin \\theta$ and direction given by the right-hand rule, perpendicular to both vectors.",
+                "hi": "सदिश गुणनफल $A\\times B$ का परिमाण $AB \\sin \\theta$ होता है और इसकी दिशा दाहिने हाथ के नियम से दोनों सदिशों के लंबवत होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Evaluate a cross product with the determinant of unit vectors.",
+                  "hi": "एकांक सदिशों के सारणिक से सदिश गुणनफल निकालिए।"
+                },
+                {
+                  "en": "State that $A\\times B = -B\\times A$ and that the product is zero for parallel vectors.",
+                  "hi": "बताइए कि $A\\times B = -B\\times A$ और समांतर सदिशों के लिए गुणनफल शून्य होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.resolution.core.unit-vector-resolution"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "neet-ug-2026:physics:unit-2:item-5",
+                "jee-main-2027:physics:unit-5:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity",
+      "name": {
+        "en": "Angular Velocity and its Relation with Linear Velocity",
+        "hi": "कोणीय वेग और इसका रेखीय वेग से संबंध"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core",
+          "name": {
+            "en": "Angular Velocity and its Relation with Linear Velocity",
+            "hi": "कोणीय वेग और इसका रेखीय वेग से संबंध"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+              "name": {
+                "en": "Rigid body rotation: angular displacement, velocity and acceleration",
+                "hi": "दृढ़ पिंड का घूर्णन : कोणीय विस्थापन, वेग एवं त्वरण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "In rotation about a fixed axis every particle moves in a circle with the same angular velocity $\\omega$, and its linear velocity is $v = \\omega \\times r$.",
+                "hi": "किसी अचल अक्ष के परितः घूर्णन में हर कण एक ही कोणीय वेग $\\omega$ से वृत्त में चलता है, और उसका रेखीय वेग $v = \\omega \\times r$ होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish pure translation, pure rotation and combined motion of a rigid body.",
+                  "hi": "दृढ़ पिंड की शुद्ध स्थानांतरण, शुद्ध घूर्णन और संयुक्त गति में अंतर बताइए।"
+                },
+                {
+                  "en": "Define angular acceleration $\\alpha = d\\omega/dt$ and relate tangential acceleration to it.",
+                  "hi": "कोणीय त्वरण $\\alpha = d\\omega/dt$ परिभाषित कीजिए और स्पर्शरेखीय त्वरण को उससे जोड़िए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-2",
+                "neet-ug-2026:physics:unit-5:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum",
+      "name": {
+        "en": "Torque and Angular Momentum",
+        "hi": "बल आघूर्ण एवं कोणीय संवेग"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core",
+          "name": {
+            "en": "Torque and Angular Momentum",
+            "hi": "बल आघूर्ण एवं कोणीय संवेग"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.torque-angular-momentum.core.torque",
+              "name": {
+                "en": "Moment of a force (torque)",
+                "hi": "बल आघूर्ण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Torque $\\tau = r \\times F$ measures the turning effect of a force about a point; its magnitude is the force times the perpendicular distance from the axis.",
+                "hi": "बल आघूर्ण $\\tau = r \\times F$ किसी बिंदु के परितः बल के घुमाने के प्रभाव को मापता है; इसका परिमाण बल और अक्ष से लंबवत दूरी का गुणनफल है।"
+              },
+              "key_points": [
+                {
+                  "en": "Compute torque in vector form and as F times lever arm.",
+                  "hi": "सदिश रूप में और बल गुणा उत्तोलक भुजा के रूप में बल आघूर्ण निकालिए।"
+                },
+                {
+                  "en": "Define a couple and show its torque is the same about every point.",
+                  "hi": "बलयुग्म परिभाषित कीजिए और दिखाइए कि उसका आघूर्ण हर बिंदु के परितः समान होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.vector-product.core.vector-product",
+                "phy.rotational-motion.angular-velocity.core.rotation-basics"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-2",
+                "neet-ug-2026:physics:unit-5:item-2"
+              ]
+            },
+            {
+              "id": "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+              "name": {
+                "en": "Angular momentum and its conservation",
+                "hi": "कोणीय संवेग एवं उसका संरक्षण"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Angular momentum $L = r \\times p$ obeys $\\tau = dL/dt$, so with no external torque it is conserved; for a rigid body about a fixed axis $L = I\\omega$.",
+                "hi": "कोणीय संवेग $L = r \\times p$, $\\tau = dL/dt$ का पालन करता है, इसलिए बाह्य बल आघूर्ण न होने पर यह संरक्षित रहता है; अचल अक्ष के परितः दृढ़ पिंड के लिए $L = I\\omega$।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply $I_{1}\\omega_{1} = I_{2}\\omega_{2}$ to a spinning skater or a person on a rotating stool pulling in the arms.",
+                  "hi": "घूमती स्केटर या घूमते स्टूल पर बाँहें समेटते व्यक्ति पर $I_{1}\\omega_{1} = I_{2}\\omega_{2}$ लागू कीजिए।"
+                },
+                {
+                  "en": "Show that a particle moving in a straight line has angular momentum about a point not on the line.",
+                  "hi": "दिखाइए कि सरल रेखा में चलते कण का उस रेखा से बाहर के बिंदु के परितः कोणीय संवेग होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.torque-angular-momentum.core.torque",
+                "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-3",
+                "neet-ug-2026:physics:unit-5:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium",
+      "name": {
+        "en": "Equilibrium of a Rigid Body",
+        "hi": "दृढ़ पिण्डों का संतुलन"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core",
+          "name": {
+            "en": "Equilibrium of a Rigid Body",
+            "hi": "दृढ़ पिण्डों का संतुलन"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+              "name": {
+                "en": "Equilibrium of rigid bodies",
+                "hi": "दृढ़ पिंडों की साम्यावस्था"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A rigid body is in mechanical equilibrium when both the net force and the net torque on it are zero, giving translational and rotational equilibrium.",
+                "hi": "कोई दृढ़ पिंड यांत्रिक साम्यावस्था में होता है जब उस पर नेट बल और नेट बल आघूर्ण दोनों शून्य हों, जिससे स्थानांतरीय और घूर्णी साम्य मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply the principle of moments to a lever or a beam on supports.",
+                  "hi": "उत्तोलक या आधारों पर रखे दंड पर आघूर्णों का सिद्धांत लागू कीजिए।"
+                },
+                {
+                  "en": "Distinguish centre of gravity from centre of mass and state when they coincide.",
+                  "hi": "गुरुत्व केंद्र और द्रव्यमान केंद्र में अंतर बताइए और बताइए कि वे कब संपाती होते हैं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.torque-angular-momentum.core.torque",
+                "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-7",
+                "neet-ug-2026:physics:unit-5:item-7"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic",
+      "name": {
+        "en": "Moment of Inertia",
+        "hi": "जड़त्व आघूर्ण"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core",
+          "name": {
+            "en": "Moment of Inertia",
+            "hi": "जड़त्व आघूर्ण"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+              "name": {
+                "en": "Moment of inertia and radius of gyration",
+                "hi": "जड़त्व आघूर्ण एवं घूर्णन त्रिज्या"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Moment of inertia $I = \\Sigma mr^{2}$ measures a body's resistance to change in rotation about an axis, and the radius of gyration k is defined by $I = Mk^{2}$.",
+                "hi": "जड़त्व आघूर्ण $I = \\Sigma mr^{2}$ किसी अक्ष के परितः घूर्णन में परिवर्तन के प्रति पिंड के विरोध को मापता है, और घूर्णन त्रिज्या k, $I = Mk^{2}$ से परिभाषित होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain why I depends on the axis and on how mass is distributed about it.",
+                  "hi": "समझाइए कि I अक्ष पर और उसके परितः द्रव्यमान के वितरण पर क्यों निर्भर करता है।"
+                },
+                {
+                  "en": "Compute the rotational kinetic energy $I\\omega^{2}/2$.",
+                  "hi": "घूर्णी गतिज ऊर्जा $I\\omega^{2}/2$ निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.angular-velocity.core.rotation-basics"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-4",
+                "neet-ug-2026:physics:unit-5:item-4"
+              ]
+            },
+            {
+              "id": "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia",
+              "name": {
+                "en": "Moments of inertia of simple geometrical objects",
+                "hi": "सरल ज्यामितीय पिंडों के जड़त्व आघूर्ण"
+              },
+              "kind": "list",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Standard results include a thin rod about its centre $ML^{2}/12$, a ring about its axis $MR^{2}$, a disc about its axis $MR^{2}/2$ and a solid sphere about a diameter $2MR^{2}/5$.",
+                "hi": "मानक परिणामों में केंद्र के परितः पतली छड़ $ML^{2}/12$, अक्ष के परितः वलय $MR^{2}$, अक्ष के परितः चकती $MR^{2}/2$ और व्यास के परितः ठोस गोला $2MR^{2}/5$ शामिल हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Recall the moments of inertia of a rod, ring, disc, cylinder and sphere about their symmetry axes.",
+                  "hi": "छड़, वलय, चकती, बेलन और गोले के सममिति अक्षों के परितः जड़त्व आघूर्ण याद कीजिए।"
+                },
+                {
+                  "en": "Derive the moment of inertia of a thin rod or ring by integration.",
+                  "hi": "समाकलन से पतली छड़ या वलय का जड़त्व आघूर्ण व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-5",
+                "neet-ug-2026:physics:unit-5:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.axes-theorems",
+      "name": {
+        "en": "Theorems of Parallel and Perpendicular Axes",
+        "hi": "समांतर एवं लंबवत अक्षों के प्रमेय"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core",
+          "name": {
+            "en": "Theorems of Parallel and Perpendicular Axes",
+            "hi": "समांतर एवं लंबवत अक्षों के प्रमेय"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+              "name": {
+                "en": "Parallel and perpendicular axes theorems",
+                "hi": "समांतर एवं लंबवत अक्षों के प्रमेय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The parallel axes theorem gives $I = I_{cm} + Md^{2}$, and for a flat body the perpendicular axes theorem gives $I_{z} = I_{x} + I_{y}$.",
+                "hi": "समांतर अक्षों का प्रमेय $I = I_{cm} + Md^{2}$ देता है, और समतल पिंड के लिए लंबवत अक्षों का प्रमेय $I_{z} = I_{x} + I_{y}$ देता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Use the theorems to find I of a disc about a diameter or a tangent, and of a rod about one end.",
+                  "hi": "इन प्रमेयों से व्यास या स्पर्श रेखा के परितः चकती का और एक सिरे के परितः छड़ का I निकालिए।"
+                },
+                {
+                  "en": "State that the perpendicular axes theorem applies only to planar (laminar) bodies.",
+                  "hi": "बताइए कि लंबवत अक्षों का प्रमेय केवल समतल (पटलीय) पिंडों पर लागू होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-6",
+                "neet-ug-2026:physics:unit-5:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics",
+      "name": {
+        "en": "Kinematics and Dynamics of Rotation about a Fixed Axis",
+        "hi": "अचल अक्ष के परितः घूर्णी गतिकी"
+      },
+      "subtopics": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core",
+          "name": {
+            "en": "Kinematics and Dynamics of Rotation about a Fixed Axis",
+            "hi": "अचल अक्ष के परितः घूर्णी गतिकी"
+          },
+          "concepts": [
+            {
+              "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+              "name": {
+                "en": "Equations of rotational motion and comparison with linear motion",
+                "hi": "घूर्णी गति के समीकरण एवं रेखीय गति से तुलना"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Rotation about a fixed axis follows $\\tau = I\\alpha$ and the equations $\\omega = \\omega_{0} + \\alpha t$, $\\theta = \\omega_{0}t + \\alpha t^{2}/2$, $\\omega^{2} = \\omega_{0}^{2} + 2\\alpha \\theta$, each the analogue of a linear equation.",
+                "hi": "अचल अक्ष के परितः घूर्णन $\\tau = I\\alpha$ और समीकरणों $\\omega = \\omega_{0} + \\alpha t$, $\\theta = \\omega_{0}t + \\alpha t^{2}/2$, $\\omega^{2} = \\omega_{0}^{2} + 2\\alpha \\theta$ का पालन करता है, जिनमें हर एक किसी रेखीय समीकरण का अनुरूप है।"
+              },
+              "key_points": [
+                {
+                  "en": "Tabulate the analogues: mass and moment of inertia, force and torque, momentum and angular momentum, $mv^{2}/2$ and $I\\omega^{2}/2$.",
+                  "hi": "अनुरूप राशियों की सारणी बनाइए: द्रव्यमान और जड़त्व आघूर्ण, बल और बल आघूर्ण, संवेग और कोणीय संवेग, $mv^{2}/2$ और $I\\omega^{2}/2$।"
+                },
+                {
+                  "en": "Solve problems on a wheel or pulley with a mass hanging from a string.",
+                  "hi": "डोरी से लटके द्रव्यमान वाले पहिए या घिरनी के प्रश्न हल कीजिए।"
+                },
+                {
+                  "en": "Compute work done by a torque and rotational power $P = \\tau \\omega$.",
+                  "hi": "बल आघूर्ण द्वारा किया गया कार्य और घूर्णी शक्ति $P = \\tau \\omega$ निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.rotational-motion.torque-angular-momentum.core.torque",
+                "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+                "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-5:item-8",
+                "neet-ug-2026:physics:unit-5:item-8"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.3: Physics Unit 5, Rotational Motion"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.4: Physics Unit 2, KINEMATICS"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.4: Physics Unit 5, ROTATIONAL MOTION"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: vector-product (§6.5, khph1 contents prelims p.xiv), angular-velocity (§6.6, khph1 contents prelims p.xiv), rigid-equilibrium (§6.8, khph1 contents prelims p.xiv), moment-of-inertia-topic (§6.9, khph1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/rotational-motion.json."
+}

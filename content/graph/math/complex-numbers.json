@@ -1,0 +1,345 @@
+{
+  "schema": "chapter@1",
+  "id": "math.complex-numbers",
+  "subject": "math",
+  "unit": "math.algebra",
+  "name": {
+    "en": "Complex Numbers and Quadratic Equations",
+    "hi": "सम्मिश्र संख्याएँ और द्विघातीय समीकरण"
+  },
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 4",
+  "topics": [
+    {
+      "id": "math.complex-numbers.complex-intro",
+      "name": {
+        "en": "Complex Numbers",
+        "hi": "सम्मिश्र संख्याएँ"
+      },
+      "subtopics": [
+        {
+          "id": "math.complex-numbers.complex-intro.core",
+          "name": {
+            "en": "Complex Numbers",
+            "hi": "सम्मिश्र संख्याएँ"
+          },
+          "concepts": [
+            {
+              "id": "math.complex-numbers.complex-intro.core.complex-number-form",
+              "name": {
+                "en": "Complex numbers as ordered pairs and in the form a + ib",
+                "hi": "क्रमित युग्म के रूप में तथा a + ib रूप में सम्मिश्र संख्याएँ"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A complex number $z = a + ib$, with $i^{2} = -1$, is determined by the ordered pair of reals (a, b): a is its real part and b its imaginary part.",
+                "hi": "सम्मिश्र संख्या $z = a + ib$, जहाँ $i^{2} = -1$, वास्तविक संख्याओं के क्रमित युग्म (a, b) से निर्धारित होती है: a इसका वास्तविक भाग और b काल्पनिक भाग है।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify Re z and Im z.",
+                  "hi": "Re z और Im z पहचानिए।"
+                },
+                {
+                  "en": "Use equality of complex numbers to solve for unknowns.",
+                  "hi": "अज्ञात राशियाँ ज्ञात करने के लिए सम्मिश्र संख्याओं की समानता का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-1",
+                "jee-main-2027:mathematics:unit-2:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.complex-numbers.complex-algebra",
+      "name": {
+        "en": "Algebra of Complex Numbers",
+        "hi": "सम्मिश्र संख्याओं का बीजगणित"
+      },
+      "subtopics": [
+        {
+          "id": "math.complex-numbers.complex-algebra.core",
+          "name": {
+            "en": "Algebra of Complex Numbers",
+            "hi": "सम्मिश्र संख्याओं का बीजगणित"
+          },
+          "concepts": [
+            {
+              "id": "math.complex-numbers.complex-algebra.core.complex-arithmetic",
+              "name": {
+                "en": "Addition, multiplication and division of complex numbers; powers of i",
+                "hi": "सम्मिश्र संख्याओं का योग, गुणन तथा भाग; i की घातें"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Complex numbers are added and multiplied like binomials using $i^{2} = -1$, divided by multiplying by the conjugate of the denominator, and powers of i repeat with period 4.",
+                "hi": "सम्मिश्र संख्याओं को $i^{2} = -1$ का प्रयोग करते हुए द्विपदों की तरह जोड़ा और गुणा किया जाता है, हर के संयुग्मी से गुणा करके भाग दिया जाता है, और i की घातें आवर्त 4 से दोहराती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Express a quotient of complex numbers in the form $a + ib$.",
+                  "hi": "सम्मिश्र संख्याओं के भागफल को $a + ib$ रूप में व्यक्त कीजिए।"
+                },
+                {
+                  "en": "Simplify $i^{n}$ for any integer n.",
+                  "hi": "किसी भी पूर्णांक n के लिए $i^{n}$ सरल कीजिए।"
+                },
+                {
+                  "en": "Find the square roots of a negative real number.",
+                  "hi": "किसी ऋणात्मक वास्तविक संख्या के वर्गमूल ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.complex-numbers.complex-intro.core.complex-number-form"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.complex-numbers.modulus-conjugate",
+      "name": {
+        "en": "The Modulus and the Conjugate of a Complex Number",
+        "hi": "सम्मिश्र संख्या का मापांक और संयुग्मी"
+      },
+      "subtopics": [
+        {
+          "id": "math.complex-numbers.modulus-conjugate.core",
+          "name": {
+            "en": "The Modulus and the Conjugate of a Complex Number",
+            "hi": "सम्मिश्र संख्या का मापांक और संयुग्मी"
+          },
+          "concepts": [
+            {
+              "id": "math.complex-numbers.modulus-conjugate.core.modulus-conjugate-props",
+              "name": {
+                "en": "Modulus and conjugate and their properties",
+                "hi": "मापांक और संयुग्मी तथा उनके गुणधर्म"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For $z = a + ib$, the conjugate is $\\bar{z} = a - ib$ and the modulus is $|z| = \\sqrt{a^{2} + b^{2}}$; $z \\bar{z} = |z|^{2}$, $|z_{1}z_{2}| = |z_{1}||z_{2}|$ and the conjugate of a sum or product is the sum or product of conjugates.",
+                "hi": "$z = a + ib$ के लिए संयुग्मी $\\bar{z} = a - ib$ और मापांक $|z| = \\sqrt{a^{2} + b^{2}}$ है; $z \\bar{z} = |z|^{2}$, $|z_{1}z_{2}| = |z_{1}||z_{2}|$ तथा योग या गुणनफल का संयुग्मी संयुग्मियों का योग या गुणनफल होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the multiplicative inverse of z using $\\bar{z}/|z|^{2}$.",
+                  "hi": "$\\bar{z}/|z|^{2}$ से z का गुणात्मक प्रतिलोम ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Apply the modulus properties to products and quotients.",
+                  "hi": "गुणनफलों और भागफलों पर मापांक के गुणधर्म लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.complex-numbers.complex-algebra.core.complex-arithmetic"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.complex-numbers.argand-polar",
+      "name": {
+        "en": "Argand Plane and Polar Representation",
+        "hi": "आर्गंड तल और ध्रुवीय निरूपण"
+      },
+      "subtopics": [
+        {
+          "id": "math.complex-numbers.argand-polar.core",
+          "name": {
+            "en": "Argand Plane and Polar Representation",
+            "hi": "आर्गंड तल और ध्रुवीय निरूपण"
+          },
+          "concepts": [
+            {
+              "id": "math.complex-numbers.argand-polar.core.argand-polar-form",
+              "name": {
+                "en": "Argand plane, argument and polar form",
+                "hi": "आर्गंड तल, कोणांक तथा ध्रुवीय रूप"
+              },
+              "kind": "diagram",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Plotting $z = a + ib$ as the point (a, b) gives the Argand plane; writing $z = r(\\cos \\theta + i \\sin \\theta)$ uses $r = |z|$ and the argument $\\theta$, whose principal value lies in ($-\\pi, \\pi]$.",
+                "hi": "$z = a + ib$ को बिंदु (a, b) के रूप में आलेखित करने पर आर्गंड तल मिलता है; $z = r(\\cos \\theta + i \\sin \\theta)$ लिखने में $r = |z|$ और कोणांक $\\theta$ आते हैं, जिसका मुख्य मान ($-\\pi, \\pi]$ में होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Plot complex numbers and their conjugates.",
+                  "hi": "सम्मिश्र संख्याओं और उनके संयुग्मियों को आलेखित कीजिए।"
+                },
+                {
+                  "en": "Convert a complex number to polar form using the quadrant to fix $\\theta$.",
+                  "hi": "चतुर्थांश से $\\theta$ तय करते हुए सम्मिश्र संख्या को ध्रुवीय रूप में बदलिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.complex-numbers.modulus-conjugate.core.modulus-conjugate-props",
+                "math.trigonometric-functions.trig-functions.core.trig-functions-unit-circle"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-2",
+                "jee-main-2027:mathematics:unit-2:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.complex-numbers.quadratic-equations",
+      "name": {
+        "en": "Quadratic Equations",
+        "hi": "द्विघात समीकरण"
+      },
+      "subtopics": [
+        {
+          "id": "math.complex-numbers.quadratic-equations.core",
+          "name": {
+            "en": "Quadratic Equations",
+            "hi": "द्विघात समीकरण"
+          },
+          "concepts": [
+            {
+              "id": "math.complex-numbers.quadratic-equations.core.quadratic-solutions",
+              "name": {
+                "en": "Solving quadratic equations in real and complex number systems",
+                "hi": "वास्तविक एवं सम्मिश्र संख्या पद्धतियों में द्विघात समीकरणों का हल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The roots of $ax^{2} + bx + c = 0 (a \\ne 0)$ are $(-b \\pm \\sqrt{D})/(2a)$ with $D = b^{2} - 4ac$; when $D < 0$ and the coefficients are real, the roots are a pair of complex conjugates.",
+                "hi": "$ax^{2} + bx + c = 0 (a \\ne 0)$ के मूल $(-b \\pm \\sqrt{D})/(2a)$ हैं जहाँ $D = b^{2} - 4ac$; जब $D < 0$ और गुणांक वास्तविक हों, तो मूल सम्मिश्र संयुग्मियों का युग्म होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Solve a quadratic with negative discriminant.",
+                  "hi": "ऋणात्मक विविक्तकर वाला द्विघात समीकरण हल कीजिए।"
+                },
+                {
+                  "en": "Solve equations reducible to quadratic form.",
+                  "hi": "द्विघात रूप में बदले जा सकने वाले समीकरण हल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.complex-numbers.complex-algebra.core.complex-arithmetic"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-5"
+              ]
+            },
+            {
+              "id": "math.complex-numbers.quadratic-equations.core.roots-coefficients",
+              "name": {
+                "en": "Relations between roots and coefficients and the nature of roots",
+                "hi": "मूलों और गुणांकों के बीच संबंध तथा मूलों की प्रकृति"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "For $ax^{2} + bx + c = 0$ the sum of roots is $-b/a$ and the product is $c/a$; the discriminant decides whether the real-coefficient roots are real and distinct, real and equal, or non-real.",
+                "hi": "$ax^{2} + bx + c = 0$ के मूलों का योग $-b/a$ और गुणनफल $c/a$ है; विविक्तकर तय करता है कि वास्तविक गुणांकों वाले मूल वास्तविक और भिन्न, वास्तविक और समान, या अवास्तविक हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Evaluate symmetric expressions of roots such as $\\alpha^{2} + \\beta^{2}$.",
+                  "hi": "$\\alpha^{2} + \\beta^{2}$ जैसे मूलों के सममित व्यंजक निकालिए।"
+                },
+                {
+                  "en": "Find conditions on a parameter for real or equal roots.",
+                  "hi": "वास्तविक या समान मूलों के लिए प्राचल पर शर्तें ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.complex-numbers.quadratic-equations.core.quadratic-solutions"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-6"
+              ]
+            },
+            {
+              "id": "math.complex-numbers.quadratic-equations.core.form-quadratic",
+              "name": {
+                "en": "Forming a quadratic equation with given roots",
+                "hi": "दिए गए मूलों से द्विघात समीकरण बनाना"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A quadratic with roots $\\alpha$ and $\\beta$ is $x^{2} - (\\alpha + \\beta)x + \\alpha \\beta = 0$, so an equation can be built from the sum and product of the required roots.",
+                "hi": "$\\alpha$ और $\\beta$ मूलों वाला द्विघात समीकरण $x^{2} - (\\alpha + \\beta)x + \\alpha \\beta = 0$ है, अतः अभीष्ट मूलों के योग और गुणनफल से समीकरण बनाया जा सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Form the equation whose roots are given numbers.",
+                  "hi": "दी गई संख्याओं को मूल मानकर समीकरण बनाइए।"
+                },
+                {
+                  "en": "Form the equation whose roots are functions of the roots of a given equation.",
+                  "hi": "दिए गए समीकरण के मूलों के फलनों को मूल मानकर समीकरण बनाइए।"
+                }
+              ],
+              "prerequisites": [
+                "math.complex-numbers.quadratic-equations.core.roots-coefficients"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-2:item-7"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 4 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 2, COMPLEX NUMBERS AND QUADRATIC EQUATIONS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. The NCERT 2026-27 reprint of this chapter treats complex numbers only; quadratic equations in the real and complex number systems, relations between roots and coefficients, and forming an equation from its roots are listed in the JEE (Main) syllabus but have no section in this chapter, so those concepts carry no NCERT reference. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: complex-intro (§4.2, khmh1 contents prelims p.xiii), complex-algebra (§4.3, khmh1 contents prelims p.xiv), modulus-conjugate (§4.4, khmh1 contents prelims p.xiv), argand-polar (§4.5, khmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/complex-numbers.json."
+}

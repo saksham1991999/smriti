@@ -67,6 +67,25 @@ describe("site content index", () => {
     expect(() => parseIndex(bad, "bad")).toThrow(/reviewed_by/);
   });
 
+  it("accepts facts the notice does not state as null, a fraction penalty and a skill test", () => {
+    const idx = clone(fixture) as { exams: { blueprint: unknown }[] };
+    idx.exams[0]!.blueprint = {
+      ...syntheticBlueprint,
+      mode: "mixed",
+      total_questions: null,
+      sections: [
+        { code: "a", title: { en: "A", hi: "ए" }, subject: null, question_count: null, marking: { correct: null, wrong: null, wrong_fraction: 1 / 3, unattempted: 0 } },
+        { code: "t", title: { en: "T", hi: "टी" }, subject: null, question_count: null, skill_test: true, marking: null },
+      ],
+    };
+    const bp = parseIndex(idx, "test").exams[0]!.blueprint!;
+    expect(bp.sections[0]!.marking?.wrong_fraction).toBeCloseTo(1 / 3);
+    expect(bp.sections[1]!.skill_test).toBe(true);
+    const bad = clone(idx) as { exams: { blueprint: { sections: { marking: { wrong_fraction: number } }[] } }[] };
+    bad.exams[0]!.blueprint.sections[0]!.marking.wrong_fraction = 2;
+    expect(() => parseIndex(bad, "bad")).toThrow(/wrong_fraction/);
+  });
+
   it("rejects text missing its Hindi side", () => {
     const bad = clone(fixture) as { subjects: { name: Record<string, string> }[] };
     delete bad.subjects[0]!.name.hi;

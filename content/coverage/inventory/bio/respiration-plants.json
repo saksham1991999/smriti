@@ -1,0 +1,82 @@
+{
+  "schema": "inventory@1",
+  "chapter": "bio.respiration-plants",
+  "items": [
+    {
+      "id": "kebo1-12-1",
+      "kind": "fact",
+      "title": "Do Plants Breathe?",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.1 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.plants-breathe.core.plant-gas-exchange"
+      ]
+    },
+    {
+      "id": "kebo1-12-2",
+      "kind": "fact",
+      "title": "Glycolysis",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.2 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.glycolysis.core.glycolysis"
+      ]
+    },
+    {
+      "id": "kebo1-12-3",
+      "kind": "fact",
+      "title": "Fermentation",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.3 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.fermentation.core.fermentation"
+      ]
+    },
+    {
+      "id": "kebo1-12-4",
+      "kind": "fact",
+      "title": "Aerobic Respiration",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.4 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.aerobic-respiration.core.tca-ets"
+      ]
+    },
+    {
+      "id": "kebo1-12-5",
+      "kind": "formula",
+      "title": "The Respiratory Balance Sheet",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.5 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.balance-sheet.core.respiratory-balance-sheet"
+      ]
+    },
+    {
+      "id": "kebo1-12-6",
+      "kind": "definition",
+      "title": "Amphibolic Pathway",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.6 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.amphibolic-rq.core.amphibolic-rq"
+      ]
+    },
+    {
+      "id": "kebo1-12-7",
+      "kind": "definition",
+      "title": "Respiratory Quotient",
+      "source_ref": "NCERT Class 11 Biology, Ch 12 §12.7 (https://ncert.nic.in/textbook/pdf/kebo112.pdf)",
+      "concepts": [
+        "bio.respiration-plants.amphibolic-rq.core.amphibolic-rq"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 12 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo112.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+}

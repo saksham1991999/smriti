@@ -111,9 +111,12 @@ export function computeCoverage(set: ContentSet, profileId: string, findings: Fi
   });
   for (const s of released) if (!subjects.includes(s)) subjects.push(s);
   const profileChapters = new Set(rows.map((r) => r.chapter));
-  const inventoryItems = set.inventories.filter((i) => profileChapters.has(i.doc.chapter)).flatMap((i) =>
-    i.doc.items.map((item) => ({ chapter: i.doc.chapter, item })),
-  );
+  // Chapter inventories only; a subject's excluded-chapters file has no items.
+  const inventoryItems = set.inventories.flatMap((i) => {
+    const chapter = i.doc.chapter;
+    if (!chapter || !profileChapters.has(chapter)) return [];
+    return (i.doc.items ?? []).map((item) => ({ chapter, item }));
+  });
   const unmappedItems = inventoryItems.filter(({ item }) => item.concepts.length === 0 && !item.out_of_syllabus);
   const excluded = inventoryItems.filter(({ item }) => item.concepts.length === 0 && item.out_of_syllabus).length;
 

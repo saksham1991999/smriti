@@ -170,6 +170,13 @@ export type SourceKind =
   | "dataset"
   | "other";
 /**
+ * Where the Hindi text of the file comes from: official (the conducting body's Hindi document), ncert (NCERT Hindi-medium books) or translation (our translation of the official English).
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "HiSource".
+ */
+export type HiSource = "official" | "ncert" | "translation";
+/**
  * A unit symbol, for example m/s, kJ, mol, °C. null for dimensionless.
  *
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
@@ -240,8 +247,15 @@ export type BlueprintFile = FileMeta & {
     published: IsoDate;
     retrieved: IsoDate;
     pages?: string;
+    /**
+     * The official page the notice is linked from (a URL, optionally with the menu path).
+     */
+    linked_from?: string;
   };
-  mode: "cbt" | "pen_paper";
+  /**
+   * cbt, pen_paper, or mixed when parts of the paper are taken in different modes (each section then says its mode).
+   */
+  mode: "cbt" | "pen_paper" | "mixed";
   duration_min: number;
   /**
    * @minItems 1
@@ -251,32 +265,46 @@ export type BlueprintFile = FileMeta & {
    * per_question: the EN/HI toggle shows on every question in full, sectional and PYQ-paper mocks. fixed: the language is chosen once (practice flow 6.4, R44).
    */
   language_switch: "per_question" | "fixed";
-  interface: "nta" | "upsc_omr" | "ssc_tcs" | "generic";
+  interface: "nta" | "nta_omr" | "upsc_omr" | "ssc_tcs" | "generic";
   /**
    * Buttons, labels and palette states encoded from the official instructions. null: the runner uses the generic profile.
    */
   interface_profile?: null | InterfaceProfile;
-  calculator: "none" | "basic" | "scientific";
-  section_navigation: "free" | "locked_in_order" | "free_within_timer";
+  /**
+   * Calculator allowed on the paper. null: not stated in the notice; the file then lists an open_questions entry naming this field.
+   */
+  calculator: "none" | "basic" | "scientific" | null;
+  /**
+   * How candidates move between sections. null: not stated in the notice; the file then lists an open_questions entry naming this field.
+   */
+  section_navigation: "free" | "locked_in_order" | "free_within_timer" | null;
   /**
    * Whether a locked section can be submitted before its timer ends. null when the notification is silent.
    */
   early_section_submit?: boolean | null;
-  numeric_input: "virtual_keypad" | "keyboard";
   /**
-   * Questions that count in the paper (after attempt-any rules).
+   * How numeric answers are typed. null: not stated in the notice; the file then lists an open_questions entry naming this field.
    */
-  question_count: number;
+  numeric_input: "virtual_keypad" | "keyboard" | null;
+  /**
+   * Questions that count in the paper (after attempt-any rules). null: not stated in the notice; the file then lists an open_questions entry naming this field.
+   */
+  question_count: number | null;
   max_marks: number;
   /**
    * @minItems 1
    */
   sections: Section[];
+  /**
+   * The paper's qualifying rule, only as notified. null: none is notified.
+   */
   qualifying?: {
-    rule: null | {
-      kind: "percent_of_max" | "marks";
-      value: number;
-    };
+    rule: null | QualifyingRule;
+    /**
+     * The notified rule in our words, with its citation.
+     */
+    basis?: string;
+    source_ref?: string;
   } | null;
   exam_day?: {
     reporting_lead_min?: number | null;
@@ -299,6 +327,44 @@ export type BlueprintFile = FileMeta & {
   instructions: I18NText;
 };
 /**
+ * A notified qualifying standard: one value, a value per category, or a standard the conducting body sets later.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema
+ * via the `definition` "QualifyingRule".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "QualifyingRule".
+ */
+export type QualifyingRule =
+  | {
+      kind: "percent_of_max" | "marks" | "percentile" | "max_error_percent";
+      value: number;
+      source_ref?: string;
+    }
+  | {
+      kind: "percent_of_max" | "marks" | "percentile" | "max_error_percent";
+      /**
+       * Category labels as the notice prints them (UR, OBC/EWS, SC, ST, PwBD ...).
+       *
+       * @minItems 1
+       */
+      by_category: {
+        category: string;
+        value: number;
+      }[];
+      source_ref?: string;
+    }
+  | {
+      kind: "set_by_conducting_body";
+      /**
+       * What the notice says about how it is set.
+       */
+      basis: string;
+      source_ref?: string;
+    };
+/**
+ * drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks.
+ *
  * This interface was referenced by `undefined`'s JSON-Schema
  * via the `definition` "QuestionType".
  *
@@ -319,7 +385,9 @@ export type QuestionType =
   | "statement_based"
   | "paragraph"
   | "fill_blank"
-  | "order_steps";
+  | "order_steps"
+  | "drawing"
+  | "skill_test";
 /**
  * content/graph/{subject_id}/subject.json: the subject, its units and the ordered chapter list. Projects to content.subjects and content.units; the chapter order gives content.chapters.sort.
  *
@@ -1482,37 +1550,63 @@ export type Syllabus = FileMeta & {
   }[];
 };
 /**
+ * A chapter inventory (chapter + items) or a subject's list of reference chapters with no graph chapter (subject + excluded_chapters, at coverage/inventory/{subject}/excluded-chapters.json).
+ *
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
  * via the `definition` "Inventory".
  */
-export type Inventory = FileMeta & {
-  schema: "inventory@1";
-  chapter: DottedId;
-  /**
-   * @minItems 1
-   */
-  items: {
-    id: Slug;
-    kind:
-      | "definition"
-      | "law"
-      | "formula"
-      | "constant"
-      | "named_reaction"
-      | "date"
-      | "list"
-      | "diagram"
-      | "solved_example"
-      | "exercise_type"
-      | "fact";
-    title: string;
-    source_ref: string;
-    concepts: DottedId[];
+export type Inventory = FileMeta &
+  Inventory1 & {
+    schema: "inventory@1";
+    chapter?: DottedId;
     /**
-     * Why the item maps to no concept. Either concepts or this must be set.
+     * @minItems 1
      */
-    out_of_syllabus?: string | null;
-  }[];
+    items?: {
+      id: Slug;
+      kind?:
+        | "definition"
+        | "law"
+        | "formula"
+        | "constant"
+        | "named_reaction"
+        | "date"
+        | "list"
+        | "diagram"
+        | "solved_example"
+        | "exercise_type"
+        | "fact";
+      /**
+       * A plain string (the source language) or localised text.
+       */
+      title: string | I18NText;
+      source_ref: string;
+      concepts: DottedId[];
+      /**
+       * Why the item maps to no concept. Either concepts or this must be set.
+       */
+      out_of_syllabus?: string | null;
+    }[];
+    subject?: Slug;
+    /**
+     * Whole reference chapters with no graph chapter, each with the reason.
+     */
+    excluded_chapters?: {
+      /**
+       * The reference chapter, for example ncert:kemh1:5.
+       */
+      ref: string;
+      title: string | I18NText;
+      reason: string;
+      source_ref: string;
+      /**
+       * The profiles the reason applies to.
+       */
+      exam_profiles?: Slug[];
+    }[];
+  };
+export type Inventory1 = {
+  [k: string]: unknown | undefined;
 };
 /**
  * This interface was referenced by `CoverageReport`'s JSON-Schema
@@ -1623,6 +1717,14 @@ export interface Source {
   retrieved?: IsoDate;
   pages?: string;
   licence?: string;
+  /**
+   * When the source was published by its author.
+   */
+  published?: string;
+  /**
+   * The official page the document is linked from, so a reviewer can find it again (a URL, optionally with the menu path).
+   */
+  linked_from?: string;
 }
 /**
  * Fields every content file carries.
@@ -1642,6 +1744,32 @@ export interface FileMeta {
    */
   fixture?: boolean;
   notes?: string;
+  /**
+   * Facts the official sources do not state. Every exam fact left null names its field here.
+   */
+  open_questions?: OpenQuestion[];
+  hi_source?: HiSource;
+}
+/**
+ * Something the official source does not state (or that could not be checked). A null exam fact must have one, naming the field.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "OpenQuestion".
+ */
+export interface OpenQuestion {
+  /**
+   * The field left null or unset because of this question, as a dotted path from the file root. Blueprint sections are addressed by code: sections.gs1.marking.mcq_single.correct. null: a question about the file as a whole.
+   */
+  field?: string | null;
+  question: string;
+  /**
+   * When the sources were last checked for an answer.
+   */
+  checked?: string;
+  /**
+   * Where the answer is expected to appear.
+   */
+  source_url?: string | null;
 }
 /**
  * Accepted error. A response passes when |response - value| <= max(abs, rel * |value|).
@@ -1705,12 +1833,84 @@ export interface ExamProfile {
           | "exam_window_start"
           | "exam_window_end"
           | "exam_day"
-          | "result";
+          | "result"
+          | "correction_window"
+          | "admit_card"
+          | "city_intimation"
+          | "re_exam";
         date: IsoDate;
         source_url: string;
+        /**
+         * Last day, for a window (application, correction, exam).
+         */
+        end_date?: string;
+        /**
+         * The session this date belongs to, when the cycle has several.
+         */
+        session?: string;
       }[]
     | null;
   is_active?: boolean;
+  /**
+   * Official paper names by paper code.
+   */
+  paper_names?: {
+    [k: string]: I18NText;
+  };
+  /**
+   * Languages the exam is offered in (ISO 639 codes), which can be more than the app's locales.
+   */
+  exam_languages?: string[];
+  /**
+   * Sessions of the cycle, as notified.
+   */
+  sessions?: {
+    id: Slug;
+    label: I18NText;
+    application_window?: DateWindow;
+    late_fee_window?: DateWindow;
+    correction_window?: DateWindow;
+    city_intimation?: IsoDate;
+    admit_card?: IsoDate;
+    exam_dates?: IsoDate[];
+    source_ref: string;
+  }[];
+  /**
+   * Shift times as notified. null: not stated (they often appear only on the admit card).
+   */
+  shifts?:
+    | {
+        id: Slug;
+        tz: string;
+        /**
+         * Paper codes held in this shift; absent for all.
+         */
+        papers?: Slug[];
+        /**
+         * @minItems 1
+         */
+        times: {
+          start: string;
+          end: string;
+          /**
+           * The paper length these times are for, when they differ by paper.
+           */
+          duration_min?: number | null;
+        }[];
+        source_ref?: string;
+      }[]
+    | null;
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema
+ * via the `definition` "DateWindow".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "DateWindow".
+ */
+export interface DateWindow {
+  from: IsoDate;
+  to: IsoDate;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema
@@ -1738,10 +1938,22 @@ export interface InterfaceProfile {
    * @minItems 1
    */
   palette_states: PaletteState[];
-  save_requires_explicit_action: boolean;
-  clear_keeps_mark: boolean;
-  marked_answer_evaluated: boolean;
-  keyboard_disabled_on_exam_day?: boolean;
+  /**
+   * null: not stated in the official instructions (with an open_questions entry naming interface_profile.save_requires_explicit_action).
+   */
+  save_requires_explicit_action: boolean | null;
+  /**
+   * null: not stated in the official instructions (with an open_questions entry naming interface_profile.clear_keeps_mark).
+   */
+  clear_keeps_mark: boolean | null;
+  /**
+   * null: not stated in the official instructions (with an open_questions entry naming interface_profile.marked_answer_evaluated).
+   */
+  marked_answer_evaluated: boolean | null;
+  /**
+   * null: not stated in the official instructions (with an open_questions entry naming interface_profile.keyboard_disabled_on_exam_day).
+   */
+  keyboard_disabled_on_exam_day?: boolean | null;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema
@@ -1771,7 +1983,10 @@ export interface Section {
   title: I18NText;
   subject?: string | null;
   timer_min?: number | null;
-  question_count: number;
+  /**
+   * null for a qualifying skill test, or when the notice does not state it (then an open_questions entry names sections.{code}.question_count).
+   */
+  question_count: number | null;
   /**
    * Questions per type, when a section mixes types. Lets the check add up marks.
    */
@@ -1784,19 +1999,27 @@ export interface Section {
   };
   optional?: boolean;
   /**
-   * Sectional cut-off, only when notified.
+   * Sectional cut-off or qualifying standard, only when notified.
    */
-  cutoff?: {
-    kind: "percent_of_max" | "marks";
-    value: number;
-  } | null;
+  cutoff?: null | QualifyingRule;
   /**
    * @minItems 1
    */
   question_types: QuestionType[];
-  marking: {
+  /**
+   * Required, except for a section of skill_test questions only.
+   */
+  marking?: {
     [k: string]: MarkingRule | undefined;
   };
+  /**
+   * Only in a mixed paper: the mode of this section.
+   */
+  mode?: "cbt" | "pen_paper";
+  /**
+   * The section total as notified, when the notice prints it (needed when marks per question are not stated).
+   */
+  max_marks?: number | null;
 }
 /**
  * This interface was referenced by `undefined`'s JSON-Schema
@@ -1806,8 +2029,18 @@ export interface Section {
  * via the `definition` "MarkingRule".
  */
 export interface MarkingRule {
-  correct: number;
-  wrong: number;
+  /**
+   * Marks for a right answer. null: not stated in the notice; the file then lists an open_questions entry naming this field.
+   */
+  correct: number | null;
+  /**
+   * Marks for a wrong answer (negative or 0), or a penalty as a fraction of the question's marks (UPSC: one-third).
+   */
+  wrong:
+    | number
+    | {
+        fraction_of_question_marks: number;
+      };
   unattempted: number;
   /**
    * JEE Advanced-style partial marking: per correct option chosen, only when no wrong option is chosen.

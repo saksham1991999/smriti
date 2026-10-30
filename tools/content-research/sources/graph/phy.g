@@ -820,7 +820,7 @@ CO drift-velocity | formula | 3 | en=Electric current, drift velocity and mobili
 S Current is the rate of flow of charge; in a conductor it is $I = neAv_{d}$, where the drift velocity $v_{d} = eE\tau/m$ is tiny, and mobility is $v_{d}/E$. || धारा आवेश प्रवाह की दर है; चालक में यह $I = neAv_{d}$ है, जहाँ अपवाह वेग $v_{d} = eE\tau/m$ बहुत छोटा होता है, और गतिशीलता $v_{d}/E$ है।
 K Derive $I = neAv_{d}$. || $I = neAv_{d}$ व्युत्पन्न कीजिए।
 K Explain why a bulb lights almost instantly even though drift velocity is small. || समझाइए कि अपवाह वेग छोटा होने पर भी बल्ब लगभग तुरंत क्यों जलता है।
-K Define relaxation time and mobility and give the unit of mobility. || श्रांतिकाल और गतिशीलता परिभाषित कीजिए तथा गतिशीलता का मात्रक बताइए।
+K Define relaxation time and mobility and give the unit of mobility. || विश्रांति काल और गतिशीलता परिभाषित कीजिए तथा गतिशीलता का मात्रक बताइए।
 P charge-properties
 R JN12.1
 TO ohms-law | en=Ohm's Law and its Limitations | hi=ओम का नियम एवं उसकी सीमाएँ | sec=3.4,3.6
@@ -841,7 +841,7 @@ TO temperature-dependence | en=Temperature Dependence of Resistivity | hi=प्
 CO resistance-temperature | formula | 2 | en=Temperature dependence of resistance | hi=प्रतिरोध की ताप पर निर्भरता
 S For metals resistivity rises roughly linearly with temperature, $\rho = \rho_{0}[1 + \alpha(T - T_{0})]$, while for semiconductors it falls. || धातुओं की प्रतिरोधकता ताप के साथ लगभग रैखिक रूप से बढ़ती है, $\rho = \rho_{0}[1 + \alpha(T - T_{0})]$, जबकि अर्धचालकों की घटती है।
 K Use the temperature coefficient $\alpha$ to find resistance at another temperature. || दूसरे ताप पर प्रतिरोध निकालने के लिए ताप गुणांक $\alpha$ का उपयोग कीजिए।
-K Explain the behaviour of metals and semiconductors in terms of relaxation time and carrier density. || धातुओं और अर्धचालकों के व्यवहार को श्रांतिकाल और वाहक घनत्व के आधार पर समझाइए।
+K Explain the behaviour of metals and semiconductors in terms of relaxation time and carrier density. || धातुओं और अर्धचालकों के व्यवहार को विश्रांति काल और वाहक घनत्व के आधार पर समझाइए।
 P resistivity-conductivity
 R JN12.6
 TO energy-power | en=Electrical Energy and Power | hi=विद्युत ऊर्जा, शक्ति | sec=3.9 | hisrc=ncert
@@ -861,22 +861,22 @@ R JN12.5
 TO cells | en=Cells, EMF and Internal Resistance; Cells in Series and Parallel | hi=सेल, विद्युत वाहक बल एवं आंतरिक प्रतिरोध; श्रेणी एवं पार्श्वक्रम में सेल | sec=3.10,3.11
 CO emf-internal-resistance | formula | 3 | en=EMF, internal resistance and combinations of cells | hi=विद्युत वाहक बल, आंतरिक प्रतिरोध एवं सेलों का संयोजन
 S A cell of emf $\varepsilon$ and internal resistance r gives terminal voltage $V = \varepsilon - Ir$; cells in series add emfs and resistances, and in parallel combine as $\varepsilon_{eq}/r_{eq} = \Sigma \varepsilon _{i}/r_{i}$ with 1/r_eq $= \Sigma1/r_{i}$. || विद्युत वाहक बल $\varepsilon$ और आंतरिक प्रतिरोध r वाले सेल की टर्मिनल वोल्टता $V = \varepsilon - Ir$ है; श्रेणीक्रम में सेलों के वि.वा.ब. और प्रतिरोध जुड़ते हैं, और पार्श्वक्रम में $\varepsilon_{eq}/r_{eq} = \Sigma \varepsilon _{i}/r_{i}$ तथा 1/r_eq $= \Sigma1/r_{i}$ होता है।
-K Distinguish emf from terminal potential difference, including while charging. || वि.वा.ब. और टर्मिनल विभवांतर में अंतर बताइए, आवेशन की स्थिति सहित।
+K Distinguish emf from terminal potential difference. || वि.वा.ब. और टर्मिनल विभवांतर में अंतर बताइए।
 K Find the current drawn from a combination of cells by an external resistor. || सेलों के संयोजन से बाह्य प्रतिरोधक द्वारा ली गई धारा निकालिए।
 P ohms-law-def, resistors-series-parallel
 R JN12.7
 TO kirchhoff | en=Kirchhoff's Rules | hi=किरखोफ के नियम | sec=3.12 | hisrc=ncert
 CO kirchhoff-laws | skill | 3 | en=Kirchhoff's laws and their applications | hi=किरखोफ के नियम एवं उनके अनुप्रयोग
-S The junction rule (charge conservation) says currents into a node sum to zero, and the loop rule (energy conservation) says the sum of potential changes round a closed loop is zero. || संधि नियम (आवेश संरक्षण) कहता है कि किसी संधि पर आने वाली धाराओं का योग शून्य है, और पाश नियम (ऊर्जा संरक्षण) कहता है कि बंद पाश में विभव परिवर्तनों का योग शून्य है।
+S The junction rule says the currents entering a junction equal the currents leaving it, because charge does not pile up there, and the loop rule says the changes in potential round any closed loop add to zero, because potential depends only on the point. || संधि नियम कहता है कि किसी संधि में प्रवेश करने वाली धाराओं का योग उससे निकलने वाली धाराओं के योग के बराबर होता है, क्योंकि वहाँ आवेश संचित नहीं होता, और पाश नियम कहता है कि किसी भी बंद पाश में विभव परिवर्तनों का योग शून्य होता है, क्योंकि विभव केवल बिंदु की स्थिति पर निर्भर करता है।
 K Apply both rules with consistent sign conventions to solve multi-loop circuits. || एक जैसी चिह्न-परिपाटी के साथ दोनों नियम लगाकर बहु-पाश परिपथ हल कीजिए।
-K State the conservation law behind each rule. || हर नियम के पीछे का संरक्षण नियम बताइए।
+K State the reason behind each rule. || हर नियम का आधार बताइए।
 P emf-internal-resistance
 R JN12.8
 TO wheatstone | en=Wheatstone Bridge and Metre Bridge | hi=व्हीटस्टोन सेतु एवं मीटर सेतु | sec=3.13
 CO wheatstone-bridge | formula | 3 | en=Wheatstone bridge and metre bridge | hi=व्हीटस्टोन सेतु एवं मीटर सेतु
 S A Wheatstone bridge is balanced, with no galvanometer current, when $P/Q = R/S$; the metre bridge applies this with a uniform wire to find an unknown resistance. || व्हीटस्टोन सेतु संतुलित होता है, यानी गैल्वेनोमीटर में धारा नहीं होती, जब $P/Q = R/S$; मीटर सेतु एकसमान तार के साथ इसी सिद्धांत से अज्ञात प्रतिरोध निकालता है।
 K Derive the balance condition from Kirchhoff's rules. || किरखोफ के नियमों से संतुलन की शर्त व्युत्पन्न कीजिए।
-K Find an unknown resistance from the balancing length on a metre bridge, $X = R(100 - l)/l$. || मीटर सेतु पर संतुलन लंबाई से अज्ञात प्रतिरोध $X = R(100 - l)/l$ निकालिए।
+K Find an unknown resistance from the balancing length on a metre bridge. || मीटर सेतु पर संतुलन लंबाई से अज्ञात प्रतिरोध निकालिए।
 P kirchhoff-laws
 R JN12.9
 

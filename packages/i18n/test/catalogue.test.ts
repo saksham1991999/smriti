@@ -90,7 +90,7 @@ describe('catalogue lint', () => {
   });
 
   it('counted nouns are ICU plurals, and composite parts have balanced brackets', () => {
-    const plainCounts = messages.filter(([, , en]) => /\{[a-z_]+\}( more)? (cards|lessons|questions|days|gems|topics|reviews)\b/.test(en)).map(([ns, key]) => `${ns}:${key}`);
+    const plainCounts = messages.filter(([, key, en]) => !/\.(other|many|few)$/.test(key) && /\{[a-z_]+\}( more)? (cards|lessons|questions|days|gems|topics|reviews)\b/.test(en)).map(([ns, key]) => `${ns}:${key}`);
     expect(plainCounts).toEqual([]);
     const unbalanced = messages.filter(([, key, en]) => /\.\d+$/.test(key) && (en.split('[').length !== en.split(']').length)).map(([ns, key]) => `${ns}:${key}`);
     expect(unbalanced).toEqual([]);

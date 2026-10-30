@@ -61,6 +61,16 @@ export interface SequentialStep {
 }
 export const dataViz = { sequential: raw.dataViz.sequential as SequentialStep[] };
 
+/** Periodic table blocks (Labs periodic table sim). */
+export type PeriodicBlock = "s" | "p" | "d" | "f";
+export const periodicBlocks: PeriodicBlock[] = ["s", "p", "d", "f"];
+export interface PeriodicBlockColors {
+  tint: string;
+  strong: string;
+  text: string;
+}
+export const periodic = { block: strip(raw.periodic.block) as Record<PeriodicBlock, Record<Mode, PeriodicBlockColors>> };
+
 const tp = strip(raw.thirdParty);
 export const thirdParty = {
   google: strip(tp.google),
@@ -129,6 +139,7 @@ export const tokens = {
   logo,
   mockPalette,
   dataViz,
+  periodic,
   thirdParty,
   font,
   type,

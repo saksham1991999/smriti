@@ -8,6 +8,8 @@ import {
   logo,
   mockPalette,
   motion,
+  periodic,
+  periodicBlocks,
   radius,
   shadow,
   size,
@@ -51,6 +53,10 @@ function modeDecls(mode: Mode): Decl[] {
   heatmapSteps(mode).forEach((step, i) => {
     d.push([cssVar(`heat-${i}`), step.fill], [cssVar(`heat-${i}-text`), step.text]);
   });
+  for (const b of periodicBlocks) {
+    const p = periodic.block[b][mode];
+    d.push([cssVar(`periodic-${b}-tint`), p.tint], [cssVar(`periodic-${b}-strong`), p.strong], [cssVar(`periodic-${b}-text`), p.text]);
+  }
   const g = thirdParty.google[mode];
   d.push([cssVar("googleFill"), g.fill], [cssVar("googleStroke"), g.stroke], [cssVar("googleText"), g.text]);
   const apple = mode === "light" ? thirdParty.apple.black : thirdParty.apple.white;

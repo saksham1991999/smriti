@@ -5,6 +5,10 @@ import { resolveColors, heatmapSteps } from "./src/theme";
 import {
   font,
   mockPalette,
+  periodic,
+  periodicBlocks,
+  type PeriodicBlock,
+  type PeriodicBlockColors,
   motion,
   radius,
   shadow,
@@ -93,6 +97,7 @@ export interface NativeTheme {
   subjects: Record<SubjectFamily, SubjectColors>;
   heat: { fill: string; text: string }[];
   mockPalette: typeof mockPalette;
+  periodic: Record<PeriodicBlock, PeriodicBlockColors>;
   google: { fill: string; stroke: string; text: string };
   googleNeutral: { fill: string; text: string };
   apple: { fill: string; text: string; stroke?: string };
@@ -119,6 +124,7 @@ export function getNativeTheme(mode: Mode, exam: ExamKey = "all"): NativeTheme {
     subjects: Object.fromEntries(Object.entries(subjects).map(([k, v]) => [k, v[mode]])) as Record<SubjectFamily, SubjectColors>,
     heat: heatmapSteps(mode).map(({ fill, text }) => ({ fill, text })),
     mockPalette,
+    periodic: Object.fromEntries(periodicBlocks.map((b) => [b, periodic.block[b][mode]])) as Record<PeriodicBlock, PeriodicBlockColors>,
     google: thirdParty.google[mode],
     googleNeutral: thirdParty.google.neutral,
     apple: light ? thirdParty.apple.black : thirdParty.apple.white,

@@ -6,7 +6,7 @@
 // Tailwind v3:  presets: [smritiPreset] in tailwind.config.ts
 // Always import "@smriti/tokens/tokens.css" once, before your own CSS.
 import { cssVarRef, kebab } from "./src/css";
-import { colors, mockPaletteStates, motion, radius, size, space, subjectFamilies, typeStyleNames } from "./src/tokens";
+import { colors, mockPaletteStates, motion, periodicBlocks, radius, size, space, subjectFamilies, typeStyleNames } from "./src/tokens";
 
 const v = cssVarRef;
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
@@ -35,6 +35,11 @@ for (const s of mockPaletteStates) {
   colorEntries[`mock-${kebab(s)}-fill`] = v(`mock${cap(s)}Fill`);
   colorEntries[`mock-${kebab(s)}-border`] = v(`mock${cap(s)}Border`);
   colorEntries[`mock-${kebab(s)}-text`] = v(`mock${cap(s)}Text`);
+}
+for (const b of periodicBlocks) {
+  colorEntries[`periodic-${b}-tint`] = v(`periodic-${b}-tint`);
+  colorEntries[`periodic-${b}-strong`] = v(`periodic-${b}-strong`);
+  colorEntries[`periodic-${b}-text`] = v(`periodic-${b}-text`);
 }
 // Brand exception (DESIGN.md §5): only GoogleButton and AppleButton may use these.
 colorEntries["google-fill"] = v("googleFill");

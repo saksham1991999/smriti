@@ -3,7 +3,7 @@
 import { describe, expect, it } from "vitest";
 import { contrastRatio } from "../src/color";
 import { heatmapSteps, resolveColors } from "../src/theme";
-import { colors, examKeys, mockPalette, subjectFamilies, subjects, thirdParty, type Mode } from "../src/tokens";
+import { colors, examKeys, mockPalette, periodic, periodicBlocks, subjectFamilies, subjects, thirdParty, type Mode } from "../src/tokens";
 
 const AA = 4.5;
 const NON_TEXT = 3;
@@ -66,6 +66,17 @@ describe.each(modes)("text pairs in %s mode", (mode) => {
 
   it("heat map steps print readable numbers", () => {
     for (const [i, step] of heatmapSteps(mode).entries()) expectRatio(step.text, step.fill, AA, `heat ${i} (${step.textToken})`);
+  });
+
+  it("periodic table blocks: text on tint and surface, strong edge on surface", () => {
+    const c = colors[mode];
+    for (const b of periodicBlocks) {
+      const p = periodic.block[b][mode];
+      expectRatio(p.text, p.tint, AA, `${b}-block text on tint`);
+      expectRatio(p.text, c.surface, AA, `${b}-block text on surface`);
+      expectRatio(c.ink, p.tint, AA, `ink on ${b}-block tint`);
+      expectRatio(p.strong, c.surface, NON_TEXT, `${b}-block strong on surface`);
+    }
   });
 
   it("Google and Apple button text (brand exception, still AA)", () => {

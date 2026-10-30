@@ -521,6 +521,89 @@ async def _a_concept(services: AppServices) -> list[str]:
     return [str(cid)]
 
 
+async def test_submitted_mock_answers_update_mastery_once(
+    client: httpx.AsyncClient, services: AppServices, blueprint: str
+) -> None:
+    """Sync v1.3: a submitted attempt's scored answers become ``context: mock`` question attempts,
+    once, and update concept mastery; skipped questions don't."""
+    s = await learner(client, blueprint)
+    attempt = (await _start(client, s, SECTION_A)).json()
+    aid = attempt["id"]
+    qids = [q["question_id"] for q in attempt["questions"]]
+    keys = await _keys(services, qids)
+    rows = [
+        _row(qids[0], _right(keys[qids[0]])),
+        _row(qids[1], _wrong(keys[qids[1]])),
+        _row(qids[2], None),
+    ]
+    await client.put(f"/v1/attempts/{aid}/answers", json={"answers": rows}, headers=s.headers)
+
+    def mock_answer(qid: str) -> dict[str, Any]:
+        return {
+            "event_id": str(uuid.uuid4()),
+            "type": "answer_submitted",
+            "occurred_at": datetime.now(UTC).isoformat(),
+            "tz": "Asia/Kolkata",
+            "payload": {
+                "question_id": qid,
+                "context": "mock",
+                "attempt_id": aid,
+                "correct": True,
+                "ms_to_answer": 1000,
+            },
+        }
+
+    early = await client.post(
+        "/v1/sync/events",
+        json={"device_id": str(s.device_id), "events": [mock_answer(qids[0])]},
+        headers=s.headers,
+    )
+    assert early.json()["rejected"][0]["code"] == "invalid_payload"
+
+    r = await client.post(f"/v1/attempts/{aid}/submit", headers=s.headers)
+    assert r.status_code == 200, r.text
+    await client.post(f"/v1/attempts/{aid}/submit", headers=s.headers)
+    await client.get(f"/v1/attempts/{aid}/report", headers=s.headers)
+
+    async def recorded() -> list[Any]:
+        async with services.db.admin_tx() as session:
+            return list(
+                (
+                    await session.execute(
+                        text(
+                            "select question_id, is_correct, session_id from learn.question_attempts"
+                            " where user_id = :u and context = 'mock' order by question_id"
+                        ),
+                        {"u": s.user_id},
+                    )
+                ).all()
+            )
+
+    rows_now = await recorded()
+    assert sorted((r.question_id, r.is_correct) for r in rows_now) == sorted(
+        [(qids[0], True), (qids[1], False)]
+    )
+    assert all(str(r.session_id) == aid for r in rows_now)
+    async with services.db.admin_tx() as session:
+        attempts = (
+            await session.execute(
+                text(
+                    "select coalesce(sum(attempts), 0) from learn.concept_mastery where user_id = :u"
+                ),
+                {"u": s.user_id},
+            )
+        ).scalar_one()
+    assert attempts >= 2
+
+    dup = await client.post(
+        "/v1/sync/events",
+        json={"device_id": str(s.device_id), "events": [mock_answer(qids[0])]},
+        headers=s.headers,
+    )
+    assert dup.json()["rejected"][0]["code"] == "already_recorded"
+    assert len(await recorded()) == 2
+
+
 def test_locked_sections_follow_their_timers() -> None:
     """Section locking (practice §6.8) on a synthetic two-section paper with timers."""
     start = datetime(2026, 10, 30, 10, 0, tzinfo=UTC)

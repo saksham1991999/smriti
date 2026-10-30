@@ -664,3 +664,36 @@ async def revoke_promo_grants(
     )
     await recompute_entitlement(session, user_id)
     return int(res.rowcount or 0)  # type: ignore[attr-defined]
+
+
+async def trial_reminders(db: Database, *, now: datetime | None = None) -> int:
+    """R33: our own reminder ``billing.trial_reminder_days_before`` days before the ₹1 month turns
+    into the ₹99 charge (push ``trial_ending``, once per subscription)."""
+    from smriti_api.services import flags as flag_service
+    from smriti_api.services import notify
+
+    now = now or datetime.now(UTC)
+    async with db.system_tx() as session:
+        flags = await flag_service.server_flags(session)
+        days = int(flags.get("billing.trial_reminder_days_before", 3) or 3)
+        rows = (
+            await session.execute(
+                text(
+                    "select id, user_id, current_period_end from billing.subscriptions"
+                    " where status = 'trialing' and not cancel_at_period_end and user_id is not null"
+                    " and refunded_at is null and revoked_at is null"
+                    " and current_period_end > :now and current_period_end <= :until"
+                ),
+                {"now": now, "until": now + timedelta(days=days)},
+            )
+        ).all()
+        queued = 0
+        for r in rows:
+            queued += await notify.enqueue(
+                session,
+                user_id=r.user_id,
+                kind="trial_ending",
+                payload={"date": r.current_period_end.strftime("%d/%m/%Y")},
+                dedupe_key=f"trial_ending:{r.id}",
+            )
+    return queued

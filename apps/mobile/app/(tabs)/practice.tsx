@@ -110,6 +110,21 @@ export default function Practice() {
         <Tile icon="Sparkle" title={t('tutor_social:AI-02.history')} caption={t('tutor_social:AI-02.input_placeholder_no_context')} onPress={() => router.push('/tutor' as Href)} testID="prc-tile-tutor" />
       </View>
 
+      {app.ageBand() !== '10_12' && app.ageBand() !== 'u10' ? (
+        <Card outlined onPress={() => router.push('/photo-doubt' as Href)} accessibilityLabel={t('practice:PRC-01.snap_a_doubt')} testID="prc-snap">
+          <View style={styles.row}>
+            <Icon name="Sparkle" color="primary" />
+            <View style={styles.grow}>
+              <Text variant="label">{t('practice:PRC-01.snap_a_doubt')}</Text>
+              <Text variant="caption" tone="muted">
+                {t('practice:PRC-01.snap_caption')}
+              </Text>
+            </View>
+            <Icon name="CaretRight" color="inkMuted" />
+          </View>
+        </Card>
+      ) : null}
+
       {data ? (
         <LimitMeter
           label={t('practice:PRC-01.title')}

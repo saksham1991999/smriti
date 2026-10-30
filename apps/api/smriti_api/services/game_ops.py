@@ -201,8 +201,8 @@ async def purchase(
     if item.kind == "freeze":
         if await count_equipped(session, facts.user_id) >= rules.freeze_slots:
             raise DomainError("freeze_slots_full", "Both freeze slots are already full")
-    economy = flags.get("game.economy")
-    treat_max = int(economy.get("treat_max_held", 10)) if isinstance(economy, dict) else 10
+    raw_max = flags.get("game.shop.treats_max_held", 10)
+    treat_max = int(raw_max) if isinstance(raw_max, int) and not isinstance(raw_max, bool) else 10
     if item.kind == "treat":
         held = (
             await session.execute(

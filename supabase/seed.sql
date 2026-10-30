@@ -96,8 +96,8 @@ insert into ops.flags (key, value, description) values
   ('free.rotating_chapters', '[]', 'learn G6: chapter ids free this period'),
   ('free.forge_trials_lifetime', '1', 'memory-labs §14 Q2'),
   -- Daily goal (R6)
-  ('daily_goal.options', '[5, 10, 20, 30]', 'R6'),
-  ('daily_goal.default', '10', 'R6'),
+  ('goal.minutes_options', '[5, 10, 20, 30]', 'R6'),
+  ('goal.default_minutes', '10', 'R6'),
   -- Auth (auth flow §10.1; R29 values and proposed defaults)
   ('auth.soft_prompt_cooldown_days', '7', 'R29'),
   ('auth.soft_prompt_later_limit', '2', 'R29'),
@@ -118,7 +118,7 @@ insert into ops.flags (key, value, description) values
   -- Social and sharing (R30, R32, R37)
   ('social.duo_max_partners', '5', 'R32'),
   ('share.streak_milestones', '[7, 30, 100]', 'R37 / me-money §3.4'),
-  ('leagues.tiers', '[{"en":"Seed","hi":"बीज"},{"en":"Sprout","hi":"अंकुर"},{"en":"Leaf","hi":"पत्ती"},{"en":"Bud","hi":"कली"},{"en":"Bloom","hi":"फूल"},{"en":"Lotus","hi":"कमल"},{"en":"Mango","hi":"आम"},{"en":"Neem","hi":"नीम"},{"en":"Peepal","hi":"पीपल"},{"en":"Banyan","hi":"बरगद"}]', 'R30'),
+  ('league.tier_names', '[{"en":"Seed","hi":"बीज"},{"en":"Sprout","hi":"अंकुर"},{"en":"Leaf","hi":"पत्ती"},{"en":"Bud","hi":"कली"},{"en":"Bloom","hi":"फूल"},{"en":"Lotus","hi":"कमल"},{"en":"Mango","hi":"आम"},{"en":"Neem","hi":"नीम"},{"en":"Peepal","hi":"पीपल"},{"en":"Banyan","hi":"बरगद"}]', 'R30'),
   -- Memory (memory-labs §11)
   ('memory.rescue_cards', '5', 'memory-labs §11'),
   ('memory.session_size', '20', 'memory-labs §11'),
@@ -127,7 +127,14 @@ insert into ops.flags (key, value, description) values
   ('memory.leech_lapses', '8', 'memory-labs §11'),
   ('memory.retention_presets', '{"relaxed": 0.85, "standard": 0.90, "exam": 0.95}', 'memory-labs §11'),
   -- Gems (me-money §3.6 starting values)
-  ('game.economy', '{"daily_quest": [5, 15], "weekly_quest": 50, "badge_by_tier": {"1": 20, "2": 50, "3": 100}, "league_promotion": 50, "streak_milestones": {"7": 25, "30": 50, "100": 100, "365": 200}, "first_revival": 50, "referral_joined": 50, "treat_max_held": 10}', 'me-money §3.6'),
+  ('game.economy.daily_quest_gems', '{"min": 5, "max": 15}', 'me-money §3.6'),
+  ('game.economy.weekly_quest_gems', '50', 'me-money §3.6'),
+  ('game.economy.badge_gems', '[20, 50, 100]', 'me-money §3.6: by badge tier'),
+  ('game.economy.league_promotion_gems', '50', 'me-money §3.6'),
+  ('game.economy.streak_milestone_gems', '{"7": 25, "30": 50, "100": 100, "365": 200}', 'me-money §3.6'),
+  ('game.economy.first_revival_gems', '50', 'me-money §3.6'),
+  ('game.economy.referral_gems', '50', 'me-money §3.6'),
+  ('game.shop.treats_max_held', '10', 'me-money §3.6'),
   -- Pricing (PRD §11, R33, R38)
   ('pricing.display', '{"currency": "INR", "pro_monthly_paise": 9900, "intro_paise": 100, "tax_inclusive": true, "yearly_visible": false}', 'R38; the yearly plan stays hidden until its flag is on')
 on conflict (key) do nothing;

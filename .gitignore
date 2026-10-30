@@ -21,3 +21,6 @@ playwright-report/
 test-results/
 ios/
 android/
+# Native sources of the app's local Expo modules are source, not prebuild output.
+!apps/mobile/modules/*/ios/
+!apps/mobile/modules/*/android/

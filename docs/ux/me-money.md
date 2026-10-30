@@ -521,7 +521,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Cancel rest | Cancel rest day | आराम का दिन हटाएँ |
 | Qualifying | Counts: 1 lesson, or 10 reviews, or 1 mock section, or the daily challenge. | गिना जाता है: 1 पाठ, या 10 रिव्यू, या 1 मॉक सेक्शन, या डेली चैलेंज। |
 | Exam day | Exam day: your streak is protected. | परीक्षा का दिन: आपकी स्ट्रीक सुरक्षित है। |
-| Incident note | If Smriti has a problem on our side, your streak is safe. | अगर हमारी तरफ़ से कोई दिक्कत हो, तो आपकी स्ट्रीक सुरक्षित रहेगी। |
+| Incident note | If Smriti has a problem on our side, your streak is safe. | अगर Smriti में हमारी तरफ़ से कोई दिक्कत हो, तो आपकी स्ट्रीक सुरक्षित रहेगी। |
 | Legend: protected | Protected (our side) | सुरक्षित (हमारी तरफ़ से) |
 | Pet line (broken streak) | New streak, same plant. Your longest is safe. | नई स्ट्रीक, वही पौधा। सबसे लंबी स्ट्रीक सुरक्षित है। |
 
@@ -1038,7 +1038,7 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Delete | Delete account | अकाउंट हटाएँ |
 | Store note | Pro is billed by {store}. Deleting your account doesn't cancel it. | Pro का बिल {store} से आता है। अकाउंट हटाने से यह रद्द नहीं होगा। |
 | Manage Pro | Manage Pro | Pro मैनेज करें |
-| Guest title | You're using Smriti as a guest | आप मेहमान मोड में हैं |
+| Guest title | You're using Smriti as a guest | Smriti पर आप मेहमान हैं |
 | Guest body | Sign in with Google to save your progress on every device. | Google से साइन इन करें, ताकि प्रगति हर डिवाइस पर सेव रहे। |
 | Managed child | Managed by a parent's Google account | एक अभिभावक के Google अकाउंट से मैनेज |
 

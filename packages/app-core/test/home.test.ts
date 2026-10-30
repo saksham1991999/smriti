@@ -258,7 +258,7 @@ describe('memory config', () => {
   it('reads the memory flags', () => {
     const m = memoryConfigFromFlags();
     expect(m.queue).toEqual({ newCardsPerDay: 15, dailyReviewCap: 200 });
-    expect(m.comeback).toMatchObject({ minDue: 60, planLengths: [3, 5, 7], sessionSize: 20 });
+    expect(m.comeback).toMatchObject({ minDue: 60, relearnBelow: 0.5, planLengths: [3, 5, 7], sessionSize: 20 });
     expect(m.rescueCards).toBe(5);
   });
 });

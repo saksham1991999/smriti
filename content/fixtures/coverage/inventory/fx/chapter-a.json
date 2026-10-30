@@ -1,0 +1,71 @@
+{
+  "schema": "inventory@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "chapter": "fx.chapter-a",
+  "items": [
+    {
+      "id": "inv-1",
+      "kind": "definition",
+      "title": "Fixture definition 1",
+      "source_ref": "Fixture source §1",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-1"
+      ]
+    },
+    {
+      "id": "inv-2",
+      "kind": "formula",
+      "title": "Fixture formula 1",
+      "source_ref": "Fixture source §2",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ]
+    },
+    {
+      "id": "inv-3",
+      "kind": "list",
+      "title": "Fixture list 1",
+      "source_ref": "Fixture source §3",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1"
+      ]
+    },
+    {
+      "id": "inv-4",
+      "kind": "date",
+      "title": "Fixture date 1",
+      "source_ref": "Fixture source §4",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ]
+    },
+    {
+      "id": "inv-5",
+      "kind": "solved_example",
+      "title": "Fixture example 1",
+      "source_ref": "Fixture source §5",
+      "concepts": [
+        "fx.chapter-a.topic-a.sub-1.concept-2"
+      ]
+    },
+    {
+      "id": "inv-6",
+      "kind": "fact",
+      "title": "Fixture out-of-syllabus item",
+      "source_ref": "Fixture source §6",
+      "concepts": [],
+      "out_of_syllabus": "Fixture exclusion reason (test data)"
+    }
+  ]
+}

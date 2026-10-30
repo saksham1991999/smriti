@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/blueprint.schema.json",
+  "title": "BlueprintFile",
+  "description": "content/blueprints/{exam_profile_id}/{paper_code}.v{n}.json, encoded by skills/exam-blueprint from the latest official notification. Projects to content.exam_blueprints.spec. Never edited in place: a pattern change is a new version.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": [
+    "schema",
+    "exam_profile",
+    "paper_code",
+    "version",
+    "effective_from",
+    "verified_at",
+    "source",
+    "mode",
+    "duration_min",
+    "languages",
+    "language_switch",
+    "interface",
+    "calculator",
+    "section_navigation",
+    "numeric_input",
+    "question_count",
+    "max_marks",
+    "sections",
+    "instructions"
+  ],
+  "properties": {
+    "schema": { "const": "blueprint@1" },
+    "exam_profile": { "$ref": "common.schema.json#/$defs/ExamProfileId" },
+    "paper_code": { "$ref": "common.schema.json#/$defs/Slug" },
+    "version": { "type": "integer", "minimum": 1 },
+    "effective_from": { "$ref": "common.schema.json#/$defs/IsoDate" },
+    "verified_at": { "$ref": "common.schema.json#/$defs/IsoDate" },
+    "source": {
+      "description": "The official notification this blueprint was encoded from.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "title", "published", "retrieved"],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string", "minLength": 1 },
+        "published": { "$ref": "common.schema.json#/$defs/IsoDate" },
+        "retrieved": { "$ref": "common.schema.json#/$defs/IsoDate" },
+        "pages": { "type": "string" }
+      }
+    },
+    "mode": { "type": "string", "enum": ["cbt", "pen_paper"] },
+    "duration_min": { "type": "integer", "minimum": 1 },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/Locale" }
+    },
+    "language_switch": {
+      "description": "per_question: the EN/HI toggle shows on every question in full, sectional and PYQ-paper mocks. fixed: the language is chosen once (practice flow 6.4, R44).",
+      "type": "string",
+      "enum": ["per_question", "fixed"]
+    },
+    "interface": { "type": "string", "enum": ["nta", "upsc_omr", "ssc_tcs", "generic"] },
+    "interface_profile": {
+      "description": "Buttons, labels and palette states encoded from the official instructions. null: the runner uses the generic profile.",
+      "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/InterfaceProfile" }]
+    },
+    "calculator": { "type": "string", "enum": ["none", "basic", "scientific"] },
+    "section_navigation": {
+      "type": "string",
+      "enum": ["free", "locked_in_order", "free_within_timer"]
+    },
+    "early_section_submit": {
+      "description": "Whether a locked section can be submitted before its timer ends. null when the notification is silent.",
+      "type": ["boolean", "null"]
+    },
+    "numeric_input": { "type": "string", "enum": ["virtual_keypad", "keyboard"] },
+    "question_count": {
+      "description": "Questions that count in the paper (after attempt-any rules).",
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_marks": { "type": "number", "exclusiveMinimum": 0 },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Section" }
+    },
+    "qualifying": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["rule"],
+      "properties": {
+        "rule": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["kind", "value"],
+              "properties": {
+                "kind": { "type": "string", "enum": ["percent_of_max", "marks"] },
+                "value": { "type": "number", "minimum": 0 }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "exam_day": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "reporting_lead_min": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "accommodations": {
+      "description": "Extra time and other accommodations, only where the official notification defines them.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["extra_time_min_per_hour", "source_ref"],
+      "properties": {
+        "extra_time_min_per_hour": { "type": "number", "minimum": 0 },
+        "source_ref": { "type": "string" }
+      }
+    },
+    "group": {
+      "description": "Paired papers taken together (JEE Advanced paper 1 and 2, UPSC GS I and CSAT).",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["id", "order"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/Slug" },
+        "order": { "type": "integer", "minimum": 1 },
+        "break_min": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "instructions": { "$ref": "common.schema.json#/$defs/I18nText" }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "QuestionType": {
+      "type": "string",
+      "enum": [
+        "mcq_single",
+        "mcq_multi",
+        "numerical",
+        "integer",
+        "matrix_match",
+        "match_list",
+        "assertion_reason",
+        "statement_based",
+        "paragraph",
+        "fill_blank",
+        "order_steps"
+      ]
+    },
+    "MarkingRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correct", "wrong", "unattempted"],
+      "properties": {
+        "correct": { "type": "number" },
+        "wrong": { "type": "number" },
+        "unattempted": { "type": "number" },
+        "partial": {
+          "description": "JEE Advanced-style partial marking: per correct option chosen, only when no wrong option is chosen.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["per_correct_option", "requires_no_wrong"],
+          "properties": {
+            "per_correct_option": { "type": "number" },
+            "requires_no_wrong": { "type": "boolean" }
+          }
+        },
+        "tolerance": {
+          "description": "Numerical answers: as_notified, or the notified tolerance.",
+          "oneOf": [{ "const": "as_notified" }, { "$ref": "common.schema.json#/$defs/Tolerance" }]
+        }
+      }
+    },
+    "Section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "title", "question_count", "question_types", "marking"],
+      "properties": {
+        "code": { "$ref": "common.schema.json#/$defs/Slug" },
+        "title": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "subject": { "type": ["string", "null"] },
+        "timer_min": { "type": ["integer", "null"], "minimum": 1 },
+        "question_count": { "type": "integer", "minimum": 1 },
+        "type_counts": {
+          "description": "Questions per type, when a section mixes types. Lets the check add up marks.",
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/QuestionType" },
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "attempt_rule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["attempt_any"],
+          "properties": {
+            "attempt_any": { "type": ["integer", "null"], "minimum": 1 },
+            "over_attempt": {
+              "type": ["string", "null"],
+              "enum": ["block", "evaluate_first_n", null]
+            }
+          }
+        },
+        "optional": { "type": "boolean" },
+        "cutoff": {
+          "description": "Sectional cut-off, only when notified.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["kind", "value"],
+          "properties": {
+            "kind": { "type": "string", "enum": ["percent_of_max", "marks"] },
+            "value": { "type": "number" }
+          }
+        },
+        "question_types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/QuestionType" }
+        },
+        "marking": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": { "$ref": "#/$defs/QuestionType" },
+          "additionalProperties": { "$ref": "#/$defs/MarkingRule" }
+        }
+      }
+    },
+    "PaletteState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "colour_token", "shape"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["not_visited", "not_answered", "answered", "marked", "answered_marked"]
+        },
+        "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "colour_token": {
+          "description": "A key under mockPalette in packages/tokens/tokens.json, for example mockPalette.answered.",
+          "type": "string",
+          "pattern": "^mockPalette\\.[A-Za-z]+$"
+        },
+        "shape": {
+          "type": "string",
+          "enum": ["square", "circle", "pentagon-up", "pentagon-down", "circle-tick"]
+        }
+      }
+    },
+    "InterfaceProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "buttons",
+        "palette_states",
+        "save_requires_explicit_action",
+        "clear_keeps_mark",
+        "marked_answer_evaluated"
+      ],
+      "properties": {
+        "buttons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["action", "label"],
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "save_next",
+                  "save_mark_review",
+                  "mark_review_next",
+                  "clear_response",
+                  "back",
+                  "next",
+                  "submit"
+                ]
+              },
+              "label": { "$ref": "common.schema.json#/$defs/I18nText" }
+            }
+          }
+        },
+        "palette_states": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/PaletteState" }
+        },
+        "save_requires_explicit_action": { "type": "boolean" },
+        "clear_keeps_mark": { "type": "boolean" },
+        "marked_answer_evaluated": { "type": "boolean" },
+        "keyboard_disabled_on_exam_day": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "schema": "lesson@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx.chapter-a.topic-d:deep_dive",
+  "topic": "fx.chapter-a.topic-d",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 5,
+  "concepts": [
+    "fx.chapter-a.topic-d.sub-1.concept-1",
+    "fx.chapter-a.topic-d.sub-1.concept-2"
+  ],
+  "cards": [
+    {
+      "id": "fx.chapter-a.topic-d:dd:01",
+      "type": "derivation",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-1"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Fixture title D1",
+        "hi": "फ़िक्स्चर शीर्षक D1"
+      },
+      "steps": [
+        {
+          "latex": "a^2 + b^2 = c^2",
+          "say": {
+            "en": "Fixture step 1",
+            "hi": "फ़िक्स्चर चरण 1"
+          },
+          "why": {
+            "en": "Fixture explanation 1",
+            "hi": "फ़िक्स्चर व्याख्या 1"
+          }
+        },
+        {
+          "latex": "c = \\sqrt{a^2 + b^2}",
+          "say": {
+            "en": "Fixture step 2",
+            "hi": "फ़िक्स्चर चरण 2"
+          },
+          "why": null
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-1"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Fixture title D2",
+        "hi": "फ़िक्स्चर शीर्षक D2"
+      },
+      "body": {
+        "en": "Fixture body D2",
+        "hi": "फ़िक्स्चर पाठ D2"
+      },
+      "media": "img.chapter-a.fx-pending"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:03",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-1"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-d.0001"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:04",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-1"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-d.0004"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:05",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-2"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-d.0005"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:06",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-2"
+      ],
+      "depth": 4,
+      "question": "q.fx.chapter-a.topic-d.0006"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:07",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-2"
+      ],
+      "depth": 4,
+      "question": "q.fx.chapter-a.topic-d.0007"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-2"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "Fixture title D8",
+        "hi": "फ़िक्स्चर शीर्षक D8"
+      },
+      "body": {
+        "en": "Fixture body D8",
+        "hi": "फ़िक्स्चर पाठ D8"
+      },
+      "media": "img.chapter-a.fx-object-c"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-2"
+      ],
+      "depth": 5,
+      "title": {
+        "en": "Fixture going further D",
+        "hi": "फ़िक्स्चर और आगे D"
+      },
+      "body": {
+        "en": "Fixture body D9",
+        "hi": "फ़िक्स्चर पाठ D9"
+      },
+      "media": "img.chapter-a.fx-object-c"
+    },
+    {
+      "id": "fx.chapter-a.topic-d:dd:10",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-d.sub-1.concept-1",
+        "fx.chapter-a.topic-d.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point D10.1",
+          "hi": "फ़िक्स्चर बिंदु D10.1"
+        },
+        {
+          "en": "Fixture point D10.2",
+          "hi": "फ़िक्स्चर बिंदु D10.2"
+        }
+      ]
+    }
+  ]
+}

@@ -77,14 +77,16 @@ export interface SyncEventPayloads {
   quest_claimed: { quest_id: string };
   freeze_equipped: { slot: number };
 
-  // ── Proposed additions (listed under "Contract changes" in the build report) ──
-  /** memory-labs §5.13: a finished 2-minute rescue marks a plant health day (G23). */
-  rescue_completed: { cards: number; reached_qualify: boolean };
+  /** The 2-minute rescue (R23, memory-labs §5.13). */
+  rescue_completed: { cards: number; ms_total: number };
   /** memory-labs §5.14: ids only. */
-  cards_queued: { source: 'mock_report' | 'practice_summary' | 'solution'; concept_ids: string[]; card_refs: string[] };
-  /** memory-labs §5.2: mirrors the comeback plan so a second device shows the same plan. */
-  comeback_plan_started: { start_day: string; plan_days: number; daily_chunk: number; relearn_topics: string[] };
+  cards_queued: { concept_ids: string[]; source: CardsQueuedSource };
+  /** memory-labs §5.2. */
+  comeback_plan_started: { days_away: number; cards: number };
 }
+
+/** `cards_queued.source` on the wire (sync contract v1.1). */
+export type CardsQueuedSource = 'lesson' | 'practice' | 'comeback';
 
 export type SyncEventType = keyof SyncEventPayloads;
 
@@ -107,9 +109,10 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'focus_session_completed',
   'quest_claimed',
   'freeze_equipped',
+  'rescue_completed',
+  'cards_queued',
+  'comeback_plan_started',
 ] as const satisfies readonly SyncEventType[];
-
-export const PROPOSED_EVENT_TYPES = ['rescue_completed', 'cards_queued', 'comeback_plan_started'] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {
   event_id: string;
@@ -223,4 +226,9 @@ export interface SyncStateResponse {
   srs?: { cards: SrsCardState[]; deleted: string[] };
   topic_progress?: TopicProgress[];
   entitlement?: EntitlementSection;
+}
+
+/** The canonical wire form of a card ref: `u:` becomes `d:` (sync contract v1.1). */
+export function canonicalCardRef(ref: string): string {
+  return ref.startsWith('u:') ? `d:${ref.slice(2)}` : ref;
 }

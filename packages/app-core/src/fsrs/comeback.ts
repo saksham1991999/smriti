@@ -1,3 +1,4 @@
+import type { SyncEventPayloads } from '../sync/types';
 import type { SrsCardRow } from '../storage/types';
 import { addDays, type Instant, type LocalDate } from '../time';
 import type { SrsScheduler } from './scheduler';
@@ -10,7 +11,7 @@ import type { SrsScheduler } from './scheduler';
 export interface ComebackConfig {
   /** `memory.comeback.min_due` (60). */
   minDue: number;
-  /** `memory.comeback.relearn_below` (0.3 retrievability). */
+  /** `memory.comeback.relearn_below` (0.5 retrievability). */
   relearnBelow: number;
   /** `memory.comeback.first_session` (10). */
   firstSession: number;
@@ -131,4 +132,9 @@ export function comebackChunkFor(plan: ComebackPlan, today: LocalDate): { dayInd
   const i = plan.chunks.findIndex((c) => c.day === today);
   if (i < 0) return null;
   return { dayIndex: i + 1, cardRefs: plan.chunks[i]?.cardRefs ?? [] };
+}
+
+/** The `comeback_plan_started` payload (sync contract v1.1): counts only. */
+export function comebackStartedPayload(plan: Pick<ComebackPlan, 'total'>, daysAway: number): SyncEventPayloads['comeback_plan_started'] {
+  return { days_away: Math.max(0, Math.floor(daysAway)), cards: plan.total };
 }

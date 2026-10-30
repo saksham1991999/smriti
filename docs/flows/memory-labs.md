@@ -864,7 +864,7 @@ All names are snake_case. Props carry ids, enums, counts and durations only: nev
 | `sim_load_failed` | product | `sim_id`, `reason` (offline, download, timeout, crash, unsupported) |
 | `lab_fallback_shown` | product | `lab_id`, `reason` |
 | `lab_task_result` | learning | `lab_id`, `task_id`, `correct`, `tries`, `checked_by` (sim, host) |
-| `lab_reading_recorded` | learning | `lab_id`, `name`, `unit` (no value needed for analytics; the value stays in the event payload for the student's own table) |
+| `lab_reading_recorded` | learning | `lab_id`, `quantity`, `unit` (no value needed for analytics; the value stays in the event payload for the student's own table) |
 | `sim_reset`, `sim_expanded`, `sim_low_power_changed` | product | `sim_id`, `orientation`, `on` |
 | `lab_completed` | learning | `lab_id`, `tasks_done`, `tasks_skipped`, `duration_ms` |
 | `model3d_opened` | product | `model_id`, `lod`, `tier` |

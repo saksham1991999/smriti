@@ -229,6 +229,12 @@ export const FLAG_REGISTRY = {
   'home.continue_max_age_days': owner(posInt, 'learn §5.2'),
   'home.strip_max_nodes': owner(posInt, 'learn §5.2'),
   'home.strip_max_review_nodes': owner(posInt, 'learn §5.3'),
+  // ── XP amounts (flows/learn.md §7.5 item 10). Proposed until the owner sets them (R51). ──
+  'xp.lesson_first_try': def(nonNegInt, 10, 'proposed', 'learn §7, R51'),
+  'xp.lesson_second_try': def(nonNegInt, 5, 'proposed', 'learn §7, R51'),
+  'xp.lesson_attempt': def(nonNegInt, 1, 'proposed', 'learn §7, R51'),
+  'xp.lesson_complete': def(nonNegInt, 20, 'proposed', 'learn §7, R51'),
+  'xp.combo_bonus': def(nonNegInt, 10, 'proposed', 'learn §7.3 A19, R51'),
   'learn.find_level_questions': def(posInt, 5, 'ruling', 'R27, learn §6.5'),
   'learn.combo_streak_len': def(posInt, 5, 'doc', 'learn §7.3 (A19)'),
   'learn.exit_nudge_cards_left': owner(nonNegInt, 'ux/learn LES-05'),
@@ -254,7 +260,7 @@ export const FLAG_REGISTRY = {
   'memory.new_cards_per_day': def(nonNegInt, 15, 'proposed', 'memory-labs §5.1'),
   'memory.leech_lapses': def(posInt, 8, 'proposed', 'memory-labs §5.3'),
   'memory.comeback.min_due': def(posInt, 60, 'proposed', 'memory-labs §5.2'),
-  'memory.comeback.relearn_below': def(fraction, 0.3, 'proposed', 'memory-labs §5.2'),
+  'memory.comeback.relearn_below': def(fraction, 0.5, 'ruling', 'memory-labs §5.2; 0.5 per the coordinator ruling of 30 Oct 2026'),
   'memory.comeback.plan_lengths': def(z.array(posInt).min(1), [3, 5, 7], 'ruling', 'R22'),
   'memory.default_seconds_per_card': def(posInt, 10, 'proposed', 'memory-labs §5.2'),
   'memory.retention_presets': def(

@@ -177,7 +177,7 @@ export function displayInterval(ms: number): IntervalPreview['display'] {
   return { value: Math.round((d / 365) * 10) / 10, unit: 'y' };
 }
 
-/** `c:<card_id>`, `u:<uuid>` / `d:<uuid>` (own cards; the docs use both prefixes), `q:<question_id>`. */
+/** `c:<card_id>`, `d:<uuid>` (own cards; `u:` accepted as an alias, sync contract v1.1), `q:<question_id>`. */
 export function parseCardRef(ref: string): { kind: 'content' | 'user' | 'question'; id: string } | null {
   const m = /^([cudq]):(.+)$/.exec(ref);
   if (!m || !m[2]) return null;

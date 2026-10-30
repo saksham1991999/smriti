@@ -1,0 +1,31 @@
+[project]
+name = "smriti-content"
+version = "0.1.0"
+description = "Pydantic v2 models for Smriti content, generated from packages/content-schema/schemas."
+requires-python = ">=3.12,<3.13"
+dependencies = ["pydantic==2.14.1"]
+
+[dependency-groups]
+dev = ["pytest==8.4.2", "mypy==1.18.2", "ruff==0.13.3"]
+
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["smriti_content"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["smriti_content/models"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+exclude = ["smriti_content/models/"]
+
+[[tool.mypy.overrides]]
+module = "smriti_content.models.*"
+ignore_errors = true

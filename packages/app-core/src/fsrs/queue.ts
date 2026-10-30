@@ -1,6 +1,7 @@
 import type { CardsIndexRow, SrsCardRow } from '../storage/types';
 import { addDays, endOfLocalDay, localDate, toIso, toMs, type Instant, type LocalDate } from '../time';
 import type { SrsScheduler } from './scheduler';
+import type { CardsQueuedSource, SyncEventPayloads } from '../sync/types';
 
 /**
  * Today's review queue (memory-labs §5.1), built on the device from `srs_cards`, offline:
@@ -142,7 +143,8 @@ export function quickReviewSet(queue: readonly SrsCardRow[], scheduler: SrsSched
 
 export interface QueueForConceptsInput {
   conceptIds: readonly string[];
-  source: 'mock_report' | 'practice_summary' | 'solution';
+  /** Where the request came from (memory-labs §5.14); mapped to the wire `source`. */
+  source: QueueRequestSource;
   cards: readonly SrsCardRow[];
   index: readonly CardsIndexRow[];
   now: Instant;
@@ -162,8 +164,15 @@ export interface QueueForConceptsResult {
   started: SrsCardRow[];
   /** Existing rows moved into today's queue (or tomorrow when today is full). */
   pulledForward: SrsCardRow[];
-  /** The `cards_queued` event payload (ids only). */
-  event: { source: QueueForConceptsInput['source']; concept_ids: string[]; card_refs: string[] };
+  /** The `cards_queued` event payload (ids only, sync contract v1.1). */
+  event: SyncEventPayloads['cards_queued'];
+}
+
+export type QueueRequestSource = 'mock_report' | 'practice_summary' | 'solution' | 'lesson' | 'comeback';
+
+/** UI origin to the wire `cards_queued.source`: everything from practice and mocks is `practice`. */
+export function cardsQueuedSource(source: QueueRequestSource): CardsQueuedSource {
+  return source === 'lesson' || source === 'comeback' ? source : 'practice';
 }
 
 /**
@@ -210,10 +219,6 @@ export function queueCardsForConcepts(input: QueueForConceptsInput): QueueForCon
   return {
     started,
     pulledForward,
-    event: {
-      source: input.source,
-      concept_ids: [...concepts],
-      card_refs: [...started, ...pulledForward].map((c) => c.card_ref),
-    },
+    event: { concept_ids: [...concepts], source: cardsQueuedSource(input.source) },
   };
 }

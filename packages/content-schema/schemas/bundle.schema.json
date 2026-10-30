@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/bundle.schema.json",
+  "title": "Bundle",
+  "description": "A published bundle: one topic x mode x locale, immutable, named {topic}.{mode}.{locale}.{sha256}.json. Text is resolved to the bundle's locale; media and maths are resolved into the media and math maps. Mock and daily answer keys never appear here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "topic",
+    "mode",
+    "locale",
+    "min_app_version",
+    "concepts",
+    "bites",
+    "cards",
+    "questions",
+    "mnemonics",
+    "sheets",
+    "media",
+    "math"
+  ],
+  "properties": {
+    "schema": {
+      "const": "bundle@1"
+    },
+    "id": {
+      "description": "{topic_id}:{mode}:{locale}",
+      "type": "string"
+    },
+    "fixture": {
+      "type": "boolean"
+    },
+    "topic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "chapter", "subject", "name"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "mode": {
+      "$ref": "#/$defs/BundleMode"
+    },
+    "locale": {
+      "$ref": "common.schema.json#/$defs/Locale"
+    },
+    "min_app_version": {
+      "type": "string"
+    },
+    "lesson_id": {
+      "type": "string"
+    },
+    "estimated_minutes": {
+      "type": "number"
+    },
+    "min_depth": {
+      "type": "integer"
+    },
+    "max_depth": {
+      "type": "integer"
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "kind", "intrinsic_depth", "summary", "key_points"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "intrinsic_depth": {
+            "type": "integer"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "key_points": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "bites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "card_ids", "estimated_minutes"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtopic": {
+            "type": "string"
+          },
+          "card_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "estimated_minutes": {
+            "type": "number"
+          },
+          "derived": {
+            "description": "true when the bite was derived from summary cards because the lesson has no bites[]",
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "concepts", "depth"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "card.schema.json#/$defs/CardType"
+          },
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "depth": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        }
+      }
+    },
+    "questions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["id", "type", "concepts", "depth", "stem"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "blueprint.schema.json#/$defs/QuestionType"
+          }
+        }
+      }
+    },
+    "mnemonics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "sheets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "pyq_papers": {
+      "description": "Papers the bundle's PYQ questions come from, for the Tough one chip (\"Asked in {exam_name} {year}\").",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["exam", "exam_name", "year"],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "exam_name": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "session_label": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/ResolvedMedia"
+      }
+    },
+    "math": {
+      "description": "Keyed by the exact TeX source with its delimiters, for example \"$x^2$\" or \"$$E=mc^2$$\". Text fields keep their $...$ segments; latex fields are keyed as display maths ($$...$$), formula symbols as inline maths.",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/RenderedMath"
+      }
+    }
+  },
+  "$defs": {
+    "BundleMode": {
+      "description": "Lesson bundles (deep_dive, quick_revision) and the topic's practice bundle (practice, lesson and placement questions).",
+      "type": "string",
+      "enum": ["deep_dive", "quick_revision", "practice"]
+    },
+    "ResolvedMedia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "kind", "status", "url"],
+      "properties": {
+        "ref": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "media-requests.schema.json#/$defs/MediaKind"
+        },
+        "status": {
+          "description": "ready: url points to the immutable asset. unavailable: not approved yet (fixtures and local builds only); the player shows the card's fallback or alt text.",
+          "type": "string",
+          "enum": ["ready", "unavailable"]
+        },
+        "url": {
+          "description": "Relative to the CDN root, for example assets/{sha256}.webp.",
+          "type": ["string", "null"]
+        },
+        "sha256": {
+          "type": ["string", "null"]
+        },
+        "mime": {
+          "type": ["string", "null"]
+        },
+        "bytes": {
+          "type": ["integer", "null"]
+        },
+        "width": {
+          "type": ["integer", "null"]
+        },
+        "height": {
+          "type": ["integer", "null"]
+        },
+        "alt": {
+          "type": ["string", "null"]
+        },
+        "decorative": {
+          "type": "boolean"
+        },
+        "transcript": {
+          "type": ["string", "null"]
+        },
+        "label_anchors": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/LabelAnchor"
+          }
+        },
+        "sim": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["id", "version", "entry", "aspect", "size_bytes", "origin", "licence"],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "entry": {
+              "type": "string"
+            },
+            "aspect": {
+              "type": "string"
+            },
+            "size_bytes": {
+              "type": "integer"
+            },
+            "origin": {
+              "type": "string"
+            },
+            "licence": {
+              "type": "string"
+            },
+            "attribution": {
+              "type": ["string", "null"]
+            }
+          }
+        }
+      }
+    },
+    "RenderedMath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tex", "display", "svg", "width_ex", "height_ex", "vertical_align_ex"],
+      "properties": {
+        "tex": {
+          "type": "string"
+        },
+        "display": {
+          "type": "boolean"
+        },
+        "svg": {
+          "description": "Self-contained SVG with glyphs as paths; fill is currentColor so one asset serves light and dark themes.",
+          "type": "string"
+        },
+        "width_ex": {
+          "type": "number"
+        },
+        "height_ex": {
+          "type": "number"
+        },
+        "vertical_align_ex": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

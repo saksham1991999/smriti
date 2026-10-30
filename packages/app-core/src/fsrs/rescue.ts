@@ -1,3 +1,4 @@
+import type { SyncEventPayloads } from '../sync/types';
 import type { PlantHealth } from '../rules/plant';
 import type { SrsCardRow } from '../storage/types';
 import { toMs, type Instant } from '../time';
@@ -51,4 +52,9 @@ export function buildRescueSet(cards: readonly SrsCardRow[], now: Instant, sched
 export function rescueOutcome(reviewsToday: number, reviewsToQualify: number, freezeWillCover: boolean) {
   const left = Math.max(0, reviewsToQualify - reviewsToday);
   return { streakKept: left === 0, reviewsLeft: left, freezeWillCover: left > 0 && freezeWillCover };
+}
+
+/** The `rescue_completed` payload (sync contract v1.1). */
+export function rescueCompletedPayload(cards: number, msTotal: number): SyncEventPayloads['rescue_completed'] {
+  return { cards: Math.max(0, Math.floor(cards)), ms_total: Math.max(0, Math.round(msTotal)) };
 }

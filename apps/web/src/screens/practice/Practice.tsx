@@ -12,6 +12,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { checkAnswer, workedSolution, type Answer, type AnyQuestion, type CheckResult } from "@smriti/lesson-core";
 import { PlayerProvider, QuestionView, RichText, canSubmit, contentUrl, initialDraft } from "@smriti/lesson-player-web";
 import { Banner, Button, Card, IconButton, Chip, Dialog, Icon, LimitMeter, PetLine, ProgressBar, StatTile, Text, TopBar } from "@smriti/ui-web";
+import { TutorButton } from "../tutor/TutorButton";
 import { useServices } from "../../boot/context";
 import { findTopic, useBundle, useCatalog, type CatalogTopic } from "../../lib/content";
 import { useTodayMinutes } from "../../lib/daily";
@@ -307,6 +308,7 @@ export function Drill() {
           <div className="rounded-card bg-surface p-4 shadow-card" data-testid="drill-question">
             <QuestionView key={qid} q={q} passage={null} draft={draft} onDraft={setDraft} locked={!!result} reveal={result ? "final" : "none"} struck={[]} />
           </div>
+          {result && sol && <TutorButton raised context={{ ref: `question:${qid}`, kind: "question", title: t("tutor_social:AI-02.context_chip_question", { n: index + 1 }) }} />}
           {result && sol && (
             <section className={`flex flex-col gap-3 rounded-card p-4 ${result.correct ? "bg-success-tint" : "bg-warning-tint"}`} data-testid="prc-05" aria-live="polite">
               <Text variant="heading" heading as="h2" tone={result.correct ? "success" : "warning"}>

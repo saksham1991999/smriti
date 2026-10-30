@@ -141,12 +141,12 @@ const reportRoute = createRoute({
 const solutionsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/attempt/$attemptId/solutions",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockSolutionsRoute"),
+  component: lazyRouteComponent(withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Mock")), "MockSolutionsRoute"),
 });
 const drillRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/drill/$topicId",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Practice")), "Drill"),
+  component: lazyRouteComponent(withNamespaces(["practice", "tutor_social"], () => import("./screens/practice/Practice")), "Drill"),
 });
 
 // ── The tab shell ─────────────────────────────────────────────────────────
@@ -176,7 +176,7 @@ const chapterRoute = createRoute({
 const topicRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/learn/topic/$topicId",
-  component: lazyRouteComponent(() => import("./screens/learn/Learn"), "TopicScreen"),
+  component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/learn/Learn")), "TopicScreen"),
 });
 const labsRoute = createRoute({
   getParentRoute: () => shellRoute,
@@ -186,7 +186,7 @@ const labsRoute = createRoute({
 const labRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/labs/$simId",
-  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/labs/Labs")), "LabScreen"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs", "tutor_social"], () => import("./screens/labs/Labs")), "LabScreen"),
 });
 const practiceRoute = createRoute({
   getParentRoute: () => shellRoute,

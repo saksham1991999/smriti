@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
 import { activateSubscription } from "../scripts/fake-razorpay.mjs";
-import { devGoogle, drill, expectAccessible, finishFirstWin, mockAttempt, onboard, playLesson, type Locale } from "./journey";
+import { askTutor, devGoogle, drill, expectAccessible, finishFirstWin, mockAttempt, onboard, playLesson, type Locale } from "./journey";
 
 const API = "http://127.0.0.1:8000";
 
@@ -88,6 +88,11 @@ for (const locale of ["en", "hi"] as Locale[]) {
     expect(seen.calls.some((c) => /PUT \/v1\/attempts\/[^/]+\/answers 200/.test(c))).toBe(true);
     expect(seen.calls.some((c) => /POST \/v1\/attempts\/[^/]+\/submit 200/.test(c))).toBe(true);
     expect(seen.calls.some((c) => /GET \/v1\/attempts\/[^/]+\/solutions 200/.test(c))).toBe(true);
+
+    // AI-02 from MOCK-22 (question context): two answers stream from /v1/tutor.
+    await askTutor(page);
+    expect(seen.calls.some((c) => /POST \/v1\/tutor\/sessions 200/.test(c))).toBe(true);
+    expect(seen.calls.filter((c) => /POST \/v1\/tutor\/sessions\/[^/]+\/messages 200/.test(c)).length).toBe(2);
 
     // Soft prompt → link Google (dev auth) → paywall with the server's price and eligibility.
     await page.goto("/learn");

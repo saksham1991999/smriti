@@ -191,3 +191,25 @@ export async function mockAttempt(page: Page, mockId: string) {
   await expect(page.getByTestId("solution-1")).toBeVisible();
   await expectAccessible(page, "MOCK-22");
 }
+
+/**
+ * From MOCK-22, AI-02 on question 1: a starter chip streams an answer, then a typed follow-up.
+ * The free counter drops by one per answer (the server counts).
+ */
+export async function askTutor(page: Page) {
+  await page.getByTestId("ask-tutor-1").click();
+  const panel = page.getByTestId("ai-02");
+  await expect(panel).toBeVisible();
+  await expect(panel.getByTestId("tutor-context")).toBeVisible();
+  await panel.locator("[data-testid^=tutor-starter-]").first().click();
+  await expect(panel.getByTestId("tutor-answer").last()).toHaveAttribute("data-status", "ok", { timeout: 30_000 });
+  await expect(panel.getByTestId("tutor-bubble").last()).not.toBeEmpty();
+  await expect(panel.getByTestId("tutor-counter")).toBeVisible();
+  await expectAccessible(page, "AI-02");
+  await panel.getByTestId("tutor-input").locator("textarea").fill("Why is option A not right?");
+  await panel.getByTestId("tutor-input").locator("textarea").press("Enter");
+  await expect(panel.getByTestId("tutor-answer")).toHaveCount(2);
+  await expect(panel.getByTestId("tutor-answer").last()).toHaveAttribute("data-status", "ok", { timeout: 30_000 });
+  await panel.getByTestId("tutor-close").click();
+  await expect(panel).toBeHidden();
+}

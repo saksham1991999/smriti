@@ -72,6 +72,7 @@ import { useOnline } from "../../lib/network";
 import { fromAnswerIn, toAnswerIn } from "../../lib/practice";
 import { useProfileIds } from "../../lib/queries";
 import { toast } from "../../lib/toast";
+import { useTutorUI } from "../../lib/tutor";
 import { RouteLoading } from "../../shell/States";
 
 type T = ReturnType<typeof useI18n>["t"];
@@ -1391,6 +1392,7 @@ export function MockSolutions({ attemptId }: { attemptId: string }) {
   const navigate = useNavigate();
   const online = useOnline();
   const sols = useSolutions(attemptId);
+  const openTutor = useTutorUI((x) => x.openTutor);
   const [filter, setFilter] = useState<SolFilter>("all");
   const back = () =>
     void navigate({ to: "/practice/attempt/$attemptId/report", params: { attemptId } });
@@ -1507,6 +1509,20 @@ export function MockSolutions({ attemptId }: { attemptId: string }) {
                   </ol>
                 )}
                 {ws.shortcut && <RichText text={ws.shortcut} />}
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  icon="ChatCircleText"
+                  label={t("practice:MOCK-22.ask_tutor")}
+                  onPress={() =>
+                    openTutor({
+                      ref: `question:${it.question_id}`,
+                      kind: "question",
+                      title: t("tutor_social:AI-02.context_chip_question", { n: it.position }),
+                    })
+                  }
+                  testID={`ask-tutor-${it.position}`}
+                />
               </article>
             );
           })}

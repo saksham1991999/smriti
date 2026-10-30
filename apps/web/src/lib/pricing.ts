@@ -9,7 +9,8 @@ import { useConfig } from "./queries";
 export function usePrices(): { trial: string; monthly: string; trialPaise: number; monthlyPaise: number } | null {
   const { locale } = useI18n();
   const pricing = useConfig().data?.pricing ?? [];
-  const web = pricing.filter((p) => p.platform === "web");
+  // Pro monthly on the web only; other plans (yearly, family) and rows without a price are skipped.
+  const web = pricing.filter((p) => p.platform === "web" && p.period === "month" && p.entitlement === "pro" && typeof p.price_paise === "number");
   const monthly = web.find((p) => p.intro_price_paise === null || p.intro_price_paise === undefined) ?? web[0];
   const intro = web.find((p) => typeof p.intro_price_paise === "number");
   if (!monthly) return null;

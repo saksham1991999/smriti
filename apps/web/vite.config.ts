@@ -92,6 +92,8 @@ export default defineConfig(({ mode }) => ({
         icons: [{ src: "/assets/app-icon.webp", sizes: "768x768", type: "image/webp" }],
       },
       workbox: {
+        // Web Push handlers (NTF-01 on web) live in public/push-sw.js.
+        importScripts: ["/push-sw.js"],
         // App shell plus the art; sims are cached when first opened.
         globPatterns: ["**/*.{js,css,html,webp,woff2,svg}"],
         navigateFallback: "/index.html",

@@ -17,6 +17,7 @@ import { useOnboarding } from "./lib/onboarding";
 import { AppShell } from "./shell/AppShell";
 import { RootLayout } from "./shell/RootLayout";
 import { NotFound, RouteError, RouteLoading } from "./shell/States";
+import { NotificationOpen, type NotificationSearch } from "./shell/NotificationOpen";
 
 export interface RouterContext {
   services: Services;
@@ -212,6 +213,16 @@ const guardianLandingRoute = createRoute({
   path: "/guardian/$code",
   component: guardian("GuardianLanding"),
 });
+const notificationRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/notification",
+  validateSearch: (s: Record<string, unknown>): NotificationSearch => ({
+    to: typeof s.to === "string" ? s.to : undefined,
+    id: typeof s.id === "string" ? s.id : undefined,
+    t: typeof s.t === "string" ? s.t : undefined,
+  }),
+  component: NotificationOpen,
+});
 const parentRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/parent",
@@ -402,6 +413,7 @@ const routeTree = rootRoute.addChildren([
   consentLinkRoute,
   guardianLandingRoute,
   parentRoute,
+  notificationRoute,
   mockRoute,
   attemptRoute,
   reportRoute,

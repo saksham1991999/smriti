@@ -2,12 +2,13 @@
  * SET-01 settings with the local rows inline: account (SET-02, AUTH-12 sign out, guest erase,
  * AUTH-13 delete), Pro, language (SET-06), appearance (SET-07), daily goal (SET-10) and the
  * analytics choice (SET-11, adults only: minors are never tracked for product analytics).
- * SET-03 notifications keeps its choices on this device and sends the reminder as a setting.
+ * SET-03 notifications reads and writes the server's notification prefs.
  */
 import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useAppStore } from "@smriti/app-core/react";
 import {
+  Banner,
   Button,
   Card,
   ChoiceChips,
@@ -15,6 +16,7 @@ import {
   Icon,
   SettingsGroup,
   SettingsRow,
+  Sheet,
   Text,
   TopBar,
   TrustLine,
@@ -30,6 +32,17 @@ import { useTheme, type ThemeMode } from "../../lib/theme";
 import { toast } from "../../lib/toast";
 import { prefs } from "../../platform/web";
 import { FEATURE_SCOPES, useMyConsent, type Scope } from "../../lib/guardian";
+import {
+  askPermission,
+  hhmm,
+  notificationPermission,
+  useNotificationPrefs,
+  usePatchPrefs,
+  type NotificationPrefs,
+  type NotificationPrefsPatch,
+} from "../../lib/push";
+import { TextField } from "../../components/Field";
+import { LoadError, RouteLoading } from "../../shell/States";
 
 const CONSENT_ROW: Record<
   Scope,
@@ -384,52 +397,70 @@ export function Settings() {
 
 const TIMES = ["07:00", "17:00", "19:00", "21:00"] as const;
 
+/**
+ * SET-03 on `/v1/notification-prefs` (the server's rules engine reads the same rows), NTF-02 for
+ * this browser's permission, and SET-05 quiet hours. Minors never see the adult-only rows the
+ * server lists in `adult_only` (R34).
+ */
 export function NotificationSettings() {
   const s = useServices();
   const { t, locale } = useI18n();
   const navigate = useNavigate();
   const band = useAgeBand();
   const minor = band !== "18p";
+  const prefsQuery = useNotificationPrefs();
+  const patch = usePatchPrefs();
   const [perm, setPerm] = useState<NotificationPermission | "unsupported">(
-    typeof Notification === "undefined" ? "unsupported" : Notification.permission,
+    notificationPermission(),
   );
-  const [time, setTime] = useState<string | null>(prefs.get("reminder_time"));
-  const [rows, setRows] = useState<Record<string, boolean>>(() => {
-    try {
-      return JSON.parse(prefs.get("notify_rows") ?? "{}") as Record<string, boolean>;
-    } catch {
-      return {};
-    }
-  });
+  const [ask, setAsk] = useState(false);
+  const [quiet, setQuiet] = useState<{ start: string; end: string } | null>(null);
   const chips = parts(t("me_money:SET-04.chips"));
   const brand = s.variant.appName[locale];
   const pet = useAppStore((x) => x.pet);
+  const p = prefsQuery.data;
 
-  const ask = async () => {
-    if (typeof Notification === "undefined") return;
-    setPerm(await Notification.requestPermission());
+  if (prefsQuery.isPending && prefsQuery.fetchStatus !== "idle") return <RouteLoading />;
+  if (!p)
+    return (
+      <div className="flex flex-col gap-4 pb-6" data-testid="set-03">
+        <TopBar
+          title={t("me_money:SET-03.title")}
+          onBack={() => void navigate({ to: "/me/settings" })}
+        />
+        <LoadError onRetry={() => void prefsQuery.refetch()} />
+      </div>
+    );
+
+  const adultOnly = new Set(p.adult_only);
+  const shown = (key: keyof NotificationPrefs) => !(minor && adultOnly.has(key));
+  const set = async (body: NotificationPrefsPatch, key: string, value: string) => {
+    const ok = await patch(body);
+    if (ok) s.analytics.track("settings_changed", { key, value });
+    else toast.show(t("learn:WEB-01.load_error"), { tone: "error" });
   };
-  const pick = (v: string | null) => {
-    setTime(v);
-    prefs.set("reminder_time", v);
-    void s.record("settings_changed", { key: "reminder_time", value: v });
+  const row = (key: keyof NotificationPrefs & keyof NotificationPrefsPatch, title: string) =>
+    shown(key) ? (
+      <SettingsRow
+        key={key}
+        title={title}
+        trailing="switch"
+        checked={Boolean(p[key])}
+        onCheckedChange={(on) =>
+          void set({ [key]: on } as NotificationPrefsPatch, `notify.${key}`, on ? "on" : "off")
+        }
+        testID={`notify-${key}`}
+      />
+    ) : null;
+  const time = p.reminder_enabled ? hhmm(p.daily_reminder_at) : null;
+  const allow = async () => {
+    const r = await askPermission(s, locale);
+    setPerm(r.permission);
+    if (r.permission === "granted") {
+      setAsk(false);
+      toast.show(t("me_money:NTF-03.done_toast"), { icon: "Bell" });
+    }
   };
-  const toggle = (key: string, on: boolean) => {
-    const next = { ...rows, [key]: on };
-    setRows(next);
-    prefs.set("notify_rows", JSON.stringify(next));
-    void s.record("settings_changed", { key: `notify.${key}`, value: on });
-  };
-  const row = (key: string, title: string) => (
-    <SettingsRow
-      key={key}
-      title={title}
-      trailing="switch"
-      checked={rows[key] ?? true}
-      onCheckedChange={(on) => toggle(key, on)}
-      testID={`notify-${key}`}
-    />
-  );
 
   return (
     <div className="flex flex-col gap-4 pb-6" data-testid="set-03">
@@ -438,17 +469,26 @@ export function NotificationSettings() {
         onBack={() => void navigate({ to: "/me/settings" })}
       />
       <div className="flex flex-col gap-4 px-4 md:px-8">
+        {p.paused && (
+          <Banner
+            tone="info"
+            text={t("me_money:SET-03.paused_note", { brand })}
+            testID="notify-paused"
+          />
+        )}
         {perm !== "granted" && (
           <Card tone="tint" testID="notify-off">
             <span className="flex flex-col gap-2">
               <Text variant="heading">{t("me_money:SET-03.off_card", { brand })}</Text>
               <Text tone="muted">
-                {t("me_money:SET-03.off_card_body", { pet: pet?.name ?? "" })}
+                {perm === "denied"
+                  ? t("me_money:NTF-02.denied")
+                  : t("me_money:SET-03.off_card_body", { pet: pet?.name ?? "" })}
               </Text>
               {perm === "default" && (
                 <Button
                   label={t("me_money:SET-03.turn_on")}
-                  onPress={() => void ask()}
+                  onPress={() => setAsk(true)}
                   testID="notify-turn-on"
                 />
               )}
@@ -464,8 +504,26 @@ export function NotificationSettings() {
                 ...TIMES.map((v, i) => ({ value: v, label: chips[i] ?? v })),
                 { value: "off", label: t("me_money:SET-01.off") },
               ]}
-              value={[time ?? "off"]}
-              onChange={(v) => pick(v[0] && v[0] !== "off" ? v[0] : null)}
+              value={[
+                time && (TIMES as readonly string[]).includes(time) ? time : time ? time : "off",
+              ]}
+              onChange={(v) => {
+                const next = v[0] && v[0] !== "off" ? v[0] : null;
+                void set(
+                  next
+                    ? { reminder_enabled: true, daily_reminder_at: next }
+                    : { reminder_enabled: false },
+                  "reminder_time",
+                  next ?? "off",
+                );
+                if (next)
+                  toast.show(
+                    t("me_money:SET-04.saved_toast", {
+                      time: chips[TIMES.indexOf(next as (typeof TIMES)[number])] ?? next,
+                    }),
+                    { icon: "Bell" },
+                  );
+              }}
               testID="notify-time"
             />
             {minor && (
@@ -474,11 +532,19 @@ export function NotificationSettings() {
               </Text>
             )}
           </div>
+          {row("smart_timing", t("me_money:SET-03.smart_timing"))}
+          {shown("smart_timing") && (
+            <Text variant="caption" tone="muted" className="px-4 pb-3">
+              {t("me_money:SET-03.smart_timing_caption")}
+            </Text>
+          )}
         </SettingsGroup>
-        <SettingsGroup title={t("me_money:SET-03.group_streak")}>
-          {row("streak_saver", t("me_money:SET-03.streak_saver"))}
-          {row("nudges", t("me_money:SET-03.nudges"))}
-        </SettingsGroup>
+        {(shown("streak_saver") || shown("pet_plant_nudges")) && (
+          <SettingsGroup title={t("me_money:SET-03.group_streak")}>
+            {row("streak_saver", t("me_money:SET-03.streak_saver"))}
+            {row("pet_plant_nudges", t("me_money:SET-03.nudges"))}
+          </SettingsGroup>
+        )}
         <SettingsGroup title={t("me_money:SET-03.group_learning")}>
           {minor ? (
             <Text variant="caption" tone="muted" className="p-4">
@@ -486,16 +552,111 @@ export function NotificationSettings() {
             </Text>
           ) : (
             <>
-              {row("reviews_due", t("me_money:SET-03.reviews_due"))}
-              {row("weak_area", t("me_money:SET-03.weak_area"))}
-              {row("challenge", t("me_money:SET-03.challenge"))}
+              {row("review_due", t("me_money:SET-03.reviews_due"))}
+              {row("weak_area_alerts", t("me_money:SET-03.weak_area"))}
+              {row("daily_challenge", t("me_money:SET-03.challenge"))}
+              {row("sleep_review", t("me_money:SET-03.bedtime"))}
+              {shown("sleep_review") && (
+                <Text variant="caption" tone="muted" className="px-4 pb-3">
+                  {t("me_money:SET-03.bedtime_caption")}
+                </Text>
+              )}
             </>
           )}
+        </SettingsGroup>
+        <SettingsGroup title={t("me_money:SET-03.group_focus")}>
+          {row("focus_timer", t("me_money:SET-03.focus_row"))}
+        </SettingsGroup>
+        <SettingsGroup title={t("me_money:SET-03.group_friends")}>
+          {row("friends", t("me_money:SET-03.friends_rows"))}
+          {minor && (
+            <Text variant="caption" tone="muted" className="px-4 pb-3">
+              {t("me_money:SET-03.minor_friends_caption")}
+            </Text>
+          )}
+        </SettingsGroup>
+        <SettingsGroup title={t("me_money:SET-03.group_exam")}>
+          {row("exam_alerts", t("me_money:SET-03.exam_row_live"))}
+        </SettingsGroup>
+        {shown("news") && (
+          <SettingsGroup title={t("me_money:SET-03.group_news")}>
+            {row("news", t("me_money:SET-03.product_news"))}
+          </SettingsGroup>
+        )}
+        <SettingsGroup title={t("me_money:SET-03.quiet_hours")}>
+          <SettingsRow
+            title={t("me_money:SET-03.quiet_hours")}
+            value={t("me_money:SET-03.quiet_value", {
+              start: hhmm(p.quiet_start) ?? "",
+              end: hhmm(p.quiet_end) ?? "",
+            })}
+            onPress={() =>
+              setQuiet({ start: hhmm(p.quiet_start) ?? "22:00", end: hhmm(p.quiet_end) ?? "07:00" })
+            }
+            testID="notify-quiet"
+          />
+          {row("school_hours", t("me_money:SET-03.school_hours"))}
+          {!minor && perm === "unsupported" && row("email_reminders", t("me_money:SET-03.email"))}
         </SettingsGroup>
         <Text variant="caption" tone="muted">
           {t("me_money:SET-03.footer")}
         </Text>
       </div>
+      <Dialog
+        open={ask}
+        onOpenChange={setAsk}
+        title={t("me_money:NTF-02.title")}
+        description={t("me_money:NTF-02.body", { time: time ?? "", pet: pet?.name ?? brand })}
+        confirm={{ label: t("me_money:NTF-02.allow"), onPress: () => void allow() }}
+        cancel={{ label: t("me_money:NTF-02.not_now"), onPress: () => setAsk(false) }}
+        testID="ntf-02"
+      />
+      <Sheet
+        open={quiet !== null}
+        onOpenChange={(o) => !o && setQuiet(null)}
+        title={t("me_money:SET-05.title")}
+        height="60"
+        testID="set-05"
+      >
+        {quiet && (
+          <div className="flex flex-col gap-3">
+            <TextField
+              label={t("me_money:SET-05.start")}
+              type="time"
+              value={quiet.start}
+              onChange={(e) => setQuiet({ ...quiet, start: e.target.value })}
+              testID="quiet-start"
+            />
+            <TextField
+              label={t("me_money:SET-05.end")}
+              type="time"
+              value={quiet.end}
+              onChange={(e) => setQuiet({ ...quiet, end: e.target.value })}
+              testID="quiet-end"
+            />
+            <Text tone="muted">
+              {t("me_money:SET-05.summary", { start: quiet.start, end: quiet.end })}
+            </Text>
+            {minor && (
+              <Text variant="caption" tone="muted">
+                {t("me_money:SET-05.minor_note")}
+              </Text>
+            )}
+            <Button
+              label={t("me_money:SET-05.save")}
+              onPress={() => {
+                void set(
+                  { quiet_start: quiet.start, quiet_end: quiet.end },
+                  "quiet_hours",
+                  "custom",
+                );
+                setQuiet(null);
+              }}
+              testID="quiet-save"
+            />
+          </div>
+        )}
+      </Sheet>
     </div>
   );
 }

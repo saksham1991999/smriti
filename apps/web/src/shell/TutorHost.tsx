@@ -6,7 +6,11 @@ import { Suspense, lazy, useEffect } from "react";
 import { withNamespaces } from "../lib/i18n";
 import { useTutorUI } from "../lib/tutor";
 
-const TutorPanel = lazy(withNamespaces(["tutor_social", "me_money"], () => import("../screens/tutor/Tutor").then((m) => ({ default: m.TutorPanel }))));
+const TutorPanel = lazy(
+  withNamespaces(["tutor_social", "me_money"], () =>
+    import("../screens/tutor/Tutor").then((m) => ({ default: m.TutorPanel })),
+  ),
+);
 
 export function TutorHost() {
   const open = useTutorUI((x) => x.open);

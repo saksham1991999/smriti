@@ -212,5 +212,21 @@ test("teen asks a guardian on the real API (en)", async ({ page, browser }) => {
   expect(
     calls.some((c) => /DELETE \/v1\/guardian\/consents\/[^/]+\/scopes\/voice 200/.test(c)),
   ).toBe(true);
+
+  // SET-03 on the server's prefs: this browser is registered, a teen sees no adult-only rows,
+  // and a switch is saved with PATCH.
+  await page.context().grantPermissions(["notifications"]);
+  await page.goto("/me/notifications");
+  await expect(page.getByTestId("set-03")).toBeVisible();
+  await expect(page.getByTestId("notify-friends")).toBeVisible();
+  await expect(page.getByTestId("notify-smart_timing")).toHaveCount(0);
+  await expectAccessible(page, "SET-03");
+  await page.getByTestId("notify-friends").click();
+  await expect
+    .poll(() => calls.some((c) => /PATCH \/v1\/notification-prefs 200/.test(c)))
+    .toBe(true);
+  await expect
+    .poll(() => calls.some((c) => /POST \/v1\/devices 20\d/.test(c)), { timeout: 10_000 })
+    .toBe(true);
   expect(calls.filter((c) => / 5\d\d$/.test(c))).toEqual([]);
 });

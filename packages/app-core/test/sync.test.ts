@@ -86,6 +86,24 @@ describe('outbox', () => {
     expect(row.payload.confidence).toBe('fifty_fifty');
   });
 
+  it('carries mock answers with their attempt id (contract v1.3)', () => {
+    const { outbox } = setup();
+    const attempt = '0192f0a0-0000-7000-8000-000000000001';
+    const row = outbox.create('answer_submitted', {
+      topic_id: 't1',
+      question_id: 'q1',
+      context: 'mock',
+      attempt_id: attempt,
+      response: ['a'],
+      correct: true,
+      attempt: 1,
+      confidence: null,
+      ms_to_answer: 4000,
+    });
+    expect(row.payload.context).toBe('mock');
+    expect(row.payload.attempt_id).toBe(attempt);
+  });
+
   it('is idempotent on event_id', async () => {
     const { storage, outbox } = setup();
     const row = outbox.create('quest_claimed', { quest_id: 'q1' });

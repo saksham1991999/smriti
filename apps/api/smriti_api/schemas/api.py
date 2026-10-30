@@ -61,6 +61,9 @@ class PriceInfo(BaseModel):
     intro_price_paise: int | None
     period: Literal["month", "year"]
     entitlement: str
+    # PRD §11.2: an individual plan, or the family plan (seats are people besides the payer).
+    plan: Literal["individual", "family"] = "individual"
+    seats: int | None = None
 
 
 class ConfigResponse(BaseModel):

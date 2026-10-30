@@ -3597,6 +3597,174 @@
         }
       }
     },
+    "/v1/billing/family": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "The family plan: seats, members and open invites (the payer), or membership",
+        "operationId": "family_v1_billing_family_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/members": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "The payer adds a child they are the linked guardian of",
+        "operationId": "family_add_child_v1_billing_family_members_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/FamilyAddChild" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/members/{user_id}": {
+      "delete": {
+        "tags": ["billing"],
+        "summary": "The payer removes someone, or a member leaves",
+        "operationId": "family_remove_v1_billing_family_members__user_id__delete",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "User Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/invites": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "A code an adult uses to join (shown once; only its hash is kept)",
+        "operationId": "family_invite_v1_billing_family_invites_post",
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyInviteOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/invites/{invite_id}": {
+      "delete": {
+        "tags": ["billing"],
+        "summary": "Withdraw an unused invite",
+        "operationId": "family_revoke_invite_v1_billing_family_invites__invite_id__delete",
+        "parameters": [
+          {
+            "name": "invite_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Invite Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/family/invites/{code}/accept": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "An adult joins a family plan with a code (children join through Parent mode)",
+        "operationId": "family_accept_v1_billing_family_invites__code__accept_post",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 12,
+              "pattern": "^[A-Za-z0-9]+$",
+              "title": "Code"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FamilyOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/guardian/consent-requests": {
       "post": {
         "tags": ["guardian"],
@@ -8308,7 +8476,7 @@
           },
           "source": {
             "anyOf": [
-              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo"] },
+              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo", "family"] },
               { "type": "null" }
             ],
             "title": "Source"
@@ -8369,7 +8537,7 @@
           "is_intro": { "type": "boolean", "title": "Is Intro", "default": false },
           "source": {
             "anyOf": [
-              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo"] },
+              { "type": "string", "enum": ["razorpay", "play", "app_store", "promo", "family"] },
               { "type": "null" }
             ],
             "title": "Source"
@@ -8501,6 +8669,60 @@
           "url"
         ],
         "title": "ExportOut"
+      },
+      "FamilyAddChild": {
+        "properties": {
+          "learner_id": { "type": "string", "format": "uuid", "title": "Learner Id" }
+        },
+        "type": "object",
+        "required": ["learner_id"],
+        "title": "FamilyAddChild"
+      },
+      "FamilyInviteOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "code": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Code" }
+        },
+        "type": "object",
+        "required": ["id", "created_at"],
+        "title": "FamilyInviteOut"
+      },
+      "FamilyMemberOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "First Name"
+          },
+          "via": { "type": "string", "enum": ["guardian_link", "invite"], "title": "Via" },
+          "joined_at": { "type": "string", "format": "date-time", "title": "Joined At" }
+        },
+        "type": "object",
+        "required": ["user_id", "first_name", "via", "joined_at"],
+        "title": "FamilyMemberOut"
+      },
+      "FamilyOut": {
+        "properties": {
+          "group_id": { "type": "string", "format": "uuid", "title": "Group Id" },
+          "role": { "type": "string", "enum": ["owner", "member"], "title": "Role" },
+          "seats": { "type": "integer", "title": "Seats" },
+          "used": { "type": "integer", "title": "Used" },
+          "members": {
+            "items": { "$ref": "#/components/schemas/FamilyMemberOut" },
+            "type": "array",
+            "title": "Members"
+          },
+          "invites": {
+            "items": { "$ref": "#/components/schemas/FamilyInviteOut" },
+            "type": "array",
+            "title": "Invites"
+          }
+        },
+        "type": "object",
+        "required": ["group_id", "role", "seats", "used"],
+        "title": "FamilyOut",
+        "description": "The payer's view: seats (people besides the payer), members and open invites. A member\nsees ``role = member`` and the seat counts only."
       },
       "FeedItem": {
         "properties": {
@@ -10323,7 +10545,14 @@
             "title": "Intro Price Paise"
           },
           "period": { "type": "string", "enum": ["month", "year"], "title": "Period" },
-          "entitlement": { "type": "string", "title": "Entitlement" }
+          "entitlement": { "type": "string", "title": "Entitlement" },
+          "plan": {
+            "type": "string",
+            "enum": ["individual", "family"],
+            "title": "Plan",
+            "default": "individual"
+          },
+          "seats": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Seats" }
         },
         "type": "object",
         "required": [
@@ -10768,6 +10997,12 @@
             "enum": ["self", "guardian_declared"],
             "title": "Payer",
             "default": "self"
+          },
+          "plan": {
+            "type": "string",
+            "enum": ["monthly", "yearly", "family_monthly", "family_yearly"],
+            "title": "Plan",
+            "default": "monthly"
           }
         },
         "type": "object",

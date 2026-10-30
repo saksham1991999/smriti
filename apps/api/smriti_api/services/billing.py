@@ -8,6 +8,10 @@
   grant of the user: Pro while a subscription is trialing or active in its period, in grace until
   ``grace_until``, or cancelled with paid time left; never from a refunded or revoked one. Any
   change bumps the ``entitlement`` sync section.
+- Plans (PRD §11.2): ₹99/month, ₹799/year, and the family plan (Phase 3). A family plan's price
+  and seats are owner flags; the plan is hidden while they are unset (:func:`family_offer`).
+  Members of a paid family plan get Pro with source ``family`` (``billing_family`` manages seats
+  and invites).
 - The ₹1 intro is once per person: identity keys (HMAC of ``provider:sub``) are claimed on the
   first intro purchase and survive account deletion (``billing.intro_claims``).
 """
@@ -228,6 +232,18 @@ async def compute_entitlement(
             is_intro=bool(best.is_intro),
             subscription_id=best.id,
         )
+    family = await _family_subscription(session, user_id, now)
+    if family is not None:
+        return Entitlement(
+            active=True,
+            status=str(family.status),
+            source="family",
+            expires_at=family.current_period_end,
+            grace_until=family.grace_until if family.status == "grace" else None,
+            cancel_at_period_end=bool(family.cancel_at_period_end) or family.status == "cancelled",
+            is_intro=False,
+            subscription_id=family.id,
+        )
     grant = (
         await session.execute(
             text(
@@ -240,6 +256,69 @@ async def compute_entitlement(
     if grant is not None:
         return Entitlement(True, "active", "promo", grant.ends_at, None, False, False, None)
     return Entitlement(False, _free_status(subs, now), None, None, None, False, False, None)
+
+
+async def _family_subscription(session: AsyncSession, user_id: uuid.UUID, now: datetime) -> Any:
+    """The paid family subscription this person is a member of (not the payer's own), if any."""
+    rows = (
+        await session.execute(
+            text(
+                """
+                select s.id, s.status, s.current_period_end, s.grace_until, s.cancel_at_period_end,
+                       s.refunded_at, s.revoked_at
+                  from billing.family_members m
+                  join billing.family_groups g on g.id = m.group_id
+                  join billing.subscriptions s on s.id = g.subscription_id
+                  join billing.products p on p.id = s.product_id
+                 where m.user_id = :u and m.removed_at is null and p.plan = 'family'
+                """
+            ),
+            {"u": user_id},
+        )
+    ).all()
+    return next((r for r in rows if _gives_pro(r, now)), None)
+
+
+@dataclass(frozen=True)
+class FamilyOffer:
+    seats: int
+    monthly_paise: int | None
+    yearly_paise: int | None
+
+    def price_for(self, period: str) -> int | None:
+        return self.monthly_paise if period == "month" else self.yearly_paise
+
+
+def family_offer(flags: dict[str, Any]) -> FamilyOffer | None:
+    """The family plan as the owner set it, or None while it is hidden (no seats, or no price
+    for either period)."""
+    seats = flag_service.pos_int(flags, "billing.family_seats", 0)
+    monthly = flag_service.pos_int(flags, "billing.family_monthly_price_paise", 0) or None
+    yearly = flag_service.pos_int(flags, "billing.family_yearly_price_paise", 0) or None
+    if seats < 1 or (monthly is None and yearly is None):
+        return None
+    return FamilyOffer(seats, monthly, yearly)
+
+
+async def recompute_family_members(
+    session: AsyncSession, owner_id: uuid.UUID, now: datetime | None = None
+) -> list[uuid.UUID]:
+    """After the payer's subscription changes, every member's Pro follows it."""
+    members = list(
+        (
+            await session.execute(
+                text(
+                    "select m.user_id from billing.family_members m"
+                    " join billing.family_groups g on g.id = m.group_id"
+                    " where g.owner_user_id = :o and m.removed_at is null"
+                ),
+                {"o": owner_id},
+            )
+        ).scalars()
+    )
+    for member in members:
+        await recompute_entitlement(session, member, now)
+    return members
 
 
 async def recompute_entitlement(
@@ -333,7 +412,9 @@ async def product_for(
                 """
                 select id from billing.products
                  where platform = :pf and active and (intro_price_paise is not null) = :intro
-                 order by (variant_id is not distinct from :var) desc, id limit 1
+                   and plan = 'individual'
+                 order by (variant_id is not distinct from :var) desc, (period = 'month') desc, id
+                 limit 1
                 """
             ),
             {"pf": platform, "intro": intro, "var": variant},
@@ -594,6 +675,8 @@ async def handle_webhook(
             if did_change:
                 changed.append((uid, ent.status or ("active" if ent.active else "free")))
                 await _billing_pushes(session, uid, prior, ent, event.external_event_id)
+            # A family plan's members follow the payer's subscription.
+            await recompute_family_members(session, uid, now)
         await session.execute(
             text(
                 "update billing.payment_events set processed_at = now(), user_id = coalesce(user_id, :u) where id = :id"

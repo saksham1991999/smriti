@@ -72,15 +72,21 @@ create policy owner_or_member_read on billing.family_groups for select to authen
     )
   );
 
+-- The members policy asks "is the caller this group's payer?" through a security definer
+-- function, so the two policies don't read each other (that would recurse).
+create function billing.owns_family_group(gid uuid) returns boolean
+  language sql stable security definer set search_path = ''
+as $$
+  select exists (
+    select 1 from billing.family_groups g where g.id = gid and g.owner_user_id = auth.uid()
+  )
+$$;
+revoke all on function billing.owns_family_group(uuid) from public;
+grant execute on function billing.owns_family_group(uuid) to authenticated, service_role;
+
 alter table billing.family_members enable row level security;
 create policy self_or_owner_read on billing.family_members for select to authenticated
-  using (
-    user_id = (select auth.uid())
-    or exists (
-      select 1 from billing.family_groups g
-       where g.id = family_members.group_id and g.owner_user_id = (select auth.uid())
-    )
-  );
+  using (user_id = (select auth.uid()) or billing.owns_family_group(group_id));
 
 alter table billing.family_invites enable row level security;
 create policy owner_read on billing.family_invites for select to authenticated

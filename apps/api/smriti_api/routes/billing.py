@@ -3,9 +3,10 @@ manage, cancel, restore, and the Razorpay and RevenueCat webhooks."""
 
 from __future__ import annotations
 
+import uuid
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Path, Request, Response
 from fastapi.responses import JSONResponse
 
 from smriti_api.core.auth import AuthContext
@@ -15,7 +16,7 @@ from smriti_api.integrations import Integrations
 from smriti_api.integrations.billing import BillingError
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import billing as b
-from smriti_api.services import billing, billing_checkout
+from smriti_api.services import billing, billing_checkout, billing_family
 
 router = APIRouter(prefix="/v1", tags=["billing"])
 
@@ -188,3 +189,89 @@ async def revenuecat_webhook(request: Request, services: Services, ints: Ints) -
         raise ApiError(status, exc.code, exc.detail) from exc
     outcome = await billing.handle_webhook(services.db, ints, event)
     return b.WebhookAck(status=outcome.status)
+
+
+# --- family plan (PRD §11.2, Phase 3) ------------------------------------------------------------
+
+FamilyUser = Annotated[AuthContext, signed_in("family_plan")]
+InviteCode = Annotated[str, Path(min_length=6, max_length=12, pattern=r"^[A-Za-z0-9]+$")]
+# Code lookups per caller per minute, as for guardian consent codes.
+FAMILY_CODE_LOOKUPS_PER_MIN = 20
+
+
+@router.get(
+    "/billing/family",
+    response_model=b.FamilyOut,
+    summary="The family plan: seats, members and open invites (the payer), or membership",
+)
+async def family(services: Services, auth: FamilyUser) -> b.FamilyOut:
+    return await billing_family.view(services.db, auth)
+
+
+@router.post(
+    "/billing/family/members",
+    response_model=b.FamilyOut,
+    summary="The payer adds a child they are the linked guardian of",
+)
+async def family_add_child(
+    body: b.FamilyAddChild, services: Services, auth: FamilyUser, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="family_add_child",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        fn=lambda: billing_family.add_child(services.db, auth, body),
+    )
+
+
+@router.delete(
+    "/billing/family/members/{user_id}",
+    status_code=204,
+    summary="The payer removes someone, or a member leaves",
+)
+async def family_remove(user_id: uuid.UUID, services: Services, auth: FamilyUser) -> Response:
+    await billing_family.remove_member(services.db, auth, user_id)
+    return Response(status_code=204)
+
+
+@router.post(
+    "/billing/family/invites",
+    response_model=b.FamilyInviteOut,
+    status_code=201,
+    summary="A code an adult uses to join (shown once; only its hash is kept)",
+)
+async def family_invite(services: Services, auth: FamilyUser) -> b.FamilyInviteOut:
+    return await billing_family.create_invite(services.db, auth)
+
+
+@router.delete(
+    "/billing/family/invites/{invite_id}",
+    status_code=204,
+    summary="Withdraw an unused invite",
+)
+async def family_revoke_invite(
+    invite_id: uuid.UUID, services: Services, auth: FamilyUser
+) -> Response:
+    await billing_family.revoke_invite(services.db, auth, invite_id)
+    return Response(status_code=204)
+
+
+@router.post(
+    "/billing/family/invites/{code}/accept",
+    response_model=b.FamilyOut,
+    summary="An adult joins a family plan with a code (children join through Parent mode)",
+)
+async def family_accept(
+    code: InviteCode, services: Services, auth: FamilyUser, key: IdempotencyKey
+) -> JSONResponse:
+    await services.limiter.hit("family_code", str(auth.user_id), FAMILY_CODE_LOOKUPS_PER_MIN, 60)
+    return await idempotent(
+        services,
+        scope="family_accept",
+        subject=auth.user_id,
+        key=key,
+        body={"code": code.upper()},
+        fn=lambda: billing_family.accept_invite(services.db, auth, code),
+    )

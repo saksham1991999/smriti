@@ -326,6 +326,108 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/billing/family": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The family plan: seats, members and open invites (the payer), or membership */
+    get: operations["family_v1_billing_family_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A code an adult uses to join (shown once; only its hash is kept) */
+    post: operations["family_invite_v1_billing_family_invites_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites/{code}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** An adult joins a family plan with a code (children join through Parent mode) */
+    post: operations["family_accept_v1_billing_family_invites__code__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/invites/{invite_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Withdraw an unused invite */
+    delete: operations["family_revoke_invite_v1_billing_family_invites__invite_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/members": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The payer adds a child they are the linked guardian of */
+    post: operations["family_add_child_v1_billing_family_members_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/family/members/{user_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** The payer removes someone, or a member leaves */
+    delete: operations["family_remove_v1_billing_family_members__user_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/billing/intro-eligibility": {
     parameters: {
       query?: never;
@@ -4386,7 +4488,7 @@ export interface components {
       /** Pro Until */
       pro_until: string | null;
       /** Source */
-      source: ("razorpay" | "play" | "app_store" | "promo") | null;
+      source: ("razorpay" | "play" | "app_store" | "promo" | "family") | null;
       /** Status */
       status:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
@@ -4414,7 +4516,7 @@ export interface components {
       /** Pro Until */
       pro_until: string | null;
       /** Source */
-      source?: ("razorpay" | "play" | "app_store" | "promo") | null;
+      source?: ("razorpay" | "play" | "app_store" | "promo" | "family") | null;
       /** Status */
       status?:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
@@ -4504,6 +4606,74 @@ export interface components {
       template: string | null;
       /** Url */
       url: string | null;
+    };
+    /** FamilyAddChild */
+    FamilyAddChild: {
+      /**
+       * Learner Id
+       * Format: uuid
+       */
+      learner_id: string;
+    };
+    /** FamilyInviteOut */
+    FamilyInviteOut: {
+      /** Code */
+      code?: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+    };
+    /** FamilyMemberOut */
+    FamilyMemberOut: {
+      /** First Name */
+      first_name: string | null;
+      /**
+       * Joined At
+       * Format: date-time
+       */
+      joined_at: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+      /**
+       * Via
+       * @enum {string}
+       */
+      via: "guardian_link" | "invite";
+    };
+    /**
+     * FamilyOut
+     * @description The payer's view: seats (people besides the payer), members and open invites. A member
+     *     sees ``role = member`` and the seat counts only.
+     */
+    FamilyOut: {
+      /**
+       * Group Id
+       * Format: uuid
+       */
+      group_id: string;
+      /** Invites */
+      invites?: components["schemas"]["FamilyInviteOut"][];
+      /** Members */
+      members?: components["schemas"]["FamilyMemberOut"][];
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "owner" | "member";
+      /** Seats */
+      seats: number;
+      /** Used */
+      used: number;
     };
     /** FeedbackIn */
     FeedbackIn: {
@@ -5977,6 +6147,12 @@ export interface components {
        */
       period: "month" | "year";
       /**
+       * Plan
+       * @default individual
+       * @enum {string}
+       */
+      plan: "individual" | "family";
+      /**
        * Platform
        * @enum {string}
        */
@@ -5985,6 +6161,8 @@ export interface components {
       price_paise: number;
       /** Product Id */
       product_id: string;
+      /** Seats */
+      seats?: number | null;
       /** Store Product Id */
       store_product_id: string;
       /** Variant Id */
@@ -6287,6 +6465,12 @@ export interface components {
        * @enum {string}
        */
       payer: "self" | "guardian_declared";
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly" | "family_monthly" | "family_yearly";
     };
     /** RazorpayVerifyRequest */
     RazorpayVerifyRequest: {
@@ -8218,6 +8402,172 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+    };
+  };
+  family_v1_billing_family_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+    };
+  };
+  family_invite_v1_billing_family_invites_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyInviteOut"];
+        };
+      };
+    };
+  };
+  family_accept_v1_billing_family_invites__code__accept_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_revoke_invite_v1_billing_family_invites__invite_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        invite_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_add_child_v1_billing_family_members_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FamilyAddChild"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FamilyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  family_remove_v1_billing_family_members__user_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

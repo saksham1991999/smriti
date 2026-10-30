@@ -259,13 +259,13 @@ importers:
     devDependencies:
       '@tanstack/react-query':
         specifier: 5.104.2
-        version: 5.104.2(react@19.2.9)
+        version: 5.104.2(react@19.2.3)
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
       '@types/react':
-        specifier: 19.2.18
-        version: 19.2.18
+        specifier: 19.2.17
+        version: 19.2.17
       openapi-typescript:
         specifier: 7.13.0
         version: 7.13.0(typescript@5.6.3)
@@ -273,8 +273,8 @@ importers:
         specifier: 3.3.3
         version: 3.3.3
       react:
-        specifier: 19.2.9
-        version: 19.2.9
+        specifier: 19.2.3
+        version: 19.2.3
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -295,23 +295,23 @@ importers:
         version: 5.4.2
       zustand:
         specifier: 5.0.15
-        version: 5.0.15(@types/react@19.2.18)(react@19.2.9)
+        version: 5.0.15(@types/react@19.2.17)(react@19.2.3)
     devDependencies:
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
       '@types/react':
-        specifier: 19.2.18
-        version: 19.2.18
+        specifier: 19.2.17
+        version: 19.2.17
       '@types/react-dom':
         specifier: 19.2.7
-        version: 19.2.7(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.17)
       react:
-        specifier: 19.2.9
-        version: 19.2.9
+        specifier: 19.2.3
+        version: 19.2.3
       react-dom:
-        specifier: 19.2.9
-        version: 19.2.9(react@19.2.9)
+        specifier: 19.2.3
+        version: 19.2.3(react@19.2.3)
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -328,6 +328,9 @@ importers:
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
+      esbuild:
+        specifier: 0.28.2
+        version: 0.28.2
       typescript:
         specifier: 5.6.3
         version: 5.6.3
@@ -3172,9 +3175,6 @@ packages:
   '@types/react@19.2.17':
     resolution: {integrity: sha512-MXfmqaVPEVgkBT/aY0aGCkRWWtByiYQXo3xdQ8r5RzuFrPiRn8Gar2tQdXSUQ2GKV3bkXckek89V8wQBY2Q/Aw==}
 
-  '@types/react@19.2.18':
-    resolution: {integrity: sha512-AnzbBERsrLKtk2XSfTbYRLjQPdy116Sty4q+T+Bp3IC4l6jNBvreVPAHmpq9qhXQM7CXZPjLVmGMw9sy+hxQ3w==}
-
   '@types/react@19.3.0':
     resolution: {integrity: sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg==}
 
@@ -5852,11 +5852,6 @@ packages:
     peerDependencies:
       react: ^19.2.3
 
-  react-dom@19.2.9:
-    resolution: {integrity: sha512-YceU74W21fXEHszKBLj16MY0CmvpFKOs60iVrIyW/cCgOPsZJNaB6GVJEtIUqt6AG6EjzKLui5lPRrxAeS328Q==}
-    peerDependencies:
-      react: ^19.2.9
-
   react-dom@19.3.1:
     resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
     peerDependencies:
@@ -6013,10 +6008,6 @@ packages:
 
   react@19.2.3:
     resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
-    engines: {node: '>=0.10.0'}
-
-  react@19.2.9:
-    resolution: {integrity: sha512-RuLdAokXv3sRmZa2/N8QH0KmTBIgDKC+buRUikGqow31+mGSGidLCX2o4XFq8OV+xBFWfhM9DVgTq1PPHADH4w==}
     engines: {node: '>=0.10.0'}
 
   react@19.3.1:
@@ -10091,11 +10082,6 @@ snapshots:
       '@tanstack/query-core': 5.104.2
       react: 19.2.3
 
-  '@tanstack/react-query@5.104.2(react@19.2.9)':
-    dependencies:
-      '@tanstack/query-core': 5.104.2
-      react: 19.2.9
-
   '@testing-library/dom@10.4.2':
     dependencies:
       '@babel/code-frame': 7.29.7
@@ -10242,9 +10228,9 @@ snapshots:
     dependencies:
       undici-types: 7.24.6
 
-  '@types/react-dom@19.2.7(@types/react@19.2.18)':
+  '@types/react-dom@19.2.7(@types/react@19.2.17)':
     dependencies:
-      '@types/react': 19.2.18
+      '@types/react': 19.2.17
 
   '@types/react-dom@19.3.0(@types/react@19.2.17)':
     dependencies:
@@ -10264,10 +10250,6 @@ snapshots:
       '@types/react': 19.3.0
 
   '@types/react@19.2.17':
-    dependencies:
-      csstype: 3.2.3
-
-  '@types/react@19.2.18':
     dependencies:
       csstype: 3.2.3
 
@@ -13514,11 +13496,6 @@ snapshots:
       react: 19.2.3
       scheduler: 0.27.0
 
-  react-dom@19.2.9(react@19.2.9):
-    dependencies:
-      react: 19.2.9
-      scheduler: 0.27.0
-
   react-dom@19.3.1(react@19.3.1):
     dependencies:
       react: 19.3.1
@@ -13748,8 +13725,6 @@ snapshots:
   react@19.1.10: {}
 
   react@19.2.3: {}
-
-  react@19.2.9: {}
 
   react@19.3.1: {}
 
@@ -14984,10 +14959,5 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
       react: 19.2.3
-
-  zustand@5.0.15(@types/react@19.2.18)(react@19.2.9):
-    optionalDependencies:
-      '@types/react': 19.2.18
-      react: 19.2.9
 
   zwitch@2.0.4: {}

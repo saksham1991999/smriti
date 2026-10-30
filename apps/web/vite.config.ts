@@ -72,6 +72,8 @@ const FIXTURE_MODES = new Set(["fake", "e2e", "e2e-real", "test"]);
 export default defineConfig(({ mode }) => ({
   define: { __APP_VERSION__: JSON.stringify(pkgVersion) },
   resolve: {
+    // app-core pins its own React for its tests; the app must run on one copy (see the report).
+    dedupe: ["react", "react-dom", "zustand", "@tanstack/react-query"],
     alias: {
       "@fake-api": FAKE_MODES.has(mode) ? join(here, "src", "dev", "fake-api", "index.ts") : join(here, "src", "boot", "noFakeApi.ts"),
       // Blueprints are not in the published manifest or an API route yet; until they are, only the

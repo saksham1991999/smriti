@@ -20,7 +20,10 @@ REDIS_DIR="$DEV/redis"
 PGBIN="${PGBIN:-/usr/lib/postgresql/16/bin}"
 PGPORT="${PGPORT:-54322}"
 REDIS_PORT="${REDIS_PORT:-56379}"
-DB_NAMES=("smriti" "smriti_test")
+# SMRITI_DB_NAME lets two worktrees share one Postgres without dropping each other's databases
+# (for example SMRITI_DB_NAME=smriti_a gives smriti_a and smriti_a_test; point DATABASE_URL at them).
+DB_NAME="${SMRITI_DB_NAME:-smriti}"
+DB_NAMES=("$DB_NAME" "${DB_NAME}_test")
 
 log() { printf '\033[1;32m[db]\033[0m %s\n' "$*"; }
 warn() { printf '\033[1;33m[db]\033[0m %s\n' "$*" >&2; }
@@ -132,7 +135,7 @@ cmd_up() {
       build_db "$db"
     fi
   done
-  log "DATABASE_URL=postgresql+asyncpg://postgres:postgres@127.0.0.1:$PGPORT/smriti"
+  log "DATABASE_URL=postgresql+asyncpg://postgres:postgres@127.0.0.1:$PGPORT/$DB_NAME"
   log "REDIS_URL=redis://127.0.0.1:$REDIS_PORT/0"
 }
 
@@ -144,7 +147,10 @@ cmd_reset() {
   for db in "${DB_NAMES[@]}"; do
     build_db "$db"
   done
-  redis-cli -p "$REDIS_PORT" flushall >/dev/null
+  # A named pair shares Redis with other worktrees, so only the default reset flushes it.
+  if [ "$DB_NAME" = "smriti" ]; then
+    redis-cli -p "$REDIS_PORT" flushall >/dev/null
+  fi
   log "reset done"
 }
 
@@ -168,7 +174,7 @@ case "${1:-}" in
   reset) cmd_reset ;;
   down) cmd_down ;;
   status) cmd_status ;;
-  psql) shift; psql_admin -d smriti "$@" ;;
+  psql) shift; psql_admin -d "$DB_NAME" "$@" ;;
   *)
     echo "usage: $0 up|reset|down|status|psql" >&2
     exit 2

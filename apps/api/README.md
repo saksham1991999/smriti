@@ -104,7 +104,7 @@ uv run python -m smriti_worker content-publish  # also: ai, media, notifications
 
 | Queue | Jobs |
 |---|---|
-| default | `merge_guest`, `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron) |
+| default | `merge_guest`, `mocks_auto_submit` (strict and live attempts past their deadline; needs a worker cron entry), `tutor_retention` (deletes tutor messages older than `ai.tutor_retention_days`; needs a worker cron entry), `purge_deleted_accounts` (cron :20), `nightly_rollup` (cron :05, the timezones whose local midnight just passed), `db_upkeep` (03:00 UTC, only without pg_cron) |
 | content-publish | `content_publish`: runs `CONTENT_PUBLISH_CMD`, or `tools/content-publish` (package.json `publish` script, `publish.sh` or `run.sh`) when it exists, with `CONTENT_PUBLISH_REF` set |
 | ai, media, notifications, pdf | `ping` until their jobs land |
 
@@ -190,3 +190,33 @@ pnpm --filter @smriti/api-client generate     # writes packages/api-client/opena
 | POST | `/v1/quests/{quest_id}/claim` | claim a reward |
 | GET | `/v1/badges` | badges and when earned |
 | POST | `/v1/dev/auth/anonymous`, `/v1/dev/auth/google`, `/v1/dev/auth/refresh` | local/test stand-ins for Supabase Auth |
+
+### Practice, mocks and the tutor
+
+| Method | Path | What |
+|---|---|---|
+| GET | `/v1/practice/limits`, `/v1/practice/hub` | free counters for today and this week; the practice hub |
+| GET | `/v1/practice/weak-spots`, `/v1/practice/drill` | weak spots from mastery; drill questions for a concept or topic |
+| POST, GET | `/v1/practice/sessions` | start a session; recent sessions |
+| GET | `/v1/practice/sessions/{session_id}` | a session |
+| POST | `/v1/practice/sessions/{session_id}/answers` | check an answer on the server (vectors shared with lesson-core) |
+| POST | `/v1/practice/sessions/{session_id}/complete` | end a session |
+| GET | `/v1/pyq/papers`, `/v1/pyq/papers/{paper_id}`, `/v1/pyq` | past papers, one paper, filtered PYQs |
+| GET | `/v1/daily-challenge/today` | today's challenge (IST date) |
+| POST | `/v1/daily-challenge/{challenge_id}/start`, `.../answer` | the server clock starts; answer once |
+| GET | `/v1/daily-challenge/{challenge_id}/leaderboard` | ranks once enough players have played |
+| GET | `/v1/mocks`, `/v1/mocks/{mock_id}` | full, sectional, PYQ and published mocks, with access |
+| POST | `/v1/mocks/generate` | a custom or chapter mock from the bank |
+| POST | `/v1/mocks/{mock_id}/attempts` | start an attempt (paper pinned, server timer) |
+| GET | `/v1/attempts`, `/v1/attempts/{attempt_id}` | past attempts; one attempt with its timer and section state |
+| PUT | `/v1/attempts/{attempt_id}/answers` | autosave (refuses locked sections and a replaced device) |
+| POST | `/v1/attempts/{attempt_id}/pause`, `/resume`, `/takeover`, `/abandon` | attempt lifecycle |
+| POST | `/v1/attempts/{attempt_id}/sections/{code}/submit` | close a section |
+| POST | `/v1/attempts/{attempt_id}/submit` | submit and score (idempotency key) |
+| GET | `/v1/attempts/{attempt_id}/report`, `/solutions` | score, standing, time and topic analysis; solutions |
+| POST, GET | `/v1/tutor/sessions` | open or reuse a chat; list chats |
+| GET, DELETE | `/v1/tutor/sessions/{session_id}` | one chat; delete it |
+| POST | `/v1/tutor/sessions/{session_id}/messages` | ask (SSE: delta, replace, safety, citations, chips, quota, done) |
+| POST | `/v1/tutor/ask/card`, `/v1/tutor/ask/question` | ask about a card or a question (SSE, `session` event first) |
+| POST | `/v1/tutor/messages/{message_id}/feedback` | thumbs up or down with reasons |
+| POST, GET | `/v1/content/reports` | report content (SET-24); my reports |

@@ -6,7 +6,8 @@ import { DEFAULT_RULES, type RulesConfig } from './config';
  * - consecutive streak days; a day counts when it has one qualifying activity;
  * - a missed day is protected (no +1, no break) by, in this order: an incident freeze (our outage),
  *   a rest day (planned, wins over a freeze, which is kept), the exam day when protected, or an
- *   equipped freeze (used automatically, up to 2 equipped);
+ *   equipped freeze (used automatically, up to 2 equipped, and only when there is a streak to
+ *   protect: with the streak at 0 a missed day is just missed and the freeze is kept, R52);
  * - studying on a rest day cancels it: the day counts normally;
  * - no paid repair. A broken streak keeps `longest`.
  */
@@ -61,13 +62,16 @@ export interface DayOutcome {
   current: number;
 }
 
-/** Status of one day given the freezes equipped before it. Pure; no inventory change. */
-export function classifyDay(input: DayInput, freezesEquipped: number): DayStatus {
+/**
+ * Status of one day given the freezes equipped before it and the streak going into it. Pure; no
+ * inventory change. A freeze is spent only when there is a streak to protect (R52).
+ */
+export function classifyDay(input: DayInput, freezesEquipped: number, current = 1): DayStatus {
   if (input.qualified) return 'studied';
   if (input.incident) return 'incident';
   if (input.restDay) return 'rest';
   if (input.examDay) return 'exam_day';
-  if (freezesEquipped > 0) return 'freeze';
+  if (freezesEquipped > 0 && current > 0) return 'freeze';
   return 'missed';
 }
 
@@ -95,7 +99,7 @@ export function closeDay(
     throw new RangeError(`Day ${input.day} is already closed (through ${state.closedThrough})`);
   }
   const s = fillSlots(state, input.day, cfg);
-  const status = classifyDay(input, s.freezesEquipped);
+  const status = classifyDay(input, s.freezesEquipped, s.current);
   let next: StreakState = { ...s, closedThrough: input.day };
   let freezeUsed = false;
   switch (status) {

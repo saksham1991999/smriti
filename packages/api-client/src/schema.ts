@@ -88,6 +88,193 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/attempts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Past attempts (MOCK-25) */
+    get: operations["list_attempts_v1_attempts_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** An attempt with its paper and saved answers, for resume or takeover */
+    get: operations["get_attempt_v1_attempts__attempt_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/abandon": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Leave the mock and discard it (MOCK-15) */
+    post: operations["abandon_attempt_v1_attempts__attempt_id__abandon_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/answers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** Autosave changed answers; the newest client_updated_at wins */
+    put: operations["save_answers_v1_attempts__attempt_id__answers_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/pause": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Pause the timer (practice time policy only) */
+    post: operations["pause_attempt_v1_attempts__attempt_id__pause_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The report; deeper sections are Pro (free.mock_report_sections) */
+    get: operations["get_report_v1_attempts__attempt_id__report_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/resume": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Resume (MOCK-14) */
+    post: operations["resume_attempt_v1_attempts__attempt_id__resume_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/sections/{section_code}/submit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Submit the open section early, where the blueprint allows it */
+    post: operations["submit_section_v1_attempts__attempt_id__sections__section_code__submit_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/solutions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Keys and solutions after submit (MOCK-22) */
+    get: operations["get_solutions_v1_attempts__attempt_id__solutions_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/submit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Submit the paper; scored on the server with the blueprint's marking */
+    post: operations["submit_attempt_v1_attempts__attempt_id__submit_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/attempts/{attempt_id}/takeover": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Continue the attempt on this device */
+    post: operations["takeover_attempt_v1_attempts__attempt_id__takeover_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/auth/linked": {
     parameters: {
       query?: never;
@@ -114,6 +301,125 @@ export interface paths {
     };
     /** All badges, with the caller's earned dates */
     get: operations["badges_v1_badges_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/entitlement": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Pro or free, with status, source, grace and renewal (PAY-08 polls this) */
+    get: operations["entitlement_v1_billing_entitlement_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/intro-eligibility": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Whether the ₹1 first month may be offered (auth flow §8, R38) */
+    get: operations["intro_eligibility_v1_billing_intro_eligibility_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/razorpay/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Cancel the web subscription at the end of the paid period (PAY-13) */
+    post: operations["razorpay_cancel_v1_billing_razorpay_cancel_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/razorpay/subscription": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start a web subscription: ₹1 first month when eligible, then ₹99/month */
+    post: operations["razorpay_subscription_v1_billing_razorpay_subscription_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/razorpay/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout handler's signature; Pro follows the webhook */
+    post: operations["razorpay_verify_v1_billing_razorpay_verify_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/restore": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Re-read store purchases from RevenueCat and apply them (PAY-14 Restore) */
+    post: operations["restore_v1_billing_restore_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/subscription": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Manage plan details: source, status, next charge or end date (PAY-12) */
+    get: operations["subscription_v1_billing_subscription_get"];
     put?: never;
     post?: never;
     delete?: never;
@@ -224,6 +530,92 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/content/reports": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The student's own reports and their status */
+    get: operations["my_reports_v1_content_reports_get"];
+    put?: never;
+    /** Report a problem with content or AI output (SET-24) */
+    post: operations["report_content_v1_content_reports_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/daily-challenge/{challenge_id}/answer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Answer once; scored on the server, qualifies today's streak day */
+    post: operations["challenge_answer_v1_daily_challenge__challenge_id__answer_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/daily-challenge/{challenge_id}/leaderboard": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Ranks once enough players have played (R31 identities) */
+    get: operations["challenge_leaderboard_v1_daily_challenge__challenge_id__leaderboard_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/daily-challenge/{challenge_id}/start": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start the challenge: the server clock starts */
+    post: operations["challenge_start_v1_daily_challenge__challenge_id__start_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/daily-challenge/today": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Today's challenge (rolls at 00:00 IST); the question shows once started */
+    get: operations["challenge_today_v1_daily_challenge_today_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/dev/auth/anonymous": {
     parameters: {
       query?: never;
@@ -275,6 +667,91 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/devices": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Register this device (X-Device-Id) with its Expo token or Web Push subscription */
+    post: operations["register_device_v1_devices_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/devices/{device_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Stop pushes to a device (sign-out on it) */
+    delete: operations["forget_device_v1_devices__device_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/exports": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The student's exports (ME-23) */
+    get: operations["list_exports_v1_exports_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/exports/{export_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Status and signed link */
+    get: operations["get_export_v1_exports__export_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/exports/pdf": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Make a PDF (formula sheet book or progress report); ready later (export_ready) */
+    post: operations["create_pdf_v1_exports_pdf_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/gems/ledger": {
     parameters: {
       query?: never;
@@ -284,6 +761,125 @@ export interface paths {
     };
     /** Gem history, newest first */
     get: operations["gem_ledger_v1_gems_ledger_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The caller's own consent: state, scopes, a pending request, when to ask again */
+    get: operations["my_consent_v1_guardian_consent_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent-requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Ask a guardian: a code and link (AUTH-19/21), optionally emailed */
+    post: operations["create_request_v1_guardian_consent_requests_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent-requests/{code}/confirm": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The guardian agrees (AUTH-20 [I agree]): consent stored with its evidence */
+    post: operations["confirm_v1_guardian_consent_requests__code__confirm_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent-requests/{code}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The guardian says no for now (AUTH-20 [No thanks]) */
+    post: operations["decline_v1_guardian_consent_requests__code__decline_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent-requests/{ref}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** By id: the teen's poll (AUTH-21). By code: what the guardian reviews (AUTH-20) */
+    get: operations["read_request_v1_guardian_consent_requests__ref__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consents/{consent_id}/scopes/{scope}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Withdraw one scope (SET-17); `account` withdraws the whole consent */
+    delete: operations["withdraw_scope_v1_guardian_consents__consent_id__scopes__scope__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/learners": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Teens and managed children linked to the calling guardian (SET-14) */
+    get: operations["learners_v1_guardian_learners_get"];
     put?: never;
     post?: never;
     delete?: never;
@@ -344,6 +940,126 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/mocks": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Mocks for an exam (MOCK-01) */
+    get: operations["list_mocks_v1_mocks_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks/{mock_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Mock detail from its blueprint */
+    get: operations["get_mock_v1_mocks__mock_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks/{mock_id}/attempts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Begin a mock: the timer starts and the paper is pinned */
+    post: operations["start_attempt_v1_mocks__mock_id__attempts_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/mocks/generate": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start a custom weak-area mock (Pro) or a timed chapter mock */
+    post: operations["generate_mock_v1_mocks_generate_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/notification-prefs": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Reminder, quiet hours and per-kind switches (SET-03 to SET-05) */
+    get: operations["get_prefs_v1_notification_prefs_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** Change notification settings; adult-only switches are refused for minors */
+    patch: operations["patch_prefs_v1_notification_prefs_patch"];
+    trace?: never;
+  };
+  "/v1/notifications/opened": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** An app open or a tapped push: resets the ignored count and auto-pause (R34) */
+    post: operations["opened_v1_notifications_opened_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/notifications/web-push-key": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The VAPID application server key for pushManager.subscribe (null when off) */
+    get: operations["web_push_key_v1_notifications_web_push_key_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/pet": {
     parameters: {
       query?: never;
@@ -395,6 +1111,194 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/practice/drill": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Pick drill questions for a concept or topic without starting a session */
+    get: operations["get_drill_v1_practice_drill_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/hub": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The practice hub in one call */
+    get: operations["get_hub_v1_practice_hub_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/limits": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Free counters for today and this week */
+    get: operations["get_limits_v1_practice_limits_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/sessions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Recent sessions (PRC-16) */
+    get: operations["list_sessions_v1_practice_sessions_get"];
+    put?: never;
+    /** Start a drill, PYQ or chapter-test session, sized to today's free questions */
+    post: operations["create_session_v1_practice_sessions_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/sessions/{session_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A session */
+    get: operations["get_session_v1_practice_sessions__session_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/sessions/{session_id}/answers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check an answer on the server (online path) and record it */
+    post: operations["submit_answer_v1_practice_sessions__session_id__answers_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/sessions/{session_id}/complete": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** End a session (XP for its correct answers) */
+    post: operations["complete_session_v1_practice_sessions__session_id__complete_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/weak-spots": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Weak spots from mastery (PRC-02) */
+    get: operations["get_weak_spots_v1_practice_weak_spots_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/pyq": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PYQs with the PRC-08 filters */
+    get: operations["list_pyq_v1_pyq_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/pyq/papers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Past papers of an exam */
+    get: operations["list_papers_v1_pyq_papers_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/pyq/papers/{paper_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A paper with its questions */
+    get: operations["get_paper_v1_pyq_papers__paper_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/quests": {
     parameters: {
       query?: never;
@@ -423,6 +1327,23 @@ export interface paths {
     put?: never;
     /** Claim a finished quest */
     post: operations["claim_quest_v1_quests__quest_id__claim_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/reviews/queue": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Queue the review cards of some concepts (Fix next, add cards to reviews) */
+    post: operations["queue_reviews_v1_reviews_queue_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -571,10 +1492,248 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/tutor/ask/card": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Ask about this card (LES-04, MEM-03): opens or reuses the card's chat (SSE) */
+    post: operations["ask_card_v1_tutor_ask_card_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/ask/question": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Ask about this question (LES-02, PRC-05, MOCK-22): hints first until answered (SSE) */
+    post: operations["ask_question_v1_tutor_ask_question_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/messages/{message_id}/feedback": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Thumbs up or down with reason codes (AI-05) */
+    post: operations["message_feedback_v1_tutor_messages__message_id__feedback_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/sessions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Chat history (AI-09) */
+    get: operations["list_sessions_v1_tutor_sessions_get"];
+    put?: never;
+    /** Open a tutor chat; a chat on the same context from the last 30 min reopens */
+    post: operations["open_session_v1_tutor_sessions_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/sessions/{session_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** One chat */
+    get: operations["get_session_v1_tutor_sessions__session_id__get"];
+    put?: never;
+    post?: never;
+    /** Delete a chat */
+    delete: operations["delete_session_v1_tutor_sessions__session_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/sessions/{session_id}/messages": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Send a message; the answer streams back (SSE) */
+    post: operations["send_message_v1_tutor_sessions__session_id__messages_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/webhooks/razorpay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Razorpay subscription and refund events (HMAC-checked, idempotent) */
+    post: operations["razorpay_webhook_v1_webhooks_razorpay_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/webhooks/revenuecat": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** RevenueCat store events, confirmed against RevenueCat's REST API */
+    post: operations["revenuecat_webhook_v1_webhooks_revenuecat_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** AnswerResult */
+    AnswerResult: {
+      /** Attempt */
+      attempt: number;
+      check: components["schemas"]["CheckOut"];
+      /**
+       * Counted
+       * @description Whether it used a free practice question
+       */
+      counted: boolean;
+      /** Question Id */
+      question_id: string;
+      quota: components["schemas"]["QuotaOut"];
+      /** Session Answered */
+      session_answered: number;
+      /** Session Correct */
+      session_correct: number;
+      /** Solution */
+      solution: {
+        [key: string]: unknown;
+      };
+    };
+    /** AnswerSave */
+    AnswerSave: {
+      /** Answer */
+      answer?:
+        | components["schemas"]["OptionIdsAnswer"]
+        | components["schemas"]["NumberAnswerIn"]
+        | components["schemas"]["PairsAnswerIn"]
+        | components["schemas"]["MatrixAnswerIn"]
+        | components["schemas"]["BlanksAnswerIn"]
+        | components["schemas"]["OrderAnswerIn"]
+        | null;
+      /**
+       * Answer Changes
+       * @default 0
+       */
+      answer_changes: number;
+      /** Answered Seq */
+      answered_seq?: number | null;
+      /**
+       * Client Updated At
+       * Format: date-time
+       */
+      client_updated_at: string;
+      /** Confidence */
+      confidence?: ("sure" | "fifty_fifty" | "guess") | null;
+      /** First Seen Seq */
+      first_seen_seq?: number | null;
+      /**
+       * Palette Status
+       * @enum {string}
+       */
+      palette_status: "not_visited" | "not_answered" | "answered" | "marked" | "answered_marked";
+      /** Question Id */
+      question_id: string;
+      /** Time Spent Ms */
+      time_spent_ms: number;
+      /**
+       * Visits
+       * @default 0
+       */
+      visits: number;
+    };
+    /** AnswersPut */
+    AnswersPut: {
+      /** Answers */
+      answers: components["schemas"]["AnswerSave"][];
+    };
+    /** AnswerSubmit */
+    AnswerSubmit: {
+      /**
+       * Answer
+       * @description null: I don't know yet
+       */
+      answer?:
+        | components["schemas"]["OptionIdsAnswer"]
+        | components["schemas"]["NumberAnswerIn"]
+        | components["schemas"]["PairsAnswerIn"]
+        | components["schemas"]["MatrixAnswerIn"]
+        | components["schemas"]["BlanksAnswerIn"]
+        | components["schemas"]["OrderAnswerIn"]
+        | null;
+      /**
+       * Attempt
+       * @default 1
+       * @enum {integer}
+       */
+      attempt: 1 | 2;
+      /** Confidence */
+      confidence?: ("sure" | "fifty_fifty" | "guess") | null;
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /** Mistake Type */
+      mistake_type?: ("conceptual" | "calculation" | "misread" | "silly" | "time") | null;
+      /** Question Id */
+      question_id: string;
+      /** Time Ms */
+      time_ms: number;
+    };
     /** AppVersionInfo */
     AppVersionInfo: {
       /** Latest Version */
@@ -583,6 +1742,274 @@ export interface components {
       min_version: string;
       /** Update Required */
       update_required?: boolean | null;
+    };
+    /**
+     * AskCard
+     * @description ask-about-this-card (LES-04, MEM-03 back side).
+     */
+    AskCard: {
+      /** Card Id */
+      card_id: string;
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Text */
+      text: string;
+    };
+    /**
+     * AskQuestion
+     * @description ask-about-this-question (LES-02 after Check, PRC-05, MOCK-22 after submit).
+     */
+    AskQuestion: {
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Question Id */
+      question_id: string;
+      /** Text */
+      text: string;
+      /** Your Answer */
+      your_answer?:
+        | components["schemas"]["OptionIdsAnswer"]
+        | components["schemas"]["NumberAnswerIn"]
+        | components["schemas"]["PairsAnswerIn"]
+        | components["schemas"]["MatrixAnswerIn"]
+        | components["schemas"]["BlanksAnswerIn"]
+        | components["schemas"]["OrderAnswerIn"]
+        | null;
+    };
+    /** Attempt */
+    Attempt: {
+      /** Active Device */
+      active_device: ("this" | "other") | null;
+      /** Attempt No */
+      attempt_no: number;
+      /**
+       * Blueprint Id
+       * Format: uuid
+       */
+      blueprint_id: string;
+      /** Calculator */
+      calculator: string;
+      /** Early Section Submit */
+      early_section_submit: boolean | null;
+      /** Exam Profile Id */
+      exam_profile_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Interface */
+      interface: string;
+      /** Interface Profile */
+      interface_profile: {
+        [key: string]: unknown;
+      } | null;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /**
+       * Language
+       * @enum {string}
+       */
+      language: "en" | "hi";
+      /**
+       * Language Switch
+       * @enum {string}
+       */
+      language_switch: "per_question" | "fixed";
+      /** Marked Answer Evaluated */
+      marked_answer_evaluated: boolean;
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Pause Count */
+      pause_count: number;
+      /** Paused */
+      paused: boolean;
+      /** Paused Ms */
+      paused_ms: number;
+      /** Questions */
+      questions?: components["schemas"]["AttemptQuestion"][] | null;
+      /** Remaining Ms */
+      remaining_ms: number;
+      /** Score */
+      score: number | null;
+      /**
+       * Section Navigation
+       * @enum {string}
+       */
+      section_navigation: "free" | "locked_in_order" | "free_within_timer";
+      /** Sections */
+      sections: components["schemas"]["AttemptSection"][];
+      /**
+       * Server Deadline At
+       * Format: date-time
+       */
+      server_deadline_at: string;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+      /** Submitted At */
+      submitted_at: string | null;
+      /**
+       * Time Policy
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict" | "live";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+    };
+    /**
+     * AttemptCreate
+     * @description Created when [I am ready to begin] is tapped (practice §6.4 step 5), with the client's
+     *     UUIDv7 so a retry or an offline replay is the same attempt.
+     */
+    AttemptCreate: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /**
+       * Language
+       * @enum {string}
+       */
+      language: "en" | "hi";
+      /** Started At */
+      started_at?: string | null;
+      /**
+       * Time Policy
+       * @default practice
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict";
+    };
+    /** AttemptQuestion */
+    AttemptQuestion: {
+      /** Body */
+      body: {
+        [key: string]: unknown;
+      };
+      marking: components["schemas"]["MarkingOut"];
+      /** Position */
+      position: number;
+      /** Question Id */
+      question_id: string;
+      saved?: components["schemas"]["SavedAnswer"] | null;
+      /** Section Code */
+      section_code: string;
+      /** Type */
+      type: string;
+    };
+    /** AttemptSection */
+    AttemptSection: {
+      /** Answered */
+      answered: number;
+      /** Attempt Any */
+      attempt_any: number | null;
+      /** Closed At */
+      closed_at: string | null;
+      /** Closed By */
+      closed_by: ("timer" | "student" | "submit") | null;
+      /** Closes At */
+      closes_at: string | null;
+      /** Code */
+      code: string;
+      /** Opened At */
+      opened_at: string | null;
+      /** Over Attempt */
+      over_attempt: ("block" | "evaluate_first_n") | null;
+      /** Question Ids */
+      question_ids: string[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "upcoming" | "closed";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+    };
+    /** AttemptSummary */
+    AttemptSummary: {
+      /** Attempt No */
+      attempt_no: number;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /** Max Score */
+      max_score: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Score */
+      score: number | null;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
     };
     /** BadgeOut */
     BadgeOut: {
@@ -600,6 +2027,34 @@ export interface components {
       };
       /** Tier */
       tier: number;
+    };
+    /** BlankIn */
+    BlankIn: {
+      /** Blank */
+      blank: string;
+      /** Choice Id */
+      choice_id?: string | null;
+      /** Text */
+      text?: string | null;
+    };
+    /** BlanksAnswerIn */
+    BlanksAnswerIn: {
+      /** Blanks */
+      blanks: components["schemas"]["BlankIn"][];
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "blanks";
+    };
+    /** BlueprintSource */
+    BlueprintSource: {
+      /** Published */
+      published?: string | null;
+      /** Title */
+      title: string;
+      /** Url */
+      url: string;
     };
     /** BundleRef */
     BundleRef: {
@@ -641,6 +2096,42 @@ export interface components {
       /** Unit Id */
       unit_id: string;
     };
+    /** CheckOut */
+    CheckOut: {
+      /** Correct */
+      correct: boolean;
+      /** Partial */
+      partial: number;
+      /** Response */
+      response: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** ConceptRow */
+    ConceptRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Attempted */
+      attempted: number;
+      /** Concept Id */
+      concept_id: string;
+      /** Correct */
+      correct: number;
+      /** Marks Lost */
+      marks_lost: number;
+    };
+    /** ConfidenceRow */
+    ConfidenceRow: {
+      /**
+       * Confidence
+       * @enum {string}
+       */
+      confidence: "sure" | "fifty_fifty" | "guess" | "none";
+      /** Correct */
+      correct: number;
+      /** Wrong */
+      wrong: number;
+    };
     /** ConfigResponse */
     ConfigResponse: {
       app_version: components["schemas"]["AppVersionInfo"];
@@ -665,6 +2156,378 @@ export interface components {
       /** Variants */
       variants: string[];
     };
+    /** ConsentConfirm */
+    ConsentConfirm: {
+      /** App Version */
+      app_version?: string | null;
+      /**
+       * Declaration
+       * @constant
+       */
+      declaration: true;
+      /**
+       * Method
+       * @enum {string}
+       */
+      method: "google_same_device" | "google_own_device";
+      /** Notice Version */
+      notice_version: string;
+      /** Platform */
+      platform?: ("ios" | "android" | "web") | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /** ConsentDecision */
+    ConsentDecision: {
+      consent: components["schemas"]["ConsentOut"] | null;
+      /**
+       * Request Id
+       * Format: uuid
+       */
+      request_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "granted" | "declined";
+    };
+    /** ConsentOut */
+    ConsentOut: {
+      /** Age Assurance */
+      age_assurance: string;
+      /**
+       * Consented At
+       * Format: date-time
+       */
+      consented_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Learner User Id
+       * Format: uuid
+       */
+      learner_user_id: string;
+      /** Method */
+      method: string;
+      /** Notice Version */
+      notice_version: string;
+      /** Revoked At */
+      revoked_at: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /** ConsentRequestCreate */
+    ConsentRequestCreate: {
+      /**
+       * Channel
+       * @enum {string}
+       */
+      channel: "handoff" | "link";
+      /** Guardian Email */
+      guardian_email?: string | null;
+      /**
+       * Locale
+       * @default en
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /** ConsentRequestCreated */
+    ConsentRequestCreated: {
+      /**
+       * Channel
+       * @enum {string}
+       */
+      channel: "handoff" | "link";
+      /** Code */
+      code: string;
+      /** Email Sent */
+      email_sent: boolean;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Link */
+      link: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /**
+     * ConsentRequestForGuardian
+     * @description What AUTH-20 shows the guardian: no more than the screen needs (DB_SCHEMA §12).
+     */
+    ConsentRequestForGuardian: {
+      /** App Variant */
+      app_variant: string | null;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /** Learner First Name */
+      learner_first_name: string | null;
+      /** Pet Name */
+      pet_name: string | null;
+      /** Pet Species */
+      pet_species: string | null;
+      /**
+       * Request Id
+       * Format: uuid
+       */
+      request_id: string;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+    };
+    /**
+     * ConsentRequestStatus
+     * @description The teen's poll while AUTH-21 is open (every 5 s), and AUTH-23's data.
+     */
+    ConsentRequestStatus: {
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /** Granted Scopes */
+      granted_scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Resolved At */
+      resolved_at: string | null;
+      /** Retry At */
+      retry_at: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "granted" | "declined" | "expired" | "cancelled";
+    };
+    /**
+     * ContentReportIn
+     * @description SET-24 Report content: one sheet for lesson, question, AI and community content (R39).
+     */
+    ContentReportIn: {
+      /** Bundle Hash */
+      bundle_hash?: string | null;
+      /** Item Ref */
+      item_ref: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind:
+        | "lesson_card"
+        | "question"
+        | "review_card"
+        | "solution"
+        | "tutor_message"
+        | "generated_image"
+        | "story_page"
+        | "roleplay_turn"
+        | "community_mnemonic"
+        | "lab"
+        | "album_card";
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /** Note */
+      note?: string | null;
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason: "wrong" | "unclear" | "typo" | "translation" | "offensive" | "spam" | "other";
+    };
+    /** ContentReportOut */
+    ContentReportOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Item Ref */
+      item_ref: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind:
+        | "lesson_card"
+        | "question"
+        | "review_card"
+        | "solution"
+        | "tutor_message"
+        | "generated_image"
+        | "story_page"
+        | "roleplay_turn"
+        | "community_mnemonic"
+        | "lab"
+        | "album_card";
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason: "wrong" | "unclear" | "typo" | "translation" | "offensive" | "spam" | "other";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "accepted" | "fixed" | "rejected";
+    };
+    /**
+     * ContextOut
+     * @description What the tutor can see, for the context chip (tutor-social §A5 step 1).
+     */
+    ContextOut: {
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "card" | "question" | "topic" | "concept" | "lab";
+      /** Ref */
+      ref: string;
+      /** Title */
+      title?: {
+        [key: string]: string;
+      } | null;
+      /** Topic Id */
+      topic_id?: string | null;
+    };
+    /** DailyChallenge */
+    DailyChallenge: {
+      /**
+       * Closes At
+       * Format: date-time
+       */
+      closes_at: string;
+      /**
+       * Day
+       * Format: date
+       */
+      day: string;
+      /** Exam */
+      exam: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Opens At
+       * Format: date-time
+       */
+      opens_at: string;
+      /**
+       * Question
+       * @description The question without its key; shown once started
+       */
+      question: {
+        [key: string]: unknown;
+      } | null;
+      result: components["schemas"]["DailyChallengeResult"] | null;
+      /** Solution */
+      solution?: {
+        [key: string]: unknown;
+      } | null;
+      /** Started At */
+      started_at: string | null;
+    };
+    /** DailyChallengeAnswer */
+    DailyChallengeAnswer: {
+      /** Answer */
+      answer?:
+        | components["schemas"]["OptionIdsAnswer"]
+        | components["schemas"]["NumberAnswerIn"]
+        | components["schemas"]["PairsAnswerIn"]
+        | components["schemas"]["MatrixAnswerIn"]
+        | components["schemas"]["BlanksAnswerIn"]
+        | components["schemas"]["OrderAnswerIn"]
+        | null;
+      /** Client Time Ms */
+      client_time_ms: number;
+      /** Confidence */
+      confidence?: ("sure" | "fifty_fifty" | "guess") | null;
+      /**
+       * Tz
+       * @description IANA zone of the device, for the streak day (R23)
+       */
+      tz?: string | null;
+    };
+    /** DailyChallengeCard */
+    DailyChallengeCard: {
+      /** Challenge Id */
+      challenge_id: string | null;
+      /**
+       * Day
+       * Format: date
+       */
+      day: string;
+      /**
+       * State
+       * @enum {string}
+       */
+      state: "not_played" | "started" | "played" | "unavailable";
+    };
+    /** DailyChallengeResult */
+    DailyChallengeResult: {
+      /**
+       * Beat Pct
+       * @description Share of players beaten, when ranks are shown
+       */
+      beat_pct: number | null;
+      /** Correct */
+      correct: boolean;
+      /** Min Players For Rank */
+      min_players_for_rank: number | null;
+      /** Players */
+      players: number;
+      /** Rank */
+      rank: number | null;
+      /**
+       * Submitted At
+       * Format: date-time
+       */
+      submitted_at: string;
+      /** Time Ms */
+      time_ms: number;
+    };
+    /** DailyLeaderboard */
+    DailyLeaderboard: {
+      /**
+       * Challenge Id
+       * Format: uuid
+       */
+      challenge_id: string;
+      /** Min Players For Rank */
+      min_players_for_rank: number | null;
+      /** Players */
+      players: number;
+      /** Ranked */
+      ranked: boolean;
+      /** Rows */
+      rows: components["schemas"]["LeaderboardRow"][];
+      you: components["schemas"]["LeaderboardRow"] | null;
+    };
     /** DeletionResponse */
     DeletionResponse: {
       /** Scheduled For */
@@ -684,6 +2547,58 @@ export interface components {
       name: string;
       /** Sub */
       sub?: string | null;
+    };
+    /** DeviceOut */
+    DeviceOut: {
+      /** Has Push Token */
+      has_push_token: boolean;
+      /** Has Web Push */
+      has_web_push: boolean;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Notif Permission
+       * @enum {string}
+       */
+      notif_permission: "not_asked" | "granted" | "denied" | "provisional" | "not_required";
+      /**
+       * Platform
+       * @enum {string}
+       */
+      platform: "ios" | "android" | "web";
+      /** Push Enabled */
+      push_enabled: boolean;
+    };
+    /** DeviceRegister */
+    DeviceRegister: {
+      /** App Version */
+      app_version: string;
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /**
+       * Notif Permission
+       * @default not_asked
+       * @enum {string}
+       */
+      notif_permission: "not_asked" | "granted" | "denied" | "provisional" | "not_required";
+      /**
+       * Platform
+       * @enum {string}
+       */
+      platform: "ios" | "android" | "web";
+      /**
+       * Push Enabled
+       * @default true
+       */
+      push_enabled: boolean;
+      /** Push Token */
+      push_token?: string | null;
+      /** Timezone */
+      timezone?: string | null;
+      web_push_subscription?: components["schemas"]["WebPushSubscription"] | null;
     };
     /** DevRefreshRequest */
     DevRefreshRequest: {
@@ -723,8 +2638,21 @@ export interface components {
       /** Is Anonymous */
       is_anonymous: boolean;
     };
-    /** EntitlementState */
-    EntitlementState: {
+    /** DrillPreview */
+    DrillPreview: {
+      /** Exam */
+      exam: string;
+      /** Question Ids */
+      question_ids: string[];
+    };
+    /** EntitlementOut */
+    EntitlementOut: {
+      /** Cancel At Period End */
+      cancel_at_period_end: boolean;
+      /** Grace Until */
+      grace_until: string | null;
+      /** Is Intro */
+      is_intro: boolean;
       /**
        * Plan
        * @enum {string}
@@ -732,6 +2660,40 @@ export interface components {
       plan: "free" | "pro";
       /** Pro Until */
       pro_until: string | null;
+      /** Source */
+      source: ("razorpay" | "play" | "app_store" | "promo") | null;
+      /** Status */
+      status:
+        | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
+        | null;
+    };
+    /** EntitlementState */
+    EntitlementState: {
+      /**
+       * Cancel At Period End
+       * @default false
+       */
+      cancel_at_period_end: boolean;
+      /** Grace Until */
+      grace_until?: string | null;
+      /**
+       * Is Intro
+       * @default false
+       */
+      is_intro: boolean;
+      /**
+       * Plan
+       * @enum {string}
+       */
+      plan: "free" | "pro";
+      /** Pro Until */
+      pro_until: string | null;
+      /** Source */
+      source?: ("razorpay" | "play" | "app_store" | "promo") | null;
+      /** Status */
+      status?:
+        | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
+        | null;
     };
     /** ExamOut */
     ExamOut: {
@@ -778,6 +2740,93 @@ export interface components {
       /** Primary */
       primary?: string | null;
     };
+    /** ExportList */
+    ExportList: {
+      /** Exports */
+      exports: components["schemas"]["ExportOut"][];
+    };
+    /** ExportOut */
+    ExportOut: {
+      /** Bytes */
+      bytes: number | null;
+      /** Completed At */
+      completed_at: string | null;
+      /** Expires At */
+      expires_at: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "pdf_book" | "data_export";
+      /** Pages */
+      pages: number | null;
+      /**
+       * Requested At
+       * Format: date-time
+       */
+      requested_at: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "queued" | "rendering" | "ready" | "failed" | "expired";
+      /** Template */
+      template: string | null;
+      /** Url */
+      url: string | null;
+    };
+    /** FeedbackIn */
+    FeedbackIn: {
+      /**
+       * Rating
+       * @enum {string}
+       */
+      rating: "up" | "down";
+      /** Reasons */
+      reasons?: (
+        | "wrong"
+        | "confusing"
+        | "too_long"
+        | "didnt_answer"
+        | "wrong_language"
+        | "not_suitable"
+      )[];
+    };
+    /** FeedbackOut */
+    FeedbackOut: {
+      /**
+       * Message Id
+       * Format: uuid
+       */
+      message_id: string;
+      /** Queued For Review */
+      queued_for_review: boolean;
+      /**
+       * Rating
+       * @enum {string}
+       */
+      rating: "up" | "down";
+      /** Reasons */
+      reasons: string[];
+    };
+    /** FixNext */
+    FixNext: {
+      /** Concept Id */
+      concept_id: string;
+      /** Drill */
+      drill: {
+        [key: string]: unknown;
+      };
+      /** Marks Lost */
+      marks_lost: number;
+      /** Weightage */
+      weightage: number | null;
+    };
     /** GemLedgerEntry */
     GemLedgerEntry: {
       /**
@@ -797,10 +2846,123 @@ export interface components {
       /** Ref */
       ref: string | null;
     };
+    /**
+     * GenerateMock
+     * @description MOCK-26 custom weak-area mock (Pro) or a timed chapter mock (counts as sectional, Q15).
+     */
+    GenerateMock: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Chapter Id */
+      chapter_id?: string | null;
+      /** Concepts */
+      concepts?: string[] | null;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Kind
+       * @default custom
+       * @enum {string}
+       */
+      kind: "custom" | "chapter";
+      /**
+       * Language
+       * @enum {string}
+       */
+      language: "en" | "hi";
+      /** Paper Code */
+      paper_code?: string | null;
+      /** Question Count */
+      question_count: number;
+      /**
+       * Time Policy
+       * @default practice
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict";
+    };
     /** HTTPValidationError */
     HTTPValidationError: {
       /** Detail */
       detail?: components["schemas"]["ValidationError"][];
+    };
+    /** IntroEligibilityOut */
+    IntroEligibilityOut: {
+      /**
+       * Eligible
+       * @description null for a guest: only the hint is known until sign-in (auth flow §8)
+       */
+      eligible: boolean | null;
+      /** Eligible Hint */
+      eligible_hint: boolean;
+      /** Intro Price Paise */
+      intro_price_paise: number | null;
+      /** Price Paise */
+      price_paise: number;
+      /** Reason */
+      reason: ("guest" | "had_subscription" | "intro_already_claimed") | null;
+    };
+    /** LeaderboardRow */
+    LeaderboardRow: {
+      /** Avatar */
+      avatar: string | null;
+      /** Correct */
+      correct: boolean;
+      /** Is You */
+      is_you: boolean;
+      /**
+       * Name
+       * @description Adults: display name. Minors: auto nickname (R31)
+       */
+      name: string | null;
+      /** Rank */
+      rank: number;
+      /** Time Ms */
+      time_ms: number;
+    };
+    /** LearnerOut */
+    LearnerOut: {
+      /** Age Band */
+      age_band: string | null;
+      consent: components["schemas"]["ConsentOut"] | null;
+      /** First Name */
+      first_name: string | null;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "managed" | "consent";
+      /**
+       * Linked At
+       * Format: date-time
+       */
+      linked_at: string;
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
+    /** LearnersOut */
+    LearnersOut: {
+      /** Learners */
+      learners: components["schemas"]["LearnerOut"][];
+    };
+    /** Limits */
+    Limits: {
+      /**
+       * Day
+       * Format: date
+       */
+      day: string;
+      /** Is Pro */
+      is_pro: boolean;
+      practice_questions: components["schemas"]["QuotaOut"];
+      sectional_mocks: components["schemas"]["QuotaOut"];
+      tutor_messages: components["schemas"]["QuotaOut"];
     };
     /** LinkedRequest */
     LinkedRequest: {
@@ -845,6 +3007,41 @@ export interface components {
       url: string | null;
       /** Version */
       version: number | null;
+    };
+    /**
+     * MarkingOut
+     * @description A blueprint marking rule for one question type (skills/exam-blueprint).
+     */
+    MarkingOut: {
+      /** Correct */
+      correct: number;
+      /** Partial */
+      partial?: {
+        [key: string]: unknown;
+      } | null;
+      /** Tolerance */
+      tolerance?: unknown;
+      /** Unattempted */
+      unattempted: number;
+      /** Wrong */
+      wrong: number;
+    };
+    /** MatrixAnswerIn */
+    MatrixAnswerIn: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "matrix";
+      /** Rows */
+      rows: components["schemas"]["MatrixRowIn"][];
+    };
+    /** MatrixRowIn */
+    MatrixRowIn: {
+      /** Columns */
+      columns: string[];
+      /** Row */
+      row: string;
     };
     /** MePatch */
     MePatch: {
@@ -958,12 +3155,464 @@ export interface components {
        */
       status: "queued" | "running" | "done" | "failed";
     };
+    /** MessageIn */
+    MessageIn: {
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Text */
+      text: string;
+    };
+    /** MessageOut */
+    MessageOut: {
+      /** Citations */
+      citations?: {
+        [key: string]: unknown;
+      }[];
+      /** Content */
+      content: string;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "user" | "assistant";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "ok" | "stopped" | "refused" | "crisis" | "error";
+    };
+    /**
+     * MockAccess
+     * @description app-core ``mockAccess``. A locked mock names the paywall source; the client opens PAY-01 only
+     *     on a tap (practice §4.1).
+     */
+    MockAccess: {
+      /** Allowed */
+      allowed: boolean;
+      /** Paywall Source */
+      paywall_source?: ("mock_lock" | "pyq_paper" | "live_mock" | "custom_mock") | null;
+      /** Paywall Trigger */
+      paywall_trigger?: "mock_limit" | null;
+      /** Reason */
+      reason?: string | null;
+    };
+    /** MockCard */
+    MockCard: {
+      access: components["schemas"]["MockAccess"];
+      /**
+       * Attempts
+       * @default 0
+       */
+      attempts: number;
+      /**
+       * Blueprint Id
+       * Format: uuid
+       */
+      blueprint_id: string;
+      /** Duration Min */
+      duration_min: number;
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      /** Id */
+      id: string;
+      /** In Progress Attempt Id */
+      in_progress_attempt_id?: string | null;
+      /** Is Free */
+      is_free: boolean;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /** Max Marks */
+      max_marks: number | null;
+      /** Paper Code */
+      paper_code: string;
+      /** Question Count */
+      question_count: number;
+      /** Ranked */
+      ranked: boolean;
+      /** Results At */
+      results_at?: string | null;
+      /** Section Code */
+      section_code?: string | null;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Window End */
+      window_end?: string | null;
+      /** Window Start */
+      window_start?: string | null;
+    };
+    /**
+     * MockDetail
+     * @description MOCK-02: everything the blueprint says, never a fallback value (practice §9.1).
+     */
+    MockDetail: {
+      access: components["schemas"]["MockAccess"];
+      /**
+       * Attempts
+       * @default 0
+       */
+      attempts: number;
+      /**
+       * Blueprint Id
+       * Format: uuid
+       */
+      blueprint_id: string;
+      /** Calculator */
+      calculator: string;
+      /** Duration Min */
+      duration_min: number;
+      /** Early Section Submit */
+      early_section_submit: boolean | null;
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      /** Id */
+      id: string;
+      /** In Progress Attempt Id */
+      in_progress_attempt_id?: string | null;
+      /** Instructions */
+      instructions: {
+        [key: string]: string;
+      };
+      /** Interface */
+      interface: string;
+      /** Interface Profile */
+      interface_profile: {
+        [key: string]: unknown;
+      } | null;
+      /** Is Free */
+      is_free: boolean;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /**
+       * Language Switch
+       * @enum {string}
+       */
+      language_switch: "per_question" | "fixed";
+      /** Languages */
+      languages: string[];
+      /** Marked Answer Evaluated */
+      marked_answer_evaluated: boolean;
+      /** Max Marks */
+      max_marks: number | null;
+      /**
+       * Mode
+       * @enum {string}
+       */
+      mode: "cbt" | "pen_paper";
+      /** Paper Code */
+      paper_code: string;
+      /** Past Attempts */
+      past_attempts: components["schemas"]["AttemptSummary"][];
+      /** Qualifying */
+      qualifying: {
+        [key: string]: unknown;
+      } | null;
+      /** Question Count */
+      question_count: number;
+      /** Ranked */
+      ranked: boolean;
+      /** Results At */
+      results_at?: string | null;
+      /** Section Code */
+      section_code?: string | null;
+      /**
+       * Section Navigation
+       * @enum {string}
+       */
+      section_navigation: "free" | "locked_in_order" | "free_within_timer";
+      /** Sections */
+      sections: components["schemas"]["MockSection"][];
+      source: components["schemas"]["BlueprintSource"];
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Verified At */
+      verified_at: string;
+      /** Window End */
+      window_end?: string | null;
+      /** Window Start */
+      window_start?: string | null;
+    };
+    /** MockInProgress */
+    MockInProgress: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Kind */
+      kind: string | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /**
+       * Server Deadline At
+       * Format: date-time
+       */
+      server_deadline_at: string;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+    };
+    /** MockSection */
+    MockSection: {
+      /** Attempt Any */
+      attempt_any: number | null;
+      /** Code */
+      code: string;
+      /** Marking */
+      marking: {
+        [key: string]: components["schemas"]["MarkingOut"];
+      };
+      /** Over Attempt */
+      over_attempt: ("block" | "evaluate_first_n") | null;
+      /** Question Count */
+      question_count: number;
+      /** Question Types */
+      question_types: string[];
+      /** Subject Id */
+      subject_id: string | null;
+      /** Timer Min */
+      timer_min: number | null;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Type Counts */
+      type_counts?: {
+        [key: string]: number;
+      } | null;
+    };
+    /** MyConsentOut */
+    MyConsentOut: {
+      /** Age Band */
+      age_band: string | null;
+      /** Consent Id */
+      consent_id: string | null;
+      /** Consented At */
+      consented_at: string | null;
+      /** Needs Consent */
+      needs_consent: boolean;
+      /** Pending Request Id */
+      pending_request_id: string | null;
+      /** Retry At */
+      retry_at: string | null;
+      /** Scopes */
+      scopes: ("account" | "social" | "community" | "voice" | "uploads")[];
+      /**
+       * State
+       * @enum {string}
+       */
+      state: "not_required" | "required" | "pending" | "granted" | "declined" | "revoked";
+    };
+    /** NotificationOpened */
+    NotificationOpened: {
+      /** Id */
+      id?: string | null;
+    };
+    /** NotificationPrefs */
+    NotificationPrefs: {
+      /** Adult Only */
+      adult_only: string[];
+      /** Bedtime Review Time */
+      bedtime_review_time: string | null;
+      /** Daily Challenge */
+      daily_challenge: boolean;
+      /** Daily Reminder At */
+      daily_reminder_at: string | null;
+      /** Email Reminders */
+      email_reminders: boolean;
+      /** Exam Alerts */
+      exam_alerts: boolean;
+      /** Focus Timer */
+      focus_timer: boolean;
+      /** Focus Until */
+      focus_until: string | null;
+      /** Friends */
+      friends: boolean;
+      /** News */
+      news: boolean;
+      /** Paused */
+      paused: boolean;
+      /** Pet Plant Nudges */
+      pet_plant_nudges: boolean;
+      /**
+       * Quiet End
+       * Format: time
+       */
+      quiet_end: string;
+      /**
+       * Quiet Start
+       * Format: time
+       */
+      quiet_start: string;
+      /** Reminder Enabled */
+      reminder_enabled: boolean;
+      /** Review Due */
+      review_due: boolean;
+      /** School Hours */
+      school_hours: boolean;
+      /** Sleep Review */
+      sleep_review: boolean;
+      /** Smart Timing */
+      smart_timing: boolean;
+      /** Streak Saver */
+      streak_saver: boolean;
+      /** Weak Area Alerts */
+      weak_area_alerts: boolean;
+    };
+    /** NotificationPrefsPatch */
+    NotificationPrefsPatch: {
+      /** Bedtime Review Time */
+      bedtime_review_time?: string | null;
+      /** Daily Challenge */
+      daily_challenge?: boolean | null;
+      /** Daily Reminder At */
+      daily_reminder_at?: string | null;
+      /** Email Reminders */
+      email_reminders?: boolean | null;
+      /** Exam Alerts */
+      exam_alerts?: boolean | null;
+      /** Focus Timer */
+      focus_timer?: boolean | null;
+      /** Focus Until */
+      focus_until?: string | null;
+      /** Friends */
+      friends?: boolean | null;
+      /** News */
+      news?: boolean | null;
+      /** Paused */
+      paused?: false | null;
+      /** Pet Plant Nudges */
+      pet_plant_nudges?: boolean | null;
+      /** Quiet End */
+      quiet_end?: string | null;
+      /** Quiet Start */
+      quiet_start?: string | null;
+      /** Reminder Enabled */
+      reminder_enabled?: boolean | null;
+      /** Review Due */
+      review_due?: boolean | null;
+      /** School Hours */
+      school_hours?: boolean | null;
+      /** Sleep Review */
+      sleep_review?: boolean | null;
+      /** Smart Timing */
+      smart_timing?: boolean | null;
+      /** Streak Saver */
+      streak_saver?: boolean | null;
+      /** Weak Area Alerts */
+      weak_area_alerts?: boolean | null;
+    };
+    /** NumberAnswerIn */
+    NumberAnswerIn: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "number";
+      /** Unit */
+      unit?: string | null;
+      /** Value */
+      value: number | string;
+    };
+    /** OptionIdsAnswer */
+    OptionIdsAnswer: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "options";
+      /** Option Ids */
+      option_ids: string[];
+    };
+    /** OrderAnswerIn */
+    OrderAnswerIn: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "order";
+      /** Order */
+      order: string[];
+    };
     /** Page[GemLedgerEntry] */
     Page_GemLedgerEntry_: {
       /** Items */
       items: components["schemas"]["GemLedgerEntry"][];
       /** Next Cursor */
       next_cursor?: string | null;
+    };
+    /** PairIn */
+    PairIn: {
+      /** Left */
+      left: string;
+      /** Right */
+      right: string;
+    };
+    /** PairsAnswerIn */
+    PairsAnswerIn: {
+      /**
+       * Kind
+       * @constant
+       */
+      kind: "pairs";
+      /** Pairs */
+      pairs: components["schemas"]["PairIn"][];
+    };
+    /** PauseIn */
+    PauseIn: {
+      /** At */
+      at?: string | null;
+    };
+    /** PdfExportCreate */
+    PdfExportCreate: {
+      /**
+       * Language
+       * @default en
+       * @enum {string}
+       */
+      language: "en" | "hi" | "both";
+      /**
+       * Template
+       * @enum {string}
+       */
+      template: "formula_sheet" | "progress_report";
+      /**
+       * Topic Ids
+       * @default []
+       */
+      topic_ids: string[];
     };
     /** PetCareRequest */
     PetCareRequest: {
@@ -1039,6 +3688,52 @@ export interface components {
       /** Study Days */
       study_days: number;
     };
+    /** PracticeHub */
+    PracticeHub: {
+      daily_challenge: components["schemas"]["DailyChallengeCard"];
+      /** Exam */
+      exam: string;
+      limits: components["schemas"]["Limits"];
+      mock_in_progress: components["schemas"]["MockInProgress"] | null;
+      /** Recent Sessions */
+      recent_sessions: components["schemas"]["smriti_api__schemas__practice__SessionSummary"][];
+      /** Weak Spots */
+      weak_spots: components["schemas"]["WeakSpot"][];
+    };
+    /** PracticeSession */
+    PracticeSession: {
+      /** Answered */
+      answered: number;
+      /** Capped By Free Limit */
+      capped_by_free_limit: boolean;
+      /** Correct */
+      correct: number;
+      /** Ended At */
+      ended_at: string | null;
+      /** Exam */
+      exam: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Kind */
+      kind: string;
+      /** Questions */
+      questions: components["schemas"]["SessionQuestion"][];
+      quota: components["schemas"]["QuotaOut"];
+      /** Requested */
+      requested: number;
+      /** Size */
+      size: number;
+      /** Source */
+      source: string | null;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+    };
     /** PriceInfo */
     PriceInfo: {
       /** Entitlement */
@@ -1108,6 +3803,106 @@ export interface components {
       /** State Version */
       state_version: number;
     };
+    /** PyqItem */
+    PyqItem: {
+      /** Bundle Ref */
+      bundle_ref: string | null;
+      /** Chapter Id */
+      chapter_id: string | null;
+      /** Difficulty */
+      difficulty: string | null;
+      /** Number */
+      number: number;
+      /** Question Id */
+      question_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "not_tried" | "wrong" | "correct";
+      /** Topic Id */
+      topic_id: string | null;
+      /** Type */
+      type: string;
+    };
+    /** PyqPaper */
+    PyqPaper: {
+      /** Exam Id */
+      exam_id: string;
+      /** Free As Mock */
+      free_as_mock: boolean;
+      /** Held On */
+      held_on: string | null;
+      /** Id */
+      id: string;
+      /** Notes */
+      notes: string | null;
+      /** Paper Code */
+      paper_code: string | null;
+      /** Question Count */
+      question_count: number;
+      /** Session Label */
+      session_label: string | null;
+      /** Source Url */
+      source_url: string | null;
+      /** Year */
+      year: number;
+    };
+    /** PyqPaperDetail */
+    PyqPaperDetail: {
+      /** Exam Id */
+      exam_id: string;
+      /** Free As Mock */
+      free_as_mock: boolean;
+      /** Held On */
+      held_on: string | null;
+      /** Id */
+      id: string;
+      /** Items */
+      items: components["schemas"]["PyqItem"][];
+      /** Notes */
+      notes: string | null;
+      /** Paper Code */
+      paper_code: string | null;
+      /** Question Count */
+      question_count: number;
+      /** Session Label */
+      session_label: string | null;
+      /** Source Url */
+      source_url: string | null;
+      /** Year */
+      year: number;
+    };
+    /** PyqQuestion */
+    PyqQuestion: {
+      /** Bundle Ref */
+      bundle_ref: string | null;
+      /** Chapter Id */
+      chapter_id: string | null;
+      /** Difficulty */
+      difficulty: string | null;
+      /** Number */
+      number: number;
+      /** Paper Id */
+      paper_id: string;
+      /** Question Id */
+      question_id: string;
+      /** Session Label */
+      session_label: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "not_tried" | "wrong" | "correct";
+      /** Subject Id */
+      subject_id: string | null;
+      /** Topic Id */
+      topic_id: string | null;
+      /** Type */
+      type: string;
+      /** Year */
+      year: number;
+    };
     /** QuestClaimResponse */
     QuestClaimResponse: {
       /** Gems */
@@ -1118,6 +3913,32 @@ export interface components {
       state_version: number;
       /** Xp */
       xp: number;
+    };
+    /** QuestionRow */
+    QuestionRow: {
+      /** Answered Seq */
+      answered_seq: number | null;
+      /** Confidence */
+      confidence: ("sure" | "fifty_fifty" | "guess") | null;
+      /** Ideal Time S */
+      ideal_time_s: number | null;
+      /** Marks */
+      marks: number;
+      /** Position */
+      position: number;
+      /** Question Id */
+      question_id: string;
+      /** Section Code */
+      section_code: string;
+      /** Slow */
+      slow: boolean | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "correct" | "partial" | "wrong" | "skipped" | "not_counted" | "not_scored";
+      /** Time Spent Ms */
+      time_spent_ms: number;
     };
     /** QuestOut */
     QuestOut: {
@@ -1153,6 +3974,62 @@ export interface components {
       /** Target */
       target: number;
     };
+    /**
+     * QuotaOut
+     * @description A free-tier counter (app-core ``Quota``). ``remaining`` is null when unlimited.
+     */
+    QuotaOut: {
+      /** Limit */
+      limit: number | null;
+      /** Remaining */
+      remaining: number | null;
+      /** Resets At */
+      resets_at?: string | null;
+      /** Unlimited */
+      unlimited: boolean;
+      /** Used */
+      used: number;
+    };
+    /** RazorpayCancelRequest */
+    RazorpayCancelRequest: {
+      /** Reason */
+      reason?: string | null;
+    };
+    /** RazorpaySubscriptionOut */
+    RazorpaySubscriptionOut: {
+      /** Amount Today Paise */
+      amount_today_paise: number;
+      /** Intro */
+      intro: boolean;
+      /** Key Id */
+      key_id: string;
+      /** Product Id */
+      product_id: string;
+      /** Short Url */
+      short_url?: string | null;
+      /** Subscription Id */
+      subscription_id: string;
+      /** Then Paise */
+      then_paise: number;
+    };
+    /** RazorpaySubscriptionRequest */
+    RazorpaySubscriptionRequest: {
+      /**
+       * Payer
+       * @default self
+       * @enum {string}
+       */
+      payer: "self" | "guardian_declared";
+    };
+    /** RazorpayVerifyRequest */
+    RazorpayVerifyRequest: {
+      /** Razorpay Payment Id */
+      razorpay_payment_id: string;
+      /** Razorpay Signature */
+      razorpay_signature: string;
+      /** Razorpay Subscription Id */
+      razorpay_subscription_id: string;
+    };
     /** RejectedEvent */
     RejectedEvent: {
       /** Code */
@@ -1165,6 +4042,95 @@ export interface components {
        */
       event_id: string;
     };
+    /** RejectedRow */
+    RejectedRow: {
+      /**
+       * Code
+       * @enum {string}
+       */
+      code:
+        | "not_in_paper"
+        | "after_deadline"
+        | "section_closed"
+        | "section_locked"
+        | "over_attempt"
+        | "invalid_answer"
+        | "clock_skew";
+      /** Question Id */
+      question_id: string;
+    };
+    /** Report */
+    Report: {
+      /** Accuracy */
+      accuracy?: number | null;
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Attempt No */
+      attempt_no: number;
+      /** Concepts */
+      concepts?: components["schemas"]["ConceptRow"][] | null;
+      /** Confidence */
+      confidence?: components["schemas"]["ConfidenceRow"][] | null;
+      /** Fix Next */
+      fix_next?: components["schemas"]["FixNext"][] | null;
+      /**
+       * Generated At
+       * Format: date-time
+       */
+      generated_at: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "full" | "sectional" | "chapter" | "pyq_paper" | "live" | "custom";
+      /** Locked */
+      locked: string[];
+      /** Max Score */
+      max_score?: number | null;
+      /** Mock Id */
+      mock_id: string | null;
+      /** Qualifying */
+      qualifying?: {
+        [key: string]: unknown;
+      } | null;
+      /** Questions */
+      questions?: components["schemas"]["QuestionRow"][] | null;
+      /** Score */
+      score?: number | null;
+      /** Sections */
+      sections?: components["schemas"]["SectionRow"][] | null;
+      standing?: components["schemas"]["Standing"] | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+      /** Subjects */
+      subjects?: components["schemas"]["SubjectRow"][] | null;
+      /** Submitted At */
+      submitted_at: string | null;
+      /** Summary */
+      summary?: {
+        [key: string]: unknown;
+      } | null;
+      time_buckets?: components["schemas"]["TimeBuckets"] | null;
+      /** Time Lost Wrong Ms */
+      time_lost_wrong_ms?: number | null;
+      /**
+       * Time Policy
+       * @enum {string}
+       */
+      time_policy: "practice" | "strict" | "live";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Topics */
+      topics?: components["schemas"]["TopicRow"][] | null;
+    };
     /** RestDayRequest */
     RestDayRequest: {
       /**
@@ -1172,6 +4138,147 @@ export interface components {
        * Format: date
        */
       day: string;
+    };
+    /** RestoreOut */
+    RestoreOut: {
+      entitlement: components["schemas"]["EntitlementOut"];
+      /** Restored */
+      restored: boolean;
+    };
+    /** ReviewQueueRequest */
+    ReviewQueueRequest: {
+      /** Card Refs */
+      card_refs?: string[];
+      /** Concept Ids */
+      concept_ids?: string[];
+      /**
+       * Source
+       * @enum {string}
+       */
+      source: "lesson" | "practice" | "comeback" | "mock_report" | "practice_summary" | "solution";
+    };
+    /** ReviewQueueResponse */
+    ReviewQueueResponse: {
+      /** Card Refs */
+      card_refs: string[];
+      /**
+       * Queued
+       * @description Cards started or moved into today's (or tomorrow's) queue
+       */
+      queued: number;
+      /** State Version */
+      state_version: number;
+    };
+    /** SavedAnswer */
+    SavedAnswer: {
+      /** Answer */
+      answer: {
+        [key: string]: unknown;
+      } | null;
+      /** Answer Changes */
+      answer_changes: number;
+      /** Answered Seq */
+      answered_seq: number | null;
+      /**
+       * Client Updated At
+       * Format: date-time
+       */
+      client_updated_at: string;
+      /** Confidence */
+      confidence: ("sure" | "fifty_fifty" | "guess") | null;
+      /** First Seen Seq */
+      first_seen_seq: number | null;
+      /**
+       * Palette Status
+       * @enum {string}
+       */
+      palette_status: "not_visited" | "not_answered" | "answered" | "marked" | "answered_marked";
+      /** Time Spent Ms */
+      time_spent_ms: number;
+      /** Visits */
+      visits: number;
+    };
+    /** SaveResult */
+    SaveResult: {
+      /** Kept Newer */
+      kept_newer: string[];
+      /** Rejected */
+      rejected: components["schemas"]["RejectedRow"][];
+      /** Saved */
+      saved: string[];
+      /** Sections */
+      sections: components["schemas"]["AttemptSection"][];
+      /**
+       * Server Deadline At
+       * Format: date-time
+       */
+      server_deadline_at: string;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "in_progress" | "submitted" | "auto_submitted" | "abandoned";
+    };
+    /** SectionRow */
+    SectionRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Code */
+      code: string;
+      /** Correct */
+      correct: number;
+      /** Marks */
+      marks: number;
+      /** Max Marks */
+      max_marks: number;
+      /** Partial */
+      partial: number;
+      /** Skipped */
+      skipped: number;
+      /** Time Ms */
+      time_ms: number;
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /** Wrong */
+      wrong: number;
+    };
+    /** SessionComplete */
+    SessionComplete: {
+      /**
+       * Ended By
+       * @default finished
+       * @enum {string}
+       */
+      ended_by: "finished" | "closed" | "time_up";
+    };
+    /** SessionQuestion */
+    SessionQuestion: {
+      /**
+       * Bundle Ref
+       * @description Bundle that holds the question for offline use
+       */
+      bundle_ref: string | null;
+      /** Chapter Id */
+      chapter_id: string;
+      /** Concepts */
+      concepts: string[];
+      /** Difficulty */
+      difficulty: string | null;
+      /** Ideal Time S */
+      ideal_time_s: number | null;
+      /** Question Id */
+      question_id: string;
+      /** Topic Id */
+      topic_id: string;
+      /** Type */
+      type: string;
     };
     /** ShopItemOut */
     ShopItemOut: {
@@ -1192,6 +4299,146 @@ export interface components {
       gems: number;
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
+    };
+    /**
+     * SessionCreate
+     * @description PRC-03's input contract (practice §5.3): exactly one of ``concepts``, ``topic_id``,
+     *     ``chapter_id``, ``question_ids`` or ``paper_id``; or none for a mixed drill of the exam.
+     */
+    smriti_api__schemas__practice__SessionCreate: {
+      /** Chapter Id */
+      chapter_id?: string | null;
+      /** Concepts */
+      concepts?: string[] | null;
+      /**
+       * Count
+       * @default 10
+       */
+      count: number;
+      /**
+       * Difficulty
+       * @default adaptive
+       * @enum {string}
+       */
+      difficulty: "adaptive" | "easy" | "medium" | "hard";
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Mode
+       * @default drill
+       * @enum {string}
+       */
+      mode: "drill" | "chapter_test" | "weak_spots";
+      /** Paper Id */
+      paper_id?: string | null;
+      /** Question Ids */
+      question_ids?: string[] | null;
+      /**
+       * Session Id
+       * @description Client UUIDv7; a repeat returns the same session
+       */
+      session_id?: string | null;
+      /** Source */
+      source?: string | null;
+      /** Topic Id */
+      topic_id?: string | null;
+    };
+    /** SessionSummary */
+    smriti_api__schemas__practice__SessionSummary: {
+      /** Answered */
+      answered: number;
+      /** Correct */
+      correct: number;
+      /** Ended At */
+      ended_at: string | null;
+      /** Exam */
+      exam: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Kind */
+      kind: string;
+      /** Size */
+      size: number | null;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+    };
+    /** SessionCreate */
+    smriti_api__schemas__tutor__SessionCreate: {
+      /** Context Ref */
+      context_ref?: string | null;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Mode
+       * @default chat
+       * @constant
+       */
+      mode: "chat";
+    };
+    /** SessionSummary */
+    smriti_api__schemas__tutor__SessionSummary: {
+      /** Context Ref */
+      context_ref: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Last Message At */
+      last_message_at: string | null;
+      /** Message Count */
+      message_count: number;
+      /** Mode */
+      mode: string;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+    };
+    /** SolutionItem */
+    SolutionItem: {
+      /** Marks */
+      marks: number;
+      /** Position */
+      position: number;
+      /** Question */
+      question: {
+        [key: string]: unknown;
+      };
+      /** Question Id */
+      question_id: string;
+      /** Section Code */
+      section_code: string;
+      /** Solution */
+      solution: {
+        [key: string]: unknown;
+      };
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "correct" | "partial" | "wrong" | "skipped" | "not_counted" | "not_scored";
+      /** Your Answer */
+      your_answer: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** Solutions */
+    Solutions: {
+      /**
+       * Attempt Id
+       * Format: uuid
+       */
+      attempt_id: string;
+      /** Items */
+      items: components["schemas"]["SolutionItem"][];
     };
     /** SrsCardState */
     SrsCardState: {
@@ -1221,6 +4468,34 @@ export interface components {
       cards: components["schemas"]["SrsCardState"][];
       /** Deleted */
       deleted: string[];
+    };
+    /**
+     * Standing
+     * @description R26: percentile and rank only from real first attempts, above the owner's threshold.
+     */
+    Standing: {
+      /** Counted */
+      counted?: number | null;
+      /** Needed */
+      needed?: number | null;
+      /** Of */
+      of?: number | null;
+      /** Percentile */
+      percentile?: number | null;
+      /** Rank */
+      rank?: number | null;
+      /** Reason */
+      reason?:
+        | (
+            | "personal_paper"
+            | "not_first_attempt"
+            | "threshold_unset"
+            | "below_threshold"
+            | "results_pending"
+          )
+        | null;
+      /** Shown */
+      shown: boolean;
     };
     /** StreakFreezeRequest */
     StreakFreezeRequest: {
@@ -1261,6 +4536,79 @@ export interface components {
       };
       /** Sort */
       sort: number;
+    };
+    /** SubjectRow */
+    SubjectRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Correct */
+      correct: number;
+      /** Marks */
+      marks: number;
+      /** Max Marks */
+      max_marks: number;
+      /** Partial */
+      partial: number;
+      /** Skipped */
+      skipped: number;
+      /** Subject Id */
+      subject_id: string;
+      /** Time Ms */
+      time_ms: number;
+      /** Wrong */
+      wrong: number;
+    };
+    /** SubscriptionDetailsOut */
+    SubscriptionDetailsOut: {
+      entitlement: components["schemas"]["EntitlementOut"];
+      /** Promo Until */
+      promo_until: string | null;
+      subscription: components["schemas"]["SubscriptionOut"] | null;
+    };
+    /** SubscriptionOut */
+    SubscriptionOut: {
+      /** Cancel At Period End */
+      cancel_at_period_end: boolean;
+      /** Current Period End */
+      current_period_end: string | null;
+      /** Ends At */
+      ends_at: string | null;
+      /** Grace Until */
+      grace_until: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Intro Price Paise */
+      intro_price_paise: number | null;
+      /** Is Intro */
+      is_intro: boolean;
+      /**
+       * Managed In
+       * @enum {string}
+       */
+      managed_in: "web" | "play" | "app_store" | "none";
+      /** Next Charge At */
+      next_charge_at: string | null;
+      /** Next Charge Paise */
+      next_charge_paise: number | null;
+      /**
+       * Payer
+       * @enum {string}
+       */
+      payer: "self" | "guardian_declared" | "guardian";
+      /** Price Paise */
+      price_paise: number;
+      /** Product Id */
+      product_id: string;
+      /**
+       * Source
+       * @enum {string}
+       */
+      source: "razorpay" | "play" | "app_store" | "promo";
+      /** Status */
+      status: string;
     };
     /** SubtopicOut */
     SubtopicOut: {
@@ -1348,6 +4696,22 @@ export interface components {
       topic_progress?: components["schemas"]["TopicProgressState"][] | null;
       wallet?: components["schemas"]["WalletState"] | null;
     };
+    /** TimeBuckets */
+    TimeBuckets: {
+      /** Fast And Wrong */
+      fast_and_wrong: number;
+      /**
+       * Ideal Time Source
+       * @enum {string}
+       */
+      ideal_time_source: "authors" | "cohort";
+      /** Lucky Guesses */
+      lucky_guesses: number;
+      /** Right But Slow */
+      right_but_slow: number;
+      /** Skipped Time Ms */
+      skipped_time_ms: number;
+    };
     /** TimeResponse */
     TimeResponse: {
       /**
@@ -1428,6 +4792,59 @@ export interface components {
       /** Topic Id */
       topic_id: string;
     };
+    /** TopicRow */
+    TopicRow: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Correct */
+      correct: number;
+      /** Marks */
+      marks: number;
+      /** Max Marks */
+      max_marks: number;
+      /** Partial */
+      partial: number;
+      /** Skipped */
+      skipped: number;
+      /** Time Ms */
+      time_ms: number;
+      /** Topic Id */
+      topic_id: string;
+      /** Wrong */
+      wrong: number;
+    };
+    /** TutorSession */
+    TutorSession: {
+      context: components["schemas"]["ContextOut"] | null;
+      /** Exam Profile Id */
+      exam_profile_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Last Message At */
+      last_message_at: string | null;
+      /** Locale */
+      locale: string;
+      /** Message Count */
+      message_count: number;
+      /** Messages */
+      messages?: components["schemas"]["MessageOut"][];
+      /** Mode */
+      mode: string;
+      quota: components["schemas"]["QuotaOut"];
+      /**
+       * Resumed
+       * @default false
+       */
+      resumed: boolean;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+    };
     /** ValidationError */
     ValidationError: {
       /** Context */
@@ -1481,6 +4898,79 @@ export interface components {
       xp_today: number;
       /** Xp Total */
       xp_total: number;
+    };
+    /** WeakSpot */
+    WeakSpot: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Attempts */
+      attempts: number;
+      /** Concept Id */
+      concept_id: string;
+      /** Concept Name */
+      concept_name: {
+        [key: string]: string;
+      };
+      /** Mastery */
+      mastery: number | null;
+      /** Priority */
+      priority: string;
+      /** Reasons */
+      reasons: ("low_accuracy" | "fading" | "missed_in_mock" | "overconfident")[];
+      /** Topic Id */
+      topic_id: string;
+      /** Topic Name */
+      topic_name: {
+        [key: string]: string;
+      };
+      /** Weightage */
+      weightage: number | null;
+    };
+    /** WeakSpots */
+    WeakSpots: {
+      /** Exam */
+      exam: string;
+      /** Items */
+      items: components["schemas"]["WeakSpot"][];
+      /**
+       * Needs More Answers
+       * @description Answers still needed before weak spots can be found; null when enough
+       */
+      needs_more_answers: number | null;
+      /**
+       * Unset Thresholds
+       * @description Owner flags not set yet; their rules are skipped (practice §9.2)
+       */
+      unset_thresholds: string[];
+    };
+    /** WebhookAck */
+    WebhookAck: {
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "applied" | "duplicate" | "ignored";
+    };
+    /** WebPushKey */
+    WebPushKey: {
+      /** Public Key */
+      public_key: string | null;
+    };
+    /** WebPushKeys */
+    WebPushKeys: {
+      /** Auth */
+      auth: string;
+      /** P256Dh */
+      p256dh: string;
+    };
+    /** WebPushSubscription */
+    WebPushSubscription: {
+      /**
+       * Endpoint
+       * Format: uri
+       */
+      endpoint: string;
+      keys: components["schemas"]["WebPushKeys"];
     };
   };
   responses: never;
@@ -1664,6 +5154,400 @@ export interface operations {
       };
     };
   };
+  list_attempts_v1_attempts_get: {
+    parameters: {
+      query?: {
+        before?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AttemptSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_attempt_v1_attempts__attempt_id__get: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  abandon_attempt_v1_attempts__attempt_id__abandon_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  save_answers_v1_attempts__attempt_id__answers_put: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AnswersPut"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SaveResult"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  pause_attempt_v1_attempts__attempt_id__pause_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PauseIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_report_v1_attempts__attempt_id__report_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Report"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  resume_attempt_v1_attempts__attempt_id__resume_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  submit_section_v1_attempts__attempt_id__sections__section_code__submit_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+        section_code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_solutions_v1_attempts__attempt_id__solutions_get: {
+    parameters: {
+      query?: {
+        locale?: ("en" | "hi") | null;
+      };
+      header?: never;
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Solutions"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  submit_attempt_v1_attempts__attempt_id__submit_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Report"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  takeover_attempt_v1_attempts__attempt_id__takeover_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        attempt_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   linked_v1_auth_linked_post: {
     parameters: {
       query?: never;
@@ -1715,6 +5599,206 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["BadgeOut"][];
+        };
+      };
+    };
+  };
+  entitlement_v1_billing_entitlement_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+    };
+  };
+  intro_eligibility_v1_billing_intro_eligibility_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["IntroEligibilityOut"];
+        };
+      };
+    };
+  };
+  razorpay_cancel_v1_billing_razorpay_cancel_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayCancelRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  razorpay_subscription_v1_billing_razorpay_subscription_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpaySubscriptionRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  razorpay_verify_v1_billing_razorpay_verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EntitlementOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  restore_v1_billing_restore_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RestoreOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  subscription_v1_billing_subscription_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SubscriptionDetailsOut"];
         };
       };
     };
@@ -1903,6 +5987,207 @@ export interface operations {
       };
     };
   };
+  my_reports_v1_content_reports_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ContentReportOut"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  report_content_v1_content_reports_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ContentReportIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ContentReportOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  challenge_answer_v1_daily_challenge__challenge_id__answer_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        challenge_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DailyChallengeAnswer"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DailyChallenge"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  challenge_leaderboard_v1_daily_challenge__challenge_id__leaderboard_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path: {
+        challenge_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DailyLeaderboard"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  challenge_start_v1_daily_challenge__challenge_id__start_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        challenge_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DailyChallenge"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  challenge_today_v1_daily_challenge_today_get: {
+    parameters: {
+      query?: {
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DailyChallenge"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   anonymous_v1_dev_auth_anonymous_post: {
     parameters: {
       query?: never;
@@ -2003,6 +6288,170 @@ export interface operations {
       };
     };
   };
+  register_device_v1_devices_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DeviceRegister"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DeviceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  forget_device_v1_devices__device_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        device_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_exports_v1_exports_get: {
+    parameters: {
+      query?: {
+        kind?: ("pdf_book" | "data_export") | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ExportList"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_export_v1_exports__export_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        export_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ExportOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  create_pdf_v1_exports_pdf_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PdfExportCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ExportOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   gem_ledger_v1_gems_ledger_get: {
     parameters: {
       query?: {
@@ -2031,6 +6480,222 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  my_consent_v1_guardian_consent_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyConsentOut"];
+        };
+      };
+    };
+  };
+  create_request_v1_guardian_consent_requests_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ConsentRequestCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsentRequestCreated"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  confirm_v1_guardian_consent_requests__code__confirm_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ConsentConfirm"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsentDecision"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decline_v1_guardian_consent_requests__code__decline_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsentDecision"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_request_v1_guardian_consent_requests__ref__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        ref: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json":
+            | components["schemas"]["ConsentRequestStatus"]
+            | components["schemas"]["ConsentRequestForGuardian"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  withdraw_scope_v1_guardian_consents__consent_id__scopes__scope__delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        consent_id: string;
+        scope: "account" | "social" | "community" | "voice" | "uploads";
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsentOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  learners_v1_guardian_learners_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LearnersOut"];
         };
       };
     };
@@ -2141,6 +6806,251 @@ export interface operations {
       };
     };
   };
+  list_mocks_v1_mocks_get: {
+    parameters: {
+      query?: {
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MockCard"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_mock_v1_mocks__mock_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MockDetail"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  start_attempt_v1_mocks__mock_id__attempts_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AttemptCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  generate_mock_v1_mocks_generate_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GenerateMock"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Attempt"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_prefs_v1_notification_prefs_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["NotificationPrefs"];
+        };
+      };
+    };
+  };
+  patch_prefs_v1_notification_prefs_patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["NotificationPrefsPatch"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["NotificationPrefs"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  opened_v1_notifications_opened_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["NotificationOpened"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  web_push_key_v1_notifications_web_push_key_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WebPushKey"];
+        };
+      };
+    };
+  };
   get_pet_v1_pet_get: {
     parameters: {
       query?: never;
@@ -2220,6 +7130,409 @@ export interface operations {
       };
     };
   };
+  get_drill_v1_practice_drill_get: {
+    parameters: {
+      query?: {
+        concept?: string[] | null;
+        count?: number;
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+        topic?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DrillPreview"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_hub_v1_practice_hub_get: {
+    parameters: {
+      query?: {
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PracticeHub"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_limits_v1_practice_limits_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Limits"];
+        };
+      };
+    };
+  };
+  list_sessions_v1_practice_sessions_get: {
+    parameters: {
+      query?: {
+        before?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["smriti_api__schemas__practice__SessionSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  create_session_v1_practice_sessions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["smriti_api__schemas__practice__SessionCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PracticeSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_session_v1_practice_sessions__session_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PracticeSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  submit_answer_v1_practice_sessions__session_id__answers_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AnswerSubmit"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AnswerResult"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  complete_session_v1_practice_sessions__session_id__complete_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SessionComplete"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PracticeSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_weak_spots_v1_practice_weak_spots_get: {
+    parameters: {
+      query?: {
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WeakSpots"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_pyq_v1_pyq_get: {
+    parameters: {
+      query?: {
+        chapter?: string | null;
+        difficulty?: ("easy" | "medium" | "hard") | null;
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+        limit?: number;
+        offset?: number;
+        session?: string | null;
+        status?: ("not_tried" | "wrong" | "correct") | null;
+        subject?: string | null;
+        topic?: string | null;
+        type?: string | null;
+        year?: number[] | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PyqQuestion"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_papers_v1_pyq_papers_get: {
+    parameters: {
+      query?: {
+        /** @description Exam profile; default: primary */
+        exam?: string | null;
+        session?: string | null;
+        year?: number | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PyqPaper"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_paper_v1_pyq_papers__paper_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        paper_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PyqPaperDetail"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   quests_v1_quests_get: {
     parameters: {
       query?: never;
@@ -2264,6 +7577,45 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["QuestClaimResponse"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  queue_reviews_v1_reviews_queue_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReviewQueueRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ReviewQueueResponse"];
         };
       };
       /** @description Validation Error */
@@ -2520,6 +7872,307 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["TimeResponse"];
+        };
+      };
+    };
+  };
+  ask_card_v1_tutor_ask_card_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AskCard"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  ask_question_v1_tutor_ask_question_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AskQuestion"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  message_feedback_v1_tutor_messages__message_id__feedback_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        message_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FeedbackIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeedbackOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_sessions_v1_tutor_sessions_get: {
+    parameters: {
+      query?: {
+        before?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["smriti_api__schemas__tutor__SessionSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  open_session_v1_tutor_sessions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["smriti_api__schemas__tutor__SessionCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TutorSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_session_v1_tutor_sessions__session_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TutorSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_session_v1_tutor_sessions__session_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  send_message_v1_tutor_sessions__session_id__messages_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["MessageIn"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  razorpay_webhook_v1_webhooks_razorpay_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WebhookAck"];
+        };
+      };
+    };
+  };
+  revenuecat_webhook_v1_webhooks_revenuecat_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WebhookAck"];
         };
       };
     };

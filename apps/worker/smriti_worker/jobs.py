@@ -15,13 +15,16 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import httpx
 import structlog
+from smriti_api.ai.factory import build_gateway
 from smriti_api.core.config import REPO_ROOT, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.logging import configure_logging, hash_user_id
-from smriti_api.services import accounts
+from smriti_api.integrations import build_integrations
+from smriti_api.services import accounts, billing, card_index, exports, guardian, media, notify
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import JobDeps
+from smriti_api.services.privacy import ConsentAwareAnalytics
 from smriti_api.services.state import rollup_user
 from sqlalchemy import text
 
@@ -43,7 +46,11 @@ async def startup(ctx: Ctx) -> None:
     ctx["settings"] = settings
     ctx["http"] = http
     ctx["deps"] = JobDeps(
-        db=db, auth_admin=build_auth_admin(settings, db, http), analytics=LogAnalyticsSink()
+        db=db,
+        auth_admin=build_auth_admin(settings, db, http),
+        analytics=ConsentAwareAnalytics(LogAnalyticsSink(), db),
+        integrations=build_integrations(settings, http),
+        ai=build_gateway(settings, db, http),
     )
     log.info("worker_started", env=settings.app_env.value)
 
@@ -164,6 +171,25 @@ async def db_upkeep(ctx: Ctx) -> dict[str, Any]:
 # --- content publish hook ----------------------------------------------------------------------
 
 
+def content_root() -> Path:
+    return Path(os.environ.get("CONTENT_ROOT") or REPO_ROOT / "content")
+
+
+def report_dir() -> Path:
+    return Path(os.environ.get("CONTENT_PUBLISH_REPORT_DIR") or CONTENT_PUBLISH_DIR / "out")
+
+
+async def apply_metadata_sql(deps: JobDeps, path: Path) -> int:
+    """Runs the publish's ``metadata.sql`` (content.* rows) in one transaction. asyncpg runs a
+    multi-statement script only through its own ``execute`` without arguments."""
+    sql = await asyncio.to_thread(path.read_text, encoding="utf-8")
+    async with deps.db.engine.begin() as conn:
+        raw = await conn.get_raw_connection()
+        driver: Any = raw.driver_connection
+        await driver.execute(sql)
+    return len(sql)
+
+
 def content_publish_command(
     settings: Settings, folder: Path = CONTENT_PUBLISH_DIR
 ) -> list[str] | None:
@@ -173,7 +199,18 @@ def content_publish_command(
     if not folder.is_dir():
         return None
     if (folder / "package.json").is_file():
-        return ["pnpm", "--dir", str(folder), "run", "publish"]
+        return [
+            "pnpm",
+            "--dir",
+            str(folder),
+            "run",
+            "publish:local",
+            "--",
+            "--root",
+            str(content_root()),
+            "--report",
+            str(report_dir()),
+        ]
     for script in ("publish.sh", "run.sh"):
         if (folder / script).is_file():
             return ["bash", str(folder / script)]
@@ -188,7 +225,11 @@ async def content_publish(ctx: Ctx, ref: str | None = None) -> dict[str, Any]:
     if cmd is None:
         log.info("content_publish_skipped", reason="tools/content-publish not present")
         return {"status": "skipped"}
-    env = {**os.environ, "CONTENT_PUBLISH_REF": ref or ""}
+    env = {
+        **os.environ,
+        "CONTENT_PUBLISH_REF": ref or "",
+        "CONTENT_PUBLISH_REPORT_DIR": str(ctx.get("content_report_dir") or report_dir()),
+    }
     started = time.perf_counter()
     proc = await asyncio.create_subprocess_exec(
         *cmd,
@@ -206,4 +247,81 @@ async def content_publish(ctx: Ctx, ref: str | None = None) -> dict[str, Any]:
         return {"status": "timeout"}
     ms = int((time.perf_counter() - started) * 1000)
     log.info("content_publish", exit_code=code, ms=ms)
-    return {"status": "done" if code == 0 else "failed", "exit_code": code, "ms": ms}
+    out: dict[str, Any] = {"status": "done" if code == 0 else "failed", "exit_code": code, "ms": ms}
+    if code != 0:
+        return out
+    metadata = Path(ctx.get("content_report_dir") or report_dir()) / "metadata.sql"
+    if not metadata.is_file():
+        out["metadata"] = "missing"
+        return out
+    deps = _deps(ctx)
+    try:
+        await apply_metadata_sql(deps, metadata)
+    except Exception:
+        log.exception("content_metadata_failed")
+        out.update(status="failed", metadata="failed")
+        return out
+    root = Path(ctx.get("content_root") or content_root())
+    # Never index from an empty or wrong root: the pass retires every card it does not see.
+    if not any((root / "lessons").rglob("*.json")):
+        out.update(metadata="applied", card_index="no_lessons")
+        return out
+    async with deps.db.system_tx() as session:
+        counts = await card_index.index_lessons(session, root)
+    out.update(metadata="applied", card_index=counts)
+    return out
+
+
+# --- notifications, guardians, billing reminders (notifications queue and crons) ---------------
+
+
+async def notify_dispatch(ctx: Ctx) -> dict[str, int]:
+    """Decides and sends every due outbox item (every minute)."""
+    return await notify.dispatch_job(_deps(ctx))
+
+
+async def notify_plan_web(ctx: Ctx) -> int:
+    """Daily reminder and streak saver for web devices (every 15 minutes)."""
+    return await notify.plan_web_habit(_deps(ctx).db)
+
+
+async def guardian_expire(ctx: Ctx) -> int:
+    return await guardian.expire_requests(_deps(ctx).db)
+
+
+async def guardian_age_up(ctx: Ctx) -> int:
+    count = await guardian.age_up(_deps(ctx).db)
+    if count:
+        log.info("guardian_aged_up", count=count)
+    return count
+
+
+async def trial_reminders(ctx: Ctx) -> int:
+    return await billing.trial_reminders(_deps(ctx).db)
+
+
+# --- PDF and media -------------------------------------------------------------------------------
+
+
+async def render_pdf(ctx: Ctx, export_id: str) -> dict[str, Any]:
+    return await exports.render_export(_deps(ctx), export_id)
+
+
+async def media_generate(ctx: Ctx, request_id: str) -> dict[str, str | None]:
+    return await media.generate_job(_deps(ctx), request_id)
+
+
+async def media_sweep(ctx: Ctx) -> int:
+    """Queued image requests the content pipeline recorded: one job each on the media queue."""
+    from smriti_api.services.jobs import ArqJobQueue
+
+    ids = await media.pending(_deps(ctx).db)
+    if not ids:
+        return 0
+    queue = ArqJobQueue(ctx["settings"].redis_url)
+    try:
+        for rid in ids:
+            await queue.enqueue("media_generate", str(rid), job_id=f"media_generate:{rid}")
+    finally:
+        await queue.close()
+    return len(ids)

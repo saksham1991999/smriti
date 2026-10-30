@@ -4,7 +4,7 @@
  * - `fake` (default): the e2e build (`pnpm build:e2e`) on vite preview, with the in-process fake API.
  * - `real-api`: the e2e-real build (`pnpm build:e2e-real`) against apps/api on 127.0.0.1:8000.
  *   Start the API first (see e2e/real-api.spec.ts); Pro goes through the API's local FakeRazorpay.
- * - `e2e/screens.spec.ts` takes the screenshot matrix when SHOTS_DIR is set (skipped otherwise).
+ * - `e2e/screens.spec.ts` (real-api project) takes the screenshot matrix when SHOTS_DIR is set.
  */
 import { defineConfig, devices } from "@playwright/test";
 
@@ -22,12 +22,12 @@ export default defineConfig({
   projects: [
     {
       name: "fake",
-      testIgnore: /real-api\.spec\.ts/,
+      testIgnore: /(real-api|screens)\.spec\.ts/,
       use: { ...devices["Desktop Chrome"], baseURL: "http://127.0.0.1:4317" },
     },
     {
       name: "real-api",
-      testMatch: /real-api\.spec\.ts/,
+      testMatch: /(real-api|screens)\.spec\.ts/,
       use: { ...devices["Desktop Chrome"], baseURL: "http://127.0.0.1:4318" },
     },
   ],

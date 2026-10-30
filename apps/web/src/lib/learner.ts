@@ -21,7 +21,6 @@ import {
 import type { TypedBundle } from "@smriti/content-schema";
 import { visibleBites, type EventEnvelope, type LessonPlan, type LessonState } from "@smriti/lesson-core";
 import type { Services } from "../boot/services";
-import { useDaily } from "./daily";
 import { useOnboarding } from "./onboarding";
 
 const EMPTY_STREAK: StreakSection = { current: 0, longest: 0, today_qualified: false, freezes_equipped: 1, freezes_available: 0, rest_day: null, at_risk: false };
@@ -183,7 +182,6 @@ export async function finishLesson(s: Services, args: { plan: LessonPlan; state:
     }
   });
   if (counts) s.store.setState({ streak, plant, wallet });
-  useDaily.getState().add(summary.msTotal);
   if (reviewEvents.length) void s.sync.flush();
   const lessonsCompleted = useOnboarding.getState().lessonsCompleted + (counts ? 1 : 0);
   useOnboarding.getState().update({ lessonsCompleted });
@@ -227,6 +225,5 @@ export async function rateCard(s: Services, row: SrsCardRow, rating: ReviewRatin
     { card_ref: row.card_ref, rating, confidence, ms_to_answer: Math.round(ms), fsrs_state: result.fsrsState },
     (tx) => tx.srs_cards.put(result.card),
   );
-  useDaily.getState().add(ms);
   return result.card;
 }

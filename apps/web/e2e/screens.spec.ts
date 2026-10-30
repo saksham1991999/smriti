@@ -91,15 +91,28 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await page.getByTestId("drill-close").click();
     await drill(page);
 
-    await page.goto("/practice/mock");
-    await expect(page.locator("[data-testid=mock-06],[data-testid=mock-empty]")).toBeVisible();
-    if (await page.getByTestId("mock-06").isVisible()) {
-      await shoot(page, locale, "MOCK-06");
-      await page.getByTestId("mock-declaration").click();
-      await page.getByTestId("mock-begin").click();
-      await expect(page.getByTestId("mock-07")).toBeVisible();
-      await shoot(page, locale, "MOCK-07");
-    }
+    await page.goto("/practice/mocks");
+    await expect(page.getByTestId("mock-01")).toBeVisible();
+    await shoot(page, locale, "MOCK-01");
+    await page.getByTestId("mock-card-bp:fx-exam-2027:paper-1:section-a").click();
+    await expect(page.getByTestId("mock-06")).toBeVisible();
+    await shoot(page, locale, "MOCK-06");
+    await page.getByTestId("mock-declaration").click();
+    await page.getByTestId("mock-begin").click();
+    await expect(page.getByTestId("mock-07")).toBeVisible();
+    await page.getByTestId("mock-08").locator("[data-testid^=option-]").first().click();
+    await page.getByTestId("mock-save-next").click();
+    await expect(page.getByTestId("palette-1")).toHaveAttribute("data-state", "answered");
+    await shoot(page, locale, "MOCK-08");
+    await page.getByTestId("mock-submit").click();
+    await expect(page.getByTestId("mock-16")).toBeVisible();
+    await shoot(page, locale, "MOCK-16");
+    await page.getByTestId("mock-16").getByRole("button", { name: /submit|जमा/i }).last().click();
+    await expect(page.getByTestId("mock-19")).toBeVisible({ timeout: 30_000 });
+    await shoot(page, locale, "MOCK-19");
+    await page.getByTestId("mock-solutions").click();
+    await expect(page.getByTestId("mock-22")).toBeVisible();
+    await shoot(page, locale, "MOCK-22");
 
     await page.goto("/labs");
     await expect(page.getByTestId("lab-01")).toBeVisible();

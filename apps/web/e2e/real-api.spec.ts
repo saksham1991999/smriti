@@ -15,7 +15,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
 import { activateSubscription } from "../scripts/fake-razorpay.mjs";
-import { devGoogle, drill, expectAccessible, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
+import { devGoogle, drill, expectAccessible, finishFirstWin, mockAttempt, onboard, playLesson, type Locale } from "./journey";
 
 const API = "http://127.0.0.1:8000";
 
@@ -30,6 +30,8 @@ test.beforeAll(async ({ request }) => {
   if (!exams.some((e) => e.id === "fx-exam")) {
     execFileSync("psql", [DB_URL, "-v", "ON_ERROR_STOP=1", "-q", "-f", METADATA], { stdio: "inherit" });
   }
+  // The publisher loads the fixture blueprint as a draft; mocks are built from active blueprints only.
+  execFileSync("psql", [DB_URL, "-v", "ON_ERROR_STOP=1", "-q", "-c", "update content.exam_blueprints set status = 'active' where exam_profile_id = 'fx-exam-2027' and status = 'draft'"], { stdio: "inherit" });
 });
 
 interface Seen {
@@ -73,18 +75,19 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await expect(page.getByTestId("home-streak")).toContainText("1");
     expect(seen.calls.some((c) => /GET \/v1\/sync\/state 200/.test(c))).toBe(true);
 
-    // A drill runs as a server practice session.
+    // A drill runs as a server practice session: the server picks, checks and counts.
     await drill(page);
-    // The session is asked of the server first. Until the publish job loads question bodies into
-    // content.question_bodies the server answers 404 no_questions, and the drill runs on the device
-    // with its answers in the outbox; once it has them, answers and completion go to the server.
-    const start = seen.calls.find((c) => c.startsWith("POST /v1/practice/sessions "));
-    expect(start).toMatch(/ (200|404)$/);
-    if (start?.endsWith(" 200")) {
-      expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/answers 200/.test(c))).toBe(true);
-      expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/complete 200/.test(c))).toBe(true);
-    }
+    expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions 20\d/.test(c))).toBe(true);
+    expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/answers 200/.test(c))).toBe(true);
+    expect(seen.calls.some((c) => /POST \/v1\/practice\/sessions\/[^/]+\/complete 200/.test(c))).toBe(true);
     expect(seen.calls.some((c) => /GET \/v1\/practice\/limits 200/.test(c))).toBe(true);
+
+    // A sectional mock on the attempts API: start, save answers, submit, report, solutions.
+    await mockAttempt(page, "bp:fx-exam-2027:paper-1:section-a");
+    expect(seen.calls.some((c) => /POST \/v1\/mocks\/[^/]+\/attempts 201/.test(c))).toBe(true);
+    expect(seen.calls.some((c) => /PUT \/v1\/attempts\/[^/]+\/answers 200/.test(c))).toBe(true);
+    expect(seen.calls.some((c) => /POST \/v1\/attempts\/[^/]+\/submit 200/.test(c))).toBe(true);
+    expect(seen.calls.some((c) => /GET \/v1\/attempts\/[^/]+\/solutions 200/.test(c))).toBe(true);
 
     // Soft prompt → link Google (dev auth) → paywall with the server's price and eligibility.
     await page.goto("/learn");

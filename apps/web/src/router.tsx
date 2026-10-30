@@ -125,8 +125,23 @@ const loginRoute = createRoute({
 });
 const mockRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/practice/mock",
-  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockRunner"),
+  path: "/practice/mock/$mockId",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockInstructionsRoute"),
+});
+const attemptRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/practice/attempt/$attemptId",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockAttemptRoute"),
+});
+const reportRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/practice/attempt/$attemptId/report",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockReportRoute"),
+});
+const solutionsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/practice/attempt/$attemptId/solutions",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockSolutionsRoute"),
 });
 const drillRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -178,6 +193,11 @@ const practiceRoute = createRoute({
   path: "/practice",
   component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Practice")), "PracticeHub"),
 });
+const mocksRoute = createRoute({
+  getParentRoute: () => shellRoute,
+  path: "/practice/mocks",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockLobby"),
+});
 const meRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me",
@@ -215,8 +235,11 @@ const routeTree = rootRoute.addChildren([
   proWelcomeRoute,
   loginRoute,
   mockRoute,
+  attemptRoute,
+  reportRoute,
+  solutionsRoute,
   drillRoute,
-  shellRoute.addChildren([homeRoute, subjectRoute, chapterRoute, topicRoute, labsRoute, labRoute, practiceRoute, meRoute, settingsRoute, notificationsRoute, planRoute]),
+  shellRoute.addChildren([homeRoute, subjectRoute, chapterRoute, topicRoute, labsRoute, labRoute, practiceRoute, mocksRoute, meRoute, settingsRoute, notificationsRoute, planRoute]),
 ]);
 
 export function createAppRouter(context: RouterContext) {

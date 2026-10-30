@@ -158,3 +158,36 @@ export async function drill(page: Page) {
   await expectAccessible(page, "PRC-06");
   await page.getByTestId("drill-done").click();
 }
+
+/**
+ * MOCK-01 → MOCK-05/06 → MOCK-07/08 → MOCK-16 → MOCK-19 → MOCK-22 on a sectional mock: answers the
+ * first question with its first option, marks the second for review, then submits.
+ */
+export async function mockAttempt(page: Page, mockId: string) {
+  await page.goto("/practice/mocks");
+  await expect(page.getByTestId("mock-01")).toBeVisible();
+  await expectAccessible(page, "MOCK-01");
+  await page.getByTestId(`mock-card-${mockId}`).click();
+  await expect(page.getByTestId("mock-06")).toBeVisible();
+  await expectAccessible(page, "MOCK-06");
+  await page.getByTestId("mock-declaration").click();
+  await page.getByTestId("mock-begin").click();
+  await expect(page.getByTestId("mock-07")).toBeVisible();
+  await expect(page.getByTestId("mock-timer")).toBeVisible();
+  await page.getByTestId("mock-08").locator("[data-testid^=option-]").first().click();
+  await page.getByTestId("mock-save-next").click();
+  await expect(page.getByTestId("palette-1")).toHaveAttribute("data-state", "answered");
+  await page.getByTestId("mock-mark").click();
+  await expect(page.getByTestId("palette-2")).toHaveAttribute("data-state", "marked");
+  await expectAccessible(page, "MOCK-08");
+  await page.getByTestId("mock-submit").click();
+  await expect(page.getByTestId("mock-16")).toBeVisible();
+  await page.getByTestId("mock-16").getByRole("button", { name: /submit|जमा/i }).last().click();
+  await expect(page.getByTestId("mock-19")).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("mock-score")).toBeVisible();
+  await expectAccessible(page, "MOCK-19");
+  await page.getByTestId("mock-solutions").click();
+  await expect(page.getByTestId("mock-22")).toBeVisible();
+  await expect(page.getByTestId("solution-1")).toBeVisible();
+  await expectAccessible(page, "MOCK-22");
+}

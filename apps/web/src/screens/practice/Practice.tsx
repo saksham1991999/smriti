@@ -6,7 +6,7 @@
  */
 import { useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
-import { countsTowardPracticeQuota, practiceQuota, sizePracticeSession, type Quota } from "@smriti/app-core";
+import { practiceQuota, sizePracticeSession, type Quota } from "@smriti/app-core";
 import { useAppStore } from "@smriti/app-core/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { checkAnswer, workedSolution, type Answer, type AnyQuestion, type CheckResult } from "@smriti/lesson-core";
@@ -14,7 +14,8 @@ import { PlayerProvider, QuestionView, RichText, canSubmit, contentUrl, initialD
 import { Banner, Button, Card, IconButton, Chip, Dialog, Icon, LimitMeter, PetLine, ProgressBar, StatTile, Text, TopBar } from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
 import { findTopic, useBundle, useCatalog, type CatalogTopic } from "../../lib/content";
-import { useDaily, usePracticeToday, useTodayMinutes } from "../../lib/daily";
+import { useTodayMinutes } from "../../lib/daily";
+import { toast } from "../../lib/toast";
 import type { MessageKey } from "@smriti/i18n";
 import { useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
@@ -22,17 +23,15 @@ import { completeServerSession, startServerSession, submitServerAnswer, usePract
 import { useIsPro } from "../../lib/pro";
 import { LoadError, NotFound, RouteLoading } from "../../shell/States";
 
-/** Today's practice quota: the server's counters when it has answered, else the device's (the higher count wins). */
+/** Today's practice quota from the server (`/v1/practice/limits`); the flag defaults until it answers. */
 function useQuota(): Quota {
   const s = useServices();
   const pro = useIsPro();
-  const used = usePracticeToday();
   const server = usePracticeLimits().data?.practice_questions;
-  if (!server) return practiceQuota(used, pro, s.flags);
-  const n = Math.max(server.used, used);
-  if (server.unlimited || server.limit === null) return { unlimited: true, limit: server.limit, used: n, remaining: Number.POSITIVE_INFINITY, allowed: true };
-  const remaining = Math.max(0, server.limit - n);
-  return { unlimited: false, limit: server.limit, used: n, remaining, allowed: remaining > 0 };
+  if (!server) return practiceQuota(0, pro, s.flags);
+  if (server.unlimited || server.limit === null) return { unlimited: true, limit: server.limit, used: server.used, remaining: Number.POSITIVE_INFINITY, allowed: true };
+  const remaining = Math.max(0, server.limit - server.used);
+  return { unlimited: false, limit: server.limit, used: server.used, remaining, allowed: remaining > 0 };
 }
 
 const mmss = (ms: number) => {
@@ -122,7 +121,7 @@ export function PracticeHub() {
           ))}
         </div>
       </section>
-      <Card onPress={() => void navigate({ to: "/practice/mock" })} testID="mock-tile">
+      <Card onPress={() => void navigate({ to: "/practice/mocks" })} testID="mock-tile">
         <span className="flex items-center gap-3">
           <Icon name="Timer" color="primary" />
           <span className="flex min-w-0 flex-1 flex-col">
@@ -161,8 +160,7 @@ export function Drill() {
   const [answers, setAnswers] = useState<Answered[]>([]);
   const [leaving, setLeaving] = useState(false);
   const sessionId = useRef<string>("");
-  /** True when the server runs this session (`/v1/practice/sessions`); false: device only, via the outbox. */
-  const onServer = useRef(false);
+  const [failed, setFailed] = useState(false);
   const queryClient = useQueryClient();
   const { locale } = useI18n();
   const started = useRef(0);
@@ -184,12 +182,18 @@ export function Drill() {
 
   const start = async () => {
     sessionId.current = s.newId();
-    const server = await startServerSession(s, { sessionId: sessionId.current, topicId, count: questions.length, exam: s.store.getState().profile?.exam_profile_ids[0] ?? null });
+    // The server runs every drill (`/v1/practice/sessions`): it picks the questions, checks the
+    // answers and counts the free quota. The bundle on the device only renders them.
+    const server = await startServerSession(s, { sessionId: sessionId.current, topicId, count: size, exam: s.store.getState().profile?.exam_profile_ids[0] ?? null });
     const known = new Set(questions.map((q) => q.id));
-    const serverOrder = server ? server.questions.map((q) => q.question_id).filter((id) => known.has(id)) : [];
-    onServer.current = serverOrder.length > 0;
-    if (server) sessionId.current = server.id;
-    const ids = onServer.current ? serverOrder : questions.slice(0, size).map((q) => q.id);
+    const ids = server ? server.questions.map((q) => q.question_id).filter((id) => known.has(id)) : [];
+    if (!server || ids.length === 0) {
+      setFailed(true);
+      return;
+    }
+    setFailed(false);
+    sessionId.current = server.id;
+    void queryClient.invalidateQueries({ queryKey: ["practice"] });
     started.current = Date.now();
     opened.current = Date.now();
     setOrder(ids);
@@ -204,13 +208,8 @@ export function Drill() {
   const finish = async (endedBy: "finished" | "closed", list: Answered[]) => {
     const correct = list.filter((a) => a.correct).length;
     const ms = Date.now() - started.current;
-    if (onServer.current) {
-      await completeServerSession(s, sessionId.current, endedBy);
-      void queryClient.invalidateQueries({ queryKey: ["practice"] });
-    } else if (list.length > 0) {
-      await s.record("practice_session_completed", { session_id: sessionId.current, kind: "drill", answered: list.length, correct, ms_total: ms });
-    }
-    if (list.length > 0) useDaily.getState().add(ms);
+    await completeServerSession(s, sessionId.current, endedBy);
+    void queryClient.invalidateQueries({ queryKey: ["practice"] });
     s.analytics.track("drill_completed", { session_id: sessionId.current, answered: list.length, correct, duration_ms: ms, ended_by: endedBy, free_cap: quota.unlimited ? "none" : String(quota.limit) });
   };
 
@@ -239,11 +238,16 @@ export function Drill() {
               {capReached ? t("practice:PRC-03.cap_reached") : size < questions.length ? t("practice:PRC-03.sized_to_free", { remaining: quota.remaining }) : t("practice:PRC-03.free_left", { remaining: quota.remaining })}
             </Text>
           )}
-          {!online && <Text variant="caption" tone="muted">{t("practice:PRC-03.ready_offline", { available: questions.length })}</Text>}
+          {!online && <Text variant="caption" tone="muted">{t("practice:WEB-06.needs_internet")}</Text>}
+          {failed && online && (
+            <Text variant="caption" tone="error" testID="drill-failed">
+              {t("practice:WEB-06.drill_unavailable")}
+            </Text>
+          )}
           {capReached ? (
             <Button label={t("practice:PRC-01.pro_link")} onPress={() => void navigate({ to: "/pro", search: { source: "practice_limit" } })} testID="drill-pro" />
           ) : (
-            <Button label={t("practice:PRC-03.start")} onPress={() => void start()} disabled={size === 0} testID="drill-start" />
+            <Button label={t("practice:PRC-03.start")} onPress={() => void start()} disabled={size === 0 || !online} testID="drill-start" />
           )}
         </main>
       </div>
@@ -261,28 +265,19 @@ export function Drill() {
   const last = index === order.length - 1;
   const check = async () => {
     if (!draft || result) return;
-    const r = checkAnswer(q, draft);
     const ms = Date.now() - opened.current;
+    // The server's check is the record; the device's check of the same key only shows the
+    // feedback without waiting on the network.
+    const local = checkAnswer(q, draft);
+    const res = await submitServerAnswer(s, sessionId.current, { questionId: qid, answer: draft, timeMs: ms, locale });
+    if (!res) {
+      toast.show(t("practice:WEB-06.answer_not_saved"), { tone: "error" });
+      return;
+    }
+    const r: CheckResult = { ...local, correct: res.check.correct };
     setResult(r);
     setAnswers((xs) => [...xs, { qid, correct: r.correct, ms }]);
-    if (onServer.current) {
-      const res = await submitServerAnswer(s, sessionId.current, { questionId: qid, answer: draft, timeMs: ms, locale });
-      if (res) {
-        if (res.counted) useDaily.getState().addPractice(1);
-        return;
-      }
-    }
-    await s.record("answer_submitted", {
-      topic_id: topicId,
-      question_id: qid,
-      context: "practice",
-      response: r.response as never,
-      correct: r.correct,
-      attempt: 1,
-      confidence: null,
-      ms_to_answer: Math.round(ms),
-    });
-    if (countsTowardPracticeQuota("practice")) useDaily.getState().addPractice(1);
+    void queryClient.invalidateQueries({ queryKey: ["practice", "limits"] });
   };
   const next = async () => {
     if (last) {

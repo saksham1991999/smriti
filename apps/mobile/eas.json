@@ -1,0 +1,50 @@
+{
+  "cli": { "version": ">= 16.0.0", "appVersionSource": "remote" },
+  "build": {
+    "base": {
+      "node": "22.21.1",
+      "pnpm": "10.28.0",
+      "env": { "EXPO_PUBLIC_APP_ENV": "local" }
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "env": { "EXPO_PUBLIC_APP_ENV": "local", "EXPO_PUBLIC_AUTH_MODE": "dev" }
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "channel": "preview",
+      "env": { "EXPO_PUBLIC_APP_ENV": "preview", "EXPO_PUBLIC_AUTH_MODE": "supabase" }
+    },
+    "production": {
+      "extends": "base",
+      "autoIncrement": true,
+      "channel": "production",
+      "env": { "EXPO_PUBLIC_APP_ENV": "production", "EXPO_PUBLIC_AUTH_MODE": "supabase" }
+    },
+    "development-all": { "extends": "development", "env": { "APP_VARIANT": "all" } },
+    "development-jee": { "extends": "development", "env": { "APP_VARIANT": "jee" } },
+    "development-neet": { "extends": "development", "env": { "APP_VARIANT": "neet" } },
+    "development-upsc": { "extends": "development", "env": { "APP_VARIANT": "upsc" } },
+    "development-ssc": { "extends": "development", "env": { "APP_VARIANT": "ssc" } },
+    "preview-all": { "extends": "preview", "channel": "preview-all", "env": { "APP_VARIANT": "all" } },
+    "preview-jee": { "extends": "preview", "channel": "preview-jee", "env": { "APP_VARIANT": "jee" } },
+    "preview-neet": { "extends": "preview", "channel": "preview-neet", "env": { "APP_VARIANT": "neet" } },
+    "preview-upsc": { "extends": "preview", "channel": "preview-upsc", "env": { "APP_VARIANT": "upsc" } },
+    "preview-ssc": { "extends": "preview", "channel": "preview-ssc", "env": { "APP_VARIANT": "ssc" } },
+    "production-all": { "extends": "production", "channel": "production-all", "env": { "APP_VARIANT": "all" } },
+    "production-jee": { "extends": "production", "channel": "production-jee", "env": { "APP_VARIANT": "jee" } },
+    "production-neet": { "extends": "production", "channel": "production-neet", "env": { "APP_VARIANT": "neet" } },
+    "production-upsc": { "extends": "production", "channel": "production-upsc", "env": { "APP_VARIANT": "upsc" } },
+    "production-ssc": { "extends": "production", "channel": "production-ssc", "env": { "APP_VARIANT": "ssc" } }
+  },
+  "submit": {
+    "production": {
+      "android": { "track": "internal" },
+      "ios": {}
+    }
+  }
+}

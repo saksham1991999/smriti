@@ -1,0 +1,149 @@
+import type { Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema';
+import type { ImageSourcePropType } from 'react-native';
+
+import type { SeedPackFiles } from '../seed/types';
+
+export type ContentLocale = 'en' | 'hi';
+export type BundleMode = 'deep_dive' | 'quick_revision' | 'practice';
+
+export interface TopicView {
+  id: string;
+  name: string;
+  chapterId: string;
+  sort: number;
+  depth: Record<string, number>;
+  hasDeepDive: boolean;
+  hasQuickRevision: boolean;
+  freeDeepDive: boolean;
+  /** Estimated minutes for one bite, from the bundle when it is on the device. */
+  minutes: number | null;
+}
+
+export interface ChapterView {
+  id: string;
+  name: string;
+  subjectId: string;
+  free: boolean;
+  topics: TopicView[];
+}
+
+export interface SubjectView {
+  id: string;
+  name: string;
+  colorFamily: string;
+  chapters: ChapterView[];
+}
+
+export interface LoadedBundle {
+  bundle: TypedBundle;
+  /** The content hash, sent as `bundle_version` (sync contract). */
+  hash: string;
+  examDepth: Record<string, number> | null;
+}
+
+/**
+ * Lessons on the device. The seed pack (TRD §3.2) is bundled with the build, so the first
+ * lesson works offline on first launch; later downloads go through app-core's ContentManager
+ * (see `downloads.ts`). Manifests are `manifest@1` from tools/content-publish.
+ */
+export class ContentRepo {
+  constructor(private readonly packs: Record<ContentLocale, SeedPackFiles>) {}
+
+  isFixture(locale: ContentLocale): boolean {
+    return this.packs[locale].pack.fixture === true;
+  }
+
+  /** The manifest for an exam profile, falling back to the seed pack's first one (dev seed packs). */
+  manifest(locale: ContentLocale, examProfileId?: string | null): Manifest {
+    const files = this.packs[locale];
+    const entry = files.pack.manifests.find((m) => m.exam_profile === examProfileId) ?? files.pack.manifests[0];
+    if (!entry) throw new Error(`seed pack ${files.pack.variant_id}/${locale} has no manifest`);
+    const load = files.manifests[entry.path];
+    if (!load) throw new Error(`seed pack is missing ${entry.path}`);
+    return load() as Manifest;
+  }
+
+  subjects(locale: ContentLocale, examProfileId?: string | null): SubjectView[] {
+    const m = this.manifest(locale, examProfileId);
+    const free = new Set(m.free.deep_dive_chapters);
+    return [...m.subjects]
+      .sort((a, b) => a.sort - b.sort)
+      .map((s) => ({
+        id: s.id,
+        name: s.name,
+        colorFamily: s.color_family,
+        chapters: [...s.chapters]
+          .sort((a, b) => a.sort - b.sort)
+          .map((c) => ({
+            id: c.id,
+            name: c.name,
+            subjectId: s.id,
+            free: c.free_deep_dive || free.has(c.id),
+            topics: c.topics.map((t) => this.topicView(m, t, c.free_deep_dive || free.has(c.id), locale)).filter((t): t is TopicView => t !== null),
+          })),
+      }));
+  }
+
+  /** Every topic in syllabus order. */
+  topics(locale: ContentLocale, examProfileId?: string | null): TopicView[] {
+    return this.subjects(locale, examProfileId).flatMap((s) => s.chapters.flatMap((c) => c.topics));
+  }
+
+  topic(locale: ContentLocale, topicId: string, examProfileId?: string | null): TopicView | null {
+    return this.topics(locale, examProfileId).find((t) => t.id === topicId) ?? null;
+  }
+
+  chapterOf(locale: ContentLocale, topicId: string, examProfileId?: string | null): ChapterView | null {
+    for (const s of this.subjects(locale, examProfileId)) for (const c of s.chapters) if (c.topics.some((t) => t.id === topicId)) return c;
+    return null;
+  }
+
+  subjectOf(locale: ContentLocale, topicId: string, examProfileId?: string | null): SubjectView | null {
+    return this.subjects(locale, examProfileId).find((s) => s.chapters.some((c) => c.topics.some((t) => t.id === topicId))) ?? null;
+  }
+
+  /** Opens a bundle that is on the device, or returns null (the caller shows LRN-16 / LES-11). */
+  load(locale: ContentLocale, topicId: string, mode: BundleMode, examProfileId?: string | null): LoadedBundle | null {
+    const m = this.manifest(locale, examProfileId);
+    const t = m.topics[topicId];
+    const entry = t?.bundles[mode];
+    if (!t || !entry) return null;
+    const loader = this.packs[locale].bundles[entry.path];
+    if (!loader) return null;
+    return { bundle: loader() as TypedBundle, hash: entry.hash, examDepth: depthMap(t) };
+  }
+
+  /** Bundled image for a media ref's file (`assets/<sha>.webp`), if it is in the seed pack. */
+  asset(locale: ContentLocale, path: string): ImageSourcePropType | undefined {
+    return this.packs[locale].assets[path.replace(/^\//, '')];
+  }
+
+  private topicView(m: Manifest, topicId: string, freeChapter: boolean, locale: ContentLocale): TopicView | null {
+    const t = m.topics[topicId];
+    if (!t) return null;
+    const dd = t.bundles.deep_dive;
+    let minutes: number | null = null;
+    if (dd) {
+      const loader = this.packs[locale].bundles[dd.path];
+      const b = loader ? (loader() as TypedBundle) : null;
+      minutes = b?.bites[0]?.estimated_minutes ?? b?.estimated_minutes ?? null;
+    }
+    return {
+      id: topicId,
+      name: t.name,
+      chapterId: t.chapter,
+      sort: t.sort,
+      depth: depthMap(t),
+      hasDeepDive: Boolean(dd),
+      hasQuickRevision: Boolean(t.bundles.quick_revision),
+      freeDeepDive: freeChapter && (dd?.is_free ?? true),
+      minutes,
+    };
+  }
+}
+
+function depthMap(t: TopicEntry): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const [k, v] of Object.entries(t.depth)) if (typeof v === 'number') out[k] = v;
+  return out;
+}

@@ -12,7 +12,7 @@ import { savedEmail } from "../../lib/auth";
 import { useReviewQueue } from "../../lib/home";
 import { formatDate, useI18n } from "../../lib/i18n";
 import { useOnboarding } from "../../lib/onboarding";
-import { useIsPro } from "../../lib/pro";
+import { useIntroEligible, useIsPro } from "../../lib/pro";
 
 const STAGE = {
   seed: "me_money:ME-07.stage_seed",
@@ -34,6 +34,7 @@ export function Me() {
   const ent = useAppStore((x) => x.entitlement);
   const lessons = useOnboarding((x) => x.lessonsCompleted);
   const pro = useIsPro();
+  const introEligible = useIntroEligible();
   const queue = useReviewQueue();
   const [prompt, setPrompt] = useState(false);
   const email = guest ? null : savedEmail.get();
@@ -51,19 +52,21 @@ export function Me() {
         <IconButton icon="Gear" label={t("me_money:SET-01.title")} onPress={() => void navigate({ to: "/me/settings" })} testID="open-settings" />
       </header>
 
-      <div className="flex items-center gap-3">
-        {pet ? <PetAvatar species={pet.species as "cat" | "dog"} size={56} alt={pet.name} /> : <Icon name="UserCircle" size={32} color="inkMuted" />}
-        <span className="flex min-w-0 flex-col">
-          <Text variant="heading" testID="me-name">
-            {name}
-          </Text>
-          {email && (
-            <Text variant="caption" tone="muted">
-              {email}
+      <Card testID="me-profile">
+        <span className="flex items-center gap-4">
+          {pet ? <PetAvatar species={pet.species as "cat" | "dog"} size={72} alt={pet.name} /> : <Icon name="UserCircle" size={32} color="inkMuted" />}
+          <span className="flex min-w-0 flex-1 flex-col items-start gap-2">
+            <Text variant="heading" testID="me-name" className="max-w-full truncate">
+              {name}
             </Text>
-          )}
+            {/* AUTH-33 save state: where this progress lives. */}
+            <span className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-success-tint px-2.5 py-1 text-caption font-bold text-ink" data-testid="save-state">
+              <Icon name={guest ? "CloudSlash" : "CloudCheck"} size={16} color={guest ? "inkMuted" : "success"} />
+              <span className="truncate">{guest ? t("auth:AUTH-33.guest") : email ? t("auth:AUTH-33.saved", { email }) : t("auth:AUTH-33.saving")}</span>
+            </span>
+          </span>
         </span>
-      </div>
+      </Card>
 
       {guest && (
         <Card tone="tint" testID="me-guest-card">
@@ -84,18 +87,28 @@ export function Me() {
 
       {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={guest ? t("me_money:ME-01.pet_line_guest") : t("me_money:ME-01.pet_line_default", { name: profile?.display_name ?? "" })} />}
 
-      {plant && (
-        <Card testID="me-plant">
-          <span className="flex items-center gap-3">
-            <PlantView stage={plant.stage} health={plant.health} size={72} decorative />
-            <span className="flex flex-col">
-              <Text variant="heading">{t("me_money:ME-01.plant_card")}</Text>
-              <Text variant="caption" tone="muted">
-                {t(STAGE[plant.stage])}
-              </Text>
-            </span>
-          </span>
-        </Card>
+      {(pet || plant) && (
+        <div className="grid grid-cols-2 gap-3">
+          {pet && (
+            <Card tone="tint" testID="me-pet">
+              <span className="flex flex-col items-start gap-2">
+                <PetAvatar species={pet.species as "cat" | "dog"} size={72} />
+                <Text variant="heading">{pet.name}</Text>
+              </span>
+            </Card>
+          )}
+          {plant && (
+            <Card className="bg-warning-tint" testID="me-plant">
+              <span className="flex flex-col items-start gap-2">
+                <PlantView stage={plant.stage} health={plant.health} size={72} decorative />
+                <Text variant="heading">{t("me_money:ME-01.plant_card")}</Text>
+                <Text variant="caption" tone="muted">
+                  {t(STAGE[plant.stage])}
+                </Text>
+              </span>
+            </Card>
+          )}
+        </div>
       )}
 
       <Card tone={pro ? "tint" : "surface"} onPress={() => void navigate(pro ? { to: "/me/plan" } : { to: "/pro", search: { source: "me_card" } })} testID="me-pro-card">
@@ -106,7 +119,9 @@ export function Me() {
               ? ent.cancel_at_period_end
                 ? t("me_money:ME-01.pro_card_ending", { date: formatDate(ent.pro_until, locale) })
                 : t("me_money:ME-01.pro_card_pro", { date: formatDate(ent.pro_until, locale) })
-              : t("me_money:ME-01.pro_card_eligible")}
+              : introEligible
+                ? t("me_money:ME-01.pro_card_eligible")
+                : t("me_money:ME-01.pro_card_not_eligible")}
           </Text>
           <Icon name="CaretRight" color="inkMuted" />
         </span>

@@ -6,17 +6,16 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 import type { EntitlementSection } from "@smriti/app-core";
 import { useAppStore } from "@smriti/app-core/react";
-import { Button, Card, Chip, Icon, Illustration, PetLine, PriceBlock, Sheet, Spinner, Text, TopBar, TrialTimeline, TrustLine } from "@smriti/ui-web";
+import { Button, Card, Chip, Icon, Illustration, PetLine, Sheet, Spinner, Text, TopBar, TrialTimeline, TrustLine } from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
 import type { CheckoutOutcome, CheckoutSession } from "../../lib/billing";
 import { savedEmail } from "../../lib/auth";
 import { formatDate, useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
 import { usePrices } from "../../lib/pricing";
-import { useIsPro } from "../../lib/pro";
+import { useIntroEligibility, useIsPro } from "../../lib/pro";
 import { toast } from "../../lib/toast";
 import { useAgeBand } from "../../components/SignIn";
 import type { PaywallSearch } from "../../router";
@@ -30,11 +29,7 @@ function addMonth(from: Date): Date {
   return d;
 }
 
-function useEligibility() {
-  const s = useServices();
-  const userId = useAppStore((x) => x.session.userId);
-  return useQuery({ queryKey: ["billing", "eligibility", userId], enabled: !!userId, queryFn: () => s.billing.eligibility(), staleTime: 60_000 });
-}
+const useEligibility = useIntroEligibility;
 
 /** Applies a new entitlement now (server wins on the next sync). */
 function applyEntitlement(s: ReturnType<typeof useServices>, ent: EntitlementSection) {
@@ -48,6 +43,9 @@ const PET_LINE: Record<string, "me_money:PAY-01.pet_deep_dive_lock" | "me_money:
   practice_limit: "me_money:PAY-01.pet_practice_cap",
   mock_lock: "me_money:PAY-01.pet_mock_lock",
 };
+
+/** Phosphor icons for the benefit rows, in the order of `benefits` (no text in images, R7). */
+const BENEFIT_ICON = ["BookBookmark", "Barbell", "Exam", "Sparkle", "DownloadSimple", "Snowflake"] as const;
 
 export function Paywall() {
   const { source } = useSearch({ strict: false }) as PaywallSearch;
@@ -111,49 +109,72 @@ export function Paywall() {
   ] as const;
   const teen = band === "13_17" || band === "10_12" || band === "u10";
 
+  const species = pet?.species === "dog" ? "dog" : "cat";
+  const brand = s.variant.appName[locale];
   return (
-    <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col px-4 pb-40" data-testid="pay-01">
-      <TopBar onBack={close} backIcon="X" />
-      <main id="main" className="flex flex-col gap-4">
-        <Illustration name="scene-paywall" width={320} height={200} decorative className="mx-auto" />
-        <Text variant="title" heading as="h1" align="center">
-          {eligible ? t("me_money:PAY-01.headline_eligible") : t("me_money:PAY-01.headline_not_eligible")}
-        </Text>
-        <Text tone="muted" align="center">
-          {eligible ? t("me_money:PAY-01.sub_eligible") : t("me_money:PAY-01.sub_not_eligible")}
-        </Text>
-        {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={t(petKey, { limit: limit ?? 0 })} />}
-        <ul className="m-0 flex list-none flex-col gap-2 p-0">
-          {benefits.map((k) => (
-            <li key={k} className="flex items-center gap-2">
-              <Icon name="CheckCircle" color="success" weight="fill" />
-              <Text>{t(k)}</Text>
-            </li>
-          ))}
-        </ul>
+    <div className="mx-auto flex min-h-dvh max-w-[560px] flex-col pb-72" data-testid="pay-01">
+      {/* Hero band: the pet with the price tag and its line (PAY-01 illustration slot a). */}
+      <div className="relative bg-warning-tint px-4 pb-4">
+        <TopBar onBack={close} backIcon="X" />
+        <div className="flex items-end gap-2">
+          <Illustration name={species === "dog" ? "dog-celebrate" : "cat-price-tag"} width={150} height={150} decorative className="shrink-0" />
+          {/* The big pet stands in for PetLine's avatar; the bubble keeps PetLine's look and live region. */}
+          <p aria-live="polite" className="m-0 mb-6 max-w-[38ch] flex-1 rounded-[18px] rounded-bl-[6px] bg-surface px-3.5 py-2.5 text-label text-ink shadow-card">
+            {pet && <span className="sr-only">{pet.name}: </span>}
+            {t(petKey, { limit: limit ?? 0 })}
+          </p>
+        </div>
+      </div>
+      <main id="main" className="flex flex-col gap-4 px-4 pt-4">
+        <div className="flex flex-col gap-1">
+          <Text variant="title" heading as="h1">
+            {eligible ? t("me_money:PAY-01.headline_eligible") : t("me_money:PAY-01.headline_not_eligible")}
+          </Text>
+          <Text tone="muted">{eligible ? t("me_money:PAY-01.sub_eligible") : t("me_money:PAY-01.sub_not_eligible")}</Text>
+        </div>
         {prices ? (
-          <>
-            <PriceBlock
-              price={eligible ? t("me_money:PAY-01.plan_price_eligible") : t("me_money:PAY-01.plan_price_not_eligible")}
-              thenLine={t("me_money:PAY-01.plan_name")}
-              finePrint={t("me_money:PAY-01.gst_flagged")}
-              testID="price-block"
-            />
+          <Card className="flex flex-col gap-4 border-2 border-primary" testID="price-block">
+            <div className="flex items-center gap-3">
+              <Icon name="CheckCircle" color="primaryText" weight="fill" />
+              <Text variant="label" className="shrink-0 font-bold whitespace-nowrap">
+                {t("me_money:PAY-01.plan_name")}
+              </Text>
+              <Text variant="caption" tone="muted" className="flex-1 text-right tabular-nums">
+                {eligible ? t("me_money:PAY-01.plan_price_eligible") : t("me_money:PAY-01.plan_price_not_eligible")}
+              </Text>
+            </div>
             <TrialTimeline
               eligible={eligible}
-              todayLabel={t("me_money:PAY-01.timeline_today")}
+              todayLabel={formatDate(now, locale, { weekday: "short", day: "numeric", month: "short" })}
               reminderDate={formatDate(reminder, locale)}
               renewDate={formatDate(renew, locale)}
               trialPrice={prices.trial}
               renewPrice={prices.monthly}
               testID="trial-timeline"
             />
-          </>
+          </Card>
         ) : (
           <Text tone="muted">{t("me_money:PAY-01.price_loading")}</Text>
         )}
+        <ul className="m-0 flex list-none flex-col gap-3 p-0">
+          {benefits.map((k, i) => (
+            <li key={k} className="flex items-center gap-3">
+              <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-primary-tint" aria-hidden>
+                <Icon name={BENEFIT_ICON[i] ?? "CheckCircle"} color="primaryText" />
+              </span>
+              <span className="flex flex-col">
+                <Text>{t(k)}</Text>
+                {i === 0 && (
+                  <Text variant="caption" tone="muted">
+                    {t("me_money:PAY-01.caption")}
+                  </Text>
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
         <Text variant="caption" tone="muted">
-          {t("me_money:PAY-01.everywhere", { brand: s.variant.appName[locale] })}
+          {t("me_money:PAY-01.everywhere", { brand })}
         </Text>
       </main>
       <footer className="fixed inset-x-0 bottom-0 border-t border-hairline bg-surface px-4 py-3">
@@ -171,6 +192,10 @@ export function Paywall() {
             </Text>
           )}
           <Button variant="ghost" label={t("me_money:PAY-01.maybe_later")} onPress={close} testID="pay-later" />
+          <Text variant="caption" tone="muted" align="center">
+            {eligible && prices ? `${t("me_money:PAY-01.fine_print_web", { date: formatDate(renew, locale), brand })} ` : ""}
+            {t("me_money:PAY-01.gst_flagged")}
+          </Text>
         </div>
       </footer>
     </div>

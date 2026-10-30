@@ -295,6 +295,7 @@ function Runner({ bp, questions, onDone }: { bp: BlueprintFile; questions: MockQ
         </Text>
         <Timer mode="countdown" endsAt={endsAt} warnAtMs={5 * 60_000} finalAtMs={60_000} size="compact" testID="mock-timer" />
         <Button variant="secondary" size="sm" icon="Sliders" label={t("practice:MOCK-09.title")} onPress={() => setPaletteOpen(true)} className="md:hidden" testID="palette-open" />
+        <Button variant="ghost" size="sm" label={t("practice:MOCK-07.submit")} onPress={() => setConfirm(true)} testID="mock-submit" />
       </header>
       <SectionTabs sections={tabs} activeCode={cur.section} onSelect={(code) => go(questions.findIndex((q) => q.section === code))} label={t("practice:MOCK-16.section")} className="px-2" testID="mock-sections" />
       <div className="flex flex-1 gap-6 px-4 pt-3 pb-32 md:px-8">
@@ -314,14 +315,14 @@ function Runner({ bp, questions, onDone }: { bp: BlueprintFile; questions: MockQ
         </aside>
       </div>
       <footer className="fixed inset-x-0 bottom-0 flex flex-col gap-2 border-t border-hairline bg-surface px-4 py-3">
-        <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" size="sm" label={t("practice:MOCK-07.mark_for_review_next")} onPress={markNext} testID="mock-mark" />
-          <Button variant="ghost" size="sm" label={t("practice:MOCK-07.clear_response")} onPress={clear} testID="mock-clear" />
-        </div>
-        <div className="flex gap-2">
-          <Button variant="secondary" label={t("practice:MOCK-07.previous")} onPress={() => go(index - 1)} disabled={index === 0} className="flex-1" />
-          <Button label={t("practice:MOCK-07.save_next")} onPress={saveNext} className="flex-1" testID="mock-save-next" />
-          <Button variant="secondary" label={t("practice:MOCK-07.submit")} onPress={() => setConfirm(true)} className="flex-1" testID="mock-submit" />
+        <div className="mx-auto flex w-full max-w-[720px] flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="ghost" size="sm" icon="CaretLeft" label={t("practice:MOCK-07.previous")} onPress={() => go(index - 1)} disabled={index === 0} />
+            <span className="flex-1" />
+            <Button variant="secondary" size="sm" label={t("practice:MOCK-07.mark_for_review_next")} onPress={markNext} testID="mock-mark" />
+            <Button variant="ghost" size="sm" label={t("practice:MOCK-07.clear_response")} onPress={clear} testID="mock-clear" />
+          </div>
+          <Button label={t("practice:MOCK-07.save_next")} onPress={saveNext} testID="mock-save-next" />
         </div>
       </footer>
       <Sheet open={paletteOpen} onOpenChange={setPaletteOpen} title={t("practice:MOCK-09.title")} height="full" testID="mock-09">

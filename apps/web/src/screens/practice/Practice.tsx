@@ -15,9 +15,10 @@ import { Banner, Button, Card, IconButton, Chip, Dialog, Icon, LimitMeter, PetLi
 import { useServices } from "../../boot/context";
 import { findTopic, useBundle, useCatalog, type CatalogTopic } from "../../lib/content";
 import { useDaily, usePracticeToday, useTodayMinutes } from "../../lib/daily";
+import type { MessageKey } from "@smriti/i18n";
 import { useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
-import { completeServerSession, startServerSession, submitServerAnswer, usePracticeLimits } from "../../lib/practice";
+import { completeServerSession, startServerSession, submitServerAnswer, usePracticeLimits, useWeakSpots } from "../../lib/practice";
 import { useIsPro } from "../../lib/pro";
 import { LoadError, NotFound, RouteLoading } from "../../shell/States";
 
@@ -40,25 +41,57 @@ const mmss = (ms: number) => {
 };
 
 export function PracticeHub() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const pick = (m: Record<string, string>) => m[locale] ?? m.en ?? "";
   const navigate = useNavigate();
   const catalog = useCatalog();
   const online = useOnline();
   const pet = useAppStore((x) => x.pet);
   const quota = useQuota();
+  const weak = useWeakSpots(useAppStore((x) => x.profile?.exam_profile_ids[0] ?? null));
   if (catalog.isError) return <LoadError onRetry={() => void catalog.refetch()} />;
   if (catalog.isPending) return <RouteLoading />;
   const drills: { topic: CatalogTopic; subject: string; family: string }[] = [];
   for (const subject of catalog.subjects)
     for (const ch of subject.chapters) for (const topic of ch.topics) if (topic.practiceCount > 0) drills.push({ topic, subject: subject.name, family: subject.family });
   const capReached = !quota.unlimited && !quota.allowed;
+  const spots = weak.data?.items.slice(0, 2) ?? [];
+  const firstSpot = spots[0];
+  const petText = capReached
+    ? t("practice:PRC-01.pet_line_cap_reached")
+    : firstSpot
+      ? t("practice:PRC-01.pet_line_weak_spots_found", { concept_name: pick(firstSpot.concept_name) })
+      : t("practice:PRC-01.pet_line_new_student");
   return (
     <div className="flex flex-col gap-4 px-4 pt-3 pb-6 md:px-8 md:pt-6" data-testid="prc-01">
       <Text variant="title" heading as="h1">
         {t("practice:PRC-01.title")}
       </Text>
       {!online && <Banner tone="offline" text={t("practice:PRC-01.offline_banner")} />}
-      {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={capReached ? t("practice:PRC-01.pet_line_cap_reached") : t("practice:PRC-01.pet_line_new_student")} />}
+      {pet && <PetLine pet={{ species: pet.species as "cat" | "dog" }} petName={pet.name} text={petText} />}
+      {spots.length > 0 && (
+        <Card testID="weak-spots">
+          <section className="flex flex-col gap-3">
+            <Text variant="heading" heading as="h2">
+              {t("practice:PRC-01.weak_spots_heading")}
+            </Text>
+            <ul className="m-0 flex list-none flex-col gap-3 p-0">
+              {spots.map((w) => (
+                <li key={w.concept_id} className="flex items-center gap-3 border-t border-hairline pt-3 first:border-t-0 first:pt-0">
+                  <span className="flex min-w-0 flex-1 flex-col">
+                    <Text variant="caption" tone="muted">
+                      {pick(w.topic_name)}
+                    </Text>
+                    <Text>{pick(w.concept_name)}</Text>
+                  </span>
+                  {w.reasons[0] && <Chip label={t(`practice:PRC-02.reason_${w.reasons[0]}` as MessageKey)} />}
+                  <Button variant="ghost" size="sm" label={t("practice:PRC-01.drill")} onPress={() => void navigate({ to: "/practice/drill/$topicId", params: { topicId: w.topic_id } })} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        </Card>
+      )}
       {!quota.unlimited && quota.limit !== null && (
         <LimitMeter
           label={capReached ? t("practice:PRC-01.meter_full") : t("practice:PRC-01.limit_meter", { used: quota.used, limit: quota.limit })}

@@ -52,10 +52,8 @@ export function SubjectScreen() {
         />
         {shown.length === 0 && <Text tone="muted">{t("learn:LRN-01.empty_filter")}</Text>}
         {units.map((unit) => (
+          // Grouped by unit; the manifest carries unit ids but no unit names yet, so no unit heading shows.
           <section key={unit} className="flex flex-col gap-2">
-            <Text variant="label" tone="muted" heading as="h2">
-              {unit}
-            </Text>
             {shown
               .filter((c) => c.unit === unit)
               .map((c) => (
@@ -104,7 +102,7 @@ export function ChapterScreen() {
       <TopBar onBack={back} />
       <div className="flex flex-col gap-4 px-4 md:px-8">
         <Text variant="caption" tone="muted">
-          {t("learn:LRN-02.header_kicker", { n: chapter.index + 1, unit_name: chapter.unit })}
+          {t("learn:LRN-02.header_kicker.1", { n: chapter.index + 1 })}
         </Text>
         <Text variant="title" heading as="h1">
           {chapter.name}

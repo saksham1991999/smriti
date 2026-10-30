@@ -48,6 +48,19 @@ export function usePracticeLimits() {
   });
 }
 
+/** PRC-01's weak spots, from mastery on the server (`GET /v1/practice/weak-spots`). Empty with the fake API. */
+export function useWeakSpots(exam: string | null) {
+  const s = useServices();
+  const userId = useAppStore((x) => x.session.userId);
+  return useQuery({
+    queryKey: ["practice", "weak-spots", userId, exam],
+    enabled: !!userId && !!exam && !s.fakeApi,
+    retry: false,
+    staleTime: 60_000,
+    queryFn: () => unwrap(s.client.GET("/v1/practice/weak-spots", { params: { query: { exam: exam ?? "" } } }), s.client),
+  });
+}
+
 export async function startServerSession(s: Services, input: { sessionId: string; topicId: string; count: number; exam: string | null }): Promise<ServerSession | null> {
   if (s.fakeApi) return null;
   try {

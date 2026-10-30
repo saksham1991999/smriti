@@ -39,11 +39,10 @@ describe('catalogue', () => {
     expect(entries.filter(([, d]) => d.essential).length).toBeGreaterThan(20);
   });
 
-  it('never declares a personal-data or ad-id prop (apart from known doc conflicts, which the guard drops)', () => {
+  it('never declares a personal-data or ad-id prop', () => {
     const bad = entries.flatMap(([n, d]) => Object.keys(d.props).filter(isBlockedPropName).map((p) => `${n}.${p}`));
-    // memory-labs §analytics: `name` is the reading's label, not a person; the doc should rename it
-    // (e.g. `quantity`). Until then the guard drops it like any other `name`.
-    expect(bad).toEqual(['lab_reading_recorded.name']);
+    expect(bad).toEqual([]);
+    expect((CATALOGUE as Record<string, EventDef>).lab_reading_recorded?.props.quantity).toEqual({ type: 'token' });
   });
 
   it('reads "prop: value (screens)" cells as one enum', () => {

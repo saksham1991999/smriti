@@ -1768,7 +1768,7 @@ export const CATALOGUE = {
     areas: ['memory_labs'],
     props: {
       lab_id: { type: 'id' },
-      name: { type: 'token' },
+      quantity: { type: 'token' },
       unit: { type: 'token' },
     },
   },

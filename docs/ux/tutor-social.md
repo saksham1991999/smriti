@@ -411,7 +411,7 @@ No free-text field: the reasons are enough, and typed text would need moderation
 | Feynman title | Teach it back | मुझे समझाएँ |
 | Feynman body | Explain a concept in your own words. See what you missed. | अपने शब्दों में कॉन्सेप्ट समझाएँ। देखें क्या छूट गया। |
 | Draw title | Pictures made for your question | आपके सवाल के लिए बने चित्र |
-| Draw body | When a picture helps, {pet_name} draws one for you. | जब चित्र से मदद मिले, आपके लिए नया चित्र बनता है। |
+| Draw body | When a picture helps, {pet_name} draws one for you. | जब चित्र से मदद मिले, {pet_name} की ओर से आपके लिए एक चित्र बनता है। |
 | Primary | See Pro | Pro देखें |
 | Secondary | Not now | अभी नहीं |
 | Price line | ₹1 for your first month, then ₹99/month. Cancel anytime. | पहला महीना ₹1, फिर ₹99/महीना। कभी भी बंद करें। |

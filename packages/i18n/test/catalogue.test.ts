@@ -70,10 +70,11 @@ describe('catalogue lint', () => {
     expect(bad).toEqual([]);
   });
 
-  it('reports English placeholders that the Hindi drops (doc issue list, not a failure)', () => {
-    const dropped = messages.filter(([, , en, hi]) => [...argNames(en)].some((a) => !argNames(hi).has(a)));
-    // Kept visible in the build report; a few rows legitimately drop {brand} in Hindi.
-    expect(dropped.length).toBeLessThanOrEqual(5);
+  it('Hindi keeps every English placeholder', () => {
+    const dropped = messages
+      .filter(([, , en, hi]) => [...argNames(en)].some((a) => !argNames(hi).has(a)))
+      .map(([ns, key]) => `${ns}:${key}`);
+    expect(dropped).toEqual([]);
   });
 
   it('no text that looks like a model id, secret or raw brand name', () => {

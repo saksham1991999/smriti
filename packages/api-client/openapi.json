@@ -1150,6 +1150,859 @@
         }
       }
     },
+    "/v1/practice/limits": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "Free counters for today and this week",
+        "operationId": "get_limits_v1_practice_limits_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Limits" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/hub": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "The practice hub in one call",
+        "operationId": "get_hub_v1_practice_hub_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PracticeHub" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/weak-spots": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "Weak spots from mastery (PRC-02)",
+        "operationId": "get_weak_spots_v1_practice_weak_spots_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/WeakSpots" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/drill": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "Pick drill questions for a concept or topic without starting a session",
+        "operationId": "get_drill_v1_practice_drill_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          },
+          {
+            "name": "concept",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "type": "array", "items": { "type": "string" }, "maxItems": 50 },
+                { "type": "null" }
+              ],
+              "title": "Concept"
+            }
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Topic"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 10,
+              "title": "Count"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DrillPreview" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/sessions": {
+      "post": {
+        "tags": ["practice"],
+        "summary": "Start a drill, PYQ or chapter-test session, sized to today's free questions",
+        "operationId": "create_session_v1_practice_sessions_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/SessionCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PracticeSession" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["practice"],
+        "summary": "Recent sessions (PRC-16)",
+        "operationId": "list_sessions_v1_practice_sessions_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+              "title": "Before"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SessionSummary" },
+                  "title": "Response List Sessions V1 Practice Sessions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/sessions/{session_id}": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "A session",
+        "operationId": "get_session_v1_practice_sessions__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Session Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PracticeSession" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/sessions/{session_id}/answers": {
+      "post": {
+        "tags": ["practice"],
+        "summary": "Check an answer on the server (online path) and record it",
+        "operationId": "submit_answer_v1_practice_sessions__session_id__answers_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Session Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AnswerSubmit" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AnswerResult" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/sessions/{session_id}/complete": {
+      "post": {
+        "tags": ["practice"],
+        "summary": "End a session (XP for its correct answers)",
+        "operationId": "complete_session_v1_practice_sessions__session_id__complete_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Session Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/SessionComplete" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PracticeSession" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pyq/papers": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "Past papers of an exam",
+        "operationId": "list_papers_v1_pyq_papers_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "type": "integer", "maximum": 2100, "minimum": 1950 },
+                { "type": "null" }
+              ],
+              "title": "Year"
+            }
+          },
+          {
+            "name": "session",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 100 }, { "type": "null" }],
+              "title": "Session"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/PyqPaper" },
+                  "title": "Response List Papers V1 Pyq Papers Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pyq/papers/{paper_id}": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "A paper with its questions",
+        "operationId": "get_paper_v1_pyq_papers__paper_id__get",
+        "parameters": [
+          {
+            "name": "paper_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "maxLength": 200, "title": "Paper Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PyqPaperDetail" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pyq": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "PYQs with the PRC-08 filters",
+        "operationId": "list_pyq_v1_pyq_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "array", "items": { "type": "integer" } }, { "type": "null" }],
+              "title": "Year"
+            }
+          },
+          {
+            "name": "session",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 100 }, { "type": "null" }],
+              "title": "Session"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Subject"
+            }
+          },
+          {
+            "name": "chapter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Chapter"
+            }
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Topic"
+            }
+          },
+          {
+            "name": "difficulty",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "enum": ["easy", "medium", "hard"], "type": "string" },
+                { "type": "null" }
+              ],
+              "title": "Difficulty"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "Type"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                { "enum": ["not_tried", "wrong", "correct"], "type": "string" },
+                { "type": "null" }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100000,
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/PyqQuestion" },
+                  "title": "Response List Pyq V1 Pyq Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/daily-challenge/today": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "Today's challenge (rolls at 00:00 IST); the question shows once started",
+        "operationId": "challenge_today_v1_daily_challenge_today_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "description": "Exam profile; default: primary",
+              "title": "Exam"
+            },
+            "description": "Exam profile; default: primary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DailyChallenge" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/daily-challenge/{challenge_id}/start": {
+      "post": {
+        "tags": ["practice"],
+        "summary": "Start the challenge: the server clock starts",
+        "operationId": "challenge_start_v1_daily_challenge__challenge_id__start_post",
+        "parameters": [
+          {
+            "name": "challenge_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Challenge Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DailyChallenge" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/daily-challenge/{challenge_id}/answer": {
+      "post": {
+        "tags": ["practice"],
+        "summary": "Answer once; scored on the server, qualifies today's streak day",
+        "operationId": "challenge_answer_v1_daily_challenge__challenge_id__answer_post",
+        "parameters": [
+          {
+            "name": "challenge_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Challenge Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DailyChallengeAnswer" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DailyChallenge" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/daily-challenge/{challenge_id}/leaderboard": {
+      "get": {
+        "tags": ["practice"],
+        "summary": "Ranks once enough players have played (R31 identities)",
+        "operationId": "challenge_leaderboard_v1_daily_challenge__challenge_id__leaderboard_get",
+        "parameters": [
+          {
+            "name": "challenge_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Challenge Id" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DailyLeaderboard" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/dev/auth/anonymous": {
       "post": {
         "tags": ["dev-auth"],
@@ -1233,6 +2086,83 @@
   },
   "components": {
     "schemas": {
+      "AnswerResult": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "attempt": { "type": "integer", "title": "Attempt" },
+          "check": { "$ref": "#/components/schemas/CheckOut" },
+          "counted": {
+            "type": "boolean",
+            "title": "Counted",
+            "description": "Whether it used a free practice question"
+          },
+          "solution": { "additionalProperties": true, "type": "object", "title": "Solution" },
+          "session_answered": { "type": "integer", "title": "Session Answered" },
+          "session_correct": { "type": "integer", "title": "Session Correct" },
+          "quota": { "$ref": "#/components/schemas/QuotaOut" }
+        },
+        "type": "object",
+        "required": [
+          "question_id",
+          "attempt",
+          "check",
+          "counted",
+          "solution",
+          "session_answered",
+          "session_correct",
+          "quota"
+        ],
+        "title": "AnswerResult"
+      },
+      "AnswerSubmit": {
+        "properties": {
+          "question_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Question Id"
+          },
+          "answer": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/OptionIdsAnswer" },
+              { "$ref": "#/components/schemas/NumberAnswerIn" },
+              { "$ref": "#/components/schemas/PairsAnswerIn" },
+              { "$ref": "#/components/schemas/MatrixAnswerIn" },
+              { "$ref": "#/components/schemas/BlanksAnswerIn" },
+              { "$ref": "#/components/schemas/OrderAnswerIn" },
+              { "type": "null" }
+            ],
+            "title": "Answer",
+            "description": "null: I don't know yet"
+          },
+          "attempt": { "type": "integer", "enum": [1, 2], "title": "Attempt", "default": 1 },
+          "confidence": {
+            "anyOf": [
+              { "type": "string", "enum": ["sure", "fifty_fifty", "guess"] },
+              { "type": "null" }
+            ],
+            "title": "Confidence"
+          },
+          "time_ms": { "type": "integer", "maximum": 3600000, "minimum": 0, "title": "Time Ms" },
+          "mistake_type": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": ["conceptual", "calculation", "misread", "silly", "time"]
+              },
+              { "type": "null" }
+            ],
+            "title": "Mistake Type"
+          },
+          "locale": {
+            "anyOf": [{ "type": "string", "enum": ["en", "hi"] }, { "type": "null" }],
+            "title": "Locale"
+          }
+        },
+        "type": "object",
+        "required": ["question_id", "time_ms"],
+        "title": "AnswerSubmit"
+      },
       "AppVersionInfo": {
         "properties": {
           "min_version": { "type": "string", "title": "Min Version" },
@@ -1268,6 +2198,36 @@
         "type": "object",
         "required": ["id", "name", "description", "tier", "earned_at"],
         "title": "BadgeOut"
+      },
+      "BlankIn": {
+        "properties": {
+          "blank": { "type": "string", "maxLength": 64, "title": "Blank" },
+          "choice_id": {
+            "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+            "title": "Choice Id"
+          },
+          "text": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": ["blank"],
+        "title": "BlankIn"
+      },
+      "BlanksAnswerIn": {
+        "properties": {
+          "kind": { "type": "string", "const": "blanks", "title": "Kind" },
+          "blanks": {
+            "items": { "$ref": "#/components/schemas/BlankIn" },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Blanks"
+          }
+        },
+        "type": "object",
+        "required": ["kind", "blanks"],
+        "title": "BlanksAnswerIn"
       },
       "BundleRef": {
         "properties": {
@@ -1319,6 +2279,19 @@
         "required": ["id", "subject_id", "unit_id", "name", "ncert_ref", "sort", "topics"],
         "title": "ChapterOut"
       },
+      "CheckOut": {
+        "properties": {
+          "correct": { "type": "boolean", "title": "Correct" },
+          "partial": { "type": "number", "title": "Partial" },
+          "response": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Response"
+          }
+        },
+        "type": "object",
+        "required": ["correct", "partial", "response"],
+        "title": "CheckOut"
+      },
       "ConfigResponse": {
         "properties": {
           "variant": { "$ref": "#/components/schemas/VariantConfig" },
@@ -1346,6 +2319,148 @@
           "server_time"
         ],
         "title": "ConfigResponse"
+      },
+      "DailyChallenge": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "exam": { "type": "string", "title": "Exam" },
+          "day": { "type": "string", "format": "date", "title": "Day" },
+          "opens_at": { "type": "string", "format": "date-time", "title": "Opens At" },
+          "closes_at": { "type": "string", "format": "date-time", "title": "Closes At" },
+          "question": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Question",
+            "description": "The question without its key; shown once started"
+          },
+          "started_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Started At"
+          },
+          "result": {
+            "anyOf": [{ "$ref": "#/components/schemas/DailyChallengeResult" }, { "type": "null" }]
+          },
+          "solution": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Solution"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "exam",
+          "day",
+          "opens_at",
+          "closes_at",
+          "question",
+          "started_at",
+          "result"
+        ],
+        "title": "DailyChallenge"
+      },
+      "DailyChallengeAnswer": {
+        "properties": {
+          "answer": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/OptionIdsAnswer" },
+              { "$ref": "#/components/schemas/NumberAnswerIn" },
+              { "$ref": "#/components/schemas/PairsAnswerIn" },
+              { "$ref": "#/components/schemas/MatrixAnswerIn" },
+              { "$ref": "#/components/schemas/BlanksAnswerIn" },
+              { "$ref": "#/components/schemas/OrderAnswerIn" },
+              { "type": "null" }
+            ],
+            "title": "Answer"
+          },
+          "confidence": {
+            "anyOf": [
+              { "type": "string", "enum": ["sure", "fifty_fifty", "guess"] },
+              { "type": "null" }
+            ],
+            "title": "Confidence"
+          },
+          "client_time_ms": {
+            "type": "integer",
+            "maximum": 86400000,
+            "minimum": 0,
+            "title": "Client Time Ms"
+          },
+          "tz": {
+            "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+            "title": "Tz",
+            "description": "IANA zone of the device, for the streak day (R23)"
+          }
+        },
+        "type": "object",
+        "required": ["client_time_ms"],
+        "title": "DailyChallengeAnswer"
+      },
+      "DailyChallengeCard": {
+        "properties": {
+          "challenge_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Challenge Id"
+          },
+          "day": { "type": "string", "format": "date", "title": "Day" },
+          "state": {
+            "type": "string",
+            "enum": ["not_played", "started", "played", "unavailable"],
+            "title": "State"
+          }
+        },
+        "type": "object",
+        "required": ["challenge_id", "day", "state"],
+        "title": "DailyChallengeCard"
+      },
+      "DailyChallengeResult": {
+        "properties": {
+          "correct": { "type": "boolean", "title": "Correct" },
+          "time_ms": { "type": "integer", "title": "Time Ms" },
+          "submitted_at": { "type": "string", "format": "date-time", "title": "Submitted At" },
+          "rank": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Rank" },
+          "players": { "type": "integer", "title": "Players" },
+          "beat_pct": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Beat Pct",
+            "description": "Share of players beaten, when ranks are shown"
+          },
+          "min_players_for_rank": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Min Players For Rank"
+          }
+        },
+        "type": "object",
+        "required": [
+          "correct",
+          "time_ms",
+          "submitted_at",
+          "rank",
+          "players",
+          "beat_pct",
+          "min_players_for_rank"
+        ],
+        "title": "DailyChallengeResult"
+      },
+      "DailyLeaderboard": {
+        "properties": {
+          "challenge_id": { "type": "string", "format": "uuid", "title": "Challenge Id" },
+          "players": { "type": "integer", "title": "Players" },
+          "ranked": { "type": "boolean", "title": "Ranked" },
+          "min_players_for_rank": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Min Players For Rank"
+          },
+          "rows": {
+            "items": { "$ref": "#/components/schemas/LeaderboardRow" },
+            "type": "array",
+            "title": "Rows"
+          },
+          "you": {
+            "anyOf": [{ "$ref": "#/components/schemas/LeaderboardRow" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": ["challenge_id", "players", "ranked", "min_players_for_rank", "rows", "you"],
+        "title": "DailyLeaderboard"
       },
       "DeletionResponse": {
         "properties": {
@@ -1424,6 +2539,19 @@
         "type": "object",
         "required": ["id", "is_anonymous"],
         "title": "DevUser"
+      },
+      "DrillPreview": {
+        "properties": {
+          "exam": { "type": "string", "title": "Exam" },
+          "question_ids": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Question Ids"
+          }
+        },
+        "type": "object",
+        "required": ["exam", "question_ids"],
+        "title": "DrillPreview"
       },
       "EntitlementState": {
         "properties": {
@@ -1533,6 +2661,35 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "LeaderboardRow": {
+        "properties": {
+          "rank": { "type": "integer", "title": "Rank" },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "Adults: display name. Minors: auto nickname (R31)"
+          },
+          "avatar": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Avatar" },
+          "is_you": { "type": "boolean", "title": "Is You" },
+          "correct": { "type": "boolean", "title": "Correct" },
+          "time_ms": { "type": "integer", "title": "Time Ms" }
+        },
+        "type": "object",
+        "required": ["rank", "name", "avatar", "is_you", "correct", "time_ms"],
+        "title": "LeaderboardRow"
+      },
+      "Limits": {
+        "properties": {
+          "is_pro": { "type": "boolean", "title": "Is Pro" },
+          "day": { "type": "string", "format": "date", "title": "Day" },
+          "practice_questions": { "$ref": "#/components/schemas/QuotaOut" },
+          "tutor_messages": { "$ref": "#/components/schemas/QuotaOut" },
+          "sectional_mocks": { "$ref": "#/components/schemas/QuotaOut" }
+        },
+        "type": "object",
+        "required": ["is_pro", "day", "practice_questions", "tutor_messages", "sectional_mocks"],
+        "title": "Limits"
+      },
       "LinkedRequest": {
         "properties": {
           "referral_code": {
@@ -1587,6 +2744,34 @@
           "free_rotating_chapters"
         ],
         "title": "ManifestResponse"
+      },
+      "MatrixAnswerIn": {
+        "properties": {
+          "kind": { "type": "string", "const": "matrix", "title": "Kind" },
+          "rows": {
+            "items": { "$ref": "#/components/schemas/MatrixRowIn" },
+            "type": "array",
+            "maxItems": 26,
+            "title": "Rows"
+          }
+        },
+        "type": "object",
+        "required": ["kind", "rows"],
+        "title": "MatrixAnswerIn"
+      },
+      "MatrixRowIn": {
+        "properties": {
+          "row": { "type": "string", "maxLength": 64, "title": "Row" },
+          "columns": {
+            "items": { "type": "string", "maxLength": 64 },
+            "type": "array",
+            "maxItems": 26,
+            "title": "Columns"
+          }
+        },
+        "type": "object",
+        "required": ["row", "columns"],
+        "title": "MatrixRowIn"
       },
       "MePatch": {
         "properties": {
@@ -1748,6 +2933,66 @@
         ],
         "title": "MergeStatus"
       },
+      "MockInProgress": {
+        "properties": {
+          "attempt_id": { "type": "string", "format": "uuid", "title": "Attempt Id" },
+          "mock_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Mock Id" },
+          "kind": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Kind" },
+          "started_at": { "type": "string", "format": "date-time", "title": "Started At" },
+          "server_deadline_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Server Deadline At"
+          }
+        },
+        "type": "object",
+        "required": ["attempt_id", "mock_id", "kind", "started_at", "server_deadline_at"],
+        "title": "MockInProgress"
+      },
+      "NumberAnswerIn": {
+        "properties": {
+          "kind": { "type": "string", "const": "number", "title": "Kind" },
+          "value": {
+            "anyOf": [{ "type": "number" }, { "type": "string", "maxLength": 64 }],
+            "title": "Value"
+          },
+          "unit": {
+            "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+            "title": "Unit"
+          }
+        },
+        "type": "object",
+        "required": ["kind", "value"],
+        "title": "NumberAnswerIn"
+      },
+      "OptionIdsAnswer": {
+        "properties": {
+          "kind": { "type": "string", "const": "options", "title": "Kind" },
+          "option_ids": {
+            "items": { "type": "string", "maxLength": 64 },
+            "type": "array",
+            "maxItems": 26,
+            "title": "Option Ids"
+          }
+        },
+        "type": "object",
+        "required": ["kind", "option_ids"],
+        "title": "OptionIdsAnswer"
+      },
+      "OrderAnswerIn": {
+        "properties": {
+          "kind": { "type": "string", "const": "order", "title": "Kind" },
+          "order": {
+            "items": { "type": "string", "maxLength": 64 },
+            "type": "array",
+            "maxItems": 30,
+            "title": "Order"
+          }
+        },
+        "type": "object",
+        "required": ["kind", "order"],
+        "title": "OrderAnswerIn"
+      },
       "Page_GemLedgerEntry_": {
         "properties": {
           "items": {
@@ -1763,6 +3008,29 @@
         "type": "object",
         "required": ["items"],
         "title": "Page[GemLedgerEntry]"
+      },
+      "PairIn": {
+        "properties": {
+          "left": { "type": "string", "maxLength": 64, "title": "Left" },
+          "right": { "type": "string", "maxLength": 64, "title": "Right" }
+        },
+        "type": "object",
+        "required": ["left", "right"],
+        "title": "PairIn"
+      },
+      "PairsAnswerIn": {
+        "properties": {
+          "kind": { "type": "string", "const": "pairs", "title": "Kind" },
+          "pairs": {
+            "items": { "$ref": "#/components/schemas/PairIn" },
+            "type": "array",
+            "maxItems": 26,
+            "title": "Pairs"
+          }
+        },
+        "type": "object",
+        "required": ["kind", "pairs"],
+        "title": "PairsAnswerIn"
       },
       "PetCareRequest": {
         "properties": {
@@ -1838,6 +3106,77 @@
         "type": "object",
         "required": ["stage", "health", "study_days", "next_stage_at"],
         "title": "PlantState"
+      },
+      "PracticeHub": {
+        "properties": {
+          "exam": { "type": "string", "title": "Exam" },
+          "limits": { "$ref": "#/components/schemas/Limits" },
+          "weak_spots": {
+            "items": { "$ref": "#/components/schemas/WeakSpot" },
+            "type": "array",
+            "title": "Weak Spots"
+          },
+          "daily_challenge": { "$ref": "#/components/schemas/DailyChallengeCard" },
+          "recent_sessions": {
+            "items": { "$ref": "#/components/schemas/SessionSummary" },
+            "type": "array",
+            "title": "Recent Sessions"
+          },
+          "mock_in_progress": {
+            "anyOf": [{ "$ref": "#/components/schemas/MockInProgress" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": [
+          "exam",
+          "limits",
+          "weak_spots",
+          "daily_challenge",
+          "recent_sessions",
+          "mock_in_progress"
+        ],
+        "title": "PracticeHub"
+      },
+      "PracticeSession": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "kind": { "type": "string", "title": "Kind" },
+          "exam": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Exam" },
+          "source": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Source" },
+          "started_at": { "type": "string", "format": "date-time", "title": "Started At" },
+          "ended_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Ended At"
+          },
+          "size": { "type": "integer", "title": "Size" },
+          "requested": { "type": "integer", "title": "Requested" },
+          "capped_by_free_limit": { "type": "boolean", "title": "Capped By Free Limit" },
+          "answered": { "type": "integer", "title": "Answered" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "questions": {
+            "items": { "$ref": "#/components/schemas/SessionQuestion" },
+            "type": "array",
+            "title": "Questions"
+          },
+          "quota": { "$ref": "#/components/schemas/QuotaOut" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "exam",
+          "source",
+          "started_at",
+          "ended_at",
+          "size",
+          "requested",
+          "capped_by_free_limit",
+          "answered",
+          "correct",
+          "questions",
+          "quota"
+        ],
+        "title": "PracticeSession"
       },
       "PriceInfo": {
         "properties": {
@@ -1927,6 +3266,180 @@
         "required": ["item_id", "gems", "state_version"],
         "title": "PurchaseResponse"
       },
+      "PyqItem": {
+        "properties": {
+          "number": { "type": "integer", "title": "Number" },
+          "question_id": { "type": "string", "title": "Question Id" },
+          "type": { "type": "string", "title": "Type" },
+          "difficulty": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Difficulty"
+          },
+          "topic_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Topic Id" },
+          "chapter_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Chapter Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["not_tried", "wrong", "correct"],
+            "title": "Status"
+          },
+          "bundle_ref": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Bundle Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "number",
+          "question_id",
+          "type",
+          "difficulty",
+          "topic_id",
+          "chapter_id",
+          "status",
+          "bundle_ref"
+        ],
+        "title": "PyqItem"
+      },
+      "PyqPaper": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "exam_id": { "type": "string", "title": "Exam Id" },
+          "year": { "type": "integer", "title": "Year" },
+          "session_label": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Session Label"
+          },
+          "held_on": {
+            "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+            "title": "Held On"
+          },
+          "paper_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Paper Code"
+          },
+          "source_url": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Source Url"
+          },
+          "notes": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Notes" },
+          "question_count": { "type": "integer", "title": "Question Count" },
+          "free_as_mock": { "type": "boolean", "title": "Free As Mock" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "exam_id",
+          "year",
+          "session_label",
+          "held_on",
+          "paper_code",
+          "source_url",
+          "notes",
+          "question_count",
+          "free_as_mock"
+        ],
+        "title": "PyqPaper"
+      },
+      "PyqPaperDetail": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "exam_id": { "type": "string", "title": "Exam Id" },
+          "year": { "type": "integer", "title": "Year" },
+          "session_label": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Session Label"
+          },
+          "held_on": {
+            "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+            "title": "Held On"
+          },
+          "paper_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Paper Code"
+          },
+          "source_url": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Source Url"
+          },
+          "notes": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Notes" },
+          "question_count": { "type": "integer", "title": "Question Count" },
+          "free_as_mock": { "type": "boolean", "title": "Free As Mock" },
+          "items": {
+            "items": { "$ref": "#/components/schemas/PyqItem" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "exam_id",
+          "year",
+          "session_label",
+          "held_on",
+          "paper_code",
+          "source_url",
+          "notes",
+          "question_count",
+          "free_as_mock",
+          "items"
+        ],
+        "title": "PyqPaperDetail"
+      },
+      "PyqQuestion": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "paper_id": { "type": "string", "title": "Paper Id" },
+          "number": { "type": "integer", "title": "Number" },
+          "year": { "type": "integer", "title": "Year" },
+          "session_label": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Session Label"
+          },
+          "type": { "type": "string", "title": "Type" },
+          "difficulty": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Difficulty"
+          },
+          "topic_id": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Topic Id" },
+          "chapter_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Chapter Id"
+          },
+          "subject_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Subject Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["not_tried", "wrong", "correct"],
+            "title": "Status"
+          },
+          "bundle_ref": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Bundle Ref"
+          }
+        },
+        "type": "object",
+        "required": [
+          "question_id",
+          "paper_id",
+          "number",
+          "year",
+          "session_label",
+          "type",
+          "difficulty",
+          "topic_id",
+          "chapter_id",
+          "subject_id",
+          "status",
+          "bundle_ref"
+        ],
+        "title": "PyqQuestion"
+      },
       "QuestClaimResponse": {
         "properties": {
           "quest_id": { "type": "string", "title": "Quest Id" },
@@ -1970,6 +3483,25 @@
         ],
         "title": "QuestOut"
       },
+      "QuotaOut": {
+        "properties": {
+          "unlimited": { "type": "boolean", "title": "Unlimited" },
+          "limit": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Limit" },
+          "used": { "type": "integer", "title": "Used" },
+          "remaining": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Remaining"
+          },
+          "resets_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Resets At"
+          }
+        },
+        "type": "object",
+        "required": ["unlimited", "limit", "used", "remaining"],
+        "title": "QuotaOut",
+        "description": "A free-tier counter (app-core ``Quota``). ``remaining`` is null when unlimited."
+      },
       "RejectedEvent": {
         "properties": {
           "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
@@ -1985,6 +3517,146 @@
         "type": "object",
         "required": ["day"],
         "title": "RestDayRequest"
+      },
+      "SessionComplete": {
+        "properties": {
+          "ended_by": {
+            "type": "string",
+            "enum": ["finished", "closed", "time_up"],
+            "title": "Ended By",
+            "default": "finished"
+          }
+        },
+        "type": "object",
+        "title": "SessionComplete"
+      },
+      "SessionCreate": {
+        "properties": {
+          "session_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Session Id",
+            "description": "Client UUIDv7; a repeat returns the same session"
+          },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Exam"
+          },
+          "concepts": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "maxLength": 200, "minLength": 1 },
+                "type": "array",
+                "maxItems": 50
+              },
+              { "type": "null" }
+            ],
+            "title": "Concepts"
+          },
+          "topic_id": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Topic Id"
+          },
+          "chapter_id": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Chapter Id"
+          },
+          "question_ids": {
+            "anyOf": [
+              {
+                "items": { "type": "string", "maxLength": 200, "minLength": 1 },
+                "type": "array",
+                "maxItems": 100
+              },
+              { "type": "null" }
+            ],
+            "title": "Question Ids"
+          },
+          "paper_id": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Paper Id"
+          },
+          "mode": {
+            "type": "string",
+            "enum": ["drill", "chapter_test", "weak_spots"],
+            "title": "Mode",
+            "default": "drill"
+          },
+          "count": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 1,
+            "title": "Count",
+            "default": 10
+          },
+          "difficulty": {
+            "type": "string",
+            "enum": ["adaptive", "easy", "medium", "hard"],
+            "title": "Difficulty",
+            "default": "adaptive"
+          },
+          "source": {
+            "anyOf": [
+              { "type": "string", "maxLength": 32, "pattern": "^[a-z_]+$" },
+              { "type": "null" }
+            ],
+            "title": "Source"
+          }
+        },
+        "type": "object",
+        "title": "SessionCreate",
+        "description": "PRC-03's input contract (practice §5.3): exactly one of ``concepts``, ``topic_id``,\n``chapter_id``, ``question_ids`` or ``paper_id``; or none for a mixed drill of the exam."
+      },
+      "SessionQuestion": {
+        "properties": {
+          "question_id": { "type": "string", "title": "Question Id" },
+          "type": { "type": "string", "title": "Type" },
+          "difficulty": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Difficulty"
+          },
+          "topic_id": { "type": "string", "title": "Topic Id" },
+          "chapter_id": { "type": "string", "title": "Chapter Id" },
+          "ideal_time_s": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Ideal Time S"
+          },
+          "bundle_ref": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Bundle Ref",
+            "description": "Bundle that holds the question for offline use"
+          },
+          "concepts": { "items": { "type": "string" }, "type": "array", "title": "Concepts" }
+        },
+        "type": "object",
+        "required": [
+          "question_id",
+          "type",
+          "difficulty",
+          "topic_id",
+          "chapter_id",
+          "ideal_time_s",
+          "bundle_ref",
+          "concepts"
+        ],
+        "title": "SessionQuestion"
+      },
+      "SessionSummary": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "kind": { "type": "string", "title": "Kind" },
+          "exam": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Exam" },
+          "started_at": { "type": "string", "format": "date-time", "title": "Started At" },
+          "ended_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Ended At"
+          },
+          "size": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Size" },
+          "answered": { "type": "integer", "title": "Answered" },
+          "correct": { "type": "integer", "title": "Correct" }
+        },
+        "type": "object",
+        "required": ["id", "kind", "exam", "started_at", "ended_at", "size", "answered", "correct"],
+        "title": "SessionSummary"
       },
       "ShopItemOut": {
         "properties": {
@@ -2402,6 +4074,76 @@
         "type": "object",
         "required": ["xp_total", "xp_today", "gems"],
         "title": "WalletState"
+      },
+      "WeakSpot": {
+        "properties": {
+          "concept_id": { "type": "string", "title": "Concept Id" },
+          "concept_name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Concept Name"
+          },
+          "topic_id": { "type": "string", "title": "Topic Id" },
+          "topic_name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Topic Name"
+          },
+          "reasons": {
+            "items": {
+              "type": "string",
+              "enum": ["low_accuracy", "fading", "missed_in_mock", "overconfident"]
+            },
+            "type": "array",
+            "title": "Reasons"
+          },
+          "attempts": { "type": "integer", "title": "Attempts" },
+          "accuracy": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Accuracy" },
+          "mastery": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Mastery" },
+          "weightage": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Weightage"
+          },
+          "priority": { "type": "string", "title": "Priority" }
+        },
+        "type": "object",
+        "required": [
+          "concept_id",
+          "concept_name",
+          "topic_id",
+          "topic_name",
+          "reasons",
+          "attempts",
+          "accuracy",
+          "mastery",
+          "weightage",
+          "priority"
+        ],
+        "title": "WeakSpot"
+      },
+      "WeakSpots": {
+        "properties": {
+          "exam": { "type": "string", "title": "Exam" },
+          "items": {
+            "items": { "$ref": "#/components/schemas/WeakSpot" },
+            "type": "array",
+            "title": "Items"
+          },
+          "needs_more_answers": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Needs More Answers",
+            "description": "Answers still needed before weak spots can be found; null when enough"
+          },
+          "unset_thresholds": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Unset Thresholds",
+            "description": "Owner flags not set yet; their rules are skipped (practice §9.2)"
+          }
+        },
+        "type": "object",
+        "required": ["exam", "items", "needs_more_answers", "unset_thresholds"],
+        "title": "WeakSpots"
       }
     }
   }

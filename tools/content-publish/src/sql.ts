@@ -434,6 +434,9 @@ export function generateSql(inp: SqlInputs): SqlOutput {
   const qRows: Value[][] = [];
   const keyRows: Value[][] = [];
   const qcRows: Value[][] = [];
+  // Full source bodies for the API (mock papers, the daily challenge, tutor context). Service
+  // only, like question_keys: server-only questions never ship in bundles.
+  const bodyRows: Value[][] = [];
   for (const { q, topic, parentUse } of questions) {
     const question = q as Question;
     const serverOnly = parentUse.some((u) => SERVER_ONLY_USES.includes(u as (typeof SERVER_ONLY_USES)[number]));
@@ -451,6 +454,7 @@ export function generateSql(inp: SqlInputs): SqlOutput {
       raw(`to_tsvector('simple', ${lit(Object.values(stem).join(" "))})`),
     ]);
     if ("answer" in question && question.answer) keyRows.push([question.id, jsonb(question.answer), null]);
+    bodyRows.push([question.id, textArr([...parentUse].sort()), jsonb(question)]);
     for (const c of question.concepts ?? []) {
       const id = set.aliases.get(c.id) ?? c.id;
       if (conceptIds.has(id)) qcRows.push([question.id, id, c.weight]);
@@ -463,6 +467,7 @@ export function generateSql(inp: SqlInputs): SqlOutput {
     ["id"],
   );
   upsert("question_keys", ["question_id", "answer", "partial_rule"], keyRows, ["question_id"]);
+  upsert("question_bodies", ["question_id", "uses", "body"], bodyRows, ["question_id"]);
   del("question_concepts", "question_id", qRows.map((r) => r[0] as string));
   upsert("question_concepts", ["question_id", "concept_id", "weight"], qcRows, ["question_id", "concept_id"]);
 

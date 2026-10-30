@@ -345,6 +345,21 @@ describe("checks", () => {
   });
 });
 
+describe("Hindi", () => {
+  it("plays the Hindi bundle with the same cards, keys and Hindi help text", () => {
+    const hi = fixtureBundle("a", "deep_dive", "hi");
+    const plan = planLesson(hi.bundle, { mode: "deep_dive", bundleVersion: hi.hash, examDepth: EXAM_DEPTH, config: config() });
+    expect(plan.locale).toBe("hi");
+    expect(plan.cards.map((c) => c.key)).toEqual(deepDive("a").cards.map((c) => c.key));
+    const { s, run } = session();
+    run({ type: "start", plan, resumeIndex: 3 });
+    expect(run({ type: "submit", answer: opts("b") }).hint).toEqual({ source: "trap", text: "फ़िक्स्चर आम गलती A1.b" });
+    expect(s.emitted[0]!.payload).toMatchObject({ locale: "hi", bundle_version: hi.hash });
+    run({ type: "try_again" });
+    expect(run({ type: "submit", answer: opts("c") }).phase).toBe("feedback");
+  });
+});
+
 describe("help, resume and ids", () => {
   it("marks PYQs and hard questions as a tough one", () => {
     const { bundle } = fixtureBundle("a", "practice");

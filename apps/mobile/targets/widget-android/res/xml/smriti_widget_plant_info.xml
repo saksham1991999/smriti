@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NTF-08 small (2x2). Redraws every 30 min (the Android minimum) so the plant line follows the
+     12:00, evening and midnight changes; the app also asks for a redraw on every write. -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/smriti_widget_plant_description"
+    android:initialLayout="@layout/smriti_widget_plant"
+    android:minWidth="110dp"
+    android:minHeight="110dp"
+    android:targetCellWidth="2"
+    android:targetCellHeight="2"
+    android:previewImage="@drawable/smriti_widget_plant_sapling"
+    android:resizeMode="none"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen" />

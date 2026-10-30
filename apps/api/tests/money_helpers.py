@@ -15,6 +15,7 @@ from sqlalchemy import text
 
 from smriti_api.core.deps import AppServices
 from smriti_api.integrations import DEV_RAZORPAY_WEBHOOK_SECRET, DEV_REVENUECAT_WEBHOOK_AUTH
+from smriti_api.services import billing
 from tests.helpers import Session, google
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -38,6 +39,15 @@ async def set_profile(services: AppServices, user_id: uuid.UUID, **cols: Any) ->
     async with services.db.admin_tx() as session:
         await session.execute(
             text(f"update app.profiles set {sets} where user_id = :u"), {"u": user_id, **cols}
+        )
+
+
+async def grant_pro(services: AppServices, user_id: uuid.UUID, days: int = 30) -> None:
+    """Pro for tests, through the real billing path: a promo grant (billing.promo_grants), which
+    recomputes billing.entitlements and bumps the entitlement sync section like any other grant."""
+    async with services.db.system_tx() as session:
+        await billing.grant_promo_week(
+            session, user_id, ref=f"test-pro-{uuid.uuid4().hex}", days=days
         )
 
 

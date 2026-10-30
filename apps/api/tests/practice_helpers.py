@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import httpx
@@ -14,6 +13,7 @@ from sqlalchemy import text
 from smriti_api.core.deps import AppServices
 from smriti_api.services import flags as flag_service
 from tests.helpers import Session, new_guest
+from tests.money_helpers import grant_pro
 
 
 async def learner(client: httpx.AsyncClient, exam: str) -> Session:
@@ -26,15 +26,8 @@ async def learner(client: httpx.AsyncClient, exam: str) -> Session:
 
 
 async def make_pro(services: AppServices, s: Session) -> None:
-    async with services.db.admin_tx() as session:
-        await session.execute(
-            text(
-                "insert into billing.entitlements (user_id, entitlement, active, expires_at)"
-                " values (:u, 'pro', true, :exp)"
-                " on conflict (user_id, entitlement) do update set active = true, expires_at = :exp"
-            ),
-            {"u": s.user_id, "exp": datetime.now(UTC) + timedelta(days=30)},
-        )
+    """Pro through the billing path (a promo grant); see ``tests.money_helpers.grant_pro``."""
+    await grant_pro(services, s.user_id)
 
 
 @asynccontextmanager

@@ -245,6 +245,12 @@ export const FLAG_REGISTRY = {
   'billing.trial_reminder_days_before': def(posInt, 3, 'ruling', 'R33'),
   'billing.offline_grace_days': def(nonNegInt, 3, 'doc', 'me-money §5.1'),
   'billing.web_grace_days': def(posInt, 7, 'proposed', 'me-money §5.1 (Razorpay pending to grace)'),
+  // Family plan for siblings (PRD §11.2, Phase 3). Neither the price nor the seat count is in the
+  // docs: the plan stays hidden from /v1/config and checkout until the owner sets the seats and
+  // the price for that period.
+  'billing.family_seats': owner(posInt, 'PRD §11.2 family plan (null: hidden; people besides the payer)'),
+  'billing.family_monthly_price_paise': owner(posInt, 'PRD §11.2 family plan (null: monthly family plan hidden)'),
+  'billing.family_yearly_price_paise': owner(posInt, 'PRD §11.2 family plan (null: yearly family plan hidden)'),
   'export.books_per_day': def(posInt, 5, 'proposed', 'me-money §3.9'),
   'export.expiry_days': def(posInt, 30, 'proposed', 'me-money §3.9'),
   'pay.child_link.enabled': def(byPlatform(bool), { web: true, ios: false, android: false }, 'doc', 'me-money Q7'),

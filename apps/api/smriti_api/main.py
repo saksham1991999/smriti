@@ -24,6 +24,7 @@ from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.core.redis import create_redis
 from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.integrations import build_integrations
+from smriti_api.integrations.analytics_store import build_analytics_store
 from smriti_api.integrations.realtime import build_realtime
 from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
@@ -77,6 +78,14 @@ async def build_services(settings: Settings) -> AppServices:
                 integrations=integrations,
                 ai=ai,
                 realtime=realtime,
+                analytics_store=build_analytics_store(
+                    http,
+                    db,
+                    url=get_integration_settings().clickhouse_url,
+                    user=get_integration_settings().clickhouse_user,
+                    password=get_integration_settings().clickhouse_password,
+                    database=get_integration_settings().clickhouse_database,
+                ),
             ),
             job_registry(),
         )

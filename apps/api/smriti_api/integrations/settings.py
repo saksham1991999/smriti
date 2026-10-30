@@ -92,6 +92,12 @@ class IntegrationSettings(BaseSettings):
     # set outside local; Redis pub/sub (and the SSE stream) always.
     realtime_provider: str = ""
 
+    # Analytics store (DB_SCHEMA §14) for the data jobs; Postgres stands in while the URL is unset.
+    clickhouse_url: str = ""
+    clickhouse_user: str = ""
+    clickhouse_password: str = ""
+    clickhouse_database: str = "default"
+
     # Public links in emails and pushes
     guardian_link_base_url: str = "https://smriti.app/guardian/"
     brand_name: str = "Smriti"

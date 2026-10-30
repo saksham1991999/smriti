@@ -54,6 +54,8 @@ def test_crons_live_on_the_default_queue() -> None:
         "media_sweep",
         "mocks_auto_submit",
         "live_mocks_tick",
+        "fsrs_optimise",
+        "irt_calibrate",
         "tutor_retention",
         "weak_area_alerts",
         "rhythm_estimates",

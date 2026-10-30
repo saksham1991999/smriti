@@ -59,6 +59,8 @@ DefaultWorker = _settings(
         jobs.media_sweep,
         jobs.mocks_auto_submit,
         jobs.live_mocks_tick,
+        jobs.fsrs_optimise,
+        jobs.irt_calibrate,
         jobs.tutor_retention,
         jobs.weak_area_alerts,
         jobs.rhythm_estimates,
@@ -84,6 +86,9 @@ DefaultWorker = _settings(
         cron(jobs.mocks_auto_submit, second=30, unique=True),
         # Live mocks (practice §6.11): start signal and clock fan-out, then frozen ranks.
         cron(jobs.live_mocks_tick, second=0, unique=True),
+        # Data jobs on the analytics store (G-11), at night in India.
+        cron(jobs.fsrs_optimise, hour=22, minute=30, unique=True),
+        cron(jobs.irt_calibrate, weekday="sun", hour=23, minute=0, unique=True),
         # Tutor: messages past ai.tutor_retention_days, daily.
         cron(jobs.tutor_retention, hour=2, minute=15, unique=True),
         # Learning science (TRD §9.6), nightly in India: weak-area alerts are queued for the

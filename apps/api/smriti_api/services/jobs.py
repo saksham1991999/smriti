@@ -21,6 +21,7 @@ from smriti_api.services.auth_admin import AuthAdmin
 if TYPE_CHECKING:
     from smriti_api.ai.gateway import AIGateway
     from smriti_api.integrations import Integrations
+    from smriti_api.integrations.analytics_store import AnalyticsStore
     from smriti_api.integrations.realtime import RealtimePublisher
 
 log = structlog.get_logger(__name__)
@@ -52,6 +53,8 @@ class JobDeps:
     integrations: Integrations | None = None
     ai: AIGateway | None = None
     realtime: RealtimePublisher | None = None
+    # IRT and FSRS data jobs (G-11). ClickHouse, or Postgres locally.
+    analytics_store: AnalyticsStore | None = None
 
 
 JobFn = Callable[..., Awaitable[Any]]

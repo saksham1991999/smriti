@@ -3918,6 +3918,217 @@
         }
       }
     },
+    "/v1/guardian/learners/{learner_id}/pro": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "PAY-17 and SET-14: the child's plan, as the guardian who manages it sees it",
+        "operationId": "child_pro_v1_guardian_learners__learner_id__pro_get",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SubscriptionDetailsOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["billing"],
+        "summary": "PAY-17 [Continue to pay]: a web subscription on the child's account, payer guardian",
+        "operationId": "child_pro_start_v1_guardian_learners__learner_id__pro_post",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ChildProRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RazorpaySubscriptionOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/pro/verify": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Check the Checkout signature for the child's plan; Pro follows the webhook",
+        "operationId": "child_pro_verify_v1_guardian_learners__learner_id__pro_verify_post",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayVerifyRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/learners/{learner_id}/pro/cancel": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Cancel the plan the guardian pays for, at the end of the paid period",
+        "operationId": "child_pro_cancel_v1_guardian_learners__learner_id__pro_cancel_post",
+        "parameters": [
+          {
+            "name": "learner_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Learner Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayCancelRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EntitlementOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/guardian/consent-requests": {
       "post": {
         "tags": ["guardian"],
@@ -4210,6 +4421,117 @@
             "description": "Successful Response",
             "content": {
               "application/json": { "schema": { "$ref": "#/components/schemas/LearnersOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/children": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "AUTH-24/26: create a managed child (adopting this device's guest, or a new account)",
+        "operationId": "create_child_v1_guardian_children_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ChildCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ManagedChildOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/children/{child_id}/session": {
+      "post": {
+        "tags": ["guardian"],
+        "summary": "A one-time token hash for a child session on this device (sign-in in the last 10 min)",
+        "operationId": "child_session_v1_guardian_children__child_id__session_post",
+        "parameters": [
+          {
+            "name": "child_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Child Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChildSessionOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/children/{child_id}": {
+      "delete": {
+        "tags": ["guardian"],
+        "summary": "Delete a managed child: erasure after the grace period, devices signed out",
+        "operationId": "delete_child_v1_guardian_children__child_id__delete",
+        "parameters": [
+          {
+            "name": "child_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Child Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChildDeletionOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
             }
           }
         }
@@ -7491,6 +7813,37 @@
         },
         "x-dev-only": true
       }
+    },
+    "/v1/dev/auth/verify-otp": {
+      "post": {
+        "tags": ["dev-auth"],
+        "summary": "Dev stand-in for verifyOtp with a token hash (a managed child's session)",
+        "operationId": "verify_otp_v1_dev_auth_verify_otp_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DevVerifyOtpRequest" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DevSession" } }
+            }
+          },
+          "401": { "description": "otp_expired: used, unknown or older than 5 minutes" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "x-dev-only": true
+      }
     }
   },
   "components": {
@@ -8287,6 +8640,81 @@
         "title": "ChildCard",
         "description": "SET-14: pet, name, this week's minutes, streak, the practice line and \"Needs you\"."
       },
+      "ChildCreate": {
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "First Name"
+          },
+          "age_band": { "type": "string", "enum": ["u10", "10_12"], "title": "Age Band" },
+          "scopes": {
+            "items": {
+              "type": "string",
+              "enum": ["account", "social", "community", "voice", "uploads"]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Scopes"
+          },
+          "declaration": { "type": "boolean", "const": true, "title": "Declaration" },
+          "notice_version": {
+            "type": "string",
+            "maxLength": 40,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._-]+$",
+            "title": "Notice Version"
+          },
+          "adopt_guest": {
+            "anyOf": [{ "type": "string", "maxLength": 4096, "minLength": 16 }, { "type": "null" }],
+            "title": "Adopt Guest"
+          },
+          "locale": {
+            "anyOf": [{ "type": "string", "enum": ["en", "hi"] }, { "type": "null" }],
+            "title": "Locale"
+          }
+        },
+        "type": "object",
+        "required": ["first_name", "age_band", "scopes", "declaration", "notice_version"],
+        "title": "ChildCreate",
+        "description": "AUTH-24/AUTH-26: the parent creates a managed child, adopting the guest that did onboarding\non this device (``adopt_guest`` is that guest's access token) or making a new account."
+      },
+      "ChildDeletionOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "scheduled_for": { "type": "string", "format": "date-time", "title": "Scheduled For" }
+        },
+        "type": "object",
+        "required": ["user_id", "scheduled_for"],
+        "title": "ChildDeletionOut"
+      },
+      "ChildProRequest": {
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": ["monthly", "yearly"],
+            "title": "Plan",
+            "default": "monthly"
+          }
+        },
+        "type": "object",
+        "title": "ChildProRequest",
+        "description": "PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is\nthe parent's own and adds the child as a member instead)."
+      },
+      "ChildSessionOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "token_hash": { "type": "string", "title": "Token Hash" },
+          "type": { "type": "string", "const": "email", "title": "Type", "default": "email" },
+          "expires_in": { "type": "integer", "title": "Expires In" }
+        },
+        "type": "object",
+        "required": ["user_id", "token_hash", "expires_in"],
+        "title": "ChildSessionOut",
+        "description": "Exchanged once, within ``expires_in`` seconds, with supabase-js\n``verifyOtp({ token_hash, type: 'email' })`` (locally ``POST /v1/dev/auth/verify-otp``)."
+      },
       "ComingUp": {
         "properties": {
           "kind": { "type": "string", "const": "mock", "title": "Kind" },
@@ -9046,6 +9474,20 @@
         "type": "object",
         "required": ["id", "is_anonymous"],
         "title": "DevUser"
+      },
+      "DevVerifyOtpRequest": {
+        "properties": {
+          "token_hash": {
+            "type": "string",
+            "maxLength": 256,
+            "minLength": 16,
+            "title": "Token Hash"
+          },
+          "type": { "type": "string", "const": "email", "title": "Type", "default": "email" }
+        },
+        "type": "object",
+        "required": ["token_hash"],
+        "title": "DevVerifyOtpRequest"
       },
       "DeviceOut": {
         "properties": {
@@ -10560,6 +11002,18 @@
         ],
         "title": "LiveRoom",
         "description": "MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset."
+      },
+      "ManagedChildOut": {
+        "properties": {
+          "user_id": { "type": "string", "format": "uuid", "title": "User Id" },
+          "first_name": { "type": "string", "title": "First Name" },
+          "age_band": { "type": "string", "enum": ["u10", "10_12"], "title": "Age Band" },
+          "adopted": { "type": "boolean", "title": "Adopted" },
+          "consent": { "$ref": "#/components/schemas/ConsentOut" }
+        },
+        "type": "object",
+        "required": ["user_id", "first_name", "age_band", "adopted", "consent"],
+        "title": "ManagedChildOut"
       },
       "ManifestResponse": {
         "properties": {

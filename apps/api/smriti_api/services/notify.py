@@ -984,11 +984,13 @@ def local_day(now: datetime, tz: str) -> date:
 
 
 def senders_from(ints: Any) -> Senders:
+    from smriti_api.core.config import get_settings
+
     return Senders(
         expo=ints.push,
         web=ints.web_push,
         mailer=ints.mailer,
-        web_app_url=str(ints.settings.web_app_url or ""),
+        web_app_url=get_settings().web_app_url,
     )
 
 

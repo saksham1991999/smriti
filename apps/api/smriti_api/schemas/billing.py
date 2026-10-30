@@ -42,6 +42,13 @@ class RazorpaySubscriptionRequest(BaseModel):
     plan: PlanChoice = "monthly"
 
 
+class ChildProRequest(BaseModel):
+    """PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
+    the parent's own and adds the child as a member instead)."""
+
+    plan: Literal["monthly", "yearly"] = "monthly"
+
+
 class RazorpaySubscriptionOut(BaseModel):
     subscription_id: str
     key_id: str

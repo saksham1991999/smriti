@@ -108,3 +108,43 @@ class MyConsentOut(BaseModel):
     consented_at: datetime | None
     pending_request_id: uuid.UUID | None
     retry_at: datetime | None
+
+
+# --- managed children (auth flow §6.11, AUTH-24 to AUTH-28) ----------------------------------------
+
+
+class ChildCreate(BaseModel):
+    """AUTH-24/AUTH-26: the parent creates a managed child, adopting the guest that did onboarding
+    on this device (``adopt_guest`` is that guest's access token) or making a new account."""
+
+    first_name: Annotated[str, Field(min_length=1, max_length=40)]
+    age_band: Literal["u10", "10_12"]
+    scopes: Annotated[list[Scope], Field(min_length=1, max_length=5)]
+    # The AUTH-20 declaration, made by the parent at creation (method parent_created).
+    declaration: Literal[True]
+    notice_version: Annotated[str, Field(min_length=1, max_length=40, pattern=r"^[A-Za-z0-9._-]+$")]
+    adopt_guest: Annotated[str, Field(min_length=16, max_length=4096)] | None = None
+    locale: Literal["en", "hi"] | None = None
+
+
+class ManagedChildOut(BaseModel):
+    user_id: uuid.UUID
+    first_name: str
+    age_band: Literal["u10", "10_12"]
+    adopted: bool
+    consent: ConsentOut
+
+
+class ChildSessionOut(BaseModel):
+    """Exchanged once, within ``expires_in`` seconds, with supabase-js
+    ``verifyOtp({ token_hash, type: 'email' })`` (locally ``POST /v1/dev/auth/verify-otp``)."""
+
+    user_id: uuid.UUID
+    token_hash: str
+    type: Literal["email"] = "email"
+    expires_in: int
+
+
+class ChildDeletionOut(BaseModel):
+    user_id: uuid.UUID
+    scheduled_for: datetime

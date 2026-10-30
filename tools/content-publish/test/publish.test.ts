@@ -71,7 +71,10 @@ describe("publishing the fixture course to a local folder", () => {
     const sql = readFileSync(join(out, "metadata.sql"), "utf8");
     expect(sql).toContain("-- FIXTURE COURSE");
     for (const [table, rows] of Object.entries(report.sql.rows)) if (rows > 0) expect(sql).toContain(`insert into ${table} `);
-    expect(Object.keys(report.sql.tables)).toHaveLength(29);
+    expect(Object.keys(report.sql.tables)).toHaveLength(30);
+    // Search documents for the tutor: topics and concepts in both locales, published text only.
+    expect(report.sql.rows["content.search_docs"]).toBeGreaterThan(0);
+    expect(sql).toMatch(/\('topic:fx\.chapter-a\.topic-a:hi', 'topic', 'fx\.chapter-a\.topic-a', 'hi', ARRAY\['fx-exam-2027'\]/);
     expect(report.warnings).toEqual([]);
     expect(existsSync(join(out, "site-index.json"))).toBe(true);
   });

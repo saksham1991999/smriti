@@ -8,6 +8,7 @@ It reads only local files (no network) and rewrites:
   content/exam-maps/{profile}.json                exam-map@1
   content/coverage/syllabus/{profile}.json        syllabus@1 (official lines, en + hi, with their concepts)
   content/coverage/inventory/{subject}/{chapter_slug}.json   inventory@1 (every NCERT section of the chapter)
+  content/coverage/inventory/{subject}/excluded-chapters.json  inventory@1 (NCERT chapters with no graph chapter, from XCH)
 
 Then run `pnpm content:check` (add `--write-coverage` through the package script to refresh content/coverage/*.json).
 
@@ -52,14 +53,19 @@ UPDATED = "2026-10-30"  # date written into `updated`; change it when the source
 RETRIEVED = "2026-10-29"  # when the official syllabi and NCERT books were downloaded
 PROFILES = {"J": "jee-main-2027", "N": "neet-ug-2026"}
 PROFILE_NAME = {"jee-main-2027": "JEE Main 2027", "neet-ug-2026": "NEET UG 2026"}
+# ref is the document's own identification; published and linked_from have their own Source slots
 SYL_SOURCES = {
     "jee-main-2027": {
-        "title": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+        "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency)",
         "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+        "published": "2026-10-24",
+        "linked_from": "https://jeemain.nta.nic.in/",
     },
     "neet-ug-2026": {
-        "title": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+        "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08)",
         "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+        "published": None,
+        "linked_from": "https://neet.nta.nic.in/",
     },
 }
 SUBJ_OFFICIAL = {"phy": "physics", "chem": "chemistry", "math": "mathematics", "bio": "biology"}
@@ -169,16 +175,45 @@ def meta(sources, notes=None, status="draft"):
     return out
 
 
+def syl_long_ref(prof):
+    """The source as one line of text, as graph and exam-map files cite it."""
+    src = SYL_SOURCES[prof]
+    if src["published"]:
+        return f"{src['ref'][:-1]}, published {src['published']}; linked from {src['linked_from']})"
+    return f"{src['ref'][:-1]}; linked from {src['linked_from']})"
+
+
 def syl_source(prof, pages=None):
     s = {
         "kind": "official",
-        "ref": SYL_SOURCES[prof]["title"],
+        "ref": syl_long_ref(prof),
         "url": SYL_SOURCES[prof]["url"],
         "retrieved": RETRIEVED,
     }
     if pages:
         s["pages"] = pages
     return s
+
+
+def syl_source_structured(prof):
+    """The source with published and linked_from in their own slots, as syllabus files cite it."""
+    src = SYL_SOURCES[prof]
+    s = {"kind": "official", "ref": src["ref"], "url": src["url"], "retrieved": RETRIEVED}
+    if src["published"]:
+        s["published"] = src["published"]
+    s["linked_from"] = src["linked_from"]
+    return s
+
+
+def norm_heading(t):
+    return re.sub(r"[^a-z]", "", t.lower())
+
+
+def same_heading(a, b):
+    """True when two English headings are the same NCERT heading (one may be cut short)."""
+    a, b = norm_heading(a), norm_heading(b)
+    n = min(len(a), len(b))
+    return a == b or (n >= 6 and a[:n] == b[:n])
 
 
 # ---------------------------------------------------------------- syllabus lines
@@ -396,12 +431,16 @@ def load_titles(errors):
     extra_secs[("keph1", 2)]["2.5"] = "Relative velocity"
     for key, d in extra_secs.items():
         en_secs[key].update(d)
-    return hi_titles, en_secs, extra_secs, manual_en
+    raw_en = {}  # English body headings exactly as the tables hold them
+    for fn in ("ncert_en_titles.tsv", "ncert_en_math.tsv", "ncert_bio_en.tsv"):
+        for row in read_rows(os.path.join(SRC, "ncert", fn)):
+            raw_en[(row[0], row[1])] = row[2]
+    return hi_titles, en_secs, extra_secs, manual_en, raw_en
 
 
 def main():
     errors, warnings = [], []
-    hi_titles, en_secs, extra_secs, manual_en = load_titles(errors)
+    hi_titles, en_secs, extra_secs, manual_en, raw_en = load_titles(errors)
     line_hi = {r[0]: r[1] for r in read_rows(os.path.join(SRC, "lines", "hi.tsv"))}
     lines = {p: load_lines(p) for p in PROFILES.values()}
     line_index = {it["ref"]: (u, it) for us in lines.values() for u in us for it in u["items"]}
@@ -635,17 +674,41 @@ def main():
                 + ", ".join(ncert_units)
                 + "; the others are translated."
             )
+        excluded, ex_sources = [], []
         for xc in subj.get("excluded_chapters", []):
             b, n = xc["ncert"].split(":")
             h = hi_titles.get((HI_BOOK[b], f"ch{n}"))
             if not h:
                 errors.append(f"{xc['where']}: no NCERT Hindi title for {xc['ncert']}")
                 continue
-            profs = ", ".join(PROFILE_NAME[PROFILES[x]] for x in xc["profiles"])
-            notes.append(
-                f"NCERT Class {NCERT_BOOK[b][1]} {NCERT_BOOK[b][0]}, Ch {n} '{xc['en']}' ({h[0]}; {ncert_pdf(b, int(n))}) has no graph chapter: "
-                f"{xc['reason']} ({profs})."
+            pdf = ncert_pdf(b, int(n))
+            excluded.append(
+                {
+                    "ref": f"ncert:{b}:{n}",
+                    "title": {"en": xc["en"], "hi": h[0]},
+                    "reason": xc["reason"],
+                    "source_ref": f"NCERT Class {NCERT_BOOK[b][1]} {NCERT_BOOK[b][0]}, Ch {n} ({pdf})",
+                    "exam_profiles": [PROFILES[x] for x in xc["profiles"]],
+                }
             )
+            ex_sources.append({"kind": "ncert", "ref": excluded[-1]["source_ref"], "url": pdf})
+        if excluded:
+            notes.append(
+                f"NCERT chapters with no graph chapter are listed in coverage/inventory/{sid}/excluded-chapters.json."
+            )
+            ex_sources += [
+                syl_source_structured(p)
+                for p in PROFILES.values()
+                if any(p in x["exam_profiles"] for x in excluded)
+            ]
+            ex_out = {"schema": "inventory@1", "subject": sid, "excluded_chapters": excluded}
+            ex_out.update(meta(ex_sources))
+            ex_out["hi_source"] = "ncert"
+            ex_out["notes"] = (
+                f"Moved from graph/{sid}/subject.json notes. "
+                "Hindi chapter titles are from the NCERT Hindi-medium contents pages."
+            )
+            write(f"coverage/inventory/{sid}/excluded-chapters.json", ex_out)
         subj_out = {
             "schema": "subject@1",
             "id": sid,
@@ -710,6 +773,7 @@ def main():
         )
         excl = {e["section"]: e for e in ch["exclusions"]}
         items = []
+        all_hi = True
         for sec in secs:
             title_en = (
                 topic_en_single.get(sec) or en_secs[(book, ncert_ch)].get(sec) or topic_en.get(sec)
@@ -721,10 +785,21 @@ def main():
                 continue
             title_hi = hi_titles.get((hb, sec), (None,))[0]
             cs = list(dict.fromkeys(sec_to_concepts.get(sec, [])))
+            # Pair the Hindi heading only when the English title is the NCERT heading of that
+            # same section, so a pair never joins two different sections.
+            head_en = raw_en.get((book, sec))
+            paired = bool(
+                title_hi
+                and head_en
+                and same_heading(title_en, head_en)
+                and re.findall(r"\d+", title_hi) == re.findall(r"\d+", title_en)
+            )
+            all_hi = all_hi and paired
+            inv_counts["title_hi" if paired else "title_en_only"] += 1
             item = {
                 "id": f"{book}-{sec.replace('.', '-')}",
                 "kind": "fact",
-                "title": title_en,
+                "title": {"en": title_en, "hi": title_hi} if paired else title_en,
                 "source_ref": f"NCERT Class {cls} {bname}, Ch {ncert_ch} §{sec} ({url})",
                 "concepts": cs,
             }
@@ -761,9 +836,16 @@ def main():
                     }
                 ],
                 "One item per numbered NCERT section (x.y), the granularity this inventory is built at. "
-                "Hindi section titles from the NCERT Hindi-medium contents are not kept, because inventory@1 titles are a single string.",
+                + (
+                    "Hindi section titles are from the NCERT Hindi-medium contents pages."
+                    if all_hi
+                    else "Hindi section titles are from the NCERT Hindi-medium contents pages, "
+                    "kept only where the English title is the NCERT heading of that same section."
+                ),
             )
         )
+        if all_hi:
+            inv["hi_source"] = "ncert"
         write(f"coverage/inventory/{sid}/{ch['slug']}.json", inv)
 
     # exam maps and syllabus files
@@ -803,13 +885,12 @@ def main():
                     {"ref": it["ref"], "text": {"en": it["text"], "hi": hi}, "concepts": cs}
                 )
         syl = {"schema": "syllabus@1", "exam_profile": prof, "lines": out_lines}
-        syl.update(
-            meta(
-                [syl_source(prof)],
-                "Each line is a verbatim fragment of the official English syllabus, split at teachable boundaries; refs are "
-                "{exam_profile}:{subject}:unit-{n}:item-{m}. The Hindi text is our translation: the official syllabus is published in English only. "
-                "Units (official titles and PDF pages): " + "; ".join(unit_notes) + ".",
-            )
+        syl.update(meta([syl_source_structured(prof)]))
+        syl["hi_source"] = "translation"
+        syl["notes"] = (
+            "Each line is a verbatim fragment of the official English syllabus, split at teachable boundaries; refs are "
+            "{exam_profile}:{subject}:unit-{n}:item-{m}. The Hindi text is our translation: the official syllabus is published in English only. "
+            "Units (official titles and PDF pages): " + "; ".join(unit_notes) + "."
         )
         write(f"coverage/syllabus/{prof}.json", syl)
         print(

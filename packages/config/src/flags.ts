@@ -202,20 +202,24 @@ export const FLAG_REGISTRY = {
 
   // ── Duels (tutor-social B10; anti-abuse values are owner flags, Q-B10) ────
   'duel.question_count': def(posInt, 10, 'prd', 'PRD §8, tutor-social B10', ['duel_question_count']),
-  'duel.question_seconds': owner(posInt, 'tutor-social B10', ['duel_question_seconds']),
-  'duel.question_seconds_u13': owner(posInt, 'tutor-social B10 §9', ['duel_question_seconds_u13']),
+  // Proposed so duels run (R53); each one is marked for the owner to confirm.
+  'duel.question_seconds': def(posInt, 20, 'proposed', 'R53, tutor-social B10 (owner to confirm)', ['duel_question_seconds']),
+  'duel.question_seconds_u13': def(posInt, 30, 'proposed', 'R53, tutor-social B10 §9 (owner to confirm)', ['duel_question_seconds_u13']),
   'duel.invite_live_seconds': def(posInt, 60, 'proposed', 'tutor-social B10 (recommended 60)', ['duel_invite_live_seconds']),
   'duel.async_ttl_hours': def(posInt, 24, 'proposed', 'tutor-social B10 (recommended 24)', ['duel_async_ttl_hours']),
   'duel.match_timeout_seconds': def(posInt, 10, 'ruling', 'R31, tutor-social B10', ['duel_match_timeout_seconds']),
   'duel.disconnect_grace_seconds': def(posInt, 15, 'proposed', 'tutor-social B10 (recommended 15)', ['duel_disconnect_grace_seconds']),
-  'duel.rematch_wait_seconds': owner(posInt, 'tutor-social B10', ['duel_rematch_wait_seconds']),
-  'duel.min_answer_ms': owner(posInt, 'tutor-social B10, Q-B10', ['duel_min_answer_ms']),
-  'duel.quit_limit': owner(posInt, 'tutor-social B10, Q-B10', ['duel_quit_limit']),
-  'duel.quit_window_hours': owner(posInt, 'tutor-social B10, Q-B10', ['duel_quit_window_hours']),
-  'duel.quit_cooldown_minutes': owner(posInt, 'tutor-social B10, Q-B10', ['duel_quit_cooldown_minutes']),
-  'duel.speed_bonus_max': owner(nonNegInt, 'tutor-social B10 ("a speed bonus from config")'),
-  'xp.duel_per_correct': owner(nonNegInt, 'tutor-social B10, R51'),
-  'xp.duel_win': owner(nonNegInt, 'tutor-social B10, R51'),
+  'duel.rematch_wait_seconds': def(posInt, 60, 'proposed', 'R53, tutor-social B10 (owner to confirm)', ['duel_rematch_wait_seconds']),
+  'duel.min_answer_ms': def(posInt, 800, 'proposed', 'R53, tutor-social B10, Q-B10 (owner to confirm)', ['duel_min_answer_ms']),
+  'duel.quit_limit': def(posInt, 3, 'proposed', 'R53, tutor-social B10, Q-B10: 3 a day (owner to confirm)', ['duel_quit_limit']),
+  'duel.quit_window_hours': def(posInt, 24, 'proposed', 'R53, tutor-social B10, Q-B10: "a day" (owner to confirm)', ['duel_quit_window_hours']),
+  // Null by design: the pause lasts until the oldest quit leaves the window.
+  'duel.quit_cooldown_minutes': owner(posInt, 'tutor-social B10, Q-B10 (null: until the quit window clears)', ['duel_quit_cooldown_minutes']),
+  'duel.speed_bonus_max': def(nonNegInt, 5, 'proposed', 'R53, tutor-social B10 ("a speed bonus from config"; owner to confirm)'),
+  // Null by design: duel XP is play plus win, not per correct answer, unless the owner turns it on.
+  'xp.duel_per_correct': owner(nonNegInt, 'tutor-social B10, R51 (null: off)'),
+  'xp.duel_play': def(nonNegInt, 5, 'proposed', 'R53, tutor-social B10, R51 (owner to confirm)'),
+  'xp.duel_win': def(nonNegInt, 20, 'proposed', 'R53, tutor-social B10, R51 (owner to confirm)'),
 
   // ── Free vs Pro limits (PRD §11.1, R16, R25, R35) ────────────────────────
   'free.practice_questions_per_day': def(nonNegInt, 30, 'prd', 'PRD §11.1, R25, practice §4.1'),

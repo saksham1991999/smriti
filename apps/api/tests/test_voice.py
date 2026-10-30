@@ -96,12 +96,12 @@ async def test_voice_gates(client: httpx.AsyncClient, services: AppServices, con
         await set_profile(services, little.user_id, age_band="u10")
         await grant_pro(services, little.user_id)
         assert (await start(client, little)).json()["code"] == "voice_not_for_age"
-    # The fair-use cap is an owner number: unset keeps voice off.
+    # The fair-use numbers run on their proposed defaults (R54) until the owner sets them.
     async with flags(services, {"feature.voice_tutor": True}):
-        r = await start(client, s)
-        assert r.status_code == 503 and r.json()["reason"] == "limit_not_set"
         q = (await client.get("/v1/voice/quota", headers=s.headers)).json()
-        assert q["available"] is False and q["reason"] == "limit_not_set"
+        assert q["available"] is True
+        assert (q["daily_seconds"], q["session_max_seconds"]) == (900, 600)
+        assert (q["reconnect_seconds"], q["background_grace_seconds"]) == (30, 20)
 
 
 async def test_voice_session_tools_and_transcript(
@@ -359,7 +359,9 @@ def grade(covered: list[int], wrong: list[int] | None = None, clarity: int = 80)
 
 @asynccontextmanager
 async def feynman_on(services: AppServices) -> AsyncIterator[None]:
-    async with flags(services, {"feature.feynman": True, "feynman.mastery_weight": 0.2}):
+    # The fixture explanations are a few words; the proposed minimum (30) is tested separately.
+    flag_values = {"feature.feynman": True, "feynman.mastery_weight": 0.2, "feynman.min_words": 1}
+    async with flags(services, flag_values):
         yield
 
 
@@ -441,3 +443,10 @@ async def test_feynman_safety_and_bad_grader_output(
         async with flags(services, {"feynman.min_words": 50}):
             r = await explain(client, s, "too short")
         assert r.json()["code"] == "too_short"
+    # With the proposed default, a few words are too short to grade, but a short message in
+    # distress is still screened first and gets the helplines.
+    async with flags(services, {"feature.feynman": True}):
+        r = await explain(client, s, "too short")
+        assert r.json()["code"] == "too_short" and r.json()["min_words"] == 30
+        r = await explain(client, s, "honestly I want to die")
+        assert r.status_code == 422 and r.json()["kind"] == "crisis"

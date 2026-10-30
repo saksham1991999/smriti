@@ -64,6 +64,11 @@ DefaultWorker = _settings(
         jobs.tutor_retention,
         jobs.weak_area_alerts,
         jobs.rhythm_estimates,
+        jobs.league_assign,
+        jobs.league_rollover,
+        jobs.duo_rollup,
+        jobs.duel_sweep,
+        jobs.squad_quests,
         jobs.ping,
     ],
     cron_jobs=[
@@ -95,6 +100,13 @@ DefaultWorker = _settings(
         # next day's usual hour; the rhythm estimates feed sleep review and smart timing.
         cron(jobs.rhythm_estimates, hour=20, minute=45, unique=True),
         cron(jobs.weak_area_alerts, hour=21, minute=0, unique=True),
+        # Social (G-4): league placement hourly; the weekly close at Sunday 23:59 IST
+        # (18:30 UTC) with a retry an hour later; Duo days nightly after IST midnight; duels every minute.
+        cron(jobs.league_assign, minute=25, unique=True),
+        cron(jobs.league_rollover, weekday="sun", hour={18, 19}, minute=30, unique=True),
+        cron(jobs.duo_rollup, hour=19, minute=7, unique=True),
+        cron(jobs.duel_sweep, second=45, unique=True),
+        cron(jobs.squad_quests, minute=50, unique=True),
     ],
 )
 ContentPublishWorker = _settings(

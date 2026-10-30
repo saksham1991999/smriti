@@ -175,8 +175,9 @@ async def test_sleep_review_for_adults_and_fixed_time_for_teens(
     r = (await client.get("/v1/insights/sleep-review", headers=s.headers)).json()
     assert r["eligible"] is False and r["reason"] == "off"
     await _prefs(services, s.user_id, sleep_review=True)
+    # The proposed minimum confidence (0.6) is above this estimate's 0.5.
     r = (await client.get("/v1/insights/sleep-review", headers=s.headers)).json()
-    assert r["reason"] == "threshold_unset"
+    assert r["reason"] == "not_confident" and abs(r["confidence"] - 0.5) < 1e-6
     async with flags(services, {"notify.sleep_review.min_confidence": 0.4}):
         r = (await client.get("/v1/insights/sleep-review", headers=s.headers)).json()
     assert r["eligible"] is True and r["source"] == "estimate" and r["bedtime"] == "22:30:00"

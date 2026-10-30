@@ -59,6 +59,11 @@ def test_crons_live_on_the_default_queue() -> None:
         "tutor_retention",
         "weak_area_alerts",
         "rhythm_estimates",
+        "league_assign",
+        "league_rollover",
+        "duo_rollup",
+        "duel_sweep",
+        "squad_quests",
     }
 
 

@@ -29,13 +29,17 @@ from smriti_api.services import (
     billing,
     card_index,
     data_jobs,
+    duels,
     exports,
     guardian,
+    leagues,
     learning_science,
     live_mocks,
     media,
     mocks,
     notify,
+    social_duos,
+    social_squads,
     tutor,
     voice,
 )
@@ -162,6 +166,31 @@ async def weak_area_alerts(ctx: Ctx) -> int:
 async def rhythm_estimates(ctx: Ctx) -> int:
     """Adults' usual bedtime and study hour, for sleep review and smart timing (TRD §9.6)."""
     return await learning_science.estimate_rhythms(_deps(ctx).db)
+
+
+async def league_assign(ctx: Ctx) -> int:
+    """Hourly: places this week's active learners into league groups."""
+    return await leagues.assign_job(_deps(ctx))
+
+
+async def league_rollover(ctx: Ctx) -> int:
+    """Sunday after ``league.close_time`` IST: promotions, demotions and results. Safe to re-run."""
+    return await leagues.rollover_job(_deps(ctx))
+
+
+async def duo_rollup(ctx: Ctx) -> int:
+    """Nightly: settles Duo streak days."""
+    return await social_duos.rollup_job(_deps(ctx))
+
+
+async def duel_sweep(ctx: Ctx) -> int:
+    """Every minute: expires stale duels and queue entries."""
+    return await duels.sweep_job(_deps(ctx))
+
+
+async def squad_quests(ctx: Ctx) -> int:
+    """Hourly: settles this week's squad quests."""
+    return await social_squads.quests_job(_deps(ctx))
 
 
 async def ping(ctx: Ctx) -> str:

@@ -404,27 +404,28 @@ async def test_implausible_sync_events_are_flagged_not_rejected(
         lesson_completed(),
     ]
     fast[-1]["payload"]["ms_total"] = 600  # 100 ms per card
+    # The proposed thresholds (R54): 500 ms a card, 700 ms an answer.
     r = await _sync(client, s.headers, fast)
     assert not r.json()["rejected"]
-    assert await _flags_for(services, s.user_id) == []  # thresholds unset: nothing is checked
-
-    async with flags(
-        services,
-        {
-            "anticheat.min_review_ms": 300,
-            "anticheat.min_answer_ms": 500,
-            "xp.rules": {"hourly_cap": 25},
-        },
-    ):
-        again = [{**e, "event_id": str(uuid.uuid4())} for e in fast]
-        r = await _sync(client, s.headers, again)
-    assert not r.json()["rejected"]
     rows = {r.kind: r for r in await _flags_for(services, s.user_id)}
-    assert set(rows) == {"fast_review", "fast_lesson", "xp_hourly_cap"}
+    assert set(rows) == {"fast_review", "fast_lesson"}
     assert rows["fast_review"].events == 2 and rows["fast_review"].detail == {
-        "threshold": 300,
+        "threshold": 500,
         "min_ms": 90,
     }
-    assert rows["fast_lesson"].detail["min_ms"] == 100
-    assert rows["xp_hourly_cap"].detail["threshold"] == 25
+    assert rows["fast_lesson"].detail == {"threshold": 500, "min_ms": 100}
+
+    other = await new_guest(client)
+    async with flags(
+        services,
+        {"anticheat.min_review_ms": 100, "xp.rules": {"hourly_cap": 10}},
+    ):
+        again = [{**e, "event_id": str(uuid.uuid4())} for e in fast]
+        r = await _sync(client, other.headers, again)
+    assert not r.json()["rejected"]
+    rows = {r.kind: r for r in await _flags_for(services, other.user_id)}
+    # 100 ms a lesson card is not below a 100 ms minimum; the 10 XP cap holds the lesson back.
+    assert set(rows) == {"fast_review", "xp_hourly_cap"}
+    assert rows["fast_review"].events == 1 and rows["fast_review"].detail["threshold"] == 100
+    assert rows["xp_hourly_cap"].detail["threshold"] == 10
     assert rows["xp_hourly_cap"].detail["xp_held_back"] > 0

@@ -101,7 +101,15 @@ async def test_fsrs_optimise_on_postgres_review_logs(
     assert len(logs) == 6 and logs[0].reviewed_at < logs[-1].reviewed_at
     assert (await store.review_counts())[s.user_id] == 6
 
-    assert (await data_jobs.fsrs_optimise(services.db, store)).status == "threshold_unset"
+    # The proposed minimum (400 reviews, R54): six reviews are not enough for a fit.
+    seen: list[int] = []
+
+    def watch(rows: Sequence[st.ReviewRow]) -> list[float]:
+        seen.append(len(rows))
+        return list(DEFAULT_PARAMETERS)
+
+    await data_jobs.fsrs_optimise(services.db, store, fit=watch)
+    assert 6 not in seen
     async with flags(services, {"memory.fsrs.optimise_min_reviews": 5}):
         report = await data_jobs.fsrs_optimise(services.db, store)
         if not data_jobs.optimizer_available():
@@ -179,7 +187,10 @@ async def test_irt_skeleton(client: httpx.AsyncClient, services: AppServices, co
                 {"id": uuid.uuid4(), "u": s.user_id, "q": qid, "ok": ok},
             )
     store = st.PostgresAnalyticsStore(services.db)
-    assert (await data_jobs.irt_calibrate(services.db, store)).status == "threshold_unset"
+    # The proposed minimum (200 first answers, R54): three answers don't calibrate a question.
+    early = FakeCalibrator()
+    await data_jobs.irt_calibrate(services.db, store, calibrator=early)
+    assert qid not in {r.question_id for r in early.seen}
     async with flags(services, {"irt.min_responses": 3}):
         counts = {c.question_id: c for c in await store.question_counts(3)}
         assert counts[qid].responses >= 3

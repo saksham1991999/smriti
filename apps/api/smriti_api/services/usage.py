@@ -20,47 +20,32 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from smriti_api.core.errors import ApiError
+from smriti_api.services import flag_registry
 from smriti_api.services import flags as flag_service
 from smriti_api.services.recompute import zone
 from smriti_api.services.state import entitlement_state
 
 IST = ZoneInfo("Asia/Kolkata")
 
-# Defaults that packages/config ships (PRD and ruling values). Owner flags have no default.
-FLAG_DEFAULTS: dict[str, Any] = {
-    "free.practice_questions_per_day": 30,
-    "free.sectional_mocks_per_week": 1,
-    "free.tutor_messages_per_day": 5,
-    "free.pyq_papers_free": [],
-    "free.mock_report_sections": [
-        "score",
-        "accuracy",
-        "time_lost_wrong",
-        "section_bars",
-        "subject_bars",
-        "attempt_summary",
-        "solutions",
-        "fix_next_top",
-    ],
-    "pro.custom_mocks": True,
-    "live.enabled": False,
-    "practice.mixed_enabled": False,
-    # Server-side defaults from the flow docs.
-    "ai.tutor_retention_days": 180,  # tutor-social §A7, §A14
-    "ai.tutor_session_reuse_min": 30,  # tutor-social §A5 step 1
-}
 # Counted toward the daily practice questions (app-core PRACTICE_COUNTED_CONTEXTS).
 PRACTICE_COUNTED_CONTEXTS = ("practice", "drill", "pyq", "chapter_test")
 
 
 class Flags:
+    """Server flag values over the registry defaults (``flag_registry``): the one place the
+    practice, mock, tutor and social services read flags from."""
+
     def __init__(self, values: Mapping[str, Any]) -> None:
-        self._values = values
+        self._values = flag_registry.canonical(values)
 
     def get(self, key: str) -> Any:
         if key in self._values and self._values[key] is not None:
             return self._values[key]
-        return FLAG_DEFAULTS.get(key)
+        return flag_registry.default(key)
+
+    def int_or(self, key: str, fallback: int) -> int:
+        value = self.int_or_none(key)
+        return fallback if value is None else value
 
     def int_or_none(self, key: str) -> int | None:
         value = self.get(key)

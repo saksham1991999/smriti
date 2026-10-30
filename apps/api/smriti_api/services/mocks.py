@@ -36,11 +36,12 @@ from smriti_api.core.auth import AuthContext
 from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
 from smriti_api.schemas import mocks as m
+from smriti_api.schemas.sync import MAX_EVENTS_PER_BATCH
 from smriti_api.services import game_ops
 from smriti_api.services import mock_paper as mp
 from smriti_api.services import mock_report as mr
 from smriti_api.services import question_bank as bank
-from smriti_api.services.answers import AnswerFormatError, parse_answer
+from smriti_api.services.answers import AnswerFormatError, event_response, parse_answer
 from smriti_api.services.server_events import ServerEvent, apply_events
 from smriti_api.services.sync import MAX_AGE, MAX_FUTURE
 from smriti_api.services.usage import (
@@ -60,6 +61,8 @@ _COLS = (
     " server_deadline_at, score, max_score, attempt_no, paper, last_saved_at, created_at"
 )
 DB_CONFIDENCE = {"sure": "sure", "fifty_fifty": "fifty", "guess": "guess"}
+WIRE_CONFIDENCE = {v: k for k, v in DB_CONFIDENCE.items()}
+MAX_ANSWER_MS = 24 * 3600 * 1000
 
 
 def _iso(at: datetime | None) -> str | None:
@@ -362,6 +365,61 @@ async def _settle(session: AsyncSession, a: _Attempt, now: datetime, flags: Flag
     return _Outcome(closed)
 
 
+async def _answer_events(
+    session: AsyncSession, user_id: uuid.UUID, attempt_id: uuid.UUID
+) -> list[ServerEvent]:
+    """``answer_submitted`` (context ``mock``) for each scored answer of a submitted attempt that
+    is not yet in ``learn.question_attempts``: mock answers update mastery once, on submit."""
+    rows = (
+        await session.execute(
+            text(
+                """
+                select a.question_id, a.answer, a.is_correct, a.time_spent_ms, a.confidence
+                  from learn.mock_answers a
+                  join learn.mock_attempts m on m.id = a.attempt_id
+                 where m.id = :a and m.user_id = :u
+                   and m.status in ('submitted', 'auto_submitted')
+                   and a.answer is not null and a.is_correct is not null
+                   and not exists (select 1 from learn.question_attempts q
+                                    where q.user_id = :u and q.session_id = :a
+                                      and q.question_id = a.question_id and q.context = 'mock')
+                 order by a.question_id
+                """
+            ),
+            {"a": attempt_id, "u": user_id},
+        )
+    ).all()
+    return [
+        ServerEvent(
+            game_ops.derived_event_id("mock_answer", user_id, attempt_id, r.question_id),
+            "answer_submitted",
+            {
+                "question_id": r.question_id,
+                "context": "mock",
+                "attempt_id": str(attempt_id),
+                "response": event_response(r.answer),
+                "correct": bool(r.is_correct),
+                "attempt": 1,
+                "confidence": WIRE_CONFIDENCE.get(r.confidence) if r.confidence else None,
+                "ms_to_answer": max(0, min(int(r.time_spent_ms or 0), MAX_ANSWER_MS)),
+            },
+        )
+        for r in rows
+    ]
+
+
+async def _apply_ignoring_duplicates(
+    db: Database, auth: AuthContext, events: list[ServerEvent], device_id: uuid.UUID | None
+) -> None:
+    for i in range(0, len(events), MAX_EVENTS_PER_BATCH):
+        try:
+            await apply_events(db, auth, events[i : i + MAX_EVENTS_PER_BATCH], device_id=device_id)
+        except ApiError as exc:
+            # The device's outbox recorded it first: it already counts once.
+            if exc.code != "already_recorded":
+                raise
+
+
 async def _record(
     db: Database,
     auth: AuthContext,
@@ -369,21 +427,18 @@ async def _record(
     codes: list[str],
     device_id: uuid.UUID | None,
 ) -> None:
-    if not codes:
-        return
+    """Records closed sections (XP, the streak day) and, once the attempt is submitted, its
+    answers (mastery) through the sync path."""
     async with db.system_tx() as session:
-        done = await _already_recorded(session, auth.user_id, attempt_id)
+        done = await _already_recorded(session, auth.user_id, attempt_id) if codes else set()
+        answers = await _answer_events(session, auth.user_id, attempt_id)
     fresh = [c for c in dict.fromkeys(codes) if c not in done]
-    if not fresh:
-        return
-    try:
-        await apply_events(
-            db, auth, _section_events(auth.user_id, attempt_id, fresh), device_id=device_id
+    if fresh:
+        await _apply_ignoring_duplicates(
+            db, auth, _section_events(auth.user_id, attempt_id, fresh), device_id
         )
-    except ApiError as exc:
-        # The device's outbox recorded the section first: it already counts once.
-        if exc.code != "already_recorded":
-            raise
+    if answers:
+        await _apply_ignoring_duplicates(db, auth, answers, device_id)
 
 
 async def _settle_open(
@@ -1462,7 +1517,7 @@ async def auto_submit_expired(db: Database, now: datetime | None = None) -> int:
             a = await _load(session, r.user_id, r.id, lock=True)
             codes = (await _settle(session, a, now, flags)).sections
             finished = a.status != "in_progress"
-        if codes:
+        if codes or finished:
             auth = AuthContext(user_id=r.user_id, is_anonymous=False, role="authenticated")
             await _record(db, auth, r.id, codes, None)
         done += int(finished)

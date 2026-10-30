@@ -233,13 +233,6 @@ async def submit(db: Database, ai: AIGateway, auth: AuthContext, body: v.Feynman
             raise ApiError(409, "exam_in_progress", "The tutor is off while a timed mock runs")
         if body.input_mode == "voice":
             await voice.require_voice_audio(session, learner)
-        min_words = flags.int_or_none("feynman.min_words")
-        if (
-            body.follow_up_of is None
-            and min_words is not None
-            and words(body.explanation) < min_words
-        ):
-            raise ApiError(422, "too_short", "Explain a little more", min_words=min_words)
         root: Any = None
         prior_text = ""
         if body.follow_up_of is not None:
@@ -293,6 +286,11 @@ async def submit(db: Database, ai: AIGateway, auth: AuthContext, body: v.Feynman
             else [],
             quota=tutor._quota_out(q, learner, now).model_dump(mode="json"),
         )
+
+    # After the safety screen, so a short message in distress still gets the helplines.
+    min_words = flags.int_or_none("feynman.min_words")
+    if body.follow_up_of is None and min_words is not None and words(body.explanation) < min_words:
+        raise ApiError(422, "too_short", "Explain a little more", min_words=min_words)
 
     async with db.system_tx() as session:
         await session.execute(

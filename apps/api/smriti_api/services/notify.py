@@ -124,6 +124,19 @@ KINDS: dict[str, KindSpec] = {
     "mock_reminder": KindSpec(
         "exam_alert", ("NTF-01.mock_reminder",), deep_link="/mock/{mock_id}", ttl=timedelta(hours=2)
     ),
+    # Social (tutor-social B3, me-money §6.4). Class "social": consent, caps, and R45 for minors.
+    "friend_request": KindSpec("social", ("NTF-01.friend_request",), deep_link="/friends"),
+    "friend_accepted": KindSpec("social", ("NTF-01.friend_accepted",), deep_link="/friends"),
+    "friend_cheer": KindSpec("social", ("NTF-01.friend_cheer",), deep_link="/friends"),
+    "duo_invite": KindSpec("social", ("NTF-01.duo_invite",), deep_link="/friends"),
+    "duo_nudge": KindSpec("social", ("NTF-01.duo_nudge",), deep_link="/home"),
+    "duel_challenge": KindSpec(
+        "social", ("NTF-01.duel_challenge",), deep_link="/duel/{code}", ttl=timedelta(hours=24)
+    ),
+    "duel_result": KindSpec("social", ("NTF-01.duel_result",), deep_link="/duel/{code}"),
+    "squad_quest_done": KindSpec("social", ("NTF-01.squad_quest_done",), deep_link="/friends"),
+    "league_promoted": KindSpec("social", ("NTF-01.league_promoted",), deep_link="/friends"),
+    "league_result": KindSpec("social", ("NTF-01.league_result",), deep_link="/friends"),
 }
 # consent_decided picks its line from the outcome, not from rotation.
 CONSENT_DECIDED_OTHER = "NTF-01.consent_decided_declined_or_expired"

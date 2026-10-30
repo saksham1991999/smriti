@@ -29,15 +29,19 @@ from smriti_api.integrations.realtime import build_realtime
 from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
 from smriti_api.routes import billing as billing_routes
+from smriti_api.routes import duels as duel_routes
 from smriti_api.routes import exports as exports_routes
 from smriti_api.routes import guardian as guardian_routes
 from smriti_api.routes import insights as insights_routes
 from smriti_api.routes import integrity as integrity_routes
+from smriti_api.routes import leagues as league_routes
 from smriti_api.routes import live as live_routes
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import practice as practice_routes
 from smriti_api.routes import reviews as reviews_routes
+from smriti_api.routes import shared_decks as shared_deck_routes
+from smriti_api.routes import social as social_routes
 from smriti_api.routes import tutor as tutor_routes
 from smriti_api.routes import voice as voice_routes
 from smriti_api.services.analytics import LogAnalyticsSink
@@ -211,6 +215,14 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(insights_routes.router)
     app.include_router(integrity_routes.router)
     app.include_router(live_routes.router)
+    # Wave 2 (Agent B): the Phase 2 social backend.
+    for router in (
+        social_routes.router,
+        league_routes.router,
+        duel_routes.router,
+        shared_deck_routes.router,
+    ):
+        app.include_router(router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
         app.include_router(exports_routes.dev_router)

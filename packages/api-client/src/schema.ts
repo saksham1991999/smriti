@@ -616,6 +616,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/decks/{deck_id}/share": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Share a deck */
+    post: operations["share_v1_decks__deck_id__share_post"];
+    /** Stop sharing */
+    delete: operations["stop_share_v1_decks__deck_id__share_delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/dev/auth/anonymous": {
     parameters: {
       query?: never;
@@ -701,6 +719,299 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/duels": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** My recent duels */
+    get: operations["list_duels_v1_duels_get"];
+    put?: never;
+    /** Challenge a friend, or solo */
+    post: operations["create_v1_duels_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A duel, as I may see it */
+    get: operations["get_v1_duels__duel_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Accept a challenge */
+    post: operations["accept_v1_duels__duel_id__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/answers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Answer the open question (idempotent by question, and by Idempotency-Key) */
+    post: operations["answer_v1_duels__duel_id__answers_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/async": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Send it as a challenge instead */
+    post: operations["send_async_v1_duels__duel_id__async_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Decline a challenge */
+    post: operations["decline_v1_duels__duel_id__decline_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Poll the duel channel */
+    get: operations["events_v1_duels__duel_id__events_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/leave": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Leave (confirmed) */
+    post: operations["leave_v1_duels__duel_id__leave_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/rematch": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Ask for a rematch */
+    post: operations["rematch_v1_duels__duel_id__rematch_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/{duel_id}/stream": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Stream the duel channel (SSE); reconnect with ?after= */
+    get: operations["stream_v1_duels__duel_id__stream_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/code/{code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Open smriti.app/duel/{code} */
+    get: operations["by_code_v1_duels_code__code__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duels/random": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Matching status */
+    get: operations["random_state_v1_duels_random_get"];
+    put?: never;
+    /** Find a random opponent */
+    post: operations["random_v1_duels_random_post"];
+    /** Stop looking */
+    delete: operations["random_leave_v1_duels_random_delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duos": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** My Duos (SOC-11) */
+    get: operations["duos_v1_duos_get"];
+    put?: never;
+    /** Invite friends to a Duo */
+    post: operations["duo_invite_v1_duos_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duos/{duo_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** End a Duo */
+    delete: operations["duo_end_v1_duos__duo_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duos/{duo_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Accept a Duo */
+    post: operations["duo_accept_v1_duos__duo_id__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duos/{duo_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Decline a Duo */
+    post: operations["duo_decline_v1_duos__duo_id__decline_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/duos/{duo_id}/nudge": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Nudge a Duo partner */
+    post: operations["duo_nudge_v1_duos__duo_id__nudge_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/exports": {
     parameters: {
       query?: never;
@@ -752,7 +1063,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/feynman/attempts": {
+  "/v1/friends": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** My friends (SOC-04) */
+    get: operations["friends_v1_friends_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/{user_id}": {
     parameters: {
       query?: never;
       header?: never;
@@ -761,23 +1089,125 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Explain a concept back; graded against its key points (AI-10, AI-11) */
-    post: operations["feynman_attempt_v1_feynman_attempts_post"];
-    delete?: never;
+    post?: never;
+    /** Remove a friend (silent) */
+    delete: operations["remove_friend_v1_friends__user_id__delete"];
     options?: never;
     head?: never;
     patch?: never;
     trace?: never;
   };
-  "/v1/feynman/concepts/{concept_id}": {
+  "/v1/friends/invite": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** Earlier explanations of a concept, newest first */
-    get: operations["feynman_history_v1_feynman_concepts__concept_id__get"];
+    /** My invite link and QR code */
+    get: operations["invite_v1_friends_invite_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/invite/{code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Who an invite link is from */
+    get: operations["invite_preview_v1_friends_invite__code__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/invite/{code}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Add a friend from an invite link or QR code */
+    post: operations["accept_invite_v1_friends_invite__code__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Send a friend request */
+    post: operations["request_v1_friends_requests_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/requests/{user_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Accept a request */
+    post: operations["accept_request_v1_friends_requests__user_id__accept_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/requests/{user_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Decline a request */
+    post: operations["decline_request_v1_friends_requests__user_id__decline_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/friends/search": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Find an adult by exact username */
+    get: operations["search_v1_friends_search_get"];
     put?: never;
     post?: never;
     delete?: never;
@@ -922,15 +1352,15 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/insights/calibration": {
+  "/v1/leaderboards": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** Confidence against correctness, from your own answers */
-    get: operations["calibration_v1_insights_calibration_get"];
+    /** Leaderboards (SOC-10) */
+    get: operations["leaderboard_v1_leaderboards_get"];
     put?: never;
     post?: never;
     delete?: never;
@@ -939,15 +1369,15 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/insights/sleep-review": {
+  "/v1/leagues/current": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** Tonight's sleep review: when to remind and the hardest due cards (adults, Pro) */
-    get: operations["sleep_review_v1_insights_sleep_review_get"];
+    /** This week's league (SOC-08) */
+    get: operations["current_v1_leagues_current_get"];
     put?: never;
     post?: never;
     delete?: never;
@@ -956,24 +1386,7 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/insights/weak-areas": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Topics whose cards are predicted to drop below your target recall soon */
-    get: operations["weak_areas_v1_insights_weak_areas_get"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/integrity/app-attest/keys": {
+  "/v1/leagues/join": {
     parameters: {
       query?: never;
       header?: never;
@@ -982,15 +1395,15 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Register this install's App Attest key (once per key) */
-    post: operations["register_key_v1_integrity_app_attest_keys_post"];
+    /** Join leagues (teens, R30) */
+    post: operations["join_v1_leagues_join_post"];
     delete?: never;
     options?: never;
     head?: never;
     patch?: never;
     trace?: never;
   };
-  "/v1/integrity/challenge": {
+  "/v1/leagues/opt-out": {
     parameters: {
       query?: never;
       header?: never;
@@ -998,25 +1411,8 @@ export interface paths {
       cookie?: never;
     };
     get?: never;
-    put?: never;
-    /** A one-time nonce for Play Integrity or App Attest */
-    post: operations["challenge_v1_integrity_challenge_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/live/mocks/{mock_id}": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** The live mock room (MOCK-03): status, server time and your deadline if you start now */
-    get: operations["room_v1_live_mocks__mock_id__get"];
-    put?: never;
+    /** Take a break from leagues */
+    put: operations["opt_out_v1_leagues_opt_out_put"];
     post?: never;
     delete?: never;
     options?: never;
@@ -1024,53 +1420,18 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/live/mocks/{mock_id}/events": {
+  "/v1/leagues/result": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    /** Server-Sent Events for channel mock:{id} (start, clock, closed, results) */
-    get: operations["events_v1_live_mocks__mock_id__events_get"];
+    /** Last week's result (SOC-09) */
+    get: operations["result_v1_leagues_result_get"];
     put?: never;
     post?: never;
     delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/live/mocks/{mock_id}/leaderboard": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Frozen ranks after results (MOCK-24, R31) */
-    get: operations["leaderboard_v1_live_mocks__mock_id__leaderboard_get"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/live/mocks/{mock_id}/registration": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /** Register for a live mock (Pro); the reminder comes when the room opens */
-    post: operations["register_v1_live_mocks__mock_id__registration_post"];
-    /** Cancel a live mock registration and its reminder */
-    delete: operations["unregister_v1_live_mocks__mock_id__registration_delete"];
     options?: never;
     head?: never;
     patch?: never;
@@ -1333,23 +1694,6 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/practice/interleaved": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /** Start a mixed drill across chapters or subjects you have learned (practice §5.3) */
-    post: operations["interleaved_v1_practice_interleaved_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   "/v1/practice/limits": {
     parameters: {
       query?: never;
@@ -1555,6 +1899,74 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/shared-decks": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Decks to find (SOC-21) */
+    get: operations["list_shared_v1_shared_decks_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/shared-decks/{code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Preview a shared deck */
+    get: operations["preview_v1_shared_decks__code__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/shared-decks/{code}/copy": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Add a copy */
+    post: operations["copy_v1_shared_decks__code__copy_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/shared-decks/{code}/helpful": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** Found this helpful */
+    put: operations["helpful_v1_shared_decks__code__helpful_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/shop": {
     parameters: {
       query?: never;
@@ -1589,24 +2001,25 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/speech/dictation": {
+  "/v1/social/blocks": {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    get?: never;
+    /** People I blocked (SET-11) */
+    get: operations["blocks_v1_social_blocks_get"];
     put?: never;
-    /** Speech to text for voice answers and spoken explanations (audio is not stored) */
-    post: operations["dictation_v1_speech_dictation_post"];
+    /** Block someone (they aren't told) */
+    post: operations["block_v1_social_blocks_post"];
     delete?: never;
     options?: never;
     head?: never;
     patch?: never;
     trace?: never;
   };
-  "/v1/speech/read-aloud": {
+  "/v1/social/blocks/{user_id}": {
     parameters: {
       query?: never;
       header?: never;
@@ -1615,8 +2028,367 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** Read a tutor answer aloud (Deepgram TTS, cached); free within a daily cap */
-    post: operations["read_aloud_v1_speech_read_aloud_post"];
+    post?: never;
+    /** Unblock */
+    delete: operations["unblock_v1_social_blocks__user_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/feed": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Friend activity (SOC-01) */
+    get: operations["feed_v1_social_feed_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/gate": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Which SOC-02 state applies (B4) */
+    get: operations["gate_v1_social_gate_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/handles/{handle}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Is a username free */
+    get: operations["check_handle_v1_social_handles__handle__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/inbox": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Requests, invites, cheers (SOC-06) */
+    get: operations["inbox_v1_social_inbox_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/inbox/seen": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Mark the inbox read */
+    post: operations["inbox_seen_v1_social_inbox_seen_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/me": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** My social profile (SOC-03, SET-11) */
+    get: operations["me_v1_social_me_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/me/first-visit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** SOC-03 was shown */
+    post: operations["first_visit_v1_social_me_first_visit_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/me/handle": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** Pick or change the username (adults) */
+    put: operations["set_handle_v1_social_me_handle_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/me/privacy": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** Discoverable, presence, boards */
+    put: operations["set_privacy_v1_social_me_privacy_put"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/nudges": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Send a preset cheer or nudge */
+    post: operations["nudge_v1_social_nudges_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/overview": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** SOC-01 in one call */
+    get: operations["overview_v1_social_overview_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/people/{user_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Mini profile */
+    get: operations["profile_v1_social_people__user_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/reactions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** React to a friend's activity */
+    post: operations["react_v1_social_reactions_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/reactions/{item_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Take a reaction back */
+    delete: operations["unreact_v1_social_reactions__item_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/social/reports": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Report (SOC-23) */
+    post: operations["report_v1_social_reports_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/squads": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** My squads (SOC-12) */
+    get: operations["squads_v1_squads_get"];
+    put?: never;
+    /** Create a squad */
+    post: operations["squad_create_v1_squads_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/squads/{squad_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A squad (SOC-13) */
+    get: operations["squad_v1_squads__squad_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/squads/{squad_id}/cheer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Cheer the squad */
+    post: operations["squad_cheer_v1_squads__squad_id__cheer_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/squads/{squad_id}/code": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A new invite code */
+    post: operations["squad_new_code_v1_squads__squad_id__code_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/squads/{squad_id}/members/{user_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Leave, or remove a member */
+    delete: operations["squad_remove_v1_squads__squad_id__members__user_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/squads/join/{code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A squad invite */
+    get: operations["squad_preview_v1_squads_join__code__get"];
+    put?: never;
+    /** Join a squad */
+    post: operations["squad_join_v1_squads_join__code__post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1685,8 +2457,7 @@ export interface paths {
     put?: never;
     /**
      * Upload a batch of outbox events
-     * @description Idempotent by ``event_id``: a repeated event is accepted again with no effect. A batch
-     *     with XP-heavy events needs a device check when ``security.attestation_required`` is on.
+     * @description Idempotent by ``event_id``: a repeated event is accepted again with no effect.
      */
     post: operations["post_events_v1_sync_events_post"];
     delete?: never;
@@ -1836,92 +2607,6 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/v1/voice/quota": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Voice time left today (AI-13) */
-    get: operations["voice_quota_v1_voice_quota_get"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/voice/sessions": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** Voice history (AI-09) */
-    get: operations["list_voice_sessions_v1_voice_sessions_get"];
-    put?: never;
-    /** Start (or reconnect) a voice tutor session: a single-use Gemini Live token */
-    post: operations["create_voice_session_v1_voice_sessions_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/voice/sessions/{session_id}/end": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /** End the session and upload its transcript (AI-15) */
-    post: operations["end_voice_session_v1_voice_sessions__session_id__end_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/voice/sessions/{session_id}/tools": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    /** Run a tool the voice tutor called; send the result back to Gemini Live */
-    post: operations["voice_tool_v1_voice_sessions__session_id__tools_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/v1/voice/sessions/{session_id}/transcript": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    /** The stored transcript (AI-15 View transcript) */
-    get: operations["voice_transcript_v1_voice_sessions__session_id__transcript_get"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   "/v1/webhooks/razorpay": {
     parameters: {
       query?: never;
@@ -2059,28 +2744,6 @@ export interface components {
       question_id: string;
       /** Time Ms */
       time_ms: number;
-    };
-    /** AppAttestKeyIn */
-    AppAttestKeyIn: {
-      /**
-       * Attestation
-       * @description The attestation object from attestKey, base64
-       */
-      attestation: string;
-      /** Key Id */
-      key_id: string;
-      /** Nonce */
-      nonce: string;
-    };
-    /** AppAttestKeyOut */
-    AppAttestKeyOut: {
-      /**
-       * Environment
-       * @enum {string}
-       */
-      environment: "production" | "development";
-      /** Key Id */
-      key_id: string;
     };
     /** AppVersionInfo */
     AppVersionInfo: {
@@ -2359,6 +3022,13 @@ export interface components {
         [key: string]: string;
       };
     };
+    /** Avatar */
+    Avatar: {
+      /** Outfit Ids */
+      outfit_ids?: string[];
+      /** Species */
+      species?: ("cat" | "dog") | null;
+    };
     /** BadgeOut */
     BadgeOut: {
       /** Description */
@@ -2395,6 +3065,14 @@ export interface components {
        */
       kind: "blanks";
     };
+    /** BlockIn */
+    BlockIn: {
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
     /** BlueprintSource */
     BlueprintSource: {
       /** Published */
@@ -2403,6 +3081,14 @@ export interface components {
       title: string;
       /** Url */
       url: string;
+    };
+    /** BoardRow */
+    BoardRow: {
+      person: components["schemas"]["Person"];
+      /** Rank */
+      rank: number;
+      /** Xp */
+      xp: number;
     };
     /** BundleRef */
     BundleRef: {
@@ -2422,62 +3108,6 @@ export interface components {
       size_bytes: number;
       /** Url */
       url: string | null;
-    };
-    /** CalibrationLevel */
-    CalibrationLevel: {
-      /** Accuracy */
-      accuracy: number | null;
-      /** Answers */
-      answers: number;
-      /** Confidence */
-      confidence: string;
-      /** Correct */
-      correct: number;
-    };
-    /**
-     * CalibrationOut
-     * @description Confidence against correctness from real answers only (practice and mocks).
-     */
-    CalibrationOut: {
-      /** By Subject */
-      by_subject?: {
-        [key: string]: unknown;
-      }[];
-      /** Levels */
-      levels?: components["schemas"]["CalibrationLevel"][];
-      /** Needed */
-      needed: number | null;
-      /**
-       * Overconfident
-       * @description Share of 'sure' answers that were wrong
-       */
-      overconfident?: number | null;
-      /** Reason */
-      reason?: string | null;
-      /** Shown */
-      shown: boolean;
-      /** Tagged */
-      tagged: number;
-      /**
-       * Underconfident
-       * @description Share of 'guess' answers that were right
-       */
-      underconfident?: number | null;
-    };
-    /** ChallengeOut */
-    ChallengeOut: {
-      /** Expires In S */
-      expires_in_s: number;
-      /**
-       * Headers
-       * @description Headers a sensitive call carries: the token (or App Attest assertion, base64), this nonce, and on iOS the App Attest key id
-       */
-      headers: string[];
-      /**
-       * Nonce
-       * @description One-time value to bind into Play Integrity or App Attest
-       */
-      nonce: string;
     };
     /** ChapterOut */
     ChapterOut: {
@@ -2817,6 +3447,18 @@ export interface components {
       /** Topic Id */
       topic_id?: string | null;
     };
+    /** CopiedCard */
+    CopiedCard: {
+      /** Back */
+      back: string;
+      /** Front */
+      front: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+    };
     /** DailyChallenge */
     DailyChallenge: {
       /**
@@ -2932,6 +3574,45 @@ export interface components {
       rows: components["schemas"]["LeaderboardRow"][];
       you: components["schemas"]["LeaderboardRow"] | null;
     };
+    /**
+     * DeckCopy
+     * @description The copy belongs to the student (``source = 'shared_copy'``); the device stores it.
+     */
+    DeckCopy: {
+      /** Cards */
+      cards: components["schemas"]["CopiedCard"][];
+      /**
+       * Deck Id
+       * Format: uuid
+       */
+      deck_id: string;
+      /** Title */
+      title: string;
+    };
+    /** DeckShare */
+    DeckShare: {
+      /**
+       * Deck Id
+       * Format: uuid
+       */
+      deck_id: string;
+      /** Path */
+      path: string | null;
+      /** Share Code */
+      share_code: string | null;
+      /**
+       * Share Status
+       * @enum {string}
+       */
+      share_status: "checking" | "shared" | "blocked" | "stopped";
+    };
+    /** DeckShareIn */
+    DeckShareIn: {
+      /** List For Exam */
+      list_for_exam?: string | null;
+      /** Title */
+      title: string;
+    };
     /** DeletionResponse */
     DeletionResponse: {
       /** Scheduled For */
@@ -3042,20 +3723,336 @@ export interface components {
       /** Is Anonymous */
       is_anonymous: boolean;
     };
-    /** DictationOut */
-    DictationOut: {
-      /** Confidence */
-      confidence: number | null;
-      quota: components["schemas"]["QuotaOut"];
-      /** Text */
-      text: string;
-    };
     /** DrillPreview */
     DrillPreview: {
       /** Exam */
       exam: string;
       /** Question Ids */
       question_ids: string[];
+    };
+    /**
+     * DuelAnswerIn
+     * @description One answer to the open question; the server times it from the question's opening.
+     *     Re-sending the same question returns the first answer's result (idempotent by question).
+     */
+    DuelAnswerIn: {
+      /** Client Ms */
+      client_ms?: number | null;
+      /** Option Ids */
+      option_ids?: string[] | null;
+      /** Question Id */
+      question_id: string;
+    };
+    /** DuelAnswerOut */
+    DuelAnswerOut: {
+      /** Correct */
+      correct: boolean;
+      duel: components["schemas"]["DuelState"];
+      /** Index */
+      index: number;
+      /** Key */
+      key?: unknown | null;
+      /** Points */
+      points: number;
+    };
+    /**
+     * DuelCreate
+     * @description A friend duel (``opponent_id``) or a labelled solo round (``solo``), never both.
+     */
+    DuelCreate: {
+      /** Exam Profile Id */
+      exam_profile_id?: string | null;
+      /** Opponent Id */
+      opponent_id?: string | null;
+      /**
+       * Solo
+       * @default false
+       */
+      solo: boolean;
+      /** Subject Id */
+      subject_id?: string | null;
+    };
+    /** DuelEventOut */
+    DuelEventOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /** Id */
+      id: number;
+      /** Kind */
+      kind: string;
+      /** Payload */
+      payload: {
+        [key: string]: unknown;
+      };
+    };
+    /** DuelEvents */
+    DuelEvents: {
+      /** Events */
+      events: components["schemas"]["DuelEventOut"][];
+      /** Last Event Id */
+      last_event_id: number;
+    };
+    /** DuelListItem */
+    DuelListItem: {
+      /** Code */
+      code: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Mode
+       * @enum {string}
+       */
+      mode: "live" | "async" | "solo";
+      /**
+       * My Turn
+       * @default false
+       */
+      my_turn: boolean;
+      opponent: components["schemas"]["Person"] | null;
+      /**
+       * Relation
+       * @enum {string}
+       */
+      relation: "friend" | "random" | "solo";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "live" | "finished" | "expired" | "declined" | "abandoned";
+      /** Winner */
+      winner?: ("me" | "them" | "draw" | "none") | null;
+    };
+    /** DuelMyAnswer */
+    DuelMyAnswer: {
+      /** Correct */
+      correct: boolean;
+      /** Index */
+      index: number;
+      /** Key */
+      key?: unknown | null;
+      /** Points */
+      points: number;
+      /** Question Id */
+      question_id: string;
+    };
+    /** DuelPlayer */
+    DuelPlayer: {
+      /**
+       * Answered Current
+       * @default false
+       */
+      answered_current: boolean;
+      /**
+       * Away
+       * @default false
+       */
+      away: boolean;
+      /** Correct */
+      correct?: number | null;
+      /**
+       * Finished
+       * @default false
+       */
+      finished: boolean;
+      /** Is Me */
+      is_me: boolean;
+      person: components["schemas"]["Person"];
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "challenger" | "opponent";
+      /** Score */
+      score?: number | null;
+    };
+    /** DuelQuestion */
+    DuelQuestion: {
+      /**
+       * Answered
+       * @default false
+       */
+      answered: boolean;
+      /** Body */
+      body: {
+        [key: string]: unknown;
+      };
+      /**
+       * Closes At
+       * Format: date-time
+       */
+      closes_at: string;
+      /** Index */
+      index: number;
+      /**
+       * Opens At
+       * Format: date-time
+       */
+      opens_at: string;
+      /** Question Id */
+      question_id: string;
+    };
+    /** DuelRematch */
+    DuelRematch: {
+      /** Available */
+      available: boolean;
+      /** Duel Id */
+      duel_id?: string | null;
+      /** Open Until */
+      open_until?: string | null;
+      /**
+       * Requested By Me
+       * @default false
+       */
+      requested_by_me: boolean;
+      /**
+       * Requested By Them
+       * @default false
+       */
+      requested_by_them: boolean;
+    };
+    /** DuelResult */
+    DuelResult: {
+      /**
+       * Abandoned By Me
+       * @default false
+       */
+      abandoned_by_me: boolean;
+      /**
+       * Abandoned By Them
+       * @default false
+       */
+      abandoned_by_them: boolean;
+      /**
+       * Not Counted
+       * @default false
+       */
+      not_counted: boolean;
+      /**
+       * Winner
+       * @enum {string}
+       */
+      winner: "me" | "them" | "draw" | "none";
+      /** Xp Earned */
+      xp_earned: number;
+    };
+    /** DuelState */
+    DuelState: {
+      /** Code */
+      code: string | null;
+      current?: components["schemas"]["DuelQuestion"] | null;
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      /** Expires At */
+      expires_at: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Invite Timed Out
+       * @default false
+       */
+      invite_timed_out: boolean;
+      /**
+       * Last Event Id
+       * @default 0
+       */
+      last_event_id: number;
+      /**
+       * Mode
+       * @enum {string}
+       */
+      mode: "live" | "async" | "solo";
+      /** My Answers */
+      my_answers?: components["schemas"]["DuelMyAnswer"][];
+      /** Players */
+      players: components["schemas"]["DuelPlayer"][];
+      /** Question Count */
+      question_count: number;
+      /** Question Seconds */
+      question_seconds: number;
+      /**
+       * Relation
+       * @enum {string}
+       */
+      relation: "friend" | "random" | "solo";
+      rematch?: components["schemas"]["DuelRematch"] | null;
+      result?: components["schemas"]["DuelResult"] | null;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /** Start At */
+      start_at: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "live" | "finished" | "expired" | "declined" | "abandoned";
+      /** Subject Id */
+      subject_id: string | null;
+    };
+    /** DuoInvite */
+    DuoInvite: {
+      /** Friend Ids */
+      friend_ids: string[];
+    };
+    /** DuoInviteResult */
+    DuoInviteResult: {
+      /** Failed */
+      failed: {
+        [key: string]: string;
+      }[];
+      /** Invited */
+      invited: components["schemas"]["DuoOut"][];
+      /** Max */
+      max: number;
+      /** Used */
+      used: number;
+    };
+    /** DuoNudgeIn */
+    DuoNudgeIn: {
+      /** Preset Id */
+      preset_id: string;
+    };
+    /** DuoOut */
+    DuoOut: {
+      /** Best Streak */
+      best_streak: number;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Invited By Me */
+      invited_by_me: boolean;
+      /** Me Today */
+      me_today: boolean;
+      partner: components["schemas"]["Person"];
+      /** Partner Today */
+      partner_today: boolean;
+      /** Shared Streak */
+      shared_streak: number;
+      /** Started At */
+      started_at: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "invited" | "active" | "ended";
     };
     /** EntitlementOut */
     EntitlementOut: {
@@ -3226,76 +4223,32 @@ export interface components {
       /** Reasons */
       reasons: string[];
     };
-    /** FeynmanIn */
-    FeynmanIn: {
+    /** FeedItem */
+    FeedItem: {
       /**
-       * Client Attempt Id
-       * Format: uuid
+       * Created At
+       * Format: date-time
        */
-      client_attempt_id: string;
-      /** Concept Id */
-      concept_id: string;
-      /** Explanation */
-      explanation: string;
-      /**
-       * Follow Up Of
-       * @description The score this answers a follow-up question of
-       */
-      follow_up_of?: string | null;
-      /**
-       * Input Mode
-       * @default text
-       * @enum {string}
-       */
-      input_mode: "text" | "voice";
-    };
-    /**
-     * FeynmanOut
-     * @description AI-11: three meters (0-100), the key points with their status, follow-ups, and the last
-     *     score for this concept when one exists (never a made-up comparison).
-     */
-    FeynmanOut: {
-      /** Accuracy */
-      accuracy: number;
-      /** Attempt No */
-      attempt_no: number;
-      /** Clarity */
-      clarity: number;
-      /** Completeness */
-      completeness: number;
-      /** Concept Id */
-      concept_id: string;
-      /** Follow Ups */
-      follow_ups: string[];
+      created_at: string;
       /**
        * Id
        * Format: uuid
        */
       id: string;
-      /** Key Points */
-      key_points: components["schemas"]["KeyPointOut"][];
-      /** Mastery Delta */
-      mastery_delta: number;
-      /** Previous */
-      previous: {
-        [key: string]: number;
-      } | null;
-      quota: components["schemas"]["QuotaOut"];
-      /** Safety */
-      safety?: {
-        [key: string]: unknown;
-      } | null;
       /**
-       * Session Id
-       * Format: uuid
-       */
-      session_id: string;
-      /**
-       * Status
-       * @default graded
+       * Kind
        * @enum {string}
        */
-      status: "graded" | "crisis" | "refused";
+      kind: "streak_milestone" | "league_promoted" | "badge_earned" | "duo_milestone";
+      /** Mine */
+      mine?: ("clap" | "star" | "strong" | "smile") | null;
+      person: components["schemas"]["Person"];
+      /** Reactions */
+      reactions: {
+        [key: string]: number;
+      };
+      /** Ref */
+      ref: string | null;
     };
     /** FixNext */
     FixNext: {
@@ -3309,6 +4262,68 @@ export interface components {
       marks_lost: number;
       /** Weightage */
       weightage: number | null;
+    };
+    /** FriendRequestIn */
+    FriendRequestIn: {
+      /**
+       * Source
+       * @default search
+       * @enum {string}
+       */
+      source: "search" | "league_row" | "duel" | "squad";
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
+    /** FriendRow */
+    FriendRow: {
+      /** Duo Id */
+      duo_id?: string | null;
+      person: components["schemas"]["Person"];
+      /** Since */
+      since: string | null;
+      /** Streak */
+      streak: number;
+      /** Studied Today */
+      studied_today: boolean;
+    };
+    /**
+     * Gate
+     * @description SOC-02 decides what to show from ``state``; ``features`` lists what this student may use.
+     */
+    Gate: {
+      /** Features */
+      features?: (
+        | "friends"
+        | "search"
+        | "league"
+        | "squad"
+        | "duo"
+        | "random_duel"
+        | "friend_duel"
+        | "cheer"
+        | "share_deck"
+      )[];
+      /**
+       * First Visit
+       * @default false
+       */
+      first_visit: boolean;
+      /**
+       * State
+       * @enum {string}
+       */
+      state:
+        | "ok"
+        | "guest"
+        | "age_unknown"
+        | "little_learner"
+        | "u13_no_scope"
+        | "minor_no_consent"
+        | "consent_pending"
+        | "consent_revoked";
     };
     /** GemLedgerEntry */
     GemLedgerEntry: {
@@ -3367,27 +4382,60 @@ export interface components {
        */
       time_policy: "practice" | "strict";
     };
+    /** HandleCheck */
+    HandleCheck: {
+      /** Available */
+      available: boolean;
+      /** Handle */
+      handle: string;
+      /**
+       * Reason
+       * @default ok
+       * @enum {string}
+       */
+      reason: "ok" | "taken" | "reserved" | "invalid" | "blocked";
+    };
+    /** HandleIn */
+    HandleIn: {
+      /** Handle */
+      handle: string;
+    };
+    /** HelpfulIn */
+    HelpfulIn: {
+      /** On */
+      on: boolean;
+    };
     /** HTTPValidationError */
     HTTPValidationError: {
       /** Detail */
       detail?: components["schemas"]["ValidationError"][];
     };
-    /** InterleavedIn */
-    InterleavedIn: {
+    /** Inbox */
+    Inbox: {
+      /** Items */
+      items: components["schemas"]["InboxItem"][];
+      /** Unread */
+      unread: number;
+    };
+    /** InboxItem */
+    InboxItem: {
       /**
-       * Count
-       * @default 10
+       * Created At
+       * Format: date-time
        */
-      count: number;
-      /** Exam */
-      exam?: string | null;
+      created_at: string;
+      /** Id */
+      id: string;
       /**
-       * Group By
-       * @default chapter
+       * Kind
+       * @enum {string}
        */
-      group_by: string;
-      /** Session Id */
-      session_id?: string | null;
+      kind: "friend_request" | "duo_invite" | "duel_challenge" | "cheer" | "nudge";
+      /** Preset Id */
+      preset_id?: string | null;
+      sender: components["schemas"]["Person"];
+      /** Unread */
+      unread: boolean;
     };
     /** IntroEligibilityOut */
     IntroEligibilityOut: {
@@ -3405,21 +4453,53 @@ export interface components {
       /** Reason */
       reason: ("guest" | "had_subscription" | "intro_already_claimed") | null;
     };
-    /** KeyPointOut */
-    KeyPointOut: {
-      /** Index */
-      index: number;
-      /** Note */
-      note?: string | null;
+    /** Invite */
+    Invite: {
+      /** Code */
+      code: string;
+      /** Path */
+      path: string;
+    };
+    /** InviteAccept */
+    InviteAccept: {
       /**
-       * Status
+       * Via
+       * @default link
        * @enum {string}
        */
-      status: "covered" | "missing" | "misconception";
-      /** Text */
-      text: {
-        [key: string]: string;
-      };
+      via: "link" | "qr";
+    };
+    /** InvitePreview */
+    InvitePreview: {
+      inviter?: components["schemas"]["Person"] | null;
+      /**
+       * State
+       * @enum {string}
+       */
+      state: "ok" | "self" | "already_friends" | "invalid";
+    };
+    /** Leaderboard */
+    Leaderboard: {
+      /**
+       * Available
+       * @default true
+       */
+      available: boolean;
+      me?: components["schemas"]["BoardRow"] | null;
+      /**
+       * Period
+       * @enum {string}
+       */
+      period: "week" | "all_time";
+      /** Reason */
+      reason?: string | null;
+      /** Rows */
+      rows: components["schemas"]["BoardRow"][];
+      /**
+       * Scope
+       * @enum {string}
+       */
+      scope: "friends" | "squad" | "school" | "city" | "all_india";
     };
     /** LeaderboardRow */
     LeaderboardRow: {
@@ -3438,6 +4518,88 @@ export interface components {
       rank: number;
       /** Time Ms */
       time_ms: number;
+    };
+    /** League */
+    League: {
+      /** Best Week */
+      best_week?: {
+        [key: string]: number | string;
+      } | null;
+      /**
+       * Closes At
+       * Format: date-time
+       */
+      closes_at: string;
+      /** Demote Count */
+      demote_count: number;
+      /** Exam Group */
+      exam_group?: string | null;
+      /** My Rank */
+      my_rank?: number | null;
+      /**
+       * My Xp
+       * @default 0
+       */
+      my_xp: number;
+      /** Promote Count */
+      promote_count: number;
+      /** Rows */
+      rows?: components["schemas"]["LeagueRow"][];
+      /**
+       * State
+       * @enum {string}
+       */
+      state: "in_cohort" | "not_joined" | "opted_out" | "join_available" | "not_available";
+      /** Tier */
+      tier: number;
+      tier_name: components["schemas"]["TierName"];
+      /**
+       * Updated At
+       * Format: date-time
+       */
+      updated_at: string;
+      /**
+       * Week Start
+       * Format: date
+       */
+      week_start: string;
+    };
+    /** LeagueResult */
+    LeagueResult: {
+      /** First View */
+      first_view: boolean;
+      /** Rank */
+      rank: number | null;
+      /**
+       * Result
+       * @enum {string}
+       */
+      result: "promoted" | "stayed" | "demoted";
+      /** Tier Before */
+      tier_before: number;
+      tier_name: components["schemas"]["TierName"];
+      /** Tier Now */
+      tier_now: number;
+      /**
+       * Week Start
+       * Format: date
+       */
+      week_start: string;
+      /** Xp */
+      xp: number;
+    };
+    /** LeagueRow */
+    LeagueRow: {
+      person: components["schemas"]["Person"];
+      /** Rank */
+      rank: number;
+      /** Xp */
+      xp: number;
+      /**
+       * Zone
+       * @enum {string}
+       */
+      zone: "promote" | "safe" | "demote";
     };
     /** LearnerOut */
     LearnerOut: {
@@ -3492,109 +4654,6 @@ export interface components {
       profile: components["schemas"]["ProfileState"];
       /** Show Shared Phone Check */
       show_shared_phone_check: boolean;
-    };
-    /** LiveLeaderboard */
-    LiveLeaderboard: {
-      /** Mock Id */
-      mock_id: string;
-      /** Published */
-      published: boolean;
-      /** Ranked */
-      ranked: number;
-      /** Reason */
-      reason?: ("results_pending" | "threshold_unset" | "below_threshold") | null;
-      /** Rows */
-      rows: components["schemas"]["LiveLeaderboardRow"][];
-      you: components["schemas"]["LiveLeaderboardRow"] | null;
-    };
-    /** LiveLeaderboardRow */
-    LiveLeaderboardRow: {
-      /** Avatar */
-      avatar: string | null;
-      /** Is You */
-      is_you: boolean;
-      /**
-       * Name
-       * @description Adults: display name. Minors: auto nickname (R31)
-       */
-      name: string | null;
-      /** Percentile */
-      percentile: number | null;
-      /** Rank */
-      rank: number;
-      /** Score */
-      score: number;
-    };
-    /**
-     * LiveRoom
-     * @description MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset.
-     */
-    LiveRoom: {
-      /** Attempt Id */
-      attempt_id: string | null;
-      /** Attempt Status */
-      attempt_status: string | null;
-      /** Can Start */
-      can_start: boolean;
-      /**
-       * Channel
-       * @description Supabase Realtime channel (start, clock, results)
-       */
-      channel: string;
-      /** Deadline If Started Now */
-      deadline_if_started_now: string | null;
-      /** Duration S */
-      duration_s: number | null;
-      /**
-       * Events Url
-       * @description Server-Sent Events fallback for the same events
-       */
-      events_url: string;
-      /**
-       * Full Duration Until
-       * @description Start by this time for the full duration; later starts end at window_end
-       */
-      full_duration_until: string | null;
-      /** Mock Id */
-      mock_id: string;
-      /** Ranks Published */
-      ranks_published: boolean;
-      /** Registered */
-      registered: boolean;
-      /** Registrations */
-      registrations: number;
-      /** Results At */
-      results_at: string | null;
-      /**
-       * Room Opens At
-       * Format: date-time
-       * @description window_start minus live.room_lead_min
-       */
-      room_opens_at: string;
-      /**
-       * Server Time
-       * Format: date-time
-       */
-      server_time: string;
-      /**
-       * Status
-       * @enum {string}
-       */
-      status: "scheduled" | "room_open" | "live" | "closed" | "results";
-      /** Title */
-      title: {
-        [key: string]: string;
-      };
-      /**
-       * Window End
-       * Format: date-time
-       */
-      window_end: string;
-      /**
-       * Window Start
-       * Format: date-time
-       */
-      window_start: string;
     };
     /** ManifestResponse */
     ManifestResponse: {
@@ -3661,6 +4720,27 @@ export interface components {
       columns: string[];
       /** Row */
       row: string;
+    };
+    /**
+     * Me
+     * @description SOC-03: the student's own handle, nickname and privacy.
+     */
+    Me: {
+      /** Board City */
+      board_city: boolean;
+      /** Board School */
+      board_school: boolean;
+      /** Discoverable */
+      discoverable: boolean;
+      /** Handle */
+      handle: string | null;
+      /** Handle Change After */
+      handle_change_after?: string | null;
+      /** League Opt Out */
+      league_opt_out: boolean;
+      /** Presence Visible */
+      presence_visible: boolean;
+      public_name: components["schemas"]["Name"];
     };
     /** MePatch */
     MePatch: {
@@ -3820,6 +4900,18 @@ export interface components {
        * @enum {string}
        */
       status: "ok" | "stopped" | "refused" | "crisis" | "error";
+    };
+    /** MiniProfile */
+    MiniProfile: {
+      /** Is Friend */
+      is_friend: boolean;
+      person: components["schemas"]["Person"];
+      /** Request Pending */
+      request_pending: boolean;
+      /** Streak */
+      streak: number | null;
+      /** Tier */
+      tier: number | null;
     };
     /**
      * MockAccess
@@ -4054,6 +5146,20 @@ export interface components {
        */
       state: "not_required" | "required" | "pending" | "granted" | "declined" | "revoked";
     };
+    /**
+     * Name
+     * @description How a person is shown to the viewer (R31 amended): adults by display name; minors by the
+     *     auto nickname, or by the pet name to friends added by invite link or QR.
+     */
+    Name: {
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "display_name" | "pet_name" | "nickname" | "hidden" | "deleted";
+      /** Text */
+      text?: string | null;
+    };
     /** NotificationOpened */
     NotificationOpened: {
       /** Id */
@@ -4153,6 +5259,21 @@ export interface components {
       /** Weak Area Alerts */
       weak_area_alerts?: boolean | null;
     };
+    /** NudgeIn */
+    NudgeIn: {
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "cheer" | "nudge";
+      /** Preset Id */
+      preset_id: string;
+      /**
+       * To User Id
+       * Format: uuid
+       */
+      to_user_id: string;
+    };
     /** NumberAnswerIn */
     NumberAnswerIn: {
       /**
@@ -4175,6 +5296,11 @@ export interface components {
       /** Option Ids */
       option_ids: string[];
     };
+    /** OptOutIn */
+    OptOutIn: {
+      /** On */
+      on: boolean;
+    };
     /** OrderAnswerIn */
     OrderAnswerIn: {
       /**
@@ -4184,6 +5310,29 @@ export interface components {
       kind: "order";
       /** Order */
       order: string[];
+    };
+    /**
+     * Overview
+     * @description SOC-01 in one call; when locked, SOC-02 still shows the student's own numbers.
+     */
+    Overview: {
+      /** Duos */
+      duos?: components["schemas"]["DuoOut"][];
+      /** Friends Today */
+      friends_today?: components["schemas"]["FriendRow"][];
+      gate: components["schemas"]["Gate"];
+      /**
+       * Inbox Unread
+       * @default 0
+       */
+      inbox_unread: number;
+      league?: components["schemas"]["League"] | null;
+      /** Me */
+      me: {
+        [key: string]: number;
+      };
+      /** Squads */
+      squads?: components["schemas"]["SquadOut"][];
     };
     /** Page[GemLedgerEntry] */
     Page_GemLedgerEntry_: {
@@ -4232,6 +5381,23 @@ export interface components {
        * @default []
        */
       topic_ids: string[];
+    };
+    /** Person */
+    Person: {
+      avatar?: components["schemas"]["Avatar"] | null;
+      /**
+       * Can Add Friend
+       * @default false
+       */
+      can_add_friend: boolean;
+      /**
+       * Is Self
+       * @default false
+       */
+      is_self: boolean;
+      name: components["schemas"]["Name"];
+      /** User Id */
+      user_id: string | null;
     };
     /** PetCareRequest */
     PetCareRequest: {
@@ -4377,6 +5543,17 @@ export interface components {
       store_product_id: string;
       /** Variant Id */
       variant_id: string | null;
+    };
+    /** PrivacyIn */
+    PrivacyIn: {
+      /** Board City */
+      board_city?: boolean | null;
+      /** Board School */
+      board_school?: boolean | null;
+      /** Discoverable */
+      discoverable?: boolean | null;
+      /** Presence Visible */
+      presence_visible?: boolean | null;
     };
     /** ProfileState */
     ProfileState: {
@@ -4593,6 +5770,24 @@ export interface components {
       /** Target */
       target: number;
     };
+    /** QueueState */
+    QueueState: {
+      duel?: components["schemas"]["DuelState"] | null;
+      /** Enqueued At */
+      enqueued_at?: string | null;
+      /** Paused Until */
+      paused_until?: string | null;
+      /**
+       * State
+       * @enum {string}
+       */
+      state: "waiting" | "matched" | "idle";
+      /**
+       * Timed Out
+       * @default false
+       */
+      timed_out: boolean;
+    };
     /**
      * QuotaOut
      * @description A free-tier counter (app-core ``Quota``). ``remaining`` is null when unlimited.
@@ -4608,6 +5803,13 @@ export interface components {
       unlimited: boolean;
       /** Used */
       used: number;
+    };
+    /** RandomIn */
+    RandomIn: {
+      /** Exam Profile Id */
+      exam_profile_id?: string | null;
+      /** Subject Id */
+      subject_id?: string | null;
     };
     /** RazorpayCancelRequest */
     RazorpayCancelRequest: {
@@ -4649,40 +5851,18 @@ export interface components {
       /** Razorpay Subscription Id */
       razorpay_subscription_id: string;
     };
-    /** ReadAloudIn */
-    ReadAloudIn: {
+    /** ReactionIn */
+    ReactionIn: {
       /**
-       * Locale
+       * Item Id
+       * Format: uuid
+       */
+      item_id: string;
+      /**
+       * Reaction
        * @enum {string}
        */
-      locale: "en" | "hi";
-      /** Text */
-      text: string;
-    };
-    /** ReadAloudOut */
-    ReadAloudOut: {
-      /** Cached */
-      cached: boolean;
-      /** Mime */
-      mime: string;
-      quota: components["schemas"]["QuotaOut"];
-      /**
-       * Url
-       * @description Signed, short-lived link to the audio
-       */
-      url: string;
-    };
-    /** Registration */
-    Registration: {
-      /** Mock Id */
-      mock_id: string;
-      /** Registered */
-      registered: boolean;
-      /**
-       * Reminder At
-       * @description When the mock_reminder push is due (the room opening)
-       */
-      reminder_at: string | null;
+      reaction: "clap" | "star" | "strong" | "smile";
     };
     /** RejectedEvent */
     RejectedEvent: {
@@ -4785,6 +5965,69 @@ export interface components {
       /** Topics */
       topics?: components["schemas"]["TopicRow"][] | null;
     };
+    /**
+     * ReportIn
+     * @description SOC-23. The note goes to the moderation team only, and only from adults (B11).
+     */
+    ReportIn: {
+      /**
+       * Context
+       * @default profile
+       * @enum {string}
+       */
+      context: "profile" | "league_row" | "duel" | "squad_member" | "duo" | "deck";
+      /** Deck Code */
+      deck_code?: string | null;
+      /** Note */
+      note?: string | null;
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason:
+        | "inappropriate_username"
+        | "cheating"
+        | "bullying"
+        | "impersonation"
+        | "wrong_facts"
+        | "copied"
+        | "inappropriate_words"
+        | "spam"
+        | "other";
+      /**
+       * Target Kind
+       * @enum {string}
+       */
+      target_kind: "person" | "deck";
+      /** User Id */
+      user_id?: string | null;
+    };
+    /** ReportOut */
+    ReportOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "actioned" | "dismissed";
+    };
+    /** RequestOut */
+    RequestOut: {
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "pending" | "accepted";
+      /**
+       * User Id
+       * Format: uuid
+       */
+      user_id: string;
+    };
     /** RestDayRequest */
     RestDayRequest: {
       /**
@@ -4822,6 +6065,13 @@ export interface components {
       queued: number;
       /** State Version */
       state_version: number;
+    };
+    /** SampleCard */
+    SampleCard: {
+      /** Back */
+      back: string;
+      /** Front */
+      front: string;
     };
     /** SavedAnswer */
     SavedAnswer: {
@@ -4903,6 +6153,13 @@ export interface components {
       /** Wrong */
       wrong: number;
     };
+    /** Sent */
+    Sent: {
+      /** Queued Push */
+      queued_push: boolean;
+      /** Sent */
+      sent: boolean;
+    };
     /** SessionComplete */
     SessionComplete: {
       /**
@@ -4934,6 +6191,58 @@ export interface components {
       /** Type */
       type: string;
     };
+    /** SharedDeckPreview */
+    SharedDeckPreview: {
+      /** Can Copy */
+      can_copy: boolean;
+      /** Card Count */
+      card_count: number;
+      /** Code */
+      code: string;
+      /** Helpful */
+      helpful: number;
+      /**
+       * I Found Helpful
+       * @default false
+       */
+      i_found_helpful: boolean;
+      /** Is Mine */
+      is_mine: boolean;
+      /** Sample Cards */
+      sample_cards: components["schemas"]["SampleCard"][];
+      /**
+       * Shared By
+       * @enum {string}
+       */
+      shared_by: "friend" | "student";
+      /** Title */
+      title: string;
+      /** Topic Id */
+      topic_id?: string | null;
+    };
+    /** SharedDeckRow */
+    SharedDeckRow: {
+      /** Card Count */
+      card_count: number;
+      /** Code */
+      code: string;
+      /** Helpful */
+      helpful: number;
+      /**
+       * I Found Helpful
+       * @default false
+       */
+      i_found_helpful: boolean;
+      /**
+       * Shared By
+       * @enum {string}
+       */
+      shared_by: "friend" | "student";
+      /** Title */
+      title: string;
+      /** Topic Id */
+      topic_id?: string | null;
+    };
     /** ShopItemOut */
     ShopItemOut: {
       /** Id */
@@ -4953,41 +6262,6 @@ export interface components {
       gems: number;
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
-    };
-    /** SleepCard */
-    SleepCard: {
-      /** Card Ref */
-      card_ref: string;
-      /** Difficulty */
-      difficulty: number;
-      /**
-       * Due At
-       * Format: date-time
-       */
-      due_at: string;
-    };
-    /**
-     * SleepReviewOut
-     * @description Tonight's sleep review for the app to schedule as a local notification.
-     */
-    SleepReviewOut: {
-      /** Bedtime */
-      bedtime?: string | null;
-      /** Cards */
-      cards?: components["schemas"]["SleepCard"][];
-      /** Confidence */
-      confidence?: number | null;
-      /** Eligible */
-      eligible: boolean;
-      /** Notify At */
-      notify_at?: string | null;
-      /** Reason */
-      reason?: string | null;
-      /**
-       * Source
-       * @description estimate or fixed (a teen's own time)
-       */
-      source?: string | null;
     };
     /**
      * SessionCreate
@@ -5129,6 +6403,101 @@ export interface components {
       /** Items */
       items: components["schemas"]["SolutionItem"][];
     };
+    /** SquadCheerIn */
+    SquadCheerIn: {
+      /** Preset Id */
+      preset_id: string;
+    };
+    /** SquadCreate */
+    SquadCreate: {
+      /** Crest Id */
+      crest_id?: string | null;
+      /** Exam */
+      exam?: string | null;
+      /** Name Word Ids */
+      name_word_ids?: string[];
+      /**
+       * Squad Id
+       * Format: uuid
+       */
+      squad_id: string;
+    };
+    /** SquadJoin */
+    SquadJoin: {
+      /**
+       * Via
+       * @default link
+       * @enum {string}
+       */
+      via: "link" | "qr" | "code";
+    };
+    /** SquadMember */
+    SquadMember: {
+      person: components["schemas"]["Person"];
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "owner" | "admin" | "member";
+      /** Studied Today */
+      studied_today: boolean;
+      /** Week Xp */
+      week_xp: number;
+    };
+    /** SquadOut */
+    SquadOut: {
+      /** Crest Id */
+      crest_id: string | null;
+      /** Exam Profile Id */
+      exam_profile_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Invite Code */
+      invite_code: string | null;
+      /** Max Members */
+      max_members: number;
+      /** Member Count */
+      member_count: number;
+      /** Members */
+      members?: components["schemas"]["SquadMember"][];
+      /** My Role */
+      my_role: ("owner" | "admin" | "member") | null;
+      /** Name */
+      name: string;
+      quest?: components["schemas"]["SquadQuest"] | null;
+    };
+    /** SquadPreview */
+    SquadPreview: {
+      /** Already Member */
+      already_member: boolean;
+      /** Crest Id */
+      crest_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Max Members */
+      max_members: number;
+      /** Member Count */
+      member_count: number;
+      /** Name */
+      name: string;
+    };
+    /** SquadQuest */
+    SquadQuest: {
+      /** Completed */
+      completed: boolean;
+      /** Progress */
+      progress: number;
+      /** Quest Id */
+      quest_id: string;
+      /** Target */
+      target: number;
+    };
     /** SrsCardState */
     SrsCardState: {
       /** Card Ref */
@@ -5181,7 +6550,6 @@ export interface components {
             | "threshold_unset"
             | "below_threshold"
             | "results_pending"
-            | "outside_window"
           )
         | null;
       /** Shown */
@@ -5386,6 +6754,13 @@ export interface components {
       topic_progress?: components["schemas"]["TopicProgressState"][] | null;
       wallet?: components["schemas"]["WalletState"] | null;
     };
+    /** TierName */
+    TierName: {
+      /** En */
+      en: string;
+      /** Hi */
+      hi: string;
+    };
     /** TimeBuckets */
     TimeBuckets: {
       /** Fast And Wrong */
@@ -5431,48 +6806,6 @@ export interface components {
       qualified: boolean;
       /** Reviews To Qualify */
       reviews_to_qualify: number;
-    };
-    /** ToolCallIn */
-    ToolCallIn: {
-      /** Args */
-      args?: {
-        [key: string]: unknown;
-      };
-      /** Call Id */
-      call_id: string;
-      /**
-       * Name
-       * @enum {string}
-       */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
-    };
-    /** ToolCallOut */
-    ToolCallOut: {
-      /** Call Id */
-      call_id: string;
-      /**
-       * Name
-       * @enum {string}
-       */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
-      /**
-       * Result
-       * @description Send back to Gemini Live as the function response
-       */
-      result: {
-        [key: string]: unknown;
-      };
-    };
-    /** ToolDeclaration */
-    ToolDeclaration: {
-      /** Description */
-      description: string;
-      /** Name */
-      name: string;
-      /** Parameters */
-      parameters: {
-        [key: string]: unknown;
-      };
     };
     /** TopicBrief */
     TopicBrief: {
@@ -5544,21 +6877,6 @@ export interface components {
       topic_id: string;
       /** Wrong */
       wrong: number;
-    };
-    /** TranscriptTurn */
-    TranscriptTurn: {
-      /**
-       * At Ms
-       * @default 0
-       */
-      at_ms: number;
-      /**
-       * Role
-       * @enum {string}
-       */
-      role: "student" | "tutor";
-      /** Text */
-      text: string;
     };
     /** TutorSession */
     TutorSession: {
@@ -5637,164 +6955,6 @@ export interface components {
     } & {
       [key: string]: unknown;
     };
-    /**
-     * VoiceQuota
-     * @description AI-13 shows the remaining daily time. ``available`` is false with a ``reason`` when voice
-     *     can't start for this student right now.
-     */
-    VoiceQuota: {
-      /** Available */
-      available: boolean;
-      /** Background Grace Seconds */
-      background_grace_seconds: number | null;
-      /** Daily Seconds */
-      daily_seconds: number | null;
-      /** Reason */
-      reason?: string | null;
-      /** Reconnect Seconds */
-      reconnect_seconds: number | null;
-      /** Remaining Seconds */
-      remaining_seconds: number | null;
-      /**
-       * Resets At
-       * Format: date-time
-       */
-      resets_at: string;
-      /** Session Max Seconds */
-      session_max_seconds: number | null;
-      /** Used Seconds */
-      used_seconds: number;
-    };
-    /** VoiceSessionCreate */
-    VoiceSessionCreate: {
-      /**
-       * Client Session Id
-       * Format: uuid
-       * @description Client UUID; asking again with the same id mints a fresh token (reconnect)
-       */
-      client_session_id: string;
-      /** Context Ref */
-      context_ref?: string | null;
-      /** Exam */
-      exam?: string | null;
-    };
-    /** VoiceSessionEnd */
-    VoiceSessionEnd: {
-      /**
-       * End Reason
-       * @default user
-       * @enum {string}
-       */
-      end_reason: "user" | "session_cap" | "daily_cap" | "network" | "background" | "phone_call";
-      /**
-       * Flashcards Made
-       * @default 0
-       */
-      flashcards_made: number;
-      /** Seconds */
-      seconds: number;
-      /** Turns */
-      turns?: components["schemas"]["TranscriptTurn"][];
-    };
-    /** VoiceSessionOut */
-    VoiceSessionOut: {
-      /**
-       * Id
-       * Format: uuid
-       */
-      id: string;
-      /** Locale */
-      locale: string;
-      /**
-       * Max Seconds
-       * @description This session ends at this many seconds of talk
-       */
-      max_seconds: number;
-      /**
-       * Model
-       * @description From GEMINI_LIVE_MODEL (config), for the client's connect call
-       */
-      model: string;
-      /** Provider */
-      provider: string;
-      quota: components["schemas"]["VoiceQuota"];
-      /**
-       * Resumed
-       * @default false
-       */
-      resumed: boolean;
-      /**
-       * Token
-       * @description Single-use Gemini Live token; never stored by the server
-       */
-      token: string;
-      /**
-       * Token Expires At
-       * Format: date-time
-       */
-      token_expires_at: string;
-      /** Tools */
-      tools: components["schemas"]["ToolDeclaration"][];
-      /**
-       * Tutor Session Id
-       * Format: uuid
-       */
-      tutor_session_id: string;
-      /**
-       * Warn At Seconds
-       * @description Show the 'about 2 minutes left' banner here
-       */
-      warn_at_seconds: number;
-    };
-    /**
-     * VoiceSummary
-     * @description AI-15.
-     */
-    VoiceSummary: {
-      /** Context Ref */
-      context_ref: string | null;
-      /** Ended At */
-      ended_at: string | null;
-      /** Flashcards Made */
-      flashcards_made: number;
-      /** Has Transcript */
-      has_transcript: boolean;
-      /**
-       * Id
-       * Format: uuid
-       */
-      id: string;
-      /**
-       * Safety
-       * @description Present when the transcript showed a crisis signal
-       */
-      safety?: {
-        [key: string]: unknown;
-      } | null;
-      /** Seconds */
-      seconds: number | null;
-      /**
-       * Started At
-       * Format: date-time
-       */
-      started_at: string;
-      /** Status */
-      status: string;
-      /** Tutor Session Id */
-      tutor_session_id: string | null;
-    };
-    /** VoiceTranscript */
-    VoiceTranscript: {
-      /** Locale */
-      locale: string | null;
-      /**
-       * Session Id
-       * Format: uuid
-       */
-      session_id: string;
-      /** Turns */
-      turns: components["schemas"]["TranscriptTurn"][];
-    };
     /** WalletState */
     WalletState: {
       /** Gems */
@@ -5803,24 +6963,6 @@ export interface components {
       xp_today: number;
       /** Xp Total */
       xp_total: number;
-    };
-    /** WeakAreaOut */
-    WeakAreaOut: {
-      /** Cards */
-      cards: number;
-      /** Min Retrievability */
-      min_retrievability: number;
-      /** Topic Id */
-      topic_id: string;
-    };
-    /** WeakAreasOut */
-    WeakAreasOut: {
-      /** Horizon Days */
-      horizon_days: number;
-      /** Target Retention */
-      target_retention: number;
-      /** Topics */
-      topics: components["schemas"]["WeakAreaOut"][];
     };
     /** WeakSpot */
     WeakSpot: {
@@ -6645,13 +7787,6 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
-        "x-app-variant"?: string | null;
-        "x-app-version"?: string | null;
-        "x-device-id"?: string | null;
-        "x-integrity-key-id"?: string | null;
-        "x-integrity-nonce"?: string | null;
-        "x-integrity-token"?: string | null;
-        "x-platform"?: string | null;
       };
       path?: never;
       cookie?: never;
@@ -6687,13 +7822,6 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
-        "x-app-variant"?: string | null;
-        "x-app-version"?: string | null;
-        "x-device-id"?: string | null;
-        "x-integrity-key-id"?: string | null;
-        "x-integrity-nonce"?: string | null;
-        "x-integrity-token"?: string | null;
-        "x-platform"?: string | null;
       };
       path?: never;
       cookie?: never;
@@ -7125,6 +8253,72 @@ export interface operations {
       };
     };
   };
+  share_v1_decks__deck_id__share_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        deck_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DeckShareIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DeckShare"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  stop_share_v1_decks__deck_id__share_delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        deck_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DeckShare"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   anonymous_v1_dev_auth_anonymous_post: {
     parameters: {
       query?: never;
@@ -7292,6 +8486,626 @@ export interface operations {
       };
     };
   };
+  list_duels_v1_duels_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelListItem"][];
+        };
+      };
+    };
+  };
+  create_v1_duels_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DuelCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_v1_duels__duel_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  accept_v1_duels__duel_id__accept_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  answer_v1_duels__duel_id__answers_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DuelAnswerIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelAnswerOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  send_async_v1_duels__duel_id__async_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decline_v1_duels__duel_id__decline_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  events_v1_duels__duel_id__events_get: {
+    parameters: {
+      query?: {
+        after?: number;
+      };
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelEvents"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  leave_v1_duels__duel_id__leave_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  rematch_v1_duels__duel_id__rematch_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  stream_v1_duels__duel_id__stream_get: {
+    parameters: {
+      query?: {
+        after?: number;
+        max_seconds?: number;
+      };
+      header?: never;
+      path: {
+        duel_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Server-sent duel events (started, question, answered, reveal, left, finished, expired, rematch_requested, rematch) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  by_code_v1_duels_code__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuelState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  random_state_v1_duels_random_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["QueueState"];
+        };
+      };
+    };
+  };
+  random_v1_duels_random_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RandomIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["QueueState"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  random_leave_v1_duels_random_delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  duos_v1_duos_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuoOut"][];
+        };
+      };
+    };
+  };
+  duo_invite_v1_duos_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DuoInvite"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuoInviteResult"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  duo_end_v1_duos__duo_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  duo_accept_v1_duos__duo_id__accept_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DuoOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  duo_decline_v1_duos__duo_id__decline_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  duo_nudge_v1_duos__duo_id__nudge_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        duo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DuoNudgeIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Sent"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   list_exports_v1_exports_get: {
     parameters: {
       query?: {
@@ -7389,18 +9203,14 @@ export interface operations {
       };
     };
   };
-  feynman_attempt_v1_feynman_attempts_post: {
+  friends_v1_friends_get: {
     parameters: {
       query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["FeynmanIn"];
-      };
-    };
+    requestBody?: never;
     responses: {
       /** @description Successful Response */
       200: {
@@ -7408,7 +9218,78 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["FeynmanOut"];
+          "application/json": components["schemas"]["FriendRow"][];
+        };
+      };
+    };
+  };
+  remove_friend_v1_friends__user_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  invite_v1_friends_invite_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Invite"];
+        };
+      };
+    };
+  };
+  invite_preview_v1_friends_invite__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["InvitePreview"];
         };
       };
       /** @description Validation Error */
@@ -7422,14 +9303,80 @@ export interface operations {
       };
     };
   };
-  feynman_history_v1_feynman_concepts__concept_id__get: {
+  accept_invite_v1_friends_invite__code__accept_post: {
     parameters: {
-      query?: {
-        limit?: number;
-      };
+      query?: never;
       header?: never;
       path: {
-        concept_id: string;
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["InviteAccept"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FriendRow"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  request_v1_friends_requests_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FriendRequestIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  accept_request_v1_friends_requests__user_id__accept_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
       };
       cookie?: never;
     };
@@ -7441,7 +9388,67 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["FeynmanOut"][];
+          "application/json": components["schemas"]["RequestOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  decline_request_v1_friends_requests__user_id__decline_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  search_v1_friends_search_get: {
+    parameters: {
+      query: {
+        handle: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Person"];
         };
       };
       /** @description Validation Error */
@@ -7703,7 +9710,40 @@ export interface operations {
       };
     };
   };
-  calibration_v1_insights_calibration_get: {
+  leaderboard_v1_leaderboards_get: {
+    parameters: {
+      query?: {
+        period?: "week" | "all_time";
+        scope?: "friends" | "squad" | "school" | "city" | "all_india";
+        squad_id?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Leaderboard"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  current_v1_leagues_current_get: {
     parameters: {
       query?: never;
       header?: never;
@@ -7718,12 +9758,12 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["CalibrationOut"];
+          "application/json": components["schemas"]["League"];
         };
       };
     };
   };
-  sleep_review_v1_insights_sleep_review_get: {
+  join_v1_leagues_join_post: {
     parameters: {
       query?: never;
       header?: never;
@@ -7738,56 +9778,31 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["SleepReviewOut"];
+          "application/json": components["schemas"]["League"];
         };
       };
     };
   };
-  weak_areas_v1_insights_weak_areas_get: {
+  opt_out_v1_leagues_opt_out_put: {
     parameters: {
       query?: never;
       header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["WeakAreasOut"];
-        };
-      };
-    };
-  };
-  register_key_v1_integrity_app_attest_keys_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        "x-app-variant"?: string | null;
-        "x-app-version"?: string | null;
-        "x-device-id"?: string | null;
-        "x-platform"?: string | null;
-      };
       path?: never;
       cookie?: never;
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["AppAttestKeyIn"];
+        "application/json": components["schemas"]["OptOutIn"];
       };
     };
     responses: {
       /** @description Successful Response */
-      201: {
+      200: {
         headers: {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["AppAttestKeyOut"];
+          "application/json": components["schemas"]["League"];
         };
       };
       /** @description Validation Error */
@@ -7801,7 +9816,7 @@ export interface operations {
       };
     };
   };
-  challenge_v1_integrity_challenge_post: {
+  result_v1_leagues_result_get: {
     parameters: {
       query?: never;
       header?: never;
@@ -7816,162 +9831,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["ChallengeOut"];
-        };
-      };
-    };
-  };
-  room_v1_live_mocks__mock_id__get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        mock_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["LiveRoom"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  events_v1_live_mocks__mock_id__events_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        mock_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  leaderboard_v1_live_mocks__mock_id__leaderboard_get: {
-    parameters: {
-      query?: {
-        limit?: number;
-      };
-      header?: never;
-      path: {
-        mock_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["LiveLeaderboard"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  register_v1_live_mocks__mock_id__registration_post: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        mock_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["Registration"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  unregister_v1_live_mocks__mock_id__registration_delete: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        mock_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["Registration"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
+          "application/json": components["schemas"]["LeagueResult"];
         };
       };
     };
@@ -8473,39 +10333,6 @@ export interface operations {
       };
     };
   };
-  interleaved_v1_practice_interleaved_post: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["InterleavedIn"];
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["PracticeSession"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
   get_limits_v1_practice_limits_get: {
     parameters: {
       query?: never;
@@ -8938,6 +10765,135 @@ export interface operations {
       };
     };
   };
+  list_shared_v1_shared_decks_get: {
+    parameters: {
+      query?: {
+        exam?: string | null;
+        scope?: "friends" | "exam";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SharedDeckRow"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  preview_v1_shared_decks__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SharedDeckPreview"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  copy_v1_shared_decks__code__copy_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DeckCopy"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  helpful_v1_shared_decks__code__helpful_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["HelpfulIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SharedDeckRow"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   shop_v1_shop_get: {
     parameters: {
       query?: never;
@@ -8993,20 +10949,14 @@ export interface operations {
       };
     };
   };
-  dictation_v1_speech_dictation_post: {
+  blocks_v1_social_blocks_get: {
     parameters: {
-      query?: {
-        locale?: "en" | "hi";
-      };
+      query?: never;
       header?: never;
       path?: never;
       cookie?: never;
     };
-    requestBody: {
-      content: {
-        "audio/*": string;
-      };
-    };
+    requestBody?: never;
     responses: {
       /** @description Successful Response */
       200: {
@@ -9014,7 +10964,129 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["DictationOut"];
+          "application/json": components["schemas"]["Person"][];
+        };
+      };
+    };
+  };
+  block_v1_social_blocks_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["BlockIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  unblock_v1_social_blocks__user_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  feed_v1_social_feed_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeedItem"][];
+        };
+      };
+    };
+  };
+  gate_v1_social_gate_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Gate"];
+        };
+      };
+    };
+  };
+  check_handle_v1_social_handles__handle__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        handle: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HandleCheck"];
         };
       };
       /** @description Validation Error */
@@ -9028,7 +11100,85 @@ export interface operations {
       };
     };
   };
-  read_aloud_v1_speech_read_aloud_post: {
+  inbox_v1_social_inbox_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Inbox"];
+        };
+      };
+    };
+  };
+  inbox_seen_v1_social_inbox_seen_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_v1_social_me_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Me"];
+        };
+      };
+    };
+  };
+  first_visit_v1_social_me_first_visit_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Me"];
+        };
+      };
+    };
+  };
+  set_handle_v1_social_me_handle_put: {
     parameters: {
       query?: never;
       header?: never;
@@ -9037,7 +11187,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ReadAloudIn"];
+        "application/json": components["schemas"]["HandleIn"];
       };
     };
     responses: {
@@ -9047,7 +11197,463 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["ReadAloudOut"];
+          "application/json": components["schemas"]["Me"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  set_privacy_v1_social_me_privacy_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PrivacyIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Me"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  nudge_v1_social_nudges_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["NudgeIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Sent"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  overview_v1_social_overview_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Overview"];
+        };
+      };
+    };
+  };
+  profile_v1_social_people__user_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MiniProfile"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  react_v1_social_reactions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReactionIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  unreact_v1_social_reactions__item_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  report_v1_social_reports_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReportIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ReportOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squads_v1_squads_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SquadOut"][];
+        };
+      };
+    };
+  };
+  squad_create_v1_squads_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SquadCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SquadOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squad_v1_squads__squad_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        squad_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SquadOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squad_cheer_v1_squads__squad_id__cheer_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        squad_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SquadCheerIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Sent"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squad_new_code_v1_squads__squad_id__code_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        squad_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SquadOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squad_remove_v1_squads__squad_id__members__user_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        squad_id: string;
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squad_preview_v1_squads_join__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SquadPreview"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  squad_join_v1_squads_join__code__post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SquadJoin"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SquadOut"];
         };
       };
       /** @description Validation Error */
@@ -9171,9 +11777,6 @@ export interface operations {
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
-        "x-integrity-key-id"?: string | null;
-        "x-integrity-nonce"?: string | null;
-        "x-integrity-token"?: string | null;
         "x-platform"?: string | null;
       };
       path?: never;
@@ -9504,203 +12107,6 @@ export interface operations {
         };
         content: {
           "text/event-stream": string;
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  voice_quota_v1_voice_quota_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["VoiceQuota"];
-        };
-      };
-    };
-  };
-  list_voice_sessions_v1_voice_sessions_get: {
-    parameters: {
-      query?: {
-        limit?: number;
-      };
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["VoiceSummary"][];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  create_voice_session_v1_voice_sessions_post: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["VoiceSessionCreate"];
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["VoiceSessionOut"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-      /** @description voice_unavailable (not configured, off, or no limit set) */
-      503: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content?: never;
-      };
-    };
-  };
-  end_voice_session_v1_voice_sessions__session_id__end_post: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        session_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["VoiceSessionEnd"];
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["VoiceSummary"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  voice_tool_v1_voice_sessions__session_id__tools_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        "x-app-variant"?: string | null;
-        "x-app-version"?: string | null;
-        "x-device-id"?: string | null;
-        "x-platform"?: string | null;
-      };
-      path: {
-        session_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["ToolCallIn"];
-      };
-    };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["ToolCallOut"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  voice_transcript_v1_voice_sessions__session_id__transcript_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        session_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["VoiceTranscript"];
         };
       };
       /** @description Validation Error */

@@ -1017,6 +1017,8 @@ export interface components {
       health: "thriving" | "droopy" | "dry" | "wilted" | "dormant";
       /** Next Stage At */
       next_stage_at: number | null;
+      /** Revival Days */
+      revival_days?: number | null;
       /**
        * Revival Progress
        * @default 0

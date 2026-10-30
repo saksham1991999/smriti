@@ -1829,6 +1829,10 @@
             "anyOf": [{ "type": "integer" }, { "type": "null" }],
             "title": "Revival Target"
           },
+          "revival_days": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Revival Days"
+          },
           "species": { "type": "string", "title": "Species", "default": "tulsi" }
         },
         "type": "object",

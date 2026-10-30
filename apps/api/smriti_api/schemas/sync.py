@@ -374,6 +374,8 @@ class PlantState(BaseModel):
     next_stage_at: int | None
     revival_progress: int = 0
     revival_target: int | None = None
+    # The same number under the name packages/app-core reads (PlantSection.revival_days).
+    revival_days: int | None = None
     species: str = "tulsi"
 
 

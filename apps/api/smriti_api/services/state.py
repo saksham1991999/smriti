@@ -155,13 +155,15 @@ async def plant_state(session: AsyncSession, user_id: uuid.UUID, rules: GameRule
         )
     ).one()
     _, next_at = stage_for(int(p.growth_points), rules.stage_days)
+    target = None if p.health == "thriving" else int(rules.revival_days.get(p.health, 1))
     return s.PlantState(
         stage=p.stage,
         health=p.health,
         study_days=int(p.growth_points),
         next_stage_at=next_at,
         revival_progress=int(p.revival_progress),
-        revival_target=None if p.health == "thriving" else int(rules.revival_days.get(p.health, 1)),
+        revival_target=target,
+        revival_days=target,
         species=p.species,
     )
 

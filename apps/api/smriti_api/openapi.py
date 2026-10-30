@@ -1,4 +1,6 @@
-"""Print the OpenAPI document: ``uv run python -m smriti_api.openapi > packages/api-client/openapi.json``.
+"""Print the OpenAPI document. ``pnpm --filter @smriti/api-client generate`` runs this and writes
+``packages/api-client/openapi.json`` and ``src/schema.ts``; ``tests/test_openapi_export.py`` fails when
+they are stale.
 
 The dev auth routes are included (they exist in local and test, where the clients use them),
 and marked with ``x-dev-only``.

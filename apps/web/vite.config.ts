@@ -119,7 +119,16 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: "es2022",
     sourcemap: true,
+    // Never inline font subsets: an inlined subset downloads with the CSS even when its
+    // unicode-range never matches, while a file is fetched only when a glyph needs it.
+    assetsInlineLimit: (file: string) => (/\.(woff2?|ttf|otf)$/.test(file) ? false : undefined),
     rollupOptions: {
+      // The shared packages' TypeScript sources have no import-time side effects but don't declare
+      // `"sideEffects": false`, so unused barrel exports (content-schema's ajv validator, zod schemas)
+      // would ship in the entry chunk. CSS and third-party modules keep their own declarations.
+      treeshake: {
+        moduleSideEffects: (id: string) => (/[\\/]packages[\\/][^\\/]+[\\/]src[\\/].+\.tsx?$/.test(id) ? false : undefined),
+      },
       output: {
         manualChunks(id: string) {
           if (id.includes("node_modules/katex")) return "katex";

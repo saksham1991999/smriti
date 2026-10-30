@@ -4,6 +4,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createServices } from "./boot/services";
 import { App } from "./App";
+import { initialLocale, preloadLocale } from "./lib/i18n";
 import type { RequestInterceptor } from "./platform/web";
 
 async function boot() {
@@ -14,7 +15,8 @@ async function boot() {
     const fake = createBrowserFakeApi(import.meta.env.VITE_API_BASE_URL as string, "/c/");
     interceptor = (req) => fake.intercept(req);
   }
-  const services = await createServices({ interceptor });
+  // The catalogues for one locale load alongside the local database, so the first frame has its words.
+  const [services] = await Promise.all([createServices({ interceptor }), preloadLocale(initialLocale())]);
   void services.ensureSession().then(() => {
     services.sync.start();
     void services.refreshState();

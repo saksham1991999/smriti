@@ -6,6 +6,7 @@
 import { createRootRouteWithContext, createRoute, createRouter, lazyRouteComponent, redirect } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
 import type { Services } from "./boot/services";
+import { withNamespaces } from "./lib/i18n";
 import { useOnboarding } from "./lib/onboarding";
 import { AppShell } from "./shell/AppShell";
 import { RootLayout } from "./shell/RootLayout";
@@ -48,7 +49,7 @@ const onboardingStepRoute = createRoute({
 const firstLessonRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/onboarding/first-lesson",
-  component: lazyRouteComponent(() => import("./screens/lesson/LessonScreen"), "FirstLesson"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs", "me_money"], () => import("./screens/lesson/LessonScreen")), "FirstLesson"),
 });
 const firstWinRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -78,17 +79,17 @@ const lessonRoute = createRoute({
     mode: s.mode === "quick_revision" ? "quick_revision" : s.mode === "deep_dive" ? "deep_dive" : undefined,
     bite: typeof s.bite === "string" ? s.bite : undefined,
   }),
-  component: lazyRouteComponent(() => import("./screens/lesson/LessonScreen"), "LessonScreen"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs", "me_money"], () => import("./screens/lesson/LessonScreen")), "LessonScreen"),
 });
 const lessonCompleteRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/lesson-complete",
-  component: lazyRouteComponent(() => import("./screens/lesson/LessonComplete"), "LessonComplete"),
+  component: lazyRouteComponent(withNamespaces(["me_money", "memory_labs", "auth"], () => import("./screens/lesson/LessonComplete")), "LessonComplete"),
 });
 const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/review",
-  component: lazyRouteComponent(() => import("./screens/memory/Review"), "Review"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/memory/Review")), "Review"),
 });
 export interface PaywallSearch {
   source?: string;
@@ -97,17 +98,17 @@ const paywallRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/pro",
   validateSearch: (s: Record<string, unknown>): PaywallSearch => ({ source: typeof s.source === "string" ? s.source : undefined }),
-  component: lazyRouteComponent(() => import("./screens/me/Paywall"), "Paywall"),
+  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "Paywall"),
 });
 const checkoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/pro/checkout",
-  component: lazyRouteComponent(() => import("./screens/me/Paywall"), "Checkout"),
+  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "Checkout"),
 });
 const proWelcomeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/pro/welcome",
-  component: lazyRouteComponent(() => import("./screens/me/Paywall"), "ProWelcome"),
+  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "ProWelcome"),
 });
 export interface LoginSearch {
   reason?: string;
@@ -120,17 +121,17 @@ const loginRoute = createRoute({
     reason: typeof s.reason === "string" ? s.reason : undefined,
     next: typeof s.next === "string" && s.next.startsWith("/") && !s.next.startsWith("//") ? s.next : undefined,
   }),
-  component: lazyRouteComponent(() => import("./screens/auth/Login"), "Login"),
+  component: lazyRouteComponent(withNamespaces(["auth"], () => import("./screens/auth/Login")), "Login"),
 });
 const mockRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/mock",
-  component: lazyRouteComponent(() => import("./screens/practice/Mock"), "MockRunner"),
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Mock")), "MockRunner"),
 });
 const drillRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/drill/$topicId",
-  component: lazyRouteComponent(() => import("./screens/practice/Practice"), "Drill"),
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Practice")), "Drill"),
 });
 
 // ── The tab shell ─────────────────────────────────────────────────────────
@@ -145,7 +146,7 @@ const shellRoute = createRoute({
 const homeRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/learn",
-  component: lazyRouteComponent(() => import("./screens/home/Home"), "Home"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs", "practice", "auth"], () => import("./screens/home/Home")), "Home"),
 });
 const subjectRoute = createRoute({
   getParentRoute: () => shellRoute,
@@ -165,37 +166,37 @@ const topicRoute = createRoute({
 const labsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/labs",
-  component: lazyRouteComponent(() => import("./screens/labs/Labs"), "LabsHub"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/labs/Labs")), "LabsHub"),
 });
 const labRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/labs/$simId",
-  component: lazyRouteComponent(() => import("./screens/labs/Labs"), "LabScreen"),
+  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/labs/Labs")), "LabScreen"),
 });
 const practiceRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/practice",
-  component: lazyRouteComponent(() => import("./screens/practice/Practice"), "PracticeHub"),
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/practice/Practice")), "PracticeHub"),
 });
 const meRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me",
-  component: lazyRouteComponent(() => import("./screens/me/Me"), "Me"),
+  component: lazyRouteComponent(withNamespaces(["me_money", "auth"], () => import("./screens/me/Me")), "Me"),
 });
 const settingsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/settings",
-  component: lazyRouteComponent(() => import("./screens/me/Settings"), "Settings"),
+  component: lazyRouteComponent(withNamespaces(["me_money", "auth"], () => import("./screens/me/Settings")), "Settings"),
 });
 const notificationsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/notifications",
-  component: lazyRouteComponent(() => import("./screens/me/Settings"), "NotificationSettings"),
+  component: lazyRouteComponent(withNamespaces(["me_money", "auth"], () => import("./screens/me/Settings")), "NotificationSettings"),
 });
 const planRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/plan",
-  component: lazyRouteComponent(() => import("./screens/me/Paywall"), "YourPlan"),
+  component: lazyRouteComponent(withNamespaces(["me_money"], () => import("./screens/me/Paywall")), "YourPlan"),
 });
 
 const routeTree = rootRoute.addChildren([

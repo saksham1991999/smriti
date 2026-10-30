@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { UIProvider } from "@smriti/ui-web";
 import { StepFrame } from "../src/components/Frame";
-import { I18nProvider } from "../src/lib/i18n";
+import { I18nProvider, preloadLocale } from "../src/lib/i18n";
+
+beforeAll(() => preloadLocale("en"));
 
 function wrap(ui: React.ReactElement) {
   return render(

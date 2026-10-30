@@ -9,10 +9,8 @@ import {
   Outbox,
   SoftPromptBudget,
   SrsScheduler,
-  SupabaseAuthClient,
   SyncClient,
   createAppStore,
-  createSupabaseClientForProfile,
   createIdGenerator,
   hydrateAppStore,
   realScheduler,
@@ -29,6 +27,7 @@ import {
 import { AnalyticsClient, MemoryTransport, audienceFromAgeBand, type Transport } from "@smriti/analytics";
 import { createFlags, getVariant, parseClientEnv, type ClientEnv, type Flags, type Variant } from "@smriti/config";
 import { DexieStorage } from "../platform/dexieStorage";
+import { LazySupabaseAuthClient } from "../platform/lazyAuth";
 import { BrowserNetwork, LocalStorageKeyValueStore, createFetch, deviceId, prefs, timeZone, requestFetch, withDevLinkFlag, type RequestInterceptor } from "../platform/web";
 import { createApi, type Api } from "../lib/api";
 import { createApiClient, type ApiClient } from "@smriti/api-client";
@@ -102,8 +101,8 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
 
   let auth: AuthClient;
   if (env.AUTH_MODE === "supabase" && env.SUPABASE_URL && env.SUPABASE_ANON_KEY) {
-    auth = new SupabaseAuthClient(
-      createSupabaseClientForProfile({ url: env.SUPABASE_URL, anonKey: env.SUPABASE_ANON_KEY, storage: kv, storageKey: "smriti-web-auth", detectSessionInUrl: true }),
+    auth = new LazySupabaseAuthClient(
+      { url: env.SUPABASE_URL, anonKey: env.SUPABASE_ANON_KEY, storage: kv, storageKey: "smriti-web-auth", detectSessionInUrl: true },
     );
   } else {
     auth = new DevAuthClient({ baseUrl: env.API_BASE_URL, fetch: withDevLinkFlag(fetchImpl), store: kv, clock });

@@ -1,0 +1,176 @@
+"""The AI tutor (docs/flows/tutor-social.md §A5, §A14) and SET-24 content reports (R39).
+
+Answers stream as server-sent events. Event types: ``session`` (ask endpoints only), ``delta``,
+``replace``, ``safety`` (``crisis``, ``refusal``, ``redirect``, ``pii_removed``), ``citations``,
+``chips``, ``quota``, ``quota_exhausted``, ``error`` and ``done``.
+"""
+
+from __future__ import annotations
+
+import uuid
+from collections.abc import AsyncIterator
+from datetime import datetime
+from typing import Annotated, Any
+
+from fastapi import APIRouter, Path, Query, Response
+from fastapi.responses import StreamingResponse
+
+from smriti_api.core.deps import CurrentUser, Services
+from smriti_api.schemas import tutor as t
+from smriti_api.services import content_reports, tutor
+
+router = APIRouter(prefix="/v1", tags=["tutor"])
+
+SessionId = Annotated[uuid.UUID, Path()]
+SSE_DOC: dict[int | str, dict[str, Any]] = {
+    200: {
+        "description": "Server-sent events (delta, replace, safety, citations, chips, quota,"
+        " quota_exhausted, error, done)",
+        "content": {"text/event-stream": {"schema": {"type": "string"}}},
+    }
+}
+_SSE_HEADERS = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+
+
+def _sse(body: AsyncIterator[str]) -> StreamingResponse:
+    return StreamingResponse(body, media_type="text/event-stream", headers=_SSE_HEADERS)
+
+
+@router.post(
+    "/tutor/sessions",
+    response_model=t.TutorSession,
+    summary="Open a tutor chat; a chat on the same context from the last 30 min reopens",
+)
+async def open_session(
+    body: t.SessionCreate, services: Services, auth: CurrentUser
+) -> t.TutorSession:
+    return await tutor.open_session(services.db, auth, body)
+
+
+@router.get(
+    "/tutor/sessions", response_model=list[t.SessionSummary], summary="Chat history (AI-09)"
+)
+async def list_sessions(
+    services: Services,
+    auth: CurrentUser,
+    limit: Annotated[int, Query(ge=1, le=50)] = 20,
+    before: Annotated[datetime | None, Query()] = None,
+) -> list[t.SessionSummary]:
+    return await tutor.list_sessions(services.db, auth, limit, before)
+
+
+@router.get("/tutor/sessions/{session_id}", response_model=t.TutorSession, summary="One chat")
+async def get_session(
+    session_id: SessionId, services: Services, auth: CurrentUser
+) -> t.TutorSession:
+    return await tutor.get_session(services.db, auth, session_id)
+
+
+@router.delete("/tutor/sessions/{session_id}", status_code=204, summary="Delete a chat")
+async def delete_session(session_id: SessionId, services: Services, auth: CurrentUser) -> Response:
+    await tutor.delete_session(services.db, auth, session_id)
+    return Response(status_code=204)
+
+
+@router.post(
+    "/tutor/sessions/{session_id}/messages",
+    response_class=StreamingResponse,
+    responses=SSE_DOC,
+    summary="Send a message; the answer streams back (SSE)",
+)
+async def send_message(
+    session_id: SessionId, body: t.MessageIn, services: Services, auth: CurrentUser
+) -> StreamingResponse:
+    plan = await tutor.prepare(services.db, services.ai, auth, session_id, body)
+    return _sse(tutor.stream(services.db, services.ai, auth, plan))
+
+
+async def _with_session(
+    session_id: uuid.UUID, resumed: bool, body: AsyncIterator[str]
+) -> AsyncIterator[str]:
+    yield tutor.sse("session", {"session_id": str(session_id), "resumed": resumed})
+    async for event in body:
+        yield event
+
+
+@router.post(
+    "/tutor/ask/card",
+    response_class=StreamingResponse,
+    responses=SSE_DOC,
+    summary="Ask about this card (LES-04, MEM-03): opens or reuses the card's chat (SSE)",
+)
+async def ask_card(body: t.AskCard, services: Services, auth: CurrentUser) -> StreamingResponse:
+    session_id, resumed = await tutor.open_for(services.db, auth, f"card:{body.card_id}", body.exam)
+    plan = await tutor.prepare(services.db, services.ai, auth, session_id, body)
+    return _sse(
+        _with_session(session_id, resumed, tutor.stream(services.db, services.ai, auth, plan))
+    )
+
+
+@router.post(
+    "/tutor/ask/question",
+    response_class=StreamingResponse,
+    responses=SSE_DOC,
+    summary="Ask about this question (LES-02, PRC-05, MOCK-22): hints first until answered (SSE)",
+)
+async def ask_question(
+    body: t.AskQuestion, services: Services, auth: CurrentUser
+) -> StreamingResponse:
+    your_answer, answered = await tutor.check_your_answer(
+        services.db, body.question_id, body.your_answer
+    )
+    ref = f"question:{body.question_id}"
+    session_id, resumed = await tutor.open_for(
+        services.db, auth, ref, body.exam, answered_now=answered
+    )
+    plan = await tutor.prepare(
+        services.db,
+        services.ai,
+        auth,
+        session_id,
+        body,
+        your_answer=your_answer,
+        answered_now=answered,
+    )
+    return _sse(
+        _with_session(session_id, resumed, tutor.stream(services.db, services.ai, auth, plan))
+    )
+
+
+@router.post(
+    "/tutor/messages/{message_id}/feedback",
+    response_model=t.FeedbackOut,
+    summary="Thumbs up or down with reason codes (AI-05)",
+)
+async def message_feedback(
+    message_id: Annotated[uuid.UUID, Path()],
+    body: t.FeedbackIn,
+    services: Services,
+    auth: CurrentUser,
+) -> t.FeedbackOut:
+    return await tutor.feedback(services.db, auth, message_id, body)
+
+
+@router.post(
+    "/content/reports",
+    response_model=t.ContentReportOut,
+    status_code=201,
+    tags=["content"],
+    summary="Report a problem with content or AI output (SET-24)",
+)
+async def report_content(
+    body: t.ContentReportIn, services: Services, auth: CurrentUser
+) -> t.ContentReportOut:
+    return await content_reports.create(services.db, auth, body)
+
+
+@router.get(
+    "/content/reports",
+    response_model=list[t.ContentReportOut],
+    tags=["content"],
+    summary="The student's own reports and their status",
+)
+async def my_reports(
+    services: Services, auth: CurrentUser, limit: Annotated[int, Query(ge=1, le=100)] = 20
+) -> list[t.ContentReportOut]:
+    return await content_reports.mine(services.db, auth, limit)

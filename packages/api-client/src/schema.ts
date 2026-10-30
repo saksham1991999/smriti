@@ -411,6 +411,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/content/reports": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The student's own reports and their status */
+    get: operations["my_reports_v1_content_reports_get"];
+    put?: never;
+    /** Report a problem with content or AI output (SET-24) */
+    post: operations["report_content_v1_content_reports_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/daily-challenge/{challenge_id}/answer": {
     parameters: {
       query?: never;
@@ -1082,6 +1100,110 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/tutor/ask/card": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Ask about this card (LES-04, MEM-03): opens or reuses the card's chat (SSE) */
+    post: operations["ask_card_v1_tutor_ask_card_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/ask/question": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Ask about this question (LES-02, PRC-05, MOCK-22): hints first until answered (SSE) */
+    post: operations["ask_question_v1_tutor_ask_question_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/messages/{message_id}/feedback": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Thumbs up or down with reason codes (AI-05) */
+    post: operations["message_feedback_v1_tutor_messages__message_id__feedback_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/sessions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Chat history (AI-09) */
+    get: operations["list_sessions_v1_tutor_sessions_get"];
+    put?: never;
+    /** Open a tutor chat; a chat on the same context from the last 30 min reopens */
+    post: operations["open_session_v1_tutor_sessions_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/sessions/{session_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** One chat */
+    get: operations["get_session_v1_tutor_sessions__session_id__get"];
+    put?: never;
+    post?: never;
+    /** Delete a chat */
+    delete: operations["delete_session_v1_tutor_sessions__session_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/tutor/sessions/{session_id}/messages": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Send a message; the answer streams back (SSE) */
+    post: operations["send_message_v1_tutor_sessions__session_id__messages_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1194,6 +1316,65 @@ export interface components {
       min_version: string;
       /** Update Required */
       update_required?: boolean | null;
+    };
+    /**
+     * AskCard
+     * @description ask-about-this-card (LES-04, MEM-03 back side).
+     */
+    AskCard: {
+      /** Card Id */
+      card_id: string;
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Text */
+      text: string;
+    };
+    /**
+     * AskQuestion
+     * @description ask-about-this-question (LES-02 after Check, PRC-05, MOCK-22 after submit).
+     */
+    AskQuestion: {
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Question Id */
+      question_id: string;
+      /** Text */
+      text: string;
+      /** Your Answer */
+      your_answer?:
+        | components["schemas"]["OptionIdsAnswer"]
+        | components["schemas"]["NumberAnswerIn"]
+        | components["schemas"]["PairsAnswerIn"]
+        | components["schemas"]["MatrixAnswerIn"]
+        | components["schemas"]["BlanksAnswerIn"]
+        | components["schemas"]["OrderAnswerIn"]
+        | null;
     };
     /** Attempt */
     Attempt: {
@@ -1549,6 +1730,101 @@ export interface components {
       /** Variants */
       variants: string[];
     };
+    /**
+     * ContentReportIn
+     * @description SET-24 Report content: one sheet for lesson, question, AI and community content (R39).
+     */
+    ContentReportIn: {
+      /** Bundle Hash */
+      bundle_hash?: string | null;
+      /** Item Ref */
+      item_ref: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind:
+        | "lesson_card"
+        | "question"
+        | "review_card"
+        | "solution"
+        | "tutor_message"
+        | "generated_image"
+        | "story_page"
+        | "roleplay_turn"
+        | "community_mnemonic"
+        | "lab"
+        | "album_card";
+      /** Locale */
+      locale?: ("en" | "hi") | null;
+      /** Note */
+      note?: string | null;
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason: "wrong" | "unclear" | "typo" | "translation" | "offensive" | "spam" | "other";
+    };
+    /** ContentReportOut */
+    ContentReportOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Item Ref */
+      item_ref: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind:
+        | "lesson_card"
+        | "question"
+        | "review_card"
+        | "solution"
+        | "tutor_message"
+        | "generated_image"
+        | "story_page"
+        | "roleplay_turn"
+        | "community_mnemonic"
+        | "lab"
+        | "album_card";
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason: "wrong" | "unclear" | "typo" | "translation" | "offensive" | "spam" | "other";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "accepted" | "fixed" | "rejected";
+    };
+    /**
+     * ContextOut
+     * @description What the tutor can see, for the context chip (tutor-social §A5 step 1).
+     */
+    ContextOut: {
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: "card" | "question" | "topic" | "concept" | "lab";
+      /** Ref */
+      ref: string;
+      /** Title */
+      title?: {
+        [key: string]: string;
+      } | null;
+      /** Topic Id */
+      topic_id?: string | null;
+    };
     /** DailyChallenge */
     DailyChallenge: {
       /**
@@ -1783,6 +2059,40 @@ export interface components {
       exam_profile_ids: string[];
       /** Primary */
       primary?: string | null;
+    };
+    /** FeedbackIn */
+    FeedbackIn: {
+      /**
+       * Rating
+       * @enum {string}
+       */
+      rating: "up" | "down";
+      /** Reasons */
+      reasons?: (
+        | "wrong"
+        | "confusing"
+        | "too_long"
+        | "didnt_answer"
+        | "wrong_language"
+        | "not_suitable"
+      )[];
+    };
+    /** FeedbackOut */
+    FeedbackOut: {
+      /**
+       * Message Id
+       * Format: uuid
+       */
+      message_id: string;
+      /** Queued For Review */
+      queued_for_review: boolean;
+      /**
+       * Rating
+       * @enum {string}
+       */
+      rating: "up" | "down";
+      /** Reasons */
+      reasons: string[];
     };
     /** FixNext */
     FixNext: {
@@ -2080,6 +2390,53 @@ export interface components {
        * @enum {string}
        */
       status: "queued" | "running" | "done" | "failed";
+    };
+    /** MessageIn */
+    MessageIn: {
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Text */
+      text: string;
+    };
+    /** MessageOut */
+    MessageOut: {
+      /** Citations */
+      citations?: {
+        [key: string]: unknown;
+      }[];
+      /** Content */
+      content: string;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "user" | "assistant";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "ok" | "stopped" | "refused" | "crisis" | "error";
     };
     /**
      * MockAccess
@@ -2435,7 +2792,7 @@ export interface components {
       limits: components["schemas"]["Limits"];
       mock_in_progress: components["schemas"]["MockInProgress"] | null;
       /** Recent Sessions */
-      recent_sessions: components["schemas"]["SessionSummary"][];
+      recent_sessions: components["schemas"]["smriti_api__schemas__practice__SessionSummary"][];
       /** Weak Spots */
       weak_spots: components["schemas"]["WeakSpot"][];
     };
@@ -2927,12 +3284,54 @@ export interface components {
        */
       ended_by: "finished" | "closed" | "time_up";
     };
+    /** SessionQuestion */
+    SessionQuestion: {
+      /**
+       * Bundle Ref
+       * @description Bundle that holds the question for offline use
+       */
+      bundle_ref: string | null;
+      /** Chapter Id */
+      chapter_id: string;
+      /** Concepts */
+      concepts: string[];
+      /** Difficulty */
+      difficulty: string | null;
+      /** Ideal Time S */
+      ideal_time_s: number | null;
+      /** Question Id */
+      question_id: string;
+      /** Topic Id */
+      topic_id: string;
+      /** Type */
+      type: string;
+    };
+    /** ShopItemOut */
+    ShopItemOut: {
+      /** Id */
+      id: string;
+      /** Kind */
+      kind: string;
+      /** Owned */
+      owned: number;
+      /** Price Gems */
+      price_gems: number;
+      /** Pro Only */
+      pro_only: boolean;
+    };
+    /** ShopResponse */
+    ShopResponse: {
+      /** Gems */
+      gems: number;
+      /** Items */
+      items: components["schemas"]["ShopItemOut"][];
+    };
     /**
      * SessionCreate
      * @description PRC-03's input contract (practice §5.3): exactly one of ``concepts``, ``topic_id``,
      *     ``chapter_id``, ``question_ids`` or ``paper_id``; or none for a mixed drill of the exam.
      */
-    SessionCreate: {
+    smriti_api__schemas__practice__SessionCreate: {
       /** Chapter Id */
       chapter_id?: string | null;
       /** Concepts */
@@ -2970,30 +3369,8 @@ export interface components {
       /** Topic Id */
       topic_id?: string | null;
     };
-    /** SessionQuestion */
-    SessionQuestion: {
-      /**
-       * Bundle Ref
-       * @description Bundle that holds the question for offline use
-       */
-      bundle_ref: string | null;
-      /** Chapter Id */
-      chapter_id: string;
-      /** Concepts */
-      concepts: string[];
-      /** Difficulty */
-      difficulty: string | null;
-      /** Ideal Time S */
-      ideal_time_s: number | null;
-      /** Question Id */
-      question_id: string;
-      /** Topic Id */
-      topic_id: string;
-      /** Type */
-      type: string;
-    };
     /** SessionSummary */
-    SessionSummary: {
+    smriti_api__schemas__practice__SessionSummary: {
       /** Answered */
       answered: number;
       /** Correct */
@@ -3017,25 +3394,39 @@ export interface components {
        */
       started_at: string;
     };
-    /** ShopItemOut */
-    ShopItemOut: {
-      /** Id */
-      id: string;
-      /** Kind */
-      kind: string;
-      /** Owned */
-      owned: number;
-      /** Price Gems */
-      price_gems: number;
-      /** Pro Only */
-      pro_only: boolean;
+    /** SessionCreate */
+    smriti_api__schemas__tutor__SessionCreate: {
+      /** Context Ref */
+      context_ref?: string | null;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Mode
+       * @default chat
+       * @constant
+       */
+      mode: "chat";
     };
-    /** ShopResponse */
-    ShopResponse: {
-      /** Gems */
-      gems: number;
-      /** Items */
-      items: components["schemas"]["ShopItemOut"][];
+    /** SessionSummary */
+    smriti_api__schemas__tutor__SessionSummary: {
+      /** Context Ref */
+      context_ref: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Last Message At */
+      last_message_at: string | null;
+      /** Message Count */
+      message_count: number;
+      /** Mode */
+      mode: string;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
     };
     /** SolutionItem */
     SolutionItem: {
@@ -3395,6 +3786,38 @@ export interface components {
       topic_id: string;
       /** Wrong */
       wrong: number;
+    };
+    /** TutorSession */
+    TutorSession: {
+      context: components["schemas"]["ContextOut"] | null;
+      /** Exam Profile Id */
+      exam_profile_id: string | null;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Last Message At */
+      last_message_at: string | null;
+      /** Locale */
+      locale: string;
+      /** Message Count */
+      message_count: number;
+      /** Messages */
+      messages?: components["schemas"]["MessageOut"][];
+      /** Mode */
+      mode: string;
+      quota: components["schemas"]["QuotaOut"];
+      /**
+       * Resumed
+       * @default false
+       */
+      resumed: boolean;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
     };
     /** ValidationError */
     ValidationError: {
@@ -4309,6 +4732,70 @@ export interface operations {
       };
     };
   };
+  my_reports_v1_content_reports_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ContentReportOut"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  report_content_v1_content_reports_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ContentReportIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ContentReportOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   challenge_answer_v1_daily_challenge__challenge_id__answer_post: {
     parameters: {
       query?: never;
@@ -5009,7 +5496,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          "application/json": components["schemas"]["SessionSummary"][];
+          "application/json": components["schemas"]["smriti_api__schemas__practice__SessionSummary"][];
         };
       };
       /** @description Validation Error */
@@ -5032,7 +5519,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["SessionCreate"];
+        "application/json": components["schemas"]["smriti_api__schemas__practice__SessionCreate"];
       };
     };
     responses: {
@@ -5607,6 +6094,267 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["TimeResponse"];
+        };
+      };
+    };
+  };
+  ask_card_v1_tutor_ask_card_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AskCard"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  ask_question_v1_tutor_ask_question_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AskQuestion"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  message_feedback_v1_tutor_messages__message_id__feedback_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        message_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FeedbackIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeedbackOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  list_sessions_v1_tutor_sessions_get: {
+    parameters: {
+      query?: {
+        before?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["smriti_api__schemas__tutor__SessionSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  open_session_v1_tutor_sessions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["smriti_api__schemas__tutor__SessionCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TutorSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_session_v1_tutor_sessions__session_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TutorSession"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_session_v1_tutor_sessions__session_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  send_message_v1_tutor_sessions__session_id__messages_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["MessageIn"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

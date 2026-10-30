@@ -26,6 +26,7 @@ from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import practice as practice_routes
+from smriti_api.routes import tutor as tutor_routes
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import ArqJobQueue, InlineJobQueue, JobDeps, JobQueue, job_registry
@@ -156,6 +157,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
         game.router,
         practice_routes.router,
         mock_routes.router,
+        tutor_routes.router,
     ):
         app.include_router(router)
     if settings.is_dev:

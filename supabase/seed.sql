@@ -116,6 +116,15 @@ insert into ops.flags (key, value, description) values
   ('auth.signin_timeout_s', '15', 'proposed'),
   ('minor.defer_sync_until_consent', 'false', 'onboarding doc'),
   ('merge.keep_guest_pet', 'true', 'auth §6.4 step 7 (owner Q9)'),
+  -- Phase 2 AI, learning science and security (doc values; proposed where marked)
+  ('feynman.max_follow_ups', '3', 'tutor-social §A8: 1 to 3 follow-up answers'),
+  ('feynman.mastery_weight', '0.1', 'proposed (G-3): weight of a Feynman score in mastery'),
+  ('notify.weak_area.horizon_days', '3', 'TRD §9.6: days of predicted recall checked'),
+  ('notify.weak_area.per_week', '2', 'me-money §6.3: weak_area sends a week'),
+  ('notify.sleep_review.lookback_days', '14', 'TRD §9.6: days of session ends for the bedtime estimate'),
+  ('notify.sleep_review.cards', '5', 'TRD §9.6: hardest due cards in a sleep review'),
+  ('practice.mixed_min_groups', '2', 'practice §5.3: chapters or subjects in a mixed drill'),
+  ('security.attestation_required', 'false', 'TRD §14: Play Integrity / App Attest on sensitive endpoints'),
   -- Billing and PDF books (proposed starting values for the owner to confirm)
   ('billing.web_grace_days', '7', 'proposed: web (Razorpay) grace after a failed renewal'),
   ('export.books_per_day', '5', 'proposed (me-money §3.9): PDF books a student can make a day'),

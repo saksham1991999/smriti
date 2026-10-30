@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/mini';
 
 /**
  * The feature-flag and tunable registry, served by `GET /v1/config` (`ops.flags`).
@@ -15,7 +15,7 @@ import { z } from 'zod';
  */
 export type FlagSource = 'ruling' | 'prd' | 'doc' | 'proposed' | 'owner';
 
-export interface FlagDef<S extends z.ZodType = z.ZodType, N extends boolean = boolean> {
+export interface FlagDef<S extends z.ZodMiniType = z.ZodMiniType, N extends boolean = boolean> {
   readonly schema: S;
   readonly default: N extends true ? null : z.infer<S>;
   /** True for owner flags: the value may be `null` (not set). */
@@ -27,7 +27,7 @@ export interface FlagDef<S extends z.ZodType = z.ZodType, N extends boolean = bo
   readonly aliases?: readonly string[];
 }
 
-function def<S extends z.ZodType>(
+function def<S extends z.ZodMiniType>(
   schema: S,
   dflt: z.infer<S>,
   source: Exclude<FlagSource, 'owner'>,
@@ -39,28 +39,28 @@ function def<S extends z.ZodType>(
 }
 
 /** An owner flag: no doc gives a number, so the default is `null` (not set). */
-function owner<S extends z.ZodType>(schema: S, ref: string, aliases?: readonly string[]): FlagDef<S, true> {
+function owner<S extends z.ZodMiniType>(schema: S, ref: string, aliases?: readonly string[]): FlagDef<S, true> {
   const base = { schema, default: null, nullable: true as const, source: 'owner' as const, ref };
   return aliases ? { ...base, aliases } : base;
 }
 
-const int = z.number().int();
-const nonNegInt = int.min(0);
-const posInt = int.min(1);
-const fraction = z.number().min(0).max(1);
+const int = z.int();
+const nonNegInt = int.check(z.gte(0));
+const posInt = int.check(z.gte(1));
+const fraction = z.number().check(z.gte(0), z.lte(1));
 const bool = z.boolean();
-const hour = int.min(0).max(23);
-const hhmm = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/);
+const hour = int.check(z.gte(0), z.lte(23));
+const hhmm = z.string().check(z.regex(/^([01]\d|2[0-3]):[0-5]\d$/));
 const strList = z.array(z.string());
 const intList = z.array(int);
 /** A value that differs by audience: adults, 13–17, under 13 (me-money §6.2). */
-const byAudience = <S extends z.ZodType>(s: S) => z.object({ adult: s, teen: s, child: s });
-const byPlatform = <S extends z.ZodType>(s: S) => z.object({ web: s, ios: s, android: s });
-const i18nText = z.object({ en: z.string().min(1), hi: z.string().min(1) });
+const byAudience = <S extends z.ZodMiniType>(s: S) => z.object({ adult: s, teen: s, child: s });
+const byPlatform = <S extends z.ZodMiniType>(s: S) => z.object({ web: s, ios: s, android: s });
+const i18nText = z.object({ en: z.string().check(z.minLength(1)), hi: z.string().check(z.minLength(1)) });
 /** A two-part generated name ("{first} {second} {n}"): EN and HI words with stable ids. */
-const word = z.object({ id: z.string().regex(/^[a-z0-9_]+$/), en: z.string().min(1), hi: z.string().min(1) });
+const word = z.object({ id: z.string().check(z.regex(/^[a-z0-9_]+$/)), en: z.string().check(z.minLength(1)), hi: z.string().check(z.minLength(1)) });
 const wordPairs = z.object({ first: z.array(word), second: z.array(word) });
-const helpline = z.object({ name: z.string().min(1), number: z.string().min(1) }).catchall(z.string());
+const helpline = z.catchall(z.object({ name: z.string().check(z.minLength(1)), number: z.string().check(z.minLength(1)) }), z.string());
 
 export const FLAG_REGISTRY = {
   // ── Auth and accounts (flows/auth.md §10.1) ───────────────────────────────
@@ -92,7 +92,7 @@ export const FLAG_REGISTRY = {
   'parent.ask_before_switching': def(bool, false, 'doc', 'auth §6.11'),
   'onb.returning_account_check': def(bool, false, 'doc', 'onboarding §6.9.1 (A/B test)'),
   'onb.outcome_line': def(bool, false, 'doc', 'onboarding §6.8 (test)'),
-  'goal.minutes_options': def(z.array(posInt).min(1), [5, 10, 20, 30], 'ruling', 'R6'),
+  'goal.minutes_options': def(z.array(posInt).check(z.minLength(1)), [5, 10, 20, 30], 'ruling', 'R6'),
   'goal.default_minutes': def(posInt, 10, 'ruling', 'R6'),
 
   // ── Streak, freezes and rest days (me-money §3.5, R1, R23, R28, R36) ─────
@@ -149,7 +149,7 @@ export const FLAG_REGISTRY = {
   'game.economy.weekly_quest_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
   'game.economy.badge_gems': def(z.tuple([nonNegInt, nonNegInt, nonNegInt]), [20, 50, 100], 'proposed', 'me-money §3.6'),
   'game.economy.league_promotion_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
-  'game.economy.streak_milestone_gems': def(z.record(z.string().regex(/^\d+$/), nonNegInt), { '7': 25, '30': 50, '100': 100, '365': 200 }, 'proposed', 'me-money §3.6'),
+  'game.economy.streak_milestone_gems': def(z.record(z.string().check(z.regex(/^\d+$/)), nonNegInt), { '7': 25, '30': 50, '100': 100, '365': 200 }, 'proposed', 'me-money §3.6'),
   'game.economy.first_revival_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
   'game.economy.referral_gems': def(nonNegInt, 50, 'proposed', 'me-money §3.6'),
   'game.shop.treats_max_held': def(posInt, 10, 'proposed', 'me-money §3.6'),
@@ -158,7 +158,7 @@ export const FLAG_REGISTRY = {
 
   // ── Leagues and social (R30, R32, tutor-social) ──────────────────────────
   'league.tier_names': def(
-    z.array(i18nText).length(10),
+    z.array(i18nText).check(z.length(10)),
     [
       { en: 'Seed', hi: 'बीज' },
       { en: 'Sprout', hi: 'अंकुर' },
@@ -276,7 +276,7 @@ export const FLAG_REGISTRY = {
   'ai.llm_moderation': def(bool, false, 'proposed', 'tutor-social §A7 (cheap-tier check after the word lists)'),
   'tutor.max_input_chars': owner(posInt, 'tutor-social §A13 (the API schema caps at 4000)'),
   // Verified against official sources by the owner and legal before launch (tutor-social §A7, AGENTS rule 3).
-  'safety.helplines': owner(z.object({ en: z.array(helpline), hi: z.array(helpline) }).partial(), 'tutor-social §A7'),
+  'safety.helplines': owner(z.partial(z.object({ en: z.array(helpline), hi: z.array(helpline) })), 'tutor-social §A7'),
   'analytics.min_answers_per_chapter': owner(posInt, 'practice §5.6'),
   'analytics.min_answers_per_subject': owner(posInt, 'practice §5.6'),
   'analytics.min_answers_total': owner(posInt, 'practice §5.6'),
@@ -307,7 +307,7 @@ export const FLAG_REGISTRY = {
   'learn.test_out_questions_per_topic': owner(posInt, 'learn §6.4'),
   'learn.video_complete_pct': owner(fraction, 'learn §8'),
   'learn.weak_filter_min_attempts': owner(posInt, 'ux/learn'),
-  'plan.time_options': def(z.array(posInt).min(1), [5, 10, 20, 30], 'proposed', 'learn §8 (defaults to R6 goal options)'),
+  'plan.time_options': def(z.array(posInt).check(z.minLength(1)), [5, 10, 20, 30], 'proposed', 'learn §8 (defaults to R6 goal options)'),
   'plan.swap_alternatives_max': owner(posInt, 'learn §8'),
   'search.recent_max': owner(posInt, 'learn §8'),
 
@@ -322,7 +322,7 @@ export const FLAG_REGISTRY = {
   'memory.leech_lapses': def(posInt, 8, 'proposed', 'memory-labs §5.3'),
   'memory.comeback.min_due': def(posInt, 60, 'proposed', 'memory-labs §5.2'),
   'memory.comeback.relearn_below': def(fraction, 0.5, 'ruling', 'memory-labs §5.2; 0.5 per the coordinator ruling of 30 Oct 2026'),
-  'memory.comeback.plan_lengths': def(z.array(posInt).min(1), [3, 5, 7], 'ruling', 'R22'),
+  'memory.comeback.plan_lengths': def(z.array(posInt).check(z.minLength(1)), [3, 5, 7], 'ruling', 'R22'),
   'memory.default_seconds_per_card': def(posInt, 10, 'proposed', 'memory-labs §5.2'),
   'memory.retention_presets': def(
     z.object({ relaxed: fraction, standard: fraction, exam: fraction }),
@@ -357,7 +357,7 @@ export const FLAG_REGISTRY = {
   'focus.away_note_after_min': def(posInt, 3, 'proposed', 'memory-labs §5.12'),
   'focus.cram_nudge_rounds': def(posInt, 4, 'proposed', 'memory-labs §5.12'),
   'lab.confirm_download_mb': def(posInt, 5, 'proposed', 'memory-labs §6.1'),
-  'lab.low_power_battery_pct': def(int.min(0).max(100), 20, 'proposed', 'memory-labs §6.2'),
+  'lab.low_power_battery_pct': def(int.check(z.gte(0), z.lte(100)), 20, 'proposed', 'memory-labs §6.2'),
   'sim.ready_timeout_ms': def(posInt, 8000, 'proposed', 'memory-labs §6.2'),
   'sim.ready_timeout_ms_low': def(posInt, 12000, 'proposed', 'memory-labs §6.2'),
   'sim.max_state_hz': def(posInt, 10, 'proposed', 'memory-labs §6.2'),
@@ -379,7 +379,7 @@ export const FLAG_REGISTRY = {
     'me-money §6.2, TRD §12',
   ),
   'notify.school_hours': def(z.object({ start: hhmm, end: hhmm }), { start: '08:00', end: '14:00' }, 'doc', 'me-money §6.2'),
-  'notify.smart.offset_hours': def(z.number().min(0), 23.5, 'doc', 'me-money §6.2'),
+  'notify.smart.offset_hours': def(z.number().check(z.gte(0)), 23.5, 'doc', 'me-money §6.2'),
   'notify.autopause_after_ignored': def(posInt, 7, 'ruling', 'R34, TRD §12'),
   'notify.templates.min_per_kind': def(posInt, 3, 'doc', 'me-money §6.2'),
   'notify.templates.repeat_gap_days': owner(posInt, 'me-money §6.2'),
@@ -389,7 +389,7 @@ export const FLAG_REGISTRY = {
   'notify.sleep_review.lead_min': def(posInt, 20, 'prd', 'PRD §5.4 ("about 20 minutes")'),
   'notify.plan_days': def(posInt, 7, 'doc', 'me-money §6.1'),
   'widget.evening_hour': owner(hour, 'me-money §6.6'),
-} as const satisfies Record<string, FlagDef<z.ZodType, boolean>>;
+} as const satisfies Record<string, FlagDef<z.ZodMiniType, boolean>>;
 
 export type FlagKey = keyof typeof FLAG_REGISTRY;
 export type FlagValue<K extends FlagKey> = z.infer<(typeof FLAG_REGISTRY)[K]['schema']>;
@@ -509,11 +509,9 @@ export function flagDefaultsDocument(): {
 export const defaultFlags: Flags = createFlags({});
 
 /** The flag map schema: a partial map of known keys to valid values. Unknown keys are rejected. */
-export const flagMapSchema = z
-  .object(
-    Object.fromEntries(FLAG_KEYS.map((k) => [k, FLAG_REGISTRY[k].schema.nullable().optional()])) as {
-      [K in FlagKey]: z.ZodOptional<z.ZodNullable<(typeof FLAG_REGISTRY)[K]['schema']>>;
+export const flagMapSchema = z.strictObject(
+    Object.fromEntries(FLAG_KEYS.map((k) => [k, z.optional(z.nullable(FLAG_REGISTRY[k].schema))])) as {
+      [K in FlagKey]: z.ZodMiniOptional<z.ZodMiniNullable<(typeof FLAG_REGISTRY)[K]['schema']>>;
     },
-  )
-  .strict();
+);
 export type FlagMap = z.infer<typeof flagMapSchema>;

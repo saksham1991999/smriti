@@ -18,6 +18,7 @@ import { AppShell } from "./shell/AppShell";
 import { RootLayout } from "./shell/RootLayout";
 import { NotFound, RouteError, RouteLoading } from "./shell/States";
 import { NotificationOpen, type NotificationSearch } from "./shell/NotificationOpen";
+import type { ReviewSearch } from "./screens/memory/Review";
 
 export interface RouterContext {
   services: Services;
@@ -122,6 +123,11 @@ const lessonCompleteRoute = createRoute({
 const reviewRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/review",
+  validateSearch: (s: Record<string, unknown>): ReviewSearch => ({
+    mode: s.mode === "normal" ? "normal" : undefined,
+    deck: typeof s.deck === "string" ? s.deck : undefined,
+    topic: typeof s.topic === "string" ? s.topic : undefined,
+  }),
   component: lazyRouteComponent(
     withNamespaces(["memory_labs"], () => import("./screens/memory/Review")),
     "Review",
@@ -212,6 +218,22 @@ const guardianLandingRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/guardian/$code",
   component: guardian("GuardianLanding"),
+});
+const focusRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/focus",
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs"], () => import("./screens/memory/Focus")),
+    "FocusScreen",
+  ),
+});
+const decksRoute = createRoute({
+  getParentRoute: () => shellRoute,
+  path: "/memory/decks",
+  component: lazyRouteComponent(
+    withNamespaces(["memory_labs"], () => import("./screens/memory/Decks")),
+    "Decks",
+  ),
 });
 const notificationRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -364,7 +386,7 @@ const meRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me",
   component: lazyRouteComponent(
-    withNamespaces(["me_money", "auth"], () => import("./screens/me/Me")),
+    withNamespaces(["me_money", "auth", "memory_labs"], () => import("./screens/me/Me")),
     "Me",
   ),
 });
@@ -414,6 +436,7 @@ const routeTree = rootRoute.addChildren([
   guardianLandingRoute,
   parentRoute,
   notificationRoute,
+  focusRoute,
   mockRoute,
   attemptRoute,
   reportRoute,
@@ -427,6 +450,7 @@ const routeTree = rootRoute.addChildren([
     topicRoute,
     labsRoute,
     labRoute,
+    decksRoute,
     practiceRoute,
     mocksRoute,
     pyqRoute,

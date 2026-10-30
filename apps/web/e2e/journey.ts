@@ -359,3 +359,38 @@ export async function parentTurnsOff(
   await expect(row).toHaveAttribute("data-on", "false");
   await page.getByTestId("parent-exit").click();
 }
+
+/** MEM-07 decks → MEM-03 review (Good on every card) → MEM-04 complete; MEM-28 → MEM-29 focus. */
+export async function memory(page: Page) {
+  await page.goto("/memory/decks");
+  await expect(page.getByTestId("mem-07")).toBeVisible();
+  await expectAccessible(page, "MEM-07");
+  await page.goto("/review?mode=normal");
+  for (let i = 0; i < 40; i++) {
+    if (await visible(page.getByTestId("mem-04"), 300)) break;
+    const show = page.getByTestId("show-answer");
+    if (await visible(show, 300)) {
+      await show.click();
+      await page.getByTestId("rating-buttons").getByRole("button").nth(2).click();
+      continue;
+    }
+    const skip = page.getByTestId("review-missing").getByRole("button");
+    if (await visible(skip, 300)) await skip.click();
+  }
+  await expect(page.getByTestId("mem-04")).toBeVisible();
+  await expectAccessible(page, "MEM-04");
+  await page.goto("/focus");
+  await expect(page.getByTestId("mem-28")).toBeVisible();
+  await expectAccessible(page, "MEM-28");
+  await page.getByTestId("focus-start").click();
+  await expect(page.getByTestId("mem-29")).toHaveAttribute("data-phase", "focus");
+  await expectAccessible(page, "MEM-29");
+  await page.getByTestId("focus-pause").click();
+  await page
+    .getByTestId("mem-29")
+    .getByRole("button", { name: /close|बंद/i })
+    .first()
+    .click();
+  await page.getByTestId("focus-end").getByRole("button").first().click();
+  await expect(page.getByTestId("mem-30")).toBeVisible();
+}

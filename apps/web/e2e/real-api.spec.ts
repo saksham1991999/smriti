@@ -24,6 +24,7 @@ import {
   finishFirstWin,
   guardianHandoff,
   guardianLink,
+  memory,
   mockAttempt,
   onboard,
   parentTurnsOff,
@@ -194,6 +195,9 @@ test("teen asks a guardian on the real API (en)", async ({ page, browser }) => {
   await page.getByTestId("save-plant-link").click();
   await devGoogle(page, `teen-${stamp}@example.test`, "Ravi Teen");
   await expect(page.getByTestId("auth-01")).toBeHidden();
+
+  await memory(page);
+  expect(calls.some((c) => /PATCH \/v1\/notification-prefs 200/.test(c))).toBe(true);
 
   await guardianHandoff(page, "social", guardian);
   expect(calls.some((c) => /POST \/v1\/guardian\/consent-requests 201/.test(c))).toBe(true);

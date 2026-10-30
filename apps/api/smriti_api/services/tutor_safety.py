@@ -22,7 +22,7 @@ import json
 import re
 import uuid
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, cast
 
 from smriti_api.ai.gateway import AIGateway
 from smriti_api.ai.interfaces import AIError, ChatMessage
@@ -123,9 +123,23 @@ _MODERATION_PROMPT = (
 async def moderate(ai: AIGateway, text: str, user_id: uuid.UUID, *, under_13: bool) -> Verdict:
     """The model layer (``cheap`` tier). A reply that isn't the expected JSON allows the message:
     the keyword layer has already run, and the tutor prompt keeps to study topics."""
+    verdict = await moderate_or_none(ai, text, user_id, under_13=under_13)
+    return verdict if verdict is not None else Verdict()
+
+
+async def moderate_or_none(
+    ai: AIGateway,
+    text: str,
+    user_id: uuid.UUID,
+    *,
+    under_13: bool,
+    feature: str = "tutor_moderation",
+) -> Verdict | None:
+    """The same model check, but ``None`` when the model call fails or its reply isn't the
+    expected JSON, so a caller that must fail closed (minors' shared decks) can tell."""
     try:
         result = await ai.complete(
-            feature="tutor_moderation",
+            feature=feature,
             tier="cheap",
             messages=[
                 ChatMessage("system", _MODERATION_PROMPT),
@@ -136,15 +150,17 @@ async def moderate(ai: AIGateway, text: str, user_id: uuid.UUID, *, under_13: bo
             temperature=0,
         )
     except AIError:
-        return Verdict()
+        return None
     try:
         category = json.loads(result.text).get("category")
     except (json.JSONDecodeError, AttributeError):
-        return Verdict()
+        return None
+    if not isinstance(category, str):
+        return None
     if category == "crisis":
         return Verdict("crisis", "queued")
     if category in ("violence", "weapons", "drugs", "sexual", "cheating", "personal_data"):
-        return Verdict(category, "blocked")
+        return Verdict(cast(Category, category), "blocked")
     if category == "off_topic" and under_13:
         # Under-13s are steered back to the topic (tutor-social §A7), not refused.
         return Verdict("off_topic", "allowed")

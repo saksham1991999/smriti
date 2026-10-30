@@ -26,6 +26,7 @@ from smriti_api.services import (
     card_index,
     exports,
     guardian,
+    learning_science,
     media,
     mocks,
     notify,
@@ -107,6 +108,16 @@ async def tutor_retention(ctx: Ctx) -> int:
     if count:
         log.info("tutor_messages_purged", count=count)
     return count
+
+
+async def weak_area_alerts(ctx: Ctx) -> int:
+    """Predictive weak-area alerts from FSRS retrievability (TRD §9.6)."""
+    return await learning_science.weak_area_alerts(_deps(ctx).db)
+
+
+async def rhythm_estimates(ctx: Ctx) -> int:
+    """Adults' usual bedtime and study hour, for sleep review and smart timing (TRD §9.6)."""
+    return await learning_science.estimate_rhythms(_deps(ctx).db)
 
 
 async def ping(ctx: Ctx) -> str:

@@ -59,6 +59,8 @@ DefaultWorker = _settings(
         jobs.media_sweep,
         jobs.mocks_auto_submit,
         jobs.tutor_retention,
+        jobs.weak_area_alerts,
+        jobs.rhythm_estimates,
         jobs.ping,
     ],
     cron_jobs=[
@@ -81,6 +83,10 @@ DefaultWorker = _settings(
         cron(jobs.mocks_auto_submit, second=30, unique=True),
         # Tutor: messages past ai.tutor_retention_days, daily.
         cron(jobs.tutor_retention, hour=2, minute=15, unique=True),
+        # Learning science (TRD §9.6), nightly in India: weak-area alerts are queued for the
+        # next day's usual hour; the rhythm estimates feed sleep review and smart timing.
+        cron(jobs.rhythm_estimates, hour=20, minute=45, unique=True),
+        cron(jobs.weak_area_alerts, hour=21, minute=0, unique=True),
     ],
 )
 ContentPublishWorker = _settings(

@@ -22,6 +22,8 @@ export {
   type FlagSource,
   type FlagValue,
   type Flags,
+  FLAG_DEFAULTS_FILE,
+  flagDefaultsDocument,
 } from './flags';
 export {
   APP_ENVS,

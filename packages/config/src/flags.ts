@@ -57,6 +57,10 @@ const intList = z.array(int);
 const byAudience = <S extends z.ZodType>(s: S) => z.object({ adult: s, teen: s, child: s });
 const byPlatform = <S extends z.ZodType>(s: S) => z.object({ web: s, ios: s, android: s });
 const i18nText = z.object({ en: z.string().min(1), hi: z.string().min(1) });
+/** A two-part generated name ("{first} {second} {n}"): EN and HI words with stable ids. */
+const word = z.object({ id: z.string().regex(/^[a-z0-9_]+$/), en: z.string().min(1), hi: z.string().min(1) });
+const wordPairs = z.object({ first: z.array(word), second: z.array(word) });
+const helpline = z.object({ name: z.string().min(1), number: z.string().min(1) }).catchall(z.string());
 
 export const FLAG_REGISTRY = {
   // ── Auth and accounts (flows/auth.md §10.1) ───────────────────────────────
@@ -170,9 +174,46 @@ export const FLAG_REGISTRY = {
     'R30, PRD §7',
     ['leagues.tiers'],
   ),
-  'league.group_size': def(posInt, 30, 'ruling', 'R30, PRD §7', ['leagues.group_size']),
+  'league.group_size': def(posInt, 30, 'ruling', 'R30, PRD §7', ['leagues.group_size', 'league_cohort_size']),
+  'league.promote_count': def(nonNegInt, 7, 'ruling', 'R30, tutor-social B6, Q-B2', ['league_promote_count']),
+  'league.demote_count': def(nonNegInt, 5, 'ruling', 'R30, tutor-social B6, Q-B2', ['league_demote_count']),
+  'league.close_time': def(hhmm, '23:59', 'doc', 'TRD §10 (Sunday, IST), tutor-social B6', ['league_close_time']),
   'social.duo_max_partners': def(posInt, 5, 'ruling', 'R32, tutor-social B8', ['duo_max_partners']),
   'social.deck_listing': def(bool, false, 'doc', 'tutor-social B12'),
+  'social.friend_request_ttl_days': owner(posInt, 'tutor-social B5', ['friend_request_ttl_days']),
+  'social.friend_requests_per_day': owner(posInt, 'tutor-social B5', ['friend_requests_per_day']),
+  'social.max_friends': owner(posInt, 'tutor-social B5', ['max_friends']),
+  'social.handle_change_days': owner(posInt, 'tutor-social B14', ['handle_change_days']),
+  'social.handle_reserve_days': def(posInt, 30, 'doc', 'tutor-social B14 ("reserved for 30 days")'),
+  'social.duo_invite_ttl_days': owner(posInt, 'tutor-social B8', ['duo_invite_ttl_days']),
+  'social.duo_nudges_per_day': owner(posInt, 'tutor-social B8', ['duo_nudges_per_day']),
+  'social.cheers_per_friend_per_day': owner(posInt, 'tutor-social B11', ['cheers_per_friend_per_day']),
+  'social.nudges_per_friend_per_day': owner(posInt, 'tutor-social B11', ['nudges_per_friend_per_day']),
+  'social.squad_max_members': def(posInt, 20, 'doc', 'tutor-social B9 (DB default)', ['squad_max_members']),
+  'social.squads_per_user': def(posInt, 3, 'proposed', 'tutor-social B9 (recommended)', ['squads_per_user']),
+  // The EN and HI word list for minors' public nicknames (R31 amended). It needs a named owner and a
+  // safety review of every pair before use (Q-B11), so nothing ships here: until it is set, minors
+  // appear as `social.nickname_fallback` plus their number ("Learner 27").
+  'social.nickname_words': owner(wordPairs, 'R31 amended, tutor-social B1, Q-B11 (safety review pending)'),
+  'social.nickname_fallback': def(i18nText, { en: 'Learner', hi: 'शिक्षार्थी' }, 'proposed', 'R31 amended (until Q-B11 is closed)'),
+  'social.squad_name_words': owner(wordPairs, 'tutor-social B9, G-S6 (name picker list in config)'),
+
+  // ── Duels (tutor-social B10; anti-abuse values are owner flags, Q-B10) ────
+  'duel.question_count': def(posInt, 10, 'prd', 'PRD §8, tutor-social B10', ['duel_question_count']),
+  'duel.question_seconds': owner(posInt, 'tutor-social B10', ['duel_question_seconds']),
+  'duel.question_seconds_u13': owner(posInt, 'tutor-social B10 §9', ['duel_question_seconds_u13']),
+  'duel.invite_live_seconds': def(posInt, 60, 'proposed', 'tutor-social B10 (recommended 60)', ['duel_invite_live_seconds']),
+  'duel.async_ttl_hours': def(posInt, 24, 'proposed', 'tutor-social B10 (recommended 24)', ['duel_async_ttl_hours']),
+  'duel.match_timeout_seconds': def(posInt, 10, 'ruling', 'R31, tutor-social B10', ['duel_match_timeout_seconds']),
+  'duel.disconnect_grace_seconds': def(posInt, 15, 'proposed', 'tutor-social B10 (recommended 15)', ['duel_disconnect_grace_seconds']),
+  'duel.rematch_wait_seconds': owner(posInt, 'tutor-social B10', ['duel_rematch_wait_seconds']),
+  'duel.min_answer_ms': owner(posInt, 'tutor-social B10, Q-B10', ['duel_min_answer_ms']),
+  'duel.quit_limit': owner(posInt, 'tutor-social B10, Q-B10', ['duel_quit_limit']),
+  'duel.quit_window_hours': owner(posInt, 'tutor-social B10, Q-B10', ['duel_quit_window_hours']),
+  'duel.quit_cooldown_minutes': owner(posInt, 'tutor-social B10, Q-B10', ['duel_quit_cooldown_minutes']),
+  'duel.speed_bonus_max': owner(nonNegInt, 'tutor-social B10 ("a speed bonus from config")'),
+  'xp.duel_per_correct': owner(nonNegInt, 'tutor-social B10, R51'),
+  'xp.duel_win': owner(nonNegInt, 'tutor-social B10, R51'),
 
   // ── Free vs Pro limits (PRD §11.1, R16, R25, R35) ────────────────────────
   'free.practice_questions_per_day': def(nonNegInt, 30, 'prd', 'PRD §11.1, R25, practice §4.1'),
@@ -216,6 +257,21 @@ export const FLAG_REGISTRY = {
   // ── Mocks and analytics thresholds (owner: practice §9.2) ────────────────
   'mock.min_attempts_for_percentile': owner(posInt, 'R26, practice §6.10'),
   'mock.free_grace_min': owner(posInt, 'practice §4.1, Q3'),
+  'mock.offline_grace_s': owner(nonNegInt, 'practice §6.6 (not set: no grace past the deadline)'),
+  'report.fix_next_count': owner(posInt, 'practice §6.10 (not set: every next step)'),
+  'practice.weak_min_attempts': owner(posInt, 'practice §5.2'),
+  'practice.weak_accuracy_below': owner(fraction, 'practice §5.2'),
+  'practice.weak_sure_wrong_min': owner(posInt, 'practice §5.2'),
+  'practice.weak_recent_mocks': owner(posInt, 'practice §5.2'),
+  'daily.min_players_for_rank': owner(posInt, 'practice §5.5 (PRC-12)'),
+
+  // ── AI tutor (tutor-social Part A) ───────────────────────────────────────
+  'ai.tutor_retention_days': def(posInt, 180, 'doc', 'tutor-social §A7, §A14 (180-day retention)'),
+  'ai.tutor_session_reuse_min': def(posInt, 30, 'doc', 'tutor-social §A5 step 1 (last 30 minutes)'),
+  'ai.llm_moderation': def(bool, false, 'proposed', 'tutor-social §A7 (cheap-tier check after the word lists)'),
+  'tutor.max_input_chars': owner(posInt, 'tutor-social §A13 (the API schema caps at 4000)'),
+  // Verified against official sources by the owner and legal before launch (tutor-social §A7, AGENTS rule 3).
+  'safety.helplines': owner(z.object({ en: z.array(helpline), hi: z.array(helpline) }).partial(), 'tutor-social §A7'),
   'analytics.min_answers_per_chapter': owner(posInt, 'practice §5.6'),
   'analytics.min_answers_per_subject': owner(posInt, 'practice §5.6'),
   'analytics.min_answers_total': owner(posInt, 'practice §5.6'),
@@ -414,6 +470,33 @@ export function createFlags(serverFlags: Record<string, unknown> | undefined = {
       for (const key of FLAG_KEYS) out[key] = resolve(key);
       return out as { [K in FlagKey]: FlagResult<K> };
     },
+  };
+}
+
+/** Where the server's copy of the defaults lives, relative to this package. */
+export const FLAG_DEFAULTS_FILE = 'flag-defaults.json';
+
+/**
+ * The registry's defaults as plain JSON, for the API (`apps/api` reads `flag-defaults.json`, so
+ * the server and the apps share one set of defaults). Regenerate with `pnpm --filter
+ * @smriti/config flags:export`; a test fails when the file is stale.
+ */
+export function flagDefaultsDocument(): {
+  note: string;
+  flags: Record<string, { default: unknown; source: FlagSource }>;
+  aliases: Record<string, string>;
+} {
+  const flags: Record<string, { default: unknown; source: FlagSource }> = {};
+  const aliases: Record<string, string> = {};
+  for (const key of [...FLAG_KEYS].sort()) {
+    const defn: FlagDef = FLAG_REGISTRY[key];
+    flags[key] = { default: defn.default, source: defn.source };
+    for (const alias of defn.aliases ?? []) aliases[alias] = key;
+  }
+  return {
+    note: 'Generated from packages/config/src/flags.ts by `pnpm --filter @smriti/config flags:export`. Do not edit.',
+    flags,
+    aliases: Object.fromEntries(Object.entries(aliases).sort(([a], [b]) => a.localeCompare(b))),
   };
 }
 

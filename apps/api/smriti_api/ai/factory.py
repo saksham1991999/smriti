@@ -99,14 +99,18 @@ def build_gateway(
             tiers,
             settings.ai_image_timeout_s,
         )
-        if settings.deepgram_api_key:
+        if (
+            settings.deepgram_api_key
+            and settings.deepgram_tts_model
+            and settings.deepgram_stt_model
+        ):
             tts = DeepgramTTSProvider(http, settings.deepgram_api_key, settings.deepgram_tts_model)
             stt = DeepgramSTTProvider(http, settings.deepgram_api_key, settings.deepgram_stt_model)
         elif settings.is_dev:
             tts, stt = FakeTTSProvider(), FakeSTTProvider()
         else:
             tts, stt = UnavailableSpeech("Deepgram"), UnavailableSpeech("Deepgram")
-        if settings.gemini_api_key:
+        if settings.gemini_api_key and settings.gemini_live_model:
             voice = GeminiLiveVoiceProvider(
                 http, settings.gemini_api_key, settings.gemini_live_model
             )

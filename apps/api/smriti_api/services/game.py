@@ -210,6 +210,14 @@ async def gem_ledger(
 ) -> Page[a.GemLedgerEntry]:
     n = clamp_limit(limit)
     after = decode_cursor(cursor)
+    at: datetime | None = None
+    after_id: uuid.UUID | None = None
+    if after:
+        try:
+            at = datetime.fromisoformat(str(after["at"]))
+            after_id = uuid.UUID(str(after["id"]))
+        except (KeyError, ValueError) as exc:
+            raise ApiError(400, "invalid_cursor", "The cursor is not valid") from exc
     async with db.user_tx(auth.claims) as session:
         rows = (
             await session.execute(
@@ -220,8 +228,8 @@ async def gem_ledger(
                 ),
                 {
                     "u": auth.user_id,
-                    "at": after.get("at") if after else None,
-                    "id": after.get("id") if after else None,
+                    "at": at,
+                    "id": after_id,
                     "n": n + 1,
                 },
             )

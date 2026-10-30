@@ -174,4 +174,11 @@ def rate_limited(name: str, limit_attr: str, window_s: int, by: str = "user") ->
     return Depends(dep)
 
 
-IdempotencyKey = Annotated[str | None, Header(alias="Idempotency-Key", max_length=128)]
+def idempotency_key(
+    key: Annotated[str | None, Header(alias="Idempotency-Key", max_length=128)] = None,
+) -> str | None:
+    """The optional ``Idempotency-Key`` header; endpoints decide whether it is required."""
+    return key
+
+
+IdempotencyKey = Annotated[str | None, Depends(idempotency_key)]

@@ -398,6 +398,10 @@ async def merge_guest(
     except DomainError as exc:
         await _finish(db, merge_id, "failed", {}, exc.code)
         return {"status": "failed", "failure_code": exc.code}
+    except Exception:
+        # Leave A's data in place under A, mark the attempt failed, and let the queue retry.
+        await _finish(db, merge_id, "failed", {}, "merge_error")
+        raise
     await deps.auth_admin.delete_user(a)
     await deps.analytics.alias(a, b)
     await deps.analytics.emit(
@@ -428,7 +432,7 @@ async def _merge_data(
 ) -> dict[str, Any]:
     async with db.system_tx() as session:
         await session.execute(
-            text("select pg_advisory_xact_lock(hashtext(cast(:b as text)))"), {"b": b}
+            text("select pg_advisory_xact_lock(hashtext(cast(:b as text)))"), {"b": str(b)}
         )
         await lock_state(session, b)
         a_profile = (

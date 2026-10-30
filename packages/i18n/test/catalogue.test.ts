@@ -8,7 +8,7 @@ import { describe, expect, it } from 'vitest';
 import { GLOSSARY_HI, NAMESPACES, SCREENS, allMessages, createI18n, k, littleLearnerVariants, resources } from '../src';
 import { uiStringsEn, uiStringsHi } from '../src/ui';
 // @ts-expect-error: plain ESM script without types
-import { brandToken, compositeParts, extractFile, slugify, splitCombined, splitRow } from '../scripts/extract.mjs';
+import { brandToken, compositeParts, extractFile, pluralizeCounts, priceToken, slugify, splitCombined, splitRow } from '../scripts/extract.mjs';
 
 const messages = allMessages();
 
@@ -83,6 +83,21 @@ describe('catalogue lint', () => {
     }
   });
 
+  it('no hard-coded prices: amounts come from the server as {price} and {intro_price}', () => {
+    const bad = messages.filter(([, , en, hi]) => /₹\s?\d/.test(en) || /₹\s?\d/.test(hi)).map(([ns, key]) => `${ns}:${key}`);
+    expect(bad).toEqual([]);
+    expect(resources.en.tutor_social['AI-06.primary']).toBe('Try Pro for {intro_price}');
+  });
+
+  it('counted nouns are ICU plurals, and composite parts have balanced brackets', () => {
+    const plainCounts = messages.filter(([, , en]) => /\{[a-z_]+\}( more)? (cards|lessons|questions|days|gems|topics|reviews)\b/.test(en)).map(([ns, key]) => `${ns}:${key}`);
+    expect(plainCounts).toEqual([]);
+    const unbalanced = messages.filter(([, key, en]) => /\.\d+$/.test(key) && (en.split('[').length !== en.split(']').length)).map(([ns, key]) => `${ns}:${key}`);
+    expect(unbalanced).toEqual([]);
+    expect(resources.en.learn['HOME-01.hero_next_topic.2']).toBe('Start deep dive');
+    expect(resources.en.learn['HOME-01.hero_next_topic.3']).toBe('Start quick revision');
+  });
+
   it('screens index covers every key prefix (the hand-kept ui namespace has no screens)', () => {
     for (const [ns, key] of messages) {
       if (ns === 'ui') continue;
@@ -131,6 +146,19 @@ describe('runtime', () => {
     expect(Object.keys(uiStringsHi).sort()).toEqual(Object.keys(uiStringsEn).sort());
   });
 
+  it('formats plurals and server prices in both locales', () => {
+    const en = createI18n({ locale: 'en', brand: 'Smriti' });
+    expect(en.t('auth:AUTH-01.stat_tiles.2', { n: 1 })).toBe('1 lesson');
+    expect(en.t('auth:AUTH-01.stat_tiles.2', { n: 3 })).toBe('3 lessons');
+    expect(en.t('tutor_social:AI-06.primary', { intro_price: '₹1' })).toBe('Try Pro for ₹1');
+    expect(en.t('learn:WEB-01.chapters_count', { n: 1 })).toBe('1 chapter');
+    expect(en.t('practice:PRC-01.tile_tutor')).toBe('Tutor');
+    expect(en.t('tutor_social:AI-02.title')).toBe('Tutor');
+    const hi = createI18n({ locale: 'hi', brand: 'Smriti' });
+    expect(hi.t('me_money:ME-18.not_enough', { n: 1 })).toContain('1 जेम ');
+    expect(hi.t('me_money:ME-18.not_enough', { n: 5 })).toContain('5 जेम्स');
+  });
+
   it('tr() picks the little-learner variant', () => {
     const tr = createI18n({ locale: 'hi', brand: 'Smriti', littleLearner: true });
     expect(tr.tr('learn:LRN-11.read_to_me')).toBe('मुझे पढ़कर सुनाओ');
@@ -143,6 +171,18 @@ describe('runtime', () => {
 });
 
 describe('extractor', () => {
+  it('price tokens and plurals', () => {
+    expect(priceToken('₹1 for the first month, then ₹99/month')).toEqual({ value: '{intro_price} for the first month, then {price}/month', unknown: [] });
+    expect(priceToken('Only ₹149').unknown).toEqual(['₹149']);
+    expect(pluralizeCounts('{n} more cards · {minutes} min', '{n} और कार्ड · {minutes} मिनट')).toEqual({
+      en: '{n, plural, one {# more card} other {# more cards}} · {minutes} min',
+      hi: '{n, plural, one {# और कार्ड} other {# और कार्ड}} · {minutes} मिनट',
+    });
+    expect(pluralizeCounts('{n} gems', '{n} जेम्स').hi).toBe('{n, plural, one {# जेम} other {# जेम्स}}');
+    expect(pluralizeCounts('{name} wins', '{name} जीते')).toEqual({ en: '{name} wins', hi: '{name} जीते' });
+    expect(compositeParts('Up next · [Go] / [Stop]', 'अगला · [चलें] / [रुकें]')).toEqual([['Up next', 'अगला'], ['Go', 'चलें'], ['Stop', 'रुकें']]);
+  });
+
   it('slugs, rows and splitting', () => {
     expect(slugify('Title, `lesson_3`')).toBe('title_lesson_3');
     expect(slugify("Today's {n} plan")).toBe('today_s_n_plan');

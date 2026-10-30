@@ -1953,6 +1953,137 @@ The placement chip matches the string onboarding defined for ONB-13 ("छोट�
 
 ---
 
+## WEB · App shell and lesson player chrome
+
+Strings the web and mobile apps render around the screens above: navigation, connection and error states, the development-only test sign-in and test payment sheets, and the lesson player's card labels. Counts use ICU plurals. Both apps read these keys from `@smriti/i18n` (`learn:WEB-01.*`, `learn:WEB-02.*`).
+
+### WEB-01 · App shell (web and mobile)
+
+Tabs, skip link, offline and back-online banners, not-found and error pages, the language and theme switches, and the development-only sheets (shown only when `APP_ENV` is `local` or `test`).
+
+**Copy:**
+
+| Key | EN | HI |
+|---|---|---|
+| Back | Back | वापस |
+| Back online | Back online. Saving your progress now. | फिर से ऑनलाइन। आपकी प्रगति सेव हो रही है। |
+| Chapters count | {n, plural, one {# chapter} other {# chapters}} | {n, plural, one {# अध्याय} other {# अध्याय}} |
+| Dev email | Test email | टेस्ट ईमेल |
+| Dev email error | Type an email with an @ | @ वाला ईमेल लिखें |
+| Dev name | Name | नाम |
+| Dev sign in body | There is no Google here. Type any test email to stand in for a Google account. | यहाँ Google नहीं है। Google खाते की जगह कोई भी टेस्ट ईमेल लिखें। |
+| Dev sign in title | Test sign-in (development only) | टेस्ट साइन-इन (केवल डेवलपमेंट) |
+| Dev submit | Continue | जारी रखें |
+| Error action | Reload | फिर से लोड करें |
+| Error body | Your progress is safe. Try reloading the page. | आपकी प्रगति सुरक्षित है। पेज फिर से लोड करके देखें। |
+| Error title | Something went wrong | कुछ गड़बड़ हो गई |
+| Fake pay approve | Approve payment | पेमेंट मंज़ूर करें |
+| Fake pay body | No money moves. Pick what the bank answers. | कोई पैसा नहीं कटेगा। चुनें कि बैंक क्या जवाब दे। |
+| Fake pay decline | Decline payment | पेमेंट मना करें |
+| Fake pay title | Test payment (development only) | टेस्ट पेमेंट (केवल डेवलपमेंट) |
+| Fixture notice | Sample content for testing | टेस्टिंग के लिए नमूना सामग्री |
+| Language button | हिन्दी | English |
+| Language button a11y | Switch to Hindi | अंग्रेज़ी में बदलें |
+| Learned | Learned | सीख लिया |
+| Load error | That didn't load. Check your internet and try again. | यह लोड नहीं हुआ। इंटरनेट देखकर फिर से कोशिश करें। |
+| Loading | Loading | लोड हो रहा है |
+| Main nav | Main | मुख्य |
+| Minutes | {n} min | {n} मिनट |
+| Not found action | Go to Home | होम पर जाएँ |
+| Not found body | It may have moved. Let's get you back to learning. | शायद यह कहीं और चला गया है। चलिए, वापस पढ़ाई पर चलते हैं। |
+| Not found title | We couldn't find that page | हमें यह पेज नहीं मिला |
+| Offline banner | You're offline. Your progress is saved on this device. | आप ऑफ़लाइन हैं। आपकी प्रगति इस डिवाइस पर सुरक्षित है। |
+| Retry | Try again | फिर से कोशिश करें |
+| See all | See all | सभी देखें |
+| Skip link | Skip to content | सामग्री पर जाएँ |
+| Start | Start | शुरू करें |
+| Tab labs | Labs | लैब |
+| Tab learn | Learn | सीखें |
+| Tab me | Me | मैं |
+| Tab practice | Practice | प्रैक्टिस |
+| Theme dark a11y | Switch to Night Colour | नाइट कलर पर जाएँ |
+| Theme light a11y | Switch to light colours | हल्के रंगों पर जाएँ |
+| Topics count | {n, plural, one {# topic} other {# topics}} | {n, plural, one {# टॉपिक} other {# टॉपिक}} |
+| Your subjects | Your subjects | आपके विषय |
+
+### WEB-02 · Lesson player labels
+
+Card kind names, widget hints and accessibility labels used by the lesson player on both platforms (LES-01 to LES-14).
+
+**Copy:**
+
+| Key | EN | HI |
+|---|---|---|
+| Adult supervision | Do this with a grown-up. | इसे किसी बड़े के साथ करें। |
+| Answer | Answer | जवाब |
+| Assertion | Assertion | अभिकथन |
+| Blank n | Blank {n} | रिक्त स्थान {n} |
+| Box for item | Box for {item} | {item} का डिब्बा |
+| Choose | Choose | चुनें |
+| Correct answer | Correct answer | सही जवाब |
+| Graph x | x | x |
+| Graph y | y | y |
+| Kind animation | Animation | एनिमेशन |
+| Kind cheat sheet | Cheat sheet | चीट शीट |
+| Kind common traps | Common traps | आम गलतियाँ |
+| Kind derivation | Derivation | व्युत्पत्ति |
+| Kind experiment | Experiment | प्रयोग |
+| Kind explainer | Explainer | समझें |
+| Kind formula | Formula | फ़ॉर्मूला |
+| Kind interactive | Try it | करके देखें |
+| Kind memory hook | Memory trick | याद रखने की ट्रिक |
+| Kind model3d | 3D model | 3D मॉडल |
+| Kind pano360 | 360° view | 360° व्यू |
+| Kind question | Question | सवाल |
+| Kind roleplay | Role-play | रोल-प्ले |
+| Kind sim | Lab | लैब |
+| Kind story | Story | कहानी |
+| Kind summary | Summary | सारांश |
+| Kind video | Video | वीडियो |
+| Kind worked example | Worked example | हल किया हुआ उदाहरण |
+| Lab fallback title | The lab isn't ready on this device yet | यह लैब अभी इस डिवाइस पर तैयार नहीं है |
+| Label for spot | Label for spot {n} | स्थान {n} का लेबल |
+| List one | List I | सूची I |
+| List two | List II | सूची II |
+| Materials | You need | आपको चाहिए |
+| Matrix hint | Tick every match in each row | हर पंक्ति में हर सही मिलान पर टिक करें |
+| Media missing | Picture coming soon | तस्वीर जल्द आएगी |
+| Model fallback title | The 3D view isn't ready on this device yet | 3D व्यू अभी इस डिवाइस पर तैयार नहीं है |
+| Move down a11y | Move {step} down | {step} को नीचे ले जाएँ |
+| Move up a11y | Move {step} up | {step} को ऊपर ले जाएँ |
+| Next card | Next card | अगला कार्ड |
+| Online only body | This card needs internet. Skipping it never counts against you. | इस कार्ड के लिए इंटरनेट चाहिए। इसे छोड़ने से आपका कुछ नहीं कटेगा। |
+| Online only title | Needs internet | इंटरनेट चाहिए |
+| Order hint | Put the steps in order | स्टेप सही क्रम में लगाएँ |
+| Pano fallback title | The 360° view isn't ready on this device yet | 360° व्यू अभी इस डिवाइस पर तैयार नहीं है |
+| Passage | Read the passage | अनुच्छेद पढ़ें |
+| Pick match | Match for {item} | {item} का मिलान |
+| Play video | Play video | वीडियो चलाएँ |
+| Previous card a11y | Previous card | पिछला कार्ड |
+| Problem | Problem | सवाल |
+| Read only note | You've done this card. | यह कार्ड आप कर चुके हैं। |
+| Reason | Reason | कारण |
+| Roleplay unavailable | Role-play with the tutor is coming soon. | ट्यूटर के साथ रोल-प्ले जल्द आ रहा है। |
+| Safety | Stay safe | सुरक्षित रहें |
+| Show solution | Show the solution | हल दिखाएँ |
+| Skip task | Skip task | काम छोड़ें |
+| Slider value | Value | मान |
+| Sort hint | Put each item in the right box | हर चीज़ को सही डिब्बे में रखें |
+| Statement n | Statement {n} | कथन {n} |
+| Steps | Steps | स्टेप |
+| Symbols | What the symbols mean | चिह्नों का मतलब |
+| Tap reveal hint | Tap each tile to see what's inside | हर टाइल पर टैप करके अंदर देखें |
+| Task first | Finish the task above to go on. | आगे जाने के लिए ऊपर का काम पूरा करें। |
+| Transcript | Read the transcript | ट्रांसक्रिप्ट पढ़ें |
+| Type a number | Type a number | एक संख्या लिखें |
+| Why it works | Why it works | ऐसा क्यों होता है |
+| Why step | Why | क्यों |
+| Widget right | That's right! | बिल्कुल सही! |
+| Widget wrong | Not quite. Look at the highlighted ones. | पूरी तरह सही नहीं। हाइलाइट किए हुए देखें। |
+| Works when | Works when | कब लागू होता है |
+| Xp chip | +{xp} XP | +{xp} XP |
+| Your answer | Your answer | आपका जवाब |
+
 ## Appendix A · P0 screens for the visual mocks
 
 | Screen | States to mock |

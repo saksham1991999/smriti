@@ -38,6 +38,7 @@ export * from './home/plan';
 
 export * from './entitlements/entitlement';
 export * from './entitlements/limits';
+export * from './entitlements/price';
 
 export * from './store/appStore';
 

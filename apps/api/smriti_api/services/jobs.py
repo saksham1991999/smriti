@@ -21,6 +21,7 @@ from smriti_api.services.auth_admin import AuthAdmin
 if TYPE_CHECKING:
     from smriti_api.ai.gateway import AIGateway
     from smriti_api.integrations import Integrations
+    from smriti_api.integrations.realtime import RealtimePublisher
 
 log = structlog.get_logger(__name__)
 
@@ -50,6 +51,7 @@ class JobDeps:
     # Wave 2 (Agent A): notifications, PDF and media jobs need these; older jobs ignore them.
     integrations: Integrations | None = None
     ai: AIGateway | None = None
+    realtime: RealtimePublisher | None = None
 
 
 JobFn = Callable[..., Awaitable[Any]]

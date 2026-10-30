@@ -88,6 +88,10 @@ class IntegrationSettings(BaseSettings):
     app_attest_root_ca_pem: str = ""
     attestation_nonce_ttl_s: int = 300
 
+    # Realtime fan-out for live mocks: supabase | redis. Supabase when its URL and service key are
+    # set outside local; Redis pub/sub (and the SSE stream) always.
+    realtime_provider: str = ""
+
     # Public links in emails and pushes
     guardian_link_base_url: str = "https://smriti.app/guardian/"
     brand_name: str = "Smriti"

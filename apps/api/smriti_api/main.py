@@ -24,12 +24,15 @@ from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.core.redis import create_redis
 from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.integrations import build_integrations
+from smriti_api.integrations.realtime import build_realtime
+from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
 from smriti_api.routes import billing as billing_routes
 from smriti_api.routes import exports as exports_routes
 from smriti_api.routes import guardian as guardian_routes
 from smriti_api.routes import insights as insights_routes
 from smriti_api.routes import integrity as integrity_routes
+from smriti_api.routes import live as live_routes
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import practice as practice_routes
@@ -56,6 +59,14 @@ async def build_services(settings: Settings) -> AppServices:
     analytics = ConsentAwareAnalytics(LogAnalyticsSink(), db)
     integrations = build_integrations(settings, http)
     ai = build_gateway(settings, db, http)
+    realtime = build_realtime(
+        provider=get_integration_settings().realtime_provider,
+        dev=settings.is_dev,
+        http=http,
+        redis=redis,
+        supabase_url=settings.supabase_url,
+        service_key=settings.supabase_service_role_key,
+    )
     jobs: JobQueue
     if settings.effective_jobs_mode == JobsMode.inline:
         jobs = InlineJobQueue(
@@ -65,6 +76,7 @@ async def build_services(settings: Settings) -> AppServices:
                 analytics=analytics,
                 integrations=integrations,
                 ai=ai,
+                realtime=realtime,
             ),
             job_registry(),
         )
@@ -83,6 +95,7 @@ async def build_services(settings: Settings) -> AppServices:
         analytics=analytics,
         ai=ai,
         integrations=integrations,
+        realtime=realtime,
     )
 
 
@@ -188,6 +201,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(voice_routes.router)
     app.include_router(insights_routes.router)
     app.include_router(integrity_routes.router)
+    app.include_router(live_routes.router)
     if settings.is_dev:
         app.include_router(dev_auth.router)
         app.include_router(exports_routes.dev_router)

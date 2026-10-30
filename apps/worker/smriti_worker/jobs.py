@@ -19,7 +19,10 @@ from smriti_api.ai.factory import build_gateway
 from smriti_api.core.config import REPO_ROOT, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.logging import configure_logging, hash_user_id
+from smriti_api.core.redis import create_redis
 from smriti_api.integrations import build_integrations
+from smriti_api.integrations.realtime import build_realtime
+from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.services import (
     accounts,
     billing,
@@ -27,6 +30,7 @@ from smriti_api.services import (
     exports,
     guardian,
     learning_science,
+    live_mocks,
     media,
     mocks,
     notify,
@@ -63,6 +67,14 @@ async def startup(ctx: Ctx) -> None:
         analytics=ConsentAwareAnalytics(LogAnalyticsSink(), db),
         integrations=build_integrations(settings, http),
         ai=build_gateway(settings, db, http),
+        realtime=build_realtime(
+            provider=get_integration_settings().realtime_provider,
+            dev=settings.is_dev,
+            http=http,
+            redis=ctx.get("redis") or create_redis(settings.redis_url),
+            supabase_url=settings.supabase_url,
+            service_key=settings.supabase_service_role_key,
+        ),
     )
     log.info("worker_started", env=settings.app_env.value)
 
@@ -98,6 +110,14 @@ async def mocks_auto_submit(ctx: Ctx) -> int:
     if count:
         log.info("mocks_auto_submitted", count=count)
     return count
+
+
+async def live_mocks_tick(ctx: Ctx) -> dict[str, int]:
+    """Live mocks: the start signal and clock on mock:{id}, and ranks frozen after results."""
+    counts = await live_mocks.tick_job(_deps(ctx))
+    if any(counts.values()):
+        log.info("live_mocks_tick", **counts)
+    return counts
 
 
 async def tutor_retention(ctx: Ctx) -> int:

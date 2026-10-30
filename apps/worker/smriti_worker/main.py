@@ -58,6 +58,7 @@ DefaultWorker = _settings(
         jobs.trial_reminders,
         jobs.media_sweep,
         jobs.mocks_auto_submit,
+        jobs.live_mocks_tick,
         jobs.tutor_retention,
         jobs.weak_area_alerts,
         jobs.rhythm_estimates,
@@ -81,6 +82,8 @@ DefaultWorker = _settings(
         cron(jobs.media_sweep, minute={2, 32}, unique=True),
         # Mocks: strict and live attempts past their deadline, every minute.
         cron(jobs.mocks_auto_submit, second=30, unique=True),
+        # Live mocks (practice §6.11): start signal and clock fan-out, then frozen ranks.
+        cron(jobs.live_mocks_tick, second=0, unique=True),
         # Tutor: messages past ai.tutor_retention_days, daily.
         cron(jobs.tutor_retention, hour=2, minute=15, unique=True),
         # Learning science (TRD §9.6), nightly in India: weak-area alerts are queued for the

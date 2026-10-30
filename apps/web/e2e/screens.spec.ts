@@ -107,7 +107,7 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await page.getByTestId("mock-submit").click();
     await expect(page.getByTestId("mock-16")).toBeVisible();
     await shoot(page, locale, "MOCK-16");
-    await page.getByTestId("mock-16").getByRole("button", { name: /submit|जमा/i }).last().click();
+    await page.getByTestId("mock-16").getByRole("button", { name: /submit|सबमिट/i }).last().click();
     await expect(page.getByTestId("mock-19")).toBeVisible({ timeout: 30_000 });
     await shoot(page, locale, "MOCK-19");
     await page.getByTestId("mock-solutions").click();

@@ -60,6 +60,17 @@ export function localizeQuestion(body: unknown, locale: Locale): AnyQuestion {
 }
 
 /**
+ * A mock question comes without its answer key, but the player's views read `q.answer` even when
+ * nothing is revealed. This gives them an empty key that marks nothing right (reported upstream).
+ */
+export function withEmptyKey(q: AnyQuestion): AnyQuestion {
+  const o = q as unknown as Record<string, unknown>;
+  if (o.answer) return q;
+  const steps = (o.steps as { id: string }[] | undefined)?.map((x) => x.id) ?? [];
+  return { ...o, answer: { ...(o.options ? { option_ids: [] } : {}), value: null, unit: null, order: steps, pairs: [], blanks: [] } } as unknown as AnyQuestion;
+}
+
+/**
  * The player reads maths and media from a bundle. Server bodies carry neither, so maths falls
  * back to KaTeX on the page and media refs show nothing (reported as a gap).
  */

@@ -182,7 +182,7 @@ export async function mockAttempt(page: Page, mockId: string) {
   await expectAccessible(page, "MOCK-08");
   await page.getByTestId("mock-submit").click();
   await expect(page.getByTestId("mock-16")).toBeVisible();
-  await page.getByTestId("mock-16").getByRole("button", { name: /submit|जमा/i }).last().click();
+  await page.getByTestId("mock-16").getByRole("button", { name: /submit|सबमिट/i }).last().click();
   await expect(page.getByTestId("mock-19")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("mock-score")).toBeVisible();
   await expectAccessible(page, "MOCK-19");

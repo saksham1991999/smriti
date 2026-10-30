@@ -481,6 +481,14 @@ async def decide_time(
             )
         ).one()
         await bump(session, child.user_id, {"profile"})
+        # The child hears the answer (the SET-19 line for it), once per request.
+        await notify.enqueue(
+            session,
+            user_id=child.user_id,
+            kind="time_request_decided",
+            payload={"outcome": row.status, "request_id": str(row.id)},
+            dedupe_key=f"time_request_decided:{row.id}",
+        )
     log.info("time_request_decided", learner=hash_user_id(child.user_id), allowed=body.allow)
     return _request_out(row)
 
@@ -820,18 +828,33 @@ async def send_weekly_digests(db: Database, *, now: datetime | None = None) -> i
                     continue
                 start = week_start(child.today(now))
                 days = await _week_minutes(session, child, start)
+                payload = {
+                    "child": child.first_name or "",
+                    "min": sum(int(d.minutes) for d in days),
+                    "n": sum(int(d.lessons_completed) for d in days),
+                    "learner_id": str(child.user_id),
+                    "week": start.isoformat(),
+                }
+                key = f"{pair.guardian_user_id}:{child.user_id}:{start.isoformat()}"
                 added = await notify.enqueue(
                     session,
                     user_id=pair.guardian_user_id,
                     kind="parent_weekly_report",
+                    payload=payload,
+                    dedupe_key=f"parent_weekly:{key}",
+                    not_before=not_before,
+                )
+                # The same week by email (me-money §6.7): counts only, never anything typed.
+                await notify.enqueue(
+                    session,
+                    user_id=pair.guardian_user_id,
+                    kind="parent_weekly_email",
                     payload={
-                        "child": child.first_name or "",
-                        "min": sum(int(d.minutes) for d in days),
-                        "n": sum(int(d.lessons_completed) for d in days),
-                        "learner_id": str(child.user_id),
-                        "week": start.isoformat(),
+                        **payload,
+                        "reviews": sum(int(d.cards_reviewed) for d in days),
+                        "streak": await _streak(session, child.user_id),
                     },
-                    dedupe_key=f"parent_weekly:{pair.guardian_user_id}:{child.user_id}:{start.isoformat()}",
+                    dedupe_key=f"parent_weekly_email:{key}",
                     not_before=not_before,
                 )
                 sent += int(added)

@@ -14,7 +14,9 @@ import httpx
 from sqlalchemy import text
 
 from smriti_api.core.deps import AppServices
-from smriti_api.services import parent_mode
+from smriti_api.integrations.mail import FakeMailer
+from smriti_api.integrations.push import FakePushSender
+from smriti_api.services import notify, parent_mode
 from tests.helpers import Session
 from tests.social_helpers import befriend, outbox, person
 
@@ -278,6 +280,9 @@ async def test_time_limit_and_asking_for_more(
     assert (
         await client.post("/v1/tutor/sessions", json={}, headers=child.headers)
     ).status_code == 200
+    # The child hears the answer (SET-19 approved line).
+    told = [o for o in await outbox(services, child.user_id) if o.kind == "time_request_decided"]
+    assert [o.payload["outcome"] for o in told] == ["allowed"]
 
     # A "Not today" ends asking for the day.
     second = (await client.post("/v1/me/time-requests", headers=child.headers)).json()
@@ -288,6 +293,14 @@ async def test_time_limit_and_asking_for_more(
     )
     r = await client.post("/v1/me/time-requests", headers=child.headers)
     assert r.status_code == 409 and r.json()["code"] == "declined_today"
+    told = [o for o in await outbox(services, child.user_id) if o.kind == "time_request_decided"]
+    assert [o.payload["outcome"] for o in told] == ["allowed", "declined"]
+    async with services.db.admin_tx() as session:
+        lines = [
+            await notify.pick_template(session, child.user_id, "time_request_decided", o.payload)
+            for o in told
+        ]
+    assert lines == ["SET-19.approved", "SET-19.declined"]
 
     # Outside the allowed hours the tutor waits: a window that ended an hour ago.
     now_local = datetime.now(UTC).astimezone(IST)
@@ -348,6 +361,29 @@ async def test_weekly_digest(client: httpx.AsyncClient, services: AppServices) -
     await parent_mode.send_weekly_digests(services.db, now=sunday)
     sent = [o for o in await outbox(services, guardian.user_id) if o.kind == "parent_weekly_report"]
     assert len(sent) == 1
+
+    # The email (me-money §6.7) goes at 19:00 the parent's time, to their sign-in address, with
+    # counts only; the outbox never holds the address.
+    mail = [o for o in await outbox(services, guardian.user_id) if o.kind == "parent_weekly_email"]
+    assert len(mail) == 1 and mail[0].payload["reviews"] == 0 and mail[0].payload["streak"] == 0
+    assert "@" not in json.dumps(mail[0].payload)
+    mailer = FakeMailer()
+    await notify.dispatch_due(
+        services.db,
+        notify.Senders(expo=FakePushSender(), mailer=mailer, web_app_url="https://app.example"),
+        now=datetime(2026, 11, 1, 19, 5, tzinfo=IST),
+    )
+    async with services.db.admin_tx() as session:
+        address = (
+            await session.execute(
+                text("select email from auth.users where id = :u"), {"u": guardian.user_id}
+            )
+        ).scalar_one()
+    mine = [m for m in mailer.outbox if m.to == address]
+    assert len(mine) == 1
+    assert mine[0].subject == "Riya's week" and mine[0].template_id == "parent_weekly_email"
+    assert "Minutes: 25" in mine[0].text and "Lessons: 3" in mine[0].text
+    assert f"https://app.example/parent?learner={child.user_id}" in mine[0].text
 
     # The parent can switch it off (SET-14 "Weekly email report").
     await controls(client, guardian, child, weekly_report=False)

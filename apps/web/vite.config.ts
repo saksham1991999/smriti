@@ -2,7 +2,9 @@
 //   production (default `vite build`) talks to the real API from VITE_API_BASE_URL and must never
 //   contain the fake API: the `no-fake-api` plugin fails the build if anything under src/dev/ is pulled in.
 //   fake (`pnpm dev`) and e2e (`pnpm build:e2e`) run against the in-process fake in src/dev/fake-api.
-import { dirname, join } from "node:path";
+import { createReadStream, existsSync, statSync } from "node:fs";
+import type { ServerResponse } from "node:http";
+import { dirname, join, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
@@ -26,9 +28,45 @@ function noFakeApi(mode: string): Plugin {
   };
 }
 
+const FIXTURE_CONTENT = join(here, "..", "..", "tools", "content-publish", "out");
+const TYPES: Record<string, string> = { ".json": "application/json", ".webp": "image/webp", ".png": "image/png", ".svg": "image/svg+xml" };
+
+/**
+ * Dev and e2e only: serves the published fixture content (tools/content-publish/out, written by
+ * `pnpm --filter @smriti/content-publish publish:fixtures`) at /c/, where the CDN serves real
+ * bundles and manifests. Production builds never include it.
+ */
+function fixtureContent(mode: string): Plugin | null {
+  if (mode !== "fake" && mode !== "e2e" && mode !== "e2e-real") return null;
+  const serve = (req: { url?: string }, res: ServerResponse, next: () => void) => {
+    const path = (req.url ?? "").split("?")[0] ?? "";
+    if (!path.startsWith("/c/")) return next();
+    const file = normalize(join(FIXTURE_CONTENT, decodeURIComponent(path.slice(3))));
+    if (!file.startsWith(FIXTURE_CONTENT + sep) || !existsSync(file) || !statSync(file).isFile()) {
+      res.statusCode = 404;
+      res.end();
+      return;
+    }
+    const ext = file.slice(file.lastIndexOf("."));
+    res.setHeader("Content-Type", TYPES[ext] ?? "application/octet-stream");
+    res.setHeader("Cache-Control", /\.[0-9a-f]{64}\./.test(file) ? "public, max-age=31536000, immutable" : "no-cache");
+    createReadStream(file).pipe(res);
+  };
+  return {
+    name: "smriti-fixture-content",
+    configureServer(server) {
+      server.middlewares.use(serve);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(serve);
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => ({
   plugins: [
     noFakeApi(mode),
+    fixtureContent(mode),
     react(),
     tailwindcss(),
     VitePWA({
@@ -45,10 +83,16 @@ export default defineConfig(({ mode }) => ({
         // App shell plus the art; sims are cached when first opened.
         globPatterns: ["**/*.{js,css,html,webp,woff2,svg}"],
         navigateFallback: "/index.html",
-        navigateFallbackDenylist: [/^\/sims\//, /^\/v1\//],
+        navigateFallbackDenylist: [/^\/sims\//, /^\/v1\//, /^\/c\//],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         runtimeCaching: [
           { urlPattern: ({ url }) => url.pathname.startsWith("/sims/"), handler: "StaleWhileRevalidate", options: { cacheName: "sims" } },
+          // Bundles and media are content-addressed and immutable: cache first (TRD 7.2).
+          {
+            urlPattern: ({ url }) => /\/c\/(bundles|assets)\//.test(url.pathname),
+            handler: "CacheFirst",
+            options: { cacheName: "content", expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 90 } },
+          },
         ],
       },
     }),

@@ -1,4 +1,4 @@
-/** Wire shapes of the content and config routes the web app reads (`/v1/config`, `/v1/content/*`). */
+/** Wire shapes of the config and billing routes the web app reads. Content shapes come from @smriti/content-schema. */
 export interface Localised {
   en: string;
   hi: string;
@@ -9,7 +9,7 @@ export interface ExamOption {
   profileId: string;
   short: Localised;
   /** Drives the pet's reaction line on ONB-02 (D15). */
-  category: "engineering" | "medical" | "civil_services" | "government_jobs";
+  category: "engineering" | "medical" | "civil_services" | "government_jobs" | "school" | "general";
   cycle: string;
 }
 
@@ -18,42 +18,8 @@ export interface ConfigResponse {
   classes: number[];
   rotatingFreeChapters: string[];
   intro: { pricePaise: number; monthlyPaise: number; currency: "INR" };
-}
-
-export interface TopicRow {
-  id: string;
-  title: Localised;
-  minutes: number;
-}
-
-export interface Chapter {
-  id: string;
-  /** Position in the subject, in the exam profile's chapter order. */
-  index: number;
-  title: Localised;
-  topics: TopicRow[];
-}
-
-export interface Subject {
-  id: string;
-  family: string;
-  name: Localised;
-  illustration: string;
-  chapters: Chapter[];
-}
-
-export interface CatalogResponse {
-  fixture?: boolean;
-  subjects: Subject[];
-}
-
-export interface PracticeQuestion {
-  id: string;
-  subjectId: string;
-  prompt: Localised;
-  options: { id: string; label: Localised }[];
-  correctId: string;
-  solution: Localised;
+  /** Owner flags (`GET /v1/config` flags map); missing keys use @smriti/config defaults. */
+  flags?: Record<string, unknown>;
 }
 
 export interface IntroEligibility {

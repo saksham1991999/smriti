@@ -171,6 +171,9 @@ export function computeState(u: FakeUser, now: number): SyncStateResponse {
   };
 }
 
+/** Sync contract v1.2 answer contexts (`check` and `fix` are new in v1.2). */
+export const ANSWER_CONTEXTS = new Set(["lesson", "check", "fix", "practice", "review", "challenge", "chapter_test"]);
+
 /** Accepts or rejects one wire event (the server's validation, simplified). */
 export function validateEvent(e: WireEvent): string | null {
   if (!e.event_id || !/^[0-9a-f-]{36}$/.test(e.event_id)) return "invalid_event_id";
@@ -179,6 +182,8 @@ export function validateEvent(e: WireEvent): string | null {
   if (e.type === "answer_submitted") {
     const p = e.payload as SyncEventPayloads["answer_submitted"];
     if (typeof p.response === "string" && p.response.length > 64) return "free_text_not_allowed";
+    if (!ANSWER_CONTEXTS.has(String(p.context))) return "invalid_payload";
+    if (!("card_id" in p) && !("question_id" in p)) return "invalid_payload";
   }
   if (e.type === "pet_named") {
     const p = e.payload as SyncEventPayloads["pet_named"];

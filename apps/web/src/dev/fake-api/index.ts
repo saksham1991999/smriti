@@ -1,7 +1,7 @@
 /**
  * FAKE API (dev and e2e builds only; production builds refuse anything under src/dev/).
  *
- * An MSW handler set that implements the sync contract v1.1 and the dev auth routes, plus the
+ * An MSW handler set that implements the sync contract v1.2 and the dev auth routes, plus the
  * config, content, billing and account routes the web app needs, until apps/api lands. It runs
  * in-process: `createFetch(fakeApi.intercept)` answers matching requests without a network or a
  * service worker; Vitest uses the same handlers. Switching to the real API is VITE_API_BASE_URL
@@ -9,7 +9,7 @@
  */
 import { getResponse, http, HttpResponse, type RequestHandler } from "msw";
 import type { SyncEventsRequest, WireEvent } from "@smriti/app-core";
-import { FIXTURE_CONFIG, fixtureCatalog, fixtureLesson, fixtureQuestions } from "./fixtures";
+import { FIXTURE_CONFIG } from "./fixtures";
 import { computeState, emptyDb, validateEvent, type FakeDbData, type FakeUser } from "./state";
 
 export interface FakeApiOptions {
@@ -20,6 +20,11 @@ export interface FakeApiOptions {
   save?: (db: FakeDbData) => void;
   /** Artificial latency in ms (shows loading states in dev). */
   latencyMs?: number;
+  /**
+   * Reads a published manifest by path (`manifests/<profile>.<locale>.json`) from the fixture
+   * content (tools/content-publish/out, served at /c/ in dev and e2e; read from disk in tests).
+   */
+  loadContent: (path: string) => Promise<unknown>;
 }
 
 export interface FakeApi {
@@ -135,7 +140,7 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
       return session(u, "refresh");
     }),
 
-    // ── Sync contract v1.1 ───────────────────────────────────────────────────
+    // ── Sync contract v1.2 ───────────────────────────────────────────────────
     http.post(url("/v1/sync/events"), async ({ request }) => {
       const u = authed(request);
       if (!u) return unauthorized();
@@ -163,20 +168,18 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
       return HttpResponse.json(computeState(u, now()));
     }),
 
-    // ── Config and content (fixtures) ────────────────────────────────────────
+    // ── Config and content (published fixture manifests) ──────────────────────
     http.get(url("/v1/config"), () => HttpResponse.json(FIXTURE_CONFIG)),
-    http.get(url("/v1/content/catalog"), ({ request }) => {
-      const profiles = new URL(request.url).searchParams.getAll("profile");
-      return HttpResponse.json(fixtureCatalog(profiles));
-    }),
-    http.get(url("/v1/content/lessons/:topicId"), ({ params, request }) => {
-      const locale = new URL(request.url).searchParams.get("locale") === "hi" ? "hi" : "en";
-      const lesson = fixtureLesson(String(params.topicId), locale);
-      return lesson ? HttpResponse.json(lesson) : HttpResponse.json({ code: "not_found" }, { status: 404 });
-    }),
-    http.get(url("/v1/practice/questions"), ({ request }) => {
+    http.get(url("/v1/content/manifest"), async ({ request }) => {
       const q = new URL(request.url).searchParams;
-      return HttpResponse.json({ fixture: true, questions: fixtureQuestions(q.get("subject") ?? "phy", Number(q.get("count") ?? 10)) });
+      const exam = q.get("exam") ?? "";
+      const locale = q.get("locale") === "hi" ? "hi" : "en";
+      if (!/^[a-z0-9-]+$/.test(exam)) return HttpResponse.json({ code: "invalid_exam" }, { status: 422 });
+      try {
+        return HttpResponse.json(await opts.loadContent(`manifests/${exam}.${locale}.json`));
+      } catch {
+        return HttpResponse.json({ code: "not_found" }, { status: 404 });
+      }
     }),
 
     // ── Billing (FakeBilling's server side; never charges) ───────────────────
@@ -289,10 +292,15 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
 const STORE_KEY = "smriti.fake-api.v1";
 
 /** The browser instance: persisted in localStorage so a reload keeps the fake server's data. */
-export function createBrowserFakeApi(baseUrl: string): FakeApi {
+export function createBrowserFakeApi(baseUrl: string, contentBaseUrl: string): FakeApi {
   return createFakeApi({
     baseUrl,
     latencyMs: 120,
+    loadContent: async (path) => {
+      const res = await fetch(new URL(path, new URL(contentBaseUrl, location.origin)));
+      if (!res.ok) throw new Error(`content ${res.status}`);
+      return res.json();
+    },
     load: () => {
       try {
         const raw = localStorage.getItem(STORE_KEY);

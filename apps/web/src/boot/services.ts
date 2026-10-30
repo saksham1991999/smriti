@@ -21,6 +21,7 @@ import {
   type AuthClient,
   type Fetch,
   type Logger,
+  type NewOutboxRow,
   type StorageTables,
   type SyncEventPayloads,
   type SyncEventType,
@@ -31,6 +32,7 @@ import { DexieStorage } from "../platform/dexieStorage";
 import { BrowserNetwork, LocalStorageKeyValueStore, createFetch, deviceId, prefs, timeZone, type RequestInterceptor } from "../platform/web";
 import { createApi, type Api } from "../lib/api";
 import { createBillingProvider, type BillingProvider } from "../lib/billing";
+import { contentBase } from "../lib/content";
 
 export interface Services {
   env: ClientEnv;
@@ -51,6 +53,12 @@ export interface Services {
   billing: BillingProvider;
   logger: Logger;
   fakeApi: boolean;
+  /** Where bundles and manifests are served: `{CDN_BASE_URL}/c/` (same origin /c/ in dev and e2e). */
+  contentBaseUrl: string;
+  /** Replaces the flags with the server's map from `GET /v1/config`. */
+  applyServerFlags(map: Record<string, unknown> | undefined): void;
+  /** Appends ready-made envelopes (lesson-core sessions) plus optional local rows in one transaction. */
+  recordEnvelopes(events: readonly NewOutboxRow[], local?: (tx: StorageTables) => Promise<void>): Promise<void>;
   /** Writes an event (and optional local rows) in one transaction, then schedules a flush. */
   record<T extends SyncEventType>(type: T, payload: SyncEventPayloads[T], local?: (tx: StorageTables) => Promise<void>): Promise<void>;
   /** Makes sure there is a guest or signed-in session; never blocks the UI on failure. */
@@ -66,12 +74,19 @@ const devLogger: Logger = {
   error: (m, f) => console.error(`[smriti] ${m}`, f ?? ""),
 };
 
-export async function createServices(opts: { interceptor?: RequestInterceptor; rawEnv?: Record<string, string | undefined> } = {}): Promise<Services> {
+export interface CreateServicesOptions {
+  interceptor?: RequestInterceptor;
+  rawEnv?: Record<string, string | undefined>;
+  /** Local database name (tests use one per case). */
+  dbName?: string;
+}
+
+export async function createServices(opts: CreateServicesOptions = {}): Promise<Services> {
   const env = parseClientEnv(opts.rawEnv ?? (import.meta.env as unknown as Record<string, string | undefined>));
   const variant = getVariant(env.APP_VARIANT);
-  const flags = createFlags();
+  let flags = createFlags();
   const kv = new LocalStorageKeyValueStore();
-  const storage = new DexieStorage("smriti-local");
+  const storage = new DexieStorage(opts.dbName ?? "smriti-local");
   const fetchImpl = createFetch(opts.interceptor);
   const network = new BrowserNetwork();
   const clock = () => Date.now();
@@ -159,6 +174,18 @@ export async function createServices(opts: { interceptor?: RequestInterceptor; r
     billing: createBillingProvider(env, api),
     logger,
     fakeApi: Boolean(opts.interceptor),
+    contentBaseUrl: contentBase(env.CDN_BASE_URL),
+    applyServerFlags(map) {
+      flags = createFlags(map ?? {});
+      services.flags = flags;
+    },
+    async recordEnvelopes(events, local) {
+      await storage.transaction(async (tx) => {
+        if (local) await local(tx);
+        for (const e of events) await tx.outbox.append(e);
+      });
+      scheduleFlush();
+    },
     async record(type, payload, local) {
       await storage.transaction(async (tx) => {
         if (local) await local(tx);

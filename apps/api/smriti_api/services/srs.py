@@ -13,6 +13,7 @@ retention 0.9, maximum interval 36500 days, learning steps 1 min and 10 min, rel
 
 from __future__ import annotations
 
+import copy
 from collections.abc import Sequence
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
@@ -68,6 +69,53 @@ class CardSchedule:
     last_review_at: datetime
 
 
+def _ts_hard_minutes(steps: tuple[timedelta, ...]) -> int:
+    """ts-fsrs ``BasicLearningStepsStrategy`` Hard step, in whole minutes."""
+    first = steps[0].total_seconds() / 60
+    if len(steps) == 1:
+        return round(first * 1.5)
+    return round((first + steps[1].total_seconds() / 60) / 2)
+
+
+def review_like_ts_fsrs(
+    sched: Scheduler, card: Card, rating: Rating, at: datetime, duration_ms: int | None = None
+) -> Card:
+    """One review with py-fsrs's memory model and ts-fsrs 5.4.2's interval rules, so the
+    server's schedule matches the client's preview (packages/app-core test vectors):
+
+    * Hard in a (re)learning step waits round((step1 + step2) / 2) minutes, or 1.5 x the only
+      step, at every step (py-fsrs uses the exact average at step 1 and the next step after).
+    * On a review card the four answers stay ordered: hard <= good, good >= hard + 1 day and
+      easy >= good + 1 day (py-fsrs schedules each answer on its own).
+    """
+    before = card.state
+    result, _log = sched.review_card(
+        copy.deepcopy(card), rating, review_datetime=at, review_duration=duration_ms
+    )
+    if before in (State.Learning, State.Relearning) and rating == Rating.Hard:
+        if result.state == before:
+            steps = sched.learning_steps if before == State.Learning else sched.relearning_steps
+            if steps:
+                result.due = at + timedelta(minutes=_ts_hard_minutes(tuple(steps)))
+        return result
+    if before != State.Review or rating == Rating.Again:
+        return result
+
+    def days(r: Rating) -> int:
+        other, _ = sched.review_card(copy.deepcopy(card), r, review_datetime=at)
+        return round((other.due - at).total_seconds() / 86400)
+
+    hard, good = days(Rating.Hard), days(Rating.Good)
+    hard = min(hard, good)
+    good = max(good, hard + 1)
+    chosen = {Rating.Hard: hard, Rating.Good: good}.get(rating)
+    if rating == Rating.Easy:
+        chosen = max(days(Rating.Easy), good + 1)
+    if chosen is not None:
+        result.due = at + timedelta(days=chosen)
+    return result
+
+
 def _utc(dt: datetime) -> datetime:
     return dt.astimezone(UTC) if dt.tzinfo else dt.replace(tzinfo=UTC)
 
@@ -92,9 +140,7 @@ def replay(
         rating = Rating(min(4, max(1, review.rating)))
         if card.state == State.Review and rating == Rating.Again:
             lapses += 1
-        card, _log = sched.review_card(
-            card, rating, review_datetime=at, review_duration=review.duration_ms
-        )
+        card = review_like_ts_fsrs(sched, card, rating, at, review.duration_ms)
         reps += 1
         elapsed = (at - previous).total_seconds() / 86400 if previous else 0.0
         outcomes.append(

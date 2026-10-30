@@ -30,6 +30,9 @@ EVENT_TYPES = (
     "focus_session_completed",
     "quest_claimed",
     "freeze_equipped",
+    "rescue_completed",
+    "cards_queued",
+    "comeback_plan_started",
 )
 
 SETTINGS_KEYS = (
@@ -113,12 +116,25 @@ class FsrsStateIn(_Payload):
     state: int | None = None
 
 
+CARD_REF_PATTERN = r"^(c|d|q|u):[A-Za-z0-9_.:\-]{1,200}$"
+
+
+def normalize_card_ref(ref: str) -> str:
+    """``u:`` is accepted as an alias of ``d:`` (sync contract v1.1); only ``d:`` is stored."""
+    return "d:" + ref[2:] if ref.startswith("u:") else ref
+
+
 class ReviewRated(_Payload):
-    card_ref: Annotated[str, Field(pattern=r"^(c|d|q):[A-Za-z0-9_.:\-]{1,200}$")]
+    card_ref: Annotated[str, Field(pattern=CARD_REF_PATTERN)]
     rating: Literal[1, 2, 3, 4]
     confidence: Confidence | None = None
     ms_to_answer: Ms
     fsrs_state: FsrsStateIn | None = None  # ignored: the server replays the history
+
+    @field_validator("card_ref")
+    @classmethod
+    def _alias(cls, v: str) -> str:
+        return normalize_card_ref(v)
 
 
 class PracticeSessionCompleted(_Payload):
@@ -219,6 +235,26 @@ class FreezeEquipped(_Payload):
     slot: Annotated[int, Field(ge=0, le=10)] = 0
 
 
+class RescueCompleted(_Payload):
+    """The 2-minute rescue (R23): waters the plant for the day, never a streak day."""
+
+    cards: Count
+    ms_total: Ms
+
+
+ConceptId = Annotated[str, Field(pattern=r"^[A-Za-z0-9_.:\-]{1,200}$")]
+
+
+class CardsQueued(_Payload):
+    concept_ids: Annotated[list[ConceptId], Field(min_length=1, max_length=200)]
+    source: Literal["lesson", "practice", "comeback"]
+
+
+class ComebackPlanStarted(_Payload):
+    days_away: Annotated[int, Field(ge=0, le=3650)]
+    cards: Count
+
+
 PAYLOAD_MODELS: dict[str, type[_Payload]] = {
     "lesson_started": LessonStarted,
     "lesson_card_viewed": LessonCardViewed,
@@ -238,6 +274,9 @@ PAYLOAD_MODELS: dict[str, type[_Payload]] = {
     "focus_session_completed": FocusSessionCompleted,
     "quest_claimed": QuestClaimed,
     "freeze_equipped": FreezeEquipped,
+    "rescue_completed": RescueCompleted,
+    "cards_queued": CardsQueued,
+    "comeback_plan_started": ComebackPlanStarted,
 }
 
 
@@ -245,7 +284,14 @@ class SyncEventIn(BaseModel):
     event_id: uuid.UUID
     type: Annotated[str, Field(min_length=1, max_length=64)]
     occurred_at: AwareDatetime
-    tz: Annotated[str, Field(max_length=64)] | None = None
+    tz: Annotated[
+        str,
+        Field(
+            min_length=1,
+            max_length=64,
+            description="IANA zone of the device when the event happened; places it on the local day",
+        ),
+    ]
     payload: dict[str, Any] = Field(default_factory=dict)
 
 

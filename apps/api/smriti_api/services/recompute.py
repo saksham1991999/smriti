@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import uuid
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import UTC, date, datetime, time, timedelta
 from typing import Any
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
@@ -113,6 +113,7 @@ _AGG_SQL = text(
       count(*) filter (where type = 'mock_section_submitted')    as mocks,
       bool_or(type = 'daily_challenge_completed')                as challenge,
       count(*) filter (where type = 'focus_session_completed')   as focus,
+      bool_or(type = 'rescue_completed')                         as rescue,
       coalesce(sum(case type
         when 'lesson_completed' then (payload ->> 'ms_total')::bigint
         when 'practice_session_completed' then (payload ->> 'ms_total')::bigint
@@ -163,15 +164,17 @@ async def recompute_activity_days(
                 """
                 insert into learn.activity_days as a
                   (user_id, day, xp, minutes, focus_sessions, cards_reviewed, lessons_completed,
-                   mock_sections, daily_challenge, qualified, goal_met, first_event_at, last_event_at)
+                   mock_sections, daily_challenge, qualified, goal_met, first_event_at, last_event_at,
+                   rescue_done)
                 values (:u, :d, :xp, :min, :focus, :reviews, :lessons, :mocks, :challenge, :q, :goal,
-                        :first_at, :last_at)
+                        :first_at, :last_at, :rescue)
                 on conflict (user_id, day) do update set
                   xp = excluded.xp, minutes = excluded.minutes, focus_sessions = excluded.focus_sessions,
                   cards_reviewed = excluded.cards_reviewed, lessons_completed = excluded.lessons_completed,
                   mock_sections = excluded.mock_sections, daily_challenge = excluded.daily_challenge,
                   qualified = excluded.qualified, goal_met = excluded.goal_met,
-                  first_event_at = excluded.first_event_at, last_event_at = excluded.last_event_at
+                  first_event_at = excluded.first_event_at, last_event_at = excluded.last_event_at,
+                  rescue_done = a.rescue_done or excluded.rescue_done
                 """
             ),
             {
@@ -188,6 +191,7 @@ async def recompute_activity_days(
                 "goal": minutes >= facts.daily_goal_minutes,
                 "first_at": agg.first_at,
                 "last_at": agg.last_at,
+                "rescue": bool(agg.rescue),
             },
         )
 
@@ -207,8 +211,10 @@ async def ensure_monthly_freezes(
             {"u": facts.user_id, "m": month_start_local.astimezone(UTC)},
         )
     ).scalar_one()
-    free_n = int(flags.get("streak.free_freezes_per_month", 1) or 0)
-    pro_n = int(flags.get("streak.pro_freezes_per_month", 2) or 0)
+    monthly = flags.get("streak.monthly_freezes")
+    monthly = monthly if isinstance(monthly, dict) else {}
+    free_n = int(monthly.get("free", 1) or 0)
+    pro_n = int(monthly.get("pro", 2) or 0)
     target = pro_n if facts.is_pro else free_n
     missing = target - int(granted)
     if missing <= 0:
@@ -309,6 +315,23 @@ async def recompute_game(
     today = facts.today(now)
     before = await _snapshot(session, facts.user_id)
     await ensure_monthly_freezes(session, facts, rules, flags, now)
+    if rules.exam_day_protected:
+        # The exam date set in onboarding or ME-03 pauses the streak (me-money §3.5).
+        exam_days = (
+            (
+                await session.execute(
+                    text(
+                        "select target_date from app.user_exams"
+                        " where user_id = :u and target_date is not null"
+                    ),
+                    {"u": facts.user_id},
+                )
+            )
+            .scalars()
+            .all()
+        )
+        if exam_days:
+            rules = replace(rules, exam_days=frozenset(exam_days))
 
     rows = (
         await session.execute(

@@ -55,12 +55,14 @@ async def set_rest_day(
     session: AsyncSession, facts: UserFacts, day: date, flags: dict[str, Any], now: datetime
 ) -> None:
     today = facts.today(now)
-    ahead = int(flags.get("streak.rest_day_plan_ahead_days", 14) or 14)
+    ahead = int(flags.get("streak.rest_day_plan_ahead_days", 30) or 30)
     if day < today or day > today + timedelta(days=ahead):
         raise DomainError(
             "rest_day_out_of_range", f"A rest day can be today or up to {ahead} days ahead", 422
         )
-    per_week = int(flags.get("streak.rest_days_per_week", 1) or 1)
+    per_week = int(
+        flags.get("game.rest_days_per_week", flags.get("streak.rest_days_per_week", 1)) or 1
+    )
     ws = week_start(day)
     taken = (
         await session.execute(

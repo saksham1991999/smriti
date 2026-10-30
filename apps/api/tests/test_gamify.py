@@ -167,21 +167,33 @@ def test_growth_never_drops_below_previous() -> None:
 
 
 def test_pet_energy_and_mood() -> None:
+    # Start 80/80; each study day +20 mood (capped by the band) and +15 energy.
     st = compute_game_state(study(1, 0), TODAY, RULES, freezes_equipped=0)
-    assert st.pet_energy == 100
-    assert st.pet_mood == 85
-    assert st.pet_state == "happy"
+    assert (st.pet_mood, st.pet_energy, st.pet_state) == (100, 100, "happy")
+    # Nine missed days after one study day: mood falls into the wilted band, energy to 5.
     st = compute_game_state(study(10), TODAY, RULES, freezes_equipped=0)
     assert st.health == "wilted"
-    assert st.pet_energy == 10  # 80 + 20 - 9 * 10
+    assert st.pet_energy == 5  # 80 + 15 - 9 * 10
+    assert st.pet_mood == 15  # 100 - 90, held at the wilted floor
     assert st.pet_state == "missing_you"
+
+
+def test_mood_stays_inside_the_plant_band() -> None:
+    st = compute_game_state(study(1), TODAY, RULES, freezes_equipped=0)
+    assert st.health == "thriving"
+    assert st.pet_mood == 100  # yesterday's study; today is still open, so no decay yet
+    st = compute_game_state(study(2), TODAY, RULES, freezes_equipped=0)
+    assert st.health == "droopy"
+    lo, hi = RULES.mood_band("droopy")
+    assert lo <= st.pet_mood <= hi
 
 
 def test_under10_pet_is_never_sad() -> None:
     st = compute_game_state(study(25), TODAY, RULES, freezes_equipped=0, under10=True)
     assert st.health == "dormant"
     assert st.pet_state == "sleepy"
-    assert st.pet_mood >= RULES.mood_by_health["dry"]
+    st = compute_game_state(study(25), TODAY, RULES, freezes_equipped=0)
+    assert st.pet_state == "resting"
 
 
 def test_care_is_capped_per_day() -> None:
@@ -190,17 +202,42 @@ def test_care_is_capped_per_day() -> None:
     assert care.energy_bonus == 3 * RULES.care_play_energy + RULES.care_treat_energy
 
 
-def test_care_today_lifts_mood() -> None:
+def test_care_today_lifts_mood_within_the_band() -> None:
+    days = study(2)  # yesterday missed: droopy, mood 70 -> 69 band ceiling
+    base = compute_game_state(days, TODAY, RULES, freezes_equipped=0)
     st = compute_game_state(
-        study(0), TODAY, RULES, freezes_equipped=0, care={TODAY: CareDay(mood_bonus=5)}
+        days, TODAY, RULES, freezes_equipped=0, care={TODAY: CareDay(mood_bonus=5, energy_bonus=3)}
     )
-    assert st.pet_mood == 90
+    assert st.pet_mood == min(base.pet_mood + 5, RULES.mood_band("droopy")[1])
+    assert st.pet_energy == base.pet_energy + 3
 
 
 def test_pet_state_mapping() -> None:
-    assert pet_state_for("dry", 50, RULES, under10=False) == "sleepy"
-    assert pet_state_for("wilted", 50, RULES, under10=False) == "tired"
-    assert pet_state_for("wilted", 10, RULES, under10=False) == "missing_you"
+    assert pet_state_for(85, 50, RULES, under10=False) == "happy"
+    assert pet_state_for(55, 50, RULES, under10=False) == "content"
+    assert pet_state_for(35, 50, RULES, under10=False) == "sleepy"
+    assert pet_state_for(20, 50, RULES, under10=False) == "tired"
+    assert pet_state_for(20, 10, RULES, under10=False) == "missing_you"
+    assert pet_state_for(5, 10, RULES, under10=False) == "resting"
+    assert pet_state_for(5, 10, RULES, under10=True) == "sleepy"
+
+
+def test_dry_revival_needs_days_in_a_row_but_a_quest_keeps_its_dots() -> None:
+    dry = study(15, 14) | study(10, 8)  # 3 missed (dry), study, miss, study
+    st = compute_game_state(dry, days_before(7), RULES, freezes_equipped=0)
+    assert (st.health, st.revival_progress) == ("dry", 1)
+    wilted = study(20) | study(12, 10)  # 7+ missed (wilted), study, miss, study
+    st = compute_game_state(wilted, days_before(9), RULES, freezes_equipped=0)
+    assert (st.health, st.revival_progress) == ("wilted", 2)
+
+
+def test_exam_day_pauses_the_streak() -> None:
+    rules = GameRules(exam_days=frozenset({days_before(1)}))
+    st = compute_game_state(study(2, 0), TODAY, rules, freezes_equipped=1)
+    assert st.current_streak == 2
+    assert st.freezes_consumed == []
+    off = GameRules(exam_days=frozenset({days_before(1)}), exam_day_protected=False)
+    assert compute_game_state(study(2, 0), TODAY, off, freezes_equipped=0).current_streak == 1
 
 
 @pytest.mark.parametrize(
@@ -262,13 +299,21 @@ def test_rules_from_flags() -> None:
         {
             "streak.reviews_to_qualify": 12,
             "game.plant.stage_days": [1, 5, 20, 50],
-            "streak.incident_freeze": {
-                "active": False,
-                "windows": [{"from": "2026-10-01", "to": "2026-10-03"}],
-            },
+            "streak.incident_freeze": False,
+            "streak.incident_freeze_windows": [
+                {"from": "2026-10-01", "to": "2026-10-03"},
+                {"from": "2026-10-20", "to": None},
+            ],
+            "game.pet.study_gain": {"mood": 10, "energy": 5},
         }
     )
     assert rules.reviews_to_qualify == 12
     assert rules.stage_days == (1, 5, 20, 50)
     assert rules.is_incident(date(2026, 10, 2))
     assert not rules.is_incident(date(2026, 10, 4))
+    assert rules.is_incident(date(2026, 10, 25))  # an open window
+    assert (rules.pet_study_mood, rules.pet_study_energy) == (10, 5)
+    legacy = GameRules.from_flags(
+        {"streak.freeze_slots": 3, "game.plant.health_miss_days": {"dry": 4}}
+    )
+    assert (legacy.freeze_slots, legacy.health_miss_days["dry"]) == (3, 4)

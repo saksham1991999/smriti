@@ -63,20 +63,29 @@ on conflict (id) do nothing;
 insert into ops.flags (key, value, description) values
   -- Streak (R1, R23, R28, R36)
   ('streak.reviews_to_qualify', '10', 'R1: reviews that make a streak day'),
-  ('streak.freeze_slots', '2', 'R28: freezes that can be equipped'),
-  ('streak.free_freezes_per_month', '1', 'R36: monthly freeze grant, free'),
-  ('streak.pro_freezes_per_month', '2', 'R36: monthly freeze grant, Pro'),
-  ('streak.rest_days_per_week', '1', 'R36: free rest days per calendar week'),
-  ('streak.rest_day_plan_ahead_days', '14', 'proposed: how far ahead a rest day can be planned'),
-  ('streak.incident_freeze', '{"active": false, "since": null, "windows": []}', 'R28: our outages never break streaks; windows are local dates {from,to}'),
+  ('streak.freeze_slots_max', '2', 'R28, R36: freezes that can be equipped'),
+  ('streak.monthly_freezes', '{"free": 1, "pro": 2}', 'R36: monthly freeze grant'),
+  ('game.rest_days_per_week', '1', 'R36: free rest days per calendar week'),
+  ('streak.rest_day_plan_ahead_days', '30', 'proposed: how far ahead a rest day can be planned'),
+  ('streak.exam_day_protected', 'true', 'me-money §3.5: the exam date pauses the streak like a rest day'),
+  ('streak.incident_freeze', 'false', 'R28: on while we have an outage'),
+  ('streak.incident_freeze_windows', '[]', 'R28, server only: outage windows as local dates {from, to}; to null while open'),
   -- Plant (R2, R12, R37)
   ('game.plant.stage_days', '[1, 7, 30, 100]', 'R37: study days to reach sprout, sapling, flowering, tree'),
-  ('game.plant.health_miss_days', '{"droopy": 1, "dry": 3, "wilted": 7, "dormant": 21}', 'APP_FLOW §3.6: missed days before each health state'),
+  ('game.plant.health_missed_days', '{"droopy": 1, "dry": 3, "wilted": 7, "dormant": 21}', 'APP_FLOW §3.6: missed days before each health state'),
   ('game.plant.revival_days', '{"droopy": 1, "dry": 2, "wilted": 3, "dormant": 5}', 'R12: study days to revive from each state'),
-  -- Pet (proposed starting values; me-money §3.3)
-  ('game.pet.mood_by_health', '{"thriving": 85, "droopy": 70, "dry": 55, "wilted": 40, "dormant": 25}', 'proposed: base mood for each plant health'),
-  ('game.pet.energy', '{"start": 80, "study_day_gain": 20, "missed_day_decay": 10, "low": 30}', 'proposed: energy per study day and per missed day'),
-  ('game.pet.care', '{"pet": {"mood": 1}, "play": {"energy": 5, "per_day": 3}, "treat": {"energy": 10, "per_day": 1}, "daily_mood_cap": 5}', 'me-money §3.3 limits; gains proposed'),
+  -- Pet (me-money §3.3; gains and decay proposed, same defaults as packages/config)
+  ('game.pet.start', '{"mood": 80, "energy": 80}', 'DB_SCHEMA game.pets defaults'),
+  ('game.pet.decay_per_missed_day', '{"mood": 10, "energy": 10}', 'proposed'),
+  ('game.pet.study_gain', '{"mood": 20, "energy": 15}', 'proposed'),
+  ('game.pet.state_min_mood', '{"happy": 70, "content": 50, "sleepy": 30, "tired": 15}', 'proposed: mood floor of each pet state'),
+  ('game.pet.missing_you_energy_below', '30', 'proposed'),
+  ('game.pet.care_mood_cap_per_day', '5', 'me-money §3.3'),
+  ('game.pet.pet_mood_gain', '2', 'proposed'),
+  ('game.pet.plays_per_day', '3', 'me-money §3.3'),
+  ('game.pet.play_energy_gain', '3', 'proposed'),
+  ('game.pet.treats_per_day', '1', 'me-money §3.3'),
+  ('game.pet.treat_energy_gain', '8', 'proposed'),
   -- XP (proposed; learn flow Q6 leaves the numbers to the gamification owner)
   ('xp.rules', '{"lesson_base": 10, "lesson_per_correct": 2, "lesson_max": 40, "review": 1, "practice_per_correct": 2, "practice_max": 60, "challenge": 15, "mock_section": 20, "hourly_cap": 400}', 'proposed: server XP formula; app-core uses the same numbers'),
   -- Free tier (R16, R25, R35)

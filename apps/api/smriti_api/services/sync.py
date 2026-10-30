@@ -15,6 +15,7 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import structlog
 from pydantic import BaseModel, ValidationError
@@ -72,6 +73,9 @@ SECTIONS_BY_TYPE: dict[str, set[str]] = {
     "focus_session_completed": set(),
     "quest_claimed": {"wallet"},
     "freeze_equipped": {"streak"},
+    "rescue_completed": {"plant"},
+    "cards_queued": {"srs"},
+    "comeback_plan_started": set(),
 }
 
 
@@ -174,10 +178,12 @@ async def apply_batch(
                     accepted.append(event.event_id)
                 continue
             seen.add(event.event_id)
+            # Until the zone is checked, a rejected event is filed under the profile's day.
             day = event.occurred_at.astimezone(facts.tz).date()
             code: str | None = None
             detail: str | None = None
             try:
+                day = event_local_day(event)
                 payload = _validate(event, now)
                 async with session.begin_nested():
                     await _apply(ctx, event, payload, day)
@@ -288,6 +294,19 @@ async def _first_sync(
         ctx.facts.tz = zone(tz_name)
         ctx.facts.tz_name = tz_name
     ctx.sections.add("profile")
+
+
+def event_zone(name: str) -> ZoneInfo:
+    """The event's own IANA zone (sync contract v1.1: ``tz`` is required on every event)."""
+    try:
+        return ZoneInfo(name)
+    except (ZoneInfoNotFoundError, ValueError) as exc:
+        raise EventRejected("invalid_tz", "tz is not an IANA time zone") from exc
+
+
+def event_local_day(event: s.SyncEventIn) -> date:
+    """The student's local day for this event, from the zone the device reported (R1, R23)."""
+    return event.occurred_at.astimezone(event_zone(event.tz)).date()
 
 
 def _validate(event: s.SyncEventIn, now: datetime) -> BaseModel:
@@ -656,7 +675,7 @@ async def _pet_care(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> No
     ).first()
     if not has_pet:
         raise EventRejected("no_pet", "Pick a buddy first")
-    day = event.occurred_at.astimezone(ctx.facts.tz).date()
+    day = event_local_day(event)
     done_today = (
         await ctx.session.execute(
             text(
@@ -716,8 +735,8 @@ async def _pet_named(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> N
             "u": ctx.facts.user_id,
             "sp": p.species,
             "n": p.name,
-            "mood": int(ctx.rules.mood_by_health.get("thriving", 85)),
-            "energy": ctx.rules.energy_start,
+            "mood": ctx.rules.pet_start_mood,
+            "energy": ctx.rules.pet_start_energy,
         },
     )
 
@@ -822,6 +841,33 @@ async def _freeze_equipped(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel
     await game_ops.equip_freeze(ctx.session, ctx.facts.user_id, ctx.rules, ctx.now)
 
 
+async def _cards_queued(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """New concept cards join the review queue, due now (state 0 = new, as in ts-fsrs).
+    Cards that already exist keep their schedule."""
+    assert isinstance(p, s.CardsQueued)
+    uid = ctx.facts.user_id
+    refs = sorted({f"c:{cid}" for cid in p.concept_ids})
+    result = await ctx.session.execute(
+        text(
+            """
+            insert into learn.srs_cards (user_id, card_ref, state, due_at, stability, difficulty)
+            select :u, ref, 0, :due, 0, 0 from unnest(cast(:refs as text[])) as ref
+            on conflict (user_id, card_ref) do nothing
+            returning card_ref
+            """
+        ),
+        {"u": uid, "due": event.occurred_at, "refs": refs},
+    )
+    inserted = [str(r) for r in result.scalars().all()]
+    if inserted:
+        await ctx.session.execute(
+            text("delete from learn.srs_tombstones where user_id = :u and card_ref = any(:refs)"),
+            {"u": uid, "refs": inserted},
+        )
+    ctx.srs_changed.update(inserted)
+    ctx.srs_deleted.difference_update(inserted)
+
+
 _HANDLERS = {
     "lesson_started": _lesson_started,
     "lesson_card_viewed": _lesson_card_viewed,
@@ -841,5 +887,9 @@ _HANDLERS = {
     "focus_session_completed": _noop,
     "quest_claimed": _quest_claimed,
     "freeze_equipped": _freeze_equipped,
+    # The rescue's plant credit comes from recompute_activity_days (rescue_done).
+    "rescue_completed": _noop,
+    "cards_queued": _cards_queued,
+    "comeback_plan_started": _noop,
 }
 assert set(_HANDLERS) == set(s.PAYLOAD_MODELS)

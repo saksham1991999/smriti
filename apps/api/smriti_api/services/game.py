@@ -23,7 +23,7 @@ from smriti_api.services import flags as flag_service
 from smriti_api.services import game_ops
 from smriti_api.services.errors import DomainError
 from smriti_api.services.gamify import GameRules
-from smriti_api.services.recompute import load_user_facts, recompute_game
+from smriti_api.services.recompute import DEFAULT_TZ, load_user_facts, recompute_game
 from smriti_api.services.state import ensure_rolled_up, pet_state, plant_state, streak_state
 from smriti_api.services.sync import apply_batch
 from smriti_api.services.versioning import bump, lock_state
@@ -47,12 +47,25 @@ async def apply_one(
     app_variant: str | None,
 ) -> int:
     now = datetime.now(UTC)
+    # REST actions carry no device zone; they land on the profile's local day.
+    async with db.system_tx() as session:
+        tz = (
+            await session.execute(
+                text("select timezone from app.profiles where user_id = :u"), {"u": auth.user_id}
+            )
+        ).scalar_one_or_none()
     result = await apply_batch(
         db,
         user_id=auth.user_id,
         device_id=device_id,
         events=[
-            s.SyncEventIn(event_id=event_id, type=event_type, occurred_at=now, payload=payload)
+            s.SyncEventIn(
+                event_id=event_id,
+                type=event_type,
+                occurred_at=now,
+                tz=tz or DEFAULT_TZ,
+                payload=payload,
+            )
         ],
         app_variant=app_variant,
         now=now,

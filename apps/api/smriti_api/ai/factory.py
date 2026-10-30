@@ -110,12 +110,13 @@ def build_gateway(
             tts, stt = FakeTTSProvider(), FakeSTTProvider()
         else:
             tts, stt = UnavailableSpeech("Deepgram"), UnavailableSpeech("Deepgram")
+        # Voice never falls back to the fake on its own: without GEMINI_API_KEY and
+        # GEMINI_LIVE_MODEL the voice endpoints answer 503 voice_unavailable (AI_PROVIDER=fake
+        # is the only way to the fake token).
         if settings.gemini_api_key and settings.gemini_live_model:
             voice = GeminiLiveVoiceProvider(
                 http, settings.gemini_api_key, settings.gemini_live_model
             )
-        elif settings.is_dev:
-            voice = FakeRealtimeVoiceProvider()
         else:
             voice = UnavailableSpeech("Gemini Live")
     return AIGateway(

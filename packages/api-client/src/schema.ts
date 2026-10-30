@@ -1063,6 +1063,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/feynman/attempts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Explain a concept back; graded against its key points (AI-10, AI-11) */
+    post: operations["feynman_attempt_v1_feynman_attempts_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/feynman/concepts/{concept_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Earlier explanations of a concept, newest first */
+    get: operations["feynman_history_v1_feynman_concepts__concept_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/friends": {
     parameters: {
       query?: never;
@@ -1352,6 +1386,91 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/insights/calibration": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Confidence against correctness, from your own answers */
+    get: operations["calibration_v1_insights_calibration_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/insights/sleep-review": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Tonight's sleep review: when to remind and the hardest due cards (adults, Pro) */
+    get: operations["sleep_review_v1_insights_sleep_review_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/insights/weak-areas": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Topics whose cards are predicted to drop below your target recall soon */
+    get: operations["weak_areas_v1_insights_weak_areas_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/integrity/app-attest/keys": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Register this install's App Attest key (once per key) */
+    post: operations["register_key_v1_integrity_app_attest_keys_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/integrity/challenge": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A one-time nonce for Play Integrity or App Attest */
+    post: operations["challenge_v1_integrity_challenge_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/leaderboards": {
     parameters: {
       query?: never;
@@ -1432,6 +1551,75 @@ export interface paths {
     put?: never;
     post?: never;
     delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The live mock room (MOCK-03): status, server time and your deadline if you start now */
+    get: operations["room_v1_live_mocks__mock_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Server-Sent Events for channel mock:{id} (start, clock, closed, results) */
+    get: operations["events_v1_live_mocks__mock_id__events_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}/leaderboard": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Frozen ranks after results (MOCK-24, R31) */
+    get: operations["leaderboard_v1_live_mocks__mock_id__leaderboard_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/live/mocks/{mock_id}/registration": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Register for a live mock (Pro); the reminder comes when the room opens */
+    post: operations["register_v1_live_mocks__mock_id__registration_post"];
+    /** Cancel a live mock registration and its reminder */
+    delete: operations["unregister_v1_live_mocks__mock_id__registration_delete"];
     options?: never;
     head?: never;
     patch?: never;
@@ -1688,6 +1876,23 @@ export interface paths {
     get: operations["get_hub_v1_practice_hub_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/practice/interleaved": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start a mixed drill across chapters or subjects you have learned (practice §5.3) */
+    post: operations["interleaved_v1_practice_interleaved_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -2291,6 +2496,40 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/speech/dictation": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Speech to text for voice answers and spoken explanations (audio is not stored) */
+    post: operations["dictation_v1_speech_dictation_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/speech/read-aloud": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Read a tutor answer aloud (Deepgram TTS, cached); free within a daily cap */
+    post: operations["read_aloud_v1_speech_read_aloud_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/squads": {
     parameters: {
       query?: never;
@@ -2457,7 +2696,8 @@ export interface paths {
     put?: never;
     /**
      * Upload a batch of outbox events
-     * @description Idempotent by ``event_id``: a repeated event is accepted again with no effect.
+     * @description Idempotent by ``event_id``: a repeated event is accepted again with no effect. A batch
+     *     with XP-heavy events needs a device check when ``security.attestation_required`` is on.
      */
     post: operations["post_events_v1_sync_events_post"];
     delete?: never;
@@ -2607,6 +2847,92 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/voice/quota": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Voice time left today (AI-13) */
+    get: operations["voice_quota_v1_voice_quota_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Voice history (AI-09) */
+    get: operations["list_voice_sessions_v1_voice_sessions_get"];
+    put?: never;
+    /** Start (or reconnect) a voice tutor session: a single-use Gemini Live token */
+    post: operations["create_voice_session_v1_voice_sessions_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions/{session_id}/end": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** End the session and upload its transcript (AI-15) */
+    post: operations["end_voice_session_v1_voice_sessions__session_id__end_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions/{session_id}/tools": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Run a tool the voice tutor called; send the result back to Gemini Live */
+    post: operations["voice_tool_v1_voice_sessions__session_id__tools_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/voice/sessions/{session_id}/transcript": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** The stored transcript (AI-15 View transcript) */
+    get: operations["voice_transcript_v1_voice_sessions__session_id__transcript_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/webhooks/razorpay": {
     parameters: {
       query?: never;
@@ -2744,6 +3070,28 @@ export interface components {
       question_id: string;
       /** Time Ms */
       time_ms: number;
+    };
+    /** AppAttestKeyIn */
+    AppAttestKeyIn: {
+      /**
+       * Attestation
+       * @description The attestation object from attestKey, base64
+       */
+      attestation: string;
+      /** Key Id */
+      key_id: string;
+      /** Nonce */
+      nonce: string;
+    };
+    /** AppAttestKeyOut */
+    AppAttestKeyOut: {
+      /**
+       * Environment
+       * @enum {string}
+       */
+      environment: "production" | "development";
+      /** Key Id */
+      key_id: string;
     };
     /** AppVersionInfo */
     AppVersionInfo: {
@@ -3108,6 +3456,62 @@ export interface components {
       size_bytes: number;
       /** Url */
       url: string | null;
+    };
+    /** CalibrationLevel */
+    CalibrationLevel: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Answers */
+      answers: number;
+      /** Confidence */
+      confidence: string;
+      /** Correct */
+      correct: number;
+    };
+    /**
+     * CalibrationOut
+     * @description Confidence against correctness from real answers only (practice and mocks).
+     */
+    CalibrationOut: {
+      /** By Subject */
+      by_subject?: {
+        [key: string]: unknown;
+      }[];
+      /** Levels */
+      levels?: components["schemas"]["CalibrationLevel"][];
+      /** Needed */
+      needed: number | null;
+      /**
+       * Overconfident
+       * @description Share of 'sure' answers that were wrong
+       */
+      overconfident?: number | null;
+      /** Reason */
+      reason?: string | null;
+      /** Shown */
+      shown: boolean;
+      /** Tagged */
+      tagged: number;
+      /**
+       * Underconfident
+       * @description Share of 'guess' answers that were right
+       */
+      underconfident?: number | null;
+    };
+    /** ChallengeOut */
+    ChallengeOut: {
+      /** Expires In S */
+      expires_in_s: number;
+      /**
+       * Headers
+       * @description Headers a sensitive call carries: the token (or App Attest assertion, base64), this nonce, and on iOS the App Attest key id
+       */
+      headers: string[];
+      /**
+       * Nonce
+       * @description One-time value to bind into Play Integrity or App Attest
+       */
+      nonce: string;
     };
     /** ChapterOut */
     ChapterOut: {
@@ -3723,6 +4127,14 @@ export interface components {
       /** Is Anonymous */
       is_anonymous: boolean;
     };
+    /** DictationOut */
+    DictationOut: {
+      /** Confidence */
+      confidence: number | null;
+      quota: components["schemas"]["QuotaOut"];
+      /** Text */
+      text: string;
+    };
     /** DrillPreview */
     DrillPreview: {
       /** Exam */
@@ -4250,6 +4662,77 @@ export interface components {
       /** Ref */
       ref: string | null;
     };
+    /** FeynmanIn */
+    FeynmanIn: {
+      /**
+       * Client Attempt Id
+       * Format: uuid
+       */
+      client_attempt_id: string;
+      /** Concept Id */
+      concept_id: string;
+      /** Explanation */
+      explanation: string;
+      /**
+       * Follow Up Of
+       * @description The score this answers a follow-up question of
+       */
+      follow_up_of?: string | null;
+      /**
+       * Input Mode
+       * @default text
+       * @enum {string}
+       */
+      input_mode: "text" | "voice";
+    };
+    /**
+     * FeynmanOut
+     * @description AI-11: three meters (0-100), the key points with their status, follow-ups, and the last
+     *     score for this concept when one exists (never a made-up comparison).
+     */
+    FeynmanOut: {
+      /** Accuracy */
+      accuracy: number;
+      /** Attempt No */
+      attempt_no: number;
+      /** Clarity */
+      clarity: number;
+      /** Completeness */
+      completeness: number;
+      /** Concept Id */
+      concept_id: string;
+      /** Follow Ups */
+      follow_ups: string[];
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Key Points */
+      key_points: components["schemas"]["KeyPointOut"][];
+      /** Mastery Delta */
+      mastery_delta: number;
+      /** Previous */
+      previous: {
+        [key: string]: number;
+      } | null;
+      quota: components["schemas"]["QuotaOut"];
+      /** Safety */
+      safety?: {
+        [key: string]: unknown;
+      } | null;
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /**
+       * Status
+       * @default graded
+       * @enum {string}
+       */
+      status: "graded" | "crisis" | "refused";
+    };
     /** FixNext */
     FixNext: {
       /** Concept Id */
@@ -4437,6 +4920,23 @@ export interface components {
       /** Unread */
       unread: boolean;
     };
+    /** InterleavedIn */
+    InterleavedIn: {
+      /**
+       * Count
+       * @default 10
+       */
+      count: number;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Group By
+       * @default chapter
+       */
+      group_by: string;
+      /** Session Id */
+      session_id?: string | null;
+    };
     /** IntroEligibilityOut */
     IntroEligibilityOut: {
       /**
@@ -4477,6 +4977,22 @@ export interface components {
        * @enum {string}
        */
       state: "ok" | "self" | "already_friends" | "invalid";
+    };
+    /** KeyPointOut */
+    KeyPointOut: {
+      /** Index */
+      index: number;
+      /** Note */
+      note?: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "covered" | "missing" | "misconception";
+      /** Text */
+      text: {
+        [key: string]: string;
+      };
     };
     /** Leaderboard */
     Leaderboard: {
@@ -4654,6 +5170,109 @@ export interface components {
       profile: components["schemas"]["ProfileState"];
       /** Show Shared Phone Check */
       show_shared_phone_check: boolean;
+    };
+    /** LiveLeaderboard */
+    LiveLeaderboard: {
+      /** Mock Id */
+      mock_id: string;
+      /** Published */
+      published: boolean;
+      /** Ranked */
+      ranked: number;
+      /** Reason */
+      reason?: ("results_pending" | "threshold_unset" | "below_threshold") | null;
+      /** Rows */
+      rows: components["schemas"]["LiveLeaderboardRow"][];
+      you: components["schemas"]["LiveLeaderboardRow"] | null;
+    };
+    /** LiveLeaderboardRow */
+    LiveLeaderboardRow: {
+      /** Avatar */
+      avatar: string | null;
+      /** Is You */
+      is_you: boolean;
+      /**
+       * Name
+       * @description Adults: display name. Minors: auto nickname (R31)
+       */
+      name: string | null;
+      /** Percentile */
+      percentile: number | null;
+      /** Rank */
+      rank: number;
+      /** Score */
+      score: number;
+    };
+    /**
+     * LiveRoom
+     * @description MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset.
+     */
+    LiveRoom: {
+      /** Attempt Id */
+      attempt_id: string | null;
+      /** Attempt Status */
+      attempt_status: string | null;
+      /** Can Start */
+      can_start: boolean;
+      /**
+       * Channel
+       * @description Supabase Realtime channel (start, clock, results)
+       */
+      channel: string;
+      /** Deadline If Started Now */
+      deadline_if_started_now: string | null;
+      /** Duration S */
+      duration_s: number | null;
+      /**
+       * Events Url
+       * @description Server-Sent Events fallback for the same events
+       */
+      events_url: string;
+      /**
+       * Full Duration Until
+       * @description Start by this time for the full duration; later starts end at window_end
+       */
+      full_duration_until: string | null;
+      /** Mock Id */
+      mock_id: string;
+      /** Ranks Published */
+      ranks_published: boolean;
+      /** Registered */
+      registered: boolean;
+      /** Registrations */
+      registrations: number;
+      /** Results At */
+      results_at: string | null;
+      /**
+       * Room Opens At
+       * Format: date-time
+       * @description window_start minus live.room_lead_min
+       */
+      room_opens_at: string;
+      /**
+       * Server Time
+       * Format: date-time
+       */
+      server_time: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "scheduled" | "room_open" | "live" | "closed" | "results";
+      /** Title */
+      title: {
+        [key: string]: string;
+      };
+      /**
+       * Window End
+       * Format: date-time
+       */
+      window_end: string;
+      /**
+       * Window Start
+       * Format: date-time
+       */
+      window_start: string;
     };
     /** ManifestResponse */
     ManifestResponse: {
@@ -5864,6 +6483,41 @@ export interface components {
        */
       reaction: "clap" | "star" | "strong" | "smile";
     };
+    /** ReadAloudIn */
+    ReadAloudIn: {
+      /**
+       * Locale
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /** Text */
+      text: string;
+    };
+    /** ReadAloudOut */
+    ReadAloudOut: {
+      /** Cached */
+      cached: boolean;
+      /** Mime */
+      mime: string;
+      quota: components["schemas"]["QuotaOut"];
+      /**
+       * Url
+       * @description Signed, short-lived link to the audio
+       */
+      url: string;
+    };
+    /** Registration */
+    Registration: {
+      /** Mock Id */
+      mock_id: string;
+      /** Registered */
+      registered: boolean;
+      /**
+       * Reminder At
+       * @description When the mock_reminder push is due (the room opening)
+       */
+      reminder_at: string | null;
+    };
     /** RejectedEvent */
     RejectedEvent: {
       /** Code */
@@ -6263,6 +6917,41 @@ export interface components {
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
     };
+    /** SleepCard */
+    SleepCard: {
+      /** Card Ref */
+      card_ref: string;
+      /** Difficulty */
+      difficulty: number;
+      /**
+       * Due At
+       * Format: date-time
+       */
+      due_at: string;
+    };
+    /**
+     * SleepReviewOut
+     * @description Tonight's sleep review for the app to schedule as a local notification.
+     */
+    SleepReviewOut: {
+      /** Bedtime */
+      bedtime?: string | null;
+      /** Cards */
+      cards?: components["schemas"]["SleepCard"][];
+      /** Confidence */
+      confidence?: number | null;
+      /** Eligible */
+      eligible: boolean;
+      /** Notify At */
+      notify_at?: string | null;
+      /** Reason */
+      reason?: string | null;
+      /**
+       * Source
+       * @description estimate or fixed (a teen's own time)
+       */
+      source?: string | null;
+    };
     /**
      * SessionCreate
      * @description PRC-03's input contract (practice §5.3): exactly one of ``concepts``, ``topic_id``,
@@ -6550,6 +7239,7 @@ export interface components {
             | "threshold_unset"
             | "below_threshold"
             | "results_pending"
+            | "outside_window"
           )
         | null;
       /** Shown */
@@ -6807,6 +7497,48 @@ export interface components {
       /** Reviews To Qualify */
       reviews_to_qualify: number;
     };
+    /** ToolCallIn */
+    ToolCallIn: {
+      /** Args */
+      args?: {
+        [key: string]: unknown;
+      };
+      /** Call Id */
+      call_id: string;
+      /**
+       * Name
+       * @enum {string}
+       */
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+    };
+    /** ToolCallOut */
+    ToolCallOut: {
+      /** Call Id */
+      call_id: string;
+      /**
+       * Name
+       * @enum {string}
+       */
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+      /**
+       * Result
+       * @description Send back to Gemini Live as the function response
+       */
+      result: {
+        [key: string]: unknown;
+      };
+    };
+    /** ToolDeclaration */
+    ToolDeclaration: {
+      /** Description */
+      description: string;
+      /** Name */
+      name: string;
+      /** Parameters */
+      parameters: {
+        [key: string]: unknown;
+      };
+    };
     /** TopicBrief */
     TopicBrief: {
       /** Id */
@@ -6877,6 +7609,21 @@ export interface components {
       topic_id: string;
       /** Wrong */
       wrong: number;
+    };
+    /** TranscriptTurn */
+    TranscriptTurn: {
+      /**
+       * At Ms
+       * @default 0
+       */
+      at_ms: number;
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "student" | "tutor";
+      /** Text */
+      text: string;
     };
     /** TutorSession */
     TutorSession: {
@@ -6955,6 +7702,164 @@ export interface components {
     } & {
       [key: string]: unknown;
     };
+    /**
+     * VoiceQuota
+     * @description AI-13 shows the remaining daily time. ``available`` is false with a ``reason`` when voice
+     *     can't start for this student right now.
+     */
+    VoiceQuota: {
+      /** Available */
+      available: boolean;
+      /** Background Grace Seconds */
+      background_grace_seconds: number | null;
+      /** Daily Seconds */
+      daily_seconds: number | null;
+      /** Reason */
+      reason?: string | null;
+      /** Reconnect Seconds */
+      reconnect_seconds: number | null;
+      /** Remaining Seconds */
+      remaining_seconds: number | null;
+      /**
+       * Resets At
+       * Format: date-time
+       */
+      resets_at: string;
+      /** Session Max Seconds */
+      session_max_seconds: number | null;
+      /** Used Seconds */
+      used_seconds: number;
+    };
+    /** VoiceSessionCreate */
+    VoiceSessionCreate: {
+      /**
+       * Client Session Id
+       * Format: uuid
+       * @description Client UUID; asking again with the same id mints a fresh token (reconnect)
+       */
+      client_session_id: string;
+      /** Context Ref */
+      context_ref?: string | null;
+      /** Exam */
+      exam?: string | null;
+    };
+    /** VoiceSessionEnd */
+    VoiceSessionEnd: {
+      /**
+       * End Reason
+       * @default user
+       * @enum {string}
+       */
+      end_reason: "user" | "session_cap" | "daily_cap" | "network" | "background" | "phone_call";
+      /**
+       * Flashcards Made
+       * @default 0
+       */
+      flashcards_made: number;
+      /** Seconds */
+      seconds: number;
+      /** Turns */
+      turns?: components["schemas"]["TranscriptTurn"][];
+    };
+    /** VoiceSessionOut */
+    VoiceSessionOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Locale */
+      locale: string;
+      /**
+       * Max Seconds
+       * @description This session ends at this many seconds of talk
+       */
+      max_seconds: number;
+      /**
+       * Model
+       * @description From GEMINI_LIVE_MODEL (config), for the client's connect call
+       */
+      model: string;
+      /** Provider */
+      provider: string;
+      quota: components["schemas"]["VoiceQuota"];
+      /**
+       * Resumed
+       * @default false
+       */
+      resumed: boolean;
+      /**
+       * Token
+       * @description Single-use Gemini Live token; never stored by the server
+       */
+      token: string;
+      /**
+       * Token Expires At
+       * Format: date-time
+       */
+      token_expires_at: string;
+      /** Tools */
+      tools: components["schemas"]["ToolDeclaration"][];
+      /**
+       * Tutor Session Id
+       * Format: uuid
+       */
+      tutor_session_id: string;
+      /**
+       * Warn At Seconds
+       * @description Show the 'about 2 minutes left' banner here
+       */
+      warn_at_seconds: number;
+    };
+    /**
+     * VoiceSummary
+     * @description AI-15.
+     */
+    VoiceSummary: {
+      /** Context Ref */
+      context_ref: string | null;
+      /** Ended At */
+      ended_at: string | null;
+      /** Flashcards Made */
+      flashcards_made: number;
+      /** Has Transcript */
+      has_transcript: boolean;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Safety
+       * @description Present when the transcript showed a crisis signal
+       */
+      safety?: {
+        [key: string]: unknown;
+      } | null;
+      /** Seconds */
+      seconds: number | null;
+      /**
+       * Started At
+       * Format: date-time
+       */
+      started_at: string;
+      /** Status */
+      status: string;
+      /** Tutor Session Id */
+      tutor_session_id: string | null;
+    };
+    /** VoiceTranscript */
+    VoiceTranscript: {
+      /** Locale */
+      locale: string | null;
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /** Turns */
+      turns: components["schemas"]["TranscriptTurn"][];
+    };
     /** WalletState */
     WalletState: {
       /** Gems */
@@ -6963,6 +7868,24 @@ export interface components {
       xp_today: number;
       /** Xp Total */
       xp_total: number;
+    };
+    /** WeakAreaOut */
+    WeakAreaOut: {
+      /** Cards */
+      cards: number;
+      /** Min Retrievability */
+      min_retrievability: number;
+      /** Topic Id */
+      topic_id: string;
+    };
+    /** WeakAreasOut */
+    WeakAreasOut: {
+      /** Horizon Days */
+      horizon_days: number;
+      /** Target Retention */
+      target_retention: number;
+      /** Topics */
+      topics: components["schemas"]["WeakAreaOut"][];
     };
     /** WeakSpot */
     WeakSpot: {
@@ -7787,6 +8710,13 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
+        "x-platform"?: string | null;
       };
       path?: never;
       cookie?: never;
@@ -7822,6 +8752,13 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
+        "x-platform"?: string | null;
       };
       path?: never;
       cookie?: never;
@@ -8606,6 +9543,13 @@ export interface operations {
       query?: never;
       header?: {
         "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
+        "x-platform"?: string | null;
       };
       path: {
         duel_id: string;
@@ -9203,6 +10147,72 @@ export interface operations {
       };
     };
   };
+  feynman_attempt_v1_feynman_attempts_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["FeynmanIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeynmanOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  feynman_history_v1_feynman_concepts__concept_id__get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path: {
+        concept_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FeynmanOut"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   friends_v1_friends_get: {
     parameters: {
       query?: never;
@@ -9710,6 +10720,124 @@ export interface operations {
       };
     };
   };
+  calibration_v1_insights_calibration_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CalibrationOut"];
+        };
+      };
+    };
+  };
+  sleep_review_v1_insights_sleep_review_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SleepReviewOut"];
+        };
+      };
+    };
+  };
+  weak_areas_v1_insights_weak_areas_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WeakAreasOut"];
+        };
+      };
+    };
+  };
+  register_key_v1_integrity_app_attest_keys_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AppAttestKeyIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppAttestKeyOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  challenge_v1_integrity_challenge_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChallengeOut"];
+        };
+      };
+    };
+  };
   leaderboard_v1_leaderboards_get: {
     parameters: {
       query?: {
@@ -9832,6 +10960,161 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["LeagueResult"];
+        };
+      };
+    };
+  };
+  room_v1_live_mocks__mock_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveRoom"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  events_v1_live_mocks__mock_id__events_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  leaderboard_v1_live_mocks__mock_id__leaderboard_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveLeaderboard"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  register_v1_live_mocks__mock_id__registration_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Registration"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  unregister_v1_live_mocks__mock_id__registration_delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        mock_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Registration"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };
@@ -10320,6 +11603,39 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["PracticeHub"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  interleaved_v1_practice_interleaved_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["InterleavedIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PracticeSession"];
         };
       };
       /** @description Validation Error */
@@ -11421,6 +12737,74 @@ export interface operations {
       };
     };
   };
+  dictation_v1_speech_dictation_post: {
+    parameters: {
+      query?: {
+        locale?: "en" | "hi";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "audio/*": string;
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DictationOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  read_aloud_v1_speech_read_aloud_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReadAloudIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ReadAloudOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   squads_v1_squads_get: {
     parameters: {
       query?: never;
@@ -11777,6 +13161,9 @@ export interface operations {
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
+        "x-integrity-key-id"?: string | null;
+        "x-integrity-nonce"?: string | null;
+        "x-integrity-token"?: string | null;
         "x-platform"?: string | null;
       };
       path?: never;
@@ -12107,6 +13494,203 @@ export interface operations {
         };
         content: {
           "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  voice_quota_v1_voice_quota_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceQuota"];
+        };
+      };
+    };
+  };
+  list_voice_sessions_v1_voice_sessions_get: {
+    parameters: {
+      query?: {
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceSummary"][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  create_voice_session_v1_voice_sessions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["VoiceSessionCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceSessionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+      /** @description voice_unavailable (not configured, off, or no limit set) */
+      503: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  end_voice_session_v1_voice_sessions__session_id__end_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["VoiceSessionEnd"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceSummary"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  voice_tool_v1_voice_sessions__session_id__tools_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ToolCallIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ToolCallOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  voice_transcript_v1_voice_sessions__session_id__transcript_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VoiceTranscript"];
         };
       };
       /** @description Validation Error */

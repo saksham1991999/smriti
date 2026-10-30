@@ -4,6 +4,7 @@ flagged XP left out of leagues."""
 
 from __future__ import annotations
 
+import uuid
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime, timedelta
@@ -165,6 +166,19 @@ async def test_friend_live_duel_with_events_and_flags(
         async with services.db.admin_tx() as session:
             counted = await leagues.counted_xp(session, [a.user_id], week, datetime.now(UTC))
         assert counted[a.user_id] == 0
+        # One anti-cheat flag per flagged player and duel (TRD §10), ids and numbers only.
+        async with services.db.admin_tx() as session:
+            flagged = (
+                await session.execute(
+                    text(
+                        "select user_id, event_ids from ops.integrity_flags"
+                        " where source = 'duel' and kind = 'fast_duel_answer' and user_id = any(:u)"
+                    ),
+                    {"u": [a.user_id, b.user_id]},
+                )
+            ).all()
+        assert sorted(str(f.user_id) for f in flagged) == sorted([str(a.user_id), str(b.user_id)])
+        assert all(f.event_ids == [uuid.UUID(duel["id"])] for f in flagged)
 
         ev = (await client.get(f"/v1/duels/{duel['id']}/events", headers=a.headers)).json()
         kinds = [e["kind"] for e in ev["events"]]

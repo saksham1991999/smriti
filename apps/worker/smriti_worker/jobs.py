@@ -19,21 +19,29 @@ from smriti_api.ai.factory import build_gateway
 from smriti_api.core.config import REPO_ROOT, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.logging import configure_logging, hash_user_id
+from smriti_api.core.redis import create_redis
 from smriti_api.integrations import build_integrations
+from smriti_api.integrations.analytics_store import build_analytics_store
+from smriti_api.integrations.realtime import build_realtime
+from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.services import (
     accounts,
     billing,
     card_index,
+    data_jobs,
     duels,
     exports,
     guardian,
     leagues,
+    learning_science,
+    live_mocks,
     media,
     mocks,
     notify,
     social_duos,
     social_squads,
     tutor,
+    voice,
 )
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
@@ -65,6 +73,22 @@ async def startup(ctx: Ctx) -> None:
         analytics=ConsentAwareAnalytics(LogAnalyticsSink(), db),
         integrations=build_integrations(settings, http),
         ai=build_gateway(settings, db, http),
+        realtime=build_realtime(
+            provider=get_integration_settings().realtime_provider,
+            dev=settings.is_dev,
+            http=http,
+            redis=ctx.get("redis") or create_redis(settings.redis_url),
+            supabase_url=settings.supabase_url,
+            service_key=settings.supabase_service_role_key,
+        ),
+        analytics_store=build_analytics_store(
+            http,
+            db,
+            url=get_integration_settings().clickhouse_url,
+            user=get_integration_settings().clickhouse_user,
+            password=get_integration_settings().clickhouse_password,
+            database=get_integration_settings().clickhouse_database,
+        ),
     )
     log.info("worker_started", env=settings.app_env.value)
 
@@ -102,12 +126,46 @@ async def mocks_auto_submit(ctx: Ctx) -> int:
     return count
 
 
+async def fsrs_optimise(ctx: Ctx) -> dict[str, Any]:
+    """Per-user FSRS parameters from each student's own reviews (G-11)."""
+    report = await data_jobs.fsrs_optimise_job(_deps(ctx))
+    log.info("fsrs_optimise", **report)
+    return report
+
+
+async def irt_calibrate(ctx: Ctx) -> dict[str, Any]:
+    """IRT item parameters from first-attempt responses (G-11; no calibrator chosen yet)."""
+    report = await data_jobs.irt_calibrate_job(_deps(ctx))
+    log.info("irt_calibrate", **report)
+    return report
+
+
+async def live_mocks_tick(ctx: Ctx) -> dict[str, int]:
+    """Live mocks: the start signal and clock on mock:{id}, and ranks frozen after results."""
+    counts = await live_mocks.tick_job(_deps(ctx))
+    if any(counts.values()):
+        log.info("live_mocks_tick", **counts)
+    return counts
+
+
 async def tutor_retention(ctx: Ctx) -> int:
-    """Tutor messages older than ``ai.tutor_retention_days``."""
+    """Tutor messages and voice transcripts older than ``ai.tutor_retention_days``."""
     count = await tutor.purge_old_messages_job(_deps(ctx))
+    # Voice sessions and their stored transcripts share the tutor's retention.
+    count += await voice.purge_job(_deps(ctx))
     if count:
         log.info("tutor_messages_purged", count=count)
     return count
+
+
+async def weak_area_alerts(ctx: Ctx) -> int:
+    """Predictive weak-area alerts from FSRS retrievability (TRD §9.6)."""
+    return await learning_science.weak_area_alerts(_deps(ctx).db)
+
+
+async def rhythm_estimates(ctx: Ctx) -> int:
+    """Adults' usual bedtime and study hour, for sleep review and smart timing (TRD §9.6)."""
+    return await learning_science.estimate_rhythms(_deps(ctx).db)
 
 
 async def league_assign(ctx: Ctx) -> int:

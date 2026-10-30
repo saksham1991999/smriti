@@ -37,6 +37,14 @@
       "default": null,
       "source": "owner"
     },
+    "anticheat.min_answer_ms": {
+      "default": 700,
+      "source": "proposed"
+    },
+    "anticheat.min_review_ms": {
+      "default": 500,
+      "source": "proposed"
+    },
     "auth.chip_saving_max_s": {
       "default": 10,
       "source": "proposed"
@@ -244,6 +252,29 @@
     "feature.voice_tutor": {
       "default": false,
       "source": "doc"
+    },
+    "feynman.bands": {
+      "default": {
+        "getting_there": 40,
+        "clear": 70
+      },
+      "source": "proposed"
+    },
+    "feynman.mastery_weight": {
+      "default": 0.1,
+      "source": "proposed"
+    },
+    "feynman.max_follow_ups": {
+      "default": 3,
+      "source": "doc"
+    },
+    "feynman.max_record_seconds": {
+      "default": 120,
+      "source": "proposed"
+    },
+    "feynman.min_words": {
+      "default": 30,
+      "source": "proposed"
     },
     "focus.away_note_after_min": {
       "default": 3,
@@ -505,6 +536,10 @@
       "default": null,
       "source": "owner"
     },
+    "irt.min_responses": {
+      "default": 200,
+      "source": "proposed"
+    },
     "lab.confirm_download_mb": {
       "default": 5,
       "source": "proposed"
@@ -626,6 +661,10 @@
       "default": false,
       "source": "doc"
     },
+    "live.room_lead_min": {
+      "default": 15,
+      "source": "proposed"
+    },
     "maintenance.active": {
       "default": false,
       "source": "doc"
@@ -664,6 +703,10 @@
     },
     "memory.fsrs.maximum_interval_days": {
       "default": 36500,
+      "source": "proposed"
+    },
+    "memory.fsrs.optimise_min_reviews": {
+      "default": 400,
       "source": "proposed"
     },
     "memory.leech_lapses": {
@@ -815,9 +858,21 @@
       },
       "source": "doc"
     },
+    "notify.sleep_review.cards": {
+      "default": 5,
+      "source": "doc"
+    },
     "notify.sleep_review.lead_min": {
       "default": 20,
       "source": "prd"
+    },
+    "notify.sleep_review.lookback_days": {
+      "default": 14,
+      "source": "doc"
+    },
+    "notify.sleep_review.min_confidence": {
+      "default": 0.6,
+      "source": "proposed"
     },
     "notify.smart.offset_hours": {
       "default": 23.5,
@@ -830,6 +885,14 @@
     "notify.templates.repeat_gap_days": {
       "default": null,
       "source": "owner"
+    },
+    "notify.weak_area.horizon_days": {
+      "default": 3,
+      "source": "doc"
+    },
+    "notify.weak_area.per_week": {
+      "default": 2,
+      "source": "doc"
     },
     "onb.outcome_line": {
       "default": false,
@@ -876,6 +939,10 @@
       "default": false,
       "source": "doc"
     },
+    "practice.mixed_min_groups": {
+      "default": 2,
+      "source": "doc"
+    },
     "practice.weak_accuracy_below": {
       "default": null,
       "source": "owner"
@@ -896,9 +963,17 @@
       "default": true,
       "source": "doc"
     },
+    "pro.dictation_per_day": {
+      "default": 30,
+      "source": "proposed"
+    },
     "pro.tutor_messages_per_day": {
       "default": null,
       "source": "owner"
+    },
+    "pro.voice_daily_seconds": {
+      "default": 900,
+      "source": "proposed"
     },
     "report.fix_next_count": {
       "default": null,
@@ -915,6 +990,10 @@
     "search.recent_max": {
       "default": null,
       "source": "owner"
+    },
+    "security.attestation_required": {
+      "default": false,
+      "source": "doc"
     },
     "share.streak_milestones": {
       "default": [
@@ -1045,6 +1124,18 @@
       "default": null,
       "source": "owner"
     },
+    "voice.background_grace_seconds": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "voice.reconnect_seconds": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "voice.session_max_seconds": {
+      "default": 600,
+      "source": "proposed"
+    },
     "widget.evening_hour": {
       "default": null,
       "source": "owner"
@@ -1095,6 +1186,9 @@
     "duo_invite_ttl_days": "social.duo_invite_ttl_days",
     "duo_max_partners": "social.duo_max_partners",
     "duo_nudges_per_day": "social.duo_nudges_per_day",
+    "feynman_bands": "feynman.bands",
+    "feynman_max_record_seconds": "feynman.max_record_seconds",
+    "feynman_min_words": "feynman.min_words",
     "free_tutor_messages_per_day": "free.tutor_messages_per_day",
     "friend_request_ttl_days": "social.friend_request_ttl_days",
     "friend_requests_per_day": "social.friend_requests_per_day",
@@ -1113,6 +1207,10 @@
     "roleplay_max_turns": "roleplay.max_turns",
     "squad_max_members": "social.squad_max_members",
     "squads_per_user": "social.squads_per_user",
-    "streak.freeze_slots": "streak.freeze_slots_max"
+    "streak.freeze_slots": "streak.freeze_slots_max",
+    "voice_background_grace_seconds": "voice.background_grace_seconds",
+    "voice_daily_seconds": "pro.voice_daily_seconds",
+    "voice_reconnect_seconds": "voice.reconnect_seconds",
+    "voice_session_max_seconds": "voice.session_max_seconds"
   }
 }

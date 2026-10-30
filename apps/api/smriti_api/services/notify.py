@@ -21,7 +21,7 @@ from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, date, datetime, time, timedelta
 from typing import Any, Literal
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 import structlog
 from sqlalchemy import text
@@ -109,6 +109,20 @@ KINDS: dict[str, KindSpec] = {
     ),
     "parent_consent_needed": KindSpec(
         "parent", ("NTF-01.parent_consent_needed",), deep_link="/parent", ttl=timedelta(days=1)
+    ),
+    # Predictive weak-area alert (TRD §9.6, me-money §6.3): adults only as a push; for minors
+    # it is folded into the reminder on the device.
+    "weak_area": KindSpec(
+        "learning",
+        ("NTF-01.weak_area_adults",),
+        title="pet",
+        deep_link="/review?topic={topic_id}",
+        minors=False,
+        ttl=timedelta(days=1),
+    ),
+    # Live mocks the student registered for (practice §6.11, me-money §6.3).
+    "mock_reminder": KindSpec(
+        "exam_alert", ("NTF-01.mock_reminder",), deep_link="/mock/{mock_id}", ttl=timedelta(hours=2)
     ),
     # Social (tutor-social B3, me-money §6.4). Class "social": consent, caps, and R45 for minors.
     "friend_request": KindSpec("social", ("NTF-01.friend_request",), deep_link="/friends"),
@@ -456,6 +470,39 @@ async def pick_template(
     return min(spec.pool, key=lambda t: seen[t])
 
 
+async def resolve_names(
+    session: AsyncSession, payload: dict[str, Any], locale: str, tz: str
+) -> dict[str, Any]:
+    """The outbox carries ids only; names and local times for the copy are looked up at send
+    time, in the student's language and timezone."""
+    out = dict(payload)
+    if "topic_id" in out and "topic" not in out:
+        name = (
+            await session.execute(
+                text("select name from content.topics where id = :t"), {"t": out["topic_id"]}
+            )
+        ).scalar_one_or_none()
+        if isinstance(name, dict):
+            out["topic"] = name.get(locale) or name.get("en") or ""
+    if "mock_id" in out and "mock" not in out:
+        row = (
+            await session.execute(
+                text("select title, window_start from content.mocks where id = :m"),
+                {"m": out["mock_id"]},
+            )
+        ).one_or_none()
+        if row is not None:
+            title = row.title if isinstance(row.title, dict) else {}
+            out["mock"] = title.get(locale) or title.get("en") or ""
+            if row.window_start is not None and "time" not in out:
+                try:
+                    local = row.window_start.astimezone(ZoneInfo(tz))
+                except (ZoneInfoNotFoundError, ValueError):
+                    local = row.window_start
+                out["time"] = local.strftime("%H:%M")
+    return out
+
+
 def render(
     kind: str, template: str, ctx: UserCtx, payload: dict[str, Any], brand: str
 ) -> tuple[str, str, str]:
@@ -651,6 +698,7 @@ async def dispatch_due(
                 result.suppressed += 1
                 continue
             try:
+                payload = await resolve_names(session, payload, ctx.locale, ctx.timezone)
                 title, body, link = render(item.kind, template, ctx, payload, brand)
             except copy.MissingCopy:
                 log.error("notify_copy_missing", kind=item.kind, template=template)

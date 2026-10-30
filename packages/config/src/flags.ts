@@ -389,6 +389,38 @@ export const FLAG_REGISTRY = {
   'notify.sleep_review.lead_min': def(posInt, 20, 'prd', 'PRD §5.4 ("about 20 minutes")'),
   'notify.plan_days': def(posInt, 7, 'doc', 'me-money §6.1'),
   'widget.evening_hour': owner(hour, 'me-money §6.6'),
+
+  // ── Phase 2 AI: voice tutor, read-aloud, dictation, Feynman (tutor-social §A6, §A8, §A9; TRD §9.4) ──
+  'pro.voice_daily_seconds': def(posInt, 900, 'proposed', 'tutor-social A9 step 5, PRD §5.5 (fair use per day); proposed (R54), owner to confirm', ['voice_daily_seconds']),
+  'voice.session_max_seconds': def(posInt, 600, 'proposed', 'tutor-social A9 step 5; proposed (R54), owner to confirm', ['voice_session_max_seconds']),
+  'voice.reconnect_seconds': def(posInt, 30, 'proposed', 'tutor-social A9 step 6; proposed (R54), owner to confirm', ['voice_reconnect_seconds']),
+  'voice.background_grace_seconds': def(posInt, 20, 'proposed', 'tutor-social A9 step 7; proposed (R54), owner to confirm', ['voice_background_grace_seconds']),
+  'pro.dictation_per_day': def(posInt, 30, 'proposed', 'TRD §9.4 (Deepgram STT), tutor-social A6; proposed (R54), owner to confirm'),
+  'feynman.min_words': def(posInt, 30, 'proposed', 'tutor-social A8; proposed (R54), owner to confirm', ['feynman_min_words']),
+  'feynman.max_record_seconds': def(posInt, 120, 'proposed', 'tutor-social A8; proposed (R54), owner to confirm', ['feynman_max_record_seconds']),
+  'feynman.bands': def(z.object({ getting_there: int.min(0).max(100), clear: int.min(0).max(100) }), { getting_there: 40, clear: 70 }, 'proposed', 'tutor-social A8, ux AI-11 (lower bounds on the 0-100 score: needs work, getting there, clear); proposed (R54), owner to confirm', ['feynman_bands']),
+  'feynman.max_follow_ups': def(posInt, 3, 'doc', 'tutor-social A8 ("1 to 3 short follow-up answers")'),
+  'feynman.mastery_weight': def(fraction, 0.1, 'proposed', 'IMPLEMENTATION_PLAN G-3 (Feynman feeds mastery as a weak signal)'),
+
+  // ── Learning-science jobs (TRD §9.6, IMPLEMENTATION_PLAN G-8) ────────────
+  'notify.weak_area.horizon_days': def(posInt, 3, 'doc', 'TRD §9.6 ("for the next 3 days")'),
+  'notify.weak_area.per_week': def(posInt, 2, 'doc', 'me-money §6.3 (weak_area: 2 a week)'),
+  'notify.sleep_review.lookback_days': def(posInt, 14, 'doc', 'TRD §9.6 ("the last 14 days")'),
+  'notify.sleep_review.cards': def(posInt, 5, 'doc', 'TRD §9.6 ("the 5 hardest due cards")'),
+  'notify.sleep_review.min_confidence': def(fraction, 0.6, 'proposed', 'TRD §9.6 ("if confidence is high enough"); proposed (R54), owner to confirm'),
+  'practice.mixed_min_groups': def(posInt, 2, 'doc', 'practice §5.3 ("two or more subjects or chapters")'),
+
+  // ── Security and anti-cheat (TRD §10, §14; IMPLEMENTATION_PLAN G-10) ─────
+  'security.attestation_required': def(bool, false, 'doc', 'TRD §14 (Phase 2; on once the apps send attestation)'),
+  'anticheat.min_answer_ms': def(posInt, 700, 'proposed', 'TRD §10 (answer timing); proposed (R54), owner to confirm'),
+  'anticheat.min_review_ms': def(posInt, 500, 'proposed', 'TRD §10 (time per card); proposed (R54), owner to confirm'),
+
+  // ── Live mocks (practice §6.11, Phase 3) ─────────────────────────────────
+  'live.room_lead_min': def(posInt, 15, 'proposed', 'practice §6.11 ("room opens at window_start minus room lead"); proposed (R54), owner to confirm'),
+
+  // ── Data (IMPLEMENTATION_PLAN G-11) ──────────────────────────────────────
+  'memory.fsrs.optimise_min_reviews': def(posInt, 400, 'proposed', 'G-11 per-user FSRS optimisation; proposed (R54), owner to confirm'),
+  'irt.min_responses': def(posInt, 200, 'proposed', 'G-11 IRT calibration; proposed (R54), owner to confirm'),
 } as const satisfies Record<string, FlagDef<z.ZodType, boolean>>;
 
 export type FlagKey = keyof typeof FLAG_REGISTRY;

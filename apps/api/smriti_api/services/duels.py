@@ -44,7 +44,7 @@ from smriti_api.core.auth import AuthContext
 from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError, conflict, not_found
 from smriti_api.schemas import social as so
-from smriti_api.services import game_ops
+from smriti_api.services import game_ops, integrity
 from smriti_api.services import question_bank as bank
 from smriti_api.services import social_people as sp
 from smriti_api.services.answers import AnswerFormatError, OptionsAnswer, check_answer
@@ -956,6 +956,16 @@ async def answer(
             ),
             {"p": points, "c": int(correct), "f": fast, "d": duel_id, "u": m.user_id},
         )
+        if fast and not player.flagged_fast:
+            # The first too-fast answer in a duel goes to the anti-cheat review (TRD §10, A36).
+            await integrity.record_flag(
+                session,
+                m.user_id,
+                source="duel",
+                kind="fast_duel_answer",
+                event_ids=[duel_id],
+                detail={"threshold": settings.min_ms, "min_ms": time_ms},
+            )
         if duel.mode == "live":
             await _publish(
                 session, duel_id, "answered", {"role": _role(duel, m.user_id), "index": index}

@@ -24,12 +24,18 @@ from smriti_api.core.ratelimit import RateLimiter
 from smriti_api.core.redis import create_redis
 from smriti_api.core.telemetry import configure_tracing, instrument_app
 from smriti_api.integrations import build_integrations
+from smriti_api.integrations.analytics_store import build_analytics_store
+from smriti_api.integrations.realtime import build_realtime
+from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
 from smriti_api.routes import billing as billing_routes
 from smriti_api.routes import duels as duel_routes
 from smriti_api.routes import exports as exports_routes
 from smriti_api.routes import guardian as guardian_routes
+from smriti_api.routes import insights as insights_routes
+from smriti_api.routes import integrity as integrity_routes
 from smriti_api.routes import leagues as league_routes
+from smriti_api.routes import live as live_routes
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import practice as practice_routes
@@ -37,6 +43,7 @@ from smriti_api.routes import reviews as reviews_routes
 from smriti_api.routes import shared_decks as shared_deck_routes
 from smriti_api.routes import social as social_routes
 from smriti_api.routes import tutor as tutor_routes
+from smriti_api.routes import voice as voice_routes
 from smriti_api.services.analytics import LogAnalyticsSink
 from smriti_api.services.auth_admin import build_auth_admin
 from smriti_api.services.jobs import ArqJobQueue, InlineJobQueue, JobDeps, JobQueue, job_registry
@@ -57,6 +64,14 @@ async def build_services(settings: Settings) -> AppServices:
     analytics = ConsentAwareAnalytics(LogAnalyticsSink(), db)
     integrations = build_integrations(settings, http)
     ai = build_gateway(settings, db, http)
+    realtime = build_realtime(
+        provider=get_integration_settings().realtime_provider,
+        dev=settings.is_dev,
+        http=http,
+        redis=redis,
+        supabase_url=settings.supabase_url,
+        service_key=settings.supabase_service_role_key,
+    )
     jobs: JobQueue
     if settings.effective_jobs_mode == JobsMode.inline:
         jobs = InlineJobQueue(
@@ -66,6 +81,15 @@ async def build_services(settings: Settings) -> AppServices:
                 analytics=analytics,
                 integrations=integrations,
                 ai=ai,
+                realtime=realtime,
+                analytics_store=build_analytics_store(
+                    http,
+                    db,
+                    url=get_integration_settings().clickhouse_url,
+                    user=get_integration_settings().clickhouse_user,
+                    password=get_integration_settings().clickhouse_password,
+                    database=get_integration_settings().clickhouse_database,
+                ),
             ),
             job_registry(),
         )
@@ -84,6 +108,7 @@ async def build_services(settings: Settings) -> AppServices:
         analytics=analytics,
         ai=ai,
         integrations=integrations,
+        realtime=realtime,
     )
 
 
@@ -186,6 +211,10 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(guardian_routes.router)
     app.include_router(notify_routes.router)
     app.include_router(exports_routes.router)
+    app.include_router(voice_routes.router)
+    app.include_router(insights_routes.router)
+    app.include_router(integrity_routes.router)
+    app.include_router(live_routes.router)
     # Wave 2 (Agent B): the Phase 2 social backend.
     for router in (
         social_routes.router,

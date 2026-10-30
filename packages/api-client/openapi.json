@@ -184,7 +184,7 @@
       "post": {
         "tags": ["sync"],
         "summary": "Upload a batch of outbox events",
-        "description": "Idempotent by ``event_id``: a repeated event is accepted again with no effect.",
+        "description": "Idempotent by ``event_id``: a repeated event is accepted again with no effect. A batch\nwith XP-heavy events needs a device check when ``security.attestation_required`` is on.",
         "operationId": "post_events_v1_sync_events_post",
         "parameters": [
           {
@@ -221,6 +221,33 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "x-integrity-token",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16384 }, { "type": "null" }],
+              "title": "X-Integrity-Token"
+            }
+          },
+          {
+            "name": "x-integrity-nonce",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "X-Integrity-Nonce"
+            }
+          },
+          {
+            "name": "x-integrity-key-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Integrity-Key-Id"
             }
           }
         ],
@@ -3456,6 +3483,69 @@
         "operationId": "razorpay_verify_v1_billing_razorpay_verify_post",
         "parameters": [
           {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "x-integrity-token",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16384 }, { "type": "null" }],
+              "title": "X-Integrity-Token"
+            }
+          },
+          {
+            "name": "x-integrity-nonce",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "X-Integrity-Nonce"
+            }
+          },
+          {
+            "name": "x-integrity-key-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Integrity-Key-Id"
+            }
+          },
+          {
             "name": "Idempotency-Key",
             "in": "header",
             "required": false,
@@ -3539,6 +3629,69 @@
         "summary": "Re-read store purchases from RevenueCat and apply them (PAY-14 Restore)",
         "operationId": "restore_v1_billing_restore_post",
         "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "x-integrity-token",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16384 }, { "type": "null" }],
+              "title": "X-Integrity-Token"
+            }
+          },
+          {
+            "name": "x-integrity-nonce",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "X-Integrity-Nonce"
+            }
+          },
+          {
+            "name": "x-integrity-key-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Integrity-Key-Id"
+            }
+          },
           {
             "name": "Idempotency-Key",
             "in": "header",
@@ -4167,6 +4320,691 @@
               "application/json": { "schema": { "$ref": "#/components/schemas/ExportList" } }
             }
           },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice/quota": {
+      "get": {
+        "tags": ["voice"],
+        "summary": "Voice time left today (AI-13)",
+        "operationId": "voice_quota_v1_voice_quota_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/VoiceQuota" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice/sessions": {
+      "post": {
+        "tags": ["voice"],
+        "summary": "Start (or reconnect) a voice tutor session: a single-use Gemini Live token",
+        "operationId": "create_voice_session_v1_voice_sessions_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/VoiceSessionCreate" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/VoiceSessionOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          },
+          "503": { "description": "voice_unavailable (not configured, off, or no limit set)" }
+        }
+      },
+      "get": {
+        "tags": ["voice"],
+        "summary": "Voice history (AI-09)",
+        "operationId": "list_voice_sessions_v1_voice_sessions_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/VoiceSummary" },
+                  "title": "Response List Voice Sessions V1 Voice Sessions Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice/sessions/{session_id}/tools": {
+      "post": {
+        "tags": ["voice"],
+        "summary": "Run a tool the voice tutor called; send the result back to Gemini Live",
+        "operationId": "voice_tool_v1_voice_sessions__session_id__tools_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Session Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ToolCallIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ToolCallOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice/sessions/{session_id}/end": {
+      "post": {
+        "tags": ["voice"],
+        "summary": "End the session and upload its transcript (AI-15)",
+        "operationId": "end_voice_session_v1_voice_sessions__session_id__end_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Session Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/VoiceSessionEnd" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/VoiceSummary" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/voice/sessions/{session_id}/transcript": {
+      "get": {
+        "tags": ["voice"],
+        "summary": "The stored transcript (AI-15 View transcript)",
+        "operationId": "voice_transcript_v1_voice_sessions__session_id__transcript_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Session Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/VoiceTranscript" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/speech/read-aloud": {
+      "post": {
+        "tags": ["voice"],
+        "summary": "Read a tutor answer aloud (Deepgram TTS, cached); free within a daily cap",
+        "operationId": "read_aloud_v1_speech_read_aloud_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ReadAloudIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ReadAloudOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/speech/dictation": {
+      "post": {
+        "tags": ["voice"],
+        "summary": "Speech to text for voice answers and spoken explanations (audio is not stored)",
+        "operationId": "dictation_v1_speech_dictation_post",
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "required": false,
+            "schema": { "enum": ["en", "hi"], "type": "string", "default": "en", "title": "Locale" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DictationOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": { "audio/*": { "schema": { "type": "string", "format": "binary" } } }
+        }
+      }
+    },
+    "/v1/feynman/attempts": {
+      "post": {
+        "tags": ["voice"],
+        "summary": "Explain a concept back; graded against its key points (AI-10, AI-11)",
+        "operationId": "feynman_attempt_v1_feynman_attempts_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/FeynmanIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/FeynmanOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/feynman/concepts/{concept_id}": {
+      "get": {
+        "tags": ["voice"],
+        "summary": "Earlier explanations of a concept, newest first",
+        "operationId": "feynman_history_v1_feynman_concepts__concept_id__get",
+        "parameters": [
+          {
+            "name": "concept_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "maxLength": 200, "title": "Concept Id" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 5,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/FeynmanOut" },
+                  "title": "Response Feynman History V1 Feynman Concepts  Concept Id  Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/insights/weak-areas": {
+      "get": {
+        "tags": ["insights"],
+        "summary": "Topics whose cards are predicted to drop below your target recall soon",
+        "operationId": "weak_areas_v1_insights_weak_areas_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/WeakAreasOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/insights/sleep-review": {
+      "get": {
+        "tags": ["insights"],
+        "summary": "Tonight's sleep review: when to remind and the hardest due cards (adults, Pro)",
+        "operationId": "sleep_review_v1_insights_sleep_review_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SleepReviewOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/insights/calibration": {
+      "get": {
+        "tags": ["insights"],
+        "summary": "Confidence against correctness, from your own answers",
+        "operationId": "calibration_v1_insights_calibration_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/CalibrationOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/practice/interleaved": {
+      "post": {
+        "tags": ["insights"],
+        "summary": "Start a mixed drill across chapters or subjects you have learned (practice §5.3)",
+        "operationId": "interleaved_v1_practice_interleaved_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/InterleavedIn" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PracticeSession" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/integrity/challenge": {
+      "post": {
+        "tags": ["integrity"],
+        "summary": "A one-time nonce for Play Integrity or App Attest",
+        "operationId": "challenge_v1_integrity_challenge_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChallengeOut" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/integrity/app-attest/keys": {
+      "post": {
+        "tags": ["integrity"],
+        "summary": "Register this install's App Attest key (once per key)",
+        "operationId": "register_key_v1_integrity_app_attest_keys_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AppAttestKeyIn" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/AppAttestKeyOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/live/mocks/{mock_id}": {
+      "get": {
+        "tags": ["live"],
+        "summary": "The live mock room (MOCK-03): status, server time and your deadline if you start now",
+        "operationId": "room_v1_live_mocks__mock_id__get",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Mock Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LiveRoom" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/live/mocks/{mock_id}/registration": {
+      "post": {
+        "tags": ["live"],
+        "summary": "Register for a live mock (Pro); the reminder comes when the room opens",
+        "operationId": "register_v1_live_mocks__mock_id__registration_post",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Mock Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Registration" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["live"],
+        "summary": "Cancel a live mock registration and its reminder",
+        "operationId": "unregister_v1_live_mocks__mock_id__registration_delete",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Mock Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/Registration" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/live/mocks/{mock_id}/leaderboard": {
+      "get": {
+        "tags": ["live"],
+        "summary": "Frozen ranks after results (MOCK-24, R31)",
+        "operationId": "leaderboard_v1_live_mocks__mock_id__leaderboard_get",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Mock Id" }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LiveLeaderboard" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/live/mocks/{mock_id}/events": {
+      "get": {
+        "tags": ["live"],
+        "summary": "Server-Sent Events for channel mock:{id} (start, clock, closed, results)",
+        "operationId": "events_v1_live_mocks__mock_id__events_get",
+        "parameters": [
+          {
+            "name": "mock_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "title": "Mock Id" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response" },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -5636,6 +6474,69 @@
             "schema": { "type": "string", "format": "uuid", "title": "Duel Id" }
           },
           {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "x-integrity-token",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16384 }, { "type": "null" }],
+              "title": "X-Integrity-Token"
+            }
+          },
+          {
+            "name": "x-integrity-nonce",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "X-Integrity-Nonce"
+            }
+          },
+          {
+            "name": "x-integrity-key-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Integrity-Key-Id"
+            }
+          },
+          {
             "name": "Idempotency-Key",
             "in": "header",
             "required": false,
@@ -6293,6 +7194,41 @@
         "required": ["answers"],
         "title": "AnswersPut"
       },
+      "AppAttestKeyIn": {
+        "properties": {
+          "key_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 40,
+            "pattern": "^[A-Za-z0-9+/=_-]+$",
+            "title": "Key Id"
+          },
+          "attestation": {
+            "type": "string",
+            "maxLength": 16384,
+            "minLength": 8,
+            "title": "Attestation",
+            "description": "The attestation object from attestKey, base64"
+          },
+          "nonce": { "type": "string", "maxLength": 128, "minLength": 16, "title": "Nonce" }
+        },
+        "type": "object",
+        "required": ["key_id", "attestation", "nonce"],
+        "title": "AppAttestKeyIn"
+      },
+      "AppAttestKeyOut": {
+        "properties": {
+          "key_id": { "type": "string", "title": "Key Id" },
+          "environment": {
+            "type": "string",
+            "enum": ["production", "development"],
+            "title": "Environment"
+          }
+        },
+        "type": "object",
+        "required": ["key_id", "environment"],
+        "title": "AppAttestKeyOut"
+      },
       "AppVersionInfo": {
         "properties": {
           "min_version": { "type": "string", "title": "Min Version" },
@@ -6748,6 +7684,68 @@
           "url"
         ],
         "title": "BundleRef"
+      },
+      "CalibrationLevel": {
+        "properties": {
+          "confidence": { "type": "string", "title": "Confidence" },
+          "answers": { "type": "integer", "title": "Answers" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "accuracy": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Accuracy" }
+        },
+        "type": "object",
+        "required": ["confidence", "answers", "correct", "accuracy"],
+        "title": "CalibrationLevel"
+      },
+      "CalibrationOut": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Reason" },
+          "tagged": { "type": "integer", "title": "Tagged" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "levels": {
+            "items": { "$ref": "#/components/schemas/CalibrationLevel" },
+            "type": "array",
+            "title": "Levels"
+          },
+          "overconfident": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Overconfident",
+            "description": "Share of 'sure' answers that were wrong"
+          },
+          "underconfident": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Underconfident",
+            "description": "Share of 'guess' answers that were right"
+          },
+          "by_subject": {
+            "items": { "additionalProperties": true, "type": "object" },
+            "type": "array",
+            "title": "By Subject"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "tagged", "needed"],
+        "title": "CalibrationOut",
+        "description": "Confidence against correctness from real answers only (practice and mocks)."
+      },
+      "ChallengeOut": {
+        "properties": {
+          "nonce": {
+            "type": "string",
+            "title": "Nonce",
+            "description": "One-time value to bind into Play Integrity or App Attest"
+          },
+          "expires_in_s": { "type": "integer", "title": "Expires In S" },
+          "headers": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Headers",
+            "description": "Headers a sensitive call carries: the token (or App Attest assertion, base64), this nonce, and on iOS the App Attest key id"
+          }
+        },
+        "type": "object",
+        "required": ["nonce", "expires_in_s", "headers"],
+        "title": "ChallengeOut"
       },
       "ChapterOut": {
         "properties": {
@@ -7501,6 +8499,19 @@
         "required": ["platform", "app_version"],
         "title": "DeviceRegister"
       },
+      "DictationOut": {
+        "properties": {
+          "text": { "type": "string", "title": "Text" },
+          "confidence": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Confidence"
+          },
+          "quota": { "$ref": "#/components/schemas/QuotaOut" }
+        },
+        "type": "object",
+        "required": ["text", "confidence", "quota"],
+        "title": "DictationOut"
+      },
       "DrillPreview": {
         "properties": {
           "exam": { "type": "string", "title": "Exam" },
@@ -8125,6 +9136,91 @@
         "required": ["message_id", "rating", "reasons", "queued_for_review"],
         "title": "FeedbackOut"
       },
+      "FeynmanIn": {
+        "properties": {
+          "client_attempt_id": { "type": "string", "format": "uuid", "title": "Client Attempt Id" },
+          "concept_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9._:-]+$",
+            "title": "Concept Id"
+          },
+          "explanation": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 1,
+            "title": "Explanation"
+          },
+          "input_mode": {
+            "type": "string",
+            "enum": ["text", "voice"],
+            "title": "Input Mode",
+            "default": "text"
+          },
+          "follow_up_of": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Follow Up Of",
+            "description": "The score this answers a follow-up question of"
+          }
+        },
+        "type": "object",
+        "required": ["client_attempt_id", "concept_id", "explanation"],
+        "title": "FeynmanIn"
+      },
+      "FeynmanOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "session_id": { "type": "string", "format": "uuid", "title": "Session Id" },
+          "concept_id": { "type": "string", "title": "Concept Id" },
+          "attempt_no": { "type": "integer", "title": "Attempt No" },
+          "clarity": { "type": "integer", "title": "Clarity" },
+          "completeness": { "type": "integer", "title": "Completeness" },
+          "accuracy": { "type": "integer", "title": "Accuracy" },
+          "key_points": {
+            "items": { "$ref": "#/components/schemas/KeyPointOut" },
+            "type": "array",
+            "title": "Key Points"
+          },
+          "follow_ups": { "items": { "type": "string" }, "type": "array", "title": "Follow Ups" },
+          "previous": {
+            "anyOf": [
+              { "additionalProperties": { "type": "integer" }, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Previous"
+          },
+          "mastery_delta": { "type": "number", "title": "Mastery Delta" },
+          "status": {
+            "type": "string",
+            "enum": ["graded", "crisis", "refused"],
+            "title": "Status",
+            "default": "graded"
+          },
+          "safety": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Safety"
+          },
+          "quota": { "$ref": "#/components/schemas/QuotaOut" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "session_id",
+          "concept_id",
+          "attempt_no",
+          "clarity",
+          "completeness",
+          "accuracy",
+          "key_points",
+          "follow_ups",
+          "previous",
+          "mastery_delta",
+          "quota"
+        ],
+        "title": "FeynmanOut",
+        "description": "AI-11: three meters (0-100), the key points with their status, follow-ups, and the last\nscore for this concept when one exists (never a made-up comparison)."
+      },
       "FixNext": {
         "properties": {
           "concept_id": { "type": "string", "title": "Concept Id" },
@@ -8354,6 +9450,33 @@
         "required": ["kind", "id", "sender", "created_at", "unread"],
         "title": "InboxItem"
       },
+      "InterleavedIn": {
+        "properties": {
+          "session_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Session Id"
+          },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "Exam"
+          },
+          "group_by": {
+            "type": "string",
+            "pattern": "^(subject|chapter|topic)$",
+            "title": "Group By",
+            "default": "chapter"
+          },
+          "count": {
+            "type": "integer",
+            "maximum": 100,
+            "minimum": 2,
+            "title": "Count",
+            "default": 10
+          }
+        },
+        "type": "object",
+        "title": "InterleavedIn"
+      },
       "IntroEligibilityOut": {
         "properties": {
           "eligible": {
@@ -8407,6 +9530,25 @@
         "type": "object",
         "required": ["state"],
         "title": "InvitePreview"
+      },
+      "KeyPointOut": {
+        "properties": {
+          "index": { "type": "integer", "title": "Index" },
+          "text": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Text"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["covered", "missing", "misconception"],
+            "title": "Status"
+          },
+          "note": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Note" }
+        },
+        "type": "object",
+        "required": ["index", "text", "status"],
+        "title": "KeyPointOut"
       },
       "Leaderboard": {
         "properties": {
@@ -8595,6 +9737,141 @@
         "type": "object",
         "required": ["profile", "consent_needed", "show_shared_phone_check"],
         "title": "LinkedResponse"
+      },
+      "LiveLeaderboard": {
+        "properties": {
+          "mock_id": { "type": "string", "title": "Mock Id" },
+          "published": { "type": "boolean", "title": "Published" },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": ["results_pending", "threshold_unset", "below_threshold"]
+              },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "ranked": { "type": "integer", "title": "Ranked" },
+          "rows": {
+            "items": { "$ref": "#/components/schemas/LiveLeaderboardRow" },
+            "type": "array",
+            "title": "Rows"
+          },
+          "you": {
+            "anyOf": [{ "$ref": "#/components/schemas/LiveLeaderboardRow" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": ["mock_id", "published", "ranked", "rows", "you"],
+        "title": "LiveLeaderboard"
+      },
+      "LiveLeaderboardRow": {
+        "properties": {
+          "rank": { "type": "integer", "title": "Rank" },
+          "name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name",
+            "description": "Adults: display name. Minors: auto nickname (R31)"
+          },
+          "avatar": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Avatar" },
+          "is_you": { "type": "boolean", "title": "Is You" },
+          "score": { "type": "number", "title": "Score" },
+          "percentile": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Percentile"
+          }
+        },
+        "type": "object",
+        "required": ["rank", "name", "avatar", "is_you", "score", "percentile"],
+        "title": "LiveLeaderboardRow"
+      },
+      "LiveRoom": {
+        "properties": {
+          "mock_id": { "type": "string", "title": "Mock Id" },
+          "title": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Title"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["scheduled", "room_open", "live", "closed", "results"],
+            "title": "Status"
+          },
+          "server_time": { "type": "string", "format": "date-time", "title": "Server Time" },
+          "window_start": { "type": "string", "format": "date-time", "title": "Window Start" },
+          "window_end": { "type": "string", "format": "date-time", "title": "Window End" },
+          "results_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Results At"
+          },
+          "room_opens_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Room Opens At",
+            "description": "window_start minus live.room_lead_min"
+          },
+          "duration_s": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Duration S"
+          },
+          "full_duration_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Full Duration Until",
+            "description": "Start by this time for the full duration; later starts end at window_end"
+          },
+          "deadline_if_started_now": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Deadline If Started Now"
+          },
+          "can_start": { "type": "boolean", "title": "Can Start" },
+          "registered": { "type": "boolean", "title": "Registered" },
+          "registrations": { "type": "integer", "title": "Registrations" },
+          "attempt_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Attempt Id"
+          },
+          "attempt_status": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Attempt Status"
+          },
+          "ranks_published": { "type": "boolean", "title": "Ranks Published" },
+          "channel": {
+            "type": "string",
+            "title": "Channel",
+            "description": "Supabase Realtime channel (start, clock, results)"
+          },
+          "events_url": {
+            "type": "string",
+            "title": "Events Url",
+            "description": "Server-Sent Events fallback for the same events"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mock_id",
+          "title",
+          "status",
+          "server_time",
+          "window_start",
+          "window_end",
+          "results_at",
+          "room_opens_at",
+          "duration_s",
+          "full_duration_until",
+          "deadline_if_started_now",
+          "can_start",
+          "registered",
+          "registrations",
+          "attempt_id",
+          "attempt_status",
+          "ranks_published",
+          "channel",
+          "events_url"
+        ],
+        "title": "LiveRoom",
+        "description": "MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset."
       },
       "ManifestResponse": {
         "properties": {
@@ -10247,6 +11524,44 @@
         "required": ["item_id", "reaction"],
         "title": "ReactionIn"
       },
+      "ReadAloudIn": {
+        "properties": {
+          "text": { "type": "string", "maxLength": 3000, "minLength": 1, "title": "Text" },
+          "locale": { "type": "string", "enum": ["en", "hi"], "title": "Locale" }
+        },
+        "type": "object",
+        "required": ["text", "locale"],
+        "title": "ReadAloudIn"
+      },
+      "ReadAloudOut": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "description": "Signed, short-lived link to the audio"
+          },
+          "mime": { "type": "string", "title": "Mime" },
+          "cached": { "type": "boolean", "title": "Cached" },
+          "quota": { "$ref": "#/components/schemas/QuotaOut" }
+        },
+        "type": "object",
+        "required": ["url", "mime", "cached", "quota"],
+        "title": "ReadAloudOut"
+      },
+      "Registration": {
+        "properties": {
+          "mock_id": { "type": "string", "title": "Mock Id" },
+          "registered": { "type": "boolean", "title": "Registered" },
+          "reminder_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Reminder At",
+            "description": "When the mock_reminder push is due (the room opening)"
+          }
+        },
+        "type": "object",
+        "required": ["mock_id", "registered", "reminder_at"],
+        "title": "Registration"
+      },
       "RejectedEvent": {
         "properties": {
           "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
@@ -10774,6 +12089,48 @@
         "required": ["gems", "items"],
         "title": "ShopResponse"
       },
+      "SleepCard": {
+        "properties": {
+          "card_ref": { "type": "string", "title": "Card Ref" },
+          "difficulty": { "type": "number", "title": "Difficulty" },
+          "due_at": { "type": "string", "format": "date-time", "title": "Due At" }
+        },
+        "type": "object",
+        "required": ["card_ref", "difficulty", "due_at"],
+        "title": "SleepCard"
+      },
+      "SleepReviewOut": {
+        "properties": {
+          "eligible": { "type": "boolean", "title": "Eligible" },
+          "reason": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Reason" },
+          "source": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Source",
+            "description": "estimate or fixed (a teen's own time)"
+          },
+          "bedtime": {
+            "anyOf": [{ "type": "string", "format": "time" }, { "type": "null" }],
+            "title": "Bedtime"
+          },
+          "confidence": {
+            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "title": "Confidence"
+          },
+          "notify_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Notify At"
+          },
+          "cards": {
+            "items": { "$ref": "#/components/schemas/SleepCard" },
+            "type": "array",
+            "title": "Cards"
+          }
+        },
+        "type": "object",
+        "required": ["eligible"],
+        "title": "SleepReviewOut",
+        "description": "Tonight's sleep review for the app to schedule as a local notification."
+      },
       "SolutionItem": {
         "properties": {
           "question_id": { "type": "string", "title": "Question Id" },
@@ -11003,7 +12360,8 @@
                   "not_first_attempt",
                   "threshold_unset",
                   "below_threshold",
-                  "results_pending"
+                  "results_pending",
+                  "outside_window"
                 ]
               },
               { "type": "null" }
@@ -11355,6 +12713,49 @@
         ],
         "title": "TodaySummary"
       },
+      "ToolCallIn": {
+        "properties": {
+          "call_id": { "type": "string", "maxLength": 128, "minLength": 1, "title": "Call Id" },
+          "name": {
+            "type": "string",
+            "enum": ["look_up_concept", "show_formula", "queue_cards", "get_mastery"],
+            "title": "Name"
+          },
+          "args": { "additionalProperties": true, "type": "object", "title": "Args" }
+        },
+        "type": "object",
+        "required": ["call_id", "name"],
+        "title": "ToolCallIn"
+      },
+      "ToolCallOut": {
+        "properties": {
+          "call_id": { "type": "string", "title": "Call Id" },
+          "name": {
+            "type": "string",
+            "enum": ["look_up_concept", "show_formula", "queue_cards", "get_mastery"],
+            "title": "Name"
+          },
+          "result": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Result",
+            "description": "Send back to Gemini Live as the function response"
+          }
+        },
+        "type": "object",
+        "required": ["call_id", "name", "result"],
+        "title": "ToolCallOut"
+      },
+      "ToolDeclaration": {
+        "properties": {
+          "name": { "type": "string", "title": "Name" },
+          "description": { "type": "string", "title": "Description" },
+          "parameters": { "additionalProperties": true, "type": "object", "title": "Parameters" }
+        },
+        "type": "object",
+        "required": ["name", "description", "parameters"],
+        "title": "ToolDeclaration"
+      },
       "TopicBrief": {
         "properties": {
           "id": { "type": "string", "title": "Id" },
@@ -11457,6 +12858,22 @@
           "topic_id"
         ],
         "title": "TopicRow"
+      },
+      "TranscriptTurn": {
+        "properties": {
+          "role": { "type": "string", "enum": ["student", "tutor"], "title": "Role" },
+          "text": { "type": "string", "maxLength": 4000, "title": "Text" },
+          "at_ms": {
+            "type": "integer",
+            "maximum": 86400000,
+            "minimum": 0,
+            "title": "At Ms",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": ["role", "text"],
+        "title": "TranscriptTurn"
       },
       "TutorSession": {
         "properties": {
@@ -11564,6 +12981,213 @@
         ],
         "title": "VariantConfig"
       },
+      "VoiceQuota": {
+        "properties": {
+          "available": { "type": "boolean", "title": "Available" },
+          "reason": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Reason" },
+          "daily_seconds": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Daily Seconds"
+          },
+          "used_seconds": { "type": "integer", "title": "Used Seconds" },
+          "remaining_seconds": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Remaining Seconds"
+          },
+          "session_max_seconds": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Session Max Seconds"
+          },
+          "reconnect_seconds": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Reconnect Seconds"
+          },
+          "background_grace_seconds": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Background Grace Seconds"
+          },
+          "resets_at": { "type": "string", "format": "date-time", "title": "Resets At" }
+        },
+        "type": "object",
+        "required": [
+          "available",
+          "daily_seconds",
+          "used_seconds",
+          "remaining_seconds",
+          "session_max_seconds",
+          "reconnect_seconds",
+          "background_grace_seconds",
+          "resets_at"
+        ],
+        "title": "VoiceQuota",
+        "description": "AI-13 shows the remaining daily time. ``available`` is false with a ``reason`` when voice\ncan't start for this student right now."
+      },
+      "VoiceSessionCreate": {
+        "properties": {
+          "client_session_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Client Session Id",
+            "description": "Client UUID; asking again with the same id mints a fresh token (reconnect)"
+          },
+          "context_ref": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 300,
+                "minLength": 3,
+                "pattern": "^(card|question|topic|concept|lab):[^\\s]+$"
+              },
+              { "type": "null" }
+            ],
+            "title": "Context Ref"
+          },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "Exam"
+          }
+        },
+        "type": "object",
+        "required": ["client_session_id"],
+        "title": "VoiceSessionCreate"
+      },
+      "VoiceSessionEnd": {
+        "properties": {
+          "seconds": { "type": "integer", "maximum": 86400, "minimum": 0, "title": "Seconds" },
+          "end_reason": {
+            "type": "string",
+            "enum": ["user", "session_cap", "daily_cap", "network", "background", "phone_call"],
+            "title": "End Reason",
+            "default": "user"
+          },
+          "flashcards_made": {
+            "type": "integer",
+            "maximum": 500,
+            "minimum": 0,
+            "title": "Flashcards Made",
+            "default": 0
+          },
+          "turns": {
+            "items": { "$ref": "#/components/schemas/TranscriptTurn" },
+            "type": "array",
+            "maxItems": 2000,
+            "title": "Turns"
+          }
+        },
+        "type": "object",
+        "required": ["seconds"],
+        "title": "VoiceSessionEnd"
+      },
+      "VoiceSessionOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "tutor_session_id": { "type": "string", "format": "uuid", "title": "Tutor Session Id" },
+          "token": {
+            "type": "string",
+            "title": "Token",
+            "description": "Single-use Gemini Live token; never stored by the server"
+          },
+          "token_expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Token Expires At"
+          },
+          "provider": { "type": "string", "title": "Provider" },
+          "model": {
+            "type": "string",
+            "title": "Model",
+            "description": "From GEMINI_LIVE_MODEL (config), for the client's connect call"
+          },
+          "max_seconds": {
+            "type": "integer",
+            "title": "Max Seconds",
+            "description": "This session ends at this many seconds of talk"
+          },
+          "warn_at_seconds": {
+            "type": "integer",
+            "title": "Warn At Seconds",
+            "description": "Show the 'about 2 minutes left' banner here"
+          },
+          "locale": { "type": "string", "title": "Locale" },
+          "tools": {
+            "items": { "$ref": "#/components/schemas/ToolDeclaration" },
+            "type": "array",
+            "title": "Tools"
+          },
+          "resumed": { "type": "boolean", "title": "Resumed", "default": false },
+          "quota": { "$ref": "#/components/schemas/VoiceQuota" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "tutor_session_id",
+          "token",
+          "token_expires_at",
+          "provider",
+          "model",
+          "max_seconds",
+          "warn_at_seconds",
+          "locale",
+          "tools",
+          "quota"
+        ],
+        "title": "VoiceSessionOut"
+      },
+      "VoiceSummary": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "tutor_session_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Tutor Session Id"
+          },
+          "context_ref": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Context Ref"
+          },
+          "started_at": { "type": "string", "format": "date-time", "title": "Started At" },
+          "ended_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Ended At"
+          },
+          "seconds": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Seconds" },
+          "flashcards_made": { "type": "integer", "title": "Flashcards Made" },
+          "has_transcript": { "type": "boolean", "title": "Has Transcript" },
+          "status": { "type": "string", "title": "Status" },
+          "safety": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Safety",
+            "description": "Present when the transcript showed a crisis signal"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "tutor_session_id",
+          "context_ref",
+          "started_at",
+          "ended_at",
+          "seconds",
+          "flashcards_made",
+          "has_transcript",
+          "status"
+        ],
+        "title": "VoiceSummary",
+        "description": "AI-15."
+      },
+      "VoiceTranscript": {
+        "properties": {
+          "session_id": { "type": "string", "format": "uuid", "title": "Session Id" },
+          "locale": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Locale" },
+          "turns": {
+            "items": { "$ref": "#/components/schemas/TranscriptTurn" },
+            "type": "array",
+            "title": "Turns"
+          }
+        },
+        "type": "object",
+        "required": ["session_id", "locale", "turns"],
+        "title": "VoiceTranscript"
+      },
       "WalletState": {
         "properties": {
           "xp_total": { "type": "integer", "title": "Xp Total" },
@@ -11573,6 +13197,30 @@
         "type": "object",
         "required": ["xp_total", "xp_today", "gems"],
         "title": "WalletState"
+      },
+      "WeakAreaOut": {
+        "properties": {
+          "topic_id": { "type": "string", "title": "Topic Id" },
+          "cards": { "type": "integer", "title": "Cards" },
+          "min_retrievability": { "type": "number", "title": "Min Retrievability" }
+        },
+        "type": "object",
+        "required": ["topic_id", "cards", "min_retrievability"],
+        "title": "WeakAreaOut"
+      },
+      "WeakAreasOut": {
+        "properties": {
+          "target_retention": { "type": "number", "title": "Target Retention" },
+          "horizon_days": { "type": "integer", "title": "Horizon Days" },
+          "topics": {
+            "items": { "$ref": "#/components/schemas/WeakAreaOut" },
+            "type": "array",
+            "title": "Topics"
+          }
+        },
+        "type": "object",
+        "required": ["target_retention", "horizon_days", "topics"],
+        "title": "WeakAreasOut"
       },
       "WeakSpot": {
         "properties": {

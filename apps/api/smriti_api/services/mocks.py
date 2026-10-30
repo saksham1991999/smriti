@@ -1439,6 +1439,17 @@ async def report(db: Database, auth: AuthContext, attempt_id: uuid.UUID) -> m.Re
                 now=now,
             )
         ).model_dump()
+        if a.row.kind == "live" and a.row.mock_id:
+            # Live mocks show the ranks frozen after the window (services.live_mocks).
+            stored["standing"] = (
+                await mr.live_standing(
+                    session,
+                    attempt_id=a.id,
+                    mock_id=a.row.mock_id,
+                    attempt_no=int(a.row.attempt_no),
+                    flags=flags,
+                )
+            ).model_dump()
         shown, locked = mr.gate(stored, learner.is_pro, flags.str_list("free.mock_report_sections"))
         fields = set(m.Report.model_fields)
         out = m.Report(

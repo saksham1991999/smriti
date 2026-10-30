@@ -150,6 +150,8 @@ def _value(table: Table, col: Column) -> Any:
         return "{}"
     if t == "interval":
         return "1 day"
+    if t == "bytea":
+        return "\\x00"
     if t == "inet":
         return "127.0.0.1"
     if t.startswith("vector"):

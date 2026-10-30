@@ -7,11 +7,19 @@ from typing import Annotated
 from fastapi import APIRouter, Query
 from fastapi.responses import JSONResponse
 
-from smriti_api.core.deps import Client, CurrentUser, Services, rate_limited
+from smriti_api.core.deps import (
+    Client,
+    CurrentUser,
+    Proof,
+    Services,
+    check_attestation,
+    rate_limited,
+)
 from smriti_api.schemas.sync import SyncEventsRequest, SyncEventsResponse, SyncStateResponse
 from smriti_api.services.errors import DomainError
 from smriti_api.services.state import build_state
 from smriti_api.services.sync import apply_batch
+from smriti_api.services.xp import XP_HEAVY_TYPES
 
 router = APIRouter(prefix="/v1/sync", tags=["sync"])
 
@@ -23,9 +31,12 @@ router = APIRouter(prefix="/v1/sync", tags=["sync"])
     dependencies=[rate_limited("sync", "rate_sync_per_min", 60)],
 )
 async def post_events(
-    body: SyncEventsRequest, services: Services, auth: CurrentUser, client: Client
+    body: SyncEventsRequest, services: Services, auth: CurrentUser, client: Client, proof: Proof
 ) -> SyncEventsResponse:
-    """Idempotent by ``event_id``: a repeated event is accepted again with no effect."""
+    """Idempotent by ``event_id``: a repeated event is accepted again with no effect. A batch
+    with XP-heavy events needs a device check when ``security.attestation_required`` is on."""
+    if any(e.type in XP_HEAVY_TYPES for e in body.events):
+        await check_attestation(services, auth, client, proof, "sync_xp")
     try:
         result = await apply_batch(
             services.db,

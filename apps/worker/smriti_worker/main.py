@@ -58,7 +58,12 @@ DefaultWorker = _settings(
         jobs.trial_reminders,
         jobs.media_sweep,
         jobs.mocks_auto_submit,
+        jobs.live_mocks_tick,
+        jobs.fsrs_optimise,
+        jobs.irt_calibrate,
         jobs.tutor_retention,
+        jobs.weak_area_alerts,
+        jobs.rhythm_estimates,
         jobs.league_assign,
         jobs.league_rollover,
         jobs.duo_rollup,
@@ -84,8 +89,17 @@ DefaultWorker = _settings(
         cron(jobs.media_sweep, minute={2, 32}, unique=True),
         # Mocks: strict and live attempts past their deadline, every minute.
         cron(jobs.mocks_auto_submit, second=30, unique=True),
+        # Live mocks (practice §6.11): start signal and clock fan-out, then frozen ranks.
+        cron(jobs.live_mocks_tick, second=0, unique=True),
+        # Data jobs on the analytics store (G-11), at night in India.
+        cron(jobs.fsrs_optimise, hour=22, minute=30, unique=True),
+        cron(jobs.irt_calibrate, weekday="sun", hour=23, minute=0, unique=True),
         # Tutor: messages past ai.tutor_retention_days, daily.
         cron(jobs.tutor_retention, hour=2, minute=15, unique=True),
+        # Learning science (TRD §9.6), nightly in India: weak-area alerts are queued for the
+        # next day's usual hour; the rhythm estimates feed sleep review and smart timing.
+        cron(jobs.rhythm_estimates, hour=20, minute=45, unique=True),
+        cron(jobs.weak_area_alerts, hour=21, minute=0, unique=True),
         # Social (G-4): league placement hourly; the weekly close at Sunday 23:59 IST
         # (18:30 UTC) with a retry an hour later; Duo days nightly after IST midnight; duels every minute.
         cron(jobs.league_assign, minute=25, unique=True),

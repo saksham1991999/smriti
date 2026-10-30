@@ -1,11 +1,10 @@
-import { useAppStore } from '@smriti/app-core/react';
 import { Banner, Button, Card, Chip, Icon, LimitMeter, Spinner, Text, useTheme } from '@smriti/ui-native';
 import { useQuery } from '@tanstack/react-query';
 import { router, type Href } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
 import { examName } from '../../src/services/exams';
-import { useApp, useT, useUiState } from '../../src/services/context';
+import { useApp, useT, useUiState, useQueryScope } from '../../src/services/context';
 import { fetchPracticeHub, hubPetLine, practiceKeys, type PracticeHub } from '../../src/services/practice';
 import { BuddyLine } from '../../src/ui/Onboarding';
 import { Screen } from '../../src/ui/Screen';
@@ -22,11 +21,11 @@ export default function Practice() {
   const theme = useTheme();
   const locale = useUiState((s) => s.locale);
   const online = app.deps.network.isOnline();
-  const userId = useAppStore((s) => s.session.userId);
+  const scope = useQueryScope();
   const exam = app.examProfileId();
   const examShort = examName(app, exam) ?? app.appName();
   const little = app.isLittleLearner();
-  const hub = useQuery({ queryKey: practiceKeys.hub(userId, exam), queryFn: () => fetchPracticeHub(app) });
+  const hub = useQuery({ queryKey: practiceKeys.hub(scope, exam), queryFn: () => fetchPracticeHub(app) });
   const data: PracticeHub | undefined = hub.data;
   const goPro = () => router.push({ pathname: '/paywall', params: { from: 'practice_meter' } });
 
@@ -101,7 +100,7 @@ export default function Practice() {
 
       {data ? (
         <LimitMeter
-          label={t('practice:PRC-01.limit_meter', { used: data.limits.practice_questions.used, limit: data.limits.practice_questions.limit ?? 0 })}
+          label={t('practice:PRC-01.title')}
           used={data.limits.practice_questions.used}
           limit={data.limits.practice_questions.limit ?? 0}
           hidden={data.limits.practice_questions.unlimited}
@@ -147,7 +146,7 @@ function ChallengeCard({ hub, examShort }: { hub: PracticeHub; examShort: string
             <Button size="sm" variant="secondary" label={t('practice:PRC-01.see_result')} onPress={open} testID="prc-see-result" />
           ) : (
             <Text variant="caption" tone="muted" testID="prc-challenge-unavailable">
-              {t('practice:MOCK-01.empty', { exam_short: examShort })}
+              {t('practice:PRC-11.not_published')}
             </Text>
           )}
         </View>

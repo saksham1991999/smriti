@@ -5,7 +5,7 @@ import { router, useLocalSearchParams, type Href } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
-import { useApp, useT, useUiState } from '../src/services/context';
+import { useApp, useT, useUiState, useQueryScope } from '../src/services/context';
 import { openTutorSession, sendTutorMessage, tutorAnswerText, type Quota, type TutorEvent } from '../src/services/practice';
 import { BuddyLine } from '../src/ui/Onboarding';
 import { BackHeader, Screen } from '../src/ui/Screen';
@@ -30,12 +30,12 @@ export default function Tutor() {
   const t = useT();
   const theme = useTheme();
   const params = useLocalSearchParams<{ context?: string }>();
-  const userId = useAppStore((s) => s.session.userId);
+  const scope = useQueryScope();
   const pet = useAppStore((s) => s.pet);
   useUiState((s) => s.locale);
   const exam = app.examProfileId();
   const context = typeof params.context === 'string' ? params.context : null;
-  const session = useQuery({ queryKey: ['smriti', 'tutor', 'session', userId, exam, context], queryFn: () => openTutorSession(app, context), staleTime: 10 * 60_000 });
+  const session = useQuery({ queryKey: ['smriti', 'tutor', 'session', scope, exam, context], queryFn: () => openTutorSession(app, context), staleTime: 10 * 60_000 });
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [quota, setQuota] = useState<Quota | null>(null);
   const [capped, setCapped] = useState(false);

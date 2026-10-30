@@ -1,11 +1,11 @@
 import { useAppStore } from '@smriti/app-core/react';
-import { Banner, Button, Card, ChoiceChips, Chip, EmptyState, LimitMeter, Spinner, Text } from '@smriti/ui-native';
+import { Banner, Button, Card, ChoiceChips, Chip, EmptyState, Spinner, Text } from '@smriti/ui-native';
 import { useQuery } from '@tanstack/react-query';
 import { router, type Href } from 'expo-router';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { useApp, useT, useUiState } from '../src/services/context';
+import { useApp, useT, useUiState, useQueryScope } from '../src/services/context';
 import { examName } from '../src/services/exams';
 import { fetchMocks, fetchPracticeHub, practiceKeys, type MockCard } from '../src/services/practice';
 import { BuddyLine } from '../src/ui/Onboarding';
@@ -22,13 +22,13 @@ export default function Mocks() {
   const app = useApp();
   const t = useT();
   const locale = useUiState((s) => s.locale);
-  const userId = useAppStore((s) => s.session.userId);
+  const scope = useQueryScope();
   const signedIn = useAppStore((s) => s.session.status === 'signed_in');
   const exam = app.examProfileId();
   const examShort = examName(app, exam) ?? app.appName();
   const [filter, setFilter] = useState<Filter>('all');
-  const mocks = useQuery({ queryKey: practiceKeys.mocks(userId, exam), queryFn: () => fetchMocks(app) });
-  const hub = useQuery({ queryKey: practiceKeys.hub(userId, exam), queryFn: () => fetchPracticeHub(app) });
+  const mocks = useQuery({ queryKey: practiceKeys.mocks(scope, exam), queryFn: () => fetchMocks(app) });
+  const hub = useQuery({ queryKey: practiceKeys.hub(scope, exam), queryFn: () => fetchPracticeHub(app) });
   const back = () => (router.canGoBack() ? router.back() : router.replace('/practice' as Href));
   const shown = (mocks.data ?? []).filter((m) => filter === 'all' || m.kind === filter);
   const sectional = hub.data?.limits.sectional_mocks;
@@ -58,7 +58,10 @@ export default function Mocks() {
         testID="mock-filter"
       />
       {sectional && !sectional.unlimited && sectional.limit !== null ? (
-        <LimitMeter label={t('practice:MOCK-01.free_usage', { used: sectional.used, limit: sectional.limit })} used={sectional.used} limit={sectional.limit} proAction="none" testID="mock-meter" />
+        // A weekly quota: ui-native's LimitMeter words its states per day, so the catalogue line stands alone.
+        <Text variant="label" tone="muted" numeric testID="mock-meter">
+          {t('practice:MOCK-01.free_usage', { used: sectional.used, limit: sectional.limit })}
+        </Text>
       ) : null}
 
       {mocks.isPending ? <Spinner label={t('ui:saveState.saving')} /> : null}

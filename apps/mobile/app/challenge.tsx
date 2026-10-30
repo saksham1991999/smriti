@@ -1,4 +1,3 @@
-import { useAppStore } from '@smriti/app-core/react';
 import { localize, type TypedBundle } from '@smriti/content-schema';
 import type { Answer, AnyQuestion } from '@smriti/lesson-core';
 import { canSubmit, initialDraft, PlayerProvider, QuestionView } from '@smriti/lesson-player-native';
@@ -8,7 +7,7 @@ import { router, type Href } from 'expo-router';
 import { useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { useApp, useT, useUiState } from '../src/services/context';
+import { useApp, useT, useUiState, useQueryScope } from '../src/services/context';
 import { answerDailyChallenge, fetchDailyChallenge, practiceKeys, startDailyChallenge, type DailyChallenge } from '../src/services/practice';
 import { BuddyLine } from '../src/ui/Onboarding';
 import { BackHeader, Screen } from '../src/ui/Screen';
@@ -25,9 +24,9 @@ export default function Challenge() {
   const t = useT();
   const queries = useQueryClient();
   const locale = useUiState((s) => s.locale);
-  const userId = useAppStore((s) => s.session.userId);
+  const scope = useQueryScope();
   const exam = app.examProfileId();
-  const key = practiceKeys.challenge(userId, exam);
+  const key = practiceKeys.challenge(scope, exam);
   const today = useQuery({ queryKey: key, queryFn: () => fetchDailyChallenge(app), retry: 0 });
   const [draft, setDraft] = useState<Answer | null>(null);
   const [busy, setBusy] = useState(false);

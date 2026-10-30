@@ -51,8 +51,9 @@ async function createDeviceApp(): Promise<SmritiApp> {
   const env = readClientEnv();
   const variant = getVariant(process.env.EXPO_PUBLIC_APP_VARIANT ?? extraVariant ?? env.APP_VARIANT);
   const switches = readSwitches(env);
-  // The web preview runs on the in-app fake API unless EXPO_PUBLIC_FAKE_API=0 points it at apps/api.
-  const useFake = switches.fakeApi || (Platform.OS === 'web' && process.env.EXPO_PUBLIC_FAKE_API !== '0');
+  // Every build talks to apps/api (EXPO_PUBLIC_API_BASE_URL). The in-app fake is for Jest and for
+  // demos with no API at all, and only with EXPO_PUBLIC_FAKE_API=1 in local/test.
+  const useFake = switches.fakeApi;
   // The in-app fake has its own webhook value (it is not the API's); FakeBilling sends it.
   const fakeWebhookAuth = 'fake-in-app-revenuecat';
   const fake = useFake ? new FakeApiServer({ revenuecatWebhookAuth: fakeWebhookAuth }) : null;

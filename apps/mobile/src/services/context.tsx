@@ -37,3 +37,11 @@ export function useT(): (key: MessageKey, values?: MessageValues) => string {
   const locale = useUiState((s) => s.locale);
   return useCallback((key: MessageKey, values?: MessageValues) => app.t(key, values), [app, locale]);
 }
+
+/**
+ * The part of a server-data query key that changes with who is asking: the user, guest or signed
+ * in, and free or Pro. Linking or buying Pro then refetches the hub, mocks and tutor quota.
+ */
+export function useQueryScope(): string {
+  return useStoreSelector(useApp().store, (s) => `${s.session.userId ?? 'none'}|${s.session.status}|${s.entitlement?.plan ?? 'free'}`);
+}

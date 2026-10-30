@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -29,9 +30,16 @@ class IntegrationSettings(BaseSettings):
 
     # RevenueCat (Android and iOS)
     revenuecat_base_url: str = "https://api.revenuecat.com/v1"
-    revenuecat_secret_api_key: str = ""
+    # .env.example has used REVENUECAT_API_KEY and REVENUECAT_WEBHOOK_SECRET; both names work.
+    revenuecat_secret_api_key: str = Field(
+        default="",
+        validation_alias=AliasChoices("REVENUECAT_SECRET_API_KEY", "REVENUECAT_API_KEY"),
+    )
     # The exact Authorization header value set on the RevenueCat webhook.
-    revenuecat_webhook_auth: str = ""
+    revenuecat_webhook_auth: str = Field(
+        default="",
+        validation_alias=AliasChoices("REVENUECAT_WEBHOOK_AUTH", "REVENUECAT_WEBHOOK_SECRET"),
+    )
 
     # ₹1 intro claims: HMAC-SHA256(pepper, provider:sub), never rotated in place (auth §8).
     auth_identity_hash_pepper: str = ""

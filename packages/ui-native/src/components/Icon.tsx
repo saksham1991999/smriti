@@ -1,0 +1,157 @@
+import {
+  ArrowCounterClockwiseIcon,
+  ArrowRightIcon,
+  BackspaceIcon,
+  BarbellIcon,
+  BellIcon,
+  BookBookmarkIcon,
+  BrainIcon,
+  CalendarCheckIcon,
+  CardsIcon,
+  CaretDownIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+  CheckCircleIcon,
+  CheckIcon,
+  ClockIcon,
+  CloudArrowUpIcon,
+  CloudCheckIcon,
+  CloudSlashIcon,
+  CreditCardIcon,
+  DiamondIcon,
+  DotsThreeVerticalIcon,
+  DownloadSimpleIcon,
+  ExamIcon,
+  FileTextIcon,
+  FlagIcon,
+  FlaskIcon,
+  GearIcon,
+  GiftIcon,
+  HouseIcon,
+  InfoIcon,
+  LightbulbIcon,
+  LightningIcon,
+  LockIcon,
+  LockSimpleIcon,
+  MagnifyingGlassIcon,
+  MinusIcon,
+  MoonIcon,
+  MountainsIcon,
+  PauseCircleIcon,
+  PlantIcon,
+  PlayIcon,
+  PlusIcon,
+  QuestionIcon,
+  ShieldCheckIcon,
+  SignOutIcon,
+  SlidersIcon,
+  SnowflakeIcon,
+  SparkleIcon,
+  SpeakerHighIcon,
+  StarIcon,
+  SunIcon,
+  TimerIcon,
+  TranslateIcon,
+  TrashIcon,
+  TrendUpIcon,
+  UserCircleIcon,
+  UsersThreeIcon,
+  WarningIcon,
+  WarningOctagonIcon,
+  WifiSlashIcon,
+  XCircleIcon,
+  XIcon,
+  type Icon as PhosphorIcon,
+} from "phosphor-react-native";
+import { View } from "react-native";
+import type { IconContract, IconName } from "@smriti/tokens/ui";
+import { useSubject, useTheme } from "../theme";
+
+/** Phosphor (MIT) components for every name in @smriti/tokens/ui iconNames, the same set as ui-web. */
+export const iconMap: Record<IconName, PhosphorIcon> = {
+  ArrowCounterClockwise: ArrowCounterClockwiseIcon,
+  ArrowRight: ArrowRightIcon,
+  Backspace: BackspaceIcon,
+  Barbell: BarbellIcon,
+  Bell: BellIcon,
+  BookBookmark: BookBookmarkIcon,
+  Brain: BrainIcon,
+  CalendarCheck: CalendarCheckIcon,
+  Cards: CardsIcon,
+  CaretDown: CaretDownIcon,
+  CaretLeft: CaretLeftIcon,
+  CaretRight: CaretRightIcon,
+  Check: CheckIcon,
+  CheckCircle: CheckCircleIcon,
+  Clock: ClockIcon,
+  CloudArrowUp: CloudArrowUpIcon,
+  CloudCheck: CloudCheckIcon,
+  CloudSlash: CloudSlashIcon,
+  CreditCard: CreditCardIcon,
+  Diamond: DiamondIcon,
+  DotsThreeVertical: DotsThreeVerticalIcon,
+  DownloadSimple: DownloadSimpleIcon,
+  Exam: ExamIcon,
+  FileText: FileTextIcon,
+  Flag: FlagIcon,
+  Flask: FlaskIcon,
+  Gear: GearIcon,
+  Gift: GiftIcon,
+  House: HouseIcon,
+  Info: InfoIcon,
+  Lightbulb: LightbulbIcon,
+  Lightning: LightningIcon,
+  Lock: LockIcon,
+  LockSimple: LockSimpleIcon,
+  MagnifyingGlass: MagnifyingGlassIcon,
+  Minus: MinusIcon,
+  Moon: MoonIcon,
+  Mountains: MountainsIcon,
+  PauseCircle: PauseCircleIcon,
+  Plant: PlantIcon,
+  Play: PlayIcon,
+  Plus: PlusIcon,
+  Question: QuestionIcon,
+  ShieldCheck: ShieldCheckIcon,
+  SignOut: SignOutIcon,
+  Sliders: SlidersIcon,
+  Snowflake: SnowflakeIcon,
+  Sparkle: SparkleIcon,
+  SpeakerHigh: SpeakerHighIcon,
+  Star: StarIcon,
+  Sun: SunIcon,
+  Timer: TimerIcon,
+  Translate: TranslateIcon,
+  Trash: TrashIcon,
+  TrendUp: TrendUpIcon,
+  UserCircle: UserCircleIcon,
+  UsersThree: UsersThreeIcon,
+  Warning: WarningIcon,
+  WarningOctagon: WarningOctagonIcon,
+  WifiSlash: WifiSlashIcon,
+  X: XIcon,
+  XCircle: XCircleIcon,
+};
+
+export interface IconProps extends IconContract {
+  /** A colour already resolved from the theme by the caller. Overrides `color`. */
+  tint?: string;
+  subject?: string;
+}
+
+/** A Phosphor icon. Hidden from screen readers unless it has a `label`. */
+export function Icon({ name, size = 24, weight = "bold", color, tint, label, subject, testID }: IconProps) {
+  const theme = useTheme();
+  const s = useSubject(subject);
+  const C = iconMap[name];
+  const c = theme.colors;
+  const resolved =
+    tint ?? (color === "subjectStrong" ? s.strong : color === "subjectText" ? s.text : color === "subjectOnStrong" ? s.onStrong : color ? c[color] : c.ink);
+  const icon = <C size={size} weight={weight} color={resolved} testID={testID} />;
+  if (!label) return icon;
+  return (
+    <View accessible accessibilityRole="image" accessibilityLabel={label}>
+      {icon}
+    </View>
+  );
+}

@@ -1,0 +1,2408 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Smriti API",
+    "description": "REST API for the Smriti apps. Errors are RFC 7807 problem details.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/v1/time": {
+      "get": {
+        "tags": ["health"],
+        "summary": "Server clock",
+        "description": "The client corrects its own clock with this before it decides which day an event is on.",
+        "operationId": "server_time_v1_time_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/TimeResponse" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/config": {
+      "get": {
+        "tags": ["config"],
+        "summary": "Variant, flags, version gate, limits and prices",
+        "operationId": "get_config_v1_config_get",
+        "parameters": [
+          {
+            "name": "variant",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "description": "Overrides X-App-Variant",
+              "title": "Variant"
+            },
+            "description": "Overrides X-App-Variant"
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ConfigResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me": {
+      "get": {
+        "tags": ["me"],
+        "summary": "The caller's profile",
+        "operationId": "get_me_v1_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MeResponse" } }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["me"],
+        "summary": "Update profile fields and settings",
+        "operationId": "patch_me_v1_me_patch",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/MePatch" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MeResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/exams": {
+      "put": {
+        "tags": ["me"],
+        "summary": "Replace the caller's exams",
+        "operationId": "put_exams_v1_me_exams_put",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ExamsPut" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MeResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/summary": {
+      "get": {
+        "tags": ["me"],
+        "summary": "Home summary: today, streak, plant, pet, wallet",
+        "operationId": "get_summary_v1_me_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SummaryResponse" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sync/events": {
+      "post": {
+        "tags": ["sync"],
+        "summary": "Upload a batch of outbox events",
+        "description": "Idempotent by ``event_id``: a repeated event is accepted again with no effect.",
+        "operationId": "post_events_v1_sync_events_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/SyncEventsRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SyncEventsResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sync/state": {
+      "get": {
+        "tags": ["sync"],
+        "summary": "Authoritative state, or the sections changed since a version",
+        "operationId": "get_state_v1_sync_state_get",
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "integer", "minimum": 0 }, { "type": "null" }],
+              "title": "Since"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/SyncStateResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/exams": {
+      "get": {
+        "tags": ["catalog"],
+        "summary": "Exams and their cycles",
+        "operationId": "exams_v1_catalog_exams_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/ExamOut" },
+                  "type": "array",
+                  "title": "Response Exams V1 Catalog Exams Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/subjects": {
+      "get": {
+        "tags": ["catalog"],
+        "summary": "Subjects, optionally for one exam",
+        "operationId": "subjects_v1_catalog_subjects_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "description": "Exam profile id",
+              "title": "Exam"
+            },
+            "description": "Exam profile id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SubjectOut" },
+                  "title": "Response Subjects V1 Catalog Subjects Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/chapters/{chapter_id}": {
+      "get": {
+        "tags": ["catalog"],
+        "summary": "A chapter and its topics",
+        "operationId": "chapter_v1_catalog_chapters__chapter_id__get",
+        "parameters": [
+          {
+            "name": "chapter_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 200, "title": "Chapter Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChapterOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/topics/{topic_id}": {
+      "get": {
+        "tags": ["catalog"],
+        "summary": "A topic with its bundle refs",
+        "operationId": "topic_v1_catalog_topics__topic_id__get",
+        "parameters": [
+          {
+            "name": "topic_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 200, "title": "Topic Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/TopicOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/content/manifest": {
+      "get": {
+        "tags": ["catalog"],
+        "summary": "Current content manifest pointer",
+        "operationId": "manifest_v1_content_manifest_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64,
+              "description": "Exam profile id",
+              "title": "Exam"
+            },
+            "description": "Exam profile id"
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "required": false,
+            "schema": { "enum": ["en", "hi"], "type": "string", "default": "en", "title": "Locale" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ManifestResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/linked": {
+      "post": {
+        "tags": ["accounts"],
+        "summary": "Finalise a guest's link to Google or Apple (once per account, idempotent)",
+        "operationId": "linked_v1_auth_linked_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LinkedRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/LinkedResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/merge-intents": {
+      "post": {
+        "tags": ["accounts"],
+        "summary": "As the guest, prove control before a merge (10 min, single use)",
+        "operationId": "merge_intent_v1_account_merge_intents_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/MergeIntentRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MergeIntentResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/merges": {
+      "post": {
+        "tags": ["accounts"],
+        "summary": "As the existing account, merge a guest into it",
+        "operationId": "start_merge_v1_account_merges_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/MergeRequest" } }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MergeAccepted" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/account/merges/{merge_id}": {
+      "get": {
+        "tags": ["accounts"],
+        "summary": "Follow a merge",
+        "operationId": "get_merge_v1_account_merges__merge_id__get",
+        "parameters": [
+          {
+            "name": "merge_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Merge Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MergeStatus" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/account": {
+      "delete": {
+        "tags": ["accounts"],
+        "summary": "Erase a guest's progress now",
+        "operationId": "erase_guest_v1_account_delete",
+        "responses": { "204": { "description": "Successful Response" } }
+      }
+    },
+    "/v1/account/deletion": {
+      "post": {
+        "tags": ["accounts"],
+        "summary": "Schedule account deletion after the grace period (needs a sign-in in the last 5 minutes)",
+        "operationId": "request_deletion_v1_account_deletion_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DeletionResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["accounts"],
+        "summary": "Cancel a scheduled deletion",
+        "operationId": "cancel_deletion_v1_account_deletion_delete",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DeletionResponse" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pet": {
+      "get": {
+        "tags": ["gamification"],
+        "summary": "The buddy, its room and today's care",
+        "operationId": "get_pet_v1_pet_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PetResponse" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/pet/care": {
+      "post": {
+        "tags": ["gamification"],
+        "summary": "Pet, play with or feed the buddy",
+        "operationId": "pet_care_v1_pet_care_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PetCareRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PetResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/plant": {
+      "get": {
+        "tags": ["gamification"],
+        "summary": "The plant's stage, health and growth",
+        "operationId": "get_plant_v1_plant_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PlantState" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/streak/freeze": {
+      "post": {
+        "tags": ["gamification"],
+        "summary": "Equip a streak freeze from the reserve",
+        "operationId": "equip_freeze_v1_streak_freeze_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/StreakFreezeRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/StreakState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/streak/rest-day": {
+      "post": {
+        "tags": ["gamification"],
+        "summary": "Plan a rest day (today or ahead)",
+        "operationId": "set_rest_day_v1_streak_rest_day_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RestDayRequest" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/StreakState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/streak/rest-day/{day}": {
+      "delete": {
+        "tags": ["gamification"],
+        "summary": "Cancel a planned rest day",
+        "operationId": "clear_rest_day_v1_streak_rest_day__day__delete",
+        "parameters": [
+          {
+            "name": "day",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "date", "title": "Day" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/StreakState" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shop": {
+      "get": {
+        "tags": ["gamification"],
+        "summary": "Gem shop items and what the caller owns",
+        "operationId": "shop_v1_shop_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ShopResponse" } }
+            }
+          }
+        }
+      }
+    },
+    "/v1/shop/purchase": {
+      "post": {
+        "tags": ["gamification"],
+        "summary": "Spend gems on a shop item (requires Idempotency-Key)",
+        "operationId": "purchase_v1_shop_purchase_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PurchaseRequest" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PurchaseResponse" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/gems/ledger": {
+      "get": {
+        "tags": ["gamification"],
+        "summary": "Gem history, newest first",
+        "operationId": "gem_ledger_v1_gems_ledger_get",
+        "parameters": [
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 512 }, { "type": "null" }],
+              "title": "Cursor"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "integer", "maximum": 100, "minimum": 1 }, { "type": "null" }],
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Page_GemLedgerEntry_" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/quests": {
+      "get": {
+        "tags": ["gamification"],
+        "summary": "Active quests with progress",
+        "operationId": "quests_v1_quests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/QuestOut" },
+                  "type": "array",
+                  "title": "Response Quests V1 Quests Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/quests/{quest_id}/claim": {
+      "post": {
+        "tags": ["gamification"],
+        "summary": "Claim a finished quest",
+        "operationId": "claim_quest_v1_quests__quest_id__claim_post",
+        "parameters": [
+          {
+            "name": "quest_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "minLength": 1, "maxLength": 64, "title": "Quest Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QuestClaimResponse" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/badges": {
+      "get": {
+        "tags": ["gamification"],
+        "summary": "All badges, with the caller's earned dates",
+        "operationId": "badges_v1_badges_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": { "$ref": "#/components/schemas/BadgeOut" },
+                  "type": "array",
+                  "title": "Response Badges V1 Badges Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/dev/auth/anonymous": {
+      "post": {
+        "tags": ["dev-auth"],
+        "summary": "Dev stand-in for Supabase anonymous sign-in",
+        "operationId": "anonymous_v1_dev_auth_anonymous_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DevSession" } }
+            }
+          }
+        },
+        "x-dev-only": true
+      }
+    },
+    "/v1/dev/auth/google": {
+      "post": {
+        "tags": ["dev-auth"],
+        "summary": "Dev stand-in for Google sign-in, or linkIdentity on a guest with link=true",
+        "operationId": "google_v1_dev_auth_google_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DevGoogleRequest" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DevSession" } }
+            }
+          },
+          "409": {
+            "description": "identity_already_exists: the Google account has another user (merge path)"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "x-dev-only": true
+      }
+    },
+    "/v1/dev/auth/refresh": {
+      "post": {
+        "tags": ["dev-auth"],
+        "summary": "Dev stand-in for Supabase's refresh_token grant",
+        "operationId": "refresh_v1_dev_auth_refresh_post",
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DevRefreshRequest" } }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DevSession" } }
+            }
+          },
+          "401": { "description": "invalid_grant or session_ended" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "x-dev-only": true
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppVersionInfo": {
+        "properties": {
+          "min_version": { "type": "string", "title": "Min Version" },
+          "latest_version": { "type": "string", "title": "Latest Version" },
+          "update_required": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Update Required"
+          }
+        },
+        "type": "object",
+        "required": ["min_version", "latest_version"],
+        "title": "AppVersionInfo"
+      },
+      "BadgeOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "description": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Description"
+          },
+          "tier": { "type": "integer", "title": "Tier" },
+          "earned_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Earned At"
+          }
+        },
+        "type": "object",
+        "required": ["id", "name", "description", "tier", "earned_at"],
+        "title": "BadgeOut"
+      },
+      "BundleRef": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "mode": { "type": "string", "title": "Mode" },
+          "locale": { "type": "string", "title": "Locale" },
+          "hash": { "type": "string", "title": "Hash" },
+          "size_bytes": { "type": "integer", "title": "Size Bytes" },
+          "card_count": { "type": "integer", "title": "Card Count" },
+          "min_app_version": { "type": "string", "title": "Min App Version" },
+          "url": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Url" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "mode",
+          "locale",
+          "hash",
+          "size_bytes",
+          "card_count",
+          "min_app_version",
+          "url"
+        ],
+        "title": "BundleRef"
+      },
+      "ChapterOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "subject_id": { "type": "string", "title": "Subject Id" },
+          "unit_id": { "type": "string", "title": "Unit Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "ncert_ref": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Ncert Ref"
+          },
+          "sort": { "type": "integer", "title": "Sort" },
+          "topics": {
+            "items": { "$ref": "#/components/schemas/TopicBrief" },
+            "type": "array",
+            "title": "Topics"
+          },
+          "is_free": { "anyOf": [{ "type": "boolean" }, { "type": "null" }], "title": "Is Free" }
+        },
+        "type": "object",
+        "required": ["id", "subject_id", "unit_id", "name", "ncert_ref", "sort", "topics"],
+        "title": "ChapterOut"
+      },
+      "ConfigResponse": {
+        "properties": {
+          "variant": { "$ref": "#/components/schemas/VariantConfig" },
+          "variants": { "items": { "type": "string" }, "type": "array", "title": "Variants" },
+          "app_version": { "$ref": "#/components/schemas/AppVersionInfo" },
+          "flags": { "additionalProperties": true, "type": "object", "title": "Flags" },
+          "free_limits": { "additionalProperties": true, "type": "object", "title": "Free Limits" },
+          "pricing": {
+            "items": { "$ref": "#/components/schemas/PriceInfo" },
+            "type": "array",
+            "title": "Pricing"
+          },
+          "content_base_url": { "type": "string", "title": "Content Base Url" },
+          "server_time": { "type": "string", "format": "date-time", "title": "Server Time" }
+        },
+        "type": "object",
+        "required": [
+          "variant",
+          "variants",
+          "app_version",
+          "flags",
+          "free_limits",
+          "pricing",
+          "content_base_url",
+          "server_time"
+        ],
+        "title": "ConfigResponse"
+      },
+      "DeletionResponse": {
+        "properties": {
+          "scheduled_for": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Scheduled For"
+          }
+        },
+        "type": "object",
+        "required": ["scheduled_for"],
+        "title": "DeletionResponse"
+      },
+      "DevGoogleRequest": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "maxLength": 254,
+            "minLength": 3,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "title": "Email"
+          },
+          "name": { "type": "string", "maxLength": 80, "minLength": 1, "title": "Name" },
+          "sub": {
+            "anyOf": [{ "type": "string", "maxLength": 64, "minLength": 1 }, { "type": "null" }],
+            "title": "Sub"
+          },
+          "link": {
+            "type": "boolean",
+            "title": "Link",
+            "description": "Link Google to the guest in the Authorization header",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": ["email", "name"],
+        "title": "DevGoogleRequest"
+      },
+      "DevRefreshRequest": {
+        "properties": {
+          "refresh_token": {
+            "type": "string",
+            "maxLength": 4096,
+            "minLength": 10,
+            "title": "Refresh Token"
+          }
+        },
+        "type": "object",
+        "required": ["refresh_token"],
+        "title": "DevRefreshRequest"
+      },
+      "DevSession": {
+        "properties": {
+          "access_token": { "type": "string", "title": "Access Token" },
+          "token_type": {
+            "type": "string",
+            "const": "bearer",
+            "title": "Token Type",
+            "default": "bearer"
+          },
+          "expires_in": { "type": "integer", "title": "Expires In" },
+          "expires_at": { "type": "integer", "title": "Expires At" },
+          "refresh_token": { "type": "string", "title": "Refresh Token" },
+          "user": { "$ref": "#/components/schemas/DevUser" }
+        },
+        "type": "object",
+        "required": ["access_token", "expires_in", "expires_at", "refresh_token", "user"],
+        "title": "DevSession",
+        "description": "The shape of Supabase's token endpoint (docs/contracts/sync.md \"Dev auth\")."
+      },
+      "DevUser": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "is_anonymous": { "type": "boolean", "title": "Is Anonymous" },
+          "email": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Email" }
+        },
+        "type": "object",
+        "required": ["id", "is_anonymous"],
+        "title": "DevUser"
+      },
+      "EntitlementState": {
+        "properties": {
+          "plan": { "type": "string", "enum": ["free", "pro"], "title": "Plan" },
+          "pro_until": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Pro Until"
+          }
+        },
+        "type": "object",
+        "required": ["plan", "pro_until"],
+        "title": "EntitlementState"
+      },
+      "ExamOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "category": { "type": "string", "title": "Category" },
+          "conducting_body": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Conducting Body"
+          },
+          "official_url": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Official Url"
+          },
+          "is_active": { "type": "boolean", "title": "Is Active" },
+          "profiles": {
+            "items": { "$ref": "#/components/schemas/ExamProfileOut" },
+            "type": "array",
+            "title": "Profiles"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "category",
+          "conducting_body",
+          "official_url",
+          "is_active",
+          "profiles"
+        ],
+        "title": "ExamOut"
+      },
+      "ExamProfileOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "cycle": { "type": "string", "title": "Cycle" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "locales": { "items": { "type": "string" }, "type": "array", "title": "Locales" },
+          "schedule": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Schedule"
+          },
+          "is_active": { "type": "boolean", "title": "Is Active" }
+        },
+        "type": "object",
+        "required": ["id", "cycle", "name", "locales", "schedule", "is_active"],
+        "title": "ExamProfileOut"
+      },
+      "ExamsPut": {
+        "properties": {
+          "exam_profile_ids": {
+            "items": { "type": "string", "maxLength": 64 },
+            "type": "array",
+            "maxItems": 10,
+            "title": "Exam Profile Ids"
+          },
+          "primary": {
+            "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+            "title": "Primary"
+          }
+        },
+        "type": "object",
+        "required": ["exam_profile_ids"],
+        "title": "ExamsPut"
+      },
+      "GemLedgerEntry": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "delta": { "type": "integer", "title": "Delta" },
+          "reason": { "type": "string", "title": "Reason" },
+          "ref": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Ref" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+        },
+        "type": "object",
+        "required": ["id", "delta", "reason", "ref", "created_at"],
+        "title": "GemLedgerEntry"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "LinkedRequest": {
+        "properties": {
+          "referral_code": {
+            "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+            "title": "Referral Code"
+          }
+        },
+        "type": "object",
+        "title": "LinkedRequest"
+      },
+      "LinkedResponse": {
+        "properties": {
+          "profile": { "$ref": "#/components/schemas/ProfileState" },
+          "consent_needed": { "type": "boolean", "title": "Consent Needed" },
+          "show_shared_phone_check": { "type": "boolean", "title": "Show Shared Phone Check" }
+        },
+        "type": "object",
+        "required": ["profile", "consent_needed", "show_shared_phone_check"],
+        "title": "LinkedResponse"
+      },
+      "ManifestResponse": {
+        "properties": {
+          "exam_profile_id": { "type": "string", "title": "Exam Profile Id" },
+          "locale": { "type": "string", "enum": ["en", "hi"], "title": "Locale" },
+          "version": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Version" },
+          "hash": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Hash" },
+          "url": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Url" },
+          "base_url": { "type": "string", "title": "Base Url" },
+          "bundle_url_template": { "type": "string", "title": "Bundle Url Template" },
+          "patch_url_template": { "type": "string", "title": "Patch Url Template" },
+          "free_rotating_chapters": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Free Rotating Chapters"
+          },
+          "manifest": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Manifest",
+            "description": "The manifest body, inlined in local mode when the file is on disk"
+          }
+        },
+        "type": "object",
+        "required": [
+          "exam_profile_id",
+          "locale",
+          "version",
+          "hash",
+          "url",
+          "base_url",
+          "bundle_url_template",
+          "patch_url_template",
+          "free_rotating_chapters"
+        ],
+        "title": "ManifestResponse"
+      },
+      "MePatch": {
+        "properties": {
+          "display_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Display Name"
+          },
+          "locale": {
+            "anyOf": [{ "type": "string", "enum": ["en", "hi"] }, { "type": "null" }],
+            "title": "Locale"
+          },
+          "timezone": {
+            "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+            "title": "Timezone"
+          },
+          "daily_goal_minutes": {
+            "anyOf": [{ "type": "integer", "enum": [5, 10, 20, 30] }, { "type": "null" }],
+            "title": "Daily Goal Minutes"
+          },
+          "settings": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "anyOf": [
+                    { "type": "boolean" },
+                    { "type": "string" },
+                    { "type": "integer" },
+                    { "type": "null" }
+                  ]
+                },
+                "type": "object"
+              },
+              { "type": "null" }
+            ],
+            "title": "Settings"
+          },
+          "discoverable": {
+            "anyOf": [{ "type": "boolean" }, { "type": "null" }],
+            "title": "Discoverable"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "MePatch"
+      },
+      "MeResponse": {
+        "properties": {
+          "profile": { "$ref": "#/components/schemas/ProfileState" },
+          "handle": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Handle" },
+          "discoverable": { "type": "boolean", "title": "Discoverable" },
+          "signed_up_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Signed Up At"
+          },
+          "account_kind": {
+            "type": "string",
+            "enum": ["learner", "managed", "guardian"],
+            "title": "Account Kind"
+          },
+          "guardian_consent_state": { "type": "string", "title": "Guardian Consent State" },
+          "deletion_scheduled_for": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Deletion Scheduled For"
+          },
+          "referral_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Referral Code"
+          },
+          "entitlement": { "$ref": "#/components/schemas/EntitlementState" }
+        },
+        "type": "object",
+        "required": [
+          "profile",
+          "handle",
+          "discoverable",
+          "signed_up_at",
+          "account_kind",
+          "guardian_consent_state",
+          "deletion_scheduled_for",
+          "referral_code",
+          "entitlement"
+        ],
+        "title": "MeResponse"
+      },
+      "MergeAccepted": {
+        "properties": {
+          "merge_id": { "type": "string", "format": "uuid", "title": "Merge Id" },
+          "status": { "type": "string", "title": "Status" }
+        },
+        "type": "object",
+        "required": ["merge_id", "status"],
+        "title": "MergeAccepted"
+      },
+      "MergeIntentRequest": {
+        "properties": {
+          "has_unsent_events": { "type": "boolean", "title": "Has Unsent Events", "default": false }
+        },
+        "type": "object",
+        "title": "MergeIntentRequest"
+      },
+      "MergeIntentResponse": {
+        "properties": {
+          "merge_intent": { "type": "string", "title": "Merge Intent" },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": ["merge_intent", "expires_at"],
+        "title": "MergeIntentResponse"
+      },
+      "MergeRequest": {
+        "properties": {
+          "merge_intent": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 16,
+            "title": "Merge Intent"
+          },
+          "include_progress": { "type": "boolean", "title": "Include Progress", "default": true },
+          "convert_guardian": { "type": "boolean", "title": "Convert Guardian", "default": false }
+        },
+        "type": "object",
+        "required": ["merge_intent"],
+        "title": "MergeRequest"
+      },
+      "MergeStatus": {
+        "properties": {
+          "merge_id": { "type": "string", "format": "uuid", "title": "Merge Id" },
+          "status": {
+            "type": "string",
+            "enum": ["queued", "running", "done", "failed"],
+            "title": "Status"
+          },
+          "include_progress": { "type": "boolean", "title": "Include Progress" },
+          "attempts": { "type": "integer", "title": "Attempts" },
+          "failure_code": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Failure Code"
+          },
+          "stats": {
+            "anyOf": [{ "additionalProperties": true, "type": "object" }, { "type": "null" }],
+            "title": "Stats"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "finished_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Finished At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "merge_id",
+          "status",
+          "include_progress",
+          "attempts",
+          "failure_code",
+          "stats",
+          "created_at",
+          "finished_at"
+        ],
+        "title": "MergeStatus"
+      },
+      "Page_GemLedgerEntry_": {
+        "properties": {
+          "items": {
+            "items": { "$ref": "#/components/schemas/GemLedgerEntry" },
+            "type": "array",
+            "title": "Items"
+          },
+          "next_cursor": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Next Cursor"
+          }
+        },
+        "type": "object",
+        "required": ["items"],
+        "title": "Page[GemLedgerEntry]"
+      },
+      "PetCareRequest": {
+        "properties": {
+          "action": { "type": "string", "enum": ["pet", "feed", "play"], "title": "Action" },
+          "item_id": {
+            "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+            "title": "Item Id"
+          }
+        },
+        "type": "object",
+        "required": ["action"],
+        "title": "PetCareRequest"
+      },
+      "PetResponse": {
+        "properties": {
+          "pet": { "anyOf": [{ "$ref": "#/components/schemas/PetState" }, { "type": "null" }] },
+          "outfit_ids": { "items": { "type": "string" }, "type": "array", "title": "Outfit Ids" },
+          "room_theme": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Room Theme"
+          },
+          "care_today": {
+            "additionalProperties": { "type": "integer" },
+            "type": "object",
+            "title": "Care Today"
+          },
+          "treats_held": { "type": "integer", "title": "Treats Held", "default": 0 }
+        },
+        "type": "object",
+        "required": ["pet"],
+        "title": "PetResponse"
+      },
+      "PetState": {
+        "properties": {
+          "species": { "type": "string", "enum": ["cat", "dog"], "title": "Species" },
+          "name": { "type": "string", "title": "Name" },
+          "mood": { "type": "integer", "title": "Mood" },
+          "energy": { "type": "integer", "title": "Energy" },
+          "state": { "type": "string", "title": "State" }
+        },
+        "type": "object",
+        "required": ["species", "name", "mood", "energy", "state"],
+        "title": "PetState"
+      },
+      "PlantState": {
+        "properties": {
+          "stage": {
+            "type": "string",
+            "enum": ["seed", "sprout", "sapling", "flowering", "tree"],
+            "title": "Stage"
+          },
+          "health": {
+            "type": "string",
+            "enum": ["thriving", "droopy", "dry", "wilted", "dormant"],
+            "title": "Health"
+          },
+          "study_days": { "type": "integer", "title": "Study Days" },
+          "next_stage_at": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Next Stage At"
+          },
+          "revival_progress": { "type": "integer", "title": "Revival Progress", "default": 0 },
+          "revival_target": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Revival Target"
+          },
+          "revival_days": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Revival Days"
+          },
+          "species": { "type": "string", "title": "Species", "default": "tulsi" }
+        },
+        "type": "object",
+        "required": ["stage", "health", "study_days", "next_stage_at"],
+        "title": "PlantState"
+      },
+      "PriceInfo": {
+        "properties": {
+          "product_id": { "type": "string", "title": "Product Id" },
+          "platform": { "type": "string", "enum": ["web", "android", "ios"], "title": "Platform" },
+          "variant_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Variant Id"
+          },
+          "store_product_id": { "type": "string", "title": "Store Product Id" },
+          "price_paise": { "type": "integer", "title": "Price Paise" },
+          "intro_price_paise": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Intro Price Paise"
+          },
+          "period": { "type": "string", "enum": ["month", "year"], "title": "Period" },
+          "entitlement": { "type": "string", "title": "Entitlement" }
+        },
+        "type": "object",
+        "required": [
+          "product_id",
+          "platform",
+          "variant_id",
+          "store_product_id",
+          "price_paise",
+          "intro_price_paise",
+          "period",
+          "entitlement"
+        ],
+        "title": "PriceInfo"
+      },
+      "ProfileState": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "display_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Display Name"
+          },
+          "locale": { "type": "string", "title": "Locale" },
+          "is_guest": { "type": "boolean", "title": "Is Guest" },
+          "age_band": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Age Band" },
+          "exam_profile_ids": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Exam Profile Ids"
+          },
+          "daily_goal_minutes": { "type": "integer", "title": "Daily Goal Minutes" },
+          "timezone": { "type": "string", "title": "Timezone" },
+          "primary_exam_profile_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Primary Exam Profile Id"
+          },
+          "settings": { "additionalProperties": true, "type": "object", "title": "Settings" },
+          "onboarding_completed": { "type": "boolean", "title": "Onboarding Completed" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "locale",
+          "is_guest",
+          "age_band",
+          "exam_profile_ids",
+          "daily_goal_minutes",
+          "timezone",
+          "primary_exam_profile_id",
+          "settings",
+          "onboarding_completed"
+        ],
+        "title": "ProfileState"
+      },
+      "PurchaseRequest": {
+        "properties": {
+          "item_id": { "type": "string", "maxLength": 64, "minLength": 1, "title": "Item Id" }
+        },
+        "type": "object",
+        "required": ["item_id"],
+        "title": "PurchaseRequest"
+      },
+      "PurchaseResponse": {
+        "properties": {
+          "item_id": { "type": "string", "title": "Item Id" },
+          "gems": { "type": "integer", "title": "Gems" },
+          "state_version": { "type": "integer", "title": "State Version" }
+        },
+        "type": "object",
+        "required": ["item_id", "gems", "state_version"],
+        "title": "PurchaseResponse"
+      },
+      "QuestClaimResponse": {
+        "properties": {
+          "quest_id": { "type": "string", "title": "Quest Id" },
+          "gems": { "type": "integer", "title": "Gems" },
+          "xp": { "type": "integer", "title": "Xp" },
+          "state_version": { "type": "integer", "title": "State Version" }
+        },
+        "type": "object",
+        "required": ["quest_id", "gems", "xp", "state_version"],
+        "title": "QuestClaimResponse"
+      },
+      "QuestOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "period": { "type": "string", "enum": ["daily", "weekly", "event"], "title": "Period" },
+          "counter": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Counter" },
+          "target": { "type": "integer", "title": "Target" },
+          "progress": { "type": "integer", "title": "Progress" },
+          "reward": {
+            "additionalProperties": { "type": "integer" },
+            "type": "object",
+            "title": "Reward"
+          },
+          "period_start": { "type": "string", "format": "date", "title": "Period Start" },
+          "period_end": { "type": "string", "format": "date", "title": "Period End" },
+          "completed": { "type": "boolean", "title": "Completed" },
+          "claimed": { "type": "boolean", "title": "Claimed" }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "period",
+          "counter",
+          "target",
+          "progress",
+          "reward",
+          "period_start",
+          "period_end",
+          "completed",
+          "claimed"
+        ],
+        "title": "QuestOut"
+      },
+      "RejectedEvent": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "code": { "type": "string", "title": "Code" },
+          "detail": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Detail" }
+        },
+        "type": "object",
+        "required": ["event_id", "code"],
+        "title": "RejectedEvent"
+      },
+      "RestDayRequest": {
+        "properties": { "day": { "type": "string", "format": "date", "title": "Day" } },
+        "type": "object",
+        "required": ["day"],
+        "title": "RestDayRequest"
+      },
+      "ShopItemOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "kind": { "type": "string", "title": "Kind" },
+          "price_gems": { "type": "integer", "title": "Price Gems" },
+          "pro_only": { "type": "boolean", "title": "Pro Only" },
+          "owned": { "type": "integer", "title": "Owned" }
+        },
+        "type": "object",
+        "required": ["id", "kind", "price_gems", "pro_only", "owned"],
+        "title": "ShopItemOut"
+      },
+      "ShopResponse": {
+        "properties": {
+          "gems": { "type": "integer", "title": "Gems" },
+          "items": {
+            "items": { "$ref": "#/components/schemas/ShopItemOut" },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": ["gems", "items"],
+        "title": "ShopResponse"
+      },
+      "SrsCardState": {
+        "properties": {
+          "card_ref": { "type": "string", "title": "Card Ref" },
+          "due": { "type": "string", "format": "date-time", "title": "Due" },
+          "stability": { "type": "number", "title": "Stability" },
+          "difficulty": { "type": "number", "title": "Difficulty" },
+          "state": { "type": "integer", "title": "State" },
+          "reps": { "type": "integer", "title": "Reps" },
+          "lapses": { "type": "integer", "title": "Lapses" },
+          "last_review": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Last Review"
+          }
+        },
+        "type": "object",
+        "required": [
+          "card_ref",
+          "due",
+          "stability",
+          "difficulty",
+          "state",
+          "reps",
+          "lapses",
+          "last_review"
+        ],
+        "title": "SrsCardState"
+      },
+      "SrsState": {
+        "properties": {
+          "cards": {
+            "items": { "$ref": "#/components/schemas/SrsCardState" },
+            "type": "array",
+            "title": "Cards"
+          },
+          "deleted": { "items": { "type": "string" }, "type": "array", "title": "Deleted" }
+        },
+        "type": "object",
+        "required": ["cards", "deleted"],
+        "title": "SrsState"
+      },
+      "StreakFreezeRequest": {
+        "properties": {
+          "slot": { "type": "integer", "maximum": 10, "minimum": 0, "title": "Slot", "default": 0 }
+        },
+        "type": "object",
+        "title": "StreakFreezeRequest"
+      },
+      "StreakState": {
+        "properties": {
+          "current": { "type": "integer", "title": "Current" },
+          "longest": { "type": "integer", "title": "Longest" },
+          "today_qualified": { "type": "boolean", "title": "Today Qualified" },
+          "freezes_equipped": { "type": "integer", "title": "Freezes Equipped" },
+          "freezes_available": { "type": "integer", "title": "Freezes Available" },
+          "rest_day": {
+            "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+            "title": "Rest Day"
+          },
+          "at_risk": { "type": "boolean", "title": "At Risk" }
+        },
+        "type": "object",
+        "required": [
+          "current",
+          "longest",
+          "today_qualified",
+          "freezes_equipped",
+          "freezes_available",
+          "rest_day",
+          "at_risk"
+        ],
+        "title": "StreakState"
+      },
+      "SubjectOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "color_token": { "type": "string", "title": "Color Token" },
+          "sort": { "type": "integer", "title": "Sort" },
+          "chapter_count": { "type": "integer", "title": "Chapter Count" }
+        },
+        "type": "object",
+        "required": ["id", "name", "color_token", "sort", "chapter_count"],
+        "title": "SubjectOut"
+      },
+      "SubtopicOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "sort": { "type": "integer", "title": "Sort" }
+        },
+        "type": "object",
+        "required": ["id", "name", "sort"],
+        "title": "SubtopicOut"
+      },
+      "SummaryResponse": {
+        "properties": {
+          "state_version": { "type": "integer", "title": "State Version" },
+          "today": { "$ref": "#/components/schemas/TodaySummary" },
+          "streak": { "$ref": "#/components/schemas/StreakState" },
+          "plant": { "$ref": "#/components/schemas/PlantState" },
+          "pet": { "anyOf": [{ "$ref": "#/components/schemas/PetState" }, { "type": "null" }] },
+          "wallet": { "$ref": "#/components/schemas/WalletState" },
+          "entitlement": { "$ref": "#/components/schemas/EntitlementState" },
+          "limits": { "additionalProperties": true, "type": "object", "title": "Limits" }
+        },
+        "type": "object",
+        "required": [
+          "state_version",
+          "today",
+          "streak",
+          "plant",
+          "pet",
+          "wallet",
+          "entitlement",
+          "limits"
+        ],
+        "title": "SummaryResponse"
+      },
+      "SyncEventIn": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "type": { "type": "string", "maxLength": 64, "minLength": 1, "title": "Type" },
+          "occurred_at": { "type": "string", "format": "date-time", "title": "Occurred At" },
+          "tz": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Tz",
+            "description": "IANA zone of the device when the event happened; places it on the local day"
+          },
+          "payload": { "additionalProperties": true, "type": "object", "title": "Payload" }
+        },
+        "type": "object",
+        "required": ["event_id", "type", "occurred_at", "tz"],
+        "title": "SyncEventIn"
+      },
+      "SyncEventsRequest": {
+        "properties": {
+          "device_id": { "type": "string", "format": "uuid", "title": "Device Id" },
+          "events": {
+            "items": { "$ref": "#/components/schemas/SyncEventIn" },
+            "type": "array",
+            "maxItems": 200,
+            "title": "Events"
+          }
+        },
+        "type": "object",
+        "required": ["device_id", "events"],
+        "title": "SyncEventsRequest"
+      },
+      "SyncEventsResponse": {
+        "properties": {
+          "accepted": {
+            "items": { "type": "string", "format": "uuid" },
+            "type": "array",
+            "title": "Accepted"
+          },
+          "rejected": {
+            "items": { "$ref": "#/components/schemas/RejectedEvent" },
+            "type": "array",
+            "title": "Rejected"
+          },
+          "state_version": { "type": "integer", "title": "State Version" }
+        },
+        "type": "object",
+        "required": ["accepted", "rejected", "state_version"],
+        "title": "SyncEventsResponse"
+      },
+      "SyncStateResponse": {
+        "properties": {
+          "state_version": { "type": "integer", "title": "State Version" },
+          "profile": {
+            "anyOf": [{ "$ref": "#/components/schemas/ProfileState" }, { "type": "null" }]
+          },
+          "streak": {
+            "anyOf": [{ "$ref": "#/components/schemas/StreakState" }, { "type": "null" }]
+          },
+          "plant": { "anyOf": [{ "$ref": "#/components/schemas/PlantState" }, { "type": "null" }] },
+          "pet": { "anyOf": [{ "$ref": "#/components/schemas/PetState" }, { "type": "null" }] },
+          "wallet": {
+            "anyOf": [{ "$ref": "#/components/schemas/WalletState" }, { "type": "null" }]
+          },
+          "srs": { "anyOf": [{ "$ref": "#/components/schemas/SrsState" }, { "type": "null" }] },
+          "topic_progress": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/TopicProgressState" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Topic Progress"
+          },
+          "entitlement": {
+            "anyOf": [{ "$ref": "#/components/schemas/EntitlementState" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": ["state_version"],
+        "title": "SyncStateResponse",
+        "description": "Sections that did not change since ``since`` are omitted."
+      },
+      "TimeResponse": {
+        "properties": {
+          "server_time": { "type": "string", "format": "date-time", "title": "Server Time" }
+        },
+        "type": "object",
+        "required": ["server_time"],
+        "title": "TimeResponse"
+      },
+      "TodaySummary": {
+        "properties": {
+          "date": { "type": "string", "format": "date", "title": "Date" },
+          "minutes": { "type": "integer", "title": "Minutes" },
+          "goal_minutes": { "type": "integer", "title": "Goal Minutes" },
+          "goal_met": { "type": "boolean", "title": "Goal Met" },
+          "lessons_completed": { "type": "integer", "title": "Lessons Completed" },
+          "cards_reviewed": { "type": "integer", "title": "Cards Reviewed" },
+          "reviews_to_qualify": { "type": "integer", "title": "Reviews To Qualify" },
+          "qualified": { "type": "boolean", "title": "Qualified" }
+        },
+        "type": "object",
+        "required": [
+          "date",
+          "minutes",
+          "goal_minutes",
+          "goal_met",
+          "lessons_completed",
+          "cards_reviewed",
+          "reviews_to_qualify",
+          "qualified"
+        ],
+        "title": "TodaySummary"
+      },
+      "TopicBrief": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "summary": {
+            "anyOf": [
+              { "additionalProperties": { "type": "string" }, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Summary"
+          },
+          "sort": { "type": "integer", "title": "Sort" }
+        },
+        "type": "object",
+        "required": ["id", "name", "summary", "sort"],
+        "title": "TopicBrief"
+      },
+      "TopicOut": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "chapter_id": { "type": "string", "title": "Chapter Id" },
+          "subject_id": { "type": "string", "title": "Subject Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "summary": {
+            "anyOf": [
+              { "additionalProperties": { "type": "string" }, "type": "object" },
+              { "type": "null" }
+            ],
+            "title": "Summary"
+          },
+          "sort": { "type": "integer", "title": "Sort" },
+          "subtopics": {
+            "items": { "$ref": "#/components/schemas/SubtopicOut" },
+            "type": "array",
+            "title": "Subtopics"
+          },
+          "bundles": {
+            "items": { "$ref": "#/components/schemas/BundleRef" },
+            "type": "array",
+            "title": "Bundles"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "chapter_id",
+          "subject_id",
+          "name",
+          "summary",
+          "sort",
+          "subtopics",
+          "bundles"
+        ],
+        "title": "TopicOut"
+      },
+      "TopicProgressState": {
+        "properties": {
+          "topic_id": { "type": "string", "title": "Topic Id" },
+          "status": {
+            "type": "string",
+            "enum": ["not_started", "in_progress", "learned"],
+            "title": "Status"
+          },
+          "percent": { "type": "integer", "title": "Percent" }
+        },
+        "type": "object",
+        "required": ["topic_id", "status", "percent"],
+        "title": "TopicProgressState"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" },
+          "input": { "title": "Input" },
+          "ctx": { "type": "object", "title": "Context" }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      },
+      "VariantConfig": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "app_name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "App Name"
+          },
+          "exam_ids": { "items": { "type": "string" }, "type": "array", "title": "Exam Ids" },
+          "exam_profile_ids": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Exam Profile Ids"
+          },
+          "show_exam_switcher": { "type": "boolean", "title": "Show Exam Switcher" },
+          "accent_color": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Accent Color"
+          },
+          "deep_link_prefix": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Deep Link Prefix"
+          },
+          "products": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Products"
+          },
+          "revenuecat_offering_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Revenuecat Offering Id"
+          },
+          "source": {
+            "type": "string",
+            "enum": ["packages/config", "database", "built_in"],
+            "title": "Source"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "app_name",
+          "exam_ids",
+          "exam_profile_ids",
+          "show_exam_switcher",
+          "source"
+        ],
+        "title": "VariantConfig"
+      },
+      "WalletState": {
+        "properties": {
+          "xp_total": { "type": "integer", "title": "Xp Total" },
+          "xp_today": { "type": "integer", "title": "Xp Today" },
+          "gems": { "type": "integer", "title": "Gems" }
+        },
+        "type": "object",
+        "required": ["xp_total", "xp_today", "gems"],
+        "title": "WalletState"
+      }
+    }
+  }
+}

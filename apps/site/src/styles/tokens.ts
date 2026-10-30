@@ -31,7 +31,8 @@ function subjectVars(s: SubjectMode): string {
 const ACCENT_FAMILY: Record<string, string | null> = { all: null, jee: null, neet: "biology", upsc: "polity", ssc: "maths" };
 
 function accentVars(mode: Mode, accent: string): string {
-  const a = (tokens.examAccent as Record<string, { light: string; dark: string; onAccentLight?: string }>)[accent];
+  // examAccent also carries a `$description` string, hence the cast through unknown.
+  const a = (tokens.examAccent as unknown as Record<string, { light: string; dark: string; onAccentLight?: string } | undefined>)[accent];
   if (!a) return "";
   const family = ACCENT_FAMILY[accent];
   const base = tokens.color[mode];

@@ -11,7 +11,7 @@
  */
 import { type Answer, type CheckResult, checkAnswer } from "./answers.js";
 import type { LessonConfig } from "./config.js";
-import type { AnswerSubmittedPayload, Confidence, EventLessonMode, TimedEvent } from "./events.js";
+import type { AnswerContext, AnswerSubmittedPayload, Confidence, EventLessonMode, TimedEvent } from "./events.js";
 import { type Hint, hintFor, struckOptions } from "./help.js";
 import { checkInteractive, type InteractiveCardB, type WidgetResponse, type WidgetResult, widgetHasTask } from "./interactive.js";
 import type { LessonPlan, Missed, PlanCard } from "./plan.js";
@@ -163,6 +163,10 @@ export function currentCard(s: LessonState): PlanCard | null {
 export function isReadOnly(s: LessonState): boolean {
   return s.viewIndex < s.index;
 }
+
+/** sync.md v1.2: checks answer in context `check`, Fix mistakes in `fix`, everything else `lesson`. */
+export const answerContext = (p: LessonPlan): AnswerContext =>
+  p.mode === "quick_check" ? "check" : p.mode === "fix_mistakes" ? "fix" : "lesson";
 
 /** The student is on a card or an open question (not feedback, an overlay or the end). */
 const browsing = (s: LessonState): boolean => s.phase === "card" || s.phase === "question";
@@ -387,7 +391,7 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
       const payload = {
         topic_id: card.topicId,
         ...answerTarget(card),
-        context: "lesson",
+        context: answerContext(plan),
         response: result.response,
         correct: result.correct,
         attempt: s.attempt,
@@ -446,7 +450,7 @@ export function reduce(prev: LessonState, action: TimedAction): LessonState {
       const payload = {
         topic_id: card.topicId,
         ...answerTarget(card),
-        context: "lesson",
+        context: answerContext(plan),
         response: null,
         correct: false,
         attempt: s.attempt,

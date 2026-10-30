@@ -5,7 +5,10 @@
     {
       "id": "lech2-10-1",
       "kind": "definition",
-      "title": "Carbohydrates",
+      "title": {
+        "en": "Carbohydrates",
+        "hi": "कार्बोहाइड्रेट"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.1 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
       "concepts": [
         "chem.biomolecules.carbohydrates.core.biomolecules-intro",
@@ -37,7 +40,10 @@
     {
       "id": "lech2-10-4",
       "kind": "list",
-      "title": "Vitamins",
+      "title": {
+        "en": "Vitamins",
+        "hi": "विटामिन"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.4 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
       "concepts": [
         "chem.biomolecules.vitamins.core.vitamins-classification"
@@ -46,7 +52,10 @@
     {
       "id": "lech2-10-5",
       "kind": "definition",
-      "title": "Nucleic Acids",
+      "title": {
+        "en": "Nucleic Acids",
+        "hi": "न्यूक्लीक अम्ल"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.5 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
       "concepts": [
         "chem.biomolecules.nucleic-acids.core.nucleic-acids-chem"
@@ -55,7 +64,10 @@
     {
       "id": "lech2-10-6",
       "kind": "definition",
-      "title": "Hormones",
+      "title": {
+        "en": "Hormones",
+        "hi": "हार्मोन"
+      },
       "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.6 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
       "concepts": [
         "chem.biomolecules.hormones.core.hormones-chem"
@@ -74,5 +86,5 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
 }

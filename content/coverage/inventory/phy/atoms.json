@@ -5,7 +5,10 @@
     {
       "id": "leph2-12-2",
       "kind": "fact",
-      "title": "Alpha-particle Scattering and Rutherford's Nuclear Model",
+      "title": {
+        "en": "Alpha-particle Scattering and Rutherford's Nuclear Model",
+        "hi": "एल्फा कण प्रकीर्णन तथा परमाणु का रदरफोर्ड नाभिकीय मॉडल"
+      },
       "source_ref": "NCERT Class 12 Physics Part II, Ch 12 §12.2 (https://ncert.nic.in/textbook/pdf/leph204.pdf)",
       "concepts": [
         "phy.atoms.rutherford.core.rutherford-model"
@@ -72,5 +75,6 @@
   "authored_by": "skill:syllabus-mapper",
   "reviewed_by": null,
   "updated": "2026-10-30",
-  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section."
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv).",
+  "hi_source": "ncert"
 }

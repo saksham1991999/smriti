@@ -435,12 +435,17 @@ def load_titles(errors):
     for fn in ("ncert_en_titles.tsv", "ncert_en_math.tsv", "ncert_bio_en.tsv"):
         for row in read_rows(os.path.join(SRC, "ncert", fn)):
             raw_en[(row[0], row[1])] = row[2]
-    return hi_titles, en_secs, extra_secs, manual_en, raw_en
+    hand_pairs = {
+        (b, sec): (en, hi)
+        for b, sec, en, hi in read_rows(os.path.join(SRC, "ncert", "inventory_hi_pairs.tsv"))
+    }
+    return hi_titles, en_secs, extra_secs, manual_en, raw_en, hand_pairs
 
 
 def main():
     errors, warnings = [], []
-    hi_titles, en_secs, extra_secs, manual_en, raw_en = load_titles(errors)
+    hi_titles, en_secs, extra_secs, manual_en, raw_en, hand_pairs = load_titles(errors)
+    hand_pairs_used = set()
     line_hi = {r[0]: r[1] for r in read_rows(os.path.join(SRC, "lines", "hi.tsv"))}
     lines = {p: load_lines(p) for p in PROFILES.values()}
     line_index = {it["ref"]: (u, it) for us in lines.values() for u in us for it in u["items"]}
@@ -773,7 +778,7 @@ def main():
         )
         excl = {e["section"]: e for e in ch["exclusions"]}
         items = []
-        all_hi = True
+        all_hi, any_hand = True, False
         for sec in secs:
             title_en = (
                 topic_en_single.get(sec) or en_secs[(book, ncert_ch)].get(sec) or topic_en.get(sec)
@@ -794,6 +799,15 @@ def main():
                 and same_heading(title_en, head_en)
                 and re.findall(r"\d+", title_hi) == re.findall(r"\d+", title_en)
             )
+            hand = hand_pairs.get((book, sec))
+            if hand and not paired:
+                if hand != (title_en, title_hi):
+                    errors.append(
+                        f"inventory_hi_pairs.tsv {book} {sec}: expected {hand}, the build has {(title_en, title_hi)}"
+                    )
+                else:
+                    paired = any_hand = True
+                    hand_pairs_used.add((book, sec))
             all_hi = all_hi and paired
             inv_counts["title_hi" if paired else "title_en_only"] += 1
             item = {
@@ -841,6 +855,12 @@ def main():
                     if all_hi
                     else "Hindi section titles are from the NCERT Hindi-medium contents pages, "
                     "kept only where the English title is the NCERT heading of that same section."
+                )
+                + (
+                    " Sections missing from the English heading tables were paired by hand after checking that the "
+                    "Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
+                    if any_hand
+                    else ""
                 ),
             )
         )
@@ -903,6 +923,11 @@ def main():
             sum(1 for x in out_lines if not x["concepts"]),
         )
 
+    for b, sec in sorted(set(hand_pairs) - hand_pairs_used):
+        errors.append(
+            f"inventory_hi_pairs.tsv {b} {sec}: not used (the automatic rule pairs it, or the section is gone)"
+        )
+    inv_counts["title_hi_by_hand"] = len(hand_pairs_used)
     print("concepts total:", len(all_concepts), "inventory:", dict(inv_counts))
     for w in warnings[:40]:
         print("WARN", w)

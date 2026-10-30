@@ -14,7 +14,7 @@ import type { CheckoutOutcome, CheckoutSession } from "../../lib/billing";
 import { savedEmail } from "../../lib/auth";
 import { formatDate, useI18n } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
-import { usePrices } from "../../lib/pricing";
+import { usePriceValues, usePrices } from "../../lib/pricing";
 import { useIntroEligibility, useIsPro } from "../../lib/pro";
 import { toast } from "../../lib/toast";
 import { useAgeBand } from "../../components/SignIn";
@@ -54,6 +54,7 @@ export function Paywall() {
   const navigate = useNavigate();
   const online = useOnline();
   const prices = usePrices();
+  const pv = usePriceValues();
   const pro = useIsPro();
   const guest = useAppStore((x) => x.session.isGuest);
   const pet = useAppStore((x) => x.pet);
@@ -128,9 +129,9 @@ export function Paywall() {
       <main id="main" className="flex flex-col gap-4 px-4 pt-4">
         <div className="flex flex-col gap-1">
           <Text variant="title" heading as="h1">
-            {eligible ? t("me_money:PAY-01.headline_eligible") : t("me_money:PAY-01.headline_not_eligible")}
+            {eligible ? t("me_money:PAY-01.headline_eligible", pv) : t("me_money:PAY-01.headline_not_eligible", pv)}
           </Text>
-          <Text tone="muted">{eligible ? t("me_money:PAY-01.sub_eligible") : t("me_money:PAY-01.sub_not_eligible")}</Text>
+          <Text tone="muted">{eligible ? t("me_money:PAY-01.sub_eligible", pv) : t("me_money:PAY-01.sub_not_eligible")}</Text>
         </div>
         {prices ? (
           <Card className="flex flex-col gap-4 border-2 border-primary" testID="price-block">
@@ -140,7 +141,7 @@ export function Paywall() {
                 {t("me_money:PAY-01.plan_name")}
               </Text>
               <Text variant="caption" tone="muted" className="flex-1 text-right tabular-nums">
-                {eligible ? t("me_money:PAY-01.plan_price_eligible") : t("me_money:PAY-01.plan_price_not_eligible")}
+                {eligible ? t("me_money:PAY-01.plan_price_eligible", pv) : t("me_money:PAY-01.plan_price_not_eligible", pv)}
               </Text>
             </div>
             <TrialTimeline
@@ -180,7 +181,7 @@ export function Paywall() {
       <footer className="fixed inset-x-0 bottom-0 border-t border-hairline bg-surface px-4 py-3">
         <div className="mx-auto flex max-w-[560px] flex-col gap-2">
           {!online && <Text variant="caption" tone="muted">{t("me_money:PAY-01.offline")}</Text>}
-          <Button label={eligible ? t("me_money:PAY-01.cta_eligible") : t("me_money:PAY-01.cta_not_eligible")} onPress={cta} disabled={!online || !prices} testID="pay-cta" />
+          <Button label={eligible ? t("me_money:PAY-01.cta_eligible", pv) : t("me_money:PAY-01.cta_not_eligible", pv)} onPress={cta} disabled={!online || !prices} testID="pay-cta" />
           {guest && (
             <Text variant="caption" tone="muted" align="center">
               {t("me_money:PAY-01.guest_hint_under_cta")}
@@ -193,7 +194,9 @@ export function Paywall() {
           )}
           <Button variant="ghost" label={t("me_money:PAY-01.maybe_later")} onPress={close} testID="pay-later" />
           <Text variant="caption" tone="muted" align="center">
-            {eligible && prices ? `${t("me_money:PAY-01.fine_print_web", { date: formatDate(renew, locale), brand })} ` : ""}
+            {prices
+              ? `${eligible ? t("me_money:PAY-01.fine_print_web", { ...pv, date: formatDate(renew, locale), brand }) : t("me_money:PAY-01.fine_print_not_eligible_web", { ...pv, brand })} `
+              : ""}
             {t("me_money:PAY-01.gst_flagged")}
           </Text>
         </div>
@@ -208,6 +211,7 @@ export function Checkout() {
   const navigate = useNavigate();
   const guest = useAppStore((x) => x.session.isGuest);
   const prices = usePrices();
+  const pv = usePriceValues();
   const elig = useEligibility();
   const [session, setSession] = useState<CheckoutSession | null>(null);
   const [phase, setPhase] = useState<"review" | "approve" | "confirming" | "pending">("review");
@@ -282,12 +286,12 @@ export function Checkout() {
               <Text variant="heading">{t("me_money:PAY-06.plan")}</Text>
               {eligible ? (
                 <>
-                  <Text>{t("me_money:PAY-06.today")}</Text>
+                  <Text>{t("me_money:PAY-06.today", pv)}</Text>
                   <Text tone="muted">{t("me_money:PAY-06.reminder", { reminder_date: formatDate(reminder, locale) })}</Text>
-                  <Text tone="muted">{t("me_money:PAY-06.then", { date: formatDate(renew, locale) })}</Text>
+                  <Text tone="muted">{t("me_money:PAY-06.then", { ...pv, date: formatDate(renew, locale) })}</Text>
                 </>
               ) : (
-                <Text>{t("me_money:PAY-06.today_not_eligible", { day: renew.getDate() })}</Text>
+                <Text>{t("me_money:PAY-06.today_not_eligible", { ...pv, day: renew.getDate() })}</Text>
               )}
               {email && (
                 <Text variant="caption" tone="muted">
@@ -307,7 +311,7 @@ export function Checkout() {
           <Text variant="caption" tone="muted">
             {t("me_money:PAY-06.methods")} · {t("me_money:PAY-01.gst_flagged")}
           </Text>
-          <Button label={eligible ? t("me_money:PAY-06.cta") : t("me_money:PAY-06.cta_not_eligible")} onPress={() => void start()} disabled={busy || !prices} testID="pay-06-cta" />
+          <Button label={eligible ? t("me_money:PAY-06.cta", pv) : t("me_money:PAY-06.cta_not_eligible", pv)} onPress={() => void start()} disabled={busy || !prices} testID="pay-06-cta" />
           <TrustLine />
         </main>
       )}
@@ -325,6 +329,7 @@ export function Checkout() {
 export function ProWelcome() {
   const s = useServices();
   const { t, locale } = useI18n();
+  const pv = usePriceValues();
   const navigate = useNavigate();
   const ent = useAppStore((x) => x.entitlement);
   const pet = useAppStore((x) => x.pet);
@@ -341,8 +346,8 @@ export function ProWelcome() {
         {until && (
           <Text tone="muted" align="center">
             {ent?.is_intro && reminder
-              ? t("me_money:PAY-09.terms_intro", { date: formatDate(until, locale), reminder_date: formatDate(reminder, locale) })
-              : t("me_money:PAY-09.terms_regular", { date: formatDate(until, locale) })}
+              ? t("me_money:PAY-09.terms_intro", { ...pv, date: formatDate(until, locale), reminder_date: formatDate(reminder, locale) })
+              : t("me_money:PAY-09.terms_regular", { ...pv, date: formatDate(until, locale) })}
           </Text>
         )}
         <Button label={t("me_money:PAY-09.continue")} onPress={() => void navigate({ to: "/learn", replace: true })} testID="pay-09-continue" />
@@ -355,6 +360,7 @@ export function ProWelcome() {
 export function YourPlan() {
   const s = useServices();
   const { t, locale } = useI18n();
+  const pv = usePriceValues();
   const navigate = useNavigate();
   const pro = useIsPro();
   const ent = useAppStore((x) => x.entitlement);
@@ -386,15 +392,15 @@ export function YourPlan() {
                   {ent?.cancel_at_period_end
                     ? t("me_money:PAY-12.ends", { date: formatDate(until, locale) })
                     : ent?.is_intro
-                      ? t("me_money:PAY-12.intro_line", { date: formatDate(until, locale) })
-                      : t("me_money:PAY-12.next_charge", { date: formatDate(until, locale) })}
+                      ? t("me_money:PAY-12.intro_line", { ...pv, date: formatDate(until, locale) })
+                      : t("me_money:PAY-12.next_charge", { ...pv, date: formatDate(until, locale) })}
                 </Text>
               </span>
             </Card>
             {!ent?.cancel_at_period_end && <Button variant="destructive" label={t("me_money:PAY-12.cancel")} onPress={() => void cancel()} disabled={busy} testID="pay-12-cancel" />}
           </>
         ) : (
-          <Button label={t("me_money:PAY-12.get_again")} onPress={() => void navigate({ to: "/pro", search: { source: "settings" } })} testID="pay-12-get" />
+          <Button label={t("me_money:PAY-12.get_again", pv)} onPress={() => void navigate({ to: "/pro", search: { source: "settings" } })} testID="pay-12-get" />
         )}
       </div>
     </div>

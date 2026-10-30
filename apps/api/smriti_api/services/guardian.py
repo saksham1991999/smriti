@@ -37,7 +37,7 @@ log = structlog.get_logger(__name__)
 # No 0/O, 1/I/L: the code is read aloud and typed (AUTH-21).
 CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
 CODE_LENGTH = 8
-EMAILS_PER_ADDRESS_PER_DAY = 3
+EMAILS_PER_ADDRESS_PER_DAY = 3  # default for the proposed flag auth.consent_emails_per_day
 
 
 def new_code() -> str:
@@ -161,7 +161,9 @@ async def create_request(
                     {"h": email_key, "since": now - timedelta(days=1)},
                 )
             ).scalar_one()
-            if int(recent) >= EMAILS_PER_ADDRESS_PER_DAY:
+            if int(recent) >= _flag_int(
+                flags, "auth.consent_emails_per_day", EMAILS_PER_ADDRESS_PER_DAY
+            ):
                 raise ApiError(429, "rate_limited", "Too many emails to this address today")
         # One pending request at a time: a new one replaces the old.
         await session.execute(

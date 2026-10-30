@@ -74,6 +74,7 @@ export const FLAG_REGISTRY = {
   'auth.consent_retry_h': def(posInt, 24, 'proposed', 'auth §10.1'),
   'auth.consent_decline_limit': def(posInt, 3, 'proposed', 'auth §10.1'),
   'auth.consent_decline_pause_days': def(posInt, 30, 'proposed', 'auth §10.1'),
+  'auth.consent_emails_per_day': def(posInt, 3, 'proposed', 'auth §6.10 (per guardian address)'),
   'auth.deletion_grace_days': def(posInt, 7, 'proposed', 'auth §6.8, PRD §16.4'),
   'auth.merge_wait_s': def(posInt, 30, 'proposed', 'auth §6.4'),
   'auth.merge_retries': def(nonNegInt, 3, 'proposed', 'auth §6.4'),
@@ -197,6 +198,9 @@ export const FLAG_REGISTRY = {
   'pro.custom_mocks': def(bool, true, 'doc', 'practice §4.1 (MOCK-26)'),
   'billing.trial_reminder_days_before': def(posInt, 3, 'ruling', 'R33'),
   'billing.offline_grace_days': def(nonNegInt, 3, 'doc', 'me-money §5.1'),
+  'billing.web_grace_days': def(posInt, 7, 'proposed', 'me-money §5.1 (Razorpay pending to grace)'),
+  'export.books_per_day': def(posInt, 5, 'proposed', 'me-money §3.9'),
+  'export.expiry_days': def(posInt, 30, 'proposed', 'me-money §3.9'),
   'pay.child_link.enabled': def(byPlatform(bool), { web: true, ios: false, android: false }, 'doc', 'me-money Q7'),
   'pay.web_steering': def(bool, false, 'doc', 'me-money §5.6'),
 

@@ -20,6 +20,7 @@ from smriti_api.core.deps import AppServices
 from smriti_api.services import exports, media
 from smriti_api.services.jobs import InlineJobQueue
 from tests.money_helpers import set_profile, signed_in
+from tests.practice_helpers import flags
 
 pytest.importorskip("weasyprint")
 
@@ -70,6 +71,28 @@ async def test_progress_report_pdf(client: httpx.AsyncClient, services: AppServi
     other = await signed_in(client)
     r = await client.get(f"/v1/exports/{export['id']}", headers=other.headers)
     assert r.status_code == 404
+
+
+async def test_book_limit_and_expiry_come_from_flags(
+    client: httpx.AsyncClient, services: AppServices
+) -> None:
+    s = await signed_in(client)
+    body = {"template": "progress_report"}
+    async with flags(services, {"export.books_per_day": 1, "export.expiry_days": 2}):
+        r = await client.post("/v1/exports/pdf", json=body, headers={**s.headers, **key()})
+        assert r.status_code == 202, r.text
+        assert isinstance(services.jobs, InlineJobQueue)
+        await services.jobs.drain()
+        again = await client.post("/v1/exports/pdf", json=body, headers={**s.headers, **key()})
+        assert again.status_code == 429 and again.json()["code"] == "export_limit"
+    async with services.db.admin_tx() as session:
+        row = (
+            await session.execute(
+                text("select completed_at, expires_at from app.exports where id = :id"),
+                {"id": r.json()["id"]},
+            )
+        ).one()
+    assert row.expires_at - row.completed_at == timedelta(days=2)
 
 
 async def test_formula_book_is_pro(client: httpx.AsyncClient, services: AppServices) -> None:

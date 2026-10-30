@@ -30,6 +30,7 @@ from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
 from smriti_api.schemas import exports as x
 from smriti_api.services import billing, copy, notify
+from smriti_api.services import flags as flag_service
 
 if TYPE_CHECKING:
     from smriti_api.integrations import Integrations
@@ -37,8 +38,9 @@ if TYPE_CHECKING:
 
 log = structlog.get_logger(__name__)
 
-BOOKS_PER_DAY = 5  # me-money §3.9 "5 books a day"
-EXPIRES_DAYS = 30  # me-money §3.9 "flag 30 days"
+# Defaults for the proposed flags ``export.books_per_day`` and ``export.expiry_days`` (me-money §3.9).
+BOOKS_PER_DAY = 5
+EXPIRES_DAYS = 30
 SIGNED_URL_TTL_S = 15 * 60
 
 CSS = """
@@ -248,10 +250,9 @@ async def create_pdf(
                 {"u": auth.user_id, "since": now - timedelta(days=1)},
             )
         ).scalar_one()
-        if int(today) >= BOOKS_PER_DAY:
-            raise ApiError(
-                429, "export_limit", "That's the most books for today", limit=BOOKS_PER_DAY
-            )
+        limit = await flag_service.server_pos_int(session, "export.books_per_day", BOOKS_PER_DAY)
+        if int(today) >= limit:
+            raise ApiError(429, "export_limit", "That's the most books for today", limit=limit)
         row = (
             await session.execute(
                 text(
@@ -344,6 +345,7 @@ async def render_export(deps: JobDeps, export_id: str) -> dict[str, Any]:
     key = f"exports/{row.user_id}/{export_id}.pdf"
     await ints.storage.put("uploads", key, pdf, "application/pdf")
     async with deps.db.system_tx() as session:
+        expiry_days = await flag_service.server_pos_int(session, "export.expiry_days", EXPIRES_DAYS)
         await session.execute(
             text(
                 "update app.exports set status = 'ready', r2_key = :k, pages = :p, bytes = :b,"
@@ -355,7 +357,7 @@ async def render_export(deps: JobDeps, export_id: str) -> dict[str, Any]:
                 "p": pages,
                 "b": len(pdf),
                 "now": now,
-                "exp": now + timedelta(days=EXPIRES_DAYS),
+                "exp": now + timedelta(days=expiry_days),
             },
         )
         await notify.enqueue(

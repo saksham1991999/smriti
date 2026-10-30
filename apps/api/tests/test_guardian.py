@@ -14,11 +14,12 @@ from sqlalchemy import text
 from smriti_api.core.deps import AppServices
 from smriti_api.core.errors import ApiError
 from smriti_api.integrations.mail import FakeMailer
+from smriti_api.services import consent, guardian, privacy
 from smriti_api.services import flags as flag_service
-from smriti_api.services import guardian, privacy
 from smriti_api.services.analytics import FakeAnalyticsSink
 from tests.helpers import Session, new_guest
 from tests.money_helpers import set_profile, signed_in
+from tests.practice_helpers import flags
 
 NOTICE = "dpdp-notice-2026-10"
 
@@ -218,6 +219,37 @@ async def test_link_request_email_review_and_consent(
     assert (me["state"], me["scopes"]) == ("revoked", [])
     learners = (await client.get("/v1/guardian/learners", headers=parent.headers)).json()
     assert learners["learners"] == []
+
+
+async def test_emails_per_address_come_from_the_flag(
+    client: httpx.AsyncClient, services: AppServices
+) -> None:
+    address = f"parent-{uuid.uuid4().hex[:8]}@example.com"
+    async with flags(services, {"auth.consent_emails_per_day": 1}):
+        first = await ask(client, await teen(client, services), guardian_email=address)
+        assert first.status_code == 201, first.text
+        second = await ask(client, await teen(client, services), guardian_email=address)
+        assert second.status_code == 429 and second.json()["code"] == "rate_limited"
+
+
+async def test_has_social_consent(client: httpx.AsyncClient, services: AppServices) -> None:
+    adult = await signed_in(client)
+    await set_profile(services, adult.user_id, age_band="18p")
+    s = await teen(client, services)
+    account_only = await teen(client, services)
+    for learner, scopes in ((s, ["social"]), (account_only, ["account"])):
+        req = (await ask(client, learner, scopes=scopes)).json()
+        assert await consent.social_allowed(services.db, learner.user_id) is False
+        parent = await signed_in(client)
+        assert (await agree(client, parent, req["code"], scopes)).status_code == 200
+    async with services.db.system_tx() as session:
+        assert await consent.has_social_consent(session, adult.user_id) is True
+        assert await consent.has_social_consent(session, s.user_id) is True
+        assert await consent.has_social_consent(session, account_only.user_id) is False
+        with pytest.raises(ApiError) as err:
+            await consent.require_social_consent(session, account_only.user_id)
+    assert err.value.code == "guardian_consent_required"
+    assert await consent.social_allowed(services.db, s.user_id) is True
 
 
 async def test_decline_then_retry_wait(client: httpx.AsyncClient, services: AppServices) -> None:

@@ -87,6 +87,18 @@ async def server_flags(session: AsyncSession) -> dict[str, Any]:
     return evaluate(await load_flag_rows(session), FlagContext())
 
 
+def pos_int(values: Mapping[str, Any], key: str, default: int) -> int:
+    """A positive whole-number flag, or ``default`` when it is unset, null or malformed."""
+    value = values.get(key)
+    if isinstance(value, bool) or not isinstance(value, int | float) or value < 1:
+        return default
+    return int(value)
+
+
+async def server_pos_int(session: AsyncSession, key: str, default: int) -> int:
+    return pos_int(await server_flags(session), key, default)
+
+
 def clear_cache() -> None:
     global _cache
     _cache = None

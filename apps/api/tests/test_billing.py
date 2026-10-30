@@ -27,6 +27,7 @@ from tests.money_helpers import (
     set_profile,
     signed_in,
 )
+from tests.practice_helpers import flags
 
 KEY = {"Idempotency-Key": "billing-test-key-0001"}
 
@@ -215,6 +216,30 @@ async def test_web_checkout_to_pro_through_the_webhooks(
     await webhook(client, halted)
     ent = await entitlement(client, s.headers)
     assert (ent["plan"], ent["status"]) == ("free", "on_hold")
+
+
+async def test_web_grace_comes_from_the_flag(
+    client: httpx.AsyncClient, services: AppServices
+) -> None:
+    s = await signed_in(client)
+    started = await start_web(client, s.headers)
+    now = datetime.now(UTC).replace(microsecond=0)
+    end = now + timedelta(days=30)
+    async with flags(services, {"billing.web_grace_days": 3}):
+        await webhook(
+            client,
+            razorpay_body(
+                "subscription.pending",
+                user_id=s.user_id,
+                sub_id=started["subscription_id"],
+                start=now,
+                end=end,
+                created=now,
+            ),
+        )
+    ent = await entitlement(client, s.headers)
+    assert ent["status"] == "grace"
+    assert datetime.fromisoformat(ent["grace_until"]) == end + timedelta(days=3)
 
 
 async def test_cancel_keeps_pro_to_period_end_and_a_refund_ends_it(

@@ -18,7 +18,7 @@ import hashlib
 import hmac
 import json
 import uuid
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
@@ -30,6 +30,7 @@ from smriti_api.core.db import Database
 from smriti_api.core.logging import hash_user_id
 from smriti_api.integrations import Integrations
 from smriti_api.integrations.billing import SubscriptionUpdate, WebhookEvent
+from smriti_api.services import flags as flag_service
 from smriti_api.services import versioning
 
 log = structlog.get_logger(__name__)
@@ -534,6 +535,15 @@ async def _billing_pushes(
         )
 
 
+def _with_web_grace(update: SubscriptionUpdate, days: int) -> SubscriptionUpdate:
+    """Razorpay has no store-run grace, so ours sets it: the proposed flag
+    ``billing.web_grace_days`` (0 means unset; the provider's ``RAZORPAY_GRACE_DAYS`` stands)."""
+    if days < 1 or update.source != "razorpay" or update.status != "grace":
+        return update
+    start = update.period_end or update.occurred_at
+    return replace(update, grace_until=start + timedelta(days=days))
+
+
 async def handle_webhook(
     db: Database, integrations: Integrations, event: WebhookEvent
 ) -> WebhookOutcome:
@@ -564,8 +574,9 @@ async def handle_webhook(
         if stored is None:
             return WebhookOutcome("duplicate")
         users: list[uuid.UUID] = []
+        web_grace = await flag_service.server_pos_int(session, "billing.web_grace_days", 0)
         for update in event.updates:
-            uid = await _apply_update(session, update, integrations)
+            uid = await _apply_update(session, _with_web_grace(update, web_grace), integrations)
             if uid is not None and uid not in users:
                 users.append(uid)
         changed: list[tuple[uuid.UUID, str]] = []
@@ -669,7 +680,6 @@ async def revoke_promo_grants(
 async def trial_reminders(db: Database, *, now: datetime | None = None) -> int:
     """R33: our own reminder ``billing.trial_reminder_days_before`` days before the ₹1 month turns
     into the ₹99 charge (push ``trial_ending``, once per subscription)."""
-    from smriti_api.services import flags as flag_service
     from smriti_api.services import notify
 
     now = now or datetime.now(UTC)

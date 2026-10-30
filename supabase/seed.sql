@@ -109,12 +109,17 @@ insert into ops.flags (key, value, description) values
   ('auth.consent_claim_days', '7', 'proposed'),
   ('auth.consent_handoff_ttl_min', '15', 'proposed'),
   ('auth.consent_link_ttl_h', '72', 'proposed'),
+  ('auth.consent_emails_per_day', '3', 'proposed: consent emails to one guardian address a day'),
   ('auth.deletion_grace_days', '7', 'proposed (auth Q5)'),
   ('auth.merge_wait_s', '30', 'proposed'),
   ('auth.merge_retries', '3', 'proposed'),
   ('auth.signin_timeout_s', '15', 'proposed'),
   ('minor.defer_sync_until_consent', 'false', 'onboarding doc'),
   ('merge.keep_guest_pet', 'true', 'auth §6.4 step 7 (owner Q9)'),
+  -- Billing and PDF books (proposed starting values for the owner to confirm)
+  ('billing.web_grace_days', '7', 'proposed: web (Razorpay) grace after a failed renewal'),
+  ('export.books_per_day', '5', 'proposed (me-money §3.9): PDF books a student can make a day'),
+  ('export.expiry_days', '30', 'proposed (me-money §3.9): days a PDF book link lasts'),
   -- Social and sharing (R30, R32, R37)
   ('social.duo_max_partners', '5', 'R32'),
   ('share.streak_milestones', '[7, 30, 100]', 'R37 / me-money §3.4'),

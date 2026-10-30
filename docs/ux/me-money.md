@@ -1871,7 +1871,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | CTA (eligible) | Start for ₹1 | ₹1 में शुरू करें |
 | CTA (not eligible) | Get Pro | Pro लें |
 | Maybe later | Maybe later | अभी नहीं |
-| Pet: deep_dive_lock | This deep dive is part of Pro. (also `deep_dive_preview`, `lab_lock`) | यह डीप डाइव Pro में है। |
+| Pet: deep_dive_lock | This deep dive is part of Pro. | यह डीप डाइव Pro में है। |
 | Pet: tutor_limit | We've used today's {limit} free questions. | आज के {limit} मुफ़्त सवाल हो गए। |
 | Pet: tutor_voice | Talking it through is part of Pro. | बोलकर समझना Pro में है। |
 | Pet: tutor_photo | Photo doubts are part of Pro. | फ़ोटो से सवाल Pro में हैं। |
@@ -1886,7 +1886,7 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | Pet: pdf_export | Turn your topics into a book with Pro. | Pro से अपने टॉपिक की किताब बनाएँ। |
 | Pet: offline_download | Downloads for offline are in Pro. | ऑफ़लाइन डाउनलोड Pro में हैं। |
 | Pet: ai_tools_lock | The AI helper here is part of Pro. | यहाँ का AI हेल्पर Pro में है। |
-| Pet: general | Here's what Pro adds. (also `tutor_image`, `me_card`, `settings`, `deeplink`) | देखिए, Pro में क्या-क्या है। |
+| Pet: general | Here's what Pro adds. | देखिए, Pro में क्या-क्या है। |
 | Benefit: deep dives | All Deep Dives | सारे डीप डाइव |
 | Caption | Every chapter, every subject. | हर विषय का हर चैप्टर। |
 | Benefit: practice | Unlimited practice and the full PYQ bank | असीमित अभ्यास और पूरा PYQ बैंक |
@@ -1930,6 +1930,8 @@ Prices on every PAY screen are ₹1 for the first month and ₹99/month after (P
 | Guest hint (under CTA) | You'll sign in with Google first. | पहले आप Google से साइन इन करेंगे। |
 | `intro_used` (after sign-in) | The ₹1 month was already used on this account. | इस अकाउंट पर ₹1 वाला महीना पहले ही इस्तेमाल हो चुका है। |
 | Teen consent caption | Needs a guardian's OK first | पहले अभिभावक की मंज़ूरी ज़रूरी |
+
+Pet line sources that share a row: `deep_dive_preview` and `lab_lock` use "Pet: deep_dive_lock"; `tutor_image`, `me_card`, `settings` and `deeplink` use "Pet: general".
 
 **Illustration slots:** (a) hero: `pet-cat`/`pet-dog`, 1:1, the pet proudly holding a blank gold price tag on a string (and a variant holding a gold star), transparent; the "₹1" is app text over the tag; alt "{pet} holds a gold tag" / "{pet} के हाथ में सुनहरा टैग". (b) benefit rows: `sunny-object`, 1:1, one per benefit (an open book with a magnifier for Deep Dives, a stopwatch on a paper for mocks, a microphone for the voice tutor, a printed booklet for PDF books, a cloud with a down arrow shape for offline: no text or letters), decorative because the row text carries the meaning.
 **States:**
@@ -2914,3 +2916,15 @@ Copy rules for new templates: no guilt ("You failed", "Don't let {pet} down"), n
 **Analytics:** `notification_sent` (`channel = email`), opens via the deep link only (no tracking pixels, especially for parents of minors).
 **Web (≥ 600 px):** not applicable.
 **Mock priority:** P2 · Phase 1 (parent report: Phase 3)
+
+---
+
+### WEB-05 · Web checkout messages
+**Purpose:** What the web checkout (PAY-06, PAY-08) says when the payment doesn't go through.
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Payment failed | The payment didn't go through. Nothing was charged. Try again? | भुगतान नहीं हो पाया। कोई पैसा नहीं कटा। फिर से कोशिश करें? |
+
+**Mock priority:** P1.

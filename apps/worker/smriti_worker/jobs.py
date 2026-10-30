@@ -24,11 +24,15 @@ from smriti_api.services import (
     accounts,
     billing,
     card_index,
+    duels,
     exports,
     guardian,
+    leagues,
     media,
     mocks,
     notify,
+    social_duos,
+    social_squads,
     tutor,
 )
 from smriti_api.services.analytics import LogAnalyticsSink
@@ -104,6 +108,31 @@ async def tutor_retention(ctx: Ctx) -> int:
     if count:
         log.info("tutor_messages_purged", count=count)
     return count
+
+
+async def league_assign(ctx: Ctx) -> int:
+    """Hourly: places this week's active learners into league groups."""
+    return await leagues.assign_job(_deps(ctx))
+
+
+async def league_rollover(ctx: Ctx) -> int:
+    """Sunday after ``league.close_time`` IST: promotions, demotions and results. Safe to re-run."""
+    return await leagues.rollover_job(_deps(ctx))
+
+
+async def duo_rollup(ctx: Ctx) -> int:
+    """Nightly: settles Duo streak days."""
+    return await social_duos.rollup_job(_deps(ctx))
+
+
+async def duel_sweep(ctx: Ctx) -> int:
+    """Every minute: expires stale duels and queue entries."""
+    return await duels.sweep_job(_deps(ctx))
+
+
+async def squad_quests(ctx: Ctx) -> int:
+    """Hourly: settles this week's squad quests."""
+    return await social_squads.quests_job(_deps(ctx))
 
 
 async def ping(ctx: Ctx) -> str:

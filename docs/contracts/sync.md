@@ -1,6 +1,6 @@
 # Sync contract (client outbox ↔ API)
 
-Status: v1.2, 30 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
+Status: v1.3, 30 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
 
 ## Envelope
 
@@ -41,7 +41,7 @@ Status: v1.2, 30 Oct 2026. Shared by `packages/app-core` (client) and `apps/api`
 |---|---|
 | `lesson_started` | `topic_id`, `mode` (`deep_dive` \| `quick_revision` \| `onboarding` \| `quick_check`), `bundle_version`, `locale` |
 | `lesson_card_viewed` | `topic_id`, `card_id`, `index`, `ms_on_card` |
-| `answer_submitted` | `topic_id`, `card_id` or `question_id`, `context` (`lesson` \| `check` \| `fix` \| `practice` \| `review` \| `challenge` \| `chapter_test`), `response` (the option ids, number or text key, never free text typed by the student), `correct` (bool), `attempt` (1 or 2), `confidence` (`sure` \| `fifty_fifty` \| `guess` \| null), `ms_to_answer` |
+| `answer_submitted` | `topic_id`, `card_id` or `question_id`, `context` (`lesson` \| `check` \| `fix` \| `practice` \| `review` \| `challenge` \| `chapter_test` \| `mock`), `attempt_id` (with `mock` only), `response` (the option ids, number or text key, never free text typed by the student), `correct` (bool), `attempt` (1 or 2), `confidence` (`sure` \| `fifty_fifty` \| `guess` \| null), `ms_to_answer` |
 | `lesson_completed` | `topic_id`, `mode`, `cards_seen`, `correct`, `total`, `ms_total`, `xp` |
 | `review_rated` | `card_ref` (`c:<card_id>` content card, `d:<user_card_id>` own deck card, `q:<question_id>`), `rating` (1 Again \| 2 Hard \| 3 Good \| 4 Easy), `confidence`, `ms_to_answer`, `fsrs_state` (the client's computed state: `due`, `stability`, `difficulty`, `elapsed_days`, `scheduled_days`, `reps`, `lapses`, `state`) |
 | `practice_session_completed` | `session_id`, `kind` (`drill` \| `pyq` \| `weak_spots`), `answered`, `correct`, `ms_total` |
@@ -73,6 +73,7 @@ The server recomputes XP, mastery, FSRS schedules, activity days, the streak, pl
 - "I don't know yet" sends `answer_submitted` with `response: null`, `correct: false`.
 - For checks (`context: check`, `lesson_started.mode: quick_check`), `topic_id` carries the scope the check covers: a topic, chapter or exam-profile id. Fix mistakes (`context: fix`) sends answer events only, no lesson events.
 - Content bundle hashes are sha256 of canonical JSON (keys sorted, no whitespace), in lowercase hex. The publish job and `ContentManager` must hash the same way.
+- (v1.3) Mock answers update mastery: when an attempt is submitted the server records one `answer_submitted` per scored answer with `context: mock` and the `attempt_id`, so clients don't send them. A mock answer for an attempt that isn't submitted, or a repeat for the same attempt and question, is rejected (`invalid_payload`, `already_recorded`). `practice_session_completed` and `mock_section_submitted` count once per `session_id` and per `attempt_id` + `section_code`: whichever of the device's outbox or the server records it first wins, and a later one is rejected with `already_recorded` (drop it, as with any rejected event).
 
 ## State
 

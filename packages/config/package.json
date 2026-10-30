@@ -24,7 +24,8 @@
     "prepare": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit -p . && tsc --noEmit -p tsconfig.test.json",
     "test": "node scripts/build.mjs && vitest run",
-    "lint": "tsc --noEmit -p ."
+    "lint": "tsc --noEmit -p .",
+    "flags:export": "node scripts/export-flag-defaults.mjs"
   },
   "dependencies": {
     "zod": "4.6.7"

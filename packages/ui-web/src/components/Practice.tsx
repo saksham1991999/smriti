@@ -538,7 +538,7 @@ export interface LimitMeterProps extends LimitMeterContract {
 }
 
 /** Label, 8 px bar and "{used} of {limit}". Never pulses or shakes. Under-13s get "Ask a grown-up". */
-export function LimitMeter({ label, used, limit, lastFewAt, proAction = "pro_link", onProPress, hidden, testID, className }: LimitMeterProps) {
+export function LimitMeter({ label, used, limit, lastFewAt, proAction = "pro_link", onProPress, hidden, period = "day", testID, className }: LimitMeterProps) {
   const { t } = useUI();
   if (hidden) return null;
   const s = limitState(used, limit, lastFewAt);
@@ -553,7 +553,7 @@ export function LimitMeter({ label, used, limit, lastFewAt, proAction = "pro_lin
       {(s.phase !== "in_range" || proAction !== "none") && (
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="text-caption text-ink-muted">
-            {s.phase === "full" ? t("limit.full") : s.phase === "last_few" ? t("limit.left", { remaining: s.remaining }) : ""}
+            {s.phase === "full" ? t(period === "week" ? "limit.fullWeek" : "limit.full") : s.phase === "last_few" ? t(period === "week" ? "limit.leftWeek" : "limit.left", { remaining: s.remaining }) : ""}
           </span>
           {proAction !== "none" && onProPress && (
             <button type="button" onClick={onProPress} className={cx("relative rounded-xs text-label font-bold text-primary-text", hitArea, focusRing)}>

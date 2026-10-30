@@ -1,0 +1,413 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.energy-power",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.energy-power.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.energy-power.core.electrical-power",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A heater of resistance 46 Ω works on 230 V. Its power is",
+        "hi": "46 Ω प्रतिरोध वाला एक हीटर 230 V पर काम करता है। उसकी शक्ति है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1150 W",
+            "hi": "1150 W"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "5 W",
+            "hi": "5 W"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10580 W",
+            "hi": "10580 W"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "230 W",
+            "hi": "230 W"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$P = V^{2}/R$.",
+          "hi": "$P = V^{2}/R$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With voltage and resistance known, use the form of the power formula that needs only those two.",
+          "hi": "वोल्टता और प्रतिरोध ज्ञात हैं, तो शक्ति सूत्र का वह रूप लीजिए जिसमें केवल ये दोनों हों।"
+        },
+        "steps": [
+          {
+            "en": "$P = \\frac{V^{2}}{R} = \\frac{230^{2}}{46} = \\frac{52900}{46} = 1150$ W",
+            "hi": "$P = \\frac{V^{2}}{R} = \\frac{230^{2}}{46} = \\frac{52900}{46} = 1150$ W"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "230/46 = 5 is the current in amperes, not the power.",
+              "hi": "230/46 = 5 ऐम्पियर में धारा है, शक्ति नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is $VR$, not $V^{2}/R$.",
+              "hi": "यह $VR$ है, $V^{2}/R$ नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Power is not equal to the supply voltage.",
+              "hi": "शक्ति आपूर्ति वोल्टता के बराबर नहीं होती।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.energy-power.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.energy-power.core.electrical-power",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 1.5 kW heater is used for 2 hours. The energy used is",
+        "hi": "1.5 kW का हीटर 2 घंटे उपयोग होता है। खर्च हुई ऊर्जा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "3 kW h",
+            "hi": "3 kW h"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.75 kW h",
+            "hi": "0.75 kW h"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "3000 kW h",
+            "hi": "3000 kW h"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1.33 kW h",
+            "hi": "1.33 kW h"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Energy = power × time.",
+          "hi": "ऊर्जा = शक्ति × समय।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Energy is how much power you use for how long. One and a half kilowatts for two hours is three kilowatt hours.",
+          "hi": "ऊर्जा = कितनी शक्ति कितनी देर। डेढ़ किलोवाट दो घंटे तक, यानी तीन किलोवाट घंटा।"
+        },
+        "steps": [
+          {
+            "en": "$E = Pt = 1.5 \\times 2 = 3$ kW h",
+            "hi": "$E = Pt = 1.5 \\times 2 = 3$ kW h"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This divides power by time.",
+              "hi": "यह शक्ति को समय से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This mixes watts with kilowatt hours.",
+              "hi": "यह वाट और किलोवाट घंटे को मिला देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This divides time by power.",
+              "hi": "यह समय को शक्ति से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.energy-power.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.energy-power.core.electrical-power",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The same power is sent through the same cable, but at 10 times the voltage. The power lost in the cable becomes",
+        "hi": "उसी केबिल से वही शक्ति भेजी जाती है, पर 10 गुनी वोल्टता पर। केबिल में क्षयित शक्ति हो जाती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1/10 of before",
+            "hi": "पहले का 1/10"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1/100 of before",
+            "hi": "पहले का 1/100"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 times",
+            "hi": "10 गुना"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "100 times",
+            "hi": "100 गुना"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Write the line current as $I = P/V$.",
+          "hi": "लाइन धारा $I = P/V$ लिखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Ten times the voltage needs only a tenth of the current for the same power. The loss goes as current squared, so it drops to a hundredth.",
+          "hi": "दस गुनी वोल्टता पर उतनी शक्ति के लिए धारा का दसवाँ भाग ही चाहिए। क्षय धारा के वर्ग के अनुसार है, इसलिए सौवाँ भाग रह जाता है।"
+        },
+        "steps": [
+          {
+            "en": "$P_c = \\frac{P^{2}R_c}{V^{2}}$",
+            "hi": "$P_c = \\frac{P^{2}R_c}{V^{2}}$"
+          },
+          {
+            "en": "$V \\to 10V$ gives $P_c \\to P_c/100$",
+            "hi": "$V \\to 10V$ से $P_c \\to P_c/100$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The loss depends on $1/V^{2}$, not $1/V$.",
+              "hi": "क्षय $1/V^{2}$ पर निर्भर है, $1/V$ पर नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This treats the loss as $V^{2}/R_c$ with $V$ the supply voltage; the relevant current falls.",
+              "hi": "यह क्षय को $V^{2}/R_c$ मानता है, जहाँ $V$ आपूर्ति वोल्टता है; संबंधित धारा घटती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Higher voltage reduces the loss.",
+              "hi": "उच्च वोल्टता क्षय घटाती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.energy-power.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.energy-power.core.electrical-power",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A current of 2 A flows through a 5 Ω resistor for 10 s. The heat produced, in joule, is",
+        "hi": "5 Ω प्रतिरोधक में 10 s तक 2 A धारा बहती है। उत्पन्न ऊष्मा, जूल में, है"
+      },
+      "answer": {
+        "value": 200,
+        "unit": "J"
+      },
+      "hints": [
+        {
+          "en": "$H = I^{2}Rt$.",
+          "hi": "$H = I^{2}Rt$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Power is current squared times resistance; heat is power times time.",
+          "hi": "शक्ति = धारा का वर्ग × प्रतिरोध; ऊष्मा = शक्ति × समय।"
+        },
+        "steps": [
+          {
+            "en": "$P = I^{2}R = 4 \\times 5 = 20$ W",
+            "hi": "$P = I^{2}R = 4 \\times 5 = 20$ W"
+          },
+          {
+            "en": "$H = Pt = 20 \\times 10 = 200$ J",
+            "hi": "$H = Pt = 20 \\times 10 = 200$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Forgetting to square the current gives 100.",
+              "hi": "धारा का वर्ग न लेने पर 100 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

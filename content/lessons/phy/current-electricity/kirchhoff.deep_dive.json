@@ -1,0 +1,249 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.kirchhoff:deep_dive",
+  "topic": "phy.current-electricity.kirchhoff",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Two rules for any circuit",
+        "hi": "किसी भी परिपथ के दो नियम"
+      },
+      "subtopic": "phy.current-electricity.kirchhoff.core",
+      "card_ids": [
+        "phy.current-electricity.kirchhoff:dd:01",
+        "phy.current-electricity.kirchhoff:dd:02",
+        "phy.current-electricity.kirchhoff:dd:03",
+        "phy.current-electricity.kirchhoff:dd:04",
+        "phy.current-electricity.kirchhoff:dd:05",
+        "phy.current-electricity.kirchhoff:dd:06",
+        "phy.current-electricity.kirchhoff:dd:07",
+        "phy.current-electricity.kirchhoff:dd:08"
+      ],
+      "estimated_minutes": 6
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Junction rule",
+        "hi": "संधि नियम"
+      },
+      "body": {
+        "en": "At any junction, the sum of the currents entering the junction is equal to the sum of currents leaving it. This holds because charges do not accumulate at a junction: in a steady state, what flows in must flow out, just as water at a pipe junction.",
+        "hi": "किसी भी संधि पर, संधि में प्रवेश करने वाली धाराओं का योग उससे निकलने वाली धाराओं के योग के बराबर होता है। ऐसा इसलिए है कि संधि पर आवेश संचित नहीं होता: स्थायी अवस्था में जितना अंदर आता है, उतना ही बाहर जाता है, जैसे पाइप की संधि पर पानी।"
+      },
+      "media": "img.current-electricity.pipe-junction",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.12"
+      }
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:02",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 1,
+      "question": "q.phy.current-electricity.kirchhoff.0001"
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Loop rule",
+        "hi": "पाश नियम"
+      },
+      "body": {
+        "en": "The algebraic sum of changes in potential around any closed loop involving resistors and cells in the loop is zero. This is evident because electric potential depends only on the location of the point: start anywhere, go round the loop and come back, and the total change must be zero.\n\nGoing through a resistor along the current, the potential falls by $IR$; going through a cell from its negative to its positive terminal, it rises by $\\varepsilon$.",
+        "hi": "किसी भी बंद पाश में, जिसमें प्रतिरोधक और सेल हों, विभव में परिवर्तनों का बीजगणितीय योग शून्य होता है। यह स्पष्ट है क्योंकि विद्युत विभव केवल बिंदु की स्थिति पर निर्भर करता है: कहीं से भी चलें, पाश में घूमकर उसी बिंदु पर लौटें, तो कुल परिवर्तन शून्य होगा।\n\nधारा की दिशा में प्रतिरोधक से गुज़रने पर विभव $IR$ घटता है; सेल के ऋण से धन टर्मिनल की ओर जाने पर $\\varepsilon$ बढ़ता है।"
+      },
+      "media": "img.current-electricity.meters-circuit",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.12"
+      }
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 6 V cell of negligible internal resistance sends current $I_1$ through $R_1 = 2$ Ω; the current then splits into $I_2$ through $R_2 = 3$ Ω and $I_3$ through $R_3 = 6$ Ω, which are in parallel, and returns to the cell. Find the three currents using Kirchhoff's rules.",
+        "hi": "नगण्य आंतरिक प्रतिरोध वाला 6 V का सेल धारा $I_1$ को $R_1 = 2$ Ω से भेजता है; फिर धारा बँटकर $I_2$ पार्श्वक्रम में जुड़े $R_2 = 3$ Ω से और $I_3$ $R_3 = 6$ Ω से होकर सेल में लौटती है। किरखोफ के नियमों से तीनों धाराएँ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Junction: $I_1 = I_2 + I_3$",
+          "hi": "संधि: $I_1 = I_2 + I_3$"
+        },
+        {
+          "en": "Loop through the cell, $R_1$ and $R_2$: $6 - 2I_1 - 3I_2 = 0$",
+          "hi": "सेल, $R_1$ और $R_2$ वाला पाश: $6 - 2I_1 - 3I_2 = 0$"
+        },
+        {
+          "en": "Loop through $R_2$ and $R_3$: $3I_2 - 6I_3 = 0$, so $I_2 = 2I_3$ and $I_1 = 3I_3$",
+          "hi": "$R_2$ और $R_3$ वाला पाश: $3I_2 - 6I_3 = 0$, इसलिए $I_2 = 2I_3$ और $I_1 = 3I_3$"
+        },
+        {
+          "en": "$6 - 6I_3 - 6I_3 = 0$ gives $I_3 = 0.5$ A, $I_2 = 1$ A, $I_1 = 1.5$ A",
+          "hi": "$6 - 6I_3 - 6I_3 = 0$ से $I_3 = 0.5$ A, $I_2 = 1$ A, $I_1 = 1.5$ A"
+        }
+      ],
+      "answer": {
+        "en": "$I_1 = 1.5$ A, $I_2 = 1$ A, $I_3 = 0.5$ A",
+        "hi": "$I_1 = 1.5$ A, $I_2 = 1$ A, $I_3 = 0.5$ A"
+      },
+      "answer_value": {
+        "value": 1.5,
+        "unit": "A",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "shortcut": {
+        "en": "Check: $R_2 \\| R_3 = 2$ Ω, total 4 Ω, $6/4 = 1.5$ A.",
+        "hi": "जाँच: $R_2 \\| R_3 = 2$ Ω, कुल 4 Ω, $6/4 = 1.5$ A।"
+      },
+      "common_trap": {
+        "en": "Mixing sign conventions between loops gives wrong signs; fix the current directions first and keep them.",
+        "hi": "पाशों में चिह्न-परिपाटी बदलने से गलत चिह्न आते हैं; पहले धाराओं की दिशाएँ तय करें और वही रखें।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 4,
+      "problem": {
+        "en": "Twelve resistors of 1 Ω each form the edges of a cube. A 10 V battery of negligible internal resistance is joined across two diagonally opposite corners. Find the equivalent resistance and the current from the battery.",
+        "hi": "1 Ω के बारह प्रतिरोधक एक घन के किनारे बनाते हैं। नगण्य आंतरिक प्रतिरोध वाली 10 V बैटरी दो विकर्णतः विपरीत कोनों के बीच जुड़ी है। तुल्य प्रतिरोध और बैटरी से धारा ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "By symmetry the current $3I$ leaving the first corner splits equally into the three edges, $I$ each; each of those splits into two edges, $I/2$ each; then pairs rejoin into $I$ in the last three edges.",
+          "hi": "सममिति से पहले कोने से निकलने वाली धारा $3I$ तीन किनारों में बराबर, $I$ प्रत्येक, बँटती है; हर एक फिर दो किनारों में $I/2$ प्रत्येक बँटती है; फिर जोड़े मिलकर अंतिम तीन किनारों में $I$ बनते हैं।"
+        },
+        {
+          "en": "Loop through one path of three edges: $-IR - \\frac{1}{2}IR - IR + \\varepsilon = 0$, so $\\varepsilon = \\frac{5}{2}IR$",
+          "hi": "तीन किनारों वाले एक पथ का पाश: $-IR - \\frac{1}{2}IR - IR + \\varepsilon = 0$, इसलिए $\\varepsilon = \\frac{5}{2}IR$"
+        },
+        {
+          "en": "$R_{eq} = \\frac{\\varepsilon}{3I} = \\frac{5}{6}R = \\frac{5}{6}$ Ω",
+          "hi": "$R_{eq} = \\frac{\\varepsilon}{3I} = \\frac{5}{6}R = \\frac{5}{6}$ Ω"
+        },
+        {
+          "en": "Current $= \\frac{10}{5/6} = 12$ A",
+          "hi": "धारा $= \\frac{10}{5/6} = 12$ A"
+        }
+      ],
+      "answer": {
+        "en": "$\\frac{5}{6}$ Ω; 12 A",
+        "hi": "$\\frac{5}{6}$ Ω; 12 A"
+      },
+      "answer_value": {
+        "value": 12,
+        "unit": "A",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.5"
+      }
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.kirchhoff.0002"
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.kirchhoff.0003"
+    },
+    {
+      "id": "phy.current-electricity.kirchhoff:dd:08",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.kirchhoff.core.kirchhoff-laws"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Junction rule: current in = current out, because charge does not pile up at a junction.",
+          "hi": "संधि नियम: आने वाली धारा = जाने वाली धारा, क्योंकि संधि पर आवेश संचित नहीं होता।"
+        },
+        {
+          "en": "Loop rule: potential changes round a closed loop add to zero, because potential depends only on the point.",
+          "hi": "पाश नियम: बंद पाश में विभव परिवर्तनों का योग शून्य, क्योंकि विभव केवल बिंदु पर निर्भर है।"
+        },
+        {
+          "en": "Fix current directions first; a negative answer just means the current flows the other way.",
+          "hi": "पहले धाराओं की दिशाएँ तय करें; ऋणात्मक उत्तर का अर्थ बस यह है कि धारा उलटी दिशा में है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

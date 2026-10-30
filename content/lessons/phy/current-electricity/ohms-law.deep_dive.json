@@ -1,0 +1,431 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.ohms-law:deep_dive",
+  "topic": "phy.current-electricity.ohms-law",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.ohms-law.core.ohms-law-def"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Ohm's law",
+        "hi": "ओम का नियम"
+      },
+      "subtopic": "phy.current-electricity.ohms-law.core",
+      "card_ids": [
+        "phy.current-electricity.ohms-law:dd:01",
+        "phy.current-electricity.ohms-law:dd:02",
+        "phy.current-electricity.ohms-law:dd:03",
+        "phy.current-electricity.ohms-law:dd:04",
+        "phy.current-electricity.ohms-law:dd:05",
+        "phy.current-electricity.ohms-law:dd:06",
+        "phy.current-electricity.ohms-law:dd:07"
+      ],
+      "estimated_minutes": 5
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Where Ohm's law fails",
+        "hi": "जहाँ ओम का नियम लागू नहीं होता"
+      },
+      "subtopic": "phy.current-electricity.ohms-law.core",
+      "card_ids": [
+        "phy.current-electricity.ohms-law:dd:08",
+        "phy.current-electricity.ohms-law:dd:09",
+        "phy.current-electricity.ohms-law:dd:10",
+        "phy.current-electricity.ohms-law:dd:11",
+        "phy.current-electricity.ohms-law:dd:12"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.ohms-law:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Twice the push",
+        "hi": "दोगुना धक्का"
+      },
+      "body": {
+        "en": "In the lab you connect a coil of wire to a battery, with a meter in the loop for the current and another across the coil for the voltage. Add a second cell and the voltage doubles. What happens to the current?",
+        "hi": "प्रयोगशाला में आप तार की एक कुंडली को बैटरी से जोड़ते हैं; धारा के लिए एक मीटर परिपथ में है और वोल्टता के लिए दूसरा कुंडली के सिरों पर। एक और सेल जोड़ने पर वोल्टता दोगुनी हो जाती है। धारा का क्या होगा?"
+      },
+      "media": "img.current-electricity.meters-circuit"
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Voltage is proportional to current",
+        "hi": "वोल्टता धारा के अनुक्रमानुपाती"
+      },
+      "body": {
+        "en": "G.S. Ohm discovered in 1828 that the potential difference $V$ across a conductor is proportional to the current $I$ through it: $V = RI$. The constant $R$ is the resistance of the conductor.\n\nThe SI unit of resistance is the ohm ($\\Omega$). $R$ depends on the material of the conductor and on its dimensions.",
+        "hi": "जी.एस. ओम ने 1828 में पाया कि किसी चालक के सिरों का विभवांतर $V$ उसमें प्रवाहित धारा $I$ के अनुक्रमानुपाती होता है: $V = RI$। नियतांक $R$ चालक का प्रतिरोध है।\n\nप्रतिरोध का SI मात्रक ओम ($\\Omega$) है। $R$ चालक के पदार्थ और उसकी विमाओं पर निर्भर करता है।"
+      },
+      "media": "img.current-electricity.meters-circuit",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4"
+      }
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Ohm's law",
+        "hi": "ओम का नियम"
+      },
+      "latex": "V = IR",
+      "symbols": [
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "potential difference",
+            "hi": "विभवांतर"
+          },
+          "unit": "V"
+        },
+        {
+          "symbol": "I",
+          "meaning": {
+            "en": "current",
+            "hi": "धारा"
+          },
+          "unit": "A"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "resistance",
+            "hi": "प्रतिरोध"
+          },
+          "unit": "Ω"
+        }
+      ],
+      "spoken": {
+        "en": "V equals I R",
+        "hi": "V बराबर I R"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4"
+      }
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:04",
+      "type": "sim",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "sim": "sim.current-electricity.ohms-law-circuit",
+      "title": {
+        "en": "Test Ohm's law",
+        "hi": "ओम के नियम की जाँच"
+      },
+      "params": {
+        "arrangement": "single",
+        "r1": 12,
+        "voltage": 6
+      },
+      "tasks": [
+        {
+          "id": "half-amp",
+          "prompt": {
+            "en": "With one 12 Ω resistor, set the battery to 6 V and read the current.",
+            "hi": "एक 12 Ω प्रतिरोधक के साथ बैटरी 6 V पर रखें और धारा पढ़ें।"
+          },
+          "measurement": "current",
+          "expected": {
+            "value": 0.5,
+            "unit": "A",
+            "tolerance": {
+              "abs": 0.01
+            }
+          }
+        },
+        {
+          "id": "one-amp",
+          "prompt": {
+            "en": "Now double the battery voltage to 12 V. Read the current again.",
+            "hi": "अब बैटरी को दोगुना, 12 V कीजिए। धारा फिर पढ़ें।"
+          },
+          "measurement": "current",
+          "expected": {
+            "value": 1,
+            "unit": "A",
+            "tolerance": {
+              "abs": 0.01
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "Doubling the voltage doubled the current, because the resistance stayed 12 Ω: $I = V/R$.",
+        "hi": "वोल्टता दोगुनी करने पर धारा दोगुनी हुई, क्योंकि प्रतिरोध 12 Ω ही रहा: $I = V/R$।"
+      },
+      "fallback": {
+        "body": {
+          "en": "A 12 Ω resistor on 6 V carries $I = 6/12 = 0.5$ A. On 12 V it carries $I = 12/12 = 1$ A: twice the voltage, twice the current.",
+          "hi": "6 V पर 12 Ω प्रतिरोधक में $I = 6/12 = 0.5$ A धारा होती है। 12 V पर $I = 12/12 = 1$ A: दोगुनी वोल्टता, दोगुनी धारा।"
+        },
+        "media": "img.current-electricity.meters-circuit"
+      }
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A coil connected to 6.0 V draws 0.30 A. Find its resistance, and the current it draws on 9.0 V at the same temperature.",
+        "hi": "6.0 V से जुड़ी एक कुंडली 0.30 A धारा लेती है। इसका प्रतिरोध और उसी ताप पर 9.0 V पर ली गई धारा ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$R = \\frac{V}{I} = \\frac{6.0}{0.30} = 20$ Ω",
+          "hi": "$R = \\frac{V}{I} = \\frac{6.0}{0.30} = 20$ Ω"
+        },
+        {
+          "en": "$I = \\frac{9.0}{20} = 0.45$ A",
+          "hi": "$I = \\frac{9.0}{20} = 0.45$ A"
+        }
+      ],
+      "answer": {
+        "en": "$R = 20$ Ω; 0.45 A on 9.0 V",
+        "hi": "$R = 20$ Ω; 9.0 V पर 0.45 A"
+      },
+      "answer_value": {
+        "value": 20,
+        "unit": "Ω",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "shortcut": {
+        "en": "At fixed $R$, current scales with voltage: $0.30 \\times 9/6 = 0.45$ A.",
+        "hi": "नियत $R$ पर धारा वोल्टता के अनुपात में बदलती है: $0.30 \\times 9/6 = 0.45$ A।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.ohms-law.0001"
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$V = IR$; resistance $R$ is measured in ohm ($\\Omega$).",
+          "hi": "$V = IR$; प्रतिरोध $R$ का मात्रक ओम ($\\Omega$) है।"
+        },
+        {
+          "en": "For an ohmic conductor the $V$-$I$ graph is a straight line through the origin.",
+          "hi": "ओमीय चालक का $V$-$I$ ग्राफ़ मूल बिंदु से जाती सरल रेखा होता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Three kinds of deviation",
+        "hi": "तीन तरह के विचलन"
+      },
+      "body": {
+        "en": "Ohm's law holds for many materials but is not a fundamental law of nature. It fails when:\n(a) $V$ stops being proportional to $I$;\n(b) the relation depends on the sign of $V$: reversing $V$ does not just reverse $I$ with the same size, as in a diode;\n(c) the relation is not unique: more than one $V$ for the same $I$, as in GaAs.\n\nSuch materials and devices are widely used in electronic circuits.",
+        "hi": "ओम का नियम बहुत से पदार्थों पर लागू होता है, पर यह प्रकृति का मूल नियम नहीं है। यह विफल होता है जब:\n(a) $V$, $I$ के अनुक्रमानुपाती नहीं रहता;\n(b) संबंध $V$ के चिह्न पर निर्भर करता है: $V$ उलटने पर $I$ उसी परिमाण के साथ केवल उलटता नहीं, जैसे डायोड में;\n(c) संबंध अद्वितीय नहीं है: $V$ के एक से अधिक मान एक ही $I$ के लिए, जैसे GaAs में।\n\nऐसे पदार्थ और युक्तियाँ इलेक्ट्रॉनिक परिपथों में खूब उपयोग होती हैं।"
+      },
+      "media": "img.current-electricity.meters-circuit",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.6"
+      }
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:09",
+      "type": "interactive",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort each item: does it obey Ohm's law?",
+        "hi": "हर एक को छाँटिए: क्या यह ओम के नियम का पालन करता है?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "a metal wire kept at constant temperature",
+              "hi": "नियत ताप पर रखा धातु का तार"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "a diode",
+              "hi": "डायोड"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "GaAs, with two voltages for one current",
+              "hi": "GaAs, जिसमें एक धारा के लिए दो वोल्टता"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "a manganin wire kept at constant temperature",
+              "hi": "नियत ताप पर रखा मैंगनिन का तार"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "ohmic",
+            "label": {
+              "en": "obeys Ohm's law",
+              "hi": "ओम के नियम का पालन"
+            }
+          },
+          {
+            "id": "non",
+            "label": {
+              "en": "does not obey",
+              "hi": "पालन नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "ohmic"
+          },
+          {
+            "item": "i2",
+            "bin": "non"
+          },
+          {
+            "item": "i3",
+            "bin": "non"
+          },
+          {
+            "item": "i4",
+            "bin": "ohmic"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. The diode depends on the sign of $V$; GaAs has a non-unique relation.",
+          "hi": "सही। डायोड $V$ के चिह्न पर निर्भर है; GaAs में संबंध अद्वितीय नहीं।"
+        },
+        "wrong": {
+          "en": "Check: does reversing $V$ just reverse $I$, and is there one $V$ for each $I$?",
+          "hi": "जाँचिए: क्या $V$ उलटने पर $I$ केवल उलटता है, और क्या एक ही $V$ हर $I$ के लिए है?"
+        }
+      }
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.ohms-law.0002"
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:11",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.ohms-law.0003"
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:dd:12",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Ohm's law fails if $V$ is not proportional to $I$, if the relation depends on the sign of $V$ (diode), or if it is not unique (GaAs).",
+          "hi": "ओम का नियम तब विफल है जब $V$, $I$ के अनुक्रमानुपाती न हो, संबंध $V$ के चिह्न पर निर्भर हो (डायोड), या अद्वितीय न हो (GaAs)।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

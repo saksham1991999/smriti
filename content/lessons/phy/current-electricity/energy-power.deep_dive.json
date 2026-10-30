@@ -1,0 +1,398 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.energy-power:deep_dive",
+  "topic": "phy.current-electricity.energy-power",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.energy-power.core.electrical-power"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Power in a resistor",
+        "hi": "प्रतिरोधक में शक्ति"
+      },
+      "subtopic": "phy.current-electricity.energy-power.core",
+      "card_ids": [
+        "phy.current-electricity.energy-power:dd:01",
+        "phy.current-electricity.energy-power:dd:02",
+        "phy.current-electricity.energy-power:dd:03",
+        "phy.current-electricity.energy-power:dd:04",
+        "phy.current-electricity.energy-power:dd:05",
+        "phy.current-electricity.energy-power:dd:06",
+        "phy.current-electricity.energy-power:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Units and transmission",
+        "hi": "मात्रक और संचरण"
+      },
+      "subtopic": "phy.current-electricity.energy-power.core",
+      "card_ids": [
+        "phy.current-electricity.energy-power:dd:08",
+        "phy.current-electricity.energy-power:dd:09",
+        "phy.current-electricity.energy-power:dd:10",
+        "phy.current-electricity.energy-power:dd:11",
+        "phy.current-electricity.energy-power:dd:12",
+        "phy.current-electricity.energy-power:dd:13"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.energy-power:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Hot element, cool cable",
+        "hi": "गरम तत्व, ठंडा तार"
+      },
+      "body": {
+        "en": "The toaster's element glows, yet the cable feeding it stays cool. Both carry the same current. Where does the energy go, and why mostly into the element?",
+        "hi": "टोस्टर का तत्व चमकता है, फिर भी उसे जोड़ने वाला तार ठंडा रहता है। दोनों में एक ही धारा है। ऊर्जा कहाँ जाती है, और ज़्यादातर तत्व में ही क्यों?"
+      },
+      "media": "img.current-electricity.toaster"
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Energy lost in collisions",
+        "hi": "टक्करों में खोई ऊर्जा"
+      },
+      "body": {
+        "en": "When a charge $\\Delta Q$ moves through a potential drop $V$, its potential energy falls by $\\Delta Q\\,V$. In a conductor the charges do not speed up for long: they lose the energy in collisions with the ions, and it heats the conductor.\n\nThe energy dissipated per unit time is the power, $P = IV$. In a resistor this heating is called ohmic loss.",
+        "hi": "जब आवेश $\\Delta Q$ विभव-पतन $V$ से गुज़रता है, उसकी स्थितिज ऊर्जा $\\Delta Q\\,V$ घटती है। चालक में आवेश लंबे समय तक तेज़ नहीं होते: वे आयनों से टक्कर में यह ऊर्जा खो देते हैं, और चालक गरम होता है।\n\nप्रति एकांक समय क्षयित ऊर्जा शक्ति है, $P = IV$। प्रतिरोधक में इस तापन को ओमी क्षय कहते हैं।"
+      },
+      "media": "img.current-electricity.toaster",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9"
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:03",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Three forms of power",
+        "hi": "शक्ति के तीन रूप"
+      },
+      "steps": [
+        {
+          "latex": "\\Delta W = (I\\Delta t)V",
+          "say": {
+            "en": "Charge $I\\Delta t$ falls through potential $V$.",
+            "hi": "आवेश $I\\Delta t$ विभव $V$ से गिरता है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "P = \\frac{\\Delta W}{\\Delta t} = IV",
+          "say": {
+            "en": "Divide by time.",
+            "hi": "समय से भाग दें।"
+          },
+          "why": null
+        },
+        {
+          "latex": "P = I^{2}R = \\frac{V^{2}}{R}",
+          "say": {
+            "en": "Use $V = IR$ to write it two more ways.",
+            "hi": "$V = IR$ से इसे दो और तरह लिखें।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9"
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Electrical power",
+        "hi": "विद्युत शक्ति"
+      },
+      "latex": "P = IV = I^{2}R = \\frac{V^{2}}{R}",
+      "symbols": [
+        {
+          "symbol": "P",
+          "meaning": {
+            "en": "power",
+            "hi": "शक्ति"
+          },
+          "unit": "W"
+        },
+        {
+          "symbol": "I",
+          "meaning": {
+            "en": "current",
+            "hi": "धारा"
+          },
+          "unit": "A"
+        },
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "potential difference",
+            "hi": "विभवांतर"
+          },
+          "unit": "V"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "resistance",
+            "hi": "प्रतिरोध"
+          },
+          "unit": "Ω"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9"
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A heater is rated 1000 W on 230 V. Find the current it draws and its resistance when working.",
+        "hi": "एक हीटर 230 V पर 1000 W का है। काम करते समय उसकी धारा और प्रतिरोध ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$I = \\frac{P}{V} = \\frac{1000}{230} = 4.35$ A",
+          "hi": "$I = \\frac{P}{V} = \\frac{1000}{230} = 4.35$ A"
+        },
+        {
+          "en": "$R = \\frac{V^{2}}{P} = \\frac{230^{2}}{1000} = 52.9$ Ω",
+          "hi": "$R = \\frac{V^{2}}{P} = \\frac{230^{2}}{1000} = 52.9$ Ω"
+        }
+      ],
+      "answer": {
+        "en": "4.35 A and 52.9 Ω",
+        "hi": "4.35 A और 52.9 Ω"
+      },
+      "answer_value": {
+        "value": 52.9,
+        "unit": "Ω",
+        "tolerance": {
+          "abs": 0.2
+        }
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.energy-power.0001"
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$P = IV = I^{2}R = V^{2}/R$; unit watt (W).",
+          "hi": "$P = IV = I^{2}R = V^{2}/R$; मात्रक वाट (W)।"
+        },
+        {
+          "en": "The energy is lost in collisions and heats the conductor (ohmic loss).",
+          "hi": "ऊर्जा टक्करों में खोती है और चालक को गरम करती है (ओमी क्षय)।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The kilowatt hour",
+        "hi": "किलोवाट घंटा"
+      },
+      "body": {
+        "en": "Energy is power times time. The commercial unit of electrical energy is the kilowatt hour (kW h), commonly called a 'unit'. 1 kW h is the energy used when 1 kW is used for 1 hour: 1 kW h $= 3.6 \\times 10^{6}$ J.",
+        "hi": "ऊर्जा = शक्ति × समय। विद्युत ऊर्जा का व्यापारिक मात्रक किलोवाट घंटा (kW h) है, जिसे आम तौर पर 'यूनिट' कहते हैं। 1 kW h वह ऊर्जा है जो 1 kW को 1 घंटे तक उपयोग करने पर खर्च होती है: 1 kW h $= 3.6 \\times 10^{6}$ J।"
+      },
+      "media": "img.current-electricity.toaster",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§11.8"
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:09",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A 1.5 kW geyser runs for 2 hours a day for 30 days. How many units does it use?",
+        "hi": "एक 1.5 kW का गीज़र 30 दिन तक रोज़ 2 घंटे चलता है। यह कितनी यूनिट खर्च करता है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Energy $= 1.5 \\times 2 \\times 30$ kW h",
+          "hi": "ऊर्जा $= 1.5 \\times 2 \\times 30$ kW h"
+        },
+        {
+          "en": "$= 90$ kW h, that is 90 units",
+          "hi": "$= 90$ kW h, यानी 90 यूनिट"
+        }
+      ],
+      "answer": {
+        "en": "90 units",
+        "hi": "90 यूनिट"
+      },
+      "answer_value": {
+        "value": 90,
+        "unit": "kWh",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Using watts instead of kilowatts gives 90000, which is in W h, not units.",
+        "hi": "किलोवाट की जगह वाट लेने पर 90000 आता है, जो W h में है, यूनिट में नहीं।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.energy-power.0002"
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Why power lines run at high voltage",
+        "hi": "बिजली की लाइनें उच्च वोल्टता पर क्यों"
+      },
+      "body": {
+        "en": "To deliver power $P$ at voltage $V$, the current is $I = P/V$. Cables of resistance $R_c$ then waste $P_c = I^{2}R_c = P^{2}R_c/V^{2}$.\n\nThe cables from power stations are very long, so $R_c$ is considerable. Sending the power at a very high $V$ cuts this loss. Using electricity at such voltages is not safe, so at the other end a transformer lowers the voltage to a value suitable for use.",
+        "hi": "शक्ति $P$ को वोल्टता $V$ पर पहुँचाने के लिए धारा $I = P/V$ होती है। तब प्रतिरोध $R_c$ वाली केबिलें $P_c = I^{2}R_c = P^{2}R_c/V^{2}$ व्यर्थ करती हैं।\n\nबिजलीघरों से आने वाली संचरण केबिलें बहुत लंबी होती हैं, इसलिए $R_c$ काफ़ी होता है। बहुत उच्च $V$ पर शक्ति भेजने से यह क्षय घटता है। इतनी वोल्टता पर बिजली का उपयोग सुरक्षित नहीं, इसलिए दूसरे सिरे पर ट्रांसफार्मर वोल्टता को उपयोग योग्य मान तक घटाता है।"
+      },
+      "media": "img.current-electricity.transmission",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9"
+      }
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.energy-power.0003"
+    },
+    {
+      "id": "phy.current-electricity.energy-power:dd:13",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.energy-power.core.electrical-power"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "1 kW h $= 3.6 \\times 10^{6}$ J, one 'unit'.",
+          "hi": "1 kW h $= 3.6 \\times 10^{6}$ J, एक 'यूनिट'।"
+        },
+        {
+          "en": "Line loss $P_c = P^{2}R_c/V^{2}$, so power is sent at high voltage and stepped down by a transformer.",
+          "hi": "लाइन क्षय $P_c = P^{2}R_c/V^{2}$, इसलिए शक्ति उच्च वोल्टता पर भेजी जाती है और ट्रांसफार्मर से घटाई जाती है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,458 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.temperature-dependence",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.temperature-dependence.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "As the temperature of a metal wire rises, its resistivity",
+        "hi": "धातु के तार का ताप बढ़ने पर उसकी प्रतिरोधकता"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "increases",
+            "hi": "बढ़ती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "decreases",
+            "hi": "घटती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "stays exactly the same",
+            "hi": "बिल्कुल वही रहती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "becomes zero",
+            "hi": "शून्य हो जाती है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What happens to the relaxation time when it gets hotter?",
+          "hi": "गरम होने पर विश्रांति काल का क्या होता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Hotter electrons collide more often, so they drift less easily. In a metal the number of free electrons stays about the same, so resistivity goes up.",
+          "hi": "गरम इलेक्ट्रॉन अधिक बार टकराते हैं, इसलिए कम आसानी से अपवाहित होते हैं। धातु में मुक्त इलेक्ट्रॉनों की संख्या लगभग वही रहती है, इसलिए प्रतिरोधकता बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "For metals, $\\alpha > 0$ in $\\rho_T = \\rho_0[1 + \\alpha(T - T_0)]$.",
+            "hi": "धातुओं के लिए $\\alpha > 0$ होता है, $\\rho_T = \\rho_0[1 + \\alpha(T - T_0)]$ में।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the behaviour of semiconductors.",
+              "hi": "यह अर्धचालकों का व्यवहार है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Only alloys like manganin come close to this, and even they change slightly.",
+              "hi": "केवल मैंगनिन जैसे मिश्रातु इसके निकट हैं, और वे भी थोड़ा बदलते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Heating does not make resistivity vanish.",
+              "hi": "गरम करने से प्रतिरोधकता शून्य नहीं होती।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.temperature-dependence.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A wire has resistance 10.0 Ω at 20 °C. Its temperature coefficient is $4.0 \\times 10^{-3}$ °C⁻¹. Its resistance at 70 °C is",
+        "hi": "किसी तार का प्रतिरोध 20 °C पर 10.0 Ω है। उसका ताप-गुणांक $4.0 \\times 10^{-3}$ °C⁻¹ है। 70 °C पर उसका प्रतिरोध है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "12.0 Ω",
+            "hi": "12.0 Ω"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "12.8 Ω",
+            "hi": "12.8 Ω"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10.2 Ω",
+            "hi": "10.2 Ω"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8.0 Ω",
+            "hi": "8.0 Ω"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "First find $T - T_0$.",
+          "hi": "पहले $T - T_0$ निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The wire warms by 50 degrees. Each degree adds 0.4 per cent of the starting resistance, so it rises by 20 per cent.",
+          "hi": "तार 50 डिग्री गरम होता है। हर डिग्री प्रारंभिक प्रतिरोध का 0.4 प्रतिशत जोड़ती है, इसलिए यह 20 प्रतिशत बढ़ता है।"
+        },
+        "steps": [
+          {
+            "en": "$R = R_0[1 + \\alpha(T - T_0)] = 10.0[1 + 4.0 \\times 10^{-3} \\times 50]$",
+            "hi": "$R = R_0[1 + \\alpha(T - T_0)] = 10.0[1 + 4.0 \\times 10^{-3} \\times 50]$"
+          },
+          {
+            "en": "$R = 10.0 \\times 1.2 = 12.0$ Ω",
+            "hi": "$R = 10.0 \\times 1.2 = 12.0$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This uses 70 °C instead of the rise of 50 °C.",
+              "hi": "यह 50 °C वृद्धि की जगह 70 °C लेता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This adds $\\alpha \\Delta T = 0.2$ directly to the resistance instead of multiplying.",
+              "hi": "यह $\\alpha \\Delta T = 0.2$ को गुणा करने की जगह सीधे प्रतिरोध में जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Resistance of a metal rises, not falls, on heating.",
+              "hi": "गरम करने पर धातु का प्रतिरोध बढ़ता है, घटता नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.temperature-dependence.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A heating element has resistance 50.0 Ω at 20.0 °C and 60.0 Ω at its working temperature. Taking $\\alpha = 2.0 \\times 10^{-4}$ °C⁻¹, the working temperature is",
+        "hi": "एक तापन तत्व का प्रतिरोध 20.0 °C पर 50.0 Ω और अपने कार्य-ताप पर 60.0 Ω है। $\\alpha = 2.0 \\times 10^{-4}$ °C⁻¹ लेकर कार्य-ताप है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1020 °C",
+            "hi": "1020 °C"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1000 °C",
+            "hi": "1000 °C"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "980 °C",
+            "hi": "980 °C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "120 °C",
+            "hi": "120 °C"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Work with the ratio $R_2/R_1$.",
+          "hi": "अनुपात $R_2/R_1$ से हल करें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The resistance went up by a fifth. With 0.02 per cent per degree, that takes a 1000-degree rise above the starting 20 degrees.",
+          "hi": "प्रतिरोध पाँचवाँ भाग बढ़ा। प्रति डिग्री 0.02 प्रतिशत की दर से इसके लिए प्रारंभिक 20 डिग्री से 1000 डिग्री की वृद्धि चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{R_2}{R_1} = 1 + \\alpha(T_2 - T_1) = \\frac{60.0}{50.0} = 1.2$",
+            "hi": "$\\frac{R_2}{R_1} = 1 + \\alpha(T_2 - T_1) = \\frac{60.0}{50.0} = 1.2$"
+          },
+          {
+            "en": "$T_2 - T_1 = \\frac{0.2}{2.0 \\times 10^{-4}} = 1000$ °C",
+            "hi": "$T_2 - T_1 = \\frac{0.2}{2.0 \\times 10^{-4}} = 1000$ °C"
+          },
+          {
+            "en": "$T_2 = 1000 + 20.0 = 1020$ °C",
+            "hi": "$T_2 = 1000 + 20.0 = 1020$ °C"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is the rise; add the starting 20.0 °C.",
+              "hi": "यह वृद्धि है; प्रारंभिक 20.0 °C जोड़िए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The starting temperature is added, not subtracted.",
+              "hi": "प्रारंभिक ताप जोड़ा जाता है, घटाया नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This uses $\\alpha = 2.0 \\times 10^{-3}$, ten times too big.",
+              "hi": "यह $\\alpha = 2.0 \\times 10^{-3}$ लेता है, दस गुना बड़ा।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.temperature-dependence.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.temperature-dependence.core.resistance-temperature",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Why does the resistivity of a semiconductor fall as its temperature rises?",
+        "hi": "ताप बढ़ने पर अर्धचालक की प्रतिरोधकता क्यों घटती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "its number of charge carriers per unit volume rises, more than making up for the shorter relaxation time",
+            "hi": "प्रति एकांक आयतन आवेश वाहकों की संख्या बढ़ती है, जो छोटे विश्रांति काल की भरपाई से अधिक है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "its relaxation time becomes longer",
+            "hi": "उसका विश्रांति काल लंबा हो जाता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "its electrons become heavier",
+            "hi": "उसके इलेक्ट्रॉन भारी हो जाते हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "its number of charge carriers per unit volume falls",
+            "hi": "प्रति एकांक आयतन आवेश वाहकों की संख्या घटती है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look at both $n$ and $\\tau$ in $\\rho = m/(ne^{2}\\tau)$.",
+          "hi": "$n$ और $\\tau$ दोनों देखिए, $\\rho = m/(ne^{2}\\tau)$ में।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Heating makes collisions more frequent, which on its own would raise resistivity. But in a semiconductor heating also frees many more carriers, and that wins.",
+          "hi": "गरम करने से टक्करें बढ़ती हैं, जो अकेले प्रतिरोधकता बढ़ाती। पर अर्धचालक में गरम करने से कहीं अधिक वाहक मुक्त होते हैं, और वही प्रभावी होता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\rho = m/(ne^{2}\\tau)$: $\\tau$ falls but $n$ rises more, so $\\rho$ falls.",
+            "hi": "$\\rho = m/(ne^{2}\\tau)$: $\\tau$ घटता है पर $n$ अधिक बढ़ता है, इसलिए $\\rho$ घटता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Relaxation time gets shorter on heating, not longer.",
+              "hi": "गरम करने पर विश्रांति काल छोटा होता है, लंबा नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The electron mass does not change.",
+              "hi": "इलेक्ट्रॉन का द्रव्यमान नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Carrier density rises in semiconductors when heated.",
+              "hi": "गरम करने पर अर्धचालकों में वाहक घनत्व बढ़ता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

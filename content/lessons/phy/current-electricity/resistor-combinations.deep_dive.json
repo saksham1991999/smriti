@@ -1,0 +1,612 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.resistor-combinations:deep_dive",
+  "topic": "phy.current-electricity.resistor-combinations",
+  "mode": "deep_dive",
+  "estimated_minutes": 13,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Resistors in series",
+        "hi": "श्रेणीक्रम में प्रतिरोधक"
+      },
+      "subtopic": "phy.current-electricity.resistor-combinations.core",
+      "card_ids": [
+        "phy.current-electricity.resistor-combinations:dd:01",
+        "phy.current-electricity.resistor-combinations:dd:02",
+        "phy.current-electricity.resistor-combinations:dd:03",
+        "phy.current-electricity.resistor-combinations:dd:04",
+        "phy.current-electricity.resistor-combinations:dd:05",
+        "phy.current-electricity.resistor-combinations:dd:06",
+        "phy.current-electricity.resistor-combinations:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Resistors in parallel",
+        "hi": "पार्श्वक्रम में प्रतिरोधक"
+      },
+      "subtopic": "phy.current-electricity.resistor-combinations.core",
+      "card_ids": [
+        "phy.current-electricity.resistor-combinations:dd:08",
+        "phy.current-electricity.resistor-combinations:dd:09",
+        "phy.current-electricity.resistor-combinations:dd:10",
+        "phy.current-electricity.resistor-combinations:dd:11",
+        "phy.current-electricity.resistor-combinations:dd:12",
+        "phy.current-electricity.resistor-combinations:dd:13",
+        "phy.current-electricity.resistor-combinations:dd:14",
+        "phy.current-electricity.resistor-combinations:dd:15",
+        "phy.current-electricity.resistor-combinations:dd:16",
+        "phy.current-electricity.resistor-combinations:dd:17"
+      ],
+      "estimated_minutes": 9
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "One dead bulb",
+        "hi": "एक खराब बल्ब"
+      },
+      "body": {
+        "en": "Festival fairy lights: one string has gone completely dark. The electrician has to test bulb after bulb to find the one that has fused. Why does one dead bulb put out the whole string?",
+        "hi": "त्योहार की झालर: एक लड़ी पूरी तरह बुझ गई है। फ्यूज़ हुए बल्ब को खोजने के लिए बिजली मिस्त्री को एक-एक बल्ब जाँचना पड़ता है। एक खराब बल्ब पूरी लड़ी क्यों बुझा देता है?"
+      },
+      "media": "img.current-electricity.fairy-lights",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§11.6"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Series: one path, the same current",
+        "hi": "श्रेणीक्रम: एक रास्ता, एक ही धारा"
+      },
+      "body": {
+        "en": "Resistors joined end to end are in series. There is only one path, so the same current flows through each. The potential difference across the combination is the sum of the potential differences across the individual resistors: $V = V_1 + V_2 + V_3$.\n\nThat single path is also the weakness: when one component fails the circuit is broken and none of the components works.",
+        "hi": "सिरे से सिरा जुड़े प्रतिरोधक श्रेणीक्रम में होते हैं। रास्ता एक ही है, इसलिए हर एक से एक ही धारा बहती है। संयोजन के सिरों का विभवांतर अलग-अलग प्रतिरोधकों के विभवांतरों का योग होता है: $V = V_1 + V_2 + V_3$।\n\nयही एक रास्ता इसकी कमज़ोरी भी है: एक घटक खराब होने पर परिपथ टूट जाता है और कोई भी घटक काम नहीं करता।"
+      },
+      "media": "img.current-electricity.series-parallel",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§11.6.1 and §11.6.2"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:03",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Equivalent resistance in series",
+        "hi": "श्रेणीक्रम में तुल्य प्रतिरोध"
+      },
+      "steps": [
+        {
+          "latex": "V = V_1 + V_2 + V_3",
+          "say": {
+            "en": "The voltages add along the single path.",
+            "hi": "एक रास्ते पर वोल्टताएँ जुड़ती हैं।"
+          },
+          "why": null
+        },
+        {
+          "latex": "IR_s = IR_1 + IR_2 + IR_3",
+          "say": {
+            "en": "Use Ohm's law for each, with the same current $I$.",
+            "hi": "हर एक पर एक ही धारा $I$ के साथ ओम का नियम लगाएँ।"
+          },
+          "why": null
+        },
+        {
+          "latex": "R_s = R_1 + R_2 + R_3",
+          "say": {
+            "en": "Cancel $I$.",
+            "hi": "$I$ काट दें।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Eq. 11.14"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Series combination",
+        "hi": "श्रेणी संयोजन"
+      },
+      "latex": "R_s = R_1 + R_2 + R_3",
+      "symbols": [
+        {
+          "symbol": "R_s",
+          "meaning": {
+            "en": "equivalent resistance",
+            "hi": "तुल्य प्रतिरोध"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_1, R_2, R_3",
+          "meaning": {
+            "en": "individual resistances",
+            "hi": "अलग-अलग प्रतिरोध"
+          },
+          "unit": "Ω"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Eq. 11.14"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A lamp of resistance 20 Ω and a conductor of 4 Ω are connected in series to a 6 V battery. Find the current and the potential difference across each.",
+        "hi": "20 Ω प्रतिरोध का लैंप और 4 Ω का चालक श्रेणीक्रम में 6 V की बैटरी से जुड़े हैं। धारा और हर एक के सिरों का विभवांतर ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$R_s = 20 + 4 = 24$ Ω",
+          "hi": "$R_s = 20 + 4 = 24$ Ω"
+        },
+        {
+          "en": "$I = \\frac{6}{24} = 0.25$ A",
+          "hi": "$I = \\frac{6}{24} = 0.25$ A"
+        },
+        {
+          "en": "$V_1 = 0.25 \\times 20 = 5$ V and $V_2 = 0.25 \\times 4 = 1$ V; together 6 V.",
+          "hi": "$V_1 = 0.25 \\times 20 = 5$ V और $V_2 = 0.25 \\times 4 = 1$ V; मिलकर 6 V।"
+        }
+      ],
+      "answer": {
+        "en": "0.25 A; 5 V and 1 V",
+        "hi": "0.25 A; 5 V और 1 V"
+      },
+      "answer_value": {
+        "value": 0.25,
+        "unit": "A",
+        "tolerance": {
+          "abs": 0.005
+        }
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Example 11.7"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "question": "q.phy.current-electricity.resistor-combinations.0001"
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Series: same current; voltages add; $R_s = R_1 + R_2 + R_3$.",
+          "hi": "श्रेणीक्रम: एक ही धारा; वोल्टताएँ जुड़ती हैं; $R_s = R_1 + R_2 + R_3$।"
+        },
+        {
+          "en": "If one component fails, the whole series circuit stops.",
+          "hi": "एक घटक खराब होने पर पूरा श्रेणी परिपथ रुक जाता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Parallel: many paths, the same voltage",
+        "hi": "पार्श्वक्रम: कई रास्ते, एक ही वोल्टता"
+      },
+      "body": {
+        "en": "Resistors joined between the same two points are in parallel. Each has the same potential difference across it, and the total current is the sum of the branch currents: $I = I_1 + I_2 + I_3$.\n\nA parallel circuit divides the current among the gadgets, and the total resistance is decreased. This helps when each gadget needs a different current.",
+        "hi": "एक ही दो बिंदुओं के बीच जुड़े प्रतिरोधक पार्श्वक्रम में होते हैं। हर एक के सिरों पर एक ही विभवांतर होता है, और कुल धारा शाखाओं की धाराओं का योग होती है: $I = I_1 + I_2 + I_3$।\n\nपार्श्व परिपथ धारा को उपकरणों में बाँटता है और कुल प्रतिरोध घटता है। यह तब उपयोगी है जब हर उपकरण को अलग धारा चाहिए।"
+      },
+      "media": "img.current-electricity.series-parallel",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§11.6.2"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:09",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Equivalent resistance in parallel",
+        "hi": "पार्श्वक्रम में तुल्य प्रतिरोध"
+      },
+      "steps": [
+        {
+          "latex": "I = I_1 + I_2 + I_3",
+          "say": {
+            "en": "Branch currents add.",
+            "hi": "शाखा धाराएँ जुड़ती हैं।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\frac{V}{R_p} = \\frac{V}{R_1} + \\frac{V}{R_2} + \\frac{V}{R_3}",
+          "say": {
+            "en": "Each branch has the same $V$.",
+            "hi": "हर शाखा पर एक ही $V$ है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}",
+          "say": {
+            "en": "Cancel $V$.",
+            "hi": "$V$ काट दें।"
+          },
+          "why": {
+            "en": "Each term is positive, so $1/R_p$ exceeds every $1/R_i$: $R_p$ is smaller than the smallest resistor.",
+            "hi": "हर पद धनात्मक है, इसलिए $1/R_p$ हर $1/R_i$ से बड़ा है: $R_p$ सबसे छोटे प्रतिरोधक से भी छोटा है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Eq. 11.18"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:10",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Parallel combination",
+        "hi": "पार्श्व संयोजन"
+      },
+      "latex": "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\frac{1}{R_3}",
+      "symbols": [
+        {
+          "symbol": "R_p",
+          "meaning": {
+            "en": "equivalent resistance",
+            "hi": "तुल्य प्रतिरोध"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_1, R_2, R_3",
+          "meaning": {
+            "en": "individual resistances",
+            "hi": "अलग-अलग प्रतिरोध"
+          },
+          "unit": "Ω"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Eq. 11.18"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:11",
+      "type": "sim",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "sim": "sim.current-electricity.ohms-law-circuit",
+      "title": {
+        "en": "Series or parallel?",
+        "hi": "श्रेणी या पार्श्व?"
+      },
+      "params": {
+        "r1": 12,
+        "r2": 12,
+        "voltage": 6
+      },
+      "tasks": [
+        {
+          "id": "parallel",
+          "prompt": {
+            "en": "Join the two 12 Ω resistors in parallel on 6 V. Read the current.",
+            "hi": "दोनों 12 Ω प्रतिरोधकों को 6 V पर पार्श्वक्रम में जोड़ें। धारा पढ़ें।"
+          },
+          "measurement": "current",
+          "expected": {
+            "value": 1,
+            "unit": "A",
+            "tolerance": {
+              "abs": 0.01
+            }
+          }
+        },
+        {
+          "id": "series",
+          "prompt": {
+            "en": "Now join them in series on the same 6 V. Read the current.",
+            "hi": "अब उन्हें उसी 6 V पर श्रेणीक्रम में जोड़ें। धारा पढ़ें।"
+          },
+          "measurement": "current",
+          "expected": {
+            "value": 0.25,
+            "unit": "A",
+            "tolerance": {
+              "abs": 0.01
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "In parallel the two 12 Ω make 6 Ω, so 1 A flows; in series they make 24 Ω, so only 0.25 A.",
+        "hi": "पार्श्वक्रम में दो 12 Ω मिलकर 6 Ω बनाते हैं, इसलिए 1 A बहती है; श्रेणीक्रम में वे 24 Ω बनाते हैं, इसलिए केवल 0.25 A।"
+      },
+      "fallback": {
+        "body": {
+          "en": "Two 12 Ω resistors: in parallel $R_p = 6$ Ω and $I = 6/6 = 1$ A; in series $R_s = 24$ Ω and $I = 6/24 = 0.25$ A.",
+          "hi": "दो 12 Ω प्रतिरोधक: पार्श्वक्रम में $R_p = 6$ Ω और $I = 6/6 = 1$ A; श्रेणीक्रम में $R_s = 24$ Ω और $I = 6/24 = 0.25$ A।"
+        },
+        "media": "img.current-electricity.series-parallel"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:12",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Resistors of 5 Ω, 10 Ω and 30 Ω are connected in parallel to a 12 V battery. Find the current in each, the total current and the total resistance.",
+        "hi": "5 Ω, 10 Ω और 30 Ω के प्रतिरोधक पार्श्वक्रम में 12 V की बैटरी से जुड़े हैं। हर एक में धारा, कुल धारा और कुल प्रतिरोध ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$I_1 = \\frac{12}{5} = 2.4$ A, $I_2 = \\frac{12}{10} = 1.2$ A, $I_3 = \\frac{12}{30} = 0.4$ A",
+          "hi": "$I_1 = \\frac{12}{5} = 2.4$ A, $I_2 = \\frac{12}{10} = 1.2$ A, $I_3 = \\frac{12}{30} = 0.4$ A"
+        },
+        {
+          "en": "$I = 2.4 + 1.2 + 0.4 = 4$ A",
+          "hi": "$I = 2.4 + 1.2 + 0.4 = 4$ A"
+        },
+        {
+          "en": "$\\frac{1}{R_p} = \\frac{1}{5} + \\frac{1}{10} + \\frac{1}{30} = \\frac{1}{3}$, so $R_p = 3$ Ω",
+          "hi": "$\\frac{1}{R_p} = \\frac{1}{5} + \\frac{1}{10} + \\frac{1}{30} = \\frac{1}{3}$, इसलिए $R_p = 3$ Ω"
+        }
+      ],
+      "answer": {
+        "en": "2.4 A, 1.2 A, 0.4 A; 4 A in total; 3 Ω",
+        "hi": "2.4 A, 1.2 A, 0.4 A; कुल 4 A; 3 Ω"
+      },
+      "answer_value": {
+        "value": 3,
+        "unit": "Ω",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "shortcut": {
+        "en": "Check: $V/R_p = 12/3 = 4$ A matches the total.",
+        "hi": "जाँच: $V/R_p = 12/3 = 4$ A कुल धारा से मेल खाती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Example 11.8"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:13",
+      "type": "experiment",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Series and parallel with torch bulbs",
+        "hi": "टॉर्च बल्बों से श्रेणी और पार्श्व"
+      },
+      "materials": [
+        {
+          "en": "two 1.5 V dry cells in a holder",
+          "hi": "होल्डर में दो 1.5 V शुष्क सेल"
+        },
+        {
+          "en": "two small torch bulbs in holders",
+          "hi": "होल्डर में दो छोटे टॉर्च बल्ब"
+        },
+        {
+          "en": "insulated connecting wires with clips",
+          "hi": "क्लिप वाले विद्युतरोधी संयोजी तार"
+        }
+      ],
+      "steps": [
+        {
+          "en": "Join the two bulbs one after the other to the cells, in one loop. Both glow.",
+          "hi": "दोनों बल्ब एक के बाद एक, एक ही पाश में सेलों से जोड़ें। दोनों जलते हैं।"
+        },
+        {
+          "en": "Unscrew one bulb. Note what happens to the other.",
+          "hi": "एक बल्ब खोल दें। देखें कि दूसरे का क्या होता है।"
+        },
+        {
+          "en": "Now join each bulb on its own branch across the same cells. Both glow, more brightly.",
+          "hi": "अब हर बल्ब को अलग शाखा में उन्हीं सेलों के सिरों पर जोड़ें। दोनों अधिक चमक से जलते हैं।"
+        },
+        {
+          "en": "Unscrew one bulb again and watch the other.",
+          "hi": "फिर एक बल्ब खोलें और दूसरे को देखें।"
+        }
+      ],
+      "safety": [
+        {
+          "en": "Use only dry cells. Never use mains electricity.",
+          "hi": "केवल शुष्क सेल उपयोग करें। मेन्स बिजली कभी नहीं।"
+        },
+        {
+          "en": "Do not join a wire straight across the cell terminals; the wire and cell get hot.",
+          "hi": "सेल के टर्मिनलों के बीच सीधा तार न जोड़ें; तार और सेल गरम हो जाते हैं।"
+        },
+        {
+          "en": "Bulbs get warm: handle them by the holder.",
+          "hi": "बल्ब गरम होते हैं: होल्डर से पकड़ें।"
+        }
+      ],
+      "adult_supervision": true,
+      "why_it_works": {
+        "en": "In series there is one path, so removing a bulb breaks the circuit and both go out. In parallel each bulb has its own path across the cells, so the other keeps glowing.",
+        "hi": "श्रेणीक्रम में एक ही रास्ता है, इसलिए बल्ब हटाने पर परिपथ टूटता है और दोनों बुझ जाते हैं। पार्श्वक्रम में हर बल्ब का सेलों के सिरों पर अपना रास्ता है, इसलिए दूसरा जलता रहता है।"
+      },
+      "media": "img.current-electricity.series-parallel"
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:14",
+      "type": "memory_hook",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 1,
+      "mnemonic": {
+        "en": "m.phy.current-electricity.resistor-combinations.core.resistors-series-parallel.1",
+        "hi": "m.phy.current-electricity.resistor-combinations.core.resistors-series-parallel.2"
+      }
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:15",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.resistor-combinations.0002"
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:16",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.resistor-combinations.0003"
+    },
+    {
+      "id": "phy.current-electricity.resistor-combinations:dd:17",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.resistor-combinations.core.resistors-series-parallel"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Parallel: same voltage; currents add; $1/R_p = 1/R_1 + 1/R_2 + 1/R_3$.",
+          "hi": "पार्श्वक्रम: एक ही वोल्टता; धाराएँ जुड़ती हैं; $1/R_p = 1/R_1 + 1/R_2 + 1/R_3$।"
+        },
+        {
+          "en": "$R_p$ is smaller than the smallest resistor in the group.",
+          "hi": "$R_p$ समूह के सबसे छोटे प्रतिरोधक से भी छोटा है।"
+        },
+        {
+          "en": "Reduce a mixed network step by step: combine parallel groups, then add series parts.",
+          "hi": "मिश्रित जाल को चरण दर चरण घटाएँ: पहले पार्श्व समूह मिलाएँ, फिर श्रेणी भाग जोड़ें।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,409 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+      "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.wheatstone:deep_dive",
+  "topic": "phy.current-electricity.wheatstone",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "The balanced bridge",
+        "hi": "संतुलित सेतु"
+      },
+      "subtopic": "phy.current-electricity.wheatstone.core",
+      "card_ids": [
+        "phy.current-electricity.wheatstone:dd:01",
+        "phy.current-electricity.wheatstone:dd:02",
+        "phy.current-electricity.wheatstone:dd:03",
+        "phy.current-electricity.wheatstone:dd:04",
+        "phy.current-electricity.wheatstone:dd:05",
+        "phy.current-electricity.wheatstone:dd:06",
+        "phy.current-electricity.wheatstone:dd:07"
+      ],
+      "estimated_minutes": 5
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "The metre bridge",
+        "hi": "मीटर सेतु"
+      },
+      "subtopic": "phy.current-electricity.wheatstone.core",
+      "card_ids": [
+        "phy.current-electricity.wheatstone:dd:08",
+        "phy.current-electricity.wheatstone:dd:09",
+        "phy.current-electricity.wheatstone:dd:10",
+        "phy.current-electricity.wheatstone:dd:11",
+        "phy.current-electricity.wheatstone:dd:12"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.wheatstone:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Four arms and a galvanometer",
+        "hi": "चार भुजाएँ और एक गैल्वेनोमीटर"
+      },
+      "body": {
+        "en": "A Wheatstone bridge has four resistors, $R_1$, $R_2$, $R_3$ and $R_4$, joined in a loop A, B, C, D. A cell is joined across one pair of opposite corners, A and C (the battery arm), and a galvanometer across the other pair, B and D (the galvanometer arm). $R_1$ and $R_2$ meet at A, $R_3$ and $R_4$ at C.\n\nThe bridge is balanced when no current flows through the galvanometer: its needle shows a null (zero) deflection.",
+        "hi": "व्हीटस्टोन सेतु में चार प्रतिरोधक $R_1$, $R_2$, $R_3$ और $R_4$ एक पाश A, B, C, D में जुड़े होते हैं। सम्मुख कोनों के एक जोड़े A और C के बीच सेल (बैटरी भुजा) और दूसरे जोड़े B और D के बीच गैल्वेनोमीटर (गैल्वेनोमीटर भुजा) जुड़ा होता है। $R_1$ और $R_2$ A पर मिलते हैं, $R_3$ और $R_4$ C पर।\n\nजब गैल्वेनोमीटर से कोई धारा नहीं बहती, तो सेतु संतुलित होता है: उसकी सुई शून्य विक्षेप दिखाती है।"
+      },
+      "media": "img.current-electricity.galvanometer-null",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.13"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:02",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Balance condition from Kirchhoff's rules",
+        "hi": "किरखोफ के नियमों से संतुलन की शर्त"
+      },
+      "steps": [
+        {
+          "latex": "I_g = 0 \\Rightarrow I_1 = I_3, \\; I_2 = I_4",
+          "say": {
+            "en": "Junction rule at D and B with no galvanometer current.",
+            "hi": "D और B पर संधि नियम, गैल्वेनोमीटर धारा शून्य।"
+          },
+          "why": null
+        },
+        {
+          "latex": "-I_1R_1 + 0 + I_2R_2 = 0",
+          "say": {
+            "en": "Loop rule round ADBA.",
+            "hi": "पाश ADBA में पाश नियम।"
+          },
+          "why": null
+        },
+        {
+          "latex": "I_2R_4 + 0 - I_1R_3 = 0",
+          "say": {
+            "en": "Loop rule round CBDC.",
+            "hi": "पाश CBDC में पाश नियम।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\frac{I_1}{I_2} = \\frac{R_2}{R_1} = \\frac{R_4}{R_3}",
+          "say": {
+            "en": "Both loops give the same current ratio.",
+            "hi": "दोनों पाश एक ही धारा अनुपात देते हैं।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.13, Eqs. 3.62-3.64"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Balance condition",
+        "hi": "संतुलन की शर्त"
+      },
+      "latex": "\\frac{R_2}{R_1} = \\frac{R_4}{R_3}",
+      "symbols": [
+        {
+          "symbol": "R_1, R_2",
+          "meaning": {
+            "en": "arms meeting at A",
+            "hi": "A पर मिलने वाली भुजाएँ"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_3, R_4",
+          "meaning": {
+            "en": "arms meeting at C",
+            "hi": "C पर मिलने वाली भुजाएँ"
+          },
+          "unit": "Ω"
+        }
+      ],
+      "conditions": {
+        "en": "With $R_4$ unknown and $R_3$ varied until null deflection: $R_4 = R_3 \\frac{R_2}{R_1}$.",
+        "hi": "अज्ञात $R_4$ के साथ, शून्य विक्षेप तक $R_3$ बदलकर: $R_4 = R_3 \\frac{R_2}{R_1}$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 3.64"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "In a balanced Wheatstone bridge, $R_1 = 10$ Ω, $R_2 = 20$ Ω and $R_3 = 15$ Ω. Find $R_4$.",
+        "hi": "एक संतुलित व्हीटस्टोन सेतु में $R_1 = 10$ Ω, $R_2 = 20$ Ω और $R_3 = 15$ Ω है। $R_4$ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$R_4 = R_3\\frac{R_2}{R_1} = 15 \\times \\frac{20}{10} = 30$ Ω",
+          "hi": "$R_4 = R_3\\frac{R_2}{R_1} = 15 \\times \\frac{20}{10} = 30$ Ω"
+        }
+      ],
+      "answer": {
+        "en": "30 Ω",
+        "hi": "30 Ω"
+      },
+      "answer_value": {
+        "value": 30,
+        "unit": "Ω",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Pairing the wrong arms. Check which two meet at A and which two at C.",
+        "hi": "गलत भुजाओं को जोड़ना। देखिए कौन-सी दो A पर और कौन-सी दो C पर मिलती हैं।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:05",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.wheatstone.0001"
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.wheatstone.0002"
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Balanced bridge: no galvanometer current, null deflection.",
+          "hi": "संतुलित सेतु: गैल्वेनोमीटर में धारा नहीं, शून्य विक्षेप।"
+        },
+        {
+          "en": "$R_2/R_1 = R_4/R_3$, derived from Kirchhoff's rules.",
+          "hi": "$R_2/R_1 = R_4/R_3$, किरखोफ के नियमों से।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A bridge made of a wire",
+        "hi": "तार से बना सेतु"
+      },
+      "body": {
+        "en": "A practical device using the Wheatstone principle is the metre bridge. A uniform wire 1 m long is stretched along a metre scale; thick copper strips leave two gaps, E and F. The unknown resistance $S$ goes in gap E and a resistance box $R$ in gap F. A galvanometer joins the middle terminal to a jockey slid along the wire until it shows no deflection: the null point D.\n\nThe two parts of the wire act as the other two arms. Since a uniform wire's resistance is proportional to its length, with $l$ the length from the end next to $S$: $S = R\\,\\frac{l}{100 - l}$ (lengths in cm).",
+        "hi": "व्हीटस्टोन सिद्धांत पर आधारित एक व्यावहारिक युक्ति मीटर सेतु है। 1 m लंबा एकसमान तार मीटर पैमाने के साथ तना होता है; ताँबे की मोटी पट्टियाँ दो खाली स्थान, E और F, छोड़ती हैं। अज्ञात प्रतिरोध $S$ खाली स्थान E में और प्रतिरोध बॉक्स $R$ खाली स्थान F में जाता है। गैल्वेनोमीटर बीच के टर्मिनल को जॉकी से जोड़ता है, जिसे तार पर तब तक सरकाते हैं जब तक विक्षेप शून्य न हो: यही शून्य बिंदु D है।\n\nतार के दो भाग अन्य दो भुजाओं का काम करते हैं। एकसमान तार का प्रतिरोध उसकी लंबाई के अनुक्रमानुपाती होता है, इसलिए यदि लंबाई $l$ को $S$ वाले सिरे से मापें तो: $S = R\\,\\frac{l}{100 - l}$ (लंबाइयाँ cm में)।"
+      },
+      "media": "img.current-electricity.galvanometer-null",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+        "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Experiment 2, Eq. E 2.3"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:09",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Metre bridge",
+        "hi": "मीटर सेतु"
+      },
+      "latex": "S = R\\,\\frac{l}{100 - l}",
+      "symbols": [
+        {
+          "symbol": "S",
+          "meaning": {
+            "en": "unknown resistance, in gap E",
+            "hi": "अज्ञात प्रतिरोध, खाली स्थान E में"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "known resistance, in gap F",
+            "hi": "ज्ञात प्रतिरोध, खाली स्थान F में"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "l",
+          "meaning": {
+            "en": "balancing length from the end next to $S$",
+            "hi": "$S$ वाले सिरे से संतुलन लंबाई"
+          },
+          "unit": "cm"
+        }
+      ],
+      "conditions": {
+        "en": "Keep the null point between 30 cm and 70 cm; interchanging $S$ and $R$ and repeating takes care of the end resistances.",
+        "hi": "शून्य बिंदु 30 cm और 70 cm के बीच रखें; $S$ और $R$ की जगह बदलकर दोहराने से सिरों के प्रतिरोध का प्रभाव हट जाता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+        "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Experiment 2, Eq. E 2.3 and precautions"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:10",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "In a metre bridge, $R = 10$ Ω is in gap F and the unknown $S$ in gap E. The null point is at 40.0 cm from the end next to $S$. Find $S$.",
+        "hi": "मीटर सेतु में खाली स्थान F में $R = 10$ Ω और खाली स्थान E में अज्ञात $S$ है। शून्य बिंदु $S$ वाले सिरे से 40.0 cm पर है। $S$ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$S = R\\frac{l}{100 - l} = 10 \\times \\frac{40.0}{60.0}$",
+          "hi": "$S = R\\frac{l}{100 - l} = 10 \\times \\frac{40.0}{60.0}$"
+        },
+        {
+          "en": "$S = 6.67$ Ω",
+          "hi": "$S = 6.67$ Ω"
+        }
+      ],
+      "answer": {
+        "en": "6.67 Ω",
+        "hi": "6.67 Ω"
+      },
+      "answer_value": {
+        "value": 6.67,
+        "unit": "Ω",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Measuring $l$ from the wrong end turns the ratio upside down.",
+        "hi": "$l$ को गलत सिरे से मापने पर अनुपात उलट जाता है।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:11",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.wheatstone.0003"
+    },
+    {
+      "id": "phy.current-electricity.wheatstone:dd:12",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.wheatstone.core.wheatstone-bridge"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Metre bridge: $S = R\\,l/(100 - l)$, with $l$ in cm from the end next to $S$.",
+          "hi": "मीटर सेतु: $S = R\\,l/(100 - l)$, जहाँ $l$, $S$ वाले सिरे से cm में।"
+        },
+        {
+          "en": "Keep the null point near the middle (30 cm to 70 cm) and interchange $S$ and $R$ to cancel end resistances.",
+          "hi": "शून्य बिंदु बीच में (30 cm से 70 cm) रखें और सिरों के प्रतिरोध हटाने के लिए $S$ और $R$ की जगह बदलें।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+        "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "Experiment 2"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

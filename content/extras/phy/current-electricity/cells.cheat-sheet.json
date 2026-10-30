@@ -1,0 +1,100 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Cheat sheet for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "cs.phy.current-electricity.cells",
+  "scope": "topic",
+  "topic": "phy.current-electricity.cells",
+  "title": {
+    "en": "Cells, emf and internal resistance",
+    "hi": "सेल, वि.वा.ब. और आंतरिक प्रतिरोध"
+  },
+  "concepts": [
+    "phy.current-electricity.cells.core.emf-internal-resistance"
+  ],
+  "key_ideas": [
+    {
+      "en": "Emf is the open-circuit potential difference of a cell.",
+      "hi": "वि.वा.ब. सेल का खुले परिपथ का विभवांतर है।"
+    },
+    {
+      "en": "Terminal voltage falls by $Ir$ when current flows.",
+      "hi": "धारा बहने पर टर्मिनल विभवांतर $Ir$ घटता है।"
+    },
+    {
+      "en": "Dry cells have much higher internal resistance than common electrolytic cells.",
+      "hi": "शुष्क सेलों का आंतरिक प्रतिरोध सामान्य विद्युत अपघटनी सेलों से बहुत अधिक है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Terminal voltage",
+        "hi": "टर्मिनल विभवांतर"
+      },
+      "latex": "V = \\varepsilon - Ir"
+    },
+    {
+      "name": {
+        "en": "Current",
+        "hi": "धारा"
+      },
+      "latex": "I = \\frac{\\varepsilon}{R + r}"
+    },
+    {
+      "name": {
+        "en": "Series cells",
+        "hi": "श्रेणी सेल"
+      },
+      "latex": "\\varepsilon_{eq} = \\varepsilon_1 + \\varepsilon_2, \\; r_{eq} = r_1 + r_2"
+    },
+    {
+      "name": {
+        "en": "Parallel cells",
+        "hi": "पार्श्व सेल"
+      },
+      "latex": "\\frac{\\varepsilon_{eq}}{r_{eq}} = \\sum \\frac{\\varepsilon_i}{r_i}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "A voltmeter across a cell in use reads its emf.",
+        "hi": "उपयोग में चल रहे सेल पर वोल्टमीटर उसका वि.वा.ब. पढ़ता है।"
+      },
+      "correct": {
+        "en": "It reads $\\varepsilon - Ir$; only with no current is it $\\varepsilon$.",
+        "hi": "यह $\\varepsilon - Ir$ पढ़ता है; केवल धारा न होने पर $\\varepsilon$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Cells in parallel add their emfs.",
+        "hi": "पार्श्वक्रम में सेलों के वि.वा.ब. जुड़ते हैं।"
+      },
+      "correct": {
+        "en": "Only series cells add emfs; parallel cells give a weighted value.",
+        "hi": "केवल श्रेणी सेलों के वि.वा.ब. जुड़ते हैं; पार्श्व सेल भारित मान देते हैं।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

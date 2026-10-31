@@ -228,7 +228,17 @@ const palaceRoute = createRoute({
 const palaceItemsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/items", component: lazyRouteComponent(palaces, "AddPalaceItems") });
 const palaceWalkRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/walk", component: lazyRouteComponent(palaceWalk, "Walk") });
 const palaceQuizRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/quiz", component: lazyRouteComponent(palaceWalk, "Quiz") });
-const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute] as const;
+const insightsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/memory/insights",
+  component: lazyRouteComponent(withNamespaces(["memory_labs", "practice"], () => import("./screens/phase2/insights/Insights")), "Insights"),
+});
+const mixedRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/practice/mixed",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/phase2/insights/Mixed")), "Mixed"),
+});
+const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute] as const;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

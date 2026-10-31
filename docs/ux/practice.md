@@ -264,6 +264,17 @@ Placeholders:
 | Similar scope | Similar questions ({n}) | मिलते-जुलते सवाल ({n}) |
 | Cap reached | Today's free questions are done. Reviews are still open. | आज के फ़्री सवाल पूरे हुए। रिव्यू अब भी खुले हैं। |
 | Why link | Why? | क्यों? |
+| Mixed title | Mixed drill | मिला-जुला ड्रिल |
+| Mixed caption | Questions take turns between the parts you've learned. | आपके सीखे हुए हिस्सों से सवाल बारी-बारी से आते हैं। |
+| Mixed set up | Set up a mixed drill | मिला-जुला ड्रिल बनाएँ |
+| Mix by | Mix across | किनमें मिलाएँ |
+| Mix chapter | Chapters | अध्याय |
+| Mix subject | Subjects | विषय |
+| Mix topic | Topics | टॉपिक |
+| Mixed online | A mixed drill needs internet to start. | मिला-जुला ड्रिल शुरू करने के लिए इंटरनेट चाहिए। |
+| Mixed variety | Learn a little more first: this mix needs at least {needed} parts you've learned. Try another mix. | पहले थोड़ा और सीखें: मिलाने के लिए कम से कम {needed} सीखे हुए हिस्से चाहिए। दूसरा मिश्रण आज़माएँ। |
+| Mixed off | Mixed practice isn't open yet. | मिला-जुला अभ्यास अभी शुरू नहीं हुआ है। |
+| Mixed failed | The drill didn't start. Try again. | ड्रिल शुरू नहीं हुई। फिर कोशिश करें। |
 
 **Illustration slots:** None. The sheet is a form; the hub tile already shows the drill illustration.
 **States:**

@@ -280,5 +280,157 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
       const locale = new URL(request.url).searchParams.get("locale") === "hi" ? "hi" : "en";
       return HttpResponse.json({ text: locale === "hi" ? "फ़िक्स्चर डिक्टेशन का वाक्य।" : "Fixture dictation sentence.", confidence: 0.9, quota: quota() });
     }),
+
+    // ── G-8 insights and the mixed drill ───────────────────────────────────
+    http.get(url("/v1/insights/weak-areas"), async ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const topics = insightsMode() === "demo" ? (await fixtureTopics()).slice(0, 2) : learnedTopics(u);
+      return HttpResponse.json({
+        target_retention: 0.9,
+        horizon_days: 3,
+        topics: topics.map((topic_id, i) => ({ topic_id, cards: 6 - i * 2, min_retrievability: 0.84 + i * 0.03 })),
+      } satisfies Schemas["WeakAreasOut"]);
+    }),
+    http.get(url("/v1/insights/sleep-review"), async ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (!isPro(u, now())) return HttpResponse.json({ eligible: false, reason: "pro_required" } satisfies Schemas["SleepReviewOut"]);
+      if (insightsMode() !== "demo") return HttpResponse.json({ eligible: false, reason: "not_confident", confidence: 0.3 } satisfies Schemas["SleepReviewOut"]);
+      const bed = new Date(now());
+      bed.setHours(22, 30, 0, 0);
+      const ids = (await fixtureTopics()).slice(0, 1);
+      return HttpResponse.json({
+        eligible: true,
+        bedtime: "22:30",
+        notify_at: new Date(bed.getTime() - 20 * 60_000).toISOString(),
+        confidence: 0.8,
+        source: "estimate",
+        cards: Array.from({ length: 5 }, (_, i) => ({ card_ref: `c:${ids[0] ?? "fx"}.card-${i + 1}`, difficulty: 7 - i * 0.5, due_at: new Date(now()).toISOString() })),
+      } satisfies Schemas["SleepReviewOut"]);
+    }),
+    http.get(url("/v1/insights/calibration"), ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const needed = 30;
+      const rows: Record<"sure" | "fifty" | "guess", [number, number]> =
+        insightsMode() === "demo"
+          ? { sure: [40, 31], fifty: [20, 11], guess: [12, 4] }
+          : u.events.reduce<Record<"sure" | "fifty" | "guess", [number, number]>>(
+              (acc, e) => {
+                if (e.type !== "answer_submitted") return acc;
+                const p = e.payload as { confidence: string | null; correct: boolean; attempt: number };
+                if (!p.confidence || p.attempt !== 1) return acc;
+                const k = p.confidence === "fifty_fifty" ? "fifty" : (p.confidence as "sure" | "guess");
+                const [n, ok] = acc[k];
+                acc[k] = [n + 1, ok + (p.correct ? 1 : 0)];
+                return acc;
+              },
+              { sure: [0, 0], fifty: [0, 0], guess: [0, 0] },
+            );
+      const levels = (["sure", "fifty", "guess"] as const).map((confidence) => {
+        const [answers, correct] = rows[confidence];
+        return { confidence, answers, correct, accuracy: answers ? Math.round((correct / answers) * 1000) / 1000 : null };
+      });
+      const tagged = levels.reduce((a, l) => a + l.answers, 0);
+      if (tagged < needed) return HttpResponse.json({ shown: false, reason: "below_threshold", tagged, needed } satisfies Schemas["CalibrationOut"]);
+      const [sure, , guess] = levels;
+      return HttpResponse.json({
+        shown: true,
+        tagged,
+        needed,
+        levels,
+        overconfident: sure && sure.answers ? Math.round(((sure.answers - sure.correct) / sure.answers) * 1000) / 1000 : null,
+        underconfident: guess && guess.answers ? Math.round((guess.correct / guess.answers) * 1000) / 1000 : null,
+        by_subject: [],
+      } satisfies Schemas["CalibrationOut"]);
+    }),
+    http.post(url("/v1/practice/interleaved"), async ({ request }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      const body = (await request.json()) as Schemas["InterleavedIn"];
+      const learned = insightsMode() === "demo" ? await fixtureTopics() : learnedTopics(u);
+      const groupOf = (topicId: string): string => (body.group_by === "topic" ? topicId : body.group_by === "subject" ? (topicId.split(".")[0] ?? topicId) : topicId.split(".").slice(0, 2).join("."));
+      const groups = new Map<string, Schemas["SessionQuestion"][]>();
+      for (const topicId of learned) {
+        for (const q of await practiceQuestions(topicId)) {
+          const g = groupOf(topicId);
+          groups.set(g, [...(groups.get(g) ?? []), q]);
+        }
+      }
+      if (groups.size < 2) return problem(409, "not_enough_variety", { groups: groups.size, needed: 2, group_by: body.group_by });
+      const lists = [...groups.values()];
+      const questions: Schemas["SessionQuestion"][] = [];
+      for (let i = 0; questions.length < body.count && lists.some((l) => l.length > i); i++) {
+        for (const l of lists) {
+          const q = l[i];
+          if (q && questions.length < body.count) questions.push(q);
+        }
+      }
+      const started = new Date(now()).toISOString();
+      return HttpResponse.json({
+        id: body.session_id ?? crypto.randomUUID(),
+        kind: "drill",
+        source: "mixed",
+        exam: body.exam ?? null,
+        requested: body.count,
+        size: questions.length,
+        questions,
+        answered: 0,
+        correct: 0,
+        started_at: started,
+        ended_at: null,
+        capped_by_free_limit: false,
+        quota: quota(),
+      } satisfies Schemas["PracticeSession"]);
+    }),
   ];
+
+  /** Topics the student finished a lesson in (the fake's stand-in for "learned"). */
+  function learnedTopics(u: FakeUser): string[] {
+    return [...new Set(u.events.filter((e) => e.type === "lesson_completed").map((e) => (e.payload as { topic_id: string }).topic_id))];
+  }
+  async function fixtureTopics(): Promise<string[]> {
+    try {
+      const m = (await ctx.loadContent(`manifests/${FIXTURE_PROFILE}.en.json`)) as { topics: Record<string, unknown> };
+      return Object.keys(m.topics).sort();
+    } catch {
+      return [];
+    }
+  }
+  async function practiceQuestions(topicId: string): Promise<Schemas["SessionQuestion"][]> {
+    try {
+      const m = (await ctx.loadContent(`manifests/${FIXTURE_PROFILE}.en.json`)) as { topics: Record<string, { bundles: Record<string, { path: string; id: string }> }> };
+      const entry = m.topics[topicId]?.bundles.practice;
+      if (!entry) return [];
+      const b = (await ctx.loadContent(entry.path)) as { questions: Record<string, { type: string; concepts?: string[]; difficulty?: string; ideal_time_s?: number }> };
+      return Object.entries(b.questions)
+        .filter(([, q]) => q.type !== "paragraph")
+        .map(([id, q]) => ({
+          question_id: id,
+          topic_id: topicId,
+          chapter_id: topicId.split(".").slice(0, 2).join("."),
+          concepts: q.concepts ?? [],
+          type: q.type,
+          difficulty: q.difficulty ?? null,
+          ideal_time_s: q.ideal_time_s ?? null,
+          bundle_ref: entry.id,
+        }));
+    } catch {
+      return [];
+    }
+  }
+}
+
+/**
+ * Dev and e2e switch for the insight screens: `localStorage["smriti.fake-api.insights"] = "demo"`
+ * answers with made-up numbers over the fixture topics; otherwise the fake derives what it can
+ * from the events the device sent (usually: not enough data yet).
+ */
+function insightsMode(): "events" | "demo" {
+  try {
+    return globalThis.localStorage?.getItem("smriti.fake-api.insights") === "demo" ? "demo" : "events";
+  } catch {
+    return "events";
+  }
 }

@@ -1048,6 +1048,40 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 | practise | Practise sure-but-wrong topics | पक्का-पर-गलत वाले टॉपिक का अभ्यास करें |
 | empty | Tap Sure, 50:50 or Guess when you answer. Your map appears after {k} answers. | उत्तर देते समय पक्का, 50:50 या अंदाज़ा चुनें। {k} उत्तर के बाद आपका नक्शा दिखेगा। |
 | pet_empty | I'll learn how sure you are as you go. | जैसे-जैसे आप आगे बढ़ेंगे, आपके भरोसे का नक्शा बनता जाएगा। |
+| level_sure | Sure | पक्का |
+| level_fifty | 50:50 | 50:50 |
+| level_guess | Guess | अंदाज़ा |
+| offline | You're offline. These numbers may be out of date. | आप ऑफ़लाइन हैं। ये आँकड़े पुराने हो सकते हैं। |
+| empty_alt | Your pet thinking | आपका पालतू सोच रहा है |
+| not_ready | Tap Sure, 50:50 or Guess when you answer. Your map appears once there are enough answers. | उत्तर देते समय पक्का, 50:50 या अंदाज़ा चुनें। काफ़ी उत्तर होने पर आपका नक्शा दिखेगा। |
+| chart_title | How often you're right | आप कितनी बार सही हैं |
+| tagged_line | From {n, plural, one {# answer} other {# answers}} you tagged | आपके टैग किए {n} उत्तरों से |
+| show_table | Show as table | टेबल में दिखाएँ |
+| show_chart | Show as chart | चार्ट में दिखाएँ |
+| no_answers | No answers yet | अभी कोई उत्तर नहीं |
+| bar_a11y | {level}: {pct} percent right from {count} answers, target {target} | {level}: {count} उत्तरों में {pct} प्रतिशत सही, लक्ष्य {target} |
+| col_level | Confidence | भरोसा |
+| col_right | Right | सही |
+| col_answers | Answers | उत्तर |
+| fading_title | Fading soon | जल्द धुंधले होने वाले |
+| fading_note | These topics drop below {target}% recall in the next {days} days. | अगले {days} दिनों में इन टॉपिक की याद {target}% से नीचे जा सकती है। |
+| fading_none | Nothing is fading in the next {days} days. | अगले {days} दिनों में कुछ भी धुंधला नहीं हो रहा। |
+| fading_row | {n, plural, one {# card} other {# cards}} · lowest recall {pct}% | {n} कार्ड · सबसे कम याद {pct}% |
+| unknown_topic | A topic not in this app | ऐसा टॉपिक जो इस ऐप में नहीं है |
+| practise_topic | Practise | अभ्यास करें |
+| review_now | Review now | अभी दोहराएँ |
+| load_failed | This didn't load. Try again later. | यह लोड नहीं हुआ। बाद में फिर कोशिश करें। |
+| sleep_title | Tonight's sleep review | आज रात का सोने से पहले रिव्यू |
+| sleep_ready | {n, plural, one {# hard card} other {# hard cards}} for about {time}. | लगभग {time} के लिए {n} कठिन कार्ड। |
+| sleep_ready_now | {n, plural, one {# hard card} other {# hard cards}} are ready for tonight. | आज रात के लिए {n} कठिन कार्ड तैयार हैं। |
+| sleep_web_note | The reminder comes on your phone. You can also review now. | रिमाइंडर आपके फ़ोन पर आएगा। आप अभी भी दोहरा सकते हैं। |
+| sleep_pro_required | Sleep review is part of Pro. | सोने से पहले रिव्यू Pro में मिलता है। |
+| sleep_off | Sleep review is off. Turn it on in Review settings on your phone. | सोने से पहले रिव्यू बंद है। इसे फ़ोन पर रिव्यू सेटिंग में चालू करें। |
+| sleep_pick_a_time | Pick a bedtime review time in Review settings on your phone. | फ़ोन पर रिव्यू सेटिंग में सोने से पहले रिव्यू का समय चुनें। |
+| sleep_not_confident | A few more evenings of study and we'll know your usual bedtime. | कुछ और शामों की पढ़ाई के बाद हमें आपके सोने का समय पता चल जाएगा। |
+| sleep_no_due_cards | No cards are due tonight. | आज रात कोई कार्ड बाकी नहीं है। |
+| sleep_unavailable | Sleep review isn't available right now. | अभी सोने से पहले रिव्यू उपलब्ध नहीं है। |
+| sleep_pro | See Pro | Pro देखें |
 
 **Illustration slots:** empty state: `empty-state`, 4:3, the pet looking into a friendly hand mirror; alt "Your pet looking in a mirror". No illustrations inside the chart (charts are data UI).
 **States:**

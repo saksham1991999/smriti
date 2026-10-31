@@ -186,6 +186,12 @@ export interface StreakSection {
   freezes_available: number;
   rest_day: string | null;
   at_risk: boolean;
+  /** (v1.4) ENT-08 freeze variant: missed days since the last studied day a freeze covered. */
+  freeze_used_days?: string[];
+  /** (v1.4) ENT-08 incident variant: missed days our outage covered (R28). */
+  incident_days_covered?: string[];
+  /** (v1.4) "Next free freeze on {date}": first day of next month, local; null without a grant. */
+  next_free_freeze_on?: string | null;
 }
 
 export interface PlantSection {

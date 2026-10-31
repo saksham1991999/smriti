@@ -387,6 +387,13 @@ class StreakState(BaseModel):
     freezes_available: int
     rest_day: date | None
     at_risk: bool
+    # (v1.4) ENT-08's freeze and incident variants: the missed days since the last studied day
+    # that a freeze covered, and those our outage covered (R28). Empty when nothing was missed.
+    freeze_used_days: list[date] = Field(default_factory=list)
+    incident_days_covered: list[date] = Field(default_factory=list)
+    # When this month's grant arrives (R36): the first day of next month, local time; null when
+    # the plan gets no monthly freeze.
+    next_free_freeze_on: date | None = None
 
 
 class PlantState(BaseModel):

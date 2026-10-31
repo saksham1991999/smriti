@@ -135,8 +135,8 @@ def test_every_mutation_declares_idempotency_key_or_says_why_not() -> None:
     found = _mutations()
     missing = sorted(op for op, has in found.items() if not has and op not in EXEMPT)
     assert not missing, f"take an IdempotencyKey or add a reason to EXEMPT: {missing}"
-    # Exemptions for routes that are gone, or that now take a key, are dropped.
-    stale = sorted(op for op in EXEMPT if op in found and found[op])
+    # An exemption for a route that now takes a key is dropped.
+    stale = sorted(op for op in EXEMPT if found.get(op))
     assert not stale, f"these take a key now; remove them from EXEMPT: {stale}"
 
 

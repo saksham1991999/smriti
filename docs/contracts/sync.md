@@ -86,7 +86,7 @@ The server recomputes XP, mastery, FSRS schedules, activity days, the streak, pl
 {
   "state_version": 43,
   "profile": { "id": "uuid", "display_name": null, "locale": "en", "is_guest": true, "age_band": "13_17", "exam_profile_ids": ["jee_main"], "daily_goal_minutes": 10 },
-  "streak": { "current": 3, "longest": 5, "today_qualified": true, "freezes_equipped": 1, "freezes_available": 1, "rest_day": null, "at_risk": false },
+  "streak": { "current": 3, "longest": 5, "today_qualified": true, "freezes_equipped": 1, "freezes_available": 1, "rest_day": null, "at_risk": false, "freeze_used_days": ["2026-10-30"], "incident_days_covered": [], "next_free_freeze_on": "2026-11-01" },
   "plant": { "stage": "sprout", "health": "thriving", "study_days": 3, "next_stage_at": 7 },
   "pet": { "species": "cat", "name": "Miso", "mood": 80, "energy": 70, "state": "happy" },
   "wallet": { "xp_total": 120, "xp_today": 40, "gems": 35 },
@@ -100,6 +100,8 @@ Server values win on conflict. The client replaces its local copy of each sectio
 
 (v1.4) `entitlement.managed_in` says who can manage the plan, so Manage plan goes to the right place: `web` (Razorpay, in the app), `play`, `app_store`, `parent` (PAY-17: the subscription's payer is a guardian and only they manage it; the child's own cancel answers 403 `managed_by_parent`), `family` (a seat on someone else's family plan) or `none` (free, or a promo grant). Clients that talk to an older server without the field infer it: `parent` when the subscription details say `payer: guardian`, otherwise from `source`.
 
+(v1.4) `streak.freeze_used_days` and `streak.incident_days_covered` are the missed local days between the last studied day (before today) and today that a freeze or an outage (R28) covered, at most 60 days back, oldest first. They are facts, not a prompt: ENT-08 shows its freeze or incident variant from them at most once a day, and they stay until the next studied day after today closes the gap. `streak.next_free_freeze_on` is when this month's R36 grant arrives (the first day of next month in the student's zone), or null when the plan gets no monthly freeze.
+
 ## Dev auth
 
 Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/anonymous` and `POST /v1/dev/auth/google` (body `{ "email": "...", "name": "..." }`) only when `APP_ENV=local` or `test`. They return `{ "access_token": "...", "token_type": "bearer", "expires_in": 3600, "refresh_token": "...", "user": { "id": "uuid", "is_anonymous": true } }`, like Supabase's token endpoint. `POST /v1/dev/auth/refresh` (body `{ "refresh_token": "..." }`) returns the same shape. The access token is a JWT signed with the dev key and shaped exactly like a Supabase access token (`sub`, `role: authenticated`, `is_anonymous`, `aud`, `exp`, `amr`). Clients use them through the same auth interface they use for Supabase, so switching to real Supabase is config only.
@@ -108,4 +110,5 @@ Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/
 
 - v1.4 (31 Oct 2026): `entitlement.managed_in` on `GET /v1/sync/state` (`web`, `play`, `app_store`, `parent`, `family`, `none`). Additive; clients fall back to inferring it.
 - v1.4 (31 Oct 2026): `activity_completed` for little-learner story, song and play completions. See the rules below the wire rules. Golden vector: `packages/app-core/test-vectors/activity_completed.json`, checked by app-core and `apps/api/tests/test_activity_completed.py`.
+- v1.4 (31 Oct 2026): `streak.freeze_used_days`, `streak.incident_days_covered` and `streak.next_free_freeze_on` for ENT-08. Additive.
 - v1.3 (30 Oct 2026): mock answers update mastery; practice and mock section events count once.

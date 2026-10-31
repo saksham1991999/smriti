@@ -14650,7 +14650,21 @@
             "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
             "title": "Rest Day"
           },
-          "at_risk": { "type": "boolean", "title": "At Risk" }
+          "at_risk": { "type": "boolean", "title": "At Risk" },
+          "freeze_used_days": {
+            "items": { "type": "string", "format": "date" },
+            "type": "array",
+            "title": "Freeze Used Days"
+          },
+          "incident_days_covered": {
+            "items": { "type": "string", "format": "date" },
+            "type": "array",
+            "title": "Incident Days Covered"
+          },
+          "next_free_freeze_on": {
+            "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+            "title": "Next Free Freeze On"
+          }
         },
         "type": "object",
         "required": [

@@ -8651,12 +8651,18 @@ export interface components {
       at_risk: boolean;
       /** Current */
       current: number;
+      /** Freeze Used Days */
+      freeze_used_days?: string[];
       /** Freezes Available */
       freezes_available: number;
       /** Freezes Equipped */
       freezes_equipped: number;
+      /** Incident Days Covered */
+      incident_days_covered?: string[];
       /** Longest */
       longest: number;
+      /** Next Free Freeze On */
+      next_free_freeze_on?: string | null;
       /** Rest Day */
       rest_day: string | null;
       /** Today Qualified */

@@ -26,6 +26,8 @@ dependencies = [
   "opentelemetry-instrumentation-redis==0.66b1",
   "opentelemetry-instrumentation-httpx==0.66b1",
   "sentry-sdk==2.72.0",
+  "gunicorn==26.2.0",
+  "uvicorn-worker==0.4.0",
 ]
 
 [dependency-groups]
@@ -60,7 +62,7 @@ plugins = ["pydantic.mypy"]
 packages = ["smriti_api", "tests"]
 
 [[tool.mypy.overrides]]
-module = ["arq.*", "fsrs.*"]
+module = ["arq.*", "fsrs.*", "gunicorn.*", "uvicorn_worker.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

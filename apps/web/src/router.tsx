@@ -483,7 +483,7 @@ const parentReportRoute = createRoute({
 });
 const parentLimitsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent/$learnerId/limits", component: lazyRouteComponent(parent, "TimeLimits") });
 const parentConsentsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent/$learnerId/consents", component: lazyRouteComponent(parent, "Consents") });
-const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute, liveRoute, liveBoardRoute, parentReportRoute, parentLimitsRoute, parentConsentsRoute] as const;
+const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute, liveRoute, liveBoardRoute, parentRoute, parentReportRoute, parentLimitsRoute, parentConsentsRoute] as const;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

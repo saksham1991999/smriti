@@ -53,6 +53,18 @@ export const CATALOGUE = {
     areas: ['auth'],
     props: {},
   },
+  activity_completed: {
+    stream: 'learning',
+    essential: false,
+    areas: ['learn'],
+    props: {
+      kind: { type: 'enum', values: ['story', 'song', 'play'] },
+      activity_id: { type: 'id' },
+      topic_id: { type: 'id' },
+      stars: { type: 'number' },
+      duration_s: { type: 'number' },
+    },
+  },
   age_resolved: {
     stream: 'product',
     essential: true,

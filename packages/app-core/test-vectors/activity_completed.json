@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "config": {
+    "xp_little_activity_star": 1
+  },
+  "time_zone": "Asia/Kolkata",
+  "cases": [
+    {
+      "name": "a story: one star",
+      "completion": {
+        "topicId": "fx.chapter-a.topic-a",
+        "concepts": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "locale": "en",
+        "msTotal": 180000,
+        "kind": "story",
+        "activityId": "sb.fx.topic-a",
+        "bundleVersion": "v1",
+        "stars": 1,
+        "completedAt": "2026-10-30T04:30:00.000Z"
+      },
+      "payload": {
+        "kind": "story",
+        "activity_id": "sb.fx.topic-a",
+        "topic_id": "fx.chapter-a.topic-a",
+        "concept_ids": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "bundle_version": "v1",
+        "locale": "en",
+        "stars": 1,
+        "ms_total": 180000,
+        "completed_at": "2026-10-30T04:30:00.000Z"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "xp": 1,
+        "dedupe_key": "sb.fx.topic-a|v1|2026-10-30"
+      }
+    },
+    {
+      "name": "play: a star per round",
+      "completion": {
+        "topicId": "fx.chapter-a.topic-a",
+        "concepts": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "locale": "en",
+        "msTotal": 180000,
+        "kind": "play",
+        "activityId": "play.fx.topic-a",
+        "bundleVersion": "v1",
+        "stars": 3,
+        "completedAt": "2026-10-30T05:00:00.000Z"
+      },
+      "payload": {
+        "kind": "play",
+        "activity_id": "play.fx.topic-a",
+        "topic_id": "fx.chapter-a.topic-a",
+        "concept_ids": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "bundle_version": "v1",
+        "locale": "en",
+        "stars": 3,
+        "ms_total": 180000,
+        "completed_at": "2026-10-30T05:00:00.000Z"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "xp": 3,
+        "dedupe_key": "play.fx.topic-a|v1|2026-10-30"
+      }
+    },
+    {
+      "name": "the same story again that day",
+      "completion": {
+        "topicId": "fx.chapter-a.topic-a",
+        "concepts": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "locale": "en",
+        "msTotal": 180000,
+        "kind": "story",
+        "activityId": "sb.fx.topic-a",
+        "bundleVersion": "v1",
+        "stars": 1,
+        "completedAt": "2026-10-30T12:30:00.000Z"
+      },
+      "payload": {
+        "kind": "story",
+        "activity_id": "sb.fx.topic-a",
+        "topic_id": "fx.chapter-a.topic-a",
+        "concept_ids": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "bundle_version": "v1",
+        "locale": "en",
+        "stars": 1,
+        "ms_total": 180000,
+        "completed_at": "2026-10-30T12:30:00.000Z"
+      },
+      "expected": {
+        "accepted": false,
+        "code": "already_recorded",
+        "xp": 0,
+        "dedupe_key": "sb.fx.topic-a|v1|2026-10-30"
+      }
+    },
+    {
+      "name": "the same story in a new bundle",
+      "completion": {
+        "topicId": "fx.chapter-a.topic-a",
+        "concepts": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "locale": "en",
+        "msTotal": 180000,
+        "kind": "story",
+        "activityId": "sb.fx.topic-a",
+        "bundleVersion": "v2",
+        "stars": 1,
+        "completedAt": "2026-10-30T13:00:00.000Z"
+      },
+      "payload": {
+        "kind": "story",
+        "activity_id": "sb.fx.topic-a",
+        "topic_id": "fx.chapter-a.topic-a",
+        "concept_ids": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "bundle_version": "v2",
+        "locale": "en",
+        "stars": 1,
+        "ms_total": 180000,
+        "completed_at": "2026-10-30T13:00:00.000Z"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "xp": 1,
+        "dedupe_key": "sb.fx.topic-a|v2|2026-10-30"
+      }
+    },
+    {
+      "name": "a song in Hindi",
+      "completion": {
+        "topicId": "fx.chapter-a.topic-a",
+        "concepts": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "locale": "hi",
+        "msTotal": 180000,
+        "kind": "song",
+        "activityId": "song.fx.topic-a",
+        "bundleVersion": "v1",
+        "stars": 1,
+        "completedAt": "2026-10-30T13:30:00.000Z"
+      },
+      "payload": {
+        "kind": "song",
+        "activity_id": "song.fx.topic-a",
+        "topic_id": "fx.chapter-a.topic-a",
+        "concept_ids": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "bundle_version": "v1",
+        "locale": "hi",
+        "stars": 1,
+        "ms_total": 180000,
+        "completed_at": "2026-10-30T13:30:00.000Z"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "xp": 1,
+        "dedupe_key": "song.fx.topic-a|v1|2026-10-30"
+      }
+    },
+    {
+      "name": "the first story the next local day (still the 30th in UTC)",
+      "completion": {
+        "topicId": "fx.chapter-a.topic-a",
+        "concepts": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "locale": "en",
+        "msTotal": 180000,
+        "kind": "story",
+        "activityId": "sb.fx.topic-a",
+        "bundleVersion": "v1",
+        "stars": 1,
+        "completedAt": "2026-10-30T19:00:00.000Z"
+      },
+      "payload": {
+        "kind": "story",
+        "activity_id": "sb.fx.topic-a",
+        "topic_id": "fx.chapter-a.topic-a",
+        "concept_ids": [
+          "fx.chapter-a.topic-a.sub-1.concept-1"
+        ],
+        "bundle_version": "v1",
+        "locale": "en",
+        "stars": 1,
+        "ms_total": 180000,
+        "completed_at": "2026-10-30T19:00:00.000Z"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "xp": 1,
+        "dedupe_key": "sb.fx.topic-a|v1|2026-10-31"
+      }
+    }
+  ],
+  "days": [
+    {
+      "day": "2026-10-30",
+      "lessons_completed": 4
+    },
+    {
+      "day": "2026-10-31",
+      "lessons_completed": 1
+    }
+  ]
+}

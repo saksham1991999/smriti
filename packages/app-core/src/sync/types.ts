@@ -86,7 +86,25 @@ export interface SyncEventPayloads {
   cards_queued: { concept_ids: string[]; source: CardsQueuedSource };
   /** memory-labs §5.2. */
   comeback_plan_started: { days_away: number; cards: number };
+  /**
+   * (v1.4) A little learner finished a story, song or play activity (lesson-core
+   * `ActivityCompletion`, see `activityCompletedPayload`). Ids and counts only, no free text.
+   */
+  activity_completed: {
+    kind: LittleActivityCompletionKind;
+    activity_id: string;
+    topic_id: string;
+    concept_ids: string[];
+    bundle_version: string;
+    locale: Locale;
+    stars: number;
+    ms_total: number;
+    completed_at: string;
+  };
 }
+
+/** The activity kinds with a completion event (lesson-core `ActivityKind`). */
+export type LittleActivityCompletionKind = 'story' | 'song' | 'play';
 
 /** `cards_queued.source` on the wire (sync contract v1.1). */
 export type CardsQueuedSource = 'lesson' | 'practice' | 'comeback';
@@ -115,6 +133,7 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'rescue_completed',
   'cards_queued',
   'comeback_plan_started',
+  'activity_completed',
 ] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {

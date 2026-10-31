@@ -315,6 +315,8 @@ export const FLAG_REGISTRY = {
   'xp.lesson_attempt': def(nonNegInt, 1, 'proposed', 'learn §7, R51'),
   'xp.lesson_complete': def(nonNegInt, 20, 'proposed', 'learn §7, R51'),
   'xp.combo_bonus': def(nonNegInt, 10, 'proposed', 'learn §7.3 A19, R51'),
+  // Little learners' story, song and play completions (sync v1.4 activity_completed): XP per star.
+  'xp.little_activity_star': def(nonNegInt, 1, 'proposed', 'sync v1.4 activity_completed, R51 (owner to confirm)'),
   'learn.find_level_questions': def(posInt, 5, 'ruling', 'R27, learn §6.5'),
   'learn.combo_streak_len': def(posInt, 5, 'doc', 'learn §7.3 (A19)'),
   'learn.exit_nudge_cards_left': owner(nonNegInt, 'ux/learn LES-05'),

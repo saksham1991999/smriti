@@ -70,6 +70,7 @@ export function activityByDay(events: readonly EventLike[], timeZone: string): M
     const cur = out.get(day) ?? { ...EMPTY_DAY };
     switch (e.type) {
       case 'lesson_completed':
+      case 'activity_completed': // a little learner's story, song or play counts as a lesson (v1.4)
         cur.lessonsCompleted += 1;
         break;
       case 'review_rated':

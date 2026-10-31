@@ -729,6 +729,7 @@ Events go through the typed catalogue in `packages/analytics`. Names are snake_c
 | `review_rated` | as MEM defines, `context` = lesson |
 | `topic_confidence_rated` | `topic_id`, `rating` |
 | `lesson_completed` | `topic_id`, `mode`, `bite_index`, `duration_s`, `accuracy_pct`, `cards_seen`, `xp_estimate`, `lesson_count` |
+| `activity_completed` | `kind` (story, song, play), `activity_id`, `topic_id`, `stars`, `duration_s` |
 | `check_completed` | `kind` (placement, test_out), `subject_id` or `chapter_id`, `correct`, `total`, `topics_passed` |
 | `topic_learned` | `topic_id`, `learned_via` |
 | `chapter_progress_reset` | `chapter_id` |
@@ -748,7 +749,7 @@ Events go through the typed catalogue in `packages/analytics`. Names are snake_c
 | Lesson complete | `lesson_complete_viewed` (`streak_incremented`, `goal_met`, `extra`: none, reminder, soft_login, grown_up, upsell), `fix_mistakes_started` (`count`), `fix_mistakes_completed` (`fixed`, `total`), `practise_topic_tapped`, `find_level_result_action` (`use`, `keep`); PAY-19 sends `upsell_card_shown` / `upsell_card_tapped` |
 | Tools | `cheat_sheet_viewed` (`scope`, `surface`), `library_viewed`, `storybook_page_viewed`, `storybook_completed`, `video_lesson_played`, `video_timestamp_tapped`, `note_created`, `note_ai_fill_requested`, `note_to_flashcards`, `mind_map_viewed`, `mind_map_node_opened`, `download_started`, `download_completed`, `download_failed`, `save_when_online_tapped` |
 
-For little learners (`u10`), only learning events plus `home_viewed`, `lesson_completed` and `storybook_completed` are sent (PRD §16.4, X17).
+For little learners (`u10`), only learning events plus `home_viewed`, `lesson_completed`, `activity_completed` and `storybook_completed` are sent (PRD §16.4, X17).
 
 ---
 

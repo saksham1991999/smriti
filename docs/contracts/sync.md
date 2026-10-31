@@ -60,8 +60,9 @@ Status: v1.4, 31 Oct 2026. Shared by `packages/app-core` (client) and `apps/api`
 | `rescue_completed` | `cards` (count), `ms_total` (the 2-minute rescue, R23) |
 | `cards_queued` | `concept_ids`, `source` (`lesson` \| `practice` \| `comeback`) |
 | `comeback_plan_started` | `days_away`, `cards` (count) |
+| `activity_completed` (v1.4) | `kind` (`story` \| `song` \| `play`), `activity_id`, `topic_id`, `concept_ids` (at most 50), `bundle_version`, `locale` (`en` \| `hi`), `stars` (0 to 100), `ms_total`, `completed_at` (ISO time with offset). Built by app-core's `activityCompletedPayload` from lesson-core's `ActivityCompletion`; no free text |
 
-The server recomputes XP, mastery, FSRS schedules, activity days, the streak, plant health and growth, and pet mood from events (TRD §10). A streak day counts when the student's local day has one qualifying activity: `lesson_completed`, 10 `review_rated`, a `mock_section_submitted`, or a `daily_challenge_completed` (rulings R1 and R23).
+The server recomputes XP, mastery, FSRS schedules, activity days, the streak, plant health and growth, and pet mood from events (TRD §10). A streak day counts when the student's local day has one qualifying activity: `lesson_completed` (or an `activity_completed`), 10 `review_rated`, a `mock_section_submitted`, or a `daily_challenge_completed` (rulings R1 and R23).
 
 ## Wire rules (v1.1)
 
@@ -74,6 +75,8 @@ The server recomputes XP, mastery, FSRS schedules, activity days, the streak, pl
 - For checks (`context: check`, `lesson_started.mode: quick_check`), `topic_id` carries the scope the check covers: a topic, chapter or exam-profile id. Fix mistakes (`context: fix`) sends answer events only, no lesson events.
 - Content bundle hashes are sha256 of canonical JSON (keys sorted, no whitespace), in lowercase hex. The publish job and `ContentManager` must hash the same way.
 - (v1.3) Mock answers update mastery: when an attempt is submitted the server records one `answer_submitted` per scored answer with `context: mock` and the `attempt_id`, so clients don't send them. A mock answer for an attempt that isn't submitted, or a repeat for the same attempt and question, is rejected (`invalid_payload`, `already_recorded`). `practice_session_completed` and `mock_section_submitted` count once per `session_id` and per `attempt_id` + `section_code`: whichever of the device's outbox or the server records it first wins, and a later one is rejected with `already_recorded` (drop it, as with any rejected event).
+
+- (v1.4) `activity_completed` counts as a completed lesson: it qualifies the student's local day for the streak, adds one to the day's lessons and its `ms_total` to the day's minutes, and marks `topic_id` learned on the path, exactly as `lesson_completed` does. It earns `stars` x the `xp.little_activity_star` flag in XP (proposed, default 1; 0 stars earn none). The same `activity_id` and `bundle_version` count once per local day of `completed_at` (in the event's `tz`); a repeat is rejected with `already_recorded`, and a `completed_at` in the future with `clock_skew`. It is on the under-10 strict analytics allow-list.
 
 ## State
 
@@ -104,4 +107,5 @@ Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/
 ## Changelog
 
 - v1.4 (31 Oct 2026): `entitlement.managed_in` on `GET /v1/sync/state` (`web`, `play`, `app_store`, `parent`, `family`, `none`). Additive; clients fall back to inferring it.
+- v1.4 (31 Oct 2026): `activity_completed` for little-learner story, song and play completions. See the rules below the wire rules. Golden vector: `packages/app-core/test-vectors/activity_completed.json`, checked by app-core and `apps/api/tests/test_activity_completed.py`.
 - v1.3 (30 Oct 2026): mock answers update mastery; practice and mock section events count once.

@@ -1,0 +1,395 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "phy.units-measurement.dimensions:deep_dive",
+  "topic": "phy.units-measurement.dimensions",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.units-measurement.dimensions.core.dimensional-formula"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "The seven dimensions",
+        "hi": "सात विमाएँ"
+      },
+      "subtopic": "phy.units-measurement.dimensions.core",
+      "card_ids": [
+        "phy.units-measurement.dimensions:dd:01",
+        "phy.units-measurement.dimensions:dd:02",
+        "phy.units-measurement.dimensions:dd:03",
+        "phy.units-measurement.dimensions:dd:04"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Dimensional formulae and equations",
+        "hi": "विमीय सूत्र और समीकरण"
+      },
+      "subtopic": "phy.units-measurement.dimensions.core",
+      "card_ids": [
+        "phy.units-measurement.dimensions:dd:05",
+        "phy.units-measurement.dimensions:dd:06",
+        "phy.units-measurement.dimensions:dd:07",
+        "phy.units-measurement.dimensions:dd:08",
+        "phy.units-measurement.dimensions:dd:09",
+        "phy.units-measurement.dimensions:dd:10"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.units-measurement.dimensions:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "What a dimension is",
+        "hi": "विमा क्या है"
+      },
+      "body": {
+        "en": "Every derived quantity can be written as a combination of the seven base quantities, the seven dimensions of the physical world: [L] length, [M] mass, [T] time, [A] electric current, [K] thermodynamic temperature, [cd] luminous intensity and [mol] amount of substance.\n\nThe dimensions of a quantity are the powers to which the base quantities are raised to represent it. Magnitudes do not matter: velocity, initial velocity and speed all have $[L\\,T^{-1}]$.",
+        "hi": "हर व्युत्पन्न राशि सात मूल राशियों, भौतिक संसार की सात विमाओं, के संयोजन के रूप में लिखी जा सकती है: [L] लंबाई, [M] द्रव्यमान, [T] समय, [A] विद्युत धारा, [K] ऊष्मागतिक ताप, [cd] ज्योति तीव्रता और [mol] पदार्थ की मात्रा।\n\nकिसी राशि की विमाएँ वे घातें हैं जिन पर मूल राशियों को उठाकर वह राशि दर्शाई जाती है। परिमाण मायने नहीं रखता: वेग, प्रारंभिक वेग और चाल सबकी विमा $[L\\,T^{-1}]$ है।"
+      },
+      "media": "img.units-measurement.measuring-tools",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4"
+      }
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:02",
+      "type": "derivation",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Volume and force",
+        "hi": "आयतन और बल"
+      },
+      "steps": [
+        {
+          "latex": "[V] = [L] \\times [L] \\times [L] = [M^0 L^3 T^0]",
+          "say": {
+            "en": "Volume is length times breadth times height: three lengths, and zero dimension in mass and time.",
+            "hi": "आयतन लंबाई गुणा चौड़ाई गुणा ऊँचाई है: तीन लंबाइयाँ, और द्रव्यमान व समय में शून्य विमा।"
+          },
+          "why": null
+        },
+        {
+          "latex": "[F] = [M] \\frac{[L]}{[T]^2} = [M L T^{-2}]",
+          "say": {
+            "en": "Force is mass times acceleration, and acceleration is length over time squared.",
+            "hi": "बल द्रव्यमान गुणा त्वरण है, और त्वरण लंबाई बटा समय का वर्ग है।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4"
+      }
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:03",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 2,
+      "question": "q.phy.units-measurement.dimensions.0001"
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:04",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Seven dimensions: [L], [M], [T], [A], [K], [cd], [mol].",
+          "hi": "सात विमाएँ: [L], [M], [T], [A], [K], [cd], [mol]।"
+        },
+        {
+          "en": "Dimensions are the powers of the base quantities; magnitudes do not enter.",
+          "hi": "विमाएँ मूल राशियों की घातें हैं; परिमाण शामिल नहीं होता।"
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:05",
+      "type": "formula",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Some dimensional formulae",
+        "hi": "कुछ विमीय सूत्र"
+      },
+      "latex": "[v] = [M^0 L T^{-1}], \\quad [a] = [M^0 L T^{-2}], \\quad [\\rho] = [M L^{-3} T^0]",
+      "symbols": [
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "speed or velocity",
+            "hi": "चाल या वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "a",
+          "meaning": {
+            "en": "acceleration",
+            "hi": "त्वरण"
+          },
+          "unit": "m/s^2"
+        },
+        {
+          "symbol": "\\rho",
+          "meaning": {
+            "en": "mass density",
+            "hi": "द्रव्यमान घनत्व"
+          },
+          "unit": "kg/m^3"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.5"
+      }
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Formula and equation",
+        "hi": "सूत्र और समीकरण"
+      },
+      "body": {
+        "en": "The expression showing which base quantities, and with what powers, make up a quantity is its dimensional formula: for volume, $[M^0 L^3 T^0]$. Writing the quantity equal to that formula gives its dimensional equation: $[F] = [M L T^{-2}]$.\n\nRatios of like quantities have no dimensions: an angle (length over length) and a refractive index (speed over speed) are dimensionless.",
+        "hi": "वह व्यंजक जो दिखाता है कि कौन-सी मूल राशियाँ, किन घातों के साथ, किसी राशि को बनाती हैं, उसका विमीय सूत्र है: आयतन के लिए $[M^0 L^3 T^0]$। राशि को उस सूत्र के बराबर लिखने से उसका विमीय समीकरण मिलता है: $[F] = [M L T^{-2}]$।\n\nसमान राशियों के अनुपात की कोई विमा नहीं होती: कोण (लंबाई बटा लंबाई) और अपवर्तनांक (चाल बटा चाल) विमाहीन हैं।"
+      },
+      "media": "img.units-measurement.measuring-tools",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.5 and §1.6.1"
+      }
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Find the dimensional formulae of energy (from kinetic energy $\\frac{1}{2}mv^2$) and of pressure (force per unit area).",
+        "hi": "ऊर्जा (गतिज ऊर्जा $\\frac{1}{2}mv^2$ से) और दाब (प्रति एकांक क्षेत्रफल बल) के विमीय सूत्र ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\frac{1}{2}$ is a number with no dimension.",
+          "hi": "$\\frac{1}{2}$ एक संख्या है, जिसकी कोई विमा नहीं।"
+        },
+        {
+          "en": "$[E] = [M][L T^{-1}]^2 = [M L^2 T^{-2}]$",
+          "hi": "$[E] = [M][L T^{-1}]^2 = [M L^2 T^{-2}]$"
+        },
+        {
+          "en": "$[P] = \\frac{[M L T^{-2}]}{[L^2]} = [M L^{-1} T^{-2}]$",
+          "hi": "$[P] = \\frac{[M L T^{-2}]}{[L^2]} = [M L^{-1} T^{-2}]$"
+        }
+      ],
+      "answer": {
+        "en": "energy $[M L^2 T^{-2}]$; pressure $[M L^{-1} T^{-2}]$",
+        "hi": "ऊर्जा $[M L^2 T^{-2}]$; दाब $[M L^{-1} T^{-2}]$"
+      },
+      "common_trap": {
+        "en": "Forgetting to square the time in $v^2$.",
+        "hi": "$v^2$ में समय का वर्ग करना भूल जाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.5 and Example 1.3"
+      }
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:08",
+      "type": "interactive",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Match each quantity to its dimensions.",
+        "hi": "हर राशि को उसकी विमा से मिलाइए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "acc",
+            "text": {
+              "en": "acceleration",
+              "hi": "त्वरण"
+            }
+          },
+          {
+            "id": "force",
+            "text": {
+              "en": "force",
+              "hi": "बल"
+            }
+          },
+          {
+            "id": "energy",
+            "text": {
+              "en": "energy",
+              "hi": "ऊर्जा"
+            }
+          },
+          {
+            "id": "angle",
+            "text": {
+              "en": "angle",
+              "hi": "कोण"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "lt2",
+            "label": {
+              "en": "$[M^0 L T^{-2}]$",
+              "hi": "$[M^0 L T^{-2}]$"
+            }
+          },
+          {
+            "id": "mlt2",
+            "label": {
+              "en": "$[M L T^{-2}]$",
+              "hi": "$[M L T^{-2}]$"
+            }
+          },
+          {
+            "id": "ml2t2",
+            "label": {
+              "en": "$[M L^2 T^{-2}]$",
+              "hi": "$[M L^2 T^{-2}]$"
+            }
+          },
+          {
+            "id": "none",
+            "label": {
+              "en": "dimensionless",
+              "hi": "विमाहीन"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "acc",
+            "bin": "lt2"
+          },
+          {
+            "item": "force",
+            "bin": "mlt2"
+          },
+          {
+            "item": "energy",
+            "bin": "ml2t2"
+          },
+          {
+            "item": "angle",
+            "bin": "none"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Each step from acceleration to force to energy adds one mass, then one length.",
+          "hi": "सही। त्वरण से बल और बल से ऊर्जा तक हर चरण में पहले एक द्रव्यमान, फिर एक लंबाई जुड़ती है।"
+        },
+        "wrong": {
+          "en": "Force is mass times acceleration; energy is force times distance.",
+          "hi": "बल द्रव्यमान गुणा त्वरण है; ऊर्जा बल गुणा दूरी।"
+        }
+      }
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 3,
+      "question": "q.phy.units-measurement.dimensions.0002"
+    },
+    {
+      "id": "phy.units-measurement.dimensions:dd:10",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Speed $[M^0 L T^{-1}]$, acceleration $[M^0 L T^{-2}]$, density $[M L^{-3} T^0]$, force $[M L T^{-2}]$.",
+          "hi": "चाल $[M^0 L T^{-1}]$, त्वरण $[M^0 L T^{-2}]$, घनत्व $[M L^{-3} T^0]$, बल $[M L T^{-2}]$।"
+        },
+        {
+          "en": "Energy $[M L^2 T^{-2}]$, pressure $[M L^{-1} T^{-2}]$.",
+          "hi": "ऊर्जा $[M L^2 T^{-2}]$, दाब $[M L^{-1} T^{-2}]$।"
+        },
+        {
+          "en": "Angle and refractive index are dimensionless.",
+          "hi": "कोण और अपवर्तनांक विमाहीन हैं।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

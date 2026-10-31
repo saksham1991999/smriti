@@ -838,7 +838,9 @@ All names are snake_case. Props carry ids, enums, counts and durations only: nev
 | `shared_deck_copied` | product | `share_code_hash`, `card_count` |
 | `deck_cram_completed` | product | `deck_id`, `cards`, `knew_count` |
 | `palace_created` | learning | `palace_id`, `template` |
-| `palace_items_placed` | learning | `palace_id`, `items`, `rooms`, `source` (list, deck, mnemonics) |
+| `palace_template_selected` | product | `template` (home, school, monument, pano360, custom), `template_id` |
+| `palace_source_picked` | product | `source` (list, topic, deck, mnemonics), `items` (count) |
+| `palace_items_placed` | learning | `palace_id`, `items`, `rooms`, `source` (list, topic, deck, mnemonics) |
 | `palace_walk_completed` | product | `palace_id`, `spots`, `duration_ms` |
 | `palace_quiz_completed` | product | `palace_id`, `mode`, `spots`, `correct`, `order_score_pct` |
 | `forge_opened` | product | `entry` (lesson, review, leech, tutor, tutor_drafts, typed, technique, element), `is_pro` |

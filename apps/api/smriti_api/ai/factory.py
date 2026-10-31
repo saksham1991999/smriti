@@ -101,10 +101,19 @@ def build_gateway(
         )
         if (
             settings.deepgram_api_key
-            and settings.deepgram_tts_model
+            and (
+                settings.deepgram_tts_model
+                or settings.deepgram_tts_model_hi
+                or settings.deepgram_tts_model_en
+            )
             and settings.deepgram_stt_model
         ):
-            tts = DeepgramTTSProvider(http, settings.deepgram_api_key, settings.deepgram_tts_model)
+            tts = DeepgramTTSProvider(
+                http,
+                settings.deepgram_api_key,
+                settings.deepgram_tts_model,
+                {"hi": settings.deepgram_tts_model_hi, "en": settings.deepgram_tts_model_en},
+            )
             stt = DeepgramSTTProvider(http, settings.deepgram_api_key, settings.deepgram_stt_model)
         elif settings.is_dev:
             tts, stt = FakeTTSProvider(), FakeSTTProvider()

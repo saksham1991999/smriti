@@ -73,6 +73,9 @@ class Settings(BaseSettings):
     ai_image_timeout_s: float = 360.0
     deepgram_api_key: str = ""
     deepgram_tts_model: str = ""
+    # One narration voice per language (R63); DEEPGRAM_TTS_MODEL is the fallback for both.
+    deepgram_tts_model_hi: str = ""
+    deepgram_tts_model_en: str = ""
     deepgram_stt_model: str = ""
     gemini_api_key: str = ""
     gemini_live_model: str = ""

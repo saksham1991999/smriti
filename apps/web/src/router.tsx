@@ -215,7 +215,20 @@ const voiceRoute = createRoute({
   }),
   component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/phase2/voice/Voice")), "Voice"),
 });
-const phase2Routes = [feynmanRoute, voiceRoute] as const;
+const palaces = withNamespaces(["memory_labs"], () => import("./screens/phase2/palace/Palaces"));
+const palaceWalk = withNamespaces(["memory_labs"], () => import("./screens/phase2/palace/Walk"));
+const palacesRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces", component: lazyRouteComponent(palaces, "Palaces") });
+const newPalaceRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/new", component: lazyRouteComponent(palaces, "NewPalace") });
+const palaceRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/memory/palaces/$palaceId",
+  validateSearch: (s: Record<string, unknown>): { spot?: string } => ({ spot: typeof s.spot === "string" ? s.spot : undefined }),
+  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/phase2/palace/Builder")), "Builder"),
+});
+const palaceItemsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/items", component: lazyRouteComponent(palaces, "AddPalaceItems") });
+const palaceWalkRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/walk", component: lazyRouteComponent(palaceWalk, "Walk") });
+const palaceQuizRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/quiz", component: lazyRouteComponent(palaceWalk, "Quiz") });
+const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute] as const;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

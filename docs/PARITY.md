@@ -29,6 +29,8 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Feature | Screens | iOS | Android | Web | Notes |
 |---|---|---|---|---|---|
 | Home (streak, hero, up next) | HOME-01 | Built | Built | Built | |
+| Search | HOME-05 | Not built | Not built | Partial | Web searches topics, labs and the student's decks; formulas and PYQs need a server route. |
+| Streak check-in | ENT-08 | Not built | Not built | Partial | Web shows the comeback, resting and long-break variants from the plant and the last open on this device. Freeze and incident variants wait for a "freeze used" fact; the exam-date row waits for an ONB-06 edit mode. |
 | Today's plan card | HOME-02 | Not built | Not built | Not built | app-core has `buildLocalPlan`; mobile uses it only for the widgets so far. |
 | Little learner Home | HOME-06 | Not built | Not built | Not built | Rules are in app-core (`little/*`), behind `feature.little_learner`. |
 | Subject map | LRN-01 | Partial | Partial | Built | Mobile has the All, In progress and Not started filters; no Weak filter and no units yet. |
@@ -41,7 +43,7 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Feature | Screens | iOS | Android | Web | Notes |
 |---|---|---|---|---|---|
 | Memory hub | MEM-01 | Built | Built | Not built | |
-| Comeback after a break | MEM-02 | Built | Built | Not built | |
+| Comeback after a break | MEM-02 | Built | Built | Built | |
 | Review session (FSRS) | MEM-03, MEM-04 | Built | Built | Built | Mobile can scope a session to one topic (from LRN-02). No undo yet. |
 | Labs hub | LAB-01 | Built | Built | Built | Mobile shows per-lab progress and "Works offline" once a lab is downloaded. |
 | Lab detail and info | LAB-03, LAB-18 | Partial | Partial | Built | No mobile-data confirmation before a download yet: the network service does not report cellular. |
@@ -58,7 +60,7 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | PYQ browser (hub, by chapter, by paper) | PRC-07 to PRC-10 | Built | Built | Not built | Mobile shows each PYQ's source (PRC-18). |
 | Daily challenge | PRC-11, PRC-12 | Built | Built | Not built | |
 | Share card | PRC-13 | Not built | Not built | Not built | Needs a view-capture and share dependency decision. |
-| Progress and analytics | PRC-14 | Partial | Partial | Not built | Mobile shows practice, mock trend and syllabus covered. Readiness, speed, confidence and mistake cards wait for an analytics API. |
+| Progress and analytics | PRC-14 | Partial | Partial | Built | Mobile shows practice, mock trend and syllabus covered. Web reads readiness, speed, confidence and mistake cards from `GET /v1/analytics/summary` (held-back cards show what is still needed), plus the mock trend and weak spots. |
 | Practice history | PRC-16 | Built | Built | Not built | |
 | Mock list | MOCK-01 | Built | Built | Built | Web shows the exam's mock on the runner's start screen. |
 | Mock runner, submit and report | MOCK-02 to MOCK-19 | Built | Built | Built | |
@@ -84,7 +86,9 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Notification settings | SET-03 | Not built | Not built | Built | Mobile keeps the reminder set in onboarding. |
 | Paywall and purchase | PAY-01, PAY-08, PAY-09 | Built | Built | Built | Mobile uses RevenueCat (fake provider in dev); web uses Razorpay (fake step in dev). Prices come from the server. |
 | Your plan | PAY | Not built | Not built | Built | |
-| Parent mode, PIN and time limits | SET-13 to SET-19 | Not built | Not built | Not built | Rules are in app-core (`little/parent.ts`). |
+| Parent mode, PIN and time limits | SET-13 to SET-19 | Not built | Not built | Partial | Rules are in app-core (`little/parent.ts`). Web: SET-13 gate with a separate grown-up Google session (AUTH-24, the learner stays signed in), SET-14 dashboard, SET-15 report, SET-16 limits, SET-17 consents and friends. No PIN (SET-18, SET-19). |
+| Pet room, revival quest, shop, quests | ME-04, ME-08, ME-17, ME-20 | Not built | Not built | Built | Web lists only the shop items that have names and art (treat, freeze). |
+| Ask a grown-up (paywall and tutor limit) | PAY-03, AI-06 | Not built | Not built | Partial | Web opens Parent mode; "Send to my parent" waits for the PAY-17 token API. |
 
 ## Notifications and widgets
 

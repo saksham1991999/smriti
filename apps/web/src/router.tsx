@@ -393,6 +393,14 @@ const settingsRoute = createRoute({
     "Settings",
   ),
 });
+const linkRequestRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/me/guardian-link",
+  component: lazyRouteComponent(
+    withNamespaces(["auth"], () => import("./screens/auth/LinkRequest")),
+    "LinkRequest",
+  ),
+});
 const notificationsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/notifications",
@@ -505,6 +513,7 @@ const routeTree = rootRoute.addChildren([
   challengeRoute,
   drillRoute,
   ...phase2Routes,
+  linkRequestRoute,
   shellRoute.addChildren([
     homeRoute,
     subjectRoute,

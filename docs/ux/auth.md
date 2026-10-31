@@ -1287,6 +1287,9 @@ No name field, no school or city question, no pet sheet in either form.
 | Yes | Yes, link | हाँ, जोड़ें |
 | No | This isn't my parent | ये मेरे माता-पिता नहीं हैं |
 | No result | OK, nothing was linked. | ठीक है, कुछ नहीं जोड़ा गया। |
+| Offline | Connect to the internet to answer. | जवाब देने के लिए इंटरनेट से जुड़ें। |
+| Failed | That didn't go through. Try again in a moment. | यह नहीं हो पाया। थोड़ी देर में फिर कोशिश करें। |
+| Settings row | {parent_first_name} wants to link as your guardian | {parent_first_name} आपके अभिभावक के रूप में जुड़ना चाहते हैं |
 
 **Illustration slots:** reuses AUTH-18's `sunny-scene`.
 

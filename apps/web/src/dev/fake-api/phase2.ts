@@ -30,7 +30,39 @@ interface UserState {
   voice?: Record<string, { id: string; startedAt: number; seconds: number | null; turns: Schemas["TranscriptTurn"][]; flashcards: number }>;
   /** Live mocks the student registered for. */
   liveRegistered?: string[];
+  /** Parent mode, as the guardian of the fixture children. */
+  parent?: {
+    controls: Record<string, Schemas["ControlsOut"]>;
+    decided: Record<string, "allowed" | "declined">;
+    removedFriends: string[];
+    withdrawn: Record<string, Schemas["ConsentOut"]["scopes"]>;
+  };
 }
+
+/**
+ * Dev and e2e switch for parent mode: `localStorage["smriti.fake-api.parent"] = "demo"` links two
+ * fixture children to any signed-in (non-guest) user; otherwise a signed-in user has none.
+ */
+const parentDemo = () => {
+  try {
+    return globalThis.localStorage?.getItem("smriti.fake-api.parent") === "demo";
+  } catch {
+    return false;
+  }
+};
+
+/** The fixture children. Names are labelled fixture text; the numbers are made up for dev. */
+const CHILD_A = "00000000-0000-4000-8000-0000000000a1";
+const CHILD_B = "00000000-0000-4000-8000-0000000000b2";
+const TIME_REQUEST = "00000000-0000-4000-8000-0000000000c3";
+const FIXTURE_CHILDREN = [
+  { id: CHILD_A, first_name: "Fixture child A", kind: "managed" as const, age_band: "u10", species: "cat", pet: "Fixture pet A", minutes: [12, 0, 18, 25, 0, 30, 10], lessons: 6, reviews: 14, streak: 4, questions: 12, pro: false, scopes: ["account", "voice"] as Schemas["ConsentOut"]["scopes"], consentId: "00000000-0000-4000-8000-0000000000d4" },
+  { id: CHILD_B, first_name: "Fixture child B", kind: "consent" as const, age_band: "13_17", species: "dog", pet: "Fixture pet B", minutes: [40, 35, 0, 50, 45, 20, 20], lessons: 9, reviews: 31, streak: 9, questions: 64, pro: true, scopes: ["account", "social", "community"] as Schemas["ConsentOut"]["scopes"], consentId: "00000000-0000-4000-8000-0000000000d5" },
+];
+const FIXTURE_FRIENDS = [
+  { id: "00000000-0000-4000-8000-0000000000e1", name: "Fixture nickname 1", species: "cat" as const },
+  { id: "00000000-0000-4000-8000-0000000000e2", name: "Fixture nickname 2", species: "dog" as const },
+];
 
 /**
  * Dev and e2e switch for the live mock room: `localStorage["smriti.fake-api.live"]` =
@@ -122,6 +154,28 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
     }
   };
   const state = (u: FakeUser): UserState => (store[u.id] ??= { feynman: {}, feynmanAttempts: {} });
+
+  /** Parent mode is hard-login: a guest gets `login_required` (reason `parent_mode`). */
+  const guardian = (request: Request): FakeUser | Response => {
+    const u = authed(request);
+    if (!u) return unauthorized();
+    if (u.isAnonymous) return problem(401, "login_required", { reason: "parent_mode" });
+    return u;
+  };
+  const parentState = (u: FakeUser) => (state(u).parent ??= { controls: {}, decided: {}, removedFriends: [], withdrawn: {} });
+  const children = () => (parentDemo() ? FIXTURE_CHILDREN : []);
+  const controlsOf = (g: FakeUser, id: string): Schemas["ControlsOut"] =>
+    parentState(g).controls[id] ?? { learner_user_id: id, daily_limit_min: null, allowed_from: null, allowed_to: null, break_reminders: false, ask_before_switching: false, picture_rhymes: false, tutor_button: false, tutor_enabled: true, social_enabled: true, weekly_report: true, updated_at: null };
+  const isoDate = (ms: number) => {
+    const d = new Date(ms);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  };
+  const mondayOf = (ms: number) => {
+    const d = new Date(ms);
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    return d.getTime();
+  };
 
   /** Window start for a live mode, fixed the first time the fake answers in that mode. */
   const liveAnchors: Partial<Record<LiveMode, number>> = {};
@@ -410,6 +464,149 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
         by_subject: [],
       } satisfies Schemas["CalibrationOut"]);
     }),
+    // ── Phase 3 parent mode ────────────────────────────────────────────────
+    http.get(url("/v1/guardian/dashboard"), ({ request }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      const ps = parentState(g);
+      const learners: Schemas["ChildCard"][] = children().map((c) => {
+        const pending = c.id === CHILD_A && !ps.decided[TIME_REQUEST];
+        return {
+          user_id: c.id,
+          first_name: c.first_name,
+          kind: c.kind,
+          age_band: c.age_band,
+          pet: { name: c.pet, species: c.species, state: "happy" },
+          week_minutes: c.minutes.reduce((a, b) => a + b, 0),
+          streak: c.streak,
+          practice_questions: c.questions,
+          last_mock: c.id === CHILD_B ? { attempt_id: "fx-attempt-b", mock_id: "fx-mock", score: 142, max_score: 300, submitted_at: new Date(now() - 2 * 864e5).toISOString() } : null,
+          is_pro: c.pro,
+          consent_pending: false,
+          needs_you: pending,
+          time_requests: pending ? [{ id: TIME_REQUEST, learner_user_id: c.id, minutes: 15, for_date: isoDate(now()), status: "pending", created_at: new Date(now() - 10 * 60_000).toISOString(), decided_at: null }] : [],
+        };
+      });
+      return HttpResponse.json({ learners } satisfies Schemas["Dashboard"]);
+    }),
+    http.get(url("/v1/guardian/learners"), ({ request }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      const ps = parentState(g);
+      const learners: Schemas["LearnerOut"][] = children().map((c) => ({
+        user_id: c.id,
+        first_name: c.first_name,
+        kind: c.kind,
+        age_band: c.age_band,
+        linked_at: new Date(now() - 40 * 864e5).toISOString(),
+        consent: {
+          id: c.consentId,
+          learner_user_id: c.id,
+          scopes: c.scopes.filter((s) => !(ps.withdrawn[c.id] ?? []).includes(s)),
+          consented_at: new Date(now() - 40 * 864e5).toISOString(),
+          revoked_at: null,
+          method: "fixture",
+          notice_version: "fixture",
+          age_assurance: "fixture",
+        },
+      }));
+      return HttpResponse.json({ learners } satisfies Schemas["LearnersOut"]);
+    }),
+    http.get(url("/v1/guardian/learners/:id/report"), ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      const c = children().find((x) => x.id === params.id);
+      if (!c) return problem(404, "learner_not_found");
+      const week = new URL(request.url).searchParams.get("week");
+      const start = mondayOf(week ? Date.parse(`${week}T00:00:00`) : now());
+      const current = start === mondayOf(now());
+      const minutes = current ? c.minutes : c.minutes.map(() => 0);
+      const days = minutes.map((m, i) => ({ day: isoDate(start + i * 864e5), minutes: m }));
+      return HttpResponse.json({
+        user_id: c.id,
+        first_name: c.first_name,
+        week_start: isoDate(start),
+        week_end: isoDate(start + 6 * 864e5),
+        minutes: minutes.reduce((a, b) => a + b, 0),
+        lessons: current ? c.lessons : 0,
+        reviews: current ? c.reviews : 0,
+        streak: current ? c.streak : 0,
+        practice_questions: current ? c.questions : 0,
+        days,
+        subjects: current
+          ? [
+              { subject_id: "fx-subject-1", color_token: "physics", name: { en: "Fixture subject 1", hi: "फ़िक्स्चर विषय 1" }, topics: [{ en: "Fixture topic 1", hi: "फ़िक्स्चर टॉपिक 1" }, { en: "Fixture topic 2", hi: "फ़िक्स्चर टॉपिक 2" }] },
+              { subject_id: "fx-subject-2", color_token: "chemistry", name: { en: "Fixture subject 2", hi: "फ़िक्स्चर विषय 2" }, topics: [{ en: "Fixture topic 3", hi: "फ़िक्स्चर टॉपिक 3" }] },
+            ]
+          : [],
+        mocks: current && c.id === CHILD_B ? [{ attempt_id: "fx-attempt-b", mock_id: "fx-mock", score: 142, max_score: 300, percentile: 88.5, submitted_at: new Date(now() - 2 * 864e5).toISOString() }] : [],
+        coming_up: c.id === CHILD_B ? [{ kind: "mock", mock_id: LIVE_MOCK_ID, title: LIVE_TITLE, starts_at: new Date(now() + 3 * 864e5).toISOString() }] : [],
+      } satisfies Schemas["WeekReport"]);
+    }),
+    http.get(url("/v1/guardian/learners/:id/controls"), ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      const id = String(params.id);
+      if (!children().some((x) => x.id === id)) return problem(404, "learner_not_found");
+      return HttpResponse.json(controlsOf(g, id));
+    }),
+    http.put(url("/v1/guardian/learners/:id/controls"), async ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      const id = String(params.id);
+      if (!children().some((x) => x.id === id)) return problem(404, "learner_not_found");
+      const body = (await request.json()) as Schemas["Controls"];
+      if (!!body.allowed_from !== !!body.allowed_to || (body.allowed_from && body.allowed_to && body.allowed_from >= body.allowed_to)) return problem(422, "invalid_hours");
+      const out: Schemas["ControlsOut"] = { ...body, learner_user_id: id, updated_at: new Date(now()).toISOString() };
+      parentState(g).controls[id] = out;
+      save();
+      return HttpResponse.json(out);
+    }),
+    http.post(url("/v1/guardian/time-requests/:id/decision"), async ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      if (params.id !== TIME_REQUEST || !parentDemo()) return problem(404, "time_request_not_found");
+      const body = (await request.json()) as Schemas["Decision"];
+      const ps = parentState(g);
+      if (ps.decided[TIME_REQUEST]) return problem(409, "already_decided");
+      ps.decided[TIME_REQUEST] = body.allow ? "allowed" : "declined";
+      save();
+      return HttpResponse.json({ id: TIME_REQUEST, learner_user_id: CHILD_A, minutes: 15, for_date: isoDate(now()), status: body.allow ? "allowed" : "declined", created_at: new Date(now() - 10 * 60_000).toISOString(), decided_at: new Date(now()).toISOString() } satisfies Schemas["TimeRequestOut"]);
+    }),
+    http.get(url("/v1/guardian/learners/:id/friends"), ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      if (params.id !== CHILD_B || !parentDemo()) return problem(404, "learner_not_found");
+      const removed = parentState(g).removedFriends;
+      return HttpResponse.json(
+        FIXTURE_FRIENDS.filter((f) => !removed.includes(f.id)).map((f, i) => ({
+          person: { user_id: f.id, name: { kind: "nickname", text: f.name }, avatar: { species: f.species, outfit_ids: [] }, can_add_friend: false, is_self: false },
+          since: new Date(now() - (20 + i * 5) * 864e5).toISOString(),
+        })) satisfies Schemas["ParentFriend"][],
+      );
+    }),
+    http.delete(url("/v1/guardian/learners/:id/friends/:friendId"), ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      if (params.id !== CHILD_B || !parentDemo()) return problem(404, "learner_not_found");
+      const ps = parentState(g);
+      ps.removedFriends = [...new Set([...ps.removedFriends, String(params.friendId)])];
+      save();
+      return new HttpResponse(null, { status: 204 });
+    }),
+    http.delete(url("/v1/guardian/consents/:consentId/scopes/:scope"), ({ request, params }) => {
+      const g = guardian(request);
+      if (g instanceof Response) return g;
+      const c = children().find((x) => x.consentId === params.consentId);
+      if (!c) return problem(404, "consent_not_found");
+      const scope = String(params.scope) as Schemas["ConsentOut"]["scopes"][number];
+      if (scope === "account") return problem(409, "scope_required");
+      const ps = parentState(g);
+      ps.withdrawn[c.id] = [...new Set([...(ps.withdrawn[c.id] ?? []), scope])];
+      save();
+      return HttpResponse.json({ id: c.consentId, learner_user_id: c.id, scopes: c.scopes.filter((s) => !(ps.withdrawn[c.id] ?? []).includes(s)), consented_at: new Date(now() - 40 * 864e5).toISOString(), revoked_at: null, method: "fixture", notice_version: "fixture", age_assurance: "fixture" } satisfies Schemas["ConsentOut"]);
+    }),
+
     // ── Phase 3 live mocks ─────────────────────────────────────────────────
     http.get(url("/v1/live/mocks/:id"), ({ request, params }) => {
       const u = authed(request);

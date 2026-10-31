@@ -241,7 +241,17 @@ const mixedRoute = createRoute({
 const live = withNamespaces(["practice"], () => import("./screens/phase2/live/Live"));
 const liveRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId", component: lazyRouteComponent(live, "LiveRoom") });
 const liveBoardRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId/leaderboard", component: lazyRouteComponent(live, "LiveLeaderboard") });
-const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute, liveRoute, liveBoardRoute] as const;
+const parent = withNamespaces(["me_money"], () => import("./screens/phase2/parent/Parent"));
+const parentRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent", component: lazyRouteComponent(parent, "ParentHome") });
+const parentReportRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/parent/$learnerId/report",
+  validateSearch: (s: Record<string, unknown>): { week?: string } => ({ week: typeof s.week === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s.week) ? s.week : undefined }),
+  component: lazyRouteComponent(parent, "WeekReport"),
+});
+const parentLimitsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent/$learnerId/limits", component: lazyRouteComponent(parent, "TimeLimits") });
+const parentConsentsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent/$learnerId/consents", component: lazyRouteComponent(parent, "Consents") });
+const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute, liveRoute, liveBoardRoute, parentRoute, parentReportRoute, parentLimitsRoute, parentConsentsRoute] as const;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

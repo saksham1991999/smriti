@@ -4,7 +4,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 
 ## Where the build stands
 
-- The whole workspace passes typecheck, lint and tests (75 of 75 turbo tasks). The API has 539 passing tests, the worker 23. Content check: 543 files, 0 errors.
+- The whole workspace passes typecheck, lint and tests (75 of 75 turbo tasks). The API has 544 passing tests, the worker 23. Content check: 543 files, 0 errors.
 - Web and mobile both run the full journey from guest to Pro against the real local API: onboarding, a lesson, streak, sign-in prompt, Google link (dev auth), paywall, fake payment, Pro.
 - Nothing is deployed. Every real account (Supabase, Railway, Cloudflare, Google, Apple, stores, payment providers) still has to be created by the owner (see `docs/DEPLOY.md`).
 - No content is released. `content/releases.json` is empty, so a production publish builds nothing until the owner releases a chapter.
@@ -19,7 +19,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 
 ### Backend (apps/api, FastAPI)
 - Auth: dev auth locally, Supabase token shape, guest (anonymous) accounts, Google link with merge, Sign in with Apple token revocation on account deletion.
-- Sync: offline-first outbox protocol, contract v1.5 (`docs/contracts/sync.md`), shared test vectors with app-core.
+- Sync: offline-first outbox protocol, contract v1.7 (`docs/contracts/sync.md`: test-out, chapter reset, placement marks), shared test vectors with app-core.
 - Learning: lessons and progress, streak with freezes, plant and pet, XP, quests, shop, FSRS spaced repetition, comeback plans, insights (calibration, weak areas, sleep review), memory palaces synced across devices.
 - Practice: drills by concept, chapter and difficulty, PYQ practice, weak spots, daily challenge, free quota, answer checking shared with lesson-core.
 - Mocks: built from official blueprints, server timers, section locking, autosave, negative and partial marking, reports with percentiles from real attempts only, live mock rooms and leaderboards.
@@ -73,7 +73,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 ## In progress now
 - Web: social screens, parent-side "Link a teen", managed children, photo doubts, role play, palace sync on the shared store, the remaining streak check-in variants.
 - Mobile: photo doubts, readiness cards, role play, analytics intake, Apple re-auth on deletion, mobile Sentry.
-- Backend: sync events for test-out and chapter reset, tutor board images, log scrubbing.
+- Mobile still has to send the v1.6 and v1.7 events (test-out, chapter reset, placement) from its check screens.
 - Lesson narration audio and pet reactions in the players.
 - Marketing site: Hindi pages take about 2.4 s to show their main content on a phone (target 2.0 s); next step is a smaller Devanagari font subset.
 - Content: System of Particles and Rotational Motion next. Sims requested: friction on an incline, collision track (PhET is non-commercial, so we build our own).
@@ -87,6 +87,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 - Review and approve content and images, then release chapters in `content/releases.json`.
 - Approve the class 1 images (under-10 rule), and have someone build the six Rive tracing guides.
 - Confirm the proposed values for XP, duels, voice limits, Feynman, anti-cheat, live mocks, link-request expiry, role-play turn caps and the other flags marked "proposed" in `packages/config/src/flags.ts`.
+- Say whether a memory review (not only a lesson) should confirm a "Find my level" placement mark.
 - Confirm the little-learner play rules (five play kinds, try again then hint then guided answer, one star per round).
 - Family plan seats and price, nickname and squad word lists, mascot names, the Hindi app name.
 - Embedding provider for tutor search (full-text search works until then).

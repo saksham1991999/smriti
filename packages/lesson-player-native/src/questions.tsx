@@ -2,7 +2,7 @@
  * Question renderers for every question type (content-format §8). They only collect an `Answer`;
  * lesson-core's `checkAnswer` decides what is right.
  */
-import { BLANK_TOKEN } from "@smriti/content-schema";
+import { BLANK_TOKEN } from "@smriti/content-schema/runtime";
 import type { Answer, AnyQuestion, CheckResult } from "@smriti/lesson-core";
 import { Chip, NumericKeypad, OptionCard, Text, useTheme } from "@smriti/ui-native";
 import type { OptionState } from "@smriti/tokens/ui";

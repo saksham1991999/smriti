@@ -1,4 +1,4 @@
-import { localize } from '@smriti/content-schema';
+import { localize } from '@smriti/content-schema/runtime';
 import type { Answer, AnyQuestion } from '@smriti/lesson-core';
 import { canSubmit, initialDraft, QuestionView } from '@smriti/lesson-player-native';
 import { Banner, Button, Card, Spinner, StatTile, Text } from '@smriti/ui-native';

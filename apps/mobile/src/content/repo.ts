@@ -1,4 +1,4 @@
-import type { Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema';
+import type { Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema/runtime';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { SeedPackFiles } from '../seed/types';

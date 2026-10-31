@@ -1,4 +1,4 @@
-import type { TypedBundle } from "@smriti/content-schema";
+import type { TypedBundle } from "@smriti/content-schema/runtime";
 import { createI18n } from "@smriti/i18n";
 import { lessonConfig, planLesson, type EventEnvelope, type LessonState } from "@smriti/lesson-core";
 import { UIProvider } from "@smriti/ui-native";

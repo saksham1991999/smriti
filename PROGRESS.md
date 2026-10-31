@@ -54,7 +54,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 ### Content (written through the skills, all awaiting a person's review)
 - Exam data: exam files, blueprints from official notices, syllabus graph, exam maps, coverage reports.
 - Chapters at 100% coverage for their exams:
-  - Physics: Current Electricity, Units and Measurement, Motion in a Straight Line, Motion in a Plane, Laws of Motion.
+  - Physics: Current Electricity, Units and Measurement, Motion in a Straight Line, Motion in a Plane, Laws of Motion, Work Energy and Power.
   - Chemistry: Chemical Bonding and Molecular Structure.
   - Maths: Sets, Relations and Functions (class 11 intro and class 12).
   - Biology: Cell the Unit of Life, Biomolecules, Cell Cycle and Cell Division.
@@ -76,7 +76,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 - Backend: sync events for test-out and chapter reset, tutor board images, log scrubbing.
 - Lesson narration audio and pet reactions in the players.
 - Marketing site: Hindi pages take about 2.4 s to show their main content on a phone (target 2.0 s); next step is a smaller Devanagari font subset.
-- Content: Work, Energy and Power next. Sims requested: projectile launcher, friction on an incline (PhET is non-commercial, so we build our own).
+- Content: System of Particles and Rotational Motion next. Sims requested: friction on an incline, collision track (PhET is non-commercial, so we build our own).
 - An independent end-to-end verification run, written up in `docs/E2E_REPORT.md`.
 
 ## Left to do

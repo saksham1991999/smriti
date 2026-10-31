@@ -80,17 +80,22 @@ export default function PeriodicTeaser({ lang, elements, strings: s, openHref, b
                 className={`pt-cell ${fam(e.block)}${selected === e.z ? " on" : ""}`}
                 style={{ gridRow: row, gridColumn: col }}
                 tabIndex={focusZ === e.z ? 0 : -1}
-                aria-label={label(e)}
                 aria-pressed={selected === e.z}
                 onClick={() => choose(e.z)}
                 onKeyDown={(ev) => onKey(ev, e.z)}
                 onFocus={() => setFocusZ(e.z)}
               >
-                <span className="z">{e.z}</span>
+                <span className="z" aria-hidden="true">
+                  {e.z}
+                </span>
                 <span className="b" aria-hidden="true">
                   {e.block}
                 </span>
-                <span className="sym">{e.symbol}</span>
+                <span className="sym" aria-hidden="true">
+                  {e.symbol}
+                </span>
+                {/* The name comes from this text, not aria-label, so it never mismatches what is shown. */}
+                <span className="visually-hidden">{label(e)}</span>
               </button>
             );
           })}

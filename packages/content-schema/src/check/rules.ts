@@ -59,6 +59,7 @@ export function runRules(set: ContentSet, findings: Findings, tokens: Tokens): v
   checkMnemonics(set, findings);
   checkPyq(set, findings);
   checkExtras(set, findings);
+  checkPalaceTemplates(set, findings);
   checkMedia(set, findings);
   checkSeedSpecs(set, findings);
   checkCoverageInputs(set, findings);
@@ -966,6 +967,44 @@ function checkExtras(set: ContentSet, findings: Findings): void {
 }
 
 /**
+ * palace_template@1 (memory-labs §5.6, gap G3): ids unique, spots in a gapless walk order, a
+ * picture room's spots at {x, y} on a sunny-scene image and a 360° room's at {yaw, pitch} on a
+ * pano360 scene, and only exam profiles that exist.
+ */
+function checkPalaceTemplates(set: ContentSet, findings: Findings): void {
+  const seen = new Map<string, string>();
+  for (const { file, doc } of set.palaceTemplates) {
+    const other = seen.get(doc.id);
+    if (other) findings.error("duplicate_id", file, `palace template ${doc.id} is also defined in ${other}`, { id: doc.id });
+    else seen.set(doc.id, file);
+    for (const p of doc.exam_profiles ?? []) {
+      if (!set.profiles.has(p)) findings.error("ref_unknown_profile", file, `unknown exam profile ${p}`, { id: p });
+    }
+    const rooms = new Set<string>();
+    doc.rooms.forEach((room, r) => {
+      const path = `/rooms/${r}`;
+      if (rooms.has(room.id)) findings.error("palace_room_id", file, `room ${room.id} repeats`, { path });
+      rooms.add(room.id);
+      const pano = room.pano !== undefined;
+      if ((doc.kind === "pano360") !== pano) {
+        findings.error("palace_room_scene", file, `${doc.kind} rooms use ${doc.kind === "pano360" ? "a pano" : "an image"}`, { path });
+      }
+      if (room.image) {
+        const preset = set.media.get(room.image)?.request.preset;
+        if (preset && preset !== "sunny-scene") findings.error("palace_room_preset", file, `${room.image} is ${preset}; rooms use sunny-scene`, { path });
+      }
+      const orders = room.spots.map((s) => s.order).sort((a, b) => a - b);
+      if (orders.some((o, i) => o !== i)) findings.error("palace_spot_order", file, `room ${room.id}: spot order must run 0 to ${room.spots.length - 1}`, { path });
+      const ids = new Set(room.spots.map((s) => s.id));
+      if (ids.size !== room.spots.length) findings.error("palace_spot_id", file, `room ${room.id}: spot ids repeat`, { path });
+      room.spots.forEach((s, i) => {
+        if (("yaw" in s.pos) !== pano) findings.error("palace_spot_pos", file, `room ${room.id}: spot ${s.id} needs ${pano ? "{yaw, pitch}" : "{x, y}"}`, { path: `${path}/spots/${i}` });
+      });
+    });
+  }
+}
+
+/**
  * song@1: one version per locale the profiles need, each with its own sung audio (an audio_song
  * request in that locale, with a transcript), timings that run forward and fit the audio, and
  * line actions that exist.
@@ -1094,6 +1133,7 @@ function checkMedia(set: ContentSet, findings: Findings): void {
     ...set.questionFiles,
     ...set.mnemonicFiles,
     ...set.extras,
+    ...set.palaceTemplates,
     ...set.seedSpecs,
     ...set.sims,
   ] as { file: string; doc: unknown }[];

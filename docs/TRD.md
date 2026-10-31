@@ -336,7 +336,7 @@ flowchart LR
 | `LLMProvider.complete/stream(messages, tools, model_tier)` | Agnes AI | Tutor, Feynman grading, mnemonic forge, stories, Cornell fill, mind maps, content skills |
 | `ImageProvider.generate(prompt, style, size, seed)` | Agnes AI | All illustrations, diagrams and story art |
 | `RealtimeVoiceProvider.create_session(context)` | Gemini Live | Realtime voice tutor |
-| `SpeechProvider.tts(text, voice, locale)` / `.stt(audio, locale)` | Deepgram | Audio mnemonics, narration, read-aloud, voice answers, Feynman voice explanations, lecture transcripts |
+| `SpeechProvider.tts(text, voice, locale)` / `.stt(audio, locale)` | Deepgram (Flux TTS on v2; STT) | Audio mnemonics, narration, read-aloud, voice answers, Feynman voice explanations, lecture transcripts |
 | `EmbeddingProvider.embed_text(texts)` / `.embed_image(images)` | Chosen in Phase 0 (D2) | Content retrieval and the image index |
 
 - **Model tiers come from config, not code.** Each tier maps to an Agnes model through env vars (`AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`), so a model can be swapped without a deploy:
@@ -382,9 +382,9 @@ flowchart LR
 - **Realtime tutor:** the client asks `POST /v1/voice/session`. The API checks entitlement and quota, assembles the tutor context (system instructions, card, mastery, locale), and mints a **short-lived Gemini Live ephemeral token** locked to that config. The client then streams audio to Gemini Live directly, for low latency, and the API key never reaches the device.
   - Tools the voice tutor calls (for example `get_mastery`, `make_flashcard`) are relayed to the API, which executes them.
   - Transcripts come back to the API for storage, mastery signals and safety checks.
-- **Deepgram TTS:** audio mnemonics, rhymes and narration are generated in the worker, cached in R2 by `sha256(text + voice + locale)`, and shipped in bundles like any other media. On-demand TTS (for example, reading a tutor answer aloud) goes through the API with the same cache.
+- **Deepgram TTS (Flux, v2):** text-to-speech for both English and Hindi uses Deepgram Flux TTS, `POST https://api.deepgram.com/v2/speak?model=<voice id>`. Flux voice ids have the form `flux-<name>-hi` or `flux-<name>-en`: Deepgram lists 14 Hindi voices and 3 Indian-accent English voices (meena, naveen, priya). The owner picks one voice per locale and it is recorded in `skills/audio-maker/voices.json`; no voice or model id is written in code (the gateway's model settings come from config, as in §9.1). Audio mnemonics, rhymes and narration are generated in the worker, cached in R2 by `sha256(text + voice + locale)`, and shipped in bundles like any other media. On-demand TTS (for example, reading a tutor answer aloud) goes through the API with the same cache.
 - **Deepgram STT:** voice answers, spoken Feynman explanations and YouTube lecture transcripts (for transcript-to-flashcards).
-- **Hindi check (Phase 0):** confirm Deepgram's Hindi TTS voice and STT accuracy on a test set of Hindi and Hinglish. If a gap shows up, add a second `SpeechProvider` for Hindi only. That is a config change, not a rewrite.
+- **Hindi check (Phase 0):** Flux Hindi TTS was checked on 31 Oct 2026: Hindi samples read back correctly through Deepgram STT in Hindi, so no Hindi-only TTS provider is needed. Still to do: STT accuracy on a test set of Hindi and Hinglish. If an STT gap shows up, add a second `SpeechProvider` for Hindi STT only. That is a config change, not a rewrite.
 
 ### 9.5 Retrieval
 - `pgvector` in Supabase holds embeddings of published concept summaries, cards, questions and solutions, chunked per card, plus the image index (§9.3).
@@ -522,7 +522,7 @@ Key environment variables (names only):
 | Redis | `REDIS_URL` |
 | R2 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_ASSETS`, `_CONTENT`, `_UPLOADS`, `_STAGING` |
 | CDN | `CDN_BASE_URL` |
-| AI | `AGNES_AI_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `AI_TIER_VISION_MODEL`, `GEMINI_API_KEY`, `DEEPGRAM_API_KEY`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` |
+| AI | `AGNES_AI_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `AI_TIER_VISION_MODEL`, `GEMINI_API_KEY`, `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL`, `DEEPGRAM_STT_MODEL`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` |
 | Analytics | `CLICKHOUSE_URL`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `CLICKHOUSE_DATABASE` |
 | Payments | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `REVENUECAT_API_KEY`, `REVENUECAT_WEBHOOK_SECRET` |
 | Push | `EXPO_ACCESS_TOKEN` |
@@ -537,7 +537,7 @@ Key environment variables (names only):
 |---|---|---|---|
 | D1 | Web app approach (§2.1) | **Decided:** separate React (Vite) web app | Closed 29 Oct 2026 |
 | D2 | Embedding provider (text and image) | A multilingual model chosen by an evaluation (Agnes has no embeddings API) | Phase 0 |
-| D3 | Hindi speech quality | Test Deepgram Hindi TTS and STT. Add a Hindi-only fallback only if needed. | Phase 0 |
+| D3 | Hindi speech quality and voices | TTS: Deepgram Flux TTS on v2 for both languages, Hindi checked by STT read-back on 31 Oct 2026. Owner picks one voice per locale for `skills/audio-maker/voices.json`. STT: test Hindi and Hinglish accuracy; add a Hindi-only STT fallback only if needed. | Phase 0 |
 | D4 | Tracing backend | Grafana Cloud | Phase 0 |
 | D5 | Google sign-in library for Expo (SMS is no longer needed: Google is the only sign-in) | Buy the Universal Sign In licence of `@react-native-google-signin/google-signin` (Team, $249 a year, or free through the EAS offer): Credential Manager on Android, nonce on every platform, Expo config plugin. Fallback: a small in-house Expo module over `androidx.credentials` and `GoogleSignIn-iOS`. | Phase 0 |
 | D6 | Agnes AI API details | Endpoints and models documented in §9.3. Image generation confirmed working from the cloud environment on 29 Oct (about 12 s per 2K image; it returns 429 when called too fast, so the gateway retries with backoff). Still to confirm: streaming, tool calling and the exact rate limits. | Phase 0 |

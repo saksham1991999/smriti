@@ -172,6 +172,17 @@ export function parseExample(text: string, file: string, into: Catalog): void {
 export interface Report {
   undocumented: Read[];
   dead: { name: string; file: string }[];
+  /** Names in packages/config's SERVER_ENV_NAMES or SECRET_ENV_NAMES that no .env.example lists. */
+  stale: { name: string; list: string }[];
+}
+
+/** The string entries of `export const <list> = [ ... ] as const;` in packages/config/src/env.ts. */
+export function configEnvList(envTs: string, list: string): string[] {
+  const start = envTs.indexOf(`export const ${list} = [`);
+  if (start < 0) return [];
+  const end = envTs.indexOf("] as const", start);
+  const body = envTs.slice(start, end < 0 ? undefined : end);
+  return [...body.matchAll(/'([A-Z][A-Z0-9_]*)'|"([A-Z][A-Z0-9_]*)"/g)].map((x) => (x[1] ?? x[2]) as string);
 }
 
 export interface Sources {
@@ -298,8 +309,16 @@ export function check(root: string, sources: Sources = DEFAULT_SOURCES(root)): R
     if (wildcards.some((w) => name.startsWith(w))) continue;
     dead.push({ name, file });
   }
+  const stale: { name: string; list: string }[] = [];
+  if (envTs) {
+    for (const list of ["SERVER_ENV_NAMES", "SECRET_ENV_NAMES"]) {
+      for (const name of configEnvList(envTs, list)) {
+        if (!catalog.names.has(name)) stale.push({ name, list });
+      }
+    }
+  }
   const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
-  return { undocumented: undocumented.sort(byName), dead: dead.sort(byName) };
+  return { undocumented: undocumented.sort(byName), dead: dead.sort(byName), stale: stale.sort(byName) };
 }
 
 export function relativeTo(root: string, path: string): string {

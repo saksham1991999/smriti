@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 
-import { check, clientEnvKeys, parseExample, scanJs, scanPython, type Catalog } from "../src/env-scan.ts";
+import { check, clientEnvKeys, configEnvList, parseExample, scanJs, scanPython, type Catalog } from "../src/env-scan.ts";
 
 test("python: os.environ reads and pydantic-settings fields with aliases", () => {
   const src = [
@@ -75,9 +75,21 @@ test("check reports undocumented reads and unused names", () => {
   assert.deepEqual(r.dead.map((d) => d.name), ["LISTED_NOT_READ"]);
 });
 
+test("SERVER_ENV_NAMES and SECRET_ENV_NAMES must name documented variables", () => {
+  const envTs = "export const SERVER_ENV_NAMES = [\n  'KEPT',\n  'GONE',\n] as const;\nexport const SECRET_ENV_NAMES = ['KEPT'] as const;\n";
+  assert.deepEqual(configEnvList(envTs, "SERVER_ENV_NAMES"), ["KEPT", "GONE"]);
+  const root = repo({
+    "packages/config/src/env.ts": envTs,
+    "apps/api/smriti_api/x.py": 'import os\nos.environ.get("KEPT")\n',
+    ".env.example": "KEPT=\n",
+  });
+  assert.deepEqual(check(root).stale, [{ name: "GONE", list: "SERVER_ENV_NAMES" }]);
+});
+
 test("the repository passes", () => {
   const root = join(dirname(new URL(import.meta.url).pathname), "..", "..", "..");
   const r = check(root);
   assert.deepEqual(r.undocumented, []);
   assert.deepEqual(r.dead, []);
+  assert.deepEqual(r.stale, []);
 });

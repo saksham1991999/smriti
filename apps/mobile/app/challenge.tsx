@@ -1,17 +1,22 @@
+import { useAppStore } from '@smriti/app-core/react';
 import { localize } from '@smriti/content-schema/runtime';
 import type { Answer, AnyQuestion } from '@smriti/lesson-core';
 import { canSubmit, initialDraft, QuestionView } from '@smriti/lesson-player-native';
-import { Banner, Button, Card, Spinner, StatTile, Text } from '@smriti/ui-native';
+import { Banner, Button, Card, Sheet, Spinner, StatTile, Switch, Text } from '@smriti/ui-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { router, type Href } from 'expo-router';
 import { useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { canShareImage, shareViewAsImage } from '../src/platform/shareImage';
 import { useApp, useT, useUiState, useQueryScope } from '../src/services/context';
+import { examName } from '../src/services/exams';
 import { answerDailyChallenge, fetchDailyChallenge, practiceKeys, startDailyChallenge, type DailyChallenge } from '../src/services/practice';
+import { shareCardModel } from '../src/services/share';
 import { BuddyLine } from '../src/ui/Onboarding';
 import { QuestionHost } from '../src/ui/QuestionHost';
 import { BackHeader, Screen } from '../src/ui/Screen';
+import { ShareCard } from '../src/ui/ShareCard';
 
 /**
  * PRC-11 and PRC-12, today's challenge, on `/v1/daily-challenge/today`, `/start` and `/answer`.
@@ -31,6 +36,7 @@ export default function Challenge() {
   const [draft, setDraft] = useState<Answer | null>(null);
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [sharing, setSharing] = useState(false);
   const shownAt = useRef<number>(0);
   const back = () => (router.canGoBack() ? router.back() : router.replace('/practice' as Href));
   const c = today.data;
@@ -91,7 +97,12 @@ export default function Challenge() {
         <BuddyLine text={r.correct ? t('practice:PRC-12.pet_line_right') : t('practice:PRC-12.pet_line_wrong')} />
       </View>
     );
-    footer = <Button label={t('practice:PRC-12.done')} onPress={back} testID="challenge-done" />;
+    footer = (
+      <View style={styles.gap}>
+        <Button label={t('practice:PRC-12.done')} onPress={back} testID="challenge-done" />
+        <Button variant="secondary" icon="ShareNetwork" label={t('practice:PRC-12.share')} onPress={() => setSharing(true)} testID="challenge-share" />
+      </View>
+    );
   } else if (c.started_at && question) {
     body = (
       <QuestionHost>
@@ -123,7 +134,68 @@ export default function Challenge() {
       <BackHeader title={t('practice:PRC-11.title')} backLabel={t('ui:common.back')} onBack={back} />
       {failed ? <Banner tone="warning" icon="Warning" text={t('learn:LES-11.error')} testID="challenge-failed" /> : null}
       {body}
+      {c?.result ? <ShareSheet open={sharing} onOpenChange={setSharing} challenge={c} result={c.result} /> : null}
     </Screen>
+  );
+}
+
+/**
+ * PRC-13: the result card, drawn on the device from UI components with live text in the
+ * student's language, captured as an image and handed to the OS share sheet. No name, no
+ * question text and no link that identifies the student; nothing goes through Smriti.
+ */
+function ShareSheet({ open, onOpenChange, challenge, result }: { open: boolean; onOpenChange: (open: boolean) => void; challenge: DailyChallenge; result: NonNullable<DailyChallenge['result']> }) {
+  const app = useApp();
+  const t = useT();
+  const locale = useUiState((s) => s.locale);
+  const streak = useAppStore((s) => s.streak);
+  const pet = useAppStore((s) => s.pet);
+  const obPet = useUiState((s) => s.onboarding.pet);
+  const [showStreak, setShowStreak] = useState(true);
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const cardRef = useRef<View>(null);
+  const model = shareCardModel(result, challenge.day, streak?.current ?? null, showStreak);
+  const resultText = model.correct ? t('practice:PRC-13.solved') : t('practice:PRC-13.not_this_time');
+  const time = t('practice:PRC-13.time', { time: model.time });
+  const examShort = examName(app, challenge.exam) ?? app.appName();
+  const labels = {
+    title: t('practice:PRC-13.card_label', { exam_short: examShort }),
+    result: resultText,
+    time,
+    top: model.topPct !== null ? t('practice:PRC-13.top_band', { pct: model.topPct }) : null,
+    streak: model.streak !== null ? t('practice:PRC-13.streak', { streak: model.streak }) : null,
+    date: new Date(`${challenge.day}T00:00:00`).toLocaleDateString(locale === 'hi' ? 'hi-IN' : 'en-IN', { day: 'numeric', month: 'long', year: 'numeric' }),
+    footer: t('practice:PRC-13.footer_on_card', { brand: app.appName() }),
+    alt: t('practice:PRC-13.preview_alt', { result: resultText, time: model.time }),
+  };
+  const share = async () => {
+    setBusy(true);
+    setFailed(false);
+    try {
+      const target = (await canShareImage()) ? await shareViewAsImage(cardRef, t('practice:PRC-13.title')) : null;
+      if (target) app.track('daily_challenge_shared', { challenge_id: challenge.id, share_target: target });
+      else setFailed(true);
+    } catch {
+      setFailed(true);
+    }
+    setBusy(false);
+  };
+  return (
+    <Sheet
+      open={open}
+      onOpenChange={onOpenChange}
+      title={t('practice:PRC-13.title')}
+      height="full"
+      testID="PRC-13"
+      footer={<Button icon="ShareNetwork" label={t('practice:PRC-13.share')} loading={busy} onPress={() => void share()} fullWidth testID="share-send" />}
+    >
+      <View style={styles.gap}>
+        <ShareCard model={model} labels={labels} pet={{ species: pet?.species ?? obPet?.species ?? 'cat' }} cardRef={cardRef} />
+        {streak && streak.current > 0 ? <Switch label={t('practice:PRC-13.show_streak')} checked={showStreak} onCheckedChange={setShowStreak} testID="share-streak-toggle" /> : null}
+        {failed ? <Banner tone="warning" icon="Warning" text={t('practice:PRC-13.failed')} testID="share-failed" /> : null}
+      </View>
+    </Sheet>
   );
 }
 

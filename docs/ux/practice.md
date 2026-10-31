@@ -780,6 +780,8 @@ Placeholders:
 | Share | Share | शेयर करें |
 | Download | Download image | इमेज डाउनलोड करें |
 | Footer on card | Play today's challenge on Smriti | आज का चैलेंज Smriti पर खेलें |
+| Preview alt | Your result card: {result}, time {m:ss} | आपका नतीजा कार्ड: {result}, समय {m:ss} |
+| Failed | Couldn't open sharing. Try again. | शेयर नहीं खुल सका। फिर से कोशिश करें। |
 
 **Illustration slots:** `pet-cat` / `pet-dog`, 1:1, transparent, the pet in its result pose (same asset as PRC-12). The card composites this image with UI text in the student's language; nothing is baked into the illustration. Alt intent for the preview: "Your result card: {solved or not}, time {m:ss}".
 **States:**

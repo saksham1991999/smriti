@@ -106,6 +106,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       'expo-sqlite',
       'expo-localization',
       'expo-apple-authentication',
+      // PRC-13: the result card is captured on the device and handed to the OS share sheet.
+      'expo-sharing',
       ['expo-notifications', { color: accent }],
       // AI photo doubts (AI-07 / PRC-01 "Snap a doubt"): one photo of one question, never the mic.
       ['expo-image-picker', { photosPermission: 'Choose a photo of a question you want help with.', cameraPermission: 'Take a photo of a question you want help with.', microphonePermission: false }],

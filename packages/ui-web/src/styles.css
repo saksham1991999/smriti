@@ -83,6 +83,16 @@
     transform: translateX(24px);
   }
 }
+/* Pet hop: a small jump and land (little learner reactions). None with reduced motion. */
+@keyframes sm-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+}
 @keyframes sm-rise {
   from {
     opacity: 0;

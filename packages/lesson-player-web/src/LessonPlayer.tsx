@@ -7,15 +7,20 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { TypedBundle } from "@smriti/content-schema";
 import {
+  autoNarrate,
+  cardNarration,
   checkSimTask,
   currentCard,
   isReadOnly,
   LessonSession,
+  petReaction,
   playerRules,
+  readyMediaUrl,
   shownAnswer,
   shownOptionIds,
   workedSolution,
   type Answer,
+  type AudioPort,
   type Confidence,
   type EventEnvelope,
   type LessonAction,
@@ -34,11 +39,13 @@ import {
   SegmentedProgress,
   Text,
   cx,
+  useUI,
   focusRing,
   type Confidence as UiConfidence,
 } from "@smriti/ui-web";
 import { CardView, Title, type SimCardData, type SimHostApi } from "./cards";
-import { PlayerProvider, type PlayerContextValue, type Translate } from "./context";
+import { contentUrl, PlayerProvider, type PlayerContextValue, type Translate } from "./context";
+import { useNarration } from "./narration";
 import { canSubmit, initialDraft, QuestionView } from "./questions";
 import { RichText } from "./RichText";
 
@@ -69,6 +76,15 @@ export interface LessonPlayerProps {
   newId?: (now: number) => string;
   /** Lets the host dispatch actions (exit after LES-05) and read state. */
   sessionRef?: { current: LessonSession | null };
+  /**
+   * Plays card narration. Without one (or without ready audio) [Listen] is hidden and the lesson
+   * works the same, silently.
+   */
+  audio?: AudioPort;
+  /** The app's sound setting: when muted, narration never starts by itself and stops if playing. */
+  muted?: boolean;
+  /** Each time narration starts, for `narration_played` (`auto`: it started by itself). */
+  onNarrationPlayed?: (p: { cardId: string | null; auto: boolean }) => void;
 }
 
 const fromUi = (c: UiConfidence | null): Confidence | null => (c === "half" ? "fifty_fifty" : c);
@@ -97,6 +113,16 @@ export function LessonPlayer(props: LessonPlayerProps) {
   const readOnly = isReadOnly(state);
   const rules = playerRules(plan.mode);
   const gentle = rules.tone === "gentle";
+  const { reducedMotion } = useUI();
+  const narrationUrl = readyMediaUrl(bundle.media, cardNarration(card));
+  const narration = useNarration({
+    audio: props.audio,
+    src: narrationUrl ? contentUrl(props.contentBaseUrl, narrationUrl) : null,
+    cardKey: `${state.viewIndex}`,
+    auto: autoNarrate(rules, { muted: props.muted ?? false, readOnly }),
+    muted: props.muted ?? false,
+    onPlayed: (auto) => props.onNarrationPlayed?.({ cardId: card?.cardId ?? null, auto }),
+  });
 
   const act = (a: LessonAction) => {
     const before = session.state;
@@ -251,6 +277,16 @@ export function LessonPlayer(props: LessonPlayerProps) {
               {t(`learn:WEB-02.kind_${kind}` as Parameters<Translate>[0])}
             </span>
             {readOnly && <Icon name="Check" size={20} color="success" label={t("learn:WEB-02.read_only_note")} />}
+            {narration.toggle && (
+              <span className="ms-auto">
+                <IconButton
+                  icon={narration.status === "playing" ? "PauseCircle" : "SpeakerHigh"}
+                  label={narration.status === "playing" ? t("learn:LES-01.listen_pause") : t("learn:LES-01.listen")}
+                  onPress={narration.toggle}
+                  testID="lesson-listen"
+                />
+              </span>
+            )}
           </div>
           {q ? (
             <QuestionView
@@ -326,7 +362,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
             ) : (
               <RichText text={state.hint.text} />
             )}
-            {pet && <PetLine pet={{ species: pet.species, mood: "thinking" }} petName={pet.name} text={t("learn:LES-02.wrong_pet_line")} />}
+            {pet && <PetLine pet={{ species: pet.species, mood: gentle ? petReaction("wrong", reducedMotion).mood : "thinking" }} petName={pet.name} text={t("learn:LES-02.wrong_pet_line")} />}
           </Panel>
         )}
 
@@ -337,7 +373,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
               <Text variant="heading">{t("learn:LES-02.little_learner_shown_answer")}</Text>
             </div>
             {solution?.feynman && <RichText text={solution.feynman} />}
-            {pet && <PetLine pet={{ species: pet.species, mood: "happy" }} petName={pet.name} text={t("learn:LRN-18.little_learner_show_me")} />}
+            {pet && <PetLine pet={{ species: pet.species, mood: petReaction("shown", reducedMotion).mood }} petName={pet.name} text={t("learn:LRN-18.little_learner_show_me")} />}
           </Panel>
         )}
 

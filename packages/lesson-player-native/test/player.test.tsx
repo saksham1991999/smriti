@@ -1,13 +1,13 @@
 import type { TypedBundle } from "@smriti/content-schema/runtime";
 import { createI18n } from "@smriti/i18n";
-import { lessonConfig, planLesson, type EventEnvelope, type LessonState } from "@smriti/lesson-core";
+import { lessonConfig, planLesson, type AudioEvent, type AudioPort, type EventEnvelope, type LessonState } from "@smriti/lesson-core";
 import { UIProvider } from "@smriti/ui-native";
-import { fireEvent, render, screen } from "@testing-library/react-native";
+import { act, fireEvent, render, screen } from "@testing-library/react-native";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { LessonPlayer, cardKind, safeSvg, shuffleStable } from "../src";
+import { LessonPlayer, cardKind, safeSvg, shuffleStable, type LessonPlayerProps } from "../src";
 
 /** The fixture seed pack from tools/content-publish (`pnpm --filter @smriti/content-publish publish:fixtures`). */
 const SEED = join(__dirname, "../../../tools/content-publish/out/seed/fx/en/bundles");
@@ -21,8 +21,9 @@ const XP = { firstTry: 10, secondTry: 5, attempt: 1, complete: 20, combo: 10 };
 const metrics = { frame: { x: 0, y: 0, width: 390, height: 844 }, insets: { top: 47, left: 0, right: 0, bottom: 34 } };
 const i18n = createI18n({ locale: "en", brand: "Smriti" });
 
-async function renderPlayer(mode: "onboarding" | "deep_dive" | "little", topic = "fx.chapter-a.topic-a", biteId?: string, resumeIndex?: number) {
+async function renderPlayer(mode: "onboarding" | "deep_dive" | "little", topic = "fx.chapter-a.topic-a", biteId?: string, resumeIndex?: number, extra: Partial<LessonPlayerProps> = {}, prepare?: (b: TypedBundle) => void) {
   const { bundle: b, hash } = bundle(topic);
+  prepare?.(b);
   const config = lessonConfig(XP);
   const plan = planLesson(b, { mode, bundleVersion: hash, examDepth: null, config, biteId });
   const events: EventEnvelope[] = [];
@@ -43,11 +44,28 @@ async function renderPlayer(mode: "onboarding" | "deep_dive" | "little", topic =
           onRequestExit={() => undefined}
           clock={() => Date.parse("2026-10-30T04:30:00Z")}
           resumeIndex={resumeIndex}
+          {...extra}
         />
       </UIProvider>
     </SafeAreaProvider>,
   );
   return { plan, events, done };
+}
+
+function fakeAudio() {
+  const listeners = new Set<(e: AudioEvent) => void>();
+  const calls: string[] = [];
+  const port: AudioPort = {
+    play: (s) => void calls.push(`play ${s}`),
+    pause: () => void calls.push("pause"),
+    resume: () => void calls.push("resume"),
+    stop: () => void calls.push("stop"),
+    subscribe: (l) => {
+      listeners.add(l);
+      return () => void listeners.delete(l);
+    },
+  };
+  return { port, calls, emit: (e: AudioEvent) => act(() => listeners.forEach((l) => l(e))) };
 }
 
 describe("LessonPlayer", () => {
@@ -168,6 +186,74 @@ describe("LessonPlayer", () => {
       { correct: false, response: null },
       { correct: false, response: null },
     ]);
+  });
+
+  it("says the LES-02 pet lines on hint, guided finish and win, as on the web", async () => {
+    await renderPlayer("little", "fx.chapter-a.topic-a", undefined, 3, { pet: { species: "cat", name: "Miko" } });
+    await fireEvent.press(screen.getByTestId("option-b"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+    expect(screen.getByTestId("pet-line")).toHaveTextContent("Close! Look again.");
+    await fireEvent.press(screen.getByTestId("lesson-try-again"));
+    await fireEvent.press(screen.getByTestId("option-a"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+    expect(screen.getByTestId("pet-line")).toHaveTextContent("Look here!");
+    await fireEvent.press(screen.getByTestId("option-c"));
+    expect(screen.getByTestId("pet-line")).toHaveTextContent(/Nailed it!|You're on a roll!|That's the one!/);
+  });
+
+  it("shows no pet line without a pet", async () => {
+    await renderPlayer("little", "fx.chapter-a.topic-a", undefined, 3);
+    await fireEvent.press(screen.getByTestId("option-b"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+    expect(screen.queryByTestId("pet-line")).toBeNull();
+    expect(screen.getByTestId("feedback-hint")).toHaveTextContent(/Fixture trap A1\.b/);
+  });
+
+  describe("card narration", () => {
+    const ready = (b: TypedBundle) => {
+      const ref = (b.cards[0] as { narration?: string }).narration!;
+      b.media[ref] = { ...b.media[ref]!, status: "ready", url: "assets/narration-a.m4a" };
+    };
+    const src = "play file:///seed/assets/narration-a.m4a";
+    const resolveAudio = (u: string) => `file:///seed/${u}`;
+
+    it("auto-plays for little learners, pauses on request, and stops when the card changes", async () => {
+      const a = fakeAudio();
+      const played: boolean[] = [];
+      await renderPlayer("little", "fx.chapter-a.topic-a", undefined, undefined, { audio: a.port, resolveAudio, onNarrationPlayed: (p) => played.push(p.auto) }, ready);
+      expect(a.calls).toContain(src);
+      expect(played).toEqual([true]);
+      expect(screen.getByTestId("lesson-listen").props.accessibilityLabel).toBe("Pause");
+      await fireEvent.press(screen.getByTestId("lesson-listen"));
+      expect(a.calls.at(-1)).toBe("pause");
+      expect(screen.getByTestId("lesson-listen").props.accessibilityLabel).toBe("Listen");
+      await a.emit({ type: "ended" });
+      await fireEvent.press(screen.getByTestId("lesson-continue"));
+      expect(a.calls.at(-1)).toBe("stop");
+      expect(screen.queryByTestId("lesson-listen")).toBeNull();
+    });
+
+    it("never starts by itself when muted, but Listen still plays on request", async () => {
+      const a = fakeAudio();
+      await renderPlayer("little", "fx.chapter-a.topic-a", undefined, undefined, { audio: a.port, resolveAudio, muted: true }, ready);
+      expect(a.calls).not.toContain(src);
+      await fireEvent.press(screen.getByTestId("lesson-listen"));
+      expect(a.calls).toContain(src);
+    });
+
+    it("never auto-plays in a Deep Dive", async () => {
+      const a = fakeAudio();
+      await renderPlayer("deep_dive", "fx.chapter-a.topic-a", undefined, undefined, { audio: a.port, resolveAudio }, ready);
+      expect(a.calls).not.toContain(src);
+      expect(screen.getByTestId("lesson-listen").props.accessibilityLabel).toBe("Listen");
+    });
+
+    it("is silent and fully usable without an audio port", async () => {
+      await renderPlayer("little", "fx.chapter-a.topic-a", undefined, undefined, {}, ready);
+      expect(screen.queryByTestId("lesson-listen")).toBeNull();
+      await fireEvent.press(screen.getByTestId("lesson-continue"));
+      expect(screen.getByTestId("card-explainer")).toBeTruthy();
+    });
   });
 
   it("renders formula, worked example and derivation cards with build-time maths", async () => {

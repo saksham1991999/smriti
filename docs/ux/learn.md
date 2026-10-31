@@ -1307,8 +1307,11 @@ Not used for: "Make it stick" (MEM-19 has its own gate, `memory_lock`), PDF expo
 | Skip | Skip | छोड़ें |
 | Tutor a11y | Ask {pet_name} about this card | इस कार्ड के बारे में {pet_name} से पूछें |
 | Listen | Listen | सुनें |
+| Listen pause | Pause | रोकें |
 | More below | More below | नीचे और है |
 | Halfway pet line (shown once per bite in a Pet line toast) | Halfway there! | आधा रास्ता पूरा! |
+
+The "Listen pause" row is proposed: the narration button's label while narration plays (the button shows `Pause`).
 
 **Illustration slots:** per card (sub-blocks below). The shell itself has none.
 

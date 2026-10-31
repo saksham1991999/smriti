@@ -1,6 +1,6 @@
 import type { ActivityBundle, Manifest } from "@smriti/content-schema";
 import { createI18n } from "@smriti/i18n";
-import type { ActivityCompletion, AudioEvent, AudioPort } from "@smriti/lesson-core";
+import { PET_REACTION_MS, type ActivityCompletion, type AudioEvent, type AudioPort } from "@smriti/lesson-core";
 import { UIProvider } from "@smriti/ui-native";
 import { act, fireEvent, render, screen } from "@testing-library/react-native";
 import { readFileSync } from "node:fs";
@@ -140,6 +140,30 @@ describe("StoryPlayer", () => {
     } finally {
       jest.useRealTimers();
     }
+  });
+
+  it("the pet in the corner reacts at page turns, then settles (reduced motion: mood only)", async () => {
+    jest.useFakeTimers();
+    try {
+      const { bundle, hash } = activityBundle("story");
+      const { common } = base();
+      await show(<StoryPlayer bundle={bundle} activityId="sb.fx.chapter-a" bundleVersion={hash} t={tEn} pet={{ species: "cat", name: "Miko" }} {...common} />);
+      expect(screen.getByTestId("story-pet-happy", { includeHiddenElements: true })).toBeTruthy();
+      expect(screen.getByTestId("story-pet", { includeHiddenElements: true }).props.accessibilityElementsHidden).toBe(true);
+      await press("story-next");
+      expect(screen.getByTestId("story-pet-excited", { includeHiddenElements: true })).toBeTruthy();
+      await act(() => jest.advanceTimersByTime(PET_REACTION_MS));
+      expect(screen.getByTestId("story-pet-happy", { includeHiddenElements: true })).toBeTruthy();
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("shows no corner pet for an older reader", async () => {
+    const { bundle, hash } = activityBundle("story");
+    const { common } = base();
+    await show(<StoryPlayer bundle={bundle} activityId="sb.fx.chapter-a" bundleVersion={hash} t={tEn} little={false} pet={{ species: "cat", name: "Miko" }} {...common} />);
+    expect(screen.queryByTestId("story-pet", { includeHiddenElements: true })).toBeNull();
   });
 
   it("closes from the labelled close button", async () => {

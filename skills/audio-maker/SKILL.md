@@ -1,11 +1,11 @@
 ---
 name: audio-maker
-description: Produce Smriti's audio with Deepgram text-to-speech - lesson narration, audio mnemonics, rhymes and chants, pet voice lines - in English and Hindi, cached in R2 and listed in bundles. Use when a media request of kind audio_tts or audio_song is open.
+description: Produce Smriti's audio with Deepgram Flux text-to-speech (v2) - lesson narration, audio mnemonics, rhymes and chants, pet voice lines - in English and Hindi, cached in R2 and listed in bundles. Use when a media request of kind audio_tts or audio_song is open.
 ---
 
 # audio-maker
 
-Audio supports audio-first learners and visually impaired students (PRD §5.4), and narrates lessons for younger classes. Text-to-speech goes through Deepgram via the AI gateway's `SpeechProvider` (TRD §9.4).
+Audio supports audio-first learners and visually impaired students (PRD §5.4), and narrates lessons for younger classes. Text-to-speech goes through Deepgram Flux TTS on the v2 API (`POST https://api.deepgram.com/v2/speak`) via the AI gateway's `SpeechProvider` (TRD §9.4), for both English and Hindi. Never call Deepgram directly from a script or feature.
 
 ## Inputs
 
@@ -15,14 +15,16 @@ Audio supports audio-first learners and visually impaired students (PRD §5.4), 
 
 ## Voices
 
-- One narrator voice per locale, chosen in Phase 0 (TRD decision D3) and recorded in `skills/audio-maker/voices.json` once picked.
-- If a good Hindi voice isn't available from Deepgram, the Phase 0 decision names the Hindi fallback provider. Use whatever `voices.json` says, never a hard-coded voice.
+- Flux voice ids have the form `flux-<name>-<lang>` and are sent as the `model` query parameter: `-hi` voices for Hindi, `-en` voices for English. Deepgram lists 14 Hindi Flux voices and 3 Indian-accent English voices (meena, naveen, priya); the full list is in Deepgram's Flux voices page.
+- The Hindi voices were checked on 31 Oct 2026 by reading samples back with Deepgram speech-to-text in Hindi (samples and notes in the project files, `smriti/voice-samples/flux/`). No separate Hindi provider is needed.
+- One narrator voice per locale, picked by the owner (TRD decision D3) and recorded in `skills/audio-maker/voices.json`. That file doesn't exist yet: until the owner picks, stop and say so rather than choosing a voice.
+- Use whatever `voices.json` says. Never hard-code a voice or model id in a skill, script or code; the gateway takes the voice id as data and its own model settings from config.
 
 ## Steps
 
 1. **Prepare the script.** Write out numbers, units, symbols and abbreviations the way they should be spoken in that language (for example a formula read as words). Keep the on-screen text unchanged.
 2. **Check the cache.** The key is `sha256(script + voice + locale + speed)`. If an approved asset exists, reuse it.
-3. **Generate** through the gateway. For rhymes and chants, use a slower, rhythmic delivery (short lines, a pause at each line end).
+3. **Generate** through the gateway (Flux TTS, v2), with the locale's voice from `voices.json`. For rhymes and chants, use a slower, rhythmic delivery (short lines, a pause at each line end).
 4. **Backing loops** for rhymes may come only from CC0 or royalty-free libraries, with the licence recorded. Original sung melodies are out of scope until the owner picks a music provider.
 5. **Post-process:** trim silence, normalise loudness to −16 LUFS, encode to AAC or Opus at 64 kbps mono for speech.
 6. **Register** the asset (`source: deepgram_tts`, the script in `prompt`, the cache key in `prompt_hash`) and set the request's `result`. Every audio asset has its script stored as the caption or transcript.

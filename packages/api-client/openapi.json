@@ -902,11 +902,22 @@
         "tags": ["gamification"],
         "summary": "Plan a rest day (today or ahead)",
         "operationId": "set_rest_day_v1_streak_rest_day_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": { "schema": { "$ref": "#/components/schemas/RestDayRequest" } }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -937,6 +948,15 @@
             "in": "path",
             "required": true,
             "schema": { "type": "string", "format": "date", "title": "Day" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -1338,6 +1358,17 @@
         "tags": ["practice"],
         "summary": "Start a drill, PYQ or chapter-test session, sized to today's free questions",
         "operationId": "create_session_v1_practice_sessions_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1577,6 +1608,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -1889,6 +1929,15 @@
             "in": "path",
             "required": true,
             "schema": { "type": "string", "format": "uuid", "title": "Challenge Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -2119,6 +2168,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "requestBody": {
@@ -2222,6 +2280,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -2415,6 +2482,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "requestBody": {
@@ -2487,6 +2563,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -2561,6 +2646,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -2627,6 +2721,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -2701,6 +2804,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -2767,6 +2879,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -3282,6 +3403,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
               "title": "Exam"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -5451,11 +5581,22 @@
         "tags": ["voice"],
         "summary": "Explain a concept back; graded against its key points (AI-10, AI-11)",
         "operationId": "feynman_attempt_v1_feynman_attempts_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": { "schema": { "$ref": "#/components/schemas/FeynmanIn" } }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -5574,11 +5715,22 @@
         "tags": ["insights"],
         "summary": "Start a mixed drill across chapters or subjects you have learned (practice §5.3)",
         "operationId": "interleaved_v1_practice_interleaved_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": { "schema": { "$ref": "#/components/schemas/InterleavedIn" } }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {

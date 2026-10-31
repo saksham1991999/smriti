@@ -7,16 +7,18 @@ Answers stream as server-sent events. Event types: ``session`` (ask endpoints on
 
 from __future__ import annotations
 
+import hashlib
 import uuid
 from collections.abc import AsyncIterator
 from datetime import datetime
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Path, Query, Request, Response
-from fastapi.responses import StreamingResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 
-from smriti_api.core.deps import CurrentUser, Services
+from smriti_api.core.deps import CurrentUser, IdempotencyKey, Services
 from smriti_api.core.errors import ApiError
+from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import tutor as t
 from smriti_api.services import content_reports, doubt_photo, tutor
 
@@ -215,13 +217,23 @@ async def upload_doubt_photo(
     request: Request,
     services: Services,
     auth: CurrentUser,
+    key: IdempotencyKey,
     exam: Annotated[str | None, Query(max_length=200)] = None,
-) -> t.DoubtPhotoOut:
+) -> JSONResponse:
     if services.integrations is None:
         raise ApiError(503, "integrations_unavailable", "This service is not set up here")
+    storage = services.integrations.storage
     data = await _read_capped(request, doubt_photo.MAX_PHOTO_BYTES)
-    return await doubt_photo.upload(
-        services.db, services.ai, services.integrations.storage, auth, data, exam
+    # A retried upload (same key, same bytes) returns the first read instead of a second one
+    # against the quota. Only the digest is fingerprinted; the image is never stored for this.
+    return await idempotent(
+        services,
+        scope="doubt_photo",
+        subject=auth.user_id,
+        key=key,
+        body={"sha256": hashlib.sha256(data).hexdigest(), "exam": exam},
+        status=201,
+        fn=lambda: doubt_photo.upload(services.db, services.ai, storage, auth, data, exam),
     )
 
 

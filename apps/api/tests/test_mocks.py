@@ -637,3 +637,21 @@ def test_locked_sections_follow_their_timers() -> None:
     assert mock_service._advance(a, start + timedelta(minutes=26)) == ["s2"]
     assert a.state["current"] is None
     assert mock_service._due(a, start + timedelta(minutes=26), timedelta(0))
+
+
+async def test_mock_mutations_replay_under_an_idempotency_key(
+    client: httpx.AsyncClient, blueprint: str
+) -> None:
+    s = await learner(client, blueprint)
+    body = {"attempt_id": str(uuid.uuid4()), "language": "en"}
+    headers = {**s.headers, "Idempotency-Key": "mock-start-1"}
+    first = await client.post(f"/v1/mocks/{SECTION_A}/attempts", json=body, headers=headers)
+    again = await client.post(f"/v1/mocks/{SECTION_A}/attempts", json=body, headers=headers)
+    assert first.status_code == again.status_code == 201, first.text
+    assert again.json()["id"] == first.json()["id"] == body["attempt_id"]
+    aid = body["attempt_id"]
+    headers = {**s.headers, "Idempotency-Key": "mock-abandon-1"}
+    first = await client.post(f"/v1/attempts/{aid}/abandon", headers=headers)
+    again = await client.post(f"/v1/attempts/{aid}/abandon", headers=headers)
+    assert first.status_code == again.status_code == 200, again.text
+    assert again.json() == first.json() and first.json()["status"] == "abandoned"

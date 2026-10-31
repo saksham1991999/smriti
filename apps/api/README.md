@@ -81,7 +81,10 @@ tests/             pytest (async, against the local Postgres)
 - **Errors.** Every error is `application/problem+json` with a stable `code`
   (`login_required`, `not_enough_gems`, `idempotency_key_reused`, …).
 - **Idempotency.** Mutations that touch progress or money take `Idempotency-Key`; the first
-  response is replayed for 24 h, and a reused key with another body is a 422.
+  response is replayed for 24 h, and a reused key with another body is a 422. Every mutation
+  declares the header in OpenAPI unless `tests/test_idempotency_audit.py` lists why it doesn't
+  need one (an id in the body, a DELETE, a one-time secret, a webhook); a new mutation fails that
+  test until it does one or the other. All mock and daily-challenge mutations take it.
 - **Sync.** `POST /v1/sync/events` stores each event once (`learn.sync_events` is the idempotency
   store) and applies it in its own savepoint, so one bad event is rejected alone. Each event is
   placed on the local day of its own `tz`. The server then recomputes activity days, the streak,

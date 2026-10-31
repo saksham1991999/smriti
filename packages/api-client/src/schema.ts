@@ -9585,7 +9585,9 @@ export interface operations {
       query?: {
         exam?: string | null;
       };
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -9788,6 +9790,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -9824,6 +9827,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -9864,6 +9868,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -9935,6 +9940,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -9971,6 +9977,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10078,6 +10085,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10870,7 +10878,9 @@ export interface operations {
   challenge_start_v1_daily_challenge__challenge_id__start_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path: {
         challenge_id: string;
       };
@@ -11930,7 +11940,9 @@ export interface operations {
   feynman_attempt_v1_feynman_attempts_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -13794,6 +13806,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -13834,6 +13847,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -14121,7 +14135,9 @@ export interface operations {
   interleaved_v1_practice_interleaved_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -14206,7 +14222,9 @@ export interface operations {
   create_session_v1_practice_sessions_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -14312,6 +14330,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -15595,7 +15614,9 @@ export interface operations {
   set_rest_day_v1_streak_rest_day_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -15628,7 +15649,9 @@ export interface operations {
   clear_rest_day_v1_streak_rest_day__day__delete: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path: {
         day: string;
       };

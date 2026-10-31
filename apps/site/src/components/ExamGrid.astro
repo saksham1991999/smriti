@@ -24,6 +24,8 @@ const ACCENT_ART: Record<string, ArtName> = {
   ssc: "subject-reasoning",
 };
 const Heading = headingLevel === 1 ? "h1" : "h2";
+// Card titles sit one level under the section heading (no skipped heading levels).
+const CardHeading = headingLevel === 1 ? "h2" : "h3";
 const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, exam) }));
 // Exam apps with nothing released yet: named, marked "coming soon", and never linked.
 const upcoming = upcomingApps(site.apps, idx.exams.map((e) => e.id));
@@ -50,11 +52,11 @@ const sub = cards.length === 0 ? m.exams.soonSub : fmt(m.exams.sub, { brand: sit
               <span class="pill">{exam.short_name[lang]}</span>
               <Art name={ACCENT_ART[exam.accent] ?? "subject-physics"} lang={lang} decorative sizes="120px" class="exam-art" />
             </div>
-            <h3 class="t-title">
+            <CardHeading class="t-title">
               <a href={localePath(lang, paths.exam(exam))} class="stretched">
                 {exam.name[lang]}
               </a>
-            </h3>
+            </CardHeading>
             <ul class="subjects" role="list">
               {subjects.map((s) => (
                 <li class="chip">{s.subject.name[lang]}</li>
@@ -74,7 +76,7 @@ const sub = cards.length === 0 ? m.exams.soonSub : fmt(m.exams.sub, { brand: sit
               <span class="pill">{app.phase > 1 ? m.exams.later : m.exams.soon}</span>
               <Art name={ACCENT_ART[app.id] ?? "subject-physics"} lang={lang} decorative sizes="120px" class="exam-art" />
             </div>
-            <h3 class="t-title">{m.apps.names[app.id]}</h3>
+            <CardHeading class="t-title">{m.apps.names[app.id]}</CardHeading>
             <p class="t-label muted">{fmt(m.exams.soonApp, { app: app.appName[lang] })}</p>
           </li>
         ))

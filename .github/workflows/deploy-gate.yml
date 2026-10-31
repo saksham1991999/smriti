@@ -1,0 +1,78 @@
+# Shared gate for the deploy-*.yml workflows: picks the environment and the commit, and refuses to
+# deploy a commit whose CI has not passed.
+#   - workflow_run (a green CI run of a push to main)  -> staging, that run's commit
+#   - push of a tag                                     -> production, the tagged commit
+#   - workflow_dispatch                                 -> the chosen environment, the dispatched commit
+# Production jobs then wait for the GitHub "production" environment's required reviewers.
+name: Deploy gate
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: "workflow_dispatch only: staging or production"
+        type: string
+        default: ""
+      ci-workflows:
+        description: "Workflow files that must have passed for the commit (space separated)"
+        type: string
+        default: "ci.yml"
+    outputs:
+      environment:
+        value: ${{ jobs.gate.outputs.environment }}
+      sha:
+        value: ${{ jobs.gate.outputs.sha }}
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  gate:
+    name: CI passed, pick environment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      environment: ${{ steps.pick.outputs.environment }}
+      sha: ${{ steps.pick.outputs.sha }}
+    steps:
+      - id: pick
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+          REF_TYPE: ${{ github.ref_type }}
+          SHA: ${{ github.sha }}
+          RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+          RUN_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          RUN_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          RUN_EVENT: ${{ github.event.workflow_run.event }}
+          INPUT_ENVIRONMENT: ${{ inputs.environment }}
+          CI_WORKFLOWS: ${{ inputs.ci-workflows }}
+        run: |
+          set -euo pipefail
+          case "$EVENT" in
+            workflow_run)
+              # Only a green run of a push to main; never a pull request's run.
+              if [ "$RUN_CONCLUSION" != "success" ] || [ "$RUN_BRANCH" != "main" ] || [ "$RUN_EVENT" != "push" ]; then
+                echo "::error::the triggering run is not a green push to main"; exit 1
+              fi
+              environment=staging; sha="$RUN_SHA" ;;
+            push)
+              if [ "$REF_TYPE" != "tag" ]; then echo "::error::production deploys come from tags"; exit 1; fi
+              environment=production; sha="$SHA" ;;
+            workflow_dispatch)
+              case "$INPUT_ENVIRONMENT" in staging|production) ;; *) echo "::error::environment must be staging or production"; exit 1 ;; esac
+              environment="$INPUT_ENVIRONMENT"; sha="$SHA" ;;
+            *) echo "::error::unsupported event $EVENT"; exit 1 ;;
+          esac
+          if [ "$EVENT" != "workflow_run" ]; then
+            # Tags and manual runs: every required workflow must have a successful run on this exact commit.
+            for wf in $CI_WORKFLOWS; do
+              ok=$(gh run list -R "$REPO" --workflow "$wf" --commit "$sha" --status success --limit 1 --json databaseId --jq 'length')
+              if [ "$ok" -lt 1 ]; then echo "::error::$wf has not passed for $sha; push it to main first"; exit 1; fi
+            done
+          fi
+          echo "environment=$environment" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "Deploying $sha to $environment"

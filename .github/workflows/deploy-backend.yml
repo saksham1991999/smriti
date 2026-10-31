@@ -1,0 +1,91 @@
+# API and worker to Railway (infra/railway). Staging after every green CI on main; production on a
+# v* tag after the "production" environment's reviewers approve. The api deploy runs the database
+# migrations as its pre-deploy step (python -m smriti_api.migrate --seed), so it goes first.
+# Skips (with a notice) while the environment has no RAILWAY_TOKEN secret. No secret values here.
+name: Deploy backend
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        type: choice
+        options: [staging, production]
+        default: staging
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  RAILWAY_CLI_VERSION: "5.70.0"
+
+jobs:
+  gate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    uses: ./.github/workflows/deploy-gate.yml
+    with:
+      environment: ${{ inputs.environment || '' }}
+
+  railway:
+    name: Railway (${{ needs.gate.outputs.environment }})
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    environment:
+      name: ${{ needs.gate.outputs.environment }}
+      url: ${{ vars.API_PUBLIC_URL }}
+    concurrency:
+      group: deploy-backend-${{ needs.gate.outputs.environment }}
+      cancel-in-progress: false
+    env:
+      ENVIRONMENT: ${{ needs.gate.outputs.environment }}
+    steps:
+      - name: Secrets present
+        id: secrets
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ]; then
+            echo "::notice::RAILWAY_TOKEN is not set for $ENVIRONMENT; skipping the backend deploy (docs/DEPLOY.md)"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+
+      # api first: its pre-deploy command applies the migrations before any new code runs.
+      - name: Deploy api
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: npx --yes "@railway/cli@${RAILWAY_CLI_VERSION}" up --ci --service api --environment "$ENVIRONMENT"
+
+      - name: Deploy worker
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: npx --yes "@railway/cli@${RAILWAY_CLI_VERSION}" up --ci --service worker --environment "$ENVIRONMENT"
+
+      - name: Smoke test
+        if: steps.secrets.outputs.ready == 'true' && vars.API_PUBLIC_URL != ''
+        env:
+          API_PUBLIC_URL: ${{ vars.API_PUBLIC_URL }}
+        run: |
+          curl --fail --silent --show-error --retry 10 --retry-delay 6 --retry-all-errors "${API_PUBLIC_URL%/}/readyz"
+          curl --fail --silent --show-error -o /dev/null -H "X-App-Variant: all" "${API_PUBLIC_URL%/}/v1/config"

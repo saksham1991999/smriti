@@ -388,9 +388,9 @@ export class FakeApiServer {
     const stageByPoints = stageForPoints(points);
     const pet = this.pet(user, plantRolled.health);
 
-    const xp = user.events.filter((e) => e.type === 'lesson_completed') as WireEvent<'lesson_completed'>[];
-    const xpToday = xp.filter((e) => localDate(e.occurred_at, tz) === today).reduce((s, e) => s + (e.payload.xp ?? 0), 0);
-    const xpTotal = xp.reduce((s, e) => s + (e.payload.xp ?? 0), 0);
+    const xp = user.events.filter((e) => eventXp(e) > 0);
+    const xpToday = xp.filter((e) => localDate(e.occurred_at, tz) === today).reduce((s, e) => s + eventXp(e), 0);
+    const xpTotal = xp.reduce((s, e) => s + eventXp(e), 0);
 
     return {
       state_version: user.stateVersion,
@@ -518,6 +518,13 @@ export class FakeApiServer {
       profiles: [{ id: e.exam_profile_id, cycle: '2027', name: e.name, locales: ['en', 'hi'], schedule: null, is_active: true }],
     }));
   }
+}
+
+/** XP an event earns, as apps/api services/xp.py: a lesson's own xp; a little learner's activity, stars x `xp.little_activity_star` (1). */
+function eventXp(e: WireEvent): number {
+  if (e.type === 'lesson_completed') return (e as WireEvent<'lesson_completed'>).payload.xp ?? 0;
+  if (e.type === 'activity_completed') return Math.min(100, Math.max(0, (e as WireEvent<'activity_completed'>).payload.stars)) * 1;
+  return 0;
 }
 
 function validate(e: WireEvent | undefined): string | null {

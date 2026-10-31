@@ -28,7 +28,7 @@ afterEach(() => {
   provideAppForTests(null);
 });
 
-test('HOME-06 with three tabs, the path and coming-soon song and play nodes', async () => {
+test('HOME-06 with three tabs and a path of stories, lessons, songs and play', async () => {
   await onboardLittle(rig);
   await renderRouter(appDir, { initialUrl: '/learn' });
   await screen.findByTestId('HOME-06', {}, { timeout: 10_000 });
@@ -38,17 +38,43 @@ test('HOME-06 with three tabs, the path and coming-soon song and play nodes', as
   expect(bar).not.toHaveTextContent(/Practice/);
   expect(screen.getByTestId('little-line')).toHaveTextContent('Ready for an adventure?');
 
+  // The fixture topic has a storybook, a song and a play activity around its lesson.
   const model = await loadLittlePath(rig.app, null);
-  const kinds = model.nodes.map((n) => n.kind);
-  expect(kinds.slice(-2)).toEqual(['song', 'play']);
-  // The song node is shown but never opens: the pet says it is coming.
-  const songIndex = model.nodes.length - 2;
-  await fireEvent.press(await screen.findByTestId(`little-node-${songIndex}`));
-  expect(screen.getByTestId('little-line')).toHaveTextContent('Coming soon!');
+  expect(model.nodes.slice(0, 4).map((n) => n.kind)).toEqual(['story', 'lesson', 'song', 'play']);
+  expect(model.current).toBe(0);
+  expect(screen.getByTestId('little-node-2')).toHaveAccessibleName(/^Song time, /);
 
-  // [Play] opens the current lesson in the player.
+  // [Play] opens the story (LRN-11, the lesson-player-native StoryPlayer). Reading to the end
+  // and [Done] records activity_completed and marks the node done.
+  await fireEvent.press(screen.getByTestId('little-play'));
+  await screen.findByTestId('LRN-11', {}, { timeout: 10_000 });
+  const total = Number(/of (\d+)/.exec(String(screen.getByTestId('story-page-count').props.children))?.[1] ?? 0);
+  for (let i = 0; i < total; i++) await fireEvent.press(screen.getByTestId('story-next'));
+  await fireEvent.press(screen.getByTestId('story-done'));
+  await screen.findByTestId('HOME-06', {}, { timeout: 10_000 });
+  await waitFor(() => expect(screen.getByTestId('little-node-0-star')).toBeTruthy(), { timeout: 5_000 });
+  await waitFor(() => {
+    const me = [...rig.fake.users.values()].find((u) => u.id === rig.app.store.getState().session.userId)!;
+    expect(me.events.filter((e) => e.type === 'activity_completed')).toHaveLength(1);
+  });
+  expect(rig.fake.rejections).toEqual([]);
+
+  // The current node moves to the lesson; [Play] opens it in the player.
   await fireEvent.press(screen.getByTestId('little-play'));
   await screen.findByTestId('LES-01', {}, { timeout: 10_000 });
+});
+
+test('the song and play nodes open LRN-17 and LRN-18', async () => {
+  await onboardLittle(rig);
+  await renderRouter(appDir, { initialUrl: '/learn' });
+  await screen.findByTestId('HOME-06', {}, { timeout: 10_000 });
+  await fireEvent.press(screen.getByTestId('little-node-2'));
+  await screen.findByTestId('LRN-17', {}, { timeout: 10_000 });
+  await fireEvent.press(screen.getByTestId('activity-close'));
+  await screen.findByTestId('HOME-06', {}, { timeout: 10_000 });
+  await fireEvent.press(screen.getByTestId('little-node-3'));
+  await screen.findByTestId('LRN-18', {}, { timeout: 10_000 });
+  expect(screen.getByTestId('activity-close')).toHaveAccessibleName('Close');
 });
 
 test('without the flag a class 3 child keeps HOME-01 and still has no Practice tab', async () => {

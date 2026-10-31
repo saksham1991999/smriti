@@ -2,7 +2,7 @@ import { displayHealth, gentlePetState, playNode, type PetState } from '@smriti/
 import { useAppStore } from '@smriti/app-core/react';
 import type { MessageKey } from '@smriti/i18n';
 import { Button, Icon, IconButton, Illustration, PetAvatar, PetView, PlantView, Text, useTheme, useSubject, type IconName } from '@smriti/ui-native';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, type Href } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -76,7 +76,9 @@ export function LittleHome() {
     if (out.kind === 'not_ready') return say('learn:HOME-06.little_learner_coming_soon');
     if (out.kind === 'needs_internet') return say('learn:HOME-06.little_learner_needs_internet');
     if (out.kind === 'ask_grown_up') return say('learn:HOME-06.little_learner_pro_node');
-    if (out.route === 'LES-01') router.push({ pathname: '/lesson/[topicId]', params: { topicId: out.ref, mode: 'deep_dive' } });
+    if (out.route === 'LES-01') return router.push({ pathname: '/lesson/[topicId]', params: { topicId: out.ref, mode: 'deep_dive' } });
+    // LRN-11 story, LRN-17 song, LRN-18 play: one screen, the kind picks the player.
+    router.push({ pathname: '/activity/[activityId]', params: { activityId: out.ref, topic: out.topicId ?? '', kind: node.kind } } as unknown as Href);
   };
 
   const mood = gentleMood(pet?.state, exp.gentle);
@@ -191,15 +193,15 @@ function PathNode({
   const theme = useTheme();
   const s = useSubject(subject);
   const size = isCurrent ? 112 : 88;
-  const label = node.coming ? t(KIND_LABEL[node.kind]) : node.title;
-  const a11y = node.coming
-    ? t('learn:HOME-06.little_learner_node_coming_a11y', { title: label })
-    : node.done
-      ? t('learn:HOME-06.little_learner_node_done_a11y', { title: label })
-      : node.locked
-        ? `${label}. ${t('learn:HOME-06.little_learner_pro_node')}`
-        : label;
-  const cloud = !node.coming && !node.available && offline;
+  const label = node.title || t(KIND_LABEL[node.kind]);
+  // The kind first ("Song time, …"): the icon alone never says what a node is.
+  const named = node.kind === 'lesson' ? label : `${t(KIND_LABEL[node.kind])}, ${label}`;
+  const a11y = node.done
+    ? t('learn:HOME-06.little_learner_node_done_a11y', { title: named })
+    : node.locked
+      ? `${named}. ${t('learn:HOME-06.little_learner_pro_node')}`
+      : named;
+  const cloud = !node.available && offline;
   return (
     <View style={[styles.nodeWrap, { transform: [{ translateX: ZIG[index % ZIG.length]! }] }]}>
       <View style={styles.nodeRow}>
@@ -213,24 +215,24 @@ function PathNode({
               width: size,
               height: size,
               borderRadius: size / 2,
-              backgroundColor: node.coming ? theme.colors.surfaceSunken : node.done ? s.strong : s.tint,
+              backgroundColor: node.done ? s.strong : s.tint,
               borderColor: isCurrent ? theme.colors.primary : theme.colors.line,
               borderWidth: isCurrent ? 4 : 2,
             },
           ]}
           testID={`little-node-${index}`}
         >
-          <Icon name={KIND_ICON[node.kind]} size={32} weight="fill" color={node.coming ? 'inkMuted' : node.done ? 'subjectOnStrong' : 'subjectText'} />
+          <Icon name={KIND_ICON[node.kind]} size={32} weight="fill" color={node.done ? 'subjectOnStrong' : 'subjectText'} />
           {node.done ? <Badge icon="Star" tone="primary" testID={`little-node-${index}-star`} /> : null}
           {node.locked ? <Badge icon="Lock" tone="muted" /> : null}
           {cloud ? <Badge icon="CloudSlash" tone="muted" /> : null}
         </Pressable>
         {isCurrent && petSpecies ? <PetView species={petSpecies} mood={mood === 'sleepy' ? 'sleepy' : 'happy'} under10={gentle} size={72} alt={`${petName}`} style={styles.nodePet} /> : null}
       </View>
-      <Text variant="label" align="center" numberOfLines={2} style={styles.nodeLabel} tone={node.coming ? 'muted' : 'ink'}>
-        {node.coming ? `${label} · ${t('learn:HOME-06.little_learner_coming_soon')}` : label}
+      <Text variant="label" align="center" numberOfLines={2} style={styles.nodeLabel} tone="ink">
+        {label}
       </Text>
-      {isCurrent && !node.coming ? (
+      {isCurrent ? (
         <Button label={t('learn:HOME-06.little_learner_play')} icon="Play" onPress={onPlay} style={[styles.play, { borderRadius: theme.radius.button }]} testID="little-play" />
       ) : null}
       {!last ? <View style={[styles.dots, { borderColor: theme.colors.track }]} /> : null}

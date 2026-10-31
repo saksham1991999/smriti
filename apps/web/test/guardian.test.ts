@@ -9,6 +9,7 @@ const consent = (over: Partial<MyConsent>): MyConsent => ({
   needs_consent: true,
   pending_link_requests: 0,
   pending_request_id: null,
+  pending_link_requests: 0,
   retry_at: null,
   scopes: [],
   state: "required",

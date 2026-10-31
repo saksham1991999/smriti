@@ -118,6 +118,10 @@ build_db() {
   if [ -f "$ROOT/supabase/seed.sql" ]; then
     apply_sql "$db" "$ROOT/supabase/seed.sql"
   fi
+  # Local-only rows (dev quests); release runs `migrate --seed`, which never reads this file.
+  if [ -f "$ROOT/supabase/seed_dev.sql" ]; then
+    apply_sql "$db" "$ROOT/supabase/seed_dev.sql"
+  fi
   log "$db: $count migrations applied, seed loaded"
 }
 

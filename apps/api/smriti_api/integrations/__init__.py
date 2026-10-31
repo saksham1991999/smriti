@@ -14,12 +14,18 @@ from pathlib import Path
 import httpx
 
 from smriti_api.core.config import REPO_ROOT, Settings
+from smriti_api.integrations.analytics_store import ClickHouseClient
 from smriti_api.integrations.attestation import AttestationVerifier, build_attestation
 from smriti_api.integrations.billing import (
     FakeRazorpayProvider,
     FakeRevenueCatProvider,
     RazorpayProvider,
     RevenueCatProvider,
+)
+from smriti_api.integrations.event_store import (
+    ClickHouseEventStore,
+    EventStore,
+    FileEventStore,
 )
 from smriti_api.integrations.mail import (
     DisabledMailer,
@@ -61,6 +67,25 @@ class Integrations:
     web_push_public_key: str | None = None
     # Play Integrity and App Attest (G-10). Built in build_integrations.
     attestation: AttestationVerifier | None = None
+    # POST /v1/analytics/events: ClickHouse by env, a local file in dev and test, else None.
+    event_store: EventStore | None = None
+
+
+def _event_store(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> EventStore | None:
+    if cfg.clickhouse_url:
+        return ClickHouseEventStore(
+            ClickHouseClient(
+                http,
+                url=cfg.clickhouse_url,
+                user=cfg.clickhouse_user,
+                password=cfg.clickhouse_password,
+                database=cfg.clickhouse_database,
+            )
+        )
+    if dev:
+        path = cfg.analytics_events_file or str(REPO_ROOT / ".dev" / "analytics" / "events.jsonl")
+        return FileEventStore(Path(path))
+    return None
 
 
 def _mailer(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> Mailer:
@@ -183,6 +208,7 @@ def build_integrations(
         billing_configured=configured or dev,
         web_push=web_push,
         web_push_public_key=web_push_key,
+        event_store=_event_store(cfg, http, dev),
         attestation=build_attestation(
             http,
             dev=dev,

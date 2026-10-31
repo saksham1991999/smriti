@@ -165,7 +165,8 @@ async def get_shop(db: Database, auth: AuthContext) -> a.ShopResponse:
         items = (
             await session.execute(
                 text(
-                    "select si.id, si.kind, si.price_gems, si.pro_only, coalesce(i.qty, 0) as owned"
+                    "select si.id, si.kind, si.name_key, si.price_gems, si.pro_only,"
+                    " coalesce(i.qty, 0) as owned"
                     " from game.shop_items si left join game.inventory i on i.item_id = si.id and i.user_id = :u"
                     " where si.active order by si.kind, si.price_gems, si.id"
                 ),
@@ -191,6 +192,7 @@ async def get_shop(db: Database, auth: AuthContext) -> a.ShopResponse:
             a.ShopItemOut(
                 id=i.id,
                 kind=i.kind,
+                name_key=i.name_key,
                 price_gems=i.price_gems,
                 pro_only=i.pro_only,
                 owned=int(held_freezes) if i.kind == "freeze" else int(i.owned),
@@ -256,6 +258,10 @@ async def gem_ledger(
     return page_from_rows(entries, n, lambda e: {"at": e.created_at.isoformat(), "id": str(e.id)})
 
 
+def _key_or_none(value: object) -> str | None:
+    return value if isinstance(value, str) and a.I18N_KEY.match(value) else None
+
+
 async def list_quests(db: Database, auth: AuthContext) -> list[a.QuestOut]:
     async with db.user_tx(auth.claims) as session:
         facts = await load_user_facts(session, auth.user_id)
@@ -291,6 +297,7 @@ async def list_quests(db: Database, auth: AuthContext) -> list[a.QuestOut]:
                     id=q.id,
                     period=q.period,
                     counter=str(spec.get("counter")) if spec.get("counter") else None,
+                    title_key=_key_or_none(spec.get("title_key")),
                     target=target,
                     progress=min(progress, target),
                     reward={

@@ -33,8 +33,8 @@ from smriti_api.core.errors import ApiError
 from smriti_api.core.logging import hash_user_id
 from smriti_api.integrations import Integrations
 from smriti_api.schemas import guardian as g
+from smriti_api.services import consent_notice, notify
 from smriti_api.services import flags as flag_service
-from smriti_api.services import notify
 from smriti_api.services.guardian import (
     _flag_int,
     _profile,
@@ -306,6 +306,7 @@ async def accept(
         await lock_state(session, teen.user_id)
         p = await _require_teen(session, teen)
         r = await _mine(session, teen, request_id)
+        await consent_notice.check_version(session, body.notice_version)
         flags = await flag_service.server_flags(session)
         evidence = {
             "accepted_at": now.isoformat(),

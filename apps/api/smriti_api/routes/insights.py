@@ -6,8 +6,10 @@ from __future__ import annotations
 from typing import Annotated
 
 from fastapi import APIRouter, Query
+from fastapi.responses import JSONResponse
 
-from smriti_api.core.deps import CurrentUser, Services
+from smriti_api.core.deps import CurrentUser, IdempotencyKey, Services
+from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import analytics_summary as asum
 from smriti_api.schemas import practice as p
 from smriti_api.services import analytics_summary as analytics_summary_service
@@ -49,9 +51,17 @@ async def calibration(services: Services, auth: CurrentUser) -> ls.CalibrationOu
     summary="Start a mixed drill across chapters or subjects you have learned (practice §5.3)",
 )
 async def interleaved(
-    body: ls.InterleavedIn, services: Services, auth: CurrentUser
-) -> p.PracticeSession:
-    return await ls.build_interleaved(services.db, auth, body)
+    body: ls.InterleavedIn, services: Services, auth: CurrentUser, key: IdempotencyKey
+) -> JSONResponse:
+    # Also idempotent by body.session_id.
+    return await idempotent(
+        services,
+        scope="practice_interleaved",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        fn=lambda: ls.build_interleaved(services.db, auth, body),
+    )
 
 
 @router.get(

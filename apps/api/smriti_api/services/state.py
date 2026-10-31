@@ -8,7 +8,7 @@ roll-up has not run yet for this timezone.
 from __future__ import annotations
 
 import uuid
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 from sqlalchemy import text
@@ -134,6 +134,9 @@ async def streak_state(
     qualified = bool(day.qualified) if day else False
     rest_today = bool(day.rest_day) if day else False
     current = int(stats.current_streak)
+    freeze_days, incident_days = await _covered_gap(session, facts, rules, today)
+    monthly = rules.monthly_freezes_pro if facts.is_pro else rules.monthly_freezes_free
+    next_month = (today.replace(day=1) + timedelta(days=32)).replace(day=1)
     return s.StreakState(
         current=current,
         longest=int(stats.longest_streak),
@@ -142,7 +145,41 @@ async def streak_state(
         freezes_available=int(freezes.reserve),
         rest_day=await game_ops.next_rest_day(session, facts, now),
         at_risk=current > 0 and not qualified and not rest_today and not rules.is_incident(today),
+        freeze_used_days=freeze_days,
+        incident_days_covered=incident_days,
+        next_free_freeze_on=next_month if monthly > 0 else None,
     )
+
+
+# ENT-08 looks back at most this far for the current gap (a long break is its own variant).
+GAP_LOOKBACK_DAYS = 60
+
+
+async def _covered_gap(
+    session: AsyncSession, facts: UserFacts, rules: GameRules, today: date
+) -> tuple[list[date], list[date]]:
+    """The days between the last studied day and today that a freeze or an incident covered."""
+    floor = today - timedelta(days=GAP_LOOKBACK_DAYS)
+    rows = (
+        await session.execute(
+            text(
+                "select day, qualified, freeze_used from learn.activity_days"
+                " where user_id = :u and day >= :f and day < :t order by day"
+            ),
+            {"u": facts.user_id, "f": floor, "t": today},
+        )
+    ).all()
+    last = max((r.day for r in rows if r.qualified), default=None)
+    if last is None:  # no studied day to protect in the window
+        return [], []
+    start = last + timedelta(days=1)
+    freezes = [r.day for r in rows if r.freeze_used and r.day >= start]
+    incidents = [
+        start + timedelta(days=i)
+        for i in range((today - start).days)
+        if rules.is_incident(start + timedelta(days=i))
+    ]
+    return freezes, incidents
 
 
 async def plant_state(session: AsyncSession, user_id: uuid.UUID, rules: GameRules) -> s.PlantState:

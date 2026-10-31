@@ -122,6 +122,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/ai/doubt-photos/{photo_id}/similar": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** AI-19: the concepts the question matches and similar published questions */
+    get: operations["similar_to_doubt_photo_v1_ai_doubt_photos__photo_id__similar_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/ai/doubt-photos/{photo_id}/solve": {
     parameters: {
       query?: never;
@@ -133,6 +150,23 @@ export interface paths {
     put?: never;
     /** AI-19: solve the confirmed question as a tutor chat, hints first (SSE) */
     post: operations["solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/analytics/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A batch of analytics events: checked against the catalogue, age and consent policy */
+    post: operations["post_events_v1_analytics_events_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -371,6 +405,91 @@ export interface paths {
     get: operations["badges_v1_badges_get"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** PAY-03 [Send to my parent]: a 48 h link a parent opens to pay (token shown once) */
+    post: operations["create_child_payment_link_v1_billing_child_payment_links_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{link_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** The teen withdraws their open link */
+    delete: operations["cancel_child_payment_link_v1_billing_child_payment_links__link_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PAY-17 link page (no login): the child's first name, pet, price and link status */
+    get: operations["view_child_payment_link_v1_billing_child_payment_links__token__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{token}/subscription": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** PAY-17 [Continue to pay] from the link: a web subscription on the child's account */
+    post: operations["start_child_payment_link_v1_billing_child_payment_links__token__subscription_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{token}/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout signature; the link is used and Pro follows the webhook */
+    post: operations["verify_child_payment_link_v1_billing_child_payment_links__token__verify_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1522,6 +1641,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/consent-notice": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** AUTH-20 'Read the full notice': the current notice version and its URL (config) */
+    get: operations["consent_notice_v1_guardian_consent_notice_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/consent-requests": {
     parameters: {
       query?: never;
@@ -1585,6 +1721,23 @@ export interface paths {
     put?: never;
     post?: never;
     delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent-requests/{request_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** AUTH-21 [Cancel request]: the teen withdraws their pending request */
+    delete: operations["cancel_request_v1_guardian_consent_requests__request_id__delete"];
     options?: never;
     head?: never;
     patch?: never;
@@ -2718,6 +2871,74 @@ export interface paths {
     put?: never;
     /** Queue the review cards of some concepts (Fix next, add cards to reviews) */
     post: operations["queue_reviews_v1_reviews_queue_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start the role play for a card (or return its open chat) */
+    post: operations["start_chat_v1_roleplay_chats_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats/{session_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A role-play chat */
+    get: operations["get_chat_v1_roleplay_chats__session_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats/{session_id}/turns": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The student's turn: a suggested reply or typed text; the character answers */
+    post: operations["take_turn_v1_roleplay_chats__session_id__turns_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats/{session_id}/wrap-up": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** [Wrap up]: end the chat now and get the summary */
+    post: operations["wrap_up_v1_roleplay_chats__session_id__wrap_up_post"];
     delete?: never;
     options?: never;
     head?: never;
@@ -4266,6 +4487,71 @@ export interface components {
        */
       user_id: string;
     };
+    /** ChildPayLinkCreate */
+    ChildPayLinkCreate: {
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+    };
+    /**
+     * ChildPayLinkCreated
+     * @description Shown once: only the token's hash is kept.
+     */
+    ChildPayLinkCreated: {
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Plan
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+      /** Token */
+      token: string;
+      /** Url */
+      url: string;
+    };
+    /**
+     * ChildPayLinkOut
+     * @description What the parent's link page shows (no login): the child's first name and pet, the price
+     *     from the child's own eligibility, and whether the link still works.
+     */
+    ChildPayLinkOut: {
+      /** Amount Today Paise */
+      amount_today_paise: number | null;
+      /** Child First Name */
+      child_first_name: string | null;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /** Intro */
+      intro: boolean;
+      pet: components["schemas"]["PayLinkPet"] | null;
+      /**
+       * Plan
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "paid" | "expired" | "cancelled" | "already_pro";
+      /** Then Paise */
+      then_paise: number | null;
+    };
     /**
      * ChildProRequest
      * @description PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
@@ -4432,6 +4718,29 @@ export interface components {
        * @enum {string}
        */
       status: "granted" | "declined";
+    };
+    /**
+     * ConsentNoticeOut
+     * @description AUTH-20 "Read the full notice": the current notice, from config (legal publishes it).
+     */
+    ConsentNoticeOut: {
+      /**
+       * Locale
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /** Published */
+      published: boolean;
+      /**
+       * Url
+       * @description The full notice in `locale`; null until published
+       */
+      url: string | null;
+      /**
+       * Version
+       * @description Send this as notice_version when set; null until the notice is published
+       */
+      version: string | null;
     };
     /** ConsentOut */
     ConsentOut: {
@@ -5110,6 +5419,23 @@ export interface components {
       subject?: string | null;
     };
     /**
+     * DoubtSimilarOut
+     * @description AI-19 "Concepts used" and "Similar questions": published questions on the concepts the
+     *     confirmed question matches, as a PRC-03 fixed set (``question_ids``). Empty lists when
+     *     nothing in the course matches; the app hides the button then.
+     */
+    DoubtSimilarOut: {
+      /** Concepts */
+      concepts: components["schemas"]["SimilarConcept"][];
+      /**
+       * Photo Id
+       * Format: uuid
+       */
+      photo_id: string;
+      /** Question Ids */
+      question_ids: string[];
+    };
+    /**
      * DoubtSolve
      * @description AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is
      *     the student's message (the confirmed question or a chip); ``question_text`` saves an edit
@@ -5147,6 +5473,28 @@ export interface components {
       exam: string;
       /** Question Ids */
       question_ids: string[];
+    };
+    /** Dropped */
+    Dropped: {
+      /**
+       * Event Id
+       * Format: uuid
+       */
+      event_id: string;
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason:
+        | "unknown_event"
+        | "server_only"
+        | "minor_not_allowed"
+        | "little_learner_not_allowed"
+        | "opted_out"
+        | "awaiting_consent"
+        | "too_old"
+        | "in_the_future"
+        | "duplicate_in_batch";
     };
     /**
      * DuelAnswerIn
@@ -5527,6 +5875,65 @@ export interface components {
       status?:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
         | null;
+    };
+    /** EventBatchIn */
+    EventBatchIn: {
+      /** Events */
+      events: components["schemas"]["EventIn"][];
+    };
+    /** EventBatchOut */
+    EventBatchOut: {
+      /** Accepted */
+      accepted: string[];
+      /** Dropped */
+      dropped: components["schemas"]["Dropped"][];
+      /** Issues */
+      issues: components["schemas"]["PropIssue"][];
+    };
+    /**
+     * EventContext
+     * @description The client's common props (packages/analytics ``CommonContext``). Anything else is dropped.
+     *     ``is_guest`` and the audience come from the session and profile, never from here.
+     */
+    EventContext: {
+      /** App Variant */
+      app_variant: string;
+      /** App Version */
+      app_version?: string | null;
+      /** Exam Profile */
+      exam_profile?: string | null;
+      /**
+       * Locale
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /**
+       * Platform
+       * @enum {string}
+       */
+      platform: "ios" | "android" | "web";
+      /** Tier */
+      tier?: ("free" | "pro") | null;
+    };
+    /** EventIn */
+    EventIn: {
+      context: components["schemas"]["EventContext"];
+      /**
+       * Event Id
+       * Format: uuid
+       */
+      event_id: string;
+      /** Name */
+      name: string;
+      /**
+       * Occurred At
+       * Format: date-time
+       */
+      occurred_at: string;
+      /** Props */
+      props?: {
+        [key: string]: unknown;
+      };
     };
     /** ExamOut */
     ExamOut: {
@@ -7509,6 +7916,16 @@ export interface components {
       /** At */
       at?: string | null;
     };
+    /** PayLinkPet */
+    PayLinkPet: {
+      /** Name */
+      name: string;
+      /**
+       * Species
+       * @enum {string}
+       */
+      species: "cat" | "dog";
+    };
     /** PdfExportCreate */
     PdfExportCreate: {
       /**
@@ -7781,6 +8198,31 @@ export interface components {
       /** Timezone */
       timezone: string;
     };
+    /**
+     * PropIssue
+     * @description A prop that was removed: its name and why (never its value).
+     */
+    PropIssue: {
+      /**
+       * Code
+       * @enum {string}
+       */
+      code:
+        | "blocked_name"
+        | "unknown_prop"
+        | "free_text"
+        | "bad_type"
+        | "unknown_enum_value"
+        | "too_many_items"
+        | "stripped_for_minor";
+      /**
+       * Event Id
+       * Format: uuid
+       */
+      event_id: string;
+      /** Prop */
+      prop: string;
+    };
     /** PurchaseRequest */
     PurchaseRequest: {
       /** Item Id */
@@ -7965,6 +8407,11 @@ export interface components {
       };
       /** Target */
       target: number;
+      /**
+       * Title Key
+       * @description packages/i18n ME-20 template key; takes {n} = target
+       */
+      title_key?: string | null;
     };
     /** QueueState */
     QueueState: {
@@ -8325,6 +8772,148 @@ export interface components {
       /** State Version */
       state_version: number;
     };
+    /** RoleplayChat */
+    RoleplayChat: {
+      /** Card Id */
+      card_id: string;
+      /** End Reason */
+      end_reason?: ("goals_met" | "turn_cap" | "wrap_up") | null;
+      /**
+       * Goals Met
+       * @description Indexes into the card's goals
+       */
+      goals_met: number[];
+      /** Goals Total */
+      goals_total: number;
+      /**
+       * Max Turns
+       * @description Student turns per chat; null when no cap is set
+       */
+      max_turns: number | null;
+      /** Messages */
+      messages: components["schemas"]["RoleplayMessage"][];
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "ended";
+      summary?: components["schemas"]["RoleplaySummary"] | null;
+      /** Turns */
+      turns: number;
+    };
+    /** RoleplayMessage */
+    RoleplayMessage: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "student" | "character";
+      /** Text */
+      text: string;
+    };
+    /**
+     * RoleplayStart
+     * @description Starts the chat for a role-play card, or returns the open one for it.
+     */
+    RoleplayStart: {
+      /** Card Id */
+      card_id: string;
+    };
+    /**
+     * RoleplaySummary
+     * @description The end card: the goals the student met, as "What you found out", with the card's
+     *     concepts as chips. Both come from the published script, never from the model.
+     */
+    RoleplaySummary: {
+      /** Concepts */
+      concepts: components["schemas"]["SummaryConcept"][];
+      /** Found Out */
+      found_out: {
+        [key: string]: string;
+      }[];
+    };
+    /**
+     * RoleplayTurnIn
+     * @description One student turn: a tap on a suggested reply (``reply_index``) or typed ``text``.
+     *     Under-13s and little learners send replies only. ``client_message_id`` makes a retry safe.
+     */
+    RoleplayTurnIn: {
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Reply Index */
+      reply_index?: number | null;
+      /** Text */
+      text?: string | null;
+    };
+    /**
+     * RoleplayTurnOut
+     * @description ``step_out`` is set when the character stepped out of the story (the student asked for
+     *     something unsafe or off-topic): the app shows the pet line and [Back to the story]. ``safety``
+     *     carries the crisis card's helplines. Pro turns report the shared fair-use ``quota``.
+     */
+    RoleplayTurnOut: {
+      /** Card Id */
+      card_id: string;
+      /** End Reason */
+      end_reason?: ("goals_met" | "turn_cap" | "wrap_up") | null;
+      /**
+       * Goals Met
+       * @description Indexes into the card's goals
+       */
+      goals_met: number[];
+      /** Goals Total */
+      goals_total: number;
+      /** Helplines */
+      helplines?: {
+        [key: string]: unknown;
+      }[];
+      /**
+       * Max Turns
+       * @description Student turns per chat; null when no cap is set
+       */
+      max_turns: number | null;
+      /** Messages */
+      messages: components["schemas"]["RoleplayMessage"][];
+      quota?: components["schemas"]["QuotaOut"] | null;
+      /** Safety */
+      safety?: "crisis" | null;
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "ended";
+      /**
+       * Step Out
+       * @default false
+       */
+      step_out: boolean;
+      summary?: components["schemas"]["RoleplaySummary"] | null;
+      /** Turns */
+      turns: number;
+    };
     /** Room */
     Room: {
       /** Loci */
@@ -8539,6 +9128,11 @@ export interface components {
       id: string;
       /** Kind */
       kind: string;
+      /**
+       * Name Key
+       * @description packages/i18n key (namespace:key); ME-17.treats takes {pet}
+       */
+      name_key?: string | null;
       /** Owned */
       owned: number;
       /** Price Gems */
@@ -8552,6 +9146,17 @@ export interface components {
       gems: number;
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
+    };
+    /** SimilarConcept */
+    SimilarConcept: {
+      /** Id */
+      id: string;
+      /** Name */
+      name: {
+        [key: string]: string;
+      };
+      /** Topic Id */
+      topic_id: string;
     };
     /** SleepCard */
     SleepCard: {
@@ -8918,12 +9523,18 @@ export interface components {
       at_risk: boolean;
       /** Current */
       current: number;
+      /** Freeze Used Days */
+      freeze_used_days?: string[];
       /** Freezes Available */
       freezes_available: number;
       /** Freezes Equipped */
       freezes_equipped: number;
+      /** Incident Days Covered */
+      incident_days_covered?: string[];
       /** Longest */
       longest: number;
+      /** Next Free Freeze On */
+      next_free_freeze_on?: string | null;
       /** Rest Day */
       rest_day: string | null;
       /** Today Qualified */
@@ -9042,6 +9653,15 @@ export interface components {
       };
       /** Sort */
       sort: number;
+    };
+    /** SummaryConcept */
+    SummaryConcept: {
+      /** Id */
+      id: string;
+      /** Name */
+      name: {
+        [key: string]: string;
+      };
     };
     /** SummaryResponse */
     SummaryResponse: {
@@ -9240,7 +9860,7 @@ export interface components {
        * Name
        * @enum {string}
        */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery" | "make_flashcard";
     };
     /** ToolCallOut */
     ToolCallOut: {
@@ -9250,7 +9870,7 @@ export interface components {
        * Name
        * @enum {string}
        */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery" | "make_flashcard";
       /**
        * Result
        * @description Send back to Gemini Live as the function response
@@ -9919,7 +10539,9 @@ export interface operations {
       query?: {
         exam?: string | null;
       };
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -9983,6 +10605,39 @@ export interface operations {
       };
     };
   };
+  similar_to_doubt_photo_v1_ai_doubt_photos__photo_id__similar_get: {
+    parameters: {
+      query?: {
+        count?: number;
+      };
+      header?: never;
+      path: {
+        photo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DoubtSimilarOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post: {
     parameters: {
       query?: never;
@@ -10005,6 +10660,45 @@ export interface operations {
         };
         content: {
           "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  post_events_v1_analytics_events_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "content-length"?: number | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["EventBatchIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EventBatchOut"];
         };
       };
       /** @description Validation Error */
@@ -10122,6 +10816,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10158,6 +10853,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10198,6 +10894,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10269,6 +10966,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10305,6 +11003,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10412,6 +11111,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -10495,6 +11195,178 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["BadgeOut"][];
+        };
+      };
+    };
+  };
+  create_child_payment_link_v1_billing_child_payment_links_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildPayLinkCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildPayLinkCreated"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  cancel_child_payment_link_v1_billing_child_payment_links__link_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        link_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  view_child_payment_link_v1_billing_child_payment_links__token__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildPayLinkOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  start_child_payment_link_v1_billing_child_payment_links__token__subscription_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  verify_child_payment_link_v1_billing_child_payment_links__token__verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildPayLinkOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };
@@ -11204,7 +12076,9 @@ export interface operations {
   challenge_start_v1_daily_challenge__challenge_id__start_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path: {
         challenge_id: string;
       };
@@ -12264,7 +13138,9 @@ export interface operations {
   feynman_attempt_v1_feynman_attempts_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -12737,6 +13613,37 @@ export interface operations {
       };
     };
   };
+  consent_notice_v1_guardian_consent_notice_get: {
+    parameters: {
+      query?: {
+        locale?: "en" | "hi";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsentNoticeOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   create_request_v1_guardian_consent_requests_post: {
     parameters: {
       query?: never;
@@ -12867,6 +13774,35 @@ export interface operations {
             | components["schemas"]["ConsentRequestStatus"]
             | components["schemas"]["ConsentRequestForGuardian"];
         };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  cancel_request_v1_guardian_consent_requests__request_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description Validation Error */
       422: {
@@ -14128,6 +15064,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -14168,6 +15105,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -14824,7 +15762,9 @@ export interface operations {
   interleaved_v1_practice_interleaved_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -14909,7 +15849,9 @@ export interface operations {
   create_session_v1_practice_sessions_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -15015,6 +15957,7 @@ export interface operations {
     parameters: {
       query?: never;
       header?: {
+        "Idempotency-Key"?: string | null;
         "x-app-variant"?: string | null;
         "x-app-version"?: string | null;
         "x-device-id"?: string | null;
@@ -15273,6 +16216,141 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["ReviewQueueResponse"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  start_chat_v1_roleplay_chats_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RoleplayStart"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayChat"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_chat_v1_roleplay_chats__session_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The chat's tutor session id */
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayChat"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  take_turn_v1_roleplay_chats__session_id__turns_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The chat's tutor session id */
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RoleplayTurnIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayTurnOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  wrap_up_v1_roleplay_chats__session_id__wrap_up_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The chat's tutor session id */
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayChat"];
         };
       };
       /** @description Validation Error */
@@ -16298,7 +17376,9 @@ export interface operations {
   set_rest_day_v1_streak_rest_day_post: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path?: never;
       cookie?: never;
     };
@@ -16331,7 +17411,9 @@ export interface operations {
   clear_rest_day_v1_streak_rest_day__day__delete: {
     parameters: {
       query?: never;
-      header?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
       path: {
         day: string;
       };

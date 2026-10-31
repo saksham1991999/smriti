@@ -64,7 +64,13 @@ async def indexed(services: AppServices, tmp_path: Path) -> AsyncIterator[Path]:
         for sql in stmts:
             await session.execute(text(sql), {"n": N})
         counts = await card_index.index_lessons(session, root)
-    assert counts == {"lessons": 1, "cards": 4, "retired": 0}
+    assert counts == {
+        "lessons": 1,
+        "cards": 4,
+        "retired": 0,
+        "roleplay": 0,
+        "roleplay_retired": 0,
+    }
     yield root
 
 

@@ -98,6 +98,9 @@ class GameRules:
     incident_active_since: date | None = None
     exam_day_protected: bool = True
     exam_days: frozenset[date] = frozenset()
+    # R36 monthly grants (streak.monthly_freezes), for ENT-08's "Next free freeze on {date}".
+    monthly_freezes_free: int = 1
+    monthly_freezes_pro: int = 2
 
     @classmethod
     def from_flags(cls, flags: Mapping[str, Any]) -> GameRules:
@@ -132,6 +135,7 @@ class GameRules:
         decay = _as_dict(flags.get("game.pet.decay_per_missed_day"))
         gain = _as_dict(flags.get("game.pet.study_gain"))
         min_mood = _as_dict(flags.get("game.pet.state_min_mood"))
+        monthly = _as_dict(flags.get("streak.monthly_freezes"))
         return cls(
             reviews_to_qualify=_as_int(
                 flags.get("streak.reviews_to_qualify"), d.reviews_to_qualify
@@ -170,6 +174,8 @@ class GameRules:
             incident_days=frozenset(incident_days),
             incident_active_since=since,
             exam_day_protected=flags.get("streak.exam_day_protected", True) is not False,
+            monthly_freezes_free=_as_int(monthly.get("free"), d.monthly_freezes_free),
+            monthly_freezes_pro=_as_int(monthly.get("pro"), d.monthly_freezes_pro),
         )
 
     def is_incident(self, day: date) -> bool:

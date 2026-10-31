@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import uuid
-from typing import Annotated
+from typing import Annotated, Literal
 
-from fastapi import APIRouter, Depends, Path
+from fastapi import APIRouter, Depends, Path, Query, Response
 from fastapi.responses import JSONResponse
 
 from smriti_api.core.auth import AuthContext
@@ -63,6 +63,31 @@ async def create_request(
         status=201,
         fn=lambda: guardian.create_request(services.db, ints, auth, body, client.app_variant),
     )
+
+
+@router.get(
+    "/consent-notice",
+    response_model=g.ConsentNoticeOut,
+    summary="AUTH-20 'Read the full notice': the current notice version and its URL (config)",
+)
+async def consent_notice(
+    services: Services,
+    response: Response,
+    locale: Annotated[Literal["en", "hi"], Query()] = "en",
+) -> g.ConsentNoticeOut:
+    # Public: the guardian may open it before signing in (AUTH-22). No user data in it.
+    response.headers["Cache-Control"] = "public, max-age=300"
+    return await guardian.notice(services.db, locale)
+
+
+@router.delete(
+    "/consent-requests/{request_id}",
+    status_code=204,
+    summary="AUTH-21 [Cancel request]: the teen withdraws their pending request",
+)
+async def cancel_request(request_id: uuid.UUID, services: Services, auth: Teen) -> Response:
+    await guardian.cancel_request(services.db, auth, request_id)
+    return Response(status_code=204)
 
 
 @router.get(

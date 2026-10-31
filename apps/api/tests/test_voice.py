@@ -121,6 +121,7 @@ async def test_voice_session_tools_and_transcript(
                 "show_formula",
                 "queue_cards",
                 "get_mastery",
+                "make_flashcard",
             }
             ctx = fake.contexts[-1]
             assert voice.VOICE_RULES in ctx.system_instruction
@@ -170,6 +171,31 @@ async def test_voice_session_tools_and_transcript(
                 headers=s.headers,
             )
             assert queued.status_code == 200 and "queued" in queued.json()["result"]
+            card = (
+                await client.post(
+                    tool,
+                    json={
+                        "call_id": "c5",
+                        "name": "make_flashcard",
+                        "args": {
+                            "front": "What is concept A1?",
+                            "back": "Mail me at a@b.co",
+                            "concept_id": CONCEPT,
+                        },
+                    },
+                    headers=s.headers,
+                )
+            ).json()["result"]["flashcard"]
+            assert card["deck"] == "from_tutor" and card["concept_id"] == CONCEPT
+            assert "a@b.co" not in card["back"]
+            missing = (
+                await client.post(
+                    tool,
+                    json={"call_id": "c6", "name": "make_flashcard", "args": {"front": "x"}},
+                    headers=s.headers,
+                )
+            ).json()
+            assert missing["result"] == {"error": "front_and_back_required"}
             other = await signed_in(client)
             r = await client.post(
                 tool, json={"call_id": "x", "name": "get_mastery"}, headers=other.headers

@@ -297,6 +297,70 @@ async def open_solve(
     return sess.id, resumed
 
 
+SIMILAR_CONCEPTS = 3  # the best-matching course concepts the chips show
+
+
+async def similar(
+    db: Database, auth: AuthContext, photo_id: uuid.UUID, count: int
+) -> t.DoubtSimilarOut:
+    """Published practice questions on the concepts the confirmed question matches (tutor-social
+    §A10 step 7), ordered stably per photo. Concepts come from the course's own search, never
+    from the model, so every chip and question is real published content (AGENTS rule 3)."""
+    from smriti_api.services import question_bank as bank
+    from smriti_api.services import tutor_retrieval
+    from smriti_api.services.practice import PRACTICE_USES, SERVER_ONLY_USES
+
+    async with db.system_tx() as session:
+        await _gate(session, auth)
+        row = await _photo(session, auth.user_id, photo_id)
+        if row.status not in ("read", "solved") or not row.question_text:
+            raise ApiError(409, "photo_not_read", "Retake the photo first")
+        locale = (
+            await session.execute(
+                text("select coalesce(locale, 'en') from app.profiles where user_id = :u"),
+                {"u": auth.user_id},
+            )
+        ).scalar_one_or_none() or "en"
+        passages = await tutor_retrieval.FullTextRetriever().search(
+            session, row.question_text, exam=row.exam_profile_id, locale=locale, limit=12
+        )
+        concept_ids = list(dict.fromkeys(p.id for p in passages if p.kind == "concept"))
+        concept_ids = concept_ids[:SIMILAR_CONCEPTS]
+        concepts: list[t.SimilarConcept] = []
+        if concept_ids:
+            rows = (
+                await session.execute(
+                    text(
+                        "select c.id, c.name, st.topic_id from content.concepts c"
+                        " join content.subtopics st on st.id = c.subtopic_id"
+                        " where c.id = any(:ids)"
+                    ),
+                    {"ids": concept_ids},
+                )
+            ).all()
+            by_id = {r.id: r for r in rows}
+            concepts = [
+                t.SimilarConcept(id=c, name=dict(by_id[c].name), topic_id=by_id[c].topic_id)
+                for c in concept_ids
+                if c in by_id
+            ]
+        questions = (
+            await bank.pool(
+                session,
+                exam=row.exam_profile_id,
+                uses=list(PRACTICE_USES),
+                exclude_uses=list(SERVER_ONLY_USES),
+                concepts=[c.id for c in concepts],
+            )
+            if concepts
+            else []
+        )
+    ranked = sorted(questions, key=lambda q: bank.stable_rank(str(photo_id), q.id))
+    return t.DoubtSimilarOut(
+        photo_id=photo_id, concepts=concepts, question_ids=[q.id for q in ranked[:count]]
+    )
+
+
 async def purge_old_photos(
     db: Database, storage: ObjectStorage, now: datetime | None = None
 ) -> int:

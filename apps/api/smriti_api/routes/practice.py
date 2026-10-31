@@ -64,9 +64,18 @@ async def get_drill(
     summary="Start a drill, PYQ or chapter-test session, sized to today's free questions",
 )
 async def create_session(
-    body: p.SessionCreate, services: Services, auth: CurrentUser
-) -> p.PracticeSession:
-    return await practice.create_session(services.db, auth, body)
+    body: p.SessionCreate, services: Services, auth: CurrentUser, key: IdempotencyKey
+) -> JSONResponse:
+    # Also idempotent by body.session_id when the client sends one.
+    return await idempotent(
+        services,
+        scope="practice_session",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        status=201,
+        fn=lambda: practice.create_session(services.db, auth, body),
+    )
 
 
 @router.get(
@@ -134,14 +143,22 @@ async def complete_session(
     services: Services,
     auth: CurrentUser,
     client: Client,
-) -> p.PracticeSession:
-    return await practice.complete_session(
-        services.db,
-        auth,
-        session_id,
-        body,
-        device_id=client.device_id,
-        app_variant=client.app_variant,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"practice_complete:{session_id}",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        fn=lambda: practice.complete_session(
+            services.db,
+            auth,
+            session_id,
+            body,
+            device_id=client.device_id,
+            app_variant=client.app_variant,
+        ),
     )
 
 
@@ -223,9 +240,16 @@ async def challenge_today(
     summary="Start the challenge: the server clock starts",
 )
 async def challenge_start(
-    challenge_id: ChallengeId, services: Services, auth: CurrentUser
-) -> p.DailyChallenge:
-    return await daily_challenge.start(services.db, auth, challenge_id)
+    challenge_id: ChallengeId, services: Services, auth: CurrentUser, key: IdempotencyKey
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"daily_start:{challenge_id}",
+        subject=auth.user_id,
+        key=key,
+        body=None,
+        fn=lambda: daily_challenge.start(services.db, auth, challenge_id),
+    )
 
 
 @router.post(

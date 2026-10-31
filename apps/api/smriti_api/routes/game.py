@@ -74,20 +74,35 @@ async def equip_freeze(
     "/streak/rest-day", response_model=StreakState, summary="Plan a rest day (today or ahead)"
 )
 async def set_rest_day(
-    body: a.RestDayRequest, services: Services, auth: CurrentUser
-) -> StreakState:
-    await game.change_rest_day(services.db, auth, body.day, on=True)
-    return await game.get_streak(services.db, auth)
+    body: a.RestDayRequest, services: Services, auth: CurrentUser, key: IdempotencyKey
+) -> JSONResponse:
+    async def run() -> StreakState:
+        await game.change_rest_day(services.db, auth, body.day, on=True)
+        return await game.get_streak(services.db, auth)
+
+    return await idempotent(
+        services, scope="rest_day_set", subject=auth.user_id, key=key, body=body, fn=run
+    )
 
 
 @router.delete(
     "/streak/rest-day/{day}", response_model=StreakState, summary="Cancel a planned rest day"
 )
 async def clear_rest_day(
-    day: Annotated[date, Path()], services: Services, auth: CurrentUser
-) -> StreakState:
-    await game.change_rest_day(services.db, auth, day, on=False)
-    return await game.get_streak(services.db, auth)
+    day: Annotated[date, Path()], services: Services, auth: CurrentUser, key: IdempotencyKey
+) -> JSONResponse:
+    async def run() -> StreakState:
+        await game.change_rest_day(services.db, auth, day, on=False)
+        return await game.get_streak(services.db, auth)
+
+    return await idempotent(
+        services,
+        scope="rest_day_clear",
+        subject=auth.user_id,
+        key=key,
+        body={"day": day.isoformat()},
+        fn=run,
+    )
 
 
 @router.get(

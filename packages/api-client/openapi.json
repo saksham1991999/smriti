@@ -902,11 +902,22 @@
         "tags": ["gamification"],
         "summary": "Plan a rest day (today or ahead)",
         "operationId": "set_rest_day_v1_streak_rest_day_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": { "schema": { "$ref": "#/components/schemas/RestDayRequest" } }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -937,6 +948,15 @@
             "in": "path",
             "required": true,
             "schema": { "type": "string", "format": "date", "title": "Day" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -1338,6 +1358,17 @@
         "tags": ["practice"],
         "summary": "Start a drill, PYQ or chapter-test session, sized to today's free questions",
         "operationId": "create_session_v1_practice_sessions_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -1577,6 +1608,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -1889,6 +1929,15 @@
             "in": "path",
             "required": true,
             "schema": { "type": "string", "format": "uuid", "title": "Challenge Id" }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -2119,6 +2168,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "requestBody": {
@@ -2222,6 +2280,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -2415,6 +2482,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "requestBody": {
@@ -2487,6 +2563,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -2561,6 +2646,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -2627,6 +2721,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -2701,6 +2804,15 @@
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -2767,6 +2879,15 @@
             "schema": {
               "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
               "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
             }
           }
         ],
@@ -3283,6 +3404,15 @@
               "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
               "title": "Exam"
             }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
           }
         ],
         "responses": {
@@ -3330,6 +3460,49 @@
             "description": "Successful Response",
             "content": {
               "application/json": { "schema": { "$ref": "#/components/schemas/DoubtPhotoOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ai/doubt-photos/{photo_id}/similar": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "AI-19: the concepts the question matches and similar published questions",
+        "operationId": "similar_to_doubt_photo_v1_ai_doubt_photos__photo_id__similar_get",
+        "parameters": [
+          {
+            "name": "photo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Photo Id" }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 30,
+              "minimum": 1,
+              "default": 10,
+              "title": "Count"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DoubtSimilarOut" } }
             }
           },
           "422": {
@@ -4238,6 +4411,276 @@
         }
       }
     },
+    "/v1/billing/child-payment-links": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "PAY-03 [Send to my parent]: a 48 h link a parent opens to pay (token shown once)",
+        "operationId": "create_child_payment_link_v1_billing_child_payment_links_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ChildPayLinkCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ChildPayLinkCreated" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/child-payment-links/{link_id}": {
+      "delete": {
+        "tags": ["billing"],
+        "summary": "The teen withdraws their open link",
+        "operationId": "cancel_child_payment_link_v1_billing_child_payment_links__link_id__delete",
+        "parameters": [
+          {
+            "name": "link_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Link Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/child-payment-links/{token}": {
+      "get": {
+        "tags": ["billing"],
+        "summary": "PAY-17 link page (no login): the child's first name, pet, price and link status",
+        "operationId": "view_child_payment_link_v1_billing_child_payment_links__token__get",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 32,
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChildPayLinkOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/child-payment-links/{token}/subscription": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "PAY-17 [Continue to pay] from the link: a web subscription on the child's account",
+        "operationId": "start_child_payment_link_v1_billing_child_payment_links__token__subscription_post",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 32,
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Token"
+            }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RazorpaySubscriptionOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/billing/child-payment-links/{token}/verify": {
+      "post": {
+        "tags": ["billing"],
+        "summary": "Check the Checkout signature; the link is used and Pro follows the webhook",
+        "operationId": "verify_child_payment_link_v1_billing_child_payment_links__token__verify_post",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 32,
+              "maxLength": 64,
+              "pattern": "^[A-Za-z0-9_-]+$",
+              "title": "Token"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RazorpayVerifyRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ChildPayLinkOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/guardian/consent-requests": {
       "post": {
         "tags": ["guardian"],
@@ -4307,6 +4750,63 @@
               }
             }
           },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consent-notice": {
+      "get": {
+        "tags": ["guardian"],
+        "summary": "AUTH-20 'Read the full notice': the current notice version and its URL (config)",
+        "operationId": "consent_notice_v1_guardian_consent_notice_get",
+        "parameters": [
+          {
+            "name": "locale",
+            "in": "query",
+            "required": false,
+            "schema": { "enum": ["en", "hi"], "type": "string", "default": "en", "title": "Locale" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/ConsentNoticeOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/guardian/consent-requests/{request_id}": {
+      "delete": {
+        "tags": ["guardian"],
+        "summary": "AUTH-21 [Cancel request]: the teen withdraws their pending request",
+        "operationId": "cancel_request_v1_guardian_consent_requests__request_id__delete",
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Request Id" }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Successful Response" },
           "422": {
             "description": "Validation Error",
             "content": {
@@ -5451,11 +5951,22 @@
         "tags": ["voice"],
         "summary": "Explain a concept back; graded against its key points (AI-10, AI-11)",
         "operationId": "feynman_attempt_v1_feynman_attempts_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": { "schema": { "$ref": "#/components/schemas/FeynmanIn" } }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -5574,11 +6085,22 @@
         "tags": ["insights"],
         "summary": "Start a mixed drill across chapters or subjects you have learned (practice §5.3)",
         "operationId": "interleaved_v1_practice_interleaved_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
             "application/json": { "schema": { "$ref": "#/components/schemas/InterleavedIn" } }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -6566,6 +7088,239 @@
             "description": "Successful Response",
             "content": {
               "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/analytics/events": {
+      "post": {
+        "tags": ["analytics"],
+        "summary": "A batch of analytics events: checked against the catalogue, age and consent policy",
+        "operationId": "post_events_v1_analytics_events_post",
+        "parameters": [
+          {
+            "name": "content-length",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "integer" }, { "type": "null" }],
+              "title": "Content-Length"
+            }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/EventBatchIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EventBatchOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "Start the role play for a card (or return its open chat)",
+        "operationId": "start_chat_v1_roleplay_chats_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayStart" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayChat" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats/{session_id}": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "A role-play chat",
+        "operationId": "get_chat_v1_roleplay_chats__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The chat's tutor session id",
+              "title": "Session Id"
+            },
+            "description": "The chat's tutor session id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayChat" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats/{session_id}/turns": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "The student's turn: a suggested reply or typed text; the character answers",
+        "operationId": "take_turn_v1_roleplay_chats__session_id__turns_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The chat's tutor session id",
+              "title": "Session Id"
+            },
+            "description": "The chat's tutor session id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayTurnIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayTurnOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats/{session_id}/wrap-up": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "[Wrap up]: end the chat now and get the summary",
+        "operationId": "wrap_up_v1_roleplay_chats__session_id__wrap_up_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The chat's tutor session id",
+              "title": "Session Id"
+            },
+            "description": "The chat's tutor session id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayChat" } }
             }
           },
           "422": {
@@ -9785,6 +10540,69 @@
         "required": ["user_id", "scheduled_for"],
         "title": "ChildDeletionOut"
       },
+      "ChildPayLinkCreate": {
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": ["monthly", "yearly"],
+            "title": "Plan",
+            "default": "monthly"
+          }
+        },
+        "type": "object",
+        "title": "ChildPayLinkCreate"
+      },
+      "ChildPayLinkCreated": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "token": { "type": "string", "title": "Token" },
+          "url": { "type": "string", "title": "Url" },
+          "plan": { "type": "string", "enum": ["monthly", "yearly"], "title": "Plan" },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": ["id", "token", "url", "plan", "expires_at"],
+        "title": "ChildPayLinkCreated",
+        "description": "Shown once: only the token's hash is kept."
+      },
+      "ChildPayLinkOut": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": ["open", "paid", "expired", "cancelled", "already_pro"],
+            "title": "Status"
+          },
+          "child_first_name": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Child First Name"
+          },
+          "pet": { "anyOf": [{ "$ref": "#/components/schemas/PayLinkPet" }, { "type": "null" }] },
+          "plan": { "type": "string", "enum": ["monthly", "yearly"], "title": "Plan" },
+          "intro": { "type": "boolean", "title": "Intro" },
+          "amount_today_paise": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Amount Today Paise"
+          },
+          "then_paise": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Then Paise"
+          },
+          "expires_at": { "type": "string", "format": "date-time", "title": "Expires At" }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "child_first_name",
+          "pet",
+          "plan",
+          "intro",
+          "amount_today_paise",
+          "then_paise",
+          "expires_at"
+        ],
+        "title": "ChildPayLinkOut",
+        "description": "What the parent's link page shows (no login): the child's first name and pet, the price\nfrom the child's own eligibility, and whether the link still works."
+      },
       "ChildProRequest": {
         "properties": {
           "plan": {
@@ -9971,6 +10789,26 @@
         "type": "object",
         "required": ["request_id", "status", "consent"],
         "title": "ConsentDecision"
+      },
+      "ConsentNoticeOut": {
+        "properties": {
+          "version": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Version",
+            "description": "Send this as notice_version when set; null until the notice is published"
+          },
+          "url": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Url",
+            "description": "The full notice in `locale`; null until published"
+          },
+          "locale": { "type": "string", "enum": ["en", "hi"], "title": "Locale" },
+          "published": { "type": "boolean", "title": "Published" }
+        },
+        "type": "object",
+        "required": ["version", "url", "locale", "published"],
+        "title": "ConsentNoticeOut",
+        "description": "AUTH-20 \"Read the full notice\": the current notice, from config (legal publishes it)."
       },
       "ConsentOut": {
         "properties": {
@@ -10743,6 +11581,25 @@
         "title": "DoubtPhotoOut",
         "description": "AI-18: what the vision model read from the photo, for the student to check or edit.\n``reason`` says why nothing usable was read (the app shows Retake)."
       },
+      "DoubtSimilarOut": {
+        "properties": {
+          "photo_id": { "type": "string", "format": "uuid", "title": "Photo Id" },
+          "concepts": {
+            "items": { "$ref": "#/components/schemas/SimilarConcept" },
+            "type": "array",
+            "title": "Concepts"
+          },
+          "question_ids": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Question Ids"
+          }
+        },
+        "type": "object",
+        "required": ["photo_id", "concepts", "question_ids"],
+        "title": "DoubtSimilarOut",
+        "description": "AI-19 \"Concepts used\" and \"Similar questions\": published questions on the concepts the\nconfirmed question matches, as a PRC-03 fixed set (``question_ids``). Empty lists when\nnothing in the course matches; the app hides the button then."
+      },
       "DoubtSolve": {
         "properties": {
           "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
@@ -10784,6 +11641,29 @@
         "type": "object",
         "required": ["exam", "question_ids"],
         "title": "DrillPreview"
+      },
+      "Dropped": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "unknown_event",
+              "server_only",
+              "minor_not_allowed",
+              "little_learner_not_allowed",
+              "opted_out",
+              "awaiting_consent",
+              "too_old",
+              "in_the_future",
+              "duplicate_in_batch"
+            ],
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": ["event_id", "reason"],
+        "title": "Dropped"
       },
       "DuelAnswerIn": {
         "properties": {
@@ -11215,6 +12095,99 @@
         "type": "object",
         "required": ["plan", "pro_until"],
         "title": "EntitlementState"
+      },
+      "EventBatchIn": {
+        "properties": {
+          "events": {
+            "items": { "$ref": "#/components/schemas/EventIn" },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Events"
+          }
+        },
+        "type": "object",
+        "required": ["events"],
+        "title": "EventBatchIn"
+      },
+      "EventBatchOut": {
+        "properties": {
+          "accepted": {
+            "items": { "type": "string", "format": "uuid" },
+            "type": "array",
+            "title": "Accepted"
+          },
+          "dropped": {
+            "items": { "$ref": "#/components/schemas/Dropped" },
+            "type": "array",
+            "title": "Dropped"
+          },
+          "issues": {
+            "items": { "$ref": "#/components/schemas/PropIssue" },
+            "type": "array",
+            "title": "Issues"
+          }
+        },
+        "type": "object",
+        "required": ["accepted", "dropped", "issues"],
+        "title": "EventBatchOut"
+      },
+      "EventContext": {
+        "properties": {
+          "platform": { "type": "string", "enum": ["ios", "android", "web"], "title": "Platform" },
+          "app_variant": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "App Variant"
+          },
+          "app_version": {
+            "anyOf": [
+              { "type": "string", "maxLength": 64, "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$" },
+              { "type": "null" }
+            ],
+            "title": "App Version"
+          },
+          "locale": { "type": "string", "enum": ["en", "hi"], "title": "Locale" },
+          "exam_profile": {
+            "anyOf": [
+              { "type": "string", "maxLength": 64, "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$" },
+              { "type": "null" }
+            ],
+            "title": "Exam Profile"
+          },
+          "tier": {
+            "anyOf": [{ "type": "string", "enum": ["free", "pro"] }, { "type": "null" }],
+            "title": "Tier"
+          }
+        },
+        "type": "object",
+        "required": ["platform", "app_variant", "locale"],
+        "title": "EventContext",
+        "description": "The client's common props (packages/analytics ``CommonContext``). Anything else is dropped.\n``is_guest`` and the audience come from the session and profile, never from here."
+      },
+      "EventIn": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "name": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "title": "Name"
+          },
+          "occurred_at": { "type": "string", "format": "date-time", "title": "Occurred At" },
+          "props": {
+            "additionalProperties": true,
+            "type": "object",
+            "maxProperties": 64,
+            "title": "Props"
+          },
+          "context": { "$ref": "#/components/schemas/EventContext" }
+        },
+        "type": "object",
+        "required": ["event_id", "name", "occurred_at", "context"],
+        "title": "EventIn"
       },
       "ExamOut": {
         "properties": {
@@ -13755,6 +14728,15 @@
         "type": "object",
         "title": "PauseIn"
       },
+      "PayLinkPet": {
+        "properties": {
+          "species": { "type": "string", "enum": ["cat", "dog"], "title": "Species" },
+          "name": { "type": "string", "title": "Name" }
+        },
+        "type": "object",
+        "required": ["species", "name"],
+        "title": "PayLinkPet"
+      },
       "PdfExportCreate": {
         "properties": {
           "template": {
@@ -14093,6 +15075,29 @@
         ],
         "title": "ProfileState"
       },
+      "PropIssue": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "prop": { "type": "string", "title": "Prop" },
+          "code": {
+            "type": "string",
+            "enum": [
+              "blocked_name",
+              "unknown_prop",
+              "free_text",
+              "bad_type",
+              "unknown_enum_value",
+              "too_many_items",
+              "stripped_for_minor"
+            ],
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": ["event_id", "prop", "code"],
+        "title": "PropIssue",
+        "description": "A prop that was removed: its name and why (never its value)."
+      },
       "PurchaseRequest": {
         "properties": {
           "item_id": { "type": "string", "maxLength": 64, "minLength": 1, "title": "Item Id" }
@@ -14301,6 +15306,11 @@
           "id": { "type": "string", "title": "Id" },
           "period": { "type": "string", "enum": ["daily", "weekly", "event"], "title": "Period" },
           "counter": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Counter" },
+          "title_key": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title Key",
+            "description": "packages/i18n ME-20 template key; takes {n} = target"
+          },
           "target": { "type": "integer", "title": "Target" },
           "progress": { "type": "integer", "title": "Progress" },
           "reward": {
@@ -14845,6 +15855,173 @@
         "required": ["queued", "card_refs", "state_version"],
         "title": "ReviewQueueResponse"
       },
+      "RoleplayChat": {
+        "properties": {
+          "session_id": { "type": "string", "format": "uuid", "title": "Session Id" },
+          "card_id": { "type": "string", "title": "Card Id" },
+          "status": { "type": "string", "enum": ["open", "ended"], "title": "Status" },
+          "end_reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["goals_met", "turn_cap", "wrap_up"] },
+              { "type": "null" }
+            ],
+            "title": "End Reason"
+          },
+          "turns": { "type": "integer", "title": "Turns" },
+          "max_turns": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Max Turns",
+            "description": "Student turns per chat; null when no cap is set"
+          },
+          "goals_total": { "type": "integer", "title": "Goals Total" },
+          "goals_met": {
+            "items": { "type": "integer" },
+            "type": "array",
+            "title": "Goals Met",
+            "description": "Indexes into the card's goals"
+          },
+          "messages": {
+            "items": { "$ref": "#/components/schemas/RoleplayMessage" },
+            "type": "array",
+            "title": "Messages"
+          },
+          "summary": {
+            "anyOf": [{ "$ref": "#/components/schemas/RoleplaySummary" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "card_id",
+          "status",
+          "turns",
+          "max_turns",
+          "goals_total",
+          "goals_met",
+          "messages"
+        ],
+        "title": "RoleplayChat"
+      },
+      "RoleplayMessage": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "role": { "type": "string", "enum": ["student", "character"], "title": "Role" },
+          "text": { "type": "string", "title": "Text" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+        },
+        "type": "object",
+        "required": ["id", "role", "text", "created_at"],
+        "title": "RoleplayMessage"
+      },
+      "RoleplayStart": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Card Id"
+          }
+        },
+        "type": "object",
+        "required": ["card_id"],
+        "title": "RoleplayStart",
+        "description": "Starts the chat for a role-play card, or returns the open one for it."
+      },
+      "RoleplaySummary": {
+        "properties": {
+          "found_out": {
+            "items": { "additionalProperties": { "type": "string" }, "type": "object" },
+            "type": "array",
+            "title": "Found Out"
+          },
+          "concepts": {
+            "items": { "$ref": "#/components/schemas/SummaryConcept" },
+            "type": "array",
+            "title": "Concepts"
+          }
+        },
+        "type": "object",
+        "required": ["found_out", "concepts"],
+        "title": "RoleplaySummary",
+        "description": "The end card: the goals the student met, as \"What you found out\", with the card's\nconcepts as chips. Both come from the published script, never from the model."
+      },
+      "RoleplayTurnIn": {
+        "properties": {
+          "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
+          "text": {
+            "anyOf": [{ "type": "string", "maxLength": 4000, "minLength": 1 }, { "type": "null" }],
+            "title": "Text"
+          },
+          "reply_index": {
+            "anyOf": [{ "type": "integer", "maximum": 2, "minimum": 0 }, { "type": "null" }],
+            "title": "Reply Index"
+          }
+        },
+        "type": "object",
+        "required": ["client_message_id"],
+        "title": "RoleplayTurnIn",
+        "description": "One student turn: a tap on a suggested reply (``reply_index``) or typed ``text``.\nUnder-13s and little learners send replies only. ``client_message_id`` makes a retry safe."
+      },
+      "RoleplayTurnOut": {
+        "properties": {
+          "session_id": { "type": "string", "format": "uuid", "title": "Session Id" },
+          "card_id": { "type": "string", "title": "Card Id" },
+          "status": { "type": "string", "enum": ["open", "ended"], "title": "Status" },
+          "end_reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["goals_met", "turn_cap", "wrap_up"] },
+              { "type": "null" }
+            ],
+            "title": "End Reason"
+          },
+          "turns": { "type": "integer", "title": "Turns" },
+          "max_turns": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Max Turns",
+            "description": "Student turns per chat; null when no cap is set"
+          },
+          "goals_total": { "type": "integer", "title": "Goals Total" },
+          "goals_met": {
+            "items": { "type": "integer" },
+            "type": "array",
+            "title": "Goals Met",
+            "description": "Indexes into the card's goals"
+          },
+          "messages": {
+            "items": { "$ref": "#/components/schemas/RoleplayMessage" },
+            "type": "array",
+            "title": "Messages"
+          },
+          "summary": {
+            "anyOf": [{ "$ref": "#/components/schemas/RoleplaySummary" }, { "type": "null" }]
+          },
+          "step_out": { "type": "boolean", "title": "Step Out", "default": false },
+          "safety": {
+            "anyOf": [{ "type": "string", "const": "crisis" }, { "type": "null" }],
+            "title": "Safety"
+          },
+          "helplines": {
+            "items": { "additionalProperties": true, "type": "object" },
+            "type": "array",
+            "title": "Helplines"
+          },
+          "quota": { "anyOf": [{ "$ref": "#/components/schemas/QuotaOut" }, { "type": "null" }] }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "card_id",
+          "status",
+          "turns",
+          "max_turns",
+          "goals_total",
+          "goals_met",
+          "messages"
+        ],
+        "title": "RoleplayTurnOut",
+        "description": "``step_out`` is set when the character stepped out of the story (the student asked for\nsomething unsafe or off-topic): the app shows the pet line and [Back to the story]. ``safety``\ncarries the crisis card's helplines. Pro turns report the shared fair-use ``quota``."
+      },
       "Room": {
         "properties": {
           "room_id": { "type": "string", "format": "uuid", "title": "Room Id" },
@@ -15127,6 +16304,11 @@
         "properties": {
           "id": { "type": "string", "title": "Id" },
           "kind": { "type": "string", "title": "Kind" },
+          "name_key": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name Key",
+            "description": "packages/i18n key (namespace:key); ME-17.treats takes {pet}"
+          },
           "price_gems": { "type": "integer", "title": "Price Gems" },
           "pro_only": { "type": "boolean", "title": "Pro Only" },
           "owned": { "type": "integer", "title": "Owned" }
@@ -15147,6 +16329,20 @@
         "type": "object",
         "required": ["gems", "items"],
         "title": "ShopResponse"
+      },
+      "SimilarConcept": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "topic_id": { "type": "string", "title": "Topic Id" }
+        },
+        "type": "object",
+        "required": ["id", "name", "topic_id"],
+        "title": "SimilarConcept"
       },
       "SleepCard": {
         "properties": {
@@ -15482,7 +16678,21 @@
             "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
             "title": "Rest Day"
           },
-          "at_risk": { "type": "boolean", "title": "At Risk" }
+          "at_risk": { "type": "boolean", "title": "At Risk" },
+          "freeze_used_days": {
+            "items": { "type": "string", "format": "date" },
+            "type": "array",
+            "title": "Freeze Used Days"
+          },
+          "incident_days_covered": {
+            "items": { "type": "string", "format": "date" },
+            "type": "array",
+            "title": "Incident Days Covered"
+          },
+          "next_free_freeze_on": {
+            "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }],
+            "title": "Next Free Freeze On"
+          }
         },
         "type": "object",
         "required": [
@@ -15653,6 +16863,19 @@
         "type": "object",
         "required": ["id", "name", "sort"],
         "title": "SubtopicOut"
+      },
+      "SummaryConcept": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": ["id", "name"],
+        "title": "SummaryConcept"
       },
       "SummaryResponse": {
         "properties": {
@@ -15875,7 +17098,13 @@
           "call_id": { "type": "string", "maxLength": 128, "minLength": 1, "title": "Call Id" },
           "name": {
             "type": "string",
-            "enum": ["look_up_concept", "show_formula", "queue_cards", "get_mastery"],
+            "enum": [
+              "look_up_concept",
+              "show_formula",
+              "queue_cards",
+              "get_mastery",
+              "make_flashcard"
+            ],
             "title": "Name"
           },
           "args": { "additionalProperties": true, "type": "object", "title": "Args" }
@@ -15889,7 +17118,13 @@
           "call_id": { "type": "string", "title": "Call Id" },
           "name": {
             "type": "string",
-            "enum": ["look_up_concept", "show_formula", "queue_cards", "get_mastery"],
+            "enum": [
+              "look_up_concept",
+              "show_formula",
+              "queue_cards",
+              "get_mastery",
+              "make_flashcard"
+            ],
             "title": "Name"
           },
           "result": {

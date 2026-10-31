@@ -32,6 +32,8 @@ Screens owned here (phase per IMPLEMENTATION_PLAN; R8):
 | LRN-14 | Mind map viewer | 2 |
 | LRN-15 | Download for offline (sheet) | 1 |
 | LRN-16 | Needs internet (full-screen state) | 1 |
+| LRN-17 | Song player (little learner; proposed, R59) | 3 |
+| LRN-18 | Play activity (little learner; proposed, R59) | 3 |
 | LES-01 | Lesson player, with a sub-block per card type (LES-01.1 to LES-01.20) | 1 |
 | LES-02 | Answer feedback sheet (correct, wrong first try, wrong second try, "I don't know yet") | 1 |
 | LES-03 | Key term and symbol sheet | 1 |

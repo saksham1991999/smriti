@@ -7,8 +7,8 @@ import type { LocalDate } from '../time';
  * (`lesson@1`, played in the LES-01 little-learner variant), songs (`song@1`) and play
  * activities (`play@1`: tap, match, sort, drag, trace). Stories, songs and play ship in activity
  * bundles (modes `story`, `song`, `play`) and are listed per topic in the manifest's
- * `topics[].activities`. The song and play screens have no ID in the docs yet; `LL-SONG` and
- * `LL-PLAY` are proposed names (owner to confirm).
+ * `topics[].activities`. Songs open LRN-17 and play LRN-18 (screens proposed in docs/ux/learn.md,
+ * R59, owner to confirm).
  */
 
 export type LittleActivityKind = 'story' | 'lesson' | 'song' | 'play';
@@ -30,7 +30,7 @@ export interface LittlePathNode {
   available: boolean;
 }
 
-export type LittleRoute = 'LRN-11' | 'LES-01' | 'LL-SONG' | 'LL-PLAY';
+export type LittleRoute = 'LRN-11' | 'LES-01' | 'LRN-17' | 'LRN-18';
 
 /** Where a node opens; null for kinds with no screen yet. */
 export function littleRoute(kind: LittleActivityKind): LittleRoute | null {
@@ -40,9 +40,9 @@ export function littleRoute(kind: LittleActivityKind): LittleRoute | null {
     case 'lesson':
       return 'LES-01';
     case 'song':
-      return 'LL-SONG';
+      return 'LRN-17';
     case 'play':
-      return 'LL-PLAY';
+      return 'LRN-18';
     default:
       return null;
   }

@@ -235,9 +235,9 @@ describe('little learner path and plan', () => {
   it('plays, asks a grown-up, or says it needs internet', () => {
     expect(playNode(nodes[2]!, true)).toEqual({ kind: 'open', route: 'LES-01', ref: 't.c' });
     expect(playNode(nodes[0]!, true)).toEqual({ kind: 'open', route: 'LRN-11', ref: 'sb.a' });
-    expect(playNode(nodes[1]!, true)).toEqual({ kind: 'open', route: 'LL-SONG', ref: 'sg.b', topicId: 't.b' });
-    expect(playNode(node('p', 'play', { ref: 'pl.p', topicId: 't.p' }), true)).toEqual({ kind: 'open', route: 'LL-PLAY', ref: 'pl.p', topicId: 't.p' });
-    expect(SUPPORTED_LITTLE_ACTIVITIES.map((k) => littleRoute(k))).toEqual(['LRN-11', 'LES-01', 'LL-SONG', 'LL-PLAY']);
+    expect(playNode(nodes[1]!, true)).toEqual({ kind: 'open', route: 'LRN-17', ref: 'sg.b', topicId: 't.b' });
+    expect(playNode(node('p', 'play', { ref: 'pl.p', topicId: 't.p' }), true)).toEqual({ kind: 'open', route: 'LRN-18', ref: 'pl.p', topicId: 't.p' });
+    expect(SUPPORTED_LITTLE_ACTIVITIES.map((k) => littleRoute(k))).toEqual(['LRN-11', 'LES-01', 'LRN-17', 'LRN-18']);
     expect(playNode(nodes[3]!, true)).toEqual({ kind: 'ask_grown_up' });
     expect(playNode(nodes[4]!, false)).toEqual({ kind: 'needs_internet' });
     expect(playNode(nodes[4]!, true).kind).toBe('open');
@@ -246,7 +246,7 @@ describe('little learner path and plan', () => {
   it('plans picture-card reviews, then playable unlocked nodes up to the goal', () => {
     const plan = buildLittlePlan({ day: '2026-10-30', goalMinutes: 5, nodes, reviewsDue: 4, secondsPerCard: 15 });
     expect(plan.items.map((i) => i.id)).toEqual(['review', 'song:b', 'lesson:c']);
-    expect(plan.items[1]).toMatchObject({ route: 'LL-SONG', ref: 'sg.b' });
+    expect(plan.items[1]).toMatchObject({ route: 'LRN-17', ref: 'sg.b' });
     expect(plan.totalMinutes).toBe(7);
     const none = buildLittlePlan({ day: '2026-10-30', goalMinutes: 5, nodes: [], reviewsDue: 0, secondsPerCard: 15 });
     expect(none.items).toEqual([]);

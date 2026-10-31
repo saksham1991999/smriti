@@ -75,7 +75,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 - Mobile: photo doubts, readiness cards, role play, analytics intake, Apple re-auth on deletion, mobile Sentry.
 - Mobile still has to send the v1.6 and v1.7 events (test-out, chapter reset, placement) from its check screens.
 - Lesson narration audio and pet reactions in the players.
-- Marketing site: Hindi pages take about 2.4 s to show their main content on a phone (target 2.0 s); next step is a smaller Devanagari font subset.
+- Marketing site: Hindi home is at about 2.0 s LCP on a phone after the font subset (other Hindi pages are under 2.0 s); confirm on a quiet machine or in CI.
 - Content: System of Particles and Rotational Motion next. Sims requested: friction on an incline, collision track (PhET is non-commercial, so we build our own).
 - An independent end-to-end verification run, written up in `docs/E2E_REPORT.md`.
 

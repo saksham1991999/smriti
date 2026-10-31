@@ -3,9 +3,9 @@
  * page by page, "Read to me" (on by default for little learners), the 2 s auto-turn after the
  * narration, "The end!" with [Read again] and [Done].
  */
-import { useEffect, useMemo } from "react";
-import { initialStory, planStory, reduceStory, type StoryAction, type StoryState } from "@smriti/lesson-core";
-import { Button, Text, cx, useUI } from "@smriti/ui-web";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { initialStory, PET_REACTION_MS, petReaction, planStory, reduceStory, type PetReactionEvent, type StoryAction, type StoryState } from "@smriti/lesson-core";
+import { Button, PetView, Text, cx, useUI } from "@smriti/ui-web";
 import { ActivityShell, mediaUrl, PetSays, useClocked, useCompletion, type ActivityPlayerProps } from "./activity";
 import { Media } from "./Media";
 
@@ -56,6 +56,8 @@ export function StoryPlayer(props: StoryPlayerProps) {
 
   const end = s.phase === "end" || s.phase === "complete";
   const total = plan.pages.length;
+  const reaction = usePageReaction(s.page, end);
+  const pet = petReaction(reaction.event, reducedMotion);
   const readKey = little ? "learn:LRN-11.read_to_me_little_learner" : "learn:LRN-11.read_to_me";
 
   return (
@@ -64,6 +66,20 @@ export function StoryPlayer(props: StoryPlayerProps) {
       testID="story-player"
       header={
         <>
+          {little && props.pet && (
+            // LRN-11 little learner: the pet in the corner reacts at each page turn. Decorative: the
+            // page and its words are announced already.
+            <span
+              key={reaction.n}
+              aria-hidden
+              data-testid="story-pet"
+              data-mood={pet.mood}
+              data-hop={pet.hop || undefined}
+              className={cx("inline-grid size-14 shrink-0 place-items-center overflow-hidden rounded-full bg-primary-tint", pet.hop && "motion-safe:animate-[sm-hop_var(--sm-duration-slow)_ease-out_1]")}
+            >
+              <PetView species={props.pet.species} mood={pet.mood} under10 decorative size={64} className="mt-[12%]" />
+            </span>
+          )}
           <Text variant="label" tone="muted" testID="story-page-count">
             {t("learn:LRN-11.page", { n: s.page + 1, total })}
           </Text>
@@ -128,4 +144,20 @@ export function StoryPlayer(props: StoryPlayerProps) {
       </div>
     </ActivityShell>
   );
+}
+
+/** The pet's reaction to page turns: set at each turn (and at the end), back to rest after a moment. */
+function usePageReaction(page: number, end: boolean): { event: PetReactionEvent | null; n: number } {
+  const [r, setR] = useState<{ event: PetReactionEvent | null; n: number }>({ event: null, n: 0 });
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    setR((x) => ({ event: end ? "story_end" : "page_turn", n: x.n + 1 }));
+    const id = setTimeout(() => setR((x) => ({ ...x, event: null })), PET_REACTION_MS);
+    return () => clearTimeout(id);
+  }, [page, end]);
+  return r;
 }

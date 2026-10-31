@@ -858,6 +858,8 @@ Placeholders:
 | Card empty | Answer {n} more {subject} questions to see this. | इसे देखने के लिए {subject} के {n} और सवाल हल करें। |
 | Card empty, mocks | Take {n} more mocks to see a trend. | रुझान देखने के लिए {n} और मॉक दें। |
 | Card empty, confidence | Tap Sure, 50:50 or Guess on {n} more answers to see this. | इसे देखने के लिए {n} और उत्तरों पर पक्का, 50:50 या अंदाज़ा चुनें। |
+| Card empty, answers | Answer {n} more questions to see this. | इसे देखने के लिए {n} और सवाल हल करें। |
+| Card waiting | This card opens once there is enough practice to show it fairly. | यह कार्ड तब खुलेगा जब इसे ठीक से दिखाने लायक अभ्यास हो जाएगा। |
 | Pending sync | {n} answers will count when you're online. | ऑनलाइन होने पर {n} उत्तर जुड़ जाएँगे। |
 | Pet line, empty dashboard | Practise a little and I'll draw your progress here. | थोड़ा अभ्यास कीजिए, फिर आपकी प्रगति यहाँ दिखेगी। |
 

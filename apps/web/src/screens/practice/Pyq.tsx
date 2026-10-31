@@ -44,8 +44,8 @@ export function PyqBank() {
   const empty = !pending && (papers.data ?? []).length === 0 && (questions.data ?? []).length === 0;
 
   return (
-    <div className="flex flex-col gap-4 pb-6" data-testid="prc-07">
-      <TopBar title={t("practice:PRC-07.title")} onBack={() => void navigate({ to: "/practice" })} />
+    <div className="flex flex-col gap-4 px-4 pb-6 md:px-8" data-testid="prc-07">
+      <TopBar className="-mx-4 md:-mx-8" title={t("practice:PRC-07.title")} onBack={() => void navigate({ to: "/practice" })} />
       <ChoiceChips
         label={t("practice:PRC-07.title")}
         hideLabel

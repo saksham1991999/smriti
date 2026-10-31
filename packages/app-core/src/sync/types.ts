@@ -86,6 +86,23 @@ export interface SyncEventPayloads {
   cards_queued: { concept_ids: string[]; source: CardsQueuedSource };
   /** memory-labs §5.2. */
   comeback_plan_started: { days_away: number; cards: number };
+  /**
+   * A little learner finished a story, song or play activity (contract v1.4, pending: built
+   * against the field list agreed with the backend until sync.md v1.4 lands). Counts and
+   * published content ids only.
+   */
+  activity_completed: {
+    kind: 'story' | 'song' | 'play';
+    activity_id: string;
+    topic_id: string;
+    concept_ids: string[];
+    bundle_version: string;
+    locale: Locale;
+    stars: number;
+    ms_total: number;
+    /** ISO 8601 (UTC), the same instant as the envelope's occurred_at. */
+    completed_at: string;
+  };
 }
 
 /** `cards_queued.source` on the wire (sync contract v1.1). */
@@ -116,6 +133,12 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'cards_queued',
   'comeback_plan_started',
 ] as const satisfies readonly SyncEventType[];
+
+/**
+ * Events added in contract v1.4 (pending). A server on v1.3 rejects them as unknown, so send them
+ * only once `/v1/config` or the contract says v1.4 is live.
+ */
+export const CONTRACT_V14_EVENT_TYPES = ['activity_completed'] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {
   event_id: string;

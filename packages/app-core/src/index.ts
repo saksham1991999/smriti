@@ -49,4 +49,5 @@ export * from './notify/widget';
 export * from './little/experience';
 export * from './little/gentle';
 export * from './little/path';
+export * from './little/activity';
 export * from './little/parent';

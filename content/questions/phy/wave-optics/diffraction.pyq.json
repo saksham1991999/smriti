@@ -1,0 +1,78 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.wave-optics.diffraction",
+  "questions": [
+    {
+      "id": "q.phy.wave-optics.diffraction.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.wave-optics.diffraction.core.single-slit-diffraction",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In single slit diffraction pattern, the wavelength of light used is $628\\ \\mathrm{nm}$ and slit width is $0.2\\ \\mathrm{mm}$, the angular width of central maximum is $\\alpha\\times10^{-2}$ degrees. The value of $\\alpha$ is ______.",
+        "hi": "एकल झिरी विवर्तन प्रतिरूप में प्रयुक्त प्रकाश की तरंगदैर्ध्य $628\\ \\mathrm{nm}$ और झिरी की चौड़ाई $0.2\\ \\mathrm{mm}$ है, केंद्रीय उच्चिष्ठ की कोणीय चौड़ाई $\\alpha\\times10^{-2}$ डिग्री है। $\\alpha$ का मान ______ है।"
+      },
+      "answer": {
+        "value": 36,
+        "unit": null
+      },
+      "solution": {
+        "feynman": {
+          "en": "The central bright band spans from the first dark fringe on one side to the first on the other: $\\frac{2\\lambda}{a}$ radians.",
+          "hi": "केंद्रीय दीप्त पट्टी एक ओर की पहली अदीप्त फ्रिंज से दूसरी ओर की पहली तक फैली है: $\\frac{2\\lambda}{a}$ रेडियन।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{2\\lambda}{a}=\\frac{2 \\times 628\\times10^{-9}}{0.2\\times10^{-3}}=6.28\\times10^{-3}\\ \\mathrm{rad}$.",
+            "hi": "$\\frac{2\\lambda}{a}=\\frac{2 \\times 628\\times10^{-9}}{0.2\\times10^{-3}}=6.28\\times10^{-3}\\ \\mathrm{rad}$।"
+          },
+          {
+            "en": "In degrees: $6.28\\times10^{-3} \\times \\frac{180}{\\pi} \\approx 0.36^\\circ=36\\times10^{-2}$ degrees, so $\\alpha=36$.",
+            "hi": "डिग्री में: $6.28\\times10^{-3} \\times \\frac{180}{\\pi} \\approx 0.36^\\circ=36\\times10^{-2}$ डिग्री, अतः $\\alpha=36$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 46
+      }
+    }
+  ]
+}

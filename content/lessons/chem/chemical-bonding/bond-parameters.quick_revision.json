@@ -1,0 +1,125 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.bond-parameters:quick_revision",
+  "topic": "chem.chemical-bonding.bond-parameters",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+    "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.bond-parameters:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 1,
+      "sheet": "cs.chem.chemical-bonding.bond-parameters"
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:qr:02",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.bond-parameters.0003"
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:qr:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.bond-parameters.0004"
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:qr:04",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Higher bond order: stronger, shorter bond.",
+          "hi": "अधिक आबंध कोटि: मज़बूत, छोटा आबंध।"
+        },
+        {
+          "en": "Dipole moment is the vector sum of bond dipoles.",
+          "hi": "द्विध्रुव आघूर्ण आबंध द्विध्रुवों का सदिश योग है।"
+        },
+        {
+          "en": "Resonance hybrid is more stable than any canonical form.",
+          "hi": "अनुनाद संकर किसी भी विहित रूप से अधिक स्थायी है।"
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.bond-parameters:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+        "chem.chemical-bonding.bond-parameters.core.resonance-structures"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A molecule with polar bonds always has a dipole moment.",
+            "hi": "ध्रुवीय आबंधों वाले अणु का द्विध्रुव आघूर्ण सदा होता है।"
+          },
+          "correct": {
+            "en": "$\\ce{CO2}$ and $\\ce{BF3}$ have polar bonds but zero dipole moment because the bond dipoles cancel.",
+            "hi": "$\\ce{CO2}$ और $\\ce{BF3}$ में ध्रुवीय आबंध हैं पर द्विध्रुव आघूर्ण शून्य है क्योंकि आबंध द्विध्रुव निरस्त हो जाते हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "$\\ce{NF3}$ has the larger dipole moment because F is more electronegative.",
+            "hi": "$\\ce{NF3}$ का द्विध्रुव आघूर्ण अधिक है क्योंकि F अधिक विद्युत् ऋणात्मक है।"
+          },
+          "correct": {
+            "en": "In $\\ce{NF3}$ the lone-pair dipole opposes the bond dipoles, so $\\ce{NH3}$ has the larger moment.",
+            "hi": "$\\ce{NF3}$ में एकाकी युग्म का द्विध्रुव आबंध द्विध्रुवों के विपरीत है, इसलिए $\\ce{NH3}$ का आघूर्ण अधिक है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A resonating molecule flips between its canonical forms.",
+            "hi": "अनुनादी अणु अपने विहित रूपों के बीच बदलता रहता है।"
+          },
+          "correct": {
+            "en": "It has a single structure, the hybrid; the canonical forms do not exist on their own.",
+            "hi": "उसकी एक ही संरचना है, संकर; विहित रूपों का स्वतंत्र अस्तित्व नहीं है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

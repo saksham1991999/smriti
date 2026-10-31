@@ -1,0 +1,614 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or OpenStax and Wikipedia for the power set and the union count, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.sets.set-types",
+  "questions": [
+    {
+      "id": "q.math.sets.set-types.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-types.core.empty-finite-equal-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which of these is the empty set?",
+        "hi": "इनमें से रिक्त समुच्चय कौन-सा है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{x : x \\in \\mathbf{N},\\ 1 < x < 2\\}$",
+            "hi": "$\\{x : x \\in \\mathbf{N},\\ 1 < x < 2\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{0\\}$",
+            "hi": "$\\{0\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{x : x \\in \\mathbf{N},\\ x < 2\\}$",
+            "hi": "$\\{x : x \\in \\mathbf{N},\\ x < 2\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{\\phi\\}$",
+            "hi": "$\\{\\phi\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Try to name one element of each set.",
+          "hi": "हर समुच्चय का एक अवयव बताने का प्रयास कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "No natural number fits strictly between two consecutive natural numbers.",
+          "hi": "दो क्रमागत प्राकृत संख्याओं के ठीक बीच कोई प्राकृत संख्या नहीं होती।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.3 gives this set as an example of the empty set.",
+            "hi": "NCERT §1.3 इस समुच्चय को रिक्त समुच्चय के उदाहरण के रूप में देता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\{0\\}$ has the element $0$.",
+              "hi": "$\\{0\\}$ में अवयव $0$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is $\\{1\\}$.",
+              "hi": "यह $\\{1\\}$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\{\\phi\\}$ has one element, the empty set itself.",
+              "hi": "$\\{\\phi\\}$ में एक अवयव है, स्वयं रिक्त समुच्चय।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-types.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-types.core.empty-finite-equal-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which of these sets is infinite?",
+        "hi": "इनमें से कौन-सा समुच्चय अपरिमित है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The set of points on a circle",
+            "hi": "किसी वृत्त पर बिंदुओं का समुच्चय"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The set of prime numbers less than 100",
+            "hi": "100 से कम अभाज्य संख्याओं का समुच्चय"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The set of months of a year",
+            "hi": "वर्ष के महीनों का समुच्चय"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The set of letters of the English alphabet",
+            "hi": "अंग्रेज़ी वर्णमाला के अक्षरों का समुच्चय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Can you finish counting?",
+          "hi": "क्या आप गिनती पूरी कर सकते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A circle, however small, has no last point to count.",
+          "hi": "वृत्त कितना भी छोटा हो, गिनने के लिए उसका कोई अंतिम बिंदु नहीं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.4: a set is infinite when it does not have a definite number of elements.",
+            "hi": "NCERT §1.4: समुच्चय अपरिमित है जब उसमें अवयवों की निश्चित संख्या न हो।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "There are finitely many primes below any fixed number.",
+              "hi": "किसी निश्चित संख्या से कम अभाज्य सीमित होते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "There are 12 months.",
+              "hi": "महीने 12 हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "There are 26 letters.",
+              "hi": "अक्षर 26 हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-types.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-types.core.empty-finite-equal-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which pair of sets is equal?",
+        "hi": "कौन-सा समुच्चय युग्म समान है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{1, 2, 3\\}$ and $\\{x : x \\in \\mathbf{N},\\ x < 4\\}$",
+            "hi": "$\\{1, 2, 3\\}$ और $\\{x : x \\in \\mathbf{N},\\ x < 4\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{0\\}$ and $\\phi$",
+            "hi": "$\\{0\\}$ और $\\phi$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{a, b\\}$ and $\\{\\{a\\}, b\\}$",
+            "hi": "$\\{a, b\\}$ और $\\{\\{a\\}, b\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{1, 2\\}$ and $\\{1, 2, 3\\}$",
+            "hi": "$\\{1, 2\\}$ और $\\{1, 2, 3\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Equal means exactly the same elements.",
+          "hi": "समान का अर्थ है ठीक-ठीक एक जैसे अवयव।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Write both sets in roster form and compare the elements.",
+          "hi": "दोनों समुच्चयों को सूचीरूप में लिखकर अवयवों की तुलना कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "The natural numbers less than $4$ are $1, 2, 3$, so the sets are equal (NCERT §1.5).",
+            "hi": "$4$ से कम प्राकृत संख्याएँ $1, 2, 3$ हैं, अतः समुच्चय समान हैं (NCERT §1.5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\{0\\}$ has one element and $\\phi$ has none.",
+              "hi": "$\\{0\\}$ में एक अवयव है और $\\phi$ में कोई नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$a$ and $\\{a\\}$ are different objects.",
+              "hi": "$a$ और $\\{a\\}$ अलग वस्तुएँ हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$3$ is in the second set only.",
+              "hi": "$3$ केवल दूसरे समुच्चय में है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-types.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.sets.set-types.core.empty-finite-equal-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Find $n(A)$ where $A = \\{x : x \\in \\mathbf{Z},\\ |x| \\le 3\\}$.",
+        "hi": "$n(A)$ ज्ञात कीजिए, जहाँ $A = \\{x : x \\in \\mathbf{Z},\\ |x| \\le 3\\}$।"
+      },
+      "answer": {
+        "value": 7,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$|x| \\le 3$ allows negative values too.",
+          "hi": "$|x| \\le 3$ ऋण मान भी अनुमत करता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "List the integers from $-3$ to $3$ and count them, including $0$.",
+          "hi": "$-3$ से $3$ तक के पूर्णांक लिखिए और $0$ सहित गिनिए।"
+        },
+        "steps": [
+          {
+            "en": "$A = \\{-3, -2, -1, 0, 1, 2, 3\\}$, so $n(A) = 7$ (NCERT §1.4).",
+            "hi": "$A = \\{-3, -2, -1, 0, 1, 2, 3\\}$, अतः $n(A) = 7$ (NCERT §1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Forgetting $0$ gives $6$.",
+              "hi": "$0$ भूलने पर $6$ आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-types.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-types.core.empty-finite-equal-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A is the set of odd integers x for which $x^2 = 4$. Then",
+        "hi": "A उन विषम पूर्णांकों x का समुच्चय है जिनके लिए $x^2 = 4$। तब"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$A = \\phi$",
+            "hi": "$A = \\phi$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$A = \\{2\\}$",
+            "hi": "$A = \\{2\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$A = \\{-2, 2\\}$",
+            "hi": "$A = \\{-2, 2\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$A = \\{0\\}$",
+            "hi": "$A = \\{0\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Apply both conditions together.",
+          "hi": "दोनों शर्तें एक साथ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The only solutions of $x^2 = 4$ are even.",
+          "hi": "$x^2 = 4$ के सभी हल सम हैं।"
+        },
+        "steps": [
+          {
+            "en": "$x^2 = 4$ gives $x = \\pm 2$; neither is odd, so A is empty (NCERT §1.3).",
+            "hi": "$x^2 = 4$ से $x = \\pm 2$; कोई भी विषम नहीं, अतः A रिक्त है (NCERT §1.3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$2$ is even.",
+              "hi": "$2$ सम है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Both are even.",
+              "hi": "दोनों सम हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$0^2 = 0$, not $4$.",
+              "hi": "$0^2 = 0$ है, $4$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-types.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-types.core.empty-finite-equal-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which statement is FALSE?",
+        "hi": "कौन-सा कथन असत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{x : x^2 - 2 = 0,\\ x \\in \\mathbf{Q}\\}$ is empty.",
+            "hi": "$\\{x : x^2 - 2 = 0,\\ x \\in \\mathbf{Q}\\}$ रिक्त है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The set of even prime numbers is $\\{2\\}$.",
+            "hi": "सम अभाज्य संख्याओं का समुच्चय $\\{2\\}$ है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\phi$ and $\\{0\\}$ are equal sets.",
+            "hi": "$\\phi$ और $\\{0\\}$ समान समुच्चय हैं।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{1, 1, 2\\}$ and $\\{2, 1\\}$ are equal sets.",
+            "hi": "$\\{1, 1, 2\\}$ और $\\{2, 1\\}$ समान समुच्चय हैं।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The question asks for the false one.",
+          "hi": "प्रश्न असत्य कथन पूछ रहा है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Count elements: one set has none, the other has one.",
+          "hi": "अवयव गिनिए: एक में कोई नहीं, दूसरे में एक।"
+        },
+        "steps": [
+          {
+            "en": "$\\{0\\}$ contains $0$ while $\\phi$ contains nothing, so they are not equal (NCERT §1.3, §1.5).",
+            "hi": "$\\{0\\}$ में $0$ है जबकि $\\phi$ में कुछ नहीं, अतः वे समान नहीं (NCERT §1.3, §1.5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "True: $\\sqrt{2}$ is irrational.",
+              "hi": "सत्य: $\\sqrt{2}$ अपरिमेय है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "True: $2$ is the only even prime.",
+              "hi": "सत्य: $2$ ही एकमात्र सम अभाज्य है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "True: repetition and order do not matter.",
+              "hi": "सत्य: दोहराव और क्रम महत्त्वहीन हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

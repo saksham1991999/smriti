@@ -1,0 +1,111 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.math.sets.set-operations",
+  "scope": "topic",
+  "topic": "math.sets.set-operations",
+  "title": {
+    "en": "Venn diagrams and operations on sets",
+    "hi": "वेन आरेख और समुच्चयों पर संक्रियाएँ"
+  },
+  "concepts": [
+    "math.sets.set-operations.core.venn-diagrams",
+    "math.sets.set-operations.core.union-intersection-complement",
+    "math.sets.set-operations.core.set-algebra-laws"
+  ],
+  "key_ideas": [
+    {
+      "en": "Venn diagram: U as a rectangle, subsets as circles.",
+      "hi": "वेन आरेख: U आयत, उपसमुच्चय वृत्त।"
+    },
+    {
+      "en": "$A - B$, $A \\cap B$ and $B - A$ are mutually disjoint.",
+      "hi": "$A - B$, $A \\cap B$ और $B - A$ परस्पर असंयुक्त हैं।"
+    },
+    {
+      "en": "$A \\cup A' = U$ and $A \\cap A' = \\phi$.",
+      "hi": "$A \\cup A' = U$ और $A \\cap A' = \\phi$।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "De Morgan's laws",
+        "hi": "डी मॉर्गन के नियम"
+      },
+      "latex": "(A \\cup B)' = A' \\cap B',\\ (A \\cap B)' = A' \\cup B'"
+    },
+    {
+      "name": {
+        "en": "Distributive law",
+        "hi": "वितरण नियम"
+      },
+      "latex": "A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)"
+    },
+    {
+      "name": {
+        "en": "Elements of a union",
+        "hi": "सम्मिलन के अवयव"
+      },
+      "latex": "n(A \\cup B) = n(A) + n(B) - n(A \\cap B)"
+    }
+  ],
+  "mnemonics": [
+    {
+      "en": "m.math.sets.set-operations.core.set-algebra-laws.1",
+      "hi": "m.math.sets.set-operations.core.set-algebra-laws.2"
+    }
+  ],
+  "traps": [
+    {
+      "mistake": {
+        "en": "$A - B$ and $B - A$ are the same set.",
+        "hi": "$A - B$ और $B - A$ एक ही समुच्चय हैं।"
+      },
+      "correct": {
+        "en": "They are different and disjoint: $A - B$ is in A only, $B - A$ in B only.",
+        "hi": "वे भिन्न और असंयुक्त हैं: $A - B$ केवल A में, $B - A$ केवल B में।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$(A \\cup B)' = A' \\cup B'$.",
+        "hi": "$(A \\cup B)' = A' \\cup B'$।"
+      },
+      "correct": {
+        "en": "The complement turns union into intersection: $(A \\cup B)' = A' \\cap B'$.",
+        "hi": "पूरक सम्मिलन को सर्वनिष्ठ में बदलता है: $(A \\cup B)' = A' \\cap B'$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$n(A \\cup B) = n(A) + n(B)$ always.",
+        "hi": "$n(A \\cup B) = n(A) + n(B)$ सदा।"
+      },
+      "correct": {
+        "en": "Only for disjoint sets; otherwise subtract $n(A \\cap B)$.",
+        "hi": "केवल असंयुक्त समुच्चयों के लिए; अन्यथा $n(A \\cap B)$ घटाइए।"
+      }
+    }
+  ],
+  "diagram": "img.sets.venn-two-circles",
+  "hi_source": "translation"
+}

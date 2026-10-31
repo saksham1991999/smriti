@@ -1,0 +1,422 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as 1536x1024 WebP; originals kept outside the repo.",
+  "requests": [
+    {
+      "id": "img.chemical-bonding.shared-umbrella",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "chemistry",
+      "brief": "two Indian school friends in uniform walking together in light monsoon rain, sharing one open umbrella held between them so that both stay dry",
+      "must_show": [
+        "one umbrella shared by both children",
+        "both children dry under it",
+        "light rain"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "logos",
+        "a second umbrella"
+      ],
+      "alt": {
+        "en": "Two school friends in navy uniforms walk together through light rain, sharing one umbrella held between them.",
+        "hi": "नीली वर्दी में दो स्कूली दोस्त हल्की बारिश में साथ चल रहे हैं और दोनों के बीच पकड़ा एक ही छाता साझा कर रहे हैं।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.kossel-lewis:dd:02",
+        "chem.chemical-bonding.kossel-lewis:dd:07",
+        "cs.chem.chemical-bonding.kossel-lewis"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "c6d3a5d26a5ec34075a55e29c3f486b3ee64dd4ad675af06996107222c924225",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 43620,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.salt-crystals",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "chemistry",
+      "brief": "a close-up of a steel spoon heaped with coarse white table salt crystals, several crystals clearly cube-shaped, beside a small open salt jar on a kitchen counter",
+      "must_show": [
+        "cube-shaped salt crystals",
+        "steel spoon"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "labels on the jar",
+        "brand marks"
+      ],
+      "alt": {
+        "en": "A steel spoon heaped with coarse white salt crystals beside a small plain jar, with a few cube-shaped crystals on the counter.",
+        "hi": "मोटे सफ़ेद नमक के क्रिस्टलों से भरा स्टील का चम्मच और पास में एक छोटा सादा मर्तबान, काउंटर पर कुछ घनाकार क्रिस्टल।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.ionic-bond:dd:01",
+        "chem.chemical-bonding.ionic-bond:dd:02",
+        "chem.chemical-bonding.ionic-bond:dd:06",
+        "cs.chem.chemical-bonding.ionic-bond"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "9ec88b8cef0fe40ecd9b6700f2dc8656eb6c3112b25a1d3b9bf3d6eb0a0238b0",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 38362,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.water-molecule",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "a ball-and-stick model of one water molecule: a large red oxygen ball joined by two short sticks to two small white hydrogen balls in a bent V shape, with two rounded translucent violet lobes on the top of the oxygen pointing away from the hydrogens, representing the two lone pairs",
+      "must_show": [
+        "bent V-shaped molecule",
+        "one large oxygen ball and two small hydrogen balls",
+        "two translucent lone-pair lobes on the oxygen"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "angle marks",
+        "a straight line molecule"
+      ],
+      "label_anchors": [
+        {
+          "id": "oxygen",
+          "x": 0.5,
+          "y": 0.4
+        },
+        {
+          "id": "h-left",
+          "x": 0.3,
+          "y": 0.68
+        },
+        {
+          "id": "h-right",
+          "x": 0.7,
+          "y": 0.68
+        },
+        {
+          "id": "lone-pair-a",
+          "x": 0.4,
+          "y": 0.24
+        },
+        {
+          "id": "lone-pair-b",
+          "x": 0.59,
+          "y": 0.24
+        }
+      ],
+      "alt": {
+        "en": "A ball-and-stick model of a water molecule: a large red oxygen ball joined to two small white hydrogen balls in a bent V shape, with two violet lone-pair lobes on top of the oxygen.",
+        "hi": "जल अणु का गेंद-और-छड़ मॉडल: बड़ी लाल ऑक्सीजन गेंद मुड़े V आकार में दो छोटी सफ़ेद हाइड्रोजन गेंदों से जुड़ी है, और ऑक्सीजन के ऊपर दो बैंगनी एकाकी युग्म पालियाँ हैं।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.bond-parameters:dd:01",
+        "chem.chemical-bonding.bond-parameters:dd:05",
+        "chem.chemical-bonding.bond-parameters:dd:09",
+        "chem.chemical-bonding.hydrogen-bonding:dd:01",
+        "chem.chemical-bonding.hydrogen-bonding:dd:03",
+        "chem.chemical-bonding.vsepr:dd:01",
+        "chem.chemical-bonding.vsepr:dd:04",
+        "cs.chem.chemical-bonding.bond-parameters",
+        "cs.chem.chemical-bonding.hydrogen-bonding",
+        "cs.chem.chemical-bonding.vsepr"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6941d5ab9586eb63a8ac5d877b5dfb2e1cdf23ee1fd5891bd43cc66a018a5a78",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 16840,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.orbital-overlap",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "three stages left to right of two soft glowing spherical electron clouds approaching each other: far apart, just touching, and finally partly merged into one peanut-shaped cloud with the densest glow in the overlap region between two small nuclei",
+      "must_show": [
+        "two spherical clouds far apart",
+        "two clouds touching",
+        "two clouds partly overlapping with a bright overlap region",
+        "small nucleus dot at the centre of each cloud"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "arrows with labels"
+      ],
+      "alt": {
+        "en": "Three stages from left to right: two glowing spherical electron clouds far apart, then touching, then merged into one peanut-shaped cloud that glows brightest between the two nuclei.",
+        "hi": "बाएँ से दाएँ तीन चरण: दो चमकते गोलाकार इलेक्ट्रॉन बादल दूर-दूर, फिर छूते हुए, फिर एक मूँगफली आकार के बादल में मिले हुए जो दोनों नाभिकों के बीच सबसे अधिक चमकता है।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.vbt:dd:01",
+        "chem.chemical-bonding.vbt:dd:03",
+        "cs.chem.chemical-bonding.vbt"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "b921367c89d116715aebe1ada3c7b870374439544383f4e524d271b15ec6eeb5",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 16618,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.sp3-lobes",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "a model of four identical violet teardrop-shaped lobes joined at one small central ball, arranged like a tripod with one extra leg: one lobe pointing straight up and three lobes pointing downwards and outwards, spread evenly around, the tips of the four lobes touching the corners of a faint wireframe triangular pyramid with four triangular faces",
+      "must_show": [
+        "exactly four identical lobes",
+        "one lobe up and three lobes down and outwards",
+        "faint triangular pyramid outline around them"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "four lobes lying flat in a cross",
+        "an eight-faced outline"
+      ],
+      "alt": {
+        "en": "Four identical violet orbital lobes joined at a small central ball, one pointing up and three pointing down and outwards, their tips at the corners of a faint triangular pyramid.",
+        "hi": "एक छोटी केंद्रीय गेंद से जुड़ी चार एक जैसी बैंगनी कक्षक पालियाँ, एक ऊपर की ओर और तीन नीचे व बाहर की ओर, जिनके सिरे एक धुँधले त्रिभुजाकार पिरामिड के कोनों पर हैं।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.hybridisation:dd:01",
+        "chem.chemical-bonding.hybridisation:dd:03",
+        "chem.chemical-bonding.hybridisation:dd:05",
+        "cs.chem.chemical-bonding.hybridisation"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "75f88db6fa8c5ed9028da6a5947c0ae45e77c3df27d7525d20eacc606935fa3b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 24814,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.pond-ripples",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "chemistry",
+      "brief": "a calm village pond seen from slightly above where two pebbles have just dropped a short distance apart, sending out two sets of circular ripples that cross and overlap, making a pattern where some crests add up and other places stay flat",
+      "must_show": [
+        "two sets of circular ripples",
+        "ripples overlapping in the middle",
+        "calm water"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "people",
+        "boats"
+      ],
+      "alt": {
+        "en": "Two pebbles in a calm village pond send out two sets of circular ripples that meet and overlap between them.",
+        "hi": "गाँव के शांत तालाब में दो कंकड़ गोल लहरों के दो समूह बनाते हैं जो उनके बीच मिलकर एक-दूसरे पर चढ़ जाते हैं।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.mot:dd:01",
+        "chem.chemical-bonding.mot:dd:02",
+        "chem.chemical-bonding.mot:dd:05",
+        "cs.chem.chemical-bonding.mot"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "c70c357a8a2d37c105804b035a32f2f8c2fc8ac5f79e2b5daef0a874dec4f7ec",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 46178,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.electron-sea",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "a cut-away block of metal showing neat rows of identical large round amber metal ions held in place, all immersed in a continuous glowing violet haze of many tiny dots that fill every gap between the ions, representing a sea of delocalised electrons",
+      "must_show": [
+        "regular rows of identical large round ions",
+        "many tiny dots filling all gaps",
+        "the haze spread evenly through the whole block"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "sticks between the ions"
+      ],
+      "alt": {
+        "en": "A block of metal cut away to show neat rows of identical round amber ions, with a violet haze of tiny dots filling every gap between them.",
+        "hi": "धातु का एक कटा हुआ खंड जिसमें एक जैसे गोल अंबर रंग के आयनों की सीधी पंक्तियाँ हैं, और उनके बीच हर खाली जगह को छोटे बिंदुओं की बैंगनी धुंध भरती है।"
+      },
+      "used_by": [
+        "chem.chemical-bonding.metallic-bonding:dd:01",
+        "chem.chemical-bonding.metallic-bonding:dd:03",
+        "cs.chem.chemical-bonding.metallic-bonding"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "98defd9615c0d74309846dbad533e922a50e650cc3a125046baf991c9a8444b2",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 80996,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.chemical-bonding.rock-salt-lattice",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "a small cube-shaped crystal model made of exactly two kinds of balls in a perfect checkerboard pattern in three dimensions: big pale green balls and small violet balls, every row, every column and every vertical line alternating big, small, big, so a big ball is never next to another big ball and a small ball never next to another small ball, joined by thin grey sticks",
+      "must_show": [
+        "checkerboard alternation of big and small balls in every direction",
+        "only two kinds of ball",
+        "cube outline of the model"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "a third colour of ball",
+        "two balls of the same kind next to each other",
+        "plus or minus signs"
+      ],
+      "alt": {
+        "en": "A cube-shaped crystal model in which large and small balls alternate in every direction.",
+        "hi": "घनाकार क्रिस्टल मॉडल जिसमें बड़ी और छोटी गेंदें हर दिशा में बारी-बारी से आती हैं।"
+      },
+      "used_by": [],
+      "status": "rejected",
+      "rejected_reason": "Rejected after two rounds: balls of the same kind sat side by side, and a third colour appeared. No card uses it. Escalated to a person.",
+      "result": null
+    },
+    {
+      "id": "img.chemical-bonding.balloon-shapes",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "chemistry",
+      "brief": "three separate bunches of identical violet party balloons floating left to right, each bunch tied at one knot in its centre: the left bunch has exactly two balloons pointing straight away from each other; the middle bunch has exactly three balloons lying flat like a Mercedes star; the right bunch has exactly four balloons in three dimensions, one pointing straight up and three pointing down and outwards like the legs of a tripod",
+      "must_show": [
+        "left bunch of exactly two balloons in a straight line",
+        "middle bunch of exactly three balloons flat",
+        "right bunch of exactly four balloons, one up and three down like a tripod"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "strings hanging down",
+        "faces on balloons",
+        "four balloons lying flat in a cross"
+      ],
+      "alt": {
+        "en": "Three bunches of balloons tied at one knot each: two in a line, three flat, and four in a tetrahedral spread.",
+        "hi": "एक-एक गाँठ पर बँधे गुब्बारों के तीन गुच्छे: दो एक रेखा में, तीन समतल में, और चार चतुष्फलकीय फैलाव में।"
+      },
+      "used_by": [],
+      "status": "rejected",
+      "rejected_reason": "Rejected after two rounds: the four-balloon bunch was never tetrahedral. No card uses it. Escalated to a person.",
+      "result": null
+    },
+    {
+      "id": "img.chemical-bonding.water-hbonds",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "four bent water molecules as ball-and-stick models, each with one large red oxygen ball and two small white hydrogen balls, arranged in a chain from left to right: one white hydrogen ball of each molecule points at the big red oxygen ball of the next molecule, and only that gap between a white hydrogen and a red oxygen is bridged by a short dotted line",
+      "must_show": [
+        "four bent water molecules",
+        "red oxygen and white hydrogen balls",
+        "each dotted line runs from a white hydrogen ball to a red oxygen ball of the next molecule"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "dotted line touching two white balls",
+        "dotted line touching two red balls"
+      ],
+      "alt": {
+        "en": "A chain of bent water molecules with a dotted line from a hydrogen of one molecule to the oxygen of the next.",
+        "hi": "मुड़े जल अणुओं की शृंखला जिसमें एक अणु के हाइड्रोजन से अगले अणु के ऑक्सीजन तक बिंदुदार रेखा है।"
+      },
+      "used_by": [],
+      "status": "rejected",
+      "rejected_reason": "Rejected after two rounds: dotted lines joined two hydrogens, and atom sizes were inconsistent. No card uses it. Escalated to a person.",
+      "result": null
+    }
+  ],
+  "hi_source": "translation"
+}

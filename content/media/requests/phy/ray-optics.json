@@ -1,0 +1,48 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Figures of ingested previous-year questions, to be recreated as diagrams through visual-director (never scanned). Each brief describes the official figure; labels are placed at anchors once an image exists.",
+  "requests": [
+    {
+      "id": "img.ray-optics.pyq-refracting-surface",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a horizontal principal axis on white; on the left a short upright arrow standing on the axis; to its right a small dot on the axis; further right a curved refracting surface whose centre of curvature is that dot, so the surface curves with its hollow facing left, and the region to the right of the surface is glass shaded very lightly; below the axis two horizontal dimension lines with arrowheads: a short one from the dot to the surface and a long one from the arrow to the surface. Recreate the figure of NTA's JEE (Main) 2026 paper, 2 April Shift 1, question 41 faithfully (same parts, positions and directions); every letter, number, sign and arrow label is added by the app at label anchors.",
+      "must_show": [
+        "upright object arrow on the axis",
+        "dot marking the centre of curvature between the object and the surface",
+        "surface hollow facing the object",
+        "two dimension lines measured to the surface"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "a scan or copy of the original paper"
+      ],
+      "alt": {
+        "en": "An object O of height 2 cm stands on the axis 40 cm in front of a curved glass surface at P. The centre of curvature C is 20 cm from P on the object's side. Air has index 1; the glass has index 1.54.",
+        "hi": "ऊँचाई 2 cm की वस्तु O, P पर स्थित वक्र काँच-सतह से 40 cm आगे अक्ष पर खड़ी है। वक्रता केंद्र C, वस्तु की ओर P से 20 cm पर है। वायु का अपवर्तनांक 1 और काँच का 1.54 है।"
+      },
+      "used_by": [
+        "q.phy.ray-optics.spherical-refraction.9001"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ]
+}

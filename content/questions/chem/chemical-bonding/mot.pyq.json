@@ -1,0 +1,119 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.chemical-bonding.mot",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.mot.9001",
+      "type": "statement_based",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Given below are two statements : In the light of the above statements, choose the correct answer from the options given below :",
+        "hi": "नीचे दो कथन दिए गए हैं : उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सही उत्तर चुनिए :"
+      },
+      "statements": [
+        {
+          "en": "Statement (I) : The correct sequence of bond lengths in the following species is : $\\ce{O2+ < O2 < O2- < O2^2-}$",
+          "hi": "कथन (I) : निम्नलिखित स्पीशीज़ में आबंध लंबाइयों का सही क्रम है : $\\ce{O2+ < O2 < O2- < O2^2-}$"
+        },
+        {
+          "en": "Statement (II) : The correct sequence of number of unpaired electrons in the following species is : $\\ce{O2 > O2+ > O2- > O2^2-}$",
+          "hi": "कथन (II) : निम्नलिखित स्पीशीज़ में अयुग्मित इलेक्ट्रॉनों की संख्या का सही क्रम है : $\\ce{O2 > O2+ > O2- > O2^2-}$"
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Both Statement I and Statement II are true",
+            "hi": "कथन I और कथन II दोनों सही हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Both Statement I and Statement II are false",
+            "hi": "कथन I और कथन II दोनों गलत हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Statement I is true but Statement II is false",
+            "hi": "कथन I सही है परंतु कथन II गलत है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Statement I is false but Statement II is true",
+            "hi": "कथन I गलत है परंतु कथन II सही है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Fill the molecular orbitals: going from $\\ce{O2+}$ to $\\ce{O2^2-}$ adds electrons to the antibonding $\\pi^*$ orbitals, lowering bond order step by step and lengthening the bond.",
+          "hi": "आण्विक कक्षक भरिए: $\\ce{O2+}$ से $\\ce{O2^2-}$ तक प्रतिआबंधी $\\pi^*$ कक्षकों में इलेक्ट्रॉन जुड़ते हैं, जिससे आबंध कोटि क्रमशः घटती है और आबंध लंबा होता है।"
+        },
+        "steps": [
+          {
+            "en": "Bond orders: $\\ce{O2+}$ $2.5$, $\\ce{O2}$ $2$, $\\ce{O2-}$ $1.5$, $\\ce{O2^2-}$ $1$; lower order means a longer bond, so Statement I is true.",
+            "hi": "आबंध कोटि: $\\ce{O2+}$ $2.5$, $\\ce{O2}$ $2$, $\\ce{O2-}$ $1.5$, $\\ce{O2^2-}$ $1$; कम कोटि का अर्थ लंबा आबंध, अतः कथन I सही है।"
+          },
+          {
+            "en": "Unpaired electrons: $\\ce{O2}$ $2$, $\\ce{O2+}$ $1$, $\\ce{O2-}$ $1$, $\\ce{O2^2-}$ $0$. $\\ce{O2+}$ and $\\ce{O2-}$ are equal, so Statement II is false.",
+            "hi": "अयुग्मित इलेक्ट्रॉन: $\\ce{O2}$ $2$, $\\ce{O2+}$ $1$, $\\ce{O2-}$ $1$, $\\ce{O2^2-}$ $0$। $\\ce{O2+}$ और $\\ce{O2-}$ बराबर हैं, अतः कथन II गलत है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 53
+      }
+    }
+  ]
+}

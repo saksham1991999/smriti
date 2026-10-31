@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.sequences-series.progressions",
+  "questions": [
+    {
+      "id": "q.math.sequences-series.progressions.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sequences-series.progressions.core.arithmetic-progression",
+          "weight": 0.7
+        },
+        {
+          "id": "math.sets.set-operations.core.union-intersection-complement",
+          "weight": 0.3
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A$ be the set of first $101$ terms of an A.P., whose first term is $1$ and the common difference is $5$ and let $B$ be the set of first $71$ terms of an A.P., whose first term is $9$ and the common difference is $7$. Then the number of elements in $A \\cap B$, which are divisible by $3$, is :",
+        "hi": "माना $A$ एक समांतर श्रेढ़ी के प्रथम $101$ पदों का समुच्चय है, जिसका प्रथम पद $1$ और सार्व अंतर $5$ है, तथा माना $B$ एक समांतर श्रेढ़ी के प्रथम $71$ पदों का समुच्चय है, जिसका प्रथम पद $9$ और सार्व अंतर $7$ है। तब $A \\cap B$ के उन अवयवों की संख्या, जो $3$ से विभाज्य हैं, है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$4$",
+            "hi": "$4$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$6$",
+            "hi": "$6$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$7$",
+            "hi": "$7$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Common terms of two A.P.s form a new A.P. whose common difference is the LCM of the two differences. List how many fit inside both ranges, then pick the ones divisible by $3$.",
+          "hi": "दो समांतर श्रेढ़ियों के उभयनिष्ठ पद एक नई श्रेढ़ी बनाते हैं जिसका सार्व अंतर दोनों अंतरों का ल.स. है। देखिए कितने पद दोनों सीमाओं में आते हैं, फिर $3$ से विभाज्य पद चुनिए।"
+        },
+        "steps": [
+          {
+            "en": "$A=\\{1,6,\\dots,501\\}$ and $B=\\{9,16,\\dots,499\\}$. The first common term is $16$, and common terms step by $\\operatorname{lcm}(5,7)=35$.",
+            "hi": "$A=\\{1,6,\\dots,501\\}$ और $B=\\{9,16,\\dots,499\\}$। पहला उभयनिष्ठ पद $16$ है, और उभयनिष्ठ पद $\\operatorname{lcm}(5,7)=35$ के अंतर से बढ़ते हैं।"
+          },
+          {
+            "en": "$16+35j \\le 499$ gives $j=0,1,\\dots,13$: $14$ common terms.",
+            "hi": "$16+35j \\le 499$ से $j=0,1,\\dots,13$: $14$ उभयनिष्ठ पद।"
+          },
+          {
+            "en": "$16+35j \\equiv 1+2j \\pmod 3$, which is $0$ when $j \\equiv 1 \\pmod 3$: $j=1,4,7,10,13$, so $5$ elements.",
+            "hi": "$16+35j \\equiv 1+2j \\pmod 3$, जो $0$ होता है जब $j \\equiv 1 \\pmod 3$: $j=1,4,7,10,13$, अतः $5$ अवयव।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 5
+      }
+    }
+  ]
+}

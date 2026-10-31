@@ -1,0 +1,712 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.mot",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.mot.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "When four atomic orbitals combine, the number of molecular orbitals formed is",
+        "hi": "जब चार परमाणु कक्षक मिलते हैं तो बनने वाले आण्विक कक्षकों की संख्या है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2",
+            "hi": "2"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4",
+            "hi": "4"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "8",
+            "hi": "8"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "16",
+            "hi": "16"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Numbers in equal numbers out.",
+          "hi": "जितने अंदर, उतने बाहर।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Orbitals are conserved in number: every atomic orbital that goes in gives one molecular orbital out.",
+          "hi": "कक्षकों की संख्या संरक्षित रहती है: हर मिलने वाला परमाणु कक्षक एक आण्विक कक्षक देता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.7 (iv): the number of molecular orbitals formed is equal to the number of combining atomic orbitals.",
+            "hi": "NCERT §4.7 (iv): बनने वाले आण्विक कक्षकों की संख्या मिलने वाले परमाणु कक्षकों की संख्या के बराबर है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That halves the number.",
+              "hi": "इसमें संख्या आधी हो गई।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That doubles the number.",
+              "hi": "इसमें संख्या दोगुनी हो गई।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That squares the number.",
+              "hi": "इसमें संख्या का वर्ग हो गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.mot.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The bond order of $\\ce{He2}$ according to MO theory is",
+        "hi": "MO सिद्धांत के अनुसार $\\ce{He2}$ की आबंध कोटि है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\tfrac{1}{2}$",
+            "hi": "$\\tfrac{1}{2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2$",
+            "hi": "$2$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count bonding and antibonding electrons.",
+          "hi": "आबंधी और प्रतिआबंधी इलेक्ट्रॉन गिनिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Four electrons fill $\\sigma 1s$ and $\\sigma^* 1s$ equally, so the antibonding electrons cancel the bonding ones.",
+          "hi": "चार इलेक्ट्रॉन $\\sigma 1s$ और $\\sigma^* 1s$ को बराबर भरते हैं, इसलिए प्रतिआबंधी इलेक्ट्रॉन आबंधी इलेक्ट्रॉनों को निरस्त कर देते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\ce{He2}$: $(\\sigma 1s)^2 (\\sigma^* 1s)^2$, $\\text{b.o.} = \\tfrac{1}{2}(2 - 2) = 0$; $\\ce{He2}$ does not exist (NCERT §4.8).",
+            "hi": "$\\ce{He2}$: $(\\sigma 1s)^2 (\\sigma^* 1s)^2$, $\\text{b.o.} = \\tfrac{1}{2}(2 - 2) = 0$; $\\ce{He2}$ का अस्तित्व नहीं है (NCERT §4.8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That would be $\\ce{He2+}$, with three electrons.",
+              "hi": "वह $\\ce{He2+}$ होगा, तीन इलेक्ट्रॉनों वाला।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is $\\ce{H2}$, with no antibonding electrons.",
+              "hi": "वह $\\ce{H2}$ है, जिसमें कोई प्रतिआबंधी इलेक्ट्रॉन नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Helium has no electrons in $2s$ or $2p$ orbitals.",
+              "hi": "हीलियम के $2s$ या $2p$ कक्षकों में कोई इलेक्ट्रॉन नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.mot.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-theory",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Taking z as the molecular axis, a $2p_z$ orbital of one atom can combine with which orbital of the other atom?",
+        "hi": "z को आण्विक अक्ष मानें तो एक परमाणु का $2p_z$ कक्षक दूसरे परमाणु के किस कक्षक से मिल सकता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2p_x$",
+            "hi": "$2p_x$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2p_y$",
+            "hi": "$2p_y$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2p_z$",
+            "hi": "$2p_z$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "none of them",
+            "hi": "इनमें से किसी से नहीं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Symmetry about the bond axis must match.",
+          "hi": "आबंध अक्ष के प्रति सममिति मेल खानी चाहिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Orbitals combine only when they have the same symmetry about the molecular axis.",
+          "hi": "कक्षक तभी मिलते हैं जब आण्विक अक्ष के प्रति उनकी सममिति समान हो।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.7.2: $2p_z$ of one atom can combine with $2p_z$ of the other atom but not with $2p_x$ or $2p_y$, because their symmetries differ.",
+            "hi": "NCERT §4.7.2: एक परमाणु का $2p_z$ दूसरे के $2p_z$ से मिल सकता है, $2p_x$ या $2p_y$ से नहीं, क्योंकि उनकी सममिति भिन्न है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Same energy, but different symmetry about the z axis.",
+              "hi": "ऊर्जा समान है, पर z अक्ष के प्रति सममिति भिन्न।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Same energy, but different symmetry about the z axis.",
+              "hi": "ऊर्जा समान है, पर z अक्ष के प्रति सममिति भिन्न।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$2p_z$ with $2p_z$ is allowed and gives $\\sigma 2p_z$ and $\\sigma^* 2p_z$.",
+              "hi": "$2p_z$ का $2p_z$ से मिलना संभव है और $\\sigma 2p_z$ तथा $\\sigma^* 2p_z$ देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.mot.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these molecules is paramagnetic?",
+        "hi": "इनमें से कौन-सा अणु अनुचुंबकीय है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{N2}$",
+            "hi": "$\\ce{N2}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{C2}$",
+            "hi": "$\\ce{C2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{F2}$",
+            "hi": "$\\ce{F2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{B2}$",
+            "hi": "$\\ce{B2}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for an odd number of electrons in a degenerate pair.",
+          "hi": "अपभ्रष्ट युग्म में विषम इलेक्ट्रॉन खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "In $\\ce{B2}$ the last two electrons go one each into the two equal $\\pi 2p$ orbitals, by Hund's rule.",
+          "hi": "$\\ce{B2}$ में अंतिम दो इलेक्ट्रॉन हुंड के नियम से दोनों बराबर $\\pi 2p$ कक्षकों में एक-एक जाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT Fig. 4.21: $\\ce{B2}$ is paramagnetic with bond order 1; $\\ce{C2}$, $\\ce{N2}$ and $\\ce{F2}$ are diamagnetic.",
+            "hi": "NCERT चित्र 4.21: $\\ce{B2}$ अनुचुंबकीय है, आबंध कोटि 1; $\\ce{C2}$, $\\ce{N2}$ और $\\ce{F2}$ प्रतिचुंबकीय हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "All electrons in $\\ce{N2}$ are paired.",
+              "hi": "$\\ce{N2}$ के सभी इलेक्ट्रॉन युग्मित हैं।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\ce{C2}$ fills both $\\pi 2p$ orbitals completely.",
+              "hi": "$\\ce{C2}$ दोनों $\\pi 2p$ कक्षकों को पूरा भरता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\ce{F2}$ fills both $\\pi^*$ orbitals completely.",
+              "hi": "$\\ce{F2}$ दोनों $\\pi^*$ कक्षकों को पूरा भरता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.mot.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "What is the bond order of $\\ce{N2}$ according to molecular orbital theory?",
+        "hi": "आण्विक कक्षक सिद्धांत के अनुसार $\\ce{N2}$ की आबंध कोटि क्या है?"
+      },
+      "answer": {
+        "value": 3,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Use $\\tfrac{1}{2}(N_b - N_a)$.",
+          "hi": "$\\tfrac{1}{2}(N_b - N_a)$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$\\ce{N2}$ has 14 electrons; only the inner $\\sigma^* 1s$ and $\\sigma^* 2s$ antibonding orbitals are filled.",
+          "hi": "$\\ce{N2}$ में 14 इलेक्ट्रॉन हैं; केवल भीतरी $\\sigma^* 1s$ और $\\sigma^* 2s$ प्रतिआबंधी कक्षक भरे हैं।"
+        },
+        "steps": [
+          {
+            "en": "$N_b = 10$, $N_a = 4$: $\\text{b.o.} = \\tfrac{1}{2}(10 - 4) = 3$ (NCERT Fig. 4.21).",
+            "hi": "$N_b = 10$, $N_a = 4$: $\\text{b.o.} = \\tfrac{1}{2}(10 - 4) = 3$ (NCERT चित्र 4.21)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Counting only the 2p electrons and forgetting to halve.",
+              "hi": "केवल 2p इलेक्ट्रॉन गिनना और आधा करना भूल जाना।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.mot.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about $\\ce{Li2}$ is correct according to MO theory?",
+        "hi": "MO सिद्धांत के अनुसार $\\ce{Li2}$ के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Bond order 1 and diamagnetic",
+            "hi": "आबंध कोटि 1 और प्रतिचुंबकीय"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Bond order 0, so it does not exist",
+            "hi": "आबंध कोटि 0, अतः इसका अस्तित्व नहीं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Bond order 2 and paramagnetic",
+            "hi": "आबंध कोटि 2 और अनुचुंबकीय"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Bond order 1 and paramagnetic",
+            "hi": "आबंध कोटि 1 और अनुचुंबकीय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Fill six electrons.",
+          "hi": "छह इलेक्ट्रॉन भरिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Six electrons: four bonding, two antibonding, all paired.",
+          "hi": "छह इलेक्ट्रॉन: चार आबंधी, दो प्रतिआबंधी, सभी युग्मित।"
+        },
+        "steps": [
+          {
+            "en": "$\\ce{Li2}$: $(\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2$, $\\text{b.o.} = \\tfrac{1}{2}(4 - 2) = 1$; no unpaired electron, so diamagnetic; $\\ce{Li2}$ is known in the vapour phase (NCERT §4.8).",
+            "hi": "$\\ce{Li2}$: $(\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2$, $\\text{b.o.} = \\tfrac{1}{2}(4 - 2) = 1$; कोई अयुग्मित इलेक्ट्रॉन नहीं, अतः प्रतिचुंबकीय; $\\ce{Li2}$ वाष्प अवस्था में ज्ञात है (NCERT §4.8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is $\\ce{Be2}$ or $\\ce{He2}$.",
+              "hi": "वह $\\ce{Be2}$ या $\\ce{He2}$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Bond order 2 and paramagnetic describes $\\ce{O2}$.",
+              "hi": "आबंध कोटि 2 और अनुचुंबकीय $\\ce{O2}$ का वर्णन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The $\\sigma 2s$ orbital holds a pair, so no electron is unpaired.",
+              "hi": "$\\sigma 2s$ कक्षक में युग्म है, इसलिए कोई इलेक्ट्रॉन अयुग्मित नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.mot.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.mot.core.mo-configuration-bond-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In the $\\ce{C2}$ molecule, the double bond consists of",
+        "hi": "$\\ce{C2}$ अणु में द्वि-आबंध किससे बना है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "one sigma and one pi bond",
+            "hi": "एक सिग्मा और एक पाई आबंध"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "two sigma bonds",
+            "hi": "दो सिग्मा आबंध"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "two pi bonds",
+            "hi": "दो पाई आबंध"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "one sigma bond and one lone pair",
+            "hi": "एक सिग्मा आबंध और एक एकाकी युग्म"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which orbitals receive the last four electrons?",
+          "hi": "अंतिम चार इलेक्ट्रॉन किन कक्षकों में जाते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "In $\\ce{C2}$ the four electrons beyond $\\sigma^* 2s$ go into the two $\\pi 2p$ orbitals, which lie below $\\sigma 2p_z$.",
+          "hi": "$\\ce{C2}$ में $\\sigma^* 2s$ के बाद के चार इलेक्ट्रॉन दोनों $\\pi 2p$ कक्षकों में जाते हैं, जो $\\sigma 2p_z$ से नीचे हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.8: $\\ce{C2}$ is $KK(\\sigma 2s)^2 (\\sigma^* 2s)^2 (\\pi 2p_x^2 = \\pi 2p_y^2)$, bond order 2; its double bond consists of both pi bonds.",
+            "hi": "NCERT §4.8: $\\ce{C2}$ का विन्यास $KK(\\sigma 2s)^2 (\\sigma^* 2s)^2 (\\pi 2p_x^2 = \\pi 2p_y^2)$ है, आबंध कोटि 2; इसका द्वि-आबंध दोनों पाई आबंधों से बना है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That is true for most other molecules, but not $\\ce{C2}$.",
+              "hi": "यह अधिकांश अन्य अणुओं के लिए सही है, पर $\\ce{C2}$ के लिए नहीं।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Only one sigma orbital pair could bond, and $\\sigma 2p_z$ is empty here.",
+              "hi": "यहाँ $\\sigma 2p_z$ खाली है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A lone pair is not part of a bond.",
+              "hi": "एकाकी युग्म आबंध का भाग नहीं होता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

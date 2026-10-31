@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.statistics.central-tendency",
+  "questions": [
+    {
+      "id": "q.math.statistics.central-tendency.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.statistics.central-tendency.core.central-tendency",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If the mean of the data $\\begin{array}{|c|c|c|c|c|c|c|}\\hline \\text{Class} & 5\\text{-}10 & 10\\text{-}15 & 15\\text{-}20 & 20\\text{-}25 & 25\\text{-}30 & 30\\text{-}35 \\\\ \\hline \\text{Frequency} & 2 & k & 28 & 54 & k+1 & 5 \\\\ \\hline \\end{array}$ is $21$, then $k$ is one of the roots of the equation :",
+        "hi": "यदि आँकड़ों $\\begin{array}{|c|c|c|c|c|c|c|}\\hline \\text{Class} & 5\\text{-}10 & 10\\text{-}15 & 15\\text{-}20 & 20\\text{-}25 & 25\\text{-}30 & 30\\text{-}35 \\\\ \\hline \\text{Frequency} & 2 & k & 28 & 54 & k+1 & 5 \\\\ \\hline \\end{array}$ का माध्य $21$ है, तो $k$ समीकरण का एक मूल है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2x^2-23x-10=0$",
+            "hi": "$2x^2-23x-10=0$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$4x^2-35x+24=0$",
+            "hi": "$4x^2-35x+24=0$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2x^2-19x-10=0$",
+            "hi": "$2x^2-19x-10=0$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2x^2-35x+98=0$",
+            "hi": "$2x^2-35x+98=0$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Use class marks as the representative values, set the weighted mean equal to $21$, solve for $k$, and test which equation it satisfies.",
+          "hi": "वर्ग-चिह्नों को प्रतिनिधि मान लेकर भारित माध्य को $21$ के बराबर रखिए, $k$ निकालिए, और जाँचिए कि कौन-सा समीकरण संतुष्ट होता है।"
+        },
+        "steps": [
+          {
+            "en": "Class marks: $7.5, 12.5, 17.5, 22.5, 27.5, 32.5$. $\\sum f=90+2k$ and $\\sum fx=1910+40k$.",
+            "hi": "वर्ग-चिह्न: $7.5, 12.5, 17.5, 22.5, 27.5, 32.5$। $\\sum f=90+2k$ और $\\sum fx=1910+40k$।"
+          },
+          {
+            "en": "$1910+40k=21(90+2k)$ gives $k=10$.",
+            "hi": "$1910+40k=21(90+2k)$ से $k=10$।"
+          },
+          {
+            "en": "$2(10)^2-19(10)-10=0$, so $k$ is a root of $2x^2-19x-10=0$.",
+            "hi": "$2(10)^2-19(10)-10=0$, अतः $k$ समीकरण $2x^2-19x-10=0$ का मूल है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.mot:quick_revision",
+  "topic": "chem.chemical-bonding.mot",
+  "mode": "quick_revision",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.mot.core.mo-theory",
+    "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.mot:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory",
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 1,
+      "sheet": "cs.chem.chemical-bonding.mot"
+    },
+    {
+      "id": "chem.chemical-bonding.mot:qr:02",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.mot.0003"
+    },
+    {
+      "id": "chem.chemical-bonding.mot:qr:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.mot.0004"
+    },
+    {
+      "id": "chem.chemical-bonding.mot:qr:04",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.mot.0005"
+    },
+    {
+      "id": "chem.chemical-bonding.mot:qr:05",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory",
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Bonding MO $\\psi_A + \\psi_B$ lower, antibonding $\\psi_A - \\psi_B$ higher.",
+          "hi": "आबंधी MO $\\psi_A + \\psi_B$ नीचे, प्रतिआबंधी $\\psi_A - \\psi_B$ ऊपर।"
+        },
+        {
+          "en": "Bond order $= \\tfrac{1}{2}(N_b - N_a)$; unpaired electrons mean paramagnetic.",
+          "hi": "आबंध कोटि $= \\tfrac{1}{2}(N_b - N_a)$; अयुग्मित इलेक्ट्रॉन यानी अनुचुंबकीय।"
+        }
+      ]
+    },
+    {
+      "id": "chem.chemical-bonding.mot:qr:06",
+      "type": "common_traps",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory",
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "$\\sigma 2p_z$ is always below $\\pi 2p$.",
+            "hi": "$\\sigma 2p_z$ सदा $\\pi 2p$ से नीचे होता है।"
+          },
+          "correct": {
+            "en": "Only for $\\ce{O2}$ and $\\ce{F2}$; for $\\ce{N2}$ and lighter molecules it lies above the $\\pi 2p$ pair.",
+            "hi": "केवल $\\ce{O2}$ और $\\ce{F2}$ के लिए; $\\ce{N2}$ और हल्के अणुओं के लिए यह $\\pi 2p$ युग्म से ऊपर है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A double bond always has one sigma and one pi bond.",
+            "hi": "द्वि-आबंध में सदा एक सिग्मा और एक पाई आबंध होता है।"
+          },
+          "correct": {
+            "en": "In $\\ce{C2}$ the double bond is made of two pi bonds.",
+            "hi": "$\\ce{C2}$ में द्वि-आबंध दो पाई आबंधों से बना है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Bond order zero still means a weak bond.",
+            "hi": "शून्य आबंध कोटि का अर्थ फिर भी एक कमज़ोर आबंध है।"
+          },
+          "correct": {
+            "en": "Zero means the molecule is unstable; $\\ce{He2}$ and $\\ce{Be2}$ do not exist.",
+            "hi": "शून्य का अर्थ अस्थायी अणु; $\\ce{He2}$ और $\\ce{Be2}$ का अस्तित्व नहीं है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

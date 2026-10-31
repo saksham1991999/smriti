@@ -1,17 +1,18 @@
 import { Button, Card, Chip, Icon, IconButton, PetLine, StatTile, Text } from '@smriti/ui-native';
 import { useQuery } from '@tanstack/react-query';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { filledSpots, loadPalace } from '../../../../src/features/palace/palaces';
+import { filledSpots, loadPalace, rateItem } from '../../../../src/features/palace/palaces';
 import { useApp, useT } from '../../../../src/services/context';
 import { Screen, Stack } from '../../../../src/ui/Screen';
 
 /**
  * MEM-18 Palace quiz, "What's here?" mode: each spot with its item hidden, [Show], then the
- * learner says whether they remembered it. The result panel counts what they remembered and
- * lists the spots to fix. ("Put them back" and FSRS ratings for palace items come later.)
+ * learner says whether they remembered it (Again or Good, which schedules the item's review card
+ * with the device FSRS and counts as a review). The result panel counts what they remembered and
+ * lists the spots to fix. ("Put them back" comes later.)
  */
 export default function PalaceQuiz() {
   const app = useApp();
@@ -22,25 +23,29 @@ export default function PalaceQuiz() {
   const [shown, setShown] = useState(false);
   const [missed, setMissed] = useState<number[]>([]);
   const [done, setDone] = useState(false);
+  const shownAt = useRef(app.deps.clock());
   const m = q.data;
   const pet = app.store.getState().pet;
   if (!m) return <Screen testID="MEM-18">{null}</Screen>;
   const spots = filledSpots(m);
   const roomName = (roomId: string) => {
-    const k = m.rooms.findIndex((r) => r.id === roomId);
+    const k = m.rooms.findIndex((r) => r.room_id === roomId);
     return m.rooms[k]?.name || `${t('memory_labs:MEM-14.add_room')} ${k + 1}`;
   };
   const close = () => router.replace('/palace' as Href);
   const species = pet?.species === 'dog' ? 'dog' : 'cat';
 
   const answer = (remembered: boolean) => {
+    const current = spots[i];
+    if (current) void rateItem(app, current.item.item_id, remembered ? 3 : 1, app.deps.clock() - shownAt.current).catch(() => undefined);
+    shownAt.current = app.deps.clock();
     const nextMissed = remembered ? missed : [...missed, i];
     setMissed(nextMissed);
     setShown(false);
     if (i + 1 < spots.length) return setI(i + 1);
     setDone(true);
     const correct = spots.length - nextMissed.length;
-    app.track('palace_quiz_completed', { palace_id: m.palace.id, mode: 'recall', spots: String(spots.length), correct, order_score_pct: Math.round((correct / spots.length) * 100) });
+    app.track('palace_quiz_completed', { palace_id: m.palace.palace_id, mode: 'recall', spots: String(spots.length), correct, order_score_pct: Math.round((correct / spots.length) * 100) });
   };
 
   if (done) {
@@ -52,7 +57,7 @@ export default function PalaceQuiz() {
         footer={
           <>
             <Button label={t('memory_labs:MEM-18.done')} onPress={close} testID="mem18-done" />
-            <Button variant="secondary" label={t('memory_labs:MEM-18.walk_again')} onPress={() => router.replace(`/palace/${m.palace.id}/walk` as Href)} />
+            <Button variant="secondary" label={t('memory_labs:MEM-18.walk_again')} onPress={() => router.replace(`/palace/${m.palace.palace_id}/walk` as Href)} />
           </>
         }
       >
@@ -62,11 +67,11 @@ export default function PalaceQuiz() {
           {missed.map((k) => {
             const s = spots[k]!;
             return (
-              <Card key={s.locus.id}>
+              <Card key={s.locusId}>
                 <Stack gap={8}>
-                  <Text variant="caption" tone="muted">{`${t('memory_labs:MEM-14.spot_n', { n: s.n })} · ${roomName(s.room.id)}`}</Text>
+                  <Text variant="caption" tone="muted">{`${t('memory_labs:MEM-14.spot_n', { n: s.n })} · ${roomName(s.room.room_id)}`}</Text>
                   <Text variant="label">{s.label}</Text>
-                  <Button variant="ghost" size="sm" label={t('memory_labs:MEM-18.fix')} onPress={() => router.replace(`/palace/${m.palace.id}` as Href)} />
+                  <Button variant="ghost" size="sm" label={t('memory_labs:MEM-18.fix')} onPress={() => router.replace(`/palace/${m.palace.palace_id}` as Href)} />
                 </Stack>
               </Card>
             );
@@ -103,7 +108,7 @@ export default function PalaceQuiz() {
       <View accessibilityLiveRegion="polite">
         <Card>
           <Stack gap={8}>
-            <Text variant="caption" tone="muted">{`${t('memory_labs:MEM-14.spot_n', { n: spot.n })} · ${roomName(spot.room.id)}`}</Text>
+            <Text variant="caption" tone="muted">{`${t('memory_labs:MEM-14.spot_n', { n: spot.n })} · ${roomName(spot.room.room_id)}`}</Text>
             {shown ? (
               <Text variant="title" heading testID="mem18-item">
                 {spot.label}

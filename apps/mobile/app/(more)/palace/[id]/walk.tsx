@@ -22,18 +22,18 @@ export default function PalaceWalk() {
   const spots = filledSpots(m);
   const spot = spots[i];
   const last = i === spots.length - 1;
-  const roomIndex = (roomId: string) => m.rooms.findIndex((r) => r.id === roomId);
+  const roomIndex = (roomId: string) => m.rooms.findIndex((r) => r.room_id === roomId);
   const roomName = (k: number) => m.rooms[k]?.name || `${t('memory_labs:MEM-14.add_room')} ${k + 1}`;
   const close = () => (router.canGoBack() ? router.back() : router.replace('/palace' as Href));
   const finish = (to: 'quiz' | 'done') => {
-    app.track('palace_walk_completed', { palace_id: m.palace.id, spots: String(spots.length), duration_ms: app.deps.clock() - started.current });
-    if (to === 'quiz') router.replace(`/palace/${m.palace.id}/quiz` as Href);
+    app.track('palace_walk_completed', { palace_id: m.palace.palace_id, spots: String(spots.length), duration_ms: app.deps.clock() - started.current });
+    if (to === 'quiz') router.replace(`/palace/${m.palace.palace_id}/quiz` as Href);
     else close();
   };
   if (!spot) return <Screen testID="MEM-17">{null}</Screen>;
-  const k = roomIndex(spot.room.id);
+  const k = roomIndex(spot.room.room_id);
   const next = spots[i + 1];
-  const nextRoom = next && next.room.id !== spot.room.id ? roomName(roomIndex(next.room.id)) : null;
+  const nextRoom = next && next.room.room_id !== spot.room.room_id ? roomName(roomIndex(next.room.room_id)) : null;
   const species = pet?.species === 'dog' ? 'dog' : 'cat';
 
   return (
@@ -72,13 +72,13 @@ export default function PalaceWalk() {
             <Text variant="title" heading testID="mem17-item">
               {spot.label}
             </Text>
-            {spot.locus.note ? <Text variant="body">{spot.locus.note}</Text> : null}
+            {spot.item.note ? <Text variant="body">{spot.item.note}</Text> : null}
           </Stack>
         </Card>
       </View>
       <View style={styles.chips}>
         {m.rooms.map((r, j) => (
-          <Chip key={r.id} kind="filter" selected={j === k} label={roomName(j)} />
+          <Chip key={r.room_id} kind="filter" selected={j === k} label={roomName(j)} />
         ))}
       </View>
       {nextRoom ? (

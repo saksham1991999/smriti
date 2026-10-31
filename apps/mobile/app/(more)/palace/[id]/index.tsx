@@ -27,7 +27,7 @@ export default function PalaceBuilder() {
 
   if (!m) return <Screen testID="MEM-14">{null}</Screen>;
   const roomName = (i: number) => m.rooms[i]?.name || `${t('memory_labs:MEM-14.add_room')} ${i + 1}`;
-  const spots = m.spots.filter((x) => x.room.id === m.rooms[room]?.id);
+  const spots = m.spots.filter((x) => x.room.room_id === m.rooms[room]?.room_id);
   const placed = filledSpots(m).length;
 
   const run = async (fn: (model: PalaceModel) => Promise<void>) => {
@@ -35,13 +35,13 @@ export default function PalaceBuilder() {
     setHeld(null);
     await q.refetch();
   };
-  const tapSpot = (locusId: string, item: string) => {
+  const tapSpot = (locusId: string, item: string | null) => {
     if (held) return void run((model) => placeItem(app, model, held, locusId));
     if (item) setHeld(item);
   };
   const walk = () => {
-    app.track('palace_items_placed', { palace_id: m.palace.id, items: String(placed), rooms: String(m.rooms.length), source: 'mnemonics' });
-    router.push(`/palace/${m.palace.id}/walk` as Href);
+    app.track('palace_items_placed', { palace_id: m.palace.palace_id, items: String(placed), rooms: String(m.rooms.length), source: 'mnemonics' });
+    router.push(`/palace/${m.palace.palace_id}/walk` as Href);
   };
 
   return (
@@ -57,20 +57,20 @@ export default function PalaceBuilder() {
       <BackHeader title={m.palace.name} backLabel={t('ui:common.back')} onBack={() => (router.canGoBack() ? router.back() : router.replace('/palace' as Href))} />
       <View style={styles.chips} accessibilityLabel={t('memory_labs:MEM-14.rooms')}>
         {m.rooms.map((r, i) => (
-          <Chip key={r.id} kind="filter" selected={i === room} label={`${i + 1} · ${roomName(i)}`} onPress={() => setRoom(i)} testID={`mem14-room-${i}`} />
+          <Chip key={r.room_id} kind="filter" selected={i === room} label={`${i + 1} · ${roomName(i)}`} onPress={() => setRoom(i)} testID={`mem14-room-${i}`} />
         ))}
       </View>
 
       <Stack gap={8}>
         {spots.map((x) => {
-          const isHeld = !!x.locus.item_ref && held === x.locus.item_ref;
+          const isHeld = !!x.item && held === x.item.item_id;
           const label = t('memory_labs:MEM-14.spot_n', { n: x.n });
           return (
             <Pressable
-              key={x.locus.id}
+              key={x.locusId}
               accessibilityRole="button"
               accessibilityLabel={x.label ? `${label}, ${x.label}` : label}
-              onPress={() => tapSpot(x.locus.id, x.locus.item_ref)}
+              onPress={() => tapSpot(x.locusId, x.item?.item_id ?? null)}
               testID={`mem14-spot-${x.n}`}
               style={[styles.spot, { backgroundColor: theme.colors.surface, borderRadius: theme.radius.md, borderColor: held && !isHeld ? theme.colors.primary : x.label ? s.strong : theme.colors.line, borderWidth: held || x.label ? 2 : 1 }]}
             >
@@ -95,7 +95,7 @@ export default function PalaceBuilder() {
           </Text>
           <View style={styles.chips}>
             {m.unplaced.map((i) => (
-              <Chip key={i.ref} kind="filter" selected={held === i.ref} label={i.label} onPress={() => setHeld(held === i.ref ? null : i.ref)} testID={`mem14-item-${i.ref.split(':').pop()}`} />
+              <Chip key={i.id} kind="filter" selected={held === i.id} label={i.label} onPress={() => setHeld(held === i.id ? null : i.id)} testID={`mem14-item-${i.ref.split(':').pop()}`} />
             ))}
           </View>
           <Text variant="caption" tone="muted">

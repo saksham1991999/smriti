@@ -114,6 +114,14 @@ test('build a palace from a learned list, place items, walk it and quiz it', asy
   expect(list).toHaveLength(1);
   expect(list[0]).toMatchObject({ rooms: 1, items: 3 });
   expect(list[0]!.palace.name).toBe('My home');
+  // The palace syncs as one document, and each rating scheduled the item's `p:` review card.
+  const palaceCards = async () => (await rig.app.deps.stores.storage.srs_cards.all()).filter((c) => c.card_ref.startsWith('p:'));
+  for (let n = 0; n < 50 && (await palaceCards()).length < 3; n++) await new Promise((r) => setTimeout(r, 20));
+  expect(await palaceCards()).toHaveLength(3);
+  await rig.app.syncNow();
+  const sent = me().events.filter((e) => e.type === 'palace_saved');
+  expect(sent.length).toBeGreaterThan(0);
+  expect((sent[sent.length - 1]!.payload as { name: string }).name).toBe('My home');
 });
 
 test('MEM-25 says how many answers are still needed, then shows calibration, fading topics and sleep review', async () => {

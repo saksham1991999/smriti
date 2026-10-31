@@ -118,7 +118,7 @@ const demos: Record<string, Demo> = {
     await learnListTopic(app);
     const [source] = await palaceSources(app);
     if (source) {
-      const id = await createPalace(app, { name: 'Home', template: 'home', items: source.items.map((i) => i.ref) });
+      const id = await createPalace(app, { name: 'Home', template: 'home', items: source.items.map((i) => i.ref), roomName: (n) => app.t('memory_labs:MEM-13.room_copy', { room_name: app.t('memory_labs:MEM-14.add_room'), n }) });
       const model = await loadPalace(app, id);
       if (model) await autoPlace(app, model);
     }

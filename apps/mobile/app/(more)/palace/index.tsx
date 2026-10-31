@@ -38,14 +38,14 @@ export default function Palaces() {
       <Stack gap={16}>
         {list.map(({ palace, rooms, items }) => (
           <RoomCard
-            key={palace.id}
+            key={palace.palace_id}
             name={palace.name}
             image={`palace-${palace.template}`}
             meta={`${t('memory_labs:MEM-12.meta.1', { rooms })} · ${t('memory_labs:MEM-12.meta.2', { items })}`}
-            onPress={() => open(palace.id, 'edit')}
-            onWalk={items ? () => open(palace.id, 'walk') : undefined}
-            onQuiz={items ? () => open(palace.id, 'quiz') : undefined}
-            testID={`palace-${palace.id}`}
+            onPress={() => open(palace.palace_id, 'edit')}
+            onWalk={items ? () => open(palace.palace_id, 'walk') : undefined}
+            onQuiz={items ? () => open(palace.palace_id, 'quiz') : undefined}
+            testID={`palace-${palace.palace_id}`}
           />
         ))}
       </Stack>

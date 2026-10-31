@@ -37,7 +37,7 @@ export default function NewPalace() {
   const create = async () => {
     if (!template || !items.length || busy) return;
     setBusy(true);
-    const id = await createPalace(app, { name: name || t(TEMPLATES.find((x) => x.id === template)!.key), template, items });
+    const id = await createPalace(app, { name: name || t(TEMPLATES.find((x) => x.id === template)!.key), template, items, roomName: (n) => t('memory_labs:MEM-13.room_copy', { room_name: t('memory_labs:MEM-14.add_room'), n }) });
     router.replace(`/palace/${id}` as Href);
   };
   const back = () => (step === 2 ? setStep(1) : router.canGoBack() ? router.back() : router.replace('/palace' as Href));

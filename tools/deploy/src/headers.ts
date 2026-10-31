@@ -194,6 +194,13 @@ export function siteHeaders(env: Env, htmls: Iterable<string>): string {
     ]),
     // Astro's content-hashed build output.
     block("/_astro/*", ["! Cache-Control", `Cache-Control: ${IMMUTABLE}`]),
+    // App link files (app-links-cli.ts): JSON, fetched by Apple's and Google's verifiers.
+    block("/.well-known/apple-app-site-association", [
+      "Content-Type: application/json",
+      "! Cache-Control",
+      "Cache-Control: public, max-age=3600",
+    ]),
+    block("/.well-known/assetlinks.json", ["! Cache-Control", "Cache-Control: public, max-age=3600"]),
     "",
   ].join("\n\n");
 }

@@ -49,6 +49,7 @@ COPY --from=build /app /app
 # the release step applies (python -m smriti_api.migrate).
 COPY packages/config/flag-defaults.json packages/config/flag-defaults.json
 COPY packages/config/variants packages/config/variants
+COPY packages/config/brand.json packages/config/brand.json
 COPY packages/i18n/src/locales packages/i18n/src/locales
 COPY supabase/migrations supabase/migrations
 COPY supabase/seed.sql supabase/seed.sql

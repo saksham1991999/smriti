@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Deploy helpers: the env:check audit, Cloudflare _headers generation and the R2 CDN Worker logic (infra/, docs/DEPLOY.md). Runs on Node's built-in TypeScript type stripping, so it has no build step.",
+  "description": "Deploy helpers: the env:check audit, Cloudflare _headers and app link files and the R2 CDN Worker logic (infra/, docs/DEPLOY.md). Runs on Node's built-in TypeScript type stripping, so it has no build step.",
   "scripts": {
     "env:check": "node src/env-check.ts",
     "headers": "node src/headers-cli.ts",
-    "test": "node --test test/env-scan.test.ts test/headers.test.ts test/cdn.test.ts",
+    "test": "node --test test/env-scan.test.ts test/headers.test.ts test/cdn.test.ts test/app-links.test.ts",
     "typecheck": "tsc --noEmit -p .",
-    "lint": "tsc --noEmit -p ."
+    "lint": "tsc --noEmit -p .",
+    "app-links": "node src/app-links-cli.ts"
+  },
+  "dependencies": {
+    "@smriti/config": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "24.19.2"

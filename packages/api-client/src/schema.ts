@@ -1084,7 +1084,7 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    /** Open smriti.app/duel/{code} */
+    /** Open a duel link (/duel/{code} on the brand domain) */
     get: operations["by_code_v1_duels_code__code__get"];
     put?: never;
     post?: never;

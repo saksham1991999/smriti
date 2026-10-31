@@ -185,6 +185,14 @@ jobs:
       - name: Build
         if: steps.secrets.outputs.ready == 'true'
         run: pnpm --filter @smriti/site build
+      # Universal links and App Links on the brand domain, from the variants in @smriti/config.
+      - name: App link files
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          APP_LINKS_ENV: ${{ needs.gate.outputs.environment }}
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          ANDROID_APP_LINK_CERTS: ${{ vars.ANDROID_APP_LINK_CERTS }}
+        run: node tools/deploy/src/app-links-cli.ts apps/site/dist
       - name: Headers
         if: steps.secrets.outputs.ready == 'true'
         run: node tools/deploy/src/headers-cli.ts site apps/site/dist

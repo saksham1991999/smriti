@@ -1,5 +1,6 @@
 import { z } from 'zod/mini';
 
+import brandJson from '../brand.json';
 import allJson from '../variants/all.json';
 import jeeJson from '../variants/jee.json';
 import neetJson from '../variants/neet.json';
@@ -24,7 +25,8 @@ export const variantSchema = z
     androidPackage: reverseDns,
     scheme: z.string().check(z.regex(/^smriti-[a-z]+$/)),
     authCallbackScheme: z.string().check(z.regex(/^smriti-[a-z]+$/)),
-    deepLinkPrefix: z.url(),
+    /** Path on the brand domain this variant's app links claim: `/` for all exams, `/jee` for JEE. */
+    deepLinkPath: z.string().check(z.regex(/^\/([a-z]+)?$/, 'a path like / or /jee')),
     icon: assetPath,
     androidAdaptiveIcon: z.object({
       foreground: assetPath,
@@ -69,7 +71,28 @@ export const variantSchema = z
     }),
   );
 
-export type Variant = z.infer<typeof variantSchema>;
+const brandSchema = z.object({
+  domain: z.string().check(z.regex(/^[a-z0-9-]+(\.[a-z0-9-]+)+$/, 'a bare domain like example.org')),
+});
+
+export type Brand = z.infer<typeof brandSchema>;
+
+/** The brand domain (packages/config/brand.json). The site and app links live on it. */
+export function brand(): Brand {
+  return brandSchema.parse(brandJson);
+}
+
+/** `https://<brand domain><path>`, without a trailing slash except for the bare origin. */
+export function deepLinkPrefix(path: string, domain: string = brand().domain): string {
+  return path === '/' ? `https://${domain}` : `https://${domain}${path}`;
+}
+
+/** A variant file plus `deepLinkPrefix`, its app-link origin and path on the brand domain. */
+export type Variant = z.infer<typeof variantSchema> & { deepLinkPrefix: string };
+
+function withPrefix(v: z.infer<typeof variantSchema>): Variant {
+  return { ...v, deepLinkPrefix: deepLinkPrefix(v.deepLinkPath) };
+}
 
 const RAW: Record<VariantId, unknown> = {
   all: allJson,
@@ -88,7 +111,7 @@ export function allVariants(): Record<VariantId, Variant> {
     for (const id of VARIANT_IDS) {
       const parsed = variantSchema.parse(RAW[id]);
       if (parsed.id !== id) throw new Error(`variants/${id}.json has id ${parsed.id}`);
-      out[id] = parsed;
+      out[id] = withPrefix(parsed);
     }
     cache = out;
   }
@@ -111,11 +134,14 @@ export interface VariantOverrides {
 export function getVariant(id: string | undefined, overrides: VariantOverrides = {}): Variant {
   const key: VariantId = id === undefined || id === '' ? 'all' : assertVariantId(id);
   const base = allVariants()[key];
-  return variantSchema.parse({
-    ...base,
-    googleIosClientId: overrides.googleIosClientId ?? base.googleIosClientId,
-    googleIosUrlScheme: overrides.googleIosUrlScheme ?? base.googleIosUrlScheme,
-  });
+  const { deepLinkPrefix: _prefix, ...file } = base;
+  return withPrefix(
+    variantSchema.parse({
+      ...file,
+      googleIosClientId: overrides.googleIosClientId ?? base.googleIosClientId,
+      googleIosUrlScheme: overrides.googleIosUrlScheme ?? base.googleIosUrlScheme,
+    }),
+  );
 }
 
 function assertVariantId(id: string): VariantId {

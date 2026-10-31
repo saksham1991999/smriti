@@ -114,9 +114,19 @@ class IntegrationSettings(BaseSettings):
     clickhouse_password: str = ""
     clickhouse_database: str = "default"
 
-    # Public links in emails and pushes
-    guardian_link_base_url: str = "https://smriti.app/guardian/"
+    # Public links in emails and pushes. Guardian links open the web app's /guardian/ pages, so
+    # the base defaults to WEB_APP_URL; GUARDIAN_LINK_BASE_URL overrides it.
+    guardian_link_base_url: str = ""
+    web_app_url: str = ""
     brand_name: str = "Smriti"
+
+    @property
+    def guardian_link_base(self) -> str:
+        if self.guardian_link_base_url:
+            return self.guardian_link_base_url
+        # The local web dev server (apps/web vite.config.ts) when nothing is set.
+        origin = (self.web_app_url or "http://127.0.0.1:5190").rstrip("/")
+        return f"{origin}/guardian/"
 
 
 @lru_cache

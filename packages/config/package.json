@@ -16,12 +16,14 @@
       "node": "./dist/index.js",
       "default": "./src/index.ts"
     },
-    "./variants/*.json": "./variants/*.json"
+    "./variants/*.json": "./variants/*.json",
+    "./brand.json": "./brand.json"
   },
   "files": [
     "src",
     "dist",
-    "variants"
+    "variants",
+    "brand.json"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",

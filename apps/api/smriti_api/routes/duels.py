@@ -63,7 +63,7 @@ async def random_leave(services: Services, auth: CurrentUser) -> Response:
 
 
 @router.get(
-    "/duels/code/{code}", response_model=so.DuelState, summary="Open smriti.app/duel/{code}"
+    "/duels/code/{code}", response_model=so.DuelState, summary="Open a duel link (/duel/{code} on the brand domain)"
 )
 async def by_code(
     code: Annotated[str, Path(min_length=4, max_length=40)], services: Services, auth: CurrentUser

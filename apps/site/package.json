@@ -7,6 +7,7 @@
     "prepare-assets": "node scripts/prepare-assets.mjs",
     "dev": "node scripts/prepare-assets.mjs && astro dev",
     "build": "node scripts/prepare-assets.mjs && astro build",
+    "build:unreleased": "node scripts/build-unreleased.mjs",
     "preview": "node scripts/serve-dist.mjs 4321 dist",
     "typecheck": "astro check && tsc --noEmit -p .",
     "lint": "node scripts/lint.mjs",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.63.0",
     "@types/node": "22.20.5",
     "@types/react": "19.3.0",

@@ -1,0 +1,102 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "cs.phy.motion-straight-line.position-velocity",
+  "scope": "topic",
+  "topic": "phy.motion-straight-line.position-velocity",
+  "title": {
+    "en": "Position, Velocity and Speed",
+    "hi": "स्थिति, वेग एवं चाल"
+  },
+  "concepts": [
+    "phy.motion-straight-line.position-velocity.core.frame-of-reference",
+    "phy.motion-straight-line.position-velocity.core.speed-velocity"
+  ],
+  "key_ideas": [
+    {
+      "en": "Position is measured from a chosen origin; right of O is usually positive.",
+      "hi": "स्थिति चुने हुए मूल बिंदु से मापी जाती है; O के दाईं ओर सामान्यतः धनात्मक।"
+    },
+    {
+      "en": "Displacement: net change in position. Path length >= |displacement|.",
+      "hi": "विस्थापन: स्थिति में कुल परिवर्तन। पथ-लंबाई >= |विस्थापन|।"
+    },
+    {
+      "en": "Average speed >= |average velocity|; equal only without turning back.",
+      "hi": "औसत चाल >= |औसत वेग|; बराबर तभी जब वस्तु वापस न मुड़े।"
+    },
+    {
+      "en": "Instantaneous velocity is the slope of the tangent to the x-t graph.",
+      "hi": "तात्क्षणिक वेग x-t ग्राफ़ की स्पर्श रेखा की प्रवणता है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Average velocity",
+        "hi": "औसत वेग"
+      },
+      "latex": "\\bar{v} = \\frac{\\Delta x}{\\Delta t}"
+    },
+    {
+      "name": {
+        "en": "Instantaneous velocity",
+        "hi": "तात्क्षणिक वेग"
+      },
+      "latex": "v = \\frac{dx}{dt}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Displacement and path length are the same thing.",
+        "hi": "विस्थापन और पथ-लंबाई एक ही हैं।"
+      },
+      "correct": {
+        "en": "They are equal only if the object never turns back.",
+        "hi": "वे तभी बराबर हैं जब वस्तु कभी वापस न मुड़े।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "A round trip has zero average speed.",
+        "hi": "आने-जाने की यात्रा में औसत चाल शून्य होती है।"
+      },
+      "correct": {
+        "en": "Its average velocity is zero; its average speed is not.",
+        "hi": "उसका औसत वेग शून्य है; औसत चाल नहीं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Velocity at an instant is x divided by t.",
+        "hi": "किसी क्षण का वेग x बटा t है।"
+      },
+      "correct": {
+        "en": "It is dx/dt, the slope of the tangent.",
+        "hi": "यह dx/dt है, स्पर्श रेखा की प्रवणता।"
+      }
+    }
+  ],
+  "diagram": "img.motion-straight-line.athlete-track",
+  "hi_source": "translation"
+}

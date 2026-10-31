@@ -1,0 +1,848 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §4.5 Relative Motion in One and Two Dimensions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 2 Saral Rekha mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph102.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 22-23"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or point it rests on. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "topic": "phy.motion-straight-line.position-velocity",
+  "questions": [
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.frame-of-reference",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball is thrown straight up from a point, rises 5 m and falls back to the same point. Its path length and the magnitude of its displacement are",
+        "hi": "एक गेंद किसी बिंदु से सीधी ऊपर फेंकी जाती है, 5 m ऊपर उठती है और उसी बिंदु पर लौट आती है। उसकी पथ-लंबाई और विस्थापन का परिमाण हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 m and 0",
+            "hi": "10 m और 0"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "5 m and 5 m",
+            "hi": "5 m और 5 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 m and 10 m",
+            "hi": "10 m और 10 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0 and 10 m",
+            "hi": "0 और 10 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where does the ball end up?",
+          "hi": "गेंद अंत में कहाँ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Up 5 m and down 5 m is 10 m of path, but the ball ends where it began.",
+          "hi": "5 m ऊपर और 5 m नीचे, कुल 10 m पथ, पर गेंद वहीं पहुँचती है जहाँ से चली थी।"
+        },
+        "steps": [
+          {
+            "en": "Path length $= 5 + 5 = 10$ m; start and end coincide, so displacement $= 0$.",
+            "hi": "पथ-लंबाई $= 5 + 5 = 10$ m; आरंभ और अंत एक हैं, अतः विस्थापन $= 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That counts only the upward half.",
+              "hi": "यह केवल ऊपर जाने वाला आधा भाग गिनता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Displacement does not add the return trip.",
+              "hi": "विस्थापन में वापसी नहीं जुड़ती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The two quantities are swapped.",
+              "hi": "दोनों राशियाँ अदल-बदल गई हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.speed-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A swimmer swims the length of a 50 m pool and back to the start in 100 s. His average speed and average velocity are",
+        "hi": "एक तैराक 50 m लंबे तरणताल की पूरी लंबाई तैरकर 100 s में आरंभ पर लौट आता है। उसकी औसत चाल और औसत वेग हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 m/s and 0",
+            "hi": "1 m/s और 0"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.5 m/s and 0",
+            "hi": "0.5 m/s और 0"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 m/s and 1 m/s",
+            "hi": "1 m/s और 1 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0 and 1 m/s",
+            "hi": "0 और 1 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Path is there and back.",
+          "hi": "पथ जाना और आना है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "He covers 100 m of path in 100 s but ends where he started.",
+          "hi": "वह 100 s में 100 m पथ तय करता है पर वहीं पहुँचता है जहाँ से चला था।"
+        },
+        "steps": [
+          {
+            "en": "Average speed $= \\frac{100}{100} = 1$ m/s; displacement $= 0$, so average velocity $= 0$.",
+            "hi": "औसत चाल $= \\frac{100}{100} = 1$ m/s; विस्थापन $= 0$, अतः औसत वेग $= 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Only one length was counted.",
+              "hi": "केवल एक लंबाई गिनी गई।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Average velocity uses displacement, which is zero.",
+              "hi": "औसत वेग में विस्थापन लगता है, जो शून्य है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The two quantities are swapped.",
+              "hi": "दोनों राशियाँ अदल-बदल गई हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.speed-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The position of a particle is $x = 2t^3$ m, with t in seconds. Its velocity at $t = 2$ s is",
+        "hi": "किसी कण की स्थिति $x = 2t^3$ m है, जहाँ t सेकंड में है। $t = 2$ s पर इसका वेग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "24 m/s",
+            "hi": "24 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "8 m/s",
+            "hi": "8 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "12 m/s",
+            "hi": "12 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "16 m/s",
+            "hi": "16 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Differentiate, then put $t = 2$.",
+          "hi": "अवकलन करके $t = 2$ रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Velocity at an instant is the derivative of position.",
+          "hi": "किसी क्षण का वेग स्थिति का अवकलज है।"
+        },
+        "steps": [
+          {
+            "en": "$v = \\frac{dx}{dt} = 6t^2$; at $t = 2$: $v = 24$ m/s",
+            "hi": "$v = \\frac{dx}{dt} = 6t^2$; $t = 2$ पर $v = 24$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is $x/t$, the average velocity from 0 to 2 s.",
+              "hi": "यह $x/t$ है, 0 से 2 s तक का औसत वेग।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The square on t was dropped.",
+              "hi": "t का वर्ग छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the position at 2 s, not the velocity.",
+              "hi": "यह 2 s पर स्थिति है, वेग नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.frame-of-reference",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For any motion along a straight line, which statement is always true?",
+        "hi": "सरल रेखा पर किसी भी गति के लिए कौन-सा कथन सदा सत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The magnitude of displacement is less than or equal to the path length.",
+            "hi": "विस्थापन का परिमाण पथ-लंबाई से कम या उसके बराबर है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Displacement is always positive.",
+            "hi": "विस्थापन सदा धनात्मक है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Path length can be zero while the object moves.",
+            "hi": "वस्तु के चलते हुए भी पथ-लंबाई शून्य हो सकती है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Displacement and path length are always equal.",
+            "hi": "विस्थापन और पथ-लंबाई सदा बराबर हैं।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of a round trip.",
+          "hi": "आने-जाने की यात्रा सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A detour adds path but never adds displacement.",
+          "hi": "घुमाव पथ जोड़ता है, विस्थापन कभी नहीं।"
+        },
+        "steps": [
+          {
+            "en": "The two are equal only if the object never turns back; otherwise path length is greater.",
+            "hi": "दोनों तभी बराबर हैं जब वस्तु कभी वापस न मुड़े; अन्यथा पथ-लंबाई अधिक है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Its sign depends on direction and on the chosen axis.",
+              "hi": "इसका चिह्न दिशा और चुने हुए अक्ष पर निर्भर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Any movement adds to the path length.",
+              "hi": "हर गति पथ-लंबाई बढ़ाती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not when the object turns back.",
+              "hi": "वस्तु वापस मुड़े तो नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.speed-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The position-time graph of a car is a straight line parallel to the time axis. The car is",
+        "hi": "किसी कार का स्थिति-समय ग्राफ़ समय-अक्ष के समांतर एक सरल रेखा है। कार"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "at rest",
+            "hi": "विरामावस्था में है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "moving with constant velocity",
+            "hi": "नियत वेग से चल रही है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "speeding up",
+            "hi": "तेज़ हो रही है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "moving backwards at constant speed",
+            "hi": "नियत चाल से पीछे जा रही है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Read the slope.",
+          "hi": "प्रवणता पढ़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Its position does not change as time passes.",
+          "hi": "समय बीतने पर इसकी स्थिति नहीं बदलती।"
+        },
+        "steps": [
+          {
+            "en": "Slope of the x-t graph $= 0$, so velocity $= 0$.",
+            "hi": "x-t ग्राफ़ की प्रवणता $= 0$, अतः वेग $= 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Constant velocity is a sloping straight line.",
+              "hi": "नियत वेग एक झुकी हुई सरल रेखा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Speeding up gives a curved x-t graph.",
+              "hi": "तेज़ होने पर x-t ग्राफ़ वक्र होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is a straight line sloping down.",
+              "hi": "यह नीचे की ओर झुकी सरल रेखा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0006",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.speed-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A man walks 3 km to a market at 6 km/h, finds it closed and walks straight back home at 3 km/h. His average speed for the whole trip, in km/h, is",
+        "hi": "एक व्यक्ति 6 km/h से 3 km दूर बाज़ार जाता है, उसे बंद पाकर 3 km/h से सीधा घर लौट आता है। पूरी यात्रा में उसकी औसत चाल, km/h में, है"
+      },
+      "answer": {
+        "value": 4,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Find each time first.",
+          "hi": "पहले हर समय निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Average speed is total path over total time, not the average of the two speeds.",
+          "hi": "औसत चाल कुल पथ बटा कुल समय है, दोनों चालों का औसत नहीं।"
+        },
+        "steps": [
+          {
+            "en": "Times: $\\frac{3}{6} = 0.5$ h and $\\frac{3}{3} = 1$ h, total 1.5 h.",
+            "hi": "समय: $\\frac{3}{6} = 0.5$ h और $\\frac{3}{3} = 1$ h, कुल 1.5 h।"
+          },
+          {
+            "en": "Average speed $= \\frac{6}{1.5} = 4$ km/h",
+            "hi": "औसत चाल $= \\frac{6}{1.5} = 4$ km/h"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Taking the mean of 6 and 3 gives 4.5, which is wrong.",
+              "hi": "6 और 3 का माध्य लेने पर 4.5 आता है, जो गलत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.frame-of-reference",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A particle moves along the x-axis from $x = -4$ m to $x = +6$ m and then back to $x = +2$ m. Its displacement and path length are",
+        "hi": "एक कण x-अक्ष पर $x = -4$ m से $x = +6$ m तक और फिर वापस $x = +2$ m तक जाता है। इसका विस्थापन और पथ-लंबाई हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "+6 m and 14 m",
+            "hi": "+6 m और 14 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "+2 m and 14 m",
+            "hi": "+2 m और 14 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "+6 m and 6 m",
+            "hi": "+6 m और 6 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "+10 m and 14 m",
+            "hi": "+10 m और 14 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Subtract positions; add stretches.",
+          "hi": "स्थितियाँ घटाइए; हिस्से जोड़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Displacement is final minus initial position; path adds every stretch.",
+          "hi": "विस्थापन अंतिम घटा प्रारंभिक स्थिति है; पथ हर हिस्सा जोड़ता है।"
+        },
+        "steps": [
+          {
+            "en": "Displacement $= 2 - (-4) = +6$ m",
+            "hi": "विस्थापन $= 2 - (-4) = +6$ m"
+          },
+          {
+            "en": "Path $= 10 + 4 = 14$ m",
+            "hi": "पथ $= 10 + 4 = 14$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "+2 m is the final position, not the displacement.",
+              "hi": "+2 m अंतिम स्थिति है, विस्थापन नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The path includes the 4 m return.",
+              "hi": "पथ में 4 m की वापसी भी है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "+10 m is the displacement of the first stretch only.",
+              "hi": "+10 m केवल पहले हिस्से का विस्थापन है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.position-velocity.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.position-velocity.core.speed-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A car covers the first half of a straight route at 40 km/h and the second half at 60 km/h. Its average speed for the whole route is",
+        "hi": "एक कार सीधे मार्ग का पहला आधा भाग 40 km/h से और दूसरा आधा भाग 60 km/h से तय करती है। पूरे मार्ग में उसकी औसत चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "48 km/h",
+            "hi": "48 km/h"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "50 km/h",
+            "hi": "50 km/h"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "45 km/h",
+            "hi": "45 km/h"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "52 km/h",
+            "hi": "52 km/h"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Total distance over total time.",
+          "hi": "कुल दूरी बटा कुल समय।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The car spends longer on the slow half, so the average leans towards 40.",
+          "hi": "कार धीमे आधे भाग में अधिक समय लेती है, इसलिए औसत 40 की ओर झुकता है।"
+        },
+        "steps": [
+          {
+            "en": "Let each half be $d$. Time $= \\frac{d}{40} + \\frac{d}{60} = \\frac{d}{24}$.",
+            "hi": "हर आधा भाग $d$ मानिए। समय $= \\frac{d}{40} + \\frac{d}{60} = \\frac{d}{24}$।"
+          },
+          {
+            "en": "Average speed $= \\frac{2d}{d/24} = 48$ km/h",
+            "hi": "औसत चाल $= \\frac{2d}{d/24} = 48$ km/h"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the mean of the speeds, which ignores the times.",
+              "hi": "यह चालों का माध्य है, जो समयों को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Not supported by total distance over total time.",
+              "hi": "कुल दूरी बटा कुल समय से यह नहीं आता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The average must lean towards the slower speed.",
+              "hi": "औसत धीमी चाल की ओर झुकना चाहिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,127 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "phy.motion-straight-line.acceleration:quick_revision",
+  "topic": "phy.motion-straight-line.acceleration",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-straight-line.acceleration:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.motion-straight-line.acceleration"
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.acceleration.0003"
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-straight-line.acceleration.0004"
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$a = dv/dt$; the slope of the v-t graph.",
+          "hi": "$a = dv/dt$; v-t ग्राफ़ की प्रवणता।"
+        },
+        {
+          "en": "Area under the v-t graph is the displacement.",
+          "hi": "v-t ग्राफ़ के नीचे का क्षेत्रफल विस्थापन है।"
+        },
+        {
+          "en": "At the top of a vertical throw, $v = 0$ but $a = g$ downward.",
+          "hi": "ऊर्ध्वाधर फेंक के शिखर पर $v = 0$ पर $a = g$ नीचे की ओर।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Negative acceleration always means slowing down.",
+            "hi": "ऋणात्मक त्वरण का अर्थ सदा धीमा होना है।"
+          },
+          "correct": {
+            "en": "Only if the velocity is positive; a falling ball with up as positive speeds up.",
+            "hi": "केवल तब जब वेग धनात्मक हो; ऊपर को धनात्मक मानें तो गिरती गेंद तेज़ होती है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "At the highest point the acceleration is zero.",
+            "hi": "उच्चतम बिंदु पर त्वरण शून्य है।"
+          },
+          "correct": {
+            "en": "Velocity is zero there; acceleration is still g.",
+            "hi": "वहाँ वेग शून्य है; त्वरण अब भी g है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A fast object has a large acceleration.",
+            "hi": "तेज़ वस्तु का त्वरण अधिक होता है।"
+          },
+          "correct": {
+            "en": "Acceleration depends on how fast velocity changes, not on velocity.",
+            "hi": "त्वरण इस पर निर्भर है कि वेग कितनी तेज़ी से बदलता है, वेग पर नहीं।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

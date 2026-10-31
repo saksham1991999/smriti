@@ -126,7 +126,7 @@ export function SongPlayer(props: SongPlayerProps) {
           testID="song-action"
           style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", gap: theme.space[3], padding: theme.space[3], borderRadius: theme.radius.card, backgroundColor: theme.colors.primaryTint }}
         >
-          <Icon name={appIcon(action.icon)} size={32} color="primary" />
+          <Icon name={appIcon(action.icon)} size={32} color="primaryText" />
           <Text variant="heading">{t("learn:LRN-17.little_learner_do_this", { cue: action.cue })}</Text>
         </View>
       )}

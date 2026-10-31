@@ -75,6 +75,13 @@ const show = (ui: ReactElement, locale: "en" | "hi" = "en") =>
 const label = (id: string): string | undefined => screen.getByTestId(id).props.accessibilityLabel;
 const disabled = (id: string): boolean => Boolean(screen.getByTestId(id).props.accessibilityState?.disabled);
 const press = (id: string) => fireEvent.press(screen.getByTestId(id));
+/** Every button on screen has a spoken name. */
+function everyPressableLabelled(): void {
+  const buttons = screen.getAllByRole("button");
+  expect(buttons.length).toBeGreaterThan(0);
+  const nameless = buttons.filter((b) => String(b.props.accessibilityLabel ?? "").trim() === "").map((b) => String(b.props.testID));
+  expect(nameless).toEqual([]);
+}
 
 describe("StoryPlayer", () => {
   it("reads page by page to The end, then Done completes it", async () => {
@@ -87,10 +94,14 @@ describe("StoryPlayer", () => {
     // No narration is ready in the fixtures, so there is no Read to me toggle.
     expect(screen.queryByTestId("story-read-to-me")).toBeNull();
     expect(disabled("story-back")).toBe(true);
+    // With reduced motion each page fades in instead of sliding (LRN-11).
+    expect(screen.getByTestId("story-page")).toBeTruthy();
+    everyPressableLabelled();
     for (let i = 1; i < total; i++) await press("story-next");
     expect(screen.getByTestId("story-page-count")).toHaveTextContent(`Page ${total} of ${total}`);
     await press("story-next");
     expect(screen.getByTestId("story-end")).toHaveTextContent("The end!");
+    everyPressableLabelled();
     await press("story-done");
     expect(done).toHaveLength(1);
     expect(done[0]).toMatchObject({ kind: "story", activityId: "sb.fx.chapter-a", topicId: "fx.chapter-a.topic-a", stars: 1, bundleVersion: hash, locale: "en" });
@@ -156,6 +167,7 @@ describe("SongPlayer", () => {
     expect(screen.getByTestId("song-line-0").props.accessibilityState).toMatchObject({ selected: false });
     expect(label("song-line-1")).toBe("Fixture lyric line 2. Fixture action cue");
     expect(screen.getByTestId("song-action")).toHaveTextContent("Do this: Fixture action cue");
+    everyPressableLabelled();
     await press("song-pause");
     expect(audio.calls.at(-1)).toBe("pause");
     await press("song-play");
@@ -204,11 +216,17 @@ describe("PlayPlayer", () => {
     expect(screen.getByTestId("play-pet-line")).toHaveTextContent("Fixture tap hint");
     await press("tile-tile-2");
     expect(screen.getByTestId("play-pet-line")).toHaveTextContent("Look here!");
+    // The shown move is announced, not only drawn as a ring.
+    expect(screen.getByTestId("tile-tile-1").props.accessibilityHint).toBe("Look here!");
+    expect(screen.getByTestId("tile-tile-3").props.accessibilityHint).toBeUndefined();
+    everyPressableLabelled();
     await press("tile-tile-1");
     expect(label("tile-tile-1")).toBe("Fixture tile 1, done");
     expect(disabled("tile-tile-1")).toBe(true);
     await press("tile-tile-3");
     expect(screen.getByTestId("play-pet-line")).toHaveTextContent("Fixture success line");
+    // The cheer shows (still: these tests run with reduced motion, so it has no entering animation).
+    expect(screen.getByTestId("play-cheer").props.entering).toBeUndefined();
     expect(rounds[0]).toEqual({ roundIndex: 0, kind: "tap", attempts: 3, guided: true });
     await press("play-next");
 

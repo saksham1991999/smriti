@@ -4,9 +4,10 @@
  * narration, "The end!" with [Read again] and [Done]. Props follow @smriti/lesson-player-web.
  */
 import { initialStory, planStory, reduceStory, type StoryAction, type StoryState } from "@smriti/lesson-core";
-import { Button, Chip, Text, useTheme } from "@smriti/ui-native";
+import { Button, Chip, Text, useTheme, useUI } from "@smriti/ui-native";
 import { useEffect, useMemo } from "react";
 import { View } from "react-native";
+import Animated, { FadeIn, SlideInRight } from "react-native-reanimated";
 
 import { ActivityShell, audioSource, PetSays, Row, useClocked, useCompletion, type ActivityPlayerProps } from "./activity";
 import { Media } from "./Media";
@@ -21,6 +22,7 @@ export interface StoryPlayerProps extends ActivityPlayerProps {
 export function StoryPlayer(props: StoryPlayerProps) {
   const { bundle, activityId, bundleVersion, t, audio } = props;
   const theme = useTheme();
+  const { reducedMotion } = useUI();
   const little = props.little ?? true;
   const plan = useMemo(() => planStory(bundle, activityId, { bundleVersion, little }), [bundle, activityId, bundleVersion, little]);
   const [s, dispatch] = useClocked<StoryState, StoryAction>(reduceStory, () => reduceStory(initialStory(), { type: "start", plan, now: (props.clock ?? Date.now)() }), props.clock);
@@ -105,10 +107,18 @@ export function StoryPlayer(props: StoryPlayerProps) {
     >
       <View onTouchStart={() => dispatch({ type: "touch" })} style={{ gap: theme.space[4] }} accessibilityLiveRegion="polite">
         <Text variant="title">{plan.title}</Text>
-        <Media mediaRef={page.media} maxHeight={260} />
-        <Text variant={little ? "title" : "heading"} testID="story-text">
-          {page.text}
-        </Text>
+        {/* LRN-11: a page turn (by hand or the auto-turn after narration) slides; reduced motion fades. */}
+        <Animated.View
+          key={s.page}
+          entering={reducedMotion ? FadeIn.duration(theme.motion.duration.slow) : SlideInRight.duration(theme.motion.duration.slow)}
+          style={{ gap: theme.space[4] }}
+          testID="story-page"
+        >
+          <Media mediaRef={page.media} maxHeight={260} />
+          <Text variant={little ? "title" : "heading"} testID="story-text">
+            {page.text}
+          </Text>
+        </Animated.View>
         {end && props.pet && <PetSays pet={props.pet} text={t("learn:LRN-11.end")} testID="story-end" />}
         {end && !props.pet && (
           <Text variant="title" testID="story-end">

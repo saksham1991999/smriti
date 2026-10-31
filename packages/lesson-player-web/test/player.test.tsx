@@ -246,6 +246,81 @@ describe("LessonPlayer on lesson-core with published fixture bundles", () => {
     expect(skipped.every((o) => o.correct === null)).toBe(true);
   });
 
+  it("plays a little learner lesson: gentle hint, then the guided finish where the child taps the shown answer", async () => {
+    const { events, onComplete, user } = setup(plan("topic-a", { mode: "little" }), { resumeIndex: 3, pet: { species: "cat", name: "Miko" } });
+    // Dots only (the bar keeps its label), no confidence row.
+    expect(screen.queryByTestId("lesson-counter")).toBeNull();
+    expect(screen.getByLabelText("4 of 5")).toBeInTheDocument();
+    expect(screen.queryByTestId("confidence-row")).toBeNull();
+
+    await user.click(screen.getByTestId("option-b"));
+    await user.click(screen.getByTestId("lesson-check"));
+    const hint = screen.getByTestId("feedback-retry");
+    expect(hint).toHaveTextContent("Let's try again together!");
+    expect(hint).not.toHaveTextContent("Not quite");
+    expect(hint.className).toContain("bg-surface-sunken");
+    await user.click(screen.getByTestId("lesson-try-again"));
+    await user.click(screen.getByTestId("option-a"));
+    await user.click(screen.getByTestId("lesson-check"));
+
+    // Second wrong try: the answer is shown with the pet, and only it can be tapped.
+    expect(screen.getByTestId("lesson-player")).toHaveAttribute("data-phase", "guided");
+    const guided = screen.getByTestId("feedback-guided");
+    expect(guided).toHaveTextContent("Here is the answer. Tap it!");
+    expect(guided).toHaveTextContent("Fixture explanation A1");
+    expect(guided).toHaveTextContent("Look here!");
+    expect(screen.getByTestId("option-c")).toHaveAttribute("data-state", "correct");
+    expect(screen.getByTestId("option-c")).toHaveAccessibleDescription("Correct");
+    expect(screen.getByTestId("option-a")).toHaveAttribute("aria-disabled", "true");
+    expect(screen.queryByTestId("lesson-check")).toBeNull();
+    await user.click(screen.getByTestId("option-a"));
+    expect(screen.getByTestId("lesson-player")).toHaveAttribute("data-phase", "guided");
+    await user.click(screen.getByTestId("option-c"));
+
+    // Every question ends on a win, without XP, "Not quite" or a second-try line.
+    const win = screen.getByTestId("feedback-correct");
+    expect(win).toHaveTextContent("Yay! You did it!");
+    expect(screen.queryByTestId("xp-chip")).toBeNull();
+    await user.click(cont());
+    await user.click(cont()); // summary
+    expect(screen.queryByTestId("lesson-confidence")).toBeNull();
+    expect(onComplete).toHaveBeenCalledTimes(1);
+    expect(onComplete.mock.calls[0]![0].reviewQueue).toEqual([expect.objectContaining({ reason: "wrong_twice" })]);
+
+    // The two real tries are sent; the guided tap sends nothing.
+    const answers = events.filter((e) => e.type === "answer_submitted").map((e) => e.payload);
+    expect(answers).toMatchObject([
+      { correct: false, attempt: 1, response: { option_ids: ["b"] } },
+      { correct: false, attempt: 2, response: { option_ids: ["a"] } },
+    ]);
+  });
+
+  it("goes from 'I don't know yet' to the guided finish, and [Continue] submits the shown answer on typed questions", async () => {
+    const { events, user } = setup(plan("topic-d", { mode: "little" }), { t: tHi });
+    await user.click(cont());
+    await user.click(cont());
+    // Paragraph child 1 (mcq): the shown option.
+    await user.click(screen.getByTestId("lesson-dont-know"));
+    expect(screen.getByTestId("feedback-guided")).toHaveTextContent("यह रहा जवाब। इस पर टैप करो!");
+    expect(screen.queryByTestId("feedback-revealed")).toBeNull();
+    const shown = screen.getAllByRole("radio").filter((o) => o.getAttribute("data-state") === "correct");
+    expect(shown).toHaveLength(1);
+    await user.click(shown[0]!);
+    expect(screen.getByTestId("feedback-correct")).toHaveTextContent("वाह! तुमने कर दिखाया!");
+    await user.click(cont());
+    // Paragraph child 2 (numerical): the worked answer is shown and [Continue] submits it.
+    await user.click(screen.getByTestId("lesson-dont-know"));
+    expect(screen.getByTestId("lesson-player")).toHaveAttribute("data-phase", "guided");
+    expect(screen.getByTestId("numeric-input")).toBeDisabled();
+    await user.click(screen.getByTestId("lesson-guided-continue"));
+    expect(screen.getByTestId("feedback-correct")).toBeInTheDocument();
+    const answers = events.filter((e) => e.type === "answer_submitted").map((e) => e.payload);
+    expect(answers).toMatchObject([
+      { correct: false, response: null },
+      { correct: false, response: null },
+    ]);
+  });
+
   it("refuses unsafe math SVG", () => {
     expect(safeSvg('<svg viewBox="0 0 1 1"><path d="M0 0"/></svg>')).not.toBeNull();
     expect(safeSvg('<svg onload="alert(1)"></svg>')).toBeNull();

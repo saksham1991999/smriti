@@ -90,7 +90,7 @@ Every word a child hears is gentle. Never use "wrong", "incorrect", "fail", "mis
 - `style`: `song`, `rhyme` or `chant`. `minutes` at most 10. `cover` is a `sunny-object` or `storybook` image request (the path node thumbnail).
 - **One version per locale, written for that language**, not translated line by line: Hindi rhymes rhyme in Hindi. Facts stay identical. Up to 40 short lines per version.
 - Each version's `audio` is its own `audio_song` request in that locale, with a `transcript` holding the lyrics (the check refuses a song without one). audio-maker produces it.
-- `actions` (up to 8) are things to do while singing: `cue` is spoken text, `icon` a Phosphor icon name (PascalCase). A line names one with `action`.
+- `actions` (up to 8) are things to do while singing: `cue` is spoken text, `icon` a Phosphor icon name (PascalCase) from the app's icon set, `iconNames` in `packages/tokens/src/ui/icons.ts` (the check refuses any other name with `icon_unknown`, so nothing falls back to a placeholder icon). To use a new Phosphor icon, add it there and to both `iconMap`s in `ui-web` and `ui-native` in the same pull request. A line names an action with `action`.
 - Leave `start_ms`/`end_ms` out when writing. audio-maker adds them to every line from the generated audio (all lines or none; they run forward and end within the audio).
 - Popular traditional rhymes may be used only when out of copyright or openly licensed; record the source in `sources`. Prefer original rhymes.
 

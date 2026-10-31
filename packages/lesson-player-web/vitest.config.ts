@@ -8,5 +8,9 @@ export default defineConfig({
     include: ["test/**/*.test.ts", "test/**/*.test.tsx"],
     setupFiles: ["test/setup.ts"],
     css: false,
+    // The whole-lesson flows take 1.5 s alone and reached 4 s in a full parallel `turbo run test`,
+    // close to vitest's 5 s default; that timeout was the flake. Sized for a loaded machine, like
+    // lesson-core and content-publish.
+    testTimeout: 30000,
   },
 });

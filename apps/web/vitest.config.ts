@@ -19,5 +19,8 @@ export default defineConfig({
     include: ["test/**/*.test.ts", "test/**/*.test.tsx"],
     setupFiles: ["test/setup.ts"],
     css: false,
+    // jsdom flows slow down several times in a full parallel `turbo run test`; vitest's 5 s
+    // default is too tight there (the same flake as lesson-player-web).
+    testTimeout: 30000,
   },
 });

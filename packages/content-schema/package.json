@@ -22,6 +22,7 @@
     "test:python": "uv run --project python --group dev pytest -q python/tests"
   },
   "dependencies": {
+    "@smriti/tokens": "workspace:*",
     "ajv": "8.20.0",
     "ajv-formats": "3.0.1"
   },

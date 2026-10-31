@@ -53,6 +53,8 @@ function TileButton({ tile, state, glow, onPress, testID, draggable }: { tile: T
     <button
       type="button"
       aria-label={label}
+      // The shown move is announced, not only drawn as a ring (never colour or motion alone).
+      aria-description={glow ? t("learn:LRN-18.little_learner_show_me") : undefined}
       aria-pressed={state === "picked" || undefined}
       data-testid={testID}
       data-state={state}
@@ -65,14 +67,15 @@ function TileButton({ tile, state, glow, onPress, testID, draggable }: { tile: T
         state === "picked" && "ring-4 ring-primary",
         state === "done" && "bg-success-tint",
         glow && "ring-4 ring-primary",
-        glow && !reducedMotion && "animate-pulse",
+        // Reduced motion: a static ring, no glow pulse (LRN-18 states).
+        glow && !reducedMotion && "motion-safe:animate-pulse",
       )}
     >
       <Media refId={tile.media} className="aspect-square w-20" />
       <span className="text-label text-ink">{tile.label}</span>
       {state === "done" && (
         <span className="absolute right-1 top-1">
-          <Icon name="CheckCircle" size={24} color="success" />
+          <Icon name="CheckCircle" size={24} color="successText" />
         </span>
       )}
     </button>
@@ -87,6 +90,7 @@ const same = (a: PlayMove | null, b: PlayMove): boolean => !!a && JSON.stringify
 export function PlayPlayer(props: PlayPlayerProps) {
   const { bundle, activityId, bundleVersion, t, audio, contentBaseUrl } = props;
   const plan = useMemo(() => planPlay(bundle, activityId, { bundleVersion }), [bundle, activityId, bundleVersion]);
+  const { reducedMotion } = useUI();
   const [s, dispatch] = useClocked<PlayState, PlayAction>(reducePlay, () => reducePlay(initialPlay(), { type: "start", plan, now: (props.clock ?? Date.now)() }), props.clock);
   const [picked, setPicked] = useState<{ side: "left" | "right" | "item"; id: string } | null>(null);
   useCompletion(s.completion, props.onComplete);
@@ -175,6 +179,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
                   key={b.id}
                   type="button"
                   aria-label={t("learn:LRN-18.little_learner_place_a11y", { label: b.label })}
+                  aria-description={glowTarget === b.id && picked ? t("learn:LRN-18.little_learner_show_me") : undefined}
                   data-testid={`bucket-${b.id}`}
                   data-glow={(glowTarget === b.id && !!picked) || undefined}
                   disabled={!picked}
@@ -213,6 +218,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
                   key={tg.id}
                   type="button"
                   aria-label={filled(tg.id) ? t("learn:LRN-18.little_learner_placed_a11y", { label: tg.label }) : t("learn:LRN-18.little_learner_place_a11y", { label: tg.label })}
+                  aria-description={glowTarget === tg.id ? t("learn:LRN-18.little_learner_show_me") : undefined}
                   data-testid={`target-${tg.id}`}
                   data-glow={glowTarget === tg.id || undefined}
                   onClick={() => picked && move({ type: "place", item: picked.id, target: tg.id })}
@@ -229,7 +235,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
                     glowTarget === tg.id && "ring-4 ring-primary",
                   )}
                 >
-                  {filled(tg.id) && <Icon name="CheckCircle" size={24} color="success" />}
+                  {filled(tg.id) && <Icon name="CheckCircle" size={24} color="successText" />}
                 </button>
               ))}
             </div>
@@ -276,7 +282,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
     >
       {s.phase === "complete" ? (
         <div className="flex flex-col items-center gap-3 py-8" data-testid="play-stars">
-          <Icon name="Star" size={32} color="primary" weight="fill" />
+          <Icon name="Star" size={32} color="primaryText" weight="fill" />
           <Text variant="title" align="center">
             {t("learn:LRN-18.little_learner_stars", { n: s.stars })}
           </Text>
@@ -287,6 +293,12 @@ export function PlayPlayer(props: PlayPlayerProps) {
             <div className="flex-1">
               <PetSays pet={props.pet} text={petText} testID="play-pet-line" />
             </div>
+            {s.phase === "cheer" && (
+              // The cheer: a clap that pops in, or just appears with reduced motion. The pet line carries the words.
+              <span data-testid="play-cheer" data-motion={reducedMotion ? "static" : "pop"} className={cx("inline-flex", !reducedMotion && "motion-safe:animate-[sm-pop_var(--sm-duration-slow)_ease-out_1]")}>
+                <Icon name="HandsClapping" size={32} color="primaryText" weight="fill" />
+              </span>
+            )}
             {audio && promptSrc && s.phase === "round" && <IconButton icon="SpeakerHigh" label={t("learn:LRN-18.little_learner_hear_again")} onPress={() => audio.play(promptSrc)} size={48} testID="play-hear-again" />}
           </div>
           {s.phase === "round" && (
@@ -297,7 +309,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
           {body}
           {s.phase === "round" && s.feedback && (
             <div role="status" data-testid="play-feedback" data-tone={success ? "success" : "try_again"} className={cx("flex items-center gap-2 rounded-lg p-3", success ? "bg-success-tint" : "bg-surface-sunken")}>
-              <Icon name={success ? "CheckCircle" : "ArrowCounterClockwise"} size={24} color={success ? "success" : "inkMuted"} />
+              <Icon name={success ? "CheckCircle" : "ArrowCounterClockwise"} size={24} color={success ? "successText" : "inkMuted"} />
               <Text variant="body">{s.feedback}</Text>
             </div>
           )}

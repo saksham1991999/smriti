@@ -37,6 +37,7 @@ export const iconNames = [
   "Footprints",
   "Gear",
   "Gift",
+  "HandPalm",
   "HandsClapping",
   "House",
   "Info",

@@ -80,7 +80,7 @@ export type QuestionId = string;
  */
 export type MnemonicId = string;
 /**
- * A Phosphor icon name in PascalCase (DESIGN §8), for example HandWaving.
+ * A Phosphor icon name in PascalCase (DESIGN §8), for example HandsClapping. The content check also requires it to be in the app icon set (iconNames in @smriti/tokens/ui).
  *
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
  * via the `definition` "IconName".

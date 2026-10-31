@@ -100,7 +100,7 @@ export function SongPlayer(props: SongPlayerProps) {
       </p>
       {action && (
         <div className="flex items-center justify-center gap-3 rounded-lg bg-primary-tint p-3" data-testid="song-action">
-          <Icon name={appIcon(action.icon)} size={32} color="primary" />
+          <Icon name={appIcon(action.icon)} size={32} color="primaryText" />
           <Text variant="heading">{t("learn:LRN-17.little_learner_do_this", { cue: action.cue })}</Text>
         </div>
       )}

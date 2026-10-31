@@ -53,6 +53,55 @@ export function isSingleAnswer(q: AnyQuestion): boolean {
   return SINGLE_ANSWER.has(q.type) || (q.type === "match_list" && "option_ids" in q.answer);
 }
 
+/**
+ * The option ids a little learner's guided finish shows (machine phase `guided`): the key of an
+ * option-answered question, or null for types the player shows through the worked answer.
+ */
+export function shownOptionIds(q: AnyQuestion): string[] | null {
+  switch (q.type) {
+    case "mcq_single":
+    case "assertion_reason":
+    case "statement_based":
+    case "mcq_multi":
+      return [...q.answer.option_ids];
+    case "match_list":
+      return "option_ids" in q.answer ? [...q.answer.option_ids] : null;
+    default:
+      return null;
+  }
+}
+
+/**
+ * The key as an answer: what the guided finish submits when the child taps the shown answer, so
+ * `checkAnswer(q, shownAnswer(q))` is always correct. Null for a paragraph (its children are asked).
+ */
+export function shownAnswer(q: AnyQuestion): Answer | null {
+  switch (q.type) {
+    case "mcq_single":
+    case "assertion_reason":
+    case "statement_based":
+    case "mcq_multi":
+      return { kind: "options", optionIds: [...q.answer.option_ids] };
+    case "match_list":
+      return "option_ids" in q.answer ? { kind: "options", optionIds: [...q.answer.option_ids] } : { kind: "pairs", pairs: q.answer.pairs.map((p) => ({ ...p })) };
+    case "numerical":
+      return { kind: "number", value: q.answer.value, unit: q.answer.unit ?? null };
+    case "integer":
+      return { kind: "number", value: q.answer.value };
+    case "matrix_match":
+      return { kind: "matrix", rows: q.answer.pairs.map((r) => ({ row: r.row, columns: [...r.columns] })) };
+    case "fill_blank":
+      return {
+        kind: "blanks",
+        blanks: q.answer.blanks.map((k) => ("choice_id" in k ? { blank: k.blank, choiceId: k.choice_id } : { blank: k.blank, text: (k.accepted[0]?.text as string[] | undefined)?.[0] ?? "" })),
+      };
+    case "order_steps":
+      return { kind: "order", order: [...q.answer.order] };
+    case "paragraph":
+      return null;
+  }
+}
+
 const invalid = (reason: string): CheckResult => ({
   correct: false,
   partial: 0,

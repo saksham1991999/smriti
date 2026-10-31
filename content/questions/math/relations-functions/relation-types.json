@@ -1,0 +1,924 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format, not copied from the NCERT exercises. Each solution cites the NCERT section, definition or example it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.relations-functions.relation-types",
+  "questions": [
+    {
+      "id": "q.math.relations-functions.relation-types.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A relation R in a set A is reflexive if",
+        "hi": "समुच्चय A में संबंध R स्वतुल्य है यदि"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$(a, a) \\in R$ for every $a \\in A$",
+            "hi": "$(a, a) \\in R$, हर $a \\in A$ के लिए"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$(a, b) \\in R$ implies $(b, a) \\in R$",
+            "hi": "$(a, b) \\in R$ से $(b, a) \\in R$ मिले"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$R = A \\times A$",
+            "hi": "$R = A \\times A$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$R = \\phi$",
+            "hi": "$R = \\phi$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Each element related to itself.",
+          "hi": "हर अवयव स्वयं से संबंधित।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Reflexive is about each element and itself.",
+          "hi": "स्वतुल्य हर अवयव और स्वयं उसके बारे में है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.2, Definition 3(i).",
+            "hi": "NCERT §1.2, Definition 3(i)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is symmetry.",
+              "hi": "वह सममिति है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the universal relation; reflexive needs much less.",
+              "hi": "वह सार्वत्रिक संबंध है; स्वतुल्य के लिए बहुत कम चाहिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The empty relation on a non-empty set is not reflexive.",
+              "hi": "अरिक्त समुच्चय पर रिक्त संबंध स्वतुल्य नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "R in $\\{1, 2, 3\\}$ is $\\{(1, 1), (2, 2), (3, 3), (1, 2)\\}$. R is",
+        "hi": "$\\{1, 2, 3\\}$ में R = $\\{(1, 1), (2, 2), (3, 3), (1, 2)\\}$ है। R है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "reflexive and transitive but not symmetric",
+            "hi": "स्वतुल्य और संक्रामक, पर सममित नहीं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "an equivalence relation",
+            "hi": "एक तुल्यता संबंध"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "symmetric but not reflexive",
+            "hi": "सममित पर स्वतुल्य नहीं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "reflexive but neither symmetric nor transitive",
+            "hi": "स्वतुल्य पर न सममित न संक्रामक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is there a pair (a, b), (b, c) with (a, c) missing?",
+          "hi": "क्या कोई (a, b), (b, c) है जिसमें (a, c) अनुपस्थित हो?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Check each property; for transitivity list every chain.",
+          "hi": "हर गुण जाँचिए; संक्रामकता के लिए हर शृंखला लिखिए।"
+        },
+        "steps": [
+          {
+            "en": "All $(a, a)$ are present. $(1, 2) \\in R$ but $(2, 1) \\notin R$. The only chains, such as $(1, 1), (1, 2)$ and $(1, 2), (2, 2)$, give $(1, 2)$, which is in R (NCERT §1.2, Definition 3).",
+            "hi": "सभी $(a, a)$ उपस्थित हैं। $(1, 2) \\in R$ पर $(2, 1) \\notin R$। केवल शृंखलाएँ, जैसे $(1, 1), (1, 2)$ और $(1, 2), (2, 2)$, $(1, 2)$ देती हैं, जो R में है (NCERT §1.2, Definition 3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$(2, 1)$ is missing, so R is not symmetric.",
+              "hi": "$(2, 1)$ अनुपस्थित है, इसलिए R सममित नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$(1, 2)$ without $(2, 1)$ breaks symmetry.",
+              "hi": "$(1, 2)$ का होना, $(2, 1)$ के बिना, सममिति तोड़ता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "No chain produces a missing pair, so R is transitive.",
+              "hi": "कोई शृंखला अनुपस्थित युग्म नहीं देती, इसलिए R संक्रामक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "On the set of lines in a plane, the relation 'is perpendicular to' is",
+        "hi": "किसी तल की रेखाओं के समुच्चय पर संबंध 'लंब है'"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "symmetric but neither reflexive nor transitive",
+            "hi": "सममित है पर न स्वतुल्य न संक्रामक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "an equivalence relation",
+            "hi": "एक तुल्यता संबंध है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "reflexive and symmetric",
+            "hi": "स्वतुल्य और सममित है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "transitive only",
+            "hi": "केवल संक्रामक है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Can a line be perpendicular to itself?",
+          "hi": "क्या कोई रेखा स्वयं पर लंब हो सकती है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Picture three lines: two perpendiculars to the same line are parallel.",
+          "hi": "तीन रेखाएँ सोचिए: एक ही रेखा पर दो लंब समांतर होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.2, Example 3: symmetric; not reflexive; not transitive.",
+            "hi": "NCERT §1.2, Example 3: सममित; स्वतुल्य नहीं; संक्रामक नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It fails reflexivity and transitivity.",
+              "hi": "यह स्वतुल्यता और संक्रामकता में विफल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "No line is perpendicular to itself.",
+              "hi": "कोई रेखा स्वयं पर लंब नहीं होती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$L_1 \\perp L_2$, $L_2 \\perp L_3$ give $L_1 \\parallel L_3$.",
+              "hi": "$L_1 \\perp L_2$, $L_2 \\perp L_3$ से $L_1 \\parallel L_3$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "On $\\mathbf{Z}$, a R b when $3$ divides $a - b$. How many equivalence classes are there?",
+        "hi": "$\\mathbf{Z}$ पर a R b तब जब $3$, $a - b$ को विभाजित करे। कितने तुल्यता वर्ग हैं?"
+      },
+      "answer": {
+        "value": 3,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Possible remainders: 0, 1, 2.",
+          "hi": "संभव शेषफल: 0, 1, 2।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Sort integers by their remainder on division by 3.",
+          "hi": "पूर्णांकों को 3 से भाग देने पर शेषफल के अनुसार छाँटिए।"
+        },
+        "steps": [
+          {
+            "en": "The classes are $[0]$, $[1]$ and $[2]$ (NCERT §1.2).",
+            "hi": "वर्ग $[0]$, $[1]$ और $[2]$ हैं (NCERT §1.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Infinitely many is wrong: $[3] = [0]$, $[4] = [1]$, and so on.",
+              "hi": "अनंत गलत है: $[3] = [0]$, $[4] = [1]$, इत्यादि।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "On $\\mathbf{Z}$, a R b when $a - b$ is even. The class $[1]$ is",
+        "hi": "$\\mathbf{Z}$ पर a R b तब जब $a - b$ सम हो। वर्ग $[1]$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the set of odd integers",
+            "hi": "विषम पूर्णांकों का समुच्चय"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{1\\}$",
+            "hi": "$\\{1\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the set of even integers",
+            "hi": "सम पूर्णांकों का समुच्चय"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathbf{Z}$",
+            "hi": "$\\mathbf{Z}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Try 3, 2 and −1.",
+          "hi": "3, 2 और −1 आज़माइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Which integers differ from 1 by an even number?",
+          "hi": "कौन-से पूर्णांक 1 से सम संख्या के अंतर पर हैं?"
+        },
+        "steps": [
+          {
+            "en": "$b - 1$ is even exactly when b is odd, so $[1]$ is the set of odd integers (NCERT §1.2, Example 5).",
+            "hi": "$b - 1$ ठीक तब सम है जब b विषम हो, अतः $[1]$ विषम पूर्णांकों का समुच्चय है (NCERT §1.2, Example 5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$3$ and $-1$ are also related to $1$.",
+              "hi": "$3$ और $-1$ भी $1$ से संबंधित हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is $[0]$.",
+              "hi": "वह $[0]$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$2$ is not related to $1$.",
+              "hi": "$2$, $1$ से संबंधित नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "On $\\mathbf{Z}$, a R b when $a < b$. Then R is",
+        "hi": "$\\mathbf{Z}$ पर a R b तब जब $a < b$। तब R"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "transitive but neither reflexive nor symmetric",
+            "hi": "संक्रामक है पर न स्वतुल्य न सममित"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "an equivalence relation",
+            "hi": "एक तुल्यता संबंध है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "reflexive and transitive",
+            "hi": "स्वतुल्य और संक्रामक है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "symmetric only",
+            "hi": "केवल सममित है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Test a = b first.",
+          "hi": "पहले a = b जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Strict inequality never holds between a number and itself.",
+          "hi": "निरपेक्ष असमिका किसी संख्या और स्वयं उसके बीच कभी सत्य नहीं होती।"
+        },
+        "steps": [
+          {
+            "en": "$a < a$ is false; $a < b$ rules out $b < a$; $a < b < c$ gives $a < c$ (NCERT §1.2, Definition 3).",
+            "hi": "$a < a$ असत्य है; $a < b$ होने पर $b < a$ नहीं हो सकता; $a < b < c$ से $a < c$ (NCERT §1.2, Definition 3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It is neither reflexive nor symmetric.",
+              "hi": "यह न स्वतुल्य है न सममित।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$a < a$ is false, so not reflexive.",
+              "hi": "$a < a$ असत्य है, इसलिए स्वतुल्य नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$1 < 2$ but not $2 < 1$.",
+              "hi": "$1 < 2$ पर $2 < 1$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0007",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many ordered pairs are in the smallest equivalence relation on $\\{1, 2, 3, 4\\}$ that contains $(1, 2)$?",
+        "hi": "$\\{1, 2, 3, 4\\}$ पर $(1, 2)$ वाले सबसे छोटे तुल्यता संबंध में कितने क्रमित युग्म हैं?"
+      },
+      "answer": {
+        "value": 6,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Start with the diagonal pairs.",
+          "hi": "विकर्ण युग्मों से शुरू कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add only what the three properties force.",
+          "hi": "केवल वही जोड़िए जो तीनों गुण अनिवार्य करें।"
+        },
+        "steps": [
+          {
+            "en": "Reflexive: the four pairs $(a, a)$. Symmetric: add $(2, 1)$. Transitivity adds nothing new. Total $6$ (NCERT §1.2, Definitions 3 and 4).",
+            "hi": "स्वतुल्य: चार युग्म $(a, a)$। सममित: $(2, 1)$ जोड़िए। संक्रामकता कुछ नया नहीं जोड़ती। कुल $6$ (NCERT §1.2, Definitions 3 तथा 4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$5$ forgets $(2, 1)$, which symmetry needs.",
+              "hi": "$5$ में $(2, 1)$ छूट गया, जो सममिति के लिए चाहिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which relation on the set of all triangles in a plane is an equivalence relation?",
+        "hi": "किसी तल के सभी त्रिभुजों के समुच्चय पर कौन-सा संबंध तुल्यता संबंध है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "is similar to",
+            "hi": "समरूप है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "has a larger area than",
+            "hi": "से अधिक क्षेत्रफल वाला है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "has exactly one vertex in common with",
+            "hi": "से ठीक एक शीर्ष साझा करता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "has a smaller perimeter than",
+            "hi": "से कम परिमाप वाला है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Test reflexivity first.",
+          "hi": "पहले स्वतुल्यता जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every triangle must be related to itself.",
+          "hi": "हर त्रिभुज स्वयं से संबंधित होना चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "Similarity is reflexive, symmetric and transitive (NCERT §1.2, Definition 4).",
+            "hi": "समरूपता स्वतुल्य, सममित और संक्रामक है (NCERT §1.2, Definition 4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "No triangle has a larger area than itself.",
+              "hi": "कोई त्रिभुज स्वयं से अधिक क्षेत्रफल वाला नहीं होता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A triangle shares all three vertices with itself, not exactly one.",
+              "hi": "त्रिभुज स्वयं से तीनों शीर्ष साझा करता है, ठीक एक नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not reflexive and not symmetric.",
+              "hi": "न स्वतुल्य न सममित।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0009",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many equivalence relations are there on $\\{1, 2, 3\\}$?",
+        "hi": "$\\{1, 2, 3\\}$ पर कितने तुल्यता संबंध हैं?"
+      },
+      "answer": {
+        "value": 5,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Count the ways to group 1, 2, 3.",
+          "hi": "1, 2, 3 को समूहों में बाँटने के तरीके गिनिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "An equivalence relation is the same as a split of the set into disjoint classes.",
+          "hi": "तुल्यता संबंध समुच्चय को असंयुक्त वर्गों में बाँटने के समान है।"
+        },
+        "steps": [
+          {
+            "en": "The splits are: three single classes; $\\{1, 2\\}, \\{3\\}$; $\\{1, 3\\}, \\{2\\}$; $\\{2, 3\\}, \\{1\\}$; one class $\\{1, 2, 3\\}$.",
+            "hi": "विभाजन हैं: तीन एकल वर्ग; $\\{1, 2\\}, \\{3\\}$; $\\{1, 3\\}, \\{2\\}$; $\\{2, 3\\}, \\{1\\}$; एक वर्ग $\\{1, 2, 3\\}$।"
+          },
+          {
+            "en": "Each split gives one equivalence relation, so there are $5$ (NCERT §1.2: an equivalence relation divides the set into disjoint classes, and conversely).",
+            "hi": "हर विभाजन एक तुल्यता संबंध देता है, अतः $5$ हैं (NCERT §1.2: तुल्यता संबंध समुच्चय को असंयुक्त वर्गों में बाँटता है, और विलोमतः)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$4$ forgets the relation with three single classes, the smallest one.",
+              "hi": "$4$ में तीन एकल वर्गों वाला, सबसे छोटा संबंध छूट गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.relation-types.0010",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.relation-types.core.relation-types-equivalence",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "R in $\\{1, 2, 3, 4\\}$ is $\\{(1, 1), (2, 2), (3, 3), (4, 4), (1, 2), (2, 1), (2, 3), (3, 2)\\}$. R is",
+        "hi": "$\\{1, 2, 3, 4\\}$ में R = $\\{(1, 1), (2, 2), (3, 3), (4, 4), (1, 2), (2, 1), (2, 3), (3, 2)\\}$ है। R है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "reflexive and symmetric but not transitive",
+            "hi": "स्वतुल्य और सममित, पर संक्रामक नहीं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "an equivalence relation",
+            "hi": "एक तुल्यता संबंध"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "reflexive and transitive but not symmetric",
+            "hi": "स्वतुल्य और संक्रामक, पर सममित नहीं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "symmetric and transitive but not reflexive",
+            "hi": "सममित और संक्रामक, पर स्वतुल्य नहीं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is (1, 3) in R?",
+          "hi": "क्या (1, 3), R में है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Follow the chain from 1 through 2 to 3.",
+          "hi": "1 से 2 होते हुए 3 तक की शृंखला देखिए।"
+        },
+        "steps": [
+          {
+            "en": "All $(a, a)$ are present and every pair has its reverse. But $(1, 2), (2, 3) \\in R$ while $(1, 3) \\notin R$ (NCERT §1.2, Definition 3).",
+            "hi": "सभी $(a, a)$ उपस्थित हैं और हर युग्म का उलटा भी है। पर $(1, 2), (2, 3) \\in R$ जबकि $(1, 3) \\notin R$ (NCERT §1.2, Definition 3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Transitivity fails at $(1, 3)$.",
+              "hi": "संक्रामकता $(1, 3)$ पर विफल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Every pair has its reverse, so R is symmetric.",
+              "hi": "हर युग्म का उलटा है, इसलिए R सममित है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "All four $(a, a)$ are present.",
+              "hi": "चारों $(a, a)$ उपस्थित हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

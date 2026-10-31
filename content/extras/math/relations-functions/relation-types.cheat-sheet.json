@@ -1,0 +1,80 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.math.relations-functions.relation-types",
+  "scope": "topic",
+  "topic": "math.relations-functions.relation-types",
+  "title": {
+    "en": "Types of relations",
+    "hi": "संबंधों के प्रकार"
+  },
+  "concepts": [
+    "math.relations-functions.relation-types.core.relation-types-equivalence"
+  ],
+  "key_ideas": [
+    {
+      "en": "Empty relation: $R = \\phi$; universal relation: $R = A \\times A$.",
+      "hi": "रिक्त संबंध: $R = \\phi$; सार्वत्रिक संबंध: $R = A \\times A$।"
+    },
+    {
+      "en": "Reflexive, symmetric and transitive are independent properties.",
+      "hi": "स्वतुल्य, सममित और संक्रामक स्वतंत्र गुण हैं।"
+    },
+    {
+      "en": "Equivalence relation: all three; its classes are disjoint and cover the set.",
+      "hi": "तुल्यता संबंध: तीनों गुण; इसके वर्ग असंयुक्त हैं और समुच्चय को ढकते हैं।"
+    },
+    {
+      "en": "$a - b$ divisible by $n$ on $\\mathbf{Z}$ gives $n$ classes $[0], \\ldots, [n - 1]$.",
+      "hi": "$a - b$ का $n$ से विभाज्य होना, $\\mathbf{Z}$ पर, $n$ वर्ग $[0], \\ldots, [n - 1]$ देता है।"
+    }
+  ],
+  "formulas": [],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "A symmetric and transitive relation must be reflexive.",
+        "hi": "सममित और संक्रामक संबंध अवश्य स्वतुल्य होगा।"
+      },
+      "correct": {
+        "en": "Reflexive needs $(a, a)$ for every a; check it separately.",
+        "hi": "स्वतुल्य के लिए हर a के लिए $(a, a)$ चाहिए; इसे अलग से जाँचिए।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "'Is perpendicular to' is transitive.",
+        "hi": "'लंब है' संक्रामक है।"
+      },
+      "correct": {
+        "en": "$L_1 \\perp L_2$ and $L_2 \\perp L_3$ make $L_1$ parallel to $L_3$.",
+        "hi": "$L_1 \\perp L_2$ और $L_2 \\perp L_3$ से $L_1$, $L_3$ के समांतर होती है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Two different equivalence classes can share an element.",
+        "hi": "दो भिन्न तुल्यता वर्गों में कोई अवयव साझा हो सकता है।"
+      },
+      "correct": {
+        "en": "Equivalence classes are mutually disjoint.",
+        "hi": "तुल्यता वर्ग परस्पर असंयुक्त होते हैं।"
+      }
+    }
+  ],
+  "diagram": "img.relations-functions-12.house-groups",
+  "hi_source": "translation"
+}

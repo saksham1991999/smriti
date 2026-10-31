@@ -1,0 +1,343 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions.function-types:deep_dive",
+  "topic": "math.relations-functions.function-types",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions.function-types.core.one-one-onto"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "One-one and onto",
+        "hi": "एकैकी और आच्छादक"
+      },
+      "subtopic": "math.relations-functions.function-types.core",
+      "card_ids": [
+        "math.relations-functions.function-types:dd:01",
+        "math.relations-functions.function-types:dd:02",
+        "math.relations-functions.function-types:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Testing a function",
+        "hi": "फलन की जाँच"
+      },
+      "subtopic": "math.relations-functions.function-types.core",
+      "card_ids": [
+        "math.relations-functions.function-types:dd:04",
+        "math.relations-functions.function-types:dd:05",
+        "math.relations-functions.function-types:dd:06",
+        "math.relations-functions.function-types:dd:07",
+        "math.relations-functions.function-types:dd:08"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions.function-types:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "One-one functions",
+        "hi": "एकैकी फलन"
+      },
+      "body": {
+        "en": "A function $f : X \\to Y$ is one-one (injective) if different elements of X have different images: $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Otherwise f is many-one.\n\nThink of coat hooks: each bag hangs on its own hook, and no hook holds two bags.\n\n$f : \\mathbf{N} \\to \\mathbf{N}$, $f(x) = 2x$ is one-one, because $2x_1 = 2x_2$ gives $x_1 = x_2$.",
+        "hi": "फलन $f : X \\to Y$ एकैकी (अंतःक्षेपी) है यदि X के भिन्न अवयवों के प्रतिबिंब भिन्न हों: $f(x_1) = f(x_2)$ से $x_1 = x_2$ प्राप्त हो। अन्यथा f बहुएक है।\n\nकोट टाँगने की खूँटियाँ सोचिए: हर बस्ता अपनी अलग खूँटी पर है, और किसी खूँटी पर दो बस्ते नहीं।\n\n$f : \\mathbf{N} \\to \\mathbf{N}$, $f(x) = 2x$ एकैकी है, क्योंकि $2x_1 = 2x_2$ से $x_1 = x_2$ मिलता है।"
+      },
+      "media": "img.relations-functions-12.coat-hooks",
+      "highlights": [
+        {
+          "term": {
+            "en": "one-one",
+            "hi": "एकैकी"
+          },
+          "definition": {
+            "en": "Distinct elements have distinct images.",
+            "hi": "भिन्न अवयवों के भिन्न प्रतिबिंब।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3, Definition 5, Example 8"
+      }
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Onto and bijective functions",
+        "hi": "आच्छादक और एकैकी आच्छादी फलन"
+      },
+      "body": {
+        "en": "$f : X \\to Y$ is onto (surjective) if every element of Y is the image of some element of X; that is, the range of f equals Y. On the coat rack, an empty hook means the hanging is not onto.\n\n$f(x) = 2x$ from $\\mathbf{N}$ to $\\mathbf{N}$ is not onto: nothing maps to $1$. From $\\mathbf{R}$ to $\\mathbf{R}$ it is onto, because any y is the image of $\\frac{y}{2}$.\n\nA function that is both one-one and onto is bijective. $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = x^2$ is neither: $f(-1) = f(1)$, and $-2$ is not an image.",
+        "hi": "$f : X \\to Y$ आच्छादक (आच्छादी) है यदि Y का हर अवयव X के किसी अवयव का प्रतिबिंब हो; अर्थात् f का परिसर Y के बराबर हो। खूँटियों पर कोई खाली खूँटी हो तो टाँगना आच्छादक नहीं है।\n\n$f(x) = 2x$, $\\mathbf{N}$ से $\\mathbf{N}$ तक, आच्छादक नहीं है: $1$ तक कुछ नहीं पहुँचता। $\\mathbf{R}$ से $\\mathbf{R}$ तक यह आच्छादक है, क्योंकि कोई भी y, $\\frac{y}{2}$ का प्रतिबिंब है।\n\nजो फलन एकैकी और आच्छादक दोनों हो, वह एकैकी आच्छादी है। $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = x^2$ दोनों में से कोई नहीं: $f(-1) = f(1)$, और $-2$ किसी का प्रतिबिंब नहीं।"
+      },
+      "media": "img.relations-functions-12.coat-hooks",
+      "highlights": [
+        {
+          "term": {
+            "en": "onto",
+            "hi": "आच्छादक"
+          },
+          "definition": {
+            "en": "Range of f equals the codomain.",
+            "hi": "f का परिसर सहप्रांत के बराबर।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3, Definitions 6 and 7, Examples 8, 9 and 11"
+      }
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:03",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 1,
+      "question": "q.math.relations-functions.function-types.0001"
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort each function.",
+        "hi": "हर फलन को छाँटिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i",
+            "text": {
+              "en": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(x) = 2x$",
+              "hi": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(x) = 2x$"
+            }
+          },
+          {
+            "id": "s",
+            "text": {
+              "en": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(1) = f(2) = 1$ and $f(x) = x - 1$ for $x > 2$",
+              "hi": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(1) = f(2) = 1$ और $f(x) = x - 1$, जब $x > 2$"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 2x$",
+              "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 2x$"
+            }
+          },
+          {
+            "id": "n",
+            "text": {
+              "en": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = x^2$",
+              "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = x^2$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "inj",
+            "label": {
+              "en": "One-one, not onto",
+              "hi": "एकैकी, आच्छादक नहीं"
+            }
+          },
+          {
+            "id": "sur",
+            "label": {
+              "en": "Onto, not one-one",
+              "hi": "आच्छादक, एकैकी नहीं"
+            }
+          },
+          {
+            "id": "bij",
+            "label": {
+              "en": "Bijective",
+              "hi": "एकैकी आच्छादी"
+            }
+          },
+          {
+            "id": "none",
+            "label": {
+              "en": "Neither",
+              "hi": "कोई नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i",
+            "bin": "inj"
+          },
+          {
+            "item": "s",
+            "bin": "sur"
+          },
+          {
+            "item": "b",
+            "bin": "bij"
+          },
+          {
+            "item": "n",
+            "bin": "none"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: the same rule $2x$ is onto on $\\mathbf{R}$ but not on $\\mathbf{N}$; the codomain matters.",
+          "hi": "सही: वही नियम $2x$, $\\mathbf{R}$ पर आच्छादक है पर $\\mathbf{N}$ पर नहीं; सहप्रांत मायने रखता है।"
+        },
+        "wrong": {
+          "en": "For one-one, look for two inputs with one output. For onto, look for a missed output.",
+          "hi": "एकैकी के लिए एक आउटपुट वाले दो इनपुट खोजिए। आच्छादक के लिए छूटा हुआ आउटपुट खोजिए।"
+        }
+      }
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Show that $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 3x - 5$ is bijective.",
+        "hi": "दिखाइए कि $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 3x - 5$ एकैकी आच्छादी है।"
+      },
+      "solution_steps": [
+        {
+          "en": "One-one: $3x_1 - 5 = 3x_2 - 5$ gives $x_1 = x_2$.",
+          "hi": "एकैकी: $3x_1 - 5 = 3x_2 - 5$ से $x_1 = x_2$।"
+        },
+        {
+          "en": "Onto: for any real y, take $x = \\frac{y + 5}{3}$; then $f(x) = y$.",
+          "hi": "आच्छादक: किसी भी वास्तविक y के लिए $x = \\frac{y + 5}{3}$ लीजिए; तब $f(x) = y$।"
+        }
+      ],
+      "answer": {
+        "en": "f is one-one and onto",
+        "hi": "f एकैकी और आच्छादक है"
+      },
+      "common_trap": {
+        "en": "Checking only one-one and forgetting to show every y is reached.",
+        "hi": "केवल एकैकी जाँचना और यह भूल जाना कि हर y तक पहुँचना दिखाना है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3, Example 9"
+      }
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Finite sets behave specially",
+        "hi": "परिमित समुच्चय विशेष हैं"
+      },
+      "body": {
+        "en": "For a finite set X, a function $f : X \\to X$ is one-one exactly when it is onto. If three hooks hold three bags with no hook shared, no hook can be empty.\n\nThis fails for infinite sets: $f(x) = 2x$ on $\\mathbf{N}$ is one-one but not onto.\n\nA one-one function from $\\{1, 2, 3\\}$ to itself is a permutation of $1, 2, 3$, so there are $3! = 6$ of them.",
+        "hi": "परिमित समुच्चय X के लिए, फलन $f : X \\to X$ ठीक तब एकैकी है जब वह आच्छादक हो। यदि तीन खूँटियों पर तीन बस्ते हों और कोई खूँटी साझा न हो, तो कोई खूँटी खाली नहीं रह सकती।\n\nअपरिमित समुच्चयों के लिए यह सत्य नहीं: $f(x) = 2x$, $\\mathbf{N}$ पर, एकैकी है पर आच्छादक नहीं।\n\n$\\{1, 2, 3\\}$ से स्वयं तक एकैकी फलन $1, 2, 3$ का एक क्रमचय है, इसलिए ऐसे $3! = 6$ फलन हैं।"
+      },
+      "media": "img.relations-functions-12.coat-hooks",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3, Examples 13 and 14, Remark; Example 22"
+      }
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:07",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.function-types.0002"
+    },
+    {
+      "id": "math.relations-functions.function-types:dd:08",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "One-one: $f(x_1) = f(x_2) \\Rightarrow x_1 = x_2$. Onto: range = codomain. Bijective: both.",
+          "hi": "एकैकी: $f(x_1) = f(x_2) \\Rightarrow x_1 = x_2$। आच्छादक: परिसर = सहप्रांत। एकैकी आच्छादी: दोनों।"
+        },
+        {
+          "en": "The codomain matters: $2x$ is onto $\\mathbf{R}$ but not onto $\\mathbf{N}$.",
+          "hi": "सहप्रांत मायने रखता है: $2x$, $\\mathbf{R}$ पर आच्छादक है पर $\\mathbf{N}$ पर नहीं।"
+        },
+        {
+          "en": "On a finite set X, $f : X \\to X$ is one-one if and only if it is onto.",
+          "hi": "परिमित समुच्चय X पर $f : X \\to X$ एकैकी है यदि और केवल यदि आच्छादक है।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Summary"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

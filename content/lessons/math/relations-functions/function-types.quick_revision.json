@@ -1,0 +1,149 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions.function-types:quick_revision",
+  "topic": "math.relations-functions.function-types",
+  "mode": "quick_revision",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions.function-types.core.one-one-onto"
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions.function-types:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 1,
+      "sheet": "cs.math.relations-functions.function-types"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:02",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.function-types.0003"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:03",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.function-types.0004"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:04",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.function-types.0005"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:05",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.function-types.0006"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:06",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.function-types.0007"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:07",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.function-types.0008"
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:08",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Injective: no shared images. Surjective: no missed images. Bijective: both.",
+          "hi": "अंतःक्षेपी: कोई साझा प्रतिबिंब नहीं। आच्छादी: कोई छूटा प्रतिबिंब नहीं। एकैकी आच्छादी: दोनों।"
+        }
+      ]
+    },
+    {
+      "id": "math.relations-functions.function-types:qr:09",
+      "type": "common_traps",
+      "concepts": [
+        "math.relations-functions.function-types.core.one-one-onto"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A one-one function is always onto.",
+            "hi": "एकैकी फलन सदा आच्छादक होता है।"
+          },
+          "correct": {
+            "en": "Only for $f : X \\to X$ with X finite; $2x$ on $\\mathbf{N}$ is one-one but not onto.",
+            "hi": "केवल परिमित X के लिए $f : X \\to X$ में; $2x$, $\\mathbf{N}$ पर, एकैकी है पर आच्छादक नहीं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Onto depends only on the rule.",
+            "hi": "आच्छादकता केवल नियम पर निर्भर है।"
+          },
+          "correct": {
+            "en": "It depends on the codomain too.",
+            "hi": "यह सहप्रांत पर भी निर्भर है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "$x^2$ is one-one on $\\mathbf{R}$.",
+            "hi": "$x^2$, $\\mathbf{R}$ पर, एकैकी है।"
+          },
+          "correct": {
+            "en": "$f(-1) = f(1) = 1$.",
+            "hi": "$f(-1) = f(1) = 1$।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

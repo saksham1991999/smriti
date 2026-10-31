@@ -1,0 +1,80 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.math.relations-functions.function-types",
+  "scope": "topic",
+  "topic": "math.relations-functions.function-types",
+  "title": {
+    "en": "Types of functions",
+    "hi": "फलनों के प्रकार"
+  },
+  "concepts": [
+    "math.relations-functions.function-types.core.one-one-onto"
+  ],
+  "key_ideas": [
+    {
+      "en": "One-one (injective): $f(x_1) = f(x_2) \\Rightarrow x_1 = x_2$; otherwise many-one.",
+      "hi": "एकैकी (अंतःक्षेपी): $f(x_1) = f(x_2) \\Rightarrow x_1 = x_2$; अन्यथा बहुएक।"
+    },
+    {
+      "en": "Onto (surjective): range of f = codomain.",
+      "hi": "आच्छादक (आच्छादी): f का परिसर = सहप्रांत।"
+    },
+    {
+      "en": "Bijective: one-one and onto.",
+      "hi": "एकैकी आच्छादी: एकैकी और आच्छादक।"
+    },
+    {
+      "en": "Finite X: $f : X \\to X$ is one-one if and only if onto.",
+      "hi": "परिमित X: $f : X \\to X$ एकैकी है यदि और केवल यदि आच्छादक।"
+    }
+  ],
+  "formulas": [],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "A one-one function is always onto.",
+        "hi": "एकैकी फलन सदा आच्छादक होता है।"
+      },
+      "correct": {
+        "en": "Only for $f : X \\to X$ with X finite; $2x$ on $\\mathbf{N}$ is one-one but not onto.",
+        "hi": "केवल परिमित X के लिए $f : X \\to X$ में; $2x$, $\\mathbf{N}$ पर, एकैकी है पर आच्छादक नहीं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Onto depends only on the rule.",
+        "hi": "आच्छादकता केवल नियम पर निर्भर है।"
+      },
+      "correct": {
+        "en": "It depends on the codomain too.",
+        "hi": "यह सहप्रांत पर भी निर्भर है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$x^2$ is one-one on $\\mathbf{R}$.",
+        "hi": "$x^2$, $\\mathbf{R}$ पर, एकैकी है।"
+      },
+      "correct": {
+        "en": "$f(-1) = f(1) = 1$.",
+        "hi": "$f(-1) = f(1) = 1$।"
+      }
+    }
+  ],
+  "diagram": "img.relations-functions-12.coat-hooks",
+  "hi_source": "translation"
+}

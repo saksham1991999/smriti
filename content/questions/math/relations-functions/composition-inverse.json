@@ -1,0 +1,978 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format, not copied from the NCERT exercises. Each solution cites the NCERT section, definition or example it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.relations-functions.composition-inverse",
+  "questions": [
+    {
+      "id": "q.math.relations-functions.composition-inverse.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.composition-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = x + 2$ and $g(x) = x^2$, then $(g \\circ f)(1)$ is",
+        "hi": "यदि $f(x) = x + 2$ और $g(x) = x^2$, तो $(g \\circ f)(1)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$9$",
+            "hi": "$9$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$3$",
+            "hi": "$3$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Inner function first.",
+          "hi": "पहले भीतरी फलन।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Apply f first, then g.",
+          "hi": "पहले f, फिर g लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$f(1) = 3$, then $g(3) = 9$ (NCERT §1.4, Definition 8).",
+            "hi": "$f(1) = 3$, फिर $g(3) = 9$ (NCERT §1.4, Definition 8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$3$ is $(f \\circ g)(1)$.",
+              "hi": "$3$, $(f \\circ g)(1)$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$5$ adds instead of composing.",
+              "hi": "$5$ संयोजन के बजाय जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$1$ is $g(1)$ alone.",
+              "hi": "$1$ केवल $g(1)$ है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.composition-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = 2x$ and $g(x) = x + 3$, then $(g \\circ f)(x)$ is",
+        "hi": "यदि $f(x) = 2x$ और $g(x) = x + 3$, तो $(g \\circ f)(x)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2x + 3$",
+            "hi": "$2x + 3$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2x + 6$",
+            "hi": "$2x + 6$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2x^2 + 6x$",
+            "hi": "$2x^2 + 6x$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$3x + 3$",
+            "hi": "$3x + 3$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Replace x in g by 2x.",
+          "hi": "g में x की जगह 2x रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Put f(x) into g.",
+          "hi": "f(x) को g में रखिए।"
+        },
+        "steps": [
+          {
+            "en": "$g(2x) = 2x + 3$ (NCERT §1.4, Definition 8).",
+            "hi": "$g(2x) = 2x + 3$ (NCERT §1.4, Definition 8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$2x + 6$ is $(f \\circ g)(x)$.",
+              "hi": "$2x + 6$, $(f \\circ g)(x)$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That multiplies the functions.",
+              "hi": "वह फलनों का गुणा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That adds the functions.",
+              "hi": "वह फलनों का योग है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.composition-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\{1, 2, 3\\} \\to \\{4, 5, 6\\}$ has $f(1) = 5$, $f(2) = 6$, $f(3) = 4$, and $g : \\{4, 5, 6\\} \\to \\{7, 8, 9\\}$ has $g(4) = 9$, $g(5) = 7$, $g(6) = 8$. Find $(g \\circ f)(2)$.",
+        "hi": "$f : \\{1, 2, 3\\} \\to \\{4, 5, 6\\}$ में $f(1) = 5$, $f(2) = 6$, $f(3) = 4$, और $g : \\{4, 5, 6\\} \\to \\{7, 8, 9\\}$ में $g(4) = 9$, $g(5) = 7$, $g(6) = 8$। $(g \\circ f)(2)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 8,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Two lookups.",
+          "hi": "दो बार देखना।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Follow 2 through f, then through g.",
+          "hi": "2 को पहले f से, फिर g से ले जाइए।"
+        },
+        "steps": [
+          {
+            "en": "$f(2) = 6$ and $g(6) = 8$ (NCERT §1.4, Example 15).",
+            "hi": "$f(2) = 6$ और $g(6) = 8$ (NCERT §1.4, Example 15)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$7$ comes from using $g(5)$, the value for $f(1)$.",
+              "hi": "$7$, $g(5)$ लेने से आता है, जो $f(1)$ का मान है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.composition-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = x^2$ and $g(x) = \\sin x$, then $(f \\circ g)(x)$ is",
+        "hi": "यदि $f(x) = x^2$ और $g(x) = \\sin x$, तो $(f \\circ g)(x)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\sin^2 x$",
+            "hi": "$\\sin^2 x$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\sin(x^2)$",
+            "hi": "$\\sin(x^2)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$x^2 \\sin x$",
+            "hi": "$x^2 \\sin x$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2\\sin x$",
+            "hi": "$2\\sin x$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which function sits next to x?",
+          "hi": "x के पास कौन-सा फलन है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "g acts first, then f squares the result.",
+          "hi": "पहले g लगता है, फिर f परिणाम का वर्ग करता है।"
+        },
+        "steps": [
+          {
+            "en": "$f(\\sin x) = (\\sin x)^2 = \\sin^2 x$ (NCERT §1.4, Example 16).",
+            "hi": "$f(\\sin x) = (\\sin x)^2 = \\sin^2 x$ (NCERT §1.4, Example 16)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\sin(x^2)$ is $(g \\circ f)(x)$.",
+              "hi": "$\\sin(x^2)$, $(g \\circ f)(x)$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the product.",
+              "hi": "वह गुणनफल है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Squaring is not doubling.",
+              "hi": "वर्ग करना दोगुना करना नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.composition-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = 3x - 1$, find x such that $(f \\circ f)(x) = 14$.",
+        "hi": "यदि $f(x) = 3x - 1$, तो वह x ज्ञात कीजिए जिसके लिए $(f \\circ f)(x) = 14$।"
+      },
+      "answer": {
+        "value": 2,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$f(f(x))$, not $f(x)$.",
+          "hi": "$f(f(x))$, $f(x)$ नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Compose f with itself first.",
+          "hi": "पहले f का स्वयं से संयोजन कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$(f \\circ f)(x) = 3(3x - 1) - 1 = 9x - 4$; $9x - 4 = 14$ gives $x = 2$ (NCERT §1.4, Definition 8).",
+            "hi": "$(f \\circ f)(x) = 3(3x - 1) - 1 = 9x - 4$; $9x - 4 = 14$ से $x = 2$ (NCERT §1.4, Definition 8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Solving $f(x) = 14$ gives $5$, which applies f only once.",
+              "hi": "$f(x) = 14$ हल करने से $5$ मिलता है, जिसमें f केवल एक बार लगा।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.invertible-function",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A function $f : X \\to Y$ is invertible if and only if it is",
+        "hi": "फलन $f : X \\to Y$ व्युत्क्रमणीय है यदि और केवल यदि वह"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "one-one and onto",
+            "hi": "एकैकी और आच्छादक है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "one-one only",
+            "hi": "केवल एकैकी है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "onto only",
+            "hi": "केवल आच्छादक है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a constant function",
+            "hi": "अचर फलन है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Both conditions.",
+          "hi": "दोनों शर्तें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The inverse must send every y back to exactly one x.",
+          "hi": "प्रतिलोम को हर y को ठीक एक x पर वापस भेजना है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.4: f is invertible exactly when f is one-one and onto.",
+            "hi": "NCERT §1.4: f ठीक तब व्युत्क्रमणीय है जब f एकैकी और आच्छादक हो।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Some y may have no preimage.",
+              "hi": "किसी y का कोई पूर्व-प्रतिबिंब न हो, ऐसा हो सकता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Some y may have two preimages.",
+              "hi": "किसी y के दो पूर्व-प्रतिबिंब हो सकते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A constant function on more than one point is not one-one.",
+              "hi": "एक से अधिक बिंदुओं पर अचर फलन एकैकी नहीं होता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.invertible-function",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The inverse of $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 2x - 5$ is",
+        "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 2x - 5$ का प्रतिलोम है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$f^{-1}(x) = \\frac{x + 5}{2}$",
+            "hi": "$f^{-1}(x) = \\frac{x + 5}{2}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$f^{-1}(x) = \\frac{1}{2x - 5}$",
+            "hi": "$f^{-1}(x) = \\frac{1}{2x - 5}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$f^{-1}(x) = \\frac{x - 5}{2}$",
+            "hi": "$f^{-1}(x) = \\frac{x - 5}{2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$f^{-1}(x) = 2x + 5$",
+            "hi": "$f^{-1}(x) = 2x + 5$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Solve y = 2x − 5 for x.",
+          "hi": "y = 2x − 5 को x के लिए हल कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Undo the steps in reverse order: add 5, then halve.",
+          "hi": "चरणों को उलटे क्रम में उलटिए: 5 जोड़िए, फिर आधा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$y = 2x - 5$ gives $x = \\frac{y + 5}{2}$ (NCERT §1.4, Example 17).",
+            "hi": "$y = 2x - 5$ से $x = \\frac{y + 5}{2}$ (NCERT §1.4, Example 17)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the reciprocal, not the inverse.",
+              "hi": "वह व्युत्क्रम संख्या है, प्रतिलोम नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The 5 must be added back.",
+              "hi": "5 वापस जोड़ना है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Check: $f(2x + 5) = 4x + 5 \\ne x$.",
+              "hi": "जाँच: $f(2x + 5) = 4x + 5 \\ne x$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.invertible-function",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which function from $\\mathbf{R}$ to $\\mathbf{R}$ is invertible?",
+        "hi": "$\\mathbf{R}$ से $\\mathbf{R}$ तक कौन-सा फलन व्युत्क्रमणीय है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$f(x) = 4x + 1$",
+            "hi": "$f(x) = 4x + 1$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$f(x) = x^2$",
+            "hi": "$f(x) = x^2$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$f(x) = |x|$",
+            "hi": "$f(x) = |x|$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$f(x) = [x]$",
+            "hi": "$f(x) = [x]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Invertible = bijective.",
+          "hi": "व्युत्क्रमणीय = एकैकी आच्छादी।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Look for the one that is both one-one and onto.",
+          "hi": "वह खोजिए जो एकैकी और आच्छादक दोनों हो।"
+        },
+        "steps": [
+          {
+            "en": "$4x + 1$ is bijective; its inverse is $\\frac{x - 1}{4}$ (NCERT §1.4).",
+            "hi": "$4x + 1$ एकैकी आच्छादी है; इसका प्रतिलोम $\\frac{x - 1}{4}$ है (NCERT §1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$f(-1) = f(1)$.",
+              "hi": "$f(-1) = f(1)$।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$|-2| = |2|$, and negatives are never reached.",
+              "hi": "$|-2| = |2|$, और ऋण मान कभी नहीं मिलते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$[0.5] = [0.7]$, and non-integers are never reached.",
+              "hi": "$[0.5] = [0.7]$, और अपूर्णांक मान कभी नहीं मिलते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0009",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.invertible-function",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 3x + 1$, find $f^{-1}(4)$.",
+        "hi": "यदि $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 3x + 1$, तो $f^{-1}(4)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 1,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Undo, do not apply.",
+          "hi": "उलटिए, लगाइए नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$f^{-1}(4)$ is the x with $f(x) = 4$.",
+          "hi": "$f^{-1}(4)$ वह x है जिसके लिए $f(x) = 4$।"
+        },
+        "steps": [
+          {
+            "en": "$3x + 1 = 4$ gives $x = 1$ (NCERT §1.4, Definition 9).",
+            "hi": "$3x + 1 = 4$ से $x = 1$ (NCERT §1.4, Definition 9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$13 = f(4)$ goes the wrong way.",
+              "hi": "$13 = f(4)$ उलटी दिशा में है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0010",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.composition-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = x + 1$ and $g(x) = x^2$, then $(g \\circ f)(x) - (f \\circ g)(x)$ equals",
+        "hi": "यदि $f(x) = x + 1$ और $g(x) = x^2$, तो $(g \\circ f)(x) - (f \\circ g)(x)$ बराबर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2x$",
+            "hi": "$2x$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2x + 2$",
+            "hi": "$2x + 2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$x^2 + 2x$",
+            "hi": "$x^2 + 2x$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Expand $(x + 1)^2$.",
+          "hi": "$(x + 1)^2$ का विस्तार कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Write both compositions, then subtract.",
+          "hi": "दोनों संयोजन लिखिए, फिर घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$(x + 1)^2 - (x^2 + 1) = 2x$ (NCERT §1.4, Definition 8).",
+            "hi": "$(x + 1)^2 - (x^2 + 1) = 2x$ (NCERT §1.4, Definition 8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Composition is not commutative.",
+              "hi": "संयोजन क्रमविनिमेय नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The constants cancel: $1 - 1 = 0$.",
+              "hi": "अचर कट जाते हैं: $1 - 1 = 0$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$x^2$ cancels too.",
+              "hi": "$x^2$ भी कट जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.composition-inverse.0011",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.composition-inverse.core.invertible-function",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 2x + 2$, find $f^{-1}\\big(f^{-1}(30)\\big)$.",
+        "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 2x + 2$ के लिए $f^{-1}\\big(f^{-1}(30)\\big)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 6,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Two undo steps.",
+          "hi": "उलटने के दो चरण।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find $f^{-1}$, then apply it twice.",
+          "hi": "$f^{-1}$ निकालिए, फिर दो बार लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$f^{-1}(y) = \\frac{y - 2}{2}$; $f^{-1}(30) = 14$ and $f^{-1}(14) = 6$ (NCERT §1.4, Example 17).",
+            "hi": "$f^{-1}(y) = \\frac{y - 2}{2}$; $f^{-1}(30) = 14$ और $f^{-1}(14) = 6$ (NCERT §1.4, Example 17)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$14$ stops after one step.",
+              "hi": "$14$ एक चरण पर रुक जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -415,6 +415,60 @@ const planRoute = createRoute({
   ),
 });
 
+// ── Phase 2 and 3 (screens/phase2): full screen, outside the tab shell ─────
+const feynmanRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/tutor/feynman/$topicId",
+  validateSearch: (s: Record<string, unknown>): { concept?: string } => ({ concept: typeof s.concept === "string" ? s.concept : undefined }),
+  component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/phase2/feynman/Feynman")), "Feynman"),
+});
+const voiceRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/tutor/voice",
+  validateSearch: (s: Record<string, unknown>): { context?: string; from?: string } => ({
+    context: typeof s.context === "string" ? s.context : undefined,
+    from: typeof s.from === "string" && /^\/(?!\/)/.test(s.from) ? s.from : undefined,
+  }),
+  component: lazyRouteComponent(withNamespaces(["tutor_social"], () => import("./screens/phase2/voice/Voice")), "Voice"),
+});
+const palaces = withNamespaces(["memory_labs"], () => import("./screens/phase2/palace/Palaces"));
+const palaceWalk = withNamespaces(["memory_labs"], () => import("./screens/phase2/palace/Walk"));
+const palacesRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces", component: lazyRouteComponent(palaces, "Palaces") });
+const newPalaceRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/new", component: lazyRouteComponent(palaces, "NewPalace") });
+const palaceRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/memory/palaces/$palaceId",
+  validateSearch: (s: Record<string, unknown>): { spot?: string } => ({ spot: typeof s.spot === "string" ? s.spot : undefined }),
+  component: lazyRouteComponent(withNamespaces(["memory_labs"], () => import("./screens/phase2/palace/Builder")), "Builder"),
+});
+const palaceItemsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/items", component: lazyRouteComponent(palaces, "AddPalaceItems") });
+const palaceWalkRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/walk", component: lazyRouteComponent(palaceWalk, "Walk") });
+const palaceQuizRoute = createRoute({ getParentRoute: () => rootRoute, path: "/memory/palaces/$palaceId/quiz", component: lazyRouteComponent(palaceWalk, "Quiz") });
+const insightsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/memory/insights",
+  component: lazyRouteComponent(withNamespaces(["memory_labs", "practice"], () => import("./screens/phase2/insights/Insights")), "Insights"),
+});
+const mixedRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/practice/mixed",
+  component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/phase2/insights/Mixed")), "Mixed"),
+});
+const live = withNamespaces(["practice"], () => import("./screens/phase2/live/Live"));
+const liveRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId", component: lazyRouteComponent(live, "LiveRoom") });
+const liveBoardRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId/leaderboard", component: lazyRouteComponent(live, "LiveLeaderboard") });
+const parent = withNamespaces(["me_money"], () => import("./screens/phase2/parent/Parent"));
+// `/parent` itself is the guardian screens' ParentMode above; the web-app agent reconciles the two parent modes.
+const parentReportRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/parent/$learnerId/report",
+  validateSearch: (s: Record<string, unknown>): { week?: string } => ({ week: typeof s.week === "string" && /^\d{4}-\d{2}-\d{2}$/.test(s.week) ? s.week : undefined }),
+  component: lazyRouteComponent(parent, "WeekReport"),
+});
+const parentLimitsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent/$learnerId/limits", component: lazyRouteComponent(parent, "TimeLimits") });
+const parentConsentsRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent/$learnerId/consents", component: lazyRouteComponent(parent, "Consents") });
+const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute, liveRoute, liveBoardRoute, parentReportRoute, parentLimitsRoute, parentConsentsRoute] as const;
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   welcomeRoute,
@@ -443,6 +497,7 @@ const routeTree = rootRoute.addChildren([
   solutionsRoute,
   challengeRoute,
   drillRoute,
+  ...phase2Routes,
   shellRoute.addChildren([
     homeRoute,
     subjectRoute,

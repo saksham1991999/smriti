@@ -41,6 +41,7 @@ const roots: SchemaFile[] = [
   "patch.schema.json",
   "publish-history.schema.json",
   "forge-draft.schema.json",
+  "palace-template.schema.json",
 ];
 
 /**

@@ -15,6 +15,7 @@ import type {
   MediaRequestsFile,
   Mnemonic,
   MnemonicsFile,
+  PalaceTemplateFile,
   PyqPaperFile,
   Question,
   QuestionsFile,
@@ -87,6 +88,8 @@ export interface ContentSet {
   /** content/releases.json (the release gate); at most one. */
   releases: Loaded<ReleasesFile>[];
   sims: Loaded<SimManifest>[];
+  /** Memory palace templates (palace_template@1, memory-labs §5.6). */
+  palaceTemplates: Loaded<PalaceTemplateFile>[];
   /** Indexes. */
   concepts: Map<string, ConceptEntry>;
   aliases: Map<string, string>;
@@ -149,6 +152,7 @@ export function loadContentSet(root: string, findings: Findings, options: LoadOp
     seedSpecs: [],
     releases: [],
     sims: [],
+    palaceTemplates: [],
     concepts: new Map(),
     aliases: new Map(),
     topics: new Map(),
@@ -259,6 +263,9 @@ function classify(set: ContentSet, loaded: Loaded<Record<string, unknown>>, find
     case "roleplay@1":
     case "mind_map_template@1":
       set.extras.push(as<ExtrasFile>());
+      break;
+    case "palace_template@1":
+      set.palaceTemplates.push(as<PalaceTemplateFile>());
       break;
     default:
       findings.error(

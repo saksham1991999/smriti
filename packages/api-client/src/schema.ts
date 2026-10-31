@@ -2327,6 +2327,96 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/palaces": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** My palaces (MEM-12) */
+    get: operations["list_palaces_v1_palaces_get"];
+    put?: never;
+    /** Build a palace from a template (MEM-13, Pro) */
+    post: operations["create_palace_v1_palaces_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/palaces/{palace_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** One palace */
+    get: operations["get_palace_v1_palaces__palace_id__get"];
+    put?: never;
+    post?: never;
+    /** Delete a palace */
+    delete: operations["delete_palace_v1_palaces__palace_id__delete"];
+    options?: never;
+    head?: never;
+    /** Rename, or change the rooms and walk */
+    patch: operations["update_palace_v1_palaces__palace_id__patch"];
+    trace?: never;
+  };
+  "/v1/palaces/{palace_id}/items": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Add items to memorise, to the tray or along the walk (MEM-15) */
+    post: operations["add_items_v1_palaces__palace_id__items_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/palaces/{palace_id}/items/{item_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Remove an item (its review card goes too) */
+    delete: operations["remove_item_v1_palaces__palace_id__items__item_id__delete"];
+    options?: never;
+    head?: never;
+    /** Change an item's label or link note (MEM-16) */
+    patch: operations["patch_item_v1_palaces__palace_id__items__item_id__patch"];
+    trace?: never;
+  };
+  "/v1/palaces/{palace_id}/items/{item_id}/place": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** Put an item on a spot (an item already there swaps places) (MEM-14) */
+    put: operations["place_item_v1_palaces__palace_id__items__item_id__place_put"];
+    post?: never;
+    /** Take an item off its spot, back to the tray */
+    delete: operations["unplace_item_v1_palaces__palace_id__items__item_id__place_delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/pet": {
     parameters: {
       query?: never;
@@ -6001,6 +6091,36 @@ export interface components {
        */
       state: "ok" | "self" | "already_friends" | "invalid";
     };
+    /** ItemNew */
+    ItemNew: {
+      /** Item Id */
+      item_id?: string | null;
+      /**
+       * Item Ref
+       * @description What the item is: kp:<concept>#<n> (a key point), card:<id> or a card_ref (c:, d:, q:), m:<mnemonic_id> or a concept id. Never free text.
+       */
+      item_ref: string;
+      /** Label */
+      label?: string | null;
+    };
+    /** ItemPatch */
+    ItemPatch: {
+      /** Label */
+      label?: string | null;
+      /** Note */
+      note?: string | null;
+    };
+    /** ItemsAdd */
+    ItemsAdd: {
+      /**
+       * Auto Place
+       * @description Put the new items on the free spots in walk order
+       * @default false
+       */
+      auto_place: boolean;
+      /** Items */
+      items: components["schemas"]["ItemNew"][];
+    };
     /** KeyPointOut */
     KeyPointOut: {
       /** Index */
@@ -6381,6 +6501,25 @@ export interface components {
        * Format: date-time
        */
       window_start: string;
+    };
+    /** Locus */
+    Locus: {
+      /**
+       * Locus Id
+       * Format: uuid
+       */
+      locus_id: string;
+      /** Pos */
+      pos: components["schemas"]["PosXY"] | components["schemas"]["PosYawPitch"];
+      /** Sort */
+      sort: number;
+    };
+    /** LocusIn */
+    LocusIn: {
+      /** Locus Id */
+      locus_id?: string | null;
+      /** Pos */
+      pos: components["schemas"]["PosXY"] | components["schemas"]["PosYawPitch"];
     };
     /** ManagedChildOut */
     ManagedChildOut: {
@@ -7225,6 +7364,137 @@ export interface components {
       /** Pairs */
       pairs: components["schemas"]["PairIn"][];
     };
+    /** PalaceCreate */
+    PalaceCreate: {
+      /** Name */
+      name: string;
+      /**
+       * Palace Id
+       * @description Client UUIDv7, when it has one
+       */
+      palace_id?: string | null;
+      /**
+       * Rooms
+       * @description The template's rooms in walk order; empty makes one room named after the palace
+       */
+      rooms?: components["schemas"]["RoomIn"][];
+      /** Source */
+      source?: ("list" | "topic" | "deck" | "mnemonics") | null;
+      /**
+       * Template
+       * @enum {string}
+       */
+      template: "home" | "school" | "monument" | "pano360" | "custom";
+      /** Template Id */
+      template_id?: string | null;
+    };
+    /** PalaceDeletedOut */
+    PalaceDeletedOut: {
+      /**
+       * Palace Id
+       * Format: uuid
+       */
+      palace_id: string;
+      /**
+       * State Version
+       * @description Pull /v1/sync/state for the removed cards' tombstones
+       */
+      state_version: number;
+    };
+    /** PalaceItemOut */
+    PalaceItemOut: {
+      /**
+       * Card Ref
+       * @description The item's FSRS card: p:<item_id>
+       */
+      card_ref: string;
+      /**
+       * Due At
+       * @description Null until the item is first quizzed
+       */
+      due_at: string | null;
+      /**
+       * Item Id
+       * Format: uuid
+       */
+      item_id: string;
+      /**
+       * Item Ref
+       * @description What the item is: kp:<concept>#<n> (a key point), card:<id> or a card_ref (c:, d:, q:), m:<mnemonic_id> or a concept id. Never free text.
+       */
+      item_ref: string;
+      /** Label */
+      label?: string | null;
+      /** Locus Id */
+      locus_id?: string | null;
+      /** Note */
+      note?: string | null;
+    };
+    /** PalaceList */
+    PalaceList: {
+      /**
+       * Deleted
+       * @description Palaces deleted on any device: drop them unless the device has unsent edits
+       */
+      deleted: string[];
+      /**
+       * Palaces
+       * @description Newest change first
+       */
+      palaces: components["schemas"]["PalaceOut"][];
+    };
+    /** PalaceOut */
+    PalaceOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /** Items */
+      items?: components["schemas"]["PalaceItemOut"][];
+      /** Name */
+      name: string;
+      /**
+       * Next Walk At
+       * @description The earliest due item (MEM-12 'next walk'); null before the first quiz
+       */
+      next_walk_at: string | null;
+      /**
+       * Palace Id
+       * Format: uuid
+       */
+      palace_id: string;
+      /** Rooms */
+      rooms: components["schemas"]["Room"][];
+      /** Source */
+      source?: ("list" | "topic" | "deck" | "mnemonics") | null;
+      /**
+       * Template
+       * @enum {string}
+       */
+      template: "home" | "school" | "monument" | "pano360" | "custom";
+      /** Template Id */
+      template_id?: string | null;
+      /**
+       * Updated At
+       * Format: date-time
+       * @description When the device last changed it. The server keeps the newest version.
+       */
+      updated_at: string;
+    };
+    /**
+     * PalaceUpdate
+     * @description Rename, and add, rename, reorder or remove rooms (the list is the whole new walk). Items on
+     *     a removed room's spots go back to the tray.
+     */
+    PalaceUpdate: {
+      /** Name */
+      name?: string | null;
+      /** Rooms */
+      rooms?: components["schemas"]["RoomIn"][] | null;
+      /** Source */
+      source?: ("list" | "topic" | "deck" | "mnemonics") | null;
+    };
     /**
      * ParentFriend
      * @description A friend as the child sees them (B13: the parent sees and can remove friends).
@@ -7327,6 +7597,19 @@ export interface components {
       /** State */
       state: string;
     };
+    /** PlaceIn */
+    PlaceIn: {
+      /**
+       * Room Id
+       * Format: uuid
+       */
+      room_id: string;
+      /**
+       * Spot
+       * @description The spot's walk order in the room (its sort)
+       */
+      spot: number;
+    };
     /** PlantState */
     PlantState: {
       /**
@@ -7357,6 +7640,26 @@ export interface components {
       stage: "seed" | "sprout" | "sapling" | "flowering" | "tree";
       /** Study Days */
       study_days: number;
+    };
+    /**
+     * PosXY
+     * @description A spot on a picture room, as fractions of its width and height.
+     */
+    PosXY: {
+      /** X */
+      x: number;
+      /** Y */
+      y: number;
+    };
+    /**
+     * PosYawPitch
+     * @description A spot in a 360° room, in degrees.
+     */
+    PosYawPitch: {
+      /** Pitch */
+      pitch: number;
+      /** Yaw */
+      yaw: number;
     };
     /** PracticeHub */
     PracticeHub: {
@@ -8021,6 +8324,37 @@ export interface components {
       queued: number;
       /** State Version */
       state_version: number;
+    };
+    /** Room */
+    Room: {
+      /** Loci */
+      loci: components["schemas"]["Locus"][];
+      /** Name */
+      name: string;
+      /**
+       * Room Id
+       * Format: uuid
+       */
+      room_id: string;
+      /** Sort */
+      sort: number;
+      /** Template Room */
+      template_room?: string | null;
+    };
+    /**
+     * RoomIn
+     * @description A room to create or keep. Spots come from the template the client loaded (their order is
+     *     the walk order); with none, the room gets the default zig-zag of five spots.
+     */
+    RoomIn: {
+      /** Loci */
+      loci?: components["schemas"]["LocusIn"][];
+      /** Name */
+      name: string;
+      /** Room Id */
+      room_id?: string | null;
+      /** Template Room */
+      template_room?: string | null;
     };
     /** SampleCard */
     SampleCard: {
@@ -13968,6 +14302,375 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["WebPushKey"];
+        };
+      };
+    };
+  };
+  list_palaces_v1_palaces_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceList"];
+        };
+      };
+    };
+  };
+  create_palace_v1_palaces_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PalaceCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_palace_v1_palaces__palace_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  delete_palace_v1_palaces__palace_id__delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceDeletedOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  update_palace_v1_palaces__palace_id__patch: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PalaceUpdate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  add_items_v1_palaces__palace_id__items_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ItemsAdd"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  remove_item_v1_palaces__palace_id__items__item_id__delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        item_id: string;
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  patch_item_v1_palaces__palace_id__items__item_id__patch: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        item_id: string;
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ItemPatch"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  place_item_v1_palaces__palace_id__items__item_id__place_put: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        item_id: string;
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PlaceIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  unplace_item_v1_palaces__palace_id__items__item_id__place_delete: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        item_id: string;
+        palace_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PalaceOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

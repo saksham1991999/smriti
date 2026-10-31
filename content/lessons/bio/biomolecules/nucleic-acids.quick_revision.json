@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.biomolecules.nucleic-acids:quick_revision",
+  "topic": "bio.biomolecules.nucleic-acids",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+  ],
+  "cards": [
+    {
+      "id": "bio.biomolecules.nucleic-acids:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 1,
+      "sheet": "cs.bio.biomolecules.nucleic-acids"
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:qr:02",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.nucleic-acids.0003"
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:qr:03",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 3,
+      "question": "q.bio.biomolecules.nucleic-acids.0004"
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:qr:04",
+      "type": "summary",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Nucleoside: base + sugar (adenosine). Nucleotide: + phosphate (adenylic acid).",
+          "hi": "न्यूक्लिओसाइड: क्षारक + शर्करा (ऐडिनोसीन)। न्यूक्लियोटाइड: + फॉस्फेट (ऐडेनिलिक अम्ल)।"
+        },
+        {
+          "en": "A, G purines; C, U, T pyrimidines; DNA deoxyribose, RNA ribose.",
+          "hi": "A, G प्यूरीन; C, U, T पिरिमिडीन; DNA डीऑक्सीराइबोज़, RNA राइबोज़।"
+        }
+      ]
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Adenosine is a nucleotide.",
+            "hi": "ऐडिनोसीन एक न्यूक्लियोटाइड है।"
+          },
+          "correct": {
+            "en": "Adenosine is a nucleoside (no phosphate); adenylic acid is the nucleotide.",
+            "hi": "ऐडिनोसीन न्यूक्लिओसाइड है (फॉस्फेट नहीं); ऐडेनिलिक अम्ल न्यूक्लियोटाइड है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Cytosine is a purine.",
+            "hi": "साइटोसीन एक प्यूरीन है।"
+          },
+          "correct": {
+            "en": "Only adenine and guanine are purines; cytosine is a pyrimidine.",
+            "hi": "केवल ऐडेनीन और ग्वानीन प्यूरीन हैं; साइटोसीन पिरिमिडीन है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "DNA contains ribose.",
+            "hi": "DNA में राइबोज़ होता है।"
+          },
+          "correct": {
+            "en": "DNA has 2'-deoxyribose; RNA has ribose.",
+            "hi": "DNA में 2'-डीऑक्सीराइबोज़ है; RNA में राइबोज़।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

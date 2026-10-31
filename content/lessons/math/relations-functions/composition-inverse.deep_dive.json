@@ -1,0 +1,359 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions.composition-inverse:deep_dive",
+  "topic": "math.relations-functions.composition-inverse",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "math.relations-functions.composition-inverse.core.composition-functions",
+    "math.relations-functions.composition-inverse.core.invertible-function"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Composition of functions",
+        "hi": "फलनों का संयोजन"
+      },
+      "subtopic": "math.relations-functions.composition-inverse.core",
+      "card_ids": [
+        "math.relations-functions.composition-inverse:dd:01",
+        "math.relations-functions.composition-inverse:dd:02",
+        "math.relations-functions.composition-inverse:dd:03",
+        "math.relations-functions.composition-inverse:dd:04",
+        "math.relations-functions.composition-inverse:dd:05",
+        "math.relations-functions.composition-inverse:dd:06"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Invertible functions",
+        "hi": "व्युत्क्रमणीय फलन"
+      },
+      "subtopic": "math.relations-functions.composition-inverse.core",
+      "card_ids": [
+        "math.relations-functions.composition-inverse:dd:07",
+        "math.relations-functions.composition-inverse:dd:08",
+        "math.relations-functions.composition-inverse:dd:09",
+        "math.relations-functions.composition-inverse:dd:10"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions.composition-inverse:dd:01",
+      "type": "story",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions",
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Who named the function f",
+        "hi": "फलन को f नाम किसने दिया"
+      },
+      "body": {
+        "en": "The symbols f, F and φ for functions came into general use with Leonhard Euler in 1734, and Joseph Louis Lagrange wrote f(x) and F(x) in a work published in 1793. Lejeune Dirichlet later gave a definition of function that the modern set-based definition makes rigorous.",
+        "hi": "फलनों के लिए प्रतीक f, F और φ का सामान्य प्रयोग 1734 में लियोनार्ड ऑयलर से शुरू हुआ, और जोसेफ़ लुई लाग्रांज ने 1793 में प्रकाशित एक कृति में f(x) और F(x) लिखा। बाद में लेज्यून डिरिक्ले ने फलन की एक परिभाषा दी, जिसे आज की समुच्चय-आधारित परिभाषा सटीक रूप देती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Historical Note"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "One machine after another",
+        "hi": "एक मशीन के बाद दूसरी"
+      },
+      "body": {
+        "en": "Let $f : A \\to B$ and $g : B \\to C$. The composition $g \\circ f : A \\to C$ is $(g \\circ f)(x) = g(f(x))$: first apply f, then apply g to the result.\n\nOn a fruit belt, a mango is first washed and then sliced; the slicer works on what the washer hands it.\n\nOrder matters. With $f(x) = \\cos x$ and $g(x) = 3x^2$, $(g \\circ f)(x) = 3\\cos^2 x$ but $(f \\circ g)(x) = \\cos(3x^2)$. At $x = 0$ these are $3$ and $1$, so $g \\circ f \\ne f \\circ g$.",
+        "hi": "मान लीजिए $f : A \\to B$ और $g : B \\to C$। संयोजन $g \\circ f : A \\to C$ है $(g \\circ f)(x) = g(f(x))$: पहले f लगाइए, फिर परिणाम पर g लगाइए।\n\nफल की पट्टी पर आम पहले धोया जाता है और फिर काटा जाता है; काटने वाली मशीन उसी पर काम करती है जो धोने वाली मशीन उसे देती है।\n\nक्रम महत्त्वपूर्ण है। $f(x) = \\cos x$ और $g(x) = 3x^2$ के साथ $(g \\circ f)(x) = 3\\cos^2 x$, पर $(f \\circ g)(x) = \\cos(3x^2)$। $x = 0$ पर ये $3$ और $1$ हैं, अतः $g \\circ f \\ne f \\circ g$।"
+      },
+      "media": "img.relations-functions-12.conveyor",
+      "highlights": [
+        {
+          "term": {
+            "en": "composition",
+            "hi": "संयोजन"
+          },
+          "definition": {
+            "en": "$(g \\circ f)(x) = g(f(x))$.",
+            "hi": "$(g \\circ f)(x) = g(f(x))$।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4, Definition 8, Example 16"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:03",
+      "type": "formula",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Composition of functions",
+        "hi": "फलनों का संयोजन"
+      },
+      "latex": "(g \\circ f)(x) = g\\big(f(x)\\big)",
+      "symbols": [
+        {
+          "symbol": "f",
+          "meaning": {
+            "en": "the first function, from A to B",
+            "hi": "पहला फलन, A से B तक"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "g",
+          "meaning": {
+            "en": "the second function, from B to C",
+            "hi": "दूसरा फलन, B से C तक"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "x",
+          "meaning": {
+            "en": "any element of A",
+            "hi": "A का कोई भी अवयव"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "The codomain of f must be the domain of g. In general $g \\circ f \\ne f \\circ g$.",
+        "hi": "f का सहप्रांत g का प्रांत होना चाहिए। सामान्यतः $g \\circ f \\ne f \\circ g$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4, Definition 8"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Let $f(x) = x + 3$ and $g(x) = x^2$ on $\\mathbf{R}$. Find $(g \\circ f)(x)$, $(f \\circ g)(x)$ and both at $x = 1$.",
+        "hi": "मान लीजिए $f(x) = x + 3$ और $g(x) = x^2$, $\\mathbf{R}$ पर। $(g \\circ f)(x)$, $(f \\circ g)(x)$ और $x = 1$ पर दोनों ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$(g \\circ f)(x) = g(x + 3) = (x + 3)^2$.",
+          "hi": "$(g \\circ f)(x) = g(x + 3) = (x + 3)^2$।"
+        },
+        {
+          "en": "$(f \\circ g)(x) = f(x^2) = x^2 + 3$.",
+          "hi": "$(f \\circ g)(x) = f(x^2) = x^2 + 3$।"
+        },
+        {
+          "en": "At $x = 1$: $(g \\circ f)(1) = 16$ and $(f \\circ g)(1) = 4$.",
+          "hi": "$x = 1$ पर: $(g \\circ f)(1) = 16$ और $(f \\circ g)(1) = 4$।"
+        }
+      ],
+      "answer": {
+        "en": "$(g \\circ f)(1) = 16$, $(f \\circ g)(1) = 4$",
+        "hi": "$(g \\circ f)(1) = 16$, $(f \\circ g)(1) = 4$"
+      },
+      "common_trap": {
+        "en": "Applying g first in $g \\circ f$; the function written next to x acts first.",
+        "hi": "$g \\circ f$ में पहले g लगा देना; x के पास लिखा फलन पहले लगता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4, Definition 8"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:05",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.composition-inverse.0001"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:06",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$(g \\circ f)(x) = g(f(x))$: f first, then g.",
+          "hi": "$(g \\circ f)(x) = g(f(x))$: पहले f, फिर g।"
+        },
+        {
+          "en": "Composition is not commutative in general.",
+          "hi": "संयोजन सामान्यतः क्रमविनिमेय नहीं है।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Undoing a function",
+        "hi": "फलन को उलटना"
+      },
+      "body": {
+        "en": "$f : X \\to Y$ is invertible if there is a function $g : Y \\to X$ with $g \\circ f = I_X$ and $f \\circ g = I_Y$, where I is the identity function. Then g is the inverse of f, written $f^{-1}$. Like an up escalator and a down escalator, each undoes the other.\n\nA function is invertible exactly when it is one-one and onto. So to prove invertibility it is enough to show f is bijective, even without finding $f^{-1}$.\n\nTo find the inverse, solve $y = f(x)$ for x. For $f(x) = 4x + 3$, $x = \\frac{y - 3}{4}$, so $f^{-1}(y) = \\frac{y - 3}{4}$.",
+        "hi": "$f : X \\to Y$ व्युत्क्रमणीय है यदि कोई फलन $g : Y \\to X$ हो जिसके लिए $g \\circ f = I_X$ और $f \\circ g = I_Y$, जहाँ I तत्समक फलन है। तब g, f का प्रतिलोम है, जिसे $f^{-1}$ लिखते हैं। ऊपर जाने वाली और नीचे आने वाली स्वचालित सीढ़ी की तरह, हर एक दूसरी को उलट देती है।\n\nकोई फलन ठीक तब व्युत्क्रमणीय है जब वह एकैकी और आच्छादक हो। अतः व्युत्क्रमणीयता सिद्ध करने के लिए f को एकैकी आच्छादी दिखाना पर्याप्त है, $f^{-1}$ निकाले बिना भी।\n\nप्रतिलोम निकालने के लिए $y = f(x)$ को x के लिए हल कीजिए। $f(x) = 4x + 3$ के लिए $x = \\frac{y - 3}{4}$, अतः $f^{-1}(y) = \\frac{y - 3}{4}$।"
+      },
+      "media": "img.relations-functions-12.escalators",
+      "highlights": [
+        {
+          "term": {
+            "en": "invertible",
+            "hi": "व्युत्क्रमणीय"
+          },
+          "definition": {
+            "en": "Has an inverse; the same as bijective.",
+            "hi": "जिसका प्रतिलोम हो; एकैकी आच्छादी के समान।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4, Definition 9, Example 17"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Show that $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 5x - 2$ is invertible and find $f^{-1}$.",
+        "hi": "दिखाइए कि $f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 5x - 2$ व्युत्क्रमणीय है और $f^{-1}$ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Solve $y = 5x - 2$: $x = \\frac{y + 2}{5}$. Define $g(y) = \\frac{y + 2}{5}$.",
+          "hi": "$y = 5x - 2$ हल कीजिए: $x = \\frac{y + 2}{5}$। $g(y) = \\frac{y + 2}{5}$ परिभाषित कीजिए।"
+        },
+        {
+          "en": "$(g \\circ f)(x) = \\frac{(5x - 2) + 2}{5} = x$.",
+          "hi": "$(g \\circ f)(x) = \\frac{(5x - 2) + 2}{5} = x$।"
+        },
+        {
+          "en": "$(f \\circ g)(y) = 5 \\cdot \\frac{y + 2}{5} - 2 = y$. Both compositions are identities.",
+          "hi": "$(f \\circ g)(y) = 5 \\cdot \\frac{y + 2}{5} - 2 = y$। दोनों संयोजन तत्समक हैं।"
+        }
+      ],
+      "answer": {
+        "en": "$f^{-1}(y) = \\frac{y + 2}{5}$",
+        "hi": "$f^{-1}(y) = \\frac{y + 2}{5}$"
+      },
+      "common_trap": {
+        "en": "Writing $\\frac{1}{5x - 2}$: $f^{-1}$ is the inverse function, not the reciprocal.",
+        "hi": "$\\frac{1}{5x - 2}$ लिख देना: $f^{-1}$ प्रतिलोम फलन है, व्युत्क्रम संख्या नहीं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4, Example 17"
+      }
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:09",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.composition-inverse.0006"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:dd:10",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "f is invertible if and only if f is one-one and onto.",
+          "hi": "f व्युत्क्रमणीय है यदि और केवल यदि f एकैकी और आच्छादक है।"
+        },
+        {
+          "en": "$f^{-1} \\circ f = I_X$ and $f \\circ f^{-1} = I_Y$; find $f^{-1}$ by solving $y = f(x)$ for x.",
+          "hi": "$f^{-1} \\circ f = I_X$ और $f \\circ f^{-1} = I_Y$; $f^{-1}$ निकालने के लिए $y = f(x)$ को x के लिए हल कीजिए।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.4, Definition 9"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

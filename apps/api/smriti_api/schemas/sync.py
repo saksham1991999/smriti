@@ -9,6 +9,9 @@ from typing import Annotated, Any, Literal
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from smriti_api.schemas.palaces import PalaceDeleted as PalaceDeleted
+from smriti_api.schemas.palaces import PalaceDoc
+
 MAX_EVENTS_PER_BATCH = 200
 
 EVENT_TYPES = (
@@ -34,6 +37,8 @@ EVENT_TYPES = (
     "cards_queued",
     "comeback_plan_started",
     "activity_completed",
+    "palace_saved",
+    "palace_deleted",
 )
 
 SETTINGS_KEYS = (
@@ -123,6 +128,9 @@ class FsrsStateIn(_Payload):
 
 
 CARD_REF_PATTERN = r"^(c|d|q|u):[A-Za-z0-9_.:\-]{1,200}$"
+# (v1.5) A rating may also name a memory palace item, ``p:<item_id>`` (rated in a palace quiz or
+# as a "Palace spot" review card). Other card_ref lists (``cards_queued``) stay on the v1 set.
+REVIEW_CARD_REF_PATTERN = r"^(c|d|q|u|p):[A-Za-z0-9_.:\-]{1,200}$"
 
 
 def normalize_card_ref(ref: str) -> str:
@@ -131,7 +139,7 @@ def normalize_card_ref(ref: str) -> str:
 
 
 class ReviewRated(_Payload):
-    card_ref: Annotated[str, Field(pattern=CARD_REF_PATTERN)]
+    card_ref: Annotated[str, Field(pattern=REVIEW_CARD_REF_PATTERN)]
     rating: Literal[1, 2, 3, 4]
     confidence: Confidence | None = None
     ms_to_answer: Ms
@@ -140,6 +148,11 @@ class ReviewRated(_Payload):
     @field_validator("card_ref")
     @classmethod
     def _alias(cls, v: str) -> str:
+        if v.startswith("p:"):
+            try:
+                return f"p:{uuid.UUID(v[2:])}"
+            except ValueError as exc:
+                raise ValueError("a palace card is p:<item uuid>") from exc
         return normalize_card_ref(v)
 
 
@@ -303,7 +316,10 @@ class ActivityCompleted(_Payload):
     completed_at: AwareDatetime
 
 
-PAYLOAD_MODELS: dict[str, type[_Payload]] = {
+PalaceSaved = PalaceDoc
+"""(v1.5) A memory palace, whole (``schemas.palaces.PalaceDoc``); the newest ``updated_at`` wins."""
+
+PAYLOAD_MODELS: dict[str, type[BaseModel]] = {
     "lesson_started": LessonStarted,
     "lesson_card_viewed": LessonCardViewed,
     "answer_submitted": AnswerSubmitted,
@@ -326,6 +342,8 @@ PAYLOAD_MODELS: dict[str, type[_Payload]] = {
     "cards_queued": CardsQueued,
     "comeback_plan_started": ComebackPlanStarted,
     "activity_completed": ActivityCompleted,
+    "palace_saved": PalaceSaved,
+    "palace_deleted": PalaceDeleted,
 }
 
 

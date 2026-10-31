@@ -1,3 +1,4 @@
+import type { PalaceItem, PalaceSource } from '../palace/types';
 import type { SyncEventPayloads, SyncEventType } from '../sync/types';
 
 /**
@@ -120,8 +121,14 @@ export interface PalaceRow {
   template: 'home' | 'school' | 'monument' | 'pano360' | 'custom';
   pano_asset_id: string | null;
   created_at: string;
+  /** (sync v1.5) The palace document's `updated_at`: the newest edit wins. */
   updated_at: string;
   deleted_at: string | null;
+  /** (v1.5) The `palace_template@1` it was built from. */
+  template_id?: string | null;
+  source?: PalaceSource | null;
+  /** (v1.5) The items, in tray order, each on a spot (`locus_id`) or in the tray. Written by app-core `savePalaceDoc`. */
+  items?: PalaceItem[];
 }
 
 export interface PalaceRoomRow {
@@ -130,6 +137,8 @@ export interface PalaceRoomRow {
   name: string;
   sort: number;
   background_asset_id: string | null;
+  /** (v1.5) The template room slug, for its picture and alt text. */
+  template_room?: string | null;
 }
 
 export interface PalaceLocusRow {
@@ -137,7 +146,9 @@ export interface PalaceLocusRow {
   room_id: string;
   sort: number;
   pos: { x: number; y: number } | { yaw: number; pitch: number };
+  /** The placed item's `item_ref`, or '' for a free spot (v1.5: items live in `PalaceRow.items`). */
   item_ref: string;
+  /** The placed item's link note (a copy of `PalaceRow.items[].note`). */
   note: string | null;
   image_asset_id: string | null;
 }

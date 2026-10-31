@@ -2471,7 +2471,7 @@ export const CATALOGUE = {
       palace_id: { type: 'id' },
       items: { type: 'token' },
       rooms: { type: 'token' },
-      source: { type: 'enum', values: ['list', 'deck', 'mnemonics'] },
+      source: { type: 'enum', values: ['list', 'topic', 'deck', 'mnemonics'] },
     },
   },
   palace_quiz_completed: {
@@ -2484,6 +2484,24 @@ export const CATALOGUE = {
       spots: { type: 'token' },
       correct: { type: 'number' },
       order_score_pct: { type: 'number' },
+    },
+  },
+  palace_source_picked: {
+    stream: 'product',
+    essential: false,
+    areas: ['memory_labs'],
+    props: {
+      source: { type: 'enum', values: ['list', 'topic', 'deck', 'mnemonics'] },
+      items: { type: 'number' },
+    },
+  },
+  palace_template_selected: {
+    stream: 'product',
+    essential: false,
+    areas: ['memory_labs'],
+    props: {
+      template: { type: 'enum', values: ['home', 'school', 'monument', 'pano360', 'custom'] },
+      template_id: { type: 'id' },
     },
   },
   palace_walk_completed: {

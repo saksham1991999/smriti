@@ -20,6 +20,7 @@ content/
 ├─ pyq/{exam_id}/{paper_id}.json                one previous-year paper
 ├─ mnemonics/{subject_id}/{chapter_slug}.json
 ├─ extras/{subject_id}/{chapter_slug}/…         cheat sheets, revision sheets, storybooks, songs, play activities, experiments, role plays, mind maps
+├─ palace-templates/{slug}.json                 memory palace templates (§13a)
 ├─ media/requests/{subject_id}/{chapter_slug}.json   media needed by the files above
 ├─ seed-packs/{variant_id}.json                 what the app ships offline for a store variant
 ├─ releases.json                                the release gate: what each exam profile ships to production (§6.1)
@@ -41,6 +42,7 @@ Large binaries never go in git. Media goes to R2 staging, and `content/` only ho
 - Questions: `q.{topic_id}.{nnnn}`. Mnemonics: `m.{concept_id}.{n}`.
 - Media requests: `img.{chapter}.{slug}`, `anim.{…}`, `sim.{…}`, `m3d.{…}`, `pano.{…}`, `audio.{…}`. App art that is not tied to a chapter (pets, plants, empty states) uses `img.ui.{slug}`.
 - Extras: `cs.` cheat sheet, `rs.` revision sheet, `sb.` storybook, `sg.` song, `pl.` play activity, `ex.` experiment, `rp.` role play, `mm.` mind-map template, followed by the topic or chapter ID.
+- Memory palace templates: `pt.{slug}`, for example `pt.home-basic`. Palaces built from a template keep this id as `template_id`, so it never changes.
 - Syllabus lines: `{exam_profile}:{subject}:{unit}:{item}`.
 - Subject IDs map to a colour family through `subjectMap` in `packages/tokens/tokens.json`. A new subject needs an entry there.
 
@@ -435,6 +437,36 @@ Every extra has `id` (§2), `scope` (`topic` or `chapter`, with `topic` or `chap
 | `experiment@1` | `materials[]`, `steps[]`, `safety[]`, `adult_supervision`, `why_it_works`, `media` (optional) |
 | `roleplay@1` | `character`, `documented_views[]` (`view`, `source`), `persona_prompt`, `goals[]`, `guardrails[]`, `opening_line`, `suggested_replies[]` (optional) |
 | `mind_map_template@1` | `nodes[]` (`id`, `label`, optional `concept`), `edges[]` (`from`, `to`) |
+
+## 13a. Memory palace templates (`palace-templates/{slug}.json`)
+
+A template is the set of rooms a student picks in MEM-13 and then fills with items (memory-labs flow §5.6, gap G3). It holds no study content: only rooms, their pictures and the spots on them. Owner: `visual-director` for the room pictures and spot positions, with the template file written by `mnemonic-maker` (see its "Palace templates" section).
+
+```json
+{
+  "schema": "palace_template@1",
+  "id": "pt.{slug}",
+  "kind": "home",
+  "name": { "en": "…", "hi": "…" },
+  "exam_profiles": [],
+  "rooms": [
+    {
+      "id": "{room-slug}",
+      "name": { "en": "…", "hi": "…" },
+      "image": "img.palace.{room-slug}",
+      "spots": [ { "id": "{spot-slug}", "order": 0, "pos": { "x": 0.2, "y": 0.6 }, "label": { "en": "…", "hi": "…" } } ]
+    }
+  ],
+  "status": "draft", "authored_by": "…", "updated": "YYYY-MM-DD"
+}
+```
+
+- `kind`: `home`, `school`, `monument` (picture rooms) or `pano360` (360° rooms). "Mix your own rooms" (`custom`) strings rooms from these templates together, so it has no file of its own.
+- `rooms` (1–20) are in walk order. A picture room has `image`, an `image` request with preset `sunny-scene`; a 360° room has `pano`, a `pano360` request with preset `pano-360`. The request's `alt` describes the room for screen readers.
+- `spots` (5–10 per room) have `order` 0, 1, 2… with no gaps (the walk order), `pos` as `{x, y}` fractions of the picture or `{yaw, pitch}` degrees in a 360° room, and an optional `label`: what the spot is ("the door"), read aloud and shown in the walk. Images never contain text or numbers.
+- `exam_profiles` limits where the template is offered; missing or empty means every profile.
+- Room media requests go in `media/requests/palace/{slug}.json`. `content:check` checks ids, walk order, positions against the scene kind, the `sunny-scene` preset and the profile ids.
+- The app copies a template's rooms and spots into a new palace (sync contract v1.5 `palace_saved`); each room keeps its slug as `template_room`, and items are added by the student, never by the template.
 
 ## 14. Seed packs and sims
 

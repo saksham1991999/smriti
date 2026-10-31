@@ -1741,6 +1741,68 @@ export type ReleasesFile = FileMeta & {
  * via the `definition` "BundleMode".
  */
 export type BundleMode = "deep_dive" | "quick_revision" | "practice" | "story" | "song" | "play";
+/**
+ * content/palace-templates/{slug}.json: a memory palace template (memory-labs flow §5.6, gap G3). Rooms in walk order, each an Agnes sunny-scene image (or a pano-360 scene for kind pano360) with 5 to 10 spots in walk order. The app copies the rooms and spots into a new palace (palace_saved, sync v1.5); the room id travels as template_room.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "PalaceTemplateFile".
+ */
+export type PalaceTemplateFile = FileMeta & {
+  schema: "palace_template@1";
+  id: PalaceTemplateId;
+  /**
+   * The MEM-13 tile it appears under. Mix your own rooms (custom) strings rooms of these templates together, so it has no template of its own.
+   */
+  kind: "home" | "school" | "monument" | "pano360";
+  name: I18NText;
+  description?: I18NText;
+  /**
+   * Exam profiles this template is offered in (memory-labs matrix 'Templates per exam'). Missing or empty: every profile.
+   */
+  exam_profiles?: string[];
+  /**
+   * @minItems 1
+   * @maxItems 20
+   */
+  rooms: PalaceTemplateRoom[];
+};
+/**
+ * pt. then a slug. Never changes once published: palaces keep it as template_id.
+ *
+ * This interface was referenced by `undefined`'s JSON-Schema
+ * via the `definition` "PalaceTemplateId".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "PalaceTemplateId".
+ */
+export type PalaceTemplateId = string;
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema
+ * via the `definition` "PalaceTemplateRoom".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "PalaceTemplateRoom".
+ */
+export type PalaceTemplateRoom = {
+  id: Slug;
+  name: I18NText;
+  /**
+   * An image request with preset sunny-scene. Its alt text is the room's description for screen readers.
+   */
+  image?: string;
+  /**
+   * A pano360 request (pano-360 preset), for kind pano360.
+   */
+  pano?: string;
+  /**
+   * @minItems 5
+   * @maxItems 10
+   */
+  spots: PalaceTemplateSpot[];
+} & PalaceTemplateRoom1;
+export type PalaceTemplateRoom1 = {
+  [k: string]: unknown | undefined;
+};
 
 /**
  * Localised text keyed by locale, for example { "en": "...", "hi": "..." }. Which locales are required is checked per exam profile by the content check, so a new language adds keys, not schema changes.
@@ -3257,4 +3319,37 @@ export interface ForgeDraft {
   } | null;
   audio_ref?: string | null;
   origin: "ai" | "user";
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema
+ * via the `definition` "PalaceTemplateSpot".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "PalaceTemplateSpot".
+ */
+export interface PalaceTemplateSpot {
+  id: Slug;
+  /**
+   * Walk order in the room, 0-based and gapless.
+   */
+  order: number;
+  /**
+   * {x, y} fractions of the picture for an image room, {yaw, pitch} degrees for a pano room.
+   */
+  pos:
+    | {
+        x: number;
+        y: number;
+      }
+    | {
+        yaw: number;
+        pitch: number;
+      };
+  label?: I18NText1;
+}
+/**
+ * Localised text keyed by locale, for example { "en": "...", "hi": "..." }. Which locales are required is checked per exam profile by the content check, so a new language adds keys, not schema changes.
+ */
+export interface I18NText1 {
+  [k: string]: string | undefined;
 }

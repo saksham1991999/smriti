@@ -13,6 +13,7 @@ import lesson from "../schemas/lesson.schema.json";
 import manifest from "../schemas/manifest.schema.json";
 import mediaRequests from "../schemas/media-requests.schema.json";
 import mnemonics from "../schemas/mnemonics.schema.json";
+import palaceTemplate from "../schemas/palace-template.schema.json";
 import patch from "../schemas/patch.schema.json";
 import publishHistory from "../schemas/publish-history.schema.json";
 import pyqPaper from "../schemas/pyq-paper.schema.json";
@@ -51,6 +52,7 @@ export const schemaFiles = {
   "patch.schema.json": patch,
   "publish-history.schema.json": publishHistory,
   "forge-draft.schema.json": forgeDraft,
+  "palace-template.schema.json": palaceTemplate,
 } as const;
 
 export type SchemaFile = keyof typeof schemaFiles;
@@ -78,6 +80,7 @@ export const DOC_SCHEMAS = {
   "experiment@1": "extras.schema.json",
   "roleplay@1": "extras.schema.json",
   "mind_map_template@1": "extras.schema.json",
+  "palace_template@1": "palace-template.schema.json",
   "syllabus@1": "coverage-inputs.schema.json",
   "inventory@1": "coverage-inputs.schema.json",
   "coverage@1": "coverage.schema.json",

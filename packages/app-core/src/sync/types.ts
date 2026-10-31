@@ -2,6 +2,7 @@
  * Wire types of the client ↔ API sync contract (`docs/contracts/sync.md`, v1).
  * The API's Pydantic models are the source of truth; keep these in step with them.
  */
+import type { PalaceDoc } from '../palace/types';
 
 export type Locale = 'en' | 'hi';
 export type Confidence = 'sure' | 'fifty_fifty' | 'guess';
@@ -50,7 +51,7 @@ export interface SyncEventPayloads {
     xp: number;
   };
   review_rated: {
-    /** `c:<card_id>`, `d:<user_card_id>` or `q:<question_id>`. */
+    /** `c:<card_id>`, `d:<user_card_id>`, `q:<question_id>` or (v1.5) `p:<palace_item_id>`. */
     card_ref: string;
     rating: ReviewRating;
     confidence: Confidence | null;
@@ -101,6 +102,13 @@ export interface SyncEventPayloads {
     ms_total: number;
     completed_at: string;
   };
+  /**
+   * (v1.5) A memory palace, whole (see `palace/types.ts`). The server keeps the newest
+   * `updated_at`; build it with `palaceSavedPayload` and enqueue it with `enqueuePalaceSaved`.
+   */
+  palace_saved: PalaceDoc;
+  /** (v1.5) A deleted palace stays deleted. */
+  palace_deleted: { palace_id: string };
 }
 
 /** The activity kinds with a completion event (lesson-core `ActivityKind`). */
@@ -134,6 +142,8 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'cards_queued',
   'comeback_plan_started',
   'activity_completed',
+  'palace_saved',
+  'palace_deleted',
 ] as const satisfies readonly SyncEventType[];
 
 /**
@@ -141,6 +151,12 @@ export const CONTRACT_V1_EVENT_TYPES = [
  * only once `/v1/config` or the contract says v1.4 is live.
  */
 export const CONTRACT_V14_EVENT_TYPES = ['activity_completed'] as const satisfies readonly SyncEventType[];
+
+/**
+ * Events added in contract v1.5 (memory palaces). A v1.4 server rejects them as `unknown_type`, so
+ * send them only to a v1.5 server.
+ */
+export const CONTRACT_V15_EVENT_TYPES = ['palace_saved', 'palace_deleted'] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {
   event_id: string;

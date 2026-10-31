@@ -5887,6 +5887,698 @@
         }
       }
     },
+    "/v1/palaces": {
+      "get": {
+        "tags": ["palaces"],
+        "summary": "My palaces (MEM-12)",
+        "operationId": "list_palaces_v1_palaces_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceList" } }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["palaces"],
+        "summary": "Build a palace from a template (MEM-13, Pro)",
+        "operationId": "create_palace_v1_palaces_post",
+        "parameters": [
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PalaceCreate" } }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/palaces/{palace_id}": {
+      "get": {
+        "tags": ["palaces"],
+        "summary": "One palace",
+        "operationId": "get_palace_v1_palaces__palace_id__get",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["palaces"],
+        "summary": "Rename, or change the rooms and walk",
+        "operationId": "update_palace_v1_palaces__palace_id__patch",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PalaceUpdate" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["palaces"],
+        "summary": "Delete a palace",
+        "operationId": "delete_palace_v1_palaces__palace_id__delete",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceDeletedOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/palaces/{palace_id}/items": {
+      "post": {
+        "tags": ["palaces"],
+        "summary": "Add items to memorise, to the tray or along the walk (MEM-15)",
+        "operationId": "add_items_v1_palaces__palace_id__items_post",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ItemsAdd" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/palaces/{palace_id}/items/{item_id}/place": {
+      "put": {
+        "tags": ["palaces"],
+        "summary": "Put an item on a spot (an item already there swaps places) (MEM-14)",
+        "operationId": "place_item_v1_palaces__palace_id__items__item_id__place_put",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Item Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/PlaceIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["palaces"],
+        "summary": "Take an item off its spot, back to the tray",
+        "operationId": "unplace_item_v1_palaces__palace_id__items__item_id__place_delete",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Item Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/palaces/{palace_id}/items/{item_id}": {
+      "patch": {
+        "tags": ["palaces"],
+        "summary": "Change an item's label or link note (MEM-16)",
+        "operationId": "patch_item_v1_palaces__palace_id__items__item_id__patch",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Item Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ItemPatch" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["palaces"],
+        "summary": "Remove an item (its review card goes too)",
+        "operationId": "remove_item_v1_palaces__palace_id__items__item_id__delete",
+        "parameters": [
+          {
+            "name": "palace_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Palace Id" }
+          },
+          {
+            "name": "item_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Item Id" }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/PalaceOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/social/gate": {
       "get": {
         "tags": ["social"],
@@ -11200,6 +11892,64 @@
         "required": ["state"],
         "title": "InvitePreview"
       },
+      "ItemNew": {
+        "properties": {
+          "item_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Item Id"
+          },
+          "item_ref": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.:#-]{1,240}$",
+            "title": "Item Ref",
+            "description": "What the item is: kp:<concept>#<n> (a key point), card:<id> or a card_ref (c:, d:, q:), m:<mnemonic_id> or a concept id. Never free text."
+          },
+          "label": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Label"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["item_ref"],
+        "title": "ItemNew"
+      },
+      "ItemPatch": {
+        "properties": {
+          "label": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Label"
+          },
+          "note": {
+            "anyOf": [{ "type": "string", "maxLength": 300 }, { "type": "null" }],
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ItemPatch"
+      },
+      "ItemsAdd": {
+        "properties": {
+          "items": {
+            "items": { "$ref": "#/components/schemas/ItemNew" },
+            "type": "array",
+            "maxItems": 200,
+            "minItems": 1,
+            "title": "Items"
+          },
+          "auto_place": {
+            "type": "boolean",
+            "title": "Auto Place",
+            "description": "Put the new items on the free spots in walk order",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["items"],
+        "title": "ItemsAdd"
+      },
       "KeyPointOut": {
         "properties": {
           "index": { "type": "integer", "title": "Index" },
@@ -11672,6 +12422,41 @@
         ],
         "title": "LiveRoom",
         "description": "MOCK-03. Times are the server's; ``server_time`` gives the client its clock offset."
+      },
+      "Locus": {
+        "properties": {
+          "locus_id": { "type": "string", "format": "uuid", "title": "Locus Id" },
+          "sort": { "type": "integer", "exclusiveMaximum": 20, "minimum": 0, "title": "Sort" },
+          "pos": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/PosXY" },
+              { "$ref": "#/components/schemas/PosYawPitch" }
+            ],
+            "title": "Pos"
+          }
+        },
+        "type": "object",
+        "required": ["locus_id", "sort", "pos"],
+        "title": "Locus"
+      },
+      "LocusIn": {
+        "properties": {
+          "locus_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Locus Id"
+          },
+          "pos": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/PosXY" },
+              { "$ref": "#/components/schemas/PosYawPitch" }
+            ],
+            "title": "Pos"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["pos"],
+        "title": "LocusIn"
       },
       "ManagedChildOut": {
         "properties": {
@@ -12748,6 +13533,205 @@
         "required": ["kind", "pairs"],
         "title": "PairsAnswerIn"
       },
+      "PalaceCreate": {
+        "properties": {
+          "palace_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Palace Id",
+            "description": "Client UUIDv7, when it has one"
+          },
+          "name": { "type": "string", "maxLength": 80, "minLength": 1, "title": "Name" },
+          "template": {
+            "type": "string",
+            "enum": ["home", "school", "monument", "pano360", "custom"],
+            "title": "Template"
+          },
+          "template_id": {
+            "anyOf": [
+              { "type": "string", "maxLength": 120, "pattern": "^pt\\.[a-z0-9]+(-[a-z0-9]+)*$" },
+              { "type": "null" }
+            ],
+            "title": "Template Id"
+          },
+          "source": {
+            "anyOf": [
+              { "type": "string", "enum": ["list", "topic", "deck", "mnemonics"] },
+              { "type": "null" }
+            ],
+            "title": "Source"
+          },
+          "rooms": {
+            "items": { "$ref": "#/components/schemas/RoomIn" },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Rooms",
+            "description": "The template's rooms in walk order; empty makes one room named after the palace"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["name", "template"],
+        "title": "PalaceCreate"
+      },
+      "PalaceDeletedOut": {
+        "properties": {
+          "palace_id": { "type": "string", "format": "uuid", "title": "Palace Id" },
+          "state_version": {
+            "type": "integer",
+            "title": "State Version",
+            "description": "Pull /v1/sync/state for the removed cards' tombstones"
+          }
+        },
+        "type": "object",
+        "required": ["palace_id", "state_version"],
+        "title": "PalaceDeletedOut"
+      },
+      "PalaceItemOut": {
+        "properties": {
+          "item_id": { "type": "string", "format": "uuid", "title": "Item Id" },
+          "item_ref": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.:#-]{1,240}$",
+            "title": "Item Ref",
+            "description": "What the item is: kp:<concept>#<n> (a key point), card:<id> or a card_ref (c:, d:, q:), m:<mnemonic_id> or a concept id. Never free text."
+          },
+          "label": {
+            "anyOf": [{ "type": "string", "maxLength": 200, "minLength": 1 }, { "type": "null" }],
+            "title": "Label"
+          },
+          "note": {
+            "anyOf": [{ "type": "string", "maxLength": 300 }, { "type": "null" }],
+            "title": "Note"
+          },
+          "locus_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Locus Id"
+          },
+          "card_ref": {
+            "type": "string",
+            "title": "Card Ref",
+            "description": "The item's FSRS card: p:<item_id>"
+          },
+          "due_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Due At",
+            "description": "Null until the item is first quizzed"
+          }
+        },
+        "type": "object",
+        "required": ["item_id", "item_ref", "card_ref", "due_at"],
+        "title": "PalaceItemOut"
+      },
+      "PalaceList": {
+        "properties": {
+          "palaces": {
+            "items": { "$ref": "#/components/schemas/PalaceOut" },
+            "type": "array",
+            "title": "Palaces",
+            "description": "Newest change first"
+          },
+          "deleted": {
+            "items": { "type": "string", "format": "uuid" },
+            "type": "array",
+            "title": "Deleted",
+            "description": "Palaces deleted on any device: drop them unless the device has unsent edits"
+          }
+        },
+        "type": "object",
+        "required": ["palaces", "deleted"],
+        "title": "PalaceList"
+      },
+      "PalaceOut": {
+        "properties": {
+          "palace_id": { "type": "string", "format": "uuid", "title": "Palace Id" },
+          "name": { "type": "string", "maxLength": 80, "minLength": 1, "title": "Name" },
+          "template": {
+            "type": "string",
+            "enum": ["home", "school", "monument", "pano360", "custom"],
+            "title": "Template"
+          },
+          "template_id": {
+            "anyOf": [
+              { "type": "string", "maxLength": 120, "pattern": "^pt\\.[a-z0-9]+(-[a-z0-9]+)*$" },
+              { "type": "null" }
+            ],
+            "title": "Template Id"
+          },
+          "source": {
+            "anyOf": [
+              { "type": "string", "enum": ["list", "topic", "deck", "mnemonics"] },
+              { "type": "null" }
+            ],
+            "title": "Source"
+          },
+          "rooms": {
+            "items": { "$ref": "#/components/schemas/Room" },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Rooms"
+          },
+          "items": {
+            "items": { "$ref": "#/components/schemas/PalaceItemOut" },
+            "type": "array",
+            "title": "Items"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At",
+            "description": "When the device last changed it. The server keeps the newest version."
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "next_walk_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Next Walk At",
+            "description": "The earliest due item (MEM-12 'next walk'); null before the first quiz"
+          }
+        },
+        "type": "object",
+        "required": [
+          "palace_id",
+          "name",
+          "template",
+          "rooms",
+          "updated_at",
+          "created_at",
+          "next_walk_at"
+        ],
+        "title": "PalaceOut"
+      },
+      "PalaceUpdate": {
+        "properties": {
+          "name": {
+            "anyOf": [{ "type": "string", "maxLength": 80, "minLength": 1 }, { "type": "null" }],
+            "title": "Name"
+          },
+          "source": {
+            "anyOf": [
+              { "type": "string", "enum": ["list", "topic", "deck", "mnemonics"] },
+              { "type": "null" }
+            ],
+            "title": "Source"
+          },
+          "rooms": {
+            "anyOf": [
+              {
+                "items": { "$ref": "#/components/schemas/RoomIn" },
+                "type": "array",
+                "maxItems": 20,
+                "minItems": 1
+              },
+              { "type": "null" }
+            ],
+            "title": "Rooms"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "PalaceUpdate",
+        "description": "Rename, and add, rename, reorder or remove rooms (the list is the whole new walk). Items on\na removed room's spots go back to the tray."
+      },
       "ParentFriend": {
         "properties": {
           "person": { "$ref": "#/components/schemas/Person" },
@@ -12869,6 +13853,22 @@
         "required": ["species", "name", "mood", "energy", "state"],
         "title": "PetState"
       },
+      "PlaceIn": {
+        "properties": {
+          "room_id": { "type": "string", "format": "uuid", "title": "Room Id" },
+          "spot": {
+            "type": "integer",
+            "exclusiveMaximum": 20,
+            "minimum": 0,
+            "title": "Spot",
+            "description": "The spot's walk order in the room (its sort)"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["room_id", "spot"],
+        "title": "PlaceIn"
+      },
       "PlantState": {
         "properties": {
           "stage": {
@@ -12900,6 +13900,26 @@
         "type": "object",
         "required": ["stage", "health", "study_days", "next_stage_at"],
         "title": "PlantState"
+      },
+      "PosXY": {
+        "properties": {
+          "x": { "type": "number", "maximum": 1, "minimum": 0, "title": "X" },
+          "y": { "type": "number", "maximum": 1, "minimum": 0, "title": "Y" }
+        },
+        "type": "object",
+        "required": ["x", "y"],
+        "title": "PosXY",
+        "description": "A spot on a picture room, as fractions of its width and height."
+      },
+      "PosYawPitch": {
+        "properties": {
+          "yaw": { "type": "number", "maximum": 180, "minimum": -180, "title": "Yaw" },
+          "pitch": { "type": "number", "maximum": 90, "minimum": -90, "title": "Pitch" }
+        },
+        "type": "object",
+        "required": ["yaw", "pitch"],
+        "title": "PosYawPitch",
+        "description": "A spot in a 360° room, in degrees."
       },
       "PracticeHub": {
         "properties": {
@@ -13824,6 +14844,57 @@
         "type": "object",
         "required": ["queued", "card_refs", "state_version"],
         "title": "ReviewQueueResponse"
+      },
+      "Room": {
+        "properties": {
+          "room_id": { "type": "string", "format": "uuid", "title": "Room Id" },
+          "name": { "type": "string", "maxLength": 80, "minLength": 1, "title": "Name" },
+          "sort": { "type": "integer", "exclusiveMaximum": 20, "minimum": 0, "title": "Sort" },
+          "template_room": {
+            "anyOf": [
+              { "type": "string", "maxLength": 80, "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+              { "type": "null" }
+            ],
+            "title": "Template Room"
+          },
+          "loci": {
+            "items": { "$ref": "#/components/schemas/Locus" },
+            "type": "array",
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Loci"
+          }
+        },
+        "type": "object",
+        "required": ["room_id", "name", "sort", "loci"],
+        "title": "Room"
+      },
+      "RoomIn": {
+        "properties": {
+          "room_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Room Id"
+          },
+          "name": { "type": "string", "maxLength": 80, "minLength": 1, "title": "Name" },
+          "template_room": {
+            "anyOf": [
+              { "type": "string", "maxLength": 80, "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+              { "type": "null" }
+            ],
+            "title": "Template Room"
+          },
+          "loci": {
+            "items": { "$ref": "#/components/schemas/LocusIn" },
+            "type": "array",
+            "maxItems": 20,
+            "title": "Loci"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["name"],
+        "title": "RoomIn",
+        "description": "A room to create or keep. Spots come from the template the client loaded (their order is\nthe walk order); with none, the room gets the default zig-zag of five spots."
       },
       "SampleCard": {
         "properties": {

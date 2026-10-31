@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/palace-template.schema.json",
+  "title": "PalaceTemplateFile",
+  "description": "content/palace-templates/{slug}.json: a memory palace template (memory-labs flow §5.6, gap G3). Rooms in walk order, each an Agnes sunny-scene image (or a pano-360 scene for kind pano360) with 5 to 10 spots in walk order. The app copies the rooms and spots into a new palace (palace_saved, sync v1.5); the room id travels as template_room.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "id", "kind", "name", "rooms"],
+  "properties": {
+    "schema": { "const": "palace_template@1" },
+    "id": { "$ref": "#/$defs/PalaceTemplateId" },
+    "kind": {
+      "description": "The MEM-13 tile it appears under. Mix your own rooms (custom) strings rooms of these templates together, so it has no template of its own.",
+      "type": "string",
+      "enum": ["home", "school", "monument", "pano360"]
+    },
+    "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+    "description": { "$ref": "common.schema.json#/$defs/I18nText" },
+    "exam_profiles": {
+      "description": "Exam profiles this template is offered in (memory-labs matrix 'Templates per exam'). Missing or empty: every profile.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9_-]+$" }
+    },
+    "rooms": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": { "$ref": "#/$defs/PalaceTemplateRoom" }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "PalaceTemplateId": {
+      "description": "pt. then a slug. Never changes once published: palaces keep it as template_id.",
+      "type": "string",
+      "pattern": "^pt\\.[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 120
+    },
+    "PalaceTemplateRoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "spots"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/Slug" },
+        "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "image": {
+          "description": "An image request with preset sunny-scene. Its alt text is the room's description for screen readers.",
+          "$ref": "common.schema.json#/$defs/ImageRef"
+        },
+        "pano": {
+          "description": "A pano360 request (pano-360 preset), for kind pano360.",
+          "$ref": "common.schema.json#/$defs/PanoRef"
+        },
+        "spots": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 10,
+          "items": { "$ref": "#/$defs/PalaceTemplateSpot" }
+        }
+      },
+      "oneOf": [{ "required": ["image"] }, { "required": ["pano"] }]
+    },
+    "PalaceTemplateSpot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "order", "pos"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/Slug" },
+        "order": {
+          "description": "Walk order in the room, 0-based and gapless.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9
+        },
+        "pos": {
+          "description": "{x, y} fractions of the picture for an image room, {yaw, pitch} degrees for a pano room.",
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["x", "y"],
+              "properties": {
+                "x": { "type": "number", "minimum": 0, "maximum": 1 },
+                "y": { "type": "number", "minimum": 0, "maximum": 1 }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["yaw", "pitch"],
+              "properties": {
+                "yaw": { "type": "number", "minimum": -180, "maximum": 180 },
+                "pitch": { "type": "number", "minimum": -90, "maximum": 90 }
+              }
+            }
+          ]
+        },
+        "label": {
+          "description": "What the spot is in the picture (the door, the clock), read by screen readers and shown in the walk. No text is ever drawn into the image.",
+          "$ref": "common.schema.json#/$defs/I18nText"
+        }
+      }
+    }
+  }
+}

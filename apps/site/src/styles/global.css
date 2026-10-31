@@ -178,6 +178,11 @@ figure {
 }
 .section {
   padding-block: 48px;
+  /* Sections off screen skip style and layout until they come near the viewport, which keeps the
+     long Hindi pages' main thread free for the first paint (TRD §15). The browser remembers each
+     section's real size once laid out, so scrolling does not shift. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
 }
 @media (min-width: 1024px) {
   .section {

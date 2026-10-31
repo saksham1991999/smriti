@@ -6,7 +6,7 @@
   "scripts": {
     "prepare-assets": "node scripts/prepare-assets.mjs",
     "dev": "node scripts/prepare-assets.mjs && astro dev",
-    "build": "node scripts/prepare-assets.mjs && astro build",
+    "build": "node scripts/prepare-assets.mjs && astro build && node scripts/subset-fonts.mjs dist",
     "build:unreleased": "node scripts/build-unreleased.mjs",
     "preview": "node scripts/serve-dist.mjs 4321 dist",
     "typecheck": "astro check && tsc --noEmit -p .",
@@ -35,7 +35,9 @@
     "@types/node": "22.20.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "harfbuzzjs": "1.6.3",
     "sharp": "0.35.5",
+    "subset-font": "2.9.0",
     "typescript": "5.6.3",
     "vitest": "5.0.4"
   }

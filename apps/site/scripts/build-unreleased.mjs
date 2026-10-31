@@ -27,3 +27,4 @@ const run = (cmd, args) => {
 };
 run(process.execPath, ["scripts/prepare-assets.mjs"]);
 run(process.execPath, ["node_modules/astro/bin/astro.mjs", "build", "--outDir", "dist-unreleased"]);
+run(process.execPath, ["scripts/subset-fonts.mjs", "dist-unreleased"]);

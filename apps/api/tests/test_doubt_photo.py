@@ -184,3 +184,79 @@ async def test_quota_and_retention(
     assert not storage(services).path("uploads", key).exists()
     r = await client.get(f"/v1/ai/doubt-photos/{photo['id']}", headers=s.headers)
     assert r.status_code == 404
+
+
+async def _read_photo(services: AppServices, s: Session, exam: str, question: str | None) -> str:
+    photo_id = str(uuid.uuid4())
+    async with services.db.admin_tx() as session:
+        await session.execute(
+            text(
+                "insert into ai.doubt_photos (id, user_id, mime, bytes, status, reason,"
+                " question_text, exam_profile_id) values (:id, :u, 'image/jpeg', 10,"
+                " :st, :r, :q, :e)"
+            ),
+            {
+                "id": photo_id,
+                "u": s.user_id,
+                "st": "read" if question else "unreadable",
+                "r": None if question else "blurry",
+                "q": question,
+                "e": exam,
+            },
+        )
+    return photo_id
+
+
+async def test_similar_questions_come_from_the_matched_concepts(
+    client: httpx.AsyncClient, services: AppServices, content: str
+) -> None:
+    s = await adult_pro(client, services, content)
+    async with services.db.admin_tx() as session:
+        concept = (
+            await session.execute(
+                text(
+                    "select c.id, c.name ->> 'en' as name from content.concepts c"
+                    " join content.exam_concepts ec on ec.concept_id = c.id"
+                    " where ec.exam_profile_id = :e and exists (select 1 from"
+                    " content.question_concepts qc where qc.concept_id = c.id)"
+                    " order by c.id limit 1"
+                ),
+                {"e": content},
+            )
+        ).one()
+    photo_id = await _read_photo(services, s, content, f"Explain {concept.name} here.")
+
+    r = await client.get(f"/v1/ai/doubt-photos/{photo_id}/similar?count=5", headers=s.headers)
+    assert r.status_code == 200, r.text
+    body = r.json()
+    ids = [c["id"] for c in body["concepts"]]
+    assert concept.id in ids
+    assert 1 <= len(body["question_ids"]) <= 5
+    async with services.db.admin_tx() as session:
+        linked = {
+            q
+            for (q,) in (
+                await session.execute(
+                    text(
+                        "select question_id from content.question_concepts"
+                        " where concept_id = any(:c)"
+                    ),
+                    {"c": ids},
+                )
+            ).all()
+        }
+    assert set(body["question_ids"]) <= linked
+    again = await client.get(f"/v1/ai/doubt-photos/{photo_id}/similar?count=5", headers=s.headers)
+    assert again.json()["question_ids"] == body["question_ids"]
+
+    nothing = await _read_photo(services, s, content, "Zzqx wvyk plorth.")
+    r = await client.get(f"/v1/ai/doubt-photos/{nothing}/similar", headers=s.headers)
+    assert r.json()["concepts"] == [] and r.json()["question_ids"] == []
+
+    blurry = await _read_photo(services, s, content, None)
+    r = await client.get(f"/v1/ai/doubt-photos/{blurry}/similar", headers=s.headers)
+    assert r.status_code == 409 and r.json()["code"] == "photo_not_read"
+
+    other = await adult_pro(client, services, content)
+    r = await client.get(f"/v1/ai/doubt-photos/{photo_id}/similar", headers=other.headers)
+    assert r.status_code == 404

@@ -122,6 +122,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/ai/doubt-photos/{photo_id}/similar": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** AI-19: the concepts the question matches and similar published questions */
+    get: operations["similar_to_doubt_photo_v1_ai_doubt_photos__photo_id__similar_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/ai/doubt-photos/{photo_id}/solve": {
     parameters: {
       query?: never;
@@ -5244,6 +5261,23 @@ export interface components {
       subject?: string | null;
     };
     /**
+     * DoubtSimilarOut
+     * @description AI-19 "Concepts used" and "Similar questions": published questions on the concepts the
+     *     confirmed question matches, as a PRC-03 fixed set (``question_ids``). Empty lists when
+     *     nothing in the course matches; the app hides the button then.
+     */
+    DoubtSimilarOut: {
+      /** Concepts */
+      concepts: components["schemas"]["SimilarConcept"][];
+      /**
+       * Photo Id
+       * Format: uuid
+       */
+      photo_id: string;
+      /** Question Ids */
+      question_ids: string[];
+    };
+    /**
      * DoubtSolve
      * @description AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is
      *     the student's message (the confirmed question or a chip); ``question_text`` saves an edit
@@ -8569,6 +8603,17 @@ export interface components {
       /** Items */
       items: components["schemas"]["ShopItemOut"][];
     };
+    /** SimilarConcept */
+    SimilarConcept: {
+      /** Id */
+      id: string;
+      /** Name */
+      name: {
+        [key: string]: string;
+      };
+      /** Topic Id */
+      topic_id: string;
+    };
     /** SleepCard */
     SleepCard: {
       /** Card Ref */
@@ -9262,7 +9307,7 @@ export interface components {
        * Name
        * @enum {string}
        */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery" | "make_flashcard";
     };
     /** ToolCallOut */
     ToolCallOut: {
@@ -9272,7 +9317,7 @@ export interface components {
        * Name
        * @enum {string}
        */
-      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery";
+      name: "look_up_concept" | "show_formula" | "queue_cards" | "get_mastery" | "make_flashcard";
       /**
        * Result
        * @description Send back to Gemini Live as the function response
@@ -9994,6 +10039,39 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["DoubtPhotoOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  similar_to_doubt_photo_v1_ai_doubt_photos__photo_id__similar_get: {
+    parameters: {
+      query?: {
+        count?: number;
+      };
+      header?: never;
+      path: {
+        photo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DoubtSimilarOut"];
         };
       };
       /** @description Validation Error */

@@ -54,8 +54,8 @@ VOICE_RULES = """You are speaking, not writing. Keep each turn to two or three s
 then check the student is with you. If they talk while you are speaking, stop and listen.
 Never read long equations aloud: call show_formula with the concept id so the formula appears on \
 the board, then explain it in words. Use look_up_concept before stating a fact you are unsure of, \
-get_mastery to pitch the explanation, and queue_cards when the student asks to review a concept \
-later. Say goodbye briefly when told the time is up."""
+get_mastery to pitch the explanation, queue_cards when the student asks to review a concept \
+later, and make_flashcard when they ask to save something as a flashcard. Say goodbye briefly when told the time is up."""
 
 TOOLS: tuple[ToolSpec, ...] = (
     ToolSpec(
@@ -86,6 +86,23 @@ TOOLS: tuple[ToolSpec, ...] = (
             "type": "object",
             "properties": {"concept_ids": {"type": "array", "items": {"type": "string"}}},
             "required": ["concept_ids"],
+        },
+    ),
+    ToolSpec(
+        "make_flashcard",
+        'Save a flashcard to the student\'s "From the tutor" deck (AI-04): the front is the '
+        "question as the student asked it, the back a short answer.",
+        {
+            "type": "object",
+            "properties": {
+                "front": {"type": "string"},
+                "back": {"type": "string"},
+                "concept_id": {
+                    "type": "string",
+                    "description": "The concept it is about, if known",
+                },
+            },
+            "required": ["front", "back"],
         },
     ),
     ToolSpec(
@@ -449,6 +466,8 @@ async def _run_tool(
                     for p in passages
                 ]
             }
+    if call.name == "make_flashcard":
+        return await _flashcard(db, call, locale)
     # queue_cards: the same cards_queued event the device writes (R52), so the result matches.
     from smriti_api.services.sync import apply_batch
 
@@ -478,6 +497,39 @@ async def _run_tool(
     if result.rejected:
         return {"error": result.rejected[0].code}
     return {"queued": len(result.srs_changed), "state_version": result.state_version}
+
+
+# Abuse guards on the model's card text, not product numbers.
+FLASHCARD_FRONT_MAX = 500
+FLASHCARD_BACK_MAX = 1000
+
+
+async def _flashcard(db: Database, call: v.ToolCallIn, locale: str) -> dict[str, Any]:
+    """AI-04 from voice: the card the device saves to "From the tutor" through its outbox (decks
+    live on the device), with the toast and [Edit]. The model's text is screened like any tutor
+    output and personal data is removed. Nothing is stored here."""
+    front, back = (str(call.args.get(k) or "").strip() for k in ("front", "back"))
+    if not front or not back:
+        return {"error": "front_and_back_required"}
+    front, _ = tutor_safety.redact(front[:FLASHCARD_FRONT_MAX])
+    back, _ = tutor_safety.redact(back[:FLASHCARD_BACK_MAX])
+    if any(tutor_safety.screen(x).category is not None for x in (front, back)):
+        return {"error": "not_allowed"}
+    concept = call.args.get("concept_id")
+    concept_id: str | None = None
+    if isinstance(concept, str) and concept:
+        async with db.system_tx() as session:
+            view = await _concept_view(session, concept[:200], locale)
+        concept_id = view["id"] if view else None
+    return {
+        "flashcard": {
+            "deck": "from_tutor",
+            "front": front,
+            "back": back,
+            "concept_id": concept_id,
+            "source": "voice",
+        }
+    }
 
 
 async def relay_tool(

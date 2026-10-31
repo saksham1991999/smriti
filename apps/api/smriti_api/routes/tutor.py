@@ -248,6 +248,20 @@ async def get_doubt_photo(
     return await doubt_photo.get(services.db, auth, photo_id)
 
 
+@router.get(
+    "/ai/doubt-photos/{photo_id}/similar",
+    response_model=t.DoubtSimilarOut,
+    summary="AI-19: the concepts the question matches and similar published questions",
+)
+async def similar_to_doubt_photo(
+    photo_id: PhotoId,
+    services: Services,
+    auth: CurrentUser,
+    count: Annotated[int, Query(ge=1, le=30)] = 10,
+) -> t.DoubtSimilarOut:
+    return await doubt_photo.similar(services.db, auth, photo_id, count)
+
+
 @router.post(
     "/ai/doubt-photos/{photo_id}/solve",
     response_class=StreamingResponse,

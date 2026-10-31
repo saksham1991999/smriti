@@ -3473,6 +3473,49 @@
         }
       }
     },
+    "/v1/ai/doubt-photos/{photo_id}/similar": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "AI-19: the concepts the question matches and similar published questions",
+        "operationId": "similar_to_doubt_photo_v1_ai_doubt_photos__photo_id__similar_get",
+        "parameters": [
+          {
+            "name": "photo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Photo Id" }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 30,
+              "minimum": 1,
+              "default": 10,
+              "title": "Count"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DoubtSimilarOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/ai/doubt-photos/{photo_id}/solve": {
       "post": {
         "tags": ["tutor"],
@@ -10689,6 +10732,25 @@
         "title": "DoubtPhotoOut",
         "description": "AI-18: what the vision model read from the photo, for the student to check or edit.\n``reason`` says why nothing usable was read (the app shows Retake)."
       },
+      "DoubtSimilarOut": {
+        "properties": {
+          "photo_id": { "type": "string", "format": "uuid", "title": "Photo Id" },
+          "concepts": {
+            "items": { "$ref": "#/components/schemas/SimilarConcept" },
+            "type": "array",
+            "title": "Concepts"
+          },
+          "question_ids": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Question Ids"
+          }
+        },
+        "type": "object",
+        "required": ["photo_id", "concepts", "question_ids"],
+        "title": "DoubtSimilarOut",
+        "description": "AI-19 \"Concepts used\" and \"Similar questions\": published questions on the concepts the\nconfirmed question matches, as a PRC-03 fixed set (``question_ids``). Empty lists when\nnothing in the course matches; the app hides the button then."
+      },
       "DoubtSolve": {
         "properties": {
           "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
@@ -14873,6 +14935,20 @@
         "required": ["gems", "items"],
         "title": "ShopResponse"
       },
+      "SimilarConcept": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          },
+          "topic_id": { "type": "string", "title": "Topic Id" }
+        },
+        "type": "object",
+        "required": ["id", "name", "topic_id"],
+        "title": "SimilarConcept"
+      },
       "SleepCard": {
         "properties": {
           "card_ref": { "type": "string", "title": "Card Ref" },
@@ -15614,7 +15690,13 @@
           "call_id": { "type": "string", "maxLength": 128, "minLength": 1, "title": "Call Id" },
           "name": {
             "type": "string",
-            "enum": ["look_up_concept", "show_formula", "queue_cards", "get_mastery"],
+            "enum": [
+              "look_up_concept",
+              "show_formula",
+              "queue_cards",
+              "get_mastery",
+              "make_flashcard"
+            ],
             "title": "Name"
           },
           "args": { "additionalProperties": true, "type": "object", "title": "Args" }
@@ -15628,7 +15710,13 @@
           "call_id": { "type": "string", "title": "Call Id" },
           "name": {
             "type": "string",
-            "enum": ["look_up_concept", "show_formula", "queue_cards", "get_mastery"],
+            "enum": [
+              "look_up_concept",
+              "show_formula",
+              "queue_cards",
+              "get_mastery",
+              "make_flashcard"
+            ],
             "title": "Name"
           },
           "result": {

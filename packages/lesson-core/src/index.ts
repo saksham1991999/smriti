@@ -53,10 +53,16 @@ export {
   reduceStory,
   roundMoves,
   STORY_AUTO_ADVANCE_MS,
+  TRACE_BRUSH,
+  traceCoverage,
 } from "./little.js";
 export type {
   ActivityCompletion,
   ActivityKind,
+  AudioEvent,
+  AudioPort,
+  GlyphMask,
+  TracePoint,
   PlayAction,
   PlayMove,
   PlayPlan,

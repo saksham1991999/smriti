@@ -5,7 +5,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Manifest, TypedBundle } from "@smriti/content-schema";
+import type { ActivityBundle, Manifest, TypedBundle } from "@smriti/content-schema";
 import { lessonConfig, planLesson, type LessonPlan, type XpConfig } from "@smriti/lesson-core";
 import { createI18n } from "@smriti/i18n";
 
@@ -23,6 +23,20 @@ export function bundle(topic: string, mode: "deep_dive" | "quick_revision" | "pr
   const entry = manifest(locale).topics[`fx.chapter-a.${topic}`]?.bundles[mode];
   if (!entry) throw new Error(`no ${mode} bundle for ${topic}`);
   return { bundle: JSON.parse(readFileSync(join(OUT, entry.path), "utf8")) as TypedBundle, hash: entry.hash };
+}
+
+/** A little learner activity bundle (story, song or play) from the manifest. */
+export function activityBundle(topic: string, mode: "story" | "song" | "play", locale: "en" | "hi" = "en"): { bundle: ActivityBundle; hash: string } {
+  const entry = manifest(locale).topics[`fx.chapter-a.${topic}`]?.bundles[mode];
+  if (!entry) throw new Error(`no ${mode} bundle for ${topic}`);
+  return { bundle: JSON.parse(readFileSync(join(OUT, entry.path), "utf8")) as ActivityBundle, hash: entry.hash };
+}
+
+/** Marks a bundle media ref ready at a test url (the fixture media is never approved). */
+export function readyMedia(b: ActivityBundle, ref: string, url = `assets/${ref}.bin`): void {
+  const m = b.media[ref];
+  if (!m) throw new Error(`no media ${ref}`);
+  b.media[ref] = { ...m, status: "ready", url };
 }
 
 /** The proposed `xp.*` flag defaults from @smriti/config (learn §7, R51). */

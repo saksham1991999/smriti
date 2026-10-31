@@ -88,6 +88,16 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "rad/s", "m/s")).toBeUndefined();
   });
 
+  it("knows the rotational units and keeps torque apart from energy", () => {
+    expect(convertUnit(1200, "rev/min", "rad/s")).toBeCloseTo(40 * Math.PI);
+    expect(convertUnit(12.5, "rad/s²", "rad/s^2")).toBeCloseTo(12.5);
+    expect(convertUnit(5000, "g cm²", "kg m²")).toBeCloseTo(5e-4, 12);
+    expect(convertUnit(25, "kg m²/s", "J s")).toBeCloseTo(25);
+    expect(convertUnit(5, "N m", "N m")).toBeCloseTo(5);
+    expect(convertUnit(5, "N m", "J")).toBeUndefined();
+    expect(convertUnit(1, "rad/s²", "rad/s")).toBeUndefined();
+  });
+
   it("converts spring constants between N/cm and N/m", () => {
     expect(convertUnit(2.5, "N/cm", "N/m")).toBeCloseTo(250);
     expect(convertUnit(400, "N/m", "N/m")).toBeCloseTo(400);

@@ -1,0 +1,443 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.centre-of-mass:deep_dive",
+  "topic": "phy.rotational-motion.centre-of-mass",
+  "mode": "deep_dive",
+  "estimated_minutes": 9,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "The point that stands for the whole body",
+        "hi": "वह बिंदु जो पूरे पिंड का प्रतिनिधि है"
+      },
+      "subtopic": "phy.rotational-motion.centre-of-mass.core",
+      "card_ids": [
+        "phy.rotational-motion.centre-of-mass:dd:01",
+        "phy.rotational-motion.centre-of-mass:dd:02",
+        "phy.rotational-motion.centre-of-mass:dd:03",
+        "phy.rotational-motion.centre-of-mass:dd:04",
+        "phy.rotational-motion.centre-of-mass:dd:05",
+        "phy.rotational-motion.centre-of-mass:dd:06",
+        "phy.rotational-motion.centre-of-mass:dd:07",
+        "phy.rotational-motion.centre-of-mass:dd:08"
+      ],
+      "estimated_minutes": 5
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "How the centre of mass moves",
+        "hi": "द्रव्यमान केन्द्र कैसे चलता है"
+      },
+      "subtopic": "phy.rotational-motion.centre-of-mass.core",
+      "card_ids": [
+        "phy.rotational-motion.centre-of-mass:dd:09",
+        "phy.rotational-motion.centre-of-mass:dd:10",
+        "phy.rotational-motion.centre-of-mass:dd:11",
+        "phy.rotational-motion.centre-of-mass:dd:12",
+        "phy.rotational-motion.centre-of-mass:dd:13",
+        "phy.rotational-motion.centre-of-mass:dd:14"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Balanced on a pencil",
+        "hi": "पेंसिल पर संतुलित"
+      },
+      "body": {
+        "en": "Cut an odd-shaped piece of cardboard and try to balance it flat on the tip of a pencil. After a few tries you find one point where it stays level. A spread-out body behaves, in many ways, as if all its mass sat at one special point. This topic is about that point, the centre of mass.",
+        "hi": "गत्ते का एक बेढब टुकड़ा काटिए और उसे पेंसिल की नोक पर क्षैतिज संतुलित करने का प्रयास कीजिए। कुछ प्रयासों के बाद आपको एक ऐसा बिंदु मिल जाता है जहाँ वह क्षैतिज टिका रहता है। फैला हुआ पिंड कई प्रकार से ऐसा व्यवहार करता है मानो उसका पूरा द्रव्यमान एक विशेष बिंदु पर हो। यह विषय उसी बिंदु, द्रव्यमान केन्द्र, के बारे में है।"
+      },
+      "media": "img.rotational-motion.cardboard-balance"
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Two particles on a line",
+        "hi": "एक रेखा पर दो कण"
+      },
+      "body": {
+        "en": "Take two particles of masses $m_1$ and $m_2$ on the x-axis at $x_1$ and $x_2$. Their centre of mass is the point\n\n$X = \\frac{m_1x_1 + m_2x_2}{m_1 + m_2}$.\n\nThis is a mass-weighted average of the positions: the centre of mass lies on the line joining the particles, nearer the heavier one. For equal masses it is exactly midway, $X = \\frac{x_1 + x_2}{2}$.",
+        "hi": "$m_1$ और $m_2$ द्रव्यमान के दो कण x-अक्ष पर $x_1$ और $x_2$ पर लीजिए। उनका द्रव्यमान केन्द्र वह बिंदु है\n\n$X = \\frac{m_1x_1 + m_2x_2}{m_1 + m_2}$।\n\nयह स्थितियों का द्रव्यमान-भारित औसत है: द्रव्यमान केन्द्र कणों को मिलाने वाली रेखा पर, भारी कण के अधिक निकट होता है। समान द्रव्यमानों के लिए यह ठीक बीच में होता है, $X = \\frac{x_1 + x_2}{2}$।"
+      },
+      "media": "img.rotational-motion.cardboard-balance",
+      "highlights": [
+        {
+          "term": {
+            "en": "centre of mass",
+            "hi": "द्रव्यमान केन्द्र"
+          },
+          "definition": {
+            "en": "the mass-weighted average position of a system",
+            "hi": "किसी निकाय की द्रव्यमान-भारित औसत स्थिति"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.2, Eqs. 6.1-6.2"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Many particles and solid bodies",
+        "hi": "अनेक कण और ठोस पिंड"
+      },
+      "body": {
+        "en": "For n particles with position vectors $\\vec{r}_i$ and total mass $M = \\sum m_i$, the centre of mass is at\n\n$\\vec{R} = \\frac{\\sum m_i\\vec{r}_i}{M}$,\n\nwhich is three equations, one for each of X, Y and Z. For a continuous body the sum becomes an integral, $\\vec{R} = \\frac{1}{M}\\int \\vec{r}\\,dm$.\n\nFor a uniform body with a centre of symmetry, the centre of mass is at that geometric centre: the middle of a thin rod, the centre of a ring, a disc, a sphere or a cube. It need not lie inside the material: the centre of mass of a ring is at its centre, where there is no mass at all.",
+        "hi": "स्थिति सदिश $\\vec{r}_i$ और कुल द्रव्यमान $M = \\sum m_i$ वाले n कणों का द्रव्यमान केन्द्र\n\n$\\vec{R} = \\frac{\\sum m_i\\vec{r}_i}{M}$\n\nपर है, जो X, Y और Z प्रत्येक के लिए एक, तीन समीकरण हैं। सतत पिंड के लिए योग समाकलन बन जाता है, $\\vec{R} = \\frac{1}{M}\\int \\vec{r}\\,dm$।\n\nसममिति केन्द्र वाले एकसमान पिंड का द्रव्यमान केन्द्र उसी ज्यामितीय केन्द्र पर होता है: पतली छड़ का मध्य बिंदु, वलय, चकती, गोले या घन का केन्द्र। यह पदार्थ के भीतर होना आवश्यक नहीं: वलय का द्रव्यमान केन्द्र उसके केन्द्र पर है, जहाँ कोई द्रव्यमान है ही नहीं।"
+      },
+      "media": "img.rotational-motion.cardboard-balance",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.2, Eqs. 6.4a-6.6"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Centre of mass",
+        "hi": "द्रव्यमान केन्द्र"
+      },
+      "latex": "\\vec{R} = \\frac{\\sum m_i\\vec{r}_i}{M},\\quad X = \\frac{m_1x_1 + m_2x_2}{m_1 + m_2}",
+      "symbols": [
+        {
+          "symbol": "\\vec{R}",
+          "meaning": {
+            "en": "position of the centre of mass",
+            "hi": "द्रव्यमान केन्द्र की स्थिति"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "m_i",
+          "meaning": {
+            "en": "mass of the i-th particle",
+            "hi": "i-वें कण का द्रव्यमान"
+          },
+          "unit": "kg"
+        },
+        {
+          "symbol": "M",
+          "meaning": {
+            "en": "total mass",
+            "hi": "कुल द्रव्यमान"
+          },
+          "unit": "kg"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 6.2, 6.4b"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Three particles of masses 100 g, 150 g and 200 g sit at the corners of an equilateral triangle of side 0.5 m. Put the 100 g particle at the origin and the 150 g particle on the x-axis. Find the centre of mass.",
+        "hi": "100 g, 150 g और 200 g द्रव्यमान के तीन कण 0.5 m भुजा वाले समबाहु त्रिभुज के शीर्षों पर हैं। 100 g वाले कण को मूल बिंदु पर और 150 g वाले कण को x-अक्ष पर रखिए। द्रव्यमान केन्द्र ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The corners are $(0, 0)$, $(0.5, 0)$ and $(0.25, 0.25\\sqrt{3})$ m.",
+          "hi": "शीर्ष $(0, 0)$, $(0.5, 0)$ और $(0.25, 0.25\\sqrt{3})$ m पर हैं।"
+        },
+        {
+          "en": "$X = \\frac{100(0) + 150(0.5) + 200(0.25)}{450} = \\frac{125}{450} = \\frac{5}{18}$ m",
+          "hi": "$X = \\frac{100(0) + 150(0.5) + 200(0.25)}{450} = \\frac{125}{450} = \\frac{5}{18}$ m"
+        },
+        {
+          "en": "$Y = \\frac{200(0.25\\sqrt{3})}{450} = \\frac{\\sqrt{3}}{9} \\approx 0.19$ m",
+          "hi": "$Y = \\frac{200(0.25\\sqrt{3})}{450} = \\frac{\\sqrt{3}}{9} \\approx 0.19$ m"
+        }
+      ],
+      "answer": {
+        "en": "$(5/18, \\sqrt{3}/9)$ m, about (0.28, 0.19) m: not the centroid, because the masses differ",
+        "hi": "$(5/18, \\sqrt{3}/9)$ m, लगभग (0.28, 0.19) m: केन्द्रक नहीं, क्योंकि द्रव्यमान भिन्न हैं"
+      },
+      "answer_value": {
+        "value": 0.278,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.005
+        }
+      },
+      "common_trap": {
+        "en": "Taking the centroid of the triangle: that is the centre of mass only for equal masses.",
+        "hi": "त्रिभुज का केन्द्रक ले लेना: वह केवल समान द्रव्यमानों के लिए द्रव्यमान केन्द्र है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.1"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "An L-shaped flat sheet is made of three identical 1 m by 1 m squares, each of mass 1 kg: one at the corner, one to its right and one above it. Find the centre of mass.",
+        "hi": "एक L-आकार की चपटी पट्टिका 1 m गुणा 1 m के तीन सर्वसम वर्गों से बनी है, प्रत्येक का द्रव्यमान 1 kg: एक कोने पर, एक उसके दाईं ओर और एक उसके ऊपर। द्रव्यमान केन्द्र ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Replace each square by its mass at its centre: $(0.5, 0.5)$, $(1.5, 0.5)$ and $(0.5, 1.5)$ m.",
+          "hi": "प्रत्येक वर्ग को उसके केन्द्र पर रखे उसके द्रव्यमान से बदलिए: $(0.5, 0.5)$, $(1.5, 0.5)$ और $(0.5, 1.5)$ m।"
+        },
+        {
+          "en": "$X = \\frac{0.5 + 1.5 + 0.5}{3} = \\frac{5}{6}$ m and, by symmetry, $Y = \\frac{5}{6}$ m",
+          "hi": "$X = \\frac{0.5 + 1.5 + 0.5}{3} = \\frac{5}{6}$ m और सममिति से $Y = \\frac{5}{6}$ m"
+        }
+      ],
+      "answer": {
+        "en": "$(5/6, 5/6)$ m, on the line of symmetry of the L",
+        "hi": "$(5/6, 5/6)$ m, L की सममिति रेखा पर"
+      },
+      "answer_value": {
+        "value": 0.833,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.005
+        }
+      },
+      "common_trap": {
+        "en": "Expecting the centre of mass to lie on the sheet itself; here it does, but for a ring it does not.",
+        "hi": "द्रव्यमान केन्द्र को पट्टिका पर ही मान लेना; यहाँ वह है, पर वलय के लिए नहीं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.3"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.centre-of-mass.0001"
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.centre-of-mass.0002"
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Only external forces move it",
+        "hi": "इसे केवल बाह्य बल चलाते हैं"
+      },
+      "body": {
+        "en": "Differentiating $M\\vec{R} = \\sum m_i\\vec{r}_i$ gives $M\\vec{V} = \\sum m_i\\vec{v}_i = \\vec{P}$, the total momentum, and then $M\\vec{A} = \\vec{F}_{ext}$.\n\nThe internal forces come in action-reaction pairs and cancel in the sum. So the centre of mass moves as if the whole mass were concentrated there and all the external forces acted there. A shell that explodes in flight scatters its fragments, but with only gravity acting, their centre of mass keeps to the same parabola the shell was following.",
+        "hi": "$M\\vec{R} = \\sum m_i\\vec{r}_i$ का अवकलन करने पर $M\\vec{V} = \\sum m_i\\vec{v}_i = \\vec{P}$, कुल संवेग, और फिर $M\\vec{A} = \\vec{F}_{ext}$ मिलता है।\n\nआंतरिक बल क्रिया-प्रतिक्रिया युगलों में आते हैं और योग में निरस्त हो जाते हैं। अतः द्रव्यमान केन्द्र ऐसे चलता है मानो पूरा द्रव्यमान वहीं संकेंद्रित हो और सभी बाह्य बल वहीं लगते हों। उड़ान में फटने वाला गोला अपने टुकड़े बिखेर देता है, पर केवल गुरुत्व लगने पर उनका द्रव्यमान केन्द्र उसी परवलय पर चलता रहता है जिस पर गोला चल रहा था।"
+      },
+      "media": "img.rotational-motion.cardboard-balance",
+      "highlights": [
+        {
+          "term": {
+            "en": "internal forces",
+            "hi": "आंतरिक बल"
+          },
+          "definition": {
+            "en": "cancel in pairs, so they cannot move the centre of mass",
+            "hi": "युगलों में निरस्त होते हैं, इसलिए द्रव्यमान केन्द्र को नहीं चला सकते"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.3, Eqs. 6.7-6.11, Fig. 6.12"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "When the external force is zero",
+        "hi": "जब बाह्य बल शून्य हो"
+      },
+      "body": {
+        "en": "With $\\vec{P} = M\\vec{V}$, Newton's second law for a system is $\\frac{d\\vec{P}}{dt} = \\vec{F}_{ext}$. If the total external force is zero, the total momentum is constant and the centre of mass moves with constant velocity, or stays at rest.\n\nA radium nucleus at rest that decays into a radon nucleus and an alpha particle sends the two off in opposite directions, but their centre of mass stays where the radium nucleus was. In a binary star, the two stars wheel about each other while their centre of mass moves in a straight line.",
+        "hi": "$\\vec{P} = M\\vec{V}$ के साथ, निकाय के लिए न्यूटन का द्वितीय नियम $\\frac{d\\vec{P}}{dt} = \\vec{F}_{ext}$ है। यदि कुल बाह्य बल शून्य हो, तो कुल संवेग नियत रहता है और द्रव्यमान केन्द्र नियत वेग से चलता है, या विराम में रहता है।\n\nविराम में स्थित रेडियम नाभिक, रेडॉन नाभिक और ऐल्फ़ा कण में क्षयित होकर दोनों को विपरीत दिशाओं में भेजता है, पर उनका द्रव्यमान केन्द्र वहीं रहता है जहाँ रेडियम नाभिक था। युग्मक तारे में दोनों तारे एक-दूसरे के चारों ओर घूमते हैं जबकि उनका द्रव्यमान केन्द्र सरल रेखा में चलता है।"
+      },
+      "media": "img.rotational-motion.cardboard-balance",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.4, Eqs. 6.12-6.18, Figs. 6.13-6.14"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:11",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Blocks of 2 kg and 3 kg rest on a frictionless floor with a compressed spring between them. When the spring is released, the 2 kg block moves off at 3 m/s. Find the velocity of the 3 kg block and of the centre of mass.",
+        "hi": "घर्षणरहित फ़र्श पर 2 kg और 3 kg के गुटके विराम में हैं, उनके बीच एक संपीडित स्प्रिंग है। स्प्रिंग छोड़ने पर 2 kg का गुटका 3 m/s से चल पड़ता है। 3 kg गुटके का और द्रव्यमान केन्द्र का वेग ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The spring force is internal and the floor is frictionless, so $\\vec{P}$ stays zero.",
+          "hi": "स्प्रिंग बल आंतरिक है और फ़र्श घर्षणरहित है, अतः $\\vec{P}$ शून्य बना रहता है।"
+        },
+        {
+          "en": "$2(3) + 3v = 0$, so $v = -2$ m/s: 2 m/s the other way.",
+          "hi": "$2(3) + 3v = 0$, अतः $v = -2$ m/s: विपरीत दिशा में 2 m/s।"
+        },
+        {
+          "en": "$V = \\frac{P}{M} = 0$: the centre of mass stays at rest.",
+          "hi": "$V = \\frac{P}{M} = 0$: द्रव्यमान केन्द्र विराम में रहता है।"
+        }
+      ],
+      "answer": {
+        "en": "2 m/s opposite to the 2 kg block; the centre of mass does not move",
+        "hi": "2 kg गुटके के विपरीत 2 m/s; द्रव्यमान केन्द्र नहीं हिलता"
+      },
+      "answer_value": {
+        "value": 2,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Thinking the spring can move the centre of mass: it is an internal force.",
+        "hi": "यह सोचना कि स्प्रिंग द्रव्यमान केन्द्र को चला सकती है: यह आंतरिक बल है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.4, Eq. 6.18a"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.centre-of-mass.0003"
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:13",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.centre-of-mass.0004"
+    },
+    {
+      "id": "phy.rotational-motion.centre-of-mass:dd:14",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$\\vec{R} = \\sum m_i\\vec{r}_i / M$: a mass-weighted average position.",
+          "hi": "$\\vec{R} = \\sum m_i\\vec{r}_i / M$: द्रव्यमान-भारित औसत स्थिति।"
+        },
+        {
+          "en": "$M\\vec{A} = \\vec{F}_{ext}$; internal forces never move the centre of mass.",
+          "hi": "$M\\vec{A} = \\vec{F}_{ext}$; आंतरिक बल कभी द्रव्यमान केन्द्र को नहीं चलाते।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

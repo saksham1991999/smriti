@@ -1,0 +1,538 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.rotational-dynamics:deep_dive",
+  "topic": "phy.rotational-motion.rotational-dynamics",
+  "mode": "deep_dive",
+  "estimated_minutes": 11,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Equations for turning",
+        "hi": "घूर्णन के समीकरण"
+      },
+      "subtopic": "phy.rotational-motion.rotational-dynamics.core",
+      "card_ids": [
+        "phy.rotational-motion.rotational-dynamics:dd:01",
+        "phy.rotational-motion.rotational-dynamics:dd:02",
+        "phy.rotational-motion.rotational-dynamics:dd:03",
+        "phy.rotational-motion.rotational-dynamics:dd:04",
+        "phy.rotational-motion.rotational-dynamics:dd:05",
+        "phy.rotational-motion.rotational-dynamics:dd:06",
+        "phy.rotational-motion.rotational-dynamics:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Torque makes it turn faster",
+        "hi": "बल आघूर्ण घूर्णन तेज़ करता है"
+      },
+      "subtopic": "phy.rotational-motion.rotational-dynamics.core",
+      "card_ids": [
+        "phy.rotational-motion.rotational-dynamics:dd:08",
+        "phy.rotational-motion.rotational-dynamics:dd:09",
+        "phy.rotational-motion.rotational-dynamics:dd:10",
+        "phy.rotational-motion.rotational-dynamics:dd:11",
+        "phy.rotational-motion.rotational-dynamics:dd:12",
+        "phy.rotational-motion.rotational-dynamics:dd:13",
+        "phy.rotational-motion.rotational-dynamics:dd:14"
+      ],
+      "estimated_minutes": 7
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Rope off a roller",
+        "hi": "बेलन से खुलती रस्सी"
+      },
+      "body": {
+        "en": "At an old village well, the rope is wound on a wooden roller. Let the bucket drop and the roller spins faster and faster as the rope unwinds. How fast it speeds up depends on the pull of the rope, and on the roller's moment of inertia, just as a cart's acceleration depends on force and mass.",
+        "hi": "गाँव के पुराने कुएँ पर रस्सी लकड़ी के बेलन पर लिपटी होती है। बाल्टी को गिरने दीजिए, तो रस्सी खुलने के साथ बेलन तेज़ और तेज़ घूमता है। वह कितनी तेज़ी से बढ़ता है, यह रस्सी के खिंचाव पर और बेलन के जड़त्व आघूर्ण पर निर्भर करता है, ठीक वैसे ही जैसे किसी गाड़ी का त्वरण बल और द्रव्यमान पर।"
+      },
+      "media": "img.rotational-motion.well-windlass"
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Kinematics at constant angular acceleration",
+        "hi": "नियत कोणीय त्वरण पर शुद्धगतिकी"
+      },
+      "body": {
+        "en": "With a constant angular acceleration $\\alpha$, the equations mirror those for straight-line motion with constant acceleration:\n\n$\\omega = \\omega_0 + \\alpha t$\n\n$\\theta = \\theta_0 + \\omega_0t + \\frac{1}{2}\\alpha t^2$\n\n$\\omega^2 = \\omega_0^2 + 2\\alpha(\\theta - \\theta_0)$\n\nHere $\\theta_0$ and $\\omega_0$ are the angular displacement and angular velocity at $t = 0$. Work in radians: convert revolutions with $2\\pi$ rad per revolution.",
+        "hi": "नियत कोणीय त्वरण $\\alpha$ के साथ, समीकरण नियत त्वरण वाली सरल रेखीय गति के समीकरणों जैसे ही हैं:\n\n$\\omega = \\omega_0 + \\alpha t$\n\n$\\theta = \\theta_0 + \\omega_0t + \\frac{1}{2}\\alpha t^2$\n\n$\\omega^2 = \\omega_0^2 + 2\\alpha(\\theta - \\theta_0)$\n\nयहाँ $\\theta_0$ और $\\omega_0$, $t = 0$ पर कोणीय विस्थापन और कोणीय वेग हैं। रेडियन में काम कीजिए: प्रति चक्कर $2\\pi$ rad से चक्करों को बदलिए।"
+      },
+      "media": "img.rotational-motion.well-windlass",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.10, Eqs. 6.37-6.39, Example 6.10"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Torque, work and power",
+        "hi": "बल आघूर्ण, कार्य और शक्ति"
+      },
+      "body": {
+        "en": "For rotation about a fixed axis, only the components of torque along the axis matter. A torque $\\tau$ turning the body through $d\\theta$ does work $dW = \\tau\\,d\\theta$, so its power is $P = \\tau\\omega$.\n\nIn a rigid body no work is lost inside, so this power goes into kinetic energy: $\\tau\\omega = \\frac{d}{dt}\\left(\\frac{1}{2}I\\omega^2\\right) = I\\omega\\alpha$. That gives\n\n$\\tau = I\\alpha$,\n\nNewton's second law for rotation about a fixed axis. Table 6.2 pairs each linear quantity with its rotational analogue: x with $\\theta$, v with $\\omega$, a with $\\alpha$, M with I, $F = Ma$ with $\\tau = I\\alpha$, $F\\,ds$ with $\\tau\\,d\\theta$, $\\frac{1}{2}Mv^2$ with $\\frac{1}{2}I\\omega^2$, $Fv$ with $\\tau\\omega$, and $Mv$ with $I\\omega$.",
+        "hi": "स्थिर अक्ष के परितः घूर्णन में बल आघूर्ण के केवल अक्ष के अनुदिश घटक महत्त्वपूर्ण हैं। बल आघूर्ण $\\tau$ पिंड को $d\\theta$ घुमाते हुए $dW = \\tau\\,d\\theta$ कार्य करता है, अतः उसकी शक्ति $P = \\tau\\omega$ है।\n\nदृढ़ पिंड में भीतर कोई कार्य नष्ट नहीं होता, अतः यह शक्ति गतिज ऊर्जा में जाती है: $\\tau\\omega = \\frac{d}{dt}\\left(\\frac{1}{2}I\\omega^2\\right) = I\\omega\\alpha$। इससे\n\n$\\tau = I\\alpha$\n\nमिलता है, जो स्थिर अक्ष के परितः घूर्णन के लिए न्यूटन का द्वितीय नियम है। सारणी 6.2 हर रेखीय राशि को उसके घूर्णी तुल्यांक से जोड़ती है: x को $\\theta$ से, v को $\\omega$ से, a को $\\alpha$ से, M को I से, $F = Ma$ को $\\tau = I\\alpha$ से, $F\\,ds$ को $\\tau\\,d\\theta$ से, $\\frac{1}{2}Mv^2$ को $\\frac{1}{2}I\\omega^2$ से, $Fv$ को $\\tau\\omega$ से, और $Mv$ को $I\\omega$ से।"
+      },
+      "media": "img.rotational-motion.well-windlass",
+      "highlights": [
+        {
+          "term": {
+            "en": "$\\tau = I\\alpha$",
+            "hi": "$\\tau = I\\alpha$"
+          },
+          "definition": {
+            "en": "Newton's second law for fixed-axis rotation",
+            "hi": "स्थिर अक्ष घूर्णन के लिए न्यूटन का द्वितीय नियम"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.11, Eqs. 6.39-6.41, Table 6.2; §6.12, Eq. 6.43c"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Rotation about a fixed axis",
+        "hi": "स्थिर अक्ष के परितः घूर्णन"
+      },
+      "latex": "\\omega = \\omega_0 + \\alpha t,\\quad \\theta = \\omega_0t + \\frac{1}{2}\\alpha t^2,\\quad \\omega^2 = \\omega_0^2 + 2\\alpha\\theta,\\quad \\tau = I\\alpha,\\quad P = \\tau\\omega",
+      "symbols": [
+        {
+          "symbol": "\\alpha",
+          "meaning": {
+            "en": "angular acceleration, constant",
+            "hi": "कोणीय त्वरण, नियत"
+          },
+          "unit": "rad/s²"
+        },
+        {
+          "symbol": "\\theta",
+          "meaning": {
+            "en": "angle turned from the start",
+            "hi": "आरंभ से घूमा गया कोण"
+          },
+          "unit": "rad"
+        },
+        {
+          "symbol": "\\tau",
+          "meaning": {
+            "en": "torque about the axis",
+            "hi": "अक्ष के परितः बल आघूर्ण"
+          },
+          "unit": "N m"
+        },
+        {
+          "symbol": "I",
+          "meaning": {
+            "en": "moment of inertia about the axis",
+            "hi": "अक्ष के परितः जड़त्व आघूर्ण"
+          },
+          "unit": "kg m²"
+        },
+        {
+          "symbol": "P",
+          "meaning": {
+            "en": "power",
+            "hi": "शक्ति"
+          },
+          "unit": "W"
+        }
+      ],
+      "conditions": {
+        "en": "Kinematic equations need constant $\\alpha$; $\\tau = I\\alpha$ needs constant I.",
+        "hi": "शुद्धगतिकी समीकरणों के लिए नियत $\\alpha$; $\\tau = I\\alpha$ के लिए नियत I चाहिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 6.37-6.41"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "The angular speed of a motor wheel rises steadily from 1200 rpm to 3120 rpm in 16 s. Find (i) its angular acceleration and (ii) the number of revolutions it makes in that time.",
+        "hi": "किसी मोटर के पहिए की कोणीय चाल 16 s में समान रूप से 1200 rpm से 3120 rpm हो जाती है। (i) इसका कोणीय त्वरण और (ii) इस समय में इसके द्वारा किए गए चक्करों की संख्या ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\omega_0 = \\frac{2\\pi \\times 1200}{60} = 40\\pi$ rad/s; $\\omega = \\frac{2\\pi \\times 3120}{60} = 104\\pi$ rad/s",
+          "hi": "$\\omega_0 = \\frac{2\\pi \\times 1200}{60} = 40\\pi$ rad/s; $\\omega = \\frac{2\\pi \\times 3120}{60} = 104\\pi$ rad/s"
+        },
+        {
+          "en": "$\\alpha = \\frac{104\\pi - 40\\pi}{16} = 4\\pi \\approx 12.6$ rad/s²",
+          "hi": "$\\alpha = \\frac{104\\pi - 40\\pi}{16} = 4\\pi \\approx 12.6$ rad/s²"
+        },
+        {
+          "en": "$\\theta = 40\\pi(16) + \\frac{1}{2}(4\\pi)(16^2) = 640\\pi + 512\\pi = 1152\\pi$ rad",
+          "hi": "$\\theta = 40\\pi(16) + \\frac{1}{2}(4\\pi)(16^2) = 640\\pi + 512\\pi = 1152\\pi$ rad"
+        },
+        {
+          "en": "Revolutions $= \\frac{1152\\pi}{2\\pi} = 576$",
+          "hi": "चक्कर $= \\frac{1152\\pi}{2\\pi} = 576$"
+        }
+      ],
+      "answer": {
+        "en": "$4\\pi$ rad/s², about 12.6 rad/s²; 576 revolutions",
+        "hi": "$4\\pi$ rad/s², लगभग 12.6 rad/s²; 576 चक्कर"
+      },
+      "answer_value": {
+        "value": 12.57,
+        "unit": "rad/s²",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Working in rpm and seconds together without converting to rad/s.",
+        "hi": "rad/s में बदले बिना rpm और सेकंड साथ लेना।"
+      },
+      "media": "img.rotational-motion.potter-wheel",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.11"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.rotational-dynamics.0001"
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.rotational-dynamics.0002"
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A cord of negligible mass is wound round the rim of a flywheel of mass 20 kg and radius 20 cm, mounted on a frictionless horizontal axle. A steady 25 N pull is applied to the cord. Treating the flywheel as a uniform disc, find (a) its angular acceleration, (b) the work done by the pull when 2 m of cord has unwound, and (c) its kinetic energy then, starting from rest.",
+        "hi": "नगण्य द्रव्यमान की एक डोरी 20 kg द्रव्यमान और 20 cm त्रिज्या के गतिपालक पहिए के रिम पर लिपटी है, जो घर्षणरहित क्षैतिज धुरी पर लगा है। डोरी पर 25 N का नियत खिंचाव लगाया जाता है। पहिए को एकसमान चकती मानकर ज्ञात कीजिए (a) इसका कोणीय त्वरण, (b) 2 m डोरी खुलने तक खिंचाव द्वारा किया गया कार्य, और (c) तब इसकी गतिज ऊर्जा, विराम से आरंभ मानकर।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\tau = FR = 25 \\times 0.20 = 5.0$ N m; $I = \\frac{MR^2}{2} = \\frac{20 \\times 0.2^2}{2} = 0.4$ kg m²",
+          "hi": "$\\tau = FR = 25 \\times 0.20 = 5.0$ N m; $I = \\frac{MR^2}{2} = \\frac{20 \\times 0.2^2}{2} = 0.4$ kg m²"
+        },
+        {
+          "en": "(a) $\\alpha = \\frac{\\tau}{I} = \\frac{5.0}{0.4} = 12.5$ rad/s²",
+          "hi": "(a) $\\alpha = \\frac{\\tau}{I} = \\frac{5.0}{0.4} = 12.5$ rad/s²"
+        },
+        {
+          "en": "(b) $W = 25 \\times 2 = 50$ J",
+          "hi": "(b) $W = 25 \\times 2 = 50$ J"
+        },
+        {
+          "en": "(c) $\\theta = \\frac{2}{0.2} = 10$ rad; $\\omega^2 = 2 \\times 12.5 \\times 10 = 250$; $K = \\frac{1}{2} \\times 0.4 \\times 250 = 50$ J",
+          "hi": "(c) $\\theta = \\frac{2}{0.2} = 10$ rad; $\\omega^2 = 2 \\times 12.5 \\times 10 = 250$; $K = \\frac{1}{2} \\times 0.4 \\times 250 = 50$ J"
+        },
+        {
+          "en": "The work done equals the kinetic energy gained: no energy is lost to friction.",
+          "hi": "किया गया कार्य प्राप्त गतिज ऊर्जा के बराबर है: घर्षण में कोई ऊर्जा नहीं खोती।"
+        }
+      ],
+      "answer": {
+        "en": "12.5 rad/s²; 50 J; 50 J, the same as the work done",
+        "hi": "12.5 rad/s²; 50 J; 50 J, किए गए कार्य के बराबर"
+      },
+      "answer_value": {
+        "value": 12.5,
+        "unit": "rad/s²",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Using $MR^2$ for the flywheel, which halves the angular acceleration.",
+        "hi": "पहिए के लिए $MR^2$ लेना, जो कोणीय त्वरण आधा कर देता है।"
+      },
+      "media": "img.rotational-motion.well-windlass",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.12"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:09",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 4,
+      "problem": {
+        "en": "A 1 kg block hangs from a light string wound round a pulley that is a uniform disc of mass 2 kg and radius 0.1 m, free to turn on a frictionless axle. Find the block's acceleration, the tension in the string and the pulley's angular acceleration. Take $g = 10$ m/s².",
+        "hi": "1 kg का एक गुटका हलकी डोरी से लटका है जो 2 kg द्रव्यमान और 0.1 m त्रिज्या की एकसमान चकती रूपी घिरनी पर लिपटी है, जो घर्षणरहित धुरी पर घूमने के लिए स्वतंत्र है। गुटके का त्वरण, डोरी में तनाव और घिरनी का कोणीय त्वरण ज्ञात कीजिए। $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Block: $mg - T = ma$. Pulley: $TR = I\\alpha = \\frac{MR^2}{2} \\cdot \\frac{a}{R}$, so $T = \\frac{Ma}{2}$.",
+          "hi": "गुटका: $mg - T = ma$। घिरनी: $TR = I\\alpha = \\frac{MR^2}{2} \\cdot \\frac{a}{R}$, अतः $T = \\frac{Ma}{2}$।"
+        },
+        {
+          "en": "$a = \\frac{mg}{m + M/2} = \\frac{1 \\times 10}{1 + 1} = 5$ m/s²",
+          "hi": "$a = \\frac{mg}{m + M/2} = \\frac{1 \\times 10}{1 + 1} = 5$ m/s²"
+        },
+        {
+          "en": "$T = \\frac{2 \\times 5}{2} = 5$ N; $\\alpha = \\frac{a}{R} = \\frac{5}{0.1} = 50$ rad/s²",
+          "hi": "$T = \\frac{2 \\times 5}{2} = 5$ N; $\\alpha = \\frac{a}{R} = \\frac{5}{0.1} = 50$ rad/s²"
+        }
+      ],
+      "answer": {
+        "en": "5 m/s²; 5 N; 50 rad/s²",
+        "hi": "5 m/s²; 5 N; 50 rad/s²"
+      },
+      "answer_value": {
+        "value": 5,
+        "unit": "m/s²",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Taking T = mg: the block accelerates, so the tension is less than its weight.",
+        "hi": "T = mg लेना: गुटका त्वरित होता है, अतः तनाव उसके भार से कम है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.11, Eq. 6.41"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:10",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A motor delivers a steady torque of 50 N m while turning at 120 rad/s. What power does it deliver?",
+        "hi": "एक मोटर 120 rad/s से घूमते हुए 50 N m का नियत बल आघूर्ण देती है। वह कितनी शक्ति देती है?"
+      },
+      "solution_steps": [
+        {
+          "en": "$P = \\tau\\omega = 50 \\times 120 = 6000$ W",
+          "hi": "$P = \\tau\\omega = 50 \\times 120 = 6000$ W"
+        }
+      ],
+      "answer": {
+        "en": "6000 W, that is 6 kW",
+        "hi": "6000 W, अर्थात् 6 kW"
+      },
+      "answer_value": {
+        "value": 6000,
+        "unit": "W",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Multiplying torque by revolutions per minute instead of rad/s.",
+        "hi": "बल आघूर्ण को rad/s के बजाय चक्कर प्रति मिनट से गुणा करना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 6.40"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:11",
+      "type": "sim",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "sim": "sim.rotational-motion.flywheel-cord",
+      "title": {
+        "en": "Pull the cord",
+        "hi": "डोरी खींचिए"
+      },
+      "params": {
+        "mass": 20,
+        "radius": 0.2,
+        "pull": 25,
+        "ring": 0
+      },
+      "tasks": [
+        {
+          "id": "disc",
+          "prompt": {
+            "en": "Keep a 20 kg disc of radius 0.2 m and pull the cord with 25 N. Read the angular acceleration.",
+            "hi": "20 kg और 0.2 m त्रिज्या की चकती रखिए और डोरी को 25 N से खींचिए। कोणीय त्वरण पढ़िए।"
+          },
+          "measurement": "alpha",
+          "expected": {
+            "value": 12.5,
+            "unit": "rad/s²",
+            "tolerance": {
+              "abs": 0.05
+            }
+          }
+        },
+        {
+          "id": "energy",
+          "prompt": {
+            "en": "With the same settings, let 2 m of cord unwind from rest. Read the kinetic energy of the wheel.",
+            "hi": "उन्हीं मानों के साथ, विराम से 2 m डोरी खुलने दीजिए। पहिए की गतिज ऊर्जा पढ़िए।"
+          },
+          "measurement": "kinetic_energy",
+          "expected": {
+            "value": 50,
+            "unit": "J",
+            "tolerance": {
+              "abs": 0.1
+            }
+          }
+        },
+        {
+          "id": "ring",
+          "prompt": {
+            "en": "Switch the wheel to a ring of the same mass and radius and pull with 25 N again. Read the angular acceleration.",
+            "hi": "पहिए को समान द्रव्यमान और त्रिज्या के वलय में बदलिए और फिर 25 N से खींचिए। कोणीय त्वरण पढ़िए।"
+          },
+          "measurement": "alpha",
+          "expected": {
+            "value": 6.25,
+            "unit": "rad/s²",
+            "tolerance": {
+              "abs": 0.05
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "The torque is $FR = 5$ N m. A disc has $I = 0.4$ kg m², so $\\alpha = 12.5$ rad/s²; a ring of the same mass and radius has twice the moment of inertia, so half the angular acceleration. The 50 J of work done by the pull all becomes kinetic energy of rotation.",
+        "hi": "बल आघूर्ण $FR = 5$ N m है। चकती का $I = 0.4$ kg m² है, अतः $\\alpha = 12.5$ rad/s²; समान द्रव्यमान और त्रिज्या के वलय का जड़त्व आघूर्ण दुगुना है, अतः कोणीय त्वरण आधा। खिंचाव द्वारा किया गया 50 J कार्य पूरा घूर्णन की गतिज ऊर्जा बन जाता है।"
+      },
+      "fallback": {
+        "body": {
+          "en": "A 25 N pull on a cord round a 20 kg, 0.2 m disc gives a torque of 5 N m and an angular acceleration of 12.5 rad/s². After 2 m of cord unwinds, the wheel has 50 J of kinetic energy. A ring of the same mass and radius turns with half the angular acceleration, 6.25 rad/s².",
+          "hi": "20 kg, 0.2 m की चकती पर लिपटी डोरी पर 25 N का खिंचाव 5 N m बल आघूर्ण और 12.5 rad/s² कोणीय त्वरण देता है। 2 m डोरी खुलने के बाद पहिए की गतिज ऊर्जा 50 J होती है। समान द्रव्यमान और त्रिज्या का वलय आधे कोणीय त्वरण, 6.25 rad/s², से घूमता है।"
+        },
+        "media": "img.rotational-motion.well-windlass"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.rotational-dynamics.0003"
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:13",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 4,
+      "question": "q.phy.rotational-motion.rotational-dynamics.0006"
+    },
+    {
+      "id": "phy.rotational-motion.rotational-dynamics:dd:14",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "Constant $\\alpha$: $\\omega = \\omega_0 + \\alpha t$, and the rest, just like linear motion.",
+          "hi": "नियत $\\alpha$: $\\omega = \\omega_0 + \\alpha t$, और शेष, ठीक रेखीय गति की तरह।"
+        },
+        {
+          "en": "$\\tau = I\\alpha$, $W = \\int \\tau\\,d\\theta$, $P = \\tau\\omega$.",
+          "hi": "$\\tau = I\\alpha$, $W = \\int \\tau\\,d\\theta$, $P = \\tau\\omega$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

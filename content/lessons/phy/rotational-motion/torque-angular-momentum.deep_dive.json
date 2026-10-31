@@ -1,0 +1,546 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.torque-angular-momentum:deep_dive",
+  "topic": "phy.rotational-motion.torque-angular-momentum",
+  "mode": "deep_dive",
+  "estimated_minutes": 11,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.rotational-motion.torque-angular-momentum.core.torque",
+    "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "The turning effect of a force",
+        "hi": "बल का घुमाने वाला प्रभाव"
+      },
+      "subtopic": "phy.rotational-motion.torque-angular-momentum.core",
+      "card_ids": [
+        "phy.rotational-motion.torque-angular-momentum:dd:01",
+        "phy.rotational-motion.torque-angular-momentum:dd:02",
+        "phy.rotational-motion.torque-angular-momentum:dd:03",
+        "phy.rotational-motion.torque-angular-momentum:dd:04",
+        "phy.rotational-motion.torque-angular-momentum:dd:05",
+        "phy.rotational-motion.torque-angular-momentum:dd:06",
+        "phy.rotational-motion.torque-angular-momentum:dd:07"
+      ],
+      "estimated_minutes": 5
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Angular momentum and its conservation",
+        "hi": "कोणीय संवेग और उसका संरक्षण"
+      },
+      "subtopic": "phy.rotational-motion.torque-angular-momentum.core",
+      "card_ids": [
+        "phy.rotational-motion.torque-angular-momentum:dd:08",
+        "phy.rotational-motion.torque-angular-momentum:dd:09",
+        "phy.rotational-motion.torque-angular-momentum:dd:10",
+        "phy.rotational-motion.torque-angular-momentum:dd:11",
+        "phy.rotational-motion.torque-angular-momentum:dd:12",
+        "phy.rotational-motion.torque-angular-momentum:dd:13",
+        "phy.rotational-motion.torque-angular-momentum:dd:14",
+        "phy.rotational-motion.torque-angular-momentum:dd:15",
+        "phy.rotational-motion.torque-angular-momentum:dd:16"
+      ],
+      "estimated_minutes": 6
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Why handles are far from hinges",
+        "hi": "हत्थे कब्ज़ों से दूर क्यों होते हैं"
+      },
+      "body": {
+        "en": "Push a door near its hinges and it barely moves. Push the same amount at the far edge, where the handle is, and it swings open easily. What turns a body is not the force alone, but the force together with where it acts.",
+        "hi": "दरवाज़े को कब्ज़ों के पास धकेलिए, वह मुश्किल से हिलता है। उतना ही बल दूर के किनारे पर, जहाँ हत्था है, लगाइए, तो वह आसानी से खुल जाता है। पिंड को केवल बल नहीं घुमाता, बल्कि बल और उसके लगने का स्थान मिलकर घुमाते हैं।"
+      },
+      "media": "img.rotational-motion.door-push"
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Torque, the moment of a force",
+        "hi": "बल आघूर्ण"
+      },
+      "body": {
+        "en": "If a force $\\vec{F}$ acts on a particle at position $\\vec{r}$ from an origin O, its torque, or moment of force, about O is\n\n$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$, with magnitude $\\tau = rF\\sin\\theta$.\n\nThis can be read as $r_\\perp F$, where $r_\\perp = r\\sin\\theta$ is the perpendicular distance of the line of action of the force from O, or as $rF_\\perp$, using the part of the force perpendicular to $\\vec{r}$. The torque is zero if the force acts at O or along a line through O.\n\nTorque has dimensions $[ML^2T^{-2}]$ and SI unit N m. Those are the dimensions of work, but torque is a vector and is never expressed in joules.",
+        "hi": "यदि बल $\\vec{F}$ मूल बिंदु O से $\\vec{r}$ स्थिति वाले कण पर लगता है, तो O के परितः उसका बल आघूर्ण (ऐंठन) है\n\n$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$, जिसका परिमाण $\\tau = rF\\sin\\theta$ है।\n\nइसे $r_\\perp F$ के रूप में पढ़ सकते हैं, जहाँ $r_\\perp = r\\sin\\theta$ बल की क्रिया रेखा की O से लंबवत् दूरी है, या $rF_\\perp$ के रूप में, जहाँ बल का वह भाग लिया जाता है जो $\\vec{r}$ के लंबवत् है। यदि बल O पर या O से गुज़रने वाली रेखा के अनुदिश लगे, तो बल आघूर्ण शून्य होता है।\n\nबल आघूर्ण की विमाएँ $[ML^2T^{-2}]$ और SI मात्रक N m है। ये कार्य की विमाएँ हैं, पर बल आघूर्ण एक सदिश है और इसे कभी जूल में व्यक्त नहीं किया जाता।"
+      },
+      "media": "img.rotational-motion.door-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "torque",
+            "hi": "बल आघूर्ण"
+          },
+          "definition": {
+            "en": "$\\vec{r} \\times \\vec{F}$, the turning effect of a force",
+            "hi": "$\\vec{r} \\times \\vec{F}$, बल का घुमाने वाला प्रभाव"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.7.1, Eqs. 6.22-6.23"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Torque",
+        "hi": "बल आघूर्ण"
+      },
+      "latex": "\\vec{\\tau} = \\vec{r} \\times \\vec{F},\\quad \\tau = rF\\sin\\theta = r_\\perp F",
+      "symbols": [
+        {
+          "symbol": "\\vec{r}",
+          "meaning": {
+            "en": "position of the point where the force acts",
+            "hi": "बल लगने वाले बिंदु की स्थिति"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "\\vec{F}",
+          "meaning": {
+            "en": "the force",
+            "hi": "बल"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "r_\\perp",
+          "meaning": {
+            "en": "perpendicular distance of the line of action from the origin",
+            "hi": "मूल बिंदु से क्रिया रेखा की लंबवत् दूरी"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "\\tau",
+          "meaning": {
+            "en": "torque",
+            "hi": "बल आघूर्ण"
+          },
+          "unit": "N m"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 6.22-6.23"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Find the torque about the origin of the force $\\vec{F} = 7\\hat{i} + 3\\hat{j} - 5\\hat{k}$ acting on a particle at $\\vec{r} = \\hat{i} - \\hat{j} + \\hat{k}$.",
+        "hi": "बल $\\vec{F} = 7\\hat{i} + 3\\hat{j} - 5\\hat{k}$ एक कण पर लगता है जो $\\vec{r} = \\hat{i} - \\hat{j} + \\hat{k}$ पर स्थित है। मूल बिंदु के परितः इसका बल आघूर्ण ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$x$: $(-1)(-5) - (1)(3) = 2$",
+          "hi": "$x$: $(-1)(-5) - (1)(3) = 2$"
+        },
+        {
+          "en": "$y$: $(1)(7) - (1)(-5) = 12$",
+          "hi": "$y$: $(1)(7) - (1)(-5) = 12$"
+        },
+        {
+          "en": "$z$: $(1)(3) - (-1)(7) = 10$",
+          "hi": "$z$: $(1)(3) - (-1)(7) = 10$"
+        }
+      ],
+      "answer": {
+        "en": "$\\vec{\\tau} = 2\\hat{i} + 12\\hat{j} + 10\\hat{k}$",
+        "hi": "$\\vec{\\tau} = 2\\hat{i} + 12\\hat{j} + 10\\hat{k}$"
+      },
+      "common_trap": {
+        "en": "Computing $\\vec{F} \\times \\vec{r}$, which gives the negative of the torque.",
+        "hi": "$\\vec{F} \\times \\vec{r}$ निकालना, जो बल आघूर्ण का ऋणात्मक देता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.5"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A 40 N force is applied at the end of a 0.25 m spanner. Find the torque on the nut when the force is (a) perpendicular to the handle and (b) at $30°$ to the handle.",
+        "hi": "0.25 m लंबे पाने के सिरे पर 40 N का बल लगाया जाता है। नट पर बल आघूर्ण ज्ञात कीजिए जब बल (a) हत्थे के लंबवत् हो और (b) हत्थे से $30°$ पर हो।"
+      },
+      "solution_steps": [
+        {
+          "en": "(a) $\\tau = rF\\sin 90° = 0.25 \\times 40 = 10$ N m",
+          "hi": "(a) $\\tau = rF\\sin 90° = 0.25 \\times 40 = 10$ N m"
+        },
+        {
+          "en": "(b) $\\tau = 0.25 \\times 40 \\times \\sin 30° = 5$ N m",
+          "hi": "(b) $\\tau = 0.25 \\times 40 \\times \\sin 30° = 5$ N m"
+        }
+      ],
+      "answer": {
+        "en": "10 N m, then 5 N m: push at right angles to the handle",
+        "hi": "10 N m, फिर 5 N m: हत्थे के लंबवत् धकेलिए"
+      },
+      "answer_value": {
+        "value": 10,
+        "unit": "N m",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Using $\\cos 30°$: the angle is between $\\vec{r}$ and $\\vec{F}$, and the sine of it is needed.",
+        "hi": "$\\cos 30°$ लेना: कोण $\\vec{r}$ और $\\vec{F}$ के बीच है, और उसका साइन चाहिए।"
+      },
+      "media": "img.rotational-motion.spanner-nut",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.7.1, Eq. 6.23"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.torque-angular-momentum.0001"
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.torque-angular-momentum.0002"
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Angular momentum",
+        "hi": "कोणीय संवेग"
+      },
+      "body": {
+        "en": "The angular momentum of a particle of momentum $\\vec{p}$ about O is $\\vec{l} = \\vec{r} \\times \\vec{p}$, with magnitude $l = r_\\perp p$. Differentiating, $\\frac{d\\vec{l}}{dt} = \\vec{v} \\times m\\vec{v} + \\vec{r} \\times \\vec{F} = \\vec{\\tau}$, because $\\vec{v} \\times \\vec{v} = \\vec{0}$: torque is the rate of change of angular momentum.\n\nFor a system, $\\vec{L} = \\sum \\vec{l}_i$ and $\\frac{d\\vec{L}}{dt} = \\vec{\\tau}_{ext}$. The internal torques cancel, provided the forces between two particles act along the line joining them.\n\nA particle moving at constant velocity has constant angular momentum about any point: $\\vec{p}$ is fixed and so is $r_\\perp$, the distance of its straight path from the point.",
+        "hi": "संवेग $\\vec{p}$ वाले कण का O के परितः कोणीय संवेग $\\vec{l} = \\vec{r} \\times \\vec{p}$ है, जिसका परिमाण $l = r_\\perp p$ है। अवकलन करने पर $\\frac{d\\vec{l}}{dt} = \\vec{v} \\times m\\vec{v} + \\vec{r} \\times \\vec{F} = \\vec{\\tau}$, क्योंकि $\\vec{v} \\times \\vec{v} = \\vec{0}$: बल आघूर्ण कोणीय संवेग के परिवर्तन की दर है।\n\nकिसी निकाय के लिए $\\vec{L} = \\sum \\vec{l}_i$ और $\\frac{d\\vec{L}}{dt} = \\vec{\\tau}_{ext}$। आंतरिक बल आघूर्ण निरस्त हो जाते हैं, बशर्ते दो कणों के बीच के बल उन्हें मिलाने वाली रेखा के अनुदिश लगें।\n\nनियत वेग से चलते कण का किसी भी बिंदु के परितः कोणीय संवेग नियत रहता है: $\\vec{p}$ नियत है और $r_\\perp$, उस बिंदु से उसके सरल रेखीय पथ की दूरी, भी।"
+      },
+      "media": "img.rotational-motion.spinning-top",
+      "highlights": [
+        {
+          "term": {
+            "en": "angular momentum",
+            "hi": "कोणीय संवेग"
+          },
+          "definition": {
+            "en": "$\\vec{r} \\times \\vec{p}$; its rate of change is the torque",
+            "hi": "$\\vec{r} \\times \\vec{p}$; इसके परिवर्तन की दर बल आघूर्ण है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.7.2, Eqs. 6.25-6.28b, Example 6.6"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Conservation of angular momentum",
+        "hi": "कोणीय संवेग का संरक्षण"
+      },
+      "body": {
+        "en": "If the total external torque is zero, $\\vec{L}$ is constant. For a body turning about a fixed axis that is an axis of symmetry, $L = I\\omega$, where I is the moment of inertia about that axis, so $I\\omega$ stays constant:\n\n$I_1\\omega_1 = I_2\\omega_2$.\n\nSit on a swivel chair with your arms folded and get it spinning. Stretch your arms out: I grows and you slow down. Pull them in again and you speed up. Skaters, divers, circus acrobats and dancers doing a pirouette all use this.",
+        "hi": "यदि कुल बाह्य बल आघूर्ण शून्य हो, तो $\\vec{L}$ नियत रहता है। सममिति अक्ष वाले स्थिर अक्ष के परितः घूमते पिंड के लिए $L = I\\omega$, जहाँ I उस अक्ष के परितः जड़त्व आघूर्ण है, अतः $I\\omega$ नियत रहता है:\n\n$I_1\\omega_1 = I_2\\omega_2$।\n\nभुजाएँ मोड़कर घुमाऊ कुर्सी पर बैठिए और उसे घुमवाइए। भुजाएँ फैलाइए: I बढ़ता है और आप धीमे हो जाते हैं। उन्हें फिर पास लाइए और आप तेज़ हो जाते हैं। स्केटर, गोताखोर, सरकस के कलाबाज और पिरूएट करते नर्तक सभी इसका उपयोग करते हैं।"
+      },
+      "media": "img.rotational-motion.skater-spin",
+      "highlights": [
+        {
+          "term": {
+            "en": "conservation of angular momentum",
+            "hi": "कोणीय संवेग का संरक्षण"
+          },
+          "definition": {
+            "en": "no external torque, so $I\\omega$ stays constant",
+            "hi": "बाह्य बल आघूर्ण नहीं, अतः $I\\omega$ नियत"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.7.2, Eq. 6.29a; §6.12, Eqs. 6.42-6.44, Fig. 6.32"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:10",
+      "type": "formula",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Angular momentum",
+        "hi": "कोणीय संवेग"
+      },
+      "latex": "\\vec{l} = \\vec{r} \\times \\vec{p},\\quad \\frac{d\\vec{L}}{dt} = \\vec{\\tau}_{ext},\\quad I_1\\omega_1 = I_2\\omega_2",
+      "symbols": [
+        {
+          "symbol": "\\vec{L}",
+          "meaning": {
+            "en": "total angular momentum",
+            "hi": "कुल कोणीय संवेग"
+          },
+          "unit": "J s"
+        },
+        {
+          "symbol": "\\vec{\\tau}_{ext}",
+          "meaning": {
+            "en": "total external torque",
+            "hi": "कुल बाह्य बल आघूर्ण"
+          },
+          "unit": "N m"
+        },
+        {
+          "symbol": "I",
+          "meaning": {
+            "en": "moment of inertia about the axis",
+            "hi": "अक्ष के परितः जड़त्व आघूर्ण"
+          },
+          "unit": "kg m²"
+        },
+        {
+          "symbol": "\\omega",
+          "meaning": {
+            "en": "angular velocity",
+            "hi": "कोणीय वेग"
+          },
+          "unit": "rad/s"
+        }
+      ],
+      "conditions": {
+        "en": "$I_1\\omega_1 = I_2\\omega_2$ needs zero external torque about the fixed axis.",
+        "hi": "$I_1\\omega_1 = I_2\\omega_2$ के लिए स्थिर अक्ष के परितः बाह्य बल आघूर्ण शून्य होना चाहिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 6.25, 6.28b, 6.44"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:11",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A skater spins at 2 rev/s with arms outstretched, when her moment of inertia is 4 kg m². She pulls her arms in, reducing it to 1.6 kg m². Find her new rate of spin, and compare her kinetic energies.",
+        "hi": "एक स्केटर भुजाएँ फैलाकर 2 rev/s से घूमती है, तब उसका जड़त्व आघूर्ण 4 kg m² है। वह भुजाएँ अंदर खींचकर इसे 1.6 kg m² कर देती है। उसके घूमने की नई दर ज्ञात कीजिए, और उसकी गतिज ऊर्जाओं की तुलना कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "No external torque about the vertical axis: $I_1\\omega_1 = I_2\\omega_2$.",
+          "hi": "ऊर्ध्वाधर अक्ष के परितः कोई बाह्य बल आघूर्ण नहीं: $I_1\\omega_1 = I_2\\omega_2$।"
+        },
+        {
+          "en": "$\\omega_2 = \\frac{4 \\times 2}{1.6} = 5$ rev/s",
+          "hi": "$\\omega_2 = \\frac{4 \\times 2}{1.6} = 5$ rev/s"
+        },
+        {
+          "en": "$K = \\frac{L^2}{2I}$ with L fixed, so $\\frac{K_2}{K_1} = \\frac{I_1}{I_2} = 2.5$.",
+          "hi": "L नियत होने पर $K = \\frac{L^2}{2I}$, अतः $\\frac{K_2}{K_1} = \\frac{I_1}{I_2} = 2.5$।"
+        },
+        {
+          "en": "The extra kinetic energy comes from the work her muscles do pulling her arms in.",
+          "hi": "अतिरिक्त गतिज ऊर्जा भुजाएँ अंदर खींचने में उसकी मांसपेशियों द्वारा किए गए कार्य से आती है।"
+        }
+      ],
+      "answer": {
+        "en": "5 rev/s; her kinetic energy rises 2.5 times",
+        "hi": "5 rev/s; उसकी गतिज ऊर्जा 2.5 गुनी हो जाती है"
+      },
+      "common_trap": {
+        "en": "Assuming kinetic energy is conserved too: only angular momentum is.",
+        "hi": "गतिज ऊर्जा को भी संरक्षित मान लेना: केवल कोणीय संवेग संरक्षित है।"
+      },
+      "media": "img.rotational-motion.skater-spin",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.12.1, Eq. 6.44"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:12",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 2 kg ball moves at a steady 3 m/s along the straight line $y = 4$ m, parallel to the x-axis. Find its angular momentum about the origin, and say whether it changes as the ball moves.",
+        "hi": "2 kg की एक गेंद सरल रेखा $y = 4$ m के अनुदिश, x-अक्ष के समांतर, नियत 3 m/s से चलती है। मूल बिंदु के परितः इसका कोणीय संवेग ज्ञात कीजिए, और बताइए कि गेंद के चलने पर वह बदलता है या नहीं।"
+      },
+      "solution_steps": [
+        {
+          "en": "$l = r_\\perp p$, and the path is always $r_\\perp = 4$ m from the origin.",
+          "hi": "$l = r_\\perp p$, और पथ मूल बिंदु से सदा $r_\\perp = 4$ m दूर है।"
+        },
+        {
+          "en": "$l = 4 \\times 2 \\times 3 = 24$ kg m²/s, the same at every point of the path.",
+          "hi": "$l = 4 \\times 2 \\times 3 = 24$ kg m²/s, पथ के हर बिंदु पर समान।"
+        }
+      ],
+      "answer": {
+        "en": "24 kg m²/s, constant",
+        "hi": "24 kg m²/s, नियत"
+      },
+      "answer_value": {
+        "value": 24,
+        "unit": "kg m²/s",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Thinking a particle must go round in a circle to have angular momentum.",
+        "hi": "यह सोचना कि कोणीय संवेग के लिए कण को वृत्त में घूमना ही चाहिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.6"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:13",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.torque-angular-momentum.0004"
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:14",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.torque-angular-momentum.0005"
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:15",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.torque-angular-momentum.0006"
+    },
+    {
+      "id": "phy.rotational-motion.torque-angular-momentum:dd:16",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.torque-angular-momentum.core.torque",
+        "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$; $\\tau = r_\\perp F$, in N m.",
+          "hi": "$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$; $\\tau = r_\\perp F$, N m में।"
+        },
+        {
+          "en": "$d\\vec{L}/dt = \\vec{\\tau}_{ext}$; with no external torque, $I\\omega$ is constant.",
+          "hi": "$d\\vec{L}/dt = \\vec{\\tau}_{ext}$; बाह्य बल आघूर्ण न हो तो $I\\omega$ नियत।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

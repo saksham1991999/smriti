@@ -1,0 +1,629 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §10.5 Calculating Moments of Inertia (moment of inertia by integration; parallel-axis theorem)",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Perpendicular axis theorem (statement, condition and proof; secondary source)",
+      "url": "https://en.wikipedia.org/wiki/Perpendicular_axis_theorem",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.axes-theorems",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.axes-theorems.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The moment of inertia of a uniform rod of mass M and length L about an axis through one end, perpendicular to the rod, is",
+        "hi": "M द्रव्यमान और L लंबाई की एकसमान छड़ का एक सिरे से गुज़रते, छड़ के लंबवत् अक्ष के परितः जड़त्व आघूर्ण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$ML^2/3$",
+            "hi": "$ML^2/3$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$ML^2/12$",
+            "hi": "$ML^2/12$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$ML^2/4$",
+            "hi": "$ML^2/4$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$ML^2$",
+            "hi": "$ML^2$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$I = I_{cm} + Md^2$",
+          "hi": "$I = I_{cm} + Md^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Start from the middle and shift by L/2.",
+          "hi": "मध्य से शुरू कीजिए और L/2 खिसकाइए।"
+        },
+        "steps": [
+          {
+            "en": "$I = \\frac{ML^2}{12} + M\\left(\\frac{L}{2}\\right)^2 = \\frac{ML^2}{3}$",
+            "hi": "$I = \\frac{ML^2}{12} + M\\left(\\frac{L}{2}\\right)^2 = \\frac{ML^2}{3}$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is about the middle.",
+              "hi": "यह मध्य के परितः है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is only the $Md^2$ part.",
+              "hi": "यह केवल $Md^2$ भाग है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That would put all the mass at the far end.",
+              "hi": "यह पूरा द्रव्यमान दूर वाले सिरे पर रख देता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.axes-theorems.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A uniform disc has moment of inertia I about its central axis perpendicular to its plane. Its moment of inertia about a diameter is",
+        "hi": "एक एकसमान चकती का तल के लंबवत् उसके केन्द्रीय अक्ष के परितः जड़त्व आघूर्ण I है। व्यास के परितः इसका जड़त्व आघूर्ण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$I/2$",
+            "hi": "$I/2$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$I$",
+            "hi": "$I$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2I$",
+            "hi": "$2I$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$I/4$",
+            "hi": "$I/4$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$I_z = I_x + I_y$",
+          "hi": "$I_z = I_x + I_y$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Two perpendicular diameters add up to the central axis.",
+          "hi": "दो लंबवत् व्यास जुड़कर केन्द्रीय अक्ष देते हैं।"
+        },
+        "steps": [
+          {
+            "en": "By symmetry $I_x = I_y$, and $I_x + I_y = I$, so each is $I/2$.",
+            "hi": "सममिति से $I_x = I_y$, और $I_x + I_y = I$, अतः प्रत्येक $I/2$ है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The diameters share I between them.",
+              "hi": "व्यास I को आपस में बाँटते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A diameter cannot exceed the perpendicular axis for a lamina.",
+              "hi": "पटल के लिए व्यास लंबवत् अक्ष से अधिक नहीं हो सकता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The diameter value $MR^2/4$ is half of $I = MR^2/2$, not a quarter of it.",
+              "hi": "व्यास का मान $MR^2/4$, $I = MR^2/2$ का आधा है, चौथाई नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.axes-theorems.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A solid sphere of mass 5 kg and radius 1 m turns about an axis tangent to its surface. Its moment of inertia, in kg m², is",
+        "hi": "5 kg द्रव्यमान और 1 m त्रिज्या का ठोस गोला अपनी सतह को स्पर्श करते अक्ष के परितः घूमता है। इसका जड़त्व आघूर्ण, kg m² में, है"
+      },
+      "answer": {
+        "value": 7,
+        "unit": "kg m²"
+      },
+      "hints": [
+        {
+          "en": "$I = I_{cm} + MR^2$",
+          "hi": "$I = I_{cm} + MR^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Shift from a diameter by R.",
+          "hi": "व्यास से R खिसकाइए।"
+        },
+        "steps": [
+          {
+            "en": "$I = \\frac{2}{5}MR^2 + MR^2 = \\frac{7}{5}MR^2$",
+            "hi": "$I = \\frac{2}{5}MR^2 + MR^2 = \\frac{7}{5}MR^2$"
+          },
+          {
+            "en": "$I = \\frac{7}{5} \\times 5 \\times 1^2 = 7$ kg m²",
+            "hi": "$I = \\frac{7}{5} \\times 5 \\times 1^2 = 7$ kg m²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Stopping at $\\frac{2}{5}MR^2 = 2$ forgets the shift.",
+              "hi": "$\\frac{2}{5}MR^2 = 2$ पर रुकना खिसकाव भूल जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.axes-theorems.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The perpendicular-axis theorem can be applied to",
+        "hi": "लंबवत् अक्षों का प्रमेय लगाया जा सकता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a flat body lying in one plane only",
+            "hi": "केवल एक तल में स्थित चपटे पिंड पर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "any rigid body",
+            "hi": "किसी भी दृढ़ पिंड पर"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a solid sphere",
+            "hi": "ठोस गोले पर"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "bodies symmetric about their centre only",
+            "hi": "केवल अपने केन्द्र के परितः सममित पिंडों पर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where does the proof use $z = 0$?",
+          "hi": "उपपत्ति $z = 0$ कहाँ लगाती है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The proof needs every particle to have $z = 0$.",
+          "hi": "उपपत्ति के लिए हर कण का $z = 0$ होना चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "$I_z = \\sum m(x^2 + y^2)$ equals $I_x + I_y$ only when every $z = 0$.",
+            "hi": "$I_z = \\sum m(x^2 + y^2)$, $I_x + I_y$ के बराबर केवल तब है जब हर $z = 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "For a solid body, $I_x$ and $I_y$ include $z^2$ terms that do not cancel.",
+              "hi": "त्रिविमीय पिंड के लिए $I_x$ और $I_y$ में $z^2$ पद होते हैं जो निरस्त नहीं होते।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "For a sphere all three axes give $2MR^2/5$, and $2MR^2/5 \\neq 4MR^2/5$.",
+              "hi": "गोले के लिए तीनों अक्ष $2MR^2/5$ देते हैं, और $2MR^2/5 \\neq 4MR^2/5$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Symmetry is not the condition; flatness is.",
+              "hi": "सममिति शर्त नहीं है; चपटापन है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.axes-theorems.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Of all the axes parallel to a given direction, the moment of inertia of a body is least about the one that",
+        "hi": "किसी दी गई दिशा के समांतर सभी अक्षों में से, पिंड का जड़त्व आघूर्ण उस अक्ष के परितः न्यूनतम है जो"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "passes through its centre of mass",
+            "hi": "उसके द्रव्यमान केन्द्र से गुज़रता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "touches its surface",
+            "hi": "उसकी सतह को स्पर्श करता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "is farthest from the centre of mass",
+            "hi": "द्रव्यमान केन्द्र से सबसे दूर है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "passes through its heaviest particle",
+            "hi": "उसके सबसे भारी कण से गुज़रता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$I = I_{cm} + Md^2$",
+          "hi": "$I = I_{cm} + Md^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$Md^2$ is never negative.",
+          "hi": "$Md^2$ कभी ऋणात्मक नहीं होता।"
+        },
+        "steps": [
+          {
+            "en": "$I = I_{cm} + Md^2 \\geq I_{cm}$, with equality only at $d = 0$.",
+            "hi": "$I = I_{cm} + Md^2 \\geq I_{cm}$, समता केवल $d = 0$ पर।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A tangent is R away, which adds $MR^2$.",
+              "hi": "स्पर्श रेखा R दूर है, जो $MR^2$ जोड़ती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That gives the largest d and the largest I.",
+              "hi": "यह सबसे बड़ा d और सबसे बड़ा I देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The theorem refers to the centre of mass, not to any one particle.",
+              "hi": "प्रमेय द्रव्यमान केन्द्र की बात करता है, किसी एक कण की नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.axes-theorems.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The moment of inertia of a thin ring of mass M and radius R about a tangent lying in its plane is",
+        "hi": "M द्रव्यमान और R त्रिज्या के पतले वलय का उसके तल में स्थित स्पर्श रेखा के परितः जड़त्व आघूर्ण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$3MR^2/2$",
+            "hi": "$3MR^2/2$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2MR^2$",
+            "hi": "$2MR^2$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$MR^2/2$",
+            "hi": "$MR^2/2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$5MR^2/4$",
+            "hi": "$5MR^2/4$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Diameter first, then shift by R.",
+          "hi": "पहले व्यास, फिर R से खिसकाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Start from a diameter, which is parallel to the tangent.",
+          "hi": "व्यास से शुरू कीजिए, जो स्पर्श रेखा के समांतर है।"
+        },
+        "steps": [
+          {
+            "en": "Diameter: $\\frac{MR^2}{2}$ (perpendicular axes from $MR^2$)",
+            "hi": "व्यास: $\\frac{MR^2}{2}$ ($MR^2$ से लंबवत् अक्ष)"
+          },
+          {
+            "en": "Tangent: $\\frac{MR^2}{2} + MR^2 = \\frac{3}{2}MR^2$",
+            "hi": "स्पर्श रेखा: $\\frac{MR^2}{2} + MR^2 = \\frac{3}{2}MR^2$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is about a tangent perpendicular to the plane.",
+              "hi": "यह तल के लंबवत् स्पर्श रेखा के परितः है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is about a diameter, before the shift.",
+              "hi": "यह खिसकाव से पहले व्यास के परितः है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is for a disc, not a ring.",
+              "hi": "यह चकती के लिए है, वलय के लिए नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

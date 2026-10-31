@@ -1,0 +1,287 @@
+{
+  "schema": "revision_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Revision sheet for the chapter, gathered from the topic cheat sheets. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "rs.phy.rotational-motion",
+  "scope": "chapter",
+  "chapter": "phy.rotational-motion",
+  "title": {
+    "en": "Systems of Particles and Rotational Motion",
+    "hi": "कणों के निकाय तथा घूर्णी गति"
+  },
+  "concepts": [
+    "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+    "phy.rotational-motion.vector-product.core.vector-product",
+    "phy.rotational-motion.angular-velocity.core.rotation-basics",
+    "phy.rotational-motion.torque-angular-momentum.core.torque",
+    "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+    "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+    "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+    "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia",
+    "phy.rotational-motion.axes-theorems.core.parallel-perpendicular-axes",
+    "phy.rotational-motion.rotational-dynamics.core.rotational-equations"
+  ],
+  "points": [
+    {
+      "en": "The centre of mass is the mass-weighted average position.",
+      "hi": "द्रव्यमान केन्द्र द्रव्यमान-भारित औसत स्थिति है।"
+    },
+    {
+      "en": "Uniform symmetric bodies have it at the geometric centre, which may be empty space.",
+      "hi": "एकसमान सममित पिंडों में यह ज्यामितीय केन्द्र पर होता है, जो रिक्त स्थान भी हो सकता है।"
+    },
+    {
+      "en": "The centre of mass moves as a particle of mass M under the external force alone.",
+      "hi": "द्रव्यमान केन्द्र केवल बाह्य बल के अधीन M द्रव्यमान के कण की तरह चलता है।"
+    },
+    {
+      "en": "$\\vec{a} \\times \\vec{b}$ has size $ab\\sin\\theta$ and points by the right-hand rule.",
+      "hi": "$\\vec{a} \\times \\vec{b}$ का परिमाण $ab\\sin\\theta$ है और दिशा दाएँ हाथ के नियम से।"
+    },
+    {
+      "en": "It is anti-commutative and distributive; $\\vec{a} \\times \\vec{a} = \\vec{0}$.",
+      "hi": "यह प्रतिक्रमविनिमेय और वितरण नियम वाला है; $\\vec{a} \\times \\vec{a} = \\vec{0}$।"
+    },
+    {
+      "en": "Use the determinant for components.",
+      "hi": "घटकों के लिए सारणिक लगाइए।"
+    },
+    {
+      "en": "A rigid body can translate, rotate about a fixed axis, or do both.",
+      "hi": "दृढ़ पिंड स्थानांतरण, स्थिर अक्ष के परितः घूर्णन, या दोनों कर सकता है।"
+    },
+    {
+      "en": "$\\omega = d\\theta/dt$ is shared by all particles; $v = \\omega r$.",
+      "hi": "$\\omega = d\\theta/dt$ सभी कणों में साझा है; $v = \\omega r$।"
+    },
+    {
+      "en": "$\\vec{v} = \\vec{\\omega} \\times \\vec{r}$; $\\alpha = d\\omega/dt$.",
+      "hi": "$\\vec{v} = \\vec{\\omega} \\times \\vec{r}$; $\\alpha = d\\omega/dt$।"
+    },
+    {
+      "en": "Torque $\\vec{r} \\times \\vec{F}$ is the turning effect of a force, in N m.",
+      "hi": "बल आघूर्ण $\\vec{r} \\times \\vec{F}$ बल का घुमाने वाला प्रभाव है, N m में।"
+    },
+    {
+      "en": "Angular momentum $\\vec{r} \\times \\vec{p}$ changes at the rate of the external torque.",
+      "hi": "कोणीय संवेग $\\vec{r} \\times \\vec{p}$ बाह्य बल आघूर्ण की दर से बदलता है।"
+    },
+    {
+      "en": "With no external torque, $I_1\\omega_1 = I_2\\omega_2$.",
+      "hi": "बाह्य बल आघूर्ण न हो तो $I_1\\omega_1 = I_2\\omega_2$।"
+    },
+    {
+      "en": "Equilibrium needs zero total force and zero total torque.",
+      "hi": "संतुलन के लिए शून्य कुल बल और शून्य कुल बल आघूर्ण चाहिए।"
+    },
+    {
+      "en": "A couple turns a body without moving its centre of mass.",
+      "hi": "बलयुग्म द्रव्यमान केन्द्र को हिलाए बिना पिंड को घुमाता है।"
+    },
+    {
+      "en": "Principle of moments: $d_1F_1 = d_2F_2$; M.A. $= d_2/d_1$.",
+      "hi": "आघूर्णों का सिद्धांत: $d_1F_1 = d_2F_2$; M.A. $= d_2/d_1$।"
+    },
+    {
+      "en": "The centre of gravity is where the gravitational torque is zero.",
+      "hi": "गुरुत्व केन्द्र वह है जहाँ गुरुत्वीय बल आघूर्ण शून्य है।"
+    },
+    {
+      "en": "$I = \\sum m_ir_i^2$ depends on the axis and on how the mass is spread.",
+      "hi": "$I = \\sum m_ir_i^2$ अक्ष और द्रव्यमान के वितरण पर निर्भर है।"
+    },
+    {
+      "en": "Rotational kinetic energy is $\\frac{1}{2}I\\omega^2$; $I = Mk^2$ defines k.",
+      "hi": "घूर्णी गतिज ऊर्जा $\\frac{1}{2}I\\omega^2$ है; $I = Mk^2$ से k परिभाषित है।"
+    },
+    {
+      "en": "Learn Table 6.1: ring, disc, cylinders, sphere and rod.",
+      "hi": "सारणी 6.1 याद कीजिए: वलय, चकती, बेलन, गोला और छड़।"
+    },
+    {
+      "en": "Parallel axes: $I = I_{cm} + Md^2$, for any body.",
+      "hi": "समांतर अक्ष: $I = I_{cm} + Md^2$, किसी भी पिंड के लिए।"
+    },
+    {
+      "en": "Perpendicular axes: $I_z = I_x + I_y$, for flat bodies only.",
+      "hi": "लंबवत् अक्ष: $I_z = I_x + I_y$, केवल चपटे पिंडों के लिए।"
+    },
+    {
+      "en": "Rod about an end $ML^2/3$; disc about a diameter $MR^2/4$.",
+      "hi": "सिरे के परितः छड़ $ML^2/3$; व्यास के परितः चकती $MR^2/4$।"
+    },
+    {
+      "en": "At constant $\\alpha$ the three rotational equations match the linear ones.",
+      "hi": "नियत $\\alpha$ पर तीनों घूर्णी समीकरण रेखीय समीकरणों जैसे हैं।"
+    },
+    {
+      "en": "$\\tau = I\\alpha$ is Newton's second law for fixed-axis rotation.",
+      "hi": "$\\tau = I\\alpha$ स्थिर अक्ष घूर्णन के लिए न्यूटन का द्वितीय नियम है।"
+    },
+    {
+      "en": "Work $\\tau\\,d\\theta$ and power $\\tau\\omega$ feed the kinetic energy $\\frac{1}{2}I\\omega^2$.",
+      "hi": "कार्य $\\tau\\,d\\theta$ और शक्ति $\\tau\\omega$ गतिज ऊर्जा $\\frac{1}{2}I\\omega^2$ बढ़ाते हैं।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Centre of mass",
+        "hi": "द्रव्यमान केन्द्र"
+      },
+      "latex": "\\vec{R} = \\frac{\\sum m_i\\vec{r}_i}{M}"
+    },
+    {
+      "name": {
+        "en": "Motion of the centre of mass",
+        "hi": "द्रव्यमान केन्द्र की गति"
+      },
+      "latex": "M\\vec{A} = \\vec{F}_{ext},\\ \\vec{P} = M\\vec{V}"
+    },
+    {
+      "name": {
+        "en": "Magnitude",
+        "hi": "परिमाण"
+      },
+      "latex": "|\\vec{a} \\times \\vec{b}| = ab\\sin\\theta"
+    },
+    {
+      "name": {
+        "en": "Unit vectors",
+        "hi": "एकांक सदिश"
+      },
+      "latex": "\\hat{i} \\times \\hat{j} = \\hat{k},\\ \\hat{j} \\times \\hat{k} = \\hat{i},\\ \\hat{k} \\times \\hat{i} = \\hat{j}"
+    },
+    {
+      "name": {
+        "en": "Angular velocity",
+        "hi": "कोणीय वेग"
+      },
+      "latex": "\\omega = \\frac{d\\theta}{dt},\\ v = \\omega r"
+    },
+    {
+      "name": {
+        "en": "Vector form",
+        "hi": "सदिश रूप"
+      },
+      "latex": "\\vec{v} = \\vec{\\omega} \\times \\vec{r}"
+    },
+    {
+      "name": {
+        "en": "Angular acceleration",
+        "hi": "कोणीय त्वरण"
+      },
+      "latex": "\\alpha = \\frac{d\\omega}{dt}"
+    },
+    {
+      "name": {
+        "en": "Torque",
+        "hi": "बल आघूर्ण"
+      },
+      "latex": "\\vec{\\tau} = \\vec{r} \\times \\vec{F},\\ \\tau = r_\\perp F"
+    },
+    {
+      "name": {
+        "en": "Angular momentum",
+        "hi": "कोणीय संवेग"
+      },
+      "latex": "\\vec{l} = \\vec{r} \\times \\vec{p},\\ \\frac{d\\vec{L}}{dt} = \\vec{\\tau}_{ext}"
+    },
+    {
+      "name": {
+        "en": "Conservation",
+        "hi": "संरक्षण"
+      },
+      "latex": "I_1\\omega_1 = I_2\\omega_2"
+    },
+    {
+      "name": {
+        "en": "Equilibrium",
+        "hi": "संतुलन"
+      },
+      "latex": "\\sum \\vec{F}_i = \\vec{0},\\ \\sum \\vec{\\tau}_i = \\vec{0}"
+    },
+    {
+      "name": {
+        "en": "Principle of moments",
+        "hi": "आघूर्णों का सिद्धांत"
+      },
+      "latex": "d_1F_1 = d_2F_2"
+    },
+    {
+      "name": {
+        "en": "Mechanical advantage",
+        "hi": "यांत्रिक लाभ"
+      },
+      "latex": "\\text{M.A.} = \\frac{F_1}{F_2} = \\frac{d_2}{d_1}"
+    },
+    {
+      "name": {
+        "en": "Moment of inertia",
+        "hi": "जड़त्व आघूर्ण"
+      },
+      "latex": "I = \\sum m_ir_i^2 = Mk^2"
+    },
+    {
+      "name": {
+        "en": "Rotational kinetic energy",
+        "hi": "घूर्णी गतिज ऊर्जा"
+      },
+      "latex": "K = \\frac{1}{2}I\\omega^2"
+    },
+    {
+      "name": {
+        "en": "Ring, disc, sphere, rod",
+        "hi": "वलय, चकती, गोला, छड़"
+      },
+      "latex": "MR^2,\\ \\frac{MR^2}{2},\\ \\frac{2MR^2}{5},\\ \\frac{ML^2}{12}"
+    },
+    {
+      "name": {
+        "en": "Parallel axes",
+        "hi": "समांतर अक्ष"
+      },
+      "latex": "I = I_{cm} + Md^2"
+    },
+    {
+      "name": {
+        "en": "Perpendicular axes",
+        "hi": "लंबवत् अक्ष"
+      },
+      "latex": "I_z = I_x + I_y"
+    },
+    {
+      "name": {
+        "en": "Kinematics",
+        "hi": "शुद्धगतिकी"
+      },
+      "latex": "\\omega = \\omega_0 + \\alpha t,\\ \\theta = \\omega_0t + \\frac{1}{2}\\alpha t^2,\\ \\omega^2 = \\omega_0^2 + 2\\alpha\\theta"
+    },
+    {
+      "name": {
+        "en": "Dynamics",
+        "hi": "गतिकी"
+      },
+      "latex": "\\tau = I\\alpha,\\ P = \\tau\\omega,\\ L = I\\omega"
+    }
+  ],
+  "hi_source": "translation"
+}

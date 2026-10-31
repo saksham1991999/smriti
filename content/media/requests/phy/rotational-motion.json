@@ -1,0 +1,489 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as WebP (3:2 at 1536x1024); originals kept outside the repo. Sim requests are open for sim-builder (status requested, not built); until a sim is approved the card shows its fallback text and image.",
+  "requests": [
+    {
+      "id": "img.rotational-motion.seesaw",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a playground seesaw with a long straight plank on a central pivot, perfectly level and balanced: a bigger child sits near the pivot on one side and a smaller child sits near the far end on the other side; seen from the side",
+      "must_show": [
+        "a level seesaw plank on a pivot",
+        "a bigger child close to the pivot",
+        "a smaller child far from the pivot"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "other people",
+        "signboards"
+      ],
+      "alt": {
+        "en": "Two small boys of similar size sit at the two ends of a level blue seesaw on a sunny playground.",
+        "hi": "धूप वाले खेल के मैदान में एक क्षैतिज नीले सी-सा के दोनों सिरों पर लगभग समान आकार के दो छोटे लड़के बैठे हैं।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.rigid-equilibrium",
+        "phy.rotational-motion.rigid-equilibrium:dd:01",
+        "phy.rotational-motion.rigid-equilibrium:dd:02",
+        "phy.rotational-motion.rigid-equilibrium:dd:04",
+        "phy.rotational-motion.rigid-equilibrium:dd:06"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e1d49efce15ab4f9909a2c396a116a231161bc09471639c58fd9b6cad295b9c0",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 36382,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.spinning-top",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "a traditional wooden spinning top (lattu) spinning upright on its metal tip on a smooth floor, a coiled string lying beside it",
+      "must_show": [
+        "one wooden spinning top on its tip",
+        "a string beside it"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "hands",
+        "people",
+        "writing"
+      ],
+      "alt": {
+        "en": "A wooden spinning top with blue and yellow stripes, tilted as it spins on its metal tip, with a coiled string lying beside it.",
+        "hi": "नीली और पीली धारियों वाला लकड़ी का लट्टू, अपनी धातु की नोक पर घूमते हुए झुका हुआ, उसके पास कुंडलित डोरी पड़ी है।"
+      },
+      "used_by": [
+        "phy.rotational-motion.torque-angular-momentum:dd:08"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "5acbffa3e4338d00713eb18b60f16c8790a350ae5d2d8bfaff8e4d464767df4e",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 35696,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.door-push",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a child pushing a wooden door open with one hand at the edge farthest from the hinges, the door partly open, the hinges clearly visible on the other edge; seen from slightly above",
+      "must_show": [
+        "one child",
+        "a door swinging on its hinges",
+        "the hand at the far edge from the hinges"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "signboards",
+        "posters",
+        "door numbers"
+      ],
+      "alt": {
+        "en": "A boy in a blue kurta pushes a wooden door open with one hand near the edge farthest from its hinges, which are visible on the other edge.",
+        "hi": "नीला कुर्ता पहने एक लड़का एक हाथ से लकड़ी के दरवाज़े को कब्ज़ों से सबसे दूर वाले किनारे के पास धकेलकर खोलता है; कब्ज़े दूसरे किनारे पर दिखते हैं।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.axes-theorems",
+        "phy.rotational-motion.axes-theorems:dd:01",
+        "phy.rotational-motion.axes-theorems:dd:02",
+        "phy.rotational-motion.axes-theorems:dd:04",
+        "phy.rotational-motion.torque-angular-momentum:dd:01",
+        "phy.rotational-motion.torque-angular-momentum:dd:02"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "4d650572285091c53aee44c94151cfc9df32bd9c6cf50b8a672e482e5c0a9919",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 49818,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.skater-spin",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a figure skater spinning on the spot on ice with both arms pulled in tight to the chest, one leg tucked in",
+      "must_show": [
+        "one skater spinning upright",
+        "arms pulled in close to the body"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "crowds",
+        "logos on clothes",
+        "advertisements"
+      ],
+      "alt": {
+        "en": "A figure skater in a blue dress spins on the ice with her arms folded tight across her chest and one leg tucked in.",
+        "hi": "नीली पोशाक में एक फ़िगर स्केटर बर्फ़ पर घूमती है, उसकी भुजाएँ छाती पर कसकर मुड़ी हैं और एक पैर अंदर मुड़ा है।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.torque-angular-momentum",
+        "phy.rotational-motion.torque-angular-momentum:dd:09",
+        "phy.rotational-motion.torque-angular-momentum:dd:11"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "4016dede698382a00e6da45b935cd19c2e9a26449636aeefcb17109b57f45a79",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 43754,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.potter-wheel",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "an Indian potter sitting at a round spinning potter's wheel shaping a clay pot with wet hands, seen from the side and a little above so the round wheel is visible",
+      "must_show": [
+        "one potter",
+        "a round potter's wheel",
+        "a clay pot on the wheel"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "signboards",
+        "writing",
+        "other people"
+      ],
+      "alt": {
+        "en": "A potter in a blue shirt sits at a round grey potter's wheel, shaping a clay pot with both hands.",
+        "hi": "नीली कमीज़ में एक कुम्हार गोल धूसर चाक पर बैठा, दोनों हाथों से मिट्टी का बर्तन गढ़ रहा है।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.angular-velocity",
+        "cs.phy.rotational-motion.moment-of-inertia-topic",
+        "phy.rotational-motion.angular-velocity:dd:01",
+        "phy.rotational-motion.angular-velocity:dd:03",
+        "phy.rotational-motion.moment-of-inertia-topic:dd:01",
+        "phy.rotational-motion.moment-of-inertia-topic:dd:02",
+        "phy.rotational-motion.moment-of-inertia-topic:dd:03",
+        "phy.rotational-motion.rotational-dynamics:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "a9fee531428e92c8f9364569031bb111da5b8086a1fbf2b267cf9fcef87eb1da",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 43196,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.giant-wheel",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a large giant wheel (Ferris wheel) at a village fair turning slowly about its central axle, with small cabins hanging around the rim, seen from the front",
+      "must_show": [
+        "a giant wheel",
+        "a central axle",
+        "cabins around the rim"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "crowds",
+        "signboards",
+        "advertisements"
+      ],
+      "alt": {
+        "en": "A large blue giant wheel with small cabins hanging round its rim, turning about a central yellow axle at a village fair with thatched huts.",
+        "hi": "छप्पर वाली झोपड़ियों के बीच गाँव के मेले में एक बड़ा नीला विशाल चक्र, जिसकी परिधि पर छोटे केबिन लटके हैं, बीच की पीली धुरी के परितः घूमता है।"
+      },
+      "used_by": [
+        "phy.rotational-motion.angular-velocity:dd:02",
+        "phy.rotational-motion.moment-of-inertia-topic:dd:08"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "967a5fe0c2f145aa4f09869d154f9080893f4f51327397930271191271de807c",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 113690,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.well-windlass",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "an old village well with a wooden windlass: a horizontal wooden roller on two posts with a rope wound round it and a metal bucket hanging from the rope down into the well; a crank handle at one end of the roller",
+      "must_show": [
+        "a well",
+        "a horizontal roller with rope wound on it",
+        "a hanging bucket",
+        "a crank handle"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "people",
+        "signboards"
+      ],
+      "alt": {
+        "en": "An old well with a wooden roller on two blue posts; a rope wound round the roller holds a metal bucket over the well, and a crank handle sticks out at one end.",
+        "hi": "एक पुराना कुआँ जिसमें दो नीले खंभों पर लकड़ी का बेलन है; बेलन पर लिपटी रस्सी कुएँ के ऊपर धातु की बाल्टी थामे है, और एक सिरे पर हत्था निकला है।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.rotational-dynamics",
+        "phy.rotational-motion.rotational-dynamics:dd:01",
+        "phy.rotational-motion.rotational-dynamics:dd:02",
+        "phy.rotational-motion.rotational-dynamics:dd:03",
+        "phy.rotational-motion.rotational-dynamics:dd:08",
+        "phy.rotational-motion.rotational-dynamics:dd:11"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "87c756ede46baadc986613f6f20c95d28bfaa14d62bf63fedd2dd1d0893304bb",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 46276,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.spanner-nut",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "a close-up of a hand-held steel spanner (wrench) fitted on a hexagonal nut on a bolt sticking out of a metal plate, the long handle of the spanner pointing sideways",
+      "must_show": [
+        "a spanner on a nut",
+        "a long spanner handle"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "hands",
+        "writing",
+        "numbers on the spanner"
+      ],
+      "alt": {
+        "en": "A blue spanner fitted on a hexagonal nut on a bolt standing up from a metal plate, its long handle pointing to the side.",
+        "hi": "धातु की प्लेट से उठे बोल्ट पर षट्भुजाकार नट पर फँसा एक नीला पाना, उसका लंबा हत्था एक ओर है।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.vector-product",
+        "phy.rotational-motion.torque-angular-momentum:dd:05",
+        "phy.rotational-motion.vector-product:dd:01",
+        "phy.rotational-motion.vector-product:dd:02",
+        "phy.rotational-motion.vector-product:dd:03"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "5d3d9b69e7a37ca8d25b3bce5b5b4be22d3ebe8636a9dc7f192829e715a77e74",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 32042,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.steering-wheel",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "a car steering wheel seen from the driver's seat, with two hands gripping the rim on opposite sides, left hand at the left of the rim and right hand at the right of the rim",
+      "must_show": [
+        "a steering wheel",
+        "two hands on opposite sides of the rim"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "dashboard writing",
+        "logos",
+        "speedometer numbers"
+      ],
+      "alt": {
+        "en": "Two hands grip a blue steering wheel on opposite sides of its rim.",
+        "hi": "दो हाथ एक नीले स्टीयरिंग व्हील को उसकी परिधि के विपरीत ओर पकड़े हैं।"
+      },
+      "used_by": [
+        "phy.rotational-motion.rigid-equilibrium:dd:03"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e8b5072b7d4d09074650035d0b36d5876a710f64e796c5468a90820a2ffff3aa",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 38140,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.rotational-motion.cardboard-balance",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "a flat, irregularly shaped piece of cardboard balanced horizontally on the tip of a single upright pencil standing on a table",
+      "must_show": [
+        "an irregular flat piece of cardboard",
+        "balanced on the tip of a pencil"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "hands",
+        "people",
+        "writing on the cardboard"
+      ],
+      "alt": {
+        "en": "An irregular flat piece of cardboard balanced level on the tip of an upright pencil.",
+        "hi": "गत्ते का एक अनियमित चपटा टुकड़ा एक सीधी खड़ी पेंसिल की नोक पर क्षैतिज संतुलित है।"
+      },
+      "used_by": [
+        "cs.phy.rotational-motion.centre-of-mass",
+        "phy.rotational-motion.centre-of-mass:dd:01",
+        "phy.rotational-motion.centre-of-mass:dd:02",
+        "phy.rotational-motion.centre-of-mass:dd:03",
+        "phy.rotational-motion.centre-of-mass:dd:09",
+        "phy.rotational-motion.centre-of-mass:dd:10",
+        "phy.rotational-motion.rigid-equilibrium:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "16b4e1831725fb17dda948c501f9a5d9fa31535bc31ce78c6784faba568542de",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 18740,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "sim.rotational-motion.flywheel-cord",
+      "kind": "sim",
+      "subject_family": "physics",
+      "brief": "New sim, to be built by sim-builder as our own bundle; no PhET code, art or layout (PhET sims are CC BY-NC 4.0). Concept: phy.rotational-motion.rotational-dynamics.core.rotational-equations. Learning goal: pull a cord wound round a wheel on a fixed frictionless axle and see that the torque FR gives an angular acceleration FR / I, that a ring (I = M R^2) speeds up half as fast as a disc (I = M R^2 / 2) of the same mass and radius, and that the work done by the pull, F times the length of cord unwound, equals the rotational kinetic energy I omega^2 / 2. Model: tau = F R, alpha = tau / I, theta = length / R, omega^2 = 2 alpha theta, K = I omega^2 / 2. Params: mass (kg, 1 to 40, default 20), radius (m, 0.05 to 0.5, default 0.2), pull (N, 1 to 50, default 25), ring (1 for a thin ring, 0 for a uniform disc, default 0). Controls: sliders for mass, radius and pull, a two-way switch for disc or ring, start, pause, reset. Show the cord length unwound, the angular speed, and bars for the work done and the kinetic energy, each with a text label and value (not colour alone). Background art, if any, comes from visual-director, not drawn in the sim. Readouts the card reads: alpha (rad/s^2), omega (rad/s), kinetic_energy (J) after the cord length set in the sim (default 2 m). Card tasks: disc, 20 kg, 0.2 m, 25 N: alpha 12.5 rad/s^2; same after 2 m: kinetic_energy 50 J; ring, same values: alpha 6.25 rad/s^2. Model tests: these values, which are NCERT Example 6.12. Reduced motion: no spinning animation; update the readouts and a still wheel at once.",
+      "used_by": [
+        "phy.rotational-motion.rotational-dynamics:dd:11"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ],
+  "hi_source": "translation"
+}

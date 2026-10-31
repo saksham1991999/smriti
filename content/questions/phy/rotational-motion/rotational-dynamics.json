@@ -1,0 +1,675 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.rotational-dynamics",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A torque of 6 N m acts on a wheel with moment of inertia 2 kg m². Its angular acceleration is",
+        "hi": "2 kg m² जड़त्व आघूर्ण वाले पहिए पर 6 N m का बल आघूर्ण लगता है। इसका कोणीय त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "3 rad/s²",
+            "hi": "3 rad/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "12 rad/s²",
+            "hi": "12 rad/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0.33 rad/s²",
+            "hi": "0.33 rad/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8 rad/s²",
+            "hi": "8 rad/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\alpha = \\tau / I$",
+          "hi": "$\\alpha = \\tau / I$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$\\tau = I\\alpha$, like $F = ma$.",
+          "hi": "$\\tau = I\\alpha$, $F = ma$ की तरह।"
+        },
+        "steps": [
+          {
+            "en": "$\\alpha = \\frac{\\tau}{I} = \\frac{6}{2} = 3$ rad/s²",
+            "hi": "$\\alpha = \\frac{\\tau}{I} = \\frac{6}{2} = 3$ rad/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That multiplies instead of dividing.",
+              "hi": "यह भाग देने के बजाय गुणा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides I by $\\tau$.",
+              "hi": "यह I को $\\tau$ से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That adds the two numbers.",
+              "hi": "यह दोनों संख्याओं को जोड़ता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 15,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A wheel starts from rest with a constant angular acceleration of 2 rad/s². The angle it turns through in the first 5 s, in radians, is",
+        "hi": "एक पहिया विराम से 2 rad/s² के नियत कोणीय त्वरण से चलता है। पहले 5 s में वह जितना कोण घूमता है, रेडियन में, है"
+      },
+      "answer": {
+        "value": 25,
+        "unit": "rad"
+      },
+      "hints": [
+        {
+          "en": "$\\theta = \\frac{1}{2}\\alpha t^2$ from rest",
+          "hi": "विराम से $\\theta = \\frac{1}{2}\\alpha t^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With $\\omega_0 = 0$, use $\\theta = \\omega_0t + \\frac{1}{2}\\alpha t^2$.",
+          "hi": "$\\omega_0 = 0$ के साथ $\\theta = \\omega_0t + \\frac{1}{2}\\alpha t^2$ लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$\\theta = \\frac{1}{2} \\times 2 \\times 5^2 = 25$ rad",
+            "hi": "$\\theta = \\frac{1}{2} \\times 2 \\times 5^2 = 25$ rad"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Leaving out the $\\frac{1}{2}$ gives 50.",
+              "hi": "$\\frac{1}{2}$ छोड़ने पर 50 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 2 kg block hangs from a light string wound on a pulley that is a uniform disc of mass 4 kg, turning on a frictionless axle. With $g = 10$ m/s², the block's acceleration is",
+        "hi": "2 kg का एक गुटका हलकी डोरी से लटका है जो 4 kg द्रव्यमान की एकसमान चकती रूपी घिरनी पर लिपटी है, जो घर्षणरहित धुरी पर घूमती है। $g = 10$ m/s² लेकर, गुटके का त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "5 m/s²",
+            "hi": "5 m/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "10 m/s²",
+            "hi": "10 m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "3.3 m/s²",
+            "hi": "3.3 m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "6.7 m/s²",
+            "hi": "6.7 m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$I/R^2 = M/2$ for a disc",
+          "hi": "चकती के लिए $I/R^2 = M/2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The disc acts like an extra mass of M/2 that must also be accelerated.",
+          "hi": "चकती M/2 के अतिरिक्त द्रव्यमान की तरह काम करती है जिसे भी त्वरित करना है।"
+        },
+        "steps": [
+          {
+            "en": "$a = \\frac{mg}{m + M/2} = \\frac{2 \\times 10}{2 + 2} = 5$ m/s²",
+            "hi": "$a = \\frac{mg}{m + M/2} = \\frac{2 \\times 10}{2 + 2} = 5$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That ignores the pulley, as if the block fell freely.",
+              "hi": "यह घिरनी की उपेक्षा करता है, मानो गुटका मुक्त रूप से गिरे।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That adds the whole pulley mass, M, as if it were a ring.",
+              "hi": "यह घिरनी का पूरा द्रव्यमान M जोड़ता है, मानो वह वलय हो।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That uses $MR^2/4$, the disc about a diameter, so the pulley adds only M/4.",
+              "hi": "यह $MR^2/4$ लेता है, जो व्यास के परितः चकती है, अतः घिरनी केवल M/4 जोड़ती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A shaft turning at 50 rad/s transmits a torque of 20 N m. The power transmitted is",
+        "hi": "50 rad/s से घूमती एक शाफ़्ट 20 N m बल आघूर्ण संचारित करती है। संचारित शक्ति है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1000 W",
+            "hi": "1000 W"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2.5 W",
+            "hi": "2.5 W"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "70 W",
+            "hi": "70 W"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.4 W",
+            "hi": "0.4 W"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$P = \\tau\\omega$, like $P = Fv$",
+          "hi": "$P = \\tau\\omega$, $P = Fv$ की तरह"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Power is torque times angular velocity.",
+          "hi": "शक्ति बल आघूर्ण गुणा कोणीय वेग है।"
+        },
+        "steps": [
+          {
+            "en": "$P = \\tau\\omega = 20 \\times 50 = 1000$ W",
+            "hi": "$P = \\tau\\omega = 20 \\times 50 = 1000$ W"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That divides $\\omega$ by $\\tau$.",
+              "hi": "यह $\\omega$ को $\\tau$ से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That adds them.",
+              "hi": "यह उन्हें जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That divides $\\tau$ by $\\omega$.",
+              "hi": "यह $\\tau$ को $\\omega$ से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 15,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A wheel turning at 30 rad/s is brought to rest uniformly in 6 s. The angle it turns through while stopping, in radians, is",
+        "hi": "30 rad/s से घूमते पहिए को समान रूप से 6 s में विराम में लाया जाता है। रुकते समय वह जितना कोण घूमता है, रेडियन में, है"
+      },
+      "answer": {
+        "value": 90,
+        "unit": "rad"
+      },
+      "hints": [
+        {
+          "en": "$\\theta = \\frac{\\omega_0 + \\omega}{2}t$",
+          "hi": "$\\theta = \\frac{\\omega_0 + \\omega}{2}t$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With uniform slowing, the average angular speed is half the starting value.",
+          "hi": "समान रूप से धीमा होने पर औसत कोणीय चाल आरंभिक मान की आधी है।"
+        },
+        "steps": [
+          {
+            "en": "$\\alpha = \\frac{0 - 30}{6} = -5$ rad/s²",
+            "hi": "$\\alpha = \\frac{0 - 30}{6} = -5$ rad/s²"
+          },
+          {
+            "en": "$\\theta = 30 \\times 6 + \\frac{1}{2}(-5)(6^2) = 180 - 90 = 90$ rad",
+            "hi": "$\\theta = 30 \\times 6 + \\frac{1}{2}(-5)(6^2) = 180 - 90 = 90$ rad"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using the starting speed for the whole time gives 180.",
+              "hi": "पूरे समय आरंभिक चाल लेने पर 180 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ring and a disc of the same mass and radius start from rest, and equal torques act on them about their central axes for the same time. Compared with the ring, the disc ends up with",
+        "hi": "समान द्रव्यमान और त्रिज्या का एक वलय और एक चकती विराम से चलते हैं, और उनके केन्द्रीय अक्षों के परितः समान समय तक समान बल आघूर्ण लगते हैं। वलय की तुलना में चकती का अंत में होता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "twice the angular speed",
+            "hi": "दुगुना कोणीय वेग"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "half the angular speed",
+            "hi": "आधा कोणीय वेग"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the same angular speed",
+            "hi": "समान कोणीय वेग"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "four times the angular speed",
+            "hi": "चार गुना कोणीय वेग"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which has the smaller I?",
+          "hi": "किसका I छोटा है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Same torque and time give the same angular momentum $I\\omega$.",
+          "hi": "समान बल आघूर्ण और समय समान कोणीय संवेग $I\\omega$ देते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\omega = \\frac{\\tau t}{I}$, and $I_{disc} = \\frac{MR^2}{2} = \\frac{I_{ring}}{2}$, so $\\omega_{disc} = 2\\omega_{ring}$.",
+            "hi": "$\\omega = \\frac{\\tau t}{I}$, और $I_{disc} = \\frac{MR^2}{2} = \\frac{I_{ring}}{2}$, अतः $\\omega_{disc} = 2\\omega_{ring}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That swaps the two bodies.",
+              "hi": "यह दोनों पिंडों को अदल-बदल देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Same mass does not mean the same moment of inertia.",
+              "hi": "समान द्रव्यमान का अर्थ समान जड़त्व आघूर्ण नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\omega$ goes as $1/I$, not $1/I^2$.",
+              "hi": "$\\omega$, $1/I$ के अनुसार है, $1/I^2$ के नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rotational-dynamics.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rotational-dynamics.core.rotational-equations",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A light rope is wound round a hollow cylinder of mass 2 kg and radius 0.5 m, free to turn about its axis. The rope is pulled with a force of 10 N. The angular acceleration of the cylinder is",
+        "hi": "2 kg द्रव्यमान और 0.5 m त्रिज्या के खोखले बेलन पर, जो अपने अक्ष के परितः घूमने के लिए स्वतंत्र है, एक हलकी रस्सी लिपटी है। रस्सी को 10 N बल से खींचा जाता है। बेलन का कोणीय त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 rad/s²",
+            "hi": "10 rad/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "20 rad/s²",
+            "hi": "20 rad/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 rad/s²",
+            "hi": "5 rad/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2.5 rad/s²",
+            "hi": "2.5 rad/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\alpha = FR / MR^2$",
+          "hi": "$\\alpha = FR / MR^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A hollow cylinder has $I = MR^2$.",
+          "hi": "खोखले बेलन का $I = MR^2$ है।"
+        },
+        "steps": [
+          {
+            "en": "$\\tau = FR = 10 \\times 0.5 = 5$ N m; $I = MR^2 = 2 \\times 0.5^2 = 0.5$ kg m²",
+            "hi": "$\\tau = FR = 10 \\times 0.5 = 5$ N m; $I = MR^2 = 2 \\times 0.5^2 = 0.5$ kg m²"
+          },
+          {
+            "en": "$\\alpha = \\frac{5}{0.5} = 10$ rad/s²",
+            "hi": "$\\alpha = \\frac{5}{0.5} = 10$ rad/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That uses $MR^2/2$, the solid cylinder.",
+              "hi": "यह $MR^2/2$ लेता है, जो ठोस बेलन है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the linear acceleration of the rope, $\\alpha R$, in m/s².",
+              "hi": "यह रस्सी का रेखीय त्वरण, $\\alpha R$, m/s² में है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That divides the torque by the mass instead of by the moment of inertia.",
+              "hi": "यह बल आघूर्ण को जड़त्व आघूर्ण के बजाय द्रव्यमान से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

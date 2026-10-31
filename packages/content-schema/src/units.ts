@@ -49,6 +49,9 @@ const TABLE: Record<string, UnitInfo> = {
   N: U("force", 1),
   kN: U("force", 1e3),
   dyn: U("force", 1e-5),
+  // momentum and impulse (kg m/s = N s)
+  "kg m/s": U("momentum", 1),
+  "N s": U("momentum", 1),
   // energy (J)
   J: U("energy", 1),
   kJ: U("energy", 1e3),

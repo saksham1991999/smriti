@@ -88,6 +88,12 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "rad/s", "m/s")).toBeUndefined();
   });
 
+  it("treats momentum in kg m/s and impulse in N s as one dimension", () => {
+    expect(convertUnit(3.6, "N s", "kg m/s")).toBeCloseTo(3.6);
+    expect(convertUnit(0.08, "kg m/s", "N s")).toBeCloseTo(0.08);
+    expect(convertUnit(1, "N s", "N")).toBeUndefined();
+  });
+
   it("converts density between g/cm^3 and kg/m^3", () => {
     expect(convertUnit(4.8, "g/cm^3", "kg/m^3")).toBeCloseTo(4800);
     expect(convertUnit(1000, "kg/m³", "g/cm³")).toBeCloseTo(1);

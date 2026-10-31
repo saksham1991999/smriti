@@ -192,8 +192,16 @@ export default function TryLessonQuiz(props: TryLessonQuizProps) {
                       {String.fromCharCode(65 + i)}
                     </span>
                     <span className="opt-text">{o.text}</span>
-                    {state === "ok" && <CheckCircle className="opt-icon" size={24} weight="fill" aria-label={s.correct} />}
-                    {state === "bad" && <XCircle className="opt-icon" size={24} weight="fill" aria-label={s.wrong} />}
+                    {state === "ok" && (
+                      <span className="opt-icon" role="img" aria-label={s.correct}>
+                        <CheckCircle size={24} weight="fill" aria-hidden="true" />
+                      </span>
+                    )}
+                    {state === "bad" && (
+                      <span className="opt-icon" role="img" aria-label={s.wrong}>
+                        <XCircle size={24} weight="fill" aria-hidden="true" />
+                      </span>
+                    )}
                   </label>
                 );
               })}

@@ -2,6 +2,7 @@
 import Art from "./Art.astro";
 import Icon from "./Icon.astro";
 import { site, type Locale } from "../config/site";
+import { upcomingApps } from "../config/apps";
 import { getIndex } from "../content-index";
 import { fmt, list, messages } from "../i18n";
 import { localePath, startUrl } from "../lib/urls";
@@ -12,13 +13,17 @@ interface Props {
 const { lang } = Astro.props;
 const m = messages(lang);
 const idx = getIndex();
-const exams = list(lang, idx.exams.map((e) => e.short_name[lang]));
+// Released exams by name; with none released, the exam apps being prepared (by name only).
+const eyebrow =
+  idx.exams.length > 0
+    ? fmt(m.hero.eyebrow, { exams: list(lang, idx.exams.map((e) => e.short_name[lang])) })
+    : fmt(m.hero.eyebrowSoon, { exams: list(lang, upcomingApps(site.apps, []).filter((a) => a.phase === 1).map((a) => m.apps.names[a.id])) });
 ---
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="chip tint eyebrow-chip"><Icon name="graduation-cap" size={20} />{fmt(m.hero.eyebrow, { exams })}</p>
+      <p class="chip tint eyebrow-chip"><Icon name="graduation-cap" size={20} />{eyebrow}</p>
       <h1 id="hero-title" class="t-hero">{m.hero.title}</h1>
       <p class="t-lead muted hero-body">{m.hero.body}</p>
       <div class="hero-ctas">

@@ -7,6 +7,7 @@ import ExamPattern from "../../../../components/ExamPattern.astro";
 import Promises from "../../../../components/Promises.astro";
 import TryItSection from "../../../../components/TryItSection.astro";
 import CtaBand from "../../../../components/CtaBand.astro";
+import AppLinks from "../../../../components/AppLinks.astro";
 import Icon from "../../../../components/Icon.astro";
 import { site, type Locale } from "../../../../config/site";
 import { getIndex, paths, subjectsForExam, visibleBlueprint, type Exam } from "../../../../content-index";
@@ -101,6 +102,8 @@ const jsonLd = [
   <Promises lang={lang} heading={fmt(m.exam.howHeading, { brand, exam: short })} />
 
   <TryItSection lang={lang} lesson={exam.try_lesson} heading={fmt(m.exam.tryHeading, { exam: short })} exam={exam.id} />
+
+  <AppLinks lang={lang} examId={exam.id} heading={fmt(m.apps.examHeading, { exam: short })} />
 
   <CtaBand lang={lang} exam={exam.id} button={fmt(m.exam.start, { exam: short })} placement="cta_band" />
 

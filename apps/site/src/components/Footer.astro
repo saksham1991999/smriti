@@ -28,6 +28,7 @@ const year = new Date().getUTCFullYear();
         <h2>{m.footer.examsHeading}</h2>
         <ul>
           {idx.exams.map((e) => <li><a href={localePath(lang, paths.exam(e))}>{e.short_name[lang]}</a></li>)}
+          {idx.exams.length === 0 && <li class="muted">{m.footer.examsSoon}</li>}
         </ul>
       </nav>
       <nav aria-label={m.footer.product}>
@@ -35,6 +36,7 @@ const year = new Date().getUTCFullYear();
         <ul>
           <li><a href={`${home}#how`}>{m.nav.how}</a></li>
           <li><a href={`${home}#pricing`}>{m.nav.pricing}</a></li>
+          <li><a href={`${home}#apps`}>{m.footer.apps}</a></li>
           <li><a href={`${home}#faq`}>{m.nav.faq}</a></li>
         </ul>
       </nav>
@@ -43,6 +45,7 @@ const year = new Date().getUTCFullYear();
         <ul>
           <li><a href={localePath(lang, "/privacy/")}>{m.footer.privacy}</a></li>
           <li><a href={localePath(lang, "/terms/")}>{m.footer.terms}</a></li>
+          <li><a href={localePath(lang, "/childrens-data/")}>{m.footer.children}</a></li>
         </ul>
       </nav>
     </div>

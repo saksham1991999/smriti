@@ -1,0 +1,11 @@
+---
+// Children's data notice (DPDP Act 2023, PRD §12): an outline for counsel, never legal text.
+import LegalDraft from "../../../components/LegalDraft.astro";
+import type { Locale } from "../../../config/site";
+import { localeParams } from "../../../lib/routes";
+
+export const getStaticPaths = () => localeParams();
+const { lang } = Astro.props as { lang: Locale };
+---
+
+<LegalDraft lang={lang} doc="children" />

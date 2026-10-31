@@ -15,6 +15,7 @@ const PAGES = [
   { path: TOPIC, type: "topic" },
   { path: "/privacy/", type: "legal" },
   { path: "/terms/", type: "legal" },
+  { path: "/childrens-data/", type: "legal" },
 ];
 const hiPath = (p: string) => (p === "/" ? "/hi/" : `/hi${p}`);
 
@@ -56,10 +57,42 @@ for (const p of PAGES) {
   }
 }
 
-test("legal pages are drafts with noindex", async ({ page }) => {
-  await page.goto("/privacy/");
-  await expect(page.getByText("Draft, pending legal review")).toBeVisible();
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+test("legal pages are drafts with noindex, linked from the footer", async ({ page }) => {
+  for (const path of ["/privacy/", "/terms/", "/childrens-data/", "/hi/childrens-data/"]) {
+    await page.goto(path);
+    await expect(page.locator(".draft")).toBeVisible();
+    await expect(page.locator(".to-write").first()).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  }
+  await page.goto("/");
+  for (const href of ["/privacy/", "/terms/", "/childrens-data/"]) {
+    await expect(page.locator(`footer a[href="${href}"]`)).toHaveCount(1);
+  }
+});
+
+test("get-the-app section: web app CTA, and store links only once configured", async ({ page }) => {
+  await page.goto("/");
+  const apps = page.locator("#apps");
+  await expect(apps.locator("h2")).toHaveText("Get the app");
+  const web = apps.locator('a[data-cta="start"][data-placement="apps"]');
+  await expect(web).toHaveAttribute("href", /\/start\?lang=en&.*utm_campaign=apps/);
+  await expect(apps.locator("[data-app]")).toHaveCount(5);
+  // No STORE_URLS_* in this build: every store says coming soon, as text, never as a link.
+  await expect(apps.locator('a[href*="play.google.com"], a[href*="apps.apple.com"]')).toHaveCount(0);
+  await expect(apps.locator("[data-store-soon]")).toHaveCount(10);
+  await expect(apps.locator('[data-app="ssc"] [data-store-soon="play"]')).toHaveText(/coming later/);
+  await page.goto("/exams/neet/");
+  await expect(page.locator("#apps [data-app]")).toHaveCount(2);
+  await expect(page.locator('#apps a[data-placement="exam_apps"]')).toHaveAttribute("href", /exam=neet-ug/);
+});
+
+test("canonical and hreflang use one origin", async ({ page }) => {
+  await page.goto("/hi/exams/");
+  const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+  const en = await page.locator('link[rel="alternate"][hreflang="en"]').getAttribute("href");
+  expect(canonical).toMatch(/^https:\/\/[^/]+\/hi\/exams\/$/);
+  expect(new URL(en!).origin).toBe(new URL(canonical!).origin);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", new RegExp(`^${new URL(canonical!).origin}/og/`));
 });
 
 test("home has FAQPage schema and honest pricing", async ({ page }) => {
@@ -118,7 +151,7 @@ test("periodic teaser selects elements with click and arrow keys", async ({ page
   await pt.getByRole("button", { name: /^Sodium, atomic number 11/ }).click();
   await expect(pt.locator(".pt-tile .sym")).toHaveText("Na");
   await page.keyboard.press("ArrowRight");
-  await expect(page.locator(":focus")).toHaveAttribute("aria-label", /^Magnesium/);
+  await expect(page.locator(":focus")).toHaveAccessibleName(/^Magnesium/);
   await page.keyboard.press("Enter");
   await expect(pt.locator(".pt-tile .sym")).toHaveText("Mg");
 });
@@ -137,6 +170,7 @@ test("robots.txt and sitemap exist", async ({ request }) => {
   const xml = await sm.text();
   expect(xml).toContain('hreflang="hi"');
   expect(xml).not.toContain("/privacy/");
+  expect(xml).not.toContain("/childrens-data/");
 });
 
 test("no broken internal links in the build", () => {

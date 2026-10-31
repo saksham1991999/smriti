@@ -11,7 +11,7 @@ const { lang, href } = Astro.props;
 const name = site.brand.name;
 ---
 
-<a class="brand" href={href} aria-label={lang === "hi" ? `${name.hi} (${name.en}), होम` : `${name.en} (${name.hi}), home`}>
+<a class="brand" href={href} aria-label={`${name.en} ${name.hi}, ${lang === "hi" ? "होम" : "home"}`}>
   <img src="/brand/smriti-mark.svg" width="34" height="34" alt="" />
   <span class="wm" aria-hidden="true">
     <span class="wm-en" lang="en">{name.en}</span>

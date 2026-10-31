@@ -2,6 +2,7 @@
 import Art from "./Art.astro";
 import Icon from "./Icon.astro";
 import { site, type Locale } from "../config/site";
+import { upcomingApps } from "../config/apps";
 import { getIndex, paths, subjectsForExam } from "../content-index";
 import { fmt, messages } from "../i18n";
 import { localePath } from "../lib/urls";
@@ -24,6 +25,9 @@ const ACCENT_ART: Record<string, ArtName> = {
 };
 const Heading = headingLevel === 1 ? "h1" : "h2";
 const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, exam) }));
+// Exam apps with nothing released yet: named, marked "coming soon", and never linked.
+const upcoming = upcomingApps(site.apps, idx.exams.map((e) => e.id));
+const sub = cards.length === 0 ? m.exams.soonSub : fmt(m.exams.sub, { brand: site.brand.name[lang] });
 ---
 
 <section class="section" id="exams" aria-labelledby="exams-title">
@@ -34,7 +38,7 @@ const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, ex
           <Heading id="exams-title" class="t-display">
             {headingLevel === 1 ? m.exams.allTitle : m.exams.heading}
           </Heading>
-          <p class="t-lead muted">{fmt(m.exams.sub, { brand: site.brand.name[lang] })}</p>
+          <p class="t-lead muted">{sub}</p>
         </div>
       )
     }
@@ -60,6 +64,18 @@ const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, ex
               {fmt(m.exams.explore, { exam: exam.short_name[lang] })}
               <Icon name="arrow-right" size={20} />
             </span>
+          </li>
+        ))
+      }
+      {
+        upcoming.map((app) => (
+          <li class:list={["exam-card", "soon", `x-${app.id}`]} data-upcoming={app.id}>
+            <div class="top">
+              <span class="pill">{app.phase > 1 ? m.exams.later : m.exams.soon}</span>
+              <Art name={ACCENT_ART[app.id] ?? "subject-physics"} lang={lang} decorative sizes="120px" class="exam-art" />
+            </div>
+            <h3 class="t-title">{m.apps.names[app.id]}</h3>
+            <p class="t-label muted">{fmt(m.exams.soonApp, { app: app.appName[lang] })}</p>
           </li>
         ))
       }
@@ -107,9 +123,17 @@ const cards = idx.exams.map((exam) => ({ exam, subjects: subjectsForExam(idx, ex
     border-radius: var(--r-card-large) var(--r-card-large) 0 0;
     background: var(--primary);
   }
-  .exam-card:hover {
+  .exam-card:not(.soon):hover {
     transform: translateY(-2px);
     box-shadow: var(--sh-raised);
+  }
+  .soon {
+    grid-template-rows: auto auto 1fr;
+    box-shadow: none;
+  }
+  .soon .pill {
+    background: var(--surface-sunken);
+    color: var(--ink);
   }
   .exam-card:focus-within {
     outline: 3px solid var(--primary);

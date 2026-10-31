@@ -10,6 +10,7 @@ import type { HttpResponse, SyncStateResponse } from '@smriti/app-core';
 
 import { AiFakes } from './ai';
 import { InsightsFakes } from './insights';
+import { LiveFakes } from './live';
 import { ParentFakes } from './parent';
 import { SocialFakes } from './social';
 import type { FakeUser } from './server';
@@ -40,6 +41,7 @@ export class FeatureFakes {
   readonly social: SocialFakes;
   readonly ai: AiFakes;
   readonly insights: InsightsFakes;
+  readonly live: LiveFakes;
   private readonly modules: FeatureModule[];
 
   constructor(readonly ctx: FeatureContext) {
@@ -47,7 +49,8 @@ export class FeatureFakes {
     this.social = new SocialFakes(ctx);
     this.ai = new AiFakes(ctx);
     this.insights = new InsightsFakes(ctx);
-    this.modules = [this.parent, this.social, this.ai, this.insights];
+    this.live = new LiveFakes(ctx);
+    this.modules = [this.parent, this.social, this.ai, this.insights, this.live];
   }
 
   /** Adds a module (later features register theirs here). */

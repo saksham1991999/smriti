@@ -144,6 +144,30 @@ const demos: Record<string, Demo> = {
     await proAdult(app, fake, { 'analytics.min_tagged_answers': 20 });
     return '/insights';
   },
+  // MOCK-03 before the window, during it, and MOCK-24 after results (scores are demo data).
+  live: async (app, fake) => {
+    await proAdult(app, fake, { 'live.room_lead_min': 30 });
+    liveMock(app, fake, 10);
+    return '/live/live.demo';
+  },
+  livenow: async (app, fake) => {
+    await proAdult(app, fake, { 'live.room_lead_min': 30 });
+    liveMock(app, fake, -100);
+    return '/live/live.demo';
+  },
+  liveboard: async (app, fake) => {
+    await proAdult(app, fake, { 'mock.min_attempts_for_percentile': 3 });
+    await app.continueWithGoogle({ email: 'meera@example.com', name: 'Meera Iyer' });
+    const m = liveMock(app, fake, -400);
+    const me = app.store.getState().session.userId!;
+    for (const [name, score] of [['Ravi Kumar', 212], ['Asha Rao', 196], ['Kiran Das', 150]] as const) {
+      const u = fake.addLearner({ name, email: `${name.split(' ')[0]!.toLowerCase()}@example.com`, birthYear: 2004 });
+      m.scores.set(u.id, score);
+    }
+    m.scores.set(me, 180);
+    fake.features.live.publish(m.id);
+    return '/live/live.demo/leaderboard';
+  },
   voicepro: async (app, fake) => {
     fake.flags = PHASE2;
     await onboard(app, 'adult');
@@ -168,6 +192,18 @@ async function proAdult(app: SmritiApp, fake: FakeApiServer, flags: Record<strin
   const me = [...fake.users.values()].find((u) => u.id === app.store.getState().session.userId);
   if (me) me.entitlement = { plan: 'pro', pro_until: null, status: 'active' };
   await app.syncNow();
+}
+
+function liveMock(app: SmritiApp, fake: FakeApiServer, startInMin: number) {
+  const now = app.deps.clock();
+  return fake.features.live.schedule({
+    id: 'live.demo',
+    title: { en: 'Fixture live mock', hi: 'फ़िक्स्चर लाइव मॉक' },
+    windowStart: now + startInMin * 60_000,
+    windowEnd: now + (startInMin + 240) * 60_000,
+    resultsAt: now + (startInMin + 300) * 60_000,
+    durationS: 180 * 60,
+  });
 }
 
 /** Marks the first topic whose lesson has a list mnemonic as learned (fixture content). */

@@ -65,6 +65,7 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Practice history | PRC-16 | Built | Built | Not built | |
 | Mock list | MOCK-01 | Built | Built | Built | Web shows the exam's mock on the runner's start screen. |
 | Mock runner, submit and report | MOCK-02 to MOCK-19 | Built | Built | Built | |
+| Live mocks | MOCK-03, MOCK-24 | Partial | Partial | Not built | Mobile at `/live/[id]`: the room through `/v1/live/mocks/{id}` with a countdown on the server's clock (kept offset, so it runs offline), [Register] (Pro; free opens the paywall) to Registered to [Start now] into MOCK-02/04 for that mock, the late-start line, taken and closed states; the leaderboard with frozen ranks, percentiles and the learner's row pinned. Not built: the MOCK-01 live strip that links here (the mock list is the practice build's screen), reminder toggle and Add to calendar, the Realtime/SSE start signal (the room refetches at window edges instead), Friends and My city tabs, and nickname words for under-18 rows (shown as "Nickname" with their pet). |
 | Solutions | MOCK-22 | Built | Built | Not built | |
 | Mock history and custom mock | MOCK-25, MOCK-26 | Built | Built | Not built | |
 

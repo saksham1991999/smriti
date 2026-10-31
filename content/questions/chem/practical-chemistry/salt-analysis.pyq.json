@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.practical-chemistry.salt-analysis",
+  "questions": [
+    {
+      "id": "q.chem.practical-chemistry.salt-analysis.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.practical-chemistry.salt-analysis.core.cation-analysis",
+          "weight": 0.5
+        },
+        {
+          "id": "chem.practical-chemistry.salt-analysis.core.anion-analysis",
+          "weight": 0.5
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A salt with few drops of conc. $\\ce{HCl}$ gives apple green colour in flame test. The group precipitate of the salt is dissolved in acetic acid and treated with $\\ce{K2CrO4}$ to give yellow precipitate. When the sodium carbonate extract of the salt solution is heated with conc. $\\ce{HNO3}$ and ammonium molybdate, it resulted a canary yellow precipitate. The cation and anion present in the salt are respectively,",
+        "hi": "सांद्र $\\ce{HCl}$ की कुछ बूँदों के साथ एक लवण ज्वाला परीक्षण में सेब जैसा हरा रंग देता है। लवण के समूह अवक्षेप को ऐसीटिक अम्ल में घोलकर $\\ce{K2CrO4}$ से उपचारित करने पर पीला अवक्षेप मिलता है। जब लवण विलयन के सोडियम कार्बोनेट निष्कर्ष को सांद्र $\\ce{HNO3}$ और अमोनियम मॉलिब्डेट के साथ गर्म किया जाता है, तो कैनरी पीला अवक्षेप बनता है। लवण में उपस्थित धनायन और ऋणायन क्रमशः हैं,"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{Ca^2+}$ and $\\ce{SO4^2-}$",
+            "hi": "$\\ce{Ca^2+}$ और $\\ce{SO4^2-}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{Ba^2+}$ and $\\ce{PO4^3-}$",
+            "hi": "$\\ce{Ba^2+}$ और $\\ce{PO4^3-}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{Mn^2+}$ and $\\ce{PO4^3-}$",
+            "hi": "$\\ce{Mn^2+}$ और $\\ce{PO4^3-}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{Ba^2+}$ and $\\ce{SO4^2-}$",
+            "hi": "$\\ce{Ba^2+}$ और $\\ce{SO4^2-}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Each observation is a fingerprint: apple green flame and yellow chromate precipitate mean barium; a canary yellow precipitate with ammonium molybdate means phosphate.",
+          "hi": "प्रत्येक प्रेक्षण एक पहचान है: सेब जैसी हरी ज्वाला और पीला क्रोमेट अवक्षेप बेरियम दर्शाते हैं; अमोनियम मॉलिब्डेट के साथ कैनरी पीला अवक्षेप फ़ॉस्फ़ेट दर्शाता है।"
+        },
+        "steps": [
+          {
+            "en": "Flame and $\\ce{BaCrO4}$: cation $\\ce{Ba^2+}$.",
+            "hi": "ज्वाला और $\\ce{BaCrO4}$: धनायन $\\ce{Ba^2+}$।"
+          },
+          {
+            "en": "Ammonium phosphomolybdate (canary yellow): anion $\\ce{PO4^3-}$.",
+            "hi": "अमोनियम फ़ॉस्फ़ोमॉलिब्डेट (कैनरी पीला): ऋणायन $\\ce{PO4^3-}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 70
+      }
+    }
+  ]
+}

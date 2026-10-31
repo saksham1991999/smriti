@@ -1,0 +1,165 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.basic-concepts.stoichiometry",
+  "questions": [
+    {
+      "id": "q.chem.basic-concepts.stoichiometry.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.basic-concepts.stoichiometry.core.stoichiometry-calc",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The mass of iron converted into $\\ce{Fe3O4}$ by the action of $18\\ \\mathrm{g}$ of steam is : (Given : Molar mass of H, O and Fe are $1$, $16$ and $56\\ \\mathrm{g\\,mol^{-1}}$ respectively) Assume iron is present in excess :",
+        "hi": "$\\ce{Fe3O4}$ में परिवर्तित लोहे का द्रव्यमान, जब $18\\ \\mathrm{g}$ भाप क्रिया करती है, है : (दिया है : H, O और Fe के मोलर द्रव्यमान क्रमशः $1$, $16$ और $56\\ \\mathrm{g\\,mol^{-1}}$ हैं) मान लीजिए कि लोहा आधिक्य में है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2.1\\ \\mathrm{g}$",
+            "hi": "$2.1\\ \\mathrm{g}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$4.2\\ \\mathrm{g}$",
+            "hi": "$4.2\\ \\mathrm{g}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$21\\ \\mathrm{g}$",
+            "hi": "$21\\ \\mathrm{g}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$42\\ \\mathrm{g}$",
+            "hi": "$42\\ \\mathrm{g}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Write the balanced equation: three iron atoms use four water molecules. One mole of steam therefore uses three quarters of a mole of iron.",
+          "hi": "संतुलित समीकरण लिखिए: तीन लोहे के परमाणु चार जल अणु लेते हैं। अतः एक मोल भाप तीन-चौथाई मोल लोहा लेती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\ce{3Fe + 4H2O -> Fe3O4 + 4H2}$.",
+            "hi": "$\\ce{3Fe + 4H2O -> Fe3O4 + 4H2}$।"
+          },
+          {
+            "en": "$18\\ \\mathrm{g}$ steam $=1\\ \\mathrm{mol}$, so iron $=\\frac34 \\times 56=42\\ \\mathrm{g}$.",
+            "hi": "$18\\ \\mathrm{g}$ भाप $=1\\ \\mathrm{mol}$, अतः लोहा $=\\frac34 \\times 56=42\\ \\mathrm{g}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 51
+      }
+    },
+    {
+      "id": "q.chem.basic-concepts.stoichiometry.9002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "chem.basic-concepts.stoichiometry.core.stoichiometry-calc",
+          "weight": 0.5
+        },
+        {
+          "id": "chem.hydrocarbons.classification.core.hydrocarbon-classes",
+          "weight": 0.5
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "One mole of an alkane $(x)$ requires $8$ mole oxygen for complete combustion. Sum of number of carbon and hydrogen atoms in the alkane $(x)$ is ______.",
+        "hi": "एक ऐल्केन $(x)$ के एक मोल को पूर्ण दहन के लिए $8$ मोल ऑक्सीजन की आवश्यकता होती है। ऐल्केन $(x)$ में कार्बन और हाइड्रोजन परमाणुओं की संख्या का योग ______ है।"
+      },
+      "answer": {
+        "value": 17,
+        "unit": null
+      },
+      "solution": {
+        "feynman": {
+          "en": "Balance the general combustion: $\\ce{C_nH_{2n+2}}$ needs $\\frac{3n+1}{2}$ moles of oxygen.",
+          "hi": "व्यापक दहन संतुलित कीजिए: $\\ce{C_nH_{2n+2}}$ को $\\frac{3n+1}{2}$ मोल ऑक्सीजन चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{3n+1}{2}=8$ gives $n=5$: pentane, $\\ce{C5H12}$.",
+            "hi": "$\\frac{3n+1}{2}=8$ से $n=5$: पेन्टेन, $\\ce{C5H12}$।"
+          },
+          {
+            "en": "$5+12=17$.",
+            "hi": "$5+12=17$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 73
+      }
+    }
+  ]
+}

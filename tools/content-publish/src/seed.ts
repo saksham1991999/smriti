@@ -3,7 +3,7 @@
  * the first launch (TRD §7). One pack per variant and locale, at most `max_bytes` (8 MB).
  */
 import type { SeedPack, SeedPackSpecFile } from "@smriti/content-schema";
-import { validateWith } from "@smriti/content-schema";
+import { ACTIVITY_KINDS, validateWith } from "@smriti/content-schema";
 import type { ContentSet } from "@smriti/content-schema/check";
 
 import type { BuiltBundle } from "./bundle.js";
@@ -78,6 +78,8 @@ export async function buildSeedPack(inp: SeedInputs): Promise<BuiltSeedPack> {
             addBundle(inp.bundles.get(bundleKey(t, "deep_dive")));
             addBundle(inp.bundles.get(bundleKey(t, "quick_revision")));
             addBundle(inp.bundles.get(bundleKey(t, "practice")));
+            // Little learner stories, songs and play work offline from the first run.
+            for (const kind of ACTIVITY_KINDS) addBundle(inp.bundles.get(bundleKey(t, kind)));
           } else if (spec.include_placement) {
             // Find my level draws one placement question per early chapter (learn §6.5).
             const practice = inp.bundles.get(bundleKey(t, "practice"));

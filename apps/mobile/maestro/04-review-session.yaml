@@ -1,0 +1,34 @@
+# MEM-01 to MEM-04: today's reviews rated with on-device FSRS. Runs the session only when cards
+# are due (after 02-learn-chapter and a day later, or with cards from sync).
+appId: ${APP_ID}
+name: Review session
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 30000
+- openLink: "${SCHEME}://memory"
+- assertVisible:
+    id: "MEM-01"
+- runFlow:
+    when:
+      visible:
+        id: "mem-start"
+    commands:
+      - tapOn:
+          id: "mem-start"
+      - repeat:
+          times: 30
+          while:
+            notVisible:
+              id: "MEM-04"
+          commands:
+            - tapOn:
+                id: "review-show"
+            - tapOn:
+                text: "Good.*"
+      - assertVisible:
+          id: "review-remembered"
+      - tapOn:
+          id: "review-done"

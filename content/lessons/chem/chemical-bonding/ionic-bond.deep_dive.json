@@ -1,0 +1,277 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.ionic-bond:deep_dive",
+  "topic": "chem.chemical-bonding.ionic-bond",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Making ions",
+        "hi": "आयन बनाना"
+      },
+      "subtopic": "chem.chemical-bonding.ionic-bond.core",
+      "card_ids": [
+        "chem.chemical-bonding.ionic-bond:dd:01",
+        "chem.chemical-bonding.ionic-bond:dd:02",
+        "chem.chemical-bonding.ionic-bond:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Lattice enthalpy pays the bill",
+        "hi": "जालक एन्थैल्पी कीमत चुकाती है"
+      },
+      "subtopic": "chem.chemical-bonding.ionic-bond.core",
+      "card_ids": [
+        "chem.chemical-bonding.ionic-bond:dd:04",
+        "chem.chemical-bonding.ionic-bond:dd:05",
+        "chem.chemical-bonding.ionic-bond:dd:06",
+        "chem.chemical-bonding.ionic-bond:dd:07",
+        "chem.chemical-bonding.ionic-bond:dd:08"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:01",
+      "type": "story",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "A spoon of little cubes",
+        "hi": "छोटे घनों से भरा चम्मच"
+      },
+      "body": {
+        "en": "Look closely at coarse table salt and many grains are tiny cubes. Each grain is a huge, orderly stack of sodium ions and chloride ions. What holds them so neatly together?",
+        "hi": "मोटे नमक को ध्यान से देखिए, कई दाने छोटे-छोटे घन हैं। हर दाना सोडियम आयनों और क्लोराइड आयनों का एक विशाल, व्यवस्थित ढेर है। उन्हें इतने व्यवस्थित ढंग से कौन बाँधे रखता है?"
+      },
+      "media": "img.chemical-bonding.salt-crystals",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Ionisation, electron gain and the lattice",
+        "hi": "आयनन, इलेक्ट्रॉन लब्धि और जालक"
+      },
+      "body": {
+        "en": "Forming an ionic compound depends on how easily the positive and negative ions form from the neutral atoms, and on how the ions arrange themselves in the solid lattice.\n\nA cation forms by ionisation, $\\ce{M(g) -> M+(g) + e-}$, which is always endothermic. An anion forms by electron gain, $\\ce{X(g) + e- -> X-(g)}$, whose enthalpy change may be exothermic or endothermic.\n\nSo ionic bonds form more easily between elements with comparatively low ionisation enthalpies and elements with a comparatively high negative electron gain enthalpy. Most ionic compounds have cations from metals and anions from non-metals; the ammonium ion, $\\ce{NH4+}$, made of two non-metals, is an exception.",
+        "hi": "आयनिक यौगिक का बनना इस पर निर्भर है कि उदासीन परमाणुओं से धन और ऋण आयन कितनी आसानी से बनते हैं, और ठोस जालक में आयन कैसे व्यवस्थित होते हैं।\n\nधनायन आयनन से बनता है, $\\ce{M(g) -> M+(g) + e-}$, जो सदा ऊष्माशोषी है। ऋणायन इलेक्ट्रॉन लब्धि से बनता है, $\\ce{X(g) + e- -> X-(g)}$, जिसका एन्थैल्पी परिवर्तन ऊष्माक्षेपी या ऊष्माशोषी हो सकता है।\n\nइसलिए आयनिक आबंध उन तत्वों के बीच अधिक आसानी से बनते हैं जिनकी आयनन एन्थैल्पी अपेक्षाकृत कम हो और उन तत्वों के साथ जिनकी इलेक्ट्रॉन लब्धि एन्थैल्पी अपेक्षाकृत अधिक ऋणात्मक हो। अधिकांश आयनिक यौगिकों में धनायन धातुओं से और ऋणायन अधातुओं से आते हैं; दो अधातुओं से बना अमोनियम आयन, $\\ce{NH4+}$, एक अपवाद है।"
+      },
+      "media": "img.chemical-bonding.salt-crystals",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.ionic-bond.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:04",
+      "type": "formula",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Energy to make the gaseous ions",
+        "hi": "गैसीय आयन बनाने की ऊर्जा"
+      },
+      "latex": "\\Delta H_{\\text{ions}} = \\Delta_i H + \\Delta_{eg} H",
+      "symbols": [
+        {
+          "symbol": "\\Delta_i H",
+          "meaning": {
+            "en": "ionisation enthalpy of the metal atom",
+            "hi": "धातु परमाणु की आयनन एन्थैल्पी"
+          },
+          "unit": "kJ/mol"
+        },
+        {
+          "symbol": "\\Delta_{eg} H",
+          "meaning": {
+            "en": "electron gain enthalpy of the non-metal atom",
+            "hi": "अधातु परमाणु की इलेक्ट्रॉन लब्धि एन्थैल्पी"
+          },
+          "unit": "kJ/mol"
+        },
+        {
+          "symbol": "\\Delta H_{\\text{ions}}",
+          "meaning": {
+            "en": "enthalpy change to turn the two gaseous atoms into gaseous ions",
+            "hi": "दो गैसीय परमाणुओं को गैसीय आयनों में बदलने का एन्थैल्पी परिवर्तन"
+          },
+          "unit": "kJ/mol"
+        }
+      ],
+      "conditions": {
+        "en": "This sum may be positive. The crystal is still stable because the enthalpy of lattice formation released is larger.",
+        "hi": "यह योग धनात्मक हो सकता है। फिर भी क्रिस्टल स्थायी है क्योंकि जालक बनने में मुक्त एन्थैल्पी इससे अधिक है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "For sodium chloride, $\\Delta_i H$ of Na is $495.8\\ \\mathrm{kJ\\,mol^{-1}}$ and $\\Delta_{eg} H$ of Cl is $-348.7\\ \\mathrm{kJ\\,mol^{-1}}$. The lattice enthalpy of NaCl is $788\\ \\mathrm{kJ\\,mol^{-1}}$. How much energy is needed to make the gaseous ions, and why does NaCl still form?",
+        "hi": "सोडियम क्लोराइड के लिए Na की $\\Delta_i H$ $495.8\\ \\mathrm{kJ\\,mol^{-1}}$ और Cl की $\\Delta_{eg} H$ $-348.7\\ \\mathrm{kJ\\,mol^{-1}}$ है। NaCl की जालक एन्थैल्पी $788\\ \\mathrm{kJ\\,mol^{-1}}$ है। गैसीय आयन बनाने में कितनी ऊर्जा लगती है, और फिर भी NaCl क्यों बनता है?"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\Delta H_{\\text{ions}} = 495.8 + (-348.7) = 147.1\\ \\mathrm{kJ\\,mol^{-1}}$, so energy must be put in.",
+          "hi": "$\\Delta H_{\\text{ions}} = 495.8 + (-348.7) = 147.1\\ \\mathrm{kJ\\,mol^{-1}}$, अतः ऊर्जा देनी पड़ती है।"
+        },
+        {
+          "en": "Forming the lattice releases $788\\ \\mathrm{kJ\\,mol^{-1}}$, far more than $147.1\\ \\mathrm{kJ\\,mol^{-1}}$.",
+          "hi": "जालक बनने पर $788\\ \\mathrm{kJ\\,mol^{-1}}$ मुक्त होती है, जो $147.1\\ \\mathrm{kJ\\,mol^{-1}}$ से कहीं अधिक है।"
+        },
+        {
+          "en": "So the stability of an ionic compound comes from its lattice enthalpy, not simply from the ions reaching an octet.",
+          "hi": "इसलिए आयनिक यौगिक का स्थायित्व उसकी जालक एन्थैल्पी से आता है, केवल आयनों के अष्टक पा लेने से नहीं।"
+        }
+      ],
+      "answer": {
+        "en": "$147.1\\ \\mathrm{kJ\\,mol^{-1}}$ is needed; the $788\\ \\mathrm{kJ\\,mol^{-1}}$ released by lattice formation more than pays for it.",
+        "hi": "$147.1\\ \\mathrm{kJ\\,mol^{-1}}$ चाहिए; जालक बनने पर मुक्त $788\\ \\mathrm{kJ\\,mol^{-1}}$ इसकी भरपाई से कहीं अधिक है।"
+      },
+      "answer_value": {
+        "value": 147.1,
+        "unit": "kJ/mol",
+        "tolerance": {
+          "abs": 0.5
+        }
+      },
+      "common_trap": {
+        "en": "Adding $348.7$ instead of subtracting it: the electron gain enthalpy of Cl is negative.",
+        "hi": "$348.7$ घटाने के बजाय जोड़ देना: Cl की इलेक्ट्रॉन लब्धि एन्थैल्पी ऋणात्मक है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Lattice enthalpy",
+        "hi": "जालक एन्थैल्पी"
+      },
+      "body": {
+        "en": "The lattice enthalpy of an ionic solid is the energy required to completely separate one mole of the solid ionic compound into its gaseous constituent ions. For NaCl it is $788\\ \\mathrm{kJ\\,mol^{-1}}$: that much energy separates one mole of solid NaCl into one mole of $\\ce{Na+(g)}$ and one mole of $\\ce{Cl-(g)}$ to an infinite distance.\n\nIt includes both the attraction between oppositely charged ions and the repulsion between ions of the same charge, arranged in three dimensions.",
+        "hi": "आयनिक ठोस की जालक एन्थैल्पी वह ऊर्जा है जो ठोस आयनिक यौगिक के एक मोल को उसके गैसीय घटक आयनों में पूरी तरह अलग करने के लिए आवश्यक है। NaCl के लिए यह $788\\ \\mathrm{kJ\\,mol^{-1}}$ है: इतनी ऊर्जा एक मोल ठोस NaCl को एक मोल $\\ce{Na+(g)}$ और एक मोल $\\ce{Cl-(g)}$ में अनंत दूरी तक अलग करती है।\n\nइसमें विपरीत आवेश वाले आयनों के बीच आकर्षण और समान आवेश वाले आयनों के बीच प्रतिकर्षण, दोनों त्रिविमीय व्यवस्था में, शामिल हैं।"
+      },
+      "media": "img.chemical-bonding.salt-crystals",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.2.1"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:07",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.ionic-bond.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.ionic-bond:dd:08",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Ionic bonds form easily between a low-ionisation-enthalpy element and one with a highly negative electron gain enthalpy.",
+          "hi": "आयनिक आबंध कम आयनन एन्थैल्पी वाले तत्व और अधिक ऋणात्मक इलेक्ट्रॉन लब्धि एन्थैल्पी वाले तत्व के बीच आसानी से बनते हैं।"
+        },
+        {
+          "en": "Lattice enthalpy: energy to separate one mole of an ionic solid into gaseous ions; NaCl $788\\ \\mathrm{kJ\\,mol^{-1}}$.",
+          "hi": "जालक एन्थैल्पी: एक मोल आयनिक ठोस को गैसीय आयनों में अलग करने की ऊर्जा; NaCl $788\\ \\mathrm{kJ\\,mol^{-1}}$।"
+        },
+        {
+          "en": "The lattice enthalpy released outweighs the energy needed to make the ions.",
+          "hi": "मुक्त जालक एन्थैल्पी आयन बनाने में लगी ऊर्जा से अधिक होती है।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.2, §4.2.1"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

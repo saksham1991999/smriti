@@ -13,6 +13,129 @@
       "chem.equilibrium.ph-scale"
     ],
     "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "end-point",
+        "prompt": {
+          "en": "Add base from the burette. Stop as soon as the indicator changes colour.",
+          "hi": "ब्यूरेट से क्षार मिलाएँ। सूचक का रंग बदलते ही रुक जाएँ।"
+        },
+        "hint": {
+          "en": "Near the change, add one drop at a time.",
+          "hi": "रंग बदलने के पास एक-एक बूँद डालें।"
+        },
+        "check": {
+          "kind": "condition",
+          "rule": "end_point",
+          "quantity": "volume_added"
+        }
+      },
+      {
+        "id": "record-end-point",
+        "prompt": {
+          "en": "At the end point, record the volume of base you added.",
+          "hi": "अंत बिंदु पर, मिलाए गए क्षार का आयतन दर्ज करें।"
+        },
+        "hint": {
+          "en": "Read the burette at the end point, then tap Record reading.",
+          "hi": "अंत बिंदु पर ब्यूरेट पढ़ें, फिर रीडिंग दर्ज करें दबाएँ।"
+        },
+        "check": {
+          "kind": "target",
+          "quantity": "volume_added",
+          "value": 25,
+          "tolerance": 0.1,
+          "on": "last_recorded"
+        }
+      },
+      {
+        "id": "excess-base",
+        "prompt": {
+          "en": "Keep adding base until the pH is above 11.",
+          "hi": "क्षार मिलाते रहें जब तक pH 11 से ज़्यादा न हो जाए।"
+        },
+        "hint": {
+          "en": "Watch the pH reading and the curve.",
+          "hi": "pH रीडिंग और वक्र देखें।"
+        },
+        "check": {
+          "kind": "range",
+          "quantity": "ph",
+          "min": 11
+        }
+      },
+      {
+        "id": "weak-acid-end-point",
+        "prompt": {
+          "en": "Switch to the weak acid. Find its end point with phenolphthalein.",
+          "hi": "दुर्बल अम्ल चुनें। फ़ीनॉल्फ़्थेलिन से उसका अंत बिंदु पता करें।"
+        },
+        "hint": {
+          "en": "Changing the acid starts a new flask. Add drop by drop near the change.",
+          "hi": "अम्ल बदलने से नया फ्लास्क शुरू होता है। रंग बदलने के पास बूँद-बूँद डालें।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "analyte",
+              "args": {
+                "is": "weak"
+              }
+            },
+            {
+              "kind": "condition",
+              "rule": "indicator",
+              "args": {
+                "is": "phenolphthalein"
+              }
+            },
+            {
+              "kind": "condition",
+              "rule": "end_point",
+              "quantity": "volume_added"
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "volume_added",
+        "unit": "mL",
+        "label": {
+          "en": "Base added",
+          "hi": "मिलाया गया क्षार"
+        }
+      },
+      {
+        "name": "burette_reading",
+        "unit": "mL",
+        "label": {
+          "en": "Burette reading",
+          "hi": "ब्यूरेट रीडिंग"
+        }
+      },
+      {
+        "name": "ph",
+        "unit": "",
+        "label": {
+          "en": "pH",
+          "hi": "pH"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
     "sizeBytes": 361330,
     "licence": "owned",
     "attribution": null,
@@ -32,6 +155,142 @@
       "phy.light-refraction.magnification"
     ],
     "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "between-f-2f-sharp",
+        "prompt": {
+          "en": "Place the object between F₁ and 2F₁. Then move the screen until the image on it is sharp.",
+          "hi": "बिंब को F₁ और 2F₁ के बीच रखें। फिर परदे को तब तक खिसकाएँ जब तक उस पर प्रतिबिंब स्पष्ट न हो जाए।"
+        },
+        "hint": {
+          "en": "Follow the rays to where they meet. Put the screen there.",
+          "hi": "किरणों को देखें कि वे कहाँ मिलती हैं। परदा वहीं रखें।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "object_region",
+              "args": {
+                "is": "between_f_2f"
+              },
+              "quantity": "object_distance"
+            },
+            {
+              "kind": "condition",
+              "rule": "screen_sharp",
+              "quantity": "screen_distance"
+            }
+          ]
+        }
+      },
+      {
+        "id": "same-size",
+        "prompt": {
+          "en": "Make a real image that is the same size as the object.",
+          "hi": "बिंब के बराबर साइज़ का वास्तविक प्रतिबिंब बनाएँ।"
+        },
+        "hint": {
+          "en": "Move the object and watch the magnification m.",
+          "hi": "बिंब को खिसकाएँ और आवर्धन m देखें।"
+        },
+        "check": {
+          "kind": "target",
+          "quantity": "magnification",
+          "value": -1,
+          "tolerance": 0.02
+        }
+      },
+      {
+        "id": "virtual-image",
+        "prompt": {
+          "en": "Make a virtual, upright image.",
+          "hi": "आभासी और सीधा प्रतिबिंब बनाएँ।"
+        },
+        "hint": {
+          "en": "Bring the object closer to the lens.",
+          "hi": "बिंब को लेंस के और पास लाएँ।"
+        },
+        "check": {
+          "kind": "condition",
+          "rule": "image_virtual",
+          "quantity": "object_distance"
+        }
+      },
+      {
+        "id": "record-u-v",
+        "prompt": {
+          "en": "Keep the focal length fixed. For three object positions, get a sharp image on the screen and record v each time.",
+          "hi": "फोकस दूरी एक जैसी रखें। बिंब की तीन अलग स्थितियों के लिए परदे पर स्पष्ट प्रतिबिंब लाएँ और हर बार v दर्ज करें।"
+        },
+        "hint": {
+          "en": "A reading counts only when the image on the screen is sharp.",
+          "hi": "रीडिंग तभी गिनी जाती है जब परदे पर प्रतिबिंब स्पष्ट हो।"
+        },
+        "check": {
+          "kind": "readings",
+          "quantity": "image_distance",
+          "count": 3,
+          "distinctBy": "object_distance",
+          "sameBy": [
+            "focal_length"
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "object_distance",
+        "unit": "cm",
+        "label": {
+          "en": "Object distance u",
+          "hi": "बिंब दूरी u"
+        }
+      },
+      {
+        "name": "focal_length",
+        "unit": "cm",
+        "label": {
+          "en": "Focal length f",
+          "hi": "फोकस दूरी f"
+        }
+      },
+      {
+        "name": "image_distance",
+        "unit": "cm",
+        "label": {
+          "en": "Image distance v",
+          "hi": "प्रतिबिंब दूरी v"
+        }
+      },
+      {
+        "name": "magnification",
+        "unit": "",
+        "label": {
+          "en": "Magnification m",
+          "hi": "आवर्धन m"
+        }
+      },
+      {
+        "name": "screen_distance",
+        "unit": "cm",
+        "label": {
+          "en": "Screen distance",
+          "hi": "परदे की दूरी"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "landscape",
+    "entry": "index.html",
     "sizeBytes": 363777,
     "licence": "owned",
     "attribution": null,
@@ -51,6 +310,151 @@
       "phy.current-electricity.resistors-in-parallel"
     ],
     "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "current-half-amp",
+        "prompt": {
+          "en": "Make the ammeter read 0.5 A.",
+          "hi": "ऐमीटर में 0.5 A की रीडिंग लाएँ।"
+        },
+        "hint": {
+          "en": "Change the battery voltage or the resistance, and watch the ammeter.",
+          "hi": "बैटरी का विभवांतर या प्रतिरोध बदलें और ऐमीटर देखें।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "switch_on"
+            },
+            {
+              "kind": "target",
+              "quantity": "current",
+              "value": 0.5,
+              "tolerance": 0.01
+            }
+          ]
+        }
+      },
+      {
+        "id": "double-current",
+        "prompt": {
+          "en": "Keep the battery voltage the same. Change the resistance so the current doubles.",
+          "hi": "बैटरी का विभवांतर वही रखें। प्रतिरोध ऐसे बदलें कि धारा दोगुनी हो जाए।"
+        },
+        "hint": {
+          "en": "Try making the resistance smaller.",
+          "hi": "प्रतिरोध कम करके देखें।"
+        },
+        "check": {
+          "kind": "ratio",
+          "quantity": "current",
+          "ratio": 2,
+          "tolerance": 0.03,
+          "hold": [
+            "voltage"
+          ]
+        }
+      },
+      {
+        "id": "three-readings",
+        "prompt": {
+          "en": "Keep the resistance fixed. Record the current at three different battery voltages.",
+          "hi": "प्रतिरोध एक जैसा रखें। तीन अलग-अलग विभवांतर पर धारा की रीडिंग दर्ज करें।"
+        },
+        "hint": {
+          "en": "Change only the battery voltage, then tap Record reading each time.",
+          "hi": "केवल बैटरी का विभवांतर बदलें, फिर हर बार रीडिंग दर्ज करें दबाएँ।"
+        },
+        "check": {
+          "kind": "readings",
+          "quantity": "current",
+          "count": 3,
+          "distinctBy": "voltage",
+          "sameBy": [
+            "resistance"
+          ]
+        }
+      },
+      {
+        "id": "parallel-one-amp",
+        "prompt": {
+          "en": "Connect the two resistors in parallel and make the current 1 A.",
+          "hi": "दोनों प्रतिरोधकों को पार्श्वक्रम में जोड़ें और धारा 1 A कीजिए।"
+        },
+        "hint": {
+          "en": "Two resistors in parallel have a smaller total resistance than either one.",
+          "hi": "पार्श्वक्रम में जुड़े दो प्रतिरोधकों का कुल प्रतिरोध हर एक से कम होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "arrangement",
+              "args": {
+                "is": "parallel"
+              }
+            },
+            {
+              "kind": "condition",
+              "rule": "switch_on"
+            },
+            {
+              "kind": "target",
+              "quantity": "current",
+              "value": 1,
+              "tolerance": 0.01
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "voltage",
+        "unit": "V",
+        "label": {
+          "en": "Battery voltage",
+          "hi": "बैटरी का विभवांतर"
+        }
+      },
+      {
+        "name": "resistance",
+        "unit": "Ω",
+        "label": {
+          "en": "Total resistance",
+          "hi": "कुल प्रतिरोध"
+        }
+      },
+      {
+        "name": "current",
+        "unit": "A",
+        "label": {
+          "en": "Current",
+          "hi": "विद्युत धारा"
+        }
+      },
+      {
+        "name": "terminal_voltage",
+        "unit": "V",
+        "label": {
+          "en": "Terminal voltage",
+          "hi": "टर्मिनल विभवांतर"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
     "sizeBytes": 363537,
     "licence": "owned",
     "attribution": null,
@@ -70,7 +474,178 @@
       "phy.gravitation.acceleration-due-to-gravity"
     ],
     "tasks": 4,
-    "sizeBytes": 360832,
+    "taskSpecs": [
+      {
+        "id": "period-two-seconds",
+        "prompt": {
+          "en": "On Earth, set the length so the period is 2.0 s.",
+          "hi": "पृथ्वी पर, लंबाई ऐसे रखें कि आवर्तकाल 2.0 s हो।"
+        },
+        "hint": {
+          "en": "A longer pendulum swings more slowly.",
+          "hi": "लंबा लोलक धीरे दोलन करता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "planet",
+              "args": {
+                "is": "earth"
+              },
+              "quantity": "gravity"
+            },
+            {
+              "kind": "target",
+              "quantity": "period",
+              "value": 2,
+              "tolerance": 0.03
+            }
+          ]
+        }
+      },
+      {
+        "id": "halve-period",
+        "prompt": {
+          "en": "Stay on the same planet. Change the length so the period halves.",
+          "hi": "उसी ग्रह पर रहें। लंबाई ऐसे बदलें कि आवर्तकाल आधा हो जाए।"
+        },
+        "hint": {
+          "en": "Halving the length is not enough. Try shorter.",
+          "hi": "लंबाई आधी करना काफ़ी नहीं है। और छोटी करके देखें।"
+        },
+        "check": {
+          "kind": "ratio",
+          "quantity": "period",
+          "ratio": 0.5,
+          "tolerance": 0.03,
+          "hold": [
+            "gravity"
+          ]
+        }
+      },
+      {
+        "id": "mass-readings",
+        "prompt": {
+          "en": "Keep the length the same. Record the period for two different masses.",
+          "hi": "लंबाई एक जैसी रखें। दो अलग-अलग द्रव्यमानों के लिए आवर्तकाल दर्ज करें।"
+        },
+        "hint": {
+          "en": "Change only the mass, then tap Record reading each time.",
+          "hi": "केवल द्रव्यमान बदलें, फिर हर बार रीडिंग दर्ज करें दबाएँ।"
+        },
+        "check": {
+          "kind": "readings",
+          "quantity": "period",
+          "count": 2,
+          "distinctBy": "mass",
+          "sameBy": [
+            "length",
+            "gravity"
+          ]
+        }
+      },
+      {
+        "id": "moon-two-seconds",
+        "prompt": {
+          "en": "Take the pendulum to the Moon. Make the period 2.0 s there.",
+          "hi": "लोलक को चंद्रमा पर ले जाएँ। वहाँ आवर्तकाल 2.0 s कीजिए।"
+        },
+        "hint": {
+          "en": "Gravity is weaker on the Moon, so you need a shorter string.",
+          "hi": "चंद्रमा पर गुरुत्व कम है, इसलिए छोटी डोरी चाहिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "planet",
+              "args": {
+                "is": "moon"
+              },
+              "quantity": "gravity"
+            },
+            {
+              "kind": "target",
+              "quantity": "period",
+              "value": 2,
+              "tolerance": 0.03
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "length",
+        "unit": "m",
+        "label": {
+          "en": "Length L",
+          "hi": "लंबाई L"
+        }
+      },
+      {
+        "name": "gravity",
+        "unit": "m/s²",
+        "label": {
+          "en": "Gravity g",
+          "hi": "गुरुत्वीय त्वरण g"
+        }
+      },
+      {
+        "name": "amplitude",
+        "unit": "°",
+        "label": {
+          "en": "Amplitude",
+          "hi": "आयाम"
+        }
+      },
+      {
+        "name": "mass",
+        "unit": "kg",
+        "label": {
+          "en": "Mass",
+          "hi": "द्रव्यमान"
+        }
+      },
+      {
+        "name": "period",
+        "unit": "s",
+        "label": {
+          "en": "Period T",
+          "hi": "आवर्तकाल T"
+        }
+      },
+      {
+        "name": "oscillations",
+        "unit": "",
+        "label": {
+          "en": "Oscillations",
+          "hi": "दोलन"
+        }
+      },
+      {
+        "name": "elapsed",
+        "unit": "s",
+        "label": {
+          "en": "Time",
+          "hi": "समय"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 364255,
     "licence": "owned",
     "attribution": null,
     "aspect": "4:3"

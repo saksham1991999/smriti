@@ -47,6 +47,7 @@ type Requirement = Literal[
     "formula_card",
     "worked_example",
     "memory_hook",
+    "play_activity",
 ]
 
 

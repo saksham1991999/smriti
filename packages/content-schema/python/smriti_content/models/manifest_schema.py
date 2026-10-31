@@ -94,6 +94,21 @@ class BundleEntry(BaseModel):
     patches: list[Patch]
 
 
+class ActivityEntry(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+    )
+    id: str
+    kind: Literal["story", "song", "play"]
+    title: str
+    minutes: float | None
+    cover: Annotated[
+        str | None,
+        Field(description="Image request id for the path node thumbnail, or null."),
+    ]
+    concepts: list[str]
+
+
 class TopicEntry(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -106,6 +121,12 @@ class TopicEntry(BaseModel):
         Field(description="concept id -> the deepest level this exam needs"),
     ]
     bundles: dict[bundle_schema.BundleMode, BundleEntry]
+    activities: Annotated[
+        list[ActivityEntry] | None,
+        Field(
+            description="Little learner path nodes for this topic, in path order (story, song, play; then by id). Each opens from the topic's story, song or play bundle."
+        ),
+    ] = None
 
 
 class Manifest(BaseModel):

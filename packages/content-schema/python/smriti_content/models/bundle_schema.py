@@ -65,9 +65,9 @@ class PyqPapers(BaseModel):
 
 
 type BundleMode = Annotated[
-    Literal["deep_dive", "quick_revision", "practice"],
+    Literal["deep_dive", "quick_revision", "practice", "story", "song", "play"],
     Field(
-        description="Lesson bundles (deep_dive, quick_revision) and the topic's practice bundle (practice, lesson and placement questions)."
+        description="Lesson bundles (deep_dive, quick_revision), the topic's practice bundle (practice, lesson and placement questions), and the little learner activity bundles (story, song, play: every storybook, song or play activity of the topic, in activities)."
     ),
 ]
 
@@ -165,6 +165,12 @@ class Bundle(BaseModel):
     questions: dict[str, Questions]
     mnemonics: dict[str, dict[str, Any]]
     sheets: dict[str, dict[str, Any]]
+    activities: Annotated[
+        dict[str, dict[str, Any]] | None,
+        Field(
+            description="Activity bundles only: activity id -> the localised storybook@1, song@1 or play@1 item (authoring fields removed). A song carries only this locale's version, as version."
+        ),
+    ] = None
     pyq_papers: Annotated[
         dict[str, PyqPapers] | None,
         Field(

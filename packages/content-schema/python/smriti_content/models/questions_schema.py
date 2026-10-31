@@ -252,7 +252,7 @@ class MatrixMatch(QuestionBase):
     solution: Solution
 
 
-class Pair1(BaseModel):
+class Pair2(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
     )
@@ -265,7 +265,7 @@ class Answer3(BaseModel):
         extra="forbid",
     )
     pairs: Annotated[
-        list[Pair1],
+        list[Pair2],
         Field(description="Each list_i id with its list_ii id.", min_length=1),
     ]
 

@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.chem.amines.diazonium.9001 (paper Q68) needs its figure img.amines.pyq-dimethylanilines, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure.",
+  "hi_source": "translation",
+  "topic": "chem.amines.diazonium",
+  "questions": [
+    {
+      "id": "q.chem.amines.diazonium.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.amines.diazonium.core.diazonium-synthesis",
+          "weight": 0.6
+        },
+        {
+          "id": "chem.organic-basic-principles.mechanisms.core.electronic-effects",
+          "weight": 0.4
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Consider the three aromatic molecules ($P$, $Q$ and $R$) whose structures have been given below : The correct order regarding the reactivity of these compounds with $\\ce{Ph-N+#N Cl-}$ under optimum but slightly acidic medium is :",
+        "hi": "नीचे दी गई संरचनाओं वाले तीन ऐरोमैटिक अणुओं ($P$, $Q$ और $R$) पर विचार कीजिए : इष्टतम परंतु हल्के अम्लीय माध्यम में $\\ce{Ph-N+#N Cl-}$ के साथ इन यौगिकों की अभिक्रियाशीलता का सही क्रम है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$P>Q>R$",
+            "hi": "$P>Q>R$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$R>P>Q$",
+            "hi": "$R>P>Q$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$R>Q>P$",
+            "hi": "$R>Q>P$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$P>R>Q$",
+            "hi": "$P>R>Q$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Diazo coupling needs the nitrogen's lone pair to push electrons into the ring, which needs the $\\ce{NMe2}$ group to lie flat with the ring. Ortho methyl groups twist it out of plane (steric inhibition of resonance), so each extra ortho methyl lowers reactivity.",
+          "hi": "डाइऐज़ो युग्मन के लिए नाइट्रोजन के एकाकी युग्म को वलय में इलेक्ट्रॉन धकेलने होते हैं, जिसके लिए $\\ce{NMe2}$ समूह को वलय के तल में होना चाहिए। ऑर्थो मेथिल समूह इसे तल से बाहर मरोड़ देते हैं (अनुनाद का त्रिविम अवरोध), अतः प्रत्येक अतिरिक्त ऑर्थो मेथिल अभिक्रियाशीलता घटाता है।"
+        },
+        "steps": [
+          {
+            "en": "P has no ortho methyl, Q one, R two, so ring activation falls from P to Q to R.",
+            "hi": "P में कोई ऑर्थो मेथिल नहीं, Q में एक, R में दो, अतः वलय की सक्रियता P से Q से R तक घटती है।"
+          },
+          {
+            "en": "Order: $P>Q>R$.",
+            "hi": "क्रम: $P>Q>R$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "hard",
+      "media": "img.amines.pyq-dimethylanilines",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 68
+      }
+    }
+  ]
+}

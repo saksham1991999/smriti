@@ -1,0 +1,194 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.vbt:deep_dive",
+  "topic": "chem.chemical-bonding.vbt",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.vbt.core.valence-bond-theory"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Bonds from overlapping orbitals",
+        "hi": "अतिव्यापी कक्षकों से आबंध"
+      },
+      "subtopic": "chem.chemical-bonding.vbt.core",
+      "card_ids": [
+        "chem.chemical-bonding.vbt:dd:01",
+        "chem.chemical-bonding.vbt:dd:02"
+      ],
+      "estimated_minutes": 1
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Sigma and pi bonds",
+        "hi": "सिग्मा और पाई आबंध"
+      },
+      "subtopic": "chem.chemical-bonding.vbt.core",
+      "card_ids": [
+        "chem.chemical-bonding.vbt:dd:03",
+        "chem.chemical-bonding.vbt:dd:04",
+        "chem.chemical-bonding.vbt:dd:05",
+        "chem.chemical-bonding.vbt:dd:06"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.vbt:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.vbt.core.valence-bond-theory"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Two hydrogen atoms meet",
+        "hi": "दो हाइड्रोजन परमाणु मिलते हैं"
+      },
+      "body": {
+        "en": "Valence bond theory was introduced by Heitler and London (1927) and developed by Pauling and others.\n\nAs two hydrogen atoms approach, new forces appear: each nucleus attracts the other atom's electron, while the two electrons repel each other and the two nuclei repel each other. The attractions are stronger, so the energy falls until it reaches a minimum at a distance of $74\\ \\mathrm{pm}$, the bond length of $\\ce{H2}$. The energy released, $435.8\\ \\mathrm{kJ\\,mol^{-1}}$, is the bond enthalpy.\n\nAt that point the atomic orbitals partly merge: they overlap, and the electrons pair with opposite spins. The greater the overlap, the stronger the bond.",
+        "hi": "संयोजकता आबंध सिद्धांत हाइटलर और लंडन (1927) ने दिया और पॉलिंग तथा अन्य ने इसे विकसित किया।\n\nजब दो हाइड्रोजन परमाणु पास आते हैं तो नए बल उत्पन्न होते हैं: हर नाभिक दूसरे परमाणु के इलेक्ट्रॉन को आकर्षित करता है, जबकि दोनों इलेक्ट्रॉन एक-दूसरे को और दोनों नाभिक एक-दूसरे को प्रतिकर्षित करते हैं। आकर्षण अधिक होते हैं, इसलिए ऊर्जा घटती है और $74\\ \\mathrm{pm}$ की दूरी पर न्यूनतम हो जाती है, जो $\\ce{H2}$ की आबंध लंबाई है। मुक्त ऊर्जा, $435.8\\ \\mathrm{kJ\\,mol^{-1}}$, आबंध एन्थैल्पी है।\n\nउस स्थिति में परमाणु कक्षक आंशिक रूप से मिल जाते हैं: वे अतिव्यापन करते हैं, और इलेक्ट्रॉन विपरीत चक्रण के साथ युग्मित होते हैं। अतिव्यापन जितना अधिक, आबंध उतना मज़बूत।"
+      },
+      "media": "img.chemical-bonding.orbital-overlap",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.5, §4.5.1"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vbt:dd:02",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.vbt.core.valence-bond-theory"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.vbt.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.vbt:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.vbt.core.valence-bond-theory"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Head-on or side by side",
+        "hi": "आमने-सामने या अगल-बगल"
+      },
+      "body": {
+        "en": "A sigma ($\\sigma$) bond forms by end-to-end (head-on, axial) overlap along the internuclear axis. It can come from s-s, s-p or p-p overlap.\n\nA pi ($\\pi$) bond forms when two orbitals overlap sideways with their axes parallel to each other and perpendicular to the internuclear axis. It is made of two saucer-shaped charge clouds above and below the plane of the atoms.\n\nIn a sigma bond the overlap is larger, so a sigma bond is stronger than a pi bond. In a multiple bond the first bond is always a sigma bond and the others are pi bonds.\n\nSimple overlap alone cannot explain the directional bonds of $\\ce{CH4}$: it would predict three H-C-H angles of $90^\\circ$, not $109.5^\\circ$. That puzzle leads to hybridisation.",
+        "hi": "सिग्मा ($\\sigma$) आबंध अंतरनाभिकीय अक्ष के अनुदिश सिरे से सिरे (आमने-सामने, अक्षीय) अतिव्यापन से बनता है। यह s-s, s-p या p-p अतिव्यापन से बन सकता है।\n\nपाई ($\\pi$) आबंध तब बनता है जब दो कक्षक अगल-बगल अतिव्यापन करते हैं, उनके अक्ष एक-दूसरे के समांतर और अंतरनाभिकीय अक्ष के लंबवत होते हैं। यह परमाणुओं के तल के ऊपर और नीचे दो तश्तरीनुमा आवेश मेघों से बनता है।\n\nसिग्मा आबंध में अतिव्यापन अधिक होता है, इसलिए सिग्मा आबंध पाई आबंध से मज़बूत है। बहु-आबंध में पहला आबंध सदा सिग्मा होता है और बाकी पाई।\n\nकेवल अतिव्यापन $\\ce{CH4}$ के दिशात्मक आबंधों की व्याख्या नहीं कर सकता: वह तीन H-C-H कोण $90^\\circ$ के बताता, $109.5^\\circ$ के नहीं। यही पहेली संकरण की ओर ले जाती है।"
+      },
+      "media": "img.chemical-bonding.orbital-overlap",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.5.2 to §4.5.5"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vbt:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.vbt.core.valence-bond-theory"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "How many sigma and how many pi bonds are there in ethyne, $\\ce{HC#CH}$?",
+        "hi": "एथाइन, $\\ce{HC#CH}$, में कितने सिग्मा और कितने पाई आबंध हैं?"
+      },
+      "solution_steps": [
+        {
+          "en": "Each C-H single bond is one sigma bond: 2 sigma.",
+          "hi": "हर C-H एकल आबंध एक सिग्मा आबंध है: 2 सिग्मा।"
+        },
+        {
+          "en": "The C≡C triple bond is one sigma and two pi bonds.",
+          "hi": "C≡C त्रि-आबंध में एक सिग्मा और दो पाई आबंध हैं।"
+        },
+        {
+          "en": "Total: 3 sigma and 2 pi.",
+          "hi": "कुल: 3 सिग्मा और 2 पाई।"
+        }
+      ],
+      "answer": {
+        "en": "3 sigma, 2 pi.",
+        "hi": "3 सिग्मा, 2 पाई।"
+      },
+      "common_trap": {
+        "en": "Counting the triple bond as three pi bonds.",
+        "hi": "त्रि-आबंध को तीन पाई आबंध गिन लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.5.5, §4.6.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vbt:dd:05",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.vbt.core.valence-bond-theory"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.vbt.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.vbt:dd:06",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.vbt.core.valence-bond-theory"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "A covalent bond forms by overlap of half-filled orbitals with electrons of opposite spin; more overlap, stronger bond.",
+          "hi": "सहसंयोजी आबंध विपरीत चक्रण वाले इलेक्ट्रॉनों के अर्धपूरित कक्षकों के अतिव्यापन से बनता है; अधिक अतिव्यापन, मज़बूत आबंध।"
+        },
+        {
+          "en": "Sigma: head-on overlap, stronger. Pi: sideways overlap, weaker.",
+          "hi": "सिग्मा: आमने-सामने अतिव्यापन, मज़बूत। पाई: अगल-बगल अतिव्यापन, कमज़ोर।"
+        },
+        {
+          "en": "A multiple bond has one sigma bond; the rest are pi bonds.",
+          "hi": "बहु-आबंध में एक सिग्मा आबंध होता है; बाकी पाई।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.5"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

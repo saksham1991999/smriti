@@ -91,6 +91,15 @@ describe('helpers', () => {
     expect(tutorAnswerText(parseTutorStream('event: delta\ndata: {"text":"x"}\n\nevent: replace\ndata: {"text":""}\n\n'))).toBe('');
   });
 
+  test('a crisis event carries the helplines the server sent, and nothing else', () => {
+    const body =
+      'event: safety\ndata: {"kind": "crisis", "helplines": [{"name": "Test line", "number": "000-TEST", "description": "fixture"}, {"name": 5}]}\n\n' +
+      'event: done\ndata: {"message_id": "m1"}\n\n';
+    const events = parseTutorStream(body);
+    expect(events[0]).toEqual({ type: 'safety', kind: 'crisis', helplines: [{ name: 'Test line', number: '000-TEST', description: 'fixture' }], chips: [] });
+    expect(events[1]).toEqual({ type: 'done', messageId: 'm1' });
+  });
+
   test("maps lesson-core answers to the API's shapes", () => {
     expect(toServerAnswer({ kind: 'options', optionIds: ['b'] })).toEqual({ kind: 'options', option_ids: ['b'] });
     expect(toServerAnswer({ kind: 'blanks', blanks: [{ blank: 'b1', text: '4' }] })).toEqual({ kind: 'blanks', blanks: [{ blank: 'b1', choice_id: null, text: '4' }] });

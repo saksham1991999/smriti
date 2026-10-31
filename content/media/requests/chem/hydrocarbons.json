@@ -1,0 +1,47 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Figures of ingested previous-year questions, to be recreated as diagrams through visual-director (never scanned). Each brief describes the official figure; labels are placed at anchors once an image exists.",
+  "requests": [
+    {
+      "id": "img.hydrocarbons.pyq-benzanilide-sites",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "chemistry",
+      "brief": "a skeletal structural formula of benzanilide on white, thin dark lines: a benzene ring on the lower left bonded to a carbonyl carbon with a double-bonded oxygen pointing up; the carbonyl carbon bonded to a nitrogen; the nitrogen carries a hydrogen pointing down and is bonded to a second benzene ring on the upper right; no letters drawn. Recreate the figure of NTA's JEE (Main) 2026 paper, 2 April Shift 1, question 66 faithfully (same parts, positions and directions); every letter, number, sign and arrow label is added by the app at label anchors.",
+      "must_show": [
+        "benzoyl ring bonded to C=O",
+        "C=O bonded to N-H",
+        "N bonded to a second benzene ring"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "a scan or copy of the original paper"
+      ],
+      "alt": {
+        "en": "Benzanilide, PhCONHPh. Positions marked: on the benzoyl ring, p is ortho and r is meta to the carbonyl group; on the N-phenyl ring, s is ortho and u is para to the nitrogen.",
+        "hi": "बेन्ज़ऐनिलाइड, PhCONHPh। चिह्नित स्थान: बेन्ज़ॉयल वलय पर p, कार्बोनिल समूह के ऑर्थो और r मेटा है; N-फ़ेनिल वलय पर s, नाइट्रोजन के ऑर्थो और u पैरा है।"
+      },
+      "used_by": [
+        "q.chem.hydrocarbons.aromatic.9001"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ]
+}

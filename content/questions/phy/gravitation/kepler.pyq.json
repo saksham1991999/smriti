@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.gravitation.kepler",
+  "questions": [
+    {
+      "id": "q.phy.gravitation.kepler.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.gravitation.kepler.core.kepler-laws",
+          "weight": 0.5
+        },
+        {
+          "id": "phy.gravitation.satellites.core.satellite-motion",
+          "weight": 0.5
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A planet $(P_1)$ is moving around the star of mass $2M$ in the orbit of radius $R$. Another planet $(P_2)$ is moving around another star of mass $4M$ in a orbit of radius $2R$. Ratio of time periods of revolution of $P_2$ and $P_1$ is ______.",
+        "hi": "एक ग्रह $(P_1)$ द्रव्यमान $2M$ वाले तारे के चारों ओर त्रिज्या $R$ की कक्षा में घूम रहा है। एक अन्य ग्रह $(P_2)$ द्रव्यमान $4M$ वाले दूसरे तारे के चारों ओर त्रिज्या $2R$ की कक्षा में घूम रहा है। $P_2$ और $P_1$ के परिक्रमण कालों का अनुपात ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac12$",
+            "hi": "$\\frac12$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2$",
+            "hi": "$2$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$4$",
+            "hi": "$4$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\frac14$",
+            "hi": "$\\frac14$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "For a circular orbit $T^2=\\frac{4\\pi^2r^3}{GM}$, so $T$ grows with $r^{3/2}$ and shrinks with $\\sqrt M$.",
+          "hi": "वृत्तीय कक्षा के लिए $T^2=\\frac{4\\pi^2r^3}{GM}$, अतः $T$, $r^{3/2}$ के साथ बढ़ता है और $\\sqrt M$ के साथ घटता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{T_2}{T_1}=\\sqrt{\\frac{(2R)^3/(4M)}{R^3/(2M)}}=\\sqrt{4}=2$.",
+            "hi": "$\\frac{T_2}{T_1}=\\sqrt{\\frac{(2R)^3/(4M)}{R^3/(2M)}}=\\sqrt{4}=2$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 30
+      }
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.electromagnetic-induction.faraday-law",
+  "questions": [
+    {
+      "id": "q.phy.electromagnetic-induction.faraday-law.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.electromagnetic-induction.faraday-law.core.faraday-induction",
+          "weight": 0.6
+        },
+        {
+          "id": "phy.current-electricity.resistivity.core.resistivity-conductivity",
+          "weight": 0.4
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "When a coil is placed in a time dependent magnetic field the power dissipated in it is $P$. The number of turns, area of the coil and radius of the coil wire are $N$, $A$ and $r$ respectively. For a second coils number of turns, area of the coil and radius of the coil wire are $2N$, $2A$ and $3r$ respectively. When the first coil is replaced with second coil the power dissipated in it is $\\sqrt2\\,\\alpha P$. The value of $\\alpha$ is ______.",
+        "hi": "जब एक कुंडली को समय पर निर्भर चुंबकीय क्षेत्र में रखा जाता है, तो उसमें क्षयित शक्ति $P$ है। कुंडली के फेरों की संख्या, कुंडली का क्षेत्रफल और कुंडली के तार की त्रिज्या क्रमशः $N$, $A$ और $r$ हैं। दूसरी कुंडली के लिए फेरों की संख्या, कुंडली का क्षेत्रफल और तार की त्रिज्या क्रमशः $2N$, $2A$ और $3r$ हैं। जब पहली कुंडली को दूसरी कुंडली से बदला जाता है, तो उसमें क्षयित शक्ति $\\sqrt2\\,\\alpha P$ है। $\\alpha$ का मान ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$36$",
+            "hi": "$36$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$128\\sqrt2$",
+            "hi": "$128\\sqrt2$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$16$",
+            "hi": "$16$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$64$",
+            "hi": "$64$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Power is $\\frac{\\varepsilon^2}{R}$. The emf grows with $NA$; the resistance grows with the wire length (turns times circumference, so $N\\sqrt A$) and falls with the wire's cross-section $r^2$.",
+          "hi": "शक्ति $\\frac{\\varepsilon^2}{R}$ है। विद्युत वाहक बल $NA$ के साथ बढ़ता है; प्रतिरोध तार की लंबाई (फेरे गुणा परिधि, अर्थात् $N\\sqrt A$) के साथ बढ़ता है और तार के अनुप्रस्थ काट $r^2$ के साथ घटता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\varepsilon \\propto NA$ and $R \\propto \\frac{N\\sqrt A}{r^2}$, so $P \\propto \\frac{N^2A^2r^2}{N\\sqrt A}=NA^{3/2}r^2$.",
+            "hi": "$\\varepsilon \\propto NA$ और $R \\propto \\frac{N\\sqrt A}{r^2}$, अतः $P \\propto \\frac{N^2A^2r^2}{N\\sqrt A}=NA^{3/2}r^2$।"
+          },
+          {
+            "en": "New power: $2 \\times 2^{3/2} \\times 9\\,P=36\\sqrt2\\,P$, so $\\alpha=36$.",
+            "hi": "नई शक्ति: $2 \\times 2^{3/2} \\times 9\\,P=36\\sqrt2\\,P$, अतः $\\alpha=36$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 38
+      }
+    }
+  ]
+}

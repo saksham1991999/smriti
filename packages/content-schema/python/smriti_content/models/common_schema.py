@@ -173,11 +173,20 @@ type MnemonicId = Annotated[
 ]
 
 
+type IconName = Annotated[
+    str,
+    Field(
+        description="A Phosphor icon name in PascalCase (DESIGN §8), for example HandWaving.",
+        pattern="^[A-Z][A-Za-z0-9]+$",
+    ),
+]
+
+
 type ExtraId = Annotated[
     str,
     Field(
-        description="cs. cheat sheet, rs. revision sheet, sb. storybook, ex. experiment, rp. role play, mm. mind-map template",
-        pattern="^(cs|rs|sb|ex|rp|mm)\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$",
+        description="cs. cheat sheet, rs. revision sheet, sb. storybook, sg. song, pl. play activity, ex. experiment, rp. role play, mm. mind-map template",
+        pattern="^(cs|rs|sb|sg|pl|ex|rp|mm)\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$",
     ),
 ]
 

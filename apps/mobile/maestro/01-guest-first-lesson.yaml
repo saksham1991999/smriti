@@ -1,0 +1,15 @@
+# Guest journey: onboarding and the first lesson (offline-first), ending on HOME-01 with tabs.
+appId: ${APP_ID}
+name: Guest first lesson
+---
+- runFlow: subflows/onboard-guest.yaml
+- assertVisible:
+    id: "tab-bar-learn"
+- tapOn:
+    id: "tab-bar-labs"
+- assertVisible:
+    id: "LAB-01"
+- tapOn:
+    id: "tab-bar-practice"
+- assertVisible:
+    id: "PRC-01"

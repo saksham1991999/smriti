@@ -9,7 +9,11 @@ import { ONLINE_ONLY_CARD_TYPES } from "@smriti/content-schema";
 import type { AnyQuestion } from "./answers.js";
 import type { LessonConfig } from "./config.js";
 
-export type PlayerMode = "deep_dive" | "quick_revision" | "onboarding" | "quick_check" | "fix_mistakes";
+/**
+ * `little`: a Deep Dive bite in the little learner player (class 1–5, LES-01/LES-02 "little
+ * learner"): no combos, no confidence step, gentle hints and the guided finish (playerRules).
+ */
+export type PlayerMode = "deep_dive" | "quick_revision" | "onboarding" | "quick_check" | "fix_mistakes" | "little";
 
 export interface PlanCard {
   /** Unique within the plan: the card id, `{card}#{child}` for paragraph children, `q:{id}` for checks. */
@@ -107,7 +111,7 @@ function expandCard(bundle: TypedBundle, card: BundleCard, biteId: string | null
 }
 
 export interface LessonPlanOptions {
-  mode: "deep_dive" | "quick_revision" | "onboarding";
+  mode: "deep_dive" | "quick_revision" | "onboarding" | "little";
   bundleVersion: string;
   /** concept id -> exam depth, from the manifest; null shows every card. */
   examDepth: Record<string, number> | null;
@@ -129,7 +133,7 @@ export function planLesson(bundle: TypedBundle, opts: LessonPlanOptions): Lesson
     locale: bundle.locale,
     hints: true,
     attemptsAllowed: 2 as const,
-    combos: true,
+    combos: opts.mode !== "little",
     lessonEvents: true,
     questionPool: bundle.questions,
   };
@@ -150,7 +154,7 @@ export function planLesson(bundle: TypedBundle, opts: LessonPlanOptions): Lesson
   if (!bite) throw new Error(`${bundle.id} has no cards at this depth`);
   const cards = bite.cardIds.flatMap((id) => expandCard(bundle, byId.get(id)!, bite.id));
   let previewLimit: number | null = null;
-  if (opts.mode === "deep_dive" && opts.previewLimited) {
+  if ((opts.mode === "deep_dive" || opts.mode === "little") && opts.previewLimited) {
     const before = bites.slice(0, index).reduce((n, b) => n + b.cardIds.length, 0);
     previewLimit = Math.max(0, opts.config.previewCards - before);
   }

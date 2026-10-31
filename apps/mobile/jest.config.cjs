@@ -1,4 +1,7 @@
 /** jest-expo. pnpm keeps packages under node_modules/.pnpm, so those paths are transformed too. */
+// The tests import the generated seed pack: make it (from the fixture publish if needed) even
+// when jest is run directly rather than through `pnpm test`.
+require('node:child_process').execFileSync(process.execPath, [require('node:path').join(__dirname, 'scripts', 'seed-pack.mjs')], { stdio: 'inherit' });
 module.exports = {
   preset: 'jest-expo',
   setupFiles: ['./jest.setup.ts'],

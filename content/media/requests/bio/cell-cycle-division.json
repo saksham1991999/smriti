@@ -1,0 +1,307 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as WebP (3:2 at 1536x1024); originals kept outside the repo.",
+  "requests": [
+    {
+      "id": "img.cell-cycle-division.grow-split",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "biology",
+      "brief": "three soft green clay balls in a row on a table: a small ball on the left, the same ball grown larger in the middle, and on the right that large ball pinched apart into two equal small balls",
+      "must_show": [
+        "a small ball",
+        "a larger ball",
+        "two equal small balls"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "hands"
+      ],
+      "alt": {
+        "en": "Three smooth green balls in a row: a small ball on the left, a larger ball in the middle, and on the right two equal balls pressed side by side.",
+        "hi": "एक पंक्ति में तीन चिकनी हरी गेंदें: बाईं ओर एक छोटी गेंद, बीच में एक बड़ी गेंद, और दाईं ओर दो बराबर गेंदें जो एक-दूसरे से सटी हैं।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.cell-cycle:dd:02",
+        "bio.cell-cycle-division.cell-cycle:dd:07",
+        "bio.cell-cycle-division.mitosis:dd:09"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "2a58afe33e1de42929aa946c1ea77b830e9af3c3c0f1d06c5ef6a0450e2e8d38",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 20020,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-cycle-division.socks-peg",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "biology",
+      "brief": "two identical green knitted socks hanging side by side from a line, held together at their middles by a single wooden clothes peg",
+      "must_show": [
+        "two identical socks",
+        "one peg joining them at the middle"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "more than two socks"
+      ],
+      "alt": {
+        "en": "Two identical green knitted socks standing side by side, held together at their middles by one wooden clothes peg.",
+        "hi": "दो एक जैसे हरे बुने हुए मोज़े अगल-बगल खड़े हैं, जिन्हें बीच में एक लकड़ी की चिमटी ने जोड़ रखा है।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.cell-cycle:dd:04",
+        "cs.bio.cell-cycle-division.cell-cycle"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "bbbf7cbac22df92e86579ff0028840a488c5ce2e0638a432d50d5db7aba2a890",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 124728,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-cycle-division.balloon-pinch",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "biology",
+      "brief": "a long soft green balloon lying on a table with a ring of ribbon tightened round its middle, pinching it into two equal round halves",
+      "must_show": [
+        "one long balloon",
+        "a ring pinching the middle",
+        "two equal halves"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "hands"
+      ],
+      "alt": {
+        "en": "A long green balloon lying on a table with a pink ring tightened round its middle, pinching it into two equal halves.",
+        "hi": "मेज़ पर रखा एक लंबा हरा गुब्बारा, जिसके बीच में एक गुलाबी छल्ला कसा है और उसे दो बराबर हिस्सों में दबा रहा है।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.mitosis:dd:06"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6f6a31c84759c61c85b988d49e853c2acd88717cb57c1fff2940d88eb250e447",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 21150,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-cycle-division.line-up",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "biology",
+      "brief": "a school playground seen from above: children stand in pairs in one straight line across the middle of the ground, each pair holding hands, and two teachers stand at opposite ends of the ground facing the line",
+      "must_show": [
+        "pairs of children in one line across the middle",
+        "two adults at opposite ends"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "signboards",
+        "children scattered randomly"
+      ],
+      "alt": {
+        "en": "A wide green ground seen from above: four pairs of children, each pair holding hands, stand in one line down the middle, and one adult stands far off at the left edge and one at the right edge, both facing the line.",
+        "hi": "ऊपर से दिखता एक चौड़ा हरा मैदान: बच्चों के चार जोड़े, हर जोड़ा हाथ पकड़े, बीच में एक पंक्ति में खड़े हैं, और एक वयस्क बहुत दूर बाएँ किनारे पर तथा एक दाएँ किनारे पर पंक्ति की ओर मुँह करके खड़े हैं।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.mitosis:dd:01",
+        "bio.cell-cycle-division.mitosis:dd:03",
+        "cs.bio.cell-cycle-division.mitosis"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "dcd6dc128b5ca6f79611faa0afb2023f8780ae9ced85abf1865f51dca5c6df0f",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 26408,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-cycle-division.partition-wall",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "biology",
+      "brief": "a small toy room seen from above with four walls and no roof; a new thin wall is being built across the middle, starting at the centre of the room and growing outward towards the two side walls, with a gap still left at each end",
+      "must_show": [
+        "four outer walls",
+        "a new wall in the middle",
+        "gaps between the new wall and the side walls"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "furniture",
+        "bricks with marks"
+      ],
+      "alt": {
+        "en": "A shallow square wooden tray seen from above, with a green divider placed across the middle that does not quite reach the two sides.",
+        "hi": "ऊपर से दिखती एक उथली चौकोर लकड़ी की ट्रे, जिसके बीच में आर-पार एक हरा विभाजक रखा है जो दोनों किनारों तक पूरा नहीं पहुँचता।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.mitosis:dd:07"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "1c42b8d525a34e3d4ff6ba8c02337cd86d4c3e6ac801864fa66dc552605e6a7b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 28654,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-cycle-division.swapped-cords",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "biology",
+      "brief": "two thick braided cords lying side by side on a table, one green and one orange; near one end a short section of each has been swapped, so the green cord carries an orange piece and the orange cord carries a green piece at the same place",
+      "must_show": [
+        "one green cord with an orange section",
+        "one orange cord with a green section",
+        "sections swapped at the same place"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "knots"
+      ],
+      "alt": {
+        "en": "Two straight ropes lying parallel, one green and one orange; near the right end the green rope has a short orange band, and the orange rope ends in a short green piece.",
+        "hi": "दो सीधी रस्सियाँ समानांतर रखी हैं, एक हरी और एक नारंगी; दाएँ सिरे के पास हरी रस्सी पर एक छोटी नारंगी पट्टी है, और नारंगी रस्सी एक छोटे हरे टुकड़े पर खत्म होती है।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.meiosis:dd:03",
+        "bio.cell-cycle-division.meiosis:dd:09",
+        "cs.bio.cell-cycle-division.meiosis"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "cc013699455fdab50205392744f03e9902c5366932b487a869d8f88ab568e89d",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 10644,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-cycle-division.cake-four",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "biology",
+      "brief": "one round green-iced cake cut into four equal pieces, each piece on its own small plate, the four plates around an empty cake stand",
+      "must_show": [
+        "four equal cake pieces",
+        "four plates",
+        "an empty cake stand"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "candles",
+        "writing on the cake"
+      ],
+      "alt": {
+        "en": "Four equal slices of one green-iced cake, each on its own small cream plate, set out in a square of two in front and two behind.",
+        "hi": "हरी आइसिंग वाले एक केक के चार बराबर टुकड़े, हर एक अपनी छोटी क्रीम रंग की प्लेट पर, आगे दो और पीछे दो के वर्ग में रखे हैं।"
+      },
+      "used_by": [
+        "bio.cell-cycle-division.meiosis:dd:01",
+        "bio.cell-cycle-division.meiosis:dd:06"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "362a08607450f602013c7bd13cf0306cca0cd53cd95f7c6928ffc5a4c68b710b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 45276,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

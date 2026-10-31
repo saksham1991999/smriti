@@ -1,0 +1,410 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo110) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.cell-cycle-division.cell-cycle:deep_dive",
+  "topic": "bio.cell-cycle-division.cell-cycle",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Grow, copy, divide",
+        "hi": "बढ़ो, प्रतिलिपि बनाओ, बँटो"
+      },
+      "subtopic": "bio.cell-cycle-division.cell-cycle.core",
+      "card_ids": [
+        "bio.cell-cycle-division.cell-cycle:dd:01",
+        "bio.cell-cycle-division.cell-cycle:dd:02",
+        "bio.cell-cycle-division.cell-cycle:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Inside interphase",
+        "hi": "अंतरावस्था के भीतर"
+      },
+      "subtopic": "bio.cell-cycle-division.cell-cycle.core",
+      "card_ids": [
+        "bio.cell-cycle-division.cell-cycle:dd:04",
+        "bio.cell-cycle-division.cell-cycle:dd:05",
+        "bio.cell-cycle-division.cell-cycle:dd:06"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Cells that stop dividing",
+        "hi": "विभाजन बंद करने वाली कोशिकाएँ"
+      },
+      "subtopic": "bio.cell-cycle-division.cell-cycle.core",
+      "card_ids": [
+        "bio.cell-cycle-division.cell-cycle:dd:07",
+        "bio.cell-cycle-division.cell-cycle:dd:08",
+        "bio.cell-cycle-division.cell-cycle:dd:09",
+        "bio.cell-cycle-division.cell-cycle:dd:10"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:01",
+      "type": "story",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "From one cell to millions",
+        "hi": "एक कोशिका से लाखों तक"
+      },
+      "body": {
+        "en": "Every organism, even the largest, starts life as a single cell. Cells reproduce by dividing into two, and the daughter cells can grow and divide again. Repeated cycles of growth and division let one cell build a structure of millions of cells.",
+        "hi": "हर जीव, सबसे बड़ा भी, अपना जीवन एक कोशिका से शुरू करता है। कोशिकाएँ दो में बँटकर जनन करती हैं, और संतति कोशिकाएँ फिर बढ़कर बँट सकती हैं। वृद्धि और विभाजन के बार-बार होने वाले चक्र एक कोशिका से लाखों कोशिकाओं की संरचना बना देते हैं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Ch 10 introduction"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "What the cell cycle is",
+        "hi": "कोशिका चक्र क्या है"
+      },
+      "body": {
+        "en": "The cell cycle is the sequence of events by which a cell duplicates its genome, makes its other constituents and finally divides into two daughter cells. Cell growth is continuous, but DNA is made only in one specific stage. The events are under genetic control.\n\nHuman cells in culture divide about once every 24 hours; yeast can finish a cycle in about 90 minutes. The cycle has two basic phases: interphase and the M phase (mitosis phase). In the 24-hour human cycle, division proper lasts only about an hour, and interphase takes more than 95% of the time.\n\nThe M phase begins with nuclear division, karyokinesis, and usually ends with division of the cytoplasm, cytokinesis.",
+        "hi": "कोशिका चक्र घटनाओं का वह क्रम है जिससे कोशिका अपने जीनोम की प्रतिलिपि बनाती है, अपने अन्य घटक बनाती है और अंत में दो संतति कोशिकाओं में बँट जाती है। कोशिका वृद्धि लगातार होती है, पर DNA केवल एक विशेष अवस्था में बनता है। ये घटनाएँ आनुवंशिक नियंत्रण में होती हैं।\n\nसंवर्धन में मानव कोशिकाएँ लगभग हर 24 घंटे में एक बार विभाजित होती हैं; यीस्ट लगभग 90 मिनट में एक चक्र पूरा कर सकता है। चक्र की दो मूल प्रावस्थाएँ हैं: अंतरावस्था और M प्रावस्था (समसूत्री प्रावस्था)। 24 घंटे के मानव चक्र में वास्तविक विभाजन केवल लगभग एक घंटा चलता है, और अंतरावस्था 95% से अधिक समय लेती है।\n\nM प्रावस्था केंद्रक विभाजन, यानी केंद्रकभाजन, से शुरू होती है और सामान्यतः कोशिकाद्रव्य के विभाजन, यानी कोशिकाद्रव्य विभाजन, पर समाप्त होती है।"
+      },
+      "media": "img.cell-cycle-division.grow-split",
+      "highlights": [
+        {
+          "term": {
+            "en": "karyokinesis",
+            "hi": "केंद्रकभाजन"
+          },
+          "definition": {
+            "en": "Division of the nucleus.",
+            "hi": "केंद्रक का विभाजन।"
+          }
+        },
+        {
+          "term": {
+            "en": "cytokinesis",
+            "hi": "कोशिकाद्रव्य विभाजन"
+          },
+          "definition": {
+            "en": "Division of the cytoplasm.",
+            "hi": "कोशिकाद्रव्य का विभाजन।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.1, §10.1.1"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:03",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 1,
+      "question": "q.bio.cell-cycle-division.cell-cycle.0001"
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "G1, S and G2",
+        "hi": "G1, S और G2"
+      },
+      "body": {
+        "en": "Interphase is called the resting phase, but the cell is busy preparing to divide, growing and replicating its DNA in an orderly way. It has three parts.\n\nG1 (gap 1) is the interval between mitosis and the start of DNA replication; the cell is metabolically active and grows, but does not copy its DNA.\n\nIn S (synthesis) phase DNA is replicated and the amount of DNA per cell doubles, from 2C to 4C. The chromosome number does not change: a cell that was 2n at G1 is still 2n after S. Each chromosome now has two chromatids, like two identical socks pegged together at the middle. In animal cells the centriole also duplicates in the cytoplasm during S.\n\nIn G2 (gap 2) proteins are made in preparation for mitosis while the cell keeps growing.",
+        "hi": "अंतरावस्था को विश्राम प्रावस्था कहते हैं, पर कोशिका विभाजन की तैयारी में व्यस्त रहती है, क्रमबद्ध ढंग से बढ़ती है और अपने DNA की प्रतिकृति बनाती है। इसके तीन भाग हैं।\n\nG1 (अंतराल 1) समसूत्री विभाजन और DNA प्रतिकृति शुरू होने के बीच का समय है; कोशिका उपापचयी रूप से सक्रिय रहती है और बढ़ती है, पर अपने DNA की प्रतिलिपि नहीं बनाती।\n\nS (संश्लेषण) प्रावस्था में DNA की प्रतिकृति बनती है और प्रति कोशिका DNA की मात्रा 2C से 4C, यानी दोगुनी हो जाती है। गुणसूत्र संख्या नहीं बदलती: जो कोशिका G1 में 2n थी वह S के बाद भी 2n है। अब हर गुणसूत्र में दो अर्धगुणसूत्र होते हैं, जैसे बीच में एक चिमटी से जुड़े दो एक जैसे मोज़े। जंतु कोशिकाओं में S के दौरान कोशिकाद्रव्य में तारकाय की भी प्रतिकृति बनती है।\n\nG2 (अंतराल 2) में समसूत्री विभाजन की तैयारी के लिए प्रोटीन बनते हैं और कोशिका बढ़ती रहती है।"
+      },
+      "media": "img.cell-cycle-division.socks-peg",
+      "highlights": [
+        {
+          "term": {
+            "en": "S phase",
+            "hi": "S प्रावस्था"
+          },
+          "definition": {
+            "en": "DNA doubles from 2C to 4C; chromosome number stays 2n.",
+            "hi": "DNA 2C से 4C होता है; गुणसूत्र संख्या 2n रहती है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.1.1"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "An onion root tip cell has 16 chromosomes. How many chromosomes does it have at G1, after S and after M phase? If its DNA content after M phase is 2C, what is it at G1, after S and at G2?",
+        "hi": "प्याज़ की मूल शीर्ष कोशिका में 16 गुणसूत्र हैं। G1 पर, S के बाद और M प्रावस्था के बाद इसमें कितने गुणसूत्र होंगे? यदि M प्रावस्था के बाद इसका DNA 2C है, तो G1 पर, S के बाद और G2 पर कितना होगा?"
+      },
+      "solution_steps": [
+        {
+          "en": "S phase doubles DNA but not the chromosome number, so the cell has 16 chromosomes at G1, 16 after S and 16 in each daughter cell after M.",
+          "hi": "S प्रावस्था DNA को दोगुना करती है पर गुणसूत्र संख्या को नहीं, इसलिए G1 पर 16, S के बाद 16 और M के बाद हर संतति कोशिका में 16 गुणसूत्र हैं।"
+        },
+        {
+          "en": "DNA is 2C at G1 (no replication yet), 4C after S, and still 4C at G2; mitosis shares it back to 2C per daughter cell.",
+          "hi": "DNA G1 पर 2C है (अभी प्रतिकृति नहीं), S के बाद 4C, और G2 पर भी 4C; समसूत्री विभाजन इसे बाँटकर हर संतति कोशिका में फिर 2C कर देता है।"
+        }
+      ],
+      "answer": {
+        "en": "Chromosomes: 16, 16, 16. DNA: 2C, 4C, 4C.",
+        "hi": "गुणसूत्र: 16, 16, 16। DNA: 2C, 4C, 4C।"
+      },
+      "common_trap": {
+        "en": "Doubling the chromosome number after S phase; only the DNA amount doubles.",
+        "hi": "S प्रावस्था के बाद गुणसूत्र संख्या दोगुनी कर देना; केवल DNA की मात्रा दोगुनी होती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.1.1, margin question"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:06",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.cell-cycle.0002"
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The quiescent stage, G0",
+        "hi": "निष्क्रिय अवस्था, G0"
+      },
+      "body": {
+        "en": "Some cells in adult animals, such as heart cells, do not seem to divide, and many others divide only occasionally to replace cells lost to injury or death. Cells that do not divide further leave G1 and enter an inactive stage called the quiescent stage (G0). They stay metabolically active but no longer proliferate unless the organism calls on them to.\n\nIn animals, mitosis is seen only in diploid somatic cells, with a few exceptions where haploid cells divide by mitosis, such as male honey bees. Plants show mitosis in both haploid and diploid cells.",
+        "hi": "वयस्क जंतुओं की कुछ कोशिकाएँ, जैसे हृदय कोशिकाएँ, विभाजित होती नहीं दिखतीं, और कई दूसरी केवल कभी-कभी, चोट या मृत्यु से नष्ट कोशिकाओं की जगह लेने के लिए, विभाजित होती हैं। जो कोशिकाएँ आगे विभाजित नहीं होतीं वे G1 छोड़कर एक निष्क्रिय अवस्था में चली जाती हैं, जिसे शांत अवस्था (G0) कहते हैं। वे उपापचयी रूप से सक्रिय रहती हैं पर तब तक संख्या नहीं बढ़ातीं जब तक जीव को उनकी आवश्यकता न हो।\n\nजंतुओं में समसूत्री विभाजन केवल द्विगुणित कायिक कोशिकाओं में दिखता है, कुछ अपवादों को छोड़कर जहाँ अगुणित कोशिकाएँ समसूत्री विभाजन करती हैं, जैसे नर मधुमक्खियाँ। पौधों में समसूत्री विभाजन अगुणित और द्विगुणित दोनों कोशिकाओं में होता है।"
+      },
+      "media": "img.cell-cycle-division.grow-split",
+      "highlights": [
+        {
+          "term": {
+            "en": "G0",
+            "hi": "G0"
+          },
+          "definition": {
+            "en": "Quiescent stage: metabolically active, not dividing.",
+            "hi": "शांत अवस्था: उपापचयी रूप से सक्रिय, विभाजित नहीं।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.1.1"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:08",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Which phase is it?",
+        "hi": "यह कौन-सी प्रावस्था है?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "DNA content doubles",
+              "hi": "DNA की मात्रा दोगुनी होती है"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Cell grows but does not replicate DNA, right after mitosis",
+              "hi": "समसूत्री विभाजन के ठीक बाद कोशिका बढ़ती है पर DNA प्रतिकृति नहीं"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Proteins made in preparation for mitosis",
+              "hi": "समसूत्री विभाजन की तैयारी में प्रोटीन बनते हैं"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Heart cells that no longer divide",
+              "hi": "हृदय कोशिकाएँ जो अब विभाजित नहीं होतीं"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "g1",
+            "label": {
+              "en": "G1",
+              "hi": "G1"
+            }
+          },
+          {
+            "id": "s",
+            "label": {
+              "en": "S",
+              "hi": "S"
+            }
+          },
+          {
+            "id": "g2",
+            "label": {
+              "en": "G2",
+              "hi": "G2"
+            }
+          },
+          {
+            "id": "g0",
+            "label": {
+              "en": "G0",
+              "hi": "G0"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "s"
+          },
+          {
+            "item": "i2",
+            "bin": "g1"
+          },
+          {
+            "item": "i3",
+            "bin": "g2"
+          },
+          {
+            "item": "i4",
+            "bin": "g0"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: grow, copy, prepare, or rest.",
+          "hi": "सही: बढ़ना, प्रतिलिपि, तैयारी, या विश्राम।"
+        },
+        "wrong": {
+          "en": "DNA is copied only in S; G0 cells have left the cycle.",
+          "hi": "DNA की प्रतिलिपि केवल S में; G0 कोशिकाएँ चक्र से बाहर हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:09",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.cell-cycle.0003"
+    },
+    {
+      "id": "bio.cell-cycle-division.cell-cycle:dd:10",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Cell cycle = interphase (G1, S, G2) + M phase; interphase is over 95% of a 24-hour human cycle.",
+          "hi": "कोशिका चक्र = अंतरावस्था (G1, S, G2) + M प्रावस्था; 24 घंटे के मानव चक्र में अंतरावस्था 95% से अधिक है।"
+        },
+        {
+          "en": "S phase: DNA 2C to 4C, chromosome number unchanged (2n stays 2n).",
+          "hi": "S प्रावस्था: DNA 2C से 4C, गुणसूत्र संख्या अपरिवर्तित (2n, 2n ही रहता है)।"
+        },
+        {
+          "en": "G0: quiescent, metabolically active, not dividing (heart cells).",
+          "hi": "G0: शांत, उपापचयी रूप से सक्रिय, विभाजित नहीं (हृदय कोशिकाएँ)।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.1"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

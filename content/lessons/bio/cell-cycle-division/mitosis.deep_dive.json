@@ -1,0 +1,464 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo110) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.cell-cycle-division.mitosis:deep_dive",
+  "topic": "bio.cell-cycle-division.mitosis",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 2,
+  "max_depth": 2,
+  "concepts": [
+    "bio.cell-cycle-division.mitosis.core.mitosis"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Prophase and metaphase",
+        "hi": "पूर्वावस्था और मध्यावस्था"
+      },
+      "subtopic": "bio.cell-cycle-division.mitosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.mitosis:dd:01",
+        "bio.cell-cycle-division.mitosis:dd:02"
+      ],
+      "estimated_minutes": 1
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Anaphase and telophase",
+        "hi": "पश्चावस्था और अंत्यावस्था"
+      },
+      "subtopic": "bio.cell-cycle-division.mitosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.mitosis:dd:03",
+        "bio.cell-cycle-division.mitosis:dd:04",
+        "bio.cell-cycle-division.mitosis:dd:05"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Cytokinesis",
+        "hi": "कोशिकाद्रव्य विभाजन"
+      },
+      "subtopic": "bio.cell-cycle-division.mitosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.mitosis:dd:06",
+        "bio.cell-cycle-division.mitosis:dd:07",
+        "bio.cell-cycle-division.mitosis:dd:08"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-4",
+      "title": {
+        "en": "Why mitosis matters",
+        "hi": "समसूत्री विभाजन क्यों महत्त्वपूर्ण है"
+      },
+      "subtopic": "bio.cell-cycle-division.mitosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.mitosis:dd:09",
+        "bio.cell-cycle-division.mitosis:dd:10",
+        "bio.cell-cycle-division.mitosis:dd:11"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Getting ready and lining up",
+        "hi": "तैयार होना और पंक्ति में आना"
+      },
+      "body": {
+        "en": "Mitosis is called equational division because parent and daughter cells have the same number of chromosomes. Karyokinesis is divided into prophase, metaphase, anaphase and telophase, though division is a continuous process without clear-cut lines.\n\nProphase: chromatin condenses into compact mitotic chromosomes, each of two chromatids attached at the centromere. The centrosome, duplicated in interphase, moves towards opposite poles; each radiates microtubules called asters, and the two asters with the spindle fibres form the mitotic apparatus. By the end of prophase the Golgi complex, ER, nucleolus and nuclear envelope are no longer seen.\n\nMetaphase starts when the nuclear envelope has completely disintegrated. Condensation is complete, so this is the best stage to study chromosome morphology. Spindle fibres attach to the kinetochores, small discs on the centromeres, and the chromosomes line up at the equator, the metaphase plate, with sister chromatids facing opposite poles, like pairs of children in one line across the middle of a playground.",
+        "hi": "समसूत्री विभाजन को समीकरणी विभाजन कहते हैं क्योंकि जनक और संतति कोशिकाओं में गुणसूत्रों की संख्या समान होती है। केंद्रकभाजन को पूर्वावस्था, मध्यावस्था, पश्चावस्था और अंत्यावस्था में बाँटा जाता है, यद्यपि विभाजन बिना स्पष्ट सीमाओं वाली एक लगातार प्रक्रिया है।\n\nपूर्वावस्था: क्रोमैटिन संघनित होकर सघन समसूत्री गुणसूत्र बनाता है, हर एक दो अर्धगुणसूत्रों का, जो गुणसूत्रबिंदु पर जुड़े हैं। अंतरावस्था में द्विगुणित तारककेंद्र विपरीत ध्रुवों की ओर बढ़ता है; हर एक से तारक नामक सूक्ष्मनलिकाएँ निकलती हैं, और दोनों तारक तर्कु तंतुओं के साथ समसूत्री उपकरण बनाते हैं। पूर्वावस्था के अंत तक गॉल्जी सम्मिश्र, ER, केंद्रिका और केंद्रक आवरण नहीं दिखते।\n\nमध्यावस्था तब शुरू होती है जब केंद्रक आवरण पूरी तरह विघटित हो जाता है। संघनन पूरा हो चुका होता है, इसलिए गुणसूत्रों की आकारिकी के अध्ययन के लिए यह सबसे अच्छी अवस्था है। तर्कु तंतु गुणसूत्रबिंदु पर स्थित छोटी चकती जैसी काइनेटोकोर से जुड़ते हैं, और गुणसूत्र भूमध्य रेखा, यानी मध्यावस्था पट्टिका, पर पंक्तिबद्ध होते हैं, सहोदर अर्धगुणसूत्र विपरीत ध्रुवों की ओर, जैसे खेल के मैदान के बीच एक पंक्ति में खड़े बच्चों के जोड़े।"
+      },
+      "media": "img.cell-cycle-division.line-up",
+      "highlights": [
+        {
+          "term": {
+            "en": "kinetochore",
+            "hi": "काइनेटोकोर"
+          },
+          "definition": {
+            "en": "Disc on the centromere where spindle fibres attach.",
+            "hi": "गुणसूत्रबिंदु पर चकती जहाँ तर्कु तंतु जुड़ते हैं।"
+          }
+        },
+        {
+          "term": {
+            "en": "metaphase plate",
+            "hi": "मध्यावस्था पट्टिका"
+          },
+          "definition": {
+            "en": "The plane where chromosomes align.",
+            "hi": "वह तल जहाँ गुणसूत्र पंक्तिबद्ध होते हैं।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.2, §10.2.1, §10.2.2"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:02",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.mitosis.0001"
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Pulling apart and rebuilding",
+        "hi": "अलग होना और फिर से बनना"
+      },
+      "body": {
+        "en": "Anaphase: each chromosome at the metaphase plate splits at the same moment, and the two daughter chromatids, now daughter chromosomes, move towards opposite poles. The centromere leads, with the arms trailing behind. Key events: centromeres split and chromatids separate; chromatids move to opposite poles.\n\nTelophase: the chromosomes that reach the poles decondense and lose their individuality, and the chromatin collects at each pole. A nuclear envelope forms round each cluster, giving two daughter nuclei, and the nucleolus, Golgi complex and ER reform.",
+        "hi": "पश्चावस्था: मध्यावस्था पट्टिका पर हर गुणसूत्र एक साथ विभाजित होता है, और दोनों संतति अर्धगुणसूत्र, जो अब संतति गुणसूत्र हैं, विपरीत ध्रुवों की ओर बढ़ते हैं। गुणसूत्रबिंदु आगे रहता है और भुजाएँ पीछे घिसटती हैं। मुख्य घटनाएँ: गुणसूत्रबिंदु विभाजित होते हैं और अर्धगुणसूत्र अलग होते हैं; अर्धगुणसूत्र विपरीत ध्रुवों की ओर जाते हैं।\n\nअंत्यावस्था: ध्रुवों पर पहुँचे गुणसूत्र असंघनित होकर अपनी पहचान खो देते हैं, और क्रोमैटिन हर ध्रुव पर इकट्ठा होता है। हर समूह के चारों ओर केंद्रक आवरण बनता है, जिससे दो संतति केंद्रक बनते हैं, और केंद्रिका, गॉल्जी सम्मिश्र तथा ER फिर बनते हैं।"
+      },
+      "media": "img.cell-cycle-division.line-up",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.2.3, §10.2.4"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Match each event to its stage.",
+        "hi": "हर घटना को उसकी अवस्था से मिलाइए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Chromatin condenses; centrosomes move apart",
+              "hi": "क्रोमैटिन संघनित होता है; तारककेंद्र दूर जाते हैं"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Chromosomes align at the metaphase plate",
+              "hi": "गुणसूत्र मध्यावस्था पट्टिका पर पंक्तिबद्ध होते हैं"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Centromeres split and chromatids separate",
+              "hi": "गुणसूत्रबिंदु विभाजित होते हैं और अर्धगुणसूत्र अलग होते हैं"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Nuclear envelope reforms at each pole",
+              "hi": "हर ध्रुव पर केंद्रक आवरण फिर बनता है"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "pro",
+            "label": {
+              "en": "Prophase",
+              "hi": "पूर्वावस्था"
+            }
+          },
+          {
+            "id": "met",
+            "label": {
+              "en": "Metaphase",
+              "hi": "मध्यावस्था"
+            }
+          },
+          {
+            "id": "ana",
+            "label": {
+              "en": "Anaphase",
+              "hi": "पश्चावस्था"
+            }
+          },
+          {
+            "id": "tel",
+            "label": {
+              "en": "Telophase",
+              "hi": "अंत्यावस्था"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "pro"
+          },
+          {
+            "item": "i2",
+            "bin": "met"
+          },
+          {
+            "item": "i3",
+            "bin": "ana"
+          },
+          {
+            "item": "i4",
+            "bin": "tel"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: condense, align, separate, rebuild.",
+          "hi": "सही: संघनन, पंक्ति, अलगाव, पुनर्निर्माण।"
+        },
+        "wrong": {
+          "en": "Alignment is metaphase; splitting is anaphase.",
+          "hi": "पंक्तिबद्ध होना मध्यावस्था है; विभाजित होना पश्चावस्था।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:05",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.mitosis.0002"
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Animal cells: a furrow",
+        "hi": "जंतु कोशिकाएँ: एक खाँच"
+      },
+      "body": {
+        "en": "After karyokinesis the cytoplasm divides, cytokinesis, and cell division is complete. In an animal cell a furrow appears in the plasma membrane, deepens gradually and finally joins in the centre, dividing the cytoplasm in two, like a ring tightened round the middle of a balloon. Organelles such as mitochondria and plastids are shared between the two daughter cells.",
+        "hi": "केंद्रकभाजन के बाद कोशिकाद्रव्य बँटता है, यानी कोशिकाद्रव्य विभाजन, और कोशिका विभाजन पूरा होता है। जंतु कोशिका में प्लाज़्मा झिल्ली में एक खाँच बनती है, धीरे-धीरे गहरी होती है और अंत में केंद्र में मिल जाती है, जिससे कोशिकाद्रव्य दो भागों में बँट जाता है, जैसे गुब्बारे के बीच कसता हुआ छल्ला। माइटोकॉन्ड्रिया और लवक जैसे कोशिकांग दोनों संतति कोशिकाओं में बँट जाते हैं।"
+      },
+      "media": "img.cell-cycle-division.balloon-pinch",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.2.5"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Plant cells: a cell plate",
+        "hi": "पादप कोशिकाएँ: एक कोशिका पट्टिका"
+      },
+      "body": {
+        "en": "Plant cells are enclosed by a relatively inextensible cell wall, so they divide differently. Wall formation starts in the centre of the cell and grows outward to meet the existing lateral walls. It begins with a simple precursor, the cell plate, which represents the middle lamella between the walls of the two adjacent cells.\n\nIn some organisms karyokinesis is not followed by cytokinesis, and a multinucleate condition, a syncytium, arises: the liquid endosperm of coconut is an example.",
+        "hi": "पादप कोशिकाएँ अपेक्षाकृत अवितान्य कोशिका भित्ति से घिरी होती हैं, इसलिए वे अलग ढंग से बँटती हैं। भित्ति बनना कोशिका के केंद्र से शुरू होता है और बाहर की ओर बढ़कर मौजूदा पार्श्व भित्तियों से मिलता है। इसकी शुरुआत एक सरल पूर्वगामी, कोशिका पट्टिका, से होती है, जो दो पास-पास की कोशिकाओं की भित्तियों के बीच मध्य पटलिका को दर्शाती है।\n\nकुछ जीवों में केंद्रकभाजन के बाद कोशिकाद्रव्य विभाजन नहीं होता, और एक बहुकेंद्रकी दशा, संकोशिका (सिन्सिशियम), बनती है: नारियल का तरल भ्रूणपोष इसका उदाहरण है।"
+      },
+      "media": "img.cell-cycle-division.partition-wall",
+      "highlights": [
+        {
+          "term": {
+            "en": "cell plate",
+            "hi": "कोशिका पट्टिका"
+          },
+          "definition": {
+            "en": "Precursor of the new wall; becomes the middle lamella.",
+            "hi": "नई भित्ति का पूर्वगामी; मध्य पटलिका बनती है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.2.5"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:08",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.mitosis.0003"
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Growth, balance and repair",
+        "hi": "वृद्धि, संतुलन और मरम्मत"
+      },
+      "body": {
+        "en": "Mitosis usually gives diploid daughter cells with an identical genetic complement. It is usually restricted to diploid cells, but in some lower plants and some social insects haploid cells also divide by mitosis.\n\nThe growth of multicellular organisms is due to mitosis. Cell growth disturbs the ratio between nucleus and cytoplasm, so the cell divides to restore the nucleo-cytoplasmic ratio. Mitosis repairs and replaces cells: the upper layer of the epidermis, the lining of the gut and blood cells are constantly replaced. Mitosis in the meristems, the apical and lateral cambium, lets plants grow throughout their life.",
+        "hi": "समसूत्री विभाजन सामान्यतः समान आनुवंशिक संरचना वाली द्विगुणित संतति कोशिकाएँ देता है। यह सामान्यतः द्विगुणित कोशिकाओं तक सीमित है, पर कुछ निम्न पौधों और कुछ सामाजिक कीटों में अगुणित कोशिकाएँ भी समसूत्री विभाजन करती हैं।\n\nबहुकोशिकीय जीवों की वृद्धि समसूत्री विभाजन से होती है। कोशिका वृद्धि केंद्रक और कोशिकाद्रव्य का अनुपात बिगाड़ देती है, इसलिए कोशिका केंद्रक-कोशिकाद्रव्य अनुपात फिर से बनाने के लिए बँटती है। समसूत्री विभाजन कोशिकाओं की मरम्मत और प्रतिस्थापन करता है: अधिचर्म की ऊपरी परत, आहारनाल का अस्तर और रुधिर कोशिकाएँ लगातार बदलती रहती हैं। विभज्योतकों, यानी शीर्षस्थ और पार्श्व एधा, में समसूत्री विभाजन पौधों को जीवन भर बढ़ने देता है।"
+      },
+      "media": "img.cell-cycle-division.grow-split",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.3"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:10",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Put the stages of mitosis in order.",
+        "hi": "समसूत्री विभाजन की अवस्थाओं को क्रम में रखिए।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "s1",
+            "text": {
+              "en": "Prophase: chromosomes condense",
+              "hi": "पूर्वावस्था: गुणसूत्र संघनित होते हैं"
+            }
+          },
+          {
+            "id": "s2",
+            "text": {
+              "en": "Metaphase: chromosomes align at the plate",
+              "hi": "मध्यावस्था: गुणसूत्र पट्टिका पर पंक्तिबद्ध"
+            }
+          },
+          {
+            "id": "s3",
+            "text": {
+              "en": "Anaphase: chromatids move to opposite poles",
+              "hi": "पश्चावस्था: अर्धगुणसूत्र विपरीत ध्रुवों की ओर"
+            }
+          },
+          {
+            "id": "s4",
+            "text": {
+              "en": "Telophase: two daughter nuclei form",
+              "hi": "अंत्यावस्था: दो संतति केंद्रक बनते हैं"
+            }
+          },
+          {
+            "id": "s5",
+            "text": {
+              "en": "Cytokinesis: the cytoplasm divides",
+              "hi": "कोशिकाद्रव्य विभाजन: कोशिकाद्रव्य बँटता है"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: PMAT, then cytokinesis.",
+          "hi": "सही: पूर्व, मध्य, पश्च, अंत्य, फिर कोशिकाद्रव्य विभाजन।"
+        },
+        "wrong": {
+          "en": "The nucleus divides first; the cytoplasm last.",
+          "hi": "पहले केंद्रक बँटता है; कोशिकाद्रव्य अंत में।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.mitosis:dd:11",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-cycle-division.mitosis.core.mitosis"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Prophase: condensation, asters, envelope gone. Metaphase: kinetochores attach, chromosomes at the plate.",
+          "hi": "पूर्वावस्था: संघनन, तारक, आवरण लुप्त। मध्यावस्था: काइनेटोकोर जुड़ते हैं, गुणसूत्र पट्टिका पर।"
+        },
+        {
+          "en": "Anaphase: centromeres split, chromatids to poles. Telophase: nuclei and nucleolus reform.",
+          "hi": "पश्चावस्था: गुणसूत्रबिंदु विभाजित, अर्धगुणसूत्र ध्रुवों की ओर। अंत्यावस्था: केंद्रक और केंद्रिका फिर बनते हैं।"
+        },
+        {
+          "en": "Cytokinesis: furrow in animal cells, cell plate from the centre outward in plant cells; coconut endosperm is a syncytium.",
+          "hi": "कोशिकाद्रव्य विभाजन: जंतु कोशिकाओं में खाँच, पादप कोशिकाओं में केंद्र से बाहर की ओर कोशिका पट्टिका; नारियल का भ्रूणपोष संकोशिका है।"
+        },
+        {
+          "en": "Significance: growth, nucleo-cytoplasmic ratio, repair, lifelong plant growth from meristems.",
+          "hi": "महत्त्व: वृद्धि, केंद्रक-कोशिकाद्रव्य अनुपात, मरम्मत, विभज्योतकों से पौधों की आजीवन वृद्धि।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.2, §10.3"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

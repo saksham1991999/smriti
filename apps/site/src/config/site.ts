@@ -2,8 +2,11 @@
 // `astro build` runs (the site is static), with safe defaults for local work.
 //
 // "Smriti" is a working name (PRD, TRD §18 D7): brand strings live here, never in pages.
-// The default domains use the reserved `.example` TLD on purpose, so nothing points at a
-// real domain until the owner picks one.
+// The default origins come from the brand domain in packages/config/brand.json: the site at
+// https://<domain> and the web app at https://app.<domain> (docs/DEPLOY.md). SITE_URL and
+// WEB_APP_URL override them, for staging and local previews.
+
+import { brandDomain, loadStoreApps, type StoreApp } from "./apps";
 
 export type Locale = "en" | "hi";
 export const LOCALES: readonly Locale[] = ["en", "hi"] as const;
@@ -46,6 +49,8 @@ export interface SiteConfig {
   /** Fail the build when the content index is the local fixture (production builds). */
   requireContentIndex: boolean;
   contentIndexPath: string | undefined;
+  /** Every store app, with its Play and App Store links once they are configured. */
+  apps: StoreApp[];
 }
 
 function numberEnv(name: string, fallback: number): number {
@@ -57,9 +62,10 @@ function numberEnv(name: string, fallback: number): number {
 }
 
 export function loadSiteConfig(): SiteConfig {
+  const domain = brandDomain();
   return {
-    siteUrl: stripSlash(env("SITE_URL") ?? "https://www.smriti.example"),
-    webAppUrl: stripSlash(env("WEB_APP_URL") ?? "https://app.smriti.example"),
+    siteUrl: stripSlash(env("SITE_URL") ?? `https://${domain}`),
+    webAppUrl: stripSlash(env("WEB_APP_URL") ?? `https://app.${domain}`),
     brand: {
       name: { en: env("BRAND_NAME_EN") ?? "Smriti", hi: env("BRAND_NAME_HI") ?? "स्मृति" },
       titleSuffix: { en: env("BRAND_NAME_EN") ?? "Smriti", hi: env("BRAND_NAME_HI") ?? "स्मृति" },
@@ -74,6 +80,7 @@ export function loadSiteConfig(): SiteConfig {
     noindex: env("SITE_NOINDEX") === "1" || env("SITE_NOINDEX") === "true",
     requireContentIndex: env("SITE_REQUIRE_CONTENT_INDEX") === "1" || env("SITE_REQUIRE_CONTENT_INDEX") === "true",
     contentIndexPath: env("CONTENT_INDEX_PATH"),
+    apps: loadStoreApps(env("STORE_URLS_PLAY"), env("STORE_URLS_IOS")),
   };
 }
 

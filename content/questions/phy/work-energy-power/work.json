@@ -1,0 +1,613 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.work",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.work.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.work.core.scalar-product",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The angle between $\\vec{A} = 2\\hat{i} + 3\\hat{j}$ and $\\vec{B} = 3\\hat{i} - 2\\hat{j}$ is",
+        "hi": "$\\vec{A} = 2\\hat{i} + 3\\hat{j}$ और $\\vec{B} = 3\\hat{i} - 2\\hat{j}$ के बीच का कोण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$90°$",
+            "hi": "$90°$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$0°$",
+            "hi": "$0°$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$45°$",
+            "hi": "$45°$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$180°$",
+            "hi": "$180°$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Work out $A_xB_x + A_yB_y$.",
+          "hi": "$A_xB_x + A_yB_y$ निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A zero dot product means the vectors are perpendicular.",
+          "hi": "शून्य बिंदु गुणनफल का अर्थ है कि सदिश लंबवत हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{A}\\cdot\\vec{B} = 2(3) + 3(-2) = 0$, so $\\cos\\theta = 0$.",
+            "hi": "$\\vec{A}\\cdot\\vec{B} = 2(3) + 3(-2) = 0$, अतः $\\cos\\theta = 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Parallel vectors would give a dot product of $AB$.",
+              "hi": "समांतर सदिशों का बिंदु गुणनफल $AB$ होता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Nothing here suggests $45°$; work it out.",
+              "hi": "यहाँ $45°$ का कोई संकेत नहीं; गणना कीजिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Antiparallel vectors would give $-AB$.",
+              "hi": "प्रतिसमांतर सदिशों से $-AB$ मिलता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.work.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.work.core.scalar-product",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For $\\vec{A} = 3\\hat{i} + 4\\hat{j}$ and $\\vec{B} = 4\\hat{i} + 3\\hat{j}$, the value of $\\cos\\theta$ between them is",
+        "hi": "$\\vec{A} = 3\\hat{i} + 4\\hat{j}$ और $\\vec{B} = 4\\hat{i} + 3\\hat{j}$ के लिए उनके बीच $\\cos\\theta$ का मान है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0.96",
+            "hi": "0.96"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.48",
+            "hi": "0.48"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1",
+            "hi": "1"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\cos\\theta = \\frac{\\vec{A}\\cdot\\vec{B}}{AB}$",
+          "hi": "$\\cos\\theta = \\frac{\\vec{A}\\cdot\\vec{B}}{AB}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Divide the dot product by the product of the magnitudes.",
+          "hi": "बिंदु गुणनफल को परिमाणों के गुणनफल से भाग दीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{A}\\cdot\\vec{B} = 12 + 12 = 24$; $A = B = 5$",
+            "hi": "$\\vec{A}\\cdot\\vec{B} = 12 + 12 = 24$; $A = B = 5$"
+          },
+          {
+            "en": "$\\cos\\theta = \\frac{24}{25} = 0.96$",
+            "hi": "$\\cos\\theta = \\frac{24}{25} = 0.96$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That divides by 50, adding the magnitudes squared.",
+              "hi": "यह 50 से भाग देता है, परिमाणों के वर्ग जोड़कर।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The vectors are not parallel.",
+              "hi": "सदिश समांतर नहीं हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The dot product is not zero.",
+              "hi": "बिंदु गुणनफल शून्य नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.work.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.work.core.work-constant-force",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A box is pulled 5 m along a level floor by a rope that pulls with 10 N at $60°$ above the horizontal. The work done by the rope is",
+        "hi": "एक बक्से को समतल फ़र्श पर 5 m तक एक रस्सी से खींचा जाता है जो क्षैतिज से $60°$ ऊपर 10 N से खींचती है। रस्सी द्वारा किया गया कार्य है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "25 J",
+            "hi": "25 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "50 J",
+            "hi": "50 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "43.3 J",
+            "hi": "43.3 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which part of the pull is along the floor?",
+          "hi": "खिंचाव का कौन-सा भाग फ़र्श के अनुदिश है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only the horizontal part of the pull does work.",
+          "hi": "खिंचाव का केवल क्षैतिज भाग कार्य करता है।"
+        },
+        "steps": [
+          {
+            "en": "$W = Fd\\cos\\theta = 10 \\times 5 \\times 0.5 = 25$ J",
+            "hi": "$W = Fd\\cos\\theta = 10 \\times 5 \\times 0.5 = 25$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That ignores the angle.",
+              "hi": "यह कोण की उपेक्षा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That uses $\\sin 60°$ instead of $\\cos 60°$.",
+              "hi": "यह $\\sin 60°$ लेता है, $\\cos 60°$ नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The pull has a component along the motion.",
+              "hi": "खिंचाव का गति के अनुदिश घटक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.work.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.work.core.work-constant-force",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A constant force $\\vec{F} = (2\\hat{i} + 3\\hat{j})$ N acts on a particle while it moves through $\\vec{d} = (4\\hat{i} - \\hat{j} + 5\\hat{k})$ m. The work done by the force, in J, is",
+        "hi": "एक नियत बल $\\vec{F} = (2\\hat{i} + 3\\hat{j})$ N एक कण पर लगता है जबकि कण $\\vec{d} = (4\\hat{i} - \\hat{j} + 5\\hat{k})$ m विस्थापित होता है। बल द्वारा किया गया कार्य, J में, है"
+      },
+      "answer": {
+        "value": 5,
+        "unit": "J"
+      },
+      "hints": [
+        {
+          "en": "$F_xd_x + F_yd_y + F_zd_z$",
+          "hi": "$F_xd_x + F_yd_y + F_zd_z$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Work is the dot product of force and displacement.",
+          "hi": "कार्य बल और विस्थापन का बिंदु गुणनफल है।"
+        },
+        "steps": [
+          {
+            "en": "$W = 2(4) + 3(-1) + 0(5) = 5$ J",
+            "hi": "$W = 2(4) + 3(-1) + 0(5) = 5$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding the components without the minus sign gives 11.",
+              "hi": "ऋण चिह्न के बिना घटक जोड़ने पर 11 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.work.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.work.core.work-constant-force",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these forces does zero work?",
+        "hi": "इनमें से कौन-सा बल शून्य कार्य करता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The normal force on a box sliding along a level floor",
+            "hi": "समतल फ़र्श पर फिसलते बक्से पर अभिलंब बल"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Friction on the same sliding box",
+            "hi": "उसी फिसलते बक्से पर घर्षण"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Gravity on a stone falling from a roof",
+            "hi": "छत से गिरते पत्थर पर गुरुत्व"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Your push on a box you slide forwards",
+            "hi": "आगे खिसकाए गए बक्से पर आपका धक्का"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for a force at right angles to the motion.",
+          "hi": "गति से समकोण पर बल खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A force perpendicular to the displacement does no work.",
+          "hi": "विस्थापन के लंबवत बल कोई कार्य नहीं करता।"
+        },
+        "steps": [
+          {
+            "en": "The normal force is vertical and the box moves horizontally, so $\\theta = 90°$.",
+            "hi": "अभिलंब बल ऊर्ध्वाधर है और बक्सा क्षैतिज चलता है, अतः $\\theta = 90°$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Friction opposes the motion and does negative work.",
+              "hi": "घर्षण गति का विरोध करता है और ऋणात्मक कार्य करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Gravity is along the fall and does positive work.",
+              "hi": "गुरुत्व गिरने की दिशा में है और धनात्मक कार्य करता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The push is along the motion and does positive work.",
+              "hi": "धक्का गति की दिशा में है और धनात्मक कार्य करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.work.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.work.core.work-constant-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A block slides 2 m down a rough incline. The kinetic friction on it is 3 N. The work done by friction on the block is",
+        "hi": "एक गुटका खुरदरे आनत तल पर 2 m नीचे फिसलता है। उस पर गतिज घर्षण 3 N है। घर्षण द्वारा गुटके पर किया गया कार्य है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-6$ J",
+            "hi": "$-6$ J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$+6$ J",
+            "hi": "$+6$ J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-3$ J",
+            "hi": "$-3$ J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which way does friction point compared with the motion?",
+          "hi": "गति की तुलना में घर्षण किस ओर है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Friction acts up the slope while the block moves down.",
+          "hi": "गुटका नीचे जाता है जबकि घर्षण ढलान पर ऊपर लगता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\theta = 180°$: $W = 3 \\times 2 \\times \\cos 180° = -6$ J",
+            "hi": "$\\theta = 180°$: $W = 3 \\times 2 \\times \\cos 180° = -6$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Friction opposes the motion, so its work is negative.",
+              "hi": "घर्षण गति का विरोध करता है, अतः उसका कार्य ऋणात्मक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Friction is along the line of motion, not perpendicular to it.",
+              "hi": "घर्षण गति की रेखा के अनुदिश है, लंबवत नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The distance of 2 m was left out.",
+              "hi": "2 m की दूरी छूट गई।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,681 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.mechanical-energy:deep_dive",
+  "topic": "phy.work-energy-power.mechanical-energy",
+  "mode": "deep_dive",
+  "estimated_minutes": 12,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+    "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+    "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Energy that is never lost",
+        "hi": "ऊर्जा जो कभी नष्ट नहीं होती"
+      },
+      "subtopic": "phy.work-energy-power.mechanical-energy.core",
+      "card_ids": [
+        "phy.work-energy-power.mechanical-energy:dd:01",
+        "phy.work-energy-power.mechanical-energy:dd:02",
+        "phy.work-energy-power.mechanical-energy:dd:03",
+        "phy.work-energy-power.mechanical-energy:dd:04",
+        "phy.work-energy-power.mechanical-energy:dd:05",
+        "phy.work-energy-power.mechanical-energy:dd:06",
+        "phy.work-energy-power.mechanical-energy:dd:07",
+        "phy.work-energy-power.mechanical-energy:dd:08",
+        "phy.work-energy-power.mechanical-energy:dd:09",
+        "phy.work-energy-power.mechanical-energy:dd:10",
+        "phy.work-energy-power.mechanical-energy:dd:11"
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Looping the loop",
+        "hi": "पूरा चक्कर"
+      },
+      "subtopic": "phy.work-energy-power.mechanical-energy.core",
+      "card_ids": [
+        "phy.work-energy-power.mechanical-energy:dd:12",
+        "phy.work-energy-power.mechanical-energy:dd:13",
+        "phy.work-energy-power.mechanical-energy:dd:14",
+        "phy.work-energy-power.mechanical-energy:dd:15",
+        "phy.work-energy-power.mechanical-energy:dd:16",
+        "phy.work-energy-power.mechanical-energy:dd:17",
+        "phy.work-energy-power.mechanical-energy:dd:18",
+        "phy.work-energy-power.mechanical-energy:dd:19"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The swing",
+        "hi": "झूला"
+      },
+      "body": {
+        "en": "Pull a swing back and let go. It rushes down, slows as it climbs the other side, and rises almost to the height it started from. Speed is traded for height and height for speed, over and over. Something is being kept constant while it changes form.",
+        "hi": "झूले को पीछे खींचकर छोड़िए। वह तेज़ी से नीचे आता है, दूसरी ओर चढ़ते हुए धीमा होता है, और लगभग उसी ऊँचाई तक उठता है जहाँ से चला था। चाल ऊँचाई में और ऊँचाई चाल में बार-बार बदलती है। रूप बदलते हुए भी कुछ स्थिर रखा जा रहा है।"
+      },
+      "media": "img.work-energy-power.swing"
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.conservative-forces"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Conservative forces",
+        "hi": "संरक्षी बल"
+      },
+      "body": {
+        "en": "A force is called conservative if any one of these holds (they are equivalent):\n\nIt can be derived from a potential energy, $F(x) = -\\frac{dV}{dx}$.\n\nThe work it does depends only on the end points, not on the path taken.\n\nThe work it does round any closed path is zero.\n\nGravity and the spring force are conservative: a body sliding down a smooth incline of height h reaches the bottom with speed $\\sqrt{2gh}$ whatever the angle. Friction and air drag are non-conservative: the work done by friction round a closed path is not zero, so no potential energy can be defined for it.",
+        "hi": "कोई बल संरक्षी कहलाता है यदि इनमें से कोई एक बात सही हो (ये तुल्य हैं):\n\nइसे किसी स्थितिज ऊर्जा से प्राप्त किया जा सके, $F(x) = -\\frac{dV}{dx}$।\n\nइसके द्वारा किया गया कार्य केवल सिरे के बिंदुओं पर निर्भर करे, लिए गए पथ पर नहीं।\n\nकिसी भी बंद पथ पर इसके द्वारा किया गया कार्य शून्य हो।\n\nगुरुत्व और स्प्रिंग बल संरक्षी हैं: h ऊँचाई के चिकने आनत तल से फिसलता पिंड तली पर $\\sqrt{2gh}$ चाल से पहुँचता है, कोण कुछ भी हो। घर्षण और वायु का कर्षण असंरक्षी हैं: बंद पथ पर घर्षण द्वारा किया गया कार्य शून्य नहीं होता, इसलिए इसके लिए कोई स्थितिज ऊर्जा परिभाषित नहीं की जा सकती।"
+      },
+      "media": "img.work-energy-power.swing",
+      "highlights": [
+        {
+          "term": {
+            "en": "conservative force",
+            "hi": "संरक्षी बल"
+          },
+          "definition": {
+            "en": "its work depends only on the end points",
+            "hi": "इसका कार्य केवल सिरे के बिंदुओं पर निर्भर करता है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.7, §5.8, Summary 2, Points to Ponder 9"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.conservative-forces"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Conservative or not?",
+        "hi": "संरक्षी है या नहीं?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Gravity near the Earth",
+              "hi": "पृथ्वी के पास गुरुत्व"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "The force of an ideal spring",
+              "hi": "आदर्श स्प्रिंग का बल"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Kinetic friction on a sliding block",
+              "hi": "फिसलते गुटके पर गतिज घर्षण"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Air resistance on a falling raindrop",
+              "hi": "गिरती वर्षा की बूँद पर वायु प्रतिरोध"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "cons",
+            "label": {
+              "en": "Conservative",
+              "hi": "संरक्षी"
+            }
+          },
+          {
+            "id": "non",
+            "label": {
+              "en": "Non-conservative",
+              "hi": "असंरक्षी"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "cons"
+          },
+          {
+            "item": "i2",
+            "bin": "cons"
+          },
+          {
+            "item": "i3",
+            "bin": "non"
+          },
+          {
+            "item": "i4",
+            "bin": "non"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Gravity and springs give back the work done against them; friction and drag do not.",
+          "hi": "सही। गुरुत्व और स्प्रिंग अपने विरुद्ध किया गया कार्य लौटा देते हैं; घर्षण और कर्षण नहीं।"
+        },
+        "wrong": {
+          "en": "Ask: is the work round a closed path zero?",
+          "hi": "पूछिए: क्या बंद पथ पर कार्य शून्य है?"
+        }
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Conservation of mechanical energy",
+        "hi": "यांत्रिक ऊर्जा का संरक्षण"
+      },
+      "body": {
+        "en": "If a conservative force F moves a body through $\\Delta x$, the work-energy theorem gives $\\Delta K = F(x)\\,\\Delta x$, and the definition of potential energy gives $-\\Delta V = F(x)\\,\\Delta x$. So $\\Delta K + \\Delta V = 0$, that is, $\\Delta(K + V) = 0$.\n\nThe sum $E = K + V$ is the total mechanical energy. K and V may each change from point to point, but their sum stays constant: the total mechanical energy of a system is conserved if the forces doing work on it are conservative.\n\nFor a ball dropped from a cliff of height H: at the top $E = mgH$; at height h, $E = mgh + \\frac{1}{2}mv_h^2$; at the ground $E = \\frac{1}{2}mv_f^2$. Equating these gives $v_f = \\sqrt{2gH}$ and $v_h^2 = 2g(H - h)$.",
+        "hi": "यदि कोई संरक्षी बल F किसी पिंड को $\\Delta x$ विस्थापित करता है, तो कार्य-ऊर्जा प्रमेय से $\\Delta K = F(x)\\,\\Delta x$, और स्थितिज ऊर्जा की परिभाषा से $-\\Delta V = F(x)\\,\\Delta x$। अतः $\\Delta K + \\Delta V = 0$, अर्थात् $\\Delta(K + V) = 0$।\n\nयोग $E = K + V$ कुल यांत्रिक ऊर्जा है। K और V अलग-अलग बिंदु-बिंदु पर बदल सकते हैं, पर उनका योग स्थिर रहता है: यदि किसी निकाय पर कार्य करने वाले बल संरक्षी हैं तो उसकी कुल यांत्रिक ऊर्जा संरक्षित रहती है।\n\nH ऊँचाई की चट्टान से गिराई गई गेंद के लिए: शीर्ष पर $E = mgH$; h ऊँचाई पर $E = mgh + \\frac{1}{2}mv_h^2$; ज़मीन पर $E = \\frac{1}{2}mv_f^2$। इन्हें बराबर रखने पर $v_f = \\sqrt{2gH}$ और $v_h^2 = 2g(H - h)$ मिलते हैं।"
+      },
+      "media": "img.work-energy-power.swing",
+      "highlights": [
+        {
+          "term": {
+            "en": "mechanical energy",
+            "hi": "यांत्रिक ऊर्जा"
+          },
+          "definition": {
+            "en": "$E = K + V$, constant when only conservative forces do work",
+            "hi": "$E = K + V$, स्थिर जब केवल संरक्षी बल कार्य करें"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.8, Eqs. 5.10-5.12, Fig. 5.5, Summary 4"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "When friction is present",
+        "hi": "जब घर्षण हो"
+      },
+      "body": {
+        "en": "If a non-conservative force $F_{nc}$ also acts, the work-energy theorem gives $(F_c + F_{nc})\\,\\Delta x = \\Delta K$, while $F_c\\,\\Delta x = -\\Delta V$. So $\\Delta(K + V) = F_{nc}\\,\\Delta x$, and over the whole path\n\n$E_f - E_i = W_{nc}$.\n\nThe mechanical energy changes by exactly the work of the non-conservative forces. Friction does negative work, so mechanical energy is lost, turning into heat and sound. Unlike the work of a conservative force, $W_{nc}$ depends on the path.",
+        "hi": "यदि कोई असंरक्षी बल $F_{nc}$ भी लगता है, तो कार्य-ऊर्जा प्रमेय से $(F_c + F_{nc})\\,\\Delta x = \\Delta K$, जबकि $F_c\\,\\Delta x = -\\Delta V$। अतः $\\Delta(K + V) = F_{nc}\\,\\Delta x$, और पूरे पथ पर\n\n$E_f - E_i = W_{nc}$।\n\nयांत्रिक ऊर्जा ठीक असंरक्षी बलों के कार्य जितनी बदलती है। घर्षण ऋणात्मक कार्य करता है, इसलिए यांत्रिक ऊर्जा घटती है और ऊष्मा तथा ध्वनि में बदल जाती है। संरक्षी बल के कार्य के विपरीत, $W_{nc}$ पथ पर निर्भर करता है।"
+      },
+      "media": "img.work-energy-power.swing",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.9, after Example 5.9"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:06",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Mechanical energy",
+        "hi": "यांत्रिक ऊर्जा"
+      },
+      "latex": "K_i + V_i = K_f + V_f,\\quad E_f - E_i = W_{nc}",
+      "symbols": [
+        {
+          "symbol": "K",
+          "meaning": {
+            "en": "kinetic energy",
+            "hi": "गतिज ऊर्जा"
+          },
+          "unit": "J"
+        },
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "potential energy",
+            "hi": "स्थितिज ऊर्जा"
+          },
+          "unit": "J"
+        },
+        {
+          "symbol": "W_{nc}",
+          "meaning": {
+            "en": "work done by non-conservative forces",
+            "hi": "असंरक्षी बलों द्वारा किया गया कार्य"
+          },
+          "unit": "J"
+        }
+      ],
+      "conditions": {
+        "en": "The first form holds only when the forces doing work are conservative.",
+        "hi": "पहला रूप तभी लागू है जब कार्य करने वाले बल संरक्षी हों।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 5.11, §5.9"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A ball is dropped from a cliff 20 m high. Ignoring air resistance and taking $g = 10$ m/s², find its speed when it is 5 m above the ground.",
+        "hi": "एक गेंद 20 m ऊँची चट्टान से गिराई जाती है। वायु प्रतिरोध की उपेक्षा करके और $g = 10$ m/s² लेकर, ज़मीन से 5 m ऊपर होने पर उसकी चाल ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$mgH = mgh + \\frac{1}{2}mv_h^2$, so $v_h^2 = 2g(H - h)$.",
+          "hi": "$mgH = mgh + \\frac{1}{2}mv_h^2$, अतः $v_h^2 = 2g(H - h)$।"
+        },
+        {
+          "en": "$v_h^2 = 2 \\times 10 \\times 15 = 300$, so $v_h \\approx 17.3$ m/s.",
+          "hi": "$v_h^2 = 2 \\times 10 \\times 15 = 300$, अतः $v_h \\approx 17.3$ m/s।"
+        }
+      ],
+      "answer": {
+        "en": "About 17.3 m/s",
+        "hi": "लगभग 17.3 m/s"
+      },
+      "answer_value": {
+        "value": 17.3,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Using the height above the ground, 5 m, as the drop.",
+        "hi": "ज़मीन से ऊँचाई, 5 m, को गिरी हुई दूरी मान लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 5.11d"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A child's swing is pulled back until the seat is 0.8 m above its lowest point, then released from rest. Ignoring air resistance and taking $g = 10$ m/s², how fast is the seat moving at the lowest point?",
+        "hi": "एक बच्चे के झूले को तब तक पीछे खींचा जाता है जब तक सीट अपने निम्नतम बिंदु से 0.8 m ऊपर न हो जाए, फिर विराम से छोड़ा जाता है। वायु प्रतिरोध की उपेक्षा करके और $g = 10$ m/s² लेकर, निम्नतम बिंदु पर सीट कितनी तेज़ चल रही है?"
+      },
+      "solution_steps": [
+        {
+          "en": "The ropes pull at right angles to the motion and do no work; only gravity does.",
+          "hi": "रस्सियाँ गति से समकोण पर खींचती हैं और कोई कार्य नहीं करतीं; केवल गुरुत्व करता है।"
+        },
+        {
+          "en": "$\\frac{1}{2}mv^2 = mgh$, so $v = \\sqrt{2 \\times 10 \\times 0.8} = 4$ m/s.",
+          "hi": "$\\frac{1}{2}mv^2 = mgh$, अतः $v = \\sqrt{2 \\times 10 \\times 0.8} = 4$ m/s।"
+        }
+      ],
+      "answer": {
+        "en": "4 m/s",
+        "hi": "4 m/s"
+      },
+      "answer_value": {
+        "value": 4,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Thinking the rope tension changes the energy.",
+        "hi": "यह सोचना कि रस्सी का तनाव ऊर्जा बदलता है।"
+      },
+      "media": "img.work-energy-power.swing",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.7, §5.8"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.conservative-forces"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.mechanical-energy.0001"
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.mechanical-energy.0003"
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:11",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+        "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "Conservative force: work depends only on the end points; zero round a closed path.",
+          "hi": "संरक्षी बल: कार्य केवल सिरे के बिंदुओं पर निर्भर; बंद पथ पर शून्य।"
+        },
+        {
+          "en": "Only conservative forces working: $K + V$ is constant. Otherwise $E_f - E_i = W_{nc}$.",
+          "hi": "केवल संरक्षी बल कार्य करें: $K + V$ स्थिर है। अन्यथा $E_f - E_i = W_{nc}$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:12",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Upside down at the top",
+        "hi": "शीर्ष पर उलटे"
+      },
+      "body": {
+        "en": "A roller coaster car runs round a vertical loop and, at the very top, the riders are upside down, yet they do not fall. Go too slowly and the car would leave the track. How fast must it be going?",
+        "hi": "रोलर कोस्टर की कार एक ऊर्ध्वाधर लूप में घूमती है और ठीक शीर्ष पर सवार उलटे होते हैं, फिर भी वे गिरते नहीं। बहुत धीमे चलें तो कार पटरी छोड़ देगी। उसे कितनी तेज़ होना चाहिए?"
+      },
+      "media": "img.work-energy-power.loop-coaster"
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:13",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "Motion in a vertical circle",
+        "hi": "ऊर्ध्वाधर वृत्त में गति"
+      },
+      "body": {
+        "en": "A bob of mass m on a light string of length L is given a speed $v_0$ at the lowest point A. Two forces act: gravity and the tension T. The tension is always along the string, at right angles to the motion, so it does no work; mechanical energy is conserved. Gravity does work, so the bob slows as it rises.\n\nAt the top C, if the string is just about to go slack, $T_C = 0$ and gravity alone provides the centripetal force: $mg = \\frac{mv_C^2}{L}$, so $v_C = \\sqrt{gL}$. This is the least speed at the top. Energy at C is $\\frac{1}{2}mv_C^2 + 2mgL = \\frac{5}{2}mgL$. Equating it to $\\frac{1}{2}mv_0^2$ gives $v_0 = \\sqrt{5gL}$, the least speed at the bottom. At B, level with the centre, $v_B = \\sqrt{3gL}$, and $\\frac{K_B}{K_C} = 3$.\n\nIf the string were cut at C, the bob would move off horizontally like a projectile; otherwise it carries on round the circle.",
+        "hi": "L लंबाई की हल्की डोरी से बँधे m द्रव्यमान के गोलक को निम्नतम बिंदु A पर $v_0$ चाल दी जाती है। दो बल लगते हैं: गुरुत्व और तनाव T। तनाव सदा डोरी के अनुदिश, गति से समकोण पर होता है, इसलिए यह कोई कार्य नहीं करता; यांत्रिक ऊर्जा संरक्षित रहती है। गुरुत्व कार्य करता है, इसलिए ऊपर उठते हुए गोलक धीमा होता है।\n\nशीर्ष C पर, यदि डोरी ढीली होने ही वाली हो, तो $T_C = 0$ और अकेला गुरुत्व अभिकेंद्र बल देता है: $mg = \\frac{mv_C^2}{L}$, अतः $v_C = \\sqrt{gL}$। यह शीर्ष पर न्यूनतम चाल है। C पर ऊर्जा $\\frac{1}{2}mv_C^2 + 2mgL = \\frac{5}{2}mgL$ है। इसे $\\frac{1}{2}mv_0^2$ के बराबर रखने पर $v_0 = \\sqrt{5gL}$ मिलता है, जो तली पर न्यूनतम चाल है। केंद्र के स्तर पर B पर $v_B = \\sqrt{3gL}$, और $\\frac{K_B}{K_C} = 3$।\n\nयदि C पर डोरी काट दी जाए, तो गोलक प्रक्षेप्य की तरह क्षैतिज दिशा में चला जाएगा; अन्यथा वह वृत्त में घूमता रहेगा।"
+      },
+      "media": "img.work-energy-power.loop-coaster",
+      "highlights": [
+        {
+          "term": {
+            "en": "least speeds",
+            "hi": "न्यूनतम चालें"
+          },
+          "definition": {
+            "en": "$\\sqrt{gL}$ at the top, $\\sqrt{5gL}$ at the bottom",
+            "hi": "शीर्ष पर $\\sqrt{gL}$, तली पर $\\sqrt{5gL}$"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.7, Fig. 5.6, Eqs. 5.13-5.14"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:14",
+      "type": "derivation",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "The least speed at the bottom",
+        "hi": "तली पर न्यूनतम चाल"
+      },
+      "steps": [
+        {
+          "latex": "mg = \\frac{mv_C^2}{L} \\Rightarrow v_C^2 = gL",
+          "say": {
+            "en": "At the top the string is just slack: gravity alone pulls inwards.",
+            "hi": "शीर्ष पर डोरी ठीक ढीली है: अकेला गुरुत्व भीतर खींचता है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "E_C = \\frac{1}{2}mv_C^2 + mg(2L) = \\frac{5}{2}mgL",
+          "say": {
+            "en": "Kinetic plus potential energy at the top, height 2L.",
+            "hi": "शीर्ष पर, 2L ऊँचाई पर, गतिज और स्थितिज ऊर्जा का योग।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\frac{1}{2}mv_0^2 = \\frac{5}{2}mgL \\Rightarrow v_0 = \\sqrt{5gL}",
+          "say": {
+            "en": "Energy is conserved between A and C.",
+            "hi": "A और C के बीच ऊर्जा संरक्षित है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "T_A - mg = \\frac{mv_0^2}{L} \\Rightarrow T_A = 6mg",
+          "say": {
+            "en": "Second law at the bottom gives the tension there.",
+            "hi": "तली पर द्वितीय नियम से वहाँ का तनाव मिलता है।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.7"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:15",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "Vertical circle on a string",
+        "hi": "डोरी पर ऊर्ध्वाधर वृत्त"
+      },
+      "latex": "v_{top} \\ge \\sqrt{gL},\\quad v_{bottom} \\ge \\sqrt{5gL}",
+      "symbols": [
+        {
+          "symbol": "L",
+          "meaning": {
+            "en": "length of the string, the radius",
+            "hi": "डोरी की लंबाई, त्रिज्या"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "v_{top}, v_{bottom}",
+          "meaning": {
+            "en": "speeds at the top and bottom",
+            "hi": "शीर्ष और तली पर चालें"
+          },
+          "unit": "m/s"
+        }
+      ],
+      "conditions": {
+        "en": "For the bob to go right round with the string taut.",
+        "hi": "डोरी तनी रहते हुए गोलक के पूरा चक्कर लगाने के लिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.7"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:16",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "problem": {
+        "en": "A bob hangs from a string 1.0 m long. What is the least speed it must be given at the lowest point to go right round a vertical circle, and what is its speed then at the top? Take $g = 9.8$ m/s².",
+        "hi": "एक गोलक 1.0 m लंबी डोरी से लटका है। ऊर्ध्वाधर वृत्त में पूरा चक्कर लगाने के लिए उसे निम्नतम बिंदु पर न्यूनतम कितनी चाल देनी होगी, और तब शीर्ष पर उसकी चाल क्या होगी? $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$v_0 = \\sqrt{5gL} = \\sqrt{5 \\times 9.8 \\times 1.0} = \\sqrt{49} = 7$ m/s",
+          "hi": "$v_0 = \\sqrt{5gL} = \\sqrt{5 \\times 9.8 \\times 1.0} = \\sqrt{49} = 7$ m/s"
+        },
+        {
+          "en": "$v_C = \\sqrt{gL} = \\sqrt{9.8} \\approx 3.13$ m/s",
+          "hi": "$v_C = \\sqrt{gL} = \\sqrt{9.8} \\approx 3.13$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "7 m/s at the bottom; about 3.13 m/s at the top",
+        "hi": "तली पर 7 m/s; शीर्ष पर लगभग 3.13 m/s"
+      },
+      "answer_value": {
+        "value": 7,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Setting the speed at the top to zero; then the string goes slack before the top.",
+        "hi": "शीर्ष पर चाल शून्य मान लेना; तब डोरी शीर्ष से पहले ही ढीली हो जाती है।"
+      },
+      "media": "img.work-energy-power.loop-coaster",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.7"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:17",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "question": "q.phy.work-energy-power.mechanical-energy.0006"
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:18",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "question": "q.phy.work-energy-power.mechanical-energy.0008"
+    },
+    {
+      "id": "phy.work-energy-power.mechanical-energy:dd:19",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+      ],
+      "depth": 4,
+      "points": [
+        {
+          "en": "Tension does no work; energy is conserved round the circle.",
+          "hi": "तनाव कोई कार्य नहीं करता; वृत्त में ऊर्जा संरक्षित रहती है।"
+        },
+        {
+          "en": "Just completing the loop: $v_{top} = \\sqrt{gL}$, $v_{bottom} = \\sqrt{5gL}$, $T_{bottom} = 6mg$.",
+          "hi": "ठीक पूरा चक्कर: $v_{top} = \\sqrt{gL}$, $v_{bottom} = \\sqrt{5gL}$, $T_{bottom} = 6mg$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

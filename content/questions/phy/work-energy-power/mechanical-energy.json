@@ -1,0 +1,881 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.mechanical-energy",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these forces is non-conservative?",
+        "hi": "इनमें से कौन-सा बल असंरक्षी है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Kinetic friction",
+            "hi": "गतिज घर्षण"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Gravity",
+            "hi": "गुरुत्व"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The force of an ideal spring",
+            "hi": "आदर्श स्प्रिंग का बल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The Earth's gravitational pull on the Moon",
+            "hi": "चंद्रमा पर पृथ्वी का गुरुत्वाकर्षण"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which force turns energy into heat?",
+          "hi": "कौन-सा बल ऊर्जा को ऊष्मा में बदलता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Friction's work round a closed path is not zero.",
+          "hi": "बंद पथ पर घर्षण का कार्य शून्य नहीं होता।"
+        },
+        "steps": [
+          {
+            "en": "Friction always opposes the motion, so it does negative work on every part of a round trip.",
+            "hi": "घर्षण सदा गति का विरोध करता है, इसलिए आने-जाने की यात्रा के हर भाग में ऋणात्मक कार्य करता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Gravity's work depends only on the change in height.",
+              "hi": "गुरुत्व का कार्य केवल ऊँचाई के परिवर्तन पर निर्भर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A spring gives back the work done on it.",
+              "hi": "स्प्रिंग अपने पर किया गया कार्य लौटा देती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is gravity too, which is conservative.",
+              "hi": "यह भी गुरुत्व है, जो संरक्षी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball is thrown straight up and caught again at the same height. Ignoring air resistance, the total work done on it by gravity during the flight is",
+        "hi": "एक गेंद सीधे ऊपर फेंकी जाती है और उसी ऊँचाई पर फिर पकड़ ली जाती है। वायु प्रतिरोध की उपेक्षा करें तो उड़ान के दौरान गुरुत्व द्वारा उस पर किया गया कुल कार्य है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "zero",
+            "hi": "शून्य"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "positive",
+            "hi": "धनात्मक"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "negative",
+            "hi": "ऋणात्मक"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$mgh$, where h is the greatest height",
+            "hi": "$mgh$, जहाँ h अधिकतम ऊँचाई है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Same start and end height.",
+          "hi": "आरंभ और अंत की ऊँचाई समान।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Gravity is conservative and the path is closed in height.",
+          "hi": "गुरुत्व संरक्षी है और ऊँचाई में पथ बंद है।"
+        },
+        "steps": [
+          {
+            "en": "Going up gravity does $-mgh$; coming down $+mgh$; total zero.",
+            "hi": "ऊपर जाते समय गुरुत्व $-mgh$ कार्य करता है; नीचे आते समय $+mgh$; कुल शून्य।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The downward part cancels the upward part.",
+              "hi": "नीचे का भाग ऊपर के भाग को निरस्त करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The upward part is cancelled by the downward part.",
+              "hi": "ऊपर का भाग नीचे के भाग से निरस्त होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the work for one half of the trip only.",
+              "hi": "यह केवल आधी यात्रा का कार्य है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A stone is dropped from a height of 45 m. Ignoring air resistance and taking $g = 10$ m/s², its speed just before it hits the ground, in m/s, is",
+        "hi": "एक पत्थर 45 m की ऊँचाई से गिराया जाता है। वायु प्रतिरोध की उपेक्षा करके और $g = 10$ m/s² लेकर, ज़मीन से टकराने से ठीक पहले उसकी चाल, m/s में, है"
+      },
+      "answer": {
+        "value": 30,
+        "unit": "m/s"
+      },
+      "hints": [
+        {
+          "en": "$mgH = \\frac{1}{2}mv^2$",
+          "hi": "$mgH = \\frac{1}{2}mv^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "All the potential energy becomes kinetic energy.",
+          "hi": "सारी स्थितिज ऊर्जा गतिज ऊर्जा बन जाती है।"
+        },
+        "steps": [
+          {
+            "en": "$v = \\sqrt{2gH} = \\sqrt{2 \\times 10 \\times 45} = 30$ m/s",
+            "hi": "$v = \\sqrt{2gH} = \\sqrt{2 \\times 10 \\times 45} = 30$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Leaving out the factor 2 gives about 21 m/s.",
+              "hi": "2 का गुणक छोड़ने पर लगभग 21 m/s आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 1 kg ball dropped from a height of 20 m reaches the ground at 18 m/s. Taking $g = 10$ m/s², the mechanical energy lost to air resistance is",
+        "hi": "20 m की ऊँचाई से गिराई गई 1 kg की गेंद 18 m/s से ज़मीन पर पहुँचती है। $g = 10$ m/s² लेकर वायु प्रतिरोध में खोई यांत्रिक ऊर्जा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "38 J",
+            "hi": "38 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "162 J",
+            "hi": "162 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "200 J",
+            "hi": "200 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "18 J",
+            "hi": "18 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$E_f - E_i = W_{nc}$",
+          "hi": "$E_f - E_i = W_{nc}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The loss is the work done by the non-conservative force.",
+          "hi": "हानि असंरक्षी बल द्वारा किया गया कार्य है।"
+        },
+        "steps": [
+          {
+            "en": "$E_i = mgH = 200$ J; $E_f = \\frac{1}{2} \\times 1 \\times 18^2 = 162$ J",
+            "hi": "$E_i = mgH = 200$ J; $E_f = \\frac{1}{2} \\times 1 \\times 18^2 = 162$ J"
+          },
+          {
+            "en": "Loss $= 200 - 162 = 38$ J",
+            "hi": "हानि $= 200 - 162 = 38$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the final kinetic energy, not the loss.",
+              "hi": "यह अंतिम गतिज ऊर्जा है, हानि नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the starting energy.",
+              "hi": "यह प्रारंभिक ऊर्जा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the momentum at the ground.",
+              "hi": "यह ज़मीन पर संवेग है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A pendulum bob is released from rest 0.2 m above its lowest point. Ignoring air resistance and taking $g = 10$ m/s², its speed at the lowest point is",
+        "hi": "एक लोलक का गोलक अपने निम्नतम बिंदु से 0.2 m ऊपर से विराम से छोड़ा जाता है। वायु प्रतिरोध की उपेक्षा करके और $g = 10$ m/s² लेकर, निम्नतम बिंदु पर उसकी चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s",
+            "hi": "2 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4 m/s",
+            "hi": "4 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1.4 m/s",
+            "hi": "1.4 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.2 m/s",
+            "hi": "0.2 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\frac{1}{2}mv^2 = mgh$",
+          "hi": "$\\frac{1}{2}mv^2 = mgh$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The drop in height sets the speed, not the length of the string.",
+          "hi": "चाल ऊँचाई में गिरावट से तय होती है, डोरी की लंबाई से नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 0.2} = 2$ m/s",
+            "hi": "$v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 0.2} = 2$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is $v^2 = 2gh$, without the square root.",
+              "hi": "यह $v^2 = 2gh$ है, वर्गमूल के बिना।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That uses $\\sqrt{gh}$, dropping the factor 2.",
+              "hi": "यह $\\sqrt{gh}$ लेता है, 2 का गुणक छोड़कर।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the height, not a speed.",
+              "hi": "यह ऊँचाई है, चाल नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.vertical-circle",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A small stone on a string 0.4 m long is whirled in a vertical circle. Taking $g = 10$ m/s², the least speed it must have at the top for the string to stay taut is",
+        "hi": "0.4 m लंबी डोरी से बँधे छोटे पत्थर को ऊर्ध्वाधर वृत्त में घुमाया जाता है। $g = 10$ m/s² लेकर डोरी तनी रहने के लिए शीर्ष पर उसकी न्यूनतम चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s",
+            "hi": "2 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4 m/s",
+            "hi": "4 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4.5 m/s",
+            "hi": "4.5 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$mg = mv^2/L$ at the top",
+          "hi": "शीर्ष पर $mg = mv^2/L$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At the top gravity alone can supply the centripetal force.",
+          "hi": "शीर्ष पर अकेला गुरुत्व अभिकेंद्र बल दे सकता है।"
+        },
+        "steps": [
+          {
+            "en": "$v_{top} = \\sqrt{gL} = \\sqrt{10 \\times 0.4} = 2$ m/s",
+            "hi": "$v_{top} = \\sqrt{gL} = \\sqrt{10 \\times 0.4} = 2$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is $gL$, without the square root.",
+              "hi": "यह $gL$ है, वर्गमूल के बिना।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "At zero speed the string would go slack before the top.",
+              "hi": "शून्य चाल पर डोरी शीर्ष से पहले ढीली हो जाएगी।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is $\\sqrt{5gL}$, the least speed at the bottom.",
+              "hi": "यह $\\sqrt{5gL}$ है, तली पर न्यूनतम चाल।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0007",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.vertical-circle",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A bob on a string 2 m long is to go right round a vertical circle. Taking $g = 10$ m/s², the least speed it must be given at the lowest point, in m/s, is",
+        "hi": "2 m लंबी डोरी पर एक गोलक को ऊर्ध्वाधर वृत्त में पूरा चक्कर लगाना है। $g = 10$ m/s² लेकर, निम्नतम बिंदु पर उसे दी जाने वाली न्यूनतम चाल, m/s में, है"
+      },
+      "answer": {
+        "value": 10,
+        "unit": "m/s"
+      },
+      "hints": [
+        {
+          "en": "$v_0 = \\sqrt{5gL}$",
+          "hi": "$v_0 = \\sqrt{5gL}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Combine the condition at the top with energy conservation.",
+          "hi": "शीर्ष की शर्त को ऊर्जा संरक्षण के साथ जोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "$v_0 = \\sqrt{5gL} = \\sqrt{5 \\times 10 \\times 2} = 10$ m/s",
+            "hi": "$v_0 = \\sqrt{5gL} = \\sqrt{5 \\times 10 \\times 2} = 10$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using $\\sqrt{4gL}$, as if the speed at the top could be zero, gives about 8.9 m/s.",
+              "hi": "$\\sqrt{4gL}$ लेना, मानो शीर्ष पर चाल शून्य हो सकती है, लगभग 8.9 m/s देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.vertical-circle",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A bob of mass m on a string just manages to go right round a vertical circle. The tension in the string at the lowest point is",
+        "hi": "डोरी पर m द्रव्यमान का गोलक ठीक-ठीक ऊर्ध्वाधर वृत्त का पूरा चक्कर लगा पाता है। निम्नतम बिंदु पर डोरी में तनाव है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$6mg$",
+            "hi": "$6mg$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$5mg$",
+            "hi": "$5mg$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$mg$",
+            "hi": "$mg$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2mg$",
+            "hi": "$2mg$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Second law along the string at the bottom.",
+          "hi": "तली पर डोरी के अनुदिश द्वितीय नियम।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At the bottom tension minus weight gives the centripetal force.",
+          "hi": "तली पर तनाव घटा भार अभिकेंद्र बल देता है।"
+        },
+        "steps": [
+          {
+            "en": "$T - mg = \\frac{mv_0^2}{L} = \\frac{m(5gL)}{L} = 5mg$, so $T = 6mg$.",
+            "hi": "$T - mg = \\frac{mv_0^2}{L} = \\frac{m(5gL)}{L} = 5mg$, अतः $T = 6mg$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The weight was not added.",
+              "hi": "भार नहीं जोड़ा गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That ignores the centripetal force.",
+              "hi": "यह अभिकेंद्र बल की उपेक्षा करता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That would need $v_0^2 = gL$ at the bottom.",
+              "hi": "इसके लिए तली पर $v_0^2 = gL$ चाहिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.mechanical-energy.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.mechanical-energy.core.vertical-circle",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A bob just manages to go right round a vertical circle on a string. The ratio of its kinetic energy at the lowest point to that at the highest point is",
+        "hi": "डोरी पर एक गोलक ठीक-ठीक ऊर्ध्वाधर वृत्त का पूरा चक्कर लगा पाता है। निम्नतम बिंदु पर उसकी गतिज ऊर्जा का उच्चतम बिंदु पर गतिज ऊर्जा से अनुपात है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "5",
+            "hi": "5"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "3",
+            "hi": "3"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\sqrt{5}$",
+            "hi": "$\\sqrt{5}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2",
+            "hi": "2"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Square the ratio of speeds.",
+          "hi": "चालों के अनुपात का वर्ग कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Kinetic energy goes as $v^2$.",
+          "hi": "गतिज ऊर्जा $v^2$ के अनुसार बदलती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{K_A}{K_C} = \\frac{v_0^2}{v_C^2} = \\frac{5gL}{gL} = 5$",
+            "hi": "$\\frac{K_A}{K_C} = \\frac{v_0^2}{v_C^2} = \\frac{5gL}{gL} = 5$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "3 is the ratio between the side point B and the top.",
+              "hi": "3, पार्श्व बिंदु B और शीर्ष के बीच का अनुपात है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the ratio of speeds, not energies.",
+              "hi": "यह चालों का अनुपात है, ऊर्जाओं का नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Check the speeds again: $\\sqrt{5gL}$ and $\\sqrt{gL}$.",
+              "hi": "चालें फिर जाँचिए: $\\sqrt{5gL}$ और $\\sqrt{gL}$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

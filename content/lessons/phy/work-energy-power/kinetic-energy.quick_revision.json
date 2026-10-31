@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.kinetic-energy:quick_revision",
+  "topic": "phy.work-energy-power.kinetic-energy",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.kinetic-energy:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.work-energy-power.kinetic-energy"
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.kinetic-energy.0002"
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.kinetic-energy.0004"
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$W_{net} = K_f - K_i$; use it when the force or the time is unknown.",
+          "hi": "$W_{net} = K_f - K_i$; जब बल या समय अज्ञात हो तब इसका प्रयोग कीजिए।"
+        },
+        {
+          "en": "Same momentum: the lighter body has more kinetic energy.",
+          "hi": "समान संवेग: हल्के पिंड की गतिज ऊर्जा अधिक।"
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "The theorem uses the work of the applied force alone.",
+            "hi": "प्रमेय केवल लगाए गए बल का कार्य लेता है।"
+          },
+          "correct": {
+            "en": "It uses the work of the net force, friction included.",
+            "hi": "यह नेट बल का कार्य लेता है, घर्षण सहित।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Losing 90% of the kinetic energy means losing 90% of the speed.",
+            "hi": "90% गतिज ऊर्जा खोने का अर्थ 90% चाल खोना है।"
+          },
+          "correct": {
+            "en": "K goes as $v^2$; the speed falls by about 68%.",
+            "hi": "K, $v^2$ के अनुसार बदलती है; चाल लगभग 68% घटती है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Equal momenta mean equal kinetic energies.",
+            "hi": "समान संवेग का अर्थ समान गतिज ऊर्जा।"
+          },
+          "correct": {
+            "en": "$K = p^2/2m$: the lighter body has more.",
+            "hi": "$K = p^2/2m$: हल्के पिंड की अधिक।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

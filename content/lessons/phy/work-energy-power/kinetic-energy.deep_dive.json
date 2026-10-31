@@ -1,0 +1,379 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.kinetic-energy:deep_dive",
+  "topic": "phy.work-energy-power.kinetic-energy",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Work changes kinetic energy",
+        "hi": "कार्य गतिज ऊर्जा बदलता है"
+      },
+      "subtopic": "phy.work-energy-power.kinetic-energy.core",
+      "card_ids": [
+        "phy.work-energy-power.kinetic-energy:dd:01",
+        "phy.work-energy-power.kinetic-energy:dd:02",
+        "phy.work-energy-power.kinetic-energy:dd:03",
+        "phy.work-energy-power.kinetic-energy:dd:04",
+        "phy.work-energy-power.kinetic-energy:dd:05",
+        "phy.work-energy-power.kinetic-energy:dd:06",
+        "phy.work-energy-power.kinetic-energy:dd:07",
+        "phy.work-energy-power.kinetic-energy:dd:08",
+        "phy.work-energy-power.kinetic-energy:dd:09",
+        "phy.work-energy-power.kinetic-energy:dd:10",
+        "phy.work-energy-power.kinetic-energy:dd:11"
+      ],
+      "estimated_minutes": 7
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The gentle raindrop",
+        "hi": "कोमल वर्षा की बूँद"
+      },
+      "body": {
+        "en": "A raindrop falls a whole kilometre, yet it lands gently. If gravity alone acted, it would hit the ground fast enough to hurt. Something else must be taking energy away on the way down, and the work-energy theorem lets us find out how much, without knowing exactly what that force is.",
+        "hi": "वर्षा की बूँद पूरे एक किलोमीटर नीचे गिरती है, फिर भी धीरे से ज़मीन पर पड़ती है। यदि केवल गुरुत्व लगता, तो वह चोट पहुँचाने लायक तेज़ी से टकराती। नीचे आते समय कुछ और ऊर्जा ले जा रहा होगा, और कार्य-ऊर्जा प्रमेय से हम यह जान सकते हैं कि कितनी, बिना यह जाने कि वह बल ठीक-ठीक क्या है।"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Kinetic energy and the theorem",
+        "hi": "गतिज ऊर्जा और प्रमेय"
+      },
+      "body": {
+        "en": "For constant acceleration, $v^2 - u^2 = 2as$. Multiply both sides by $\\frac{m}{2}$ and use $F = ma$:\n\n$\\frac{1}{2}mv^2 - \\frac{1}{2}mu^2 = mas = Fs$.\n\nThe quantity $K = \\frac{1}{2}mv^2$ is the kinetic energy, the energy a body has because it moves. It is a scalar and never negative. The right side is the work done by the net force. So:\n\nThe work-energy theorem: the change in kinetic energy of a particle equals the work done on it by the net force, $K_f - K_i = W$.",
+        "hi": "नियत त्वरण के लिए $v^2 - u^2 = 2as$। दोनों पक्षों को $\\frac{m}{2}$ से गुणा करके $F = ma$ लगाइए:\n\n$\\frac{1}{2}mv^2 - \\frac{1}{2}mu^2 = mas = Fs$।\n\nराशि $K = \\frac{1}{2}mv^2$ गतिज ऊर्जा है, वह ऊर्जा जो पिंड में गति के कारण होती है। यह एक अदिश है और कभी ऋणात्मक नहीं होती। दायाँ पक्ष नेट बल द्वारा किया गया कार्य है। अतः:\n\nकार्य-ऊर्जा प्रमेय: किसी कण की गतिज ऊर्जा में परिवर्तन उस पर नेट बल द्वारा किए गए कार्य के बराबर है, $K_f - K_i = W$।"
+      },
+      "media": "img.work-energy-power.trunk-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "work-energy theorem",
+            "hi": "कार्य-ऊर्जा प्रमेय"
+          },
+          "definition": {
+            "en": "$K_f - K_i = W_{net}$",
+            "hi": "$K_f - K_i = W_{net}$"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.2, Eqs. 5.2-5.3, §5.4, Eq. 5.5, Summary 1"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:03",
+      "type": "derivation",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "From kinematics to the theorem",
+        "hi": "शुद्धगतिकी से प्रमेय तक"
+      },
+      "steps": [
+        {
+          "latex": "v^2 - u^2 = 2\\,\\vec{a}\\cdot\\vec{d}",
+          "say": {
+            "en": "Constant acceleration, in vector form.",
+            "hi": "नियत त्वरण, सदिश रूप में।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\frac{1}{2}mv^2 - \\frac{1}{2}mu^2 = m\\vec{a}\\cdot\\vec{d} = \\vec{F}\\cdot\\vec{d}",
+          "say": {
+            "en": "Multiply by $m/2$ and use the second law.",
+            "hi": "$m/2$ से गुणा करके द्वितीय नियम लगाइए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "K_f - K_i = W",
+          "say": {
+            "en": "Name the two sides.",
+            "hi": "दोनों पक्षों को नाम दीजिए।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 5.2a-5.3"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Kinetic energy and the work-energy theorem",
+        "hi": "गतिज ऊर्जा और कार्य-ऊर्जा प्रमेय"
+      },
+      "latex": "K = \\frac{1}{2}mv^2,\\quad K_f - K_i = W_{net}",
+      "symbols": [
+        {
+          "symbol": "K",
+          "meaning": {
+            "en": "kinetic energy",
+            "hi": "गतिज ऊर्जा"
+          },
+          "unit": "J"
+        },
+        {
+          "symbol": "m",
+          "meaning": {
+            "en": "mass",
+            "hi": "द्रव्यमान"
+          },
+          "unit": "kg"
+        },
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "speed",
+            "hi": "चाल"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "W_{net}",
+          "meaning": {
+            "en": "work done by the net force",
+            "hi": "नेट बल द्वारा किया गया कार्य"
+          },
+          "unit": "J"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 5.3, 5.5"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A raindrop of mass 1.00 g falls from a height of 1.00 km and hits the ground at 50.0 m/s. Taking $g = 10$ m/s², find (a) the work done by gravity and (b) the work done by the resistive force of the air.",
+        "hi": "1.00 g द्रव्यमान की वर्षा की बूँद 1.00 km की ऊँचाई से गिरकर 50.0 m/s से ज़मीन से टकराती है। $g = 10$ m/s² लेकर (a) गुरुत्व द्वारा किया गया कार्य और (b) वायु के प्रतिरोधी बल द्वारा किया गया कार्य ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\Delta K = \\frac{1}{2} \\times 10^{-3} \\times 50 \\times 50 = 1.25$ J (it starts at rest).",
+          "hi": "$\\Delta K = \\frac{1}{2} \\times 10^{-3} \\times 50 \\times 50 = 1.25$ J (यह विराम से चलती है)।"
+        },
+        {
+          "en": "(a) $W_g = mgh = 10^{-3} \\times 10 \\times 10^3 = 10.0$ J",
+          "hi": "(a) $W_g = mgh = 10^{-3} \\times 10 \\times 10^3 = 10.0$ J"
+        },
+        {
+          "en": "(b) $W_r = \\Delta K - W_g = 1.25 - 10 = -8.75$ J",
+          "hi": "(b) $W_r = \\Delta K - W_g = 1.25 - 10 = -8.75$ J"
+        }
+      ],
+      "answer": {
+        "en": "(a) 10.0 J; (b) $-8.75$ J",
+        "hi": "(a) 10.0 J; (b) $-8.75$ J"
+      },
+      "answer_value": {
+        "value": -8.75,
+        "unit": "J",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Treating the gravity work as the change in kinetic energy, which ignores the air.",
+        "hi": "गुरुत्व के कार्य को ही गतिज ऊर्जा में परिवर्तन मान लेना, जो वायु की उपेक्षा करता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.2"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A bullet of mass 50.0 g moving at 200 m/s passes through soft plywood 2.00 cm thick and comes out with only 10% of its kinetic energy. What is its emergent speed?",
+        "hi": "200 m/s से चलती 50.0 g द्रव्यमान की गोली 2.00 cm मोटी नरम प्लाईवुड से गुज़रती है और अपनी गतिज ऊर्जा का केवल 10% लेकर बाहर आती है। उसकी निर्गत चाल क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "$K_i = \\frac{1}{2} \\times 0.05 \\times 200^2 = 1000$ J, so $K_f = 100$ J.",
+          "hi": "$K_i = \\frac{1}{2} \\times 0.05 \\times 200^2 = 1000$ J, अतः $K_f = 100$ J।"
+        },
+        {
+          "en": "$v_f = \\sqrt{\\frac{2 \\times 100}{0.05}} = 63.2$ m/s",
+          "hi": "$v_f = \\sqrt{\\frac{2 \\times 100}{0.05}} = 63.2$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "63.2 m/s: the speed falls by about 68%, not 90%",
+        "hi": "63.2 m/s: चाल लगभग 68% घटती है, 90% नहीं"
+      },
+      "answer_value": {
+        "value": 63.2,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.2
+        }
+      },
+      "common_trap": {
+        "en": "Taking 10% of the speed, 20 m/s, instead of 10% of the energy.",
+        "hi": "ऊर्जा के 10% के बजाय चाल का 10%, 20 m/s, लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.4"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Kinetic energy and momentum",
+        "hi": "गतिज ऊर्जा और संवेग"
+      },
+      "body": {
+        "en": "Since $p = mv$, kinetic energy can be written with momentum: $K = \\frac{1}{2}mv^2 = \\frac{p^2}{2m}$. Two bodies with the same momentum do not have the same kinetic energy: the lighter one has more. Doubling the momentum of a body multiplies its kinetic energy by four.",
+        "hi": "चूँकि $p = mv$, गतिज ऊर्जा को संवेग से लिखा जा सकता है: $K = \\frac{1}{2}mv^2 = \\frac{p^2}{2m}$। समान संवेग वाले दो पिंडों की गतिज ऊर्जा समान नहीं होती: हल्के पिंड की अधिक होती है। किसी पिंड का संवेग दुगुना करने पर उसकी गतिज ऊर्जा चार गुनी हो जाती है।"
+      },
+      "media": "img.work-energy-power.trunk-push",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 5.5"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "What the theorem does and does not tell you",
+        "hi": "प्रमेय क्या बताता है और क्या नहीं"
+      },
+      "body": {
+        "en": "The work-energy theorem is not independent of Newton's second law; it is a scalar, integrated form of it. Newton's law links force and acceleration at each instant, and it is a vector law. The theorem works over an interval, so the information about time and direction is lost.\n\nIt is still very useful: as with the raindrop, it can give the work done by a force whose exact nature is unknown. It holds in all inertial frames.",
+        "hi": "कार्य-ऊर्जा प्रमेय न्यूटन के द्वितीय नियम से स्वतंत्र नहीं है; यह उसका अदिश, समाकलित रूप है। न्यूटन का नियम हर क्षण बल और त्वरण को जोड़ता है, और वह सदिश नियम है। प्रमेय एक अंतराल पर लागू होता है, इसलिए समय और दिशा की जानकारी खो जाती है।\n\nफिर भी यह बहुत उपयोगी है: वर्षा की बूँद की तरह, यह उस बल का कार्य दे सकता है जिसकी ठीक प्रकृति ज्ञात न हो। यह सभी जड़त्वीय निर्देश तंत्रों में लागू होता है।"
+      },
+      "media": "img.work-energy-power.trunk-push",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.6, Points to Ponder 4-6"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.kinetic-energy.0001"
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.kinetic-energy.0003"
+    },
+    {
+      "id": "phy.work-energy-power.kinetic-energy:dd:11",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$K = \\frac{1}{2}mv^2 = \\frac{p^2}{2m}$, a positive scalar.",
+          "hi": "$K = \\frac{1}{2}mv^2 = \\frac{p^2}{2m}$, एक धनात्मक अदिश।"
+        },
+        {
+          "en": "The net work on a body equals the change in its kinetic energy.",
+          "hi": "पिंड पर नेट कार्य उसकी गतिज ऊर्जा में परिवर्तन के बराबर है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

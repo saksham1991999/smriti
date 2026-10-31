@@ -1,0 +1,107 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.power:quick_revision",
+  "topic": "phy.work-energy-power.power",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.work-energy-power.power.core.power-definition"
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.power:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.work-energy-power.power"
+    },
+    {
+      "id": "phy.work-energy-power.power:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.power.0002"
+    },
+    {
+      "id": "phy.work-energy-power.power:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.power.0004"
+    },
+    {
+      "id": "phy.work-energy-power.power:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Power measures how fast energy is transferred.",
+          "hi": "शक्ति मापती है कि ऊर्जा कितनी तेज़ी से स्थानांतरित होती है।"
+        },
+        {
+          "en": "At constant speed against a force, $P = Fv$.",
+          "hi": "किसी बल के विरुद्ध नियत चाल पर $P = Fv$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.power:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "The kWh is a unit of power.",
+            "hi": "kWh शक्ति का मात्रक है।"
+          },
+          "correct": {
+            "en": "It is a unit of energy, $3.6 \\times 10^6$ J.",
+            "hi": "यह ऊर्जा का मात्रक है, $3.6 \\times 10^6$ J।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Doing the same work faster takes more energy.",
+            "hi": "समान कार्य तेज़ी से करने में अधिक ऊर्जा लगती है।"
+          },
+          "correct": {
+            "en": "Same work, same energy; only the power is higher.",
+            "hi": "समान कार्य, समान ऊर्जा; केवल शक्ति अधिक।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

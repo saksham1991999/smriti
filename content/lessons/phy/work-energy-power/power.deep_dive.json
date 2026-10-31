@@ -1,0 +1,310 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.power:deep_dive",
+  "topic": "phy.work-energy-power.power",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.work-energy-power.power.core.power-definition"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "How fast work is done",
+        "hi": "कार्य कितनी तेज़ी से होता है"
+      },
+      "subtopic": "phy.work-energy-power.power.core",
+      "card_ids": [
+        "phy.work-energy-power.power:dd:01",
+        "phy.work-energy-power.power:dd:02",
+        "phy.work-energy-power.power:dd:03",
+        "phy.work-energy-power.power:dd:04",
+        "phy.work-energy-power.power:dd:05",
+        "phy.work-energy-power.power:dd:06",
+        "phy.work-energy-power.power:dd:07",
+        "phy.work-energy-power.power:dd:08",
+        "phy.work-energy-power.power:dd:09"
+      ],
+      "estimated_minutes": 6
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.power:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Four floors, fast",
+        "hi": "चार मंज़िलें, तेज़ी से"
+      },
+      "body": {
+        "en": "Two students climb the same four floors of their school. Both do the same work against gravity, but one runs up and the other strolls. We call the runner fitter: not because of how much work they do, but how fast they do it.",
+        "hi": "दो विद्यार्थी अपने स्कूल की वही चार मंज़िलें चढ़ते हैं। दोनों गुरुत्व के विरुद्ध समान कार्य करते हैं, पर एक दौड़कर चढ़ता है और दूसरा टहलते हुए। हम दौड़ने वाले को अधिक स्वस्थ कहते हैं: इसलिए नहीं कि वह कितना कार्य करता है, बल्कि इसलिए कि वह कितनी तेज़ी से करता है।"
+      },
+      "media": "img.work-energy-power.stair-climb"
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Average and instantaneous power",
+        "hi": "औसत और तात्क्षणिक शक्ति"
+      },
+      "body": {
+        "en": "Power is the rate at which work is done or energy is transferred. The average power of a force over a time t is $P_{av} = \\frac{W}{t}$. The instantaneous power is the limit as the time interval goes to zero, $P = \\frac{dW}{dt}$.\n\nSince $dW = \\vec{F}\\cdot d\\vec{r}$, the instantaneous power is also $P = \\vec{F}\\cdot\\vec{v}$, where $\\vec{v}$ is the velocity at that instant. Power is a scalar with dimensions $[ML^2T^{-3}]$.",
+        "hi": "शक्ति वह दर है जिस पर कार्य किया जाता है या ऊर्जा स्थानांतरित होती है। समय t में किसी बल की औसत शक्ति $P_{av} = \\frac{W}{t}$ है। समय अंतराल के शून्य की ओर जाने पर सीमांत मान तात्क्षणिक शक्ति है, $P = \\frac{dW}{dt}$।\n\nचूँकि $dW = \\vec{F}\\cdot d\\vec{r}$, तात्क्षणिक शक्ति $P = \\vec{F}\\cdot\\vec{v}$ भी है, जहाँ $\\vec{v}$ उस क्षण का वेग है। शक्ति एक अदिश है जिसकी विमाएँ $[ML^2T^{-3}]$ हैं।"
+      },
+      "media": "img.work-energy-power.stair-climb",
+      "highlights": [
+        {
+          "term": {
+            "en": "power",
+            "hi": "शक्ति"
+          },
+          "definition": {
+            "en": "the rate of doing work, $P = \\vec{F}\\cdot\\vec{v}$",
+            "hi": "कार्य करने की दर, $P = \\vec{F}\\cdot\\vec{v}$"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.10, Eqs. 5.20-5.21"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Watts, horse-power and kilowatt hours",
+        "hi": "वाट, अश्व शक्ति और किलोवाट घंटा"
+      },
+      "body": {
+        "en": "The SI unit of power is the watt: 1 W = 1 J/s, named after James Watt. An older unit, still used for cars and motorbikes, is the horse-power: 1 hp = 746 W.\n\nElectricity bills charge for energy in kilowatt hours. A 100 W bulb that is on for 10 hours uses 1000 watt hours = 1 kWh = $10^3$ W $\\times$ 3600 s = $3.6 \\times 10^6$ J. Note that the kWh is a unit of energy, not of power.",
+        "hi": "शक्ति का SI मात्रक वाट है: 1 W = 1 J/s, जेम्स वॉट के नाम पर। एक पुराना मात्रक, जो अब भी कारों और मोटरबाइकों के लिए प्रयुक्त होता है, अश्व शक्ति है: 1 hp = 746 W।\n\nबिजली के बिल किलोवाट घंटे में ऊर्जा का शुल्क लेते हैं। 10 घंटे जलने वाला 100 W का बल्ब 1000 वाट घंटा = 1 kWh = $10^3$ W $\\times$ 3600 s = $3.6 \\times 10^6$ J खर्च करता है। ध्यान दीजिए कि kWh ऊर्जा का मात्रक है, शक्ति का नहीं।"
+      },
+      "media": "img.work-energy-power.stair-climb",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.10"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Power",
+        "hi": "शक्ति"
+      },
+      "latex": "P_{av} = \\frac{W}{t},\\quad P = \\frac{dW}{dt} = \\vec{F}\\cdot\\vec{v}",
+      "symbols": [
+        {
+          "symbol": "P",
+          "meaning": {
+            "en": "power",
+            "hi": "शक्ति"
+          },
+          "unit": "W"
+        },
+        {
+          "symbol": "W",
+          "meaning": {
+            "en": "work done",
+            "hi": "किया गया कार्य"
+          },
+          "unit": "J"
+        },
+        {
+          "symbol": "t",
+          "meaning": {
+            "en": "time taken",
+            "hi": "लिया गया समय"
+          },
+          "unit": "s"
+        },
+        {
+          "symbol": "\\vec{v}",
+          "meaning": {
+            "en": "velocity at that instant",
+            "hi": "उस क्षण का वेग"
+          },
+          "unit": "m/s"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 5.20-5.21"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A lift carrying a total load of 1800 kg moves up at a constant 2 m/s. A friction force of 4000 N opposes the motion. Find the least power the motor must deliver, in watts and in horse-power. Take $g = 10$ m/s².",
+        "hi": "1800 kg का कुल भार ले जाती एक लिफ़्ट नियत 2 m/s से ऊपर जाती है। 4000 N का घर्षण बल गति का विरोध करता है। मोटर द्वारा दी जाने वाली न्यूनतम शक्ति वाट और अश्व शक्ति में ज्ञात कीजिए। $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Downward force on the lift: $F = mg + F_f = 1800 \\times 10 + 4000 = 22000$ N.",
+          "hi": "लिफ़्ट पर अधोमुखी बल: $F = mg + F_f = 1800 \\times 10 + 4000 = 22000$ N।"
+        },
+        {
+          "en": "At constant speed the motor balances it: $P = Fv = 22000 \\times 2 = 44000$ W.",
+          "hi": "नियत चाल पर मोटर इसे संतुलित करती है: $P = Fv = 22000 \\times 2 = 44000$ W।"
+        },
+        {
+          "en": "In horse-power: $44000 / 746 \\approx 59$ hp.",
+          "hi": "अश्व शक्ति में: $44000 / 746 \\approx 59$ hp।"
+        }
+      ],
+      "answer": {
+        "en": "44000 W, about 59 hp",
+        "hi": "44000 W, लगभग 59 hp"
+      },
+      "answer_value": {
+        "value": 44000,
+        "unit": "W",
+        "tolerance": {
+          "abs": 10
+        }
+      },
+      "common_trap": {
+        "en": "Leaving out the friction force.",
+        "hi": "घर्षण बल छोड़ देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.10"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A 50 kg student runs up stairs to a floor 12 m higher in 20 s. Taking $g = 10$ m/s², what is the average power she spends against gravity?",
+        "hi": "50 kg की एक विद्यार्थी 20 s में 12 m ऊँची मंज़िल तक सीढ़ियाँ दौड़कर चढ़ती है। $g = 10$ m/s² लेकर, गुरुत्व के विरुद्ध उसकी औसत शक्ति क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "$W = mgh = 50 \\times 10 \\times 12 = 6000$ J",
+          "hi": "$W = mgh = 50 \\times 10 \\times 12 = 6000$ J"
+        },
+        {
+          "en": "$P_{av} = \\frac{W}{t} = \\frac{6000}{20} = 300$ W",
+          "hi": "$P_{av} = \\frac{W}{t} = \\frac{6000}{20} = 300$ W"
+        }
+      ],
+      "answer": {
+        "en": "300 W",
+        "hi": "300 W"
+      },
+      "answer_value": {
+        "value": 300,
+        "unit": "W",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Dividing the weight, not the work, by the time.",
+        "hi": "कार्य के बजाय भार को समय से भाग देना।"
+      },
+      "media": "img.work-energy-power.stair-climb",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.10"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.power.0001"
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.power.0003"
+    },
+    {
+      "id": "phy.work-energy-power.power:dd:09",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.power.core.power-definition"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$P = W/t$ on average; $P = \\vec{F}\\cdot\\vec{v}$ at an instant.",
+          "hi": "औसत में $P = W/t$; किसी क्षण $P = \\vec{F}\\cdot\\vec{v}$।"
+        },
+        {
+          "en": "1 W = 1 J/s; 1 hp = 746 W; 1 kWh = $3.6 \\times 10^6$ J of energy.",
+          "hi": "1 W = 1 J/s; 1 hp = 746 W; 1 kWh = $3.6 \\times 10^6$ J ऊर्जा।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

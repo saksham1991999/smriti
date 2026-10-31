@@ -4,12 +4,17 @@
  * the profile through the app's own services and the fake API's test hooks. Never runs against
  * a real API: device.ts calls it only with the fake.
  */
+import { router, type Href } from 'expo-router';
+
+import { startDuel } from '../features/social/services';
 import { deviceLimits } from '../features/parent/limits';
 import { parentSession } from '../features/parent/session';
 import type { SmritiApp } from '../services/app';
+import { duelQuestionsFrom } from './duelQuestions';
 import type { FakeApiServer } from './fake-api/server';
 
-type Demo = (app: SmritiApp, fake: FakeApiServer) => Promise<void>;
+/** A demo may name the screen to open once it has seeded the state (e.g. a duel's own URL). */
+type Demo = (app: SmritiApp, fake: FakeApiServer) => Promise<void | string>;
 
 async function onboard(app: SmritiApp, kind: 'little' | 'adult') {
   await app.ensureSession();
@@ -77,7 +82,42 @@ const demos: Record<string, Demo> = {
     await onboard(app, 'adult');
     await lesson(app, 8);
   },
+  social: async (app, fake) => {
+    await socialWorld(app, fake);
+  },
+  duel: async (app, fake) => {
+    const { ravi } = await socialWorld(app, fake);
+    const d = await startDuel(app, { opponentId: ravi });
+    fake.features.social.acceptDuelAs(ravi, d.id);
+    const key = fake.features.social.currentKey(d.id);
+    if (key) fake.features.social.answerAs(app.store.getState().session.userId!, d.id, key, 4000);
+    fake.features.social.answerAs(ravi, d.id, ['x'], 6000);
+    return `/social/duel/${d.id}`;
+  },
 };
+
+/**
+ * A signed-in adult with three friends: Ravi (an adult, more XP this week), Asha (an adult who
+ * hasn't studied today) and a 15-year-old who appears by a nickname (R31). Ravi shares a Duo and
+ * Asha sent a preset cheer. Every XP figure comes from these people's own lesson events.
+ */
+async function socialWorld(app: SmritiApp, fake: FakeApiServer) {
+  fake.flags = PHASE2;
+  await onboard(app, 'adult');
+  await app.continueWithGoogle({ email: 'meera@example.com', name: 'Meera Iyer' });
+  await lesson(app, 8);
+  const me = app.store.getState().session.userId!;
+  const s = fake.features.social;
+  const ravi = fake.addLearner({ name: 'Ravi Kumar', email: 'ravi@example.com', birthYear: 2005, species: 'dog', petName: 'Sheru', lessonsXp: [30, 15] });
+  const asha = fake.addLearner({ name: 'Asha Rao', email: 'asha@example.com', birthYear: 2006, species: 'cat', petName: 'Mitthu' });
+  const teen = fake.addLearner({ name: 'Kabir', email: 'kabir@example.com', birthYear: 2011, species: 'dog', petName: 'Moti', lessonsXp: [10] });
+  s.consent.add(teen.id);
+  for (const f of [ravi, asha, teen]) s.befriend(me, f.id);
+  s.duos.push({ id: 'duo-demo', a: me, b: ravi.id, status: 'active', at: app.deps.clock() });
+  s.cheer(asha.id, me, 'cheer', 'message_2');
+  s.questions = duelQuestionsFrom(app, 10);
+  return { me, ravi: ravi.id };
+}
 
 export async function runDemo(app: SmritiApp, fake: FakeApiServer, search: string): Promise<void> {
   const q = new URLSearchParams(search);
@@ -87,5 +127,6 @@ export async function runDemo(app: SmritiApp, fake: FakeApiServer, search: strin
   if (theme === 'dark' || theme === 'light') await app.savePrefs({ themePref: theme });
   const name = q.get('demo');
   const demo = name ? demos[name] : undefined;
-  if (demo) await demo(app, fake);
+  const open = demo ? await demo(app, fake) : undefined;
+  if (open) setTimeout(() => router.replace(open as Href), 300);
 }

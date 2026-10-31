@@ -112,7 +112,7 @@ export class FakeApiServer {
     this.ttl = opts.tokenTtlS ?? 3600;
     this.revenuecatAuth = opts.revenuecatWebhookAuth ?? '';
     this.failSyncWith = opts.failSyncWith ?? null;
-    this.features = new FeatureFakes({ clock: this.clock, user: (id) => this.users.get(id) ?? null, state: (u) => this.state(u) });
+    this.features = new FeatureFakes({ clock: this.clock, user: (id) => this.users.get(id) ?? null, users: () => this.users.values(), state: (u) => this.state(u) });
   }
 
   /** A `fetch` the app's platform layer can use in place of the network. */
@@ -288,6 +288,28 @@ export class FakeApiServer {
       createdAt: this.clock(),
     };
     this.users.set(id, user);
+    return user;
+  }
+
+  /**
+   * Test and demo hook: another signed-in learner, made from the events their own phone would
+   * have synced (birth year, pet, lessons with their XP), so the social fakes have real people.
+   */
+  addLearner(opts: { name: string; email: string; birthYear: number; species?: 'cat' | 'dog'; petName?: string; lessonsXp?: number[] }): FakeUser {
+    const user = this.createUser(false);
+    user.email = opts.email;
+    user.displayName = opts.name;
+    this.byEmail.set(opts.email, user.id);
+    const at = new Date(this.clock()).toISOString();
+    const push = <T extends WireEvent['type']>(type: T, payload: WireEvent<T>['payload']) => {
+      const event_id = `fake-ev-${++this.seq}`;
+      user.events.push({ event_id, type, occurred_at: at, tz: 'Asia/Kolkata', payload } as WireEvent);
+      user.eventIds.add(event_id);
+    };
+    push('onboarding_answer', { step: 'birth_year', value: opts.birthYear });
+    push('pet_named', { species: opts.species ?? 'cat', name: opts.petName ?? 'Miko' });
+    for (const xp of opts.lessonsXp ?? []) push('lesson_completed', { topic_id: 'fx.chapter-a.topic-a', mode: 'deep_dive', cards_seen: 6, correct: 4, total: 5, ms_total: 6 * 60_000, xp });
+    user.stateVersion = ++this.seq;
     return user;
   }
 

@@ -1390,6 +1390,10 @@ Invite-confirm variant (opened by an invite link): a sheet with the inviter's pe
 | Own link | This is your own invite link. | यह आपका अपना इनवाइट लिंक है। |
 | Link invalid | This invite isn't working any more. | यह इनवाइट अब काम नहीं करता। |
 | Daily cap | You've sent a lot of requests today. Try again tomorrow. | आज बहुत रिक्वेस्ट भेजी जा चुकी हैं। कल फिर कोशिश करें। |
+| Code heading | Have a friend's code? | दोस्त का कोड है? |
+| Code field | Friend's invite code | दोस्त का इनवाइट कोड |
+| Code add | Add | जोड़ें |
+| Added toast | {name} is your friend now | {name} अब आपके दोस्त हैं |
 
 **Illustration slots:** Invite card: `sunny-object`, 1:1, a paper plane carrying a small gift box, transparent. Alt: "An invite with a gift".
 
@@ -1525,6 +1529,7 @@ Mini profile (non-friends, from a league, leaderboard or duel row): a 40% sheet 
 | Report (mini profile) | Report | रिपोर्ट करें |
 | Remove | Remove friend | दोस्ती हटाएँ |
 | Remove confirm | Remove {name}? They won't be told. | {name} को हटाएँ? उन्हें बताया नहीं जाएगा। |
+| Deleted account | Deleted account | हटाया गया अकाउंट |
 | Mini: in your league | In your league | आपकी लीग में |
 | Mini: random opponent | Duel opponent | मुकाबले का खिलाड़ी |
 

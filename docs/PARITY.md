@@ -86,6 +86,19 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Your plan | PAY | Not built | Not built | Built | |
 | Parent mode, PIN and time limits | SET-13 to SET-16, SET-19 | Partial | Partial | Not built | Mobile: the gate (parent's own session on the child's phone, PIN), dashboard with Needs you, weekly report, time limits and the little learner switches, through `/v1/guardian/*`. The child's phone enforces the limit offline (app-core `timeLimitState`) and opens SET-19, where the child asks through `/v1/me/time-requests`. Not built: SET-17 consents, SET-18 add a child, the friends row, "Send a cheer" (no API yet). |
 
+## Social
+
+| Feature | Screens | iOS | Android | Web | Notes |
+|---|---|---|---|---|---|
+| Friends tab and locked states | SOC-01, SOC-02 | Partial | Partial | Not built | Mobile: the Friends tab behind `feature.friends` (R46), never for little learners; the server's gate picks SOC-02 (guest, ask a parent, under 13). League card, friends today, Duos, Challenge, Squads and Shared decks. SOC-07 is a short sheet (Challenge, Cheer). Names arrive resolved for the viewer (R31). No activity feed (SOC-01 activity) or leaderboards (SOC-10) yet. |
+| Add friends | SOC-03 to SOC-05 | Partial | Partial | Not built | Mobile: invite link (share on native, copy on web), add a friend's code, username search. Not built: the QR (needs a QR renderer and `expo-camera`) and SOC-03 username setup. |
+| Inbox, cheers and nudges | SOC-06, SOC-22 | Built | Built | Not built | Preset messages only, never free text. |
+| League | SOC-08 | Partial | Partial | Not built | Rows, zones, time left, teen Join. Not built: SOC-09 week result, SOC-24 rules. |
+| Duos | SOC-11, SOC-12 | Partial | Partial | Not built | Mobile: list, pick friends, accept, preset nudge. Not built: SOC-25 Duo detail. |
+| Squads | SOC-13, SOC-14 | Partial | Partial | Not built | Create (exam toggle), join by code, home with members, quest (when configured) and Cheer the squad. No crest or name picker yet. |
+| Duels | SOC-15 to SOC-19 | Partial | Partial | Not built | Mobile: friend or random, the match queue with Keep looking, Practise solo or Challenge a friend; live play polls `GET /v1/duels/{id}` every second (no SSE on mobile yet). Not built: SOC-17 countdown, rematch, async challenges, SOC-20 push entry. |
+| Shared decks | SOC-21 | Partial | Partial | Not built | List by scope, Add a copy, Helpful. No deck preview or sharing one of yours yet. |
+
 ## Notifications and widgets
 
 | Feature | Screens | iOS | Android | Web | Notes |

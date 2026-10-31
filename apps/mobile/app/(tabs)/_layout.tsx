@@ -41,6 +41,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="learn" />
       <Tabs.Screen name="labs" />
       <Tabs.Screen name="practice" options={{ href: tabs.includes('practice') ? undefined : null }} />
+      <Tabs.Screen name="friends" options={{ href: tabs.includes('friends') ? undefined : null }} />
       <Tabs.Screen name="me" />
     </Tabs>
   );

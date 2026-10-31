@@ -9,6 +9,7 @@
 import type { HttpResponse, SyncStateResponse } from '@smriti/app-core';
 
 import { ParentFakes } from './parent';
+import { SocialFakes } from './social';
 import type { FakeUser } from './server';
 
 export interface FeatureRequest {
@@ -22,6 +23,7 @@ export interface FeatureRequest {
 export interface FeatureContext {
   clock: () => number;
   user: (id: string) => FakeUser | null;
+  users: () => Iterable<FakeUser>;
   state: (user: FakeUser) => SyncStateResponse;
 }
 
@@ -31,11 +33,13 @@ export interface FeatureModule {
 
 export class FeatureFakes {
   readonly parent: ParentFakes;
+  readonly social: SocialFakes;
   private readonly modules: FeatureModule[];
 
   constructor(readonly ctx: FeatureContext) {
     this.parent = new ParentFakes(ctx);
-    this.modules = [this.parent];
+    this.social = new SocialFakes(ctx);
+    this.modules = [this.parent, this.social];
   }
 
   /** Adds a module (later features register theirs here). */

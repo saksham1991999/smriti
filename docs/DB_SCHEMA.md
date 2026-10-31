@@ -1217,7 +1217,8 @@ create table game.shop_items (
   id text primary key,
   kind text not null check (kind in ('freeze','pet_outfit','plant_skin','theme','palace_room','treat','room_theme')),
   price_gems integer not null, pro_only boolean not null default false,   -- gems are never sold for money (R36)
-  asset_id uuid, active boolean not null default true
+  asset_id uuid, active boolean not null default true,
+  name_key text   -- packages/i18n key ("me_money:ME-17.freeze"); no names stored here (migration 20261030200005)
 );
 create table game.inventory (
   user_id uuid not null references auth.users(id) on delete cascade,

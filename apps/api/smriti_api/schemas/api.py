@@ -3,6 +3,7 @@ source that ``packages/api-client`` is generated from."""
 
 from __future__ import annotations
 
+import re
 import uuid
 from datetime import date, datetime
 from typing import Annotated, Any, Literal
@@ -347,9 +348,16 @@ class RestDayRequest(BaseModel):
     day: date
 
 
+# An i18n catalogue key as the apps take it (`namespace:key`, packages/i18n).
+I18N_KEY = re.compile(r"^[a-z_]+:[A-Za-z0-9_.-]+$")
+
+
 class ShopItemOut(BaseModel):
     id: str
     kind: str
+    name_key: str | None = Field(
+        default=None, description="packages/i18n key (namespace:key); ME-17.treats takes {pet}"
+    )
     price_gems: int
     pro_only: bool
     owned: int
@@ -382,6 +390,9 @@ class QuestOut(BaseModel):
     id: str
     period: Literal["daily", "weekly", "event"]
     counter: str | None
+    title_key: str | None = Field(
+        default=None, description="packages/i18n ME-20 template key; takes {n} = target"
+    )
     target: int
     progress: int
     reward: dict[str, int]

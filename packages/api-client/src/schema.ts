@@ -7719,6 +7719,11 @@ export interface components {
       };
       /** Target */
       target: number;
+      /**
+       * Title Key
+       * @description packages/i18n ME-20 template key; takes {n} = target
+       */
+      title_key?: string | null;
     };
     /** QueueState */
     QueueState: {
@@ -8262,6 +8267,11 @@ export interface components {
       id: string;
       /** Kind */
       kind: string;
+      /**
+       * Name Key
+       * @description packages/i18n key (namespace:key); ME-17.treats takes {pet}
+       */
+      name_key?: string | null;
       /** Owned */
       owned: number;
       /** Price Gems */

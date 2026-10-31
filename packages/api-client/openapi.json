@@ -13510,6 +13510,11 @@
           "id": { "type": "string", "title": "Id" },
           "period": { "type": "string", "enum": ["daily", "weekly", "event"], "title": "Period" },
           "counter": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Counter" },
+          "title_key": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Title Key",
+            "description": "packages/i18n ME-20 template key; takes {n} = target"
+          },
           "target": { "type": "integer", "title": "Target" },
           "progress": { "type": "integer", "title": "Progress" },
           "reward": {
@@ -14285,6 +14290,11 @@
         "properties": {
           "id": { "type": "string", "title": "Id" },
           "kind": { "type": "string", "title": "Kind" },
+          "name_key": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Name Key",
+            "description": "packages/i18n key (namespace:key); ME-17.treats takes {pet}"
+          },
           "price_gems": { "type": "integer", "title": "Price Gems" },
           "pro_only": { "type": "boolean", "title": "Pro Only" },
           "owned": { "type": "integer", "title": "Owned" }

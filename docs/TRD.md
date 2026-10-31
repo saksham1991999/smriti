@@ -304,7 +304,7 @@ flowchart LR
 - The host (WebView on mobile, iframe on web) and the sim talk through a versioned `postMessage` protocol:
   - **Host → sim:** `init {locale, theme, params, task}`, `reset`.
   - **Sim → host:** `ready`, `state {…}`, `measurement {name, value, unit}`, `task_result {taskId, correct, data}`, `complete`, `error`.
-- This lets us use our own sims (built by the `sim-builder` skill on a shared kit), PhET HTML5 sims (CC BY 4.0, with attribution shown) and other open-licence sims without platform-specific code.
+- This lets us use our own sims (built by the `sim-builder` skill on a shared kit), other sims under commercial-friendly open licences (PhET's HTML5 sims are CC BY-NC 4.0, so they need a commercial licence from CU Boulder before use) without platform-specific code.
 - Performance: sims should stay under 2 MB, start in under 1.5 s on a mid-range Android phone, and support a "low power" flag.
 
 ### 7.4 Exam blueprints

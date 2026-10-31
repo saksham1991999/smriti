@@ -1,0 +1,313 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.scalars-vectors:deep_dive",
+  "topic": "phy.motion-plane.scalars-vectors",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.motion-plane.scalars-vectors.core.scalar-vector"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Magnitude, and sometimes direction",
+        "hi": "परिमाण, और कभी-कभी दिशा"
+      },
+      "subtopic": "phy.motion-plane.scalars-vectors.core",
+      "card_ids": [
+        "phy.motion-plane.scalars-vectors:dd:01",
+        "phy.motion-plane.scalars-vectors:dd:02",
+        "phy.motion-plane.scalars-vectors:dd:03",
+        "phy.motion-plane.scalars-vectors:dd:04",
+        "phy.motion-plane.scalars-vectors:dd:05",
+        "phy.motion-plane.scalars-vectors:dd:06",
+        "phy.motion-plane.scalars-vectors:dd:07"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Round the block",
+        "hi": "ब्लॉक के चारों ओर"
+      },
+      "body": {
+        "en": "A boy leaves his house at one corner of a block and walks along the streets, turning one corner, to a park at the opposite corner. Ask how far he walked and you get one number. Ask where the park is from his house and the answer needs a number and a direction. Physics has a name for each kind of quantity.",
+        "hi": "एक लड़का ब्लॉक के एक कोने पर बने अपने घर से निकलता है और सड़कों पर चलते हुए, एक मोड़ लेकर, सामने वाले कोने के पार्क तक पहुँचता है। पूछिए कि वह कितना चला, तो उत्तर एक संख्या है। पूछिए कि पार्क उसके घर से कहाँ है, तो उत्तर में संख्या और दिशा दोनों चाहिए। भौतिकी में इन दोनों तरह की राशियों के अलग नाम हैं।"
+      },
+      "media": "img.motion-plane.town-walk"
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Scalars and vectors",
+        "hi": "अदिश और सदिश"
+      },
+      "body": {
+        "en": "A scalar quantity has magnitude only. It is specified completely by a single number with the proper unit: the distance between two points, the mass of an object, the temperature of a body, the time of an event. Scalars combine by ordinary algebra, but adding or subtracting makes sense only for quantities with the same unit. The sides of a 1.0 m by 0.5 m rectangle add to a perimeter of 3.0 m, a scalar.\n\nA vector quantity has both magnitude and direction and obeys the triangle law of addition, or equivalently the parallelogram law. Displacement, velocity, acceleration and force are vectors. In print a vector is written in bold; by hand, with an arrow over the letter. Its magnitude, also called its absolute value, is written $|\\vec{v}| = v$.",
+        "hi": "अदिश राशि में केवल परिमाण होता है। उसे उचित मात्रक के साथ एक संख्या से पूरी तरह बताया जा सकता है: दो बिंदुओं के बीच की दूरी, किसी वस्तु का द्रव्यमान, किसी पिंड का ताप, किसी घटना का समय। अदिश राशियाँ सामान्य बीजगणित से जुड़ती हैं, पर जोड़ना या घटाना केवल समान मात्रक वाली राशियों के लिए अर्थपूर्ण है। 1.0 m और 0.5 m भुजाओं वाले आयत की भुजाएँ जुड़कर 3.0 m परिमाप देती हैं, जो एक अदिश है।\n\nसदिश राशि में परिमाण और दिशा दोनों होते हैं और वह योग के त्रिभुज नियम, या उसके तुल्य समांतर चतुर्भुज नियम, का पालन करती है। विस्थापन, वेग, त्वरण और बल सदिश हैं। छपाई में सदिश को मोटे अक्षर में लिखते हैं; हाथ से लिखते समय अक्षर के ऊपर तीर लगाते हैं। उसके परिमाण को, जिसे निरपेक्ष मान भी कहते हैं, $|\\vec{v}| = v$ लिखा जाता है।"
+      },
+      "media": "img.motion-plane.town-walk",
+      "highlights": [
+        {
+          "term": {
+            "en": "scalar",
+            "hi": "अदिश"
+          },
+          "definition": {
+            "en": "magnitude only",
+            "hi": "केवल परिमाण"
+          }
+        },
+        {
+          "term": {
+            "en": "vector",
+            "hi": "सदिश"
+          },
+          "definition": {
+            "en": "magnitude and direction; adds by the triangle law",
+            "hi": "परिमाण और दिशा; त्रिभुज नियम से जुड़ता है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.2, Summary 1-2"
+      }
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "prompt": {
+        "en": "Scalar or vector?",
+        "hi": "अदिश या सदिश?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Mass of a book",
+              "hi": "किताब का द्रव्यमान"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Velocity of a bus",
+              "hi": "बस का वेग"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Temperature of a room",
+              "hi": "कमरे का ताप"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Force on a door",
+              "hi": "दरवाज़े पर बल"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "scalar",
+            "label": {
+              "en": "Scalar",
+              "hi": "अदिश"
+            }
+          },
+          {
+            "id": "vector",
+            "label": {
+              "en": "Vector",
+              "hi": "सदिश"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "scalar"
+          },
+          {
+            "item": "i2",
+            "bin": "vector"
+          },
+          {
+            "item": "i3",
+            "bin": "scalar"
+          },
+          {
+            "item": "i4",
+            "bin": "vector"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Mass and temperature need only a number; velocity and force also need a direction.",
+          "hi": "सही। द्रव्यमान और ताप के लिए केवल संख्या चाहिए; वेग और बल के लिए दिशा भी।"
+        },
+        "wrong": {
+          "en": "Ask: does the answer change if the direction changes?",
+          "hi": "पूछिए: क्या दिशा बदलने से उत्तर बदलता है?"
+        }
+      }
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Position, displacement and equal vectors",
+        "hi": "स्थिति, विस्थापन और समान सदिश"
+      },
+      "body": {
+        "en": "To describe where an object is in a plane, choose an origin O. The straight line from O to the object's position P, with an arrow at P, is its position vector $\\vec{r}$. If the object moves from P to P′, the vector from P to P′ is its displacement.\n\nThe displacement vector is the straight line joining the initial and final positions. It does not depend on the path taken between them, so the magnitude of displacement is less than or equal to the path length. The boy walking round the block covers two sides, but his displacement is the diagonal.\n\nTwo vectors are equal if, and only if, they have the same magnitude and the same direction. Shifting a vector parallel to itself leaves it unchanged: such vectors are called free vectors. When the location or line of action matters, the vectors are called localised vectors.",
+        "hi": "किसी समतल में वस्तु कहाँ है, यह बताने के लिए एक मूल बिंदु O चुनिए। O से वस्तु की स्थिति P तक की सरल रेखा, जिसके P वाले सिरे पर तीर हो, उसका स्थिति सदिश $\\vec{r}$ है। यदि वस्तु P से P′ तक जाती है, तो P से P′ तक का सदिश उसका विस्थापन है।\n\nविस्थापन सदिश प्रारंभिक और अंतिम स्थितियों को मिलाने वाली सरल रेखा है। यह उनके बीच लिए गए पथ पर निर्भर नहीं करता, इसलिए विस्थापन का परिमाण पथ-लंबाई से कम या उसके बराबर होता है। ब्लॉक के चारों ओर चलता लड़का दो भुजाएँ तय करता है, पर उसका विस्थापन विकर्ण है।\n\nदो सदिश तभी, और केवल तभी, समान हैं जब उनका परिमाण और दिशा दोनों समान हों। किसी सदिश को उसके समांतर खिसकाने से वह नहीं बदलता: ऐसे सदिशों को मुक्त सदिश कहते हैं। जब स्थान या क्रिया-रेखा महत्त्वपूर्ण हो, तो सदिशों को स्थानीकृत सदिश कहते हैं।"
+      },
+      "media": "img.motion-plane.town-walk",
+      "highlights": [
+        {
+          "term": {
+            "en": "position vector",
+            "hi": "स्थिति सदिश"
+          },
+          "definition": {
+            "en": "from the origin to the object",
+            "hi": "मूल बिंदु से वस्तु तक"
+          }
+        },
+        {
+          "term": {
+            "en": "equal vectors",
+            "hi": "समान सदिश"
+          },
+          "definition": {
+            "en": "same magnitude and same direction",
+            "hi": "समान परिमाण और समान दिशा"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.2.1, §3.2.2, Fig. 3.1"
+      }
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Multiplying by a number; the null vector",
+        "hi": "संख्या से गुणा; शून्य सदिश"
+      },
+      "body": {
+        "en": "Multiplying a vector $\\vec{A}$ by a positive number $\\lambda$ gives a vector $\\lambda \\vec{A}$ in the same direction, whose magnitude is that of $\\vec{A}$ multiplied by $\\lambda$. Multiplying by a negative number reverses the direction: $-\\vec{A}$ has the same magnitude as $\\vec{A}$ but points the opposite way. The factor can carry a unit: a constant velocity multiplied by a time interval gives a displacement.\n\nAdding $\\vec{A}$ and $-\\vec{A}$ gives the null or zero vector, whose magnitude is zero. Because its magnitude is zero, its direction need not be given. It satisfies $\\vec{A} + \\vec{0} = \\vec{A}$, $\\lambda \\vec{0} = \\vec{0}$ and $0\\,\\vec{A} = \\vec{0}$. An object that comes back to its starting point has zero displacement: a null vector.",
+        "hi": "किसी सदिश $\\vec{A}$ को धनात्मक संख्या $\\lambda$ से गुणा करने पर उसी दिशा में सदिश $\\lambda \\vec{A}$ मिलता है, जिसका परिमाण $\\vec{A}$ के परिमाण का $\\lambda$ गुना है। ऋणात्मक संख्या से गुणा करने पर दिशा उलट जाती है: $-\\vec{A}$ का परिमाण $\\vec{A}$ जितना ही है पर वह विपरीत दिशा में है। गुणक का मात्रक भी हो सकता है: नियत वेग को समय अंतराल से गुणा करने पर विस्थापन मिलता है।\n\n$\\vec{A}$ और $-\\vec{A}$ को जोड़ने पर शून्य सदिश मिलता है, जिसका परिमाण शून्य है। परिमाण शून्य होने के कारण इसकी दिशा बताने की आवश्यकता नहीं है। यह $\\vec{A} + \\vec{0} = \\vec{A}$, $\\lambda \\vec{0} = \\vec{0}$ और $0\\,\\vec{A} = \\vec{0}$ को संतुष्ट करता है। जो वस्तु अपने आरंभ बिंदु पर लौट आती है उसका विस्थापन शून्य है: एक शून्य सदिश।"
+      },
+      "media": "img.motion-plane.town-walk",
+      "highlights": [
+        {
+          "term": {
+            "en": "null vector",
+            "hi": "शून्य सदिश"
+          },
+          "definition": {
+            "en": "magnitude zero; direction not needed",
+            "hi": "परिमाण शून्य; दिशा की आवश्यकता नहीं"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.3, §3.4, Summary 3 and 6"
+      }
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.scalars-vectors.0001"
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Scalar: magnitude only. Vector: magnitude and direction, added by the triangle law.",
+          "hi": "अदिश: केवल परिमाण। सदिश: परिमाण और दिशा, त्रिभुज नियम से जोड़ा जाता है।"
+        },
+        {
+          "en": "Equal vectors have the same magnitude and the same direction.",
+          "hi": "समान सदिशों का परिमाण और दिशा दोनों समान होते हैं।"
+        },
+        {
+          "en": "A negative factor reverses a vector; the null vector has zero magnitude.",
+          "hi": "ऋणात्मक गुणक सदिश की दिशा उलट देता है; शून्य सदिश का परिमाण शून्य है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,619 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "topic": "phy.motion-plane.vector-addition",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.vector-addition.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two forces of 3 N and 4 N act on a body at right angles to each other. The magnitude of their resultant is",
+        "hi": "किसी पिंड पर 3 N और 4 N के दो बल एक-दूसरे के लंबवत लगते हैं। उनके परिणामी का परिमाण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "5 N",
+            "hi": "5 N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "7 N",
+            "hi": "7 N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 N",
+            "hi": "1 N"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "12 N",
+            "hi": "12 N"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\theta = 90°$",
+          "hi": "$\\theta = 90°$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At right angles the cos term drops out.",
+          "hi": "समकोण पर cos वाला पद हट जाता है।"
+        },
+        "steps": [
+          {
+            "en": "$R = \\sqrt{3^2 + 4^2} = 5$ N",
+            "hi": "$R = \\sqrt{3^2 + 4^2} = 5$ N"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the sum, for forces in the same direction.",
+              "hi": "यह योग है, एक ही दिशा के बलों के लिए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the difference, for opposite forces.",
+              "hi": "यह अंतर है, विपरीत बलों के लिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Magnitudes do not multiply in a sum.",
+              "hi": "योग में परिमाण गुणा नहीं होते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.vector-addition.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two vectors have magnitudes 8 units and 5 units. Which of these cannot be the magnitude of their resultant?",
+        "hi": "दो सदिशों के परिमाण 8 मात्रक और 5 मात्रक हैं। इनमें से कौन-सा उनके परिणामी का परिमाण नहीं हो सकता?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 units",
+            "hi": "2 मात्रक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "3 units",
+            "hi": "3 मात्रक"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 units",
+            "hi": "10 मात्रक"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "13 units",
+            "hi": "13 मात्रक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find the smallest and largest possible values.",
+          "hi": "सबसे छोटा और सबसे बड़ा संभव मान निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The resultant lies between the difference and the sum.",
+          "hi": "परिणामी अंतर और योग के बीच रहता है।"
+        },
+        "steps": [
+          {
+            "en": "Range: $8 - 5 = 3$ to $8 + 5 = 13$ units, so 2 is impossible.",
+            "hi": "परास: $8 - 5 = 3$ से $8 + 5 = 13$ मात्रक, अतः 2 असंभव है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "3 units is the minimum, when they are opposite.",
+              "hi": "3 मात्रक न्यूनतम है, जब वे विपरीत हों।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "10 units lies inside the range.",
+              "hi": "10 मात्रक परास के भीतर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "13 units is the maximum, when they are parallel.",
+              "hi": "13 मात्रक अधिकतम है, जब वे समांतर हों।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.vector-addition.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two vectors of equal magnitude $A$ have an angle of $120°$ between them. The magnitude of their resultant is",
+        "hi": "समान परिमाण $A$ वाले दो सदिशों के बीच $120°$ का कोण है। उनके परिणामी का परिमाण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$A$",
+            "hi": "$A$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2A$",
+            "hi": "$2A$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\sqrt{3}A$",
+            "hi": "$\\sqrt{3}A$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\cos 120° = -\\frac{1}{2}$",
+          "hi": "$\\cos 120° = -\\frac{1}{2}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The cos term cancels exactly half of the squares.",
+          "hi": "cos वाला पद वर्गों का ठीक आधा भाग काट देता है।"
+        },
+        "steps": [
+          {
+            "en": "$R^2 = A^2 + A^2 + 2A^2\\cos 120° = 2A^2 - A^2 = A^2$, so $R = A$.",
+            "hi": "$R^2 = A^2 + A^2 + 2A^2\\cos 120° = 2A^2 - A^2 = A^2$, अतः $R = A$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is for $\\theta = 0$.",
+              "hi": "यह $\\theta = 0$ के लिए है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is for $\\theta = 60°$.",
+              "hi": "यह $\\theta = 60°$ के लिए है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is for $\\theta = 180°$.",
+              "hi": "यह $\\theta = 180°$ के लिए है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.vector-addition.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Two vectors of magnitudes 3 units and 5 units are inclined at $60°$ to each other. The magnitude of their resultant, in units, is",
+        "hi": "3 मात्रक और 5 मात्रक परिमाण वाले दो सदिश एक-दूसरे से $60°$ पर झुके हैं। उनके परिणामी का परिमाण, मात्रक में, है"
+      },
+      "answer": {
+        "value": 7,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$\\cos 60° = \\frac{1}{2}$",
+          "hi": "$\\cos 60° = \\frac{1}{2}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Put the numbers into the law of cosines.",
+          "hi": "संख्याएँ कोज्या नियम में रखिए।"
+        },
+        "steps": [
+          {
+            "en": "$R^2 = 9 + 25 + 2 \\times 3 \\times 5 \\times \\frac{1}{2} = 49$, so $R = 7$.",
+            "hi": "$R^2 = 9 + 25 + 2 \\times 3 \\times 5 \\times \\frac{1}{2} = 49$, अतः $R = 7$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Leaving out the factor 2 in $2AB\\cos\\theta$ gives $\\sqrt{41.5}$.",
+              "hi": "$2AB\\cos\\theta$ में 2 छोड़ने पर $\\sqrt{41.5}$ आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.vector-addition.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Vector $\\vec{A}$ has magnitude 5 units and $\\vec{B}$ has magnitude 10 units; the angle between them is $120°$. The angle between the resultant and $\\vec{A}$ is",
+        "hi": "सदिश $\\vec{A}$ का परिमाण 5 मात्रक और $\\vec{B}$ का 10 मात्रक है; उनके बीच का कोण $120°$ है। परिणामी और $\\vec{A}$ के बीच का कोण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$90°$",
+            "hi": "$90°$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$60°$",
+            "hi": "$60°$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$30°$",
+            "hi": "$30°$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$120°$",
+            "hi": "$120°$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $\\tan\\alpha = \\frac{B\\sin\\theta}{A + B\\cos\\theta}$.",
+          "hi": "$\\tan\\alpha = \\frac{B\\sin\\theta}{A + B\\cos\\theta}$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The part of $\\vec{B}$ along $\\vec{A}$ cancels $\\vec{A}$ exactly.",
+          "hi": "$\\vec{B}$ का $\\vec{A}$ के अनुदिश भाग $\\vec{A}$ को ठीक काट देता है।"
+        },
+        "steps": [
+          {
+            "en": "$A + B\\cos\\theta = 5 + 10 \\times (-\\frac{1}{2}) = 0$",
+            "hi": "$A + B\\cos\\theta = 5 + 10 \\times (-\\frac{1}{2}) = 0$"
+          },
+          {
+            "en": "$\\tan\\alpha = \\frac{B\\sin\\theta}{0}$ is infinite, so $\\alpha = 90°$.",
+            "hi": "$\\tan\\alpha = \\frac{B\\sin\\theta}{0}$ अनंत है, अतः $\\alpha = 90°$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$60°$ is the supplement of the angle between the vectors, not the answer.",
+              "hi": "$60°$ सदिशों के बीच के कोण का संपूरक है, उत्तर नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$30°$ is the angle between the resultant and $\\vec{B}$.",
+              "hi": "$30°$ परिणामी और $\\vec{B}$ के बीच का कोण है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the angle between the two given vectors.",
+              "hi": "यह दिए गए दोनों सदिशों के बीच का कोण है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.vector-addition.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.vector-addition.core.vector-addition-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Vectors $\\vec{A}$ and $\\vec{B}$ are perpendicular, with magnitudes 6 units and 8 units. The magnitude of $\\vec{A} - \\vec{B}$ is",
+        "hi": "सदिश $\\vec{A}$ और $\\vec{B}$ लंबवत हैं, और उनके परिमाण 6 मात्रक और 8 मात्रक हैं। $\\vec{A} - \\vec{B}$ का परिमाण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 units",
+            "hi": "10 मात्रक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 units",
+            "hi": "2 मात्रक"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "14 units",
+            "hi": "14 मात्रक"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "48 units",
+            "hi": "48 मात्रक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Reversing B keeps the right angle.",
+          "hi": "B को उलटने पर भी समकोण बना रहता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$-\\vec{B}$ is still perpendicular to $\\vec{A}$.",
+          "hi": "$-\\vec{B}$ अब भी $\\vec{A}$ के लंबवत है।"
+        },
+        "steps": [
+          {
+            "en": "$|\\vec{A} - \\vec{B}| = \\sqrt{6^2 + 8^2} = 10$ units",
+            "hi": "$|\\vec{A} - \\vec{B}| = \\sqrt{6^2 + 8^2} = 10$ मात्रक"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Subtracting magnitudes works only for vectors along one line.",
+              "hi": "परिमाण घटाना केवल एक रेखा के सदिशों के लिए ठीक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Adding magnitudes works only for parallel vectors.",
+              "hi": "परिमाण जोड़ना केवल समांतर सदिशों के लिए ठीक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Magnitudes do not multiply.",
+              "hi": "परिमाण गुणा नहीं होते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

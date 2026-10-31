@@ -231,7 +231,7 @@ async def create_request(
                     dedupe_key=f"parent_consent_needed:{request_id}:{guardian_id}",
                 )
         expires_at = now + ttl
-    link = f"{ints.settings.guardian_link_base_url.rstrip('/')}/{code}"
+    link = f"{ints.settings.guardian_link_base.rstrip('/')}/{code}"
     sent = False
     if body.guardian_email is not None:
         sent = await _send_consent_email(

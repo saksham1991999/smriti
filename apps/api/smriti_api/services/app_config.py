@@ -43,12 +43,28 @@ _PUBLIC_VARIANT_KEYS = {
 }
 
 
+def load_brand_domain(variants_dir: str) -> str | None:
+    """The brand domain from ``packages/config/brand.json``, next to the variants folder."""
+    try:
+        data = json.loads((Path(variants_dir).parent / "brand.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    domain = data.get("domain") if isinstance(data, dict) else None
+    return domain if isinstance(domain, str) and domain else None
+
+
+def deep_link_prefix(path: str, domain: str) -> str:
+    """Same rule as ``deepLinkPrefix`` in packages/config: the bare origin for ``/``."""
+    return f"https://{domain}" if path == "/" else f"https://{domain}{path}"
+
+
 @lru_cache(maxsize=4)
 def load_variant_files(directory: str) -> dict[str, dict[str, Any]]:
     folder = Path(directory)
     out: dict[str, dict[str, Any]] = {}
     if not folder.is_dir():
         return out
+    domain = load_brand_domain(directory)
     for path in sorted(folder.glob("*.json")):
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -56,6 +72,9 @@ def load_variant_files(directory: str) -> dict[str, dict[str, Any]]:
             log.warning("variant_file_unreadable", file=path.name)
             continue
         if isinstance(data, dict) and isinstance(data.get("id"), str):
+            link_path = data.get("deepLinkPath")
+            if domain and isinstance(link_path, str):
+                data["deepLinkPrefix"] = deep_link_prefix(link_path, domain)
             out[data["id"]] = data
     return out
 

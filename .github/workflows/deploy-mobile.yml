@@ -57,12 +57,15 @@ jobs:
           want="${REQUESTED:-$known}"
           list=""
           for v in $want; do
-            case " $known " in *" $v "*) list="$list\"$v\"," ;; *) echo "::error::unknown variant $v (known: $known)"; exit 1 ;; esac
+            case " $known " in
+              *" $v "*) list="$list{\"id\":\"$v\",\"key\":\"$(echo "$v" | tr '[:lower:]' '[:upper:]')\"}," ;;
+              *) echo "::error::unknown variant $v (known: $known)"; exit 1 ;;
+            esac
           done
           echo "variants=[${list%,}]" >> "$GITHUB_OUTPUT"
 
   build:
-    name: EAS ${{ matrix.variant }} (${{ needs.gate.outputs.environment }})
+    name: EAS ${{ matrix.variant.id }} (${{ needs.gate.outputs.environment }})
     needs: [gate, plan]
     runs-on: ubuntu-24.04
     timeout-minutes: 30
@@ -73,9 +76,10 @@ jobs:
     environment:
       name: ${{ needs.gate.outputs.environment }}
     env:
-      PROFILE: ${{ needs.gate.outputs.environment == 'production' && 'production' || 'preview' }}
+      # eas.json: production-<variant>, or staging-<variant> (the store app on internal tracks).
+      PROFILE: ${{ needs.gate.outputs.environment == 'production' && 'production' || 'staging' }}
       PLATFORM: ${{ inputs.platform || 'all' }}
-      VARIANT: ${{ matrix.variant }}
+      VARIANT: ${{ matrix.variant.id }}
     steps:
       - name: Secrets present
         id: secrets
@@ -107,6 +111,8 @@ jobs:
         working-directory: apps/mobile
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          EAS_PROJECT_ID: ${{ vars.EAS_PROJECT_ID }}
-          APP_VARIANT: ${{ matrix.variant }}
+          # One EAS project per variant (vars.EAS_PROJECT_ID_JEE and so on); app.config.ts reads it
+          # for extra.eas.projectId and updates.url.
+          EAS_PROJECT_ID: ${{ vars[format('EAS_PROJECT_ID_{0}', matrix.variant.key)] }}
+          APP_VARIANT: ${{ matrix.variant.id }}
         run: npx --yes "eas-cli@${EAS_CLI_VERSION}" build --profile "${PROFILE}-${VARIANT}" --platform "$PLATFORM" --non-interactive --no-wait

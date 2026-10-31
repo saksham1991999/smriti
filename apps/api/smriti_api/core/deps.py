@@ -16,6 +16,7 @@ from smriti_api.ai.gateway import AIGateway
 from smriti_api.core.auth import AuthContext, JwtVerifier
 from smriti_api.core.config import Settings
 from smriti_api.core.db import Database
+from smriti_api.core.error_reporting import set_user as set_error_user
 from smriti_api.core.errors import ApiError, login_required
 from smriti_api.core.idempotency import IdempotencyStore
 from smriti_api.core.logging import hash_user_id
@@ -99,6 +100,7 @@ async def optional_auth(request: Request, services: Services) -> AuthContext | N
         return None
     ctx = await services.verifier.verify(token)
     structlog.contextvars.bind_contextvars(user=hash_user_id(ctx.user_id))
+    set_error_user(ctx.user_id)
     return ctx
 
 

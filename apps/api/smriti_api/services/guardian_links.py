@@ -148,7 +148,7 @@ async def create(
         guardian=hash_user_id(guardian.user_id),
         target="email" if body.teen_email else "code" if body.teen_code else "open",
     )
-    link = f"{ints.settings.guardian_link_base_url.rstrip('/')}/link/{code}"
+    link = f"{ints.settings.guardian_link_base.rstrip('/')}/link/{code}"
     return g.LinkRequestCreated(
         id=request_id, code=code, link=link, scopes=scopes, expires_at=expires_at
     )

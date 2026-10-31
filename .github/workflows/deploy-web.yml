@@ -26,6 +26,7 @@ permissions:
 
 env:
   WRANGLER_VERSION: "4.151.1"
+  SENTRY_CLI_VERSION: "3.8.0"
 
 jobs:
   gate:
@@ -58,6 +59,8 @@ jobs:
       VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
       VITE_SENTRY_DSN: ${{ vars.VITE_SENTRY_DSN }}
       VITE_ANALYTICS_URL: ${{ vars.VITE_ANALYTICS_URL }}
+      # One Sentry release per commit: the SDK reports it and the source maps are uploaded under it.
+      VITE_RELEASE: ${{ needs.gate.outputs.sha }}
     steps:
       - name: Secrets present
         id: secrets
@@ -87,6 +90,29 @@ jobs:
       - name: Build
         if: steps.secrets.outputs.ready == 'true'
         run: pnpm --filter @smriti/web build
+      # The build writes hidden source maps (no sourceMappingURL). They go to Sentry when it is
+      # configured, and are deleted before the deploy either way, so they are never public.
+      - name: Source maps to Sentry
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT_WEB }}
+        run: |
+          if [ -z "$SENTRY_AUTH_TOKEN" ] || [ -z "$SENTRY_ORG" ] || [ -z "$SENTRY_PROJECT" ]; then
+            echo "::notice::SENTRY_AUTH_TOKEN, vars.SENTRY_ORG or vars.SENTRY_PROJECT_WEB is not set for $ENVIRONMENT; source maps are not uploaded"
+            exit 0
+          fi
+          npx --yes "@sentry/cli@${SENTRY_CLI_VERSION}" sourcemaps inject apps/web/dist
+          npx --yes "@sentry/cli@${SENTRY_CLI_VERSION}" sourcemaps upload --release "$VITE_RELEASE" apps/web/dist
+      - name: Remove source maps from the deploy
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          find apps/web/dist -name '*.map' -type f -delete
+          if grep -rlq 'sourceMappingURL=' apps/web/dist --include='*.js'; then
+            echo "::error::a built file still points at a source map"
+            exit 1
+          fi
       - name: Headers (CSP from the build's VITE_* origins)
         if: steps.secrets.outputs.ready == 'true'
         run: node tools/deploy/src/headers-cli.ts web apps/web/dist
@@ -159,6 +185,14 @@ jobs:
       - name: Build
         if: steps.secrets.outputs.ready == 'true'
         run: pnpm --filter @smriti/site build
+      # Universal links and App Links on the brand domain, from the variants in @smriti/config.
+      - name: App link files
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          APP_LINKS_ENV: ${{ needs.gate.outputs.environment }}
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          ANDROID_APP_LINK_CERTS: ${{ vars.ANDROID_APP_LINK_CERTS }}
+        run: node tools/deploy/src/app-links-cli.ts apps/site/dist
       - name: Headers
         if: steps.secrets.outputs.ready == 'true'
         run: node tools/deploy/src/headers-cli.ts site apps/site/dist

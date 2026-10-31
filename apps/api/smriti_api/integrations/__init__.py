@@ -15,6 +15,7 @@ import httpx
 
 from smriti_api.core.config import REPO_ROOT, Settings
 from smriti_api.integrations.analytics_store import ClickHouseClient
+from smriti_api.integrations.apple_signin import AppleSignIn, build_apple_signin
 from smriti_api.integrations.attestation import AttestationVerifier, build_attestation
 from smriti_api.integrations.billing import (
     FakeRazorpayProvider,
@@ -69,6 +70,8 @@ class Integrations:
     attestation: AttestationVerifier | None = None
     # POST /v1/analytics/events: ClickHouse by env, a local file in dev and test, else None.
     event_store: EventStore | None = None
+    # Sign in with Apple token revocation on deletion. Built in build_integrations.
+    apple_signin: AppleSignIn | None = None
 
 
 def _event_store(cfg: IntegrationSettings, http: httpx.AsyncClient, dev: bool) -> EventStore | None:
@@ -218,5 +221,14 @@ def build_integrations(
             app_attest_app_ids=cfg.app_attest_app_ids,
             app_attest_environment=cfg.app_attest_environment,
             app_attest_root_ca_pem=cfg.app_attest_root_ca_pem,
+        ),
+        apple_signin=build_apple_signin(
+            http,
+            dev=dev,
+            base_url=cfg.apple_signin_base_url,
+            team_id=cfg.apple_team_id,
+            key_id=cfg.apple_signin_key_id,
+            private_key=cfg.apple_signin_private_key,
+            client_ids=cfg.apple_signin_client_ids,
         ),
     )

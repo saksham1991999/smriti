@@ -77,33 +77,37 @@ export function parseClientEnv(raw: Record<string, string | undefined>): ClientE
 }
 
 /**
- * Server-only variable names (TRD §17). Values live in Railway, Cloudflare and EAS secrets.
- * Listed so tools can check a deployment has them; clients must never read these.
+ * Server-only variable names (TRD §17) that a staging or production API and worker need. Values
+ * live in Railway; optional tuning names are only in `.env.example`. Clients must never read
+ * these. `pnpm env:check` fails if a name here is in no `.env.example`.
  */
 export const SERVER_ENV_NAMES = [
+  'APP_ENV',
   'SUPABASE_URL',
   'SUPABASE_ANON_KEY',
   'SUPABASE_SERVICE_ROLE_KEY',
   'SUPABASE_JWKS_URL',
+  'JWT_ISSUER',
   'DATABASE_URL',
+  'MIGRATIONS_DATABASE_URL',
   'REDIS_URL',
+  'API_PUBLIC_URL',
+  'WEB_APP_URL',
+  'CDN_BASE_URL',
   'R2_ACCOUNT_ID',
   'R2_ACCESS_KEY_ID',
   'R2_SECRET_ACCESS_KEY',
   'R2_BUCKET_ASSETS',
   'R2_BUCKET_CONTENT',
   'R2_BUCKET_UPLOADS',
-  'R2_BUCKET_STAGING',
-  'CDN_BASE_URL',
   'AGNES_AI_API_KEY',
   'AGNES_BASE_URL',
   'AI_TIER_TUTOR_MODEL',
   'AI_TIER_CHEAP_MODEL',
   'AI_TIER_AUTHOR_MODEL',
+  'AI_TIER_IMAGE_MODEL',
   'GEMINI_API_KEY',
   'DEEPGRAM_API_KEY',
-  'EMBEDDING_PROVIDER',
-  'EMBEDDING_MODEL',
   'CLICKHOUSE_URL',
   'CLICKHOUSE_USER',
   'CLICKHOUSE_PASSWORD',
@@ -114,19 +118,23 @@ export const SERVER_ENV_NAMES = [
   'REVENUECAT_API_KEY',
   'REVENUECAT_WEBHOOK_SECRET',
   'EXPO_ACCESS_TOKEN',
+  'SENTRY_DSN',
   'OTEL_EXPORTER_OTLP_ENDPOINT',
   'OTEL_EXPORTER_OTLP_HEADERS',
-  'GOOGLE_OAUTH_WEB_CLIENT_ID',
+  'LOG_HASH_SALT',
   'AUTH_IDENTITY_HASH_PEPPER',
-  'AUTH_MANAGED_IDENTITY_DOMAIN',
-  'WEB_APP_URL',
-  'TURNSTILE_SECRET_KEY',
+  'MANAGED_IDENTITY_DOMAIN',
+  'APPLE_TEAM_ID',
+  'APPLE_SIGNIN_KEY_ID',
+  'APPLE_SIGNIN_PRIVATE_KEY',
+  'APPLE_SIGNIN_CLIENT_IDS',
 ] as const;
 
 /** Names that are secret: a client env containing any of them is a build error. */
 export const SECRET_ENV_NAMES = [
   'SUPABASE_SERVICE_ROLE_KEY',
   'DATABASE_URL',
+  'MIGRATIONS_DATABASE_URL',
   'R2_SECRET_ACCESS_KEY',
   'AGNES_AI_API_KEY',
   'GEMINI_API_KEY',
@@ -138,7 +146,17 @@ export const SECRET_ENV_NAMES = [
   'REVENUECAT_WEBHOOK_SECRET',
   'EXPO_ACCESS_TOKEN',
   'AUTH_IDENTITY_HASH_PEPPER',
+  'LOG_HASH_SALT',
+  'DEV_JWT_SECRET',
   'TURNSTILE_SECRET_KEY',
+  'SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET',
+  'SUPABASE_AUTH_EXTERNAL_APPLE_SECRET',
+  'APPLE_SIGNIN_PRIVATE_KEY',
+  'RESEND_API_KEY',
+  'SMTP_PASSWORD',
+  'WEB_PUSH_VAPID_PRIVATE_KEY',
+  'PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON',
+  'OTEL_EXPORTER_OTLP_HEADERS',
 ] as const;
 
 /** Returns the public-prefixed names that would leak a secret into a client bundle. */

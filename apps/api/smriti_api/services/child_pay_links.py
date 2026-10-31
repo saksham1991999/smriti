@@ -97,7 +97,7 @@ async def create(
             )
         ).scalar_one()
     log.info("child_pay_link_created", user=hash_user_id(auth.user_id), plan=body.plan)
-    base = ints.settings.child_pay_link_base_url.rstrip("/")
+    base = ints.settings.child_pay_link_base.rstrip("/")
     return b.ChildPayLinkCreated(
         id=link_id, token=token, url=f"{base}/{token}", plan=body.plan, expires_at=expires
     )

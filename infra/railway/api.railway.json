@@ -16,7 +16,6 @@
   },
   "deploy": {
     "preDeployCommand": ["python -m smriti_api.migrate --seed"],
-    "startCommand": "sh -c \"exec uvicorn smriti_api.main:app --host 0.0.0.0 --port ${PORT:-8000} --workers ${WEB_CONCURRENCY:-2} --proxy-headers --forwarded-allow-ips '*' --no-server-header --timeout-graceful-shutdown 20\"",
     "healthcheckPath": "/readyz",
     "healthcheckTimeout": 120,
     "restartPolicyType": "ON_FAILURE",

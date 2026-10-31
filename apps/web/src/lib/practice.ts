@@ -1,8 +1,7 @@
 /**
  * Practice on the server (`/v1/practice/*`, practice §5): the session is sized there to the free
  * questions left, each answer is checked and counted there, and the quota comes back with it.
- * When the server can't be reached (offline, or the in-process fake API in tests) the drill runs
- * on the device from the downloaded bundle and its answers go through the outbox instead.
+ * Drills need the network; the downloaded bundle only renders the questions.
  */
 import { useQuery } from "@tanstack/react-query";
 import { newIdempotencyKey, unwrap, type Schemas } from "@smriti/api-client";
@@ -32,6 +31,34 @@ export function toAnswerIn(a: Answer): NonNullable<Schemas["AnswerSubmit"]["answ
       return { kind: "blanks", blanks: a.blanks.map((b) => ({ blank: b.blank, choice_id: b.choiceId ?? null, text: b.text ?? null })) };
     case "order":
       return { kind: "order", order: a.order };
+  }
+}
+
+/** The API's saved answer (`AnswerIn` as JSON) → lesson-core's answer, to restore a mock on resume. */
+export function fromAnswerIn(a: Record<string, unknown> | null | undefined): Answer | null {
+  if (!a || typeof a.kind !== "string") return null;
+  switch (a.kind) {
+    case "options":
+      return { kind: "options", optionIds: (a.option_ids as string[] | undefined) ?? [] };
+    case "number":
+      return { kind: "number", value: String(a.value ?? ""), unit: (a.unit as string | null | undefined) ?? undefined };
+    case "pairs":
+      return { kind: "pairs", pairs: (a.pairs as { left: string; right: string }[] | undefined) ?? [] };
+    case "matrix":
+      return { kind: "matrix", rows: (a.rows as { row: string; columns: string[] }[] | undefined) ?? [] };
+    case "blanks":
+      return {
+        kind: "blanks",
+        blanks: ((a.blanks as { blank: string; choice_id?: string | null; text?: string | null }[] | undefined) ?? []).map((b) => ({
+          blank: b.blank,
+          ...(b.choice_id ? { choiceId: b.choice_id } : {}),
+          ...(b.text ? { text: b.text } : {}),
+        })),
+      } as Answer;
+    case "order":
+      return { kind: "order", order: (a.order as string[] | undefined) ?? [] };
+    default:
+      return null;
   }
 }
 

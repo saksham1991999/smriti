@@ -157,6 +157,22 @@ class Entitlement:
     cancel_at_period_end: bool
     is_intro: bool
     subscription_id: uuid.UUID | None
+    # The subscription's payer ('self', 'guardian_declared', 'guardian'); None without one.
+    payer: str | None = None
+
+    @property
+    def managed_in(self) -> str:
+        """Where the plan is managed (sync v1.4 ``entitlement.managed_in``)."""
+        if not self.active:
+            return "none"
+        if self.payer == "guardian":
+            return "parent"
+        return {
+            "razorpay": "web",
+            "play": "play",
+            "app_store": "app_store",
+            "family": "family",
+        }.get(self.source or "", "none")
 
 
 def _pro_until(row: Any) -> datetime | None:
@@ -204,7 +220,8 @@ async def compute_entitlement(
                 text(
                     """
                     select s.id, s.source, s.status, s.is_intro, s.current_period_end, s.grace_until,
-                           s.cancel_at_period_end, s.refunded_at, s.revoked_at, s.updated_at
+                           s.cancel_at_period_end, s.refunded_at, s.revoked_at, s.updated_at,
+                           s.payer
                       from billing.subscriptions s
                       join billing.products p on p.id = s.product_id
                      where s.user_id = :u and p.entitlement = 'pro'
@@ -231,6 +248,7 @@ async def compute_entitlement(
             cancel_at_period_end=bool(best.cancel_at_period_end) or best.status == "cancelled",
             is_intro=bool(best.is_intro),
             subscription_id=best.id,
+            payer=str(best.payer),
         )
     family = await _family_subscription(session, user_id, now)
     if family is not None:

@@ -11,6 +11,7 @@ import httpx
 from sqlalchemy import text
 
 from smriti_api.core.deps import AppServices
+from tests.helpers import get_state
 from tests.money_helpers import razorpay_body, razorpay_headers
 from tests.social_helpers import person
 from tests.test_parent_mode import link
@@ -69,6 +70,9 @@ async def test_parent_buys_pro_for_a_child(
     assert r.status_code == 200, r.text
     ent = (await client.get("/v1/billing/entitlement", headers=child.headers)).json()
     assert ent["plan"] == "pro" and ent["source"] == "razorpay"
+    # Sync v1.4: the child's state says the parent manages the plan (no payer inference needed).
+    state = await get_state(client, child)
+    assert state["entitlement"]["managed_in"] == "parent"
     seen = (await client.get(url, headers=parent.headers)).json()
     assert seen["subscription"]["payer"] == "guardian"
     assert (await client.get(url, headers=stranger.headers)).status_code == 404

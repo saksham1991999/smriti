@@ -45,11 +45,43 @@ export function assetKey(sha256: string, mime: string, sourcePath: string | null
   return `assets/${sha256}.${ext}`;
 }
 
+/**
+ * Where a publish is going. It is always stated by the caller (the CLI's `--env`, the worker's
+ * APP_ENV): there is no default, so nothing becomes lenient by accident.
+ *
+ * - production: only approved media; anything else stops the publish (`media_not_approved`).
+ * - staging and local: media that is not approved yet ships as unavailable, with a warning per
+ *   item, the way fixture builds always have (R60).
+ */
+export type PublishEnvironment = "production" | "staging" | "local";
+export const PUBLISH_ENVIRONMENTS: readonly PublishEnvironment[] = ["production", "staging", "local"];
+
+export function isPublishEnvironment(v: unknown): v is PublishEnvironment {
+  return typeof v === "string" && (PUBLISH_ENVIRONMENTS as readonly string[]).includes(v);
+}
+
+/** Whether a build may ship unapproved media as unavailable. Fixtures always may. */
+export function allowsUnapprovedMedia(environment: PublishEnvironment, fixture: boolean): boolean {
+  return fixture || environment !== "production";
+}
+
 export interface MediaContext {
   set: ContentSet;
   repoRoot: string;
   /** Fixture builds may reference media that is not approved yet; it ships as unavailable. */
   fixture: boolean;
+  /**
+   * Staging and local builds of real content may ship unapproved media as unavailable too
+   * (see `allowsUnapprovedMedia`). Absent means strict, unless `fixture`.
+   */
+  allowUnapproved?: boolean;
+  /** Collects each unapproved media ref (with its status) that shipped as unavailable. */
+  unapproved?: Map<string, string>;
+}
+
+/** True when this build ships unapproved media as unavailable instead of stopping. */
+export function lenientMedia(ctx: MediaContext): boolean {
+  return ctx.fixture || ctx.allowUnapproved === true;
 }
 
 /** Resolve one media request id for a bundle in one locale. */
@@ -72,9 +104,10 @@ export function resolveMedia(
     label_anchors: r.label_anchors ?? [],
   };
   if (r.status !== "approved" || !r.result) {
-    if (!ctx.fixture) {
+    if (!lenientMedia(ctx)) {
       throw new PublishError("media_not_approved", `${ref} is ${r.status}; only approved media can be published`);
     }
+    ctx.unapproved?.set(ref, r.status);
     return { media: base, asset: null };
   }
   const result = r.result;

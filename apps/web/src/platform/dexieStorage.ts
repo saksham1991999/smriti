@@ -89,6 +89,9 @@ class DexieSrsTable extends DexieKeyedTable<SrsCardRow> implements SrsTable {
   }
 }
 
+/** How long an acknowledged event stays on the device for local folds. */
+const KEEP_SENT_MS = 2 * 86_400_000;
+
 class DexieOutbox implements OutboxTable {
   constructor(private readonly table: () => DexieTable<OutboxRow, number>) {}
   async append<T extends SyncEventType>(row: NewOutboxRow<T>): Promise<OutboxRow<T>> {
@@ -106,19 +109,29 @@ class DexieOutbox implements OutboxTable {
     const rows = await this.table().where("event_id").anyOf([...eventIds]).toArray();
     await this.table().bulkPut(rows.map((r) => ({ ...r, attempts: r.attempts + 1, last_error: error })));
   }
+  /**
+   * Acknowledged rows are marked sent and kept for two days, so today's local folds (activity,
+   * minutes) still see them after a sync; `peek`, `count` and `countByType` skip them.
+   */
   async remove(eventIds: readonly string[]) {
-    await this.table().where("event_id").anyOf([...eventIds]).delete();
+    const now = new Date().toISOString();
+    const rows = await this.table().where("event_id").anyOf([...eventIds]).toArray();
+    await this.table().bulkPut(rows.map((r) => ({ ...r, sent_at: r.sent_at ?? now })));
+    const cutoff = Date.now() - KEEP_SENT_MS;
+    await this.table()
+      .filter((r) => r.sent_at !== null && Date.parse(r.sent_at) < cutoff)
+      .delete();
   }
   async has(eventId: string) {
     return (await this.table().where("event_id").equals(eventId).count()) > 0;
   }
   async count() {
-    return this.table().count();
+    return this.table().filter((r) => r.sent_at === null).count();
   }
   async countByType() {
     const out: Partial<Record<SyncEventType, number>> = {};
     await this.table().each((r) => {
-      out[r.type] = (out[r.type] ?? 0) + 1;
+      if (r.sent_at === null) out[r.type] = (out[r.type] ?? 0) + 1;
     });
     return out;
   }

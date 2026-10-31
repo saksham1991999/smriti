@@ -12,6 +12,7 @@ import {
   decideSoftPrompt,
   firstOpenItem,
   goalProgress,
+  isManagedByParent,
   isReportSectionFree,
   lessonAccess,
   lessonEndExtra,
@@ -19,6 +20,7 @@ import {
   mockAccess,
   mockWeekStart,
   planDone,
+  planManagedIn,
   practiceQuota,
   proAccess,
   readAloudQuota,
@@ -145,6 +147,22 @@ describe('entitlement', () => {
     expect(proAccess(ent, { ...ctx, online: false, now: '2026-10-31T00:00:00Z' })).toBe('needs_check');
     expect(billingBanner({ plan: 'pro', pro_until: null, status: 'grace' })).toBe('billing_issue');
     expect(billingBanner({ plan: 'free', pro_until: null })).toBeNull();
+  });
+  it('managed_in from the server (sync v1.4), else inferred for older servers', () => {
+    const pro = { plan: 'pro' as const, pro_until: '2026-11-30T00:00:00Z', status: 'active' as const };
+    expect(planManagedIn({ ...pro, source: 'razorpay', managed_in: 'parent' })).toBe('parent');
+    expect(isManagedByParent({ ...pro, source: 'razorpay', managed_in: 'parent' })).toBe(true);
+    // The server's answer wins over a stale hint.
+    expect(planManagedIn({ ...pro, source: 'razorpay', managed_in: 'web' }, { payer: 'guardian' })).toBe('web');
+    // Older server: no managed_in, so payer = guardian means Parent mode manages it.
+    expect(planManagedIn({ ...pro, source: 'razorpay' }, { payer: 'guardian' })).toBe('parent');
+    expect(planManagedIn({ ...pro, source: 'razorpay' }, { payer: 'self' })).toBe('web');
+    expect(planManagedIn({ ...pro, source: 'play' })).toBe('play');
+    expect(planManagedIn({ ...pro, source: 'family' })).toBe('family');
+    expect(planManagedIn({ ...pro, source: 'promo' })).toBe('none');
+    expect(planManagedIn({ plan: 'free', pro_until: null }, { payer: 'guardian' })).toBe('none');
+    expect(planManagedIn(null)).toBe('none');
+    expect(isManagedByParent({ ...pro, source: 'razorpay' })).toBe(false);
   });
 });
 

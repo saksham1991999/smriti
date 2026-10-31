@@ -163,6 +163,7 @@ async def test_web_checkout_to_pro_through_the_webhooks(
     state = await get_state(client, s)
     assert state["entitlement"]["status"] == "trialing"
     assert state["entitlement"]["source"] == "razorpay"
+    assert state["entitlement"]["managed_in"] == "web"
 
     # Month 2 is charged at ₹99: active, no longer intro.
     body2 = razorpay_body(

@@ -17,11 +17,22 @@ export function NotFound() {
   const t = useT();
   const navigate = useNavigate();
   return (
-    <main id="main" className="mx-auto flex min-h-dvh max-w-[480px] flex-col justify-center gap-4 px-4" data-testid="not-found">
+    <main
+      id="main"
+      className="mx-auto flex min-h-dvh max-w-[480px] flex-col justify-center gap-4 px-4"
+      data-testid="not-found"
+    >
       <Text variant="title" heading as="h1" align="center">
         {t("learn:WEB-01.not_found_title")}
       </Text>
-      <EmptyState illustration="ui-search-empty" text={t("learn:WEB-01.not_found_body")} action={{ label: t("learn:WEB-01.not_found_action"), onPress: () => void navigate({ to: "/" }) }} />
+      <EmptyState
+        illustration="ui-search-empty"
+        text={t("learn:WEB-01.not_found_body")}
+        action={{
+          label: t("learn:WEB-01.not_found_action"),
+          onPress: () => void navigate({ to: "/" }),
+        }}
+      />
     </main>
   );
 }
@@ -30,11 +41,23 @@ export function NotFound() {
 export function ErrorView({ onRetry }: { onRetry?: () => void }) {
   const t = useT();
   return (
-    <main id="main" role="alert" className="mx-auto flex min-h-[60dvh] max-w-[480px] flex-col justify-center gap-4 px-4" data-testid="error-view">
+    <main
+      id="main"
+      role="alert"
+      className="mx-auto flex min-h-[60dvh] max-w-[480px] flex-col justify-center gap-4 px-4"
+      data-testid="error-view"
+    >
       <Text variant="title" heading as="h1" align="center">
         {t("learn:WEB-01.error_title")}
       </Text>
-      <EmptyState illustration="scene-maintenance" text={t("learn:WEB-01.error_body")} action={{ label: t("learn:WEB-01.error_action"), onPress: onRetry ?? (() => location.reload()) }} />
+      <EmptyState
+        illustration="scene-maintenance"
+        text={t("learn:WEB-01.error_body")}
+        action={{
+          label: t("learn:WEB-01.error_action"),
+          onPress: onRetry ?? (() => location.reload()),
+        }}
+      />
     </main>
   );
 }
@@ -61,7 +84,10 @@ interface BoundaryState {
 }
 
 /** Catches render errors anywhere below the root layout. */
-export class ErrorBoundary extends Component<{ children: ReactNode; onError?: (code: string) => void }, BoundaryState> {
+export class ErrorBoundary extends Component<
+  { children: ReactNode; onError?: (code: string) => void },
+  BoundaryState
+> {
   override state: BoundaryState = { failed: false };
   static getDerivedStateFromError(): BoundaryState {
     return { failed: true };

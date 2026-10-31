@@ -13,8 +13,11 @@
     "typecheck": "tsc --noEmit -p .",
     "lint": "tsc --noEmit -p .",
     "test": "vitest run",
-    "publish:local": "tsx src/cli.ts --target local",
-    "publish:fixtures": "tsx src/cli.ts --root content/fixtures --target local --out tools/content-publish/out",
+    "publish:local": "tsx src/cli.ts --target local --env local",
+    "publish:fixtures": "tsx src/cli.ts --root content/fixtures --target local --env local --out tools/content-publish/out",
+    "publish:staging": "tsx src/cli.ts --target r2 --env staging",
+    "publish:production": "tsx src/cli.ts --target r2 --env production",
+    "publish:run": "tsx src/cli.ts",
     "publish:dry-run": "tsx src/cli.ts --dry-run"
   },
   "dependencies": {

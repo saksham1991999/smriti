@@ -16,7 +16,13 @@ import {
   gentlePetState,
   gentleReaction,
   grantMoreTime,
+  activityCompletedPayload,
   hashParentPin,
+  InMemoryStorage,
+  littleRoute,
+  Outbox,
+  recordActivityCompleted,
+  SUPPORTED_LITTLE_ACTIVITIES,
   holdOpensGate,
   isLittleLearnerClass,
   learnerExperience,
@@ -207,7 +213,7 @@ describe('little learner path and plan', () => {
   });
   const nodes = [
     node('a', 'story', { done: true }),
-    node('b', 'song'),
+    node('b', 'song', { ref: 'sg.b', topicId: 't.b' }),
     node('c', 'lesson'),
     node('d', 'story', { locked: true }),
     node('e', 'story', { available: false }),
@@ -218,17 +224,20 @@ describe('little learner path and plan', () => {
   ];
 
   it('puts the pet on the first playable node and keeps it in a 7-node window', () => {
-    expect(currentNodeIndex(nodes)).toBe(2);
+    expect(currentNodeIndex(nodes)).toBe(1);
     const w = pathWindow(nodes, 7);
     expect(w.nodes).toHaveLength(7);
-    expect(w.start).toBe(1);
-    expect(w.nodes.map((n) => n.id)).toContain('c');
+    expect(w.start).toBe(0);
+    expect(w.nodes.map((n) => n.id)).toContain('b');
+    expect(pathWindow(nodes.slice(2), 7)).toMatchObject({ start: 0, current: 0 });
   });
 
   it('plays, asks a grown-up, or says it needs internet', () => {
     expect(playNode(nodes[2]!, true)).toEqual({ kind: 'open', route: 'LES-01', ref: 't.c' });
     expect(playNode(nodes[0]!, true)).toEqual({ kind: 'open', route: 'LRN-11', ref: 'sb.a' });
-    expect(playNode(nodes[1]!, true)).toEqual({ kind: 'not_ready' });
+    expect(playNode(nodes[1]!, true)).toEqual({ kind: 'open', route: 'LRN-17', ref: 'sg.b', topicId: 't.b' });
+    expect(playNode(node('p', 'play', { ref: 'pl.p', topicId: 't.p' }), true)).toEqual({ kind: 'open', route: 'LRN-18', ref: 'pl.p', topicId: 't.p' });
+    expect(SUPPORTED_LITTLE_ACTIVITIES.map((k) => littleRoute(k))).toEqual(['LRN-11', 'LES-01', 'LRN-17', 'LRN-18']);
     expect(playNode(nodes[3]!, true)).toEqual({ kind: 'ask_grown_up' });
     expect(playNode(nodes[4]!, false)).toEqual({ kind: 'needs_internet' });
     expect(playNode(nodes[4]!, true).kind).toBe('open');
@@ -236,10 +245,48 @@ describe('little learner path and plan', () => {
 
   it('plans picture-card reviews, then playable unlocked nodes up to the goal', () => {
     const plan = buildLittlePlan({ day: '2026-10-30', goalMinutes: 5, nodes, reviewsDue: 4, secondsPerCard: 15 });
-    expect(plan.items.map((i) => i.id)).toEqual(['review', 'lesson:c', 'story:e']);
+    expect(plan.items.map((i) => i.id)).toEqual(['review', 'song:b', 'lesson:c']);
+    expect(plan.items[1]).toMatchObject({ route: 'LRN-17', ref: 'sg.b' });
     expect(plan.totalMinutes).toBe(7);
     const none = buildLittlePlan({ day: '2026-10-30', goalMinutes: 5, nodes: [], reviewsDue: 0, secondsPerCard: 15 });
     expect(none.items).toEqual([]);
+  });
+});
+
+describe('activity_completed', () => {
+  const T = Date.UTC(2026, 9, 31, 4, 30, 0);
+  const completion = {
+    kind: 'song' as const,
+    activityId: 'sg.fx.topic-a',
+    topicId: 'fx.chapter-a.topic-a',
+    concepts: ['fx.chapter-a.topic-a.sub-1.concept-1'],
+    bundleVersion: 'abc123',
+    locale: 'hi',
+    stars: 1,
+    msTotal: 61234.4,
+    completedAt: T,
+  };
+
+  it('maps a player completion to the wire payload', () => {
+    expect(activityCompletedPayload(completion)).toEqual({
+      kind: 'song',
+      activity_id: 'sg.fx.topic-a',
+      topic_id: 'fx.chapter-a.topic-a',
+      concept_ids: ['fx.chapter-a.topic-a.sub-1.concept-1'],
+      bundle_version: 'abc123',
+      locale: 'hi',
+      stars: 1,
+      ms_total: 61234,
+      completed_at: '2026-10-31T04:30:00.000Z',
+    });
+    expect(() => activityCompletedPayload({ ...completion, locale: 'fr' })).toThrow(/locale/);
+  });
+
+  it('appends the event in the caller’s transaction, at the completion time', async () => {
+    const storage = new InMemoryStorage();
+    const outbox = new Outbox({ crypto: webcrypto as unknown as CryptoLike, clock: () => T + 5000, timeZone: () => 'Asia/Kolkata' });
+    const row = await storage.transaction((tx) => recordActivityCompleted(tx, outbox, completion));
+    expect(row).toMatchObject({ type: 'activity_completed', occurred_at: '2026-10-31T04:30:00.000Z', tz: 'Asia/Kolkata', payload: { activity_id: 'sg.fx.topic-a', stars: 1 } });
   });
 });
 

@@ -66,8 +66,6 @@ function fixtureContent(mode: string): Plugin | null {
 
 /** Modes that may run the in-process fake API. Every other mode gets a stub that throws. */
 const FAKE_MODES = new Set(["fake", "e2e", "test"]);
-/** Modes that run on the fixture content, so the mock runner shell can use the fixture blueprint. */
-const FIXTURE_MODES = new Set(["fake", "e2e", "e2e-real", "test"]);
 
 export default defineConfig(({ mode }) => ({
   define: { __APP_VERSION__: JSON.stringify(pkgVersion) },
@@ -76,9 +74,6 @@ export default defineConfig(({ mode }) => ({
     dedupe: ["react", "react-dom", "zustand", "@tanstack/react-query"],
     alias: {
       "@fake-api": FAKE_MODES.has(mode) ? join(here, "src", "dev", "fake-api", "index.ts") : join(here, "src", "boot", "noFakeApi.ts"),
-      // Blueprints are not in the published manifest or an API route yet; until they are, only the
-      // fixture modes get one (content/fixtures, labelled fixture) and production shows MOCK-01's empty state.
-      "@mock-blueprint": FIXTURE_MODES.has(mode) ? join(here, "src", "dev", "fixtureBlueprint.ts") : join(here, "src", "boot", "noBlueprint.ts"),
     },
   },
   plugins: [
@@ -97,6 +92,8 @@ export default defineConfig(({ mode }) => ({
         icons: [{ src: "/assets/app-icon.webp", sizes: "768x768", type: "image/webp" }],
       },
       workbox: {
+        // Web Push handlers (NTF-01 on web) live in public/push-sw.js.
+        importScripts: ["/push-sw.js"],
         // App shell plus the art; sims are cached when first opened.
         globPatterns: ["**/*.{js,css,html,webp,woff2,svg}"],
         navigateFallback: "/index.html",

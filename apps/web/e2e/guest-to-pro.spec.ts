@@ -5,7 +5,7 @@
  * axe runs on every main screen on the way (zero serious or critical issues).
  */
 import { expect, test } from "@playwright/test";
-import { devGoogle, drill, expectAccessible, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
+import { devGoogle, expectAccessible, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
 
 for (const locale of ["en", "hi"] as Locale[]) {
   test(`guest to Pro (${locale})`, async ({ page }) => {
@@ -27,9 +27,6 @@ for (const locale of ["en", "hi"] as Locale[]) {
     if (await page.getByTestId("auth-01").isVisible()) await page.getByTestId("auth-later").click();
     await page.getByTestId("les-08-close").click();
     await expect(page.getByTestId("home-01")).toBeVisible();
-
-    // A drill on the device (the fake API has no practice routes, so answers go through the outbox).
-    await drill(page);
 
     // Soft prompt (AUTH-01) from Home's "save your plant" link, then link Google.
     await page.goto("/learn");

@@ -175,3 +175,34 @@ export function megabytes(bytes: number | null): string {
   if (!bytes) return '0';
   return (bytes / (1024 * 1024)).toFixed(bytes < 1024 * 1024 ? 2 : 1);
 }
+
+/** What a lesson's sim card says about a lab: LAB-05's `fallback.body` and LAB-07's debrief. */
+export interface LabLessonText {
+  topicId: string;
+  fallbackBody: string | null;
+  debrief: string | null;
+}
+
+/** A lesson sim card names its sim as `sim.<chapter>.<slug>` or by the bare folder id. */
+export function sameSim(ref: string, labId: string): boolean {
+  return ref === labId || ref.endsWith(`.${labId}`);
+}
+
+/**
+ * The first lesson sim card on the device that runs this lab, from the Deep Dive bundles in
+ * syllabus order. Null when no lesson on the device uses it (LAB-05 then shows the tasks only).
+ */
+export function labLessonText(app: SmritiApp, labId: string): LabLessonText | null {
+  const locale = app.ui.getState().locale;
+  const exam = app.examProfileId();
+  for (const topic of app.deps.content.topics(locale, exam)) {
+    const loaded = app.deps.content.load(locale, topic.id, 'deep_dive', exam);
+    for (const card of loaded?.bundle.cards ?? []) {
+      if (card.type !== 'sim' || !sameSim(card.sim, labId)) continue;
+      const body = typeof card.fallback?.body === 'string' ? card.fallback.body : null;
+      const debrief = typeof card.debrief === 'string' ? card.debrief : null;
+      return { topicId: topic.id, fallbackBody: body, debrief };
+    }
+  }
+  return null;
+}

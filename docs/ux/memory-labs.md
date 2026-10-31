@@ -1367,6 +1367,10 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 | open_topic | Open topic | टॉपिक खोलें |
 | download | Download for offline | ऑफ़लाइन के लिए डाउनलोड करें |
 | data_confirm | This lab needs {s} MB. Download on mobile data? | इस लैब को {s} MB चाहिए। मोबाइल डेटा पर डाउनलोड करें? |
+| data_yes | Use mobile data | मोबाइल डेटा इस्तेमाल करें |
+| data_no | Not now | अभी नहीं |
+| see_explainer | See the explainer | समझाने वाला हिस्सा देखें |
+| needs_net | Needs internet to load ({s} MB) | लोड करने के लिए इंटरनेट चाहिए ({s} MB) |
 
 **Illustration slots:** hero poster: `sunny-scene`, 4:3, the lab's setup or scene from its media request; alt from content.
 **States:** no locked state (every lab is free, R19); downloaded; on mobile data with a large size (`data_confirm` dialog on [Start lab] above `lab.confirm_download_mb`); offline and not cached ([Start lab] becomes [See the explainer] → LAB-05, with "Needs internet to load ({s} MB)"); low-tier device (a caption "Runs in battery saver mode on this phone" for sims); little learner (big [Start] only, no size tiles); dark.
@@ -1530,6 +1534,8 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 | next_lab | Next lab: {next_lab_title} | अगली लैब: {next_lab_title} |
 | continue / done | Continue / Done | आगे बढ़ें / हो गया |
 | pet | You figured it out by doing it. That sticks! | आपने करके समझा। यह याद रहता है! |
+| explored_title | Nice exploring! | बढ़िया खोजबीन! |
+| skipped | {n, plural, one {# task skipped} other {# tasks skipped}} | {n, plural, one {# काम छोड़ा} other {# काम छोड़े}} |
 
 **Illustration slots:** `pet-cat` / `pet-dog` (Rive `celebrate`) wearing small lab goggles, over the subject tint; alt "Your pet celebrating in lab goggles".
 **States:** tasks skipped (title "Nice exploring!", no confetti, skipped count shown neutrally); offline (works, XP confirmed on sync); little learner (one star row, pet line read aloud); dark.

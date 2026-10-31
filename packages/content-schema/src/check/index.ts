@@ -15,6 +15,8 @@ export { loadContentSet } from "./load.js";
 export type { ContentSet, ConceptEntry, Loaded, QuestionEntry, TopicEntry } from "./load.js";
 export { findCycles, loadTokens, requiredLocales, runRules } from "./rules.js";
 export { MEDIA_REF, mediaRefs, walkContent } from "./walk.js";
+export { hasReleases, isChapterReleased, releasedScope, RELEASES_FILE } from "./releases.js";
+export type { ReleasedScope } from "./releases.js";
 export type { Visit } from "./walk.js";
 export type { Tokens } from "./rules.js";
 

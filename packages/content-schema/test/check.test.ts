@@ -127,6 +127,47 @@ describe("content check fails on a broken copy", () => {
     expect(report.findings.some((f) => f.code === "coverage_incomplete" && f.severity === "error")).toBe(true);
   });
 
+  it("a released chapter below 100% coverage (content/releases.json), and not once it is unreleased", () => {
+    const root = copy();
+    const release = (scope: { subjects: string[]; chapters: string[] }) =>
+      edit(root, "releases.json", (d) => {
+        d.profiles = { "fx-exam-2027": scope };
+      });
+    release({ subjects: [], chapters: ["fx.chapter-a"] });
+    expect(codes(root)).toEqual([]);
+    // The same gap as above: topic-a loses its practice questions.
+    edit(root, "questions/fx/chapter-a/topic-a.json", (d) => {
+      d.questions = d.questions
+        .filter((q: { source?: string }) => q.source !== "pyq")
+        .map((q: { use: string[] }) => ({ ...q, use: [...new Set(q.use.filter((u) => u !== "practice").concat(["lesson"]))] }));
+    });
+    edit(root, "pyq/fx-exam/fx-exam-2025-s1.json", (d) => {
+      d.items[0].question = "q.fx.chapter-a.topic-a.0001";
+    });
+    const released = checkRoot(root, repoRoot).report.findings.filter((f) => f.code === "coverage_incomplete" && f.severity === "error");
+    expect(released).toHaveLength(1);
+    expect(released[0]).toMatchObject({ file: "releases.json" });
+    expect(released[0]!.message).toMatch(/fx\.chapter-a: coverage .*A released chapter must be at 100%/);
+
+    release({ subjects: [], chapters: [] });
+    const { report } = checkRoot(root, repoRoot);
+    expect(report.findings.filter((f) => f.code === "coverage_incomplete").map((f) => f.severity)).toEqual(["warning"]);
+    expect(report.coverage[0]!.subjects[0]).toMatchObject({ id: "fx", released: false, ready: false });
+  });
+
+  it("a release gate that names unknown profiles, subjects or chapters, or lives elsewhere", () => {
+    const root = copy();
+    edit(root, "releases.json", (d) => {
+      d.profiles = { "fx-exam-2027": { subjects: ["nope"], chapters: ["fx.chapter-z"] }, "nope-2027": { subjects: [], chapters: [] } };
+    });
+    cpSync(join(root, "releases.json"), join(root, "exam-maps", "releases.json"));
+    const c = codes(root);
+    expect(c).toContain("ref_unknown_subject");
+    expect(c).toContain("ref_unknown_chapter");
+    expect(c).toContain("ref_unknown_profile");
+    expect(c).toContain("releases_location");
+  });
+
   it("a mock question used in a lesson and a mixed use", () => {
     const root = copy();
     edit(root, "lessons/fx/chapter-a/topic-c.deep_dive.json", (d) => {

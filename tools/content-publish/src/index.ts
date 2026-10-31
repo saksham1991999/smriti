@@ -9,7 +9,7 @@ export type { RenderedMath } from "./math.js";
 export { allowsUnapprovedMedia, assetKey, isPublishEnvironment, lenientMedia, PUBLISH_ENVIRONMENTS, resolveMedia } from "./media.js";
 export type { AssetFile, MediaContext, PublishEnvironment } from "./media.js";
 export { applyPatch, diffBundles, patchPath, PATCH_MAPS } from "./patch.js";
-export { FREE_DEEP_DIVE_CHAPTERS_PER_SUBJECT, planProfile, releasedSubjects } from "./plan.js";
+export { FREE_DEEP_DIVE_CHAPTERS_PER_SUBJECT, planProfile } from "./plan.js";
 export type { ProfilePlan } from "./plan.js";
 export { publish } from "./publish.js";
 export type { PublishOptions, PublishReport } from "./publish.js";

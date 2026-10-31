@@ -1,0 +1,22 @@
+{
+  "schema": "releases@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Fixture release gate: the fixture subject is released, so the check holds it to 100% coverage.",
+  "profiles": {
+    "fx-exam-2027": {
+      "subjects": ["fx"],
+      "chapters": []
+    }
+  }
+}

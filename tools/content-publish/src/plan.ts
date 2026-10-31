@@ -1,6 +1,6 @@
 /** Which subjects, chapters and topics each exam profile publishes, in display order. */
 import type { ChapterFile, ExamMapFile, SubjectFile } from "@smriti/content-schema";
-import type { ContentSet } from "@smriti/content-schema/check";
+import { type ContentSet, isChapterReleased, type ReleasedScope } from "@smriti/content-schema/check";
 
 /** PRD §11.1: Deep Dives of the first chapters of every subject are free. */
 export const FREE_DEEP_DIVE_CHAPTERS_PER_SUBJECT = 2;
@@ -33,10 +33,10 @@ export function examMapFor(set: ContentSet, profileId: string): ExamMapFile | un
 }
 
 /**
- * Plan one profile. `subjectFilter` limits it to some subjects (released subjects for a remote
- * target); null publishes every subject the exam map touches.
+ * Plan one profile. `release` limits it to the released subjects and chapters (a production
+ * publish, content/releases.json); null publishes every chapter the exam map touches.
  */
-export function planProfile(set: ContentSet, profileId: string, subjectFilter: Set<string> | null): ProfilePlan | null {
+export function planProfile(set: ContentSet, profileId: string, release: ReleasedScope | null): ProfilePlan | null {
   const p = set.profiles.get(profileId);
   const examMap = examMapFor(set, profileId);
   if (!p || !examMap) return null;
@@ -52,28 +52,23 @@ export function planProfile(set: ContentSet, profileId: string, subjectFilter: S
   const subjects: PlannedSubject[] = [];
   const sortedSubjects = [...set.subjects].sort((a, b) => a.doc.sort - b.doc.sort || a.doc.id.localeCompare(b.doc.id));
   for (const { doc: subject } of sortedSubjects) {
-    if (subjectFilter && !subjectFilter.has(subject.id)) continue;
-    const chapters: PlannedChapter[] = [];
+    const all: PlannedChapter[] = [];
     for (const chapterId of subject.chapters) {
       const chapter = set.chapters.find((c) => c.doc.id === chapterId)?.doc;
       if (!chapter) continue;
       const topics = chapter.topics.map((t) => t.id).filter((t) => depth.has(t));
       if (topics.length === 0) continue;
-      chapters.push({ chapter, sort: chapters.length + 1, freeDeepDive: false, topics });
+      all.push({ chapter, sort: all.length + 1, freeDeepDive: false, topics });
     }
-    chapters.forEach((c, i) => {
+    // Sort and the free chapters follow the whole subject, so releasing a later chapter alone
+    // neither renumbers it nor makes it free.
+    all.forEach((c, i) => {
       c.freeDeepDive = i < FREE_DEEP_DIVE_CHAPTERS_PER_SUBJECT;
     });
+    const chapters = release ? all.filter((c) => isChapterReleased(release, c.chapter)) : all;
     if (chapters.length) subjects.push({ subject, chapters });
   }
   return { profileId, examId: p.exam.id, locales: p.profile.locales, examMap, subjects, depth };
-}
-
-/** Subjects marked for release in any exam map. */
-export function releasedSubjects(set: ContentSet): Set<string> {
-  const out = new Set<string>();
-  for (const m of set.examMaps) for (const s of m.doc.released_subjects ?? []) out.add(s);
-  return out;
 }
 
 /** Is a chapter's Deep Dive free in the subject's own order (used for content.content_items.is_free)? */

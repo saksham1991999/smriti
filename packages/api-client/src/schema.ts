@@ -2787,6 +2787,74 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/roleplay/chats": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Start the role play for a card (or return its open chat) */
+    post: operations["start_chat_v1_roleplay_chats_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats/{session_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A role-play chat */
+    get: operations["get_chat_v1_roleplay_chats__session_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats/{session_id}/turns": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The student's turn: a suggested reply or typed text; the character answers */
+    post: operations["take_turn_v1_roleplay_chats__session_id__turns_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/roleplay/chats/{session_id}/wrap-up": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** [Wrap up]: end the chat now and get the summary */
+    post: operations["wrap_up_v1_roleplay_chats__session_id__wrap_up_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/shared-decks": {
     parameters: {
       query?: never;
@@ -8401,6 +8469,148 @@ export interface components {
       /** State Version */
       state_version: number;
     };
+    /** RoleplayChat */
+    RoleplayChat: {
+      /** Card Id */
+      card_id: string;
+      /** End Reason */
+      end_reason?: ("goals_met" | "turn_cap" | "wrap_up") | null;
+      /**
+       * Goals Met
+       * @description Indexes into the card's goals
+       */
+      goals_met: number[];
+      /** Goals Total */
+      goals_total: number;
+      /**
+       * Max Turns
+       * @description Student turns per chat; null when no cap is set
+       */
+      max_turns: number | null;
+      /** Messages */
+      messages: components["schemas"]["RoleplayMessage"][];
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "ended";
+      summary?: components["schemas"]["RoleplaySummary"] | null;
+      /** Turns */
+      turns: number;
+    };
+    /** RoleplayMessage */
+    RoleplayMessage: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Role
+       * @enum {string}
+       */
+      role: "student" | "character";
+      /** Text */
+      text: string;
+    };
+    /**
+     * RoleplayStart
+     * @description Starts the chat for a role-play card, or returns the open one for it.
+     */
+    RoleplayStart: {
+      /** Card Id */
+      card_id: string;
+    };
+    /**
+     * RoleplaySummary
+     * @description The end card: the goals the student met, as "What you found out", with the card's
+     *     concepts as chips. Both come from the published script, never from the model.
+     */
+    RoleplaySummary: {
+      /** Concepts */
+      concepts: components["schemas"]["SummaryConcept"][];
+      /** Found Out */
+      found_out: {
+        [key: string]: string;
+      }[];
+    };
+    /**
+     * RoleplayTurnIn
+     * @description One student turn: a tap on a suggested reply (``reply_index``) or typed ``text``.
+     *     Under-13s and little learners send replies only. ``client_message_id`` makes a retry safe.
+     */
+    RoleplayTurnIn: {
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Reply Index */
+      reply_index?: number | null;
+      /** Text */
+      text?: string | null;
+    };
+    /**
+     * RoleplayTurnOut
+     * @description ``step_out`` is set when the character stepped out of the story (the student asked for
+     *     something unsafe or off-topic): the app shows the pet line and [Back to the story]. ``safety``
+     *     carries the crisis card's helplines. Pro turns report the shared fair-use ``quota``.
+     */
+    RoleplayTurnOut: {
+      /** Card Id */
+      card_id: string;
+      /** End Reason */
+      end_reason?: ("goals_met" | "turn_cap" | "wrap_up") | null;
+      /**
+       * Goals Met
+       * @description Indexes into the card's goals
+       */
+      goals_met: number[];
+      /** Goals Total */
+      goals_total: number;
+      /** Helplines */
+      helplines?: {
+        [key: string]: unknown;
+      }[];
+      /**
+       * Max Turns
+       * @description Student turns per chat; null when no cap is set
+       */
+      max_turns: number | null;
+      /** Messages */
+      messages: components["schemas"]["RoleplayMessage"][];
+      quota?: components["schemas"]["QuotaOut"] | null;
+      /** Safety */
+      safety?: "crisis" | null;
+      /**
+       * Session Id
+       * Format: uuid
+       */
+      session_id: string;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "ended";
+      /**
+       * Step Out
+       * @default false
+       */
+      step_out: boolean;
+      summary?: components["schemas"]["RoleplaySummary"] | null;
+      /** Turns */
+      turns: number;
+    };
     /** SampleCard */
     SampleCard: {
       /** Back */
@@ -9109,6 +9319,15 @@ export interface components {
       };
       /** Sort */
       sort: number;
+    };
+    /** SummaryConcept */
+    SummaryConcept: {
+      /** Id */
+      id: string;
+      /** Name */
+      name: {
+        [key: string]: string;
+      };
     };
     /** SummaryResponse */
     SummaryResponse: {
@@ -15294,6 +15513,141 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["ReviewQueueResponse"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  start_chat_v1_roleplay_chats_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RoleplayStart"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayChat"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_chat_v1_roleplay_chats__session_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The chat's tutor session id */
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayChat"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  take_turn_v1_roleplay_chats__session_id__turns_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The chat's tutor session id */
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RoleplayTurnIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayTurnOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  wrap_up_v1_roleplay_chats__session_id__wrap_up_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The chat's tutor session id */
+        session_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RoleplayChat"];
         };
       };
       /** @description Validation Error */

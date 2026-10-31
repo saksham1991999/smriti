@@ -1617,6 +1617,23 @@ create table ai.doubt_photos (                    -- photo doubt, AI-16 to AI-19
   deleted_at       timestamptz
 );                                                -- owner read; API writes; ai.tutor_retention_days
 
+create table ai.roleplay_chats (                  -- AI-21 role play (migration 20261030200007)
+  session_id   uuid primary key references ai.tutor_sessions(id) on delete cascade,  -- mode 'roleplay'
+  user_id      uuid not null references auth.users(id) on delete cascade,
+  card_id      text not null,                     -- the role-play card
+  turns        smallint not null default 0,       -- student turns (roleplay.max_turns)
+  goals_total  smallint not null,
+  goals_met    smallint[] not null default '{}',  -- indexes into the card's goals
+  status       text not null default 'open',      -- open, ended
+  end_reason   text,                              -- goals_met, turn_cap, wrap_up
+  started_at   timestamptz not null default now(),-- free.roleplay_chats_per_day counts these
+  ended_at     timestamptz
+);                                                -- owner read; API writes. Messages: ai.tutor_messages
+
+-- content.roleplay_scripts (same migration): the server's copy of each published role-play card
+-- (card_id, item_id, topic_id, concept_ids, script jsonb, status), filled by the publish job in
+-- the card-index pass. Service only: the persona prompt never goes to a client from here.
+
 create table ai.generations (                     -- every non-chat AI job, for cost and debugging
   id           uuid primary key default gen_random_uuid(),
   user_id      uuid references auth.users(id) on delete set null,   -- null for content jobs

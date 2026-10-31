@@ -114,7 +114,8 @@ async def index_lessons(session: AsyncSession, content_root: Path) -> dict[str, 
     known_concepts = set((await session.execute(text("select id from content.concepts"))).scalars())
     rows: list[IndexRow] = []
     items: set[str] = set()
-    for lesson in read_lessons(content_root):
+    lessons = list(read_lessons(content_root))
+    for lesson in lessons:
         if lesson["id"] not in published:
             continue
         items.add(str(lesson["id"]))
@@ -167,7 +168,11 @@ async def index_lessons(session: AsyncSession, content_root: Path) -> dict[str, 
                 {"items": sorted(items), "keep": [r.card_id for r in rows]},
             )
         ).rowcount or 0  # type: ignore[attr-defined]
-    return {"lessons": len(items), "cards": len(rows), "retired": int(retired)}
+    # Role-play scripts (AI-21) come from the same published lessons, in the same pass.
+    from smriti_api.services import roleplay
+
+    scripts = await roleplay.index_scripts(session, lessons)
+    return {"lessons": len(items), "cards": len(rows), "retired": int(retired), **scripts}
 
 
 # --- queueing -----------------------------------------------------------------------------------

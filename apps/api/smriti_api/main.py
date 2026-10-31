@@ -42,6 +42,7 @@ from smriti_api.routes import notify as notify_routes
 from smriti_api.routes import parent_mode as parent_routes
 from smriti_api.routes import practice as practice_routes
 from smriti_api.routes import reviews as reviews_routes
+from smriti_api.routes import roleplay as roleplay_routes
 from smriti_api.routes import shared_decks as shared_deck_routes
 from smriti_api.routes import social as social_routes
 from smriti_api.routes import tutor as tutor_routes
@@ -219,6 +220,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(integrity_routes.router)
     app.include_router(live_routes.router)
     app.include_router(analytics_routes.router)
+    app.include_router(roleplay_routes.router)
     # Wave 2 (Agent B): the Phase 2 social backend.
     for router in (
         social_routes.router,

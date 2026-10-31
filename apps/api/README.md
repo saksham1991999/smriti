@@ -226,6 +226,9 @@ pnpm --filter @smriti/api-client generate     # writes packages/api-client/opena
 | POST | `/v1/tutor/sessions/{session_id}/messages` | ask (SSE: delta, replace, safety, citations, chips, quota, done) |
 | POST | `/v1/tutor/ask/card`, `/v1/tutor/ask/question` | ask about a card or a question (SSE, `session` event first) |
 | POST | `/v1/tutor/messages/{message_id}/feedback` | thumbs up or down with reasons |
+| GET | `/v1/ai/doubt-photos/{id}/similar?count=` | AI-19: course concepts the confirmed question matches and published practice questions on them (a PRC-03 fixed set) |
+| POST, GET | `/v1/roleplay/chats`, `/v1/roleplay/chats/{id}` | AI-21: start (or resume) the role play for a published card; the chat with goals met and the summary. See `docs/contracts/roleplay.md` |
+| POST | `/v1/roleplay/chats/{id}/turns`, `.../wrap-up` | a suggested reply or typed text (under-13s: replies only); end now |
 | POST, GET | `/v1/content/reports` | report content (SET-24); my reports |
 
 ### Social (Phase 2)

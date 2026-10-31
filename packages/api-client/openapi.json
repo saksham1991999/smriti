@@ -6485,6 +6485,163 @@
         }
       }
     },
+    "/v1/roleplay/chats": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "Start the role play for a card (or return its open chat)",
+        "operationId": "start_chat_v1_roleplay_chats_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 128 }, { "type": "null" }],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayStart" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayChat" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats/{session_id}": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "A role-play chat",
+        "operationId": "get_chat_v1_roleplay_chats__session_id__get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The chat's tutor session id",
+              "title": "Session Id"
+            },
+            "description": "The chat's tutor session id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayChat" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats/{session_id}/turns": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "The student's turn: a suggested reply or typed text; the character answers",
+        "operationId": "take_turn_v1_roleplay_chats__session_id__turns_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The chat's tutor session id",
+              "title": "Session Id"
+            },
+            "description": "The chat's tutor session id"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayTurnIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayTurnOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/roleplay/chats/{session_id}/wrap-up": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "[Wrap up]: end the chat now and get the summary",
+        "operationId": "wrap_up_v1_roleplay_chats__session_id__wrap_up_post",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The chat's tutor session id",
+              "title": "Session Id"
+            },
+            "description": "The chat's tutor session id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/RoleplayChat" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/social/gate": {
       "get": {
         "tags": ["social"],
@@ -14678,6 +14835,173 @@
         "required": ["queued", "card_refs", "state_version"],
         "title": "ReviewQueueResponse"
       },
+      "RoleplayChat": {
+        "properties": {
+          "session_id": { "type": "string", "format": "uuid", "title": "Session Id" },
+          "card_id": { "type": "string", "title": "Card Id" },
+          "status": { "type": "string", "enum": ["open", "ended"], "title": "Status" },
+          "end_reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["goals_met", "turn_cap", "wrap_up"] },
+              { "type": "null" }
+            ],
+            "title": "End Reason"
+          },
+          "turns": { "type": "integer", "title": "Turns" },
+          "max_turns": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Max Turns",
+            "description": "Student turns per chat; null when no cap is set"
+          },
+          "goals_total": { "type": "integer", "title": "Goals Total" },
+          "goals_met": {
+            "items": { "type": "integer" },
+            "type": "array",
+            "title": "Goals Met",
+            "description": "Indexes into the card's goals"
+          },
+          "messages": {
+            "items": { "$ref": "#/components/schemas/RoleplayMessage" },
+            "type": "array",
+            "title": "Messages"
+          },
+          "summary": {
+            "anyOf": [{ "$ref": "#/components/schemas/RoleplaySummary" }, { "type": "null" }]
+          }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "card_id",
+          "status",
+          "turns",
+          "max_turns",
+          "goals_total",
+          "goals_met",
+          "messages"
+        ],
+        "title": "RoleplayChat"
+      },
+      "RoleplayMessage": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "role": { "type": "string", "enum": ["student", "character"], "title": "Role" },
+          "text": { "type": "string", "title": "Text" },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+        },
+        "type": "object",
+        "required": ["id", "role", "text", "created_at"],
+        "title": "RoleplayMessage"
+      },
+      "RoleplayStart": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Card Id"
+          }
+        },
+        "type": "object",
+        "required": ["card_id"],
+        "title": "RoleplayStart",
+        "description": "Starts the chat for a role-play card, or returns the open one for it."
+      },
+      "RoleplaySummary": {
+        "properties": {
+          "found_out": {
+            "items": { "additionalProperties": { "type": "string" }, "type": "object" },
+            "type": "array",
+            "title": "Found Out"
+          },
+          "concepts": {
+            "items": { "$ref": "#/components/schemas/SummaryConcept" },
+            "type": "array",
+            "title": "Concepts"
+          }
+        },
+        "type": "object",
+        "required": ["found_out", "concepts"],
+        "title": "RoleplaySummary",
+        "description": "The end card: the goals the student met, as \"What you found out\", with the card's\nconcepts as chips. Both come from the published script, never from the model."
+      },
+      "RoleplayTurnIn": {
+        "properties": {
+          "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
+          "text": {
+            "anyOf": [{ "type": "string", "maxLength": 4000, "minLength": 1 }, { "type": "null" }],
+            "title": "Text"
+          },
+          "reply_index": {
+            "anyOf": [{ "type": "integer", "maximum": 2, "minimum": 0 }, { "type": "null" }],
+            "title": "Reply Index"
+          }
+        },
+        "type": "object",
+        "required": ["client_message_id"],
+        "title": "RoleplayTurnIn",
+        "description": "One student turn: a tap on a suggested reply (``reply_index``) or typed ``text``.\nUnder-13s and little learners send replies only. ``client_message_id`` makes a retry safe."
+      },
+      "RoleplayTurnOut": {
+        "properties": {
+          "session_id": { "type": "string", "format": "uuid", "title": "Session Id" },
+          "card_id": { "type": "string", "title": "Card Id" },
+          "status": { "type": "string", "enum": ["open", "ended"], "title": "Status" },
+          "end_reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["goals_met", "turn_cap", "wrap_up"] },
+              { "type": "null" }
+            ],
+            "title": "End Reason"
+          },
+          "turns": { "type": "integer", "title": "Turns" },
+          "max_turns": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Max Turns",
+            "description": "Student turns per chat; null when no cap is set"
+          },
+          "goals_total": { "type": "integer", "title": "Goals Total" },
+          "goals_met": {
+            "items": { "type": "integer" },
+            "type": "array",
+            "title": "Goals Met",
+            "description": "Indexes into the card's goals"
+          },
+          "messages": {
+            "items": { "$ref": "#/components/schemas/RoleplayMessage" },
+            "type": "array",
+            "title": "Messages"
+          },
+          "summary": {
+            "anyOf": [{ "$ref": "#/components/schemas/RoleplaySummary" }, { "type": "null" }]
+          },
+          "step_out": { "type": "boolean", "title": "Step Out", "default": false },
+          "safety": {
+            "anyOf": [{ "type": "string", "const": "crisis" }, { "type": "null" }],
+            "title": "Safety"
+          },
+          "helplines": {
+            "items": { "additionalProperties": true, "type": "object" },
+            "type": "array",
+            "title": "Helplines"
+          },
+          "quota": { "anyOf": [{ "$ref": "#/components/schemas/QuotaOut" }, { "type": "null" }] }
+        },
+        "type": "object",
+        "required": [
+          "session_id",
+          "card_id",
+          "status",
+          "turns",
+          "max_turns",
+          "goals_total",
+          "goals_met",
+          "messages"
+        ],
+        "title": "RoleplayTurnOut",
+        "description": "``step_out`` is set when the character stepped out of the story (the student asked for\nsomething unsafe or off-topic): the app shows the pet line and [Back to the story]. ``safety``\ncarries the crisis card's helplines. Pro turns report the shared fair-use ``quota``."
+      },
       "SampleCard": {
         "properties": {
           "front": { "type": "string", "title": "Front" },
@@ -15468,6 +15792,19 @@
         "type": "object",
         "required": ["id", "name", "sort"],
         "title": "SubtopicOut"
+      },
+      "SummaryConcept": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "name": {
+            "additionalProperties": { "type": "string" },
+            "type": "object",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": ["id", "name"],
+        "title": "SummaryConcept"
       },
       "SummaryResponse": {
         "properties": {

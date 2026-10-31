@@ -238,7 +238,10 @@ const mixedRoute = createRoute({
   path: "/practice/mixed",
   component: lazyRouteComponent(withNamespaces(["practice"], () => import("./screens/phase2/insights/Mixed")), "Mixed"),
 });
-const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute] as const;
+const live = withNamespaces(["practice"], () => import("./screens/phase2/live/Live"));
+const liveRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId", component: lazyRouteComponent(live, "LiveRoom") });
+const liveBoardRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId/leaderboard", component: lazyRouteComponent(live, "LiveLeaderboard") });
+const phase2Routes = [feynmanRoute, voiceRoute, palacesRoute, newPalaceRoute, palaceRoute, palaceItemsRoute, palaceWalkRoute, palaceQuizRoute, insightsRoute, mixedRoute, liveRoute, liveBoardRoute] as const;
 
 const routeTree = rootRoute.addChildren([
   indexRoute,

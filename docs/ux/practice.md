@@ -1184,6 +1184,17 @@ Placeholders:
 | Closed | This live mock has ended. Results at {results_at}. | यह लाइव मॉक ख़त्म हो गया। नतीजे {results_at} पर। |
 | Taken | You've taken this one. Your rank comes at {results_at}. | यह मॉक आपने दे दिया है। आपकी रैंक {results_at} पर आएगी। |
 | Needs internet | Live mocks need internet to start. | लाइव मॉक शुरू करने के लिए इंटरनेट चाहिए। |
+| Not found | We couldn't find this live mock. | यह लाइव मॉक नहीं मिला। |
+| Back practice | Back to Practice | अभ्यास पर वापस जाएँ |
+| Register failed | Registration didn't go through. Try again. | रजिस्टर नहीं हो पाया। फिर कोशिश करें। |
+| See leaderboard | See leaderboard | लीडरबोर्ड देखें |
+| Unlock | Unlock with Pro | Pro से अनलॉक करें |
+| Time to start | Time left to start | शुरू होने में बाकी समय |
+| Registrations | {n} registered | {n} रजिस्टर्ड |
+| How title | How it works | यह कैसे चलता है |
+| Reminder set | We'll remind you {reminder_lead} before it starts. | शुरू होने से {reminder_lead} पहले हम याद दिलाएँगे। |
+| Minutes | {n, plural, one {# minute} other {# minutes}} | {n} मिनट |
+| Unregister | Cancel registration | रजिस्ट्रेशन रद्द करें |
 
 **Illustration slots:** `sunny-scene`, 3:2 band, many small desks in a bright hall seen from above, students of different regions, calm mood. No text or clocks with numbers. Alt intent: "Students across India taking the same mock".
 **States:**
@@ -2080,6 +2091,16 @@ Early submit variant (blueprint `early_section_submit` true): a confirm first, "
 | Minor listed note | Others see a nickname and your pet, never your name. | दूसरों को आपका नाम नहीं, सिर्फ़ एक निकनेम और आपका पेट दिखता है। |
 | Ask a parent | Ask a parent | माता-पिता से पूछें |
 | Not ranked | You took this after the window, so it isn't ranked. | आपने यह विंडो के बाद दिया, इसलिए रैंक नहीं हुई। |
+| You | You | आप |
+| Your rank a11y | Your rank: {rank}, score {score}, {percentile} percentile | आपकी रैंक: {rank}, स्कोर {score}, {percentile} पर्सेंटाइल |
+| Too few | Too few people took this mock to rank it fairly. | निष्पक्ष रैंक देने के लिए बहुत कम लोगों ने यह मॉक दिया। |
+| Top three | Top three | टॉप तीन |
+| Row a11y | Rank {rank}, {name}, score {score}, {percentile} percentile | रैंक {rank}, {name}, स्कोर {score}, {percentile} पर्सेंटाइल |
+| Percentile | {percentile} percentile | {percentile} पर्सेंटाइल |
+| Col rank | Rank | रैंक |
+| Col name | Name | नाम |
+| Col score | Score | स्कोर |
+| Col percentile | Percentile | पर्सेंटाइल |
 
 **Illustration slots:** None beyond pet avatars (existing assets).
 **States:** Pending (before `results_at`); published; guest (no own public row, sign-in link; live mocks are Pro, so guests normally only reach this from a shared link); minor without consent (private row line, [Ask a parent] → AUTH-18, or [Ask a grown-up] → SET-13 for under-13s); minor with consent (auto nickname and pet avatar only, R31 amended, with the minor listed note); not ranked (late attempt); offline cached; dark mode.

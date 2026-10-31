@@ -28,7 +28,31 @@ interface UserState {
   feynmanAttempts: Record<string, Schemas["FeynmanOut"]>;
   /** Voice sessions by the client's session id. */
   voice?: Record<string, { id: string; startedAt: number; seconds: number | null; turns: Schemas["TranscriptTurn"][]; flashcards: number }>;
+  /** Live mocks the student registered for. */
+  liveRegistered?: string[];
 }
+
+/**
+ * Dev and e2e switch for the live mock room: `localStorage["smriti.fake-api.live"]` =
+ * `scheduled` (default), `open`, `late`, `taken`, `results` or `too_few` (results, but too few
+ * ranked). The window is placed around the time the fake first answers in that mode.
+ */
+type LiveMode = "scheduled" | "open" | "late" | "taken" | "results" | "too_few";
+function liveMode(): LiveMode {
+  try {
+    const v = globalThis.localStorage?.getItem("smriti.fake-api.live");
+    return v === "open" || v === "late" || v === "taken" || v === "results" || v === "too_few" ? v : "scheduled";
+  } catch {
+    return "scheduled";
+  }
+}
+
+/** The one fake live mock. Its title is labelled fixture text. */
+const LIVE_MOCK_ID = "fx-live-1";
+const LIVE_TITLE = { en: "Fixture live mock", hi: "फ़िक्स्चर लाइव मॉक" };
+const LIVE_DURATION_MIN = 180;
+const LIVE_WINDOW_MIN = 240;
+const LIVE_ROOM_LEAD_MIN = 15;
 
 /**
  * Dev and e2e switch for the voice states the local API can return: `localStorage
@@ -98,6 +122,47 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
     }
   };
   const state = (u: FakeUser): UserState => (store[u.id] ??= { feynman: {}, feynmanAttempts: {} });
+
+  /** Window start for a live mode, fixed the first time the fake answers in that mode. */
+  const liveAnchors: Partial<Record<LiveMode, number>> = {};
+  const liveStart = (mode: LiveMode): number => {
+    const minute = Math.floor(now() / 60_000) * 60_000;
+    const offsetMin = { scheduled: 135, open: -10, late: -200, taken: -60, results: -1440, too_few: -1440 }[mode];
+    return (liveAnchors[mode] ??= minute + offsetMin * 60_000);
+  };
+  const liveRoom = (u: FakeUser): Schemas["LiveRoom"] => {
+    const mode = liveMode();
+    const t = now();
+    const start = liveStart(mode);
+    const end = start + LIVE_WINDOW_MIN * 60_000;
+    const fullUntil = end - LIVE_DURATION_MIN * 60_000;
+    const resultsAt = end + 120 * 60_000;
+    const final = mode === "results" || mode === "too_few";
+    const registered = mode !== "scheduled" || (state(u).liveRegistered ?? []).includes(LIVE_MOCK_ID);
+    const open = t >= start && t < end;
+    const iso = (ms: number) => new Date(ms).toISOString();
+    return {
+      mock_id: LIVE_MOCK_ID,
+      title: LIVE_TITLE,
+      status: final ? "results" : t >= end ? "closed" : open ? "live" : t >= start - LIVE_ROOM_LEAD_MIN * 60_000 ? "room_open" : "scheduled",
+      window_start: iso(start),
+      window_end: iso(end),
+      room_opens_at: iso(start - LIVE_ROOM_LEAD_MIN * 60_000),
+      full_duration_until: iso(fullUntil),
+      deadline_if_started_now: open ? iso(Math.min(t + LIVE_DURATION_MIN * 60_000, end)) : null,
+      duration_s: LIVE_DURATION_MIN * 60,
+      results_at: iso(resultsAt),
+      ranks_published: final,
+      registered,
+      registrations: 1200 + (registered ? 1 : 0),
+      can_start: open && isPro(u, t) && mode !== "taken",
+      attempt_id: mode === "taken" || final ? "fx-live-attempt" : null,
+      attempt_status: mode === "taken" || final ? "submitted" : null,
+      channel: `live_mock:${LIVE_MOCK_ID}`,
+      events_url: `/v1/live/mocks/${LIVE_MOCK_ID}/events`,
+      server_time: iso(t),
+    };
+  };
 
   /** Half an hour of voice a day in the fake (the real limits are owner flags). */
   const voiceQuota = (u: FakeUser): Schemas["VoiceQuota"] => {
@@ -345,6 +410,70 @@ export function createPhase2Handlers(ctx: Phase2Context): RequestHandler[] {
         by_subject: [],
       } satisfies Schemas["CalibrationOut"]);
     }),
+    // ── Phase 3 live mocks ─────────────────────────────────────────────────
+    http.get(url("/v1/live/mocks/:id"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (params.id !== LIVE_MOCK_ID) return problem(404, "not_found");
+      return HttpResponse.json(liveRoom(u));
+    }),
+    http.get(url("/v1/live/mocks/:id/events"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (params.id !== LIVE_MOCK_ID) return problem(404, "not_found");
+      const room = liveRoom(u);
+      const left = Math.max(0, Math.round((Date.parse(room.window_end) - now()) / 1000));
+      const enc = new TextEncoder();
+      const body = new ReadableStream<Uint8Array>({
+        start(c) {
+          c.enqueue(enc.encode(`event: hello\ndata: ${JSON.stringify({ server_time: room.server_time, status: room.status })}\n\n`));
+          c.enqueue(enc.encode(`event: clock\ndata: ${JSON.stringify({ server_time: room.server_time, remaining_s: left })}\n\n`));
+          c.close();
+        },
+      });
+      return new HttpResponse(body, { headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-store" } });
+    }),
+    http.post(url("/v1/live/mocks/:id/registration"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (params.id !== LIVE_MOCK_ID) return problem(404, "not_found");
+      if (!isPro(u, now())) return problem(403, "pro_required", { paywall_trigger: "mock_limit", paywall_source: "live_mock" });
+      const room = liveRoom(u);
+      if (now() >= Date.parse(room.window_end)) return problem(409, "window_closed");
+      const st = state(u);
+      st.liveRegistered = [...new Set([...(st.liveRegistered ?? []), LIVE_MOCK_ID])];
+      save();
+      return HttpResponse.json({ mock_id: LIVE_MOCK_ID, registered: true, reminder_at: room.room_opens_at } satisfies Schemas["Registration"]);
+    }),
+    http.delete(url("/v1/live/mocks/:id/registration"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (params.id !== LIVE_MOCK_ID) return problem(404, "not_found");
+      const st = state(u);
+      st.liveRegistered = (st.liveRegistered ?? []).filter((id) => id !== LIVE_MOCK_ID);
+      save();
+      return HttpResponse.json({ mock_id: LIVE_MOCK_ID, registered: false, reminder_at: null } satisfies Schemas["Registration"]);
+    }),
+    http.get(url("/v1/live/mocks/:id/leaderboard"), ({ request, params }) => {
+      const u = authed(request);
+      if (!u) return unauthorized();
+      if (params.id !== LIVE_MOCK_ID) return problem(404, "not_found");
+      const mode = liveMode();
+      if (mode === "too_few") return HttpResponse.json({ mock_id: LIVE_MOCK_ID, published: false, ranked: 0, reason: "below_threshold", rows: [], you: null } satisfies Schemas["LiveLeaderboard"]);
+      if (mode !== "results") return HttpResponse.json({ mock_id: LIVE_MOCK_ID, published: false, ranked: 0, reason: "results_pending", rows: [], you: null } satisfies Schemas["LiveLeaderboard"]);
+      // Fixture rows: names are labelled fixture nicknames; minors would get the pet avatar only.
+      const rows: Schemas["LiveLeaderboardRow"][] = Array.from({ length: 12 }, (_, i) => ({
+        rank: i + 1,
+        name: `Fixture nickname ${i + 1}`,
+        avatar: i % 3 === 2 ? null : i % 2 ? "dog" : "cat",
+        score: 280 - i * 9,
+        percentile: Math.round((100 - i * 0.1) * 10) / 10,
+        is_you: false,
+      }));
+      const you: Schemas["LiveLeaderboardRow"] = { rank: 57, name: null, avatar: "cat", score: 171, percentile: 95.4, is_you: true };
+      return HttpResponse.json({ mock_id: LIVE_MOCK_ID, published: true, ranked: 1200, reason: null, rows, you } satisfies Schemas["LiveLeaderboard"]);
+    }),
+
     http.post(url("/v1/practice/interleaved"), async ({ request }) => {
       const u = authed(request);
       if (!u) return unauthorized();

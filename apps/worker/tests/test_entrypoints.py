@@ -64,3 +64,22 @@ async def test_content_apply_guards_and_applies(
     (report / "metadata.sql").write_text("select nope_not_a_column from nowhere;")
     with pytest.raises(Exception, match="nowhere"):
         await content_apply.apply(report, root)
+
+
+async def test_health_reads_each_queues_key() -> None:
+    from smriti_worker import health
+
+    # No worker is running for these queues in the test Redis.
+    assert await health.check(["pdf"]) == ["pdf"]
+    stop = asyncio.Event()
+
+    async def probe() -> list[str]:
+        await asyncio.sleep(1.0)
+        try:
+            return await health.check(["ai", "pdf"])
+        finally:
+            stop.set()
+
+    probe_task = asyncio.create_task(probe())
+    await asyncio.wait_for(run_many([WORKERS["ai"], WORKERS["pdf"]], stop), timeout=30)
+    assert await probe_task == []

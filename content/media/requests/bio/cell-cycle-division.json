@@ -141,10 +141,11 @@
       "kind": "image",
       "preset": "sunny-scene",
       "subject_family": "biology",
-      "brief": "a school playground seen from above: children stand in pairs in one straight line across the middle of the ground, each pair holding hands, and two teachers stand at opposite ends of the ground facing the line",
+      "brief": "a wide green school ground seen from high above: in the exact middle, four pairs of children stand in one straight line running from top to bottom, the two children of each pair holding hands; far away, one teacher stands at the left edge of the ground and one teacher at the right edge, both facing the line",
       "must_show": [
-        "pairs of children in one line across the middle",
-        "two adults at opposite ends"
+        "four pairs of children in one line across the middle",
+        "one adult at the far left edge",
+        "one adult at the far right edge"
       ],
       "must_not_show": [
         "text",
@@ -152,7 +153,8 @@
         "numbers",
         "logos",
         "signboards",
-        "children scattered randomly"
+        "playground equipment",
+        "children outside the line"
       ],
       "alt": {
         "en": "A wide green ground seen from above: four pairs of children, each pair holding hands, stand in one line down the middle, and one adult stands far off at the left edge and one at the right edge, both facing the line.",
@@ -182,11 +184,11 @@
       "kind": "image",
       "preset": "sunny-object",
       "subject_family": "biology",
-      "brief": "a small toy room seen from above with four walls and no roof; a new thin wall is being built across the middle, starting at the centre of the room and growing outward towards the two side walls, with a gap still left at each end",
+      "brief": "a shallow square wooden tray seen from directly above; a thin green divider is being slid in across the middle, it already fills the centre of the tray but does not yet reach the left and right sides, leaving a small gap at each end",
       "must_show": [
-        "four outer walls",
-        "a new wall in the middle",
-        "gaps between the new wall and the side walls"
+        "one square tray",
+        "a divider across the middle",
+        "a small gap at each end of the divider"
       ],
       "must_not_show": [
         "text",
@@ -194,8 +196,8 @@
         "numbers",
         "logos",
         "people",
-        "furniture",
-        "bricks with marks"
+        "hands",
+        "objects in the tray"
       ],
       "alt": {
         "en": "A shallow square wooden tray seen from above, with a green divider placed across the middle that does not quite reach the two sides.",
@@ -223,11 +225,11 @@
       "kind": "image",
       "preset": "sunny-object",
       "subject_family": "biology",
-      "brief": "two thick braided cords lying side by side on a table, one green and one orange; near one end a short section of each has been swapped, so the green cord carries an orange piece and the orange cord carries a green piece at the same place",
+      "brief": "two straight thick ropes lying parallel on a table, far apart from each other, one rope green and one rope orange; near the right end the green rope has one short orange band and the orange rope has one short green band, at the same position on both ropes",
       "must_show": [
-        "one green cord with an orange section",
-        "one orange cord with a green section",
-        "sections swapped at the same place"
+        "two separate straight ropes",
+        "a short orange band on the green rope",
+        "a short green band on the orange rope at the same place"
       ],
       "must_not_show": [
         "text",
@@ -235,7 +237,9 @@
         "numbers",
         "logos",
         "people",
-        "knots"
+        "knots",
+        "rings",
+        "braids joined into a loop"
       ],
       "alt": {
         "en": "Two straight ropes lying parallel, one green and one orange; near the right end the green rope has a short orange band, and the orange rope ends in a short green piece.",
@@ -265,11 +269,10 @@
       "kind": "image",
       "preset": "sunny-object",
       "subject_family": "biology",
-      "brief": "one round green-iced cake cut into four equal pieces, each piece on its own small plate, the four plates around an empty cake stand",
+      "brief": "exactly four equal quarter slices of one round green-iced cake, each slice on its own small plate; the four plates are arranged in a square, two plates in front and two plates behind; no whole cake and no cake stand",
       "must_show": [
-        "four equal cake pieces",
-        "four plates",
-        "an empty cake stand"
+        "exactly four cake slices",
+        "four plates in a two by two square"
       ],
       "must_not_show": [
         "text",
@@ -278,7 +281,9 @@
         "logos",
         "people",
         "candles",
-        "writing on the cake"
+        "writing on the cake",
+        "a whole cake",
+        "a cake stand"
       ],
       "alt": {
         "en": "Four equal slices of one green-iced cake, each on its own small cream plate, set out in a square of two in front and two behind.",

@@ -1,0 +1,127 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "phy.motion-straight-line.kinematic-equations:quick_revision",
+  "topic": "phy.motion-straight-line.kinematic-equations",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.motion-straight-line.kinematic-equations"
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.kinematic-equations.0004"
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-straight-line.kinematic-equations.0005"
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$v = v_0 + at$, $x = v_0 t + \\frac{1}{2}at^2$, $v^2 = v_0^2 + 2ax$: constant a only.",
+          "hi": "$v = v_0 + at$, $x = v_0 t + \\frac{1}{2}at^2$, $v^2 = v_0^2 + 2ax$: केवल नियत a।"
+        },
+        {
+          "en": "Choose a positive direction first; then g is $-9.8$ m s⁻² if up is positive.",
+          "hi": "पहले धनात्मक दिशा चुनिए; ऊपर धनात्मक हो तो g, $-9.8$ m s⁻² है।"
+        },
+        {
+          "en": "Stopping distance goes as the square of the speed.",
+          "hi": "रुकने की दूरी चाल के वर्ग के अनुसार है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Using the kinematic equations when the acceleration changes.",
+            "hi": "बदलते त्वरण में शुद्धगतिक समीकरण लगाना।"
+          },
+          "correct": {
+            "en": "They need constant acceleration; otherwise go back to $v = dx/dt$, $a = dv/dt$.",
+            "hi": "इनके लिए नियत त्वरण चाहिए; अन्यथा $v = dx/dt$, $a = dv/dt$ पर लौटिए।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Mixing signs: up positive but $a = +g$.",
+            "hi": "चिह्न मिलाना: ऊपर धनात्मक पर $a = +g$।"
+          },
+          "correct": {
+            "en": "With up positive, $a = -g$ for the whole flight.",
+            "hi": "ऊपर धनात्मक हो तो पूरी उड़ान में $a = -g$।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Twice the speed, twice the stopping distance.",
+            "hi": "दोगुनी चाल, दोगुनी रुकने की दूरी।"
+          },
+          "correct": {
+            "en": "Four times: $d_s$ goes as $v_0^2$.",
+            "hi": "चार गुनी: $d_s$, $v_0^2$ के अनुसार है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

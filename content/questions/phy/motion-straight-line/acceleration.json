@@ -1,0 +1,844 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §4.5 Relative Motion in One and Two Dimensions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 2 Saral Rekha mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph102.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 22-23"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or point it rests on. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "topic": "phy.motion-straight-line.acceleration",
+  "questions": [
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A car moving at 72 km/h is brought to rest uniformly in 4 s. Its acceleration is",
+        "hi": "72 km/h से चलती एक कार को 4 s में एकसमान रूप से रोका जाता है। उसका त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-5$ m/s²",
+            "hi": "$-5$ m/s²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$5$ m/s²",
+            "hi": "$5$ m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-18$ m/s²",
+            "hi": "$-18$ m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-4$ m/s²",
+            "hi": "$-4$ m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$1$ km/h $= \\frac{5}{18}$ m/s",
+          "hi": "$1$ km/h $= \\frac{5}{18}$ m/s"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Convert to m/s, then change in velocity over time.",
+          "hi": "m/s में बदलिए, फिर वेग परिवर्तन बटा समय।"
+        },
+        "steps": [
+          {
+            "en": "$72$ km/h $= 20$ m/s; $a = \\frac{0 - 20}{4} = -5$ m/s²",
+            "hi": "$72$ km/h $= 20$ m/s; $a = \\frac{0 - 20}{4} = -5$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The sign is lost: the car is slowing down.",
+              "hi": "चिह्न छूट गया: कार धीमी हो रही है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "72 km/h was not converted to m/s.",
+              "hi": "72 km/h को m/s में नहीं बदला।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not what the numbers give.",
+              "hi": "संख्याओं से यह नहीं आता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The v-t graph of a body is a straight line from 4 m/s at $t = 0$ to 12 m/s at $t = 4$ s. Its displacement in these 4 s is",
+        "hi": "किसी वस्तु का v-t ग्राफ़ $t = 0$ पर 4 m/s से $t = 4$ s पर 12 m/s तक एक सरल रेखा है। इन 4 s में उसका विस्थापन है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "32 m",
+            "hi": "32 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "48 m",
+            "hi": "48 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "16 m",
+            "hi": "16 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2 m",
+            "hi": "2 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Average of the two velocities times the time.",
+          "hi": "दोनों वेगों का औसत गुणा समय।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The area under the line is a trapezium.",
+          "hi": "रेखा के नीचे का क्षेत्रफल एक समलंब है।"
+        },
+        "steps": [
+          {
+            "en": "Area $= \\frac{1}{2}(4 + 12) \\times 4 = 32$ m",
+            "hi": "क्षेत्रफल $= \\frac{1}{2}(4 + 12) \\times 4 = 32$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This uses the final velocity for the whole time.",
+              "hi": "इसमें पूरे समय के लिए अंतिम वेग ले लिया गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This uses the initial velocity for the whole time.",
+              "hi": "इसमें पूरे समय के लिए प्रारंभिक वेग ले लिया गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the slope, the acceleration in m/s².",
+              "hi": "यह प्रवणता है, m/s² में त्वरण।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball thrown straight up is at its highest point. At that instant its velocity and acceleration are",
+        "hi": "सीधी ऊपर फेंकी गई गेंद अपने उच्चतम बिंदु पर है। उस क्षण उसका वेग और त्वरण हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "zero, and g downward",
+            "hi": "शून्य, और g नीचे की ओर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "zero, and zero",
+            "hi": "शून्य, और शून्य"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "g upward, and zero",
+            "hi": "g ऊपर की ओर, और शून्य"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "maximum, and g downward",
+            "hi": "अधिकतम, और g नीचे की ओर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What would happen next if a were zero?",
+          "hi": "यदि a शून्य होता तो आगे क्या होता?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "It stops for an instant, but gravity never switches off.",
+          "hi": "यह क्षण भर रुकती है, पर गुरुत्व कभी बंद नहीं होता।"
+        },
+        "steps": [
+          {
+            "en": "NCERT keph102 Points to Ponder 4: momentarily at rest, acceleration still that due to gravity.",
+            "hi": "NCERT keph102 विचारणीय विषय 4: क्षण भर विराम, त्वरण फिर भी गुरुत्वजनित।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "If a were zero there, the ball would stay up.",
+              "hi": "यदि वहाँ a शून्य होता, तो गेंद ऊपर ही रुकी रहती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "g is an acceleration, not a velocity, and it points down.",
+              "hi": "g त्वरण है, वेग नहीं, और यह नीचे की ओर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Velocity is least, zero, at the top.",
+              "hi": "शिखर पर वेग न्यूनतम, यानी शून्य, है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The position-time graph of a body is a curve that bends upward. The body has",
+        "hi": "किसी वस्तु का स्थिति-समय ग्राफ़ ऊपर की ओर मुड़ता वक्र है। वस्तु का"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "positive acceleration",
+            "hi": "त्वरण धनात्मक है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "negative acceleration",
+            "hi": "त्वरण ऋणात्मक है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "zero acceleration",
+            "hi": "त्वरण शून्य है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "zero velocity throughout",
+            "hi": "वेग पूरे समय शून्य है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is the slope growing or shrinking?",
+          "hi": "प्रवणता बढ़ रही है या घट रही है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A slope that keeps increasing means velocity is increasing.",
+          "hi": "लगातार बढ़ती प्रवणता का अर्थ बढ़ता वेग है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT keph102 §2.3: the x-t graph curves upward for positive acceleration.",
+            "hi": "NCERT keph102 §2.3: धनात्मक त्वरण के लिए x-t ग्राफ़ ऊपर की ओर मुड़ता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Negative acceleration bends the curve downward.",
+              "hi": "ऋणात्मक त्वरण वक्र को नीचे की ओर मोड़ता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Zero acceleration gives a straight line.",
+              "hi": "शून्य त्वरण से सरल रेखा मिलती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Zero velocity is a flat line.",
+              "hi": "शून्य वेग समतल रेखा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The velocity of a particle is $v = 2t^3$ m/s, with t in seconds. Its acceleration at $t = 2$ s, in m/s², is",
+        "hi": "किसी कण का वेग $v = 2t^3$ m/s है, जहाँ t सेकंड में है। $t = 2$ s पर उसका त्वरण, m/s² में, है"
+      },
+      "answer": {
+        "value": 24,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Differentiate once.",
+          "hi": "एक बार अवकलन कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Acceleration is the derivative of velocity.",
+          "hi": "त्वरण वेग का अवकलज है।"
+        },
+        "steps": [
+          {
+            "en": "$a = \\frac{dv}{dt} = 6t^2$; at $t = 2$: $a = 24$ m/s²",
+            "hi": "$a = \\frac{dv}{dt} = 6t^2$; $t = 2$ पर $a = 24$ m/s²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Putting $t = 2$ into v gives 16 m/s, which is the velocity, not the acceleration.",
+              "hi": "v में $t = 2$ रखने पर 16 m/s मिलता है, जो वेग है, त्वरण नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about motion along a straight line is correct?",
+        "hi": "सरल रेखा पर गति के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "A particle momentarily at rest can have non-zero acceleration.",
+            "hi": "क्षण भर विराम में कण का त्वरण अशून्य हो सकता है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Negative acceleration always means the speed is decreasing.",
+            "hi": "ऋणात्मक त्वरण का अर्थ सदा घटती चाल है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Zero acceleration means the object is at rest.",
+            "hi": "शून्य त्वरण का अर्थ है कि वस्तु विराम में है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A large velocity means a large acceleration.",
+            "hi": "अधिक वेग का अर्थ अधिक त्वरण है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of the ball at the top of its flight.",
+          "hi": "उड़ान के शिखर पर गेंद को सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Velocity and acceleration are separate quantities.",
+          "hi": "वेग और त्वरण अलग-अलग राशियाँ हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT keph102 Points to Ponder 3 and 4; NCERT iesc104 §4.1.4.",
+            "hi": "NCERT keph102 विचारणीय विषय 3 और 4; NCERT iesc104 §4.1.4।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The sign depends on the chosen axis; a falling ball with up as positive speeds up.",
+              "hi": "चिह्न चुने हुए अक्ष पर निर्भर है; ऊपर को धनात्मक मानें तो गिरती गेंद तेज़ होती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Zero acceleration means constant velocity, which may be large.",
+              "hi": "शून्य त्वरण का अर्थ नियत वेग है, जो अधिक हो सकता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A bus at steady high velocity has zero acceleration.",
+              "hi": "स्थिर तेज़ वेग वाली बस का त्वरण शून्य है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A body starts from rest and moves with uniform acceleration along a straight line. Its position-time graph is",
+        "hi": "एक वस्तु विराम से चलकर सरल रेखा पर एकसमान त्वरण से चलती है। उसका स्थिति-समय ग्राफ़ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a parabola",
+            "hi": "एक परवलय"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a straight line inclined to the time axis",
+            "hi": "समय-अक्ष पर आनत एक सरल रेखा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a straight line parallel to the time axis",
+            "hi": "समय-अक्ष के समांतर एक सरल रेखा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a circle",
+            "hi": "एक वृत्त"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What power of t is in x?",
+          "hi": "x में t की घात क्या है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Position grows as the square of time.",
+          "hi": "स्थिति समय के वर्ग के अनुसार बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "$x = \\frac{1}{2}at^2$: a parabola (NCERT keph102 Summary 4).",
+            "hi": "$x = \\frac{1}{2}at^2$: एक परवलय (NCERT keph102 सारांश 4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is uniform motion, zero acceleration.",
+              "hi": "यह एकसमान गति है, शून्य त्वरण।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is an object at rest.",
+              "hi": "यह विराम में वस्तु है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Position against time cannot loop back in time.",
+              "hi": "स्थिति-समय ग्राफ़ समय में पीछे नहीं मुड़ सकता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.acceleration.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A body moves with $v = 20 - 5t$ (v in m/s, t in s). In the first 6 s, its displacement and path length are",
+        "hi": "एक वस्तु $v = 20 - 5t$ (v m/s में, t सेकंड में) से चलती है। पहले 6 s में उसका विस्थापन और पथ-लंबाई हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "30 m and 50 m",
+            "hi": "30 m और 50 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "30 m and 30 m",
+            "hi": "30 m और 30 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "50 m and 50 m",
+            "hi": "50 m और 50 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "40 m and 50 m",
+            "hi": "40 m और 50 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find when v becomes zero.",
+          "hi": "पता कीजिए कि v कब शून्य होता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The body turns back at 4 s; split the v-t area there.",
+          "hi": "वस्तु 4 s पर मुड़ती है; v-t क्षेत्रफल वहीं से बाँटिए।"
+        },
+        "steps": [
+          {
+            "en": "$v = 0$ at $t = 4$ s. Area 0 to 4 s $= \\frac{1}{2} \\times 4 \\times 20 = 40$ m.",
+            "hi": "$v = 0$ होता है $t = 4$ s पर। 0 से 4 s तक क्षेत्रफल $= \\frac{1}{2} \\times 4 \\times 20 = 40$ m।"
+          },
+          {
+            "en": "Area 4 to 6 s $= \\frac{1}{2} \\times 2 \\times (-10) = -10$ m.",
+            "hi": "4 से 6 s तक क्षेत्रफल $= \\frac{1}{2} \\times 2 \\times (-10) = -10$ m।"
+          },
+          {
+            "en": "Displacement $= 40 - 10 = 30$ m; path $= 40 + 10 = 50$ m.",
+            "hi": "विस्थापन $= 40 - 10 = 30$ m; पथ $= 40 + 10 = 50$ m।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The return 10 m adds to the path.",
+              "hi": "वापसी के 10 m पथ में जुड़ते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The return 10 m subtracts from the displacement.",
+              "hi": "वापसी के 10 m विस्थापन से घटते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "40 m is only the outward part.",
+              "hi": "40 m केवल जाने वाला भाग है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

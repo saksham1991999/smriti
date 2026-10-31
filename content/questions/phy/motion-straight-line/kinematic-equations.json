@@ -1,0 +1,949 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §4.5 Relative Motion in One and Two Dimensions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 2 Saral Rekha mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph102.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 22-23"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or point it rests on. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "topic": "phy.motion-straight-line.kinematic-equations",
+  "questions": [
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A car starts from rest with a uniform acceleration of 2 m/s². Its velocity after 5 s is",
+        "hi": "एक कार विराम से 2 m/s² के एकसमान त्वरण से चलती है। 5 s बाद उसका वेग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 m/s",
+            "hi": "10 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "25 m/s",
+            "hi": "25 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 m/s",
+            "hi": "5 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "20 m/s",
+            "hi": "20 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v = v_0 + at$",
+          "hi": "$v = v_0 + at$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each second adds 2 m/s.",
+          "hi": "हर सेकंड 2 m/s जोड़ता है।"
+        },
+        "steps": [
+          {
+            "en": "$v = 0 + 2 \\times 5 = 10$ m/s",
+            "hi": "$v = 0 + 2 \\times 5 = 10$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the distance $\\frac{1}{2}at^2$ in metres.",
+              "hi": "यह मीटर में दूरी $\\frac{1}{2}at^2$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Not what the numbers give.",
+              "hi": "संख्याओं से यह नहीं आता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This doubles the correct value.",
+              "hi": "यह सही मान का दोगुना है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A stone is dropped from rest from a height of 45 m. Taking g = 10 m/s², it reaches the ground after",
+        "hi": "एक पत्थर 45 m की ऊँचाई से विराम से गिराया जाता है। g = 10 m/s² लें, तो यह धरती पर पहुँचता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "3 s",
+            "hi": "3 s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4.5 s",
+            "hi": "4.5 s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "9 s",
+            "hi": "9 s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2 s",
+            "hi": "2 s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Solve for $t^2$ first.",
+          "hi": "पहले $t^2$ निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Distance fallen from rest is $\\frac{1}{2}gt^2$.",
+          "hi": "विराम से गिरने की दूरी $\\frac{1}{2}gt^2$ है।"
+        },
+        "steps": [
+          {
+            "en": "$45 = \\frac{1}{2} \\times 10 \\times t^2$, so $t^2 = 9$ and $t = 3$ s",
+            "hi": "$45 = \\frac{1}{2} \\times 10 \\times t^2$, अतः $t^2 = 9$ और $t = 3$ s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This divides 45 by 10, as if the speed were constant.",
+              "hi": "यह 45 को 10 से भाग देता है, मानो चाल नियत हो।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is $t^2$, not t.",
+              "hi": "यह $t^2$ है, t नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not what the numbers give.",
+              "hi": "संख्याओं से यह नहीं आता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "With the same braking deceleration, if a vehicle's initial speed is doubled, its stopping distance becomes",
+        "hi": "समान ब्रेकिंग मंदन के साथ, यदि किसी वाहन की प्रारंभिक चाल दोगुनी कर दी जाए, तो उसकी रुकने की दूरी हो जाती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "four times",
+            "hi": "चार गुनी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "twice",
+            "hi": "दोगुनी"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the same",
+            "hi": "उतनी ही"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "half",
+            "hi": "आधी"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $v^2 = v_0^2 + 2ax$ with $v = 0$.",
+          "hi": "$v^2 = v_0^2 + 2ax$ लगाइए, $v = 0$ रखकर।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Stopping distance goes as the square of the speed.",
+          "hi": "रुकने की दूरी चाल के वर्ग के अनुसार है।"
+        },
+        "steps": [
+          {
+            "en": "$d_s = \\frac{v_0^2}{2|a|}$, so $2v_0$ gives $4d_s$ (NCERT keph102 Example 2.6).",
+            "hi": "$d_s = \\frac{v_0^2}{2|a|}$, अतः $2v_0$ से $4d_s$ मिलता है (NCERT keph102 उदाहरण 2.6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That would need $d_s$ proportional to $v_0$.",
+              "hi": "इसके लिए $d_s$ का $v_0$ के अनुक्रमानुपाती होना चाहिए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Faster cars need more room to stop.",
+              "hi": "तेज़ कारों को रुकने के लिए अधिक जगह चाहिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The distance grows, not shrinks.",
+              "hi": "दूरी बढ़ती है, घटती नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The equations $v = v_0 + at$, $x = v_0 t + \\frac{1}{2}at^2$ and $v^2 = v_0^2 + 2ax$ can be used when",
+        "hi": "समीकरण $v = v_0 + at$, $x = v_0 t + \\frac{1}{2}at^2$ और $v^2 = v_0^2 + 2ax$ तब लगाए जा सकते हैं जब"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the acceleration is constant in magnitude and direction",
+            "hi": "त्वरण परिमाण और दिशा में नियत हो"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the velocity is constant",
+            "hi": "वेग नियत हो"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the motion is of any kind",
+            "hi": "गति किसी भी प्रकार की हो"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the acceleration increases uniformly",
+            "hi": "त्वरण एकसमान रूप से बढ़े"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What did the derivation assume?",
+          "hi": "व्युत्पत्ति में क्या माना गया?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "They were derived assuming a fixed a.",
+          "hi": "ये नियत a मानकर निकाले गए थे।"
+        },
+        "steps": [
+          {
+            "en": "NCERT keph102 Points to Ponder 6.",
+            "hi": "NCERT keph102 विचारणीय विषय 6।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Constant velocity is only the special case $a = 0$.",
+              "hi": "नियत वेग केवल विशेष स्थिति $a = 0$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "For changing a, use the calculus definitions.",
+              "hi": "बदलते a के लिए कलन वाली परिभाषाएँ लगाइए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A changing acceleration breaks the derivation.",
+              "hi": "बदलता त्वरण व्युत्पत्ति को तोड़ देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball is thrown vertically up at 20 m/s. Taking g = 10 m/s², the greatest height it reaches is",
+        "hi": "एक गेंद 20 m/s से ऊर्ध्वाधर ऊपर फेंकी जाती है। g = 10 m/s² लें, तो यह अधिकतम ऊँचाई तक पहुँचती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "20 m",
+            "hi": "20 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "40 m",
+            "hi": "40 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 m",
+            "hi": "10 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2 m",
+            "hi": "2 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v^2 = v_0^2 + 2ax$ with $v = 0$",
+          "hi": "$v^2 = v_0^2 + 2ax$, $v = 0$ रखकर"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At the top the velocity is zero.",
+          "hi": "शिखर पर वेग शून्य है।"
+        },
+        "steps": [
+          {
+            "en": "$0 = 20^2 - 2 \\times 10 \\times h$, so $h = 20$ m",
+            "hi": "$0 = 20^2 - 2 \\times 10 \\times h$, अतः $h = 20$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The factor 2 in $2ax$ was dropped.",
+              "hi": "$2ax$ का 2 छूट गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Not what the numbers give.",
+              "hi": "संख्याओं से यह नहीं आता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the time to the top in seconds.",
+              "hi": "यह सेकंड में शिखर तक का समय है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0006",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A train moving at 20 m/s is brought to rest with uniform retardation over 100 m. How many seconds does it take to stop?",
+        "hi": "20 m/s से चलती एक रेलगाड़ी एकसमान मंदन से 100 m में रोकी जाती है। उसे रुकने में कितने सेकंड लगते हैं?"
+      },
+      "answer": {
+        "value": 10,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Average velocity is $\\frac{20 + 0}{2} = 10$ m/s.",
+          "hi": "औसत वेग $\\frac{20 + 0}{2} = 10$ m/s है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the retardation from the distance, then the time.",
+          "hi": "दूरी से मंदन निकालिए, फिर समय।"
+        },
+        "steps": [
+          {
+            "en": "$0 = 20^2 + 2a(100)$, so $a = -2$ m/s².",
+            "hi": "$0 = 20^2 + 2a(100)$, अतः $a = -2$ m/s²।"
+          },
+          {
+            "en": "$0 = 20 - 2t$, so $t = 10$ s.",
+            "hi": "$0 = 20 - 2t$, अतः $t = 10$ s।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Dividing 100 m by 20 m/s gives 5 s, which assumes constant speed.",
+              "hi": "100 m को 20 m/s से भाग देने पर 5 s आता है, जो नियत चाल मानता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A body falls freely from rest. The distances it falls in the first, second and third equal intervals of time are in the ratio",
+        "hi": "एक वस्तु विराम से मुक्त रूप से गिरती है। पहले, दूसरे और तीसरे समान समय अंतरालों में उसके द्वारा तय दूरियों का अनुपात है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 : 3 : 5",
+            "hi": "1 : 3 : 5"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1 : 2 : 3",
+            "hi": "1 : 2 : 3"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 : 4 : 9",
+            "hi": "1 : 4 : 9"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1 : 1 : 1",
+            "hi": "1 : 1 : 1"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Subtract the running totals.",
+          "hi": "क्रमिक योग घटाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Total distances go as 1, 4, 9; the differences are 1, 3, 5.",
+          "hi": "कुल दूरियाँ 1, 4, 9 के अनुसार; अंतर 1, 3, 5 हैं।"
+        },
+        "steps": [
+          {
+            "en": "Galileo's law of odd numbers (NCERT keph102 Example 2.5).",
+            "hi": "गैलीलियो का विषम संख्याओं का नियम (NCERT keph102 उदाहरण 2.5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That would be the velocities at the ends of the intervals.",
+              "hi": "यह अंतरालों के अंत पर वेग होंगे।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Those are the total distances from the start, not each interval's.",
+              "hi": "ये आरंभ से कुल दूरियाँ हैं, हर अंतराल की नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is uniform motion.",
+              "hi": "यह एकसमान गति है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball is thrown vertically up at 10 m/s from the top of a tower 15 m high. Taking g = 10 m/s², it hits the ground after",
+        "hi": "15 m ऊँचे टावर की चोटी से एक गेंद 10 m/s से ऊर्ध्वाधर ऊपर फेंकी जाती है। g = 10 m/s² लें, तो यह धरती से टकराती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "3 s",
+            "hi": "3 s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1 s",
+            "hi": "1 s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2 s",
+            "hi": "2 s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 s",
+            "hi": "4 s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Put the final position as $y = 0$.",
+          "hi": "अंतिम स्थिति $y = 0$ रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "One equation covers the whole flight; the ground is 15 m below the start.",
+          "hi": "एक समीकरण पूरी उड़ान के लिए है; धरती आरंभ से 15 m नीचे है।"
+        },
+        "steps": [
+          {
+            "en": "Up positive, origin at the ground: $0 = 15 + 10t - 5t^2$.",
+            "hi": "ऊपर धनात्मक, मूल बिंदु धरती पर: $0 = 15 + 10t - 5t^2$।"
+          },
+          {
+            "en": "$t^2 - 2t - 3 = 0$, so $t = 3$ s (the negative root is rejected).",
+            "hi": "$t^2 - 2t - 3 = 0$, अतः $t = 3$ s (ऋणात्मक मूल अस्वीकार)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the time to reach the top only.",
+              "hi": "यह केवल शिखर तक पहुँचने का समय है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is when it is back level with the top of the tower.",
+              "hi": "यह तब है जब यह टावर की चोटी के स्तर पर लौटती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not a root of the equation.",
+              "hi": "यह समीकरण का मूल नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.kinematic-equations.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.kinematic-equations.core.equations-of-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A car accelerates uniformly from rest at 2 m/s² for 10 s. The distance it covers is",
+        "hi": "एक कार विराम से 2 m/s² से 10 s तक एकसमान रूप से त्वरित होती है। वह दूरी तय करती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "100 m",
+            "hi": "100 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "200 m",
+            "hi": "200 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "20 m",
+            "hi": "20 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "50 m",
+            "hi": "50 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$x = \\frac{1}{2}at^2$",
+          "hi": "$x = \\frac{1}{2}at^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Half of a times t squared.",
+          "hi": "a गुणा t वर्ग का आधा।"
+        },
+        "steps": [
+          {
+            "en": "$x = \\frac{1}{2} \\times 2 \\times 10^2 = 100$ m",
+            "hi": "$x = \\frac{1}{2} \\times 2 \\times 10^2 = 100$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The half was dropped.",
+              "hi": "आधा छूट गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the final velocity in m/s.",
+              "hi": "यह m/s में अंतिम वेग है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "t was not squared.",
+              "hi": "t का वर्ग नहीं लिया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

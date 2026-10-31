@@ -1,0 +1,315 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "phy.motion-straight-line.relative-velocity-1d:deep_dive",
+  "topic": "phy.motion-straight-line.relative-velocity-1d",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Velocity depends on the observer",
+        "hi": "वेग प्रेक्षक पर निर्भर है"
+      },
+      "subtopic": "phy.motion-straight-line.relative-velocity-1d.core",
+      "card_ids": [
+        "phy.motion-straight-line.relative-velocity-1d:dd:01",
+        "phy.motion-straight-line.relative-velocity-1d:dd:02",
+        "phy.motion-straight-line.relative-velocity-1d:dd:03",
+        "phy.motion-straight-line.relative-velocity-1d:dd:04",
+        "phy.motion-straight-line.relative-velocity-1d:dd:05",
+        "phy.motion-straight-line.relative-velocity-1d:dd:06",
+        "phy.motion-straight-line.relative-velocity-1d:dd:07",
+        "phy.motion-straight-line.relative-velocity-1d:dd:08"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The train beside yours",
+        "hi": "आपकी बगल वाली रेलगाड़ी"
+      },
+      "body": {
+        "en": "Your train and the one on the next track leave together, side by side. Looking across, the other train seems to crawl, though both are racing past the fields. Its velocity depends on whether you measure it from the ground or from your own window.",
+        "hi": "आपकी रेलगाड़ी और बगल की पटरी वाली रेलगाड़ी साथ-साथ चल पड़ती हैं। खिड़की से देखने पर दूसरी रेलगाड़ी धीरे खिसकती लगती है, यद्यपि दोनों खेतों के पास से तेज़ी से निकल रही हैं। उसका वेग इस पर निर्भर है कि आप उसे धरती से माप रहे हैं या अपनी खिड़की से।"
+      },
+      "media": "img.motion-straight-line.two-trains"
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Relative velocity",
+        "hi": "आपेक्षिक वेग"
+      },
+      "body": {
+        "en": "A velocity is always stated with respect to a reference frame, usually the ground. If two objects 1 and 2 have velocities $v_1$ and $v_2$ with respect to the same frame, the velocity of object 1 relative to object 2 is $v_{12} = v_1 - v_2$: the velocity object 1 appears to have to an observer riding on object 2. Likewise $v_{21} = v_2 - v_1 = -v_{12}$.\n\nDo not confuse this with an object that is given two velocities at once, whose resultant is $v = v_1 + v_2$. A person walking at 2 m/s towards the back of a train moving at 10 m/s east has a velocity of 10 - 2 = 8 m/s east with respect to the ground.",
+        "hi": "वेग सदा किसी निर्देश तंत्र, सामान्यतः धरती, के सापेक्ष बताया जाता है। यदि दो वस्तुओं 1 और 2 के एक ही तंत्र के सापेक्ष वेग $v_1$ और $v_2$ हों, तो वस्तु 2 के सापेक्ष वस्तु 1 का वेग $v_{12} = v_1 - v_2$ है: वस्तु 2 पर बैठे प्रेक्षक को वस्तु 1 का जो वेग दिखता है। इसी प्रकार $v_{21} = v_2 - v_1 = -v_{12}$।\n\nइसे उस वस्तु से न मिलाइए जिसे एक साथ दो वेग मिले हों, जिसका परिणामी $v = v_1 + v_2$ है। 10 m/s से पूर्व की ओर चलती रेलगाड़ी में पीछे की ओर 2 m/s से चलते व्यक्ति का धरती के सापेक्ष वेग 10 - 2 = 8 m/s पूर्व है।"
+      },
+      "media": "img.motion-straight-line.two-trains",
+      "highlights": [
+        {
+          "term": {
+            "en": "relative velocity",
+            "hi": "आपेक्षिक वेग"
+          },
+          "definition": {
+            "en": "velocity as seen from another moving object",
+            "hi": "किसी दूसरी गतिमान वस्तु से देखा गया वेग"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Points to Ponder 5; OpenStax University Physics Vol 1 §4.5 (reference frames, Eq. 4.33)"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Relative velocity",
+        "hi": "आपेक्षिक वेग"
+      },
+      "latex": "v_{12} = v_1 - v_2",
+      "symbols": [
+        {
+          "symbol": "v_{12}",
+          "meaning": {
+            "en": "velocity of 1 relative to 2",
+            "hi": "2 के सापेक्ष 1 का वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v_1",
+          "meaning": {
+            "en": "velocity of 1 in the common frame",
+            "hi": "उभयनिष्ठ तंत्र में 1 का वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v_2",
+          "meaning": {
+            "en": "velocity of 2 in the common frame",
+            "hi": "उभयनिष्ठ तंत्र में 2 का वेग"
+          },
+          "unit": "m/s"
+        }
+      ],
+      "spoken": {
+        "en": "v one two equals v one minus v two",
+        "hi": "v एक दो बराबर v एक घटा v दो"
+      },
+      "conditions": {
+        "en": "Both velocities must be measured from the same frame, with signs.",
+        "hi": "दोनों वेग एक ही तंत्र से, चिह्न सहित, मापे होने चाहिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Points to Ponder 5"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Same way or opposite ways",
+        "hi": "एक ही दिशा या विपरीत दिशाएँ"
+      },
+      "body": {
+        "en": "Put directions in with signs. Moving the same way, the relative speed is the difference of the speeds; moving towards each other, the signs are opposite and the relative speed is the sum.\n\nSo two objects closing a gap from opposite ends meet after a time equal to the gap divided by the sum of their speeds. An old Indian problem from the Ganitakaumudi (14th century CE): two postmen 210 yojanas apart walk towards each other at 9 and 5 yojanas a day; together they close 14 yojanas a day and meet after 210 / 14 = 15 days.",
+        "hi": "दिशाएँ चिह्नों से रखिए। एक ही ओर चलते हुए आपेक्षिक चाल चालों का अंतर है; एक-दूसरे की ओर चलते हुए चिह्न विपरीत हैं और आपेक्षिक चाल चालों का योग है।\n\nइसलिए विपरीत सिरों से दूरी घटाती दो वस्तुएँ उस समय बाद मिलती हैं जो दूरी बटा उनकी चालों के योग के बराबर है। गणितकौमुदी (14वीं शताब्दी ई.) का एक पुराना भारतीय प्रश्न: 210 योजन दूर दो डाकिये एक-दूसरे की ओर प्रतिदिन 9 और 5 योजन चलते हैं; साथ मिलकर वे प्रतिदिन 14 योजन दूरी घटाते हैं और 210 / 14 = 15 दिन बाद मिलते हैं।"
+      },
+      "media": "img.motion-straight-line.two-trains",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.3, Example 4.1; NCERT keph103 Points to Ponder 5"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Train A runs east at 20 m/s and train B runs east at 15 m/s on a parallel track. Find the velocity of A relative to B and of B relative to A. What is the velocity of A relative to B if B instead runs west at 15 m/s?",
+        "hi": "रेलगाड़ी A पूर्व की ओर 20 m/s से और रेलगाड़ी B समांतर पटरी पर पूर्व की ओर 15 m/s से चल रही है। B के सापेक्ष A का और A के सापेक्ष B का वेग ज्ञात कीजिए। यदि B इसके बजाय पश्चिम की ओर 15 m/s से चले तो B के सापेक्ष A का वेग क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Take east as positive.",
+          "hi": "पूर्व को धनात्मक लीजिए।"
+        },
+        {
+          "en": "$v_{AB} = 20 - 15 = +5$ m/s (east); $v_{BA} = 15 - 20 = -5$ m/s (west).",
+          "hi": "$v_{AB} = 20 - 15 = +5$ m/s (पूर्व); $v_{BA} = 15 - 20 = -5$ m/s (पश्चिम)।"
+        },
+        {
+          "en": "If B runs west: $v_{AB} = 20 - (-15) = +35$ m/s.",
+          "hi": "यदि B पश्चिम चले: $v_{AB} = 20 - (-15) = +35$ m/s।"
+        }
+      ],
+      "answer": {
+        "en": "5 m/s east; 5 m/s west; 35 m/s east",
+        "hi": "5 m/s पूर्व; 5 m/s पश्चिम; 35 m/s पूर्व"
+      },
+      "answer_value": {
+        "value": 35,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting the sign of a velocity pointing the other way.",
+        "hi": "दूसरी ओर के वेग का चिह्न भूल जाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Points to Ponder 5"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Train A, 200 m long, moving at 25 m/s, overtakes train B, 300 m long, moving at 15 m/s in the same direction on a parallel track. How long does A take to pass B completely?",
+        "hi": "200 m लंबी रेलगाड़ी A, 25 m/s से चलते हुए, समांतर पटरी पर उसी दिशा में 15 m/s से चलती 300 m लंबी रेलगाड़ी B को पार करती है। A को B को पूरी तरह पार करने में कितना समय लगता है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Watch from B: A moves at $25 - 15 = 10$ m/s.",
+          "hi": "B से देखिए: A, $25 - 15 = 10$ m/s से चलती है।"
+        },
+        {
+          "en": "A must gain both lengths, $200 + 300 = 500$ m.",
+          "hi": "A को दोनों लंबाइयाँ, $200 + 300 = 500$ m, पार करनी हैं।"
+        },
+        {
+          "en": "$t = \\frac{500}{10} = 50$ s",
+          "hi": "$t = \\frac{500}{10} = 50$ s"
+        }
+      ],
+      "answer": {
+        "en": "50 s",
+        "hi": "50 s"
+      },
+      "answer_value": {
+        "value": 50,
+        "unit": "s",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Using only one train's length, or the ground speed of A.",
+        "hi": "केवल एक रेलगाड़ी की लंबाई, या A की धरती के सापेक्ष चाल लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Points to Ponder 5"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.relative-velocity-1d.0001"
+    },
+    {
+      "id": "phy.motion-straight-line.relative-velocity-1d:dd:08",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$v_{12} = v_1 - v_2$, both from the same frame, with signs.",
+          "hi": "$v_{12} = v_1 - v_2$, दोनों एक ही तंत्र से, चिह्न सहित।"
+        },
+        {
+          "en": "Same direction: speeds subtract. Opposite directions: speeds add.",
+          "hi": "एक ही दिशा: चालें घटती हैं। विपरीत दिशाएँ: चालें जुड़ती हैं।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,699 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "phy.motion-straight-line.position-velocity:deep_dive",
+  "topic": "phy.motion-straight-line.position-velocity",
+  "mode": "deep_dive",
+  "estimated_minutes": 10,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-straight-line.position-velocity.core.frame-of-reference",
+    "phy.motion-straight-line.position-velocity.core.speed-velocity"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Where is it?",
+        "hi": "वस्तु कहाँ है?"
+      },
+      "subtopic": "phy.motion-straight-line.position-velocity.core",
+      "card_ids": [
+        "phy.motion-straight-line.position-velocity:dd:01",
+        "phy.motion-straight-line.position-velocity:dd:02",
+        "phy.motion-straight-line.position-velocity:dd:03",
+        "phy.motion-straight-line.position-velocity:dd:04",
+        "phy.motion-straight-line.position-velocity:dd:05",
+        "phy.motion-straight-line.position-velocity:dd:06",
+        "phy.motion-straight-line.position-velocity:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "How fast, and which way",
+        "hi": "कितनी तेज़, और किस ओर"
+      },
+      "subtopic": "phy.motion-straight-line.position-velocity.core",
+      "card_ids": [
+        "phy.motion-straight-line.position-velocity:dd:08",
+        "phy.motion-straight-line.position-velocity:dd:09",
+        "phy.motion-straight-line.position-velocity:dd:10",
+        "phy.motion-straight-line.position-velocity:dd:11",
+        "phy.motion-straight-line.position-velocity:dd:12"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Velocity at an instant",
+        "hi": "किसी क्षण का वेग"
+      },
+      "subtopic": "phy.motion-straight-line.position-velocity.core",
+      "card_ids": [
+        "phy.motion-straight-line.position-velocity:dd:13",
+        "phy.motion-straight-line.position-velocity:dd:14",
+        "phy.motion-straight-line.position-velocity:dd:15",
+        "phy.motion-straight-line.position-velocity:dd:16",
+        "phy.motion-straight-line.position-velocity:dd:17"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The flag at the start",
+        "hi": "शुरुआत का झंडा"
+      },
+      "body": {
+        "en": "A runner sets off down a straight track from a small flag. Ask where she is, and the useful answer is not 'over there' but 'so many metres from the flag, in this direction'. The flag is the fixed point every position is measured from.",
+        "hi": "एक धाविका एक छोटे झंडे से सीधे ट्रैक पर दौड़ना शुरू करती है। पूछिए कि वह कहाँ है, तो काम का उत्तर 'वहाँ' नहीं, बल्कि 'झंडे से इतने मीटर, इस दिशा में' है। झंडा वह स्थिर बिंदु है जिससे हर स्थिति मापी जाती है।"
+      },
+      "media": "img.motion-straight-line.athlete-track"
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Position needs a reference point",
+        "hi": "स्थिति के लिए निर्देश बिंदु चाहिए"
+      },
+      "body": {
+        "en": "To describe the position of an object we first fix a reference point. The distance and the direction of the object from that point, at an instant, give its position at that instant. If the position with respect to the reference point changes with time, the object is in motion; if it does not, the object is at rest.\n\nOn a straight line the reference point is the origin O. Positions to the right of O are usually taken as positive and those to the left as negative. Where the origin goes and which way is positive is our choice, but it must be stated before signs are given to displacement, velocity or acceleration, and it must not change in the middle of a problem.\n\nMotion along a straight line is called rectilinear motion. An object can be treated as a point object when its size is much smaller than the distance it moves in a reasonable time.",
+        "hi": "किसी वस्तु की स्थिति बताने के लिए पहले एक निर्देश बिंदु तय करते हैं। किसी क्षण उस बिंदु से वस्तु की दूरी और दिशा उस क्षण उसकी स्थिति बताती है। यदि निर्देश बिंदु के सापेक्ष स्थिति समय के साथ बदलती है तो वस्तु गतिमान है; नहीं बदलती तो वस्तु विरामावस्था में है।\n\nसरल रेखा पर निर्देश बिंदु मूल बिंदु O होता है। O के दाईं ओर की स्थितियों को सामान्यतः धनात्मक और बाईं ओर की स्थितियों को ऋणात्मक लिया जाता है। मूल बिंदु कहाँ हो और कौन-सी दिशा धनात्मक हो, यह हमारी पसंद है, पर विस्थापन, वेग या त्वरण को चिह्न देने से पहले इसे बताना होता है, और प्रश्न हल करते समय बीच में इसे बदला नहीं जाता।\n\nसरल रेखा पर गति को सरल रेखीय गति कहते हैं। किसी वस्तु को बिंदु वस्तु माना जा सकता है जब उसका आकार उस दूरी से बहुत छोटा हो जो वह उचित समय में तय करती है।"
+      },
+      "media": "img.motion-straight-line.athlete-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "reference point",
+            "hi": "निर्देश बिंदु"
+          },
+          "definition": {
+            "en": "the fixed point positions are measured from",
+            "hi": "वह स्थिर बिंदु जिससे स्थितियाँ मापी जाती हैं"
+          }
+        },
+        {
+          "term": {
+            "en": "rectilinear motion",
+            "hi": "सरल रेखीय गति"
+          },
+          "definition": {
+            "en": "motion along a straight line",
+            "hi": "सरल रेखा पर गति"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.1, §4.1.4 (Example 4.4); NCERT keph102 §2.1, Summary 1, Points to Ponder 1"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Path length and displacement",
+        "hi": "पथ-लंबाई और विस्थापन"
+      },
+      "body": {
+        "en": "Displacement is the net change in position between two instants. Its magnitude is the distance between the two positions, and its direction points from the first position to the second. The total distance travelled, the path length, is only a number with a unit. Both are measured in metres.\n\nA runner starts at O, runs 100 m to A, then turns and runs back 60 m to B. Her path length is 160 m, but her displacement is only 40 m in the positive direction.\n\nPath length depends on the actual path; displacement depends only on the start and end. The two are equal only if the object never changes direction; otherwise the path length is greater.",
+        "hi": "दो क्षणों के बीच स्थिति में कुल परिवर्तन विस्थापन है। इसका परिमाण दोनों स्थितियों के बीच की दूरी है, और इसकी दिशा पहली स्थिति से दूसरी स्थिति की ओर होती है। कुल तय की गई दूरी, यानी पथ-लंबाई, केवल मात्रक सहित एक संख्या है। दोनों मीटर में मापे जाते हैं।\n\nएक धाविका O से चलकर 100 m दूर A तक दौड़ती है, फिर मुड़कर 60 m वापस B तक आती है। उसकी पथ-लंबाई 160 m है, पर उसका विस्थापन धनात्मक दिशा में केवल 40 m है।\n\nपथ-लंबाई वास्तविक पथ पर निर्भर करती है; विस्थापन केवल आरंभ और अंत पर। दोनों तभी बराबर होते हैं जब वस्तु कभी दिशा न बदले; अन्यथा पथ-लंबाई अधिक होती है।"
+      },
+      "media": "img.motion-straight-line.athlete-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "displacement",
+            "hi": "विस्थापन"
+          },
+          "definition": {
+            "en": "net change in position, with direction",
+            "hi": "स्थिति में कुल परिवर्तन, दिशा सहित"
+          }
+        },
+        {
+          "term": {
+            "en": "path length",
+            "hi": "पथ-लंबाई"
+          },
+          "definition": {
+            "en": "total distance travelled along the path",
+            "hi": "पथ पर तय की गई कुल दूरी"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.2, Fig. 4.4; NCERT keph103 Points to Ponder 1"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A boy walks 300 m east along a straight road from his home to a shop, then 120 m back west to a friend's house. Find his path length and his displacement from home.",
+        "hi": "एक लड़का सीधी सड़क पर अपने घर से 300 m पूर्व में एक दुकान तक जाता है, फिर 120 m पश्चिम की ओर लौटकर एक मित्र के घर पहुँचता है। उसकी पथ-लंबाई और घर से उसका विस्थापन ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Take home as the origin and east as positive.",
+          "hi": "घर को मूल बिंदु और पूर्व को धनात्मक मानिए।"
+        },
+        {
+          "en": "Path length $= 300 + 120 = 420$ m.",
+          "hi": "पथ-लंबाई $= 300 + 120 = 420$ m।"
+        },
+        {
+          "en": "Final position $= 300 - 120 = 180$ m, so the displacement is 180 m east.",
+          "hi": "अंतिम स्थिति $= 300 - 120 = 180$ m, अतः विस्थापन 180 m पूर्व है।"
+        }
+      ],
+      "answer": {
+        "en": "Path length 420 m; displacement 180 m east",
+        "hi": "पथ-लंबाई 420 m; विस्थापन 180 m पूर्व"
+      },
+      "answer_value": {
+        "value": 180,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.5
+        }
+      },
+      "common_trap": {
+        "en": "Adding the two walks for the displacement.",
+        "hi": "विस्थापन के लिए दोनों दूरियाँ जोड़ देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.2"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:05",
+      "type": "interactive",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Path length, displacement or both?",
+        "hi": "पथ-लंबाई, विस्थापन या दोनों?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Needs a direction to be complete",
+              "hi": "पूरा होने के लिए दिशा चाहिए"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Is zero when the object comes back to its start",
+              "hi": "वस्तु आरंभ पर लौट आए तो शून्य होता है"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Is only a number with a unit",
+              "hi": "केवल मात्रक सहित एक संख्या है"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Is measured in metres",
+              "hi": "मीटर में मापा जाता है"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "path",
+            "label": {
+              "en": "Path length",
+              "hi": "पथ-लंबाई"
+            }
+          },
+          {
+            "id": "disp",
+            "label": {
+              "en": "Displacement",
+              "hi": "विस्थापन"
+            }
+          },
+          {
+            "id": "both",
+            "label": {
+              "en": "Both",
+              "hi": "दोनों"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "disp"
+          },
+          {
+            "item": "i2",
+            "bin": "disp"
+          },
+          {
+            "item": "i3",
+            "bin": "path"
+          },
+          {
+            "item": "i4",
+            "bin": "both"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Displacement has a direction and can be zero; path length is a number that only grows.",
+          "hi": "सही। विस्थापन की दिशा होती है और यह शून्य हो सकता है; पथ-लंबाई एक संख्या है जो केवल बढ़ती है।"
+        },
+        "wrong": {
+          "en": "Displacement looks only at the start and the end.",
+          "hi": "विस्थापन केवल आरंभ और अंत को देखता है।"
+        }
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.position-velocity.0001"
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.frame-of-reference"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Position: distance and direction from a chosen reference point.",
+          "hi": "स्थिति: चुने हुए निर्देश बिंदु से दूरी और दिशा।"
+        },
+        {
+          "en": "Displacement: net change in position. Path length: total distance travelled.",
+          "hi": "विस्थापन: स्थिति में कुल परिवर्तन। पथ-लंबाई: तय की गई कुल दूरी।"
+        },
+        {
+          "en": "Path length is never less than the magnitude of displacement.",
+          "hi": "पथ-लंबाई कभी विस्थापन के परिमाण से कम नहीं होती।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Average speed and average velocity",
+        "hi": "औसत चाल और औसत वेग"
+      },
+      "body": {
+        "en": "Average speed is the total distance travelled divided by the time interval. It has no direction.\n\nAverage velocity is the displacement divided by the time interval. On a straight line its direction is that of the displacement, shown by a + or - sign. Both are measured in metre per second (m/s), and often in km/h.\n\nA swimmer goes from one end of a 25 m pool to the other and back in 50 s. His average speed is 50 m / 50 s = 1 m/s, but his displacement is zero, so his average velocity is 0 m/s. Over any interval the average speed is greater than or equal to the magnitude of the average velocity; they are equal only if the object does not turn back.",
+        "hi": "औसत चाल कुल तय की गई दूरी को समय अंतराल से भाग देने पर मिलती है। इसकी कोई दिशा नहीं होती।\n\nऔसत वेग विस्थापन को समय अंतराल से भाग देने पर मिलता है। सरल रेखा पर इसकी दिशा विस्थापन की दिशा होती है, जिसे + या - चिह्न से दिखाते हैं। दोनों मीटर प्रति सेकंड (m/s) में, और अक्सर km/h में, मापे जाते हैं।\n\nएक तैराक 25 m के तरणताल के एक सिरे से दूसरे सिरे तक जाकर 50 s में लौट आता है। उसकी औसत चाल 50 m / 50 s = 1 m/s है, पर उसका विस्थापन शून्य है, इसलिए उसका औसत वेग 0 m/s है। किसी भी अंतराल में औसत चाल औसत वेग के परिमाण से अधिक या उसके बराबर होती है; दोनों तभी बराबर होते हैं जब वस्तु वापस न मुड़े।"
+      },
+      "media": "img.motion-straight-line.swimming-pool",
+      "highlights": [
+        {
+          "term": {
+            "en": "average speed",
+            "hi": "औसत चाल"
+          },
+          "definition": {
+            "en": "path length / time interval",
+            "hi": "पथ-लंबाई / समय अंतराल"
+          }
+        },
+        {
+          "term": {
+            "en": "average velocity",
+            "hi": "औसत वेग"
+          },
+          "definition": {
+            "en": "displacement / time interval",
+            "hi": "विस्थापन / समय अंतराल"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.3, Example 4.2; NCERT keph102 Summary 1"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Uniform motion and the position-time graph",
+        "hi": "एकसमान गति और स्थिति-समय ग्राफ़"
+      },
+      "body": {
+        "en": "An object moving on a straight line is in uniform motion if it covers equal distances in equal intervals of time, for every choice of interval; it then moves at constant speed. Otherwise the motion is non-uniform. For uniform motion the velocity at every instant equals the average velocity.\n\nOn a position-time (x-t) graph, the slope of the line joining two points is the average velocity between those instants. A straight, sloping x-t graph means constant velocity; a steeper line means a larger velocity. A curved x-t graph means the velocity is changing. A line parallel to the time axis means the object stays at one position: it is at rest.",
+        "hi": "सरल रेखा पर चलती वस्तु एकसमान गति में है यदि वह समान समय अंतरालों में, हर तरह के अंतराल के लिए, समान दूरियाँ तय करे; तब वह नियत चाल से चलती है। अन्यथा गति असमान है। एकसमान गति में हर क्षण का वेग औसत वेग के बराबर होता है।\n\nस्थिति-समय (x-t) ग्राफ़ पर दो बिंदुओं को जोड़ने वाली रेखा की प्रवणता उन क्षणों के बीच का औसत वेग है। सीधी, झुकी हुई x-t रेखा का अर्थ नियत वेग है; अधिक खड़ी रेखा का अर्थ अधिक वेग है। वक्र x-t ग्राफ़ का अर्थ है कि वेग बदल रहा है। समय-अक्ष के समांतर रेखा का अर्थ है कि वस्तु एक ही स्थिति पर है: वह विरामावस्था में है।"
+      },
+      "media": "img.motion-straight-line.toy-car-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "uniform motion",
+            "hi": "एकसमान गति"
+          },
+          "definition": {
+            "en": "equal distances in equal time intervals",
+            "hi": "समान समय अंतरालों में समान दूरियाँ"
+          }
+        },
+        {
+          "term": {
+            "en": "slope",
+            "hi": "प्रवणता"
+          },
+          "definition": {
+            "en": "rise over run of a line on the graph",
+            "hi": "ग्राफ़ पर रेखा की ऊर्ध्व वृद्धि बटा क्षैतिज वृद्धि"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.3, §4.2.2, Examples 4.6 and 4.7; NCERT keph102 §2.2"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:10",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A cyclist rides 6 km east in 20 min along a straight road, then 2 km west in the next 10 min. Find her average speed and average velocity for the whole 30 min, in km/h.",
+        "hi": "एक साइकिल सवार सीधी सड़क पर 20 min में 6 km पूर्व जाती है, फिर अगले 10 min में 2 km पश्चिम आती है। पूरे 30 min के लिए उसकी औसत चाल और औसत वेग km/h में ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Time $= 30$ min $= 0.5$ h.",
+          "hi": "समय $= 30$ min $= 0.5$ h।"
+        },
+        {
+          "en": "Average speed $= \\frac{6 + 2}{0.5} = 16$ km/h.",
+          "hi": "औसत चाल $= \\frac{6 + 2}{0.5} = 16$ km/h।"
+        },
+        {
+          "en": "Displacement $= 6 - 2 = 4$ km east, so average velocity $= \\frac{4}{0.5} = 8$ km/h east.",
+          "hi": "विस्थापन $= 6 - 2 = 4$ km पूर्व, अतः औसत वेग $= \\frac{4}{0.5} = 8$ km/h पूर्व।"
+        }
+      ],
+      "answer": {
+        "en": "16 km/h; 8 km/h east",
+        "hi": "16 km/h; 8 km/h पूर्व"
+      },
+      "answer_value": {
+        "value": 16,
+        "unit": "km/h",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Using the path length for the average velocity.",
+        "hi": "औसत वेग के लिए पथ-लंबाई ले लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.3"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:11",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.position-velocity.0002"
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:12",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Average speed = path length / time; average velocity = displacement / time.",
+          "hi": "औसत चाल = पथ-लंबाई / समय; औसत वेग = विस्थापन / समय।"
+        },
+        {
+          "en": "Slope of the x-t graph gives velocity; a flat line means rest.",
+          "hi": "x-t ग्राफ़ की प्रवणता वेग देती है; समतल रेखा का अर्थ विराम है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:13",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Instantaneous velocity",
+        "hi": "तात्क्षणिक वेग"
+      },
+      "body": {
+        "en": "Average velocity tells how fast an object moved over an interval, not how fast it moves at each instant. The velocity at an instant is the limit of the average velocity as the interval $\\Delta t$ becomes infinitesimally small: $v = \\lim_{\\Delta t \\to 0} \\frac{\\Delta x}{\\Delta t} = \\frac{dx}{dt}$. It is the rate of change of position at that instant, and on the x-t graph it is the slope of the tangent at that point.\n\nFor a car with $x = 0.08\\,t^3$ (x in m, t in s), NCERT works out the average velocity over shorter and shorter intervals centred at 4 s, from 2.0 s down to 0.010 s; the values settle at 3.84 m/s, the velocity at 4 s.\n\nInstantaneous speed is the magnitude of the velocity: +24.0 m/s and -24.0 m/s both mean a speed of 24.0 m/s. Unlike the averages, instantaneous speed always equals the magnitude of instantaneous velocity.",
+        "hi": "औसत वेग बताता है कि वस्तु किसी अंतराल में कितनी तेज़ चली, यह नहीं कि हर क्षण कितनी तेज़ चलती है। किसी क्षण का वेग औसत वेग की वह सीमा है जब अंतराल $\\Delta t$ अत्यल्प हो जाए: $v = \\lim_{\\Delta t \\to 0} \\frac{\\Delta x}{\\Delta t} = \\frac{dx}{dt}$। यह उस क्षण स्थिति परिवर्तन की दर है, और x-t ग्राफ़ पर उस बिंदु पर खींची स्पर्श रेखा की प्रवणता है।\n\n$x = 0.08\\,t^3$ (x मीटर में, t सेकंड में) वाली कार के लिए NCERT 4 s पर केंद्रित छोटे से छोटे अंतरालों, 2.0 s से 0.010 s तक, पर औसत वेग निकालती है; मान 3.84 m/s पर स्थिर हो जाते हैं, जो 4 s पर वेग है।\n\nतात्क्षणिक चाल वेग का परिमाण है: +24.0 m/s और -24.0 m/s दोनों का अर्थ 24.0 m/s की चाल है। औसत राशियों के विपरीत, तात्क्षणिक चाल सदा तात्क्षणिक वेग के परिमाण के बराबर होती है।"
+      },
+      "media": "img.motion-straight-line.toy-car-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "instantaneous velocity",
+            "hi": "तात्क्षणिक वेग"
+          },
+          "definition": {
+            "en": "dx/dt: slope of the tangent to the x-t graph",
+            "hi": "dx/dt: x-t ग्राफ़ की स्पर्श रेखा की प्रवणता"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Fig. 2.1, Table 2.1"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:14",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Instantaneous velocity",
+        "hi": "तात्क्षणिक वेग"
+      },
+      "latex": "v = \\lim_{\\Delta t \\to 0} \\frac{\\Delta x}{\\Delta t} = \\frac{dx}{dt}",
+      "symbols": [
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "velocity at the instant",
+            "hi": "उस क्षण का वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "x",
+          "meaning": {
+            "en": "position",
+            "hi": "स्थिति"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "t",
+          "meaning": {
+            "en": "time",
+            "hi": "समय"
+          },
+          "unit": "s"
+        }
+      ],
+      "conditions": {
+        "en": "Exact for any motion; not limited to constant acceleration.",
+        "hi": "हर गति के लिए यथार्थ; नियत त्वरण तक सीमित नहीं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 2.1, Points to Ponder 6"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:15",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "An object moves along the x-axis with $x = a + bt^2$, where $a = 8.5$ m and $b = 2.5$ m/s². Find its velocity at $t = 0$ s and at $t = 2.0$ s, and its average velocity between $t = 2.0$ s and $t = 4.0$ s.",
+        "hi": "एक वस्तु x-अक्ष पर $x = a + bt^2$ के अनुसार चलती है, जहाँ $a = 8.5$ m और $b = 2.5$ m/s² है। $t = 0$ s और $t = 2.0$ s पर इसका वेग, तथा $t = 2.0$ s और $t = 4.0$ s के बीच इसका औसत वेग ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$v = \\frac{dx}{dt} = 2bt = 5.0\\,t$ m/s",
+          "hi": "$v = \\frac{dx}{dt} = 2bt = 5.0\\,t$ m/s"
+        },
+        {
+          "en": "At $t = 0$: $v = 0$. At $t = 2.0$ s: $v = 10$ m/s.",
+          "hi": "$t = 0$ पर $v = 0$। $t = 2.0$ s पर $v = 10$ m/s।"
+        },
+        {
+          "en": "Average velocity $= \\frac{x(4.0) - x(2.0)}{4.0 - 2.0} = \\frac{16b - 4b}{2.0} = 6.0\\,b = 15$ m/s",
+          "hi": "औसत वेग $= \\frac{x(4.0) - x(2.0)}{4.0 - 2.0} = \\frac{16b - 4b}{2.0} = 6.0\\,b = 15$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "0 and 10 m/s; average 15 m/s",
+        "hi": "0 और 10 m/s; औसत 15 m/s"
+      },
+      "answer_value": {
+        "value": 15,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Dividing x by t to get the velocity at an instant.",
+        "hi": "किसी क्षण का वेग पाने के लिए x को t से भाग देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 2.1"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:16",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-straight-line.position-velocity.0003"
+    },
+    {
+      "id": "phy.motion-straight-line.position-velocity:dd:17",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.position-velocity.core.speed-velocity"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$v = dx/dt$: the slope of the tangent to the x-t graph.",
+          "hi": "$v = dx/dt$: x-t ग्राफ़ की स्पर्श रेखा की प्रवणता।"
+        },
+        {
+          "en": "Speed is the magnitude of velocity.",
+          "hi": "चाल वेग का परिमाण है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

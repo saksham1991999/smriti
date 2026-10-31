@@ -1,0 +1,331 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as WebP (3:2 at 1536x1024); originals kept outside the repo. Sim requests are open for sim-builder (status requested, not built); until a sim is approved the card shows its fallback text and image.",
+  "requests": [
+    {
+      "id": "img.motion-straight-line.athlete-track",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a girl running along one lane of a long straight running track, seen from the side; a small flag on a pole stands beside the track at the point where she started, behind her",
+      "must_show": [
+        "one runner on a straight track",
+        "a small flag marking the starting point behind her"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "crowds",
+        "signboards",
+        "distance markings"
+      ],
+      "alt": {
+        "en": "A girl running along a straight blue running track, seen from the side, with a small yellow flag on a pole behind her at the starting line.",
+        "hi": "सीधे नीले रनिंग ट्रैक पर दौड़ती एक लड़की, बगल से दिखती हुई, और उसके पीछे आरंभ रेखा पर खंभे पर लगा एक छोटा पीला झंडा।"
+      },
+      "used_by": [
+        "cs.phy.motion-straight-line.position-velocity",
+        "phy.motion-straight-line.position-velocity:dd:01",
+        "phy.motion-straight-line.position-velocity:dd:02",
+        "phy.motion-straight-line.position-velocity:dd:03"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "a4fa1375725d0c3056d80ac448a612bdbbb32a70434937835e9134ec53fc0985",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 37738,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-straight-line.swimming-pool",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a swimmer in a single lane of an outdoor swimming pool, seen from above at an angle, turning at the far wall to swim back towards the near end where he started",
+      "must_show": [
+        "one swimmer",
+        "one pool lane",
+        "the swimmer turning at the far wall"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "crowds",
+        "signboards",
+        "lane numbers"
+      ],
+      "alt": {
+        "en": "A swimmer in one lane of an outdoor swimming pool, seen from behind, swimming away towards the far wall between two lane ropes.",
+        "hi": "खुले तरणताल की एक लेन में एक तैराक, पीछे से दिखता हुआ, दो लेन रस्सियों के बीच दूर की दीवार की ओर तैरता हुआ।"
+      },
+      "used_by": [
+        "phy.motion-straight-line.position-velocity:dd:08"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "7d60ceab1e132d7c2364c329064ebcc5b386d102b2c2d42537ed4d04a6d17e87",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 76156,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-straight-line.bus-highway",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a single blue bus driving along a long straight empty highway through green fields, seen from the side, with the road stretching ahead to the horizon",
+      "must_show": [
+        "one bus",
+        "a long straight road"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "other vehicles",
+        "signboards",
+        "people on the road"
+      ],
+      "alt": {
+        "en": "A blue bus on a long straight empty highway through green fields, the road stretching to the horizon.",
+        "hi": "हरे खेतों के बीच एक लंबे, सीधे, खाली राजमार्ग पर एक नीली बस, सड़क क्षितिज तक फैली हुई।"
+      },
+      "used_by": [
+        "phy.motion-straight-line.acceleration:dd:01",
+        "phy.motion-straight-line.acceleration:dd:02",
+        "phy.motion-straight-line.kinematic-equations:dd:01"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "5935abdc9c027c563b36508b27114f8d7480c17ea0cc1605f9b1e5c043340e97",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 59360,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-straight-line.ball-rooftop",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a child standing on the flat rooftop of a tall building, having just thrown a red ball straight up; the ball is high above the child's head, and the ground is far below beside the building",
+      "must_show": [
+        "a child on a rooftop",
+        "a red ball straight above the child",
+        "the ground far below"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "signboards",
+        "other balls"
+      ],
+      "alt": {
+        "en": "A child standing on the flat roof of a tall building with one arm raised, and a red ball high in the air straight above.",
+        "hi": "एक ऊँचे भवन की समतल छत पर एक हाथ उठाए खड़ा बच्चा, और ठीक ऊपर हवा में ऊँचाई पर एक लाल गेंद।"
+      },
+      "used_by": [
+        "cs.phy.motion-straight-line.kinematic-equations",
+        "phy.motion-straight-line.acceleration:dd:03",
+        "phy.motion-straight-line.kinematic-equations:dd:08",
+        "phy.motion-straight-line.kinematic-equations:dd:09"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e7e805363fbdfc68697aebac9503a93ea55631743e8f474566bf722a2cfe3a0d",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 40276,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-straight-line.ruler-catch",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "one hand holding a plain wooden strip by its top end, hanging straight down, and below it another hand with thumb and forefinger held open and ready around the bottom end of the strip, as if to catch it when it is dropped",
+      "must_show": [
+        "a plain wooden strip hanging vertically",
+        "a hand holding the top",
+        "an open thumb and forefinger at the bottom"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "scale markings",
+        "faces"
+      ],
+      "alt": {
+        "en": "One hand holding a plain wooden strip by its top end so it hangs straight down, and another hand below with thumb and forefinger open on either side of its bottom end, ready to catch it.",
+        "hi": "एक हाथ एक सादी लकड़ी की पट्टी को ऊपरी सिरे से पकड़े है जिससे वह सीधी नीचे लटकी है, और नीचे दूसरा हाथ अंगूठा और तर्जनी खोले उसके निचले सिरे के दोनों ओर पकड़ने को तैयार है।"
+      },
+      "used_by": [
+        "phy.motion-straight-line.kinematic-equations:dd:12",
+        "phy.motion-straight-line.kinematic-equations:dd:14"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "724657e2a877f006f431730acf1ed040ec9ce1e9e47f958c2e07bd20fe0b861a",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 21224,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-straight-line.two-trains",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "seen from high above at an angle, two straight parallel railway tracks run left to right across green fields with a wide strip of grass between them; a short red train is on the upper track and a short blue train is on the lower track, both trains heading to the right, the red train a little further right than the blue train",
+      "must_show": [
+        "two separate parallel tracks with grass between them",
+        "one red train on one track",
+        "one blue train on the other track",
+        "both trains heading right"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "signboards",
+        "stations",
+        "people on the tracks"
+      ],
+      "alt": {
+        "en": "Two short trains on two separate parallel tracks with grass between them, a red one on the upper track and a blue one on the lower track, both facing right, the blue one a little further right.",
+        "hi": "दो अलग समांतर पटरियों पर दो छोटी रेलगाड़ियाँ, जिनके बीच घास है, ऊपरी पटरी पर एक लाल और निचली पटरी पर एक नीली, दोनों दाईं ओर मुँह किए, नीली थोड़ी आगे दाईं ओर।"
+      },
+      "used_by": [
+        "cs.phy.motion-straight-line.relative-velocity-1d",
+        "phy.motion-straight-line.relative-velocity-1d:dd:01",
+        "phy.motion-straight-line.relative-velocity-1d:dd:02",
+        "phy.motion-straight-line.relative-velocity-1d:dd:04"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "193b95294547793ea3e17c0b5f8169beb7c1056cf9ec48de48d5a25fa28fb931",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 58752,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-straight-line.toy-car-track",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "physics",
+      "brief": "a small green toy car on a long straight wooden track lying flat on a table, the car near the left end of the track",
+      "must_show": [
+        "one toy car",
+        "a long straight track"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "hands",
+        "scale markings"
+      ],
+      "alt": {
+        "en": "A small green toy car near the left end of a long straight wooden track.",
+        "hi": "एक लंबे, सीधे लकड़ी के ट्रैक के बाएँ सिरे के पास एक छोटी हरी खिलौना कार।"
+      },
+      "used_by": [
+        "cs.phy.motion-straight-line.acceleration",
+        "phy.motion-straight-line.acceleration:dd:08",
+        "phy.motion-straight-line.acceleration:dd:09",
+        "phy.motion-straight-line.acceleration:dd:10",
+        "phy.motion-straight-line.position-velocity:dd:09",
+        "phy.motion-straight-line.position-velocity:dd:13"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "d77dc94975785662a463bb27fb23d0fa73da0f111594b4dc17fc296590f9f93c",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 29716,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "sim.motion-straight-line.motion-graphs",
+      "kind": "sim",
+      "subject_family": "physics",
+      "brief": "New sim (no existing sim fits; check PhET HTML5 sims first as sim-builder says). Concept: phy.motion-straight-line.acceleration.core.acceleration-graphs, also used for equations-of-motion. Learning goal: see one constant-acceleration motion as a cart on a straight track and, side by side, its live x-t, v-t and a-t graphs; learn that the slope of x-t is v, the slope of v-t is a, the area under v-t is displacement, and that the cart can be at rest (v = 0) while a is not zero. Model: x = x0 + u t + a t^2 / 2, v = u + a t, a constant; path length integrates |v|. Params: x0 (m, default 0), u (m/s, -20 to 20, default 10), a (m/s^2, -5 to 5, default -2), t_max (s, default 10). Controls: sliders for u and a, play/pause, step by 0.1 s, reset; a time cursor on the graphs. Shade the v-t area above the axis and below it in different patterns, not colour alone. Measurements the card reads at the current time: time (s), position (m), velocity (m/s), acceleration (m/s^2), displacement (m), path_length (m). Card tasks with u = 10, a = -2: time when v = 0 is 5 s; position then 25 m; position at t = 10 s is 0 m; path_length at t = 10 s is 50 m. Model tests: these four values, and v-t slope equal to a. Reduced motion: step through instead of auto-play.",
+      "used_by": [
+        "phy.motion-straight-line.acceleration:dd:10"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ],
+  "hi_source": "translation"
+}

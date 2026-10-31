@@ -1,0 +1,546 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "phy.motion-straight-line.acceleration:deep_dive",
+  "topic": "phy.motion-straight-line.acceleration",
+  "mode": "deep_dive",
+  "estimated_minutes": 9,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Rate of change of velocity",
+        "hi": "वेग परिवर्तन की दर"
+      },
+      "subtopic": "phy.motion-straight-line.acceleration.core",
+      "card_ids": [
+        "phy.motion-straight-line.acceleration:dd:01",
+        "phy.motion-straight-line.acceleration:dd:02",
+        "phy.motion-straight-line.acceleration:dd:03",
+        "phy.motion-straight-line.acceleration:dd:04",
+        "phy.motion-straight-line.acceleration:dd:05",
+        "phy.motion-straight-line.acceleration:dd:06",
+        "phy.motion-straight-line.acceleration:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Reading the graphs",
+        "hi": "ग्राफ़ पढ़ना"
+      },
+      "subtopic": "phy.motion-straight-line.acceleration.core",
+      "card_ids": [
+        "phy.motion-straight-line.acceleration:dd:08",
+        "phy.motion-straight-line.acceleration:dd:09",
+        "phy.motion-straight-line.acceleration:dd:10",
+        "phy.motion-straight-line.acceleration:dd:11",
+        "phy.motion-straight-line.acceleration:dd:12",
+        "phy.motion-straight-line.acceleration:dd:13"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The jolt in the bus",
+        "hi": "बस का झटका"
+      },
+      "body": {
+        "en": "You are standing in a bus. It pulls away suddenly and you lurch backwards; later it brakes hard and you lurch forwards. Nothing jolts you while it cruises steadily, however fast. What you feel is not speed but a change in velocity.",
+        "hi": "आप बस में खड़े हैं। वह अचानक चल पड़ती है और आप पीछे की ओर झटका खाते हैं; बाद में वह ज़ोर से ब्रेक लगाती है और आप आगे की ओर झुकते हैं। जब वह स्थिर चाल से चलती है, चाहे कितनी भी तेज़, तब कोई झटका नहीं लगता। आप चाल नहीं, वेग में परिवर्तन महसूस करते हैं।"
+      },
+      "media": "img.motion-straight-line.bus-highway",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.4"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Average and instantaneous acceleration",
+        "hi": "औसत और तात्क्षणिक त्वरण"
+      },
+      "body": {
+        "en": "Galileo, studying free fall and motion on inclined planes, found that the rate of change of velocity with time is constant for all objects in free fall, while the change with distance is not. This led to acceleration as the rate of change of velocity with time.\n\nAverage acceleration over an interval is the change in velocity divided by the time: $\\bar{a} = \\frac{v_2 - v_1}{t_2 - t_1} = \\frac{\\Delta v}{\\Delta t}$. Its SI unit is m s⁻². On a velocity-time graph it is the slope of the straight line joining the two points. Instantaneous acceleration is the limit $a = \\lim_{\\Delta t \\to 0} \\frac{\\Delta v}{\\Delta t} = \\frac{dv}{dt}$: the slope of the tangent to the v-t curve at that instant.\n\nVelocity has magnitude and direction, so acceleration can come from a change in speed, a change in direction, or both. It can be positive, negative or zero.",
+        "hi": "गैलीलियो ने मुक्त पतन और आनत तल पर गति का अध्ययन करके पाया कि मुक्त रूप से गिरती सभी वस्तुओं के लिए समय के साथ वेग परिवर्तन की दर नियत रहती है, जबकि दूरी के साथ परिवर्तन नहीं। इसी से त्वरण की अवधारणा बनी: समय के साथ वेग परिवर्तन की दर।\n\nकिसी अंतराल में औसत त्वरण वेग में परिवर्तन को समय से भाग देने पर मिलता है: $\\bar{a} = \\frac{v_2 - v_1}{t_2 - t_1} = \\frac{\\Delta v}{\\Delta t}$। इसका SI मात्रक m s⁻² है। वेग-समय ग्राफ़ पर यह दोनों बिंदुओं को जोड़ने वाली सरल रेखा की प्रवणता है। तात्क्षणिक त्वरण सीमा $a = \\lim_{\\Delta t \\to 0} \\frac{\\Delta v}{\\Delta t} = \\frac{dv}{dt}$ है: उस क्षण v-t वक्र की स्पर्श रेखा की प्रवणता।\n\nवेग में परिमाण और दिशा दोनों हैं, इसलिए त्वरण चाल बदलने से, दिशा बदलने से, या दोनों से हो सकता है। यह धनात्मक, ऋणात्मक या शून्य हो सकता है।"
+      },
+      "media": "img.motion-straight-line.bus-highway",
+      "highlights": [
+        {
+          "term": {
+            "en": "acceleration",
+            "hi": "त्वरण"
+          },
+          "definition": {
+            "en": "rate of change of velocity with time",
+            "hi": "समय के साथ वेग परिवर्तन की दर"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Eqs. 2.2 and 2.3"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Which way does acceleration point?",
+        "hi": "त्वरण किस ओर होता है?"
+      },
+      "body": {
+        "en": "On a straight line, if the speed is increasing, the acceleration is in the direction of the velocity; if the speed is decreasing, it is opposite to the velocity. A bus going from 36 km/h (10 m/s) to 54 km/h (15 m/s) in 10 s has $a = 0.5$ m s⁻²; braking from 15 m/s to rest in 5 s it has $a = -3$ m s⁻², the minus sign meaning opposite to the velocity.\n\nThe sign of acceleration alone does not say whether the object is speeding up: it depends on which way we chose as positive. With upward as positive, gravity's acceleration is negative, yet a falling ball speeds up under it.\n\nZero velocity does not mean zero acceleration. A ball thrown up is momentarily at rest at the top, but its acceleration there is still that due to gravity. And a bus moving very fast at constant velocity has zero acceleration.",
+        "hi": "सरल रेखा पर यदि चाल बढ़ रही है तो त्वरण वेग की दिशा में है; यदि चाल घट रही है तो वेग के विपरीत। 36 km/h (10 m/s) से 10 s में 54 km/h (15 m/s) तक पहुँचने वाली बस का $a = 0.5$ m s⁻² है; 15 m/s से 5 s में रुकते समय उसका $a = -3$ m s⁻² है, ऋण चिह्न का अर्थ वेग के विपरीत।\n\nकेवल त्वरण का चिह्न नहीं बताता कि वस्तु तेज़ हो रही है: यह इस पर निर्भर है कि हमने कौन-सी दिशा धनात्मक चुनी। ऊपर को धनात्मक मानें तो गुरुत्वजनित त्वरण ऋणात्मक है, फिर भी गिरती गेंद उससे तेज़ होती है।\n\nशून्य वेग का अर्थ शून्य त्वरण नहीं। ऊपर फेंकी गेंद शिखर पर क्षण भर विराम में होती है, पर वहाँ भी उसका त्वरण गुरुत्वजनित त्वरण ही है। और नियत वेग से बहुत तेज़ चलती बस का त्वरण शून्य है।"
+      },
+      "media": "img.motion-straight-line.ball-rooftop",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.4, Example 4.3; NCERT keph102 Points to Ponder 2 to 4"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A scooter speeds up uniformly from 18 km/h to 36 km/h in 5 s along a straight road. Find its average acceleration.",
+        "hi": "एक स्कूटर सीधी सड़क पर 5 s में 18 km/h से 36 km/h तक एकसमान रूप से तेज़ होता है। उसका औसत त्वरण ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$18$ km/h $= 18 \\times \\frac{1000}{3600} = 5$ m/s and $36$ km/h $= 10$ m/s",
+          "hi": "$18$ km/h $= 18 \\times \\frac{1000}{3600} = 5$ m/s और $36$ km/h $= 10$ m/s"
+        },
+        {
+          "en": "$\\bar{a} = \\frac{10 - 5}{5} = 1$ m s⁻², along the velocity",
+          "hi": "$\\bar{a} = \\frac{10 - 5}{5} = 1$ m s⁻², वेग की दिशा में"
+        }
+      ],
+      "answer": {
+        "en": "1 m s⁻²",
+        "hi": "1 m s⁻²"
+      },
+      "answer_value": {
+        "value": 1,
+        "unit": "m/s^2",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Dividing km/h by seconds without converting.",
+        "hi": "km/h को बिना बदले सेकंड से भाग देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.1.4, Eq. 4.3c"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:05",
+      "type": "interactive",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Speeding up or slowing down?",
+        "hi": "तेज़ हो रही है या धीमी?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "$v = +5$ m/s, $a = +2$ m/s²",
+              "hi": "$v = +5$ m/s, $a = +2$ m/s²"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "$v = +5$ m/s, $a = -2$ m/s²",
+              "hi": "$v = +5$ m/s, $a = -2$ m/s²"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "$v = -5$ m/s, $a = -2$ m/s²",
+              "hi": "$v = -5$ m/s, $a = -2$ m/s²"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "$v = -5$ m/s, $a = +2$ m/s²",
+              "hi": "$v = -5$ m/s, $a = +2$ m/s²"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "up",
+            "label": {
+              "en": "Speeding up",
+              "hi": "तेज़ हो रही है"
+            }
+          },
+          {
+            "id": "down",
+            "label": {
+              "en": "Slowing down",
+              "hi": "धीमी हो रही है"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "up"
+          },
+          {
+            "item": "i2",
+            "bin": "down"
+          },
+          {
+            "item": "i3",
+            "bin": "up"
+          },
+          {
+            "item": "i4",
+            "bin": "down"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Same signs: speeding up. Opposite signs: slowing down.",
+          "hi": "सही। समान चिह्न: तेज़ होना। विपरीत चिह्न: धीमा होना।"
+        },
+        "wrong": {
+          "en": "Compare the signs of v and a, not the sign of a alone.",
+          "hi": "केवल a का नहीं, v और a के चिह्नों की तुलना कीजिए।"
+        }
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.acceleration.0001"
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Acceleration: $a = dv/dt$; average $\\bar{a} = \\Delta v / \\Delta t$; unit m s⁻².",
+          "hi": "त्वरण: $a = dv/dt$; औसत $\\bar{a} = \\Delta v / \\Delta t$; मात्रक m s⁻²।"
+        },
+        {
+          "en": "Speeding up: a along v. Slowing down: a against v.",
+          "hi": "तेज़ होना: a, v की दिशा में। धीमा होना: a, v के विपरीत।"
+        },
+        {
+          "en": "Zero velocity at an instant can come with non-zero acceleration.",
+          "hi": "किसी क्षण शून्य वेग के साथ अशून्य त्वरण हो सकता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Shapes of x-t and v-t graphs",
+        "hi": "x-t और v-t ग्राफ़ों के आकार"
+      },
+      "body": {
+        "en": "On a position-time graph, the curve bends upward for positive acceleration, bends downward for negative acceleration, and is a straight line for zero acceleration.\n\nFor uniform motion the acceleration is zero: the x-t graph is a straight line inclined to the time axis and the v-t graph is a straight line parallel to the time axis. For uniform acceleration the x-t graph is a parabola and the v-t graph is a straight line inclined to the time axis; its slope is the acceleration.\n\nReal graphs are smooth: velocity and acceleration cannot change value abruptly at an instant, so sharp kinks in textbook graphs are idealisations.",
+        "hi": "स्थिति-समय ग्राफ़ पर धनात्मक त्वरण के लिए वक्र ऊपर की ओर मुड़ता है, ऋणात्मक त्वरण के लिए नीचे की ओर, और शून्य त्वरण के लिए सरल रेखा होता है।\n\nएकसमान गति में त्वरण शून्य है: x-t ग्राफ़ समय-अक्ष पर आनत एक सरल रेखा और v-t ग्राफ़ समय-अक्ष के समांतर एक सरल रेखा होता है। एकसमान त्वरण में x-t ग्राफ़ परवलय और v-t ग्राफ़ समय-अक्ष पर आनत एक सरल रेखा होता है; इसकी प्रवणता त्वरण है।\n\nवास्तविक ग्राफ़ चिकने होते हैं: वेग और त्वरण किसी क्षण अचानक मान नहीं बदल सकते, इसलिए पुस्तकों के ग्राफ़ों के नुकीले मोड़ आदर्शीकरण हैं।"
+      },
+      "media": "img.motion-straight-line.toy-car-track",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Fig. 2.2, Summary 4"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Area under the v-t graph",
+        "hi": "v-t ग्राफ़ के नीचे का क्षेत्रफल"
+      },
+      "body": {
+        "en": "The area under a velocity-time curve between two instants equals the displacement in that interval. For constant velocity $u$ the v-t graph is a horizontal line, and the area between $t = 0$ and $t = T$ is a rectangle of area $uT$: exactly the displacement. The area has the dimensions of velocity times time, which is length.\n\nFor uniform acceleration the area is a rectangle plus a triangle. Area above the time axis counts as positive displacement and area below as negative, so if the object turns back, the net area gives the displacement while the total area, ignoring sign, gives the path length.",
+        "hi": "किन्हीं दो क्षणों के बीच वेग-समय वक्र के नीचे का क्षेत्रफल उस अंतराल के विस्थापन के बराबर होता है। नियत वेग $u$ के लिए v-t ग्राफ़ क्षैतिज रेखा है, और $t = 0$ से $t = T$ तक का क्षेत्रफल $uT$ क्षेत्रफल का आयत है: ठीक विस्थापन। क्षेत्रफल की विमा वेग गुणा समय, यानी लंबाई, है।\n\nएकसमान त्वरण में क्षेत्रफल एक आयत और एक त्रिभुज है। समय-अक्ष के ऊपर का क्षेत्रफल धनात्मक विस्थापन और नीचे का ऋणात्मक गिना जाता है, इसलिए वस्तु वापस मुड़े तो कुल चिह्नित क्षेत्रफल विस्थापन देता है जबकि चिह्न छोड़कर जोड़ा क्षेत्रफल पथ-लंबाई देता है।"
+      },
+      "media": "img.motion-straight-line.toy-car-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "area under v-t",
+            "hi": "v-t के नीचे क्षेत्रफल"
+          },
+          "definition": {
+            "en": "displacement in that interval",
+            "hi": "उस अंतराल का विस्थापन"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Fig. 2.4, Summary 5; NCERT iesc104 §4.2.3; NCERT keph103 Points to Ponder 1"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:10",
+      "type": "sim",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 3,
+      "sim": "sim.motion-straight-line.motion-graphs",
+      "title": {
+        "en": "Run the cart and watch the graphs",
+        "hi": "गाड़ी चलाइए और ग्राफ़ देखिए"
+      },
+      "params": {
+        "x0": 0,
+        "u": 10,
+        "a": -2,
+        "t_max": 10
+      },
+      "tasks": [
+        {
+          "id": "stop-time",
+          "prompt": {
+            "en": "The cart starts at $x = 0$ with $u = 10$ m/s and $a = -2$ m/s². Pause when its velocity reads zero. What time does the clock show?",
+            "hi": "गाड़ी $x = 0$ से $u = 10$ m/s और $a = -2$ m/s² के साथ चलती है। जब वेग शून्य दिखे तब रोकिए। घड़ी क्या समय दिखाती है?"
+          },
+          "measurement": "time",
+          "expected": {
+            "value": 5,
+            "unit": "s",
+            "tolerance": {
+              "abs": 0.1
+            }
+          }
+        },
+        {
+          "id": "farthest",
+          "prompt": {
+            "en": "At that instant, read the cart's position.",
+            "hi": "उस क्षण गाड़ी की स्थिति पढ़िए।"
+          },
+          "measurement": "position",
+          "expected": {
+            "value": 25,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        },
+        {
+          "id": "back-home",
+          "prompt": {
+            "en": "Let it run to $t = 10$ s and read the position again.",
+            "hi": "इसे $t = 10$ s तक चलने दीजिए और स्थिति फिर पढ़िए।"
+          },
+          "measurement": "position",
+          "expected": {
+            "value": 0,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        },
+        {
+          "id": "path",
+          "prompt": {
+            "en": "Read the path length covered in those 10 s.",
+            "hi": "उन 10 s में तय पथ-लंबाई पढ़िए।"
+          },
+          "measurement": "path_length",
+          "expected": {
+            "value": 50,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "The v-t line falls with slope $-2$ and crosses zero at 5 s. The triangle above the axis is 25 m and the one below is -25 m: the net displacement is zero, but the path length is 50 m.",
+        "hi": "v-t रेखा $-2$ प्रवणता से गिरती है और 5 s पर शून्य को काटती है। अक्ष के ऊपर का त्रिभुज 25 m और नीचे का -25 m है: कुल विस्थापन शून्य है, पर पथ-लंबाई 50 m है।"
+      },
+      "fallback": {
+        "body": {
+          "en": "With $u = 10$ m/s and $a = -2$ m/s², $v = 10 - 2t$ is zero at $t = 5$ s, where $x = 10 \\times 5 - 5^2 = 25$ m. At $t = 10$ s, $x = 100 - 100 = 0$: the cart is back at the start, having covered 25 m out and 25 m back, a path of 50 m.",
+          "hi": "$u = 10$ m/s और $a = -2$ m/s² के साथ $v = 10 - 2t$, $t = 5$ s पर शून्य है, जहाँ $x = 10 \\times 5 - 5^2 = 25$ m। $t = 10$ s पर $x = 100 - 100 = 0$: गाड़ी आरंभ पर लौट आई है, 25 m जाकर और 25 m लौटकर, यानी 50 m का पथ।"
+        },
+        "media": "img.motion-straight-line.toy-car-track"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:11",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A car's velocity rises uniformly from 0 to 12 m/s in the first 4 s and then stays at 12 m/s for the next 6 s. Use the v-t graph to find its displacement in the 10 s.",
+        "hi": "एक कार का वेग पहले 4 s में 0 से 12 m/s तक एकसमान रूप से बढ़ता है और फिर अगले 6 s तक 12 m/s रहता है। v-t ग्राफ़ से 10 s में उसका विस्थापन ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Triangle, 0 to 4 s: $\\frac{1}{2} \\times 4 \\times 12 = 24$ m",
+          "hi": "त्रिभुज, 0 से 4 s: $\\frac{1}{2} \\times 4 \\times 12 = 24$ m"
+        },
+        {
+          "en": "Rectangle, 4 to 10 s: $6 \\times 12 = 72$ m",
+          "hi": "आयत, 4 से 10 s: $6 \\times 12 = 72$ m"
+        },
+        {
+          "en": "Total $= 24 + 72 = 96$ m",
+          "hi": "कुल $= 24 + 72 = 96$ m"
+        }
+      ],
+      "answer": {
+        "en": "96 m",
+        "hi": "96 m"
+      },
+      "answer_value": {
+        "value": 96,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.5
+        }
+      },
+      "common_trap": {
+        "en": "Multiplying the final velocity by the whole 10 s.",
+        "hi": "अंतिम वेग को पूरे 10 s से गुणा कर देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.2.3, Fig. 4.18(b)"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-straight-line.acceleration.0002"
+    },
+    {
+      "id": "phy.motion-straight-line.acceleration:dd:13",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "x-t: straight for zero a, parabola for uniform a. v-t: slope is a.",
+          "hi": "x-t: शून्य a के लिए सीधा, एकसमान a के लिए परवलय। v-t: प्रवणता a है।"
+        },
+        {
+          "en": "Area under v-t = displacement; area ignoring sign = path length.",
+          "hi": "v-t के नीचे क्षेत्रफल = विस्थापन; चिह्न छोड़कर क्षेत्रफल = पथ-लंबाई।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

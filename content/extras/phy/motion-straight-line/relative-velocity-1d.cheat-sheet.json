@@ -1,0 +1,100 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "cs.phy.motion-straight-line.relative-velocity-1d",
+  "scope": "topic",
+  "topic": "phy.motion-straight-line.relative-velocity-1d",
+  "title": {
+    "en": "Relative Velocity",
+    "hi": "आपेक्षिक वेग"
+  },
+  "concepts": [
+    "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity"
+  ],
+  "key_ideas": [
+    {
+      "en": "Velocity is always relative to a frame, usually the ground.",
+      "hi": "वेग सदा किसी तंत्र, सामान्यतः धरती, के सापेक्ष है।"
+    },
+    {
+      "en": "$v_{12} = v_1 - v_2$; $v_{21} = -v_{12}$.",
+      "hi": "$v_{12} = v_1 - v_2$; $v_{21} = -v_{12}$।"
+    },
+    {
+      "en": "Same direction: subtract speeds; opposite: add.",
+      "hi": "एक ही दिशा: चालें घटाइए; विपरीत: जोड़िए।"
+    },
+    {
+      "en": "Crossing or overtaking time = total length / relative speed.",
+      "hi": "पार करने का समय = कुल लंबाई / आपेक्षिक चाल।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Relative velocity",
+        "hi": "आपेक्षिक वेग"
+      },
+      "latex": "v_{12} = v_1 - v_2"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Relative velocity of approaching trains is the difference of speeds.",
+        "hi": "पास आती रेलगाड़ियों का आपेक्षिक वेग चालों का अंतर है।"
+      },
+      "correct": {
+        "en": "Opposite directions: the speeds add.",
+        "hi": "विपरीत दिशाएँ: चालें जुड़ती हैं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$v_{12}$ and $v_{21}$ are equal.",
+        "hi": "$v_{12}$ और $v_{21}$ बराबर हैं।"
+      },
+      "correct": {
+        "en": "Equal in size, opposite in sign.",
+        "hi": "परिमाण में बराबर, चिह्न में विपरीत।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Mixing a velocity from the ground with one from a train.",
+        "hi": "धरती से मापे वेग को रेलगाड़ी से मापे वेग से मिलाना।"
+      },
+      "correct": {
+        "en": "Bring both to the same frame first.",
+        "hi": "पहले दोनों को एक ही तंत्र में लाइए।"
+      }
+    }
+  ],
+  "diagram": "img.motion-straight-line.two-trains",
+  "hi_source": "translation"
+}

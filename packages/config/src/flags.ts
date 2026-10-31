@@ -242,6 +242,9 @@ export const FLAG_REGISTRY = {
   'free.rotating_chapters': def(strList, [], 'doc', 'learn G6 (served in the manifest)'),
   'free.tutor_messages_per_day': def(nonNegInt, 5, 'prd', 'PRD §11.1, R35', ['free_tutor_messages_per_day']),
   'pro.tutor_messages_per_day': owner(posInt, 'tutor-social A6', ['pro_tutor_messages_per_day']),
+  // New Agnes images ("Draw it", the voice board). Caps apply even for Pro (TRD §9.3).
+  'pro.tutor_images_per_hour': owner(posInt, 'TRD §9.3, tutor-social A5 step 6', ['tutor_images_per_hour']),
+  'pro.tutor_images_per_day': owner(posInt, 'TRD §9.3, tutor-social A5 step 6', ['tutor_images_per_day']),
   'free.tutor_read_aloud_per_day': owner(nonNegInt, 'R35, tutor-social A6'),
   'free.roleplay_chats_per_day': owner(nonNegInt, 'tutor-social A11'),
   'roleplay.max_turns': owner(posInt, 'tutor-social A11', ['roleplay_max_turns']),

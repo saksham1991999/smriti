@@ -9,6 +9,7 @@ from typing import Annotated, Any, Literal
 from pydantic import BaseModel, Field, field_validator
 
 from smriti_api.schemas.practice import AnswerIn, QuotaOut
+from smriti_api.schemas.tutor_images import MessageImage
 
 ContextRef = Annotated[
     str, Field(min_length=3, max_length=300, pattern=r"^(card|question|topic|concept|lab):[^\s]+$")
@@ -42,6 +43,8 @@ class MessageOut(BaseModel):
     status: Literal["ok", "stopped", "refused", "crisis", "error"]
     citations: list[dict[str, Any]] = Field(default_factory=list)
     created_at: datetime
+    # Pictures attached to this answer ("Draw it"); they land here even after the sheet closed.
+    images: list[MessageImage] = Field(default_factory=list)
 
 
 class TutorSession(BaseModel):

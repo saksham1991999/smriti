@@ -400,7 +400,7 @@ flowchart TD
 | `GET /v1/tutor/sessions?cursor=` and `GET /v1/tutor/sessions/{id}` | Missing (history, AI-09) |
 | `DELETE /v1/tutor/sessions/{id}` | Missing (the student deletes a chat) |
 | `POST /v1/tutor/messages/{id}/feedback` | Missing (AI-05) |
-| `GET /v1/ai/generations/{id}` | Missing (image polling fallback) |
+| `GET /v1/ai/generations/{id}` | Built, with `POST …/retry` (image polling fallback; `docs/contracts/tutor-images.md`) |
 | `POST /v1/ai/story`, `POST /v1/ai/doubt-photo`, `POST /v1/voice/session` | In TRD |
 | `POST /v1/uploads/sign` | Missing (TRD §5 mentions signed URLs but no endpoint) |
 | `POST /v1/ai/feynman/score` (or a `feynman` mode on the messages endpoint) | Missing |

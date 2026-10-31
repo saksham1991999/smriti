@@ -28,6 +28,7 @@ EXEMPT: dict[tuple[str, str], str] = {
     ("POST", "/v1/tutor/ask/question"): _NATURAL_ID,
     ("POST", "/v1/tutor/sessions"): _NATURAL_ID,
     ("POST", "/v1/ai/doubt-photos/{photo_id}/solve"): _SSE,
+    ("POST", "/v1/ai/generations/{generation_id}/retry"): _TRANSITION,
     ("DELETE", "/v1/account"): _DELETE,
     ("DELETE", "/v1/account/deletion"): _DELETE,
     ("DELETE", "/v1/billing/family/invites/{invite_id}"): _DELETE,

@@ -20,7 +20,9 @@ from smriti_api.ai.interfaces import (
     VoiceSession,
 )
 
+# STT stays on v1 (/v1/listen); TTS (Flux voices) is on v2 (/v2/speak), R62.
 DEEPGRAM_BASE = "https://api.deepgram.com/v1"
+DEEPGRAM_TTS_URL = "https://api.deepgram.com/v2/speak"
 GEMINI_BASE = "https://generativelanguage.googleapis.com/v1alpha"
 
 
@@ -35,9 +37,10 @@ class DeepgramTTSProvider:
         self._model = model
 
     async def tts(self, text: str, *, voice: str | None, locale: str) -> AudioResult:
-        model = voice or self._model
+        # The voice is DEEPGRAM_TTS_MODEL (config) only; a caller's ``voice`` never picks a model.
+        model = self._model
         resp = await self._http.post(
-            f"{DEEPGRAM_BASE}/speak",
+            DEEPGRAM_TTS_URL,
             params={"model": model, "encoding": "mp3"},
             headers={"Authorization": f"Token {self._key}"},
             json={"text": text},
@@ -45,7 +48,10 @@ class DeepgramTTSProvider:
         )
         if resp.status_code >= 400:
             raise AIError(f"deepgram speak failed with HTTP {resp.status_code}")
-        return AudioResult(audio=resp.content, mime="audio/mpeg", model=model)
+        if not resp.content:
+            raise AIError("deepgram speak returned no audio")
+        mime = resp.headers.get("content-type", "audio/mpeg").split(";", 1)[0].strip()
+        return AudioResult(audio=resp.content, mime=mime or "audio/mpeg", model=model)
 
 
 class DeepgramSTTProvider:

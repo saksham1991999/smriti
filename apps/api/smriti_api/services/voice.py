@@ -35,7 +35,7 @@ from smriti_api.core.errors import ApiError
 from smriti_api.integrations.storage import ObjectStorage, StorageError
 from smriti_api.schemas import sync as s
 from smriti_api.schemas import voice as v
-from smriti_api.services import privacy, tutor, tutor_retrieval, tutor_safety
+from smriti_api.services import privacy, tutor, tutor_images, tutor_retrieval, tutor_safety
 from smriti_api.services.usage import Flags, Learner, load_flags, load_learner, next_local_midnight
 
 if TYPE_CHECKING:
@@ -55,7 +55,10 @@ then check the student is with you. If they talk while you are speaking, stop an
 Never read long equations aloud: call show_formula with the concept id so the formula appears on \
 the board, then explain it in words. Use look_up_concept before stating a fact you are unsure of, \
 get_mastery to pitch the explanation, queue_cards when the student asks to review a concept \
-later, and make_flashcard when they ask to save something as a flashcard. Say goodbye briefly when told the time is up."""
+later, and make_flashcard when they ask to save something as a flashcard. When a picture would \
+really help, call generate_image with a short brief written from the course content (never the \
+student's own words, name or details) and describe it while it appears on the board. Say goodbye \
+briefly when told the time is up."""
 
 TOOLS: tuple[ToolSpec, ...] = (
     ToolSpec(
@@ -112,6 +115,24 @@ TOOLS: tuple[ToolSpec, ...] = (
             "type": "object",
             "properties": {"concept_ids": {"type": "array", "items": {"type": "string"}}},
             "required": ["concept_ids"],
+        },
+    ),
+    ToolSpec(
+        "generate_image",
+        "Show a teaching picture on the student's board (AI-14). The brief says what to draw, in "
+        "plain English, from the course content; no text or labels in the picture.",
+        {
+            "type": "object",
+            "properties": {
+                "brief": {"type": "string", "description": "What to draw, one or two sentences"},
+                "alt": {
+                    "type": "string",
+                    "description": "One sentence describing the picture, in the student's language",
+                },
+                "style": {"type": "string", "enum": ["diagram", "scene"]},
+                "concept_id": {"type": "string", "description": "The concept it shows, if known"},
+            },
+            "required": ["brief", "alt"],
         },
     ),
 )
@@ -419,9 +440,35 @@ async def _concept_view(
 
 
 async def _run_tool(
-    db: Database, row: Any, auth: AuthContext, call: v.ToolCallIn, client: Mapping[str, Any]
+    db: Database,
+    row: Any,
+    auth: AuthContext,
+    call: v.ToolCallIn,
+    client: Mapping[str, Any],
+    ai: AIGateway | None = None,
+    images: tutor_images.ImageEnv | None = None,
 ) -> dict[str, Any]:
     locale = row.locale or "en"
+    if call.name == "generate_image":
+        # The board picture (tutor-social §A9 step 4): the same pipeline as "Draw it".
+        if ai is None or images is None:
+            return {"error": "ai_unavailable"}
+        concept = call.args.get("concept_id")
+        outcome = await tutor_images.request_image(
+            db,
+            ai,
+            images,
+            user_id=auth.user_id,
+            is_guest=auth.is_anonymous,
+            source="voice_board",
+            brief=str(call.args.get("brief") or ""),
+            alt=str(call.args.get("alt") or ""),
+            style=str(call.args.get("style") or "diagram"),
+            concept_id=concept[:200] if isinstance(concept, str) and concept else None,
+            tutor_session_id=row.tutor_session_id,
+            voice_session_id=row.id,
+        )
+        return outcome.board()
     if call.name in ("look_up_concept", "show_formula", "get_mastery"):
         async with db.system_tx() as session:
             if call.name == "get_mastery":
@@ -538,6 +585,9 @@ async def relay_tool(
     session_id: uuid.UUID,
     call: v.ToolCallIn,
     device_id: uuid.UUID | None = None,
+    *,
+    ai: AIGateway | None = None,
+    images: tutor_images.ImageEnv | None = None,
 ) -> v.ToolCallOut:
     now = datetime.now(UTC)
     async with db.system_tx() as session:
@@ -552,7 +602,7 @@ async def relay_tool(
             text("update ai.voice_sessions set tool_calls = tool_calls + 1 where id = :id"),
             {"id": session_id},
         )
-    result = await _run_tool(db, row, auth, call, {"device_id": device_id})
+    result = await _run_tool(db, row, auth, call, {"device_id": device_id}, ai, images)
     log.info("voice_tool_call", tool=call.name, ok="error" not in result)
     return v.ToolCallOut(call_id=call.call_id, name=call.name, result=result)
 

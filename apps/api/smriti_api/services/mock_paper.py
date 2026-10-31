@@ -97,6 +97,30 @@ class MockRef:
     window_end: datetime | None = None
     results_at: datetime | None = None
     ranked: bool = False
+    # A published chapter mock's chapter (LRN-06 "Timed chapter mock"): the one chapter its
+    # questions teach. None for other kinds, or when the questions span chapters.
+    chapter_id: str | None = None
+
+
+async def chapters_of(session: AsyncSession, mock_ids: Sequence[str]) -> dict[str, str]:
+    """The single chapter each of these published mocks draws from (via its questions' concepts)."""
+    if not mock_ids:
+        return {}
+    rows = (
+        await session.execute(
+            text(
+                "select mi.mock_id, array_agg(distinct t.chapter_id) as chapters"
+                " from content.mock_items mi"
+                " join content.question_concepts qc on qc.question_id = mi.question_id"
+                " join content.concepts c on c.id = qc.concept_id"
+                " join content.subtopics st on st.id = c.subtopic_id"
+                " join content.topics t on t.id = st.topic_id"
+                " where mi.mock_id = any(:ids) group by mi.mock_id"
+            ),
+            {"ids": list(mock_ids)},
+        )
+    ).all()
+    return {r.mock_id: r.chapters[0] for r in rows if len(r.chapters or []) == 1}
 
 
 _BP_COLS = "id, exam_profile_id, paper_code, version, spec, verified_at, source_url"
@@ -182,6 +206,7 @@ async def catalogue(session: AsyncSession, exam: str, today: date) -> list[MockR
             {"e": exam},
         )
     ).all()
+    chapters = await chapters_of(session, [m.id for m in published if m.kind == "chapter"])
     for m in published:
         bp = await blueprint_by_id(session, m.blueprint_id)
         if bp is None:
@@ -198,6 +223,7 @@ async def catalogue(session: AsyncSession, exam: str, today: date) -> list[MockR
                 window_end=m.window_end,
                 results_at=m.results_at,
                 ranked=True,
+                chapter_id=chapters.get(m.id),
             )
         )
     for bp in blueprints:
@@ -322,6 +348,9 @@ async def resolve(session: AsyncSession, mock_id: str, today: date) -> MockRef:
                     window_end=m.window_end,
                     results_at=m.results_at,
                     ranked=True,
+                    chapter_id=(await chapters_of(session, [m.id])).get(m.id)
+                    if m.kind == "chapter"
+                    else None,
                 )
     raise ApiError(404, "not_found", "This mock isn't available", detail=mock_id[:200])
 

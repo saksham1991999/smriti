@@ -72,6 +72,8 @@ class MockCard(BaseModel):
     # Published and PYQ-paper mocks are the same paper for everyone, so percentile and rank can
     # appear (R26). Papers built for one student never rank.
     ranked: bool
+    # LRN-06: a published chapter mock's chapter (the one chapter its questions teach); else null.
+    chapter_id: str | None = None
 
 
 class BlueprintSource(BaseModel):

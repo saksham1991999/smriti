@@ -246,6 +246,7 @@ _MOVE_USER_ID = [
     "ai.generated_stories",
     "ai.feynman_scores",
     "ai.voice_sessions",
+    "ai.tutor_images",
     "ai.generations",
     "app.devices",
     "app.exports",

@@ -1,0 +1,399 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.variable-force",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.variable-force.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.variable-force.core.work-variable-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A force $F = 3x^2$ N acts along the x-axis. The work it does as the particle moves from $x = 0$ to $x = 2$ m is",
+        "hi": "एक बल $F = 3x^2$ N x-अक्ष के अनुदिश लगता है। कण के $x = 0$ से $x = 2$ m तक जाने में यह कितना कार्य करता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "8 J",
+            "hi": "8 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "12 J",
+            "hi": "12 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "24 J",
+            "hi": "24 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 J",
+            "hi": "4 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\int x^2\\,dx = x^3/3$",
+          "hi": "$\\int x^2\\,dx = x^3/3$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Integrate the force over the displacement.",
+          "hi": "विस्थापन पर बल का समाकलन कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$W = \\int_0^2 3x^2\\,dx = [x^3]_0^2 = 8$ J",
+            "hi": "$W = \\int_0^2 3x^2\\,dx = [x^3]_0^2 = 8$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the force at $x = 2$ m, not the work.",
+              "hi": "यह $x = 2$ m पर बल है, कार्य नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That multiplies the final force, 12 N, by 2 m as if it were constant.",
+              "hi": "यह अंतिम बल 12 N को 2 m से गुणा करता है, मानो वह नियत हो।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is $x^2$ at $x = 2$, not the integral of $3x^2$.",
+              "hi": "यह $x^2$ का मान है, $x = 2$ पर; $3x^2$ का समाकल नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.variable-force.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.variable-force.core.work-variable-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A force along x rises steadily from 0 at $x = 0$ to 10 N at $x = 4$ m, then stays at 10 N until $x = 6$ m. The work it does from $x = 0$ to $x = 6$ m, in J, is",
+        "hi": "x के अनुदिश एक बल $x = 0$ पर 0 से $x = 4$ m पर 10 N तक एकसमान बढ़ता है, फिर $x = 6$ m तक 10 N पर रहता है। $x = 0$ से $x = 6$ m तक इसका कार्य, J में, है"
+      },
+      "answer": {
+        "value": 40,
+        "unit": "J"
+      },
+      "hints": [
+        {
+          "en": "Sketch the F-x graph.",
+          "hi": "F-x आलेख बनाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add the triangle and the rectangle under the graph.",
+          "hi": "आलेख के नीचे त्रिभुज और आयत जोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "Triangle: $\\frac{1}{2} \\times 4 \\times 10 = 20$ J; rectangle: $2 \\times 10 = 20$ J; total 40 J.",
+            "hi": "त्रिभुज: $\\frac{1}{2} \\times 4 \\times 10 = 20$ J; आयत: $2 \\times 10 = 20$ J; कुल 40 J।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Treating the force as 10 N throughout gives 60 J.",
+              "hi": "बल को पूरे समय 10 N मानने पर 60 J आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.variable-force.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.variable-force.core.work-variable-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A force $F = (2x + 1)$ N acts on a particle moving along x from $x = 1$ m to $x = 3$ m. The work done is",
+        "hi": "एक बल $F = (2x + 1)$ N, x के अनुदिश $x = 1$ m से $x = 3$ m तक चलते कण पर लगता है। किया गया कार्य है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 J",
+            "hi": "10 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "7 J",
+            "hi": "7 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "12 J",
+            "hi": "12 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8 J",
+            "hi": "8 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\int (2x + 1)\\,dx = x^2 + x$",
+          "hi": "$\\int (2x + 1)\\,dx = x^2 + x$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Integrate between the two positions.",
+          "hi": "दोनों स्थितियों के बीच समाकलन कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$W = [x^2 + x]_1^3 = (9 + 3) - (1 + 1) = 10$ J",
+            "hi": "$W = [x^2 + x]_1^3 = (9 + 3) - (1 + 1) = 10$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the force at $x = 3$ m, not the work.",
+              "hi": "यह $x = 3$ m पर बल है, कार्य नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The lower limit was left out.",
+              "hi": "निचली सीमा छूट गई।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The constant term of the force was left out when integrating.",
+              "hi": "समाकलन में बल का नियत पद छूट गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.variable-force.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.variable-force.core.work-variable-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A force along x acts from $x = 0$ to $x = 3$ m with the value $+20$ N, and from $x = 3$ m to $x = 5$ m with the value $-10$ N. The total work it does from $x = 0$ to $x = 5$ m is",
+        "hi": "x के अनुदिश एक बल $x = 0$ से $x = 3$ m तक $+20$ N और फिर $x = 3$ m से $x = 5$ m तक $-10$ N है। $x = 0$ से $x = 5$ m तक इसका कुल कार्य है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "40 J",
+            "hi": "40 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "80 J",
+            "hi": "80 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "60 J",
+            "hi": "60 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "20 J",
+            "hi": "20 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Work out each part's area with its sign.",
+          "hi": "हर भाग का क्षेत्रफल उसके चिह्न के साथ निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Area below the axis counts as negative.",
+          "hi": "अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है।"
+        },
+        "steps": [
+          {
+            "en": "$W = 20 \\times 3 + (-10) \\times 2 = 60 - 20 = 40$ J",
+            "hi": "$W = 20 \\times 3 + (-10) \\times 2 = 60 - 20 = 40$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The negative part was added, not subtracted.",
+              "hi": "ऋणात्मक भाग घटाने के बजाय जोड़ा गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The negative part was ignored.",
+              "hi": "ऋणात्मक भाग की उपेक्षा की गई।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That subtracts the negative part twice.",
+              "hi": "यह ऋणात्मक भाग को दो बार घटाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

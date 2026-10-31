@@ -1,0 +1,256 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.potential-energy:deep_dive",
+  "topic": "phy.work-energy-power.potential-energy",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.work-energy-power.potential-energy.core.potential-energy"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Energy stored by position",
+        "hi": "स्थिति के कारण संचित ऊर्जा"
+      },
+      "subtopic": "phy.work-energy-power.potential-energy.core",
+      "card_ids": [
+        "phy.work-energy-power.potential-energy:dd:01",
+        "phy.work-energy-power.potential-energy:dd:02",
+        "phy.work-energy-power.potential-energy:dd:03",
+        "phy.work-energy-power.potential-energy:dd:04",
+        "phy.work-energy-power.potential-energy:dd:05",
+        "phy.work-energy-power.potential-energy:dd:06",
+        "phy.work-energy-power.potential-energy:dd:07",
+        "phy.work-energy-power.potential-energy:dd:08"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The drawn bow",
+        "hi": "खिंचा हुआ धनुष"
+      },
+      "body": {
+        "en": "An archer slowly pulls back the bowstring. Nothing moves fast yet, but the bent bow is holding energy. Let go, and the arrow flies off at great speed. Fault lines in the Earth's crust are like compressed springs in the same way: when they readjust, the stored energy is released as an earthquake.",
+        "hi": "एक धनुर्धर धीरे-धीरे धनुष की डोरी पीछे खींचता है। अभी कुछ तेज़ी से नहीं चल रहा, पर मुड़ा हुआ धनुष ऊर्जा रोके हुए है। छोड़िए, और तीर तेज़ी से उड़ जाता है। पृथ्वी की पर्पटी की भ्रंश रेखाएँ भी इसी तरह संपीडित स्प्रिंग जैसी हैं: उनके पुनः समायोजित होने पर संचित ऊर्जा भूकंप के रूप में निकलती है।"
+      },
+      "media": "img.work-energy-power.bow-arrow"
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Gravitational potential energy",
+        "hi": "गुरुत्वीय स्थितिज ऊर्जा"
+      },
+      "body": {
+        "en": "Potential energy is stored energy, held by a body because of its position or configuration. Raise a ball of mass m through a height h near the Earth, where g is nearly constant ($h \\ll R_E$). The work done against gravity is $mgh$, and it is stored as potential energy:\n\n$V(h) = mgh$.\n\nRelease the ball and it falls with $v^2 = 2gh$, so $\\frac{1}{2}mv^2 = mgh$: the stored energy shows up as kinetic energy just before it lands. The gravitational force is the negative of the slope: $F = -\\frac{dV}{dh} = -mg$, the minus sign showing that it points down.",
+        "hi": "स्थितिज ऊर्जा संचित ऊर्जा है, जो किसी पिंड में उसकी स्थिति या विन्यास के कारण होती है। पृथ्वी के पास, जहाँ g लगभग नियत है ($h \\ll R_E$), m द्रव्यमान की गेंद को h ऊँचाई तक उठाइए। गुरुत्व के विरुद्ध किया गया कार्य $mgh$ है, और यह स्थितिज ऊर्जा के रूप में संचित होता है:\n\n$V(h) = mgh$।\n\nगेंद छोड़ने पर वह $v^2 = 2gh$ के साथ गिरती है, अतः $\\frac{1}{2}mv^2 = mgh$: ज़मीन पर पहुँचने से ठीक पहले संचित ऊर्जा गतिज ऊर्जा के रूप में प्रकट होती है। गुरुत्व बल ढाल का ऋणात्मक है: $F = -\\frac{dV}{dh} = -mg$, ऋण चिह्न दिखाता है कि यह नीचे की ओर है।"
+      },
+      "media": "img.work-energy-power.bow-arrow",
+      "highlights": [
+        {
+          "term": {
+            "en": "potential energy",
+            "hi": "स्थितिज ऊर्जा"
+          },
+          "definition": {
+            "en": "energy stored by position or configuration",
+            "hi": "स्थिति या विन्यास के कारण संचित ऊर्जा"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.7, Summary 5"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Potential energy and force",
+        "hi": "स्थितिज ऊर्जा और बल"
+      },
+      "body": {
+        "en": "In one dimension, a potential energy $V(x)$ can be defined for a force when the force can be written as $F(x) = -\\frac{dV}{dx}$. Then\n\n$\\int_{x_i}^{x_f} F(x)\\,dx = V_i - V_f$,\n\nso the change in potential energy is the negative of the work done by the force: $\\Delta V = -F(x)\\,\\Delta x$. Potential energy has the dimensions $[ML^2T^{-2}]$ and is measured in joules, like work and kinetic energy.\n\nThe zero of potential energy is a matter of choice: the ground for $mgh$, for example. Changing the zero changes every value of V by the same constant but leaves the differences, and so the forces, unchanged. Once chosen, keep it fixed for the whole problem.",
+        "hi": "एक विमा में, किसी बल के लिए स्थितिज ऊर्जा $V(x)$ तब परिभाषित की जा सकती है जब बल को $F(x) = -\\frac{dV}{dx}$ के रूप में लिखा जा सके। तब\n\n$\\int_{x_i}^{x_f} F(x)\\,dx = V_i - V_f$,\n\nअतः स्थितिज ऊर्जा में परिवर्तन बल द्वारा किए गए कार्य का ऋणात्मक है: $\\Delta V = -F(x)\\,\\Delta x$। स्थितिज ऊर्जा की विमाएँ $[ML^2T^{-2}]$ हैं और इसे कार्य तथा गतिज ऊर्जा की तरह जूल में मापते हैं।\n\nस्थितिज ऊर्जा का शून्य चुनाव की बात है: उदाहरण के लिए $mgh$ के लिए ज़मीन। शून्य बदलने से V का हर मान एक ही नियतांक से बदलता है, पर अंतर, और इसलिए बल, नहीं बदलते। एक बार चुन लें, तो पूरे प्रश्न में उसे स्थिर रखिए।"
+      },
+      "media": "img.work-energy-power.bow-arrow",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.7, Eq. 5.9, Summary 3, Points to Ponder 8"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Potential energy",
+        "hi": "स्थितिज ऊर्जा"
+      },
+      "latex": "V(h) = mgh,\\quad F(x) = -\\frac{dV}{dx}",
+      "symbols": [
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "potential energy",
+            "hi": "स्थितिज ऊर्जा"
+          },
+          "unit": "J"
+        },
+        {
+          "symbol": "h",
+          "meaning": {
+            "en": "height above the chosen zero",
+            "hi": "चुने गए शून्य से ऊँचाई"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "F",
+          "meaning": {
+            "en": "force",
+            "hi": "बल"
+          },
+          "unit": "N"
+        }
+      ],
+      "conditions": {
+        "en": "$V = mgh$ only near the Earth's surface, where g is constant.",
+        "hi": "$V = mgh$ केवल पृथ्वी की सतह के पास, जहाँ g नियत है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.7, Summary 3 and 5"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "The potential energy of a particle moving along x is $V(x) = 4x^2$ J, with x in metres. Find the force on it at $x = 0.5$ m.",
+        "hi": "x के अनुदिश चलते एक कण की स्थितिज ऊर्जा $V(x) = 4x^2$ J है, x मीटर में। $x = 0.5$ m पर उस पर बल ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$F = -\\frac{dV}{dx} = -8x$",
+          "hi": "$F = -\\frac{dV}{dx} = -8x$"
+        },
+        {
+          "en": "At $x = 0.5$ m: $F = -4$ N, pointing back towards $x = 0$.",
+          "hi": "$x = 0.5$ m पर: $F = -4$ N, $x = 0$ की ओर वापस।"
+        }
+      ],
+      "answer": {
+        "en": "$-4$ N",
+        "hi": "$-4$ N"
+      },
+      "answer_value": {
+        "value": -4,
+        "unit": "N",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting the minus sign in $F = -dV/dx$.",
+        "hi": "$F = -dV/dx$ का ऋण चिह्न भूल जाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.7"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.potential-energy.0001"
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.potential-energy.0002"
+    },
+    {
+      "id": "phy.work-energy-power.potential-energy:dd:08",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.potential-energy.core.potential-energy"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Potential energy is stored energy; near the Earth $V = mgh$.",
+          "hi": "स्थितिज ऊर्जा संचित ऊर्जा है; पृथ्वी के पास $V = mgh$।"
+        },
+        {
+          "en": "$F = -dV/dx$; only differences in V matter, so its zero is a free choice.",
+          "hi": "$F = -dV/dx$; केवल V के अंतर मायने रखते हैं, इसलिए इसका शून्य स्वतंत्र चुनाव है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

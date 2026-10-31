@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.kinetic-energy",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.kinetic-energy.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.kinetic-energy.core.work-energy-theorem",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The kinetic energy of a 2 kg body moving at 3 m/s is",
+        "hi": "3 m/s से चलते 2 kg के पिंड की गतिज ऊर्जा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "9 J",
+            "hi": "9 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 J",
+            "hi": "6 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "18 J",
+            "hi": "18 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "3 J",
+            "hi": "3 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$K = \\frac{1}{2}mv^2$",
+          "hi": "$K = \\frac{1}{2}mv^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Half the mass times the speed squared.",
+          "hi": "आधा द्रव्यमान गुणा चाल का वर्ग।"
+        },
+        "steps": [
+          {
+            "en": "$K = \\frac{1}{2} \\times 2 \\times 3^2 = 9$ J",
+            "hi": "$K = \\frac{1}{2} \\times 2 \\times 3^2 = 9$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the momentum, $mv$, not the energy.",
+              "hi": "यह संवेग $mv$ है, ऊर्जा नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The factor of one half was left out.",
+              "hi": "आधे का गुणक छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The speed was not squared.",
+              "hi": "चाल का वर्ग नहीं किया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.kinetic-energy.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.kinetic-energy.core.work-energy-theorem",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The speed of a 0.5 kg ball rises from 2 m/s to 6 m/s. The net work done on it, in J, is",
+        "hi": "0.5 kg की गेंद की चाल 2 m/s से 6 m/s हो जाती है। उस पर किया गया नेट कार्य, J में, है"
+      },
+      "answer": {
+        "value": 8,
+        "unit": "J"
+      },
+      "hints": [
+        {
+          "en": "$K_f - K_i$",
+          "hi": "$K_f - K_i$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Net work equals the change in kinetic energy.",
+          "hi": "नेट कार्य गतिज ऊर्जा में परिवर्तन के बराबर है।"
+        },
+        "steps": [
+          {
+            "en": "$W = \\frac{1}{2} \\times 0.5 \\times (6^2 - 2^2) = 0.25 \\times 32 = 8$ J",
+            "hi": "$W = \\frac{1}{2} \\times 0.5 \\times (6^2 - 2^2) = 0.25 \\times 32 = 8$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using $(6 - 2)^2$ gives 4 J.",
+              "hi": "$(6 - 2)^2$ लेने पर 4 J आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.kinetic-energy.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.kinetic-energy.core.work-energy-theorem",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "If the momentum of a body is doubled, its kinetic energy becomes",
+        "hi": "यदि किसी पिंड का संवेग दुगुना कर दिया जाए, तो उसकी गतिज ऊर्जा हो जाती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4 times",
+            "hi": "4 गुनी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 times",
+            "hi": "2 गुनी"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\sqrt{2}$ times",
+            "hi": "$\\sqrt{2}$ गुनी"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8 times",
+            "hi": "8 गुनी"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Write K in terms of p.",
+          "hi": "K को p के पदों में लिखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Kinetic energy goes as the square of the momentum.",
+          "hi": "गतिज ऊर्जा संवेग के वर्ग के अनुसार बदलती है।"
+        },
+        "steps": [
+          {
+            "en": "$K = \\frac{p^2}{2m}$; doubling p multiplies K by $2^2 = 4$.",
+            "hi": "$K = \\frac{p^2}{2m}$; p दुगुना करने पर K, $2^2 = 4$ गुना।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "K is not proportional to p.",
+              "hi": "K, p के अनुक्रमानुपाती नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That would be K going as $\\sqrt{p}$.",
+              "hi": "वह तब होता जब K, $\\sqrt{p}$ के अनुसार बदलता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That would need K to go as $p^3$.",
+              "hi": "उसके लिए K का $p^3$ के अनुसार बदलना चाहिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.kinetic-energy.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.kinetic-energy.core.work-energy-theorem",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two bodies of mass 1 kg and 4 kg have equal momenta. The ratio of their kinetic energies, light to heavy, is",
+        "hi": "1 kg और 4 kg द्रव्यमान के दो पिंडों के संवेग समान हैं। उनकी गतिज ऊर्जाओं का अनुपात, हल्के से भारी, है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4 : 1",
+            "hi": "4 : 1"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1 : 4",
+            "hi": "1 : 4"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 : 1",
+            "hi": "1 : 1"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2 : 1",
+            "hi": "2 : 1"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$K = p^2/2m$",
+          "hi": "$K = p^2/2m$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With p fixed, kinetic energy goes as $1/m$.",
+          "hi": "p नियत हो तो गतिज ऊर्जा $1/m$ के अनुसार बदलती है।"
+        },
+        "steps": [
+          {
+            "en": "$K = \\frac{p^2}{2m}$, so $\\frac{K_1}{K_2} = \\frac{m_2}{m_1} = \\frac{4}{1}$",
+            "hi": "$K = \\frac{p^2}{2m}$, अतः $\\frac{K_1}{K_2} = \\frac{m_2}{m_1} = \\frac{4}{1}$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The ratio was inverted.",
+              "hi": "अनुपात उलट दिया गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Equal momenta do not mean equal energies.",
+              "hi": "समान संवेग का अर्थ समान ऊर्जा नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That takes a square root that is not there.",
+              "hi": "यह ऐसा वर्गमूल लेता है जो है ही नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.kinetic-energy.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.kinetic-energy.core.work-energy-theorem",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 2 kg block starts from rest on a rough floor. A 10 N horizontal push moves it 3 m against a friction force of 4 N. Its kinetic energy at the end is",
+        "hi": "2 kg का गुटका खुरदरे फ़र्श पर विराम से चलता है। 10 N का क्षैतिज धक्का उसे 4 N के घर्षण बल के विरुद्ध 3 m खिसकाता है। अंत में उसकी गतिज ऊर्जा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "18 J",
+            "hi": "18 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "30 J",
+            "hi": "30 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "12 J",
+            "hi": "12 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "42 J",
+            "hi": "42 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Net force times distance.",
+          "hi": "नेट बल गुणा दूरी।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Use the work of the net force.",
+          "hi": "नेट बल का कार्य लीजिए।"
+        },
+        "steps": [
+          {
+            "en": "Net force $= 10 - 4 = 6$ N, so $W_{net} = 6 \\times 3 = 18$ J $= K_f$.",
+            "hi": "नेट बल $= 10 - 4 = 6$ N, अतः $W_{net} = 6 \\times 3 = 18$ J $= K_f$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the work of the push alone.",
+              "hi": "यह केवल धक्के का कार्य है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the work done against friction.",
+              "hi": "यह घर्षण के विरुद्ध किया गया कार्य है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Friction was added instead of subtracted.",
+              "hi": "घर्षण घटाने के बजाय जोड़ दिया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

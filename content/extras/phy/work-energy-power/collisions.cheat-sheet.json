@@ -1,0 +1,98 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "cs.phy.work-energy-power.collisions",
+  "scope": "topic",
+  "topic": "phy.work-energy-power.collisions",
+  "title": {
+    "en": "Collisions",
+    "hi": "संघट्ट"
+  },
+  "concepts": [
+    "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+  ],
+  "key_ideas": [
+    {
+      "en": "Momentum is conserved in every collision.",
+      "hi": "हर संघट्ट में संवेग संरक्षित रहता है।"
+    },
+    {
+      "en": "Elastic: kinetic energy conserved too. Completely inelastic: the bodies stick.",
+      "hi": "प्रत्यास्थ: गतिज ऊर्जा भी संरक्षित। पूर्णतः अप्रत्यास्थ: पिंड सट जाते हैं।"
+    },
+    {
+      "en": "Two dimensions: conserve momentum along each axis.",
+      "hi": "दो विमाएँ: हर अक्ष के अनुदिश संवेग संरक्षित।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Completely inelastic",
+        "hi": "पूर्णतः अप्रत्यास्थ"
+      },
+      "latex": "v_f = \\frac{m_1}{m_1 + m_2}v_{1i}"
+    },
+    {
+      "name": {
+        "en": "Kinetic energy lost",
+        "hi": "गतिज ऊर्जा की क्षति"
+      },
+      "latex": "\\Delta K = \\frac{1}{2}\\frac{m_1m_2}{m_1 + m_2}v_{1i}^2"
+    },
+    {
+      "name": {
+        "en": "Elastic, target at rest",
+        "hi": "प्रत्यास्थ, लक्ष्य विराम में"
+      },
+      "latex": "v_{1f} = \\frac{m_1 - m_2}{m_1 + m_2}v_{1i},\\ v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "In an elastic collision each body keeps its own kinetic energy.",
+        "hi": "प्रत्यास्थ संघट्ट में हर पिंड अपनी गतिज ऊर्जा रखता है।"
+      },
+      "correct": {
+        "en": "Only the total kinetic energy is conserved.",
+        "hi": "केवल कुल गतिज ऊर्जा संरक्षित रहती है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Kinetic energy stays constant throughout an elastic collision.",
+        "hi": "प्रत्यास्थ संघट्ट में पूरे समय गतिज ऊर्जा स्थिर रहती है।"
+      },
+      "correct": {
+        "en": "Only before and after; during contact some is stored as deformation.",
+        "hi": "केवल पहले और बाद में; संपर्क के दौरान कुछ विकृति में संचित होती है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Momentum is lost in an inelastic collision.",
+        "hi": "अप्रत्यास्थ संघट्ट में संवेग खो जाता है।"
+      },
+      "correct": {
+        "en": "Momentum is conserved in every collision; only kinetic energy is lost.",
+        "hi": "संवेग हर संघट्ट में संरक्षित है; केवल गतिज ऊर्जा खोती है।"
+      }
+    }
+  ],
+  "diagram": "img.work-energy-power.carrom",
+  "hi_source": "translation"
+}

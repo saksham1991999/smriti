@@ -1,0 +1,91 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "cs.phy.work-energy-power.kinetic-energy",
+  "scope": "topic",
+  "topic": "phy.work-energy-power.kinetic-energy",
+  "title": {
+    "en": "Kinetic Energy and the Work-Energy Theorem",
+    "hi": "गतिज ऊर्जा और कार्य-ऊर्जा प्रमेय"
+  },
+  "concepts": [
+    "phy.work-energy-power.kinetic-energy.core.work-energy-theorem"
+  ],
+  "key_ideas": [
+    {
+      "en": "Kinetic energy is $\\frac{1}{2}mv^2$, a positive scalar.",
+      "hi": "गतिज ऊर्जा $\\frac{1}{2}mv^2$ है, एक धनात्मक अदिश।"
+    },
+    {
+      "en": "Net work equals the change in kinetic energy.",
+      "hi": "नेट कार्य गतिज ऊर्जा में परिवर्तन के बराबर है।"
+    },
+    {
+      "en": "The theorem is a scalar, integrated form of the second law.",
+      "hi": "प्रमेय द्वितीय नियम का अदिश, समाकलित रूप है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Kinetic energy",
+        "hi": "गतिज ऊर्जा"
+      },
+      "latex": "K = \\frac{1}{2}mv^2 = \\frac{p^2}{2m}"
+    },
+    {
+      "name": {
+        "en": "Work-energy theorem",
+        "hi": "कार्य-ऊर्जा प्रमेय"
+      },
+      "latex": "K_f - K_i = W_{net}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "The theorem uses the work of the applied force alone.",
+        "hi": "प्रमेय केवल लगाए गए बल का कार्य लेता है।"
+      },
+      "correct": {
+        "en": "It uses the work of the net force, friction included.",
+        "hi": "यह नेट बल का कार्य लेता है, घर्षण सहित।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Losing 90% of the kinetic energy means losing 90% of the speed.",
+        "hi": "90% गतिज ऊर्जा खोने का अर्थ 90% चाल खोना है।"
+      },
+      "correct": {
+        "en": "K goes as $v^2$; the speed falls by about 68%.",
+        "hi": "K, $v^2$ के अनुसार बदलती है; चाल लगभग 68% घटती है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Equal momenta mean equal kinetic energies.",
+        "hi": "समान संवेग का अर्थ समान गतिज ऊर्जा।"
+      },
+      "correct": {
+        "en": "$K = p^2/2m$: the lighter body has more.",
+        "hi": "$K = p^2/2m$: हल्के पिंड की अधिक।"
+      }
+    }
+  ],
+  "diagram": "img.work-energy-power.trunk-push",
+  "hi_source": "translation"
+}

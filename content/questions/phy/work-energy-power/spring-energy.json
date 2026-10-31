@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.spring-energy",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.spring-energy.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.spring-energy.core.spring-potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A spring of spring constant 200 N/m is stretched by 0.1 m. The energy stored in it is",
+        "hi": "200 N/m स्प्रिंग नियतांक वाली स्प्रिंग को 0.1 m खींचा जाता है। उसमें संचित ऊर्जा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 J",
+            "hi": "1 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "20 J",
+            "hi": "20 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2 J",
+            "hi": "2 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "10 J",
+            "hi": "10 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$V = \\frac{1}{2}kx^2$",
+          "hi": "$V = \\frac{1}{2}kx^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Half k times the stretch squared.",
+          "hi": "आधा k गुणा खिंचाव का वर्ग।"
+        },
+        "steps": [
+          {
+            "en": "$V = \\frac{1}{2} \\times 200 \\times 0.1^2 = 1$ J",
+            "hi": "$V = \\frac{1}{2} \\times 200 \\times 0.1^2 = 1$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is $kx$, the force in newtons.",
+              "hi": "यह $kx$ है, न्यूटन में बल।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The factor one half was left out.",
+              "hi": "आधे का गुणक छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is $\\frac{1}{2}kx$, with x not squared.",
+              "hi": "यह $\\frac{1}{2}kx$ है, x का वर्ग नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.spring-energy.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.spring-energy.core.spring-potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A spring with $k = 400$ N/m is already stretched by 0.1 m. The extra work needed to stretch it to 0.2 m, in J, is",
+        "hi": "$k = 400$ N/m वाली स्प्रिंग पहले से 0.1 m खिंची है। इसे 0.2 m तक खींचने के लिए आवश्यक अतिरिक्त कार्य, J में, है"
+      },
+      "answer": {
+        "value": 6,
+        "unit": "J"
+      },
+      "hints": [
+        {
+          "en": "$\\frac{1}{2}k(x_2^2 - x_1^2)$",
+          "hi": "$\\frac{1}{2}k(x_2^2 - x_1^2)$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Take the difference of the stored energies.",
+          "hi": "संचित ऊर्जाओं का अंतर लीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$W = \\frac{1}{2} \\times 400 \\times (0.2^2 - 0.1^2) = 200 \\times 0.03 = 6$ J",
+            "hi": "$W = \\frac{1}{2} \\times 400 \\times (0.2^2 - 0.1^2) = 200 \\times 0.03 = 6$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using $(0.2 - 0.1)^2$ gives 2 J.",
+              "hi": "$(0.2 - 0.1)^2$ लेने पर 2 J आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.spring-energy.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.spring-energy.core.spring-potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 1 kg block sliding at 2 m/s on a smooth floor runs into a spring with $k = 100$ N/m. The maximum compression of the spring is",
+        "hi": "चिकने फ़र्श पर 2 m/s से फिसलता 1 kg का गुटका $k = 100$ N/m वाली स्प्रिंग से टकराता है। स्प्रिंग का अधिकतम संपीडन है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0.2 m",
+            "hi": "0.2 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.02 m",
+            "hi": "0.02 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0.4 m",
+            "hi": "0.4 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2 m",
+            "hi": "2 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Equate kinetic and spring energy.",
+          "hi": "गतिज और स्प्रिंग ऊर्जा को बराबर रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "All the kinetic energy is stored in the spring.",
+          "hi": "सारी गतिज ऊर्जा स्प्रिंग में संचित होती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{1}{2}mv^2 = \\frac{1}{2}kx^2$, so $x = v\\sqrt{\\frac{m}{k}} = 2 \\times 0.1 = 0.2$ m",
+            "hi": "$\\frac{1}{2}mv^2 = \\frac{1}{2}kx^2$, अतः $x = v\\sqrt{\\frac{m}{k}} = 2 \\times 0.1 = 0.2$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The square root of $m/k$ was not taken.",
+              "hi": "$m/k$ का वर्गमूल नहीं लिया गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is twice the right answer.",
+              "hi": "यह सही उत्तर का दुगुना है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That ignores the spring constant.",
+              "hi": "यह स्प्रिंग नियतांक की उपेक्षा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.spring-energy.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.spring-energy.core.spring-potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "If the stretch of a spring is doubled, the energy stored in it becomes",
+        "hi": "यदि स्प्रिंग का खिंचाव दुगुना कर दिया जाए, तो उसमें संचित ऊर्जा हो जाती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4 times",
+            "hi": "4 गुनी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 times",
+            "hi": "2 गुनी"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "half",
+            "hi": "आधी"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "unchanged",
+            "hi": "अपरिवर्तित"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$V = \\frac{1}{2}kx^2$",
+          "hi": "$V = \\frac{1}{2}kx^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The energy goes as the square of the stretch.",
+          "hi": "ऊर्जा खिंचाव के वर्ग के अनुसार बदलती है।"
+        },
+        "steps": [
+          {
+            "en": "$V \\propto x^2$; doubling x gives $2^2 = 4$ times the energy.",
+            "hi": "$V \\propto x^2$; x दुगुना करने पर ऊर्जा $2^2 = 4$ गुनी।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is what happens to the force, not the energy.",
+              "hi": "यह बल के साथ होता है, ऊर्जा के साथ नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "More stretch stores more energy, not less.",
+              "hi": "अधिक खिंचाव अधिक ऊर्जा संचित करता है, कम नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The energy depends on the stretch.",
+              "hi": "ऊर्जा खिंचाव पर निर्भर है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.spring-energy.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.spring-energy.core.spring-potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 4 kg block on a smooth floor is attached to a spring with $k = 100$ N/m, pulled out 0.2 m and released. Its greatest speed is",
+        "hi": "चिकने फ़र्श पर 4 kg का गुटका $k = 100$ N/m वाली स्प्रिंग से जुड़ा है, 0.2 m बाहर खींचकर छोड़ा जाता है। उसकी अधिकतम चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 m/s",
+            "hi": "1 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.2 m/s",
+            "hi": "0.2 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 m/s",
+            "hi": "5 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.5 m/s",
+            "hi": "0.5 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v_m = x_m\\sqrt{k/m}$",
+          "hi": "$v_m = x_m\\sqrt{k/m}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "All the spring energy becomes kinetic at the natural length.",
+          "hi": "प्राकृतिक लंबाई पर सारी स्प्रिंग ऊर्जा गतिज बन जाती है।"
+        },
+        "steps": [
+          {
+            "en": "$v_m = x_m\\sqrt{\\frac{k}{m}} = 0.2 \\times \\sqrt{25} = 1$ m/s",
+            "hi": "$v_m = x_m\\sqrt{\\frac{k}{m}} = 0.2 \\times \\sqrt{25} = 1$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the stretch, not a speed.",
+              "hi": "यह खिंचाव है, चाल नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is $\\sqrt{k/m}$ without the stretch.",
+              "hi": "यह खिंचाव के बिना $\\sqrt{k/m}$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That halves the right answer.",
+              "hi": "यह सही उत्तर को आधा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

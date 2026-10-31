@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 4 Gati ke Niyam: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph104.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 64-68"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "topic": "phy.laws-of-motion.circular-dynamics",
+  "questions": [
+    {
+      "id": "q.phy.laws-of-motion.circular-dynamics.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.circular-dynamics.core.centripetal-force",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 0.5 kg stone tied to a 1 m string is whirled in a horizontal circle at 4 m/s. Ignoring gravity, the tension in the string is",
+        "hi": "1 m डोरी से बँधे 0.5 kg के पत्थर को क्षैतिज वृत्त में 4 m/s से घुमाया जाता है। गुरुत्व की उपेक्षा करें तो डोरी में तनाव है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "8 N",
+            "hi": "8 N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 N",
+            "hi": "2 N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "16 N",
+            "hi": "16 N"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 N",
+            "hi": "4 N"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$mv^2/R$",
+          "hi": "$mv^2/R$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The tension is the centripetal force.",
+          "hi": "तनाव ही अभिकेंद्र बल है।"
+        },
+        "steps": [
+          {
+            "en": "$T = \\frac{mv^2}{R} = \\frac{0.5 \\times 16}{1} = 8$ N",
+            "hi": "$T = \\frac{mv^2}{R} = \\frac{0.5 \\times 16}{1} = 8$ N"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The speed was not squared.",
+              "hi": "चाल का वर्ग नहीं किया गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The mass was left out.",
+              "hi": "द्रव्यमान छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That multiplies mass by speed twice over incorrectly.",
+              "hi": "यह गलत ढंग से गुणा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.circular-dynamics.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.circular-dynamics.core.centripetal-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A car takes a level circular turn of radius 20 m; $\\mu_s = 0.5$. Taking $g = 10$ m/s², the maximum speed without slipping, in m/s, is",
+        "hi": "एक कार 20 m त्रिज्या का समतल वृत्तीय मोड़ लेती है; $\\mu_s = 0.5$। $g = 10$ m/s² लेकर बिना फिसले अधिकतम चाल, m/s में, है"
+      },
+      "answer": {
+        "value": 10,
+        "unit": "m/s"
+      },
+      "hints": [
+        {
+          "en": "$v_{max} = \\sqrt{\\mu_s R g}$",
+          "hi": "$v_{max} = \\sqrt{\\mu_s R g}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Friction is the only inward force on a level road.",
+          "hi": "समतल सड़क पर घर्षण ही एकमात्र भीतरी बल है।"
+        },
+        "steps": [
+          {
+            "en": "$v_{max} = \\sqrt{\\mu_s R g} = \\sqrt{0.5 \\times 20 \\times 10} = 10$ m/s",
+            "hi": "$v_{max} = \\sqrt{\\mu_s R g} = \\sqrt{0.5 \\times 20 \\times 10} = 10$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Forgetting the square root gives 100.",
+              "hi": "वर्गमूल भूलने पर 100 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.circular-dynamics.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.circular-dynamics.core.centripetal-force",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A road curve of radius 40 m is banked so that $\\tan\\theta = 0.25$. Taking $g = 10$ m/s², the speed at which a car needs no friction to take the curve is",
+        "hi": "40 m त्रिज्या का सड़क मोड़ ऐसे ढालू है कि $\\tan\\theta = 0.25$। $g = 10$ m/s² लेकर वह चाल जिस पर कार को मोड़ लेने के लिए घर्षण नहीं चाहिए, है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 m/s",
+            "hi": "10 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "100 m/s",
+            "hi": "100 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "20 m/s",
+            "hi": "20 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "5 m/s",
+            "hi": "5 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v_o = \\sqrt{Rg\\tan\\theta}$",
+          "hi": "$v_o = \\sqrt{Rg\\tan\\theta}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At the optimum speed the normal force alone gives the centripetal force.",
+          "hi": "अनुकूलतम चाल पर अकेला अभिलंब बल अभिकेंद्र बल देता है।"
+        },
+        "steps": [
+          {
+            "en": "$v_o = \\sqrt{Rg\\tan\\theta} = \\sqrt{40 \\times 10 \\times 0.25} = 10$ m/s",
+            "hi": "$v_o = \\sqrt{Rg\\tan\\theta} = \\sqrt{40 \\times 10 \\times 0.25} = 10$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The square root was not taken.",
+              "hi": "वर्गमूल नहीं लिया गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\tan\\theta$ was taken as 1.",
+              "hi": "$\\tan\\theta$ को 1 मान लिया गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\tan\\theta$ was applied twice.",
+              "hi": "$\\tan\\theta$ दो बार लगाया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.circular-dynamics.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.circular-dynamics.core.centripetal-force",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For a car going round a curve on a level road, the centripetal force is provided by",
+        "hi": "समतल सड़क पर मोड़ लेती कार के लिए अभिकेंद्र बल देता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "static friction between tyres and road",
+            "hi": "टायरों और सड़क के बीच स्थैतिक घर्षण"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the car's weight",
+            "hi": "कार का भार"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the normal reaction of the road",
+            "hi": "सड़क की अभिलंब प्रतिक्रिया"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the engine's thrust",
+            "hi": "इंजन का प्रणोद"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which force points sideways?",
+          "hi": "कौन-सा बल बगल की ओर है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only friction acts along the road surface towards the centre.",
+          "hi": "केवल घर्षण सड़क की सतह के अनुदिश केंद्र की ओर लगता है।"
+        },
+        "steps": [
+          {
+            "en": "Weight and normal reaction are vertical on a level road and cancel.",
+            "hi": "समतल सड़क पर भार और अभिलंब प्रतिक्रिया ऊर्ध्वाधर हैं और निरस्त होते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Weight acts vertically down.",
+              "hi": "भार ऊर्ध्वाधर नीचे लगता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "On a level road it is vertical.",
+              "hi": "समतल सड़क पर यह ऊर्ध्वाधर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Forces inside the car cannot accelerate it.",
+              "hi": "कार के भीतर के बल उसे त्वरित नहीं कर सकते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.circular-dynamics.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.circular-dynamics.core.centripetal-force",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "On a level road, the maximum safe speed round a curve is 10 m/s. On a curve of four times the radius with the same road surface, it is",
+        "hi": "समतल सड़क पर किसी मोड़ की अधिकतम सुरक्षित चाल 10 m/s है। उसी सड़क सतह पर चार गुनी त्रिज्या वाले मोड़ पर यह है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "20 m/s",
+            "hi": "20 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "40 m/s",
+            "hi": "40 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 m/s",
+            "hi": "10 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "5 m/s",
+            "hi": "5 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v_{max} = \\sqrt{\\mu_s R g}$",
+          "hi": "$v_{max} = \\sqrt{\\mu_s R g}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The safe speed grows as the square root of the radius.",
+          "hi": "सुरक्षित चाल त्रिज्या के वर्गमूल के साथ बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "$v_{max} \\propto \\sqrt{R}$: $10 \\times \\sqrt{4} = 20$ m/s",
+            "hi": "$v_{max} \\propto \\sqrt{R}$: $10 \\times \\sqrt{4} = 20$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The speed is not proportional to R.",
+              "hi": "चाल R के अनुक्रमानुपाती नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The radius does change the limit.",
+              "hi": "त्रिज्या सीमा को बदलती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A gentler curve allows more speed, not less.",
+              "hi": "कम तीव्र मोड़ अधिक चाल देता है, कम नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

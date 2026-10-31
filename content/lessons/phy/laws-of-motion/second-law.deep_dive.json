@@ -1,0 +1,717 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.second-law:deep_dive",
+  "topic": "phy.laws-of-motion.second-law",
+  "mode": "deep_dive",
+  "estimated_minutes": 12,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.second-law.core.momentum-second-law",
+    "phy.laws-of-motion.second-law.core.impulse",
+    "phy.laws-of-motion.second-law.core.free-body-diagrams"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Momentum and force",
+        "hi": "संवेग और बल"
+      },
+      "subtopic": "phy.laws-of-motion.second-law.core",
+      "card_ids": [
+        "phy.laws-of-motion.second-law:dd:01",
+        "phy.laws-of-motion.second-law:dd:02",
+        "phy.laws-of-motion.second-law:dd:03",
+        "phy.laws-of-motion.second-law:dd:04",
+        "phy.laws-of-motion.second-law:dd:05",
+        "phy.laws-of-motion.second-law:dd:06"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Impulse",
+        "hi": "आवेग"
+      },
+      "subtopic": "phy.laws-of-motion.second-law.core",
+      "card_ids": [
+        "phy.laws-of-motion.second-law:dd:07",
+        "phy.laws-of-motion.second-law:dd:08",
+        "phy.laws-of-motion.second-law:dd:09",
+        "phy.laws-of-motion.second-law:dd:10",
+        "phy.laws-of-motion.second-law:dd:11",
+        "phy.laws-of-motion.second-law:dd:12",
+        "phy.laws-of-motion.second-law:dd:13"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Free-body diagrams",
+        "hi": "बल निर्देशक आरेख"
+      },
+      "subtopic": "phy.laws-of-motion.second-law.core",
+      "card_ids": [
+        "phy.laws-of-motion.second-law:dd:14",
+        "phy.laws-of-motion.second-law:dd:15",
+        "phy.laws-of-motion.second-law:dd:16",
+        "phy.laws-of-motion.second-law:dd:17",
+        "phy.laws-of-motion.second-law:dd:18",
+        "phy.laws-of-motion.second-law:dd:19"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.second-law:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Momentum",
+        "hi": "संवेग"
+      },
+      "body": {
+        "en": "The momentum of a body is the product of its mass and velocity, $\\vec{p} = m\\vec{v}$. It is a vector.\n\nEveryday experience shows why both factors matter. Pushing a loaded truck to a given speed in a given time takes a much greater force than pushing a small car. A bullet fired at high speed can pierce tissue; the same bullet at a moderate speed does little damage. And a fixed force applied for a fixed time to bodies of different mass, starting from rest, gives the lighter one a greater speed but gives both the same momentum.\n\nMomentum can change in direction alone. A stone whirled in a horizontal circle at constant speed has a momentum of fixed size but changing direction, and your hand must pull through the string to change it.",
+        "hi": "किसी पिंड का संवेग उसके द्रव्यमान और वेग का गुणनफल है, $\\vec{p} = m\\vec{v}$। यह एक सदिश है।\n\nरोज़ का अनुभव बताता है कि दोनों गुणक क्यों मायने रखते हैं। लदे ट्रक को किसी समय में किसी चाल तक धकेलने में छोटी कार से कहीं अधिक बल लगता है। तेज़ चाल से चली गोली ऊतक को भेद सकती है; वही गोली मध्यम चाल से बहुत कम क्षति करती है। और विराम से शुरू होने वाले अलग द्रव्यमानों पर नियत समय तक नियत बल लगाने पर हल्का पिंड अधिक चाल पाता है, पर दोनों को समान संवेग मिलता है।\n\nसंवेग केवल दिशा में भी बदल सकता है। नियत चाल से क्षैतिज वृत्त में घुमाए गए पत्थर का संवेग परिमाण में स्थिर पर दिशा में बदलता रहता है, और उसे बदलने के लिए आपके हाथ को डोरी से खींचना पड़ता है।"
+      },
+      "media": "img.laws-of-motion.cricket-catch",
+      "highlights": [
+        {
+          "term": {
+            "en": "momentum",
+            "hi": "संवेग"
+          },
+          "definition": {
+            "en": "mass times velocity, a vector",
+            "hi": "द्रव्यमान गुणा वेग, एक सदिश"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.5, Eq. 4.1, Fig. 4.4"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:02",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Newton's second law",
+        "hi": "न्यूटन का द्वितीय नियम"
+      },
+      "latex": "\\vec{F} = \\frac{d\\vec{p}}{dt} = m\\vec{a}",
+      "symbols": [
+        {
+          "symbol": "\\vec{F}",
+          "meaning": {
+            "en": "net external force",
+            "hi": "नेट बाह्य बल"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "\\vec{p}",
+          "meaning": {
+            "en": "linear momentum",
+            "hi": "रैखिक संवेग"
+          },
+          "unit": "kg m/s"
+        },
+        {
+          "symbol": "m",
+          "meaning": {
+            "en": "mass",
+            "hi": "द्रव्यमान"
+          },
+          "unit": "kg"
+        },
+        {
+          "symbol": "\\vec{a}",
+          "meaning": {
+            "en": "acceleration",
+            "hi": "त्वरण"
+          },
+          "unit": "m/s²"
+        }
+      ],
+      "conditions": {
+        "en": "$\\vec{F} = m\\vec{a}$ holds for a body of fixed mass. The SI unit of force is the newton: $1\\ \\text{N} = 1\\ \\text{kg m s}^{-2}$.",
+        "hi": "$\\vec{F} = m\\vec{a}$ नियत द्रव्यमान वाले पिंड के लिए है। बल का SI मात्रक न्यूटन है: $1\\ \\text{N} = 1\\ \\text{kg m s}^{-2}$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.5, Eqs. 4.2-4.5, Summary 4"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "What the second law says",
+        "hi": "द्वितीय नियम क्या कहता है"
+      },
+      "body": {
+        "en": "The rate of change of momentum of a body is directly proportional to the applied force and takes place in the direction in which the force acts. Choosing the constant as 1 defines the newton.\n\nIt is consistent with the first law: $\\vec{F} = 0$ gives $\\vec{a} = 0$. It is a vector law, one equation per component, $F_x = ma_x$ and so on; a force at an angle to the velocity changes only the component of velocity along the force, as gravity leaves a projectile's horizontal velocity alone.\n\nIt applies to a system of particles too, with $\\vec{F}$ the total external force; internal forces are not included. And it is a local law: the force here and now fixes the acceleration here and now, whatever the past motion. Finally, $m\\vec{a}$ is the effect of the force, not another force to add to it.",
+        "hi": "किसी पिंड के संवेग परिवर्तन की दर आरोपित बल के अनुक्रमानुपाती होती है और उसी दिशा में होती है जिसमें बल लगता है। स्थिरांक को 1 चुनने से न्यूटन परिभाषित होता है।\n\nयह प्रथम नियम से संगत है: $\\vec{F} = 0$ से $\\vec{a} = 0$ मिलता है। यह एक सदिश नियम है, हर घटक के लिए एक समीकरण, $F_x = ma_x$ आदि; वेग से कोण पर लगा बल वेग का केवल बल के अनुदिश घटक बदलता है, जैसे गुरुत्व प्रक्षेप्य के क्षैतिज वेग को नहीं छूता।\n\nयह कणों के निकाय पर भी लागू होता है, जहाँ $\\vec{F}$ कुल बाह्य बल है; आंतरिक बल नहीं जोड़े जाते। और यह एक स्थानीय नियम है: यहाँ और अभी का बल यहाँ और अभी का त्वरण तय करता है, पिछली गति चाहे जो हो। अंत में, $m\\vec{a}$ बल का प्रभाव है, उसमें जोड़ा जाने वाला कोई और बल नहीं।"
+      },
+      "media": "img.laws-of-motion.cricket-catch",
+      "highlights": [
+        {
+          "term": {
+            "en": "local law",
+            "hi": "स्थानीय नियम"
+          },
+          "definition": {
+            "en": "acceleration now depends only on force now",
+            "hi": "अभी का त्वरण केवल अभी के बल पर निर्भर है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.5, Eq. 4.6, Fig. 4.5, Summary 4, Points to Ponder 4"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A bullet of mass 0.04 kg moving at 90 m/s enters a heavy wooden block and stops after 60 cm. What is the average resistive force on the bullet?",
+        "hi": "90 m/s से चलती 0.04 kg द्रव्यमान की एक गोली लकड़ी के भारी गुटके में घुसकर 60 cm बाद रुक जाती है। गोली पर औसत प्रतिरोधी बल क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Retardation from $v^2 = u^2 + 2as$: $a = -\\frac{90 \\times 90}{2 \\times 0.6} = -6750$ m/s²",
+          "hi": "$v^2 = u^2 + 2as$ से मंदन: $a = -\\frac{90 \\times 90}{2 \\times 0.6} = -6750$ m/s²"
+        },
+        {
+          "en": "Force $= 0.04 \\times 6750 = 270$ N, opposite to the motion.",
+          "hi": "बल $= 0.04 \\times 6750 = 270$ N, गति के विपरीत।"
+        },
+        {
+          "en": "The real force may vary, so this is the average force.",
+          "hi": "वास्तविक बल बदल सकता है, इसलिए यह औसत बल है।"
+        }
+      ],
+      "answer": {
+        "en": "270 N (average)",
+        "hi": "270 N (औसत)"
+      },
+      "answer_value": {
+        "value": 270,
+        "unit": "N",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting to change 60 cm into metres.",
+        "hi": "60 cm को मीटर में न बदलना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.2"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:05",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.second-law.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:06",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$\\vec{p} = m\\vec{v}$; $\\vec{F} = d\\vec{p}/dt = m\\vec{a}$.",
+          "hi": "$\\vec{p} = m\\vec{v}$; $\\vec{F} = d\\vec{p}/dt = m\\vec{a}$।"
+        },
+        {
+          "en": "The second law is a vector, local law, and includes the first law.",
+          "hi": "द्वितीय नियम सदिश और स्थानीय नियम है, और इसमें प्रथम नियम शामिल है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:07",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Soft hands",
+        "hi": "नरम हाथ"
+      },
+      "body": {
+        "en": "A seasoned fielder takes a fast ball and draws both hands back as it lands. A beginner holds his hands still and gets stung. The ball loses the same momentum either way. What differs is how quickly.",
+        "hi": "एक अनुभवी क्षेत्ररक्षक तेज़ गेंद पकड़ते समय दोनों हाथ पीछे खींच लेता है। नौसिखिया हाथ स्थिर रखता है और उसे चोट लगती है। दोनों ही बार गेंद का उतना ही संवेग समाप्त होता है। अंतर केवल इसमें है कि कितनी जल्दी।"
+      },
+      "media": "img.laws-of-motion.cricket-catch",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.5, Fig. 4.3"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Impulse and impulsive forces",
+        "hi": "आवेग और आवेगी बल"
+      },
+      "body": {
+        "en": "The same change in momentum brought about in a shorter time needs a greater force. Drawing the hands back gives the ball longer to stop, so the force on the hands is smaller.\n\nWhen a ball hits a wall and bounces back, the wall pushes on it with a large force for a very short time. The force and the time are hard to measure separately, but their product, the impulse, equals the change in momentum and is easy to find. A large force acting for a short time to produce a finite change in momentum is called an impulsive force. It is like any other force, only large and brief, and the body hardly moves while it acts. For a varying force, the impulse is the area under the force-time graph.",
+        "hi": "उतना ही संवेग परिवर्तन कम समय में लाने के लिए अधिक बल चाहिए। हाथ पीछे खींचने से गेंद को रुकने में अधिक समय मिलता है, इसलिए हाथों पर बल कम लगता है।\n\nजब गेंद दीवार से टकराकर लौटती है, तो दीवार बहुत कम समय के लिए उस पर बड़ा बल लगाती है। बल और समय को अलग-अलग मापना कठिन है, पर उनका गुणनफल, यानी आवेग, संवेग परिवर्तन के बराबर है और आसानी से निकलता है। कम समय में लगकर संवेग में निश्चित परिवर्तन लाने वाला बड़ा बल आवेगी बल कहलाता है। यह किसी भी अन्य बल जैसा ही है, बस बड़ा और क्षणिक, और इसके लगने के दौरान पिंड लगभग नहीं खिसकता। बदलते बल के लिए आवेग बल-समय ग्राफ़ के नीचे का क्षेत्रफल है।"
+      },
+      "media": "img.laws-of-motion.cricket-catch",
+      "highlights": [
+        {
+          "term": {
+            "en": "impulse",
+            "hi": "आवेग"
+          },
+          "definition": {
+            "en": "force times time; equals change in momentum",
+            "hi": "बल गुणा समय; संवेग परिवर्तन के बराबर"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.5 (Impulse), Eq. 4.7, Summary 5"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:09",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Impulse",
+        "hi": "आवेग"
+      },
+      "latex": "\\vec{J} = \\vec{F}\\,\\Delta t = \\Delta \\vec{p}",
+      "symbols": [
+        {
+          "symbol": "\\vec{J}",
+          "meaning": {
+            "en": "impulse",
+            "hi": "आवेग"
+          },
+          "unit": "N s"
+        },
+        {
+          "symbol": "\\vec{F}",
+          "meaning": {
+            "en": "force (average, if it varies)",
+            "hi": "बल (बदलता हो तो औसत)"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "\\Delta t",
+          "meaning": {
+            "en": "time for which the force acts",
+            "hi": "बल लगने का समय"
+          },
+          "unit": "s"
+        },
+        {
+          "symbol": "\\Delta \\vec{p}",
+          "meaning": {
+            "en": "change in momentum",
+            "hi": "संवेग परिवर्तन"
+          },
+          "unit": "kg m/s"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 4.7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:10",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A batsman hits a ball straight back towards the bowler without changing its speed of 12 m/s. The ball's mass is 0.15 kg. Find the impulse given to the ball.",
+        "hi": "एक बल्लेबाज़ गेंद को उसकी 12 m/s की चाल बदले बिना सीधे गेंदबाज़ की ओर लौटा देता है। गेंद का द्रव्यमान 0.15 kg है। गेंद को दिया गया आवेग ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Take the direction towards the bowler as positive; the ball first moves the other way.",
+          "hi": "गेंदबाज़ की ओर की दिशा को धनात्मक लीजिए; गेंद पहले विपरीत दिशा में चल रही है।"
+        },
+        {
+          "en": "$\\Delta p = 0.15 \\times 12 - (-0.15 \\times 12) = 3.6$ N s",
+          "hi": "$\\Delta p = 0.15 \\times 12 - (-0.15 \\times 12) = 3.6$ N s"
+        }
+      ],
+      "answer": {
+        "en": "3.6 N s, from the batsman towards the bowler",
+        "hi": "3.6 N s, बल्लेबाज़ से गेंदबाज़ की ओर"
+      },
+      "answer_value": {
+        "value": 3.6,
+        "unit": "N s",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Getting zero by ignoring that the velocity reverses.",
+        "hi": "वेग के उलटने को अनदेखा करके शून्य पाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.4"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:11",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Two identical billiard balls strike a rigid wall at the same speed u and bounce off without change of speed, one head-on and one at $30°$ to the normal. In which direction is the force on the wall in each case, and what is the ratio of the impulses on the balls?",
+        "hi": "दो समान बिलियर्ड गेंदें समान चाल u से एक दृढ़ दीवार से टकराकर बिना चाल बदले लौटती हैं, एक सीधे और एक अभिलंब से $30°$ पर। हर स्थिति में दीवार पर बल किस दिशा में है, और गेंदों पर आवेगों का अनुपात क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Head-on: $p_x$ goes from $mu$ to $-mu$, so the impulse is $2mu$ along the normal.",
+          "hi": "सीधे: $p_x$, $mu$ से $-mu$ होता है, अतः आवेग अभिलंब के अनुदिश $2mu$ है।"
+        },
+        {
+          "en": "At $30°$: only $p_x$ reverses, so the impulse is $2mu\\cos 30°$, still along the normal; $p_y$ is unchanged.",
+          "hi": "$30°$ पर: केवल $p_x$ उलटता है, अतः आवेग $2mu\\cos 30°$ है, फिर भी अभिलंब के अनुदिश; $p_y$ अपरिवर्तित है।"
+        },
+        {
+          "en": "By the third law the force on the wall is along the normal in both cases. Ratio $= \\frac{2}{\\sqrt{3}} \\approx 1.2$.",
+          "hi": "तृतीय नियम से दोनों स्थितियों में दीवार पर बल अभिलंब के अनुदिश है। अनुपात $= \\frac{2}{\\sqrt{3}} \\approx 1.2$।"
+        }
+      ],
+      "answer": {
+        "en": "Normal to the wall in both cases; ratio about 1.2",
+        "hi": "दोनों स्थितियों में दीवार के अभिलंब; अनुपात लगभग 1.2"
+      },
+      "answer_value": {
+        "value": 1.15,
+        "unit": null,
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Thinking the force in the slanting case is along the ball's path.",
+        "hi": "तिरछी स्थिति में बल को गेंद के पथ के अनुदिश मानना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.5, Fig. 4.6"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.second-law.0005"
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:13",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.impulse"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Impulse $= F\\,\\Delta t =$ change in momentum.",
+          "hi": "आवेग $= F\\,\\Delta t =$ संवेग परिवर्तन।"
+        },
+        {
+          "en": "A longer stopping time means a smaller force for the same change in momentum.",
+          "hi": "रुकने का अधिक समय, उतने ही संवेग परिवर्तन के लिए कम बल।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:14",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Isolate the body, then apply the law",
+        "hi": "पिंड को अलग कीजिए, फिर नियम लगाइए"
+      },
+      "body": {
+        "en": "A typical mechanics problem has several bodies pushing and pulling on each other. Any part can be chosen as the system, provided every force on it from the rest is included. The steps:\n\n1. Sketch the whole arrangement: bodies, strings, supports.\n2. Choose one part as the system.\n3. Draw that part alone with every force on it from everything else, and only those: this is the free-body diagram. Do not draw forces the system exerts on others.\n4. Mark the forces you know, such as weight downwards and tension along the string; treat the rest as unknowns.\n5. Repeat for another part if needed, using the third law: if B pushes A with $\\vec{F}$, A pushes B with $-\\vec{F}$.\n\nThen apply $\\vec{F} = m\\vec{a}$ along convenient axes.",
+        "hi": "यांत्रिकी के सामान्य प्रश्न में कई पिंड एक-दूसरे को धकेलते और खींचते हैं। किसी भी भाग को निकाय चुना जा सकता है, बशर्ते शेष भागों द्वारा उस पर लगे सभी बल शामिल किए जाएँ। चरण:\n\n1. पूरी व्यवस्था का रेखाचित्र बनाइए: पिंड, डोरियाँ, आधार।\n2. एक भाग को निकाय चुनिए।\n3. उस भाग को अकेला बनाइए, उस पर शेष सब के द्वारा लगे हर बल के साथ, और केवल उन्हीं के साथ: यह बल निर्देशक आरेख है। निकाय द्वारा दूसरों पर लगे बल न बनाइए।\n4. ज्ञात बल चिह्नित कीजिए, जैसे नीचे की ओर भार और डोरी के अनुदिश तनाव; शेष को अज्ञात मानिए।\n5. आवश्यक हो तो दूसरे भाग के लिए दोहराइए, तृतीय नियम का उपयोग करते हुए: यदि B, A को $\\vec{F}$ से धकेलता है, तो A, B को $-\\vec{F}$ से धकेलता है।\n\nफिर सुविधाजनक अक्षों के अनुदिश $\\vec{F} = m\\vec{a}$ लगाइए।"
+      },
+      "media": "img.laws-of-motion.lift-scale",
+      "highlights": [
+        {
+          "term": {
+            "en": "free-body diagram",
+            "hi": "बल निर्देशक आरेख"
+          },
+          "definition": {
+            "en": "one body with all the forces on it",
+            "hi": "एक पिंड, उस पर लगे सभी बलों सहित"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.11"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:15",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Weight and normal force are not always equal",
+        "hi": "भार और अभिलंब बल सदा बराबर नहीं होते"
+      },
+      "body": {
+        "en": "For a body resting on a table, the normal force R equals the weight mg only because the body is in equilibrium. If the support accelerates, they differ. A person of mass m standing on a scale in a lift accelerating upwards at a has two forces on him: mg down and the scale's push R up. The second law gives $R - mg = ma$, so $R = m(g + a)$: the scale reads more. Accelerating downwards, $R = m(g - a)$. The equality of mg and R has nothing to do with the third law; they act on the same body.",
+        "hi": "मेज़ पर रखे पिंड के लिए अभिलंब बल R भार mg के बराबर केवल इसलिए है क्योंकि पिंड संतुलन में है। आधार त्वरित हो तो वे भिन्न होते हैं। ऊपर की ओर a से त्वरित लिफ़्ट में तराज़ू पर खड़े m द्रव्यमान के व्यक्ति पर दो बल हैं: नीचे mg और ऊपर तराज़ू का धक्का R। द्वितीय नियम से $R - mg = ma$, अतः $R = m(g + a)$: तराज़ू अधिक पढ़ता है। नीचे की ओर त्वरण में $R = m(g - a)$। mg और R की समानता का तृतीय नियम से कोई संबंध नहीं; वे एक ही पिंड पर लगते हैं।"
+      },
+      "media": "img.laws-of-motion.lift-scale",
+      "highlights": [
+        {
+          "term": {
+            "en": "normal force",
+            "hi": "अभिलंब बल"
+          },
+          "definition": {
+            "en": "the push of a surface, perpendicular to it",
+            "hi": "सतह का धक्का, उसके लंबवत"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.11, Example 4.12, Points to Ponder 7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:16",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 3 kg block hangs from a string that passes over a smooth pulley and is tied to a 20 kg trolley on a horizontal surface. The coefficient of kinetic friction between trolley and surface is 0.04. Find the acceleration and the tension. Take $g = 10$ m/s².",
+        "hi": "3 kg का एक गुटका एक डोरी से लटका है जो चिकनी घिरनी पर से होकर क्षैतिज सतह पर रखी 20 kg की ट्रॉली से बँधी है। ट्रॉली और सतह के बीच गतिज घर्षण गुणांक 0.04 है। त्वरण और तनाव ज्ञात कीजिए। $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Block: $30 - T = 3a$.",
+          "hi": "गुटका: $30 - T = 3a$।"
+        },
+        {
+          "en": "Trolley: $T - f_k = 20a$, with $f_k = 0.04 \\times 200 = 8$ N, so $T - 8 = 20a$.",
+          "hi": "ट्रॉली: $T - f_k = 20a$, जहाँ $f_k = 0.04 \\times 200 = 8$ N, अतः $T - 8 = 20a$।"
+        },
+        {
+          "en": "Adding: $22 = 23a$, so $a \\approx 0.96$ m/s² and $T \\approx 27.1$ N.",
+          "hi": "जोड़ने पर: $22 = 23a$, अतः $a \\approx 0.96$ m/s² और $T \\approx 27.1$ N।"
+        }
+      ],
+      "answer": {
+        "en": "0.96 m/s²; 27.1 N",
+        "hi": "0.96 m/s²; 27.1 N"
+      },
+      "answer_value": {
+        "value": 0.96,
+        "unit": "m/s²",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Taking the tension equal to the block's weight, 30 N.",
+        "hi": "तनाव को गुटके के भार, 30 N, के बराबर लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.9, Fig. 4.12"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:17",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 2 kg wooden block rests on a soft floor. A 25 kg iron cylinder is placed on it, and the floor yields so that both go down with acceleration 0.1 m/s². Find the force of the block on the floor before and after the floor yields. Take $g = 10$ m/s².",
+        "hi": "2 kg का लकड़ी का गुटका नरम फ़र्श पर रखा है। उस पर 25 kg का लोहे का बेलन रखा जाता है, और फ़र्श ऐसे धँसता है कि दोनों 0.1 m/s² त्वरण से नीचे जाते हैं। फ़र्श धँसने से पहले और बाद गुटके द्वारा फ़र्श पर बल ज्ञात कीजिए। $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Before: the block is at rest, so $R = 2 \\times 10 = 20$ N; by the third law it pushes the floor with 20 N down.",
+          "hi": "पहले: गुटका विराम में है, अतः $R = 2 \\times 10 = 20$ N; तृतीय नियम से यह फ़र्श को 20 N से नीचे दबाता है।"
+        },
+        {
+          "en": "After: take block and cylinder together, weight 270 N. $270 - R' = 27 \\times 0.1$, so $R' = 267.3$ N.",
+          "hi": "बाद में: गुटका और बेलन साथ लीजिए, भार 270 N। $270 - R' = 27 \\times 0.1$, अतः $R' = 267.3$ N।"
+        },
+        {
+          "en": "The force between block and cylinder is internal and does not appear.",
+          "hi": "गुटके और बेलन के बीच का बल आंतरिक है और नहीं आता।"
+        }
+      ],
+      "answer": {
+        "en": "20 N, then 267.3 N, both downwards",
+        "hi": "20 N, फिर 267.3 N, दोनों नीचे की ओर"
+      },
+      "answer_value": {
+        "value": 267.3,
+        "unit": "N",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Writing the normal force as the full weight, 270 N, while the system accelerates.",
+        "hi": "निकाय के त्वरित रहते अभिलंब बल को पूरा भार, 270 N, लिखना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.12, Fig. 4.15"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:18",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ],
+      "depth": 3,
+      "question": "q.phy.laws-of-motion.second-law.0008"
+    },
+    {
+      "id": "phy.laws-of-motion.second-law:dd:19",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "Draw one body with every force on it from outside; leave out forces it exerts.",
+          "hi": "एक पिंड को बाहर से उस पर लगे हर बल के साथ बनाइए; उसके द्वारा लगाए बल छोड़िए।"
+        },
+        {
+          "en": "In a lift accelerating upwards, $R = m(g + a)$.",
+          "hi": "ऊपर की ओर त्वरित लिफ़्ट में $R = m(g + a)$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

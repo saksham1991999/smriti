@@ -1,0 +1,105 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "cs.phy.laws-of-motion.circular-dynamics",
+  "scope": "topic",
+  "topic": "phy.laws-of-motion.circular-dynamics",
+  "title": {
+    "en": "Circular Motion and Centripetal Force",
+    "hi": "वर्तुल गति और अभिकेंद्र बल"
+  },
+  "concepts": [
+    "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+  ],
+  "key_ideas": [
+    {
+      "en": "Circular motion needs a net inward force $mv^2/R$.",
+      "hi": "वर्तुल गति के लिए नेट भीतरी बल $mv^2/R$ चाहिए।"
+    },
+    {
+      "en": "It is always some real force: tension, gravity, friction, normal force.",
+      "hi": "यह सदा कोई वास्तविक बल है: तनाव, गुरुत्व, घर्षण, अभिलंब बल।"
+    },
+    {
+      "en": "Level road: friction limits the speed. Banking raises it.",
+      "hi": "समतल सड़क: घर्षण चाल सीमित करता है। ढाल उसे बढ़ाती है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Centripetal force",
+        "hi": "अभिकेंद्र बल"
+      },
+      "latex": "f_c = \\frac{mv^2}{R}"
+    },
+    {
+      "name": {
+        "en": "Level road",
+        "hi": "समतल सड़क"
+      },
+      "latex": "v_{max} = \\sqrt{\\mu_s R g}"
+    },
+    {
+      "name": {
+        "en": "Banked road, optimum",
+        "hi": "ढालू सड़क, अनुकूलतम"
+      },
+      "latex": "v_o = \\sqrt{Rg\\tan\\theta}"
+    },
+    {
+      "name": {
+        "en": "Banked road, maximum",
+        "hi": "ढालू सड़क, अधिकतम"
+      },
+      "latex": "v_{max} = \\sqrt{Rg\\,\\frac{\\mu_s + \\tan\\theta}{1 - \\mu_s\\tan\\theta}}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Centripetal force is an extra force to add to the diagram.",
+        "hi": "अभिकेंद्र बल आरेख में जोड़ा जाने वाला अतिरिक्त बल है।"
+      },
+      "correct": {
+        "en": "It is the net inward part of the real forces already there.",
+        "hi": "यह पहले से मौजूद वास्तविक बलों का नेट भीतरी भाग है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "A heavier car can take a level curve faster.",
+        "hi": "भारी कार समतल मोड़ तेज़ ले सकती है।"
+      },
+      "correct": {
+        "en": "$v_{max} = \\sqrt{\\mu_s R g}$ does not depend on mass.",
+        "hi": "$v_{max} = \\sqrt{\\mu_s R g}$ द्रव्यमान पर निर्भर नहीं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "On a merry-go-round an outward force acts on you.",
+        "hi": "झूला-चकरी पर आप पर बाहर की ओर बल लगता है।"
+      },
+      "correct": {
+        "en": "The real force is inward; outward is only the feeling.",
+        "hi": "वास्तविक बल भीतर की ओर है; बाहर केवल अनुभव है।"
+      }
+    }
+  ],
+  "diagram": "img.laws-of-motion.banked-track",
+  "hi_source": "translation"
+}

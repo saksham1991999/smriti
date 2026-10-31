@@ -1,0 +1,104 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "cs.phy.laws-of-motion.second-law",
+  "scope": "topic",
+  "topic": "phy.laws-of-motion.second-law",
+  "title": {
+    "en": "Newton's Second Law",
+    "hi": "न्यूटन का द्वितीय नियम"
+  },
+  "concepts": [
+    "phy.laws-of-motion.second-law.core.momentum-second-law",
+    "phy.laws-of-motion.second-law.core.impulse",
+    "phy.laws-of-motion.second-law.core.free-body-diagrams"
+  ],
+  "key_ideas": [
+    {
+      "en": "Momentum $\\vec{p} = m\\vec{v}$ is a vector.",
+      "hi": "संवेग $\\vec{p} = m\\vec{v}$ एक सदिश है।"
+    },
+    {
+      "en": "$\\vec{F} = d\\vec{p}/dt = m\\vec{a}$; vector, local, applies to systems with external force only.",
+      "hi": "$\\vec{F} = d\\vec{p}/dt = m\\vec{a}$; सदिश, स्थानीय, निकाय पर केवल बाह्य बल के साथ लागू।"
+    },
+    {
+      "en": "Impulse $= F\\,\\Delta t = \\Delta p$; area under the F-t graph.",
+      "hi": "आवेग $= F\\,\\Delta t = \\Delta p$; F-t ग्राफ़ के नीचे का क्षेत्रफल।"
+    },
+    {
+      "en": "Free-body diagram: isolate one body, show every force on it.",
+      "hi": "बल निर्देशक आरेख: एक पिंड अलग कीजिए, उस पर हर बल दिखाइए।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Second law",
+        "hi": "द्वितीय नियम"
+      },
+      "latex": "\\vec{F} = \\frac{d\\vec{p}}{dt} = m\\vec{a}"
+    },
+    {
+      "name": {
+        "en": "Impulse",
+        "hi": "आवेग"
+      },
+      "latex": "\\vec{F}\\,\\Delta t = \\Delta \\vec{p}"
+    },
+    {
+      "name": {
+        "en": "Scale reading in a lift",
+        "hi": "लिफ़्ट में तराज़ू का पाठ्यांक"
+      },
+      "latex": "R = m(g + a)"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "$m\\vec{a}$ is a force that acts along with the others.",
+        "hi": "$m\\vec{a}$ एक बल है जो दूसरों के साथ लगता है।"
+      },
+      "correct": {
+        "en": "It is the effect of the net force, not another force.",
+        "hi": "यह नेट बल का प्रभाव है, कोई और बल नहीं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Same change in momentum means the same force.",
+        "hi": "समान संवेग परिवर्तन का अर्थ समान बल।"
+      },
+      "correct": {
+        "en": "The force also depends on how quickly the change happens.",
+        "hi": "बल इस पर भी निर्भर है कि परिवर्तन कितनी जल्दी होता है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Normal force always equals weight.",
+        "hi": "अभिलंब बल सदा भार के बराबर होता है।"
+      },
+      "correct": {
+        "en": "Only in equilibrium; in an accelerating lift they differ.",
+        "hi": "केवल संतुलन में; त्वरित लिफ़्ट में वे भिन्न होते हैं।"
+      }
+    }
+  ],
+  "diagram": "img.laws-of-motion.cricket-catch",
+  "hi_source": "translation"
+}

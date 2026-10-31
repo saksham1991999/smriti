@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.inertia-first-law:quick_revision",
+  "topic": "phy.laws-of-motion.inertia-first-law",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.laws-of-motion.inertia-first-law"
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "question": "q.phy.laws-of-motion.inertia-first-law.0002"
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.inertia-first-law.0003"
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Rest and uniform straight-line motion are equivalent: both have zero net force.",
+          "hi": "विराम और सरल रेखा में एकसमान गति तुल्य हैं: दोनों में नेट बल शून्य है।"
+        },
+        {
+          "en": "The first law runs from motion to force: no acceleration, so no net force.",
+          "hi": "प्रथम नियम गति से बल की ओर चलता है: त्वरण नहीं, तो नेट बल नहीं।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.inertia-first-law:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A moving body needs a net force to keep moving.",
+            "hi": "गतिमान पिंड को चलते रहने के लिए नेट बल चाहिए।"
+          },
+          "correct": {
+            "en": "It needs none; a force is needed only to cancel friction.",
+            "hi": "कोई नहीं; बल केवल घर्षण को निरस्त करने के लिए चाहिए।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A body at rest has no forces on it.",
+            "hi": "विराम में पिंड पर कोई बल नहीं होता।"
+          },
+          "correct": {
+            "en": "The forces on it add up to zero.",
+            "hi": "उस पर लगे बलों का योग शून्य होता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "The forces cancel, and that is why the book is at rest.",
+            "hi": "बल निरस्त होते हैं, इसीलिए किताब विराम में है।"
+          },
+          "correct": {
+            "en": "The book is at rest, so the net force must be zero.",
+            "hi": "किताब विराम में है, इसलिए नेट बल शून्य होना चाहिए।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

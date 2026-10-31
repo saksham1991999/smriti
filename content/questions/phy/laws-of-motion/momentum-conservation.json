@@ -1,0 +1,508 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 4 Gati ke Niyam: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph104.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 64-68"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "topic": "phy.laws-of-motion.momentum-conservation",
+  "questions": [
+    {
+      "id": "q.phy.laws-of-motion.momentum-conservation.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 5 kg gun fires a 0.05 kg bullet at 300 m/s. The recoil speed of the gun is",
+        "hi": "5 kg की बंदूक 0.05 kg की गोली 300 m/s से दागती है। बंदूक की प्रतिक्षेप चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "3 m/s",
+            "hi": "3 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "30 m/s",
+            "hi": "30 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0.3 m/s",
+            "hi": "0.3 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "15 m/s",
+            "hi": "15 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Total momentum stays zero.",
+          "hi": "कुल संवेग शून्य रहता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The gun's momentum must cancel the bullet's.",
+          "hi": "बंदूक का संवेग गोली के संवेग को निरस्त करना चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "$5\\,v = 0.05 \\times 300 = 15$, so $v = 3$ m/s",
+            "hi": "$5\\,v = 0.05 \\times 300 = 15$, अतः $v = 3$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The mass ratio is 100, not 10.",
+              "hi": "द्रव्यमानों का अनुपात 100 है, 10 नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The arithmetic slipped by a factor of 10.",
+              "hi": "गणना में 10 का गुणक खिसक गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "15 is the bullet's momentum in kg m/s.",
+              "hi": "15 गोली का संवेग kg m/s में है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.momentum-conservation.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The total momentum of a system of particles stays constant when",
+        "hi": "कणों के किसी निकाय का कुल संवेग नियत रहता है जब"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "no net external force acts on it",
+            "hi": "उस पर कोई नेट बाह्य बल न हो"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "no internal forces act",
+            "hi": "कोई आंतरिक बल न हो"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "its kinetic energy is constant",
+            "hi": "उसकी गतिज ऊर्जा नियत हो"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "all particles move with the same speed",
+            "hi": "सभी कण समान चाल से चलें"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What can change the total momentum?",
+          "hi": "कुल संवेग को क्या बदल सकता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Internal forces cancel in pairs; only an external force can change the total.",
+          "hi": "आंतरिक बल युगलों में निरस्त होते हैं; केवल बाह्य बल कुल को बदल सकता है।"
+        },
+        "steps": [
+          {
+            "en": "The third law makes internal changes in momentum cancel.",
+            "hi": "तृतीय नियम आंतरिक संवेग परिवर्तनों को निरस्त कर देता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Internal forces may act; they cannot change the total.",
+              "hi": "आंतरिक बल लग सकते हैं; वे कुल को नहीं बदल सकते।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Momentum is conserved even in inelastic collisions.",
+              "hi": "संवेग अप्रत्यास्थ संघट्ट में भी संरक्षित रहता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Speeds do not matter for this condition.",
+              "hi": "इस शर्त के लिए चालें मायने नहीं रखतीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.momentum-conservation.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A 3 kg body moving at 4 m/s collides with a 1 kg body at rest, and they stick together. Their common speed, in m/s, is",
+        "hi": "4 m/s से चलता 3 kg का पिंड विराम में रखे 1 kg के पिंड से टकराता है, और दोनों जुड़ जाते हैं। उनकी उभयनिष्ठ चाल, m/s में, है"
+      },
+      "answer": {
+        "value": 3,
+        "unit": "m/s"
+      },
+      "hints": [
+        {
+          "en": "Total mass after sticking.",
+          "hi": "जुड़ने के बाद कुल द्रव्यमान।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Momentum before equals momentum after.",
+          "hi": "पहले का संवेग बाद के संवेग के बराबर है।"
+        },
+        "steps": [
+          {
+            "en": "$3 \\times 4 = (3 + 1)\\,v$, so $v = 3$ m/s",
+            "hi": "$3 \\times 4 = (3 + 1)\\,v$, अतः $v = 3$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Dividing by 3 kg alone gives 4, the old speed.",
+              "hi": "केवल 3 kg से भाग देने पर 4 आता है, जो पुरानी चाल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.momentum-conservation.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 3 kg shell at rest explodes into two pieces. A 1 kg piece flies off at 12 m/s. The other piece moves at",
+        "hi": "विराम में रखा 3 kg का गोला दो टुकड़ों में फटता है। 1 kg का टुकड़ा 12 m/s से उड़ता है। दूसरा टुकड़ा चलता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "6 m/s, opposite to the first",
+            "hi": "6 m/s, पहले के विपरीत"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "12 m/s, opposite to the first",
+            "hi": "12 m/s, पहले के विपरीत"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "6 m/s, in the same direction",
+            "hi": "6 m/s, उसी दिशा में"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 m/s, opposite to the first",
+            "hi": "4 m/s, पहले के विपरीत"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find the mass of the second piece first.",
+          "hi": "पहले दूसरे टुकड़े का द्रव्यमान निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The pieces' momenta must add to zero.",
+          "hi": "टुकड़ों के संवेगों का योग शून्य होना चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "Other piece: $3 - 1 = 2$ kg.",
+            "hi": "दूसरा टुकड़ा: $3 - 1 = 2$ kg।"
+          },
+          {
+            "en": "$2\\,v = -1 \\times 12$, so $v = -6$ m/s",
+            "hi": "$2\\,v = -1 \\times 12$, अतः $v = -6$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That ignores the masses.",
+              "hi": "यह द्रव्यमानों को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Same direction would leave non-zero total momentum.",
+              "hi": "उसी दिशा में होने पर कुल संवेग शून्य नहीं रहेगा।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That divides by the whole 3 kg.",
+              "hi": "यह पूरे 3 kg से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.momentum-conservation.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Skaters of 40 kg and 60 kg stand at rest and push each other apart. The 40 kg skater moves off at 3 m/s. The 60 kg skater moves at",
+        "hi": "40 kg और 60 kg के स्केटर विराम में खड़े होकर एक-दूसरे को धकेलकर अलग होते हैं। 40 kg वाला स्केटर 3 m/s से चलता है। 60 kg वाला स्केटर चलता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s",
+            "hi": "2 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "3 m/s",
+            "hi": "3 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "4.5 m/s",
+            "hi": "4.5 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1.2 m/s",
+            "hi": "1.2 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Total momentum stays zero.",
+          "hi": "कुल संवेग शून्य रहता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Equal and opposite momenta: the heavier one is slower.",
+          "hi": "समान और विपरीत संवेग: भारी धीमा होता है।"
+        },
+        "steps": [
+          {
+            "en": "$60\\,v = 40 \\times 3$, so $v = 2$ m/s, in the opposite direction",
+            "hi": "$60\\,v = 40 \\times 3$, अतः $v = 2$ m/s, विपरीत दिशा में"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Equal speeds would mean unequal momenta.",
+              "hi": "समान चालों का अर्थ असमान संवेग होगा।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The mass ratio is upside down.",
+              "hi": "द्रव्यमान अनुपात उल्टा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That divides 3 by 2.5 for no reason.",
+              "hi": "यह बिना कारण 3 को 2.5 से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

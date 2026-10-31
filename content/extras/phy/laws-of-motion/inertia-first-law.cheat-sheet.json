@@ -1,0 +1,84 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "cs.phy.laws-of-motion.inertia-first-law",
+  "scope": "topic",
+  "topic": "phy.laws-of-motion.inertia-first-law",
+  "title": {
+    "en": "Inertia and Newton's First Law",
+    "hi": "जड़त्व और न्यूटन का प्रथम नियम"
+  },
+  "concepts": [
+    "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+  ],
+  "key_ideas": [
+    {
+      "en": "Aristotle was wrong: a force is not needed to keep a body moving.",
+      "hi": "अरस्तू गलत थे: पिंड को चलाते रहने के लिए बल नहीं चाहिए।"
+    },
+    {
+      "en": "Galileo: rest and uniform motion are equivalent.",
+      "hi": "गैलीलियो: विराम और एकसमान गति तुल्य हैं।"
+    },
+    {
+      "en": "First law: no net external force, no acceleration.",
+      "hi": "प्रथम नियम: नेट बाह्य बल नहीं, तो त्वरण नहीं।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "First law",
+        "hi": "प्रथम नियम"
+      },
+      "latex": "\\vec{F}_{net} = 0 \\Rightarrow \\vec{a} = 0"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "A moving body needs a net force to keep moving.",
+        "hi": "गतिमान पिंड को चलते रहने के लिए नेट बल चाहिए।"
+      },
+      "correct": {
+        "en": "It needs none; a force is needed only to cancel friction.",
+        "hi": "कोई नहीं; बल केवल घर्षण को निरस्त करने के लिए चाहिए।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "A body at rest has no forces on it.",
+        "hi": "विराम में पिंड पर कोई बल नहीं होता।"
+      },
+      "correct": {
+        "en": "The forces on it add up to zero.",
+        "hi": "उस पर लगे बलों का योग शून्य होता है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "The forces cancel, and that is why the book is at rest.",
+        "hi": "बल निरस्त होते हैं, इसीलिए किताब विराम में है।"
+      },
+      "correct": {
+        "en": "The book is at rest, so the net force must be zero.",
+        "hi": "किताब विराम में है, इसलिए नेट बल शून्य होना चाहिए।"
+      }
+    }
+  ],
+  "diagram": "img.laws-of-motion.toy-car-string",
+  "hi_source": "translation"
+}

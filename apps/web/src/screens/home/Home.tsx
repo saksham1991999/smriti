@@ -2,7 +2,7 @@
  * HOME-01: greeting, streak card with plant and daily goal, one hero from app-core `selectHero`,
  * the "up next" strip, one secondary row, subject tiles, and Memory. No Pro upsell here (R15).
  */
-import { useState } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useAppStore } from "@smriti/app-core/react";
 import {
@@ -20,14 +20,20 @@ import {
 } from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
 import { SoftPromptSheet } from "../../components/SignIn";
+import { chooseCheckin, localDay, readAndMarkOpen } from "../../lib/checkin";
 import { useCatalog } from "../../lib/content";
 import { useHomeModel } from "../../lib/home";
-import { parts, useI18n, type T } from "../../lib/i18n";
+import { parts, useI18n, withNamespaces, type T } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
+import { useOnboarding } from "../../lib/onboarding";
 import { useExams, useProfileIds, useTopicStatuses } from "../../lib/queries";
 import { LocaleThemeToggles } from "../../shell/AppShell";
 import { useSearchUI } from "../../shell/SearchHost";
 import { LoadError, RouteLoading } from "../../shell/States";
+
+const StreakCheckin = lazy(() =>
+  withNamespaces(["me_money"], () => import("./StreakCheckin"))().then((m) => ({ default: m.StreakCheckin })),
+);
 
 /** Splits "Kicker · meta · [Action]" catalogue rows. */
 export function heroText(text: string): { kicker: string; meta: string[]; actions: string[] } {
@@ -72,6 +78,17 @@ export function Home() {
   const wallet = useAppStore((x) => x.wallet);
   const pet = useAppStore((x) => x.pet);
   const [soft, setSoft] = useState(false);
+  const today = useMemo(() => localDay(), []);
+  const opened = useMemo(() => readAndMarkOpen(today), [today]);
+  const completedAt = useOnboarding((x) => x.completedAt);
+  const checkin = chooseCheckin({
+    today,
+    ...opened,
+    onboardedOn: completedAt ? localDay(new Date(completedAt)) : null,
+    health: plant?.health ?? null,
+    restDay: streak?.rest_day ?? null,
+    longGapDays: s.flags.get("comeback.long_gap_days"),
+  });
 
   if (catalog.isError) return <LoadError onRetry={() => void catalog.refetch()} />;
   if (catalog.isPending || (!model && !catalog.unpublished)) return <RouteLoading />;
@@ -391,6 +408,19 @@ export function Home() {
         </div>
       </section>
       <SoftPromptSheet open={soft} reason="save_progress" onClose={() => setSoft(false)} />
+      {checkin && plant && (
+        <Suspense fallback={null}>
+          <StreakCheckin
+            checkin={checkin}
+            today={today}
+            onLesson={() => {
+              const a = model?.hero.action;
+              if (a?.type === "lesson") openTopic(a.topic.topicId, a.topic.mode === "quick_revision" ? "quick_revision" : "deep_dive");
+              else void navigate({ to: "/learn" });
+            }}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

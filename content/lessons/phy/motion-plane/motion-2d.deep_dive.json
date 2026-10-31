@@ -1,0 +1,378 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.motion-2d:deep_dive",
+  "topic": "phy.motion-plane.motion-2d",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Velocity and acceleration as vectors",
+        "hi": "सदिश के रूप में वेग और त्वरण"
+      },
+      "subtopic": "phy.motion-plane.motion-2d.core",
+      "card_ids": [
+        "phy.motion-plane.motion-2d:dd:01",
+        "phy.motion-plane.motion-2d:dd:02",
+        "phy.motion-plane.motion-2d:dd:03",
+        "phy.motion-plane.motion-2d:dd:04",
+        "phy.motion-plane.motion-2d:dd:05"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Constant acceleration in a plane",
+        "hi": "समतल में नियत त्वरण"
+      },
+      "subtopic": "phy.motion-plane.motion-2d.core",
+      "card_ids": [
+        "phy.motion-plane.motion-2d:dd:06",
+        "phy.motion-plane.motion-2d:dd:07",
+        "phy.motion-plane.motion-2d:dd:08",
+        "phy.motion-plane.motion-2d:dd:09",
+        "phy.motion-plane.motion-2d:dd:10"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.motion-2d:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Position, displacement and velocity in a plane",
+        "hi": "समतल में स्थिति, विस्थापन और वेग"
+      },
+      "body": {
+        "en": "A point P in the x-y plane has position vector $\\vec{r} = x\\hat{i} + y\\hat{j}$. If it moves to P′ in time $\\Delta t$, its displacement is $\\Delta \\vec{r} = \\Delta x\\,\\hat{i} + \\Delta y\\,\\hat{j}$.\n\nAverage velocity is $\\frac{\\Delta \\vec{r}}{\\Delta t}$ and points along $\\Delta \\vec{r}$. Instantaneous velocity is its limit, $\\vec{v} = \\frac{d\\vec{r}}{dt}$. As $\\Delta t$ shrinks, $\\Delta \\vec{r}$ turns towards the tangent, so the velocity at any point is along the tangent to the path, in the direction of motion.\n\nIn components, $v_x = \\frac{dx}{dt}$ and $v_y = \\frac{dy}{dt}$; the speed is $v = \\sqrt{v_x^2 + v_y^2}$ and the direction is given by $\\tan\\theta = \\frac{v_y}{v_x}$.",
+        "hi": "x-y समतल में बिंदु P का स्थिति सदिश $\\vec{r} = x\\hat{i} + y\\hat{j}$ है। यदि वह समय $\\Delta t$ में P′ तक जाता है, तो उसका विस्थापन $\\Delta \\vec{r} = \\Delta x\\,\\hat{i} + \\Delta y\\,\\hat{j}$ है।\n\nऔसत वेग $\\frac{\\Delta \\vec{r}}{\\Delta t}$ है और $\\Delta \\vec{r}$ की दिशा में होता है। तात्क्षणिक वेग इसकी सीमा है, $\\vec{v} = \\frac{d\\vec{r}}{dt}$। जैसे-जैसे $\\Delta t$ घटता है, $\\Delta \\vec{r}$ स्पर्श रेखा की ओर घूमता है, इसलिए किसी बिंदु पर वेग पथ की स्पर्श रेखा के अनुदिश, गति की दिशा में होता है।\n\nघटकों में, $v_x = \\frac{dx}{dt}$ और $v_y = \\frac{dy}{dt}$; चाल $v = \\sqrt{v_x^2 + v_y^2}$ है और दिशा $\\tan\\theta = \\frac{v_y}{v_x}$ से मिलती है।"
+      },
+      "media": "img.motion-plane.town-walk",
+      "highlights": [
+        {
+          "term": {
+            "en": "instantaneous velocity",
+            "hi": "तात्क्षणिक वेग"
+          },
+          "definition": {
+            "en": "along the tangent to the path",
+            "hi": "पथ की स्पर्श रेखा के अनुदिश"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.7, Fig. 3.12, Summary 12-13"
+      }
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Acceleration in a plane",
+        "hi": "समतल में त्वरण"
+      },
+      "body": {
+        "en": "Average acceleration is $\\frac{\\Delta \\vec{v}}{\\Delta t}$ and instantaneous acceleration is $\\vec{a} = \\frac{d\\vec{v}}{dt}$, with $a_x = \\frac{dv_x}{dt}$ and $a_y = \\frac{dv_y}{dt}$.\n\nIn one dimension, velocity and acceleration always lie along the same line. In two or three dimensions the angle between them can be anything from 0° to 180°. The direction of the acceleration is the direction of the change in velocity, not of the velocity itself.",
+        "hi": "औसत त्वरण $\\frac{\\Delta \\vec{v}}{\\Delta t}$ है और तात्क्षणिक त्वरण $\\vec{a} = \\frac{d\\vec{v}}{dt}$ है, जहाँ $a_x = \\frac{dv_x}{dt}$ और $a_y = \\frac{dv_y}{dt}$।\n\nएक विमा में वेग और त्वरण सदा एक ही रेखा में होते हैं। दो या तीन विमाओं में उनके बीच का कोण 0° से 180° तक कुछ भी हो सकता है। त्वरण की दिशा वेग में परिवर्तन की दिशा है, स्वयं वेग की नहीं।"
+      },
+      "media": "img.motion-plane.town-walk",
+      "highlights": [
+        {
+          "term": {
+            "en": "acceleration",
+            "hi": "त्वरण"
+          },
+          "definition": {
+            "en": "rate of change of the velocity vector",
+            "hi": "वेग सदिश के परिवर्तन की दर"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.7, Fig. 3.13, Summary 14"
+      }
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:03",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "The position of a particle is $\\vec{r} = 3.0t\\,\\hat{i} + 2.0t^2\\,\\hat{j} + 5.0\\,\\hat{k}$ m, with t in seconds. Find $\\vec{v}(t)$ and $\\vec{a}(t)$, and the magnitude and direction of the velocity at $t = 1.0$ s.",
+        "hi": "किसी कण की स्थिति $\\vec{r} = 3.0t\\,\\hat{i} + 2.0t^2\\,\\hat{j} + 5.0\\,\\hat{k}$ m है, t सेकंड में। $\\vec{v}(t)$ और $\\vec{a}(t)$, तथा $t = 1.0$ s पर वेग का परिमाण और दिशा ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\vec{v} = \\frac{d\\vec{r}}{dt} = 3.0\\,\\hat{i} + 4.0t\\,\\hat{j}$ m/s",
+          "hi": "$\\vec{v} = \\frac{d\\vec{r}}{dt} = 3.0\\,\\hat{i} + 4.0t\\,\\hat{j}$ m/s"
+        },
+        {
+          "en": "$\\vec{a} = \\frac{d\\vec{v}}{dt} = 4.0\\,\\hat{j}$ m/s², constant and along y.",
+          "hi": "$\\vec{a} = \\frac{d\\vec{v}}{dt} = 4.0\\,\\hat{j}$ m/s², नियत और y के अनुदिश।"
+        },
+        {
+          "en": "At $t = 1.0$ s: $v = \\sqrt{3^2 + 4^2} = 5.0$ m/s, at $\\tan^{-1}\\frac{4}{3} \\approx 53°$ to the x-axis.",
+          "hi": "$t = 1.0$ s पर: $v = \\sqrt{3^2 + 4^2} = 5.0$ m/s, x-अक्ष से $\\tan^{-1}\\frac{4}{3} \\approx 53°$ पर।"
+        }
+      ],
+      "answer": {
+        "en": "5.0 m/s at about 53° to the x-axis",
+        "hi": "5.0 m/s, x-अक्ष से लगभग 53° पर"
+      },
+      "answer_value": {
+        "value": 5.0,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Dividing r by t instead of differentiating.",
+        "hi": "अवकलन के बजाय r को t से भाग देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.4"
+      }
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:04",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.motion-2d.0001"
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:05",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$\\vec{v} = d\\vec{r}/dt$ is tangent to the path; $\\vec{a} = d\\vec{v}/dt$.",
+          "hi": "$\\vec{v} = d\\vec{r}/dt$ पथ की स्पर्श रेखा पर है; $\\vec{a} = d\\vec{v}/dt$।"
+        },
+        {
+          "en": "In a plane, the angle between v and a can be anything from 0° to 180°.",
+          "hi": "समतल में v और a के बीच का कोण 0° से 180° तक कुछ भी हो सकता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Two independent straight-line motions",
+        "hi": "दो स्वतंत्र सरल रेखीय गतियाँ"
+      },
+      "body": {
+        "en": "If the acceleration $\\vec{a}$ is constant, the straight-line equations carry over in vector form: $\\vec{v} = \\vec{v}_0 + \\vec{a}t$ and $\\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2$.\n\nEach holds for every component separately: $v_x = v_{0x} + a_x t$, $x = x_0 + v_{0x}t + \\frac{1}{2}a_x t^2$, and the same with y. So motion in a plane with constant acceleration can be treated as two separate, simultaneous one-dimensional motions along two perpendicular directions. The vector equations themselves do not depend on any choice of axes.",
+        "hi": "यदि त्वरण $\\vec{a}$ नियत है, तो सरल रेखा वाले समीकरण सदिश रूप में आ जाते हैं: $\\vec{v} = \\vec{v}_0 + \\vec{a}t$ और $\\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2$।\n\nहर घटक के लिए ये अलग-अलग लागू होते हैं: $v_x = v_{0x} + a_x t$, $x = x_0 + v_{0x}t + \\frac{1}{2}a_x t^2$, और y के लिए भी यही। इसलिए नियत त्वरण वाली समतल गति को दो परस्पर लंबवत दिशाओं में दो अलग, समकालिक एकविमीय गतियों की तरह लिया जा सकता है। सदिश समीकरण स्वयं अक्षों के किसी चुनाव पर निर्भर नहीं करते।"
+      },
+      "media": "img.motion-plane.town-walk",
+      "highlights": [
+        {
+          "term": {
+            "en": "independence of components",
+            "hi": "घटकों की स्वतंत्रता"
+          },
+          "definition": {
+            "en": "x and y motions are solved separately",
+            "hi": "x और y गतियाँ अलग-अलग हल होती हैं"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.8, Eqs. 3.33-3.35, Summary 15, Points to Ponder 3"
+      }
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:07",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Constant acceleration in vector form",
+        "hi": "सदिश रूप में नियत त्वरण"
+      },
+      "latex": "\\vec{v} = \\vec{v}_0 + \\vec{a}t,\\quad \\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2",
+      "symbols": [
+        {
+          "symbol": "\\vec{r}, \\vec{r}_0",
+          "meaning": {
+            "en": "position at time t and at t = 0",
+            "hi": "समय t और t = 0 पर स्थिति"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "\\vec{v}, \\vec{v}_0",
+          "meaning": {
+            "en": "velocity at time t and at t = 0",
+            "hi": "समय t और t = 0 पर वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "\\vec{a}",
+          "meaning": {
+            "en": "constant acceleration",
+            "hi": "नियत त्वरण"
+          },
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "t",
+          "meaning": {
+            "en": "time",
+            "hi": "समय"
+          },
+          "unit": "s"
+        }
+      ],
+      "conditions": {
+        "en": "Only for constant acceleration; apply to each component separately.",
+        "hi": "केवल नियत त्वरण के लिए; हर घटक पर अलग से लगाइए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eqs. 3.33a and 3.34a"
+      }
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A particle starts from the origin at $t = 0$ with velocity $5.0\\,\\hat{i}$ m/s and moves in the x-y plane with constant acceleration $(3.0\\,\\hat{i} + 2.0\\,\\hat{j})$ m/s². When its x-coordinate is 84 m, what are its y-coordinate and its speed?",
+        "hi": "एक कण $t = 0$ पर मूल बिंदु से $5.0\\,\\hat{i}$ m/s वेग से चलता है और x-y समतल में नियत त्वरण $(3.0\\,\\hat{i} + 2.0\\,\\hat{j})$ m/s² से गति करता है। जब उसका x-निर्देशांक 84 m हो, तब उसका y-निर्देशांक और चाल क्या हैं?"
+      },
+      "solution_steps": [
+        {
+          "en": "$x = 5.0t + 1.5t^2 = 84$ gives $t = 6$ s.",
+          "hi": "$x = 5.0t + 1.5t^2 = 84$ से $t = 6$ s।"
+        },
+        {
+          "en": "$y = 1.0t^2 = 36$ m",
+          "hi": "$y = 1.0t^2 = 36$ m"
+        },
+        {
+          "en": "$\\vec{v} = (5.0 + 3.0t)\\hat{i} + 2.0t\\,\\hat{j} = 23\\,\\hat{i} + 12\\,\\hat{j}$ m/s, so speed $= \\sqrt{23^2 + 12^2} \\approx 26$ m/s.",
+          "hi": "$\\vec{v} = (5.0 + 3.0t)\\hat{i} + 2.0t\\,\\hat{j} = 23\\,\\hat{i} + 12\\,\\hat{j}$ m/s, अतः चाल $= \\sqrt{23^2 + 12^2} \\approx 26$ m/s।"
+        }
+      ],
+      "answer": {
+        "en": "y = 36 m; speed about 26 m/s",
+        "hi": "y = 36 m; चाल लगभग 26 m/s"
+      },
+      "answer_value": {
+        "value": 26,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.5
+        }
+      },
+      "common_trap": {
+        "en": "Using the y-acceleration in the x-equation.",
+        "hi": "x-समीकरण में y-त्वरण लगा देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.5"
+      }
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.motion-2d.0003"
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:dd:10",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$\\vec{v} = \\vec{v}_0 + \\vec{a}t$, $\\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2$.",
+          "hi": "$\\vec{v} = \\vec{v}_0 + \\vec{a}t$, $\\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2$।"
+        },
+        {
+          "en": "Solve x and y separately; time links them.",
+          "hi": "x और y को अलग-अलग हल कीजिए; समय उन्हें जोड़ता है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

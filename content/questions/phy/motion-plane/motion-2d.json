@@ -1,0 +1,526 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "topic": "phy.motion-plane.motion-2d",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.motion-2d.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The position of a particle is $\\vec{r} = 2t\\,\\hat{i} + t^2\\,\\hat{j}$ m, with t in seconds. Its speed at $t = 2$ s is",
+        "hi": "किसी कण की स्थिति $\\vec{r} = 2t\\,\\hat{i} + t^2\\,\\hat{j}$ m है, t सेकंड में। $t = 2$ s पर इसकी चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2\\sqrt{5}$ m/s",
+            "hi": "$2\\sqrt{5}$ m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 m/s",
+            "hi": "6 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2\\sqrt{2}$ m/s",
+            "hi": "$2\\sqrt{2}$ m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 m/s",
+            "hi": "4 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v = \\sqrt{v_x^2 + v_y^2}$",
+          "hi": "$v = \\sqrt{v_x^2 + v_y^2}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Differentiate each component, then combine.",
+          "hi": "हर घटक का अवकलन करके जोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{v} = 2\\,\\hat{i} + 2t\\,\\hat{j}$; at $t = 2$: $\\vec{v} = 2\\,\\hat{i} + 4\\,\\hat{j}$.",
+            "hi": "$\\vec{v} = 2\\,\\hat{i} + 2t\\,\\hat{j}$; $t = 2$ पर $\\vec{v} = 2\\,\\hat{i} + 4\\,\\hat{j}$।"
+          },
+          {
+            "en": "Speed $= \\sqrt{4 + 16} = 2\\sqrt{5} \\approx 4.5$ m/s",
+            "hi": "चाल $= \\sqrt{4 + 16} = 2\\sqrt{5} \\approx 4.5$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Components were added, not combined as a vector.",
+              "hi": "घटक सीधे जोड़ दिए गए, सदिश की तरह नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That uses $\\vec{r}/t$ at 2 s, an average.",
+              "hi": "यह 2 s पर $\\vec{r}/t$ है, एक औसत।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is only the y-component.",
+              "hi": "यह केवल y-घटक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.motion-2d.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A body moves in a plane with constant acceleration. Which statement is correct?",
+        "hi": "एक पिंड समतल में नियत त्वरण से चलता है। कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Its x- and y-motions can be treated independently.",
+            "hi": "उसकी x- और y-गतियों को स्वतंत्र रूप से लिया जा सकता है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Its velocity and acceleration must be along the same line.",
+            "hi": "उसका वेग और त्वरण एक ही रेखा में होने चाहिए।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Its path must be a straight line.",
+            "hi": "उसका पथ सरल रेखा ही होना चाहिए।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Its speed must stay constant.",
+            "hi": "उसकी चाल नियत रहनी चाहिए।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of a thrown ball.",
+          "hi": "फेंकी गई गेंद सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Constant acceleration splits into two separate one-dimensional motions.",
+          "hi": "नियत त्वरण दो अलग एकविमीय गतियों में बँट जाता है।"
+        },
+        "steps": [
+          {
+            "en": "Each component obeys its own constant-acceleration equations.",
+            "hi": "हर घटक अपने नियत-त्वरण समीकरणों का पालन करता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A projectile has constant acceleration but v and a are at an angle.",
+              "hi": "प्रक्षेप्य का त्वरण नियत है पर v और a कोण पर हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The path can be a parabola.",
+              "hi": "पथ परवलय भी हो सकता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A constant acceleration usually changes the speed.",
+              "hi": "नियत त्वरण प्रायः चाल बदलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.motion-2d.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A particle starts at the origin with velocity $4\\,\\hat{i}$ m/s and constant acceleration $2\\,\\hat{j}$ m/s². Its distance from the origin at $t = 3$ s, in metres, is",
+        "hi": "एक कण मूल बिंदु से $4\\,\\hat{i}$ m/s वेग और नियत त्वरण $2\\,\\hat{j}$ m/s² के साथ चलता है। $t = 3$ s पर मूल बिंदु से उसकी दूरी, मीटर में, है"
+      },
+      "answer": {
+        "value": 15,
+        "unit": "m"
+      },
+      "hints": [
+        {
+          "en": "$x = v_{0x}t$, $y = \\frac{1}{2}a_y t^2$",
+          "hi": "$x = v_{0x}t$, $y = \\frac{1}{2}a_y t^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find x and y separately, then the length of r.",
+          "hi": "x और y अलग से निकालिए, फिर r की लंबाई।"
+        },
+        "steps": [
+          {
+            "en": "$x = 4 \\times 3 = 12$ m; $y = \\frac{1}{2} \\times 2 \\times 3^2 = 9$ m",
+            "hi": "$x = 4 \\times 3 = 12$ m; $y = \\frac{1}{2} \\times 2 \\times 3^2 = 9$ m"
+          },
+          {
+            "en": "$r = \\sqrt{12^2 + 9^2} = 15$ m",
+            "hi": "$r = \\sqrt{12^2 + 9^2} = 15$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding 12 and 9 gives 21, which is the path along the axes, not the distance.",
+              "hi": "12 और 9 जोड़ने पर 21 आता है, जो अक्षों के साथ का पथ है, दूरी नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.motion-2d.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A particle moves with $x = 3t$ m and $y = 4t$ m, t in seconds. Its path and speed are",
+        "hi": "एक कण $x = 3t$ m और $y = 4t$ m के अनुसार चलता है, t सेकंड में। उसका पथ और चाल हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a straight line, 5 m/s",
+            "hi": "सरल रेखा, 5 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a parabola, 5 m/s",
+            "hi": "परवलय, 5 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a straight line, 7 m/s",
+            "hi": "सरल रेखा, 7 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a circle, 5 m/s",
+            "hi": "वृत्त, 5 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Eliminate t.",
+          "hi": "t को हटाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "y is a fixed multiple of x, and both rates are constant.",
+          "hi": "y, x का नियत गुणज है, और दोनों दरें नियत हैं।"
+        },
+        "steps": [
+          {
+            "en": "$y = \\frac{4}{3}x$: a straight line through the origin.",
+            "hi": "$y = \\frac{4}{3}x$: मूल बिंदु से जाती सरल रेखा।"
+          },
+          {
+            "en": "$v = \\sqrt{3^2 + 4^2} = 5$ m/s",
+            "hi": "$v = \\sqrt{3^2 + 4^2} = 5$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A parabola needs a $t^2$ term in one coordinate.",
+              "hi": "परवलय के लिए किसी निर्देशांक में $t^2$ पद चाहिए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Speed is not the sum of the components.",
+              "hi": "चाल घटकों का योग नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "x and y do not satisfy $x^2 + y^2 =$ constant.",
+              "hi": "x और y, $x^2 + y^2 =$ नियत को संतुष्ट नहीं करते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.motion-2d.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.motion-2d.core.motion-plane-vectors",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A particle has initial velocity $3\\,\\hat{i}$ m/s and constant acceleration $2\\,\\hat{j}$ m/s². Its velocity makes $45°$ with the x-axis at",
+        "hi": "एक कण का प्रारंभिक वेग $3\\,\\hat{i}$ m/s और नियत त्वरण $2\\,\\hat{j}$ m/s² है। उसका वेग x-अक्ष से $45°$ का कोण बनाता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$t = 1.5$ s",
+            "hi": "$t = 1.5$ s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$t = 3$ s",
+            "hi": "$t = 3$ s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$t = 0.67$ s",
+            "hi": "$t = 0.67$ s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "never",
+            "hi": "कभी नहीं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\tan 45° = 1$",
+          "hi": "$\\tan 45° = 1$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At 45° the two velocity components are equal.",
+          "hi": "45° पर वेग के दोनों घटक बराबर होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$v_x = 3$ stays fixed; $v_y = 2t$.",
+            "hi": "$v_x = 3$ स्थिर रहता है; $v_y = 2t$।"
+          },
+          {
+            "en": "$2t = 3$ gives $t = 1.5$ s.",
+            "hi": "$2t = 3$ से $t = 1.5$ s।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That makes $v_y = 6$, twice $v_x$.",
+              "hi": "इससे $v_y = 6$ होता है, $v_x$ का दोगुना।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides the wrong way, 2 by 3.",
+              "hi": "यह उल्टा भाग है, 2 बटा 3।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$v_y$ keeps growing, so it reaches 3.",
+              "hi": "$v_y$ बढ़ता रहता है, इसलिए 3 तक पहुँचता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

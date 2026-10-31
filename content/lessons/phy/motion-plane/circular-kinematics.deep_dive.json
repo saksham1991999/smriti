@@ -1,0 +1,356 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.circular-kinematics:deep_dive",
+  "topic": "phy.motion-plane.circular-kinematics",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Same speed, changing direction",
+        "hi": "वही चाल, बदलती दिशा"
+      },
+      "subtopic": "phy.motion-plane.circular-kinematics.core",
+      "card_ids": [
+        "phy.motion-plane.circular-kinematics:dd:01",
+        "phy.motion-plane.circular-kinematics:dd:02",
+        "phy.motion-plane.circular-kinematics:dd:03",
+        "phy.motion-plane.circular-kinematics:dd:04",
+        "phy.motion-plane.circular-kinematics:dd:05",
+        "phy.motion-plane.circular-kinematics:dd:06",
+        "phy.motion-plane.circular-kinematics:dd:07",
+        "phy.motion-plane.circular-kinematics:dd:08",
+        "phy.motion-plane.circular-kinematics:dd:09"
+      ],
+      "estimated_minutes": 6
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The merry-go-round",
+        "hi": "झूला-चकरी"
+      },
+      "body": {
+        "en": "Children sit at the edge of a merry-go-round that turns steadily. Their speed never changes, yet each of them is always heading in a new direction. Velocity has a direction, so their velocity is changing all the time, and a changing velocity means an acceleration.",
+        "hi": "बच्चे एक स्थिर गति से घूमती झूला-चकरी के किनारे बैठे हैं। उनकी चाल कभी नहीं बदलती, फिर भी हर बच्चा सदा नई दिशा में जा रहा है। वेग की दिशा होती है, इसलिए उनका वेग हर समय बदल रहा है, और बदलता वेग का अर्थ है त्वरण।"
+      },
+      "media": "img.motion-plane.merry-go-round"
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Uniform circular motion",
+        "hi": "एकसमान वृत्तीय गति"
+      },
+      "body": {
+        "en": "When an object moves along a circular path at constant speed, its motion is called uniform circular motion. 'Uniform' refers to the speed. The velocity at every point is along the tangent to the circle, so its direction changes continuously, and the object is accelerated.\n\nIn one revolution of a circle of radius $R$ the object covers a distance $2\\pi R$ and ends where it began, so its displacement is zero. If one revolution takes time $T$, the speed is $v = \\frac{2\\pi R}{T}$. A marble running round inside a ring shows the tangent direction: lift the ring and the marble rolls off in a straight line along the tangent.",
+        "hi": "जब कोई वस्तु नियत चाल से वृत्तीय पथ पर चलती है, तो उसकी गति एकसमान वृत्तीय गति कहलाती है। 'एकसमान' चाल के लिए है। हर बिंदु पर वेग वृत्त की स्पर्श रेखा के अनुदिश होता है, इसलिए उसकी दिशा लगातार बदलती है, और वस्तु त्वरित होती है।\n\nत्रिज्या $R$ के वृत्त के एक चक्कर में वस्तु $2\\pi R$ दूरी तय करती है और वहीं लौट आती है जहाँ से चली थी, इसलिए उसका विस्थापन शून्य है। यदि एक चक्कर में समय $T$ लगे, तो चाल $v = \\frac{2\\pi R}{T}$ है। किसी छल्ले के भीतर घूमता कंचा स्पर्श रेखा की दिशा दिखाता है: छल्ला उठाइए और कंचा स्पर्श रेखा के अनुदिश सीधी रेखा में लुढ़क जाता है।"
+      },
+      "media": "img.motion-plane.merry-go-round",
+      "highlights": [
+        {
+          "term": {
+            "en": "uniform circular motion",
+            "hi": "एकसमान वृत्तीय गति"
+          },
+          "definition": {
+            "en": "constant speed on a circle",
+            "hi": "वृत्त पर नियत चाल"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.4, Activity 4.5; NCERT keph103 §3.10"
+      }
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Centripetal acceleration",
+        "hi": "अभिकेंद्र त्वरण"
+      },
+      "body": {
+        "en": "An object moving with speed $v$ in a circle of radius $R$ has an acceleration of magnitude $\\frac{v^2}{R}$, always directed towards the centre. The name centripetal acceleration was proposed by Newton; the Greek term means centre-seeking. A thorough analysis was first published in 1673 by the Dutch scientist Christiaan Huygens (1629-1695), though it was probably known to Newton some years earlier.\n\nThe magnitude is constant, but the direction keeps turning to point at the centre, so the centripetal acceleration is not a constant vector. That is why the constant-acceleration equations do not apply to uniform circular motion. And the acceleration points exactly at the centre only if the speed is constant.",
+        "hi": "चाल $v$ से त्रिज्या $R$ के वृत्त में चलती वस्तु का त्वरण $\\frac{v^2}{R}$ परिमाण का होता है, और सदा केंद्र की ओर होता है। अभिकेंद्र त्वरण नाम न्यूटन ने सुझाया; यूनानी शब्द का अर्थ है केंद्र की खोज करने वाला। इसका पूरा विश्लेषण सबसे पहले 1673 में डच वैज्ञानिक क्रिस्टियान हाइगेन्स (1629-1695) ने प्रकाशित किया, यद्यपि न्यूटन को यह शायद कुछ वर्ष पहले से पता था।\n\nपरिमाण नियत है, पर दिशा केंद्र की ओर रहने के लिए घूमती रहती है, इसलिए अभिकेंद्र त्वरण नियत सदिश नहीं है। इसीलिए नियत-त्वरण के समीकरण एकसमान वृत्तीय गति पर लागू नहीं होते। और त्वरण ठीक केंद्र की ओर तभी होता है जब चाल नियत हो।"
+      },
+      "media": "img.motion-plane.merry-go-round",
+      "highlights": [
+        {
+          "term": {
+            "en": "centripetal",
+            "hi": "अभिकेंद्र"
+          },
+          "definition": {
+            "en": "centre-seeking",
+            "hi": "केंद्र की खोज करने वाला"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10, Eq. 3.43, Points to Ponder 4 and 6"
+      }
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:04",
+      "type": "derivation",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Why $a = v^2/R$",
+        "hi": "$a = v^2/R$ क्यों"
+      },
+      "steps": [
+        {
+          "latex": "\\frac{|\\Delta \\vec{v}|}{v} = \\frac{|\\Delta \\vec{r}|}{R}",
+          "say": {
+            "en": "Velocity is perpendicular to the position vector, so both turn through the same angle; the triangles are similar.",
+            "hi": "वेग स्थिति सदिश के लंबवत है, इसलिए दोनों एक ही कोण से घूमते हैं; त्रिभुज समरूप हैं।"
+          },
+          "why": null
+        },
+        {
+          "latex": "a = \\lim_{\\Delta t \\to 0}\\frac{|\\Delta \\vec{v}|}{\\Delta t} = \\frac{v}{R}\\lim_{\\Delta t \\to 0}\\frac{|\\Delta \\vec{r}|}{\\Delta t}",
+          "say": {
+            "en": "Divide by the time interval and take the limit.",
+            "hi": "समय अंतराल से भाग देकर सीमा लीजिए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "a_c = \\frac{v}{R} \\cdot v = \\frac{v^2}{R}",
+          "say": {
+            "en": "The limit of $|\\Delta \\vec{r}|/\\Delta t$ is the speed.",
+            "hi": "$|\\Delta \\vec{r}|/\\Delta t$ की सीमा चाल है।"
+          },
+          "why": {
+            "en": "In the limit, $\\Delta \\vec{v}$ is perpendicular to $\\vec{v}$, pointing to the centre.",
+            "hi": "सीमा में $\\Delta \\vec{v}$, $\\vec{v}$ के लंबवत और केंद्र की ओर होता है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10, Fig. 3.18, Eq. 3.43"
+      }
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:05",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Circular motion relations",
+        "hi": "वृत्तीय गति के संबंध"
+      },
+      "latex": "v = R\\omega,\\quad a_c = \\frac{v^2}{R} = \\omega^2 R,\\quad \\omega = \\frac{2\\pi}{T} = 2\\pi\\nu",
+      "symbols": [
+        {
+          "symbol": "\\omega",
+          "meaning": {
+            "en": "angular speed",
+            "hi": "कोणीय चाल"
+          },
+          "unit": "rad/s"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "radius",
+            "hi": "त्रिज्या"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "speed",
+            "hi": "चाल"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "a_c",
+          "meaning": {
+            "en": "centripetal acceleration",
+            "hi": "अभिकेंद्र त्वरण"
+          },
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "T",
+          "meaning": {
+            "en": "time period of one revolution",
+            "hi": "एक चक्कर का आवर्तकाल"
+          },
+          "unit": "s"
+        },
+        {
+          "symbol": "\\nu",
+          "meaning": {
+            "en": "frequency, revolutions per second",
+            "hi": "आवृत्ति, प्रति सेकंड चक्कर"
+          },
+          "unit": "Hz"
+        }
+      ],
+      "conditions": {
+        "en": "Also $a_c = 4\\pi^2\\nu^2 R$. Angular speed is the rate of change of angular distance, $\\omega = \\frac{\\Delta\\theta}{\\Delta t}$.",
+        "hi": "साथ ही $a_c = 4\\pi^2\\nu^2 R$। कोणीय चाल कोणीय दूरी के परिवर्तन की दर है, $\\omega = \\frac{\\Delta\\theta}{\\Delta t}$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10, Eqs. 3.44-3.48, Summary 17"
+      }
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "An insect trapped in a circular groove of radius 12 cm moves steadily round it and completes 7 revolutions in 100 s. Find its angular speed, its linear speed and the magnitude of its acceleration. Is the acceleration a constant vector?",
+        "hi": "12 cm त्रिज्या की वृत्ताकार खाँचे में फँसा एक कीट उसमें स्थिर चाल से घूमता है और 100 s में 7 चक्कर पूरे करता है। उसकी कोणीय चाल, रैखिक चाल और त्वरण का परिमाण ज्ञात कीजिए। क्या त्वरण नियत सदिश है?"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\omega = \\frac{2\\pi \\times 7}{100} \\approx 0.44$ rad/s",
+          "hi": "$\\omega = \\frac{2\\pi \\times 7}{100} \\approx 0.44$ rad/s"
+        },
+        {
+          "en": "$v = \\omega R = 0.44 \\times 12 \\approx 5.3$ cm/s",
+          "hi": "$v = \\omega R = 0.44 \\times 12 \\approx 5.3$ cm/s"
+        },
+        {
+          "en": "$a = \\omega^2 R = 0.44^2 \\times 12 \\approx 2.3$ cm/s², directed to the centre; its direction keeps changing, so it is not a constant vector.",
+          "hi": "$a = \\omega^2 R = 0.44^2 \\times 12 \\approx 2.3$ cm/s², केंद्र की ओर; इसकी दिशा बदलती रहती है, इसलिए यह नियत सदिश नहीं है।"
+        }
+      ],
+      "answer": {
+        "en": "0.44 rad/s; 5.3 cm/s; 2.3 cm/s², not a constant vector",
+        "hi": "0.44 rad/s; 5.3 cm/s; 2.3 cm/s², नियत सदिश नहीं"
+      },
+      "answer_value": {
+        "value": 2.3,
+        "unit": "cm/s²",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Saying the acceleration is zero because the speed is constant.",
+        "hi": "चाल नियत होने से त्वरण को शून्य कहना।"
+      },
+      "media": "img.motion-plane.merry-go-round",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.9"
+      }
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.circular-kinematics.0001"
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.circular-kinematics.0002"
+    },
+    {
+      "id": "phy.motion-plane.circular-kinematics:dd:09",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Constant speed, changing velocity: the motion is accelerated.",
+          "hi": "नियत चाल, बदलता वेग: गति त्वरित है।"
+        },
+        {
+          "en": "$a_c = v^2/R = \\omega^2 R$, towards the centre; not a constant vector.",
+          "hi": "$a_c = v^2/R = \\omega^2 R$, केंद्र की ओर; नियत सदिश नहीं।"
+        },
+        {
+          "en": "$v = R\\omega$, $\\omega = 2\\pi/T = 2\\pi\\nu$.",
+          "hi": "$v = R\\omega$, $\\omega = 2\\pi/T = 2\\pi\\nu$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,561 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "topic": "phy.motion-plane.scalars-vectors",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.scalars-vectors.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.scalars-vectors.core.scalar-vector",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which one of these is a vector quantity?",
+        "hi": "इनमें से कौन-सी सदिश राशि है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Displacement",
+            "hi": "विस्थापन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Mass",
+            "hi": "द्रव्यमान"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Temperature",
+            "hi": "ताप"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Time",
+            "hi": "समय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which answer changes if you turn around?",
+          "hi": "मुड़ जाने पर किसका उत्तर बदलता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only displacement needs a direction to be complete.",
+          "hi": "केवल विस्थापन को पूरा होने के लिए दिशा चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "Mass, temperature and time are given by a number and a unit alone; displacement also has a direction.",
+            "hi": "द्रव्यमान, ताप और समय केवल संख्या और मात्रक से बताए जाते हैं; विस्थापन की दिशा भी होती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Mass has no direction.",
+              "hi": "द्रव्यमान की कोई दिशा नहीं होती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Temperature has no direction.",
+              "hi": "ताप की कोई दिशा नहीं होती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Time has no direction.",
+              "hi": "समय की कोई दिशा नहीं होती।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.scalars-vectors.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.scalars-vectors.core.scalar-vector",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two vectors are equal if and only if they have",
+        "hi": "दो सदिश तभी और केवल तभी समान हैं जब उनके"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the same magnitude and the same direction",
+            "hi": "परिमाण और दिशा दोनों समान हों"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the same magnitude only",
+            "hi": "केवल परिमाण समान हो"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the same direction only",
+            "hi": "केवल दिशा समान हो"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the same starting point",
+            "hi": "आरंभ बिंदु समान हो"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What two things make up a vector?",
+          "hi": "सदिश किन दो चीज़ों से बनता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A vector is its magnitude and its direction; both must match.",
+          "hi": "सदिश उसका परिमाण और दिशा है; दोनों मिलने चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "Equality needs both; the starting point does not matter for free vectors.",
+            "hi": "समानता के लिए दोनों चाहिए; मुक्त सदिशों के लिए आरंभ बिंदु मायने नहीं रखता।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Opposite vectors have the same magnitude but are not equal.",
+              "hi": "विपरीत सदिशों का परिमाण समान है पर वे समान नहीं हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Vectors of different lengths along one line are not equal.",
+              "hi": "एक ही रेखा पर अलग लंबाई के सदिश समान नहीं हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A free vector can be shifted parallel to itself.",
+              "hi": "मुक्त सदिश को उसके समांतर खिसकाया जा सकता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.scalars-vectors.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.scalars-vectors.core.scalar-vector",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A vector $\\vec{A}$ points east and has magnitude 4 units. The vector $-3\\vec{A}$ has",
+        "hi": "एक सदिश $\\vec{A}$ पूर्व की ओर है और उसका परिमाण 4 मात्रक है। सदिश $-3\\vec{A}$ का"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "magnitude 12 units, pointing west",
+            "hi": "परिमाण 12 मात्रक है, दिशा पश्चिम"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "magnitude -12 units, pointing east",
+            "hi": "परिमाण -12 मात्रक है, दिशा पूर्व"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "magnitude 12 units, pointing east",
+            "hi": "परिमाण 12 मात्रक है, दिशा पूर्व"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "magnitude 4 units, pointing west",
+            "hi": "परिमाण 4 मात्रक है, दिशा पश्चिम"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Split the factor into size and sign.",
+          "hi": "गुणक को आकार और चिह्न में बाँटिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The size scales by 3; the minus sign turns it round.",
+          "hi": "आकार 3 गुना होता है; ऋण चिह्न उसे उलट देता है।"
+        },
+        "steps": [
+          {
+            "en": "Magnitude $= 3 \\times 4 = 12$ units; a negative factor reverses east to west.",
+            "hi": "परिमाण $= 3 \\times 4 = 12$ मात्रक; ऋणात्मक गुणक पूर्व को पश्चिम कर देता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A magnitude is never negative.",
+              "hi": "परिमाण कभी ऋणात्मक नहीं होता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The minus sign must reverse the direction.",
+              "hi": "ऋण चिह्न को दिशा उलटनी चाहिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The factor 3 was ignored.",
+              "hi": "गुणक 3 छोड़ दिया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.scalars-vectors.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.scalars-vectors.core.scalar-vector",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about the null vector is correct?",
+        "hi": "शून्य सदिश के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Its magnitude is zero, so its direction need not be specified.",
+            "hi": "इसका परिमाण शून्य है, इसलिए इसकी दिशा बताना आवश्यक नहीं।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "It is the same as the number zero and is a scalar.",
+            "hi": "यह संख्या शून्य के समान है और अदिश है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Adding it to a vector reverses that vector.",
+            "hi": "इसे किसी सदिश में जोड़ने पर वह सदिश उलट जाता है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "It always points along the x-axis.",
+            "hi": "यह सदा x-अक्ष के अनुदिश होता है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What is A + 0?",
+          "hi": "A + 0 क्या है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "It is what you get from $\\vec{A} - \\vec{A}$: a vector of zero length.",
+          "hi": "यह $\\vec{A} - \\vec{A}$ से मिलता है: शून्य लंबाई का सदिश।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{A} + \\vec{0} = \\vec{A}$; with zero magnitude, no direction is needed.",
+            "hi": "$\\vec{A} + \\vec{0} = \\vec{A}$; परिमाण शून्य होने से दिशा की आवश्यकता नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It is a vector: the sum of two vectors is a vector.",
+              "hi": "यह सदिश है: दो सदिशों का योग सदिश होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Adding the null vector leaves a vector unchanged.",
+              "hi": "शून्य सदिश जोड़ने से सदिश नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "No direction is attached to it.",
+              "hi": "इसके साथ कोई दिशा नहीं जुड़ी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.scalars-vectors.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.scalars-vectors.core.scalar-vector",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A girl walks along three sides of a square park of side 10 m, starting at one corner. The magnitude of her displacement and her path length are",
+        "hi": "एक लड़की 10 m भुजा वाले वर्गाकार पार्क की तीन भुजाओं पर, एक कोने से शुरू करके, चलती है। उसके विस्थापन का परिमाण और उसकी पथ-लंबाई हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 m and 30 m",
+            "hi": "10 m और 30 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "30 m and 30 m",
+            "hi": "30 m और 30 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "30 m and 10 m",
+            "hi": "30 m और 10 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0 and 30 m",
+            "hi": "0 और 30 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Draw the square and mark the end point.",
+          "hi": "वर्ग बनाकर अंतिम बिंदु चिह्नित कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Three sides bring her to the corner next to where she began.",
+          "hi": "तीन भुजाएँ उसे आरंभ वाले कोने के बगल के कोने पर ले आती हैं।"
+        },
+        "steps": [
+          {
+            "en": "Path length $= 3 \\times 10 = 30$ m.",
+            "hi": "पथ-लंबाई $= 3 \\times 10 = 30$ m।"
+          },
+          {
+            "en": "She ends one side away from the start, so the displacement is 10 m.",
+            "hi": "वह आरंभ से एक भुजा दूर रुकती है, अतः विस्थापन 10 m है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Displacement is the straight line from start to end.",
+              "hi": "विस्थापन आरंभ से अंत तक की सरल रेखा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The two quantities are swapped.",
+              "hi": "दोनों राशियाँ अदल-बदल गई हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "She has not returned to her start.",
+              "hi": "वह आरंभ पर नहीं लौटी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

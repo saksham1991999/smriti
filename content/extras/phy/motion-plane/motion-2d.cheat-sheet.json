@@ -1,0 +1,91 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "cs.phy.motion-plane.motion-2d",
+  "scope": "topic",
+  "topic": "phy.motion-plane.motion-2d",
+  "title": {
+    "en": "Motion in a Plane",
+    "hi": "किसी समतल में गति"
+  },
+  "concepts": [
+    "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+  ],
+  "key_ideas": [
+    {
+      "en": "$\\vec{v} = d\\vec{r}/dt$, tangent to the path; $\\vec{a} = d\\vec{v}/dt$.",
+      "hi": "$\\vec{v} = d\\vec{r}/dt$, पथ की स्पर्श रेखा पर; $\\vec{a} = d\\vec{v}/dt$।"
+    },
+    {
+      "en": "Average velocity is along the displacement.",
+      "hi": "औसत वेग विस्थापन के अनुदिश होता है।"
+    },
+    {
+      "en": "Constant acceleration: two independent one-dimensional motions.",
+      "hi": "नियत त्वरण: दो स्वतंत्र एकविमीय गतियाँ।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Velocity",
+        "hi": "वेग"
+      },
+      "latex": "\\vec{v} = \\frac{d\\vec{r}}{dt} = v_x\\hat{i} + v_y\\hat{j}"
+    },
+    {
+      "name": {
+        "en": "Constant acceleration",
+        "hi": "नियत त्वरण"
+      },
+      "latex": "\\vec{r} = \\vec{r}_0 + \\vec{v}_0 t + \\frac{1}{2}\\vec{a}t^2"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Acceleration is always along the velocity.",
+        "hi": "त्वरण सदा वेग के अनुदिश होता है।"
+      },
+      "correct": {
+        "en": "In a plane the angle between them can be anything from 0° to 180°.",
+        "hi": "समतल में उनके बीच का कोण 0° से 180° तक कुछ भी हो सकता है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Average velocity points along the path.",
+        "hi": "औसत वेग पथ के अनुदिश होता है।"
+      },
+      "correct": {
+        "en": "It points along the displacement, from start to end.",
+        "hi": "यह विस्थापन के अनुदिश, आरंभ से अंत की ओर होता है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Mixing the x-acceleration into the y-equation.",
+        "hi": "x-त्वरण को y-समीकरण में मिला देना।"
+      },
+      "correct": {
+        "en": "Each component uses only its own acceleration.",
+        "hi": "हर घटक में केवल उसका अपना त्वरण लगता है।"
+      }
+    }
+  ],
+  "diagram": "img.motion-plane.town-walk",
+  "hi_source": "translation"
+}

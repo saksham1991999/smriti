@@ -1,0 +1,121 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.scalars-vectors:quick_revision",
+  "topic": "phy.motion-plane.scalars-vectors",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.motion-plane.scalars-vectors.core.scalar-vector"
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.scalars-vectors:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.motion-plane.scalars-vectors"
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "question": "q.phy.motion-plane.scalars-vectors.0002"
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.scalars-vectors.0003"
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Scalars: distance, mass, temperature, time. Vectors: displacement, velocity, acceleration, force.",
+          "hi": "अदिश: दूरी, द्रव्यमान, ताप, समय। सदिश: विस्थापन, वेग, त्वरण, बल।"
+        },
+        {
+          "en": "Displacement depends only on the end points; its magnitude is at most the path length.",
+          "hi": "विस्थापन केवल अंतिम बिंदुओं पर निर्भर है; इसका परिमाण अधिकतम पथ-लंबाई के बराबर है।"
+        },
+        {
+          "en": "$\\lambda \\vec{A}$ has magnitude $|\\lambda| A$; a negative $\\lambda$ reverses the direction.",
+          "hi": "$\\lambda \\vec{A}$ का परिमाण $|\\lambda| A$ है; ऋणात्मक $\\lambda$ दिशा उलट देता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.scalars-vectors:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.motion-plane.scalars-vectors.core.scalar-vector"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Two vectors of equal magnitude are equal.",
+            "hi": "समान परिमाण वाले दो सदिश समान होते हैं।"
+          },
+          "correct": {
+            "en": "They must also point the same way.",
+            "hi": "उनकी दिशा भी समान होनी चाहिए।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Multiplying by -2 gives a vector of magnitude -2A.",
+            "hi": "-2 से गुणा करने पर परिमाण -2A होता है।"
+          },
+          "correct": {
+            "en": "The magnitude is 2A; the minus sign reverses the direction.",
+            "hi": "परिमाण 2A है; ऋण चिह्न दिशा उलटता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "The null vector points in some fixed direction.",
+            "hi": "शून्य सदिश किसी निश्चित दिशा में होता है।"
+          },
+          "correct": {
+            "en": "With zero magnitude, no direction needs to be given.",
+            "hi": "परिमाण शून्य होने से दिशा बताने की आवश्यकता नहीं।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

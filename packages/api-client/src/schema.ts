@@ -139,6 +139,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/analytics/summary": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PRC-14: readiness, speed, confidence and mistake cards from your own answers */
+    get: operations["analytics_summary_v1_analytics_summary_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/attempts": {
     parameters: {
       query?: never;
@@ -3484,6 +3501,25 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** AnalyticsSummaryOut */
+    AnalyticsSummaryOut: {
+      /**
+       * Computed At
+       * Format: date-time
+       */
+      computed_at: string;
+      confidence: components["schemas"]["ConfidenceCard"];
+      /** Exam Profile Id */
+      exam_profile_id: string;
+      mistakes: components["schemas"]["MistakesCard"];
+      /**
+       * Period
+       * @enum {string}
+       */
+      period: "7d" | "30d" | "all";
+      readiness: components["schemas"]["ReadinessCard"];
+      speed: components["schemas"]["SpeedCard"];
+    };
     /** AnswerResult */
     AnswerResult: {
       /** Attempt */
@@ -4206,6 +4242,35 @@ export interface components {
       correct: number;
       /** Marks Lost */
       marks_lost: number;
+    };
+    /** ConfidenceCard */
+    ConfidenceCard: {
+      /** Have */
+      have: number;
+      /** Levels */
+      levels?: components["schemas"]["ConfidenceLevel"][] | null;
+      /** Lucky Guesses */
+      lucky_guesses?: number | null;
+      /** Needed */
+      needed: number | null;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Shown */
+      shown: boolean;
+    };
+    /** ConfidenceLevel */
+    ConfidenceLevel: {
+      /** Accuracy */
+      accuracy: number | null;
+      /** Answers */
+      answers: number;
+      /**
+       * Confidence
+       * @enum {string}
+       */
+      confidence: "sure" | "fifty" | "guess";
+      /** Correct */
+      correct: number;
     };
     /** ConfidenceRow */
     ConfidenceRow: {
@@ -6593,6 +6658,32 @@ export interface components {
       /** Tier */
       tier: number | null;
     };
+    /** MistakeCount */
+    MistakeCount: {
+      /** Count */
+      count: number;
+      /**
+       * Type
+       * @enum {string}
+       */
+      type: "conceptual" | "calculation" | "misread" | "silly" | "time";
+    };
+    /**
+     * MistakesCard
+     * @description The student's own tags. Shown once anything is tagged.
+     */
+    MistakesCard: {
+      /** Counts */
+      counts?: components["schemas"]["MistakeCount"][] | null;
+      /** Have */
+      have: number;
+      /** Needed */
+      needed: number | null;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Shown */
+      shown: boolean;
+    };
     /**
      * MockAccess
      * @description app-core ``mockAccess``. A locked mock names the paywall source; the client opens PAY-01 only
@@ -7695,6 +7786,28 @@ export interface components {
        */
       url: string;
     };
+    /**
+     * ReadinessCard
+     * @description Ignores the period (a current state). Not a predicted score (PRD §6.3).
+     */
+    ReadinessCard: {
+      /** Have */
+      have: number;
+      /** Needed */
+      needed: number | null;
+      /** Percent */
+      percent?: number | null;
+      /** Practised */
+      practised: number;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Shown */
+      shown: boolean;
+      /** Total */
+      total: number;
+      /** Weighted */
+      weighted: boolean;
+    };
     /** Registration */
     Registration: {
       /** Mock Id */
@@ -8280,6 +8393,29 @@ export interface components {
       attempt_id: string;
       /** Items */
       items: components["schemas"]["SolutionItem"][];
+    };
+    /**
+     * SpeedCard
+     * @description Answers to questions with an ``ideal_time_s``. Slow means over the ideal time, fast means
+     *     under it.
+     */
+    SpeedCard: {
+      /** Avg Ms */
+      avg_ms?: number | null;
+      /** Fast And Wrong */
+      fast_and_wrong?: number | null;
+      /** Have */
+      have: number;
+      /** Needed */
+      needed: number | null;
+      /** Reason */
+      reason?: ("not_enough_data" | "threshold_unset") | null;
+      /** Right But Slow */
+      right_but_slow?: number | null;
+      /** Shown */
+      shown: boolean;
+      /** Target Ms */
+      target_ms?: number | null;
     };
     /** SquadCheerIn */
     SquadCheerIn: {
@@ -9535,6 +9671,38 @@ export interface operations {
         };
         content: {
           "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  analytics_summary_v1_analytics_summary_get: {
+    parameters: {
+      query?: {
+        exam?: string | null;
+        period?: "7d" | "30d" | "all";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AnalyticsSummaryOut"];
         };
       };
       /** @description Validation Error */

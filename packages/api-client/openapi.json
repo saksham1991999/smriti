@@ -5598,6 +5598,53 @@
         }
       }
     },
+    "/v1/analytics/summary": {
+      "get": {
+        "tags": ["insights", "analytics"],
+        "summary": "PRC-14: readiness, speed, confidence and mistake cards from your own answers",
+        "operationId": "analytics_summary_v1_analytics_summary_get",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Exam"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": ["7d", "30d", "all"],
+              "type": "string",
+              "default": "30d",
+              "title": "Period"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AnalyticsSummaryOut" }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/integrity/challenge": {
       "post": {
         "tags": ["integrity"],
@@ -8182,6 +8229,28 @@
   },
   "components": {
     "schemas": {
+      "AnalyticsSummaryOut": {
+        "properties": {
+          "exam_profile_id": { "type": "string", "title": "Exam Profile Id" },
+          "period": { "type": "string", "enum": ["7d", "30d", "all"], "title": "Period" },
+          "computed_at": { "type": "string", "format": "date-time", "title": "Computed At" },
+          "readiness": { "$ref": "#/components/schemas/ReadinessCard" },
+          "speed": { "$ref": "#/components/schemas/SpeedCard" },
+          "confidence": { "$ref": "#/components/schemas/ConfidenceCard" },
+          "mistakes": { "$ref": "#/components/schemas/MistakesCard" }
+        },
+        "type": "object",
+        "required": [
+          "exam_profile_id",
+          "period",
+          "computed_at",
+          "readiness",
+          "speed",
+          "confidence",
+          "mistakes"
+        ],
+        "title": "AnalyticsSummaryOut"
+      },
       "AnswerResult": {
         "properties": {
           "question_id": { "type": "string", "title": "Question Id" },
@@ -9075,6 +9144,49 @@
         "type": "object",
         "required": ["concept_id", "attempted", "correct", "accuracy", "marks_lost"],
         "title": "ConceptRow"
+      },
+      "ConfidenceCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "levels": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/ConfidenceLevel" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Levels"
+          },
+          "lucky_guesses": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Lucky Guesses"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed"],
+        "title": "ConfidenceCard"
+      },
+      "ConfidenceLevel": {
+        "properties": {
+          "confidence": {
+            "type": "string",
+            "enum": ["sure", "fifty", "guess"],
+            "title": "Confidence"
+          },
+          "answers": { "type": "integer", "title": "Answers" },
+          "correct": { "type": "integer", "title": "Correct" },
+          "accuracy": { "anyOf": [{ "type": "number" }, { "type": "null" }], "title": "Accuracy" }
+        },
+        "type": "object",
+        "required": ["confidence", "answers", "correct", "accuracy"],
+        "title": "ConfidenceLevel"
       },
       "ConfidenceRow": {
         "properties": {
@@ -11891,6 +12003,44 @@
         "required": ["person", "tier", "streak", "is_friend", "request_pending"],
         "title": "MiniProfile"
       },
+      "MistakeCount": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["conceptual", "calculation", "misread", "silly", "time"],
+            "title": "Type"
+          },
+          "count": { "type": "integer", "title": "Count" }
+        },
+        "type": "object",
+        "required": ["type", "count"],
+        "title": "MistakeCount"
+      },
+      "MistakesCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "counts": {
+            "anyOf": [
+              { "items": { "$ref": "#/components/schemas/MistakeCount" }, "type": "array" },
+              { "type": "null" }
+            ],
+            "title": "Counts"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed"],
+        "title": "MistakesCard",
+        "description": "The student's own tags. Shown once anything is tagged."
+      },
       "MockAccess": {
         "properties": {
           "allowed": { "type": "boolean", "title": "Allowed" },
@@ -13364,6 +13514,28 @@
         "required": ["url", "mime", "cached", "quota"],
         "title": "ReadAloudOut"
       },
+      "ReadinessCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "percent": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Percent" },
+          "practised": { "type": "integer", "title": "Practised" },
+          "total": { "type": "integer", "title": "Total" },
+          "weighted": { "type": "boolean", "title": "Weighted" }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed", "practised", "total", "weighted"],
+        "title": "ReadinessCard",
+        "description": "Ignores the period (a current state). Not a predicted score (PRD §6.3)."
+      },
       "Registration": {
         "properties": {
           "mock_id": { "type": "string", "title": "Mock Id" },
@@ -13990,6 +14162,37 @@
         "type": "object",
         "required": ["attempt_id", "items"],
         "title": "Solutions"
+      },
+      "SpeedCard": {
+        "properties": {
+          "shown": { "type": "boolean", "title": "Shown" },
+          "reason": {
+            "anyOf": [
+              { "type": "string", "enum": ["not_enough_data", "threshold_unset"] },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "have": { "type": "integer", "title": "Have" },
+          "needed": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Needed" },
+          "avg_ms": { "anyOf": [{ "type": "integer" }, { "type": "null" }], "title": "Avg Ms" },
+          "target_ms": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Target Ms"
+          },
+          "right_but_slow": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Right But Slow"
+          },
+          "fast_and_wrong": {
+            "anyOf": [{ "type": "integer" }, { "type": "null" }],
+            "title": "Fast And Wrong"
+          }
+        },
+        "type": "object",
+        "required": ["shown", "have", "needed"],
+        "title": "SpeedCard",
+        "description": "Answers to questions with an ``ideal_time_s``. Slow means over the ideal time, fast means\nunder it."
       },
       "SquadCheerIn": {
         "properties": {

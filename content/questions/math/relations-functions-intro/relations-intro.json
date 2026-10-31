@@ -1,0 +1,816 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format, not copied from the NCERT exercises. Each solution cites the NCERT section, definition or example it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.relations-functions-intro.relations-intro",
+  "questions": [
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A relation from a set A to a set B is",
+        "hi": "समुच्चय A से समुच्चय B तक संबंध है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a subset of $A \\times B$",
+            "hi": "$A \\times B$ का एक उपसमुच्चय"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a subset of $B \\times A$",
+            "hi": "$B \\times A$ का एक उपसमुच्चय"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "always equal to $A \\times B$",
+            "hi": "सदा $A \\times B$ के बराबर"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a subset of $A \\cap B$",
+            "hi": "$A \\cap B$ का एक उपसमुच्चय"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Relations are made of ordered pairs.",
+          "hi": "संबंध क्रमित युग्मों से बनते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A relation keeps some of the ordered pairs (a, b) with a in A and b in B.",
+          "hi": "संबंध उन कुछ क्रमित युग्मों (a, b) को रखता है जिनमें a, A में और b, B में हो।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §2.3, Definition 2: a relation from A to B is a subset of $A \\times B$.",
+            "hi": "NCERT §2.3, Definition 2: A से B तक संबंध $A \\times B$ का उपसमुच्चय है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Pairs in $B \\times A$ start in B, the wrong way round.",
+              "hi": "$B \\times A$ के युग्म B से शुरू होते हैं, उल्टी दिशा में।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A relation can keep just some of the pairs.",
+              "hi": "संबंध केवल कुछ युग्म भी रख सकता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A relation is made of pairs, not single elements.",
+              "hi": "संबंध युग्मों से बनता है, अकेले अवयवों से नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A = \\{1, 2, 3, 4, 5\\}$ and $R = \\{(x, y) : y = x + 2,\\ x, y \\in A\\}$. The range of R is",
+        "hi": "मान लीजिए $A = \\{1, 2, 3, 4, 5\\}$ और $R = \\{(x, y) : y = x + 2,\\ x, y \\in A\\}$। R का परिसर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{3, 4, 5\\}$",
+            "hi": "$\\{3, 4, 5\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{1, 2, 3\\}$",
+            "hi": "$\\{1, 2, 3\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{1, 2, 3, 4, 5\\}$",
+            "hi": "$\\{1, 2, 3, 4, 5\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{3, 4, 5, 6, 7\\}$",
+            "hi": "$\\{3, 4, 5, 6, 7\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Range: second elements only.",
+          "hi": "परिसर: केवल दूसरे अवयव।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "List the pairs, then read off the second elements.",
+          "hi": "युग्म लिखिए, फिर दूसरे अवयव पढ़िए।"
+        },
+        "steps": [
+          {
+            "en": "$R = \\{(1, 3), (2, 4), (3, 5)\\}$, so the range is $\\{3, 4, 5\\}$ (NCERT §2.3, Definition 4).",
+            "hi": "$R = \\{(1, 3), (2, 4), (3, 5)\\}$, अतः परिसर $\\{3, 4, 5\\}$ है (NCERT §2.3, Definition 4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the domain.",
+              "hi": "वह प्रांत है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the codomain.",
+              "hi": "वह सहप्रांत है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$6$ and $7$ are not in A, so they cannot be images.",
+              "hi": "$6$ और $7$, A में नहीं हैं, इसलिए प्रतिबिंब नहीं हो सकते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $n(A) = 2$ and $n(B) = 3$, how many relations are there from A to B?",
+        "hi": "यदि $n(A) = 2$ और $n(B) = 3$, तो A से B तक कितने संबंध हैं?"
+      },
+      "answer": {
+        "value": 64,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Use $2^{pq}$.",
+          "hi": "$2^{pq}$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every subset of $A \\times B$ is a relation.",
+          "hi": "$A \\times B$ का हर उपसमुच्चय एक संबंध है।"
+        },
+        "steps": [
+          {
+            "en": "$n(A \\times B) = 6$, so there are $2^6 = 64$ relations (NCERT §2.3, Note).",
+            "hi": "$n(A \\times B) = 6$, अतः $2^6 = 64$ संबंध हैं (NCERT §2.3, Note)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$6$ counts pairs, not relations.",
+              "hi": "$6$ युग्म गिनता है, संबंध नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "R is the relation made of the pairs $(x, x^2)$ where x is a prime number less than $8$. In roster form, R is",
+        "hi": "R उन युग्मों $(x, x^2)$ से बना संबंध है जिनमें x, $8$ से कम एक अभाज्य संख्या है। सूचीरूप में R है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{(2, 4), (3, 9), (5, 25), (7, 49)\\}$",
+            "hi": "$\\{(2, 4), (3, 9), (5, 25), (7, 49)\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{(1, 1), (2, 4), (3, 9), (5, 25), (7, 49)\\}$",
+            "hi": "$\\{(1, 1), (2, 4), (3, 9), (5, 25), (7, 49)\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{(4, 2), (9, 3), (25, 5), (49, 7)\\}$",
+            "hi": "$\\{(4, 2), (9, 3), (25, 5), (49, 7)\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{(2, 4), (3, 9), (5, 25)\\}$",
+            "hi": "$\\{(2, 4), (3, 9), (5, 25)\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is 7 less than 8?",
+          "hi": "क्या 7, 8 से कम है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "List the primes below 8, then pair each with its square.",
+          "hi": "8 से कम अभाज्य संख्याएँ लिखिए, फिर हर एक को उसके वर्ग से जोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "The primes less than $8$ are $2, 3, 5, 7$; pair each x with $x^2$ (NCERT §2.3, Remarks).",
+            "hi": "$8$ से कम अभाज्य संख्याएँ $2, 3, 5, 7$ हैं; हर x को $x^2$ से जोड़िए (NCERT §2.3, Remarks)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$1$ is not a prime number.",
+              "hi": "$1$ अभाज्य संख्या नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The pairs are written the wrong way round: the rule is $(x, x^2)$.",
+              "hi": "युग्म उल्टे लिखे गए हैं: नियम $(x, x^2)$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$7$ is a prime less than $8$ and is missing.",
+              "hi": "$7$, $8$ से कम अभाज्य है और छूट गया है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A = \\{1, 2, 3, 6\\}$ and R be the relation on A given by $(a, b) \\in R$ when b is exactly divisible by a. How many elements does R have?",
+        "hi": "मान लीजिए $A = \\{1, 2, 3, 6\\}$ और R, A पर वह संबंध है जिसमें $(a, b) \\in R$ जब b, a से पूर्णतः विभाज्य हो। R में कितने अवयव हैं?"
+      },
+      "answer": {
+        "value": 9,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Every number divides itself.",
+          "hi": "हर संख्या स्वयं को विभाजित करती है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Go through a = 1, 2, 3, 6 and count the multiples of a in A.",
+          "hi": "a = 1, 2, 3, 6 को बारी-बारी लेकर A में a के गुणज गिनिए।"
+        },
+        "steps": [
+          {
+            "en": "$a = 1$: four pairs; $a = 2$: two; $a = 3$: two; $a = 6$: one. Total $9$ (NCERT §2.3).",
+            "hi": "$a = 1$: चार युग्म; $a = 2$: दो; $a = 3$: दो; $a = 6$: एक। कुल $9$ (NCERT §2.3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Leaving out pairs like $(2, 2)$ gives $5$.",
+              "hi": "$(2, 2)$ जैसे युग्म छोड़ने से $5$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "R is the relation on $\\mathbf{Z}$ in which $(a, b) \\in R$ when $a - b$ is even. Which pair is in R?",
+        "hi": "R, $\\mathbf{Z}$ पर वह संबंध है जिसमें $(a, b) \\in R$ जब $a - b$ सम हो। कौन-सा युग्म R में है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$(3, 7)$",
+            "hi": "$(3, 7)$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$(2, 5)$",
+            "hi": "$(2, 5)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$(4, 1)$",
+            "hi": "$(4, 1)$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$(0, -1)$",
+            "hi": "$(0, -1)$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Negative even numbers are even too.",
+          "hi": "ऋण सम संख्याएँ भी सम होती हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Subtract and check whether the result is even.",
+          "hi": "घटाइए और देखिए कि परिणाम सम है या नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$3 - 7 = -4$, which is even (NCERT §2.3, Definition 2).",
+            "hi": "$3 - 7 = -4$, जो सम है (NCERT §2.3, Definition 2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$2 - 5 = -3$ is odd.",
+              "hi": "$2 - 5 = -3$ विषम है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$4 - 1 = 3$ is odd.",
+              "hi": "$4 - 1 = 3$ विषम है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$0 - (-1) = 1$ is odd.",
+              "hi": "$0 - (-1) = 1$ विषम है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For every relation R from a set A to a set B, which statement is always true?",
+        "hi": "समुच्चय A से समुच्चय B तक हर संबंध R के लिए कौन-सा कथन सदा सत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The range of R is a subset of B.",
+            "hi": "R का परिसर B का उपसमुच्चय है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The range of R equals B.",
+            "hi": "R का परिसर B के बराबर है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The domain of R equals A.",
+            "hi": "R का प्रांत A के बराबर है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "R has at least one pair.",
+            "hi": "R में कम से कम एक युग्म है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of the smallest possible relation.",
+          "hi": "सबसे छोटे संभव संबंध के बारे में सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Look for a statement that cannot fail, even for a tiny relation.",
+          "hi": "ऐसा कथन खोजिए जो छोटे से छोटे संबंध के लिए भी असत्य न हो।"
+        },
+        "steps": [
+          {
+            "en": "Every image lies in B, so range $\\subset$ codomain (NCERT §2.3, Definition 4). The empty set is also a subset of $A \\times B$, so a relation can have no pairs.",
+            "hi": "हर प्रतिबिंब B में है, अतः परिसर $\\subset$ सहप्रांत (NCERT §2.3, Definition 4)। रिक्त समुच्चय भी $A \\times B$ का उपसमुच्चय है, इसलिए किसी संबंध में एक भी युग्म न होना संभव है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Some elements of B may receive no arrow.",
+              "hi": "B के कुछ अवयवों तक कोई तीर न पहुँचे, ऐसा हो सकता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Some elements of A may have no image.",
+              "hi": "A के कुछ अवयवों का कोई प्रतिबिंब न हो, ऐसा हो सकता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The empty relation has no pairs.",
+              "hi": "रिक्त संबंध में कोई युग्म नहीं होता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0008",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $n(A) = 2$ and $n(B) = 2$, how many non-empty relations are there from A to B?",
+        "hi": "यदि $n(A) = 2$ और $n(B) = 2$, तो A से B तक कितने अरिक्त संबंध हैं?"
+      },
+      "answer": {
+        "value": 15,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$2^{pq}$ counts the empty relation too.",
+          "hi": "$2^{pq}$ रिक्त संबंध को भी गिनता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Count all relations, then remove the empty one.",
+          "hi": "सभी संबंध गिनिए, फिर रिक्त संबंध हटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$n(A \\times B) = 4$, so there are $2^4 = 16$ relations; one of them is empty, leaving $15$ (NCERT §2.3, Note).",
+            "hi": "$n(A \\times B) = 4$, अतः $2^4 = 16$ संबंध हैं; उनमें से एक रिक्त है, शेष $15$ (NCERT §2.3, Note)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$16$ includes the empty relation.",
+              "hi": "$16$ में रिक्त संबंध शामिल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.relations-intro.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$R = \\{(x, y) : x, y \\in \\mathbf{N},\\ x + 2y = 10\\}$. The domain of R is",
+        "hi": "$R = \\{(x, y) : x, y \\in \\mathbf{N},\\ x + 2y = 10\\}$। R का प्रांत है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{2, 4, 6, 8\\}$",
+            "hi": "$\\{2, 4, 6, 8\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{1, 2, 3, 4\\}$",
+            "hi": "$\\{1, 2, 3, 4\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{0, 2, 4, 6, 8\\}$",
+            "hi": "$\\{0, 2, 4, 6, 8\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{2, 4, 6, 8, 10\\}$",
+            "hi": "$\\{2, 4, 6, 8, 10\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Both coordinates must be natural numbers.",
+          "hi": "दोनों निर्देशांक प्राकृत संख्याएँ होने चाहिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Try $y = 1, 2, 3, \\ldots$ and keep x only while it stays a natural number.",
+          "hi": "$y = 1, 2, 3, \\ldots$ आज़माइए और x को तभी तक रखिए जब तक वह प्राकृत संख्या रहे।"
+        },
+        "steps": [
+          {
+            "en": "$y = 1, 2, 3, 4$ give $x = 8, 6, 4, 2$; $y = 5$ gives $x = 0 \\notin \\mathbf{N}$ (NCERT §2.3, Definition 3).",
+            "hi": "$y = 1, 2, 3, 4$ से $x = 8, 6, 4, 2$; $y = 5$ से $x = 0 \\notin \\mathbf{N}$ (NCERT §2.3, Definition 3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the range.",
+              "hi": "वह परिसर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$0$ is not a natural number.",
+              "hi": "$0$ प्राकृत संख्या नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$x = 10$ needs $y = 0$, which is not natural.",
+              "hi": "$x = 10$ के लिए $y = 0$ चाहिए, जो प्राकृत नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

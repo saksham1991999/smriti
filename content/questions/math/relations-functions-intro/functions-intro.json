@@ -1,0 +1,1678 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format, not copied from the NCERT exercises. Each solution cites the NCERT section, definition or example it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.relations-functions-intro.functions-intro",
+  "questions": [
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which relation from $\\{1, 2, 3\\}$ to $\\{4, 5\\}$ is a function?",
+        "hi": "$\\{1, 2, 3\\}$ से $\\{4, 5\\}$ तक कौन-सा संबंध फलन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{(1, 4), (2, 4), (3, 5)\\}$",
+            "hi": "$\\{(1, 4), (2, 4), (3, 5)\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{(1, 4), (1, 5), (2, 4), (3, 5)\\}$",
+            "hi": "$\\{(1, 4), (1, 5), (2, 4), (3, 5)\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{(1, 4), (2, 5)\\}$",
+            "hi": "$\\{(1, 4), (2, 5)\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{(4, 1), (5, 2)\\}$",
+            "hi": "$\\{(4, 1), (5, 2)\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Check every element of the first set.",
+          "hi": "पहले समुच्चय के हर अवयव को जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each of 1, 2 and 3 needs exactly one image.",
+          "hi": "1, 2 और 3 में से हर एक का ठीक एक प्रतिबिंब चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "In the first relation 1, 2 and 3 each appear once as a first element (NCERT §2.4, Definition 5).",
+            "hi": "पहले संबंध में 1, 2 और 3 हर एक पहले अवयव के रूप में ठीक एक बार आते हैं (NCERT §2.4, Definition 5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "1 has two images, 4 and 5.",
+              "hi": "1 के दो प्रतिबिंब हैं, 4 और 5।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "3 has no image.",
+              "hi": "3 का कोई प्रतिबिंब नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "These pairs start in the second set, so this is not a relation from the first set.",
+              "hi": "ये युग्म दूसरे समुच्चय से शुरू होते हैं, इसलिए यह पहले समुच्चय से संबंध नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The domain of $f(x) = \\frac{1}{x^2 - 7x + 10}$ is",
+        "hi": "$f(x) = \\frac{1}{x^2 - 7x + 10}$ का प्रांत है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\mathbf{R} - \\{2, 5\\}$",
+            "hi": "$\\mathbf{R} - \\{2, 5\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\mathbf{R} - \\{-2, -5\\}$",
+            "hi": "$\\mathbf{R} - \\{-2, -5\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\mathbf{R} - \\{2\\}$",
+            "hi": "$\\mathbf{R} - \\{2\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathbf{R}$",
+            "hi": "$\\mathbf{R}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Factorise the denominator.",
+          "hi": "हर के गुणनखंड कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Remove the values that make the denominator zero.",
+          "hi": "वे मान हटाइए जो हर को शून्य कर दें।"
+        },
+        "steps": [
+          {
+            "en": "$x^2 - 7x + 10 = (x - 2)(x - 5)$, which is zero at $x = 2$ and $x = 5$ (NCERT §2.4, Example 21).",
+            "hi": "$x^2 - 7x + 10 = (x - 2)(x - 5)$, जो $x = 2$ और $x = 5$ पर शून्य है (NCERT §2.4, Example 21)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The signs are reversed: $(x - 2)$ is zero at $x = 2$.",
+              "hi": "चिह्न उलट गए हैं: $(x - 2)$, $x = 2$ पर शून्य है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$x = 5$ also makes the denominator zero.",
+              "hi": "$x = 5$ भी हर को शून्य करता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Division by zero is not defined.",
+              "hi": "शून्य से भाग परिभाषित नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = 3x - 4$, find $f(5) - f(2)$.",
+        "hi": "यदि $f(x) = 3x - 4$, तो $f(5) - f(2)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 9,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Substitute 5, then 2.",
+          "hi": "पहले 5, फिर 2 रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find each image, then subtract.",
+          "hi": "हर प्रतिबिंब निकालिए, फिर घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$f(5) = 11$ and $f(2) = 2$, so $f(5) - f(2) = 9$ (NCERT §2.4, Example 12).",
+            "hi": "$f(5) = 11$ और $f(2) = 2$, अतः $f(5) - f(2) = 9$ (NCERT §2.4, Example 12)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$f(5 - 2) = f(3) = 5$ is a different quantity.",
+              "hi": "$f(5 - 2) = f(3) = 5$ एक अलग राशि है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The domain and range of $f(x) = \\sqrt{16 - x^2}$ are",
+        "hi": "$f(x) = \\sqrt{16 - x^2}$ के प्रांत और परिसर हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Domain $[-4, 4]$, range $[0, 4]$",
+            "hi": "प्रांत $[-4, 4]$, परिसर $[0, 4]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Domain $[-4, 4]$, range $[-4, 4]$",
+            "hi": "प्रांत $[-4, 4]$, परिसर $[-4, 4]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Domain $[0, 4]$, range $[0, 4]$",
+            "hi": "प्रांत $[0, 4]$, परिसर $[0, 4]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Domain $\\mathbf{R}$, range $[0, 4]$",
+            "hi": "प्रांत $\\mathbf{R}$, परिसर $[0, 4]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Solve $16 - x^2 \\ge 0$ first.",
+          "hi": "पहले $16 - x^2 \\ge 0$ हल कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The square root needs a non-negative number and gives a non-negative answer.",
+          "hi": "वर्गमूल को अऋणात्मक संख्या चाहिए और वह अऋणात्मक उत्तर देता है।"
+        },
+        "steps": [
+          {
+            "en": "$16 - x^2 \\ge 0$ gives $-4 \\le x \\le 4$; then $16 - x^2$ runs over $[0, 16]$, so $f(x)$ runs over $[0, 4]$ (NCERT §2.4, Definition 6).",
+            "hi": "$16 - x^2 \\ge 0$ से $-4 \\le x \\le 4$; तब $16 - x^2$ का मान $[0, 16]$ में रहता है, अतः $f(x)$ का मान $[0, 4]$ में (NCERT §2.4, Definition 6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A square root is never negative.",
+              "hi": "वर्गमूल कभी ऋणात्मक नहीं होता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Negative x such as $-3$ also work, since $(-3)^2 = 9$.",
+              "hi": "$-3$ जैसे ऋण x भी चलते हैं, क्योंकि $(-3)^2 = 9$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "For $|x| > 4$ the number under the root is negative.",
+              "hi": "$|x| > 4$ के लिए मूल के नीचे की संख्या ऋणात्मक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "f is a linear function from $\\mathbf{Z}$ to $\\mathbf{Z}$ with $f(0) = 3$ and $f(2) = 7$. Find $f(5)$.",
+        "hi": "f, $\\mathbf{Z}$ से $\\mathbf{Z}$ तक एक रैखिक फलन है, जिसमें $f(0) = 3$ और $f(2) = 7$। $f(5)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 13,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Find c from $f(0)$.",
+          "hi": "$f(0)$ से c निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A linear function is $f(x) = mx + c$; the two values fix m and c.",
+          "hi": "रैखिक फलन $f(x) = mx + c$ है; दो मान m और c तय करते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$f(0) = c = 3$ and $f(2) = 2m + 3 = 7$, so $m = 2$ and $f(x) = 2x + 3$ (NCERT §2.4, Example 20).",
+            "hi": "$f(0) = c = 3$ और $f(2) = 2m + 3 = 7$, अतः $m = 2$ और $f(x) = 2x + 3$ (NCERT §2.4, Example 20)।"
+          },
+          {
+            "en": "$f(5) = 2 \\times 5 + 3 = 13$.",
+            "hi": "$f(5) = 2 \\times 5 + 3 = 13$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Taking $m = 7 / 2$ by forgetting c gives a non-integer value.",
+              "hi": "c भूलकर $m = 7 / 2$ लेने से अपूर्णांक मान आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The domain of $f(x) = \\sqrt{x - 2} + \\frac{1}{x - 5}$ is",
+        "hi": "$f(x) = \\sqrt{x - 2} + \\frac{1}{x - 5}$ का प्रांत है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[2, 5) \\cup (5, \\infty)$",
+            "hi": "$[2, 5) \\cup (5, \\infty)$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[2, \\infty)$",
+            "hi": "$[2, \\infty)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$(2, 5) \\cup (5, \\infty)$",
+            "hi": "$(2, 5) \\cup (5, \\infty)$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathbf{R} - \\{5\\}$",
+            "hi": "$\\mathbf{R} - \\{5\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Intersect the two conditions.",
+          "hi": "दोनों शर्तों का सर्वनिष्ठ लीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Both parts must be defined at once.",
+          "hi": "दोनों भाग एक साथ परिभाषित होने चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "The root needs $x \\ge 2$; the fraction needs $x \\ne 5$. Together: $[2, 5) \\cup (5, \\infty)$ (NCERT §2.4, Example 21).",
+            "hi": "मूल के लिए $x \\ge 2$; भिन्न के लिए $x \\ne 5$। दोनों साथ: $[2, 5) \\cup (5, \\infty)$ (NCERT §2.4, Example 21)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$x = 5$ makes the fraction undefined.",
+              "hi": "$x = 5$ पर भिन्न अपरिभाषित है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$x = 2$ is allowed: $\\sqrt{0} = 0$.",
+              "hi": "$x = 2$ की अनुमति है: $\\sqrt{0} = 0$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Values below 2 put a negative number under the root.",
+              "hi": "2 से कम मान मूल के नीचे ऋण संख्या रख देते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0007",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.function-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many integers are in the domain of $f(x) = \\sqrt{9 - x^2}$?",
+        "hi": "$f(x) = \\sqrt{9 - x^2}$ के प्रांत में कितने पूर्णांक हैं?"
+      },
+      "answer": {
+        "value": 7,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Remember 0 and the negative integers.",
+          "hi": "0 और ऋण पूर्णांकों को याद रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the domain, then count the integers in it.",
+          "hi": "प्रांत ज्ञात कीजिए, फिर उसमें पूर्णांक गिनिए।"
+        },
+        "steps": [
+          {
+            "en": "$9 - x^2 \\ge 0$ gives $[-3, 3]$, which holds $-3, -2, -1, 0, 1, 2, 3$ (NCERT §2.4, Definition 6).",
+            "hi": "$9 - x^2 \\ge 0$ से $[-3, 3]$ मिलता है, जिसमें $-3, -2, -1, 0, 1, 2, 3$ हैं (NCERT §2.4, Definition 6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Counting only $0$ to $3$ misses the negative integers.",
+              "hi": "केवल $0$ से $3$ तक गिनने पर ऋण पूर्णांक छूट जाते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The range of the signum function is",
+        "hi": "चिह्न फलन का परिसर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{-1, 0, 1\\}$",
+            "hi": "$\\{-1, 0, 1\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\mathbf{R}$",
+            "hi": "$\\mathbf{R}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[-1, 1]$",
+            "hi": "$[-1, 1]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{-1, 1\\}$",
+            "hi": "$\\{-1, 1\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What is the value at 0?",
+          "hi": "0 पर मान क्या है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The signum function only ever gives three values.",
+          "hi": "चिह्न फलन केवल तीन मान देता है।"
+        },
+        "steps": [
+          {
+            "en": "It gives $1$ for positive x, $0$ at $0$ and $-1$ for negative x (NCERT §2.4.1 (vi)).",
+            "hi": "यह धन x के लिए $1$, $0$ पर $0$ और ऋण x के लिए $-1$ देता है (NCERT §2.4.1 (vi))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\mathbf{R}$ is its domain.",
+              "hi": "$\\mathbf{R}$ इसका प्रांत है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Values between, such as $0.5$, never occur.",
+              "hi": "बीच के मान, जैसे $0.5$, कभी नहीं आते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "At $x = 0$ the value is $0$.",
+              "hi": "$x = 0$ पर मान $0$ है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0009",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Find $[3.7] + [-2.3]$, where $[x]$ is the greatest integer function.",
+        "hi": "$[3.7] + [-2.3]$ ज्ञात कीजिए, जहाँ $[x]$ महत्तम पूर्णांक फलन है।"
+      },
+      "answer": {
+        "value": 0,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$[x] \\le x$ always.",
+          "hi": "सदा $[x] \\le x$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "For a negative number, go down to the next integer.",
+          "hi": "ऋण संख्या के लिए नीचे वाले पूर्णांक तक जाइए।"
+        },
+        "steps": [
+          {
+            "en": "$[3.7] = 3$ and $[-2.3] = -3$ because $-3 \\le -2.3 < -2$; the sum is $0$ (NCERT §2.4.1 (vii)).",
+            "hi": "$[3.7] = 3$ और $[-2.3] = -3$, क्योंकि $-3 \\le -2.3 < -2$; योग $0$ है (NCERT §2.4.1 (vii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Taking $[-2.3] = -2$ gives $1$.",
+              "hi": "$[-2.3] = -2$ लेने से $1$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0010",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The range of $f(x) = |x| + 1$, $x \\in \\mathbf{R}$, is",
+        "hi": "$f(x) = |x| + 1$, $x \\in \\mathbf{R}$, का परिसर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[1, \\infty)$",
+            "hi": "$[1, \\infty)$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$(1, \\infty)$",
+            "hi": "$(1, \\infty)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[0, \\infty)$",
+            "hi": "$[0, \\infty)$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathbf{R}$",
+            "hi": "$\\mathbf{R}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What is the smallest value?",
+          "hi": "सबसे छोटा मान क्या है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$|x|$ takes every value from 0 upward; adding 1 shifts them up.",
+          "hi": "$|x|$, 0 से ऊपर का हर मान लेता है; 1 जोड़ने से सब ऊपर खिसकते हैं।"
+        },
+        "steps": [
+          {
+            "en": "The range of $|x|$ is $[0, \\infty)$, so the range of $|x| + 1$ is $[1, \\infty)$ (NCERT §2.4.1 (v)).",
+            "hi": "$|x|$ का परिसर $[0, \\infty)$ है, अतः $|x| + 1$ का परिसर $[1, \\infty)$ है (NCERT §2.4.1 (v))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$f(0) = 1$, so $1$ is in the range.",
+              "hi": "$f(0) = 1$, इसलिए $1$ परिसर में है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the range of $|x|$ alone.",
+              "hi": "वह केवल $|x|$ का परिसर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The function never takes values below 1.",
+              "hi": "फलन कभी 1 से कम मान नहीं लेता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0011",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which of these is a polynomial function?",
+        "hi": "इनमें से कौन-सा बहुपद फलन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$f(x) = x^3 - 2x + 7$",
+            "hi": "$f(x) = x^3 - 2x + 7$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$f(x) = \\frac{1}{x}$",
+            "hi": "$f(x) = \\frac{1}{x}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$f(x) = \\sqrt{x}$",
+            "hi": "$f(x) = \\sqrt{x}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$f(x) = x^2 + x^{-1}$",
+            "hi": "$f(x) = x^2 + x^{-1}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Check each power of x.",
+          "hi": "x की हर घात जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A polynomial uses only non-negative whole-number powers of x.",
+          "hi": "बहुपद में x की केवल अऋणात्मक पूर्णांक घातें होती हैं।"
+        },
+        "steps": [
+          {
+            "en": "$x^3 - 2x + 7$ has powers $3, 1, 0$ (NCERT §2.4.1 (iii)).",
+            "hi": "$x^3 - 2x + 7$ में घातें $3, 1, 0$ हैं (NCERT §2.4.1 (iii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\frac{1}{x} = x^{-1}$ is a rational function.",
+              "hi": "$\\frac{1}{x} = x^{-1}$ एक परिमेय फलन है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\sqrt{x} = x^{1/2}$ has a fractional power.",
+              "hi": "$\\sqrt{x} = x^{1/2}$ में भिन्नात्मक घात है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$x^{-1}$ has a negative power.",
+              "hi": "$x^{-1}$ में ऋण घात है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0012",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The range of $f(x) = \\frac{1}{x}$, $x \\ne 0$, is",
+        "hi": "$f(x) = \\frac{1}{x}$, $x \\ne 0$, का परिसर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\mathbf{R} - \\{0\\}$",
+            "hi": "$\\mathbf{R} - \\{0\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$(0, \\infty)$",
+            "hi": "$(0, \\infty)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\mathbf{R}$",
+            "hi": "$\\mathbf{R}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[-1, 1]$",
+            "hi": "$[-1, 1]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Can $\\frac{1}{x}$ equal 0?",
+          "hi": "क्या $\\frac{1}{x}$ का मान 0 हो सकता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every non-zero number is the reciprocal of something, but 0 is not.",
+          "hi": "हर शून्येतर संख्या किसी का व्युत्क्रम है, पर 0 नहीं।"
+        },
+        "steps": [
+          {
+            "en": "For any $y \\ne 0$, $f\\left(\\frac{1}{y}\\right) = y$, and $\\frac{1}{x}$ is never $0$ (NCERT §2.4.1, Example 15).",
+            "hi": "किसी भी $y \\ne 0$ के लिए $f\\left(\\frac{1}{y}\\right) = y$, और $\\frac{1}{x}$ कभी $0$ नहीं होता (NCERT §2.4.1, Example 15)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Negative x gives negative values.",
+              "hi": "ऋण x से ऋण मान मिलते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$0$ is never a value.",
+              "hi": "$0$ कभी मान नहीं होता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$x = 0.1$ gives $10$.",
+              "hi": "$x = 0.1$ से $10$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0013",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $f(x) = [x]$ for $x \\in [-1, 2)$, the range of f is",
+        "hi": "यदि $f(x) = [x]$, जहाँ $x \\in [-1, 2)$, तो f का परिसर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{-1, 0, 1\\}$",
+            "hi": "$\\{-1, 0, 1\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{-1, 0, 1, 2\\}$",
+            "hi": "$\\{-1, 0, 1, 2\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{0, 1\\}$",
+            "hi": "$\\{0, 1\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[-1, 2)$",
+            "hi": "$[-1, 2)$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is the right end included?",
+          "hi": "क्या दायाँ सिरा शामिल है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Split the interval into the steps of the staircase.",
+          "hi": "अंतराल को सीढ़ी के पायदानों में बाँटिए।"
+        },
+        "steps": [
+          {
+            "en": "$[x] = -1$ on $[-1, 0)$, $0$ on $[0, 1)$ and $1$ on $[1, 2)$ (NCERT §2.4.1 (vii)).",
+            "hi": "$[x] = -1$, $[-1, 0)$ पर; $0$, $[0, 1)$ पर; और $1$, $[1, 2)$ पर (NCERT §2.4.1 (vii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$2$ is not in the interval, so $[x] = 2$ never happens.",
+              "hi": "$2$ अंतराल में नहीं है, इसलिए $[x] = 2$ कभी नहीं होता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "At $x = -1$, $[x] = -1$.",
+              "hi": "$x = -1$ पर $[x] = -1$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$[x]$ takes only integer values.",
+              "hi": "$[x]$ केवल पूर्णांक मान लेता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0014",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $f(x) = x^2$ and $g(x) = x - 3$. Find $(f - g)(2)$.",
+        "hi": "मान लीजिए $f(x) = x^2$ और $g(x) = x - 3$। $(f - g)(2)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 5,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Watch the sign of $g(2)$.",
+          "hi": "$g(2)$ का चिह्न देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find $f(2)$ and $g(2)$, then subtract.",
+          "hi": "$f(2)$ और $g(2)$ निकालिए, फिर घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$f(2) = 4$ and $g(2) = -1$, so $(f - g)(2) = 4 - (-1) = 5$ (NCERT §2.4.2 (ii)).",
+            "hi": "$f(2) = 4$ और $g(2) = -1$, अतः $(f - g)(2) = 4 - (-1) = 5$ (NCERT §2.4.2 (ii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$3$ comes from treating $g(2)$ as $+1$.",
+              "hi": "$3$ तब आता है जब $g(2)$ को $+1$ मान लिया जाए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0015",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $f(x) = 2x + 1$ and $g(x) = x - 1$. Then $(fg)(x)$ is",
+        "hi": "मान लीजिए $f(x) = 2x + 1$ और $g(x) = x - 1$। तब $(fg)(x)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2x^2 - x - 1$",
+            "hi": "$2x^2 - x - 1$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2x^2 - 1$",
+            "hi": "$2x^2 - 1$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$3x$",
+            "hi": "$3x$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2x^2 + x - 1$",
+            "hi": "$2x^2 + x - 1$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Expand carefully.",
+          "hi": "सावधानी से विस्तार कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Multiply the two values at each x.",
+          "hi": "हर x पर दोनों मानों का गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$(fg)(x) = (2x + 1)(x - 1) = 2x^2 - 2x + x - 1 = 2x^2 - x - 1$ (NCERT §2.4.2 (iv)).",
+            "hi": "$(fg)(x) = (2x + 1)(x - 1) = 2x^2 - 2x + x - 1 = 2x^2 - x - 1$ (NCERT §2.4.2 (iv))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This multiplies only the first terms and the last terms.",
+              "hi": "इसमें केवल पहले पदों और अंतिम पदों का गुणा हुआ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$3x$ is $(f + g)(x)$.",
+              "hi": "$3x$, $(f + g)(x)$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The middle term has the wrong sign: $-2x + x = -x$.",
+              "hi": "बीच वाले पद का चिह्न गलत है: $-2x + x = -x$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0016",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $f(x) = x^2 - 4$ and $g(x) = x - 2$ on $\\mathbf{R}$. The domain of $\\frac{f}{g}$ is",
+        "hi": "मान लीजिए $f(x) = x^2 - 4$ और $g(x) = x - 2$, $\\mathbf{R}$ पर। $\\frac{f}{g}$ का प्रांत है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\mathbf{R} - \\{2\\}$",
+            "hi": "$\\mathbf{R} - \\{2\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\mathbf{R}$",
+            "hi": "$\\mathbf{R}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\mathbf{R} - \\{-2\\}$",
+            "hi": "$\\mathbf{R} - \\{-2\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathbf{R} - \\{-2, 2\\}$",
+            "hi": "$\\mathbf{R} - \\{-2, 2\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where is $g(x) = 0$?",
+          "hi": "$g(x) = 0$ कहाँ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The quotient exists only where the divisor is not zero.",
+          "hi": "भागफल केवल वहाँ है जहाँ भाजक शून्य न हो।"
+        },
+        "steps": [
+          {
+            "en": "$g(x) = 0$ at $x = 2$, so $\\frac{f}{g}$ is defined on $\\mathbf{R} - \\{2\\}$, where it equals $x + 2$ (NCERT §2.4.2 (v)).",
+            "hi": "$g(x) = 0$, $x = 2$ पर, अतः $\\frac{f}{g}$, $\\mathbf{R} - \\{2\\}$ पर परिभाषित है, जहाँ यह $x + 2$ के बराबर है (NCERT §2.4.2 (v))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Cancelling $x - 2$ does not make $x = 2$ allowed.",
+              "hi": "$x - 2$ काटने से $x = 2$ की अनुमति नहीं मिल जाती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$g(-2) = -4 \\ne 0$, so $-2$ is allowed.",
+              "hi": "$g(-2) = -4 \\ne 0$, इसलिए $-2$ की अनुमति है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "These are the zeros of f; only the zeros of g matter.",
+              "hi": "ये f के शून्यक हैं; केवल g के शून्यक मायने रखते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0017",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $f(x) = x + 1$ and $g(x) = 2x - 3$. Find $(3f - g)(4)$.",
+        "hi": "मान लीजिए $f(x) = x + 1$ और $g(x) = 2x - 3$। $(3f - g)(4)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 10,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "The scalar 3 multiplies f only.",
+          "hi": "अदिश 3 केवल f को गुणा करता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Evaluate f and g at 4, then combine.",
+          "hi": "4 पर f और g का मान निकालिए, फिर मिलाइए।"
+        },
+        "steps": [
+          {
+            "en": "$f(4) = 5$ and $g(4) = 5$, so $(3f - g)(4) = 3 \\times 5 - 5 = 10$ (NCERT §2.4.2 (ii) and (iii)).",
+            "hi": "$f(4) = 5$ और $g(4) = 5$, अतः $(3f - g)(4) = 3 \\times 5 - 5 = 10$ (NCERT §2.4.2 (ii) तथा (iii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Multiplying $g(4)$ by 3 as well gives $0$.",
+              "hi": "$g(4)$ को भी 3 से गुणा करने पर $0$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0018",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $f(x) = x^2$ and $g(x) = \\sqrt{x}$ on the positive real numbers. Then $\\left(\\frac{f}{g}\\right)(x)$ is",
+        "hi": "मान लीजिए धन वास्तविक संख्याओं पर $f(x) = x^2$ और $g(x) = \\sqrt{x}$। तब $\\left(\\frac{f}{g}\\right)(x)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$x^{3/2}$",
+            "hi": "$x^{3/2}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$x^{5/2}$",
+            "hi": "$x^{5/2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$x^{1/2}$",
+            "hi": "$x^{1/2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$x^{-3/2}$",
+            "hi": "$x^{-3/2}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Dividing powers: subtract exponents.",
+          "hi": "घातों का भाग: घातांक घटाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Write $\\sqrt{x}$ as a power and subtract the exponents.",
+          "hi": "$\\sqrt{x}$ को घात के रूप में लिखिए और घातांक घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{x^2}{x^{1/2}} = x^{2 - 1/2} = x^{3/2}$, and for $x > 0$, $g(x) \\ne 0$ (NCERT §2.4.2 (v), Example 17).",
+            "hi": "$\\frac{x^2}{x^{1/2}} = x^{2 - 1/2} = x^{3/2}$, और $x > 0$ के लिए $g(x) \\ne 0$ (NCERT §2.4.2 (v), Example 17)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$x^{5/2}$ is the product $fg$.",
+              "hi": "$x^{5/2}$ गुणनफल $fg$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$x^{1/2}$ is g itself.",
+              "hi": "$x^{1/2}$ स्वयं g है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$x^{-3/2}$ is $\\frac{g}{f}$.",
+              "hi": "$x^{-3/2}$, $\\frac{g}{f}$ है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.functions-intro.0019",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.functions-intro.core.algebra-of-functions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $f(x) = x^2 + 1$ and $g(x) = 2x$. Find the sum of all real x with $(f + g)(x) = 16$.",
+        "hi": "मान लीजिए $f(x) = x^2 + 1$ और $g(x) = 2x$। उन सभी वास्तविक x का योग ज्ञात कीजिए जिनके लिए $(f + g)(x) = 16$।"
+      },
+      "answer": {
+        "value": -2,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Both signs of the square root count.",
+          "hi": "वर्गमूल के दोनों चिह्न गिने जाते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Form $f + g$ first; it is a perfect square.",
+          "hi": "पहले $f + g$ बनाइए; यह एक पूर्ण वर्ग है।"
+        },
+        "steps": [
+          {
+            "en": "$(f + g)(x) = x^2 + 2x + 1 = (x + 1)^2$ (NCERT §2.4.2 (i)).",
+            "hi": "$(f + g)(x) = x^2 + 2x + 1 = (x + 1)^2$ (NCERT §2.4.2 (i))।"
+          },
+          {
+            "en": "$(x + 1)^2 = 16$ gives $x + 1 = \\pm 4$, so $x = 3$ or $x = -5$, with sum $-2$.",
+            "hi": "$(x + 1)^2 = 16$ से $x + 1 = \\pm 4$, अतः $x = 3$ या $x = -5$, जिनका योग $-2$ है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Keeping only the positive root gives $3$.",
+              "hi": "केवल धन मूल रखने से $3$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

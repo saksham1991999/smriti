@@ -1,0 +1,772 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions-intro.functions-intro:deep_dive",
+  "topic": "math.relations-functions-intro.functions-intro",
+  "mode": "deep_dive",
+  "estimated_minutes": 12,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions-intro.functions-intro.core.function-definition",
+    "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+    "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "When a relation is a function",
+        "hi": "संबंध कब फलन है"
+      },
+      "subtopic": "math.relations-functions-intro.functions-intro.core",
+      "card_ids": [
+        "math.relations-functions-intro.functions-intro:dd:01",
+        "math.relations-functions-intro.functions-intro:dd:02",
+        "math.relations-functions-intro.functions-intro:dd:03",
+        "math.relations-functions-intro.functions-intro:dd:04"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Real functions and their domains",
+        "hi": "वास्तविक फलन और उनके प्रांत"
+      },
+      "subtopic": "math.relations-functions-intro.functions-intro.core",
+      "card_ids": [
+        "math.relations-functions-intro.functions-intro:dd:05",
+        "math.relations-functions-intro.functions-intro:dd:06",
+        "math.relations-functions-intro.functions-intro:dd:07",
+        "math.relations-functions-intro.functions-intro:dd:08"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "A gallery of standard functions",
+        "hi": "मानक फलनों की वीथी"
+      },
+      "subtopic": "math.relations-functions-intro.functions-intro.core",
+      "card_ids": [
+        "math.relations-functions-intro.functions-intro:dd:09",
+        "math.relations-functions-intro.functions-intro:dd:10",
+        "math.relations-functions-intro.functions-intro:dd:11",
+        "math.relations-functions-intro.functions-intro:dd:12",
+        "math.relations-functions-intro.functions-intro:dd:13",
+        "math.relations-functions-intro.functions-intro:dd:14"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-4",
+      "title": {
+        "en": "Algebra of real functions",
+        "hi": "वास्तविक फलनों का बीजगणित"
+      },
+      "subtopic": "math.relations-functions-intro.functions-intro.core",
+      "card_ids": [
+        "math.relations-functions-intro.functions-intro:dd:15",
+        "math.relations-functions-intro.functions-intro:dd:16",
+        "math.relations-functions-intro.functions-intro:dd:17",
+        "math.relations-functions-intro.functions-intro:dd:18",
+        "math.relations-functions-intro.functions-intro:dd:19"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:01",
+      "type": "story",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Where the word came from",
+        "hi": "शब्द कहाँ से आया"
+      },
+      "body": {
+        "en": "The word function first appears in a Latin manuscript written by Gottfried Wilhelm Leibnitz in 1673. On 5 July 1698, Johann Bernoulli, in a letter to Leibnitz, first gave the word its special meaning in analysis, and Leibnitz approved at the end of that month.",
+        "hi": "फलन शब्द पहली बार गॉटफ्रीड विल्हेल्म लाइबनित्ज़ द्वारा 1673 में लिखी एक लैटिन पांडुलिपि में आता है। 5 जुलाई 1698 को योहान बर्नूली ने लाइबनित्ज़ को लिखे एक पत्र में पहली बार इस शब्द को विश्लेषण में उसका विशेष अर्थ दिया, और उसी महीने के अंत में लाइबनित्ज़ ने इसे स्वीकृति दी।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Historical Note"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "One input, exactly one output",
+        "hi": "एक इनपुट, ठीक एक आउटपुट"
+      },
+      "body": {
+        "en": "A relation f from A to B is a function if every element of A has one and only one image in B. Think of a juice machine: every fruit you put in gives exactly one glass, never none and never two.\n\nTwo things can stop a relation being a function: an element of A with no image, or an element of A with two different images. In other words, the domain of a function is all of A, and no two distinct pairs in it share a first element.\n\nWe write $f : A \\to B$. If $(a, b) \\in f$, then $f(a) = b$: b is the image of a, and a is a preimage of b. Different elements may share an image; that is allowed.",
+        "hi": "A से B तक संबंध f एक फलन है यदि A के प्रत्येक अवयव का B में एक और केवल एक प्रतिबिंब हो। जूस मशीन सोचिए: डाला गया हर फल ठीक एक गिलास देता है, न शून्य, न दो।\n\nदो बातें किसी संबंध को फलन बनने से रोक सकती हैं: A का कोई अवयव जिसका कोई प्रतिबिंब न हो, या A का कोई अवयव जिसके दो भिन्न प्रतिबिंब हों। दूसरे शब्दों में, फलन का प्रांत पूरा A है, और उसके कोई दो भिन्न युग्म एक ही पहला अवयव साझा नहीं करते।\n\nहम $f : A \\to B$ लिखते हैं। यदि $(a, b) \\in f$, तो $f(a) = b$: b, a का प्रतिबिंब है, और a, b का पूर्व-प्रतिबिंब है। भिन्न अवयवों का प्रतिबिंब एक ही हो सकता है; इसकी अनुमति है।"
+      },
+      "media": "img.relations-functions.juice-machine",
+      "highlights": [
+        {
+          "term": {
+            "en": "function",
+            "hi": "फलन"
+          },
+          "definition": {
+            "en": "A relation in which every element of A has exactly one image.",
+            "hi": "ऐसा संबंध जिसमें A के प्रत्येक अवयव का ठीक एक प्रतिबिंब हो।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4, Definition 5"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Each relation goes from $\\{1, 2, 3\\}$ to $\\{4, 5\\}$. Function or not?",
+        "hi": "हर संबंध $\\{1, 2, 3\\}$ से $\\{4, 5\\}$ तक है। फलन है या नहीं?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "f1",
+            "text": {
+              "en": "$\\{(1, 4), (2, 4), (3, 5)\\}$",
+              "hi": "$\\{(1, 4), (2, 4), (3, 5)\\}$"
+            }
+          },
+          {
+            "id": "f2",
+            "text": {
+              "en": "$\\{(1, 5), (2, 5), (3, 5)\\}$",
+              "hi": "$\\{(1, 5), (2, 5), (3, 5)\\}$"
+            }
+          },
+          {
+            "id": "n1",
+            "text": {
+              "en": "$\\{(1, 4), (1, 5), (2, 4), (3, 5)\\}$",
+              "hi": "$\\{(1, 4), (1, 5), (2, 4), (3, 5)\\}$"
+            }
+          },
+          {
+            "id": "n2",
+            "text": {
+              "en": "$\\{(1, 4), (2, 5)\\}$",
+              "hi": "$\\{(1, 4), (2, 5)\\}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "fn",
+            "label": {
+              "en": "Function",
+              "hi": "फलन"
+            }
+          },
+          {
+            "id": "not",
+            "label": {
+              "en": "Not a function",
+              "hi": "फलन नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "f1",
+            "bin": "fn"
+          },
+          {
+            "item": "f2",
+            "bin": "fn"
+          },
+          {
+            "item": "n1",
+            "bin": "not"
+          },
+          {
+            "item": "n2",
+            "bin": "not"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: sharing an image is fine; two images for 1, or no image for 3, is not.",
+          "hi": "सही: प्रतिबिंब साझा करना ठीक है; 1 के दो प्रतिबिंब, या 3 का कोई प्रतिबिंब न होना, ठीक नहीं।"
+        },
+        "wrong": {
+          "en": "Check 1, 2 and 3 one by one: each needs exactly one arrow.",
+          "hi": "1, 2 और 3 को एक-एक कर जाँचिए: हर एक से ठीक एक तीर चाहिए।"
+        }
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:04",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 1,
+      "question": "q.math.relations-functions-intro.functions-intro.0001"
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Real-valued and real functions",
+        "hi": "वास्तविक मान फलन और वास्तविक फलन"
+      },
+      "body": {
+        "en": "A function whose range is $\\mathbf{R}$ or a subset of $\\mathbf{R}$ is a real-valued function. If its domain is also $\\mathbf{R}$ or a subset of $\\mathbf{R}$, it is a real function.\n\nWhen a real function is given only by a formula, its domain is taken to be every real x for which the formula gives a real value. Two things to remove: values that make a denominator zero, and values that put a negative number under a square root.\n\nFor example, $f(x) = \\frac{x^2 + 3x + 5}{x^2 - 5x + 4}$ has denominator $(x - 4)(x - 1)$, so its domain is $\\mathbf{R} - \\{1, 4\\}$.",
+        "hi": "जिस फलन का परिसर $\\mathbf{R}$ या $\\mathbf{R}$ का उपसमुच्चय हो, वह वास्तविक मान फलन है। यदि उसका प्रांत भी $\\mathbf{R}$ या $\\mathbf{R}$ का उपसमुच्चय हो, तो वह वास्तविक फलन है।\n\nजब वास्तविक फलन केवल सूत्र से दिया हो, तो उसका प्रांत वे सभी वास्तविक x माने जाते हैं जिनके लिए सूत्र वास्तविक मान देता है। दो चीज़ें हटानी हैं: वे मान जो हर को शून्य कर दें, और वे मान जो वर्गमूल के नीचे ऋण संख्या रख दें।\n\nउदाहरण के लिए, $f(x) = \\frac{x^2 + 3x + 5}{x^2 - 5x + 4}$ का हर $(x - 4)(x - 1)$ है, अतः इसका प्रांत $\\mathbf{R} - \\{1, 4\\}$ है।"
+      },
+      "media": "img.relations-functions.juice-machine",
+      "highlights": [
+        {
+          "term": {
+            "en": "real function",
+            "hi": "वास्तविक फलन"
+          },
+          "definition": {
+            "en": "A function whose domain and range are both subsets of $\\mathbf{R}$.",
+            "hi": "ऐसा फलन जिसका प्रांत और परिसर दोनों $\\mathbf{R}$ के उपसमुच्चय हों।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4, Definition 6, Example 21"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Find the domain and range of $f(x) = \\sqrt{25 - x^2}$.",
+        "hi": "$f(x) = \\sqrt{25 - x^2}$ का प्रांत और परिसर ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The square root needs $25 - x^2 \\ge 0$, that is $x^2 \\le 25$, so $-5 \\le x \\le 5$.",
+          "hi": "वर्गमूल के लिए $25 - x^2 \\ge 0$ चाहिए, अर्थात् $x^2 \\le 25$, अतः $-5 \\le x \\le 5$।"
+        },
+        {
+          "en": "On this interval $25 - x^2$ runs from $0$ (at $x = \\pm 5$) up to $25$ (at $x = 0$).",
+          "hi": "इस अंतराल पर $25 - x^2$ का मान $0$ ($x = \\pm 5$ पर) से $25$ ($x = 0$ पर) तक जाता है।"
+        },
+        {
+          "en": "Taking the square root, $f(x)$ runs from $0$ to $5$.",
+          "hi": "वर्गमूल लेने पर $f(x)$ का मान $0$ से $5$ तक जाता है।"
+        }
+      ],
+      "answer": {
+        "en": "Domain $[-5, 5]$, range $[0, 5]$",
+        "hi": "प्रांत $[-5, 5]$, परिसर $[0, 5]$"
+      },
+      "common_trap": {
+        "en": "Giving the range as $[-5, 5]$: a square root is never negative.",
+        "hi": "परिसर $[-5, 5]$ बताना: वर्गमूल कभी ऋणात्मक नहीं होता।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4, Definition 6"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:07",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions-intro.functions-intro.0002"
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:08",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.function-definition"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Function: every element of A has exactly one image; $f : A \\to B$, $f(a) = b$.",
+          "hi": "फलन: A के हर अवयव का ठीक एक प्रतिबिंब; $f : A \\to B$, $f(a) = b$।"
+        },
+        {
+          "en": "Real function: domain and range are subsets of $\\mathbf{R}$.",
+          "hi": "वास्तविक फलन: प्रांत और परिसर $\\mathbf{R}$ के उपसमुच्चय।"
+        },
+        {
+          "en": "Domain from a formula: drop zeros of the denominator and negatives under a square root.",
+          "hi": "सूत्र से प्रांत: हर के शून्य और वर्गमूल के नीचे ऋण मान हटाइए।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4, Summary"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.standard-functions-graphs"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Identity, constant, polynomial and rational",
+        "hi": "तत्समक, अचर, बहुपद और परिमेय"
+      },
+      "body": {
+        "en": "Identity function: $f(x) = x$ on $\\mathbf{R}$. Domain and range are $\\mathbf{R}$; the graph is a straight line through the origin.\n\nConstant function: $f(x) = c$. Domain $\\mathbf{R}$, range $\\{c\\}$; the graph is a line parallel to the x-axis.\n\nPolynomial function: $f(x) = a_0 + a_1 x + a_2 x^2 + \\cdots + a_n x^n$ with n a non-negative integer and real coefficients. The square function $f(x) = x^2$ has domain $\\mathbf{R}$ and range $\\{x : x \\ge 0\\}$; the cube function $f(x) = x^3$ has range $\\mathbf{R}$.\n\nRational function: $\\frac{f(x)}{g(x)}$ with f and g polynomials and $g(x) \\ne 0$. For $f(x) = \\frac{1}{x}$ both the domain and the range are all real numbers except $0$.\n\nA linear function is $f(x) = mx + c$ with m and c constants.\n\nA playground shows these shapes: an evenly sloping slide is like the straight-line graph of the identity function, a flat bench like a constant function, and a U-shaped ramp like the graph of $x^2$.",
+        "hi": "तत्समक फलन: $f(x) = x$, $\\mathbf{R}$ पर। प्रांत और परिसर $\\mathbf{R}$ हैं; ग्राफ़ मूलबिंदु से होकर जाने वाली सरल रेखा है।\n\nअचर फलन: $f(x) = c$। प्रांत $\\mathbf{R}$, परिसर $\\{c\\}$; ग्राफ़ x-अक्ष के समांतर रेखा है।\n\nबहुपद फलन: $f(x) = a_0 + a_1 x + a_2 x^2 + \\cdots + a_n x^n$, जहाँ n एक अऋणात्मक पूर्णांक है और गुणांक वास्तविक हैं। वर्ग फलन $f(x) = x^2$ का प्रांत $\\mathbf{R}$ और परिसर $\\{x : x \\ge 0\\}$ है; घन फलन $f(x) = x^3$ का परिसर $\\mathbf{R}$ है।\n\nपरिमेय फलन: $\\frac{f(x)}{g(x)}$, जहाँ f और g बहुपद हैं और $g(x) \\ne 0$। $f(x) = \\frac{1}{x}$ के लिए प्रांत और परिसर दोनों $0$ को छोड़कर सभी वास्तविक संख्याएँ हैं।\n\nरैखिक फलन $f(x) = mx + c$ है, जहाँ m और c अचर हैं।\n\nखेल का मैदान ये आकार दिखाता है: समान ढाल वाली फिसलपट्टी तत्समक फलन के सरल-रेखा ग्राफ़ जैसी है, समतल बेंच अचर फलन जैसी, और U आकार का रैंप $x^2$ के ग्राफ़ जैसा।"
+      },
+      "media": "img.relations-functions.playground",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.1 (i) to (iv), Examples 13 to 15, Example 18 Remark"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.standard-functions-graphs"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Modulus, signum and greatest integer",
+        "hi": "मापांक, चिह्न और महत्तम पूर्णांक"
+      },
+      "body": {
+        "en": "Modulus function: $f(x) = |x|$, equal to x when $x \\ge 0$ and to $-x$ when $x < 0$. Its values are never negative, and every non-negative number is a value, so its range is $[0, \\infty)$.\n\nSignum function: $f(x) = 1$ for $x > 0$, $0$ for $x = 0$ and $-1$ for $x < 0$. Domain $\\mathbf{R}$, range $\\{-1, 0, 1\\}$.\n\nGreatest integer function: $f(x) = [x]$, the greatest integer less than or equal to x. So $[x] = 0$ for $0 \\le x < 1$, $[x] = 1$ for $1 \\le x < 2$, and $[x] = -1$ for $-1 \\le x < 0$. Its graph is a staircase of flat steps, each one unit long.",
+        "hi": "मापांक फलन: $f(x) = |x|$, जो $x \\ge 0$ होने पर x के बराबर है, और $-x$ के बराबर है जब $x < 0$। इसके मान कभी ऋणात्मक नहीं होते, और हर अऋणात्मक संख्या इसका एक मान है, इसलिए इसका परिसर $[0, \\infty)$ है।\n\nचिह्न फलन: $f(x) = 1$ यदि $x > 0$, $0$ यदि $x = 0$ और $-1$ यदि $x < 0$। प्रांत $\\mathbf{R}$, परिसर $\\{-1, 0, 1\\}$।\n\nमहत्तम पूर्णांक फलन: $f(x) = [x]$, x से छोटा या उसके बराबर सबसे बड़ा पूर्णांक। अतः $[x] = 0$ जब $0 \\le x < 1$, $[x] = 1$ जब $1 \\le x < 2$, और $[x] = -1$ जब $-1 \\le x < 0$। इसका ग्राफ़ समतल पायदानों वाली सीढ़ी जैसा है, हर पायदान एक इकाई लंबा।"
+      },
+      "media": "img.relations-functions.staircase",
+      "highlights": [
+        {
+          "term": {
+            "en": "greatest integer function",
+            "hi": "महत्तम पूर्णांक फलन"
+          },
+          "definition": {
+            "en": "$[x]$ is the greatest integer less than or equal to x.",
+            "hi": "$[x]$, x से छोटा या उसके बराबर सबसे बड़ा पूर्णांक है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.1 (v) to (vii)"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:11",
+      "type": "interactive",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.standard-functions-graphs"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Match each function with its range.",
+        "hi": "हर फलन को उसके परिसर से मिलाइए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "id",
+            "text": {
+              "en": "$f(x) = x$",
+              "hi": "$f(x) = x$"
+            }
+          },
+          {
+            "id": "cube",
+            "text": {
+              "en": "$f(x) = x^3$",
+              "hi": "$f(x) = x^3$"
+            }
+          },
+          {
+            "id": "sgn",
+            "text": {
+              "en": "Signum function",
+              "hi": "चिह्न फलन"
+            }
+          },
+          {
+            "id": "abs",
+            "text": {
+              "en": "$f(x) = |x|$",
+              "hi": "$f(x) = |x|$"
+            }
+          },
+          {
+            "id": "sq",
+            "text": {
+              "en": "$f(x) = x^2$",
+              "hi": "$f(x) = x^2$"
+            }
+          },
+          {
+            "id": "const",
+            "text": {
+              "en": "$f(x) = 3$",
+              "hi": "$f(x) = 3$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "all",
+            "label": {
+              "en": "All real numbers",
+              "hi": "सभी वास्तविक संख्याएँ"
+            }
+          },
+          {
+            "id": "three",
+            "label": {
+              "en": "$\\{-1, 0, 1\\}$",
+              "hi": "$\\{-1, 0, 1\\}$"
+            }
+          },
+          {
+            "id": "nonneg",
+            "label": {
+              "en": "$[0, \\infty)$",
+              "hi": "$[0, \\infty)$"
+            }
+          },
+          {
+            "id": "one",
+            "label": {
+              "en": "$\\{3\\}$",
+              "hi": "$\\{3\\}$"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "id",
+            "bin": "all"
+          },
+          {
+            "item": "cube",
+            "bin": "all"
+          },
+          {
+            "item": "sgn",
+            "bin": "three"
+          },
+          {
+            "item": "abs",
+            "bin": "nonneg"
+          },
+          {
+            "item": "sq",
+            "bin": "nonneg"
+          },
+          {
+            "item": "const",
+            "bin": "one"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: squares and moduli are never negative, and the cube takes every real value.",
+          "hi": "सही: वर्ग और मापांक कभी ऋणात्मक नहीं होते, और घन हर वास्तविक मान लेता है।"
+        },
+        "wrong": {
+          "en": "Ask: can this function give a negative value? Every value?",
+          "hi": "पूछिए: क्या यह फलन ऋण मान दे सकता है? हर मान?"
+        }
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:12",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.standard-functions-graphs"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Find $[2.7]$, $[-1.5]$ and $[-3]$.",
+        "hi": "$[2.7]$, $[-1.5]$ और $[-3]$ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$2 \\le 2.7 < 3$, so $[2.7] = 2$.",
+          "hi": "$2 \\le 2.7 < 3$, अतः $[2.7] = 2$।"
+        },
+        {
+          "en": "$-2 \\le -1.5 < -1$, so $[-1.5] = -2$: go down to the integer below, not towards zero.",
+          "hi": "$-2 \\le -1.5 < -1$, अतः $[-1.5] = -2$: नीचे वाले पूर्णांक तक जाइए, शून्य की ओर नहीं।"
+        },
+        {
+          "en": "$-3$ is already an integer, so $[-3] = -3$.",
+          "hi": "$-3$ पहले से पूर्णांक है, अतः $[-3] = -3$।"
+        }
+      ],
+      "answer": {
+        "en": "$[2.7] = 2$, $[-1.5] = -2$, $[-3] = -3$",
+        "hi": "$[2.7] = 2$, $[-1.5] = -2$, $[-3] = -3$"
+      },
+      "common_trap": {
+        "en": "Writing $[-1.5] = -1$ by dropping the decimal part.",
+        "hi": "दशमलव भाग हटाकर $[-1.5] = -1$ लिख देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.1 (vii)"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:13",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.standard-functions-graphs"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions-intro.functions-intro.0008"
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:14",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.standard-functions-graphs"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Identity: line through the origin; constant: line parallel to the x-axis.",
+          "hi": "तत्समक: मूलबिंदु से होकर रेखा; अचर: x-अक्ष के समांतर रेखा।"
+        },
+        {
+          "en": "Ranges: $x^2$ and $|x|$ give $[0, \\infty)$; signum gives $\\{-1, 0, 1\\}$; $\\frac{1}{x}$ gives $\\mathbf{R} - \\{0\\}$.",
+          "hi": "परिसर: $x^2$ और $|x|$ से $[0, \\infty)$; चिह्न से $\\{-1, 0, 1\\}$; $\\frac{1}{x}$ से $\\mathbf{R} - \\{0\\}$।"
+        },
+        {
+          "en": "$[x]$: the greatest integer not more than x; its graph is a staircase.",
+          "hi": "$[x]$: x से अधिक न होने वाला सबसे बड़ा पूर्णांक; इसका ग्राफ़ सीढ़ी जैसा है।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.1"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:15",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Adding, multiplying and dividing functions",
+        "hi": "फलनों को जोड़ना, गुणा करना और भाग देना"
+      },
+      "body": {
+        "en": "Let f and g be real functions on the same set $X \\subset \\mathbf{R}$. We combine them point by point: at each x, do the arithmetic on the two values $f(x)$ and $g(x)$, the way two juice machines can pour into one jug.\n\nSum and difference: $(f + g)(x) = f(x) + g(x)$ and $(f - g)(x) = f(x) - g(x)$.\nScalar multiple: for a real number $\\alpha$, $(\\alpha f)(x) = \\alpha f(x)$.\nProduct: $(fg)(x) = f(x)\\,g(x)$, also called pointwise multiplication.\nQuotient: $\\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)}$, only where $g(x) \\ne 0$.",
+        "hi": "मान लीजिए f और g एक ही समुच्चय $X \\subset \\mathbf{R}$ पर वास्तविक फलन हैं। हम इन्हें बिंदुवार जोड़ते हैं: हर x पर दोनों मानों $f(x)$ और $g(x)$ पर अंकगणित कीजिए, जैसे दो जूस मशीनें एक ही जग में रस डाल सकती हैं।\n\nयोग और अंतर: $(f + g)(x) = f(x) + g(x)$ और $(f - g)(x) = f(x) - g(x)$।\nअदिश गुणज: किसी वास्तविक संख्या $\\alpha$ के लिए $(\\alpha f)(x) = \\alpha f(x)$।\nगुणनफल: $(fg)(x) = f(x)\\,g(x)$, जिसे बिंदुवार गुणन भी कहते हैं।\nभागफल: $\\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)}$, केवल वहाँ जहाँ $g(x) \\ne 0$।"
+      },
+      "media": "img.relations-functions.two-machines",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.2 (i) to (v)"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:16",
+      "type": "formula",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Algebra of real functions",
+        "hi": "वास्तविक फलनों का बीजगणित"
+      },
+      "latex": "(f \\pm g)(x) = f(x) \\pm g(x),\\quad (fg)(x) = f(x)\\,g(x),\\quad \\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)}",
+      "symbols": [
+        {
+          "symbol": "f, g",
+          "meaning": {
+            "en": "real functions on the same set X",
+            "hi": "एक ही समुच्चय X पर वास्तविक फलन"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "x",
+          "meaning": {
+            "en": "any point of X",
+            "hi": "X का कोई भी बिंदु"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "$X \\subset \\mathbf{R}$. The quotient is defined only where $g(x) \\ne 0$. For a real number $\\alpha$, $(\\alpha f)(x) = \\alpha f(x)$.",
+        "hi": "$X \\subset \\mathbf{R}$। भागफल केवल वहाँ परिभाषित है जहाँ $g(x) \\ne 0$। किसी वास्तविक संख्या $\\alpha$ के लिए $(\\alpha f)(x) = \\alpha f(x)$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.2, Summary"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:17",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Let $f(x) = x^2 - 1$ and $g(x) = x + 1$. Find $(f + g)(x)$, $(fg)(x)$ and $\\left(\\frac{f}{g}\\right)(x)$ with its domain.",
+        "hi": "मान लीजिए $f(x) = x^2 - 1$ और $g(x) = x + 1$। $(f + g)(x)$, $(fg)(x)$ तथा $\\left(\\frac{f}{g}\\right)(x)$ और उसका प्रांत ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$(f + g)(x) = x^2 - 1 + x + 1 = x^2 + x$.",
+          "hi": "$(f + g)(x) = x^2 - 1 + x + 1 = x^2 + x$।"
+        },
+        {
+          "en": "$(fg)(x) = (x^2 - 1)(x + 1) = x^3 + x^2 - x - 1$.",
+          "hi": "$(fg)(x) = (x^2 - 1)(x + 1) = x^3 + x^2 - x - 1$।"
+        },
+        {
+          "en": "$\\left(\\frac{f}{g}\\right)(x) = \\frac{x^2 - 1}{x + 1} = x - 1$, but only where $g(x) \\ne 0$, that is $x \\ne -1$.",
+          "hi": "$\\left(\\frac{f}{g}\\right)(x) = \\frac{x^2 - 1}{x + 1} = x - 1$, पर केवल वहाँ जहाँ $g(x) \\ne 0$, अर्थात् $x \\ne -1$।"
+        }
+      ],
+      "answer": {
+        "en": "$\\left(\\frac{f}{g}\\right)(x) = x - 1$ on $\\mathbf{R} - \\{-1\\}$",
+        "hi": "$\\left(\\frac{f}{g}\\right)(x) = x - 1$, $\\mathbf{R} - \\{-1\\}$ पर"
+      },
+      "common_trap": {
+        "en": "Cancelling $x + 1$ and forgetting that $x = -1$ stays outside the domain of the quotient.",
+        "hi": "$x + 1$ को काटकर भूल जाना कि $x = -1$ भागफल के प्रांत से बाहर ही रहता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.2, Example 16"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:18",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions-intro.functions-intro.0015"
+    },
+    {
+      "id": "math.relations-functions-intro.functions-intro:dd:19",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Functions on the same set combine point by point: $(f + g)(x) = f(x) + g(x)$, and so on.",
+          "hi": "एक ही समुच्चय पर फलन बिंदुवार जुड़ते हैं: $(f + g)(x) = f(x) + g(x)$, इत्यादि।"
+        },
+        {
+          "en": "$\\frac{f}{g}$ is defined only where $g(x) \\ne 0$, even if the formula simplifies.",
+          "hi": "$\\frac{f}{g}$ केवल वहाँ परिभाषित है जहाँ $g(x) \\ne 0$, भले ही सूत्र सरल हो जाए।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4.2"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

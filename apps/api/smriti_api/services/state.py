@@ -212,6 +212,7 @@ async def entitlement_state(session: AsyncSession, user_id: uuid.UUID) -> s.Enti
         cancel_at_period_end=ent.cancel_at_period_end,
         is_intro=ent.is_intro,
         source=ent.source,
+        managed_in=ent.managed_in,
     )
 
 

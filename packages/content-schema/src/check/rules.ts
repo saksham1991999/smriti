@@ -17,6 +17,7 @@ import { blankIds, splitMath } from "../localize.js";
 import { isKnownUnit } from "../units.js";
 import type { Findings } from "./findings.js";
 import type { ContentSet } from "./load.js";
+import { RELEASES_FILE } from "./releases.js";
 import { mediaRefs, walkContent } from "./walk.js";
 
 export interface Tokens {
@@ -53,6 +54,7 @@ export function runRules(set: ContentSet, findings: Findings, tokens: Tokens): v
   checkFixtureFlags(set, findings);
   checkGraph(set, findings, tokens);
   checkExamMaps(set, findings);
+  checkReleases(set, findings);
   checkBlueprints(set, findings, tokens);
   checkLessons(set, findings);
   checkQuestions(set, findings);
@@ -243,7 +245,6 @@ export function findCycles(graph: Map<string, string[]>): string[][] {
 
 function checkExamMaps(set: ContentSet, findings: Findings): void {
   const seenProfiles = new Map<string, string>();
-  const subjectIds = new Set(set.subjects.map((s) => s.doc.id));
   for (const { file, doc } of set.examMaps) {
     if (!set.profiles.has(doc.exam_profile)) {
       findings.error("ref_unknown_profile", file, `unknown exam profile ${doc.exam_profile}`);
@@ -284,10 +285,42 @@ function checkExamMaps(set: ContentSet, findings: Findings): void {
         );
       }
     });
-    for (const s of doc.released_subjects ?? []) {
-      if (!subjectIds.has(s)) findings.error("ref_unknown_subject", file, `released subject ${s} is unknown`);
-    }
   }
+}
+
+/** content/releases.json: one file at the root, naming profiles, subjects and chapters that exist. */
+function checkReleases(set: ContentSet, findings: Findings): void {
+  set.releases.forEach(({ file, doc }, i) => {
+    if (file !== RELEASES_FILE) findings.error("releases_location", file, `the release gate lives in ${RELEASES_FILE} at the content root`);
+    if (i > 0) findings.error("duplicate_id", file, `only one release gate is allowed (also ${set.releases[0]!.file})`);
+    for (const [profileId, scope] of Object.entries(doc.profiles)) {
+      if (!scope) continue;
+      const base = `/profiles/${profileId}`;
+      if (!set.profiles.has(profileId)) {
+        findings.error("ref_unknown_profile", file, `unknown exam profile ${profileId}`, { path: base });
+        continue;
+      }
+      const map = set.examMaps.find((m) => m.doc.exam_profile === profileId)?.doc;
+      // Subjects and chapters the profile's exam map actually includes.
+      const inMap = new Set<string>();
+      for (const c of map?.concepts ?? []) {
+        const entry = set.concepts.get(set.aliases.get(c.id) ?? c.id);
+        if (entry) inMap.add(entry.chapter.id).add(entry.chapter.subject);
+      }
+      scope.subjects.forEach((s, j) => {
+        const path = `${base}/subjects/${j}`;
+        if (!set.subjects.some((x) => x.doc.id === s)) findings.error("ref_unknown_subject", file, `released subject ${s} is unknown`, { path });
+        else if (!inMap.has(s)) findings.error("release_not_in_exam", file, `${profileId} releases ${s}, which its exam map does not include`, { path });
+      });
+      scope.chapters.forEach((c, j) => {
+        const path = `${base}/chapters/${j}`;
+        const chapter = set.chapters.find((x) => x.doc.id === c)?.doc;
+        if (!chapter) findings.error("ref_unknown_chapter", file, `released chapter ${c} is unknown`, { path });
+        else if (!inMap.has(c)) findings.error("release_not_in_exam", file, `${profileId} releases ${c}, which its exam map does not include`, { path });
+        else if (scope.subjects.includes(chapter.subject)) findings.warn("release_redundant", file, `${c} is already released with its subject ${chapter.subject}`, { path });
+      });
+    }
+  });
 }
 
 type BlueprintSection = BlueprintFile["sections"][number];

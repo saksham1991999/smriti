@@ -14,14 +14,14 @@ import {
   type PublishReport,
   type S3Like,
 } from "../src/index.js";
-import { cleanup, editJson, fixtureCopy, fixtures, NOW, repoRoot, tempDir } from "./helpers.js";
+import { approveAll, cleanup, editJson, fixtureCopy, fixtures, NOW, realCourse, release, repoRoot, tempDir } from "./helpers.js";
 
 afterEach(cleanup);
 
 const readJson = (path: string) => JSON.parse(readFileSync(path, "utf8")) as Record<string, any>;
 
 async function publishLocal(root: string, out: string, now = NOW): Promise<PublishReport> {
-  return publish({ repoRoot, contentRoot: root, store: new LocalDirStore(out), reportDir: out, now });
+  return publish({ repoRoot, contentRoot: root, store: new LocalDirStore(out), environment: "local", reportDir: out, now });
 }
 
 describe("publishing the fixture course to a local folder", () => {
@@ -107,7 +107,8 @@ describe("publishing the fixture course to a local folder", () => {
     // Search documents for the tutor: topics and concepts in both locales, published text only.
     expect(report.sql.rows["content.search_docs"]).toBeGreaterThan(0);
     expect(sql).toMatch(/\('topic:fx\.chapter-a\.topic-a:hi', 'topic', 'fx\.chapter-a\.topic-a', 'hi', ARRAY\['fx-exam-2027'\]/);
-    expect(report.warnings).toEqual([]);
+    // The only warnings are the fixture media that is not approved yet (listed item by item).
+    expect(report.warnings.filter((w) => !w.endsWith("shipped as unavailable (local build)"))).toEqual([]);
     expect(existsSync(join(out, "site-index.json"))).toBe(true);
   });
 
@@ -130,11 +131,12 @@ describe("publishing the fixture course to a local folder", () => {
 
 describe("determinism", () => {
   it("gives the same hashes for the same input, and changes nothing on a re-run", async () => {
-    const a = await publish({ repoRoot, contentRoot: fixtures, store: new MemoryStore(), reportDir: tempDir(), now: NOW });
+    const a = await publish({ repoRoot, contentRoot: fixtures, store: new MemoryStore(), environment: "local", reportDir: tempDir(), now: NOW });
     const b = await publish({
       repoRoot,
       contentRoot: fixtures,
       store: new MemoryStore(),
+      environment: "local",
       reportDir: tempDir(),
       now: new Date("2027-01-01T00:00:00Z"),
     });
@@ -201,6 +203,57 @@ describe("patches", () => {
   });
 });
 
+describe("the release gate (content/releases.json)", () => {
+  const run = (c: { root: string; repo: string }, environment: "production" | "staging", store: ConstructorParameters<typeof R2Store> | null = null) =>
+    publish({
+      repoRoot: c.repo,
+      contentRoot: c.root,
+      store: store ? new R2Store(...store) : new MemoryStore(),
+      environment,
+      reportDir: tempDir(),
+      now: NOW,
+    });
+
+  it("skips unreleased content in production, unapproved media and all, and lists it", async () => {
+    const c = realCourse();
+    const report = await run(c, "production");
+    expect(report.fixture).toBe(false);
+    expect(report.bundles).toEqual([]);
+    expect(report.unreleased).toEqual([{ exam_profile: "fx-exam-2027", chapters: ["fx.chapter-a"] }]);
+    expect(report.unapproved_media).toEqual([]);
+    expect(report.warnings).toContain("nothing is released for production (content/releases.json), so nothing was built");
+    expect(report.warnings).toContain("fx-exam-2027: 1 chapter(s) not released, skipped (production build): fx.chapter-a");
+  });
+
+  it("refuses a real production publish of nothing", async () => {
+    const c = realCourse();
+    const sent: unknown[] = [];
+    const config = { accountId: "acc", accessKeyId: "k", secretAccessKey: "s", contentBucket: "c", assetsBucket: "a" };
+    await expect(run(c, "production", [config, { send: async (cmd) => void sent.push(cmd) }])).rejects.toMatchObject({ code: "nothing_released" });
+  });
+
+  it("holds released content to approved media in production", async () => {
+    const c = realCourse();
+    release(c.root, { chapters: ["fx.chapter-a"] });
+    await expect(run(c, "production")).rejects.toMatchObject({ code: "media_not_approved" });
+
+    approveAll(c.root);
+    const report = await run(c, "production");
+    expect(report.bundles.length).toBeGreaterThan(0);
+    expect(report.subjects).toEqual(["fx"]);
+    expect(report.unreleased).toEqual([]);
+    expect(report.unapproved_media).toEqual([]);
+  });
+
+  it("builds everything in staging, released or not, with unapproved media listed", async () => {
+    const c = realCourse();
+    const report = await run(c, "staging");
+    expect(report.bundles.length).toBeGreaterThan(0);
+    expect(report.unreleased).toEqual([]);
+    expect(report.unapproved_media.map((m) => m.ref)).toContain("img.chapter-a.fx-pending");
+  });
+});
+
 describe("targets", () => {
   it("never publishes the fixture course to R2", async () => {
     const sent: unknown[] = [];
@@ -210,9 +263,41 @@ describe("targets", () => {
       fake,
     );
     await expect(
-      publish({ repoRoot, contentRoot: fixtures, store, reportDir: tempDir(), now: NOW }),
+      publish({ repoRoot, contentRoot: fixtures, store, environment: "staging", reportDir: tempDir(), now: NOW }),
     ).rejects.toMatchObject({ code: "fixture_remote" });
     expect(sent).toEqual([]);
+  });
+
+  it("needs an explicit environment, keeps R2 off local builds and the fixture course off production", async () => {
+    const out = tempDir();
+    await expect(
+      publish({ repoRoot, contentRoot: fixtures, store: new LocalDirStore(out), environment: undefined as never, reportDir: out, now: NOW }),
+    ).rejects.toMatchObject({ code: "environment_required" });
+    expect(readdirSync(out)).toEqual([]);
+
+    const sent: unknown[] = [];
+    const store = new R2Store(
+      { accountId: "acc", accessKeyId: "k", secretAccessKey: "s", contentBucket: "c", assetsBucket: "a" },
+      { send: async (c) => void sent.push(c) },
+    );
+    await expect(
+      publish({ repoRoot, contentRoot: fixtures, store, environment: "local", reportDir: tempDir(), now: NOW }),
+    ).rejects.toMatchObject({ code: "environment_remote" });
+    expect(sent).toEqual([]);
+
+    await expect(
+      publish({ repoRoot, contentRoot: fixtures, store: new MemoryStore(), environment: "production", reportDir: tempDir(), now: NOW }),
+    ).rejects.toMatchObject({ code: "fixture_production" });
+  });
+
+  it("lists each unapproved media item that shipped as unavailable", async () => {
+    const report = await publishLocal(fixtures, tempDir());
+    expect(report.environment).toBe("local");
+    expect(report.unapproved_media.map((m) => m.ref)).toContain("img.chapter-a.fx-pending");
+    for (const m of report.unapproved_media) {
+      expect(m.status).not.toBe("approved");
+      expect(report.warnings).toContain(`${m.ref} is ${m.status}, not approved: shipped as unavailable (local build)`);
+    }
   });
 
   it("refuses to mix the fixture course into a target that holds real content", async () => {

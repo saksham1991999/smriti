@@ -5,6 +5,10 @@
     "typecheck": { "dependsOn": ["^build"] },
     "lint": {},
     "test": { "dependsOn": ["^build"] },
+    "@smriti/content-publish#publish:fixtures": { "cache": false, "outputs": ["out/**"] },
+    "@smriti/lesson-player-web#test": { "dependsOn": ["^build", "@smriti/content-publish#publish:fixtures"] },
+    "@smriti/lesson-player-native#test": { "dependsOn": ["^build", "@smriti/content-publish#publish:fixtures"] },
+    "@smriti/web#test": { "dependsOn": ["^build", "@smriti/content-publish#publish:fixtures"] },
     "content:check": { "dependsOn": ["^build"], "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/content/**", "$TURBO_ROOT$/skills/_shared/**"] },
     "dev": { "cache": false, "persistent": true }
   }

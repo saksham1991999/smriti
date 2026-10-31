@@ -1,0 +1,110 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.phy.units-measurement.errors",
+  "scope": "topic",
+  "topic": "phy.units-measurement.errors",
+  "title": {
+    "en": "Errors in Measurement",
+    "hi": "मापन में त्रुटियाँ"
+  },
+  "concepts": [
+    "phy.units-measurement.errors.core.measurement-errors"
+  ],
+  "key_ideas": [
+    {
+      "en": "Accuracy: closeness to the true value; precision: agreement of repeats.",
+      "hi": "यथार्थता: वास्तविक मान से निकटता; परिशुद्धता: दोहराए मापों का मेल।"
+    },
+    {
+      "en": "Systematic errors repeat and can be corrected; random errors vary and are reduced by averaging.",
+      "hi": "क्रमबद्ध त्रुटियाँ दोहराती हैं और संशोधित हो सकती हैं; यादृच्छिक त्रुटियाँ बदलती हैं और औसत से घटती हैं।"
+    },
+    {
+      "en": "Errors never cancel: they add, for sums, differences, products and quotients.",
+      "hi": "त्रुटियाँ कभी नहीं कटतीं: योग, अंतर, गुणनफल और भागफल सबमें जुड़ती हैं।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Relative error",
+        "hi": "आपेक्षिक त्रुटि"
+      },
+      "latex": "\\frac{\\Delta a}{a}"
+    },
+    {
+      "name": {
+        "en": "Sum or difference",
+        "hi": "योग या अंतर"
+      },
+      "latex": "\\Delta Z = \\Delta A + \\Delta B"
+    },
+    {
+      "name": {
+        "en": "Product or quotient",
+        "hi": "गुणनफल या भागफल"
+      },
+      "latex": "\\frac{\\Delta Z}{Z} = \\frac{\\Delta A}{A} + \\frac{\\Delta B}{B}"
+    },
+    {
+      "name": {
+        "en": "Power",
+        "hi": "घात"
+      },
+      "latex": "\\frac{\\Delta Z}{Z} = n\\frac{\\Delta A}{A}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "In a quotient the errors subtract.",
+        "hi": "भागफल में त्रुटियाँ घटती हैं।"
+      },
+      "correct": {
+        "en": "Relative errors always add, for division too.",
+        "hi": "आपेक्षिक त्रुटियाँ हमेशा जुड़ती हैं, भाग में भी।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Precise means accurate.",
+        "hi": "परिशुद्ध का अर्थ यथार्थ है।"
+      },
+      "correct": {
+        "en": "Readings can agree closely and all be far from the true value.",
+        "hi": "पाठ्यांक आपस में बहुत मेल खा सकते हैं और फिर भी वास्तविक मान से दूर हो सकते हैं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "The power changes the absolute error directly.",
+        "hi": "घात सीधे निरपेक्ष त्रुटि बदलती है।"
+      },
+      "correct": {
+        "en": "The power multiplies the relative error.",
+        "hi": "घात आपेक्षिक त्रुटि को गुणा करती है।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

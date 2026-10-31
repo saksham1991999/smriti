@@ -1,0 +1,104 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.math.relations-functions-intro.functions-intro",
+  "scope": "topic",
+  "topic": "math.relations-functions-intro.functions-intro",
+  "title": {
+    "en": "Functions",
+    "hi": "फलन"
+  },
+  "concepts": [
+    "math.relations-functions-intro.functions-intro.core.function-definition",
+    "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+    "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+  ],
+  "key_ideas": [
+    {
+      "en": "A function from A to B gives every element of A exactly one image; $f : A \\to B$, $f(a) = b$.",
+      "hi": "A से B तक फलन A के हर अवयव को ठीक एक प्रतिबिंब देता है; $f : A \\to B$, $f(a) = b$।"
+    },
+    {
+      "en": "Real function: domain and range are subsets of $\\mathbf{R}$; from a formula, drop zeros of denominators and negatives under square roots.",
+      "hi": "वास्तविक फलन: प्रांत और परिसर $\\mathbf{R}$ के उपसमुच्चय; सूत्र से हर के शून्य और वर्गमूल के नीचे ऋण मान हटाइए।"
+    },
+    {
+      "en": "Identity: range $\\mathbf{R}$; constant c: range $\\{c\\}$; $|x|$ and $x^2$: range $[0, \\infty)$.",
+      "hi": "तत्समक: परिसर $\\mathbf{R}$; अचर c: परिसर $\\{c\\}$; $|x|$ और $x^2$: परिसर $[0, \\infty)$।"
+    },
+    {
+      "en": "Signum: range $\\{-1, 0, 1\\}$; $\\frac{1}{x}$: domain and range $\\mathbf{R} - \\{0\\}$; $[x]$: greatest integer $\\le x$.",
+      "hi": "चिह्न: परिसर $\\{-1, 0, 1\\}$; $\\frac{1}{x}$: प्रांत और परिसर $\\mathbf{R} - \\{0\\}$; $[x]$: $\\le x$ सबसे बड़ा पूर्णांक।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Sum and difference",
+        "hi": "योग और अंतर"
+      },
+      "latex": "(f \\pm g)(x) = f(x) \\pm g(x)"
+    },
+    {
+      "name": {
+        "en": "Product and scalar multiple",
+        "hi": "गुणनफल और अदिश गुणज"
+      },
+      "latex": "(fg)(x) = f(x)\\,g(x),\\ (\\alpha f)(x) = \\alpha f(x)"
+    },
+    {
+      "name": {
+        "en": "Quotient",
+        "hi": "भागफल"
+      },
+      "latex": "\\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)},\\ g(x) \\ne 0"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Two elements with the same image stop a relation being a function.",
+        "hi": "एक ही प्रतिबिंब वाले दो अवयव संबंध को फलन बनने से रोकते हैं।"
+      },
+      "correct": {
+        "en": "That is allowed; what is not allowed is one element with two images, or one with none.",
+        "hi": "इसकी अनुमति है; अनुमति नहीं है एक अवयव के दो प्रतिबिंबों की, या किसी अवयव के बिना प्रतिबिंब होने की।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$[-1.5] = -1$.",
+        "hi": "$[-1.5] = -1$।"
+      },
+      "correct": {
+        "en": "$[x]$ rounds down: $[-1.5] = -2$.",
+        "hi": "$[x]$ नीचे की ओर जाता है: $[-1.5] = -2$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$\\frac{x^2 - 4}{x - 2} = x + 2$, so the domain is $\\mathbf{R}$.",
+        "hi": "$\\frac{x^2 - 4}{x - 2} = x + 2$, इसलिए प्रांत $\\mathbf{R}$ है।"
+      },
+      "correct": {
+        "en": "The quotient is undefined at $x = 2$, so the domain is $\\mathbf{R} - \\{2\\}$.",
+        "hi": "भागफल $x = 2$ पर अपरिभाषित है, इसलिए प्रांत $\\mathbf{R} - \\{2\\}$ है।"
+      }
+    }
+  ],
+  "diagram": "img.relations-functions.juice-machine",
+  "hi_source": "translation"
+}

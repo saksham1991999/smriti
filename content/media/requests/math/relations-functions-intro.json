@@ -1,0 +1,311 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as WebP (3:2 at 1536x1024); originals kept outside the repo.",
+  "requests": [
+    {
+      "id": "img.relations-functions.colour-pairs",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "six school items laid out in two neat rows on a pale surface: the top row is a red school bag, a red coat and a red shirt; the bottom row is a blue school bag, a blue coat and a blue shirt; the same three items in both rows",
+      "must_show": [
+        "exactly two rows of three",
+        "top row all red, bottom row all blue",
+        "bag, coat, shirt in the same order in each row"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a seventh item",
+        "people",
+        "other colours"
+      ],
+      "alt": {
+        "en": "Six school items in two rows on a peach background: a red school bag, a red coat and a red shirt on top, and a blue school bag, a blue coat and a blue shirt below.",
+        "hi": "हल्के आड़ू रंग की पृष्ठभूमि पर दो पंक्तियों में छह स्कूली वस्तुएँ: ऊपर लाल बस्ता, लाल कोट और लाल कमीज़, और नीचे नीला बस्ता, नीला कोट और नीली कमीज़।"
+      },
+      "used_by": [
+        "cs.math.relations-functions-intro.cartesian-product",
+        "math.relations-functions-intro.cartesian-product:dd:01",
+        "math.relations-functions-intro.cartesian-product:dd:02",
+        "math.relations-functions-intro.cartesian-product:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "7c0f58da449dab5d297de81bb792ee2284235fb057098fef6065a7cd48ccc201",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 61656,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.relations-functions.arrow-diagram",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "maths",
+      "brief": "an arrow diagram: two tall rounded ovals side by side, the left oval holds four small dots in a column and the right oval holds five small dots in a column; curved arrows go from some left dots to some right dots, and one right dot has no arrow reaching it",
+      "must_show": [
+        "two ovals",
+        "dots inside each oval",
+        "arrows from the left oval to the right oval"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "labels",
+        "a third oval",
+        "people"
+      ],
+      "alt": {
+        "en": "An arrow diagram: a left oval with four dots and a right oval with five dots. Each left dot sends one arrow to a different right dot, and the bottom right dot receives no arrow.",
+        "hi": "एक तीर आरेख: बाएँ अंडाकार में चार बिंदु और दाएँ अंडाकार में पाँच बिंदु। बाईं ओर का हर बिंदु दाईं ओर के एक अलग बिंदु तक एक तीर भेजता है, और दाईं ओर के सबसे नीचे वाले बिंदु तक कोई तीर नहीं पहुँचता।"
+      },
+      "used_by": [
+        "cs.math.relations-functions-intro.relations-intro",
+        "math.relations-functions-intro.relations-intro:dd:01",
+        "math.relations-functions-intro.relations-intro:dd:02",
+        "math.relations-functions-intro.relations-intro:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "7bcdc930fe7b930dbd521c804bd18e4fe7d95bcaae31e9c641afa88fd3f088da",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 20088,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.relations-functions.juice-machine",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "maths",
+      "brief": "a friendly cartoon juice machine at a school fair: an orange goes into the funnel at the top and exactly one glass of orange juice comes out of the spout at the bottom; a mango and a guava wait in a basket beside it",
+      "must_show": [
+        "one machine",
+        "one fruit going in",
+        "one glass coming out"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people's faces",
+        "price tags"
+      ],
+      "alt": {
+        "en": "A cheerful orange juice machine: an orange sits in the funnel on top, and one glass of orange juice fills under the spout. A mango and a guava wait in a small basket beside it.",
+        "hi": "एक खुशनुमा नारंगी जूस मशीन: ऊपर कीप में एक संतरा रखा है, और टोंटी के नीचे संतरे के रस का एक गिलास भर रहा है। पास की छोटी टोकरी में एक आम और एक अमरूद रखे हैं।"
+      },
+      "used_by": [
+        "cs.math.relations-functions-intro.functions-intro",
+        "math.relations-functions-intro.functions-intro:dd:02",
+        "math.relations-functions-intro.functions-intro:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "8d283525a6b565006802822bcd01baee41e57019ceb426c186d6b8e9e4f44e4e",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 34706,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.relations-functions.staircase",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "a flight of flat stone steps seen exactly from the side, each step the same width and height, rising from left to right, with a small potted tulsi plant on one step",
+      "must_show": [
+        "equal flat steps seen side-on",
+        "steps rising left to right"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "railings",
+        "curves"
+      ],
+      "alt": {
+        "en": "Orange stone steps of equal size seen from the side, rising from left to right, with a small potted plant on one step.",
+        "hi": "बराबर आकार की नारंगी पत्थर की सीढ़ियाँ, बगल से दिखती हुईं, बाएँ से दाएँ ऊपर उठती हैं, और एक पायदान पर गमले में छोटा पौधा है।"
+      },
+      "used_by": [
+        "math.relations-functions-intro.functions-intro:dd:10"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "b7d68c5d1fe63e52adbdc52338b3fc91819df5e4183e72d517994ca4a9536940",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 21204,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.relations-functions.street-grid",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "maths",
+      "brief": "a small Indian town seen straight from above, its streets forming a neat square grid of straight roads running left to right and top to bottom, with one house marked by a bright orange location pin at a crossing",
+      "must_show": [
+        "a square grid of straight streets seen from above",
+        "one orange pin at one crossing"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "street names",
+        "signboards",
+        "people",
+        "curved roads"
+      ],
+      "alt": {
+        "en": "A small town seen from above: straight streets form a square grid among houses and trees, and an orange location pin marks one crossing.",
+        "hi": "ऊपर से दिखता एक छोटा कस्बा: सीधी गलियाँ घरों और पेड़ों के बीच वर्गाकार ग्रिड बनाती हैं, और एक नारंगी लोकेशन पिन एक चौराहे को चिह्नित करती है।"
+      },
+      "used_by": [
+        "math.relations-functions-intro.cartesian-product:dd:06"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "3f633cd45263797e90cbf57b5d56150176c842b32669a84563fd332f5c9f8f51",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 46364,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.relations-functions.playground",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "maths",
+      "brief": "a school playground with three pieces of equipment side by side: a long straight slide that rises evenly from left to right, a perfectly flat straight wooden bench, and a U-shaped skate ramp",
+      "must_show": [
+        "a straight evenly sloping slide",
+        "a flat level bench",
+        "a U-shaped ramp"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "swings",
+        "signboards"
+      ],
+      "alt": {
+        "en": "A playground with three pieces side by side: a straight, evenly sloping slide with a ladder, a flat wooden bench, and a U-shaped ramp.",
+        "hi": "खेल का मैदान, जिसमें तीन चीज़ें पास-पास हैं: सीढ़ी वाली सीधी, समान ढाल की फिसलपट्टी, एक समतल लकड़ी की बेंच, और एक U आकार का रैंप।"
+      },
+      "used_by": [
+        "math.relations-functions-intro.functions-intro:dd:09"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "d3dc4a1d94c7127c01f50e348acfdaaca92a43f5a90f8feea27cb85ea0a70e94",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 34428,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.relations-functions.two-machines",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "maths",
+      "brief": "two friendly cartoon juice machines side by side, an orange one pouring orange juice and a green one pouring guava juice, both streams falling into one shared glass jug in the middle",
+      "must_show": [
+        "two machines",
+        "two streams of juice",
+        "one shared jug between them"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people's faces",
+        "price tags"
+      ],
+      "alt": {
+        "en": "Two smiling juice machines, one orange and one green, pour orange juice and pink guava juice into one shared glass jug between them.",
+        "hi": "दो मुस्कुराती जूस मशीनें, एक नारंगी और एक हरी, अपने बीच रखे एक ही काँच के जग में संतरे का रस और गुलाबी अमरूद का रस डाल रही हैं।"
+      },
+      "used_by": [
+        "math.relations-functions-intro.functions-intro:dd:15"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "a84f73b7f2ccbcbc53b36f1a9a620338e9ca486cdb5c0c2f2b41a775a28a22ab",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 47758,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

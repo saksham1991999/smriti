@@ -1,0 +1,27 @@
+// apps/site (Astro, static output) on Cloudflare Workers static assets (TRD §4.1: <domain>, www.<domain>).
+// Deploy (after `pnpm --filter @smriti/site build` and the _headers step, see deploy-web.yml):
+//   wrangler deploy -c infra/cloudflare/site/wrangler.jsonc --env staging|production
+// Custom domains are attached once in the Cloudflare dashboard, see docs/DEPLOY.md.
+{
+  "name": "smriti-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "../../../apps/site/dist",
+    // Astro writes dist/404.html; unknown paths get it with a 404 status.
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "env": {
+    "staging": {
+      "name": "smriti-site-staging",
+      "workers_dev": true,
+      "preview_urls": true
+    },
+    "production": {
+      "name": "smriti-site"
+    }
+  }
+}

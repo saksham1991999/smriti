@@ -12,7 +12,6 @@ export default defineConfig({
     dedupe: ["react", "react-dom", "zustand", "@tanstack/react-query"],
     alias: {
       "@fake-api": join(here, "src", "dev", "fake-api", "index.ts"),
-      "@mock-blueprint": join(here, "src", "dev", "fixtureBlueprint.ts"),
     },
   },
   test: {

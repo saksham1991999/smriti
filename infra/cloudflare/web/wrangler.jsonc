@@ -1,0 +1,28 @@
+// apps/web on Cloudflare Workers static assets (TRD §4.2: app.<domain>). Assets only, no Worker code.
+// Deploy (after `pnpm --filter @smriti/web build` and the _headers step, see deploy-web.yml):
+//   wrangler deploy -c infra/cloudflare/web/wrangler.jsonc --env staging|production
+// The custom domain (app.<domain>, and app-staging.<domain> for staging) is attached once in the
+// Cloudflare dashboard (Workers > smriti-web > Settings > Domains), see docs/DEPLOY.md.
+{
+  "name": "smriti-web",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "../../../apps/web/dist",
+    // Client-side routes (TanStack Router) fall back to index.html.
+    "not_found_handling": "single-page-application",
+    "html_handling": "auto-trailing-slash"
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+  "env": {
+    "staging": {
+      "name": "smriti-web-staging",
+      "workers_dev": true,
+      "preview_urls": true
+    },
+    "production": {
+      "name": "smriti-web"
+    }
+  }
+}

@@ -210,6 +210,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(reviews_routes.router)
     app.include_router(billing_routes.router)
     app.include_router(guardian_routes.router)
+    app.include_router(guardian_routes.me_router)
     app.include_router(notify_routes.router)
     app.include_router(exports_routes.router)
     app.include_router(voice_routes.router)

@@ -17,6 +17,7 @@ import patch from "../schemas/patch.schema.json";
 import publishHistory from "../schemas/publish-history.schema.json";
 import pyqPaper from "../schemas/pyq-paper.schema.json";
 import questions from "../schemas/questions.schema.json";
+import releases from "../schemas/releases.schema.json";
 import seedPack from "../schemas/seed-pack.schema.json";
 import seedPackSpec from "../schemas/seed-pack-spec.schema.json";
 import sim from "../schemas/sim.schema.json";
@@ -43,6 +44,7 @@ export const schemaFiles = {
   "coverage-inputs.schema.json": coverageInputs,
   "coverage.schema.json": coverage,
   "seed-pack-spec.schema.json": seedPackSpec,
+  "releases.schema.json": releases,
   "seed-pack.schema.json": seedPack,
   "bundle.schema.json": bundle,
   "manifest.schema.json": manifest,
@@ -80,6 +82,7 @@ export const DOC_SCHEMAS = {
   "inventory@1": "coverage-inputs.schema.json",
   "coverage@1": "coverage.schema.json",
   "seed-pack-spec@1": "seed-pack-spec.schema.json",
+  "releases@1": "releases.schema.json",
   "seed-pack@1": "seed-pack.schema.json",
   "bundle@1": "bundle.schema.json",
   "manifest@1": "manifest.schema.json",

@@ -1,0 +1,306 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions-intro.cartesian-product:deep_dive",
+  "topic": "math.relations-functions-intro.cartesian-product",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Ordered pairs",
+        "hi": "क्रमित युग्म"
+      },
+      "subtopic": "math.relations-functions-intro.cartesian-product.core",
+      "card_ids": [
+        "math.relations-functions-intro.cartesian-product:dd:01",
+        "math.relations-functions-intro.cartesian-product:dd:02",
+        "math.relations-functions-intro.cartesian-product:dd:03",
+        "math.relations-functions-intro.cartesian-product:dd:04"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Order matters",
+        "hi": "क्रम महत्त्वपूर्ण है"
+      },
+      "subtopic": "math.relations-functions-intro.cartesian-product.core",
+      "card_ids": [
+        "math.relations-functions-intro.cartesian-product:dd:05",
+        "math.relations-functions-intro.cartesian-product:dd:06",
+        "math.relations-functions-intro.cartesian-product:dd:07",
+        "math.relations-functions-intro.cartesian-product:dd:08",
+        "math.relations-functions-intro.cartesian-product:dd:09"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Pairing two sets",
+        "hi": "दो समुच्चयों को जोड़ना"
+      },
+      "body": {
+        "en": "Take two colours, A = {red, blue}, and three things, B = {bag, coat, shirt}. Pairing each colour with each thing gives six coloured objects: (red, bag), (red, coat), (red, shirt), (blue, bag), (blue, coat) and (blue, shirt).\n\nEach of these is an ordered pair: two elements written in brackets in a fixed order, the first from A and the second from B. Order matters. A licence-plate code (DL, 01) is not the same as (01, DL), and the point $(a, b)$ in the plane is not the point $(b, a)$ unless $a = b$.\n\nTwo ordered pairs are equal only when their first elements are equal and their second elements are equal: $(a, b) = (x, y)$ means $a = x$ and $b = y$.",
+        "hi": "दो रंग लीजिए, A = {लाल, नीला}, और तीन वस्तुएँ, B = {बस्ता, कोट, कमीज़}। हर रंग को हर वस्तु के साथ जोड़ने पर छह रंगीन वस्तुएँ मिलती हैं: (लाल, बस्ता), (लाल, कोट), (लाल, कमीज़), (नीला, बस्ता), (नीला, कोट) और (नीला, कमीज़)।\n\nइनमें से प्रत्येक एक क्रमित युग्म है: कोष्ठक में एक निश्चित क्रम में लिखे दो अवयव, पहला A से और दूसरा B से। क्रम महत्त्वपूर्ण है। वाहन नंबर-प्लेट का कोड (DL, 01), कोड (01, DL) के समान नहीं है, और तल में बिंदु $(a, b)$, बिंदु $(b, a)$ नहीं है जब तक $a = b$ न हो।\n\nदो क्रमित युग्म तभी समान होते हैं जब उनके पहले अवयव समान हों और दूसरे अवयव भी समान हों: $(a, b) = (x, y)$ का अर्थ है $a = x$ और $b = y$।"
+      },
+      "media": "img.relations-functions.colour-pairs",
+      "highlights": [
+        {
+          "term": {
+            "en": "ordered pair",
+            "hi": "क्रमित युग्म"
+          },
+          "definition": {
+            "en": "A pair of elements grouped together in a particular order.",
+            "hi": "एक विशेष क्रम में साथ रखे गए दो अवयवों का युग्म।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Remark (i)"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The cartesian product",
+        "hi": "कार्तीय गुणन"
+      },
+      "body": {
+        "en": "For non-empty sets P and Q, the cartesian product $P \\times Q$ is the set of all ordered pairs with first element from P and second element from Q:\n$P \\times Q = \\{(p, q) : p \\in P,\\ q \\in Q\\}$.\n\nIf P or Q is empty, the product is empty: $A \\times \\phi = \\phi$.\n\nCounting: if $n(A) = p$ and $n(B) = q$, then $n(A \\times B) = pq$, because each of the p first elements pairs with each of the q second elements. Two colours and three things gave $2 \\times 3 = 6$ pairs.",
+        "hi": "अरिक्त समुच्चयों P और Q के लिए कार्तीय गुणन $P \\times Q$ उन सभी क्रमित युग्मों का समुच्चय है जिनका पहला अवयव P से और दूसरा अवयव Q से हो:\n$P \\times Q = \\{(p, q) : p \\in P,\\ q \\in Q\\}$।\n\nयदि P या Q रिक्त हो, तो गुणन रिक्त होता है: $A \\times \\phi = \\phi$।\n\nगिनती: यदि $n(A) = p$ और $n(B) = q$, तो $n(A \\times B) = pq$, क्योंकि p पहले अवयवों में से हर एक, q दूसरे अवयवों में से हर एक के साथ जुड़ता है। दो रंगों और तीन वस्तुओं से $2 \\times 3 = 6$ युग्म मिले।"
+      },
+      "media": "img.relations-functions.colour-pairs",
+      "highlights": [
+        {
+          "term": {
+            "en": "cartesian product",
+            "hi": "कार्तीय गुणन"
+          },
+          "definition": {
+            "en": "The set of all ordered pairs (a, b) with a in A and b in B.",
+            "hi": "उन सभी क्रमित युग्मों (a, b) का समुच्चय जिनमें a, A में और b, B में हो।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Definition 1, Remark (ii)"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:03",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "If $(x - 1, y + 2) = (4, 7)$, find x and y.",
+        "hi": "यदि $(x - 1, y + 2) = (4, 7)$, तो x और y ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Equal ordered pairs have equal first elements: $x - 1 = 4$, so $x = 5$.",
+          "hi": "समान क्रमित युग्मों के पहले अवयव समान होते हैं: $x - 1 = 4$, अतः $x = 5$।"
+        },
+        {
+          "en": "They also have equal second elements: $y + 2 = 7$, so $y = 5$.",
+          "hi": "उनके दूसरे अवयव भी समान होते हैं: $y + 2 = 7$, अतः $y = 5$।"
+        }
+      ],
+      "answer": {
+        "en": "$x = 5$, $y = 5$",
+        "hi": "$x = 5$, $y = 5$"
+      },
+      "common_trap": {
+        "en": "Matching the first element of one pair with the second element of the other.",
+        "hi": "एक युग्म के पहले अवयव को दूसरे युग्म के दूसरे अवयव से मिला देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Example 1"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:04",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 1,
+      "question": "q.math.relations-functions-intro.cartesian-product.0001"
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "$A \\times B$ and $B \\times A$",
+        "hi": "$A \\times B$ और $B \\times A$"
+      },
+      "body": {
+        "en": "With $P = \\{a, b, c\\}$ and $Q = \\{r\\}$:\n$P \\times Q = \\{(a, r), (b, r), (c, r)\\}$ and $Q \\times P = \\{(r, a), (r, b), (r, c)\\}$.\nThe pair $(a, r)$ is not the pair $(r, a)$, so in general $A \\times B \\ne B \\times A$. The two products do have the same number of elements.\n\nGoing back from a product: in $A \\times B$ the first elements form A and the second elements form B. If $A \\times B = \\{(p, q), (p, r), (m, q), (m, r)\\}$, then $A = \\{p, m\\}$ and $B = \\{q, r\\}$.",
+        "hi": "$P = \\{a, b, c\\}$ और $Q = \\{r\\}$ के साथ:\n$P \\times Q = \\{(a, r), (b, r), (c, r)\\}$ और $Q \\times P = \\{(r, a), (r, b), (r, c)\\}$।\nयुग्म $(a, r)$, युग्म $(r, a)$ नहीं है, इसलिए सामान्यतः $A \\times B \\ne B \\times A$। दोनों गुणनों में अवयवों की संख्या अवश्य समान होती है।\n\nगुणन से पीछे लौटना: $A \\times B$ में पहले अवयवों से A और दूसरे अवयवों से B बनता है। यदि $A \\times B = \\{(p, q), (p, r), (m, q), (m, r)\\}$, तो $A = \\{p, m\\}$ और $B = \\{q, r\\}$।"
+      },
+      "media": "img.relations-functions.colour-pairs",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Examples 2 and 6"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Planes, space and triplets",
+        "hi": "तल, आकाश और त्रिक"
+      },
+      "body": {
+        "en": "$\\mathbf{R} \\times \\mathbf{R} = \\{(x, y) : x, y \\in \\mathbf{R}\\}$ is the set of coordinates of all the points in the plane, and $\\mathbf{R} \\times \\mathbf{R} \\times \\mathbf{R}$ gives the coordinates of all the points in three-dimensional space. It is like finding a house in a town laid out in a grid: one street number across and one street number up fix the crossing, and swapping them takes you somewhere else.\n\n$A \\times A \\times A = \\{(a, b, c) : a, b, c \\in A\\}$, and $(a, b, c)$ is called an ordered triplet. If $P = \\{1, 2\\}$, then $P \\times P \\times P$ has $2 \\times 2 \\times 2 = 8$ triplets, from $(1, 1, 1)$ to $(2, 2, 2)$.\n\nIf A and B are non-empty and one of them is infinite, then $A \\times B$ is infinite.",
+        "hi": "$\\mathbf{R} \\times \\mathbf{R} = \\{(x, y) : x, y \\in \\mathbf{R}\\}$ तल के सभी बिंदुओं के निर्देशांकों का समुच्चय है, और $\\mathbf{R} \\times \\mathbf{R} \\times \\mathbf{R}$ त्रिविमीय आकाश के सभी बिंदुओं के निर्देशांक देता है। यह ग्रिड जैसी बसावट वाले कस्बे में कोई घर ढूँढने जैसा है: आड़ी दिशा में एक गली की संख्या और खड़ी दिशा में एक गली की संख्या चौराहा तय करती हैं, और उन्हें आपस में बदल दें तो आप कहीं और पहुँच जाते हैं।\n\n$A \\times A \\times A = \\{(a, b, c) : a, b, c \\in A\\}$, और $(a, b, c)$ को क्रमित त्रिक कहते हैं। यदि $P = \\{1, 2\\}$, तो $P \\times P \\times P$ में $2 \\times 2 \\times 2 = 8$ त्रिक हैं, $(1, 1, 1)$ से $(2, 2, 2)$ तक।\n\nयदि A और B अरिक्त हों और उनमें से एक अपरिमित हो, तो $A \\times B$ अपरिमित होता है।"
+      },
+      "media": "img.relations-functions.street-grid",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Remarks (iii) and (iv), Examples 4 and 5"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Let $A = \\{1, 2, 3\\}$, $B = \\{3, 4\\}$ and $C = \\{4, 5, 6\\}$. Find $A \\times (B \\cap C)$.",
+        "hi": "मान लीजिए $A = \\{1, 2, 3\\}$, $B = \\{3, 4\\}$ और $C = \\{4, 5, 6\\}$। $A \\times (B \\cap C)$ ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "First the bracket: $B \\cap C = \\{4\\}$.",
+          "hi": "पहले कोष्ठक: $B \\cap C = \\{4\\}$।"
+        },
+        {
+          "en": "Pair every element of A with $4$.",
+          "hi": "A के हर अवयव को $4$ के साथ जोड़िए।"
+        },
+        {
+          "en": "This equals $(A \\times B) \\cap (A \\times C)$, which you can check by listing both products.",
+          "hi": "यह $(A \\times B) \\cap (A \\times C)$ के बराबर है, जिसे दोनों गुणन लिखकर जाँच सकते हैं।"
+        }
+      ],
+      "answer": {
+        "en": "$A \\times (B \\cap C) = \\{(1, 4), (2, 4), (3, 4)\\}$",
+        "hi": "$A \\times (B \\cap C) = \\{(1, 4), (2, 4), (3, 4)\\}$"
+      },
+      "common_trap": {
+        "en": "Pairing A with all of B or all of C instead of only their common element.",
+        "hi": "A को केवल साझा अवयव के बजाय पूरे B या पूरे C के साथ जोड़ देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.2, Example 3"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:08",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions-intro.cartesian-product.0002"
+    },
+    {
+      "id": "math.relations-functions-intro.cartesian-product:dd:09",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Ordered pair: order matters; $(a, b) = (x, y)$ means $a = x$ and $b = y$.",
+          "hi": "क्रमित युग्म: क्रम महत्त्वपूर्ण है; $(a, b) = (x, y)$ का अर्थ है $a = x$ और $b = y$।"
+        },
+        {
+          "en": "$A \\times B = \\{(a, b) : a \\in A,\\ b \\in B\\}$ and $n(A \\times B) = pq$.",
+          "hi": "$A \\times B = \\{(a, b) : a \\in A,\\ b \\in B\\}$ और $n(A \\times B) = pq$।"
+        },
+        {
+          "en": "$A \\times \\phi = \\phi$, and in general $A \\times B \\ne B \\times A$.",
+          "hi": "$A \\times \\phi = \\phi$, और सामान्यतः $A \\times B \\ne B \\times A$।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Summary"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

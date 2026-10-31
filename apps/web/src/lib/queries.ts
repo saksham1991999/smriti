@@ -69,7 +69,7 @@ export function useLessonProgress() {
   });
 }
 
-/** Unsent events (for today's local activity and the unsynced warning). */
+/** Recent events, sent (kept two days) and unsent, for today's local activity and minutes. */
 export function useOutboxRows() {
   const { storage } = useServices();
   return useQuery({ queryKey: qk.outbox, queryFn: () => storage.outbox.all(), refetchInterval: 5_000 });

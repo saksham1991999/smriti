@@ -5,3 +5,9 @@ export { QuestionView, canSubmit, initialDraft, initialOrder, type QuestionViewP
 export { RichText, safeSvg } from "./RichText";
 export { Media } from "./Media";
 export { PlayerProvider, contentUrl, type PlayerContextValue, type Translate } from "./context";
+// Little learner activities (LRN-11 story, LRN-17 song, LRN-18 play).
+export { type ActivityPlayerProps } from "./activity";
+export { StoryPlayer, type StoryPlayerProps } from "./StoryPlayer";
+export { SongPlayer, type SongPlayerProps } from "./SongPlayer";
+export { PlayPlayer, type PlayPlayerProps, type PlayRoundInfo } from "./PlayPlayer";
+export { canvasGlyphMask } from "./trace";

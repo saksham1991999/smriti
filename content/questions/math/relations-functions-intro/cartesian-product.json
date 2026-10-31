@@ -1,0 +1,732 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format, not copied from the NCERT exercises. Each solution cites the NCERT section, definition or example it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.relations-functions-intro.cartesian-product",
+  "questions": [
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $n(A) = 4$ and $n(B) = 3$, find $n(A \\times B)$.",
+        "hi": "यदि $n(A) = 4$ और $n(B) = 3$, तो $n(A \\times B)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 12,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Multiply, do not add.",
+          "hi": "गुणा कीजिए, जोड़िए नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each of the 4 first elements pairs with each of the 3 second elements.",
+          "hi": "4 पहले अवयवों में से हर एक, 3 दूसरे अवयवों में से हर एक के साथ जुड़ता है।"
+        },
+        "steps": [
+          {
+            "en": "$n(A \\times B) = 4 \\times 3 = 12$ (NCERT §2.2, Remark (ii)).",
+            "hi": "$n(A \\times B) = 4 \\times 3 = 12$ (NCERT §2.2, Remark (ii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding the counts gives $7$; the counts multiply.",
+              "hi": "गिनतियाँ जोड़ने से $7$ मिलता है; गिनतियों का गुणा होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $(x - 1, y + 2) = (4, 7)$, then $(x, y)$ is",
+        "hi": "यदि $(x - 1, y + 2) = (4, 7)$, तो $(x, y)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$(5, 5)$",
+            "hi": "$(5, 5)$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$(3, 5)$",
+            "hi": "$(3, 5)$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$(5, 9)$",
+            "hi": "$(5, 9)$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$(4, 7)$",
+            "hi": "$(4, 7)$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Write two equations.",
+          "hi": "दो समीकरण लिखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Equal pairs: first equals first, second equals second.",
+          "hi": "समान युग्म: पहला पहले के बराबर, दूसरा दूसरे के बराबर।"
+        },
+        "steps": [
+          {
+            "en": "$x - 1 = 4$ gives $x = 5$ and $y + 2 = 7$ gives $y = 5$ (NCERT §2.2, Example 1).",
+            "hi": "$x - 1 = 4$ से $x = 5$ और $y + 2 = 7$ से $y = 5$ (NCERT §2.2, Example 1)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$x = 3$ comes from subtracting 1 instead of adding it.",
+              "hi": "$x = 3$, 1 जोड़ने के बजाय घटाने से आता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$y = 9$ comes from adding 2 instead of subtracting it.",
+              "hi": "$y = 9$, 2 घटाने के बजाय जोड़ने से आता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "These are the values of $x - 1$ and $y + 2$, not of x and y.",
+              "hi": "ये $x - 1$ और $y + 2$ के मान हैं, x और y के नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $P = \\{a, b\\}$ and $Q = \\{1\\}$. Which statement is true?",
+        "hi": "मान लीजिए $P = \\{a, b\\}$ और $Q = \\{1\\}$। कौन-सा कथन सत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$P \\times Q = \\{(a, 1), (b, 1)\\}$",
+            "hi": "$P \\times Q = \\{(a, 1), (b, 1)\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$Q \\times P = \\{(a, 1), (b, 1)\\}$",
+            "hi": "$Q \\times P = \\{(a, 1), (b, 1)\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$P \\times Q = Q \\times P$",
+            "hi": "$P \\times Q = Q \\times P$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$n(P \\times Q) \\ne n(Q \\times P)$",
+            "hi": "$n(P \\times Q) \\ne n(Q \\times P)$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which set supplies the first element?",
+          "hi": "पहला अवयव कौन-सा समुच्चय देता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "In $P \\times Q$ the first element of every pair comes from P.",
+          "hi": "$P \\times Q$ में हर युग्म का पहला अवयव P से आता है।"
+        },
+        "steps": [
+          {
+            "en": "$P \\times Q = \\{(a, 1), (b, 1)\\}$ while $Q \\times P = \\{(1, a), (1, b)\\}$ (NCERT §2.2, Example 2).",
+            "hi": "$P \\times Q = \\{(a, 1), (b, 1)\\}$ जबकि $Q \\times P = \\{(1, a), (1, b)\\}$ (NCERT §2.2, Example 2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "In $Q \\times P$ the first element comes from Q, so the pairs start with 1.",
+              "hi": "$Q \\times P$ में पहला अवयव Q से आता है, इसलिए युग्म 1 से शुरू होते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$(a, 1) \\ne (1, a)$, so the products differ.",
+              "hi": "$(a, 1) \\ne (1, a)$, इसलिए गुणन भिन्न हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Both products have $2 \\times 1 = 2$ elements.",
+              "hi": "दोनों गुणनों में $2 \\times 1 = 2$ अवयव हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A = \\{1, 2, 3\\}$, $B = \\{3, 4\\}$ and $C = \\{4, 5\\}$. Find $n\\big(A \\times (B \\cap C)\\big)$.",
+        "hi": "मान लीजिए $A = \\{1, 2, 3\\}$, $B = \\{3, 4\\}$ और $C = \\{4, 5\\}$। $n\\big(A \\times (B \\cap C)\\big)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 3,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "What do B and C have in common?",
+          "hi": "B और C में साझा क्या है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the bracket first, then multiply the counts.",
+          "hi": "पहले कोष्ठक निकालिए, फिर गिनतियों का गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$B \\cap C = \\{4\\}$, so $n\\big(A \\times (B \\cap C)\\big) = 3 \\times 1 = 3$ (NCERT §2.2, Example 3).",
+            "hi": "$B \\cap C = \\{4\\}$, अतः $n\\big(A \\times (B \\cap C)\\big) = 3 \\times 1 = 3$ (NCERT §2.2, Example 3)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Instead of $B \\cap C$, using $B \\cup C$ gives $9$.",
+              "hi": "$B \\cap C$ के बजाय $B \\cup C$ लेने से $9$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $A \\times B = \\{(1, p), (1, q), (2, p), (2, q), (3, p), (3, q)\\}$, then",
+        "hi": "यदि $A \\times B = \\{(1, p), (1, q), (2, p), (2, q), (3, p), (3, q)\\}$, तो"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$A = \\{1, 2, 3\\},\\ B = \\{p, q\\}$",
+            "hi": "$A = \\{1, 2, 3\\},\\ B = \\{p, q\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$A = \\{p, q\\},\\ B = \\{1, 2, 3\\}$",
+            "hi": "$A = \\{p, q\\},\\ B = \\{1, 2, 3\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$A = \\{1, 2\\},\\ B = \\{p, q\\}$",
+            "hi": "$A = \\{1, 2\\},\\ B = \\{p, q\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$A = \\{1, 2, 3, p, q\\},\\ B = \\{1, 2, 3, p, q\\}$",
+            "hi": "$A = \\{1, 2, 3, p, q\\},\\ B = \\{1, 2, 3, p, q\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Read down the pairs.",
+          "hi": "युग्मों को एक-एक कर पढ़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Collect the first elements for A and the second elements for B.",
+          "hi": "A के लिए पहले अवयव और B के लिए दूसरे अवयव इकट्ठा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "First elements: $1, 2, 3$. Second elements: $p, q$. Check: $3 \\times 2 = 6$ pairs (NCERT §2.2, Example 6).",
+            "hi": "पहले अवयव: $1, 2, 3$। दूसरे अवयव: $p, q$। जाँच: $3 \\times 2 = 6$ युग्म (NCERT §2.2, Example 6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This swaps the roles; that would give $B \\times A$.",
+              "hi": "इसमें भूमिकाएँ उलट गई हैं; उससे $B \\times A$ मिलता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$3$ is also a first element.",
+              "hi": "$3$ भी एक पहला अवयव है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "First and second elements come from different sets here.",
+              "hi": "यहाँ पहले और दूसरे अवयव अलग-अलग समुच्चयों से आते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0006",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$A \\times A$ has $9$ elements, and $(-1, 0)$ and $(0, 1)$ are two of them. How many elements of $A \\times A$ have both coordinates equal?",
+        "hi": "$A \\times A$ में $9$ अवयव हैं, और $(-1, 0)$ तथा $(0, 1)$ उनमें से दो हैं। $A \\times A$ के कितने अवयवों के दोनों निर्देशांक समान हैं?"
+      },
+      "answer": {
+        "value": 3,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$n(A \\times A) = n(A)^2$.",
+          "hi": "$n(A \\times A) = n(A)^2$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "First find A: its size and some of its elements are hidden in the data.",
+          "hi": "पहले A ज्ञात कीजिए: उसका आकार और कुछ अवयव दिए गए आँकड़ों में छिपे हैं।"
+        },
+        "steps": [
+          {
+            "en": "$n(A)^2 = 9$, so $n(A) = 3$. The given pairs show $-1, 0, 1 \\in A$, so $A = \\{-1, 0, 1\\}$.",
+            "hi": "$n(A)^2 = 9$, अतः $n(A) = 3$। दिए गए युग्म दिखाते हैं कि $-1, 0, 1 \\in A$, अतः $A = \\{-1, 0, 1\\}$।"
+          },
+          {
+            "en": "The pairs with equal coordinates are $(-1, -1)$, $(0, 0)$, $(1, 1)$: three of them (NCERT §2.2).",
+            "hi": "समान निर्देशांकों वाले युग्म $(-1, -1)$, $(0, 0)$, $(1, 1)$ हैं: तीन (NCERT §2.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Answering $9$ counts every pair, not only those with equal coordinates.",
+              "hi": "$9$ उत्तर देने में हर युग्म गिना गया, केवल समान निर्देशांकों वाले नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which statement is false?",
+        "hi": "कौन-सा कथन असत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "If A is infinite, then $A \\times \\phi$ is infinite.",
+            "hi": "यदि A अपरिमित है, तो $A \\times \\phi$ अपरिमित है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "If $n(A) = 2$, then $A \\times A \\times A$ has $8$ elements.",
+            "hi": "यदि $n(A) = 2$, तो $A \\times A \\times A$ में $8$ अवयव हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\mathbf{R} \\times \\mathbf{R}$ is the set of coordinates of the points of a plane.",
+            "hi": "$\\mathbf{R} \\times \\mathbf{R}$ किसी तल के बिंदुओं के निर्देशांकों का समुच्चय है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "If $a \\ne b$, then $(a, b) \\ne (b, a)$.",
+            "hi": "यदि $a \\ne b$, तो $(a, b) \\ne (b, a)$।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for the empty set.",
+          "hi": "रिक्त समुच्चय खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A product needs an element from each set; the empty set has none to offer.",
+          "hi": "गुणन के लिए हर समुच्चय से एक अवयव चाहिए; रिक्त समुच्चय के पास देने को कुछ नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$A \\times \\phi = \\phi$ whatever A is; the infinite case needs both sets non-empty (NCERT §2.2, Remark (iii)).",
+            "hi": "A कुछ भी हो, $A \\times \\phi = \\phi$; अपरिमित वाली स्थिति में दोनों समुच्चय अरिक्त होने चाहिए (NCERT §2.2, Remark (iii))।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "True: $2 \\times 2 \\times 2 = 8$ ordered triplets.",
+              "hi": "सत्य: $2 \\times 2 \\times 2 = 8$ क्रमित त्रिक।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "True: NCERT Example 5.",
+              "hi": "सत्य: NCERT Example 5।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "True: the first elements differ.",
+              "hi": "सत्य: पहले अवयव भिन्न हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0008",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A = \\{1, 2\\}$ and $B = \\{3, 4\\}$. How many subsets does $A \\times B$ have?",
+        "hi": "मान लीजिए $A = \\{1, 2\\}$ और $B = \\{3, 4\\}$। $A \\times B$ के कितने उपसमुच्चय हैं?"
+      },
+      "answer": {
+        "value": 16,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "A set of $n$ elements has $2^{n}$ subsets.",
+          "hi": "$n$ अवयवों वाले समुच्चय के $2^{n}$ उपसमुच्चय होते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Count the pairs, then use the number of subsets of a finite set.",
+          "hi": "युग्म गिनिए, फिर परिमित समुच्चय के उपसमुच्चयों की संख्या लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$n(A \\times B) = 2 \\times 2 = 4$, so it has $2^4 = 16$ subsets (NCERT §2.2 and §2.3, Example 9).",
+            "hi": "$n(A \\times B) = 2 \\times 2 = 4$, अतः इसके $2^4 = 16$ उपसमुच्चय हैं (NCERT §2.2 तथा §2.3, Example 9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$4$ is the number of pairs, not of subsets.",
+              "hi": "$4$ युग्मों की संख्या है, उपसमुच्चयों की नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions-intro.cartesian-product.0009",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$n(A) = 3$, $n(B) = 4$ and $n(A \\cap B) = 2$. Find $n\\big((A \\times B) \\cap (B \\times A)\\big)$.",
+        "hi": "$n(A) = 3$, $n(B) = 4$ और $n(A \\cap B) = 2$। $n\\big((A \\times B) \\cap (B \\times A)\\big)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 4,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Test a pair $(x, y)$ against both products.",
+          "hi": "किसी युग्म $(x, y)$ को दोनों गुणनों पर परखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A pair lies in both products only when each coordinate lies in both sets.",
+          "hi": "कोई युग्म दोनों गुणनों में तभी है जब उसका हर निर्देशांक दोनों समुच्चयों में हो।"
+        },
+        "steps": [
+          {
+            "en": "$(x, y) \\in A \\times B$ and $(x, y) \\in B \\times A$ mean $x \\in A \\cap B$ and $y \\in A \\cap B$.",
+            "hi": "$(x, y) \\in A \\times B$ और $(x, y) \\in B \\times A$ का अर्थ है $x \\in A \\cap B$ और $y \\in A \\cap B$।"
+          },
+          {
+            "en": "So the intersection is $(A \\cap B) \\times (A \\cap B)$, with $2 \\times 2 = 4$ elements (NCERT §2.2, Definition 1).",
+            "hi": "अतः सर्वनिष्ठ $(A \\cap B) \\times (A \\cap B)$ है, जिसमें $2 \\times 2 = 4$ अवयव हैं (NCERT §2.2, Definition 1)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$12$ is $n(A \\times B)$, which ignores the second product.",
+              "hi": "$12$, $n(A \\times B)$ है, जो दूसरे गुणन को अनदेखा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

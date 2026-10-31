@@ -12,12 +12,13 @@ from collections.abc import AsyncIterator
 from datetime import datetime
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Path, Query, Response
+from fastapi import APIRouter, Path, Query, Request, Response
 from fastapi.responses import StreamingResponse
 
 from smriti_api.core.deps import CurrentUser, Services
+from smriti_api.core.errors import ApiError
 from smriti_api.schemas import tutor as t
-from smriti_api.services import content_reports, tutor
+from smriti_api.services import content_reports, doubt_photo, tutor
 
 router = APIRouter(prefix="/v1", tags=["tutor"])
 
@@ -174,3 +175,78 @@ async def my_reports(
     services: Services, auth: CurrentUser, limit: Annotated[int, Query(ge=1, le=100)] = 20
 ) -> list[t.ContentReportOut]:
     return await content_reports.mine(services.db, auth, limit)
+
+
+# --- photo doubt (tutor-social §A10, AI-16 to AI-19) ----------------------------------------------
+
+PhotoId = Annotated[uuid.UUID, Path()]
+_PHOTO_BODY: dict[str, Any] = {
+    "requestBody": {
+        "required": True,
+        "description": "One compressed photo of one question (at most 4 MiB)",
+        "content": {
+            mime: {"schema": {"type": "string", "format": "binary"}}
+            for mime in ("image/jpeg", "image/png", "image/webp")
+        },
+    }
+}
+
+
+async def _read_capped(request: Request, cap: int) -> bytes:
+    """The request body, refused once it passes ``cap`` (never buffered beyond that)."""
+    chunks: list[bytes] = []
+    size = 0
+    async for chunk in request.stream():
+        size += len(chunk)
+        if size > cap:
+            raise ApiError(413, "photo_too_large", "That photo is too large", limit=cap)
+        chunks.append(chunk)
+    return b"".join(chunks)
+
+
+@router.post(
+    "/ai/doubt-photos",
+    response_model=t.DoubtPhotoOut,
+    status_code=201,
+    openapi_extra=_PHOTO_BODY,
+    summary="AI-16 to AI-18: upload a photo of a question and read it (Pro, 13+, uploads scope)",
+)
+async def upload_doubt_photo(
+    request: Request,
+    services: Services,
+    auth: CurrentUser,
+    exam: Annotated[str | None, Query(max_length=200)] = None,
+) -> t.DoubtPhotoOut:
+    if services.integrations is None:
+        raise ApiError(503, "integrations_unavailable", "This service is not set up here")
+    data = await _read_capped(request, doubt_photo.MAX_PHOTO_BYTES)
+    return await doubt_photo.upload(
+        services.db, services.ai, services.integrations.storage, auth, data, exam
+    )
+
+
+@router.get(
+    "/ai/doubt-photos/{photo_id}",
+    response_model=t.DoubtPhotoOut,
+    summary="A photo doubt: what was read, and its chat once solved",
+)
+async def get_doubt_photo(
+    photo_id: PhotoId, services: Services, auth: CurrentUser
+) -> t.DoubtPhotoOut:
+    return await doubt_photo.get(services.db, auth, photo_id)
+
+
+@router.post(
+    "/ai/doubt-photos/{photo_id}/solve",
+    response_class=StreamingResponse,
+    responses=SSE_DOC,
+    summary="AI-19: solve the confirmed question as a tutor chat, hints first (SSE)",
+)
+async def solve_doubt_photo(
+    photo_id: PhotoId, body: t.DoubtSolve, services: Services, auth: CurrentUser
+) -> StreamingResponse:
+    session_id, resumed = await doubt_photo.open_solve(services.db, auth, photo_id, body)
+    plan = await tutor.prepare(services.db, services.ai, auth, session_id, body)
+    return _sse(
+        _with_session(session_id, resumed, tutor.stream(services.db, services.ai, auth, plan))
+    )

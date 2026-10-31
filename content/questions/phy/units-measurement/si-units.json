@@ -1,0 +1,666 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §1.6 Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax College Physics 2e, §1.3 Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or the BIPM vocabulary of metrology and OpenStax for accuracy, precision, least count and the kinds of error, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "phy.units-measurement.si-units",
+  "questions": [
+    {
+      "id": "q.phy.units-measurement.si-units.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In the CGS system, the base units of length, mass and time are",
+        "hi": "CGS पद्धति में लंबाई, द्रव्यमान और समय के मूल मात्रक हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "centimetre, gram, second",
+            "hi": "सेंटीमीटर, ग्राम, सेकंड"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "metre, kilogram, second",
+            "hi": "मीटर, किलोग्राम, सेकंड"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "foot, pound, second",
+            "hi": "फ़ुट, पाउंड, सेकंड"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "centimetre, kilogram, second",
+            "hi": "सेंटीमीटर, किलोग्राम, सेकंड"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "C, G, S stand for the three units.",
+          "hi": "C, G, S तीनों मात्रकों के लिए हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The name says it: centimetre, gram, second.",
+          "hi": "नाम ही बताता है: सेंटीमीटर, ग्राम, सेकंड।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.2: CGS uses the centimetre, gram and second.",
+            "hi": "NCERT §1.2: CGS में सेंटीमीटर, ग्राम और सेकंड।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "These are the MKS (and SI) units.",
+              "hi": "ये MKS (और SI) मात्रक हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "These are the FPS units.",
+              "hi": "ये FPS मात्रक हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This mixes CGS length with the MKS mass unit.",
+              "hi": "इसमें CGS लंबाई के साथ MKS द्रव्यमान मात्रक मिला है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.si-units.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these is NOT an SI base unit?",
+        "hi": "इनमें से कौन-सा SI मूल मात्रक नहीं है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "newton",
+            "hi": "न्यूटन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "ampere",
+            "hi": "ऐम्पियर"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "kelvin",
+            "hi": "केल्विन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "candela",
+            "hi": "कैन्डेला"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Recall the seven: m, kg, s, A, K, mol, cd.",
+          "hi": "सात याद कीजिए: m, kg, s, A, K, mol, cd।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Of the four, only the newton is built from other units.",
+          "hi": "चारों में से केवल न्यूटन दूसरे मात्रकों से बना है।"
+        },
+        "steps": [
+          {
+            "en": "$1\\,\\mathrm{N} = 1\\,\\mathrm{kg\\,m\\,s^{-2}}$, a derived unit.",
+            "hi": "$1\\,\\mathrm{N} = 1\\,\\mathrm{kg\\,m\\,s^{-2}}$, एक व्युत्पन्न मात्रक।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The ampere is the base unit of electric current.",
+              "hi": "ऐम्पियर विद्युत धारा का मूल मात्रक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The kelvin is the base unit of thermodynamic temperature.",
+              "hi": "केल्विन ऊष्मागतिक ताप का मूल मात्रक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The candela is the base unit of luminous intensity.",
+              "hi": "कैन्डेला ज्योति तीव्रता का मूल मात्रक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.si-units.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The SI unit of the amount of substance is",
+        "hi": "पदार्थ की मात्रा का SI मात्रक है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "mole",
+            "hi": "मोल"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "kilogram",
+            "hi": "किलोग्राम"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "candela",
+            "hi": "कैन्डेला"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "kelvin",
+            "hi": "केल्विन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "It is also used in chemistry for counting particles.",
+          "hi": "रसायन में कणों को गिनने के लिए भी यही प्रयुक्त होता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Amount of substance counts elementary entities; its unit is the mole.",
+          "hi": "पदार्थ की मात्रा मूल कणों की गिनती है; इसका मात्रक मोल है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT Table 1.1: amount of substance, mole (mol).",
+            "hi": "NCERT तालिका 1.1: पदार्थ की मात्रा, मोल (mol)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The kilogram measures mass, not the number of entities.",
+              "hi": "किलोग्राम द्रव्यमान मापता है, कणों की संख्या नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The candela is for luminous intensity.",
+              "hi": "कैन्डेला ज्योति तीव्रता के लिए है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The kelvin is for temperature.",
+              "hi": "केल्विन ताप के लिए है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.si-units.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Force is mass times acceleration. Its SI unit, in base units, is",
+        "hi": "बल द्रव्यमान गुणा त्वरण है। मूल मात्रकों में इसका SI मात्रक है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\mathrm{kg\\,m\\,s^{-2}}$",
+            "hi": "$\\mathrm{kg\\,m\\,s^{-2}}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\mathrm{kg\\,m\\,s^{-1}}$",
+            "hi": "$\\mathrm{kg\\,m\\,s^{-1}}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\mathrm{g\\,cm\\,s^{-2}}$",
+            "hi": "$\\mathrm{g\\,cm\\,s^{-2}}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathrm{kg\\,m^{2}\\,s^{-2}}$",
+            "hi": "$\\mathrm{kg\\,m^{2}\\,s^{-2}}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Acceleration is m s⁻².",
+          "hi": "त्वरण m s⁻² है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Multiply the unit of mass by the unit of acceleration, metre per second per second.",
+          "hi": "द्रव्यमान के मात्रक को त्वरण के मात्रक, मीटर प्रति सेकंड प्रति सेकंड, से गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\mathrm{kg} \\times \\mathrm{m\\,s^{-2}} = \\mathrm{kg\\,m\\,s^{-2}}$",
+            "hi": "$\\mathrm{kg} \\times \\mathrm{m\\,s^{-2}} = \\mathrm{kg\\,m\\,s^{-2}}$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the unit of momentum (mass times velocity).",
+              "hi": "यह संवेग (द्रव्यमान गुणा वेग) का मात्रक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "These are CGS units, not SI.",
+              "hi": "ये CGS मात्रक हैं, SI नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the unit of energy, the joule.",
+              "hi": "यह ऊर्जा, जूल, का मात्रक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.si-units.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which pair of units are both dimensionless?",
+        "hi": "मात्रकों का कौन-सा युग्म दोनों विमाहीन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "radian and steradian",
+            "hi": "रेडियन और स्टेरेडियन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "radian and candela",
+            "hi": "रेडियन और कैन्डेला"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "mole and steradian",
+            "hi": "मोल और स्टेरेडियन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "kelvin and radian",
+            "hi": "केल्विन और रेडियन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Ratio of arc to radius; area to radius squared.",
+          "hi": "चाप बटा त्रिज्या; क्षेत्रफल बटा त्रिज्या का वर्ग।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Both angles are ratios of like quantities: length over length, and area over area.",
+          "hi": "दोनों कोण समान राशियों के अनुपात हैं: लंबाई बटा लंबाई, और क्षेत्रफल बटा क्षेत्रफल।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.2: the radian and the steradian are both dimensionless.",
+            "hi": "NCERT §1.2: रेडियन और स्टेरेडियन दोनों विमाहीन हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The candela is a base unit with its own dimension.",
+              "hi": "कैन्डेला अपनी विमा वाला मूल मात्रक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The mole is a base unit.",
+              "hi": "मोल एक मूल मात्रक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The kelvin is a base unit.",
+              "hi": "केल्विन एक मूल मात्रक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.si-units.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.si-units.core.fundamental-derived-units",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The SI scheme of units was developed by the BIPM in 1971 and most recently revised in",
+        "hi": "SI मात्रक योजना BIPM ने 1971 में बनाई और हाल में इसका संशोधन हुआ"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "November 2018",
+            "hi": "नवंबर 2018"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "January 2000",
+            "hi": "जनवरी 2000"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "March 1960",
+            "hi": "मार्च 1960"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "October 2024",
+            "hi": "अक्टूबर 2024"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "It is the revision that fixed constants of nature.",
+          "hi": "यह वह संशोधन है जिसने प्रकृति के नियतांक स्थिर किए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "NCERT gives the revision by the General Conference on Weights and Measures in November 2018.",
+          "hi": "NCERT के अनुसार माप-तौल के महासम्मेलन ने नवंबर 2018 में संशोधन किया।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.2.",
+            "hi": "NCERT §1.2।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "No revision on this date is given in NCERT.",
+              "hi": "NCERT में इस तिथि का कोई संशोधन नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is before the 1971 scheme NCERT describes.",
+              "hi": "यह NCERT में वर्णित 1971 की योजना से पहले है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "No revision on this date is given in NCERT.",
+              "hi": "NCERT में इस तिथि का कोई संशोधन नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

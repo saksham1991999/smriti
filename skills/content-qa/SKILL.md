@@ -19,7 +19,7 @@ Run all of them. Each finding has a severity: **blocker** (must fix before merge
 | # | Check | Blocker when |
 |---|---|---|
 | 1 | **Schema:** `pnpm content:check` passes | Any failure |
-| 2 | **Coverage:** every syllabus line → concept, every inventory item → concept, every exam-map concept has a teaching card, a revision card, practice questions at depth, a spaced-repetition card, worked examples for formulas, hooks for lists and dates. Little learner profiles need a teaching item (card, storybook or song) and a play activity instead | Any gap in a subject marked for release |
+| 2 | **Coverage:** every syllabus line → concept, every inventory item → concept, every exam-map concept has a teaching card, a revision card, practice questions at depth, a spaced-repetition card, worked examples for formulas, hooks for lists and dates. Little learner profiles need a teaching item (card, storybook or song) and a play activity instead | Any gap in a subject or chapter released in `content/releases.json` |
 | 3 | **Facts:** every number, date, constant, unit, name and definition matches a cited source. Open the source, don't recall. | Any mismatch |
 | 4 | **Answers:** re-solve every question independently. Check the options, the tolerance and the solution steps. | Any wrong or ambiguous answer |
 | 5 | **Parity:** the English and Hindi versions say the same thing, with the same numbers, options and order. Hindi terms follow NCERT. | Different facts or numbers |

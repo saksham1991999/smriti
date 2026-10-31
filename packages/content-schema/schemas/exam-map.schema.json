@@ -9,12 +9,6 @@
   "properties": {
     "schema": { "const": "exam-map@1" },
     "exam_profile": { "$ref": "common.schema.json#/$defs/ExamProfileId" },
-    "released_subjects": {
-      "description": "Subjects marked for release. The content check fails when one of them is below 100% coverage, and the publisher ships only these to a non-local target.",
-      "type": "array",
-      "uniqueItems": true,
-      "items": { "$ref": "common.schema.json#/$defs/Slug" }
-    },
     "stats_basis": {
       "description": "Set by pyq-ingest: the papers weightage and pyq_count were computed from.",
       "type": ["object", "null"],

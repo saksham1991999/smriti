@@ -81,6 +81,12 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "°C^-1", "°C")).toBeUndefined();
   });
 
+  it("converts density between g/cm^3 and kg/m^3", () => {
+    expect(convertUnit(4.8, "g/cm^3", "kg/m^3")).toBeCloseTo(4800);
+    expect(convertUnit(1000, "kg/m³", "g/cm³")).toBeCloseTo(1);
+    expect(convertUnit(1, "kg/m^3", "kg")).toBeUndefined();
+  });
+
   it("converts the chemical bonding units used by lessons", () => {
     expect(convertUnit(154, "pm", "nm")).toBeCloseTo(0.154, 12);
     expect(convertUnit(788, "kJ/mol", "J/mol")).toBeCloseTo(788000);

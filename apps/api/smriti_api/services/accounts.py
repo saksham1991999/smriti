@@ -478,7 +478,8 @@ async def _merge_data(
         lessons_added = int(
             await _scalar(
                 session,
-                "select count(*) from learn.sync_events where user_id = :u and type = 'lesson_completed' and status = 'applied'",
+                "select count(*) from learn.sync_events where user_id = :u"
+                " and type in ('lesson_completed', 'activity_completed') and status = 'applied'",
                 u=a,
             )
             or 0

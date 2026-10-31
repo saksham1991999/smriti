@@ -1,0 +1,345 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions-intro.relations-intro:deep_dive",
+  "topic": "math.relations-functions-intro.relations-intro",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "What a relation is",
+        "hi": "संबंध क्या है"
+      },
+      "subtopic": "math.relations-functions-intro.relations-intro.core",
+      "card_ids": [
+        "math.relations-functions-intro.relations-intro:dd:01",
+        "math.relations-functions-intro.relations-intro:dd:02",
+        "math.relations-functions-intro.relations-intro:dd:03",
+        "math.relations-functions-intro.relations-intro:dd:04"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Counting relations",
+        "hi": "संबंधों की गिनती"
+      },
+      "subtopic": "math.relations-functions-intro.relations-intro.core",
+      "card_ids": [
+        "math.relations-functions-intro.relations-intro:dd:05",
+        "math.relations-functions-intro.relations-intro:dd:06",
+        "math.relations-functions-intro.relations-intro:dd:07",
+        "math.relations-functions-intro.relations-intro:dd:08",
+        "math.relations-functions-intro.relations-intro:dd:09"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Picking pairs by a rule",
+        "hi": "नियम से युग्म चुनना"
+      },
+      "body": {
+        "en": "Let $P = \\{a, b, c\\}$ and Q be a set of five names: Ali, Bhanu, Binoy, Chandra and Divya. $P \\times Q$ has $15$ ordered pairs. Keep only the pairs where x is the first letter of the name y, and you get\nR = {(a, Ali), (b, Bhanu), (b, Binoy), (c, Chandra)}.\n\nA relation R from a non-empty set A to a non-empty set B is a subset of $A \\times B$, chosen by a rule linking the first element to the second. The second element is called the image of the first. A relation from A to A is called a relation on A.\n\nA relation can be written in roster form (listing the pairs) or in set-builder form (stating the rule). An arrow diagram draws it: one arrow from each first element to its image.",
+        "hi": "मान लीजिए $P = \\{a, b, c\\}$ और Q पाँच नामों का समुच्चय है: अली, भानु, बिनॉय, चंद्रा और दिव्या। $P \\times Q$ में $15$ क्रमित युग्म हैं। केवल वे युग्म रखिए जिनमें x नाम y का पहला अक्षर है, तो मिलता है\nR = {(a, Ali), (b, Bhanu), (b, Binoy), (c, Chandra)}।\n\nकिसी अरिक्त समुच्चय A से अरिक्त समुच्चय B तक संबंध R, $A \\times B$ का एक उपसमुच्चय है, जिसे पहले अवयव को दूसरे से जोड़ने वाले नियम से चुना जाता है। दूसरा अवयव पहले का प्रतिबिंब कहलाता है। A से A तक के संबंध को A पर संबंध कहते हैं।\n\nसंबंध को सूचीरूप (युग्मों की सूची) या समुच्चय-निर्माण रूप (नियम बताकर) में लिखा जा सकता है। तीर आरेख इसे चित्र में दिखाता है: हर पहले अवयव से उसके प्रतिबिंब तक एक तीर।"
+      },
+      "media": "img.relations-functions.arrow-diagram",
+      "highlights": [
+        {
+          "term": {
+            "en": "relation",
+            "hi": "संबंध"
+          },
+          "definition": {
+            "en": "A subset of $A \\times B$ chosen by a rule.",
+            "hi": "किसी नियम से चुना गया $A \\times B$ का उपसमुच्चय।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Definition 2, Remarks"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Domain, range and codomain",
+        "hi": "प्रांत, परिसर और सहप्रांत"
+      },
+      "body": {
+        "en": "For a relation R from A to B:\nthe domain is the set of all first elements of the pairs in R;\nthe range is the set of all second elements;\nthe codomain is the whole set B.\n\nThe range is always a subset of the codomain, and it can be smaller. In the arrow diagram, every dot on the right is in the codomain, but only the dots that an arrow reaches are in the range.",
+        "hi": "A से B तक संबंध R के लिए:\nप्रांत, R के युग्मों के सभी पहले अवयवों का समुच्चय है;\nपरिसर, सभी दूसरे अवयवों का समुच्चय है;\nसहप्रांत पूरा समुच्चय B है।\n\nपरिसर सदा सहप्रांत का उपसमुच्चय होता है, और उससे छोटा हो सकता है। तीर आरेख में दाईं ओर का हर बिंदु सहप्रांत में है, पर परिसर में केवल वे बिंदु हैं जिन तक कोई तीर पहुँचता है।"
+      },
+      "media": "img.relations-functions.arrow-diagram",
+      "highlights": [
+        {
+          "term": {
+            "en": "range",
+            "hi": "परिसर"
+          },
+          "definition": {
+            "en": "The set of second elements of a relation.",
+            "hi": "संबंध के दूसरे अवयवों का समुच्चय।"
+          }
+        },
+        {
+          "term": {
+            "en": "codomain",
+            "hi": "सहप्रांत"
+          },
+          "definition": {
+            "en": "The whole set B of a relation from A to B.",
+            "hi": "A से B तक के संबंध का पूरा समुच्चय B।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Definitions 3 and 4"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:03",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Let $A = \\{1, 2, 3, 4, 5\\}$ and $R = \\{(x, y) : y = x + 2,\\ x, y \\in A\\}$. Write R in roster form and find its domain, range and codomain.",
+        "hi": "मान लीजिए $A = \\{1, 2, 3, 4, 5\\}$ और $R = \\{(x, y) : y = x + 2,\\ x, y \\in A\\}$। R को सूचीरूप में लिखिए और उसका प्रांत, परिसर तथा सहप्रांत ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Try each x: $1 \\to 3$, $2 \\to 4$, $3 \\to 5$. For $x = 4$ and $x = 5$, $x + 2$ is not in A.",
+          "hi": "हर x आज़माइए: $1 \\to 3$, $2 \\to 4$, $3 \\to 5$। $x = 4$ और $x = 5$ के लिए $x + 2$, A में नहीं है।"
+        },
+        {
+          "en": "So $R = \\{(1, 3), (2, 4), (3, 5)\\}$.",
+          "hi": "अतः $R = \\{(1, 3), (2, 4), (3, 5)\\}$।"
+        },
+        {
+          "en": "Domain $\\{1, 2, 3\\}$, range $\\{3, 4, 5\\}$, codomain $A = \\{1, 2, 3, 4, 5\\}$.",
+          "hi": "प्रांत $\\{1, 2, 3\\}$, परिसर $\\{3, 4, 5\\}$, सहप्रांत $A = \\{1, 2, 3, 4, 5\\}$।"
+        }
+      ],
+      "answer": {
+        "en": "$R = \\{(1, 3), (2, 4), (3, 5)\\}$",
+        "hi": "$R = \\{(1, 3), (2, 4), (3, 5)\\}$"
+      },
+      "common_trap": {
+        "en": "Taking the domain to be all of A: $4$ and $5$ have no image in A.",
+        "hi": "प्रांत को पूरा A मान लेना: $4$ और $5$ का A में कोई प्रतिबिंब नहीं है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Example 7"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:04",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 1,
+      "question": "q.math.relations-functions-intro.relations-intro.0001"
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "How many relations?",
+        "hi": "कितने संबंध?"
+      },
+      "body": {
+        "en": "Every relation from A to B is a subset of $A \\times B$, and every subset is a relation. So the number of relations is the number of subsets of $A \\times B$.\n\nIf $n(A) = p$ and $n(B) = q$, then $n(A \\times B) = pq$ and there are $2^{pq}$ relations from A to B. The count includes the empty relation and the whole of $A \\times B$.\n\nWith $A = \\{1, 2\\}$ and $B = \\{3, 4\\}$: $n(A \\times B) = 4$, so there are $2^4 = 16$ relations.",
+        "hi": "A से B तक का हर संबंध $A \\times B$ का उपसमुच्चय है, और हर उपसमुच्चय एक संबंध है। अतः संबंधों की संख्या $A \\times B$ के उपसमुच्चयों की संख्या है।\n\nयदि $n(A) = p$ और $n(B) = q$, तो $n(A \\times B) = pq$ और A से B तक $2^{pq}$ संबंध हैं। इस गिनती में रिक्त संबंध और पूरा $A \\times B$ भी शामिल हैं।\n\n$A = \\{1, 2\\}$ और $B = \\{3, 4\\}$ के साथ: $n(A \\times B) = 4$, अतः $2^4 = 16$ संबंध हैं।"
+      },
+      "media": "img.relations-functions.arrow-diagram",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Note and Example 9"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:06",
+      "type": "formula",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Number of relations from A to B",
+        "hi": "A से B तक संबंधों की संख्या"
+      },
+      "latex": "2^{pq}",
+      "symbols": [
+        {
+          "symbol": "p",
+          "meaning": {
+            "en": "the number of elements of A",
+            "hi": "A के अवयवों की संख्या"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "q",
+          "meaning": {
+            "en": "the number of elements of B",
+            "hi": "B के अवयवों की संख्या"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "A and B are finite. The count includes the empty relation.",
+        "hi": "A और B परिमित हैं। गिनती में रिक्त संबंध शामिल है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Note"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Let $A = \\{1, 2, 3, 6\\}$ and let R be the relation on A in which $(a, b) \\in R$ when b is exactly divisible by a. How many pairs does R have?",
+        "hi": "मान लीजिए $A = \\{1, 2, 3, 6\\}$ और R, A पर वह संबंध है जिसमें $(a, b) \\in R$ जब b, a से पूर्णतः विभाज्य हो। R में कितने युग्म हैं?"
+      },
+      "solution_steps": [
+        {
+          "en": "$a = 1$ divides all four: $(1, 1), (1, 2), (1, 3), (1, 6)$.",
+          "hi": "$a = 1$ चारों को विभाजित करता है: $(1, 1), (1, 2), (1, 3), (1, 6)$।"
+        },
+        {
+          "en": "$a = 2$: $(2, 2), (2, 6)$. $a = 3$: $(3, 3), (3, 6)$. $a = 6$: $(6, 6)$.",
+          "hi": "$a = 2$: $(2, 2), (2, 6)$। $a = 3$: $(3, 3), (3, 6)$। $a = 6$: $(6, 6)$।"
+        },
+        {
+          "en": "Total $4 + 2 + 2 + 1 = 9$ pairs.",
+          "hi": "कुल $4 + 2 + 2 + 1 = 9$ युग्म।"
+        }
+      ],
+      "answer": {
+        "en": "$9$ pairs",
+        "hi": "$9$ युग्म"
+      },
+      "answer_value": {
+        "value": 9,
+        "unit": null,
+        "tolerance": {
+          "abs": 0
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting that every number divides itself, so pairs like $(2, 2)$ are missed.",
+        "hi": "भूल जाना कि हर संख्या स्वयं को विभाजित करती है, जिससे $(2, 2)$ जैसे युग्म छूट जाते हैं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Definition 2"
+      }
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:08",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions-intro.relations-intro.0003"
+    },
+    {
+      "id": "math.relations-functions-intro.relations-intro:dd:09",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions-intro.relations-intro.core.relation-domain-range"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "A relation from A to B is a subset of $A \\times B$.",
+          "hi": "A से B तक संबंध $A \\times B$ का उपसमुच्चय है।"
+        },
+        {
+          "en": "Domain: first elements. Range: second elements. Codomain: all of B. Range is a subset of codomain.",
+          "hi": "प्रांत: पहले अवयव। परिसर: दूसरे अवयव। सहप्रांत: पूरा B। परिसर सहप्रांत का उपसमुच्चय है।"
+        },
+        {
+          "en": "There are $2^{pq}$ relations from a p-element set to a q-element set.",
+          "hi": "p अवयवों वाले समुच्चय से q अवयवों वाले समुच्चय तक $2^{pq}$ संबंध होते हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.3, Summary"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

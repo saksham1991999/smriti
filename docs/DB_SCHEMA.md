@@ -1505,7 +1505,8 @@ create table billing.payment_links (              -- "Send to my parent": one-ti
   status           text not null default 'open' check (status in ('open','paid','expired','cancelled')),
   expires_at       timestamptz not null,          -- 48 h after creation (me-money flow §5.12)
   paid_at          timestamptz,
-  created_at       timestamptz not null default now()
+  created_at       timestamptz not null default now(),
+  subscription_id  uuid references billing.subscriptions(id) on delete set null  -- the parent's checkout (migration 20261030200006)
 );
 
 create table billing.intro_claims (               -- one ₹1 month per person (TRD §11)

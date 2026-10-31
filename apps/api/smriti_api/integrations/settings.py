@@ -107,6 +107,8 @@ class IntegrationSettings(BaseSettings):
 
     # Public links in emails and pushes
     guardian_link_base_url: str = "https://smriti.app/guardian/"
+    # PAY-17 "Send to my parent" (me-money §5.12): {base}{token}
+    child_pay_link_base_url: str = "https://smriti.app/pay/child/"
     brand_name: str = "Smriti"
 
 

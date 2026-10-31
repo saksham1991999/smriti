@@ -69,6 +69,44 @@ class RazorpayCancelRequest(BaseModel):
     reason: Code | None = None
 
 
+# --- PAY-17 "Send to my parent" (me-money §5.12) --------------------------------------------------
+
+PayLinkToken = Annotated[str, Field(min_length=32, max_length=64, pattern=r"^[A-Za-z0-9_-]+$")]
+
+
+class ChildPayLinkCreate(BaseModel):
+    plan: Literal["monthly", "yearly"] = "monthly"
+
+
+class ChildPayLinkCreated(BaseModel):
+    """Shown once: only the token's hash is kept."""
+
+    id: uuid.UUID
+    token: str
+    url: str
+    plan: Literal["monthly", "yearly"]
+    expires_at: datetime
+
+
+class PayLinkPet(BaseModel):
+    species: Literal["cat", "dog"]
+    name: str
+
+
+class ChildPayLinkOut(BaseModel):
+    """What the parent's link page shows (no login): the child's first name and pet, the price
+    from the child's own eligibility, and whether the link still works."""
+
+    status: Literal["open", "paid", "expired", "cancelled", "already_pro"]
+    child_first_name: str | None
+    pet: PayLinkPet | None
+    plan: Literal["monthly", "yearly"]
+    intro: bool
+    amount_today_paise: int | None
+    then_paise: int | None
+    expires_at: datetime
+
+
 class SubscriptionOut(BaseModel):
     id: uuid.UUID
     source: Literal["razorpay", "play", "app_store", "promo"]

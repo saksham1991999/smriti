@@ -377,6 +377,91 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/billing/child-payment-links": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** PAY-03 [Send to my parent]: a 48 h link a parent opens to pay (token shown once) */
+    post: operations["create_child_payment_link_v1_billing_child_payment_links_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{link_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** The teen withdraws their open link */
+    delete: operations["cancel_child_payment_link_v1_billing_child_payment_links__link_id__delete"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** PAY-17 link page (no login): the child's first name, pet, price and link status */
+    get: operations["view_child_payment_link_v1_billing_child_payment_links__token__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{token}/subscription": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** PAY-17 [Continue to pay] from the link: a web subscription on the child's account */
+    post: operations["start_child_payment_link_v1_billing_child_payment_links__token__subscription_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/billing/child-payment-links/{token}/verify": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Check the Checkout signature; the link is used and Pro follows the webhook */
+    post: operations["verify_child_payment_link_v1_billing_child_payment_links__token__verify_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/billing/entitlement": {
     parameters: {
       query?: never;
@@ -4210,6 +4295,71 @@ export interface components {
        */
       user_id: string;
     };
+    /** ChildPayLinkCreate */
+    ChildPayLinkCreate: {
+      /**
+       * Plan
+       * @default monthly
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+    };
+    /**
+     * ChildPayLinkCreated
+     * @description Shown once: only the token's hash is kept.
+     */
+    ChildPayLinkCreated: {
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Plan
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+      /** Token */
+      token: string;
+      /** Url */
+      url: string;
+    };
+    /**
+     * ChildPayLinkOut
+     * @description What the parent's link page shows (no login): the child's first name and pet, the price
+     *     from the child's own eligibility, and whether the link still works.
+     */
+    ChildPayLinkOut: {
+      /** Amount Today Paise */
+      amount_today_paise: number | null;
+      /** Child First Name */
+      child_first_name: string | null;
+      /**
+       * Expires At
+       * Format: date-time
+       */
+      expires_at: string;
+      /** Intro */
+      intro: boolean;
+      pet: components["schemas"]["PayLinkPet"] | null;
+      /**
+       * Plan
+       * @enum {string}
+       */
+      plan: "monthly" | "yearly";
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "open" | "paid" | "expired" | "cancelled" | "already_pro";
+      /** Then Paise */
+      then_paise: number | null;
+    };
     /**
      * ChildProRequest
      * @description PAY-17: a parent buys Pro for one child's account (individual plans only; a family plan is
@@ -7296,6 +7446,16 @@ export interface components {
       /** At */
       at?: string | null;
     };
+    /** PayLinkPet */
+    PayLinkPet: {
+      /** Name */
+      name: string;
+      /**
+       * Species
+       * @enum {string}
+       */
+      species: "cat" | "dog";
+    };
     /** PdfExportCreate */
     PdfExportCreate: {
       /**
@@ -10242,6 +10402,178 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["BadgeOut"][];
+        };
+      };
+    };
+  };
+  create_child_payment_link_v1_billing_child_payment_links_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChildPayLinkCreate"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildPayLinkCreated"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  cancel_child_payment_link_v1_billing_child_payment_links__link_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        link_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  view_child_payment_link_v1_billing_child_payment_links__token__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildPayLinkOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  start_child_payment_link_v1_billing_child_payment_links__token__subscription_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["RazorpaySubscriptionOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  verify_child_payment_link_v1_billing_child_payment_links__token__verify_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "Idempotency-Key"?: string | null;
+      };
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RazorpayVerifyRequest"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ChildPayLinkOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
         };
       };
     };

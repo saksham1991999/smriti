@@ -267,6 +267,7 @@ export const FLAG_REGISTRY = {
   'export.books_per_day': def(posInt, 5, 'proposed', 'me-money §3.9'),
   'export.expiry_days': def(posInt, 30, 'proposed', 'me-money §3.9'),
   'pay.child_link.enabled': def(byPlatform(bool), { web: true, ios: false, android: false }, 'doc', 'me-money Q7'),
+  'pay.child_link_ttl_h': def(posInt, 48, 'doc', 'me-money §5.12 (valid 48 h)'),
   'pay.web_steering': def(bool, false, 'doc', 'me-money §5.6'),
 
   // ── Features by phase (me-money §5.3, R8) ────────────────────────────────

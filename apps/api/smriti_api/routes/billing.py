@@ -23,7 +23,7 @@ from smriti_api.integrations import Integrations
 from smriti_api.integrations.billing import BillingError
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import billing as b
-from smriti_api.services import billing, billing_checkout, billing_family
+from smriti_api.services import billing, billing_checkout, billing_family, child_pay_links
 
 router = APIRouter(prefix="/v1", tags=["billing"])
 
@@ -375,4 +375,101 @@ async def child_pro_cancel(
         fn=lambda: billing_checkout.cancel_for_child(
             services.db, ints, auth, learner_id, body.reason
         ),
+    )
+
+
+# --- PAY-17 remote link: "Send to my parent" (me-money §5.12) --------------------------------------
+
+Teen = Annotated[AuthContext, signed_in("start_trial")]
+Token = Annotated[b.PayLinkToken, Path()]
+# Token lookups per IP per minute (a 32-byte token is not guessable; this keeps scans slow).
+PAY_LINK_LOOKUPS_PER_MIN = 20
+
+
+async def _limit_link(services: Services, request: Request) -> None:
+    ip = request.client.host if request.client else "unknown"
+    await services.limiter.hit("child_pay_link", ip, PAY_LINK_LOOKUPS_PER_MIN, 60)
+
+
+@router.post(
+    "/billing/child-payment-links",
+    response_model=b.ChildPayLinkCreated,
+    status_code=201,
+    summary="PAY-03 [Send to my parent]: a 48 h link a parent opens to pay (token shown once)",
+)
+async def create_child_payment_link(
+    body: b.ChildPayLinkCreate, services: Services, ints: Ints, auth: Teen, client: Client
+) -> b.ChildPayLinkCreated:
+    return await child_pay_links.create(services.db, ints, auth, body, client.platform)
+
+
+@router.delete(
+    "/billing/child-payment-links/{link_id}",
+    status_code=204,
+    summary="The teen withdraws their open link",
+)
+async def cancel_child_payment_link(link_id: uuid.UUID, services: Services, auth: Teen) -> Response:
+    await child_pay_links.cancel(services.db, auth, link_id)
+    return Response(status_code=204)
+
+
+@router.get(
+    "/billing/child-payment-links/{token}",
+    response_model=b.ChildPayLinkOut,
+    summary="PAY-17 link page (no login): the child's first name, pet, price and link status",
+)
+async def view_child_payment_link(
+    token: Token, services: Services, ints: Ints, request: Request, response: Response
+) -> b.ChildPayLinkOut:
+    await _limit_link(services, request)
+    response.headers["Cache-Control"] = "no-store"
+    return await child_pay_links.view(services.db, ints, token)
+
+
+@router.post(
+    "/billing/child-payment-links/{token}/subscription",
+    response_model=b.RazorpaySubscriptionOut,
+    summary="PAY-17 [Continue to pay] from the link: a web subscription on the child's account",
+)
+async def start_child_payment_link(
+    token: Token,
+    services: Services,
+    ints: Ints,
+    request: Request,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    await _limit_link(services, request)
+    return await idempotent(
+        services,
+        scope="child_pay_link_start",
+        subject=child_pay_links.token_hash(token),
+        key=key,
+        body=None,
+        required=True,
+        fn=lambda: child_pay_links.start(services.db, ints, token, client.app_variant),
+    )
+
+
+@router.post(
+    "/billing/child-payment-links/{token}/verify",
+    response_model=b.ChildPayLinkOut,
+    summary="Check the Checkout signature; the link is used and Pro follows the webhook",
+)
+async def verify_child_payment_link(
+    token: Token,
+    body: b.RazorpayVerifyRequest,
+    services: Services,
+    ints: Ints,
+    request: Request,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    await _limit_link(services, request)
+    return await idempotent(
+        services,
+        scope="child_pay_link_verify",
+        subject=child_pay_links.token_hash(token),
+        key=key,
+        body=body,
+        fn=lambda: child_pay_links.verify(services.db, ints, token, body),
     )

@@ -1,6 +1,6 @@
 # Sync contract (client outbox ↔ API)
 
-Status: v1.6, 31 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
+Status: v1.7, 31 Oct 2026. Shared by `packages/app-core` (client) and `apps/api` (server). The server's Pydantic models in `apps/api` are the source of truth for OpenAPI; this file describes the wire format they implement. If you need to change it, change both sides in the same pull request.
 
 ## Envelope
 
@@ -66,6 +66,7 @@ Status: v1.6, 31 Oct 2026. Shared by `packages/app-core` (client) and `apps/api`
 | `topic_tested_out` (v1.6) | `check_id` (UUID, one per Test out), `kind` (`test_out`), `chapter_id`, `topic_ids` (1 to 100, the topics the check passed). Built by app-core's `topicTestedOutPayload` |
 | `topic_test_out_undone` (v1.6) | `check_id`, `topics` (1 to 100: `topic_id`, `previous_status` `not_started` \| `in_progress` \| null, the row that check replaced). Built by app-core's `topicTestOutUndonePayload` from the device's marks |
 | `chapter_reset` (v1.6) | `chapter_id`. Built by app-core's `chapterResetPayload` |
+| `placement_checked` (v1.7) | `check_id` (UUID, one per Find my level), `subject_id`, `topic_ids` (0 to 100: the topics it pre-marks, lesson-core `PlacementResult.premarkTopics`). Built by app-core's `placementCheckedPayload` |
 
 The server recomputes XP, mastery, FSRS schedules, activity days, the streak, plant health and growth, and pet mood from events (TRD §10). A streak day counts when the student's local day has one qualifying activity: `lesson_completed` (or an `activity_completed`, or a passed Test out's `topic_tested_out`), 10 `review_rated`, a `mock_section_submitted`, or a `daily_challenge_completed` (rulings R1 and R23).
 
@@ -94,6 +95,12 @@ The server recomputes XP, mastery, FSRS schedules, activity days, the streak, pl
   - All three change `topic_progress`. A device may delete a row where the server says `not_started`; both mean the same.
   - Golden vector: `packages/app-core/test-vectors/topic_marks.json`.
   - A passed Test out (an applied `topic_tested_out`) counts toward the streak as one lesson on its local day (learn flow Q7): it adds one to the day's lessons and qualifies the day. A repeated `check_id` counts nothing. `topic_test_out_undone` and `chapter_reset` count nothing and never take the day back. Golden vector: `packages/app-core/test-vectors/test_out_streak.json` (app-core `activityByDay`, checked by `apps/api/tests/test_test_out_streak.py`).
+
+- (v1.7) Find my level (learn §6.5), by the same `applyTopicMark`:
+  - `placement_checked` first takes back the subject's earlier placement marks: every topic of the subject that is still `learned` with `learned_via: placement`, and that this check doesn't list, goes to `not_started` with no `learned_via` (a redo replaces them; an empty `topic_ids` takes them all back). Then each listed topic with no row or `not_started` becomes `learned` with `learned_via: placement`. Topics in progress or learned another way keep their rows. Every topic must be in the subject (`content.chapters.subject_id`), and the subject must have topics, else `invalid_payload`. A `check_id` counts once (`already_recorded`).
+  - A lesson confirms a placement mark: a `lesson_completed` in a lesson mode (`deep_dive`, `quick_revision`, `onboarding`; not `quick_check`) or an `activity_completed` on a topic learned via placement makes it `learned_via: lesson`, so a redo no longer takes it back. A Test out leaves a placement mark as it is, and `chapter_reset` clears it like any other.
+  - Placement never counts toward the streak, and its review cards go through `cards_queued` as before.
+  - Golden vector: `packages/app-core/test-vectors/placement_marks.json`, checked by `apps/api/tests/test_placement_marks.py`.
 
 ## State
 
@@ -124,6 +131,8 @@ Server values win on conflict. The client replaces its local copy of each sectio
 Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/anonymous` and `POST /v1/dev/auth/google` (body `{ "email": "...", "name": "..." }`) only when `APP_ENV=local` or `test`. They return `{ "access_token": "...", "token_type": "bearer", "expires_in": 3600, "refresh_token": "...", "user": { "id": "uuid", "is_anonymous": true } }`, like Supabase's token endpoint. `POST /v1/dev/auth/refresh` (body `{ "refresh_token": "..." }`) returns the same shape. The access token is a JWT signed with the dev key and shaped exactly like a Supabase access token (`sub`, `role: authenticated`, `is_anonymous`, `aud`, `exp`, `amr`). Clients use them through the same auth interface they use for Supabase, so switching to real Supabase is config only.
 
 ## Changelog
+
+- v1.7 (31 Oct 2026): `placement_checked` for Find my level, so placement marks and their redo survive a pull, and a lesson now confirms a placement mark (`learned_via` placement becomes lesson). Additive; a v1.6 server rejects the event as `unknown_type`, so send it only to a v1.7 server (`CONTRACT_V17_EVENT_TYPES`). Golden vector `placement_marks.json`.
 
 - v1.6, rule change (31 Oct 2026): a passed Test out (`topic_tested_out`) counts as one lesson for the day's streak (learn flow Q7). No wire change. Golden vector `test_out_streak.json`.
 - v1.6 (31 Oct 2026): `topic_tested_out`, `topic_test_out_undone` and `chapter_reset`, so Test out marks, their undo and a chapter reset survive a pull. `topic_progress[].learned_via` on `GET /v1/sync/state`. Additive; a v1.5 server rejects the events as `unknown_type`, so send them only to a v1.6 server (`CONTRACT_V16_EVENT_TYPES`). Golden vector: `packages/app-core/test-vectors/topic_marks.json`, checked by app-core and `apps/api/tests/test_topic_marks.py`.

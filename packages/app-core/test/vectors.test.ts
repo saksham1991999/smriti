@@ -49,6 +49,7 @@ import {
   type TopicMarkRow,
   applyTopicMark,
   chapterResetPayload,
+  placementCheckedPayload,
   qualifiesDay,
   topicTestOutUndonePayload,
   topicTestedOutPayload,
@@ -360,6 +361,47 @@ describe('golden vectors', () => {
       return { name: step.name, type: step.event.type, payload: step.event.payload, expected: { accepted: code === null, code, rows: structuredClone(sorted) } };
     });
     golden('topic_marks', { version: 1, chapter_topics: ctx.chapterTopics, initial, cases });
+  });
+
+  it('placement_marks', () => {
+    // Find my level (sync contract v1.7, learn §6.5), in order, for one student: pre-marks, a
+    // redo that replaces unconfirmed marks, a lesson that confirms one, and the checks around
+    // Test out and chapter reset. The server must end each step with these rows and codes. The
+    // second chapter (fx.chapter-p) is added by the server test for this vector.
+    const subject = 'fx';
+    const ch1 = 'fx.chapter-a';
+    const ch2 = 'fx.chapter-p';
+    const [a, b, c] = ['a', 'b', 'c'].map((x) => `${ch1}.topic-${x}`) as [string, string, string];
+    const p1 = `${ch2}.topic-a`;
+    const p2 = `${ch2}.topic-b`;
+    const id = (n: number) => `0193a000-0000-7000-8000-0000000000${20 + n}`;
+    const initial: Record<string, TopicMarkRow> = { [c]: { status: 'in_progress', learned_via: null } };
+    const ctx: TopicMarkContext = {
+      chapterTopics: { [ch1]: [a, b, c, `${ch1}.topic-d`], [ch2]: [p1, p2] },
+      subjectTopics: { [subject]: [a, b, c, `${ch1}.topic-d`, p1, p2] },
+      checks: {},
+      placements: {},
+    };
+    const lesson = (topic: string, mode: 'deep_dive' | 'quick_check' = 'deep_dive') => ({ topic_id: topic, mode, cards_seen: 6, correct: 4, total: 4, ms_total: 300000 });
+    const steps: { name: string; event: TopicMarkEvent; payload?: Record<string, unknown> }[] = [
+      { name: 'Find my level pre-marks two chapters (and an in-progress topic stays)', event: { type: 'placement_checked', payload: placementCheckedPayload(id(1), subject, [a, p1, c]) } },
+      { name: 'the same check again', event: { type: 'placement_checked', payload: placementCheckedPayload(id(1), subject, [a]) } },
+      { name: 'a topic from another subject', event: { type: 'placement_checked', payload: placementCheckedPayload(id(2), subject, ['zz.chapter-x.topic-a']) } },
+      { name: 'an unknown subject', event: { type: 'placement_checked', payload: placementCheckedPayload(id(3), 'zz', []) } },
+      { name: 'a quick check does not confirm a mark', event: { type: 'lesson_completed', payload: lesson(p1, 'quick_check') }, payload: lesson(p1, 'quick_check') },
+      { name: 'a lesson confirms the first chapter\'s mark', event: { type: 'lesson_completed', payload: lesson(a) }, payload: lesson(a) },
+      { name: 'a Test out leaves a placement mark alone', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(id(4), ch2, [p1, p2]) } },
+      { name: 'a redo with nothing right takes back only unconfirmed marks', event: { type: 'placement_checked', payload: placementCheckedPayload(id(5), subject, []) } },
+      { name: 'a redo pre-marks again', event: { type: 'placement_checked', payload: placementCheckedPayload(id(6), subject, [b, p1]) } },
+      { name: 'Reset chapter progress clears placement marks too', event: { type: 'chapter_reset', payload: chapterResetPayload(ch1) } },
+    ];
+    const rows: Record<string, TopicMarkRow> = structuredClone(initial);
+    const cases = steps.map((step) => {
+      const code = applyTopicMark(rows, step.event, ctx);
+      const sorted = Object.fromEntries(Object.entries(rows).sort(([x], [y]) => x.localeCompare(y)));
+      return { name: step.name, type: step.event.type, payload: step.payload ?? step.event.payload, expected: { accepted: code === null, code, rows: structuredClone(sorted) } };
+    });
+    golden('placement_marks', { version: 1, subject_topics: ctx.subjectTopics, chapter_topics: ctx.chapterTopics, initial, cases });
   });
 
   it('test_out_streak', () => {

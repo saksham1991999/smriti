@@ -86,6 +86,7 @@ SECTIONS_BY_TYPE: dict[str, set[str]] = {
     "topic_tested_out": {"topic_progress"},
     "topic_test_out_undone": {"topic_progress"},
     "chapter_reset": {"topic_progress"},
+    "placement_checked": {"topic_progress"},
 }
 
 # What learn.sync_events keeps of an applied event whose payload is a whole document: the palace
@@ -453,7 +454,13 @@ async def _topic_status(ctx: BatchContext, topic_id: str, status: str, via: str 
             values (:u, :t, :s, :via)
             on conflict (user_id, topic_id) do update set
               status = case when t.status = 'learned' then t.status else excluded.status end,
-              learned_via = case when t.status = 'learned' then t.learned_via else excluded.learned_via end
+              -- (v1.7) A lesson confirms a placement mark: it is then the lesson's, and a Find my
+              -- level redo no longer takes it back.
+              learned_via = case
+                when t.status = 'learned' and t.learned_via = 'placement'
+                     and excluded.status = 'learned' and excluded.learned_via = 'lesson' then 'lesson'
+                when t.status = 'learned' then t.learned_via
+                else excluded.learned_via end
             """
         ),
         {"u": ctx.facts.user_id, "t": topic_id, "s": status, "via": via},
@@ -520,6 +527,62 @@ async def _topic_test_out_undone(ctx: BatchContext, event: s.SyncEventIn, p: Bas
             {"u": ctx.facts.user_id, "t": t.topic_id, "s": status},
         )
         ctx.topics_changed.add(t.topic_id)
+
+
+async def _placement_checked(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """(v1.7) Find my level, by app-core ``applyTopicMark``: the subject's earlier placement marks
+    that are still placement's (no lesson confirmed them) and that this check does not repeat go
+    back to not started; then each topic this check pre-marks, if not started, is learned via
+    placement. Topics already in progress or learned another way keep their rows."""
+    assert isinstance(p, s.PlacementChecked)
+    subject = set(
+        (
+            await ctx.session.execute(
+                text(
+                    "select t.id from content.topics t join content.chapters c on c.id = t.chapter_id"
+                    " where c.subject_id = :s"
+                ),
+                {"s": p.subject_id},
+            )
+        ).scalars()
+    )
+    if not subject or not set(p.topic_ids) <= subject:
+        raise EventRejected("invalid_payload", "Those topics aren't in that subject")
+    seen = (
+        await ctx.session.execute(
+            text(
+                "select 1 from learn.sync_events where user_id = :u and type = 'placement_checked'"
+                " and status = 'applied' and payload ->> 'check_id' = :c limit 1"
+            ),
+            {"u": ctx.facts.user_id, "c": str(p.check_id)},
+        )
+    ).first()
+    if seen is not None:
+        raise EventRejected("already_recorded", "This check is already recorded")
+    keep = list(dict.fromkeys(p.topic_ids))
+    dropped = (
+        await ctx.session.execute(
+            text(
+                "update learn.topic_status set status = 'not_started', learned_via = null,"
+                " updated_at = now() where user_id = :u and topic_id = any(:subject)"
+                " and status = 'learned' and learned_via = 'placement' and not (topic_id = any(:keep))"
+                " returning topic_id"
+            ),
+            {"u": ctx.facts.user_id, "subject": sorted(subject), "keep": keep},
+        )
+    ).scalars()
+    ctx.topics_changed.update(dropped)
+    for topic_id in keep:
+        await ctx.session.execute(
+            text(
+                "insert into learn.topic_status as t (user_id, topic_id, status, learned_via)"
+                " values (:u, :t, 'learned', 'placement') on conflict (user_id, topic_id) do update"
+                " set status = 'learned', learned_via = 'placement', updated_at = now()"
+                " where t.status = 'not_started'"
+            ),
+            {"u": ctx.facts.user_id, "t": topic_id},
+        )
+        ctx.topics_changed.add(topic_id)
 
 
 async def _chapter_reset(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
@@ -1176,5 +1239,6 @@ _HANDLERS = {
     "topic_tested_out": _topic_tested_out,
     "topic_test_out_undone": _topic_test_out_undone,
     "chapter_reset": _chapter_reset,
+    "placement_checked": _placement_checked,
 }
 assert set(_HANDLERS) == set(s.PAYLOAD_MODELS)

@@ -80,6 +80,15 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "Ω m", "S/m")).toBeUndefined();
     expect(convertUnit(1, "°C^-1", "°C")).toBeUndefined();
   });
+
+  it("converts the chemical bonding units used by lessons", () => {
+    expect(convertUnit(154, "pm", "nm")).toBeCloseTo(0.154, 12);
+    expect(convertUnit(788, "kJ/mol", "J/mol")).toBeCloseTo(788000);
+    expect(convertUnit(1, "kJ mol^-1", "kJ/mol")).toBeCloseTo(1);
+    expect(convertUnit(4.9e-30, "C·m", "C m")).toBeCloseTo(4.9e-30, 36);
+    expect(convertUnit(1, "kJ/mol", "kJ")).toBeUndefined();
+    expect(convertUnit(1, "C m", "C")).toBeUndefined();
+  });
 });
 
 describe("findCycles", () => {

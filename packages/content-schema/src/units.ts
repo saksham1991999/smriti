@@ -22,6 +22,7 @@ const TABLE: Record<string, UnitInfo> = {
   "µm": U("length", 1e-6),
   um: U("length", 1e-6),
   nm: U("length", 1e-9),
+  pm: U("length", 1e-12),
   // mass (kg)
   kg: U("mass", 1),
   g: U("mass", 1e-3),
@@ -139,6 +140,14 @@ const TABLE: Record<string, UnitInfo> = {
   "m²/(V s)": U("mobility", 1),
   "cm^2/(V s)": U("mobility", 1e-4),
   "cm²/(V s)": U("mobility", 1e-4),
+  // molar energy (J/mol)
+  "J/mol": U("molar_energy", 1),
+  "kJ/mol": U("molar_energy", 1e3),
+  "kJ mol^-1": U("molar_energy", 1e3),
+  "kJ mol⁻¹": U("molar_energy", 1e3),
+  // dipole moment (C m); the debye is left out because "D" also abbreviates the dioptre
+  "C m": U("dipole_moment", 1),
+  "C·m": U("dipole_moment", 1),
 };
 
 export function unitInfo(unit: string): UnitInfo | undefined {

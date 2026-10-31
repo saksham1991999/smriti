@@ -139,6 +139,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/analytics/events": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** A batch of analytics events: checked against the catalogue, age and consent policy */
+    post: operations["post_events_v1_analytics_events_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/analytics/summary": {
     parameters: {
       query?: never;
@@ -5265,6 +5282,28 @@ export interface components {
       /** Question Ids */
       question_ids: string[];
     };
+    /** Dropped */
+    Dropped: {
+      /**
+       * Event Id
+       * Format: uuid
+       */
+      event_id: string;
+      /**
+       * Reason
+       * @enum {string}
+       */
+      reason:
+        | "unknown_event"
+        | "server_only"
+        | "minor_not_allowed"
+        | "little_learner_not_allowed"
+        | "opted_out"
+        | "awaiting_consent"
+        | "too_old"
+        | "in_the_future"
+        | "duplicate_in_batch";
+    };
     /**
      * DuelAnswerIn
      * @description One answer to the open question; the server times it from the question's opening.
@@ -5644,6 +5683,65 @@ export interface components {
       status?:
         | ("active" | "trialing" | "grace" | "on_hold" | "cancelled" | "expired" | "pending")
         | null;
+    };
+    /** EventBatchIn */
+    EventBatchIn: {
+      /** Events */
+      events: components["schemas"]["EventIn"][];
+    };
+    /** EventBatchOut */
+    EventBatchOut: {
+      /** Accepted */
+      accepted: string[];
+      /** Dropped */
+      dropped: components["schemas"]["Dropped"][];
+      /** Issues */
+      issues: components["schemas"]["PropIssue"][];
+    };
+    /**
+     * EventContext
+     * @description The client's common props (packages/analytics ``CommonContext``). Anything else is dropped.
+     *     ``is_guest`` and the audience come from the session and profile, never from here.
+     */
+    EventContext: {
+      /** App Variant */
+      app_variant: string;
+      /** App Version */
+      app_version?: string | null;
+      /** Exam Profile */
+      exam_profile?: string | null;
+      /**
+       * Locale
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /**
+       * Platform
+       * @enum {string}
+       */
+      platform: "ios" | "android" | "web";
+      /** Tier */
+      tier?: ("free" | "pro") | null;
+    };
+    /** EventIn */
+    EventIn: {
+      context: components["schemas"]["EventContext"];
+      /**
+       * Event Id
+       * Format: uuid
+       */
+      event_id: string;
+      /** Name */
+      name: string;
+      /**
+       * Occurred At
+       * Format: date-time
+       */
+      occurred_at: string;
+      /** Props */
+      props?: {
+        [key: string]: unknown;
+      };
     };
     /** ExamOut */
     ExamOut: {
@@ -7694,6 +7792,31 @@ export interface components {
       };
       /** Timezone */
       timezone: string;
+    };
+    /**
+     * PropIssue
+     * @description A prop that was removed: its name and why (never its value).
+     */
+    PropIssue: {
+      /**
+       * Code
+       * @enum {string}
+       */
+      code:
+        | "blocked_name"
+        | "unknown_prop"
+        | "free_text"
+        | "bad_type"
+        | "unknown_enum_value"
+        | "too_many_items"
+        | "stripped_for_minor";
+      /**
+       * Event Id
+       * Format: uuid
+       */
+      event_id: string;
+      /** Prop */
+      prop: string;
     };
     /** PurchaseRequest */
     PurchaseRequest: {
@@ -9906,6 +10029,45 @@ export interface operations {
         };
         content: {
           "text/event-stream": string;
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  post_events_v1_analytics_events_post: {
+    parameters: {
+      query?: never;
+      header?: {
+        "content-length"?: number | null;
+        "x-app-variant"?: string | null;
+        "x-app-version"?: string | null;
+        "x-device-id"?: string | null;
+        "x-platform"?: string | null;
+      };
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["EventBatchIn"];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["EventBatchOut"];
         };
       };
       /** @description Validation Error */

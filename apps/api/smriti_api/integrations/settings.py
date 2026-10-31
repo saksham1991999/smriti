@@ -104,6 +104,8 @@ class IntegrationSettings(BaseSettings):
     clickhouse_user: str = ""
     clickhouse_password: str = ""
     clickhouse_database: str = "default"
+    # Local stand-in for ClickHouse's events table (dev and test only): a JSON-lines file.
+    analytics_events_file: str = ""
 
     # Public links in emails and pushes
     guardian_link_base_url: str = "https://smriti.app/guardian/"

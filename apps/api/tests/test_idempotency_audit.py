@@ -20,6 +20,7 @@ _METERED = "metered speech; each call is a new clip and is rate-limited"
 
 EXEMPT: dict[tuple[str, str], str] = {
     ("POST", "/v1/sync/events"): _NATURAL_ID,
+    ("POST", "/v1/analytics/events"): _NATURAL_ID,
     ("POST", "/v1/tutor/sessions/{session_id}/messages"): _NATURAL_ID,
     ("POST", "/v1/tutor/ask/card"): _NATURAL_ID,
     ("POST", "/v1/tutor/ask/question"): _NATURAL_ID,

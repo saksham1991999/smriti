@@ -28,6 +28,7 @@ from smriti_api.integrations.analytics_store import build_analytics_store
 from smriti_api.integrations.realtime import build_realtime
 from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
+from smriti_api.routes import analytics as analytics_routes
 from smriti_api.routes import billing as billing_routes
 from smriti_api.routes import duels as duel_routes
 from smriti_api.routes import exports as exports_routes
@@ -217,6 +218,7 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(insights_routes.router)
     app.include_router(integrity_routes.router)
     app.include_router(live_routes.router)
+    app.include_router(analytics_routes.router)
     # Wave 2 (Agent B): the Phase 2 social backend.
     for router in (
         social_routes.router,

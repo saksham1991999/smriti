@@ -6366,6 +6366,82 @@
         }
       }
     },
+    "/v1/analytics/events": {
+      "post": {
+        "tags": ["analytics"],
+        "summary": "A batch of analytics events: checked against the catalogue, age and consent policy",
+        "operationId": "post_events_v1_analytics_events_post",
+        "parameters": [
+          {
+            "name": "content-length",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "integer" }, { "type": "null" }],
+              "title": "Content-Length"
+            }
+          },
+          {
+            "name": "x-app-variant",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Variant"
+            }
+          },
+          {
+            "name": "x-device-id",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 64 }, { "type": "null" }],
+              "title": "X-Device-Id"
+            }
+          },
+          {
+            "name": "x-platform",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 16 }, { "type": "null" }],
+              "title": "X-Platform"
+            }
+          },
+          {
+            "name": "x-app-version",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 32 }, { "type": "null" }],
+              "title": "X-App-Version"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/EventBatchIn" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/EventBatchOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/social/gate": {
       "get": {
         "tags": ["social"],
@@ -10655,6 +10731,29 @@
         "required": ["exam", "question_ids"],
         "title": "DrillPreview"
       },
+      "Dropped": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "unknown_event",
+              "server_only",
+              "minor_not_allowed",
+              "little_learner_not_allowed",
+              "opted_out",
+              "awaiting_consent",
+              "too_old",
+              "in_the_future",
+              "duplicate_in_batch"
+            ],
+            "title": "Reason"
+          }
+        },
+        "type": "object",
+        "required": ["event_id", "reason"],
+        "title": "Dropped"
+      },
       "DuelAnswerIn": {
         "properties": {
           "question_id": { "type": "string", "maxLength": 120, "title": "Question Id" },
@@ -11085,6 +11184,99 @@
         "type": "object",
         "required": ["plan", "pro_until"],
         "title": "EntitlementState"
+      },
+      "EventBatchIn": {
+        "properties": {
+          "events": {
+            "items": { "$ref": "#/components/schemas/EventIn" },
+            "type": "array",
+            "maxItems": 100,
+            "minItems": 1,
+            "title": "Events"
+          }
+        },
+        "type": "object",
+        "required": ["events"],
+        "title": "EventBatchIn"
+      },
+      "EventBatchOut": {
+        "properties": {
+          "accepted": {
+            "items": { "type": "string", "format": "uuid" },
+            "type": "array",
+            "title": "Accepted"
+          },
+          "dropped": {
+            "items": { "$ref": "#/components/schemas/Dropped" },
+            "type": "array",
+            "title": "Dropped"
+          },
+          "issues": {
+            "items": { "$ref": "#/components/schemas/PropIssue" },
+            "type": "array",
+            "title": "Issues"
+          }
+        },
+        "type": "object",
+        "required": ["accepted", "dropped", "issues"],
+        "title": "EventBatchOut"
+      },
+      "EventContext": {
+        "properties": {
+          "platform": { "type": "string", "enum": ["ios", "android", "web"], "title": "Platform" },
+          "app_variant": {
+            "type": "string",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "App Variant"
+          },
+          "app_version": {
+            "anyOf": [
+              { "type": "string", "maxLength": 64, "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$" },
+              { "type": "null" }
+            ],
+            "title": "App Version"
+          },
+          "locale": { "type": "string", "enum": ["en", "hi"], "title": "Locale" },
+          "exam_profile": {
+            "anyOf": [
+              { "type": "string", "maxLength": 64, "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$" },
+              { "type": "null" }
+            ],
+            "title": "Exam Profile"
+          },
+          "tier": {
+            "anyOf": [{ "type": "string", "enum": ["free", "pro"] }, { "type": "null" }],
+            "title": "Tier"
+          }
+        },
+        "type": "object",
+        "required": ["platform", "app_variant", "locale"],
+        "title": "EventContext",
+        "description": "The client's common props (packages/analytics ``CommonContext``). Anything else is dropped.\n``is_guest`` and the audience come from the session and profile, never from here."
+      },
+      "EventIn": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "name": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "title": "Name"
+          },
+          "occurred_at": { "type": "string", "format": "date-time", "title": "Occurred At" },
+          "props": {
+            "additionalProperties": true,
+            "type": "object",
+            "maxProperties": 64,
+            "title": "Props"
+          },
+          "context": { "$ref": "#/components/schemas/EventContext" }
+        },
+        "type": "object",
+        "required": ["event_id", "name", "occurred_at", "context"],
+        "title": "EventIn"
       },
       "ExamOut": {
         "properties": {
@@ -13643,6 +13835,29 @@
           "onboarding_completed"
         ],
         "title": "ProfileState"
+      },
+      "PropIssue": {
+        "properties": {
+          "event_id": { "type": "string", "format": "uuid", "title": "Event Id" },
+          "prop": { "type": "string", "title": "Prop" },
+          "code": {
+            "type": "string",
+            "enum": [
+              "blocked_name",
+              "unknown_prop",
+              "free_text",
+              "bad_type",
+              "unknown_enum_value",
+              "too_many_items",
+              "stripped_for_minor"
+            ],
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": ["event_id", "prop", "code"],
+        "title": "PropIssue",
+        "description": "A prop that was removed: its name and why (never its value)."
       },
       "PurchaseRequest": {
         "properties": {

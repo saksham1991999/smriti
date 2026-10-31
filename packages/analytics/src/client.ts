@@ -194,7 +194,8 @@ export function httpTransport(opts: {
         headers: { 'Content-Type': 'application/json', ...(opts.headers?.() ?? {}) },
         body: JSON.stringify({ events: batch }),
       });
-      if (!res.ok && res.status !== 400) throw new Error(`analytics http_${res.status}`); // 400: bad batch, don't retry
+      // 400 or 422: a bad batch (the API's POST /v1/analytics/events), so don't retry it.
+      if (!res.ok && res.status !== 400 && res.status !== 422) throw new Error(`analytics http_${res.status}`);
     },
   };
 }

@@ -91,6 +91,7 @@ class Settings(BaseSettings):
     rate_dev_auth_per_min: int = 60
     rate_merges_per_day: int = 5
     rate_default_per_min: int = 300
+    rate_analytics_per_min: int = 60
 
     @property
     def is_dev(self) -> bool:

@@ -2008,6 +2008,19 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 
 ---
 
+### WEB-08 · Web review and focus messages
+**Purpose:** Short labels on the web review end screen (MEM-04) and comeback plan (MEM-02).
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Today | Today | आज |
+| Plan length | Plan length | योजना की अवधि |
+
+**Mock priority:** P1.
+
+---
+
 ## P0 screens for the visual mocks
 
 MEM-01 Memory hub · MEM-02 Comeback plan · MEM-03 Review session (front, back with the streak chip, rescue mode, little learner) · MEM-04 Review session complete · MEM-07 Decks · MEM-14 Palace builder · MEM-19 Make it stick · MEM-25 Metacognitive dashboard · MEM-29 Focus session · LAB-01 Labs hub · LAB-04 Sim player (portrait, loading layer, landscape full screen) · LAB-05 Lab fallback explainer · LAB-08 3D viewer · LAB-10 360° viewer · LAB-13 Periodic table · LAB-14 Element sheet · LAB-16 Experiment detail.

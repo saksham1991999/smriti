@@ -44,9 +44,10 @@ describe('local dates and IST', () => {
   });
 
   it('IST fast path agrees with Intl for a year of instants', () => {
+    const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: IST, year: 'numeric', month: '2-digit', day: '2-digit' });
     for (let h = 0; h < 365 * 24; h += 7) {
       const t = Date.UTC(2026, 0, 1) + h * 3_600_000 + 17 * 60_000;
-      const viaIntl = new Intl.DateTimeFormat('en-CA', { timeZone: IST, year: 'numeric', month: '2-digit', day: '2-digit' }).format(t);
+      const viaIntl = fmt.format(t);
       expect(istDate(t)).toBe(viaIntl);
     }
   });

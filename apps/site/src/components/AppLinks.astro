@@ -1,0 +1,132 @@
+---
+// "Get the app": the web app CTA, then each store app with its Google Play and App Store links.
+// Apps come from packages/config variants; store URLs from STORE_URLS_PLAY / STORE_URLS_IOS
+// (src/config/apps.ts). A store without a URL says "coming soon" as text, never a dead link.
+import Icon from "./Icon.astro";
+import { appsForExam } from "../config/apps";
+import { site, type Locale } from "../config/site";
+import { fmt, messages } from "../i18n";
+import type { Placement } from "../lib/analytics";
+import { startUrl } from "../lib/urls";
+
+interface Props {
+  lang: Locale;
+  /** On an exam page: only the apps that cover this exam. */
+  examId?: string | undefined;
+  heading?: string;
+}
+const { lang, examId, heading } = Astro.props;
+const m = messages(lang);
+const placement: Placement = examId ? "exam_apps" : "apps";
+const apps = examId ? appsForExam(site.apps, examId) : site.apps;
+const stores = (app: (typeof apps)[number]) => [
+  { key: "play" as const, url: app.play, name: m.apps.play, icon: "google-play-logo", cta: "store_play" },
+  { key: "ios" as const, url: app.ios, name: m.apps.ios, icon: "app-store-logo", cta: "store_ios" },
+];
+---
+
+<section class="section apps" id="apps" aria-labelledby="apps-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="apps-title" class="t-display">{heading ?? m.apps.heading}</h2>
+      <p class="t-lead muted">{fmt(m.apps.sub, { brand: site.brand.name[lang] })}</p>
+    </div>
+    <ul class="app-grid" role="list">
+      <li class="app-card web">
+        <span class="app-icon"><Icon name="globe" size={24} /></span>
+        <h3 class="t-title">{m.apps.webTitle}</h3>
+        <p class="muted">{m.apps.webBody}</p>
+        <a class="btn sm" href={startUrl(site.webAppUrl, { lang, placement, exam: examId })} data-cta="start" data-placement={placement}>
+          {m.apps.webCta}
+          <Icon name="arrow-right" size={20} />
+        </a>
+      </li>
+      {
+        apps.map((app) => (
+          <li class:list={["app-card", `x-${app.id}`]} data-app={app.id}>
+            <span class="app-icon accent">
+              <Icon name="device-mobile" size={24} />
+            </span>
+            <h3 class="t-title">{app.appName[lang]}</h3>
+            <p class="muted">{m.apps.names[app.id]}</p>
+            <ul class="stores" role="list">
+              {stores(app).map((s) => (
+                <li>
+                  {s.url ? (
+                    <a
+                      class="btn secondary sm store"
+                      href={s.url}
+                      rel="noopener"
+                      aria-label={fmt(m.apps.getLabel, { app: app.appName[lang], store: s.name })}
+                      data-cta={s.cta}
+                      data-placement={placement}
+                    >
+                      <Icon name={s.icon} weight="fill" size={20} />
+                      {s.name}
+                    </a>
+                  ) : (
+                    <span class="store-soon t-label" data-store-soon={s.key}>
+                      <Icon name={s.icon} size={20} />
+                      {fmt(app.phase > 1 ? m.apps.storeLater : m.apps.storeSoon, { store: s.name })}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .app-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  }
+  .app-card {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 8px;
+    padding: 20px;
+    border-radius: var(--r-card-large);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    justify-items: start;
+  }
+  .app-card.web {
+    background: var(--primary-tint);
+    border-color: transparent;
+  }
+  .app-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: var(--surface);
+    color: var(--primary-text);
+  }
+  .app-icon.accent {
+    background: var(--primary);
+    color: var(--on-primary);
+  }
+  .stores {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    align-self: end;
+  }
+  .store-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    color: var(--ink-muted);
+  }
+</style>

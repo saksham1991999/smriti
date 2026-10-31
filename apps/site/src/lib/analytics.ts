@@ -20,11 +20,13 @@ export type Placement =
   | "topic_hero"
   | "quiz_end"
   | "periodic"
+  | "apps"
+  | "exam_apps"
   | "footer";
 
 export interface SiteEvents {
   site_page_view: { page_type: PageType; lang: "en" | "hi"; exam?: string };
-  site_cta_click: { cta: "start" | "sign_in" | "try_lesson" | "open_lab"; placement: Placement; lang: "en" | "hi"; exam?: string };
+  site_cta_click: { cta: "start" | "sign_in" | "try_lesson" | "open_lab" | "store_play" | "store_ios"; placement: Placement; lang: "en" | "hi"; exam?: string };
   site_lang_switch: { to: "en" | "hi"; page_type: PageType };
   site_quiz_answer: { position: number; correct: boolean; confidence: "sure" | "fifty" | "guess" | "none" };
   site_quiz_complete: { score: number; total: number };

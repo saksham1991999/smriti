@@ -10,14 +10,16 @@ import { localePath } from "../lib/urls";
 
 interface Props {
   lang: Locale;
-  doc: "privacy" | "terms";
+  doc: "privacy" | "terms" | "children";
 }
+const PATHS = { privacy: "/privacy/", terms: "/terms/", children: "/childrens-data/" } as const;
 const { lang, doc } = Astro.props;
 const m = messages(lang);
 const d = m.legal[doc];
 const brand = site.brand.name[lang];
-const path = `/${doc}/`;
-const title = fmt(doc === "privacy" ? m.meta.privacyTitle : m.meta.termsTitle, { brand });
+const path = PATHS[doc];
+const TITLES = { privacy: m.meta.privacyTitle, terms: m.meta.termsTitle, children: m.meta.childrenTitle };
+const title = fmt(TITLES[doc], { brand });
 const sections = Object.entries(d.sections);
 ---
 

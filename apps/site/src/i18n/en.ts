@@ -23,6 +23,7 @@ export const en = {
       "Learn {topic} ({subject}, {exam}) with an illustrated Deep Dive, or revise it in minutes with Quick Revision.",
     privacyTitle: "Privacy policy (draft) | {brand}",
     termsTitle: "Terms of use (draft) | {brand}",
+    childrenTitle: "Children's data (draft) | {brand}",
     notFoundTitle: "Page not found | {brand}",
   },
   a11y: {
@@ -55,6 +56,7 @@ export const en = {
   },
   hero: {
     eyebrow: "For {exams}",
+    eyebrowSoon: "Coming soon for {exams}",
     title: "Learn anything. Remember everything.",
     body: "Illustrated lessons that teach each subject the way it works, with memory science built in. A pet and a plant cheer you on every day.",
     ctaPrimary: "Start learning free",
@@ -94,6 +96,24 @@ export const en = {
     explore: "Explore {exam}",
     allTitle: "Exams",
     allSub: "Pick your exam to see its subjects, chapters and topics.",
+    soonSub: "Each exam opens here once its lessons are written and reviewed. Until then, this is what we are preparing.",
+    soon: "Coming soon",
+    later: "Coming later",
+    soonApp: "In the {app} app",
+  },
+  apps: {
+    heading: "Get the app",
+    sub: "One account for every exam. Your progress and Pro work in every {brand} app and on the web.",
+    webTitle: "On the web",
+    webBody: "Start in your browser, on a phone or a computer. No sign-up needed.",
+    webCta: "Open the web app",
+    play: "Google Play",
+    ios: "App Store",
+    getLabel: "Get {app} on {store}",
+    storeSoon: "{store}: coming soon",
+    storeLater: "{store}: coming later",
+    names: { all: "All exams", jee: "JEE", neet: "NEET", upsc: "UPSC", ssc: "SSC" },
+    examHeading: "{exam} in the app",
   },
   how: {
     heading: "How it works",
@@ -237,6 +257,7 @@ export const en = {
       exams: {
         q: "Which exams does it cover?",
         a: "Right now: {exams}. Each exam's page shows its subjects and chapters.",
+        aSoon: "{exams} are coming soon. Each exam opens on this site once its lessons are written and reviewed.",
       },
       hindi: {
         q: "Can I study in Hindi?",
@@ -268,6 +289,9 @@ export const en = {
     legal: "Legal",
     privacy: "Privacy policy",
     terms: "Terms of use",
+    children: "Children's data",
+    apps: "Get the app",
+    examsSoon: "Coming soon",
     notAffiliated: "{brand} is not affiliated with {bodies}.",
     rights: "© {year} {owner}",
   },
@@ -398,6 +422,27 @@ export const en = {
         liability: { title: "Liability", items: ["Limits of liability"] },
         law: { title: "Governing law and disputes", items: ["Applicable law and courts"] },
         changes: { title: "Changes to these terms", items: ["How we tell you about changes"] },
+      },
+    },
+    children: {
+      title: "Children's data",
+      doc: "children's data notice",
+      sections: {
+        scope: { title: "Who this notice covers", items: ["How we ask a learner's age, and the age bands we use"] },
+        consent: {
+          title: "Consent from a parent or guardian",
+          items: ["How a parent or guardian gives verifiable consent for under-18s under the DPDP Act 2023", "What stays off until consent is given"],
+        },
+        managed: { title: "Accounts for under-13s", items: ["How a parent sets up and manages a child's account", "What the parent can see and change"] },
+        collect: {
+          title: "What we collect from children, and what we never do",
+          items: ["The data learning needs, and nothing more", "No ads, ad IDs, behavioural tracking or targeted advertising"],
+        },
+        rights: {
+          title: "Rights of parents and guardians",
+          items: ["Access, correction and erasure of a child's data", "Withdrawing consent, and what happens next"],
+        },
+        contact: { title: "Questions and grievances", items: ["How a parent or guardian reaches the grievance officer"] },
       },
     },
   },

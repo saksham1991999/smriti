@@ -176,7 +176,7 @@ type MnemonicId = Annotated[
 type IconName = Annotated[
     str,
     Field(
-        description="A Phosphor icon name in PascalCase (DESIGN §8), for example HandWaving.",
+        description="A Phosphor icon name in PascalCase (DESIGN §8), for example HandsClapping. The content check also requires it to be in the app icon set (iconNames in @smriti/tokens/ui).",
         pattern="^[A-Z][A-Za-z0-9]+$",
     ),
 ]

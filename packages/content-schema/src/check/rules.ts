@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { iconNames } from "@smriti/tokens/icons";
+
 import { CARD_MODE_CODE, MEDIA_PREFIX_KINDS, negativeFeedbackWords, SERVER_ONLY_USES } from "../constants.js";
 import type {
   BlueprintFile,
@@ -23,6 +25,12 @@ import { mediaRefs, walkContent } from "./walk.js";
 export interface Tokens {
   subjectMap: Record<string, string>;
   mockPalette: Set<string>;
+  /**
+   * The Phosphor names the apps can draw: `iconNames` in @smriti/tokens/ui, which the ui-web and
+   * ui-native `iconMap`s must match (their tests check it). Any other name would fall back to a
+   * placeholder icon on the device, so content may name only these.
+   */
+  icons: ReadonlySet<string>;
 }
 
 export function loadTokens(repoRoot: string): Tokens {
@@ -36,7 +44,7 @@ export function loadTokens(repoRoot: string): Tokens {
     if (!k.startsWith("$") && typeof v === "string") subjectMap[k] = v;
   }
   const mockPalette = new Set(Object.keys(raw.mockPalette ?? {}).filter((k) => !k.startsWith("$")));
-  return { subjectMap, mockPalette };
+  return { subjectMap, mockPalette, icons: new Set<string>(iconNames) };
 }
 
 /** Locales every localised field must carry: the union of the exam profiles' locales. */
@@ -60,7 +68,7 @@ export function runRules(set: ContentSet, findings: Findings, tokens: Tokens): v
   checkQuestions(set, findings);
   checkMnemonics(set, findings);
   checkPyq(set, findings);
-  checkExtras(set, findings);
+  checkExtras(set, findings, tokens);
   checkMedia(set, findings);
   checkSeedSpecs(set, findings);
   checkCoverageInputs(set, findings);
@@ -961,7 +969,7 @@ function checkPyq(set: ContentSet, findings: Findings): void {
   }
 }
 
-function checkExtras(set: ContentSet, findings: Findings): void {
+function checkExtras(set: ContentSet, findings: Findings, tokens: Tokens): void {
   for (const { file, doc } of set.extras) {
     doc.concepts.forEach((c, i) => conceptRef(set, findings, c, file, `/concepts/${i}`));
     if (doc.scope === "topic") {
@@ -993,7 +1001,7 @@ function checkExtras(set: ContentSet, findings: Findings): void {
         if (!nodes.has(e.from) || !nodes.has(e.to)) findings.error("mind_map_edge", file, `edge ${e.from} -> ${e.to} names an unknown node`);
       }
     }
-    if (doc.schema === "song@1") checkSong(set, findings, file, doc);
+    if (doc.schema === "song@1") checkSong(set, findings, file, doc, tokens);
     if (doc.schema === "play@1") checkPlay(findings, file, doc);
   }
 }
@@ -1003,11 +1011,16 @@ function checkExtras(set: ContentSet, findings: Findings): void {
  * request in that locale, with a transcript), timings that run forward and fit the audio, and
  * line actions that exist.
  */
-function checkSong(set: ContentSet, findings: Findings, file: string, doc: Song): void {
+function checkSong(set: ContentSet, findings: Findings, file: string, doc: Song, tokens: Tokens): void {
   const actions = new Set<string>();
   (doc.actions ?? []).forEach((a, i) => {
     if (actions.has(a.id)) findings.error("duplicate_id", file, `action ${a.id} is listed twice`, { path: `/actions/${i}` });
     actions.add(a.id);
+    if (!tokens.icons.has(a.icon)) {
+      findings.error("icon_unknown", file, `icon ${a.icon} is not in the app icon set (@smriti/tokens/ui iconNames, ui-web and ui-native iconMap)`, {
+        path: `/actions/${i}/icon`,
+      });
+    }
   });
   const locales = new Set<string>();
   doc.versions.forEach((v, vi) => {

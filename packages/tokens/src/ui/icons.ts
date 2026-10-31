@@ -34,6 +34,7 @@ export const iconNames = [
   "Flask",
   "Gear",
   "Gift",
+  "HandPalm",
   "HandsClapping",
   "House",
   "Info",

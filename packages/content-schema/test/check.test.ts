@@ -334,6 +334,18 @@ describe("content check fails on a broken copy", () => {
     }
   });
 
+  it("refuses a song action icon the app icon maps cannot draw, so nothing falls back to a placeholder", () => {
+    expect(codes(copy())).not.toContain("icon_unknown");
+    const root = copy();
+    edit(root, "extras/fx/chapter-a/topic-a.song.json", (d) => {
+      // A real Phosphor name the schema accepts, but not in @smriti/tokens/ui iconNames.
+      d.actions[0].icon = "HandWaving";
+    });
+    const c = codes(root);
+    expect(c).toContain("icon_unknown");
+    expect(c).not.toContain("schema_error");
+  });
+
   it("little learner coverage: a story, song or lesson teaches and a play activity practises", () => {
     const root = copy();
     edit(root, "exams/fx-exam.json", (d) => {

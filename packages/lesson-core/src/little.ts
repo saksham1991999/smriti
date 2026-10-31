@@ -401,3 +401,84 @@ export function reducePlay(s: PlayState, action: PlayAction & { now: number }): 
       return { ...s, phase: "exited" };
   }
 }
+
+// ---------------------------------------------------------------------------------------------
+// Audio port
+
+export type AudioEvent = { type: "position"; ms: number } | { type: "ended" } | { type: "error" };
+
+/**
+ * How the players play sound (song tracks, story narration, play prompts). The host injects it:
+ * an HTMLAudioElement on the web, expo-audio or similar on the phone. One track at a time;
+ * `play` replaces whatever was playing.
+ */
+export interface AudioPort {
+  /** Start the track at `src` from the beginning. */
+  play(src: string): void;
+  pause(): void;
+  resume(): void;
+  stop(): void;
+  /** Position (at least every 250 ms while playing), end and error. Returns the unsubscribe. */
+  subscribe(listener: (e: AudioEvent) => void): () => void;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Trace coverage
+
+/**
+ * Where the glyph has ink, on a grid over the trace area. The host rasterises the glyph from the
+ * app's own font (never drawn paths): the web player with a canvas, the native host with
+ * whatever it has (Skia, a pre-rendered mask). `ink` is row-major, non-zero where there is ink.
+ */
+export interface GlyphMask {
+  width: number;
+  height: number;
+  ink: ArrayLike<number>;
+}
+
+/** A finger position, 0–1 of the trace area's width and height. */
+export interface TracePoint {
+  x: number;
+  y: number;
+}
+
+/** Brush radius as a share of the trace area's width: generous for small fingers. */
+export const TRACE_BRUSH = 0.08;
+
+function segmentDistance(px: number, py: number, a: TracePoint, b: TracePoint): number {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = dx * dx + dy * dy;
+  const t = len === 0 ? 0 : Math.max(0, Math.min(1, ((px - a.x) * dx + (py - a.y) * dy) / len));
+  const x = a.x + t * dx - px;
+  const y = a.y + t * dy - py;
+  return Math.sqrt(x * x + y * y);
+}
+
+/**
+ * The share of the glyph's ink cells the strokes passed over (within `brush` of a stroke), 0–1,
+ * for the trace round's `min_coverage`. An empty glyph mask counts as fully covered.
+ */
+export function traceCoverage(mask: GlyphMask, strokes: readonly (readonly TracePoint[])[], brush: number = TRACE_BRUSH): number {
+  const { width, height, ink } = mask;
+  const aspect = height / width;
+  let total = 0;
+  let covered = 0;
+  for (let row = 0; row < height; row++) {
+    for (let col = 0; col < width; col++) {
+      if (!ink[row * width + col]) continue;
+      total++;
+      // Distances in width units, so the brush stays round on a tall or wide area.
+      const px = (col + 0.5) / width;
+      const py = ((row + 0.5) / height) * aspect;
+      const hit = strokes.some((stroke) =>
+        stroke.some((a, i) => {
+          const b = stroke[i + 1] ?? a;
+          return segmentDistance(px, py, { x: a.x, y: a.y * aspect }, { x: b.x, y: b.y * aspect }) <= brush;
+        }),
+      );
+      if (hit) covered++;
+    }
+  }
+  return total === 0 ? 1 : covered / total;
+}

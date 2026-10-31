@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import httpx
 import structlog
 from smriti_api.ai.factory import build_gateway
-from smriti_api.core.config import REPO_ROOT, Settings, get_settings
+from smriti_api.core.config import REPO_ROOT, AppEnv, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.logging import configure_logging, hash_user_id
 from smriti_api.core.redis import create_redis
@@ -315,6 +315,18 @@ async def apply_metadata_sql(db: Database, path: Path) -> int:
     return len(sql)
 
 
+def publish_environment(settings: Settings) -> str:
+    """The publisher's ``--env`` for this deploy, always passed explicitly (it has no default).
+    Production refuses media that is not approved; staging and local ship it as unavailable with
+    a warning per item. Anything unknown is treated as production (strict)."""
+    env = settings.app_env
+    if env in (AppEnv.local, AppEnv.test):
+        return "local"
+    if env in (AppEnv.staging, AppEnv.preview):
+        return "staging"
+    return "production"
+
+
 def content_publish_command(
     settings: Settings, folder: Path = CONTENT_PUBLISH_DIR
 ) -> list[str] | None:
@@ -329,8 +341,12 @@ def content_publish_command(
             "--dir",
             str(folder),
             "run",
-            "publish:local",
+            "publish:run",
             "--",
+            "--env",
+            publish_environment(settings),
+            "--target",
+            "local",
             "--root",
             str(content_root()),
             "--report",

@@ -32,6 +32,8 @@ Screens owned here (phase per IMPLEMENTATION_PLAN; R8):
 | LRN-14 | Mind map viewer | 2 |
 | LRN-15 | Download for offline (sheet) | 1 |
 | LRN-16 | Needs internet (full-screen state) | 1 |
+| LRN-17 | Song player (little learner; proposed, R59) | 3 |
+| LRN-18 | Play activity (little learner; proposed, R59) | 3 |
 | LES-01 | Lesson player, with a sub-block per card type (LES-01.1 to LES-01.20) | 1 |
 | LES-02 | Answer feedback sheet (correct, wrong first try, wrong second try, "I don't know yet") | 1 |
 | LES-03 | Key term and symbol sheet | 1 |
@@ -746,9 +748,9 @@ Events go through the typed catalogue in `packages/analytics`. Names are snake_c
 | Gates | `pro_gate_shown` (`gate`, `surface`), `pro_gate_action`, `preview_finished` |
 | Player | `lesson_exit_prompted`, `lesson_exited`, `lesson_resumed`, `lesson_updated_notice_shown`, `hint_shown` (`source`), `solution_viewed` (`via`), `help_ladder_step` (`step`: hint, solution, sim, ask_why), `tough_one_chip_tapped`, `combo_shown`, `first_time_demo_shown` (`card_type`), `first_time_demo_replayed`, `key_term_opened`, `formula_symbol_opened`, `formula_saved`, `narration_played`, `lesson_locale_switched`, `tutor_opened` (`from`), `card_skipped` (`card_type`, `reason`), `content_report_opened` (SET-24 owns the submit event) |
 | Lesson complete | `lesson_complete_viewed` (`streak_incremented`, `goal_met`, `extra`: none, reminder, soft_login, grown_up, upsell), `fix_mistakes_started` (`count`), `fix_mistakes_completed` (`fixed`, `total`), `practise_topic_tapped`, `find_level_result_action` (`use`, `keep`); PAY-19 sends `upsell_card_shown` / `upsell_card_tapped` |
-| Tools | `cheat_sheet_viewed` (`scope`, `surface`), `library_viewed`, `storybook_page_viewed`, `storybook_completed`, `video_lesson_played`, `video_timestamp_tapped`, `note_created`, `note_ai_fill_requested`, `note_to_flashcards`, `mind_map_viewed`, `mind_map_node_opened`, `download_started`, `download_completed`, `download_failed`, `save_when_online_tapped` |
+| Tools | `cheat_sheet_viewed` (`scope`, `surface`), `library_viewed`, `storybook_page_viewed`, `storybook_completed`, `song_completed` (`activity_id`, `topic_id`, `stars`, `duration_s`), `play_round_completed` (`activity_id`, `round_index`, `round_kind` (tap, match, sort, drag, trace), `attempts`, `was_guided`), `play_completed` (`activity_id`, `topic_id`, `stars`, `duration_s`), `video_lesson_played`, `video_timestamp_tapped`, `note_created`, `note_ai_fill_requested`, `note_to_flashcards`, `mind_map_viewed`, `mind_map_node_opened`, `download_started`, `download_completed`, `download_failed`, `save_when_online_tapped` |
 
-For little learners (`u10`), only learning events plus `home_viewed`, `lesson_completed` and `storybook_completed` are sent (PRD §16.4, X17).
+For little learners (`u10`), only learning events plus `home_viewed`, `lesson_completed`, `storybook_completed`, `song_completed`, `play_round_completed` and `play_completed` are sent (PRD §16.4, X17). The song and play events carry published content ids and counts only; `attempts` counts wrong moves in a round and is never shown to the child.
 
 ---
 

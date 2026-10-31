@@ -101,10 +101,11 @@ jobs:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          PUBLISH_ENV: ${{ needs.gate.outputs.environment }}
         run: |
           # The commit time fixes the publish time, so a re-run produces the same manifests.
           export SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"
-          pnpm --filter @smriti/content-publish exec tsx src/cli.ts --target r2 --root content --report "$RUNNER_TEMP/publish"
+          pnpm --filter @smriti/content-publish exec tsx src/cli.ts --env "$PUBLISH_ENV" --target r2 --root content --report "$RUNNER_TEMP/publish"
 
       - name: Apply content metadata and the card index
         if: steps.secrets.outputs.ready == 'true'

@@ -14,7 +14,7 @@ import {
   type PublishReport,
   type S3Like,
 } from "../src/index.js";
-import { cleanup, editJson, fixtureCopy, fixtures, NOW, repoRoot, tempDir } from "./helpers.js";
+import { approveAll, cleanup, editJson, fixtureCopy, fixtures, NOW, realCourse, release, repoRoot, tempDir } from "./helpers.js";
 
 afterEach(cleanup);
 
@@ -200,6 +200,57 @@ describe("patches", () => {
     expect(manifest.topics["fx.chapter-a.topic-a"].bundles.deep_dive.patches).toEqual([
       { from_hash: before.hash, path: patchRef.path, size_bytes: patchRef.size_bytes },
     ]);
+  });
+});
+
+describe("the release gate (content/releases.json)", () => {
+  const run = (c: { root: string; repo: string }, environment: "production" | "staging", store: ConstructorParameters<typeof R2Store> | null = null) =>
+    publish({
+      repoRoot: c.repo,
+      contentRoot: c.root,
+      store: store ? new R2Store(...store) : new MemoryStore(),
+      environment,
+      reportDir: tempDir(),
+      now: NOW,
+    });
+
+  it("skips unreleased content in production, unapproved media and all, and lists it", async () => {
+    const c = realCourse();
+    const report = await run(c, "production");
+    expect(report.fixture).toBe(false);
+    expect(report.bundles).toEqual([]);
+    expect(report.unreleased).toEqual([{ exam_profile: "fx-exam-2027", chapters: ["fx.chapter-a"] }]);
+    expect(report.unapproved_media).toEqual([]);
+    expect(report.warnings).toContain("nothing is released for production (content/releases.json), so nothing was built");
+    expect(report.warnings).toContain("fx-exam-2027: 1 chapter(s) not released, skipped (production build): fx.chapter-a");
+  });
+
+  it("refuses a real production publish of nothing", async () => {
+    const c = realCourse();
+    const sent: unknown[] = [];
+    const config = { accountId: "acc", accessKeyId: "k", secretAccessKey: "s", contentBucket: "c", assetsBucket: "a" };
+    await expect(run(c, "production", [config, { send: async (cmd) => void sent.push(cmd) }])).rejects.toMatchObject({ code: "nothing_released" });
+  });
+
+  it("holds released content to approved media in production", async () => {
+    const c = realCourse();
+    release(c.root, { chapters: ["fx.chapter-a"] });
+    await expect(run(c, "production")).rejects.toMatchObject({ code: "media_not_approved" });
+
+    approveAll(c.root);
+    const report = await run(c, "production");
+    expect(report.bundles.length).toBeGreaterThan(0);
+    expect(report.subjects).toEqual(["fx"]);
+    expect(report.unreleased).toEqual([]);
+    expect(report.unapproved_media).toEqual([]);
+  });
+
+  it("builds everything in staging, released or not, with unapproved media listed", async () => {
+    const c = realCourse();
+    const report = await run(c, "staging");
+    expect(report.bundles.length).toBeGreaterThan(0);
+    expect(report.unreleased).toEqual([]);
+    expect(report.unapproved_media.map((m) => m.ref)).toContain("img.chapter-a.fx-pending");
   });
 });
 

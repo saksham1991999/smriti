@@ -2,7 +2,10 @@
 # card index). Staging after a green Content workflow on main (it runs when content changes);
 # production on a v* tag after the "production" environment's reviewers approve.
 #   1. tools/content-publish --target r2: bundles, patches, media and manifests. Content-addressed
-#      files are immutable; manifests have a 5-minute TTL, so no purge is needed.
+#      files are immutable; manifests have a 5-minute TTL, so no purge is needed. --env production
+#      applies the release gate (content/releases.json): only released subjects and chapters are
+#      built, their media must all be approved, and an empty gate refuses to publish. Staging
+#      publishes everything, with media that is not approved yet shipped as unavailable.
 #   2. python -m smriti_worker.content_apply: metadata.sql and the card index, on DATABASE_URL.
 #   3. sims/*: built and synced to the assets bucket under sims/, which the CDN serves with
 #      Cross-Origin-Resource-Policy: cross-origin (EXPO_PUBLIC_SIM_BASE_URL=https://cdn.<domain>/sims).

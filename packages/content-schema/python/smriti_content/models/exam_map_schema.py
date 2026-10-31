@@ -58,12 +58,6 @@ class ExamMapFile(FileMeta):
         Literal["exam-map@1"], Field(alias="schema")
     ]
     exam_profile: common_schema.ExamProfileId
-    released_subjects: Annotated[
-        list[common_schema.Slug] | None,
-        Field(
-            description="Subjects marked for release. The content check fails when one of them is below 100% coverage, and the publisher ships only these to a non-local target."
-        ),
-    ] = None
     stats_basis: Annotated[
         StatsBasis | None,
         Field(

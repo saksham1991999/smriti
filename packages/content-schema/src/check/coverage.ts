@@ -2,6 +2,7 @@ import { TEACHING_CARD_TYPES } from "../constants.js";
 import type { Card, ConceptCoverage, CoverageReport, Requirement, Tally } from "../generated/types.js";
 import type { Findings } from "./findings.js";
 import type { ContentSet } from "./load.js";
+import { RELEASES_FILE, releasedScope } from "./releases.js";
 
 function pct(covered: number, total: number): number {
   return total === 0 ? 100 : Math.round((covered / total) * 10000) / 100;
@@ -29,7 +30,8 @@ export function computeCoverage(set: ContentSet, profileId: string, findings: Fi
   const profile = set.profiles.get(profileId);
   if (!map || !profile) return null;
   const locales = profile.profile.locales;
-  const released = new Set(map.doc.released_subjects ?? []);
+  const scope = releasedScope(set, profileId);
+  const released = scope.subjects;
 
   const cardsByConcept = new Map<string, CardUse[]>();
   for (const { doc } of set.lessons) {
@@ -201,6 +203,25 @@ export function computeCoverage(set: ContentSet, profileId: string, findings: Fi
           findings.error("inventory_missing", file, `chapter ${ch.doc.id} of released subject ${subject.id} has no inventory`);
         }
       }
+    }
+  }
+  // Single released chapters (content/releases.json) are held to the same bar as a subject.
+  const releaseFile = set.releases[0]?.file ?? RELEASES_FILE;
+  for (const chapterId of scope.chapters) {
+    const chapter = set.chapters.find((c) => c.doc.id === chapterId)?.doc;
+    if (!chapter || released.has(chapter.subject)) continue; // unknown: rules; whole subject: above
+    const cs = report.subjects.find((x) => x.id === chapter.subject)?.chapters.find((c) => c.id === chapterId);
+    const gaps = cs?.concepts.filter((x) => !x.covered) ?? [];
+    const itemsOk = !unmappedItems.some((u) => u.chapter === chapterId);
+    if (!cs || cs.tally.concepts === 0 || gaps.length || !itemsOk) {
+      const why = !cs || cs.tally.concepts === 0 ? "no concepts in the exam map" : gaps.length ? `missing ${gaps.slice(0, 5).map((g) => `${g.id} (${g.missing.join(", ")})`).join("; ")}` : "inventory items map to no concept";
+      findings.error("coverage_incomplete", releaseFile, `${profileId} ${chapterId}: coverage ${cs?.tally.percent ?? 0}%; ${why}. A released chapter must be at 100%.`);
+    }
+    if (!syllabus) {
+      findings.error("syllabus_missing", releaseFile, `${profileId} has no coverage/syllabus/${profileId}.json, so coverage of ${chapterId} cannot be proved`);
+    }
+    if (!set.inventories.some((i) => i.doc.chapter === chapterId)) {
+      findings.error("inventory_missing", releaseFile, `released chapter ${chapterId} has no inventory`);
     }
   }
   if (unmappedLines.length) {

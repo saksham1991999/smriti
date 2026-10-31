@@ -10,7 +10,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 
 import type { BundleMode } from "@smriti/content-schema";
-import { checkRoot } from "@smriti/content-schema/check";
+import { checkRoot, releasedScope } from "@smriti/content-schema/check";
 
 import { type BuiltBundle, BUNDLE_MODES, buildBundle, bundlePath, hasBundle } from "./bundle.js";
 import { canonicalJson, hashed } from "./canonical.js";
@@ -19,7 +19,7 @@ import { HISTORY_KEY, lastManifest, parseHistory, recordBundle, recordItem, reco
 import { bundleKey, buildManifest, manifestKey, manifestPaths, type PatchRef } from "./manifest.js";
 import { allowsUnapprovedMedia, type AssetFile, isPublishEnvironment, type MediaContext, PUBLISH_ENVIRONMENTS, type PublishEnvironment } from "./media.js";
 import { diffBundles, patchPath } from "./patch.js";
-import { planProfile, type ProfilePlan, releasedSubjects } from "./plan.js";
+import { planProfile, type ProfilePlan } from "./plan.js";
 import { buildSeedPack } from "./seed.js";
 import { buildSiteIndex, SITE_INDEX_KEY } from "./site-index.js";
 import { generateSql } from "./sql.js";
@@ -60,6 +60,8 @@ export interface PublishReport {
   assets: { key: string; bytes: number; uploaded: boolean }[];
   site_index: string | null;
   sql: { path: string; tables: Record<string, string[]>; rows: Record<string, number> };
+  /** Production only: chapters the exam maps include that content/releases.json does not release (skipped). */
+  unreleased: { exam_profile: string; chapters: string[] }[];
   /** Media that is not approved yet and shipped as unavailable; always empty for production. */
   unapproved_media: { ref: string; status: string }[];
   warnings: string[];
@@ -98,22 +100,39 @@ export async function publish(opts: PublishOptions): Promise<PublishReport> {
     throw new PublishError("fixture_production", "the fixture course is test data and is never a production publish");
   }
   const remote = store.kind === "r2";
-  // A remote target only gets subjects marked for release; a local build gets everything.
-  const subjectFilter = remote ? releasedSubjects(set) : null;
-  if (remote && subjectFilter && subjectFilter.size === 0) {
-    throw new PublishError("nothing_released", "no exam map lists released_subjects");
-  }
+  // The release gate (content/releases.json): production builds only released subjects and
+  // chapters, so the strict media rule applies to what actually ships. Staging and local build
+  // everything (unreleased content is still exercised).
+  const gated = environment === "production";
 
-  const history = parseHistory(await store.get("content", HISTORY_KEY), fixture);
   const unapproved = new Map<string, string>();
   const media: MediaContext = { set, repoRoot: opts.repoRoot, fixture, allowUnapproved: allowsUnapprovedMedia(environment, fixture), unapproved };
 
   // 2. Plan profiles and build every bundle they need, once per locale.
   const plans: ProfilePlan[] = [];
+  const unreleased: PublishReport["unreleased"] = [];
   for (const id of [...set.profiles.keys()].sort()) {
-    const plan = planProfile(set, id, subjectFilter);
+    const plan = planProfile(set, id, gated ? releasedScope(set, id) : null);
     if (plan && plan.subjects.length) plans.push(plan);
+    if (!gated) continue;
+    const shipped = new Set(plan?.subjects.flatMap((s) => s.chapters.map((c) => c.chapter.id)) ?? []);
+    const skipped = (planProfile(set, id, null)?.subjects ?? []).flatMap((s) => s.chapters.map((c) => c.chapter.id)).filter((c) => !shipped.has(c));
+    if (skipped.length) unreleased.push({ exam_profile: id, chapters: skipped });
   }
+  if (gated && plans.length === 0) {
+    // A real production publish of nothing would only empty the catalogue: refuse it. A dry run
+    // (or a local folder) says so and goes on, so CI stays green until something is released.
+    if (remote) throw new PublishError("nothing_released", "content/releases.json releases nothing for production");
+    warnings.push("nothing is released for production (content/releases.json), so nothing was built");
+  }
+  for (const u of unreleased) {
+    const some = u.chapters.slice(0, 5).join(", ") + (u.chapters.length > 5 ? ` and ${u.chapters.length - 5} more (report: unreleased)` : "");
+    warnings.push(`${u.exam_profile}: ${u.chapters.length} chapter(s) not released, skipped (production build): ${some}`);
+  }
+  // Nothing has touched the store yet: a refusal above leaves the target as it was.
+  const history = parseHistory(await store.get("content", HISTORY_KEY), fixture);
+  // SQL rows follow what is published: the released chapters only, in production.
+  const publishedChapters = gated ? new Set(plans.flatMap((p) => p.subjects.flatMap((s) => s.chapters.map((c) => c.chapter.id)))) : null;
   const built = new Map<string, Map<string, BuiltBundle>>(); // locale -> key -> bundle
   for (const plan of plans) {
     for (const locale of plan.locales) {
@@ -286,7 +305,7 @@ export async function publish(opts: PublishOptions): Promise<PublishReport> {
     history,
     now,
     fixture,
-    subjects: subjectFilter,
+    chapters: publishedChapters,
     bundles: allBundles
       .map((b) => ({
         id: b.bundle.id,
@@ -324,6 +343,7 @@ export async function publish(opts: PublishOptions): Promise<PublishReport> {
     assets: assetReport,
     site_index: siteIndex ? SITE_INDEX_KEY : null,
     sql: { path: sqlPath, tables: sql.tables, rows: sql.rowCounts },
+    unreleased,
     unapproved_media: unapprovedMedia,
     warnings,
   };

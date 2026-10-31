@@ -34,6 +34,7 @@ const roots: SchemaFile[] = [
   "coverage-inputs.schema.json",
   "coverage.schema.json",
   "seed-pack-spec.schema.json",
+  "releases.schema.json",
   "seed-pack.schema.json",
   "bundle.schema.json",
   "manifest.schema.json",

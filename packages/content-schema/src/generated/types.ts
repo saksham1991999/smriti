@@ -466,10 +466,6 @@ export type ExamMapFile = FileMeta & {
   schema: "exam-map@1";
   exam_profile: Slug;
   /**
-   * Subjects marked for release. The content check fails when one of them is below 100% coverage, and the publisher ships only these to a non-local target.
-   */
-  released_subjects?: Slug[];
-  /**
    * Set by pyq-ingest: the papers weightage and pyq_count were computed from.
    */
   stats_basis?: {
@@ -1721,6 +1717,21 @@ export type SeedPackSpecFile = FileMeta & {
   max_bytes?: number;
 };
 /**
+ * content/releases.json: the release gate. Per exam profile, the subjects and chapters released to production. A production publish builds only these and needs every media item in them approved; everything else is skipped and listed in the publish report. The content check fails when a released subject or chapter is below 100% coverage (PRD 14). Staging and local builds publish everything.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "ReleasesFile".
+ */
+export type ReleasesFile = FileMeta & {
+  schema: "releases@1";
+  /**
+   * Exam profile id -> what is released for it. A profile that is not listed has nothing released.
+   */
+  profiles: {
+    [k: string]: ReleaseScope | undefined;
+  };
+};
+/**
  * Lesson bundles (deep_dive, quick_revision), the topic's practice bundle (practice, lesson and placement questions), and the little learner activity bundles (story, song, play: every storybook, song or play activity of the topic, in activities).
  *
  * This interface was referenced by `Bundle`'s JSON-Schema
@@ -2816,6 +2827,23 @@ export interface ConceptCoverage {
   covered: boolean;
   met: Requirement[];
   missing: Requirement[];
+}
+/**
+ * This interface was referenced by `undefined`'s JSON-Schema
+ * via the `definition` "ReleaseScope".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "ReleaseScope".
+ */
+export interface ReleaseScope {
+  /**
+   * Whole subjects released: every chapter of the subject the exam map includes.
+   */
+  subjects: Slug[];
+  /**
+   * Single chapters released, for subjects that are not released whole.
+   */
+  chapters: DottedId[];
 }
 /**
  * seed/{variant_id}/{locale}/seed.json: the index of a built seed pack that ships inside the app build. Projects to content.seed_packs.

@@ -1,9 +1,10 @@
 # Content CI: runs when content or the content tooling changes.
 #   - the content check (schemas, links, coverage) on content/ and the fixture course
 #   - the generated Pydantic models against every fixture
-#   - a publisher dry run (everything built in memory) for real content and the fixtures. Real
-#     content is checked with production rules (--env production: unapproved media is fatal);
-#     the fixture course is a local build (it is never production).
+#   - publisher dry runs (everything built in memory): real content with production rules (only
+#     the scopes content/releases.json releases, and unapproved media in them is fatal), all real
+#     content as staging (unreleased content is still built; unapproved media ships as
+#     unavailable and is listed), and the fixture course as a local build (never production).
 #   - the publisher's site index against the site's own zod schema
 name: Content
 
@@ -60,8 +61,11 @@ jobs:
       - name: Pydantic models
         run: pnpm --filter @smriti/content-schema test:python
 
-      - name: Publisher dry run (content/)
+      - name: Publisher dry run (content/, production rules on released scopes)
         run: pnpm --filter @smriti/content-publish publish:dry-run --env production --report tools/content-publish/dry-run/content
+
+      - name: Publisher dry run (content/, staging, everything)
+        run: pnpm --filter @smriti/content-publish publish:dry-run --env staging --report tools/content-publish/dry-run/staging
 
       - name: Publisher dry run (fixture course)
         run: pnpm --filter @smriti/content-publish publish:dry-run --env local --root content/fixtures --report tools/content-publish/dry-run/fixtures

@@ -18,6 +18,7 @@ import type {
   PyqPaperFile,
   Question,
   QuestionsFile,
+  ReleasesFile,
   SeedPackSpecFile,
   SimManifest,
   SubjectFile,
@@ -83,6 +84,8 @@ export interface ContentSet {
   syllabi: Loaded<Syllabus>[];
   inventories: Loaded<Inventory>[];
   seedSpecs: Loaded<SeedPackSpecFile>[];
+  /** content/releases.json (the release gate); at most one. */
+  releases: Loaded<ReleasesFile>[];
   sims: Loaded<SimManifest>[];
   /** Indexes. */
   concepts: Map<string, ConceptEntry>;
@@ -144,6 +147,7 @@ export function loadContentSet(root: string, findings: Findings, options: LoadOp
     syllabi: [],
     inventories: [],
     seedSpecs: [],
+    releases: [],
     sims: [],
     concepts: new Map(),
     aliases: new Map(),
@@ -239,6 +243,9 @@ function classify(set: ContentSet, loaded: Loaded<Record<string, unknown>>, find
       break;
     case "seed-pack-spec@1":
       set.seedSpecs.push(as<SeedPackSpecFile>());
+      break;
+    case "releases@1":
+      set.releases.push(as<ReleasesFile>());
       break;
     case "sim@1":
       set.sims.push(as<SimManifest>());

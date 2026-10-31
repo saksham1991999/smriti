@@ -1,0 +1,114 @@
+{
+  "schema": "revision_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 2 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Revision sheet for the chapter, gathered from the topic cheat sheets. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh102) could not be retrieved, so a reviewer should check the terms.",
+  "id": "rs.math.relations-functions-intro",
+  "scope": "chapter",
+  "chapter": "math.relations-functions-intro",
+  "title": {
+    "en": "Relations and Functions",
+    "hi": "संबंध एवं फलन"
+  },
+  "concepts": [
+    "math.relations-functions-intro.cartesian-product.core.cartesian-product-sets",
+    "math.relations-functions-intro.relations-intro.core.relation-domain-range",
+    "math.relations-functions-intro.functions-intro.core.function-definition",
+    "math.relations-functions-intro.functions-intro.core.standard-functions-graphs",
+    "math.relations-functions-intro.functions-intro.core.algebra-of-functions"
+  ],
+  "points": [
+    {
+      "en": "Ordered pair: $(a, b) = (x, y)$ only when $a = x$ and $b = y$.",
+      "hi": "क्रमित युग्म: $(a, b) = (x, y)$ तभी जब $a = x$ और $b = y$।"
+    },
+    {
+      "en": "$A \\times B = \\{(a, b) : a \\in A,\\ b \\in B\\}$; $A \\times \\phi = \\phi$.",
+      "hi": "$A \\times B = \\{(a, b) : a \\in A,\\ b \\in B\\}$; $A \\times \\phi = \\phi$।"
+    },
+    {
+      "en": "In general $A \\times B \\ne B \\times A$, but both have the same number of elements.",
+      "hi": "सामान्यतः $A \\times B \\ne B \\times A$, पर दोनों में अवयवों की संख्या समान है।"
+    },
+    {
+      "en": "$\\mathbf{R} \\times \\mathbf{R}$: the plane; $\\mathbf{R} \\times \\mathbf{R} \\times \\mathbf{R}$: space.",
+      "hi": "$\\mathbf{R} \\times \\mathbf{R}$: तल; $\\mathbf{R} \\times \\mathbf{R} \\times \\mathbf{R}$: आकाश।"
+    },
+    {
+      "en": "A relation from A to B is a subset of $A \\times B$; a relation from A to A is a relation on A.",
+      "hi": "A से B तक संबंध $A \\times B$ का उपसमुच्चय है; A से A तक का संबंध A पर संबंध है।"
+    },
+    {
+      "en": "Domain: first elements; range: second elements (images); codomain: all of B.",
+      "hi": "प्रांत: पहले अवयव; परिसर: दूसरे अवयव (प्रतिबिंब); सहप्रांत: पूरा B।"
+    },
+    {
+      "en": "Roster form, set-builder form and the arrow diagram all describe a relation.",
+      "hi": "सूचीरूप, समुच्चय-निर्माण रूप और तीर आरेख, तीनों संबंध का वर्णन करते हैं।"
+    },
+    {
+      "en": "A function from A to B gives every element of A exactly one image; $f : A \\to B$, $f(a) = b$.",
+      "hi": "A से B तक फलन A के हर अवयव को ठीक एक प्रतिबिंब देता है; $f : A \\to B$, $f(a) = b$।"
+    },
+    {
+      "en": "Real function: domain and range are subsets of $\\mathbf{R}$; from a formula, drop zeros of denominators and negatives under square roots.",
+      "hi": "वास्तविक फलन: प्रांत और परिसर $\\mathbf{R}$ के उपसमुच्चय; सूत्र से हर के शून्य और वर्गमूल के नीचे ऋण मान हटाइए।"
+    },
+    {
+      "en": "Identity: range $\\mathbf{R}$; constant c: range $\\{c\\}$; $|x|$ and $x^2$: range $[0, \\infty)$.",
+      "hi": "तत्समक: परिसर $\\mathbf{R}$; अचर c: परिसर $\\{c\\}$; $|x|$ और $x^2$: परिसर $[0, \\infty)$।"
+    },
+    {
+      "en": "Signum: range $\\{-1, 0, 1\\}$; $\\frac{1}{x}$: domain and range $\\mathbf{R} - \\{0\\}$; $[x]$: greatest integer $\\le x$.",
+      "hi": "चिह्न: परिसर $\\{-1, 0, 1\\}$; $\\frac{1}{x}$: प्रांत और परिसर $\\mathbf{R} - \\{0\\}$; $[x]$: $\\le x$ सबसे बड़ा पूर्णांक।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Number of ordered pairs",
+        "hi": "क्रमित युग्मों की संख्या"
+      },
+      "latex": "n(A \\times B) = n(A) \\cdot n(B)"
+    },
+    {
+      "name": {
+        "en": "Number of relations from A to B",
+        "hi": "A से B तक संबंधों की संख्या"
+      },
+      "latex": "2^{pq}"
+    },
+    {
+      "name": {
+        "en": "Sum and difference",
+        "hi": "योग और अंतर"
+      },
+      "latex": "(f \\pm g)(x) = f(x) \\pm g(x)"
+    },
+    {
+      "name": {
+        "en": "Product and scalar multiple",
+        "hi": "गुणनफल और अदिश गुणज"
+      },
+      "latex": "(fg)(x) = f(x)\\,g(x),\\ (\\alpha f)(x) = \\alpha f(x)"
+    },
+    {
+      "name": {
+        "en": "Quotient",
+        "hi": "भागफल"
+      },
+      "latex": "\\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)},\\ g(x) \\ne 0"
+    }
+  ],
+  "hi_source": "translation"
+}

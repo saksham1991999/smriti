@@ -41,8 +41,8 @@ export interface SqlInputs {
   history: PublishHistory;
   now: string;
   fixture: boolean;
-  /** Topics, concepts etc. limited to these subjects (null: all). */
-  subjects: Set<string> | null;
+  /** Topics, concepts etc. limited to these chapters (a production publish's released chapters; null: all). */
+  chapters: Set<string> | null;
   bundles: {
     id: string;
     topic: string;
@@ -130,9 +130,9 @@ export function generateSql(inp: SqlInputs): SqlOutput {
     if (ids.length) out.push(`delete from content.${table} where ${col} in (${ids.map(lit).join(", ")});`);
   };
 
-  const inSubject = (subject: string) => !inp.subjects || inp.subjects.has(subject);
-  const subjects = set.subjects.map((s) => s.doc).filter((s) => inSubject(s.id));
-  const chapters = set.chapters.map((c) => c.doc).filter((c) => inSubject(c.subject));
+  const chapters = set.chapters.map((c) => c.doc).filter((c) => !inp.chapters || inp.chapters.has(c.id));
+  const subjectIds = new Set(chapters.map((c) => c.subject));
+  const subjects = set.subjects.map((s) => s.doc).filter((s) => !inp.chapters || subjectIds.has(s.id));
   const conceptIds = new Set<string>();
   for (const ch of chapters) for (const t of ch.topics) for (const st of t.subtopics) for (const c of st.concepts) conceptIds.add(c.id);
   const topicIds = new Set(chapters.flatMap((c) => c.topics.map((t) => t.id)));

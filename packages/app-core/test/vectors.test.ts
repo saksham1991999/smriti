@@ -49,6 +49,7 @@ import {
   type TopicMarkRow,
   applyTopicMark,
   chapterResetPayload,
+  qualifiesDay,
   topicTestOutUndonePayload,
   topicTestedOutPayload,
 } from '../src';
@@ -359,5 +360,36 @@ describe('golden vectors', () => {
       return { name: step.name, type: step.event.type, payload: step.event.payload, expected: { accepted: code === null, code, rows: structuredClone(sorted) } };
     });
     golden('topic_marks', { version: 1, chapter_topics: ctx.chapterTopics, initial, cases });
+  });
+
+  it('test_out_streak', () => {
+    // Learn flow Q7: a passed Test out counts toward the streak as one lesson, on the local day it
+    // was sent, once per check. A repeated check, an undo and a chapter reset count nothing, and
+    // an undo never takes the day back.
+    const timeZone = 'Asia/Kolkata';
+    const chapter = 'fx.chapter-a';
+    const [a, b, c, d] = ['a', 'b', 'c', 'd'].map((x) => `${chapter}.topic-${x}`) as [string, string, string, string];
+    const ids = ['0193a000-0000-7000-8000-000000000011', '0193a000-0000-7000-8000-000000000012', '0193a000-0000-7000-8000-000000000013'] as const;
+    const steps: { name: string; at: string; event: TopicMarkEvent }[] = [
+      { name: 'only a Test out that day', at: '2026-10-28T05:00:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[0], chapter, [a, b]) } },
+      { name: 'the same check again', at: '2026-10-28T06:00:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[0], chapter, [a, b]) } },
+      { name: 'Undo this the next day', at: '2026-10-29T05:00:00.000Z', event: { type: 'topic_test_out_undone', payload: topicTestOutUndonePayload(ids[0], [{ topicId: a, previous: null }, { topicId: b, previous: null }]) } },
+      { name: 'and a chapter reset', at: '2026-10-29T05:30:00.000Z', event: { type: 'chapter_reset', payload: chapterResetPayload(chapter) } },
+      { name: 'two Test outs on one day', at: '2026-10-30T04:00:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[1], chapter, [c]) } },
+      { name: 'the second one', at: '2026-10-30T04:30:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[2], chapter, [d]) } },
+    ];
+    const rows: Record<string, TopicMarkRow> = {};
+    const ctx: TopicMarkContext = { chapterTopics: { [chapter]: [a, b, c, d] }, checks: {} };
+    const cases = steps.map((step) => {
+      const code = applyTopicMark(rows, step.event, ctx);
+      return { name: step.name, at: step.at, type: step.event.type, payload: step.event.payload, expected: { accepted: code === null, code } };
+    });
+    const accepted = cases.filter((x) => x.expected.accepted).map((x) => ({ type: x.type, occurred_at: x.at }));
+    const byDay = activityByDay(accepted, timeZone);
+    const days = ['2026-10-28', '2026-10-29', '2026-10-30'].map((day) => {
+      const activity = byDay.get(day as never) ?? { lessonsCompleted: 0, reviews: 0, mockSections: 0, dailyChallenge: false, rescueDone: false };
+      return { day, lessons_completed: activity.lessonsCompleted, qualified: qualifiesDay(activity) };
+    });
+    golden('test_out_streak', { version: 1, time_zone: timeZone, cases, days });
   });
 });

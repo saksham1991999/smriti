@@ -82,6 +82,7 @@ SECTIONS_BY_TYPE: dict[str, set[str]] = {
     # (v1.5) palace_saved adds "srs" itself when it removes items (their cards are tombstoned).
     "palace_saved": set(),
     "palace_deleted": {"srs"},
+    # A passed Test out is one lesson for the day's streak (learn Q7): streak via ctx.days.
     "topic_tested_out": {"topic_progress"},
     "topic_test_out_undone": {"topic_progress"},
     "chapter_reset": {"topic_progress"},

@@ -67,7 +67,7 @@ Status: v1.6, 31 Oct 2026. Shared by `packages/app-core` (client) and `apps/api`
 | `topic_test_out_undone` (v1.6) | `check_id`, `topics` (1 to 100: `topic_id`, `previous_status` `not_started` \| `in_progress` \| null, the row that check replaced). Built by app-core's `topicTestOutUndonePayload` from the device's marks |
 | `chapter_reset` (v1.6) | `chapter_id`. Built by app-core's `chapterResetPayload` |
 
-The server recomputes XP, mastery, FSRS schedules, activity days, the streak, plant health and growth, and pet mood from events (TRD §10). A streak day counts when the student's local day has one qualifying activity: `lesson_completed` (or an `activity_completed`), 10 `review_rated`, a `mock_section_submitted`, or a `daily_challenge_completed` (rulings R1 and R23).
+The server recomputes XP, mastery, FSRS schedules, activity days, the streak, plant health and growth, and pet mood from events (TRD §10). A streak day counts when the student's local day has one qualifying activity: `lesson_completed` (or an `activity_completed`, or a passed Test out's `topic_tested_out`), 10 `review_rated`, a `mock_section_submitted`, or a `daily_challenge_completed` (rulings R1 and R23).
 
 ## Wire rules (v1.1)
 
@@ -93,6 +93,7 @@ The server recomputes XP, mastery, FSRS schedules, activity days, the streak, pl
   - `chapter_reset` sets every topic of the chapter that has a row to `not_started` with no `learned_via`, and deletes the chapter's lesson positions (`learn.lesson_progress`). Review cards, XP and the streak stay. An unknown chapter is `invalid_payload`.
   - All three change `topic_progress`. A device may delete a row where the server says `not_started`; both mean the same.
   - Golden vector: `packages/app-core/test-vectors/topic_marks.json`.
+  - A passed Test out (an applied `topic_tested_out`) counts toward the streak as one lesson on its local day (learn flow Q7): it adds one to the day's lessons and qualifies the day. A repeated `check_id` counts nothing. `topic_test_out_undone` and `chapter_reset` count nothing and never take the day back. Golden vector: `packages/app-core/test-vectors/test_out_streak.json` (app-core `activityByDay`, checked by `apps/api/tests/test_test_out_streak.py`).
 
 ## State
 
@@ -124,6 +125,7 @@ Locally there is no Supabase Auth server. `apps/api` exposes `POST /v1/dev/auth/
 
 ## Changelog
 
+- v1.6, rule change (31 Oct 2026): a passed Test out (`topic_tested_out`) counts as one lesson for the day's streak (learn flow Q7). No wire change. Golden vector `test_out_streak.json`.
 - v1.6 (31 Oct 2026): `topic_tested_out`, `topic_test_out_undone` and `chapter_reset`, so Test out marks, their undo and a chapter reset survive a pull. `topic_progress[].learned_via` on `GET /v1/sync/state`. Additive; a v1.5 server rejects the events as `unknown_type`, so send them only to a v1.6 server (`CONTRACT_V16_EVENT_TYPES`). Golden vector: `packages/app-core/test-vectors/topic_marks.json`, checked by app-core and `apps/api/tests/test_topic_marks.py`.
 - v1.5 (31 Oct 2026): memory palaces sync: `palace_saved` and `palace_deleted`, and `p:<item_id>` card refs in `review_rated` (context `palace_walk`). Additive; a v1.4 server rejects the two events as `unknown_type`, so clients send them only to a v1.5 server. Golden vector: `packages/app-core/test-vectors/palace.json`, checked by app-core and `apps/api/tests/test_palaces.py`.
 - v1.4 (31 Oct 2026): `entitlement.managed_in` on `GET /v1/sync/state` (`web`, `play`, `app_store`, `parent`, `family`, `none`). Additive; clients fall back to inferring it.

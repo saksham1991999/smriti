@@ -1,0 +1,759 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.bond-parameters",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which species has the same bond order as $\\ce{N2}$?",
+        "hi": "किस स्पीशीज़ की आबंध कोटि $\\ce{N2}$ के बराबर है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{O2}$",
+            "hi": "$\\ce{O2}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{F2}$",
+            "hi": "$\\ce{F2}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{NO+}$",
+            "hi": "$\\ce{NO+}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{O2^2-}$",
+            "hi": "$\\ce{O2^2-}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count electrons: which one matches $\\ce{N2}$?",
+          "hi": "इलेक्ट्रॉन गिनिए: कौन $\\ce{N2}$ से मेल खाता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$\\ce{NO+}$ has as many electrons as $\\ce{N2}$, and isoelectronic species have identical bond orders.",
+          "hi": "$\\ce{NO+}$ में $\\ce{N2}$ जितने ही इलेक्ट्रॉन हैं, और समइलेक्ट्रॉनी स्पीशीज़ की आबंध कोटि समान होती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.4: $\\ce{N2}$, CO and $\\ce{NO+}$ have bond order 3.",
+            "hi": "NCERT §4.3.4: $\\ce{N2}$, CO और $\\ce{NO+}$ की आबंध कोटि 3 है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "$\\ce{O2}$ has bond order 2.",
+              "hi": "$\\ce{O2}$ की आबंध कोटि 2 है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\ce{F2}$ has bond order 1.",
+              "hi": "$\\ce{F2}$ की आबंध कोटि 1 है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{O2^2-}$ is isoelectronic with $\\ce{F2}$: bond order 1.",
+              "hi": "$\\ce{O2^2-}$, $\\ce{F2}$ का समइलेक्ट्रॉनी है: आबंध कोटि 1।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which molecule has zero dipole moment?",
+        "hi": "किस अणु का द्विध्रुव आघूर्ण शून्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{NH3}$",
+            "hi": "$\\ce{NH3}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{H2O}$",
+            "hi": "$\\ce{H2O}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{BF3}$",
+            "hi": "$\\ce{BF3}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{CHCl3}$",
+            "hi": "$\\ce{CHCl3}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for a symmetric shape with identical bonds.",
+          "hi": "समान आबंधों वाली सममित आकृति खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "In flat, triangular $\\ce{BF3}$ the three B-F dipoles are equal and $120^\\circ$ apart, so they cancel.",
+          "hi": "समतल त्रिकोणीय $\\ce{BF3}$ में तीनों B-F द्विध्रुव बराबर हैं और $120^\\circ$ पर हैं, इसलिए निरस्त हो जाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.6 and Table 4.5: $\\ce{BF3}$ has $0\\ \\mathrm{D}$.",
+            "hi": "NCERT §4.3.6 और सारणी 4.5: $\\ce{BF3}$ का $0\\ \\mathrm{D}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Pyramidal $\\ce{NH3}$ has $1.47\\ \\mathrm{D}$.",
+              "hi": "पिरामिडी $\\ce{NH3}$ का $1.47\\ \\mathrm{D}$।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Bent water has $1.85\\ \\mathrm{D}$.",
+              "hi": "मुड़े जल का $1.85\\ \\mathrm{D}$।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "In $\\ce{CHCl3}$ one bond differs from the other three, so the dipoles do not cancel: $1.04\\ \\mathrm{D}$.",
+              "hi": "$\\ce{CHCl3}$ में एक आबंध बाकी तीन से भिन्न है, इसलिए द्विध्रुव निरस्त नहीं होते: $1.04\\ \\mathrm{D}$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "According to Fajans' rules, which compound has the greatest covalent character?",
+        "hi": "फ़ाजान नियमों के अनुसार किस यौगिक में सहसंयोजी गुण सबसे अधिक है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "NaF",
+            "hi": "NaF"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "NaCl",
+            "hi": "NaCl"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "NaBr",
+            "hi": "NaBr"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "NaI",
+            "hi": "NaI"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Same cation: compare the anion sizes.",
+          "hi": "धनायन एक ही है: ऋणायनों के आकार की तुलना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The cation is the same in all four, so look at the anion. The largest anion is the easiest to distort, which means the most covalent character.",
+          "hi": "चारों में धनायन एक ही है, इसलिए ऋणायन देखिए। सबसे बड़ा ऋणायन सबसे आसानी से विकृत होता है, यानी सबसे अधिक सहसंयोजी गुण।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.6: the larger the anion, the greater the covalent character; $\\ce{I-}$ is the largest of these halide ions.",
+            "hi": "NCERT §4.3.6: ऋणायन जितना बड़ा, सहसंयोजी गुण उतना अधिक; इन हैलाइड आयनों में $\\ce{I-}$ सबसे बड़ा है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "$\\ce{F-}$ is the smallest anion, so NaF is the most ionic.",
+              "hi": "$\\ce{F-}$ सबसे छोटा ऋणायन है, इसलिए NaF सबसे अधिक आयनिक है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\ce{Cl-}$ is smaller than $\\ce{I-}$.",
+              "hi": "$\\ce{Cl-}$, $\\ce{I-}$ से छोटा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\ce{Br-}$ is smaller than $\\ce{I-}$.",
+              "hi": "$\\ce{Br-}$, $\\ce{I-}$ से छोटा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.resonance-structures",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The C-O bond length in $\\ce{CO2}$ is $115\\ \\mathrm{pm}$, between the C=O ($121\\ \\mathrm{pm}$) and C-O triple bond ($110\\ \\mathrm{pm}$) values. This is best explained by",
+        "hi": "$\\ce{CO2}$ में C-O आबंध लंबाई $115\\ \\mathrm{pm}$ है, जो C=O ($121\\ \\mathrm{pm}$) और C-O त्रि-आबंध ($110\\ \\mathrm{pm}$) के मानों के बीच है। इसकी सबसे अच्छी व्याख्या है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "hydrogen bonding",
+            "hi": "हाइड्रोजन आबंधन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "resonance",
+            "hi": "अनुनाद"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "an expanded octet on carbon",
+            "hi": "कार्बन पर प्रसारित अष्टक"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "ionic bonding",
+            "hi": "आयनिक आबंधन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Why would one structure not be enough?",
+          "hi": "एक संरचना पर्याप्त क्यों नहीं होगी?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A single Lewis structure gives either a double or a triple bond. An in-between length means the real molecule is a blend of several structures.",
+          "hi": "एक लूइस संरचना या तो द्वि-आबंध देती है या त्रि-आबंध। बीच की लंबाई का अर्थ है कि वास्तविक अणु कई संरचनाओं का मिश्रण है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.5, Problem 4.4: $\\ce{CO2}$ is a resonance hybrid of three canonical forms.",
+            "hi": "NCERT §4.3.5, प्रश्न 4.4: $\\ce{CO2}$ तीन विहित रूपों का अनुनाद संकर है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "There is no H in $\\ce{CO2}$.",
+              "hi": "$\\ce{CO2}$ में H नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Carbon is a second-period element; it cannot expand its octet.",
+              "hi": "कार्बन दूसरे आवर्त का तत्व है; यह अष्टक प्रसारित नहीं कर सकता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\ce{CO2}$ is a covalent molecule.",
+              "hi": "$\\ce{CO2}$ सहसंयोजी अणु है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.resonance-structures",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about resonance is correct?",
+        "hi": "अनुनाद के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The molecule spends part of its time in each canonical form.",
+            "hi": "अणु कुछ समय हर विहित रूप में बिताता है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The canonical forms are in equilibrium, like keto and enol forms.",
+            "hi": "विहित रूप कीटो और ईनॉल रूपों की तरह साम्य में होते हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The resonance hybrid has lower energy than any single canonical form.",
+            "hi": "अनुनाद संकर की ऊर्जा किसी भी एक विहित रूप से कम होती है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Each canonical form can be isolated in the laboratory.",
+            "hi": "हर विहित रूप को प्रयोगशाला में अलग किया जा सकता है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which option keeps the hybrid as the one real structure?",
+          "hi": "कौन-सा विकल्प संकर को एकमात्र वास्तविक संरचना मानता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The hybrid is the only real structure, and it is more stable than any of the drawings used to describe it.",
+          "hi": "संकर ही एकमात्र वास्तविक संरचना है, और यह उसे दर्शाने वाले किसी भी चित्र से अधिक स्थायी है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.5: resonance stabilises the molecule, as the energy of the hybrid is less than that of any single canonical structure; the canonical forms have no real existence.",
+            "hi": "NCERT §4.3.5: अनुनाद अणु को स्थायी बनाता है, क्योंकि संकर की ऊर्जा किसी भी एक विहित संरचना से कम है; विहित रूपों का वास्तविक अस्तित्व नहीं है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The molecule does not switch between forms.",
+              "hi": "अणु रूपों के बीच नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "There is no such equilibrium; that describes tautomerism.",
+              "hi": "ऐसा कोई साम्य नहीं है; यह चलावयवता का वर्णन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Canonical forms have no real existence.",
+              "hi": "विहित रूपों का वास्तविक अस्तित्व नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Arrange the bonds in order of increasing bond enthalpy: H-H, O=O, N≡N.",
+        "hi": "आबंधों को बढ़ती आबंध एन्थैल्पी के क्रम में लगाइए: H-H, O=O, N≡N।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "H-H < O=O < N≡N",
+            "hi": "H-H < O=O < N≡N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "N≡N < O=O < H-H",
+            "hi": "N≡N < O=O < H-H"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "O=O < H-H < N≡N",
+            "hi": "O=O < H-H < N≡N"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "H-H < N≡N < O=O",
+            "hi": "H-H < N≡N < O=O"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "More shared pairs between the same kind of atoms usually means a stronger bond.",
+          "hi": "समान प्रकार के परमाणुओं के बीच अधिक साझे युग्म का अर्थ प्रायः मज़बूत आबंध है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Use the values: $435.8$, $498$ and $946.0\\ \\mathrm{kJ\\,mol^{-1}}$.",
+          "hi": "मान लीजिए: $435.8$, $498$ और $946.0\\ \\mathrm{kJ\\,mol^{-1}}$।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.3: H-H $435.8$, O=O $498$, N≡N $946.0\\ \\mathrm{kJ\\,mol^{-1}}$.",
+            "hi": "NCERT §4.3.3: H-H $435.8$, O=O $498$, N≡N $946.0\\ \\mathrm{kJ\\,mol^{-1}}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is the reverse order.",
+              "hi": "यह उल्टा क्रम है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "O=O ($498$) is stronger than H-H ($435.8$).",
+              "hi": "O=O ($498$) H-H ($435.8$) से मज़बूत है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The triple bond in $\\ce{N2}$ is the strongest of the three.",
+              "hi": "$\\ce{N2}$ का त्रि-आबंध तीनों में सबसे मज़बूत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.bond-parameters.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.bond-parameters.core.bond-polarity-fajans",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Why is the dipole moment of $\\ce{NH3}$ greater than that of $\\ce{NF3}$?",
+        "hi": "$\\ce{NH3}$ का द्विध्रुव आघूर्ण $\\ce{NF3}$ से अधिक क्यों है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "N-H bonds are more polar than N-F bonds.",
+            "hi": "N-H आबंध N-F आबंधों से अधिक ध्रुवीय हैं।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{NH3}$ is planar and $\\ce{NF3}$ is pyramidal.",
+            "hi": "$\\ce{NH3}$ समतलीय है और $\\ce{NF3}$ पिरामिडी।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "In $\\ce{NH3}$ the lone-pair dipole is in the same direction as the resultant N-H dipole; in $\\ce{NF3}$ it opposes the N-F dipoles.",
+            "hi": "$\\ce{NH3}$ में एकाकी युग्म का द्विध्रुव परिणामी N-H द्विध्रुव की दिशा में है; $\\ce{NF3}$ में यह N-F द्विध्रुवों के विपरीत है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{NF3}$ has no lone pair on nitrogen.",
+            "hi": "$\\ce{NF3}$ में नाइट्रोजन पर कोई एकाकी युग्म नहीं है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Draw the lone-pair arrow and the bond arrows for each.",
+          "hi": "हर एक के लिए एकाकी युग्म का तीर और आबंध तीर बनाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Both molecules are pyramidal with a lone pair on N. What differs is whether that lone pair's dipole adds to or subtracts from the bond dipoles.",
+          "hi": "दोनों अणु पिरामिडी हैं और N पर एकाकी युग्म है। अंतर यह है कि उस एकाकी युग्म का द्विध्रुव आबंध द्विध्रुवों में जुड़ता है या घटता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.3.6: $\\ce{NH3}$ $4.90 \\times 10^{-30}\\ \\mathrm{C\\,m}$ and $\\ce{NF3}$ $0.80 \\times 10^{-30}\\ \\mathrm{C\\,m}$, explained by the direction of the orbital dipole of the lone pair.",
+            "hi": "NCERT §4.3.6: $\\ce{NH3}$ $4.90 \\times 10^{-30}\\ \\mathrm{C\\,m}$ और $\\ce{NF3}$ $0.80 \\times 10^{-30}\\ \\mathrm{C\\,m}$, जिसकी व्याख्या एकाकी युग्म के कक्षक द्विध्रुव की दिशा से होती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Fluorine is more electronegative than hydrogen, so N-F bonds are the more polar.",
+              "hi": "फ़्लुओरीन हाइड्रोजन से अधिक विद्युत् ऋणात्मक है, इसलिए N-F आबंध अधिक ध्रुवीय हैं।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Both are pyramidal.",
+              "hi": "दोनों पिरामिडी हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Both have one lone pair on nitrogen.",
+              "hi": "दोनों में नाइट्रोजन पर एक एकाकी युग्म है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

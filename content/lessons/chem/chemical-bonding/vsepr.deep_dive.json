@@ -1,0 +1,311 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.vsepr:deep_dive",
+  "topic": "chem.chemical-bonding.vsepr",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Electron pairs push apart",
+        "hi": "इलेक्ट्रॉन युग्म एक-दूसरे को दूर धकेलते हैं"
+      },
+      "subtopic": "chem.chemical-bonding.vsepr.core",
+      "card_ids": [
+        "chem.chemical-bonding.vsepr:dd:01",
+        "chem.chemical-bonding.vsepr:dd:02",
+        "chem.chemical-bonding.vsepr:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Lone pairs bend the shape",
+        "hi": "एकाकी युग्म आकृति मोड़ते हैं"
+      },
+      "subtopic": "chem.chemical-bonding.vsepr.core",
+      "card_ids": [
+        "chem.chemical-bonding.vsepr:dd:04",
+        "chem.chemical-bonding.vsepr:dd:05",
+        "chem.chemical-bonding.vsepr:dd:06",
+        "chem.chemical-bonding.vsepr:dd:07",
+        "chem.chemical-bonding.vsepr:dd:08"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The VSEPR postulates",
+        "hi": "VSEPR की अभिधारणाएँ"
+      },
+      "body": {
+        "en": "Sidgwick and Powell (1940) proposed the theory; Nyholm and Gillespie (1957) refined it.\n\nThe shape of a molecule depends on the number of valence shell electron pairs, bonded or not, around the central atom. The pairs repel one another and take up positions that minimise repulsion and maximise distance. A multiple bond is treated as a single super pair.\n\nRepulsion falls in the order lone pair-lone pair > lone pair-bond pair > bond pair-bond pair, because a lone pair is held by one nucleus only and takes up more space.\n\nWith no lone pairs, 2, 3, 4, 5 and 6 pairs give linear ($\\ce{BeCl2}$), trigonal planar ($\\ce{BF3}$), tetrahedral ($\\ce{CH4}$), trigonal bipyramidal ($\\ce{PCl5}$) and octahedral ($\\ce{SF6}$) shapes.",
+        "hi": "सिजविक और पॉवेल (1940) ने यह सिद्धांत दिया; नाइहोम और गिलेस्पी (1957) ने इसे परिष्कृत किया।\n\nअणु की आकृति केंद्रीय परमाणु के चारों ओर संयोजकता कोश के इलेक्ट्रॉन युग्मों, आबंधित या अनाबंधित, की संख्या पर निर्भर करती है। युग्म एक-दूसरे को प्रतिकर्षित करते हैं और ऐसी स्थितियाँ लेते हैं जहाँ प्रतिकर्षण न्यूनतम और दूरी अधिकतम हो। बहु-आबंध को एक अकेला महायुग्म माना जाता है।\n\nप्रतिकर्षण का क्रम है एकाकी युग्म-एकाकी युग्म > एकाकी युग्म-आबंधी युग्म > आबंधी युग्म-आबंधी युग्म, क्योंकि एकाकी युग्म केवल एक नाभिक से बँधा होता है और अधिक स्थान घेरता है।\n\nएकाकी युग्म न हों तो 2, 3, 4, 5 और 6 युग्मों से रैखिक ($\\ce{BeCl2}$), त्रिकोणीय समतलीय ($\\ce{BF3}$), चतुष्फलकीय ($\\ce{CH4}$), त्रिकोणीय द्विपिरामिडी ($\\ce{PCl5}$) और अष्टफलकीय ($\\ce{SF6}$) आकृतियाँ बनती हैं।"
+      },
+      "media": "img.chemical-bonding.water-molecule",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.4"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:02",
+      "type": "interactive",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Match each molecule with its shape (no lone pairs on the central atom).",
+        "hi": "हर अणु को उसकी आकृति से मिलाइए (केंद्रीय परमाणु पर कोई एकाकी युग्म नहीं)।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "becl2",
+            "text": {
+              "en": "$\\ce{BeCl2}$",
+              "hi": "$\\ce{BeCl2}$"
+            }
+          },
+          {
+            "id": "bf3",
+            "text": {
+              "en": "$\\ce{BF3}$",
+              "hi": "$\\ce{BF3}$"
+            }
+          },
+          {
+            "id": "ch4",
+            "text": {
+              "en": "$\\ce{CH4}$",
+              "hi": "$\\ce{CH4}$"
+            }
+          },
+          {
+            "id": "pcl5",
+            "text": {
+              "en": "$\\ce{PCl5}$",
+              "hi": "$\\ce{PCl5}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "linear",
+            "label": {
+              "en": "Linear",
+              "hi": "रैखिक"
+            }
+          },
+          {
+            "id": "trigonal",
+            "label": {
+              "en": "Trigonal planar",
+              "hi": "त्रिकोणीय समतलीय"
+            }
+          },
+          {
+            "id": "tetra",
+            "label": {
+              "en": "Tetrahedral",
+              "hi": "चतुष्फलकीय"
+            }
+          },
+          {
+            "id": "tbp",
+            "label": {
+              "en": "Trigonal bipyramidal",
+              "hi": "त्रिकोणीय द्विपिरामिडी"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "becl2",
+            "bin": "linear"
+          },
+          {
+            "item": "bf3",
+            "bin": "trigonal"
+          },
+          {
+            "item": "ch4",
+            "bin": "tetra"
+          },
+          {
+            "item": "pcl5",
+            "bin": "tbp"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: 2, 3, 4 and 5 bond pairs spread as far apart as they can.",
+          "hi": "सही: 2, 3, 4 और 5 आबंधी युग्म जितना हो सके उतना दूर फैलते हैं।"
+        },
+        "wrong": {
+          "en": "Count the atoms bonded to the central atom.",
+          "hi": "केंद्रीय परमाणु से जुड़े परमाणु गिनिए।"
+        }
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.vsepr.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Shapes with lone pairs",
+        "hi": "एकाकी युग्मों वाली आकृतियाँ"
+      },
+      "body": {
+        "en": "Lone pairs distort the ideal shapes. $\\ce{NH3}$ (3 bond pairs, 1 lone pair) is trigonal pyramidal with an angle of $107^\\circ$, down from $109.5^\\circ$. Water (2 bond pairs, 2 lone pairs) is bent with $104.5^\\circ$, because lone pair-lone pair repulsion is larger still. $\\ce{SO2}$ (2 bond pairs, 1 lone pair) is bent at $119.5^\\circ$.\n\nWith five or six pairs: $\\ce{SF4}$ is see-saw (4 bond pairs, 1 lone pair, the lone pair equatorial), $\\ce{ClF3}$ is T-shaped (3 bond pairs, 2 lone pairs, both equatorial), $\\ce{BrF5}$ is square pyramidal (5 bond pairs, 1 lone pair) and $\\ce{XeF4}$ is square planar (4 bond pairs, 2 lone pairs).",
+        "hi": "एकाकी युग्म आदर्श आकृतियों को विकृत कर देते हैं। $\\ce{NH3}$ (3 आबंधी युग्म, 1 एकाकी युग्म) त्रिकोणीय पिरामिडी है, कोण $107^\\circ$, जो $109.5^\\circ$ से कम है। जल (2 आबंधी युग्म, 2 एकाकी युग्म) मुड़ा हुआ है, $104.5^\\circ$, क्योंकि एकाकी युग्म-एकाकी युग्म प्रतिकर्षण और भी अधिक है। $\\ce{SO2}$ (2 आबंधी युग्म, 1 एकाकी युग्म) $119.5^\\circ$ पर मुड़ा है।\n\nपाँच या छह युग्मों के साथ: $\\ce{SF4}$ ढेंकुली (see-saw) है (4 आबंधी युग्म, 1 एकाकी युग्म, एकाकी युग्म विषुवतीय), $\\ce{ClF3}$ T-आकार है (3 आबंधी युग्म, 2 एकाकी युग्म, दोनों विषुवतीय), $\\ce{BrF5}$ वर्ग पिरामिडी है (5 आबंधी युग्म, 1 एकाकी युग्म) और $\\ce{XeF4}$ वर्ग समतलीय है (4 आबंधी युग्म, 2 एकाकी युग्म)।"
+      },
+      "media": "img.chemical-bonding.water-molecule",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.4, Tables 4.7 and 4.8"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Predict the shape of $\\ce{ClF3}$.",
+        "hi": "$\\ce{ClF3}$ की आकृति बताइए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Cl has 7 valence electrons; 3 make bonds with F, leaving 4, which form 2 lone pairs. So there are 5 electron pairs: a trigonal bipyramidal arrangement.",
+          "hi": "Cl के 7 संयोजकता इलेक्ट्रॉन हैं; 3 F के साथ आबंध बनाते हैं, बचे 4, जो 2 एकाकी युग्म बनाते हैं। अतः 5 इलेक्ट्रॉन युग्म हैं: त्रिकोणीय द्विपिरामिडी व्यवस्था।"
+        },
+        {
+          "en": "Lone pairs go to the equatorial positions, where they suffer fewer repulsions at $90^\\circ$.",
+          "hi": "एकाकी युग्म विषुवतीय स्थितियों में जाते हैं, जहाँ $90^\\circ$ पर कम प्रतिकर्षण होते हैं।"
+        },
+        {
+          "en": "The three F atoms then lie in a T.",
+          "hi": "तब तीनों F परमाणु एक T में होते हैं।"
+        }
+      ],
+      "answer": {
+        "en": "T-shaped.",
+        "hi": "T-आकार।"
+      },
+      "common_trap": {
+        "en": "Putting the lone pairs in axial positions, which gives more lone pair-bond pair repulsions at $90^\\circ$.",
+        "hi": "एकाकी युग्मों को अक्षीय स्थितियों में रखना, जिससे $90^\\circ$ पर अधिक एकाकी युग्म-आबंधी युग्म प्रतिकर्षण होते हैं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.4, Table 4.8"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:06",
+      "type": "memory_hook",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 3,
+      "mnemonic": {
+        "en": "m.chem.chemical-bonding.vsepr.core.vsepr-shapes.1",
+        "hi": "m.chem.chemical-bonding.vsepr.core.vsepr-shapes.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:07",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.vsepr.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.vsepr:dd:08",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.vsepr.core.vsepr-shapes"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Pairs repel: lone pair-lone pair > lone pair-bond pair > bond pair-bond pair.",
+          "hi": "युग्म प्रतिकर्षित करते हैं: एकाकी-एकाकी > एकाकी-आबंधी > आबंधी-आबंधी।"
+        },
+        {
+          "en": "2 to 6 pairs: linear, trigonal planar, tetrahedral, trigonal bipyramidal, octahedral.",
+          "hi": "2 से 6 युग्म: रैखिक, त्रिकोणीय समतलीय, चतुष्फलकीय, त्रिकोणीय द्विपिरामिडी, अष्टफलकीय।"
+        },
+        {
+          "en": "$\\ce{CH4}$ $109.5^\\circ$, $\\ce{NH3}$ $107^\\circ$, $\\ce{H2O}$ $104.5^\\circ$.",
+          "hi": "$\\ce{CH4}$ $109.5^\\circ$, $\\ce{NH3}$ $107^\\circ$, $\\ce{H2O}$ $104.5^\\circ$।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.4"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

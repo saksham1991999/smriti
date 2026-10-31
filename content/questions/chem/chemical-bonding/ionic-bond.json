@@ -1,0 +1,550 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Chemistry 2e, §10.5 The Solid State of Matter (metallic solids)",
+      "url": "https://openstax.org/books/chemistry-2e/pages/10-5-the-solid-state-of-matter",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section (OpenStax for metallic bonding). Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "chem.chemical-bonding.ionic-bond",
+  "questions": [
+    {
+      "id": "q.chem.chemical-bonding.ionic-bond.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Ionic bonds form most easily between",
+        "hi": "आयनिक आबंध सबसे आसानी से किनके बीच बनते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "two elements that both have high ionisation enthalpies",
+            "hi": "दो ऐसे तत्व जिनकी आयनन एन्थैल्पी दोनों की अधिक हो"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "an element of low ionisation enthalpy and an element of highly negative electron gain enthalpy",
+            "hi": "कम आयनन एन्थैल्पी वाला तत्व और अधिक ऋणात्मक इलेक्ट्रॉन लब्धि एन्थैल्पी वाला तत्व"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "two identical non-metal atoms",
+            "hi": "दो एक जैसे अधातु परमाणु"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "two elements that both have positive electron gain enthalpies",
+            "hi": "दो ऐसे तत्व जिनकी इलेक्ट्रॉन लब्धि एन्थैल्पी दोनों की धनात्मक हो"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of sodium and chlorine.",
+          "hi": "सोडियम और क्लोरीन के बारे में सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "One atom must give up an electron cheaply and the other must take it gladly.",
+          "hi": "एक परमाणु को सस्ते में इलेक्ट्रॉन छोड़ना चाहिए और दूसरे को उसे खुशी से लेना चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.2: ionic bonds form more easily between elements with comparatively low ionisation enthalpies and elements with a comparatively high negative electron gain enthalpy.",
+            "hi": "NCERT §4.2: आयनिक आबंध अपेक्षाकृत कम आयनन एन्थैल्पी वाले तत्वों और अपेक्षाकृत अधिक ऋणात्मक इलेक्ट्रॉन लब्धि एन्थैल्पी वाले तत्वों के बीच आसानी से बनते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Neither atom would give up an electron easily.",
+              "hi": "कोई भी परमाणु आसानी से इलेक्ट्रॉन नहीं छोड़ेगा।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Identical non-metal atoms share electrons: a covalent bond.",
+              "hi": "एक जैसे अधातु परमाणु इलेक्ट्रॉन साझा करते हैं: सहसंयोजी आबंध।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Neither atom would take an electron readily.",
+              "hi": "कोई भी परमाणु आसानी से इलेक्ट्रॉन नहीं लेगा।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.ionic-bond.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The lattice enthalpy of NaCl is $788\\ \\mathrm{kJ\\,mol^{-1}}$. This means that $788\\ \\mathrm{kJ}$ is",
+        "hi": "NaCl की जालक एन्थैल्पी $788\\ \\mathrm{kJ\\,mol^{-1}}$ है। इसका अर्थ है कि $788\\ \\mathrm{kJ}$"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "released when one mole of Na atoms loses electrons",
+            "hi": "एक मोल Na परमाणुओं के इलेक्ट्रॉन खोने पर मुक्त होती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "required to separate one mole of solid NaCl into one mole of $\\ce{Na+(g)}$ and one mole of $\\ce{Cl-(g)}$",
+            "hi": "एक मोल ठोस NaCl को एक मोल $\\ce{Na+(g)}$ और एक मोल $\\ce{Cl-(g)}$ में अलग करने के लिए आवश्यक है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "required to melt one mole of NaCl",
+            "hi": "एक मोल NaCl को पिघलाने के लिए आवश्यक है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "required to turn one mole of Na and Cl atoms into ions",
+            "hi": "एक मोल Na और Cl परमाणुओं को आयनों में बदलने के लिए आवश्यक है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Start from the solid crystal.",
+          "hi": "ठोस क्रिस्टल से शुरू कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Lattice enthalpy is about pulling the whole crystal apart into separate gaseous ions.",
+          "hi": "जालक एन्थैल्पी पूरे क्रिस्टल को अलग-अलग गैसीय आयनों में खींचकर अलग करने से जुड़ी है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.2.1 defines lattice enthalpy with exactly this example.",
+            "hi": "NCERT §4.2.1 जालक एन्थैल्पी को ठीक इसी उदाहरण से परिभाषित करता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Losing electrons is ionisation, which always absorbs energy.",
+              "hi": "इलेक्ट्रॉन खोना आयनन है, जो सदा ऊर्जा अवशोषित करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Melting leaves ions close together in a liquid; it does not separate them to infinity.",
+              "hi": "पिघलने पर आयन द्रव में पास-पास रहते हैं; वे अनंत तक अलग नहीं होते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the ionisation plus electron gain step, $147.1\\ \\mathrm{kJ\\,mol^{-1}}$ for NaCl.",
+              "hi": "वह आयनन और इलेक्ट्रॉन लब्धि का चरण है, NaCl के लिए $147.1\\ \\mathrm{kJ\\,mol^{-1}}$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.ionic-bond.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which cation is formed from non-metallic elements only?",
+        "hi": "कौन-सा धनायन केवल अधातु तत्वों से बना है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{Na+}$",
+            "hi": "$\\ce{Na+}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{Ca^2+}$",
+            "hi": "$\\ce{Ca^2+}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{NH4+}$",
+            "hi": "$\\ce{NH4+}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{K+}$",
+            "hi": "$\\ce{K+}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which of these is not a single metal atom?",
+          "hi": "इनमें से कौन एक धातु परमाणु नहीं है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Nitrogen and hydrogen are both non-metals, yet together they carry a positive charge.",
+          "hi": "नाइट्रोजन और हाइड्रोजन दोनों अधातु हैं, फिर भी मिलकर धन आवेश रखते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.2: the ammonium ion, made of two non-metallic elements, is an exception and forms the cation of many ionic compounds.",
+            "hi": "NCERT §4.2: दो अधातु तत्वों से बना अमोनियम आयन एक अपवाद है और कई आयनिक यौगिकों का धनायन बनाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Sodium is a metal.",
+              "hi": "सोडियम धातु है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Calcium is a metal.",
+              "hi": "कैल्सियम धातु है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Potassium is a metal.",
+              "hi": "पोटैशियम धातु है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.ionic-bond.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For $\\ce{Na(g) -> Na+(g) + e-}$, $\\Delta H = 495.8\\ \\mathrm{kJ\\,mol^{-1}}$; for $\\ce{Cl(g) + e- -> Cl-(g)}$, $\\Delta H = -348.7\\ \\mathrm{kJ\\,mol^{-1}}$. The enthalpy change for $\\ce{Na(g) + Cl(g) -> Na+(g) + Cl-(g)}$ is",
+        "hi": "$\\ce{Na(g) -> Na+(g) + e-}$ के लिए $\\Delta H = 495.8\\ \\mathrm{kJ\\,mol^{-1}}$; $\\ce{Cl(g) + e- -> Cl-(g)}$ के लिए $\\Delta H = -348.7\\ \\mathrm{kJ\\,mol^{-1}}$। $\\ce{Na(g) + Cl(g) -> Na+(g) + Cl-(g)}$ के लिए एन्थैल्पी परिवर्तन है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-147.1\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$-147.1\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$+147.1\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$+147.1\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$+844.5\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$+844.5\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-788\\ \\mathrm{kJ\\,mol^{-1}}$",
+            "hi": "$-788\\ \\mathrm{kJ\\,mol^{-1}}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Keep the minus sign of the electron gain enthalpy.",
+          "hi": "इलेक्ट्रॉन लब्धि एन्थैल्पी का ऋण चिह्न बनाए रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add the two steps with their signs. Making the gaseous ions costs a little energy overall.",
+          "hi": "दोनों चरणों को उनके चिह्नों सहित जोड़िए। कुल मिलाकर गैसीय आयन बनाने में थोड़ी ऊर्जा लगती है।"
+        },
+        "steps": [
+          {
+            "en": "$495.8 + (-348.7) = +147.1\\ \\mathrm{kJ\\,mol^{-1}}$ (NCERT §4.2).",
+            "hi": "$495.8 + (-348.7) = +147.1\\ \\mathrm{kJ\\,mol^{-1}}$ (NCERT §4.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The sign is wrong: ionisation costs more than electron gain returns.",
+              "hi": "चिह्न गलत है: आयनन में लगी ऊर्जा इलेक्ट्रॉन लब्धि से मिली ऊर्जा से अधिक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This adds $348.7$ instead of subtracting it.",
+              "hi": "इसमें $348.7$ घटाने के बजाय जोड़ा गया है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$788$ is the lattice enthalpy, a different step.",
+              "hi": "$788$ जालक एन्थैल्पी है, एक अलग चरण।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.chem.chemical-bonding.ionic-bond.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-bonding.ionic-bond.core.ionic-bond-lattice",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Why does solid NaCl form even though converting $\\ce{Na(g)}$ and $\\ce{Cl(g)}$ into gaseous ions absorbs energy?",
+        "hi": "$\\ce{Na(g)}$ और $\\ce{Cl(g)}$ को गैसीय आयनों में बदलने में ऊर्जा अवशोषित होती है, फिर भी ठोस NaCl क्यों बनता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The ions reach a noble gas configuration, which alone makes them stable.",
+            "hi": "आयन उत्कृष्ट गैस विन्यास पा लेते हैं, जो अकेले उन्हें स्थायी बना देता है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The energy released in forming the crystal lattice is more than the energy absorbed.",
+            "hi": "क्रिस्टल जालक बनने में मुक्त ऊर्जा अवशोषित ऊर्जा से अधिक है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Ionisation of sodium releases energy.",
+            "hi": "सोडियम के आयनन से ऊर्जा मुक्त होती है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Chlorine atoms share electrons with sodium.",
+            "hi": "क्लोरीन परमाणु सोडियम के साथ इलेक्ट्रॉन साझा करते हैं।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What happens when the gaseous ions come together?",
+          "hi": "गैसीय आयन पास आएँ तो क्या होता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Follow the energy: a cost to make ions, then a much bigger payback when they pack into a lattice.",
+          "hi": "ऊर्जा का हिसाब देखिए: आयन बनाने में लागत, फिर जालक में जमने पर उससे कहीं बड़ी वापसी।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §4.2: a qualitative measure of the stability of an ionic compound is its enthalpy of lattice formation, not simply the octet of the ions.",
+            "hi": "NCERT §4.2: आयनिक यौगिक के स्थायित्व का गुणात्मक माप उसकी जालक बनने की एन्थैल्पी है, केवल आयनों का अष्टक नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The octet alone does not explain it; making the ions costs energy.",
+              "hi": "केवल अष्टक इसकी व्याख्या नहीं करता; आयन बनाने में ऊर्जा लगती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Ionisation is always endothermic.",
+              "hi": "आयनन सदा ऊष्माशोषी है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "NaCl is ionic, not covalent.",
+              "hi": "NaCl आयनिक है, सहसंयोजी नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

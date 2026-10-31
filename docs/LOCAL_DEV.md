@@ -67,6 +67,8 @@ Fakes in the local stack, all named as such in code:
 
 Postgres, Redis, the API, the worker, the job queue and the content are real.
 
+The Supabase Auth calls the local stack fakes (managed child identities, token hashes, the sign-up hook) still need one run against a real project: `docs/SUPABASE_SPIKE.md` lists each request and what to check.
+
 ## Smoke journey: `pnpm stack:smoke`
 
 ```sh

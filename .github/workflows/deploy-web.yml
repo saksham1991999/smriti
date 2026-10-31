@@ -1,0 +1,210 @@
+# Web app, marketing site and CDN Worker to Cloudflare (infra/cloudflare). Staging after every green
+# CI on main; production on a v* tag after the "production" environment's reviewers approve.
+# Each job skips (with a notice) while the environment lacks CLOUDFLARE_API_TOKEN or
+# CLOUDFLARE_ACCOUNT_ID. Public build config comes from GitHub environment variables (vars.*),
+# never secrets, because it ships inside the bundle.
+name: Deploy web
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        type: choice
+        options: [staging, production]
+        default: staging
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  WRANGLER_VERSION: "4.151.1"
+
+jobs:
+  gate:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    uses: ./.github/workflows/deploy-gate.yml
+    with:
+      environment: ${{ inputs.environment || '' }}
+
+  web:
+    name: Web app (${{ needs.gate.outputs.environment }})
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment:
+      name: ${{ needs.gate.outputs.environment }}
+      url: ${{ vars.WEB_APP_URL }}
+    concurrency:
+      group: deploy-web-${{ needs.gate.outputs.environment }}
+      cancel-in-progress: false
+    env:
+      ENVIRONMENT: ${{ needs.gate.outputs.environment }}
+      VITE_APP_ENV: ${{ needs.gate.outputs.environment }}
+      VITE_APP_VARIANT: all
+      VITE_AUTH_MODE: supabase
+      VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+      VITE_CDN_BASE_URL: ${{ vars.VITE_CDN_BASE_URL }}
+      VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+      VITE_GOOGLE_WEB_CLIENT_ID: ${{ vars.VITE_GOOGLE_WEB_CLIENT_ID }}
+      VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
+      VITE_SENTRY_DSN: ${{ vars.VITE_SENTRY_DSN }}
+      VITE_ANALYTICS_URL: ${{ vars.VITE_ANALYTICS_URL }}
+    steps:
+      - name: Secrets present
+        id: secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$VITE_API_BASE_URL" ]; then
+            echo "::notice::CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID or vars.VITE_API_BASE_URL is not set for $ENVIRONMENT; skipping (docs/DEPLOY.md)"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: pnpm/action-setup@v4.1.0
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - if: steps.secrets.outputs.ready == 'true'
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        if: steps.secrets.outputs.ready == 'true'
+        run: pnpm --filter @smriti/web build
+      - name: Headers (CSP from the build's VITE_* origins)
+        if: steps.secrets.outputs.ready == 'true'
+        run: node tools/deploy/src/headers-cli.ts web apps/web/dist
+      - name: Deploy
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes "wrangler@${WRANGLER_VERSION}" deploy -c infra/cloudflare/web/wrangler.jsonc --env "$ENVIRONMENT"
+
+  site:
+    name: Site (${{ needs.gate.outputs.environment }})
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment:
+      name: ${{ needs.gate.outputs.environment }}
+      url: ${{ vars.SITE_URL }}
+    concurrency:
+      group: deploy-site-${{ needs.gate.outputs.environment }}
+      cancel-in-progress: false
+    env:
+      ENVIRONMENT: ${{ needs.gate.outputs.environment }}
+      SITE_URL: ${{ vars.SITE_URL }}
+      WEB_APP_URL: ${{ vars.WEB_APP_URL }}
+      CDN_BASE_URL: ${{ vars.CDN_BASE_URL }}
+      BRAND_NAME_EN: ${{ vars.BRAND_NAME_EN }}
+      BRAND_NAME_HI: ${{ vars.BRAND_NAME_HI }}
+      BRAND_LEGAL_NAME: ${{ vars.BRAND_LEGAL_NAME }}
+      BRAND_SUPPORT_EMAIL: ${{ vars.BRAND_SUPPORT_EMAIL }}
+      PRICE_PRO_MONTHLY_INR: ${{ vars.PRICE_PRO_MONTHLY_INR }}
+      PRICE_PRO_INTRO_INR: ${{ vars.PRICE_PRO_INTRO_INR }}
+      SITE_ANALYTICS_ENDPOINT: ${{ vars.SITE_ANALYTICS_ENDPOINT }}
+      # Staging is never indexed; production fails the build without the published content index.
+      SITE_NOINDEX: ${{ needs.gate.outputs.environment == 'production' && '0' || '1' }}
+      SITE_REQUIRE_CONTENT_INDEX: ${{ needs.gate.outputs.environment == 'production' && '1' || '0' }}
+    steps:
+      - name: Secrets present
+        id: secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ] || [ -z "$SITE_URL" ]; then
+            echo "::notice::CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID or vars.SITE_URL is not set for $ENVIRONMENT; skipping (docs/DEPLOY.md)"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: pnpm/action-setup@v4.1.0
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - if: steps.secrets.outputs.ready == 'true'
+        run: pnpm install --frozen-lockfile
+      # The site's landing pages come from the published content index (TRD §4.1). Building it
+      # locally from content/ gives the same site-index.json the R2 publish writes.
+      - name: Content index
+        if: steps.secrets.outputs.ready == 'true'
+        run: |
+          pnpm --filter @smriti/content-publish publish:local
+          echo "CONTENT_INDEX_PATH=$GITHUB_WORKSPACE/tools/content-publish/out/site-index.json" >> "$GITHUB_ENV"
+      - name: Build
+        if: steps.secrets.outputs.ready == 'true'
+        run: pnpm --filter @smriti/site build
+      - name: Headers
+        if: steps.secrets.outputs.ready == 'true'
+        run: node tools/deploy/src/headers-cli.ts site apps/site/dist
+      - name: Deploy
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes "wrangler@${WRANGLER_VERSION}" deploy -c infra/cloudflare/site/wrangler.jsonc --env "$ENVIRONMENT"
+
+  cdn:
+    name: CDN Worker (${{ needs.gate.outputs.environment }})
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment:
+      name: ${{ needs.gate.outputs.environment }}
+    concurrency:
+      group: deploy-cdn-${{ needs.gate.outputs.environment }}
+      cancel-in-progress: false
+    env:
+      ENVIRONMENT: ${{ needs.gate.outputs.environment }}
+    steps:
+      - name: Secrets present
+        id: secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::notice::CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID is not set for $ENVIRONMENT; skipping (docs/DEPLOY.md)"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+      - name: Deploy
+        if: steps.secrets.outputs.ready == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes "wrangler@${WRANGLER_VERSION}" deploy -c infra/cloudflare/cdn/wrangler.jsonc --env "$ENVIRONMENT"

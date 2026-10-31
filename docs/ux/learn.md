@@ -2185,3 +2185,17 @@ P1 mocks to add after the P0 set: HOME-08, LRN-06, LES-12, LES-13 (both variants
 ## Appendix B · Screens in other areas referenced here
 
 Every cross-area reference in this doc is a real screen ID; the full table is in `docs/flows/learn.md` §13. There are no `TODO(<AREA>)` placeholders left.
+
+---
+
+### WEB-10 · Web search
+**Purpose:** Labels for the web search palette (HOME-05).
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Search | Search | खोजें |
+| Search shortcut | Press / to search | खोजने के लिए / दबाएँ |
+| Results count | {group}, {n, plural, one {# result} other {# results}} | {group}, {n, plural, one {# नतीजा} other {# नतीजे}} |
+
+**Mock priority:** P1.

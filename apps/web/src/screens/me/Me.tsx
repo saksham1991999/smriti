@@ -156,7 +156,12 @@ export function Me() {
       {(pet || plant) && (
         <div className="grid grid-cols-2 gap-3">
           {pet && (
-            <Card tone="tint" testID="me-pet">
+            <Card
+              tone="tint"
+              onPress={() => void navigate({ to: "/me/pet" })}
+              accessibilityLabel={t("me_money:ME-04.title", { pet: pet.name })}
+              testID="me-pet"
+            >
               <span className="flex flex-col items-start gap-2">
                 <PetAvatar species={pet.species as "cat" | "dog"} size={72} />
                 <Text variant="heading">{pet.name}</Text>
@@ -164,7 +169,15 @@ export function Me() {
             </Card>
           )}
           {plant && (
-            <Card className="bg-warning-tint" testID="me-plant">
+            <Card
+              className="bg-warning-tint"
+              onPress={
+                plant.health === "wilted" || plant.health === "dormant"
+                  ? () => void navigate({ to: "/me/revival" })
+                  : undefined
+              }
+              testID="me-plant"
+            >
               <span className="flex flex-col items-start gap-2">
                 <PlantView stage={plant.stage} health={plant.health} size={72} decorative />
                 <Text variant="heading">{t("me_money:ME-01.plant_card")}</Text>
@@ -198,6 +211,22 @@ export function Me() {
           <Icon name="CaretRight" color="inkMuted" />
         </span>
       </Card>
+
+      <SettingsGroup>
+        <SettingsRow
+          title={t("me_money:WEB-09.quests_row")}
+          icon="Star"
+          onPress={() => void navigate({ to: "/me/quests" })}
+          testID="me-quests"
+        />
+        <SettingsRow
+          title={t("me_money:WEB-09.shop_row")}
+          icon="Diamond"
+          value={wallet ? t("me_money:ME-17.balance", { n: wallet.gems }) : undefined}
+          onPress={() => void navigate({ to: "/me/shop" })}
+          testID="me-shop"
+        />
+      </SettingsGroup>
 
       <SettingsGroup title={t("me_money:ME-01.learning_group")}>
         <SettingsRow

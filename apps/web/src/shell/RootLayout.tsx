@@ -10,6 +10,7 @@ import { ErrorBoundary } from "./States";
 import { DeviceRegistration } from "./DeviceRegistration";
 import { MergeHost } from "./MergeHost";
 import { TutorHost } from "./TutorHost";
+import { SearchHost } from "./SearchHost";
 
 /** Skip link, offline banner, the one toast, and an error boundary around every screen. */
 export function RootLayout() {
@@ -46,6 +47,7 @@ export function RootLayout() {
         <Outlet />
       </ErrorBoundary>
       <TutorHost />
+      <SearchHost />
       <MergeHost />
       <DeviceRegistration />
       <div className="pointer-events-none fixed inset-x-0 bottom-[96px] z-50 flex justify-center px-4 md:bottom-6">

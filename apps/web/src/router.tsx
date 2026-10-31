@@ -414,6 +414,19 @@ const planRoute = createRoute({
     "YourPlan",
   ),
 });
+const gameRoute = <P extends string>(path: P, name: "PetRoom" | "Shop" | "Quests" | "Revival") =>
+  createRoute({
+    getParentRoute: () => shellRoute,
+    path,
+    component: lazyRouteComponent(
+      withNamespaces(["me_money"], () => import("./screens/me/Game")),
+      name,
+    ),
+  });
+const petRoute = gameRoute("/me/pet", "PetRoom");
+const shopRoute = gameRoute("/me/shop", "Shop");
+const questsRoute = gameRoute("/me/quests", "Quests");
+const revivalRoute = gameRoute("/me/revival", "Revival");
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -459,6 +472,10 @@ const routeTree = rootRoute.addChildren([
     settingsRoute,
     notificationsRoute,
     planRoute,
+    petRoute,
+    shopRoute,
+    questsRoute,
+    revivalRoute,
   ]),
 ]);
 

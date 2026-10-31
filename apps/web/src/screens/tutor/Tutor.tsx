@@ -9,15 +9,38 @@ import { useNavigate } from "@tanstack/react-router";
 import { useAppStore } from "@smriti/app-core/react";
 import type { MessageKey } from "@smriti/i18n";
 import { PlayerProvider, RichText, contentUrl } from "@smriti/lesson-player-web";
-import { Banner, Button, Card, Chip, ChatBubble, ChatInput, Icon, IconButton, PetAvatar, PetLine, Sheet, Text } from "@smriti/ui-web";
+import {
+  Banner,
+  Button,
+  Card,
+  Chip,
+  ChatBubble,
+  ChatInput,
+  Icon,
+  IconButton,
+  PetAvatar,
+  PetLine,
+  Sheet,
+  Text,
+} from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
 import { useI18n } from "../../lib/i18n";
 import { stubBundle } from "../../lib/mocks";
 import { useOnline } from "../../lib/network";
 import { useIntroEligible, useIsPro } from "../../lib/pro";
 import { useProfileIds } from "../../lib/queries";
+import { GrownUpCheck } from "../../components/GrownUpCheck";
 import { toast } from "../../lib/toast";
-import { openSession, sendFeedback, sendMessage, useTutorUI, type Helpline, type TutorContext, type TutorEvent, type TutorQuota } from "../../lib/tutor";
+import {
+  openSession,
+  sendFeedback,
+  sendMessage,
+  useTutorUI,
+  type Helpline,
+  type TutorContext,
+  type TutorEvent,
+  type TutorQuota,
+} from "../../lib/tutor";
 
 type Species = "cat" | "dog";
 
@@ -32,7 +55,9 @@ interface Msg {
   error?: string;
   chips?: string[];
   citations?: { kind: string; id: string; title?: string | null }[];
-  safety?: { kind: "refusal" | "redirect" | "pii_removed" } | { kind: "crisis"; helplines: Helpline[] };
+  safety?:
+    | { kind: "refusal" | "redirect" | "pii_removed" }
+    | { kind: "crisis"; helplines: Helpline[] };
   exhausted?: { tier: "free" | "pro_fair_use"; trigger: string | null };
   rated?: "up" | "down";
   /** The student text to resend on [Try again]. */
@@ -51,7 +76,9 @@ const CHIP_KEYS: Record<string, MessageKey> = {
 
 function useWide(): boolean {
   const q = "(min-width: 600px)";
-  const [wide, setWide] = useState(() => typeof window !== "undefined" && window.matchMedia(q).matches);
+  const [wide, setWide] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(q).matches,
+  );
   useEffect(() => {
     const m = window.matchMedia(q);
     const on = () => setWide(m.matches);
@@ -82,14 +109,25 @@ export function TutorPanel() {
 
   if (!wide) {
     return (
-      <Sheet open={open} onOpenChange={(o) => !o && close()} title={title} hideTitle height="full" testID="ai-02">
+      <Sheet
+        open={open}
+        onOpenChange={(o) => !o && close()}
+        title={title}
+        hideTitle
+        height="full"
+        testID="ai-02"
+      >
         <TutorChat />
       </Sheet>
     );
   }
   if (!open) return null;
   return (
-    <aside aria-label={title} data-testid="ai-02" className="fixed inset-y-0 right-0 z-40 flex w-[400px] max-w-full flex-col border-s border-line bg-surface shadow-raised">
+    <aside
+      aria-label={title}
+      data-testid="ai-02"
+      className="fixed inset-y-0 right-0 z-40 flex w-[400px] max-w-full flex-col border-s border-line bg-surface shadow-raised"
+    >
       <TutorChat />
     </aside>
   );
@@ -156,12 +194,26 @@ function TutorChat() {
     listEnd.current?.scrollIntoView({ block: "end" });
   }, [msgs]);
 
-  const patch = (key: string, f: (m: Msg) => Msg) => setMsgs((xs) => xs.map((m) => (m.key === key ? f(m) : m)));
+  const patch = (key: string, f: (m: Msg) => Msg) =>
+    setMsgs((xs) => xs.map((m) => (m.key === key ? f(m) : m)));
 
-  const send = async (text: string, input: "typed" | "chip" | "prefill", chip: string | null = null, clientId = s.newId(), retryKey?: string) => {
+  const send = async (
+    text: string,
+    input: "typed" | "chip" | "prefill",
+    chip: string | null = null,
+    clientId = s.newId(),
+    retryKey?: string,
+  ) => {
     if (!sessionId || !text.trim()) return;
     const tutorKey = retryKey ?? `${clientId}:a`;
-    if (retryKey) patch(retryKey, (m) => ({ ...m, text: "", status: undefined, error: undefined, streaming: true }));
+    if (retryKey)
+      patch(retryKey, (m) => ({
+        ...m,
+        text: "",
+        status: undefined,
+        error: undefined,
+        streaming: true,
+      }));
     else {
       setMsgs((xs) => [
         ...xs.map((m) => ({ ...m, chips: undefined })),
@@ -195,28 +247,60 @@ function TutorChat() {
         case "quota_exhausted":
           setQuota(e.quota);
           setExhausted(true);
-          patch(tutorKey, (m) => ({ ...m, status: "quota_exhausted", exhausted: { tier: e.tier, trigger: e.paywall_trigger } }));
+          patch(tutorKey, (m) => ({
+            ...m,
+            status: "quota_exhausted",
+            exhausted: { tier: e.tier, trigger: e.paywall_trigger },
+          }));
           break;
         case "safety":
-          if (e.kind === "crisis") patch(tutorKey, (m) => ({ ...m, status: "crisis", safety: { kind: "crisis", helplines: e.helplines ?? [] } }));
-          else if (e.kind === "refusal") patch(tutorKey, (m) => ({ ...m, status: "refused", safety: { kind: "refusal" }, chips: e.chips }));
+          if (e.kind === "crisis")
+            patch(tutorKey, (m) => ({
+              ...m,
+              status: "crisis",
+              safety: { kind: "crisis", helplines: e.helplines ?? [] },
+            }));
+          else if (e.kind === "refusal")
+            patch(tutorKey, (m) => ({
+              ...m,
+              status: "refused",
+              safety: { kind: "refusal" },
+              chips: e.chips,
+            }));
           else patch(tutorKey, (m) => ({ ...m, safety: { kind: e.kind } }));
           break;
         case "done":
-          patch(tutorKey, (m) => ({ ...m, id: e.message_id ?? m.id, streaming: false, status: m.status ?? (e.status as Msg["status"]) ?? "ok" }));
+          patch(tutorKey, (m) => ({
+            ...m,
+            id: e.message_id ?? m.id,
+            streaming: false,
+            status: m.status ?? (e.status as Msg["status"]) ?? "ok",
+          }));
           break;
         default:
           break;
       }
     };
     try {
-      await sendMessage(s, sessionId, { client_message_id: clientId, text, input, chip_id: chip }, onEvent, ctl.signal);
+      await sendMessage(
+        s,
+        sessionId,
+        { client_message_id: clientId, text, input, chip_id: chip },
+        onEvent,
+        ctl.signal,
+      );
       patch(tutorKey, (m) => ({ ...m, streaming: false }));
     } catch (err) {
-      if (ctl.signal.aborted) patch(tutorKey, (m) => ({ ...m, streaming: false, status: "stopped" }));
+      if (ctl.signal.aborted)
+        patch(tutorKey, (m) => ({ ...m, streaming: false, status: "stopped" }));
       else {
         s.logger.warn("tutor.send_failed", { code: (err as { code?: string }).code ?? "network" });
-        patch(tutorKey, (m) => ({ ...m, streaming: false, status: "error", error: (err as { code?: string }).code ?? "network" }));
+        patch(tutorKey, (m) => ({
+          ...m,
+          streaming: false,
+          status: "error",
+          error: (err as { code?: string }).code ?? "network",
+        }));
       }
     }
     // Retries reuse the student's message id, so the server replays instead of counting twice.
@@ -234,7 +318,8 @@ function TutorChat() {
   }, [crisisShown]);
 
   const chipLabel = (id: string): string | null => {
-    if (id === "back_to_topic") return context ? t("tutor_social:AI-08.chip", { topic_title: context.title }) : null;
+    if (id === "back_to_topic")
+      return context ? t("tutor_social:AI-08.chip", { topic_title: context.title }) : null;
     const key = CHIP_KEYS[id];
     return key ? t(key) : null;
   };
@@ -264,7 +349,12 @@ function TutorChat() {
           ["show_example", t("tutor_social:AI-02.starter_chips.3")],
         ];
 
-  const resetAt = quota?.resets_at ? new Date(quota.resets_at).toLocaleTimeString(locale === "hi" ? "hi-IN" : "en-IN", { hour: "numeric", minute: "2-digit" }) : "";
+  const resetAt = quota?.resets_at
+    ? new Date(quota.resets_at).toLocaleTimeString(locale === "hi" ? "hi-IN" : "en-IN", {
+        hour: "numeric",
+        minute: "2-digit",
+      })
+    : "";
   const showCounter = quota && !quota.unlimited && quota.limit !== null && msgs.length > 0;
 
   return (
@@ -277,11 +367,19 @@ function TutorChat() {
           </Text>
           {showCounter && (
             <Text variant="caption" tone="muted" testID="tutor-counter">
-              {t("tutor_social:AI-02.free_counter", { n: quota.remaining ?? 0, limit: quota.limit ?? 0 })}
+              {t("tutor_social:AI-02.free_counter", {
+                n: quota.remaining ?? 0,
+                limit: quota.limit ?? 0,
+              })}
             </Text>
           )}
         </span>
-        <IconButton icon="Plus" label={t("tutor_social:AI-02.menu_new_chat")} onPress={() => setContext(null)} testID="tutor-new" />
+        <IconButton
+          icon="Plus"
+          label={t("tutor_social:AI-02.menu_new_chat")}
+          onPress={() => setContext(null)}
+          testID="tutor-new"
+        />
         <IconButton icon="X" label={t("ui:common.close")} onPress={close} testID="tutor-close" />
       </header>
       {context && (
@@ -289,7 +387,11 @@ function TutorChat() {
           <Chip
             kind="filter"
             icon="BookBookmark"
-            label={context.kind === "question" ? context.title : t("tutor_social:AI-02.context_chip", { context_title: context.title })}
+            label={
+              context.kind === "question"
+                ? context.title
+                : t("tutor_social:AI-02.context_chip", { context_title: context.title })
+            }
             onPress={() => setContext(null)}
             accessibilityLabel={`${t("tutor_social:AI-02.context_chip", { context_title: context.title })}, ${t("tutor_social:AI-02.menu_new_chat")}`}
             testID="tutor-context"
@@ -301,21 +403,41 @@ function TutorChat() {
           <Banner tone="offline" text={t("tutor_social:AI-02.offline_pet_line")} />
         </div>
       )}
-      <PlayerProvider value={{ t, bundle, contentBaseUrl: contentUrl(s.contentBaseUrl, ""), online }}>
-        <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-4 py-3" data-testid="tutor-messages">
+      <PlayerProvider
+        value={{ t, bundle, contentBaseUrl: contentUrl(s.contentBaseUrl, ""), online }}
+      >
+        <div
+          className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-4 py-3"
+          data-testid="tutor-messages"
+        >
           {loadFailed ? (
             <Card tone="sunken">
               <span className="flex flex-col gap-2">
                 <Text>{t("tutor_social:AI-02.server_error")}</Text>
-                <Button variant="secondary" size="sm" label={t("tutor_social:AI-02.try_again")} onPress={() => void start(context)} />
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  label={t("tutor_social:AI-02.try_again")}
+                  onPress={() => void start(context)}
+                />
               </span>
             </Card>
           ) : msgs.length === 0 ? (
             <div className="flex flex-col gap-3">
-              <PetLine pet={{ species, mood: "happy" }} petName={petName} text={t("tutor_social:AI-02.greeting_pet_line_empty_chat")} />
+              <PetLine
+                pet={{ species, mood: "happy" }}
+                petName={petName}
+                text={t("tutor_social:AI-02.greeting_pet_line_empty_chat")}
+              />
               <div className="flex flex-wrap gap-2">
                 {starters.map(([id, label]) => (
-                  <Chip key={id} kind="filter" label={label} onPress={() => void send(label, "chip", id)} testID={`tutor-starter-${id}`} />
+                  <Chip
+                    key={id}
+                    kind="filter"
+                    label={label}
+                    onPress={() => void send(label, "chip", id)}
+                    testID={`tutor-starter-${id}`}
+                  />
                 ))}
               </div>
             </div>
@@ -337,11 +459,31 @@ function TutorChat() {
                   onRate={(rating) => {
                     if (!m.id) return;
                     patch(m.key, (x) => ({ ...x, rated: rating }));
-                    void sendFeedback(s, m.id, rating).then((ok) => ok && toast.show(rating === "up" ? t("tutor_social:AI-05.thumbs_up_toast") : t("tutor_social:AI-05.thanks_toast", { pet_name: petName })));
+                    void sendFeedback(s, m.id, rating).then(
+                      (ok) =>
+                        ok &&
+                        toast.show(
+                          rating === "up"
+                            ? t("tutor_social:AI-05.thumbs_up_toast")
+                            : t("tutor_social:AI-05.thanks_toast", { pet_name: petName }),
+                        ),
+                    );
                   }}
                   exhaustedCard={
                     m.exhausted ? (
-                      <LimitCard tier={m.exhausted.tier} trigger={m.exhausted.trigger} limit={quota?.limit ?? null} resetAt={resetAt} eligible={eligible} online={online} onPro={() => void navigate({ to: "/pro", search: { source: "tutor_limit" } })} onReview={() => void navigate({ to: "/review" })} />
+                      <LimitCard
+                        tier={m.exhausted.tier}
+                        trigger={m.exhausted.trigger}
+                        limit={quota?.limit ?? null}
+                        resetAt={resetAt}
+                        eligible={eligible}
+                        online={online}
+                        onPro={() =>
+                          void navigate({ to: "/pro", search: { source: "tutor_limit" } })
+                        }
+                        onReview={() => void navigate({ to: "/review" })}
+                        onParent={() => void navigate({ to: "/parent" })}
+                      />
                     ) : null
                   }
                 />
@@ -355,8 +497,18 @@ function TutorChat() {
         value={draft}
         onChange={setDraft}
         onSend={() => void send(draft, prefill && draft === prefill ? "prefill" : "typed")}
-        label={context ? t("tutor_social:AI-02.input_placeholder_with_context") : t("tutor_social:AI-02.input_placeholder_no_context")}
-        placeholder={exhausted && resetAt ? t("tutor_social:AI-06.reset", { reset_time: resetAt }) : context ? t("tutor_social:AI-02.input_placeholder_with_context") : t("tutor_social:AI-02.input_placeholder_no_context")}
+        label={
+          context
+            ? t("tutor_social:AI-02.input_placeholder_with_context")
+            : t("tutor_social:AI-02.input_placeholder_no_context")
+        }
+        placeholder={
+          exhausted && resetAt
+            ? t("tutor_social:AI-06.reset", { reset_time: resetAt })
+            : context
+              ? t("tutor_social:AI-02.input_placeholder_with_context")
+              : t("tutor_social:AI-02.input_placeholder_no_context")
+        }
         maxLength={1000}
         disabled={!online || !sessionId || exhausted}
         streaming={streaming}
@@ -381,9 +533,19 @@ function TutorMessage(props: {
 }) {
   const { t } = useI18n();
   const { m, petName, species } = props;
-  if (m.safety?.kind === "crisis") return <CrisisCard helplines={m.safety.helplines} petName={petName} species={species} innerRef={props.crisisRef} />;
+  if (m.safety?.kind === "crisis")
+    return (
+      <CrisisCard
+        helplines={m.safety.helplines}
+        petName={petName}
+        species={species}
+        innerRef={props.crisisRef}
+      />
+    );
   if (m.exhausted) return <>{props.exhaustedCard}</>;
-  const chips = (m.chips ?? []).map((id) => [id, props.chipLabel(id)] as const).filter((x): x is readonly [string, string] => !!x[1]);
+  const chips = (m.chips ?? [])
+    .map((id) => [id, props.chipLabel(id)] as const)
+    .filter((x): x is readonly [string, string] => !!x[1]);
   const safetyLine =
     m.safety?.kind === "refusal"
       ? t("tutor_social:AI-08.refusal")
@@ -391,15 +553,29 @@ function TutorMessage(props: {
         ? t("tutor_social:AI-08.redirect_under_13", { topic_title: props.context.title })
         : null;
   return (
-    <div className="flex flex-col gap-2" data-testid="tutor-answer" data-status={m.status ?? (m.streaming ? "streaming" : "")}>
-      {m.safety?.kind === "pii_removed" && <Text variant="caption" tone="muted">{t("tutor_social:AI-08.personal_info_reminder")}</Text>}
+    <div
+      className="flex flex-col gap-2"
+      data-testid="tutor-answer"
+      data-status={m.status ?? (m.streaming ? "streaming" : "")}
+    >
+      {m.safety?.kind === "pii_removed" && (
+        <Text variant="caption" tone="muted">
+          {t("tutor_social:AI-08.personal_info_reminder")}
+        </Text>
+      )}
       {safetyLine ? (
         <PetLine pet={{ species, mood: "thinking" }} petName={petName} text={safetyLine} />
       ) : m.status === "error" ? (
         <Card tone="sunken">
           <span className="flex flex-col gap-2">
             <Text>{t("tutor_social:AI-02.server_error")}</Text>
-            <Button variant="secondary" size="sm" label={t("tutor_social:AI-02.try_again")} onPress={props.onRetry} testID="tutor-retry" />
+            <Button
+              variant="secondary"
+              size="sm"
+              label={t("tutor_social:AI-02.try_again")}
+              onPress={props.onRetry}
+              testID="tutor-retry"
+            />
           </span>
         </Card>
       ) : (
@@ -413,7 +589,12 @@ function TutorMessage(props: {
             m.citations && m.citations.length > 0 ? (
               <>
                 {m.citations.slice(0, 3).map((c) => (
-                  <Chip key={`${c.kind}:${c.id}`} kind="status" tone="sunken" label={c.title ?? ""} />
+                  <Chip
+                    key={`${c.kind}:${c.id}`}
+                    kind="status"
+                    tone="sunken"
+                    label={c.title ?? ""}
+                  />
                 ))}
               </>
             ) : undefined
@@ -422,13 +603,29 @@ function TutorMessage(props: {
             m.id && m.status === "ok" ? (
               <>
                 {/* ui-web has no ThumbsUp, ThumbsDown, Copy or Phone icons yet (reported); the nearest Phosphor icons stand in. */}
-                <IconButton icon="Smiley" label={t("tutor_social:AI-05.thumbs_up_toast")} onPress={() => props.onRate("up")} variant={m.rated === "up" ? "filled" : "plain"} disabled={!!m.rated} testID="tutor-up" />
-                <IconButton icon="Flag" label={t("tutor_social:AI-02.report")} onPress={() => props.onRate("down")} variant={m.rated === "down" ? "filled" : "plain"} disabled={!!m.rated} testID="tutor-down" />
+                <IconButton
+                  icon="Smiley"
+                  label={t("tutor_social:AI-05.thumbs_up_toast")}
+                  onPress={() => props.onRate("up")}
+                  variant={m.rated === "up" ? "filled" : "plain"}
+                  disabled={!!m.rated}
+                  testID="tutor-up"
+                />
+                <IconButton
+                  icon="Flag"
+                  label={t("tutor_social:AI-02.report")}
+                  onPress={() => props.onRate("down")}
+                  variant={m.rated === "down" ? "filled" : "plain"}
+                  disabled={!!m.rated}
+                  testID="tutor-down"
+                />
                 <IconButton
                   icon="FileText"
                   label={t("tutor_social:AI-02.copy")}
                   onPress={() => {
-                    void navigator.clipboard?.writeText(m.text).then(() => toast.show(t("tutor_social:AI-02.copied")));
+                    void navigator.clipboard
+                      ?.writeText(m.text)
+                      .then(() => toast.show(t("tutor_social:AI-02.copied")));
                   }}
                 />
               </>
@@ -442,7 +639,14 @@ function TutorMessage(props: {
       {chips.length > 0 && !m.streaming && (
         <div className="flex flex-wrap gap-2">
           {chips.map(([id, label]) => (
-            <Chip key={id} kind="filter" label={label} icon={id === "draw_it" ? "Lock" : undefined} onPress={() => props.onChip(id, label)} testID={`tutor-chip-${id}`} />
+            <Chip
+              key={id}
+              kind="filter"
+              label={label}
+              icon={id === "draw_it" ? "Lock" : undefined}
+              onPress={() => props.onChip(id, label)}
+              testID={`tutor-chip-${id}`}
+            />
           ))}
         </div>
       )}
@@ -451,14 +655,39 @@ function TutorMessage(props: {
 }
 
 /** AI-06: free questions used up. Under-13s (no paywall trigger) never see a price (R15). */
-function LimitCard(p: { tier: "free" | "pro_fair_use"; trigger: string | null; limit: number | null; resetAt: string; eligible: boolean; online: boolean; onPro: () => void; onReview: () => void }) {
+function LimitCard(p: {
+  tier: "free" | "pro_fair_use";
+  trigger: string | null;
+  limit: number | null;
+  resetAt: string;
+  eligible: boolean;
+  online: boolean;
+  onPro: () => void;
+  onReview: () => void;
+  onParent: () => void;
+}) {
   const { t } = useI18n();
+  const [ask, setAsk] = useState(false);
   const fairUse = p.tier === "pro_fair_use";
   const child = !fairUse && p.trigger === null;
   return (
-    <div role="status" className="flex flex-col gap-3 rounded-card bg-streak-tint p-4" data-testid="ai-06">
-      <Text variant="heading">{fairUse ? t("tutor_social:AI-06.pro_fair_use_variant_title") : t("tutor_social:AI-06.title", { limit: p.limit ?? 0 })}</Text>
-      <Text>{fairUse ? t("tutor_social:AI-06.pro_fair_use_variant_body") : child ? t("tutor_social:AI-06.under_13_body") : t("tutor_social:AI-06.body")}</Text>
+    <div
+      role="status"
+      className="flex flex-col gap-3 rounded-card bg-streak-tint p-4"
+      data-testid="ai-06"
+    >
+      <Text variant="heading">
+        {fairUse
+          ? t("tutor_social:AI-06.pro_fair_use_variant_title")
+          : t("tutor_social:AI-06.title", { limit: p.limit ?? 0 })}
+      </Text>
+      <Text>
+        {fairUse
+          ? t("tutor_social:AI-06.pro_fair_use_variant_body")
+          : child
+            ? t("tutor_social:AI-06.under_13_body")
+            : t("tutor_social:AI-06.body")}
+      </Text>
       {p.resetAt && !fairUse && (
         <span className="flex items-center gap-2">
           <Icon name="Clock" size={16} color="inkMuted" />
@@ -466,10 +695,42 @@ function LimitCard(p: { tier: "free" | "pro_fair_use"; trigger: string | null; l
         </span>
       )}
       {fairUse || child ? (
-        <Button variant="secondary" label={t("tutor_social:AI-06.under_13_buttons.1")} onPress={p.onReview} testID="ai-06-review" />
+        <>
+          <Button
+            variant="secondary"
+            label={t("tutor_social:AI-06.under_13_buttons.1")}
+            onPress={p.onReview}
+            testID="ai-06-review"
+          />
+          {child && (
+            <Button
+              variant="ghost"
+              label={t("tutor_social:AI-06.under_13_buttons.2")}
+              onPress={() => setAsk(true)}
+              testID="ai-06-grown-up"
+            />
+          )}
+          {/* PAY-03 without a price (R15): "yes" opens Parent mode for the grown-up. */}
+          <GrownUpCheck
+            open={ask}
+            child
+            eligible={false}
+            onYes={p.onParent}
+            onClose={() => setAsk(false)}
+          />
+        </>
       ) : (
         <>
-          <Button label={p.eligible ? t("tutor_social:AI-06.primary") : t("me_money:ME-01.pro_card_not_eligible")} onPress={p.onPro} disabled={!p.online} testID="ai-06-pro" />
+          <Button
+            label={
+              p.eligible
+                ? t("tutor_social:AI-06.primary")
+                : t("me_money:ME-01.pro_card_not_eligible")
+            }
+            onPress={p.onPro}
+            disabled={!p.online}
+            testID="ai-06-pro"
+          />
           <Text variant="caption" tone="muted">
             {t("tutor_social:AI-06.pet_line")}
           </Text>
@@ -480,11 +741,28 @@ function LimitCard(p: { tier: "free" | "pro_fair_use"; trigger: string | null; l
 }
 
 /** AI-08 crisis card. Helplines are the server's `safety.helplines` for this locale; none are invented here. */
-function CrisisCard({ helplines, petName, species, innerRef }: { helplines: Helpline[]; petName: string; species: Species; innerRef: React.RefObject<HTMLDivElement | null> }) {
+function CrisisCard({
+  helplines,
+  petName,
+  species,
+  innerRef,
+}: {
+  helplines: Helpline[];
+  petName: string;
+  species: Species;
+  innerRef: React.RefObject<HTMLDivElement | null>;
+}) {
   const { t } = useI18n();
   const [trusted, setTrusted] = useState(false);
   return (
-    <div ref={innerRef} tabIndex={-1} role="alert" aria-labelledby="crisis-title" className="flex flex-col gap-3 rounded-card border border-line bg-surface p-4 dark:bg-surface-raised" data-testid="ai-08-crisis">
+    <div
+      ref={innerRef}
+      tabIndex={-1}
+      role="alert"
+      aria-labelledby="crisis-title"
+      className="flex flex-col gap-3 rounded-card border border-line bg-surface p-4 dark:bg-surface-raised"
+      data-testid="ai-08-crisis"
+    >
       <PetAvatar species={species} mood="resting" size={40} />
       <Text variant="heading" id="crisis-title">
         {t("tutor_social:AI-08.crisis_title")}
@@ -494,7 +772,10 @@ function CrisisCard({ helplines, petName, species, innerRef }: { helplines: Help
         <ul className="m-0 flex list-none flex-col gap-3 p-0" data-testid="crisis-helplines">
           {helplines.map((h) => {
             const extra = Object.entries(h)
-              .filter(([k, v]) => k !== "name" && k !== "number" && typeof v === "string" && !/^https?:/.test(v))
+              .filter(
+                ([k, v]) =>
+                  k !== "name" && k !== "number" && typeof v === "string" && !/^https?:/.test(v),
+              )
               .map(([, v]) => v);
             return (
               <li key={`${h.name}:${h.number}`} className="flex flex-wrap items-center gap-3">
@@ -521,7 +802,12 @@ function CrisisCard({ helplines, petName, species, innerRef }: { helplines: Help
           })}
         </ul>
       )}
-      <Button variant="secondary" label={t("tutor_social:AI-08.trusted_person")} onPress={() => setTrusted((v) => !v)} testID="crisis-trusted" />
+      <Button
+        variant="secondary"
+        label={t("tutor_social:AI-08.trusted_person")}
+        onPress={() => setTrusted((v) => !v)}
+        testID="crisis-trusted"
+      />
       {trusted && (
         <ul className="m-0 flex flex-col gap-1 ps-5">
           <li>
@@ -535,7 +821,12 @@ function CrisisCard({ helplines, petName, species, innerRef }: { helplines: Help
           </li>
         </ul>
       )}
-      <Button variant="ghost" label={t("tutor_social:AI-08.keep_talking", { pet_name: petName })} onPress={() => innerRef.current?.blur()} testID="crisis-keep-talking" />
+      <Button
+        variant="ghost"
+        label={t("tutor_social:AI-08.keep_talking", { pet_name: petName })}
+        onPress={() => innerRef.current?.blur()}
+        testID="crisis-keep-talking"
+      />
     </div>
   );
 }

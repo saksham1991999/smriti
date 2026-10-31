@@ -1,0 +1,378 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.rigid-equilibrium:deep_dive",
+  "topic": "phy.rotational-motion.rigid-equilibrium",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Balanced forces and balanced turning",
+        "hi": "संतुलित बल और संतुलित घुमाव"
+      },
+      "subtopic": "phy.rotational-motion.rigid-equilibrium.core",
+      "card_ids": [
+        "phy.rotational-motion.rigid-equilibrium:dd:01",
+        "phy.rotational-motion.rigid-equilibrium:dd:02",
+        "phy.rotational-motion.rigid-equilibrium:dd:03",
+        "phy.rotational-motion.rigid-equilibrium:dd:04",
+        "phy.rotational-motion.rigid-equilibrium:dd:05",
+        "phy.rotational-motion.rigid-equilibrium:dd:06",
+        "phy.rotational-motion.rigid-equilibrium:dd:07",
+        "phy.rotational-motion.rigid-equilibrium:dd:08",
+        "phy.rotational-motion.rigid-equilibrium:dd:09",
+        "phy.rotational-motion.rigid-equilibrium:dd:10",
+        "phy.rotational-motion.rigid-equilibrium:dd:11"
+      ],
+      "estimated_minutes": 7
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "A level seesaw",
+        "hi": "क्षैतिज सी-सा"
+      },
+      "body": {
+        "en": "Two children of about the same weight sit at the two ends of a seesaw and it stays level. If a heavier child took one end, that side would go down, unless the heavier child moved in closer to the pivot. Balancing a body means balancing both its forces and its turning effects.",
+        "hi": "लगभग समान भार के दो बच्चे सी-सा के दोनों सिरों पर बैठते हैं और वह क्षैतिज रहता है। यदि एक सिरे पर भारी बच्चा बैठे, तो वह ओर नीचे चली जाएगी, जब तक कि भारी बच्चा आलंब के पास न खिसक आए। किसी पिंड को संतुलित करने का अर्थ है उसके बलों और उसके घुमाने वाले प्रभावों, दोनों को संतुलित करना।"
+      },
+      "media": "img.rotational-motion.seesaw"
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Two conditions for equilibrium",
+        "hi": "संतुलन की दो शर्तें"
+      },
+      "body": {
+        "en": "A rigid body is in mechanical equilibrium when both its linear momentum and its angular momentum stay unchanged. That needs two conditions:\n\n1. Translational equilibrium: the total external force is zero, $\\sum \\vec{F}_i = \\vec{0}$.\n2. Rotational equilibrium: the total external torque is zero, $\\sum \\vec{\\tau}_i = \\vec{0}$.\n\nThe two are independent; one can hold without the other. If the total force is zero, the total torque is the same about every origin, so you may take moments about whichever point is easiest.",
+        "hi": "कोई दृढ़ पिंड यांत्रिक संतुलन में तब होता है जब उसका रेखीय संवेग और कोणीय संवेग दोनों अपरिवर्तित रहें। इसके लिए दो शर्तें चाहिए:\n\n1. स्थानांतरीय संतुलन: कुल बाह्य बल शून्य, $\\sum \\vec{F}_i = \\vec{0}$।\n2. घूर्णी संतुलन: कुल बाह्य बल आघूर्ण शून्य, $\\sum \\vec{\\tau}_i = \\vec{0}$।\n\nदोनों स्वतंत्र हैं; एक दूसरे के बिना भी हो सकती है। यदि कुल बल शून्य हो, तो कुल बल आघूर्ण हर मूल बिंदु के परितः समान होता है, अतः आप जिस बिंदु के परितः सबसे सरल हो उसी के परितः आघूर्ण ले सकते हैं।"
+      },
+      "media": "img.rotational-motion.seesaw",
+      "highlights": [
+        {
+          "term": {
+            "en": "mechanical equilibrium",
+            "hi": "यांत्रिक संतुलन"
+          },
+          "definition": {
+            "en": "zero total force and zero total torque",
+            "hi": "शून्य कुल बल और शून्य कुल बल आघूर्ण"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.8, Eqs. 6.30a-6.31b, Summary 11, Points to Ponder 5-6"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A couple",
+        "hi": "बलयुग्म"
+      },
+      "body": {
+        "en": "A pair of equal and opposite forces with different lines of action is called a couple. The total force is zero, so the body does not accelerate as a whole, but the torques add up, so it turns. Opening a bottle lid with your fingers, or turning a steering wheel with both hands on opposite sides of the rim, applies a couple. The Earth's magnetic field acts on a compass needle with a couple.\n\nThe moment of a couple is the same about every point: for forces $\\vec{F}$ at B and $-\\vec{F}$ at A, it is $\\vec{AB} \\times \\vec{F}$, which does not depend on the origin.",
+        "hi": "भिन्न क्रिया रेखाओं वाले बराबर और विपरीत बलों के युगल को बलयुग्म कहते हैं। कुल बल शून्य होता है, अतः पिंड समग्र रूप से त्वरित नहीं होता, पर बल आघूर्ण जुड़ जाते हैं, इसलिए वह घूमता है। उँगलियों से बोतल का ढक्कन खोलना, या स्टीयरिंग व्हील को परिधि के विपरीत ओर दोनों हाथों से घुमाना, बलयुग्म लगाना है। पृथ्वी का चुंबकीय क्षेत्र कंपास की सुई पर बलयुग्म लगाता है।\n\nबलयुग्म का आघूर्ण हर बिंदु के परितः समान होता है: B पर $\\vec{F}$ और A पर $-\\vec{F}$ बलों के लिए यह $\\vec{AB} \\times \\vec{F}$ है, जो मूल बिंदु पर निर्भर नहीं करता।"
+      },
+      "media": "img.rotational-motion.steering-wheel",
+      "highlights": [
+        {
+          "term": {
+            "en": "couple",
+            "hi": "बलयुग्म"
+          },
+          "definition": {
+            "en": "equal, opposite, non-collinear forces: turning without translation",
+            "hi": "बराबर, विपरीत, असंरेख बल: बिना स्थानांतरण के घुमाव"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.8, Figs. 6.20-6.21, Example 6.7"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The principle of moments",
+        "hi": "आघूर्णों का सिद्धांत"
+      },
+      "body": {
+        "en": "An ideal lever is a light rod free to turn about a point on it, the fulcrum. With a load $F_1$ at distance $d_1$ and an effort $F_2$ at distance $d_2$ on the other side, rotational equilibrium about the fulcrum gives\n\n$d_1F_1 = d_2F_2$: load arm $\\times$ load = effort arm $\\times$ effort.\n\nThe fulcrum pushes up with $R = F_1 + F_2$. The ratio $\\frac{F_1}{F_2} = \\frac{d_2}{d_1}$ is the mechanical advantage: with a long effort arm, a small effort lifts a large load. A seesaw and a beam balance are levers.",
+        "hi": "आदर्श उत्तोलक एक हलकी छड़ है जो उस पर के एक बिंदु, आलंब, के परितः घूम सकती है। भार $F_1$, $d_1$ दूरी पर और दूसरी ओर प्रयास $F_2$, $d_2$ दूरी पर हो, तो आलंब के परितः घूर्णी संतुलन से\n\n$d_1F_1 = d_2F_2$: भार भुजा $\\times$ भार = प्रयास भुजा $\\times$ प्रयास।\n\nआलंब $R = F_1 + F_2$ से ऊपर धकेलता है। अनुपात $\\frac{F_1}{F_2} = \\frac{d_2}{d_1}$ यांत्रिक लाभ है: लंबी प्रयास भुजा से छोटा प्रयास बड़ा भार उठा लेता है। सी-सा और तुलादंड उत्तोलक हैं।"
+      },
+      "media": "img.rotational-motion.seesaw",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.8.1, Eqs. 6.32a-6.32b, Fig. 6.23"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Centre of gravity",
+        "hi": "गुरुत्व केन्द्र"
+      },
+      "body": {
+        "en": "The centre of gravity of a body is the point about which the total gravitational torque on it is zero. Support the body there, as on a pencil tip, and it balances: the support's upward push equals Mg and gives no torque.\n\nWhere g is the same over the whole body, the centre of gravity coincides with the centre of mass. For a body so large that g varies over it, the two differ. To find the centre of gravity of a flat, odd-shaped body, hang it from two different points in turn and mark the vertical line through each point of suspension; the lines cross at the centre of gravity.",
+        "hi": "किसी पिंड का गुरुत्व केन्द्र वह बिंदु है जिसके परितः उस पर कुल गुरुत्वीय बल आघूर्ण शून्य होता है। पिंड को वहाँ टेक दीजिए, जैसे पेंसिल की नोक पर, तो वह संतुलित रहता है: टेक का ऊपरी धक्का Mg के बराबर है और कोई बल आघूर्ण नहीं देता।\n\nजहाँ पूरे पिंड पर g समान हो, वहाँ गुरुत्व केन्द्र द्रव्यमान केन्द्र से संपाती होता है। इतने बड़े पिंड के लिए, जिस पर g बदलता हो, दोनों भिन्न होते हैं। किसी चपटे, बेढब पिंड का गुरुत्व केन्द्र ज्ञात करने के लिए उसे बारी-बारी से दो भिन्न बिंदुओं से लटकाइए और प्रत्येक निलंबन बिंदु से गुज़रती ऊर्ध्वाधर रेखा अंकित कीजिए; रेखाएँ गुरुत्व केन्द्र पर काटती हैं।"
+      },
+      "media": "img.rotational-motion.cardboard-balance",
+      "highlights": [
+        {
+          "term": {
+            "en": "centre of gravity",
+            "hi": "गुरुत्व केन्द्र"
+          },
+          "definition": {
+            "en": "where the total gravitational torque is zero",
+            "hi": "जहाँ कुल गुरुत्वीय बल आघूर्ण शून्य है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.8.2, Eq. 6.33, Figs. 6.24-6.25, Summary 12, Points to Ponder 7"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A seesaw has its pivot at the middle. A 30 kg child sits 1.5 m from the pivot. How far from the pivot, on the other side, must a 45 kg child sit for the seesaw to balance?",
+        "hi": "एक सी-सा का आलंब बीच में है। 30 kg का एक बच्चा आलंब से 1.5 m दूर बैठा है। सी-सा को संतुलित करने के लिए 45 kg के बच्चे को दूसरी ओर आलंब से कितनी दूर बैठना चाहिए?"
+      },
+      "solution_steps": [
+        {
+          "en": "Moments about the pivot: $30g \\times 1.5 = 45g \\times d$",
+          "hi": "आलंब के परितः आघूर्ण: $30g \\times 1.5 = 45g \\times d$"
+        },
+        {
+          "en": "$d = \\frac{30 \\times 1.5}{45} = 1.0$ m",
+          "hi": "$d = \\frac{30 \\times 1.5}{45} = 1.0$ m"
+        }
+      ],
+      "answer": {
+        "en": "1.0 m from the pivot",
+        "hi": "आलंब से 1.0 m"
+      },
+      "answer_value": {
+        "value": 1.0,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Balancing the weights instead of the moments.",
+        "hi": "आघूर्णों के बजाय भारों को संतुलित करना।"
+      },
+      "media": "img.rotational-motion.seesaw",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.8.1, Eq. 6.32a"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A metal bar 70 cm long and of mass 4.00 kg rests on two knife-edges, each 10 cm from an end. A 6.00 kg load hangs 30 cm from one end. Find the reactions at the knife-edges. Take $g = 9.8$ m/s².",
+        "hi": "70 cm लंबी और 4.00 kg द्रव्यमान की धातु की एक छड़ दो क्षुर-धारों पर टिकी है, प्रत्येक एक सिरे से 10 cm पर। एक सिरे से 30 cm पर 6.00 kg का भार लटका है। क्षुर-धारों पर प्रतिक्रियाएँ ज्ञात कीजिए। $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "From that end, the edges are at 10 cm and 60 cm, the bar's weight 39.2 N acts at 35 cm and the load 58.8 N at 30 cm.",
+          "hi": "उस सिरे से, धारें 10 cm और 60 cm पर हैं, छड़ का भार 39.2 N, 35 cm पर और भार 58.8 N, 30 cm पर लगता है।"
+        },
+        {
+          "en": "Moments about the first edge: $R_2 \\times 0.50 = 39.2 \\times 0.25 + 58.8 \\times 0.20$, so $R_2 = 43.12$ N.",
+          "hi": "पहली धार के परितः आघूर्ण: $R_2 \\times 0.50 = 39.2 \\times 0.25 + 58.8 \\times 0.20$, अतः $R_2 = 43.12$ N।"
+        },
+        {
+          "en": "Forces: $R_1 = 98 - 43.12 = 54.88$ N.",
+          "hi": "बल: $R_1 = 98 - 43.12 = 54.88$ N।"
+        }
+      ],
+      "answer": {
+        "en": "54.88 N at the edge nearer the load, 43.12 N at the other",
+        "hi": "भार के निकट वाली धार पर 54.88 N, दूसरी पर 43.12 N"
+      },
+      "answer_value": {
+        "value": 54.88,
+        "unit": "N",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting the bar's own weight, which acts at its centre.",
+        "hi": "छड़ का अपना भार भूल जाना, जो उसके केन्द्र पर लगता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.8"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 4,
+      "problem": {
+        "en": "A 3 m ladder of mass 20 kg leans against a frictionless wall with its foot on the floor 1 m from the wall. Find the reaction of the wall and the reaction of the floor. Take $g = 9.8$ m/s².",
+        "hi": "20 kg द्रव्यमान की 3 m लंबी सीढ़ी घर्षणरहित दीवार से टिकी है और उसका पाद फ़र्श पर दीवार से 1 m दूर है। दीवार की प्रतिक्रिया और फ़र्श की प्रतिक्रिया ज्ञात कीजिए। $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The top is $\\sqrt{3^2 - 1^2} = 2\\sqrt{2}$ m up the wall. The weight 196 N acts at the middle, 0.5 m horizontally from the foot.",
+          "hi": "शीर्ष दीवार पर $\\sqrt{3^2 - 1^2} = 2\\sqrt{2}$ m ऊँचा है। भार 196 N मध्य पर लगता है, पाद से क्षैतिजतः 0.5 m।"
+        },
+        {
+          "en": "The smooth wall pushes horizontally with $F_1$. Moments about the foot: $F_1 \\times 2\\sqrt{2} = 196 \\times 0.5$, so $F_1 \\approx 34.6$ N.",
+          "hi": "चिकनी दीवार क्षैतिजतः $F_1$ से धकेलती है। पाद के परितः आघूर्ण: $F_1 \\times 2\\sqrt{2} = 196 \\times 0.5$, अतः $F_1 \\approx 34.6$ N।"
+        },
+        {
+          "en": "The floor gives 196 N up and 34.6 N of friction towards the wall: $F_2 = \\sqrt{196^2 + 34.6^2} \\approx 199$ N, at $\\tan^{-1}(196/34.6) \\approx 80°$ to the floor.",
+          "hi": "फ़र्श 196 N ऊपर और दीवार की ओर 34.6 N घर्षण देता है: $F_2 = \\sqrt{196^2 + 34.6^2} \\approx 199$ N, फ़र्श से $\\tan^{-1}(196/34.6) \\approx 80°$ पर।"
+        }
+      ],
+      "answer": {
+        "en": "Wall: about 34.6 N, horizontal; floor: about 199 N at about $80°$ to the floor",
+        "hi": "दीवार: लगभग 34.6 N, क्षैतिज; फ़र्श: लगभग 199 N, फ़र्श से लगभग $80°$ पर"
+      },
+      "answer_value": {
+        "value": 34.6,
+        "unit": "N",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting friction at the floor: the smooth wall pushes only horizontally, so the floor must supply the balancing horizontal force.",
+        "hi": "फ़र्श पर घर्षण भूल जाना: चिकनी दीवार केवल क्षैतिजतः धकेलती है, अतः संतुलन करने वाला क्षैतिज बल फ़र्श को देना होता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 6.9"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.rigid-equilibrium.0001"
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.rigid-equilibrium.0003"
+    },
+    {
+      "id": "phy.rotational-motion.rigid-equilibrium:dd:11",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Equilibrium:$\\sum \\vec{F} = \\vec{0}$ and $\\sum \\vec{\\tau} = \\vec{0}$.",
+          "hi": "संतुलन: $\\sum \\vec{F} = \\vec{0}$ और $\\sum \\vec{\\tau} = \\vec{0}$।"
+        },
+        {
+          "en": "For a lever, $d_1F_1 = d_2F_2$; a couple turns without translating.",
+          "hi": "उत्तोलक के लिए $d_1F_1 = d_2F_2$; बलयुग्म बिना स्थानांतरण के घुमाता है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

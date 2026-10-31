@@ -1,0 +1,512 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.angular-velocity",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.angular-velocity.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For a rigid body rotating about a fixed axis, the quantity that is the same for every particle at a given instant is",
+        "hi": "स्थिर अक्ष के परितः घूमते दृढ़ पिंड के लिए, किसी क्षण पर हर कण के लिए समान राशि है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "angular velocity",
+            "hi": "कोणीय वेग"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "linear velocity",
+            "hi": "रेखीय वेग"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "linear speed",
+            "hi": "रेखीय चाल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "centripetal acceleration",
+            "hi": "अभिकेन्द्र त्वरण"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which quantity has no r in it?",
+          "hi": "किस राशि में r नहीं है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A rigid body turns as one piece.",
+          "hi": "दृढ़ पिंड एक इकाई की तरह घूमता है।"
+        },
+        "steps": [
+          {
+            "en": "Every particle turns through the same angle in the same time, so $\\omega$ is shared; $v = \\omega r$ depends on r.",
+            "hi": "हर कण समान समय में समान कोण घूमता है, अतः $\\omega$ साझा है; $v = \\omega r$, r पर निर्भर है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Linear velocity depends on the distance from the axis and on direction.",
+              "hi": "रेखीय वेग अक्ष से दूरी और दिशा पर निर्भर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Linear speed is $\\omega r$, larger farther out.",
+              "hi": "रेखीय चाल $\\omega r$ है, दूर अधिक।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Centripetal acceleration is $\\omega^2 r$, which also depends on r.",
+              "hi": "अभिकेन्द्र त्वरण $\\omega^2 r$ है, जो भी r पर निर्भर है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.angular-velocity.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A wheel spins at 4 rad/s. The speed of a point 0.5 m from its axis is",
+        "hi": "एक पहिया 4 rad/s से घूमता है। इसके अक्ष से 0.5 m दूर के बिंदु की चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s",
+            "hi": "2 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "8 m/s",
+            "hi": "8 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0.125 m/s",
+            "hi": "0.125 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 m/s",
+            "hi": "4 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v = \\omega r$",
+          "hi": "$v = \\omega r$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Multiply the angular speed by the distance from the axis.",
+          "hi": "कोणीय चाल को अक्ष से दूरी से गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$v = \\omega r = 4 \\times 0.5 = 2$ m/s",
+            "hi": "$v = \\omega r = 4 \\times 0.5 = 2$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That divides by r instead of multiplying.",
+              "hi": "यह r से गुणा करने के बजाय भाग देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides r by $\\omega$.",
+              "hi": "यह r को $\\omega$ से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That ignores the distance from the axis.",
+              "hi": "यह अक्ष से दूरी की उपेक्षा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.angular-velocity.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The angle turned by a wheel is $\\theta = 2t^3$ rad, with t in seconds. Its angular acceleration at $t = 3$ s, in rad/s², is",
+        "hi": "एक पहिए द्वारा घूमा गया कोण $\\theta = 2t^3$ rad है, जहाँ t सेकंड में है। $t = 3$ s पर इसका कोणीय त्वरण, rad/s² में, है"
+      },
+      "answer": {
+        "value": 36,
+        "unit": "rad/s²"
+      },
+      "hints": [
+        {
+          "en": "$\\alpha = d^2\\theta/dt^2$",
+          "hi": "$\\alpha = d^2\\theta/dt^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Differentiate twice.",
+          "hi": "दो बार अवकलन कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\omega = \\frac{d\\theta}{dt} = 6t^2$; $\\alpha = \\frac{d\\omega}{dt} = 12t$",
+            "hi": "$\\omega = \\frac{d\\theta}{dt} = 6t^2$; $\\alpha = \\frac{d\\omega}{dt} = 12t$"
+          },
+          {
+            "en": "At $t = 3$ s, $\\alpha = 36$ rad/s².",
+            "hi": "$t = 3$ s पर $\\alpha = 36$ rad/s²।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Stopping after one derivative gives $\\omega = 54$ rad/s, the angular velocity, not the angular acceleration.",
+              "hi": "एक अवकलन के बाद रुकने पर $\\omega = 54$ rad/s मिलता है, जो कोणीय वेग है, कोणीय त्वरण नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.angular-velocity.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A turntable lies flat and turns anticlockwise as seen from above. Its angular velocity vector points",
+        "hi": "एक घूर्णी मेज़ क्षैतिज रखी है और ऊपर से देखने पर वामावर्त घूमती है। इसका कोणीय वेग सदिश इंगित करता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "vertically upwards, along the axis",
+            "hi": "अक्ष के अनुदिश ऊर्ध्वाधर ऊपर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "vertically downwards",
+            "hi": "ऊर्ध्वाधर नीचे"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "along the velocity of a point on the rim",
+            "hi": "किनारे के बिंदु के वेग के अनुदिश"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "towards the centre of the turntable",
+            "hi": "मेज़ के केन्द्र की ओर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Right-hand rule",
+          "hi": "दाएँ हाथ का नियम"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Curl your right-hand fingers the way it turns.",
+          "hi": "दाएँ हाथ की उँगलियाँ उसके घूमने की दिशा में मोड़िए।"
+        },
+        "steps": [
+          {
+            "en": "Fingers anticlockwise as seen from above: the thumb points up, along the axis.",
+            "hi": "ऊपर से देखने पर उँगलियाँ वामावर्त: अँगूठा अक्ष के अनुदिश ऊपर इंगित करता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Downwards would be clockwise as seen from above.",
+              "hi": "नीचे की दिशा ऊपर से देखने पर दक्षिणावर्त घूर्णन के लिए होती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The rim velocity keeps changing direction; $\\vec{\\omega}$ is fixed along the axis.",
+              "hi": "किनारे का वेग दिशा बदलता रहता है; $\\vec{\\omega}$ अक्ष के अनुदिश स्थिर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the direction of the centripetal acceleration of a rim point.",
+              "hi": "यह किनारे के बिंदु के अभिकेन्द्र त्वरण की दिशा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.angular-velocity.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.angular-velocity.core.rotation-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A disc of radius 0.2 m spins at 300 revolutions per minute. The speed of a point on its rim is about",
+        "hi": "0.2 m त्रिज्या की एक चकती 300 चक्कर प्रति मिनट से घूमती है। इसकी परिधि के बिंदु की चाल लगभग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "6.3 m/s",
+            "hi": "6.3 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "60 m/s",
+            "hi": "60 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 m/s",
+            "hi": "1 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "31.4 m/s",
+            "hi": "31.4 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "1 rev = $2\\pi$ rad, 1 min = 60 s",
+          "hi": "1 चक्कर = $2\\pi$ rad, 1 मिनट = 60 s"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Convert to rad/s, then multiply by the radius.",
+          "hi": "rad/s में बदलिए, फिर त्रिज्या से गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\omega = \\frac{300 \\times 2\\pi}{60} = 10\\pi$ rad/s",
+            "hi": "$\\omega = \\frac{300 \\times 2\\pi}{60} = 10\\pi$ rad/s"
+          },
+          {
+            "en": "$v = \\omega r = 10\\pi \\times 0.2 = 2\\pi \\approx 6.3$ m/s",
+            "hi": "$v = \\omega r = 10\\pi \\times 0.2 = 2\\pi \\approx 6.3$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That multiplies rev/min by r without converting.",
+              "hi": "यह बिना बदले rev/min को r से गुणा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That uses rev/s without the $2\\pi$.",
+              "hi": "यह $2\\pi$ के बिना rev/s लेता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is $\\omega$ in rad/s, not the rim speed.",
+              "hi": "यह rad/s में $\\omega$ है, परिधि की चाल नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

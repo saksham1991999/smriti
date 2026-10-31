@@ -1,0 +1,673 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §10.5 Calculating Moments of Inertia (moment of inertia by integration; parallel-axis theorem)",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.moment-of-inertia-topic",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The SI unit of moment of inertia is",
+        "hi": "जड़त्व आघूर्ण का SI मात्रक है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "kg m²",
+            "hi": "kg m²"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "kg m",
+            "hi": "kg m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "N m",
+            "hi": "N m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "kg m²/s",
+            "hi": "kg m²/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$I = \\sum m_ir_i^2$",
+          "hi": "$I = \\sum m_ir_i^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "I is a mass times a distance squared.",
+          "hi": "I एक द्रव्यमान गुणा दूरी का वर्ग है।"
+        },
+        "steps": [
+          {
+            "en": "$I = \\sum m_ir_i^2$: kg $\\times$ m²",
+            "hi": "$I = \\sum m_ir_i^2$: kg $\\times$ m²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The distance is squared.",
+              "hi": "दूरी का वर्ग होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "N m is the unit of torque.",
+              "hi": "N m बल आघूर्ण का मात्रक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "kg m²/s is the unit of angular momentum.",
+              "hi": "kg m²/s कोणीय संवेग का मात्रक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 15,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The moment of inertia of a body does NOT depend on",
+        "hi": "किसी पिंड का जड़त्व आघूर्ण किस पर निर्भर नहीं करता?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "its angular velocity",
+            "hi": "उसके कोणीय वेग पर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "its mass",
+            "hi": "उसके द्रव्यमान पर"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the distribution of its mass",
+            "hi": "उसके द्रव्यमान के वितरण पर"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the axis of rotation",
+            "hi": "घूर्णन अक्ष पर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which quantity is missing from the formula?",
+          "hi": "सूत्र में कौन सी राशि नहीं है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Look at what appears in $\\sum m_ir_i^2$.",
+          "hi": "देखिए कि $\\sum m_ir_i^2$ में क्या आता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\sum m_ir_i^2$ has masses and distances from the axis, but no $\\omega$.",
+            "hi": "$\\sum m_ir_i^2$ में द्रव्यमान और अक्ष से दूरियाँ हैं, पर $\\omega$ नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Every $m_i$ appears in the sum.",
+              "hi": "योग में हर $m_i$ आता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The distances $r_i$ describe the distribution.",
+              "hi": "दूरियाँ $r_i$ वितरण बताती हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The $r_i$ are measured from the axis, so changing it changes I.",
+              "hi": "$r_i$ अक्ष से मापी जाती हैं, अतः अक्ष बदलने से I बदलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Three particles of 1 kg each are 1 m, 2 m and 3 m from an axis. Their moment of inertia about the axis, in kg m², is",
+        "hi": "1 kg के तीन कण एक अक्ष से 1 m, 2 m और 3 m दूर हैं। अक्ष के परितः उनका जड़त्व आघूर्ण, kg m² में, है"
+      },
+      "answer": {
+        "value": 14,
+        "unit": "kg m²"
+      },
+      "hints": [
+        {
+          "en": "$I = \\sum m_ir_i^2$",
+          "hi": "$I = \\sum m_ir_i^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Square each distance before adding.",
+          "hi": "जोड़ने से पहले प्रत्येक दूरी का वर्ग कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$I = 1(1^2) + 1(2^2) + 1(3^2) = 1 + 4 + 9 = 14$ kg m²",
+            "hi": "$I = 1(1^2) + 1(2^2) + 1(3^2) = 1 + 4 + 9 = 14$ kg m²"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding the distances without squaring gives 6.",
+              "hi": "बिना वर्ग किए दूरियाँ जोड़ने पर 6 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The moment of inertia of a uniform disc of mass M and radius R about the axis through its centre, perpendicular to its plane, is",
+        "hi": "M द्रव्यमान और R त्रिज्या की एकसमान चकती का उसके केन्द्र से गुज़रते, तल के लंबवत् अक्ष के परितः जड़त्व आघूर्ण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$MR^2/2$",
+            "hi": "$MR^2/2$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$MR^2$",
+            "hi": "$MR^2$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$MR^2/4$",
+            "hi": "$MR^2/4$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$2MR^2/5$",
+            "hi": "$2MR^2/5$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Disc: half a ring",
+          "hi": "चकती: वलय का आधा"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Part of the disc's mass is near the centre, so I is less than a ring's.",
+          "hi": "चकती का कुछ द्रव्यमान केन्द्र के पास है, अतः I वलय से कम है।"
+        },
+        "steps": [
+          {
+            "en": "Table 6.1: disc, perpendicular axis through the centre, $MR^2/2$.",
+            "hi": "सारणी 6.1: चकती, केन्द्र से गुज़रता लंबवत् अक्ष, $MR^2/2$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$MR^2$ is for a ring, with all its mass at R.",
+              "hi": "$MR^2$ वलय के लिए है, जिसका पूरा द्रव्यमान R पर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$MR^2/4$ is for the disc about a diameter.",
+              "hi": "$MR^2/4$ व्यास के परितः चकती के लिए है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$2MR^2/5$ is for a solid sphere.",
+              "hi": "$2MR^2/5$ ठोस गोले के लिए है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 15,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ring and a disc have the same mass and radius and spin about their central axes, perpendicular to their planes, at the same angular speed. The ratio of their kinetic energies, ring to disc, is",
+        "hi": "एक वलय और एक चकती का द्रव्यमान और त्रिज्या समान है और वे तल के लंबवत् अपने केन्द्रीय अक्षों के परितः समान कोणीय चाल से घूमते हैं। उनकी गतिज ऊर्जाओं का अनुपात, वलय से चकती, है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 : 1",
+            "hi": "2 : 1"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1 : 2",
+            "hi": "1 : 2"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 : 1",
+            "hi": "1 : 1"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 : 1",
+            "hi": "4 : 1"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$K = \\frac{1}{2}I\\omega^2$",
+          "hi": "$K = \\frac{1}{2}I\\omega^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "At the same $\\omega$, kinetic energy is in proportion to I.",
+          "hi": "समान $\\omega$ पर गतिज ऊर्जा I के अनुपात में है।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{K_{ring}}{K_{disc}} = \\frac{MR^2}{MR^2/2} = 2$",
+            "hi": "$\\frac{K_{ring}}{K_{disc}} = \\frac{MR^2}{MR^2/2} = 2$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is disc to ring.",
+              "hi": "यह चकती से वलय है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Same mass does not mean the same I.",
+              "hi": "समान द्रव्यमान का अर्थ समान I नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Kinetic energy is linear in I, not in its square.",
+              "hi": "गतिज ऊर्जा I में रैखिक है, उसके वर्ग में नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0006",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A flywheel with moment of inertia 0.5 kg m² spins at 20 rad/s. Its rotational kinetic energy, in J, is",
+        "hi": "0.5 kg m² जड़त्व आघूर्ण वाला एक गतिपालक पहिया 20 rad/s से घूमता है। इसकी घूर्णी गतिज ऊर्जा, J में, है"
+      },
+      "answer": {
+        "value": 100,
+        "unit": "J"
+      },
+      "hints": [
+        {
+          "en": "$K = \\frac{1}{2}I\\omega^2$",
+          "hi": "$K = \\frac{1}{2}I\\omega^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Use $\\frac{1}{2}I\\omega^2$.",
+          "hi": "$\\frac{1}{2}I\\omega^2$ लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$K = \\frac{1}{2} \\times 0.5 \\times 20^2 = 100$ J",
+            "hi": "$K = \\frac{1}{2} \\times 0.5 \\times 20^2 = 100$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Forgetting to square $\\omega$ gives 5.",
+              "hi": "$\\omega$ का वर्ग करना भूलने पर 5 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.moment-of-inertia-topic.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The radius of gyration of a solid sphere of radius R about a diameter is",
+        "hi": "R त्रिज्या के ठोस गोले की व्यास के परितः परिभ्रमण त्रिज्या है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\sqrt{2/5}\\,R$",
+            "hi": "$\\sqrt{2/5}\\,R$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$2R/5$",
+            "hi": "$2R/5$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$R/\\sqrt{2}$",
+            "hi": "$R/\\sqrt{2}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$R$",
+            "hi": "$R$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$I = Mk^2$",
+          "hi": "$I = Mk^2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Set $Mk^2$ equal to $2MR^2/5$.",
+          "hi": "$Mk^2$ को $2MR^2/5$ के बराबर रखिए।"
+        },
+        "steps": [
+          {
+            "en": "$Mk^2 = \\frac{2}{5}MR^2$, so $k = \\sqrt{\\frac{2}{5}}\\,R \\approx 0.63R$",
+            "hi": "$Mk^2 = \\frac{2}{5}MR^2$, अतः $k = \\sqrt{\\frac{2}{5}}\\,R \\approx 0.63R$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That forgets the square root.",
+              "hi": "यह वर्गमूल भूल जाता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is k for a disc about its axis.",
+              "hi": "यह अपने अक्ष के परितः चकती का k है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is k for a ring about its axis.",
+              "hi": "यह अपने अक्ष के परितः वलय का k है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

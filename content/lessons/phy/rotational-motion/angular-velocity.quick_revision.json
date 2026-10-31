@@ -1,0 +1,107 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.angular-velocity:quick_revision",
+  "topic": "phy.rotational-motion.angular-velocity",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.rotational-motion.angular-velocity.core.rotation-basics"
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.angular-velocity:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.rotational-motion.angular-velocity"
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.angular-velocity.0002"
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.angular-velocity.0004"
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Rotation: circles about a fixed axis, one shared angular velocity.",
+          "hi": "घूर्णन: स्थिर अक्ष के परितः वृत्त, एक साझा कोणीय वेग।"
+        },
+        {
+          "en": "Linear speed grows with distance from the axis.",
+          "hi": "रेखीय चाल अक्ष से दूरी के साथ बढ़ती है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Points farther out have a larger angular velocity.",
+            "hi": "दूर के बिंदुओं का कोणीय वेग अधिक होता है।"
+          },
+          "correct": {
+            "en": "They have a larger linear speed; $\\omega$ is the same.",
+            "hi": "उनकी रेखीय चाल अधिक होती है; $\\omega$ समान है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "$\\vec{\\omega}$ points along the velocity of a point on the rim.",
+            "hi": "$\\vec{\\omega}$ किनारे के बिंदु के वेग के अनुदिश है।"
+          },
+          "correct": {
+            "en": "$\\vec{\\omega}$ lies along the axis, by the right-hand rule.",
+            "hi": "$\\vec{\\omega}$ दाएँ हाथ के नियम से अक्ष के अनुदिश है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

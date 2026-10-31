@@ -45,6 +45,22 @@ const TABLE: Record<string, UnitInfo> = {
   "cm/s²": U("acceleration", 1e-2),
   // angular speed (rad/s)
   "rad/s": U("angular_speed", 1),
+  "rev/min": U("angular_speed", (2 * Math.PI) / 60),
+  rpm: U("angular_speed", (2 * Math.PI) / 60),
+  // angular acceleration (rad/s^2)
+  "rad/s^2": U("angular_acceleration", 1),
+  "rad/s²": U("angular_acceleration", 1),
+  // torque (N m); kept apart from energy, which has the same dimensions
+  "N m": U("torque", 1),
+  // moment of inertia (kg m^2)
+  "kg m^2": U("moment_of_inertia", 1),
+  "kg m²": U("moment_of_inertia", 1),
+  "g cm^2": U("moment_of_inertia", 1e-7),
+  "g cm²": U("moment_of_inertia", 1e-7),
+  // angular momentum (J s = kg m^2/s)
+  "J s": U("angular_momentum", 1),
+  "kg m^2/s": U("angular_momentum", 1),
+  "kg m²/s": U("angular_momentum", 1),
   // force (N)
   N: U("force", 1),
   kN: U("force", 1e3),

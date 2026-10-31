@@ -1,0 +1,138 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §10.5 Calculating Moments of Inertia (moment of inertia by integration; parallel-axis theorem)",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-5-calculating-moments-of-inertia",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.moment-of-inertia-topic:quick_revision",
+  "topic": "phy.rotational-motion.moment-of-inertia-topic",
+  "mode": "quick_revision",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+    "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+        "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.rotational-motion.moment-of-inertia-topic"
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:02",
+      "type": "memory_hook",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+      ],
+      "depth": 1,
+      "mnemonic": {
+        "en": "m.phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia.1",
+        "hi": "m.phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia.2"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.moment-of-inertia-topic.0002"
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:04",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.moment-of-inertia-topic.0006"
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:05",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.moment-of-inertia-topic.0005"
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:06",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+        "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Moment of inertia depends on the axis and on how far the mass is from it.",
+          "hi": "जड़त्व आघूर्ण अक्ष पर और अक्ष से द्रव्यमान की दूरी पर निर्भर करता है।"
+        },
+        {
+          "en": "Same M and R: ring > disc > solid sphere.",
+          "hi": "समान M और R: वलय > चकती > ठोस गोला।"
+        }
+      ]
+    },
+    {
+      "id": "phy.rotational-motion.moment-of-inertia-topic:qr:07",
+      "type": "common_traps",
+      "concepts": [
+        "phy.rotational-motion.moment-of-inertia-topic.core.moment-of-inertia",
+        "phy.rotational-motion.moment-of-inertia-topic.core.standard-moments-of-inertia"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A body has one moment of inertia.",
+            "hi": "किसी पिंड का एक ही जड़त्व आघूर्ण होता है।"
+          },
+          "correct": {
+            "en": "It depends on the axis: a disc has $MR^2/2$ about its axis but $MR^2/4$ about a diameter.",
+            "hi": "यह अक्ष पर निर्भर है: चकती का अपने अक्ष के परितः $MR^2/2$ पर व्यास के परितः $MR^2/4$ है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Spinning faster increases the moment of inertia.",
+            "hi": "तेज़ घूमने से जड़त्व आघूर्ण बढ़ता है।"
+          },
+          "correct": {
+            "en": "I depends on mass and its distribution, not on $\\omega$.",
+            "hi": "I द्रव्यमान और उसके वितरण पर निर्भर है, $\\omega$ पर नहीं।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

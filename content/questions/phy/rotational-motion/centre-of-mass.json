@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.centre-of-mass",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.centre-of-mass.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 1 kg particle is at $x = 0$ and a 3 kg particle is at $x = 4$ m. The centre of mass is at",
+        "hi": "1 kg का एक कण $x = 0$ पर और 3 kg का एक कण $x = 4$ m पर है। द्रव्यमान केन्द्र स्थित है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$x = 3$ m",
+            "hi": "$x = 3$ m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$x = 1$ m",
+            "hi": "$x = 1$ m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$x = 2$ m",
+            "hi": "$x = 2$ m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$x = 12$ m",
+            "hi": "$x = 12$ m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$X = \\frac{m_1x_1 + m_2x_2}{m_1 + m_2}$",
+          "hi": "$X = \\frac{m_1x_1 + m_2x_2}{m_1 + m_2}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Weight each position by its mass, then divide by the total mass.",
+          "hi": "प्रत्येक स्थिति को उसके द्रव्यमान से भारित कीजिए, फिर कुल द्रव्यमान से भाग दीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$X = \\frac{1(0) + 3(4)}{1 + 3} = \\frac{12}{4} = 3$ m",
+            "hi": "$X = \\frac{1(0) + 3(4)}{1 + 3} = \\frac{12}{4} = 3$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That puts it nearer the lighter particle; it must be nearer the heavier one.",
+              "hi": "यह इसे हलके कण के निकट रखता है; इसे भारी कण के निकट होना चाहिए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The midpoint is right only for equal masses.",
+              "hi": "मध्य बिंदु केवल समान द्रव्यमानों के लिए सही है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That forgets to divide by the total mass, 4 kg.",
+              "hi": "यह कुल द्रव्यमान, 4 kg, से भाग देना भूल जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.centre-of-mass.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Particles of mass 2 kg, 1 kg and 3 kg are at $(0, 0)$, $(6, 0)$ and $(0, 6)$ m. The y-coordinate of their centre of mass, in m, is",
+        "hi": "2 kg, 1 kg और 3 kg द्रव्यमान के कण $(0, 0)$, $(6, 0)$ और $(0, 6)$ m पर हैं। उनके द्रव्यमान केन्द्र का y-निर्देशांक, m में, है"
+      },
+      "answer": {
+        "value": 3,
+        "unit": "m"
+      },
+      "hints": [
+        {
+          "en": "$Y = \\sum m_iy_i / M$",
+          "hi": "$Y = \\sum m_iy_i / M$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only the particle off the x-axis contributes to Y.",
+          "hi": "Y में केवल x-अक्ष से बाहर का कण योगदान देता है।"
+        },
+        "steps": [
+          {
+            "en": "$Y = \\frac{2(0) + 1(0) + 3(6)}{2 + 1 + 3} = \\frac{18}{6} = 3$ m",
+            "hi": "$Y = \\frac{2(0) + 1(0) + 3(6)}{2 + 1 + 3} = \\frac{18}{6} = 3$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Dividing by 3, the number of particles, instead of the total mass gives 6.",
+              "hi": "कुल द्रव्यमान के बजाय कणों की संख्या, 3, से भाग देने पर 6 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.centre-of-mass.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A shell is fired at an angle and explodes into several fragments at the top of its flight. Ignoring air resistance, the centre of mass of the fragments, until the first one lands,",
+        "hi": "एक गोला किसी कोण पर दागा जाता है और अपनी उड़ान के शीर्ष पर कई टुकड़ों में फट जाता है। वायु प्रतिरोध की उपेक्षा करते हुए, पहले टुकड़े के गिरने तक टुकड़ों का द्रव्यमान केन्द्र"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "keeps to the parabola the shell would have followed",
+            "hi": "उसी परवलय पर चलता है जिस पर गोला चलता"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "falls straight down from the point of the explosion",
+            "hi": "विस्फोट के बिंदु से सीधा नीचे गिरता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "stops at the point of the explosion",
+            "hi": "विस्फोट के बिंदु पर रुक जाता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "moves in a straight line at the shell's speed",
+            "hi": "गोले की चाल से सरल रेखा में चलता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which forces are external here?",
+          "hi": "यहाँ कौन से बल बाह्य हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The explosion forces are internal; only gravity is external.",
+          "hi": "विस्फोट के बल आंतरिक हैं; केवल गुरुत्व बाह्य है।"
+        },
+        "steps": [
+          {
+            "en": "$M\\vec{A} = \\vec{F}_{ext} = M\\vec{g}$, the same as before the explosion, so the path is unchanged.",
+            "hi": "$M\\vec{A} = \\vec{F}_{ext} = M\\vec{g}$, विस्फोट से पहले जैसा ही, अतः पथ अपरिवर्तित है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The centre of mass keeps its horizontal velocity; nothing external removes it.",
+              "hi": "द्रव्यमान केन्द्र अपना क्षैतिज वेग बनाए रखता है; कोई बाह्य बल उसे नहीं हटाता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Internal forces cannot stop the centre of mass.",
+              "hi": "आंतरिक बल द्रव्यमान केन्द्र को नहीं रोक सकते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Gravity still acts, so the path still curves.",
+              "hi": "गुरुत्व अब भी लगता है, अतः पथ अब भी वक्र है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.centre-of-mass.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The centre of mass of a uniform circular ring is",
+        "hi": "एकसमान वृत्ताकार वलय का द्रव्यमान केन्द्र"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "at its centre, where there is no material",
+            "hi": "उसके केन्द्र पर है, जहाँ कोई पदार्थ नहीं है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "at some point on the ring itself",
+            "hi": "वलय पर ही किसी बिंदु पर है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "undefined, because the ring is hollow",
+            "hi": "अपरिभाषित है, क्योंकि वलय खोखला है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "at the point where the ring is held",
+            "hi": "उस बिंदु पर है जहाँ वलय को पकड़ा गया है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Need the centre of mass be inside the body?",
+          "hi": "क्या द्रव्यमान केन्द्र का पिंड के भीतर होना आवश्यक है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Use symmetry: every bit of mass has a partner diametrically opposite.",
+          "hi": "सममिति लगाइए: द्रव्यमान के हर अंश का एक साथी ठीक व्यास के दूसरी ओर है।"
+        },
+        "steps": [
+          {
+            "en": "Pairs of opposite elements average to the centre, so $\\vec{R}$ is the geometric centre.",
+            "hi": "विपरीत अंशों के युगलों का औसत केन्द्र है, अतः $\\vec{R}$ ज्यामितीय केन्द्र है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "No point on the ring is special; symmetry rules it out.",
+              "hi": "वलय का कोई बिंदु विशेष नहीं; सममिति इसे नकारती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The definition works for any distribution of mass.",
+              "hi": "परिभाषा द्रव्यमान के किसी भी वितरण पर लागू होती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The centre of mass does not depend on where you hold the body.",
+              "hi": "द्रव्यमान केन्द्र इस पर निर्भर नहीं कि पिंड कहाँ से पकड़ा गया है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.centre-of-mass.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.centre-of-mass.core.centre-of-mass-def",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two particles of 2 kg and 4 kg start from rest 9 m apart in empty space and pull each other together by their mutual attraction. They meet at a point",
+        "hi": "रिक्त अंतरिक्ष में 2 kg और 4 kg के दो कण 9 m की दूरी पर विराम से चलकर अपने पारस्परिक आकर्षण से एक-दूसरे की ओर खिंचते हैं। वे जिस बिंदु पर मिलते हैं, वह है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "6 m from the 2 kg particle",
+            "hi": "2 kg वाले कण से 6 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "3 m from the 2 kg particle",
+            "hi": "2 kg वाले कण से 3 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "4.5 m from the 2 kg particle",
+            "hi": "2 kg वाले कण से 4.5 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "9 m from the 2 kg particle",
+            "hi": "2 kg वाले कण से 9 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where is the centre of mass at the start?",
+          "hi": "आरंभ में द्रव्यमान केन्द्र कहाँ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Their attraction is internal, so the centre of mass never moves; they meet there.",
+          "hi": "उनका आकर्षण आंतरिक है, अतः द्रव्यमान केन्द्र कभी नहीं हिलता; वे वहीं मिलते हैं।"
+        },
+        "steps": [
+          {
+            "en": "With the 2 kg particle at $x = 0$: $X = \\frac{2(0) + 4(9)}{6} = 6$ m",
+            "hi": "2 kg वाले कण को $x = 0$ पर रखकर: $X = \\frac{2(0) + 4(9)}{6} = 6$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the distance from the 4 kg particle.",
+              "hi": "यह 4 kg वाले कण से दूरी है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The midpoint holds only for equal masses.",
+              "hi": "मध्य बिंदु केवल समान द्रव्यमानों के लिए है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The 2 kg particle moves; it does not wait at the start.",
+              "hi": "2 kg वाला कण चलता है; वह आरंभ पर नहीं रुकता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

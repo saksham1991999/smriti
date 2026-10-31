@@ -1,0 +1,679 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.torque-angular-momentum",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.torque",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A force of 50 N is applied at right angles to a spanner, 0.3 m from the nut. The torque on the nut is",
+        "hi": "नट से 0.3 m दूर पाने पर समकोण पर 50 N का बल लगाया जाता है। नट पर बल आघूर्ण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "15 N m",
+            "hi": "15 N m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "150 N m",
+            "hi": "150 N m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1.5 N m",
+            "hi": "1.5 N m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "15 J",
+            "hi": "15 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\tau = rF$ when they are perpendicular",
+          "hi": "लंबवत् होने पर $\\tau = rF$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Force times its perpendicular distance from the axis.",
+          "hi": "बल गुणा अक्ष से उसकी लंबवत् दूरी।"
+        },
+        "steps": [
+          {
+            "en": "$\\tau = rF\\sin 90° = 0.3 \\times 50 = 15$ N m",
+            "hi": "$\\tau = rF\\sin 90° = 0.3 \\times 50 = 15$ N m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That treats 0.3 m as 3 m.",
+              "hi": "यह 0.3 m को 3 m मानता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides one place too far.",
+              "hi": "यह एक स्थान अधिक भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The number is right but torque is never given in joules.",
+              "hi": "संख्या सही है पर बल आघूर्ण कभी जूल में नहीं दिया जाता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.torque",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A force $\\vec{F} = 3\\hat{i} + 4\\hat{j}$ N acts at the point $\\vec{r} = \\hat{i} + 2\\hat{j}$ m. The magnitude of its torque about the origin, in N m, is",
+        "hi": "एक बल $\\vec{F} = 3\\hat{i} + 4\\hat{j}$ N बिंदु $\\vec{r} = \\hat{i} + 2\\hat{j}$ m पर लगता है। मूल बिंदु के परितः इसके बल आघूर्ण का परिमाण, N m में, है"
+      },
+      "answer": {
+        "value": 2,
+        "unit": "N m"
+      },
+      "hints": [
+        {
+          "en": "$\\tau_z = xF_y - yF_x$",
+          "hi": "$\\tau_z = xF_y - yF_x$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Both vectors are in the x-y plane, so the torque is along z.",
+          "hi": "दोनों सदिश x-y तल में हैं, अतः बल आघूर्ण z के अनुदिश है।"
+        },
+        "steps": [
+          {
+            "en": "$\\tau_z = xF_y - yF_x = 1(4) - 2(3) = -2$",
+            "hi": "$\\tau_z = xF_y - yF_x = 1(4) - 2(3) = -2$"
+          },
+          {
+            "en": "So $\\vec{\\tau} = -2\\hat{k}$ N m, of magnitude 2 N m.",
+            "hi": "अतः $\\vec{\\tau} = -2\\hat{k}$ N m, परिमाण 2 N m।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding the products, $4 + 6 = 10$, mixes up the cross product with the dot product's pattern.",
+              "hi": "गुणनफलों को जोड़ना, $4 + 6 = 10$, क्रॉस गुणनफल को बिंदु गुणनफल के ढाँचे से मिला देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.torque",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The dimensional formula of torque is",
+        "hi": "बल आघूर्ण का विमीय सूत्र है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[ML^2T^{-2}]$",
+            "hi": "$[ML^2T^{-2}]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[MLT^{-2}]$",
+            "hi": "$[MLT^{-2}]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[ML^2T^{-1}]$",
+            "hi": "$[ML^2T^{-1}]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[ML^2]$",
+            "hi": "$[ML^2]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Unit N m",
+          "hi": "मात्रक N m"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Torque is a force times a distance.",
+          "hi": "बल आघूर्ण एक बल गुणा एक दूरी है।"
+        },
+        "steps": [
+          {
+            "en": "$[MLT^{-2}][L] = [ML^2T^{-2}]$",
+            "hi": "$[MLT^{-2}][L] = [ML^2T^{-2}]$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is force alone.",
+              "hi": "यह केवल बल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is angular momentum.",
+              "hi": "यह कोणीय संवेग है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is moment of inertia.",
+              "hi": "यह जड़त्व आघूर्ण है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A skater spinning freely on ice pulls her arms in close to her body. Which statement is correct?",
+        "hi": "बर्फ़ पर स्वतंत्र रूप से घूमती एक स्केटर अपनी भुजाएँ शरीर के पास खींच लेती है। कौन सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Her angular momentum stays the same and her kinetic energy increases",
+            "hi": "उसका कोणीय संवेग समान रहता है और गतिज ऊर्जा बढ़ती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Her angular momentum and kinetic energy both stay the same",
+            "hi": "उसका कोणीय संवेग और गतिज ऊर्जा दोनों समान रहते हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Her angular momentum increases and she spins faster",
+            "hi": "उसका कोणीय संवेग बढ़ता है और वह तेज़ घूमती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Her moment of inertia increases and she spins slower",
+            "hi": "उसका जड़त्व आघूर्ण बढ़ता है और वह धीमे घूमती है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What is conserved, L or K?",
+          "hi": "क्या संरक्षित है, L या K?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "No external torque, so $I\\omega$ is fixed; $\\frac{1}{2}I\\omega^2 = \\frac{L^2}{2I}$ rises as I falls.",
+          "hi": "बाह्य बल आघूर्ण नहीं, अतः $I\\omega$ नियत; I घटने पर $\\frac{1}{2}I\\omega^2 = \\frac{L^2}{2I}$ बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "I decreases and $L = I\\omega$ stays constant, so $\\omega$ increases.",
+            "hi": "I घटता है, अतः $L = I\\omega$ नियत रहते $\\omega$ बढ़ता है।"
+          },
+          {
+            "en": "$K = \\frac{L^2}{2I}$ increases; her muscles supply the energy.",
+            "hi": "$K = \\frac{L^2}{2I}$ बढ़ती है; ऊर्जा उसकी मांसपेशियाँ देती हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Kinetic energy is not conserved here; she does work on her arms.",
+              "hi": "यहाँ गतिज ऊर्जा संरक्षित नहीं; वह भुजाओं पर कार्य करती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Without an external torque, L cannot change.",
+              "hi": "बाह्य बल आघूर्ण के बिना L नहीं बदल सकता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Pulling mass in reduces I.",
+              "hi": "द्रव्यमान अंदर खींचने से I घटता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A disc with moment of inertia 2 kg m² spins at 10 rad/s about a frictionless vertical axle. A second, non-rotating disc with moment of inertia 3 kg m² is dropped onto it on the same axle, and the two turn together. Their common angular speed, in rad/s, is",
+        "hi": "2 kg m² जड़त्व आघूर्ण वाली एक चकती घर्षणरहित ऊर्ध्वाधर धुरी पर 10 rad/s से घूमती है। 3 kg m² जड़त्व आघूर्ण वाली एक दूसरी, न घूमती, चकती उसी धुरी पर उसके ऊपर गिराई जाती है, और दोनों साथ घूमने लगती हैं। उनकी उभयनिष्ठ कोणीय चाल, rad/s में, है"
+      },
+      "answer": {
+        "value": 4,
+        "unit": "rad/s"
+      },
+      "hints": [
+        {
+          "en": "$I_1\\omega_1 = (I_1 + I_2)\\omega$",
+          "hi": "$I_1\\omega_1 = (I_1 + I_2)\\omega$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The friction between the discs is internal, so the total $I\\omega$ is kept.",
+          "hi": "चकतियों के बीच घर्षण आंतरिक है, अतः कुल $I\\omega$ बना रहता है।"
+        },
+        "steps": [
+          {
+            "en": "$2 \\times 10 = (2 + 3)\\omega$, so $\\omega = 4$ rad/s",
+            "hi": "$2 \\times 10 = (2 + 3)\\omega$, अतः $\\omega = 4$ rad/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Conserving kinetic energy instead gives $\\sqrt{40} \\approx 6.3$; energy is lost to friction between the discs.",
+              "hi": "इसके बजाय गतिज ऊर्जा संरक्षित करने पर $\\sqrt{40} \\approx 6.3$ आता है; चकतियों के बीच घर्षण में ऊर्जा खोती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A particle moves with constant velocity along a straight line that does not pass through the origin. Its angular momentum about the origin",
+        "hi": "एक कण नियत वेग से ऐसी सरल रेखा पर चलता है जो मूल बिंदु से नहीं गुज़रती। मूल बिंदु के परितः इसका कोणीय संवेग"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "is constant and not zero",
+            "hi": "नियत है और शून्य नहीं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "is zero",
+            "hi": "शून्य है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "grows as the particle moves away",
+            "hi": "कण के दूर जाने पर बढ़ता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "is largest when the particle is nearest the origin",
+            "hi": "कण के मूल बिंदु के सबसे निकट होने पर अधिकतम है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is there any torque?",
+          "hi": "क्या कोई बल आघूर्ण है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$l = r_\\perp p$, and neither factor changes.",
+          "hi": "$l = r_\\perp p$, और कोई भी गुणक नहीं बदलता।"
+        },
+        "steps": [
+          {
+            "en": "p is constant and the line stays at the same perpendicular distance $r_\\perp$ from the origin.",
+            "hi": "p नियत है और रेखा मूल बिंदु से समान लंबवत् दूरी $r_\\perp$ पर रहती है।"
+          },
+          {
+            "en": "No force, so no torque: $d\\vec{l}/dt = 0$.",
+            "hi": "कोई बल नहीं, अतः कोई बल आघूर्ण नहीं: $d\\vec{l}/dt = 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It is zero only if the line passes through the origin.",
+              "hi": "यह केवल तब शून्य है जब रेखा मूल बिंदु से गुज़रे।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "r grows but $\\sin\\theta$ falls; $r\\sin\\theta$ stays fixed.",
+              "hi": "r बढ़ता है पर $\\sin\\theta$ घटता है; $r\\sin\\theta$ स्थिर रहता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It is the same at every point of the line.",
+              "hi": "यह रेखा के हर बिंदु पर समान है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.torque-angular-momentum.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.torque-angular-momentum.core.angular-momentum-conservation",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A constant torque of 4 N m acts on a wheel that starts from rest. After 3 s its angular momentum is",
+        "hi": "विराम से चलने वाले एक पहिए पर 4 N m का नियत बल आघूर्ण लगता है। 3 s बाद इसका कोणीय संवेग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "12 J s",
+            "hi": "12 J s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1.33 J s",
+            "hi": "1.33 J s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0.75 J s",
+            "hi": "0.75 J s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "36 J s",
+            "hi": "36 J s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$dL/dt = \\tau$",
+          "hi": "$dL/dt = \\tau$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Torque is the rate of change of angular momentum.",
+          "hi": "बल आघूर्ण कोणीय संवेग के परिवर्तन की दर है।"
+        },
+        "steps": [
+          {
+            "en": "$\\Delta L = \\tau\\,\\Delta t = 4 \\times 3 = 12$ J s",
+            "hi": "$\\Delta L = \\tau\\,\\Delta t = 4 \\times 3 = 12$ J s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That divides torque by time.",
+              "hi": "यह बल आघूर्ण को समय से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides time by torque.",
+              "hi": "यह समय को बल आघूर्ण से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That multiplies by the time twice.",
+              "hi": "यह समय से दो बार गुणा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

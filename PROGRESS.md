@@ -75,7 +75,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 - Mobile: photo doubts, readiness cards, role play, analytics intake, Apple re-auth on deletion, mobile Sentry.
 - Backend: sync events for test-out and chapter reset, tutor board images, log scrubbing.
 - Lesson narration audio and pet reactions in the players.
-- Marketing site (apps/site) audit and finish.
+- Marketing site: Hindi pages take about 2.4 s to show their main content on a phone (target 2.0 s); next step is a smaller Devanagari font subset.
 - Content: Work, Energy and Power next. Sims requested: projectile launcher, friction on an incline (PhET is non-commercial, so we build our own).
 - An independent end-to-end verification run, written up in `docs/E2E_REPORT.md`.
 

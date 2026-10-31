@@ -1,7 +1,7 @@
 import { PARENT_PIN_RE } from '@smriti/app-core';
 import { useAppStore, useStoreSelector } from '@smriti/app-core/react';
-import { Banner, Button, GoogleButton, Illustration, Text, TrustLine } from '@smriti/ui-native';
-import { router } from 'expo-router';
+import { Banner, Button, GoogleButton, Illustration, Text, TrustLine, useTheme } from '@smriti/ui-native';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 
@@ -19,10 +19,13 @@ type View_ = 'gate' | 'dev' | 'pin' | 'set_pin';
 export default function GrownUps() {
   const app = useApp();
   const t = useT();
+  const theme = useTheme();
   const session = parentSession(app);
   const state = useStoreSelector(session.store, (s) => s);
   const pet = useAppStore((s) => s.pet);
-  const [view, setView] = useState<View_>('gate');
+  const params = useLocalSearchParams<{ set?: string }>();
+  // SET-14 "Parent PIN" comes back here to set or change the PIN while parent mode is open.
+  const [view, setView] = useState<View_>(params.set === 'pin' && session.store.getState().unlocked ? 'set_pin' : 'gate');
   const [busy, setBusy] = useState(false);
   const [pin, setPin] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -78,7 +81,7 @@ export default function GrownUps() {
           {t('me_money:SET-13.hand_over_child_view')}
         </Text>
       ) : null}
-      <View style={styles.art}>
+      <View style={[styles.art, { borderRadius: theme.radius.cardLarge }]}>
         <Illustration name="scene-parent-child" fallback={['scene-student-laptop']} alt={t('me_money:SET-13.title')} width={300} height={200} />
       </View>
       <Text variant="display" heading align="center">
@@ -175,5 +178,5 @@ export default function GrownUps() {
 
 const styles = StyleSheet.create({
   content: { gap: 24, maxWidth: 560, width: '100%', alignSelf: 'center' },
-  art: { alignItems: 'center' },
+  art: { alignSelf: 'center', overflow: 'hidden' },
 });

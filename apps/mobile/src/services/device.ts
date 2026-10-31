@@ -4,6 +4,7 @@ import { Platform } from 'react-native';
 
 import { DevGoogleSignIn, ExpoAppleSignIn, NativeGoogleSignIn, noApple } from '../auth/providers';
 import { ContentRepo } from '../content/repo';
+import { runDemo } from '../dev/demo';
 import { FakeApiServer } from '../dev/fake-api/server';
 import { readClientEnv, readSwitches } from '../env';
 import { getVariant } from '@smriti/config';
@@ -84,6 +85,8 @@ async function createDeviceApp(): Promise<SmritiApp> {
     appVersion: Constants.expoConfig?.version ?? '1.0.0',
   });
   await app.boot();
+  // DEV ONLY: design-review demo states on the fake API (`?demo=` on the web preview).
+  if (fake && Platform.OS === 'web' && typeof window !== 'undefined' && window.location.search) await runDemo(app, fake, window.location.search);
   onForeground(() => {
     void app.ensureSession();
     void app.sync.flush();

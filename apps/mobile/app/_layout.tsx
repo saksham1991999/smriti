@@ -13,6 +13,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { bundledIllustrations } from '../src/seed/illustrations';
 import type { SmritiApp } from '../src/services/app';
+import { TimeLimitGuard } from '../src/features/parent/TimeLimitGuard';
 import { AppProvider, useUiState } from '../src/services/context';
 import { getDeviceApp } from '../src/services/device';
 import { routeForLink } from '../src/services/links';
@@ -73,6 +74,7 @@ function Themed({ variant }: { variant: ExamKey }) {
         <Stack.Screen name="sign-in" options={{ presentation: 'transparentModal', animation: 'fade' }} />
         <Stack.Screen name="paywall" options={{ presentation: 'modal' }} />
       </Stack>
+      <TimeLimitGuard />
     </UIProvider>
   );
 }

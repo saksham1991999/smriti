@@ -63,7 +63,7 @@ Last updated 30 Oct 2026, from the apps as merged into `claude/project-thread-vn
 | Notification settings | SET-03 | Not built | Not built | Built | Mobile keeps the reminder set in onboarding. |
 | Paywall and purchase | PAY-01, PAY-08 | Built | Built | Built | Mobile uses RevenueCat (fake provider in dev); web uses Razorpay (fake step in dev). |
 | Your plan | PAY | Not built | Not built | Built | |
-| Parent mode, PIN and time limits | SET-13 to SET-19 | Not built | Not built | Not built | Rules are in app-core (`little/parent.ts`). |
+| Parent mode, PIN and time limits | SET-13 to SET-16, SET-19 | Partial | Partial | Not built | Mobile: the gate (parent's own session on the child's phone, PIN), dashboard with Needs you, weekly report, time limits and the little learner switches, through `/v1/guardian/*`. The child's phone enforces the limit offline (app-core `timeLimitState`) and opens SET-19, where the child asks through `/v1/me/time-requests`. Not built: SET-17 consents, SET-18 add a child, the friends row, "Send a cheer" (no API yet). |
 
 ## Notifications and widgets
 

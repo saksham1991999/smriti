@@ -1495,6 +1495,12 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Move to own | Move {child} to their own Google account | {child} को उनके अपने Google अकाउंट पर ले जाएँ |
 | Delete child | Delete {child}'s account | {child} का अकाउंट हटाएँ |
 | Empty | Add your child to see their week here. | अपने बच्चे को जोड़ें, ताकि उनका हफ़्ता यहाँ दिखे। |
+| Allowed toast | {child} has 15 more minutes | {child} को 15 मिनट और मिल गए |
+| Declined toast | Told {child}: not today | {child} को बता दिया: आज नहीं |
+| Updated | Updated {time} | {time} पर अपडेट हुआ |
+| Chart a11y | Most on {day}, {n} minutes | सबसे ज़्यादा {day} को, {n} मिनट |
+| Chart empty a11y | No study minutes this week yet | इस हफ़्ते अभी पढ़ाई के मिनट नहीं |
+| Child line | Class {n} | कक्षा {n} |
 
 **Illustration slots:** child cards use each child's pet portrait (`pet-cat`/`pet-dog`, 1:1). Empty: `empty-state`, 4:3, the two pets waiting by a door, alt "Waiting for your child to join".
 **States:** no children (empty), one child (the card fills the width), several, request waiting, offline (last synced week shown with "Updated {time}"; actions disabled), parent's own device vs the child's device (Exit target differs), dark.
@@ -1526,6 +1532,8 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Reviews | Reviews | रिव्यू |
 | Streak | Streak | स्ट्रीक |
 | Per day | Minutes each day | हर दिन के मिनट |
+| Previous week | Previous week | पिछला हफ़्ता |
+| Next week | Next week | अगला हफ़्ता |
 | Subjects | Subjects | विषय |
 | Mocks | Mock tests | मॉक टेस्ट |
 | Coming up | Coming up | आगे क्या है |
@@ -1567,6 +1575,9 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Note | A lesson card or mock section in progress always finishes first. | चल रहा पाठ कार्ड या मॉक सेक्शन हमेशा पहले पूरा होता है। |
 | Save | Save | सेव करें |
 | Saved | Saved. {child}'s phone updates next time it's online. | सेव हो गया। {child} का फ़ोन अगली बार ऑनलाइन होने पर अपडेट होगा। |
+| Saved here | Saved. It applies on this phone now. | सेव हो गया। इस फ़ोन पर अभी से लागू। |
+| Chip minutes a11y | {n} minutes | {n} मिनट |
+| Offline | Saving needs internet. | सेव करने के लिए इंटरनेट चाहिए। |
 
 **Illustration slots:** none.
 **States:** on the child's device (applies at once), on the parent's own device (applies on the child's next sync; the Saved line says so), offline (saving disabled on the parent's device), dark.

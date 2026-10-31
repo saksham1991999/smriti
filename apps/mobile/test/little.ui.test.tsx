@@ -10,28 +10,13 @@ import { gentleMood } from '../src/features/little/LittleHome';
 import { loadLittlePath } from '../src/features/little/path';
 import { parentSession } from '../src/features/parent/session';
 import { provideAppForTests } from '../src/services/device';
+import { onboardLittle } from './features.helpers';
 import { createTestApp, type TestRig } from './harness';
 
 jest.setTimeout(60_000);
 
 const appDir = path.join(__dirname, '..', 'app');
 let rig: TestRig;
-
-/** A class 3 child, onboarded through the services. */
-export async function onboardLittle(r: TestRig, flags: Record<string, unknown> = { 'feature.little_learner': true }) {
-  const { app } = r;
-  r.fake.flags = flags;
-  await app.boot();
-  await app.ensureSession();
-  await app.loadConfig();
-  await app.chooseLocale('en');
-  await app.answerGoal(['school'], 3);
-  await app.answerLevel('starting');
-  await app.nameBuddy('dog', 'Bholu');
-  await app.plantSeed();
-  await app.setDailyGoal(10, true);
-  await app.answerReminder(null);
-}
 
 beforeEach(() => {
   rig = createTestApp({ variant: 'all' });

@@ -41,6 +41,7 @@ export { HouseIcon } from "phosphor-react-native/src/icons/House";
 export { InfoIcon } from "phosphor-react-native/src/icons/Info";
 export { LightbulbIcon } from "phosphor-react-native/src/icons/Lightbulb";
 export { LightningIcon } from "phosphor-react-native/src/icons/Lightning";
+export { ListChecksIcon } from "phosphor-react-native/src/icons/ListChecks";
 export { LockIcon } from "phosphor-react-native/src/icons/Lock";
 export { LockSimpleIcon } from "phosphor-react-native/src/icons/LockSimple";
 export { MagnifyingGlassIcon } from "phosphor-react-native/src/icons/MagnifyingGlass";

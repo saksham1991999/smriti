@@ -43,6 +43,7 @@ export const iconNames = [
   "Info",
   "Lightbulb",
   "Lightning",
+  "ListChecks",
   "Lock",
   "LockSimple",
   "MagnifyingGlass",

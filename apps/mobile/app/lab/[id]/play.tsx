@@ -3,7 +3,7 @@ import { Banner, Button, Card, Chip, Dialog, Icon, IconButton, Illustration, Pro
 import { useQueryClient } from '@tanstack/react-query';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AppState, BackHandler, Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { AppState, BackHandler, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { LABS, labAspect, labIllustration, type LabEntry } from '../../../src/content/labs';
@@ -185,7 +185,7 @@ export default function LabPlayer() {
 
   // Android back leaves full screen before it leaves the lab.
   useEffect(() => {
-    if (!full) return;
+    if (!full || Platform.OS === 'web') return;
     const sub = BackHandler.addEventListener('hardwareBackPress', () => {
       setFull(false);
       return true;

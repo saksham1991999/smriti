@@ -5,7 +5,7 @@ import { LessonSession, uuidv7, currentCard, type LessonState } from '@smriti/le
 import { ContentDownloads } from '../src/content/downloads';
 import { ContentRepo } from '../src/content/repo';
 import { seedPacks } from '../src/seed/generated';
-import { defaultChapterChoice, prepareTestOut, resetChapter, saveTestOut, undoTestOut, type PreparedCheck } from '../src/services/checks';
+import { checkItemCount, defaultChapterChoice, prepareTestOut, testOutQuestions, resetChapter, saveTestOut, undoTestOut, type PreparedCheck } from '../src/services/checks';
 import { saveLessonResult } from '../src/services/progress';
 import { createTestApp, nodeCrypto } from './harness';
 import { rightAnswer } from './play';
@@ -104,6 +104,13 @@ test('"Mark as learned" checks one topic only', async () => {
   expect(one.topics.map((t) => t.id)).toEqual([topicId]);
   expect(new Set(one.plan.cards.map((c) => c.topicId))).toEqual(new Set([topicId]));
   expect(one.plan.topicId).toBe(topicId);
+});
+
+test('LRN-06 counts the answers the check asks for, paragraph parts included', async () => {
+  const { app, chapter } = await bootedApp();
+  const questions = testOutQuestions(app, chapter);
+  expect(questions.some((q) => q.question.type === 'paragraph')).toBe(true);
+  expect(checkItemCount(questions)).toBe(prepareTestOut(app, chapter.id)!.plan.cards.length);
 });
 
 test('reset clears the chapter’s topic status and lesson progress', async () => {

@@ -3,12 +3,13 @@ import { uuidv7, type LessonSession, type LessonState } from '@smriti/lesson-cor
 import { LessonPlayer } from '@smriti/lesson-player-native';
 import { Button, Chip, Dialog, EmptyState, PetAvatar, Text, useTheme } from '@smriti/ui-native';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { prepareTestOut, saveTestOut, undoTestOut, type PreparedCheck, type TestOutOutcome } from '../../src/services/checks';
 import { useApp, useT, useUiState } from '../../src/services/context';
 import { eventSink } from '../../src/services/lessons';
+import { loadTopicStates } from '../../src/services/progress';
 import { useHaptics } from '../../src/ui/hooks';
 import { Screen } from '../../src/ui/Screen';
 
@@ -117,7 +118,18 @@ function CheckResult({ prepared, outcome, onDone }: { prepared: PreparedCheck; o
   const passed = new Set(outcome.result.passed);
   const n = outcome.result.passed.length;
   const any = n > 0 && !undone;
-  const firstWorth = prepared.topics.find((tp) => prepared.checked.has(tp.id) && !passed.has(tp.id));
+  // Topics learned before this check keep their status; [Start] offers the first one still to learn.
+  const [learned, setLearned] = useState<ReadonlySet<string>>(new Set());
+  useEffect(() => {
+    let alive = true;
+    void loadTopicStates(app).then((m) => {
+      if (alive) setLearned(new Set([...m.values()].filter((s) => s.status === 'learned').map((s) => s.topic.id)));
+    });
+    return () => {
+      alive = false;
+    };
+  }, [app, undone]);
+  const firstWorth = prepared.topics.find((tp) => prepared.checked.has(tp.id) && !passed.has(tp.id) && !learned.has(tp.id));
   const petName = pet?.name ?? obPet?.name ?? '';
   const species = pet?.species ?? obPet?.species ?? 'cat';
   return (

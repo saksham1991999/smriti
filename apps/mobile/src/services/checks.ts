@@ -41,6 +41,11 @@ export function testOutQuestions(app: SmritiApp, chapter: ChapterView, topicId?:
   return selectTestOut(practiceBundles(app, topics), perTopic(app));
 }
 
+/** How many answers a check asks for: a paragraph question counts each of its parts (as the plan does). */
+export function checkItemCount(questions: CheckQuestion[]): number {
+  return questions.reduce((n, q) => n + (q.question.type === 'paragraph' ? q.question.children.length : 1), 0);
+}
+
 /**
  * "About {minutes} min" for LRN-06, only when every question has an `ideal_time_s` from content
  * (never a guessed per-question time).

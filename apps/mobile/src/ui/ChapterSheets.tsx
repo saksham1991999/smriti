@@ -8,7 +8,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { megabytesLabel, type ChapterDownloadPlan } from '../content/downloads';
 import type { ChapterView, ContentLocale, SubjectView, TopicView } from '../content/repo';
-import { checkMinutes, testOutQuestions } from '../services/checks';
+import { checkItemCount, checkMinutes, testOutQuestions } from '../services/checks';
 import { useApp, useQueryScope, useT, useUiState } from '../services/context';
 import { fetchPracticeHub, practiceKeys } from '../services/practice';
 
@@ -52,7 +52,7 @@ export function ChapterTestSheet({
     if (selected === 'test_out') router.push({ pathname: '/check/[chapterId]', params: { chapterId: chapter.id } });
     else router.push({ pathname: '/drill', params: { chapter: chapter.id, source: 'chapter' } });
   };
-  const testOutMeta = [t('learn:LRN-06.test_out_meta.1', { n: questions.length }), ...(minutes !== null ? [t('learn:LRN-06.test_out_meta.2', { minutes })] : [])].join(' · ');
+  const testOutMeta = [t('learn:LRN-06.test_out_meta.1', { n: checkItemCount(questions) }), ...(minutes !== null ? [t('learn:LRN-06.test_out_meta.2', { minutes })] : [])].join(' · ');
   return (
     <Sheet
       open={open}

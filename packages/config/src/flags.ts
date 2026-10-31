@@ -56,6 +56,7 @@ const intList = z.array(int);
 /** A value that differs by audience: adults, 13–17, under 13 (me-money §6.2). */
 const byAudience = <S extends z.ZodMiniType>(s: S) => z.object({ adult: s, teen: s, child: s });
 const byPlatform = <S extends z.ZodMiniType>(s: S) => z.object({ web: s, ios: s, android: s });
+const httpsUrl = z.string().check(z.regex(/^https:\/\/[^\s]+$/));
 const i18nText = z.object({ en: z.string().check(z.minLength(1)), hi: z.string().check(z.minLength(1)) });
 /** A two-part generated name ("{first} {second} {n}"): EN and HI words with stable ids. */
 const word = z.object({ id: z.string().check(z.regex(/^[a-z0-9_]+$/)), en: z.string().check(z.minLength(1)), hi: z.string().check(z.minLength(1)) });
@@ -83,6 +84,10 @@ export const FLAG_REGISTRY = {
   // request stays open, and how many a guardian may start per day.
   'auth.link_request_ttl_h': def(posInt, 72, 'proposed', 'auth §6.11 AUTH-27 (as consent_link_ttl_h)'),
   'auth.link_requests_per_day': def(posInt, 5, 'proposed', 'auth §6.11 AUTH-27 (per guardian)'),
+  // AUTH-20 "Read the full notice": the consent notice legal publishes. Unset until it exists;
+  // once the version is set, a consent must record that version (GET /v1/guardian/consent-notice).
+  'auth.consent_notice_version': owner(z.string().check(z.regex(/^[A-Za-z0-9._-]{1,40}$/)), 'auth §6.10, AUTH-20 (legal)'),
+  'auth.consent_notice_url': owner(z.object({ en: httpsUrl, hi: httpsUrl }), 'auth §6.10, AUTH-20 (legal; the notice in the guardian\'s language)'),
   'auth.deletion_grace_days': def(posInt, 7, 'proposed', 'auth §6.8, PRD §16.4'),
   'auth.merge_wait_s': def(posInt, 30, 'proposed', 'auth §6.4'),
   'auth.merge_retries': def(nonNegInt, 3, 'proposed', 'auth §6.4'),

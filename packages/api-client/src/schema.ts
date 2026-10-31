@@ -1522,6 +1522,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/guardian/consent-notice": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** AUTH-20 'Read the full notice': the current notice version and its URL (config) */
+    get: operations["consent_notice_v1_guardian_consent_notice_get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/guardian/consent-requests": {
     parameters: {
       query?: never;
@@ -1585,6 +1602,23 @@ export interface paths {
     put?: never;
     post?: never;
     delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/guardian/consent-requests/{request_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** AUTH-21 [Cancel request]: the teen withdraws their pending request */
+    delete: operations["cancel_request_v1_guardian_consent_requests__request_id__delete"];
     options?: never;
     head?: never;
     patch?: never;
@@ -4342,6 +4376,29 @@ export interface components {
        * @enum {string}
        */
       status: "granted" | "declined";
+    };
+    /**
+     * ConsentNoticeOut
+     * @description AUTH-20 "Read the full notice": the current notice, from config (legal publishes it).
+     */
+    ConsentNoticeOut: {
+      /**
+       * Locale
+       * @enum {string}
+       */
+      locale: "en" | "hi";
+      /** Published */
+      published: boolean;
+      /**
+       * Url
+       * @description The full notice in `locale`; null until published
+       */
+      url: string | null;
+      /**
+       * Version
+       * @description Send this as notice_version when set; null until the notice is published
+       */
+      version: string | null;
     };
     /** ConsentOut */
     ConsentOut: {
@@ -12415,6 +12472,37 @@ export interface operations {
       };
     };
   };
+  consent_notice_v1_guardian_consent_notice_get: {
+    parameters: {
+      query?: {
+        locale?: "en" | "hi";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsentNoticeOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
   create_request_v1_guardian_consent_requests_post: {
     parameters: {
       query?: never;
@@ -12545,6 +12633,35 @@ export interface operations {
             | components["schemas"]["ConsentRequestStatus"]
             | components["schemas"]["ConsentRequestForGuardian"];
         };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  cancel_request_v1_guardian_consent_requests__request_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
       /** @description Validation Error */
       422: {

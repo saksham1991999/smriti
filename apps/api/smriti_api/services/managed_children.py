@@ -27,8 +27,8 @@ from smriti_api.core.errors import ApiError
 from smriti_api.core.logging import hash_user_id
 from smriti_api.integrations import Integrations
 from smriti_api.schemas import guardian as g
+from smriti_api.services import consent_notice, guardian, parent_mode
 from smriti_api.services import flags as flag_service
-from smriti_api.services import guardian, parent_mode
 from smriti_api.services.auth_admin import TOKEN_HASH_TTL_S, AuthAdmin, AuthAdminError
 from smriti_api.services.versioning import bump
 
@@ -76,6 +76,7 @@ async def create_child(
     # The guardian checks first (adult, own identity), so nothing changes for a refused caller.
     async with db.system_tx() as session:
         await guardian._check_guardian(session, ints, parent, child_id)
+        await consent_notice.check_version(session, body.notice_version)
     try:
         await auth_admin.make_managed(child_id, email, adopt=adopted)
     except AuthAdminError as exc:

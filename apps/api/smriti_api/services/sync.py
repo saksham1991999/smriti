@@ -82,6 +82,9 @@ SECTIONS_BY_TYPE: dict[str, set[str]] = {
     # (v1.5) palace_saved adds "srs" itself when it removes items (their cards are tombstoned).
     "palace_saved": set(),
     "palace_deleted": {"srs"},
+    "topic_tested_out": {"topic_progress"},
+    "topic_test_out_undone": {"topic_progress"},
+    "chapter_reset": {"topic_progress"},
 }
 
 # What learn.sync_events keeps of an applied event whose payload is a whole document: the palace
@@ -455,6 +458,90 @@ async def _topic_status(ctx: BatchContext, topic_id: str, status: str, via: str 
         {"u": ctx.facts.user_id, "t": topic_id, "s": status, "via": via},
     )
     ctx.topics_changed.add(topic_id)
+
+
+async def _chapter_topics(ctx: BatchContext, chapter_id: str) -> set[str]:
+    rows = (
+        await ctx.session.execute(
+            text("select id from content.topics where chapter_id = :c"), {"c": chapter_id}
+        )
+    ).scalars()
+    return set(rows)
+
+
+async def _topic_tested_out(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """(v1.6) The rule app-core ``applyTopicMarks`` uses: learned via test_out, unless learned."""
+    assert isinstance(p, s.TopicTestedOut)
+    topics = await _chapter_topics(ctx, p.chapter_id)
+    if not topics or not set(p.topic_ids) <= topics:
+        raise EventRejected("invalid_payload", "Those topics aren't in that chapter")
+    seen = (
+        await ctx.session.execute(
+            text(
+                "select 1 from learn.sync_events where user_id = :u and type = 'topic_tested_out'"
+                " and status = 'applied' and payload ->> 'check_id' = :c limit 1"
+            ),
+            {"u": ctx.facts.user_id, "c": str(p.check_id)},
+        )
+    ).first()
+    if seen is not None:
+        raise EventRejected("already_recorded", "This check is already recorded")
+    for topic_id in dict.fromkeys(p.topic_ids):
+        await _topic_status(ctx, topic_id, "learned", "test_out")
+
+
+async def _topic_test_out_undone(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """(v1.6) Takes back one check's marks: each topic it marked goes back to its earlier status.
+    A topic the check didn't mark (it was already learned) is left alone."""
+    assert isinstance(p, s.TopicTestOutUndone)
+    check = (
+        await ctx.session.execute(
+            text(
+                "select payload from learn.sync_events where user_id = :u"
+                " and type = 'topic_tested_out' and status = 'applied'"
+                " and payload ->> 'check_id' = :c limit 1"
+            ),
+            {"u": ctx.facts.user_id, "c": str(p.check_id)},
+        )
+    ).scalar_one_or_none()
+    if check is None:
+        raise EventRejected("invalid_payload", "No such check")
+    marked = set(check.get("topic_ids") or [])
+    for t in p.topics:
+        if t.topic_id not in marked:
+            continue
+        status = t.previous_status or "not_started"
+        await ctx.session.execute(
+            text(
+                "update learn.topic_status set status = :s, learned_via = null"
+                " where user_id = :u and topic_id = :t and learned_via = 'test_out'"
+            ),
+            {"u": ctx.facts.user_id, "t": t.topic_id, "s": status},
+        )
+        ctx.topics_changed.add(t.topic_id)
+
+
+async def _chapter_reset(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """(v1.6) Every topic of the chapter back to not started (X13), and its lesson positions gone,
+    as app-core ``applyTopicMarks`` and the device's reset do. Cards, XP and the streak stay."""
+    assert isinstance(p, s.ChapterReset)
+    topics = await _chapter_topics(ctx, p.chapter_id)
+    if not topics:
+        raise EventRejected("invalid_payload", "No such chapter")
+    changed = (
+        await ctx.session.execute(
+            text(
+                "update learn.topic_status set status = 'not_started', learned_via = null"
+                " where user_id = :u and topic_id = any(:t) returning topic_id"
+            ),
+            {"u": ctx.facts.user_id, "t": sorted(topics)},
+        )
+    ).scalars()
+    ctx.topics_changed.update(changed)
+    await ctx.session.execute(
+        text("delete from learn.lesson_progress where user_id = :u and topic_id = any(:t)"),
+        {"u": ctx.facts.user_id, "t": sorted(topics)},
+    )
 
 
 async def _lesson_started(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
@@ -1085,5 +1172,8 @@ _HANDLERS = {
     "activity_completed": _activity_completed,
     "palace_saved": _palace_saved,
     "palace_deleted": _palace_deleted,
+    "topic_tested_out": _topic_tested_out,
+    "topic_test_out_undone": _topic_test_out_undone,
+    "chapter_reset": _chapter_reset,
 }
 assert set(_HANDLERS) == set(s.PAYLOAD_MODELS)

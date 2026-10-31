@@ -302,14 +302,14 @@ async def _topics(
         await session.execute(
             text(
                 """
-                select t.topic_id, t.status,
+                select t.topic_id, t.status, t.learned_via,
                        coalesce(max(lp.cards_seen), 0) as seen,
                        coalesce(max(b.card_count), 0) as total
                   from learn.topic_status t
                   left join learn.lesson_progress lp on lp.user_id = t.user_id and lp.topic_id = t.topic_id
                   left join content.bundles b on b.topic_id = t.topic_id and b.mode = lp.mode
                  where t.user_id = :u and (cast(:since as bigint) is null or t.sync_version > :since)
-                 group by t.topic_id, t.status
+                 group by t.topic_id, t.status, t.learned_via
                  order by t.topic_id
                 """
             ),
@@ -324,7 +324,11 @@ async def _topics(
             percent = min(99, int(100 * r.seen / r.total))
         else:
             percent = 0
-        out.append(s.TopicProgressState(topic_id=r.topic_id, status=r.status, percent=percent))
+        out.append(
+            s.TopicProgressState(
+                topic_id=r.topic_id, status=r.status, percent=percent, learned_via=r.learned_via
+            )
+        )
     return out
 
 

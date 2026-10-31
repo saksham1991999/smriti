@@ -9947,6 +9947,8 @@ export interface components {
     };
     /** TopicProgressState */
     TopicProgressState: {
+      /** Learned Via */
+      learned_via?: ("lesson" | "test_out" | "placement" | "chapter_test") | null;
       /** Percent */
       percent: number;
       /**

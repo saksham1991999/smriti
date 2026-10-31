@@ -17245,7 +17245,14 @@
             "enum": ["not_started", "in_progress", "learned"],
             "title": "Status"
           },
-          "percent": { "type": "integer", "title": "Percent" }
+          "percent": { "type": "integer", "title": "Percent" },
+          "learned_via": {
+            "anyOf": [
+              { "type": "string", "enum": ["lesson", "test_out", "placement", "chapter_test"] },
+              { "type": "null" }
+            ],
+            "title": "Learned Via"
+          }
         },
         "type": "object",
         "required": ["topic_id", "status", "percent"],

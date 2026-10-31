@@ -156,6 +156,19 @@ test("periodic teaser selects elements with click and arrow keys", async ({ page
   await expect(pt.locator(".pt-tile .sym")).toHaveText("Mg");
 });
 
+test("Hindi pages preload and use the Devanagari subset built from the site's text", async ({ page }) => {
+  await page.goto("/hi/");
+  await expect(page.locator('link[rel="preload"][as="font"][href*="noto-sans-devanagari-site."]')).toHaveCount(1);
+  await expect(page.locator('link[rel="preload"][href*="devanagari-wght-normal"]')).toHaveCount(0);
+  const loaded = await page.evaluate(async () => {
+    await document.fonts.ready;
+    const sample = document.querySelector("h1")?.textContent ?? "";
+    await document.fonts.load('800 30px "Noto Sans Devanagari Variable"', sample);
+    return [...document.fonts].some((f) => f.family.includes("Noto Sans Devanagari") && f.status === "loaded");
+  });
+  expect(loaded).toBe(true);
+});
+
 test("404 page renders in both languages", async ({ page }) => {
   const res = await page.goto("/no-such-page/");
   expect(res?.status()).toBe(404);

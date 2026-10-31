@@ -251,7 +251,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
                 {gentle ? (
                   // LES-02 little learner: ArrowCounterClockwise on the sunken band, never "Not quite".
                   <View style={styles.kindRow}>
-                    <Icon name="ArrowCounterClockwise" size={24} color="primary" />
+                    <Icon name="ArrowCounterClockwise" size={24} color="primaryText" />
                     <Text variant="heading">{t("learn:LES-02.little_learner_wrong")}</Text>
                   </View>
                 ) : (
@@ -276,7 +276,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
             <Card tone="sunken" testID="feedback-guided">
               <View style={styles.stackTight} accessibilityLiveRegion="polite">
                 <View style={styles.kindRow}>
-                  <Icon name="Lightbulb" size={24} color="primary" />
+                  <Icon name="Lightbulb" size={24} color="primaryText" />
                   <Text variant="heading">{t("learn:LES-02.little_learner_shown_answer")}</Text>
                 </View>
                 {solution?.feynman ? <RichText text={solution.feynman} /> : null}

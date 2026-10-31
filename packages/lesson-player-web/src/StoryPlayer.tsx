@@ -102,12 +102,23 @@ export function StoryPlayer(props: StoryPlayerProps) {
         )
       }
     >
-      <div onPointerDown={() => dispatch({ type: "touch" })} className={cx("flex flex-col gap-4", !reducedMotion && "transition-opacity duration-slow")} aria-live="polite">
+      <div onPointerDown={() => dispatch({ type: "touch" })} className="flex flex-col gap-4" aria-live="polite">
         <h1 className="m-0 text-title text-ink">{plan.title}</h1>
-        <Media refId={page.media} className="aspect-[3/2]" fit="cover" />
-        <p className={cx("m-0 text-ink", little ? "text-title font-medium" : "text-heading font-medium")} data-testid="story-text">
-          {page.text}
-        </p>
+        {/* LRN-11: a page turn (by hand or the auto-turn after narration) slides; reduced motion fades. */}
+        <div
+          key={s.page}
+          data-testid="story-page"
+          data-motion={reducedMotion ? "fade" : "slide"}
+          className={cx(
+            "flex flex-col gap-4",
+            reducedMotion ? "animate-[sm-fade_var(--sm-duration-slow)_ease-out_1]" : "motion-safe:animate-[sm-slide-in_var(--sm-duration-slow)_ease-out_1] motion-reduce:animate-[sm-fade_var(--sm-duration-slow)_ease-out_1]",
+          )}
+        >
+          <Media refId={page.media} className="aspect-[3/2]" fit="cover" />
+          <p className={cx("m-0 text-ink", little ? "text-title font-medium" : "text-heading font-medium")} data-testid="story-text">
+            {page.text}
+          </p>
+        </div>
         {end && props.pet && <PetSays pet={props.pet} text={t("learn:LRN-11.end")} testID="story-end" />}
         {end && !props.pet && (
           <Text variant="title" testID="story-end">

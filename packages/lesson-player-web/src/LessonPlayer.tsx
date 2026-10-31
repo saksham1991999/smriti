@@ -309,7 +309,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
             {gentle ? (
               // LES-02 little learner: a sunken band with ArrowCounterClockwise, never "Not quite".
               <div className="flex items-center gap-2">
-                <Icon name="ArrowCounterClockwise" weight="bold" color="primary" />
+                <Icon name="ArrowCounterClockwise" weight="bold" color="primaryText" />
                 <Text variant="heading">{t("learn:LES-02.little_learner_wrong")}</Text>
               </div>
             ) : (
@@ -333,7 +333,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
         {guided && (
           <Panel tone="neutral" testID="feedback-guided">
             <div className="flex items-center gap-2">
-              <Icon name="Lightbulb" weight="fill" color="primary" />
+              <Icon name="Lightbulb" weight="fill" color="primaryText" />
               <Text variant="heading">{t("learn:LES-02.little_learner_shown_answer")}</Text>
             </div>
             {solution?.feynman && <RichText text={solution.feynman} />}

@@ -143,7 +143,8 @@ export const SiteIndex = z
     fixture: z.boolean().optional(),
     fixture_note: z.string().optional(),
     generated_at: z.string().min(1),
-    exams: z.array(Exam).min(1),
+    /** Empty when nothing is released yet: the site then shows honest "coming soon" states. */
+    exams: z.array(Exam),
     subjects: z.array(Subject),
     /** Shown on the home page when no exam is in context. */
     home_try_lesson: TryLesson.nullable(),

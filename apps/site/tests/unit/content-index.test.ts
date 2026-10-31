@@ -6,8 +6,13 @@ import fixture from "../../src/content-index/fixture/site-index.fixture.json";
 import {
   allTopicRefs,
   conductingBodies,
+  emptyIndex,
   findPublisherIndex,
+  isUnreleased,
+  loadIndex,
   loadIndexFrom,
+  readPublishReport,
+  resolveIndexSource,
   parseIndex,
   paths,
   PUBLISHER_INDEX,
@@ -177,5 +182,79 @@ describe("site content index", () => {
 
   it("explains an unreadable index path", () => {
     expect(() => loadIndexFrom({ path: "/nope/missing.json" })).toThrow(/Could not read the content index/);
+  });
+});
+
+describe("nothing released yet", () => {
+  const report = (siteIndex: string | null) =>
+    JSON.stringify({ schema: "publish-report@1", site_index: siteIndex, published_at: "2030-01-01T00:00:00.000Z" });
+
+  const workspace = () => {
+    const root = mkdtempSync(join(tmpdir(), "site-ws-"));
+    writeFileSync(join(root, "pnpm-workspace.yaml"), "packages: []\n");
+    const site = join(root, "apps", "site");
+    mkdirSync(site, { recursive: true });
+    const out = join(root, "tools", "content-publish", "out");
+    mkdirSync(out, { recursive: true });
+    return { site, out };
+  };
+
+  it("accepts an index with no exams", () => {
+    const idx = parseIndex(emptyIndex(), "empty");
+    expect(idx.exams).toEqual([]);
+    expect(isUnreleased(idx)).toBe(true);
+    expect(isUnreleased(parseIndex(fixture, "fixture"))).toBe(false);
+  });
+
+  it("builds empty, not from a leftover index, when the publish report says site_index null", () => {
+    const { site, out } = workspace();
+    writeFileSync(join(out, "publish-report.json"), report(null));
+    writeFileSync(join(out, "site-index.json"), JSON.stringify(fixture)); // stale, from an earlier run
+    const source = resolveIndexSource(undefined, site);
+    expect(source.kind).toBe("unreleased");
+    const idx = loadIndex(source, true); // allowed in production: it is real, just empty
+    expect(idx.exams).toEqual([]);
+    expect(idx.fixture).toBeUndefined();
+    expect(idx.generated_at).toBe("2030-01-01T00:00:00.000Z");
+  });
+
+  it("honours the report next to CONTENT_INDEX_PATH, even when the file is missing", () => {
+    const { site, out } = workspace();
+    writeFileSync(join(out, "publish-report.json"), report(null));
+    const source = resolveIndexSource(join(out, "site-index.json"), site);
+    expect(source.kind).toBe("unreleased");
+    expect(loadIndex(source).exams).toEqual([]);
+  });
+
+  it("loads the published file when the report names it", () => {
+    const { site, out } = workspace();
+    writeFileSync(join(out, "publish-report.json"), report("site-index.json"));
+    writeFileSync(join(out, "site-index.json"), JSON.stringify({ ...clone(fixture), fixture: false }));
+    const source = resolveIndexSource(undefined, site);
+    expect(source).toEqual({ kind: "file", path: join(out, "site-index.json") });
+    expect(loadIndex(source, true).exams.length).toBe(4);
+  });
+
+  it("still fails when CONTENT_INDEX_PATH is missing and no report explains why", () => {
+    const { site, out } = workspace();
+    const source = resolveIndexSource(join(out, "site-index.json"), site);
+    expect(source.kind).toBe("file");
+    expect(() => loadIndex(source, true)).toThrow(/Could not read the content index/);
+  });
+
+  it("falls back to the fixture only when nothing was published, and production refuses it", () => {
+    const root = mkdtempSync(join(tmpdir(), "site-ws-"));
+    writeFileSync(join(root, "pnpm-workspace.yaml"), "packages: []\n");
+    expect(resolveIndexSource(undefined, root)).toEqual({ kind: "fixture" });
+    expect(resolveIndexSource("fixture", root)).toEqual({ kind: "fixture" });
+    expect(() => loadIndex({ kind: "fixture" }, true)).toThrow(/fixture/);
+  });
+
+  it("ignores a file that is not a publish report and rejects a broken one", () => {
+    const { out } = workspace();
+    writeFileSync(join(out, "publish-report.json"), JSON.stringify({ site_index: null }));
+    expect(readPublishReport(out)).toBeUndefined();
+    writeFileSync(join(out, "publish-report.json"), "{");
+    expect(() => readPublishReport(out)).toThrow(/publish report/);
   });
 });

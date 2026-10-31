@@ -5,6 +5,10 @@
 // local fixture (marked `"fixture": true`). CONTENT_INDEX_PATH=fixture forces the local fixture
 // (the e2e smoke tests expect its pages). With SITE_REQUIRE_CONTENT_INDEX=1 any fixture fails the
 // build, so production can never ship placeholder pages.
+//
+// The publisher writes site-index.json only when some subject is released. When its
+// publish-report.json (next to the index) says `"site_index": null`, nothing is released: the
+// site builds from an empty index and shows "coming soon" states, never a stale or sample index.
 
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, isAbsolute, join, resolve } from "node:path";
@@ -31,6 +35,38 @@ export function parseIndex(raw: unknown, source: string): SiteIndex {
     throw new Error(`Content index at ${source} is invalid:\n${issues}`);
   }
   return result.data;
+}
+
+/** The index for a build where nothing is released yet: no exams, no pages below /exams/. */
+export function emptyIndex(generatedAt = "unreleased"): SiteIndex {
+  return { schema: "site-index@1", generated_at: generatedAt, exams: [], subjects: [], home_try_lesson: null };
+}
+
+/** True when the build has no released exam (the home page and /exams/ say "coming soon"). */
+export const isUnreleased = (idx: SiteIndex): boolean => idx.exams.length === 0;
+
+interface PublishReportLite {
+  site_index: string | null;
+  published_at?: string;
+}
+
+/**
+ * The publisher's report in `dir`, when there is one. Undefined when it is missing or is not a
+ * publish report; a report that cannot be parsed fails the build rather than guessing.
+ */
+export function readPublishReport(dir: string): PublishReportLite | undefined {
+  const file = join(dir, "publish-report.json");
+  if (!existsSync(file)) return undefined;
+  let raw: unknown;
+  try {
+    raw = JSON.parse(readFileSync(file, "utf8"));
+  } catch (err) {
+    throw new Error(`Could not read the publish report at ${file}: ${(err as Error).message}`);
+  }
+  if (typeof raw !== "object" || raw === null || (raw as { schema?: unknown }).schema !== "publish-report@1") return undefined;
+  const r = raw as { site_index?: unknown; published_at?: unknown };
+  if (r.site_index !== null && typeof r.site_index !== "string") return undefined;
+  return { site_index: r.site_index, ...(typeof r.published_at === "string" ? { published_at: r.published_at } : {}) };
 }
 
 export function loadIndexFrom(opts: LoadOptions = {}): SiteIndex {
@@ -73,15 +109,66 @@ export function findPublisherIndex(start: string = process.cwd()): string | unde
   }
 }
 
+/** The publisher's output folder (tools/content-publish/out), found like findPublisherIndex. */
+export function findPublisherOut(start: string = process.cwd()): string | undefined {
+  let dir = resolve(start);
+  for (;;) {
+    const candidate = join(dir, dirname(PUBLISHER_INDEX));
+    if (existsSync(candidate)) return candidate;
+    if (existsSync(join(dir, "pnpm-workspace.yaml"))) return undefined;
+    const up = dirname(dir);
+    if (up === dir) return undefined;
+    dir = up;
+  }
+}
+
 /** The index file to load: the configured path, `fixture` for the local fixture, else the publisher's output. */
 export function resolveIndexPath(configured: string | undefined, start?: string): string | undefined {
   if (configured === "fixture") return undefined;
   return configured ?? findPublisherIndex(start);
 }
 
+/** What a build loads: a file, the local fixture, or nothing released (an empty index). */
+export type IndexSource =
+  | { kind: "file"; path: string }
+  | { kind: "fixture" }
+  | { kind: "unreleased"; report: string; publishedAt: string | undefined };
+
+/**
+ * Decides the source. A publish report that says `site_index: null` wins over any
+ * site-index.json beside it (a leftover from an earlier run), so nothing unreleased ships.
+ */
+export function resolveIndexSource(configured: string | undefined, start: string = process.cwd()): IndexSource {
+  if (configured === "fixture") return { kind: "fixture" };
+  const unreleased = (dir: string): IndexSource | undefined => {
+    const report = readPublishReport(dir);
+    return report && report.site_index === null
+      ? { kind: "unreleased", report: join(dir, "publish-report.json"), publishedAt: report.published_at }
+      : undefined;
+  };
+  if (configured) {
+    const file = isAbsolute(configured) ? configured : resolve(start, configured);
+    return unreleased(dirname(file)) ?? { kind: "file", path: file };
+  }
+  const out = findPublisherOut(start);
+  if (out) {
+    const none = unreleased(out);
+    if (none) return none;
+    const file = join(out, "site-index.json");
+    if (existsSync(file)) return { kind: "file", path: file };
+  }
+  return { kind: "fixture" };
+}
+
+/** Loads what resolveIndexSource chose. An unreleased build is real (not a fixture) and empty. */
+export function loadIndex(source: IndexSource, requireReal = false): SiteIndex {
+  if (source.kind === "unreleased") return emptyIndex(source.publishedAt);
+  return loadIndexFrom({ path: source.kind === "file" ? source.path : undefined, requireReal });
+}
+
 let cached: SiteIndex | undefined;
 export function getIndex(): SiteIndex {
-  cached ??= loadIndexFrom({ path: resolveIndexPath(site.contentIndexPath), requireReal: site.requireContentIndex });
+  cached ??= loadIndex(resolveIndexSource(site.contentIndexPath), site.requireContentIndex);
   return cached;
 }
 

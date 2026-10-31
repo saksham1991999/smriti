@@ -35,5 +35,39 @@ export {
   visibleBites,
 } from "./plan.js";
 export type { Bite, CheckQuestion, LessonPlan, LessonPlanOptions, Missed, PlanCard, PlayerMode } from "./plan.js";
+export { playerRules } from "./rules.js";
+export type { PlayerRules } from "./rules.js";
+export {
+  activityIds,
+  initialPlay,
+  initialSong,
+  initialStory,
+  isGentleText,
+  lineAt,
+  nextMove,
+  planPlay,
+  planSong,
+  planStory,
+  reducePlay,
+  reduceSong,
+  reduceStory,
+  roundMoves,
+  STORY_AUTO_ADVANCE_MS,
+} from "./little.js";
+export type {
+  ActivityCompletion,
+  ActivityKind,
+  PlayAction,
+  PlayMove,
+  PlayPlan,
+  PlayState,
+  SongAction,
+  SongPlan,
+  SongState,
+  StoryAction,
+  StoryPlan,
+  StoryState,
+} from "./little.js";
+export { NEGATIVE_FEEDBACK_WORDS, negativeFeedbackWords } from "@smriti/content-schema";
 export { LessonSession } from "./session.js";
 export type { SessionOptions } from "./session.js";

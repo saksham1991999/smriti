@@ -1,6 +1,6 @@
-import { localize, type TypedBundle } from '@smriti/content-schema';
+import { localize } from '@smriti/content-schema';
 import type { Answer, AnyQuestion } from '@smriti/lesson-core';
-import { canSubmit, initialDraft, PlayerProvider, QuestionView } from '@smriti/lesson-player-native';
+import { canSubmit, initialDraft, QuestionView } from '@smriti/lesson-player-native';
 import { Banner, Button, Card, Spinner, StatTile, Text } from '@smriti/ui-native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { router, type Href } from 'expo-router';
@@ -10,6 +10,7 @@ import { StyleSheet, View } from 'react-native';
 import { useApp, useT, useUiState, useQueryScope } from '../src/services/context';
 import { answerDailyChallenge, fetchDailyChallenge, practiceKeys, startDailyChallenge, type DailyChallenge } from '../src/services/practice';
 import { BuddyLine } from '../src/ui/Onboarding';
+import { QuestionHost } from '../src/ui/QuestionHost';
 import { BackHeader, Screen } from '../src/ui/Screen';
 
 /**
@@ -17,7 +18,6 @@ import { BackHeader, Screen } from '../src/ui/Screen';
  * The question arrives without its key (the server checks it), rendered by lesson-player-native's
  * `QuestionView`. Maths with no build-time SVG shows its TeX source.
  */
-const EMPTY_BUNDLE = { math: {}, cards: [], questions: {}, mnemonics: {}, sheets: {} } as unknown as TypedBundle;
 
 export default function Challenge() {
   const app = useApp();
@@ -36,7 +36,6 @@ export default function Challenge() {
   const c = today.data;
 
   const question = useMemo<AnyQuestion | null>(() => (c?.question ? (localize(c.question, locale) as unknown as AnyQuestion) : null), [c?.question, locale]);
-  const ctx = useMemo(() => ({ t, bundle: EMPTY_BUNDLE, resolveMedia: () => undefined, online: true }), [t]);
 
   const update = (next: DailyChallenge) => {
     queries.setQueryData(key, next);
@@ -95,11 +94,11 @@ export default function Challenge() {
     footer = <Button label={t('practice:PRC-12.done')} onPress={back} testID="challenge-done" />;
   } else if (c.started_at && question) {
     body = (
-      <PlayerProvider value={ctx}>
+      <QuestionHost>
         <Card outlined testID="challenge-question">
           <QuestionView question={question} passage={null} draft={draft ?? initialDraft(question)} onChange={setDraft} result={null} struck={[]} disabled={busy} />
         </Card>
-      </PlayerProvider>
+      </QuestionHost>
     );
     footer = <Button label={t('practice:PRC-11.submit')} loading={busy} disabled={!canSubmit(question, draft)} onPress={() => void submit()} testID="challenge-submit" />;
   } else {

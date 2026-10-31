@@ -1,0 +1,35 @@
+# LRN-01 subject map, LRN-02 chapter path and LRN-06 sheet, then the next topic's lesson to its end.
+appId: ${APP_ID}
+name: Learn a chapter
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 30000
+- tapOn:
+    id: "subject-.*"
+    index: 0
+- assertVisible:
+    id: "LRN-01"
+- tapOn:
+    id: "chapter-.*"
+    index: 0
+- assertVisible:
+    id: "LRN-02"
+- tapOn:
+    id: "chapter-tool-test"
+- assertVisible:
+    id: "LRN-06"
+- back
+- tapOn:
+    id: "chapter-cta"
+- extendedWaitUntil:
+    visible:
+      id: "lesson-player"
+    timeout: 20000
+- runFlow: subflows/play-lesson.yaml
+- assertVisible:
+    id: "LES-08"
+- tapOn:
+    id: "lesson-end-continue"

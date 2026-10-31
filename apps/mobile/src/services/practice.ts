@@ -89,17 +89,24 @@ export async function openTutorSession(app: SmritiApp, contextRef: string | null
   return unwrap(app.api.POST('/v1/tutor/sessions', { body: { mode: 'chat', exam, context_ref: contextRef } }));
 }
 
+/** A helpline the server sends with a crisis event (`safety.helplines`, owner config). Never in code. */
+export interface Helpline {
+  name: string;
+  number: string;
+  [k: string]: string;
+}
+
 /** One server-sent event from `/v1/tutor/sessions/{id}/messages` (routes/tutor.py). */
 export type TutorEvent =
   | { type: 'delta'; text: string }
   | { type: 'replace'; text: string }
-  | { type: 'safety'; kind: string }
+  | { type: 'safety'; kind: string; helplines: Helpline[]; chips: string[] }
   | { type: 'citations'; items: unknown[] }
   | { type: 'chips'; items: unknown[] }
   | { type: 'quota'; quota: Quota }
   | { type: 'quota_exhausted' }
   | { type: 'error'; code: string; retry: boolean }
-  | { type: 'done' };
+  | { type: 'done'; messageId: string | null };
 
 /** Parses an SSE body (`event: x\ndata: {...}\n\n`) into tutor events. Unknown events are skipped. */
 export function parseTutorStream(body: string): TutorEvent[] {
@@ -126,7 +133,12 @@ export function parseTutorStream(body: string): TutorEvent[] {
         out.push({ type: name, text: str('text') });
         break;
       case 'safety':
-        out.push({ type: 'safety', kind: str('kind') });
+        out.push({
+          type: 'safety',
+          kind: str('kind'),
+          helplines: (list('helplines') as Record<string, unknown>[]).filter((h) => typeof h.name === 'string' && typeof h.number === 'string') as unknown as Helpline[],
+          chips: list('chips').filter((c): c is string => typeof c === 'string'),
+        });
         break;
       case 'citations':
       case 'chips':
@@ -142,7 +154,7 @@ export function parseTutorStream(body: string): TutorEvent[] {
         out.push({ type: 'error', code: str('code') || 'error', retry: payload.retry === true });
         break;
       case 'done':
-        out.push({ type: 'done' });
+        out.push({ type: 'done', messageId: str('message_id') || null });
         break;
     }
   }
@@ -160,8 +172,8 @@ export function tutorAnswerText(events: TutorEvent[]): string {
 }
 
 /**
- * Sends a message and returns the parsed events. React Native's fetch has no streaming body, so
- * the events are read once the stream closes; the answer then appears in one go.
+ * Sends a message and returns the parsed events once the stream closes (no streaming body: Jest,
+ * the in-app fake). `streamTutorMessage` is the one screens use.
  */
 export async function sendTutorMessage(app: SmritiApp, sessionId: string, text: string, input: 'typed' | 'chip' = 'typed'): Promise<TutorEvent[]> {
   await app.ensureSession();
@@ -173,4 +185,58 @@ export async function sendTutorMessage(app: SmritiApp, sessionId: string, text: 
     }),
   );
   return parseTutorStream(typeof body === 'string' ? body : '');
+}
+
+/**
+ * Sends a message and hands each server-sent event to `onEvent` as it arrives, through
+ * `expo/fetch` (the API client still adds auth and device headers). Falls back to reading the
+ * whole stream when no streaming fetch is available. Returns every event.
+ */
+export async function streamTutorMessage(
+  app: SmritiApp,
+  sessionId: string,
+  text: string,
+  input: 'typed' | 'chip',
+  onEvent: (e: TutorEvent) => void,
+): Promise<TutorEvent[]> {
+  await app.ensureSession();
+  const stream = app.deps.streamFetch;
+  if (!stream) {
+    const events = await sendTutorMessage(app, sessionId, text, input);
+    events.forEach(onEvent);
+    return events;
+  }
+  const body = await unwrap(
+    app.api.POST('/v1/tutor/sessions/{session_id}/messages', {
+      params: { path: { session_id: sessionId } },
+      body: { client_message_id: app.newId(), input, text },
+      parseAs: 'stream',
+      fetch: stream,
+    }),
+  );
+  const events: TutorEvent[] = [];
+  const emit = (chunk: string) => {
+    for (const e of parseTutorStream(chunk)) {
+      events.push(e);
+      onEvent(e);
+    }
+  };
+  const reader = (body as ReadableStream<Uint8Array> | null)?.getReader();
+  if (!reader) return events;
+  const decoder = new TextDecoder();
+  let buffer = '';
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    // Complete events end with a blank line; the tail waits for the next chunk.
+    const cut = Math.max(buffer.lastIndexOf('\n\n'), buffer.lastIndexOf('\r\n\r\n'));
+    if (cut >= 0) {
+      emit(buffer.slice(0, cut));
+      buffer = buffer.slice(cut).replace(/^(\r?\n)+/, '');
+    }
+  }
+  buffer += decoder.decode();
+  if (buffer.trim()) emit(buffer);
+  return events;
 }

@@ -432,7 +432,7 @@ create index on content.exam_concepts (concept_id);
 create table content.content_items (
   id              text primary key,
   kind            text not null check (kind in
-                    ('lesson','flashcard_set','mnemonic','cheat_sheet','revision_sheet','storybook',
+                    ('lesson','flashcard_set','mnemonic','cheat_sheet','revision_sheet','storybook','song','play',
                      'sim','model3d','pano360','video','experiment','mind_map_template')),
   topic_id        text references content.topics(id),
   mode            text check (mode in ('deep_dive','quick_revision')),
@@ -465,7 +465,7 @@ create table content.content_versions (
 create table content.bundles (                 -- one JSON file per topic × mode × locale in R2
   id               text primary key,           -- '{topic_id}:{mode}:{locale}'
   topic_id         text not null references content.topics(id),
-  mode             text not null,
+  mode             text not null,              -- deep_dive, quick_revision, practice, or a little learner story, song or play
   locale           text not null,
   hash             text not null,              -- sha256; also the R2 object name
   size_bytes       integer not null,

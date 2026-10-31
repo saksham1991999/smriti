@@ -1,0 +1,119 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.periodic-classification.periodic-trends",
+  "questions": [
+    {
+      "id": "q.chem.periodic-classification.periodic-trends.9001",
+      "type": "statement_based",
+      "concepts": [
+        {
+          "id": "chem.periodic-classification.periodic-trends.core.ionisation-electron-gain",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Given below are two statements : In the light of the above statements, choose the correct answer from the options given below :",
+        "hi": "नीचे दो कथन दिए गए हैं : उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सही उत्तर चुनिए :"
+      },
+      "statements": [
+        {
+          "en": "Statement (I) : The first ionisation enthalpy of the elements Na, Mg, Cl and Ar follows the order $\\mathrm{Na>Mg>Cl>Ar}$.",
+          "hi": "कथन (I) : तत्वों Na, Mg, Cl और Ar की प्रथम आयनन एन्थैल्पी का क्रम $\\mathrm{Na>Mg>Cl>Ar}$ है।"
+        },
+        {
+          "en": "Statement (II) : Among Ca, Al, Fe and B, the third ionisation enthalpy is very high for Ca.",
+          "hi": "कथन (II) : Ca, Al, Fe और B में से तृतीय आयनन एन्थैल्पी Ca के लिए बहुत अधिक है।"
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Both Statement I and Statement II are true",
+            "hi": "कथन I और कथन II दोनों सही हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Both Statement I and Statement II are false",
+            "hi": "कथन I और कथन II दोनों गलत हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Statement I is true but Statement II is false",
+            "hi": "कथन I सही है परंतु कथन II गलत है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Statement I is false but Statement II is true",
+            "hi": "कथन I गलत है परंतु कथन II सही है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Across a period ionisation enthalpy rises, so the order in Statement I is reversed. After losing two electrons, $\\ce{Ca^2+}$ has a noble gas core, so taking a third electron is very hard.",
+          "hi": "आवर्त में आयनन एन्थैल्पी बढ़ती है, अतः कथन I का क्रम उलटा है। दो इलेक्ट्रॉन खोने के बाद $\\ce{Ca^2+}$ का कोर उत्कृष्ट गैस जैसा है, अतः तीसरा इलेक्ट्रॉन निकालना बहुत कठिन है।"
+        },
+        "steps": [
+          {
+            "en": "Actual order: $\\mathrm{Na<Mg<Cl<Ar}$, so Statement I is false.",
+            "hi": "वास्तविक क्रम: $\\mathrm{Na<Mg<Cl<Ar}$, अतः कथन I गलत है।"
+          },
+          {
+            "en": "Al and B lose their third valence electron easily and Fe forms $\\ce{Fe^3+}$; only Ca must break into a noble gas core, so Statement II is true.",
+            "hi": "Al और B अपना तीसरा संयोजी इलेक्ट्रॉन आसानी से खोते हैं और Fe, $\\ce{Fe^3+}$ बनाता है; केवल Ca को उत्कृष्ट गैस कोर तोड़ना पड़ता है, अतः कथन II सही है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 59
+      }
+    }
+  ]
+}

@@ -57,6 +57,8 @@ DOCUMENT_MODELS: dict[str, Any] = {
     "cheat_sheet@1": extras_schema.CheatSheet,
     "revision_sheet@1": extras_schema.RevisionSheet,
     "storybook@1": extras_schema.Storybook,
+    "song@1": extras_schema.Song,
+    "play@1": extras_schema.Play,
     "experiment@1": extras_schema.Experiment,
     "roleplay@1": extras_schema.Roleplay,
     "mind_map_template@1": extras_schema.MindMapTemplate,

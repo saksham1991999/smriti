@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.units-measurement.errors",
+  "questions": [
+    {
+      "id": "q.phy.units-measurement.errors.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.errors.core.measurement-errors",
+          "weight": 0.6
+        },
+        {
+          "id": "phy.experimental-skills.mechanics-experiments.core.youngs-modulus-expt",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The diameter of a wire measured by a screw gauge of least count $0.001\\ \\mathrm{cm}$ is $0.08\\ \\mathrm{cm}$. The length measured by a scale of least count $0.1\\ \\mathrm{cm}$ is $150\\ \\mathrm{cm}$. When a weight of $100\\ \\mathrm{N}$ is applied to the wire, the extension in length is $0.5\\ \\mathrm{cm}$, measured by a micrometer of least count $0.001\\ \\mathrm{cm}$. The error in the measured Young's modulus is $\\alpha\\times10^9\\ \\mathrm{N/m^2}$. The value of $\\alpha$ is ______. (Ignore the contribution of the load to Young's modulus error calculation)",
+        "hi": "अल्पतमांक $0.001\\ \\mathrm{cm}$ वाले स्क्रूगेज से मापा गया एक तार का व्यास $0.08\\ \\mathrm{cm}$ है। अल्पतमांक $0.1\\ \\mathrm{cm}$ वाले पैमाने से मापी गई लंबाई $150\\ \\mathrm{cm}$ है। जब तार पर $100\\ \\mathrm{N}$ का भार लगाया जाता है, तो लंबाई में वृद्धि $0.5\\ \\mathrm{cm}$ है, जिसे अल्पतमांक $0.001\\ \\mathrm{cm}$ वाले माइक्रोमीटर से मापा गया। मापे गए यंग गुणांक में त्रुटि $\\alpha\\times10^9\\ \\mathrm{N/m^2}$ है। $\\alpha$ का मान ______ है। (यंग गुणांक की त्रुटि की गणना में भार के योगदान की उपेक्षा कीजिए)"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$1.3$",
+            "hi": "$1.3$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$1.65$",
+            "hi": "$1.65$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$0.13$",
+            "hi": "$0.13$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$0.25$",
+            "hi": "$0.25$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "$Y=\\frac{4FL}{\\pi d^2\\,\\Delta l}$. Relative errors add, and the diameter's counts twice because it is squared. Multiply the total relative error by $Y$ to get the absolute error.",
+          "hi": "$Y=\\frac{4FL}{\\pi d^2\\,\\Delta l}$। सापेक्ष त्रुटियाँ जुड़ती हैं, और व्यास की त्रुटि दो बार गिनी जाती है क्योंकि उसका वर्ग है। कुल सापेक्ष त्रुटि को $Y$ से गुणा करके निरपेक्ष त्रुटि मिलती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{\\Delta Y}{Y}=2\\frac{0.001}{0.08}+\\frac{0.1}{150}+\\frac{0.001}{0.5}=0.025+0.00067+0.002 \\approx 0.0277$.",
+            "hi": "$\\frac{\\Delta Y}{Y}=2\\frac{0.001}{0.08}+\\frac{0.1}{150}+\\frac{0.001}{0.5}=0.025+0.00067+0.002 \\approx 0.0277$।"
+          },
+          {
+            "en": "$Y=\\frac{4 \\times 100 \\times 1.5}{\\pi\\left(8\\times10^{-4}\\right)^2\\left(5\\times10^{-3}\\right)} \\approx 5.97\\times10^{10}\\ \\mathrm{N/m^2}$.",
+            "hi": "$Y=\\frac{4 \\times 100 \\times 1.5}{\\pi\\left(8\\times10^{-4}\\right)^2\\left(5\\times10^{-3}\\right)} \\approx 5.97\\times10^{10}\\ \\mathrm{N/m^2}$।"
+          },
+          {
+            "en": "$\\Delta Y \\approx 0.0277 \\times 5.97\\times10^{10} \\approx 1.65\\times10^9\\ \\mathrm{N/m^2}$, so $\\alpha=1.65$.",
+            "hi": "$\\Delta Y \\approx 0.0277 \\times 5.97\\times10^{10} \\approx 1.65\\times10^9\\ \\mathrm{N/m^2}$, अतः $\\alpha=1.65$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 180,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 27
+      }
+    }
+  ]
+}

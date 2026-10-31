@@ -1,0 +1,107 @@
+{
+  "schema": "mnemonics@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:mnemonic-maker",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "System mnemonics; each locale written separately. decodes_to checked against the cited section.",
+  "chapter": "math.sets",
+  "items": [
+    {
+      "id": "m.math.sets.subsets.core.power-set.1",
+      "concept": "math.sets.subsets.core.power-set",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "In or out, two for each: every element has two choices, so n elements give 2 x 2 x ... x 2 = 2^n subsets.",
+      "decodes_to": [
+        "each element is either in the subset or not: 2 choices",
+        "n elements: 2^n subsets",
+        "drop the set itself: 2^n - 1 proper subsets"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "OpenStax Contemporary Mathematics §1.2 (number of subsets)."
+    },
+    {
+      "id": "m.math.sets.subsets.core.power-set.2",
+      "concept": "math.sets.subsets.core.power-set",
+      "technique": "chunking",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "अंदर या बाहर, हर अवयव के दो रास्ते: n अवयव, 2^n उपसमुच्चय।",
+      "decodes_to": [
+        "हर अवयव उपसमुच्चय में है या नहीं: 2 विकल्प",
+        "n अवयव: 2^n उपसमुच्चय",
+        "स्वयं समुच्चय छोड़ें: 2^n - 1 उचित उपसमुच्चय"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "OpenStax Contemporary Mathematics §1.2 (उपसमुच्चयों की संख्या)।"
+    },
+    {
+      "id": "m.math.sets.set-operations.core.set-algebra-laws.1",
+      "concept": "math.sets.set-operations.core.set-algebra-laws",
+      "technique": "rhyme",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "en",
+      "text": "Break the dash, flip the sign: the complement spreads over each set, and union turns into intersection (and back).",
+      "decodes_to": [
+        "(A ∪ B)′ = A′ ∩ B′",
+        "(A ∩ B)′ = A′ ∪ B′"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT Class 11 Mathematics §1.10 (De Morgan's laws)."
+    },
+    {
+      "id": "m.math.sets.set-operations.core.set-algebra-laws.2",
+      "concept": "math.sets.set-operations.core.set-algebra-laws",
+      "technique": "rhyme",
+      "origin": "system",
+      "taught_in": null,
+      "locale": "hi",
+      "text": "डैश बाँटो, चिह्न पलटो: पूरक हर समुच्चय पर, सम्मिलन बने सर्वनिष्ठ।",
+      "decodes_to": [
+        "(A ∪ B)′ = A′ ∩ B′",
+        "(A ∩ B)′ = A′ ∪ B′"
+      ],
+      "exam_style": "jee-main",
+      "media": null,
+      "audio": null,
+      "notes": "NCERT कक्षा 11 गणित §1.10 (डी मॉर्गन के नियम)।"
+    }
+  ]
+}

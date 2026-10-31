@@ -1,7 +1,7 @@
 import { Banner, Button, Card, Chip, Icon, LimitMeter, Spinner, Text, useTheme } from '@smriti/ui-native';
 import { useQuery } from '@tanstack/react-query';
 import { router, type Href } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { examName } from '../../src/services/exams';
 import { useApp, useT, useUiState, useQueryScope } from '../../src/services/context';
@@ -75,9 +75,21 @@ export default function Practice() {
       {data && data.weak_spots.length > 0 ? (
         <Card outlined testID="prc-weak-spots">
           <View style={styles.gap}>
-            <Text variant="heading">{t('practice:PRC-01.weak_spots_heading')}</Text>
+            <View style={styles.row}>
+              <Text variant="heading" style={styles.grow}>
+                {t('practice:PRC-01.weak_spots_heading')}
+              </Text>
+              <Button size="sm" variant="ghost" label={t('practice:PRC-01.see_all', { n: data.weak_spots.length })} onPress={() => router.push('/weak-spots' as Href)} testID="prc-weak-all" />
+            </View>
             {data.weak_spots.map((w) => (
-              <View key={w.concept_id} style={[styles.row, styles.spot, { borderTopColor: theme.colors.line }]} testID={`weak-${w.concept_id}`}>
+              <Pressable
+                key={w.concept_id}
+                accessibilityRole="button"
+                accessibilityLabel={`${w.concept_name[locale] ?? w.concept_name.en ?? ''}. ${w.reasons[0] ? t(`practice:PRC-02.reason_${w.reasons[0]}`) : ''}`}
+                onPress={() => router.push({ pathname: '/drill', params: { concepts: w.concept_id, source: 'weak_spot' } })}
+                style={[styles.row, styles.spot, { borderTopColor: theme.colors.line }]}
+                testID={`weak-${w.concept_id}`}
+              >
                 <View style={styles.grow}>
                   <Text variant="caption" tone="muted">
                     {w.topic_name[locale] ?? w.topic_name.en ?? ''}
@@ -85,18 +97,34 @@ export default function Practice() {
                   <Text variant="body">{w.concept_name[locale] ?? w.concept_name.en ?? ''}</Text>
                 </View>
                 {w.reasons[0] ? <Chip label={t(`practice:PRC-02.reason_${w.reasons[0]}`)} tone={REASON_TONE[w.reasons[0]]} /> : null}
-              </View>
+              </Pressable>
             ))}
           </View>
         </Card>
       ) : null}
 
       <View style={styles.grid}>
-        <Tile icon="Barbell" title={t('practice:PRC-01.tile_concept_drill')} caption={t('practice:PRC-01.tile_caption')} testID="prc-tile-drill" />
-        <Tile icon="FileText" title={t('practice:PRC-01.tile_pyq_bank')} testID="prc-tile-pyq" />
+        <Tile icon="Barbell" title={t('practice:PRC-01.tile_concept_drill')} caption={t('practice:PRC-01.tile_caption')} onPress={() => router.push({ pathname: '/drill', params: { source: 'hub' } })} testID="prc-tile-drill" />
+        <Tile icon="FileText" title={t('practice:PRC-01.tile_pyq_bank')} onPress={() => router.push('/pyq' as Href)} testID="prc-tile-pyq" />
         <Tile icon="Exam" title={t('practice:PRC-01.tile_mock_tests')} onPress={() => router.push('/mocks' as Href)} testID="prc-tile-mocks" />
         <Tile icon="Sparkle" title={t('tutor_social:AI-02.history')} caption={t('tutor_social:AI-02.input_placeholder_no_context')} onPress={() => router.push('/tutor' as Href)} testID="prc-tile-tutor" />
+        <Tile icon="TrendUp" title={t('practice:PRC-01.tile_analytics')} onPress={() => router.push('/progress' as Href)} testID="prc-tile-analytics" />
       </View>
+
+      {app.ageBand() !== '10_12' && app.ageBand() !== 'u10' ? (
+        <Card outlined onPress={() => router.push('/photo-doubt' as Href)} accessibilityLabel={t('practice:PRC-01.snap_a_doubt')} testID="prc-snap">
+          <View style={styles.row}>
+            <Icon name="Sparkle" color="primary" />
+            <View style={styles.grow}>
+              <Text variant="label">{t('practice:PRC-01.snap_a_doubt')}</Text>
+              <Text variant="caption" tone="muted">
+                {t('practice:PRC-01.snap_caption')}
+              </Text>
+            </View>
+            <Icon name="CaretRight" color="inkMuted" />
+          </View>
+        </Card>
+      ) : null}
 
       {data ? (
         <LimitMeter
@@ -112,9 +140,14 @@ export default function Practice() {
 
       {data && data.recent_sessions.length > 0 ? (
         <View style={styles.gap} testID="prc-recent">
-          <Text variant="heading">{t('practice:PRC-01.recent')}</Text>
+          <View style={styles.row}>
+            <Text variant="heading" style={styles.grow}>
+              {t('practice:PRC-01.recent')}
+            </Text>
+            <Button size="sm" variant="ghost" label={t('practice:PRC-16.title')} onPress={() => router.push('/practice-history' as Href)} testID="prc-history" />
+          </View>
           {data.recent_sessions.map((r) => (
-            <Card key={r.id} outlined>
+            <Card key={r.id} outlined onPress={() => router.push({ pathname: r.ended_at ? '/session-summary/[id]' : '/session/[id]', params: { id: r.id } })} accessibilityLabel={t('practice:PRC-01.resume_card.2', { answered: r.correct, total: r.answered })}>
               <Text variant="body" numeric>
                 {t('practice:PRC-01.resume_card.2', { answered: r.correct, total: r.answered })}
               </Text>
@@ -155,7 +188,7 @@ function ChallengeCard({ hub, examShort }: { hub: PracticeHub; examShort: string
   );
 }
 
-function Tile({ icon, title, caption, onPress, testID }: { icon: 'Barbell' | 'FileText' | 'Exam' | 'Sparkle'; title: string; caption?: string; onPress?: () => void; testID: string }) {
+function Tile({ icon, title, caption, onPress, testID }: { icon: 'Barbell' | 'FileText' | 'Exam' | 'Sparkle' | 'TrendUp'; title: string; caption?: string; onPress?: () => void; testID: string }) {
   const body = (
     <Card outlined {...(onPress ? { onPress, accessibilityLabel: title } : {})} testID={testID}>
       <View style={styles.tileBody}>

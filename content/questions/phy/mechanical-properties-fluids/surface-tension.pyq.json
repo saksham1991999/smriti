@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.mechanical-properties-fluids.surface-tension",
+  "questions": [
+    {
+      "id": "q.phy.mechanical-properties-fluids.surface-tension.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.mechanical-properties-fluids.surface-tension.core.surface-tension-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A liquid drop of diameter $2\\ \\mathrm{mm}$ breaks into $512$ droplets. The change in surface energy is $\\alpha\\times10^{-6}\\ \\mathrm{J}$. The value of $\\alpha$ is ______. (Take surface tension of liquid $=0.08\\ \\mathrm{N/m}$)",
+        "hi": "व्यास $2\\ \\mathrm{mm}$ की एक द्रव बूँद $512$ छोटी बूँदों में टूटती है। पृष्ठ ऊर्जा में परिवर्तन $\\alpha\\times10^{-6}\\ \\mathrm{J}$ है। $\\alpha$ का मान ______ है। (द्रव का पृष्ठ तनाव $=0.08\\ \\mathrm{N/m}$ लीजिए)"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$10$",
+            "hi": "$10$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$7$",
+            "hi": "$7$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$8$",
+            "hi": "$8$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$11$",
+            "hi": "$11$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Volume is shared out, so each droplet's radius is $\\frac{R}{\\sqrt[3]{512}}=\\frac R8$. The total surface area grows, and surface energy grows by $T\\,\\Delta A$.",
+          "hi": "आयतन बँट जाता है, अतः प्रत्येक छोटी बूँद की त्रिज्या $\\frac{R}{\\sqrt[3]{512}}=\\frac R8$ है। कुल पृष्ठ क्षेत्रफल बढ़ता है, और पृष्ठ ऊर्जा $T\\,\\Delta A$ से बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\Delta A=4\\pi\\left(512\\frac{R^2}{64}-R^2\\right)=28\\pi R^2$ with $R=10^{-3}\\ \\mathrm{m}$.",
+            "hi": "$\\Delta A=4\\pi\\left(512\\frac{R^2}{64}-R^2\\right)=28\\pi R^2$, जहाँ $R=10^{-3}\\ \\mathrm{m}$।"
+          },
+          {
+            "en": "$\\Delta E=0.08 \\times 28\\pi \\times 10^{-6} \\approx 7.0\\times10^{-6}\\ \\mathrm{J}$, so $\\alpha \\approx 7$.",
+            "hi": "$\\Delta E=0.08 \\times 28\\pi \\times 10^{-6} \\approx 7.0\\times10^{-6}\\ \\mathrm{J}$, अतः $\\alpha \\approx 7$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 45
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+# LAB-03 detail and LAB-04 with the real sim in a WebView. Needs EXPO_PUBLIC_SIM_BASE_URL pointing
+# at built sims (`pnpm --filter "./sims/*" build` then `node scripts/stage-sims.mjs <dir>`).
+appId: ${APP_ID}
+name: Lab with a sim
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 30000
+- tapOn:
+    id: "tab-bar-labs"
+- tapOn:
+    id: "lab-simple-pendulum"
+- assertVisible:
+    id: "LAB-03"
+- tapOn:
+    id: "lab-start"
+- extendedWaitUntil:
+    visible:
+      id: "lab-readings"
+    timeout: 30000
+- tapOn:
+    id: "lab-record"
+- tapOn:
+    id: "lab-readings-open"
+- assertVisible:
+    id: "LAB-06"
+- back
+- tapOn:
+    id: "lab-check"
+- tapOn:
+    id: "lab-close"
+- assertVisible:
+    id: "LAB-03"
+# Offline the second time: the cached sim still runs.
+- setAirplaneMode: enabled
+- tapOn:
+    id: "lab-start"
+- extendedWaitUntil:
+    visible:
+      id: "lab-readings"
+    timeout: 30000
+- setAirplaneMode: disabled

@@ -80,7 +80,14 @@ export type QuestionId = string;
  */
 export type MnemonicId = string;
 /**
- * cs. cheat sheet, rs. revision sheet, sb. storybook, ex. experiment, rp. role play, mm. mind-map template
+ * A Phosphor icon name in PascalCase (DESIGN §8), for example HandWaving.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "IconName".
+ */
+export type IconName = string;
+/**
+ * cs. cheat sheet, rs. revision sheet, sb. storybook, sg. song, pl. play activity, ex. experiment, rp. role play, mm. mind-map template
  *
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
  * via the `definition` "ExtraId".
@@ -1393,7 +1400,7 @@ export type SimManifest = FileMeta & {
   concepts: DottedId[];
 };
 /**
- * content/extras/{subject}/{chapter_slug}/...: cheat sheets, revision sheets, storybooks, experiments, role plays and mind-map templates (lesson-author). Each file holds one item; its schema field picks the shape.
+ * content/extras/{subject}/{chapter_slug}/...: cheat sheets, revision sheets, storybooks, songs, play activities, experiments, role plays and mind-map templates (lesson-author). Each file holds one item; its schema field picks the shape.
  *
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
  * via the `definition` "ExtrasFile".
@@ -1402,6 +1409,8 @@ export type ExtrasFile =
   | CheatSheet
   | RevisionSheet
   | Storybook
+  | Song
+  | Play
   | Experiment
   | Roleplay
   | MindMapTemplate;
@@ -1451,6 +1460,60 @@ export type Storybook = FileMeta &
       media: ImageRef;
       narration?: LocalizedAudioRef;
     }[];
+  };
+/**
+ * A song or rhyme for little learners (PRD §6 'Class 1–5: story, song and play'). Each locale has its own version, written for that language rather than translated, with its own sung audio (an audio_song request with a transcript) and lyric lines. Line timings drive the karaoke highlight once the audio exists.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "Song".
+ */
+export type Song = FileMeta &
+  Scope & {
+    schema?: "song@1";
+    style: "song" | "rhyme" | "chant";
+    /**
+     * Length for the HOME-06 path node and the little learner plan; the audio's duration_ms is the truth once generated.
+     */
+    minutes?: number;
+    cover?: ImageRef;
+    /**
+     * Things to do while singing (clap, jump, point). Lines name them by id.
+     *
+     * @maxItems 8
+     */
+    actions?: {
+      id: Slug;
+      cue: I18NText;
+      icon: IconName;
+    }[];
+    /**
+     * @minItems 1
+     */
+    versions: SongVersion[];
+  };
+/**
+ * A play activity for little learners: one to six short rounds of tap, match, sort, drag or trace. There is no score, timer or fail state: a wrong move bounces back with the try_again line, the second wrong move shows the hint, and after that the player shows the move so every round ends with the child doing it (lesson-core playerRules('little')).
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "Play".
+ */
+export type Play = FileMeta &
+  Scope & {
+    schema?: "play@1";
+    minutes: number;
+    cover?: ImageRef;
+    /**
+     * Gentle lines the pet says. No negative words (the content check refuses them).
+     */
+    feedback: {
+      success: I18NText;
+      try_again: I18NText;
+    };
+    /**
+     * @minItems 1
+     * @maxItems 6
+     */
+    rounds: (TapRound | MatchRound | SortRound | DragRound | TraceRound)[];
   };
 /**
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
@@ -1622,7 +1685,8 @@ export type Requirement =
   | "srs_card"
   | "formula_card"
   | "worked_example"
-  | "memory_hook";
+  | "memory_hook"
+  | "play_activity";
 /**
  * content/seed-packs/{variant_id}.json: what ships inside one app variant's build (TRD 3.2): the first chapter of its exam, onboarding lessons, placement sets and the pet and plant art. The whole pack stays under 8 MB.
  *
@@ -1657,7 +1721,7 @@ export type SeedPackSpecFile = FileMeta & {
   max_bytes?: number;
 };
 /**
- * Lesson bundles (deep_dive, quick_revision) and the topic's practice bundle (practice, lesson and placement questions).
+ * Lesson bundles (deep_dive, quick_revision), the topic's practice bundle (practice, lesson and placement questions), and the little learner activity bundles (story, song, play: every storybook, song or play activity of the topic, in activities).
  *
  * This interface was referenced by `Bundle`'s JSON-Schema
  * via the `definition` "BundleMode".
@@ -1665,7 +1729,7 @@ export type SeedPackSpecFile = FileMeta & {
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
  * via the `definition` "BundleMode".
  */
-export type BundleMode = "deep_dive" | "quick_revision" | "practice";
+export type BundleMode = "deep_dive" | "quick_revision" | "practice" | "story" | "song" | "play";
 
 /**
  * Localised text keyed by locale, for example { "en": "...", "hi": "..." }. Which locales are required is checked per exam profile by the content check, so a new language adds keys, not schema changes.
@@ -1812,6 +1876,10 @@ export interface ExamProfile {
   id: Slug;
   cycle: string;
   name?: I18NText;
+  /**
+   * little_learner: a class 1–5 profile (learn §5.6). Its coverage needs a story, song or little lesson and a play activity per concept instead of the exam-prep set (PRD §14).
+   */
+  audience?: "standard" | "little_learner";
   /**
    * Locales every content field used by this profile must have.
    *
@@ -2511,6 +2579,179 @@ export interface Trap {
   correct: I18NText;
 }
 /**
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "SongVersion".
+ */
+export interface SongVersion {
+  locale: Locale;
+  audio: AudioRef;
+  /**
+   * @minItems 1
+   * @maxItems 40
+   */
+  lines: LyricLine[];
+}
+/**
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "LyricLine".
+ */
+export interface LyricLine {
+  text: string;
+  /**
+   * When the line starts in this version's audio. Timings are both set or both absent.
+   */
+  start_ms?: number;
+  end_ms?: number;
+  /**
+   * An actions[] id to do on this line.
+   */
+  action?: string;
+}
+/**
+ * Tap every picture that fits the prompt ('Tap the red fruits').
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "TapRound".
+ */
+export interface TapRound {
+  kind: "tap";
+  prompt: I18NText;
+  hint?: I18NText;
+  audio?: LocalizedAudioRef;
+  /**
+   * @minItems 2
+   * @maxItems 6
+   */
+  items: PlayTile[];
+  /**
+   * @minItems 1
+   */
+  answer: Slug[];
+}
+/**
+ * Something the child taps, drags or matches: a picture with a spoken label.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "PlayTile".
+ */
+export interface PlayTile {
+  id: Slug;
+  label: I18NText;
+  media: ImageRef;
+}
+/**
+ * Join each picture on the left to its partner on the right.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "MatchRound".
+ */
+export interface MatchRound {
+  kind: "match";
+  prompt: I18NText;
+  hint?: I18NText;
+  audio?: LocalizedAudioRef;
+  /**
+   * @minItems 2
+   * @maxItems 5
+   */
+  pairs: {
+    left: PlayTile;
+    right: PlayTile;
+  }[];
+}
+/**
+ * Put each picture in its basket ('Living or non-living?').
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "SortRound".
+ */
+export interface SortRound {
+  kind: "sort";
+  prompt: I18NText;
+  hint?: I18NText;
+  audio?: LocalizedAudioRef;
+  /**
+   * @minItems 2
+   * @maxItems 3
+   */
+  buckets: {
+    id: Slug;
+    label: I18NText;
+    media?: ImageRef;
+  }[];
+  /**
+   * @minItems 2
+   * @maxItems 8
+   */
+  items: {
+    id: Slug;
+    label: I18NText;
+    media: ImageRef;
+    bucket: Slug;
+  }[];
+}
+/**
+ * Drag pictures onto their places in a scene ('Put the hat on the clown'). Extra items are allowed as gentle distractors.
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "DragRound".
+ */
+export interface DragRound {
+  kind: "drag";
+  prompt: I18NText;
+  hint?: I18NText;
+  audio?: LocalizedAudioRef;
+  scene: ImageRef;
+  /**
+   * @minItems 1
+   * @maxItems 5
+   */
+  targets: {
+    id: Slug;
+    label: I18NText;
+    /**
+     * Centre, 0-1 of the scene width.
+     */
+    x: number;
+    /**
+     * Centre, 0-1 of the scene height.
+     */
+    y: number;
+    /**
+     * Drop radius, 0-1 of the scene width; generous for small fingers.
+     */
+    radius: number;
+    /**
+     * The items[] id that belongs here.
+     */
+    accepts: string;
+  }[];
+  /**
+   * @minItems 1
+   * @maxItems 6
+   */
+  items: PlayTile[];
+}
+/**
+ * Trace a letter or digit with a finger. The app draws the glyph from its own font; guide is the stroke-order animation from anim-maker (never hand-drawn paths).
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "TraceRound".
+ */
+export interface TraceRound {
+  kind: "trace";
+  prompt: I18NText;
+  hint?: I18NText;
+  audio?: LocalizedAudioRef;
+  glyph: string;
+  script: "latin" | "devanagari" | "digits";
+  guide?: AnimationRef;
+  /**
+   * Share of the glyph the finger must cover, 0.5-0.95.
+   */
+  min_coverage: number;
+}
+/**
  * content/coverage/{exam_profile_id}.json: generated by the content check (quality-bar 1, PRD 14). Never hand-edited. A subject ships only at 100%.
  *
  * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
@@ -2678,6 +2919,12 @@ export interface Bundle {
     [k: string]: {} | undefined;
   };
   /**
+   * Activity bundles only: activity id -> the localised storybook@1, song@1 or play@1 item (authoring fields removed). A song carries only this locale's version, as version.
+   */
+  activities?: {
+    [k: string]: {} | undefined;
+  };
+  /**
    * Papers the bundle's PYQ questions come from, for the Tough one chip ("Asked in {exam_name} {year}").
    */
   pyq_papers?: {
@@ -2826,6 +3073,10 @@ export interface TopicEntry {
   bundles: {
     [k: string]: BundleEntry | undefined;
   };
+  /**
+   * Little learner path nodes for this topic, in path order (story, song, play; then by id). Each opens from the topic's story, song or play bundle.
+   */
+  activities?: ActivityEntry[];
 }
 /**
  * This interface was referenced by `Manifest`'s JSON-Schema
@@ -2847,6 +3098,24 @@ export interface BundleEntry {
     path: string;
     size_bytes: number;
   }[];
+}
+/**
+ * This interface was referenced by `Manifest`'s JSON-Schema
+ * via the `definition` "ActivityEntry".
+ *
+ * This interface was referenced by `SmritiContentTypes`'s JSON-Schema
+ * via the `definition` "ActivityEntry".
+ */
+export interface ActivityEntry {
+  id: string;
+  kind: "story" | "song" | "play";
+  title: string;
+  minutes: number | null;
+  /**
+   * Image request id for the path node thumbnail, or null.
+   */
+  cover: string | null;
+  concepts: string[];
 }
 /**
  * A delta patch from one bundle version to another (TRD 3.2), at patches/{from_hash}-{to_hash}.json, immutable. Applying it to the from bundle gives exactly the to bundle (same canonical hash).

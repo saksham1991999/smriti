@@ -1,0 +1,385 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.mot:deep_dive",
+  "topic": "chem.chemical-bonding.mot",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "chem.chemical-bonding.mot.core.mo-theory",
+    "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Orbitals that belong to the whole molecule",
+        "hi": "पूरे अणु के कक्षक"
+      },
+      "subtopic": "chem.chemical-bonding.mot.core",
+      "card_ids": [
+        "chem.chemical-bonding.mot:dd:01",
+        "chem.chemical-bonding.mot:dd:02",
+        "chem.chemical-bonding.mot:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Filling the orbitals: bond order",
+        "hi": "कक्षक भरना: आबंध कोटि"
+      },
+      "subtopic": "chem.chemical-bonding.mot.core",
+      "card_ids": [
+        "chem.chemical-bonding.mot:dd:04",
+        "chem.chemical-bonding.mot:dd:05",
+        "chem.chemical-bonding.mot:dd:06",
+        "chem.chemical-bonding.mot:dd:07",
+        "chem.chemical-bonding.mot:dd:08",
+        "chem.chemical-bonding.mot:dd:09",
+        "chem.chemical-bonding.mot:dd:10"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.mot:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The ideas of MO theory",
+        "hi": "MO सिद्धांत के विचार"
+      },
+      "body": {
+        "en": "Molecular orbital theory was developed by F. Hund and R.S. Mulliken in 1932. In a molecule, electrons occupy molecular orbitals, each influenced by two or more nuclei: an atomic orbital is monocentric, a molecular orbital is polycentric.\n\nAtomic orbitals of comparable energy and proper symmetry combine, and the number of molecular orbitals formed equals the number of atomic orbitals combined. Two atomic orbitals give a bonding orbital, $\\sigma = \\psi_A + \\psi_B$, and an antibonding orbital, $\\sigma^* = \\psi_A - \\psi_B$. This method is the linear combination of atomic orbitals (LCAO).\n\nThink of two sets of ripples on a pond: where crests meet they reinforce, where a crest meets a trough they cancel. In the bonding orbital the electron waves reinforce (constructive interference) and the electron density between the nuclei is high. In the antibonding orbital they cancel (destructive interference) and there is a nodal plane between the nuclei. So the bonding orbital is lower in energy than the parent atomic orbitals and the antibonding orbital higher. Molecular orbitals are filled by the aufbau principle, Pauli's exclusion principle and Hund's rule.",
+        "hi": "आण्विक कक्षक सिद्धांत एफ. हुंड और आर.एस. मुलिकेन ने 1932 में विकसित किया। अणु में इलेक्ट्रॉन आण्विक कक्षकों में रहते हैं, जिनमें से हर एक पर दो या अधिक नाभिकों का प्रभाव होता है: परमाणु कक्षक एककेंद्रीय होता है, आण्विक कक्षक बहुकेंद्रीय।\n\nतुलनीय ऊर्जा और उचित सममिति वाले परमाणु कक्षक मिलते हैं, और बनने वाले आण्विक कक्षकों की संख्या मिलने वाले परमाणु कक्षकों की संख्या के बराबर होती है। दो परमाणु कक्षक एक आबंधी कक्षक, $\\sigma = \\psi_A + \\psi_B$, और एक प्रतिआबंधी कक्षक, $\\sigma^* = \\psi_A - \\psi_B$, देते हैं। यह विधि परमाणु कक्षकों का रैखिक संयोग (LCAO) है।\n\nतालाब पर लहरों के दो समूहों की कल्पना कीजिए: जहाँ शिखर मिलते हैं वहाँ वे एक-दूसरे को बढ़ाते हैं, जहाँ शिखर गर्त से मिलता है वहाँ वे निरस्त होते हैं। आबंधी कक्षक में इलेक्ट्रॉन तरंगें एक-दूसरे को बढ़ाती हैं (संपोषी व्यतिकरण) और नाभिकों के बीच इलेक्ट्रॉन घनत्व अधिक होता है। प्रतिआबंधी कक्षक में वे निरस्त होती हैं (विनाशी व्यतिकरण) और नाभिकों के बीच एक नोडल तल होता है। इसलिए आबंधी कक्षक की ऊर्जा मूल परमाणु कक्षकों से कम और प्रतिआबंधी की अधिक होती है। आण्विक कक्षक ऑफ़बाउ सिद्धांत, पाउली के अपवर्जन सिद्धांत और हुंड के नियम से भरे जाते हैं।"
+      },
+      "media": "img.chemical-bonding.pond-ripples",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.7, §4.7.1"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "When atomic orbitals can combine",
+        "hi": "परमाणु कक्षक कब मिल सकते हैं"
+      },
+      "body": {
+        "en": "Three conditions: the atomic orbitals must have the same or nearly the same energy (1s combines with 1s, not with 2s); they must have the same symmetry about the molecular axis, taken as z (2$p_z$ combines with 2$p_z$, not with 2$p_x$ or 2$p_y$); and they must overlap to the maximum extent.\n\nSigma orbitals are symmetrical around the bond axis: $\\sigma 1s$, $\\sigma^* 1s$, $\\sigma 2p_z$, $\\sigma^* 2p_z$. Pi orbitals, from 2$p_x$ and 2$p_y$, are not: a $\\pi$ bonding orbital has more electron density above and below the internuclear axis, and a $\\pi^*$ orbital has a node between the nuclei.",
+        "hi": "तीन शर्तें: परमाणु कक्षकों की ऊर्जा समान या लगभग समान होनी चाहिए (1s, 1s से मिलता है, 2s से नहीं); आण्विक अक्ष, जो z माना जाता है, के प्रति उनकी सममिति समान होनी चाहिए (2$p_z$, 2$p_z$ से मिलता है, 2$p_x$ या 2$p_y$ से नहीं); और उनका अतिव्यापन अधिकतम होना चाहिए।\n\nसिग्मा कक्षक आबंध अक्ष के चारों ओर सममित होते हैं: $\\sigma 1s$, $\\sigma^* 1s$, $\\sigma 2p_z$, $\\sigma^* 2p_z$। 2$p_x$ और 2$p_y$ से बने पाई कक्षक सममित नहीं होते: $\\pi$ आबंधी कक्षक में अंतरनाभिकीय अक्ष के ऊपर और नीचे अधिक इलेक्ट्रॉन घनत्व होता है, और $\\pi^*$ कक्षक में नाभिकों के बीच एक नोड होता है।"
+      },
+      "media": "img.chemical-bonding.pond-ripples",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.7.2, §4.7.3"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.mot.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:04",
+      "type": "formula",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Bond order",
+        "hi": "आबंध कोटि"
+      },
+      "latex": "\\text{b.o.} = \\tfrac{1}{2}(N_b - N_a)",
+      "symbols": [
+        {
+          "symbol": "N_b",
+          "meaning": {
+            "en": "electrons in bonding molecular orbitals",
+            "hi": "आबंधी आण्विक कक्षकों में इलेक्ट्रॉन"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "N_a",
+          "meaning": {
+            "en": "electrons in antibonding molecular orbitals",
+            "hi": "प्रतिआबंधी आण्विक कक्षकों में इलेक्ट्रॉन"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "A positive bond order means a stable molecule; zero or negative means unstable. Bond length decreases as bond order increases.",
+        "hi": "धनात्मक आबंध कोटि का अर्थ स्थायी अणु; शून्य या ऋणात्मक का अर्थ अस्थायी। आबंध कोटि बढ़ने पर आबंध लंबाई घटती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.7.5"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Two energy orders",
+        "hi": "दो ऊर्जा क्रम"
+      },
+      "body": {
+        "en": "For $\\ce{O2}$ and $\\ce{F2}$ the order is $\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < \\sigma 2p_z < (\\pi 2p_x = \\pi 2p_y) < (\\pi^* 2p_x = \\pi^* 2p_y) < \\sigma^* 2p_z$.\n\nFor $\\ce{Li2}$, $\\ce{Be2}$, $\\ce{B2}$, $\\ce{C2}$ and $\\ce{N2}$ the $\\sigma 2p_z$ orbital lies above the $\\pi 2p$ pair: $\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < (\\pi 2p_x = \\pi 2p_y) < \\sigma 2p_z < (\\pi^* 2p_x = \\pi^* 2p_y) < \\sigma^* 2p_z$.\n\nIf every molecular orbital is doubly occupied the substance is diamagnetic; if one or more is singly occupied it is paramagnetic, like $\\ce{O2}$.",
+        "hi": "$\\ce{O2}$ और $\\ce{F2}$ के लिए क्रम है $\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < \\sigma 2p_z < (\\pi 2p_x = \\pi 2p_y) < (\\pi^* 2p_x = \\pi^* 2p_y) < \\sigma^* 2p_z$।\n\n$\\ce{Li2}$, $\\ce{Be2}$, $\\ce{B2}$, $\\ce{C2}$ और $\\ce{N2}$ के लिए $\\sigma 2p_z$ कक्षक $\\pi 2p$ युग्म से ऊपर है: $\\sigma 1s < \\sigma^* 1s < \\sigma 2s < \\sigma^* 2s < (\\pi 2p_x = \\pi 2p_y) < \\sigma 2p_z < (\\pi^* 2p_x = \\pi^* 2p_y) < \\sigma^* 2p_z$।\n\nयदि हर आण्विक कक्षक में दो इलेक्ट्रॉन हों तो पदार्थ प्रतिचुंबकीय होता है; यदि एक या अधिक में एक ही इलेक्ट्रॉन हो तो अनुचुंबकीय, जैसे $\\ce{O2}$।"
+      },
+      "media": "img.chemical-bonding.pond-ripples",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.7.4, §4.7.5"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Write the configuration of $\\ce{O2}$, find its bond order and predict its magnetic nature.",
+        "hi": "$\\ce{O2}$ का विन्यास लिखिए, इसकी आबंध कोटि ज्ञात कीजिए और इसकी चुंबकीय प्रकृति बताइए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\ce{O2}$ has 16 electrons: $(\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2 (\\sigma^* 2s)^2 (\\sigma 2p_z)^2 (\\pi 2p_x^2 = \\pi 2p_y^2)(\\pi^* 2p_x^1 = \\pi^* 2p_y^1)$.",
+          "hi": "$\\ce{O2}$ में 16 इलेक्ट्रॉन हैं: $(\\sigma 1s)^2 (\\sigma^* 1s)^2 (\\sigma 2s)^2 (\\sigma^* 2s)^2 (\\sigma 2p_z)^2 (\\pi 2p_x^2 = \\pi 2p_y^2)(\\pi^* 2p_x^1 = \\pi^* 2p_y^1)$।"
+        },
+        {
+          "en": "Bonding electrons $N_b = 10$, antibonding $N_a = 6$: $\\text{b.o.} = \\tfrac{1}{2}(10 - 6) = 2$.",
+          "hi": "आबंधी इलेक्ट्रॉन $N_b = 10$, प्रतिआबंधी $N_a = 6$: $\\text{b.o.} = \\tfrac{1}{2}(10 - 6) = 2$।"
+        },
+        {
+          "en": "Two unpaired electrons in the $\\pi^*$ orbitals make $\\ce{O2}$ paramagnetic, as experiment shows.",
+          "hi": "$\\pi^*$ कक्षकों में दो अयुग्मित इलेक्ट्रॉन $\\ce{O2}$ को अनुचुंबकीय बनाते हैं, जैसा प्रयोग दिखाता है।"
+        }
+      ],
+      "answer": {
+        "en": "Bond order 2; paramagnetic.",
+        "hi": "आबंध कोटि 2; अनुचुंबकीय।"
+      },
+      "answer_value": {
+        "value": 2,
+        "unit": null,
+        "tolerance": {
+          "abs": 0
+        }
+      },
+      "common_trap": {
+        "en": "Pairing the two $\\pi^*$ electrons in one orbital, which breaks Hund's rule and wrongly predicts diamagnetism.",
+        "hi": "दोनों $\\pi^*$ इलेक्ट्रॉनों को एक ही कक्षक में युग्मित कर देना, जो हुंड का नियम तोड़ता है और गलत रूप से प्रतिचुंबकत्व बताता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.8"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:07",
+      "type": "interactive",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Paramagnetic or diamagnetic? (NCERT Fig. 4.21)",
+        "hi": "अनुचुंबकीय या प्रतिचुंबकीय? (NCERT चित्र 4.21)"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "b2",
+            "text": {
+              "en": "$\\ce{B2}$",
+              "hi": "$\\ce{B2}$"
+            }
+          },
+          {
+            "id": "c2",
+            "text": {
+              "en": "$\\ce{C2}$",
+              "hi": "$\\ce{C2}$"
+            }
+          },
+          {
+            "id": "n2",
+            "text": {
+              "en": "$\\ce{N2}$",
+              "hi": "$\\ce{N2}$"
+            }
+          },
+          {
+            "id": "o2",
+            "text": {
+              "en": "$\\ce{O2}$",
+              "hi": "$\\ce{O2}$"
+            }
+          },
+          {
+            "id": "f2",
+            "text": {
+              "en": "$\\ce{F2}$",
+              "hi": "$\\ce{F2}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "para",
+            "label": {
+              "en": "Paramagnetic",
+              "hi": "अनुचुंबकीय"
+            }
+          },
+          {
+            "id": "dia",
+            "label": {
+              "en": "Diamagnetic",
+              "hi": "प्रतिचुंबकीय"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "b2",
+            "bin": "para"
+          },
+          {
+            "item": "c2",
+            "bin": "dia"
+          },
+          {
+            "item": "n2",
+            "bin": "dia"
+          },
+          {
+            "item": "o2",
+            "bin": "para"
+          },
+          {
+            "item": "f2",
+            "bin": "dia"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: $\\ce{B2}$ and $\\ce{O2}$ each have two unpaired electrons in a degenerate pair of $\\pi$ or $\\pi^*$ orbitals.",
+          "hi": "सही: $\\ce{B2}$ और $\\ce{O2}$ में से हर एक में $\\pi$ या $\\pi^*$ कक्षकों के अपभ्रष्ट युग्म में दो अयुग्मित इलेक्ट्रॉन हैं।"
+        },
+        "wrong": {
+          "en": "Fill the orbitals in the right order and look for half-filled pairs.",
+          "hi": "कक्षकों को सही क्रम में भरिए और अर्धपूरित युग्म खोजिए।"
+        }
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:08",
+      "type": "memory_hook",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "mnemonic": {
+        "en": "m.chem.chemical-bonding.mot.core.mo-configuration-bond-order.1",
+        "hi": "m.chem.chemical-bonding.mot.core.mo-configuration-bond-order.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:09",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 3,
+      "question": "q.chem.chemical-bonding.mot.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.mot:dd:10",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.mot.core.mo-theory",
+        "chem.chemical-bonding.mot.core.mo-configuration-bond-order"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Molecular orbitals: as many as the atomic orbitals combined; bonding lower, antibonding higher in energy.",
+          "hi": "आण्विक कक्षक: मिलने वाले परमाणु कक्षकों जितने; आबंधी की ऊर्जा कम, प्रतिआबंधी की अधिक।"
+        },
+        {
+          "en": "Combining orbitals need similar energy, the same symmetry and maximum overlap.",
+          "hi": "मिलने वाले कक्षकों में समान ऊर्जा, समान सममिति और अधिकतम अतिव्यापन चाहिए।"
+        },
+        {
+          "en": "Bond order $= \\tfrac{1}{2}(N_b - N_a)$: $\\ce{H2}$ 1, $\\ce{He2}$ 0, $\\ce{N2}$ 3, $\\ce{O2}$ 2 (paramagnetic).",
+          "hi": "आबंध कोटि $= \\tfrac{1}{2}(N_b - N_a)$: $\\ce{H2}$ 1, $\\ce{He2}$ 0, $\\ce{N2}$ 3, $\\ce{O2}$ 2 (अनुचुंबकीय)।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.7, §4.8"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

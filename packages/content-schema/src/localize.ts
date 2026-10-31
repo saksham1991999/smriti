@@ -7,7 +7,11 @@ import type {
   I18NText,
   LocalizedRef,
   Mnemonic,
+  Play,
   Question,
+  Song,
+  SongVersion,
+  Storybook,
 } from "./generated/types.js";
 
 /**
@@ -81,6 +85,23 @@ export type TypedBundle = Omit<Bundle, "cards" | "questions" | "mnemonics" | "sh
   mnemonics: Record<string, BundleMnemonic>;
   sheets: Record<string, BundleSheet>;
 };
+
+/** Authoring fields the publisher strips from extras before they go in a bundle. */
+type AuthoringField = "status" | "sources" | "authored_by" | "reviewed_by" | "updated" | "notes" | "fixture";
+
+/** A little learner activity as published: localised, authoring fields gone, `schema` set. */
+type Published<T, S extends string> = Omit<Localize<T>, AuthoringField | "schema"> & { schema: S };
+
+export type BundleStorybook = Published<Storybook, "storybook@1">;
+export type BundlePlay = Published<Play, "play@1">;
+export type BundlePlayRound = BundlePlay["rounds"][number];
+/** A song in a bundle: this locale's version only. */
+export type BundleSong = Omit<Published<Song, "song@1">, "versions"> & { version: SongVersion };
+/** Tell them apart by `schema`. */
+export type BundleActivity = BundleStorybook | BundleSong | BundlePlay;
+
+/** An activity bundle (story, song or play) with its items typed. */
+export type ActivityBundle = Omit<TypedBundle, "activities"> & { activities: Record<string, BundleActivity> };
 
 /** True for an object whose keys are all locale codes and whose values are all strings. */
 export function isI18nText(value: unknown): value is Record<string, string> {

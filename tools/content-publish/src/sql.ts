@@ -73,6 +73,8 @@ const EXTRA_KIND: Record<string, string | null> = {
   "cheat_sheet@1": "cheat_sheet",
   "revision_sheet@1": "revision_sheet",
   "storybook@1": "storybook",
+  "song@1": "song",
+  "play@1": "play",
   "experiment@1": "experiment",
   "mind_map_template@1": "mind_map_template",
   // content.content_items has no role-play kind yet (reported as a gap); role plays ship in bundles.
@@ -83,6 +85,8 @@ const EXTRA_ROLE: Record<string, string> = {
   cheat_sheet: "revises",
   revision_sheet: "revises",
   storybook: "teaches",
+  song: "teaches",
+  play: "tests",
   experiment: "teaches",
   mind_map_template: "mentions",
 };

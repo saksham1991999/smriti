@@ -1,8 +1,8 @@
 import type { BundleEntry, BundleMode, Manifest } from "@smriti/content-schema";
-import { localize, validateWith } from "@smriti/content-schema";
+import { ACTIVITY_KINDS, localize, validateWith } from "@smriti/content-schema";
 import type { ContentSet } from "@smriti/content-schema/check";
 
-import { type BuiltBundle, DEFAULT_MIN_APP_VERSION } from "./bundle.js";
+import { activitiesFor, BUNDLE_MODES, type BuiltBundle, DEFAULT_MIN_APP_VERSION } from "./bundle.js";
 import { hashed } from "./canonical.js";
 import { PublishError } from "./errors.js";
 import { compareVersions, type ProfilePlan } from "./plan.js";
@@ -34,6 +34,11 @@ export function manifestPaths(profile: string, locale: string, hash: string): { 
   return { current: `manifests/${profile}.${locale}.json`, archived: `manifests/${profile}.${locale}.${hash}.json` };
 }
 
+/** The path node thumbnail: the item's cover, or a storybook's first page. */
+function activityCover(a: { cover?: string; pages?: { media: string }[] }): string | null {
+  return a.cover ?? a.pages?.[0]?.media ?? null;
+}
+
 /** Build a manifest with a given version number (the caller picks the version from history). */
 export function buildManifest(inp: ManifestInputs, version: number): { manifest: Manifest; bytes: Buffer; hash: string } {
   const { set, plan, locale } = inp;
@@ -52,7 +57,7 @@ export function buildManifest(inp: ManifestInputs, version: number): { manifest:
         const t = set.topics.get(topicId);
         if (!t) return;
         const bundles: Record<string, BundleEntry> = {};
-        for (const mode of ["deep_dive", "quick_revision", "practice"] as const) {
+        for (const mode of BUNDLE_MODES) {
           const b = inp.bundles.get(bundleKey(topicId, mode));
           if (!b) continue;
           if (compareVersions(b.bundle.min_app_version, minApp) > 0) minApp = b.bundle.min_app_version;
@@ -63,16 +68,31 @@ export function buildManifest(inp: ManifestInputs, version: number): { manifest:
             size_bytes: b.bytes.length,
             card_count: b.cardCount,
             min_app_version: b.bundle.min_app_version,
+            // Storybooks are free (learn §6.2); songs and play follow them until the owner rules otherwise.
             is_free: mode !== "deep_dive" || pc.freeDeepDive,
             patches: inp.patches.get(b.bundle.id) ?? [],
           };
         }
+        // Little learner path nodes, from the activity bundles this manifest lists.
+        const activities = ACTIVITY_KINDS.flatMap((kind) =>
+          bundles[kind]
+            ? activitiesFor(set, topicId, kind).map((a) => ({
+                id: a.id,
+                kind,
+                title: L(a.title),
+                minutes: (a as { minutes?: number }).minutes ?? null,
+                cover: activityCover(a),
+                concepts: a.concepts,
+              }))
+            : [],
+        );
         topics[topicId] = {
           name: L(t.topic.name),
           chapter: pc.chapter.id,
           sort: ti + 1,
           depth: plan.depth.get(topicId) ?? {},
           bundles,
+          ...(activities.length ? { activities } : {}),
         };
       });
       return {

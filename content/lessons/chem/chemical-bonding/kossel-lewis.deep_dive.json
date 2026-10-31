@@ -1,0 +1,413 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khch104) could not be retrieved, so a reviewer should check the terms.",
+  "id": "chem.chemical-bonding.kossel-lewis:deep_dive",
+  "topic": "chem.chemical-bonding.kossel-lewis",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Why atoms join",
+        "hi": "परमाणु क्यों जुड़ते हैं"
+      },
+      "subtopic": "chem.chemical-bonding.kossel-lewis.core",
+      "card_ids": [
+        "chem.chemical-bonding.kossel-lewis:dd:01",
+        "chem.chemical-bonding.kossel-lewis:dd:02",
+        "chem.chemical-bonding.kossel-lewis:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Lewis structures and formal charge",
+        "hi": "लूइस संरचनाएँ और औपचारिक आवेश"
+      },
+      "subtopic": "chem.chemical-bonding.kossel-lewis.core",
+      "card_ids": [
+        "chem.chemical-bonding.kossel-lewis:dd:04",
+        "chem.chemical-bonding.kossel-lewis:dd:05",
+        "chem.chemical-bonding.kossel-lewis:dd:06",
+        "chem.chemical-bonding.kossel-lewis:dd:07",
+        "chem.chemical-bonding.kossel-lewis:dd:08",
+        "chem.chemical-bonding.kossel-lewis:dd:09",
+        "chem.chemical-bonding.kossel-lewis:dd:10"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:01",
+      "type": "story",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Almost nothing lives alone",
+        "hi": "लगभग कोई अकेला नहीं रहता"
+      },
+      "body": {
+        "en": "Under normal conditions no element exists as an independent atom in nature, except the noble gases. Everything else is found as groups of atoms held together. The force that holds atoms, ions and other species together is called a chemical bond.",
+        "hi": "सामान्य परिस्थितियों में उत्कृष्ट गैसों को छोड़कर कोई भी तत्व प्रकृति में स्वतंत्र परमाणु के रूप में नहीं मिलता। बाकी सब परमाणुओं के समूहों के रूप में मिलते हैं। परमाणुओं, आयनों आदि को एक साथ बाँधे रखने वाले आकर्षण बल को रासायनिक आबंध कहते हैं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "intro"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Transfer or share: the octet rule",
+        "hi": "स्थानांतरण या साझा: अष्टक नियम"
+      },
+      "body": {
+        "en": "In 1916 Kössel and Lewis gave the first satisfying explanation of valence, based on the inertness of the noble gases. Atoms combine either by transferring valence electrons from one atom to another (gaining or losing) or by sharing them, so that each atom gets an octet of electrons in its valence shell. This is the octet rule.\n\nLangmuir (1919) introduced the term covalent bond for a bond formed by sharing. In $\\ce{Cl2}$ each chlorine atom gives one electron to a shared pair and both reach the argon configuration, just as two friends stay dry under one shared umbrella.\n\nTwo atoms sharing one pair form a single bond; two pairs, a double bond (as in $\\ce{CO2}$ and ethene); three pairs, a triple bond (as in $\\ce{N2}$ and ethyne).",
+        "hi": "1916 में कॉसेल और लूइस ने उत्कृष्ट गैसों की अक्रियता के आधार पर संयोजकता की पहली संतोषजनक व्याख्या दी। परमाणु या तो संयोजकता इलेक्ट्रॉनों का एक परमाणु से दूसरे में स्थानांतरण करके (ग्रहण या त्याग) या उन्हें साझा करके जुड़ते हैं, ताकि हर परमाणु के संयोजकता कोश में इलेक्ट्रॉनों का अष्टक हो जाए। यही अष्टक नियम है।\n\nलैंगम्यूर (1919) ने साझे से बने आबंध के लिए सहसंयोजी आबंध शब्द दिया। $\\ce{Cl2}$ में हर क्लोरीन परमाणु साझे युग्म में एक इलेक्ट्रॉन देता है और दोनों आर्गन जैसा विन्यास पा लेते हैं, ठीक वैसे ही जैसे दो दोस्त एक ही छाते के नीचे सूखे रहते हैं।\n\nएक युग्म साझा करने पर एकल आबंध बनता है; दो युग्म पर द्वि-आबंध ($\\ce{CO2}$ और एथीन में); तीन युग्म पर त्रि-आबंध ($\\ce{N2}$ और एथाइन में)।"
+      },
+      "media": "img.chemical-bonding.shared-umbrella",
+      "highlights": [
+        {
+          "term": {
+            "en": "octet rule",
+            "hi": "अष्टक नियम"
+          },
+          "definition": {
+            "en": "Atoms combine by transfer or sharing of valence electrons so as to have an octet in their valence shells.",
+            "hi": "परमाणु संयोजकता इलेक्ट्रॉनों के स्थानांतरण या साझे से इस प्रकार जुड़ते हैं कि उनके संयोजकता कोश में अष्टक हो जाए।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.1, §4.1.1, §4.1.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:03",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 1,
+      "question": "q.chem.chemical-bonding.kossel-lewis.0001"
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:04",
+      "type": "formula",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Formal charge",
+        "hi": "औपचारिक आवेश"
+      },
+      "latex": "\\text{F.C.} = V - L - \\tfrac{1}{2}S",
+      "symbols": [
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "valence electrons in the free atom",
+            "hi": "मुक्त परमाणु में संयोजकता इलेक्ट्रॉन"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "L",
+          "meaning": {
+            "en": "non-bonding (lone pair) electrons on the atom",
+            "hi": "परमाणु पर अनाबंधी (एकाकी युग्म) इलेक्ट्रॉन"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "S",
+          "meaning": {
+            "en": "bonding (shared) electrons around the atom",
+            "hi": "परमाणु के चारों ओर आबंधी (साझे) इलेक्ट्रॉन"
+          },
+          "unit": null
+        }
+      ],
+      "conditions": {
+        "en": "Formal charges keep track of electrons; they do not show real charge separation. The lowest-energy Lewis structure is generally the one with the smallest formal charges.",
+        "hi": "औपचारिक आवेश इलेक्ट्रॉनों का हिसाब रखते हैं; ये वास्तविक आवेश पृथक्करण नहीं दिखाते। सामान्यतः न्यूनतम ऊर्जा वाली लूइस संरचना वह होती है जिसमें औपचारिक आवेश सबसे कम हों।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.1.4"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Find the formal charge on nitrogen and on each hydrogen in $\\ce{NH4+}$, where nitrogen forms four single bonds and has no lone pair.",
+        "hi": "$\\ce{NH4+}$ में नाइट्रोजन और हर हाइड्रोजन पर औपचारिक आवेश ज्ञात कीजिए, जहाँ नाइट्रोजन चार एकल आबंध बनाता है और उस पर कोई एकाकी युग्म नहीं है।"
+      },
+      "solution_steps": [
+        {
+          "en": "Nitrogen: $V = 5$, $L = 0$, $S = 8$, so $\\text{F.C.} = 5 - 0 - 4 = +1$.",
+          "hi": "नाइट्रोजन: $V = 5$, $L = 0$, $S = 8$, अतः $\\text{F.C.} = 5 - 0 - 4 = +1$।"
+        },
+        {
+          "en": "Each hydrogen: $V = 1$, $L = 0$, $S = 2$, so $\\text{F.C.} = 1 - 0 - 1 = 0$.",
+          "hi": "हर हाइड्रोजन: $V = 1$, $L = 0$, $S = 2$, अतः $\\text{F.C.} = 1 - 0 - 1 = 0$।"
+        },
+        {
+          "en": "The formal charges add up to $+1$, the charge of the ion.",
+          "hi": "औपचारिक आवेशों का योग $+1$ है, जो आयन का आवेश है।"
+        }
+      ],
+      "answer": {
+        "en": "Nitrogen $+1$; each hydrogen $0$.",
+        "hi": "नाइट्रोजन $+1$; हर हाइड्रोजन $0$।"
+      },
+      "common_trap": {
+        "en": "Counting all eight shared electrons for nitrogen instead of half of them.",
+        "hi": "नाइट्रोजन के लिए आधे के बजाय सभी आठ साझे इलेक्ट्रॉन गिन लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.1.4"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:06",
+      "type": "interactive",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Which exception to the octet rule does each molecule show?",
+        "hi": "हर अणु अष्टक नियम का कौन-सा अपवाद दिखाता है?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "bcl3",
+            "text": {
+              "en": "$\\ce{BCl3}$",
+              "hi": "$\\ce{BCl3}$"
+            }
+          },
+          {
+            "id": "beh2",
+            "text": {
+              "en": "$\\ce{BeH2}$",
+              "hi": "$\\ce{BeH2}$"
+            }
+          },
+          {
+            "id": "no",
+            "text": {
+              "en": "$\\ce{NO}$",
+              "hi": "$\\ce{NO}$"
+            }
+          },
+          {
+            "id": "no2",
+            "text": {
+              "en": "$\\ce{NO2}$",
+              "hi": "$\\ce{NO2}$"
+            }
+          },
+          {
+            "id": "pf5",
+            "text": {
+              "en": "$\\ce{PF5}$",
+              "hi": "$\\ce{PF5}$"
+            }
+          },
+          {
+            "id": "sf6",
+            "text": {
+              "en": "$\\ce{SF6}$",
+              "hi": "$\\ce{SF6}$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "incomplete",
+            "label": {
+              "en": "Incomplete octet",
+              "hi": "अपूर्ण अष्टक"
+            }
+          },
+          {
+            "id": "odd",
+            "label": {
+              "en": "Odd-electron molecule",
+              "hi": "विषम इलेक्ट्रॉन अणु"
+            }
+          },
+          {
+            "id": "expanded",
+            "label": {
+              "en": "Expanded octet",
+              "hi": "प्रसारित अष्टक"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "bcl3",
+            "bin": "incomplete"
+          },
+          {
+            "item": "beh2",
+            "bin": "incomplete"
+          },
+          {
+            "item": "no",
+            "bin": "odd"
+          },
+          {
+            "item": "no2",
+            "bin": "odd"
+          },
+          {
+            "item": "pf5",
+            "bin": "expanded"
+          },
+          {
+            "item": "sf6",
+            "bin": "expanded"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: few valence electrons give an incomplete octet, an odd total cannot pair up, and third-period atoms can hold more than eight.",
+          "hi": "सही: कम संयोजकता इलेक्ट्रॉनों से अपूर्ण अष्टक, विषम कुल इलेक्ट्रॉन युग्म नहीं बना सकते, और तीसरे आवर्त के परमाणु आठ से अधिक रख सकते हैं।"
+        },
+        "wrong": {
+          "en": "Count the electrons around the central atom in each.",
+          "hi": "हर अणु में केंद्रीय परमाणु के चारों ओर इलेक्ट्रॉन गिनिए।"
+        }
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Where the octet rule fails",
+        "hi": "जहाँ अष्टक नियम विफल होता है"
+      },
+      "body": {
+        "en": "The octet rule is useful but not universal. Three exceptions:\n\nIncomplete octet: in $\\ce{LiCl}$, $\\ce{BeH2}$ and $\\ce{BCl3}$ the central atom has fewer than eight electrons, because Li, Be and B have only one, two and three valence electrons.\n\nOdd-electron molecules: $\\ce{NO}$ and $\\ce{NO2}$ have an odd number of electrons, so not every atom can have an octet.\n\nExpanded octet: elements in and beyond the third period can use $3d$ orbitals too, so $\\ce{PF5}$ has 10 electrons around P, and $\\ce{SF6}$ and $\\ce{H2SO4}$ have 12 around S.\n\nThe theory also cannot explain the shapes of molecules, does not account for compounds of xenon and krypton such as $\\ce{XeF2}$, and says nothing about the energy of a molecule.",
+        "hi": "अष्टक नियम उपयोगी है पर सार्वत्रिक नहीं। तीन अपवाद:\n\nअपूर्ण अष्टक: $\\ce{LiCl}$, $\\ce{BeH2}$ और $\\ce{BCl3}$ में केंद्रीय परमाणु के पास आठ से कम इलेक्ट्रॉन होते हैं, क्योंकि Li, Be और B में केवल एक, दो और तीन संयोजकता इलेक्ट्रॉन हैं।\n\nविषम इलेक्ट्रॉन अणु: $\\ce{NO}$ और $\\ce{NO2}$ में इलेक्ट्रॉनों की संख्या विषम है, इसलिए हर परमाणु का अष्टक पूरा नहीं हो सकता।\n\nप्रसारित अष्टक: तीसरे और उसके बाद के आवर्तों के तत्व $3d$ कक्षक भी उपयोग कर सकते हैं, इसलिए $\\ce{PF5}$ में P के चारों ओर 10 और $\\ce{SF6}$ तथा $\\ce{H2SO4}$ में S के चारों ओर 12 इलेक्ट्रॉन होते हैं।\n\nयह सिद्धांत अणुओं की आकृति नहीं समझा पाता, $\\ce{XeF2}$ जैसे ज़ीनॉन और क्रिप्टॉन यौगिकों की व्याख्या नहीं करता, और अणु की ऊर्जा के बारे में कुछ नहीं बताता।"
+      },
+      "media": "img.chemical-bonding.shared-umbrella",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.1.5"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:08",
+      "type": "memory_hook",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds.1",
+        "hi": "m.chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds.2"
+      }
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:09",
+      "type": "question",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "question": "q.chem.chemical-bonding.kossel-lewis.0002"
+    },
+    {
+      "id": "chem.chemical-bonding.kossel-lewis:dd:10",
+      "type": "summary",
+      "concepts": [
+        "chem.chemical-bonding.kossel-lewis.core.octet-rule-bonds"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Atoms bond by transfer or sharing of valence electrons to reach an octet (Kössel and Lewis, 1916).",
+          "hi": "परमाणु अष्टक पाने के लिए संयोजकता इलेक्ट्रॉनों के स्थानांतरण या साझे से आबंध बनाते हैं (कॉसेल और लूइस, 1916)।"
+        },
+        {
+          "en": "Formal charge $= V - L - \\tfrac{1}{2}S$; the best Lewis structure has the smallest formal charges.",
+          "hi": "औपचारिक आवेश $= V - L - \\tfrac{1}{2}S$; सबसे अच्छी लूइस संरचना में औपचारिक आवेश न्यूनतम होते हैं।"
+        },
+        {
+          "en": "Exceptions: incomplete octet, odd-electron molecules, expanded octet.",
+          "hi": "अपवाद: अपूर्ण अष्टक, विषम इलेक्ट्रॉन अणु, प्रसारित अष्टक।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Chemistry Part I, Ch 4 Chemical Bonding and Molecular Structure (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kech104.pdf",
+        "retrieved": "2026-10-30",
+        "pages": "§4.1"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

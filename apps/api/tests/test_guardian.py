@@ -325,7 +325,8 @@ async def test_turning_18_ends_the_consent(
     today = datetime.now(UTC).date()
     month = date(today.year - 18, today.month, 1)
     await set_profile(services, s.user_id, birth_ym=month)
-    await guardian.age_up(services.db)
+    # On the month's last day the birthday has certainly passed, so this call may move them.
+    first = await guardian.age_up(services.db)
     me = (await client.get("/v1/guardian/consent", headers=s.headers)).json()
     if today.month == 12:
         next_month = date(today.year + 1, 1, 1)
@@ -334,7 +335,7 @@ async def test_turning_18_ends_the_consent(
     if today < next_month - timedelta(days=1):
         assert me["age_band"] == "13_17"
     await set_profile(services, s.user_id, birth_ym=date(today.year - 19, 1, 1))
-    assert await guardian.age_up(services.db) >= 1
+    assert first + await guardian.age_up(services.db) >= 1
     me = (await client.get("/v1/guardian/consent", headers=s.headers)).json()
     assert (me["age_band"], me["state"], me["needs_consent"]) == ("18p", "not_required", False)
     async with services.db.admin_tx() as session:

@@ -1,0 +1,146 @@
+{
+  "schema": "revision_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Revision sheet for the chapter, gathered from the topic cheat sheets. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "rs.math.sets",
+  "scope": "chapter",
+  "chapter": "math.sets",
+  "title": {
+    "en": "Sets",
+    "hi": "समुच्चय"
+  },
+  "concepts": [
+    "math.sets.sets-representation.core.set-notation",
+    "math.sets.set-types.core.empty-finite-equal-sets",
+    "math.sets.subsets.core.subsets-intervals",
+    "math.sets.subsets.core.power-set",
+    "math.sets.set-operations.core.venn-diagrams",
+    "math.sets.set-operations.core.union-intersection-complement",
+    "math.sets.set-operations.core.set-algebra-laws"
+  ],
+  "points": [
+    {
+      "en": "A set is a well-defined collection of objects.",
+      "hi": "समुच्चय वस्तुओं का सुपरिभाषित संग्रह है।"
+    },
+    {
+      "en": "Roster form: elements listed once each, order immaterial.",
+      "hi": "सूचीरूप: अवयव एक-एक बार, क्रम महत्त्वहीन।"
+    },
+    {
+      "en": "Set-builder form: a variable, a colon read 'such that', and the property every element shares.",
+      "hi": "समुच्चय-निर्माण रूप: एक चर, 'ऐसा कि' पढ़ा जाने वाला कोलन, और वह गुण जो हर अवयव में है।"
+    },
+    {
+      "en": "$\\mathbf{N}$, $\\mathbf{Z}$, $\\mathbf{Q}$, $\\mathbf{R}$: natural numbers, integers, rationals, reals.",
+      "hi": "$\\mathbf{N}$, $\\mathbf{Z}$, $\\mathbf{Q}$, $\\mathbf{R}$: प्राकृत संख्याएँ, पूर्णांक, परिमेय, वास्तविक।"
+    },
+    {
+      "en": "Empty set $\\phi$ has no element; $\\{0\\}$ and $\\{\\phi\\}$ are not empty.",
+      "hi": "रिक्त समुच्चय $\\phi$ में कोई अवयव नहीं; $\\{0\\}$ और $\\{\\phi\\}$ रिक्त नहीं हैं।"
+    },
+    {
+      "en": "Finite: empty or a definite number of elements; otherwise infinite.",
+      "hi": "परिमित: रिक्त या अवयवों की निश्चित संख्या; अन्यथा अपरिमित।"
+    },
+    {
+      "en": "Equal sets: exactly the same elements.",
+      "hi": "समान समुच्चय: ठीक-ठीक एक जैसे अवयव।"
+    },
+    {
+      "en": "$A \\subset B$ when every element of A is in B; $\\phi$ is a subset of every set.",
+      "hi": "$A \\subset B$ जब A का हर अवयव B में हो; $\\phi$ हर समुच्चय का उपसमुच्चय है।"
+    },
+    {
+      "en": "$A \\subset B$ and $B \\subset A$ together give $A = B$.",
+      "hi": "$A \\subset B$ और $B \\subset A$ मिलकर $A = B$ देते हैं।"
+    },
+    {
+      "en": "$\\mathbf{N} \\subset \\mathbf{Z} \\subset \\mathbf{Q} \\subset \\mathbf{R}$.",
+      "hi": "$\\mathbf{N} \\subset \\mathbf{Z} \\subset \\mathbf{Q} \\subset \\mathbf{R}$।"
+    },
+    {
+      "en": "Round bracket: end point excluded; square bracket: included.",
+      "hi": "गोल कोष्ठक: अंत्य बिंदु शामिल नहीं; वर्ग कोष्ठक: शामिल।"
+    },
+    {
+      "en": "Venn diagram: U as a rectangle, subsets as circles.",
+      "hi": "वेन आरेख: U आयत, उपसमुच्चय वृत्त।"
+    },
+    {
+      "en": "$A - B$, $A \\cap B$ and $B - A$ are mutually disjoint.",
+      "hi": "$A - B$, $A \\cap B$ और $B - A$ परस्पर असंयुक्त हैं।"
+    },
+    {
+      "en": "$A \\cup A' = U$ and $A \\cap A' = \\phi$.",
+      "hi": "$A \\cup A' = U$ और $A \\cap A' = \\phi$।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Length of an interval",
+        "hi": "अंतराल की लंबाई"
+      },
+      "latex": "\\ell = b - a"
+    },
+    {
+      "name": {
+        "en": "Number of subsets",
+        "hi": "उपसमुच्चयों की संख्या"
+      },
+      "latex": "n\\big(P(A)\\big) = 2^{n}"
+    },
+    {
+      "name": {
+        "en": "De Morgan's laws",
+        "hi": "डी मॉर्गन के नियम"
+      },
+      "latex": "(A \\cup B)' = A' \\cap B',\\ (A \\cap B)' = A' \\cup B'"
+    },
+    {
+      "name": {
+        "en": "Distributive law",
+        "hi": "वितरण नियम"
+      },
+      "latex": "A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)"
+    },
+    {
+      "name": {
+        "en": "Elements of a union",
+        "hi": "सम्मिलन के अवयव"
+      },
+      "latex": "n(A \\cup B) = n(A) + n(B) - n(A \\cap B)"
+    }
+  ],
+  "hi_source": "translation"
+}

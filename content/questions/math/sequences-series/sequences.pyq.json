@@ -1,0 +1,82 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.sequences-series.sequences",
+  "questions": [
+    {
+      "id": "q.math.sequences-series.sequences.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.sequences-series.sequences.core.sequence-series-basics",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $\\sum_{k=1}^{n}a_k=6n^3$, then $\\sum_{k=1}^{6}\\left(\\frac{a_{k+1}-a_k}{36}\\right)^2$ is equal to ______.",
+        "hi": "यदि $\\sum_{k=1}^{n}a_k=6n^3$ है, तो $\\sum_{k=1}^{6}\\left(\\frac{a_{k+1}-a_k}{36}\\right)^2$ बराबर ______ है।"
+      },
+      "answer": {
+        "value": 91,
+        "unit": null
+      },
+      "solution": {
+        "feynman": {
+          "en": "Each term is the difference of consecutive partial sums. Once $a_k$ is known, the gap between consecutive terms turns out to be a simple multiple of $k$.",
+          "hi": "प्रत्येक पद लगातार आंशिक योगों का अंतर है। $a_k$ ज्ञात होने पर लगातार पदों का अंतर $k$ का सरल गुणज निकलता है।"
+        },
+        "steps": [
+          {
+            "en": "$a_k=6k^3-6(k-1)^3=6\\left(3k^2-3k+1\\right)$.",
+            "hi": "$a_k=6k^3-6(k-1)^3=6\\left(3k^2-3k+1\\right)$।"
+          },
+          {
+            "en": "$a_{k+1}-a_k=36k$, so each bracket is $k^2$.",
+            "hi": "$a_{k+1}-a_k=36k$, अतः प्रत्येक कोष्ठक $k^2$ है।"
+          },
+          {
+            "en": "$\\sum_{k=1}^{6}k^2=91$.",
+            "hi": "$\\sum_{k=1}^{6}k^2=91$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 22
+      }
+    }
+  ]
+}

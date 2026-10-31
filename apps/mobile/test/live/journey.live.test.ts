@@ -9,38 +9,16 @@
  * `APP_ENV=local AI_PROVIDER=fake uv run uvicorn smriti_api.main:app --port 8000`.
  */
 import { unsyncedSummary, type Fetch } from '@smriti/app-core';
-import http from 'node:http';
 
 import { firstTopicId, openLesson } from '../../src/services/lessons';
 import { fetchMocks, fetchPracticeHub, openTutorSession, sendTutorMessage, tutorAnswerText } from '../../src/services/practice';
 import { createTestApp } from '../harness';
+import { nodeFetch } from './node-fetch';
 import { playToEnd } from '../play';
 
 const BASE = process.env.SMRITI_LIVE_API;
 const live = BASE ? describe : describe.skip;
 
-// jest-expo replaces the global fetch with a mock, so live runs use node:http directly.
-const nodeFetch: Fetch = (url, init) =>
-  new Promise((resolve, reject) => {
-    const req = http.request(url, { method: init?.method ?? 'GET', headers: init?.headers ?? {} }, (res) => {
-      const chunks: Buffer[] = [];
-      res.on('data', (c: Buffer) => chunks.push(c));
-      res.on('end', () => {
-        const text = Buffer.concat(chunks).toString('utf8');
-        const status = res.statusCode ?? 0;
-        resolve({
-          status,
-          ok: status >= 200 && status < 300,
-          json: async () => JSON.parse(text) as unknown,
-          text: async () => text,
-          headers: { get: (n: string) => (res.headers[n.toLowerCase()] as string | undefined) ?? null },
-        });
-      });
-    });
-    req.on('error', reject);
-    if (init?.body) req.write(init.body);
-    req.end();
-  });
 
 /** Events the real server refused, by type and code: the fake should refuse the same ones. */
 const refused: string[] = [];

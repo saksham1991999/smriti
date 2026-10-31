@@ -19,7 +19,7 @@ Each skill is a folder with a `SKILL.md` (front matter with `name` and `descript
 |---|---|---|
 | [`syllabus-mapper`](syllabus-mapper/SKILL.md) | Concept graph, exam map, coverage inventory | `content/graph/`, `exam-maps/`, `coverage/` |
 | [`exam-blueprint`](exam-blueprint/SKILL.md) | Versioned exam patterns for the mock engine | `content/blueprints/` |
-| [`lesson-author`](lesson-author/SKILL.md) | Deep Dive and Quick Revision lessons, cheat sheets, storybooks, role plays, experiments | `content/lessons/`, `extras/` |
+| [`lesson-author`](lesson-author/SKILL.md) | Deep Dive and Quick Revision lessons, cheat sheets, storybooks, little learner songs and play activities, role plays, experiments | `content/lessons/`, `extras/` |
 | [`question-author`](question-author/SKILL.md) | Practice and mock questions with Feynman-style solutions | `content/questions/` |
 | [`pyq-ingest`](pyq-ingest/SKILL.md) | Structured previous-year papers, real weightage | `content/pyq/`, `questions/`, `exam-maps/` |
 | [`mnemonic-maker`](mnemonic-maker/SKILL.md) | Acronyms, rhymes, stories, keyword, PAO, major-system, peg and palace hooks | `content/mnemonics/` |
@@ -27,7 +27,7 @@ Each skill is a folder with a `SKILL.md` (front matter with `name` and `descript
 | [`anim-maker`](anim-maker/SKILL.md) | Lesson animations, pet and plant Rive files, UI flourishes | R2 staging + requests |
 | [`sim-builder`](sim-builder/SKILL.md) | Simulations and virtual labs | `sims/` |
 | [`model-3d-sourcer`](model-3d-sourcer/SKILL.md) | Optimised, licence-checked 3D models | R2 staging + requests |
-| [`audio-maker`](audio-maker/SKILL.md) | Narration and audio mnemonics through Deepgram | R2 staging + requests |
+| [`audio-maker`](audio-maker/SKILL.md) | Narration, audio mnemonics and sung song versions with line timings, through Deepgram | R2 staging + requests |
 | [`content-qa`](content-qa/SKILL.md) | Findings report and coverage numbers | `content/coverage/`, the pull request |
 
 ## Order of work for a new exam

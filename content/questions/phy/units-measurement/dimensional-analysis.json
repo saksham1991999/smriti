@@ -1,0 +1,631 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §1.6 Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax College Physics 2e, §1.3 Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or the BIPM vocabulary of metrology and OpenStax for accuracy, precision, least count and the kinds of error, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "phy.units-measurement.dimensional-analysis",
+  "questions": [
+    {
+      "id": "q.phy.units-measurement.dimensional-analysis.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which equation for kinetic energy $K$ passes the dimensional check but may still be wrong?",
+        "hi": "गतिज ऊर्जा $K$ का कौन-सा समीकरण विमीय जाँच में सफल है पर फिर भी गलत हो सकता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$K = \\frac{3}{16}mv^2$",
+            "hi": "$K = \\frac{3}{16}mv^2$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$K = m^2v^3$",
+            "hi": "$K = m^2v^3$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$K = ma$",
+            "hi": "$K = ma$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$K = \\frac{1}{2}mv^2 + ma$",
+            "hi": "$K = \\frac{1}{2}mv^2 + ma$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which right-hand side is $[M L^2 T^{-2}]$?",
+          "hi": "किसका दायाँ पक्ष $[M L^2 T^{-2}]$ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only the first has the dimensions of energy; the check cannot see the number in front.",
+          "hi": "केवल पहले की विमा ऊर्जा की है; जाँच आगे की संख्या नहीं देख सकती।"
+        },
+        "steps": [
+          {
+            "en": "$[mv^2] = [M L^2 T^{-2}]$; the factor $\\frac{3}{16}$ is invisible to the check (NCERT Example 1.4).",
+            "hi": "$[mv^2] = [M L^2 T^{-2}]$; गुणांक $\\frac{3}{16}$ जाँच में नहीं दिखता (NCERT उदाहरण 1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$[M^2 L^3 T^{-3}]$ is not energy.",
+              "hi": "$[M^2 L^3 T^{-3}]$ ऊर्जा नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$[M L T^{-2}]$ is force, not energy.",
+              "hi": "$[M L T^{-2}]$ बल है, ऊर्जा नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It adds terms of different dimensions.",
+              "hi": "इसमें अलग विमा वाले पद जोड़े गए हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensional-analysis.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The speed $v$ of a wave on a string may depend on the tension $F$ (a force) and the mass per unit length $\\mu$. Dimensional analysis gives",
+        "hi": "डोरी पर तरंग की चाल $v$ तनाव $F$ (एक बल) और प्रति एकांक लंबाई द्रव्यमान $\\mu$ पर निर्भर हो सकती है। विमीय विश्लेषण से मिलता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$v \\propto \\sqrt{F/\\mu}$",
+            "hi": "$v \\propto \\sqrt{F/\\mu}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$v \\propto \\sqrt{\\mu/F}$",
+            "hi": "$v \\propto \\sqrt{\\mu/F}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$v \\propto F\\mu$",
+            "hi": "$v \\propto F\\mu$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$v \\propto F/\\mu$",
+            "hi": "$v \\propto F/\\mu$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use the mass power to link a and b.",
+          "hi": "द्रव्यमान की घात से a और b को जोड़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Set $v = kF^a\\mu^b$ and match the powers of M, L and T.",
+          "hi": "$v = kF^a\\mu^b$ मानकर M, L और T की घातें मिलाइए।"
+        },
+        "steps": [
+          {
+            "en": "$[L T^{-1}] = [M L T^{-2}]^a [M L^{-1}]^b$",
+            "hi": "$[L T^{-1}] = [M L T^{-2}]^a [M L^{-1}]^b$"
+          },
+          {
+            "en": "M: $a + b = 0$; T: $-2a = -1$; so $a = \\frac{1}{2}$, $b = -\\frac{1}{2}$.",
+            "hi": "M: $a + b = 0$; T: $-2a = -1$; अतः $a = \\frac{1}{2}$, $b = -\\frac{1}{2}$।"
+          },
+          {
+            "en": "L check: $a - b = 1$ holds.",
+            "hi": "L की जाँच: $a - b = 1$ सत्य है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is upside down: its dimensions are $[L^{-1} T]$.",
+              "hi": "यह उलटा है: इसकी विमा $[L^{-1} T]$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$[M^2 T^{-2}]$ is not a speed.",
+              "hi": "$[M^2 T^{-2}]$ चाल नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$[L^2 T^{-2}]$ is a speed squared.",
+              "hi": "$[L^2 T^{-2}]$ चाल का वर्ग है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensional-analysis.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In $y = A\\sin(\\omega t - kx)$, $x$ is a distance and $t$ a time. The dimensions of $\\omega/k$ are",
+        "hi": "$y = A\\sin(\\omega t - kx)$ में $x$ दूरी और $t$ समय है। $\\omega/k$ की विमा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[L T^{-1}]$",
+            "hi": "$[L T^{-1}]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[L^{-1} T]$",
+            "hi": "$[L^{-1} T]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[T^{-1}]$",
+            "hi": "$[T^{-1}]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "dimensionless",
+            "hi": "विमाहीन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Arguments of sin are dimensionless.",
+          "hi": "sin के कोणांक विमाहीन होते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The argument of a sine must be dimensionless, so $\\omega t$ and $kx$ are both pure numbers.",
+          "hi": "ज्या का कोणांक विमाहीन होना चाहिए, इसलिए $\\omega t$ और $kx$ दोनों शुद्ध संख्याएँ हैं।"
+        },
+        "steps": [
+          {
+            "en": "$[\\omega] = [T^{-1}]$ and $[k] = [L^{-1}]$",
+            "hi": "$[\\omega] = [T^{-1}]$ और $[k] = [L^{-1}]$"
+          },
+          {
+            "en": "$[\\omega/k] = [L T^{-1}]$, a speed.",
+            "hi": "$[\\omega/k] = [L T^{-1}]$, एक चाल।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is $k/\\omega$.",
+              "hi": "यह $k/\\omega$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is $\\omega$ alone.",
+              "hi": "यह केवल $\\omega$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Each of $\\omega t$ and $kx$ is dimensionless, but $\\omega/k$ is not.",
+              "hi": "$\\omega t$ और $kx$ विमाहीन हैं, पर $\\omega/k$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensional-analysis.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$1\\ \\mathrm{kg\\,m^2\\,s^{-2}} = 10^n\\ \\mathrm{g\\,cm^2\\,s^{-2}}$. Find $n$.",
+        "hi": "$1\\ \\mathrm{kg\\,m^2\\,s^{-2}} = 10^n\\ \\mathrm{g\\,cm^2\\,s^{-2}}$। $n$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 7,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "1 m = 100 cm.",
+          "hi": "1 m = 100 cm।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Convert kilograms to grams and square metres to square centimetres.",
+          "hi": "किलोग्राम को ग्राम में और वर्ग मीटर को वर्ग सेंटीमीटर में बदलिए।"
+        },
+        "steps": [
+          {
+            "en": "$10^3 \\times (10^2)^2 = 10^7$",
+            "hi": "$10^3 \\times (10^2)^2 = 10^7$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Squaring is forgotten for $\\mathrm{m^2}$, giving 5.",
+              "hi": "$\\mathrm{m^2}$ के लिए वर्ग भूलने से 5 मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensional-analysis.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Dimensional analysis CANNOT",
+        "hi": "विमीय विश्लेषण नहीं कर सकता"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "find the value of a dimensionless constant such as $2\\pi$",
+            "hi": "$2\\pi$ जैसे विमाहीन नियतांक का मान ज्ञात करना"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "show that an equation is dimensionally wrong",
+            "hi": "दिखाना कि कोई समीकरण विमीय रूप से गलत है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "convert a unit from one system to another",
+            "hi": "किसी मात्रक को एक पद्धति से दूसरी में बदलना"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "suggest how a period depends on length and $g$",
+            "hi": "बताना कि आवर्तकाल लंबाई और $g$ पर कैसे निर्भर है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What has no dimensions at all?",
+          "hi": "किसकी कोई विमा नहीं होती?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Pure numbers carry no dimensions, so the method is blind to them.",
+          "hi": "शुद्ध संख्याओं की कोई विमा नहीं होती, इसलिए विधि उन्हें नहीं देखती।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.6.2: dimensionless constants cannot be obtained by this method.",
+            "hi": "NCERT §1.6.2: इस विधि से विमाहीन नियतांक नहीं मिलते।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is its main use.",
+              "hi": "यही इसका मुख्य उपयोग है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Units convert like algebra.",
+              "hi": "मात्रक बीजगणित की तरह बदलते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It gives $T \\propto \\sqrt{l/g}$.",
+              "hi": "यह $T \\propto \\sqrt{l/g}$ देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensional-analysis.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The time period of a pendulum is assumed to be $T = k\\,l^x g^y m^z$. Dimensional analysis gives",
+        "hi": "लोलक का आवर्तकाल $T = k\\,l^x g^y m^z$ माना गया है। विमीय विश्लेषण से मिलता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$x = \\frac{1}{2},\\ y = -\\frac{1}{2},\\ z = 0$",
+            "hi": "$x = \\frac{1}{2},\\ y = -\\frac{1}{2},\\ z = 0$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$x = -\\frac{1}{2},\\ y = \\frac{1}{2},\\ z = 0$",
+            "hi": "$x = -\\frac{1}{2},\\ y = \\frac{1}{2},\\ z = 0$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$x = \\frac{1}{2},\\ y = -\\frac{1}{2},\\ z = 1$",
+            "hi": "$x = \\frac{1}{2},\\ y = -\\frac{1}{2},\\ z = 1$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$x = 1,\\ y = -1,\\ z = 0$",
+            "hi": "$x = 1,\\ y = -1,\\ z = 0$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Match the power of T first.",
+          "hi": "पहले T की घात मिलाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only $g$ has time in it, so its power fixes the time; the mass power must be zero.",
+          "hi": "केवल $g$ में समय है, इसलिए उसकी घात समय तय करती है; द्रव्यमान की घात शून्य होनी चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "T: $-2y = 1$, so $y = -\\frac{1}{2}$. L: $x + y = 0$, so $x = \\frac{1}{2}$. M: $z = 0$ (NCERT Example 1.5).",
+            "hi": "T: $-2y = 1$, अतः $y = -\\frac{1}{2}$। L: $x + y = 0$, अतः $x = \\frac{1}{2}$। M: $z = 0$ (NCERT उदाहरण 1.5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Signs reversed: that is $\\sqrt{g/l}$.",
+              "hi": "चिह्न उलटे: यह $\\sqrt{g/l}$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Nothing else has mass, so $z$ must be 0.",
+              "hi": "और किसी में द्रव्यमान नहीं, इसलिए $z$ का मान 0 होना चाहिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This gives $T^2$, not $T$.",
+              "hi": "इससे $T^2$ मिलता है, $T$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,491 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "phy.units-measurement.significant-figures:deep_dive",
+  "topic": "phy.units-measurement.significant-figures",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.units-measurement.significant-figures.core.least-count",
+    "phy.units-measurement.significant-figures.core.significant-figure-rules"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Least count",
+        "hi": "अल्पतमांक"
+      },
+      "subtopic": "phy.units-measurement.significant-figures.core",
+      "card_ids": [
+        "phy.units-measurement.significant-figures:dd:01",
+        "phy.units-measurement.significant-figures:dd:02",
+        "phy.units-measurement.significant-figures:dd:03",
+        "phy.units-measurement.significant-figures:dd:04",
+        "phy.units-measurement.significant-figures:dd:05"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Counting significant figures",
+        "hi": "सार्थक अंक गिनना"
+      },
+      "subtopic": "phy.units-measurement.significant-figures.core",
+      "card_ids": [
+        "phy.units-measurement.significant-figures:dd:06",
+        "phy.units-measurement.significant-figures:dd:07",
+        "phy.units-measurement.significant-figures:dd:08",
+        "phy.units-measurement.significant-figures:dd:09",
+        "phy.units-measurement.significant-figures:dd:10"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Calculating with significant figures",
+        "hi": "सार्थक अंकों के साथ गणना"
+      },
+      "subtopic": "phy.units-measurement.significant-figures.core",
+      "card_ids": [
+        "phy.units-measurement.significant-figures:dd:11",
+        "phy.units-measurement.significant-figures:dd:12",
+        "phy.units-measurement.significant-figures:dd:13",
+        "phy.units-measurement.significant-figures:dd:14",
+        "phy.units-measurement.significant-figures:dd:15"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.units-measurement.significant-figures:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.least-count"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Between two marks",
+        "hi": "दो निशानों के बीच"
+      },
+      "body": {
+        "en": "You lay a pencil along a ruler. Its tip ends somewhere between two millimetre marks. You can say the length to the millimetre and guess the next digit, but no more. The ruler itself decides how finely you can measure.",
+        "hi": "आप पेंसिल को पैमाने के साथ रखते हैं। उसकी नोक दो मिलीमीटर निशानों के बीच कहीं रुकती है। आप लंबाई मिलीमीटर तक बता सकते हैं और अगला अंक अनुमान से, पर उससे आगे नहीं। आप कितनी बारीकी से माप सकते हैं, यह पैमाना ही तय करता है।"
+      },
+      "media": "img.units-measurement.ruler-pencil"
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.least-count"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The smallest step an instrument can read",
+        "hi": "यंत्र जो सबसे छोटा अंतर पढ़ सकता है"
+      },
+      "body": {
+        "en": "The least count of an instrument is the smallest value it can measure: the smallest change in the quantity that changes its reading. Metrology calls this the resolution of the instrument.\n\nA standard ruler reads length to the nearest millimetre, while a calliper reads to the nearest 0.01 mm, so the calliper is the more precise tool.",
+        "hi": "किसी यंत्र का अल्पतमांक वह सबसे छोटा मान है जिसे वह माप सकता है: राशि में वह सबसे छोटा परिवर्तन जो उसके पाठ्यांक को बदल दे। मापिकी (मेट्रोलॉजी) में इसे यंत्र का विभेदन कहते हैं।\n\nसाधारण पैमाना लंबाई को निकटतम मिलीमीटर तक पढ़ता है, जबकि कैलिपर निकटतम 0.01 mm तक, इसलिए कैलिपर अधिक परिशुद्ध यंत्र है।"
+      },
+      "media": "img.units-measurement.measuring-tools",
+      "highlights": [
+        {
+          "term": {
+            "en": "least count",
+            "hi": "अल्पतमांक"
+          },
+          "definition": {
+            "en": "the smallest value an instrument can measure",
+            "hi": "वह सबसे छोटा मान जिसे यंत्र माप सकता है"
+          }
+        }
+      ],
+      "source": {
+        "kind": "official",
+        "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+        "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.14 resolution; OpenStax College Physics 2e §1.3"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.least-count"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Least count sets the uncertainty",
+        "hi": "अल्पतमांक अनिश्चितता तय करता है"
+      },
+      "body": {
+        "en": "NCERT notes that significant figures show the precision of a measurement, which depends on the least count of the instrument. A length of 16.2 cm read on a metre scale is written $l = 16.2 \\pm 0.1$ cm: the reading is uncertain by about one step of the scale.",
+        "hi": "NCERT के अनुसार सार्थक अंक माप की परिशुद्धता दिखाते हैं, जो यंत्र के अल्पतमांक पर निर्भर करती है। मीटर पैमाने पर पढ़ी गई 16.2 cm लंबाई को $l = 16.2 \\pm 0.1$ cm लिखते हैं: पाठ्यांक में पैमाने के लगभग एक चरण जितनी अनिश्चितता है।"
+      },
+      "media": "img.units-measurement.ruler-pencil",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3 and §1.3.3"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:04",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.least-count"
+      ],
+      "depth": 2,
+      "question": "q.phy.units-measurement.significant-figures.0001"
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:05",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.least-count"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Least count: the smallest value an instrument can measure.",
+          "hi": "अल्पतमांक: वह सबसे छोटा मान जिसे यंत्र माप सकता है।"
+        },
+        {
+          "en": "Ruler: 1 mm; calliper: 0.01 mm. A smaller least count gives a more precise reading.",
+          "hi": "पैमाना: 1 mm; कैलिपर: 0.01 mm। छोटा अल्पतमांक अधिक परिशुद्ध पाठ्यांक देता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Reliable digits plus one",
+        "hi": "विश्वसनीय अंक और एक"
+      },
+      "body": {
+        "en": "The significant figures of a measurement are its reliable digits plus the first uncertain digit. A pendulum period of 1.62 s has three: 1 and 6 are certain and 2 is uncertain. A length of 287.5 cm has four.\n\nChanging the unit does not change the number of significant figures: 2.308 cm = 0.02308 m = 23.08 mm, four in each.",
+        "hi": "किसी माप के सार्थक अंक उसके विश्वसनीय अंक और पहला अनिश्चित अंक होते हैं। लोलक का आवर्तकाल 1.62 s हो तो तीन सार्थक अंक हैं: 1 और 6 निश्चित हैं और 2 अनिश्चित। 287.5 cm लंबाई में चार हैं।\n\nमात्रक बदलने से सार्थक अंकों की संख्या नहीं बदलती: 2.308 cm = 0.02308 m = 23.08 mm, हर एक में चार।"
+      },
+      "media": "img.units-measurement.ruler-pencil",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "The rules for zeros",
+        "hi": "शून्यों के नियम"
+      },
+      "body": {
+        "en": "All non-zero digits are significant, and so are zeros between two non-zero digits. In a number less than 1, the zeros after the decimal point and before the first non-zero digit are not significant, and the zero to the left of the decimal point is never significant.\n\nTrailing zeros in a number with no decimal point are not significant: 123 m = 12300 cm = 123000 mm has three. Trailing zeros in a number with a decimal point are significant: 3.500 and 0.06900 each have four. Scientific notation removes the doubt: $4.700 \\times 10^{2}$ cm has four.",
+        "hi": "सभी शून्येतर अंक सार्थक हैं, और दो शून्येतर अंकों के बीच के शून्य भी। 1 से छोटी संख्या में दशमलव के बाद और पहले शून्येतर अंक से पहले के शून्य सार्थक नहीं हैं, और दशमलव के बाईं ओर का शून्य कभी सार्थक नहीं होता।\n\nबिना दशमलव वाली संख्या के अंत के शून्य सार्थक नहीं हैं: 123 m = 12300 cm = 123000 mm में तीन हैं। दशमलव वाली संख्या के अंत के शून्य सार्थक हैं: 3.500 और 0.06900 में चार-चार हैं। वैज्ञानिक संकेतन संदेह दूर करता है: $4.700 \\times 10^{2}$ cm में चार हैं।"
+      },
+      "media": "img.units-measurement.ruler-pencil",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3 rules (1) to (5)"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:08",
+      "type": "interactive",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "How many significant figures?",
+        "hi": "कितने सार्थक अंक?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "a",
+            "text": {
+              "en": "0.007 m²",
+              "hi": "0.007 m²"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "6.032 N m⁻²",
+              "hi": "6.032 N m⁻²"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "0.2370 g cm⁻³",
+              "hi": "0.2370 g cm⁻³"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "2.64 × 10²⁴ kg",
+              "hi": "2.64 × 10²⁴ kg"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "one",
+            "label": {
+              "en": "one",
+              "hi": "एक"
+            }
+          },
+          {
+            "id": "three",
+            "label": {
+              "en": "three",
+              "hi": "तीन"
+            }
+          },
+          {
+            "id": "four",
+            "label": {
+              "en": "four",
+              "hi": "चार"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "a",
+            "bin": "one"
+          },
+          {
+            "item": "b",
+            "bin": "four"
+          },
+          {
+            "item": "c",
+            "bin": "four"
+          },
+          {
+            "item": "d",
+            "bin": "three"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Leading zeros never count; zeros between digits and trailing zeros after a decimal point do.",
+          "hi": "सही। आगे के शून्य कभी नहीं गिने जाते; अंकों के बीच के और दशमलव के बाद अंत के शून्य गिने जाते हैं।"
+        },
+        "wrong": {
+          "en": "Start counting at the first non-zero digit.",
+          "hi": "पहले शून्येतर अंक से गिनना शुरू कीजिए।"
+        }
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "question": "q.phy.units-measurement.significant-figures.0002"
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:10",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Significant figures: reliable digits plus the first uncertain digit.",
+          "hi": "सार्थक अंक: विश्वसनीय अंक और पहला अनिश्चित अंक।"
+        },
+        {
+          "en": "Leading zeros never count; trailing zeros count only with a decimal point.",
+          "hi": "आगे के शून्य कभी नहीं गिने जाते; अंत के शून्य केवल दशमलव होने पर गिने जाते हैं।"
+        },
+        {
+          "en": "A change of unit does not change the count.",
+          "hi": "मात्रक बदलने से गिनती नहीं बदलती।"
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Two rules for results",
+        "hi": "परिणामों के दो नियम"
+      },
+      "body": {
+        "en": "In multiplication or division, keep as many significant figures as the input with the fewest. Mass 4.237 g over volume 2.51 cm³ gives 1.688047... on a calculator, but the density is 1.69 g cm⁻³.\n\nIn addition or subtraction, keep as many decimal places as the input with the fewest. 436.32 g + 227.2 g + 0.301 g = 663.821 g, reported as 663.8 g.",
+        "hi": "गुणा या भाग में उतने सार्थक अंक रखिए जितने सबसे कम सार्थक अंकों वाले आँकड़े में हैं। द्रव्यमान 4.237 g को आयतन 2.51 cm³ से भाग देने पर कैलकुलेटर 1.688047... देता है, पर घनत्व 1.69 g cm⁻³ है।\n\nजोड़ या घटाव में उतने दशमलव स्थान रखिए जितने सबसे कम दशमलव स्थानों वाले आँकड़े में हैं। 436.32 g + 227.2 g + 0.301 g = 663.821 g, जिसे 663.8 g लिखते हैं।"
+      },
+      "media": "img.units-measurement.ruler-pencil",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3.1"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:12",
+      "type": "worked_example",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Each side of a cube is measured as 7.203 m. Find its total surface area and volume to the right number of significant figures.",
+        "hi": "एक घन की हर भुजा 7.203 m मापी गई है। उसका कुल पृष्ठ क्षेत्रफल और आयतन सही सार्थक अंकों तक ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The side has four significant figures, so both answers keep four.",
+          "hi": "भुजा में चार सार्थक अंक हैं, इसलिए दोनों उत्तरों में चार रहेंगे।"
+        },
+        {
+          "en": "Area $= 6(7.203)^2 = 311.299254$ m², so 311.3 m².",
+          "hi": "क्षेत्रफल $= 6(7.203)^2 = 311.299254$ m², अतः 311.3 m²।"
+        },
+        {
+          "en": "Volume $= (7.203)^3 = 373.714754$ m³, so 373.7 m³.",
+          "hi": "आयतन $= (7.203)^3 = 373.714754$ m³, अतः 373.7 m³।"
+        }
+      ],
+      "answer": {
+        "en": "311.3 m² and 373.7 m³",
+        "hi": "311.3 m² और 373.7 m³"
+      },
+      "answer_value": {
+        "value": 311.3,
+        "unit": "m^2",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Copying all the calculator digits.",
+        "hi": "कैलकुलेटर के सारे अंक उतार लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 1.1"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:13",
+      "type": "explainer",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Rounding off",
+        "hi": "पूर्णांकन"
+      },
+      "body": {
+        "en": "Drop the extra digits. If the first dropped digit is more than 5, raise the digit before it by 1 (2.746 becomes 2.75); if less than 5, leave it (1.743 becomes 1.74). If it is exactly 5, leave an even preceding digit (2.745 becomes 2.74) and raise an odd one (2.735 becomes 2.74).\n\nIn a long calculation keep one extra digit in the middle steps: rounding 1/9.58 to 0.104 and inverting gives 9.62, but keeping 0.1044 gets back 9.58.",
+        "hi": "अतिरिक्त अंक हटाइए। यदि हटाया जाने वाला पहला अंक 5 से अधिक है, तो उससे पहले के अंक में 1 जोड़िए (2.746 से 2.75); 5 से कम हो तो वैसा ही रहने दीजिए (1.743 से 1.74)। ठीक 5 हो तो पहले का अंक सम हो तो वैसा ही रहता है (2.745 से 2.74) और विषम हो तो एक बढ़ता है (2.735 से 2.74)।\n\nलंबी गणना में बीच के चरणों में एक अंक अधिक रखिए: 1/9.58 को 0.104 तक पूर्णांकित करके उलटने पर 9.62 मिलता है, पर 0.1044 रखने पर 9.58 वापस मिलता है।"
+      },
+      "media": "img.units-measurement.ruler-pencil",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.3.2"
+      }
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:14",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 3,
+      "question": "q.phy.units-measurement.significant-figures.0003"
+    },
+    {
+      "id": "phy.units-measurement.significant-figures:dd:15",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.significant-figures.core.significant-figure-rules"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Multiply or divide: fewest significant figures. Add or subtract: fewest decimal places.",
+          "hi": "गुणा या भाग: सबसे कम सार्थक अंक। जोड़ या घटाव: सबसे कम दशमलव स्थान।"
+        },
+        {
+          "en": "Exactly 5 dropped: even digit stays, odd digit goes up.",
+          "hi": "ठीक 5 हटे तो सम अंक वैसा ही, विषम अंक एक बढ़ता है।"
+        },
+        {
+          "en": "Keep one extra digit in intermediate steps.",
+          "hi": "बीच के चरणों में एक अंक अधिक रखिए।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

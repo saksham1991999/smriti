@@ -1,0 +1,214 @@
+{
+  "schema": "play@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat (textbook pp.18-32), as read in the official NCERT CIET audiobook of the textbook",
+      "url": "https://ciet.ncert.gov.in/audio-book/118",
+      "retrieved": "2026-10-31",
+      "pages": "Chapter 3 track"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Rounds follow the textbook activities: tick the one which is more or less (pp.23-24) and count and match (pp.20, 28). Every round ends on a win; feedback is gentle. Hindi written for this file in simple class 1 Hindi with तुम. The Hindi-medium book (Anandmay Ganit) could not be retrieved, so a reviewer should check the wording and the chapter title.",
+  "id": "pl.math.mango-treat.counting",
+  "scope": "topic",
+  "topic": "math.mango-treat.counting",
+  "title": {
+    "en": "Mango Baskets",
+    "hi": "आम की टोकरियाँ"
+  },
+  "concepts": [
+    "math.mango-treat.counting.core.one-more",
+    "math.mango-treat.counting.core.more-less-equal"
+  ],
+  "minutes": 3,
+  "cover": "img.mango-treat.basket-full",
+  "feedback": {
+    "success": {
+      "en": "Yay! You did it!",
+      "hi": "वाह! तुमने कर दिखाया!"
+    },
+    "try_again": {
+      "en": "Let's look again together.",
+      "hi": "चलो, साथ में फिर से देखें।"
+    }
+  },
+  "rounds": [
+    {
+      "kind": "tap",
+      "prompt": {
+        "en": "Which basket has more mangoes? Tap it.",
+        "hi": "किस टोकरी में ज़्यादा आम हैं? उसे छुओ।"
+      },
+      "hint": {
+        "en": "Look for the basket that is full to the top.",
+        "hi": "ऊपर तक भरी टोकरी देखो।"
+      },
+      "items": [
+        {
+          "id": "few",
+          "label": {
+            "en": "basket with one mango",
+            "hi": "एक आम वाली टोकरी"
+          },
+          "media": "img.mango-treat.basket-few"
+        },
+        {
+          "id": "full",
+          "label": {
+            "en": "basket full of mangoes",
+            "hi": "आमों से भरी टोकरी"
+          },
+          "media": "img.mango-treat.basket-full"
+        }
+      ],
+      "answer": [
+        "full"
+      ]
+    },
+    {
+      "kind": "tap",
+      "prompt": {
+        "en": "Now tap the basket with fewer mangoes.",
+        "hi": "अब कम आम वाली टोकरी छुओ।"
+      },
+      "hint": {
+        "en": "Find the basket with lots of empty space.",
+        "hi": "बहुत खाली जगह वाली टोकरी ढूँढो।"
+      },
+      "items": [
+        {
+          "id": "full",
+          "label": {
+            "en": "basket full of mangoes",
+            "hi": "आमों से भरी टोकरी"
+          },
+          "media": "img.mango-treat.basket-full"
+        },
+        {
+          "id": "few",
+          "label": {
+            "en": "basket with one mango",
+            "hi": "एक आम वाली टोकरी"
+          },
+          "media": "img.mango-treat.basket-few"
+        }
+      ],
+      "answer": [
+        "few"
+      ]
+    },
+    {
+      "kind": "match",
+      "prompt": {
+        "en": "Match the mangoes to the same number of parrots.",
+        "hi": "जितने आम, उतने तोते: जोड़ी बनाओ।"
+      },
+      "hint": {
+        "en": "Count the mangoes, then find as many parrots.",
+        "hi": "पहले आम गिनो, फिर उतने ही तोते ढूँढो।"
+      },
+      "pairs": [
+        {
+          "left": {
+            "id": "m1",
+            "label": {
+              "en": "one mango",
+              "hi": "एक आम"
+            },
+            "media": "img.mango-treat.mango-one"
+          },
+          "right": {
+            "id": "b1",
+            "label": {
+              "en": "one parrot",
+              "hi": "एक तोता"
+            },
+            "media": "img.mango-treat.bird-one"
+          }
+        },
+        {
+          "left": {
+            "id": "m2",
+            "label": {
+              "en": "two mangoes",
+              "hi": "दो आम"
+            },
+            "media": "img.mango-treat.mango-two"
+          },
+          "right": {
+            "id": "b2",
+            "label": {
+              "en": "two parrots",
+              "hi": "दो तोते"
+            },
+            "media": "img.mango-treat.bird-two"
+          }
+        },
+        {
+          "left": {
+            "id": "m3",
+            "label": {
+              "en": "three mangoes",
+              "hi": "तीन आम"
+            },
+            "media": "img.mango-treat.mango-three"
+          },
+          "right": {
+            "id": "b3",
+            "label": {
+              "en": "three parrots",
+              "hi": "तीन तोते"
+            },
+            "media": "img.mango-treat.bird-three"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "tap",
+      "prompt": {
+        "en": "Tap the picture with three mangoes.",
+        "hi": "तीन आम वाली तस्वीर छुओ।"
+      },
+      "hint": {
+        "en": "Count with your finger: one, two, three.",
+        "hi": "उँगली रखकर गिनो: एक, दो, तीन।"
+      },
+      "items": [
+        {
+          "id": "m1",
+          "label": {
+            "en": "one mango",
+            "hi": "एक आम"
+          },
+          "media": "img.mango-treat.mango-one"
+        },
+        {
+          "id": "m2",
+          "label": {
+            "en": "two mangoes",
+            "hi": "दो आम"
+          },
+          "media": "img.mango-treat.mango-two"
+        },
+        {
+          "id": "m3",
+          "label": {
+            "en": "three mangoes",
+            "hi": "तीन आम"
+          },
+          "media": "img.mango-treat.mango-three"
+        }
+      ],
+      "answer": [
+        "m3"
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,3 +1,4 @@
+import type { Schemas } from '@smriti/api-client';
 import { localDate } from '@smriti/app-core';
 
 import type { ChapterView, SubjectView, TopicView } from '../content/repo';
@@ -69,11 +70,54 @@ export function subjectProgress(subject: SubjectView, states: Map<string, TopicS
   return { done, total: all.length, percent, chapters };
 }
 
-export type ChapterFilter = 'all' | 'in_progress' | 'not_started';
+export type ChapterFilter = 'all' | 'in_progress' | 'not_started' | 'weak';
 
-export function filterChapters(subject: SubjectView, progress: SubjectProgress, filter: ChapterFilter): ChapterView[] {
+export interface WeakChapters {
+  /** Whether LRN-01 offers the "Weak" chip at all. */
+  offered: boolean;
+  chapters: Set<string>;
+}
+
+/**
+ * LRN-01 "Weak": chapters with a weak spot from `/v1/practice/weak-spots` (the server's rules,
+ * practice §9.2). Offered only once the owner has set `learn.weak_filter_min_attempts`, the
+ * server has enough answers (`needs_more_answers` null) and the subject's weak-spot rows count at
+ * least that many attempts. Nothing is guessed on the device.
+ */
+export function weakChapters(subject: SubjectView, weak: Pick<Schemas['WeakSpots'], 'items' | 'needs_more_answers'> | null | undefined, minAttempts: number | null): WeakChapters {
+  const none: WeakChapters = { offered: false, chapters: new Set() };
+  if (minAttempts === null || !weak || weak.needs_more_answers !== null) return none;
+  const chapterOf = new Map(subject.chapters.flatMap((c) => c.topics.map((t) => [t.id, c.id] as const)));
+  const mine = weak.items.filter((w) => chapterOf.has(w.topic_id));
+  const attempts = mine.reduce((n, w) => n + w.attempts, 0);
+  if (attempts < minAttempts) return none;
+  return { offered: true, chapters: new Set(mine.map((w) => chapterOf.get(w.topic_id)!)) };
+}
+
+export function filterChapters(subject: SubjectView, progress: SubjectProgress, filter: ChapterFilter, weak?: WeakChapters): ChapterView[] {
   if (filter === 'all') return subject.chapters;
+  if (filter === 'weak') return subject.chapters.filter((c) => weak?.chapters.has(c.id) ?? false);
   return subject.chapters.filter((c) => progress.chapters.get(c.id)?.status === filter);
+}
+
+export interface UnitSection {
+  unitId: string;
+  /** The unit's name when the manifest carries unit names; null shows no header. */
+  name: string | null;
+  chapters: ChapterView[];
+}
+
+/** LRN-01 unit sections: chapters grouped by unit in syllabus order, named only from content. */
+export function unitSections(subject: SubjectView, chapters: ChapterView[]): UnitSection[] {
+  const names = new Map((subject.units ?? []).map((u) => [u.id, u.name] as const));
+  if (names.size === 0) return chapters.length ? [{ unitId: '', name: null, chapters }] : [];
+  const out: UnitSection[] = [];
+  for (const c of chapters) {
+    const last = out[out.length - 1];
+    if (last && last.unitId === c.unitId) last.chapters.push(c);
+    else out.push({ unitId: c.unitId, name: names.get(c.unitId) ?? null, chapters: [c] });
+  }
+  return out;
 }
 
 /** Cards due by the end of today per topic (LRN-02 review rows, A14). */

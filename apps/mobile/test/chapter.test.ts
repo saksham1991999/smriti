@@ -39,9 +39,15 @@ function playCheck(app: ReturnType<typeof createTestApp>['app'], prepared: Prepa
   throw new Error('check did not finish');
 }
 
+const running: { stop(): void }[] = [];
+afterEach(() => {
+  for (const a of running.splice(0)) a.stop();
+});
+
 async function bootedApp() {
   const rig = createTestApp();
   await rig.app.boot();
+  running.push(rig.app);
   const chapter = rig.app.deps.content.subjects('en', rig.app.examProfileId())[0]!.chapters[0]!;
   return { ...rig, chapter };
 }

@@ -33,6 +33,11 @@ export interface SubjectView {
   id: string;
   name: string;
   colorFamily: string;
+  /**
+   * Unit names (content-schema `SubjectFile.units`, localised). manifest@1 does not carry them
+   * yet, so this is empty and LRN-01 shows no unit headers until the publisher adds them.
+   */
+  units?: { id: string; name: string }[];
   chapters: ChapterView[];
 }
 
@@ -107,6 +112,7 @@ export class ContentRepo {
         id: s.id,
         name: s.name,
         colorFamily: s.color_family,
+        units: unitNames(s),
         chapters: [...s.chapters]
           .sort((a, b) => a.sort - b.sort)
           .map((c) => ({
@@ -175,6 +181,13 @@ export class ContentRepo {
       minutes,
     };
   }
+}
+
+/** Read defensively: a later manifest may add `units: [{ id, name }]` to each subject. */
+function unitNames(subject: Manifest['subjects'][number]): { id: string; name: string }[] {
+  const raw = (subject as { units?: unknown }).units;
+  if (!Array.isArray(raw)) return [];
+  return raw.filter((u): u is { id: string; name: string } => typeof u === 'object' && u !== null && typeof (u as { id?: unknown }).id === 'string' && typeof (u as { name?: unknown }).name === 'string');
 }
 
 function depthMap(t: TopicEntry): Record<string, number> {

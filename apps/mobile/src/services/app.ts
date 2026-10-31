@@ -387,8 +387,9 @@ export class SmritiApp {
     let next: RemoteConfig = prev;
     try {
       const body = await unwrap(this.api.GET('/v1/config'));
-      // The store product for this platform and variant; the intro product carries both prices.
-      const mine = body.pricing.filter((p) => p.platform === this.deps.platform && (p.variant_id === this.deps.variant.id || p.variant_id === null));
+      // The individual monthly product for this platform and variant (PRD §11.2: family plans are
+      // priced on their own); the intro product carries both prices.
+      const mine = body.pricing.filter((p) => p.plan === 'individual' && p.period === 'month' && p.platform === this.deps.platform && (p.variant_id === this.deps.variant.id || p.variant_id === null));
       const intro = mine.find((p) => p.intro_price_paise !== null);
       const monthly = mine.find((p) => p.intro_price_paise === null) ?? intro;
       next = {

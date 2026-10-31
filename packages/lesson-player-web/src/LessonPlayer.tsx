@@ -11,6 +11,9 @@ import {
   currentCard,
   isReadOnly,
   LessonSession,
+  playerRules,
+  shownAnswer,
+  shownOptionIds,
   workedSolution,
   type Answer,
   type Confidence,
@@ -92,6 +95,8 @@ export function LessonPlayer(props: LessonPlayerProps) {
   const headingRef = useRef<HTMLDivElement>(null);
   const card = currentCard(state);
   const readOnly = isReadOnly(state);
+  const rules = playerRules(plan.mode);
+  const gentle = rules.tone === "gentle";
 
   const act = (a: LessonAction) => {
     const before = session.state;
@@ -102,6 +107,11 @@ export function LessonPlayer(props: LessonPlayerProps) {
       setConfidence(null);
     }
     if (a.type === "try_again") setDraft(initialDraft(currentCard(next)?.question ?? null));
+    if (next.phase === "guided" && before.phase !== "guided") {
+      // Option questions start empty (the child taps the shown answer); the rest show the key.
+      const nq = currentCard(next)?.question ?? null;
+      setDraft(nq && !shownOptionIds(nq) ? shownAnswer(nq) : initialDraft(nq));
+    }
     setState(next);
   };
 
@@ -152,7 +162,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
   if (phase === "confidence") {
     return (
       <PlayerProvider value={ctx}>
-        <Shell {...props} total={total} state={state} onBack={null}>
+        <Shell {...props} total={total} state={state} counter={rules.counter} onBack={null}>
           <div ref={headingRef} tabIndex={-1} className="flex flex-1 flex-col justify-center gap-6 outline-none" data-testid="lesson-confidence">
             <Text variant="title" heading align="center">
               {t("learn:LES-07.question", { topic_title: bundle.topic.name })}
@@ -180,7 +190,12 @@ export function LessonPlayer(props: LessonPlayerProps) {
     );
   }
 
-  const reveal: "none" | "right" | "final" = phase === "feedback" ? "right" : phase === "explain" || (readOnly && outcome?.correct === false) ? "final" : readOnly && outcome?.correct ? "right" : "none";
+  const guided = phase === "guided" && !readOnly;
+  // The guided finish marks the key on option questions (the child taps it) and shows the worked
+  // answer on the rest, where [Continue] submits it (lesson-core shownAnswer).
+  const shown = guided && q ? shownOptionIds(q) : null;
+  const reveal: "none" | "right" | "final" =
+    phase === "feedback" ? "right" : phase === "explain" || (guided && !shown) || (readOnly && outcome?.correct === false) ? "final" : readOnly && outcome?.correct ? "right" : "none";
   const solution = q ? workedSolution(q) : null;
   const rapidSummary = plan.rapid && card.card?.type === "summary" && phase === "card" && !readOnly;
   const isSim = card.card?.type === "sim";
@@ -204,6 +219,9 @@ export function LessonPlayer(props: LessonPlayerProps) {
         <Button label={t("learn:LES-01.don_t_know")} variant="ghost" size="sm" fullWidth onPress={() => act({ type: "dont_know" })} testID="lesson-dont-know" />
       </>
     );
+  } else if (guided && q) {
+    const key = shownAnswer(q);
+    footer = shown ? null : <Button label={t("learn:LES-01.continue")} disabled={!key} onPress={() => key && act({ type: "submit", answer: key })} testID="lesson-guided-continue" />;
   } else if (phase === "hint") {
     footer = <Button label={t("learn:LES-02.try_again")} onPress={() => act({ type: "try_again" })} testID="lesson-try-again" />;
   } else if (phase === "feedback" || phase === "explain") {
@@ -226,7 +244,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
 
   return (
     <PlayerProvider value={ctx}>
-      <Shell {...props} total={total} state={state} onBack={browsing && state.viewIndex > 0 ? () => act({ type: "back" }) : null}>
+      <Shell {...props} total={total} state={state} counter={rules.counter} onBack={browsing && state.viewIndex > 0 ? () => act({ type: "back" }) : null}>
         <section className="flex flex-1 flex-col gap-4 rounded-card-large bg-surface p-[18px] shadow-card" aria-labelledby="lesson-card-kind">
           <div ref={headingRef} tabIndex={-1} className="flex items-center gap-2 outline-none">
             <span id="lesson-card-kind" className="rounded-full bg-subject-tint px-3 py-1 text-label font-bold text-subject-text" data-testid="lesson-card-kind">
@@ -239,10 +257,11 @@ export function LessonPlayer(props: LessonPlayerProps) {
               q={q}
               passage={card.passage}
               draft={readOnly ? null : draft}
-              onDraft={setDraft}
-              locked={readOnly || phase !== "question"}
+              onDraft={shown ? (a) => a && act({ type: "submit", answer: a }) : setDraft}
+              locked={readOnly || (phase !== "question" && !shown)}
               reveal={reveal}
               struck={readOnly ? [] : state.struckOptionIds}
+              shown={shown ?? undefined}
             />
           ) : card.card ? (
             <CardView
@@ -254,7 +273,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
               taskDone={!!outcome && (outcome.correct !== null || outcome.skipped)}
             />
           ) : null}
-          {q && phase === "question" && !readOnly && <ConfidenceRow value={toUi(confidence)} onChange={(v) => setConfidence(fromUi(v))} testID="confidence-row" />}
+          {q && phase === "question" && !readOnly && rules.confidenceRow && <ConfidenceRow value={toUi(confidence)} onChange={(v) => setConfidence(fromUi(v))} testID="confidence-row" />}
         </section>
 
         {phase === "feedback" && (
@@ -262,9 +281,9 @@ export function LessonPlayer(props: LessonPlayerProps) {
             <div className="flex items-center gap-2">
               <Icon name="CheckCircle" weight="fill" color="success" />
               <Text variant="heading" tone="success" className="flex-1">
-                {state.attempt === 2 ? t("learn:LES-02.second_try") : t("learn:LES-02.correct")}
+                {gentle ? t("learn:LES-02.little_learner_correct") : state.attempt === 2 ? t("learn:LES-02.second_try") : t("learn:LES-02.correct")}
               </Text>
-              {xpGain > 0 && (
+              {rules.xpChip && xpGain > 0 && (
                 <span className="rounded-full bg-surface px-3 py-1 text-caption font-bold text-primary-text" data-testid="xp-chip">
                   {t("learn:LES-02.xp", { xp: xpGain })}
                 </span>
@@ -276,7 +295,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
               </Text>
             )}
             {pet && <PetLine pet={{ species: pet.species, mood: "excited" }} petName={pet.name} text={correctLines[state.index % 3] ?? ""} />}
-            {solution?.feynman && (
+            {solution?.feynman && !state.guided && (
               <details className="group">
                 <summary className={cx("cursor-pointer text-label font-bold text-ink", focusRing)}>{t("learn:LES-02.why")}</summary>
                 <RichText text={solution.feynman} className="mt-2" />
@@ -286,13 +305,21 @@ export function LessonPlayer(props: LessonPlayerProps) {
         )}
 
         {phase === "hint" && state.hint && (
-          <Panel tone="error" testID="feedback-retry">
-            <div className="flex items-center gap-2">
-              <Icon name="XCircle" weight="fill" color="error" />
-              <Text variant="heading" tone="error">
-                {t("learn:LES-02.not_quite")}
-              </Text>
-            </div>
+          <Panel tone={gentle ? "neutral" : "error"} testID="feedback-retry">
+            {gentle ? (
+              // LES-02 little learner: a sunken band with ArrowCounterClockwise, never "Not quite".
+              <div className="flex items-center gap-2">
+                <Icon name="ArrowCounterClockwise" weight="bold" color="primary" />
+                <Text variant="heading">{t("learn:LES-02.little_learner_wrong")}</Text>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Icon name="XCircle" weight="fill" color="error" />
+                <Text variant="heading" tone="error">
+                  {t("learn:LES-02.not_quite")}
+                </Text>
+              </div>
+            )}
             <Text variant="label">{t("learn:LES-02.hint")}</Text>
             {state.hint.source === "generic" ? (
               <Text>{t("learn:LES-02.generic_hint", { concept_name: conceptName(bundle, state.hint.conceptId) })}</Text>
@@ -300,6 +327,17 @@ export function LessonPlayer(props: LessonPlayerProps) {
               <RichText text={state.hint.text} />
             )}
             {pet && <PetLine pet={{ species: pet.species, mood: "thinking" }} petName={pet.name} text={t("learn:LES-02.wrong_pet_line")} />}
+          </Panel>
+        )}
+
+        {guided && (
+          <Panel tone="neutral" testID="feedback-guided">
+            <div className="flex items-center gap-2">
+              <Icon name="Lightbulb" weight="fill" color="primary" />
+              <Text variant="heading">{t("learn:LES-02.little_learner_shown_answer")}</Text>
+            </div>
+            {solution?.feynman && <RichText text={solution.feynman} />}
+            {pet && <PetLine pet={{ species: pet.species, mood: "happy" }} petName={pet.name} text={t("learn:LRN-18.little_learner_show_me")} />}
           </Panel>
         )}
 
@@ -398,9 +436,10 @@ function Shell({
   total,
   state,
   onRequestExit,
+  counter,
   onBack,
   children,
-}: Pick<LessonPlayerProps, "t" | "subject" | "onRequestExit"> & { total: number; state: LessonState; onBack: (() => void) | null; children: ReactNode }) {
+}: Pick<LessonPlayerProps, "t" | "subject" | "onRequestExit"> & { total: number; state: LessonState; counter: boolean; onBack: (() => void) | null; children: ReactNode }) {
   const done = Math.min(state.index, total);
   return (
     <div className="flex min-h-dvh flex-col bg-bg" data-subject={subject} data-testid="lesson-player" data-phase={state.phase}>
@@ -410,9 +449,12 @@ function Shell({
         <div className="min-w-0 flex-1">
           <SegmentedProgress total={total} done={done} current={Math.min(state.viewIndex, total - 1)} tone="primary" label={t("learn:LES-01.counter", { n: state.viewIndex + 1, total })} />
         </div>
-        <Text variant="caption" tone="muted" numeric testID="lesson-counter">
-          {t("learn:LES-01.counter", { n: Math.min(state.viewIndex + 1, total), total })}
-        </Text>
+        {/* Little learners get the dots alone (LES-01); the bar keeps its label for screen readers. */}
+        {counter && (
+          <Text variant="caption" tone="muted" numeric testID="lesson-counter">
+            {t("learn:LES-01.counter", { n: Math.min(state.viewIndex + 1, total), total })}
+          </Text>
+        )}
       </header>
       <main className="mx-auto flex w-full max-w-[720px] flex-1 flex-col gap-4 px-4 pb-2">{children}</main>
     </div>

@@ -1,7 +1,7 @@
 import type { BundleQuestion } from "@smriti/content-schema";
 import { describe, expect, it } from "vitest";
 
-import { checkAnswer, findQuestion, normalizeTyped, parseNumber, scoreAnswer, wrongMarks, type AnyQuestion } from "../src/index.js";
+import { checkAnswer, findQuestion, normalizeTyped, parseNumber, scoreAnswer, shownAnswer, shownOptionIds, wrongMarks, type AnyQuestion } from "../src/index.js";
 import { fixtureBundle } from "./fixture.js";
 
 const pool: Record<string, BundleQuestion> = {
@@ -134,5 +134,36 @@ describe("helpers", () => {
     expect(scoreAnswer(single, wrong, unstated)).toBeNull();
     expect(scoreAnswer(single, right, unstated)).toBeNull();
     expect(scoreAnswer(single, null, unstated)).toBe(0);
+  });
+});
+
+describe("shownAnswer (the guided finish)", () => {
+  const all = (from: Record<string, BundleQuestion>): AnyQuestion[] =>
+    Object.values(from).flatMap((x): AnyQuestion[] => (x.type === "paragraph" ? x.children : [x]));
+
+  it("is the key for every question type, so tapping it is always right", () => {
+    const questions = [...all(pool), ...all(hiPool)];
+    expect(new Set(questions.map((x) => x.type)).size).toBeGreaterThan(5);
+    for (const x of questions) {
+      const shown = shownAnswer(x);
+      expect(shown, x.id).not.toBeNull();
+      expect(checkAnswer(x, shown!).correct, x.id).toBe(true);
+    }
+  });
+
+  it("shows option ids only for option-answered questions", () => {
+    expect(shownOptionIds(q("a.0001"))).toEqual(["c"]);
+    for (const x of all(pool)) {
+      const ids = shownOptionIds(x);
+      const shown = shownAnswer(x);
+      if (ids) expect(shown).toEqual({ kind: "options", optionIds: ids });
+      else expect(shown?.kind).not.toBe("options");
+    }
+  });
+
+  it("is null for a paragraph, whose children are asked one by one", () => {
+    const para = Object.values(pool).find((x) => x.type === "paragraph");
+    expect(para).toBeDefined();
+    expect(shownAnswer(para!)).toBeNull();
   });
 });

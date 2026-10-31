@@ -1527,8 +1527,9 @@ Shared: `prompt` at the top in `heading`, the widget, then feedback inline (the 
 | Check mode next | Next | अगला |
 | Little learner correct (तुम) | Yay! You did it! | वाह! तुमने कर दिखाया! |
 | Little learner wrong (तुम) | Let's try again together! | चलो, साथ में फिर से कोशिश करें! |
+| Little learner shown answer (तुम) | Here is the answer. Tap it! | यह रहा जवाब। इस पर टैप करो! |
 
-`{n}` is `learn.combo_streak_len` (5 per A19).
+`{n}` is `learn.combo_streak_len` (5 per A19). The "shown answer" row is proposed (R59): the guided finish, where the shown answer is marked correct (the option's own correct state, so screen readers hear "correct") and the child taps it.
 
 **Illustration slots:** none (the pet avatar in the Pet line; maths as KaTeX SVG; question media stays above).
 

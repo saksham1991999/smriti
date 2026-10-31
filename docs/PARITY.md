@@ -35,6 +35,8 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Chapter | LRN-02 | Partial | Partial | Built | Mobile has the topic rail, Practise, Chapter test (LRN-06 sheet), reviews by topic and Report. Not yet: test-out (LES-12), chapter download, reset progress, long-press. Web also has a topic page. |
 | Lesson player (Deep Dive) | LES-01 to LES-08 | Built | Built | Built | Mobile includes the not-found state (LES-11). |
 | Lesson end | LES-09 | Built | Built | Built | |
+| Little learner lesson | LES-01, LES-02 (little learner) | Partial | Partial | Partial | The lesson players render lesson-core's `little` mode: gentle hint, the guided finish (the shown answer is tapped, so every question ends on a win), no XP chip, counter or confidence row. Not yet in an app screen (behind `feature.little_learner`). The native player has no pet line yet. |
+| Story, song and play activities | LRN-11, LRN-17, LRN-18 | Partial | Partial | Partial | Players are in `lesson-player-web` and `lesson-player-native`; not yet in an app screen. |
 
 ## Memory and Labs
 

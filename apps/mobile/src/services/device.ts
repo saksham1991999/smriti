@@ -6,6 +6,7 @@ import { Platform } from 'react-native';
 import { DevGoogleSignIn, ExpoAppleSignIn, NativeGoogleSignIn, noApple } from '../auth/providers';
 import { ContentDownloads } from '../content/downloads';
 import { ContentRepo } from '../content/repo';
+import { runDemo } from '../dev/demo';
 import { FakeApiServer } from '../dev/fake-api/server';
 import { readClientEnv, readSwitches } from '../env';
 import { defaultFlags, getVariant } from '@smriti/config';
@@ -110,6 +111,8 @@ async function createDeviceApp(): Promise<SmritiApp> {
   downloads.setLimitBytes(app.flags.get('content.cache_limit_mb') * 1024 * 1024);
   // Earlier downloads become readable again; lessons fall back to "Needs internet" until then.
   void downloads.hydrate(['en', 'hi'], app.examProfileId()).catch(() => 0);
+  // DEV ONLY: design-review demo states on the fake API (`?demo=` on the web preview).
+  if (fake && Platform.OS === 'web' && typeof window !== 'undefined' && window.location.search) await runDemo(app, fake, window.location.search);
   onForeground(() => {
     void app.ensureSession();
     void app.sync.flush();

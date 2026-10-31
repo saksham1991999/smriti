@@ -88,6 +88,8 @@ export default function Memory() {
       {rescue ? <Button variant="secondary" icon="Timer" label={t('memory_labs:MEM-01.rescue')} onPress={() => router.push({ pathname: '/review', params: { kind: 'rescue' } })} testID="mem-rescue" /> : null}
       <SettingsGroup>
         <SettingsRow title={t('memory_labs:MEM-01.tool_decks')} icon="Cards" trailing="none" />
+        {!app.isLittleLearner() ? <SettingsRow title={t('memory_labs:MEM-01.tool_palace')} icon="House" onPress={() => router.push('/palace' as Href)} testID="mem-palace" /> : null}
+        {!app.isLittleLearner() ? <SettingsRow title={t('memory_labs:MEM-01.tool_metacog')} icon="Brain" onPress={() => router.push('/insights' as Href)} testID="mem-insights" /> : null}
         <SettingsRow title={t('memory_labs:MEM-01.tool_techniques')} icon="Lightbulb" trailing="none" />
         <SettingsRow title={t('memory_labs:MEM-01.tool_focus')} icon="Timer" trailing="none" />
       </SettingsGroup>

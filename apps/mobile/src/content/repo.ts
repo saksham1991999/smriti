@@ -1,4 +1,4 @@
-import type { Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema/runtime';
+import type { ActivityBundle, ActivityEntry, Manifest, TopicEntry, TypedBundle } from '@smriti/content-schema/runtime';
 import type { ImageSourcePropType } from 'react-native';
 
 import type { SeedPackFiles } from '../seed/types';
@@ -153,6 +153,18 @@ export class ContentRepo {
     const bundle = this.read(locale, entry.path);
     if (!bundle) return null;
     return { bundle, hash: entry.hash, examDepth: depthMap(t) };
+  }
+
+  /** A topic's little learner activities (story, song, play) in path order, from the manifest. */
+  activities(locale: ContentLocale, topicId: string, examProfileId?: string | null): ActivityEntry[] {
+    return this.manifest(locale, examProfileId).topics[topicId]?.activities ?? [];
+  }
+
+  /** The story, song or play bundle that holds a topic's activities, if it is on the device. */
+  loadActivities(locale: ContentLocale, topicId: string, kind: 'story' | 'song' | 'play', examProfileId?: string | null): { bundle: ActivityBundle; hash: string } | null {
+    const entry = this.manifest(locale, examProfileId).topics[topicId]?.bundles[kind];
+    const bundle = entry ? this.read(locale, entry.path) : null;
+    return entry && bundle ? { bundle: bundle as unknown as ActivityBundle, hash: entry.hash } : null;
   }
 
   /** Bundled image for a media ref's file (`assets/<sha>.webp`), if it is in the seed pack. */

@@ -648,6 +648,11 @@ Crisis variant (a full-width card that replaces the tutor answer and stays pinne
 | Added label | Added to review | रिव्यू में जुड़ गए |
 | Follow-up sent | Answered | जवाब दे दिया |
 | Answer | Answer | जवाब दें |
+| Grading error | We couldn't check it right now. Your explanation is kept. | अभी जाँच नहीं हो पाई। आपकी लिखी बात सहेजी हुई है। |
+| Listen | Listen | सुनें |
+| Listen unavailable | Audio isn't available right now. | अभी आवाज़ उपलब्ध नहीं है। |
+| Listen limit | That's enough listening for today. | आज के लिए सुनना पूरा हुआ। |
+| Listen offline | Listening needs internet. | सुनने के लिए इंटरनेट चाहिए। |
 
 **Illustration slots:** Top pet reaction: `pet-cat` / `pet-dog`, 1:1, "proud" (all clear), "thinking" (mixed) or "curious" (needs work), 96 px. Alt: decorative (the pet line is read).
 
@@ -748,6 +753,11 @@ Denied variant: same layout, title and body change, primary becomes [Open settin
 | Consent needed | A parent needs to turn on voice for you first. | पहले माता-पिता को आपके लिए आवाज़ चालू करनी होगी। |
 | Needs internet | Voice needs internet. | आवाज़ वाली बातचीत के लिए इंटरनेट चाहिए। |
 | Test voice note | Test voice: captions only, no audio. | टेस्ट वॉइस: सिर्फ़ कैप्शन, आवाज़ नहीं। |
+| Not ready title | Voice isn't ready yet | आवाज़ वाली बातचीत अभी तैयार नहीं है |
+| Not ready body | You can still ask {pet_name} anything in text. | आप अब भी {pet_name} से टाइप करके कुछ भी पूछ सकते हैं। |
+| Pro required | Talking out loud with {pet_name} comes with Pro. | {pet_name} से बोलकर बात करना Pro के साथ मिलता है। |
+| Needs update | Voice needs a newer version of the app. | आवाज़ वाली बातचीत के लिए ऐप का नया वर्शन चाहिए। |
+| See Pro | See Pro | Pro देखें |
 
 **Illustration slots:** The pet's Rive file in the `wake` → listening state (DESIGN §7.2); Agnes art from `pet-cat` / `pet-dog` reference sheets. Alt: "{pet_name} getting ready to listen".
 
@@ -1433,6 +1443,10 @@ Invite-confirm variant (opened by an invite link): a sheet with the inviter's pe
 | Own link | This is your own invite link. | यह आपका अपना इनवाइट लिंक है। |
 | Link invalid | This invite isn't working any more. | यह इनवाइट अब काम नहीं करता। |
 | Daily cap | You've sent a lot of requests today. Try again tomorrow. | आज बहुत रिक्वेस्ट भेजी जा चुकी हैं। कल फिर कोशिश करें। |
+| Code heading | Have a friend's code? | दोस्त का कोड है? |
+| Code field | Friend's invite code | दोस्त का इनवाइट कोड |
+| Code add | Add | जोड़ें |
+| Added toast | {name} is your friend now | {name} अब आपके दोस्त हैं |
 
 **Illustration slots:** Invite card: `sunny-object`, 1:1, a paper plane carrying a small gift box, transparent. Alt: "An invite with a gift".
 
@@ -1568,6 +1582,7 @@ Mini profile (non-friends, from a league, leaderboard or duel row): a 40% sheet 
 | Report (mini profile) | Report | रिपोर्ट करें |
 | Remove | Remove friend | दोस्ती हटाएँ |
 | Remove confirm | Remove {name}? They won't be told. | {name} को हटाएँ? उन्हें बताया नहीं जाएगा। |
+| Deleted account | Deleted account | हटाया गया अकाउंट |
 | Mini: in your league | In your league | आपकी लीग में |
 | Mini: random opponent | Duel opponent | मुकाबले का खिलाड़ी |
 

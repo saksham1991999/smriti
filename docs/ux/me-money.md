@@ -1432,6 +1432,14 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | PIN | Use parent PIN | पेरेंट PIN इस्तेमाल करें |
 | Back | Back to {pet} | {pet} के पास वापस |
 | PIN wrong | That PIN didn't match. | PIN मेल नहीं खाया। |
+| PIN label | Parent PIN, 4 digits | पेरेंट PIN, 4 अंक |
+| PIN locked | Too many tries. Try again in {n, plural, one {# minute} other {# minutes}}, or use Google. | बहुत बार गलत हुआ। {n} मिनट बाद फिर कोशिश करें, या Google इस्तेमाल करें। |
+| Set PIN title | Choose a 4-digit parent PIN | 4 अंकों का पेरेंट PIN चुनें |
+| Set PIN body | Next time, the PIN opens parent mode on this phone, even offline. | अगली बार इस फ़ोन पर PIN से पेरेंट मोड खुलेगा, ऑफ़लाइन भी। |
+| PIN saved | Parent PIN saved | पेरेंट PIN सेव हो गया |
+| Unlock | Unlock | खोलें |
+| Skip PIN | Not now | अभी नहीं |
+| Needs internet | Google sign-in needs the internet. Use the PIN if you set one. | Google साइन-इन के लिए इंटरनेट चाहिए। PIN सेट है तो उसे इस्तेमाल करें। |
 
 **Illustration slots:** `sunny-scene`, 3:2, an Indian parent and child at a home table with a phone and the pet nearby, warm light, alt "A parent and child study together" / "अभिभावक और बच्चा साथ में पढ़ते हुए".
 **States:** first time, returning, PIN set, offline (Google sign-in needs internet; PIN works offline if set before), dark.
@@ -1495,6 +1503,10 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Not linked | This child isn't linked to your account. | यह बच्चा आपके अकाउंट से जुड़ा नहीं है। |
 | Back parent | Back to Parent mode | पेरेंट मोड पर वापस |
 | Offline | You're offline. Changes need internet. | आप ऑफ़लाइन हैं। बदलाव के लिए इंटरनेट चाहिए। |
+| Updated | Updated {time} | {time} पर अपडेट हुआ |
+| Chart a11y | Most on {day}, {n} minutes | सबसे ज़्यादा {day} को, {n} मिनट |
+| Chart empty a11y | No study minutes this week yet | इस हफ़्ते अभी पढ़ाई के मिनट नहीं |
+| Child line | Class {n} | कक्षा {n} |
 
 **Illustration slots:** child cards use each child's pet portrait (`pet-cat`/`pet-dog`, 1:1). Empty: `empty-state`, 4:3, the two pets waiting by a door, alt "Waiting for your child to join".
 **States:** no children (empty), one child (the card fills the width), several, request waiting, offline (last synced week shown with "Updated {time}"; actions disabled), parent's own device vs the child's device (Exit target differs), dark.
@@ -1526,6 +1538,8 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Reviews | Reviews | रिव्यू |
 | Streak | Streak | स्ट्रीक |
 | Per day | Minutes each day | हर दिन के मिनट |
+| Previous week | Previous week | पिछला हफ़्ता |
+| Next week | Next week | अगला हफ़्ता |
 | Subjects | Subjects | विषय |
 | Mocks | Mock tests | मॉक टेस्ट |
 | Coming up | Coming up | आगे क्या है |
@@ -1580,6 +1594,9 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Hours invalid | Pick a start time before the end time. | ख़त्म होने के समय से पहले का शुरुआती समय चुनें। |
 | More | More for {child} | {child} के लिए और |
 | Save failed | Couldn't save. Try again. | सेव नहीं हो पाया। फिर कोशिश करें। |
+| Saved here | Saved. It applies on this phone now. | सेव हो गया। इस फ़ोन पर अभी से लागू। |
+| Chip minutes a11y | {n} minutes | {n} मिनट |
+| Offline | Saving needs internet. | सेव करने के लिए इंटरनेट चाहिए। |
 
 **Illustration slots:** none.
 **States:** on the child's device (applies at once), on the parent's own device (applies on the child's next sync; the Saved line says so), offline (saving disabled on the parent's device), dark.

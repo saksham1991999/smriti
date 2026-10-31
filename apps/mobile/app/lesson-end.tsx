@@ -36,6 +36,9 @@ export default function LessonEnd() {
       footer={
         <>
           <Button label={little ? t('learn:LES-08.little_learner_next') : t('learn:LES-08.continue')} onPress={next} fullWidth testID="lesson-end-continue" />
+          {!little && app.flags.get('feature.feynman') === true && end.mode !== 'onboarding' ? (
+            <Button variant="ghost" icon="ChatCircleText" label={t('learn:LES-08.explain_back')} onPress={() => router.push(`/teach/${end.topicId}` as Href)} fullWidth testID="lesson-end-teach" />
+          ) : null}
           {end.nextBiteTitle ? (
             <Text variant="caption" tone="muted" align="center">
               {t('learn:LES-08.next_caption.1', { bite_title: end.nextBiteTitle })}

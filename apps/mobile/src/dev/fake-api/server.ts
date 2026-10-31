@@ -37,8 +37,9 @@ import {
 } from '@smriti/app-core';
 
 import { CATALOGUE_SNAPSHOT, type CatalogueExam } from '../../content/catalogue';
+import { FeatureFakes } from './features';
 
-interface FakeUser {
+export interface FakeUser {
   id: string;
   isAnonymous: boolean;
   email: string | null;
@@ -101,12 +102,17 @@ export class FakeApiServer {
   /** Devices registered with `POST /v1/devices`, by user id. */
   readonly devices = new Map<string, { pushToken: string | null; permission: string }>();
   failSyncWith: number | null;
+  /** `/v1/config` flags (tests and demos turn Phase 2 and 3 features on here). */
+  flags: Record<string, unknown> = {};
+  /** Phase 2 and 3 endpoints (parent mode, social, speech, voice, insights, live mocks): ./features. */
+  readonly features: FeatureFakes;
 
   constructor(private readonly opts: FakeApiOptions = {}) {
     this.clock = opts.clock ?? (() => Date.now());
     this.ttl = opts.tokenTtlS ?? 3600;
     this.revenuecatAuth = opts.revenuecatWebhookAuth ?? '';
     this.failSyncWith = opts.failSyncWith ?? null;
+    this.features = new FeatureFakes({ clock: this.clock, user: (id) => this.users.get(id) ?? null, users: () => this.users.values(), flags: () => this.flags, state: (u) => this.state(u) });
   }
 
   /** A `fetch` the app's platform layer can use in place of the network. */
@@ -213,6 +219,8 @@ export class FakeApiServer {
       const text = sse('delta', { text: `[fake] ${String(body.text ?? '')}` }) + sse('quota', { used: 0, limit: null, remaining: null, unlimited: true }) + sse('done', {});
       return raw(200, text, 'text/event-stream');
     }
+    const feature = await this.features.route({ method, path: p, url: u, body, user });
+    if (feature) return feature;
     return json(404, { code: 'not_found' });
   }
 
@@ -280,6 +288,28 @@ export class FakeApiServer {
       createdAt: this.clock(),
     };
     this.users.set(id, user);
+    return user;
+  }
+
+  /**
+   * Test and demo hook: another signed-in learner, made from the events their own phone would
+   * have synced (birth year, pet, lessons with their XP), so the social fakes have real people.
+   */
+  addLearner(opts: { name: string; email: string; birthYear: number; species?: 'cat' | 'dog'; petName?: string; lessonsXp?: number[] }): FakeUser {
+    const user = this.createUser(false);
+    user.email = opts.email;
+    user.displayName = opts.name;
+    this.byEmail.set(opts.email, user.id);
+    const at = new Date(this.clock()).toISOString();
+    const push = <T extends WireEvent['type']>(type: T, payload: WireEvent<T>['payload']) => {
+      const event_id = `fake-ev-${++this.seq}`;
+      user.events.push({ event_id, type, occurred_at: at, tz: 'Asia/Kolkata', payload } as WireEvent);
+      user.eventIds.add(event_id);
+    };
+    push('onboarding_answer', { step: 'birth_year', value: opts.birthYear });
+    push('pet_named', { species: opts.species ?? 'cat', name: opts.petName ?? 'Miko' });
+    for (const xp of opts.lessonsXp ?? []) push('lesson_completed', { topic_id: 'fx.chapter-a.topic-a', mode: 'deep_dive', cards_seen: 6, correct: 4, total: 5, ms_total: 6 * 60_000, xp });
+    user.stateVersion = ++this.seq;
     return user;
   }
 
@@ -358,9 +388,9 @@ export class FakeApiServer {
     const stageByPoints = stageForPoints(points);
     const pet = this.pet(user, plantRolled.health);
 
-    const xp = user.events.filter((e) => e.type === 'lesson_completed') as WireEvent<'lesson_completed'>[];
-    const xpToday = xp.filter((e) => localDate(e.occurred_at, tz) === today).reduce((s, e) => s + (e.payload.xp ?? 0), 0);
-    const xpTotal = xp.reduce((s, e) => s + (e.payload.xp ?? 0), 0);
+    const xp = user.events.filter((e) => eventXp(e) > 0);
+    const xpToday = xp.filter((e) => localDate(e.occurred_at, tz) === today).reduce((s, e) => s + eventXp(e), 0);
+    const xpTotal = xp.reduce((s, e) => s + eventXp(e), 0);
 
     return {
       state_version: user.stateVersion,
@@ -468,7 +498,7 @@ export class FakeApiServer {
     });
     return {
       app_version: { min_version: '0.1.0', latest_version: '0.1.0', update_required: null },
-      flags: {},
+      flags: this.flags,
       free_limits: {},
       pricing: ['ios', 'android', 'web'].flatMap((p) => [product(p, true), product(p, false)]),
       content_base_url: 'http://fake.local/content',
@@ -489,6 +519,13 @@ export class FakeApiServer {
       profiles: [{ id: e.exam_profile_id, cycle: '2027', name: e.name, locales: ['en', 'hi'], schedule: null, is_active: true }],
     }));
   }
+}
+
+/** XP an event earns, as apps/api services/xp.py: a lesson's own xp; a little learner's activity, stars x `xp.little_activity_star` (1). */
+function eventXp(e: WireEvent): number {
+  if (e.type === 'lesson_completed') return (e as WireEvent<'lesson_completed'>).payload.xp ?? 0;
+  if (e.type === 'activity_completed') return Math.min(100, Math.max(0, (e as WireEvent<'activity_completed'>).payload.stars)) * 1;
+  return 0;
 }
 
 function validate(e: WireEvent | undefined): string | null {
@@ -566,7 +603,7 @@ function b64url(text: string): string {
   return out;
 }
 
-function raw(status: number, text: string, contentType: string): HttpResponse {
+export function raw(status: number, text: string, contentType: string): HttpResponse {
   return {
     status,
     ok: status >= 200 && status < 300,
@@ -576,7 +613,7 @@ function raw(status: number, text: string, contentType: string): HttpResponse {
   };
 }
 
-function json(status: number, data: unknown): HttpResponse {
+export function json(status: number, data: unknown): HttpResponse {
   const text = JSON.stringify(data);
   return {
     status,

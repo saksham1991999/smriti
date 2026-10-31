@@ -67,6 +67,7 @@ class Settings(BaseSettings):
     ai_tier_tutor_model: str = ""
     ai_tier_cheap_model: str = ""
     ai_tier_author_model: str = ""
+    ai_tier_vision_model: str = ""
     ai_tier_image_model: str = ""
     ai_request_timeout_s: float = 60.0
     ai_image_timeout_s: float = 360.0

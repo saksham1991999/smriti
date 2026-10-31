@@ -88,6 +88,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/v1/ai/doubt-photos": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AI-16 to AI-18: upload a photo of a question and read it (Pro, 13+, uploads scope) */
+    post: operations["upload_doubt_photo_v1_ai_doubt_photos_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/ai/doubt-photos/{photo_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** A photo doubt: what was read, and its chat once solved */
+    get: operations["get_doubt_photo_v1_ai_doubt_photos__photo_id__get"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/v1/ai/doubt-photos/{photo_id}/solve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** AI-19: solve the confirmed question as a tutor chat, hints first (SSE) */
+    post: operations["solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/v1/attempts": {
     parameters: {
       query?: never;
@@ -4439,7 +4490,7 @@ export interface components {
        * Kind
        * @enum {string}
        */
-      kind: "card" | "question" | "topic" | "concept" | "lab";
+      kind: "card" | "question" | "topic" | "concept" | "lab" | "doubt";
       /** Ref */
       ref: string;
       /** Title */
@@ -4859,6 +4910,79 @@ export interface components {
       /** Confidence */
       confidence: number | null;
       quota: components["schemas"]["QuotaOut"];
+      /** Text */
+      text: string;
+    };
+    /**
+     * DoubtPhotoOut
+     * @description AI-18: what the vision model read from the photo, for the student to check or edit.
+     *     ``reason`` says why nothing usable was read (the app shows Retake).
+     */
+    DoubtPhotoOut: {
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Question Text */
+      question_text?: string | null;
+      /** Reason */
+      reason?:
+        | (
+            | "blurry"
+            | "no_question"
+            | "multiple"
+            | "unreadable"
+            | "not_study"
+            | "personal"
+            | "unsafe"
+            | "ai_unavailable"
+          )
+        | null;
+      /** Session Id */
+      session_id?: string | null;
+      /**
+       * Status
+       * @enum {string}
+       */
+      status: "read" | "unreadable" | "rejected" | "solved";
+      /** Subject */
+      subject?: string | null;
+    };
+    /**
+     * DoubtSolve
+     * @description AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is
+     *     the student's message (the confirmed question or a chip); ``question_text`` saves an edit
+     *     from AI-18 first; ``reveal`` is "Show full solution" (hints first until then).
+     */
+    DoubtSolve: {
+      /** Chip Id */
+      chip_id?: string | null;
+      /**
+       * Client Message Id
+       * Format: uuid
+       */
+      client_message_id: string;
+      /** Exam */
+      exam?: string | null;
+      /**
+       * Input
+       * @default typed
+       * @enum {string}
+       */
+      input: "typed" | "chip" | "prefill";
+      /** Question Text */
+      question_text?: string | null;
+      /**
+       * Reveal
+       * @default false
+       */
+      reveal: boolean;
       /** Text */
       text: string;
     };
@@ -9307,6 +9431,110 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MergeStatus"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  upload_doubt_photo_v1_ai_doubt_photos_post: {
+    parameters: {
+      query?: {
+        exam?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description One compressed photo of one question (at most 4 MiB) */
+    requestBody: {
+      content: {
+        "image/jpeg": string;
+        "image/png": string;
+        "image/webp": string;
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DoubtPhotoOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  get_doubt_photo_v1_ai_doubt_photos__photo_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        photo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DoubtPhotoOut"];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["HTTPValidationError"];
+        };
+      };
+    };
+  };
+  solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        photo_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DoubtSolve"];
+      };
+    };
+    responses: {
+      /** @description Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done) */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/event-stream": string;
         };
       };
       /** @description Validation Error */

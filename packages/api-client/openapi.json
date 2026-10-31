@@ -3269,6 +3269,115 @@
         }
       }
     },
+    "/v1/ai/doubt-photos": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "AI-16 to AI-18: upload a photo of a question and read it (Pro, 13+, uploads scope)",
+        "operationId": "upload_doubt_photo_v1_ai_doubt_photos_post",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+              "title": "Exam"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DoubtPhotoOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "description": "One compressed photo of one question (at most 4 MiB)",
+          "content": {
+            "image/jpeg": { "schema": { "type": "string", "format": "binary" } },
+            "image/png": { "schema": { "type": "string", "format": "binary" } },
+            "image/webp": { "schema": { "type": "string", "format": "binary" } }
+          }
+        }
+      }
+    },
+    "/v1/ai/doubt-photos/{photo_id}": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "A photo doubt: what was read, and its chat once solved",
+        "operationId": "get_doubt_photo_v1_ai_doubt_photos__photo_id__get",
+        "parameters": [
+          {
+            "name": "photo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Photo Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/DoubtPhotoOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ai/doubt-photos/{photo_id}/solve": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "AI-19: solve the confirmed question as a tutor chat, hints first (SSE)",
+        "operationId": "solve_doubt_photo_v1_ai_doubt_photos__photo_id__solve_post",
+        "parameters": [
+          {
+            "name": "photo_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Photo Id" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/DoubtSolve" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done)",
+            "content": { "text/event-stream": { "schema": { "type": "string" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/reviews/queue": {
       "post": {
         "tags": ["reviews"],
@@ -9315,7 +9424,7 @@
         "properties": {
           "kind": {
             "type": "string",
-            "enum": ["card", "question", "topic", "concept", "lab"],
+            "enum": ["card", "question", "topic", "concept", "lab", "doubt"],
             "title": "Kind"
           },
           "ref": { "type": "string", "title": "Ref" },
@@ -9786,6 +9895,78 @@
         "type": "object",
         "required": ["text", "confidence", "quota"],
         "title": "DictationOut"
+      },
+      "DoubtPhotoOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "status": {
+            "type": "string",
+            "enum": ["read", "unreadable", "rejected", "solved"],
+            "title": "Status"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "blurry",
+                  "no_question",
+                  "multiple",
+                  "unreadable",
+                  "not_study",
+                  "personal",
+                  "unsafe",
+                  "ai_unavailable"
+                ]
+              },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "question_text": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Question Text"
+          },
+          "subject": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Subject" },
+          "session_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Session Id"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+        },
+        "type": "object",
+        "required": ["id", "status", "created_at"],
+        "title": "DoubtPhotoOut",
+        "description": "AI-18: what the vision model read from the photo, for the student to check or edit.\n``reason`` says why nothing usable was read (the app shows Retake)."
+      },
+      "DoubtSolve": {
+        "properties": {
+          "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
+          "text": { "type": "string", "maxLength": 4000, "minLength": 1, "title": "Text" },
+          "input": {
+            "type": "string",
+            "enum": ["typed", "chip", "prefill"],
+            "title": "Input",
+            "default": "typed"
+          },
+          "chip_id": {
+            "anyOf": [{ "type": "string", "maxLength": 40 }, { "type": "null" }],
+            "title": "Chip Id"
+          },
+          "question_text": {
+            "anyOf": [{ "type": "string", "maxLength": 4000, "minLength": 1 }, { "type": "null" }],
+            "title": "Question Text"
+          },
+          "reveal": { "type": "boolean", "title": "Reveal", "default": false },
+          "exam": {
+            "anyOf": [{ "type": "string", "maxLength": 200 }, { "type": "null" }],
+            "title": "Exam"
+          }
+        },
+        "type": "object",
+        "required": ["client_message_id", "text"],
+        "title": "DoubtSolve",
+        "description": "AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is\nthe student's message (the confirmed question or a chip); ``question_text`` saves an edit\nfrom AI-18 first; ``reveal`` is \"Show full solution\" (hints first until then)."
       },
       "DrillPreview": {
         "properties": {

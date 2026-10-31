@@ -1598,6 +1598,23 @@ create table ai.voice_sessions (
   transcript_key  text                              -- R2, private
 );
 
+create table ai.doubt_photos (                    -- photo doubt, AI-16 to AI-19 (migration 20261030200004)
+  id               uuid primary key default gen_random_uuid(),
+  user_id          uuid not null references auth.users(id) on delete cascade,
+  storage_key      text,                            -- R2 uploads, private; null once deleted; no user id in it
+  mime             text not null,                   -- image/jpeg, image/png, image/webp
+  bytes            integer not null,
+  status           text not null,                   -- read, unreadable, rejected, solved
+  reason           text,                            -- why a read failed: blurry, no_question, multiple, unreadable, not_study, personal, unsafe, ai_unavailable
+  question_text    text,                            -- the recognised question, editable by the student
+  subject          text,
+  exam_profile_id  text,
+  session_id       uuid references ai.tutor_sessions(id) on delete set null,   -- the AI-19 chat
+  revealed_at      timestamptz,                     -- "Show full solution"
+  created_at       timestamptz not null default now(),
+  deleted_at       timestamptz
+);                                                -- owner read; API writes; ai.tutor_retention_days
+
 create table ai.generations (                     -- every non-chat AI job, for cost and debugging
   id           uuid primary key default gen_random_uuid(),
   user_id      uuid references auth.users(id) on delete set null,   -- null for content jobs

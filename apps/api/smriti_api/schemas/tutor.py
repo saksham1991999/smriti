@@ -29,7 +29,7 @@ class SessionCreate(BaseModel):
 class ContextOut(BaseModel):
     """What the tutor can see, for the context chip (tutor-social §A5 step 1)."""
 
-    kind: Literal["card", "question", "topic", "concept", "lab"]
+    kind: Literal["card", "question", "topic", "concept", "lab", "doubt"]
     ref: str
     topic_id: str | None = None
     title: dict[str, str] | None = None
@@ -96,6 +96,42 @@ class AskQuestion(MessageIn):
     exam: Annotated[str, Field(max_length=200)] | None = None
     # The student's own answer, for "Why is my answer wrong?". Checked on the server.
     your_answer: AnswerIn | None = None
+
+
+DoubtStatus = Literal["read", "unreadable", "rejected", "solved"]
+DoubtReason = Literal[
+    "blurry",
+    "no_question",
+    "multiple",
+    "unreadable",
+    "not_study",
+    "personal",
+    "unsafe",
+    "ai_unavailable",
+]
+
+
+class DoubtPhotoOut(BaseModel):
+    """AI-18: what the vision model read from the photo, for the student to check or edit.
+    ``reason`` says why nothing usable was read (the app shows Retake)."""
+
+    id: uuid.UUID
+    status: DoubtStatus
+    reason: DoubtReason | None = None
+    question_text: str | None = None
+    subject: str | None = None
+    session_id: uuid.UUID | None = None
+    created_at: datetime
+
+
+class DoubtSolve(MessageIn):
+    """AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is
+    the student's message (the confirmed question or a chip); ``question_text`` saves an edit
+    from AI-18 first; ``reveal`` is "Show full solution" (hints first until then)."""
+
+    question_text: Annotated[str, Field(min_length=1, max_length=MAX_INPUT_CHARS)] | None = None
+    reveal: bool = False
+    exam: Annotated[str, Field(max_length=200)] | None = None
 
 
 class FeedbackIn(BaseModel):

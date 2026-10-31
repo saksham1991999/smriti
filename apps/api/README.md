@@ -119,6 +119,7 @@ tier from `AI_TIER_<TIER>_MODEL`, enforces per-user daily budgets, records usage
 | Capability | Real provider | Turned on by | Otherwise |
 |---|---|---|---|
 | Chat, tutor, authoring | Agnes (OpenAI-compatible `/chat/completions`) | `AI_PROVIDER=agnes` (default), `AGNES_BASE_URL`, `AGNES_AI_API_KEY`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL` | `AI_PROVIDER=fake` |
+| Photo doubt reading (AI-18) | Agnes `/chat/completions` with an image part | `AI_TIER_VISION_MODEL` (a vision-capable model; empty means photo doubt answers `ai_unavailable`) | `AI_PROVIDER=fake` |
 | Images | Agnes `/images/generations` | `AI_TIER_IMAGE_MODEL` | fake image |
 | Text to speech, speech to text | Deepgram | `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL`, `DEEPGRAM_STT_MODEL` | fake in local/test; an `AIConfigError` elsewhere |
 | Realtime voice tutor | Gemini Live (ephemeral session for the client) | `GEMINI_API_KEY`, `GEMINI_LIVE_MODEL` | same |

@@ -58,6 +58,7 @@ import {
   StreakPill,
   SubjectTile,
   Switch,
+  TextField,
   TabBar,
   Text,
   ThemeScope,
@@ -277,6 +278,25 @@ describe("inputs", () => {
     wrap(<Picker label="Year" value={null} onChange={onChange} options={[{ value: "2010", label: "2010" }]} />);
     await userEvent.selectOptions(screen.getByLabelText("Year"), "2010");
     expect(onChange).toHaveBeenCalledWith("2010");
+  });
+
+  it("TextField: label, hint, error with an icon, counter near the limit", () => {
+    const onChange = vi.fn();
+    const onSubmit = vi.fn();
+    const r = wrap(<TextField label="Your note" value="" onChange={onChange} hint="Only you see this." onSubmit={onSubmit} testID="note" />);
+    const field = r.getByLabelText("Your note");
+    fireEvent.change(field, { target: { value: "a cue" } });
+    expect(onChange).toHaveBeenCalledWith("a cue");
+    fireEvent.keyDown(field, { key: "Enter" });
+    expect(onSubmit).toHaveBeenCalled();
+    expect(field.getAttribute("aria-describedby")).toBeTruthy();
+    r.unmount();
+    const e = wrap(<TextField label="Email" value="name@" onChange={vi.fn()} error="Enter an email address." testID="email" />);
+    expect(e.getByLabelText("Email")).toHaveAttribute("aria-invalid", "true");
+    expect(e.getByTestId("email-error").textContent).toBe("Enter an email address.");
+    e.unmount();
+    const c = wrap(<TextField label="Details" value={"x".repeat(95)} onChange={vi.fn()} maxLength={100} multiline />);
+    expect(c.getByText("5 characters left")).toBeTruthy();
   });
 
   it("Switch and ChoiceChips", async () => {

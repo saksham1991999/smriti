@@ -3,7 +3,7 @@
 // Apple's own buttons. On iOS, expo-apple-authentication's system button should be used for Apple; on
 // Android the Google sign-in library's button is preferred. These are the fallback and the previews.
 import { Image, Platform, View, type StyleProp, type ViewStyle } from "react-native";
-import { AppleLogoIcon } from "phosphor-react-native";
+import { AppleLogoIcon } from "./phosphor";
 import { thirdParty } from "@smriti/tokens";
 import type { AppleButtonContract, GoogleButtonContract, TrustLineContract } from "@smriti/tokens/ui";
 import { useTheme, useUI } from "../theme";

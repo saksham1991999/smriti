@@ -1,5 +1,5 @@
 import { useId, useRef, type KeyboardEvent } from "react";
-import type { Confidence, ConfidenceRowContract, PickerContract, Rating, RatingButtonsContract, SwitchContract } from "@smriti/tokens/ui";
+import type { Confidence, ConfidenceRowContract, PickerContract, Rating, RatingButtonsContract, SwitchContract, TextFieldContract } from "@smriti/tokens/ui";
 import { useUI } from "../provider";
 import { cx, focusRing, pressable } from "../util";
 import { Icon } from "./Icon";
@@ -164,5 +164,69 @@ export function Switch({ checked, onCheckedChange, label, disabled, hideLabel, t
         </span>
       </span>
     </button>
+  );
+}
+
+export interface TextFieldProps extends TextFieldContract {
+  className?: string;
+}
+
+const INPUT_MODE = { default: "text", email: "email", numeric: "decimal" } as const;
+
+/** Labelled text field (TextFieldContract), the web twin of ui-native's TextField. */
+export function TextField({ label, value, onChange, placeholder, hint, error, maxLength, multiline, lines = 3, disabled, keyboard = "default", onSubmit, testID, className }: TextFieldProps) {
+  const { t } = useUI();
+  const id = useId();
+  const messageId = `${id}-msg`;
+  const remaining = maxLength === undefined ? null : maxLength - value.length;
+  const showCounter = remaining !== null && maxLength !== undefined && remaining <= Math.ceil(maxLength * 0.2);
+  const message = error ?? hint;
+  const field = cx(
+    "w-full min-h-12 rounded-md border-2 bg-surface-sunken px-4 py-3 text-body text-ink placeholder:text-ink-muted",
+    error ? "border-error" : "border-transparent focus:border-primary",
+    focusRing,
+    disabled && "opacity-60",
+  );
+  const common = {
+    id,
+    value,
+    placeholder,
+    maxLength,
+    disabled,
+    "aria-invalid": error ? true : undefined,
+    "aria-describedby": message ? messageId : undefined,
+    "data-testid": testID ? `${testID}-input` : undefined,
+  };
+  return (
+    <div data-testid={testID} className={cx("flex flex-col gap-1.5", className)}>
+      <label htmlFor={id} className="text-label text-ink-muted">
+        {label}
+      </label>
+      {multiline ? (
+        <textarea {...common} rows={lines} onChange={(e) => onChange(e.target.value)} className={cx(field, "resize-y")} />
+      ) : (
+        <input
+          {...common}
+          type={keyboard === "email" ? "email" : "text"}
+          inputMode={INPUT_MODE[keyboard]}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && onSubmit) onSubmit();
+          }}
+          className={field}
+        />
+      )}
+      {(message || showCounter) && (
+        <div className="flex items-start gap-2">
+          {error && <Icon name="Warning" size={16} color="errorText" />}
+          <span id={messageId} aria-live={error ? "polite" : undefined} className={cx("flex-1 text-caption", error ? "text-error-text" : "text-ink-muted")} data-testid={testID ? `${testID}-${error ? "error" : "hint"}` : undefined}>
+            {message}
+          </span>
+          {showCounter && remaining !== null && (
+            <span className={cx("text-caption tabular-nums", remaining <= 0 ? "text-error-text" : "text-ink-muted")}>{t("chat.charsLeft", { n: Math.max(0, remaining) })}</span>
+          )}
+        </div>
+      )}
+    </div>
   );
 }

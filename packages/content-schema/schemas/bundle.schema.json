@@ -191,6 +191,11 @@
         "type": "object"
       }
     },
+    "activities": {
+      "description": "Activity bundles only: activity id -> the localised storybook@1, song@1 or play@1 item (authoring fields removed). A song carries only this locale's version, as version.",
+      "type": "object",
+      "additionalProperties": { "type": "object" }
+    },
     "pyq_papers": {
       "description": "Papers the bundle's PYQ questions come from, for the Tough one chip (\"Asked in {exam_name} {year}\").",
       "type": "object",
@@ -230,9 +235,9 @@
   },
   "$defs": {
     "BundleMode": {
-      "description": "Lesson bundles (deep_dive, quick_revision) and the topic's practice bundle (practice, lesson and placement questions).",
+      "description": "Lesson bundles (deep_dive, quick_revision), the topic's practice bundle (practice, lesson and placement questions), and the little learner activity bundles (story, song, play: every storybook, song or play activity of the topic, in activities).",
       "type": "string",
-      "enum": ["deep_dive", "quick_revision", "practice"]
+      "enum": ["deep_dive", "quick_revision", "practice", "story", "song", "play"]
     },
     "ResolvedMedia": {
       "type": "object",

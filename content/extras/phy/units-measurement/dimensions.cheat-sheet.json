@@ -1,0 +1,118 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.phy.units-measurement.dimensions",
+  "scope": "topic",
+  "topic": "phy.units-measurement.dimensions",
+  "title": {
+    "en": "Dimensions of Physical Quantities",
+    "hi": "भौतिक राशियों की विमाएँ"
+  },
+  "concepts": [
+    "phy.units-measurement.dimensions.core.dimensional-formula"
+  ],
+  "key_ideas": [
+    {
+      "en": "Seven dimensions: [L], [M], [T], [A], [K], [cd], [mol].",
+      "hi": "सात विमाएँ: [L], [M], [T], [A], [K], [cd], [mol]।"
+    },
+    {
+      "en": "Dimensional formula: base quantities with their powers; magnitudes do not enter.",
+      "hi": "विमीय सूत्र: मूल राशियाँ अपनी घातों के साथ; परिमाण शामिल नहीं।"
+    },
+    {
+      "en": "Ratios of like quantities (angle, refractive index) are dimensionless.",
+      "hi": "समान राशियों के अनुपात (कोण, अपवर्तनांक) विमाहीन हैं।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Velocity",
+        "hi": "वेग"
+      },
+      "latex": "[M^0 L T^{-1}]"
+    },
+    {
+      "name": {
+        "en": "Acceleration",
+        "hi": "त्वरण"
+      },
+      "latex": "[M^0 L T^{-2}]"
+    },
+    {
+      "name": {
+        "en": "Force",
+        "hi": "बल"
+      },
+      "latex": "[M L T^{-2}]"
+    },
+    {
+      "name": {
+        "en": "Energy",
+        "hi": "ऊर्जा"
+      },
+      "latex": "[M L^2 T^{-2}]"
+    },
+    {
+      "name": {
+        "en": "Pressure",
+        "hi": "दाब"
+      },
+      "latex": "[M L^{-1} T^{-2}]"
+    },
+    {
+      "name": {
+        "en": "Density",
+        "hi": "घनत्व"
+      },
+      "latex": "[M L^{-3} T^0]"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Speed and velocity have different dimensions.",
+        "hi": "चाल और वेग की विमाएँ अलग हैं।"
+      },
+      "correct": {
+        "en": "Both are length over time, $[L T^{-1}]$.",
+        "hi": "दोनों लंबाई बटा समय हैं, $[L T^{-1}]$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "An angle in radians has the dimension of length.",
+        "hi": "रेडियन में कोण की विमा लंबाई है।"
+      },
+      "correct": {
+        "en": "It is length over length: dimensionless.",
+        "hi": "यह लंबाई बटा लंबाई है: विमाहीन।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Numbers such as $\\frac{1}{2}$ change the dimensions.",
+        "hi": "$\\frac{1}{2}$ जैसी संख्याएँ विमा बदलती हैं।"
+      },
+      "correct": {
+        "en": "Pure numbers have no dimensions.",
+        "hi": "शुद्ध संख्याओं की कोई विमा नहीं होती।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

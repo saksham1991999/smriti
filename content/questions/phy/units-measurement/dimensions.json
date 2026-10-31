@@ -1,0 +1,619 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §1.6 Significant Figures",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax College Physics 2e, §1.3 Accuracy, Precision, and Significant Figures",
+      "url": "https://openstax.org/books/college-physics-2e/pages/1-3-accuracy-precision-and-significant-figures",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or the BIPM vocabulary of metrology and OpenStax for accuracy, precision, least count and the kinds of error, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "phy.units-measurement.dimensions",
+  "questions": [
+    {
+      "id": "q.phy.units-measurement.dimensions.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The dimensional formula of mass density is",
+        "hi": "द्रव्यमान घनत्व का विमीय सूत्र है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[M L^{-3} T^0]$",
+            "hi": "$[M L^{-3} T^0]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[M L^{3} T^0]$",
+            "hi": "$[M L^{3} T^0]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[M^0 L^{-3} T^0]$",
+            "hi": "$[M^0 L^{-3} T^0]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[M L^{-2} T^0]$",
+            "hi": "$[M L^{-2} T^0]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Mass over volume.",
+          "hi": "द्रव्यमान बटा आयतन।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Density is mass divided by volume, and volume is length cubed.",
+          "hi": "घनत्व द्रव्यमान बटा आयतन है, और आयतन लंबाई का घन है।"
+        },
+        "steps": [
+          {
+            "en": "$[\\rho] = [M]/[L^3] = [M L^{-3} T^0]$",
+            "hi": "$[\\rho] = [M]/[L^3] = [M L^{-3} T^0]$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Volume divides, so its power is negative.",
+              "hi": "आयतन से भाग होता है, इसलिए उसकी घात ऋणात्मक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This drops the mass.",
+              "hi": "इसमें द्रव्यमान छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is mass per area, not per volume.",
+              "hi": "यह प्रति क्षेत्रफल द्रव्यमान है, प्रति आयतन नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensions.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Work is force times distance. Its dimensional formula is",
+        "hi": "कार्य बल गुणा दूरी है। इसका विमीय सूत्र है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[M L^2 T^{-2}]$",
+            "hi": "$[M L^2 T^{-2}]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[M L T^{-2}]$",
+            "hi": "$[M L T^{-2}]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[M L^2 T^{-1}]$",
+            "hi": "$[M L^2 T^{-1}]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[M L^{-1} T^{-2}]$",
+            "hi": "$[M L^{-1} T^{-2}]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Same dimensions as kinetic energy.",
+          "hi": "गतिज ऊर्जा जैसी ही विमा।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Multiply the dimensions of force by one more length.",
+          "hi": "बल की विमा को एक और लंबाई से गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$[M L T^{-2}] \\times [L] = [M L^2 T^{-2}]$",
+            "hi": "$[M L T^{-2}] \\times [L] = [M L^2 T^{-2}]$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is force alone.",
+              "hi": "यह केवल बल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The time power stays −2, as in force.",
+              "hi": "समय की घात बल की तरह −2 रहती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is pressure: force divided by area.",
+              "hi": "यह दाब है: बल बटा क्षेत्रफल।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensions.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these quantities is dimensionless?",
+        "hi": "इनमें से कौन-सी राशि विमाहीन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "refractive index",
+            "hi": "अपवर्तनांक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "speed of light",
+            "hi": "प्रकाश की चाल"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "pressure",
+            "hi": "दाब"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "density",
+            "hi": "घनत्व"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for a ratio of like quantities.",
+          "hi": "समान राशियों का अनुपात खोजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A ratio of two speeds cancels every dimension.",
+          "hi": "दो चालों के अनुपात में हर विमा कट जाती है।"
+        },
+        "steps": [
+          {
+            "en": "Refractive index = speed of light in vacuum / speed in the medium: $[L T^{-1}]/[L T^{-1}]$, no dimensions.",
+            "hi": "अपवर्तनांक = निर्वात में प्रकाश की चाल / माध्यम में चाल: $[L T^{-1}]/[L T^{-1}]$, कोई विमा नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A speed has $[L T^{-1}]$.",
+              "hi": "चाल की विमा $[L T^{-1}]$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Pressure has $[M L^{-1} T^{-2}]$.",
+              "hi": "दाब की विमा $[M L^{-1} T^{-2}]$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Density has $[M L^{-3}]$.",
+              "hi": "घनत्व की विमा $[M L^{-3}]$ है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensions.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Pressure has the dimensional formula $[M^a L^b T^c]$. Find $a + b + c$.",
+        "hi": "दाब का विमीय सूत्र $[M^a L^b T^c]$ है। $a + b + c$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": -2,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Divide force by $[L^2]$.",
+          "hi": "बल को $[L^2]$ से भाग दीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Pressure is force over area.",
+          "hi": "दाब बल बटा क्षेत्रफल है।"
+        },
+        "steps": [
+          {
+            "en": "$[P] = [M L T^{-2}]/[L^2] = [M L^{-1} T^{-2}]$, so $a + b + c = 1 - 1 - 2 = -2$.",
+            "hi": "$[P] = [M L T^{-2}]/[L^2] = [M L^{-1} T^{-2}]$, अतः $a + b + c = 1 - 1 - 2 = -2$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Multiplying by area instead of dividing gives $[M L^3 T^{-2}]$.",
+              "hi": "क्षेत्रफल से भाग के बजाय गुणा करने पर $[M L^3 T^{-2}]$ मिलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensions.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which two quantities have the same dimensions?",
+        "hi": "किन दो राशियों की विमाएँ समान हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "work and kinetic energy",
+            "hi": "कार्य और गतिज ऊर्जा"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "force and pressure",
+            "hi": "बल और दाब"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "speed and acceleration",
+            "hi": "चाल और त्वरण"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "mass and density",
+            "hi": "द्रव्यमान और घनत्व"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Write each pair out in M, L, T.",
+          "hi": "हर युग्म को M, L, T में लिखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Work is force times distance and kinetic energy is half m v squared: both $[M L^2 T^{-2}]$.",
+          "hi": "कार्य बल गुणा दूरी है और गतिज ऊर्जा आधा m v वर्ग: दोनों $[M L^2 T^{-2}]$।"
+        },
+        "steps": [
+          {
+            "en": "$[W] = [M L T^{-2}][L] = [M L^2 T^{-2}] = [\\frac{1}{2}mv^2]$",
+            "hi": "$[W] = [M L T^{-2}][L] = [M L^2 T^{-2}] = [\\frac{1}{2}mv^2]$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Pressure has an extra $[L^{-2}]$.",
+              "hi": "दाब में अतिरिक्त $[L^{-2}]$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Acceleration has one more $[T^{-1}]$.",
+              "hi": "त्वरण में एक अधिक $[T^{-1}]$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Density has $[L^{-3}]$ that mass lacks.",
+              "hi": "घनत्व में $[L^{-3}]$ है जो द्रव्यमान में नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.units-measurement.dimensions.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.units-measurement.dimensions.core.dimensional-formula",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The dimensional formula of acceleration is",
+        "hi": "त्वरण का विमीय सूत्र है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$[M^0 L T^{-2}]$",
+            "hi": "$[M^0 L T^{-2}]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[M^0 L T^{-1}]$",
+            "hi": "$[M^0 L T^{-1}]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$[M L T^{-2}]$",
+            "hi": "$[M L T^{-2}]$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[M^0 L^2 T^{-2}]$",
+            "hi": "$[M^0 L^2 T^{-2}]$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Velocity divided by time.",
+          "hi": "वेग बटा समय।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Acceleration is change of velocity per unit time.",
+          "hi": "त्वरण प्रति एकांक समय वेग में परिवर्तन है।"
+        },
+        "steps": [
+          {
+            "en": "$[L T^{-1}]/[T] = [M^0 L T^{-2}]$ (NCERT §1.5).",
+            "hi": "$[L T^{-1}]/[T] = [M^0 L T^{-2}]$ (NCERT §1.5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is velocity.",
+              "hi": "यह वेग है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is force.",
+              "hi": "यह बल है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Length appears once, not twice.",
+              "hi": "लंबाई एक बार आती है, दो बार नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

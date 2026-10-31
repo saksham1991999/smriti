@@ -105,6 +105,11 @@ const TABLE: Record<string, UnitInfo> = {
   "mol/L": U("concentration", 1),
   // ratio
   "%": U("ratio", 0.01),
+  // density (kg/m^3)
+  "kg/m^3": U("density", 1),
+  "kg/m³": U("density", 1),
+  "g/cm^3": U("density", 1e3),
+  "g/cm³": U("density", 1e3),
   // area (m^2)
   "m^2": U("area", 1),
   "m²": U("area", 1),

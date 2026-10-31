@@ -12,6 +12,7 @@ export * from './storage/memory';
 
 export * from './sync/types';
 export * from './sync/outbox';
+export * from './sync/activity';
 export * from './sync/client';
 
 export * from './auth/types';

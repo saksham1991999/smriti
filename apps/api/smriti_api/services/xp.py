@@ -31,17 +31,24 @@ class XpRules:
     challenge: int = 15
     mock_section: int = 20
     hourly_cap: int = 400
+    # Sync v1.4 activity_completed: XP per star (the flat flag ``xp.little_activity_star``).
+    little_activity_star: int = 1
 
     @classmethod
     def from_flags(cls, flags: Mapping[str, Any]) -> XpRules:
         raw = flags.get("xp.rules")
-        if not isinstance(raw, dict):
-            return cls()
-        known = {
-            k: int(v)
-            for k, v in raw.items()
-            if k in cls.__dataclass_fields__ and isinstance(v, int)
-        }
+        known = (
+            {
+                k: int(v)
+                for k, v in raw.items()
+                if k in cls.__dataclass_fields__ and isinstance(v, int)
+            }
+            if isinstance(raw, dict)
+            else {}
+        )
+        star = flags.get("xp.little_activity_star")
+        if isinstance(star, int) and not isinstance(star, bool) and star >= 0:
+            known["little_activity_star"] = star
         return cls(**known)
 
 
@@ -64,4 +71,9 @@ def xp_for_event(
         return rules.challenge, "challenge"
     if event_type == "mock_section_submitted":
         return rules.mock_section, "mock"
+    if event_type == "activity_completed":
+        # A little learner's story, song or play counts as a lesson: stars times the flag.
+        stars = min(max(0, int(payload.get("stars", 0))), 100)
+        amount = stars * rules.little_activity_star
+        return (amount, "lesson") if amount > 0 else None
     return None

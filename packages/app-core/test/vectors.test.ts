@@ -11,8 +11,13 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import {
+  DEFAULT_LITTLE_ACTIVITY_STAR_XP,
   DEFAULT_RULES,
   EMPTY_STREAK,
+  activityByDay,
+  activityCompletedPayload,
+  activityCompletedXp,
+  activityDedupeKey,
   NEW_PLANT,
   SrsScheduler,
   addDays,
@@ -29,6 +34,7 @@ import {
   timeLimitState,
   PET_STATES,
   PLANT_HEALTH,
+  type ActivityCompletionLike,
   type AgeBandInput,
   type DayInput,
   type PetStats,
@@ -287,5 +293,31 @@ describe('golden vectors', () => {
         expected: timeLimitState(c.limits, { day: today, usedMinutes: c.used, extraMinutes: c.extra, requestsToday: 0 }, { now: c.at, timeZone: 'Asia/Kolkata', inActivity: c.inActivity }),
       })),
     });
+  });
+
+  it('activity_completed', () => {
+    // One little learner's completions in order (sync contract v1.4). The server must accept,
+    // reject and credit them exactly so, and count each accepted one as a lesson on its day.
+    const timeZone = 'Asia/Kolkata';
+    const base = { topicId: 'fx.chapter-a.topic-a', concepts: ['fx.chapter-a.topic-a.sub-1.concept-1'], locale: 'en', msTotal: 180_000 };
+    const steps: { name: string; completion: ActivityCompletionLike }[] = [
+      { name: 'a story: one star', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v1', stars: 1, completedAt: '2026-10-30T04:30:00.000Z' } },
+      { name: 'play: a star per round', completion: { ...base, kind: 'play', activityId: 'play.fx.topic-a', bundleVersion: 'v1', stars: 3, completedAt: '2026-10-30T05:00:00.000Z' } },
+      { name: 'the same story again that day', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v1', stars: 1, completedAt: '2026-10-30T12:30:00.000Z' } },
+      { name: 'the same story in a new bundle', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v2', stars: 1, completedAt: '2026-10-30T13:00:00.000Z' } },
+      { name: 'a song in Hindi', completion: { ...base, kind: 'song', activityId: 'song.fx.topic-a', bundleVersion: 'v1', stars: 1, locale: 'hi', completedAt: '2026-10-30T13:30:00.000Z' } },
+      { name: 'the first story the next local day (still the 30th in UTC)', completion: { ...base, kind: 'story', activityId: 'sb.fx.topic-a', bundleVersion: 'v1', stars: 1, completedAt: '2026-10-30T19:00:00.000Z' } },
+    ];
+    const seen = new Set<string>();
+    const cases = steps.map((step) => {
+      const payload = activityCompletedPayload(step.completion);
+      const key = activityDedupeKey(payload, timeZone);
+      const accepted = !seen.has(key);
+      seen.add(key);
+      return { name: step.name, completion: step.completion, payload, expected: { accepted, code: accepted ? null : 'already_recorded', xp: accepted ? activityCompletedXp(payload.stars) : 0, dedupe_key: key } };
+    });
+    const acceptedEvents = cases.filter((c) => c.expected.accepted).map((c) => ({ type: 'activity_completed' as const, occurred_at: c.payload.completed_at }));
+    const days = [...activityByDay(acceptedEvents, timeZone)].map(([day, a]) => ({ day, lessons_completed: a.lessonsCompleted }));
+    golden('activity_completed', { version: 1, config: { xp_little_activity_star: DEFAULT_LITTLE_ACTIVITY_STAR_XP }, time_zone: timeZone, cases, days });
   });
 });

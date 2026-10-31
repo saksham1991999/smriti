@@ -87,12 +87,11 @@ export interface SyncEventPayloads {
   /** memory-labs §5.2. */
   comeback_plan_started: { days_away: number; cards: number };
   /**
-   * A little learner finished a story, song or play activity (contract v1.4, pending: built
-   * against the field list agreed with the backend until sync.md v1.4 lands). Counts and
-   * published content ids only.
+   * (v1.4) A little learner finished a story, song or play activity (lesson-core
+   * `ActivityCompletion`, see `activityCompletedPayload`). Ids and counts only, no free text.
    */
   activity_completed: {
-    kind: 'story' | 'song' | 'play';
+    kind: LittleActivityCompletionKind;
     activity_id: string;
     topic_id: string;
     concept_ids: string[];
@@ -100,10 +99,12 @@ export interface SyncEventPayloads {
     locale: Locale;
     stars: number;
     ms_total: number;
-    /** ISO 8601 (UTC), the same instant as the envelope's occurred_at. */
     completed_at: string;
   };
 }
+
+/** The activity kinds with a completion event (lesson-core `ActivityKind`). */
+export type LittleActivityCompletionKind = 'story' | 'song' | 'play';
 
 /** `cards_queued.source` on the wire (sync contract v1.1). */
 export type CardsQueuedSource = 'lesson' | 'practice' | 'comeback';
@@ -132,6 +133,7 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'rescue_completed',
   'cards_queued',
   'comeback_plan_started',
+  'activity_completed',
 ] as const satisfies readonly SyncEventType[];
 
 /**
@@ -246,7 +248,15 @@ export interface EntitlementSection {
   cancel_at_period_end?: boolean;
   is_intro?: boolean;
   source?: EntitlementSource | null;
+  /** (sync v1.4) Who manages the plan; absent from older servers (see `planManagedIn`). */
+  managed_in?: PlanManagedIn;
 }
+
+/**
+ * Where Manage plan goes (sync v1.4 `entitlement.managed_in`): this app's web checkout, a store,
+ * the parent who pays (PAY-17), the family plan's payer, or nothing to manage.
+ */
+export type PlanManagedIn = 'web' | 'play' | 'app_store' | 'parent' | 'family' | 'none';
 
 export interface SyncStateResponse {
   state_version: number;

@@ -29,6 +29,7 @@ from smriti_api.services import (
     billing,
     card_index,
     data_jobs,
+    doubt_photo,
     duels,
     exports,
     guardian,
@@ -155,6 +156,8 @@ async def tutor_retention(ctx: Ctx) -> int:
     count = await tutor.purge_old_messages_job(_deps(ctx))
     # Voice sessions and their stored transcripts share the tutor's retention.
     count += await voice.purge_job(_deps(ctx))
+    # Photo doubt: the photos and their recognised text, too (tutor-social §A10 step 8).
+    count += await doubt_photo.purge_job(_deps(ctx))
     if count:
         log.info("tutor_messages_purged", count=count)
     return count

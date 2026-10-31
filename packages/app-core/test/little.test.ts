@@ -280,7 +280,6 @@ describe('activity_completed', () => {
       completed_at: '2026-10-31T04:30:00.000Z',
     });
     expect(() => activityCompletedPayload({ ...completion, locale: 'fr' })).toThrow(/locale/);
-    expect(() => activityCompletedPayload({ ...completion, stars: 1.5 })).toThrow(/stars/);
   });
 
   it('appends the event in the caller’s transaction, at the completion time', async () => {

@@ -61,6 +61,8 @@ class KindSpec:
     # "email" kinds go to the account's sign-in address through the Mailer (me-money §6.7),
     # looked up at send time so the outbox never holds it.
     channel: Literal["push", "email"] = "push"
+    # The catalogue namespace the pool keys live in (most kinds use NTF-01 in me_money).
+    ns: str = NS
 
 
 KINDS: dict[str, KindSpec] = {
@@ -113,6 +115,14 @@ KINDS: dict[str, KindSpec] = {
     ),
     "parent_consent_needed": KindSpec(
         "parent", ("NTF-01.parent_consent_needed",), deep_link="/parent", ttl=timedelta(days=1)
+    ),
+    # AUTH-27 (auth §6.11): a guardian asked to link this teen; the push is the screen's question.
+    "guardian_link_request": KindSpec(
+        "transactional",
+        ("AUTH-27.title",),
+        deep_link="/guardian/link-requests/{request_id}",
+        ttl=timedelta(days=3),
+        ns="auth",
     ),
     # Predictive weak-area alert (TRD §9.6, me-money §6.3): adults only as a push; for minors
     # it is folded into the reminder on the device.
@@ -538,7 +548,7 @@ def render(
 ) -> tuple[str, str, str]:
     spec = KINDS[kind]
     values = {"brand": brand, "pet": ctx.pet_name or brand, **payload}
-    body = copy.text(NS, template, ctx.locale, **values)
+    body = copy.text(spec.ns, template, ctx.locale, **values)
     title = (ctx.pet_name or brand) if spec.title == "pet" else brand
     link = spec.deep_link.format(**{k: v for k, v in payload.items() if isinstance(v, str | int)})
     return title, body, link

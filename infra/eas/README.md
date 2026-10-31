@@ -1,45 +1,70 @@
 # EAS (mobile builds)
 
 `apps/mobile/eas.json` and `apps/mobile/app.config.ts` belong to the mobile app. This page describes
-how deploys use them and lists what they still lack. `.github/workflows/deploy-mobile.yml` runs
-`eas build --profile production-<variant> --platform all` for each variant on a `mobile-v*` tag,
-after CI has passed and the GitHub `production` environment's reviewers approve.
+how deploys use them. `.github/workflows/deploy-mobile.yml` runs
+`eas build --profile <profile>-<variant>` for each variant: `production-<variant>` on a `mobile-v*`
+tag after CI has passed and the GitHub `production` environment's reviewers approve, and
+`staging-<variant>` on a manual `staging` run. Submitting to the stores stays a separate step
+(`eas submit`).
 
-## What eas.json covers today
+## Profiles
 
-- Profiles `development`, `preview` and `production`, each in a per-variant form
-  (`<profile>-{all,jee,neet,upsc,ssc}`), which matches every file in `packages/config/variants/`.
-  Each sets `APP_VARIANT`.
-- Every variant has its own EAS Update channel (`preview-jee`, `production-jee`, and so on).
-- `production` uses `autoIncrement` with `appVersionSource: remote`. `node` and `pnpm` are pinned.
-- `runtimeVersion: { policy: 'appVersion' }` is in app.config.ts.
+| Profile | Distribution | EAS environment | Bundle ids | Channel |
+|---|---|---|---|---|
+| `development-<variant>` | internal, dev client | `development` | `app.smriti.<variant>.dev` | `development` |
+| `preview-<variant>` | internal | `preview` | `app.smriti.<variant>.preview` | `preview-<variant>` |
+| `staging-<variant>` | store (TestFlight, Play internal track) | `preview` | `app.smriti.<variant>` | `staging-<variant>` |
+| `production-<variant>` | store | `production` | `app.smriti.<variant>` | `production-<variant>` |
 
-## Gaps to close before the first store build (mobile owner)
+- `<variant>` is each file in `packages/config/variants/` (`all`, `jee`, `neet`, `upsc`, `ssc`).
+  Each profile sets `APP_VARIANT`; the bundle id comes from the variant file.
+- `staging` is the release candidate on the stores' internal tracks (TRD §17). It builds the same
+  app as production, with `EXPO_PUBLIC_APP_ENV=staging` and the `preview` EAS environment's values
+  (staging API, CDN and Supabase). Store builds use `autoIncrement` with `appVersionSource: remote`.
+- `environment` on every profile makes each build pull its `EXPO_PUBLIC_*` values from that EAS
+  environment (`eas env:create --environment preview|production`). The names are in
+  `apps/mobile/.env.example`.
+- Store builds set the App Attest entitlement
+  (`com.apple.developer.devicecheck.appattest-environment`) to `production`; the others use
+  `development`. Match `APP_ATTEST_ENVIRONMENT` in Railway.
+- App links: `ios.associatedDomains` (`applinks:<brand domain>`) and an auto-verified Android intent
+  filter come from the variant's deep link prefix (`packages/config/brand.json` plus the variant's
+  `deepLinkPath`). The site serves the matching `apple-app-site-association` and `assetlinks.json`
+  for the store bundle ids only, so preview and development builds open links in the browser.
 
-1. **No `updates.url`.** EAS Update needs `updates: { url: 'https://u.expo.dev/<EAS project id>' }`
-   in app.config.ts. Run `eas update:configure`, or derive it from `EAS_PROJECT_ID`. Without it,
-   the channels exist but builds never fetch updates.
-2. **No `environment` on the build profiles.** The `EXPO_PUBLIC_*` values (API, CDN, sims host, Supabase,
-   Google web client id, RevenueCat public keys) live in EAS environment variables
-   (`eas env:create --environment preview|production`). Add `"environment": "preview"` and
-   `"environment": "production"` to the profiles, so each build pulls the right set.
-3. **No `staging` profile.** TRD §17 names a staging environment, the release candidate on store
-   internal tracks. `preview` (internal distribution) can stand in, but it builds `.preview` bundle
-   ids, so the store's internal track gets a different app from production. Decide which, and add
-   `staging-<variant>` profiles if needed.
-4. **`submit.production` has no per-app identifiers.** Every variant is its own store app, so
-   submit needs one entry per variant, `submit.production-<variant>`, each with
-   `ios.ascAppId` and `android.serviceAccountKeyPath` (or the key stored with `eas credentials`).
-   Only the owner can create these apps.
-5. **No App Attest entitlement.** G-10 verifies App Attest on iOS
-   (`APP_ATTEST_ENVIRONMENT`), but `ios.entitlements` lacks
-   `com.apple.developer.devicecheck.appattest-environment`. Set it to `production` in production
-   builds and `development` otherwise.
-6. **`EAS_PROJECT_ID` is read from the build environment.** Set it as an EAS environment
-   variable, or as a GitHub secret passed in by the workflow, so `extra.eas.projectId` (push tokens)
-   is in every cloud build.
+## One EAS project per store app
 
-Each of the five variants is a separate store listing (bundle ids `app.smriti.<variant>`), so
-the owner creates five App Store Connect apps and five Play Console apps. R7 phases mean only
-the Phase 1 variants (`all`, `jee`, `neet`, `upsc`) need to ship first. The workflow's variant
-list is one input, so trim it there.
+Every variant is its own store listing, so each has its own EAS project. app.config.ts reads
+`EAS_PROJECT_ID_<VARIANT>` (for example `EAS_PROJECT_ID_JEE`), falling back to `EAS_PROJECT_ID`,
+and sets `extra.eas.projectId` (push tokens) and `updates.url` (`https://u.expo.dev/<id>`) from it.
+Set the id twice per project:
+
+- as the GitHub variable `EAS_PROJECT_ID_<VARIANT>`, which the workflow passes to the CLI;
+- as an EAS environment variable `EAS_PROJECT_ID_<VARIANT>` in that project's `preview` and
+  `production` environments, so the cloud build resolves the same config.
+
+`runtimeVersion: { policy: 'appVersion' }` decides which updates a build accepts. Publish an update
+with `eas update --channel production-<variant>` (or `staging-<variant>`).
+
+## Submit
+
+`submit.production-<variant>` and `submit.staging-<variant>` name each store app
+(`android.applicationId`, `ios.bundleIdentifier`). The credentials come from the environment, which
+EAS substitutes in these fields only:
+
+| Name | What |
+|---|---|
+| `ASC_API_KEY_PATH`, `ASC_API_KEY_ID`, `ASC_API_KEY_ISSUER_ID` | an App Store Connect API key (App Manager role); the path is an EAS file variable |
+| `GOOGLE_SERVICE_ACCOUNT_KEY_PATH` | a Play Console service account key with release permission; an EAS file variable |
+
+Android submits to the `internal` track. Promote to production in Play Console.
+
+## Still to do (owner)
+
+- **`ios.ascAppId`** for each app. EAS does not substitute variables in it, so once App Store
+  Connect has the apps, add `"ascAppId": "<id>"` to each `submit.production-<variant>.ios` entry.
+  Without it, `eas submit` looks the app up by bundle id, which needs an interactive login.
+- Create the App Store Connect and Play Console apps. R7 phases mean only the Phase 1 variants
+  (`all`, `jee`, `neet`, `upsc`) need to ship first; trim the workflow's variant input to match.
+- Sentry for mobile (TRD §3 and §13) is not wired yet: `EXPO_PUBLIC_SENTRY_DSN` is read but no SDK is
+  installed. When it lands, its source map upload belongs in the EAS build hooks.

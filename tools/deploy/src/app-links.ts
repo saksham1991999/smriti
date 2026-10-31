@@ -8,8 +8,9 @@
  *   certificate fingerprint (Play Console > App integrity > App signing). A package without one
  *   can't be verified, so it is left out and reported.
  *
- * Bundle ids follow apps/mobile/app.config.ts: production builds use the variant's id as is;
- * preview and staging builds add `.preview`.
+ * Every build associates with the brand domain, which the production site serves, so that file
+ * lists the store bundle ids (production and staging builds, apps/mobile/app.config.ts). The
+ * staging site lists the `.preview` builds' ids instead, for checking the files before a release.
  */
 
 export interface LinkVariant {

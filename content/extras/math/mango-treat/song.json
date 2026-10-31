@@ -1,0 +1,174 @@
+{
+  "schema": "song@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat (textbook pp.18-32), as read in the official NCERT CIET audiobook of the textbook",
+      "url": "https://ciet.ncert.gov.in/audio-book/118",
+      "retrieved": "2026-10-31",
+      "pages": "Chapter 3 track"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original chant. It counts up to nine by one more, in the order of the textbook story (pp.18-19), and then counts one to nine in order (pp.25-30). Each language version is written for that language; the Hindi rhymes in Hindi. Audio is requested from audio-maker and stays requested until a voice is chosen (TRD decision D3; skills/audio-maker/voices.json does not exist). Hindi written for this file in simple class 1 Hindi with तुम. The Hindi-medium book (Anandmay Ganit) could not be retrieved, so a reviewer should check the wording and the chapter title.",
+  "id": "sg.math.mango-treat",
+  "scope": "chapter",
+  "chapter": "math.mango-treat",
+  "title": {
+    "en": "One More Comes",
+    "hi": "एक और आया"
+  },
+  "concepts": [
+    "math.mango-treat.counting.core.one-more",
+    "math.mango-treat.numerals.core.numerals-one-to-nine"
+  ],
+  "style": "chant",
+  "minutes": 1,
+  "cover": "img.mango-treat.mango-one",
+  "actions": [
+    {
+      "id": "clap",
+      "cue": {
+        "en": "Clap!",
+        "hi": "ताली!"
+      },
+      "icon": "HandsClapping"
+    },
+    {
+      "id": "count",
+      "cue": {
+        "en": "Show your fingers!",
+        "hi": "उँगलियाँ दिखाओ!"
+      },
+      "icon": "HandPalm"
+    }
+  ],
+  "versions": [
+    {
+      "locale": "en",
+      "audio": "audio.mango-treat.song-en",
+      "lines": [
+        {
+          "text": "Plop! A mango on the ground,"
+        },
+        {
+          "text": "One little squirrel, look what she found! One!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a myna. Two!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a parrot. Three!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a sparrow. Four!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a crow. Five!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a pigeon. Six!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a koel. Seven!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a kingfisher. Eight!",
+          "action": "count"
+        },
+        {
+          "text": "One more comes, a peacock. Nine!",
+          "action": "count"
+        },
+        {
+          "text": "Count with me and clap with me:",
+          "action": "clap"
+        },
+        {
+          "text": "One, two, three, four, five,",
+          "action": "count"
+        },
+        {
+          "text": "Six, seven, eight and nine!",
+          "action": "count"
+        },
+        {
+          "text": "Nine good friends, and mangoes fine!",
+          "action": "clap"
+        }
+      ]
+    },
+    {
+      "locale": "hi",
+      "audio": "audio.mango-treat.song-hi",
+      "lines": [
+        {
+          "text": "टप! गिरा एक आम रसीला,"
+        },
+        {
+          "text": "एक गिलहरी ने उसे पाया। एक!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आई, मैना। दो!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आया, तोता। तीन!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आई, गौरैया। चार!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आया, कौआ। पाँच!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आया, कबूतर। छह!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आई, कोयल। सात!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आया, किलकिला। आठ!",
+          "action": "count"
+        },
+        {
+          "text": "एक और आया, मोर। नौ!",
+          "action": "count"
+        },
+        {
+          "text": "गिनो मेरे साथ, ताली बजाओ:",
+          "action": "clap"
+        },
+        {
+          "text": "एक, दो, तीन, चार, पाँच,",
+          "action": "count"
+        },
+        {
+          "text": "छह, सात, आठ और नौ!",
+          "action": "count"
+        },
+        {
+          "text": "नौ दोस्त और मीठे आम!",
+          "action": "clap"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

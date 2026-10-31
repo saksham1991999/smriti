@@ -88,6 +88,12 @@ describe("blanks and units", () => {
     expect(convertUnit(1, "rad/s", "m/s")).toBeUndefined();
   });
 
+  it("converts spring constants between N/cm and N/m", () => {
+    expect(convertUnit(2.5, "N/cm", "N/m")).toBeCloseTo(250);
+    expect(convertUnit(400, "N/m", "N/m")).toBeCloseTo(400);
+    expect(convertUnit(1, "N/m", "N")).toBeUndefined();
+  });
+
   it("treats momentum in kg m/s and impulse in N s as one dimension", () => {
     expect(convertUnit(3.6, "N s", "kg m/s")).toBeCloseTo(3.6);
     expect(convertUnit(0.08, "kg m/s", "N s")).toBeCloseTo(0.08);

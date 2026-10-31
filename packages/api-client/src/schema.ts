@@ -7275,6 +7275,8 @@ export interface components {
        * Format: uuid
        */
       blueprint_id: string;
+      /** Chapter Id */
+      chapter_id?: string | null;
       /** Duration Min */
       duration_min: number;
       /** Exam Profile Id */
@@ -7329,6 +7331,8 @@ export interface components {
       blueprint_id: string;
       /** Calculator */
       calculator: string;
+      /** Chapter Id */
+      chapter_id?: string | null;
       /** Duration Min */
       duration_min: number;
       /** Early Section Submit */

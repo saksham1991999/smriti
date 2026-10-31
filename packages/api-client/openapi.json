@@ -13891,7 +13891,11 @@
             "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
             "title": "In Progress Attempt Id"
           },
-          "ranked": { "type": "boolean", "title": "Ranked" }
+          "ranked": { "type": "boolean", "title": "Ranked" },
+          "chapter_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Chapter Id"
+          }
         },
         "type": "object",
         "required": [
@@ -13956,6 +13960,10 @@
             "title": "In Progress Attempt Id"
           },
           "ranked": { "type": "boolean", "title": "Ranked" },
+          "chapter_id": {
+            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "title": "Chapter Id"
+          },
           "mode": { "type": "string", "enum": ["cbt", "pen_paper"], "title": "Mode" },
           "languages": { "items": { "type": "string" }, "type": "array", "title": "Languages" },
           "language_switch": {

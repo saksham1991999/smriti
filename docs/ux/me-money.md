@@ -1495,8 +1495,14 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Move to own | Move {child} to their own Google account | {child} को उनके अपने Google अकाउंट पर ले जाएँ |
 | Delete child | Delete {child}'s account | {child} का अकाउंट हटाएँ |
 | Empty | Add your child to see their week here. | अपने बच्चे को जोड़ें, ताकि उनका हफ़्ता यहाँ दिखे। |
-| Allowed toast | {child} has 15 more minutes | {child} को 15 मिनट और मिल गए |
-| Declined toast | Told {child}: not today | {child} को बता दिया: आज नहीं |
+| Pro | Pro | Pro |
+| Your child | Your child | आपका बच्चा |
+| Allowed toast | {child} has 15 more minutes | {child} के पास 15 मिनट और हैं |
+| Declined toast | Okay. {child} will see your answer. | ठीक है। {child} को आपका जवाब दिख जाएगा। |
+| Decision failed | That didn't go through. Try again. | यह नहीं हो पाया। फिर कोशिश करें। |
+| Not linked | This child isn't linked to your account. | यह बच्चा आपके अकाउंट से जुड़ा नहीं है। |
+| Back parent | Back to Parent mode | पेरेंट मोड पर वापस |
+| Offline | You're offline. Changes need internet. | आप ऑफ़लाइन हैं। बदलाव के लिए इंटरनेट चाहिए। |
 | Updated | Updated {time} | {time} पर अपडेट हुआ |
 | Chart a11y | Most on {day}, {n} minutes | सबसे ज़्यादा {day} को, {n} मिनट |
 | Chart empty a11y | No study minutes this week yet | इस हफ़्ते अभी पढ़ाई के मिनट नहीं |
@@ -1542,6 +1548,15 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Cheer | Send a cheer | शाबाशी भेजें |
 | Cheer sent | Cheer sent to {child} | {child} को शाबाशी भेजी |
 | Privacy line | Chats, notes and anything {child} types stay private. | चैट, नोट्स और {child} का लिखा सब कुछ निजी रहता है। |
+| Chart summary | Most on {day}: {n} minutes | सबसे ज़्यादा {day} को: {n} मिनट |
+| Quiet chart | No study this week. | इस हफ़्ते पढ़ाई नहीं हुई। |
+| Previous week | Previous week | पिछला हफ़्ता |
+| Next week | Next week | अगला हफ़्ता |
+| Show table | Show as a table | टेबल में दिखाएँ |
+| Show chart | Show as a chart | चार्ट में दिखाएँ |
+| Day col | Day | दिन |
+| Mock score | {score} of {max} | {max} में से {score} |
+| Mock percentile | {p} percentile | {p} पर्सेंटाइल |
 
 **Illustration slots:** a small pet portrait of the child's pet in the matching mood; no other art.
 **States:** quiet week (no study: tiles show 0 and the gentle line, no red), first week (partial), offline (cached), dark.
@@ -1575,6 +1590,10 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Note | A lesson card or mock section in progress always finishes first. | चल रहा पाठ कार्ड या मॉक सेक्शन हमेशा पहले पूरा होता है। |
 | Save | Save | सेव करें |
 | Saved | Saved. {child}'s phone updates next time it's online. | सेव हो गया। {child} का फ़ोन अगली बार ऑनलाइन होने पर अपडेट होगा। |
+| Minutes | {n, plural, one {# minute} other {# minutes}} | {n} मिनट |
+| Hours invalid | Pick a start time before the end time. | ख़त्म होने के समय से पहले का शुरुआती समय चुनें। |
+| More | More for {child} | {child} के लिए और |
+| Save failed | Couldn't save. Try again. | सेव नहीं हो पाया। फिर कोशिश करें। |
 | Saved here | Saved. It applies on this phone now. | सेव हो गया। इस फ़ोन पर अभी से लागू। |
 | Chip minutes a11y | {n} minutes | {n} मिनट |
 | Offline | Saving needs internet. | सेव करने के लिए इंटरनेट चाहिए। |
@@ -1610,6 +1629,23 @@ These are used below and should be added to `DESIGN.md` §5 and built in `ui-nat
 | Effect photo | {child} can send photos of questions. Photos are deleted after the answer. | {child} सवालों की फ़ोटो भेज सकते हैं। जवाब के बाद फ़ोटो हटा दी जाती है। |
 | Export child | Request a copy of {child}'s data | {child} के डेटा की कॉपी मँगाएँ |
 | Delete child | Delete {child}'s account | {child} का अकाउंट हटाएँ |
+| Scope account | Saved account | सेव किया अकाउंट |
+| Scope social | Friends and leagues | दोस्त और लीग |
+| Scope community | Sharing decks and community tips | डेक शेयर करना और कम्युनिटी टिप |
+| Scope voice | Voice tutor | वॉइस ट्यूटर |
+| Scope uploads | Photo doubts | फ़ोटो डाउट |
+| Effect account | {child}'s progress is saved to their account. | {child} की प्रगति उनके अकाउंट में सेव रहती है। |
+| Allow in app | To allow this, open Parent mode in the app. | इसकी अनुमति देने के लिए ऐप में पेरेंट मोड खोलें। |
+| Off title | Turn off {scope}? | {scope} बंद करें? |
+| Off body | {child} loses this right away. You can allow it again later. | {child} के लिए यह तुरंत बंद हो जाएगा। बाद में आप फिर अनुमति दे सकते हैं। |
+| Cancel | Cancel | रद्द करें |
+| Turned off | Turned off. | बंद कर दिया। |
+| Friends empty | {child} hasn't added any friends yet. | {child} ने अभी कोई दोस्त नहीं जोड़ा है। |
+| Friend since | Friends since {date} | {date} से दोस्त |
+| A friend | A friend | एक दोस्त |
+| Remove title | Remove {name}? | {name} को हटाएँ? |
+| Remove body | They won't be {child}'s friend any more. | वे अब {child} के दोस्त नहीं रहेंगे। |
+| Removed | Removed. | हटा दिया। |
 
 The "Audio isn't stored" and "Photos are deleted after the answer" lines must match the final retention policy (TRD §14 lists tutor transcripts at 180 days; audio and photo retention isn't set). Legal confirms before these ship.
 

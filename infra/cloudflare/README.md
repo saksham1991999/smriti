@@ -34,6 +34,26 @@ environment (logic and tests in `tools/deploy/src/headers.ts`):
   computed from the built HTML. Images may come from `CDN_BASE_URL`, and connections may go to
   `SITE_ANALYTICS_ENDPOINT`. `/_astro/*` is immutable, and HTML is `max-age=0, must-revalidate`.
 
+- **Site `/.well-known/apple-app-site-association` and `/.well-known/assetlinks.json`:**
+  `application/json`, `max-age=3600`.
+
+## App link files (site)
+
+`node tools/deploy/src/app-links-cli.ts apps/site/dist` writes the two files that let the store
+apps open `https://<domain>/...` links (logic and tests in `tools/deploy/src/app-links.ts`). They
+list every variant in `packages/config` with its bundle id and its `deepLinkPath`, exam apps before
+the all-exams app, so a `/jee` link opens the JEE app when both are installed. The Apple team id is
+`APPLE_TEAM_ID`, and `ANDROID_APP_LINK_CERTS` gives each package's signing certificate SHA-256
+fingerprints (`jee=AA:BB:...|CC:DD:...,neet=...`). A variant with no fingerprint is left out of
+`assetlinks.json`. deploy-web.yml runs it in the site job.
+
+## Source maps (web)
+
+The web build makes hidden source maps (`sourcemap: "hidden"`: no `sourceMappingURL` comment). When
+`SENTRY_AUTH_TOKEN`, `SENTRY_ORG` and `SENTRY_PROJECT_WEB` are set, deploy-web.yml uploads them to
+Sentry for the release (`VITE_RELEASE`, the commit sha). It then deletes every `.map` file from
+`apps/web/dist` and fails if any file still points at one, so no source map is ever deployed.
+
 Google Identity Services and Turnstile are not in the web CSP yet, because `apps/web` doesn't load
 them today. Add their hosts in `tools/deploy/src/headers.ts` in the same change that adds the
 scripts (`accounts.google.com/gsi/client`, `challenges.cloudflare.com`).

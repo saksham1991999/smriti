@@ -49,6 +49,8 @@ COPY --from=build /app /app
 # the release step applies (python -m smriti_api.migrate).
 COPY packages/config/flag-defaults.json packages/config/flag-defaults.json
 COPY packages/config/variants packages/config/variants
+COPY packages/config/brand.json packages/config/brand.json
+COPY packages/analytics/catalogue.json packages/analytics/catalogue.json
 COPY packages/i18n/src/locales packages/i18n/src/locales
 COPY supabase/migrations supabase/migrations
 COPY supabase/seed.sql supabase/seed.sql
@@ -58,5 +60,7 @@ EXPOSE 8000
 # Liveness only. Railway gates each deploy on /readyz (database and Redis), see api.railway.json.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
   CMD ["python", "-c", "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:%s/healthz' % os.environ.get('PORT', '8000'), timeout=4)"]
-# Shell form only to expand PORT and WEB_CONCURRENCY; exec hands PID 1 to uvicorn for signals.
-CMD ["sh", "-c", "exec uvicorn smriti_api.main:app --host 0.0.0.0 --port \"${PORT}\" --workers \"${WEB_CONCURRENCY}\" --proxy-headers --forwarded-allow-ips '*' --no-server-header --timeout-graceful-shutdown 20"]
+# Gunicorn with Uvicorn workers (TRD §5, smriti_api/server.py). Gunicorn itself binds 0.0.0.0:$PORT
+# and starts $WEB_CONCURRENCY workers. --timeout kills a worker whose event loop stops checking in;
+# --graceful-timeout fits inside Railway's drainingSeconds (25) in api.railway.json.
+CMD ["gunicorn", "smriti_api.main:app", "--worker-class", "smriti_api.server.Worker", "--forwarded-allow-ips=*", "--keep-alive", "5", "--timeout", "30", "--graceful-timeout", "20"]

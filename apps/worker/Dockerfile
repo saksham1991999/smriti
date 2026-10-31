@@ -53,6 +53,8 @@ COPY --from=build /app /app
 # the card index read. Content changes reach the worker with its next deploy.
 COPY packages/config/flag-defaults.json packages/config/flag-defaults.json
 COPY packages/config/variants packages/config/variants
+COPY packages/config/brand.json packages/config/brand.json
+COPY packages/analytics/catalogue.json packages/analytics/catalogue.json
 COPY packages/i18n/src/locales packages/i18n/src/locales
 COPY content content
 

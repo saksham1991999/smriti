@@ -40,9 +40,21 @@ async def list_mocks(services: Services, auth: CurrentUser, exam: Exam = None) -
     summary="Start a custom weak-area mock (Pro) or a timed chapter mock",
 )
 async def generate_mock(
-    body: m.GenerateMock, services: Services, auth: CurrentUser, client: Client
-) -> m.Attempt:
-    return await mocks.generate(services.db, auth, body, client.device_id)
+    body: m.GenerateMock,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope="mock_generate",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        status=201,
+        fn=lambda: mocks.generate(services.db, auth, body, client.device_id),
+    )
 
 
 @router.get(
@@ -59,9 +71,22 @@ async def get_mock(mock_id: MockId, services: Services, auth: CurrentUser) -> m.
     summary="Begin a mock: the timer starts and the paper is pinned",
 )
 async def start_attempt(
-    mock_id: MockId, body: m.AttemptCreate, services: Services, auth: CurrentUser, client: Client
-) -> m.Attempt:
-    return await mocks.start(services.db, auth, mock_id, body, client.device_id)
+    mock_id: MockId,
+    body: m.AttemptCreate,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_start:{mock_id}",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        status=201,
+        fn=lambda: mocks.start(services.db, auth, mock_id, body, client.device_id),
+    )
 
 
 @router.get("/attempts", response_model=list[m.AttemptSummary], summary="Past attempts (MOCK-25)")
@@ -91,9 +116,21 @@ async def get_attempt(
     summary="Autosave changed answers; the newest client_updated_at wins",
 )
 async def save_answers(
-    attempt_id: AttemptId, body: m.AnswersPut, services: Services, auth: CurrentUser, client: Client
-) -> m.SaveResult:
-    return await mocks.save_answers(services.db, auth, attempt_id, body, client.device_id)
+    attempt_id: AttemptId,
+    body: m.AnswersPut,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_answers:{attempt_id}",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        fn=lambda: mocks.save_answers(services.db, auth, attempt_id, body, client.device_id),
+    )
 
 
 @router.post(
@@ -102,16 +139,39 @@ async def save_answers(
     summary="Pause the timer (practice time policy only)",
 )
 async def pause_attempt(
-    attempt_id: AttemptId, body: PauseIn, services: Services, auth: CurrentUser, client: Client
-) -> m.Attempt:
-    return await mocks.pause(services.db, auth, attempt_id, body.at, client.device_id)
+    attempt_id: AttemptId,
+    body: PauseIn,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_pause:{attempt_id}",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        fn=lambda: mocks.pause(services.db, auth, attempt_id, body.at, client.device_id),
+    )
 
 
 @router.post("/attempts/{attempt_id}/resume", response_model=m.Attempt, summary="Resume (MOCK-14)")
 async def resume_attempt(
-    attempt_id: AttemptId, services: Services, auth: CurrentUser, client: Client
-) -> m.Attempt:
-    return await mocks.resume(services.db, auth, attempt_id, client.device_id)
+    attempt_id: AttemptId,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_resume:{attempt_id}",
+        subject=auth.user_id,
+        key=key,
+        body=None,
+        fn=lambda: mocks.resume(services.db, auth, attempt_id, client.device_id),
+    )
 
 
 @router.post(
@@ -120,9 +180,20 @@ async def resume_attempt(
     summary="Continue the attempt on this device",
 )
 async def takeover_attempt(
-    attempt_id: AttemptId, services: Services, auth: CurrentUser, client: Client
-) -> m.Attempt:
-    return await mocks.takeover(services.db, auth, attempt_id, client.device_id)
+    attempt_id: AttemptId,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_takeover:{attempt_id}",
+        subject=auth.user_id,
+        key=key,
+        body=None,
+        fn=lambda: mocks.takeover(services.db, auth, attempt_id, client.device_id),
+    )
 
 
 @router.post(
@@ -136,8 +207,18 @@ async def submit_section(
     services: Services,
     auth: CurrentUser,
     client: Client,
-) -> m.Attempt:
-    return await mocks.submit_section(services.db, auth, attempt_id, section_code, client.device_id)
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_section:{attempt_id}:{section_code}",
+        subject=auth.user_id,
+        key=key,
+        body=None,
+        fn=lambda: mocks.submit_section(
+            services.db, auth, attempt_id, section_code, client.device_id
+        ),
+    )
 
 
 @router.post(
@@ -146,9 +227,20 @@ async def submit_section(
     summary="Leave the mock and discard it (MOCK-15)",
 )
 async def abandon_attempt(
-    attempt_id: AttemptId, services: Services, auth: CurrentUser, client: Client
-) -> m.Attempt:
-    return await mocks.abandon(services.db, auth, attempt_id, client.device_id)
+    attempt_id: AttemptId,
+    services: Services,
+    auth: CurrentUser,
+    client: Client,
+    key: IdempotencyKey,
+) -> JSONResponse:
+    return await idempotent(
+        services,
+        scope=f"mock_abandon:{attempt_id}",
+        subject=auth.user_id,
+        key=key,
+        body=None,
+        fn=lambda: mocks.abandon(services.db, auth, attempt_id, client.device_id),
+    )
 
 
 @router.post(

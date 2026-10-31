@@ -1,5 +1,5 @@
 import { unwrap, type Schemas } from '@smriti/api-client';
-import { localize } from '@smriti/content-schema';
+import { localize } from '@smriti/content-schema/runtime';
 import type { Answer, AnyQuestion } from '@smriti/lesson-core';
 import type { MockPaletteState } from '@smriti/tokens';
 

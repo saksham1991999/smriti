@@ -23,6 +23,7 @@ from smriti_api.core.auth import AuthContext
 from smriti_api.core.db import Database
 from smriti_api.core.errors import ApiError
 from smriti_api.core.logging import hash_user_id
+from smriti_api.integrations.apple_signin import AppleRevokeError, AppleSignIn
 from smriti_api.services import flags as flag_service
 from smriti_api.services.errors import DomainError
 from smriti_api.services.gamify import GameRules
@@ -673,6 +674,38 @@ async def merge_guest_job(deps: JobDeps, merge_id: str) -> dict[str, Any]:
 
 
 # --- deletion ---------------------------------------------------------------------------------
+
+
+async def revoke_apple_signin(
+    apple: AppleSignIn | None, user_id: uuid.UUID, code: str, client_id: str | None
+) -> bool:
+    """Deletion step 5 (auth flow §6.8): exchange the fresh Sign in with Apple code and revoke
+    the tokens. A code Apple rejects stops the deletion, so the client asks for Apple again
+    (a code lives five minutes and works once). An Apple outage or a missing configuration
+    doesn't block the user's deletion: it is logged and the deletion goes ahead."""
+    if apple is None:
+        log.error("apple_revoke_failed", user=hash_user_id(user_id), reason="not_built")
+        return False
+    if client_id is None:
+        if len(apple.client_ids) != 1:
+            raise ApiError(
+                422, "apple_client_required", "Say which app the Apple sign-in came from"
+            )
+        client_id = apple.client_ids[0]
+    try:
+        await apple.revoke_authorization_code(code, client_id)
+    except AppleRevokeError as exc:
+        if exc.code in ("apple_code_invalid", "apple_client_unknown"):
+            raise ApiError(
+                401,
+                "apple_reauth_required",
+                "Sign in with Apple again to confirm",
+                reason="delete_account",
+            ) from exc
+        log.error("apple_revoke_failed", user=hash_user_id(user_id), reason=exc.code)
+        return False
+    log.info("apple_tokens_revoked", user=hash_user_id(user_id))
+    return True
 
 
 async def request_deletion(

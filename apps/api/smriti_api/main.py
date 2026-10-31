@@ -17,6 +17,7 @@ from smriti_api.core.auth import JwtVerifier
 from smriti_api.core.config import JobsMode, Settings, get_settings
 from smriti_api.core.db import Database
 from smriti_api.core.deps import AppServices
+from smriti_api.core.error_reporting import configure_error_reporting
 from smriti_api.core.errors import install_error_handlers
 from smriti_api.core.idempotency import IdempotencyStore
 from smriti_api.core.logging import configure_logging
@@ -28,6 +29,7 @@ from smriti_api.integrations.analytics_store import build_analytics_store
 from smriti_api.integrations.realtime import build_realtime
 from smriti_api.integrations.settings import get_integration_settings
 from smriti_api.routes import accounts, catalog, config, dev_auth, game, health, me, sync
+from smriti_api.routes import analytics as analytics_routes
 from smriti_api.routes import billing as billing_routes
 from smriti_api.routes import duels as duel_routes
 from smriti_api.routes import exports as exports_routes
@@ -38,9 +40,11 @@ from smriti_api.routes import leagues as league_routes
 from smriti_api.routes import live as live_routes
 from smriti_api.routes import mocks as mock_routes
 from smriti_api.routes import notify as notify_routes
+from smriti_api.routes import palaces as palace_routes
 from smriti_api.routes import parent_mode as parent_routes
 from smriti_api.routes import practice as practice_routes
 from smriti_api.routes import reviews as reviews_routes
+from smriti_api.routes import roleplay as roleplay_routes
 from smriti_api.routes import shared_decks as shared_deck_routes
 from smriti_api.routes import social as social_routes
 from smriti_api.routes import tutor as tutor_routes
@@ -127,6 +131,12 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     settings = settings or get_settings()
     configure_logging(settings.log_level, settings.log_hash_salt)
     configure_tracing(settings.otel_service_name, settings.otel_exporter_otlp_endpoint)
+    configure_error_reporting(
+        dsn=settings.sentry_dsn,
+        environment=settings.app_env.value,
+        release=settings.sentry_release or f"smriti-api@{API_VERSION}",
+        service=settings.otel_service_name,
+    )
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -163,6 +173,11 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
             "X-Platform",
             "X-App-Version",
             "X-Request-Id",
+            # Trace context from the web app's Sentry SDK (TRD §13: one trace from app to API).
+            "traceparent",
+            "tracestate",
+            "baggage",
+            "sentry-trace",
         ],
         expose_headers=["Retry-After", "X-Request-Id"],
         max_age=600,
@@ -217,6 +232,9 @@ def create_app(settings: Settings | None = None, services: AppServices | None = 
     app.include_router(insights_routes.router)
     app.include_router(integrity_routes.router)
     app.include_router(live_routes.router)
+    app.include_router(palace_routes.router)
+    app.include_router(analytics_routes.router)
+    app.include_router(roleplay_routes.router)
     # Wave 2 (Agent B): the Phase 2 social backend.
     for router in (
         social_routes.router,

@@ -9,7 +9,9 @@ import {
   FLAG_REGISTRY,
   VARIANT_IDS,
   allVariants,
+  brand,
   compareVersions,
+  deepLinkPrefix,
   createFlags,
   defaultFlags,
   findLeakedSecrets,
@@ -23,6 +25,25 @@ import {
 
 const DOCS_DIR = process.env['SMRITI_DOCS_DIR'] ?? resolve(__dirname, '../../../docs');
 const TOKENS = resolve(__dirname, '../../tokens/tokens.json');
+
+describe('brand domain and app links', () => {
+  it('derives every deep link prefix from the one brand domain', () => {
+    const { domain } = brand();
+    expect(domain).toMatch(/^[a-z0-9-]+(\.[a-z0-9-]+)+$/);
+    const all = allVariants();
+    expect(all.all.deepLinkPrefix).toBe(`https://${domain}`);
+    expect(all.jee.deepLinkPrefix).toBe(`https://${domain}/jee`);
+    expect(getVariant('neet').deepLinkPrefix).toBe(`https://${domain}/neet`);
+    expect(deepLinkPrefix('/upsc', 'example.org')).toBe('https://example.org/upsc');
+  });
+
+  it('keeps the domain out of the variant files', () => {
+    for (const id of VARIANT_IDS) {
+      const raw = readFileSync(resolve(__dirname, `../variants/${id}.json`), 'utf8');
+      expect(raw).not.toContain(brand().domain);
+    }
+  });
+});
 
 describe('variants', () => {
   it('has one valid file per variant id', () => {

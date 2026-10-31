@@ -24,6 +24,11 @@ export interface QuestionViewProps {
   /** Reveal right and wrong after the answer is final. */
   reveal: "none" | "right" | "final";
   struck: string[];
+  /**
+   * The little learner guided finish (lesson-core `shownOptionIds`): these options show as the
+   * answer and only they can be tapped; a tap hands back all of them as the draft.
+   */
+  shown?: string[];
 }
 
 /** Can [Check] be pressed with this draft? */
@@ -177,11 +182,14 @@ function Options({
   locked,
   reveal,
   struck,
+  shown,
 }: QuestionViewProps & { options: { id: string; text: string }[]; multiple: boolean; correct: string[] }) {
   const { t } = usePlayer();
   const chosen = draft?.kind === "options" ? draft.optionIds : [];
+  const blocked = (id: string) => locked || struck.includes(id) || (!!shown && !shown.includes(id));
   const toggle = (id: string) => {
-    if (locked || struck.includes(id)) return;
+    if (blocked(id)) return;
+    if (shown) return onDraft({ kind: "options", optionIds: [...shown] });
     const next = multiple ? (chosen.includes(id) ? chosen.filter((x) => x !== id) : [...chosen, id]) : [id];
     onDraft({ kind: "options", optionIds: next });
   };
@@ -193,6 +201,7 @@ function Options({
         if (struck.includes(o.id)) state = "wrong";
         if (reveal === "right" && isChosen) state = "correct";
         if (reveal === "final") state = correct.includes(o.id) ? "correct" : isChosen ? "wrong" : "idle";
+        if (shown?.includes(o.id)) state = "correct";
         return (
           <OptionCard
             key={o.id}
@@ -200,7 +209,7 @@ function Options({
             keyLabel={KEYS[i]}
             multiple={multiple}
             state={state}
-            disabled={locked || struck.includes(o.id)}
+            disabled={blocked(o.id)}
             onPress={() => toggle(o.id)}
             testID={`option-${o.id}`}
           />

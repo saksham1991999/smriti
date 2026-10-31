@@ -9,6 +9,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
+    "./runtime": "./src/runtime.ts",
     "./check": "./src/check/index.ts",
     "./schemas/*": "./schemas/*"
   },
@@ -22,6 +23,7 @@
     "test:python": "uv run --project python --group dev pytest -q python/tests"
   },
   "dependencies": {
+    "@smriti/tokens": "workspace:*",
     "ajv": "8.20.0",
     "ajv-formats": "3.0.1"
   },

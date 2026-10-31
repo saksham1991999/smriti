@@ -796,6 +796,7 @@ Not used for: "Make it stick" (MEM-19 has its own gate, `memory_lock`), PDF expo
 | Mock line | Exam conditions, with a report at the end. | परीक्षा जैसा माहौल, अंत में रिपोर्ट के साथ। |
 | Buttons | Start test out · Set up practice · See mock | टेस्ट आउट शुरू करें · अभ्यास सेट करें · मॉक देखें |
 | No questions | This chapter doesn't have enough questions to test out yet. | इस अध्याय में टेस्ट आउट के लिए अभी पर्याप्त सवाल नहीं हैं। |
+| Free chip | Free | फ़्री |
 
 **Illustration slots:** none.
 
@@ -1143,6 +1144,13 @@ Not used for: "Make it stick" (MEM-19 has its own gate, `memory_lock`), PDF expo
 | Waiting | Waiting for Wi-Fi | Wi-Fi का इंतज़ार |
 | Paused | Download paused. We'll resume on Wi-Fi. | डाउनलोड रुका है। Wi-Fi मिलते ही फिर चलेगा। |
 | No space | Not enough space. Free up {size} MB. | जगह कम है। {size} MB खाली करें। |
+| Remove | Remove download | डाउनलोड हटाएँ |
+| Removed toast | Download removed. Lessons you open stay for a while. | डाउनलोड हटा दिया। जो पाठ आप खोलेंगे, वे कुछ समय तक रहेंगे। |
+| Downloaded chip | Downloaded | डाउनलोड हो गया |
+| Built in | Already on this device | पहले से इस डिवाइस पर है |
+| Failed | Couldn't download. Try again. | डाउनलोड नहीं हो सका। फिर से कोशिश करें। |
+| Offline | Needs internet | इंटरनेट चाहिए |
+| Language names | English · हिन्दी | English · हिन्दी |
 
 **Illustration slots:** none.
 
@@ -1536,8 +1544,9 @@ Shared: `prompt` at the top in `heading`, the widget, then feedback inline (the 
 | Check mode next | Next | अगला |
 | Little learner correct (तुम) | Yay! You did it! | वाह! तुमने कर दिखाया! |
 | Little learner wrong (तुम) | Let's try again together! | चलो, साथ में फिर से कोशिश करें! |
+| Little learner shown answer (तुम) | Here is the answer. Tap it! | यह रहा जवाब। इस पर टैप करो! |
 
-`{n}` is `learn.combo_streak_len` (5 per A19).
+`{n}` is `learn.combo_streak_len` (5 per A19). The "shown answer" row is proposed (R59): the guided finish, where the shown answer is marked correct (the option's own correct state, so screen readers hear "correct") and the child taps it.
 
 **Illustration slots:** none (the pet avatar in the Pet line; maths as KaTeX SVG; question media stays above).
 
@@ -1988,6 +1997,11 @@ The placement chip matches the string onboarding defined for ONB-13 ("छोट�
 | Test out buttons | Continue · Start {topic_title} | आगे बढ़ें · {topic_title} शुरू करें |
 | Score | {correct} of {total} right | {total} में से {correct} सही |
 | Undo | Undo this | इसे वापस लें |
+| Undo title | Undo this check? | यह टेस्ट वापस लें? |
+| Undo body | Only the topics this check marked learned go back to how they were. | सिर्फ़ वही टॉपिक पहले जैसे होंगे जिन्हें इस टेस्ट ने "सीख लिया" मार्क किया था। |
+| Undo keep | Keep the marks | मार्क रहने दें |
+| Pet proud alt | {pet_name} looks proud | {pet_name} गर्व से खुश है |
+| Pet curious alt | {pet_name} is curious | {pet_name} उत्सुक है |
 
 **Illustration slots:** `pet-cat` / `pet-dog` via Rive, 1:1, 96, `proud` or `curious` pose, alt "{pet_name} looks proud" / "{pet_name} is curious".
 

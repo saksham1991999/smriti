@@ -85,12 +85,16 @@ class Settings(BaseSettings):
     otel_service_name: str = "smriti-api"
     log_level: str = "INFO"
     log_hash_salt: str = ""
+    # Sentry error reporting; off when empty. The release defaults to the package version.
+    sentry_dsn: str = ""
+    sentry_release: str = ""
 
     # Rate limits (requests per window)
     rate_sync_per_min: int = 60
     rate_dev_auth_per_min: int = 60
     rate_merges_per_day: int = 5
     rate_default_per_min: int = 300
+    rate_analytics_per_min: int = 60
 
     @property
     def is_dev(self) -> bool:

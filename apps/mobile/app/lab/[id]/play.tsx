@@ -3,12 +3,13 @@ import { Banner, Button, Card, Chip, Dialog, Icon, IconButton, Illustration, Pro
 import { useQueryClient } from '@tanstack/react-query';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AppState, Pressable, StyleSheet, View } from 'react-native';
+import { AppState, BackHandler, Platform, Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { LABS, labAspect, labIllustration, type LabEntry } from '../../../src/content/labs';
 import { useApp, useT, useUiState } from '../../../src/services/context';
 import { clock } from '../../../src/services/drill';
-import { formatReading, megabytes, nextLab, saveLabProgress, simCache, type SimLocation } from '../../../src/services/labs';
+import { formatReading, labLessonText, megabytes, nextLab, saveLabProgress, simCache, type SimLocation } from '../../../src/services/labs';
 import { useHaptics } from '../../../src/ui/hooks';
 import { BuddyLine } from '../../../src/ui/Onboarding';
 import { Screen } from '../../../src/ui/Screen';
@@ -18,6 +19,10 @@ type Phase = 'preparing' | 'loading' | 'running' | 'slow' | 'complete' | 'fallba
 type FallbackReason = 'offline' | 'failed';
 
 const MIN_SIM_HEIGHT = 320;
+/** LAB-04 full screen: the side panel's width, and the width below which it starts collapsed. */
+const PANEL_WIDTH = 280;
+const PANEL_TAB = 48;
+const WIDE = 600;
 const MAX_SIM_HEIGHT = 2000;
 
 /**
@@ -58,6 +63,11 @@ export default function LabPlayer() {
   const [paused, setPaused] = useState(false);
   /** The sim's content height from its `resize` messages: the viewport grows and the screen scrolls. */
   const [simHeight, setSimHeight] = useState<number | null>(null);
+  /** LAB-04 [Expand]: the viewport fills the screen and tasks move to a side panel. Same WebView, state kept. */
+  const [full, setFull] = useState(false);
+  const window = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  const [panelOpen, setPanelOpen] = useState(window.width >= WIDE);
   const session = useRef<HostSession | null>(null);
   const crashes = useRef(0);
   const startedAt = useRef(app.now());
@@ -173,6 +183,16 @@ export default function LabPlayer() {
     [],
   );
 
+  // Android back leaves full screen before it leaves the lab.
+  useEffect(() => {
+    if (!full || Platform.OS === 'web') return;
+    const sub = BackHandler.addEventListener('hardwareBackPress', () => {
+      setFull(false);
+      return true;
+    });
+    return () => sub.remove();
+  }, [full]);
+
   // Locale and theme changes reach a running sim without a reload.
   const dark = ui.mode === 'dark';
   useEffect(() => {
@@ -241,163 +261,202 @@ export default function LabPlayer() {
   );
 
   const simLabel = lab.title[locale];
+  const toggleFull = () => {
+    const on = !full;
+    setFull(on);
+    if (on) setPanelOpen(window.width >= WIDE);
+    app.track('sim_expanded', { sim_id: lab.id, orientation: window.width > window.height ? 'landscape' : 'portrait', on });
+  };
+  // Full screen: the stage fills the window below the safe area (the Screen's padding is 12 + 24).
+  const stageHeight = Math.max(MIN_SIM_HEIGHT, window.height - insets.top - Math.max(insets.bottom, 16) - 36);
+  const viewportStyle = full
+    ? [styles.viewportFull, { backgroundColor: theme.colors.surfaceSunken, borderRadius: theme.radius.card }]
+    : [styles.viewport, simHeight && running ? { height: simHeight } : { aspectRatio: labAspect(lab) }, { backgroundColor: theme.colors.surfaceSunken, borderRadius: theme.radius.card }];
 
   return (
-    <Screen testID="LAB-04" footer={primary}>
-      <View style={styles.top}>
-        <IconButton icon="X" label={t('ui:common.close')} onPress={back} testID="lab-close" />
-        <Text variant="heading" heading numberOfLines={1} style={styles.grow}>
-          {simLabel}
-        </Text>
-        <IconButton icon="DotsThreeVertical" label={t('ui:common.moreOptions')} onPress={() => setMenu(true)} testID="lab-menu" />
-      </View>
+    <Screen testID="LAB-04" footer={full ? undefined : primary}>
+      {full ? null : (
+        <View style={styles.top}>
+          <IconButton icon="X" label={t('ui:common.close')} onPress={back} testID="lab-close" />
+          <Text variant="heading" heading numberOfLines={1} style={styles.grow}>
+            {simLabel}
+          </Text>
+          <IconButton icon="DotsThreeVertical" label={t('ui:common.moreOptions')} onPress={() => setMenu(true)} testID="lab-menu" />
+        </View>
+      )}
 
-      <View style={[styles.viewport, simHeight && running ? { height: simHeight } : { aspectRatio: labAspect(lab) }, { backgroundColor: theme.colors.surfaceSunken, borderRadius: theme.radius.card }]} accessibilityLabel={simLabel} testID="lab-viewport">
-        {location ? (
-          <SimView
-            key={`${location.indexUrl}#${mount}`}
-            lab={lab}
-            location={location}
-            init={{ locale, theme: dark ? 'dark' : 'light', reducedMotion: ui.reducedMotion, lowPower, params: {}, tasks: lab.taskSpecs, ...(lab.taskSpecs[current] ? { activeTaskId: lab.taskSpecs[current]!.id } : {}) }}
-            readyTimeoutMs={lowPower ? app.flags.get('sim.ready_timeout_ms_low') : app.flags.get('sim.ready_timeout_ms')}
-            maxStateHz={app.flags.get('sim.max_state_hz')}
-            maxErrors={app.flags.get('sim.max_errors')}
-            label={simLabel}
-            onHost={onHost}
-            onEvent={onEvent}
-            testID="lab-sim"
-          />
-        ) : null}
-        {phase === 'preparing' || phase === 'loading' || phase === 'slow' ? (
-          <View style={[StyleSheet.absoluteFill, styles.loading, { backgroundColor: theme.colors.surfaceSunken }]} testID="lab-loading">
-            <View style={styles.dim}>
-              <Illustration name={labIllustration(lab)} decorative width={160} height={120} />
-            </View>
-            {phase === 'preparing' && lab.sizeBytes ? (
-              <View style={styles.progress}>
-                <Text variant="caption" numeric align="center">
-                  {t('memory_labs:LAB-04.downloading', { a: megabytes(bytes), b: megabytes(lab.sizeBytes) })}
-                </Text>
-                <ProgressBar value={Math.min(1, bytes / lab.sizeBytes)} tone="primary" label={t('memory_labs:LAB-04.downloading.1')} />
+      <View style={full ? [styles.stage, { height: stageHeight }] : styles.gapLarge} testID={full ? 'lab-fullscreen' : undefined}>
+        <View style={viewportStyle} accessibilityLabel={simLabel} testID="lab-viewport">
+          {location ? (
+            <SimView
+              key={`${location.indexUrl}#${mount}`}
+              lab={lab}
+              location={location}
+              init={{ locale, theme: dark ? 'dark' : 'light', reducedMotion: ui.reducedMotion, lowPower, params: {}, tasks: lab.taskSpecs, ...(lab.taskSpecs[current] ? { activeTaskId: lab.taskSpecs[current]!.id } : {}) }}
+              readyTimeoutMs={lowPower ? app.flags.get('sim.ready_timeout_ms_low') : app.flags.get('sim.ready_timeout_ms')}
+              maxStateHz={app.flags.get('sim.max_state_hz')}
+              maxErrors={app.flags.get('sim.max_errors')}
+              label={simLabel}
+              onHost={onHost}
+              onEvent={onEvent}
+              testID="lab-sim"
+            />
+          ) : null}
+          {phase === 'preparing' || phase === 'loading' || phase === 'slow' ? (
+            <View style={[StyleSheet.absoluteFill, styles.loading, { backgroundColor: theme.colors.surfaceSunken }]} testID="lab-loading">
+              <View style={styles.dim}>
+                <Illustration name={labIllustration(lab)} decorative width={160} height={120} />
               </View>
-            ) : phase === 'slow' ? (
-              <View style={styles.progress}>
-                <Text variant="body" align="center">
-                  {t('memory_labs:LAB-04.slow')}
-                </Text>
-                <View style={styles.row}>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    label={t('memory_labs:LAB-04.keep_waiting')}
-                    onPress={() => {
-                      session.current?.keepWaiting();
-                      setPhase('loading');
-                    }}
-                    testID="lab-keep-waiting"
-                  />
-                  <Button size="sm" variant="ghost" label={t('memory_labs:LAB-04.without')} onPress={() => fallback('failed', 'timeout')} testID="lab-without" />
+              {phase === 'preparing' && lab.sizeBytes ? (
+                <View style={styles.progress}>
+                  <Text variant="caption" numeric align="center">
+                    {t('memory_labs:LAB-04.downloading', { a: megabytes(bytes), b: megabytes(lab.sizeBytes) })}
+                  </Text>
+                  <ProgressBar value={Math.min(1, bytes / lab.sizeBytes)} tone="primary" label={t('memory_labs:LAB-04.downloading.1')} />
                 </View>
-              </View>
-            ) : (
-              <Spinner label={t('memory_labs:LAB-04.setting_up')} />
-            )}
-          </View>
-        ) : null}
-        {paused ? (
+              ) : phase === 'slow' ? (
+                <View style={styles.progress}>
+                  <Text variant="body" align="center">
+                    {t('memory_labs:LAB-04.slow')}
+                  </Text>
+                  <View style={styles.row}>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      label={t('memory_labs:LAB-04.keep_waiting')}
+                      onPress={() => {
+                        session.current?.keepWaiting();
+                        setPhase('loading');
+                      }}
+                      testID="lab-keep-waiting"
+                    />
+                    <Button size="sm" variant="ghost" label={t('memory_labs:LAB-04.without')} onPress={() => fallback('failed', 'timeout')} testID="lab-without" />
+                  </View>
+                </View>
+              ) : (
+                <Spinner label={t('memory_labs:LAB-04.setting_up')} />
+              )}
+            </View>
+          ) : null}
+          {paused ? (
+            <Pressable
+              style={[StyleSheet.absoluteFill, styles.paused]}
+              accessibilityRole="button"
+              accessibilityLabel={t('ui:common.dismiss')}
+              onPress={() => {
+                session.current?.resume();
+                setPaused(false);
+              }}
+            >
+              <Icon name="PauseCircle" size={32} color="ink" />
+            </Pressable>
+          ) : null}
+          {lowPower && running ? (
+            <View style={styles.badge}>
+              <Chip kind="status" tone="sunken" icon="Lightning" label={t('memory_labs:LAB-04.low_power')} onPress={() => setToast(t('memory_labs:LAB-04.low_power_on'))} />
+            </View>
+          ) : null}
+          {!little && location ? (
+            <View style={[styles.expand, { backgroundColor: theme.colors.surface, borderRadius: theme.radius.card }]}>
+              <IconButton icon={full ? 'ArrowsIn' : 'ArrowsOut'} label={full ? t('memory_labs:LAB-04.collapse') : t('memory_labs:LAB-04.expand')} onPress={toggleFull} size={48} testID="lab-expand" />
+            </View>
+          ) : null}
+        </View>
+
+        {full && !panelOpen ? (
           <Pressable
-            style={[StyleSheet.absoluteFill, styles.paused]}
+            onPress={() => setPanelOpen(true)}
             accessibilityRole="button"
-            accessibilityLabel={t('ui:common.dismiss')}
-            onPress={() => {
-              session.current?.resume();
-              setPaused(false);
-            }}
+            accessibilityLabel={t('memory_labs:LAB-04.tasks', { done, total })}
+            style={[styles.tab, { backgroundColor: theme.colors.surface, borderRadius: theme.radius.card }]}
+            testID="lab-panel-tab"
           >
-            <Icon name="PauseCircle" size={32} color="ink" />
+            <Icon name="ListChecks" size={24} color="ink" />
+            <Text variant="caption" numeric>{`${done}/${total}`}</Text>
           </Pressable>
         ) : null}
-        {lowPower && running ? (
-          <View style={styles.badge}>
-            <Chip kind="status" tone="sunken" icon="Lightning" label={t('memory_labs:LAB-04.low_power')} onPress={() => setToast(t('memory_labs:LAB-04.low_power_on'))} />
-          </View>
-        ) : null}
-      </View>
+        <View style={full ? (panelOpen ? [styles.panel, { backgroundColor: theme.colors.surface, borderRadius: theme.radius.card }] : styles.hidden) : styles.gapLarge} testID={full ? 'lab-panel' : undefined}>
+          <ScrollView scrollEnabled={full} style={full ? styles.grow : undefined} contentContainerStyle={styles.gapLarge}>
+            {full ? <IconButton icon="CaretRight" label={t('ui:common.close')} onPress={() => setPanelOpen(false)} testID="lab-panel-close" /> : null}
 
-      {!little && running ? (
-        <View style={styles.strip} accessibilityLiveRegion="polite" testID="lab-readings">
-          {readings.slice(0, 4).map((r) => (
-            <Chip key={r.name} kind="status" tone="sunken" label={t('memory_labs:LAB-04.reading_chip', { quantity: r.label?.[locale] ?? r.name, value: formatReading(r.value, r.precision, locale), unit: r.unit })} />
-          ))}
-          <Button size="sm" variant="secondary" icon="Plus" label={t('memory_labs:LAB-04.record')} onPress={() => session.current?.record(task?.id)} testID="lab-record" />
-          <Button size="sm" variant="ghost" label={t('memory_labs:LAB-04.readings_link', { n: rows.length })} onPress={() => setSheet(true)} testID="lab-readings-open" />
-        </View>
-      ) : null}
+            {!little && running ? (
+              <View style={styles.strip} accessibilityLiveRegion="polite" testID="lab-readings">
+                {readings.slice(0, 4).map((r) => (
+                  <Chip key={r.name} kind="status" tone="sunken" label={t('memory_labs:LAB-04.reading_chip', { quantity: r.label?.[locale] ?? r.name, value: formatReading(r.value, r.precision, locale), unit: r.unit })} />
+                ))}
+                <Button size="sm" variant="secondary" icon="Plus" label={t('memory_labs:LAB-04.record')} onPress={() => session.current?.record(task?.id)} testID="lab-record" />
+                <Button size="sm" variant="ghost" label={t('memory_labs:LAB-04.readings_link', { n: rows.length })} onPress={() => setSheet(true)} testID="lab-readings-open" />
+              </View>
+            ) : null}
 
-      {total > 0 ? (
-        <Card testID="lab-tasks">
-          <View style={styles.gap}>
-            <View style={styles.row}>
-              <Text variant="heading" numeric style={styles.grow}>
-                {t('memory_labs:LAB-04.tasks', { done, total })}
-              </Text>
-              <Button size="sm" variant="ghost" icon="ChatCircleText" label={t('memory_labs:LAB-04.ask')} onPress={() => router.push({ pathname: '/tutor', params: { context: lab.title[locale] } })} testID="lab-ask" />
-            </View>
-            {lab.taskSpecs.map((s, i) => {
-              const p = tasks.find((x) => x.taskId === s.id);
-              const isCurrent = i === current;
-              const icon = p?.status === 'correct' ? 'CheckCircle' : p?.status === 'skipped' ? 'ArrowRight' : 'Circle';
-              const tone = p?.status === 'correct' ? ('successText' as const) : isCurrent ? ('primary' as const) : ('inkMuted' as const);
-              return (
-                <Pressable
-                  key={s.id}
-                  onPress={() => {
-                    setCurrent(i);
-                    session.current?.setActiveTask(s.id);
-                  }}
-                  accessibilityRole="button"
-                  accessibilityState={{ selected: isCurrent }}
-                  style={styles.taskRow}
-                  testID={`lab-task-${i}`}
-                >
-                  <Icon name={icon} size={24} color={tone} />
-                  <View style={styles.grow}>
-                    <Text variant={isCurrent ? 'label' : 'body'}>{s.prompt[locale]}</Text>
-                    {isCurrent && p?.status === 'correct' ? (
-                      <Text variant="caption" tone="success">
-                        {t('memory_labs:LAB-04.right')}
-                      </Text>
-                    ) : null}
-                    {isCurrent && p?.status === 'wrong' ? (
-                      <Banner tone="warning" icon="Warning" text={t('memory_labs:LAB-04.not_quite', { quantity: quantityLabel(lab, p.quantity, locale) })} testID="lab-not-quite" />
-                    ) : null}
-                    {isCurrent && hint ? (
-                      <View style={styles.gap}>
-                        <Text variant="caption" tone="muted">
-                          {t('memory_labs:LAB-04.hint', { task_hint: hint })}
-                        </Text>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          label={t('memory_labs:LAB-04.skip')}
-                          onPress={() => {
-                            session.current?.skip(s.id);
-                            const all = session.current?.taskProgress() ?? tasks;
-                            setTasks(all);
-                          }}
-                          testID="lab-skip"
-                        />
-                      </View>
-                    ) : null}
+            {total > 0 ? (
+              <Card testID="lab-tasks">
+                <View style={styles.gap}>
+                  <View style={styles.row}>
+                    <Text variant="heading" numeric style={styles.grow}>
+                      {t('memory_labs:LAB-04.tasks', { done, total })}
+                    </Text>
+                    <Button size="sm" variant="ghost" icon="ChatCircleText" label={t('memory_labs:LAB-04.ask')} onPress={() => router.push({ pathname: '/tutor', params: { context: lab.title[locale] } })} testID="lab-ask" />
                   </View>
-                </Pressable>
-              );
-            })}
-          </View>
-        </Card>
-      ) : null}
+                  {lab.taskSpecs.map((s, i) => {
+                    const p = tasks.find((x) => x.taskId === s.id);
+                    const isCurrent = i === current;
+                    const icon = p?.status === 'correct' ? 'CheckCircle' : p?.status === 'skipped' ? 'ArrowRight' : 'Circle';
+                    const tone = p?.status === 'correct' ? ('successText' as const) : isCurrent ? ('primary' as const) : ('inkMuted' as const);
+                    return (
+                      <Pressable
+                        key={s.id}
+                        onPress={() => {
+                          setCurrent(i);
+                          session.current?.setActiveTask(s.id);
+                        }}
+                        accessibilityRole="button"
+                        accessibilityState={{ selected: isCurrent }}
+                        style={styles.taskRow}
+                        testID={`lab-task-${i}`}
+                      >
+                        <Icon name={icon} size={24} color={tone} />
+                        <View style={styles.grow}>
+                          <Text variant={isCurrent ? 'label' : 'body'}>{s.prompt[locale]}</Text>
+                          {isCurrent && p?.status === 'correct' ? (
+                            <Text variant="caption" tone="success">
+                              {t('memory_labs:LAB-04.right')}
+                            </Text>
+                          ) : null}
+                          {isCurrent && p?.status === 'wrong' ? (
+                            <Banner tone="warning" icon="Warning" text={t('memory_labs:LAB-04.not_quite', { quantity: quantityLabel(lab, p.quantity, locale) })} testID="lab-not-quite" />
+                          ) : null}
+                          {isCurrent && hint ? (
+                            <View style={styles.gap}>
+                              <Text variant="caption" tone="muted">
+                                {t('memory_labs:LAB-04.hint', { task_hint: hint })}
+                              </Text>
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                label={t('memory_labs:LAB-04.skip')}
+                                onPress={() => {
+                                  session.current?.skip(s.id);
+                                  const all = session.current?.taskProgress() ?? tasks;
+                                  setTasks(all);
+                                }}
+                                testID="lab-skip"
+                              />
+                            </View>
+                          ) : null}
+                        </View>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </Card>
+            ) : null}
 
-      {running && done === 0 && rows.length === 0 ? <BuddyLine text={t('memory_labs:LAB-04.pet_first')} /> : null}
+            {running && done === 0 && rows.length === 0 && !full ? <BuddyLine text={t('memory_labs:LAB-04.pet_first')} /> : null}
+          </ScrollView>
+          {full ? primary : null}
+        </View>
+      </View>
 
       <Sheet open={menu} onOpenChange={setMenu} title={t('ui:common.moreOptions')} height="40" testID="lab-menu-sheet">
         <View style={styles.gap}>
@@ -534,8 +593,11 @@ function ReadingsTable({ lab, rows, locale, onDelete, onClear }: { lab: LabEntry
 
 /** LAB-05: the idea without the live lab. Tasks are skipped, never marked wrong. */
 function LabFallback({ lab, reason, canRetry, onRetry, onContinue }: { lab: LabEntry; reason: FallbackReason; canRetry: boolean; onRetry: () => void; onContinue: () => void }) {
+  const app = useApp();
   const t = useT();
   const locale = useUiState((s) => s.locale);
+  // `{fallback_body}` comes from the lesson sim card that uses this lab, when one is on the device.
+  const lesson = useMemo(() => labLessonText(app, lab.id), [app, lab.id, locale]);
   return (
     <Screen
       testID="LAB-05"
@@ -557,6 +619,11 @@ function LabFallback({ lab, reason, canRetry, onRetry, onContinue }: { lab: LabE
       <Card>
         <View style={[styles.gap, styles.center]}>
           <Illustration name={labIllustration(lab)} decorative width={240} height={180} />
+          {lesson?.fallbackBody ? (
+            <Text variant="body" testID="lab-fallback-body">
+              {lesson.fallbackBody}
+            </Text>
+          ) : null}
           <Text variant="heading">{t('memory_labs:LAB-05.see')}</Text>
           {lab.taskSpecs.map((s, i) => (
             <View key={s.id} style={styles.taskRow}>
@@ -582,25 +649,38 @@ function LabFallback({ lab, reason, canRetry, onRetry, onContinue }: { lab: LabE
 
 /** LAB-07: what was done, the debrief line and what's next. */
 function LabComplete({ lab, done, skipped, total, readings, ms }: { lab: LabEntry; done: number; skipped: number; total: number; readings: number; ms: number }) {
+  const app = useApp();
   const t = useT();
   const locale = useUiState((s) => s.locale);
   const next = nextLab(LABS, lab.id);
+  const lesson = useMemo(() => labLessonText(app, lab.id), [app, lab.id, locale]);
+  const explored = skipped > 0;
   return (
     <Screen testID="LAB-07" footer={<Button label={t('memory_labs:LAB-07.done')} fullWidth onPress={() => router.replace('/labs' as Href)} testID="lab-done" />}>
       <View style={[styles.center, styles.gap]}>
         <Illustration name={labIllustration(lab)} decorative width={200} height={150} />
-        <Text variant="display" heading align="center">
-          {t('memory_labs:LAB-07.title')}
+        <Text variant="display" heading align="center" testID="lab-complete-title">
+          {explored ? t('memory_labs:LAB-07.explored_title') : t('memory_labs:LAB-07.title')}
         </Text>
       </View>
       <View style={styles.row}>
         <StatTile style={styles.grow} icon="CheckCircle" value={`${done}/${total}`} label={t('memory_labs:LAB-07.tasks')} testID="lab-complete-tasks" />
         <StatTile style={styles.grow} icon="Timer" value={clock(ms)} label={t('memory_labs:LAB-07.time')} />
       </View>
-      {skipped > 0 ? (
-        <Text variant="caption" tone="muted" align="center">
-          {t('memory_labs:LAB-05.skipped_note')}
-        </Text>
+      {explored ? (
+        <View style={styles.center}>
+          <Text variant="label" tone="muted" numeric align="center" testID="lab-complete-skipped">
+            {t('memory_labs:LAB-07.skipped', { n: skipped })}
+          </Text>
+          <Text variant="caption" tone="muted" align="center">
+            {t('memory_labs:LAB-05.skipped_note')}
+          </Text>
+        </View>
+      ) : null}
+      {lesson?.debrief ? (
+        <Card testID="lab-debrief">
+          <Text variant="body">{lesson.debrief}</Text>
+        </Card>
       ) : null}
       {readings > 0 ? (
         <Text variant="body" align="center">
@@ -623,6 +703,13 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
   center: { alignItems: 'center' },
   viewport: { width: '100%', overflow: 'hidden' },
+  viewportFull: { flex: 1, height: '100%', overflow: 'hidden' },
+  stage: { flexDirection: 'row', gap: 8 },
+  gapLarge: { gap: 16 },
+  panel: { width: PANEL_WIDTH, padding: 12, gap: 12 },
+  tab: { width: PANEL_TAB, alignItems: 'center', justifyContent: 'center', gap: 4, paddingVertical: 12 },
+  hidden: { display: 'none' },
+  expand: { position: 'absolute', top: 8, right: 8, opacity: 0.9 },
   loading: { alignItems: 'center', justifyContent: 'center', gap: 12, padding: 16 },
   dim: { opacity: 0.4 },
   progress: { alignSelf: 'stretch', gap: 8, alignItems: 'center' },

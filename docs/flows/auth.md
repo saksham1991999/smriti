@@ -813,6 +813,8 @@ All tunables come from `/v1/config` (`packages/config` defaults), so none is har
 | `POST /v1/sync/restore-snapshot` | New guest | Re-home local data after a lost guest session (§6.9) |
 | `POST /v1/guardian/consent-requests`, `GET /v1/guardian/consent-requests/{id or code}` | Teen, guardian | Start and read a consent request |
 | `POST /v1/guardian/consent-requests/{code}/confirm`, `/decline` | Guardian | Decide |
+| `DELETE /v1/guardian/consent-requests/{id}` | Teen | AUTH-21 [Cancel request]: withdraw a pending request (204; a repeat or an answered request is a no-op) |
+| `GET /v1/guardian/consent-notice?locale=` | Anyone | AUTH-20 "Read the full notice": `version` and `url` from the owner flags `auth.consent_notice_version` and `auth.consent_notice_url` (null until legal publishes). Once set, confirm, AUTH-27 accept and managed-child creation must send that `notice_version` or get 409 `consent_notice_outdated` |
 | `DELETE /v1/guardian/consents/{id}/scopes/{scope}` | Guardian | Withdraw a scope |
 | `GET /v1/guardian/learners` | Guardian | List linked teens and managed children |
 | `POST /v1/guardian/children`, `DELETE /v1/guardian/children/{id}` | Guardian | Create or delete a managed child |

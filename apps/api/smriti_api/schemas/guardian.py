@@ -15,6 +15,17 @@ RequestStatus = Literal["pending", "granted", "declined", "expired", "cancelled"
 ConsentState = Literal["not_required", "required", "pending", "granted", "declined", "revoked"]
 
 
+class ConsentNoticeOut(BaseModel):
+    """AUTH-20 "Read the full notice": the current notice, from config (legal publishes it)."""
+
+    version: str | None = Field(
+        description="Send this as notice_version when set; null until the notice is published"
+    )
+    url: str | None = Field(description="The full notice in `locale`; null until published")
+    locale: Literal["en", "hi"]
+    published: bool
+
+
 class ConsentRequestCreate(BaseModel):
     channel: Literal["handoff", "link"]
     scopes: Annotated[list[Scope], Field(min_length=1, max_length=5)]

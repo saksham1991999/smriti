@@ -1,4 +1,4 @@
-import type { TypedBundle } from "@smriti/content-schema";
+import type { TypedBundle } from "@smriti/content-schema/runtime";
 import { createI18n } from "@smriti/i18n";
 import { lessonConfig, planLesson, type EventEnvelope, type LessonState } from "@smriti/lesson-core";
 import { UIProvider } from "@smriti/ui-native";
@@ -21,7 +21,7 @@ const XP = { firstTry: 10, secondTry: 5, attempt: 1, complete: 20, combo: 10 };
 const metrics = { frame: { x: 0, y: 0, width: 390, height: 844 }, insets: { top: 47, left: 0, right: 0, bottom: 34 } };
 const i18n = createI18n({ locale: "en", brand: "Smriti" });
 
-async function renderPlayer(mode: "onboarding" | "deep_dive", topic = "fx.chapter-a.topic-a", biteId?: string) {
+async function renderPlayer(mode: "onboarding" | "deep_dive" | "little", topic = "fx.chapter-a.topic-a", biteId?: string, resumeIndex?: number) {
   const { bundle: b, hash } = bundle(topic);
   const config = lessonConfig(XP);
   const plan = planLesson(b, { mode, bundleVersion: hash, examDepth: null, config, biteId });
@@ -42,6 +42,7 @@ async function renderPlayer(mode: "onboarding" | "deep_dive", topic = "fx.chapte
           onPreviewEnd={() => undefined}
           onRequestExit={() => undefined}
           clock={() => Date.parse("2026-10-30T04:30:00Z")}
+          resumeIndex={resumeIndex}
         />
       </UIProvider>
     </SafeAreaProvider>,
@@ -106,6 +107,67 @@ describe("LessonPlayer", () => {
     await fireEvent.press(screen.getByTestId("confidence-4"));
     expect(done).toHaveLength(1);
     expect(done[0]!.topicConfidence).toBe("sure");
+  });
+
+  it("plays a little learner question: gentle hint, then the guided finish where the child taps the shown answer", async () => {
+    const { events, done } = await renderPlayer("little", "fx.chapter-a.topic-a", undefined, 3);
+    expect(screen.queryByTestId("lesson-counter")).toBeNull();
+    expect(screen.queryByTestId("confidence-row")).toBeNull();
+    await fireEvent.press(screen.getByTestId("option-b"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+    expect(screen.getByTestId("feedback-hint")).toBeTruthy();
+    expect(screen.getByText("Let's try again together!")).toBeTruthy();
+    expect(screen.queryByText("Not quite")).toBeNull();
+    await fireEvent.press(screen.getByTestId("lesson-try-again"));
+    await fireEvent.press(screen.getByTestId("option-a"));
+    await fireEvent.press(screen.getByTestId("lesson-check"));
+
+    // Second wrong try: the answer is shown and only it can be tapped.
+    expect(screen.getByTestId("feedback-guided")).toBeTruthy();
+    expect(screen.getByText("Here is the answer. Tap it!")).toBeTruthy();
+    expect(screen.queryByTestId("lesson-check")).toBeNull();
+    const shown = screen.getByTestId("option-c");
+    expect(shown.props.accessibilityState).toMatchObject({ checked: true, disabled: false });
+    expect(shown.props.accessibilityLabel).toMatch(/Correct/);
+    expect(screen.getByTestId("option-a").props.accessibilityState).toMatchObject({ disabled: true });
+    await fireEvent.press(screen.getByTestId("option-a"));
+    expect(screen.getByTestId("feedback-guided")).toBeTruthy();
+    await fireEvent.press(shown);
+
+    // Every question ends on a win, without an XP chip.
+    expect(screen.getByTestId("feedback-correct")).toBeTruthy();
+    expect(screen.getByText("Yay! You did it!")).toBeTruthy();
+    expect(screen.queryByText(/XP/)).toBeNull();
+    await fireEvent.press(screen.getByTestId("lesson-continue"));
+    await fireEvent.press(screen.getByTestId("lesson-continue"));
+    expect(screen.queryByTestId("lesson-confidence")).toBeNull();
+    expect(done).toHaveLength(1);
+    // The two real tries are sent; the guided tap sends nothing.
+    const answers = events.filter((e) => e.type === "answer_submitted").map((e) => e.payload);
+    expect(answers).toMatchObject([
+      { correct: false, attempt: 1, response: { option_ids: ["b"] } },
+      { correct: false, attempt: 2, response: { option_ids: ["a"] } },
+    ]);
+  });
+
+  it("goes from I don't know yet to the guided finish, and Continue submits the key on a numerical question", async () => {
+    const { events } = await renderPlayer("little", "fx.chapter-a.topic-d");
+    await fireEvent.press(screen.getByTestId("lesson-continue"));
+    await fireEvent.press(screen.getByTestId("lesson-continue"));
+    await fireEvent.press(screen.getByTestId("lesson-dont-know"));
+    expect(screen.getByTestId("feedback-guided")).toBeTruthy();
+    expect(screen.queryByTestId("feedback-explain")).toBeNull();
+    await fireEvent.press(screen.getByTestId("option-b"));
+    expect(screen.getByText("Yay! You did it!")).toBeTruthy();
+    await fireEvent.press(screen.getByTestId("lesson-continue"));
+    await fireEvent.press(screen.getByTestId("lesson-dont-know"));
+    expect(screen.getByTestId("feedback-guided")).toBeTruthy();
+    await fireEvent.press(screen.getByTestId("lesson-guided-continue"));
+    expect(screen.getByTestId("feedback-correct")).toBeTruthy();
+    expect(events.filter((e) => e.type === "answer_submitted").map((e) => e.payload)).toMatchObject([
+      { correct: false, response: null },
+      { correct: false, response: null },
+    ]);
   });
 
   it("renders formula, worked example and derivation cards with build-time maths", async () => {

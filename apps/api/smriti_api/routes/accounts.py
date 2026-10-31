@@ -21,6 +21,7 @@ from smriti_api.core.deps import (
 from smriti_api.core.errors import ApiError
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas.api import (
+    DeletionRequest,
     DeletionResponse,
     LinkedRequest,
     LinkedResponse,
@@ -138,11 +139,19 @@ async def request_deletion(
     services: Services,
     key: IdempotencyKey,
     auth: Annotated[AuthContext, signed_in("delete_account")],
+    body: DeletionRequest | None = None,
 ) -> JSONResponse:
     if not auth.amr_fresh_within(REAUTH_WINDOW_S):
         raise ApiError(401, "reauth_required", "Sign in again to confirm", reason="delete_account")
 
     async def run() -> DeletionResponse:
+        # Apple first: a spent code stops here, before anything is scheduled.
+        apple_revoked = False
+        if body is not None and body.apple_authorization_code:
+            apple = services.integrations.apple_signin if services.integrations else None
+            apple_revoked = await accounts.revoke_apple_signin(
+                apple, auth.user_id, body.apple_authorization_code, body.apple_client_id
+            )
         async with services.db.system_tx() as session:
             flags = await flag_service.server_flags(session)
         grace = int(flags.get("auth.deletion_grace_days", 7) or 7)
@@ -151,8 +160,9 @@ async def request_deletion(
             await billing_checkout.cancel_for_deletion(
                 services.db, services.integrations, auth.user_id
             )
-        return DeletionResponse(scheduled_for=when)
+        return DeletionResponse(scheduled_for=when, apple_revoked=apple_revoked)
 
+    # The Apple code is single-use, so it is never part of the idempotency fingerprint (or stored).
     return await idempotent(
         services, scope="deletion", subject=auth.user_id, key=key, body=None, fn=run, status=202
     )

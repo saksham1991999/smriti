@@ -55,6 +55,17 @@ The forge is course-aware, so these files should be too (`exam_style`):
 - Nothing offensive, nothing about real private people, no stereotypes.
 - Don't overload: at most two techniques per item, so students aren't confused.
 
+## Palace templates
+
+The `palace` technique needs places to walk. Those are `palace_template@1` files (`content/palace-templates/{slug}.json`, format in `skills/_shared/content-format.md` §13a), made together with `visual-director`:
+
+1. Pick the place and its rooms in walk order: a home, a school, a monument, or a 360° scene that `visual-director` marks palace-ready. Use places every Indian student knows; never a real private home or a photo of one.
+2. Ask `visual-director` for one `sunny-scene` image per room (or a `pano-360` scene) with 5 to 10 clear, separate objects to stand items on, and no text in the picture.
+3. When the image is approved, set each spot's `pos` on its object and number the spots in the order the eye walks the room. Give each spot a short `label` in every locale ("the door").
+4. Name the template and its rooms in English and Hindi. Leave `exam_profiles` empty unless the place only suits some exams.
+5. A template never carries items to memorise: students add them in MEM-15 (a list concept, a deck, a topic or their mnemonics).
+6. Run `pnpm content:check`.
+
 ## Checklist
 
 - [ ] Every list, date, sequence, exception and confusable pair has at least one hook.

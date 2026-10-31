@@ -10,8 +10,8 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "generate": "node scripts/generate.mjs",
-    "generate:check": "node scripts/generate.mjs --check",
+    "generate": "node scripts/generate.mjs && node scripts/export-json.mjs",
+    "generate:check": "node scripts/generate.mjs --check && node scripts/export-json.mjs --check",
     "typecheck": "tsc --noEmit -p . && tsc --noEmit -p tsconfig.test.json",
     "test": "vitest run",
     "lint": "tsc --noEmit -p ."

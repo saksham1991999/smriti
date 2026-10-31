@@ -6,10 +6,12 @@ import uuid
 from typing import Annotated, Literal
 
 from fastapi import APIRouter, Path, Query, Request
+from fastapi.responses import JSONResponse
 
-from smriti_api.core.deps import AppServices, Client, CurrentUser, Services
+from smriti_api.core.deps import AppServices, Client, CurrentUser, IdempotencyKey, Services
 from smriti_api.core.errors import ApiError
 from smriti_api.integrations.storage import ObjectStorage
+from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import voice as v
 from smriti_api.services import feynman, speech, voice
 
@@ -141,8 +143,18 @@ async def dictation(
     response_model=v.FeynmanOut,
     summary="Explain a concept back; graded against its key points (AI-10, AI-11)",
 )
-async def feynman_attempt(body: v.FeynmanIn, services: Services, auth: CurrentUser) -> v.FeynmanOut:
-    return await feynman.submit(services.db, services.ai, auth, body)
+async def feynman_attempt(
+    body: v.FeynmanIn, services: Services, auth: CurrentUser, key: IdempotencyKey
+) -> JSONResponse:
+    # Counts against the tutor quota, so a retry with the same key replays the first grade.
+    return await idempotent(
+        services,
+        scope="feynman",
+        subject=auth.user_id,
+        key=key,
+        body=body,
+        fn=lambda: feynman.submit(services.db, services.ai, auth, body),
+    )
 
 
 @router.get(

@@ -1217,7 +1217,8 @@ create table game.shop_items (
   id text primary key,
   kind text not null check (kind in ('freeze','pet_outfit','plant_skin','theme','palace_room','treat','room_theme')),
   price_gems integer not null, pro_only boolean not null default false,   -- gems are never sold for money (R36)
-  asset_id uuid, active boolean not null default true
+  asset_id uuid, active boolean not null default true,
+  name_key text   -- packages/i18n key ("me_money:ME-17.freeze"); no names stored here (migration 20261030200005)
 );
 create table game.inventory (
   user_id uuid not null references auth.users(id) on delete cascade,
@@ -1504,7 +1505,8 @@ create table billing.payment_links (              -- "Send to my parent": one-ti
   status           text not null default 'open' check (status in ('open','paid','expired','cancelled')),
   expires_at       timestamptz not null,          -- 48 h after creation (me-money flow §5.12)
   paid_at          timestamptz,
-  created_at       timestamptz not null default now()
+  created_at       timestamptz not null default now(),
+  subscription_id  uuid references billing.subscriptions(id) on delete set null  -- the parent's checkout (migration 20261030200006)
 );
 
 create table billing.intro_claims (               -- one ₹1 month per person (TRD §11)
@@ -1614,6 +1616,23 @@ create table ai.doubt_photos (                    -- photo doubt, AI-16 to AI-19
   created_at       timestamptz not null default now(),
   deleted_at       timestamptz
 );                                                -- owner read; API writes; ai.tutor_retention_days
+
+create table ai.roleplay_chats (                  -- AI-21 role play (migration 20261030200007)
+  session_id   uuid primary key references ai.tutor_sessions(id) on delete cascade,  -- mode 'roleplay'
+  user_id      uuid not null references auth.users(id) on delete cascade,
+  card_id      text not null,                     -- the role-play card
+  turns        smallint not null default 0,       -- student turns (roleplay.max_turns)
+  goals_total  smallint not null,
+  goals_met    smallint[] not null default '{}',  -- indexes into the card's goals
+  status       text not null default 'open',      -- open, ended
+  end_reason   text,                              -- goals_met, turn_cap, wrap_up
+  started_at   timestamptz not null default now(),-- free.roleplay_chats_per_day counts these
+  ended_at     timestamptz
+);                                                -- owner read; API writes. Messages: ai.tutor_messages
+
+-- content.roleplay_scripts (same migration): the server's copy of each published role-play card
+-- (card_id, item_id, topic_id, concept_ids, script jsonb, status), filled by the publish job in
+-- the card-index pass. Service only: the persona prompt never goes to a client from here.
 
 create table ai.generations (                     -- every non-chat AI job, for cost and debugging
   id           uuid primary key default gen_random_uuid(),

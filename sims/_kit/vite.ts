@@ -97,7 +97,17 @@ function manifestAndBudget(simDir: string, outDir: string): Plugin {
       const built = { ...source, size_bytes: size };
       writeFileSync(join(outDir, 'manifest.json'), manifestText(built));
       if (source.size_bytes !== size) {
+        const id = String(source.id);
+        // In CI (and in `check-sizes.mjs`) a stale size fails the build instead of being rewritten,
+        // so the committed manifest always matches what ships.
+        if (process.env.CI === 'true' || process.env.SIM_SIZE_CHECK === '1') {
+          throw new Error(
+            `${id}: manifest.json says size_bytes ${String(source.size_bytes)} but the build is ${size} bytes. ` +
+              `Build the sim locally (pnpm --filter ./sims/${id} build) and commit sims/${id}/manifest.json.`,
+          );
+        }
         writeFileSync(sourcePath, manifestText(built));
+        console.warn(`${id}: size_bytes updated to ${size} in sims/${id}/manifest.json; commit it.`);
       }
       if (size > SIM_BUDGET_BYTES) {
         throw new Error(`${String(source.id)} is ${size} bytes, over the ${SIM_BUDGET_BYTES} byte budget`);

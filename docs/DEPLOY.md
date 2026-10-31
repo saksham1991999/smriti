@@ -39,11 +39,14 @@ a one-line meaning, in `.env.example` (server) and `apps/web/.env.example`,
 The brand and domain are open (TRD D7). Everything below writes the domain as `<domain>`. Pick it
 first, because OAuth consent screens, store listings, deep links and email all use it.
 
-Once it is chosen, also update these, which still use the working name:
+Once it is chosen, set it in one place: `domain` in `packages/config/brand.json` (now the
+working name, `smriti.app`). Each variant's deep link prefix is that domain plus the variant's
+`deepLinkPath`, and the mobile app's associated domains, the site's app link files and the API's
+`/v1/config` all derive from it. The bundle ids (`bundleId`, `androidPackage` in
+`packages/config/variants/*.json`) also follow the brand, and must be final before step 7.
 
-- `deepLinkPrefix` in `packages/config/variants/*.json` (now `https://smriti.app/...`).
-- The default of `GUARDIAN_LINK_BASE_URL` (now `https://smriti.app/guardian/`). Set the variable
-  in Railway anyway (step 5).
+`GUARDIAN_LINK_BASE_URL` defaults to `WEB_APP_URL` plus `/guardian/`, so it needs setting only if
+the consent page lives elsewhere.
 
 ## 1. Create the accounts
 
@@ -65,7 +68,7 @@ personal account, and record who has access.
 11. **Deepgram**: text-to-speech and speech-to-text.
 12. **ClickHouse Cloud**: the analytics event store.
 13. **Grafana Cloud**: dashboards on ClickHouse, and the OTLP endpoint for traces.
-14. **Sentry**: error and trace reporting for web and mobile.
+14. **Sentry**: error reporting for the API, worker, web and mobile.
 15. **Razorpay**: web subscriptions. Business KYC takes days, so start early.
 16. **RevenueCat**: App Store and Play subscriptions.
 17. **Resend**: transactional email (guardian consent links).
@@ -237,12 +240,13 @@ the CDN Worker, and listed here so you can check them after the first deploy (st
      environment), `CDN_BASE_URL`.
    - Your own values: `APP_ENV` (`staging` or `production`), `API_PUBLIC_URL`
      (`https://api.<domain>` or `https://api-staging.<domain>`), `WEB_APP_URL`
-     (`https://app.<domain>` or `https://app-staging.<domain>`), `GUARDIAN_LINK_BASE_URL`,
-     `MANAGED_IDENTITY_DOMAIN`, `BRAND_NAME`, `MAIL_FROM`.
+     (`https://app.<domain>` or `https://app-staging.<domain>`), `MANAGED_IDENTITY_DOMAIN`,
+     `BRAND_NAME`, `MAIL_FROM`, and `GUARDIAN_LINK_BASE_URL` only if it isn't `WEB_APP_URL/guardian/`.
    - Random secrets you generate (for example `openssl rand -hex 32`), different per environment
      and never rotated casually: `LOG_HASH_SALT`, `AUTH_IDENTITY_HASH_PEPPER`.
    - Providers (step 9): the AI, voice, analytics, payments, email, push and attestation keys.
-   - `api` only: `OTEL_SERVICE_NAME=smriti-api`, optionally `WEB_CONCURRENCY` and `CORS_ORIGINS`.
+   - `api` only: `OTEL_SERVICE_NAME=smriti-api`, the Sign in with Apple values (step 7.2),
+     optionally `WEB_CONCURRENCY` and `CORS_ORIGINS`.
    - `worker` only: `WORKER_QUEUE=all`, `OTEL_SERVICE_NAME=smriti-worker`.
    - Never set `JOBS_MODE`, `DEV_JWT_SECRET`, `AI_PROVIDER=fake` or `ATTESTATION_PROVIDER=fake`
      outside local and test. Outside local and test, the API refuses to use a fake for any
@@ -278,13 +282,25 @@ the CDN Worker, and listed here so you can check them after the first deploy (st
 2. **Sign in with Apple key.** Keys > create with Sign in with Apple. Record `APPLE_TEAM_ID`,
    `APPLE_SIGNIN_KEY_ID` and the `.p8` file (`APPLE_SIGNIN_PRIVATE_KEY`). Generate the client secret
    JWT from them for Supabase (step 3.5). Keep the `.p8` in a password manager, not in the repo.
+   The API uses the same key to revoke a user's Apple tokens when they delete their account (App
+   Store review requires it). Set on `api` in Railway: `APPLE_TEAM_ID`, `APPLE_SIGNIN_KEY_ID`,
+   `APPLE_SIGNIN_PRIVATE_KEY` (the `.p8` contents; `\n` escapes are accepted) and
+   `APPLE_SIGNIN_CLIENT_IDS` (every variant bundle id, comma separated). The API builds a short-lived
+   client secret per call, so this one does not expire like the Supabase secret.
 3. **Store apps.** Create one App Store Connect app and one Play Console app per variant that ships.
-   R7 phases mean only `all`, `jee`, `neet` and `upsc` are needed first. Each app's App Store
-   Connect ID and a Play service account key go into EAS submit (see `infra/eas/README.md`, gap 4).
+   R7 phases mean only `all`, `jee`, `neet` and `upsc` are needed first. Add each app's App Store
+   Connect ID to `apps/mobile/eas.json` as `submit.production-<variant>.ios.ascAppId`, and create
+   the submit credentials as EAS variables (`ASC_API_KEY_PATH`, `ASC_API_KEY_ID`,
+   `ASC_API_KEY_ISSUER_ID`, `GOOGLE_SERVICE_ACCOUNT_KEY_PATH`; see `infra/eas/README.md`).
    Set `APP_ATTEST_APP_IDS` (`variant=TEAMID.bundle.id` pairs) and `APP_ATTEST_ENVIRONMENT=production`
    in Railway production.
-4. **EAS.** Create the Expo project(s), then:
-   - Set the project ID as the GitHub variable `EAS_PROJECT_ID` and as an EAS variable.
+   For app links, set the GitHub variables `APPLE_TEAM_ID` and `ANDROID_APP_LINK_CERTS`
+   (`variant=SHA256|SHA256,...`, the Play app signing key's SHA-256 from Play Console > App
+   integrity, plus the upload key's if you install builds outside Play). The site deploy writes
+   `/.well-known/apple-app-site-association` and `/.well-known/assetlinks.json` from them.
+4. **EAS.** Create one Expo project per store app (variant), then:
+   - Set each project's ID as the GitHub variable `EAS_PROJECT_ID_<VARIANT>` (for example
+     `EAS_PROJECT_ID_JEE`) and as an EAS variable of the same name in that project.
    - Create EAS environment variables for `preview` and `production` (`eas env:create`). The public
      ones are listed in `apps/mobile/.env.example`: `EXPO_PUBLIC_APP_ENV`,
      `EXPO_PUBLIC_API_BASE_URL`, `EXPO_PUBLIC_CDN_BASE_URL`,
@@ -296,8 +312,9 @@ the CDN Worker, and listed here so you can check them after the first deploy (st
      inside the app, so none of them may be a secret.
    - Create an access token for CI (Account > Access tokens): GitHub secret `EXPO_TOKEN`.
    - Create a separate access token with push permission for the server: Railway `EXPO_ACCESS_TOKEN`.
-   - Before the first store build, the mobile owner closes the gaps in `infra/eas/README.md`
-     (`updates.url`, `environment` on the profiles, submit entries, the App Attest entitlement).
+   - The `staging-<variant>` profiles build the store apps against staging (TestFlight and the
+     Play internal track); `preview-<variant>` builds separate `.preview` apps for ad hoc installs.
+     Profiles, channels and submit entries are in `infra/eas/README.md`.
 
 ## 8. GitHub environments, secrets and variables
 
@@ -320,6 +337,7 @@ Settings > Environments: create `staging` and `production`.
 | `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` | step 4.3.2 | deploy-content |
 | `DATABASE_URL` | step 3.3 (the session or direct URL is fine here) | deploy-content (metadata and card index) |
 | `EXPO_TOKEN` | step 7.4 | deploy-mobile |
+| `SENTRY_AUTH_TOKEN` | Sentry > Settings > Auth Tokens, with `project:releases` and `org:read` | deploy-web (source map upload) |
 
 **Variables** (per environment; public values):
 
@@ -335,12 +353,14 @@ Settings > Environments: create `staging` and `production`.
 | `VITE_GOOGLE_WEB_CLIENT_ID` | step 6.2 |
 | `VITE_TURNSTILE_SITE_KEY` | step 4.4 |
 | `VITE_SENTRY_DSN` | Sentry web project (step 9) |
+| `SENTRY_ORG`, `SENTRY_PROJECT_WEB` | the Sentry organisation and web project slugs; with `SENTRY_AUTH_TOKEN`, deploy-web uploads source maps |
+| `APPLE_TEAM_ID`, `ANDROID_APP_LINK_CERTS` | step 7.3 (app link files) |
 | `VITE_ANALYTICS_URL` | the analytics collector URL, or empty |
 | `SITE_ANALYTICS_ENDPOINT` | the site's cookie-free collector, or empty |
 | `BRAND_NAME_EN`, `BRAND_NAME_HI`, `BRAND_LEGAL_NAME`, `BRAND_SUPPORT_EMAIL` | the brand (D7) |
 | `PRICE_PRO_MONTHLY_INR`, `PRICE_PRO_INTRO_INR` | must match the Razorpay plans (step 9) |
 | `R2_BUCKET_CONTENT`, `R2_BUCKET_ASSETS` | the bucket names for that environment |
-| `EAS_PROJECT_ID` | step 7.4 |
+| `EAS_PROJECT_ID_<VARIANT>` | step 7.4, one per variant |
 
 The workflows set `VITE_APP_ENV`, `VITE_APP_VARIANT=all` and `VITE_AUTH_MODE=supabase` themselves,
 and `SITE_NOINDEX=1` everywhere except production.
@@ -357,7 +377,7 @@ matching Railway environment.
 | Deepgram | `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL`, `DEEPGRAM_STT_MODEL` | Check Hindi quality first (D3). |
 | ClickHouse | `CLICKHOUSE_URL`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `CLICKHOUSE_DATABASE` | Create a user that can only insert and select in the events database. |
 | Grafana Cloud | `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` | The OTLP endpoint and its `Authorization=Basic <token>` header. Connect Grafana to ClickHouse with a read-only user. |
-| Sentry | none on the server yet | Create web and mobile projects; their DSNs are `VITE_SENTRY_DSN` and `EXPO_PUBLIC_SENTRY_DSN`. |
+| Sentry | `SENTRY_DSN` (api and worker), optionally `SENTRY_RELEASE` | Create a server project (or one each for api and worker, set per service), a web project and a mobile project. The web and mobile DSNs are `VITE_SENTRY_DSN` and `EXPO_PUBLIC_SENTRY_DSN`. Events carry only the internal user id: request bodies, cookies, auth headers, query strings, job arguments and email addresses are stripped before sending. |
 | Razorpay | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `RAZORPAY_PLAN_ID`, `RAZORPAY_INTRO_OFFER_ID`, and the optional plan names in `.env.example` | Create the plans in the dashboard. Webhook URL: `https://api.<domain>/v1/webhooks/razorpay`, with the subscription and payment events and a secret you generate. Staging uses test mode with `https://api-staging.<domain>/v1/webhooks/razorpay`. |
 | RevenueCat | `REVENUECAT_API_KEY`, `REVENUECAT_WEBHOOK_SECRET` | Connect each store app. Webhook URL: `https://api.<domain>/v1/webhooks/revenuecat`, with an Authorization header value you generate; the same value is `REVENUECAT_WEBHOOK_SECRET`. The public SDK keys go to EAS. |
 | Resend | `MAIL_PROVIDER=resend`, `MAIL_FROM`, `RESEND_API_KEY` | Add the sending domain and the SPF, DKIM and MX records it shows, plus a DMARC record (step 2). |
@@ -388,13 +408,18 @@ matching Railway environment.
      bundle returns `immutable`.
    - Google sign-in works on the web. A Razorpay test-mode subscription turns Pro on through the
      webhook.
-   - A preview build (`deploy-mobile.yml`, `staging`) signs in, loads content and opens a sim.
+   - `curl -s https://staging.<domain>/.well-known/apple-app-site-association` returns JSON with
+     your team id, and `assetlinks.json` lists the packages that have fingerprints. The staging
+     site lists the `.preview` ids; the apps verify against the production site's file, which lists
+     the store ids.
+   - No script points at a source map: `curl -s https://app-staging.<domain>/assets/<any>.js | grep -c sourceMappingURL` prints 0.
+   - A staging build (`deploy-mobile.yml`, `staging`) signs in, loads content and opens a sim.
 6. **Production.** Repeat steps 2 to 4 for production by pushing a tag, for example `v0.1.0`. Each
    job waits for a reviewer to approve the `production` environment. Check that `SITE_NOINDEX` is
    off on `https://<domain>/robots.txt`.
 7. **Store builds.** Push a `mobile-v0.1.0` tag. After approval, `eas build` runs for each variant
-   with the `production-<variant>` profile. Submit to the stores from EAS once the gaps in
-   `infra/eas/README.md` are closed.
+   with the `production-<variant>` profile. Submit with
+   `eas submit --profile production-<variant> --latest` once that app's `ascAppId` is in eas.json.
 
 ## 11. Rolling back
 
@@ -406,23 +431,17 @@ matching Railway environment.
 - **Content:** bundles are immutable, so roll back by publishing the previous good content again:
   re-run that commit's `deploy-content.yml` run from the Actions tab (a re-run uses the same
   commit), or revert the content change on `main`. The manifests point back within five minutes.
-- **Mobile:** publish an EAS Update on the channel once `updates.url` exists. A store build can only
-  be replaced by a new one.
+- **Mobile:** republish the previous good update with `eas update --channel production-<variant>`
+  (or `eas update:roll-back-to-embedded`). A store build can only be replaced by a new one.
 
 ## 12. Not wired yet
 
 These are known gaps. None of them blocks a staging deploy.
 
-- **Server errors in Sentry:** the API and worker have no Sentry SDK yet, so their errors reach only
-  the logs and traces. Add it with `SENTRY_DSN` names when it lands.
-- **Apple token revocation** on account deletion (`APPLE_SIGNIN_*`) is not implemented yet. App
-  Store review requires it.
-- **Deep link verification:** the site doesn't serve `/.well-known/apple-app-site-association` or
-  `/.well-known/assetlinks.json` yet, and the variants still point at `smriti.app`.
-- **Guardian consent page:** the web app has no `/guardian/` route yet for `GUARDIAN_LINK_BASE_URL`.
+- **Mobile Sentry:** `EXPO_PUBLIC_SENTRY_DSN` is read, but the app has no Sentry SDK yet.
+- **Apple revocation from the app:** the API revokes Apple tokens on deletion when the request
+  carries `apple_authorization_code` and `apple_client_id`; the mobile app does not send them yet.
 - **Google Identity Services and Turnstile scripts** are not in the web CSP until `apps/web` loads
   them (`infra/cloudflare/README.md`).
 - **Preview environments** per pull request (TRD §17) are not set up.
-- **Web source maps** are public: `apps/web/vite.config.ts` sets `sourcemap: true`, so the `.map`
-  files ship with the deploy. Upload them to Sentry and drop them from the public deploy once Sentry
-  is set up.
+- **`ios.ascAppId`** per app in `apps/mobile/eas.json` (step 7.3).

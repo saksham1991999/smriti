@@ -645,11 +645,14 @@ def _levels(rows: Iterable[Any]) -> list[CalibrationLevel]:
     return out
 
 
+# Mock answers come from learn.mock_answers only: since sync v1.3 the server also mirrors each
+# scored mock answer into question_attempts (context 'mock'), and counting both would double them.
 _CALIBRATION_SQL = """
 with answers as (
   select a.confidence, a.is_correct, a.question_id
     from learn.question_attempts a
    where a.user_id = :u and a.confidence is not null and a.attempt_no = 1
+     and a.context <> 'mock'
   union all
   select ma.confidence, ma.is_correct, ma.question_id
     from learn.mock_answers ma

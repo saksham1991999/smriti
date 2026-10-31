@@ -24,6 +24,7 @@
     "e2e:real": "pnpm run build:e2e-real && playwright test --project=real-api"
   },
   "dependencies": {
+    "@sentry/react": "11.7.0",
     "@smriti/analytics": "workspace:*",
     "@smriti/api-client": "workspace:*",
     "@smriti/app-core": "workspace:*",

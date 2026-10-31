@@ -81,7 +81,10 @@ tests/             pytest (async, against the local Postgres)
 - **Errors.** Every error is `application/problem+json` with a stable `code`
   (`login_required`, `not_enough_gems`, `idempotency_key_reused`, …).
 - **Idempotency.** Mutations that touch progress or money take `Idempotency-Key`; the first
-  response is replayed for 24 h, and a reused key with another body is a 422.
+  response is replayed for 24 h, and a reused key with another body is a 422. Every mutation
+  declares the header in OpenAPI unless `tests/test_idempotency_audit.py` lists why it doesn't
+  need one (an id in the body, a DELETE, a one-time secret, a webhook); a new mutation fails that
+  test until it does one or the other. All mock and daily-challenge mutations take it.
 - **Sync.** `POST /v1/sync/events` stores each event once (`learn.sync_events` is the idempotency
   store) and applies it in its own savepoint, so one bad event is rejected alone. Each event is
   placed on the local day of its own `tz`. The server then recomputes activity days, the streak,
@@ -171,6 +174,7 @@ pnpm --filter @smriti/api-client generate     # writes packages/api-client/opena
 | GET | `/v1/me/summary` | today, streak, entitlement and limits for Home |
 | POST | `/v1/sync/events` | apply a batch of outbox events |
 | GET | `/v1/sync/state` | state sections, or only those changed `?since=` |
+| POST | `/v1/analytics/events` | packages/analytics batches (1–100 events, 256 KB, `RATE_ANALYTICS_PER_MIN`): checked against `packages/analytics/catalogue.json`, the profile's age band, `analytics_opt_out` and guardian consent; unknown props, personal-data names and free text are removed; rows go to ClickHouse (`CLICKHOUSE_URL`) or locally to `ANALYTICS_EVENTS_FILE`; 503 when neither. See `docs/contracts/analytics-ingest.md` |
 | GET | `/v1/catalog/exams`, `/v1/catalog/subjects` | catalogue |
 | GET | `/v1/catalog/chapters/{chapter_id}`, `/v1/catalog/topics/{topic_id}` | chapter and topic with bundle links |
 | GET | `/v1/content/manifest` | the current content manifest for an exam and locale |
@@ -222,6 +226,9 @@ pnpm --filter @smriti/api-client generate     # writes packages/api-client/opena
 | POST | `/v1/tutor/sessions/{session_id}/messages` | ask (SSE: delta, replace, safety, citations, chips, quota, done) |
 | POST | `/v1/tutor/ask/card`, `/v1/tutor/ask/question` | ask about a card or a question (SSE, `session` event first) |
 | POST | `/v1/tutor/messages/{message_id}/feedback` | thumbs up or down with reasons |
+| GET | `/v1/ai/doubt-photos/{id}/similar?count=` | AI-19: course concepts the confirmed question matches and published practice questions on them (a PRC-03 fixed set) |
+| POST, GET | `/v1/roleplay/chats`, `/v1/roleplay/chats/{id}` | AI-21: start (or resume) the role play for a published card; the chat with goals met and the summary. See `docs/contracts/roleplay.md` |
+| POST | `/v1/roleplay/chats/{id}/turns`, `.../wrap-up` | a suggested reply or typed text (under-13s: replies only); end now |
 | POST, GET | `/v1/content/reports` | report content (SET-24); my reports |
 
 ### Social (Phase 2)
@@ -279,6 +286,8 @@ Every guardian call needs a live `app.guardian_links` row and an active consent 
 | GET, POST | `/v1/guardian/learners/{id}/pro`, `.../pro/verify`, `.../pro/cancel` | PAY-17: a plan on the child's account with `payer = guardian`; only the guardian manages it |
 | GET, DELETE | `/v1/guardian/learners/{id}/friends`, `.../friends/{friend_id}` | the parent friends list (B13) |
 | GET | `/v1/me/limits` | the child's limits for today, cached by the device |
+| GET | `/v1/guardian/consent-notice?locale=` | the current consent notice version and full-notice URL (owner flags `auth.consent_notice_version`, `auth.consent_notice_url`); `published: false` until set. Confirm, accept and child creation answer 409 `consent_notice_outdated` when the client's `notice_version` is stale |
+| DELETE | `/v1/guardian/consent-requests/{id}` | the teen cancels a pending consent request (204) |
 | POST | `/v1/me/time-requests` | "Ask for 15 more minutes": pushes every linked guardian |
 
 ### Plans (PRD §11.2)
@@ -291,3 +300,5 @@ Every guardian call needs a live `app.guardian_links` row and an active consent 
 | POST, DELETE | `/v1/billing/family/members`, `.../members/{user_id}` | the payer adds a linked child; the payer removes someone or a member leaves |
 | POST, DELETE | `/v1/billing/family/invites`, `.../invites/{id}` | a code for an adult (shown once), or withdraw it |
 | POST | `/v1/billing/family/invites/{code}/accept` | an adult joins (minors join through Parent mode) |
+| POST, DELETE | `/v1/billing/child-payment-links`, `.../child-payment-links/{id}` | PAY-17: a teen makes a short-lived pay link (`pay.child_link_ttl_h`, one open at a time) for a guardian, or withdraws it |
+| GET, POST | `/v1/billing/child-payment-links/{token}`, `.../{token}/subscription`, `.../{token}/verify` | the guardian's side, without signing in: what the link pays for, then the Razorpay checkout (`Idempotency-Key` required) and its verification; IP rate-limited |

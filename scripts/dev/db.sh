@@ -7,6 +7,10 @@
 #   scripts/dev/db.sh status  show what is running
 #   scripts/dev/db.sh psql    open psql on the dev database
 #
+# SMRITI_DB_EXTERNAL=1 uses a Postgres and Redis that are already running on PGPORT and
+# REDIS_PORT (CI's containers) instead of starting local ones; `up` and `reset` then only
+# build the databases. PGBIN must hold psql (for example PGBIN=/usr/bin).
+#
 # There is no Supabase stack here, so supabase/local/*.sql adds the Supabase roles and a
 # small `auth` schema shim before the migrations run. Those files never go to production.
 set -euo pipefail
@@ -118,6 +122,10 @@ build_db() {
   if [ -f "$ROOT/supabase/seed.sql" ]; then
     apply_sql "$db" "$ROOT/supabase/seed.sql"
   fi
+  # Local-only rows (dev quests); release runs `migrate --seed`, which never reads this file.
+  if [ -f "$ROOT/supabase/seed_dev.sql" ]; then
+    apply_sql "$db" "$ROOT/supabase/seed_dev.sql"
+  fi
   log "$db: $count migrations applied, seed loaded"
 }
 
@@ -125,11 +133,19 @@ db_exists() {
   psql_admin -d postgres -tAc "select 1 from pg_database where datname = '$1'" | grep -q 1
 }
 
-cmd_up() {
+start_servers() {
   mkdir -p "$DEV"
+  if [ "${SMRITI_DB_EXTERNAL:-}" = "1" ]; then
+    log "using the running Postgres on $PGPORT and Redis on $REDIS_PORT"
+    return
+  fi
   init_cluster
   start_pg
   start_redis
+}
+
+cmd_up() {
+  start_servers
   for db in "${DB_NAMES[@]}"; do
     if ! db_exists "$db"; then
       build_db "$db"
@@ -140,15 +156,12 @@ cmd_up() {
 }
 
 cmd_reset() {
-  mkdir -p "$DEV"
-  init_cluster
-  start_pg
-  start_redis
+  start_servers
   for db in "${DB_NAMES[@]}"; do
     build_db "$db"
   done
   # A named pair shares Redis with other worktrees, so only the default reset flushes it.
-  if [ "$DB_NAME" = "smriti" ]; then
+  if [ "$DB_NAME" = "smriti" ] && [ "${SMRITI_DB_EXTERNAL:-}" != "1" ]; then
     redis-cli -p "$REDIS_PORT" flushall >/dev/null
   fi
   log "reset done"

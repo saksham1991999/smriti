@@ -11,6 +11,7 @@ import { getResponse, http, HttpResponse, type RequestHandler } from "msw";
 import type { SyncEventsRequest, WireEvent } from "@smriti/app-core";
 import { FIXTURE_EXAMS, fixtureConfig } from "./fixtures";
 import { computeState, emptyDb, validateEvent, type FakeDbData, type FakeUser } from "./state";
+import { createPhase2Handlers } from "./phase2";
 
 export interface FakeApiOptions {
   baseUrl: string;
@@ -119,6 +120,7 @@ export function createFakeApi(opts: FakeApiOptions): FakeApi {
   const byEmail = (email: string) => Object.values(data.users).find((x) => x.email === email && !x.deletedAt);
 
   const handlers: RequestHandler[] = [
+    ...createPhase2Handlers({ url, authed, unauthorized, now, loadContent: opts.loadContent, users: () => data.users }),
     // ── Dev auth (sync contract "Dev auth") ──────────────────────────────────
     http.post(url("/v1/dev/auth/anonymous"), () => session(newUser(true, null, null), "anonymous")),
     http.post(url("/v1/dev/auth/google"), async ({ request }) => {

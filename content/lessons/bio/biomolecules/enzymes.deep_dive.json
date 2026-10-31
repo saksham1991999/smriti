@@ -1,0 +1,640 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.biomolecules.enzymes:deep_dive",
+  "topic": "bio.biomolecules.enzymes",
+  "mode": "deep_dive",
+  "estimated_minutes": 9,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "bio.biomolecules.enzymes.core.enzymes-bio"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "What an enzyme is",
+        "hi": "एंजाइम क्या है"
+      },
+      "subtopic": "bio.biomolecules.enzymes.core",
+      "card_ids": [
+        "bio.biomolecules.enzymes:dd:01",
+        "bio.biomolecules.enzymes:dd:02",
+        "bio.biomolecules.enzymes:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Reactions, pathways and activation energy",
+        "hi": "अभिक्रियाएँ, पथ और सक्रियण ऊर्जा"
+      },
+      "subtopic": "bio.biomolecules.enzymes.core",
+      "card_ids": [
+        "bio.biomolecules.enzymes:dd:04",
+        "bio.biomolecules.enzymes:dd:05",
+        "bio.biomolecules.enzymes:dd:06",
+        "bio.biomolecules.enzymes:dd:07"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "What changes enzyme activity",
+        "hi": "एंजाइम सक्रियता को क्या बदलता है"
+      },
+      "subtopic": "bio.biomolecules.enzymes.core",
+      "card_ids": [
+        "bio.biomolecules.enzymes:dd:08",
+        "bio.biomolecules.enzymes:dd:09"
+      ],
+      "estimated_minutes": 1
+    },
+    {
+      "id": "bite-4",
+      "title": {
+        "en": "Classes and co-factors",
+        "hi": "वर्ग और सहकारक"
+      },
+      "subtopic": "bio.biomolecules.enzymes.core",
+      "card_ids": [
+        "bio.biomolecules.enzymes:dd:10",
+        "bio.biomolecules.enzymes:dd:11",
+        "bio.biomolecules.enzymes:dd:12",
+        "bio.biomolecules.enzymes:dd:13",
+        "bio.biomolecules.enzymes:dd:14",
+        "bio.biomolecules.enzymes:dd:15"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.biomolecules.enzymes:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Proteins with a pocket",
+        "hi": "जेब वाले प्रोटीन"
+      },
+      "body": {
+        "en": "Almost all enzymes are proteins; some nucleic acids that behave like enzymes are called ribozymes. When an enzyme chain folds into its tertiary structure, it criss-crosses itself and makes crevices or pockets. One such pocket is the active site, into which the substrate fits. Through the active site, enzymes catalyse reactions at a high rate.\n\nInorganic catalysts work best at high temperature and pressure, but enzymes are damaged at high temperatures, say above 40°C. Enzymes from organisms of hot vents and sulphur springs are an exception: they stay active up to 80 to 90°C. Thermal stability is an important quality of these thermophilic enzymes.",
+        "hi": "लगभग सभी एंजाइम प्रोटीन हैं; कुछ न्यूक्लिक अम्ल जो एंजाइम जैसा व्यवहार करते हैं, राइबोज़ाइम कहलाते हैं। जब एंजाइम की शृंखला अपनी तृतीयक संरचना में मुड़ती है, तो वह स्वयं को कई जगह काटती है और दरारें या जेबें बनती हैं। ऐसी एक जेब सक्रिय स्थल है, जिसमें क्रियाधार बैठता है। सक्रिय स्थल के द्वारा एंजाइम अभिक्रियाओं को तेज़ दर से उत्प्रेरित करते हैं।\n\nअकार्बनिक उत्प्रेरक ऊँचे ताप और दाब पर सबसे अच्छा काम करते हैं, पर एंजाइम ऊँचे ताप पर, मान लीजिए 40°C से ऊपर, क्षतिग्रस्त हो जाते हैं। गर्म स्रोतों और गंधक के झरनों के जीवों के एंजाइम अपवाद हैं: वे 80 से 90°C तक सक्रिय रहते हैं। इन तापरागी एंजाइमों का एक महत्त्वपूर्ण गुण ताप-स्थायित्व है।"
+      },
+      "media": "img.biomolecules.active-site",
+      "highlights": [
+        {
+          "term": {
+            "en": "active site",
+            "hi": "सक्रिय स्थल"
+          },
+          "definition": {
+            "en": "A crevice or pocket of the enzyme into which the substrate fits.",
+            "hi": "एंजाइम की वह दरार या जेब जिसमें क्रियाधार बैठता है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:02",
+      "type": "worked_example",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Without an enzyme, about 200 molecules of carbonic acid form in an hour. With carbonic anhydrase, about 600,000 form every second. About how many times faster is the catalysed reaction?",
+        "hi": "एंजाइम के बिना एक घंटे में कार्बोनिक अम्ल के लगभग 200 अणु बनते हैं। कार्बोनिक ऐनहाइड्रेज़ के साथ हर सेकंड लगभग 600,000 बनते हैं। उत्प्रेरित अभिक्रिया लगभग कितने गुना तेज़ है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Put both rates in the same unit. An hour has 3600 seconds, so with the enzyme about 600,000 × 3600 = 2,160,000,000 molecules form per hour.",
+          "hi": "दोनों दरों को एक ही इकाई में लाइए। एक घंटे में 3600 सेकंड होते हैं, इसलिए एंजाइम के साथ प्रति घंटा लगभग 600,000 × 3600 = 2,160,000,000 अणु बनते हैं।"
+        },
+        {
+          "en": "Divide by the uncatalysed rate: 2,160,000,000 ÷ 200 = 10,800,000.",
+          "hi": "अनुत्प्रेरित दर से भाग दीजिए: 2,160,000,000 ÷ 200 = 10,800,000।"
+        }
+      ],
+      "answer": {
+        "en": "About 10 million times faster",
+        "hi": "लगभग 10 मिलियन गुना तेज़"
+      },
+      "common_trap": {
+        "en": "Dividing 600,000 by 200 without converting the hour into seconds.",
+        "hi": "घंटे को सेकंड में बदले बिना 600,000 को 200 से भाग देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8.1"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:03",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 1,
+      "question": "q.bio.biomolecules.enzymes.0001"
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:04",
+      "type": "story",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "One pathway, three endings",
+        "hi": "एक पथ, तीन अंत"
+      },
+      "body": {
+        "en": "A chemical reaction breaks and makes bonds; its rate is the amount of product formed per unit time. As a rule of thumb, the rate doubles or halves for every 10°C change in temperature.\n\nGlucose becomes pyruvic acid through ten different enzyme-catalysed reactions: a metabolic pathway. With one or two more reactions, the same pathway ends differently. In our skeletal muscle under anaerobic conditions it forms lactic acid; under normal aerobic conditions, pyruvic acid; and in yeast during fermentation, ethanol.",
+        "hi": "रासायनिक अभिक्रिया में बंध टूटते और बनते हैं; इसकी दर प्रति इकाई समय में बना उत्पाद है। सामान्य नियम के तौर पर, ताप में हर 10°C के परिवर्तन पर दर दोगुनी या आधी हो जाती है।\n\nग्लूकोज़ दस अलग-अलग एंजाइम-उत्प्रेरित अभिक्रियाओं से पाइरुविक अम्ल बनता है: यह एक उपापचयी पथ है। एक या दो और अभिक्रियाओं के साथ यही पथ अलग ढंग से समाप्त होता है। हमारी कंकाल पेशी में अवायवीय दशा में लैक्टिक अम्ल बनता है; सामान्य वायवीय दशा में पाइरुविक अम्ल; और यीस्ट में किण्वन के समय एथेनॉल।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8.1"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Lowering the hill",
+        "hi": "पहाड़ी को नीचा करना"
+      },
+      "body": {
+        "en": "The substrate (S) must diffuse to the active site and bind, forming an obligatory, short-lived enzyme-substrate complex (ES). While bound, the substrate takes a new structure, the transition state, and soon the product is released.\n\nOn an energy graph, S must pass through this much higher energy transition state on its way to the product P, whether the reaction is exothermic (P lower than S) or endothermic. The difference between the energy of S and that of the transition state is the activation energy. Enzymes bring this barrier down, like a tunnel through a hill instead of a road over it, so S turns into P more easily.",
+        "hi": "क्रियाधार (S) को सक्रिय स्थल तक विसरित होकर बँधना होता है, जिससे एक अनिवार्य, अल्पकालिक एंजाइम-क्रियाधार सम्मिश्र (ES) बनता है। बँधे रहते समय क्रियाधार एक नई संरचना, संक्रमण अवस्था, लेता है, और जल्दी ही उत्पाद मुक्त हो जाता है।\n\nऊर्जा आलेख पर S को उत्पाद P तक पहुँचने के लिए इस बहुत ऊँची ऊर्जा वाली संक्रमण अवस्था से गुज़रना पड़ता है, चाहे अभिक्रिया ऊष्माक्षेपी हो (P, S से नीचे) या ऊष्माशोषी। S की ऊर्जा और संक्रमण अवस्था की ऊर्जा का अंतर सक्रियण ऊर्जा है। एंजाइम इस बाधा को नीचा कर देते हैं, जैसे पहाड़ी के ऊपर की सड़क के बजाय उसके भीतर की सुरंग, ताकि S आसानी से P में बदल जाए।"
+      },
+      "media": "img.biomolecules.hill-tunnel",
+      "highlights": [
+        {
+          "term": {
+            "en": "activation energy",
+            "hi": "सक्रियण ऊर्जा"
+          },
+          "definition": {
+            "en": "Energy of the transition state minus the average energy of S.",
+            "hi": "संक्रमण अवस्था की ऊर्जा में से S की औसत ऊर्जा घटाकर।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8.2, Figure 9.4"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:06",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Put the catalytic cycle in order.",
+        "hi": "उत्प्रेरक चक्र को क्रम में रखिए।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "s1",
+            "text": {
+              "en": "The substrate binds to the active site.",
+              "hi": "क्रियाधार सक्रिय स्थल से बँधता है।"
+            }
+          },
+          {
+            "id": "s2",
+            "text": {
+              "en": "Binding makes the enzyme change shape and fit more tightly around the substrate.",
+              "hi": "बंधन से एंजाइम आकृति बदलकर क्रियाधार के चारों ओर और कसकर बैठता है।"
+            }
+          },
+          {
+            "id": "s3",
+            "text": {
+              "en": "The active site breaks the substrate's bonds and an enzyme-product complex forms.",
+              "hi": "सक्रिय स्थल क्रियाधार के बंध तोड़ता है और एंजाइम-उत्पाद सम्मिश्र बनता है।"
+            }
+          },
+          {
+            "id": "s4",
+            "text": {
+              "en": "The products are released and the free enzyme is ready for another substrate.",
+              "hi": "उत्पाद मुक्त होते हैं और मुक्त एंजाइम दूसरे क्रियाधार के लिए तैयार होता है।"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: E + S, ES, EP, then E + P.",
+          "hi": "सही: E + S, ES, EP, फिर E + P।"
+        },
+        "wrong": {
+          "en": "Binding comes first and release comes last.",
+          "hi": "बंधन सबसे पहले और मुक्ति सबसे अंत में।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:07",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.enzymes.0002"
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Temperature, pH, substrate and inhibitors",
+        "hi": "ताप, pH, क्रियाधार और संदमक"
+      },
+      "body": {
+        "en": "Anything that alters the tertiary structure can change enzyme activity. Each enzyme works best at its optimum temperature and optimum pH, and activity falls on both sides. Low temperature keeps the enzyme temporarily inactive; high temperature destroys activity, because proteins are denatured by heat.\n\nAs substrate concentration rises, the velocity rises at first, then reaches a maximum, Vmax, that more substrate cannot exceed. The enzyme molecules are fewer than the substrate molecules, and once they are all occupied none are free to bind more.\n\nA chemical that binds and shuts off activity is an inhibitor. A competitive inhibitor closely resembles the substrate and competes for the binding site: malonate inhibits succinic dehydrogenase because it resembles the substrate succinate. Such inhibitors are often used to control bacterial pathogens.",
+        "hi": "जो कुछ भी तृतीयक संरचना बदले वह एंजाइम सक्रियता बदल सकता है। हर एंजाइम अपने इष्टतम ताप और इष्टतम pH पर सबसे अच्छा काम करता है, और दोनों ओर सक्रियता घटती है। कम ताप एंजाइम को अस्थायी रूप से निष्क्रिय रखता है; ऊँचा ताप सक्रियता नष्ट कर देता है, क्योंकि ऊष्मा से प्रोटीन विकृत हो जाते हैं।\n\nक्रियाधार की सांद्रता बढ़ने पर वेग पहले बढ़ता है, फिर एक अधिकतम, Vmax, तक पहुँचता है जिसे और क्रियाधार पार नहीं कर सकता। एंजाइम अणु क्रियाधार अणुओं से कम होते हैं, और सबके भर जाने पर कोई और बँधने के लिए खाली नहीं रहता।\n\nजो रसायन बँधकर सक्रियता बंद कर दे वह संदमक है। स्पर्धी संदमक क्रियाधार से बहुत मिलता-जुलता होता है और बंधन स्थल के लिए स्पर्धा करता है: मैलोनेट सक्सिनिक डीहाइड्रोजिनेज़ को संदमित करता है क्योंकि वह क्रियाधार सक्सिनेट जैसा है। ऐसे संदमक प्रायः जीवाणु रोगजनकों के नियंत्रण में काम आते हैं।"
+      },
+      "media": "img.biomolecules.active-site",
+      "highlights": [
+        {
+          "term": {
+            "en": "competitive inhibitor",
+            "hi": "स्पर्धी संदमक"
+          },
+          "definition": {
+            "en": "A substrate look-alike that competes for the binding site.",
+            "hi": "क्रियाधार जैसा अणु जो बंधन स्थल के लिए स्पर्धा करता है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8.4, Figure 9.5"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:09",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.enzymes.0003"
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Six classes",
+        "hi": "छह वर्ग"
+      },
+      "body": {
+        "en": "Enzymes are divided into 6 classes, each with 4 to 13 subclasses, and named by a four-digit number. Oxidoreductases (dehydrogenases) catalyse oxidoreduction between two substrates. Transferases move a group other than hydrogen from one substrate to another. Hydrolases hydrolyse ester, ether, peptide, glycosidic and other bonds. Lyases remove groups by mechanisms other than hydrolysis, leaving double bonds. Isomerases interconvert optical, geometric or positional isomers. Ligases link two compounds together, joining bonds such as C-O, C-S, C-N and P-O.",
+        "hi": "एंजाइमों को 6 वर्गों में बाँटा गया है, हर वर्ग में 4 से 13 उपवर्ग हैं, और इनका नाम चार अंकों की संख्या से रखा जाता है। ऑक्सीडोरिडक्टेज़ (डीहाइड्रोजिनेज़) दो क्रियाधारों के बीच ऑक्सीकरण-अपचयन उत्प्रेरित करते हैं। ट्रांसफ़रेज़ हाइड्रोजन के अतिरिक्त कोई समूह एक क्रियाधार से दूसरे पर ले जाते हैं। हाइड्रोलेज़ एस्टर, ईथर, पेप्टाइड, ग्लाइकोसिडिक और अन्य बंधों का जल-अपघटन करते हैं। लायेज़ जल-अपघटन के अतिरिक्त अन्य विधियों से समूह हटाते हैं, जिससे द्विबंध बचते हैं। आइसोमरेज़ प्रकाशिक, ज्यामितीय या स्थितीय समावयवों को आपस में बदलते हैं। लाइगेज़ दो यौगिकों को जोड़ते हैं, जैसे C-O, C-S, C-N और P-O बंध।"
+      },
+      "media": "img.biomolecules.active-site",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8.5"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:11",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Which class catalyses each reaction?",
+        "hi": "हर अभिक्रिया को कौन-सा वर्ग उत्प्रेरित करता है?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Breaking a peptide bond with water",
+              "hi": "पानी से पेप्टाइड बंध तोड़ना"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Interconverting positional isomers",
+              "hi": "स्थितीय समावयवों को आपस में बदलना"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Joining two compounds by a C-N bond",
+              "hi": "दो यौगिकों को C-N बंध से जोड़ना"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Moving a group G from S to S'",
+              "hi": "समूह G को S से S' पर ले जाना"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "hy",
+            "label": {
+              "en": "Hydrolases",
+              "hi": "हाइड्रोलेज़"
+            }
+          },
+          {
+            "id": "is",
+            "label": {
+              "en": "Isomerases",
+              "hi": "आइसोमरेज़"
+            }
+          },
+          {
+            "id": "li",
+            "label": {
+              "en": "Ligases",
+              "hi": "लाइगेज़"
+            }
+          },
+          {
+            "id": "tr",
+            "label": {
+              "en": "Transferases",
+              "hi": "ट्रांसफ़रेज़"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "hy"
+          },
+          {
+            "item": "i2",
+            "bin": "is"
+          },
+          {
+            "item": "i3",
+            "bin": "li"
+          },
+          {
+            "item": "i4",
+            "bin": "tr"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: the class name says what it does.",
+          "hi": "सही: वर्ग का नाम बताता है कि वह क्या करता है।"
+        },
+        "wrong": {
+          "en": "Hydrolases use water; ligases join; transferases move a group.",
+          "hi": "हाइड्रोलेज़ पानी का उपयोग करते हैं; लाइगेज़ जोड़ते हैं; ट्रांसफ़रेज़ समूह ले जाते हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:12",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Co-factors",
+        "hi": "सहकारक"
+      },
+      "body": {
+        "en": "Some enzymes need non-protein co-factors to be catalytically active; the protein part is then called the apoenzyme. There are three kinds.\n\nProsthetic groups are organic and tightly bound to the apoenzyme: in peroxidase and catalase, which break hydrogen peroxide into water and oxygen, haem is the prosthetic group and part of the active site. Co-enzymes are organic too, but bind only transiently, during catalysis, and serve many enzymes; many contain vitamins, as NAD and NADP contain niacin. Metal ions bind the active site and the substrate: zinc is a co-factor for carboxypeptidase.\n\nRemove the co-factor and catalytic activity is lost.",
+        "hi": "कुछ एंजाइमों को उत्प्रेरक रूप से सक्रिय होने के लिए अप्रोटीन सहकारक चाहिए; तब प्रोटीन भाग को एपोएंजाइम कहते हैं। सहकारक तीन प्रकार के हैं।\n\nप्रोस्थेटिक समूह कार्बनिक हैं और एपोएंजाइम से कसकर बँधे रहते हैं: पेरॉक्सिडेज़ और कैटालेज़ में, जो हाइड्रोजन पेरॉक्साइड को पानी और ऑक्सीजन में तोड़ते हैं, हीम प्रोस्थेटिक समूह है और सक्रिय स्थल का भाग है। सहएंजाइम भी कार्बनिक हैं, पर केवल उत्प्रेरण के दौरान अस्थायी रूप से बँधते हैं और कई एंजाइमों के काम आते हैं; कई में विटामिन होते हैं, जैसे NAD और NADP में नियासिन। धातु आयन सक्रिय स्थल और क्रियाधार दोनों से बँधते हैं: ज़िंक कार्बोक्सीपेप्टिडेज़ का सहकारक है।\n\nसहकारक हटा दें तो उत्प्रेरक सक्रियता समाप्त हो जाती है।"
+      },
+      "media": "img.biomolecules.active-site",
+      "highlights": [
+        {
+          "term": {
+            "en": "apoenzyme",
+            "hi": "एपोएंजाइम"
+          },
+          "definition": {
+            "en": "The protein part of an enzyme that needs a co-factor.",
+            "hi": "सहकारक पर निर्भर एंजाइम का प्रोटीन भाग।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8.6"
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:13",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort each co-factor by kind.",
+        "hi": "हर सहकारक को उसके प्रकार में छाँटिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Haem in catalase",
+              "hi": "कैटालेज़ में हीम"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "NAD",
+              "hi": "NAD"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "NADP",
+              "hi": "NADP"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Zinc in carboxypeptidase",
+              "hi": "कार्बोक्सीपेप्टिडेज़ में ज़िंक"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "pg",
+            "label": {
+              "en": "Prosthetic group",
+              "hi": "प्रोस्थेटिक समूह"
+            }
+          },
+          {
+            "id": "co",
+            "label": {
+              "en": "Co-enzyme",
+              "hi": "सहएंजाइम"
+            }
+          },
+          {
+            "id": "mi",
+            "label": {
+              "en": "Metal ion",
+              "hi": "धातु आयन"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "pg"
+          },
+          {
+            "item": "i2",
+            "bin": "co"
+          },
+          {
+            "item": "i3",
+            "bin": "co"
+          },
+          {
+            "item": "i4",
+            "bin": "mi"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: tightly bound haem, transient vitamin-based co-enzymes, and a metal ion.",
+          "hi": "सही: कसकर बँधा हीम, अस्थायी विटामिन-आधारित सहएंजाइम, और एक धातु आयन।"
+        },
+        "wrong": {
+          "en": "Haem is the tightly bound one; NAD and NADP are co-enzymes.",
+          "hi": "हीम कसकर बँधा है; NAD और NADP सहएंजाइम हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:14",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 3,
+      "question": "q.bio.biomolecules.enzymes.0004"
+    },
+    {
+      "id": "bio.biomolecules.enzymes:dd:15",
+      "type": "summary",
+      "concepts": [
+        "bio.biomolecules.enzymes.core.enzymes-bio"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Almost all enzymes are proteins; ribozymes are nucleic acids. The substrate fits the active site.",
+          "hi": "लगभग सभी एंजाइम प्रोटीन हैं; राइबोज़ाइम न्यूक्लिक अम्ल हैं। क्रियाधार सक्रिय स्थल में बैठता है।"
+        },
+        {
+          "en": "E + S forms ES, then EP, then E + P; enzymes lower the activation energy.",
+          "hi": "E + S से ES, फिर EP, फिर E + P बनता है; एंजाइम सक्रियण ऊर्जा घटाते हैं।"
+        },
+        {
+          "en": "Optimum temperature and pH; Vmax at saturating substrate; competitive inhibitors resemble the substrate.",
+          "hi": "इष्टतम ताप और pH; संतृप्त क्रियाधार पर Vmax; स्पर्धी संदमक क्रियाधार जैसे होते हैं।"
+        },
+        {
+          "en": "6 classes; co-factors: prosthetic groups (haem), co-enzymes (NAD, NADP) and metal ions (zinc).",
+          "hi": "6 वर्ग; सहकारक: प्रोस्थेटिक समूह (हीम), सहएंजाइम (NAD, NADP) और धातु आयन (ज़िंक)।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.8"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

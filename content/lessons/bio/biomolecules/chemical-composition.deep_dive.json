@@ -1,0 +1,511 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.biomolecules.chemical-composition:deep_dive",
+  "topic": "bio.biomolecules.chemical-composition",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Grind, strain, burn",
+        "hi": "पीसना, छानना, जलाना"
+      },
+      "subtopic": "bio.biomolecules.chemical-composition.core",
+      "card_ids": [
+        "bio.biomolecules.chemical-composition:dd:01",
+        "bio.biomolecules.chemical-composition:dd:02",
+        "bio.biomolecules.chemical-composition:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Small molecules and big ones",
+        "hi": "छोटे अणु और बड़े अणु"
+      },
+      "subtopic": "bio.biomolecules.chemical-composition.core",
+      "card_ids": [
+        "bio.biomolecules.chemical-composition:dd:04",
+        "bio.biomolecules.chemical-composition:dd:05",
+        "bio.biomolecules.chemical-composition:dd:06"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Primary and secondary metabolites",
+        "hi": "प्राथमिक और द्वितीयक उपापचयज"
+      },
+      "subtopic": "bio.biomolecules.chemical-composition.core",
+      "card_ids": [
+        "bio.biomolecules.chemical-composition:dd:07",
+        "bio.biomolecules.chemical-composition:dd:08",
+        "bio.biomolecules.chemical-composition:dd:09",
+        "bio.biomolecules.chemical-composition:dd:10"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:01",
+      "type": "story",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "A leaf and a lump of earth",
+        "hi": "एक पत्ती और मिट्टी का एक ढेला"
+      },
+      "body": {
+        "en": "Analyse a leaf and a piece of the earth's crust for elements and you get similar lists: every element in the crust is also found in living tissue. The difference is in the amounts. Carbon is 18.5% of the human body by weight but only 0.03% of the crust; hydrogen is 9.5% against 0.14%. Silicon, 27.7% of the crust, is negligible in the body.",
+        "hi": "किसी पत्ती और पृथ्वी की पर्पटी के एक टुकड़े का तत्त्वों के लिए विश्लेषण कीजिए, तो मिलती-जुलती सूचियाँ मिलती हैं: पर्पटी का हर तत्त्व सजीव ऊतक में भी मिलता है। अंतर मात्रा में है। भार के अनुसार कार्बन मानव शरीर का 18.5% है पर पर्पटी का केवल 0.03%; हाइड्रोजन 9.5% है, जबकि पर्पटी में 0.14%। सिलिकॉन, जो पर्पटी का 27.7% है, शरीर में नगण्य है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Ch 9 introduction, Table 9.1"
+      }
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The acid-soluble pool and the acid-insoluble fraction",
+        "hi": "अम्ल-विलेय पूल और अम्ल-अविलेय अंश"
+      },
+      "body": {
+        "en": "To find which organic compounds a tissue holds, grind it in trichloroacetic acid with a mortar and pestle, then strain the thick slurry through cheesecloth or cotton. Two fractions appear: the filtrate, called the acid-soluble pool, and the retentate, called the acid-insoluble fraction. Thousands of organic compounds are found in the acid-soluble pool.\n\nInorganic matter needs a different, destructive test. Weigh a fresh tissue (wet weight), dry it (dry weight), then burn it fully. The carbon compounds leave as gases, and what remains is ash, which holds inorganic elements such as calcium and magnesium.",
+        "hi": "किसी ऊतक में कौन-से कार्बनिक यौगिक हैं, यह जानने के लिए उसे खरल और मूसल से ट्राइक्लोरोऐसीटिक अम्ल में पीसिए, फिर गाढ़े घोल को चीज़क्लॉथ या रुई से छानिए। दो अंश मिलते हैं: निस्यंद, जिसे अम्ल-विलेय पूल कहते हैं, और छलनी पर रुका भाग, जिसे अम्ल-अविलेय अंश कहते हैं। अम्ल-विलेय पूल में हज़ारों कार्बनिक यौगिक मिलते हैं।\n\nअकार्बनिक पदार्थों के लिए एक अलग, विनाशी परीक्षण चाहिए। ताज़े ऊतक को तौलिए (गीला भार), सुखाइए (शुष्क भार), फिर पूरी तरह जला दीजिए। कार्बन यौगिक गैस बनकर निकल जाते हैं, और जो बचता है वह राख है, जिसमें कैल्शियम और मैग्नीशियम जैसे अकार्बनिक तत्त्व होते हैं।"
+      },
+      "media": "img.biomolecules.mortar-pestle",
+      "highlights": [
+        {
+          "term": {
+            "en": "acid-soluble pool",
+            "hi": "अम्ल-विलेय पूल"
+          },
+          "definition": {
+            "en": "The filtrate after straining tissue ground in trichloroacetic acid.",
+            "hi": "ट्राइक्लोरोऐसीटिक अम्ल में पीसे ऊतक को छानने के बाद का निस्यंद।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.1"
+      }
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:03",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 1,
+      "question": "q.bio.biomolecules.chemical-composition.0001"
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Micromolecules and macromolecules",
+        "hi": "सूक्ष्म अणु और वृहत् अणु"
+      },
+      "body": {
+        "en": "Everything in the acid-soluble pool has a molecular weight from about 18 to 800 daltons (Da). The acid-insoluble fraction holds only four kinds of organic compounds: proteins, nucleic acids, polysaccharides and lipids. Except for lipids, these weigh ten thousand daltons or more.\n\nSo biomolecules are of two kinds: micromolecules, below one thousand daltons, and macromolecules (biomacromolecules), found in the acid-insoluble fraction.\n\nLipids are small, never above 800 Da, yet they land in the insoluble fraction. Grinding breaks the cell membrane and other membranes into vesicles that do not dissolve in water, and these vesicles are strained out with the macromolecules. Lipids are not strictly macromolecules.",
+        "hi": "अम्ल-विलेय पूल की हर चीज़ का अणुभार लगभग 18 से 800 डाल्टन (Da) तक होता है। अम्ल-अविलेय अंश में केवल चार प्रकार के कार्बनिक यौगिक होते हैं: प्रोटीन, न्यूक्लिक अम्ल, बहुशर्कराइड और लिपिड। लिपिड को छोड़कर इनका भार दस हज़ार डाल्टन या उससे अधिक होता है।\n\nअतः जैव अणु दो प्रकार के हैं: सूक्ष्म अणु, जो एक हज़ार डाल्टन से कम हैं, और वृहत् अणु (जैव वृहत् अणु), जो अम्ल-अविलेय अंश में मिलते हैं।\n\nलिपिड छोटे हैं, कभी 800 Da से अधिक नहीं, फिर भी वे अविलेय अंश में आते हैं। पीसने से कोशिका झिल्ली और दूसरी झिल्लियाँ टूटकर पुटिकाएँ बन जाती हैं जो पानी में नहीं घुलतीं, और ये पुटिकाएँ वृहत् अणुओं के साथ छन जाती हैं। लिपिड वास्तव में वृहत् अणु नहीं हैं।"
+      },
+      "media": "img.biomolecules.mortar-pestle",
+      "highlights": [
+        {
+          "term": {
+            "en": "macromolecules",
+            "hi": "वृहत् अणु"
+          },
+          "definition": {
+            "en": "Proteins, nucleic acids and polysaccharides of the acid-insoluble fraction.",
+            "hi": "अम्ल-अविलेय अंश के प्रोटीन, न्यूक्लिक अम्ल और बहुशर्कराइड।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.3"
+      }
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:05",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Where does each compound go after grinding and straining?",
+        "hi": "पीसने और छानने के बाद हर यौगिक कहाँ जाता है?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Amino acids",
+              "hi": "ऐमीनो अम्ल"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Nucleotides",
+              "hi": "न्यूक्लियोटाइड"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Proteins",
+              "hi": "प्रोटीन"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Polysaccharides",
+              "hi": "बहुशर्कराइड"
+            }
+          },
+          {
+            "id": "i5",
+            "text": {
+              "en": "Lipids",
+              "hi": "लिपिड"
+            }
+          },
+          {
+            "id": "i6",
+            "text": {
+              "en": "Nucleic acids",
+              "hi": "न्यूक्लिक अम्ल"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "sol",
+            "label": {
+              "en": "Acid-soluble pool",
+              "hi": "अम्ल-विलेय पूल"
+            }
+          },
+          {
+            "id": "ins",
+            "label": {
+              "en": "Acid-insoluble fraction",
+              "hi": "अम्ल-अविलेय अंश"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "sol"
+          },
+          {
+            "item": "i2",
+            "bin": "sol"
+          },
+          {
+            "item": "i3",
+            "bin": "ins"
+          },
+          {
+            "item": "i4",
+            "bin": "ins"
+          },
+          {
+            "item": "i5",
+            "bin": "ins"
+          },
+          {
+            "item": "i6",
+            "bin": "ins"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Lipids are small, but they leave with the membranes.",
+          "hi": "सही। लिपिड छोटे हैं, पर वे झिल्लियों के साथ निकल जाते हैं।"
+        },
+        "wrong": {
+          "en": "Look again at lipids: membrane pieces form vesicles that do not dissolve.",
+          "hi": "लिपिड को फिर देखिए: झिल्ली के टुकड़े पुटिकाएँ बनाते हैं जो नहीं घुलतीं।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:06",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.chemical-composition.0002"
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:07",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Metabolites",
+        "hi": "उपापचयज"
+      },
+      "body": {
+        "en": "Biomolecules can be called metabolites. Animal tissues contain the familiar categories, such as amino acids, sugars, fatty acids and nucleotides. These are primary metabolites: they have identifiable functions and known roles in normal physiological processes.\n\nPlant, fungal and microbial cells also hold thousands of other compounds: alkaloids, flavonoids, rubber, essential oils, antibiotics, coloured pigments, scents, gums and spices. These are secondary metabolites. We do not yet understand the role of all of them in the organisms that make them, but many are useful to people, and some have ecological importance.\n\nExamples: pigments (carotenoids, anthocyanins), alkaloids (morphine, codeine), terpenoides (monoterpenes, diterpenes), essential oils (lemon grass oil), toxins (abrin, ricin), lectins (concanavalin A), drugs (vinblastin, curcumin) and polymeric substances (rubber, gums, cellulose).",
+        "hi": "जैव अणुओं को उपापचयज कह सकते हैं। जंतु ऊतकों में परिचित श्रेणियाँ मिलती हैं, जैसे ऐमीनो अम्ल, शर्करा, वसा अम्ल और न्यूक्लियोटाइड। ये प्राथमिक उपापचयज हैं: इनके कार्य पहचाने जा सकते हैं और सामान्य कार्यिकी प्रक्रमों में इनकी भूमिकाएँ ज्ञात हैं।\n\nपादप, कवक और सूक्ष्मजीवी कोशिकाओं में हज़ारों अन्य यौगिक भी होते हैं: ऐल्केलॉइड, फ्लेवोनॉइड, रबड़, सगंध तेल, प्रतिजैविक, रंगीन वर्णक, सुगंध, गोंद और मसाले। ये द्वितीयक उपापचयज हैं। इन्हें बनाने वाले जीवों में इन सबकी भूमिका हम अभी नहीं समझते, पर कई मनुष्य के लिए उपयोगी हैं, और कुछ का पारिस्थितिक महत्त्व है।\n\nउदाहरण: वर्णक (कैरोटिनॉइड, ऐंथोसायनिन), ऐल्केलॉइड (मॉर्फ़ीन, कोडीन), टर्पीनॉइड (मोनोटर्पीन, डाइटर्पीन), सगंध तेल (लेमन ग्रास तेल), आविष (एब्रिन, रिसिन), लेक्टिन (कॉन्कानावेलिन A), औषधियाँ (विनब्लास्टिन, करक्यूमिन) और बहुलक पदार्थ (रबड़, गोंद, सेल्यूलोज़)।"
+      },
+      "media": "img.biomolecules.plant-products",
+      "highlights": [
+        {
+          "term": {
+            "en": "secondary metabolites",
+            "hi": "द्वितीयक उपापचयज"
+          },
+          "definition": {
+            "en": "Plant, fungal and microbial compounds such as alkaloids, pigments and gums.",
+            "hi": "ऐल्केलॉइड, वर्णक और गोंद जैसे पादप, कवक और सूक्ष्मजीवी यौगिक।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.2, Table 9.3"
+      }
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:08",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Sort each secondary metabolite into its group.",
+        "hi": "हर द्वितीयक उपापचयज को उसके समूह में छाँटिए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Carotenoids",
+              "hi": "कैरोटिनॉइड"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Anthocyanins",
+              "hi": "ऐंथोसायनिन"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Morphine",
+              "hi": "मॉर्फ़ीन"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Codeine",
+              "hi": "कोडीन"
+            }
+          },
+          {
+            "id": "i5",
+            "text": {
+              "en": "Lemon grass oil",
+              "hi": "लेमन ग्रास तेल"
+            }
+          },
+          {
+            "id": "i6",
+            "text": {
+              "en": "Rubber",
+              "hi": "रबड़"
+            }
+          },
+          {
+            "id": "i7",
+            "text": {
+              "en": "Gums",
+              "hi": "गोंद"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "pig",
+            "label": {
+              "en": "Pigments",
+              "hi": "वर्णक"
+            }
+          },
+          {
+            "id": "alk",
+            "label": {
+              "en": "Alkaloids",
+              "hi": "ऐल्केलॉइड"
+            }
+          },
+          {
+            "id": "oil",
+            "label": {
+              "en": "Essential oils",
+              "hi": "सगंध तेल"
+            }
+          },
+          {
+            "id": "pol",
+            "label": {
+              "en": "Polymeric substances",
+              "hi": "बहुलक पदार्थ"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "pig"
+          },
+          {
+            "item": "i2",
+            "bin": "pig"
+          },
+          {
+            "item": "i3",
+            "bin": "alk"
+          },
+          {
+            "item": "i4",
+            "bin": "alk"
+          },
+          {
+            "item": "i5",
+            "bin": "oil"
+          },
+          {
+            "item": "i6",
+            "bin": "pol"
+          },
+          {
+            "item": "i7",
+            "bin": "pol"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right, these are the groups of NCERT Table 9.3.",
+          "hi": "सही, ये NCERT तालिका 9.3 के समूह हैं।"
+        },
+        "wrong": {
+          "en": "Morphine and codeine are alkaloids; rubber and gums are polymeric substances.",
+          "hi": "मॉर्फ़ीन और कोडीन ऐल्केलॉइड हैं; रबड़ और गोंद बहुलक पदार्थ हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:09",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.chemical-composition.0003"
+    },
+    {
+      "id": "bio.biomolecules.chemical-composition:dd:10",
+      "type": "summary",
+      "concepts": [
+        "bio.biomolecules.chemical-composition.core.chemical-composition-cell"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Acid-soluble pool: micromolecules of about 18 to 800 Da. Acid-insoluble fraction: proteins, nucleic acids, polysaccharides and lipids.",
+          "hi": "अम्ल-विलेय पूल: लगभग 18 से 800 Da के सूक्ष्म अणु। अम्ल-अविलेय अंश: प्रोटीन, न्यूक्लिक अम्ल, बहुशर्कराइड और लिपिड।"
+        },
+        {
+          "en": "Lipids are small but come down with the membrane vesicles; they are not strictly macromolecules.",
+          "hi": "लिपिड छोटे हैं पर झिल्ली की पुटिकाओं के साथ आते हैं; वे वास्तव में वृहत् अणु नहीं हैं।"
+        },
+        {
+          "en": "Ash holds the inorganic elements; water is the most abundant chemical in living organisms.",
+          "hi": "राख में अकार्बनिक तत्त्व होते हैं; सजीवों में सबसे प्रचुर रसायन जल है।"
+        },
+        {
+          "en": "Primary metabolites have known roles; secondary metabolites include alkaloids, pigments, essential oils, toxins, lectins, drugs, rubber and gums.",
+          "hi": "प्राथमिक उपापचयजों की भूमिकाएँ ज्ञात हैं; द्वितीयक उपापचयजों में ऐल्केलॉइड, वर्णक, सगंध तेल, आविष, लेक्टिन, औषधियाँ, रबड़ और गोंद आते हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.1 to §9.3"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

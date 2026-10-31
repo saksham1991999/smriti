@@ -124,6 +124,22 @@ class DoubtPhotoOut(BaseModel):
     created_at: datetime
 
 
+class SimilarConcept(BaseModel):
+    id: str
+    name: dict[str, str]
+    topic_id: str
+
+
+class DoubtSimilarOut(BaseModel):
+    """AI-19 "Concepts used" and "Similar questions": published questions on the concepts the
+    confirmed question matches, as a PRC-03 fixed set (``question_ids``). Empty lists when
+    nothing in the course matches; the app hides the button then."""
+
+    photo_id: uuid.UUID
+    concepts: list[SimilarConcept]
+    question_ids: list[str]
+
+
 class DoubtSolve(MessageIn):
     """AI-19: solve the confirmed question as a tutor chat (SSE, the tutor's events). ``text`` is
     the student's message (the confirmed question or a chip); ``question_text`` saves an edit

@@ -2,12 +2,12 @@
 import { SrsScheduler } from '@smriti/app-core';
 
 import type { ChapterView, SubjectView, TopicView } from '../src/content/repo';
-import { chapterProgress, dueByTopic, filterChapters, subjectProgress } from '../src/services/learn';
+import { chapterProgress, dueByTopic, filterChapters, subjectProgress, unitSections, weakChapters } from '../src/services/learn';
 import type { TopicState } from '../src/services/progress';
 import { createTestApp } from './harness';
 
 const topic = (id: string, minutes: number | null): TopicView => ({ id, name: id, chapterId: 'ch', sort: 0, depth: {}, hasDeepDive: true, hasQuickRevision: true, freeDeepDive: true, minutes });
-const chapter = (id: string, topics: TopicView[]): ChapterView => ({ id, name: id, subjectId: 's', free: true, topics });
+const chapter = (id: string, topics: TopicView[]): ChapterView => ({ id, name: id, subjectId: 's', unitId: 'u', free: true, topics });
 const state = (tp: TopicView, status: TopicState['status'], percent: number): TopicState => ({ topic: tp, status, percent, bitesCompleted: [] });
 
 test('chapter progress picks the topic to continue and the minutes left', () => {
@@ -54,4 +54,30 @@ test('review rows count cards due today per topic', async () => {
   expect(due.get('fx.chapter-a.topic-a')).toBe(2);
   expect(due.has('fx.chapter-a.topic-b')).toBe(false);
   app.stop();
+});
+
+test('the Weak filter needs the owner threshold, enough server answers and the subject’s attempts', () => {
+  const [a, b] = [topic('a', 5), topic('b', 5)];
+  const subject: SubjectView = { id: 's', name: 's', colorFamily: 'blue', chapters: [{ ...chapter('one', [a]), unitId: 'u1' }, { ...chapter('two', [b]), unitId: 'u1' }] };
+  const spot = (topic_id: string, attempts: number) => ({ topic_id, attempts }) as never;
+  const ready = { needs_more_answers: null, items: [spot('a', 6), spot('elsewhere', 50)] };
+  expect(weakChapters(subject, ready, null).offered).toBe(false);
+  expect(weakChapters(subject, { ...ready, needs_more_answers: 12 }, 5).offered).toBe(false);
+  expect(weakChapters(subject, ready, 10).offered).toBe(false);
+  const weak = weakChapters(subject, ready, 5);
+  expect(weak.offered).toBe(true);
+  const sp = subjectProgress(subject, new Map());
+  expect(filterChapters(subject, sp, 'weak', weak).map((c) => c.id)).toEqual(['one']);
+});
+
+test('unit sections show headers only when the manifest names units', () => {
+  const chs = [{ ...chapter('one', []), unitId: 'u1' }, { ...chapter('two', []), unitId: 'u1' }, { ...chapter('three', []), unitId: 'u2' }];
+  const bare: SubjectView = { id: 's', name: 's', colorFamily: 'blue', chapters: chs };
+  expect(unitSections(bare, chs)).toEqual([{ unitId: '', name: null, chapters: chs }]);
+  const named: SubjectView = { ...bare, units: [{ id: 'u1', name: 'Mechanics' }, { id: 'u2', name: 'Waves' }] };
+  expect(unitSections(named, chs).map((u) => [u.name, u.chapters.length])).toEqual([
+    ['Mechanics', 2],
+    ['Waves', 1],
+  ]);
+  expect(unitSections(bare, [])).toEqual([]);
 });

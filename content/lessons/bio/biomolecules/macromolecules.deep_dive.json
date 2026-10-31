@@ -1,0 +1,520 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.biomolecules.macromolecules:deep_dive",
+  "topic": "bio.biomolecules.macromolecules",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "bio.biomolecules.macromolecules.core.proteins-bio",
+    "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Amino acids and proteins",
+        "hi": "ऐमीनो अम्ल और प्रोटीन"
+      },
+      "subtopic": "bio.biomolecules.macromolecules.core",
+      "card_ids": [
+        "bio.biomolecules.macromolecules:dd:01",
+        "bio.biomolecules.macromolecules:dd:02",
+        "bio.biomolecules.macromolecules:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Four levels of protein structure",
+        "hi": "प्रोटीन संरचना के चार स्तर"
+      },
+      "subtopic": "bio.biomolecules.macromolecules.core",
+      "card_ids": [
+        "bio.biomolecules.macromolecules:dd:04",
+        "bio.biomolecules.macromolecules:dd:05",
+        "bio.biomolecules.macromolecules:dd:06",
+        "bio.biomolecules.macromolecules:dd:07"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Polysaccharides",
+        "hi": "बहुशर्कराइड"
+      },
+      "subtopic": "bio.biomolecules.macromolecules.core",
+      "card_ids": [
+        "bio.biomolecules.macromolecules:dd:08",
+        "bio.biomolecules.macromolecules:dd:09",
+        "bio.biomolecules.macromolecules:dd:10"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-4",
+      "title": {
+        "en": "Lipids",
+        "hi": "लिपिड"
+      },
+      "subtopic": "bio.biomolecules.macromolecules.core",
+      "card_ids": [
+        "bio.biomolecules.macromolecules:dd:11",
+        "bio.biomolecules.macromolecules:dd:12",
+        "bio.biomolecules.macromolecules:dd:13"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.biomolecules.macromolecules:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Amino acids",
+        "hi": "ऐमीनो अम्ल"
+      },
+      "body": {
+        "en": "An amino acid has an amino group and an acidic (carboxyl) group on the same carbon, the α-carbon, so they are called α-amino acids. The four groups on this carbon are a hydrogen, the carboxyl group, the amino group and a variable R group.\n\nOnly twenty types occur in proteins. The R group can be a hydrogen (glycine), a methyl group (alanine) or a hydroxy methyl group (serine). By the number of amino and carboxyl groups, there are acidic (glutamic acid), basic (lysine) and neutral (valine) amino acids; tyrosine, phenylalanine and tryptophan are aromatic. The –NH2 and –COOH groups ionise, so the structure changes with pH; one of these forms is the zwitterionic form.",
+        "hi": "ऐमीनो अम्ल में एक ऐमीनो समूह और एक अम्लीय (कार्बोक्सिल) समूह एक ही कार्बन पर होते हैं, जिसे α-कार्बन कहते हैं, इसलिए इन्हें α-ऐमीनो अम्ल कहते हैं। इस कार्बन पर चार समूह होते हैं: एक हाइड्रोजन, कार्बोक्सिल समूह, ऐमीनो समूह और एक परिवर्ती R समूह।\n\nप्रोटीन में केवल बीस प्रकार के ऐमीनो अम्ल मिलते हैं। R समूह हाइड्रोजन (ग्लाइसीन), मेथिल समूह (ऐलानीन) या हाइड्रॉक्सी मेथिल समूह (सेरीन) हो सकता है। ऐमीनो और कार्बोक्सिल समूहों की संख्या के आधार पर अम्लीय (ग्लूटैमिक अम्ल), क्षारीय (लाइसीन) और उदासीन (वैलीन) ऐमीनो अम्ल होते हैं; टाइरोसीन, फ़ेनिलऐलानीन और ट्रिप्टोफ़ैन ऐरोमैटिक हैं। –NH2 और –COOH समूह आयनित होते हैं, इसलिए pH के साथ संरचना बदलती है; इनमें से एक रूप ज़्विटर आयनी रूप है।"
+      },
+      "media": "img.biomolecules.bead-necklace",
+      "highlights": [
+        {
+          "term": {
+            "en": "R group",
+            "hi": "R समूह"
+          },
+          "definition": {
+            "en": "The variable group that makes each amino acid different.",
+            "hi": "परिवर्ती समूह जो हर ऐमीनो अम्ल को अलग बनाता है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.1"
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Proteins are heteropolymers",
+        "hi": "प्रोटीन विषमबहुलक हैं"
+      },
+      "body": {
+        "en": "Proteins are polypeptides: linear chains of amino acids linked by peptide bonds. With twenty types of amino acids as building blocks, a protein is a heteropolymer, not a homopolymer, which repeats only one type of monomer. Picture a string of many different beads against a string of identical ones.\n\nAmino acids our body can make are non-essential; essential amino acids must come from the diet, so dietary proteins are their source.\n\nProteins do many jobs: collagen is intercellular ground substance, trypsin an enzyme, insulin a hormone, antibodies fight infectious agents, receptors handle sensory reception and GLUT-4 lets glucose into cells. Collagen is the most abundant protein in the animal world, and RuBisCO the most abundant in the whole biosphere.",
+        "hi": "प्रोटीन पॉलिपेप्टाइड हैं: पेप्टाइड बंधों से जुड़े ऐमीनो अम्लों की रैखिक शृंखलाएँ। बीस प्रकार के ऐमीनो अम्ल इकाइयों के रूप में होने से प्रोटीन विषमबहुलक है, समबहुलक नहीं, जिसमें केवल एक प्रकार का एकलक दोहराया जाता है। कई अलग-अलग मनकों की माला की तुलना एक जैसे मनकों की माला से कीजिए।\n\nजो ऐमीनो अम्ल हमारा शरीर बना सकता है वे अनावश्यक हैं; आवश्यक ऐमीनो अम्ल आहार से आने चाहिए, इसलिए आहार के प्रोटीन उनका स्रोत हैं।\n\nप्रोटीन कई काम करते हैं: कोलैजन अंतराकोशिकीय आधार पदार्थ है, ट्रिप्सिन एंजाइम, इंसुलिन हॉर्मोन, प्रतिरक्षी संक्रामक कारकों से लड़ते हैं, ग्राही संवेदी ग्रहण करते हैं और GLUT-4 ग्लूकोज़ को कोशिकाओं में ले जाता है। कोलैजन जंतु जगत में सबसे प्रचुर प्रोटीन है, और RuBisCO पूरे जीवमंडल में सबसे प्रचुर।"
+      },
+      "media": "img.biomolecules.bead-necklace",
+      "highlights": [
+        {
+          "term": {
+            "en": "heteropolymer",
+            "hi": "विषमबहुलक"
+          },
+          "definition": {
+            "en": "A polymer of more than one type of monomer.",
+            "hi": "एक से अधिक प्रकार के एकलकों का बहुलक।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.4, Table 9.5"
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:03",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.macromolecules.0001"
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Primary to quaternary",
+        "hi": "प्राथमिक से चतुष्क तक"
+      },
+      "body": {
+        "en": "Primary structure is the sequence of amino acids: which is first, which is second, and so on. The first amino acid is the N-terminal amino acid and the last is the C-terminal amino acid.\n\nThe thread is not a rigid rod. Some portions fold into a helix, like a revolving staircase, and in proteins only right-handed helices are seen. Other regions fold in other forms. This is the secondary structure.\n\nThe long chain also folds upon itself like a hollow woollen ball: the tertiary structure, a three-dimensional view. Tertiary structure is absolutely necessary for many biological activities of proteins.\n\nSome proteins are an assembly of several polypeptides or subunits; how they are arranged is the quaternary structure. Adult human haemoglobin has 4 subunits: two of α type and two of β type.",
+        "hi": "प्राथमिक संरचना ऐमीनो अम्लों का अनुक्रम है: कौन पहला है, कौन दूसरा, इत्यादि। पहला ऐमीनो अम्ल N-अंतस्थ ऐमीनो अम्ल है और अंतिम C-अंतस्थ ऐमीनो अम्ल।\n\nयह धागा कठोर छड़ नहीं है। कुछ भाग घुमावदार सीढ़ी की तरह कुंडली में मुड़ते हैं, और प्रोटीन में केवल दक्षिणावर्ती कुंडलियाँ दिखती हैं। दूसरे भाग अन्य रूपों में मुड़ते हैं। यह द्वितीयक संरचना है।\n\nलंबी शृंखला खोखली ऊनी गेंद की तरह स्वयं पर भी मुड़ती है: यह तृतीयक संरचना है, एक त्रिविमीय रूप। प्रोटीन की कई जैविक क्रियाओं के लिए तृतीयक संरचना नितांत आवश्यक है।\n\nकुछ प्रोटीन कई पॉलिपेप्टाइडों या उपइकाइयों के समूह हैं; उनकी व्यवस्था चतुष्क संरचना है। वयस्क मानव हीमोग्लोबिन में 4 उपइकाइयाँ हैं: दो α प्रकार की और दो β प्रकार की।"
+      },
+      "media": "img.biomolecules.wool-ball",
+      "highlights": [
+        {
+          "term": {
+            "en": "tertiary structure",
+            "hi": "तृतीयक संरचना"
+          },
+          "definition": {
+            "en": "The chain folded upon itself like a hollow woollen ball.",
+            "hi": "स्वयं पर खोखली ऊनी गेंद की तरह मुड़ी शृंखला।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.7"
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:05",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Put the levels of protein structure in order, simplest first.",
+        "hi": "प्रोटीन संरचना के स्तरों को क्रम में रखिए, सबसे सरल पहले।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "s1",
+            "text": {
+              "en": "Primary: the amino acid sequence",
+              "hi": "प्राथमिक: ऐमीनो अम्लों का अनुक्रम"
+            }
+          },
+          {
+            "id": "s2",
+            "text": {
+              "en": "Secondary: helix and other local folds",
+              "hi": "द्वितीयक: कुंडली और अन्य स्थानीय मोड़"
+            }
+          },
+          {
+            "id": "s3",
+            "text": {
+              "en": "Tertiary: the chain folded like a woollen ball",
+              "hi": "तृतीयक: ऊनी गेंद की तरह मुड़ी शृंखला"
+            }
+          },
+          {
+            "id": "s4",
+            "text": {
+              "en": "Quaternary: arrangement of subunits",
+              "hi": "चतुष्क: उपइकाइयों की व्यवस्था"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: sequence, local folds, whole fold, then subunits.",
+          "hi": "सही: अनुक्रम, स्थानीय मोड़, पूरा मोड़, फिर उपइकाइयाँ।"
+        },
+        "wrong": {
+          "en": "Start from the sequence and end with the subunits.",
+          "hi": "अनुक्रम से शुरू कीजिए और उपइकाइयों पर समाप्त।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:06",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.macromolecules.0002"
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:07",
+      "type": "summary",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.proteins-bio"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Proteins are heteropolymers of 20 types of amino acids joined by peptide bonds.",
+          "hi": "प्रोटीन पेप्टाइड बंधों से जुड़े 20 प्रकार के ऐमीनो अम्लों के विषमबहुलक हैं।"
+        },
+        {
+          "en": "Primary: sequence (N-terminal to C-terminal); secondary: right-handed helix; tertiary: woollen-ball fold; quaternary: subunits, as in haemoglobin (2 α, 2 β).",
+          "hi": "प्राथमिक: अनुक्रम (N-अंतस्थ से C-अंतस्थ); द्वितीयक: दक्षिणावर्ती कुंडली; तृतीयक: ऊनी गेंद जैसा मोड़; चतुष्क: उपइकाइयाँ, जैसे हीमोग्लोबिन में (2 α, 2 β)।"
+        },
+        {
+          "en": "Collagen: most abundant protein in animals; RuBisCO: most abundant in the biosphere.",
+          "hi": "कोलैजन: जंतुओं में सबसे प्रचुर प्रोटीन; RuBisCO: जीवमंडल में सबसे प्रचुर।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.4, §9.7"
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Long chains of sugars",
+        "hi": "शर्कराओं की लंबी शृंखलाएँ"
+      },
+      "body": {
+        "en": "Polysaccharides are long chains of sugars, threads built of monosaccharides. Cellulose has only one type of monosaccharide, glucose, so it is a homopolymer. Starch is a variant that stores energy in plant tissues; animals have another variant, glycogen. Inulin is a polymer of fructose.\n\nIn a chain such as glycogen, the right end is the reducing end and the left end the non-reducing end, and the chain has branches. Starch forms helical secondary structures that can hold I2; the starch-I2 complex is blue. Cellulose has no complex helices, so it cannot hold I2.\n\nPlant cell walls are made of cellulose, and paper from plant pulp and cotton fibre are cellulosic. More complex polysaccharides use amino-sugars and modified sugars such as glucosamine and N-acetyl galactosamine; chitin in the exoskeleton of arthropods is one. These are mostly homopolymers.",
+        "hi": "बहुशर्कराइड शर्कराओं की लंबी शृंखलाएँ हैं, एकलशर्कराइडों से बने धागे। सेल्यूलोज़ में केवल एक प्रकार का एकलशर्कराइड, ग्लूकोज़, होता है, इसलिए यह समबहुलक है। स्टार्च इसका एक रूप है जो पादप ऊतकों में ऊर्जा संचित करता है; जंतुओं में दूसरा रूप ग्लाइकोजन है। इनुलिन फ्रक्टोज़ का बहुलक है।\n\nग्लाइकोजन जैसी शृंखला में दायाँ सिरा अपचायी सिरा और बायाँ सिरा अनपचायी सिरा कहलाता है, और शृंखला में शाखाएँ होती हैं। स्टार्च कुंडलित द्वितीयक संरचनाएँ बनाता है जो I2 को थाम सकती हैं; स्टार्च-I2 नीला होता है। सेल्यूलोज़ में जटिल कुंडलियाँ नहीं होतीं, इसलिए वह I2 को नहीं थाम सकता।\n\nपादप कोशिका भित्ति सेल्यूलोज़ की बनी होती है, और पौधों की लुगदी से बना कागज़ तथा रुई के रेशे सेल्यूलोज़ी हैं। अधिक जटिल बहुशर्कराइडों में ऐमीनो-शर्करा और रूपांतरित शर्करा होती हैं, जैसे ग्लूकोसैमीन और N-ऐसीटिल गैलेक्टोसैमीन; संधिपादों के बाह्यकंकाल का काइटिन ऐसा ही है। ये अधिकतर समबहुलक हैं।"
+      },
+      "media": "img.biomolecules.cotton-paper",
+      "highlights": [
+        {
+          "term": {
+            "en": "homopolymer",
+            "hi": "समबहुलक"
+          },
+          "definition": {
+            "en": "A polymer of only one type of monomer.",
+            "hi": "केवल एक प्रकार के एकलक का बहुलक।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.5"
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:09",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Match each polysaccharide to its role.",
+        "hi": "हर बहुशर्कराइड को उसकी भूमिका से मिलाइए।"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Starch",
+              "hi": "स्टार्च"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Glycogen",
+              "hi": "ग्लाइकोजन"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Cellulose",
+              "hi": "सेल्यूलोज़"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Chitin",
+              "hi": "काइटिन"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "ps",
+            "label": {
+              "en": "Energy store in plants",
+              "hi": "पौधों में ऊर्जा भंडार"
+            }
+          },
+          {
+            "id": "as",
+            "label": {
+              "en": "Energy store in animals",
+              "hi": "जंतुओं में ऊर्जा भंडार"
+            }
+          },
+          {
+            "id": "cw",
+            "label": {
+              "en": "Plant cell wall",
+              "hi": "पादप कोशिका भित्ति"
+            }
+          },
+          {
+            "id": "ex",
+            "label": {
+              "en": "Arthropod exoskeleton",
+              "hi": "संधिपाद बाह्यकंकाल"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "ps"
+          },
+          {
+            "item": "i2",
+            "bin": "as"
+          },
+          {
+            "item": "i3",
+            "bin": "cw"
+          },
+          {
+            "item": "i4",
+            "bin": "ex"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Two stores, two structures.",
+          "hi": "सही। दो भंडार, दो संरचनाएँ।"
+        },
+        "wrong": {
+          "en": "Starch is the plant store, glycogen the animal one.",
+          "hi": "स्टार्च पादप भंडार है, ग्लाइकोजन जंतु भंडार।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:10",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.macromolecules.0003"
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Fatty acids, glycerides and phospholipids",
+        "hi": "वसा अम्ल, ग्लिसराइड और फॉस्फोलिपिड"
+      },
+      "body": {
+        "en": "Lipids are generally insoluble in water. A fatty acid has a carboxyl group attached to an R group, which can be a methyl, an ethyl or a longer chain of –CH2 groups. Palmitic acid has 16 carbons and arachidonic acid 20, each counting the carboxyl carbon. Fatty acids are saturated (no double bond) or unsaturated (one or more C=C double bonds).\n\nGlycerol is trihydroxy propane. Fatty acids esterified with glycerol give monoglycerides, diglycerides and triglycerides, called fats or oils by melting point. Oils have a lower melting point, so gingelly oil stays liquid in winter while a fat sets solid.\n\nPhospholipids contain phosphorus and a phosphorylated organic compound. They are found in the cell membrane; lecithin is one.",
+        "hi": "लिपिड सामान्यतः पानी में अविलेय होते हैं। वसा अम्ल में एक कार्बोक्सिल समूह किसी R समूह से जुड़ा होता है, जो मेथिल, एथिल या –CH2 समूहों की लंबी शृंखला हो सकता है। पामिटिक अम्ल में 16 कार्बन और ऐराकिडोनिक अम्ल में 20 कार्बन होते हैं, दोनों में कार्बोक्सिल कार्बन गिनकर। वसा अम्ल संतृप्त (कोई द्विबंध नहीं) या असंतृप्त (एक या अधिक C=C द्विबंध) होते हैं।\n\nग्लिसरॉल ट्राइहाइड्रॉक्सी प्रोपेन है। ग्लिसरॉल से एस्टरीकृत वसा अम्ल मोनोग्लिसराइड, डाइग्लिसराइड और ट्राइग्लिसराइड बनाते हैं, जिन्हें गलनांक के अनुसार वसा या तेल कहते हैं। तेलों का गलनांक कम होता है, इसलिए तिल का तेल सर्दियों में द्रव रहता है जबकि वसा जम जाती है।\n\nफॉस्फोलिपिड में फॉस्फोरस और एक फॉस्फोरिलीकृत कार्बनिक यौगिक होता है। ये कोशिका झिल्ली में मिलते हैं; लेसिथिन इसका एक उदाहरण है।"
+      },
+      "media": "img.biomolecules.oil-fat",
+      "highlights": [
+        {
+          "term": {
+            "en": "unsaturated fatty acid",
+            "hi": "असंतृप्त वसा अम्ल"
+          },
+          "definition": {
+            "en": "A fatty acid with one or more C=C double bonds.",
+            "hi": "एक या अधिक C=C द्विबंध वाला वसा अम्ल।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.1"
+      }
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:12",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+      ],
+      "depth": 3,
+      "question": "q.bio.biomolecules.macromolecules.0004"
+    },
+    {
+      "id": "bio.biomolecules.macromolecules:dd:13",
+      "type": "summary",
+      "concepts": [
+        "bio.biomolecules.macromolecules.core.polysaccharides-lipids"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Cellulose is a homopolymer of glucose; starch stores energy in plants, glycogen in animals; inulin is a polymer of fructose.",
+          "hi": "सेल्यूलोज़ ग्लूकोज़ का समबहुलक है; स्टार्च पौधों में ऊर्जा संचित करता है, ग्लाइकोजन जंतुओं में; इनुलिन फ्रक्टोज़ का बहुलक है।"
+        },
+        {
+          "en": "Starch is helical and holds I2 (blue); cellulose cannot.",
+          "hi": "स्टार्च कुंडलित है और I2 को थामता है (नीला); सेल्यूलोज़ नहीं।"
+        },
+        {
+          "en": "Fats and oils are glycerides; oils melt lower. Phospholipids such as lecithin are in membranes.",
+          "hi": "वसा और तेल ग्लिसराइड हैं; तेल कम ताप पर पिघलते हैं। लेसिथिन जैसे फॉस्फोलिपिड झिल्लियों में होते हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.1, §9.5"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -20,9 +20,10 @@ import {
   type PlayState,
   type TracePoint,
 } from "@smriti/lesson-core";
-import { Button, Icon, IconButton, PressableScale, Text, useTheme } from "@smriti/ui-native";
+import { Button, Icon, IconButton, PressableScale, Text, useTheme, useUI } from "@smriti/ui-native";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { StyleSheet, Text as RNText, View, type GestureResponderEvent, type LayoutChangeEvent, type StyleProp, type ViewStyle } from "react-native";
+import Animated, { ZoomIn } from "react-native-reanimated";
 import Svg, { Polyline } from "react-native-svg";
 
 import { ActivityShell, audioSource, Dots, PetSays, Row, useClocked, useCompletion, type ActivityPlayerProps } from "./activity";
@@ -69,6 +70,8 @@ function TileButton({ tile, state, glow, onPress, testID }: { tile: Tile; state:
       testID={testID}
       accessibilityRole="button"
       accessibilityLabel={label}
+      // The shown move is announced, not only drawn as a ring (never colour alone).
+      accessibilityHint={glow ? t("learn:LRN-18.little_learner_show_me") : undefined}
       accessibilityState={{ selected: state === "picked", disabled: state === "done" }}
       disabled={state === "done"}
       onPress={onPress}
@@ -86,7 +89,7 @@ function TileButton({ tile, state, glow, onPress, testID }: { tile: Tile; state:
       </Text>
       {state === "done" && (
         <View style={styles.badge}>
-          <Icon name="CheckCircle" size={24} color="success" />
+          <Icon name="CheckCircle" size={24} color="successText" />
         </View>
       )}
     </PressableScale>
@@ -121,6 +124,8 @@ function PlaceButton({
       testID={testID}
       accessibilityRole="button"
       accessibilityLabel={filled ? t("learn:LRN-18.little_learner_placed_a11y", { label }) : t("learn:LRN-18.little_learner_place_a11y", { label })}
+      accessibilityHint={glow ? t("learn:LRN-18.little_learner_show_me") : undefined}
+      accessibilityState={{ disabled: !enabled }}
       disabled={!enabled}
       onPress={onPress}
       style={[
@@ -138,6 +143,7 @@ const same = (a: PlayMove | null, b: PlayMove): boolean => !!a && JSON.stringify
 export function PlayPlayer(props: PlayPlayerProps) {
   const { bundle, activityId, bundleVersion, t, audio } = props;
   const theme = useTheme();
+  const { reducedMotion } = useUI();
   const c = theme.colors;
   const plan = useMemo(() => planPlay(bundle, activityId, { bundleVersion }), [bundle, activityId, bundleVersion]);
   const [s, dispatch] = useClocked<PlayState, PlayAction>(reducePlay, () => reducePlay(initialPlay(), { type: "start", plan, now: (props.clock ?? Date.now)() }), props.clock);
@@ -279,7 +285,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
                       testID={`target-${tg.id}`}
                       style={{ position: "absolute", left: tg.x * scene.width - d / 2, top: tg.y * scene.height - d / 2, width: Math.max(d, 48), height: Math.max(d, 48), borderRadius: Math.max(d, 48) / 2 }}
                     >
-                      {filled(tg.id) ? <Icon name="CheckCircle" size={24} color="success" /> : null}
+                      {filled(tg.id) ? <Icon name="CheckCircle" size={24} color="successText" /> : null}
                     </PlaceButton>
                   );
                 })}
@@ -327,7 +333,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
     >
       {s.phase === "complete" ? (
         <View style={[styles.stars, { gap: theme.space[3], paddingVertical: theme.space[8] }]} testID="play-stars" accessibilityLiveRegion="polite">
-          <Icon name="Star" size={32} color="primary" weight="fill" />
+          <Icon name="Star" size={32} color="primaryText" weight="fill" />
           <Text variant="title" align="center">
             {t("learn:LRN-18.little_learner_stars", { n: s.stars })}
           </Text>
@@ -338,6 +344,12 @@ export function PlayPlayer(props: PlayPlayerProps) {
             <View style={styles.grow}>
               <PetSays pet={props.pet} text={petText} testID="play-pet-line" />
             </View>
+            {s.phase === "cheer" ? (
+              // The cheer: a clap that pops in, or just appears with reduced motion. The pet line carries the words.
+              <Animated.View entering={reducedMotion ? undefined : ZoomIn.duration(theme.motion.duration.slow)} testID="play-cheer">
+                <Icon name="HandsClapping" size={32} color="primaryText" weight="fill" />
+              </Animated.View>
+            ) : null}
             {audio && promptSrc && s.phase === "round" ? (
               <IconButton icon="SpeakerHigh" label={t("learn:LRN-18.little_learner_hear_again")} onPress={() => audio.play(promptSrc)} size={48} testID="play-hear-again" />
             ) : null}
@@ -355,7 +367,7 @@ export function PlayPlayer(props: PlayPlayerProps) {
               testID="play-feedback"
               style={[styles.feedback, { gap: theme.space[2], padding: theme.space[3], borderRadius: theme.radius.card, backgroundColor: success ? c.successTint : c.surfaceSunken }]}
             >
-              <Icon name={success ? "CheckCircle" : "ArrowCounterClockwise"} size={24} color={success ? "success" : "inkMuted"} />
+              <Icon name={success ? "CheckCircle" : "ArrowCounterClockwise"} size={24} color={success ? "successText" : "inkMuted"} />
               <Text variant="body" style={styles.grow}>
                 {s.feedback}
               </Text>

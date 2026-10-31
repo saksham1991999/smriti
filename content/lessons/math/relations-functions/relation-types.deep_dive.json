@@ -1,0 +1,382 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions.relation-types:deep_dive",
+  "topic": "math.relations-functions.relation-types",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions.relation-types.core.relation-types-equivalence"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Reflexive, symmetric, transitive",
+        "hi": "स्वतुल्य, सममित, संक्रामक"
+      },
+      "subtopic": "math.relations-functions.relation-types.core",
+      "card_ids": [
+        "math.relations-functions.relation-types:dd:01",
+        "math.relations-functions.relation-types:dd:02",
+        "math.relations-functions.relation-types:dd:03",
+        "math.relations-functions.relation-types:dd:04"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Equivalence relations and classes",
+        "hi": "तुल्यता संबंध और वर्ग"
+      },
+      "subtopic": "math.relations-functions.relation-types.core",
+      "card_ids": [
+        "math.relations-functions.relation-types:dd:05",
+        "math.relations-functions.relation-types:dd:06",
+        "math.relations-functions.relation-types:dd:07",
+        "math.relations-functions.relation-types:dd:08",
+        "math.relations-functions.relation-types:dd:09"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions.relation-types:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Two extreme relations",
+        "hi": "दो चरम संबंध"
+      },
+      "body": {
+        "en": "A relation in a set A is a subset of $A \\times A$. Two subsets sit at the extremes.\n\nThe empty relation relates no element to any element: $R = \\phi$. In a boys' school, 'a is a sister of b' is the empty relation.\n\nThe universal relation relates every element to every element: $R = A \\times A$. In the same school, 'the heights of a and b differ by less than 3 metres' is universal.\n\nBoth are called trivial relations. If $(a, b) \\in R$ we also write a R b.",
+        "hi": "समुच्चय A में संबंध $A \\times A$ का एक उपसमुच्चय है। दो उपसमुच्चय दोनों छोरों पर हैं।\n\nरिक्त संबंध किसी अवयव को किसी भी अवयव से नहीं जोड़ता: $R = \\phi$। लड़कों के विद्यालय में 'a, b की बहन है' रिक्त संबंध है।\n\nसार्वत्रिक संबंध हर अवयव को हर अवयव से जोड़ता है: $R = A \\times A$। उसी विद्यालय में 'a और b की लंबाइयों में 3 मीटर से कम का अंतर है' सार्वत्रिक है।\n\nदोनों को तुच्छ संबंध कहते हैं। यदि $(a, b) \\in R$ हो, तो हम a R b भी लिखते हैं।"
+      },
+      "media": "img.relations-functions-12.house-groups",
+      "highlights": [
+        {
+          "term": {
+            "en": "universal relation",
+            "hi": "सार्वत्रिक संबंध"
+          },
+          "definition": {
+            "en": "$R = A \\times A$.",
+            "hi": "$R = A \\times A$।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2, Definitions 1 and 2, Example 1"
+      }
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Three properties",
+        "hi": "तीन गुण"
+      },
+      "body": {
+        "en": "A relation R in a set A is\nreflexive if $(a, a) \\in R$ for every $a \\in A$;\nsymmetric if $(a_1, a_2) \\in R$ implies $(a_2, a_1) \\in R$;\ntransitive if $(a_1, a_2) \\in R$ and $(a_2, a_3) \\in R$ imply $(a_1, a_3) \\in R$.\n\nLines in a plane with 'is perpendicular to' show that the properties are independent. The relation is symmetric, but no line is perpendicular to itself, so it is not reflexive; and if $L_1 \\perp L_2$ and $L_2 \\perp L_3$, then $L_1$ is parallel to $L_3$, so it is not transitive.",
+        "hi": "समुच्चय A में संबंध R\nस्वतुल्य है यदि $(a, a) \\in R$ हो, हर $a \\in A$ के लिए;\nसममित है यदि $(a_1, a_2) \\in R$ से $(a_2, a_1) \\in R$ प्राप्त हो;\nसंक्रामक है यदि $(a_1, a_2) \\in R$ और $(a_2, a_3) \\in R$ से $(a_1, a_3) \\in R$ प्राप्त हो।\n\nकिसी तल की रेखाओं पर 'लंब है' संबंध दिखाता है कि ये गुण स्वतंत्र हैं। यह संबंध सममित है, पर कोई रेखा स्वयं पर लंब नहीं होती, इसलिए स्वतुल्य नहीं; और यदि $L_1 \\perp L_2$ तथा $L_2 \\perp L_3$, तो $L_1$, $L_3$ के समांतर है, इसलिए संक्रामक नहीं।"
+      },
+      "media": "img.relations-functions-12.house-groups",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2, Definition 3, Example 3"
+      }
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:03",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "R in $\\{1, 2, 3\\}$ is $\\{(1, 1), (2, 2), (3, 3), (1, 2), (2, 3)\\}$. Which of the three properties does it have?",
+        "hi": "$\\{1, 2, 3\\}$ में R = $\\{(1, 1), (2, 2), (3, 3), (1, 2), (2, 3)\\}$ है। इसमें तीनों में से कौन-से गुण हैं?"
+      },
+      "solution_steps": [
+        {
+          "en": "Reflexive: $(1, 1)$, $(2, 2)$ and $(3, 3)$ are all in R.",
+          "hi": "स्वतुल्य: $(1, 1)$, $(2, 2)$ और $(3, 3)$ सभी R में हैं।"
+        },
+        {
+          "en": "Not symmetric: $(1, 2) \\in R$ but $(2, 1) \\notin R$.",
+          "hi": "सममित नहीं: $(1, 2) \\in R$ पर $(2, 1) \\notin R$।"
+        },
+        {
+          "en": "Not transitive: $(1, 2)$ and $(2, 3)$ are in R but $(1, 3)$ is not.",
+          "hi": "संक्रामक नहीं: $(1, 2)$ और $(2, 3)$, R में हैं पर $(1, 3)$ नहीं।"
+        }
+      ],
+      "answer": {
+        "en": "Reflexive only",
+        "hi": "केवल स्वतुल्य"
+      },
+      "common_trap": {
+        "en": "Calling R transitive because no pair breaks it at first glance; check every chain a R b, b R c.",
+        "hi": "पहली नज़र में कोई युग्म न टूटे तो R को संक्रामक मान लेना; हर शृंखला a R b, b R c जाँचिए।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2, Example 4"
+      }
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:04",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 1,
+      "question": "q.math.relations-functions.relation-types.0001"
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Equivalence relations",
+        "hi": "तुल्यता संबंध"
+      },
+      "body": {
+        "en": "A relation that is reflexive, symmetric and transitive is an equivalence relation. 'Is congruent to' on triangles is one: every triangle is congruent to itself, congruence works both ways, and it chains.\n\nOn the integers, $R = \\{(a, b) : 2 \\mid (a - b)\\}$, that is, a − b divisible by 2, is an equivalence relation. Every even integer is related to $0$ and every odd integer to $1$. The evens E and the odds O are disjoint and together make up $\\mathbf{Z}$.\n\nE is the equivalence class of $0$, written $[0]$, and O is $[1]$. In general an equivalence relation in X splits X into mutually disjoint equivalence classes: elements of one class are all related to each other, and no element is related to an element of another class. Like teams on sports day, every child is in exactly one group.",
+        "hi": "जो संबंध स्वतुल्य, सममित और संक्रामक हो, वह तुल्यता संबंध है। त्रिभुजों पर 'सर्वांगसम है' ऐसा ही है: हर त्रिभुज स्वयं के सर्वांगसम है, सर्वांगसमता दोनों ओर चलती है, और यह शृंखला में आगे बढ़ती है।\n\nपूर्णांकों पर $R = \\{(a, b) : 2 \\mid (a - b)\\}$ एक तुल्यता संबंध है, अर्थात् a − b, 2 से विभाज्य हो। हर सम पूर्णांक $0$ से संबंधित है और हर विषम पूर्णांक $1$ से। सम पूर्णांक E और विषम पूर्णांक O असंयुक्त हैं और मिलकर $\\mathbf{Z}$ बनाते हैं।\n\nE, $0$ का तुल्यता वर्ग है, जिसे $[0]$ लिखते हैं, और O, $[1]$ है। व्यापक रूप से, X में कोई तुल्यता संबंध X को परस्पर असंयुक्त तुल्यता वर्गों में बाँट देता है: एक वर्ग के सभी अवयव आपस में संबंधित होते हैं, और कोई अवयव दूसरे वर्ग के अवयव से संबंधित नहीं होता। खेल दिवस की टोलियों की तरह, हर बच्चा ठीक एक टोली में होता है।"
+      },
+      "media": "img.relations-functions-12.house-groups",
+      "highlights": [
+        {
+          "term": {
+            "en": "equivalence class",
+            "hi": "तुल्यता वर्ग"
+          },
+          "definition": {
+            "en": "$[a]$: all the elements related to a.",
+            "hi": "$[a]$: a से संबंधित सभी अवयव।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2, Definition 4, Examples 2 and 5"
+      }
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:06",
+      "type": "interactive",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Equivalence relation or not?",
+        "hi": "तुल्यता संबंध है या नहीं?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "e1",
+            "text": {
+              "en": "'is congruent to' on triangles",
+              "hi": "त्रिभुजों पर 'सर्वांगसम है'"
+            }
+          },
+          {
+            "id": "e2",
+            "text": {
+              "en": "$a - b$ divisible by $2$, on integers",
+              "hi": "पूर्णांकों पर $a - b$ का $2$ से विभाज्य होना"
+            }
+          },
+          {
+            "id": "n1",
+            "text": {
+              "en": "'is perpendicular to' on lines",
+              "hi": "रेखाओं पर 'लंब है'"
+            }
+          },
+          {
+            "id": "n2",
+            "text": {
+              "en": "$a \\le b$ on real numbers",
+              "hi": "वास्तविक संख्याओं पर $a \\le b$"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "eq",
+            "label": {
+              "en": "Equivalence relation",
+              "hi": "तुल्यता संबंध"
+            }
+          },
+          {
+            "id": "no",
+            "label": {
+              "en": "Not an equivalence relation",
+              "hi": "तुल्यता संबंध नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "e1",
+            "bin": "eq"
+          },
+          {
+            "item": "e2",
+            "bin": "eq"
+          },
+          {
+            "item": "n1",
+            "bin": "no"
+          },
+          {
+            "item": "n2",
+            "bin": "no"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: perpendicularity is not reflexive, and $\\le$ is not symmetric.",
+          "hi": "सही: लंबता स्वतुल्य नहीं है, और $\\le$ सममित नहीं है।"
+        },
+        "wrong": {
+          "en": "Test all three properties; one failure is enough to say no.",
+          "hi": "तीनों गुण जाँचिए; एक भी विफल हो तो उत्तर 'नहीं'।"
+        }
+      }
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "On $\\mathbf{Z}$, let a R b when $3$ divides $a - b$. Find the equivalence classes.",
+        "hi": "$\\mathbf{Z}$ पर, a R b तब जब $3$, $a - b$ को विभाजित करे। तुल्यता वर्ग ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Integers related to $0$ are the multiples of $3$: $[0] = \\{\\ldots, -3, 0, 3, 6, \\ldots\\}$.",
+          "hi": "$0$ से संबंधित पूर्णांक $3$ के गुणज हैं: $[0] = \\{\\ldots, -3, 0, 3, 6, \\ldots\\}$।"
+        },
+        {
+          "en": "Integers related to $1$: $[1] = \\{\\ldots, -2, 1, 4, 7, \\ldots\\}$.",
+          "hi": "$1$ से संबंधित पूर्णांक: $[1] = \\{\\ldots, -2, 1, 4, 7, \\ldots\\}$।"
+        },
+        {
+          "en": "Integers related to $2$: $[2] = \\{\\ldots, -1, 2, 5, 8, \\ldots\\}$. These three classes are disjoint and cover $\\mathbf{Z}$.",
+          "hi": "$2$ से संबंधित पूर्णांक: $[2] = \\{\\ldots, -1, 2, 5, 8, \\ldots\\}$। ये तीनों वर्ग असंयुक्त हैं और पूरा $\\mathbf{Z}$ ढकते हैं।"
+        }
+      ],
+      "answer": {
+        "en": "Three classes: $[0]$, $[1]$, $[2]$",
+        "hi": "तीन वर्ग: $[0]$, $[1]$, $[2]$"
+      },
+      "answer_value": {
+        "value": 3,
+        "unit": null,
+        "tolerance": {
+          "abs": 0
+        }
+      },
+      "common_trap": {
+        "en": "Writing a separate class for $3$: $[3] = [0]$.",
+        "hi": "$3$ के लिए अलग वर्ग लिख देना: $[3] = [0]$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§1.2"
+      }
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:08",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.relation-types.0004"
+    },
+    {
+      "id": "math.relations-functions.relation-types:dd:09",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions.relation-types.core.relation-types-equivalence"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Empty relation $R = \\phi$; universal relation $R = A \\times A$.",
+          "hi": "रिक्त संबंध $R = \\phi$; सार्वत्रिक संबंध $R = A \\times A$।"
+        },
+        {
+          "en": "Reflexive: $(a, a) \\in R$ for all a. Symmetric: a R b gives b R a. Transitive: a R b and b R c give a R c.",
+          "hi": "स्वतुल्य: हर a के लिए $(a, a) \\in R$। सममित: a R b से b R a। संक्रामक: a R b और b R c से a R c।"
+        },
+        {
+          "en": "Equivalence relation: all three; it splits the set into disjoint equivalence classes.",
+          "hi": "तुल्यता संबंध: तीनों गुण; यह समुच्चय को असंयुक्त तुल्यता वर्गों में बाँटता है।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Summary"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

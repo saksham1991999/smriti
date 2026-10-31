@@ -69,10 +69,15 @@ insert into billing.products (id, platform, variant_id, store_product_id, price_
 on conflict (id) do nothing;
 
 -- Gem shop basics (me-money flow §3.6 starting prices). Gems are never sold for money (R36).
-insert into game.shop_items (id, kind, price_gems, pro_only, active) values
-  ('streak_freeze', 'freeze', 200, false, true),
-  ('pet_treat',     'treat',   20, false, true)
+-- Names are i18n keys from the ME-17 copy table. Outfits, pots, themes and palace rooms stay out
+-- until their art exists (visual-director); an item is never listed without its picture.
+insert into game.shop_items (id, kind, price_gems, pro_only, active, name_key) values
+  ('streak_freeze', 'freeze', 200, false, true, 'me_money:ME-17.freeze'),
+  ('pet_treat',     'treat',   20, false, true, 'me_money:ME-17.treats')
 on conflict (id) do nothing;
+-- Rows seeded before name_key existed get their key; a key the owner already set is kept.
+update game.shop_items set name_key = 'me_money:ME-17.freeze' where id = 'streak_freeze' and name_key is null;
+update game.shop_items set name_key = 'me_money:ME-17.treats' where id = 'pet_treat' and name_key is null;
 
 -- Flags served by GET /v1/config.
 insert into ops.flags (key, value, description) values

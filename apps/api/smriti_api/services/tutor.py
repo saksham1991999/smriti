@@ -752,6 +752,9 @@ async def prepare(
         flags = await load_flags(session)
         plan.learner, plan.flags = learner, flags
         row = await _session_row(session, auth.user_id, session_id)
+        if row.mode == "roleplay":
+            # A role-play chat has its own script, caps and goals (services/roleplay.py).
+            raise ApiError(409, "use_roleplay", "Send role-play turns to /v1/roleplay")
         replay = await _replay(session, auth.user_id, body.client_message_id)
         if replay is not None:
             plan.events = replay

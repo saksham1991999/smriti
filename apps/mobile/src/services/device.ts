@@ -4,11 +4,13 @@ import { fetch as expoFetch } from 'expo/fetch';
 import { Platform } from 'react-native';
 
 import { DevGoogleSignIn, ExpoAppleSignIn, NativeGoogleSignIn, noApple } from '../auth/providers';
+import { ContentDownloads } from '../content/downloads';
 import { ContentRepo } from '../content/repo';
 import { runDemo } from '../dev/demo';
 import { FakeApiServer } from '../dev/fake-api/server';
 import { readClientEnv, readSwitches } from '../env';
-import { getVariant } from '@smriti/config';
+import { defaultFlags, getVariant } from '@smriti/config';
+import { deviceBundleFiles } from '../platform/bundleFiles';
 import { expoCrypto } from '../platform/crypto';
 import { expoPhotoSource } from '../platform/photos';
 import { deviceSimFiles } from '../platform/simFiles';
@@ -65,6 +67,19 @@ async function createDeviceApp(): Promise<SmritiApp> {
   network.start();
   const stores = await openProfileStores(variant.id);
   const deviceId = await installDeviceId(stores.kv, expoCrypto);
+  const content = new ContentRepo(seedPacks);
+  // Bundles and manifests live under `{CDN}/c/` (TRD §8). No CDN in the build: no downloads.
+  const downloads = new ContentDownloads({
+    repo: content,
+    storage: stores.storage,
+    files: deviceBundleFiles(),
+    fetch: platformFetch,
+    crypto: expoCrypto,
+    clock: () => Date.now(),
+    contentBaseUrl: env.CDN_BASE_URL ? `${env.CDN_BASE_URL.replace(/\/$/, '')}/c` : '',
+    limitBytes: defaultFlags.get('content.cache_limit_mb') * 1024 * 1024,
+    isOnline: () => network.isOnline(),
+  });
   const app = new SmritiApp({
     env: useFake ? { ...env, AUTH_MODE: 'dev', API_BASE_URL: 'http://fake.local' } : env,
     variant,
@@ -83,14 +98,19 @@ async function createDeviceApp(): Promise<SmritiApp> {
         ? new NativeGoogleSignIn({ webClientId: env.GOOGLE_WEB_CLIENT_ID, iosClientId: env.GOOGLE_IOS_CLIENT_ID })
         : new DevGoogleSignIn(),
     apple: Platform.OS === 'ios' ? new ExpoAppleSignIn() : noApple,
-    content: new ContentRepo(seedPacks),
+    content,
     platform: Platform.OS === 'ios' ? 'ios' : Platform.OS === 'android' ? 'android' : 'web',
     appVersion: Constants.expoConfig?.version ?? '1.0.0',
     ...(fake ? {} : { streamFetch: streamingFetch }),
     photos: expoPhotoSource,
     simFiles: deviceSimFiles(),
+    downloads,
+    connection: network,
   });
   await app.boot();
+  downloads.setLimitBytes(app.flags.get('content.cache_limit_mb') * 1024 * 1024);
+  // Earlier downloads become readable again; lessons fall back to "Needs internet" until then.
+  void downloads.hydrate(['en', 'hi'], app.examProfileId()).catch(() => 0);
   // DEV ONLY: design-review demo states on the fake API (`?demo=` on the web preview).
   if (fake && Platform.OS === 'web' && typeof window !== 'undefined' && window.location.search) await runDemo(app, fake, window.location.search);
   onForeground(() => {

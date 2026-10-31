@@ -1,9 +1,12 @@
 export {
   VARIANT_IDS,
   allVariants,
+  brand,
+  deepLinkPrefix,
   getVariant,
   isVariantId,
   variantSchema,
+  type Brand,
   type Variant,
   type VariantId,
   type VariantOverrides,

@@ -556,6 +556,12 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | build | Build a palace | महल बनाएँ |
 | empty | No palaces yet. Your home is a great first one. | अभी कोई महल नहीं। आपका घर पहला अच्छा महल है। |
 | pro_line | Build your own palaces with Pro. | Pro के साथ अपने महल बनाएँ। |
+| intro_dismiss | Hide this tip | यह सुझाव छिपाएँ |
+| when_now | now | अभी |
+| when_today | later today | आज बाद में |
+| when_tomorrow | tomorrow | कल |
+| when_days | in {n, plural, one {# day} other {# days}} | {n} दिन में |
+| missing | This palace isn't on this device. | यह महल इस डिवाइस पर नहीं है। |
 
 **Illustration slots:** palace banners use the template room image (`sunny-scene`, 3:2, from the template; alt from the template, for example "Illustrated living room"). Empty state: `empty-state`, 4:3, the pet standing at an open doorway of a cosy illustrated home with a small key; alt "Your pet at the door of a memory palace".
 **States:** empty (empty state + [Build a palace]); free (own palaces area shows `pro_line` with P2 and [Build a palace] opens PAY-01; "From your lessons" walks work); guest (same as free, PAY-01 asks for AUTH-02 login before checkout); offline (fully works; room images cached while a palace uses them, flow §5.6); little learner (only "From your lessons" walks, big cards); dark (banners unchanged, cards `surface`).
@@ -588,6 +594,12 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | name | Name your palace | अपने महल का नाम रखें |
 | next | Next | आगे |
 | tip | Pick a place you can picture clearly. | ऐसी जगह चुनें जो आप साफ़ सोच सकें। |
+| room_courtyard | Courtyard | आँगन |
+| room_corner | Cosy corner | आरामदायक कोना |
+| room_desk | Study desk | पढ़ाई की मेज़ |
+| room_copy | {room_name} {n} | {room_name} {n} |
+| step | Step {n} of 3 | चरण {n} / 3 |
+| custom_name | My palace | मेरा महल |
 
 **Illustration slots:** each template's cover (`sunny-scene`, 3:2, the template's first room, Indian context: a home living room with a jhoola or diwan, a school corridor with a notice board area left blank, a monument courtyard); alt per template from content. "Mix your own rooms": `sunny-object`, 1:1, a few small room cut-outs arranged like building blocks; alt "Rooms you can arrange".
 **States:** default; owned vs unowned room packs; offline (templates whose images aren't cached show their name on the subject tint with "Needs download"); free (not reachable; PAY-01 first); dark.
@@ -622,6 +634,18 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | split | Split into two | दो में बाँटें |
 | removed | This item was removed. Choose another? | यह चीज़ हटा दी गई। दूसरी चुनें? |
 | pet_tip | Make each scene silly and vivid. Silly sticks! | हर दृश्य को मज़ेदार और साफ़ बनाएँ। मज़ेदार बातें याद रहती हैं! |
+| place_hint | Drag an item onto a spot, or tap the item and then the spot. | किसी चीज़ को किसी जगह पर खींचें, या चीज़ चुनकर फिर जगह चुनें। |
+| place_here | Place here | यहाँ रखें |
+| holding | Now pick a spot for: {item_label} | अब इसके लिए जगह चुनें: {item_label} |
+| spot_empty_a11y | Spot {n}, {room_name}, empty | जगह {n}, {room_name}, खाली |
+| spot_holds_a11y | Spot {n}, {room_name}, holds {item_label} | जगह {n}, {room_name}, इसमें {item_label} |
+| add_items | Add items | चीज़ें जोड़ें |
+| rooms_full | Every spot is taken. Add a room for the rest. | सारी जगहें भर गईं। बाकी के लिए कमरा जोड़ें। |
+| options | Palace options | महल के विकल्प |
+| rename | Palace name | महल का नाम |
+| delete | Delete palace | महल हटाएँ |
+| delete_confirm | Delete {name}? Its spots and scenes go too. | {name} हटाएँ? इसकी जगहें और दृश्य भी हट जाएँगे। |
+| delete_keep | Keep it | रहने दें |
 
 **Illustration slots:** the room images from the template (`sunny-scene` 3:2 or `pano-360` for 360° palaces, which then render in the LAB-10 viewer with spots as hotspots); alt from the template. Spot pictures added in MEM-16 show as small round thumbnails on filled spots (`memory-hook`, 1:1).
 **States:** all placed (tray shows only "Placed", [Walk it] glows); too many items (`too_long` banner with [Split into two]); removed item on a spot (warning ring, `removed` line); offline (fully works; a room without a cached image shows its name and spots as a list); 360° palace (the canvas is the 360° viewer, drag to look, spots at yaw and pitch); dark (canvas unchanged; tray `surface`).
@@ -651,6 +675,10 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | search_ph | Search lists, dates, sets | सूचियाँ, तारीखें, समूह खोजें |
 | use | Use these {n} items | ये {n} चीज़ें इस्तेमाल करें |
 | none_learned | Learn a topic first, then its lists show up here. | पहले कोई टॉपिक सीखें, फिर उसकी सूचियाँ यहाँ दिखेंगी। |
+| go_subjects | Go to subjects | विषयों पर जाएँ |
+| no_decks | No cards yet. Cards you save show up here. | अभी कोई कार्ड नहीं। आपके सेव किए कार्ड यहाँ दिखेंगे। |
+| preview_label | {k, plural, one {# item} other {# items}} in this list | इस सूची में {k} चीज़ें |
+| no_match | Nothing matches that search. | इस खोज से कुछ नहीं मिला। |
 
 **Illustration slots:** none.
 **States:** no learned topics (`none_learned` with [Go to subjects]); offline (topics from downloaded bundles only); dark.
@@ -684,6 +712,7 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | move | Move to another spot | दूसरी जगह ले जाएँ |
 | remove | Remove from palace | महल से हटाएँ |
 | save | Save | सेव करें |
+| close | Close | बंद करें |
 
 **Illustration slots:** spot picture: `memory-hook`, 1:1, generated from the student's scene note plus the item through the forge (the prompt passes moderation; private to the student); alt is the student's scene note, or "Your picture for {item_label}".
 **States:** free (Suggest and Make a picture show P2); generating (P6 tile with `making`, the sheet can be closed and the image arrives later with a Toast); offline (Suggest and Make a picture disabled with "Needs internet"); minor (scene notes are moderated before image generation; no change to UI); dark.
@@ -714,6 +743,10 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | done | Done | हो गया |
 | pet_start | Let's walk! Picture each scene for a moment. | चलिए, सैर करें! हर दृश्य को एक पल सोचें। |
 | pet_end | Walk done! Ready for a quiz? | सैर पूरी! क्विज़ के लिए तैयार? |
+| step_a11y | Spot {n} of {total}, {room_name}: {item_label}. {note} | जगह {n} / {total}, {room_name}: {item_label}। {note} |
+| empty | Place some items first, then walk. | पहले कुछ चीज़ें रखें, फिर सैर करें। |
+| keys_hint | Use the arrow keys to move. | आगे-पीछे जाने के लिए तीर वाली कुंजियाँ दबाएँ। |
+| edit | Edit this spot | यह जगह बदलें |
 
 **Illustration slots:** room images (template, alt from template); spot pictures (`memory-hook`, alt from the scene note). Pet appears as a Pet line at start and end only.
 **States:** own palace vs system walk (system: no edit, the scene text is content `{palace_scene_text}`); audio on (each item is read by Deepgram TTS from cache; captions are the visible text); offline (works; uncached TTS is skipped silently with the audio icon showing a slash); 360° palace (the room view is the LAB-10 viewer turning to each spot; gyro follows LAB-12 comfort settings); little learner (system walks only, audio on, big text); dark (room images unchanged).
@@ -747,6 +780,12 @@ At 200% dynamic type the row becomes a 2 × 2 grid. Hindi labels fit at the same
 | done | Done | हो गया |
 | pet_good | You walked it from memory! | आपने याद से पूरी सैर कर ली! |
 | pet_retry | A few got lost. One more walk will help. | कुछ खो गए। एक और सैर मदद करेगी। |
+| hidden | Hidden item | छिपी चीज़ |
+| keys_hint | Press 1 to 4 to rate. | रेट करने के लिए 1 से 4 दबाएँ। |
+| alt_good | Your pet cheering | आपका पालतू खुश हो रहा है |
+| alt_think | Your pet thinking | आपका पालतू सोच रहा है |
+| missed | Missed spots | छूटी जगहें |
+| next_walk_label | Next walk | अगली सैर |
 
 **Illustration slots:** room images and spot pictures as in MEM-17. Result panel: the pet (Rive `celebrate` when at least 80% right, `think` otherwise); alt "Your pet cheering" / "Your pet thinking".
 **States:** free (not reachable; system walks have no quiz in free); offline (works; ratings go to the outbox); short palace (fewer than 3 spots: only "What's here?"); dark.
@@ -1009,6 +1048,40 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 | practise | Practise sure-but-wrong topics | पक्का-पर-गलत वाले टॉपिक का अभ्यास करें |
 | empty | Tap Sure, 50:50 or Guess when you answer. Your map appears after {k} answers. | उत्तर देते समय पक्का, 50:50 या अंदाज़ा चुनें। {k} उत्तर के बाद आपका नक्शा दिखेगा। |
 | pet_empty | I'll learn how sure you are as you go. | जैसे-जैसे आप आगे बढ़ेंगे, आपके भरोसे का नक्शा बनता जाएगा। |
+| level_sure | Sure | पक्का |
+| level_fifty | 50:50 | 50:50 |
+| level_guess | Guess | अंदाज़ा |
+| offline | You're offline. These numbers may be out of date. | आप ऑफ़लाइन हैं। ये आँकड़े पुराने हो सकते हैं। |
+| empty_alt | Your pet thinking | आपका पालतू सोच रहा है |
+| not_ready | Tap Sure, 50:50 or Guess when you answer. Your map appears once there are enough answers. | उत्तर देते समय पक्का, 50:50 या अंदाज़ा चुनें। काफ़ी उत्तर होने पर आपका नक्शा दिखेगा। |
+| chart_title | How often you're right | आप कितनी बार सही हैं |
+| tagged_line | From {n, plural, one {# answer} other {# answers}} you tagged | आपके टैग किए {n} उत्तरों से |
+| show_table | Show as table | टेबल में दिखाएँ |
+| show_chart | Show as chart | चार्ट में दिखाएँ |
+| no_answers | No answers yet | अभी कोई उत्तर नहीं |
+| bar_a11y | {level}: {pct} percent right from {count} answers, target {target} | {level}: {count} उत्तरों में {pct} प्रतिशत सही, लक्ष्य {target} |
+| col_level | Confidence | भरोसा |
+| col_right | Right | सही |
+| col_answers | Answers | उत्तर |
+| fading_title | Fading soon | जल्द धुंधले होने वाले |
+| fading_note | These topics drop below {target}% recall in the next {days} days. | अगले {days} दिनों में इन टॉपिक की याद {target}% से नीचे जा सकती है। |
+| fading_none | Nothing is fading in the next {days} days. | अगले {days} दिनों में कुछ भी धुंधला नहीं हो रहा। |
+| fading_row | {n, plural, one {# card} other {# cards}} · lowest recall {pct}% | {n} कार्ड · सबसे कम याद {pct}% |
+| unknown_topic | A topic not in this app | ऐसा टॉपिक जो इस ऐप में नहीं है |
+| practise_topic | Practise | अभ्यास करें |
+| review_now | Review now | अभी दोहराएँ |
+| load_failed | This didn't load. Try again later. | यह लोड नहीं हुआ। बाद में फिर कोशिश करें। |
+| sleep_title | Tonight's sleep review | आज रात का सोने से पहले रिव्यू |
+| sleep_ready | {n, plural, one {# hard card} other {# hard cards}} for about {time}. | लगभग {time} के लिए {n} कठिन कार्ड। |
+| sleep_ready_now | {n, plural, one {# hard card} other {# hard cards}} are ready for tonight. | आज रात के लिए {n} कठिन कार्ड तैयार हैं। |
+| sleep_web_note | The reminder comes on your phone. You can also review now. | रिमाइंडर आपके फ़ोन पर आएगा। आप अभी भी दोहरा सकते हैं। |
+| sleep_pro_required | Sleep review is part of Pro. | सोने से पहले रिव्यू Pro में मिलता है। |
+| sleep_off | Sleep review is off. Turn it on in Review settings on your phone. | सोने से पहले रिव्यू बंद है। इसे फ़ोन पर रिव्यू सेटिंग में चालू करें। |
+| sleep_pick_a_time | Pick a bedtime review time in Review settings on your phone. | फ़ोन पर रिव्यू सेटिंग में सोने से पहले रिव्यू का समय चुनें। |
+| sleep_not_confident | A few more evenings of study and we'll know your usual bedtime. | कुछ और शामों की पढ़ाई के बाद हमें आपके सोने का समय पता चल जाएगा। |
+| sleep_no_due_cards | No cards are due tonight. | आज रात कोई कार्ड बाकी नहीं है। |
+| sleep_unavailable | Sleep review isn't available right now. | अभी सोने से पहले रिव्यू उपलब्ध नहीं है। |
+| sleep_pro | See Pro | Pro देखें |
 
 **Illustration slots:** empty state: `empty-state`, 4:3, the pet looking into a friendly hand mirror; alt "Your pet looking in a mirror". No illustrations inside the chart (charts are data UI).
 **States:**
@@ -1367,6 +1440,10 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 | open_topic | Open topic | टॉपिक खोलें |
 | download | Download for offline | ऑफ़लाइन के लिए डाउनलोड करें |
 | data_confirm | This lab needs {s} MB. Download on mobile data? | इस लैब को {s} MB चाहिए। मोबाइल डेटा पर डाउनलोड करें? |
+| data_yes | Use mobile data | मोबाइल डेटा इस्तेमाल करें |
+| data_no | Not now | अभी नहीं |
+| see_explainer | See the explainer | समझाने वाला हिस्सा देखें |
+| needs_net | Needs internet to load ({s} MB) | लोड करने के लिए इंटरनेट चाहिए ({s} MB) |
 
 **Illustration slots:** hero poster: `sunny-scene`, 4:3, the lab's setup or scene from its media request; alt from content.
 **States:** no locked state (every lab is free, R19); downloaded; on mobile data with a large size (`data_confirm` dialog on [Start lab] above `lab.confirm_download_mb`); offline and not cached ([Start lab] becomes [See the explainer] → LAB-05, with "Needs internet to load ({s} MB)"); low-tier device (a caption "Runs in battery saver mode on this phone" for sims); little learner (big [Start] only, no size tiles); dark.
@@ -1530,6 +1607,8 @@ Technique names: Spaced repetition (अंतराल पर दोहराव
 | next_lab | Next lab: {next_lab_title} | अगली लैब: {next_lab_title} |
 | continue / done | Continue / Done | आगे बढ़ें / हो गया |
 | pet | You figured it out by doing it. That sticks! | आपने करके समझा। यह याद रहता है! |
+| explored_title | Nice exploring! | बढ़िया खोजबीन! |
+| skipped | {n, plural, one {# task skipped} other {# tasks skipped}} | {n, plural, one {# काम छोड़ा} other {# काम छोड़े}} |
 
 **Illustration slots:** `pet-cat` / `pet-dog` (Rive `celebrate`) wearing small lab goggles, over the subject tint; alt "Your pet celebrating in lab goggles".
 **States:** tasks skipped (title "Nice exploring!", no confetti, skipped count shown neutrally); offline (works, XP confirmed on sync); little learner (one star row, pet line read aloud); dark.

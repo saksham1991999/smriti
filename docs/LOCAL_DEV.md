@@ -22,7 +22,8 @@ pnpm stack --no-web       # API and worker only
 
 1. **Database.** `db.sh reset` (or `up` with `--keep-db`) on the `smriti_stack` database. This starts
    Postgres on port 54322 and Redis on port 56379, then applies `supabase/local/*.sql`, every migration
-   and `supabase/seed.sql`.
+   and `supabase/seed.sql`, then `supabase/seed_dev.sql` (dev quests for ME-20; local only, release
+   runs `migrate --seed`, which reads `seed.sql` alone).
 2. **Content.** Runs the real content publish (`@smriti/content-publish publish:local`) on `content/`
    into `.dev/stack/content`, as a local build (`--env local`): media that is not approved yet ships as
    unavailable and is listed in `publish-report.json` (`unapproved_media` and the warnings); only

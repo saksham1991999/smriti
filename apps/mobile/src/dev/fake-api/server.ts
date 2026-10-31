@@ -493,6 +493,7 @@ export class FakeApiServer {
       price_paise: 9900,
       intro_price_paise: intro ? 100 : null,
       period: 'month',
+      plan: 'individual',
       entitlement: 'pro',
     });
     return {

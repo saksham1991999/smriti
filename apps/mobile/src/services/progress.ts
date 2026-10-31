@@ -46,6 +46,8 @@ export interface TopicState {
   topic: TopicView;
   percent: number;
   status: 'not_started' | 'in_progress' | 'learned';
+  /** How a learned topic was learned: `test_out` and `placement` use the "Learned (checked)" look. */
+  learnedVia?: 'lesson' | 'test_out' | 'placement' | 'chapter_test' | null;
   bitesCompleted: string[];
 }
 
@@ -68,7 +70,7 @@ export async function loadTopicStates(app: SmritiApp): Promise<Map<string, Topic
   for (const t of topics) {
     const r = rows.find((x) => x.topic_id === t.id);
     const p = progress.find((x) => x.topic_id === t.id && x.mode === 'deep_dive');
-    out.set(t.id, { topic: t, percent: r?.percent ?? 0, status: r?.status ?? 'not_started', bitesCompleted: p?.bites_completed ?? [] });
+    out.set(t.id, { topic: t, percent: r?.percent ?? 0, status: r?.status ?? 'not_started', learnedVia: r?.learned_via ?? null, bitesCompleted: p?.bites_completed ?? [] });
   }
   return out;
 }

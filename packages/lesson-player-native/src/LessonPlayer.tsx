@@ -5,12 +5,15 @@
  * `onEvent` as a sync envelope, in order, for the host to put in the outbox. Props and names follow
  * @smriti/lesson-player-web so both apps wire it the same way.
  */
-import type { TypedBundle } from "@smriti/content-schema";
+import type { TypedBundle } from "@smriti/content-schema/runtime";
 import type { MessageKey } from "@smriti/i18n";
 import {
   currentCard,
   isReadOnly,
   LessonSession,
+  playerRules,
+  shownAnswer,
+  shownOptionIds,
   workedSolution,
   type Answer,
   type AnyQuestion,
@@ -119,6 +122,8 @@ export function LessonPlayer(props: LessonPlayerProps) {
   const viewCard = state.plan?.cards[state.viewIndex] ?? null;
   const card = currentCard(state);
   const readOnly = isReadOnly(state);
+  const rules = playerRules(plan.mode);
+  const gentle = rules.tone === "gentle";
 
   const act = (a: LessonAction) => {
     const before = session.state;
@@ -130,7 +135,12 @@ export function LessonPlayer(props: LessonPlayerProps) {
       scroll.current?.scrollTo({ y: 0, animated: false });
     }
     if (a.type === "try_again") setDraft(initialDraft(currentCard(next)?.question ?? null));
-    if (before.phase === "question" && next.phase === "feedback") props.haptics?.success();
+    if (next.phase === "guided" && before.phase !== "guided") {
+      // Option questions start empty (the child taps the shown answer); the rest show the key.
+      const nq = currentCard(next)?.question ?? null;
+      setDraft(nq && !shownOptionIds(nq) ? shownAnswer(nq) : initialDraft(nq));
+    }
+    if ((before.phase === "question" || before.phase === "guided") && next.phase === "feedback") props.haptics?.success();
     if (before.phase === "question" && (next.phase === "hint" || next.phase === "explain") && a.type === "submit") props.haptics?.error();
     setState(next);
   };
@@ -155,6 +165,12 @@ export function LessonPlayer(props: LessonPlayerProps) {
   const cardsLeft = Math.max(0, total - state.index);
   const shownCard = viewCard ?? card;
   const kind = shownCard?.question ? "question" : (shownCard?.card?.type ?? "explainer");
+  const guided = state.phase === "guided" && !readOnly;
+  // The guided finish marks the key on option questions (the child taps it); on the rest the
+  // inputs show the key and [Continue] submits it (lesson-core shownAnswer).
+  const shown = guided && card?.question ? shownOptionIds(card.question) : null;
+  const guidedKey = guided && card?.question && !shown ? shownAnswer(card.question) : null;
+  const solution = guided && card?.question ? workedSolution(card.question) : null;
 
   return (
     <PlayerProvider value={ctx}>
@@ -164,9 +180,12 @@ export function LessonPlayer(props: LessonPlayerProps) {
           <View style={styles.grow}>
             <SegmentedProgress total={total} done={state.index} current={state.viewIndex} label={t("learn:LES-01.counter", { n: state.viewIndex + 1, total })} />
           </View>
-          <Text variant="label" tone="muted" numeric testID="lesson-counter">
-            {t("learn:LES-01.counter", { n: Math.min(state.viewIndex + 1, total), total })}
-          </Text>
+          {/* Little learners get the dots alone (LES-01); the bar keeps its label for screen readers. */}
+          {rules.counter ? (
+            <Text variant="label" tone="muted" numeric testID="lesson-counter">
+              {t("learn:LES-01.counter", { n: Math.min(state.viewIndex + 1, total), total })}
+            </Text>
+          ) : null}
         </View>
 
         <ScrollView ref={scroll} style={styles.grow} contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
@@ -188,11 +207,13 @@ export function LessonPlayer(props: LessonPlayerProps) {
                     draft={readOnly ? null : draft}
                     onChange={(a) => {
                       props.haptics?.tap();
-                      setDraft(a);
+                      if (shown) act({ type: "submit", answer: a });
+                      else setDraft(a);
                     }}
-                    result={readOnly ? null : state.lastResult}
+                    result={readOnly || guided ? null : state.lastResult}
                     struck={readOnly ? [] : state.struckOptionIds}
-                    disabled={readOnly || state.phase !== "question"}
+                    disabled={readOnly || (state.phase !== "question" && !shown)}
+                    shown={shown ?? undefined}
                   />
                 ) : shownCard.card ? (
                   <CardView card={shownCard.card} readOnly={readOnly} pendingTask={state.pendingTask} act={act} renderSim={props.renderSim} />
@@ -202,7 +223,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
                     {t(sharedKey("read_only_note"))}
                   </Text>
                 ) : null}
-                {state.phase === "question" && !readOnly ? (
+                {state.phase === "question" && !readOnly && rules.confidenceRow ? (
                   <ConfidenceRow value={toUi(confidence)} onChange={(v) => setConfidence(fromUi(v))} testID="confidence-row" />
                 ) : null}
               </View>
@@ -215,9 +236,9 @@ export function LessonPlayer(props: LessonPlayerProps) {
                 <View style={styles.kindRow}>
                   <Icon name="CheckCircle" size={24} color="success" />
                   <Text variant="heading" tone="success">
-                    {state.attempt === 2 ? t("learn:LES-02.second_try") : t("learn:LES-02.correct")}
+                    {gentle ? t("learn:LES-02.little_learner_correct") : state.attempt === 2 ? t("learn:LES-02.second_try") : t("learn:LES-02.correct")}
                   </Text>
-                  {xpGain > 0 ? <Chip label={t("learn:LES-02.xp", { xp: xpGain })} tone="success" /> : null}
+                  {rules.xpChip && xpGain > 0 ? <Chip label={t("learn:LES-02.xp", { xp: xpGain })} tone="success" /> : null}
                 </View>
                 {state.comboNow ? <Text variant="label" tone="streak">{t("learn:LES-02.combo", { n: config.comboStreakLen })}</Text> : null}
               </View>
@@ -227,10 +248,18 @@ export function LessonPlayer(props: LessonPlayerProps) {
           {state.phase === "hint" ? (
             <Card tone="sunken" testID="feedback-hint">
               <View style={styles.stackTight}>
-                <View style={styles.kindRow}>
-                  <Icon name="Lightbulb" size={24} color="warning" />
-                  <Text variant="heading">{t("learn:LES-02.not_quite")}</Text>
-                </View>
+                {gentle ? (
+                  // LES-02 little learner: ArrowCounterClockwise on the sunken band, never "Not quite".
+                  <View style={styles.kindRow}>
+                    <Icon name="ArrowCounterClockwise" size={24} color="primaryText" />
+                    <Text variant="heading">{t("learn:LES-02.little_learner_wrong")}</Text>
+                  </View>
+                ) : (
+                  <View style={styles.kindRow}>
+                    <Icon name="Lightbulb" size={24} color="warning" />
+                    <Text variant="heading">{t("learn:LES-02.not_quite")}</Text>
+                  </View>
+                )}
                 <Text variant="label" tone="muted">
                   {t("learn:LES-02.hint")}
                 </Text>
@@ -239,6 +268,18 @@ export function LessonPlayer(props: LessonPlayerProps) {
                 ) : (
                   <Text>{t("learn:LES-02.wrong_pet_line")}</Text>
                 )}
+              </View>
+            </Card>
+          ) : null}
+
+          {guided ? (
+            <Card tone="sunken" testID="feedback-guided">
+              <View style={styles.stackTight} accessibilityLiveRegion="polite">
+                <View style={styles.kindRow}>
+                  <Icon name="Lightbulb" size={24} color="primaryText" />
+                  <Text variant="heading">{t("learn:LES-02.little_learner_shown_answer")}</Text>
+                </View>
+                {solution?.feynman ? <RichText text={solution.feynman} /> : null}
               </View>
             </Card>
           ) : null}
@@ -259,6 +300,7 @@ export function LessonPlayer(props: LessonPlayerProps) {
             act({ type: "rate", rating: RATING[r] });
           }}
           onAction={act}
+          guidedKey={guidedKey}
           answer={draft}
           confidence={confidence}
           t={t}
@@ -277,6 +319,7 @@ function Footer({
   rated,
   onRate,
   onAction,
+  guidedKey,
   answer,
   confidence,
   t,
@@ -289,6 +332,8 @@ function Footer({
   rated: Rating | undefined;
   onRate: (r: "again" | "hard" | "good" | "easy") => void;
   onAction: (a: LessonAction) => void;
+  /** Guided finish on a question without options: [Continue] submits the shown key. */
+  guidedKey: Answer | null;
   answer: Answer | null;
   confidence: Confidence | null;
   t: Translate;
@@ -343,6 +388,12 @@ function Footer({
           <Button label={t("learn:LES-02.try_again")} onPress={() => onAction({ type: "try_again" })} fullWidth testID="lesson-try-again" />
         </View>
       );
+    case "guided":
+      return guidedKey ? (
+        <View style={styles.footer}>
+          <Button label={t("learn:LES-01.continue")} onPress={() => onAction({ type: "submit", answer: guidedKey })} fullWidth testID="lesson-guided-continue" />
+        </View>
+      ) : null;
     case "explain":
       return (
         <View style={styles.footer}>

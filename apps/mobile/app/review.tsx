@@ -1,12 +1,12 @@
-import { ratingFromLabel, type IntervalPreview, type SrsCardRow } from '@smriti/app-core';
+import { ratingFromLabel, type IntervalPreview, type ReviewRating, type SrsCardRow } from '@smriti/app-core';
 import { useAppStore } from '@smriti/app-core/react';
 import { RichText } from '@smriti/lesson-player-native';
 import type { Confidence as UiConfidence, Rating } from '@smriti/tokens/ui';
 import { Button, ConfidenceRow, IconButton, PetView, RatingButtons, SegmentedProgress, Spinner, StatTile, Text, Toast, useTheme } from '@smriti/ui-native';
 import { useQueryClient } from '@tanstack/react-query';
 import { router, useLocalSearchParams, type Href } from 'expo-router';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AppState, StyleSheet, View } from 'react-native';
 
 import { useApp, useT } from '../src/services/context';
 import { clock } from '../src/services/drill';
@@ -22,6 +22,26 @@ const HALF_PET = 0.5;
 interface Item {
   row: SrsCardRow;
   face: CardFace;
+}
+
+/**
+ * The last rating, held for Undo (flow §5: one step). It is written to the outbox when the next
+ * card is rated, when the session ends or is left, or when the app goes to the background.
+ */
+interface Pending {
+  item: Item;
+  index: number;
+  rating: ReviewRating;
+  confidence: Confidence | null;
+  ms: number;
+  at: number;
+  remembered: number;
+  sureWrong: number;
+}
+
+/** `review_undone.card_type` from the card ref prefix (no card text). */
+function cardType(ref: string): string {
+  return ref.startsWith('q:') ? 'question' : ref.startsWith('d:') || ref.startsWith('u:') ? 'own' : 'content';
 }
 
 /**
@@ -50,6 +70,8 @@ export default function Review() {
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
+  const [pending, setPending] = useState<Pending | null>(null);
+  const pendingRef = useRef<Pending | null>(null);
   const shownAt = useRef(app.now());
   const startedAt = useRef(app.now());
 
@@ -86,7 +108,27 @@ export default function Review() {
   };
   const intervals: Record<Rating, string> = { again: fmt(previews[0]), hard: fmt(previews[1]), good: fmt(previews[2]), easy: fmt(previews[3]) };
 
+  /** Writes the held rating (schedule and `review_rated` together); safe to call twice. */
+  const commit = useCallback(async () => {
+    const p = pendingRef.current;
+    if (!p) return;
+    pendingRef.current = null;
+    setPending(null);
+    await reviews.rate(p.item.row, p.rating, p.confidence, p.ms, p.at);
+  }, [reviews]);
+
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (st) => {
+      if (st !== 'active') void commit();
+    });
+    return () => {
+      sub.remove();
+      void commit();
+    };
+  }, [commit]);
+
   const finish = async () => {
+    await commit();
     setDone(true);
     if (rescue && items) await reviews.finishRescue(items.length, app.now() - startedAt.current);
     void queries.invalidateQueries({ queryKey: ['smriti', 'memory'] });
@@ -96,7 +138,10 @@ export default function Review() {
     if (!item || busy) return;
     setBusy(true);
     const rating = ratingFromLabel(r);
-    await reviews.rate(item.row, rating, confidence, app.now() - shownAt.current);
+    await commit();
+    const hold: Pending = { item, index, rating, confidence, ms: app.now() - shownAt.current, at: app.now(), remembered, sureWrong };
+    pendingRef.current = hold;
+    setPending(hold);
     if (rating > 1) setRemembered((n) => n + 1);
     else if (confidence === 'sure') setSureWrong((n) => n + 1);
     setFlipped(false);
@@ -107,7 +152,23 @@ export default function Review() {
     else setIndex((i) => i + 1);
   };
 
+  /** MEM-03 Undo: drops the held rating and shows that card's answer again. */
+  const undo = () => {
+    const p = pendingRef.current;
+    if (!p) return;
+    pendingRef.current = null;
+    setPending(null);
+    setIndex(p.index);
+    setRemembered(p.remembered);
+    setSureWrong(p.sureWrong);
+    setConfidence(p.confidence);
+    setFlipped(true);
+    shownAt.current = app.now() - p.ms;
+    app.track('review_undone', { card_type: cardType(p.item.row.card_ref) });
+  };
+
   const leave = () => {
+    void commit();
     const left = (items?.length ?? 0) - index;
     if (!done && left > 0 && index > 0) setToast(t('memory_labs:MEM-03.exit_toast', { n: left }));
     void queries.invalidateQueries({ queryKey: ['smriti', 'memory'] });
@@ -156,10 +217,21 @@ export default function Review() {
   }
 
   const face = item!.face;
+  const undoButton = pending ? (
+    <View style={styles.undoRow}>
+      <Button size="sm" variant="ghost" icon="ArrowUUpLeft" label={t('memory_labs:MEM-03.undo')} onPress={undo} testID="review-undo" />
+    </View>
+  ) : null;
   const footer = flipped ? (
-    <RatingButtons intervals={intervals} onRate={(r) => void rate(r)} disabled={busy} testID="review-rate" />
+    <View>
+      {undoButton}
+      <RatingButtons intervals={intervals} onRate={(r) => void rate(r)} disabled={busy} testID="review-rate" />
+    </View>
   ) : (
-    <Button label={t('memory_labs:MEM-03.show_answer')} onPress={() => setFlipped(true)} testID="review-show" />
+    <View>
+      {undoButton}
+      <Button label={t('memory_labs:MEM-03.show_answer')} onPress={() => setFlipped(true)} testID="review-show" />
+    </View>
   );
 
   return (
@@ -205,4 +277,5 @@ const styles = StyleSheet.create({
   tile: { flex: 1 },
   card: { padding: 20, gap: 16, minHeight: 220, justifyContent: 'center' },
   back: { borderTopWidth: StyleSheet.hairlineWidth, paddingTop: 16 },
+  undoRow: { flexDirection: 'row', justifyContent: 'flex-start', marginBottom: 4 },
 });

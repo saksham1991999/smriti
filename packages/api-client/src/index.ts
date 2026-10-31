@@ -19,5 +19,7 @@ export {
   tutorAnswerText,
   tutorEvents,
   type SseEvent,
+  type TutorCallOptions,
+  type TutorHelpline,
   type TutorStreamEvent,
 } from "./sse";

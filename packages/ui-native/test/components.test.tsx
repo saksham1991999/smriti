@@ -61,6 +61,7 @@ import {
   SubjectTile,
   Switch,
   TabBar,
+  TextField,
   Text,
   ThemeScope,
   Timer,
@@ -89,6 +90,11 @@ const flat = (style: unknown): Record<string, unknown> => {
 describe("foundations", () => {
   it("maps every shared icon name to a Phosphor component (parity with ui-web)", () => {
     expect(Object.keys(iconMap).sort()).toEqual([...iconNames].sort());
+  });
+
+  it("loads every icon from its own Phosphor module (src/components/phosphor.js; lint checks it is current)", () => {
+    const missing = Object.entries(iconMap).filter(([, component]) => !component).map(([name]) => name);
+    expect(missing).toEqual([]);
   });
 
   it("names a font file for every family the theme uses", () => {
@@ -327,6 +333,26 @@ describe("inputs", () => {
     const p = screen.getByRole("adjustable", { name: "Year" });
     await fireEvent(p, "accessibilityAction", { nativeEvent: { actionName: "increment" } });
     expect(onChange).toHaveBeenCalledWith("2012");
+  });
+
+  it("TextField: labelled field, hint, error with an icon, counter near the limit", async () => {
+    const onChange = jest.fn();
+    const onSubmit = jest.fn();
+    await renderUI(<TextField label="Your note" value="" onChange={onChange} hint="Only you see this." onSubmit={onSubmit} testID="note" />);
+    const field = screen.getByLabelText("Your note");
+    await fireEvent.changeText(field, "a cue");
+    expect(onChange).toHaveBeenCalledWith("a cue");
+    await fireEvent(field, "submitEditing");
+    expect(onSubmit).toHaveBeenCalled();
+    expect(screen.getByTestId("note-hint")).toBeTruthy();
+    expect(field.props.accessibilityHint).toBe("Only you see this.");
+
+    await renderUI(<TextField label="Email" value="name@" onChange={jest.fn()} error="Enter an email address." hint="ignored" testID="email" />);
+    expect(screen.getByTestId("email-error")).toBeTruthy();
+    expect(screen.queryByTestId("email-hint")).toBeNull();
+
+    await renderUI(<TextField label="Details" value={"x".repeat(95)} onChange={jest.fn()} maxLength={100} multiline />);
+    expect(screen.getByText("5 characters left")).toBeTruthy();
   });
 
   it("Switch toggles and SettingsRow carries a value", async () => {

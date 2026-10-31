@@ -110,6 +110,29 @@ describe("tutor events", () => {
       type: "chips",
       items: [{ id: "c1" }],
     });
+    expect(
+      toTutorEvent({
+        event: "safety",
+        data: '{"kind":"crisis","helplines":[{"name":"Line","number":"100"},{"name":3}]}',
+      }),
+    ).toEqual({
+      type: "safety",
+      kind: "crisis",
+      helplines: [{ name: "Line", number: "100" }],
+      chips: [],
+    });
+    expect(
+      toTutorEvent({
+        event: "safety",
+        data: '{"kind":"refusal","category":"output","chips":["back"]}',
+      }),
+    ).toEqual({
+      type: "safety",
+      kind: "refusal",
+      helplines: [],
+      chips: ["back"],
+      category: "output",
+    });
     expect(toTutorEvent({ event: "mystery", data: "{}" })).toBeNull();
     expect(toTutorEvent({ event: "delta", data: "{not json" })).toBeNull();
   });
@@ -152,6 +175,25 @@ describe("streamTutorMessage", () => {
     expect(reply.text).toBe("Because");
     expect(reply.events.map((e) => e.type)).toEqual(["delta", "quota", "done"]);
     expect(seen).toEqual(["delta:Because", "quota:Because", "done:Because"]);
+  });
+
+  it("uses a per-call fetch when one is given, keeping the client's middleware", async () => {
+    const clientFetch = vi.fn(async () => new Response("", { status: 500 }));
+    const callFetch = vi.fn(async (req: Request) => {
+      expect(req.headers.get("Authorization")).toBe("Bearer t1");
+      return sseResponse(['event: delta\ndata: {"text":"Hi"}\n\n']);
+    });
+    const api = createApiClient({
+      baseUrl: "http://api.test",
+      fetch: clientFetch as unknown as typeof globalThis.fetch,
+      getAccessToken: () => "t1",
+    });
+    const reply = await collectTutorReply(
+      streamTutorMessage(api, "s1", body, { fetch: callFetch }),
+    );
+    expect(reply.text).toBe("Hi");
+    expect(callFetch).toHaveBeenCalledOnce();
+    expect(clientFetch).not.toHaveBeenCalled();
   });
 
   it("throws ApiError on an error status and reports a 401", async () => {

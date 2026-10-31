@@ -1,0 +1,92 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.math.relations-functions.composition-inverse",
+  "scope": "topic",
+  "topic": "math.relations-functions.composition-inverse",
+  "title": {
+    "en": "Composition and invertible functions",
+    "hi": "संयोजन और व्युत्क्रमणीय फलन"
+  },
+  "concepts": [
+    "math.relations-functions.composition-inverse.core.composition-functions",
+    "math.relations-functions.composition-inverse.core.invertible-function"
+  ],
+  "key_ideas": [
+    {
+      "en": "$g \\circ f : A \\to C$, $(g \\circ f)(x) = g(f(x))$; f acts first.",
+      "hi": "$g \\circ f : A \\to C$, $(g \\circ f)(x) = g(f(x))$; पहले f लगता है।"
+    },
+    {
+      "en": "In general $g \\circ f \\ne f \\circ g$.",
+      "hi": "सामान्यतः $g \\circ f \\ne f \\circ g$।"
+    },
+    {
+      "en": "f is invertible if and only if f is bijective; $f^{-1} \\circ f = I_X$, $f \\circ f^{-1} = I_Y$.",
+      "hi": "f व्युत्क्रमणीय है यदि और केवल यदि f एकैकी आच्छादी है; $f^{-1} \\circ f = I_X$, $f \\circ f^{-1} = I_Y$।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Composition",
+        "hi": "संयोजन"
+      },
+      "latex": "(g \\circ f)(x) = g\\big(f(x)\\big)"
+    },
+    {
+      "name": {
+        "en": "Inverse",
+        "hi": "प्रतिलोम"
+      },
+      "latex": "f^{-1} \\circ f = I_X,\\ f \\circ f^{-1} = I_Y"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "$g \\circ f$ means apply g first.",
+        "hi": "$g \\circ f$ का अर्थ है पहले g लगाना।"
+      },
+      "correct": {
+        "en": "f acts first: $(g \\circ f)(x) = g(f(x))$.",
+        "hi": "पहले f लगता है: $(g \\circ f)(x) = g(f(x))$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$f^{-1}(x) = \\frac{1}{f(x)}$.",
+        "hi": "$f^{-1}(x) = \\frac{1}{f(x)}$।"
+      },
+      "correct": {
+        "en": "$f^{-1}$ undoes f; it is not the reciprocal.",
+        "hi": "$f^{-1}$, f को उलटता है; यह व्युत्क्रम संख्या नहीं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "$f(x) = x^2$ on $\\mathbf{R}$ has an inverse.",
+        "hi": "$f(x) = x^2$ का, $\\mathbf{R}$ पर, प्रतिलोम है।"
+      },
+      "correct": {
+        "en": "It is neither one-one nor onto, so it is not invertible.",
+        "hi": "यह न एकैकी है न आच्छादक, इसलिए व्युत्क्रमणीय नहीं।"
+      }
+    }
+  ],
+  "diagram": "img.relations-functions-12.conveyor",
+  "hi_source": "translation"
+}

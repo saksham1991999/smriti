@@ -1,0 +1,850 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the NEET format, not copied from the NCERT exercises or any paper. Each solution cites the NCERT section it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo110) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "bio.cell-cycle-division.mitosis",
+  "questions": [
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The stage of mitosis at which the morphology of chromosomes is most easily studied is",
+        "hi": "समसूत्री विभाजन की वह अवस्था जिसमें गुणसूत्रों की आकारिकी का अध्ययन सबसे आसानी से होता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Prophase",
+            "hi": "पूर्वावस्था"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Metaphase",
+            "hi": "मध्यावस्था"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Anaphase",
+            "hi": "पश्चावस्था"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Telophase",
+            "hi": "अंत्यावस्था"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Fully condensed and lined up.",
+          "hi": "पूरी तरह संघनित और पंक्तिबद्ध।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Condensation is finished and every chromosome is lined up in one plane, so they are easiest to see.",
+          "hi": "संघनन पूरा हो चुका है और हर गुणसूत्र एक तल में पंक्तिबद्ध है, इसलिए उन्हें देखना सबसे आसान है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.2: by metaphase condensation is complete; this is the stage at which chromosome morphology is most easily studied.",
+            "hi": "NCERT §10.2.2: मध्यावस्था तक संघनन पूरा हो जाता है; इसी अवस्था में गुणसूत्र आकारिकी का अध्ययन सबसे आसानी से होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Condensation is only beginning in prophase.",
+              "hi": "पूर्वावस्था में संघनन अभी शुरू ही होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Chromatids are moving apart in anaphase.",
+              "hi": "पश्चावस्था में अर्धगुणसूत्र अलग हो रहे होते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Chromosomes decondense in telophase.",
+              "hi": "अंत्यावस्था में गुणसूत्र असंघनित होते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Centromeres split and chromatids separate during",
+        "hi": "गुणसूत्रबिंदु विभाजित होते हैं और अर्धगुणसूत्र अलग होते हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Prophase",
+            "hi": "पूर्वावस्था"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Metaphase",
+            "hi": "मध्यावस्था"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Anaphase",
+            "hi": "पश्चावस्था"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Telophase",
+            "hi": "अंत्यावस्था"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "A for apart.",
+          "hi": "पश्च: पीछे की ओर, अलग।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Separation is the job of anaphase: the pairs let go and walk to opposite ends.",
+          "hi": "अलग करना पश्चावस्था का काम है: जोड़े हाथ छोड़कर विपरीत छोरों की ओर जाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.3: anaphase is characterised by centromeres splitting, chromatids separating and moving to opposite poles.",
+            "hi": "NCERT §10.2.3: पश्चावस्था की विशेषता है गुणसूत्रबिंदुओं का विभाजन, अर्धगुणसूत्रों का अलग होना और विपरीत ध्रुवों की ओर जाना।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Prophase condenses chromosomes.",
+              "hi": "पूर्वावस्था गुणसूत्रों को संघनित करती है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Metaphase aligns them.",
+              "hi": "मध्यावस्था उन्हें पंक्तिबद्ध करती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Telophase reforms the nuclei.",
+              "hi": "अंत्यावस्था केंद्रक फिर बनाती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In plant cells, cytokinesis takes place by",
+        "hi": "पादप कोशिकाओं में कोशिकाद्रव्य विभाजन किसके द्वारा होता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a furrow in the plasma membrane",
+            "hi": "प्लाज़्मा झिल्ली में खाँच"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a cell plate that starts in the centre and grows outward",
+            "hi": "कोशिका पट्टिका जो केंद्र से शुरू होकर बाहर बढ़ती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a cell plate that grows from the lateral walls inward",
+            "hi": "कोशिका पट्टिका जो पार्श्व भित्तियों से भीतर बढ़ती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "splitting of the cell wall in two",
+            "hi": "कोशिका भित्ति का दो भागों में फटना"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Centre first.",
+          "hi": "पहले केंद्र।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A rigid wall cannot be pinched, so the new wall is built from the middle outward.",
+          "hi": "कठोर भित्ति को दबाया नहीं जा सकता, इसलिए नई भित्ति बीच से बाहर की ओर बनाई जाती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.5: in plant cells wall formation starts in the centre and grows outward to meet the lateral walls, beginning with the cell plate.",
+            "hi": "NCERT §10.2.5: पादप कोशिकाओं में भित्ति बनना केंद्र से शुरू होकर बाहर बढ़ता है और पार्श्व भित्तियों से मिलता है, कोशिका पट्टिका से शुरुआत होती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "A furrow is how animal cells divide.",
+              "hi": "खाँच से जंतु कोशिकाएँ बँटती हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The direction is reversed.",
+              "hi": "दिशा उल्टी है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The existing wall is relatively inextensible and is not split.",
+              "hi": "मौजूदा भित्ति अपेक्षाकृत अवितान्य है और फटती नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The liquid endosperm of coconut is an example of",
+        "hi": "नारियल का तरल भ्रूणपोष किसका उदाहरण है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "cytokinesis without karyokinesis",
+            "hi": "केंद्रकभाजन के बिना कोशिकाद्रव्य विभाजन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "karyokinesis not followed by cytokinesis, forming a syncytium",
+            "hi": "केंद्रकभाजन जिसके बाद कोशिकाद्रव्य विभाजन नहीं होता, जिससे संकोशिका बनती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "meiosis",
+            "hi": "अर्धसूत्री विभाजन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the G0 stage",
+            "hi": "G0 अवस्था"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Multinucleate.",
+          "hi": "बहुकेंद्रकी।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Many nuclei, one shared cytoplasm: the nuclei divided but the cell did not.",
+          "hi": "अनेक केंद्रक, एक साझा कोशिकाद्रव्य: केंद्रक बँटे पर कोशिका नहीं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.5: when karyokinesis is not followed by cytokinesis a multinucleate syncytium forms, e.g., liquid endosperm in coconut.",
+            "hi": "NCERT §10.2.5: जब केंद्रकभाजन के बाद कोशिकाद्रव्य विभाजन नहीं होता तो बहुकेंद्रकी संकोशिका बनती है, जैसे नारियल का तरल भ्रूणपोष।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "It is the other way round.",
+              "hi": "बात उल्टी है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The example is about missing cytokinesis.",
+              "hi": "उदाहरण कोशिकाद्रव्य विभाजन न होने का है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "G0 cells are not dividing at all.",
+              "hi": "G0 कोशिकाएँ बिल्कुल नहीं बँटतीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which events mark the completion of prophase?",
+        "hi": "कौन-सी घटनाएँ पूर्वावस्था के पूरा होने को दर्शाती हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Chromosomes align at the equator and spindle fibres attach to kinetochores",
+            "hi": "गुणसूत्र भूमध्य रेखा पर पंक्तिबद्ध होते हैं और तर्कु तंतु काइनेटोकोर से जुड़ते हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Chromatin condenses into chromosomes of two chromatids, and centrosomes move towards opposite poles",
+            "hi": "क्रोमैटिन दो अर्धगुणसूत्रों वाले गुणसूत्रों में संघनित होता है, और तारककेंद्र विपरीत ध्रुवों की ओर बढ़ते हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Nuclear envelope and nucleolus reappear",
+            "hi": "केंद्रक आवरण और केंद्रिका फिर दिखते हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Centromeres split",
+            "hi": "गुणसूत्रबिंदु विभाजित होते हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The first stage.",
+          "hi": "पहली अवस्था।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Prophase is about getting ready: packing the chromosomes and sending the centrosomes to the poles.",
+          "hi": "पूर्वावस्था तैयारी के बारे में है: गुणसूत्रों को सघन करना और तारककेंद्रों को ध्रुवों पर भेजना।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.1: completion of prophase is marked by condensation into compact chromosomes of two chromatids and movement of centrosomes towards opposite poles.",
+            "hi": "NCERT §10.2.1: पूर्वावस्था का पूरा होना दो अर्धगुणसूत्रों वाले सघन गुणसूत्रों में संघनन और तारककेंद्रों के विपरीत ध्रुवों की ओर जाने से पहचाना जाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Those mark metaphase.",
+              "hi": "वे मध्यावस्था दर्शाते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is telophase.",
+              "hi": "वह अंत्यावस्था है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is anaphase.",
+              "hi": "वह पश्चावस्था है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which is NOT a significance of mitosis given in NCERT?",
+        "hi": "इनमें से कौन NCERT में दिया गया समसूत्री विभाजन का महत्त्व नहीं है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Restoring the nucleo-cytoplasmic ratio",
+            "hi": "केंद्रक-कोशिकाद्रव्य अनुपात फिर से बनाना"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Cell repair, such as replacing gut lining cells",
+            "hi": "कोशिका मरम्मत, जैसे आहारनाल के अस्तर की कोशिकाएँ बदलना"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Continuous plant growth from meristems",
+            "hi": "विभज्योतकों से पौधों की लगातार वृद्धि"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Increasing genetic variability between generations",
+            "hi": "पीढ़ियों के बीच आनुवंशिक विभिन्नता बढ़ाना"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Identical or varied?",
+          "hi": "समान या विभिन्न?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Mitosis makes identical copies. Variation is what meiosis adds.",
+          "hi": "समसूत्री विभाजन एक जैसी प्रतियाँ बनाता है। विभिन्नता अर्धसूत्री विभाजन जोड़ता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.3 and §10.5: mitosis gives identical daughter cells for growth, ratio and repair; increasing variability is the significance of meiosis.",
+            "hi": "NCERT §10.3 और §10.5: समसूत्री विभाजन वृद्धि, अनुपात और मरम्मत के लिए समान संतति कोशिकाएँ देता है; विभिन्नता बढ़ाना अर्धसूत्री विभाजन का महत्त्व है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This is given for mitosis.",
+              "hi": "यह समसूत्री विभाजन के लिए दिया गया है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is given for mitosis.",
+              "hi": "यह समसूत्री विभाजन के लिए दिया गया है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is given for mitosis.",
+              "hi": "यह समसूत्री विभाजन के लिए दिया गया है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Golgi complex, ER, nucleolus and nuclear envelope are not seen in cells at the end of",
+        "hi": "किस अवस्था के अंत में कोशिकाओं में गॉल्जी सम्मिश्र, ER, केंद्रिका और केंद्रक आवरण नहीं दिखते?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Prophase",
+            "hi": "पूर्वावस्था"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Metaphase",
+            "hi": "मध्यावस्था"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Anaphase",
+            "hi": "पश्चावस्था"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Telophase",
+            "hi": "अंत्यावस्था"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The earliest answer.",
+          "hi": "सबसे पहला उत्तर।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "They vanish as prophase finishes and come back in telophase.",
+          "hi": "ये पूर्वावस्था के अंत में लुप्त होते हैं और अंत्यावस्था में लौटते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.1: cells at the end of prophase do not show Golgi complexes, ER, nucleolus and nuclear envelope.",
+            "hi": "NCERT §10.2.1: पूर्वावस्था के अंत में कोशिकाओं में गॉल्जी सम्मिश्र, ER, केंद्रिका और केंद्रक आवरण नहीं दिखते।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "They are already gone before metaphase begins.",
+              "hi": "मध्यावस्था शुरू होने से पहले ही ये जा चुके होते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "They are already gone before anaphase.",
+              "hi": "पश्चावस्था से पहले ही ये जा चुके होते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "They reform in telophase.",
+              "hi": "अंत्यावस्था में ये फिर बनते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.mitosis.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.mitosis.core.mitosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The two asters together with the spindle fibres form the",
+        "hi": "दोनों तारक तर्कु तंतुओं के साथ मिलकर क्या बनाते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "metaphase plate",
+            "hi": "मध्यावस्था पट्टिका"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "mitotic apparatus",
+            "hi": "समसूत्री उपकरण"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "cell plate",
+            "hi": "कोशिका पट्टिका"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "synaptonemal complex",
+            "hi": "सिनैप्टोनीमल सम्मिश्र"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Apparatus for mitosis.",
+          "hi": "समसूत्री विभाजन का उपकरण।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Asters and spindle are the machinery that moves the chromosomes.",
+          "hi": "तारक और तर्कु वह यंत्र हैं जो गुणसूत्रों को चलाता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.2.1: each centrosome radiates asters; the two asters with spindle fibres form the mitotic apparatus.",
+            "hi": "NCERT §10.2.1: हर तारककेंद्र से तारक निकलते हैं; दोनों तारक तर्कु तंतुओं के साथ समसूत्री उपकरण बनाते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The plate is the plane where chromosomes align.",
+              "hi": "पट्टिका वह तल है जहाँ गुणसूत्र पंक्तिबद्ध होते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The cell plate forms during plant cytokinesis.",
+              "hi": "कोशिका पट्टिका पादप कोशिकाद्रव्य विभाजन में बनती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That forms in zygotene of meiosis.",
+              "hi": "वह अर्धसूत्री विभाजन की ज़ाइगोटीन में बनता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

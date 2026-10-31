@@ -2,7 +2,7 @@
  * Question renderers for every question type (content-format §8). They only collect an `Answer`;
  * lesson-core's `checkAnswer` decides what is right.
  */
-import { BLANK_TOKEN } from "@smriti/content-schema";
+import { BLANK_TOKEN } from "@smriti/content-schema/runtime";
 import type { Answer, AnyQuestion, CheckResult } from "@smriti/lesson-core";
 import { Chip, NumericKeypad, OptionCard, Text, useTheme } from "@smriti/ui-native";
 import type { OptionState } from "@smriti/tokens/ui";
@@ -79,9 +79,14 @@ export interface QuestionViewProps {
   /** Options struck out after a first wrong try (single-answer types). */
   struck: string[];
   disabled: boolean;
+  /**
+   * The little learner guided finish (lesson-core `shownOptionIds`): these options show as the
+   * answer and only they can be tapped; a tap hands back all of them.
+   */
+  shown?: string[];
 }
 
-export function QuestionView({ question: q, passage, draft, onChange, result, struck, disabled }: QuestionViewProps) {
+export function QuestionView({ question: q, passage, draft, onChange, result, struck, disabled, shown }: QuestionViewProps) {
   const { t } = usePlayer();
   return (
     <View style={styles.stack} testID="question">
@@ -94,12 +99,12 @@ export function QuestionView({ question: q, passage, draft, onChange, result, st
         </View>
       ) : null}
       {q.type !== "fill_blank" ? <RichText text={q.stem} variant="heading" testID="question-stem" /> : null}
-      <QuestionBody q={q} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} />
+      <QuestionBody q={q} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} shown={shown} />
     </View>
   );
 }
 
-function QuestionBody({ q, draft, onChange, result, struck, disabled }: { q: AnyQuestion; draft: Answer | null; onChange: (a: Answer) => void; result: CheckResult | null; struck: string[]; disabled: boolean }) {
+function QuestionBody({ q, draft, onChange, result, struck, disabled, shown }: { q: AnyQuestion; draft: Answer | null; onChange: (a: Answer) => void; result: CheckResult | null; struck: string[]; disabled: boolean; shown?: string[] }) {
   const { t } = usePlayer();
   switch (q.type) {
     case "numerical":
@@ -194,7 +199,7 @@ function QuestionBody({ q, draft, onChange, result, struck, disabled }: { q: Any
       return (
         <View style={styles.stack}>
           <MatchLists q={q} />
-          <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} />
+          <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} shown={shown} />
         </View>
       );
     case "assertion_reason":
@@ -202,7 +207,7 @@ function QuestionBody({ q, draft, onChange, result, struck, disabled }: { q: Any
         <View style={styles.stack}>
           <Labelled label={t(sharedKey("assertion"))} text={q.assertion} />
           <Labelled label={t(sharedKey("reason"))} text={q.reason} />
-          <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} />
+          <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} shown={shown} />
         </View>
       );
     case "statement_based":
@@ -211,12 +216,12 @@ function QuestionBody({ q, draft, onChange, result, struck, disabled }: { q: Any
           {q.statements.map((s, i) => (
             <Labelled key={i} label={t(sharedKey("statement_n"), { n: i + 1 })} text={s} />
           ))}
-          <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} />
+          <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} shown={shown} />
         </View>
       );
     case "mcq_single":
     case "mcq_multi":
-      return <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} />;
+      return <Options q={q} options={q.options} draft={draft} onChange={onChange} result={result} struck={struck} disabled={disabled} shown={shown} />;
     case "paragraph":
       return null;
   }
@@ -233,12 +238,31 @@ function Labelled({ label, text }: { label: string; text: string }) {
   );
 }
 
-function Options({ q, options, draft, onChange, result, struck, disabled }: { q: AnyQuestion; options: { id: string; text: string }[]; draft: Answer | null; onChange: (a: Answer) => void; result: CheckResult | null; struck: string[]; disabled: boolean }) {
+function Options({
+  q,
+  options,
+  draft,
+  onChange,
+  result,
+  struck,
+  disabled,
+  shown,
+}: {
+  q: AnyQuestion;
+  options: { id: string; text: string }[];
+  draft: Answer | null;
+  onChange: (a: Answer) => void;
+  result: CheckResult | null;
+  struck: string[];
+  disabled: boolean;
+  shown?: string[];
+}) {
   const multi = q.type === "mcq_multi";
   const chosen = draft?.kind === "options" ? draft.optionIds : [];
   const detail = result?.detail.kind === "options" ? result.detail : null;
   const pick = (id: string) => {
-    if (multi) onChange({ kind: "options", optionIds: chosen.includes(id) ? chosen.filter((x) => x !== id) : [...chosen, id] });
+    if (shown) onChange({ kind: "options", optionIds: [...shown] });
+    else if (multi) onChange({ kind: "options", optionIds: chosen.includes(id) ? chosen.filter((x) => x !== id) : [...chosen, id] });
     else onChange({ kind: "options", optionIds: [id] });
   };
   return (
@@ -249,6 +273,7 @@ function Options({ q, options, draft, onChange, result, struck, disabled }: { q:
         if (detail && result?.correct && detail.correctIds.includes(o.id)) state = "correct";
         else if (detail && detail.chosenWrong.includes(o.id)) state = "wrong";
         if (isStruck) state = "wrong";
+        if (shown?.includes(o.id)) state = "correct";
         return (
           <OptionCard
             key={o.id}
@@ -256,7 +281,7 @@ function Options({ q, options, draft, onChange, result, struck, disabled }: { q:
             keyLabel={KEYS[i]}
             state={state}
             multiple={multi}
-            disabled={disabled || isStruck}
+            disabled={disabled || isStruck || (!!shown && !shown.includes(o.id))}
             onPress={() => pick(o.id)}
             testID={`option-${o.id}`}
           />

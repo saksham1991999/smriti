@@ -95,6 +95,15 @@ class IntegrationSettings(BaseSettings):
     app_attest_root_ca_pem: str = ""
     attestation_nonce_ttl_s: int = 300
 
+    # Sign in with Apple token revocation on account deletion (auth flow §6.8, Apple TN3194).
+    # The client secret is a short-lived ES256 JWT made per call from the team id, key id and
+    # .p8 key; client ids are the variant bundle ids, comma separated.
+    apple_signin_base_url: str = "https://appleid.apple.com"
+    apple_team_id: str = ""
+    apple_signin_key_id: str = ""
+    apple_signin_private_key: str = ""
+    apple_signin_client_ids: str = ""
+
     # Realtime fan-out for live mocks: supabase | redis. Supabase when its URL and service key are
     # set outside local; Redis pub/sub (and the SSE stream) always.
     realtime_provider: str = ""
@@ -104,10 +113,31 @@ class IntegrationSettings(BaseSettings):
     clickhouse_user: str = ""
     clickhouse_password: str = ""
     clickhouse_database: str = "default"
+    # Local stand-in for ClickHouse's events table (dev and test only): a JSON-lines file.
+    analytics_events_file: str = ""
 
-    # Public links in emails and pushes
-    guardian_link_base_url: str = "https://smriti.app/guardian/"
+    # Public links in emails and pushes. Guardian links open the web app's /guardian/ pages, so
+    # the base defaults to WEB_APP_URL; GUARDIAN_LINK_BASE_URL overrides it.
+    guardian_link_base_url: str = ""
+    web_app_url: str = ""
+    # PAY-17 "Send to my parent" (me-money §5.12): {base}{token}; defaults to WEB_APP_URL + /pay/child/.
+    child_pay_link_base_url: str = ""
     brand_name: str = "Smriti"
+
+    @property
+    def guardian_link_base(self) -> str:
+        if self.guardian_link_base_url:
+            return self.guardian_link_base_url
+        # The local web dev server (apps/web vite.config.ts) when nothing is set.
+        origin = (self.web_app_url or "http://127.0.0.1:5190").rstrip("/")
+        return f"{origin}/guardian/"
+
+    @property
+    def child_pay_link_base(self) -> str:
+        if self.child_pay_link_base_url:
+            return self.child_pay_link_base_url
+        origin = (self.web_app_url or "http://127.0.0.1:5190").rstrip("/")
+        return f"{origin}/pay/child/"
 
 
 @lru_cache

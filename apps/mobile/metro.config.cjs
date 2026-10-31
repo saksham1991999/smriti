@@ -5,8 +5,8 @@
 // 2. One React: some workspace packages pin a newer patch of react as a dev dependency, so
 //    react and react/* always resolve from this app (two Reacts break hooks).
 // 3. The seed pack JSON and the bundled illustrations are assets of the app (src/seed/).
-// 4. Bundle size: `@smriti/content-schema` resolves to its runtime helpers only (no ajv, no JSON
-//    schemas), and `phosphor-react-native` to the icons ui-native uses (scripts/phosphor-lite.mjs).
+// 4. Bundle size: `@smriti/content-schema` resolves to its `./runtime` entry (no Ajv, no JSON
+//    schemas). Phosphor icons are already imported one module each by ui-native.
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { getDefaultConfig } = require('expo/metro-config');
@@ -16,25 +16,15 @@ const { getDefaultConfig } = require('expo/metro-config');
 execFileSync(process.execPath, [path.join(__dirname, 'scripts', 'seed-pack.mjs')], { stdio: 'inherit' });
 
 const appOrigin = path.join(__dirname, 'package.json');
-const contentSchemaLite = path.join(__dirname, 'src', 'shims', 'content-schema-lite.ts');
-const phosphorLite = path.join(__dirname, 'src', 'shims', 'phosphor-lite.generated.ts');
-const uiNativeOrigin = path.join(__dirname, '..', '..', 'packages', 'ui-native', 'package.json');
-execFileSync(process.execPath, [path.join(__dirname, 'scripts', 'phosphor-lite.mjs')], { stdio: 'inherit' });
 
 const config = getDefaultConfig(__dirname);
 
 const defaultResolve = config.resolver.resolveRequest;
 config.resolver.resolveRequest = (context, moduleName, platform) => {
   const resolve = defaultResolve ?? context.resolveRequest;
+  // lesson-core still imports the package root; the app and lesson-player-native import ./runtime.
   if (moduleName === '@smriti/content-schema') {
-    return { type: 'sourceFile', filePath: contentSchemaLite };
-  }
-  if (moduleName === 'phosphor-react-native' && !context.originModulePath.includes(`${path.sep}phosphor-react-native${path.sep}`) && context.originModulePath !== phosphorLite) {
-    return { type: 'sourceFile', filePath: phosphorLite };
-  }
-  // The shim's per-icon imports resolve where ui-native's dependency lives.
-  if (moduleName.startsWith('phosphor-react-native/') && context.originModulePath === phosphorLite) {
-    return resolve({ ...context, originModulePath: uiNativeOrigin }, moduleName, platform);
+    return resolve(context, '@smriti/content-schema/runtime', platform);
   }
   if (moduleName === 'react' || moduleName.startsWith('react/')) {
     return resolve({ ...context, originModulePath: appOrigin }, moduleName, platform);

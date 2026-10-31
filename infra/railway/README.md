@@ -5,7 +5,7 @@ services in each. The first deploy is in [docs/DEPLOY.md](../../docs/DEPLOY.md).
 
 | Service | Source | Config file (service Settings > Config-as-code) | Start | Health |
 |---|---|---|---|---|
-| `api` | this repo, root directory `/` | `/infra/railway/api.railway.json` | uvicorn on `$PORT` (`WEB_CONCURRENCY` processes) | `/readyz` (Postgres and Redis) gates each deploy; Docker `HEALTHCHECK` on `/healthz` |
+| `api` | this repo, root directory `/` | `/infra/railway/api.railway.json` | Gunicorn with Uvicorn workers (`smriti_api.server.Worker`) on `$PORT`, `WEB_CONCURRENCY` workers; the Dockerfile `CMD` | `/readyz` (Postgres and Redis) gates each deploy; Docker `HEALTHCHECK` on `/healthz` |
 | `worker` | this repo, root directory `/` | `/infra/railway/worker.railway.json` | `python -m smriti_worker` (`WORKER_QUEUE=all`) | Docker `HEALTHCHECK`: `python -m smriti_worker.health` reads each queue's arq key |
 | `Redis` | Railway's Redis template | none | | |
 
@@ -14,6 +14,17 @@ There is no separate cron service. The arq crons run inside the worker's `defaul
 runs a cron twice. To scale one queue on its own, add a service from the same config with
 `WORKER_QUEUE=<queue>` and take that queue out of the first service's list, e.g.
 `default,ai,media,notifications,content-publish`. Every queue needs a consumer somewhere.
+
+## The API process
+
+TRD §5 runs Uvicorn workers under Gunicorn. Gunicorn binds `0.0.0.0:$PORT`, starts
+`WEB_CONCURRENCY` workers (2 by default in the image), restarts any that die, and kills a worker
+whose event loop stops checking in for 30 seconds (`--timeout`). Uvicorn's own `--workers` mode
+restarts dead workers too, but its health ping is answered from a thread, so it can't see a stuck
+loop. On a deploy, Gunicorn gives open requests 20 seconds (`--graceful-timeout`), inside
+Railway's `drainingSeconds` of 25. Proxy headers are trusted from any address because only
+Railway's edge reaches the service. The start command is the Dockerfile `CMD`; api.railway.json
+does not override it.
 
 ## Release step: migrations
 
@@ -63,10 +74,12 @@ service. Reference the Redis service as `REDIS_URL=${{Redis.REDIS_URL}}` (privat
 `RESEND_API_KEY`, `PUSH_PROVIDER`, `EXPO_ACCESS_TOKEN`, `WEB_PUSH_VAPID_PRIVATE_KEY`,
 `WEB_PUSH_VAPID_SUBJECT`, `PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON`, `PLAY_INTEGRITY_PACKAGES`,
 `APP_ATTEST_APP_IDS`, `APP_ATTEST_ENVIRONMENT`, `OTEL_EXPORTER_OTLP_ENDPOINT`,
-`OTEL_EXPORTER_OTLP_HEADERS`.
+`OTEL_EXPORTER_OTLP_HEADERS`, `SENTRY_DSN` (a different DSN per service is fine).
 
 **`api` only:** `MIGRATIONS_DATABASE_URL`, `CORS_ORIGINS` (if more than `WEB_APP_URL`),
-`WEB_CONCURRENCY`, `OTEL_SERVICE_NAME=smriti-api`.
+`WEB_CONCURRENCY`, `OTEL_SERVICE_NAME=smriti-api`, and for Sign in with Apple token revocation
+on account deletion `APPLE_TEAM_ID`, `APPLE_SIGNIN_KEY_ID`, `APPLE_SIGNIN_PRIVATE_KEY`,
+`APPLE_SIGNIN_CLIENT_IDS`.
 
 **`worker` only:** `WORKER_QUEUE=all`, `OTEL_SERVICE_NAME=smriti-worker`. With `all`, each of
 the six queue workers opens its own database pool, up to 10 connections each (`jobs.startup`),

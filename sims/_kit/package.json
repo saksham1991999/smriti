@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "typecheck": "tsc --noEmit -p .",
-    "lint": "tsc --noEmit -p .",
+    "lint": "tsc --noEmit -p . && node check-sizes.mjs",
+    "sims:check": "node check-sizes.mjs",
     "test": "vitest run"
   },
   "dependencies": {

@@ -1,0 +1,1993 @@
+{
+  "version": 1,
+  "contract": "1.5",
+  "time_zone": "Asia/Kolkata",
+  "default_spot_positions": [
+    [
+      0.15,
+      0.65
+    ],
+    [
+      0.325,
+      0.4
+    ],
+    [
+      0.5,
+      0.65
+    ],
+    [
+      0.675,
+      0.4
+    ],
+    [
+      0.85,
+      0.65
+    ]
+  ],
+  "base": {
+    "palace_id": "00000000-0000-4000-8000-000000007031",
+    "name": "Home walk",
+    "template": "home",
+    "template_id": "pt.home-basic",
+    "source": "list",
+    "rooms": [
+      {
+        "room_id": "00000000-0000-4000-8000-000000007261",
+        "name": "Hall",
+        "sort": 0,
+        "template_room": "hall",
+        "loci": [
+          {
+            "locus_id": "00000000-0000-4000-8000-000000006131",
+            "sort": 0,
+            "pos": {
+              "x": 0.2,
+              "y": 0.5
+            }
+          },
+          {
+            "locus_id": "00000000-0000-4000-8000-000000006132",
+            "sort": 1,
+            "pos": {
+              "x": 0.5,
+              "y": 0.4
+            }
+          },
+          {
+            "locus_id": "00000000-0000-4000-8000-000000006133",
+            "sort": 2,
+            "pos": {
+              "x": 0.8,
+              "y": 0.6
+            }
+          }
+        ]
+      },
+      {
+        "room_id": "00000000-0000-4000-8000-000000007262",
+        "name": "Kitchen",
+        "sort": 1,
+        "template_room": "kitchen",
+        "loci": [
+          {
+            "locus_id": "00000000-0000-4000-8000-000000006231",
+            "sort": 0,
+            "pos": {
+              "yaw": -45,
+              "pitch": 10
+            }
+          },
+          {
+            "locus_id": "00000000-0000-4000-8000-000000006232",
+            "sort": 1,
+            "pos": {
+              "yaw": 90,
+              "pitch": -5
+            }
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "item_id": "00000000-0000-4000-8000-000000006931",
+        "item_ref": "kp:c.sample-list#1",
+        "label": null,
+        "note": null,
+        "locus_id": "00000000-0000-4000-8000-000000006131"
+      },
+      {
+        "item_id": "00000000-0000-4000-8000-000000006932",
+        "item_ref": "kp:c.sample-list#2",
+        "label": null,
+        "note": "my link note",
+        "locus_id": "00000000-0000-4000-8000-000000006132"
+      },
+      {
+        "item_id": "00000000-0000-4000-8000-000000006933",
+        "item_ref": "kp:c.sample-list#3",
+        "label": null,
+        "note": null,
+        "locus_id": null
+      }
+    ],
+    "updated_at": "2026-10-01T10:00:00+05:30"
+  },
+  "cases": [
+    {
+      "name": "place a tray item on an empty spot",
+      "op": "place",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006933",
+        "room_id": "00000000-0000-4000-8000-000000007262",
+        "spot": 0
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006231"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "place on a taken spot: the item there goes where this one was (the tray)",
+      "op": "place",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006933",
+        "room_id": "00000000-0000-4000-8000-000000007261",
+        "spot": 0
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "place one placed item on another's spot: they swap",
+      "op": "place",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006931",
+        "room_id": "00000000-0000-4000-8000-000000007261",
+        "spot": 1
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "take an item off its spot",
+      "op": "unplace",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006932"
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "add items along the walk: free spots in walk order, the rest to the tray",
+      "op": "add_items",
+      "args": {
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006934",
+            "item_ref": "kp:c.sample-list#4"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006935",
+            "item_ref": "kp:c.sample-list#5",
+            "label": "My label"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006936",
+            "item_ref": "card:abc"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006937",
+            "item_ref": "m:mn.sample-1"
+          }
+        ],
+        "auto_place": true
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006934",
+              "item_ref": "kp:c.sample-list#4",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006133"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006935",
+              "item_ref": "kp:c.sample-list#5",
+              "label": "My label",
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006231"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006936",
+              "item_ref": "card:abc",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006232"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006937",
+              "item_ref": "m:mn.sample-1",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "add items to the tray",
+      "op": "add_items",
+      "args": {
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006934",
+            "item_ref": "c:card-1"
+          }
+        ],
+        "auto_place": false
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006934",
+              "item_ref": "c:card-1",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "change a note; an empty note clears it",
+      "op": "patch_item",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006932",
+        "patch": {
+          "note": ""
+        }
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "set a label",
+      "op": "patch_item",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006933",
+        "patch": {
+          "label": "Another label"
+        }
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": "Another label",
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "remove an item",
+      "op": "remove_item",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006932"
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006131",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.2,
+                    "y": 0.5
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 1,
+                  "pos": {
+                    "x": 0.5,
+                    "y": 0.4
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006133",
+                  "sort": 2,
+                  "pos": {
+                    "x": 0.8,
+                    "y": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": "00000000-0000-4000-8000-000000006131"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "new walk: rooms reordered, one dropped; its items go to the tray",
+      "op": "set_rooms",
+      "args": {
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "template_room": "kitchen"
+          }
+        ]
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 0,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "new walk: a kept room with new spots; items on spots that went go to the tray",
+      "op": "set_rooms",
+      "args": {
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Front hall",
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "pos": {
+                  "x": 0.1,
+                  "y": 0.1
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "template_room": "kitchen"
+          }
+        ]
+      },
+      "expected": {
+        "doc": {
+          "palace_id": "00000000-0000-4000-8000-000000007031",
+          "name": "Home walk",
+          "template": "home",
+          "template_id": "pt.home-basic",
+          "source": "list",
+          "rooms": [
+            {
+              "room_id": "00000000-0000-4000-8000-000000007261",
+              "name": "Front hall",
+              "sort": 0,
+              "template_room": "hall",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006132",
+                  "sort": 0,
+                  "pos": {
+                    "x": 0.1,
+                    "y": 0.1
+                  }
+                }
+              ]
+            },
+            {
+              "room_id": "00000000-0000-4000-8000-000000007262",
+              "name": "Kitchen",
+              "sort": 1,
+              "template_room": "kitchen",
+              "loci": [
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006231",
+                  "sort": 0,
+                  "pos": {
+                    "yaw": -45.0,
+                    "pitch": 10.0
+                  }
+                },
+                {
+                  "locus_id": "00000000-0000-4000-8000-000000006232",
+                  "sort": 1,
+                  "pos": {
+                    "yaw": 90.0,
+                    "pitch": -5.0
+                  }
+                }
+              ]
+            }
+          ],
+          "items": [
+            {
+              "item_id": "00000000-0000-4000-8000-000000006931",
+              "item_ref": "kp:c.sample-list#1",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006932",
+              "item_ref": "kp:c.sample-list#2",
+              "label": null,
+              "note": "my link note",
+              "locus_id": "00000000-0000-4000-8000-000000006132"
+            },
+            {
+              "item_id": "00000000-0000-4000-8000-000000006933",
+              "item_ref": "kp:c.sample-list#3",
+              "label": null,
+              "note": null,
+              "locus_id": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "place on a spot that doesn't exist",
+      "op": "place",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000006931",
+        "room_id": "00000000-0000-4000-8000-000000007261",
+        "spot": 7
+      },
+      "expected": {
+        "error": "spot_not_found"
+      }
+    },
+    {
+      "name": "place an item that isn't there",
+      "op": "unplace",
+      "args": {
+        "item_id": "00000000-0000-4000-8000-000000693939"
+      },
+      "expected": {
+        "error": "item_not_found"
+      }
+    },
+    {
+      "name": "a room that isn't in the palace",
+      "op": "set_rooms",
+      "args": {
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000723939",
+            "name": "Attic"
+          }
+        ]
+      },
+      "expected": {
+        "error": "room_not_found"
+      }
+    }
+  ],
+  "sync": [
+    {
+      "name": "a free account can't build a palace",
+      "as": "free",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "Home walk",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006931",
+            "item_ref": "kp:c.sample-list#1",
+            "label": null,
+            "note": null,
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006132"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006933",
+            "item_ref": "kp:c.sample-list#3",
+            "label": null,
+            "note": null,
+            "locus_id": null
+          }
+        ],
+        "updated_at": "2026-10-01T10:00:00+05:30"
+      },
+      "expected": {
+        "code": "pro_required"
+      }
+    },
+    {
+      "name": "Pro builds it",
+      "as": "pro",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "Home walk",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006931",
+            "item_ref": "kp:c.sample-list#1",
+            "label": null,
+            "note": null,
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006132"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006933",
+            "item_ref": "kp:c.sample-list#3",
+            "label": null,
+            "note": null,
+            "locus_id": null
+          }
+        ],
+        "updated_at": "2026-10-01T10:00:00+05:30"
+      },
+      "expected": {
+        "accepted": true,
+        "name": "Home walk"
+      }
+    },
+    {
+      "name": "an older snapshot from a slower device is accepted and ignored",
+      "as": "pro",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "Old name",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006931",
+            "item_ref": "kp:c.sample-list#1",
+            "label": null,
+            "note": null,
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006132"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006933",
+            "item_ref": "kp:c.sample-list#3",
+            "label": null,
+            "note": null,
+            "locus_id": null
+          }
+        ],
+        "updated_at": "2026-10-01T09:00:00+05:30"
+      },
+      "expected": {
+        "accepted": true,
+        "name": "Home walk"
+      }
+    },
+    {
+      "name": "a newer one wins, even when the plan has lapsed",
+      "as": "lapsed",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "My home",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006931",
+            "item_ref": "kp:c.sample-list#1",
+            "label": null,
+            "note": null,
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006132"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006933",
+            "item_ref": "kp:c.sample-list#3",
+            "label": null,
+            "note": null,
+            "locus_id": null
+          }
+        ],
+        "updated_at": "2026-10-01T11:00:00+05:30"
+      },
+      "expected": {
+        "accepted": true,
+        "name": "My home"
+      }
+    },
+    {
+      "name": "rating a spot schedules the item's card in FSRS (context palace_walk)",
+      "as": "pro",
+      "type": "review_rated",
+      "payload": {
+        "card_ref": "p:00000000-0000-4000-8000-000000006931",
+        "rating": 3,
+        "confidence": null,
+        "ms_to_answer": 4000
+      },
+      "expected": {
+        "accepted": true,
+        "card": "p:00000000-0000-4000-8000-000000006931",
+        "context": "palace_walk"
+      }
+    },
+    {
+      "name": "a palace card must name an item in one of my palaces",
+      "as": "pro",
+      "type": "review_rated",
+      "payload": {
+        "card_ref": "p:00000000-0000-4000-8000-000000693939",
+        "rating": 3,
+        "confidence": null,
+        "ms_to_answer": 4000
+      },
+      "expected": {
+        "code": "unknown_card"
+      }
+    },
+    {
+      "name": "a palace card is p:<uuid>",
+      "as": "pro",
+      "type": "review_rated",
+      "payload": {
+        "card_ref": "p:not-a-uuid",
+        "rating": 3,
+        "confidence": null,
+        "ms_to_answer": 4000
+      },
+      "expected": {
+        "code": "invalid_payload"
+      }
+    },
+    {
+      "name": "two items on one spot is not a palace",
+      "as": "pro",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "Home walk",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006931",
+            "item_ref": "kp:c.sample-list#1",
+            "label": null,
+            "note": null,
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          }
+        ],
+        "updated_at": "2026-10-01T12:00:00+05:30"
+      },
+      "expected": {
+        "code": "invalid_payload"
+      }
+    },
+    {
+      "name": "removing an item removes its card (tombstoned)",
+      "as": "pro",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "Home walk",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006132"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006933",
+            "item_ref": "kp:c.sample-list#3",
+            "label": null,
+            "note": null,
+            "locus_id": null
+          }
+        ],
+        "updated_at": "2026-10-01T12:00:00+05:30"
+      },
+      "expected": {
+        "accepted": true,
+        "deleted_card": "p:00000000-0000-4000-8000-000000006931"
+      }
+    },
+    {
+      "name": "delete",
+      "as": "pro",
+      "type": "palace_deleted",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031"
+      },
+      "expected": {
+        "accepted": true,
+        "deleted": true
+      }
+    },
+    {
+      "name": "a deleted palace stays deleted",
+      "as": "pro",
+      "type": "palace_saved",
+      "payload": {
+        "palace_id": "00000000-0000-4000-8000-000000007031",
+        "name": "Home walk",
+        "template": "home",
+        "template_id": "pt.home-basic",
+        "source": "list",
+        "rooms": [
+          {
+            "room_id": "00000000-0000-4000-8000-000000007261",
+            "name": "Hall",
+            "sort": 0,
+            "template_room": "hall",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006131",
+                "sort": 0,
+                "pos": {
+                  "x": 0.2,
+                  "y": 0.5
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006132",
+                "sort": 1,
+                "pos": {
+                  "x": 0.5,
+                  "y": 0.4
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006133",
+                "sort": 2,
+                "pos": {
+                  "x": 0.8,
+                  "y": 0.6
+                }
+              }
+            ]
+          },
+          {
+            "room_id": "00000000-0000-4000-8000-000000007262",
+            "name": "Kitchen",
+            "sort": 1,
+            "template_room": "kitchen",
+            "loci": [
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006231",
+                "sort": 0,
+                "pos": {
+                  "yaw": -45,
+                  "pitch": 10
+                }
+              },
+              {
+                "locus_id": "00000000-0000-4000-8000-000000006232",
+                "sort": 1,
+                "pos": {
+                  "yaw": 90,
+                  "pitch": -5
+                }
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "item_id": "00000000-0000-4000-8000-000000006931",
+            "item_ref": "kp:c.sample-list#1",
+            "label": null,
+            "note": null,
+            "locus_id": "00000000-0000-4000-8000-000000006131"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006932",
+            "item_ref": "kp:c.sample-list#2",
+            "label": null,
+            "note": "my link note",
+            "locus_id": "00000000-0000-4000-8000-000000006132"
+          },
+          {
+            "item_id": "00000000-0000-4000-8000-000000006933",
+            "item_ref": "kp:c.sample-list#3",
+            "label": null,
+            "note": null,
+            "locus_id": null
+          }
+        ],
+        "updated_at": "2026-10-02T12:00:00+05:30"
+      },
+      "expected": {
+        "accepted": true,
+        "deleted": true
+      }
+    }
+  ]
+}

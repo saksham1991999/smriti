@@ -219,7 +219,7 @@ function Result({ out, title, topicId, petName, species, onTryAgain, onDone, onA
       <Stack gap={16}>
         {meters.map((m, i) => {
           const band = bands[i]!;
-          const label = t('tutor_social:AI-11.meter_label', { meter: t(m.key), band: t(BAND_KEY[band]), score: m.score });
+          const label = t('tutor_social:AI-11.meter_a11y', { meter: t(m.key), band: t(BAND_KEY[band]), score: m.score });
           return (
             <View key={m.key} accessible accessibilityLabel={label} testID={`ai11-meter-${i}`}>
               <Stack row gap={8}>

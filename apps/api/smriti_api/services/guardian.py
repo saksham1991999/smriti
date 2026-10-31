@@ -15,7 +15,7 @@ import secrets
 import uuid
 from collections.abc import Collection
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, Literal
 
 import structlog
 from sqlalchemy import text
@@ -28,8 +28,9 @@ from smriti_api.core.logging import hash_user_id
 from smriti_api.integrations import Integrations
 from smriti_api.integrations.mail import Email, MailError
 from smriti_api.schemas import guardian as g
-from smriti_api.services import billing, copy, notify
+from smriti_api.services import billing, consent_notice, copy, notify
 from smriti_api.services import flags as flag_service
+from smriti_api.services.usage import load_flags
 from smriti_api.services.versioning import bump, lock_state
 
 log = structlog.get_logger(__name__)
@@ -230,7 +231,7 @@ async def create_request(
                     dedupe_key=f"parent_consent_needed:{request_id}:{guardian_id}",
                 )
         expires_at = now + ttl
-    link = f"{ints.settings.guardian_link_base_url.rstrip('/')}/{code}"
+    link = f"{ints.settings.guardian_link_base.rstrip('/')}/{code}"
     sent = False
     if body.guardian_email is not None:
         sent = await _send_consent_email(
@@ -409,6 +410,60 @@ async def my_consent(db: Database, auth: AuthContext) -> g.MyConsentOut:
         retry_at=retry,
         pending_link_requests=int(links),
     )
+
+
+async def cancel_request(db: Database, auth: AuthContext, request_id: uuid.UUID) -> None:
+    """AUTH-21 [Cancel request]: the teen withdraws their pending request; its code stops working.
+    A request that is already answered, expired or cancelled is left as it is (204 either way)."""
+    now = datetime.now(UTC)
+    async with db.system_tx() as session:
+        await lock_state(session, auth.user_id)
+        status = (
+            await session.execute(
+                text(
+                    "select status from app.guardian_consent_requests"
+                    " where id = :id and learner_user_id = :u for update"
+                ),
+                {"id": request_id, "u": auth.user_id},
+            )
+        ).scalar_one_or_none()
+        if status is None:
+            raise ApiError(404, "not_found", "No such request")
+        if status != "pending":
+            return
+        await session.execute(
+            text(
+                "update app.guardian_consent_requests set status = 'cancelled', resolved_at = :now"
+                " where id = :id"
+            ),
+            {"id": request_id, "now": now},
+        )
+        # Back to where the teen was: granted when an earlier consent still stands (they had
+        # asked for more scopes), otherwise consent is required again for the gated feature.
+        active = (
+            await session.execute(
+                text(
+                    "select 1 from app.guardian_consents where user_id = :u"
+                    " and revoked_at is null and superseded_by is null"
+                ),
+                {"u": auth.user_id},
+            )
+        ).first()
+        await session.execute(
+            text(
+                "update app.profiles set guardian_consent_state = :s"
+                " where user_id = :u and guardian_consent_state = 'pending'"
+            ),
+            {"u": auth.user_id, "s": "granted" if active else "required"},
+        )
+        await bump(session, auth.user_id, {"profile"})
+    log.info("consent_request_cancelled", user=hash_user_id(auth.user_id))
+
+
+async def notice(db: Database, locale: Literal["en", "hi"]) -> g.ConsentNoticeOut:
+    async with db.system_tx() as session:
+        flags = await load_flags(session)
+    return consent_notice.current(flags, locale)
 
 
 # --- the guardian's side ------------------------------------------------------------------------
@@ -598,6 +653,7 @@ async def confirm(
         learner: uuid.UUID = r.learner_user_id
         await lock_state(session, learner)
         sub_hash = await _check_guardian(session, ints, auth, learner)
+        await consent_notice.check_version(session, body.notice_version)
         granted = ({"account"} | set(body.scopes)) & set(r.scopes)
         row = await _write_consent(
             session,

@@ -1,6 +1,6 @@
 # Photo doubt contract (AI-16 to AI-19)
 
-Status: v1.0, 31 Oct 2026. Shared by the apps and `apps/api`. The Pydantic models in `apps/api/smriti_api/schemas/tutor.py` are the OpenAPI source; `packages/api-client` is generated from them. Flow: `docs/flows/tutor-social.md` §A10.
+Status: v1.1, 31 Oct 2026 (v1.1 adds §3 and §4). Shared by the apps and `apps/api`. The Pydantic models in `apps/api/smriti_api/schemas/tutor.py` are the OpenAPI source; `packages/api-client` is generated from them. Flow: `docs/flows/tutor-social.md` §A10.
 
 ## Who can use it
 
@@ -40,6 +40,29 @@ Body: the tutor's `MessageIn` (`client_message_id`, `text`, `input`, `chip_id`) 
 
 It answers 409 `photo_not_read` unless the photo was read. Otherwise it streams server-sent events exactly as `POST /v1/tutor/ask/question` does: `session` (`session_id`, `resumed`), then the tutor's `delta`, `replace`, `safety`, `citations`, `chips`, `quota`, `quota_exhausted`, `error` and `done`. The chat is a tutor session with `mode: doubt_photo` and context `{ "kind": "doubt", "ref": "doubt:{id}" }`, so follow-ups go to `POST /v1/tutor/sessions/{session_id}/messages`, and history, feedback and deletion work as for any chat. Before `reveal`, the chips start with `show_full_solution`.
 
+## 3. Concepts and similar questions: `GET /v1/ai/doubt-photos/{id}/similar?count=10`
+
+`count` is 1 to 30 (default 10, the practice default). The same gate as the photo applies. It answers 409 `photo_not_read` unless the photo was read, and 404 for anyone else's photo.
+
+```json
+{
+  "photo_id": "uuid",
+  "concepts": [ { "id": "phy.mech.newton.c2", "name": { "en": "...", "hi": "..." }, "topic_id": "phy.mech.newton" } ],
+  "question_ids": ["q.phy.mech.newton.0012", "q.phy.mech.newton.0031"]
+}
+```
+
+- `concepts`: up to 3 course concepts that match the confirmed question. They come from the course's own search over published concepts in the photo's exam, never from the model. AI-19 shows them as "Concepts used" chips that open LRN-03.
+- `question_ids`: published practice questions on those concepts. Mock and daily-challenge questions are left out. The order is stable for each photo.
+- PRC-03 takes the ids as a fixed set (`question_ids[]`, scope row "Similar questions ({n})").
+- Both lists are empty when nothing in the course matches. The app then hides [Similar questions].
+
+## 4. Voice: `make_flashcard`
+
+From voice (AI-14), the tutor's `make_flashcard` tool returns `{ "flashcard": { "deck": "from_tutor", "front", "back", "concept_id", "source": "voice" } }`. The device saves it to "From the tutor" through its outbox, then shows the AI-04 toast with [Edit].
+- Personal data is removed from the text, and blocked content returns `{ "error": "not_allowed" }`.
+- An unknown `concept_id` becomes null.
+
 ## Privacy and retention
 
 - Logs and analytics carry ids, the size and the outcome only: never the image, the recognised text or the prompt (AGENTS rules 6 and 8).
@@ -49,5 +72,5 @@ It answers 409 `photo_not_read` unless the photo was read. Otherwise it streams 
 ## Not yet
 
 - Offline queueing is on the device (§A10 step 5). The server has nothing to add.
-- "Similar questions" (PRC-03 fixed set) and keeping only the text of a saved solution (§A10 step 8) are not built.
+- Keeping only the text of a saved solution (§A10 step 8) is not built.
 - The worker's image scan (TRD §5 Files) is not wired for doubt photos.

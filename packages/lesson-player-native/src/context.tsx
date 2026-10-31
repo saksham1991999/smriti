@@ -1,4 +1,4 @@
-import type { TypedBundle } from "@smriti/content-schema";
+import type { TypedBundle } from "@smriti/content-schema/runtime";
 import type { MessageKey, MessageValues } from "@smriti/i18n";
 import { createContext, useContext } from "react";
 import type { ImageSourcePropType } from "react-native";

@@ -12,6 +12,22 @@ export function rightAnswer(q: AnyQuestion): Answer {
       return { kind: 'options', optionIds: q.answer.option_ids };
     case 'integer':
       return { kind: 'number', value: q.answer.value } as Answer;
+    case 'match_list':
+      return 'option_ids' in q.answer ? { kind: 'options', optionIds: q.answer.option_ids } : { kind: 'pairs', pairs: q.answer.pairs };
+    case 'order_steps':
+      return { kind: 'order', order: q.answer.order };
+    case 'numerical':
+      return { kind: 'number', value: q.answer.value, unit: q.answer.unit ?? null };
+    case 'matrix_match':
+      return { kind: 'matrix', rows: q.answer.pairs.map((p) => ({ row: p.row, columns: p.columns })) };
+    case 'fill_blank':
+      return {
+        kind: 'blanks',
+        blanks: q.answer.blanks.map((b) => {
+          const key = b as { blank: string; choice_id?: string; accepted?: { text: string[] }[] };
+          return key.choice_id ? { blank: key.blank, choiceId: key.choice_id } : { blank: key.blank, text: key.accepted?.[0]?.text[0] ?? '' };
+        }),
+      };
     default:
       throw new Error(`rightAnswer: no helper for ${q.type}`);
   }

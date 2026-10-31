@@ -26,7 +26,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from smriti_api.core.db import Database
 from smriti_api.core.logging import hash_user_id
 from smriti_api.schemas import sync as s
-from smriti_api.services import card_index, game_ops, integrity, profile_rules
+from smriti_api.services import card_index, game_ops, integrity, palace_store, profile_rules
 from smriti_api.services import flags as flag_service
 from smriti_api.services.badges import award_badges
 from smriti_api.services.errors import DomainError
@@ -79,7 +79,22 @@ SECTIONS_BY_TYPE: dict[str, set[str]] = {
     "cards_queued": {"srs"},
     "comeback_plan_started": set(),
     "activity_completed": {"topic_progress", "wallet"},
+    # (v1.5) palace_saved adds "srs" itself when it removes items (their cards are tombstoned).
+    "palace_saved": set(),
+    "palace_deleted": {"srs"},
 }
+
+# What learn.sync_events keeps of an applied event whose payload is a whole document: the palace
+# lives in its own tables, so the log keeps only which palace and which version (the names and
+# notes in it are the student's own words, and a snapshot per drag would bloat the log).
+_SLIM_PAYLOAD: dict[str, tuple[str, ...]] = {"palace_saved": ("palace_id", "updated_at")}
+
+
+def _stored_payload(event: s.SyncEventIn) -> dict[str, Any]:
+    keys = _SLIM_PAYLOAD.get(event.type)
+    if keys is None:
+        return event.payload
+    return {k: event.payload.get(k) for k in keys}
 
 
 class EventRejected(Exception):
@@ -223,7 +238,7 @@ async def apply_batch(
                     "at": event.occurred_at,
                     "tz": event.tz,
                     "day": day,
-                    "p": json.dumps(event.payload if code is None else {}, default=str),
+                    "p": json.dumps(_stored_payload(event) if code is None else {}, default=str),
                     "st": "applied" if code is None else "rejected",
                     "code": code,
                 },
@@ -646,16 +661,24 @@ async def _check_mock_answer(ctx: BatchContext, p: s.AnswerSubmitted) -> None:
 async def _review_rated(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
     assert isinstance(p, s.ReviewRated)
     uid = ctx.facts.user_id
+    context = "review"
+    palace_item = palace_store.item_id_of(p.card_ref)
+    if palace_item is not None:
+        # (v1.5) A palace spot: the item must still be in one of the student's palaces.
+        if not await palace_store.item_exists(ctx.session, uid, palace_item):
+            raise EventRejected("unknown_card", "No palace item with this id")
+        context = "palace_walk"
     await ctx.session.execute(
         text(
             """
             insert into learn.srs_reviews
               (id, user_id, card_ref, rating, confidence, state_before, elapsed_days, scheduled_days,
                stability_after, difficulty_after, duration_ms, context, reviewed_at)
-            values (:id, :u, :ref, :r, :conf, 0, 0, 0, 0, 0, :ms, 'review', :at)
+            values (:id, :u, :ref, :r, :conf, 0, 0, 0, 0, 0, :ms, :ctx, :at)
             """
         ),
         {
+            "ctx": context,
             "id": event.event_id,
             "u": uid,
             "ref": p.card_ref,
@@ -1017,6 +1040,25 @@ async def _cards_queued(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -
     ctx.srs_deleted.difference_update(result.changed)
 
 
+async def _palace_saved(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """(v1.5) A whole palace; an older snapshot than the stored one is accepted and ignored."""
+    assert isinstance(p, s.PalaceSaved)
+    _, removed = await palace_store.save(ctx.session, ctx.facts.user_id, p, is_pro=ctx.facts.is_pro)
+    _cards_removed(ctx, removed)
+
+
+async def _palace_deleted(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    assert isinstance(p, s.PalaceDeleted)
+    _cards_removed(ctx, await palace_store.delete(ctx.session, ctx.facts.user_id, p.palace_id))
+
+
+def _cards_removed(ctx: BatchContext, refs: list[str]) -> None:
+    if refs:
+        ctx.sections.add("srs")
+    ctx.srs_deleted.update(refs)
+    ctx.srs_changed.difference_update(refs)
+
+
 _HANDLERS = {
     "lesson_started": _lesson_started,
     "lesson_card_viewed": _lesson_card_viewed,
@@ -1041,5 +1083,7 @@ _HANDLERS = {
     "cards_queued": _cards_queued,
     "comeback_plan_started": _noop,
     "activity_completed": _activity_completed,
+    "palace_saved": _palace_saved,
+    "palace_deleted": _palace_deleted,
 }
 assert set(_HANDLERS) == set(s.PAYLOAD_MODELS)

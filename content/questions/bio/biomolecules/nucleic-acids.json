@@ -1,0 +1,746 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the NEET format, not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or table it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "bio.biomolecules.nucleic-acids",
+  "questions": [
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A nucleotide is made of",
+        "hi": "न्यूक्लियोटाइड किससे बना होता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a nitrogen base and a sugar only",
+            "hi": "केवल एक नाइट्रोजनी क्षारक और एक शर्करा"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a nitrogen base, a sugar and a phosphate",
+            "hi": "एक नाइट्रोजनी क्षारक, एक शर्करा और एक फॉस्फेट"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "an amino acid and a sugar",
+            "hi": "एक ऐमीनो अम्ल और एक शर्करा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "glycerol and fatty acids",
+            "hi": "ग्लिसरॉल और वसा अम्ल"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count three chemically distinct parts.",
+          "hi": "तीन रासायनिक रूप से अलग भाग गिनिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Three parts: base, sugar, phosphate. Drop the phosphate and you have a nucleoside.",
+          "hi": "तीन भाग: क्षारक, शर्करा, फॉस्फेट। फॉस्फेट हटाइए तो न्यूक्लिओसाइड बचता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.6: a nucleotide has a heterocyclic compound, a monosaccharide and a phosphoric acid or phosphate.",
+            "hi": "NCERT §9.6: न्यूक्लियोटाइड में एक विषमचक्रीय यौगिक, एक एकलशर्कराइड और फॉस्फोरिक अम्ल या फॉस्फेट होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That is a nucleoside.",
+              "hi": "वह न्यूक्लिओसाइड है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Amino acids are in proteins, not nucleotides.",
+              "hi": "ऐमीनो अम्ल प्रोटीन में होते हैं, न्यूक्लियोटाइड में नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Those make glycerides.",
+              "hi": "उनसे ग्लिसराइड बनते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these is a purine?",
+        "hi": "इनमें से कौन प्यूरीन है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Cytosine",
+            "hi": "साइटोसीन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Thymine",
+            "hi": "थाइमीन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Guanine",
+            "hi": "ग्वानीन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Uracil",
+            "hi": "यूरेसिल"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "A and G.",
+          "hi": "A और G।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Two purines only: adenine and guanine. Everything else is a pyrimidine.",
+          "hi": "केवल दो प्यूरीन: ऐडेनीन और ग्वानीन। बाकी सब पिरिमिडीन हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.6: adenine and guanine are substituted purines; the rest are substituted pyrimidines.",
+            "hi": "NCERT §9.6: ऐडेनीन और ग्वानीन प्रतिस्थापित प्यूरीन हैं; बाकी प्रतिस्थापित पिरिमिडीन।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Cytosine is a pyrimidine.",
+              "hi": "साइटोसीन पिरिमिडीन है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Thymine is a pyrimidine.",
+              "hi": "थाइमीन पिरिमिडीन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Uracil is a pyrimidine.",
+              "hi": "यूरेसिल पिरिमिडीन है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which one is a nucleoside?",
+        "hi": "इनमें से कौन न्यूक्लिओसाइड है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Adenylic acid",
+            "hi": "ऐडेनिलिक अम्ल"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Uridine",
+            "hi": "यूरिडीन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Cytidylic acid",
+            "hi": "साइटिडिलिक अम्ल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Adenine",
+            "hi": "ऐडेनीन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Base plus sugar, nothing more.",
+          "hi": "क्षारक और शर्करा, बस।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Names ending in -idine or -osine are nucleosides; '-ylic acid' names carry the phosphate, so they are nucleotides.",
+          "hi": "-इडीन या -ओसीन पर समाप्त नाम न्यूक्लिओसाइड हैं; '-इलिक अम्ल' वाले नामों में फॉस्फेट है, इसलिए वे न्यूक्लियोटाइड हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.1: adenosine, guanosine, thymidine, uridine and cytidine are nucleosides; adenylic, thymidylic, guanylic, uridylic and cytidylic acid are nucleotides.",
+            "hi": "NCERT §9.1: ऐडिनोसीन, ग्वानोसीन, थाइमिडीन, यूरिडीन और साइटिडीन न्यूक्लिओसाइड हैं; ऐडेनिलिक, थाइमिडिलिक, ग्वानिलिक, यूरिडिलिक और साइटिडिलिक अम्ल न्यूक्लियोटाइड हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Adenylic acid is a nucleotide.",
+              "hi": "ऐडेनिलिक अम्ल न्यूक्लियोटाइड है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Cytidylic acid is a nucleotide.",
+              "hi": "साइटिडिलिक अम्ल न्यूक्लियोटाइड है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Adenine is a nitrogen base alone.",
+              "hi": "ऐडेनीन केवल नाइट्रोजनी क्षारक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A nucleic acid contains 2'-deoxyribose and the bases adenine, guanine, cytosine and thymine. It is",
+        "hi": "एक न्यूक्लिक अम्ल में 2'-डीऑक्सीराइबोज़ और ऐडेनीन, ग्वानीन, साइटोसीन तथा थाइमीन क्षारक हैं। यह है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "RNA",
+            "hi": "RNA"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "DNA",
+            "hi": "DNA"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a polysaccharide",
+            "hi": "एक बहुशर्कराइड"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a nucleoside",
+            "hi": "एक न्यूक्लिओसाइड"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look at the sugar.",
+          "hi": "शर्करा देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The sugar decides the name: deoxyribose makes it deoxyribonucleic acid.",
+          "hi": "शर्करा नाम तय करती है: डीऑक्सीराइबोज़ इसे डीऑक्सीराइबोन्यूक्लिक अम्ल बनाती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.6: a nucleic acid containing deoxyribose is DNA; one containing ribose is RNA.",
+            "hi": "NCERT §9.6: डीऑक्सीराइबोज़ वाला न्यूक्लिक अम्ल DNA है; राइबोज़ वाला RNA।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "RNA has ribose.",
+              "hi": "RNA में राइबोज़ होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is a polynucleotide, not a chain of sugars alone.",
+              "hi": "यह बहुन्यूक्लियोटाइड है, केवल शर्कराओं की शृंखला नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A nucleoside is one base and one sugar, not a polymer.",
+              "hi": "न्यूक्लिओसाइड एक क्षारक और एक शर्करा है, बहुलक नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Together with polysaccharides and polypeptides, which molecules make up the true macromolecular fraction of a tissue?",
+        "hi": "बहुशर्कराइडों और पॉलिपेप्टाइडों के साथ कौन-से अणु ऊतक का वास्तविक वृहत् आण्विक अंश बनाते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Lipids",
+            "hi": "लिपिड"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Nucleic acids",
+            "hi": "न्यूक्लिक अम्ल"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Amino acids",
+            "hi": "ऐमीनो अम्ल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Secondary metabolites",
+            "hi": "द्वितीयक उपापचयज"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which one is a polymer?",
+          "hi": "कौन बहुलक है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Lipids sit in the same fraction only by accident of membranes; nucleic acids are true polymers.",
+          "hi": "लिपिड झिल्लियों के कारण संयोग से उसी अंश में आते हैं; न्यूक्लिक अम्ल वास्तविक बहुलक हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.6: nucleic acids, with polysaccharides and polypeptides, comprise the true macromolecular fraction.",
+            "hi": "NCERT §9.6: न्यूक्लिक अम्ल, बहुशर्कराइडों और पॉलिपेप्टाइडों के साथ, वास्तविक वृहत् आण्विक अंश बनाते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Lipids are not strictly macromolecules.",
+              "hi": "लिपिड वास्तव में वृहत् अणु नहीं हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Amino acids are micromolecules of the soluble pool.",
+              "hi": "ऐमीनो अम्ल विलेय पूल के सूक्ष्म अणु हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "These are mostly small compounds of plants and microbes.",
+              "hi": "ये अधिकतर पौधों और सूक्ष्मजीवों के छोटे यौगिक हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "How many types of nucleotides are named in the NCERT chapter as building nucleic acids?",
+        "hi": "NCERT अध्याय में न्यूक्लिक अम्ल बनाने वाले कितने प्रकार के न्यूक्लियोटाइड बताए गए हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4",
+            "hi": "4"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "5",
+            "hi": "5"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "20",
+            "hi": "20"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2",
+            "hi": "2"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count the bases.",
+          "hi": "क्षारक गिनिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "One nucleotide per base, and there are five bases: A, G, C, U, T.",
+          "hi": "हर क्षारक के लिए एक न्यूक्लियोटाइड, और क्षारक पाँच हैं: A, G, C, U, T।"
+        },
+        "steps": [
+          {
+            "en": "NCERT Ch 9 summary: there are 20 types of amino acids and 5 types of nucleotides.",
+            "hi": "NCERT अध्याय 9 सारांश: 20 प्रकार के ऐमीनो अम्ल और 5 प्रकार के न्यूक्लियोटाइड हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "NCERT's summary names five types, one for each base.",
+              "hi": "NCERT का सारांश पाँच प्रकार बताता है, हर क्षारक के लिए एक।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "20 is the number of amino acid types.",
+              "hi": "20 ऐमीनो अम्लों के प्रकारों की संख्या है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Two is the number of base families.",
+              "hi": "दो क्षारकों के कुलों की संख्या है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.nucleic-acids.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Thymidylic acid is a",
+        "hi": "थाइमिडिलिक अम्ल है एक"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "nitrogen base",
+            "hi": "नाइट्रोजनी क्षारक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "nucleoside",
+            "hi": "न्यूक्लिओसाइड"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "nucleotide",
+            "hi": "न्यूक्लियोटाइड"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "pyrimidine sugar",
+            "hi": "पिरिमिडीन शर्करा"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Base, nucleoside or nucleotide: which has an acid name?",
+          "hi": "क्षारक, न्यूक्लिओसाइड या न्यूक्लियोटाइड: किसका नाम अम्ल वाला है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "'-ylic acid' means the phosphate is there, so it is a nucleotide.",
+          "hi": "'-इलिक अम्ल' का अर्थ है फॉस्फेट मौजूद है, इसलिए यह न्यूक्लियोटाइड है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.1 lists thymidylic acid among the nucleotides.",
+            "hi": "NCERT §9.1 थाइमिडिलिक अम्ल को न्यूक्लियोटाइडों में रखती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The base is thymine.",
+              "hi": "क्षारक थाइमीन है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The nucleoside is thymidine.",
+              "hi": "न्यूक्लिओसाइड थाइमिडीन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Pyrimidine is a base family, not a sugar.",
+              "hi": "पिरिमिडीन क्षारकों का कुल है, शर्करा नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

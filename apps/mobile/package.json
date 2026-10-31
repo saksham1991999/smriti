@@ -14,7 +14,7 @@
     "export:android": "node scripts/seed-pack.mjs && expo export --platform android --output-dir dist-android",
     "export:web": "node scripts/seed-pack.mjs && expo export --platform web --output-dir dist-web",
     "typecheck": "node scripts/seed-pack.mjs && tsc --noEmit -p .",
-    "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs && node scripts/phosphor-lite.mjs --check",
+    "lint": "node scripts/seed-pack.mjs && tsc --noEmit -p . && node scripts/lint-rules.mjs && node scripts/sim-catalogue.mjs --check",
     "test": "node scripts/seed-pack.mjs && jest",
     "test:live": "node scripts/seed-pack.mjs && jest test/live"
   },
@@ -39,8 +39,8 @@
     "expo-apple-authentication": "57.0.2",
     "expo-asset": "57.0.20",
     "expo-constants": "57.0.22",
-    "expo-file-system": "57.0.7",
     "expo-crypto": "57.0.4",
+    "expo-file-system": "57.0.7",
     "expo-font": "57.0.4",
     "expo-haptics": "57.0.3",
     "expo-image-picker": "57.0.20",
@@ -49,6 +49,7 @@
     "expo-notifications": "57.0.24",
     "expo-router": "57.0.29",
     "expo-secure-store": "57.0.4",
+    "expo-sharing": "57.0.24",
     "expo-splash-screen": "57.0.10",
     "expo-sqlite": "57.0.4",
     "expo-status-bar": "57.0.1",
@@ -62,6 +63,7 @@
     "react-native-safe-area-context": "5.7.0",
     "react-native-screens": "4.26.0",
     "react-native-svg": "15.15.4",
+    "react-native-view-shot": "5.1.0",
     "react-native-web": "0.21.2",
     "react-native-webview": "13.16.1",
     "react-native-worklets": "0.10.1",
@@ -79,7 +81,10 @@
   },
   "expo": {
     "install": {
-      "exclude": ["typescript", "expo"]
+      "exclude": [
+        "typescript",
+        "expo"
+      ]
     }
   }
 }

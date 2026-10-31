@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { iconNames } from "@smriti/tokens/icons";
+
 import { CARD_MODE_CODE, MEDIA_PREFIX_KINDS, negativeFeedbackWords, SERVER_ONLY_USES } from "../constants.js";
 import type {
   BlueprintFile,
@@ -23,6 +25,12 @@ import { mediaRefs, walkContent } from "./walk.js";
 export interface Tokens {
   subjectMap: Record<string, string>;
   mockPalette: Set<string>;
+  /**
+   * The Phosphor names the apps can draw: `iconNames` in @smriti/tokens/ui, which the ui-web and
+   * ui-native `iconMap`s must match (their tests check it). Any other name would fall back to a
+   * placeholder icon on the device, so content may name only these.
+   */
+  icons: ReadonlySet<string>;
 }
 
 export function loadTokens(repoRoot: string): Tokens {
@@ -36,7 +44,7 @@ export function loadTokens(repoRoot: string): Tokens {
     if (!k.startsWith("$") && typeof v === "string") subjectMap[k] = v;
   }
   const mockPalette = new Set(Object.keys(raw.mockPalette ?? {}).filter((k) => !k.startsWith("$")));
-  return { subjectMap, mockPalette };
+  return { subjectMap, mockPalette, icons: new Set<string>(iconNames) };
 }
 
 /** Locales every localised field must carry: the union of the exam profiles' locales. */
@@ -60,7 +68,8 @@ export function runRules(set: ContentSet, findings: Findings, tokens: Tokens): v
   checkQuestions(set, findings);
   checkMnemonics(set, findings);
   checkPyq(set, findings);
-  checkExtras(set, findings);
+  checkExtras(set, findings, tokens);
+  checkPalaceTemplates(set, findings);
   checkMedia(set, findings);
   checkSeedSpecs(set, findings);
   checkCoverageInputs(set, findings);
@@ -961,7 +970,7 @@ function checkPyq(set: ContentSet, findings: Findings): void {
   }
 }
 
-function checkExtras(set: ContentSet, findings: Findings): void {
+function checkExtras(set: ContentSet, findings: Findings, tokens: Tokens): void {
   for (const { file, doc } of set.extras) {
     doc.concepts.forEach((c, i) => conceptRef(set, findings, c, file, `/concepts/${i}`));
     if (doc.scope === "topic") {
@@ -993,8 +1002,46 @@ function checkExtras(set: ContentSet, findings: Findings): void {
         if (!nodes.has(e.from) || !nodes.has(e.to)) findings.error("mind_map_edge", file, `edge ${e.from} -> ${e.to} names an unknown node`);
       }
     }
-    if (doc.schema === "song@1") checkSong(set, findings, file, doc);
+    if (doc.schema === "song@1") checkSong(set, findings, file, doc, tokens);
     if (doc.schema === "play@1") checkPlay(findings, file, doc);
+  }
+}
+
+/**
+ * palace_template@1 (memory-labs §5.6, gap G3): ids unique, spots in a gapless walk order, a
+ * picture room's spots at {x, y} on a sunny-scene image and a 360° room's at {yaw, pitch} on a
+ * pano360 scene, and only exam profiles that exist.
+ */
+function checkPalaceTemplates(set: ContentSet, findings: Findings): void {
+  const seen = new Map<string, string>();
+  for (const { file, doc } of set.palaceTemplates) {
+    const other = seen.get(doc.id);
+    if (other) findings.error("duplicate_id", file, `palace template ${doc.id} is also defined in ${other}`, { id: doc.id });
+    else seen.set(doc.id, file);
+    for (const p of doc.exam_profiles ?? []) {
+      if (!set.profiles.has(p)) findings.error("ref_unknown_profile", file, `unknown exam profile ${p}`, { id: p });
+    }
+    const rooms = new Set<string>();
+    doc.rooms.forEach((room, r) => {
+      const path = `/rooms/${r}`;
+      if (rooms.has(room.id)) findings.error("palace_room_id", file, `room ${room.id} repeats`, { path });
+      rooms.add(room.id);
+      const pano = room.pano !== undefined;
+      if ((doc.kind === "pano360") !== pano) {
+        findings.error("palace_room_scene", file, `${doc.kind} rooms use ${doc.kind === "pano360" ? "a pano" : "an image"}`, { path });
+      }
+      if (room.image) {
+        const preset = set.media.get(room.image)?.request.preset;
+        if (preset && preset !== "sunny-scene") findings.error("palace_room_preset", file, `${room.image} is ${preset}; rooms use sunny-scene`, { path });
+      }
+      const orders = room.spots.map((s) => s.order).sort((a, b) => a - b);
+      if (orders.some((o, i) => o !== i)) findings.error("palace_spot_order", file, `room ${room.id}: spot order must run 0 to ${room.spots.length - 1}`, { path });
+      const ids = new Set(room.spots.map((s) => s.id));
+      if (ids.size !== room.spots.length) findings.error("palace_spot_id", file, `room ${room.id}: spot ids repeat`, { path });
+      room.spots.forEach((s, i) => {
+        if (("yaw" in s.pos) !== pano) findings.error("palace_spot_pos", file, `room ${room.id}: spot ${s.id} needs ${pano ? "{yaw, pitch}" : "{x, y}"}`, { path: `${path}/spots/${i}` });
+      });
+    });
   }
 }
 
@@ -1003,11 +1050,16 @@ function checkExtras(set: ContentSet, findings: Findings): void {
  * request in that locale, with a transcript), timings that run forward and fit the audio, and
  * line actions that exist.
  */
-function checkSong(set: ContentSet, findings: Findings, file: string, doc: Song): void {
+function checkSong(set: ContentSet, findings: Findings, file: string, doc: Song, tokens: Tokens): void {
   const actions = new Set<string>();
   (doc.actions ?? []).forEach((a, i) => {
     if (actions.has(a.id)) findings.error("duplicate_id", file, `action ${a.id} is listed twice`, { path: `/actions/${i}` });
     actions.add(a.id);
+    if (!tokens.icons.has(a.icon)) {
+      findings.error("icon_unknown", file, `icon ${a.icon} is not in the app icon set (@smriti/tokens/ui iconNames, ui-web and ui-native iconMap)`, {
+        path: `/actions/${i}/icon`,
+      });
+    }
   });
   const locales = new Set<string>();
   doc.versions.forEach((v, vi) => {
@@ -1127,6 +1179,7 @@ function checkMedia(set: ContentSet, findings: Findings): void {
     ...set.questionFiles,
     ...set.mnemonicFiles,
     ...set.extras,
+    ...set.palaceTemplates,
     ...set.seedSpecs,
     ...set.sims,
   ] as { file: string; doc: unknown }[];

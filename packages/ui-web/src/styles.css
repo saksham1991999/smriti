@@ -76,6 +76,13 @@
     opacity: 0;
   }
 }
+/* Story page turn: a short slide from the reading direction. Reduced motion uses sm-fade instead. */
+@keyframes sm-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
 @keyframes sm-rise {
   from {
     opacity: 0;

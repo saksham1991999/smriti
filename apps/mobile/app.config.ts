@@ -17,14 +17,18 @@ import type { Variant } from '@smriti/config';
 // itself uses getVariant (with its zod validation), and `pnpm test` checks the two agree.
 const require = createRequire(import.meta.url);
 const tokens = require('../../packages/tokens/tokens.json') as unknown;
+// The brand domain (TRD D7: a working name) lives once, in packages/config/brand.json.
+const brandDomain = (require('../../packages/config/brand.json') as { domain: string }).domain;
 const VARIANT_IDS = ['all', 'jee', 'neet', 'upsc', 'ssc'] as const;
 
 function readVariant(id: string | undefined, overrides: { googleIosClientId?: string; googleIosUrlScheme?: string }): Variant {
   const key = id === undefined || id === '' ? 'all' : id;
   if (!(VARIANT_IDS as readonly string[]).includes(key)) throw new Error(`Unknown APP_VARIANT "${key}". Expected one of ${VARIANT_IDS.join(', ')}`);
-  const v = require(`../../packages/config/variants/${key}.json`) as Variant;
+  const v = require(`../../packages/config/variants/${key}.json`) as Omit<Variant, 'deepLinkPrefix'>;
   if (v.id !== key || v.scheme !== `smriti-${key}`) throw new Error(`packages/config/variants/${key}.json is not variant ${key}`);
-  return { ...v, googleIosClientId: overrides.googleIosClientId ?? v.googleIosClientId, googleIosUrlScheme: overrides.googleIosUrlScheme ?? v.googleIosUrlScheme };
+  // Same rule as deepLinkPrefix in @smriti/config.
+  const deepLinkPrefix = v.deepLinkPath === '/' ? `https://${brandDomain}` : `https://${brandDomain}${v.deepLinkPath}`;
+  return { ...v, deepLinkPrefix, googleIosClientId: overrides.googleIosClientId ?? v.googleIosClientId, googleIosUrlScheme: overrides.googleIosUrlScheme ?? v.googleIosUrlScheme };
 }
 
 type AccentRef = `examAccent.${string}`;
@@ -48,8 +52,17 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     googleIosUrlScheme: process.env[`GOOGLE_IOS_URL_SCHEME_${(process.env.APP_VARIANT ?? 'all').toUpperCase()}`],
   });
   const appEnv = process.env.EXPO_PUBLIC_APP_ENV ?? 'local';
-  const suffix = appEnv === 'production' ? '' : appEnv === 'staging' || appEnv === 'preview' ? '.preview' : '.dev';
+  // Staging builds are release candidates on the stores' internal tracks (TRD §17), so they are
+  // the production app; preview builds install beside it as `.preview`, local ones as `.dev`.
+  const storeApp = appEnv === 'production' || appEnv === 'staging';
+  const suffix = storeApp ? '' : appEnv === 'preview' ? '.preview' : '.dev';
+  // EAS (infra/eas/README.md): one EAS project per variant, since each is its own store app.
+  // EAS_PROJECT_ID_<VARIANT> wins; EAS_PROJECT_ID is the fallback a single-variant build sets.
+  const variantKey = (process.env.APP_VARIANT || 'all').toUpperCase();
+  const easProjectId = process.env[`EAS_PROJECT_ID_${variantKey}`] || process.env.EAS_PROJECT_ID;
+
   const name = appEnv === 'production' ? variant.appName.en : `${variant.appName.en} (${appEnv})`;
+  const deepLink = new URL(variant.deepLinkPrefix);
   const accent = accentHex(variant.accentColor as AccentRef);
   const splashBg = accentHex(variant.splash.backgroundToken as AccentRef);
   const adaptiveBg = accentHex(variant.androidAdaptiveIcon.backgroundToken as AccentRef);
@@ -60,6 +73,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     slug: `smriti-${variant.id}`,
     version: '1.0.0',
     runtimeVersion: { policy: 'appVersion' },
+    // EAS Update: each variant's channel (eas.json) on its own project.
+    ...(easProjectId ? { updates: { url: `https://u.expo.dev/${easProjectId}` } } : {}),
     orientation: 'portrait',
     scheme: variant.scheme,
     userInterfaceStyle: 'automatic',
@@ -69,6 +84,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       bundleIdentifier: `${variant.bundleId}${suffix}`,
       supportsTablet: true,
       usesAppleSignIn: true,
+      // Universal links on the brand domain; the site serves the apple-app-site-association file.
+      associatedDomains: [`applinks:${deepLink.host}`],
       infoPlist: {
         ITSAppUsesNonExemptEncryption: false,
         // One OAuth URL scheme per variant bundle id (public, not a secret).
@@ -76,7 +93,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       },
       // Widgets (NTF-08..10): the App Group the snapshot is written to, one per environment so
       // dev, preview and production builds installed side by side keep their own data.
-      entitlements: { 'com.apple.security.application-groups': [`group.${variant.bundleId}${suffix}`] },
+      entitlements: {
+        'com.apple.security.application-groups': [`group.${variant.bundleId}${suffix}`],
+        // App Attest (G-10): the production environment for store builds, development otherwise
+        // (matches the API's APP_ATTEST_ENVIRONMENT).
+        'com.apple.developer.devicecheck.appattest-environment': storeApp ? 'production' : 'development',
+      },
     },
     android: {
       package: `${variant.androidPackage}${suffix}`,
@@ -91,7 +113,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         {
           action: 'VIEW',
           autoVerify: true,
-          data: [{ scheme: 'https', host: new URL(variant.deepLinkPrefix).host, pathPrefix: new URL(variant.deepLinkPrefix).pathname }],
+          data: [{ scheme: 'https', host: deepLink.host, pathPrefix: deepLink.pathname }],
           category: ['BROWSABLE', 'DEFAULT'],
         },
       ],
@@ -106,6 +128,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       'expo-sqlite',
       'expo-localization',
       'expo-apple-authentication',
+      // PRC-13: the result card is captured on the device and handed to the OS share sheet.
+      'expo-sharing',
       ['expo-notifications', { color: accent }],
       // AI photo doubts (AI-07 / PRC-01 "Snap a doubt"): one photo of one question, never the mic.
       ['expo-image-picker', { photosPermission: 'Choose a photo of a question you want help with.', cameraPermission: 'Take a photo of a question you want help with.', microphonePermission: false }],
@@ -117,7 +141,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     extra: {
       variantId: variant.id,
       router: { origin: false },
-      eas: process.env.EAS_PROJECT_ID ? { projectId: process.env.EAS_PROJECT_ID } : undefined,
+      eas: easProjectId ? { projectId: easProjectId } : undefined,
     },
   };
 };

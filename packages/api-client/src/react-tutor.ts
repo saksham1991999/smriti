@@ -12,6 +12,7 @@ import {
   streamTutorAskQuestion,
   streamTutorMessage,
   tutorAnswerText,
+  type TutorCallOptions,
   type TutorStreamEvent,
 } from "./sse";
 
@@ -24,6 +25,8 @@ export interface TutorReply {
 export interface TutorStreamOptions {
   onEvent?: (event: TutorStreamEvent, textSoFar: string) => void;
   signal?: AbortSignal;
+  /** A streaming fetch for these calls, such as `expo/fetch` on React Native. */
+  fetch?: TutorCallOptions["fetch"];
 }
 
 /** Drains a tutor stream, reporting each event. */
@@ -95,14 +98,21 @@ export function useDeleteTutorSession() {
 }
 
 function useTutorStream<B>(
-  start: (api: ApiClient, body: B, signal?: AbortSignal) => AsyncGenerator<TutorStreamEvent>,
+  start: (api: ApiClient, body: B, call: TutorCallOptions) => AsyncGenerator<TutorStreamEvent>,
   options: TutorStreamOptions,
   afterKeys: (body: B) => ReadonlyArray<readonly unknown[]>,
 ) {
   const api = useApiClient();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (body: B) => collectTutorReply(start(api, body, options.signal), options.onEvent),
+    mutationFn: (body: B) =>
+      collectTutorReply(
+        start(api, body, {
+          ...(options.signal ? { signal: options.signal } : {}),
+          ...(options.fetch ? { fetch: options.fetch } : {}),
+        }),
+        options.onEvent,
+      ),
     onSuccess: (_reply, body) =>
       invalidate(qc, queryKeys.practiceLimits(), queryKeys.tutorSessions(), ...afterKeys(body)),
   });
@@ -111,7 +121,7 @@ function useTutorStream<B>(
 /** Sends a chat message; `client_message_id` makes a retry safe. */
 export function useSendTutorMessage(sessionId: string, options: TutorStreamOptions = {}) {
   return useTutorStream<Schemas["MessageIn"]>(
-    (api, body, signal) => streamTutorMessage(api, sessionId, body, signal),
+    (api, body, call) => streamTutorMessage(api, sessionId, body, call),
     options,
     () => [queryKeys.tutorSession(sessionId)],
   );

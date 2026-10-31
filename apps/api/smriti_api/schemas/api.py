@@ -3,6 +3,7 @@ source that ``packages/api-client`` is generated from."""
 
 from __future__ import annotations
 
+import re
 import uuid
 from datetime import date, datetime
 from typing import Annotated, Any, Literal
@@ -319,8 +320,21 @@ class MergeStatus(BaseModel):
     finished_at: datetime | None
 
 
+class DeletionRequest(BaseModel):
+    """Optional body of ``POST /v1/account/deletion``. An account that signs in with Apple sends
+    the authorization code from its fresh Sign in with Apple (AUTH-15), so the server can revoke
+    the app's Apple tokens (auth flow §6.8, Apple TN3194)."""
+
+    apple_authorization_code: str | None = Field(default=None, min_length=1, max_length=2048)
+    # The bundle id the code was issued to (the variant app). Needed when several are configured.
+    apple_client_id: str | None = Field(default=None, min_length=1, max_length=255)
+
+
 class DeletionResponse(BaseModel):
     scheduled_for: datetime | None
+    # True when Apple tokens were revoked during this request; false when no code was sent or
+    # Apple could not be reached (the deletion still goes ahead).
+    apple_revoked: bool = False
 
 
 # --- gamification ----------------------------------------------------------------------------
@@ -347,9 +361,16 @@ class RestDayRequest(BaseModel):
     day: date
 
 
+# An i18n catalogue key as the apps take it (`namespace:key`, packages/i18n).
+I18N_KEY = re.compile(r"^[a-z_]+:[A-Za-z0-9_.-]+$")
+
+
 class ShopItemOut(BaseModel):
     id: str
     kind: str
+    name_key: str | None = Field(
+        default=None, description="packages/i18n key (namespace:key); ME-17.treats takes {pet}"
+    )
     price_gems: int
     pro_only: bool
     owned: int
@@ -382,6 +403,9 @@ class QuestOut(BaseModel):
     id: str
     period: Literal["daily", "weekly", "event"]
     counter: str | None
+    title_key: str | None = Field(
+        default=None, description="packages/i18n ME-20 template key; takes {n} = target"
+    )
     target: int
     progress: int
     reward: dict[str, int]

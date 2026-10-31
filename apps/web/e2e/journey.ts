@@ -337,27 +337,36 @@ export async function guardianLink(
   await page.getByTestId("consent-result-continue").click();
 }
 
-/** AUTH-24 → SET-14: the guardian sees the teen and turns one scope off (SET-17). */
+/**
+ * SET-13 gate with the AUTH-24 sign-in on a separate session → SET-14 → SET-17: the guardian
+ * turns one scope off for the teen, then leaves Parent mode (the teen stays signed in).
+ */
 export async function parentTurnsOff(
   page: Page,
   scope: string,
   guardian: { email: string; name: string },
 ) {
   await page.goto("/parent");
-  await expect(page.getByTestId("auth-24")).toBeVisible();
-  await expectAccessible(page, "AUTH-24");
+  await expect(page.getByTestId("set-13")).toBeVisible();
+  await expectAccessible(page, "SET-13");
   await devGoogle(page, guardian.email, guardian.name);
   await expect(page.getByTestId("set-14")).toBeVisible();
-  const row = page.locator(`[data-testid=learner-scope-${scope}]`).first();
-  await expect(row).toHaveAttribute("data-on", "true");
   await expectAccessible(page, "SET-14");
-  await page.getByTestId(`learner-off-${scope}`).first().click();
+  await page.locator("[data-testid^=set-14-consents-]").first().click();
+  await expect(page.getByTestId("set-17")).toBeVisible();
+  await expectAccessible(page, "SET-17");
+  const off = page.getByTestId(`set-17-off-${scope}`);
+  await off.click();
   await page
-    .getByTestId("learner-off-confirm")
+    .getByTestId("set-17-confirm")
     .getByRole("button", { name: /turn off|बंद करें/i })
     .click();
-  await expect(row).toHaveAttribute("data-on", "false");
-  await page.getByTestId("parent-exit").click();
+  await expect(off).toBeHidden();
+  // Back in the app (no reload): a session that wasn't kept lives only in this page.
+  await page.goBack();
+  await expect(page.getByTestId("set-14")).toBeVisible();
+  await page.getByTestId("set-14-exit").click();
+  await expect(page).toHaveURL(/\/learn/);
 }
 
 /** MEM-07 decks → MEM-03 review (Good on every card) → MEM-04 complete; MEM-28 → MEM-29 focus. */

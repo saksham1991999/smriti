@@ -24,7 +24,8 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await expect(page.getByTestId("set-13")).toBeVisible();
     await expectAccessible(page, "SET-13");
     await shoot(page, locale, "SET-13");
-    await page.getByTestId("set-13-google").click();
+    // Kept signed in, so the reloads below keep the grown-up's separate session.
+    await page.getByTestId("parent-stay").click();
     await devGoogle(page, `parent-${locale}-${Date.now()}@example.test`, "E2E Parent");
     await expect(page).toHaveURL(/\/parent$/);
 

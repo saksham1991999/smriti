@@ -2,19 +2,38 @@
  * HOME-01: greeting, streak card with plant and daily goal, one hero from app-core `selectHero`,
  * the "up next" strip, one secondary row, subject tiles, and Memory. No Pro upsell here (R15).
  */
-import { useState } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { useAppStore } from "@smriti/app-core/react";
-import { Banner, Card, Chip, ContinueCard, Icon, PetAvatar, StreakCard, StreakPill, SubjectTile, Text } from "@smriti/ui-web";
+import {
+  Banner,
+  Card,
+  Chip,
+  ContinueCard,
+  Icon,
+  IconButton,
+  PetAvatar,
+  StreakCard,
+  StreakPill,
+  SubjectTile,
+  Text,
+} from "@smriti/ui-web";
 import { useServices } from "../../boot/context";
 import { SoftPromptSheet } from "../../components/SignIn";
+import { chooseCheckin, localDay, readAndMarkOpen } from "../../lib/checkin";
 import { useCatalog } from "../../lib/content";
 import { useHomeModel } from "../../lib/home";
-import { parts, useI18n, type T } from "../../lib/i18n";
+import { parts, useI18n, withNamespaces, type T } from "../../lib/i18n";
 import { useOnline } from "../../lib/network";
+import { useOnboarding } from "../../lib/onboarding";
 import { useExams, useProfileIds, useTopicStatuses } from "../../lib/queries";
 import { LocaleThemeToggles } from "../../shell/AppShell";
+import { useSearchUI } from "../../shell/SearchHost";
 import { LoadError, RouteLoading } from "../../shell/States";
+
+const StreakCheckin = lazy(() =>
+  withNamespaces(["me_money"], () => import("./StreakCheckin"))().then((m) => ({ default: m.StreakCheckin })),
+);
 
 /** Splits "Kicker · meta · [Action]" catalogue rows. */
 export function heroText(text: string): { kicker: string; meta: string[]; actions: string[] } {
@@ -29,7 +48,11 @@ export function heroText(text: string): { kicker: string; meta: string[]; action
   return { kicker: rest[0] ?? "", meta: rest.slice(1), actions };
 }
 
-function streakMessage(t: T, s: { today_qualified: boolean; at_risk: boolean } | null, health: string | undefined): string {
+function streakMessage(
+  t: T,
+  s: { today_qualified: boolean; at_risk: boolean } | null,
+  health: string | undefined,
+): string {
   if (health === "droopy") return t("learn:HOME-01.streak_card_droopy");
   if (health === "dry") return t("learn:HOME-01.streak_card_dry");
   if (health === "wilted") return t("learn:HOME-01.streak_card_wilted");
@@ -55,16 +78,31 @@ export function Home() {
   const wallet = useAppStore((x) => x.wallet);
   const pet = useAppStore((x) => x.pet);
   const [soft, setSoft] = useState(false);
+  const today = useMemo(() => localDay(), []);
+  const opened = useMemo(() => readAndMarkOpen(today), [today]);
+  const completedAt = useOnboarding((x) => x.completedAt);
+  const checkin = chooseCheckin({
+    today,
+    ...opened,
+    onboardedOn: completedAt ? localDay(new Date(completedAt)) : null,
+    health: plant?.health ?? null,
+    restDay: streak?.rest_day ?? null,
+    longGapDays: s.flags.get("comeback.long_gap_days"),
+  });
 
   if (catalog.isError) return <LoadError onRetry={() => void catalog.refetch()} />;
   if (catalog.isPending || (!model && !catalog.unpublished)) return <RouteLoading />;
 
   const exam = exams?.find((e) => e.profiles.some((p) => p.id === profileId));
-  const name = profile && !session.isGuest ? (profile as { display_name?: string | null }).display_name : null;
-  const greeting = name ? t("learn:HOME-01.greeting_any", { name }) : t("learn:HOME-01.greeting_guest");
+  const name =
+    profile && !session.isGuest ? (profile as { display_name?: string | null }).display_name : null;
+  const greeting = name
+    ? t("learn:HOME-01.greeting_any", { name })
+    : t("learn:HOME-01.greeting_guest");
   const goal = model?.dailyGoal ?? null;
 
-  const openTopic = (topicId: string, mode: "deep_dive" | "quick_revision" = "deep_dive") => void navigate({ to: "/lesson/$topicId", params: { topicId }, search: { mode } });
+  const openTopic = (topicId: string, mode: "deep_dive" | "quick_revision" = "deep_dive") =>
+    void navigate({ to: "/lesson/$topicId", params: { topicId }, search: { mode } });
 
   const hero = (() => {
     if (!model) return null;
@@ -72,8 +110,27 @@ export function Home() {
     const a = h.action;
     if (a.type === "none") return null;
     if (a.type === "review") {
-      const txt = heroText(t("learn:HOME-01.hero_review", { count: a.count, minutes: Math.max(1, Math.round((a.count * s.flags.get("memory.default_seconds_per_card")) / 60)) }));
-      return <ContinueCard subject="physics" eyebrow={txt.kicker} eyebrowIcon="Cards" title={txt.meta.join(" · ")} actionLabel={txt.actions[0]} illustration="ui-all-caught-up" onPress={() => void navigate({ to: "/review" })} testID="hero" />;
+      const txt = heroText(
+        t("learn:HOME-01.hero_review", {
+          count: a.count,
+          minutes: Math.max(
+            1,
+            Math.round((a.count * s.flags.get("memory.default_seconds_per_card")) / 60),
+          ),
+        }),
+      );
+      return (
+        <ContinueCard
+          subject="physics"
+          eyebrow={txt.kicker}
+          eyebrowIcon="Cards"
+          title={txt.meta.join(" · ")}
+          actionLabel={txt.actions[0]}
+          illustration="ui-all-caught-up"
+          onPress={() => void navigate({ to: "/review" })}
+          testID="hero"
+        />
+      );
     }
     if (a.type === "daily_challenge") return null;
     const topicId = a.type === "resume" ? a.bite.topicId : a.topic.topicId;
@@ -82,12 +139,21 @@ export function Home() {
     if (!info) return null;
     const p = info.topic;
     let txt;
-    if (h.kind === "continue") txt = heroText(t("learn:HOME-01.hero_continue", { percent: statuses?.get(topicId)?.percent ?? 0 }));
+    if (h.kind === "continue")
+      txt = heroText(
+        t("learn:HOME-01.hero_continue", { percent: statuses?.get(topicId)?.percent ?? 0 }),
+      );
     else if (h.kind === "start_here") txt = heroText(t("learn:HOME-01.hero_start_here"));
     else if (h.kind === "goal_met") txt = heroText(t("learn:HOME-01.hero_goal_met"));
-    else if (h.kind === "streak_saver") txt = heroText(t("learn:HOME-01.hero_streak_saver_lesson", { minutes: p.minutes }));
+    else if (h.kind === "streak_saver")
+      txt = heroText(t("learn:HOME-01.hero_streak_saver_lesson", { minutes: p.minutes }));
     else txt = heroText(t("learn:HOME-01.hero_next_topic"));
-    const action = h.kind === "next_topic" ? (mode === "quick_revision" ? txt.actions[1] : txt.actions[0]) : txt.actions[0];
+    const action =
+      h.kind === "next_topic"
+        ? mode === "quick_revision"
+          ? txt.actions[1]
+          : txt.actions[0]
+        : txt.actions[0];
     return (
       <ContinueCard
         subject={info.subject.family}
@@ -110,42 +176,104 @@ export function Home() {
   return (
     <div className="flex flex-col gap-5 px-4 pt-3 pb-6 md:px-8 md:pt-6" data-testid="home-01">
       <header className="flex items-center gap-2">
-        {exam && <Chip kind="filter" label={exam.name[locale] ?? exam.name.en ?? ""} icon="CaretDown" accessibilityLabel={t("learn:HOME-01.exam_chip_a11y", { exam_name: exam.name[locale] })} onPress={() => void navigate({ to: "/me/settings" })} testID="exam-chip" />}
+        {exam && (
+          <Chip
+            kind="filter"
+            label={exam.name[locale] ?? exam.name.en ?? ""}
+            icon="CaretDown"
+            accessibilityLabel={t("learn:HOME-01.exam_chip_a11y", { exam_name: exam.name[locale] })}
+            onPress={() => void navigate({ to: "/me/settings" })}
+            testID="exam-chip"
+          />
+        )}
         <span className="flex-1" />
-        {(streak?.current ?? 0) > 0 && <StreakPill days={streak?.current ?? 0} testID="home-streak" onPress={() => void navigate({ to: "/me" })} />}
+        {(streak?.current ?? 0) > 0 && (
+          <StreakPill
+            days={streak?.current ?? 0}
+            testID="home-streak"
+            onPress={() => void navigate({ to: "/me" })}
+          />
+        )}
         {wallet && (
-          <span className="flex items-center gap-1 rounded-full bg-surface px-3 py-1.5 text-label font-bold shadow-card" aria-label={t("learn:HOME-01.gem_pill_a11y", { n: wallet.gems })}>
+          <button
+            type="button"
+            onClick={() => void navigate({ to: "/me/shop" })}
+            className="flex items-center gap-1 rounded-full bg-surface px-3 py-1.5 text-label font-bold shadow-card focus-visible:outline-[3px] focus-visible:outline-primary"
+            aria-label={t("learn:HOME-01.gem_pill_a11y", { n: wallet.gems })}
+            data-testid="home-gems"
+          >
             <Icon name="Diamond" size={20} color="primary" weight="fill" />
             {wallet.gems}
-          </span>
+          </button>
         )}
+        <IconButton
+          icon="MagnifyingGlass"
+          label={t("learn:WEB-10.search")}
+          onPress={() => useSearchUI.getState().show()}
+          testID="open-search"
+        />
         <LocaleThemeToggles className="md:hidden" />
       </header>
 
       {!online && <Banner tone="offline" text={t("learn:HOME-01.offline_banner")} />}
 
       <div className="flex items-center gap-3">
-        {pet && <PetAvatar species={pet.species as "cat" | "dog"} size={44} alt={pet.name} />}
+        {pet && (
+          <button
+            type="button"
+            onClick={() => void navigate({ to: "/me/pet" })}
+            className="rounded-full focus-visible:outline-[3px] focus-visible:outline-primary"
+            data-testid="home-pet"
+          >
+            <PetAvatar species={pet.species as "cat" | "dog"} size={44} alt={pet.name} />
+          </button>
+        )}
         <Text variant="title" heading as="h1">
           {greeting}
         </Text>
       </div>
 
-      {catalog.fixture && <Chip kind="status" tone="warning" icon="Info" label={t("learn:WEB-01.fixture_notice")} className="self-start" testID="fixture-chip" />}
+      {catalog.fixture && (
+        <Chip
+          kind="status"
+          tone="warning"
+          icon="Info"
+          label={t("learn:WEB-01.fixture_notice")}
+          className="self-start"
+          testID="fixture-chip"
+        />
+      )}
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <StreakCard
             message={streakMessage(t, streak, plant?.health)}
-            goal={goal ? { done: Math.min(goal, model?.todayMinutes ?? 0), target: goal, label: t("learn:HOME-01.daily_goal", { done: model?.todayMinutes ?? 0, goal }) } : undefined}
-            freezes={streak ? { ready: streak.freezes_available, slots: streak.freezes_equipped } : undefined}
+            goal={
+              goal
+                ? {
+                    done: Math.min(goal, model?.todayMinutes ?? 0),
+                    target: goal,
+                    label: t("learn:HOME-01.daily_goal", { done: model?.todayMinutes ?? 0, goal }),
+                  }
+                : undefined
+            }
+            freezes={
+              streak
+                ? { ready: streak.freezes_available, slots: streak.freezes_equipped }
+                : undefined
+            }
             atRisk={streak?.at_risk}
             plant={{ stage: plant?.stage ?? "seed", health: plant?.health ?? "thriving" }}
             onPress={() => void navigate({ to: "/me" })}
             testID="streak-card"
           />
           {session.isGuest && (
-            <button type="button" onClick={() => setSoft(true)} className="self-start rounded-xs px-1 text-label font-bold text-primary-text underline-offset-2 hover:underline focus-visible:outline-[3px] focus-visible:outline-primary" data-testid="save-plant-link">
+            <button
+              type="button"
+              onClick={() => setSoft(true)}
+              className="self-start rounded-xs px-1 text-label font-bold text-primary-text underline-offset-2 hover:underline focus-visible:outline-[3px] focus-visible:outline-primary"
+              data-testid="save-plant-link"
+            >
               {t("learn:HOME-01.guest_link_day_2")}
             </button>
           )}
@@ -157,7 +285,13 @@ export function Home() {
               <span className="flex items-center gap-3">
                 <Icon name="Cards" color="primary" />
                 <Text variant="label" className="flex-1">
-                  {t("learn:HOME-01.secondary_reviews", { count: reviews, minutes: Math.max(1, Math.round((reviews * s.flags.get("memory.default_seconds_per_card")) / 60)) })}
+                  {t("learn:HOME-01.secondary_reviews", {
+                    count: reviews,
+                    minutes: Math.max(
+                      1,
+                      Math.round((reviews * s.flags.get("memory.default_seconds_per_card")) / 60),
+                    ),
+                  })}
                 </Text>
                 <Icon name="CaretRight" color="inkMuted" />
               </span>
@@ -194,12 +328,23 @@ export function Home() {
                 parts(
                   t("learn:HOME-01.strip_label", {
                     chapter_title: model.nextInChapter.chapterName,
-                    n: model.nextInChapter.topics.filter((x) => statuses?.get(x.id)?.status !== "learned").length,
+                    n: model.nextInChapter.topics.filter(
+                      (x) => statuses?.get(x.id)?.status !== "learned",
+                    ).length,
                   }),
                 )[0]
               }
             </Text>
-            <button type="button" className="rounded-xs text-label font-bold text-primary-text focus-visible:outline-[3px] focus-visible:outline-primary" onClick={() => void navigate({ to: "/learn/chapter/$chapterId", params: { chapterId: model.nextInChapter?.chapterId ?? "" } })}>
+            <button
+              type="button"
+              className="rounded-xs text-label font-bold text-primary-text focus-visible:outline-[3px] focus-visible:outline-primary"
+              onClick={() =>
+                void navigate({
+                  to: "/learn/chapter/$chapterId",
+                  params: { chapterId: model.nextInChapter?.chapterId ?? "" },
+                })
+              }
+            >
               {parts(t("learn:HOME-01.strip_chips"))[1]}
             </button>
           </div>
@@ -208,7 +353,16 @@ export function Home() {
               const learned = statuses?.get(x.id)?.status === "learned";
               return (
                 <li key={x.id}>
-                  <Chip kind="filter" label={x.name} icon={learned ? "CheckCircle" : "Play"} selected={learned} onPress={() => void navigate({ to: "/learn/topic/$topicId", params: { topicId: x.id } })} testID={`strip-${x.id}`} />
+                  <Chip
+                    kind="filter"
+                    label={x.name}
+                    icon={learned ? "CheckCircle" : "Play"}
+                    selected={learned}
+                    onPress={() =>
+                      void navigate({ to: "/learn/topic/$topicId", params: { topicId: x.id } })
+                    }
+                    testID={`strip-${x.id}`}
+                  />
                 </li>
               );
             })}
@@ -235,7 +389,9 @@ export function Home() {
                 caption={t("learn:HOME-01.tile_meta", { n: sub.chapters.length })}
                 next={next ? t("learn:HOME-01.tile_next", { topic_title: next.name }) : undefined}
                 illustration={`subject-${sub.family}`}
-                onPress={() => void navigate({ to: "/learn/subject/$subjectId", params: { subjectId: sub.id } })}
+                onPress={() =>
+                  void navigate({ to: "/learn/subject/$subjectId", params: { subjectId: sub.id } })
+                }
                 testID={`subject-${sub.id}`}
               />
             );
@@ -252,6 +408,19 @@ export function Home() {
         </div>
       </section>
       <SoftPromptSheet open={soft} reason="save_progress" onClose={() => setSoft(false)} />
+      {checkin && plant && (
+        <Suspense fallback={null}>
+          <StreakCheckin
+            checkin={checkin}
+            today={today}
+            onLesson={() => {
+              const a = model?.hero.action;
+              if (a?.type === "lesson") openTopic(a.topic.topicId, a.topic.mode === "quick_revision" ? "quick_revision" : "deep_dive");
+              else void navigate({ to: "/learn" });
+            }}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

@@ -199,7 +199,7 @@ export function createGuardianSession(
         })
       : new DevAuthClient({
           baseUrl: env.API_BASE_URL,
-          fetch: withDevLinkFlag(createFetch()),
+          fetch: withDevLinkFlag(createFetch(s.interceptor)),
           store,
           clock: () => Date.now(),
         });
@@ -209,7 +209,7 @@ export function createGuardianSession(
     appVariant: s.variant.id,
     deviceId: deviceId(),
     platform: "web",
-    fetch: requestFetch(),
+    fetch: requestFetch(s.interceptor),
   });
   return {
     auth,

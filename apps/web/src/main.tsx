@@ -25,7 +25,7 @@ async function boot() {
   void startErrorReporting(services.env, services.store).catch(() => false);
   // A guardian opening a consent link (AUTH-22) or a parent opening Parent mode on their own browser
   // isn't a student: no guest account is made for them (flow §6.10). Their own session is separate.
-  const adultOnly = /^\/(guardian\/(?!ask$|handoff$|link$)[^/]+|parent)\/?$/.test(
+  const adultOnly = /^\/(guardian\/(?!ask$|handoff$|link$)[^/]+|parent(\/.*)?)\/?$/.test(
     window.location.pathname,
   );
   if (!adultOnly || (await services.auth.getSession().catch(() => null))) {

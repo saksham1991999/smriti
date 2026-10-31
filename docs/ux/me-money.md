@@ -2970,3 +2970,31 @@ Copy rules for new templates: no guilt ("You failed", "Don't let {pet} down"), n
 | Payment failed | The payment didn't go through. Nothing was charged. Try again? | भुगतान नहीं हो पाया। कोई पैसा नहीं कटा। फिर से कोशिश करें? |
 
 **Mock priority:** P1.
+
+---
+
+### WEB-09 · Web pet, shop and quest messages
+**Purpose:** Short lines for the web pet room (ME-04), revival (ME-08), shop (ME-17), quests (ME-20) and the grown-up check (PAY-03) that the screen tables don't cover.
+
+**Copy:**
+| Key | EN | HI |
+|---|---|---|
+| Quest practice | Answer {n, plural, one {# practice question} other {# practice questions}} | {n, plural, one {# अभ्यास प्रश्न} other {# अभ्यास प्रश्न}} हल करें |
+| Quest correct | Get {n, plural, one {# answer} other {# answers}} right | {n, plural, one {# जवाब} other {# जवाब}} सही करें |
+| Quest challenge | Play the daily challenge | डेली चैलेंज खेलें |
+| Quest focus | Finish {n, plural, one {# focus session} other {# focus sessions}} | {n, plural, one {# फ़ोकस सेशन} other {# फ़ोकस सेशन}} पूरे करें |
+| Quest xp | Earn {n} XP | {n} XP कमाएँ |
+| Quest other | Finish this quest | यह क्वेस्ट पूरा करें |
+| Quests empty | No quests right now. | अभी कोई क्वेस्ट नहीं है। |
+| Quest progress | {x} of {y} done | {y} में से {x} पूरे |
+| Time left | {h} h {m} min | {h} घं {m} मि |
+| Care left | {n} left today | आज {n} बाकी |
+| Revival not needed | Your plant is doing fine. No revival needed right now. | आपका पौधा ठीक है। अभी देखभाल की ज़रूरत नहीं। |
+| Shop more soon | More items will show here when they're in the shop. | दुकान में नई चीज़ें आने पर यहाँ दिखेंगी। |
+| Grown-up body no price | Pro is a paid plan. Please look at it with a grown-up. | Pro एक पेड प्लान है। इसे किसी बड़े के साथ देखें। |
+| Grown-up open parent | Open Parent mode | पैरेंट मोड खोलें |
+| Pet room | Pet room | पालतू का कमरा |
+| Shop row | Shop | दुकान |
+| Quests row | Quests | क्वेस्ट |
+
+**Mock priority:** P1.

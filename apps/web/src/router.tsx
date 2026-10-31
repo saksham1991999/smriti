@@ -245,11 +245,6 @@ const notificationRoute = createRoute({
   }),
   component: NotificationOpen,
 });
-const parentRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/parent",
-  component: guardian("ParentMode"),
-});
 const mockRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/practice/mock/$mockId",
@@ -398,6 +393,14 @@ const settingsRoute = createRoute({
     "Settings",
   ),
 });
+const linkRequestRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/me/guardian-link",
+  component: lazyRouteComponent(
+    withNamespaces(["auth"], () => import("./screens/auth/LinkRequest")),
+    "LinkRequest",
+  ),
+});
 const notificationsRoute = createRoute({
   getParentRoute: () => shellRoute,
   path: "/me/notifications",
@@ -414,6 +417,19 @@ const planRoute = createRoute({
     "YourPlan",
   ),
 });
+const gameRoute = <P extends string>(path: P, name: "PetRoom" | "Shop" | "Quests" | "Revival") =>
+  createRoute({
+    getParentRoute: () => shellRoute,
+    path,
+    component: lazyRouteComponent(
+      withNamespaces(["me_money"], () => import("./screens/me/Game")),
+      name,
+    ),
+  });
+const petRoute = gameRoute("/me/pet", "PetRoom");
+const shopRoute = gameRoute("/me/shop", "Shop");
+const questsRoute = gameRoute("/me/quests", "Quests");
+const revivalRoute = gameRoute("/me/revival", "Revival");
 
 // ── Phase 2 and 3 (screens/phase2): full screen, outside the tab shell ─────
 const feynmanRoute = createRoute({
@@ -457,8 +473,8 @@ const mixedRoute = createRoute({
 const live = withNamespaces(["practice"], () => import("./screens/phase2/live/Live"));
 const liveRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId", component: lazyRouteComponent(live, "LiveRoom") });
 const liveBoardRoute = createRoute({ getParentRoute: () => rootRoute, path: "/practice/live/$mockId/leaderboard", component: lazyRouteComponent(live, "LiveLeaderboard") });
-const parent = withNamespaces(["me_money"], () => import("./screens/phase2/parent/Parent"));
-// `/parent` itself is the guardian screens' ParentMode above; the web-app agent reconciles the two parent modes.
+const parent = withNamespaces(["me_money", "auth"], () => import("./screens/phase2/parent/Parent"));
+const parentRoute = createRoute({ getParentRoute: () => rootRoute, path: "/parent", component: lazyRouteComponent(parent, "ParentHome") });
 const parentReportRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/parent/$learnerId/report",
@@ -488,7 +504,6 @@ const routeTree = rootRoute.addChildren([
   consentHandoffRoute,
   consentLinkRoute,
   guardianLandingRoute,
-  parentRoute,
   notificationRoute,
   focusRoute,
   mockRoute,
@@ -498,6 +513,7 @@ const routeTree = rootRoute.addChildren([
   challengeRoute,
   drillRoute,
   ...phase2Routes,
+  linkRequestRoute,
   shellRoute.addChildren([
     homeRoute,
     subjectRoute,
@@ -514,6 +530,10 @@ const routeTree = rootRoute.addChildren([
     settingsRoute,
     notificationsRoute,
     planRoute,
+    petRoute,
+    shopRoute,
+    questsRoute,
+    revivalRoute,
   ]),
 ]);
 

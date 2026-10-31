@@ -159,6 +159,18 @@ export function PracticeHub() {
           <Icon name="CaretRight" color="inkMuted" />
         </span>
       </Card>
+      <Card onPress={() => void navigate({ to: "/practice/mixed" })} testID="mixed-tile">
+        <span className="flex items-center gap-3">
+          <Icon name="Shuffle" color="primary" />
+          <span className="flex min-w-0 flex-1 flex-col">
+            <Text variant="heading">{t("practice:PRC-03.mixed_title")}</Text>
+            <Text variant="caption" tone="muted">
+              {t("practice:PRC-03.mixed_caption")}
+            </Text>
+          </span>
+          <Icon name="CaretRight" color="inkMuted" />
+        </span>
+      </Card>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <Card onPress={() => void navigate({ to: "/practice/pyq" })} testID="pyq-tile">
           <span className="flex items-center gap-3">

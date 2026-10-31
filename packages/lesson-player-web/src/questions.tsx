@@ -64,15 +64,27 @@ export function initialOrder(ids: string[], answer: string[], seed: string): str
   return out;
 }
 
+/**
+ * A question served without its answer key (a mock while it runs) gets an empty key, so the views
+ * can render with nothing revealed: it marks nothing right and starts order questions shuffled.
+ */
+export function withAnswerKey<Q extends AnyQuestion | ChildOrQuestion>(q: Q): Q {
+  const o = q as unknown as Record<string, unknown>;
+  if (o.answer) return q;
+  const steps = (o.steps as { id: string }[] | undefined)?.map((x) => x.id) ?? [];
+  return { ...o, answer: { ...(o.options ? { option_ids: [] } : {}), value: null, unit: null, order: steps, pairs: [], blanks: [] } } as unknown as Q;
+}
+
 /** The draft a question starts with: order questions start shuffled, so [Check] works at once. */
-export function initialDraft(q: AnyQuestion | null): Answer | null {
+export function initialDraft(question: AnyQuestion | null): Answer | null {
+  const q = question && withAnswerKey(question);
   if (q?.type === "order_steps") return { kind: "order", order: initialOrder(q.steps.map((s) => s.id), q.answer.order, q.id) };
   return null;
 }
 
 export function QuestionView(props: QuestionViewProps) {
   const { t } = usePlayer();
-  const q = props.q as ChildOrQuestion;
+  const q = withAnswerKey(props.q as ChildOrQuestion);
   return (
     <div className="flex flex-col gap-4">
       {props.passage && (

@@ -826,6 +826,7 @@ All names are snake_case. Props carry ids, enums, counts and durations only: nev
 | `review_session_completed` | product | `mode`, `reviewed`, `again_count`, `duration_ms`, `left_early` |
 | `comeback_plan_shown` | product | `due_total_bucket`, `days_away_bucket` |
 | `comeback_plan_started` | learning | `plan_days`, `daily_chunk`, `relearn_topics` |
+| `comeback_plan_skipped` | product | `due_total_bucket`, `days_away_bucket` (the student chose a normal review instead) |
 | `comeback_plan_day_completed` | product | `day_index`, `plan_days` |
 | `leech_detected` | product | `card_type`, `lapses` |
 | `leech_action` | product | `action` (forge, lesson, edit, pause, dismiss) |

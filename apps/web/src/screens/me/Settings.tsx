@@ -21,6 +21,7 @@ import {
   TopBar,
   TrustLine,
 } from "@smriti/ui-web";
+import { useLinkRequests } from "../auth/LinkRequest";
 import { useServices } from "../../boot/context";
 import { SoftPromptSheet, useAgeBand } from "../../components/SignIn";
 import { ApiError } from "../../lib/api";
@@ -60,6 +61,23 @@ const CONSENT_ROW: Record<
   uploads: "me_money:SET-11.photo",
 };
 
+/** A guardian asked to link (SET-18 path 2): the row opens AUTH-27. */
+function LinkRequestRow() {
+  const { t } = useI18n();
+  const navigate = useNavigate();
+  const q = useLinkRequests();
+  const req = (q.data ?? []).find((r) => r.status === "pending" && Date.parse(r.expires_at) > Date.now());
+  if (!req) return null;
+  return (
+    <SettingsRow
+      title={t("auth:AUTH-27.settings_row", { parent_first_name: req.parent_first_name ?? "" })}
+      icon="UserPlus"
+      onPress={() => void navigate({ to: "/me/guardian-link" })}
+      testID="set-link-request"
+    />
+  );
+}
+
 /** SET-11 "Your choices" for a teen: each scope's state; one that needs a guardian opens AUTH-18. */
 function ConsentRows() {
   const { t, locale } = useI18n();
@@ -72,6 +90,7 @@ function ConsentRows() {
       <Text variant="label" className="px-4 pt-3">
         {t("me_money:SET-11.consents")}
       </Text>
+      {(c.pending_link_requests ?? 0) > 0 && <LinkRequestRow />}
       {FEATURE_SCOPES.map((scope) => {
         const on = c.state === "granted" && c.scopes.includes(scope);
         return (

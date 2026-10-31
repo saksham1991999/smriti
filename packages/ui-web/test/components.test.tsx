@@ -166,6 +166,27 @@ describe("illustrations", () => {
     expect(screen.getByRole("img", { name: "Physics art" })).toHaveAttribute("src", "https://cdn.example/img/subject-physics.webp");
   });
 
+  it("shows an image that loads at once (from the cache) and stays shown", () => {
+    const { container } = wrap(<Illustration name="subject-physics" alt="Physics art" />);
+    const img = screen.getByRole("img", { name: "Physics art" });
+    fireEvent.load(img);
+    expect(img).not.toHaveClass("opacity-0");
+    expect(container.querySelector("[aria-busy]")).toBeNull();
+  });
+
+  it("starts over when the name changes", () => {
+    const { rerender } = wrap(<Illustration name="subject-physics" alt="Art" />);
+    fireEvent.load(screen.getByRole("img", { name: "Art" }));
+    rerender(
+      <UIProvider assetBaseUrl="https://cdn.example/img/">
+        <Illustration name="subject-chemistry" alt="Art" />
+      </UIProvider>,
+    );
+    const img = screen.getByRole("img", { name: "Art" });
+    expect(img).toHaveAttribute("src", "https://cdn.example/img/subject-chemistry.webp");
+    expect(img).toHaveClass("opacity-0");
+  });
+
   it("is decorative without alt text", () => {
     const { container } = wrap(<Illustration name="subject-physics" />);
     expect(container.querySelector("img")).toHaveAttribute("alt", "");
@@ -406,6 +427,13 @@ describe("settings and pro", () => {
     await userEvent.click(screen.getByRole("button", { name: /Notifications/ }));
     expect(onPress).toHaveBeenCalled();
     expect(screen.getByRole("switch", { name: "Sound" })).toHaveAttribute("aria-checked", "true");
+  });
+
+  it("a switch row starts its label at the leading edge when it wraps", () => {
+    wrap(<SettingsRow title="Let them add friends their teacher approves" trailing="switch" checked={false} onCheckedChange={() => undefined} />);
+    const sw = screen.getByRole("switch", { name: /teacher approves/ });
+    expect(sw).toHaveClass("text-start");
+    expect(sw).not.toHaveClass("text-center");
   });
 
   it("PriceBlock is live text and TrialTimeline uses real dates", () => {

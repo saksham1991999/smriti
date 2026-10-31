@@ -179,7 +179,10 @@ export function LiveRoom() {
     if (p === "results") return <Button label={t("practice:MOCK-03.see_leaderboard")} icon="TrendUp" onPress={() => void navigate({ to: "/practice/live/$mockId/leaderboard", params: { mockId } })} testID="mock-03-leaderboard" />;
     if (p === "closed" || p === "taken") return null;
     if (!isPro) return under13 ? <ProChip askGrownUp /> : <Button label={t("practice:MOCK-03.unlock")} icon="LockSimple" onPress={() => void navigate({ to: "/pro", search: { source: "live_mock" } })} testID="mock-03-unlock" />;
-    if (p === "open" && r.can_start) return <Button label={t("practice:MOCK-03.start_now")} icon="Play" disabled={!online} onPress={() => void navigate({ to: "/practice/mock/$mockId", params: { mockId } })} testID="mock-03-start" />;
+    if (p === "open" && r.can_start) return <Button label={t("practice:MOCK-03.start_now")} icon="Play" disabled={!online} onPress={() =>
+          // The server's attempt route applies the live window and deadline (MOCK-14 runner).
+          void navigate(r.attempt_id ? { to: "/practice/attempt/$attemptId", params: { attemptId: r.attempt_id } } : { to: "/practice/mock/$mockId", params: { mockId: r.mock_id } })
+        } testID="mock-03-start" />;
     if (r.registered) return <Button label={t("practice:MOCK-03.registered")} icon="CheckCircle" disabled testID="mock-03-registered" />;
     return <Button label={t("practice:MOCK-03.register")} loading={busy} disabled={!online} onPress={() => void register(true)} testID="mock-03-register" />;
   })();

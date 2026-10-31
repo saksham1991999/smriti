@@ -10,7 +10,7 @@ import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import { activateSubscription } from "../scripts/fake-razorpay.mjs";
-import { devGoogle, drill, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
+import { devGoogle, drill, expectAccessible, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
 
 const API = "http://127.0.0.1:8000";
 
@@ -140,6 +140,13 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await page.getByTestId("mock-solutions").click();
     await expect(page.getByTestId("mock-22")).toBeVisible();
     await shoot(page, locale, "MOCK-22");
+
+    // PRC-14 after the drill and mock above: cards the server holds back show what is still needed.
+    await page.goto("/practice/progress");
+    await expect(page.getByTestId("prc-14-readiness")).toBeVisible();
+    await expect(page.getByTestId("prc-14-mistakes")).toBeVisible();
+    await expectAccessible(page, "PRC-14");
+    await shoot(page, locale, "PRC-14");
 
     await page.goto("/labs");
     await expect(page.getByTestId("lab-01")).toBeVisible();

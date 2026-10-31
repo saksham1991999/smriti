@@ -397,7 +397,13 @@ function ComebackPlanView({
         <Button
           variant="ghost"
           label={t("memory_labs:MEM-02.normal")}
-          onPress={onNormal}
+          onPress={() => {
+            s.analytics.track("comeback_plan_skipped", {
+              due_total_bucket: backlog.length,
+              days_away_bucket: away,
+            });
+            onNormal();
+          }}
           testID="comeback-normal"
         />
       </main>

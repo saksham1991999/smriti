@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import {
   petImageNames,
   plantImageNames,
@@ -24,13 +24,14 @@ export function Illustration({ name, fallback, alt, decorative, width, height, f
   const { assetUrl, altFor, t } = useUI();
   const chainKey = [name, ...(fallback ?? [])].join("|");
   const chain = useMemo(() => chainKey.split("|"), [chainKey]);
-  const [index, setIndex] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    setIndex(0);
-    setLoaded(false);
-  }, [chain]);
+  // Both are keyed to what they describe, so a new chain starts over without an effect: an effect
+  // that reset "loaded" ran after a cached image's onLoad and left it hidden.
+  const [failedAt, setFailedAt] = useState<{ key: string; index: number }>({ key: chainKey, index: 0 });
+  const index = failedAt.key === chainKey ? failedAt.index : 0;
+  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
   const current = chain[Math.min(index, chain.length - 1)] ?? name;
+  const src = assetUrl(current);
+  const loaded = loadedSrc === src;
   const text = decorative ? "" : (alt ?? altFor(current) ?? altFor(name) ?? "");
   const failed = index >= chain.length;
   return (
@@ -42,7 +43,7 @@ export function Illustration({ name, fallback, alt, decorative, width, height, f
     >
       {!failed && (
         <img
-          src={assetUrl(current)}
+          src={src}
           alt={text}
           aria-hidden={text ? undefined : true}
           width={width}
@@ -50,8 +51,8 @@ export function Illustration({ name, fallback, alt, decorative, width, height, f
           loading="lazy"
           decoding="async"
           draggable={false}
-          onLoad={() => setLoaded(true)}
-          onError={() => setIndex((i) => i + 1)}
+          onLoad={() => setLoadedSrc(src)}
+          onError={() => setFailedAt({ key: chainKey, index: index + 1 })}
           className={cx("block h-full w-full select-none", fit === "cover" ? "object-cover" : "object-contain", dimmed && "opacity-60", !loaded && "opacity-0")}
         />
       )}

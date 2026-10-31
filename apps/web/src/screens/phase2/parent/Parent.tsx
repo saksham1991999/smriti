@@ -11,6 +11,8 @@ import { unwrap, type Schemas } from "@smriti/api-client";
 import { useAppStore } from "@smriti/app-core/react";
 import { Banner, Button, Chip, ChoiceChips, Dialog, EmptyState, Icon, IconButton, Illustration, PetLine, SettingsGroup, SettingsRow, StatTile, Switch, cx, useUI } from "@smriti/ui-web";
 import { useServices } from "../../../boot/context";
+import { GoogleIdentityStep } from "../../../components/SignIn";
+import { newParentSession, useParentClient, useParentGate, useParentSession } from "../../../lib/parentSession";
 import { useI18n } from "../../../lib/i18n";
 import { useOnline } from "../../../lib/network";
 import { toast } from "../../../lib/toast";
@@ -28,9 +30,10 @@ const keys = {
   friends: (id: string) => ["parent", id, "friends"] as const,
 };
 
-function useDashboard() {
-  const s = useServices();
-  return useQuery({ queryKey: keys.dashboard, queryFn: () => unwrap(s.client.GET("/v1/guardian/dashboard"), s.client), retry: (n, e) => errorCode(e) !== "login_required" && n < 2 });
+function useDashboard(enabled: boolean) {
+  const pc = useParentClient();
+  const session = useParentSession((x) => x.session);
+  return useQuery({ queryKey: [...keys.dashboard, session ? "guardian" : "own"], enabled, queryFn: () => unwrap(pc.GET("/v1/guardian/dashboard"), pc), retry: (n, e) => errorCode(e) !== "login_required" && n < 2 });
 }
 
 function useChildName() {
@@ -61,7 +64,7 @@ function PetPortrait({ pet, size = 56 }: { pet: ChildCard["pet"]; size?: number 
 
 /** The learner pages share the dashboard query for the child's name and pet. */
 function useChild(learnerId: string) {
-  const dash = useDashboard();
+  const dash = useDashboard(true);
   return { dash, child: dash.data?.learners.find((c) => c.user_id === learnerId) ?? null };
 }
 
@@ -79,7 +82,8 @@ function NotLinked() {
 
 export function ParentHome() {
   const s = useServices();
-  const dash = useDashboard();
+  const gate = useParentGate();
+  const dash = useDashboard(gate === "ready");
   const opened = useRef(false);
   useEffect(() => {
     if (dash.data && !opened.current) {
@@ -87,17 +91,48 @@ export function ParentHome() {
       s.analytics.track("parent_mode_opened", { entry: "own_account" });
     }
   }, [dash.data, s]);
+  if (gate === "checking") return <RouteLoading />;
+  if (gate === "gate") return <Gate />;
   if (dash.isPending) return <RouteLoading />;
   if (dash.isError) return errorCode(dash.error) === "login_required" ? <Gate /> : <LoadError onRetry={() => void dash.refetch()} />;
   return <Dashboard cards={dash.data.learners} />;
 }
 
+/** The SET-14 to SET-17 screens show the gate until Parent mode has an account to use. */
+function Guarded({ children }: { children: React.ReactNode }) {
+  const gate = useParentGate();
+  if (gate === "checking") return <RouteLoading />;
+  if (gate === "gate") return <Gate />;
+  return <>{children}</>;
+}
+export const WeekReport = () => (
+  <Guarded>
+    <WeekReportScreen />
+  </Guarded>
+);
+export const TimeLimits = () => (
+  <Guarded>
+    <TimeLimitsScreen />
+  </Guarded>
+);
+export const Consents = () => (
+  <Guarded>
+    <ConsentsScreen />
+  </Guarded>
+);
+
+/**
+ * SET-13 gate with the AUTH-24 sign-in: the grown-up signs in with their own Google account on a
+ * separate session, so the learner on this device stays signed in. "Stay signed in" remembers it.
+ */
 function Gate() {
+  const s = useServices();
   const { t } = useI18n();
   const { altFor } = useUI();
   const navigate = useNavigate();
   const online = useOnline();
   const pet = useAppStore((x) => x.pet);
+  const [stay, setStay] = useState(false);
   return (
     <div className="flex min-h-dvh items-center justify-center bg-surface px-4 py-8 min-[600px]:bg-bg" data-testid="set-13">
       <main id="main" className="flex w-full max-w-[560px] flex-col gap-4 min-[600px]:rounded-card-large min-[600px]:bg-surface min-[600px]:p-8 min-[600px]:shadow-card">
@@ -107,7 +142,19 @@ function Gate() {
         <h1 className="m-0 text-display">{t("me_money:SET-13.title")}</h1>
         <p className="m-0 text-body text-ink">{t("me_money:SET-13.body")}</p>
         {!online && <Banner tone="offline" icon="WifiSlash" text={t("me_money:SET-14.offline")} />}
-        <Button label={t("me_money:SET-13.continue_google")} disabled={!online} onPress={() => void navigate({ to: "/login", search: { next: "/parent" } })} testID="set-13-google" />
+        <GoogleIdentityStep
+          guardian
+          disabled={!online}
+          onIdentity={async (identity) => {
+            const session = newParentSession(s, stay);
+            await session.signIn(identity);
+            useParentSession.getState().set(session, stay);
+            s.analytics.track("parent_signed_in", { entry: "set_gate", stay_signed_in: stay });
+            return null;
+          }}
+        />
+        <Switch checked={stay} onCheckedChange={setStay} label={t("auth:AUTH-24.stay_signed_in")} testID="parent-stay" />
+        <p className="m-0 text-caption text-ink-muted">{t("auth:AUTH-24.child_note")}</p>
         <p className="m-0 text-center text-caption text-ink-muted">{t("me_money:SET-13.trust_line_r40")}</p>
         <Button label={pet?.name ? t("me_money:SET-13.back", { pet: pet.name }) : t("me_money:SET-14.exit")} variant="ghost" onPress={() => void navigate({ to: "/learn" })} testID="set-13-back" />
       </main>
@@ -117,6 +164,9 @@ function Gate() {
 
 function Dashboard({ cards }: { cards: ChildCard[] }) {
   const s = useServices();
+  const pc = useParentClient();
+  const session = useParentSession((x) => x.session);
+  const persisted = useParentSession((x) => x.persisted);
   const { t } = useI18n();
   const navigate = useNavigate();
   const online = useOnline();
@@ -125,7 +175,7 @@ function Dashboard({ cards }: { cards: ChildCard[] }) {
   const waiting = needs(cards);
   const decide = useMutation({
     mutationFn: ({ requestId, allow }: { requestId: string; allow: boolean; child: string }) =>
-      unwrap(s.client.POST("/v1/guardian/time-requests/{request_id}/decision", { params: { path: { request_id: requestId } }, body: { allow } }), s.client),
+      unwrap(pc.POST("/v1/guardian/time-requests/{request_id}/decision", { params: { path: { request_id: requestId } }, body: { allow } }), pc),
     onSuccess: (_r, v) => {
       s.analytics.track("time_request_decided", { decision: v.allow ? "allowed" : "declined" });
       toast.show(v.allow ? t("me_money:SET-14.allowed_toast", { child: v.child }) : t("me_money:SET-14.declined_toast", { child: v.child }));
@@ -135,7 +185,37 @@ function Dashboard({ cards }: { cards: ChildCard[] }) {
   });
 
   return (
-    <Page title={t("me_money:SET-14.title")} width="lg" trailing={<Button label={t("me_money:SET-14.exit")} variant="ghost" size="sm" icon="SignOut" onPress={() => void navigate({ to: "/learn" })} testID="set-14-exit" />} testID="set-14">
+    <Page title={t("me_money:SET-14.title")} width="lg" trailing={
+        <span className="flex gap-2">
+          {session && (
+            <Button
+              label={t("auth:WEB-07.parent_sign_out")}
+              variant="ghost"
+              size="sm"
+              onPress={() =>
+                void session.signOut().finally(() => {
+                  useParentSession.getState().clear();
+                  queryClient.removeQueries({ queryKey: ["parent"] });
+                })
+              }
+              testID="parent-sign-out"
+            />
+          )}
+          <Button
+            label={t("me_money:SET-14.exit")}
+            variant="ghost"
+            size="sm"
+            icon="SignOut"
+            onPress={() => {
+              // A session that wasn't kept ends when the grown-up leaves Parent mode.
+              if (session && !persisted) void session.signOut().finally(() => useParentSession.getState().clear());
+              queryClient.removeQueries({ queryKey: ["parent"] });
+              void navigate({ to: "/learn" });
+            }}
+            testID="set-14-exit"
+          />
+        </span>
+      } testID="set-14">
       <h1 className="sr-only">{t("me_money:SET-14.title")}</h1>
       {!online && <Banner tone="offline" icon="WifiSlash" text={t("me_money:SET-14.offline")} testID="set-14-offline" />}
       {waiting.length > 0 && (
@@ -215,10 +295,10 @@ function ChildCardView({ card }: { card: ChildCard }) {
 
 // ── SET-15 weekly report ────────────────────────────────────────────────────
 
-export function WeekReport() {
+function WeekReportScreen() {
   const { learnerId } = useParams({ from: "/parent/$learnerId/report" });
   const search = useSearch({ from: "/parent/$learnerId/report" });
-  const s = useServices();
+  const pc = useParentClient();
   const { t, locale } = useI18n();
   const f = useFormat();
   const navigate = useNavigate();
@@ -226,7 +306,7 @@ export function WeekReport() {
   const nameOf = useChildName();
   const { dash, child } = useChild(learnerId);
   const week = search.week ?? weekStart(new Date());
-  const report = useQuery({ queryKey: keys.report(learnerId, week), queryFn: () => unwrap(s.client.GET("/v1/guardian/learners/{learner_id}/report", { params: { path: { learner_id: learnerId }, query: { week } } }), s.client) });
+  const report = useQuery({ queryKey: keys.report(learnerId, week), queryFn: () => unwrap(pc.GET("/v1/guardian/learners/{learner_id}/report", { params: { path: { learner_id: learnerId }, query: { week } } }), pc) });
   const [table, setTable] = useState(false);
 
   if (report.isPending || dash.isPending) return <RouteLoading />;
@@ -361,10 +441,10 @@ export function WeekReport() {
 
 // ── SET-16 time limits ──────────────────────────────────────────────────────
 
-export function TimeLimits() {
+function TimeLimitsScreen() {
   const { learnerId } = useParams({ from: "/parent/$learnerId/limits" });
-  const s = useServices();
-  const controls = useQuery({ queryKey: keys.controls(learnerId), queryFn: () => unwrap(s.client.GET("/v1/guardian/learners/{learner_id}/controls", { params: { path: { learner_id: learnerId } } }), s.client) });
+  const pc = useParentClient();
+  const controls = useQuery({ queryKey: keys.controls(learnerId), queryFn: () => unwrap(pc.GET("/v1/guardian/learners/{learner_id}/controls", { params: { path: { learner_id: learnerId } } }), pc) });
   const { dash, child } = useChild(learnerId);
   if (controls.isPending || dash.isPending) return <RouteLoading />;
   if (controls.isError) return errorCode(controls.error) === "learner_not_found" ? <NotLinked /> : <LoadError onRetry={() => void controls.refetch()} />;
@@ -373,6 +453,7 @@ export function TimeLimits() {
 
 function LimitsForm({ learnerId, base, child }: { learnerId: string; base: Schemas["ControlsOut"]; child: ChildCard | null }) {
   const s = useServices();
+  const pc = useParentClient();
   const { t } = useI18n();
   const close = useClose("/parent");
   const online = useOnline();
@@ -384,7 +465,7 @@ function LimitsForm({ learnerId, base, child }: { learnerId: string; base: Schem
   const set = <K extends keyof ControlsForm>(k: K, v: ControlsForm[K]) => setForm((f) => ({ ...f, [k]: v }));
   const valid = hoursValid(form);
   const save = useMutation({
-    mutationFn: () => unwrap(s.client.PUT("/v1/guardian/learners/{learner_id}/controls", { params: { path: { learner_id: learnerId } }, body: toControls(form, base) }), s.client),
+    mutationFn: () => unwrap(pc.PUT("/v1/guardian/learners/{learner_id}/controls", { params: { path: { learner_id: learnerId } }, body: toControls(form, base) }), pc),
     onSuccess: (out) => {
       for (const c of changes(initial, form)) s.analytics.track("parent_limit_changed", c);
       queryClient.setQueryData(keys.controls(learnerId), out);
@@ -469,24 +550,25 @@ const EFFECT_KEY = {
 } as const;
 const SCOPE_ICON = { account: "UserCircle", social: "UsersThree", community: "Cards", voice: "Microphone", uploads: "Question" } as const;
 
-export function Consents() {
+function ConsentsScreen() {
   const { learnerId } = useParams({ from: "/parent/$learnerId/consents" });
   const s = useServices();
+  const pc = useParentClient();
   const { t } = useI18n();
   const f = useFormat();
   const close = useClose("/parent");
   const online = useOnline();
   const nameOf = useChildName();
   const queryClient = useQueryClient();
-  const learners = useQuery({ queryKey: keys.learners, queryFn: () => unwrap(s.client.GET("/v1/guardian/learners"), s.client) });
+  const learners = useQuery({ queryKey: keys.learners, queryFn: () => unwrap(pc.GET("/v1/guardian/learners"), pc) });
   const learner = learners.data?.learners.find((l) => l.user_id === learnerId) ?? null;
   const rows = consentRows(learner?.consent, learner?.age_band ?? null);
   const social = rows.some((r) => r.scope === "social" && r.allowed);
-  const friends = useQuery({ queryKey: keys.friends(learnerId), enabled: social, queryFn: () => unwrap(s.client.GET("/v1/guardian/learners/{learner_id}/friends", { params: { path: { learner_id: learnerId } } }), s.client) });
+  const friends = useQuery({ queryKey: keys.friends(learnerId), enabled: social, queryFn: () => unwrap(pc.GET("/v1/guardian/learners/{learner_id}/friends", { params: { path: { learner_id: learnerId } } }), pc) });
   const [confirm, setConfirm] = useState<{ kind: "scope"; scope: Scope } | { kind: "friend"; id: string; name: string } | null>(null);
 
   const withdraw = useMutation({
-    mutationFn: (scope: Scope) => unwrap(s.client.DELETE("/v1/guardian/consents/{consent_id}/scopes/{scope}", { params: { path: { consent_id: learner?.consent?.id ?? "", scope } } }), s.client),
+    mutationFn: (scope: Scope) => unwrap(pc.DELETE("/v1/guardian/consents/{consent_id}/scopes/{scope}", { params: { path: { consent_id: learner?.consent?.id ?? "", scope } } }), pc),
     onSuccess: (_r, scope) => {
       s.analytics.track("consent_withdrawn", { consent_type: scope });
       toast.show(t("me_money:SET-17.turned_off"));
@@ -496,7 +578,7 @@ export function Consents() {
     onError: () => toast.show(t("me_money:SET-14.decision_failed")),
   });
   const removeFriend = useMutation({
-    mutationFn: (friendId: string) => unwrap(s.client.DELETE("/v1/guardian/learners/{learner_id}/friends/{friend_id}", { params: { path: { learner_id: learnerId, friend_id: friendId } } }), s.client),
+    mutationFn: (friendId: string) => unwrap(pc.DELETE("/v1/guardian/learners/{learner_id}/friends/{friend_id}", { params: { path: { learner_id: learnerId, friend_id: friendId } } }), pc),
     onSuccess: () => {
       toast.show(t("me_money:SET-17.removed"));
       void queryClient.invalidateQueries({ queryKey: keys.friends(learnerId) });

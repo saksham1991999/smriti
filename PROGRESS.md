@@ -4,7 +4,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 
 ## Where the build stands
 
-- The whole workspace passes typecheck, lint and tests (75 of 75 turbo tasks). The API has 513 passing tests, the worker 23. Content check: 543 files, 0 errors.
+- The whole workspace passes typecheck, lint and tests (75 of 75 turbo tasks). The API has 539 passing tests, the worker 23. Content check: 543 files, 0 errors.
 - Web and mobile both run the full journey from guest to Pro against the real local API: onboarding, a lesson, streak, sign-in prompt, Google link (dev auth), paywall, fake payment, Pro.
 - Nothing is deployed. Every real account (Supabase, Railway, Cloudflare, Google, Apple, stores, payment providers) still has to be created by the owner (see `docs/DEPLOY.md`).
 - No content is released. `content/releases.json` is empty, so a production publish builds nothing until the owner releases a chapter.
@@ -54,7 +54,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 ### Content (written through the skills, all awaiting a person's review)
 - Exam data: exam files, blueprints from official notices, syllabus graph, exam maps, coverage reports.
 - Chapters at 100% coverage for their exams:
-  - Physics: Current Electricity, Units and Measurement, Motion in a Straight Line, Motion in a Plane.
+  - Physics: Current Electricity, Units and Measurement, Motion in a Straight Line, Motion in a Plane, Laws of Motion.
   - Chemistry: Chemical Bonding and Molecular Structure.
   - Maths: Sets, Relations and Functions (class 11 intro and class 12).
   - Biology: Cell the Unit of Life, Biomolecules, Cell Cycle and Cell Division.
@@ -76,7 +76,7 @@ Last updated 2026-10-31. Branch `claude/project-thread-vnixsy`. Screen-by-screen
 - Backend: sync events for test-out and chapter reset, tutor board images, log scrubbing.
 - Lesson narration audio and pet reactions in the players.
 - Marketing site (apps/site) audit and finish.
-- Content: Laws of Motion next; the projectile launcher sim is requested (PhET is non-commercial, so we build our own).
+- Content: Work, Energy and Power next. Sims requested: projectile launcher, friction on an incline (PhET is non-commercial, so we build our own).
 - An independent end-to-end verification run, written up in `docs/E2E_REPORT.md`.
 
 ## Left to do

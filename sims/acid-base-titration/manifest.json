@@ -1,0 +1,228 @@
+{
+  "id": "acid-base-titration",
+  "version": "1.0.0",
+  "protocolVersion": "1.0.0",
+  "title": {
+    "en": "Acid–base titration",
+    "hi": "अम्ल-क्षार अनुमापन"
+  },
+  "subject": "chem",
+  "concepts": [
+    "chem.equilibrium.acid-base-titration",
+    "chem.equilibrium.indicators",
+    "chem.equilibrium.ph-scale"
+  ],
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "aspect": "4:3",
+  "preferredOrientation": "any",
+  "entry": "index.html",
+  "capabilities": [
+    "tasks",
+    "record",
+    "pause",
+    "set_params",
+    "snapshot",
+    "resize"
+  ],
+  "params": {
+    "analyte": {
+      "type": "enum",
+      "default": "strong",
+      "values": [
+        "strong",
+        "weak"
+      ]
+    },
+    "indicator": {
+      "type": "enum",
+      "default": "phenolphthalein",
+      "values": [
+        "phenolphthalein",
+        "methyl_orange",
+        "bromothymol_blue"
+      ]
+    },
+    "acidConc": {
+      "type": "number",
+      "default": 0.1,
+      "min": 0.01,
+      "max": 1,
+      "step": 0.01,
+      "unit": "M"
+    },
+    "acidVolume": {
+      "type": "number",
+      "default": 25,
+      "min": 5,
+      "max": 50,
+      "step": 1,
+      "unit": "mL"
+    },
+    "baseConc": {
+      "type": "number",
+      "default": 0.1,
+      "min": 0.01,
+      "max": 1,
+      "step": 0.01,
+      "unit": "M"
+    },
+    "buretteCapacity": {
+      "type": "number",
+      "default": 50,
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "mL"
+    }
+  },
+  "readings": [
+    {
+      "name": "volume_added",
+      "unit": "mL",
+      "label": {
+        "en": "Base added",
+        "hi": "मिलाया गया क्षार"
+      }
+    },
+    {
+      "name": "burette_reading",
+      "unit": "mL",
+      "label": {
+        "en": "Burette reading",
+        "hi": "ब्यूरेट रीडिंग"
+      }
+    },
+    {
+      "name": "ph",
+      "unit": "",
+      "label": {
+        "en": "pH",
+        "hi": "pH"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "rule": "end_point"
+    },
+    {
+      "rule": "analyte",
+      "args": {
+        "is": "strong | weak"
+      }
+    },
+    {
+      "rule": "indicator",
+      "args": {
+        "is": "phenolphthalein | methyl_orange | bromothymol_blue"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "end-point",
+      "prompt": {
+        "en": "Add base from the burette. Stop as soon as the indicator changes colour.",
+        "hi": "ब्यूरेट से क्षार मिलाएँ। सूचक का रंग बदलते ही रुक जाएँ।"
+      },
+      "hint": {
+        "en": "Near the change, add one drop at a time.",
+        "hi": "रंग बदलने के पास एक-एक बूँद डालें।"
+      },
+      "check": {
+        "kind": "condition",
+        "rule": "end_point",
+        "quantity": "volume_added"
+      }
+    },
+    {
+      "id": "record-end-point",
+      "prompt": {
+        "en": "At the end point, record the volume of base you added.",
+        "hi": "अंत बिंदु पर, मिलाए गए क्षार का आयतन दर्ज करें।"
+      },
+      "hint": {
+        "en": "Read the burette at the end point, then tap Record reading.",
+        "hi": "अंत बिंदु पर ब्यूरेट पढ़ें, फिर रीडिंग दर्ज करें दबाएँ।"
+      },
+      "check": {
+        "kind": "target",
+        "quantity": "volume_added",
+        "value": 25,
+        "tolerance": 0.1,
+        "on": "last_recorded"
+      }
+    },
+    {
+      "id": "excess-base",
+      "prompt": {
+        "en": "Keep adding base until the pH is above 11.",
+        "hi": "क्षार मिलाते रहें जब तक pH 11 से ज़्यादा न हो जाए।"
+      },
+      "hint": {
+        "en": "Watch the pH reading and the curve.",
+        "hi": "pH रीडिंग और वक्र देखें।"
+      },
+      "check": {
+        "kind": "range",
+        "quantity": "ph",
+        "min": 11
+      }
+    },
+    {
+      "id": "weak-acid-end-point",
+      "prompt": {
+        "en": "Switch to the weak acid. Find its end point with phenolphthalein.",
+        "hi": "दुर्बल अम्ल चुनें। फ़ीनॉल्फ़्थेलिन से उसका अंत बिंदु पता करें।"
+      },
+      "hint": {
+        "en": "Changing the acid starts a new flask. Add drop by drop near the change.",
+        "hi": "अम्ल बदलने से नया फ्लास्क शुरू होता है। रंग बदलने के पास बूँद-बूँद डालें।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "condition",
+            "rule": "analyte",
+            "args": {
+              "is": "weak"
+            }
+          },
+          {
+            "kind": "condition",
+            "rule": "indicator",
+            "args": {
+              "is": "phenolphthalein"
+            }
+          },
+          {
+            "kind": "condition",
+            "rule": "end_point",
+            "quantity": "volume_added"
+          }
+        ]
+      }
+    }
+  ],
+  "third_party": [
+    {
+      "name": "Plus Jakarta Sans",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/plus-jakarta-sans 5.3.0"
+    },
+    {
+      "name": "Noto Sans Devanagari",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/noto-sans-devanagari 5.3.0"
+    },
+    {
+      "name": "Phosphor Icons",
+      "licence": "MIT",
+      "source": "@phosphor-icons/core 2.1.1"
+    }
+  ],
+  "size_bytes": 365581
+}

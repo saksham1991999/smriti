@@ -1,0 +1,203 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as 1536x1024 WebP; originals kept outside the repo.",
+  "requests": [
+    {
+      "id": "img.sets.sorting-hoops",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "maths",
+      "brief": "an Indian schoolgirl on a classroom floor sorting fruits into two large overlapping coloured hoops: one hoop holds only round fruits, the other only red fruits, and a red apple and a tomato sit in the overlapping part shared by both hoops, with a banana lying outside both hoops",
+      "must_show": [
+        "two overlapping hoops on the floor",
+        "fruit inside the overlapping region",
+        "a fruit outside both hoops",
+        "the girl sorting"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "labels",
+        "writing on the board"
+      ],
+      "alt": {
+        "en": "A girl kneels on a classroom floor beside two overlapping hoops, one orange and one teal. A red apple and a tomato sit in the part shared by both hoops, and a banana lies outside both.",
+        "hi": "एक लड़की कक्षा के फ़र्श पर एक-दूसरे पर चढ़े दो घेरों के पास बैठी है, एक नारंगी और एक फ़िरोज़ी। एक लाल सेब और एक टमाटर दोनों घेरों के साझा भाग में हैं, और एक केला दोनों के बाहर पड़ा है।"
+      },
+      "used_by": [
+        "cs.math.sets.sets-representation",
+        "math.sets.set-operations:dd:01",
+        "math.sets.sets-representation:dd:02",
+        "math.sets.sets-representation:dd:04"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "9caf2b4db60bc46122a4510829d06a850253becbcbf3f7c90f1bbec5c5864e89",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 57694,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.sets.venn-two-circles",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "maths",
+      "brief": "a flat Venn diagram: one large rounded rectangle outline containing two overlapping circle outlines of equal size, only the lens-shaped overlap of the two circles filled with solid warm orange, the rest of both circles and the rectangle left white",
+      "must_show": [
+        "one rectangle",
+        "two overlapping circles inside it",
+        "only the overlap region shaded"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "a third circle",
+        "shading outside the overlap",
+        "three-dimensional depth"
+      ],
+      "label_anchors": [
+        {
+          "id": "set-a",
+          "x": 0.3,
+          "y": 0.5
+        },
+        {
+          "id": "set-b",
+          "x": 0.7,
+          "y": 0.5
+        },
+        {
+          "id": "overlap",
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "id": "universal",
+          "x": 0.14,
+          "y": 0.15
+        }
+      ],
+      "alt": {
+        "en": "A Venn diagram: a rounded rectangle containing two overlapping circles, with only the lens-shaped overlap shaded orange.",
+        "hi": "वेन आरेख: एक गोल कोनों वाला आयत जिसमें एक-दूसरे पर चढ़े दो वृत्त हैं, और केवल लेंस आकार का साझा भाग नारंगी छायांकित है।"
+      },
+      "used_by": [
+        "cs.math.sets.set-operations",
+        "math.sets.set-operations:dd:02",
+        "math.sets.set-operations:dd:03",
+        "math.sets.set-operations:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "1d4ecaef8222e4d8b2922e9413be2094bdaa5e643e138a1caee8897b78caeccb",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 27726,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.sets.nested-bowls",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "a set of four shiny steel katori bowls of decreasing size nested one inside another on a kitchen counter, seen from a low angle so every rim is visible",
+      "must_show": [
+        "four nested bowls",
+        "each bowl fully inside the next larger one"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "food",
+        "brand marks"
+      ],
+      "alt": {
+        "en": "Three shiny steel bowls of decreasing size nested one inside another on a kitchen counter.",
+        "hi": "रसोई के काउंटर पर घटते आकार की तीन चमकदार स्टील की कटोरियाँ एक के भीतर एक रखी हैं।"
+      },
+      "used_by": [
+        "cs.math.sets.subsets",
+        "math.sets.subsets:dd:01"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "7c167d0d0c842346a13eb826194f1d1823100bf5b062e83989afd3f237d0c081",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 39662,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.sets.empty-tiffin",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "an open round steel tiffin box with its lid beside it on a school desk, the box completely empty and clean inside",
+      "must_show": [
+        "open tiffin box",
+        "nothing inside the box"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "food",
+        "brand marks"
+      ],
+      "alt": {
+        "en": "An open round steel tiffin box, empty and clean inside, with its lid beside it on a school desk.",
+        "hi": "स्कूल की मेज़ पर खुला गोल स्टील का टिफ़िन डिब्बा, भीतर से खाली और साफ़, पास में उसका ढक्कन।"
+      },
+      "used_by": [
+        "cs.math.sets.set-types",
+        "math.sets.set-types:dd:01",
+        "math.sets.set-types:dd:02"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e38fee953d5d30911ccf5814d634bc0ec33783a6814de050e93dc6bdea423bf9",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 47732,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

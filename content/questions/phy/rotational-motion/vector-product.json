@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.vector-product",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.vector-product.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.vector-product.core.vector-product",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "$\\hat{k} \\times \\hat{j}$ is equal to",
+        "hi": "$\\hat{k} \\times \\hat{j}$ बराबर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-\\hat{i}$",
+            "hi": "$-\\hat{i}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\hat{i}$",
+            "hi": "$\\hat{i}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\vec{0}$",
+            "hi": "$\\vec{0}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\hat{k}$",
+            "hi": "$\\hat{k}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "i to j to k to i is the positive order.",
+          "hi": "i से j से k से i धनात्मक क्रम है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Check whether the pair is in cyclic order i, j, k.",
+          "hi": "देखिए कि युगल चक्रीय क्रम i, j, k में है या नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$\\hat{j} \\times \\hat{k} = \\hat{i}$, so $\\hat{k} \\times \\hat{j} = -\\hat{i}$.",
+            "hi": "$\\hat{j} \\times \\hat{k} = \\hat{i}$, अतः $\\hat{k} \\times \\hat{j} = -\\hat{i}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "k then j is against the cyclic order, so the sign flips.",
+              "hi": "k फिर j चक्रीय क्रम के विपरीत है, अतः चिह्न बदलता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Only a vector crossed with itself, or a parallel one, gives zero.",
+              "hi": "केवल स्वयं से या समांतर सदिश से गुणा करने पर शून्य मिलता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The product is perpendicular to both $\\hat{k}$ and $\\hat{j}$.",
+              "hi": "गुणनफल $\\hat{k}$ और $\\hat{j}$ दोनों के लंबवत् है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.vector-product.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.vector-product.core.vector-product",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two vectors have magnitudes 3 and 4, and their vector product has magnitude 6. The acute angle between them is",
+        "hi": "दो सदिशों के परिमाण 3 और 4 हैं, और उनके सदिश गुणनफल का परिमाण 6 है। उनके बीच का न्यून कोण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$30°$",
+            "hi": "$30°$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$60°$",
+            "hi": "$60°$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$45°$",
+            "hi": "$45°$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$90°$",
+            "hi": "$90°$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$|\\vec{a} \\times \\vec{b}| = ab\\sin\\theta$",
+          "hi": "$|\\vec{a} \\times \\vec{b}| = ab\\sin\\theta$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Solve $ab\\sin\\theta$ for the angle.",
+          "hi": "कोण के लिए $ab\\sin\\theta$ हल कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\sin\\theta = \\frac{6}{3 \\times 4} = \\frac{1}{2}$, so $\\theta = 30°$.",
+            "hi": "$\\sin\\theta = \\frac{6}{3 \\times 4} = \\frac{1}{2}$, अतः $\\theta = 30°$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That solves $\\cos\\theta = \\frac{1}{2}$, the dot-product rule.",
+              "hi": "यह $\\cos\\theta = \\frac{1}{2}$ हल करता है, बिंदु गुणनफल का नियम।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\sin 45° \\approx 0.71$, not 0.5.",
+              "hi": "$\\sin 45° \\approx 0.71$ है, 0.5 नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "At $90°$ the product would be 12, its largest value.",
+              "hi": "$90°$ पर गुणनफल 12 होता, उसका अधिकतम मान।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.vector-product.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.vector-product.core.vector-product",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For $\\vec{a} = 2\\hat{i} + 3\\hat{j}$ and $\\vec{b} = \\hat{i} + 4\\hat{j}$, the z-component of $\\vec{a} \\times \\vec{b}$ is",
+        "hi": "$\\vec{a} = 2\\hat{i} + 3\\hat{j}$ और $\\vec{b} = \\hat{i} + 4\\hat{j}$ के लिए $\\vec{a} \\times \\vec{b}$ का z-घटक है"
+      },
+      "answer": {
+        "value": 5,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$a_xb_y - a_yb_x$",
+          "hi": "$a_xb_y - a_yb_x$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Two vectors in the x-y plane have a cross product along z only.",
+          "hi": "x-y तल के दो सदिशों का क्रॉस गुणनफल केवल z के अनुदिश होता है।"
+        },
+        "steps": [
+          {
+            "en": "$(\\vec{a} \\times \\vec{b})_z = a_xb_y - a_yb_x = 2(4) - 3(1) = 5$",
+            "hi": "$(\\vec{a} \\times \\vec{b})_z = a_xb_y - a_yb_x = 2(4) - 3(1) = 5$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Writing $a_yb_x - a_xb_y$ gives $-5$, the component of $\\vec{b} \\times \\vec{a}$.",
+              "hi": "$a_yb_x - a_xb_y$ लिखने पर $-5$ आता है, जो $\\vec{b} \\times \\vec{a}$ का घटक है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.vector-product.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.vector-product.core.vector-product",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For two non-zero vectors, $\\vec{a} \\times \\vec{b} = \\vec{0}$ means the vectors are",
+        "hi": "दो शून्येतर सदिशों के लिए $\\vec{a} \\times \\vec{b} = \\vec{0}$ का अर्थ है कि सदिश"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "parallel or antiparallel",
+            "hi": "समांतर या प्रतिसमांतर हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "perpendicular",
+            "hi": "लंबवत् हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "equal in magnitude",
+            "hi": "परिमाण में बराबर हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "at $45°$ to each other",
+            "hi": "एक-दूसरे से $45°$ पर हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$|\\vec{a} \\times \\vec{b}| = ab\\sin\\theta$",
+          "hi": "$|\\vec{a} \\times \\vec{b}| = ab\\sin\\theta$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "When is $\\sin\\theta$ zero?",
+          "hi": "$\\sin\\theta$ कब शून्य होता है?"
+        },
+        "steps": [
+          {
+            "en": "$ab\\sin\\theta = 0$ with $a, b \\neq 0$ needs $\\theta = 0°$ or $180°$.",
+            "hi": "$ab\\sin\\theta = 0$ हो और $a, b \\neq 0$, तो $\\theta = 0°$ या $180°$ चाहिए।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Perpendicular vectors give the largest cross product; their dot product is zero.",
+              "hi": "लंबवत् सदिश सबसे बड़ा क्रॉस गुणनफल देते हैं; उनका बिंदु गुणनफल शून्य होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Equal magnitudes say nothing about the angle.",
+              "hi": "बराबर परिमाण कोण के बारे में कुछ नहीं बताते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "At $45°$, $\\sin\\theta \\neq 0$.",
+              "hi": "$45°$ पर $\\sin\\theta \\neq 0$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.vector-product.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.vector-product.core.vector-product",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For any two vectors, $(\\vec{a} \\times \\vec{b})\\cdot\\vec{a}$ is",
+        "hi": "किन्हीं दो सदिशों के लिए $(\\vec{a} \\times \\vec{b})\\cdot\\vec{a}$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "zero",
+            "hi": "शून्य"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$a^2b$",
+            "hi": "$a^2b$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$ab\\sin\\theta$",
+            "hi": "$ab\\sin\\theta$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$a^2b\\cos\\theta$",
+            "hi": "$a^2b\\cos\\theta$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What angle does $\\vec{a} \\times \\vec{b}$ make with $\\vec{a}$?",
+          "hi": "$\\vec{a} \\times \\vec{b}$, $\\vec{a}$ से कितना कोण बनाता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The cross product is perpendicular to each factor.",
+          "hi": "क्रॉस गुणनफल प्रत्येक गुणक के लंबवत् है।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{a} \\times \\vec{b}$ is perpendicular to $\\vec{a}$, and the dot product of perpendicular vectors is zero.",
+            "hi": "$\\vec{a} \\times \\vec{b}$, $\\vec{a}$ के लंबवत् है, और लंबवत् सदिशों का बिंदु गुणनफल शून्य होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That treats the vectors as numbers and ignores their directions.",
+              "hi": "यह सदिशों को संख्याएँ मानकर उनकी दिशाएँ अनदेखी करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the size of $\\vec{a} \\times \\vec{b}$ alone, before the dot product.",
+              "hi": "यह बिंदु गुणनफल से पहले केवल $\\vec{a} \\times \\vec{b}$ का परिमाण है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The angle between $\\vec{a} \\times \\vec{b}$ and $\\vec{a}$ is $90°$, not $\\theta$.",
+              "hi": "$\\vec{a} \\times \\vec{b}$ और $\\vec{a}$ के बीच का कोण $90°$ है, $\\theta$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

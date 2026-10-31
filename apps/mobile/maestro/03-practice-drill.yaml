@@ -1,0 +1,67 @@
+# PRC-03 drill setup, PRC-04/05 runner and solution, PRC-06 summary, then PRC-14 and PRC-16.
+appId: ${APP_ID}
+name: Practice drill
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 30000
+- tapOn:
+    id: "tab-bar-practice"
+- tapOn:
+    id: "prc-tile-drill"
+- assertVisible:
+    id: "PRC-03"
+- tapOn:
+    id: "drill-start"
+- extendedWaitUntil:
+    visible:
+      id: "PRC-04"
+    timeout: 20000
+- repeat:
+    times: 40
+    while:
+      notVisible:
+        id: "PRC-06"
+    commands:
+      - runFlow:
+          when:
+            visible:
+              id: "option-0"
+          commands:
+            - tapOn:
+                id: "option-0"
+      - runFlow:
+          when:
+            visible:
+              id: "drill-check"
+          commands:
+            - tapOn:
+                id: "drill-check"
+      - runFlow:
+          when:
+            visible:
+              id: "solution-next"
+          commands:
+            - tapOn:
+                id: "solution-next"
+      - runFlow:
+          when:
+            visible:
+              id: "drill-next"
+          commands:
+            - tapOn:
+                id: "drill-next"
+- assertVisible:
+    id: "summary-accuracy"
+- tapOn:
+    id: "summary-done"
+- tapOn:
+    id: "prc-tile-analytics"
+- assertVisible:
+    id: "PRC-14"
+- tapOn:
+    id: "progress-history"
+- assertVisible:
+    id: "PRC-16"

@@ -1,0 +1,241 @@
+{
+  "schema": "play@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "id": "pl.fx.topic-a",
+  "scope": "topic",
+  "topic": "fx.chapter-a.topic-a",
+  "title": {
+    "en": "Fixture title play",
+    "hi": "फ़िक्स्चर शीर्षक play"
+  },
+  "concepts": ["fx.chapter-a.topic-a.sub-1.concept-1", "fx.chapter-a.topic-a.sub-1.concept-2"],
+  "minutes": 2,
+  "cover": "img.chapter-a.fx-object-c",
+  "feedback": {
+    "success": {
+      "en": "Fixture success line",
+      "hi": "फ़िक्स्चर शाबाश पंक्ति"
+    },
+    "try_again": {
+      "en": "Fixture try again line",
+      "hi": "फ़िक्स्चर फिर से पंक्ति"
+    }
+  },
+  "rounds": [
+    {
+      "kind": "tap",
+      "prompt": {
+        "en": "Fixture tap prompt",
+        "hi": "फ़िक्स्चर टैप निर्देश"
+      },
+      "hint": {
+        "en": "Fixture tap hint",
+        "hi": "फ़िक्स्चर टैप संकेत"
+      },
+      "items": [
+        {
+          "id": "tile-1",
+          "label": {
+            "en": "Fixture tile 1",
+            "hi": "फ़िक्स्चर टाइल 1"
+          },
+          "media": "img.chapter-a.fx-object-c"
+        },
+        {
+          "id": "tile-2",
+          "label": {
+            "en": "Fixture tile 2",
+            "hi": "फ़िक्स्चर टाइल 2"
+          },
+          "media": "img.chapter-a.fx-scene-a"
+        },
+        {
+          "id": "tile-3",
+          "label": {
+            "en": "Fixture tile 3",
+            "hi": "फ़िक्स्चर टाइल 3"
+          },
+          "media": "img.chapter-a.fx-story-page"
+        }
+      ],
+      "answer": ["tile-1", "tile-3"]
+    },
+    {
+      "kind": "match",
+      "prompt": {
+        "en": "Fixture match prompt",
+        "hi": "फ़िक्स्चर जोड़ी निर्देश"
+      },
+      "pairs": [
+        {
+          "left": {
+            "id": "tile-1",
+            "label": {
+              "en": "Fixture tile 1",
+              "hi": "फ़िक्स्चर टाइल 1"
+            },
+            "media": "img.chapter-a.fx-object-c"
+          },
+          "right": {
+            "id": "tile-2",
+            "label": {
+              "en": "Fixture tile 2",
+              "hi": "फ़िक्स्चर टाइल 2"
+            },
+            "media": "img.chapter-a.fx-scene-a"
+          }
+        },
+        {
+          "left": {
+            "id": "tile-3",
+            "label": {
+              "en": "Fixture tile 3",
+              "hi": "फ़िक्स्चर टाइल 3"
+            },
+            "media": "img.chapter-a.fx-story-page"
+          },
+          "right": {
+            "id": "tile-4",
+            "label": {
+              "en": "Fixture tile 4",
+              "hi": "फ़िक्स्चर टाइल 4"
+            },
+            "media": "img.chapter-a.fx-hook"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "sort",
+      "prompt": {
+        "en": "Fixture sort prompt",
+        "hi": "फ़िक्स्चर छँटाई निर्देश"
+      },
+      "buckets": [
+        {
+          "id": "bucket-a",
+          "label": {
+            "en": "Fixture bucket A",
+            "hi": "फ़िक्स्चर टोकरी A"
+          }
+        },
+        {
+          "id": "bucket-b",
+          "label": {
+            "en": "Fixture bucket B",
+            "hi": "फ़िक्स्चर टोकरी B"
+          }
+        }
+      ],
+      "items": [
+        {
+          "id": "tile-1",
+          "label": {
+            "en": "Fixture tile 1",
+            "hi": "फ़िक्स्चर टाइल 1"
+          },
+          "media": "img.chapter-a.fx-object-c",
+          "bucket": "bucket-a"
+        },
+        {
+          "id": "tile-2",
+          "label": {
+            "en": "Fixture tile 2",
+            "hi": "फ़िक्स्चर टाइल 2"
+          },
+          "media": "img.chapter-a.fx-scene-a",
+          "bucket": "bucket-b"
+        },
+        {
+          "id": "tile-3",
+          "label": {
+            "en": "Fixture tile 3",
+            "hi": "फ़िक्स्चर टाइल 3"
+          },
+          "media": "img.chapter-a.fx-story-page",
+          "bucket": "bucket-a"
+        }
+      ]
+    },
+    {
+      "kind": "drag",
+      "prompt": {
+        "en": "Fixture drag prompt",
+        "hi": "फ़िक्स्चर खींचो निर्देश"
+      },
+      "scene": "img.chapter-a.fx-scene-a",
+      "targets": [
+        {
+          "id": "spot-1",
+          "label": {
+            "en": "Fixture spot 1",
+            "hi": "फ़िक्स्चर जगह 1"
+          },
+          "x": 0.3,
+          "y": 0.4,
+          "radius": 0.12,
+          "accepts": "tile-1"
+        },
+        {
+          "id": "spot-2",
+          "label": {
+            "en": "Fixture spot 2",
+            "hi": "फ़िक्स्चर जगह 2"
+          },
+          "x": 0.7,
+          "y": 0.6,
+          "radius": 0.12,
+          "accepts": "tile-2"
+        }
+      ],
+      "items": [
+        {
+          "id": "tile-1",
+          "label": {
+            "en": "Fixture tile 1",
+            "hi": "फ़िक्स्चर टाइल 1"
+          },
+          "media": "img.chapter-a.fx-poster-b"
+        },
+        {
+          "id": "tile-2",
+          "label": {
+            "en": "Fixture tile 2",
+            "hi": "फ़िक्स्चर टाइल 2"
+          },
+          "media": "img.chapter-a.fx-portrait-c"
+        },
+        {
+          "id": "tile-3",
+          "label": {
+            "en": "Fixture tile 3",
+            "hi": "फ़िक्स्चर टाइल 3"
+          },
+          "media": "img.chapter-a.fx-object-c"
+        }
+      ]
+    },
+    {
+      "kind": "trace",
+      "prompt": {
+        "en": "Fixture trace prompt",
+        "hi": "फ़िक्स्चर अक्षर निर्देश"
+      },
+      "glyph": "A",
+      "script": "latin",
+      "guide": "anim.chapter-a.fx-trace-guide",
+      "min_coverage": 0.7
+    }
+  ]
+}

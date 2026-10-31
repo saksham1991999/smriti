@@ -1,0 +1,311 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.waves",
+  "subject": "phy",
+  "unit": "phy.oscillations-waves",
+  "name": {
+    "en": "Waves",
+    "hi": "तरंगें"
+  },
+  "ncert_ref": "NCERT Class 11 Physics Part II, Ch 14",
+  "topics": [
+    {
+      "id": "phy.waves.wave-types",
+      "name": {
+        "en": "Transverse and Longitudinal Waves",
+        "hi": "अनुप्रस्थ तथा अनुदैर्ध्य तरंगें"
+      },
+      "subtopics": [
+        {
+          "id": "phy.waves.wave-types.core",
+          "name": {
+            "en": "Transverse and Longitudinal Waves",
+            "hi": "अनुप्रस्थ तथा अनुदैर्ध्य तरंगें"
+          },
+          "concepts": [
+            {
+              "id": "phy.waves.wave-types.core.wave-motion-types",
+              "name": {
+                "en": "Wave motion: transverse and longitudinal waves",
+                "hi": "तरंग गति : अनुप्रस्थ एवं अनुदैर्ध्य तरंगें"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A mechanical wave carries energy through a medium without bulk transport of matter; in transverse waves particles move perpendicular to the wave, in longitudinal waves along it.",
+                "hi": "यांत्रिक तरंग माध्यम में द्रव्य के स्थूल स्थानांतरण के बिना ऊर्जा ले जाती है; अनुप्रस्थ तरंगों में कण तरंग के लंबवत और अनुदैर्ध्य तरंगों में उसके अनुदिश चलते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Give examples: waves on a string are transverse, sound in air is longitudinal.",
+                  "hi": "उदाहरण दीजिए: डोरी पर तरंगें अनुप्रस्थ हैं, वायु में ध्वनि अनुदैर्ध्य है।"
+                },
+                {
+                  "en": "Explain why transverse mechanical waves cannot travel in fluids.",
+                  "hi": "समझाइए कि अनुप्रस्थ यांत्रिक तरंगें तरलों में क्यों नहीं चल सकतीं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.oscillations.shm.core.shm-equation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-6",
+                "neet-ug-2026:physics:unit-10:item-6"
+              ]
+            },
+            {
+              "id": "phy.waves.wave-types.core.wave-speed",
+              "name": {
+                "en": "Speed of a travelling wave",
+                "hi": "प्रगामी तरंग की चाल"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Wave speed depends on the medium: $\\sqrt{T/\\mu}$ for a stretched string and $\\sqrt{B/\\rho}$ for sound, with Laplace's correction giving $\\sqrt{\\gamma P/\\rho}$ in a gas.",
+                "hi": "तरंग की चाल माध्यम पर निर्भर करती है: तनी डोरी के लिए $\\sqrt{T/\\mu}$ और ध्वनि के लिए $\\sqrt{B/\\rho}$, तथा गैस में लाप्लास संशोधन से $\\sqrt{\\gamma P/\\rho}$।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain Newton's formula for the speed of sound and why Laplace corrected it.",
+                  "hi": "ध्वनि की चाल के लिए न्यूटन का सूत्र और लाप्लास द्वारा उसके संशोधन का कारण समझाइए।"
+                },
+                {
+                  "en": "State how the speed of sound in a gas depends on temperature and not on pressure.",
+                  "hi": "बताइए कि गैस में ध्वनि की चाल ताप पर निर्भर करती है, दाब पर नहीं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.waves.wave-types.core.wave-motion-types"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-6",
+                "neet-ug-2026:physics:unit-10:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.waves.displacement-relation",
+      "name": {
+        "en": "Displacement Relation in a Progressive Wave",
+        "hi": "प्रगामी तरंगों में विस्थापन संबंध"
+      },
+      "subtopics": [
+        {
+          "id": "phy.waves.displacement-relation.core",
+          "name": {
+            "en": "Displacement Relation in a Progressive Wave",
+            "hi": "प्रगामी तरंगों में विस्थापन संबंध"
+          },
+          "concepts": [
+            {
+              "id": "phy.waves.displacement-relation.core.progressive-wave-equation",
+              "name": {
+                "en": "Displacement relation for a progressive wave",
+                "hi": "प्रगामी तरंग के लिए विस्थापन संबंध"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A sinusoidal wave travelling along +x is $y = a \\sin(kx - \\omega t + \\phi)$, with wave number $k = 2\\pi/\\lambda$ and speed $v = \\omega/k = \\nu \\lambda$.",
+                "hi": "+x दिशा में चलती ज्यावक्रीय तरंग $y = a \\sin(kx - \\omega t + \\phi)$ है, जिसमें तरंग संख्या $k = 2\\pi/\\lambda$ और चाल $v = \\omega/k = \\nu \\lambda$ है।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify amplitude, wavelength, period and phase from a wave equation.",
+                  "hi": "तरंग समीकरण से आयाम, तरंगदैर्ध्य, आवर्तकाल और कला पहचानिए।"
+                },
+                {
+                  "en": "Find phase difference between two points separated by $\\Delta x$, $\\Delta \\phi = 2\\pi \\Delta x/\\lambda$.",
+                  "hi": "$\\Delta x$ दूरी पर स्थित दो बिंदुओं के बीच कलांतर $\\Delta \\phi = 2\\pi \\Delta x/\\lambda$ निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.waves.wave-types.core.wave-motion-types",
+                "phy.oscillations.shm.core.shm-equation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-7",
+                "neet-ug-2026:physics:unit-10:item-7"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.waves.superposition",
+      "name": {
+        "en": "Principle of Superposition and Reflection of Waves",
+        "hi": "तरंगों के अध्यारोपण का सिद्धांत एवं परावर्तन"
+      },
+      "subtopics": [
+        {
+          "id": "phy.waves.superposition.core",
+          "name": {
+            "en": "Principle of Superposition and Reflection of Waves",
+            "hi": "तरंगों के अध्यारोपण का सिद्धांत एवं परावर्तन"
+          },
+          "concepts": [
+            {
+              "id": "phy.waves.superposition.core.superposition-reflection",
+              "name": {
+                "en": "Principle of superposition and reflection of waves",
+                "hi": "तरंगों का अध्यारोपण सिद्धांत एवं परावर्तन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "When waves overlap, the net displacement is the algebraic sum of individual displacements; a wave reflected from a rigid boundary undergoes a phase change of $\\pi$, but not from an open boundary.",
+                "hi": "जब तरंगें मिलती हैं तो नेट विस्थापन अलग-अलग विस्थापनों का बीजगणितीय योग होता है; दृढ़ परिसीमा से परावर्तित तरंग में $\\pi$ का कला-परिवर्तन होता है, खुली परिसीमा से नहीं।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain constructive and destructive interference of two waves in terms of phase difference.",
+                  "hi": "कलांतर के आधार पर दो तरंगों के संपोषी और विनाशी व्यतिकरण को समझाइए।"
+                },
+                {
+                  "en": "State the phase change on reflection at fixed and free ends.",
+                  "hi": "स्थिर और मुक्त सिरों पर परावर्तन के समय कला-परिवर्तन बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.waves.displacement-relation.core.progressive-wave-equation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-8",
+                "neet-ug-2026:physics:unit-10:item-8"
+              ]
+            },
+            {
+              "id": "phy.waves.superposition.core.standing-waves",
+              "name": {
+                "en": "Standing waves in strings and organ pipes; harmonics",
+                "hi": "डोरियों एवं ऑर्गन पाइपों में अप्रगामी तरंगें; संनादी"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Superposed incident and reflected waves form standing waves with nodes and antinodes; a string fixed at both ends or an open pipe has $\\nu_{n} = nv/2L$, while a closed pipe has only odd harmonics $\\nu = (2n - 1)v/4L$.",
+                "hi": "आपतित और परावर्तित तरंगों के अध्यारोपण से निस्पंद और प्रस्पंद वाली अप्रगामी तरंगें बनती हैं; दोनों सिरों पर बँधी डोरी या खुले पाइप के लिए $\\nu_{n} = nv/2L$, जबकि बंद पाइप में केवल विषम संनादी $\\nu = (2n - 1)v/4L$ होते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Locate nodes and antinodes and state that adjacent nodes are $\\lambda/2$ apart.",
+                  "hi": "निस्पंद और प्रस्पंद की स्थितियाँ बताइए और बताइए कि आसन्न निस्पंद $\\lambda/2$ दूरी पर होते हैं।"
+                },
+                {
+                  "en": "Derive the normal modes of a stretched string and of open and closed organ pipes.",
+                  "hi": "तनी डोरी तथा खुले और बंद ऑर्गन पाइपों की सामान्य विधाएँ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Define the fundamental mode and overtones.",
+                  "hi": "मूल विधा और अधिस्वरकों को परिभाषित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.waves.superposition.core.superposition-reflection",
+                "phy.waves.wave-types.core.wave-speed"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-9",
+                "neet-ug-2026:physics:unit-10:item-9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.waves.beats",
+      "name": {
+        "en": "Beats",
+        "hi": "विस्पंदें"
+      },
+      "subtopics": [
+        {
+          "id": "phy.waves.beats.core",
+          "name": {
+            "en": "Beats",
+            "hi": "विस्पंदें"
+          },
+          "concepts": [
+            {
+              "id": "phy.waves.beats.core.beats-def",
+              "name": {
+                "en": "Beats",
+                "hi": "विस्पंद"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Two sounds of slightly different frequencies superpose to give periodic waxing and waning of loudness, with beat frequency $|\\nu_{1} - \\nu_{2}|$.",
+                "hi": "थोड़ी भिन्न आवृत्तियों की दो ध्वनियाँ अध्यारोपित होकर प्रबलता का आवर्ती रूप से घटना-बढ़ना उत्पन्न करती हैं, जिसकी विस्पंद आवृत्ति $|\\nu_{1} - \\nu_{2}|$ है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive the beat frequency from the superposition of two waves.",
+                  "hi": "दो तरंगों के अध्यारोपण से विस्पंद आवृत्ति व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Use beats to find an unknown frequency, as in tuning a musical instrument.",
+                  "hi": "अज्ञात आवृत्ति ज्ञात करने के लिए विस्पंदों का उपयोग कीजिए, जैसे वाद्य यंत्र को सुर में मिलाते समय।"
+                }
+              ],
+              "prerequisites": [
+                "phy.waves.superposition.core.superposition-reflection"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-10",
+                "neet-ug-2026:physics:unit-10:item-10"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 14 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph207.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph2 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xvii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.4: Physics Unit 10, Oscillations and Waves"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.5: Physics Unit 10, OSCILLATIONS AND WAVES"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: displacement-relation (§14.3, khph2 contents prelims p.xvii), beats (§14.7, khph2 contents prelims p.xvii). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/waves.json."
+}

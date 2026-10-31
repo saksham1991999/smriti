@@ -1,0 +1,409 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.resistivity",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.resistivity.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistivity.core.resistivity-conductivity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The length of a wire is doubled while its cross-section is kept the same. Its resistance",
+        "hi": "किसी तार की लंबाई दोगुनी की जाती है और अनुप्रस्थ काट वही रखी जाती है। उसका प्रतिरोध"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "halves",
+            "hi": "आधा हो जाता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "doubles",
+            "hi": "दोगुना हो जाता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "becomes four times",
+            "hi": "चार गुना हो जाता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "does not change",
+            "hi": "नहीं बदलता"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which quantity in $R = \\rho l/A$ changed?",
+          "hi": "$R = \\rho l/A$ में कौन-सी राशि बदली?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Resistance grows with the length the current must travel. Same thickness, twice the length: twice the resistance.",
+          "hi": "प्रतिरोध उस लंबाई के साथ बढ़ता है जिससे धारा गुज़रती है। मोटाई वही, लंबाई दोगुनी: प्रतिरोध दोगुना।"
+        },
+        "steps": [
+          {
+            "en": "$R = \\rho l/A$; with $A$ fixed, $R \\propto l$.",
+            "hi": "$R = \\rho l/A$; $A$ नियत हो तो $R \\propto l$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Resistance increases with length.",
+              "hi": "प्रतिरोध लंबाई के साथ बढ़ता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Four times is for stretching, where the area also halves.",
+              "hi": "चार गुना खींचने पर होता है, जहाँ क्षेत्रफल भी आधा होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Resistivity does not change, but resistance does.",
+              "hi": "प्रतिरोधकता नहीं बदलती, पर प्रतिरोध बदलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.resistivity.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistivity.core.resistivity-conductivity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A wire of resistance $R$ is stretched uniformly to twice its length; its volume stays the same. The new resistance is",
+        "hi": "प्रतिरोध $R$ वाले तार को समान रूप से दोगुनी लंबाई तक खींचा जाता है; उसका आयतन वही रहता है। नया प्रतिरोध है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$2R$",
+            "hi": "$2R$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$4R$",
+            "hi": "$4R$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$R/2$",
+            "hi": "$R/2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$R$",
+            "hi": "$R$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Keep the volume $Al$ fixed.",
+          "hi": "आयतन $Al$ नियत रखें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Stretching makes the wire longer and thinner at the same time. Each change doubles the resistance, so together they make it four times.",
+          "hi": "खींचने से तार एक साथ लंबा और पतला होता है। हर बदलाव प्रतिरोध दोगुना करता है, इसलिए मिलकर चार गुना।"
+        },
+        "steps": [
+          {
+            "en": "$Al$ constant: $l' = 2l$, $A' = A/2$",
+            "hi": "$Al$ नियत: $l' = 2l$, $A' = A/2$"
+          },
+          {
+            "en": "$R' = \\rho\\frac{2l}{A/2} = 4R$",
+            "hi": "$R' = \\rho\\frac{2l}{A/2} = 4R$"
+          }
+        ],
+        "shortcut": {
+          "en": "At constant volume, $R \\propto l^{2}$.",
+          "hi": "नियत आयतन पर $R \\propto l^{2}$।"
+        },
+        "shortcut_fails_when": {
+          "en": "It fails if the wire's volume changes, for example if material is removed.",
+          "hi": "यदि तार का आयतन बदले, जैसे पदार्थ हटाया जाए, तो यह लागू नहीं होता।"
+        },
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This ignores the smaller cross-section.",
+              "hi": "यह छोटी अनुप्रस्थ काट को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Resistance increases on stretching, not decreases.",
+              "hi": "खींचने पर प्रतिरोध बढ़ता है, घटता नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The material is the same, but the shape changed.",
+              "hi": "पदार्थ वही है, पर आकार बदला है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.resistivity.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistivity.core.resistivity-conductivity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Using $\\rho = m/(ne^{2}\\tau)$, which change would increase the resistivity of a metal?",
+        "hi": "$\\rho = m/(ne^{2}\\tau)$ के आधार पर, कौन-सा बदलाव किसी धातु की प्रतिरोधकता बढ़ाएगा?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "more free electrons per unit volume",
+            "hi": "प्रति एकांक आयतन अधिक मुक्त इलेक्ट्रॉन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a longer relaxation time",
+            "hi": "लंबा विश्रांति काल"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a shorter relaxation time",
+            "hi": "छोटा विश्रांति काल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a longer wire",
+            "hi": "लंबा तार"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\tau$ is in the denominator.",
+          "hi": "$\\tau$ हर में है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Resistivity is high when electrons are few or collide often. More frequent collisions mean a shorter relaxation time, so resistivity rises.",
+          "hi": "प्रतिरोधकता तब अधिक होती है जब इलेक्ट्रॉन कम हों या बार-बार टकराएँ। अधिक बार टक्कर का अर्थ छोटा विश्रांति काल, इसलिए प्रतिरोधकता बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\rho \\propto 1/\\tau$ and $\\rho \\propto 1/n$.",
+            "hi": "$\\rho \\propto 1/\\tau$ और $\\rho \\propto 1/n$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "More carriers lower the resistivity.",
+              "hi": "अधिक वाहक प्रतिरोधकता घटाते हैं।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A longer $\\tau$ lowers the resistivity.",
+              "hi": "लंबा $\\tau$ प्रतिरोधकता घटाता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Length changes resistance, not resistivity.",
+              "hi": "लंबाई प्रतिरोध बदलती है, प्रतिरोधकता नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.resistivity.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.resistivity.core.resistivity-conductivity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A wire 10 m long with cross-section $1.0 \\times 10^{-6}$ m² is made of a material of resistivity $5.0 \\times 10^{-7}$ Ω m. Its resistance in ohm is",
+        "hi": "10 m लंबा तार, जिसकी अनुप्रस्थ काट $1.0 \\times 10^{-6}$ m² है, $5.0 \\times 10^{-7}$ Ω m प्रतिरोधकता वाले पदार्थ का बना है। ओम में उसका प्रतिरोध है"
+      },
+      "answer": {
+        "value": 5,
+        "unit": "Ω"
+      },
+      "hints": [
+        {
+          "en": "$R = \\rho l/A$.",
+          "hi": "$R = \\rho l/A$।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Multiply the material's resistivity by the length and divide by the area.",
+          "hi": "पदार्थ की प्रतिरोधकता को लंबाई से गुणा करें और क्षेत्रफल से भाग दें।"
+        },
+        "steps": [
+          {
+            "en": "$R = \\rho\\frac{l}{A} = 5.0 \\times 10^{-7} \\times \\frac{10}{1.0 \\times 10^{-6}} = 5$ Ω",
+            "hi": "$R = \\rho\\frac{l}{A} = 5.0 \\times 10^{-7} \\times \\frac{10}{1.0 \\times 10^{-6}} = 5$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Multiplying by the area instead of dividing gives a tiny number.",
+              "hi": "क्षेत्रफल से भाग की जगह गुणा करने पर बहुत छोटी संख्या आती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,546 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "topic": "bio.cell-unit-of-life.prokaryotic",
+  "questions": [
+    {
+      "id": "q.bio.cell-unit-of-life.prokaryotic.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A comma-shaped bacterium is called",
+        "hi": "कोमाकार जीवाणु को क्या कहते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "bacillus",
+            "hi": "दंडाकार (बेसिलस)"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "coccus",
+            "hi": "गोलाकार (कोकस)"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "vibrio",
+            "hi": "कोमाकार (विब्रो)"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "spirillum",
+            "hi": "सर्पिल (स्पाइरल)"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Rod, sphere, comma, spiral.",
+          "hi": "दंड, गोला, कोमा, सर्पिल।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each of the four basic shapes has its own name; the comma shape is vibrio.",
+          "hi": "चारों मूल आकारों का अपना नाम है; कोमा का आकार विब्रो है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.4: bacillus (rod-like), coccus (spherical), vibrio (comma-shaped), spirillum (spiral).",
+            "hi": "NCERT §8.4: दंडाकार (बेसिलस), गोलाकार (कोकस), कोमाकार (विब्रो), सर्पिल (स्पाइरल)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Bacillus is rod-like.",
+              "hi": "बेसिलस दंडाकार है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Coccus is spherical.",
+              "hi": "कोकस गोलाकार है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Spirillum is spiral.",
+              "hi": "स्पाइरल सर्पिल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.prokaryotic.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which prokaryote has no cell wall?",
+        "hi": "किस प्रोकैरियोटी में कोशिका भित्ति नहीं होती?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Mycoplasma",
+            "hi": "माइकोप्लाज़्मा"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Blue-green algae",
+            "hi": "नीलहरित शैवाल"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "A Gram-positive bacterium",
+            "hi": "ग्राम धनात्मक जीवाणु"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "A Gram-negative bacterium",
+            "hi": "ग्राम ऋणात्मक जीवाणु"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The exception is also the smallest cell.",
+          "hi": "यह अपवाद सबसे छोटी कोशिका भी है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every prokaryote wraps its membrane in a wall, with one exception: mycoplasma.",
+          "hi": "हर प्रोकैरियोटी अपनी झिल्ली को भित्ति से ढकता है, एक अपवाद को छोड़कर: माइकोप्लाज़्मा।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.4: all prokaryotes have a cell wall surrounding the cell membrane except in mycoplasma.",
+            "hi": "NCERT §8.4: माइकोप्लाज़्मा को छोड़कर सभी प्रोकैरियोटी में कोशिका झिल्ली को घेरे कोशिका भित्ति होती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Blue-green algae are prokaryotes with a cell wall.",
+              "hi": "नीलहरित शैवाल भित्ति वाले प्रोकैरियोटी हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Gram staining depends on the cell envelope, which includes the wall.",
+              "hi": "ग्राम अभिरंजन कोशिका आवरण पर निर्भर है, जिसमें भित्ति शामिल है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Gram-negative bacteria also have a cell envelope with a wall.",
+              "hi": "ग्राम ऋणात्मक जीवाणुओं में भी भित्ति वाला आवरण होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.prokaryotic.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which of these is NOT a function of mesosomes?",
+        "hi": "इनमें से कौन-सा मीसोसोम का कार्य नहीं है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Helping in cell wall formation",
+            "hi": "कोशिका भित्ति निर्माण में सहायता"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Helping in DNA replication and distribution to daughter cells",
+            "hi": "डीएनए प्रतिकृति और संतति कोशिकाओं में वितरण में सहायता"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Helping in respiration",
+            "hi": "श्वसन में सहायता"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Moving the bacterium",
+            "hi": "जीवाणु को गति देना"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "d"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which structure is outside the cell?",
+          "hi": "कौन-सी संरचना कोशिका के बाहर है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Mesosomes are folds of membrane inside the cell, so they help with jobs done at membranes. Moving the cell is the flagellum's job.",
+          "hi": "मीसोसोम कोशिका के भीतर झिल्ली की तहें हैं, इसलिए ये झिल्ली पर होने वाले कार्यों में मदद करते हैं। कोशिका को चलाना कशाभिका का काम है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.4.1: mesosomes help in cell wall formation, DNA replication and distribution, respiration, secretion, and increase surface area and enzymatic content.",
+            "hi": "NCERT §8.4.1: मीसोसोम भित्ति निर्माण, डीएनए प्रतिकृति और वितरण, श्वसन, स्रावण में सहायक हैं और पृष्ठ क्षेत्र व एंजाइम मात्रा बढ़ाते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "This is a listed mesosome function.",
+              "hi": "यह मीसोसोम का बताया गया कार्य है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This is a listed mesosome function.",
+              "hi": "यह मीसोसोम का बताया गया कार्य है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is a listed mesosome function.",
+              "hi": "यह मीसोसोम का बताया गया कार्य है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.prokaryotic.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about prokaryotic cells is correct?",
+        "hi": "प्रोकैरियोटी कोशिकाओं के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Their 70S ribosomes are made of 50S and 30S subunits and are associated with the plasma membrane.",
+            "hi": "इनके 70S राइबोसोम 50S और 30S उपइकाइयों से बने हैं और जीवद्रव्य झिल्ली से जुड़े होते हैं।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Their inclusion bodies are enclosed in a single membrane.",
+            "hi": "इनके अंतर्विष्ट पिंड एकल झिल्ली से घिरे होते हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Pili are their main organs of movement.",
+            "hi": "रोम इनके गति के मुख्य अंग हैं।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Plasmids are part of their single circular genomic DNA.",
+            "hi": "प्लाज़्मिड इनके एकल वृत्ताकार जीनोमिक डीएनए का भाग हैं।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Check each word of every statement.",
+          "hi": "हर कथन का हर शब्द जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only one statement keeps every detail right: the 70S ribosome and where it sits.",
+          "hi": "केवल एक कथन हर ब्योरा सही रखता है: 70S राइबोसोम और वह कहाँ रहता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.4.2: in prokaryotes ribosomes are associated with the plasma membrane; 50S and 30S together form 70S.",
+            "hi": "NCERT §8.4.2: प्रोकैरियोटी में राइबोसोम जीवद्रव्य झिल्ली से जुड़े होते हैं; 50S और 30S मिलकर 70S बनाते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Inclusion bodies are not bound by any membrane.",
+              "hi": "अंतर्विष्ट पिंड किसी झिल्ली से घिरे नहीं होते।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Pili play no role in motility.",
+              "hi": "रोम गति में भूमिका नहीं निभाते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Plasmids lie outside the genomic DNA.",
+              "hi": "प्लाज़्मिड जीनोमिक डीएनए के बाहर होते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-unit-of-life.prokaryotic.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-unit-of-life.prokaryotic.core.prokaryotic-cell",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The layers of a bacterial cell envelope, from the outside in, are",
+        "hi": "जीवाणु कोशिका आवरण की परतें, बाहर से भीतर की ओर, हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "glycocalyx, cell wall, plasma membrane",
+            "hi": "ग्लाइकोकैलिक्स, कोशिका भित्ति, जीवद्रव्य झिल्ली"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "cell wall, glycocalyx, plasma membrane",
+            "hi": "कोशिका भित्ति, ग्लाइकोकैलिक्स, जीवद्रव्य झिल्ली"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "plasma membrane, cell wall, glycocalyx",
+            "hi": "जीवद्रव्य झिल्ली, कोशिका भित्ति, ग्लाइकोकैलिक्स"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "glycocalyx, plasma membrane, cell wall",
+            "hi": "ग्लाइकोकैलिक्स, जीवद्रव्य झिल्ली, कोशिका भित्ति"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which layer touches the cytoplasm?",
+          "hi": "कौन-सी परत कोशिकाद्रव्य को छूती है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The membrane is always the innermost layer, wrapped by the wall, and the glycocalyx coats the outside.",
+          "hi": "झिल्ली हमेशा सबसे भीतरी परत है, उसे भित्ति ढकती है, और ग्लाइकोकैलिक्स सबसे बाहर लिपटी रहती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §8.4.1: the outermost glycocalyx followed by the cell wall and then the plasma membrane.",
+            "hi": "NCERT §8.4.1: सबसे बाहर ग्लाइकोकैलिक्स, फिर कोशिका भित्ति, फिर जीवद्रव्य झिल्ली।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The glycocalyx is outside the wall.",
+              "hi": "ग्लाइकोकैलिक्स भित्ति के बाहर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This is the order from the inside out.",
+              "hi": "यह भीतर से बाहर का क्रम है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The wall surrounds the membrane.",
+              "hi": "भित्ति झिल्ली को घेरती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

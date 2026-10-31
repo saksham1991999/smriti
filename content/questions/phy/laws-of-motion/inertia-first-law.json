@@ -1,0 +1,446 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 4 Gati ke Niyam: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph104.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 64-68"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "topic": "phy.laws-of-motion.inertia-first-law",
+  "questions": [
+    {
+      "id": "q.phy.laws-of-motion.inertia-first-law.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.inertia-first-law.core.newton-first-law",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "According to Newton's first law, a body moving with uniform velocity in a straight line",
+        "hi": "न्यूटन के प्रथम नियम के अनुसार, सरल रेखा में एकसमान वेग से चलता पिंड"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "has zero net external force on it",
+            "hi": "पर नेट बाह्य बल शून्य है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "must have a constant force pushing it forward",
+            "hi": "को आगे धकेलने वाला नियत बल चाहिए"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "will slowly come to rest by itself",
+            "hi": "अपने आप धीरे-धीरे रुक जाएगा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "has no forces at all acting on it",
+            "hi": "पर कोई भी बल नहीं लगता"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is there an acceleration?",
+          "hi": "क्या कोई त्वरण है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Uniform velocity means zero acceleration, and that means zero net force.",
+          "hi": "एकसमान वेग का अर्थ शून्य त्वरण, और उसका अर्थ शून्य नेट बल।"
+        },
+        "steps": [
+          {
+            "en": "Zero acceleration, so by the first law the net external force is zero.",
+            "hi": "त्वरण शून्य, अतः प्रथम नियम से नेट बाह्य बल शून्य है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is Aristotle's idea, which is wrong.",
+              "hi": "यह अरस्तू का विचार है, जो गलत है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Only an external force such as friction would stop it.",
+              "hi": "केवल घर्षण जैसा बाह्य बल ही इसे रोकेगा।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Forces may act, as long as they add up to zero.",
+              "hi": "बल लग सकते हैं, बशर्ते उनका योग शून्य हो।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.inertia-first-law.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.inertia-first-law.core.newton-first-law",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A puck slides on a perfectly frictionless horizontal surface at 2 m/s, with no net force on it. After 10 s its speed is",
+        "hi": "एक पक पूर्णतः घर्षणरहित क्षैतिज सतह पर 2 m/s से फिसलती है, और उस पर कोई नेट बल नहीं है। 10 s बाद उसकी चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 m/s",
+            "hi": "2 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "20 m/s",
+            "hi": "20 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.2 m/s",
+            "hi": "0.2 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "No friction, no net force.",
+          "hi": "न घर्षण, न नेट बल।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With no net force, the velocity does not change.",
+          "hi": "नेट बल न हो तो वेग नहीं बदलता।"
+        },
+        "steps": [
+          {
+            "en": "Net force zero, so acceleration zero; the speed stays 2 m/s.",
+            "hi": "नेट बल शून्य, अतः त्वरण शून्य; चाल 2 m/s रहती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Nothing acts to stop it.",
+              "hi": "इसे रोकने वाला कुछ नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Nothing acts to speed it up.",
+              "hi": "इसे तेज़ करने वाला कुछ नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Time alone does not change velocity.",
+              "hi": "केवल समय से वेग नहीं बदलता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.inertia-first-law.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.inertia-first-law.core.newton-first-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "When a moving bus brakes suddenly, standing passengers lurch forwards. This is because",
+        "hi": "जब चलती बस अचानक ब्रेक लगाती है, तो खड़े यात्री आगे की ओर झुक जाते हैं। ऐसा इसलिए होता है क्योंकि"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "their bodies tend to keep moving forward while their feet stop with the floor",
+            "hi": "उनके पैर फ़र्श के साथ रुक जाते हैं जबकि शरीर आगे चलते रहने की प्रवृत्ति रखता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the bus pushes them forward",
+            "hi": "बस उन्हें आगे धकेलती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "braking creates a forward force on everyone in the bus",
+            "hi": "ब्रेक लगाने से बस में सब पर आगे की ओर बल लगता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "their weight increases",
+            "hi": "उनका भार बढ़ जाता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What happens to the feet, and what to the rest of the body?",
+          "hi": "पैरों का क्या होता है, और शेष शरीर का क्या?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Inertia of motion: the upper body keeps going.",
+          "hi": "गति का जड़त्व: शरीर का ऊपरी भाग चलता रहता है।"
+        },
+        "steps": [
+          {
+            "en": "Friction stops the feet with the floor; by inertia the rest of the body continues forward.",
+            "hi": "घर्षण पैरों को फ़र्श के साथ रोकता है; जड़त्व से शरीर का शेष भाग आगे चलता रहता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The bus pushes back on the feet, through friction.",
+              "hi": "बस घर्षण द्वारा पैरों को पीछे की ओर रोकती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "No forward force appears; the body simply keeps its motion.",
+              "hi": "कोई आगे का बल नहीं आता; शरीर बस अपनी गति बनाए रखता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Weight does not change on braking.",
+              "hi": "ब्रेक लगाने पर भार नहीं बदलता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.inertia-first-law.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.inertia-first-law.core.newton-first-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A train is accelerating at 2 m/s² along a straight level track. A stone is dropped from a window. Ignoring air resistance, just after release the stone's horizontal acceleration is",
+        "hi": "एक ट्रेन सीधी समतल पटरी पर 2 m/s² से त्वरित हो रही है। खिड़की से एक पत्थर गिराया जाता है। वायु प्रतिरोध की उपेक्षा करें तो छोड़ने के ठीक बाद पत्थर का क्षैतिज त्वरण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2 m/s² forwards",
+            "hi": "आगे की ओर 2 m/s²"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2 m/s² backwards",
+            "hi": "पीछे की ओर 2 m/s²"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "9.8 m/s² forwards",
+            "hi": "आगे की ओर 9.8 m/s²"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which forces act after release?",
+          "hi": "छूटने के बाद कौन-से बल लगते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Once released, nothing pushes the stone horizontally.",
+          "hi": "छूटने के बाद पत्थर को क्षैतिज दिशा में कुछ नहीं धकेलता।"
+        },
+        "steps": [
+          {
+            "en": "Force is not carried from the past; after release only gravity, which is vertical, acts.",
+            "hi": "बल अतीत से साथ नहीं आता; छूटने के बाद केवल गुरुत्व लगता है, जो ऊर्ध्वाधर है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The stone does not remember the train's acceleration.",
+              "hi": "पत्थर को ट्रेन का त्वरण याद नहीं रहता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Relative to the train it drifts back, but its own acceleration is zero horizontally.",
+              "hi": "ट्रेन के सापेक्ष यह पीछे जाता है, पर इसका अपना क्षैतिज त्वरण शून्य है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Gravity acts vertically, not forwards.",
+              "hi": "गुरुत्व ऊर्ध्वाधर लगता है, आगे की ओर नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

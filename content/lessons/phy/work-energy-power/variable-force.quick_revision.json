@@ -1,0 +1,98 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.variable-force:quick_revision",
+  "topic": "phy.work-energy-power.variable-force",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.work-energy-power.variable-force.core.work-variable-force"
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.variable-force:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.work-energy-power.variable-force"
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.variable-force.0002"
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Split an F-x graph into rectangles and triangles and add the areas.",
+          "hi": "F-x आलेख को आयतों और त्रिभुजों में बाँटकर क्षेत्रफल जोड़िए।"
+        },
+        {
+          "en": "For $F(x)$ given as a formula, integrate it between the end points.",
+          "hi": "सूत्र के रूप में दिए $F(x)$ का सिरों के बीच समाकलन कीजिए।"
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Use $W = Fd$ with the starting force.",
+            "hi": "प्रारंभिक बल से $W = Fd$ लगाइए।"
+          },
+          "correct": {
+            "en": "For a changing force, add the area under the graph.",
+            "hi": "बदलते बल के लिए आलेख के नीचे का क्षेत्रफल जोड़िए।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "All area under an F-x graph is positive work.",
+            "hi": "F-x आलेख के नीचे का सारा क्षेत्रफल धनात्मक कार्य है।"
+          },
+          "correct": {
+            "en": "Area below the x-axis is negative work.",
+            "hi": "x-अक्ष के नीचे का क्षेत्रफल ऋणात्मक कार्य है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

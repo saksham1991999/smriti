@@ -1,0 +1,568 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/blueprint.schema.json",
+  "title": "BlueprintFile",
+  "description": "content/blueprints/{exam_profile_id}/{paper_code}.v{n}.json, encoded by skills/exam-blueprint from the latest official notification. Projects to content.exam_blueprints.spec. Never edited in place: a pattern change is a new version.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/FileMeta"
+    }
+  ],
+  "required": [
+    "schema",
+    "exam_profile",
+    "paper_code",
+    "version",
+    "effective_from",
+    "verified_at",
+    "source",
+    "mode",
+    "duration_min",
+    "languages",
+    "language_switch",
+    "interface",
+    "calculator",
+    "section_navigation",
+    "numeric_input",
+    "question_count",
+    "max_marks",
+    "sections",
+    "instructions"
+  ],
+  "properties": {
+    "schema": {
+      "const": "blueprint@1"
+    },
+    "exam_profile": {
+      "$ref": "common.schema.json#/$defs/ExamProfileId"
+    },
+    "paper_code": {
+      "$ref": "common.schema.json#/$defs/Slug"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "effective_from": {
+      "$ref": "common.schema.json#/$defs/IsoDate"
+    },
+    "verified_at": {
+      "$ref": "common.schema.json#/$defs/IsoDate"
+    },
+    "source": {
+      "description": "The official notification this blueprint was encoded from.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "title", "published", "retrieved"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "published": {
+          "$ref": "common.schema.json#/$defs/IsoDate"
+        },
+        "retrieved": {
+          "$ref": "common.schema.json#/$defs/IsoDate"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "linked_from": {
+          "description": "The official page the notice is linked from (a URL, optionally with the menu path).",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "mode": {
+      "description": "cbt, pen_paper, or mixed when parts of the paper are taken in different modes (each section then says its mode).",
+      "type": "string",
+      "enum": ["cbt", "pen_paper", "mixed"]
+    },
+    "duration_min": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "languages": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "common.schema.json#/$defs/Locale"
+      }
+    },
+    "language_switch": {
+      "description": "per_question: the EN/HI toggle shows on every question in full, sectional and PYQ-paper mocks. fixed: the language is chosen once (practice flow 6.4, R44).",
+      "type": "string",
+      "enum": ["per_question", "fixed"]
+    },
+    "interface": {
+      "type": "string",
+      "enum": ["nta", "nta_omr", "upsc_omr", "ssc_tcs", "generic"]
+    },
+    "interface_profile": {
+      "description": "Buttons, labels and palette states encoded from the official instructions. null: the runner uses the generic profile.",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/InterfaceProfile"
+        }
+      ]
+    },
+    "calculator": {
+      "description": "Calculator allowed on the paper. null: not stated in the notice; the file then lists an open_questions entry naming this field.",
+      "type": ["string", "null"],
+      "enum": ["none", "basic", "scientific", null]
+    },
+    "section_navigation": {
+      "description": "How candidates move between sections. null: not stated in the notice; the file then lists an open_questions entry naming this field.",
+      "type": ["string", "null"],
+      "enum": ["free", "locked_in_order", "free_within_timer", null]
+    },
+    "early_section_submit": {
+      "description": "Whether a locked section can be submitted before its timer ends. null when the notification is silent.",
+      "type": ["boolean", "null"]
+    },
+    "numeric_input": {
+      "description": "How numeric answers are typed. null: not stated in the notice; the file then lists an open_questions entry naming this field.",
+      "type": ["string", "null"],
+      "enum": ["virtual_keypad", "keyboard", null]
+    },
+    "question_count": {
+      "description": "Questions that count in the paper (after attempt-any rules). null: not stated in the notice; the file then lists an open_questions entry naming this field.",
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "max_marks": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Section"
+      }
+    },
+    "qualifying": {
+      "description": "The paper's qualifying rule, only as notified. null: none is notified.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["rule"],
+      "properties": {
+        "rule": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/QualifyingRule"
+            }
+          ]
+        },
+        "basis": {
+          "description": "The notified rule in our words, with its citation.",
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "exam_day": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "reporting_lead_min": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        }
+      }
+    },
+    "accommodations": {
+      "description": "Extra time and other accommodations, only where the official notification defines them.",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["extra_time_min_per_hour", "source_ref"],
+      "properties": {
+        "extra_time_min_per_hour": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_ref": {
+          "type": "string"
+        }
+      }
+    },
+    "group": {
+      "description": "Paired papers taken together (JEE Advanced paper 1 and 2, UPSC GS I and CSAT).",
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["id", "order"],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/Slug"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "break_min": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        }
+      }
+    },
+    "instructions": {
+      "$ref": "common.schema.json#/$defs/I18nText"
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "QuestionType": {
+      "type": "string",
+      "enum": [
+        "mcq_single",
+        "mcq_multi",
+        "numerical",
+        "integer",
+        "matrix_match",
+        "match_list",
+        "assertion_reason",
+        "statement_based",
+        "paragraph",
+        "fill_blank",
+        "order_steps",
+        "drawing",
+        "skill_test"
+      ],
+      "description": "drawing: graded by examiners, never by the mock engine. skill_test: a qualifying skill test (typing, data entry) with no questions or marks."
+    },
+    "MarkingRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correct", "wrong", "unattempted"],
+      "properties": {
+        "correct": {
+          "description": "Marks for a right answer. null: not stated in the notice; the file then lists an open_questions entry naming this field.",
+          "type": ["number", "null"]
+        },
+        "wrong": {
+          "description": "Marks for a wrong answer (negative or 0), or a penalty as a fraction of the question's marks (UPSC: one-third).",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fraction_of_question_marks"],
+              "properties": {
+                "fraction_of_question_marks": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          ]
+        },
+        "unattempted": {
+          "type": "number"
+        },
+        "partial": {
+          "description": "JEE Advanced-style partial marking: per correct option chosen, only when no wrong option is chosen.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["per_correct_option", "requires_no_wrong"],
+          "properties": {
+            "per_correct_option": {
+              "type": "number"
+            },
+            "requires_no_wrong": {
+              "type": "boolean"
+            }
+          }
+        },
+        "tolerance": {
+          "description": "Numerical answers: as_notified, or the notified tolerance.",
+          "oneOf": [
+            {
+              "const": "as_notified"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/Tolerance"
+            }
+          ]
+        }
+      }
+    },
+    "Section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "title", "question_count", "question_types"],
+      "properties": {
+        "code": {
+          "$ref": "common.schema.json#/$defs/Slug"
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "subject": {
+          "type": ["string", "null"]
+        },
+        "timer_min": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "question_count": {
+          "description": "null for a qualifying skill test, or when the notice does not state it (then an open_questions entry names sections.{code}.question_count).",
+          "type": ["integer", "null"],
+          "minimum": 1
+        },
+        "type_counts": {
+          "description": "Questions per type, when a section mixes types. Lets the check add up marks.",
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/QuestionType"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "attempt_rule": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["attempt_any"],
+          "properties": {
+            "attempt_any": {
+              "type": ["integer", "null"],
+              "minimum": 1
+            },
+            "over_attempt": {
+              "type": ["string", "null"],
+              "enum": ["block", "evaluate_first_n", null]
+            }
+          }
+        },
+        "optional": {
+          "type": "boolean"
+        },
+        "cutoff": {
+          "description": "Sectional cut-off or qualifying standard, only when notified.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/QualifyingRule"
+            }
+          ]
+        },
+        "question_types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/QuestionType"
+          }
+        },
+        "marking": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "#/$defs/QuestionType"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/MarkingRule"
+          },
+          "description": "Required, except for a section of skill_test questions only."
+        },
+        "mode": {
+          "description": "Only in a mixed paper: the mode of this section.",
+          "type": "string",
+          "enum": ["cbt", "pen_paper"]
+        },
+        "max_marks": {
+          "description": "The section total as notified, when the notice prints it (needed when marks per question are not stated).",
+          "type": ["number", "null"],
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "PaletteState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "colour_token", "shape"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": ["not_visited", "not_answered", "answered", "marked", "answered_marked"]
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "colour_token": {
+          "description": "A key under mockPalette in packages/tokens/tokens.json, for example mockPalette.answered.",
+          "type": "string",
+          "pattern": "^mockPalette\\.[A-Za-z]+$"
+        },
+        "shape": {
+          "type": "string",
+          "enum": ["square", "circle", "pentagon-up", "pentagon-down", "circle-tick"]
+        }
+      }
+    },
+    "InterfaceProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "buttons",
+        "palette_states",
+        "save_requires_explicit_action",
+        "clear_keeps_mark",
+        "marked_answer_evaluated"
+      ],
+      "properties": {
+        "buttons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["action", "label"],
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "save_next",
+                  "save_mark_review",
+                  "mark_review_next",
+                  "clear_response",
+                  "back",
+                  "next",
+                  "submit"
+                ]
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              }
+            }
+          }
+        },
+        "palette_states": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/PaletteState"
+          }
+        },
+        "save_requires_explicit_action": {
+          "description": "null: not stated in the official instructions (with an open_questions entry naming interface_profile.save_requires_explicit_action).",
+          "type": ["boolean", "null"]
+        },
+        "clear_keeps_mark": {
+          "description": "null: not stated in the official instructions (with an open_questions entry naming interface_profile.clear_keeps_mark).",
+          "type": ["boolean", "null"]
+        },
+        "marked_answer_evaluated": {
+          "description": "null: not stated in the official instructions (with an open_questions entry naming interface_profile.marked_answer_evaluated).",
+          "type": ["boolean", "null"]
+        },
+        "keyboard_disabled_on_exam_day": {
+          "description": "null: not stated in the official instructions (with an open_questions entry naming interface_profile.keyboard_disabled_on_exam_day).",
+          "type": ["boolean", "null"]
+        }
+      }
+    },
+    "QualifyingRule": {
+      "description": "A notified qualifying standard: one value, a value per category, or a standard the conducting body sets later.",
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "value"],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": ["percent_of_max", "marks", "percentile", "max_error_percent"]
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "by_category"],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": ["percent_of_max", "marks", "percentile", "max_error_percent"]
+            },
+            "by_category": {
+              "description": "Category labels as the notice prints them (UR, OBC/EWS, SC, ST, PwBD ...).",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["category", "value"],
+                "properties": {
+                  "category": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "basis"],
+          "properties": {
+            "kind": {
+              "const": "set_by_conducting_body"
+            },
+            "basis": {
+              "description": "What the notice says about how it is set.",
+              "type": "string",
+              "minLength": 1
+            },
+            "source_ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "id": "phy.rotational-motion.angular-velocity:deep_dive",
+  "topic": "phy.rotational-motion.angular-velocity",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.rotational-motion.angular-velocity.core.rotation-basics"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Rigid bodies that turn",
+        "hi": "घूमने वाले दृढ़ पिंड"
+      },
+      "subtopic": "phy.rotational-motion.angular-velocity.core",
+      "card_ids": [
+        "phy.rotational-motion.angular-velocity:dd:01",
+        "phy.rotational-motion.angular-velocity:dd:02",
+        "phy.rotational-motion.angular-velocity:dd:03",
+        "phy.rotational-motion.angular-velocity:dd:04",
+        "phy.rotational-motion.angular-velocity:dd:05",
+        "phy.rotational-motion.angular-velocity:dd:06",
+        "phy.rotational-motion.angular-velocity:dd:07",
+        "phy.rotational-motion.angular-velocity:dd:08"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Every point turns together",
+        "hi": "हर बिंदु साथ-साथ घूमता है"
+      },
+      "body": {
+        "en": "Watch a potter's wheel. A speck of clay near the rim races round a big circle; one near the middle creeps round a small circle. Yet in any second both turn through exactly the same angle. That shared angle per second is what we mean by the wheel's angular velocity.",
+        "hi": "कुम्हार के चाक को देखिए। किनारे के पास मिट्टी का कण बड़े वृत्त पर तेज़ी से घूमता है; बीच के पास वाला कण छोटे वृत्त पर धीरे-धीरे। फिर भी किसी एक सेकंड में दोनों ठीक समान कोण से घूमते हैं। प्रति सेकंड का यही साझा कोण चाक का कोणीय वेग है।"
+      },
+      "media": "img.rotational-motion.potter-wheel"
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Translation and rotation",
+        "hi": "स्थानांतरण और घूर्णन"
+      },
+      "body": {
+        "en": "A rigid body is one in which the distances between its particles never change. In pure translation, every particle has the same velocity at every instant. In rotation about a fixed axis, every particle moves in a circle in a plane perpendicular to the axis, with its centre on the axis; particles on the axis stay at rest. A ceiling fan, a potter's wheel and a giant wheel all rotate about fixed axes.\n\nA cylinder rolling down a slope combines both. A spinning top rotates about an axis through its tip; the tip stays fixed but the axis itself sweeps out a cone, which is called precession.",
+        "hi": "दृढ़ पिंड वह है जिसके कणों के बीच की दूरियाँ कभी नहीं बदलतीं। शुद्ध स्थानांतरण में हर क्षण हर कण का वेग समान होता है। स्थिर अक्ष के परितः घूर्णन में हर कण अक्ष के लंबवत् तल में एक वृत्त पर चलता है, जिसका केन्द्र अक्ष पर होता है; अक्ष पर स्थित कण विराम में रहते हैं। छत का पंखा, कुम्हार का चाक और विशाल चक्र (जायंट व्हील) सभी स्थिर अक्षों के परितः घूमते हैं।\n\nढलान पर लुढ़कता बेलन दोनों का संयोजन है। लट्टू अपनी नोक से गुज़रने वाले अक्ष के परितः घूमता है; नोक स्थिर रहती है पर अक्ष स्वयं एक शंकु बनाता है, जिसे पुरस्सरण कहते हैं।"
+      },
+      "media": "img.rotational-motion.giant-wheel",
+      "highlights": [
+        {
+          "term": {
+            "en": "rigid body",
+            "hi": "दृढ़ पिंड"
+          },
+          "definition": {
+            "en": "distances between its particles never change",
+            "hi": "इसके कणों के बीच की दूरियाँ कभी नहीं बदलतीं"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.1, Figs. 6.3-6.5, Summary 1-4"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Angular velocity and linear velocity",
+        "hi": "कोणीय वेग और रेखीय वेग"
+      },
+      "body": {
+        "en": "If a body turns through $\\Delta\\theta$ in time $\\Delta t$, its angular velocity is $\\omega = \\frac{d\\theta}{dt}$, the same for every particle. A particle at distance r from the axis moves at $v = \\omega r$.\n\nAngular velocity is a vector along the axis, pointing by the right-hand rule: curl the fingers the way the body turns and the thumb gives the direction of $\\vec{\\omega}$. Then $\\vec{v} = \\vec{\\omega} \\times \\vec{r}$, with $\\vec{r}$ measured from a point on the axis.\n\nThe angular acceleration is $\\alpha = \\frac{d\\omega}{dt}$. For a fixed axis, both $\\vec{\\omega}$ and $\\vec{\\alpha}$ lie along the axis.",
+        "hi": "यदि पिंड $\\Delta\\theta$ कोण समय $\\Delta t$ में घूमता है, तो उसका कोणीय वेग $\\omega = \\frac{d\\theta}{dt}$ है, जो हर कण के लिए समान है। अक्ष से r दूरी पर स्थित कण $v = \\omega r$ से चलता है।\n\nकोणीय वेग अक्ष के अनुदिश एक सदिश है, जिसकी दिशा दाएँ हाथ के नियम से है: उँगलियों को पिंड के घूमने की दिशा में मोड़िए, अँगूठा $\\vec{\\omega}$ की दिशा देता है। तब $\\vec{v} = \\vec{\\omega} \\times \\vec{r}$, जहाँ $\\vec{r}$ अक्ष पर के किसी बिंदु से मापा जाता है।\n\nकोणीय त्वरण $\\alpha = \\frac{d\\omega}{dt}$ है। स्थिर अक्ष के लिए $\\vec{\\omega}$ और $\\vec{\\alpha}$ दोनों अक्ष के अनुदिश होते हैं।"
+      },
+      "media": "img.rotational-motion.potter-wheel",
+      "highlights": [
+        {
+          "term": {
+            "en": "angular velocity",
+            "hi": "कोणीय वेग"
+          },
+          "definition": {
+            "en": "$\\omega = d\\theta/dt$, along the axis",
+            "hi": "$\\omega = d\\theta/dt$, अक्ष के अनुदिश"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.6, Eqs. 6.19-6.21, Summary 5, 7"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Translation, rotation or both?",
+        "hi": "स्थानांतरण, घूर्णन या दोनों?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "A block sliding down a smooth slope without turning",
+              "hi": "बिना घूमे चिकनी ढलान पर फिसलता गुटका"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "The blades of a ceiling fan",
+              "hi": "छत के पंखे की पंखुड़ियाँ"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "A cylinder rolling down a slope",
+              "hi": "ढलान पर लुढ़कता बेलन"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "A potter's wheel",
+              "hi": "कुम्हार का चाक"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "tr",
+            "label": {
+              "en": "Pure translation",
+              "hi": "शुद्ध स्थानांतरण"
+            }
+          },
+          {
+            "id": "rot",
+            "label": {
+              "en": "Rotation about a fixed axis",
+              "hi": "स्थिर अक्ष के परितः घूर्णन"
+            }
+          },
+          {
+            "id": "both",
+            "label": {
+              "en": "Translation and rotation",
+              "hi": "स्थानांतरण और घूर्णन"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "tr"
+          },
+          {
+            "item": "i2",
+            "bin": "rot"
+          },
+          {
+            "item": "i3",
+            "bin": "both"
+          },
+          {
+            "item": "i4",
+            "bin": "rot"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. Rolling is the one case here that mixes the two motions.",
+          "hi": "सही। यहाँ लुढ़कना ही वह स्थिति है जिसमें दोनों गतियाँ मिली हैं।"
+        },
+        "wrong": {
+          "en": "Ask: does every point have the same velocity, or does some line stay fixed?",
+          "hi": "पूछिए: क्या हर बिंदु का वेग समान है, या कोई रेखा स्थिर रहती है?"
+        }
+      }
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A wheel turns at 600 revolutions per minute. Find its angular speed in rad/s and the speed of a point 0.3 m from the axis.",
+        "hi": "एक पहिया 600 चक्कर प्रति मिनट से घूमता है। इसकी कोणीय चाल rad/s में और अक्ष से 0.3 m दूर के बिंदु की चाल ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "One revolution is $2\\pi$ rad: $\\omega = \\frac{600 \\times 2\\pi}{60} = 20\\pi \\approx 62.8$ rad/s",
+          "hi": "एक चक्कर $2\\pi$ rad है: $\\omega = \\frac{600 \\times 2\\pi}{60} = 20\\pi \\approx 62.8$ rad/s"
+        },
+        {
+          "en": "$v = \\omega r = 20\\pi \\times 0.3 = 6\\pi \\approx 18.8$ m/s",
+          "hi": "$v = \\omega r = 20\\pi \\times 0.3 = 6\\pi \\approx 18.8$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "$20\\pi \\approx 62.8$ rad/s; about 18.8 m/s",
+        "hi": "$20\\pi \\approx 62.8$ rad/s; लगभग 18.8 m/s"
+      },
+      "answer_value": {
+        "value": 62.8,
+        "unit": "rad/s",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting the $2\\pi$ per revolution or the 60 s per minute.",
+        "hi": "प्रति चक्कर $2\\pi$ या प्रति मिनट 60 s भूल जाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§6.6, Example 6.11"
+      }
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "question": "q.phy.rotational-motion.angular-velocity.0001"
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 3,
+      "question": "q.phy.rotational-motion.angular-velocity.0003"
+    },
+    {
+      "id": "phy.rotational-motion.angular-velocity:dd:08",
+      "type": "summary",
+      "concepts": [
+        "phy.rotational-motion.angular-velocity.core.rotation-basics"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "In fixed-axis rotation, all particles share one $\\omega$; $v = \\omega r$.",
+          "hi": "स्थिर अक्ष घूर्णन में सभी कणों का एक ही $\\omega$ है; $v = \\omega r$।"
+        },
+        {
+          "en": "$\\vec{\\omega}$ points along the axis by the right-hand rule; $\\alpha = d\\omega/dt$.",
+          "hi": "$\\vec{\\omega}$ दाएँ हाथ के नियम से अक्ष के अनुदिश है; $\\alpha = d\\omega/dt$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

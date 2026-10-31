@@ -1,0 +1,90 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "JCGM 200:2012 International vocabulary of metrology (VIM), 3rd edition, published by the BIPM",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "cs.phy.units-measurement.significant-figures",
+  "scope": "topic",
+  "topic": "phy.units-measurement.significant-figures",
+  "title": {
+    "en": "Significant Figures",
+    "hi": "सार्थक अंक"
+  },
+  "concepts": [
+    "phy.units-measurement.significant-figures.core.least-count",
+    "phy.units-measurement.significant-figures.core.significant-figure-rules"
+  ],
+  "key_ideas": [
+    {
+      "en": "Least count: the smallest value an instrument can measure; it sets the precision.",
+      "hi": "अल्पतमांक: वह सबसे छोटा मान जिसे यंत्र माप सके; यही परिशुद्धता तय करता है।"
+    },
+    {
+      "en": "Significant figures: reliable digits plus the first uncertain digit.",
+      "hi": "सार्थक अंक: विश्वसनीय अंक और पहला अनिश्चित अंक।"
+    },
+    {
+      "en": "Leading zeros never count; trailing zeros count only with a decimal point.",
+      "hi": "आगे के शून्य कभी नहीं गिने जाते; अंत के शून्य केवल दशमलव होने पर।"
+    },
+    {
+      "en": "× and ÷: fewest significant figures; + and −: fewest decimal places.",
+      "hi": "× और ÷: सबसे कम सार्थक अंक; + और −: सबसे कम दशमलव स्थान।"
+    },
+    {
+      "en": "Dropping exactly 5: even digit stays, odd digit goes up.",
+      "hi": "ठीक 5 हटे तो सम अंक वैसा ही, विषम अंक एक बढ़ता है।"
+    }
+  ],
+  "formulas": [],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "0.06900 has two significant figures.",
+        "hi": "0.06900 में दो सार्थक अंक हैं।"
+      },
+      "correct": {
+        "en": "It has four: the trailing zeros after the decimal point count.",
+        "hi": "इसमें चार हैं: दशमलव के बाद अंत के शून्य गिने जाते हैं।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "436.32 + 227.2 + 0.301 = 663.821.",
+        "hi": "436.32 + 227.2 + 0.301 = 663.821।"
+      },
+      "correct": {
+        "en": "Keep one decimal place, as in 227.2: 663.8.",
+        "hi": "227.2 की तरह एक दशमलव स्थान रखिए: 663.8।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Changing metres to millimetres adds significant figures.",
+        "hi": "मीटर को मिलीमीटर में बदलने से सार्थक अंक बढ़ते हैं।"
+      },
+      "correct": {
+        "en": "A change of unit never changes the count.",
+        "hi": "मात्रक बदलने से गिनती कभी नहीं बदलती।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

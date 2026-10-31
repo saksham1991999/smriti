@@ -1,0 +1,98 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "cs.phy.work-energy-power.spring-energy",
+  "scope": "topic",
+  "topic": "phy.work-energy-power.spring-energy",
+  "title": {
+    "en": "Potential Energy of a Spring",
+    "hi": "स्प्रिंग की स्थितिज ऊर्जा"
+  },
+  "concepts": [
+    "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+  ],
+  "key_ideas": [
+    {
+      "en": "Hooke's law: $F_s = -kx$, k in N/m.",
+      "hi": "हुक का नियम: $F_s = -kx$, k, N/m में।"
+    },
+    {
+      "en": "Spring energy is $\\frac{1}{2}kx^2$, the area under the F-x line.",
+      "hi": "स्प्रिंग ऊर्जा $\\frac{1}{2}kx^2$ है, F-x रेखा के नीचे का क्षेत्रफल।"
+    },
+    {
+      "en": "The spring force is conservative.",
+      "hi": "स्प्रिंग बल संरक्षी है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Hooke's law",
+        "hi": "हुक का नियम"
+      },
+      "latex": "F_s = -kx"
+    },
+    {
+      "name": {
+        "en": "Spring energy",
+        "hi": "स्प्रिंग ऊर्जा"
+      },
+      "latex": "V = \\frac{1}{2}kx^2"
+    },
+    {
+      "name": {
+        "en": "Greatest speed",
+        "hi": "अधिकतम चाल"
+      },
+      "latex": "v_m = x_m\\sqrt{\\frac{k}{m}}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Spring energy is $kx$.",
+        "hi": "स्प्रिंग ऊर्जा $kx$ है।"
+      },
+      "correct": {
+        "en": "That is the force; the energy is $\\frac{1}{2}kx^2$.",
+        "hi": "वह बल है; ऊर्जा $\\frac{1}{2}kx^2$ है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Stretching from $x_1$ to $x_2$ takes $\\frac{1}{2}k(x_2 - x_1)^2$.",
+        "hi": "$x_1$ से $x_2$ तक खींचने में $\\frac{1}{2}k(x_2 - x_1)^2$ लगता है।"
+      },
+      "correct": {
+        "en": "It takes $\\frac{1}{2}k(x_2^2 - x_1^2)$.",
+        "hi": "इसमें $\\frac{1}{2}k(x_2^2 - x_1^2)$ लगता है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "A compressed spring has negative energy.",
+        "hi": "संपीडित स्प्रिंग की ऊर्जा ऋणात्मक है।"
+      },
+      "correct": {
+        "en": "$\\frac{1}{2}kx^2$ is positive for stretch and compression alike.",
+        "hi": "$\\frac{1}{2}kx^2$ खिंचाव और संपीडन दोनों में धनात्मक है।"
+      }
+    }
+  ],
+  "diagram": "img.work-energy-power.buffer-spring",
+  "hi_source": "translation"
+}

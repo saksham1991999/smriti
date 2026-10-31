@@ -1,0 +1,605 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "all good",
+      "params": {
+        "request_retention": 0.9,
+        "enable_fuzz": false,
+        "maximum_interval": 36500,
+        "weights": "ts-fsrs 5.4.2 default"
+      },
+      "start": "2026-10-01T04:30:00.000Z",
+      "steps": [
+        {
+          "reviewed_at": "2026-10-01T04:30:00.000Z",
+          "rating": 3,
+          "due": "2026-10-01T04:40:00.000Z",
+          "stability": 2.3065,
+          "difficulty": 2.118104,
+          "state": 1,
+          "reps": 1,
+          "lapses": 0,
+          "scheduled_days": 0,
+          "learning_steps": 1,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:31:00.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-01T04:36:00.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-03T04:30:00.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-05T04:30:00.000Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-01T04:40:04.800Z",
+          "rating": 3,
+          "due": "2026-10-03T04:40:04.800Z",
+          "stability": 2.3065,
+          "difficulty": 2.111214,
+          "state": 2,
+          "reps": 2,
+          "lapses": 0,
+          "scheduled_days": 2,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-03T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-04T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-05T04:40:04.800Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-03T04:40:04.800Z",
+          "rating": 3,
+          "due": "2026-10-14T04:40:04.800Z",
+          "stability": 10.971048,
+          "difficulty": 2.104331,
+          "state": 2,
+          "reps": 3,
+          "lapses": 0,
+          "scheduled_days": 11,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-03T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-14T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-15T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-20T04:40:04.800Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-11T04:40:04.800Z",
+          "rating": 3,
+          "due": "2026-11-19T04:40:04.800Z",
+          "stability": 38.896078,
+          "difficulty": 2.097455,
+          "state": 2,
+          "reps": 4,
+          "lapses": 0,
+          "scheduled_days": 39,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-11T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-11-19T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-11-20T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-12-05T04:40:04.800Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-11-05T04:40:04.800Z",
+          "rating": 3,
+          "due": "2027-02-25T04:40:04.800Z",
+          "stability": 111.668292,
+          "difficulty": 2.090586,
+          "state": 2,
+          "reps": 5,
+          "lapses": 0,
+          "scheduled_days": 112,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-11-05T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2027-02-25T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2027-02-26T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2027-04-02T04:40:04.800Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lapse and relearn",
+      "params": {
+        "request_retention": 0.9,
+        "enable_fuzz": false,
+        "maximum_interval": 36500,
+        "weights": "ts-fsrs 5.4.2 default"
+      },
+      "start": "2026-10-01T04:30:00.000Z",
+      "steps": [
+        {
+          "reviewed_at": "2026-10-01T04:30:00.000Z",
+          "rating": 3,
+          "due": "2026-10-01T04:40:00.000Z",
+          "stability": 2.3065,
+          "difficulty": 2.118104,
+          "state": 1,
+          "reps": 1,
+          "lapses": 0,
+          "scheduled_days": 0,
+          "learning_steps": 1,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:31:00.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-01T04:36:00.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-03T04:30:00.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-05T04:30:00.000Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-01T04:40:04.800Z",
+          "rating": 3,
+          "due": "2026-10-03T04:40:04.800Z",
+          "stability": 2.3065,
+          "difficulty": 2.111214,
+          "state": 2,
+          "reps": 2,
+          "lapses": 0,
+          "scheduled_days": 2,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-03T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-04T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-05T04:40:04.800Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-04T04:40:04.800Z",
+          "rating": 1,
+          "due": "2026-10-04T04:50:04.800Z",
+          "stability": 0.636978,
+          "difficulty": 7.392238,
+          "state": 3,
+          "reps": 3,
+          "lapses": 1,
+          "scheduled_days": 0,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-04T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-04T04:55:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-05T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-05T04:40:04.800Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-04T04:50:09.600Z",
+          "rating": 3,
+          "due": "2026-10-05T04:50:09.600Z",
+          "stability": 0.689446,
+          "difficulty": 7.380074,
+          "state": 2,
+          "reps": 4,
+          "lapses": 1,
+          "scheduled_days": 1,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-04T05:00:09.600Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-05T04:50:09.600Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-06T04:50:09.600Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-07T04:50:09.600Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-05T04:50:09.600Z",
+          "rating": 3,
+          "due": "2026-10-08T04:50:09.600Z",
+          "stability": 2.533881,
+          "difficulty": 7.367923,
+          "state": 2,
+          "reps": 5,
+          "lapses": 1,
+          "scheduled_days": 3,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-05T05:00:09.600Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-08T04:50:09.600Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-09T04:50:09.600Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-10T04:50:09.600Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "easy from the start",
+      "params": {
+        "request_retention": 0.9,
+        "enable_fuzz": false,
+        "maximum_interval": 36500,
+        "weights": "ts-fsrs 5.4.2 default"
+      },
+      "start": "2026-10-01T04:30:00.000Z",
+      "steps": [
+        {
+          "reviewed_at": "2026-10-01T04:30:00.000Z",
+          "rating": 4,
+          "due": "2026-10-09T04:30:00.000Z",
+          "stability": 8.2956,
+          "difficulty": 1,
+          "state": 2,
+          "reps": 1,
+          "lapses": 0,
+          "scheduled_days": 8,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:40:00.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-09T04:30:00.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-10T04:30:00.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-14T04:30:00.000Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-11T04:30:00.000Z",
+          "rating": 4,
+          "due": "2026-12-25T04:30:00.000Z",
+          "stability": 75.347934,
+          "difficulty": 1,
+          "state": 2,
+          "reps": 2,
+          "lapses": 0,
+          "scheduled_days": 75,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-11T04:40:00.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-12-25T04:30:00.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-12-26T04:30:00.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2027-01-21T04:30:00.000Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hard and again on a new card",
+      "params": {
+        "request_retention": 0.9,
+        "enable_fuzz": false,
+        "maximum_interval": 36500,
+        "weights": "ts-fsrs 5.4.2 default"
+      },
+      "start": "2026-10-01T04:30:00.000Z",
+      "steps": [
+        {
+          "reviewed_at": "2026-10-01T04:30:00.000Z",
+          "rating": 2,
+          "due": "2026-10-01T04:36:00.000Z",
+          "stability": 1.2931,
+          "difficulty": 5.112171,
+          "state": 1,
+          "reps": 1,
+          "lapses": 0,
+          "scheduled_days": 0,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:31:00.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-01T04:36:00.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-01T04:40:00.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-03T04:30:00.000Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-01T04:35:45.600Z",
+          "rating": 1,
+          "due": "2026-10-01T04:36:45.600Z",
+          "stability": 0.451403,
+          "difficulty": 8.378632,
+          "state": 1,
+          "reps": 2,
+          "lapses": 0,
+          "scheduled_days": 0,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:36:45.600Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-01T04:41:45.600Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-01T04:45:45.600Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-02T04:35:45.600Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-01T04:37:12.000Z",
+          "rating": 3,
+          "due": "2026-10-01T04:47:12.000Z",
+          "stability": 0.499783,
+          "difficulty": 8.365482,
+          "state": 1,
+          "reps": 3,
+          "lapses": 0,
+          "scheduled_days": 0,
+          "learning_steps": 1,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:38:12.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-01T04:43:12.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-02T04:37:12.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-02T04:37:12.000Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "higher retention (0.95)",
+      "params": {
+        "request_retention": 0.95,
+        "enable_fuzz": false,
+        "maximum_interval": 36500,
+        "weights": "ts-fsrs 5.4.2 default"
+      },
+      "start": "2026-10-01T04:30:00.000Z",
+      "steps": [
+        {
+          "reviewed_at": "2026-10-01T04:30:00.000Z",
+          "rating": 3,
+          "due": "2026-10-01T04:40:00.000Z",
+          "stability": 2.3065,
+          "difficulty": 2.118104,
+          "state": 1,
+          "reps": 1,
+          "lapses": 0,
+          "scheduled_days": 0,
+          "learning_steps": 1,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:31:00.000Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-01T04:36:00.000Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-02T04:30:00.000Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-03T04:30:00.000Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-01T04:40:04.800Z",
+          "rating": 3,
+          "due": "2026-10-02T04:40:04.800Z",
+          "stability": 2.3065,
+          "difficulty": 2.111214,
+          "state": 2,
+          "reps": 2,
+          "lapses": 0,
+          "scheduled_days": 1,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-01T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-02T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-03T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-04T04:40:04.800Z"
+            }
+          ]
+        },
+        {
+          "reviewed_at": "2026-10-03T04:40:04.800Z",
+          "rating": 3,
+          "due": "2026-10-07T04:40:04.800Z",
+          "stability": 10.971048,
+          "difficulty": 2.104331,
+          "state": 2,
+          "reps": 3,
+          "lapses": 0,
+          "scheduled_days": 4,
+          "learning_steps": 0,
+          "previews": [
+            {
+              "rating": 1,
+              "due": "2026-10-03T04:50:04.800Z"
+            },
+            {
+              "rating": 2,
+              "due": "2026-10-07T04:40:04.800Z"
+            },
+            {
+              "rating": 3,
+              "due": "2026-10-08T04:40:04.800Z"
+            },
+            {
+              "rating": 4,
+              "due": "2026-10-10T04:40:04.800Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

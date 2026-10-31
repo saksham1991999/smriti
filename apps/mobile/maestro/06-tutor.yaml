@@ -1,0 +1,30 @@
+# AI-02 tutor: ask, wait for the streamed answer, rate it, open history (AI-09).
+appId: ${APP_ID}
+name: Tutor
+---
+- launchApp
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 30000
+- tapOn:
+    id: "tab-bar-practice"
+- tapOn:
+    id: "prc-tile-tutor"
+- assertVisible:
+    id: "AI-02"
+- tapOn:
+    id: "tutor-input-field"
+- inputText: "What is a vector?"
+- tapOn:
+    id: "tutor-input-send"
+- extendedWaitUntil:
+    visible:
+      id: "tutor-up"
+    timeout: 30000
+- tapOn:
+    id: "tutor-up"
+- tapOn:
+    id: "tutor-history"
+- assertVisible:
+    id: "AI-09"

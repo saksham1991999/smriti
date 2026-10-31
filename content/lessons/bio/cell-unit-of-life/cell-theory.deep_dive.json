@@ -1,0 +1,257 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Jeev Vigyan (Hindi medium), Ch 8 Koshika: Jeevan ki Ikai: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/khbo108.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Jeev Vigyan book (khbo108). Where the Hindi book differs from the English one (Schwann's nationality; euglenoides vs Euglena-like protozoa), each language follows its own NCERT book and the nationality is not stated.",
+  "id": "bio.cell-unit-of-life.cell-theory:deep_dive",
+  "topic": "bio.cell-unit-of-life.cell-theory",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "What makes a thing living",
+        "hi": "किसी वस्तु को सजीव क्या बनाता है"
+      },
+      "subtopic": "bio.cell-unit-of-life.cell-theory.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.cell-theory:dd:01",
+        "bio.cell-unit-of-life.cell-theory:dd:02",
+        "bio.cell-unit-of-life.cell-theory:dd:03"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Cell theory",
+        "hi": "कोशिका सिद्धांत"
+      },
+      "subtopic": "bio.cell-unit-of-life.cell-theory.core",
+      "card_ids": [
+        "bio.cell-unit-of-life.cell-theory:dd:04",
+        "bio.cell-unit-of-life.cell-theory:dd:05",
+        "bio.cell-unit-of-life.cell-theory:dd:06",
+        "bio.cell-unit-of-life.cell-theory:dd:07",
+        "bio.cell-unit-of-life.cell-theory:dd:08"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:01",
+      "type": "story",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "A stone and an onion",
+        "hi": "एक पत्थर और एक प्याज़"
+      },
+      "body": {
+        "en": "Put a thin onion peel under a microscope and you see neat little boxes packed side by side. A pebble shows nothing like that. What does a living thing have that a non-living thing does not? Biology's answer is the cell, present in every living organism.",
+        "hi": "प्याज़ की पतली झिल्ली को सूक्ष्मदर्शी के नीचे रखिए, तो पास-पास सटे छोटे-छोटे खाने दिखते हैं। किसी कंकड़ में ऐसा कुछ नहीं दिखता। सजीव में ऐसा क्या है जो निर्जीव में नहीं? जीव विज्ञान का उत्तर है कोशिका, जो हर सजीव में होती है।"
+      },
+      "media": "img.cell-unit-of-life.microscope-onion",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The cell is the unit of life",
+        "hi": "कोशिका जीवन की इकाई है"
+      },
+      "body": {
+        "en": "Some organisms are made of a single cell (unicellular), others, like us, of many cells (multicellular). A unicellular organism can exist independently and perform the essential functions of life. Anything less than a complete cell does not ensure independent living, so the cell is the fundamental structural and functional unit of all living organisms.\n\nAntonie von Leeuwenhoek first saw and described a live cell. Robert Brown later discovered the nucleus.",
+        "hi": "कुछ जीव एक ही कोशिका के बने होते हैं (एककोशिकीय), और कुछ, हमारी तरह, अनेक कोशिकाओं के (बहुकोशिकीय)। एककोशिकीय जीव स्वतंत्र रूप से रह सकता है और जीवन के आवश्यक कार्य कर सकता है। पूरी कोशिका से कम कोई भी संरचना स्वतंत्र जीवन सुनिश्चित नहीं करती, इसलिए कोशिका सभी सजीवों की मूलभूत संरचनात्मक और क्रियात्मक इकाई है।\n\nएंटोनी वॉन ल्यूवेनहॉक ने सबसे पहले जीवित कोशिका देखी और उसका वर्णन किया। रॉबर्ट ब्राउन ने बाद में केंद्रक की खोज की।"
+      },
+      "media": "img.cell-unit-of-life.microscope-onion",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.1"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:03",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 1,
+      "question": "q.bio.cell-unit-of-life.cell-theory.0001"
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Plants, animals and a missing piece",
+        "hi": "पौधे, जंतु और एक छूटी कड़ी"
+      },
+      "body": {
+        "en": "In 1838 the botanist Matthias Schleiden examined a large number of plants and found that all plants are made of different kinds of cells that form the tissues of the plant.\n\nIn 1839 the zoologist Theodore Schwann studied animal cells and reported a thin outer layer, today called the plasma membrane. From plant tissues he concluded that a cell wall is a unique character of plant cells. He proposed that the bodies of animals and plants are made of cells and products of cells. Schleiden and Schwann together formulated the cell theory.\n\nTheir theory did not explain how new cells form. In 1855 Rudolf Virchow first explained that cells divide and new cells form from pre-existing cells (Omnis cellula-e cellula), giving the theory its final shape.",
+        "hi": "1838 में वनस्पति वैज्ञानिक मैथियस श्लाइडेन ने बहुत सारे पौधों का अध्ययन किया और पाया कि सभी पौधे विभिन्न प्रकार की कोशिकाओं से बने हैं, जो पौधे के ऊतक बनाती हैं।\n\n1839 में प्राणि वैज्ञानिक थियोडोर श्वान ने जंतु कोशिकाओं का अध्ययन किया और कोशिका के बाहर एक पतली परत बताई, जिसे आजकल जीवद्रव्य झिल्ली कहते हैं। पादप ऊतकों के अध्ययन से उन्होंने निष्कर्ष निकाला कि कोशिका भित्ति पादप कोशिकाओं की विशेषता है। उन्होंने प्रस्तावित किया कि प्राणियों और वनस्पतियों का शरीर कोशिकाओं और उनके उत्पादों से बना है। श्लाइडेन और श्वान ने संयुक्त रूप से कोशिका सिद्धांत प्रतिपादित किया।\n\nयह सिद्धांत नहीं बता सका कि नई कोशिकाएँ कैसे बनती हैं। 1855 में रुडोल्फ विर्चो ने पहली बार स्पष्ट किया कि कोशिकाएँ विभाजित होती हैं और नई कोशिकाएँ पूर्व स्थित कोशिकाओं से बनती हैं (ओमनिस सेलुला-ई सेलुला), और सिद्धांत को अंतिम रूप दिया।"
+      },
+      "media": "img.cell-unit-of-life.cell-shapes",
+      "highlights": [
+        {
+          "term": {
+            "en": "cell theory today",
+            "hi": "आज का कोशिका सिद्धांत"
+          },
+          "definition": {
+            "en": "(i) all living organisms are composed of cells and products of cells; (ii) all cells arise from pre-existing cells.",
+            "hi": "(i) सभी जीव कोशिका और कोशिका उत्पाद से बने होते हैं; (ii) सभी कोशिकाएँ पूर्व स्थित कोशिकाओं से निर्मित होती हैं।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:05",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Put the steps of the cell theory in time order.",
+        "hi": "कोशिका सिद्धांत के चरणों को समय के क्रम में लगाइए।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "schleiden",
+            "text": {
+              "en": "Schleiden: all plants are made of cells (1838)",
+              "hi": "श्लाइडेन: सभी पौधे कोशिकाओं से बने हैं (1838)"
+            }
+          },
+          {
+            "id": "schwann",
+            "text": {
+              "en": "Schwann: animal cells have a thin outer layer; bodies of animals and plants are made of cells and products of cells (1839)",
+              "hi": "श्वान: जंतु कोशिकाओं के बाहर पतली परत होती है; प्राणियों और वनस्पतियों का शरीर कोशिकाओं और उनके उत्पादों से बना है (1839)"
+            }
+          },
+          {
+            "id": "virchow",
+            "text": {
+              "en": "Virchow: new cells form from pre-existing cells (1855)",
+              "hi": "विर्चो: नई कोशिकाएँ पूर्व स्थित कोशिकाओं से बनती हैं (1855)"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: plants first, then animals, then where new cells come from.",
+          "hi": "सही: पहले पौधे, फिर जंतु, फिर यह कि नई कोशिकाएँ कहाँ से आती हैं।"
+        },
+        "wrong": {
+          "en": "Look at the years: 1838, 1839, 1855.",
+          "hi": "वर्ष देखिए: 1838, 1839, 1855।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:06",
+      "type": "memory_hook",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 2,
+      "mnemonic": {
+        "en": "m.bio.cell-unit-of-life.cell-theory.core.cell-theory.1",
+        "hi": "m.bio.cell-unit-of-life.cell-theory.core.cell-theory.2"
+      }
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:07",
+      "type": "question",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-unit-of-life.cell-theory.0002"
+    },
+    {
+      "id": "bio.cell-unit-of-life.cell-theory:dd:08",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-unit-of-life.cell-theory.core.cell-theory"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "The cell is the fundamental structural and functional unit of life.",
+          "hi": "कोशिका जीवन की मूलभूत संरचनात्मक और क्रियात्मक इकाई है।"
+        },
+        {
+          "en": "Schleiden (1838) and Schwann (1839) formulated the cell theory.",
+          "hi": "श्लाइडेन (1838) और श्वान (1839) ने कोशिका सिद्धांत प्रतिपादित किया।"
+        },
+        {
+          "en": "Virchow (1855): new cells form from pre-existing cells.",
+          "hi": "विर्चो (1855): नई कोशिकाएँ पूर्व स्थित कोशिकाओं से बनती हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§8.2"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,954 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the NEET format, not copied from the NCERT exercises or any paper. Each solution cites the NCERT section it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo110) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "bio.cell-cycle-division.meiosis",
+  "questions": [
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Meiosis involves",
+        "hi": "अर्धसूत्री विभाजन में होते हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "two cycles of DNA replication and one division",
+            "hi": "DNA प्रतिकृति के दो चक्र और एक विभाजन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "two sequential divisions but only one cycle of DNA replication",
+            "hi": "दो क्रमिक विभाजन पर DNA प्रतिकृति का केवल एक चक्र"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "one division and one cycle of DNA replication",
+            "hi": "एक विभाजन और DNA प्रतिकृति का एक चक्र"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "two divisions, each preceded by DNA replication",
+            "hi": "दो विभाजन, हर एक से पहले DNA प्रतिकृति"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Copy once, divide twice.",
+          "hi": "एक बार प्रतिलिपि, दो बार विभाजन।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Copy once, divide twice: that is how the number ends up halved.",
+          "hi": "एक बार प्रतिलिपि, दो बार विभाजन: इसी से संख्या आधी होती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4: meiosis involves two sequential cycles of nuclear and cell division, meiosis I and II, but only a single cycle of DNA replication.",
+            "hi": "NCERT §10.4: अर्धसूत्री विभाजन में केंद्रक और कोशिका विभाजन के दो क्रमिक चक्र, अर्धसूत्री I और II, पर DNA प्रतिकृति का केवल एक चक्र होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "DNA replicates once.",
+              "hi": "DNA की प्रतिकृति एक बार बनती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That describes mitosis.",
+              "hi": "यह समसूत्री विभाजन का वर्णन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "There is no replication in interkinesis.",
+              "hi": "अंतरालावस्था में प्रतिकृति नहीं होती।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Recombination nodules, the sites of crossing over, appear in",
+        "hi": "पुनर्योजन ग्रंथिकाएँ, जो जीन विनिमय के स्थल हैं, किसमें दिखती हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "leptotene",
+            "hi": "लेप्टोटीन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "zygotene",
+            "hi": "ज़ाइगोटीन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "pachytene",
+            "hi": "पैकिटीन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "diakinesis",
+            "hi": "डायकाइनेसिस"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The third stage.",
+          "hi": "तीसरी अवस्था।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "First pair up (zygotene), then swap (pachytene), then pull apart showing the crossings (diplotene).",
+          "hi": "पहले जोड़ी (ज़ाइगोटीन), फिर अदला-बदली (पैकिटीन), फिर अलग होते हुए विनिमय स्थल दिखना (डिप्लोटीन)।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1: pachytene is characterised by recombination nodules, the sites at which crossing over occurs between non-sister chromatids.",
+            "hi": "NCERT §10.4.1: पैकिटीन की विशेषता पुनर्योजन ग्रंथिकाएँ हैं, जहाँ असहोदर अर्धगुणसूत्रों के बीच जीन विनिमय होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Leptotene only makes chromosomes visible.",
+              "hi": "लेप्टोटीन केवल गुणसूत्रों को दृश्य बनाती है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Zygotene is synapsis.",
+              "hi": "ज़ाइगोटीन सूत्रयुग्मन है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Diakinesis terminalises chiasmata.",
+              "hi": "डायकाइनेसिस काएज़्मेटा का उपांतीभवन करती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In anaphase I of meiosis",
+        "hi": "अर्धसूत्री विभाजन की पश्चावस्था I में"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "sister chromatids separate",
+            "hi": "सहोदर अर्धगुणसूत्र अलग होते हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "homologous chromosomes separate while sister chromatids stay joined at centromeres",
+            "hi": "समजात गुणसूत्र अलग होते हैं जबकि सहोदर अर्धगुणसूत्र गुणसूत्रबिंदु पर जुड़े रहते हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "centromeres split",
+            "hi": "गुणसूत्रबिंदु विभाजित होते हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "chromosomes pair",
+            "hi": "गुणसूत्र जोड़ी बनाते हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which pairs part first?",
+          "hi": "पहले कौन-से जोड़े अलग होते हैं?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Meiosis I parts the partners; meiosis II parts the twins.",
+          "hi": "अर्धसूत्री I साथियों को अलग करता है; अर्धसूत्री II जुड़वाँ को।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1: in anaphase I homologous chromosomes separate, while sister chromatids remain associated at their centromeres.",
+            "hi": "NCERT §10.4.1: पश्चावस्था I में समजात गुणसूत्र अलग होते हैं, जबकि सहोदर अर्धगुणसूत्र गुणसूत्रबिंदु पर जुड़े रहते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That happens in anaphase II.",
+              "hi": "वह पश्चावस्था II में होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Centromeres split in anaphase II.",
+              "hi": "गुणसूत्रबिंदु पश्चावस्था II में विभाजित होते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Pairing is in zygotene.",
+              "hi": "जोड़ी ज़ाइगोटीन में बनती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The significance of meiosis is that it",
+        "hi": "अर्धसूत्री विभाजन का महत्त्व यह है कि यह"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "produces identical diploid cells for repair",
+            "hi": "मरम्मत के लिए समान द्विगुणित कोशिकाएँ बनाता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "conserves chromosome number across generations and increases genetic variability",
+            "hi": "पीढ़ियों में गुणसूत्र संख्या बनाए रखता है और आनुवंशिक विभिन्नता बढ़ाता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "restores the nucleo-cytoplasmic ratio",
+            "hi": "केंद्रक-कोशिकाद्रव्य अनुपात फिर बनाता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "causes continuous plant growth from meristems",
+            "hi": "विभज्योतकों से पौधों की लगातार वृद्धि करता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Two things: number and variety.",
+          "hi": "दो बातें: संख्या और विविधता।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Halving before fertilisation keeps the number steady, and shuffling makes each generation a little different.",
+          "hi": "निषेचन से पहले आधा करना संख्या स्थिर रखता है, और फेरबदल हर पीढ़ी को थोड़ा अलग बनाता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.5: meiosis conserves the specific chromosome number across generations and increases genetic variability.",
+            "hi": "NCERT §10.5: अर्धसूत्री विभाजन पीढ़ियों में विशिष्ट गुणसूत्र संख्या बनाए रखता है और आनुवंशिक विभिन्नता बढ़ाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That is mitosis.",
+              "hi": "वह समसूत्री विभाजन है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is given for mitosis.",
+              "hi": "वह समसूत्री विभाजन के लिए दिया गया है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is mitosis in meristems.",
+              "hi": "वह विभज्योतकों में समसूत्री विभाजन है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Chiasmata are first seen as X-shaped structures in",
+        "hi": "काएज़्मेटा पहली बार X आकार की संरचनाओं के रूप में किसमें दिखते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "zygotene",
+            "hi": "ज़ाइगोटीन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "pachytene",
+            "hi": "पैकिटीन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "diplotene",
+            "hi": "डिप्लोटीन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "metaphase II",
+            "hi": "मध्यावस्था II"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Di-: the pair starts to come apart.",
+          "hi": "डिप्लो: जोड़ी अलग होने लगती है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "When the synaptonemal complex dissolves, homologues pull apart but stay stuck where they crossed over.",
+          "hi": "जब सिनैप्टोनीमल सम्मिश्र घुलता है, समजात अलग होते हैं पर विनिमय स्थलों पर चिपके रहते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1: diplotene begins with dissolution of the synaptonemal complex; homologues separate except at crossovers, the X-shaped chiasmata.",
+            "hi": "NCERT §10.4.1: डिप्लोटीन सिनैप्टोनीमल सम्मिश्र के घुलने से शुरू होती है; समजात विनिमय स्थलों को छोड़कर अलग होते हैं, जो X आकार के काएज़्मेटा हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Zygotene is pairing.",
+              "hi": "ज़ाइगोटीन जोड़ी बनना है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Pachytene is the crossing over itself.",
+              "hi": "पैकिटीन स्वयं जीन विनिमय है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Chiasmata belong to prophase I.",
+              "hi": "काएज़्मेटा पूर्वावस्था I के हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The enzyme involved in crossing over is",
+        "hi": "जीन विनिमय में शामिल एंजाइम है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "recombinase",
+            "hi": "रिकॉम्बिनेज़"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "ligase",
+            "hi": "लाइगेज़"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "carbonic anhydrase",
+            "hi": "कार्बोनिक ऐनहाइड्रेज़"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "trypsin",
+            "hi": "ट्रिप्सिन"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Recombination.",
+          "hi": "पुनर्योजन।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Crossing over recombines genetic material, and the enzyme is named for that job.",
+          "hi": "जीन विनिमय आनुवंशिक पदार्थ का पुनर्योजन करता है, और एंजाइम का नाम उसी काम से है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1: crossing over is an enzyme-mediated process and the enzyme involved is called recombinase.",
+            "hi": "NCERT §10.4.1: जीन विनिमय एंजाइम द्वारा होने वाली प्रक्रिया है और इसमें शामिल एंजाइम रिकॉम्बिनेज़ कहलाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "NCERT names recombinase for crossing over.",
+              "hi": "NCERT जीन विनिमय के लिए रिकॉम्बिनेज़ बताती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Carbonic anhydrase makes carbonic acid.",
+              "hi": "कार्बोनिक ऐनहाइड्रेज़ कार्बोनिक अम्ल बनाता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Trypsin is a digestive enzyme.",
+              "hi": "ट्रिप्सिन पाचक एंजाइम है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about meiosis is correct?",
+        "hi": "अर्धसूत्री विभाजन के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "DNA replicates during interkinesis.",
+            "hi": "अंतरालावस्था में DNA की प्रतिकृति बनती है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Telophase I gives a dyad of cells.",
+            "hi": "अंत्यावस्था I से कोशिकाओं का द्विक बनता है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Meiosis II resembles meiosis I more than mitosis.",
+            "hi": "अर्धसूत्री II, समसूत्री की बजाय अर्धसूत्री I से अधिक मिलता है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Crossing over occurs between sister chromatids.",
+            "hi": "जीन विनिमय सहोदर अर्धगुणसूत्रों के बीच होता है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Count the cells after the first division.",
+          "hi": "पहले विभाजन के बाद कोशिकाएँ गिनिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "After the first division you have two cells, a dyad; after the second, four, a tetrad.",
+          "hi": "पहले विभाजन के बाद दो कोशिकाएँ, यानी द्विक; दूसरे के बाद चार, यानी चतुष्क।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1 and §10.4.2: telophase I is followed by cytokinesis, called a dyad of cells; no DNA replication in interkinesis; meiosis II resembles mitosis; crossing over is between non-sister chromatids.",
+            "hi": "NCERT §10.4.1 और §10.4.2: अंत्यावस्था I के बाद कोशिकाद्रव्य विभाजन से कोशिकाओं का द्विक बनता है; अंतरालावस्था में DNA प्रतिकृति नहीं; अर्धसूत्री II समसूत्री जैसा है; जीन विनिमय असहोदर अर्धगुणसूत्रों के बीच।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "There is no replication in interkinesis.",
+              "hi": "अंतरालावस्था में प्रतिकृति नहीं होती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Meiosis II resembles a normal mitosis.",
+              "hi": "अर्धसूत्री II सामान्य समसूत्री जैसा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It is between non-sister chromatids.",
+              "hi": "यह असहोदर अर्धगुणसूत्रों के बीच है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In oocytes of some vertebrates, which stage can last for months or years?",
+        "hi": "कुछ कशेरुकियों के अंडकों में कौन-सी अवस्था महीनों या वर्षों तक चल सकती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Leptotene",
+            "hi": "लेप्टोटीन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Pachytene",
+            "hi": "पैकिटीन"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Diplotene",
+            "hi": "डिप्लोटीन"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Diakinesis",
+            "hi": "डायकाइनेसिस"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The chiasmata stage.",
+          "hi": "काएज़्मेटा वाली अवस्था।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "NCERT attaches this long pause to the stage where chiasmata are seen.",
+          "hi": "NCERT यह लंबा ठहराव उस अवस्था से जोड़ती है जिसमें काएज़्मेटा दिखते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1: in oocytes of some vertebrates, diplotene can last for months or years.",
+            "hi": "NCERT §10.4.1: कुछ कशेरुकियों के अंडकों में डिप्लोटीन महीनों या वर्षों तक चल सकती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "NCERT names diplotene.",
+              "hi": "NCERT डिप्लोटीन बताती है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "NCERT names diplotene.",
+              "hi": "NCERT डिप्लोटीन बताती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "NCERT names diplotene.",
+              "hi": "NCERT डिप्लोटीन बताती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.meiosis.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.meiosis.core.meiosis",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The complex formed by a pair of synapsed homologous chromosomes is called",
+        "hi": "सूत्रयुग्मित समजात गुणसूत्रों की जोड़ी से बना सम्मिश्र कहलाता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a dyad",
+            "hi": "द्विक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a bivalent or tetrad",
+            "hi": "युगली या चतुष्क"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a chiasma",
+            "hi": "काएज़्मा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a kinetochore",
+            "hi": "काइनेटोकोर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Bi- for two homologues.",
+          "hi": "युगली, यानी दो समजात।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Two homologues make one pair, a bivalent; with four chromatids it is also a tetrad.",
+          "hi": "दो समजात मिलकर एक जोड़ी, यानी युगली; चार अर्धगुणसूत्रों के साथ यह चतुष्क भी है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.4.1: the complex formed by a pair of synapsed homologous chromosomes is called a bivalent or a tetrad.",
+            "hi": "NCERT §10.4.1: सूत्रयुग्मित समजात गुणसूत्रों की जोड़ी से बना सम्मिश्र युगली या चतुष्क कहलाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "A dyad is the pair of cells after telophase I.",
+              "hi": "द्विक अंत्यावस्था I के बाद की कोशिकाओं का जोड़ा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A chiasma is a crossover site.",
+              "hi": "काएज़्मा विनिमय स्थल है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A kinetochore is where spindle fibres attach.",
+              "hi": "काइनेटोकोर वह जगह है जहाँ तर्कु तंतु जुड़ते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

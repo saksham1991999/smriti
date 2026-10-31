@@ -1,0 +1,588 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.projectile:deep_dive",
+  "topic": "phy.motion-plane.projectile",
+  "mode": "deep_dive",
+  "estimated_minutes": 10,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-plane.projectile.core.projectile-motion"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Two motions at once",
+        "hi": "एक साथ दो गतियाँ"
+      },
+      "subtopic": "phy.motion-plane.projectile.core",
+      "card_ids": [
+        "phy.motion-plane.projectile:dd:01",
+        "phy.motion-plane.projectile:dd:02",
+        "phy.motion-plane.projectile:dd:03",
+        "phy.motion-plane.projectile:dd:04",
+        "phy.motion-plane.projectile:dd:05",
+        "phy.motion-plane.projectile:dd:06",
+        "phy.motion-plane.projectile:dd:07"
+      ],
+      "estimated_minutes": 5
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Height, time and range",
+        "hi": "ऊँचाई, समय और परास"
+      },
+      "subtopic": "phy.motion-plane.projectile.core",
+      "card_ids": [
+        "phy.motion-plane.projectile:dd:08",
+        "phy.motion-plane.projectile:dd:09",
+        "phy.motion-plane.projectile:dd:10",
+        "phy.motion-plane.projectile:dd:11",
+        "phy.motion-plane.projectile:dd:12",
+        "phy.motion-plane.projectile:dd:13",
+        "phy.motion-plane.projectile:dd:14"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.projectile:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The ball that curves",
+        "hi": "मुड़ती हुई गेंद"
+      },
+      "body": {
+        "en": "A batter lofts the ball. It climbs, slows, tips over and drops, tracing a smooth curve. Watch only its shadow on the ground and it glides along steadily; watch only its height and it rises and falls like a ball thrown straight up. The curve is these two simple motions happening together.",
+        "hi": "बल्लेबाज़ गेंद को ऊँचा उछालता है। वह चढ़ती है, धीमी होती है, मुड़ती है और गिरती है, एक चिकना वक्र बनाते हुए। केवल ज़मीन पर उसकी छाया देखिए तो वह एकसमान रूप से सरकती है; केवल उसकी ऊँचाई देखिए तो वह सीधी ऊपर फेंकी गेंद की तरह उठती और गिरती है। वक्र इन दो सरल गतियों का एक साथ होना है।"
+      },
+      "media": "img.motion-plane.cricket-ball"
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "What a projectile is",
+        "hi": "प्रक्षेप्य क्या है"
+      },
+      "body": {
+        "en": "An object that is in flight after being thrown or projected is a projectile: a football, a cricket ball, a baseball. Its motion is the result of two separate, simultaneous components: one horizontal with no acceleration, and one vertical with the constant downward acceleration due to gravity. Galileo first stated this independence in his Dialogue on the great world systems (1632). Air resistance is neglected.\n\nLaunched from the origin with speed $v_0$ at angle $\\theta_0$ above the x-axis: $v_{0x} = v_0\\cos\\theta_0$, $v_{0y} = v_0\\sin\\theta_0$, and the acceleration is $\\vec{a} = -g\\,\\hat{j}$.",
+        "hi": "जो वस्तु फेंके या प्रक्षेपित किए जाने के बाद उड़ान में है, वह प्रक्षेप्य है: फ़ुटबॉल, क्रिकेट की गेंद, बेसबॉल। उसकी गति दो अलग, समकालिक घटकों का परिणाम है: एक क्षैतिज, जिसमें कोई त्वरण नहीं, और एक ऊर्ध्वाधर, जिसमें गुरुत्व के कारण नियत अधोमुखी त्वरण है। गैलीलियो ने यह स्वतंत्रता सबसे पहले अपनी पुस्तक Dialogue on the great world systems (1632) में बताई। वायु प्रतिरोध की उपेक्षा की जाती है।\n\nमूल बिंदु से $v_0$ चाल से, x-अक्ष के ऊपर $\\theta_0$ कोण पर, प्रक्षेपित करने पर: $v_{0x} = v_0\\cos\\theta_0$, $v_{0y} = v_0\\sin\\theta_0$, और त्वरण $\\vec{a} = -g\\,\\hat{j}$ है।"
+      },
+      "media": "img.motion-plane.cricket-ball",
+      "highlights": [
+        {
+          "term": {
+            "en": "projectile",
+            "hi": "प्रक्षेप्य"
+          },
+          "definition": {
+            "en": "an object in flight after being thrown",
+            "hi": "फेंके जाने के बाद उड़ान में वस्तु"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9, Fig. 3.14"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Position and velocity of a projectile",
+        "hi": "प्रक्षेप्य की स्थिति और वेग"
+      },
+      "latex": "x = (v_0\\cos\\theta_0)t,\\quad y = (v_0\\sin\\theta_0)t - \\frac{1}{2}gt^2,\\quad v_y = v_0\\sin\\theta_0 - gt",
+      "symbols": [
+        {
+          "symbol": "x, y",
+          "meaning": {
+            "en": "horizontal and vertical position",
+            "hi": "क्षैतिज और ऊर्ध्वाधर स्थिति"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "v_0",
+          "meaning": {
+            "en": "speed of projection",
+            "hi": "प्रक्षेपण चाल"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "\\theta_0",
+          "meaning": {
+            "en": "angle of projection above the horizontal",
+            "hi": "क्षैतिज से ऊपर प्रक्षेपण कोण"
+          },
+          "unit": "°"
+        },
+        {
+          "symbol": "g",
+          "meaning": {
+            "en": "acceleration due to gravity",
+            "hi": "गुरुत्वजनित त्वरण"
+          },
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "t",
+          "meaning": {
+            "en": "time since launch",
+            "hi": "प्रक्षेपण से समय"
+          },
+          "unit": "s"
+        }
+      ],
+      "conditions": {
+        "en": "The horizontal velocity $v_0\\cos\\theta_0$ stays constant throughout.",
+        "hi": "क्षैतिज वेग $v_0\\cos\\theta_0$ पूरी उड़ान में नियत रहता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9, Eqs. 3.38-3.39, Summary 16"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:04",
+      "type": "derivation",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Why the path is a parabola",
+        "hi": "पथ परवलय क्यों है"
+      },
+      "steps": [
+        {
+          "latex": "t = \\frac{x}{v_0\\cos\\theta_0}",
+          "say": {
+            "en": "Solve the x-equation for t.",
+            "hi": "x-समीकरण से t निकालिए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "y = (\\tan\\theta_0)x - \\frac{g}{2(v_0\\cos\\theta_0)^2}x^2",
+          "say": {
+            "en": "Put t into the y-equation.",
+            "hi": "t को y-समीकरण में रखिए।"
+          },
+          "why": {
+            "en": "y = ax - bx², with a and b constant: a parabola.",
+            "hi": "y = ax - bx², जहाँ a और b नियत हैं: एक परवलय।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9, Eq. 3.40"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:05",
+      "type": "sim",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "sim": "sim.motion-plane.projectile-launcher",
+      "title": {
+        "en": "Launch at different angles",
+        "hi": "अलग-अलग कोणों पर प्रक्षेपित कीजिए"
+      },
+      "params": {
+        "v0": 20,
+        "angle": 45,
+        "g": 9.8,
+        "h0": 0
+      },
+      "tasks": [
+        {
+          "id": "range-45",
+          "prompt": {
+            "en": "Launch at $20$ m/s and $45°$. Read the range.",
+            "hi": "$20$ m/s और $45°$ पर प्रक्षेपित कीजिए। परास पढ़िए।"
+          },
+          "measurement": "range",
+          "expected": {
+            "value": 40.8,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        },
+        {
+          "id": "height-45",
+          "prompt": {
+            "en": "Read the maximum height for the same launch.",
+            "hi": "उसी प्रक्षेपण की अधिकतम ऊँचाई पढ़िए।"
+          },
+          "measurement": "max_height",
+          "expected": {
+            "value": 10.2,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.2
+            }
+          }
+        },
+        {
+          "id": "range-30",
+          "prompt": {
+            "en": "Keep the speed and launch at $30°$. Read the range.",
+            "hi": "चाल वही रखकर $30°$ पर प्रक्षेपित कीजिए। परास पढ़िए।"
+          },
+          "measurement": "range",
+          "expected": {
+            "value": 35.3,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        },
+        {
+          "id": "range-60",
+          "prompt": {
+            "en": "Now launch at $60°$. Read the range.",
+            "hi": "अब $60°$ पर प्रक्षेपित कीजिए। परास पढ़िए।"
+          },
+          "measurement": "range",
+          "expected": {
+            "value": 35.3,
+            "unit": "m",
+            "tolerance": {
+              "abs": 0.5
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "At $45°$ the range is the largest, $\\frac{v_0^2}{g} \\approx 40.8$ m. The $30°$ and $60°$ launches land at the same place, about 35.3 m, because $\\sin 60° = \\sin 120°$: angles that differ from $45°$ by equal amounts give equal ranges, though the higher launch stays up longer.",
+        "hi": "$45°$ पर परास सबसे अधिक है, $\\frac{v_0^2}{g} \\approx 40.8$ m। $30°$ और $60°$ वाले प्रक्षेपण एक ही जगह, लगभग 35.3 m पर, गिरते हैं, क्योंकि $\\sin 60° = \\sin 120°$: $45°$ से बराबर अंतर वाले कोण बराबर परास देते हैं, यद्यपि ऊँचा प्रक्षेपण अधिक देर हवा में रहता है।"
+      },
+      "fallback": {
+        "body": {
+          "en": "With $v_0 = 20$ m/s and $g = 9.8$ m/s², the range $R = \\frac{v_0^2\\sin 2\\theta_0}{g}$ is about 40.8 m at $45°$ and about 35.3 m at both $30°$ and $60°$. The maximum height at $45°$ is $\\frac{(v_0\\sin\\theta_0)^2}{2g} \\approx 10.2$ m.",
+          "hi": "$v_0 = 20$ m/s और $g = 9.8$ m/s² के साथ परास $R = \\frac{v_0^2\\sin 2\\theta_0}{g}$, $45°$ पर लगभग 40.8 m और $30°$ तथा $60°$ दोनों पर लगभग 35.3 m है। $45°$ पर अधिकतम ऊँचाई $\\frac{(v_0\\sin\\theta_0)^2}{2g} \\approx 10.2$ m है।"
+        },
+        "media": "img.motion-plane.water-jet"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.projectile.0001"
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Horizontal: constant velocity. Vertical: constant acceleration $g$ downwards.",
+          "hi": "क्षैतिज: नियत वेग। ऊर्ध्वाधर: नीचे की ओर नियत त्वरण $g$।"
+        },
+        {
+          "en": "The path $y = (\\tan\\theta_0)x - \\frac{g x^2}{2(v_0\\cos\\theta_0)^2}$ is a parabola.",
+          "hi": "पथ $y = (\\tan\\theta_0)x - \\frac{g x^2}{2(v_0\\cos\\theta_0)^2}$ एक परवलय है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:08",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Time, height and range",
+        "hi": "समय, ऊँचाई और परास"
+      },
+      "latex": "T_f = \\frac{2v_0\\sin\\theta_0}{g},\\quad h_m = \\frac{(v_0\\sin\\theta_0)^2}{2g},\\quad R = \\frac{v_0^2\\sin 2\\theta_0}{g}",
+      "symbols": [
+        {
+          "symbol": "T_f",
+          "meaning": {
+            "en": "time of flight",
+            "hi": "उड़ान का समय"
+          },
+          "unit": "s"
+        },
+        {
+          "symbol": "h_m",
+          "meaning": {
+            "en": "maximum height",
+            "hi": "अधिकतम ऊँचाई"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "horizontal range",
+            "hi": "क्षैतिज परास"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "v_0",
+          "meaning": {
+            "en": "speed of projection",
+            "hi": "प्रक्षेपण चाल"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "\\theta_0",
+          "meaning": {
+            "en": "angle of projection above the horizontal",
+            "hi": "क्षैतिज से ऊपर प्रक्षेपण कोण"
+          },
+          "unit": "°"
+        },
+        {
+          "symbol": "g",
+          "meaning": {
+            "en": "acceleration due to gravity",
+            "hi": "गुरुत्वजनित त्वरण"
+          },
+          "unit": "m/s²"
+        }
+      ],
+      "conditions": {
+        "en": "Launch and landing at the same level, no air resistance. Time to the top is $t_m = \\frac{v_0\\sin\\theta_0}{g}$, half of $T_f$.",
+        "hi": "प्रक्षेपण और गिरना एक ही तल पर, वायु प्रतिरोध नहीं। शीर्ष तक पहुँचने का समय $t_m = \\frac{v_0\\sin\\theta_0}{g}$ है, $T_f$ का आधा।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9, Eqs. 3.41-3.42, Summary 16"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Maximum range and equal ranges",
+        "hi": "अधिकतम परास और बराबर परास"
+      },
+      "body": {
+        "en": "At the highest point the vertical velocity is zero; that gives $t_m$ and $h_m$. The ball returns to launch level at $T_f = 2t_m$, and the horizontal distance covered by then is the range.\n\nBecause $R$ depends on $\\sin 2\\theta_0$, it is largest when $2\\theta_0 = 90°$, that is at $\\theta_0 = 45°$, where $R_m = \\frac{v_0^2}{g}$. Galileo wrote in Two new sciences that elevations exceeding or falling short of 45° by equal amounts give equal ranges: for $45° + \\alpha$ and $45° - \\alpha$, $\\sin 2\\theta_0$ is $\\cos 2\\alpha$ in both cases.\n\nThe shape of the path depends on the starting velocity as well as the acceleration. Under the same gravity, an object dropped from rest falls in a straight line, while one thrown at an angle follows a parabola.",
+        "hi": "सर्वोच्च बिंदु पर ऊर्ध्वाधर वेग शून्य होता है; इसी से $t_m$ और $h_m$ मिलते हैं। गेंद $T_f = 2t_m$ पर प्रक्षेपण तल पर लौटती है, और तब तक तय क्षैतिज दूरी परास है।\n\nचूँकि $R$, $\\sin 2\\theta_0$ पर निर्भर है, यह तब सबसे अधिक है जब $2\\theta_0 = 90°$, यानी $\\theta_0 = 45°$ पर, जहाँ $R_m = \\frac{v_0^2}{g}$। गैलीलियो ने Two new sciences में लिखा कि जो उन्नयन 45° से बराबर मात्रा में अधिक या कम हों, वे बराबर परास देते हैं: $45° + \\alpha$ और $45° - \\alpha$ के लिए $\\sin 2\\theta_0$ दोनों में $\\cos 2\\alpha$ है।\n\nपथ का आकार त्वरण के साथ-साथ प्रारंभिक वेग पर भी निर्भर करता है। एक ही गुरुत्व में, विराम से छोड़ी गई वस्तु सरल रेखा में गिरती है, जबकि कोण पर फेंकी गई वस्तु परवलय पर चलती है।"
+      },
+      "media": "img.motion-plane.water-jet",
+      "highlights": [
+        {
+          "term": {
+            "en": "maximum range",
+            "hi": "अधिकतम परास"
+          },
+          "definition": {
+            "en": "at 45°, equal to $v_0^2/g$",
+            "hi": "45° पर, $v_0^2/g$ के बराबर"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.9, Example 3.6, Points to Ponder 7"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:10",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A cricket ball is thrown at 28 m/s at $30°$ above the horizontal. Find its maximum height, the time it takes to return to the same level, and its range. Take $g = 9.8$ m/s².",
+        "hi": "एक क्रिकेट गेंद क्षैतिज से $30°$ ऊपर 28 m/s से फेंकी जाती है। उसकी अधिकतम ऊँचाई, उसी तल पर लौटने का समय और उसका परास ज्ञात कीजिए। $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$h_m = \\frac{(28\\sin 30°)^2}{2 \\times 9.8} = \\frac{14 \\times 14}{19.6} = 10.0$ m",
+          "hi": "$h_m = \\frac{(28\\sin 30°)^2}{2 \\times 9.8} = \\frac{14 \\times 14}{19.6} = 10.0$ m"
+        },
+        {
+          "en": "$T_f = \\frac{2 \\times 28 \\times \\sin 30°}{9.8} = \\frac{28}{9.8} \\approx 2.9$ s",
+          "hi": "$T_f = \\frac{2 \\times 28 \\times \\sin 30°}{9.8} = \\frac{28}{9.8} \\approx 2.9$ s"
+        },
+        {
+          "en": "$R = \\frac{28 \\times 28 \\times \\sin 60°}{9.8} \\approx 69$ m",
+          "hi": "$R = \\frac{28 \\times 28 \\times \\sin 60°}{9.8} \\approx 69$ m"
+        }
+      ],
+      "answer": {
+        "en": "10.0 m; 2.9 s; 69 m",
+        "hi": "10.0 m; 2.9 s; 69 m"
+      },
+      "answer_value": {
+        "value": 69,
+        "unit": "m",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Using $\\sin\\theta_0$ instead of $\\sin 2\\theta_0$ in the range.",
+        "hi": "परास में $\\sin\\theta_0$ लगाना, $\\sin 2\\theta_0$ के बजाय।"
+      },
+      "media": "img.motion-plane.cricket-ball",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.8"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:11",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A hiker on the edge of a cliff 490 m above the ground throws a stone horizontally at 15 m/s. Find the time the stone takes to reach the ground and its speed on landing. Take $g = 9.8$ m/s².",
+        "hi": "ज़मीन से 490 m ऊँची चट्टान के किनारे खड़ा एक पर्वतारोही एक पत्थर को 15 m/s से क्षैतिज दिशा में फेंकता है। पत्थर को ज़मीन तक पहुँचने में लगा समय और गिरते समय उसकी चाल ज्ञात कीजिए। $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Vertical motion starts from zero velocity: $490 = \\frac{1}{2} \\times 9.8 \\times t^2$, so $t = 10$ s.",
+          "hi": "ऊर्ध्वाधर गति शून्य वेग से शुरू होती है: $490 = \\frac{1}{2} \\times 9.8 \\times t^2$, अतः $t = 10$ s।"
+        },
+        {
+          "en": "$v_x = 15$ m/s throughout; $v_y = -9.8 \\times 10 = -98$ m/s.",
+          "hi": "$v_x = 15$ m/s पूरे समय; $v_y = -9.8 \\times 10 = -98$ m/s।"
+        },
+        {
+          "en": "Speed $= \\sqrt{15^2 + 98^2} \\approx 99$ m/s",
+          "hi": "चाल $= \\sqrt{15^2 + 98^2} \\approx 99$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "10 s; about 99 m/s",
+        "hi": "10 s; लगभग 99 m/s"
+      },
+      "answer_value": {
+        "value": 99,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Letting the horizontal speed change the falling time.",
+        "hi": "क्षैतिज चाल से गिरने का समय बदल देना।"
+      },
+      "media": "img.motion-plane.cliff-stone",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.7"
+      }
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:12",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.projectile.0002"
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:13",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.projectile.0003"
+    },
+    {
+      "id": "phy.motion-plane.projectile:dd:14",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "$T_f = 2v_0\\sin\\theta_0/g$, $h_m = (v_0\\sin\\theta_0)^2/2g$, $R = v_0^2\\sin 2\\theta_0/g$.",
+          "hi": "$T_f = 2v_0\\sin\\theta_0/g$, $h_m = (v_0\\sin\\theta_0)^2/2g$, $R = v_0^2\\sin 2\\theta_0/g$।"
+        },
+        {
+          "en": "Range is largest at 45°; $45° \\pm \\alpha$ give equal ranges.",
+          "hi": "परास 45° पर सबसे अधिक है; $45° \\pm \\alpha$ बराबर परास देते हैं।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

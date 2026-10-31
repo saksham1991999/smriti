@@ -1,0 +1,61 @@
+{
+  "schema": "mind_map_template@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "mm.fx.chapter-a",
+  "scope": "chapter",
+  "title": {
+    "en": "Fixture title mind map",
+    "hi": "फ़िक्स्चर शीर्षक mind map"
+  },
+  "concepts": [
+    "fx.chapter-a.topic-a.sub-1.concept-1",
+    "fx.chapter-a.topic-b.sub-1.concept-1"
+  ],
+  "chapter": "fx.chapter-a",
+  "nodes": [
+    {
+      "id": "root",
+      "label": {
+        "en": "Fixture label root",
+        "hi": "फ़िक्स्चर लेबल root"
+      }
+    },
+    {
+      "id": "n1",
+      "label": {
+        "en": "Fixture label 1",
+        "hi": "फ़िक्स्चर लेबल 1"
+      },
+      "concept": "fx.chapter-a.topic-a.sub-1.concept-1"
+    },
+    {
+      "id": "n2",
+      "label": {
+        "en": "Fixture label 2",
+        "hi": "फ़िक्स्चर लेबल 2"
+      },
+      "concept": "fx.chapter-a.topic-b.sub-1.concept-1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "root",
+      "to": "n1"
+    },
+    {
+      "from": "root",
+      "to": "n2"
+    }
+  ]
+}

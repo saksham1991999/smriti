@@ -1,0 +1,139 @@
+---
+// Exam pattern, shown only from a reviewed blueprint with its official source (AGENTS rule 3).
+// Every number here comes from the content index; a null field prints "Not stated in the notice", never a guess.
+import Icon from "./Icon.astro";
+import type { Locale } from "../config/site";
+import type { Blueprint } from "../content-index/schema";
+import { fmt, formatDate, formatNumber, messages } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  blueprint: Blueprint;
+}
+const { lang, blueprint: bp } = Astro.props;
+const m = messages(lang);
+const e = m.exam;
+const n = (v: number | null) => (v === null ? e.notStated : formatNumber(lang, v));
+const signed = (v: number) => (v > 0 ? `+${formatNumber(lang, v)}` : v < 0 ? `−${formatNumber(lang, Math.abs(v))}` : "0");
+const modeLabel = { cbt: e.modeCbt, pen_paper: e.modePenPaper, mixed: e.modeMixed } as const;
+type SectionMarking = NonNullable<Blueprint["sections"][number]["marking"]>;
+// A fraction penalty reads as a fraction (one-third), not as a rounded decimal.
+const fraction = (f: number) => (Math.abs(f - 1 / 3) < 1e-6 ? "1/3" : Math.abs(f - 1 / 4) < 1e-6 ? "1/4" : formatNumber(lang, f));
+const wrongText = (m: SectionMarking) =>
+  m.wrong !== null ? signed(m.wrong) : m.wrong_fraction != null ? fmt(e.wrongFraction, { fraction: fraction(m.wrong_fraction) }) : e.notStated;
+const markingText = (m: SectionMarking) =>
+  fmt(e.markingValue, {
+    correct: m.correct === null ? e.notStated : formatNumber(lang, m.correct),
+    wrong: wrongText(m),
+    unattempted: signed(m.unattempted),
+  });
+const facts = [
+  { label: e.mode, value: bp.mode === null ? e.notStated : modeLabel[bp.mode] },
+  { label: e.duration, value: bp.duration_min === null ? e.notStated : fmt(e.minutes, { n: formatNumber(lang, bp.duration_min) }) },
+  { label: e.totalQuestions, value: n(bp.total_questions) },
+  { label: e.maxMarks, value: n(bp.max_marks) },
+];
+---
+
+<section class="section pattern" id="pattern" aria-labelledby="pattern-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="pattern-title" class="t-display">{e.patternHeading}</h2>
+      <p class="muted">{bp.title[lang]} · {fmt(e.patternVersion, { version: bp.version, date: formatDate(lang, bp.effective_from) })}</p>
+    </div>
+    <dl class="facts">
+      {
+        facts.map((f) => (
+          <div class="fact card">
+            <dt class="t-caption muted">{f.label}</dt>
+            <dd class="t-title num">{f.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+    {
+      bp.sections.length > 0 && (
+        <div class="card table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">{e.section}</th>
+                <th scope="col">{e.questions}</th>
+                <th scope="col">{e.marking}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bp.sections.map((s) => (
+                <tr>
+                  <th scope="row">{s.title[lang]}</th>
+                  <td class="num">{s.skill_test ? "—" : n(s.question_count)}</td>
+                  <td class="num">{s.skill_test ? e.skillTest : s.marking ? markingText(s.marking) : e.notStated}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+    <p class="source">
+      <Icon name="file-text" size={20} />
+      <span>
+        <a href={bp.source.url} rel="noopener" target="_blank">
+          {fmt(e.patternSource, { title: bp.source.title, date: formatDate(lang, bp.source.published) })}
+        </a>
+        {" "}{e.patternReviewed}
+      </span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .facts {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 16px;
+  }
+  @media (min-width: 768px) {
+    .facts {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .fact {
+    padding: 16px;
+    display: grid;
+    gap: 4px;
+  }
+  .fact dd {
+    margin: 0;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    padding: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 480px;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 12px 14px;
+  }
+  thead th {
+    font-size: var(--fs-label);
+    color: var(--ink-muted);
+  }
+  tbody tr {
+    border-top: 1px solid var(--line);
+  }
+  .source {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 16px;
+    color: var(--ink-muted);
+    font-size: var(--fs-label);
+  }
+</style>

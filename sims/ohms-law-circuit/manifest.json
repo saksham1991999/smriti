@@ -1,0 +1,240 @@
+{
+  "id": "ohms-law-circuit",
+  "version": "1.0.1",
+  "protocolVersion": "1.0.0",
+  "title": {
+    "en": "Ohm's law: simple circuit",
+    "hi": "ओम का नियम: सरल परिपथ"
+  },
+  "subject": "phy",
+  "concepts": [
+    "phy.current-electricity.ohms-law.core.ohms-law-def",
+    "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+    "phy.current-electricity.cells.core.emf-internal-resistance"
+  ],
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "aspect": "4:3",
+  "preferredOrientation": "any",
+  "entry": "index.html",
+  "capabilities": [
+    "tasks",
+    "record",
+    "pause",
+    "set_params",
+    "snapshot",
+    "resize"
+  ],
+  "params": {
+    "voltage": {
+      "type": "number",
+      "default": 3,
+      "min": 0,
+      "max": 12,
+      "step": 0.5,
+      "unit": "V"
+    },
+    "r1": {
+      "type": "number",
+      "default": 12,
+      "min": 1,
+      "max": 60,
+      "step": 1,
+      "unit": "Ω"
+    },
+    "r2": {
+      "type": "number",
+      "default": 12,
+      "min": 1,
+      "max": 60,
+      "step": 1,
+      "unit": "Ω"
+    },
+    "arrangement": {
+      "type": "enum",
+      "default": "single",
+      "values": [
+        "single",
+        "series",
+        "parallel"
+      ]
+    },
+    "switchOn": {
+      "type": "boolean",
+      "default": true
+    },
+    "internalResistance": {
+      "type": "number",
+      "default": 0,
+      "min": 0,
+      "max": 5,
+      "step": 0.1,
+      "unit": "Ω"
+    }
+  },
+  "readings": [
+    {
+      "name": "voltage",
+      "unit": "V",
+      "label": {
+        "en": "Battery voltage",
+        "hi": "बैटरी का विभवांतर"
+      }
+    },
+    {
+      "name": "resistance",
+      "unit": "Ω",
+      "label": {
+        "en": "Total resistance",
+        "hi": "कुल प्रतिरोध"
+      }
+    },
+    {
+      "name": "current",
+      "unit": "A",
+      "label": {
+        "en": "Current",
+        "hi": "विद्युत धारा"
+      }
+    },
+    {
+      "name": "terminal_voltage",
+      "unit": "V",
+      "label": {
+        "en": "Terminal voltage",
+        "hi": "टर्मिनल विभवांतर"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "rule": "arrangement",
+      "args": {
+        "is": "single | series | parallel"
+      }
+    },
+    {
+      "rule": "switch_on"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "current-half-amp",
+      "prompt": {
+        "en": "Make the ammeter read 0.5 A.",
+        "hi": "ऐमीटर में 0.5 A की रीडिंग लाएँ।"
+      },
+      "hint": {
+        "en": "Change the battery voltage or the resistance, and watch the ammeter.",
+        "hi": "बैटरी का विभवांतर या प्रतिरोध बदलें और ऐमीटर देखें।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "condition",
+            "rule": "switch_on"
+          },
+          {
+            "kind": "target",
+            "quantity": "current",
+            "value": 0.5,
+            "tolerance": 0.01
+          }
+        ]
+      }
+    },
+    {
+      "id": "double-current",
+      "prompt": {
+        "en": "Keep the battery voltage the same. Change the resistance so the current doubles.",
+        "hi": "बैटरी का विभवांतर वही रखें। प्रतिरोध ऐसे बदलें कि धारा दोगुनी हो जाए।"
+      },
+      "hint": {
+        "en": "Try making the resistance smaller.",
+        "hi": "प्रतिरोध कम करके देखें।"
+      },
+      "check": {
+        "kind": "ratio",
+        "quantity": "current",
+        "ratio": 2,
+        "tolerance": 0.03,
+        "hold": [
+          "voltage"
+        ]
+      }
+    },
+    {
+      "id": "three-readings",
+      "prompt": {
+        "en": "Keep the resistance fixed. Record the current at three different battery voltages.",
+        "hi": "प्रतिरोध एक जैसा रखें। तीन अलग-अलग विभवांतर पर धारा की रीडिंग दर्ज करें।"
+      },
+      "hint": {
+        "en": "Change only the battery voltage, then tap Record reading each time.",
+        "hi": "केवल बैटरी का विभवांतर बदलें, फिर हर बार रीडिंग दर्ज करें दबाएँ।"
+      },
+      "check": {
+        "kind": "readings",
+        "quantity": "current",
+        "count": 3,
+        "distinctBy": "voltage",
+        "sameBy": [
+          "resistance"
+        ]
+      }
+    },
+    {
+      "id": "parallel-one-amp",
+      "prompt": {
+        "en": "Connect the two resistors in parallel and make the current 1 A.",
+        "hi": "दोनों प्रतिरोधकों को पार्श्वक्रम में जोड़ें और धारा 1 A कीजिए।"
+      },
+      "hint": {
+        "en": "Two resistors in parallel have a smaller total resistance than either one.",
+        "hi": "पार्श्वक्रम में जुड़े दो प्रतिरोधकों का कुल प्रतिरोध हर एक से कम होता है।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "condition",
+            "rule": "arrangement",
+            "args": {
+              "is": "parallel"
+            }
+          },
+          {
+            "kind": "condition",
+            "rule": "switch_on"
+          },
+          {
+            "kind": "target",
+            "quantity": "current",
+            "value": 1,
+            "tolerance": 0.01
+          }
+        ]
+      }
+    }
+  ],
+  "third_party": [
+    {
+      "name": "Plus Jakarta Sans",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/plus-jakarta-sans 5.3.0"
+    },
+    {
+      "name": "Noto Sans Devanagari",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/noto-sans-devanagari 5.3.0"
+    },
+    {
+      "name": "Phosphor Icons",
+      "licence": "MIT",
+      "source": "@phosphor-icons/core 2.1.1"
+    }
+  ],
+  "size_bytes": 368054
+}

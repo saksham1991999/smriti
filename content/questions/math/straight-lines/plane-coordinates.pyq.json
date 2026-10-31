@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.straight-lines.plane-coordinates",
+  "questions": [
+    {
+      "id": "q.math.straight-lines.plane-coordinates.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.straight-lines.plane-coordinates.core.triangle-centres",
+          "weight": 0.6
+        },
+        {
+          "id": "math.straight-lines.plane-coordinates.core.distance-section-formula",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let the mid points of the sides of a triangle $ABC$ be $\\left(\\frac{5}{2},7\\right)$, $\\left(\\frac{5}{2},3\\right)$ and $(4,5)$. If its incentre is $(h,k)$, then $3h+k$ is equal to :",
+        "hi": "माना त्रिभुज $ABC$ की भुजाओं के मध्य-बिंदु $\\left(\\frac{5}{2},7\\right)$, $\\left(\\frac{5}{2},3\\right)$ और $(4,5)$ हैं। यदि इसका अंतःकेंद्र $(h,k)$ है, तो $3h+k$ बराबर है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$11$",
+            "hi": "$11$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$12$",
+            "hi": "$12$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$13$",
+            "hi": "$13$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$14$",
+            "hi": "$14$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Each vertex equals the sum of the two midpoints next to it minus the opposite midpoint. With the vertices known, the incentre is the side-length-weighted average of the vertices.",
+          "hi": "प्रत्येक शीर्ष, उसके पास के दो मध्य-बिंदुओं के योग में से सामने वाले मध्य-बिंदु को घटाने पर मिलता है। शीर्ष ज्ञात होने पर अंतःकेंद्र भुजा-लंबाइयों से भारित शीर्षों का औसत है।"
+        },
+        "steps": [
+          {
+            "en": "Vertices: $(4,1)$, $(4,9)$ and $(1,5)$.",
+            "hi": "शीर्ष: $(4,1)$, $(4,9)$ और $(1,5)$।"
+          },
+          {
+            "en": "Opposite sides: $(4,1)$ faces $5$, $(4,9)$ faces $5$, $(1,5)$ faces $8$. Incentre $=\\frac{5(4,1)+5(4,9)+8(1,5)}{18}=\\left(\\frac{8}{3},5\\right)$.",
+            "hi": "सामने की भुजाएँ: $(4,1)$ के लिए $5$, $(4,9)$ के लिए $5$, $(1,5)$ के लिए $8$। अंतःकेंद्र $=\\frac{5(4,1)+5(4,9)+8(1,5)}{18}=\\left(\\frac{8}{3},5\\right)$।"
+          },
+          {
+            "en": "$3h+k=8+5=13$.",
+            "hi": "$3h+k=8+5=13$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 9
+      }
+    }
+  ]
+}

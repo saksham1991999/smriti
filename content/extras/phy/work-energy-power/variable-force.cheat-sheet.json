@@ -1,0 +1,81 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "cs.phy.work-energy-power.variable-force",
+  "scope": "topic",
+  "topic": "phy.work-energy-power.variable-force",
+  "title": {
+    "en": "Work Done by a Variable Force",
+    "hi": "परिवर्ती बल द्वारा किया गया कार्य"
+  },
+  "concepts": [
+    "phy.work-energy-power.variable-force.core.work-variable-force"
+  ],
+  "key_ideas": [
+    {
+      "en": "Work by a variable force is the area under the F-x graph.",
+      "hi": "परिवर्ती बल द्वारा कार्य F-x आलेख के नीचे का क्षेत्रफल है।"
+    },
+    {
+      "en": "Area below the axis is negative work.",
+      "hi": "अक्ष के नीचे का क्षेत्रफल ऋणात्मक कार्य है।"
+    },
+    {
+      "en": "$K_f - K_i = \\int F\\,dx$ holds for any force.",
+      "hi": "$K_f - K_i = \\int F\\,dx$ किसी भी बल के लिए लागू है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Variable force",
+        "hi": "परिवर्ती बल"
+      },
+      "latex": "W = \\int_{x_i}^{x_f} F(x)\\,dx"
+    },
+    {
+      "name": {
+        "en": "Work-energy theorem",
+        "hi": "कार्य-ऊर्जा प्रमेय"
+      },
+      "latex": "K_f - K_i = \\int_{x_i}^{x_f} F\\,dx"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Use $W = Fd$ with the starting force.",
+        "hi": "प्रारंभिक बल से $W = Fd$ लगाइए।"
+      },
+      "correct": {
+        "en": "For a changing force, add the area under the graph.",
+        "hi": "बदलते बल के लिए आलेख के नीचे का क्षेत्रफल जोड़िए।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "All area under an F-x graph is positive work.",
+        "hi": "F-x आलेख के नीचे का सारा क्षेत्रफल धनात्मक कार्य है।"
+      },
+      "correct": {
+        "en": "Area below the x-axis is negative work.",
+        "hi": "x-अक्ष के नीचे का क्षेत्रफल ऋणात्मक कार्य है।"
+      }
+    }
+  ],
+  "diagram": "img.work-energy-power.trunk-push",
+  "hi_source": "translation"
+}

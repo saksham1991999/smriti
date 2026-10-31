@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.applications-of-derivatives.maxima-minima",
+  "questions": [
+    {
+      "id": "q.math.applications-of-derivatives.maxima-minima.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.applications-of-derivatives.maxima-minima.core.maxima-minima",
+          "weight": 0.6
+        },
+        {
+          "id": "math.continuity-differentiability.differentiability.core.differentiability-relation",
+          "weight": 0.4
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The number of critical points of the function $f(x)=\\begin{cases}\\left|\\frac{\\sin x}{x}\\right| & , x \\neq 0 \\\\ 1 & , x=0\\end{cases}$ in the interval $(-2\\pi,2\\pi)$ is equal to :",
+        "hi": "फलन $f(x)=\\begin{cases}\\left|\\frac{\\sin x}{x}\\right| & , x \\neq 0 \\\\ 1 & , x=0\\end{cases}$ के अंतराल $(-2\\pi,2\\pi)$ में क्रांतिक बिंदुओं की संख्या है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$3$",
+            "hi": "$3$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$7$",
+            "hi": "$7$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Critical points are where $f'=0$ or $f'$ does not exist. The modulus makes corners where $\\sin x=0$, and the smooth humps have flat tops where $\\tan x=x$.",
+          "hi": "क्रांतिक बिंदु वहाँ हैं जहाँ $f'=0$ हो या $f'$ का अस्तित्व न हो। मापांक $\\sin x=0$ पर कोने बनाता है, और चिकने उभारों के शिखर वहाँ हैं जहाँ $\\tan x=x$।"
+        },
+        "steps": [
+          {
+            "en": "$x=0$: $f$ has a smooth maximum, $f'(0)=0$.",
+            "hi": "$x=0$: $f$ का चिकना उच्चिष्ठ, $f'(0)=0$।"
+          },
+          {
+            "en": "$x=\\pm\\pi$: $\\frac{\\sin x}{x}$ changes sign, so $|\\cdot|$ has corners; $f'$ does not exist ($2$ points).",
+            "hi": "$x=\\pm\\pi$: $\\frac{\\sin x}{x}$ का चिह्न बदलता है, अतः $|\\cdot|$ में कोने हैं; $f'$ का अस्तित्व नहीं ($2$ बिंदु)।"
+          },
+          {
+            "en": "$\\tan x=x$ has one root in $\\left(\\pi,\\frac{3\\pi}{2}\\right)$ and its mirror in $\\left(-\\frac{3\\pi}{2},-\\pi\\right)$ ($2$ points). Total $5$.",
+            "hi": "$\\tan x=x$ का एक मूल $\\left(\\pi,\\frac{3\\pi}{2}\\right)$ में और उसका प्रतिबिंब $\\left(-\\frac{3\\pi}{2},-\\pi\\right)$ में ($2$ बिंदु)। कुल $5$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 18
+      }
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "phy.units-measurement.dimensions:quick_revision",
+  "topic": "phy.units-measurement.dimensions",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.units-measurement.dimensions.core.dimensional-formula"
+  ],
+  "cards": [
+    {
+      "id": "phy.units-measurement.dimensions:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.units-measurement.dimensions"
+    },
+    {
+      "id": "phy.units-measurement.dimensions:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 3,
+      "question": "q.phy.units-measurement.dimensions.0003"
+    },
+    {
+      "id": "phy.units-measurement.dimensions:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Dimensional formula: the base quantities and their powers.",
+          "hi": "विमीय सूत्र: मूल राशियाँ और उनकी घातें।"
+        },
+        {
+          "en": "Force $[M L T^{-2}]$; energy $[M L^2 T^{-2}]$; pressure $[M L^{-1} T^{-2}]$.",
+          "hi": "बल $[M L T^{-2}]$; ऊर्जा $[M L^2 T^{-2}]$; दाब $[M L^{-1} T^{-2}]$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.dimensions:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.units-measurement.dimensions.core.dimensional-formula"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Speed and velocity have different dimensions.",
+            "hi": "चाल और वेग की विमाएँ अलग हैं।"
+          },
+          "correct": {
+            "en": "Both are length over time, $[L T^{-1}]$.",
+            "hi": "दोनों लंबाई बटा समय हैं, $[L T^{-1}]$।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "An angle in radians has the dimension of length.",
+            "hi": "रेडियन में कोण की विमा लंबाई है।"
+          },
+          "correct": {
+            "en": "It is length over length: dimensionless.",
+            "hi": "यह लंबाई बटा लंबाई है: विमाहीन।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Numbers such as $\\frac{1}{2}$ change the dimensions.",
+            "hi": "$\\frac{1}{2}$ जैसी संख्याएँ विमा बदलती हैं।"
+          },
+          "correct": {
+            "en": "Pure numbers have no dimensions.",
+            "hi": "शुद्ध संख्याओं की कोई विमा नहीं होती।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,168 @@
+{
+  "schema": "chapter@1",
+  "id": "math.probability-basics",
+  "subject": "math",
+  "unit": "math.statistics-probability",
+  "name": {
+    "en": "Probability",
+    "hi": "प्रायिकता"
+  },
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 14",
+  "topics": [
+    {
+      "id": "math.probability-basics.events",
+      "name": {
+        "en": "Event",
+        "hi": "घटना"
+      },
+      "subtopics": [
+        {
+          "id": "math.probability-basics.events.core",
+          "name": {
+            "en": "Event",
+            "hi": "घटना"
+          },
+          "concepts": [
+            {
+              "id": "math.probability-basics.events.core.sample-space-events",
+              "name": {
+                "en": "Random experiments, sample space and types of events",
+                "hi": "यादृच्छिक परीक्षण, प्रतिदर्श समष्टि तथा घटनाओं के प्रकार"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "The sample space lists all outcomes of a random experiment and an event is a subset of it; events can be impossible, sure, simple or compound, are combined with set operations into $A \\cup B$, $A \\cap B$ and $A'$, and can be mutually exclusive and exhaustive.",
+                "hi": "प्रतिदर्श समष्टि किसी यादृच्छिक परीक्षण के सभी परिणामों की सूची है और घटना उसका उपसमुच्चय है; घटनाएँ असंभव, निश्चित, सरल या मिश्र हो सकती हैं, समुच्चय संक्रियाओं से $A \\cup B$, $A \\cap B$ और $A'$ बनती हैं, और वे परस्पर अपवर्जी तथा निःशेष हो सकती हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the sample space for coins, dice and draws.",
+                  "hi": "सिक्कों, पासों और निकालने के परीक्षणों के लिए प्रतिदर्श समष्टि लिखिए।"
+                },
+                {
+                  "en": "Decide whether given events are mutually exclusive or exhaustive.",
+                  "hi": "तय कीजिए कि दी गई घटनाएँ परस्पर अपवर्जी या निःशेष हैं या नहीं।"
+                }
+              ],
+              "prerequisites": [
+                "math.sets.set-operations.core.union-intersection-complement"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.probability-basics.axiomatic-probability",
+      "name": {
+        "en": "Axiomatic Approach to Probability",
+        "hi": "प्रायिकता की अभिगृहीतीय दृष्टिकोण"
+      },
+      "subtopics": [
+        {
+          "id": "math.probability-basics.axiomatic-probability.core",
+          "name": {
+            "en": "Axiomatic Approach to Probability",
+            "hi": "प्रायिकता की अभिगृहीतीय दृष्टिकोण"
+          },
+          "concepts": [
+            {
+              "id": "math.probability-basics.axiomatic-probability.core.probability-of-event",
+              "name": {
+                "en": "Probability of an event",
+                "hi": "किसी घटना की प्रायिकता"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Probability assigns each event a number between 0 and 1 with $P(S) = 1$; for equally likely outcomes $P(E) = n(E)/n(S)$, and $P(E') = 1 - P(E)$.",
+                "hi": "प्रायिकता प्रत्येक घटना को 0 और 1 के बीच एक संख्या देती है जिसमें $P(S) = 1$; समसंभाव्य परिणामों के लिए $P(E) = n(E)/n(S)$, और $P(E') = 1 - P(E)$।"
+              },
+              "key_points": [
+                {
+                  "en": "Find probabilities by counting equally likely outcomes.",
+                  "hi": "समसंभाव्य परिणामों को गिनकर प्रायिकताएँ ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Use combinations to count outcomes in card and selection problems.",
+                  "hi": "ताश और चयन के प्रश्नों में परिणाम गिनने के लिए संचय का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.probability-basics.events.core.sample-space-events",
+                "math.permutations-combinations.combinations.core.combinations-ncr"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-3"
+              ]
+            },
+            {
+              "id": "math.probability-basics.axiomatic-probability.core.addition-theorem",
+              "name": {
+                "en": "Addition theorem of probability",
+                "hi": "प्रायिकता का योग प्रमेय"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For any two events $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, which reduces to $P(A) + P(B)$ for mutually exclusive events.",
+                "hi": "किन्हीं दो घटनाओं के लिए $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$, जो परस्पर अपवर्जी घटनाओं के लिए $P(A) + P(B)$ हो जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "From $P(A)$, $P(B)$ and $P(A \\cap B)$, find $P(A \\cup B)$.",
+                  "hi": "$P(A)$, $P(B)$ और $P(A \\cap B)$ से $P(A \\cup B)$ ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Use the complement to find 'at least one' probabilities.",
+                  "hi": "'कम से कम एक' वाली प्रायिकताएँ पूरक से ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.probability-basics.axiomatic-probability.core.probability-of-event",
+                "math.sets.set-operations.core.set-algebra-laws"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-13:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 14 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh114.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xv"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.2: Mathematics Unit 13, STATISTICS AND PROBABILITY"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: events (§14.1, khmh1 contents prelims p.xv), axiomatic-probability (§14.2, khmh1 contents prelims p.xv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/probability-basics.json."
+}

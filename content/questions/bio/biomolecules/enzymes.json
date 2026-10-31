@@ -1,0 +1,954 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the NEET format, not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or table it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "bio.biomolecules.enzymes",
+  "questions": [
+    {
+      "id": "q.bio.biomolecules.enzymes.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Ribozymes are",
+        "hi": "राइबोज़ाइम हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "proteins that digest ribose",
+            "hi": "राइबोज़ को पचाने वाले प्रोटीन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "nucleic acids that behave like enzymes",
+            "hi": "एंजाइम जैसा व्यवहार करने वाले न्यूक्लिक अम्ल"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "co-enzymes containing niacin",
+            "hi": "नियासिन वाले सहएंजाइम"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "enzymes of thermophilic organisms",
+            "hi": "तापरागी जीवों के एंजाइम"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Ribo- as in ribonucleic acid.",
+          "hi": "राइबो- जैसे राइबोन्यूक्लिक अम्ल में।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Almost all enzymes are proteins. The exceptions are a few nucleic acids that catalyse, named ribozymes.",
+          "hi": "लगभग सभी एंजाइम प्रोटीन हैं। अपवाद कुछ उत्प्रेरक न्यूक्लिक अम्ल हैं, जिन्हें राइबोज़ाइम कहते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8: some nucleic acids behave like enzymes; these are called ribozymes.",
+            "hi": "NCERT §9.8: कुछ न्यूक्लिक अम्ल एंजाइम जैसा व्यवहार करते हैं; इन्हें राइबोज़ाइम कहते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The name refers to RNA-type molecules, not to digesting ribose.",
+              "hi": "नाम RNA जैसे अणुओं का है, राइबोज़ पचाने का नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "NAD and NADP are the niacin co-enzymes.",
+              "hi": "NAD और NADP नियासिन वाले सहएंजाइम हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Those are thermally stable protein enzymes.",
+              "hi": "वे ताप-स्थायी प्रोटीन एंजाइम हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Enzymes speed up reactions by",
+        "hi": "एंजाइम अभिक्रियाओं को तेज़ करते हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "raising the energy of the substrate",
+            "hi": "क्रियाधार की ऊर्जा बढ़ाकर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "lowering the activation energy",
+            "hi": "सक्रियण ऊर्जा घटाकर"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "making the product's energy lower than the substrate's",
+            "hi": "उत्पाद की ऊर्जा क्रियाधार से कम करके"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "removing the need for a transition state",
+            "hi": "संक्रमण अवस्था की आवश्यकता हटाकर"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of the hill and the tunnel.",
+          "hi": "पहाड़ी और सुरंग सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The substrate still has to pass a peak; the enzyme makes the peak lower, like a tunnel under a hill.",
+          "hi": "क्रियाधार को अब भी एक शिखर पार करना होता है; एंजाइम शिखर को नीचा कर देता है, जैसे पहाड़ी के नीचे सुरंग।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.2: S must pass through the transition state; enzymes bring down this energy barrier.",
+            "hi": "NCERT §9.8.2: S को संक्रमण अवस्था से गुज़रना होता है; एंजाइम इस ऊर्जा बाधा को घटाते हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The enzyme does not heat the substrate.",
+              "hi": "एंजाइम क्रियाधार को गर्म नहीं करता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The levels of S and P are not changed by the enzyme.",
+              "hi": "एंजाइम S और P के स्तर नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Every pathway goes through a transition state.",
+              "hi": "हर पथ संक्रमण अवस्था से होकर जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Malonate inhibits succinic dehydrogenase because it",
+        "hi": "मैलोनेट सक्सिनिक डीहाइड्रोजिनेज़ को संदमित करता है क्योंकि यह"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "denatures the enzyme by heat",
+            "hi": "ऊष्मा से एंजाइम को विकृत करता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "closely resembles the substrate succinate and competes for the binding site",
+            "hi": "क्रियाधार सक्सिनेट से बहुत मिलता-जुलता है और बंधन स्थल के लिए स्पर्धा करता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "removes the metal ion co-factor",
+            "hi": "धातु आयन सहकारक हटा देता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "changes the optimum pH",
+            "hi": "इष्टतम pH बदल देता है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare the names: malonate and succinate.",
+          "hi": "नामों की तुलना कीजिए: मैलोनेट और सक्सिनेट।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A look-alike sits in the active site, so the real substrate cannot get in.",
+          "hi": "एक हमशक्ल सक्रिय स्थल में बैठ जाता है, इसलिए असली क्रियाधार अंदर नहीं जा पाता।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.4: malonate closely resembles succinate and competitively inhibits succinic dehydrogenase.",
+            "hi": "NCERT §9.8.4: मैलोनेट सक्सिनेट से बहुत मिलता है और सक्सिनिक डीहाइड्रोजिनेज़ का स्पर्धी संदमन करता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Heat is not involved.",
+              "hi": "ऊष्मा की कोई भूमिका नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "NCERT describes competition, not co-factor removal.",
+              "hi": "NCERT स्पर्धा बताती है, सहकारक हटाना नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The inhibitor acts at the binding site.",
+              "hi": "संदमक बंधन स्थल पर काम करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In catalase, haem is",
+        "hi": "कैटालेज़ में हीम है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a co-enzyme bound only during catalysis",
+            "hi": "केवल उत्प्रेरण के दौरान बँधा सहएंजाइम"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a prosthetic group, tightly bound and part of the active site",
+            "hi": "प्रोस्थेटिक समूह, कसकर बँधा और सक्रिय स्थल का भाग"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a metal ion co-factor",
+            "hi": "धातु आयन सहकारक"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the apoenzyme",
+            "hi": "एपोएंजाइम"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Tightly bound or transient?",
+          "hi": "कसकर बँधा या अस्थायी?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Haem stays fixed in the enzyme, so it is a prosthetic group, not a co-enzyme that comes and goes.",
+          "hi": "हीम एंजाइम में स्थिर रहता है, इसलिए यह प्रोस्थेटिक समूह है, आने-जाने वाला सहएंजाइम नहीं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.6: in peroxidase and catalase, haem is the prosthetic group and part of the active site.",
+            "hi": "NCERT §9.8.6: पेरॉक्सिडेज़ और कैटालेज़ में हीम प्रोस्थेटिक समूह है और सक्रिय स्थल का भाग है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Co-enzymes bind transiently; haem is tightly bound.",
+              "hi": "सहएंजाइम अस्थायी रूप से बँधते हैं; हीम कसकर बँधा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "NCERT's metal ion example is zinc in carboxypeptidase.",
+              "hi": "NCERT का धातु आयन उदाहरण कार्बोक्सीपेप्टिडेज़ में ज़िंक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The apoenzyme is the protein part.",
+              "hi": "एपोएंजाइम प्रोटीन भाग है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "As substrate concentration keeps rising, the velocity of an enzyme reaction",
+        "hi": "क्रियाधार सांद्रता बढ़ती रहने पर एंजाइम अभिक्रिया का वेग"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "rises without limit",
+            "hi": "बिना सीमा बढ़ता रहता है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "rises at first and then levels off at Vmax",
+            "hi": "पहले बढ़ता है और फिर Vmax पर स्थिर हो जाता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "falls steadily",
+            "hi": "लगातार घटता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "does not change",
+            "hi": "नहीं बदलता"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What happens when every enzyme is busy?",
+          "hi": "जब हर एंजाइम व्यस्त हो तो क्या होता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "There are only so many enzyme molecules. Once each is busy, extra substrate has to wait.",
+          "hi": "एंजाइम अणु सीमित हैं। जब हर एक व्यस्त हो जाए, तो अतिरिक्त क्रियाधार को प्रतीक्षा करनी पड़ती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.4: velocity rises at first and reaches Vmax, which is not exceeded, because enzyme molecules are fewer than substrate molecules.",
+            "hi": "NCERT §9.8.4: वेग पहले बढ़ता है और Vmax तक पहुँचता है, जो पार नहीं होता, क्योंकि एंजाइम अणु क्रियाधार अणुओं से कम हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The enzyme saturates.",
+              "hi": "एंजाइम संतृप्त हो जाता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "More substrate never lowers the velocity in this graph.",
+              "hi": "इस आलेख में अधिक क्रियाधार वेग नहीं घटाता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It rises at first.",
+              "hi": "यह पहले बढ़ता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Enzymes catalysing the linking together of two compounds, for example by joining C-N bonds, are",
+        "hi": "दो यौगिकों को जोड़ने वाले एंजाइम, जैसे C-N बंध जोड़कर, हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "lyases",
+            "hi": "लायेज़"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "hydrolases",
+            "hi": "हाइड्रोलेज़"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "ligases",
+            "hi": "लाइगेज़"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "isomerases",
+            "hi": "आइसोमरेज़"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Joining, not breaking.",
+          "hi": "जोड़ना, तोड़ना नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Ligases link two compounds together; the other classes break, remove or rearrange.",
+          "hi": "लाइगेज़ दो यौगिकों को जोड़ते हैं; बाकी वर्ग तोड़ते, हटाते या पुनर्व्यवस्थित करते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.5: ligases catalyse the linking together of 2 compounds, joining C-O, C-S, C-N, P-O bonds.",
+            "hi": "NCERT §9.8.5: लाइगेज़ 2 यौगिकों को जोड़ना उत्प्रेरित करते हैं, C-O, C-S, C-N, P-O बंध जोड़कर।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Lyases remove groups, leaving double bonds.",
+              "hi": "लायेज़ समूह हटाते हैं, द्विबंध छोड़कर।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Hydrolases break bonds with water.",
+              "hi": "हाइड्रोलेज़ पानी से बंध तोड़ते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Isomerases interconvert isomers.",
+              "hi": "आइसोमरेज़ समावयवों को आपस में बदलते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Glucose is converted to pyruvic acid through how many enzyme-catalysed reactions, according to NCERT?",
+        "hi": "NCERT के अनुसार ग्लूकोज़ कितनी एंजाइम-उत्प्रेरित अभिक्रियाओं से पाइरुविक अम्ल में बदलता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Two",
+            "hi": "दो"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Six",
+            "hi": "छह"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Ten",
+            "hi": "दस"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Twenty",
+            "hi": "बीस"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Don't confuse it with other numbers in the chapter.",
+          "hi": "इसे अध्याय की अन्य संख्याओं से न मिलाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "It is a multistep pathway: ten steps, each with its own enzyme.",
+          "hi": "यह बहुचरणीय पथ है: दस चरण, हर एक का अपना एंजाइम।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.1: glucose becomes pyruvic acid through ten different enzyme-catalysed metabolic reactions.",
+            "hi": "NCERT §9.8.1: ग्लूकोज़ दस अलग-अलग एंजाइम-उत्प्रेरित उपापचयी अभिक्रियाओं से पाइरुविक अम्ल बनता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Two is the number of pyruvic acid molecules from one glucose.",
+              "hi": "दो एक ग्लूकोज़ से बने पाइरुविक अम्ल अणुओं की संख्या है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Six is the number of enzyme classes.",
+              "hi": "छह एंजाइम वर्गों की संख्या है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Twenty is the number of amino acid types.",
+              "hi": "बीस ऐमीनो अम्लों के प्रकारों की संख्या है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about temperature and enzymes is correct?",
+        "hi": "ताप और एंजाइमों के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Low temperature denatures enzymes permanently.",
+            "hi": "कम ताप एंजाइमों को स्थायी रूप से विकृत करता है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Enzymes of thermophilic organisms stay active up to 80 to 90°C.",
+            "hi": "तापरागी जीवों के एंजाइम 80 से 90°C तक सक्रिय रहते हैं।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Enzymes, like inorganic catalysts, work best at high temperature and pressure.",
+            "hi": "एंजाइम, अकार्बनिक उत्प्रेरकों की तरह, ऊँचे ताप और दाब पर सबसे अच्छा काम करते हैं।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Enzyme activity keeps rising as temperature rises.",
+            "hi": "ताप बढ़ने पर एंजाइम सक्रियता बढ़ती ही रहती है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of hot springs.",
+          "hi": "गर्म झरनों के बारे में सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Most enzymes are damaged above about 40°C, but enzymes from hot springs are built to survive heat.",
+          "hi": "अधिकतर एंजाइम लगभग 40°C से ऊपर क्षतिग्रस्त होते हैं, पर गर्म झरनों के एंजाइम ऊष्मा सहने के लिए बने हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8: enzymes from organisms of hot vents and sulphur springs retain catalytic power up to 80 to 90°C; §9.8.4: low temperature preserves enzymes temporarily inactive.",
+            "hi": "NCERT §9.8: गर्म स्रोतों और गंधक के झरनों के जीवों के एंजाइम 80 से 90°C तक उत्प्रेरक क्षमता बनाए रखते हैं; §9.8.4: कम ताप एंजाइम को अस्थायी रूप से निष्क्रिय रखता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Low temperature keeps enzymes temporarily inactive; heat denatures them.",
+              "hi": "कम ताप एंजाइम को अस्थायी रूप से निष्क्रिय रखता है; ऊष्मा विकृत करती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is how inorganic catalysts differ from enzymes.",
+              "hi": "यही अकार्बनिक उत्प्रेरकों और एंजाइमों का अंतर है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Activity falls above the optimum temperature.",
+              "hi": "इष्टतम ताप से ऊपर सक्रियता घटती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.biomolecules.enzymes.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.biomolecules.enzymes.core.enzymes-bio",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "NAD and NADP are co-enzymes that contain the vitamin",
+        "hi": "NAD और NADP सहएंजाइम हैं जिनमें विटामिन है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "niacin",
+            "hi": "नियासिन"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "vitamin C",
+            "hi": "विटामिन C"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "vitamin A",
+            "hi": "विटामिन A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "vitamin D",
+            "hi": "विटामिन D"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Nicotinamide adenine dinucleotide.",
+          "hi": "निकोटिनामाइड ऐडेनीन डाइन्यूक्लियोटाइड।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "NAD is nicotinamide adenine dinucleotide, and NCERT notes that NAD and NADP contain niacin.",
+          "hi": "NAD निकोटिनामाइड ऐडेनीन डाइन्यूक्लियोटाइड है, और NCERT बताती है कि NAD और NADP में नियासिन होता है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §9.8.6: co-enzymes NAD and NADP contain the vitamin niacin.",
+            "hi": "NCERT §9.8.6: सहएंजाइम NAD और NADP में विटामिन नियासिन होता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "NCERT names niacin for NAD and NADP.",
+              "hi": "NCERT NAD और NADP के लिए नियासिन बताती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "NCERT names niacin for NAD and NADP.",
+              "hi": "NCERT NAD और NADP के लिए नियासिन बताती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "NCERT names niacin for NAD and NADP.",
+              "hi": "NCERT NAD और NADP के लिए नियासिन बताती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

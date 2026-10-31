@@ -1,0 +1,323 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.variable-force:deep_dive",
+  "topic": "phy.work-energy-power.variable-force",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.work-energy-power.variable-force.core.work-variable-force"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "When the force keeps changing",
+        "hi": "जब बल बदलता रहता है"
+      },
+      "subtopic": "phy.work-energy-power.variable-force.core",
+      "card_ids": [
+        "phy.work-energy-power.variable-force:dd:01",
+        "phy.work-energy-power.variable-force:dd:02",
+        "phy.work-energy-power.variable-force:dd:03",
+        "phy.work-energy-power.variable-force:dd:04",
+        "phy.work-energy-power.variable-force:dd:05",
+        "phy.work-energy-power.variable-force:dd:06",
+        "phy.work-energy-power.variable-force:dd:07",
+        "phy.work-energy-power.variable-force:dd:08",
+        "phy.work-energy-power.variable-force:dd:09"
+      ],
+      "estimated_minutes": 6
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.variable-force:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Getting tired",
+        "hi": "थकते जाना"
+      },
+      "body": {
+        "en": "A woman pushes a heavy trunk along a rough railway platform. At first she pushes hard; then, as she tires, her push gets weaker and weaker. $W = Fd$ needs one value of F. What do we do when the force keeps changing?",
+        "hi": "एक महिला खुरदरे रेलवे प्लेटफ़ॉर्म पर एक भारी ट्रंक धकेलती है। पहले वह ज़ोर से धकेलती है; फिर थकने के साथ उसका धक्का कमज़ोर होता जाता है। $W = Fd$ के लिए F का एक मान चाहिए। जब बल बदलता रहे तब क्या करें?"
+      },
+      "media": "img.work-energy-power.trunk-push"
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Work as an area",
+        "hi": "क्षेत्रफल के रूप में कार्य"
+      },
+      "body": {
+        "en": "Over a small displacement $\\Delta x$ the force hardly changes, so the work there is $\\Delta W = F(x)\\,\\Delta x$, a thin rectangle under the F-x graph. Adding all the rectangles gives the total work approximately. As $\\Delta x \\to 0$, the sum becomes exactly the area under the curve:\n\n$W = \\int_{x_i}^{x_f} F(x)\\,dx$.\n\nArea below the x-axis counts as negative, as for a force such as friction that opposes the motion.",
+        "hi": "एक छोटे विस्थापन $\\Delta x$ में बल लगभग नहीं बदलता, इसलिए वहाँ कार्य $\\Delta W = F(x)\\,\\Delta x$ है, F-x आलेख के नीचे एक पतला आयत। सभी आयत जोड़ने पर लगभग कुल कार्य मिलता है। $\\Delta x \\to 0$ होने पर योग ठीक-ठीक वक्र के नीचे का क्षेत्रफल बन जाता है:\n\n$W = \\int_{x_i}^{x_f} F(x)\\,dx$।\n\nx-अक्ष के नीचे का क्षेत्रफल ऋणात्मक गिना जाता है, जैसे गति का विरोध करने वाले घर्षण जैसे बल के लिए।"
+      },
+      "media": "img.work-energy-power.trunk-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "work by a variable force",
+            "hi": "परिवर्ती बल द्वारा कार्य"
+          },
+          "definition": {
+            "en": "the area under the F-x graph",
+            "hi": "F-x आलेख के नीचे का क्षेत्रफल"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.5, Eqs. 5.6-5.7, Fig. 5.3"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Work by a variable force",
+        "hi": "परिवर्ती बल द्वारा कार्य"
+      },
+      "latex": "W = \\int_{x_i}^{x_f} F(x)\\,dx",
+      "symbols": [
+        {
+          "symbol": "F(x)",
+          "meaning": {
+            "en": "force as a function of position",
+            "hi": "स्थिति के फलन के रूप में बल"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "x_i, x_f",
+          "meaning": {
+            "en": "initial and final positions",
+            "hi": "प्रारंभिक और अंतिम स्थितियाँ"
+          },
+          "unit": "m"
+        }
+      ],
+      "conditions": {
+        "en": "One-dimensional motion along x.",
+        "hi": "x के अनुदिश एकविमीय गति।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 5.7"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A woman pushes a trunk on a rough platform with 100 N for 10 m. Then, as she tires, her force falls linearly to 50 N over the next 10 m. The friction force is 50 N throughout. Find the work done by her and by friction over the 20 m.",
+        "hi": "एक महिला खुरदरे प्लेटफ़ॉर्म पर एक ट्रंक को 10 m तक 100 N से धकेलती है। फिर थकने पर अगले 10 m में उसका बल रैखिक रूप से घटकर 50 N हो जाता है। घर्षण बल पूरे समय 50 N है। 20 m में उसके द्वारा और घर्षण द्वारा किया गया कार्य ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Her work is the area of a rectangle plus a trapezium: $W_F = 100 \\times 10 + \\frac{1}{2}(100 + 50) \\times 10$.",
+          "hi": "उसका कार्य एक आयत और एक समलंब का क्षेत्रफल है: $W_F = 100 \\times 10 + \\frac{1}{2}(100 + 50) \\times 10$।"
+        },
+        {
+          "en": "$W_F = 1000 + 750 = 1750$ J",
+          "hi": "$W_F = 1000 + 750 = 1750$ J"
+        },
+        {
+          "en": "Friction lies below the axis: $W_f = (-50) \\times 20 = -1000$ J",
+          "hi": "घर्षण अक्ष के नीचे है: $W_f = (-50) \\times 20 = -1000$ J"
+        }
+      ],
+      "answer": {
+        "en": "1750 J by her, $-1000$ J by friction",
+        "hi": "उसके द्वारा 1750 J, घर्षण द्वारा $-1000$ J"
+      },
+      "answer_value": {
+        "value": 1750,
+        "unit": "J",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Using 100 N for the whole 20 m, which gives 2000 J.",
+        "hi": "पूरे 20 m के लिए 100 N लेना, जिससे 2000 J आता है।"
+      },
+      "media": "img.work-energy-power.trunk-push",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.5, Fig. 5.4"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:05",
+      "type": "derivation",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "The theorem for a variable force",
+        "hi": "परिवर्ती बल के लिए प्रमेय"
+      },
+      "steps": [
+        {
+          "latex": "\\frac{dK}{dt} = \\frac{d}{dt}\\left(\\frac{1}{2}mv^2\\right) = m\\frac{dv}{dt}v = Fv",
+          "say": {
+            "en": "Differentiate K and use the second law.",
+            "hi": "K का अवकलन करके द्वितीय नियम लगाइए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\frac{dK}{dt} = F\\frac{dx}{dt} \\Rightarrow dK = F\\,dx",
+          "say": {
+            "en": "Write v as $dx/dt$.",
+            "hi": "v को $dx/dt$ लिखिए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "K_f - K_i = \\int_{x_i}^{x_f} F\\,dx = W",
+          "say": {
+            "en": "Integrate from $x_i$ to $x_f$.",
+            "hi": "$x_i$ से $x_f$ तक समाकलन कीजिए।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.6, Eqs. 5.8a-5.8b"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 1 kg block moving at 2 m/s enters a rough patch from $x = 0.10$ m to $x = 2.01$ m, where the retarding force is $F_r = -\\frac{k}{x}$ with $k = 0.5$ J. Find its kinetic energy and speed as it leaves the patch.",
+        "hi": "2 m/s से चलता 1 kg का गुटका $x = 0.10$ m से $x = 2.01$ m तक के खुरदरे भाग में प्रवेश करता है, जहाँ मंदक बल $F_r = -\\frac{k}{x}$ है, $k = 0.5$ J। भाग से निकलते समय उसकी गतिज ऊर्जा और चाल ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$K_f = K_i + \\int_{0.1}^{2.01} \\left(-\\frac{k}{x}\\right) dx = \\frac{1}{2}mv_i^2 - k\\ln\\frac{2.01}{0.1}$",
+          "hi": "$K_f = K_i + \\int_{0.1}^{2.01} \\left(-\\frac{k}{x}\\right) dx = \\frac{1}{2}mv_i^2 - k\\ln\\frac{2.01}{0.1}$"
+        },
+        {
+          "en": "$K_f = 2 - 0.5\\ln 20.1 = 2 - 1.5 = 0.5$ J",
+          "hi": "$K_f = 2 - 0.5\\ln 20.1 = 2 - 1.5 = 0.5$ J"
+        },
+        {
+          "en": "$v_f = \\sqrt{2K_f/m} = 1$ m/s",
+          "hi": "$v_f = \\sqrt{2K_f/m} = 1$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "0.5 J and 1 m/s",
+        "hi": "0.5 J और 1 m/s"
+      },
+      "answer_value": {
+        "value": 1,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Using $\\log_{10}$ instead of the natural log $\\ln$.",
+        "hi": "$\\log_{10}$ लेना, प्राकृतिक लघुगणक $\\ln$ नहीं।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.6"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.variable-force.0001"
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "question": "q.phy.work-energy-power.variable-force.0003"
+    },
+    {
+      "id": "phy.work-energy-power.variable-force:dd:09",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.variable-force.core.work-variable-force"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "$W = \\int F\\,dx$ is the area under the F-x graph; area below the axis is negative.",
+          "hi": "$W = \\int F\\,dx$, F-x आलेख के नीचे का क्षेत्रफल है; अक्ष के नीचे का क्षेत्रफल ऋणात्मक।"
+        },
+        {
+          "en": "The work-energy theorem holds for variable forces too.",
+          "hi": "कार्य-ऊर्जा प्रमेय परिवर्ती बलों के लिए भी लागू है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

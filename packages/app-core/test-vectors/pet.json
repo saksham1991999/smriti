@@ -1,0 +1,588 @@
+{
+  "version": 1,
+  "config": {
+    "start": {
+      "mood": 80,
+      "energy": 80
+    },
+    "decayPerMissedDay": {
+      "mood": 10,
+      "energy": 10
+    },
+    "studyGain": {
+      "mood": 20,
+      "energy": 15
+    },
+    "stateMinMood": {
+      "happy": 70,
+      "content": 50,
+      "sleepy": 30,
+      "tired": 15
+    },
+    "missingYouEnergyBelow": 30,
+    "careMoodCapPerDay": 5,
+    "petMoodGain": 2,
+    "playsPerDay": 3,
+    "playEnergyGain": 3,
+    "treatsPerDay": 1,
+    "treatEnergyGain": 8
+  },
+  "cases": [
+    {
+      "name": "steady study",
+      "initial": {
+        "mood": 80,
+        "energy": 80,
+        "lastDecayDay": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 100,
+          "energy": 95,
+          "state": "happy",
+          "state_under10": "happy"
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 100,
+          "energy": 100,
+          "state": "happy",
+          "state_under10": "happy"
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 100,
+          "energy": 100,
+          "state": "happy",
+          "state_under10": "happy"
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 100,
+          "energy": 100,
+          "state": "happy",
+          "state_under10": "happy"
+        }
+      ]
+    },
+    {
+      "name": "a week away, then back",
+      "initial": {
+        "mood": 80,
+        "energy": 80,
+        "lastDecayDay": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "droopy",
+          "mood": 69,
+          "energy": 70,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "droopy",
+          "mood": 59,
+          "energy": 60,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 49,
+          "energy": 50,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 39,
+          "energy": 40,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 30,
+          "energy": 30,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 30,
+          "energy": 20,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 20,
+          "energy": 10,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-08",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-09",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "wilted",
+          "mood": 29,
+          "energy": 15,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-10",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "wilted",
+          "mood": 29,
+          "energy": 30,
+          "state": "tired",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-11",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 70,
+          "energy": 45,
+          "state": "happy",
+          "state_under10": "happy"
+        },
+        {
+          "day": "2026-10-12",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 90,
+          "energy": 60,
+          "state": "happy",
+          "state_under10": "happy"
+        }
+      ]
+    },
+    {
+      "name": "watered days do not decay",
+      "initial": {
+        "mood": 80,
+        "energy": 80,
+        "lastDecayDay": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "droopy",
+          "mood": 69,
+          "energy": 70,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false,
+            "healthDay": true
+          },
+          "plant_health": "droopy",
+          "mood": 69,
+          "energy": 70,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false,
+            "healthDay": true
+          },
+          "plant_health": "droopy",
+          "mood": 69,
+          "energy": 70,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "droopy",
+          "mood": 59,
+          "energy": 60,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": true,
+            "healthDay": true
+          },
+          "plant_health": "thriving",
+          "mood": 79,
+          "energy": 75,
+          "state": "happy",
+          "state_under10": "happy"
+        }
+      ]
+    },
+    {
+      "name": "three weeks away",
+      "initial": {
+        "mood": 80,
+        "energy": 80,
+        "lastDecayDay": null
+      },
+      "steps": [
+        {
+          "day": "2026-10-01",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "droopy",
+          "mood": 69,
+          "energy": 70,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-02",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "droopy",
+          "mood": 59,
+          "energy": 60,
+          "state": "content",
+          "state_under10": "content"
+        },
+        {
+          "day": "2026-10-03",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 49,
+          "energy": 50,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-04",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 39,
+          "energy": 40,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-05",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 30,
+          "energy": 30,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-06",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dry",
+          "mood": 30,
+          "energy": 20,
+          "state": "sleepy",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-07",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 20,
+          "energy": 10,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-08",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-09",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-10",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-11",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-12",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-13",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-14",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-15",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-16",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-17",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-18",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-19",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-20",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "wilted",
+          "mood": 15,
+          "energy": 0,
+          "state": "missing_you",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-21",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dormant",
+          "mood": 5,
+          "energy": 0,
+          "state": "resting",
+          "state_under10": "sleepy"
+        },
+        {
+          "day": "2026-10-22",
+          "input": {
+            "qualified": false,
+            "healthDay": false
+          },
+          "plant_health": "dormant",
+          "mood": 0,
+          "energy": 0,
+          "state": "resting",
+          "state_under10": "sleepy"
+        }
+      ]
+    }
+  ]
+}

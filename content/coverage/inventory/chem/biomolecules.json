@@ -1,0 +1,90 @@
+{
+  "schema": "inventory@1",
+  "chapter": "chem.biomolecules",
+  "items": [
+    {
+      "id": "lech2-10-1",
+      "kind": "definition",
+      "title": {
+        "en": "Carbohydrates",
+        "hi": "कार्बोहाइड्रेट"
+      },
+      "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.1 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
+      "concepts": [
+        "chem.biomolecules.carbohydrates.core.biomolecules-intro",
+        "chem.biomolecules.carbohydrates.core.carbohydrate-classification"
+      ]
+    },
+    {
+      "id": "lech2-10-2",
+      "kind": "definition",
+      "title": "Proteins and Enzymes",
+      "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.2 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
+      "concepts": [
+        "chem.biomolecules.proteins.core.amino-acids-peptides",
+        "chem.biomolecules.proteins.core.protein-structure",
+        "chem.biomolecules.proteins.core.enzymes-chem"
+      ]
+    },
+    {
+      "id": "lech2-10-3",
+      "kind": "definition",
+      "title": "Proteins and Enzymes",
+      "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.3 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
+      "concepts": [
+        "chem.biomolecules.proteins.core.amino-acids-peptides",
+        "chem.biomolecules.proteins.core.protein-structure",
+        "chem.biomolecules.proteins.core.enzymes-chem"
+      ]
+    },
+    {
+      "id": "lech2-10-4",
+      "kind": "list",
+      "title": {
+        "en": "Vitamins",
+        "hi": "विटामिन"
+      },
+      "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.4 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
+      "concepts": [
+        "chem.biomolecules.vitamins.core.vitamins-classification"
+      ]
+    },
+    {
+      "id": "lech2-10-5",
+      "kind": "definition",
+      "title": {
+        "en": "Nucleic Acids",
+        "hi": "न्यूक्लीक अम्ल"
+      },
+      "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.5 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
+      "concepts": [
+        "chem.biomolecules.nucleic-acids.core.nucleic-acids-chem"
+      ]
+    },
+    {
+      "id": "lech2-10-6",
+      "kind": "definition",
+      "title": {
+        "en": "Hormones",
+        "hi": "हार्मोन"
+      },
+      "source_ref": "NCERT Class 12 Chemistry Part II, Ch 10 §10.6 (https://ncert.nic.in/textbook/pdf/lech205.pdf)",
+      "concepts": [
+        "chem.biomolecules.hormones.core.hormones-chem"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Chemistry Part II, Ch 10 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/lech205.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
+}

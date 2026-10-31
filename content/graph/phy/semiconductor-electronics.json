@@ -1,0 +1,337 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.semiconductor-electronics",
+  "subject": "phy",
+  "unit": "phy.electronics",
+  "name": {
+    "en": "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+    "hi": "अर्धचालक इलेक्ट्रॉनिकी- पदार्थ, युक्तियाँ तथा सरल परिपथ"
+  },
+  "ncert_ref": "NCERT Class 12 Physics Part II, Ch 14",
+  "topics": [
+    {
+      "id": "phy.semiconductor-electronics.semiconductors",
+      "name": {
+        "en": "Classification of Metals, Conductors and Semiconductors",
+        "hi": "धातुओं, चालकों तथा अर्धचालकों का वर्गीकरण"
+      },
+      "subtopics": [
+        {
+          "id": "phy.semiconductor-electronics.semiconductors.core",
+          "name": {
+            "en": "Classification of Metals, Conductors and Semiconductors",
+            "hi": "धातुओं, चालकों तथा अर्धचालकों का वर्गीकरण"
+          },
+          "concepts": [
+            {
+              "id": "phy.semiconductor-electronics.semiconductors.core.energy-bands",
+              "name": {
+                "en": "Energy bands; intrinsic and extrinsic semiconductors",
+                "hi": "ऊर्जा बैंड; नैज एवं अपद्रव्यी अर्धचालक"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Solids are classed as conductors, semiconductors and insulators by their band gap; doping a pure (intrinsic) semiconductor with pentavalent or trivalent impurities makes n-type or p-type material.",
+                "hi": "ठोसों को उनके बैंड अंतराल के आधार पर चालक, अर्धचालक और विद्युतरोधी में बाँटा जाता है; शुद्ध (नैज) अर्धचालक में पंचसंयोजी या त्रिसंयोजी अपद्रव्य मिलाने से n-प्रकार या p-प्रकार पदार्थ बनता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw band diagrams for metals, semiconductors and insulators.",
+                  "hi": "धातुओं, अर्धचालकों और विद्युतरोधियों के बैंड आरेख बनाइए।"
+                },
+                {
+                  "en": "State that $n_{e} n_{h} = n_{i^{2}}$ and identify majority and minority carriers.",
+                  "hi": "बताइए कि $n_{e} n_{h} = n_{i^{2}}$ और बहुसंख्यक तथा अल्पसंख्यक वाहकों को पहचानिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-19:item-1",
+                "neet-ug-2026:physics:unit-19:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.semiconductor-electronics.pn-junction",
+      "name": {
+        "en": "p-n Junction and Semiconductor Diode",
+        "hi": "p-n संधि एवं अर्धचालक डायोड"
+      },
+      "subtopics": [
+        {
+          "id": "phy.semiconductor-electronics.pn-junction.core",
+          "name": {
+            "en": "p-n Junction and Semiconductor Diode",
+            "hi": "p-n संधि एवं अर्धचालक डायोड"
+          },
+          "concepts": [
+            {
+              "id": "phy.semiconductor-electronics.pn-junction.core.pn-diode",
+              "name": {
+                "en": "p-n junction diode and its I-V characteristics in forward and reverse bias",
+                "hi": "p-n संधि डायोड तथा अग्र एवं पश्च बायस में उसके I-V अभिलक्षण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Diffusion and drift across a p-n junction create a depletion layer and barrier potential; in forward bias current rises sharply beyond a threshold voltage, while in reverse bias only a tiny current flows until breakdown.",
+                "hi": "p-n संधि पर विसरण और अपवाह से अवक्षय परत और रोधिका विभव बनते हैं; अग्र बायस में देहली वोल्टता के बाद धारा तेज़ी से बढ़ती है, जबकि पश्च बायस में भंजन तक केवल अत्यंत छोटी धारा बहती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain formation of the depletion region and barrier potential.",
+                  "hi": "अवक्षय क्षेत्र और रोधिका विभव का बनना समझाइए।"
+                },
+                {
+                  "en": "Sketch the I-V characteristic and mark knee voltage and reverse saturation current.",
+                  "hi": "I-V अभिलक्षण बनाइए और घुटना वोल्टता तथा पश्च संतृप्त धारा अंकित कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.semiconductors.core.energy-bands"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-19:item-2",
+                "neet-ug-2026:physics:unit-19:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.semiconductor-electronics.rectifier",
+      "name": {
+        "en": "Application of Junction Diode as a Rectifier",
+        "hi": "संधि डायोड का दिष्टकारी के रूप में अनुप्रयोग"
+      },
+      "subtopics": [
+        {
+          "id": "phy.semiconductor-electronics.rectifier.core",
+          "name": {
+            "en": "Application of Junction Diode as a Rectifier",
+            "hi": "संधि डायोड का दिष्टकारी के रूप में अनुप्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "phy.semiconductor-electronics.rectifier.core.diode-rectifier",
+              "name": {
+                "en": "Diode as a rectifier",
+                "hi": "दिष्टकारी के रूप में डायोड"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Because a diode conducts in only one direction, it converts AC to pulsating DC: a half-wave rectifier passes one half-cycle and a full-wave rectifier uses two diodes to pass both.",
+                "hi": "डायोड केवल एक दिशा में चालन करता है, इसलिए वह AC को स्पंदमान DC में बदलता है: अर्ध-तरंग दिष्टकारी एक अर्ध-चक्र पार करता है और पूर्ण-तरंग दिष्टकारी दो डायोडों से दोनों को।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw circuits and output waveforms for half-wave and full-wave rectifiers.",
+                  "hi": "अर्ध-तरंग और पूर्ण-तरंग दिष्टकारियों के परिपथ और निर्गत तरंग-रूप बनाइए।"
+                },
+                {
+                  "en": "Explain how a capacitor filter smooths the output.",
+                  "hi": "समझाइए कि संधारित्र फ़िल्टर निर्गत को कैसे समतल करता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.pn-junction.core.pn-diode"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-19:item-2",
+                "neet-ug-2026:physics:unit-19:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.semiconductor-electronics.optoelectronic",
+      "name": {
+        "en": "LED, Photodiode and Solar Cell",
+        "hi": "LED, फ़ोटोडायोड एवं सौर सेल"
+      },
+      "subtopics": [
+        {
+          "id": "phy.semiconductor-electronics.optoelectronic.core",
+          "name": {
+            "en": "LED, Photodiode and Solar Cell",
+            "hi": "LED, फ़ोटोडायोड एवं सौर सेल"
+          },
+          "concepts": [
+            {
+              "id": "phy.semiconductor-electronics.optoelectronic.core.led-photodiode-solar",
+              "name": {
+                "en": "I-V characteristics of LED, photodiode and solar cell",
+                "hi": "LED, फ़ोटोडायोड एवं सौर सेल के I-V अभिलक्षण"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "An LED is a forward-biased junction that emits light as carriers recombine; a photodiode is reverse-biased and its current rises with light intensity; a solar cell is an unbiased junction that generates emf from light.",
+                "hi": "LED अग्र बायस संधि है जो वाहकों के पुनर्संयोजन पर प्रकाश उत्सर्जित करती है; फ़ोटोडायोड पश्च बायस में होता है और उसकी धारा प्रकाश की तीव्रता के साथ बढ़ती है; सौर सेल बिना बायस की संधि है जो प्रकाश से वि.वा.ब. उत्पन्न करती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch the I-V curves of a photodiode under different illuminations and of a solar cell in the fourth quadrant.",
+                  "hi": "विभिन्न प्रदीप्तियों पर फ़ोटोडायोड और चतुर्थ चतुर्थांश में सौर सेल के I-V वक्र बनाइए।"
+                },
+                {
+                  "en": "Relate the colour of an LED to the band gap of its material, and state the advantages of LEDs over filament lamps.",
+                  "hi": "LED के रंग को उसके पदार्थ के बैंड अंतराल से जोड़िए, और तंतु लैंप की तुलना में LED के लाभ बताइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.pn-junction.core.pn-diode"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-19:item-3",
+                "neet-ug-2026:physics:unit-19:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.semiconductor-electronics.zener",
+      "name": {
+        "en": "Zener Diode",
+        "hi": "ज़ेनर डायोड"
+      },
+      "subtopics": [
+        {
+          "id": "phy.semiconductor-electronics.zener.core",
+          "name": {
+            "en": "Zener Diode",
+            "hi": "ज़ेनर डायोड"
+          },
+          "concepts": [
+            {
+              "id": "phy.semiconductor-electronics.zener.core.zener-regulator",
+              "name": {
+                "en": "Zener diode and its use as a voltage regulator",
+                "hi": "ज़ेनर डायोड एवं वोल्टता नियंत्रक के रूप में उसका उपयोग"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "A heavily doped Zener diode operated in reverse breakdown keeps a nearly constant voltage across it over a wide range of current, so it can regulate the voltage across a load.",
+                "hi": "अधिक मादित ज़ेनर डायोड पश्च भंजन में चलाने पर धारा के बड़े परास में अपने सिरों पर लगभग नियत वोल्टता बनाए रखता है, इसलिए वह भार के सिरों पर वोल्टता का नियंत्रण कर सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch the Zener characteristic and mark the breakdown voltage.",
+                  "hi": "ज़ेनर अभिलक्षण बनाइए और भंजन वोल्टता अंकित कीजिए।"
+                },
+                {
+                  "en": "Analyse a Zener regulator circuit with a series resistor and find the currents.",
+                  "hi": "श्रेणी प्रतिरोधक वाले ज़ेनर नियंत्रक परिपथ का विश्लेषण कीजिए और धाराएँ निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.semiconductor-electronics.pn-junction.core.pn-diode"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-19:item-4",
+                "neet-ug-2026:physics:unit-19:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.semiconductor-electronics.logic-gates",
+      "name": {
+        "en": "Logic Gates",
+        "hi": "लॉजिक गेट"
+      },
+      "subtopics": [
+        {
+          "id": "phy.semiconductor-electronics.logic-gates.core",
+          "name": {
+            "en": "Logic Gates",
+            "hi": "लॉजिक गेट"
+          },
+          "concepts": [
+            {
+              "id": "phy.semiconductor-electronics.logic-gates.core.basic-logic-gates",
+              "name": {
+                "en": "Logic gates: OR, AND, NOT, NAND and NOR",
+                "hi": "लॉजिक गेट : OR, AND, NOT, NAND एवं NOR"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Logic gates process binary inputs: OR gives 1 if any input is 1, AND only if all are 1, NOT inverts, and NAND and NOR are AND and OR followed by NOT.",
+                "hi": "लॉजिक गेट द्विआधारी निवेशों को संसाधित करते हैं: OR कोई भी निवेश 1 होने पर 1 देता है, AND केवल सभी के 1 होने पर, NOT उलट देता है, और NAND तथा NOR, AND और OR के बाद NOT हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Write the truth table and Boolean expression of each gate.",
+                  "hi": "हर गेट की सत्यमान सारणी और बूलीय व्यंजक लिखिए।"
+                },
+                {
+                  "en": "Find the output of a combination of gates for given inputs, and show that NAND and NOR are universal gates.",
+                  "hi": "दिए गए निवेशों के लिए गेटों के संयोजन का निर्गत निकालिए, और दिखाइए कि NAND और NOR सार्वत्रिक गेट हैं।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-19:item-5",
+                "neet-ug-2026:physics:unit-19:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part II, Ch 14 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph206.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhph2 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph2ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.6: Physics Unit 19, Electronic Devices"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.7: Physics Unit 19, ELECTRONIC DEVICES"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: rectifier (§14.7, lhph2 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/semiconductor-electronics.json."
+}

@@ -1,0 +1,522 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/extras.schema.json",
+  "title": "ExtrasFile",
+  "description": "content/extras/{subject}/{chapter_slug}/...: cheat sheets, revision sheets, storybooks, songs, play activities, experiments, role plays and mind-map templates (lesson-author). Each file holds one item; its schema field picks the shape.",
+  "type": "object",
+  "required": ["schema"],
+  "discriminator": { "propertyName": "schema" },
+  "oneOf": [
+    { "$ref": "#/$defs/CheatSheet" },
+    { "$ref": "#/$defs/RevisionSheet" },
+    { "$ref": "#/$defs/Storybook" },
+    { "$ref": "#/$defs/Song" },
+    { "$ref": "#/$defs/Play" },
+    { "$ref": "#/$defs/Experiment" },
+    { "$ref": "#/$defs/Roleplay" },
+    { "$ref": "#/$defs/MindMapTemplate" }
+  ],
+  "$defs": {
+    "Scope": {
+      "type": "object",
+      "required": ["id", "scope", "title", "concepts"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/ExtraId" },
+        "scope": { "type": "string", "enum": ["topic", "chapter"] },
+        "topic": { "$ref": "common.schema.json#/$defs/TopicId" },
+        "chapter": { "$ref": "common.schema.json#/$defs/DottedId" },
+        "title": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "concepts": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/ConceptId" }
+        }
+      }
+    },
+    "SheetFormula": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "latex"],
+      "properties": {
+        "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "latex": { "$ref": "common.schema.json#/$defs/Latex" },
+        "vault_id": { "$ref": "common.schema.json#/$defs/DottedId" },
+        "concept": { "$ref": "common.schema.json#/$defs/ConceptId" }
+      }
+    },
+    "Trap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mistake", "correct"],
+      "properties": {
+        "mistake": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "correct": { "$ref": "common.schema.json#/$defs/I18nText" }
+      }
+    },
+    "CheatSheet": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["key_ideas", "formulas", "mnemonics", "traps"],
+      "properties": {
+        "schema": { "const": "cheat_sheet@1" },
+        "key_ideas": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "formulas": { "type": "array", "items": { "$ref": "#/$defs/SheetFormula" } },
+        "diagram": { "$ref": "common.schema.json#/$defs/ImageRef" },
+        "mnemonics": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/LocalizedRef" }
+        },
+        "traps": { "type": "array", "items": { "$ref": "#/$defs/Trap" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "RevisionSheet": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["points"],
+      "properties": {
+        "schema": { "const": "revision_sheet@1" },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "formulas": { "type": "array", "items": { "$ref": "#/$defs/SheetFormula" } },
+        "diagram": { "$ref": "common.schema.json#/$defs/ImageRef" }
+      },
+      "unevaluatedProperties": false
+    },
+    "Storybook": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["pages"],
+      "properties": {
+        "schema": { "const": "storybook@1" },
+        "pages": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["text", "media"],
+            "properties": {
+              "text": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "media": { "$ref": "common.schema.json#/$defs/ImageRef" },
+              "narration": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Song": {
+      "description": "A song or rhyme for little learners (PRD §6 'Class 1–5: story, song and play'). Each locale has its own version, written for that language rather than translated, with its own sung audio (an audio_song request with a transcript) and lyric lines. Line timings drive the karaoke highlight once the audio exists.",
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["style", "versions"],
+      "properties": {
+        "schema": { "const": "song@1" },
+        "style": { "type": "string", "enum": ["song", "rhyme", "chant"] },
+        "minutes": {
+          "description": "Length for the HOME-06 path node and the little learner plan; the audio's duration_ms is the truth once generated.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 10
+        },
+        "cover": { "$ref": "common.schema.json#/$defs/ImageRef" },
+        "actions": {
+          "description": "Things to do while singing (clap, jump, point). Lines name them by id.",
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "cue", "icon"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/Slug" },
+              "cue": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "icon": { "$ref": "common.schema.json#/$defs/IconName" }
+            }
+          }
+        },
+        "versions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/SongVersion" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "SongVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locale", "audio", "lines"],
+      "properties": {
+        "locale": { "$ref": "common.schema.json#/$defs/Locale" },
+        "audio": { "$ref": "common.schema.json#/$defs/AudioRef" },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 40,
+          "items": { "$ref": "#/$defs/LyricLine" }
+        }
+      }
+    },
+    "LyricLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "start_ms": {
+          "description": "When the line starts in this version's audio. Timings are both set or both absent.",
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_ms": { "type": "integer", "minimum": 1 },
+        "action": {
+          "description": "An actions[] id to do on this line.",
+          "$ref": "common.schema.json#/$defs/Slug"
+        }
+      }
+    },
+    "Play": {
+      "description": "A play activity for little learners: one to six short rounds of tap, match, sort, drag or trace. There is no score, timer or fail state: a wrong move bounces back with the try_again line, the second wrong move shows the hint, and after that the player shows the move so every round ends with the child doing it (lesson-core playerRules('little')).",
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["minutes", "feedback", "rounds"],
+      "properties": {
+        "schema": { "const": "play@1" },
+        "minutes": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+        "cover": { "$ref": "common.schema.json#/$defs/ImageRef" },
+        "feedback": {
+          "description": "Gentle lines the pet says. No negative words (the content check refuses them).",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["success", "try_again"],
+          "properties": {
+            "success": { "$ref": "common.schema.json#/$defs/I18nText" },
+            "try_again": { "$ref": "common.schema.json#/$defs/I18nText" }
+          }
+        },
+        "rounds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "required": ["kind"],
+            "discriminator": { "propertyName": "kind" },
+            "oneOf": [
+              { "$ref": "#/$defs/TapRound" },
+              { "$ref": "#/$defs/MatchRound" },
+              { "$ref": "#/$defs/SortRound" },
+              { "$ref": "#/$defs/DragRound" },
+              { "$ref": "#/$defs/TraceRound" }
+            ]
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "PlayTile": {
+      "description": "Something the child taps, drags or matches: a picture with a spoken label.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "media"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/Slug" },
+        "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "media": { "$ref": "common.schema.json#/$defs/ImageRef" }
+      }
+    },
+    "TapRound": {
+      "description": "Tap every picture that fits the prompt ('Tap the red fruits').",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "prompt", "items", "answer"],
+      "properties": {
+        "kind": { "const": "tap" },
+        "prompt": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "hint": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "audio": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" },
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/PlayTile" }
+        },
+        "answer": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "common.schema.json#/$defs/Slug" }
+        }
+      }
+    },
+    "MatchRound": {
+      "description": "Join each picture on the left to its partner on the right.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "prompt", "pairs"],
+      "properties": {
+        "kind": { "const": "match" },
+        "prompt": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "hint": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "audio": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" },
+        "pairs": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["left", "right"],
+            "properties": {
+              "left": { "$ref": "#/$defs/PlayTile" },
+              "right": { "$ref": "#/$defs/PlayTile" }
+            }
+          }
+        }
+      }
+    },
+    "SortRound": {
+      "description": "Put each picture in its basket ('Living or non-living?').",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "prompt", "buckets", "items"],
+      "properties": {
+        "kind": { "const": "sort" },
+        "prompt": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "hint": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "audio": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" },
+        "buckets": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/Slug" },
+              "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "media": { "$ref": "common.schema.json#/$defs/ImageRef" }
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "media", "bucket"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/Slug" },
+              "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "media": { "$ref": "common.schema.json#/$defs/ImageRef" },
+              "bucket": { "$ref": "common.schema.json#/$defs/Slug" }
+            }
+          }
+        }
+      }
+    },
+    "DragRound": {
+      "description": "Drag pictures onto their places in a scene ('Put the hat on the clown'). Extra items are allowed as gentle distractors.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "prompt", "scene", "targets", "items"],
+      "properties": {
+        "kind": { "const": "drag" },
+        "prompt": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "hint": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "audio": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" },
+        "scene": { "$ref": "common.schema.json#/$defs/ImageRef" },
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "x", "y", "radius", "accepts"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/Slug" },
+              "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "x": {
+                "description": "Centre, 0-1 of the scene width.",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "y": {
+                "description": "Centre, 0-1 of the scene height.",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "radius": {
+                "description": "Drop radius, 0-1 of the scene width; generous for small fingers.",
+                "type": "number",
+                "minimum": 0.05,
+                "maximum": 0.5
+              },
+              "accepts": {
+                "description": "The items[] id that belongs here.",
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": { "$ref": "#/$defs/PlayTile" }
+        }
+      }
+    },
+    "TraceRound": {
+      "description": "Trace a letter or digit with a finger. The app draws the glyph from its own font; guide is the stroke-order animation from anim-maker (never hand-drawn paths).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "prompt", "glyph", "script", "min_coverage"],
+      "properties": {
+        "kind": { "const": "trace" },
+        "prompt": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "hint": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "audio": { "$ref": "common.schema.json#/$defs/LocalizedAudioRef" },
+        "glyph": { "type": "string", "minLength": 1, "maxLength": 3 },
+        "script": { "type": "string", "enum": ["latin", "devanagari", "digits"] },
+        "guide": { "$ref": "common.schema.json#/$defs/AnimationRef" },
+        "min_coverage": {
+          "description": "Share of the glyph the finger must cover, 0.5-0.95.",
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 0.95
+        }
+      }
+    },
+    "Experiment": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["materials", "steps", "safety", "adult_supervision", "why_it_works"],
+      "properties": {
+        "schema": { "const": "experiment@1" },
+        "materials": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "safety": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "adult_supervision": { "type": "boolean" },
+        "why_it_works": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "media": { "$ref": "common.schema.json#/$defs/ImageRef" }
+      },
+      "unevaluatedProperties": false
+    },
+    "Roleplay": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": [
+        "character",
+        "documented_views",
+        "persona_prompt",
+        "goals",
+        "guardrails",
+        "opening_line"
+      ],
+      "properties": {
+        "schema": { "const": "roleplay@1" },
+        "character": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "era", "portrait"],
+          "properties": {
+            "name": { "$ref": "common.schema.json#/$defs/I18nText" },
+            "era": { "$ref": "common.schema.json#/$defs/I18nText" },
+            "portrait": { "$ref": "common.schema.json#/$defs/ImageRef" }
+          }
+        },
+        "documented_views": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["view", "source"],
+            "properties": {
+              "view": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "source": { "$ref": "common.schema.json#/$defs/Source" }
+            }
+          }
+        },
+        "persona_prompt": { "type": "string", "minLength": 1 },
+        "goals": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        },
+        "guardrails": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "opening_line": { "$ref": "common.schema.json#/$defs/I18nText" },
+        "suggested_replies": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/I18nText" }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "MindMapTemplate": {
+      "type": "object",
+      "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }, { "$ref": "#/$defs/Scope" }],
+      "required": ["nodes", "edges"],
+      "properties": {
+        "schema": { "const": "mind_map_template@1" },
+        "nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label"],
+            "properties": {
+              "id": { "$ref": "common.schema.json#/$defs/Slug" },
+              "label": { "$ref": "common.schema.json#/$defs/I18nText" },
+              "concept": { "$ref": "common.schema.json#/$defs/ConceptId" }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from", "to"],
+            "properties": {
+              "from": { "$ref": "common.schema.json#/$defs/Slug" },
+              "to": { "$ref": "common.schema.json#/$defs/Slug" }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.kinetic-theory",
+  "items": [
+    {
+      "id": "keph2-12-2",
+      "kind": "formula",
+      "title": {
+        "en": "Molecular Nature of Matter",
+        "hi": "द्रव्य की आण्विक प्रकृति"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 12 §12.2 (https://ncert.nic.in/textbook/pdf/keph205.pdf)",
+      "concepts": [
+        "phy.kinetic-theory.behaviour-of-gases.core.perfect-gas-equation",
+        "phy.kinetic-theory.behaviour-of-gases.core.avogadro-number"
+      ]
+    },
+    {
+      "id": "keph2-12-3",
+      "kind": "formula",
+      "title": {
+        "en": "Behaviour of Gases",
+        "hi": "गैसों का व्यवहार"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 12 §12.3 (https://ncert.nic.in/textbook/pdf/keph205.pdf)",
+      "concepts": [
+        "phy.kinetic-theory.behaviour-of-gases.core.perfect-gas-equation",
+        "phy.kinetic-theory.behaviour-of-gases.core.avogadro-number"
+      ]
+    },
+    {
+      "id": "keph2-12-4",
+      "kind": "formula",
+      "title": {
+        "en": "Kinetic Theory of an Ideal Gas",
+        "hi": "आदर्श गैसों का अणुगति सिद्धांत"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 12 §12.4 (https://ncert.nic.in/textbook/pdf/keph205.pdf)",
+      "concepts": [
+        "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-theory-pressure",
+        "phy.kinetic-theory.kinetic-theory-ideal-gas.core.kinetic-temperature-rms"
+      ]
+    },
+    {
+      "id": "keph2-12-5",
+      "kind": "formula",
+      "title": {
+        "en": "Law of Equipartition of Energy",
+        "hi": "ऊर्जा के समविभाजन का नियम"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 12 §12.5 (https://ncert.nic.in/textbook/pdf/keph205.pdf)",
+      "concepts": [
+        "phy.kinetic-theory.equipartition.core.equipartition-specific-heats"
+      ]
+    },
+    {
+      "id": "keph2-12-6",
+      "kind": "formula",
+      "title": {
+        "en": "Specific Heat Capacity",
+        "hi": "विशिष्ट ऊष्मा धारिता"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 12 §12.6 (https://ncert.nic.in/textbook/pdf/keph205.pdf)",
+      "concepts": [
+        "phy.kinetic-theory.equipartition.core.equipartition-specific-heats"
+      ]
+    },
+    {
+      "id": "keph2-12-7",
+      "kind": "formula",
+      "title": {
+        "en": "Mean Free Path",
+        "hi": "माध्य मुक्त पथ"
+      },
+      "source_ref": "NCERT Class 11 Physics Part II, Ch 12 §12.7 (https://ncert.nic.in/textbook/pdf/keph205.pdf)",
+      "concepts": [
+        "phy.kinetic-theory.mean-free-path.core.mean-free-path-def"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 12 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/keph205.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv).",
+  "hi_source": "ncert"
+}

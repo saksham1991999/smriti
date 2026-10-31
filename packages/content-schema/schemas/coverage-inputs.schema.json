@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/coverage-inputs.schema.json",
+  "title": "CoverageInputFile",
+  "description": "Inputs to the coverage report, written by syllabus-mapper. coverage/syllabus/{exam_profile_id}.json lists every official syllabus line with its concepts; coverage/inventory/{subject}/{chapter_slug}.json lists every item of the chapter's reference sources with its concept or exclusion reason.",
+  "type": "object",
+  "required": ["schema"],
+  "discriminator": {
+    "propertyName": "schema"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Syllabus"
+    },
+    {
+      "$ref": "#/$defs/Inventory"
+    }
+  ],
+  "$defs": {
+    "Syllabus": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/FileMeta"
+        }
+      ],
+      "required": ["schema", "exam_profile", "lines"],
+      "properties": {
+        "schema": {
+          "const": "syllabus@1"
+        },
+        "exam_profile": {
+          "$ref": "common.schema.json#/$defs/ExamProfileId"
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ref", "text", "concepts"],
+            "properties": {
+              "ref": {
+                "$ref": "common.schema.json#/$defs/SyllabusRef"
+              },
+              "text": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "concepts": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/ConceptId"
+                }
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Inventory": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/FileMeta"
+        }
+      ],
+      "required": ["schema"],
+      "properties": {
+        "schema": {
+          "const": "inventory@1"
+        },
+        "chapter": {
+          "$ref": "common.schema.json#/$defs/DottedId"
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "title", "source_ref", "concepts"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "definition",
+                  "law",
+                  "formula",
+                  "constant",
+                  "named_reaction",
+                  "date",
+                  "list",
+                  "diagram",
+                  "solved_example",
+                  "exercise_type",
+                  "fact"
+                ]
+              },
+              "title": {
+                "description": "A plain string (the source language) or localised text.",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "$ref": "common.schema.json#/$defs/I18nText"
+                  }
+                ]
+              },
+              "source_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "concepts": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/ConceptId"
+                }
+              },
+              "out_of_syllabus": {
+                "description": "Why the item maps to no concept. Either concepts or this must be set.",
+                "type": ["string", "null"]
+              }
+            }
+          }
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/Slug"
+        },
+        "excluded_chapters": {
+          "description": "Whole reference chapters with no graph chapter, each with the reason.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ref", "title", "reason", "source_ref"],
+            "properties": {
+              "ref": {
+                "description": "The reference chapter, for example ncert:kemh1:5.",
+                "type": "string",
+                "minLength": 1
+              },
+              "title": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "$ref": "common.schema.json#/$defs/I18nText"
+                  }
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "exam_profiles": {
+                "description": "The profiles the reason applies to.",
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/ExamProfileId"
+                }
+              }
+            }
+          }
+        }
+      },
+      "unevaluatedProperties": false,
+      "anyOf": [
+        {
+          "required": ["chapter", "items"]
+        },
+        {
+          "required": ["subject", "excluded_chapters"]
+        }
+      ],
+      "description": "A chapter inventory (chapter + items) or a subject's list of reference chapters with no graph chapter (subject + excluded_chapters, at coverage/inventory/{subject}/excluded-chapters.json)."
+    }
+  }
+}

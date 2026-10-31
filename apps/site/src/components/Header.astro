@@ -1,0 +1,125 @@
+---
+import Icon from "./Icon.astro";
+import Brand from "./Brand.astro";
+import { site, type Locale } from "../config/site";
+import { messages } from "../i18n";
+import { localePath, signInUrl, startUrl } from "../lib/urls";
+import type { PageType } from "../lib/analytics";
+
+interface Props {
+  lang: Locale;
+  path: string;
+  pageType: PageType;
+  exam?: string | undefined;
+}
+const { lang, path, exam } = Astro.props;
+const m = messages(lang);
+const other: Locale = lang === "en" ? "hi" : "en";
+const home = localePath(lang, "/");
+const links = [
+  { href: localePath(lang, "/exams/"), label: m.nav.exams, current: path.startsWith("/exams/") },
+  { href: `${home}#how`, label: m.nav.how, current: false },
+  { href: `${home}#pricing`, label: m.nav.pricing, current: false },
+  { href: `${home}#faq`, label: m.nav.faq, current: false },
+];
+const start = startUrl(site.webAppUrl, { lang, placement: "header", exam });
+const signIn = signInUrl(site.webAppUrl);
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <Brand lang={lang} href={home} />
+    <nav class="site-nav" aria-label={m.a11y.mainNav}>
+      {links.map((l) => <a href={l.href} aria-current={l.current ? "page" : undefined}>{l.label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <a
+        class="lang"
+        href={localePath(other, path)}
+        hreflang={other}
+        lang={other === "hi" ? "hi-IN" : "en-IN"}
+        data-lang-switch={other}
+        aria-label={`${m.a11y.languageSwitch}: ${m.nav.otherLanguageName}`}
+      >
+        <Icon name="translate" size={20} />
+        <span>{m.nav.otherLanguage}</span>
+      </a>
+      <button
+        class="icon-btn theme-toggle"
+        type="button"
+        data-label-system={m.a11y.themeSystem}
+        data-label-light={m.a11y.themeLight}
+        data-label-dark={m.a11y.themeDark}
+        aria-label={m.a11y.themeSystem}
+        title={m.a11y.themeToggle}
+      >
+        <span class="t-sys"><Icon name="circle-half" size={20} /></span>
+        <span class="t-light"><Icon name="sun" size={20} /></span>
+        <span class="t-dark"><Icon name="moon" size={20} /></span>
+      </button>
+      <a class="btn ghost sm sign-in" href={signIn} data-cta="sign_in" data-placement="header">
+        {m.nav.signIn}
+      </a>
+      <a class="btn sm start" href={start} data-cta="start" data-placement="header">{m.nav.startFree}</a>
+      <details class="menu">
+        <summary class="icon-btn" aria-label={m.a11y.menu}><Icon name="list" size={24} /></summary>
+        <div class="menu-panel">
+          <nav aria-label={m.a11y.mainNav}>
+            {links.map((l) => <a href={l.href}>{l.label}</a>)}
+            <a href={signIn} data-cta="sign_in" data-placement="header">{m.nav.signIn}</a>
+          </nav>
+          <a class="btn" href={start} data-cta="start" data-placement="header">{m.nav.startFree}</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<style>
+  .theme-toggle .t-light,
+  .theme-toggle .t-dark {
+    display: none;
+  }
+  :global(:root[data-theme="light"]) .theme-toggle .t-sys,
+  :global(:root[data-theme="dark"]) .theme-toggle .t-sys {
+    display: none;
+  }
+  :global(:root[data-theme="light"]) .theme-toggle .t-light,
+  :global(:root[data-theme="dark"]) .theme-toggle .t-dark {
+    display: inline-flex;
+  }
+  .theme-toggle span {
+    display: inline-flex;
+  }
+  @media (max-width: 380px) {
+    .lang span {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const ORDER = ["system", "light", "dark"] as const;
+  type Mode = (typeof ORDER)[number];
+  for (const btn of document.querySelectorAll<HTMLButtonElement>(".theme-toggle")) {
+    const root = document.documentElement;
+    const current = (): Mode => (root.dataset.theme === "light" || root.dataset.theme === "dark" ? root.dataset.theme : "system");
+    const label = () => {
+      const mode = current();
+      btn.setAttribute("aria-label", btn.dataset[`label${mode[0]!.toUpperCase()}${mode.slice(1)}`] ?? "");
+    };
+    label();
+    btn.addEventListener("click", () => {
+      const next = ORDER[(ORDER.indexOf(current()) + 1) % ORDER.length]!;
+      if (next === "system") delete root.dataset.theme;
+      else root.dataset.theme = next;
+      try {
+        if (next === "system") localStorage.removeItem("site-theme");
+        else localStorage.setItem("site-theme", next);
+      } catch {
+        /* storage blocked: the choice lasts for this page only */
+      }
+      label();
+    });
+  }
+</script>

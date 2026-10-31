@@ -1,0 +1,47 @@
+# Guest onboarding to HOME-01: language, goal, no birth year, level, buddy, seed, the first
+# lesson (played through), first win, daily goal, reminder "not now".
+appId: ${APP_ID}
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible:
+      id: "ONB-01"
+    timeout: 30000
+- tapOn:
+    id: "start-en"
+- tapOn:
+    id: "goal-jee-main-2027"
+- tapOn:
+    id: "goal-continue"
+- tapOn:
+    id: "birth-decline"
+- tapOn:
+    id: "level-starting"
+- tapOn:
+    id: "level-continue"
+- tapOn:
+    id: "buddy-continue"
+- tapOn:
+    id: "seed-pot"
+- tapOn:
+    id: "seed-start"
+- extendedWaitUntil:
+    visible:
+      id: "lesson-player"
+    timeout: 20000
+- runFlow: play-lesson.yaml
+- extendedWaitUntil:
+    visible:
+      id: "ONB-14"
+    timeout: 20000
+- tapOn:
+    id: "first-win-continue"
+- tapOn:
+    id: "goal-set"
+- tapOn:
+    id: "reminder-not-now"
+- extendedWaitUntil:
+    visible:
+      id: "HOME-01"
+    timeout: 20000

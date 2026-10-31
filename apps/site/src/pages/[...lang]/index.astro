@@ -1,0 +1,54 @@
+---
+import Base from "../../layouts/Base.astro";
+import Hero from "../../components/Hero.astro";
+import Promises from "../../components/Promises.astro";
+import ExamGrid from "../../components/ExamGrid.astro";
+import HowItWorks from "../../components/HowItWorks.astro";
+import TryItSection from "../../components/TryItSection.astro";
+import PeriodicSection from "../../components/PeriodicSection.astro";
+import PlanTable from "../../components/PlanTable.astro";
+import Pricing from "../../components/Pricing.astro";
+import Faq from "../../components/Faq.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import AppLinks from "../../components/AppLinks.astro";
+import { site, type Locale } from "../../config/site";
+import { getIndex } from "../../content-index";
+import { fmt, messages } from "../../i18n";
+import { faqItems } from "../../lib/faq";
+import { faqPage, organization, website } from "../../lib/seo";
+import { absolute } from "../../lib/urls";
+import { localeParams } from "../../lib/routes";
+
+export const getStaticPaths = () => localeParams();
+
+const { lang } = Astro.props as { lang: Locale };
+const m = messages(lang);
+const brand = site.brand.name[lang];
+const idx = getIndex();
+const jsonLd = [
+  organization(brand, site.siteUrl, absolute(site.siteUrl, "/brand/favicon-512.png")),
+  website(brand, site.siteUrl, lang),
+  faqPage(faqItems(lang), lang),
+];
+---
+
+<Base
+  lang={lang}
+  path="/"
+  title={fmt(m.meta.homeTitle, { brand })}
+  description={m.meta.homeDescription}
+  pageType="home"
+  jsonLd={jsonLd}
+>
+  <Hero lang={lang} />
+  <Promises lang={lang} />
+  <ExamGrid lang={lang} />
+  <HowItWorks lang={lang} />
+  <TryItSection lang={lang} lesson={idx.home_try_lesson} />
+  <PeriodicSection lang={lang} />
+  <PlanTable lang={lang} />
+  <Pricing lang={lang} />
+  <AppLinks lang={lang} />
+  <Faq lang={lang} />
+  <CtaBand lang={lang} />
+</Base>

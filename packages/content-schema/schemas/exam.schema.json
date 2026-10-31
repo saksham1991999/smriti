@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/exam.schema.json",
+  "title": "ExamFile",
+  "description": "content/exams/{exam_id}.json: an exam and its profiles (one per cycle). Projects to content.exams and content.exam_profiles.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/FileMeta"
+    }
+  ],
+  "required": ["schema", "id", "name", "category", "profiles"],
+  "properties": {
+    "schema": {
+      "const": "exam@1"
+    },
+    "id": {
+      "$ref": "common.schema.json#/$defs/ExamId"
+    },
+    "name": {
+      "$ref": "common.schema.json#/$defs/I18nText"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "engineering",
+        "medical",
+        "civil_services",
+        "ssc",
+        "banking",
+        "railways",
+        "defence",
+        "state",
+        "school"
+      ]
+    },
+    "conducting_body": {
+      "type": ["string", "null"]
+    },
+    "official_url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/ExamProfile"
+      }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "ExamProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "cycle", "locales", "papers"],
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/ExamProfileId"
+        },
+        "cycle": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "$ref": "common.schema.json#/$defs/I18nText"
+        },
+        "audience": {
+          "description": "little_learner: a class 1–5 profile (learn §5.6). Its coverage needs a story, song or little lesson and a play activity per concept instead of the exam-prep set (PRD §14).",
+          "type": "string",
+          "enum": ["standard", "little_learner"],
+          "default": "standard"
+        },
+        "locales": {
+          "description": "Locales every content field used by this profile must have.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/Locale"
+          }
+        },
+        "papers": {
+          "description": "Paper codes; each has a blueprint in blueprints/{profile}/{paper}.v{n}.json.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "common.schema.json#/$defs/Slug"
+          }
+        },
+        "schedule": {
+          "description": "Official dates for the cycle, each with its notification URL. null until announced.",
+          "type": ["array", "null"],
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "date", "source_url"],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "application_open",
+                  "application_close",
+                  "exam_window_start",
+                  "exam_window_end",
+                  "exam_day",
+                  "result",
+                  "correction_window",
+                  "admit_card",
+                  "city_intimation",
+                  "re_exam"
+                ]
+              },
+              "date": {
+                "$ref": "common.schema.json#/$defs/IsoDate"
+              },
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "end_date": {
+                "description": "Last day, for a window (application, correction, exam).",
+                "$ref": "common.schema.json#/$defs/IsoDate"
+              },
+              "session": {
+                "description": "The session this date belongs to, when the cycle has several.",
+                "$ref": "common.schema.json#/$defs/Slug"
+              }
+            }
+          }
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "paper_names": {
+          "description": "Official paper names by paper code.",
+          "type": "object",
+          "propertyNames": {
+            "$ref": "common.schema.json#/$defs/Slug"
+          },
+          "additionalProperties": {
+            "$ref": "common.schema.json#/$defs/I18nText"
+          }
+        },
+        "exam_languages": {
+          "description": "Languages the exam is offered in (ISO 639 codes), which can be more than the app's locales.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2,3}$"
+          }
+        },
+        "sessions": {
+          "description": "Sessions of the cycle, as notified.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "source_ref"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "label": {
+                "$ref": "common.schema.json#/$defs/I18nText"
+              },
+              "application_window": {
+                "$ref": "#/$defs/DateWindow"
+              },
+              "late_fee_window": {
+                "$ref": "#/$defs/DateWindow"
+              },
+              "correction_window": {
+                "$ref": "#/$defs/DateWindow"
+              },
+              "city_intimation": {
+                "$ref": "common.schema.json#/$defs/IsoDate"
+              },
+              "admit_card": {
+                "$ref": "common.schema.json#/$defs/IsoDate"
+              },
+              "exam_dates": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "$ref": "common.schema.json#/$defs/IsoDate"
+                }
+              },
+              "source_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "shifts": {
+          "description": "Shift times as notified. null: not stated (they often appear only on the admit card).",
+          "type": ["array", "null"],
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "tz", "times"],
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/Slug"
+              },
+              "tz": {
+                "type": "string",
+                "minLength": 1
+              },
+              "papers": {
+                "description": "Paper codes held in this shift; absent for all.",
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/Slug"
+                }
+              },
+              "times": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["start", "end"],
+                  "properties": {
+                    "start": {
+                      "type": "string",
+                      "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+                    },
+                    "end": {
+                      "type": "string",
+                      "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+                    },
+                    "duration_min": {
+                      "description": "The paper length these times are for, when they differ by paper.",
+                      "type": ["integer", "null"],
+                      "minimum": 1
+                    }
+                  }
+                }
+              },
+              "source_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "DateWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": {
+          "$ref": "common.schema.json#/$defs/IsoDate"
+        },
+        "to": {
+          "$ref": "common.schema.json#/$defs/IsoDate"
+        }
+      }
+    }
+  }
+}

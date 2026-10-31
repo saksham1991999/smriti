@@ -1,0 +1,90 @@
+{
+  "schema": "pyq-source-note@1",
+  "purpose": "Pre-ingest record for pyq-ingest of the NEET (UG) 2026 re-examination. Holds only facts confirmed from NTA's own documents; no question text. Ingest can start once an official URL for the question booklets is known.",
+  "exam": "neet-ug",
+  "paper_id_planned": "neet-ug-2026-jun-21",
+  "checked": "2026-10-31",
+  "status": "blocked: official question paper URL not found",
+  "exam_facts": {
+    "held_on": "2026-06-21",
+    "time": "02:00 PM to 05:15 PM IST, including time for examination formalities",
+    "mode": "Pen and paper (offline), 13 languages",
+    "booklet_codes": ["50", "60", "70", "80"],
+    "questions_per_booklet": 180,
+    "result_declared": "2026-07-16, compiled from this re-examination",
+    "earlier_exam": {
+      "held_on": "2026-05-03",
+      "status": "cancelled",
+      "statement": "NTA, with the approval of the Government of India, decided to cancel the NEET (UG) 2026 examination conducted on 3 May 2026 and to re-conduct it; the matter was referred to the CBI.",
+      "source": "press_release_2026_05_12"
+    }
+  },
+  "documents": {
+    "press_release_2026_05_12": {
+      "title": "Press Release: NEET (UG) 2026 - Decision on the Examination of 3 May 2026",
+      "date": "2026-05-12",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/05/202605122066418251.pdf",
+      "retrieved": "2026-10-31"
+    },
+    "reexam_notice_2026_05_15": {
+      "title": "Public Notice: Conduct of Re-examination for NEET (UG) 2026",
+      "date": "2026-05-15",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/05/20260515960654684.pdf",
+      "retrieved": "2026-10-31"
+    },
+    "provisional_key": {
+      "title": "Provisional Answer Keys for NEET (UG) - 2026 Re-Examination",
+      "date": "2026-06-25",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/06/20260625208933797.pdf",
+      "sha256": "56c81e8121e4a693fc7fbbb71cc0dda228e9e65d7e9676e922c7ad54fe332cb7",
+      "retrieved": "2026-10-31"
+    },
+    "challenge_notice": {
+      "title": "Public Notice: Challenge of Provisional Answer Key for NEET (UG) - 2026 held on 21.06.2026",
+      "date": "2026-06-25",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/06/202606251138469985.pdf",
+      "sha256": "59a6aaff9b6c9ff7875b1f71798a1f5cb323080020b620fe81c73f31d7fc71f1",
+      "retrieved": "2026-10-31",
+      "relevant_statement": "The National Testing Agency has uploaded the Question Papers (all four sets) of NEET (UG)-2026 held on 21.06.2026 on the website https://nta.ac.in/. A challenge accepted for one Series Code is applied uniformly to all four sets."
+    },
+    "final_key": {
+      "title": "Final Answer Keys for NEET (UG) - 2026 Re-Examination",
+      "date": "2026-07-16",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/07/20260716131467523.pdf",
+      "page_url": "https://neet.nta.nic.in/final-answer-keys-for-neet-ug-2026-re-examination/",
+      "sha256": "acd37170b16b43fbc23d560f897bb896f650638d35be9cadcf61910f5e79dc35",
+      "retrieved": "2026-10-31"
+    },
+    "results_press_release": {
+      "title": "Press Release for NEET (UG) - 2026 Results (21st June 2026)",
+      "date": "2026-07-16",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/07/20260716477215762.pdf",
+      "retrieved": "2026-10-31"
+    }
+  },
+  "final_key_special_entries": {
+    "50": {"26": "Drop", "38": "2, 3"},
+    "60": {"36": "1, 4", "43": "Drop"},
+    "70": {"22": "3, 4", "40": "Drop"},
+    "80": {"2": "Drop", "5": "1, 2"}
+  },
+  "provisional_vs_final": "Parsed both keys for all four codes (180 answers each): every entry is identical, including the drops and the two-answer entries above, which already appear in the provisional key of 25 June. So the public keys show no answer changed after the challenge window; whether any challenge was accepted is not stated, and answer_challenged should be recorded as unverified.",
+  "question_paper_search": {
+    "result": "not found",
+    "checked": [
+      "https://nta.ac.in/ (homepage, Downloads redirects here)",
+      "https://nta.ac.in/NoticeBoardArchive",
+      "https://nta.ac.in/medicalexam",
+      "https://neet.nta.nic.in/ (homepage, public notices pages 1-2, archive, NEET(UG)-2025 page)"
+    ],
+    "unreachable": "https://exams.nta.ac.in/NEET/ fails TLS verification through the proxy (self-signed certificate in chain); not bypassed.",
+    "not_used": "Third-party copies of the booklets (coaching and news sites, Google Drive) exist but are not official sources and were not downloaded."
+  },
+  "ingest_plan": [
+    "Download the four booklets from the official URL once supplied; record URL, date and sha256 here.",
+    "Ingest one booklet code (50 unless the URL set suggests otherwise) with its final-key column; record the other codes' option-order mapping only if NTA's booklets allow it.",
+    "Record dropped questions as dropped and two-answer entries with both accepted options; mark answer_challenged unverified.",
+    "Figures become media requests; Hindi is ours unless NTA's Hindi booklet is also supplied, then use it (hi_source: official).",
+    "Link questions to graph concepts and compute neet-ug-2026 pyq_count and weightage from this one paper, stating the basis is one paper."
+  ]
+}

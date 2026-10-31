@@ -1,0 +1,665 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "phy.motion-straight-line.kinematic-equations:deep_dive",
+  "topic": "phy.motion-straight-line.kinematic-equations",
+  "mode": "deep_dive",
+  "estimated_minutes": 10,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Three equations",
+        "hi": "तीन समीकरण"
+      },
+      "subtopic": "phy.motion-straight-line.kinematic-equations.core",
+      "card_ids": [
+        "phy.motion-straight-line.kinematic-equations:dd:01",
+        "phy.motion-straight-line.kinematic-equations:dd:02",
+        "phy.motion-straight-line.kinematic-equations:dd:03",
+        "phy.motion-straight-line.kinematic-equations:dd:04",
+        "phy.motion-straight-line.kinematic-equations:dd:05",
+        "phy.motion-straight-line.kinematic-equations:dd:06",
+        "phy.motion-straight-line.kinematic-equations:dd:07"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Free fall and thrown balls",
+        "hi": "मुक्त पतन और फेंकी गई गेंदें"
+      },
+      "subtopic": "phy.motion-straight-line.kinematic-equations.core",
+      "card_ids": [
+        "phy.motion-straight-line.kinematic-equations:dd:08",
+        "phy.motion-straight-line.kinematic-equations:dd:09",
+        "phy.motion-straight-line.kinematic-equations:dd:10",
+        "phy.motion-straight-line.kinematic-equations:dd:11"
+      ],
+      "estimated_minutes": 3
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Stopping distance and reaction time",
+        "hi": "रुकने की दूरी और प्रतिक्रिया काल"
+      },
+      "subtopic": "phy.motion-straight-line.kinematic-equations.core",
+      "card_ids": [
+        "phy.motion-straight-line.kinematic-equations:dd:12",
+        "phy.motion-straight-line.kinematic-equations:dd:13",
+        "phy.motion-straight-line.kinematic-equations:dd:14",
+        "phy.motion-straight-line.kinematic-equations:dd:15",
+        "phy.motion-straight-line.kinematic-equations:dd:16"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Five quantities, three equations",
+        "hi": "पाँच राशियाँ, तीन समीकरण"
+      },
+      "body": {
+        "en": "For motion with constant acceleration, five quantities are linked: displacement x, time t, initial velocity $v_0$, final velocity v and acceleration a.\n\nFrom the definition of acceleration, $v = v_0 + at$. The area under this straight v-t line, a rectangle $v_0 t$ plus a triangle $\\frac{1}{2}(v - v_0)t$, gives $x = v_0 t + \\frac{1}{2}at^2$. Eliminating t gives $v^2 = v_0^2 + 2ax$. The object moves as if at the average velocity $\\frac{v + v_0}{2}$, which holds for constant acceleration only.\n\nThese take the position at $t = 0$ as zero; if it is $x_0$, replace x by $x - x_0$. The quantities are algebraic: put each in with its sign. The equations hold only while the magnitude and the direction of the acceleration stay constant, while the definitions $v = dx/dt$ and $a = dv/dt$ are always exact.",
+        "hi": "नियत त्वरण वाली गति में पाँच राशियाँ जुड़ी होती हैं: विस्थापन x, समय t, प्रारंभिक वेग $v_0$, अंतिम वेग v और त्वरण a।\n\nत्वरण की परिभाषा से $v = v_0 + at$। इस सीधी v-t रेखा के नीचे का क्षेत्रफल, आयत $v_0 t$ और त्रिभुज $\\frac{1}{2}(v - v_0)t$, से $x = v_0 t + \\frac{1}{2}at^2$ मिलता है। t को हटाने पर $v^2 = v_0^2 + 2ax$ मिलता है। वस्तु ऐसे चलती है मानो औसत वेग $\\frac{v + v_0}{2}$ से चल रही हो, जो केवल नियत त्वरण में सत्य है।\n\nइनमें $t = 0$ पर स्थिति शून्य मानी गई है; यदि यह $x_0$ हो तो x के स्थान पर $x - x_0$ लिखिए। राशियाँ बीजीय हैं: हर एक को उसके चिह्न सहित रखिए। ये समीकरण तभी तक सत्य हैं जब तक त्वरण का परिमाण और दिशा नियत रहें, जबकि परिभाषाएँ $v = dx/dt$ और $a = dv/dt$ सदा यथार्थ हैं।"
+      },
+      "media": "img.motion-straight-line.bus-highway",
+      "highlights": [
+        {
+          "term": {
+            "en": "kinematic equations",
+            "hi": "शुद्धगतिक समीकरण"
+          },
+          "definition": {
+            "en": "relations among x, t, v0, v and a for constant acceleration",
+            "hi": "नियत त्वरण में x, t, v0, v और a के बीच संबंध"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§2.4, Eqs. 2.4 to 2.9; Points to Ponder 5 and 6"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:02",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Velocity and time",
+        "hi": "वेग और समय"
+      },
+      "latex": "v = v_0 + at",
+      "symbols": [
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "final velocity",
+            "hi": "अंतिम वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v_0",
+          "meaning": {
+            "en": "initial velocity",
+            "hi": "प्रारंभिक वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "a",
+          "meaning": {
+            "en": "constant acceleration",
+            "hi": "नियत त्वरण"
+          },
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "t",
+          "meaning": {
+            "en": "time",
+            "hi": "समय"
+          },
+          "unit": "s"
+        }
+      ],
+      "spoken": {
+        "en": "v equals v nought plus a t",
+        "hi": "v बराबर v शून्य धन a t"
+      },
+      "conditions": {
+        "en": "Only for constant acceleration (fixed magnitude and direction); every quantity carries its sign.",
+        "hi": "केवल नियत त्वरण (स्थिर परिमाण और दिशा) के लिए; हर राशि अपने चिह्न सहित लगती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 2.9b"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Displacement and time",
+        "hi": "विस्थापन और समय"
+      },
+      "latex": "x - x_0 = v_0 t + \\frac{1}{2}at^2",
+      "symbols": [
+        {
+          "symbol": "x - x_0",
+          "meaning": {
+            "en": "displacement",
+            "hi": "विस्थापन"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "v_0",
+          "meaning": {
+            "en": "initial velocity",
+            "hi": "प्रारंभिक वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "a",
+          "meaning": {
+            "en": "constant acceleration",
+            "hi": "नियत त्वरण"
+          },
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "t",
+          "meaning": {
+            "en": "time",
+            "hi": "समय"
+          },
+          "unit": "s"
+        }
+      ],
+      "spoken": {
+        "en": "x minus x nought equals v nought t plus half a t squared",
+        "hi": "x घटा x शून्य बराबर v शून्य t धन आधा a t वर्ग"
+      },
+      "conditions": {
+        "en": "Only for constant acceleration (fixed magnitude and direction); every quantity carries its sign.",
+        "hi": "केवल नियत त्वरण (स्थिर परिमाण और दिशा) के लिए; हर राशि अपने चिह्न सहित लगती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 2.9b"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Velocity and displacement",
+        "hi": "वेग और विस्थापन"
+      },
+      "latex": "v^2 = v_0^2 + 2a(x - x_0)",
+      "symbols": [
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "final velocity",
+            "hi": "अंतिम वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v_0",
+          "meaning": {
+            "en": "initial velocity",
+            "hi": "प्रारंभिक वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "a",
+          "meaning": {
+            "en": "constant acceleration",
+            "hi": "नियत त्वरण"
+          },
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "x - x_0",
+          "meaning": {
+            "en": "displacement",
+            "hi": "विस्थापन"
+          },
+          "unit": "m"
+        }
+      ],
+      "spoken": {
+        "en": "v squared equals v nought squared plus two a times x minus x nought",
+        "hi": "v वर्ग बराबर v शून्य वर्ग धन दो a गुणा x घटा x शून्य"
+      },
+      "conditions": {
+        "en": "Only for constant acceleration (fixed magnitude and direction); every quantity carries its sign.",
+        "hi": "केवल नियत त्वरण (स्थिर परिमाण और दिशा) के लिए; हर राशि अपने चिह्न सहित लगती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 2.9c"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:05",
+      "type": "derivation",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "The calculus route",
+        "hi": "कलन से"
+      },
+      "steps": [
+        {
+          "latex": "dv = a\\,dt \\Rightarrow \\int_{v_0}^{v} dv = a\\int_0^t dt \\Rightarrow v = v_0 + at",
+          "say": {
+            "en": "Integrate the definition of acceleration, with a constant.",
+            "hi": "त्वरण की परिभाषा का समाकलन कीजिए, a नियत है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "dx = v\\,dt \\Rightarrow x - x_0 = \\int_0^t (v_0 + at)\\,dt = v_0 t + \\frac{1}{2}at^2",
+          "say": {
+            "en": "Integrate the velocity over time.",
+            "hi": "वेग का समय के साथ समाकलन कीजिए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "a = \\frac{dv}{dx}\\frac{dx}{dt} = v\\frac{dv}{dx} \\Rightarrow \\int_{v_0}^{v} v\\,dv = a\\int_{x_0}^{x} dx",
+          "say": {
+            "en": "Write a using the chain rule and separate the variables.",
+            "hi": "शृंखला नियम से a लिखिए और चर अलग कीजिए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "v^2 = v_0^2 + 2a(x - x_0)",
+          "say": {
+            "en": "This last method also works when a varies with position.",
+            "hi": "यह अंतिम विधि तब भी काम करती है जब a स्थिति के साथ बदले।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 2.2"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.kinematic-equations.0001"
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$v = v_0 + at$; $x = v_0 t + \\frac{1}{2}at^2$; $v^2 = v_0^2 + 2ax$.",
+          "hi": "$v = v_0 + at$; $x = v_0 t + \\frac{1}{2}at^2$; $v^2 = v_0^2 + 2ax$।"
+        },
+        {
+          "en": "Constant acceleration only; signs matter.",
+          "hi": "केवल नियत त्वरण; चिह्न महत्त्वपूर्ण हैं।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:08",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Free fall",
+        "hi": "मुक्त पतन"
+      },
+      "body": {
+        "en": "An object released near the earth's surface accelerates downward under gravity. If air resistance is neglected it is in free fall, and if the height is small compared with the earth's radius, g can be taken as constant, 9.8 m s⁻². Free fall is therefore motion with uniform acceleration.\n\nWith upward as positive, $a = -g$. For an object released from rest at $y = 0$: $v = -9.8\\,t$ m/s, $y = -4.9\\,t^2$ m and $v^2 = -19.6\\,y$ m² s⁻².\n\nGalileo Galilei (1564-1642), who first studied free fall quantitatively, found that the distances fallen from rest in successive equal intervals are in the ratio 1 : 3 : 5 : 7 : ...",
+        "hi": "पृथ्वी के पृष्ठ के पास छोड़ी गई वस्तु गुरुत्व के कारण नीचे की ओर त्वरित होती है। वायु प्रतिरोध की उपेक्षा करें तो वह मुक्त पतन में है, और यदि ऊँचाई पृथ्वी की त्रिज्या की तुलना में कम है तो g को नियत, 9.8 m s⁻², माना जा सकता है। इसलिए मुक्त पतन एकसमान त्वरण वाली गति है।\n\nऊपर को धनात्मक मानें तो $a = -g$। $y = 0$ से विराम से छोड़ी गई वस्तु के लिए: $v = -9.8\\,t$ m/s, $y = -4.9\\,t^2$ m और $v^2 = -19.6\\,y$ m² s⁻²।\n\nगैलीलियो गैलिली (1564-1642), जिन्होंने पहली बार मुक्त पतन का मात्रात्मक अध्ययन किया, ने पाया कि विराम से गिरती वस्तु द्वारा क्रमागत समान अंतरालों में तय दूरियाँ 1 : 3 : 5 : 7 : ... के अनुपात में होती हैं।"
+      },
+      "media": "img.motion-straight-line.ball-rooftop",
+      "highlights": [
+        {
+          "term": {
+            "en": "free fall",
+            "hi": "मुक्त पतन"
+          },
+          "definition": {
+            "en": "motion under gravity alone, air resistance neglected",
+            "hi": "केवल गुरुत्व के अधीन गति, वायु प्रतिरोध की उपेक्षा"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Examples 2.4 and 2.5"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:09",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A ball is thrown vertically up at 20 m/s from the top of a building 25.0 m high. Take g = 10 m s⁻². (a) How high does it rise? (b) After how long does it hit the ground?",
+        "hi": "25.0 m ऊँचे भवन की छत से एक गेंद 20 m/s से ऊर्ध्वाधर ऊपर फेंकी जाती है। g = 10 m s⁻² लीजिए। (a) यह कितनी ऊँचाई तक उठती है? (b) कितने समय बाद यह धरती से टकराती है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Take y upward with zero at the ground: $y_0 = 25$ m, $v_0 = +20$ m/s, $a = -10$ m s⁻².",
+          "hi": "y ऊपर की ओर, धरती पर शून्य: $y_0 = 25$ m, $v_0 = +20$ m/s, $a = -10$ m s⁻²।"
+        },
+        {
+          "en": "(a) At the top $v = 0$: $0 = 20^2 + 2(-10)(y - y_0)$, so $y - y_0 = 20$ m.",
+          "hi": "(a) शिखर पर $v = 0$: $0 = 20^2 + 2(-10)(y - y_0)$, अतः $y - y_0 = 20$ m।"
+        },
+        {
+          "en": "(b) At the ground $y = 0$: $0 = 25 + 20t - 5t^2$, or $t^2 - 4t - 5 = 0$, so $t = 5$ s.",
+          "hi": "(b) धरती पर $y = 0$: $0 = 25 + 20t - 5t^2$, या $t^2 - 4t - 5 = 0$, अतः $t = 5$ s।"
+        }
+      ],
+      "answer": {
+        "en": "(a) 20 m above the roof; (b) 5 s",
+        "hi": "(a) छत से 20 m ऊपर; (b) 5 s"
+      },
+      "answer_value": {
+        "value": 5,
+        "unit": "s",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "shortcut": {
+        "en": "One equation with the whole flight beats splitting it into up and down parts: the acceleration is the same throughout.",
+        "hi": "पूरी उड़ान के लिए एक समीकरण, ऊपर और नीचे के भागों में बाँटने से बेहतर है: त्वरण पूरे समय समान है।"
+      },
+      "common_trap": {
+        "en": "Taking g as positive while up is positive.",
+        "hi": "ऊपर को धनात्मक मानकर g को भी धनात्मक ले लेना।"
+      },
+      "media": "img.motion-straight-line.ball-rooftop",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 2.3"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-straight-line.kinematic-equations.0002"
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:11",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Free fall: $a = -g$ with up positive; $g = 9.8$ m s⁻².",
+          "hi": "मुक्त पतन: ऊपर धनात्मक हो तो $a = -g$; $g = 9.8$ m s⁻²।"
+        },
+        {
+          "en": "Distances in equal intervals from rest: 1 : 3 : 5 : 7.",
+          "hi": "विराम से समान अंतरालों में दूरियाँ: 1 : 3 : 5 : 7।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:12",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Why speed limits matter",
+        "hi": "गति सीमा क्यों ज़रूरी है"
+      },
+      "body": {
+        "en": "The distance a vehicle travels after the brakes are applied, before it stops, is its stopping distance. With $v = 0$ in $v^2 = v_0^2 + 2ax$, the stopping distance is $d_s = -\\frac{v_0^2}{2a}$, where a is the (negative) braking acceleration. It grows as the square of the initial speed: doubling the speed makes it four times as long. Stopping distance is considered in setting speed limits, for example in school zones.\n\nReaction time is the time a person takes to observe, think and act before braking begins. You can measure it by catching a ruler a friend drops between your thumb and forefinger: the ruler falls freely, so the distance d it falls gives $t_r = \\sqrt{2d/g}$. Total stopping also depends on the road surface and the vehicle's braking capacity.",
+        "hi": "ब्रेक लगाने के बाद रुकने से पहले वाहन जो दूरी तय करता है, वह उसकी रुकने की दूरी है। $v = 0$ को $v^2 = v_0^2 + 2ax$ में रखने पर रुकने की दूरी $d_s = -\\frac{v_0^2}{2a}$ है, जहाँ a (ऋणात्मक) ब्रेकिंग त्वरण है। यह प्रारंभिक चाल के वर्ग के अनुसार बढ़ती है: चाल दोगुनी करने पर यह चार गुनी हो जाती है। गति सीमा तय करते समय, उदाहरण के लिए स्कूल क्षेत्रों में, रुकने की दूरी का ध्यान रखा जाता है।\n\nप्रतिक्रिया काल वह समय है जो कोई व्यक्ति ब्रेक लगाना शुरू करने से पहले देखने, सोचने और करने में लेता है। इसे मापने के लिए मित्र द्वारा आपके अंगूठे और तर्जनी के बीच से गिराए गए पैमाने को पकड़िए: पैमाना मुक्त रूप से गिरता है, इसलिए उसके गिरने की दूरी d से $t_r = \\sqrt{2d/g}$ मिलता है। कुल रुकना सड़क की सतह और वाहन की ब्रेकिंग क्षमता पर भी निर्भर है।"
+      },
+      "media": "img.motion-straight-line.ruler-catch",
+      "highlights": [
+        {
+          "term": {
+            "en": "stopping distance",
+            "hi": "रुकने की दूरी"
+          },
+          "definition": {
+            "en": "proportional to the square of the initial speed",
+            "hi": "प्रारंभिक चाल के वर्ग के अनुक्रमानुपाती"
+          }
+        },
+        {
+          "term": {
+            "en": "reaction time",
+            "hi": "प्रतिक्रिया काल"
+          },
+          "definition": {
+            "en": "time to observe, think and act",
+            "hi": "देखने, सोचने और करने का समय"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Examples 2.6 and 2.7; NCERT iesc104 §4.3 (Bridging Science and Society)"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:13",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A car brakes with an acceleration of -5 m s⁻². Find its stopping distance from 72 km/h and from 36 km/h.",
+        "hi": "एक कार -5 m s⁻² के त्वरण से ब्रेक लगाती है। 72 km/h और 36 km/h से उसकी रुकने की दूरी ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$72$ km/h $= 20$ m/s; $d_s = \\frac{20^2}{2 \\times 5} = 40$ m",
+          "hi": "$72$ km/h $= 20$ m/s; $d_s = \\frac{20^2}{2 \\times 5} = 40$ m"
+        },
+        {
+          "en": "$36$ km/h $= 10$ m/s; $d_s = \\frac{10^2}{2 \\times 5} = 10$ m",
+          "hi": "$36$ km/h $= 10$ m/s; $d_s = \\frac{10^2}{2 \\times 5} = 10$ m"
+        }
+      ],
+      "answer": {
+        "en": "40 m and 10 m: twice the speed, four times the distance",
+        "hi": "40 m और 10 m: दोगुनी चाल, चार गुनी दूरी"
+      },
+      "answer_value": {
+        "value": 40,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Expecting the distance to double when the speed doubles.",
+        "hi": "चाल दोगुनी होने पर दूरी भी दोगुनी मान लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+        "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§4.3, Eq. 4.4c; NCERT keph102 Example 2.6"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:14",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A ruler dropped between a student's fingers falls 21.0 cm before she catches it. Take g = 9.8 m s⁻². Estimate her reaction time.",
+        "hi": "किसी छात्रा की उँगलियों के बीच से गिराया गया पैमाना पकड़े जाने से पहले 21.0 cm गिरता है। g = 9.8 m s⁻² लीजिए। उसके प्रतिक्रिया काल का अनुमान लगाइए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The ruler falls freely from rest: $d = \\frac{1}{2}g t_r^2$.",
+          "hi": "पैमाना विराम से मुक्त रूप से गिरता है: $d = \\frac{1}{2}g t_r^2$।"
+        },
+        {
+          "en": "$t_r = \\sqrt{\\frac{2d}{g}} = \\sqrt{\\frac{2 \\times 0.21}{9.8}} \\approx 0.21$ s",
+          "hi": "$t_r = \\sqrt{\\frac{2d}{g}} = \\sqrt{\\frac{2 \\times 0.21}{9.8}} \\approx 0.21$ s"
+        }
+      ],
+      "answer": {
+        "en": "About 0.21 s",
+        "hi": "लगभग 0.21 s"
+      },
+      "answer_value": {
+        "value": 0.21,
+        "unit": "s",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Using 21.0 cm without converting to metres.",
+        "hi": "21.0 cm को मीटर में बदले बिना लेना।"
+      },
+      "media": "img.motion-straight-line.ruler-catch",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 2.7"
+      }
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:15",
+      "type": "question",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-straight-line.kinematic-equations.0003"
+    },
+    {
+      "id": "phy.motion-straight-line.kinematic-equations:dd:16",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Stopping distance $d_s = v_0^2 / 2|a|$: four times longer at twice the speed.",
+          "hi": "रुकने की दूरी $d_s = v_0^2 / 2|a|$: दोगुनी चाल पर चार गुनी।"
+        },
+        {
+          "en": "Reaction time from a dropped ruler: $t_r = \\sqrt{2d/g}$.",
+          "hi": "गिराए गए पैमाने से प्रतिक्रिया काल: $t_r = \\sqrt{2d/g}$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

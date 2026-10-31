@@ -1,0 +1,1294 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or OpenStax and Wikipedia for the power set and the union count, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.sets.set-operations",
+  "questions": [
+    {
+      "id": "q.math.sets.set-operations.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.venn-diagrams",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In a Venn diagram, the universal set is usually drawn as",
+        "hi": "वेन आरेख में सार्वत्रिक समुच्चय सामान्यतः किससे दिखाया जाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "a rectangle",
+            "hi": "एक आयत"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "a circle",
+            "hi": "एक वृत्त"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "a triangle",
+            "hi": "एक त्रिभुज"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "a single point",
+            "hi": "एक बिंदु"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What shape frames the whole picture?",
+          "hi": "पूरे चित्र को कौन-सी आकृति घेरती है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The universal set is the frame that holds every other set.",
+          "hi": "सार्वत्रिक समुच्चय वह ढाँचा है जिसमें बाकी सब समुच्चय हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.8: the universal set is represented by a rectangle and its subsets by circles.",
+            "hi": "NCERT §1.8: सार्वत्रिक समुच्चय को आयत से और उसके उपसमुच्चयों को वृत्तों से दिखाया जाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Circles stand for the subsets.",
+              "hi": "वृत्त उपसमुच्चयों के लिए हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Triangles are not the convention.",
+              "hi": "त्रिभुज परिपाटी नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A point cannot hold other sets.",
+              "hi": "बिंदु में अन्य समुच्चय नहीं समा सकते।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.venn-diagrams",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In a Venn diagram of two sets A and B in U, the region inside A but outside B represents",
+        "hi": "U में दो समुच्चयों A और B के वेन आरेख में, A के भीतर पर B के बाहर का क्षेत्र दर्शाता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$A - B$",
+            "hi": "$A - B$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$B - A$",
+            "hi": "$B - A$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$A \\cap B$",
+            "hi": "$A \\cap B$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$A'$",
+            "hi": "$A'$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Name the region in words first.",
+          "hi": "पहले क्षेत्र का नाम शब्दों में बताइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Inside A, outside B: in A but not in B.",
+          "hi": "A के भीतर, B के बाहर: A में पर B में नहीं।"
+        },
+        "steps": [
+          {
+            "en": "By definition $A - B = \\{x : x \\in A,\\ x \\notin B\\}$ (NCERT §1.9).",
+            "hi": "परिभाषा से $A - B = \\{x : x \\in A,\\ x \\notin B\\}$ (NCERT §1.9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$B - A$ lies inside B and outside A.",
+              "hi": "$B - A$, B के भीतर और A के बाहर है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$A \\cap B$ is the overlap.",
+              "hi": "$A \\cap B$ साझा भाग है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$A'$ lies outside A.",
+              "hi": "$A'$, A के बाहर है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.venn-diagrams",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $A \\subset B$, how are their circles drawn in a Venn diagram?",
+        "hi": "यदि $A \\subset B$, तो वेन आरेख में उनके वृत्त कैसे बनाए जाते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "The circle for A lies wholly inside the circle for B.",
+            "hi": "A का वृत्त पूरी तरह B के वृत्त के भीतर है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "The two circles do not meet.",
+            "hi": "दोनों वृत्त नहीं मिलते।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The two circles partly overlap.",
+            "hi": "दोनों वृत्त आंशिक रूप से एक-दूसरे पर चढ़ते हैं।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The circle for B lies wholly inside the circle for A.",
+            "hi": "B का वृत्त पूरी तरह A के वृत्त के भीतर है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of the nested bowls.",
+          "hi": "एक-दूसरे में रखी कटोरियाँ सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every element of A is in B, so no part of A lies outside B.",
+          "hi": "A का हर अवयव B में है, इसलिए A का कोई भाग B के बाहर नहीं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.8 draws a subset as a circle inside the circle of the larger set.",
+            "hi": "NCERT §1.8 उपसमुच्चय को बड़े समुच्चय के वृत्त के भीतर एक वृत्त से दिखाता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Separate circles show disjoint sets.",
+              "hi": "अलग वृत्त असंयुक्त समुच्चय दिखाते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A partial overlap leaves some of A outside B.",
+              "hi": "आंशिक चढ़ाव में A का कुछ भाग B के बाहर रहता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That shows $B \\subset A$.",
+              "hi": "वह $B \\subset A$ दिखाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.union-intersection-complement",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $A = \\{1, 2, 3, 4, 5, 6\\}$ and $B = \\{2, 4, 6, 8\\}$, then $A - B$ is",
+        "hi": "यदि $A = \\{1, 2, 3, 4, 5, 6\\}$ और $B = \\{2, 4, 6, 8\\}$, तो $A - B$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{1, 3, 5\\}$",
+            "hi": "$\\{1, 3, 5\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{8\\}$",
+            "hi": "$\\{8\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{2, 4, 6\\}$",
+            "hi": "$\\{2, 4, 6\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{1, 3, 5, 8\\}$",
+            "hi": "$\\{1, 3, 5, 8\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Elements of A only.",
+          "hi": "केवल A के अवयव।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Start with A and remove whatever is also in B.",
+          "hi": "A से शुरू कीजिए और जो B में भी है उसे हटाइए।"
+        },
+        "steps": [
+          {
+            "en": "Removing $2, 4, 6$ from A leaves $\\{1, 3, 5\\}$ (NCERT §1.9).",
+            "hi": "A में से $2, 4, 6$ हटाने पर $\\{1, 3, 5\\}$ बचता है (NCERT §1.9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$\\{8\\}$ is $B - A$.",
+              "hi": "$\\{8\\}$, $B - A$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$\\{2, 4, 6\\}$ is $A \\cap B$.",
+              "hi": "$\\{2, 4, 6\\}$, $A \\cap B$ है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$8$ is not in A, so it cannot be in $A - B$.",
+              "hi": "$8$, A में नहीं है, इसलिए $A - B$ में नहीं हो सकता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.union-intersection-complement",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9\\}$ and $A = \\{2, 4, 6, 8\\}$. Then $A'$ is",
+        "hi": "मान लीजिए $U = \\{1, 2, 3, 4, 5, 6, 7, 8, 9\\}$ और $A = \\{2, 4, 6, 8\\}$। तब $A'$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{1, 3, 5, 7, 9\\}$",
+            "hi": "$\\{1, 3, 5, 7, 9\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\phi$",
+            "hi": "$\\phi$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{2, 4, 6, 8\\}$",
+            "hi": "$\\{2, 4, 6, 8\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{1, 3, 5, 7\\}$",
+            "hi": "$\\{1, 3, 5, 7\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Go through U one element at a time.",
+          "hi": "U के अवयवों को एक-एक कर देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The complement is what U has and A lacks.",
+          "hi": "पूरक वह है जो U में है और A में नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$A' = U - A = \\{1, 3, 5, 7, 9\\}$ (NCERT §1.10).",
+            "hi": "$A' = U - A = \\{1, 3, 5, 7, 9\\}$ (NCERT §1.10)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A does not fill U.",
+              "hi": "A, U को नहीं भरता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is A itself.",
+              "hi": "वह स्वयं A है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$9$ is in U and not in A, so it belongs to $A'$.",
+              "hi": "$9$, U में है और A में नहीं, इसलिए $A'$ में है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.union-intersection-complement",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which pair of sets is disjoint?",
+        "hi": "कौन-सा समुच्चय युग्म असंयुक्त है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{1, 3, 5\\}$ and $\\{2, 4, 6\\}$",
+            "hi": "$\\{1, 3, 5\\}$ और $\\{2, 4, 6\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{1, 2\\}$ and $\\{2, 3\\}$",
+            "hi": "$\\{1, 2\\}$ और $\\{2, 3\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{a, e\\}$ and $\\{e, i\\}$",
+            "hi": "$\\{a, e\\}$ और $\\{e, i\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\mathbf{N}$ and $\\mathbf{Z}$",
+            "hi": "$\\mathbf{N}$ और $\\mathbf{Z}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find the intersection of each pair.",
+          "hi": "हर युग्म का सर्वनिष्ठ निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Disjoint means nothing in common.",
+          "hi": "असंयुक्त का अर्थ है कुछ भी साझा नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$\\{1, 3, 5\\} \\cap \\{2, 4, 6\\} = \\phi$ (NCERT §1.9).",
+            "hi": "$\\{1, 3, 5\\} \\cap \\{2, 4, 6\\} = \\phi$ (NCERT §1.9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "They share $2$.",
+              "hi": "इनमें $2$ साझा है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "They share $e$.",
+              "hi": "इनमें $e$ साझा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\mathbf{N} \\subset \\mathbf{Z}$, so they share every natural number.",
+              "hi": "$\\mathbf{N} \\subset \\mathbf{Z}$, इसलिए हर प्राकृत संख्या साझा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0007",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.union-intersection-complement",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A = \\{x : x \\in \\mathbf{N},\\ x \\le 10\\}$ and let B be the set of even natural numbers. Find $n(A \\cap B)$.",
+        "hi": "मान लीजिए $A = \\{x : x \\in \\mathbf{N},\\ x \\le 10\\}$ और B सम प्राकृत संख्याओं का समुच्चय है। $n(A \\cap B)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 5,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "The intersection holds elements in both sets.",
+          "hi": "सर्वनिष्ठ में दोनों समुच्चयों के अवयव होते हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Keep the even numbers from $1$ to $10$.",
+          "hi": "$1$ से $10$ तक की सम संख्याएँ रखिए।"
+        },
+        "steps": [
+          {
+            "en": "$A \\cap B = \\{2, 4, 6, 8, 10\\}$, so $n(A \\cap B) = 5$ (NCERT §1.9).",
+            "hi": "$A \\cap B = \\{2, 4, 6, 8, 10\\}$, अतः $n(A \\cap B) = 5$ (NCERT §1.9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Leaving out $10$, as if the sign were $<$ instead of $\\le$, gives $4$.",
+              "hi": "$10$ को छोड़ देना, मानो चिह्न $<$ हो, $\\le$ नहीं, $4$ देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.union-intersection-complement",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For any sets A and B, $(A - B) \\cap B$ is",
+        "hi": "किन्हीं समुच्चयों A और B के लिए $(A - B) \\cap B$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\phi$",
+            "hi": "$\\phi$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "A",
+            "hi": "A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "B",
+            "hi": "B"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$A \\cap B$",
+            "hi": "$A \\cap B$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Draw the two circles and shade.",
+          "hi": "दोनों वृत्त बनाकर छायांकित कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$A - B$ was built by throwing out everything in B.",
+          "hi": "$A - B$, B की हर चीज़ हटाकर बना है।"
+        },
+        "steps": [
+          {
+            "en": "No element of $A - B$ is in B, so the intersection is empty (NCERT §1.9: $A - B$ and $B$ share nothing).",
+            "hi": "$A - B$ का कोई अवयव B में नहीं, अतः सर्वनिष्ठ रिक्त है (NCERT §1.9: $A - B$ और $B$ में कुछ साझा नहीं)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Elements of A that are in B were removed.",
+              "hi": "A के जो अवयव B में थे, वे हटा दिए गए।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$A - B$ contains no element of B.",
+              "hi": "$A - B$ में B का कोई अवयव नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$A \\cap B$ is exactly what was removed.",
+              "hi": "$A \\cap B$ ठीक वही है जो हटाया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.set-algebra-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For subsets A and B of U, $(A \\cup B)'$ equals",
+        "hi": "U के उपसमुच्चयों A और B के लिए $(A \\cup B)'$ बराबर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$A' \\cap B'$",
+            "hi": "$A' \\cap B'$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$A' \\cup B'$",
+            "hi": "$A' \\cup B'$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$A \\cap B$",
+            "hi": "$A \\cap B$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$A' \\cup B$",
+            "hi": "$A' \\cup B$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Complement flips $\\cup$ to $\\cap$.",
+          "hi": "पूरक $\\cup$ को $\\cap$ में पलटता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Outside the union means outside A and outside B at once.",
+          "hi": "सम्मिलन के बाहर का अर्थ है एक साथ A के बाहर और B के बाहर।"
+        },
+        "steps": [
+          {
+            "en": "De Morgan's law (NCERT §1.10): $(A \\cup B)' = A' \\cap B'$.",
+            "hi": "डी मॉर्गन नियम (NCERT §1.10): $(A \\cup B)' = A' \\cap B'$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is $(A \\cap B)'$.",
+              "hi": "वह $(A \\cap B)'$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The overlap lies inside the union, not outside it.",
+              "hi": "साझा भाग सम्मिलन के भीतर है, बाहर नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "B lies inside $A \\cup B$, so it cannot be in the complement.",
+              "hi": "B, $A \\cup B$ के भीतर है, इसलिए पूरक में नहीं हो सकता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0010",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.set-algebra-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $n(A) = 20$, $n(B) = 15$ and $n(A \\cap B) = 6$, find $n(A \\cup B)$.",
+        "hi": "यदि $n(A) = 20$, $n(B) = 15$ और $n(A \\cap B) = 6$, तो $n(A \\cup B)$ ज्ञात कीजिए।"
+      },
+      "answer": {
+        "value": 29,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Use $n(A) + n(B) - n(A \\cap B)$.",
+          "hi": "$n(A) + n(B) - n(A \\cap B)$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add both counts, then take away the elements counted twice.",
+          "hi": "दोनों गिनतियाँ जोड़िए, फिर दो बार गिने अवयव घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$n(A \\cup B) = 20 + 15 - 6 = 29$ (OpenStax Contemporary Mathematics §1.4).",
+            "hi": "$n(A \\cup B) = 20 + 15 - 6 = 29$ (OpenStax Contemporary Mathematics §1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$35$ forgets to subtract the common elements.",
+              "hi": "$35$ में साझा अवयव घटाना भूल गए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0011",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.set-algebra-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In a group of 50 people, 30 speak Hindi and 25 speak English, and each person speaks at least one of the two. How many speak both?",
+        "hi": "50 लोगों के एक समूह में 30 हिंदी और 25 अंग्रेज़ी बोलते हैं, और हर व्यक्ति दोनों में से कम से कम एक भाषा बोलता है। कितने लोग दोनों बोलते हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$55$",
+            "hi": "$55$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$20$",
+            "hi": "$20$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Rearrange $n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$.",
+          "hi": "$n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$ को पुनर्व्यवस्थित कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The two groups add up to more than the whole group; the extra people were counted twice.",
+          "hi": "दोनों समूहों का योग पूरे समूह से अधिक है; अतिरिक्त लोग दो बार गिने गए।"
+        },
+        "steps": [
+          {
+            "en": "$n(H \\cup E) = 50$, so $n(H \\cap E) = 30 + 25 - 50 = 5$ (OpenStax Contemporary Mathematics §1.4).",
+            "hi": "$n(H \\cup E) = 50$, अतः $n(H \\cap E) = 30 + 25 - 50 = 5$ (OpenStax Contemporary Mathematics §1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$55$ is $30 + 25$, more than the group.",
+              "hi": "$55$, $30 + 25$ है, समूह से अधिक।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$20$ is $50 - 30$, the number who speak English only.",
+              "hi": "$20$, $50 - 30$ है, केवल अंग्रेज़ी बोलने वालों की संख्या।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "With $0$ in common the total would be $55$, not $50$.",
+              "hi": "$0$ साझा होने पर कुल $55$ होता, $50$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0012",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.set-algebra-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$A \\cap (B \\cup C)$ is equal to",
+        "hi": "$A \\cap (B \\cup C)$ बराबर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$(A \\cap B) \\cup (A \\cap C)$",
+            "hi": "$(A \\cap B) \\cup (A \\cap C)$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$(A \\cup B) \\cap C$",
+            "hi": "$(A \\cup B) \\cap C$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$(A \\cap B) \\cup C$",
+            "hi": "$(A \\cap B) \\cup C$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$A \\cup (B \\cap C)$",
+            "hi": "$A \\cup (B \\cap C)$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Every element must be in A.",
+          "hi": "हर अवयव A में होना चाहिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Intersection distributes over union, like multiplication over addition.",
+          "hi": "सर्वनिष्ठ सम्मिलन पर वितरित होता है, जैसे गुणा जोड़ पर।"
+        },
+        "steps": [
+          {
+            "en": "Distributive law (NCERT §1.9): $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$.",
+            "hi": "वितरण नियम (NCERT §1.9): $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This contains elements of B and C that are not in A, so it is not the same set in general.",
+              "hi": "इसमें B और C के वे अवयव भी आते हैं जो A में नहीं हैं, इसलिए यह सामान्यतः वही समुच्चय नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This contains all of C, even the part outside A.",
+              "hi": "इसमें पूरा C है, A के बाहर वाला भाग भी।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This contains all of A, even the part outside $B \\cup C$.",
+              "hi": "इसमें पूरा A है, $B \\cup C$ के बाहर वाला भाग भी।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.set-operations.0013",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.set-operations.core.set-algebra-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In a survey of 60 students, 35 like tea, 30 like coffee and 10 like neither. How many like both?",
+        "hi": "60 विद्यार्थियों के एक सर्वेक्षण में 35 को चाय, 30 को कॉफ़ी पसंद है और 10 को दोनों में से कुछ नहीं। कितनों को दोनों पसंद हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$15$",
+            "hi": "$15$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$25$",
+            "hi": "$25$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$10$",
+            "hi": "$10$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Union = total minus 'neither'.",
+          "hi": "सम्मिलन = कुल में से 'कोई नहीं' घटाकर।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "First find how many like at least one drink, then use the union formula.",
+          "hi": "पहले निकालिए कि कितनों को कम से कम एक पेय पसंद है, फिर सम्मिलन का सूत्र लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "At least one: $60 - 10 = 50$. Both: $35 + 30 - 50 = 15$ (OpenStax Contemporary Mathematics §1.4).",
+            "hi": "कम से कम एक: $60 - 10 = 50$। दोनों: $35 + 30 - 50 = 15$ (OpenStax Contemporary Mathematics §1.4)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$5$ comes from using $60$ as the union and ignoring the 10 who like neither.",
+              "hi": "$5$ तब आता है जब $60$ को सम्मिलन मानकर उन 10 को अनदेखा किया जाए जिन्हें कुछ पसंद नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$25$ subtracts the wrong totals.",
+              "hi": "$25$ में गलत योग घटाए गए हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$10$ is the number who like neither.",
+              "hi": "$10$ उनकी संख्या है जिन्हें कुछ पसंद नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.phy.electrostatic-potential-capacitance.parallel-plate.9001 (paper Q32) needs its figure img.electrostatic-potential-capacitance.pyq-half-filled-capacitor, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure.",
+  "hi_source": "translation",
+  "topic": "phy.electrostatic-potential-capacitance.parallel-plate",
+  "questions": [
+    {
+      "id": "q.phy.electrostatic-potential-capacitance.parallel-plate.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.electrostatic-potential-capacitance.parallel-plate.core.parallel-plate-capacitor",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A parallel plate air capacitor has a capacitance $C$. When it is half filled as show in figure with a dielectric constant $K=5$, the percentage increase in the capacitance is ______.",
+        "hi": "एक समांतर पट्टिका वायु संधारित्र की धारिता $C$ है। जब इसे चित्र में दिखाए अनुसार परावैद्युतांक $K=5$ वाले पदार्थ से आधा भरा जाता है, तो धारिता में प्रतिशत वृद्धि ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$33.34$",
+            "hi": "$33.34$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$66.67$",
+            "hi": "$66.67$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$200$",
+            "hi": "$200$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$400$",
+            "hi": "$400$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "The slab and the air layer sit one above the other between the plates, so they act like two capacitors in series, each of thickness $\\frac d2$.",
+          "hi": "पट्टी और वायु की परत पट्टिकाओं के बीच एक के ऊपर एक हैं, अतः वे श्रेणी में जुड़े दो संधारित्रों जैसे हैं, प्रत्येक की मोटाई $\\frac d2$ है।"
+        },
+        "steps": [
+          {
+            "en": "$C'=\\frac{\\epsilon_0A}{\\frac{d}{2K}+\\frac d2}=\\frac{\\epsilon_0A}{d\\left(\\frac{1}{10}+\\frac12\\right)}=\\frac{5}{3}C$.",
+            "hi": "$C'=\\frac{\\epsilon_0A}{\\frac{d}{2K}+\\frac d2}=\\frac{\\epsilon_0A}{d\\left(\\frac{1}{10}+\\frac12\\right)}=\\frac{5}{3}C$।"
+          },
+          {
+            "en": "Increase $=\\frac23 \\times 100\\% \\approx 66.67\\%$.",
+            "hi": "वृद्धि $=\\frac23 \\times 100\\% \\approx 66.67\\%$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 120,
+      "difficulty_estimate": "medium",
+      "media": "img.electrostatic-potential-capacitance.pyq-half-filled-capacitor",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 32
+      }
+    }
+  ]
+}

@@ -1,0 +1,418 @@
+{
+  "schema": "lesson@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx.chapter-a.topic-c:deep_dive",
+  "topic": "fx.chapter-a.topic-c",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "fx.chapter-a.topic-c.sub-1.concept-1",
+    "fx.chapter-a.topic-c.sub-1.concept-2"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Fixture title bite C1",
+        "hi": "फ़िक्स्चर शीर्षक bite C1"
+      },
+      "card_ids": [
+        "fx.chapter-a.topic-c:dd:01",
+        "fx.chapter-a.topic-c:dd:02",
+        "fx.chapter-a.topic-c:dd:03",
+        "fx.chapter-a.topic-c:dd:04",
+        "fx.chapter-a.topic-c:dd:05",
+        "fx.chapter-a.topic-c:dd:06"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Fixture title bite C2",
+        "hi": "फ़िक्स्चर शीर्षक bite C2"
+      },
+      "card_ids": [
+        "fx.chapter-a.topic-c:dd:07",
+        "fx.chapter-a.topic-c:dd:08",
+        "fx.chapter-a.topic-c:dd:09",
+        "fx.chapter-a.topic-c:dd:10",
+        "fx.chapter-a.topic-c:dd:11",
+        "fx.chapter-a.topic-c:dd:12"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "fx.chapter-a.topic-c:dd:01",
+      "type": "pano360",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "pano": "pano.chapter-a.fx-pano-c",
+      "prompt": {
+        "en": "Fixture stem C1",
+        "hi": "फ़िक्स्चर प्रश्न C1"
+      },
+      "hotspots": [
+        {
+          "id": "h1",
+          "yaw": -40,
+          "pitch": 5,
+          "title": {
+            "en": "Fixture title C1.1",
+            "hi": "फ़िक्स्चर शीर्षक C1.1"
+          },
+          "body": {
+            "en": "Fixture body C1.1",
+            "hi": "फ़िक्स्चर पाठ C1.1"
+          }
+        },
+        {
+          "id": "h2",
+          "yaw": 90,
+          "pitch": -10,
+          "title": {
+            "en": "Fixture title C1.2",
+            "hi": "फ़िक्स्चर शीर्षक C1.2"
+          },
+          "body": {
+            "en": "Fixture body C1.2",
+            "hi": "फ़िक्स्चर पाठ C1.2"
+          }
+        }
+      ],
+      "fallback": {
+        "media": "img.chapter-a.fx-fallback-b",
+        "body": {
+          "en": "Fixture explanation 1",
+          "hi": "फ़िक्स्चर व्याख्या 1"
+        }
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:02",
+      "type": "model3d",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "model": "m3d.chapter-a.fx-model-c",
+      "prompt": {
+        "en": "Fixture stem C2",
+        "hi": "फ़िक्स्चर प्रश्न C2"
+      },
+      "labels": [
+        {
+          "anchor": "part_one",
+          "text": {
+            "en": "Fixture label 1",
+            "hi": "फ़िक्स्चर लेबल 1"
+          }
+        },
+        {
+          "anchor": "part_two",
+          "text": {
+            "en": "Fixture label 2",
+            "hi": "फ़िक्स्चर लेबल 2"
+          }
+        }
+      ],
+      "exploded_view": true,
+      "fallback": {
+        "media": "img.chapter-a.fx-fallback-b",
+        "body": {
+          "en": "Fixture explanation 1",
+          "hi": "फ़िक्स्चर व्याख्या 1"
+        }
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:03",
+      "type": "interactive",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-2"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Fixture stem C3",
+        "hi": "फ़िक्स्चर प्रश्न C3"
+      },
+      "widget": "label_diagram",
+      "config": {
+        "media": "img.chapter-a.fx-diagram-c",
+        "spots": [
+          {
+            "id": "p1",
+            "anchor": "spot-1"
+          },
+          {
+            "id": "p2",
+            "anchor": "spot-2"
+          }
+        ],
+        "labels": [
+          {
+            "id": "l1",
+            "text": {
+              "en": "Fixture label 1",
+              "hi": "फ़िक्स्चर लेबल 1"
+            }
+          },
+          {
+            "id": "l2",
+            "text": {
+              "en": "Fixture label 2",
+              "hi": "फ़िक्स्चर लेबल 2"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "spot": "p1",
+            "label": "l1"
+          },
+          {
+            "spot": "p2",
+            "label": "l2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-2"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Fixture stem C4",
+        "hi": "फ़िक्स्चर प्रश्न C4"
+      },
+      "widget": "graph",
+      "config": {
+        "x": {
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "label": {
+            "en": "Fixture label x",
+            "hi": "फ़िक्स्चर लेबल x"
+          },
+          "unit": null
+        },
+        "y": {
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "label": {
+            "en": "Fixture label y",
+            "hi": "फ़िक्स्चर लेबल y"
+          },
+          "unit": null
+        },
+        "handle": "point",
+        "initial": {
+          "x": 0,
+          "y": 0
+        },
+        "target": {
+          "x": 3,
+          "y": 7,
+          "tolerance": 0.5
+        }
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:05",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-2"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-c.0001"
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:06",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point C6.1",
+          "hi": "फ़िक्स्चर बिंदु C6.1"
+        },
+        {
+          "en": "Fixture point C6.2",
+          "hi": "फ़िक्स्चर बिंदु C6.2"
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:07",
+      "type": "memory_hook",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "mnemonic": {
+        "en": "m.fx.chapter-a.topic-c.sub-1.concept-1.1",
+        "hi": "m.fx.chapter-a.topic-c.sub-1.concept-1.2"
+      }
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:08",
+      "type": "video",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Fixture title C8",
+        "hi": "फ़िक्स्चर शीर्षक C8"
+      },
+      "youtube_id": "fixture0001",
+      "start_s": 0,
+      "end_s": 60,
+      "concept_timestamps": [
+        {
+          "concept": "fx.chapter-a.topic-c.sub-1.concept-1",
+          "t_s": 10
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:09",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ],
+      "depth": 3,
+      "question": "q.fx.chapter-a.topic-c.0002"
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:10",
+      "type": "roleplay",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ],
+      "depth": 2,
+      "character": {
+        "name": {
+          "en": "Fixture character",
+          "hi": "फ़िक्स्चर पात्र"
+        },
+        "era": {
+          "en": "Fixture era",
+          "hi": "फ़िक्स्चर काल"
+        },
+        "portrait": "img.chapter-a.fx-portrait-c"
+      },
+      "persona_prompt": "Fixture persona prompt (test data). Reply only with the words 'fixture reply'.",
+      "goals": [
+        {
+          "en": "Fixture goal 1",
+          "hi": "फ़िक्स्चर लक्ष्य 1"
+        },
+        {
+          "en": "Fixture goal 2",
+          "hi": "फ़िक्स्चर लक्ष्य 2"
+        }
+      ],
+      "guardrails": [
+        "Fixture guardrail (test data)"
+      ],
+      "opening_line": {
+        "en": "Fixture line C10",
+        "hi": "फ़िक्स्चर पंक्ति C10"
+      },
+      "suggested_replies": [
+        {
+          "en": "Fixture reply 1",
+          "hi": "फ़िक्स्चर जवाब 1"
+        },
+        {
+          "en": "Fixture reply 2",
+          "hi": "फ़िक्स्चर जवाब 2"
+        }
+      ],
+      "script": "rp.fx.chapter-a.topic-c"
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:11",
+      "type": "experiment",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Fixture title C11",
+        "hi": "फ़िक्स्चर शीर्षक C11"
+      },
+      "materials": [
+        {
+          "en": "Fixture item 1",
+          "hi": "फ़िक्स्चर आइटम 1"
+        }
+      ],
+      "steps": [
+        {
+          "en": "Fixture step 1",
+          "hi": "फ़िक्स्चर चरण 1"
+        },
+        {
+          "en": "Fixture step 2",
+          "hi": "फ़िक्स्चर चरण 2"
+        }
+      ],
+      "safety": [
+        {
+          "en": "Fixture line 1",
+          "hi": "फ़िक्स्चर पंक्ति 1"
+        }
+      ],
+      "adult_supervision": true,
+      "why_it_works": {
+        "en": "Fixture explanation C11",
+        "hi": "फ़िक्स्चर व्याख्या C11"
+      },
+      "media": "img.chapter-a.fx-object-c"
+    },
+    {
+      "id": "fx.chapter-a.topic-c:dd:12",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-c.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point C12.1",
+          "hi": "फ़िक्स्चर बिंदु C12.1"
+        },
+        {
+          "en": "Fixture point C12.2",
+          "hi": "फ़िक्स्चर बिंदु C12.2"
+        }
+      ]
+    }
+  ]
+}

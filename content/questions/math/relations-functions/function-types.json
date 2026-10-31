@@ -1,0 +1,920 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format, not copied from the NCERT exercises. Each solution cites the NCERT section, definition or example it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.relations-functions.function-types",
+  "questions": [
+    {
+      "id": "q.math.relations-functions.function-types.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A function $f : X \\to Y$ is one-one if",
+        "hi": "फलन $f : X \\to Y$ एकैकी है यदि"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$f(x_1) = f(x_2)$ implies $x_1 = x_2$",
+            "hi": "$f(x_1) = f(x_2)$ से $x_1 = x_2$ मिले"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "every element of Y is an image",
+            "hi": "Y का हर अवयव किसी का प्रतिबिंब हो"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$x_1 = x_2$ implies $f(x_1) = f(x_2)$",
+            "hi": "$x_1 = x_2$ से $f(x_1) = f(x_2)$ मिले"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "X and Y are equal",
+            "hi": "X और Y समान हों"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which direction is the test?",
+          "hi": "जाँच किस दिशा में है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Equal outputs must come from equal inputs.",
+          "hi": "समान आउटपुट समान इनपुट से ही आने चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.3, Definition 5.",
+            "hi": "NCERT §1.3, Definition 5।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is onto.",
+              "hi": "वह आच्छादक है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Every function does this; it is the definition of a function, reversed.",
+              "hi": "हर फलन ऐसा करता है; यह फलन की परिभाषा है, उलटी नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "X and Y need not be equal.",
+              "hi": "X और Y का समान होना आवश्यक नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(x) = 3x$ is",
+        "hi": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(x) = 3x$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "one-one but not onto",
+            "hi": "एकैकी पर आच्छादक नहीं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "onto but not one-one",
+            "hi": "आच्छादक पर एकैकी नहीं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "bijective",
+            "hi": "एकैकी आच्छादी"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "neither one-one nor onto",
+            "hi": "न एकैकी न आच्छादक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Is 1 an image?",
+          "hi": "क्या 1 एक प्रतिबिंब है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Distinct inputs give distinct multiples of 3, but not every natural number is a multiple of 3.",
+          "hi": "भिन्न इनपुट 3 के भिन्न गुणज देते हैं, पर हर प्राकृत संख्या 3 का गुणज नहीं।"
+        },
+        "steps": [
+          {
+            "en": "$3x_1 = 3x_2$ gives $x_1 = x_2$; no natural x has $3x = 1$ (NCERT §1.3, Example 8).",
+            "hi": "$3x_1 = 3x_2$ से $x_1 = x_2$; किसी प्राकृत x के लिए $3x = 1$ नहीं (NCERT §1.3, Example 8)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It is one-one.",
+              "hi": "यह एकैकी है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$1$ and $2$ are not images.",
+              "hi": "$1$ और $2$ प्रतिबिंब नहीं हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It is one-one.",
+              "hi": "यह एकैकी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = |x| + 2$ is",
+        "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = |x| + 2$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "neither one-one nor onto",
+            "hi": "न एकैकी न आच्छादक"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "one-one but not onto",
+            "hi": "एकैकी पर आच्छादक नहीं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "onto but not one-one",
+            "hi": "आच्छादक पर एकैकी नहीं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "bijective",
+            "hi": "एकैकी आच्छादी"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Try x = 1 and x = −1.",
+          "hi": "x = 1 और x = −1 आज़माइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Opposite numbers share a value, and small values are never reached.",
+          "hi": "विपरीत संख्याओं का मान एक होता है, और छोटे मान कभी नहीं मिलते।"
+        },
+        "steps": [
+          {
+            "en": "$f(-1) = f(1) = 3$, and $f(x) \\ge 2$, so $0$ is not an image (NCERT §1.3, Definitions 5 and 6).",
+            "hi": "$f(-1) = f(1) = 3$, और $f(x) \\ge 2$, अतः $0$ प्रतिबिंब नहीं (NCERT §1.3, Definitions 5 तथा 6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$0$ is never reached.",
+              "hi": "$0$ तक कभी नहीं पहुँचते।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It fails both tests.",
+              "hi": "यह दोनों जाँचों में विफल है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$f(-1) = f(1)$.",
+              "hi": "$f(-1) = f(1)$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 5 - 2x$ is",
+        "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = 5 - 2x$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "bijective",
+            "hi": "एकैकी आच्छादी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "one-one but not onto",
+            "hi": "एकैकी पर आच्छादक नहीं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "onto but not one-one",
+            "hi": "आच्छादक पर एकैकी नहीं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "neither one-one nor onto",
+            "hi": "न एकैकी न आच्छादक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Solve y = 5 − 2x for x.",
+          "hi": "y = 5 − 2x को x के लिए हल कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A non-constant linear function on $\\mathbf{R}$ can be solved for x.",
+          "hi": "$\\mathbf{R}$ पर अचर-भिन्न रैखिक फलन को x के लिए हल किया जा सकता है।"
+        },
+        "steps": [
+          {
+            "en": "$5 - 2x_1 = 5 - 2x_2$ gives $x_1 = x_2$; for any y, $x = \\frac{5 - y}{2}$ gives $f(x) = y$ (NCERT §1.3, Example 9).",
+            "hi": "$5 - 2x_1 = 5 - 2x_2$ से $x_1 = x_2$; किसी भी y के लिए $x = \\frac{5 - y}{2}$ से $f(x) = y$ (NCERT §1.3, Example 9)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It is one-one.",
+              "hi": "यह एकैकी है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is onto.",
+              "hi": "यह आच्छादक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It passes both tests.",
+              "hi": "यह दोनों जाँचों में सफल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0005",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many one-one functions are there from $\\{1, 2, 3\\}$ to $\\{a, b, c, d\\}$?",
+        "hi": "$\\{1, 2, 3\\}$ से $\\{a, b, c, d\\}$ तक कितने एकैकी फलन हैं?"
+      },
+      "answer": {
+        "value": 24,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "No two inputs share an image.",
+          "hi": "कोई दो इनपुट प्रतिबिंब साझा नहीं करते।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Choose images one by one, never repeating.",
+          "hi": "प्रतिबिंब एक-एक कर चुनिए, बिना दोहराए।"
+        },
+        "steps": [
+          {
+            "en": "$1$ has $4$ choices, $2$ has $3$, $3$ has $2$: $4 \\times 3 \\times 2 = 24$ (NCERT §1.3; compare Example 22).",
+            "hi": "$1$ के $4$ विकल्प, $2$ के $3$, $3$ के $2$: $4 \\times 3 \\times 2 = 24$ (NCERT §1.3; Example 22 देखिए)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$64 = 4^3$ counts all functions, including many-one ones.",
+              "hi": "$64 = 4^3$ सभी फलन गिनता है, बहुएक भी।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\{1, 2, 3\\} \\to \\{1, 2, 3\\}$ is onto. Then f",
+        "hi": "$f : \\{1, 2, 3\\} \\to \\{1, 2, 3\\}$ आच्छादक है। तब f"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "is also one-one",
+            "hi": "एकैकी भी है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "may be many-one",
+            "hi": "बहुएक हो सकता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "is a constant function",
+            "hi": "अचर फलन है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "must be the identity function",
+            "hi": "अवश्य तत्समक फलन है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Finite set to itself.",
+          "hi": "परिमित समुच्चय से स्वयं तक।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Three images must be hit by three inputs.",
+          "hi": "तीन प्रतिबिंबों तक तीन इनपुट से पहुँचना है।"
+        },
+        "steps": [
+          {
+            "en": "If two inputs shared an image, at most two images would be hit (NCERT §1.3, Example 13).",
+            "hi": "यदि दो इनपुट प्रतिबिंब साझा करते, तो अधिकतम दो प्रतिबिंबों तक पहुँचते (NCERT §1.3, Example 13)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A many-one map on three elements misses an image.",
+              "hi": "तीन अवयवों पर बहुएक फलन कोई प्रतिबिंब छोड़ देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A constant function hits only one value.",
+              "hi": "अचर फलन केवल एक मान तक पहुँचता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$f(1) = 2$, $f(2) = 1$, $f(3) = 3$ is onto but not the identity.",
+              "hi": "$f(1) = 2$, $f(2) = 1$, $f(3) = 3$ आच्छादक है पर तत्समक नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(n) = n + 1$ is",
+        "hi": "$f : \\mathbf{N} \\to \\mathbf{N}$, $f(n) = n + 1$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "one-one but not onto",
+            "hi": "एकैकी पर आच्छादक नहीं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "onto but not one-one",
+            "hi": "आच्छादक पर एकैकी नहीं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "bijective",
+            "hi": "एकैकी आच्छादी"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "neither one-one nor onto",
+            "hi": "न एकैकी न आच्छादक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look at 1.",
+          "hi": "1 देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Which natural number has no predecessor in $\\mathbf{N}$?",
+          "hi": "किस प्राकृत संख्या का $\\mathbf{N}$ में कोई पूर्ववर्ती नहीं?"
+        },
+        "steps": [
+          {
+            "en": "$n_1 + 1 = n_2 + 1$ gives $n_1 = n_2$; $1$ is not $n + 1$ for any natural n (NCERT §1.3, Definitions 5 and 6).",
+            "hi": "$n_1 + 1 = n_2 + 1$ से $n_1 = n_2$; और $1$ किसी भी प्राकृत n के लिए $n + 1$ नहीं है (NCERT §1.3, Definitions 5 and 6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "It is one-one.",
+              "hi": "यह एकैकी है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$1$ is missed.",
+              "hi": "$1$ छूट जाता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It is one-one.",
+              "hi": "यह एकैकी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0008",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many functions from $\\{1, 2\\}$ to $\\{1, 2, 3\\}$ are not one-one?",
+        "hi": "$\\{1, 2\\}$ से $\\{1, 2, 3\\}$ तक कितने फलन एकैकी नहीं हैं?"
+      },
+      "answer": {
+        "value": 3,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "A non-one-one map here sends both inputs to the same value.",
+          "hi": "यहाँ एकैकी-भिन्न फलन दोनों इनपुट को एक ही मान पर भेजता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Count all functions, then subtract the one-one ones.",
+          "hi": "सभी फलन गिनिए, फिर एकैकी फलन घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "All: $3^2 = 9$. One-one: $3 \\times 2 = 6$. Not one-one: $9 - 6 = 3$, the constant maps (NCERT §1.3, Definition 5).",
+            "hi": "सभी: $3^2 = 9$। एकैकी: $3 \\times 2 = 6$। एकैकी नहीं: $9 - 6 = 3$, अचर फलन (NCERT §1.3, Definition 5)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$6$ counts the one-one functions instead.",
+              "hi": "$6$ इसके बजाय एकैकी फलन गिनता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0009",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = x^3$ is",
+        "hi": "$f : \\mathbf{R} \\to \\mathbf{R}$, $f(x) = x^3$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "bijective",
+            "hi": "एकैकी आच्छादी"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "one-one but not onto",
+            "hi": "एकैकी पर आच्छादक नहीं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "onto but not one-one",
+            "hi": "आच्छादक पर एकैकी नहीं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "neither one-one nor onto",
+            "hi": "न एकैकी न आच्छादक"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare with $x^2$.",
+          "hi": "$x^2$ से तुलना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Every real number has exactly one real cube root.",
+          "hi": "हर वास्तविक संख्या का ठीक एक वास्तविक घनमूल होता है।"
+        },
+        "steps": [
+          {
+            "en": "$x_1^3 = x_2^3$ gives $x_1 = x_2$, and any y is the cube of $\\sqrt[3]{y}$ (NCERT §1.3, Definition 7).",
+            "hi": "$x_1^3 = x_2^3$ से $x_1 = x_2$, और कोई भी y, $\\sqrt[3]{y}$ का घन है (NCERT §1.3, Definition 7)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Unlike $x^2$, the cube keeps signs, so it is one-one.",
+              "hi": "$x^2$ के विपरीत घन चिह्न बनाए रखता है, इसलिए एकैकी है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Negative values are reached too, so it is onto.",
+              "hi": "ऋण मान भी मिलते हैं, इसलिए आच्छादक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It passes both tests.",
+              "hi": "यह दोनों जाँचों में सफल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.relations-functions.function-types.0010",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.relations-functions.function-types.core.one-one-onto",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many onto functions are there from $\\{1, 2, 3\\}$ to $\\{1, 2\\}$?",
+        "hi": "$\\{1, 2, 3\\}$ से $\\{1, 2\\}$ तक कितने आच्छादक फलन हैं?"
+      },
+      "answer": {
+        "value": 6,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Onto means both 1 and 2 are hit.",
+          "hi": "आच्छादक का अर्थ है 1 और 2 दोनों तक पहुँचना।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Count all functions and remove those that miss a value.",
+          "hi": "सभी फलन गिनिए और जो कोई मान छोड़ते हैं उन्हें हटाइए।"
+        },
+        "steps": [
+          {
+            "en": "All: $2^3 = 8$. Only the two constant maps miss a value, so $8 - 2 = 6$ are onto (NCERT §1.3, Definition 6).",
+            "hi": "सभी: $2^3 = 8$। केवल दो अचर फलन कोई मान छोड़ते हैं, अतः $8 - 2 = 6$ आच्छादक हैं (NCERT §1.3, Definition 6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$8$ includes the two constant functions.",
+              "hi": "$8$ में दो अचर फलन शामिल हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

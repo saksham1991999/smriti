@@ -1,0 +1,100 @@
+{
+  "schema": "lesson@1",
+  "fixture": true,
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "Fixture source (test data, not a real reference)",
+      "url": null
+    }
+  ],
+  "authored_by": "fixture",
+  "reviewed_by": null,
+  "updated": "2026-10-29",
+  "id": "fx.chapter-a.topic-b:quick_revision",
+  "topic": "fx.chapter-a.topic-b",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 1,
+  "concepts": [
+    "fx.chapter-a.topic-b.sub-1.concept-1",
+    "fx.chapter-a.topic-b.sub-1.concept-2"
+  ],
+  "cards": [
+    {
+      "id": "fx.chapter-a.topic-b:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1",
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "sheet": "cs.fx.chapter-a.topic-b"
+    },
+    {
+      "id": "fx.chapter-a.topic-b:qr:02",
+      "type": "question",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1"
+      ],
+      "depth": 1,
+      "question": "q.fx.chapter-a.topic-b.0004"
+    },
+    {
+      "id": "fx.chapter-a.topic-b:qr:03",
+      "type": "summary",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1",
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Fixture point BQR.1",
+          "hi": "फ़िक्स्चर बिंदु BQR.1"
+        },
+        {
+          "en": "Fixture point BQR.2",
+          "hi": "फ़िक्स्चर बिंदु BQR.2"
+        }
+      ]
+    },
+    {
+      "id": "fx.chapter-a.topic-b:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "fx.chapter-a.topic-b.sub-1.concept-1",
+        "fx.chapter-a.topic-b.sub-1.concept-2"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Fixture title B traps",
+        "hi": "फ़िक्स्चर शीर्षक B traps"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Fixture trap 1",
+            "hi": "फ़िक्स्चर आम गलती 1"
+          },
+          "correct": {
+            "en": "Fixture idea 1",
+            "hi": "फ़िक्स्चर सही बात 1"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Fixture trap 2",
+            "hi": "फ़िक्स्चर आम गलती 2"
+          },
+          "correct": {
+            "en": "Fixture idea 2",
+            "hi": "फ़िक्स्चर सही बात 2"
+          }
+        }
+      ]
+    }
+  ]
+}

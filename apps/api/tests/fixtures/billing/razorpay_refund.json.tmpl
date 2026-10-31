@@ -1,0 +1,41 @@
+{
+  "_comment": "Shape of a Razorpay refund.processed webhook (Razorpay docs: Refunds webhook payloads). Not captured from a live account.",
+  "entity": "event",
+  "account_id": "acc_FixtureAccount01",
+  "event": "refund.processed",
+  "contains": ["refund", "payment"],
+  "payload": {
+    "refund": {
+      "entity": {
+        "id": "rfnd_FixtureRefund01",
+        "entity": "refund",
+        "amount": {{AMOUNT}},
+        "currency": "INR",
+        "payment_id": "{{PAYMENT_ID}}",
+        "notes": [],
+        "receipt": null,
+        "acquirer_data": {"rrn": "000000000000"},
+        "created_at": {{CREATED_AT}},
+        "batch_id": null,
+        "status": "processed",
+        "speed_processed": "normal",
+        "speed_requested": "normal"
+      }
+    },
+    "payment": {
+      "entity": {
+        "id": "{{PAYMENT_ID}}",
+        "entity": "payment",
+        "amount": {{AMOUNT}},
+        "currency": "INR",
+        "status": "refunded",
+        "method": "upi",
+        "amount_refunded": {{AMOUNT}},
+        "refund_status": "full",
+        "captured": true,
+        "created_at": {{CREATED_AT}}
+      }
+    }
+  },
+  "created_at": {{CREATED_AT}}
+}

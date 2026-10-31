@@ -1,0 +1,119 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.haloalkanes-haloarenes.reactions",
+  "questions": [
+    {
+      "id": "q.chem.haloalkanes-haloarenes.reactions.9001",
+      "type": "statement_based",
+      "concepts": [
+        {
+          "id": "chem.haloalkanes-haloarenes.reactions.core.sn1-sn2",
+          "weight": 0.6
+        },
+        {
+          "id": "chem.organic-basic-principles.mechanisms.core.electronic-effects",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Given below are two statements : In the light of the above statements, choose the correct answer from the options given below :",
+        "hi": "नीचे दो कथन दिए गए हैं : उपर्युक्त कथनों के आलोक में, नीचे दिए गए विकल्पों में से सही उत्तर चुनिए :"
+      },
+      "statements": [
+        {
+          "en": "Statement (I) : Benzyl chloride reacts faster in $\\mathrm{S_N1}$ mechanism than ethyl chloride.",
+          "hi": "कथन (I) : बेन्ज़िल क्लोराइड, एथिल क्लोराइड की तुलना में $\\mathrm{S_N1}$ क्रियाविधि में तेज़ी से अभिक्रिया करता है।"
+        },
+        {
+          "en": "Statement (II) : Ethyl carbocation intermediate is less stabilized by hyperconjugation than benzyl carbocation by resonance.",
+          "hi": "कथन (II) : एथिल कार्बधनायन मध्यवर्ती, अतिसंयुग्मन द्वारा उतना स्थायी नहीं होता जितना बेन्ज़िल कार्बधनायन अनुनाद द्वारा होता है।"
+        }
+      ],
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Both Statement I and Statement II are true",
+            "hi": "कथन I और कथन II दोनों सही हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Both Statement I and Statement II are false",
+            "hi": "कथन I और कथन II दोनों गलत हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "Statement I is true but Statement II is false",
+            "hi": "कथन I सही है परंतु कथन II गलत है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Statement I is false but Statement II is true",
+            "hi": "कथन I गलत है परंतु कथन II सही है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "$\\mathrm{S_N1}$ speed depends on how stable the carbocation is. The benzyl cation spreads its charge over the ring by resonance, far better than the ethyl cation's hyperconjugation.",
+          "hi": "$\\mathrm{S_N1}$ की गति कार्बधनायन के स्थायित्व पर निर्भर है। बेन्ज़िल धनायन अनुनाद से अपना आवेश वलय पर फैलाता है, जो एथिल धनायन के अतिसंयुग्मन से कहीं बेहतर है।"
+        },
+        "steps": [
+          {
+            "en": "Statement II is true, and it is exactly why Statement I is true.",
+            "hi": "कथन II सही है, और यही कारण है कि कथन I सही है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 64
+      }
+    }
+  ]
+}

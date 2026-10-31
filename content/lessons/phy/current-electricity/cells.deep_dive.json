@@ -1,0 +1,582 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.cells:deep_dive",
+  "topic": "phy.current-electricity.cells",
+  "mode": "deep_dive",
+  "estimated_minutes": 12,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.cells.core.emf-internal-resistance"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Emf and internal resistance",
+        "hi": "वि.वा.ब. और आंतरिक प्रतिरोध"
+      },
+      "subtopic": "phy.current-electricity.cells.core",
+      "card_ids": [
+        "phy.current-electricity.cells:dd:01",
+        "phy.current-electricity.cells:dd:02",
+        "phy.current-electricity.cells:dd:03",
+        "phy.current-electricity.cells:dd:04",
+        "phy.current-electricity.cells:dd:05",
+        "phy.current-electricity.cells:dd:06",
+        "phy.current-electricity.cells:dd:07",
+        "phy.current-electricity.cells:dd:08",
+        "phy.current-electricity.cells:dd:09"
+      ],
+      "estimated_minutes": 7
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Cells in series and in parallel",
+        "hi": "श्रेणी और पार्श्वक्रम में सेल"
+      },
+      "subtopic": "phy.current-electricity.cells.core",
+      "card_ids": [
+        "phy.current-electricity.cells:dd:10",
+        "phy.current-electricity.cells:dd:11",
+        "phy.current-electricity.cells:dd:12",
+        "phy.current-electricity.cells:dd:13",
+        "phy.current-electricity.cells:dd:14",
+        "phy.current-electricity.cells:dd:15",
+        "phy.current-electricity.cells:dd:16"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.cells:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "What a cell does",
+        "hi": "सेल क्या करता है"
+      },
+      "body": {
+        "en": "An electrolytic cell has two electrodes, P (positive) and N (negative), dipped in an electrolyte. The electrodes exchange charge with the electrolyte: P develops a potential $V_+$ above the electrolyte next to it, and N a potential $-V_-$ ($V_- \\geq 0$).\n\nWith no current, the potential difference between P and N is $\\varepsilon = V_+ + V_- > 0$, the emf of the cell. Emf is a potential difference, not a force.",
+        "hi": "विद्युत अपघटनी सेल में दो इलेक्ट्रोड, P (धन) और N (ऋण), विद्युत अपघट्य में डूबे होते हैं। इलेक्ट्रोड विद्युत अपघट्य से आवेश का आदान-प्रदान करते हैं: P अपने पास के विद्युत अपघट्य से $V_+$ अधिक विभव पर आ जाता है, और N $-V_-$ विभव पर ($V_- \\geq 0$)।\n\nधारा न होने पर P और N के बीच का विभवांतर $\\varepsilon = V_+ + V_- > 0$ सेल का विद्युत वाहक बल (वि.वा.ब.) है। वि.वा.ब. एक विभवांतर है, बल नहीं।"
+      },
+      "media": "img.current-electricity.electrolytic-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Internal resistance",
+        "hi": "आंतरिक प्रतिरोध"
+      },
+      "body": {
+        "en": "When a resistor $R$ is connected, a current $I$ flows through it and through the electrolyte. The electrolyte has a finite resistance $r$, the internal resistance, so the terminal potential difference drops below the emf: $V = \\varepsilon - Ir$.\n\nWhen no current is drawn, $V = \\varepsilon$. The internal resistance of dry cells is much higher than that of common electrolytic cells.",
+        "hi": "प्रतिरोध $R$ जोड़ने पर उसमें और विद्युत अपघट्य में धारा $I$ बहती है। विद्युत अपघट्य का परिमित प्रतिरोध $r$ होता है, जिसे आंतरिक प्रतिरोध कहते हैं, इसलिए टर्मिनल विभवांतर वि.वा.ब. से कम हो जाता है: $V = \\varepsilon - Ir$।\n\nधारा न लेने पर $V = \\varepsilon$। शुष्क सेलों का आंतरिक प्रतिरोध सामान्य विद्युत अपघटनी सेलों से बहुत अधिक होता है।"
+      },
+      "media": "img.current-electricity.electrolytic-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:03",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Current drawn from a cell",
+        "hi": "सेल से ली गई धारा"
+      },
+      "steps": [
+        {
+          "latex": "V = \\varepsilon - Ir",
+          "say": {
+            "en": "Terminal voltage of the cell.",
+            "hi": "सेल का टर्मिनल विभवांतर।"
+          },
+          "why": null
+        },
+        {
+          "latex": "V = IR",
+          "say": {
+            "en": "The same voltage across $R$ drives $I$.",
+            "hi": "यही वोल्टता $R$ में $I$ भेजती है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "I = \\frac{\\varepsilon}{R + r}",
+          "say": {
+            "en": "Equate and solve.",
+            "hi": "बराबर रखकर हल करें।"
+          },
+          "why": null
+        },
+        {
+          "latex": "I_{max} = \\frac{\\varepsilon}{r}",
+          "say": {
+            "en": "The largest current is for $R = 0$.",
+            "hi": "सबसे अधिक धारा $R = 0$ पर है।"
+          },
+          "why": {
+            "en": "In most cells the allowed current is much lower, to prevent permanent damage.",
+            "hi": "अधिकांश सेलों में स्थायी क्षति से बचाने के लिए अनुमत धारा इससे बहुत कम होती है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10, Eqs. 3.38-3.39"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Terminal voltage",
+        "hi": "टर्मिनल विभवांतर"
+      },
+      "latex": "V = \\varepsilon - Ir, \\quad I = \\frac{\\varepsilon}{R + r}",
+      "symbols": [
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "terminal potential difference",
+            "hi": "टर्मिनल विभवांतर"
+          },
+          "unit": "V"
+        },
+        {
+          "symbol": "\\varepsilon",
+          "meaning": {
+            "en": "emf",
+            "hi": "वि.वा.ब."
+          },
+          "unit": "V"
+        },
+        {
+          "symbol": "r",
+          "meaning": {
+            "en": "internal resistance",
+            "hi": "आंतरिक प्रतिरोध"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "external resistance",
+            "hi": "बाह्य प्रतिरोध"
+          },
+          "unit": "Ω"
+        },
+        {
+          "symbol": "I",
+          "meaning": {
+            "en": "current",
+            "hi": "धारा"
+          },
+          "unit": "A"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.10"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:05",
+      "type": "sim",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "sim": "sim.current-electricity.ohms-law-circuit",
+      "title": {
+        "en": "Lost volts",
+        "hi": "खोई वोल्टता"
+      },
+      "params": {
+        "arrangement": "single",
+        "r1": 5,
+        "voltage": 6,
+        "internalResistance": 1
+      },
+      "tasks": [
+        {
+          "id": "current",
+          "prompt": {
+            "en": "Cell: 6 V with 1 Ω inside. Load: 5 Ω. Read the current.",
+            "hi": "सेल: 6 V, अंदर 1 Ω। भार: 5 Ω। धारा पढ़ें।"
+          },
+          "measurement": "current",
+          "expected": {
+            "value": 1,
+            "unit": "A",
+            "tolerance": {
+              "abs": 0.01
+            }
+          }
+        },
+        {
+          "id": "terminal",
+          "prompt": {
+            "en": "Read the terminal voltage.",
+            "hi": "टर्मिनल विभवांतर पढ़ें।"
+          },
+          "measurement": "terminal_voltage",
+          "expected": {
+            "value": 5,
+            "unit": "V",
+            "tolerance": {
+              "abs": 0.02
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "$I = 6/(5 + 1) = 1$ A, and $V = 6 - 1 \\times 1 = 5$ V: one volt is used up inside the cell.",
+        "hi": "$I = 6/(5 + 1) = 1$ A, और $V = 6 - 1 \\times 1 = 5$ V: एक वोल्ट सेल के अंदर ही खर्च होता है।"
+      },
+      "fallback": {
+        "body": {
+          "en": "With emf 6 V, internal resistance 1 Ω and load 5 Ω: $I = 1$ A and $V = 5$ V.",
+          "hi": "वि.वा.ब. 6 V, आंतरिक प्रतिरोध 1 Ω और भार 5 Ω के साथ: $I = 1$ A और $V = 5$ V।"
+        },
+        "media": "img.current-electricity.electrolytic-cell"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A battery of emf 12 V and internal resistance 0.5 Ω drives current through a 5.5 Ω resistor. Find the current and the terminal voltage.",
+        "hi": "12 V वि.वा.ब. और 0.5 Ω आंतरिक प्रतिरोध वाली बैटरी 5.5 Ω प्रतिरोधक में धारा भेजती है। धारा और टर्मिनल विभवांतर ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$I = \\frac{12}{5.5 + 0.5} = 2$ A",
+          "hi": "$I = \\frac{12}{5.5 + 0.5} = 2$ A"
+        },
+        {
+          "en": "$V = 12 - 2 \\times 0.5 = 11$ V",
+          "hi": "$V = 12 - 2 \\times 0.5 = 11$ V"
+        }
+      ],
+      "answer": {
+        "en": "2 A; 11 V",
+        "hi": "2 A; 11 V"
+      },
+      "answer_value": {
+        "value": 11,
+        "unit": "V",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Taking $I = \\varepsilon/R$ ignores the internal resistance.",
+        "hi": "$I = \\varepsilon/R$ लेना आंतरिक प्रतिरोध को अनदेखा करना है।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 1,
+      "question": "q.phy.current-electricity.cells.0001"
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.cells.0002"
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:09",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Emf $\\varepsilon$ is the open-circuit potential difference between the electrodes.",
+          "hi": "वि.वा.ब. $\\varepsilon$ खुले परिपथ में इलेक्ट्रोडों के बीच का विभवांतर है।"
+        },
+        {
+          "en": "$V = \\varepsilon - Ir$ and $I = \\varepsilon/(R + r)$; $I_{max} = \\varepsilon/r$.",
+          "hi": "$V = \\varepsilon - Ir$ और $I = \\varepsilon/(R + r)$; $I_{max} = \\varepsilon/r$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Cells in series",
+        "hi": "श्रेणीक्रम में सेल"
+      },
+      "body": {
+        "en": "For two cells in series (negative of one joined to positive of the next), the emfs add and so do the internal resistances: $\\varepsilon_{eq} = \\varepsilon_1 + \\varepsilon_2$ and $r_{eq} = r_1 + r_2$.\n\nIf the negative of one is joined to the negative of the other, $\\varepsilon_{eq} = \\varepsilon_1 - \\varepsilon_2$ (for $\\varepsilon_1 > \\varepsilon_2$). For $n$ cells in series the same rules extend: emfs add with their signs, internal resistances add.",
+        "hi": "श्रेणीक्रम में दो सेलों (एक का ऋण अगले के धन से जुड़ा) के वि.वा.ब. जुड़ते हैं और आंतरिक प्रतिरोध भी: $\\varepsilon_{eq} = \\varepsilon_1 + \\varepsilon_2$ और $r_{eq} = r_1 + r_2$।\n\nयदि एक का ऋण दूसरे के ऋण से जुड़ा हो, तो $\\varepsilon_{eq} = \\varepsilon_1 - \\varepsilon_2$ ($\\varepsilon_1 > \\varepsilon_2$ के लिए)। $n$ सेलों के लिए भी यही नियम: वि.वा.ब. अपने चिह्नों सहित जुड़ते हैं, आंतरिक प्रतिरोध जुड़ते हैं।"
+      },
+      "media": "img.current-electricity.electrolytic-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.11"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:11",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Cells in parallel",
+        "hi": "पार्श्वक्रम में सेल"
+      },
+      "body": {
+        "en": "For two cells in parallel (positive to positive), $\\varepsilon_{eq} = \\frac{\\varepsilon_1 r_2 + \\varepsilon_2 r_1}{r_1 + r_2}$ and $r_{eq} = \\frac{r_1 r_2}{r_1 + r_2}$. For $n$ cells in parallel, $\\frac{1}{r_{eq}} = \\Sigma\\frac{1}{r_i}$ and $\\frac{\\varepsilon_{eq}}{r_{eq}} = \\Sigma\\frac{\\varepsilon_i}{r_i}$.",
+        "hi": "पार्श्वक्रम में दो सेलों (धन से धन) के लिए $\\varepsilon_{eq} = \\frac{\\varepsilon_1 r_2 + \\varepsilon_2 r_1}{r_1 + r_2}$ और $r_{eq} = \\frac{r_1 r_2}{r_1 + r_2}$। $n$ सेलों के लिए $\\frac{1}{r_{eq}} = \\Sigma\\frac{1}{r_i}$ और $\\frac{\\varepsilon_{eq}}{r_{eq}} = \\Sigma\\frac{\\varepsilon_i}{r_i}$।"
+      },
+      "media": "img.current-electricity.electrolytic-cell",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.11"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:12",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Two cells in parallel",
+        "hi": "पार्श्वक्रम में दो सेल"
+      },
+      "steps": [
+        {
+          "latex": "I = I_1 + I_2",
+          "say": {
+            "en": "The two cell currents join at the common terminal.",
+            "hi": "दोनों सेलों की धाराएँ उभयनिष्ठ टर्मिनल पर मिलती हैं।"
+          },
+          "why": null
+        },
+        {
+          "latex": "V = \\varepsilon_1 - I_1 r_1 = \\varepsilon_2 - I_2 r_2",
+          "say": {
+            "en": "Both cells have the same terminal voltage $V$.",
+            "hi": "दोनों सेलों का टर्मिनल विभवांतर एक ही $V$ है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "I = \\frac{\\varepsilon_1 - V}{r_1} + \\frac{\\varepsilon_2 - V}{r_2}",
+          "say": {
+            "en": "Write each current from its cell.",
+            "hi": "हर धारा उसके सेल से लिखें।"
+          },
+          "why": null
+        },
+        {
+          "latex": "V = \\frac{\\varepsilon_1 r_2 + \\varepsilon_2 r_1}{r_1 + r_2} - I\\frac{r_1 r_2}{r_1 + r_2}",
+          "say": {
+            "en": "Solve for $V$ and compare with $V = \\varepsilon_{eq} - Ir_{eq}$.",
+            "hi": "$V$ के लिए हल करें और $V = \\varepsilon_{eq} - Ir_{eq}$ से तुलना करें।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.11, Eqs. 3.43-3.48"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:13",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Parallel cells",
+        "hi": "पार्श्वक्रम में सेल"
+      },
+      "latex": "\\frac{1}{r_{eq}} = \\sum \\frac{1}{r_i}, \\quad \\frac{\\varepsilon_{eq}}{r_{eq}} = \\sum \\frac{\\varepsilon_i}{r_i}",
+      "symbols": [
+        {
+          "symbol": "\\varepsilon_{eq}",
+          "meaning": {
+            "en": "equivalent emf",
+            "hi": "तुल्य वि.वा.ब."
+          },
+          "unit": "V"
+        },
+        {
+          "symbol": "r_{eq}",
+          "meaning": {
+            "en": "equivalent internal resistance",
+            "hi": "तुल्य आंतरिक प्रतिरोध"
+          },
+          "unit": "Ω"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.11"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:14",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Two identical cells, each of emf 1.5 V and internal resistance 0.5 Ω, are joined in parallel and connected to a 1.25 Ω resistor. Find the current in the resistor.",
+        "hi": "दो समान सेल, हर एक का वि.वा.ब. 1.5 V और आंतरिक प्रतिरोध 0.5 Ω, पार्श्वक्रम में जोड़कर 1.25 Ω प्रतिरोधक से जोड़े गए हैं। प्रतिरोधक में धारा ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$\\varepsilon_{eq} = \\frac{1.5 \\times 0.5 + 1.5 \\times 0.5}{0.5 + 0.5} = 1.5$ V",
+          "hi": "$\\varepsilon_{eq} = \\frac{1.5 \\times 0.5 + 1.5 \\times 0.5}{0.5 + 0.5} = 1.5$ V"
+        },
+        {
+          "en": "$r_{eq} = \\frac{0.5 \\times 0.5}{0.5 + 0.5} = 0.25$ Ω",
+          "hi": "$r_{eq} = \\frac{0.5 \\times 0.5}{0.5 + 0.5} = 0.25$ Ω"
+        },
+        {
+          "en": "$I = \\frac{1.5}{1.25 + 0.25} = 1$ A",
+          "hi": "$I = \\frac{1.5}{1.25 + 0.25} = 1$ A"
+        }
+      ],
+      "answer": {
+        "en": "1 A",
+        "hi": "1 A"
+      },
+      "answer_value": {
+        "value": 1,
+        "unit": "A",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "shortcut": {
+        "en": "Identical cells in parallel keep the same emf and divide $r$ by their number.",
+        "hi": "पार्श्वक्रम में समान सेल वही वि.वा.ब. रखते हैं और $r$ को अपनी संख्या से भाग देते हैं।"
+      }
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:15",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.cells.0003"
+    },
+    {
+      "id": "phy.current-electricity.cells:dd:16",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.cells.core.emf-internal-resistance"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "Series cells: $\\varepsilon_{eq} = \\varepsilon_1 + \\varepsilon_2$, $r_{eq} = r_1 + r_2$; a reversed cell subtracts.",
+          "hi": "श्रेणी सेल: $\\varepsilon_{eq} = \\varepsilon_1 + \\varepsilon_2$, $r_{eq} = r_1 + r_2$; उलटा सेल घटता है।"
+        },
+        {
+          "en": "Parallel cells: $1/r_{eq} = \\Sigma 1/r_i$ and $\\varepsilon_{eq}/r_{eq} = \\Sigma \\varepsilon_i/r_i$.",
+          "hi": "पार्श्व सेल: $1/r_{eq} = \\Sigma 1/r_i$ और $\\varepsilon_{eq}/r_{eq} = \\Sigma \\varepsilon_i/r_i$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

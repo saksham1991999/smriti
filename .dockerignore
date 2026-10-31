@@ -1,0 +1,29 @@
+# Build context for apps/api/Dockerfile and apps/worker/Dockerfile (both build from the repo root).
+# Allow-list: everything is excluded except what the images copy, so node_modules, .venv, .git,
+# local databases (.dev) and any stray .env file never reach a build.
+*
+
+!pyproject.toml
+!uv.lock
+!apps/api/pyproject.toml
+!apps/api/smriti_api
+!apps/worker/pyproject.toml
+!apps/worker/smriti_worker
+!packages/config/flag-defaults.json
+!packages/config/variants
+!packages/config/brand.json
+!packages/analytics/catalogue.json
+!packages/i18n/src/locales
+!supabase/migrations
+!supabase/seed.sql
+!content
+
+# Never, even inside an allowed folder.
+**/__pycache__
+**/*.pyc
+**/.mypy_cache
+**/.ruff_cache
+**/.pytest_cache
+**/.env
+**/.env.*
+**/node_modules

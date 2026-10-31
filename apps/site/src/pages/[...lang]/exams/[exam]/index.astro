@@ -1,0 +1,136 @@
+---
+// Exam landing page, generated from the content index (TRD §4.1).
+import Base from "../../../../layouts/Base.astro";
+import PageHero from "../../../../components/PageHero.astro";
+import SubjectTile from "../../../../components/SubjectTile.astro";
+import ExamPattern from "../../../../components/ExamPattern.astro";
+import Promises from "../../../../components/Promises.astro";
+import TryItSection from "../../../../components/TryItSection.astro";
+import CtaBand from "../../../../components/CtaBand.astro";
+import AppLinks from "../../../../components/AppLinks.astro";
+import Icon from "../../../../components/Icon.astro";
+import { site, type Locale } from "../../../../config/site";
+import { getIndex, paths, subjectsForExam, visibleBlueprint, type Exam } from "../../../../content-index";
+import { fmt, formatNumber, list, messages } from "../../../../i18n";
+import { brandName, crumbsFor } from "../../../../lib/page-data";
+import { withLocales } from "../../../../lib/routes";
+import { course } from "../../../../lib/seo";
+import { absolute, localePath, startUrl } from "../../../../lib/urls";
+
+export function getStaticPaths() {
+  return withLocales(getIndex().exams.map((exam) => ({ params: { exam: exam.slug }, props: { exam } })));
+}
+
+const { lang, exam } = Astro.props as { lang: Locale; exam: Exam };
+const m = messages(lang);
+const idx = getIndex();
+const brand = brandName(lang);
+const subjects = subjectsForExam(idx, exam);
+const subjectNames = list(lang, subjects.map((s) => s.subject.name[lang]));
+const examName = exam.name[lang];
+const short = exam.short_name[lang];
+const blueprint = visibleBlueprint(exam);
+const crumbs = crumbsFor(lang, exam);
+const path = paths.exam(exam);
+const description = fmt(m.meta.examDescription, { exam: examName, subjects: subjectNames });
+const jsonLd = [
+  course({
+    name: fmt(m.exam.title, { exam: examName }),
+    description,
+    url: absolute(site.siteUrl, localePath(lang, path)),
+    lang,
+    providerName: brand,
+    siteUrl: site.siteUrl,
+    about: examName,
+    parts: subjects.map((s) => s.subject.name[lang]),
+  }),
+  crumbs.jsonLd,
+];
+---
+
+<Base
+  lang={lang}
+  path={path}
+  title={fmt(m.meta.examTitle, { exam: examName, brand })}
+  description={description}
+  pageType="exam"
+  og="exam"
+  accent={`x-${exam.accent}`}
+  exam={exam.id}
+  jsonLd={jsonLd}
+>
+  <PageHero
+    lang={lang}
+    crumbs={crumbs.visible}
+    eyebrow={m.exam.eyebrow}
+    title={fmt(m.exam.title, { exam: examName })}
+    body={exam.summary?.[lang] ?? fmt(m.exam.fallbackBody, { subjects: subjectNames })}
+    art="scene-exam-goal"
+  >
+    <Fragment slot="actions">
+      <a class="btn" href={startUrl(site.webAppUrl, { lang, placement: "exam_hero", exam: exam.id })} data-cta="start" data-placement="exam_hero">
+        {fmt(m.exam.start, { exam: short })}
+        <Icon name="arrow-right" size={20} />
+      </a>
+      {exam.try_lesson && <a class="btn secondary" href="#try">{m.tryIt.quizTitle}</a>}
+    </Fragment>
+  </PageHero>
+
+  <section class="section subjects" aria-labelledby="subjects-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="subjects-title" class="t-display">{m.exam.subjectsHeading}</h2>
+      </div>
+      <ul class="tiles" role="list">
+        {
+          subjects.map(({ subject, chapters }) => (
+            <SubjectTile
+              lang={lang}
+              subjectId={subject.id}
+              name={subject.name[lang]}
+              meta={fmt(m.exam.chapters, { n: formatNumber(lang, chapters.length) })}
+              href={localePath(lang, paths.subject(exam, subject))}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {blueprint && <ExamPattern lang={lang} blueprint={blueprint} />}
+
+  <Promises lang={lang} heading={fmt(m.exam.howHeading, { brand, exam: short })} />
+
+  <TryItSection lang={lang} lesson={exam.try_lesson} heading={fmt(m.exam.tryHeading, { exam: short })} exam={exam.id} />
+
+  <AppLinks lang={lang} examId={exam.id} heading={fmt(m.apps.examHeading, { exam: short })} />
+
+  <CtaBand lang={lang} exam={exam.id} button={fmt(m.exam.start, { exam: short })} placement="cta_band" />
+
+  {
+    exam.conducting_body && (
+      <p class="wrap disclaimer t-caption muted">{fmt(m.exam.notAffiliated, { brand, body: exam.conducting_body })}</p>
+    )
+  }
+</Base>
+
+<style>
+  .subjects {
+    padding-top: 24px;
+  }
+  .tiles {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  }
+  @media (min-width: 600px) {
+    .tiles {
+      gap: 16px;
+    }
+  }
+  .disclaimer {
+    padding-bottom: 32px;
+  }
+</style>

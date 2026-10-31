@@ -1,0 +1,263 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.equilibrium-particle:deep_dive",
+  "topic": "phy.laws-of-motion.equilibrium-particle",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Forces that add to zero",
+        "hi": "बल जिनका योग शून्य है"
+      },
+      "subtopic": "phy.laws-of-motion.equilibrium-particle.core",
+      "card_ids": [
+        "phy.laws-of-motion.equilibrium-particle:dd:01",
+        "phy.laws-of-motion.equilibrium-particle:dd:02",
+        "phy.laws-of-motion.equilibrium-particle:dd:03",
+        "phy.laws-of-motion.equilibrium-particle:dd:04",
+        "phy.laws-of-motion.equilibrium-particle:dd:05",
+        "phy.laws-of-motion.equilibrium-particle:dd:06",
+        "phy.laws-of-motion.equilibrium-particle:dd:07"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The still lantern",
+        "hi": "स्थिर लालटेन"
+      },
+      "body": {
+        "en": "A lantern hangs from the middle of a string tied between two poles. It does not move, yet three forces act on it: its weight and the pulls of the two halves of the string. They must exactly add up to nothing.",
+        "hi": "एक लालटेन दो खंभों के बीच बँधी डोरी के बीच से लटकी है। वह हिलती नहीं, फिर भी उस पर तीन बल लगते हैं: उसका भार और डोरी के दोनों भागों के खिंचाव। उनका योग ठीक शून्य होना चाहिए।"
+      },
+      "media": "img.laws-of-motion.hanging-lantern"
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Equilibrium of a particle",
+        "hi": "कण का संतुलन"
+      },
+      "body": {
+        "en": "A particle is in equilibrium when the net external force on it is zero; by the first law it is then at rest or in uniform motion.\n\nTwo forces balance only if they are equal and opposite. Three concurrent forces balance if their vector sum is zero: the resultant of any two is equal and opposite to the third. Drawn head to tail, they form a closed triangle; n forces in equilibrium form a closed polygon.\n\nIn components, each axis must balance separately: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum F_z = 0$. For an extended body, equilibrium also needs zero net torque, which comes later.",
+        "hi": "कोई कण संतुलन में होता है जब उस पर नेट बाह्य बल शून्य हो; प्रथम नियम से तब वह विराम या एकसमान गति में होता है।\n\nदो बल तभी संतुलित होते हैं जब वे समान और विपरीत हों। तीन संगामी बल संतुलित होते हैं यदि उनका सदिश योग शून्य हो: किन्हीं दो का परिणामी तीसरे के बराबर और विपरीत होता है। शीर्ष से पुच्छ बनाने पर वे एक बंद त्रिभुज बनाते हैं; संतुलन में n बल एक बंद बहुभुज बनाते हैं।\n\nघटकों में हर अक्ष अलग से संतुलित होना चाहिए: $\\sum F_x = 0$, $\\sum F_y = 0$, $\\sum F_z = 0$। विस्तारित पिंड के संतुलन के लिए नेट बल-आघूर्ण भी शून्य होना चाहिए, जो आगे आता है।"
+      },
+      "media": "img.laws-of-motion.hanging-lantern",
+      "highlights": [
+        {
+          "term": {
+            "en": "concurrent forces",
+            "hi": "संगामी बल"
+          },
+          "definition": {
+            "en": "forces acting at one point",
+            "hi": "एक ही बिंदु पर लगने वाले बल"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.8, Eqs. 4.10-4.12, Fig. 4.7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Conditions for equilibrium",
+        "hi": "संतुलन की शर्तें"
+      },
+      "latex": "\\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3 = 0 \\iff \\sum F_x = 0,\\ \\sum F_y = 0,\\ \\sum F_z = 0",
+      "symbols": [
+        {
+          "symbol": "\\vec{F}_1, \\vec{F}_2, \\vec{F}_3",
+          "meaning": {
+            "en": "forces acting at one point",
+            "hi": "एक बिंदु पर लगे बल"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "F_x, F_y, F_z",
+          "meaning": {
+            "en": "components along the axes",
+            "hi": "अक्षों के अनुदिश घटक"
+          },
+          "unit": "N"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eqs. 4.11-4.12"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A 6 kg mass hangs by a rope from the ceiling. A horizontal force of 50 N is applied at the midpoint P of the rope. What angle does the upper part of the rope make with the vertical in equilibrium? Take $g = 10$ m/s² and neglect the rope's mass.",
+        "hi": "6 kg का द्रव्यमान छत से एक रस्सी द्वारा लटका है। रस्सी के मध्य बिंदु P पर 50 N का क्षैतिज बल लगाया जाता है। संतुलन में रस्सी का ऊपरी भाग ऊर्ध्वाधर से कितना कोण बनाता है? $g = 10$ m/s² लीजिए और रस्सी का द्रव्यमान नगण्य मानिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Lower part: $T_2 = 6 \\times 10 = 60$ N.",
+          "hi": "निचला भाग: $T_2 = 6 \\times 10 = 60$ N।"
+        },
+        {
+          "en": "At P: $T_1\\cos\\theta = 60$ and $T_1\\sin\\theta = 50$.",
+          "hi": "P पर: $T_1\\cos\\theta = 60$ और $T_1\\sin\\theta = 50$।"
+        },
+        {
+          "en": "$\\tan\\theta = \\frac{5}{6}$, so $\\theta \\approx 40°$. The answer does not depend on the rope's length or where the force is applied.",
+          "hi": "$\\tan\\theta = \\frac{5}{6}$, अतः $\\theta \\approx 40°$। उत्तर रस्सी की लंबाई या बल लगाने के बिंदु पर निर्भर नहीं।"
+        }
+      ],
+      "answer": {
+        "en": "About 40°",
+        "hi": "लगभग 40°"
+      },
+      "answer_value": {
+        "value": 40,
+        "unit": "°",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Taking the upper tension equal to the weight.",
+        "hi": "ऊपरी तनाव को भार के बराबर मान लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.6, Fig. 4.8"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 2 kg lantern hangs from the midpoint of a light string; each half of the string makes $60°$ with the vertical. Find the tension in each half. Take $g = 10$ m/s².",
+        "hi": "2 kg की लालटेन एक हल्की डोरी के मध्य बिंदु से लटकी है; डोरी का हर आधा भाग ऊर्ध्वाधर से $60°$ बनाता है। हर भाग में तनाव ज्ञात कीजिए। $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Horizontal parts cancel by symmetry.",
+          "hi": "सममिति से क्षैतिज भाग निरस्त हो जाते हैं।"
+        },
+        {
+          "en": "Vertical: $2T\\cos 60° = 20$, so $T = 20$ N.",
+          "hi": "ऊर्ध्वाधर: $2T\\cos 60° = 20$, अतः $T = 20$ N।"
+        },
+        {
+          "en": "The flatter the string, the larger the tension.",
+          "hi": "डोरी जितनी समतल, तनाव उतना अधिक।"
+        }
+      ],
+      "answer": {
+        "en": "20 N in each half",
+        "hi": "हर भाग में 20 N"
+      },
+      "answer_value": {
+        "value": 20,
+        "unit": "N",
+        "tolerance": {
+          "abs": 0.1
+        }
+      },
+      "common_trap": {
+        "en": "Splitting the weight equally as 10 N per string.",
+        "hi": "भार को बराबर बाँटकर हर डोरी में 10 N लेना।"
+      },
+      "media": "img.laws-of-motion.hanging-lantern",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.8, Eq. 4.12"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.equilibrium-particle.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Equilibrium: net force zero; each component sums to zero.",
+          "hi": "संतुलन: नेट बल शून्य; हर घटक का योग शून्य।"
+        },
+        {
+          "en": "Three forces in equilibrium form a closed triangle.",
+          "hi": "संतुलन में तीन बल एक बंद त्रिभुज बनाते हैं।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

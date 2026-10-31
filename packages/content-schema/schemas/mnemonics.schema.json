@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/mnemonics.schema.json",
+  "title": "MnemonicsFile",
+  "description": "content/mnemonics/{subject_id}/{chapter_slug}.json (mnemonic-maker). Each item is written for one locale. Projects to content.mnemonics.",
+  "type": "object",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/FileMeta" }],
+  "required": ["schema", "items"],
+  "properties": {
+    "schema": { "const": "mnemonics@1" },
+    "chapter": { "$ref": "common.schema.json#/$defs/DottedId" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Mnemonic" }
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "Technique": {
+      "type": "string",
+      "enum": [
+        "acronym",
+        "acrostic",
+        "story",
+        "rhyme",
+        "song",
+        "keyword",
+        "pao",
+        "major_system",
+        "peg",
+        "palace",
+        "chunking",
+        "visual"
+      ]
+    },
+    "Mnemonic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "concept", "technique", "origin", "locale", "text", "decodes_to"],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/MnemonicId" },
+        "concept": { "$ref": "common.schema.json#/$defs/ConceptId" },
+        "technique": { "$ref": "#/$defs/Technique" },
+        "origin": {
+          "description": "traditional: widely known (cite where it is commonly taught). system: made by the skill.",
+          "type": "string",
+          "enum": ["traditional", "system"]
+        },
+        "taught_in": {
+          "description": "Where a traditional mnemonic is commonly taught. Required for traditional ones.",
+          "type": ["string", "null"]
+        },
+        "locale": { "$ref": "common.schema.json#/$defs/Locale" },
+        "text": { "type": "string", "minLength": 1 },
+        "decodes_to": {
+          "description": "The exact facts it encodes, in order, in the mnemonic's locale.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "exam_style": { "type": ["string", "null"] },
+        "media": {
+          "oneOf": [{ "type": "null" }, { "$ref": "common.schema.json#/$defs/ImageRef" }]
+        },
+        "audio": {
+          "oneOf": [{ "type": "null" }, { "$ref": "common.schema.json#/$defs/AudioRef" }]
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

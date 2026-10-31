@@ -1,0 +1,79 @@
+---
+import Art from "./Art.astro";
+import PeriodicTeaser from "../islands/PeriodicTeaser";
+import elementsData from "../data/elements.json";
+import { site, type Locale } from "../config/site";
+import { messages } from "../i18n";
+import { startUrl } from "../lib/urls";
+import { BLOCK_FAMILY } from "../styles/tokens";
+import type { GridElement } from "../islands/periodic-logic";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const m = messages(lang);
+// English names only on English pages: Hindi names must come from reviewed chemistry content.
+const elements: GridElement[] = elementsData.elements.map((e) => ({
+  z: e.z,
+  symbol: e.symbol,
+  name: lang === "en" ? e.name_en : undefined,
+  period: e.period,
+  group: e.group,
+  f_col: e.f_col,
+  block: e.block as GridElement["block"],
+}));
+---
+
+<section class="section periodic s-chemistry" id="periodic" aria-labelledby="periodic-title">
+  <div class="wrap">
+    <div class="periodic-head">
+      <div class="section-head">
+        <h2 id="periodic-title" class="t-display">{m.periodic.heading}</h2>
+        <p class="t-lead muted">{m.periodic.body}</p>
+      </div>
+      <Art name="subject-chemistry" lang={lang} decorative sizes="160px" class="periodic-art" />
+    </div>
+    <div class="card periodic-card">
+      <PeriodicTeaser
+        client:visible
+        lang={lang}
+        elements={elements}
+        strings={m.periodic}
+        openHref={startUrl(site.webAppUrl, { lang, placement: "periodic", lab: "periodic" })}
+        blockFamily={BLOCK_FAMILY}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .periodic {
+    background: var(--tint);
+  }
+  .periodic-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .periodic-head :global(.periodic-art) {
+    width: 96px;
+    flex: none;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 1024px) {
+    .periodic-head :global(.periodic-art) {
+      width: 150px;
+    }
+  }
+  .periodic-card {
+    padding: 16px;
+    border-color: transparent;
+  }
+  @media (min-width: 600px) {
+    .periodic-card {
+      padding: 24px;
+    }
+  }
+</style>

@@ -1,0 +1,267 @@
+{
+  "schema": "chapter@1",
+  "id": "math.determinants",
+  "subject": "math",
+  "unit": "math.algebra",
+  "name": {
+    "en": "Determinants",
+    "hi": "सारणिक"
+  },
+  "ncert_ref": "NCERT Class 12 Mathematics Part I, Ch 4",
+  "topics": [
+    {
+      "id": "math.determinants.determinant",
+      "name": {
+        "en": "Determinant",
+        "hi": "सारणिक"
+      },
+      "subtopics": [
+        {
+          "id": "math.determinants.determinant.core",
+          "name": {
+            "en": "Determinant",
+            "hi": "सारणिक"
+          },
+          "concepts": [
+            {
+              "id": "math.determinants.determinant.core.determinant-evaluation",
+              "name": {
+                "en": "Determinants of order two and three and their evaluation",
+                "hi": "दो तथा तीन कोटि के सारणिक और उनका मान ज्ञात करना"
+              },
+              "kind": "process",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Every square matrix has a number called its determinant; a $2 \\times 2$ determinant is $ad - bc$ and a $3 \\times 3$ determinant is expanded along any row or column using signed minors.",
+                "hi": "प्रत्येक वर्ग आव्यूह की एक संख्या सारणिक कहलाती है; $2 \\times 2$ सारणिक $ad - bc$ है और $3 \\times 3$ सारणिक किसी भी पंक्ति या स्तंभ के अनुदिश चिह्नित उपसारणिकों से प्रसारित होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Evaluate a $3 \\times 3$ determinant by expanding along the row or column with most zeros.",
+                  "hi": "सबसे अधिक शून्यों वाली पंक्ति या स्तंभ के अनुदिश $3 \\times 3$ सारणिक का मान निकालिए।"
+                },
+                {
+                  "en": "For an $n \\times n$ matrix, use $|kA| = k^{n}|A|$ and $|AB| = |A||B|$.",
+                  "hi": "$n \\times n$ आव्यूह के लिए $|kA| = k^{n}|A|$ तथा $|AB| = |A||B|$ का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.matrices.matrix-basics.core.matrix-order-types"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.determinants.triangle-area",
+      "name": {
+        "en": "Area of a Triangle",
+        "hi": "त्रिभुज का क्षेत्रफल"
+      },
+      "subtopics": [
+        {
+          "id": "math.determinants.triangle-area.core",
+          "name": {
+            "en": "Area of a Triangle",
+            "hi": "त्रिभुज का क्षेत्रफल"
+          },
+          "concepts": [
+            {
+              "id": "math.determinants.triangle-area.core.area-triangle-determinant",
+              "name": {
+                "en": "Area of a triangle and collinearity using determinants",
+                "hi": "सारणिकों द्वारा त्रिभुज का क्षेत्रफल तथा संरेखता"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The area of a triangle with vertices $(x_{1}, y_{1})$, $(x_{2}, y_{2})$, $(x_{3}, y_{3})$ is half the absolute value of the determinant with rows $(x_{i}, y_{i}, 1)$; the points are collinear exactly when that determinant is zero.",
+                "hi": "शीर्षों $(x_{1}, y_{1})$, $(x_{2}, y_{2})$, $(x_{3}, y_{3})$ वाले त्रिभुज का क्षेत्रफल पंक्तियों $(x_{i}, y_{i}, 1)$ वाले सारणिक के निरपेक्ष मान का आधा है; बिंदु ठीक तब संरेख होते हैं जब यह सारणिक शून्य हो।"
+              },
+              "key_points": [
+                {
+                  "en": "Find a triangle's area from its vertices.",
+                  "hi": "शीर्षों से त्रिभुज का क्षेत्रफल ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Find the equation of a line through two points using the collinearity condition.",
+                  "hi": "संरेखता की शर्त से दो बिंदुओं से होकर जाने वाली रेखा का समीकरण ज्ञात कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.determinants.determinant.core.determinant-evaluation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.determinants.minors-adjoint",
+      "name": {
+        "en": "Minors, Cofactors, Adjoint and Inverse",
+        "hi": "उपसारणिक, सहखंड, सहखंडज तथा व्युत्क्रम"
+      },
+      "subtopics": [
+        {
+          "id": "math.determinants.minors-adjoint.core",
+          "name": {
+            "en": "Minors, Cofactors, Adjoint and Inverse",
+            "hi": "उपसारणिक, सहखंड, सहखंडज तथा व्युत्क्रम"
+          },
+          "concepts": [
+            {
+              "id": "math.determinants.minors-adjoint.core.minors-cofactors",
+              "name": {
+                "en": "Minors and cofactors",
+                "hi": "उपसारणिक तथा सहखंड"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The minor $M_{ij}$ is the determinant left after deleting row i and column j, and the cofactor is $A_{ij} = (-1)^{i+j} M_{ij}$; a row times its own cofactors gives $|A|$, and times another row's cofactors gives zero.",
+                "hi": "उपसारणिक $M_{ij}$ पंक्ति i और स्तंभ j हटाने पर बचा सारणिक है, और सहखंड $A_{ij} = (-1)^{i+j} M_{ij}$; किसी पंक्ति को उसके अपने सहखंडों से गुणा करने पर $|A|$ और दूसरी पंक्ति के सहखंडों से गुणा करने पर शून्य मिलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Write all minors and cofactors of a $3 \\times 3$ matrix.",
+                  "hi": "$3 \\times 3$ आव्यूह के सभी उपसारणिक और सहखंड लिखिए।"
+                },
+                {
+                  "en": "Expand a determinant using cofactors.",
+                  "hi": "सहखंडों से सारणिक का प्रसार कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.determinants.determinant.core.determinant-evaluation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-2"
+              ]
+            },
+            {
+              "id": "math.determinants.minors-adjoint.core.adjoint-inverse",
+              "name": {
+                "en": "Adjoint and inverse of a square matrix",
+                "hi": "वर्ग आव्यूह का सहखंडज तथा व्युत्क्रम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "The adjoint is the transpose of the cofactor matrix, $A(\\operatorname{adj} A) = (\\operatorname{adj} A)A = |A|I$, so A is invertible exactly when $|A| \\ne 0$ and then $A^{-1} = (\\operatorname{adj} A)/|A|$.",
+                "hi": "सहखंडज सहखंड आव्यूह का परिवर्त है, $A(\\operatorname{adj} A) = (\\operatorname{adj} A)A = |A|I$, अतः A ठीक तब व्युत्क्रमणीय है जब $|A| \\ne 0$, और तब $A^{-1} = (\\operatorname{adj} A)/|A|$।"
+              },
+              "key_points": [
+                {
+                  "en": "Find the inverse of a $2 \\times 2$ or $3 \\times 3$ matrix by the adjoint method.",
+                  "hi": "सहखंडज विधि से $2 \\times 2$ या $3 \\times 3$ आव्यूह का व्युत्क्रम ज्ञात कीजिए।"
+                },
+                {
+                  "en": "Distinguish singular and non-singular matrices.",
+                  "hi": "अव्युत्क्रमणीय और व्युत्क्रमणीय आव्यूहों में अंतर बताइए।"
+                },
+                {
+                  "en": "For an $n \\times n$ matrix, use $|\\operatorname{adj} A| = |A|^{n-1}$.",
+                  "hi": "$n \\times n$ आव्यूह के लिए $|\\operatorname{adj} A| = |A|^{n-1}$ का प्रयोग कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.determinants.minors-adjoint.core.minors-cofactors",
+                "math.matrices.invertible-matrices.core.matrix-inverse-concept"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.determinants.det-applications",
+      "name": {
+        "en": "Applications of Determinants and Matrices",
+        "hi": "सारणिकों और आव्यूहों के अनुप्रयोग"
+      },
+      "subtopics": [
+        {
+          "id": "math.determinants.det-applications.core",
+          "name": {
+            "en": "Applications of Determinants and Matrices",
+            "hi": "सारणिकों और आव्यूहों के अनुप्रयोग"
+          },
+          "concepts": [
+            {
+              "id": "math.determinants.det-applications.core.linear-system-matrix",
+              "name": {
+                "en": "Consistency and solution of linear equations using matrices",
+                "hi": "आव्यूहों द्वारा रैखिक समीकरणों की संगतता तथा हल"
+              },
+              "kind": "process",
+              "intrinsic_depth": 4,
+              "summary": {
+                "en": "Writing a system as $AX = B$, when $|A| \\ne 0$ a unique solution $X = A^{-1}B$ exists; when $|A| = 0$ the system is inconsistent if $(\\operatorname{adj} A)B \\ne O$ and may have infinitely many solutions or none if $(\\operatorname{adj} A)B = O$.",
+                "hi": "निकाय को $AX = B$ लिखने पर $|A| \\ne 0$ होने पर अद्वितीय हल $X = A^{-1}B$ मिलता है; $|A| = 0$ होने पर यदि $(\\operatorname{adj} A)B \\ne O$ तो निकाय असंगत है, और यदि $(\\operatorname{adj} A)B = O$ तो उसके अनंत हल हो सकते हैं या कोई हल नहीं।"
+              },
+              "key_points": [
+                {
+                  "en": "Solve a system of two or three equations by the matrix method.",
+                  "hi": "आव्यूह विधि से दो या तीन समीकरणों का निकाय हल कीजिए।"
+                },
+                {
+                  "en": "Test a system for consistency.",
+                  "hi": "किसी निकाय की संगतता जाँचिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.determinants.minors-adjoint.core.adjoint-inverse"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-3:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 4 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Hindi-medium lhmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/lhmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 3, MATRICES AND DETERMINANTS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 12. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: determinant (§4.2, lhmh1 contents prelims p.xiii), triangle-area (§4.3, lhmh1 contents prelims p.xiii), det-applications (§4.6, lhmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/determinants.json."
+}

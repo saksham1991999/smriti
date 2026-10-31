@@ -1,0 +1,456 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo110) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.cell-cycle-division.meiosis:deep_dive",
+  "topic": "bio.cell-cycle-division.meiosis",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 2,
+  "max_depth": 3,
+  "concepts": [
+    "bio.cell-cycle-division.meiosis.core.meiosis"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Halving the chromosome number",
+        "hi": "गुणसूत्र संख्या आधी करना"
+      },
+      "subtopic": "bio.cell-cycle-division.meiosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.meiosis:dd:01",
+        "bio.cell-cycle-division.meiosis:dd:02"
+      ],
+      "estimated_minutes": 1
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Prophase I",
+        "hi": "पूर्वावस्था I"
+      },
+      "subtopic": "bio.cell-cycle-division.meiosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.meiosis:dd:03",
+        "bio.cell-cycle-division.meiosis:dd:04",
+        "bio.cell-cycle-division.meiosis:dd:05"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "The rest of meiosis I and meiosis II",
+        "hi": "अर्धसूत्री I का शेष और अर्धसूत्री II"
+      },
+      "subtopic": "bio.cell-cycle-division.meiosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.meiosis:dd:06",
+        "bio.cell-cycle-division.meiosis:dd:07",
+        "bio.cell-cycle-division.meiosis:dd:08"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-4",
+      "title": {
+        "en": "Why meiosis matters",
+        "hi": "अर्धसूत्री विभाजन क्यों महत्त्वपूर्ण है"
+      },
+      "subtopic": "bio.cell-cycle-division.meiosis.core",
+      "card_ids": [
+        "bio.cell-cycle-division.meiosis:dd:09",
+        "bio.cell-cycle-division.meiosis:dd:10",
+        "bio.cell-cycle-division.meiosis:dd:11"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "What meiosis does",
+        "hi": "अर्धसूत्री विभाजन क्या करता है"
+      },
+      "body": {
+        "en": "Sexual reproduction fuses two gametes, each with a complete haploid set of chromosomes. Gametes come from specialised diploid cells by a division that halves the chromosome number: meiosis. Meiosis makes the haploid phase of the life cycle, and fertilisation restores the diploid phase.\n\nKey features: two sequential cycles of nuclear and cell division, meiosis I and meiosis II, but only one cycle of DNA replication; meiosis I starts after the chromosomes have replicated in S phase; homologous chromosomes pair and recombine between non-sister chromatids; and four haploid cells form at the end of meiosis II, like one cake shared onto four plates.",
+        "hi": "लैंगिक जनन में दो युग्मक मिलते हैं, जिनमें से हर एक में गुणसूत्रों का एक पूरा अगुणित समुच्चय होता है। युग्मक विशिष्ट द्विगुणित कोशिकाओं से ऐसे विभाजन से बनते हैं जो गुणसूत्र संख्या आधी कर देता है: अर्धसूत्री विभाजन। अर्धसूत्री विभाजन जीवन चक्र की अगुणित प्रावस्था बनाता है, और निषेचन द्विगुणित प्रावस्था लौटाता है।\n\nमुख्य लक्षण: केंद्रक और कोशिका विभाजन के दो क्रमिक चक्र, अर्धसूत्री I और अर्धसूत्री II, पर DNA प्रतिकृति का केवल एक चक्र; अर्धसूत्री I तब शुरू होता है जब S प्रावस्था में गुणसूत्रों की प्रतिकृति बन चुकी हो; समजात गुणसूत्र जोड़ी बनाते हैं और असहोदर अर्धगुणसूत्रों के बीच पुनर्योजन होता है; और अर्धसूत्री II के अंत में चार अगुणित कोशिकाएँ बनती हैं, जैसे एक केक चार प्लेटों में बँट जाए।"
+      },
+      "media": "img.cell-cycle-division.cake-four",
+      "highlights": [
+        {
+          "term": {
+            "en": "meiosis",
+            "hi": "अर्धसूत्री विभाजन"
+          },
+          "definition": {
+            "en": "Reduction division giving four haploid cells.",
+            "hi": "न्यूनकारी विभाजन जो चार अगुणित कोशिकाएँ देता है।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.4"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:02",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.meiosis.0001"
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Five stages of prophase I",
+        "hi": "पूर्वावस्था I की पाँच अवस्थाएँ"
+      },
+      "body": {
+        "en": "Prophase I is longer and more complex than mitotic prophase. Leptotene: chromosomes become visible under the light microscope and keep compacting. Zygotene: chromosomes start pairing, called synapsis; the paired chromosomes are homologous chromosomes, and synapsis is accompanied by the synaptonemal complex. A synapsed pair is a bivalent or tetrad.\n\nPachytene, longer than the first two: the four chromatids of each bivalent become distinct, and recombination nodules appear, the sites of crossing over between non-sister chromatids. Crossing over is the exchange of genetic material between two homologous chromosomes, an enzyme-mediated process using recombinase, like two cords swapping a short piece at the same place.\n\nDiplotene: the synaptonemal complex dissolves and homologues separate except at the crossovers, the X-shaped chiasmata; in oocytes of some vertebrates diplotene can last months or years. Diakinesis: chiasmata terminalise, chromosomes are fully condensed, the meiotic spindle forms, and the nucleolus and nuclear envelope disappear.",
+        "hi": "पूर्वावस्था I समसूत्री पूर्वावस्था से लंबी और अधिक जटिल है। लेप्टोटीन: गुणसूत्र प्रकाश सूक्ष्मदर्शी में दिखने लगते हैं और सघन होते रहते हैं। ज़ाइगोटीन: गुणसूत्र जोड़ी बनाने लगते हैं, जिसे सूत्रयुग्मन कहते हैं; जोड़ी वाले गुणसूत्र समजात गुणसूत्र हैं, और सूत्रयुग्मन के साथ सिनैप्टोनीमल सम्मिश्र बनता है। सूत्रयुग्मित जोड़ी युगली या चतुष्क कहलाती है।\n\nपैकिटीन, पहली दोनों से लंबी: हर युगली के चारों अर्धगुणसूत्र स्पष्ट हो जाते हैं, और पुनर्योजन ग्रंथिकाएँ दिखती हैं, जहाँ असहोदर अर्धगुणसूत्रों के बीच जीन विनिमय होता है। जीन विनिमय दो समजात गुणसूत्रों के बीच आनुवंशिक पदार्थ का आदान-प्रदान है, रिकॉम्बिनेज़ एंजाइम द्वारा होने वाली प्रक्रिया, जैसे दो डोरियाँ एक ही जगह पर एक छोटा टुकड़ा अदल-बदल लें।\n\nडिप्लोटीन: सिनैप्टोनीमल सम्मिश्र घुल जाता है और समजात विनिमय स्थलों को छोड़कर अलग होते हैं, ये X आकार की संरचनाएँ काएज़्मेटा हैं; कुछ कशेरुकियों के अंडकों में डिप्लोटीन महीनों या वर्षों तक चल सकती है। डायकाइनेसिस: काएज़्मेटा का उपांतीभवन होता है, गुणसूत्र पूरी तरह संघनित होते हैं, अर्धसूत्री तर्कु बनता है, और केंद्रिका तथा केंद्रक आवरण लुप्त हो जाते हैं।"
+      },
+      "media": "img.cell-cycle-division.swapped-cords",
+      "highlights": [
+        {
+          "term": {
+            "en": "synapsis",
+            "hi": "सूत्रयुग्मन"
+          },
+          "definition": {
+            "en": "Pairing of homologous chromosomes in zygotene.",
+            "hi": "ज़ाइगोटीन में समजात गुणसूत्रों की जोड़ी बनना।"
+          }
+        },
+        {
+          "term": {
+            "en": "crossing over",
+            "hi": "जीन विनिमय"
+          },
+          "definition": {
+            "en": "Exchange between non-sister chromatids in pachytene.",
+            "hi": "पैकिटीन में असहोदर अर्धगुणसूत्रों के बीच आदान-प्रदान।"
+          }
+        },
+        {
+          "term": {
+            "en": "chiasmata",
+            "hi": "काएज़्मेटा"
+          },
+          "definition": {
+            "en": "X-shaped crossover sites seen in diplotene.",
+            "hi": "डिप्लोटीन में दिखने वाले X आकार के विनिमय स्थल।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.4.1"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 3,
+      "prompt": {
+        "en": "Put the stages of prophase I in order.",
+        "hi": "पूर्वावस्था I की अवस्थाओं को क्रम में रखिए।"
+      },
+      "widget": "order_steps",
+      "config": {
+        "steps": [
+          {
+            "id": "s1",
+            "text": {
+              "en": "Leptotene: chromosomes become visible",
+              "hi": "लेप्टोटीन: गुणसूत्र दिखने लगते हैं"
+            }
+          },
+          {
+            "id": "s2",
+            "text": {
+              "en": "Zygotene: synapsis begins",
+              "hi": "ज़ाइगोटीन: सूत्रयुग्मन शुरू"
+            }
+          },
+          {
+            "id": "s3",
+            "text": {
+              "en": "Pachytene: crossing over",
+              "hi": "पैकिटीन: जीन विनिमय"
+            }
+          },
+          {
+            "id": "s4",
+            "text": {
+              "en": "Diplotene: chiasmata seen",
+              "hi": "डिप्लोटीन: काएज़्मेटा दिखते हैं"
+            }
+          },
+          {
+            "id": "s5",
+            "text": {
+              "en": "Diakinesis: chiasmata terminalise",
+              "hi": "डायकाइनेसिस: काएज़्मेटा का उपांतीभवन"
+            }
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: L, Z, P, D, D.",
+          "hi": "सही: लेप्टो, ज़ाइगो, पैकी, डिप्लो, डायकाइनेसिस।"
+        },
+        "wrong": {
+          "en": "Pairing (zygotene) comes before crossing over (pachytene).",
+          "hi": "जोड़ी बनना (ज़ाइगोटीन) जीन विनिमय (पैकिटीन) से पहले आता है।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:05",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 3,
+      "question": "q.bio.cell-cycle-division.meiosis.0002"
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Homologues part, then sisters part",
+        "hi": "पहले समजात अलग, फिर सहोदर अलग"
+      },
+      "body": {
+        "en": "Metaphase I: bivalents align on the equatorial plate, and microtubules from opposite poles attach to the kinetochores of homologous chromosomes. Anaphase I: homologous chromosomes separate, while sister chromatids stay together at their centromeres. Telophase I: nuclear membrane and nucleolus reappear and cytokinesis gives a dyad of cells. The short stage between the divisions is interkinesis, with no DNA replication.\n\nMeiosis II resembles normal mitosis. The nuclear membrane disappears by the end of prophase II. In metaphase II chromosomes align at the equator with microtubules attached to the kinetochores of sister chromatids. Anaphase II begins with the simultaneous splitting of each centromere, and the sister chromatids move to opposite poles. In telophase II nuclear envelopes form again, and cytokinesis gives a tetrad of cells: four haploid daughter cells.",
+        "hi": "मध्यावस्था I: युगली भूमध्यरेखीय पट्टिका पर पंक्तिबद्ध होती हैं, और विपरीत ध्रुवों की सूक्ष्मनलिकाएँ समजात गुणसूत्रों के काइनेटोकोर से जुड़ती हैं। पश्चावस्था I: समजात गुणसूत्र अलग होते हैं, जबकि सहोदर अर्धगुणसूत्र अपने गुणसूत्रबिंदु पर जुड़े रहते हैं। अंत्यावस्था I: केंद्रक झिल्ली और केंद्रिका फिर दिखते हैं और कोशिकाद्रव्य विभाजन से कोशिकाओं का द्विक बनता है। दोनों विभाजनों के बीच की छोटी अवस्था अंतरालावस्था है, जिसमें DNA प्रतिकृति नहीं होती।\n\nअर्धसूत्री II सामान्य समसूत्री विभाजन जैसा है। पूर्वावस्था II के अंत तक केंद्रक झिल्ली लुप्त हो जाती है। मध्यावस्था II में गुणसूत्र भूमध्य रेखा पर पंक्तिबद्ध होते हैं और सूक्ष्मनलिकाएँ सहोदर अर्धगुणसूत्रों के काइनेटोकोर से जुड़ती हैं। पश्चावस्था II हर गुणसूत्रबिंदु के एक साथ विभाजन से शुरू होती है, और सहोदर अर्धगुणसूत्र विपरीत ध्रुवों की ओर जाते हैं। अंत्यावस्था II में केंद्रक आवरण फिर बनते हैं, और कोशिकाद्रव्य विभाजन से कोशिकाओं का चतुष्क, यानी चार अगुणित संतति कोशिकाएँ, बनता है।"
+      },
+      "media": "img.cell-cycle-division.cake-four",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.4.1, §10.4.2"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:07",
+      "type": "interactive",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Mitosis or meiosis?",
+        "hi": "समसूत्री या अर्धसूत्री?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Equational division",
+              "hi": "समीकरणी विभाजन"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Reduction division",
+              "hi": "न्यूनकारी विभाजन"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Homologous chromosomes pair",
+              "hi": "समजात गुणसूत्र जोड़ी बनाते हैं"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Two identical diploid daughter cells",
+              "hi": "दो समान द्विगुणित संतति कोशिकाएँ"
+            }
+          },
+          {
+            "id": "i5",
+            "text": {
+              "en": "Four haploid daughter cells",
+              "hi": "चार अगुणित संतति कोशिकाएँ"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "mi",
+            "label": {
+              "en": "Mitosis",
+              "hi": "समसूत्री विभाजन"
+            }
+          },
+          {
+            "id": "me",
+            "label": {
+              "en": "Meiosis",
+              "hi": "अर्धसूत्री विभाजन"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "mi"
+          },
+          {
+            "item": "i2",
+            "bin": "me"
+          },
+          {
+            "item": "i3",
+            "bin": "me"
+          },
+          {
+            "item": "i4",
+            "bin": "mi"
+          },
+          {
+            "item": "i5",
+            "bin": "me"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: mitosis keeps the number, meiosis halves it.",
+          "hi": "सही: समसूत्री संख्या बनाए रखता है, अर्धसूत्री आधी करता है।"
+        },
+        "wrong": {
+          "en": "Pairing of homologues happens only in meiosis.",
+          "hi": "समजात की जोड़ी केवल अर्धसूत्री विभाजन में बनती है।"
+        }
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:08",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.meiosis.0003"
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:09",
+      "type": "explainer",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Constant number, new variety",
+        "hi": "स्थिर संख्या, नई विविधता"
+      },
+      "body": {
+        "en": "Meiosis conserves the specific chromosome number of each species across generations in sexually reproducing organisms, even though, paradoxically, the process halves the chromosome number. It also increases genetic variability in the population from one generation to the next, and variations are very important for evolution.",
+        "hi": "अर्धसूत्री विभाजन लैंगिक जनन करने वाले जीवों में पीढ़ी-दर-पीढ़ी हर जाति की विशिष्ट गुणसूत्र संख्या बनाए रखता है, यद्यपि विरोधाभासी रूप से यह प्रक्रिया गुणसूत्र संख्या आधी कर देती है। यह एक पीढ़ी से अगली पीढ़ी तक जीवों की समष्टि में आनुवंशिक विभिन्नता भी बढ़ाता है, और विभिन्नताएँ विकास के लिए बहुत महत्त्वपूर्ण हैं।"
+      },
+      "media": "img.cell-cycle-division.swapped-cords",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.5"
+      }
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:10",
+      "type": "question",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "question": "q.bio.cell-cycle-division.meiosis.0004"
+    },
+    {
+      "id": "bio.cell-cycle-division.meiosis:dd:11",
+      "type": "summary",
+      "concepts": [
+        "bio.cell-cycle-division.meiosis.core.meiosis"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Meiosis: two divisions, one DNA replication, four haploid cells.",
+          "hi": "अर्धसूत्री विभाजन: दो विभाजन, एक DNA प्रतिकृति, चार अगुणित कोशिकाएँ।"
+        },
+        {
+          "en": "Prophase I: leptotene, zygotene (synapsis), pachytene (crossing over, recombinase), diplotene (chiasmata), diakinesis (terminalisation).",
+          "hi": "पूर्वावस्था I: लेप्टोटीन, ज़ाइगोटीन (सूत्रयुग्मन), पैकिटीन (जीन विनिमय, रिकॉम्बिनेज़), डिप्लोटीन (काएज़्मेटा), डायकाइनेसिस (उपांतीभवन)।"
+        },
+        {
+          "en": "Anaphase I separates homologues; anaphase II separates sister chromatids; no DNA replication in interkinesis.",
+          "hi": "पश्चावस्था I समजात अलग करती है; पश्चावस्था II सहोदर अर्धगुणसूत्र; अंतरालावस्था में DNA प्रतिकृति नहीं।"
+        },
+        {
+          "en": "Significance: constant chromosome number across generations, and variation for evolution.",
+          "hi": "महत्त्व: पीढ़ियों में स्थिर गुणसूत्र संख्या, और विकास के लिए विभिन्नता।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§10.4, §10.5"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,346 @@
+{
+  "version": 1,
+  "subject_topics": {
+    "fx": [
+      "fx.chapter-a.topic-a",
+      "fx.chapter-a.topic-b",
+      "fx.chapter-a.topic-c",
+      "fx.chapter-a.topic-d",
+      "fx.chapter-p.topic-a",
+      "fx.chapter-p.topic-b"
+    ]
+  },
+  "chapter_topics": {
+    "fx.chapter-a": [
+      "fx.chapter-a.topic-a",
+      "fx.chapter-a.topic-b",
+      "fx.chapter-a.topic-c",
+      "fx.chapter-a.topic-d"
+    ],
+    "fx.chapter-p": [
+      "fx.chapter-p.topic-a",
+      "fx.chapter-p.topic-b"
+    ]
+  },
+  "initial": {
+    "fx.chapter-a.topic-c": {
+      "status": "in_progress",
+      "learned_via": null
+    }
+  },
+  "cases": [
+    {
+      "name": "Find my level pre-marks two chapters (and an in-progress topic stays)",
+      "type": "placement_checked",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000021",
+        "subject_id": "fx",
+        "topic_ids": [
+          "fx.chapter-a.topic-a",
+          "fx.chapter-p.topic-a",
+          "fx.chapter-a.topic-c"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          }
+        }
+      }
+    },
+    {
+      "name": "the same check again",
+      "type": "placement_checked",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000021",
+        "subject_id": "fx",
+        "topic_ids": [
+          "fx.chapter-a.topic-a"
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "code": "already_recorded",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          }
+        }
+      }
+    },
+    {
+      "name": "a topic from another subject",
+      "type": "placement_checked",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000022",
+        "subject_id": "fx",
+        "topic_ids": [
+          "zz.chapter-x.topic-a"
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "code": "invalid_payload",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          }
+        }
+      }
+    },
+    {
+      "name": "an unknown subject",
+      "type": "placement_checked",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000023",
+        "subject_id": "zz",
+        "topic_ids": []
+      },
+      "expected": {
+        "accepted": false,
+        "code": "invalid_payload",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          }
+        }
+      }
+    },
+    {
+      "name": "a quick check does not confirm a mark",
+      "type": "lesson_completed",
+      "payload": {
+        "topic_id": "fx.chapter-p.topic-a",
+        "mode": "quick_check",
+        "cards_seen": 6,
+        "correct": 4,
+        "total": 4,
+        "ms_total": 300000
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          }
+        }
+      }
+    },
+    {
+      "name": "a lesson confirms the first chapter's mark",
+      "type": "lesson_completed",
+      "payload": {
+        "topic_id": "fx.chapter-a.topic-a",
+        "mode": "deep_dive",
+        "cards_seen": 6,
+        "correct": 4,
+        "total": 4,
+        "ms_total": 300000
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          }
+        }
+      }
+    },
+    {
+      "name": "a Test out leaves a placement mark alone",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000024",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-p",
+        "topic_ids": [
+          "fx.chapter-p.topic-a",
+          "fx.chapter-p.topic-b"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-p.topic-b": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "a redo with nothing right takes back only unconfirmed marks",
+      "type": "placement_checked",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000025",
+        "subject_id": "fx",
+        "topic_ids": []
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-b": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "a redo pre-marks again",
+      "type": "placement_checked",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000026",
+        "subject_id": "fx",
+        "topic_ids": [
+          "fx.chapter-a.topic-b",
+          "fx.chapter-p.topic-a"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-p.topic-b": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "Reset chapter progress clears placement marks too",
+      "type": "chapter_reset",
+      "payload": {
+        "chapter_id": "fx.chapter-a"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-p.topic-a": {
+            "status": "learned",
+            "learned_via": "placement"
+          },
+          "fx.chapter-p.topic-b": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    }
+  ]
+}

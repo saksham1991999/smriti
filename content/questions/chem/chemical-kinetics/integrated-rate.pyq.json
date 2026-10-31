@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.chemical-kinetics.integrated-rate",
+  "questions": [
+    {
+      "id": "q.chem.chemical-kinetics.integrated-rate.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.chemical-kinetics.integrated-rate.core.zero-first-order",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$t_{100\\%}$ is the time required for the $100\\%$ completion of the reaction while $t_{1/2}$ is the time required for $50\\%$ of the reaction to be completed. Which of the following option correctly represents the relation between $t_{100\\%}$ and $t_{1/2}$ for zero and first order reactions respectively ?",
+        "hi": "$t_{100\\%}$ अभिक्रिया के $100\\%$ पूर्ण होने में लगा समय है, जबकि $t_{1/2}$ अभिक्रिया के $50\\%$ पूर्ण होने में लगा समय है। निम्नलिखित में से कौन-सा विकल्प शून्य और प्रथम कोटि की अभिक्रियाओं के लिए क्रमशः $t_{100\\%}$ और $t_{1/2}$ के बीच संबंध को सही दर्शाता है ?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$t_{100\\%}=(t_{1/2})^2$ and $t_{100\\%}=(t_{1/2})^{-\\infty}$",
+            "hi": "$t_{100\\%}=(t_{1/2})^2$ तथा $t_{100\\%}=(t_{1/2})^{-\\infty}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$t_{100\\%}=2t_{1/2}$ and $t_{100\\%}=(t_{1/2})^{\\infty}$",
+            "hi": "$t_{100\\%}=2t_{1/2}$ तथा $t_{100\\%}=(t_{1/2})^{\\infty}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$t_{100\\%}=2t_{1/2}$ and $t_{100\\%}=(2t_{1/2})^2$",
+            "hi": "$t_{100\\%}=2t_{1/2}$ तथा $t_{100\\%}=(2t_{1/2})^2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$t_{100\\%}=(t_{1/2})^{\\infty}$ and $t_{100\\%}=2t_{1/2}$",
+            "hi": "$t_{100\\%}=(t_{1/2})^{\\infty}$ तथा $t_{100\\%}=2t_{1/2}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "A zero order reaction uses reactant at a steady rate, so finishing takes exactly twice as long as getting halfway. A first order reaction halves again and again and never quite finishes.",
+          "hi": "शून्य कोटि की अभिक्रिया अभिकारक को स्थिर दर से खर्च करती है, अतः पूर्ण होने में आधे तक पहुँचने का ठीक दोगुना समय लगता है। प्रथम कोटि की अभिक्रिया बार-बार आधी होती है और कभी पूरी नहीं होती।"
+        },
+        "steps": [
+          {
+            "en": "Zero order: $t_{100\\%}=\\frac{[A]_0}{k}=2t_{1/2}$.",
+            "hi": "शून्य कोटि: $t_{100\\%}=\\frac{[A]_0}{k}=2t_{1/2}$।"
+          },
+          {
+            "en": "First order: $t=\\frac1k\\ln\\frac{[A]_0}{[A]}$ grows without bound as $[A] \\to 0$, written in the option as $(t_{1/2})^{\\infty}$.",
+            "hi": "प्रथम कोटि: $t=\\frac1k\\ln\\frac{[A]_0}{[A]}$, $[A] \\to 0$ पर असीमित बढ़ता है, जिसे विकल्प में $(t_{1/2})^{\\infty}$ लिखा गया है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 58
+      }
+    }
+  ]
+}

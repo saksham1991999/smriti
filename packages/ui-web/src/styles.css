@@ -1,0 +1,133 @@
+/* @smriti/ui-web styles. Import inside a Tailwind v4 entry, after @import "tailwindcss":
+     @import "tailwindcss";
+     @import "@smriti/ui-web/styles.css";
+   It loads the token variables, the Smriti Tailwind preset, the component sources for class scanning,
+   KaTeX's stylesheet and a few keyframes Tailwind can't express. */
+@import "@smriti/tokens/tokens.css";
+@import "katex/dist/katex.min.css";
+@config "../../tokens/tailwind-preset.ts";
+@source "./";
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--sm-bg);
+    color: var(--sm-ink);
+    font-family: var(--sm-font-sans);
+    font-size: var(--sm-text-body-size);
+    line-height: var(--sm-text-body-lh);
+    font-weight: var(--sm-text-body-weight);
+    -webkit-font-smoothing: antialiased;
+  }
+  :lang(hi) {
+    font-family: var(--sm-font-deva);
+  }
+}
+
+/* Grows the hit area of small controls to at least 48 x 48 (DESIGN.md §4) without changing their size. */
+.sm-hit::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--sm-size-touch-min));
+  height: max(100%, var(--sm-size-touch-min));
+  transform: translate(-50%, -50%);
+}
+
+@keyframes sm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Wrong answer: 2 x 6 px shake (UX_FLOW §5). */
+@keyframes sm-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+/* Check mark pop, spring "pop" approximated for CSS. */
+@keyframes sm-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes sm-fade {
+  from {
+    opacity: 0;
+  }
+}
+/* Story page turn: a short slide from the reading direction. Reduced motion uses sm-fade instead. */
+@keyframes sm-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+/* Pet hop: a small jump and land (little learner reactions). None with reduced motion. */
+@keyframes sm-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes sm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes sm-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+/* Tutor thinking dots: each dot fades up and down in turn. Static dots in reduced motion. */
+@keyframes sm-dot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion: movement becomes fades, nothing loops (DESIGN.md §7.1). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation: none !important;
+  transition-duration: 0ms !important;
+}

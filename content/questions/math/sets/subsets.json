@@ -1,0 +1,821 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.2 Subsets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-2-subsets",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "other",
+      "ref": "Wikipedia, Power set (definition and number of subsets)",
+      "url": "https://en.wikipedia.org/wiki/Power_set",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax Contemporary Mathematics, §1.4 Set Operations with Two Sets",
+      "url": "https://openstax.org/books/contemporary-mathematics/pages/1-4-set-operations-with-two-sets",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section, or OpenStax and Wikipedia for the power set and the union count, which the current NCERT chapter does not cover. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "math.sets.subsets",
+  "questions": [
+    {
+      "id": "q.math.sets.subsets.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.subsets-intervals",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which statement is true for every set A?",
+        "hi": "हर समुच्चय A के लिए कौन-सा कथन सत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\phi \\subset A$",
+            "hi": "$\\phi \\subset A$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$A \\subset \\phi$",
+            "hi": "$A \\subset \\phi$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$A \\in A$",
+            "hi": "$A \\in A$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\phi \\in A$",
+            "hi": "$\\phi \\in A$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Subset or element?",
+          "hi": "उपसमुच्चय या अवयव?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The empty set has no element that could fail to be in A.",
+          "hi": "रिक्त समुच्चय में ऐसा कोई अवयव नहीं जो A में न हो।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §1.6: the empty set is a subset of every set.",
+            "hi": "NCERT §1.6: रिक्त समुच्चय हर समुच्चय का उपसमुच्चय है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Only $\\phi$ itself is a subset of $\\phi$.",
+              "hi": "केवल $\\phi$ ही $\\phi$ का उपसमुच्चय है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "A set is a subset of itself, not usually an element of itself.",
+              "hi": "समुच्चय स्वयं का उपसमुच्चय है, सामान्यतः स्वयं का अवयव नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\phi$ is an element of A only if it is listed in A.",
+              "hi": "$\\phi$, A का अवयव तभी है जब वह A में लिखा हो।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.subsets-intervals",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which is a proper subset of $\\{1, 2, 3\\}$?",
+        "hi": "$\\{1, 2, 3\\}$ का उचित उपसमुच्चय कौन-सा है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{1, 3\\}$",
+            "hi": "$\\{1, 3\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{1, 2, 3\\}$",
+            "hi": "$\\{1, 2, 3\\}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{1, 4\\}$",
+            "hi": "$\\{1, 4\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{0, 1\\}$",
+            "hi": "$\\{0, 1\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Inside, and smaller.",
+          "hi": "भीतर, और छोटा।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A proper subset sits inside the set and is not the whole set.",
+          "hi": "उचित उपसमुच्चय समुच्चय के भीतर है और पूरा समुच्चय नहीं है।"
+        },
+        "steps": [
+          {
+            "en": "$\\{1, 3\\} \\subset \\{1, 2, 3\\}$ and the two are not equal (NCERT §1.6).",
+            "hi": "$\\{1, 3\\} \\subset \\{1, 2, 3\\}$ और दोनों समान नहीं हैं (NCERT §1.6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A subset, but equal to the set, so not proper.",
+              "hi": "उपसमुच्चय है, पर समुच्चय के समान है, इसलिए उचित नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$4$ is not in $\\{1, 2, 3\\}$.",
+              "hi": "$4$, $\\{1, 2, 3\\}$ में नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$0$ is not in $\\{1, 2, 3\\}$.",
+              "hi": "$0$, $\\{1, 2, 3\\}$ में नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.subsets-intervals",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "As an interval, $\\{x : x \\in \\mathbf{R},\\ -2 < x \\le 3\\}$ is",
+        "hi": "अंतराल के रूप में $\\{x : x \\in \\mathbf{R},\\ -2 < x \\le 3\\}$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$(-2, 3]$",
+            "hi": "$(-2, 3]$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$[-2, 3]$",
+            "hi": "$[-2, 3]$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$(-2, 3)$",
+            "hi": "$(-2, 3)$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$[-2, 3)$",
+            "hi": "$[-2, 3)$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which end point satisfies the condition?",
+          "hi": "कौन-सा अंत्य बिंदु शर्त पूरी करता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A strict sign gets a round bracket; $\\le$ gets a square bracket.",
+          "hi": "निरपेक्ष चिह्न को गोल कोष्ठक; $\\le$ को वर्ग कोष्ठक।"
+        },
+        "steps": [
+          {
+            "en": "$-2$ is excluded and $3$ is included, so $(-2, 3]$ (NCERT §1.6.2).",
+            "hi": "$-2$ शामिल नहीं और $3$ शामिल है, अतः $(-2, 3]$ (NCERT §1.6.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This includes $-2$.",
+              "hi": "इसमें $-2$ शामिल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This excludes $3$.",
+              "hi": "इसमें $3$ शामिल नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Both end points are the wrong way round.",
+              "hi": "दोनों अंत्य बिंदु उलटे हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.subsets-intervals",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $A = \\{1, \\{2, 3\\}, 4\\}$. Which statement is correct?",
+        "hi": "मान लीजिए $A = \\{1, \\{2, 3\\}, 4\\}$। कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{2, 3\\} \\in A$",
+            "hi": "$\\{2, 3\\} \\in A$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\{2, 3\\} \\subset A$",
+            "hi": "$\\{2, 3\\} \\subset A$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2 \\in A$",
+            "hi": "$2 \\in A$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{1, 2\\} \\subset A$",
+            "hi": "$\\{1, 2\\} \\subset A$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "List the elements of A first.",
+          "hi": "पहले A के अवयव लिखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A has three elements: $1$, the set $\\{2, 3\\}$, and $4$.",
+          "hi": "A में तीन अवयव हैं: $1$, समुच्चय $\\{2, 3\\}$, और $4$।"
+        },
+        "steps": [
+          {
+            "en": "$\\{2, 3\\}$ is listed as one element of A, so $\\{2, 3\\} \\in A$ (NCERT §1.6).",
+            "hi": "$\\{2, 3\\}$, A के एक अवयव के रूप में लिखा है, अतः $\\{2, 3\\} \\in A$ (NCERT §1.6)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That would need $2 \\in A$ and $3 \\in A$; neither is an element.",
+              "hi": "इसके लिए $2 \\in A$ और $3 \\in A$ चाहिए; कोई भी अवयव नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$2$ is inside an element, not an element itself.",
+              "hi": "$2$ एक अवयव के भीतर है, स्वयं अवयव नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$2 \\notin A$.",
+              "hi": "$2 \\notin A$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.power-set",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "How many subsets does $\\{a, b, c\\}$ have?",
+        "hi": "$\\{a, b, c\\}$ के कितने उपसमुच्चय हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$8$",
+            "hi": "$8$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$3$",
+            "hi": "$3$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$6$",
+            "hi": "$6$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$7$",
+            "hi": "$7$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $2^{n}$.",
+          "hi": "$2^{n}$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each of the three letters is either in or out: $2 \\times 2 \\times 2$.",
+          "hi": "तीनों अक्षरों में से हर एक अंदर या बाहर: $2 \\times 2 \\times 2$।"
+        },
+        "steps": [
+          {
+            "en": "$2^3 = 8$ (OpenStax Contemporary Mathematics §1.2).",
+            "hi": "$2^3 = 8$ (OpenStax Contemporary Mathematics §1.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$3$ counts only the one-element subsets.",
+              "hi": "$3$ केवल एक-अवयवी उपसमुच्चय गिनता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$6$ leaves out $\\phi$ and the set itself.",
+              "hi": "$6$ में $\\phi$ और स्वयं समुच्चय छूट गए हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$7$ is the number of proper subsets.",
+              "hi": "$7$ उचित उपसमुच्चयों की संख्या है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0006",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.power-set",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A set has $5$ elements. How many proper subsets does it have?",
+        "hi": "एक समुच्चय में $5$ अवयव हैं। उसके कितने उचित उपसमुच्चय हैं?"
+      },
+      "answer": {
+        "value": 31,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Start from $2^5$.",
+          "hi": "$2^5$ से शुरू कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "All subsets except the set itself.",
+          "hi": "स्वयं समुच्चय को छोड़कर सभी उपसमुच्चय।"
+        },
+        "steps": [
+          {
+            "en": "$2^5 - 1 = 32 - 1 = 31$ (OpenStax Contemporary Mathematics §1.2).",
+            "hi": "$2^5 - 1 = 32 - 1 = 31$ (OpenStax Contemporary Mathematics §1.2)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "$32$ counts the set itself, which is not a proper subset.",
+              "hi": "$32$ में स्वयं समुच्चय गिना गया है, जो उचित उपसमुच्चय नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.power-set",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "If $n\\big(P(A)\\big) = 64$, then $n(A)$ is",
+        "hi": "यदि $n\\big(P(A)\\big) = 64$, तो $n(A)$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$6$",
+            "hi": "$6$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$8$",
+            "hi": "$8$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$32$",
+            "hi": "$32$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$5$",
+            "hi": "$5$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$64 = 2^?$",
+          "hi": "$64 = 2^?$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the power of $2$ that gives $64$.",
+          "hi": "$2$ की वह घात खोजिए जो $64$ दे।"
+        },
+        "steps": [
+          {
+            "en": "$2^{n} = 64 = 2^6$, so $n = 6$.",
+            "hi": "$2^{n} = 64 = 2^6$, अतः $n = 6$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$8^2 = 64$, but the formula is $2^{n}$, not $n^2$.",
+              "hi": "$8^2 = 64$, पर सूत्र $2^{n}$ है, $n^2$ नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$32$ is half of $64$.",
+              "hi": "$32$, $64$ का आधा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$2^5 = 32$.",
+              "hi": "$2^5 = 32$।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.math.sets.subsets.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.sets.subsets.core.power-set",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "The power set of the empty set, $P(\\phi)$, is",
+        "hi": "रिक्त समुच्चय का घात समुच्चय, $P(\\phi)$, है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\{\\phi\\}$",
+            "hi": "$\\{\\phi\\}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\phi$",
+            "hi": "$\\phi$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\{0\\}$",
+            "hi": "$\\{0\\}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\{\\phi, \\{\\phi\\}\\}$",
+            "hi": "$\\{\\phi, \\{\\phi\\}\\}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $2^0$.",
+          "hi": "$2^0$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The empty set has exactly one subset: itself.",
+          "hi": "रिक्त समुच्चय का ठीक एक उपसमुच्चय है: स्वयं।"
+        },
+        "steps": [
+          {
+            "en": "$n = 0$ gives $2^0 = 1$ subset, namely $\\phi$, so $P(\\phi) = \\{\\phi\\}$ (Wikipedia, Power set).",
+            "hi": "$n = 0$ से $2^0 = 1$ उपसमुच्चय मिलता है, यानी $\\phi$, अतः $P(\\phi) = \\{\\phi\\}$ (Wikipedia, Power set)।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A power set always contains at least $\\phi$, so it is never empty.",
+              "hi": "घात समुच्चय में कम से कम $\\phi$ सदा होता है, इसलिए वह कभी रिक्त नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "$0$ is a number, not a subset of $\\phi$.",
+              "hi": "$0$ एक संख्या है, $\\phi$ का उपसमुच्चय नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is $P(\\{\\phi\\})$, with two elements.",
+              "hi": "वह $P(\\{\\phi\\})$ है, जिसमें दो अवयव हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,383 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.vector-addition:deep_dive",
+  "topic": "phy.motion-plane.vector-addition",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-plane.vector-addition.core.vector-addition-laws"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Head to tail",
+        "hi": "शीर्ष से पुच्छ"
+      },
+      "subtopic": "phy.motion-plane.vector-addition.core",
+      "card_ids": [
+        "phy.motion-plane.vector-addition:dd:01",
+        "phy.motion-plane.vector-addition:dd:02",
+        "phy.motion-plane.vector-addition:dd:03",
+        "phy.motion-plane.vector-addition:dd:04",
+        "phy.motion-plane.vector-addition:dd:05",
+        "phy.motion-plane.vector-addition:dd:06",
+        "phy.motion-plane.vector-addition:dd:07",
+        "phy.motion-plane.vector-addition:dd:08",
+        "phy.motion-plane.vector-addition:dd:09",
+        "phy.motion-plane.vector-addition:dd:10"
+      ],
+      "estimated_minutes": 7
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.vector-addition:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Umbrella at a slant",
+        "hi": "तिरछा छाता"
+      },
+      "body": {
+        "en": "Rain falls straight down, then a wind springs up. A boy at a bus stop finds that holding his umbrella upright no longer keeps him dry. The rain's velocity and the wind's velocity have combined into one slanting velocity, and to find it he has to add two vectors.",
+        "hi": "बारिश सीधी नीचे गिर रही है, फिर हवा चलने लगती है। बस स्टॉप पर खड़ा एक लड़का पाता है कि छाता सीधा पकड़ने से अब वह सूखा नहीं रहता। बारिश का वेग और हवा का वेग मिलकर एक तिरछा वेग बन गए हैं, और उसे जानने के लिए उसे दो सदिश जोड़ने होंगे।"
+      },
+      "media": "img.motion-plane.rain-umbrella"
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Triangle and parallelogram methods",
+        "hi": "त्रिभुज और समांतर चतुर्भुज विधियाँ"
+      },
+      "body": {
+        "en": "Head-to-tail (triangle) method: place the tail of $\\vec{B}$ at the head of $\\vec{A}$. The line from the tail of $\\vec{A}$ to the head of $\\vec{B}$ is the resultant $\\vec{R} = \\vec{A} + \\vec{B}$.\n\nParallelogram method: bring the tails of $\\vec{A}$ and $\\vec{B}$ together and complete the parallelogram. The diagonal from the common tail is $\\vec{R}$. The two methods give the same result.\n\nVector addition is commutative, $\\vec{A} + \\vec{B} = \\vec{B} + \\vec{A}$, and associative, $(\\vec{A} + \\vec{B}) + \\vec{C} = \\vec{A} + (\\vec{B} + \\vec{C})$. Subtraction is addition of the negative vector: $\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$.",
+        "hi": "शीर्ष से पुच्छ (त्रिभुज) विधि: $\\vec{B}$ की पुच्छ को $\\vec{A}$ के शीर्ष पर रखिए। $\\vec{A}$ की पुच्छ से $\\vec{B}$ के शीर्ष तक की रेखा परिणामी $\\vec{R} = \\vec{A} + \\vec{B}$ है।\n\nसमांतर चतुर्भुज विधि: $\\vec{A}$ और $\\vec{B}$ की पुच्छें एक साथ लाइए और समांतर चतुर्भुज पूरा कीजिए। उभयनिष्ठ पुच्छ से खींचा गया विकर्ण $\\vec{R}$ है। दोनों विधियाँ एक ही परिणाम देती हैं।\n\nसदिश योग क्रम-विनिमेय है, $\\vec{A} + \\vec{B} = \\vec{B} + \\vec{A}$, और साहचर्य है, $(\\vec{A} + \\vec{B}) + \\vec{C} = \\vec{A} + (\\vec{B} + \\vec{C})$। व्यवकलन ऋण सदिश का योग है: $\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$।"
+      },
+      "media": "img.motion-plane.boat-river",
+      "highlights": [
+        {
+          "term": {
+            "en": "resultant",
+            "hi": "परिणामी"
+          },
+          "definition": {
+            "en": "the single vector equal to the sum",
+            "hi": "योग के बराबर एकल सदिश"
+          }
+        },
+        {
+          "term": {
+            "en": "commutative",
+            "hi": "क्रम-विनिमेय"
+          },
+          "definition": {
+            "en": "order of adding does not matter",
+            "hi": "जोड़ने का क्रम मायने नहीं रखता"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.4, Summary 4, 5 and 7"
+      }
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Law of cosines for the resultant",
+        "hi": "परिणामी के लिए कोज्या नियम"
+      },
+      "latex": "R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}",
+      "symbols": [
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "magnitude of the resultant",
+            "hi": "परिणामी का परिमाण"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "A, B",
+          "meaning": {
+            "en": "magnitudes of the two vectors",
+            "hi": "दोनों सदिशों के परिमाण"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "\\theta",
+          "meaning": {
+            "en": "angle between the vectors placed tail to tail",
+            "hi": "पुच्छ से पुच्छ रखे सदिशों के बीच का कोण"
+          },
+          "unit": "°"
+        }
+      ],
+      "conditions": {
+        "en": "Direction: $\\tan\\alpha = \\frac{B\\sin\\theta}{A + B\\cos\\theta}$, where $\\alpha$ is the angle between $\\vec{R}$ and $\\vec{A}$.",
+        "hi": "दिशा: $\\tan\\alpha = \\frac{B\\sin\\theta}{A + B\\cos\\theta}$, जहाँ $\\alpha$, $\\vec{R}$ और $\\vec{A}$ के बीच का कोण है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.2, Eqs. 3.24a and 3.24f"
+      }
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:04",
+      "type": "derivation",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Where the law of cosines comes from",
+        "hi": "कोज्या नियम कहाँ से आता है"
+      },
+      "steps": [
+        {
+          "latex": "ON = A + B\\cos\\theta,\\quad SN = B\\sin\\theta",
+          "say": {
+            "en": "Drop a perpendicular SN from the head of R onto the line of A.",
+            "hi": "R के शीर्ष से A की रेखा पर लंब SN डालिए।"
+          },
+          "why": null
+        },
+        {
+          "latex": "R^2 = (A + B\\cos\\theta)^2 + (B\\sin\\theta)^2",
+          "say": {
+            "en": "Pythagoras in the right triangle OSN.",
+            "hi": "समकोण त्रिभुज OSN में पाइथागोरस।"
+          },
+          "why": null
+        },
+        {
+          "latex": "R^2 = A^2 + B^2 + 2AB\\cos\\theta",
+          "say": {
+            "en": "Expand and use sin² + cos² = 1.",
+            "hi": "विस्तार कीजिए और sin² + cos² = 1 का उपयोग कीजिए।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.2, Fig. 3.10"
+      }
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Largest, smallest and right-angled",
+        "hi": "सबसे बड़ा, सबसे छोटा और समकोण"
+      },
+      "body": {
+        "en": "Put special angles into the law of cosines. When the vectors point the same way, $\\theta = 0$ and $R = A + B$, the largest possible resultant. When they point opposite ways, $\\theta = 180°$ and $R = |A - B|$, the smallest. When they are at right angles, $\\cos\\theta = 0$ and $R = \\sqrt{A^2 + B^2}$.\n\nSo the resultant of two vectors always lies between the difference and the sum of their magnitudes.",
+        "hi": "कोज्या नियम में विशेष कोण रखिए। जब सदिश एक ही दिशा में हों, $\\theta = 0$ और $R = A + B$, यानी सबसे बड़ा संभव परिणामी। जब वे विपरीत दिशाओं में हों, $\\theta = 180°$ और $R = |A - B|$, यानी सबसे छोटा। जब वे समकोण पर हों, $\\cos\\theta = 0$ और $R = \\sqrt{A^2 + B^2}$।\n\nइसलिए दो सदिशों का परिणामी सदा उनके परिमाणों के अंतर और योग के बीच रहता है।"
+      },
+      "media": "img.motion-plane.boat-river",
+      "highlights": [
+        {
+          "term": {
+            "en": "range of the resultant",
+            "hi": "परिणामी का परास"
+          },
+          "definition": {
+            "en": "from |A - B| to A + B",
+            "hi": "|A - B| से A + B तक"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.2, Eq. 3.24a; Exercise 3.6"
+      }
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "Rain falls vertically at 35 m/s. A wind starts blowing from east to west at 12 m/s. In which direction should a boy at a bus stop hold his umbrella?",
+        "hi": "बारिश 35 m/s से ऊर्ध्वाधर गिर रही है। हवा पूर्व से पश्चिम की ओर 12 m/s से चलने लगती है। बस स्टॉप पर खड़े लड़के को अपना छाता किस दिशा में पकड़ना चाहिए?"
+      },
+      "solution_steps": [
+        {
+          "en": "The two velocities are at right angles: $R = \\sqrt{35^2 + 12^2} = 37$ m/s.",
+          "hi": "दोनों वेग समकोण पर हैं: $R = \\sqrt{35^2 + 12^2} = 37$ m/s।"
+        },
+        {
+          "en": "Angle with the vertical: $\\tan\\theta = \\frac{12}{35} = 0.343$, so $\\theta \\approx 19°$.",
+          "hi": "ऊर्ध्वाधर से कोण: $\\tan\\theta = \\frac{12}{35} = 0.343$, अतः $\\theta \\approx 19°$।"
+        },
+        {
+          "en": "The rain comes slanting from the east, so tilt the umbrella towards the east.",
+          "hi": "बारिश पूर्व की ओर से तिरछी आती है, इसलिए छाते को पूर्व की ओर झुकाइए।"
+        }
+      ],
+      "answer": {
+        "en": "About 19° from the vertical, towards the east",
+        "hi": "ऊर्ध्वाधर से लगभग 19°, पूर्व की ओर"
+      },
+      "answer_value": {
+        "value": 19,
+        "unit": "°",
+        "tolerance": {
+          "abs": 1
+        }
+      },
+      "common_trap": {
+        "en": "Tilting the umbrella the way the wind blows, towards the west.",
+        "hi": "छाते को हवा की दिशा में, पश्चिम की ओर झुकाना।"
+      },
+      "media": "img.motion-plane.rain-umbrella",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.1"
+      }
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A motorboat heads north at 25 km/h. The water current is 10 km/h in the direction 60° east of south. Find the resultant velocity of the boat.",
+        "hi": "एक मोटरबोट 25 km/h से उत्तर की ओर चल रही है। जल धारा 10 km/h से दक्षिण से 60° पूर्व की दिशा में है। नाव का परिणामी वेग ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "The angle between north and 60° east of south is $120°$.",
+          "hi": "उत्तर और दक्षिण से 60° पूर्व के बीच का कोण $120°$ है।"
+        },
+        {
+          "en": "$R = \\sqrt{25^2 + 10^2 + 2 \\times 25 \\times 10 \\times (-\\frac{1}{2})} \\approx 21.8$ km/h, about 22 km/h.",
+          "hi": "$R = \\sqrt{25^2 + 10^2 + 2 \\times 25 \\times 10 \\times (-\\frac{1}{2})} \\approx 21.8$ km/h, लगभग 22 km/h।"
+        },
+        {
+          "en": "Law of sines: $\\sin\\phi = \\frac{10 \\sin 120°}{21.8} = 0.397$, so $\\phi \\approx 23.4°$ east of north.",
+          "hi": "ज्या नियम: $\\sin\\phi = \\frac{10 \\sin 120°}{21.8} = 0.397$, अतः $\\phi \\approx 23.4°$ उत्तर से पूर्व की ओर।"
+        }
+      ],
+      "answer": {
+        "en": "About 22 km/h, at 23.4° east of north",
+        "hi": "लगभग 22 km/h, उत्तर से 23.4° पूर्व की ओर"
+      },
+      "answer_value": {
+        "value": 21.8,
+        "unit": "km/h",
+        "tolerance": {
+          "abs": 0.3
+        }
+      },
+      "common_trap": {
+        "en": "Using 60° as the angle between the vectors.",
+        "hi": "सदिशों के बीच का कोण 60° ले लेना।"
+      },
+      "media": "img.motion-plane.boat-river",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.3, Fig. 3.11"
+      }
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.vector-addition.0001"
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.vector-addition.0003"
+    },
+    {
+      "id": "phy.motion-plane.vector-addition:dd:10",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.vector-addition.core.vector-addition-laws"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Add head to tail, or by the parallelogram diagonal.",
+          "hi": "शीर्ष से पुच्छ जोड़िए, या समांतर चतुर्भुज के विकर्ण से।"
+        },
+        {
+          "en": "$R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}$; it lies between $|A - B|$ and $A + B$.",
+          "hi": "$R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}$; यह $|A - B|$ और $A + B$ के बीच रहता है।"
+        },
+        {
+          "en": "$\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$.",
+          "hi": "$\\vec{A} - \\vec{B} = \\vec{A} + (-\\vec{B})$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

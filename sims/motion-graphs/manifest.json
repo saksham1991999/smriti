@@ -1,0 +1,305 @@
+{
+  "id": "motion-graphs",
+  "version": "1.0.0",
+  "protocolVersion": "1.0.0",
+  "title": {
+    "en": "Motion graphs",
+    "hi": "गति के ग्राफ़"
+  },
+  "subject": "phy",
+  "concepts": [
+    "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+    "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+  ],
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "aspect": "1:1",
+  "preferredOrientation": "any",
+  "entry": "index.html",
+  "capabilities": [
+    "tasks",
+    "record",
+    "pause",
+    "set_params",
+    "snapshot",
+    "resize"
+  ],
+  "params": {
+    "x0": {
+      "type": "number",
+      "default": 0,
+      "min": -50,
+      "max": 50,
+      "step": 1,
+      "unit": "m"
+    },
+    "u": {
+      "type": "number",
+      "default": 10,
+      "min": -20,
+      "max": 20,
+      "step": 0.5,
+      "unit": "m/s"
+    },
+    "a": {
+      "type": "number",
+      "default": -2,
+      "min": -5,
+      "max": 5,
+      "step": 0.5,
+      "unit": "m/s²"
+    },
+    "t_max": {
+      "type": "number",
+      "default": 10,
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "s"
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "readings": [
+    {
+      "name": "time",
+      "unit": "s",
+      "label": {
+        "en": "Time t",
+        "hi": "समय t"
+      }
+    },
+    {
+      "name": "position",
+      "unit": "m",
+      "label": {
+        "en": "Position x",
+        "hi": "स्थिति x"
+      }
+    },
+    {
+      "name": "velocity",
+      "unit": "m/s",
+      "label": {
+        "en": "Velocity v",
+        "hi": "वेग v"
+      }
+    },
+    {
+      "name": "acceleration",
+      "unit": "m/s²",
+      "label": {
+        "en": "Acceleration a",
+        "hi": "त्वरण a"
+      }
+    },
+    {
+      "name": "displacement",
+      "unit": "m",
+      "label": {
+        "en": "Displacement",
+        "hi": "विस्थापन"
+      }
+    },
+    {
+      "name": "path_length",
+      "unit": "m",
+      "label": {
+        "en": "Path length",
+        "hi": "पथ-लंबाई"
+      }
+    },
+    {
+      "name": "initial_velocity",
+      "unit": "m/s",
+      "label": {
+        "en": "Initial velocity u",
+        "hi": "प्रारंभिक वेग u"
+      }
+    }
+  ],
+  "conditions": [],
+  "tasks": [
+    {
+      "id": "stop-time",
+      "prompt": {
+        "en": "With u = 10 m/s and a = −2 m/s², stop the clock when the velocity reads zero.",
+        "hi": "u = 10 m/s और a = −2 m/s² के साथ, जब वेग शून्य दिखे तब घड़ी रोकिए।"
+      },
+      "hint": {
+        "en": "Near the end, use Step to move 0.1 s at a time.",
+        "hi": "अंत के पास, 0.1 s करके आगे बढ़ने के लिए एक कदम दबाइए।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "target",
+            "quantity": "initial_velocity",
+            "value": 10,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "acceleration",
+            "value": -2,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "velocity",
+            "value": 0,
+            "tolerance": 0.05
+          },
+          {
+            "kind": "target",
+            "quantity": "time",
+            "value": 5,
+            "tolerance": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "id": "farthest",
+      "prompt": {
+        "en": "Leave the clock where the velocity is zero: the cart is farthest from the start.",
+        "hi": "घड़ी वहीं रहने दीजिए जहाँ वेग शून्य है: गाड़ी आरंभ से सबसे दूर है।"
+      },
+      "hint": {
+        "en": "The x-t curve is at its top where the v-t line crosses zero.",
+        "hi": "जहाँ v-t रेखा शून्य को काटती है, वहाँ x-t वक्र सबसे ऊपर होता है।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "target",
+            "quantity": "initial_velocity",
+            "value": 10,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "acceleration",
+            "value": -2,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "velocity",
+            "value": 0,
+            "tolerance": 0.05
+          },
+          {
+            "kind": "target",
+            "quantity": "position",
+            "value": 25,
+            "tolerance": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "back-home",
+      "prompt": {
+        "en": "Run on to t = 10 s and read the position.",
+        "hi": "t = 10 s तक चलाइए और स्थिति पढ़िए।"
+      },
+      "hint": {
+        "en": "Move the time slider to the end, or press Play.",
+        "hi": "समय स्लाइडर को अंत तक ले जाइए, या चलाएँ दबाइए।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "target",
+            "quantity": "initial_velocity",
+            "value": 10,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "acceleration",
+            "value": -2,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "time",
+            "value": 10,
+            "tolerance": 0.1
+          },
+          {
+            "kind": "target",
+            "quantity": "position",
+            "value": 0,
+            "tolerance": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "path",
+      "prompt": {
+        "en": "At t = 10 s, compare the displacement with the path length.",
+        "hi": "t = 10 s पर विस्थापन की तुलना पथ-लंबाई से कीजिए।"
+      },
+      "hint": {
+        "en": "Path length adds both shaded areas; displacement adds them with their signs.",
+        "hi": "पथ-लंबाई दोनों छायांकित क्षेत्रफल जोड़ती है; विस्थापन उन्हें चिह्न सहित जोड़ता है।"
+      },
+      "check": {
+        "kind": "all",
+        "of": [
+          {
+            "kind": "target",
+            "quantity": "initial_velocity",
+            "value": 10,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "acceleration",
+            "value": -2,
+            "tolerance": 0.01
+          },
+          {
+            "kind": "target",
+            "quantity": "time",
+            "value": 10,
+            "tolerance": 0.1
+          },
+          {
+            "kind": "target",
+            "quantity": "path_length",
+            "value": 50,
+            "tolerance": 0.5
+          }
+        ]
+      }
+    }
+  ],
+  "third_party": [
+    {
+      "name": "Plus Jakarta Sans",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/plus-jakarta-sans 5.3.0"
+    },
+    {
+      "name": "Noto Sans Devanagari",
+      "licence": "OFL-1.1",
+      "source": "@fontsource/noto-sans-devanagari 5.3.0"
+    },
+    {
+      "name": "Phosphor Icons",
+      "licence": "MIT",
+      "source": "@phosphor-icons/core 2.1.1"
+    }
+  ],
+  "size_bytes": 369732
+}

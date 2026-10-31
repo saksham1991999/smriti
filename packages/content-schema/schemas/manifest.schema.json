@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/manifest.schema.json",
+  "title": "Manifest",
+  "description": "A published manifest: one exam profile x locale. Lists every subject, chapter and topic with its bundle hashes, sizes and the available delta patches, plus the exam's concept depths so the player can hide cards above the exam's depth. Served at manifests/{profile}.{locale}.json (short TTL) and archived as manifests/{profile}.{locale}.{sha256}.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "exam_profile",
+    "locale",
+    "version",
+    "min_app_version",
+    "exam",
+    "subjects",
+    "topics",
+    "blueprints",
+    "free"
+  ],
+  "properties": {
+    "schema": { "const": "manifest@1" },
+    "exam_profile": { "type": "string" },
+    "locale": { "$ref": "common.schema.json#/$defs/Locale" },
+    "version": { "type": "integer", "minimum": 1 },
+    "min_app_version": { "type": "string" },
+    "fixture": { "type": "boolean" },
+    "exam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "profile_name", "cycle", "category"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "profile_name": { "type": "string" },
+        "cycle": { "type": "string" },
+        "category": { "type": "string" },
+        "conducting_body": { "type": ["string", "null"] }
+      }
+    },
+    "subjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "color_family", "sort", "chapters"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "color_family": { "type": "string" },
+          "sort": { "type": "integer" },
+          "chapters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "name", "sort", "unit", "free_deep_dive", "topics"],
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "sort": { "type": "integer" },
+                "unit": { "type": "string" },
+                "free_deep_dive": {
+                  "description": "The first 2 chapters of every subject (PRD 11.1). Rotating free chapters come from the flag free.rotating_chapters, added by the API.",
+                  "type": "boolean"
+                },
+                "topics": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "topics": { "type": "object", "additionalProperties": { "$ref": "#/$defs/TopicEntry" } },
+    "blueprints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["paper_code", "version", "effective_from"],
+        "properties": {
+          "paper_code": { "type": "string" },
+          "version": { "type": "integer" },
+          "effective_from": { "type": "string" }
+        }
+      }
+    },
+    "free": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deep_dive_chapters"],
+      "properties": { "deep_dive_chapters": { "type": "array", "items": { "type": "string" } } }
+    }
+  },
+  "$defs": {
+    "TopicEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "chapter", "sort", "depth", "bundles"],
+      "properties": {
+        "name": { "type": "string" },
+        "chapter": { "type": "string" },
+        "sort": { "type": "integer" },
+        "depth": {
+          "description": "concept id -> the deepest level this exam needs",
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 1, "maximum": 5 }
+        },
+        "bundles": {
+          "type": "object",
+          "propertyNames": { "$ref": "bundle.schema.json#/$defs/BundleMode" },
+          "additionalProperties": { "$ref": "#/$defs/BundleEntry" }
+        },
+        "activities": {
+          "description": "Little learner path nodes for this topic, in path order (story, song, play; then by id). Each opens from the topic's story, song or play bundle.",
+          "type": "array",
+          "items": { "$ref": "#/$defs/ActivityEntry" }
+        }
+      }
+    },
+    "BundleEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "hash",
+        "path",
+        "size_bytes",
+        "card_count",
+        "min_app_version",
+        "is_free",
+        "patches"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "path": { "type": "string" },
+        "size_bytes": { "type": "integer", "minimum": 1 },
+        "card_count": { "type": "integer", "minimum": 0 },
+        "min_app_version": { "type": "string" },
+        "is_free": { "type": "boolean" },
+        "patches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from_hash", "path", "size_bytes"],
+            "properties": {
+              "from_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+              "path": { "type": "string" },
+              "size_bytes": { "type": "integer", "minimum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "ActivityEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "minutes", "cover", "concepts"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "type": "string", "enum": ["story", "song", "play"] },
+        "title": { "type": "string" },
+        "minutes": { "type": ["number", "null"] },
+        "cover": {
+          "description": "Image request id for the path node thumbnail, or null.",
+          "type": ["string", "null"]
+        },
+        "concepts": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.power",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.power.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.power.core.power-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "One kilowatt hour is equal to",
+        "hi": "एक किलोवाट घंटा बराबर है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$3.6 \\times 10^6$ J",
+            "hi": "$3.6 \\times 10^6$ J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1000 J",
+            "hi": "1000 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "3600 J",
+            "hi": "3600 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$3.6 \\times 10^3$ W",
+            "hi": "$3.6 \\times 10^3$ W"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "kilo = 1000, hour = 3600 s",
+          "hi": "किलो = 1000, घंटा = 3600 s"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Power times time gives energy.",
+          "hi": "शक्ति गुणा समय ऊर्जा देता है।"
+        },
+        "steps": [
+          {
+            "en": "1 kWh $= 1000$ W $\\times 3600$ s $= 3.6 \\times 10^6$ J",
+            "hi": "1 kWh $= 1000$ W $\\times 3600$ s $= 3.6 \\times 10^6$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That forgets the hour, 3600 s.",
+              "hi": "यह घंटे, 3600 s, को भूल जाता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That forgets the kilo, 1000.",
+              "hi": "यह किलो, 1000, को भूल जाता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A kWh is energy, not power.",
+              "hi": "kWh ऊर्जा है, शक्ति नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.power.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.power.core.power-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A force $\\vec{F} = (3\\hat{i} + 4\\hat{j})$ N acts on a body moving with velocity $\\vec{v} = (2\\hat{i} + \\hat{j})$ m/s. The power delivered by the force, in W, is",
+        "hi": "एक बल $\\vec{F} = (3\\hat{i} + 4\\hat{j})$ N, $\\vec{v} = (2\\hat{i} + \\hat{j})$ m/s वेग से चलते पिंड पर लगता है। बल द्वारा दी गई शक्ति, W में, है"
+      },
+      "answer": {
+        "value": 10,
+        "unit": "W"
+      },
+      "hints": [
+        {
+          "en": "$P = F_xv_x + F_yv_y$",
+          "hi": "$P = F_xv_x + F_yv_y$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Power is force dotted with velocity.",
+          "hi": "शक्ति बल और वेग का बिंदु गुणनफल है।"
+        },
+        "steps": [
+          {
+            "en": "$P = \\vec{F}\\cdot\\vec{v} = 3(2) + 4(1) = 10$ W",
+            "hi": "$P = \\vec{F}\\cdot\\vec{v} = 3(2) + 4(1) = 10$ W"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Multiplying the magnitudes, $5 \\times \\sqrt{5}$, ignores the angle.",
+              "hi": "परिमाणों का गुणा, $5 \\times \\sqrt{5}$, कोण की उपेक्षा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.power.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.power.core.power-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 2 kW heater runs for 3 hours. The energy it uses is",
+        "hi": "2 kW का हीटर 3 घंटे चलता है। वह जो ऊर्जा खर्च करता है, वह है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "6 kWh",
+            "hi": "6 kWh"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 kW",
+            "hi": "6 kW"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1.5 kWh",
+            "hi": "1.5 kWh"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0.67 kWh",
+            "hi": "0.67 kWh"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$E = Pt$",
+          "hi": "$E = Pt$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Energy is power times time.",
+          "hi": "ऊर्जा शक्ति गुणा समय है।"
+        },
+        "steps": [
+          {
+            "en": "$E = 2 \\times 3 = 6$ kWh",
+            "hi": "$E = 2 \\times 3 = 6$ kWh"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "kW is power, not energy.",
+              "hi": "kW शक्ति है, ऊर्जा नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides time by power.",
+              "hi": "यह समय को शक्ति से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That divides power by time.",
+              "hi": "यह शक्ति को समय से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.power.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.power.core.power-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A body starts from rest and moves in a straight line with constant acceleration under a constant net force. The power delivered by that force",
+        "hi": "एक पिंड विराम से चलकर नियत नेट बल के अधीन सरल रेखा में नियत त्वरण से चलता है। उस बल द्वारा दी गई शक्ति"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "grows in proportion to the time",
+            "hi": "समय के अनुक्रमानुपात में बढ़ती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "grows as the square of the time",
+            "hi": "समय के वर्ग के अनुसार बढ़ती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "stays constant",
+            "hi": "नियत रहती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "grows as the square root of the time",
+            "hi": "समय के वर्गमूल के अनुसार बढ़ती है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$P = Fv$ and $v = at$",
+          "hi": "$P = Fv$ और $v = at$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With F fixed, power follows the speed.",
+          "hi": "F नियत हो तो शक्ति चाल के अनुसार चलती है।"
+        },
+        "steps": [
+          {
+            "en": "$P = Fv = F(at)$, and F and a are constant, so $P \\propto t$.",
+            "hi": "$P = Fv = F(at)$, और F तथा a नियत हैं, अतः $P \\propto t$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That would follow the distance, not the speed.",
+              "hi": "यह दूरी के अनुसार होता, चाल के नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The speed rises, so the power rises.",
+              "hi": "चाल बढ़ती है, इसलिए शक्ति बढ़ती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The speed is proportional to t, not $\\sqrt{t}$.",
+              "hi": "चाल t के अनुक्रमानुपाती है, $\\sqrt{t}$ के नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.power.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.power.core.power-definition",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A pump lifts 600 kg of water through a height of 10 m in 1 minute. Taking $g = 10$ m/s², the useful power it delivers is",
+        "hi": "एक पंप 600 kg पानी को 1 मिनट में 10 m ऊँचाई तक उठाता है। $g = 10$ m/s² लेकर, वह जो उपयोगी शक्ति देता है, वह है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1000 W",
+            "hi": "1000 W"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "60000 W",
+            "hi": "60000 W"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "100 W",
+            "hi": "100 W"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "6000 W",
+            "hi": "6000 W"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Convert 1 minute to 60 s.",
+          "hi": "1 मिनट को 60 s में बदलिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Divide the work against gravity by the time in seconds.",
+          "hi": "गुरुत्व के विरुद्ध कार्य को सेकंड में समय से भाग दीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$W = mgh = 600 \\times 10 \\times 10 = 60000$ J; $P = 60000 / 60 = 1000$ W",
+            "hi": "$W = mgh = 600 \\times 10 \\times 10 = 60000$ J; $P = 60000 / 60 = 1000$ W"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the work, not the power.",
+              "hi": "यह कार्य है, शक्ति नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That divides by 600 instead of 60.",
+              "hi": "यह 60 के बजाय 600 से भाग देता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That divides by 10 instead of 60.",
+              "hi": "यह 60 के बजाय 10 से भाग देता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

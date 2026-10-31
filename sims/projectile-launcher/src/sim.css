@@ -1,0 +1,125 @@
+/* Projectile scene. Token variables only. */
+
+.projectile .small {
+  font-size: 10px;
+}
+
+.projectile .ground {
+  stroke: var(--ink-muted);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.projectile .axis,
+.projectile .tick {
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+}
+
+.projectile .grid {
+  stroke: var(--ink-disabled);
+  stroke-width: 0.75;
+  stroke-dasharray: 2 4;
+}
+
+.projectile .platform {
+  stroke: var(--ink-muted);
+  stroke-width: 4;
+}
+
+.projectile .barrel {
+  stroke: var(--ink);
+  stroke-width: 7;
+  stroke-linecap: round;
+}
+
+.projectile .base {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2.5;
+}
+
+.projectile .ball {
+  fill: var(--s-strong);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.projectile .path-current {
+  fill: none;
+  stroke: var(--s-strong);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Earlier paths: each with its own dash pattern (and an angle label), not colour alone. */
+.projectile .path-kept {
+  fill: none;
+  stroke: var(--ink-muted);
+  stroke-width: 2;
+}
+
+.projectile .kept-0 {
+  stroke-dasharray: 8 5;
+}
+
+.projectile .kept-1 {
+  stroke-dasharray: 2 4;
+}
+
+.projectile .kept-2 {
+  stroke-dasharray: 12 4 2 4;
+}
+
+.projectile .kept-label {
+  font-size: 10px;
+  fill: var(--ink-muted);
+}
+
+.projectile .arrow-vx .arrow-shaft {
+  stroke: var(--s-strong);
+  stroke-width: 2.5;
+}
+
+.projectile .arrow-vx .arrow-head {
+  fill: var(--s-strong);
+}
+
+/* vy: a different colour and a dashed shaft. */
+.projectile .arrow-vy .arrow-shaft {
+  stroke: var(--f-maths-strong);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 3;
+}
+
+.projectile .arrow-vy .arrow-head {
+  fill: var(--f-maths-strong);
+}
+
+.projectile .arrow-label {
+  font-size: 11px;
+  font-style: italic;
+  paint-order: stroke;
+  stroke: var(--s-tint);
+  stroke-width: 3px;
+}
+
+.projectile .apex-line {
+  stroke: var(--ink-muted);
+  stroke-width: 1.25;
+  stroke-dasharray: 3 3;
+}
+
+.projectile .apex-dot {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.projectile .mark-label {
+  font-size: 11px;
+  paint-order: stroke;
+  stroke: var(--s-tint);
+  stroke-width: 3px;
+}

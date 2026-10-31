@@ -1,0 +1,417 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.kirchhoff",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.kirchhoff.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.kirchhoff.core.kirchhoff-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Currents of 3 A and 2 A enter a junction. One wire carries 4 A out of it. The current in the only other wire leaving the junction is",
+        "hi": "किसी संधि में 3 A और 2 A की धाराएँ प्रवेश करती हैं। एक तार उससे 4 A बाहर ले जाता है। संधि से निकलने वाले एकमात्र अन्य तार में धारा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 A",
+            "hi": "1 A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "9 A",
+            "hi": "9 A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 A",
+            "hi": "5 A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0 A",
+            "hi": "0 A"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "In = out.",
+          "hi": "अंदर = बाहर।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Five amperes come in and charge cannot pile up, so five must leave. Four leave by one wire, so one leaves by the other.",
+          "hi": "पाँच ऐम्पियर आते हैं और आवेश जमा नहीं हो सकता, इसलिए पाँच ही जाने चाहिए। चार एक तार से जाते हैं, तो एक दूसरे से।"
+        },
+        "steps": [
+          {
+            "en": "$3 + 2 = 4 + I$, so $I = 1$ A",
+            "hi": "$3 + 2 = 4 + I$, इसलिए $I = 1$ A"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This adds all three currents regardless of direction.",
+              "hi": "यह दिशा देखे बिना तीनों धाराएँ जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "5 A is the total coming in.",
+              "hi": "5 A कुल आने वाली धारा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Then charge would pile up at the junction.",
+              "hi": "तब संधि पर आवेश जमा होता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.kirchhoff.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.kirchhoff.core.kirchhoff-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A single loop has a 10 V cell and a 4 V cell joined so that they oppose each other, and a total resistance of 3 Ω (internal resistances included). The current is",
+        "hi": "एक अकेले पाश में 10 V का सेल और 4 V का सेल एक-दूसरे के विरोध में जुड़े हैं, और कुल प्रतिरोध 3 Ω है (आंतरिक प्रतिरोध सहित)। धारा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 A",
+            "hi": "2 A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "14/3 A",
+            "hi": "14/3 A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10/3 A",
+            "hi": "10/3 A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "6 A",
+            "hi": "6 A"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Go round the loop once, adding rises and drops.",
+          "hi": "पाश में एक बार घूमें, वृद्धि और पतन जोड़ें।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The cells push against each other, so the net push is 6 V. Six volts across three ohms drives two amperes.",
+          "hi": "सेल एक-दूसरे के विरुद्ध धकेलते हैं, इसलिए नेट धक्का 6 V है। तीन ओम पर छह वोल्ट दो ऐम्पियर भेजते हैं।"
+        },
+        "steps": [
+          {
+            "en": "Loop rule: $10 - 4 - 3I = 0$",
+            "hi": "पाश नियम: $10 - 4 - 3I = 0$"
+          },
+          {
+            "en": "$I = 2$ A",
+            "hi": "$I = 2$ A"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This adds the emfs; opposing cells subtract.",
+              "hi": "यह वि.वा.ब. जोड़ता है; विरोधी सेल घटते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This ignores the 4 V cell.",
+              "hi": "यह 4 V सेल को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "6 is the net emf in volts, not the current.",
+              "hi": "6 वोल्ट में नेट वि.वा.ब. है, धारा नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.kirchhoff.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.kirchhoff.core.kirchhoff-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two cells, 12 V with internal resistance 2 Ω and 6 V with internal resistance 2 Ω, are joined in parallel (positive to positive) across a 4 Ω resistor. The current through the 4 Ω resistor is",
+        "hi": "दो सेल, 12 V आंतरिक प्रतिरोध 2 Ω और 6 V आंतरिक प्रतिरोध 2 Ω, पार्श्वक्रम में (धन से धन) एक 4 Ω प्रतिरोधक के सिरों पर जुड़े हैं। 4 Ω प्रतिरोधक में धारा है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1.8 A",
+            "hi": "1.8 A"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2.25 A",
+            "hi": "2.25 A"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "3.6 A",
+            "hi": "3.6 A"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1.2 A",
+            "hi": "1.2 A"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Write the junction rule at the top terminal.",
+          "hi": "ऊपरी टर्मिनल पर संधि नियम लिखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Let the voltage across the resistor be $V$. Each cell sends current through its own 2 Ω, and the two currents together flow through the 4 Ω.",
+          "hi": "प्रतिरोधक पर वोल्टता $V$ मानिए। हर सेल अपने 2 Ω से धारा भेजता है, और दोनों धाराएँ मिलकर 4 Ω से बहती हैं।"
+        },
+        "steps": [
+          {
+            "en": "Junction: $\\frac{12 - V}{2} + \\frac{6 - V}{2} = \\frac{V}{4}$",
+            "hi": "संधि: $\\frac{12 - V}{2} + \\frac{6 - V}{2} = \\frac{V}{4}$"
+          },
+          {
+            "en": "$9 - V = \\frac{V}{4}$, so $V = 7.2$ V",
+            "hi": "$9 - V = \\frac{V}{4}$, इसलिए $V = 7.2$ V"
+          },
+          {
+            "en": "$I = \\frac{7.2}{4} = 1.8$ A",
+            "hi": "$I = \\frac{7.2}{4} = 1.8$ A"
+          }
+        ],
+        "shortcut": {
+          "en": "Equivalently, $\\varepsilon_{eq} = 9$ V and $r_{eq} = 1$ Ω, so $I = 9/5$ A.",
+          "hi": "समतुल्य रूप से $\\varepsilon_{eq} = 9$ V और $r_{eq} = 1$ Ω, इसलिए $I = 9/5$ A।"
+        },
+        "shortcut_fails_when": {
+          "en": "This shortcut needs the cells to be directly in parallel; in a general network use Kirchhoff's rules.",
+          "hi": "यह शॉर्टकट तभी चलता है जब सेल सीधे पार्श्वक्रम में हों; सामान्य जाल में किरखोफ के नियम लगाइए।"
+        },
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This divides the equivalent emf of 9 V by 4 Ω and ignores the 1 Ω equivalent internal resistance.",
+              "hi": "यह 9 V तुल्य वि.वा.ब. को 4 Ω से भाग देता है और 1 Ω तुल्य आंतरिक प्रतिरोध को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This adds the emfs to 18 V as if the cells were in series.",
+              "hi": "यह सेलों को श्रेणी मानकर वि.वा.ब. को 18 V जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This uses only the 6 V cell.",
+              "hi": "यह केवल 6 V सेल लेता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.kirchhoff.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.kirchhoff.core.kirchhoff-laws",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Going round a closed loop you pass a 9 V cell from its negative to its positive terminal, and then three resistors along the current. The potential drops across the first two are 3 V and 2 V. The drop across the third, in volt, is",
+        "hi": "एक बंद पाश में घूमते हुए आप 9 V के सेल को उसके ऋण से धन टर्मिनल की ओर पार करते हैं, फिर धारा की दिशा में तीन प्रतिरोधक। पहले दो पर विभव-पतन 3 V और 2 V हैं। तीसरे पर पतन, वोल्ट में, है"
+      },
+      "answer": {
+        "value": 4,
+        "unit": "V"
+      },
+      "hints": [
+        {
+          "en": "The total change round the loop is zero.",
+          "hi": "पाश में कुल परिवर्तन शून्य है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The cell lifts the potential by 9 V and the resistors must bring it all the way back down.",
+          "hi": "सेल विभव को 9 V ऊपर उठाता है और प्रतिरोधकों को उसे पूरा नीचे लाना है।"
+        },
+        "steps": [
+          {
+            "en": "$9 - 3 - 2 - V_3 = 0$, so $V_3 = 4$ V",
+            "hi": "$9 - 3 - 2 - V_3 = 0$, इसलिए $V_3 = 4$ V"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding the drops to the emf gives 14.",
+              "hi": "पतनों को वि.वा.ब. में जोड़ने पर 14 आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

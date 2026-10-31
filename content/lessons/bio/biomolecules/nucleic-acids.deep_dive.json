@@ -1,0 +1,297 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo109) could not be retrieved, so a reviewer should check the terms.",
+  "id": "bio.biomolecules.nucleic-acids:deep_dive",
+  "topic": "bio.biomolecules.nucleic-acids",
+  "mode": "deep_dive",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Bases, nucleosides, nucleotides",
+        "hi": "क्षारक, न्यूक्लिओसाइड, न्यूक्लियोटाइड"
+      },
+      "subtopic": "bio.biomolecules.nucleic-acids.core",
+      "card_ids": [
+        "bio.biomolecules.nucleic-acids:dd:01",
+        "bio.biomolecules.nucleic-acids:dd:02"
+      ],
+      "estimated_minutes": 1
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Purines, pyrimidines, DNA and RNA",
+        "hi": "प्यूरीन, पिरिमिडीन, DNA और RNA"
+      },
+      "subtopic": "bio.biomolecules.nucleic-acids.core",
+      "card_ids": [
+        "bio.biomolecules.nucleic-acids:dd:03",
+        "bio.biomolecules.nucleic-acids:dd:04",
+        "bio.biomolecules.nucleic-acids:dd:05",
+        "bio.biomolecules.nucleic-acids:dd:06"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "bio.biomolecules.nucleic-acids:dd:01",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Building a nucleotide",
+        "hi": "न्यूक्लियोटाइड बनाना"
+      },
+      "body": {
+        "en": "Nucleic acids are polynucleotides; with polysaccharides and polypeptides they form the true macromolecular fraction of a tissue. Their building block, the nucleotide, has three parts: a heterocyclic compound (a nitrogen base), a monosaccharide and a phosphate.\n\nA base attached to a sugar is a nucleoside: adenosine, guanosine, thymidine, uridine and cytidine. When a phosphate is also esterified to the sugar, it is a nucleotide: adenylic acid, guanylic acid, thymidylic acid, uridylic acid and cytidylic acid. Think of a train: each wagon is one nucleotide, and the coloured block it carries is its base.",
+        "hi": "न्यूक्लिक अम्ल बहुन्यूक्लियोटाइड हैं; बहुशर्कराइडों और पॉलिपेप्टाइडों के साथ ये ऊतक का वास्तविक वृहत् आण्विक अंश बनाते हैं। इनकी इकाई, न्यूक्लियोटाइड, के तीन भाग हैं: एक विषमचक्रीय यौगिक (नाइट्रोजनी क्षारक), एक एकलशर्कराइड और एक फॉस्फेट।\n\nशर्करा से जुड़ा क्षारक न्यूक्लिओसाइड है: ऐडिनोसीन, ग्वानोसीन, थाइमिडीन, यूरिडीन और साइटिडीन। जब शर्करा से एक फॉस्फेट भी एस्टरीकृत हो, तो यह न्यूक्लियोटाइड है: ऐडेनिलिक अम्ल, ग्वानिलिक अम्ल, थाइमिडिलिक अम्ल, यूरिडिलिक अम्ल और साइटिडिलिक अम्ल। एक रेलगाड़ी सोचिए: हर डिब्बा एक न्यूक्लियोटाइड है, और उसमें रखा रंगीन खंड उसका क्षारक।"
+      },
+      "media": "img.biomolecules.bead-train",
+      "highlights": [
+        {
+          "term": {
+            "en": "nucleotide",
+            "hi": "न्यूक्लियोटाइड"
+          },
+          "definition": {
+            "en": "Base + sugar + phosphate.",
+            "hi": "क्षारक + शर्करा + फॉस्फेट।"
+          }
+        },
+        {
+          "term": {
+            "en": "nucleoside",
+            "hi": "न्यूक्लिओसाइड"
+          },
+          "definition": {
+            "en": "Base + sugar, no phosphate.",
+            "hi": "क्षारक + शर्करा, फॉस्फेट नहीं।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.1, §9.6"
+      }
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:dd:02",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 1,
+      "question": "q.bio.biomolecules.nucleic-acids.0001"
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Two families of bases, two sugars",
+        "hi": "क्षारकों के दो कुल, दो शर्कराएँ"
+      },
+      "body": {
+        "en": "The nitrogen bases of nucleic acids are adenine, guanine, uracil, cytosine and thymine. Adenine and guanine are substituted purines; the other three are substituted pyrimidines.\n\nThe sugar is either ribose, a pentose, or 2'-deoxyribose. A nucleic acid with deoxyribose is deoxyribonucleic acid (DNA); one with ribose is ribonucleic acid (RNA). DNA and RNA function as genetic material and carry hereditary information from parents to progeny.",
+        "hi": "न्यूक्लिक अम्लों के नाइट्रोजनी क्षारक ऐडेनीन, ग्वानीन, यूरेसिल, साइटोसीन और थाइमीन हैं। ऐडेनीन और ग्वानीन प्रतिस्थापित प्यूरीन हैं; बाकी तीन प्रतिस्थापित पिरिमिडीन हैं।\n\nशर्करा या तो राइबोज़ होती है, एक पेंटोज़, या 2'-डीऑक्सीराइबोज़। डीऑक्सीराइबोज़ वाला न्यूक्लिक अम्ल डीऑक्सीराइबोन्यूक्लिक अम्ल (DNA) है; राइबोज़ वाला राइबोन्यूक्लिक अम्ल (RNA)। DNA और RNA आनुवंशिक पदार्थ का काम करते हैं और वंशागत सूचना जनक से संतति तक ले जाते हैं।"
+      },
+      "media": "img.biomolecules.bead-train",
+      "highlights": [
+        {
+          "term": {
+            "en": "purines",
+            "hi": "प्यूरीन"
+          },
+          "definition": {
+            "en": "Adenine and guanine.",
+            "hi": "ऐडेनीन और ग्वानीन।"
+          }
+        },
+        {
+          "term": {
+            "en": "pyrimidines",
+            "hi": "पिरिमिडीन"
+          },
+          "definition": {
+            "en": "Cytosine, uracil and thymine.",
+            "hi": "साइटोसीन, यूरेसिल और थाइमीन।"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.6, Summary"
+      }
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Purine or pyrimidine?",
+        "hi": "प्यूरीन या पिरिमिडीन?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Adenine",
+              "hi": "ऐडेनीन"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "Guanine",
+              "hi": "ग्वानीन"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "Cytosine",
+              "hi": "साइटोसीन"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Uracil",
+              "hi": "यूरेसिल"
+            }
+          },
+          {
+            "id": "i5",
+            "text": {
+              "en": "Thymine",
+              "hi": "थाइमीन"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "pu",
+            "label": {
+              "en": "Purine",
+              "hi": "प्यूरीन"
+            }
+          },
+          {
+            "id": "py",
+            "label": {
+              "en": "Pyrimidine",
+              "hi": "पिरिमिडीन"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "pu"
+          },
+          {
+            "item": "i2",
+            "bin": "pu"
+          },
+          {
+            "item": "i3",
+            "bin": "py"
+          },
+          {
+            "item": "i4",
+            "bin": "py"
+          },
+          {
+            "item": "i5",
+            "bin": "py"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right: A and G are purines; C, U and T are pyrimidines.",
+          "hi": "सही: A और G प्यूरीन हैं; C, U और T पिरिमिडीन।"
+        },
+        "wrong": {
+          "en": "Only adenine and guanine are purines.",
+          "hi": "केवल ऐडेनीन और ग्वानीन प्यूरीन हैं।"
+        }
+      }
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:dd:05",
+      "type": "question",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 2,
+      "question": "q.bio.biomolecules.nucleic-acids.0002"
+    },
+    {
+      "id": "bio.biomolecules.nucleic-acids:dd:06",
+      "type": "summary",
+      "concepts": [
+        "bio.biomolecules.nucleic-acids.core.nucleic-acids-bio"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Nucleotide = nitrogen base + pentose sugar + phosphate; nucleoside = base + sugar.",
+          "hi": "न्यूक्लियोटाइड = नाइट्रोजनी क्षारक + पेंटोज़ शर्करा + फॉस्फेट; न्यूक्लिओसाइड = क्षारक + शर्करा।"
+        },
+        {
+          "en": "Purines: adenine, guanine. Pyrimidines: cytosine, uracil, thymine.",
+          "hi": "प्यूरीन: ऐडेनीन, ग्वानीन। पिरिमिडीन: साइटोसीन, यूरेसिल, थाइमीन।"
+        },
+        {
+          "en": "Deoxyribose: DNA. Ribose: RNA. Both are genetic material.",
+          "hi": "डीऑक्सीराइबोज़: DNA। राइबोज़: RNA। दोनों आनुवंशिक पदार्थ हैं।"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Biology, Ch 9 Biomolecules (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/kebo109.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§9.6"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

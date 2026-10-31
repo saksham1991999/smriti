@@ -1,0 +1,731 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "topic": "phy.motion-plane.projectile",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.projectile.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "At the highest point of a projectile's path (no air resistance), its",
+        "hi": "किसी प्रक्षेप्य के पथ के सर्वोच्च बिंदु पर (वायु प्रतिरोध नहीं), उसका"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "velocity is horizontal and acceleration is g downwards",
+            "hi": "वेग क्षैतिज है और त्वरण नीचे की ओर g है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "velocity and acceleration are both zero",
+            "hi": "वेग और त्वरण दोनों शून्य हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "velocity is zero and acceleration is g downwards",
+            "hi": "वेग शून्य है और त्वरण नीचे की ओर g है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "velocity is horizontal and acceleration is zero",
+            "hi": "वेग क्षैतिज है और त्वरण शून्य है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Treat the two components separately.",
+          "hi": "दोनों घटक अलग-अलग देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only the vertical motion pauses; gravity never switches off.",
+          "hi": "केवल ऊर्ध्वाधर गति रुकती है; गुरुत्व कभी बंद नहीं होता।"
+        },
+        "steps": [
+          {
+            "en": "$v_y = 0$ at the top, $v_x = v_0\\cos\\theta_0$ is unchanged, and $\\vec{a} = -g\\,\\hat{j}$ throughout.",
+            "hi": "शीर्ष पर $v_y = 0$, $v_x = v_0\\cos\\theta_0$ अपरिवर्तित, और $\\vec{a} = -g\\,\\hat{j}$ पूरे समय।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Both the horizontal velocity and g remain.",
+              "hi": "क्षैतिज वेग और g दोनों बने रहते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The horizontal velocity does not vanish.",
+              "hi": "क्षैतिज वेग शून्य नहीं होता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Gravity still acts at the top.",
+              "hi": "शीर्ष पर भी गुरुत्व लगता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.projectile.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball is projected at 20 m/s at $30°$ above the horizontal. Taking $g = 10$ m/s², its time of flight is",
+        "hi": "एक गेंद क्षैतिज से $30°$ ऊपर 20 m/s से प्रक्षेपित की जाती है। $g = 10$ m/s² लेकर उसका उड़ान का समय है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "2 s",
+            "hi": "2 s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1 s",
+            "hi": "1 s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2\\sqrt{3}$ s",
+            "hi": "$2\\sqrt{3}$ s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 s",
+            "hi": "4 s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$T_f = 2v_0\\sin\\theta_0/g$",
+          "hi": "$T_f = 2v_0\\sin\\theta_0/g$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only the vertical part of the launch decides the time.",
+          "hi": "केवल प्रक्षेपण का ऊर्ध्वाधर भाग समय तय करता है।"
+        },
+        "steps": [
+          {
+            "en": "$T_f = \\frac{2 \\times 20 \\times \\sin 30°}{10} = 2$ s",
+            "hi": "$T_f = \\frac{2 \\times 20 \\times \\sin 30°}{10} = 2$ s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the time to the top only.",
+              "hi": "यह केवल शीर्ष तक का समय है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That uses $\\cos 30°$.",
+              "hi": "इसमें $\\cos 30°$ लगा है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That ignores the $\\sin 30°$ factor.",
+              "hi": "इसमें $\\sin 30°$ गुणक छूट गया है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.projectile.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A stone thrown at $25°$ to the horizontal lands 30 m away on level ground. Thrown at the same speed, which other angle gives the same range?",
+        "hi": "क्षैतिज से $25°$ पर फेंका गया एक पत्थर समतल ज़मीन पर 30 m दूर गिरता है। उसी चाल से फेंकने पर कौन-सा दूसरा कोण वही परास देता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$65°$",
+            "hi": "$65°$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$50°$",
+            "hi": "$50°$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$45°$",
+            "hi": "$45°$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$75°$",
+            "hi": "$75°$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Complementary angles.",
+          "hi": "पूरक कोण।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Angles 20° either side of 45° give the same range.",
+          "hi": "45° के दोनों ओर 20° वाले कोण वही परास देते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\sin(2 \\times 25°) = \\sin 50° = \\sin 130° = \\sin(2 \\times 65°)$",
+            "hi": "$\\sin(2 \\times 25°) = \\sin 50° = \\sin 130° = \\sin(2 \\times 65°)$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Doubling the angle does not give the partner angle.",
+              "hi": "कोण दोगुना करने से साथी कोण नहीं मिलता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "45° gives the maximum range, which is more than 30 m.",
+              "hi": "45° अधिकतम परास देता है, जो 30 m से अधिक है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "$\\sin 150° = \\sin 30°$, not $\\sin 50°$.",
+              "hi": "$\\sin 150° = \\sin 30°$, $\\sin 50°$ नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.projectile.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A ball is projected at 20 m/s at $30°$ above the horizontal. Taking $g = 10$ m/s², its maximum height, in metres, is",
+        "hi": "एक गेंद क्षैतिज से $30°$ ऊपर 20 m/s से प्रक्षेपित की जाती है। $g = 10$ m/s² लेकर उसकी अधिकतम ऊँचाई, मीटर में, है"
+      },
+      "answer": {
+        "value": 5,
+        "unit": "m"
+      },
+      "hints": [
+        {
+          "en": "$h_m = (v_0\\sin\\theta_0)^2/2g$",
+          "hi": "$h_m = (v_0\\sin\\theta_0)^2/2g$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only the vertical launch speed, $v_0\\sin\\theta_0$, lifts the ball.",
+          "hi": "केवल ऊर्ध्वाधर प्रक्षेपण चाल, $v_0\\sin\\theta_0$, गेंद को उठाती है।"
+        },
+        "steps": [
+          {
+            "en": "$v_0\\sin 30° = 10$ m/s",
+            "hi": "$v_0\\sin 30° = 10$ m/s"
+          },
+          {
+            "en": "$h_m = \\frac{10^2}{2 \\times 10} = 5$ m",
+            "hi": "$h_m = \\frac{10^2}{2 \\times 10} = 5$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Using the full speed 20 m/s gives 20 m.",
+              "hi": "पूरी चाल 20 m/s लेने पर 20 m आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.projectile.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball rolls off a table 80 cm high with a horizontal speed of 2 m/s. Taking $g = 10$ m/s², it lands at a horizontal distance from the table's edge of",
+        "hi": "एक गेंद 80 cm ऊँची मेज़ से 2 m/s की क्षैतिज चाल से लुढ़ककर गिरती है। $g = 10$ m/s² लेकर वह मेज़ के किनारे से कितनी क्षैतिज दूरी पर गिरती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "0.8 m",
+            "hi": "0.8 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0.4 m",
+            "hi": "0.4 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1.6 m",
+            "hi": "1.6 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8 m",
+            "hi": "8 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Convert 80 cm to metres.",
+          "hi": "80 cm को मीटर में बदलिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the falling time from the height, then multiply by the horizontal speed.",
+          "hi": "ऊँचाई से गिरने का समय निकालिए, फिर क्षैतिज चाल से गुणा कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$0.8 = \\frac{1}{2} \\times 10 \\times t^2$ gives $t = 0.4$ s.",
+            "hi": "$0.8 = \\frac{1}{2} \\times 10 \\times t^2$ से $t = 0.4$ s।"
+          },
+          {
+            "en": "$x = 2 \\times 0.4 = 0.8$ m",
+            "hi": "$x = 2 \\times 0.4 = 0.8$ m"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the time in seconds, not the distance.",
+              "hi": "यह सेकंड में समय है, दूरी नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The time was doubled, as if the ball went up first.",
+              "hi": "समय दोगुना कर दिया गया, मानो गेंद पहले ऊपर गई।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That treats 80 cm as 80 m.",
+              "hi": "यह 80 cm को 80 m मान लेता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.projectile.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For a projectile launched at $45°$ on level ground, the ratio of its maximum height to its range is",
+        "hi": "समतल ज़मीन पर $45°$ पर प्रक्षेपित प्रक्षेप्य की अधिकतम ऊँचाई और परास का अनुपात है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1 : 4",
+            "hi": "1 : 4"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1 : 2",
+            "hi": "1 : 2"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 : 1",
+            "hi": "1 : 1"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "4 : 1",
+            "hi": "4 : 1"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$\\sin^2 45° = \\frac{1}{2}$",
+          "hi": "$\\sin^2 45° = \\frac{1}{2}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Write both in terms of $v_0^2/g$.",
+          "hi": "दोनों को $v_0^2/g$ के रूप में लिखिए।"
+        },
+        "steps": [
+          {
+            "en": "$h_m = \\frac{v_0^2 \\sin^2 45°}{2g} = \\frac{v_0^2}{4g}$; $R = \\frac{v_0^2}{g}$",
+            "hi": "$h_m = \\frac{v_0^2 \\sin^2 45°}{2g} = \\frac{v_0^2}{4g}$; $R = \\frac{v_0^2}{g}$"
+          },
+          {
+            "en": "Ratio $= 1 : 4$",
+            "hi": "अनुपात $= 1 : 4$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The $\\sin^2 45° = \\frac{1}{2}$ factor was missed.",
+              "hi": "$\\sin^2 45° = \\frac{1}{2}$ गुणक छूट गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Height and range are not equal at 45°.",
+              "hi": "45° पर ऊँचाई और परास बराबर नहीं होते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The ratio is upside down.",
+              "hi": "अनुपात उल्टा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.projectile.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.projectile.core.projectile-motion",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The path of a projectile is $y = x - \\frac{x^2}{20}$, with x and y in metres. Its horizontal range is",
+        "hi": "किसी प्रक्षेप्य का पथ $y = x - \\frac{x^2}{20}$ है, जहाँ x और y मीटर में हैं। उसका क्षैतिज परास है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "20 m",
+            "hi": "20 m"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "10 m",
+            "hi": "10 m"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 m",
+            "hi": "5 m"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "40 m",
+            "hi": "40 m"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Set y = 0.",
+          "hi": "y = 0 रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The range is where the path comes back to $y = 0$.",
+          "hi": "परास वहाँ है जहाँ पथ $y = 0$ पर लौटता है।"
+        },
+        "steps": [
+          {
+            "en": "$x\\left(1 - \\frac{x}{20}\\right) = 0$ gives $x = 0$ or $x = 20$ m.",
+            "hi": "$x\\left(1 - \\frac{x}{20}\\right) = 0$ से $x = 0$ या $x = 20$ m।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "10 m is where the top of the path is.",
+              "hi": "10 m पर पथ का शीर्ष है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "5 m is the maximum height.",
+              "hi": "5 m अधिकतम ऊँचाई है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The range was doubled.",
+              "hi": "परास दोगुना कर दिया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

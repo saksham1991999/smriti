@@ -1,0 +1,139 @@
+{
+  "schema": "inventory@1",
+  "chapter": "phy.laws-of-motion",
+  "items": [
+    {
+      "id": "keph1-4-2",
+      "kind": "definition",
+      "title": {
+        "en": "Aristotle’s Fallacy",
+        "hi": "अरस्तू की भ्रामकता"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.2 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ]
+    },
+    {
+      "id": "keph1-4-3",
+      "kind": "definition",
+      "title": "Inertia and Newton's First Law",
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.3 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ]
+    },
+    {
+      "id": "keph1-4-4",
+      "kind": "definition",
+      "title": {
+        "en": "Newton’s First Law of Motion",
+        "hi": "न्यूटन का गति का प्रथम नियम"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.4 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+      ]
+    },
+    {
+      "id": "keph1-4-5",
+      "kind": "formula",
+      "title": {
+        "en": "Newton's Second Law of Motion",
+        "hi": "न्यूटन का गति का द्वितीय नियम"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.5 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.momentum-second-law",
+        "phy.laws-of-motion.second-law.core.impulse",
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ]
+    },
+    {
+      "id": "keph1-4-6",
+      "kind": "definition",
+      "title": {
+        "en": "Newton's Third Law of Motion",
+        "hi": "न्यूटन का गति का तृतीय नियम"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.6 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ]
+    },
+    {
+      "id": "keph1-4-7",
+      "kind": "formula",
+      "title": {
+        "en": "Conservation of Momentum",
+        "hi": "संवेग-संरक्षण"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.7 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ]
+    },
+    {
+      "id": "keph1-4-8",
+      "kind": "fact",
+      "title": {
+        "en": "Equilibrium of a Particle",
+        "hi": "किसी कण की साम्यावस्था"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.8 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium"
+      ]
+    },
+    {
+      "id": "keph1-4-9",
+      "kind": "formula",
+      "title": {
+        "en": "Common Forces in Mechanics: Friction",
+        "hi": "यांत्रिकी में सामान्य बल"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.9 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.friction.core.static-kinetic-friction",
+        "phy.laws-of-motion.friction.core.rolling-friction"
+      ]
+    },
+    {
+      "id": "keph1-4-10",
+      "kind": "formula",
+      "title": {
+        "en": "Circular Motion",
+        "hi": "वर्तुल (वृत्तीय) गति"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.10 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ]
+    },
+    {
+      "id": "keph1-4-11",
+      "kind": "fact",
+      "title": {
+        "en": "Solving Problems in Mechanics",
+        "hi": "यांत्रिकी में समस्याओं को हल करना"
+      },
+      "source_ref": "NCERT Class 11 Physics Part I, Ch 4 §4.11 (https://ncert.nic.in/textbook/pdf/keph104.pdf)",
+      "concepts": [
+        "phy.laws-of-motion.second-law.core.free-body-diagrams"
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 (2026-27 reprint): numbered sections from the chapter and the Hindi-medium contents pages",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "One item per numbered NCERT section (x.y), the granularity this inventory is built at. Hindi section titles are from the NCERT Hindi-medium contents pages, kept only where the English title is the NCERT heading of that same section. Sections missing from the English heading tables were paired by hand after checking that the Hindi heading says the same as the English title (tools/content-research/sources/ncert/inventory_hi_pairs.tsv)."
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 1 Sets (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh101.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.sets.sets-representation:quick_revision",
+  "topic": "math.sets.sets-representation",
+  "mode": "quick_revision",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.sets.sets-representation.core.set-notation"
+  ],
+  "cards": [
+    {
+      "id": "math.sets.sets-representation:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "math.sets.sets-representation.core.set-notation"
+      ],
+      "depth": 1,
+      "sheet": "cs.math.sets.sets-representation"
+    },
+    {
+      "id": "math.sets.sets-representation:qr:02",
+      "type": "question",
+      "concepts": [
+        "math.sets.sets-representation.core.set-notation"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.sets-representation.0003"
+    },
+    {
+      "id": "math.sets.sets-representation:qr:03",
+      "type": "question",
+      "concepts": [
+        "math.sets.sets-representation.core.set-notation"
+      ],
+      "depth": 2,
+      "question": "q.math.sets.sets-representation.0004"
+    },
+    {
+      "id": "math.sets.sets-representation:qr:04",
+      "type": "question",
+      "concepts": [
+        "math.sets.sets-representation.core.set-notation"
+      ],
+      "depth": 3,
+      "question": "q.math.sets.sets-representation.0005"
+    },
+    {
+      "id": "math.sets.sets-representation:qr:05",
+      "type": "summary",
+      "concepts": [
+        "math.sets.sets-representation.core.set-notation"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Set: a well-defined collection; roster form lists, set-builder form describes.",
+          "hi": "समुच्चय: सुपरिभाषित संग्रह; सूचीरूप सूची देता है, समुच्चय-निर्माण रूप वर्णन करता है।"
+        }
+      ]
+    },
+    {
+      "id": "math.sets.sets-representation:qr:06",
+      "type": "common_traps",
+      "concepts": [
+        "math.sets.sets-representation.core.set-notation"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Changing the order of the elements gives a new set.",
+            "hi": "अवयवों का क्रम बदलने से नया समुच्चय बनता है।"
+          },
+          "correct": {
+            "en": "Order does not matter: $\\{1, 2, 3\\}$ and $\\{3, 1, 2\\}$ are the same set.",
+            "hi": "क्रम महत्त्वपूर्ण नहीं है: $\\{1, 2, 3\\}$ और $\\{3, 1, 2\\}$ एक ही समुच्चय हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A repeated letter is listed again.",
+            "hi": "दोहराया गया अक्षर फिर से लिखा जाता है।"
+          },
+          "correct": {
+            "en": "Each element is listed once: SCHOOL gives $\\{S, C, H, O, L\\}$.",
+            "hi": "हर अवयव एक बार लिखा जाता है: SCHOOL से $\\{S, C, H, O, L\\}$ मिलता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Any collection of objects is a set.",
+            "hi": "वस्तुओं का कोई भी संग्रह समुच्चय है।"
+          },
+          "correct": {
+            "en": "Only a well-defined collection is a set.",
+            "hi": "केवल सुपरिभाषित संग्रह ही समुच्चय है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

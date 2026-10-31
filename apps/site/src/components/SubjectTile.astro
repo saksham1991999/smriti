@@ -1,0 +1,87 @@
+---
+// DESIGN §5 Subject tile: tint background, illustration top-right, name in heading,
+// chapter count in caption. The whole tile is one link.
+import Art from "./Art.astro";
+import Icon from "./Icon.astro";
+import type { Locale } from "../config/site";
+import { subjectArt } from "../lib/art";
+import { subjectClass } from "../lib/subjects";
+
+interface Props {
+  lang: Locale;
+  subjectId: string;
+  name: string;
+  meta: string;
+  href: string;
+}
+const { lang, subjectId, name, meta, href } = Astro.props;
+const art = subjectArt(subjectId);
+---
+
+<li class:list={["tile", subjectClass(subjectId)]}>
+  {art && <Art name={art} lang={lang} decorative sizes="128px" class="tile-art" />}
+  <h3 class="t-heading"><a href={href}>{name}</a></h3>
+  <p class="t-caption meta">{meta}</p>
+  <span class="go" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>
+</li>
+
+<style>
+  .tile {
+    position: relative;
+    display: grid;
+    align-content: end;
+    gap: 4px;
+    min-height: 150px;
+    padding: 18px 18px 16px;
+    border-radius: var(--r-card);
+    background: var(--tint);
+    transition: transform var(--dur-base) var(--ease);
+  }
+  .tile:hover {
+    transform: translateY(-2px);
+  }
+  .tile:focus-within {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+  }
+  .tile :global(.tile-art) {
+    position: absolute;
+    right: 6px;
+    top: -14px;
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+    pointer-events: none;
+  }
+  .tile a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .tile a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .tile a:focus-visible {
+    outline: none;
+  }
+  .meta {
+    color: var(--stext);
+    font-weight: 700;
+  }
+  .go {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+    color: var(--stext);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tile {
+      transition: none;
+    }
+    .tile:hover {
+      transform: none;
+    }
+  }
+</style>

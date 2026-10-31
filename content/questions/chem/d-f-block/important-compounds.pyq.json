@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "chem.d-f-block.important-compounds",
+  "questions": [
+    {
+      "id": "q.chem.d-f-block.important-compounds.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "chem.d-f-block.important-compounds.core.dichromate-permanganate",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Which of the following sets includes all the species that will change the orange colour of $\\ce{K2Cr2O7}$ in acidic medium ?",
+        "hi": "निम्नलिखित में से किस समुच्चय में वे सभी स्पीशीज़ हैं जो अम्लीय माध्यम में $\\ce{K2Cr2O7}$ के नारंगी रंग को बदल देंगी ?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\ce{Fe^2+}, \\ce{Sn^2+}, \\ce{I-}, \\ce{S^2-}$",
+            "hi": "$\\ce{Fe^2+}, \\ce{Sn^2+}, \\ce{I-}, \\ce{S^2-}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\ce{S^2-}, \\ce{Fe^3+}, \\ce{I-}, \\ce{C2O4^2-}$",
+            "hi": "$\\ce{S^2-}, \\ce{Fe^3+}, \\ce{I-}, \\ce{C2O4^2-}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\ce{Fe^2+}, \\ce{NO2-}, \\ce{SO2}, \\ce{Sn^4+}$",
+            "hi": "$\\ce{Fe^2+}, \\ce{NO2-}, \\ce{SO2}, \\ce{Sn^4+}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$\\ce{Fe^3+}, \\ce{SO4^2-}, \\ce{S^2-}, \\ce{Sn^4+}$",
+            "hi": "$\\ce{Fe^3+}, \\ce{SO4^2-}, \\ce{S^2-}, \\ce{Sn^4+}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Orange dichromate turns green only when it is reduced to $\\ce{Cr^3+}$, so every species in the set must be a reducing agent.",
+          "hi": "नारंगी डाइक्रोमेट तभी हरा होता है जब वह $\\ce{Cr^3+}$ में अपचयित हो, अतः समुच्चय की प्रत्येक स्पीशीज़ अपचायक होनी चाहिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\ce{Fe^2+}$, $\\ce{Sn^2+}$, $\\ce{I-}$ and $\\ce{S^2-}$ are all reducing agents.",
+            "hi": "$\\ce{Fe^2+}$, $\\ce{Sn^2+}$, $\\ce{I-}$ और $\\ce{S^2-}$ सभी अपचायक हैं।"
+          },
+          {
+            "en": "The other sets contain $\\ce{Fe^3+}$, $\\ce{Sn^4+}$ or $\\ce{SO4^2-}$, which are already in their highest common oxidation states and cannot reduce dichromate.",
+            "hi": "अन्य समुच्चयों में $\\ce{Fe^3+}$, $\\ce{Sn^4+}$ या $\\ce{SO4^2-}$ हैं, जो पहले से अपनी उच्चतम सामान्य ऑक्सीकरण अवस्था में हैं और डाइक्रोमेट को अपचयित नहीं कर सकते।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 61
+      }
+    }
+  ]
+}

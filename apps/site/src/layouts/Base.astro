@@ -1,0 +1,137 @@
+---
+// Page shell: head (SEO, hreflang, OG, JSON-LD, tokens), header, footer, analytics hook.
+import "../styles/global.css";
+import plusJakartaLatin from "@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url";
+import notoDevanagari from "@fontsource-variable/noto-sans-devanagari/files/noto-sans-devanagari-devanagari-wght-normal.woff2?url";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FixtureBanner from "../components/FixtureBanner.astro";
+import { site, type Locale } from "../config/site";
+import { htmlLang, messages } from "../i18n";
+import { absolute, alternates, localePath } from "../lib/urls";
+import { jsonLdScript, type JsonLd } from "../lib/seo";
+import { themeColor, tokenCss } from "../styles/tokens";
+import type { PageType } from "../lib/analytics";
+
+interface Props {
+  lang: Locale;
+  /** English path of this page, e.g. "/exams/neet/". */
+  path: string;
+  title: string;
+  description: string;
+  pageType: PageType;
+  og?: "default" | "exam";
+  jsonLd?: JsonLd[];
+  /** Exam accent class (x-neet, …) for exam-scoped pages. */
+  accent?: string | undefined;
+  exam?: string | undefined;
+  noindex?: boolean;
+  /** False for pages with no language twin (the 404): no canonical or hreflang links. */
+  alternatesOn?: boolean;
+}
+
+const { lang, path, title, description, pageType, og = "default", jsonLd = [], accent, exam, noindex = false, alternatesOn = true } = Astro.props;
+const m = messages(lang);
+const alt = alternates(path);
+const canonical = absolute(site.siteUrl, localePath(lang, path));
+const ogImage = absolute(site.siteUrl, `/og/${og}.jpg`);
+const robots = site.noindex || noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large";
+---
+
+<!doctype html>
+<html
+  lang={htmlLang[lang]}
+  dir="ltr"
+  class={accent}
+  data-analytics-endpoint={site.analyticsEndpoint}
+  data-page-type={pageType}
+  data-lang={lang}
+  data-exam={exam}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    {
+      alternatesOn && (
+        <>
+          <link rel="canonical" href={canonical} />
+          <link rel="alternate" hreflang="en" href={absolute(site.siteUrl, alt.en)} />
+          <link rel="alternate" hreflang="hi" href={absolute(site.siteUrl, alt.hi)} />
+          <link rel="alternate" hreflang="x-default" href={absolute(site.siteUrl, alt.en)} />
+        </>
+      )
+    }
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.brand.name[lang]} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={m.footer.tagline} />
+    <meta property="og:locale" content={lang === "hi" ? "hi_IN" : "en_IN"} />
+    <meta property="og:locale:alternate" content={lang === "hi" ? "en_IN" : "hi_IN"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content={themeColor.light} />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content={themeColor.dark} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/brand/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/brand/smriti-favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon-180.png" />
+
+    <link rel="preload" href={plusJakartaLatin} as="font" type="font/woff2" crossorigin />
+    {lang === "hi" && <link rel="preload" href={notoDevanagari} as="font" type="font/woff2" crossorigin />}
+
+    <style is:inline set:html={tokenCss}></style>
+    <script is:inline>
+      // Theme override (system by default). Runs before paint, so there is no flash.
+      try {
+        var t = localStorage.getItem("site-theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    {jsonLd.map((d) => <script type="application/ld+json" is:inline set:html={jsonLdScript(d)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">{m.a11y.skip}</a>
+    <FixtureBanner lang={lang} />
+    <Header lang={lang} path={alternatesOn ? path : "/"} pageType={pageType} exam={exam} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import { track, type PageType, type Placement, type SiteEvents } from "../lib/analytics";
+      const root = document.documentElement;
+      const lang = (root.dataset.lang === "hi" ? "hi" : "en") as "en" | "hi";
+      const pageType = (root.dataset.pageType ?? "home") as PageType;
+      const exam = root.dataset.exam || undefined;
+      track("site_page_view", exam ? { page_type: pageType, lang, exam } : { page_type: pageType, lang });
+      document.addEventListener("click", (ev) => {
+        const el = (ev.target as Element | null)?.closest<HTMLElement>("[data-cta],[data-lang-switch]");
+        if (!el) return;
+        if (el.dataset.langSwitch) {
+          track("site_lang_switch", { to: el.dataset.langSwitch === "hi" ? "hi" : "en", page_type: pageType });
+          return;
+        }
+        const props: SiteEvents["site_cta_click"] = {
+          cta: (el.dataset.cta ?? "start") as SiteEvents["site_cta_click"]["cta"],
+          placement: (el.dataset.placement ?? "hero") as Placement,
+          lang,
+        };
+        if (exam) props.exam = exam;
+        track("site_cta_click", props);
+      });
+    </script>
+  </body>
+</html>

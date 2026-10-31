@@ -1,0 +1,162 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Mathematics Part I, Ch 1 Relations and Functions (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/lemh101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (lhmh101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "math.relations-functions.composition-inverse:quick_revision",
+  "topic": "math.relations-functions.composition-inverse",
+  "mode": "quick_revision",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "math.relations-functions.composition-inverse.core.composition-functions",
+    "math.relations-functions.composition-inverse.core.invertible-function"
+  ],
+  "cards": [
+    {
+      "id": "math.relations-functions.composition-inverse:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions",
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 1,
+      "sheet": "cs.math.relations-functions.composition-inverse"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:02",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.composition-inverse.0002"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:03",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.composition-inverse.0003"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:04",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.composition-inverse.0004"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:05",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.composition-inverse.0005"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:06",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 2,
+      "question": "q.math.relations-functions.composition-inverse.0007"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:07",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.composition-inverse.0008"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:08",
+      "type": "question",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 3,
+      "question": "q.math.relations-functions.composition-inverse.0009"
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:09",
+      "type": "summary",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions",
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$g \\circ f$: f then g. Invertible = bijective; $f^{-1}$ by solving $y = f(x)$.",
+          "hi": "$g \\circ f$: पहले f फिर g। व्युत्क्रमणीय = एकैकी आच्छादी; $f^{-1}$, $y = f(x)$ हल करके।"
+        }
+      ]
+    },
+    {
+      "id": "math.relations-functions.composition-inverse:qr:10",
+      "type": "common_traps",
+      "concepts": [
+        "math.relations-functions.composition-inverse.core.composition-functions",
+        "math.relations-functions.composition-inverse.core.invertible-function"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "$g \\circ f$ means apply g first.",
+            "hi": "$g \\circ f$ का अर्थ है पहले g लगाना।"
+          },
+          "correct": {
+            "en": "f acts first: $(g \\circ f)(x) = g(f(x))$.",
+            "hi": "पहले f लगता है: $(g \\circ f)(x) = g(f(x))$।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "$f^{-1}(x) = \\frac{1}{f(x)}$.",
+            "hi": "$f^{-1}(x) = \\frac{1}{f(x)}$।"
+          },
+          "correct": {
+            "en": "$f^{-1}$ undoes f; it is not the reciprocal.",
+            "hi": "$f^{-1}$, f को उलटता है; यह व्युत्क्रम संख्या नहीं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "$f(x) = x^2$ on $\\mathbf{R}$ has an inverse.",
+            "hi": "$f(x) = x^2$ का, $\\mathbf{R}$ पर, प्रतिलोम है।"
+          },
+          "correct": {
+            "en": "It is neither one-one nor onto, so it is not invertible.",
+            "hi": "यह न एकैकी है न आच्छादक, इसलिए व्युत्क्रमणीय नहीं।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

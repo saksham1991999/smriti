@@ -1,0 +1,183 @@
+{
+  "schema": "chapter@1",
+  "id": "math.permutations-combinations",
+  "subject": "math",
+  "unit": "math.algebra",
+  "name": {
+    "en": "Permutations and Combinations",
+    "hi": "क्रमचय और संचय"
+  },
+  "ncert_ref": "NCERT Class 11 Mathematics, Ch 6",
+  "topics": [
+    {
+      "id": "math.permutations-combinations.counting-principle",
+      "name": {
+        "en": "Fundamental Principle of Counting",
+        "hi": "गणना का आधारभूत सिद्धांत"
+      },
+      "subtopics": [
+        {
+          "id": "math.permutations-combinations.counting-principle.core",
+          "name": {
+            "en": "Fundamental Principle of Counting",
+            "hi": "गणना का आधारभूत सिद्धांत"
+          },
+          "concepts": [
+            {
+              "id": "math.permutations-combinations.counting-principle.core.fundamental-counting",
+              "name": {
+                "en": "Fundamental principle of counting",
+                "hi": "गणना का आधारभूत सिद्धांत"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "If one event can occur in m ways and, after it, another in n ways, the two can occur together in $m \\times n$ ways; the rule extends to any number of events.",
+                "hi": "यदि एक घटना m प्रकार से और उसके बाद दूसरी n प्रकार से घटित हो सकती है, तो दोनों मिलकर $m \\times n$ प्रकार से घटित हो सकती हैं; यह नियम कितनी भी घटनाओं पर लागू होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Count arrangements with and without repetition using the principle.",
+                  "hi": "इस सिद्धांत से पुनरावृत्ति सहित और रहित विन्यास गिनिए।"
+                },
+                {
+                  "en": "Recognise when cases must be added rather than multiplied.",
+                  "hi": "पहचानिए कि कब स्थितियों को गुणा करने के बजाय जोड़ना है।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-4:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.permutations-combinations.permutations",
+      "name": {
+        "en": "Permutations",
+        "hi": "क्रमचय"
+      },
+      "subtopics": [
+        {
+          "id": "math.permutations-combinations.permutations.core",
+          "name": {
+            "en": "Permutations",
+            "hi": "क्रमचय"
+          },
+          "concepts": [
+            {
+              "id": "math.permutations-combinations.permutations.core.permutations-npr",
+              "name": {
+                "en": "Permutations, factorial notation and P(n, r)",
+                "hi": "क्रमचय, क्रमगुणित संकेतन तथा P(n, r)"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The number of arrangements of r objects chosen from n distinct objects is $P(n, r) = n!/(n - r)!$; when some objects repeat, n! is divided by the factorials of the repeat counts.",
+                "hi": "n भिन्न वस्तुओं में से r वस्तुओं के विन्यासों की संख्या $P(n, r) = n!/(n - r)!$ है; जब कुछ वस्तुएँ दोहराती हों, तो n! को पुनरावृत्ति-संख्याओं के क्रमगुणितों से भाग दिया जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Count arrangements of letters of a word with repeated letters.",
+                  "hi": "दोहराए गए अक्षरों वाले शब्द के अक्षरों के विन्यास गिनिए।"
+                },
+                {
+                  "en": "Handle restrictions such as objects that must stay together.",
+                  "hi": "साथ रहने वाली वस्तुओं जैसे प्रतिबंधों को सँभालिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.permutations-combinations.counting-principle.core.fundamental-counting"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-4:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "math.permutations-combinations.combinations",
+      "name": {
+        "en": "Combinations",
+        "hi": "संचय"
+      },
+      "subtopics": [
+        {
+          "id": "math.permutations-combinations.combinations.core",
+          "name": {
+            "en": "Combinations",
+            "hi": "संचय"
+          },
+          "concepts": [
+            {
+              "id": "math.permutations-combinations.combinations.core.combinations-ncr",
+              "name": {
+                "en": "Combinations and C(n, r)",
+                "hi": "संचय तथा C(n, r)"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "The number of selections of r objects from n distinct objects is $C(n, r) = n!/(r!(n - r)!)$, with $C(n, r) = C(n, n - r)$ and $C(n, r) + C(n, r - 1) = C(n + 1, r)$.",
+                "hi": "n भिन्न वस्तुओं में से r वस्तुओं के चयनों की संख्या $C(n, r) = n!/(r!(n - r)!)$ है, जहाँ $C(n, r) = C(n, n - r)$ और $C(n, r) + C(n, r - 1) = C(n + 1, r)$।"
+              },
+              "key_points": [
+                {
+                  "en": "Decide whether a problem needs arrangement or selection.",
+                  "hi": "तय कीजिए कि प्रश्न में विन्यास चाहिए या चयन।"
+                },
+                {
+                  "en": "Solve committee and selection problems with conditions.",
+                  "hi": "शर्तों वाले समिति और चयन प्रश्न हल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "math.permutations-combinations.permutations.core.permutations-npr"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:mathematics:unit-4:item-2",
+                "jee-main-2027:mathematics:unit-4:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Mathematics, Ch 6 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kemh106.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khmh1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khmh1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiv"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.1: Mathematics Unit 4, PERMUTATIONS AND COMBINATIONS"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: counting-principle (§6.2, khmh1 contents prelims p.xiv), permutations (§6.3, khmh1 contents prelims p.xiv), combinations (§6.4, khmh1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/math/permutations-combinations.json."
+}

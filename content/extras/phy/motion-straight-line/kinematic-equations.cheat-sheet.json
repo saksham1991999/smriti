@@ -1,0 +1,115 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "cs.phy.motion-straight-line.kinematic-equations",
+  "scope": "topic",
+  "topic": "phy.motion-straight-line.kinematic-equations",
+  "title": {
+    "en": "Kinematic Equations for Uniformly Accelerated Motion",
+    "hi": "एकसमान त्वरण से गतिमान वस्तु का शुद्धगतिकी संबंधी समीकरण"
+  },
+  "concepts": [
+    "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+  ],
+  "key_ideas": [
+    {
+      "en": "Five quantities: x, t, $v_0$, v, a. Three equations, constant a only.",
+      "hi": "पाँच राशियाँ: x, t, $v_0$, v, a। तीन समीकरण, केवल नियत a।"
+    },
+    {
+      "en": "Free fall: $a = -g$ with up positive, $g = 9.8$ m s⁻².",
+      "hi": "मुक्त पतन: ऊपर धनात्मक हो तो $a = -g$, $g = 9.8$ m s⁻²।"
+    },
+    {
+      "en": "Stopping distance $d_s = -v_0^2/2a$ goes as $v_0^2$.",
+      "hi": "रुकने की दूरी $d_s = -v_0^2/2a$, $v_0^2$ के अनुसार।"
+    },
+    {
+      "en": "Reaction time from a dropped ruler: $t_r = \\sqrt{2d/g}$.",
+      "hi": "गिराए पैमाने से प्रतिक्रिया काल: $t_r = \\sqrt{2d/g}$।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Velocity and time",
+        "hi": "वेग और समय"
+      },
+      "latex": "v = v_0 + at"
+    },
+    {
+      "name": {
+        "en": "Displacement and time",
+        "hi": "विस्थापन और समय"
+      },
+      "latex": "x - x_0 = v_0 t + \\frac{1}{2}at^2"
+    },
+    {
+      "name": {
+        "en": "Velocity and displacement",
+        "hi": "वेग और विस्थापन"
+      },
+      "latex": "v^2 = v_0^2 + 2a(x - x_0)"
+    },
+    {
+      "name": {
+        "en": "Stopping distance",
+        "hi": "रुकने की दूरी"
+      },
+      "latex": "d_s = -\\frac{v_0^2}{2a}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Using the kinematic equations when the acceleration changes.",
+        "hi": "बदलते त्वरण में शुद्धगतिक समीकरण लगाना।"
+      },
+      "correct": {
+        "en": "They need constant acceleration; otherwise go back to $v = dx/dt$, $a = dv/dt$.",
+        "hi": "इनके लिए नियत त्वरण चाहिए; अन्यथा $v = dx/dt$, $a = dv/dt$ पर लौटिए।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Mixing signs: up positive but $a = +g$.",
+        "hi": "चिह्न मिलाना: ऊपर धनात्मक पर $a = +g$।"
+      },
+      "correct": {
+        "en": "With up positive, $a = -g$ for the whole flight.",
+        "hi": "ऊपर धनात्मक हो तो पूरी उड़ान में $a = -g$।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Twice the speed, twice the stopping distance.",
+        "hi": "दोगुनी चाल, दोगुनी रुकने की दूरी।"
+      },
+      "correct": {
+        "en": "Four times: $d_s$ goes as $v_0^2$.",
+        "hi": "चार गुनी: $d_s$, $v_0^2$ के अनुसार है।"
+      }
+    }
+  ],
+  "diagram": "img.motion-straight-line.ball-rooftop",
+  "hi_source": "translation"
+}

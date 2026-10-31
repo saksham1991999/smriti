@@ -1,0 +1,46 @@
+---
+// One 404 for both languages (the host serves it for any missing path), so it shows both.
+import Base from "../layouts/Base.astro";
+import Art from "../components/Art.astro";
+import { site } from "../config/site";
+import { fmt, messages } from "../i18n";
+
+const en = messages("en");
+const hi = messages("hi");
+---
+
+<Base lang="en" path="/404/" title={fmt(en.meta.notFoundTitle, { brand: site.brand.name.en })} description={en.notFound.body} pageType="not_found" noindex alternatesOn={false}>
+  <section class="wrap nf">
+    <Art name="cat-thinking" lang="en" priority sizes="220px" class="nf-art" />
+    <h1 class="t-display">{en.notFound.title}</h1>
+    <p class="t-lead muted">{en.notFound.body}</p>
+    <a class="btn" href="/">{en.notFound.home}</a>
+    <div lang="hi-IN" class="nf-hi">
+      <p class="t-title">{hi.notFound.title}</p>
+      <p class="muted">{hi.notFound.body}</p>
+      <a class="btn secondary" href="/hi/">{hi.notFound.home}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 14px;
+    padding-block: 48px 88px;
+  }
+  .nf :global(.nf-art) {
+    width: 200px;
+  }
+  .nf-hi {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    width: min(520px, 100%);
+  }
+</style>

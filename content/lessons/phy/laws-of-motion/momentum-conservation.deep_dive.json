@@ -1,0 +1,304 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.momentum-conservation:deep_dive",
+  "topic": "phy.laws-of-motion.momentum-conservation",
+  "mode": "deep_dive",
+  "estimated_minutes": 5,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "What is lost here is gained there",
+        "hi": "यहाँ जो घटा, वहाँ बढ़ा"
+      },
+      "subtopic": "phy.laws-of-motion.momentum-conservation.core",
+      "card_ids": [
+        "phy.laws-of-motion.momentum-conservation:dd:01",
+        "phy.laws-of-motion.momentum-conservation:dd:02",
+        "phy.laws-of-motion.momentum-conservation:dd:03",
+        "phy.laws-of-motion.momentum-conservation:dd:04",
+        "phy.laws-of-motion.momentum-conservation:dd:05",
+        "phy.laws-of-motion.momentum-conservation:dd:06",
+        "phy.laws-of-motion.momentum-conservation:dd:07",
+        "phy.laws-of-motion.momentum-conservation:dd:08"
+      ],
+      "estimated_minutes": 5
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Two skaters",
+        "hi": "दो स्केटर"
+      },
+      "body": {
+        "en": "The two skaters were at rest before they pushed, so together they had no momentum. After the push they roll apart, one each way. If their total momentum is still zero, the lighter child must roll away faster than the heavier one.",
+        "hi": "धकेलने से पहले दोनों स्केटर विराम में थे, इसलिए उनका कुल संवेग शून्य था। धक्के के बाद वे विपरीत दिशाओं में लुढ़कते हैं। यदि उनका कुल संवेग अब भी शून्य है, तो हल्के बच्चे को भारी बच्चे से तेज़ लुढ़कना होगा।"
+      },
+      "media": "img.laws-of-motion.skaters-push"
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "From the third law to conservation",
+        "hi": "तृतीय नियम से संरक्षण तक"
+      },
+      "body": {
+        "en": "When a gun fires a bullet, the gun pushes the bullet with a force $\\vec{F}$ and the bullet pushes the gun with $-\\vec{F}$, for the same short time $\\Delta t$. By the second law the bullet gains momentum $\\vec{F}\\,\\Delta t$ and the gun gains $-\\vec{F}\\,\\Delta t$. Both started at rest, so $\\vec{p}_b + \\vec{p}_g = 0$: the gun recoils.\n\nIn general, in an isolated system, one with no external force, the mutual forces between pairs of particles change the momenta of individual particles, but the changes cancel in pairs. So the total momentum of an isolated system of interacting particles is conserved.\n\nFor two colliding bodies, $\\vec{p}'_A + \\vec{p}'_B = \\vec{p}_A + \\vec{p}_B$. This is true whether the collision is elastic or inelastic.",
+        "hi": "जब बंदूक गोली दागती है, तो बंदूक गोली को बल $\\vec{F}$ से और गोली बंदूक को $-\\vec{F}$ से, उसी अल्प समय $\\Delta t$ तक धकेलती है। द्वितीय नियम से गोली को संवेग $\\vec{F}\\,\\Delta t$ और बंदूक को $-\\vec{F}\\,\\Delta t$ मिलता है। दोनों विराम से चले थे, अतः $\\vec{p}_b + \\vec{p}_g = 0$: बंदूक प्रतिक्षेपित होती है।\n\nसामान्यतः, किसी विलगित निकाय में, यानी जिस पर कोई बाह्य बल नहीं, कणों के युगलों के बीच पारस्परिक बल अलग-अलग कणों का संवेग बदलते हैं, पर ये परिवर्तन युगलों में निरस्त हो जाते हैं। अतः परस्पर क्रिया करते कणों के विलगित निकाय का कुल संवेग संरक्षित रहता है।\n\nदो टकराते पिंडों के लिए $\\vec{p}'_A + \\vec{p}'_B = \\vec{p}_A + \\vec{p}_B$। यह संघट्ट प्रत्यास्थ हो या अप्रत्यास्थ, दोनों में सही है।"
+      },
+      "media": "img.laws-of-motion.skaters-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "isolated system",
+            "hi": "विलगित निकाय"
+          },
+          "definition": {
+            "en": "a system with no net external force",
+            "hi": "ऐसा निकाय जिस पर नेट बाह्य बल नहीं"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.7, Eq. 4.9, Summary 7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Conservation of momentum",
+        "hi": "संवेग संरक्षण"
+      },
+      "latex": "\\vec{p}_A + \\vec{p}_B = \\vec{p}'_A + \\vec{p}'_B",
+      "symbols": [
+        {
+          "symbol": "\\vec{p}_A, \\vec{p}_B",
+          "meaning": {
+            "en": "momenta before the interaction",
+            "hi": "परस्पर क्रिया से पहले संवेग"
+          },
+          "unit": "kg m/s"
+        },
+        {
+          "symbol": "\\vec{p}'_A, \\vec{p}'_B",
+          "meaning": {
+            "en": "momenta after the interaction",
+            "hi": "परस्पर क्रिया के बाद संवेग"
+          },
+          "unit": "kg m/s"
+        }
+      ],
+      "conditions": {
+        "en": "Only when no net external force acts on the system.",
+        "hi": "केवल तब जब निकाय पर कोई नेट बाह्य बल न हो।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.7, Eq. 4.9"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:04",
+      "type": "derivation",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Deriving it for a collision",
+        "hi": "संघट्ट के लिए व्युत्पत्ति"
+      },
+      "steps": [
+        {
+          "latex": "\\vec{F}_{AB}\\,\\Delta t = \\vec{p}'_A - \\vec{p}_A,\\quad \\vec{F}_{BA}\\,\\Delta t = \\vec{p}'_B - \\vec{p}_B",
+          "say": {
+            "en": "Second law for each body over the contact time.",
+            "hi": "संपर्क समय में हर पिंड के लिए द्वितीय नियम।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\vec{F}_{AB} = -\\vec{F}_{BA}",
+          "say": {
+            "en": "Third law.",
+            "hi": "तृतीय नियम।"
+          },
+          "why": null
+        },
+        {
+          "latex": "\\vec{p}'_A + \\vec{p}'_B = \\vec{p}_A + \\vec{p}_B",
+          "say": {
+            "en": "Add the two equations; the forces cancel.",
+            "hi": "दोनों समीकरण जोड़िए; बल निरस्त हो जाते हैं।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A 4 kg gun fires a 0.02 kg bullet horizontally at 400 m/s. Find the recoil speed of the gun.",
+        "hi": "4 kg की बंदूक 0.02 kg की गोली को 400 m/s से क्षैतिज दिशा में दागती है। बंदूक की प्रतिक्षेप चाल ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Total momentum before firing $= 0$.",
+          "hi": "दागने से पहले कुल संवेग $= 0$।"
+        },
+        {
+          "en": "$0.02 \\times 400 + 4\\,v_g = 0$, so $v_g = -2$ m/s.",
+          "hi": "$0.02 \\times 400 + 4\\,v_g = 0$, अतः $v_g = -2$ m/s।"
+        }
+      ],
+      "answer": {
+        "en": "2 m/s, opposite to the bullet",
+        "hi": "2 m/s, गोली के विपरीत"
+      },
+      "answer_value": {
+        "value": 2,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting that the recoil is in the opposite direction.",
+        "hi": "भूल जाना कि प्रतिक्षेप विपरीत दिशा में है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 2 kg trolley moving at 6 m/s runs into a 4 kg trolley at rest, and they stick together. Find their common velocity.",
+        "hi": "6 m/s से चलती 2 kg की ट्रॉली विराम में रखी 4 kg की ट्रॉली से टकराती है, और दोनों जुड़ जाती हैं। उनका उभयनिष्ठ वेग ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Momentum before $= 2 \\times 6 = 12$ kg m/s.",
+          "hi": "पहले संवेग $= 2 \\times 6 = 12$ kg m/s।"
+        },
+        {
+          "en": "After: $(2 + 4)\\,v = 12$, so $v = 2$ m/s in the original direction.",
+          "hi": "बाद में: $(2 + 4)\\,v = 12$, अतः मूल दिशा में $v = 2$ m/s।"
+        }
+      ],
+      "answer": {
+        "en": "2 m/s",
+        "hi": "2 m/s"
+      },
+      "answer_value": {
+        "value": 2,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Dividing by the moving trolley's mass only.",
+        "hi": "केवल चलती ट्रॉली के द्रव्यमान से भाग देना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.7, Eq. 4.9"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:07",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.momentum-conservation.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:dd:08",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Total momentum of an isolated system is conserved.",
+          "hi": "विलगित निकाय का कुल संवेग संरक्षित रहता है।"
+        },
+        {
+          "en": "It follows from the second and third laws, and holds in every collision.",
+          "hi": "यह द्वितीय और तृतीय नियमों से निकलता है, और हर संघट्ट में लागू होता है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -40,7 +40,7 @@ flowchart LR
     RDS[(Redis<br/>cache, rate limits, queues, leaderboards)]
   end
   subgraph Supabase
-    AUTH[Auth<br/>anonymous, phone OTP, Google, Apple]
+    AUTH[Auth<br/>anonymous, Google, Apple on iOS]
     PG[(Postgres<br/>+ pgvector, pg_trgm, RLS)]
     RT[Realtime<br/>duels, live mocks]
   end
@@ -148,7 +148,7 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
 | Widgets | iOS WidgetKit via `expo-apple-targets`. Android via `react-native-android-widget`. The app writes a widget snapshot (streak, plant stage, pet mood, plan) to App Group or SharedPreferences storage. |
 | Updates | EAS Update for over-the-air JS updates (channels per variant and environment). `/config` returns `min_version` and `latest_version`. Android in-app updates API and an iOS soft prompt. |
 | Payments | `react-native-purchases` (RevenueCat) |
-| Auth | `@supabase/supabase-js` with MMKV storage adapter. Anonymous session at first launch. |
+| Auth | `@supabase/supabase-js` with an encrypted MMKV storage adapter (key in Keychain or Keystore via `expo-secure-store`, excluded from backups). Anonymous session at first launch. **Google** through `@react-native-google-signin/google-signin`, licensed Universal Sign In module (Credential Manager on Android, `GoogleSignIn-iOS` on iOS, nonce on both; decision D5). **Sign in with Apple** on iOS only, through `expo-apple-authentication`. Both hand an ID token and a raw nonce to `linkIdentity` (guest) or `signInWithIdToken` (restore). Without Google Play services, Supabase's OAuth redirect with PKCE runs in a Custom Tab or `ASWebAuthenticationSession` (`expo-web-browser`). One session and one SQLite database per profile on the device. Flows: `docs/flows/auth.md`. |
 | i18n | i18next + `react-i18next`, ICU plural rules, locale from onboarding |
 | Crash and perf | Sentry React Native (errors, tracing, profiling), with trace propagation to the API |
 | Build and release | EAS Build and Submit. One build profile per variant × environment. |
@@ -159,9 +159,10 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
   - `icon`, `splash`, `accentColor`
   - `examProfileIds[]`, `showExamSwitcher`
   - `storeListing` keys, `deepLinkPrefix`, `revenuecatOfferingId`
+  - `googleIosClientId` and `googleIosUrlScheme` (one iOS OAuth client per bundle id), `authCallbackScheme` (`smriti-{variant}`). Android uses the shared web client id from env. These ids are public, not secrets.
 - `app.config.ts` reads `APP_VARIANT` and produces the matching native config.
 - At runtime the app sends `X-App-Variant`. The API filters content and catalogue by the variant's exam profiles.
-- One Supabase project and one user table serve every variant. Pro entitlement is per account, so it is shared across apps. App Store and Play require each app to sell its own subscription product, so every variant's product maps to the same `pro` entitlement in RevenueCat.
+- One Supabase project and one user table serve every variant. One Google Cloud project and one Apple primary App ID (every variant grouped under it for Sign in with Apple) give the same Google and Apple user id in every app. Each app keeps its own session on the phone, so a second Smriti app is one more tap. Pro entitlement is per account, so it is shared across apps. App Store and Play require each app to sell its own subscription product, so every variant's product maps to the same `pro` entitlement in RevenueCat.
 
 ### 3.2 Offline and sync
 - **Seed pack:** each variant's build includes a small seed pack (under 8 MB): onboarding lessons, the first chapter of its exam, the pet and plant art, and the starter decks. The app teaches on first launch with no network.
@@ -182,6 +183,7 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
 - English and Hindi with `hreflang`. Schema.org markup: `Course`, `FAQPage`, `Quiz`, `VideoObject`.
 - Deployed to Cloudflare (Workers static assets). Images go through Cloudflare image resizing from R2.
 - Interactive islands use React: an embeddable mini quiz, a periodic table, and a "try a lesson" widget. Fancy web motion uses React Bits components (web only).
+- **No sign-in on the site.** Its "Sign in" link goes to `app.<domain>/login?next=` in the web app. The site holds no session and loads no Google script.
 
 ### 4.2 Web app (`apps/web`)
 
@@ -198,7 +200,7 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
 | Maths | KaTeX (the SVGs from bundles, plus KaTeX at runtime for live input) |
 | Offline and install | Installable PWA. A service worker (Workbox) caches the app shell, downloaded bundles and media. Offline on web covers downloaded lessons and the review queue. |
 | Local data | IndexedDB (Dexie) implementing the `app-core` storage interface: the same outbox, cards, schedule, palaces and notes as the mobile SQLite tables (DB_SCHEMA §15) |
-| Auth | `@supabase/supabase-js` with anonymous sign-in, Google, email and phone OTP. Apple sign-in on web through Supabase's OAuth flow. |
+| Auth | `@supabase/supabase-js` with anonymous sign-in (Cloudflare Turnstile token) and **Google only**: Google Identity Services One Tap (FedCM) and the Google-rendered button, with a nonce, passing the ID token to `linkIdentity` or `signInWithIdToken`. On iOS browsers, and whenever the GIS script can't run, Supabase's Google OAuth redirect with PKCE to `/auth/callback`. In-app browsers (social app webviews) are detected and asked to open the page in Chrome or Safari, because Google blocks sign-in in webviews. No Apple, email or phone sign-in on web. |
 | Payments | Razorpay Checkout for the subscription with UPI Autopay (§11) |
 | Notifications | Web Push (VAPID) through the service worker where the browser supports it, with email reminders as an opt-in fallback |
 | Mock runner | Desktop-first layout that mirrors the official computer-based test screen (NTA and TCS style), with full keyboard support. This is where students practise for real CBT exams. |
@@ -215,7 +217,7 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
 | Data access | SQLAlchemy 2.0 async + asyncpg to Supabase Postgres through the Supavisor pooler in transaction mode. Prepared-statement cache is turned off, as Supavisor's transaction mode requires. |
 | Migrations | Supabase CLI SQL migrations in `supabase/migrations`. This one place holds tables, RLS, functions and triggers. SQLAlchemy models are hand-written to match, and CI checks for drift. |
 | Validation | Pydantic v2 models, which are also the OpenAPI source. `packages/api-client` is generated from them. |
-| Auth | Verify the Supabase JWT with asymmetric signing keys via JWKS (cached), in a FastAPI dependency. The `sub` claim is the user ID, and `is_anonymous` marks guests. Service role is used only inside the worker. |
+| Auth | Verify the Supabase JWT with asymmetric signing keys via JWKS (cached), in a FastAPI dependency. The `sub` claim is the user ID, and `is_anonymous` marks guests. Hard-login endpoints (social, sharing, starting the trial) reject guest tokens with an RFC 7807 `login_required` problem carrying a `reason`, which the client turns into the login sheet. Sensitive actions (account deletion, minting a managed child's session) need an `amr` entry newer than 5 or 10 minutes. Service role is used only inside the worker. |
 | Caching | Redis: user summary (60 s), leaderboards (sorted sets), config (5 min), rate limits. CDN caching for public GET endpoints (`/config`, `/catalog`) with `Cache-Control` and surrogate keys. |
 | Jobs | `arq` on Redis. Queues: `default`, `ai`, `media`, `notifications`, `content-publish`, `pdf`. Cron covers the daily streak and pet roll-up per timezone bucket, league rollover, reminder fan-out and cleanup. |
 | Realtime | Supabase Realtime broadcast channels for duels and live mocks. The server is authoritative for scoring, and clients only render. |
@@ -238,20 +240,35 @@ To keep the cost of building screens twice down, and to stop the two apps drifti
 | AI | `POST /v1/tutor/sessions`, `POST /v1/tutor/sessions/{id}/messages` (SSE), `POST /v1/ai/memory-cue`, `POST /v1/ai/story`, `POST /v1/ai/doubt-photo`, `POST /v1/voice/session` (mints an ephemeral provider token) |
 | Social | friends, requests, duo, squads, leagues, leaderboards, duels |
 | Gamification | `GET /v1/pet`, `POST /v1/pet/care`, `GET /v1/plant`, `POST /v1/streak/freeze`, quests, badges, shop |
-| Billing | `GET /v1/billing/entitlement`, `POST /v1/billing/razorpay/subscription`, webhooks: `/v1/webhooks/razorpay`, `/v1/webhooks/revenuecat` |
+| Accounts | `POST /v1/auth/linked`, `POST /v1/account/merge-intents`, `POST /v1/account/merges`, `GET /v1/account/merges/{id}`, `POST` and `DELETE /v1/account/deletion`, `DELETE /v1/account` (guest erase), `POST /v1/sync/restore-snapshot`, webhook `/v1/webhooks/apple-signin` (`docs/flows/auth.md` §10) |
+| Guardians | `POST /v1/guardian/consent-requests`, `GET /v1/guardian/consent-requests/{id or code}`, `POST .../{code}/confirm` and `/decline`, `DELETE /v1/guardian/consents/{id}/scopes/{scope}`, `GET /v1/guardian/learners`, `POST` and `DELETE /v1/guardian/children/{id}`, `POST /v1/guardian/children/{id}/session`, `POST /v1/guardian/link-requests` |
+| Billing | `GET /v1/billing/entitlement`, `GET /v1/billing/intro-eligibility`, `POST /v1/billing/razorpay/subscription`, webhooks: `/v1/webhooks/razorpay`, `/v1/webhooks/revenuecat` |
 | Notifications | `POST /v1/devices` (push token), `PATCH /v1/notification-prefs` |
 | Exports | `POST /v1/exports/pdf`, `GET /v1/exports/{id}` |
 | Admin (internal) | content publish, blueprint management, moderation queue, user support |
 
+**Still to merge into this table** (endpoints the area flow docs need): `docs/flows/practice.md` §12.2, `docs/flows/tutor-social.md` A14 and B15, `docs/flows/memory-labs.md` G16 and G25 (including `POST /v1/reviews/queue`), `docs/flows/me-money.md` §9, `docs/flows/learn.md` G4 and G5, and `docs/flows/onboarding.md` §8. Mutations that touch progress or money take an idempotency key.
+
 ## 6. Auth, accounts and guest mode
-- **Guests:** Supabase anonymous sign-in at first launch gives a real `auth.users` row flagged `is_anonymous`. All progress is stored under this user ID from the start.
-- **Upgrade:** the guest links an identity (phone OTP, Google, Apple or email). Supabase converts the same user, so **no data migration is needed**.
-  - If the identity already belongs to another account, the server runs a **merge job**: it replays the guest's events into the existing account and keeps the higher streak.
-- **Phone OTP in India:** SMS must be sent through a DLT-registered sender. Use the Supabase Send SMS Hook to call MSG91 or Gupshup with a DLT template.
+
+The full lifecycle, with diagrams and every branch, is in `docs/flows/auth.md`. The screens are in `docs/ux/auth.md`. This section is the technical summary.
+
+- **Sign-in methods:** Google on every surface. Sign in with Apple on iOS only, because App Store guideline 4.8 requires an equivalent privacy-focused login next to Google ([guideline 4.8](https://developer.apple.com/app-store/review/guidelines/#login-services)). No phone OTP, no email sign-in and no passwords, so there is no SMS provider and no DLT registration.
+- **Guests:** Supabase anonymous sign-in at first launch gives a real `auth.users` row flagged `is_anonymous` ([anonymous sign-ins](https://supabase.com/docs/guides/auth/auth-anonymous)). All progress is stored under this user ID from the start. If the anonymous sign-in fails (offline, rate limit), the app keeps a local-only guest and retries.
+- **Upgrade (link):** with manual linking turned on in the project, the client gets a Google (or Apple) ID token with a nonce and calls `linkIdentity` on the anonymous session ([identity linking](https://supabase.com/docs/guides/auth/auth-identity-linking)). The same user is converted, so **no data migration is needed**. Then `POST /v1/auth/linked` finalises the profile once.
+  - **Nonce:** the client hashes a random nonce (SHA-256 hex) for Google or Apple and passes the raw value to Supabase. "Skip nonce check" stays off ([Google login](https://supabase.com/docs/guides/auth/social-login/auth-google), [Apple login](https://supabase.com/docs/guides/auth/social-login/auth-apple)).
+  - **Google clients:** one Google Cloud project. A web client (its id is the server client id on Android and the audience of Android tokens), one Android client per variant package and signing SHA-1, and one iOS client per variant bundle id. The Supabase Google provider lists the web client id first, then every iOS client id.
+  - **Apple:** every variant App ID is grouped under the all-exams app's primary App ID, so the Apple user id is the same in every app. Apple sends the full name only on the first authorisation, so the client saves it straight away.
+- **Merge:** if the identity already belongs to another account, Supabase returns `identity_already_exists` ([error codes](https://supabase.com/docs/guides/auth/debugging/error-codes)). The guest proves control with a short-lived merge intent (`POST /v1/account/merge-intents`), signs in to the existing account with `signInWithIdToken`, and asks for the merge (`POST /v1/account/merges`). The `merge_guest` worker job unions the guest's events into the account (client event ids keep it idempotent), recomputes the streak from the union of activity days (never lower than the higher of the two), keeps the account's pet and profile, moves the guest's decks, notes and devices, and deletes the guest. Two real (non-guest) accounts are never merged by the user.
+- **Sign out** revokes the session (`scope: 'local'`, or `'global'` for "all devices"), clears Google's credential state, unregisters the push token, logs out of RevenueCat, **deletes this account's local database and private cache**, and starts a fresh guest. Public bundles stay.
+- **Delete account** (DPDP erasure, Apple guideline 5.1.1(v), Google Play's in-app and web deletion rule): re-sign-in with a fresh `amr`, then `POST /v1/account/deletion` signs out everywhere, hides the account from others, cancels Razorpay, revokes Apple tokens through Apple's REST API ([TN3194](https://developer.apple.com/documentation/technotes/tn3194-handling-account-deletions-and-revoking-tokens-for-sign-in-with-apple)), and schedules erasure after 7 days. Store subscriptions must be cancelled by the user in the store. The web link is `app.<domain>/delete-account`.
 - **Abuse control:**
-  - Anonymous sign-ins are rate-limited per IP and device (CAPTCHA via Cloudflare Turnstile on web).
-  - Anonymous users older than 90 days with no activity are cleaned up.
-- **Parental consent:** for users who declare age under 18, there's a guardian verification step before social features and any non-essential processing. That is a guardian phone OTP plus a consent record. This follows the DPDP Act and Rules and gets legal review.
+  - Anonymous sign-ins are rate-limited per IP by Supabase (default 30 an hour, editable). Carrier-grade NAT puts many Indian users behind one IP, so the limit is raised and the app tolerates failures. Cloudflare Turnstile protects the web.
+  - Anonymous users with no server activity for 90 days are cleaned up by a `pg_cron` job (Supabase has no automatic cleanup). A guest that comes back after cleanup re-homes its local data with `POST /v1/sync/restore-snapshot`.
+  - Email sign-up is blocked by a Supabase "before user created" auth hook, except for the internal identities of managed children.
+- **Teens (13 to 17), guardian consent:** before social features, sharing, the voice tutor and photo uploads (flag `auth.guardian_consent_gate = features`; `signin` moves it to right after sign-in if legal review requires). The guardian signs in with **their own** Google account (Apple on iOS): on the teen's phone through a second, in-memory Supabase client that never touches the teen's session, or on their own phone through `/guardian/{code}`. The guardian declares they are the parent or legal guardian and an adult, and the server stores `app.guardian_consents` with the scopes, the method, the age assurance and a hashed provider `sub`. DPDP Rule 10 asks us to check the guardian is an identifiable adult; Google gives no verified age, so a DigiLocker age-token step is built behind `auth.guardian_digilocker`. Legal review decides which is required (D8).
+- **Under-13s, managed accounts:** the child never signs in with Google. A parent signs in with Google in Parent mode and owns the child through `app.guardian_links`. Each child has its own `auth.users` row with an internal email identity on a domain we own that never receives mail. To put a child on a device, the API checks the link and a fresh parent `amr`, asks Supabase admin for a one-time token hash for the child's identity, and the device exchanges it for a child session. The guest a child used in onboarding is converted in place, so the child keeps its user id. This needs a Phase 0 spike, with a server-held per-child secret as the fallback.
+- **Separate sessions per app:** each app variant and the web app keep their own session. A profile registry on the device lists the profiles that have a session there (siblings, a parent), each with its own database.
 
 ## 7. Content system
 
@@ -287,7 +304,7 @@ flowchart LR
 - The host (WebView on mobile, iframe on web) and the sim talk through a versioned `postMessage` protocol:
   - **Host → sim:** `init {locale, theme, params, task}`, `reset`.
   - **Sim → host:** `ready`, `state {…}`, `measurement {name, value, unit}`, `task_result {taskId, correct, data}`, `complete`, `error`.
-- This lets us use our own sims (built by the `sim-builder` skill on a shared kit), PhET HTML5 sims (CC BY 4.0, with attribution shown) and other open-licence sims without platform-specific code.
+- This lets us use our own sims (built by the `sim-builder` skill on a shared kit), other sims under commercial-friendly open licences (PhET's HTML5 sims are CC BY-NC 4.0, so they need a commercial licence from CU Boulder before use) without platform-specific code.
 - Performance: sims should stay under 2 MB, start in under 1.5 s on a mid-range Android phone, and support a "low power" flag.
 
 ### 7.4 Exam blueprints
@@ -319,7 +336,7 @@ flowchart LR
 | `LLMProvider.complete/stream(messages, tools, model_tier)` | Agnes AI | Tutor, Feynman grading, mnemonic forge, stories, Cornell fill, mind maps, content skills |
 | `ImageProvider.generate(prompt, style, size, seed)` | Agnes AI | All illustrations, diagrams and story art |
 | `RealtimeVoiceProvider.create_session(context)` | Gemini Live | Realtime voice tutor |
-| `SpeechProvider.tts(text, voice, locale)` / `.stt(audio, locale)` | Deepgram | Audio mnemonics, narration, read-aloud, voice answers, Feynman voice explanations, lecture transcripts |
+| `SpeechProvider.tts(text, voice, locale)` / `.stt(audio, locale)` | Deepgram (Flux TTS on v2; STT) | Audio mnemonics, narration, read-aloud, voice answers, Feynman voice explanations, lecture transcripts |
 | `EmbeddingProvider.embed_text(texts)` / `.embed_image(images)` | Chosen in Phase 0 (D2) | Content retrieval and the image index |
 
 - **Model tiers come from config, not code.** Each tier maps to an Agnes model through env vars (`AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`), so a model can be swapped without a deploy:
@@ -365,9 +382,9 @@ flowchart LR
 - **Realtime tutor:** the client asks `POST /v1/voice/session`. The API checks entitlement and quota, assembles the tutor context (system instructions, card, mastery, locale), and mints a **short-lived Gemini Live ephemeral token** locked to that config. The client then streams audio to Gemini Live directly, for low latency, and the API key never reaches the device.
   - Tools the voice tutor calls (for example `get_mastery`, `make_flashcard`) are relayed to the API, which executes them.
   - Transcripts come back to the API for storage, mastery signals and safety checks.
-- **Deepgram TTS:** audio mnemonics, rhymes and narration are generated in the worker, cached in R2 by `sha256(text + voice + locale)`, and shipped in bundles like any other media. On-demand TTS (for example, reading a tutor answer aloud) goes through the API with the same cache.
+- **Deepgram TTS (Flux, v2):** text-to-speech for both English and Hindi uses Deepgram Flux TTS, `POST https://api.deepgram.com/v2/speak?model=<voice id>`. Flux voice ids have the form `flux-<name>-hi` or `flux-<name>-en`: Deepgram lists 14 Hindi voices and 3 Indian-accent English voices (meena, naveen, priya). The owner picks one voice per locale and it is recorded in `skills/audio-maker/voices.json`; no voice or model id is written in code (the gateway's model settings come from config, as in §9.1). Audio mnemonics, rhymes and narration are generated in the worker, cached in R2 by `sha256(text + voice + locale)`, and shipped in bundles like any other media. On-demand TTS (for example, reading a tutor answer aloud) goes through the API with the same cache.
 - **Deepgram STT:** voice answers, spoken Feynman explanations and YouTube lecture transcripts (for transcript-to-flashcards).
-- **Hindi check (Phase 0):** confirm Deepgram's Hindi TTS voice and STT accuracy on a test set of Hindi and Hinglish. If a gap shows up, add a second `SpeechProvider` for Hindi only. That is a config change, not a rewrite.
+- **Hindi check (Phase 0):** Flux Hindi TTS was checked on 31 Oct 2026: Hindi samples read back correctly through Deepgram STT in Hindi, so no Hindi-only TTS provider is needed. Still to do: STT accuracy on a test set of Hindi and Hinglish. If an STT gap shows up, add a second `SpeechProvider` for Hindi STT only. That is a config change, not a rewrite.
 
 ### 9.5 Retrieval
 - `pgvector` in Supabase holds embeddings of published concept summaries, cards, questions and solutions, chunked per card, plus the image index (§9.3).
@@ -376,19 +393,20 @@ flowchart LR
 
 ### 9.6 Learning-science jobs
 - **Predictive weak-area alerts:** a nightly worker job computes each card's predicted recall (FSRS retrievability) for the next 3 days, groups cards that will drop below the target by topic, and queues one alert per user. The notification rules (§12) still cap frequency.
-- **Sleep review:** the worker estimates a usual bedtime from the last 14 days of session end times (median of the last session per day). If confidence is high enough, the app schedules a local notification 20 minutes before it with the 5 hardest due cards.
+- **Sleep review (adults only, R34):** the worker estimates a usual bedtime from the last 14 days of session end times (median of the last session per day). If confidence is high enough, the app schedules a local notification 20 minutes before it with the 5 hardest due cards. The same job estimates the usual study hour that adult smart timing uses (`notify.prefs.usual_study_hour`). Neither estimate is computed for minors; a teen can pick a fixed bedtime review time instead (`notify.prefs.bedtime_review_time`).
 - **Cornell fill and mind maps:** LLM jobs that write into the student's own note or map, never into published content.
 - **Transcript to flashcards:** Deepgram transcribes a YouTube lesson's audio (or the published caption track is used when available), then the LLM writes candidate cards linked to Concepts. Cards for published lessons go through `content-qa`.
 
 ## 10. Gamification engine
-- **Activity day:** the date in the user's IANA timezone on which they met the daily goal (a qualifying event).
+- **Activity day:** a date, in the user's IANA timezone (the day ends at local midnight), on which they did at least one qualifying activity: one lesson, or 10 reviews, or one mock section, or the daily challenge (which rolls over at 00:00 IST). Meeting the daily goal (minutes, default 10) is a separate ring and does not decide the streak.
 - **Streak:**
-  - Consecutive activity days. A freeze counts as a day without activity.
+  - Consecutive activity days. An equipped freeze (up to `streak.freeze_slots`, 2), the weekly rest day and an incident freeze (`streak.incident_freeze`, for our outages) each protect a day without activity (R28, R36). There is no paid streak repair.
   - Computed incrementally on sync and checked again by the nightly roll-up.
 - **Plant:**
   - `growth_points` add up from activity days and never decrease, which gives the growth stage.
-  - `health` comes from days since the last activity: thriving, droopy, dry, wilted, dormant.
-  - It recovers through a revival streak (see `APP_FLOW.md` §3.6).
+  - Five growth stages: seed, sprout, sapling, flowering, tree, at 1, 7, 30 and 100 study days (flag, R2, R37). The stage is never lost.
+  - `health` comes from days since the last *health day*: thriving, droopy, dry, wilted, dormant (shown as "Resting"; never dead). A health day is an activity day or a day with a finished 2-minute rescue (`learn.activity_days.rescue_done`). A rescue keeps the plant healthy that night but never counts as a streak day or a revival day (memory-labs flow §5.13).
+  - It recovers through a revival quest of study days: droopy 1, dry 2, wilted 3, dormant 5 (R12, `APP_FLOW.md` §3.6).
 - **Pet:** `mood` and `energy` are 0–100. They decay per missed day, rise with care events and are clamped. The state label is derived from them. Under-10 mode applies a floor at "sleepy".
 - **XP and leagues:**
   - XP is credited from events.
@@ -402,17 +420,25 @@ flowchart LR
 - **Web:** a Razorpay Subscription (UPI Autopay mandate or card) with a plan at ₹99/month and an add-on or offer so the first charge is ₹1.
   - Webhooks (`subscription.activated`, `charged`, `halted`, `cancelled`) reach `/v1/webhooks/razorpay`, with HMAC verification and idempotency.
 - **Entitlement** is computed as `pro` if any active subscription from any source exists. Clients read it from `/v1/me/summary`, and the app caches it with a grace period.
-- **Trial abuse:** one intro offer per account. Phone numbers are deduplicated across accounts, and the stores enforce intro eligibility on their side.
+- **Trial abuse:** one ₹1 intro month per person (`docs/flows/auth.md` §8).
+  - **Identity keys:** `HMAC-SHA256(AUTH_IDENTITY_HASH_PEPPER, provider:sub)` for every Google and Apple identity on the account, stored in `billing.intro_claims`. They survive account deletion (the user id is cleared), so deleting and re-creating an account doesn't give another ₹1 month. The pepper is never rotated in place; a new pepper gets a new `key_version`.
+  - **Device keys:** Apple DeviceCheck bits on iOS ([DeviceCheck](https://developer.apple.com/documentation/devicecheck)) and Play Integrity device recall on Android, whose bits are shared across every app in our Play developer account ([device recall](https://developer.android.com/google/play/integrity/device-recall), beta with early access). Web has identity keys only.
+  - `GET /v1/billing/intro-eligibility` decides. Each variant sells a product (or offer) with the ₹1 intro and one without, and the paywall sells the intro one only when eligible: Play uses developer-determined offer eligibility, and on iOS this stops one Apple ID taking ₹1 in every variant's subscription group. The stores also enforce their own intro eligibility.
+  - Claims are written by the worker on the first intro purchase webhook. A key conflict is logged for review.
 - **Accounting:** every webhook is stored raw (`payment_events`) for audit and reconciliation.
 
 ## 12. Notifications
-- **Local:** the daily reminder at the student's chosen time, and "streak at risk" at 8 PM local if the goal isn't met. Both are rescheduled on each app open.
+- **Local:** the daily reminder at the student's chosen time, and the streak saver (`streak_risk`, adults only) at least 1 hour before quiet hours start when today isn't a streak day yet (R1, R23). The device keeps a 7-day plan of local sends and rebuilds it on each app open and after each sync (`docs/flows/me-money.md` §6.1).
+- **Minors (R34, R45):** only the reminder at the time they picked. No smart timing, no inferred bedtime and no copy chosen from predicted plant health. Friend-triggered pushes wait for that reminder window; in-app banners still show. Smart timing for adults uses the usual study hour from the §9.6 job.
+- **Web:** Web Push where the browser supports it (`app.devices.web_push_subscription`), otherwise an optional email reminder for adults.
 - **Server push:** the worker sends through Expo Push in batches of 100, retries with backoff, and prunes invalid tokens.
 - **Rules engine:**
-  - At most 1 re-engagement push a day, and at most 3 pushes a day in total.
+  - At most 1 re-engagement push a day, and at most 3 pushes a day in total. Exam alerts and transactional messages don't count against the caps.
   - Quiet hours run 22:00–07:00 by default, and are stricter for minors.
+  - Reminders auto-pause after `notify.autopause_after_ignored` (7) ignored sends in a row, and a comeback flow takes over after 30 or more days away (R34).
+  - Nothing is shown while a mock runner is open (R24).
   - Messages are localised and come from templates in the pet's voice.
-- Every send is logged in `notification_log` to measure open rates and cap frequency.
+- Every server send is logged in `notify.log` to measure open rates and cap frequency (DB_SCHEMA §10).
 
 ## 13. Observability, logging and tracing
 - **Tracing:** OpenTelemetry SDKs in the API and worker, with auto-instrumentation for FastAPI, SQLAlchemy, Redis and httpx.
@@ -449,7 +475,8 @@ flowchart LR
 - Rate limits per user and per IP (Redis token bucket): stricter for AI, auth and sync, looser for reads.
 - Input validation everywhere through Pydantic. Uploads are capped and content-type checked. Images are re-encoded.
 - Webhooks are HMAC-verified and replay-protected.
-- Mobile follows OWASP MASVS L1: secure storage for tokens, no secrets in the bundle, and Play Integrity and App Attest signals on sensitive endpoints in Phase 2.
+- Mobile follows OWASP MASVS L1: secure storage for tokens (encrypted MMKV, key in Keychain or Keystore, auth storage excluded from Android Auto Backup and iCloud backup), no secrets in the bundle, and Play Integrity and App Attest signals on sensitive endpoints in Phase 2.
+- Auth hardening: a nonce on every ID token, PKCE on every redirect, an allowlist of redirect URLs in Supabase, a Supabase custom auth domain so Google's consent screen shows our domain, no Google access tokens stored, and Redis rate limits on consent requests, child sessions and merges.
 - Privacy follows the DPDP Act and Rules: consent records, guardian consent for minors, data export and delete endpoints, a retention policy (tutor transcripts 180 days) and a breach-notification runbook.
 
 ## 15. Performance budgets
@@ -495,12 +522,14 @@ Key environment variables (names only):
 | Redis | `REDIS_URL` |
 | R2 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_ASSETS`, `_CONTENT`, `_UPLOADS`, `_STAGING` |
 | CDN | `CDN_BASE_URL` |
-| AI | `AGNES_AI_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `GEMINI_API_KEY`, `DEEPGRAM_API_KEY`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` |
+| AI | `AGNES_AI_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `AI_TIER_VISION_MODEL`, `GEMINI_API_KEY`, `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL`, `DEEPGRAM_STT_MODEL`, `EMBEDDING_PROVIDER`, `EMBEDDING_MODEL` |
 | Analytics | `CLICKHOUSE_URL`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `CLICKHOUSE_DATABASE` |
 | Payments | `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `REVENUECAT_API_KEY`, `REVENUECAT_WEBHOOK_SECRET` |
 | Push | `EXPO_ACCESS_TOKEN` |
 | Observability | `SENTRY_DSN_*`, `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` |
-| SMS | `SMS_PROVIDER`, `SMS_PROVIDER_API_KEY`, `SMS_DLT_ENTITY_ID`, `SMS_DLT_TEMPLATE_ID` |
+| Auth: Google | `GOOGLE_OAUTH_WEB_CLIENT_ID` (public; also `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` and `VITE_GOOGLE_WEB_CLIENT_ID` for the clients), `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID`, `SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET` (Supabase provider config: the web client id plus every iOS client id, and the web client secret). iOS client ids per variant live in `packages/config/variants/*.json` (public). |
+| Auth: Apple | `APPLE_TEAM_ID`, `APPLE_SIGNIN_KEY_ID`, `APPLE_SIGNIN_PRIVATE_KEY` (token revocation on deletion), `APPLE_SIGNIN_CLIENT_IDS` (every variant bundle id), `SUPABASE_AUTH_EXTERNAL_APPLE_CLIENT_ID`, `SUPABASE_AUTH_EXTERNAL_APPLE_SECRET`. `APPLE_SERVICES_ID` only if web Apple sign-in is approved (D10). |
+| Auth: other | `AUTH_IDENTITY_HASH_PEPPER`, `AUTH_MANAGED_IDENTITY_DOMAIN`, `WEB_APP_URL`, `TURNSTILE_SECRET_KEY`, `VITE_TURNSTILE_SITE_KEY`, `APPLE_DEVICECHECK_KEY_ID`, `APPLE_DEVICECHECK_PRIVATE_KEY`, `PLAY_INTEGRITY_SERVICE_ACCOUNT_JSON`, `DIGILOCKER_CLIENT_ID`, `DIGILOCKER_CLIENT_SECRET` (only if D8 needs DigiLocker) |
 
 ## 18. Decisions still open
 
@@ -508,8 +537,11 @@ Key environment variables (names only):
 |---|---|---|---|
 | D1 | Web app approach (§2.1) | **Decided:** separate React (Vite) web app | Closed 29 Oct 2026 |
 | D2 | Embedding provider (text and image) | A multilingual model chosen by an evaluation (Agnes has no embeddings API) | Phase 0 |
-| D3 | Hindi speech quality | Test Deepgram Hindi TTS and STT. Add a Hindi-only fallback only if needed. | Phase 0 |
+| D3 | Hindi speech quality and voices | TTS: Deepgram Flux TTS on v2 for both languages, Hindi checked by STT read-back on 31 Oct 2026. Owner picks one voice per locale for `skills/audio-maker/voices.json`. STT: test Hindi and Hinglish accuracy; add a Hindi-only STT fallback only if needed. | Phase 0 |
 | D4 | Tracing backend | Grafana Cloud | Phase 0 |
-| D5 | SMS provider for OTP (DLT) | MSG91 | Phase 0 |
+| D5 | Google sign-in library for Expo (SMS is no longer needed: Google is the only sign-in) | Buy the Universal Sign In licence of `@react-native-google-signin/google-signin` (Team, $249 a year, or free through the EAS offer): Credential Manager on Android, nonce on every platform, Expo config plugin. Fallback: a small in-house Expo module over `androidx.credentials` and `GoogleSignIn-iOS`. | Phase 0 |
 | D6 | Agnes AI API details | Endpoints and models documented in §9.3. Image generation confirmed working from the cloud environment on 29 Oct (about 12 s per 2K image; it returns 429 when called too fast, so the gateway retries with backoff). Still to confirm: streaming, tool calling and the exact rate limits. | Phase 0 |
-| D7 | Final brand name and domain | Owner | Before store submission |
+| D7 | Final brand name and domain | Owner. Also blocks Google OAuth brand verification, since the consent screen shows the name. | Before store submission |
+| D8 | Guardian age assurance for DPDP Rule 10: Google sign-in plus a self-declaration, or a DigiLocker age token too | Ship self-declaration with legal sign-off. Start DigiLocker onboarding now so it can be switched on before Rule 10 applies (about May 2027). | Before Phase 1 launch |
+| D9 | Managed accounts for every under-13 (not only class 1–5), and in Phase 1 rather than Phase 3 | Yes to both, account part only (parent sign-in, children, restore). Google's own minimum age in India is 13. | Phase 1, M-7 |
+| D10 | Web sign-in for people who signed up with Apple on an iPhone | Phase 1: a help sheet to add Google from the iPhone. Add Supabase's Apple OAuth on web only if support volume shows a need. | After Phase 1 beta |

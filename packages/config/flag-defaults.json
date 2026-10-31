@@ -1,0 +1,1298 @@
+{
+  "note": "Generated from packages/config/src/flags.ts by `pnpm --filter @smriti/config flags:export`. Do not edit.",
+  "flags": {
+    "ai.llm_moderation": {
+      "default": false,
+      "source": "proposed"
+    },
+    "ai.tutor_retention_days": {
+      "default": 180,
+      "source": "doc"
+    },
+    "ai.tutor_session_reuse_min": {
+      "default": 30,
+      "source": "doc"
+    },
+    "analytics.min_answers_per_chapter": {
+      "default": null,
+      "source": "owner"
+    },
+    "analytics.min_answers_per_subject": {
+      "default": null,
+      "source": "owner"
+    },
+    "analytics.min_answers_total": {
+      "default": null,
+      "source": "owner"
+    },
+    "analytics.min_concepts_for_readiness": {
+      "default": null,
+      "source": "owner"
+    },
+    "analytics.min_mocks_for_trend": {
+      "default": null,
+      "source": "owner"
+    },
+    "analytics.min_tagged_answers": {
+      "default": null,
+      "source": "owner"
+    },
+    "anticheat.min_answer_ms": {
+      "default": 700,
+      "source": "proposed"
+    },
+    "anticheat.min_review_ms": {
+      "default": 500,
+      "source": "proposed"
+    },
+    "auth.chip_saving_max_s": {
+      "default": 10,
+      "source": "proposed"
+    },
+    "auth.consent_claim_days": {
+      "default": 7,
+      "source": "proposed"
+    },
+    "auth.consent_decline_limit": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "auth.consent_decline_pause_days": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "auth.consent_emails_per_day": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "auth.consent_handoff_ttl_min": {
+      "default": 15,
+      "source": "proposed"
+    },
+    "auth.consent_link_ttl_h": {
+      "default": 72,
+      "source": "proposed"
+    },
+    "auth.consent_notice_url": {
+      "default": null,
+      "source": "owner"
+    },
+    "auth.consent_notice_version": {
+      "default": null,
+      "source": "owner"
+    },
+    "auth.consent_pending_days": {
+      "default": 7,
+      "source": "proposed"
+    },
+    "auth.consent_retry_h": {
+      "default": 24,
+      "source": "proposed"
+    },
+    "auth.deletion_grace_days": {
+      "default": 7,
+      "source": "proposed"
+    },
+    "auth.guardian_consent_gate": {
+      "default": "features",
+      "source": "doc"
+    },
+    "auth.guardian_digilocker": {
+      "default": false,
+      "source": "doc"
+    },
+    "auth.link_request_ttl_h": {
+      "default": 72,
+      "source": "proposed"
+    },
+    "auth.link_requests_per_day": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "auth.max_children_per_guardian": {
+      "default": null,
+      "source": "owner"
+    },
+    "auth.merge_retries": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "auth.merge_wait_s": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "auth.nonce_error_alert_rate": {
+      "default": 0.005,
+      "source": "proposed"
+    },
+    "auth.returning_check_timeout_ms": {
+      "default": 1500,
+      "source": "proposed"
+    },
+    "auth.signin_timeout_s": {
+      "default": 15,
+      "source": "proposed"
+    },
+    "auth.soft_prompt_cooldown_days": {
+      "default": 7,
+      "source": "ruling"
+    },
+    "auth.soft_prompt_later_limit": {
+      "default": 2,
+      "source": "ruling"
+    },
+    "auth.soft_prompt_pause_days": {
+      "default": 14,
+      "source": "ruling"
+    },
+    "auth.streak_prompt_hour": {
+      "default": null,
+      "source": "owner"
+    },
+    "auth.streak_prompt_push": {
+      "default": false,
+      "source": "doc"
+    },
+    "billing.family_monthly_price_paise": {
+      "default": null,
+      "source": "owner"
+    },
+    "billing.family_seats": {
+      "default": null,
+      "source": "owner"
+    },
+    "billing.family_yearly_price_paise": {
+      "default": null,
+      "source": "owner"
+    },
+    "billing.offline_grace_days": {
+      "default": 3,
+      "source": "doc"
+    },
+    "billing.trial_reminder_days_before": {
+      "default": 3,
+      "source": "ruling"
+    },
+    "billing.web_grace_days": {
+      "default": 7,
+      "source": "proposed"
+    },
+    "comeback.long_gap_days": {
+      "default": 30,
+      "source": "ruling"
+    },
+    "community.hide_after_reports": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "content.cache_limit_mb": {
+      "default": 500,
+      "source": "doc"
+    },
+    "daily.min_players_for_rank": {
+      "default": null,
+      "source": "owner"
+    },
+    "duel.async_ttl_hours": {
+      "default": 24,
+      "source": "proposed"
+    },
+    "duel.disconnect_grace_seconds": {
+      "default": 15,
+      "source": "proposed"
+    },
+    "duel.invite_live_seconds": {
+      "default": 60,
+      "source": "proposed"
+    },
+    "duel.match_timeout_seconds": {
+      "default": 10,
+      "source": "ruling"
+    },
+    "duel.min_answer_ms": {
+      "default": 800,
+      "source": "proposed"
+    },
+    "duel.question_count": {
+      "default": 10,
+      "source": "prd"
+    },
+    "duel.question_seconds": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "duel.question_seconds_u13": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "duel.quit_cooldown_minutes": {
+      "default": null,
+      "source": "owner"
+    },
+    "duel.quit_limit": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "duel.quit_window_hours": {
+      "default": 24,
+      "source": "proposed"
+    },
+    "duel.rematch_wait_seconds": {
+      "default": 60,
+      "source": "proposed"
+    },
+    "duel.speed_bonus_max": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "export.books_per_day": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "export.expiry_days": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "feature.ai_notes": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.feynman": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.friends": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.little_learner": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.live_mocks": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.pdf_export": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.photo_doubt": {
+      "default": false,
+      "source": "doc"
+    },
+    "feature.pro_cosmetics": {
+      "default": true,
+      "source": "doc"
+    },
+    "feature.voice_tutor": {
+      "default": false,
+      "source": "doc"
+    },
+    "feynman.bands": {
+      "default": {
+        "getting_there": 40,
+        "clear": 70
+      },
+      "source": "proposed"
+    },
+    "feynman.mastery_weight": {
+      "default": 0.1,
+      "source": "proposed"
+    },
+    "feynman.max_follow_ups": {
+      "default": 3,
+      "source": "doc"
+    },
+    "feynman.max_record_seconds": {
+      "default": 120,
+      "source": "proposed"
+    },
+    "feynman.min_words": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "focus.away_note_after_min": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "focus.cram_nudge_rounds": {
+      "default": 4,
+      "source": "proposed"
+    },
+    "focus.long_break_min": {
+      "default": 15,
+      "source": "proposed"
+    },
+    "focus.presets": {
+      "default": [
+        {
+          "focus": 15,
+          "break": 3
+        },
+        {
+          "focus": 25,
+          "break": 5
+        },
+        {
+          "focus": 50,
+          "break": 10
+        }
+      ],
+      "source": "doc"
+    },
+    "focus.rounds_before_long_break": {
+      "default": 4,
+      "source": "proposed"
+    },
+    "free.deep_dive_free_chapters_per_subject": {
+      "default": 2,
+      "source": "prd"
+    },
+    "free.deep_dive_preview_cards": {
+      "default": 4,
+      "source": "ruling"
+    },
+    "free.forge_trials_lifetime": {
+      "default": 1,
+      "source": "proposed"
+    },
+    "free.mock_report_sections": {
+      "default": [
+        "score",
+        "accuracy",
+        "time_lost_wrong",
+        "section_bars",
+        "subject_bars",
+        "attempt_summary",
+        "solutions",
+        "fix_next_top"
+      ],
+      "source": "ruling"
+    },
+    "free.practice_questions_per_day": {
+      "default": 30,
+      "source": "prd"
+    },
+    "free.pyq_mode": {
+      "default": "counted",
+      "source": "ruling"
+    },
+    "free.pyq_papers_free": {
+      "default": [],
+      "source": "ruling"
+    },
+    "free.roleplay_chats_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "free.rotating_chapters": {
+      "default": [],
+      "source": "doc"
+    },
+    "free.sectional_mocks_per_week": {
+      "default": 1,
+      "source": "prd"
+    },
+    "free.tutor_messages_per_day": {
+      "default": 5,
+      "source": "prd"
+    },
+    "free.tutor_read_aloud_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "game.economy.badge_gems": {
+      "default": [
+        20,
+        50,
+        100
+      ],
+      "source": "proposed"
+    },
+    "game.economy.daily_quest_gems": {
+      "default": {
+        "min": 5,
+        "max": 15
+      },
+      "source": "proposed"
+    },
+    "game.economy.first_revival_gems": {
+      "default": 50,
+      "source": "proposed"
+    },
+    "game.economy.league_promotion_gems": {
+      "default": 50,
+      "source": "proposed"
+    },
+    "game.economy.referral_gems": {
+      "default": 50,
+      "source": "proposed"
+    },
+    "game.economy.streak_milestone_gems": {
+      "default": {
+        "7": 25,
+        "30": 50,
+        "100": 100,
+        "365": 200
+      },
+      "source": "proposed"
+    },
+    "game.economy.weekly_quest_gems": {
+      "default": 50,
+      "source": "proposed"
+    },
+    "game.pet.care_mood_cap_per_day": {
+      "default": 5,
+      "source": "doc"
+    },
+    "game.pet.decay_per_missed_day": {
+      "default": {
+        "mood": 10,
+        "energy": 10
+      },
+      "source": "proposed"
+    },
+    "game.pet.missing_you_energy_below": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "game.pet.pet_mood_gain": {
+      "default": 2,
+      "source": "proposed"
+    },
+    "game.pet.play_energy_gain": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "game.pet.plays_per_day": {
+      "default": 3,
+      "source": "doc"
+    },
+    "game.pet.species_switch_days": {
+      "default": 30,
+      "source": "doc"
+    },
+    "game.pet.start": {
+      "default": {
+        "mood": 80,
+        "energy": 80
+      },
+      "source": "doc"
+    },
+    "game.pet.state_min_mood": {
+      "default": {
+        "happy": 70,
+        "content": 50,
+        "sleepy": 30,
+        "tired": 15
+      },
+      "source": "proposed"
+    },
+    "game.pet.study_gain": {
+      "default": {
+        "mood": 20,
+        "energy": 15
+      },
+      "source": "proposed"
+    },
+    "game.pet.treat_energy_gain": {
+      "default": 8,
+      "source": "proposed"
+    },
+    "game.pet.treats_per_day": {
+      "default": 1,
+      "source": "doc"
+    },
+    "game.plant.health_missed_days": {
+      "default": {
+        "droopy": 1,
+        "dry": 3,
+        "wilted": 7,
+        "dormant": 21
+      },
+      "source": "doc"
+    },
+    "game.plant.revival_days": {
+      "default": {
+        "droopy": 1,
+        "dry": 2,
+        "wilted": 3,
+        "dormant": 5
+      },
+      "source": "ruling"
+    },
+    "game.plant.stage_days": {
+      "default": [
+        1,
+        7,
+        30,
+        100
+      ],
+      "source": "ruling"
+    },
+    "game.rest_days_per_week": {
+      "default": 1,
+      "source": "ruling"
+    },
+    "game.shop.treats_max_held": {
+      "default": 10,
+      "source": "proposed"
+    },
+    "goal.default_minutes": {
+      "default": 10,
+      "source": "ruling"
+    },
+    "goal.minutes_options": {
+      "default": [
+        5,
+        10,
+        20,
+        30
+      ],
+      "source": "ruling"
+    },
+    "home.continue_max_age_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "home.review_hero_min_cards": {
+      "default": null,
+      "source": "owner"
+    },
+    "home.streak_risk_hour": {
+      "default": null,
+      "source": "owner"
+    },
+    "home.strip_max_nodes": {
+      "default": null,
+      "source": "owner"
+    },
+    "home.strip_max_review_nodes": {
+      "default": null,
+      "source": "owner"
+    },
+    "irt.min_responses": {
+      "default": 200,
+      "source": "proposed"
+    },
+    "lab.confirm_download_mb": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "lab.low_power_battery_pct": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "labs.featured": {
+      "default": [],
+      "source": "doc"
+    },
+    "league.close_time": {
+      "default": "23:59",
+      "source": "doc"
+    },
+    "league.demote_count": {
+      "default": 5,
+      "source": "ruling"
+    },
+    "league.group_size": {
+      "default": 30,
+      "source": "ruling"
+    },
+    "league.promote_count": {
+      "default": 7,
+      "source": "ruling"
+    },
+    "league.tier_names": {
+      "default": [
+        {
+          "en": "Seed",
+          "hi": "बीज"
+        },
+        {
+          "en": "Sprout",
+          "hi": "अंकुर"
+        },
+        {
+          "en": "Leaf",
+          "hi": "पत्ती"
+        },
+        {
+          "en": "Bud",
+          "hi": "कली"
+        },
+        {
+          "en": "Bloom",
+          "hi": "फूल"
+        },
+        {
+          "en": "Lotus",
+          "hi": "कमल"
+        },
+        {
+          "en": "Mango",
+          "hi": "आम"
+        },
+        {
+          "en": "Neem",
+          "hi": "नीम"
+        },
+        {
+          "en": "Peepal",
+          "hi": "पीपल"
+        },
+        {
+          "en": "Banyan",
+          "hi": "बरगद"
+        }
+      ],
+      "source": "ruling"
+    },
+    "learn.combo_streak_len": {
+      "default": 5,
+      "source": "doc"
+    },
+    "learn.exit_nudge_cards_left": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.find_level_questions": {
+      "default": 5,
+      "source": "ruling"
+    },
+    "learn.first_time_demo_max_s": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.fix_mistakes_max": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.prereq_mastery_min": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.prereq_snooze_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.resume_restart_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.test_out_questions_per_topic": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.video_complete_pct": {
+      "default": null,
+      "source": "owner"
+    },
+    "learn.weak_filter_min_attempts": {
+      "default": null,
+      "source": "owner"
+    },
+    "live.enabled": {
+      "default": false,
+      "source": "doc"
+    },
+    "live.room_lead_min": {
+      "default": 15,
+      "source": "proposed"
+    },
+    "maintenance.active": {
+      "default": false,
+      "source": "doc"
+    },
+    "memory.comeback.first_session": {
+      "default": 10,
+      "source": "doc"
+    },
+    "memory.comeback.min_due": {
+      "default": 60,
+      "source": "proposed"
+    },
+    "memory.comeback.plan_lengths": {
+      "default": [
+        3,
+        5,
+        7
+      ],
+      "source": "ruling"
+    },
+    "memory.comeback.relearn_below": {
+      "default": 0.5,
+      "source": "ruling"
+    },
+    "memory.daily_review_cap": {
+      "default": 200,
+      "source": "proposed"
+    },
+    "memory.default_seconds_per_card": {
+      "default": 10,
+      "source": "proposed"
+    },
+    "memory.fsrs.enable_fuzz": {
+      "default": true,
+      "source": "doc"
+    },
+    "memory.fsrs.maximum_interval_days": {
+      "default": 36500,
+      "source": "proposed"
+    },
+    "memory.fsrs.optimise_min_reviews": {
+      "default": 400,
+      "source": "proposed"
+    },
+    "memory.leech_lapses": {
+      "default": 8,
+      "source": "proposed"
+    },
+    "memory.new_cards_per_day": {
+      "default": 15,
+      "source": "proposed"
+    },
+    "memory.queue_from_practice_max": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "memory.rescue_cards": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "memory.retention_presets": {
+      "default": {
+        "relaxed": 0.85,
+        "standard": 0.9,
+        "exam": 0.95
+      },
+      "source": "proposed"
+    },
+    "memory.session_size": {
+      "default": 20,
+      "source": "doc"
+    },
+    "memory.session_size_options": {
+      "default": [
+        10,
+        20,
+        40,
+        "all"
+      ],
+      "source": "doc"
+    },
+    "merge.keep_guest_pet": {
+      "default": true,
+      "source": "doc"
+    },
+    "metacog.min_tagged": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "metacog.min_tagged_per_topic": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "metacog.targets": {
+      "default": {
+        "sure": 0.9,
+        "fifty": 0.5,
+        "guess": 0.25
+      },
+      "source": "proposed"
+    },
+    "minor.defer_sync_until_consent": {
+      "default": false,
+      "source": "doc"
+    },
+    "mock.free_grace_min": {
+      "default": null,
+      "source": "owner"
+    },
+    "mock.min_attempts_for_percentile": {
+      "default": null,
+      "source": "owner"
+    },
+    "mock.offline_grace_s": {
+      "default": null,
+      "source": "owner"
+    },
+    "notify.autopause_after_ignored": {
+      "default": 7,
+      "source": "ruling"
+    },
+    "notify.bandit": {
+      "default": false,
+      "source": "doc"
+    },
+    "notify.cap.habit": {
+      "default": {
+        "adult": 2,
+        "teen": 1,
+        "child": 1
+      },
+      "source": "doc"
+    },
+    "notify.cap.learning": {
+      "default": {
+        "adult": 1,
+        "teen": 0,
+        "child": 0
+      },
+      "source": "doc"
+    },
+    "notify.cap.social": {
+      "default": {
+        "adult": 3,
+        "teen": 2,
+        "child": 0
+      },
+      "source": "doc"
+    },
+    "notify.cap.total": {
+      "default": {
+        "adult": 4,
+        "teen": 3,
+        "child": 1
+      },
+      "source": "doc"
+    },
+    "notify.mock_reminder.lead_min": {
+      "default": null,
+      "source": "owner"
+    },
+    "notify.plan_days": {
+      "default": 7,
+      "source": "doc"
+    },
+    "notify.quiet_hours": {
+      "default": {
+        "adult": {
+          "start": "22:00",
+          "end": "07:00"
+        },
+        "teen": {
+          "start": "21:00",
+          "end": "07:00"
+        },
+        "child": {
+          "start": "20:00",
+          "end": "08:00"
+        }
+      },
+      "source": "doc"
+    },
+    "notify.review_due.min_cards": {
+      "default": null,
+      "source": "owner"
+    },
+    "notify.school_hours": {
+      "default": {
+        "start": "08:00",
+        "end": "14:00"
+      },
+      "source": "doc"
+    },
+    "notify.sleep_review.cards": {
+      "default": 5,
+      "source": "doc"
+    },
+    "notify.sleep_review.lead_min": {
+      "default": 20,
+      "source": "prd"
+    },
+    "notify.sleep_review.lookback_days": {
+      "default": 14,
+      "source": "doc"
+    },
+    "notify.sleep_review.min_confidence": {
+      "default": 0.6,
+      "source": "proposed"
+    },
+    "notify.smart.offset_hours": {
+      "default": 23.5,
+      "source": "doc"
+    },
+    "notify.templates.min_per_kind": {
+      "default": 3,
+      "source": "doc"
+    },
+    "notify.templates.repeat_gap_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "notify.weak_area.horizon_days": {
+      "default": 3,
+      "source": "doc"
+    },
+    "notify.weak_area.per_week": {
+      "default": 2,
+      "source": "doc"
+    },
+    "onb.outcome_line": {
+      "default": false,
+      "source": "doc"
+    },
+    "onb.returning_account_check": {
+      "default": false,
+      "source": "doc"
+    },
+    "parent.ask_before_switching": {
+      "default": false,
+      "source": "doc"
+    },
+    "parent.gate_hold_ms": {
+      "default": 2000,
+      "source": "doc"
+    },
+    "parent.time_limit_options": {
+      "default": [
+        0,
+        15,
+        30,
+        45,
+        60,
+        90,
+        120
+      ],
+      "source": "doc"
+    },
+    "parent.time_request_minutes": {
+      "default": 15,
+      "source": "doc"
+    },
+    "parent.time_requests_per_day": {
+      "default": 3,
+      "source": "doc"
+    },
+    "pay.child_link.enabled": {
+      "default": {
+        "web": true,
+        "ios": false,
+        "android": false
+      },
+      "source": "doc"
+    },
+    "pay.child_link_ttl_h": {
+      "default": 48,
+      "source": "doc"
+    },
+    "pay.web_steering": {
+      "default": false,
+      "source": "doc"
+    },
+    "perf.rive_enabled": {
+      "default": true,
+      "source": "doc"
+    },
+    "plan.swap_alternatives_max": {
+      "default": null,
+      "source": "owner"
+    },
+    "plan.time_options": {
+      "default": [
+        5,
+        10,
+        20,
+        30
+      ],
+      "source": "proposed"
+    },
+    "practice.mixed_enabled": {
+      "default": false,
+      "source": "doc"
+    },
+    "practice.mixed_min_groups": {
+      "default": 2,
+      "source": "doc"
+    },
+    "practice.weak_accuracy_below": {
+      "default": null,
+      "source": "owner"
+    },
+    "practice.weak_min_attempts": {
+      "default": null,
+      "source": "owner"
+    },
+    "practice.weak_recent_mocks": {
+      "default": null,
+      "source": "owner"
+    },
+    "practice.weak_sure_wrong_min": {
+      "default": null,
+      "source": "owner"
+    },
+    "pro.custom_mocks": {
+      "default": true,
+      "source": "doc"
+    },
+    "pro.dictation_per_day": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "pro.tutor_images_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "pro.tutor_images_per_hour": {
+      "default": null,
+      "source": "owner"
+    },
+    "pro.tutor_messages_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "pro.voice_daily_seconds": {
+      "default": 900,
+      "source": "proposed"
+    },
+    "report.fix_next_count": {
+      "default": null,
+      "source": "owner"
+    },
+    "roleplay.max_turns": {
+      "default": null,
+      "source": "owner"
+    },
+    "safety.helplines": {
+      "default": null,
+      "source": "owner"
+    },
+    "search.recent_max": {
+      "default": null,
+      "source": "owner"
+    },
+    "security.attestation_required": {
+      "default": false,
+      "source": "doc"
+    },
+    "share.streak_milestones": {
+      "default": [
+        7,
+        30,
+        100
+      ],
+      "source": "ruling"
+    },
+    "sim.max_errors": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "sim.max_state_hz": {
+      "default": 10,
+      "source": "proposed"
+    },
+    "sim.ready_timeout_ms": {
+      "default": 8000,
+      "source": "proposed"
+    },
+    "sim.ready_timeout_ms_low": {
+      "default": 12000,
+      "source": "proposed"
+    },
+    "social.cheers_per_friend_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.deck_listing": {
+      "default": false,
+      "source": "doc"
+    },
+    "social.duo_invite_ttl_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.duo_max_partners": {
+      "default": 5,
+      "source": "ruling"
+    },
+    "social.duo_nudges_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.friend_request_ttl_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.friend_requests_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.handle_change_days": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.handle_reserve_days": {
+      "default": 30,
+      "source": "doc"
+    },
+    "social.max_friends": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.nickname_fallback": {
+      "default": {
+        "en": "Learner",
+        "hi": "शिक्षार्थी"
+      },
+      "source": "proposed"
+    },
+    "social.nickname_words": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.nudges_per_friend_per_day": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.squad_max_members": {
+      "default": 20,
+      "source": "doc"
+    },
+    "social.squad_name_fallback": {
+      "default": {
+        "en": "Squad",
+        "hi": "स्क्वॉड"
+      },
+      "source": "proposed"
+    },
+    "social.squad_name_words": {
+      "default": null,
+      "source": "owner"
+    },
+    "social.squads_per_user": {
+      "default": 3,
+      "source": "proposed"
+    },
+    "streak.exam_day_protected": {
+      "default": true,
+      "source": "proposed"
+    },
+    "streak.freeze_slots_max": {
+      "default": 2,
+      "source": "ruling"
+    },
+    "streak.incident_freeze": {
+      "default": false,
+      "source": "ruling"
+    },
+    "streak.monthly_freezes": {
+      "default": {
+        "free": 1,
+        "pro": 2
+      },
+      "source": "prd"
+    },
+    "streak.rest_day_plan_ahead_days": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "streak.reviews_to_qualify": {
+      "default": 10,
+      "source": "ruling"
+    },
+    "tutor.max_input_chars": {
+      "default": null,
+      "source": "owner"
+    },
+    "voice.background_grace_seconds": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "voice.reconnect_seconds": {
+      "default": 30,
+      "source": "proposed"
+    },
+    "voice.session_max_seconds": {
+      "default": 600,
+      "source": "proposed"
+    },
+    "widget.evening_hour": {
+      "default": null,
+      "source": "owner"
+    },
+    "xp.combo_bonus": {
+      "default": 10,
+      "source": "proposed"
+    },
+    "xp.duel_per_correct": {
+      "default": null,
+      "source": "owner"
+    },
+    "xp.duel_play": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "xp.duel_win": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "xp.lesson_attempt": {
+      "default": 1,
+      "source": "proposed"
+    },
+    "xp.lesson_complete": {
+      "default": 20,
+      "source": "proposed"
+    },
+    "xp.lesson_first_try": {
+      "default": 10,
+      "source": "proposed"
+    },
+    "xp.lesson_second_try": {
+      "default": 5,
+      "source": "proposed"
+    },
+    "xp.little_activity_star": {
+      "default": 1,
+      "source": "proposed"
+    }
+  },
+  "aliases": {
+    "cheers_per_friend_per_day": "social.cheers_per_friend_per_day",
+    "duel_async_ttl_hours": "duel.async_ttl_hours",
+    "duel_disconnect_grace_seconds": "duel.disconnect_grace_seconds",
+    "duel_invite_live_seconds": "duel.invite_live_seconds",
+    "duel_match_timeout_seconds": "duel.match_timeout_seconds",
+    "duel_min_answer_ms": "duel.min_answer_ms",
+    "duel_question_count": "duel.question_count",
+    "duel_question_seconds": "duel.question_seconds",
+    "duel_question_seconds_u13": "duel.question_seconds_u13",
+    "duel_quit_cooldown_minutes": "duel.quit_cooldown_minutes",
+    "duel_quit_limit": "duel.quit_limit",
+    "duel_quit_window_hours": "duel.quit_window_hours",
+    "duel_rematch_wait_seconds": "duel.rematch_wait_seconds",
+    "duo_invite_ttl_days": "social.duo_invite_ttl_days",
+    "duo_max_partners": "social.duo_max_partners",
+    "duo_nudges_per_day": "social.duo_nudges_per_day",
+    "feynman_bands": "feynman.bands",
+    "feynman_max_record_seconds": "feynman.max_record_seconds",
+    "feynman_min_words": "feynman.min_words",
+    "free_tutor_messages_per_day": "free.tutor_messages_per_day",
+    "friend_request_ttl_days": "social.friend_request_ttl_days",
+    "friend_requests_per_day": "social.friend_requests_per_day",
+    "handle_change_days": "social.handle_change_days",
+    "league_close_time": "league.close_time",
+    "league_cohort_size": "league.group_size",
+    "league_demote_count": "league.demote_count",
+    "league_promote_count": "league.promote_count",
+    "leagues.group_size": "league.group_size",
+    "leagues.tiers": "league.tier_names",
+    "max_friends": "social.max_friends",
+    "metacog.target_sure": "metacog.targets",
+    "nudges_per_friend_per_day": "social.nudges_per_friend_per_day",
+    "plant.thresholds": "game.plant.stage_days",
+    "pro_tutor_messages_per_day": "pro.tutor_messages_per_day",
+    "roleplay_max_turns": "roleplay.max_turns",
+    "squad_max_members": "social.squad_max_members",
+    "squads_per_user": "social.squads_per_user",
+    "streak.freeze_slots": "streak.freeze_slots_max",
+    "tutor_images_per_day": "pro.tutor_images_per_day",
+    "tutor_images_per_hour": "pro.tutor_images_per_hour",
+    "voice_background_grace_seconds": "voice.background_grace_seconds",
+    "voice_daily_seconds": "pro.voice_daily_seconds",
+    "voice_reconnect_seconds": "voice.reconnect_seconds",
+    "voice_session_max_seconds": "voice.session_max_seconds"
+  }
+}

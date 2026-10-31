@@ -1,0 +1,371 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.smriti.app/content/common.schema.json",
+  "title": "Common",
+  "description": "Shared definitions used by every Smriti content schema.",
+  "$defs": {
+    "Locale": {
+      "description": "A language code: English or a scheduled language of India. Phase 1 ships en and hi. Kept in step with KNOWN_LOCALES in src/localize.ts.",
+      "type": "string",
+      "enum": [
+        "en",
+        "hi",
+        "as",
+        "bn",
+        "brx",
+        "doi",
+        "gu",
+        "kn",
+        "ks",
+        "kok",
+        "mai",
+        "ml",
+        "mni",
+        "mr",
+        "ne",
+        "or",
+        "pa",
+        "sa",
+        "sat",
+        "sd",
+        "ta",
+        "te",
+        "ur"
+      ]
+    },
+    "I18nText": {
+      "description": "Localised text keyed by locale, for example { \"en\": \"...\", \"hi\": \"...\" }. Which locales are required is checked per exam profile by the content check, so a new language adds keys, not schema changes.",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "I18nStringList": {
+      "description": "A list of strings per locale (for example accepted fill-in answers).",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "LocalizedRef": {
+      "description": "One content id per locale, for content that is written separately per language (mnemonics).",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^m\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*\\.[0-9]+$"
+      }
+    },
+    "LocalizedAudioRef": {
+      "description": "One audio request per locale (narration is recorded separately for each language).",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/Locale"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^audio\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+      }
+    },
+    "Slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "DottedId": {
+      "description": "Lowercase ASCII, dot-separated, hyphens inside a part. Never changes once published.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$",
+      "maxLength": 200
+    },
+    "ConceptId": {
+      "$ref": "#/$defs/DottedId"
+    },
+    "TopicId": {
+      "$ref": "#/$defs/DottedId"
+    },
+    "ExamId": {
+      "$ref": "#/$defs/Slug"
+    },
+    "ExamProfileId": {
+      "$ref": "#/$defs/Slug"
+    },
+    "CardId": {
+      "description": "{topic_id}:{dd|qr}:{nn}",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*:(dd|qr):[0-9]{2,3}$"
+    },
+    "QuestionId": {
+      "description": "q.{topic_id}.{nnnn}",
+      "type": "string",
+      "pattern": "^q\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*\\.[0-9]{4}$"
+    },
+    "MnemonicId": {
+      "description": "m.{concept_id}.{n}",
+      "type": "string",
+      "pattern": "^m\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*\\.[0-9]+$"
+    },
+    "IconName": {
+      "description": "A Phosphor icon name in PascalCase (DESIGN §8), for example HandsClapping. The content check also requires it to be in the app icon set (iconNames in @smriti/tokens/ui).",
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]+$"
+    },
+    "ExtraId": {
+      "description": "cs. cheat sheet, rs. revision sheet, sb. storybook, sg. song, pl. play activity, ex. experiment, rp. role play, mm. mind-map template",
+      "type": "string",
+      "pattern": "^(cs|rs|sb|sg|pl|ex|rp|mm)\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "MediaRef": {
+      "description": "A media request id from media/requests/ (never a URL). img. image/diagram/comic, anim. animation, sim. simulation, m3d. 3D model, pano. 360 scene, audio. narration or song.",
+      "type": "string",
+      "pattern": "^(img|anim|sim|m3d|pano|audio)\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "ImageRef": {
+      "type": "string",
+      "pattern": "^img\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "AnimationRef": {
+      "type": "string",
+      "pattern": "^anim\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "SimRef": {
+      "type": "string",
+      "pattern": "^sim\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "Model3dRef": {
+      "type": "string",
+      "pattern": "^m3d\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "PanoRef": {
+      "type": "string",
+      "pattern": "^pano\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "AudioRef": {
+      "type": "string",
+      "pattern": "^audio\\.[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)*$"
+    },
+    "SyllabusRef": {
+      "description": "{exam_profile}:{subject}:{unit}:{item}, a line of the official syllabus",
+      "type": "string",
+      "pattern": "^[a-z0-9-]+:[a-z0-9.-]+:[a-z0-9.-]+:[a-z0-9.-]+$"
+    },
+    "Depth": {
+      "description": "L1 basic school, L2 board, L3 competitive basics, L4 advanced, L5 elite (PRD 4.2)",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "IsoDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "Latex": {
+      "description": "A LaTeX expression without $ delimiters. Rendered to SVG at publish.",
+      "type": "string",
+      "minLength": 1
+    },
+    "Status": {
+      "description": "draft -> review -> published (set by the publish job only) -> retired",
+      "type": "string",
+      "enum": ["draft", "review", "published", "retired"]
+    },
+    "SourceKind": {
+      "type": "string",
+      "enum": ["ncert", "official", "openstax", "pyq", "textbook", "paper", "dataset", "other"]
+    },
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "ref"],
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "retrieved": {
+          "$ref": "#/$defs/IsoDate"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "licence": {
+          "type": "string"
+        },
+        "published": {
+          "description": "When the source was published by its author.",
+          "$ref": "#/$defs/IsoDate"
+        },
+        "linked_from": {
+          "description": "The official page the document is linked from, so a reviewer can find it again (a URL, optionally with the menu path).",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "FileMeta": {
+      "description": "Fields every content file carries.",
+      "type": "object",
+      "required": ["schema", "status", "authored_by", "updated"],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "pattern": "^[a-z_-]+@[0-9]+$"
+        },
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Source"
+          }
+        },
+        "authored_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_by": {
+          "type": ["string", "null"]
+        },
+        "updated": {
+          "$ref": "#/$defs/IsoDate"
+        },
+        "fixture": {
+          "description": "Test data only. Fixture files live under content/fixtures/ and can never be published to a non-local target.",
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "open_questions": {
+          "description": "Facts the official sources do not state. Every exam fact left null names its field here.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OpenQuestion"
+          }
+        },
+        "hi_source": {
+          "$ref": "#/$defs/HiSource"
+        }
+      }
+    },
+    "Tolerance": {
+      "description": "Accepted error. A response passes when |response - value| <= max(abs, rel * |value|).",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "abs": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rel": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "Unit": {
+      "description": "A unit symbol, for example m/s, kJ, mol, °C. null for dimensionless.",
+      "type": ["string", "null"]
+    },
+    "LabelAnchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "x", "y"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Slug"
+        },
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "IdText": {
+      "description": "An item with a stable id and localised text (options, list items, steps).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Slug"
+        },
+        "text": {
+          "$ref": "#/$defs/I18nText"
+        },
+        "media": {
+          "$ref": "#/$defs/ImageRef"
+        }
+      }
+    },
+    "SubjectFamily": {
+      "description": "Colour family from packages/tokens/tokens.json `subject`.",
+      "type": "string",
+      "enum": ["physics", "chemistry", "biology", "maths", "history", "polity", "language"]
+    },
+    "OpenQuestion": {
+      "description": "Something the official source does not state (or that could not be checked). A null exam fact must have one, naming the field.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question"],
+      "properties": {
+        "field": {
+          "description": "The field left null or unset because of this question, as a dotted path from the file root. Blueprint sections are addressed by code: sections.gs1.marking.mcq_single.correct. null: a question about the file as a whole.",
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checked": {
+          "description": "When the sources were last checked for an answer.",
+          "$ref": "#/$defs/IsoDate"
+        },
+        "source_url": {
+          "description": "Where the answer is expected to appear.",
+          "type": ["string", "null"],
+          "format": "uri"
+        }
+      }
+    },
+    "HiSource": {
+      "description": "Where the Hindi text of the file comes from: official (the conducting body's Hindi document), ncert (NCERT Hindi-medium books) or translation (our translation of the official English).",
+      "type": "string",
+      "enum": ["official", "ncert", "translation"]
+    }
+  }
+}

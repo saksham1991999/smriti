@@ -1,0 +1,52 @@
+{
+  "name": "@smriti/lesson-player-native",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The React Native lesson player (LES-01, LES-02, LES-08 data): renders @smriti/lesson-core plans with @smriti/ui-native, one renderer per card kind.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "lint": "tsc --noEmit -p .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@smriti/content-schema": "workspace:*",
+    "@smriti/i18n": "workspace:*",
+    "@smriti/lesson-core": "workspace:*",
+    "@smriti/tokens": "workspace:*",
+    "@smriti/ui-native": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.83.0",
+    "react-native-reanimated": ">=4.0.0",
+    "react-native-svg": ">=15.0.0"
+  },
+  "devDependencies": {
+    "@expo-google-fonts/noto-sans-devanagari": "0.4.2",
+    "@expo-google-fonts/plus-jakarta-sans": "0.4.2",
+    "@smriti/content-publish": "workspace:*",
+    "@testing-library/react-native": "14.1.0",
+    "@types/jest": "29.5.14",
+    "@types/node": "24.19.2",
+    "@types/react": "19.2.17",
+    "expo": "57.0.29",
+    "jest": "29.7.0",
+    "jest-expo": "57.0.6",
+    "phosphor-react-native": "3.0.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-reanimated": "4.5.1",
+    "react-native-safe-area-context": "5.7.0",
+    "react-native-svg": "15.15.4",
+    "react-native-worklets": "0.10.1",
+    "test-renderer": "1.2.0",
+    "typescript": "5.9.3"
+  }
+}

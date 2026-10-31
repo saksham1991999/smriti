@@ -1,0 +1,625 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 6 Systems of Particles and Rotational Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph106.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 6 Kanon ke Nikay tatha Ghurni Gati: Hindi terms (text, summary and tables)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph106.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 94-129"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or table it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph106 (text, summary and tables, pp. 94-129): कणों का निकाय, दृढ़ पिंड, स्थानांतरण गति, घूर्णी गति, घूर्णन अक्ष, लट्टू, पुरस्सरण, द्रव्यमान केन्द्र, सदिश (क्रॉस) गुणन, दक्षिणावर्त पेंच का नियम, दाएँ हाथ का नियम, कोणीय वेग, कोणीय त्वरण, रेखीय वेग, बल आघूर्ण (ऐंठन), कोणीय संवेग, यांत्रिक संतुलन, स्थानांतरीय संतुलन, घूर्णी संतुलन, बलयुग्म, आघूर्णों का सिद्धांत, उत्तोलक, आलंब, भार भुजा, प्रयास भुजा, यांत्रिक लाभ, तुलादंड, गुरुत्व केन्द्र, जड़त्व आघूर्ण, परिभ्रमण त्रिज्या, वलय, चकती, छड़, खोखला बेलन, ठोस बेलन, ठोस गोला, व्यास, गतिपालक पहिया, घुमाऊ कुर्सी, कलाबाज. The current khph106 reprint does not cover the axes theorems; समांतर अक्षों का प्रमेय and लंबवत् अक्षों का प्रमेय follow standard Hindi-medium usage and should be checked by a reviewer. Other wording is ours.",
+  "topic": "phy.rotational-motion.rigid-equilibrium",
+  "questions": [
+    {
+      "id": "q.phy.rotational-motion.rigid-equilibrium.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two equal and opposite forces act on a rigid body along different parallel lines. The body will",
+        "hi": "किसी दृढ़ पिंड पर दो बराबर और विपरीत बल भिन्न समांतर रेखाओं के अनुदिश लगते हैं। पिंड"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "turn, but its centre of mass will not accelerate",
+            "hi": "घूमेगा, पर उसका द्रव्यमान केन्द्र त्वरित नहीं होगा"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "stay in complete equilibrium",
+            "hi": "पूर्ण संतुलन में रहेगा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "move in a straight line without turning",
+            "hi": "बिना घूमे सरल रेखा में चलेगा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "both turn and accelerate as a whole",
+            "hi": "घूमेगा भी और समग्र रूप से त्वरित भी होगा"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Check the force and the torque separately.",
+          "hi": "बल और बल आघूर्ण को अलग-अलग जाँचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "This is a couple: zero total force, non-zero torque.",
+          "hi": "यह बलयुग्म है: शून्य कुल बल, शून्येतर बल आघूर्ण।"
+        },
+        "steps": [
+          {
+            "en": "$\\sum \\vec{F} = \\vec{0}$, so the centre of mass does not accelerate.",
+            "hi": "$\\sum \\vec{F} = \\vec{0}$, अतः द्रव्यमान केन्द्र त्वरित नहीं होता।"
+          },
+          {
+            "en": "The torques add, so the body turns.",
+            "hi": "बल आघूर्ण जुड़ते हैं, अतः पिंड घूमता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Rotational equilibrium fails: the torque is not zero.",
+              "hi": "घूर्णी संतुलन नहीं है: बल आघूर्ण शून्य नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "With zero total force there is nothing to accelerate the centre of mass.",
+              "hi": "शून्य कुल बल के साथ द्रव्यमान केन्द्र को त्वरित करने वाला कुछ नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The total force is zero, so there is no overall acceleration.",
+              "hi": "कुल बल शून्य है, अतः कोई समग्र त्वरण नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rigid-equilibrium.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 600 N load sits 0.2 m from the fulcrum of a lever, and the effort is applied 1.2 m from the fulcrum on the other side. The effort needed, and the mechanical advantage, are",
+        "hi": "किसी उत्तोलक के आलंब से 0.2 m पर 600 N का भार है, और प्रयास दूसरी ओर आलंब से 1.2 m पर लगाया जाता है। आवश्यक प्रयास, और यांत्रिक लाभ, हैं"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "100 N and 6",
+            "hi": "100 N और 6"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "3600 N and 6",
+            "hi": "3600 N और 6"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "100 N and 1/6",
+            "hi": "100 N और 1/6"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "600 N and 1",
+            "hi": "600 N और 1"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$d_1F_1 = d_2F_2$",
+          "hi": "$d_1F_1 = d_2F_2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Equate the moments about the fulcrum.",
+          "hi": "आलंब के परितः आघूर्ण बराबर कीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$600 \\times 0.2 = F_2 \\times 1.2$, so $F_2 = 100$ N",
+            "hi": "$600 \\times 0.2 = F_2 \\times 1.2$, अतः $F_2 = 100$ N"
+          },
+          {
+            "en": "M.A. $= \\frac{F_1}{F_2} = \\frac{600}{100} = 6$",
+            "hi": "M.A. $= \\frac{F_1}{F_2} = \\frac{600}{100} = 6$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That multiplies by the ratio of arms the wrong way.",
+              "hi": "यह भुजाओं के अनुपात से उलटा गुणा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Mechanical advantage is load over effort, here more than 1.",
+              "hi": "यांत्रिक लाभ भार बटा प्रयास है, यहाँ 1 से अधिक।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That ignores the different arms.",
+              "hi": "यह भिन्न भुजाओं की उपेक्षा करता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rigid-equilibrium.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A uniform metre rod of mass 0.2 kg is pivoted at its 40 cm mark. What mass, in grams, hung at the 0 cm mark keeps it horizontal?",
+        "hi": "0.2 kg द्रव्यमान की एक एकसमान मीटर छड़ अपने 40 cm चिह्न पर कीलकित है। 0 cm चिह्न पर कितना द्रव्यमान, ग्राम में, लटकाने से वह क्षैतिज रहेगी?"
+      },
+      "answer": {
+        "value": 50,
+        "unit": "g"
+      },
+      "hints": [
+        {
+          "en": "Where does the weight of a uniform rod act?",
+          "hi": "एकसमान छड़ का भार कहाँ लगता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The rod's weight acts at the 50 cm mark, 10 cm from the pivot.",
+          "hi": "छड़ का भार 50 cm चिह्न पर, आलंब से 10 cm पर लगता है।"
+        },
+        "steps": [
+          {
+            "en": "Moments about the pivot: $m \\times 0.40 = 0.2 \\times 0.10$",
+            "hi": "आलंब के परितः आघूर्ण: $m \\times 0.40 = 0.2 \\times 0.10$"
+          },
+          {
+            "en": "$m = 0.05$ kg $= 50$ g",
+            "hi": "$m = 0.05$ kg $= 50$ g"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Treating the pivot as the rod's centre gives zero torque from the rod and no answer.",
+              "hi": "आलंब को छड़ का केन्द्र मान लेने पर छड़ से शून्य बल आघूर्ण और कोई उत्तर नहीं मिलता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rigid-equilibrium.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The centre of gravity of a body coincides with its centre of mass",
+        "hi": "किसी पिंड का गुरुत्व केन्द्र उसके द्रव्यमान केन्द्र से संपाती होता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "when g is the same at every part of the body",
+            "hi": "जब पिंड के हर भाग पर g समान हो"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "always",
+            "hi": "सदा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "only for symmetric bodies",
+            "hi": "केवल सममित पिंडों के लिए"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "only when the body is at rest",
+            "hi": "केवल जब पिंड विराम में हो"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Can g vary across a body?",
+          "hi": "क्या किसी पिंड पर g बदल सकता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The centre of gravity is defined by gravitational torques, which depend on g.",
+          "hi": "गुरुत्व केन्द्र गुरुत्वीय बल आघूर्णों से परिभाषित है, जो g पर निर्भर हैं।"
+        },
+        "steps": [
+          {
+            "en": "With g constant, $\\sum \\vec{r}_i \\times m_i\\vec{g} = (\\sum m_i\\vec{r}_i) \\times \\vec{g}$, zero about the centre of mass.",
+            "hi": "g नियत होने पर $\\sum \\vec{r}_i \\times m_i\\vec{g} = (\\sum m_i\\vec{r}_i) \\times \\vec{g}$, जो द्रव्यमान केन्द्र के परितः शून्य है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "For a body large enough for g to vary over it, they differ.",
+              "hi": "इतने बड़े पिंड के लिए जिस पर g बदले, वे भिन्न होते हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Symmetry is not the condition; a uniform g is.",
+              "hi": "सममिति शर्त नहीं है; एकसमान g है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Motion has nothing to do with it.",
+              "hi": "गति का इससे कोई संबंध नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rigid-equilibrium.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "For a body acted on by several forces whose vector sum is zero, the total torque",
+        "hi": "ऐसे पिंड के लिए जिस पर लगे कई बलों का सदिश योग शून्य है, कुल बल आघूर्ण"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "is the same about every point",
+            "hi": "हर बिंदु के परितः समान है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "must be zero",
+            "hi": "शून्य ही होगा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "is largest about the centre of mass",
+            "hi": "द्रव्यमान केन्द्र के परितः अधिकतम है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "depends on which point is chosen as origin",
+            "hi": "मूल बिंदु के रूप में चुने गए बिंदु पर निर्भर है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of a couple.",
+          "hi": "बलयुग्म के बारे में सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Shifting the origin by $\\vec{a}$ changes the torque by $-\\vec{a} \\times \\sum \\vec{F}$, which is zero here.",
+          "hi": "मूल बिंदु को $\\vec{a}$ से खिसकाने पर बल आघूर्ण $-\\vec{a} \\times \\sum \\vec{F}$ से बदलता है, जो यहाँ शून्य है।"
+        },
+        "steps": [
+          {
+            "en": "$\\sum (\\vec{r}_i - \\vec{a}) \\times \\vec{F}_i = \\sum \\vec{r}_i \\times \\vec{F}_i - \\vec{a} \\times \\sum \\vec{F}_i$",
+            "hi": "$\\sum (\\vec{r}_i - \\vec{a}) \\times \\vec{F}_i = \\sum \\vec{r}_i \\times \\vec{F}_i - \\vec{a} \\times \\sum \\vec{F}_i$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "A couple has zero total force and a non-zero torque.",
+              "hi": "बलयुग्म का कुल बल शून्य और बल आघूर्ण शून्येतर होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is the same about every point, so no point gives a larger value.",
+              "hi": "यह हर बिंदु के परितः समान है, अतः कोई बिंदु बड़ा मान नहीं देता।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is true only when the total force is not zero.",
+              "hi": "यह केवल तब सत्य है जब कुल बल शून्य न हो।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.rotational-motion.rigid-equilibrium.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.rotational-motion.rigid-equilibrium.core.rigid-body-equilibrium",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A uniform beam 4 m long and of mass 20 kg rests on supports at its two ends. A 30 kg person stands 1 m from the left end. Taking $g = 10$ m/s², the force from the left support is",
+        "hi": "4 m लंबी और 20 kg द्रव्यमान की एक एकसमान धरन अपने दोनों सिरों पर टेकों पर टिकी है। 30 kg का एक व्यक्ति बाएँ सिरे से 1 m पर खड़ा है। $g = 10$ m/s² लेकर, बाएँ टेक का बल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "325 N",
+            "hi": "325 N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "175 N",
+            "hi": "175 N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "250 N",
+            "hi": "250 N"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "300 N",
+            "hi": "300 N"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "The person is nearer the left end, so the left support carries more.",
+          "hi": "व्यक्ति बाएँ सिरे के निकट है, अतः बायाँ टेक अधिक भार लेता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Take moments about the right support to remove its force.",
+          "hi": "दाएँ टेक के परितः आघूर्ण लीजिए ताकि उसका बल हट जाए।"
+        },
+        "steps": [
+          {
+            "en": "About the right end: $R_L \\times 4 = 200 \\times 2 + 300 \\times 3 = 1300$",
+            "hi": "दाएँ सिरे के परितः: $R_L \\times 4 = 200 \\times 2 + 300 \\times 3 = 1300$"
+          },
+          {
+            "en": "$R_L = 325$ N, and $R_R = 500 - 325 = 175$ N",
+            "hi": "$R_L = 325$ N, और $R_R = 500 - 325 = 175$ N"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the right support's force.",
+              "hi": "यह दाएँ टेक का बल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Splitting the 500 N equally ignores where the person stands.",
+              "hi": "500 N को बराबर बाँटना व्यक्ति की स्थिति की उपेक्षा करता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That forgets the beam's own weight in the moments.",
+              "hi": "यह आघूर्णों में धरन का अपना भार भूल जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

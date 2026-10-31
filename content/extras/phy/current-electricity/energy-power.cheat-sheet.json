@@ -1,0 +1,92 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 10 Science, Ch 11 Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/jesc111.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Cheat sheet for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "cs.phy.current-electricity.energy-power",
+  "scope": "topic",
+  "topic": "phy.current-electricity.energy-power",
+  "title": {
+    "en": "Electrical energy and power",
+    "hi": "विद्युत ऊर्जा और शक्ति"
+  },
+  "concepts": [
+    "phy.current-electricity.energy-power.core.electrical-power"
+  ],
+  "key_ideas": [
+    {
+      "en": "Energy lost in collisions heats a resistor: ohmic loss.",
+      "hi": "टक्करों में खोई ऊर्जा प्रतिरोधक को गरम करती है: ओमी क्षय।"
+    },
+    {
+      "en": "1 kW h $= 3.6 \\times 10^{6}$ J.",
+      "hi": "1 kW h $= 3.6 \\times 10^{6}$ J।"
+    },
+    {
+      "en": "High transmission voltage cuts line loss; a transformer steps it down for use.",
+      "hi": "उच्च संचरण वोल्टता लाइन क्षय घटाती है; ट्रांसफार्मर उपयोग के लिए उसे घटाता है।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Power",
+        "hi": "शक्ति"
+      },
+      "latex": "P = IV = I^{2}R = \\frac{V^{2}}{R}"
+    },
+    {
+      "name": {
+        "en": "Line loss",
+        "hi": "लाइन क्षय"
+      },
+      "latex": "P_c = \\frac{P^{2}R_c}{V^{2}}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Multiplying watts by hours and calling it units.",
+        "hi": "वाट को घंटों से गुणा करके यूनिट कहना।"
+      },
+      "correct": {
+        "en": "Units are kilowatt hours; convert W to kW first.",
+        "hi": "यूनिट किलोवाट घंटे हैं; पहले W को kW में बदलिए।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "Line loss falls in proportion to the voltage.",
+        "hi": "लाइन क्षय वोल्टता के अनुपात में घटता है।"
+      },
+      "correct": {
+        "en": "It falls as $1/V^{2}$: ten times the voltage, one hundredth the loss.",
+        "hi": "यह $1/V^{2}$ के अनुसार घटता है: दस गुनी वोल्टता, सौवाँ भाग क्षय।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

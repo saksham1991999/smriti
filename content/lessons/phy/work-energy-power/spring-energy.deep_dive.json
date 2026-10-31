@@ -1,0 +1,356 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.spring-energy:deep_dive",
+  "topic": "phy.work-energy-power.spring-energy",
+  "mode": "deep_dive",
+  "estimated_minutes": 7,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Energy stored in a spring",
+        "hi": "स्प्रिंग में संचित ऊर्जा"
+      },
+      "subtopic": "phy.work-energy-power.spring-energy.core",
+      "card_ids": [
+        "phy.work-energy-power.spring-energy:dd:01",
+        "phy.work-energy-power.spring-energy:dd:02",
+        "phy.work-energy-power.spring-energy:dd:03",
+        "phy.work-energy-power.spring-energy:dd:04",
+        "phy.work-energy-power.spring-energy:dd:05",
+        "phy.work-energy-power.spring-energy:dd:06",
+        "phy.work-energy-power.spring-energy:dd:07",
+        "phy.work-energy-power.spring-energy:dd:08",
+        "phy.work-energy-power.spring-energy:dd:09",
+        "phy.work-energy-power.spring-energy:dd:10"
+      ],
+      "estimated_minutes": 7
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The buffer stop",
+        "hi": "बफ़र स्टॉप"
+      },
+      "body": {
+        "en": "At the end of a railway siding stands a buffer with big coiled springs. A trolley that rolls into it squashes the springs, stops, and is pushed back. Where does its kinetic energy go while it is stopped?",
+        "hi": "रेलवे की साइडिंग के अंत में बड़ी कुंडलित स्प्रिंगों वाला एक बफ़र खड़ा है। उससे टकराने वाली ट्रॉली स्प्रिंगों को दबाती है, रुकती है, और वापस धकेल दी जाती है। जब वह रुकी होती है, तब उसकी गतिज ऊर्जा कहाँ जाती है?"
+      },
+      "media": "img.work-energy-power.buffer-spring"
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Hooke's law and spring energy",
+        "hi": "हुक का नियम और स्प्रिंग ऊर्जा"
+      },
+      "body": {
+        "en": "For an ideal spring, the force is proportional to the displacement x of its free end from the equilibrium position, and opposite to it. This is Hooke's law:\n\n$F_s = -kx$.\n\nThe spring constant k is measured in N/m. A spring with large k is stiff; one with small k is soft. Stretching the spring by $x_m$, the spring force does work $W_s = -\\int_0^{x_m} kx\\,dx = -\\frac{kx_m^2}{2}$, the area of a triangle on the F-x graph. The external force does $+\\frac{kx_m^2}{2}$.\n\nThe work of the spring force depends only on the end points, and is zero over a full cycle, so the spring force is conservative. Taking V = 0 at the natural length, the potential energy is $V(x) = \\frac{1}{2}kx^2$ for a stretch or a compression x.",
+        "hi": "आदर्श स्प्रिंग के लिए बल उसके मुक्त सिरे के साम्यावस्था स्थिति से विस्थापन x के समानुपाती और उसके विपरीत होता है। यह हुक का नियम है:\n\n$F_s = -kx$।\n\nस्प्रिंग नियतांक k को N/m में मापते हैं। अधिक k वाली स्प्रिंग दृढ़ होती है; कम k वाली नर्म (मृदु)। स्प्रिंग को $x_m$ खींचने पर स्प्रिंग बल $W_s = -\\int_0^{x_m} kx\\,dx = -\\frac{kx_m^2}{2}$ कार्य करता है, जो F-x आलेख पर एक त्रिभुज का क्षेत्रफल है। बाह्य बल $+\\frac{kx_m^2}{2}$ कार्य करता है।\n\nस्प्रिंग बल का कार्य केवल सिरे के बिंदुओं पर निर्भर है, और पूरे चक्र में शून्य है, इसलिए स्प्रिंग बल संरक्षी है। प्राकृतिक लंबाई पर V = 0 लेकर, खिंचाव या संपीडन x के लिए स्थितिज ऊर्जा $V(x) = \\frac{1}{2}kx^2$ है।"
+      },
+      "media": "img.work-energy-power.buffer-spring",
+      "highlights": [
+        {
+          "term": {
+            "en": "spring constant",
+            "hi": "स्प्रिंग नियतांक"
+          },
+          "definition": {
+            "en": "k in $F_s = -kx$, in N/m",
+            "hi": "$F_s = -kx$ में k, N/m में"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.9, Eqs. 5.15-5.19, Fig. 5.7, Summary 6"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:03",
+      "type": "derivation",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Spring energy from the F-x graph",
+        "hi": "F-x आलेख से स्प्रिंग ऊर्जा"
+      },
+      "steps": [
+        {
+          "latex": "W_s = \\int_0^{x_m} F_s\\,dx = -\\int_0^{x_m} kx\\,dx",
+          "say": {
+            "en": "Work of the spring force as the end moves out.",
+            "hi": "सिरे के बाहर जाते समय स्प्रिंग बल का कार्य।"
+          },
+          "why": null
+        },
+        {
+          "latex": "W_s = -\\frac{kx_m^2}{2}",
+          "say": {
+            "en": "The area of the triangle, with a minus sign.",
+            "hi": "त्रिभुज का क्षेत्रफल, ऋण चिह्न के साथ।"
+          },
+          "why": null
+        },
+        {
+          "latex": "V(x) = -W_s = \\frac{1}{2}kx^2",
+          "say": {
+            "en": "Potential energy is minus the work of the conservative force.",
+            "hi": "स्थितिज ऊर्जा संरक्षी बल के कार्य का ऋणात्मक है।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 5.15-5.19"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:04",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Spring force and energy",
+        "hi": "स्प्रिंग बल और ऊर्जा"
+      },
+      "latex": "F_s = -kx,\\quad V(x) = \\frac{1}{2}kx^2",
+      "symbols": [
+        {
+          "symbol": "k",
+          "meaning": {
+            "en": "spring constant",
+            "hi": "स्प्रिंग नियतांक"
+          },
+          "unit": "N/m"
+        },
+        {
+          "symbol": "x",
+          "meaning": {
+            "en": "stretch or compression",
+            "hi": "खिंचाव या संपीडन"
+          },
+          "unit": "m"
+        },
+        {
+          "symbol": "V",
+          "meaning": {
+            "en": "potential energy stored",
+            "hi": "संचित स्थितिज ऊर्जा"
+          },
+          "unit": "J"
+        }
+      ],
+      "conditions": {
+        "en": "V = 0 at the natural length of the spring.",
+        "hi": "स्प्रिंग की प्राकृतिक लंबाई पर V = 0।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 5.19"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A block on a spring",
+        "hi": "स्प्रिंग पर गुटका"
+      },
+      "body": {
+        "en": "A block of mass m on a smooth floor, attached to a spring, is pulled out to $x_m$ and released. Mechanical energy is conserved: $\\frac{1}{2}kx_m^2 = \\frac{1}{2}kx^2 + \\frac{1}{2}mv^2$ at any x. Kinetic and potential energy trade places, one rising as the other falls, but their sum stays fixed. The speed is greatest at $x = 0$:\n\n$v_m = \\sqrt{\\frac{k}{m}}\\,x_m$.",
+        "hi": "चिकने फ़र्श पर स्प्रिंग से जुड़े m द्रव्यमान के गुटके को $x_m$ तक खींचकर छोड़ा जाता है। यांत्रिक ऊर्जा संरक्षित रहती है: किसी भी x पर $\\frac{1}{2}kx_m^2 = \\frac{1}{2}kx^2 + \\frac{1}{2}mv^2$। गतिज और स्थितिज ऊर्जा जगह बदलती हैं, एक बढ़ती है तो दूसरी घटती है, पर उनका योग नियत रहता है। चाल $x = 0$ पर अधिकतम होती है:\n\n$v_m = \\sqrt{\\frac{k}{m}}\\,x_m$।"
+      },
+      "media": "img.work-energy-power.buffer-spring",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.9, Fig. 5.8"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:06",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "problem": {
+        "en": "A car of mass 1000 kg moving at 18 km/h on a smooth road collides with a horizontally mounted spring of spring constant $2.5 \\times 10^4$ N/m. What is the maximum compression of the spring?",
+        "hi": "चिकनी सड़क पर 18 km/h से चलती 1000 kg द्रव्यमान की कार $2.5 \\times 10^4$ N/m स्प्रिंग नियतांक वाली क्षैतिज लगी स्प्रिंग से टकराती है। स्प्रिंग का अधिकतम संपीडन क्या है?"
+      },
+      "solution_steps": [
+        {
+          "en": "18 km/h = 5 m/s, so $K = \\frac{1}{2} \\times 1000 \\times 5^2 = 1.25 \\times 10^4$ J.",
+          "hi": "18 km/h = 5 m/s, अतः $K = \\frac{1}{2} \\times 1000 \\times 5^2 = 1.25 \\times 10^4$ J।"
+        },
+        {
+          "en": "At maximum compression all of it is spring energy: $\\frac{1}{2}kx_m^2 = 1.25 \\times 10^4$ J.",
+          "hi": "अधिकतम संपीडन पर यह सारी स्प्रिंग ऊर्जा है: $\\frac{1}{2}kx_m^2 = 1.25 \\times 10^4$ J।"
+        },
+        {
+          "en": "$x_m = \\sqrt{\\frac{2 \\times 1.25 \\times 10^4}{2.5 \\times 10^4}} = 1.00$ m",
+          "hi": "$x_m = \\sqrt{\\frac{2 \\times 1.25 \\times 10^4}{2.5 \\times 10^4}} = 1.00$ m"
+        }
+      ],
+      "answer": {
+        "en": "1.00 m",
+        "hi": "1.00 m"
+      },
+      "answer_value": {
+        "value": 1.0,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting to convert 18 km/h to 5 m/s.",
+        "hi": "18 km/h को 5 m/s में न बदलना।"
+      },
+      "media": "img.work-energy-power.buffer-spring",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.9, method of Example 5.8; spring constant chosen for this example"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:07",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "Repeat the last example with a coefficient of friction 0.5 between the car and the road. Take $g = 10$ m/s².",
+        "hi": "पिछले उदाहरण को कार और सड़क के बीच घर्षण गुणांक 0.5 के साथ दोहराइए। $g = 10$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "Friction is non-conservative, so use the work-energy theorem: $\\frac{1}{2}mv^2 = \\frac{1}{2}kx_m^2 + \\mu mg\\,x_m$.",
+          "hi": "घर्षण असंरक्षी है, अतः कार्य-ऊर्जा प्रमेय लगाइए: $\\frac{1}{2}mv^2 = \\frac{1}{2}kx_m^2 + \\mu mg\\,x_m$।"
+        },
+        {
+          "en": "$\\mu mg = 0.5 \\times 1000 \\times 10 = 5000$ N, so $12500\\,x_m^2 + 5000\\,x_m - 12500 = 0$.",
+          "hi": "$\\mu mg = 0.5 \\times 1000 \\times 10 = 5000$ N, अतः $12500\\,x_m^2 + 5000\\,x_m - 12500 = 0$।"
+        },
+        {
+          "en": "$5x_m^2 + 2x_m - 5 = 0$, so $x_m = \\frac{-2 + \\sqrt{104}}{10} \\approx 0.82$ m (positive root).",
+          "hi": "$5x_m^2 + 2x_m - 5 = 0$, अतः $x_m = \\frac{-2 + \\sqrt{104}}{10} \\approx 0.82$ m (धनात्मक मूल)।"
+        }
+      ],
+      "answer": {
+        "en": "About 0.82 m, less than without friction",
+        "hi": "लगभग 0.82 m, घर्षण के बिना से कम"
+      },
+      "answer_value": {
+        "value": 0.82,
+        "unit": "m",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Using conservation of mechanical energy when friction acts.",
+        "hi": "घर्षण होने पर यांत्रिक ऊर्जा संरक्षण लगाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.9, method of Example 5.9"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:08",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.spring-energy.0001"
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "question": "q.phy.work-energy-power.spring-energy.0003"
+    },
+    {
+      "id": "phy.work-energy-power.spring-energy:dd:10",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Hooke's law $F_s = -kx$; spring energy $\\frac{1}{2}kx^2$.",
+          "hi": "हुक का नियम $F_s = -kx$; स्प्रिंग ऊर्जा $\\frac{1}{2}kx^2$।"
+        },
+        {
+          "en": "The spring force is conservative; with friction, use $E_f - E_i = W_{nc}$.",
+          "hi": "स्प्रिंग बल संरक्षी है; घर्षण के साथ $E_f - E_i = W_{nc}$ लगाइए।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

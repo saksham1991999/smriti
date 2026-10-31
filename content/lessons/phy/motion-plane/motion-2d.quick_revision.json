@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.motion-2d:quick_revision",
+  "topic": "phy.motion-plane.motion-2d",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.motion-2d:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.motion-plane.motion-2d"
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 2,
+      "question": "q.phy.motion-plane.motion-2d.0002"
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.motion-2d.0004"
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Velocity is tangent to the path; speed $= \\sqrt{v_x^2 + v_y^2}$.",
+          "hi": "वेग पथ की स्पर्श रेखा पर है; चाल $= \\sqrt{v_x^2 + v_y^2}$।"
+        },
+        {
+          "en": "With constant acceleration, x and y are independent one-dimensional motions.",
+          "hi": "नियत त्वरण में x और y स्वतंत्र एकविमीय गतियाँ हैं।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.motion-2d:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.motion-plane.motion-2d.core.motion-plane-vectors"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Acceleration is always along the velocity.",
+            "hi": "त्वरण सदा वेग के अनुदिश होता है।"
+          },
+          "correct": {
+            "en": "In a plane the angle between them can be anything from 0° to 180°.",
+            "hi": "समतल में उनके बीच का कोण 0° से 180° तक कुछ भी हो सकता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Average velocity points along the path.",
+            "hi": "औसत वेग पथ के अनुदिश होता है।"
+          },
+          "correct": {
+            "en": "It points along the displacement, from start to end.",
+            "hi": "यह विस्थापन के अनुदिश, आरंभ से अंत की ओर होता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Mixing the x-acceleration into the y-equation.",
+            "hi": "x-त्वरण को y-समीकरण में मिला देना।"
+          },
+          "correct": {
+            "en": "Each component uses only its own acceleration.",
+            "hi": "हर घटक में केवल उसका अपना त्वरण लगता है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

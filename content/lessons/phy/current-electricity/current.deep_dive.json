@@ -1,0 +1,542 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.current:deep_dive",
+  "topic": "phy.current-electricity.current",
+  "mode": "deep_dive",
+  "estimated_minutes": 8,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.current-electricity.current.core.drift-velocity"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "What an electric current is",
+        "hi": "विद्युत धारा क्या है"
+      },
+      "subtopic": "phy.current-electricity.current.core",
+      "card_ids": [
+        "phy.current-electricity.current:dd:01",
+        "phy.current-electricity.current:dd:02",
+        "phy.current-electricity.current:dd:03",
+        "phy.current-electricity.current:dd:04",
+        "phy.current-electricity.current:dd:05"
+      ],
+      "estimated_minutes": 2
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Electrons drift",
+        "hi": "इलेक्ट्रॉनों का अपवाह"
+      },
+      "subtopic": "phy.current-electricity.current.core",
+      "card_ids": [
+        "phy.current-electricity.current:dd:06",
+        "phy.current-electricity.current:dd:07",
+        "phy.current-electricity.current:dd:08",
+        "phy.current-electricity.current:dd:09",
+        "phy.current-electricity.current:dd:10",
+        "phy.current-electricity.current:dd:11",
+        "phy.current-electricity.current:dd:12"
+      ],
+      "estimated_minutes": 4
+    },
+    {
+      "id": "bite-3",
+      "title": {
+        "en": "Mobility",
+        "hi": "गतिशीलता"
+      },
+      "subtopic": "phy.current-electricity.current.core",
+      "card_ids": [
+        "phy.current-electricity.current:dd:13",
+        "phy.current-electricity.current:dd:14",
+        "phy.current-electricity.current:dd:15"
+      ],
+      "estimated_minutes": 2
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.current:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "The power cut",
+        "hi": "बिजली गुल"
+      },
+      "body": {
+        "en": "The lights go out while you are studying. You press the switch of a torch and the beam falls on your notebook at once. Yet the electrons in a current-carrying copper wire drift only about a millimetre each second. How can both be true?",
+        "hi": "पढ़ाई के बीच बिजली चली जाती है। आप टॉर्च का स्विच दबाते हैं और रोशनी तुरंत कॉपी पर पड़ती है। फिर भी धारावाही ताँबे के तार में इलेक्ट्रॉन हर सेकंड केवल लगभग एक मिलीमीटर अपवाहित होते हैं। दोनों बातें एक साथ सच कैसे हैं?"
+      },
+      "media": "img.current-electricity.power-cut-torch"
+    },
+    {
+      "id": "phy.current-electricity.current:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Current is a rate",
+        "hi": "धारा एक दर है"
+      },
+      "body": {
+        "en": "If a net charge $\\Delta Q$ flows across a cross-section of a conductor in time $\\Delta t$, the current is the charge per unit time. Its SI unit is the ampere (A).\n\nCurrents in nature span a huge range: an average lightning carries currents of the order of tens of thousands of amperes, while the currents in our nerves are in microamperes.",
+        "hi": "यदि किसी चालक की अनुप्रस्थ काट से नेट आवेश $\\Delta Q$ समय $\\Delta t$ में प्रवाहित होता है, तो प्रति एकांक समय प्रवाहित आवेश ही विद्युत धारा है। इसका SI मात्रक ऐम्पियर (A) है।\n\nप्रकृति में धाराएँ बहुत बड़े परास में होती हैं: औसत तड़ित में धारा दसियों हज़ार ऐम्पियर की कोटि की होती है, जबकि हमारी तंत्रिकाओं में धारा माइक्रोऐम्पियर में होती है।"
+      },
+      "media": "img.current-electricity.electron-drift",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.2"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Electric current",
+        "hi": "विद्युत धारा"
+      },
+      "latex": "I = \\lim_{\\Delta t \\to 0} \\frac{\\Delta Q}{\\Delta t}",
+      "symbols": [
+        {
+          "symbol": "I",
+          "meaning": {
+            "en": "current",
+            "hi": "विद्युत धारा"
+          },
+          "unit": "A"
+        },
+        {
+          "symbol": "\\Delta Q",
+          "meaning": {
+            "en": "net charge crossing the section",
+            "hi": "अनुप्रस्थ काट से गुज़रा नेट आवेश"
+          },
+          "unit": "C"
+        },
+        {
+          "symbol": "\\Delta t",
+          "meaning": {
+            "en": "time taken",
+            "hi": "लगा समय"
+          },
+          "unit": "s"
+        }
+      ],
+      "spoken": {
+        "en": "I equals the limit of delta Q by delta t",
+        "hi": "I बराबर डेल्टा Q बटा डेल्टा t की सीमा"
+      },
+      "conditions": {
+        "en": "For a steady current, $I = q/t$.",
+        "hi": "स्थायी धारा के लिए $I = q/t$।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.2"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:04",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 2,
+      "question": "q.phy.current-electricity.current.0001"
+    },
+    {
+      "id": "phy.current-electricity.current:dd:05",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Current is the net charge crossing a section per unit time; SI unit ampere (A).",
+          "hi": "किसी अनुप्रस्थ काट से प्रति एकांक समय गुज़रा नेट आवेश धारा है; SI मात्रक ऐम्पियर (A)।"
+        },
+        {
+          "en": "For a steady current, $I = q/t$.",
+          "hi": "स्थायी धारा के लिए $I = q/t$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.current:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "A slow drift on top of fast random motion",
+        "hi": "तेज़ यादृच्छिक गति पर धीमा अपवाह"
+      },
+      "body": {
+        "en": "Free electrons in a metal move in random directions and keep colliding with the fixed ions, so with no field there is no net flow. A field $E$ gives each electron an acceleration $a = -eE/m$ between collisions.\n\nThe average time between collisions is the relaxation time $\\tau$. Averaged over many electrons, they gain an average velocity, the drift velocity $v_d = -eE\\tau/m$, opposite to $E$.",
+        "hi": "धातु में मुक्त इलेक्ट्रॉन यादृच्छिक दिशाओं में चलते हैं और स्थिर आयनों से टकराते रहते हैं, इसलिए क्षेत्र न होने पर कोई नेट प्रवाह नहीं होता। क्षेत्र $E$ हर इलेक्ट्रॉन को दो टक्करों के बीच त्वरण $a = -eE/m$ देता है।\n\nदो टक्करों के बीच का औसत समय विश्रांति काल $\\tau$ है। बहुत से इलेक्ट्रॉनों का औसत लेने पर उन्हें एक औसत वेग मिलता है, अपवाह वेग $v_d = -eE\\tau/m$, जो $E$ के विपरीत होता है।"
+      },
+      "media": "img.current-electricity.electron-drift",
+      "highlights": [
+        {
+          "term": {
+            "en": "relaxation time",
+            "hi": "विश्रांति काल"
+          },
+          "definition": {
+            "en": "the average time between successive collisions",
+            "hi": "दो क्रमिक टक्करों के बीच का औसत समय"
+          }
+        },
+        {
+          "term": {
+            "en": "drift velocity",
+            "hi": "अपवाह वेग"
+          },
+          "definition": {
+            "en": "the average velocity of the electrons in a field",
+            "hi": "क्षेत्र में इलेक्ट्रॉनों का औसत वेग"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.5"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:07",
+      "type": "derivation",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Current from drift: $I = neAv_d$",
+        "hi": "अपवाह से धारा: $I = neAv_d$"
+      },
+      "steps": [
+        {
+          "latex": "\\text{electrons crossing } A \\text{ in } \\Delta t = n A |v_d| \\Delta t",
+          "say": {
+            "en": "In time $\\Delta t$ every electron within a distance $|v_d|\\Delta t$ of the section crosses it.",
+            "hi": "समय $\\Delta t$ में अनुप्रस्थ काट से $|v_d|\\Delta t$ दूरी के भीतर के सारे इलेक्ट्रॉन उसे पार करते हैं।"
+          },
+          "why": {
+            "en": "$n$ is the number of free electrons per unit volume.",
+            "hi": "$n$ प्रति एकांक आयतन मुक्त इलेक्ट्रॉनों की संख्या है।"
+          }
+        },
+        {
+          "latex": "\\Delta Q = n e A |v_d| \\Delta t",
+          "say": {
+            "en": "Each carries charge of magnitude $e$.",
+            "hi": "हर इलेक्ट्रॉन पर आवेश का परिमाण $e$ है।"
+          },
+          "why": null
+        },
+        {
+          "latex": "I = \\frac{\\Delta Q}{\\Delta t} = n e A |v_d|",
+          "say": {
+            "en": "Divide by $\\Delta t$ to get the current.",
+            "hi": "धारा पाने के लिए $\\Delta t$ से भाग दें।"
+          },
+          "why": null
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.5"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:08",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Drift velocity",
+        "hi": "अपवाह वेग"
+      },
+      "latex": "|v_d| = \\frac{eE\\tau}{m}",
+      "symbols": [
+        {
+          "symbol": "v_d",
+          "meaning": {
+            "en": "drift velocity",
+            "hi": "अपवाह वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "e",
+          "meaning": {
+            "en": "electron charge",
+            "hi": "इलेक्ट्रॉन का आवेश"
+          },
+          "unit": "C"
+        },
+        {
+          "symbol": "E",
+          "meaning": {
+            "en": "electric field",
+            "hi": "विद्युत क्षेत्र"
+          },
+          "unit": "V/m"
+        },
+        {
+          "symbol": "\\tau",
+          "meaning": {
+            "en": "relaxation time",
+            "hi": "विश्रांति काल"
+          },
+          "unit": "s"
+        },
+        {
+          "symbol": "m",
+          "meaning": {
+            "en": "electron mass",
+            "hi": "इलेक्ट्रॉन का द्रव्यमान"
+          },
+          "unit": "kg"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.5"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:09",
+      "type": "worked_example",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A copper wire of cross-section $1.0 \\times 10^{-7}$ m² carries a current of 1.5 A. Take $n = 8.5 \\times 10^{28}$ m⁻³ and $e = 1.6 \\times 10^{-19}$ C. Find the drift speed.",
+        "hi": "$1.0 \\times 10^{-7}$ m² अनुप्रस्थ काट वाले ताँबे के तार में 1.5 A धारा है। $n = 8.5 \\times 10^{28}$ m⁻³ और $e = 1.6 \\times 10^{-19}$ C लें। अपवाह चाल ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$|v_d| = \\frac{I}{neA}$",
+          "hi": "$|v_d| = \\frac{I}{neA}$"
+        },
+        {
+          "en": "$|v_d| = \\frac{1.5}{8.5 \\times 10^{28} \\times 1.6 \\times 10^{-19} \\times 1.0 \\times 10^{-7}}$",
+          "hi": "$|v_d| = \\frac{1.5}{8.5 \\times 10^{28} \\times 1.6 \\times 10^{-19} \\times 1.0 \\times 10^{-7}}$"
+        },
+        {
+          "en": "$|v_d| \\approx 1.1 \\times 10^{-3}$ m/s, about 1.1 mm/s.",
+          "hi": "$|v_d| \\approx 1.1 \\times 10^{-3}$ m/s, यानी लगभग 1.1 mm/s।"
+        }
+      ],
+      "answer": {
+        "en": "about 1.1 mm/s",
+        "hi": "लगभग 1.1 mm/s"
+      },
+      "answer_value": {
+        "value": 0.0011,
+        "unit": "m/s",
+        "tolerance": {
+          "rel": 0.05
+        }
+      },
+      "common_trap": {
+        "en": "Using the area in cm² or mm² without converting to m².",
+        "hi": "क्षेत्रफल को m² में बदले बिना cm² या mm² में लेना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 3.1(a)"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:10",
+      "type": "explainer",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Why the bulb lights at once",
+        "hi": "बल्ब तुरंत क्यों जलता है"
+      },
+      "body": {
+        "en": "The drift speed is only about 1 mm/s, much smaller even than the random thermal speed of copper atoms at 300 K (about $2 \\times 10^{2}$ m/s). The bulb still lights at once because the electric field travels along the conductor at the speed of an electromagnetic wave, $3.0 \\times 10^{8}$ m/s, so electrons everywhere start drifting almost together.",
+        "hi": "अपवाह चाल केवल लगभग 1 mm/s है, जो 300 K पर ताँबे के परमाणुओं की यादृच्छिक तापीय चाल (लगभग $2 \\times 10^{2}$ m/s) से भी बहुत कम है। फिर भी बल्ब तुरंत जलता है, क्योंकि विद्युत क्षेत्र चालक में विद्युत चुंबकीय तरंग की चाल, $3.0 \\times 10^{8}$ m/s, से चलता है और हर जगह के इलेक्ट्रॉन लगभग एक साथ अपवाहित होने लगते हैं।"
+      },
+      "media": "img.current-electricity.power-cut-torch",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Examples 3.1(b) and 3.2(a)"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:11",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.current.0002"
+    },
+    {
+      "id": "phy.current-electricity.current:dd:12",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 2,
+      "points": [
+        {
+          "en": "Between collisions a field accelerates electrons; the average gives $|v_d| = eE\\tau/m$.",
+          "hi": "टक्करों के बीच क्षेत्र इलेक्ट्रॉनों को त्वरित करता है; औसत से $|v_d| = eE\\tau/m$ मिलता है।"
+        },
+        {
+          "en": "$I = neA|v_d|$, and the drift speed is only about mm/s.",
+          "hi": "$I = neA|v_d|$, और अपवाह चाल केवल mm/s की कोटि की होती है।"
+        },
+        {
+          "en": "The field travels at nearly the speed of light, so a bulb lights at once.",
+          "hi": "क्षेत्र लगभग प्रकाश की चाल से फैलता है, इसलिए बल्ब तुरंत जलता है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.current:dd:13",
+      "type": "formula",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Mobility",
+        "hi": "गतिशीलता"
+      },
+      "latex": "\\mu = \\frac{|v_d|}{E} = \\frac{e\\tau}{m}",
+      "symbols": [
+        {
+          "symbol": "\\mu",
+          "meaning": {
+            "en": "mobility",
+            "hi": "गतिशीलता"
+          },
+          "unit": "m^2/(V s)"
+        },
+        {
+          "symbol": "v_d",
+          "meaning": {
+            "en": "drift velocity",
+            "hi": "अपवाह वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "E",
+          "meaning": {
+            "en": "electric field",
+            "hi": "विद्युत क्षेत्र"
+          },
+          "unit": "V/m"
+        }
+      ],
+      "conditions": {
+        "en": "SI unit m²/Vs, which is $10^{4}$ times the practical unit cm²/Vs. Mobility is positive.",
+        "hi": "SI मात्रक m²/Vs है, जो व्यावहारिक मात्रक cm²/Vs का $10^{4}$ गुना है। गतिशीलता धनात्मक होती है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§3.5.1"
+      }
+    },
+    {
+      "id": "phy.current-electricity.current:dd:14",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 4,
+      "question": "q.phy.current-electricity.current.0003"
+    },
+    {
+      "id": "phy.current-electricity.current:dd:15",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.current.core.drift-velocity"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "Mobility is the drift speed per unit field: $\\mu = |v_d|/E = e\\tau/m$.",
+          "hi": "गतिशीलता प्रति एकांक क्षेत्र अपवाह चाल है: $\\mu = |v_d|/E = e\\tau/m$।"
+        },
+        {
+          "en": "Its SI unit is m²/Vs.",
+          "hi": "इसका SI मात्रक m²/Vs है।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

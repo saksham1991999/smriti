@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "chapter_topics": {
+    "fx.chapter-a": [
+      "fx.chapter-a.topic-a",
+      "fx.chapter-a.topic-b",
+      "fx.chapter-a.topic-c",
+      "fx.chapter-a.topic-d"
+    ]
+  },
+  "initial": {
+    "fx.chapter-a.topic-a": {
+      "status": "in_progress",
+      "learned_via": null
+    },
+    "fx.chapter-a.topic-b": {
+      "status": "learned",
+      "learned_via": "lesson"
+    }
+  },
+  "cases": [
+    {
+      "name": "a Test out passes a, b and c (b was already learned)",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000001",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-a",
+          "fx.chapter-a.topic-b",
+          "fx.chapter-a.topic-c"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "test_out"
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "the same check again",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000001",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-c"
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "code": "already_recorded",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "test_out"
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "a topic from another chapter",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000002",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-z.topic-a"
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "code": "invalid_payload",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "learned",
+            "learned_via": "test_out"
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "Undo this: only the marks the check made",
+      "type": "topic_test_out_undone",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000001",
+        "topics": [
+          {
+            "topic_id": "fx.chapter-a.topic-a",
+            "previous_status": "in_progress"
+          },
+          {
+            "topic_id": "fx.chapter-a.topic-c",
+            "previous_status": null
+          }
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "not_started",
+            "learned_via": null
+          }
+        }
+      }
+    },
+    {
+      "name": "undo of a check that never happened",
+      "type": "topic_test_out_undone",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000002",
+        "topics": [
+          {
+            "topic_id": "fx.chapter-a.topic-a",
+            "previous_status": null
+          }
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "code": "invalid_payload",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "not_started",
+            "learned_via": null
+          }
+        }
+      }
+    },
+    {
+      "name": "a second Test out passes c and d",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000003",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-c",
+          "fx.chapter-a.topic-d"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "in_progress",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "learned",
+            "learned_via": "lesson"
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "learned",
+            "learned_via": "test_out"
+          },
+          "fx.chapter-a.topic-d": {
+            "status": "learned",
+            "learned_via": "test_out"
+          }
+        }
+      }
+    },
+    {
+      "name": "Reset chapter progress",
+      "type": "chapter_reset",
+      "payload": {
+        "chapter_id": "fx.chapter-a"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null,
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-d": {
+            "status": "not_started",
+            "learned_via": null
+          }
+        }
+      }
+    },
+    {
+      "name": "reset of an unknown chapter",
+      "type": "chapter_reset",
+      "payload": {
+        "chapter_id": "fx.chapter-z"
+      },
+      "expected": {
+        "accepted": false,
+        "code": "invalid_payload",
+        "rows": {
+          "fx.chapter-a.topic-a": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-b": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-c": {
+            "status": "not_started",
+            "learned_via": null
+          },
+          "fx.chapter-a.topic-d": {
+            "status": "not_started",
+            "learned_via": null
+          }
+        }
+      }
+    }
+  ]
+}

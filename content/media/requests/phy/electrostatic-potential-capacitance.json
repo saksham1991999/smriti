@@ -1,0 +1,49 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Figures of ingested previous-year questions, to be recreated as diagrams through visual-director (never scanned). Each brief describes the official figure; labels are placed at anchors once an image exists.",
+  "requests": [
+    {
+      "id": "img.electrostatic-potential-capacitance.pyq-half-filled-capacitor",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "physics",
+      "brief": "a parallel plate capacitor seen side-on: two horizontal metal plates a distance d apart, each with a short vertical lead wire (top lead from the upper plate, bottom lead from the lower plate); a grey dielectric slab fills the full width of the gap and exactly the upper half of its thickness, touching the upper plate; the lower half of the gap is empty air; a double-headed vertical dimension arrow beside the slab marks its thickness (half the gap) and another beside the gap marks the full separation. Recreate the figure of NTA's JEE (Main) 2026 paper, 2 April Shift 1, question 32 faithfully (same parts, positions and directions); every letter, number, sign and arrow label is added by the app at label anchors.",
+      "must_show": [
+        "two parallel horizontal plates",
+        "grey slab filling the upper half of the gap across the full plate width",
+        "empty lower half of the gap",
+        "a dimension arrow for the slab thickness",
+        "a dimension arrow for the full gap"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "plus or minus signs",
+        "a scan or copy of the original paper"
+      ],
+      "alt": {
+        "en": "A parallel plate capacitor whose gap is filled across its full width, in the upper half of its thickness, by a dielectric slab of constant 5; the lower half is air.",
+        "hi": "एक समांतर पट्टिका संधारित्र जिसके अंतराल की पूरी चौड़ाई में, मोटाई के ऊपरी आधे भाग में, परावैद्युतांक 5 की पट्टी भरी है; निचला आधा भाग वायु है।"
+      },
+      "used_by": [
+        "q.phy.electrostatic-potential-capacitance.parallel-plate.9001"
+      ],
+      "status": "requested",
+      "rejected_reason": null,
+      "result": null
+    }
+  ]
+}

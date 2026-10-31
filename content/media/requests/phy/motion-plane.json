@@ -1,0 +1,401 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as WebP (3:2 at 1536x1024); originals kept outside the repo. Sim requests are open for sim-builder (status requested, not built); until a sim is approved the card shows its fallback text and image.",
+  "requests": [
+    {
+      "id": "img.motion-plane.town-walk",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a small town of square blocks seen from high above, like a bird's-eye view; one child walks along the streets, turning a corner, from a house at one corner of a block towards a park at the opposite corner of the block",
+      "must_show": [
+        "streets in a square grid seen from above",
+        "one child walking on a street",
+        "a house and a park at opposite corners of one block"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "vehicles",
+        "signboards",
+        "crowds"
+      ],
+      "alt": {
+        "en": "A small model town seen from above: blue square blocks divided by pale streets, a house with an orange roof at one corner and a green park with trees at the opposite corner, and a boy walking along a street between them.",
+        "hi": "ऊपर से दिखता एक छोटा मॉडल शहर: हल्की सड़कों से बँटे नीले वर्गाकार ब्लॉक, एक कोने पर नारंगी छत वाला घर और सामने वाले कोने पर पेड़ों वाला हरा पार्क, और उनके बीच सड़क पर चलता एक लड़का।"
+      },
+      "used_by": [
+        "cs.phy.motion-plane.motion-2d",
+        "cs.phy.motion-plane.scalars-vectors",
+        "phy.motion-plane.motion-2d:dd:01",
+        "phy.motion-plane.motion-2d:dd:02",
+        "phy.motion-plane.motion-2d:dd:06",
+        "phy.motion-plane.scalars-vectors:dd:01",
+        "phy.motion-plane.scalars-vectors:dd:02",
+        "phy.motion-plane.scalars-vectors:dd:04",
+        "phy.motion-plane.scalars-vectors:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "bf1ada45d37c4e49fe2a42b63e14ba31e4ccc5835658d82c7da51606a0d4121d",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 28386,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.boat-river",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a small rowing boat with one person crossing a wide calm river, seen from high on the bank; the boat points straight across towards the far bank, and gentle ripples show the water flowing from left to right",
+      "must_show": [
+        "one small boat crossing a river",
+        "ripples showing the river flowing sideways"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "bridges",
+        "signboards",
+        "other boats"
+      ],
+      "alt": {
+        "en": "A man rowing a small blue boat on a wide calm river between grassy banks, seen from behind.",
+        "hi": "घास वाले किनारों के बीच एक चौड़ी शांत नदी पर छोटी नीली नाव खेता एक व्यक्ति, पीछे से दिखता हुआ।"
+      },
+      "used_by": [
+        "cs.phy.motion-plane.vector-addition",
+        "phy.motion-plane.vector-addition:dd:02",
+        "phy.motion-plane.vector-addition:dd:05",
+        "phy.motion-plane.vector-addition:dd:07"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "54eff9e9f8f9b3998adc538f35d3db6b3eab5198a75df8625395dfb8d1ea4c9b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 56120,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.rain-umbrella",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a person standing on a pavement in steady rain, holding an umbrella tilted to one side, with the rain falling at a slant because of the wind; a calm grey-blue sky",
+      "must_show": [
+        "one person with a tilted umbrella",
+        "rain falling at a slant"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "lightning",
+        "signboards",
+        "vehicles"
+      ],
+      "alt": {
+        "en": "A boy in blue standing on a wet pavement in the rain, holding a blue umbrella tilted a little to one side, with the rain falling at a slant.",
+        "hi": "बारिश में गीले फ़ुटपाथ पर खड़ा नीले कपड़ों में एक लड़का, नीला छाता थोड़ा एक ओर झुकाए हुए, और तिरछी गिरती बारिश।"
+      },
+      "used_by": [
+        "phy.motion-plane.vector-addition:dd:01",
+        "phy.motion-plane.vector-addition:dd:06"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "d169e88119710db1d24567548119fc4b6589c3536cc85bf16084bb6fb683e01e",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 61966,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.rope-pull",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a child on flat ground pulling a small wooden toy cart by a rope; the rope runs at a slant from the child's hand down to the front of the cart; seen from the side",
+      "must_show": [
+        "one child",
+        "a toy cart",
+        "a taut rope at a slant between hand and cart"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "other people",
+        "signboards"
+      ],
+      "alt": {
+        "en": "A small boy standing on flat ground pulling a wooden toy cart by a rope that slants down from his hand to the cart, seen from the side.",
+        "hi": "समतल ज़मीन पर खड़ा एक छोटा लड़का लकड़ी की खिलौना गाड़ी को रस्सी से खींचता हुआ, रस्सी उसके हाथ से गाड़ी तक तिरछी नीचे जाती हुई, बगल से दिखता हुआ।"
+      },
+      "used_by": [
+        "cs.phy.motion-plane.resolution",
+        "phy.motion-plane.resolution:dd:01",
+        "phy.motion-plane.resolution:dd:02",
+        "phy.motion-plane.resolution:dd:03",
+        "phy.motion-plane.resolution:dd:04"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "9bbea8062e9636aac1861437a19698ef66ba5f8d79583c71665642514fbd3923",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 38226,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.cricket-ball",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a cricket ground seen from the side; a batter has just hit the ball, and the red ball is high in the air partway along a smooth curved path above the grass, far from the batter",
+      "must_show": [
+        "one batter",
+        "a red ball high in the air",
+        "a large open field"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "crowds",
+        "scoreboards",
+        "signboards",
+        "team badges"
+      ],
+      "alt": {
+        "en": "A batter in blue at the wicket on a green field, with a red ball high in the air and a faint curved trail behind it showing the path it has taken.",
+        "hi": "हरे मैदान पर विकेट के पास नीले कपड़ों में एक बल्लेबाज़, और हवा में ऊँची एक लाल गेंद जिसके पीछे एक हल्की वक्र रेखा उसका अब तक का पथ दिखाती है।"
+      },
+      "used_by": [
+        "cs.phy.motion-plane.projectile",
+        "phy.motion-plane.projectile:dd:01",
+        "phy.motion-plane.projectile:dd:02",
+        "phy.motion-plane.projectile:dd:10"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "7203ae8db0a8bf82a2bbaae590c469eec5b4d10d45d480a8846167d9b183fc90",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 28382,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.water-jet",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a garden hose held still near the ground, its jet of water rising and falling in one smooth curved arc before landing on a lawn; seen from the side in sunlight",
+      "must_show": [
+        "a hose nozzle",
+        "one smooth arc of water",
+        "a lawn"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "people's faces",
+        "signboards"
+      ],
+      "alt": {
+        "en": "A blue garden hose whose nozzle points up and sideways, sending a jet of water in a curved arc down onto a round patch of lawn.",
+        "hi": "एक नीला बगीचे का पाइप जिसका मुँह ऊपर और एक ओर है, और उससे निकली पानी की धार एक वक्र चाप में घास के गोल टुकड़े पर गिरती हुई।"
+      },
+      "used_by": [
+        "phy.motion-plane.projectile:dd:05",
+        "phy.motion-plane.projectile:dd:09"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "2f1642e05cbeb1a5c65b7017d80ece748c6d3e0db9597a99f85c2a252f9b9edd",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 72906,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.cliff-stone",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a person standing at the edge of a tall rocky cliff by the sea, having just thrown a stone straight out horizontally; the small stone is in the air a short way out from the cliff, seen from the side",
+      "must_show": [
+        "a tall cliff",
+        "a person at the edge",
+        "a small stone in the air beside the cliff"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "boats",
+        "signboards"
+      ],
+      "alt": {
+        "en": "A boy with a backpack standing at the edge of a tall rocky cliff above the sea, his arm stretched out after throwing a small stone, which is in the air a short way out from the cliff.",
+        "hi": "समुद्र के ऊपर एक ऊँची चट्टानी कगार के किनारे खड़ा पीठ पर बस्ता लिए एक लड़का, पत्थर फेंकने के बाद हाथ आगे फैलाए हुए, और छोटा पत्थर कगार से थोड़ी दूर हवा में।"
+      },
+      "used_by": [
+        "phy.motion-plane.projectile:dd:11"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "470d59534d641c01148662c5b65fcda3c461fde3a3f7ac1074e6b1faa1883598",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 52234,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.motion-plane.merry-go-round",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "physics",
+      "brief": "a round playground merry-go-round seen from directly above, turning steadily, with three children sitting near its outer edge",
+      "must_show": [
+        "a circular merry-go-round seen from above",
+        "children sitting near the edge"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "arrows",
+        "labels",
+        "signboards",
+        "crowds"
+      ],
+      "alt": {
+        "en": "A round blue and yellow merry-go-round seen from directly above, with three children sitting near its outer edge.",
+        "hi": "सीधे ऊपर से दिखती एक गोल नीली-पीली झूला-चकरी, जिसके बाहरी किनारे के पास तीन बच्चे बैठे हैं।"
+      },
+      "used_by": [
+        "cs.phy.motion-plane.circular-kinematics",
+        "phy.motion-plane.circular-kinematics:dd:01",
+        "phy.motion-plane.circular-kinematics:dd:02",
+        "phy.motion-plane.circular-kinematics:dd:03",
+        "phy.motion-plane.circular-kinematics:dd:06"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6d3d836cf00b33f084936662ac8c00ee5da6b52a4b8926470a663dc9537f518b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 43834,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "sim.motion-plane.projectile-launcher",
+      "kind": "sim",
+      "subject_family": "physics",
+      "brief": "New sim, to be built by sim-builder as our own bundle. PhET's Projectile Motion (v1.0.36) was checked on 2026-10-31 and cannot be embedded: its sim page lists the CC BY-NC 4.0 licence (and GPL 2.0), and PhET's licensing page (https://phet.colorado.edu/en/licensing) says the HTML5 simulations are published under CC BY-NC 4.0 and that commercial use, including paid or subscription products, needs a commercial licence from the University of Colorado Boulder. Do not copy PhET code, art or layout. Concept: phy.motion-plane.projectile.core.projectile-motion. Learning goal: launch a ball from level ground at a chosen speed and angle, watch the parabolic path, and see that the range is largest at 45 degrees and equal for angles 45 +/- alpha, while the horizontal velocity stays constant and only the vertical velocity changes. Model: x = v0 cos(theta) t, y = h0 + v0 sin(theta) t - g t^2 / 2, no air resistance; flight ends when y returns to 0. Params: v0 (m/s, 5 to 30, default 20), angle (degrees, 0 to 90, default 45), g (m/s^2, default 9.8), h0 (m, launch height, default 0). Controls: sliders for v0 and angle, launch, pause, step by 0.05 s, reset, and keep previous paths on screen (each in a different dash pattern, not colour alone) to compare angles. Show live readouts of vx and vy. Background art, if any, comes from visual-director, not drawn in the sim. Measurements the card reads after a launch: range (m), max_height (m), time_of_flight (s). Card tasks with v0 = 20, g = 9.8: range at 45 degrees 40.8 m; max_height at 45 degrees 10.2 m; range at 30 degrees 35.3 m; range at 60 degrees 35.3 m. Model tests: these values, and NCERT Example 3.8 (v0 = 28, 30 degrees: max_height 10.0 m, time_of_flight 2.9 s, range 69 m). Reduced motion: draw the finished path at once, or step through, instead of animating.",
+      "used_by": [
+        "phy.motion-plane.projectile:dd:05"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "ad8ab3898a30af933fd96576d63f8f12d1b30b8ac4d48b956f3fd768e0651118",
+        "asset_id": null,
+        "reused": false,
+        "sim_id": "projectile-launcher",
+        "sim_version": "1.0.0",
+        "licence": "owned",
+        "attribution": null
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

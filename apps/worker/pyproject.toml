@@ -1,0 +1,54 @@
+[project]
+name = "smriti-worker"
+version = "0.1.0"
+description = "Smriti background worker (arq on Redis): merges, roll-ups, purges, content publish"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "smriti-api",
+  "arq==0.28.0",
+  "weasyprint==66.0",
+]
+
+[dependency-groups]
+dev = [
+  "pytest==9.1.1",
+  "pytest-asyncio==1.4.0",
+  "mypy==2.4.0",
+  "ruff==0.17.0",
+]
+
+[tool.uv.sources]
+smriti-api = { workspace = true }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["smriti_worker"]
+
+[tool.ruff]
+extend = "../../pyproject.toml"
+
+[tool.ruff.lint]
+# `ruff format` owns line length; long SQL string literals are left on one line on purpose.
+extend-ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106", "S108", "S311", "S608"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+packages = ["smriti_worker", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["arq.*", "fsrs.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["tests"]

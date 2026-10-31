@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "name": "right",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "c"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -1,
+        "unattempted": 0
+      },
+      "expect": {
+        "marks": 4
+      }
+    },
+    {
+      "name": "wrong",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -1,
+        "unattempted": 0
+      },
+      "expect": {
+        "marks": -1
+      }
+    },
+    {
+      "name": "unattempted",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": null,
+      "rule": {
+        "correct": 4,
+        "wrong": -1,
+        "unattempted": 0
+      },
+      "expect": {
+        "marks": 0
+      }
+    },
+    {
+      "name": "invalid counts as unattempted",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "1"
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -1,
+        "unattempted": 0
+      },
+      "expect": {
+        "marks": 0
+      }
+    },
+    {
+      "name": "unparsable number is wrong",
+      "question": {
+        "id": "q.vector.numerical",
+        "type": "numerical",
+        "answer": {
+          "value": 2.5,
+          "unit": "m",
+          "tolerance": {
+            "abs": 0.1
+          }
+        }
+      },
+      "answer": {
+        "kind": "number",
+        "value": "x"
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -1,
+        "unattempted": 0
+      },
+      "expect": {
+        "marks": -1
+      }
+    },
+    {
+      "name": "multi partial two",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a",
+          "c"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -2,
+        "unattempted": 0,
+        "partial": {
+          "per_correct_option": 1,
+          "requires_no_wrong": true
+        }
+      },
+      "expect": {
+        "marks": 2
+      }
+    },
+    {
+      "name": "multi partial with a wrong option",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a",
+          "b"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -2,
+        "unattempted": 0,
+        "partial": {
+          "per_correct_option": 1,
+          "requires_no_wrong": true
+        }
+      },
+      "expect": {
+        "marks": -2
+      }
+    },
+    {
+      "name": "multi lenient partial with a wrong option",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a",
+          "b"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -2,
+        "unattempted": 0,
+        "partial": {
+          "per_correct_option": 1,
+          "requires_no_wrong": false
+        }
+      },
+      "expect": {
+        "marks": 1
+      }
+    },
+    {
+      "name": "multi only wrong",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "b"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -2,
+        "unattempted": 0,
+        "partial": {
+          "per_correct_option": 1,
+          "requires_no_wrong": true
+        }
+      },
+      "expect": {
+        "marks": -2
+      }
+    },
+    {
+      "name": "multi full",
+      "question": {
+        "id": "q.vector.mcq_multi",
+        "type": "mcq_multi",
+        "answer": {
+          "option_ids": [
+            "a",
+            "c",
+            "d"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a",
+          "c",
+          "d"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -2,
+        "unattempted": 0,
+        "partial": {
+          "per_correct_option": 1,
+          "requires_no_wrong": true
+        }
+      },
+      "expect": {
+        "marks": 4
+      }
+    },
+    {
+      "name": "partial ignored for single",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "a"
+        ]
+      },
+      "rule": {
+        "correct": 4,
+        "wrong": -2,
+        "unattempted": 0,
+        "partial": {
+          "per_correct_option": 1,
+          "requires_no_wrong": true
+        }
+      },
+      "expect": {
+        "marks": -2
+      }
+    },
+    {
+      "name": "fractional negative",
+      "question": {
+        "id": "q.vector.mcq_single",
+        "type": "mcq_single",
+        "answer": {
+          "option_ids": [
+            "c"
+          ]
+        }
+      },
+      "answer": {
+        "kind": "options",
+        "optionIds": [
+          "b"
+        ]
+      },
+      "rule": {
+        "correct": 2,
+        "wrong": -0.66,
+        "unattempted": 0
+      },
+      "expect": {
+        "marks": -0.66
+      }
+    }
+  ]
+}

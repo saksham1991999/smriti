@@ -1,0 +1,129 @@
+{
+  "schema": "sim@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "sims/motion-graphs/manifest.json (the bundle's own manifest, version 1.0.0)",
+      "url": null
+    }
+  ],
+  "authored_by": "skill:sim-builder",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "New sim for media request sim.motion-straight-line.motion-graphs. Constant-acceleration model x = x0 + ut + at^2/2, v = u + at; path length integrates |v|. Awaiting review.",
+  "id": "motion-graphs",
+  "version": "1.0.0",
+  "title": {
+    "en": "Motion graphs",
+    "hi": "गति के ग्राफ़"
+  },
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "entry": "index.html",
+  "bridge_version": 1,
+  "locales": [
+    "en",
+    "hi"
+  ],
+  "params_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "x0": {
+        "type": "number",
+        "minimum": -50,
+        "maximum": 50,
+        "default": 0
+      },
+      "u": {
+        "type": "number",
+        "minimum": -20,
+        "maximum": 20,
+        "default": 10
+      },
+      "a": {
+        "type": "number",
+        "minimum": -5,
+        "maximum": 5,
+        "default": -2
+      },
+      "t_max": {
+        "type": "number",
+        "minimum": 2,
+        "maximum": 20,
+        "default": 10
+      },
+      "autoplay": {
+        "type": "boolean",
+        "default": false
+      }
+    }
+  },
+  "measurements": [
+    {
+      "name": "time",
+      "unit": "s",
+      "label": {
+        "en": "Time t",
+        "hi": "समय t"
+      }
+    },
+    {
+      "name": "position",
+      "unit": "m",
+      "label": {
+        "en": "Position x",
+        "hi": "स्थिति x"
+      }
+    },
+    {
+      "name": "velocity",
+      "unit": "m/s",
+      "label": {
+        "en": "Velocity v",
+        "hi": "वेग v"
+      }
+    },
+    {
+      "name": "acceleration",
+      "unit": "m/s²",
+      "label": {
+        "en": "Acceleration a",
+        "hi": "त्वरण a"
+      }
+    },
+    {
+      "name": "displacement",
+      "unit": "m",
+      "label": {
+        "en": "Displacement",
+        "hi": "विस्थापन"
+      }
+    },
+    {
+      "name": "path_length",
+      "unit": "m",
+      "label": {
+        "en": "Path length",
+        "hi": "पथ-लंबाई"
+      }
+    },
+    {
+      "name": "initial_velocity",
+      "unit": "m/s",
+      "label": {
+        "en": "Initial velocity u",
+        "hi": "प्रारंभिक वेग u"
+      }
+    }
+  ],
+  "aspect": "1:1",
+  "size_bytes": 369732,
+  "supports_low_power": true,
+  "concepts": [
+    "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+    "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+  ]
+}

@@ -1,0 +1,675 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 8 Cell: The Unit of Life (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo108.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as 1536x1024 WebP; originals kept outside the repo.",
+  "requests": [
+    {
+      "id": "img.cell-unit-of-life.microscope-onion",
+      "kind": "image",
+      "preset": "sunny-scene",
+      "subject_family": "biology",
+      "brief": "an Indian school biology lab: a girl in a simple school uniform looks into a light microscope; on the bench beside it lie a glass slide with a thin onion peel, half an onion and a dropper bottle",
+      "must_show": [
+        "student looking into a light microscope",
+        "glass slide with onion peel",
+        "half an onion"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "labels on bottles",
+        "logos"
+      ],
+      "alt": {
+        "en": "A schoolgirl looks into a light microscope; beside it lie a slide with a thin onion peel, half an onion and a dropper bottle.",
+        "hi": "एक छात्रा प्रकाश सूक्ष्मदर्शी में देख रही है; पास में प्याज़ की पतली झिल्ली वाली स्लाइड, आधा प्याज़ और ड्रॉपर की शीशी रखी है।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.cell-theory:dd:01",
+        "bio.cell-unit-of-life.cell-theory:dd:02",
+        "cs.bio.cell-unit-of-life.cell-theory"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "c54591199e3acf1bcf11b35ea23a0047e256d522a1cd8fe7e447babee2582d12",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 65284,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.cell-shapes",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "six kinds of cells arranged in a neat grid with space between them: round biconcave red blood cells, an irregular amoeba-like white blood cell, a long branched nerve cell, a row of tall narrow columnar epithelial cells, one long tapering tracheid, and a cluster of round-oval mesophyll cells with small green chloroplasts",
+      "must_show": [
+        "biconcave red blood cells",
+        "irregular white blood cell",
+        "long branched nerve cell",
+        "tall narrow columnar cells",
+        "long tapering tracheid",
+        "round-oval mesophyll cells with chloroplasts"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels"
+      ],
+      "alt": {
+        "en": "Six kinds of cells: round biconcave red blood cells, an irregular white blood cell, a long tapering tracheid, a branched nerve cell, tall narrow columnar cells, and round mesophyll cells with chloroplasts.",
+        "hi": "छह प्रकार की कोशिकाएँ: गोल और द्विअवतल लाल रुधिर कोशिकाएँ, अनियमित श्वेत रुधिर कोशिका, लंबी नुकीली वाहिनिका, शाखित तंत्रिका कोशिका, लंबी सँकरी स्तंभाकार कोशिकाएँ, और हरितलवक वाली गोल पर्णमध्योतक कोशिकाएँ।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.cell-overview:dd:06",
+        "bio.cell-unit-of-life.cell-theory:dd:04"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "3e0183105fd00eacb8db3c862f4a18643dcd6873f22eb1fe969a435111366426",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 47282,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.plant-animal-cells",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "a plant cell and an animal cell side by side, both cut open to show the inside. Left, plant cell: box-like with a thick cell wall outside the cell membrane, one large central vacuole, green chloroplasts, a nucleus with a nucleolus, mitochondria, endoplasmic reticulum and Golgi apparatus. Right, animal cell: rounded, only a thin cell membrane, no cell wall, small vacuoles, no chloroplasts, a nucleus with a nucleolus, mitochondria, endoplasmic reticulum, Golgi apparatus, lysosomes and a pair of small cylindrical centrioles near the nucleus",
+      "must_show": [
+        "plant cell with thick cell wall, large central vacuole and chloroplasts",
+        "animal cell with only a cell membrane, no chloroplasts and a pair of centrioles",
+        "nucleus with nucleolus in both"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels"
+      ],
+      "label_anchors": [
+        {
+          "id": "cell-wall",
+          "x": 0.1,
+          "y": 0.5
+        },
+        {
+          "id": "vacuole",
+          "x": 0.26,
+          "y": 0.45
+        },
+        {
+          "id": "chloroplast",
+          "x": 0.17,
+          "y": 0.65
+        },
+        {
+          "id": "plant-nucleus",
+          "x": 0.36,
+          "y": 0.48
+        },
+        {
+          "id": "mitochondrion",
+          "x": 0.39,
+          "y": 0.66
+        },
+        {
+          "id": "animal-membrane",
+          "x": 0.55,
+          "y": 0.76
+        },
+        {
+          "id": "animal-nucleus",
+          "x": 0.73,
+          "y": 0.45
+        },
+        {
+          "id": "centriole",
+          "x": 0.77,
+          "y": 0.49
+        },
+        {
+          "id": "small-vacuole",
+          "x": 0.65,
+          "y": 0.71
+        }
+      ],
+      "alt": {
+        "en": "A plant cell and an animal cell cut open side by side. The box-like plant cell has a thick wall, a large central vacuole and green chloroplasts; the rounded animal cell has only a membrane, small vacuoles and a pair of centrioles.",
+        "hi": "पादप कोशिका और जंतु कोशिका अगल-बगल कटी हुई। डिब्बे जैसी पादप कोशिका में मोटी भित्ति, बड़ी केंद्रीय रसधानी और हरे हरितलवक हैं; गोल जंतु कोशिका में केवल झिल्ली, छोटी रसधानियाँ और तारककेंद्रों का एक जोड़ा है।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.cell-overview:dd:01",
+        "bio.cell-unit-of-life.cell-overview:dd:02",
+        "bio.cell-unit-of-life.cell-overview:dd:04",
+        "bio.cell-unit-of-life.eukaryotic:dd:08",
+        "bio.cell-unit-of-life.eukaryotic:dd:19",
+        "bio.cell-unit-of-life.eukaryotic:dd:30",
+        "bio.cell-unit-of-life.eukaryotic:dd:38",
+        "cs.bio.cell-unit-of-life.cell-overview"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "42434290b2b4af812aa44dce0b1b9b306f2eb16b8209933c8593f29582390de8",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 114016,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.bacterial-cell",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "one rod-shaped bacterium cut open lengthwise: an outer slimy capsule layer, then a cell wall, then a plasma membrane with a few folded-in pockets of membrane (mesosomes); inside, a tangled loop of DNA lying free in the cytoplasm with no membrane around it, two or three small separate rings of DNA (plasmids), many tiny dot-like ribosomes and a few granules; one long whip-like flagellum at one end and many short thin hair-like pili on the surface",
+      "must_show": [
+        "rod-shaped cell",
+        "three envelope layers: capsule, cell wall, plasma membrane",
+        "membrane infoldings",
+        "naked tangled DNA with no nuclear membrane",
+        "small separate DNA rings",
+        "tiny ribosomes",
+        "one long flagellum",
+        "short pili"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels",
+        "nucleus with a membrane",
+        "mitochondria",
+        "chloroplasts"
+      ],
+      "label_anchors": [
+        {
+          "id": "capsule",
+          "x": 0.25,
+          "y": 0.62
+        },
+        {
+          "id": "cell-wall",
+          "x": 0.33,
+          "y": 0.665
+        },
+        {
+          "id": "plasma-membrane",
+          "x": 0.42,
+          "y": 0.62
+        },
+        {
+          "id": "mesosome",
+          "x": 0.43,
+          "y": 0.4
+        },
+        {
+          "id": "dna",
+          "x": 0.5,
+          "y": 0.47
+        },
+        {
+          "id": "plasmid",
+          "x": 0.34,
+          "y": 0.51
+        },
+        {
+          "id": "flagellum",
+          "x": 0.88,
+          "y": 0.45
+        },
+        {
+          "id": "pilus",
+          "x": 0.58,
+          "y": 0.19
+        }
+      ],
+      "alt": {
+        "en": "A rod-shaped bacterium cut open: an outer capsule, a cell wall and a plasma membrane with infoldings; a tangle of DNA lying free in the cytoplasm, a few small DNA rings, one long flagellum and short pili.",
+        "hi": "कटा हुआ दंडाकार जीवाणु: बाहरी संपुटिका, कोशिका भित्ति और अंतर्वलन वाली जीवद्रव्य झिल्ली; कोशिकाद्रव्य में मुक्त पड़ा डीएनए का गुच्छा, कुछ छोटे डीएनए वलय, एक लंबी कशाभिका और छोटे रोम।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.prokaryotic:dd:01",
+        "bio.cell-unit-of-life.prokaryotic:dd:03",
+        "bio.cell-unit-of-life.prokaryotic:dd:05",
+        "bio.cell-unit-of-life.prokaryotic:dd:07",
+        "bio.cell-unit-of-life.prokaryotic:dd:10",
+        "bio.cell-unit-of-life.prokaryotic:dd:11",
+        "bio.cell-unit-of-life.prokaryotic:dd:12",
+        "cs.bio.cell-unit-of-life.prokaryotic"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6ff4951872578d7db6b8f1bd457263f2b2f5c45a0719e06f861d8e29b6616323",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 69434,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.fluid-mosaic",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "a three-dimensional block cut out of a cell membrane: two layers of phospholipids with round heads on the outside surfaces and two wavy tails each pointing inwards to the middle; large globular proteins: some sit only on the surface, some go part way in and some span the whole bilayer; small branched sugar chains attached to some proteins on the outer surface; small flat cholesterol molecules tucked between the lipid tails",
+      "must_show": [
+        "phospholipid bilayer with heads outside and tails inside",
+        "surface proteins",
+        "proteins spanning the bilayer",
+        "branched sugar chains on the outer surface",
+        "cholesterol between the tails"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels"
+      ],
+      "label_anchors": [
+        {
+          "id": "head",
+          "x": 0.14,
+          "y": 0.37
+        },
+        {
+          "id": "tail",
+          "x": 0.23,
+          "y": 0.62
+        },
+        {
+          "id": "integral",
+          "x": 0.42,
+          "y": 0.62
+        },
+        {
+          "id": "peripheral",
+          "x": 0.29,
+          "y": 0.36
+        },
+        {
+          "id": "sugar",
+          "x": 0.25,
+          "y": 0.2
+        },
+        {
+          "id": "cholesterol",
+          "x": 0.34,
+          "y": 0.65
+        }
+      ],
+      "alt": {
+        "en": "A block of cell membrane: two layers of phospholipids with round heads facing outwards and tails meeting in the middle, proteins on the surface and spanning the bilayer, branched sugar chains on the outer surface and cholesterol between the tails.",
+        "hi": "कोशिका झिल्ली का एक खंड: फॉस्फोलिपिड की दो परतें जिनके गोल सिरे बाहर की ओर और पुच्छ बीच में मिलती हैं, सतह पर और द्विसतह के आर-पार प्रोटीन, बाहरी सतह पर शाखित शर्करा शृंखलाएँ और पुच्छों के बीच कोलेस्टेरॉल।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.eukaryotic:dd:01",
+        "bio.cell-unit-of-life.eukaryotic:dd:02",
+        "bio.cell-unit-of-life.eukaryotic:dd:03",
+        "bio.cell-unit-of-life.eukaryotic:dd:05"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "60dede597432695668b6929bbbc5927d46ebfebb42a459a83be6208e4c29d117",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 72188,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.er-golgi",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "a close-up inside an animal cell, on a pale background: on the left part of a round nucleus; around it curved flattened sacs covered with many tiny dot ribosomes (rough endoplasmic reticulum); at the bottom left, clearly apart from them, a tangle of thin smooth tubes with no dots at all, a different lighter shade (smooth endoplasmic reticulum); in the middle a curved stack of five flat disc-shaped sacs (Golgi apparatus) with small round vesicles arriving on its left side and leaving from its right side; one small round sac (lysosome) on the right",
+      "must_show": [
+        "rough ER with ribosome dots around the nucleus",
+        "smooth ER as thin dot-free tubes in a lighter shade, clearly apart",
+        "Golgi stack of flat sacs",
+        "vesicles arriving and leaving",
+        "one lysosome"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels",
+        "arrows with text"
+      ],
+      "label_anchors": [
+        {
+          "id": "nucleus",
+          "x": 0.4,
+          "y": 0.36
+        },
+        {
+          "id": "rer",
+          "x": 0.53,
+          "y": 0.3
+        },
+        {
+          "id": "ser",
+          "x": 0.36,
+          "y": 0.67
+        },
+        {
+          "id": "golgi",
+          "x": 0.61,
+          "y": 0.52
+        },
+        {
+          "id": "vesicle",
+          "x": 0.49,
+          "y": 0.6
+        },
+        {
+          "id": "lysosome",
+          "x": 0.65,
+          "y": 0.28
+        }
+      ],
+      "alt": {
+        "en": "Inside an animal cell: the nucleus wrapped by rough endoplasmic reticulum dotted with ribosomes, smooth tubes of smooth ER without dots, a curved Golgi stack with vesicles arriving and leaving, and a lysosome.",
+        "hi": "जंतु कोशिका के भीतर: राइबोसोम के बिंदुओं वाली खुरदरी अंतर्द्रव्यी जालिका से घिरा केंद्रक, बिना बिंदुओं वाली चिकनी जालिका की नलिकाएँ, आती-जाती पुटिकाओं वाला मुड़ा गॉल्जी ढेर, और एक लयनकाय।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.eukaryotic:dd:11",
+        "bio.cell-unit-of-life.eukaryotic:dd:13",
+        "bio.cell-unit-of-life.eukaryotic:dd:14",
+        "bio.cell-unit-of-life.eukaryotic:dd:17",
+        "cs.bio.cell-unit-of-life.eukaryotic"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e9e11be168a38c10ef2b1a53ac2138a4ea536007700ac440d7946341ff3d6214",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 83504,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.mitochondrion",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "one sausage-shaped mitochondrion cut open lengthwise to show its inside: a smooth continuous outer membrane, an inner membrane folded into many finger-like infoldings (cristae) that reach into the dense inner space (matrix), and a narrow space between the two membranes",
+      "must_show": [
+        "smooth outer membrane",
+        "inner membrane folded into many cristae",
+        "matrix inside the inner membrane",
+        "space between the two membranes"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels"
+      ],
+      "label_anchors": [
+        {
+          "id": "outer",
+          "x": 0.62,
+          "y": 0.8
+        },
+        {
+          "id": "cristae",
+          "x": 0.52,
+          "y": 0.27
+        },
+        {
+          "id": "matrix",
+          "x": 0.3,
+          "y": 0.57
+        },
+        {
+          "id": "intermembrane",
+          "x": 0.16,
+          "y": 0.53
+        }
+      ],
+      "alt": {
+        "en": "A sausage-shaped mitochondrion cut lengthwise: a smooth outer membrane, an inner membrane folded into many cristae, the matrix inside and a narrow space between the membranes.",
+        "hi": "लंबाई में कटी तश्तरीनुमा बेलनाकार सूत्रकणिका: चिकनी बाह्य झिल्ली, अनेक क्रिस्टी में मुड़ी भीतरी झिल्ली, भीतर आधात्री और झिल्लियों के बीच सँकरा स्थान।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.eukaryotic:dd:22",
+        "bio.cell-unit-of-life.eukaryotic:dd:23"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "a2360ab7872de4371a3792aa0a8bdd49b48a5b2dbf592f1feba9499a9a43f230",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 66770,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.chloroplast",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "one lens-shaped chloroplast cut open to show its inside: a double outer envelope of two membranes, a pale stroma filling the inside, many stacks of flat green coin-like discs (grana made of thylakoids) and thin flat tubes (stroma lamellae) joining the stacks to each other",
+      "must_show": [
+        "double membrane envelope",
+        "stacks of coin-like thylakoids (grana)",
+        "thin tubes joining the stacks",
+        "stroma"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels"
+      ],
+      "label_anchors": [
+        {
+          "id": "envelope",
+          "x": 0.2,
+          "y": 0.4
+        },
+        {
+          "id": "granum",
+          "x": 0.41,
+          "y": 0.22
+        },
+        {
+          "id": "stroma-lamella",
+          "x": 0.48,
+          "y": 0.38
+        },
+        {
+          "id": "stroma",
+          "x": 0.32,
+          "y": 0.65
+        }
+      ],
+      "alt": {
+        "en": "A lens-shaped chloroplast cut open: a double membrane envelope, stacks of coin-like thylakoids forming grana, thin stroma lamellae joining the stacks, and the stroma around them.",
+        "hi": "कटा हुआ लेंस आकार का हरितलवक: दोहरी झिल्ली, सिक्कों जैसे थाइलेकॉइड के ढेर (ग्रेना), ढेरों को जोड़ती पतली पीठिका पटलिकाएँ, और उनके चारों ओर पीठिका।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.eukaryotic:dd:25",
+        "bio.cell-unit-of-life.eukaryotic:dd:27",
+        "bio.cell-unit-of-life.eukaryotic:dd:28"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "48cbb1c349baab7f6ee36efef5cb876972178e7b3cf761ccbd549214ae38f204",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 54380,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.cilia-flagella",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "two single cells side by side on a white background: on the left an oval cell whose whole surface is covered with many short hair-like cilia; on the right a teardrop-shaped cell with one long whip-like flagellum trailing behind it; small faint wavy lines in the water show movement",
+      "must_show": [
+        "oval cell covered with many short cilia",
+        "teardrop cell with one long flagellum"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels",
+        "faces"
+      ],
+      "alt": {
+        "en": "Two single cells: an oval cell covered all over with short hair-like cilia, and a teardrop-shaped cell with one long whip-like flagellum.",
+        "hi": "दो एककोशिकीय कोशिकाएँ: छोटे रोम जैसे पक्ष्माभ से ढकी अंडाकार कोशिका, और एक लंबी चाबुक जैसी कशाभिका वाली अश्रु-बूँद आकार की कोशिका।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.eukaryotic:dd:34",
+        "bio.cell-unit-of-life.eukaryotic:dd:35"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "479403a4c4909169766355d3e75602ab278b1053359e9bffe5403424a01894f5",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 46338,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.cell-unit-of-life.nucleus",
+      "kind": "diagram",
+      "preset": "sunny-diagram",
+      "subject_family": "biology",
+      "brief": "a large round cell nucleus cut in half: a double nuclear envelope made of two parallel membranes with a narrow space between them, interrupted at many places by small round nuclear pores; the outer membrane has tiny dot ribosomes on it; inside, a loose network of fine thread-like chromatin in the nucleoplasm and one dense round nucleolus with no membrane",
+      "must_show": [
+        "double nuclear envelope with a space between the membranes",
+        "many nuclear pores",
+        "ribosomes on the outer membrane",
+        "thread-like chromatin network",
+        "one round nucleolus without a membrane"
+      ],
+      "must_not_show": [
+        "text",
+        "numbers",
+        "letters",
+        "labels",
+        "chromosomes shaped like X"
+      ],
+      "label_anchors": [
+        {
+          "id": "envelope",
+          "x": 0.26,
+          "y": 0.35
+        },
+        {
+          "id": "pore",
+          "x": 0.49,
+          "y": 0.13
+        },
+        {
+          "id": "ribosome",
+          "x": 0.39,
+          "y": 0.82
+        },
+        {
+          "id": "chromatin",
+          "x": 0.58,
+          "y": 0.38
+        },
+        {
+          "id": "nucleolus",
+          "x": 0.5,
+          "y": 0.47
+        }
+      ],
+      "alt": {
+        "en": "A round nucleus cut in half: a double envelope with pores and ribosomes on its outer membrane, fine thread-like chromatin inside and one round nucleolus.",
+        "hi": "आधा कटा गोल केंद्रक: छिद्रों वाला दोहरा आवरण जिसकी बाह्य झिल्ली पर राइबोसोम हैं, भीतर महीन धागे जैसा क्रोमेटिन और एक गोल केंद्रिक।"
+      },
+      "used_by": [
+        "bio.cell-unit-of-life.eukaryotic:dd:42",
+        "bio.cell-unit-of-life.eukaryotic:dd:43",
+        "bio.cell-unit-of-life.eukaryotic:dd:44",
+        "bio.cell-unit-of-life.eukaryotic:dd:46"
+      ],
+      "status": "approved",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "26d5b4494fcb6f761f86ca61a60501b191ffbd4bd52a43107328ecd135cc7b29",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 93102,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

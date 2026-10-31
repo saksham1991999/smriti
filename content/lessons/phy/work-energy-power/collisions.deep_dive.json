@@ -1,0 +1,523 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "phy.work-energy-power.collisions:deep_dive",
+  "topic": "phy.work-energy-power.collisions",
+  "mode": "deep_dive",
+  "estimated_minutes": 11,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Momentum always, kinetic energy sometimes",
+        "hi": "संवेग सदा, गतिज ऊर्जा कभी-कभी"
+      },
+      "subtopic": "phy.work-energy-power.collisions.core",
+      "card_ids": [
+        "phy.work-energy-power.collisions:dd:01",
+        "phy.work-energy-power.collisions:dd:02",
+        "phy.work-energy-power.collisions:dd:03",
+        "phy.work-energy-power.collisions:dd:04",
+        "phy.work-energy-power.collisions:dd:05",
+        "phy.work-energy-power.collisions:dd:06",
+        "phy.work-energy-power.collisions:dd:07",
+        "phy.work-energy-power.collisions:dd:08",
+        "phy.work-energy-power.collisions:dd:09",
+        "phy.work-energy-power.collisions:dd:10",
+        "phy.work-energy-power.collisions:dd:11"
+      ],
+      "estimated_minutes": 8
+    },
+    {
+      "id": "bite-2",
+      "title": {
+        "en": "Collisions in two dimensions",
+        "hi": "द्विविमीय संघट्ट"
+      },
+      "subtopic": "phy.work-energy-power.collisions.core",
+      "card_ids": [
+        "phy.work-energy-power.collisions:dd:12",
+        "phy.work-energy-power.collisions:dd:13",
+        "phy.work-energy-power.collisions:dd:14",
+        "phy.work-energy-power.collisions:dd:15"
+      ],
+      "estimated_minutes": 3
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.work-energy-power.collisions:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "A game of carrom",
+        "hi": "कैरम का खेल"
+      },
+      "body": {
+        "en": "Flick the striker at a coin on a carrom board. There is a sharp click, the striker slows, and the coin shoots off. Carrom, marbles and billiards are all games of collisions. What stays the same in a collision, and what can change?",
+        "hi": "कैरम बोर्ड पर स्ट्राइकर को किसी गोटी पर मारिए। एक तेज़ 'टक' होती है, स्ट्राइकर धीमा होता है, और गोटी तेज़ी से निकल जाती है। कैरम, कंचे और बिलियर्ड, सब संघट्ट के खेल हैं। संघट्ट में क्या वही रहता है, और क्या बदल सकता है?"
+      },
+      "media": "img.work-energy-power.carrom"
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Elastic and inelastic collisions",
+        "hi": "प्रत्यास्थ एवं अप्रत्यास्थ संघट्ट"
+      },
+      "body": {
+        "en": "During a collision, the two bodies push on each other with impulsive forces over a short time $\\Delta t$: $\\Delta\\vec{p}_1 = \\vec{F}_{12}\\Delta t$ and $\\Delta\\vec{p}_2 = \\vec{F}_{21}\\Delta t$. By the third law $\\vec{F}_{12} = -\\vec{F}_{21}$ at every instant, so $\\Delta\\vec{p}_1 + \\Delta\\vec{p}_2 = 0$. Total linear momentum is conserved in every collision.\n\nKinetic energy need not be conserved: the impact and deformation may make heat and sound.\n\nIf the bodies spring back to shape with no loss, the final kinetic energy equals the initial: an elastic collision. If they stick together and move as one, it is a completely inelastic collision. The common in-between case, where some kinetic energy is lost, is an inelastic collision. Even in an elastic collision, kinetic energy is not constant during the contact; it is the same only before and after.",
+        "hi": "संघट्ट के दौरान दोनों पिंड थोड़े समय $\\Delta t$ में आवेगी बलों से एक-दूसरे को धकेलते हैं: $\\Delta\\vec{p}_1 = \\vec{F}_{12}\\Delta t$ और $\\Delta\\vec{p}_2 = \\vec{F}_{21}\\Delta t$। तृतीय नियम से हर क्षण $\\vec{F}_{12} = -\\vec{F}_{21}$, अतः $\\Delta\\vec{p}_1 + \\Delta\\vec{p}_2 = 0$। हर संघट्ट में कुल रेखीय संवेग संरक्षित रहता है।\n\nगतिज ऊर्जा का संरक्षित रहना ज़रूरी नहीं: टक्कर और विकृति से ऊष्मा और ध्वनि बन सकती है।\n\nयदि पिंड बिना किसी हानि के अपनी आकृति में लौट आएँ, तो अंतिम गतिज ऊर्जा प्रारंभिक के बराबर होती है: यह प्रत्यास्थ संघट्ट है। यदि वे आपस में सटकर एक साथ चलें, तो यह पूर्णतः अप्रत्यास्थ संघट्ट है। बीच की आम स्थिति, जिसमें कुछ गतिज ऊर्जा खोती है, अप्रत्यास्थ संघट्ट है। प्रत्यास्थ संघट्ट में भी संपर्क के दौरान गतिज ऊर्जा स्थिर नहीं रहती; वह केवल पहले और बाद में समान होती है।"
+      },
+      "media": "img.work-energy-power.carrom",
+      "highlights": [
+        {
+          "term": {
+            "en": "elastic collision",
+            "hi": "प्रत्यास्थ संघट्ट"
+          },
+          "definition": {
+            "en": "total kinetic energy after equals that before",
+            "hi": "बाद की कुल गतिज ऊर्जा पहले के बराबर"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.11.1, Points to Ponder 10"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Completely inelastic collision in one dimension",
+        "hi": "एकविमीय पूर्णतः अप्रत्यास्थ संघट्ट"
+      },
+      "body": {
+        "en": "A mass $m_1$ moving at $v_{1i}$ hits a mass $m_2$ at rest, and they stick. Momentum conservation gives $m_1v_{1i} = (m_1 + m_2)v_f$, so\n\n$v_f = \\frac{m_1}{m_1 + m_2}v_{1i}$.\n\nThe kinetic energy lost is $\\Delta K = \\frac{1}{2}\\frac{m_1m_2}{m_1 + m_2}v_{1i}^2$, which is always positive.",
+        "hi": "द्रव्यमान $m_1$, $v_{1i}$ से चलते हुए, विरामावस्था के द्रव्यमान $m_2$ से टकराता है, और वे सट जाते हैं। संवेग संरक्षण से $m_1v_{1i} = (m_1 + m_2)v_f$, अतः\n\n$v_f = \\frac{m_1}{m_1 + m_2}v_{1i}$।\n\nगतिज ऊर्जा की क्षति $\\Delta K = \\frac{1}{2}\\frac{m_1m_2}{m_1 + m_2}v_{1i}^2$ है, जो सदा धनात्मक है।"
+      },
+      "media": "img.work-energy-power.carrom",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.11.2, Eq. 5.22"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:04",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A 2 kg trolley moving at 3 m/s hits a 1 kg trolley at rest, and they couple together. Find their common speed and the kinetic energy lost.",
+        "hi": "3 m/s से चलती 2 kg की ट्रॉली विरामावस्था की 1 kg की ट्रॉली से टकराती है, और वे आपस में जुड़ जाती हैं। उनकी उभयनिष्ठ चाल और गतिज ऊर्जा की क्षति ज्ञात कीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$v_f = \\frac{2 \\times 3}{2 + 1} = 2$ m/s",
+          "hi": "$v_f = \\frac{2 \\times 3}{2 + 1} = 2$ m/s"
+        },
+        {
+          "en": "$K_i = \\frac{1}{2} \\times 2 \\times 3^2 = 9$ J; $K_f = \\frac{1}{2} \\times 3 \\times 2^2 = 6$ J",
+          "hi": "$K_i = \\frac{1}{2} \\times 2 \\times 3^2 = 9$ J; $K_f = \\frac{1}{2} \\times 3 \\times 2^2 = 6$ J"
+        },
+        {
+          "en": "Loss $= 9 - 6 = 3$ J",
+          "hi": "क्षति $= 9 - 6 = 3$ J"
+        }
+      ],
+      "answer": {
+        "en": "2 m/s; 3 J lost",
+        "hi": "2 m/s; 3 J की क्षति"
+      },
+      "answer_value": {
+        "value": 3,
+        "unit": "J",
+        "tolerance": {
+          "abs": 0.01
+        }
+      },
+      "common_trap": {
+        "en": "Conserving kinetic energy instead of momentum when the bodies stick.",
+        "hi": "पिंडों के सटने पर संवेग के बजाय गतिज ऊर्जा संरक्षित मानना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eq. 5.22"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "Elastic collision in one dimension",
+        "hi": "एकविमीय प्रत्यास्थ संघट्ट"
+      },
+      "body": {
+        "en": "Now let $m_1$ hit $m_2$ (at rest) head-on and elastically. Both momentum and kinetic energy are conserved:\n\n$m_1v_{1i} = m_1v_{1f} + m_2v_{2f}$ and $m_1v_{1i}^2 = m_1v_{1f}^2 + m_2v_{2f}^2$.\n\nSolving them gives $v_{2f} = v_{1i} + v_{1f}$, and then\n\n$v_{1f} = \\frac{m_1 - m_2}{m_1 + m_2}v_{1i}$, $v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i}$.\n\nTwo special cases. Equal masses: $v_{1f} = 0$ and $v_{2f} = v_{1i}$, so the first body stops and the second moves off with its speed, as when a carrom striker hits a coin squarely. One mass much heavier, $m_2 \\gg m_1$: the light body bounces back with $v_{1f} \\approx -v_{1i}$ and the heavy one hardly moves.",
+        "hi": "अब $m_1$ को $m_2$ (विरामावस्था में) से सीधे और प्रत्यास्थ रूप से टकराने दीजिए। संवेग और गतिज ऊर्जा दोनों संरक्षित हैं:\n\n$m_1v_{1i} = m_1v_{1f} + m_2v_{2f}$ और $m_1v_{1i}^2 = m_1v_{1f}^2 + m_2v_{2f}^2$।\n\nइन्हें हल करने पर $v_{2f} = v_{1i} + v_{1f}$ मिलता है, और फिर\n\n$v_{1f} = \\frac{m_1 - m_2}{m_1 + m_2}v_{1i}$, $v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i}$।\n\nदो विशेष दशाएँ। समान द्रव्यमान: $v_{1f} = 0$ और $v_{2f} = v_{1i}$, अर्थात् पहला पिंड रुक जाता है और दूसरा उसकी चाल से चल पड़ता है, जैसे कैरम का स्ट्राइकर गोटी से सीधा टकराने पर। एक द्रव्यमान बहुत भारी, $m_2 \\gg m_1$: हल्का पिंड $v_{1f} \\approx -v_{1i}$ से वापस उछलता है और भारी लगभग नहीं हिलता।"
+      },
+      "media": "img.work-energy-power.carrom",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.11.2, Eqs. 5.23-5.27"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:06",
+      "type": "formula",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "Elastic collision, target at rest",
+        "hi": "प्रत्यास्थ संघट्ट, लक्ष्य विरामावस्था में"
+      },
+      "latex": "v_{1f} = \\frac{m_1 - m_2}{m_1 + m_2}v_{1i},\\quad v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i}",
+      "symbols": [
+        {
+          "symbol": "m_1, m_2",
+          "meaning": {
+            "en": "masses of the moving body and the target",
+            "hi": "गतिमान पिंड और लक्ष्य के द्रव्यमान"
+          },
+          "unit": "kg"
+        },
+        {
+          "symbol": "v_{1i}",
+          "meaning": {
+            "en": "initial velocity of $m_1$",
+            "hi": "$m_1$ का प्रारंभिक वेग"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v_{1f}, v_{2f}",
+          "meaning": {
+            "en": "final velocities",
+            "hi": "अंतिम वेग"
+          },
+          "unit": "m/s"
+        }
+      ],
+      "conditions": {
+        "en": "Head-on (one-dimensional) and elastic, with $m_2$ at rest.",
+        "hi": "सीधा (एकविमीय) और प्रत्यास्थ, $m_2$ विरामावस्था में।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Eqs. 5.26-5.27"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:07",
+      "type": "sim",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "sim": "sim.work-energy-power.collision-track",
+      "title": {
+        "en": "Crash two carts",
+        "hi": "दो गाड़ियाँ टकराइए"
+      },
+      "params": {
+        "m1": 1,
+        "m2": 3,
+        "v1": 4,
+        "elastic": 1
+      },
+      "tasks": [
+        {
+          "id": "equal-masses",
+          "prompt": {
+            "en": "Set both masses to 1 kg, choose an elastic collision and launch cart 1 at 4 m/s. Read the final velocity of cart 2.",
+            "hi": "दोनों द्रव्यमान 1 kg रखिए, प्रत्यास्थ संघट्ट चुनिए और गाड़ी 1 को 4 m/s से चलाइए। गाड़ी 2 का अंतिम वेग पढ़िए।"
+          },
+          "measurement": "v2_final",
+          "expected": {
+            "value": 4,
+            "unit": "m/s",
+            "tolerance": {
+              "abs": 0.05
+            }
+          }
+        },
+        {
+          "id": "light-on-heavy",
+          "prompt": {
+            "en": "Set cart 1 to 1 kg and cart 2 to 3 kg, elastic, 4 m/s. Read the final velocity of cart 1.",
+            "hi": "गाड़ी 1 को 1 kg और गाड़ी 2 को 3 kg रखिए, प्रत्यास्थ, 4 m/s। गाड़ी 1 का अंतिम वेग पढ़िए।"
+          },
+          "measurement": "v1_final",
+          "expected": {
+            "value": -2,
+            "unit": "m/s",
+            "tolerance": {
+              "abs": 0.05
+            }
+          }
+        },
+        {
+          "id": "stick",
+          "prompt": {
+            "en": "Keep 1 kg and 3 kg at 4 m/s but make the carts stick together. Read the kinetic energy lost.",
+            "hi": "1 kg और 3 kg को 4 m/s पर रखिए पर गाड़ियों को आपस में सटने दीजिए। गतिज ऊर्जा की क्षति पढ़िए।"
+          },
+          "measurement": "ke_lost",
+          "expected": {
+            "value": 6,
+            "unit": "J",
+            "tolerance": {
+              "abs": 0.05
+            }
+          }
+        }
+      ],
+      "debrief": {
+        "en": "Equal masses swap velocities in an elastic collision. A light cart hitting a heavier one bounces back: $v_{1f} = \\frac{1 - 3}{1 + 3} \\times 4 = -2$ m/s. When they stick, momentum still holds, $v_f = \\frac{1 \\times 4}{4} = 1$ m/s, but 6 J of the 8 J of kinetic energy is lost.",
+        "hi": "प्रत्यास्थ संघट्ट में समान द्रव्यमान वेग अदल-बदल लेते हैं। भारी गाड़ी से टकराने वाली हल्की गाड़ी वापस उछलती है: $v_{1f} = \\frac{1 - 3}{1 + 3} \\times 4 = -2$ m/s। सटने पर भी संवेग संरक्षित रहता है, $v_f = \\frac{1 \\times 4}{4} = 1$ m/s, पर 8 J गतिज ऊर्जा में से 6 J की क्षति होती है।"
+      },
+      "fallback": {
+        "body": {
+          "en": "With cart 1 at 4 m/s: equal masses in an elastic collision give cart 2 a velocity of 4 m/s and leave cart 1 at rest. With 1 kg hitting 3 kg elastically, cart 1 rebounds at 2 m/s. If they stick, both move at 1 m/s and 6 J of kinetic energy is lost.",
+          "hi": "गाड़ी 1 के 4 m/s पर होने पर: प्रत्यास्थ संघट्ट में समान द्रव्यमान गाड़ी 2 को 4 m/s वेग देते हैं और गाड़ी 1 को विराम में छोड़ देते हैं। 1 kg के 3 kg से प्रत्यास्थ टकराने पर गाड़ी 1, 2 m/s से वापस आती है। सटने पर दोनों 1 m/s से चलती हैं और 6 J गतिज ऊर्जा की क्षति होती है।"
+        },
+        "media": "img.work-energy-power.carrom"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "problem": {
+        "en": "In a nuclear reactor, fast neutrons are slowed by elastic head-on collisions with light nuclei, the moderator. What fraction of its kinetic energy does a neutron keep after one such collision with a deuterium nucleus at rest, which has twice the neutron's mass?",
+        "hi": "नाभिकीय रिएक्टर में तीव्रगामी न्यूट्रॉनों को हलके नाभिकों, जिन्हें मंदक कहते हैं, से सीधे प्रत्यास्थ संघट्ट द्वारा धीमा किया जाता है। विरामावस्था के ड्यूटीरियम नाभिक से, जिसका द्रव्यमान न्यूट्रॉन का दुगुना है, ऐसे एक संघट्ट के बाद न्यूट्रॉन अपनी गतिज ऊर्जा का कितना भाग रखता है?"
+      },
+      "solution_steps": [
+        {
+          "en": "$f_1 = \\frac{K_{1f}}{K_{1i}} = \\left(\\frac{m_1 - m_2}{m_1 + m_2}\\right)^2$",
+          "hi": "$f_1 = \\frac{K_{1f}}{K_{1i}} = \\left(\\frac{m_1 - m_2}{m_1 + m_2}\\right)^2$"
+        },
+        {
+          "en": "With $m_2 = 2m_1$: $f_1 = \\left(\\frac{-1}{3}\\right)^2 = \\frac{1}{9}$, so the deuterium gains $f_2 = \\frac{8}{9}$.",
+          "hi": "$m_2 = 2m_1$ के साथ: $f_1 = \\left(\\frac{-1}{3}\\right)^2 = \\frac{1}{9}$, अतः ड्यूटीरियम $f_2 = \\frac{8}{9}$ पाता है।"
+        }
+      ],
+      "answer": {
+        "en": "1/9: almost 90% of the energy goes to the deuterium",
+        "hi": "1/9: लगभग 90% ऊर्जा ड्यूटीरियम को जाती है"
+      },
+      "answer_value": {
+        "value": 0.111,
+        "unit": null,
+        "tolerance": {
+          "abs": 0.002
+        }
+      },
+      "common_trap": {
+        "en": "Forgetting to square the velocity ratio.",
+        "hi": "वेग अनुपात का वर्ग करना भूल जाना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.11"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "question": "q.phy.work-energy-power.collisions.0001"
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "question": "q.phy.work-energy-power.collisions.0002"
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:11",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "points": [
+        {
+          "en": "Momentum is conserved in every collision; kinetic energy only in elastic ones.",
+          "hi": "हर संघट्ट में संवेग संरक्षित रहता है; गतिज ऊर्जा केवल प्रत्यास्थ में।"
+        },
+        {
+          "en": "Elastic, equal masses, target at rest: the velocities are exchanged.",
+          "hi": "प्रत्यास्थ, समान द्रव्यमान, लक्ष्य विराम में: वेग अदल-बदल जाते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:12",
+      "type": "explainer",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "title": {
+        "en": "Glancing collisions",
+        "hi": "तिरछे संघट्ट"
+      },
+      "body": {
+        "en": "If the initial and final velocities all lie on one line, the collision is one-dimensional, or head-on. In general a moving $m_1$ strikes $m_2$ at rest off-centre, and they fly off at angles $\\theta_1$ and $\\theta_2$ to the original line. Momentum is a vector, so it is conserved along each axis:\n\n$m_1v_{1i} = m_1v_{1f}\\cos\\theta_1 + m_2v_{2f}\\cos\\theta_2$,\n\n$0 = m_1v_{1f}\\sin\\theta_1 - m_2v_{2f}\\sin\\theta_2$.\n\nEven with kinetic energy conserved, that is three equations for four unknowns, so one of them, such as $\\theta_1$, must be measured. When bodies interact without touching, as a comet passing the Sun, the event is called scattering.",
+        "hi": "यदि सभी प्रारंभिक और अंतिम वेग एक ही रेखा पर हों, तो संघट्ट एकविमीय, या सीधा, है। सामान्यतः गतिमान $m_1$ विरामावस्था के $m_2$ से केंद्र से हटकर टकराता है, और वे मूल रेखा से $\\theta_1$ और $\\theta_2$ कोणों पर निकल जाते हैं। संवेग सदिश है, इसलिए यह हर अक्ष के अनुदिश संरक्षित रहता है:\n\n$m_1v_{1i} = m_1v_{1f}\\cos\\theta_1 + m_2v_{2f}\\cos\\theta_2$,\n\n$0 = m_1v_{1f}\\sin\\theta_1 - m_2v_{2f}\\sin\\theta_2$।\n\nगतिज ऊर्जा संरक्षित हो तब भी चार अज्ञात राशियों के लिए तीन समीकरण हैं, इसलिए उनमें से एक, जैसे $\\theta_1$, मापनी पड़ती है। जब पिंड बिना छुए अन्योन्यक्रिया करते हैं, जैसे सूर्य के पास से गुज़रता धूमकेतु, तो घटना प्रकीर्णन कहलाती है।"
+      },
+      "media": "img.work-energy-power.carrom",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "§5.11.3, Eqs. 5.28-5.30"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:13",
+      "type": "worked_example",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "problem": {
+        "en": "A cue ball hits an identical target ball at rest in a glancing elastic collision. The target goes off at $\\theta_2 = 37°$ towards a corner pocket. Ignoring friction and spin, at what angle $\\theta_1$ does the cue ball move?",
+        "hi": "एक क्यू गेंद विरामावस्था की समान लक्ष्य गेंद से तिरछे प्रत्यास्थ संघट्ट में टकराती है। लक्ष्य कोने की थैली की ओर $\\theta_2 = 37°$ पर जाती है। घर्षण और घूर्णन की उपेक्षा करके, क्यू गेंद किस कोण $\\theta_1$ पर चलती है?"
+      },
+      "solution_steps": [
+        {
+          "en": "Equal masses: $\\vec{v}_{1i} = \\vec{v}_{1f} + \\vec{v}_{2f}$. Squaring, $v_{1i}^2 = v_{1f}^2 + v_{2f}^2 + 2v_{1f}v_{2f}\\cos(\\theta_1 + 37°)$.",
+          "hi": "समान द्रव्यमान: $\\vec{v}_{1i} = \\vec{v}_{1f} + \\vec{v}_{2f}$। वर्ग करने पर $v_{1i}^2 = v_{1f}^2 + v_{2f}^2 + 2v_{1f}v_{2f}\\cos(\\theta_1 + 37°)$।"
+        },
+        {
+          "en": "Elastic, equal masses: $v_{1i}^2 = v_{1f}^2 + v_{2f}^2$.",
+          "hi": "प्रत्यास्थ, समान द्रव्यमान: $v_{1i}^2 = v_{1f}^2 + v_{2f}^2$।"
+        },
+        {
+          "en": "So $\\cos(\\theta_1 + 37°) = 0$, $\\theta_1 + 37° = 90°$, $\\theta_1 = 53°$.",
+          "hi": "अतः $\\cos(\\theta_1 + 37°) = 0$, $\\theta_1 + 37° = 90°$, $\\theta_1 = 53°$।"
+        }
+      ],
+      "answer": {
+        "en": "$53°$: equal masses separate at right angles",
+        "hi": "$53°$: समान द्रव्यमान समकोण पर अलग होते हैं"
+      },
+      "answer_value": {
+        "value": 53,
+        "unit": "°",
+        "tolerance": {
+          "abs": 0.5
+        }
+      },
+      "common_trap": {
+        "en": "Assuming the cue ball stops, as in a head-on collision.",
+        "hi": "सीधे संघट्ट की तरह क्यू गेंद का रुक जाना मान लेना।"
+      },
+      "media": "img.work-energy-power.carrom",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+        "retrieved": "2026-10-31",
+        "pages": "Example 5.12"
+      }
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:14",
+      "type": "question",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "question": "q.phy.work-energy-power.collisions.0004"
+    },
+    {
+      "id": "phy.work-energy-power.collisions:dd:15",
+      "type": "summary",
+      "concepts": [
+        "phy.work-energy-power.collisions.core.elastic-inelastic-collisions"
+      ],
+      "depth": 4,
+      "points": [
+        {
+          "en": "In two dimensions, conserve momentum along each axis separately.",
+          "hi": "दो विमाओं में हर अक्ष के अनुदिश संवेग अलग से संरक्षित कीजिए।"
+        },
+        {
+          "en": "Equal masses, one at rest, elastic and glancing: they move off at right angles.",
+          "hi": "समान द्रव्यमान, एक विराम में, प्रत्यास्थ और तिरछा: वे समकोण पर निकलते हैं।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "subject@1",
+  "id": "math",
+  "name": {
+    "en": "Mathematics",
+    "hi": "गणित"
+  },
+  "color_family": "maths",
+  "sort": 3,
+  "units": [
+    {
+      "id": "math.sets-functions",
+      "name": {
+        "en": "Sets, Relations and Functions",
+        "hi": "समुच्चय, संबंध एवं फलन"
+      }
+    },
+    {
+      "id": "math.trigonometry",
+      "name": {
+        "en": "Trigonometry",
+        "hi": "त्रिकोणमिति"
+      }
+    },
+    {
+      "id": "math.algebra",
+      "name": {
+        "en": "Algebra",
+        "hi": "बीजगणित"
+      }
+    },
+    {
+      "id": "math.calculus",
+      "name": {
+        "en": "Calculus",
+        "hi": "कलन"
+      }
+    },
+    {
+      "id": "math.coordinate-geometry",
+      "name": {
+        "en": "Coordinate Geometry",
+        "hi": "निर्देशांक ज्यामिति"
+      }
+    },
+    {
+      "id": "math.vectors-3d",
+      "name": {
+        "en": "Vectors and Three-dimensional Geometry",
+        "hi": "सदिश एवं त्रिविमीय ज्यामिति"
+      }
+    },
+    {
+      "id": "math.statistics-probability",
+      "name": {
+        "en": "Statistics and Probability",
+        "hi": "सांख्यिकी एवं प्रायिकता"
+      }
+    },
+    {
+      "id": "math.class-1-numbers",
+      "name": {
+        "en": "Numbers (Class 1)",
+        "hi": "संख्याएँ (कक्षा 1)"
+      }
+    }
+  ],
+  "chapters": [
+    "math.sets",
+    "math.relations-functions-intro",
+    "math.relations-functions",
+    "math.trigonometric-functions",
+    "math.inverse-trigonometric-functions",
+    "math.complex-numbers",
+    "math.permutations-combinations",
+    "math.binomial-theorem",
+    "math.sequences-series",
+    "math.matrices",
+    "math.determinants",
+    "math.limits-derivatives",
+    "math.continuity-differentiability",
+    "math.applications-of-derivatives",
+    "math.integrals",
+    "math.application-of-integrals",
+    "math.differential-equations",
+    "math.straight-lines",
+    "math.conic-sections",
+    "math.three-d-intro",
+    "math.vector-algebra",
+    "math.three-d-geometry",
+    "math.statistics",
+    "math.probability-basics",
+    "math.probability",
+    "math.mango-treat"
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Subject name in Hindi: NCERT Hindi-medium books. NCERT chapters with no graph chapter are listed in coverage/inventory/math/excluded-chapters.json."
+}

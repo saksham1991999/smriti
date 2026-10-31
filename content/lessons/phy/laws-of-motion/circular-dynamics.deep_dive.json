@@ -1,0 +1,403 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.circular-dynamics:deep_dive",
+  "topic": "phy.laws-of-motion.circular-dynamics",
+  "mode": "deep_dive",
+  "estimated_minutes": 6,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "The force that bends the path",
+        "hi": "पथ को मोड़ने वाला बल"
+      },
+      "subtopic": "phy.laws-of-motion.circular-dynamics.core",
+      "card_ids": [
+        "phy.laws-of-motion.circular-dynamics:dd:01",
+        "phy.laws-of-motion.circular-dynamics:dd:02",
+        "phy.laws-of-motion.circular-dynamics:dd:03",
+        "phy.laws-of-motion.circular-dynamics:dd:04",
+        "phy.laws-of-motion.circular-dynamics:dd:05",
+        "phy.laws-of-motion.circular-dynamics:dd:06",
+        "phy.laws-of-motion.circular-dynamics:dd:07",
+        "phy.laws-of-motion.circular-dynamics:dd:08",
+        "phy.laws-of-motion.circular-dynamics:dd:09",
+        "phy.laws-of-motion.circular-dynamics:dd:10",
+        "phy.laws-of-motion.circular-dynamics:dd:11"
+      ],
+      "estimated_minutes": 6
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Leaning into the curve",
+        "hi": "मोड़ की ओर झुकना"
+      },
+      "body": {
+        "en": "Race tracks and highway curves are often tilted, higher on the outside. A car going round a bend needs a push towards the centre of the curve, and tilting the road lets the road itself supply some of that push.",
+        "hi": "रेस ट्रैक और राजमार्ग के मोड़ अक्सर झुके होते हैं, बाहर की ओर ऊँचे। मोड़ पर घूमती कार को वक्र के केंद्र की ओर धक्का चाहिए, और सड़क को झुकाने से वह धक्का कुछ हद तक सड़क स्वयं दे देती है।"
+      },
+      "media": "img.laws-of-motion.banked-track"
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Centripetal force",
+        "hi": "अभिकेंद्र बल"
+      },
+      "body": {
+        "en": "A body of mass m moving at speed v in a circle of radius R has an acceleration $\\frac{v^2}{R}$ towards the centre. By the second law it needs a net force $f_c = \\frac{mv^2}{R}$ directed towards the centre: the centripetal force.\n\nThis is not a new kind of force. It is only the name for whatever real force supplies the inward pull: the tension in the string for a whirled stone, the Sun's gravity for a planet, friction for a car on a level road. On a merry-go-round you feel pushed outwards, but the real force on you is inwards; the outward feeling is the direction of impending motion.",
+        "hi": "त्रिज्या R के वृत्त में चाल v से चलते m द्रव्यमान के पिंड का त्वरण केंद्र की ओर $\\frac{v^2}{R}$ है। द्वितीय नियम से उसे केंद्र की ओर नेट बल $f_c = \\frac{mv^2}{R}$ चाहिए: यह अभिकेंद्र बल है।\n\nयह कोई नया बल नहीं है। यह केवल उस वास्तविक बल का नाम है जो भीतर की ओर खिंचाव देता है: घुमाए गए पत्थर के लिए डोरी का तनाव, ग्रह के लिए सूर्य का गुरुत्व, समतल सड़क पर कार के लिए घर्षण। झूला-चकरी पर आप बाहर की ओर धकेले जाने का अनुभव करते हैं, पर आप पर वास्तविक बल भीतर की ओर है; बाहर का अनुभव समुपस्थित गति की दिशा है।"
+      },
+      "media": "img.laws-of-motion.banked-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "centripetal force",
+            "hi": "अभिकेंद्र बल"
+          },
+          "definition": {
+            "en": "the net inward force, $mv^2/R$",
+            "hi": "नेट भीतरी बल, $mv^2/R$"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.10, Eq. 4.16, Points to Ponder 5 and 11"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:03",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Centripetal force",
+        "hi": "अभिकेंद्र बल"
+      },
+      "latex": "f_c = \\frac{mv^2}{R}",
+      "symbols": [
+        {
+          "symbol": "f_c",
+          "meaning": {
+            "en": "net force towards the centre",
+            "hi": "केंद्र की ओर नेट बल"
+          },
+          "unit": "N"
+        },
+        {
+          "symbol": "m",
+          "meaning": {
+            "en": "mass",
+            "hi": "द्रव्यमान"
+          },
+          "unit": "kg"
+        },
+        {
+          "symbol": "v",
+          "meaning": {
+            "en": "speed",
+            "hi": "चाल"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "radius of the circle",
+            "hi": "वृत्त की त्रिज्या"
+          },
+          "unit": "m"
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eq. 4.16"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:04",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "A car on a level road",
+        "hi": "समतल सड़क पर कार"
+      },
+      "body": {
+        "en": "On a level road three forces act on the car: its weight mg, the normal reaction N and friction f. There is no vertical acceleration, so $N = mg$. The only force along the road surface that can pull the car inwards is static friction, which opposes the car's impending slide away from the circle.\n\nSo $\\frac{mv^2}{R} \\le \\mu_s N = \\mu_s mg$, giving $v_{max} = \\sqrt{\\mu_s R g}$. The mass cancels: for given $\\mu_s$ and R there is a top speed for every car.",
+        "hi": "समतल सड़क पर कार पर तीन बल लगते हैं: उसका भार mg, अभिलंब प्रतिक्रिया N और घर्षण f। ऊर्ध्वाधर त्वरण नहीं है, अतः $N = mg$। सड़क की सतह के अनुदिश कार को भीतर खींच सकने वाला एकमात्र बल स्थैतिक घर्षण है, जो वृत्त से दूर कार की समुपस्थित फिसलन का विरोध करता है।\n\nअतः $\\frac{mv^2}{R} \\le \\mu_s N = \\mu_s mg$, जिससे $v_{max} = \\sqrt{\\mu_s R g}$। द्रव्यमान कट जाता है: दिए गए $\\mu_s$ और R के लिए हर कार की एक अधिकतम चाल है।"
+      },
+      "media": "img.laws-of-motion.banked-track",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.10, Eqs. 4.17-4.18, Fig. 4.14(a)"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:05",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A cyclist at 18 km/h on a level road takes a sharp circular turn of radius 3 m without slowing down. The coefficient of static friction between tyres and road is 0.1. Will the cyclist slip? Take $g = 9.8$ m/s².",
+        "hi": "18 km/h से समतल सड़क पर चलता एक साइकिल सवार बिना धीमे हुए 3 m त्रिज्या का तीव्र वृत्तीय मोड़ लेता है। टायरों और सड़क के बीच स्थैतिक घर्षण गुणांक 0.1 है। क्या सवार फिसलेगा? $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "No slipping needs $v^2 \\le \\mu_s R g = 0.1 \\times 3 \\times 9.8 = 2.94$ m²/s².",
+          "hi": "न फिसलने के लिए $v^2 \\le \\mu_s R g = 0.1 \\times 3 \\times 9.8 = 2.94$ m²/s²।"
+        },
+        {
+          "en": "$v = 18$ km/h $= 5$ m/s, so $v^2 = 25$ m²/s², far more than 2.94.",
+          "hi": "$v = 18$ km/h $= 5$ m/s, अतः $v^2 = 25$ m²/s², जो 2.94 से बहुत अधिक है।"
+        }
+      ],
+      "answer": {
+        "en": "Yes, the cyclist will slip",
+        "hi": "हाँ, सवार फिसलेगा"
+      },
+      "common_trap": {
+        "en": "Comparing v, not $v^2$, with $\\mu_s R g$.",
+        "hi": "$v^2$ के बजाय v की तुलना $\\mu_s R g$ से करना।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.10"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:06",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "A car on a banked road",
+        "hi": "ढालू सड़क पर कार"
+      },
+      "body": {
+        "en": "Banking the road at angle $\\theta$ tilts the normal reaction, so its horizontal part helps provide the centripetal force. Vertically, $N\\cos\\theta = mg + f\\sin\\theta$; horizontally, $N\\sin\\theta + f\\cos\\theta = \\frac{mv^2}{R}$. Putting $f = \\mu_s N$ for the limit gives\n\n$v_{max} = \\left(Rg\\,\\frac{\\mu_s + \\tan\\theta}{1 - \\mu_s\\tan\\theta}\\right)^{1/2}$,\n\nwhich is more than on a level road. With $\\mu_s = 0$, the optimum speed is $v_o = (Rg\\tan\\theta)^{1/2}$: at that speed no friction is needed at all, and the tyres wear least. Below $v_o$ friction acts up the slope, and a car can be parked on the bank only if $\\tan\\theta \\le \\mu_s$.",
+        "hi": "सड़क को $\\theta$ कोण पर झुकाने से अभिलंब प्रतिक्रिया झुक जाती है, इसलिए उसका क्षैतिज भाग अभिकेंद्र बल देने में मदद करता है। ऊर्ध्वाधर: $N\\cos\\theta = mg + f\\sin\\theta$; क्षैतिज: $N\\sin\\theta + f\\cos\\theta = \\frac{mv^2}{R}$। सीमा के लिए $f = \\mu_s N$ रखने पर\n\n$v_{max} = \\left(Rg\\,\\frac{\\mu_s + \\tan\\theta}{1 - \\mu_s\\tan\\theta}\\right)^{1/2}$,\n\nजो समतल सड़क से अधिक है। $\\mu_s = 0$ पर अनुकूलतम चाल $v_o = (Rg\\tan\\theta)^{1/2}$ है: इस चाल पर घर्षण की बिल्कुल आवश्यकता नहीं, और टायर सबसे कम घिसते हैं। $v_o$ से कम चाल पर घर्षण ढलान पर ऊपर की ओर लगता है, और कार ढलान पर तभी खड़ी की जा सकती है जब $\\tan\\theta \\le \\mu_s$।"
+      },
+      "media": "img.laws-of-motion.banked-track",
+      "highlights": [
+        {
+          "term": {
+            "en": "optimum speed",
+            "hi": "अनुकूलतम चाल"
+          },
+          "definition": {
+            "en": "speed at which no friction is needed on a banked road",
+            "hi": "ढालू सड़क पर वह चाल जिस पर घर्षण नहीं चाहिए"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.10, Eqs. 4.19-4.22, Fig. 4.14(b)"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:07",
+      "type": "formula",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "title": {
+        "en": "Banked road speeds",
+        "hi": "ढालू सड़क की चालें"
+      },
+      "latex": "v_{max} = \\sqrt{Rg\\,\\frac{\\mu_s + \\tan\\theta}{1 - \\mu_s\\tan\\theta}},\\quad v_o = \\sqrt{Rg\\tan\\theta}",
+      "symbols": [
+        {
+          "symbol": "v_{max}",
+          "meaning": {
+            "en": "maximum speed without slipping",
+            "hi": "बिना फिसले अधिकतम चाल"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v_o",
+          "meaning": {
+            "en": "optimum speed, no friction needed",
+            "hi": "अनुकूलतम चाल, घर्षण की आवश्यकता नहीं"
+          },
+          "unit": "m/s"
+        },
+        {
+          "symbol": "\\theta",
+          "meaning": {
+            "en": "angle of banking",
+            "hi": "ढाल का कोण"
+          },
+          "unit": "°"
+        },
+        {
+          "symbol": "\\mu_s",
+          "meaning": {
+            "en": "coefficient of static friction",
+            "hi": "स्थैतिक घर्षण गुणांक"
+          },
+          "unit": null
+        },
+        {
+          "symbol": "R",
+          "meaning": {
+            "en": "radius of the turn",
+            "hi": "मोड़ की त्रिज्या"
+          },
+          "unit": "m"
+        }
+      ],
+      "conditions": {
+        "en": "On a level road ($\\theta = 0$) this becomes $v_{max} = \\sqrt{\\mu_s R g}$.",
+        "hi": "समतल सड़क ($\\theta = 0$) पर यह $v_{max} = \\sqrt{\\mu_s R g}$ हो जाता है।"
+      },
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Eqs. 4.18, 4.21, 4.22"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:08",
+      "type": "worked_example",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "problem": {
+        "en": "A circular racetrack of radius 300 m is banked at $15°$, and $\\mu_s = 0.2$ between tyres and road. Find the optimum speed and the maximum permissible speed. Take $g = 9.8$ m/s².",
+        "hi": "300 m त्रिज्या का वृत्तीय रेस ट्रैक $15°$ पर ढालू है, और टायरों तथा सड़क के बीच $\\mu_s = 0.2$ है। अनुकूलतम चाल और अधिकतम अनुमेय चाल ज्ञात कीजिए। $g = 9.8$ m/s² लीजिए।"
+      },
+      "solution_steps": [
+        {
+          "en": "$v_o = (300 \\times 9.8 \\times \\tan 15°)^{1/2} \\approx 28.1$ m/s",
+          "hi": "$v_o = (300 \\times 9.8 \\times \\tan 15°)^{1/2} \\approx 28.1$ m/s"
+        },
+        {
+          "en": "$v_{max} = \\left(300 \\times 9.8 \\times \\frac{0.2 + 0.268}{1 - 0.2 \\times 0.268}\\right)^{1/2} \\approx 38.1$ m/s",
+          "hi": "$v_{max} = \\left(300 \\times 9.8 \\times \\frac{0.2 + 0.268}{1 - 0.2 \\times 0.268}\\right)^{1/2} \\approx 38.1$ m/s"
+        }
+      ],
+      "answer": {
+        "en": "About 28.1 m/s and 38.1 m/s",
+        "hi": "लगभग 28.1 m/s और 38.1 m/s"
+      },
+      "answer_value": {
+        "value": 38.1,
+        "unit": "m/s",
+        "tolerance": {
+          "abs": 0.3
+        }
+      },
+      "common_trap": {
+        "en": "Using the level-road formula, which gives only about 24 m/s.",
+        "hi": "समतल सड़क का सूत्र लगाना, जो केवल लगभग 24 m/s देता है।"
+      },
+      "media": "img.laws-of-motion.banked-track",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "Example 4.11"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:09",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.circular-dynamics.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:10",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "question": "q.phy.laws-of-motion.circular-dynamics.0003"
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:dd:11",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "points": [
+        {
+          "en": "$f_c = mv^2/R$ is supplied by a real force: tension, gravity, friction or a normal force.",
+          "hi": "$f_c = mv^2/R$ किसी वास्तविक बल से मिलता है: तनाव, गुरुत्व, घर्षण या अभिलंब बल।"
+        },
+        {
+          "en": "Level road: $v_{max} = \\sqrt{\\mu_s R g}$. Banked road: $v_o = \\sqrt{Rg\\tan\\theta}$.",
+          "hi": "समतल सड़क: $v_{max} = \\sqrt{\\mu_s R g}$। ढालू सड़क: $v_o = \\sqrt{Rg\\tan\\theta}$।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

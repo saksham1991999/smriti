@@ -1,0 +1,405 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Laboratory Manual Physics Class XII, Experiment 2 (metre bridge)",
+      "url": "https://ncert.nic.in/pdf/publication/sciencelaboratorymanuals/classXII/physics/lelm302.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Original questions in the exam's own format. Each solution cites its NCERT section. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "topic": "phy.current-electricity.wheatstone",
+  "questions": [
+    {
+      "id": "q.phy.current-electricity.wheatstone.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.wheatstone.core.wheatstone-bridge",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In a balanced Wheatstone bridge, $R_1 = 5$ Ω, $R_2 = 10$ Ω and $R_3 = 12$ Ω, with $R_2/R_1 = R_4/R_3$. Then $R_4$ is",
+        "hi": "एक संतुलित व्हीटस्टोन सेतु में $R_1 = 5$ Ω, $R_2 = 10$ Ω और $R_3 = 12$ Ω है, तथा $R_2/R_1 = R_4/R_3$। तब $R_4$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "24 Ω",
+            "hi": "24 Ω"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "6 Ω",
+            "hi": "6 Ω"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "17 Ω",
+            "hi": "17 Ω"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2.5 Ω",
+            "hi": "2.5 Ω"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use $R_4 = R_3 R_2/R_1$.",
+          "hi": "$R_4 = R_3 R_2/R_1$ लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "$R_2$ is twice $R_1$, so at balance $R_4$ must be twice $R_3$.",
+          "hi": "$R_2$, $R_1$ का दोगुना है, इसलिए संतुलन पर $R_4$, $R_3$ का दोगुना होगा।"
+        },
+        "steps": [
+          {
+            "en": "$R_4 = R_3\\frac{R_2}{R_1} = 12 \\times \\frac{10}{5} = 24$ Ω",
+            "hi": "$R_4 = R_3\\frac{R_2}{R_1} = 12 \\times \\frac{10}{5} = 24$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This inverts the ratio.",
+              "hi": "यह अनुपात उलट देता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Resistances in a bridge are not added.",
+              "hi": "सेतु में प्रतिरोध जोड़े नहीं जाते।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This is $R_1/R_2 \\times 5$, a mixed-up ratio.",
+              "hi": "यह $R_1/R_2 \\times 5$ है, गड़बड़ अनुपात।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.wheatstone.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.wheatstone.core.wheatstone-bridge",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement is true for a balanced Wheatstone bridge?",
+        "hi": "संतुलित व्हीटस्टोन सेतु के लिए कौन-सा कथन सत्य है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "no current flows through the galvanometer",
+            "hi": "गैल्वेनोमीटर से कोई धारा नहीं बहती"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the two ends of the galvanometer are at different potentials",
+            "hi": "गैल्वेनोमीटर के दोनों सिरे अलग-अलग विभव पर हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "no current is drawn from the battery",
+            "hi": "बैटरी से कोई धारा नहीं ली जाती"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "all four arms carry equal currents",
+            "hi": "चारों भुजाओं में बराबर धाराएँ हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What does a null deflection mean?",
+          "hi": "शून्य विक्षेप का क्या अर्थ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Balance is defined by the galvanometer: no current through it, so its two ends are at the same potential.",
+          "hi": "संतुलन गैल्वेनोमीटर से परिभाषित है: उसमें धारा नहीं, इसलिए उसके दोनों सिरे एक ही विभव पर हैं।"
+        },
+        "steps": [
+          {
+            "en": "Balance means $I_g = 0$, null deflection.",
+            "hi": "संतुलन का अर्थ $I_g = 0$, शून्य विक्षेप।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "If they differed, current would flow through the galvanometer.",
+              "hi": "यदि अलग होते, तो गैल्वेनोमीटर से धारा बहती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The battery still drives current through the four arms.",
+              "hi": "बैटरी चारों भुजाओं में फिर भी धारा भेजती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Only $I_1 = I_3$ and $I_2 = I_4$; $I_1$ and $I_2$ can differ.",
+              "hi": "केवल $I_1 = I_3$ और $I_2 = I_4$; $I_1$ और $I_2$ अलग हो सकते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.wheatstone.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.wheatstone.core.wheatstone-bridge",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In a metre bridge the known resistance $R = 6$ Ω is in one gap and the unknown $S$ in the other. The null point is 40 cm from the end next to $S$. Then $S$ is",
+        "hi": "मीटर सेतु में ज्ञात प्रतिरोध $R = 6$ Ω एक खाली स्थान में और अज्ञात $S$ दूसरे में है। शून्य बिंदु $S$ वाले सिरे से 40 cm पर है। तब $S$ है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4 Ω",
+            "hi": "4 Ω"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "9 Ω",
+            "hi": "9 Ω"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2.4 Ω",
+            "hi": "2.4 Ω"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "15 Ω",
+            "hi": "15 Ω"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which side of the wire is next to $S$?",
+          "hi": "तार का कौन-सा भाग $S$ के पास है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The wire on $S$'s side is shorter, 40 cm against 60 cm, so $S$ is smaller than $R$ in the same ratio, 2 to 3.",
+          "hi": "$S$ की ओर का तार छोटा है, 40 cm बनाम 60 cm, इसलिए $S$ उसी अनुपात 2 : 3 में $R$ से छोटा है।"
+        },
+        "steps": [
+          {
+            "en": "$S = R\\frac{l}{100 - l} = 6 \\times \\frac{40}{60} = 4$ Ω",
+            "hi": "$S = R\\frac{l}{100 - l} = 6 \\times \\frac{40}{60} = 4$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "This measures $l$ from the wrong end.",
+              "hi": "यह $l$ को गलत सिरे से मापता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "This uses $l/100$ instead of $l/(100 - l)$.",
+              "hi": "यह $l/100$ लेता है, $l/(100 - l)$ की जगह।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "This uses $100/l$.",
+              "hi": "यह $100/l$ लेता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 75,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.current-electricity.wheatstone.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.current-electricity.wheatstone.core.wheatstone-bridge",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "In a metre bridge a 20 Ω resistance is in the right gap and an unknown resistance in the left gap. The null point is 60 cm from the left end. The unknown resistance, in ohm, is",
+        "hi": "मीटर सेतु में दाएँ खाली स्थान में 20 Ω और बाएँ खाली स्थान में अज्ञात प्रतिरोध है। शून्य बिंदु बाएँ सिरे से 60 cm पर है। अज्ञात प्रतिरोध, ओम में, है"
+      },
+      "answer": {
+        "value": 30,
+        "unit": "Ω"
+      },
+      "hints": [
+        {
+          "en": "$S = R\\,l/(100 - l)$ with $l$ from the unknown's end.",
+          "hi": "$S = R\\,l/(100 - l)$, $l$ अज्ञात वाले सिरे से।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The unknown side has the longer wire, 60 cm against 40 cm, so it is the bigger resistance, by 3 to 2.",
+          "hi": "अज्ञात ओर का तार लंबा है, 60 cm बनाम 40 cm, इसलिए वह 3 : 2 के अनुपात में बड़ा प्रतिरोध है।"
+        },
+        "steps": [
+          {
+            "en": "$S = 20 \\times \\frac{60}{40} = 30$ Ω",
+            "hi": "$S = 20 \\times \\frac{60}{40} = 30$ Ω"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Inverting the ratio gives 13.3, not an integer: a sign the ratio is upside down.",
+              "hi": "अनुपात उलटने पर 13.3 आता है, पूर्णांक नहीं: संकेत कि अनुपात उलटा है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

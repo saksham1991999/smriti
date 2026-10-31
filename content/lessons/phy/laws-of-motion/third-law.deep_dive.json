@@ -1,0 +1,277 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Deep Dive for this topic. Every fact is cited per card. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.third-law:deep_dive",
+  "topic": "phy.laws-of-motion.third-law",
+  "mode": "deep_dive",
+  "estimated_minutes": 4,
+  "min_depth": 1,
+  "max_depth": 2,
+  "concepts": [
+    "phy.laws-of-motion.third-law.core.newton-third-law"
+  ],
+  "bites": [
+    {
+      "id": "bite-1",
+      "title": {
+        "en": "Forces come in pairs",
+        "hi": "बल युगलों में आते हैं"
+      },
+      "subtopic": "phy.laws-of-motion.third-law.core",
+      "card_ids": [
+        "phy.laws-of-motion.third-law:dd:01",
+        "phy.laws-of-motion.third-law:dd:02",
+        "phy.laws-of-motion.third-law:dd:03",
+        "phy.laws-of-motion.third-law:dd:04",
+        "phy.laws-of-motion.third-law:dd:05",
+        "phy.laws-of-motion.third-law:dd:06",
+        "phy.laws-of-motion.third-law:dd:07"
+      ],
+      "estimated_minutes": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.third-law:dd:01",
+      "type": "story",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Push and roll apart",
+        "hi": "धकेलिए और दूर लुढ़किए"
+      },
+      "body": {
+        "en": "Two children on roller skates stand palm to palm and push. Both roll away, in opposite directions, even if only one of them meant to push. You cannot push something without being pushed back.",
+        "hi": "रोलर स्केट पर खड़े दो बच्चे हथेली से हथेली मिलाकर धकेलते हैं। दोनों विपरीत दिशाओं में लुढ़क जाते हैं, भले ही धकेलना केवल एक ही चाहता हो। आप किसी चीज़ को धकेले बिना पीछे धकेले नहीं जा सकते।"
+      },
+      "media": "img.laws-of-motion.skaters-push"
+    },
+    {
+      "id": "phy.laws-of-motion.third-law:dd:02",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Newton's third law",
+        "hi": "न्यूटन का गति का तृतीय नियम"
+      },
+      "body": {
+        "en": "To every action, there is always an equal and opposite reaction. Put simply: forces always occur in pairs. The force on body A by B is equal and opposite to the force on B by A: $\\vec{F}_{AB} = -\\vec{F}_{BA}$.\n\nThis holds even without contact. The Earth pulls a stone down; the stone pulls the Earth up with an equal force. We do not notice the Earth move because it is so massive.\n\n'Action' and 'reaction' are just two forces. Neither comes first or causes the other; they act at the same instant, and either may be called the action.",
+        "hi": "प्रत्येक क्रिया की सदा समान और विपरीत प्रतिक्रिया होती है। सरल शब्दों में: बल सदा युगलों में होते हैं। पिंड A पर B द्वारा बल, B पर A द्वारा बल के बराबर और विपरीत है: $\\vec{F}_{AB} = -\\vec{F}_{BA}$।\n\nयह संपर्क के बिना भी सही है। पृथ्वी पत्थर को नीचे खींचती है; पत्थर पृथ्वी को समान बल से ऊपर खींचता है। पृथ्वी को हिलते हुए हम नहीं देखते क्योंकि वह बहुत भारी है।\n\n'क्रिया' और 'प्रतिक्रिया' केवल दो बल हैं। कोई पहले नहीं आता, न दूसरे का कारण है; वे एक ही क्षण लगते हैं, और किसी को भी क्रिया कहा जा सकता है।"
+      },
+      "media": "img.laws-of-motion.skaters-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "action-reaction pair",
+            "hi": "क्रिया-प्रतिक्रिया युगल"
+          },
+          "definition": {
+            "en": "the two mutual forces between two bodies",
+            "hi": "दो पिंडों के बीच के दो पारस्परिक बल"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.6, Eq. 4.8, Summary 6, Points to Ponder 8"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.third-law:dd:03",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Why the pair does not cancel",
+        "hi": "युगल निरस्त क्यों नहीं होता"
+      },
+      "body": {
+        "en": "Action and reaction act on different bodies, so they cannot cancel. When studying the motion of A, only the force on A counts; adding the force on B to it is an error.\n\nIf A and B are taken together as one system, the pair become internal forces and do add to zero. That is why internal forces drop out when the second law is applied to a whole system.\n\nTwo equal and opposite forces on the same body are never an action-reaction pair. A book's weight and the table's push on it are equal only because the book is at rest; the partner of the weight is the book's pull on the Earth.",
+        "hi": "क्रिया और प्रतिक्रिया अलग-अलग पिंडों पर लगती हैं, इसलिए वे निरस्त नहीं हो सकतीं। A की गति का अध्ययन करते समय केवल A पर लगा बल गिना जाता है; उसमें B पर लगा बल जोड़ना गलती है।\n\nयदि A और B को साथ लेकर एक निकाय माना जाए, तो युगल आंतरिक बल बन जाते हैं और उनका योग शून्य होता है। इसीलिए पूरे निकाय पर द्वितीय नियम लगाते समय आंतरिक बल हट जाते हैं।\n\nएक ही पिंड पर लगे दो समान और विपरीत बल कभी क्रिया-प्रतिक्रिया युगल नहीं होते। किताब का भार और मेज़ का उस पर धक्का केवल इसलिए बराबर हैं क्योंकि किताब विराम में है; भार का साथी किताब द्वारा पृथ्वी पर खिंचाव है।"
+      },
+      "media": "img.laws-of-motion.skaters-push",
+      "highlights": [
+        {
+          "term": {
+            "en": "internal forces",
+            "hi": "आंतरिक बल"
+          },
+          "definition": {
+            "en": "forces between parts of one system; they sum to zero",
+            "hi": "एक निकाय के भागों के बीच बल; उनका योग शून्य"
+          }
+        }
+      ],
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.6, Example 4.12, Points to Ponder 7"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.third-law:dd:04",
+      "type": "interactive",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 2,
+      "prompt": {
+        "en": "Action-reaction pair or not?",
+        "hi": "क्रिया-प्रतिक्रिया युगल है या नहीं?"
+      },
+      "widget": "drag_sort",
+      "config": {
+        "items": [
+          {
+            "id": "i1",
+            "text": {
+              "en": "Earth pulls a stone; the stone pulls the Earth",
+              "hi": "पृथ्वी पत्थर को खींचती है; पत्थर पृथ्वी को खींचता है"
+            }
+          },
+          {
+            "id": "i2",
+            "text": {
+              "en": "A book's weight and the table's push on the book",
+              "hi": "किताब का भार और किताब पर मेज़ का धक्का"
+            }
+          },
+          {
+            "id": "i3",
+            "text": {
+              "en": "A block pushes the floor; the floor pushes the block",
+              "hi": "गुटका फ़र्श को धकेलता है; फ़र्श गुटके को धकेलता है"
+            }
+          },
+          {
+            "id": "i4",
+            "text": {
+              "en": "Two equal, opposite pulls on the same rope",
+              "hi": "एक ही रस्सी पर दो समान, विपरीत खिंचाव"
+            }
+          }
+        ],
+        "bins": [
+          {
+            "id": "pair",
+            "label": {
+              "en": "Action-reaction pair",
+              "hi": "क्रिया-प्रतिक्रिया युगल"
+            }
+          },
+          {
+            "id": "not",
+            "label": {
+              "en": "Not a pair",
+              "hi": "युगल नहीं"
+            }
+          }
+        ],
+        "answer": [
+          {
+            "item": "i1",
+            "bin": "pair"
+          },
+          {
+            "item": "i2",
+            "bin": "not"
+          },
+          {
+            "item": "i3",
+            "bin": "pair"
+          },
+          {
+            "item": "i4",
+            "bin": "not"
+          }
+        ]
+      },
+      "feedback": {
+        "correct": {
+          "en": "Right. A pair always acts on two different bodies, each on the other.",
+          "hi": "सही। युगल सदा दो अलग पिंडों पर लगता है, हर एक दूसरे पर।"
+        },
+        "wrong": {
+          "en": "Check: does each force act on a different body?",
+          "hi": "जाँचिए: क्या हर बल अलग पिंड पर लगता है?"
+        }
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.third-law:dd:05",
+      "type": "explainer",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 2,
+      "title": {
+        "en": "Walking and other everyday pairs",
+        "hi": "चलना और रोज़ के अन्य युगल"
+      },
+      "body": {
+        "en": "A human being also needs an external force to accelerate. When you walk, your foot pushes back on the ground, and the ground's friction pushes you forward. Without friction you could not walk. In the same way, a car's tyres push back on the road and the road's friction drives the car forward.",
+        "hi": "मनुष्य को भी त्वरित होने के लिए बाह्य बल चाहिए। चलते समय आपका पैर ज़मीन को पीछे धकेलता है, और ज़मीन का घर्षण आपको आगे धकेलता है। घर्षण के बिना आप चल नहीं सकते। इसी तरह कार के टायर सड़क को पीछे धकेलते हैं और सड़क का घर्षण कार को आगे ले जाता है।"
+      },
+      "media": "img.laws-of-motion.skaters-push",
+      "source": {
+        "kind": "ncert",
+        "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+        "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+        "retrieved": "2026-10-29",
+        "pages": "§4.9.1, Points to Ponder 10"
+      }
+    },
+    {
+      "id": "phy.laws-of-motion.third-law:dd:06",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 1,
+      "question": "q.phy.laws-of-motion.third-law.0001"
+    },
+    {
+      "id": "phy.laws-of-motion.third-law:dd:07",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.third-law.core.newton-third-law"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$\\vec{F}_{AB} = -\\vec{F}_{BA}$: equal, opposite, simultaneous.",
+          "hi": "$\\vec{F}_{AB} = -\\vec{F}_{BA}$: समान, विपरीत, एक साथ।"
+        },
+        {
+          "en": "The two forces act on different bodies and never cancel each other.",
+          "hi": "दोनों बल अलग पिंडों पर लगते हैं और कभी एक-दूसरे को निरस्त नहीं करते।"
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

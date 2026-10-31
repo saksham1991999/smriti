@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "parse": [
+    {
+      "raw": "42",
+      "allowScientific": true,
+      "expect": 42
+    },
+    {
+      "raw": "-0.5",
+      "allowScientific": true,
+      "expect": -0.5
+    },
+    {
+      "raw": "1.",
+      "allowScientific": true,
+      "expect": 1
+    },
+    {
+      "raw": ".5",
+      "allowScientific": true,
+      "expect": 0.5
+    },
+    {
+      "raw": "1e-3",
+      "allowScientific": true,
+      "expect": 0.001
+    },
+    {
+      "raw": "1e-3",
+      "allowScientific": false,
+      "expect": null
+    },
+    {
+      "raw": "2x10^-2",
+      "allowScientific": true,
+      "expect": 0.02
+    },
+    {
+      "raw": "2*10^4",
+      "allowScientific": true,
+      "expect": 20000
+    },
+    {
+      "raw": "12,345,678",
+      "allowScientific": true,
+      "expect": 12345678
+    },
+    {
+      "raw": "1,23",
+      "allowScientific": true,
+      "expect": null
+    },
+    {
+      "raw": "abc",
+      "allowScientific": true,
+      "expect": null
+    },
+    {
+      "raw": "",
+      "allowScientific": true,
+      "expect": null
+    },
+    {
+      "raw": "--1",
+      "allowScientific": true,
+      "expect": null
+    },
+    {
+      "raw": "١٢",
+      "allowScientific": true,
+      "expect": null
+    }
+  ],
+  "normalize": [
+    {
+      "text": "  Hello   World ",
+      "expect": "hello world"
+    },
+    {
+      "text": "“Quoted.”",
+      "expect": "quoted"
+    },
+    {
+      "text": "ﬁne",
+      "expect": "fine"
+    },
+    {
+      "text": "नमस्ते।",
+      "expect": "नमस्ते"
+    },
+    {
+      "text": "a​b",
+      "expect": "ab"
+    },
+    {
+      "text": "Ａｌｐｈａ",
+      "expect": "alpha"
+    }
+  ]
+}

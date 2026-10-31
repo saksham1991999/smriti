@@ -1,0 +1,1164 @@
+[
+  {
+    "id": "acid-base-titration",
+    "version": "1.0.0",
+    "title": {
+      "en": "Acid–base titration",
+      "hi": "अम्ल-क्षार अनुमापन"
+    },
+    "subject": "chem",
+    "concepts": [
+      "chem.equilibrium.acid-base-titration",
+      "chem.equilibrium.indicators",
+      "chem.equilibrium.ph-scale"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "end-point",
+        "prompt": {
+          "en": "Add base from the burette. Stop as soon as the indicator changes colour.",
+          "hi": "ब्यूरेट से क्षार मिलाएँ। सूचक का रंग बदलते ही रुक जाएँ।"
+        },
+        "hint": {
+          "en": "Near the change, add one drop at a time.",
+          "hi": "रंग बदलने के पास एक-एक बूँद डालें।"
+        },
+        "check": {
+          "kind": "condition",
+          "rule": "end_point",
+          "quantity": "volume_added"
+        }
+      },
+      {
+        "id": "record-end-point",
+        "prompt": {
+          "en": "At the end point, record the volume of base you added.",
+          "hi": "अंत बिंदु पर, मिलाए गए क्षार का आयतन दर्ज करें।"
+        },
+        "hint": {
+          "en": "Read the burette at the end point, then tap Record reading.",
+          "hi": "अंत बिंदु पर ब्यूरेट पढ़ें, फिर रीडिंग दर्ज करें दबाएँ।"
+        },
+        "check": {
+          "kind": "target",
+          "quantity": "volume_added",
+          "value": 25,
+          "tolerance": 0.1,
+          "on": "last_recorded"
+        }
+      },
+      {
+        "id": "excess-base",
+        "prompt": {
+          "en": "Keep adding base until the pH is above 11.",
+          "hi": "क्षार मिलाते रहें जब तक pH 11 से ज़्यादा न हो जाए।"
+        },
+        "hint": {
+          "en": "Watch the pH reading and the curve.",
+          "hi": "pH रीडिंग और वक्र देखें।"
+        },
+        "check": {
+          "kind": "range",
+          "quantity": "ph",
+          "min": 11
+        }
+      },
+      {
+        "id": "weak-acid-end-point",
+        "prompt": {
+          "en": "Switch to the weak acid. Find its end point with phenolphthalein.",
+          "hi": "दुर्बल अम्ल चुनें। फ़ीनॉल्फ़्थेलिन से उसका अंत बिंदु पता करें।"
+        },
+        "hint": {
+          "en": "Changing the acid starts a new flask. Add drop by drop near the change.",
+          "hi": "अम्ल बदलने से नया फ्लास्क शुरू होता है। रंग बदलने के पास बूँद-बूँद डालें।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "analyte",
+              "args": {
+                "is": "weak"
+              }
+            },
+            {
+              "kind": "condition",
+              "rule": "indicator",
+              "args": {
+                "is": "phenolphthalein"
+              }
+            },
+            {
+              "kind": "condition",
+              "rule": "end_point",
+              "quantity": "volume_added"
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "volume_added",
+        "unit": "mL",
+        "label": {
+          "en": "Base added",
+          "hi": "मिलाया गया क्षार"
+        }
+      },
+      {
+        "name": "burette_reading",
+        "unit": "mL",
+        "label": {
+          "en": "Burette reading",
+          "hi": "ब्यूरेट रीडिंग"
+        }
+      },
+      {
+        "name": "ph",
+        "unit": "",
+        "label": {
+          "en": "pH",
+          "hi": "pH"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 365581,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "4:3"
+  },
+  {
+    "id": "convex-lens-bench",
+    "version": "1.0.0",
+    "title": {
+      "en": "Optics bench: convex lens",
+      "hi": "प्रकाशिक बेंच: उत्तल लेंस"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.light-refraction.convex-lens-image-formation",
+      "phy.light-refraction.lens-formula",
+      "phy.light-refraction.magnification"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "between-f-2f-sharp",
+        "prompt": {
+          "en": "Place the object between F₁ and 2F₁. Then move the screen until the image on it is sharp.",
+          "hi": "बिंब को F₁ और 2F₁ के बीच रखें। फिर परदे को तब तक खिसकाएँ जब तक उस पर प्रतिबिंब स्पष्ट न हो जाए।"
+        },
+        "hint": {
+          "en": "Follow the rays to where they meet. Put the screen there.",
+          "hi": "किरणों को देखें कि वे कहाँ मिलती हैं। परदा वहीं रखें।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "object_region",
+              "args": {
+                "is": "between_f_2f"
+              },
+              "quantity": "object_distance"
+            },
+            {
+              "kind": "condition",
+              "rule": "screen_sharp",
+              "quantity": "screen_distance"
+            }
+          ]
+        }
+      },
+      {
+        "id": "same-size",
+        "prompt": {
+          "en": "Make a real image that is the same size as the object.",
+          "hi": "बिंब के बराबर साइज़ का वास्तविक प्रतिबिंब बनाएँ।"
+        },
+        "hint": {
+          "en": "Move the object and watch the magnification m.",
+          "hi": "बिंब को खिसकाएँ और आवर्धन m देखें।"
+        },
+        "check": {
+          "kind": "target",
+          "quantity": "magnification",
+          "value": -1,
+          "tolerance": 0.02
+        }
+      },
+      {
+        "id": "virtual-image",
+        "prompt": {
+          "en": "Make a virtual, upright image.",
+          "hi": "आभासी और सीधा प्रतिबिंब बनाएँ।"
+        },
+        "hint": {
+          "en": "Bring the object closer to the lens.",
+          "hi": "बिंब को लेंस के और पास लाएँ।"
+        },
+        "check": {
+          "kind": "condition",
+          "rule": "image_virtual",
+          "quantity": "object_distance"
+        }
+      },
+      {
+        "id": "record-u-v",
+        "prompt": {
+          "en": "Keep the focal length fixed. For three object positions, get a sharp image on the screen and record v each time.",
+          "hi": "फोकस दूरी एक जैसी रखें। बिंब की तीन अलग स्थितियों के लिए परदे पर स्पष्ट प्रतिबिंब लाएँ और हर बार v दर्ज करें।"
+        },
+        "hint": {
+          "en": "A reading counts only when the image on the screen is sharp.",
+          "hi": "रीडिंग तभी गिनी जाती है जब परदे पर प्रतिबिंब स्पष्ट हो।"
+        },
+        "check": {
+          "kind": "readings",
+          "quantity": "image_distance",
+          "count": 3,
+          "distinctBy": "object_distance",
+          "sameBy": [
+            "focal_length"
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "object_distance",
+        "unit": "cm",
+        "label": {
+          "en": "Object distance u",
+          "hi": "बिंब दूरी u"
+        }
+      },
+      {
+        "name": "focal_length",
+        "unit": "cm",
+        "label": {
+          "en": "Focal length f",
+          "hi": "फोकस दूरी f"
+        }
+      },
+      {
+        "name": "image_distance",
+        "unit": "cm",
+        "label": {
+          "en": "Image distance v",
+          "hi": "प्रतिबिंब दूरी v"
+        }
+      },
+      {
+        "name": "magnification",
+        "unit": "",
+        "label": {
+          "en": "Magnification m",
+          "hi": "आवर्धन m"
+        }
+      },
+      {
+        "name": "screen_distance",
+        "unit": "cm",
+        "label": {
+          "en": "Screen distance",
+          "hi": "परदे की दूरी"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "landscape",
+    "entry": "index.html",
+    "sizeBytes": 368158,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "16:10"
+  },
+  {
+    "id": "motion-graphs",
+    "version": "1.0.0",
+    "title": {
+      "en": "Motion graphs",
+      "hi": "गति के ग्राफ़"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.motion-straight-line.acceleration.core.acceleration-graphs",
+      "phy.motion-straight-line.kinematic-equations.core.equations-of-motion"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "stop-time",
+        "prompt": {
+          "en": "With u = 10 m/s and a = −2 m/s², stop the clock when the velocity reads zero.",
+          "hi": "u = 10 m/s और a = −2 m/s² के साथ, जब वेग शून्य दिखे तब घड़ी रोकिए।"
+        },
+        "hint": {
+          "en": "Near the end, use Step to move 0.1 s at a time.",
+          "hi": "अंत के पास, 0.1 s करके आगे बढ़ने के लिए एक कदम दबाइए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "velocity",
+              "value": 0,
+              "tolerance": 0.05
+            },
+            {
+              "kind": "target",
+              "quantity": "time",
+              "value": 5,
+              "tolerance": 0.1
+            }
+          ]
+        }
+      },
+      {
+        "id": "farthest",
+        "prompt": {
+          "en": "Leave the clock where the velocity is zero: the cart is farthest from the start.",
+          "hi": "घड़ी वहीं रहने दीजिए जहाँ वेग शून्य है: गाड़ी आरंभ से सबसे दूर है।"
+        },
+        "hint": {
+          "en": "The x-t curve is at its top where the v-t line crosses zero.",
+          "hi": "जहाँ v-t रेखा शून्य को काटती है, वहाँ x-t वक्र सबसे ऊपर होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "velocity",
+              "value": 0,
+              "tolerance": 0.05
+            },
+            {
+              "kind": "target",
+              "quantity": "position",
+              "value": 25,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "back-home",
+        "prompt": {
+          "en": "Run on to t = 10 s and read the position.",
+          "hi": "t = 10 s तक चलाइए और स्थिति पढ़िए।"
+        },
+        "hint": {
+          "en": "Move the time slider to the end, or press Play.",
+          "hi": "समय स्लाइडर को अंत तक ले जाइए, या चलाएँ दबाइए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "time",
+              "value": 10,
+              "tolerance": 0.1
+            },
+            {
+              "kind": "target",
+              "quantity": "position",
+              "value": 0,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "path",
+        "prompt": {
+          "en": "At t = 10 s, compare the displacement with the path length.",
+          "hi": "t = 10 s पर विस्थापन की तुलना पथ-लंबाई से कीजिए।"
+        },
+        "hint": {
+          "en": "Path length adds both shaded areas; displacement adds them with their signs.",
+          "hi": "पथ-लंबाई दोनों छायांकित क्षेत्रफल जोड़ती है; विस्थापन उन्हें चिह्न सहित जोड़ता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "initial_velocity",
+              "value": 10,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "acceleration",
+              "value": -2,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "time",
+              "value": 10,
+              "tolerance": 0.1
+            },
+            {
+              "kind": "target",
+              "quantity": "path_length",
+              "value": 50,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "time",
+        "unit": "s",
+        "label": {
+          "en": "Time t",
+          "hi": "समय t"
+        }
+      },
+      {
+        "name": "position",
+        "unit": "m",
+        "label": {
+          "en": "Position x",
+          "hi": "स्थिति x"
+        }
+      },
+      {
+        "name": "velocity",
+        "unit": "m/s",
+        "label": {
+          "en": "Velocity v",
+          "hi": "वेग v"
+        }
+      },
+      {
+        "name": "acceleration",
+        "unit": "m/s²",
+        "label": {
+          "en": "Acceleration a",
+          "hi": "त्वरण a"
+        }
+      },
+      {
+        "name": "displacement",
+        "unit": "m",
+        "label": {
+          "en": "Displacement",
+          "hi": "विस्थापन"
+        }
+      },
+      {
+        "name": "path_length",
+        "unit": "m",
+        "label": {
+          "en": "Path length",
+          "hi": "पथ-लंबाई"
+        }
+      },
+      {
+        "name": "initial_velocity",
+        "unit": "m/s",
+        "label": {
+          "en": "Initial velocity u",
+          "hi": "प्रारंभिक वेग u"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 369732,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "1:1"
+  },
+  {
+    "id": "ohms-law-circuit",
+    "version": "1.0.1",
+    "title": {
+      "en": "Ohm's law: simple circuit",
+      "hi": "ओम का नियम: सरल परिपथ"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.current-electricity.ohms-law.core.ohms-law-def",
+      "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+      "phy.current-electricity.cells.core.emf-internal-resistance"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "current-half-amp",
+        "prompt": {
+          "en": "Make the ammeter read 0.5 A.",
+          "hi": "ऐमीटर में 0.5 A की रीडिंग लाएँ।"
+        },
+        "hint": {
+          "en": "Change the battery voltage or the resistance, and watch the ammeter.",
+          "hi": "बैटरी का विभवांतर या प्रतिरोध बदलें और ऐमीटर देखें।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "switch_on"
+            },
+            {
+              "kind": "target",
+              "quantity": "current",
+              "value": 0.5,
+              "tolerance": 0.01
+            }
+          ]
+        }
+      },
+      {
+        "id": "double-current",
+        "prompt": {
+          "en": "Keep the battery voltage the same. Change the resistance so the current doubles.",
+          "hi": "बैटरी का विभवांतर वही रखें। प्रतिरोध ऐसे बदलें कि धारा दोगुनी हो जाए।"
+        },
+        "hint": {
+          "en": "Try making the resistance smaller.",
+          "hi": "प्रतिरोध कम करके देखें।"
+        },
+        "check": {
+          "kind": "ratio",
+          "quantity": "current",
+          "ratio": 2,
+          "tolerance": 0.03,
+          "hold": [
+            "voltage"
+          ]
+        }
+      },
+      {
+        "id": "three-readings",
+        "prompt": {
+          "en": "Keep the resistance fixed. Record the current at three different battery voltages.",
+          "hi": "प्रतिरोध एक जैसा रखें। तीन अलग-अलग विभवांतर पर धारा की रीडिंग दर्ज करें।"
+        },
+        "hint": {
+          "en": "Change only the battery voltage, then tap Record reading each time.",
+          "hi": "केवल बैटरी का विभवांतर बदलें, फिर हर बार रीडिंग दर्ज करें दबाएँ।"
+        },
+        "check": {
+          "kind": "readings",
+          "quantity": "current",
+          "count": 3,
+          "distinctBy": "voltage",
+          "sameBy": [
+            "resistance"
+          ]
+        }
+      },
+      {
+        "id": "parallel-one-amp",
+        "prompt": {
+          "en": "Connect the two resistors in parallel and make the current 1 A.",
+          "hi": "दोनों प्रतिरोधकों को पार्श्वक्रम में जोड़ें और धारा 1 A कीजिए।"
+        },
+        "hint": {
+          "en": "Two resistors in parallel have a smaller total resistance than either one.",
+          "hi": "पार्श्वक्रम में जुड़े दो प्रतिरोधकों का कुल प्रतिरोध हर एक से कम होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "arrangement",
+              "args": {
+                "is": "parallel"
+              }
+            },
+            {
+              "kind": "condition",
+              "rule": "switch_on"
+            },
+            {
+              "kind": "target",
+              "quantity": "current",
+              "value": 1,
+              "tolerance": 0.01
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "voltage",
+        "unit": "V",
+        "label": {
+          "en": "Battery voltage",
+          "hi": "बैटरी का विभवांतर"
+        }
+      },
+      {
+        "name": "resistance",
+        "unit": "Ω",
+        "label": {
+          "en": "Total resistance",
+          "hi": "कुल प्रतिरोध"
+        }
+      },
+      {
+        "name": "current",
+        "unit": "A",
+        "label": {
+          "en": "Current",
+          "hi": "विद्युत धारा"
+        }
+      },
+      {
+        "name": "terminal_voltage",
+        "unit": "V",
+        "label": {
+          "en": "Terminal voltage",
+          "hi": "टर्मिनल विभवांतर"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 368054,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "4:3"
+  },
+  {
+    "id": "projectile-launcher",
+    "version": "1.0.0",
+    "title": {
+      "en": "Projectile launcher",
+      "hi": "प्रक्षेप्य प्रक्षेपक"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.motion-plane.projectile.core.projectile-motion"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "range-45",
+        "prompt": {
+          "en": "Launch at 20 m/s and 45°. Read the range.",
+          "hi": "20 m/s और 45° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Set the angle to 45°, then press Launch and wait for the ball to land.",
+          "hi": "कोण 45° रखिए, फिर प्रक्षेपित करें दबाइए और गेंद के गिरने तक रुकिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 45,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 40.8,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "height-45",
+        "prompt": {
+          "en": "Read the maximum height for the same launch.",
+          "hi": "उसी प्रक्षेपण की अधिकतम ऊँचाई पढ़िए।"
+        },
+        "hint": {
+          "en": "The highest point is where vy reads zero.",
+          "hi": "सबसे ऊँचा बिंदु वहाँ है जहाँ vy शून्य होता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 45,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "max_height",
+              "value": 10.2,
+              "tolerance": 0.2
+            }
+          ]
+        }
+      },
+      {
+        "id": "range-30",
+        "prompt": {
+          "en": "Keep the speed and launch at 30°. Read the range.",
+          "hi": "चाल वही रखकर 30° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Change only the angle, then launch again.",
+          "hi": "केवल कोण बदलिए, फिर दोबारा प्रक्षेपित कीजिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 30,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 35.3,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      },
+      {
+        "id": "range-60",
+        "prompt": {
+          "en": "Now launch at 60°. Read the range.",
+          "hi": "अब 60° पर प्रक्षेपित कीजिए। परास पढ़िए।"
+        },
+        "hint": {
+          "en": "Compare this path with the 30° path you kept.",
+          "hi": "इस पथ की तुलना रखे हुए 30° वाले पथ से कीजिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "target",
+              "quantity": "launch_speed",
+              "value": 20,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "gravity",
+              "value": 9.8,
+              "tolerance": 0.01
+            },
+            {
+              "kind": "target",
+              "quantity": "angle",
+              "value": 60,
+              "tolerance": 0.5
+            },
+            {
+              "kind": "target",
+              "quantity": "range",
+              "value": 35.3,
+              "tolerance": 0.5
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "time",
+        "unit": "s",
+        "label": {
+          "en": "Time t",
+          "hi": "समय t"
+        }
+      },
+      {
+        "name": "vx",
+        "unit": "m/s",
+        "label": {
+          "en": "Horizontal velocity vx",
+          "hi": "क्षैतिज वेग vx"
+        }
+      },
+      {
+        "name": "vy",
+        "unit": "m/s",
+        "label": {
+          "en": "Vertical velocity vy",
+          "hi": "ऊर्ध्वाधर वेग vy"
+        }
+      },
+      {
+        "name": "range",
+        "unit": "m",
+        "label": {
+          "en": "Range R",
+          "hi": "परास R"
+        }
+      },
+      {
+        "name": "max_height",
+        "unit": "m",
+        "label": {
+          "en": "Maximum height H",
+          "hi": "अधिकतम ऊँचाई H"
+        }
+      },
+      {
+        "name": "time_of_flight",
+        "unit": "s",
+        "label": {
+          "en": "Time of flight T",
+          "hi": "उड़ान का समय T"
+        }
+      },
+      {
+        "name": "launch_speed",
+        "unit": "m/s",
+        "label": {
+          "en": "Launch speed v0",
+          "hi": "प्रक्षेपण चाल v0"
+        }
+      },
+      {
+        "name": "angle",
+        "unit": "°",
+        "label": {
+          "en": "Launch angle θ",
+          "hi": "प्रक्षेपण कोण θ"
+        }
+      },
+      {
+        "name": "gravity",
+        "unit": "m/s²",
+        "label": {
+          "en": "Gravity g",
+          "hi": "गुरुत्वीय त्वरण g"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 369622,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "4:3"
+  },
+  {
+    "id": "simple-pendulum",
+    "version": "1.0.0",
+    "title": {
+      "en": "Simple pendulum",
+      "hi": "सरल लोलक"
+    },
+    "subject": "phy",
+    "concepts": [
+      "phy.oscillations.simple-pendulum",
+      "phy.oscillations.time-period",
+      "phy.gravitation.acceleration-due-to-gravity"
+    ],
+    "tasks": 4,
+    "taskSpecs": [
+      {
+        "id": "period-two-seconds",
+        "prompt": {
+          "en": "On Earth, set the length so the period is 2.0 s.",
+          "hi": "पृथ्वी पर, लंबाई ऐसे रखें कि आवर्तकाल 2.0 s हो।"
+        },
+        "hint": {
+          "en": "A longer pendulum swings more slowly.",
+          "hi": "लंबा लोलक धीरे दोलन करता है।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "planet",
+              "args": {
+                "is": "earth"
+              },
+              "quantity": "gravity"
+            },
+            {
+              "kind": "target",
+              "quantity": "period",
+              "value": 2,
+              "tolerance": 0.03
+            }
+          ]
+        }
+      },
+      {
+        "id": "halve-period",
+        "prompt": {
+          "en": "Stay on the same planet. Change the length so the period halves.",
+          "hi": "उसी ग्रह पर रहें। लंबाई ऐसे बदलें कि आवर्तकाल आधा हो जाए।"
+        },
+        "hint": {
+          "en": "Halving the length is not enough. Try shorter.",
+          "hi": "लंबाई आधी करना काफ़ी नहीं है। और छोटी करके देखें।"
+        },
+        "check": {
+          "kind": "ratio",
+          "quantity": "period",
+          "ratio": 0.5,
+          "tolerance": 0.03,
+          "hold": [
+            "gravity"
+          ]
+        }
+      },
+      {
+        "id": "mass-readings",
+        "prompt": {
+          "en": "Keep the length the same. Record the period for two different masses.",
+          "hi": "लंबाई एक जैसी रखें। दो अलग-अलग द्रव्यमानों के लिए आवर्तकाल दर्ज करें।"
+        },
+        "hint": {
+          "en": "Change only the mass, then tap Record reading each time.",
+          "hi": "केवल द्रव्यमान बदलें, फिर हर बार रीडिंग दर्ज करें दबाएँ।"
+        },
+        "check": {
+          "kind": "readings",
+          "quantity": "period",
+          "count": 2,
+          "distinctBy": "mass",
+          "sameBy": [
+            "length",
+            "gravity"
+          ]
+        }
+      },
+      {
+        "id": "moon-two-seconds",
+        "prompt": {
+          "en": "Take the pendulum to the Moon. Make the period 2.0 s there.",
+          "hi": "लोलक को चंद्रमा पर ले जाएँ। वहाँ आवर्तकाल 2.0 s कीजिए।"
+        },
+        "hint": {
+          "en": "Gravity is weaker on the Moon, so you need a shorter string.",
+          "hi": "चंद्रमा पर गुरुत्व कम है, इसलिए छोटी डोरी चाहिए।"
+        },
+        "check": {
+          "kind": "all",
+          "of": [
+            {
+              "kind": "condition",
+              "rule": "planet",
+              "args": {
+                "is": "moon"
+              },
+              "quantity": "gravity"
+            },
+            {
+              "kind": "target",
+              "quantity": "period",
+              "value": 2,
+              "tolerance": 0.03
+            }
+          ]
+        }
+      }
+    ],
+    "readings": [
+      {
+        "name": "length",
+        "unit": "m",
+        "label": {
+          "en": "Length L",
+          "hi": "लंबाई L"
+        }
+      },
+      {
+        "name": "gravity",
+        "unit": "m/s²",
+        "label": {
+          "en": "Gravity g",
+          "hi": "गुरुत्वीय त्वरण g"
+        }
+      },
+      {
+        "name": "amplitude",
+        "unit": "°",
+        "label": {
+          "en": "Amplitude",
+          "hi": "आयाम"
+        }
+      },
+      {
+        "name": "mass",
+        "unit": "kg",
+        "label": {
+          "en": "Mass",
+          "hi": "द्रव्यमान"
+        }
+      },
+      {
+        "name": "period",
+        "unit": "s",
+        "label": {
+          "en": "Period T",
+          "hi": "आवर्तकाल T"
+        }
+      },
+      {
+        "name": "oscillations",
+        "unit": "",
+        "label": {
+          "en": "Oscillations",
+          "hi": "दोलन"
+        }
+      },
+      {
+        "name": "elapsed",
+        "unit": "s",
+        "label": {
+          "en": "Time",
+          "hi": "समय"
+        }
+      }
+    ],
+    "capabilities": [
+      "tasks",
+      "record",
+      "pause",
+      "set_params",
+      "snapshot",
+      "resize"
+    ],
+    "preferredOrientation": "any",
+    "entry": "index.html",
+    "sizeBytes": 365116,
+    "licence": "owned",
+    "attribution": null,
+    "aspect": "4:3"
+  }
+]

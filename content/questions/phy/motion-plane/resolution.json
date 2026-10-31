@@ -1,0 +1,518 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 3 Samtal mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph103.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 44-46"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "topic": "phy.motion-plane.resolution",
+  "questions": [
+    {
+      "id": "q.phy.motion-plane.resolution.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.resolution.core.unit-vector-resolution",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The unit vector along $3\\hat{i} + 4\\hat{j}$ is",
+        "hi": "$3\\hat{i} + 4\\hat{j}$ के अनुदिश एकांक सदिश है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$\\frac{3}{5}\\hat{i} + \\frac{4}{5}\\hat{j}$",
+            "hi": "$\\frac{3}{5}\\hat{i} + \\frac{4}{5}\\hat{j}$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$\\frac{3}{7}\\hat{i} + \\frac{4}{7}\\hat{j}$",
+            "hi": "$\\frac{3}{7}\\hat{i} + \\frac{4}{7}\\hat{j}$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$\\hat{i} + \\hat{j}$",
+            "hi": "$\\hat{i} + \\hat{j}$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$3\\hat{i} + 4\\hat{j}$",
+            "hi": "$3\\hat{i} + 4\\hat{j}$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Find the magnitude first.",
+          "hi": "पहले परिमाण निकालिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Divide the vector by its own length.",
+          "hi": "सदिश को उसकी अपनी लंबाई से भाग दीजिए।"
+        },
+        "steps": [
+          {
+            "en": "Magnitude $= \\sqrt{9 + 16} = 5$; divide each component by 5.",
+            "hi": "परिमाण $= \\sqrt{9 + 16} = 5$; हर घटक को 5 से भाग दीजिए।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "7 is the sum of the components, not the magnitude.",
+              "hi": "7 घटकों का योग है, परिमाण नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Its magnitude is $\\sqrt{2}$, not 1.",
+              "hi": "इसका परिमाण $\\sqrt{2}$ है, 1 नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the vector itself, of magnitude 5.",
+              "hi": "यह स्वयं सदिश है, जिसका परिमाण 5 है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.resolution.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.resolution.core.unit-vector-resolution",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A force of 20 N acts at $60°$ to the x-axis in the x-y plane. Its x-component is",
+        "hi": "x-y समतल में 20 N का बल x-अक्ष से $60°$ पर लगता है। इसका x-घटक है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 N",
+            "hi": "10 N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$10\\sqrt{3}$ N",
+            "hi": "$10\\sqrt{3}$ N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "20 N",
+            "hi": "20 N"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "cos or sin?",
+          "hi": "cos या sin?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The component along the axis uses the cosine of the angle with that axis.",
+          "hi": "अक्ष के अनुदिश घटक में उस अक्ष से कोण की कोज्या लगती है।"
+        },
+        "steps": [
+          {
+            "en": "$F_x = 20\\cos 60° = 10$ N",
+            "hi": "$F_x = 20\\cos 60° = 10$ N"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the y-component, $20\\sin 60°$.",
+              "hi": "यह y-घटक है, $20\\sin 60°$।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The whole force is not along the x-axis.",
+              "hi": "पूरा बल x-अक्ष के अनुदिश नहीं है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "A force at 60° has a non-zero x-component.",
+              "hi": "60° पर लगे बल का x-घटक शून्य नहीं होता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.resolution.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.resolution.core.unit-vector-resolution",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The magnitude of $2\\hat{i} - 3\\hat{j} + 6\\hat{k}$ is",
+        "hi": "$2\\hat{i} - 3\\hat{j} + 6\\hat{k}$ का परिमाण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "7",
+            "hi": "7"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "5",
+            "hi": "5"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "11",
+            "hi": "11"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "49",
+            "hi": "49"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "A negative component still adds a positive square.",
+          "hi": "ऋणात्मक घटक का वर्ग भी धनात्मक जुड़ता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Square every component, add, and take the square root.",
+          "hi": "हर घटक का वर्ग करके जोड़िए, फिर वर्गमूल लीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$",
+            "hi": "$\\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That adds the components with their signs.",
+              "hi": "यह घटकों को चिह्न सहित जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That adds the components without squaring.",
+              "hi": "यह घटकों को बिना वर्ग किए जोड़ता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The square root was not taken.",
+              "hi": "वर्गमूल नहीं लिया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.resolution.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.resolution.core.unit-vector-resolution",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "$\\vec{A} = 5\\hat{i} + \\hat{j}$ and $\\vec{B} = \\hat{i} + 7\\hat{j}$. The magnitude of $\\vec{A} + \\vec{B}$ is",
+        "hi": "$\\vec{A} = 5\\hat{i} + \\hat{j}$ और $\\vec{B} = \\hat{i} + 7\\hat{j}$ हैं। $\\vec{A} + \\vec{B}$ का परिमाण है"
+      },
+      "answer": {
+        "value": 10,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "$R_x = A_x + B_x$",
+          "hi": "$R_x = A_x + B_x$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Add components first, then find the length.",
+          "hi": "पहले घटक जोड़िए, फिर लंबाई निकालिए।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{A} + \\vec{B} = 6\\hat{i} + 8\\hat{j}$",
+            "hi": "$\\vec{A} + \\vec{B} = 6\\hat{i} + 8\\hat{j}$"
+          },
+          {
+            "en": "$\\sqrt{36 + 64} = 10$",
+            "hi": "$\\sqrt{36 + 64} = 10$"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Adding the magnitudes, $|\\vec{A}| + |\\vec{B}| \\approx 5.1 + 7.1$, gives about 12, which is wrong.",
+              "hi": "परिमाण जोड़ने पर, $|\\vec{A}| + |\\vec{B}| \\approx 5.1 + 7.1$, लगभग 12 आता है, जो गलत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-plane.resolution.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-plane.resolution.core.unit-vector-resolution",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The angle that $-\\hat{i} + \\sqrt{3}\\,\\hat{j}$ makes with the positive x-axis is",
+        "hi": "$-\\hat{i} + \\sqrt{3}\\,\\hat{j}$ धनात्मक x-अक्ष से कितना कोण बनाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$120°$",
+            "hi": "$120°$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$60°$",
+            "hi": "$60°$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$-60°$",
+            "hi": "$-60°$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$150°$",
+            "hi": "$150°$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Check the signs of both components.",
+          "hi": "दोनों घटकों के चिह्न देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The x-component is negative and the y-component positive: the vector is in the second quadrant.",
+          "hi": "x-घटक ऋणात्मक और y-घटक धनात्मक है: सदिश दूसरे चतुर्थांश में है।"
+        },
+        "steps": [
+          {
+            "en": "$\\tan\\theta = \\frac{\\sqrt{3}}{-1}$, magnitude 2, $\\cos\\theta = -\\frac{1}{2}$ and $\\sin\\theta = \\frac{\\sqrt{3}}{2}$.",
+            "hi": "$\\tan\\theta = \\frac{\\sqrt{3}}{-1}$, परिमाण 2, $\\cos\\theta = -\\frac{1}{2}$ और $\\sin\\theta = \\frac{\\sqrt{3}}{2}$।"
+          },
+          {
+            "en": "So $\\theta = 120°$.",
+            "hi": "अतः $\\theta = 120°$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That ignores the sign of the x-component.",
+              "hi": "यह x-घटक के चिह्न को अनदेखा करता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That would need a negative y-component.",
+              "hi": "उसके लिए y-घटक ऋणात्मक होना चाहिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That would need $\\tan\\theta = -\\frac{1}{\\sqrt{3}}$.",
+              "hi": "उसके लिए $\\tan\\theta = -\\frac{1}{\\sqrt{3}}$ होना चाहिए।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 50,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

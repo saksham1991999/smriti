@@ -1,0 +1,297 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.oscillations",
+  "subject": "phy",
+  "unit": "phy.oscillations-waves",
+  "name": {
+    "en": "Oscillations",
+    "hi": "दोलन"
+  },
+  "ncert_ref": "NCERT Class 11 Physics Part II, Ch 13",
+  "topics": [
+    {
+      "id": "phy.oscillations.periodic-motion",
+      "name": {
+        "en": "Periodic and Oscillatory Motion",
+        "hi": "दोलन और आवर्ती गति"
+      },
+      "subtopics": [
+        {
+          "id": "phy.oscillations.periodic-motion.core",
+          "name": {
+            "en": "Periodic and Oscillatory Motion",
+            "hi": "दोलन और आवर्ती गति"
+          },
+          "concepts": [
+            {
+              "id": "phy.oscillations.periodic-motion.core.periodic-motion-def",
+              "name": {
+                "en": "Periodic motion: period, frequency and periodic functions",
+                "hi": "आवर्ती गति : आवर्तकाल, आवृत्ति एवं आवर्ती फलन"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Motion that repeats at regular intervals is periodic, with period T and frequency $\\nu = 1/T$; it can be described by periodic functions such as sine and cosine.",
+                "hi": "नियमित अंतराल पर दोहराई जाने वाली गति आवर्ती है, जिसका आवर्तकाल T और आवृत्ति $\\nu = 1/T$ है; इसे ज्या और कोज्या जैसे आवर्ती फलनों से व्यक्त किया जा सकता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Distinguish periodic motion from oscillatory motion.",
+                  "hi": "आवर्ती गति और दोलनी गति में अंतर बताइए।"
+                },
+                {
+                  "en": "Write displacement as a function of time and identify its period.",
+                  "hi": "विस्थापन को समय के फलन के रूप में लिखिए और उसका आवर्तकाल पहचानिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-1",
+                "neet-ug-2026:physics:unit-10:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.oscillations.shm",
+      "name": {
+        "en": "Simple Harmonic Motion",
+        "hi": "सरल आवर्त गति"
+      },
+      "subtopics": [
+        {
+          "id": "phy.oscillations.shm.core",
+          "name": {
+            "en": "Simple Harmonic Motion",
+            "hi": "सरल आवर्त गति"
+          },
+          "concepts": [
+            {
+              "id": "phy.oscillations.shm.core.shm-equation",
+              "name": {
+                "en": "Simple harmonic motion, its equation and phase",
+                "hi": "सरल आवर्त गति, उसका समीकरण एवं कला"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In SHM the displacement is $x = A \\cos(\\omega t + \\phi)$, where A is amplitude, $\\omega$ angular frequency and $(\\omega t + \\phi)$ the phase; it is the projection of uniform circular motion.",
+                "hi": "सरल आवर्त गति में विस्थापन $x = A \\cos(\\omega t + \\phi)$ है, जहाँ A आयाम, $\\omega$ कोणीय आवृत्ति और $(\\omega t + \\phi)$ कला है; यह एकसमान वृत्तीय गति का प्रक्षेप है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive velocity $v = -A\\omega \\sin(\\omega t + \\phi)$ and acceleration $a = -\\omega^{2}x$.",
+                  "hi": "वेग $v = -A\\omega \\sin(\\omega t + \\phi)$ और त्वरण $a = -\\omega^{2}x$ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Show that speed is maximum at the mean position and acceleration is maximum at the extremes.",
+                  "hi": "दिखाइए कि चाल माध्य स्थिति पर और त्वरण चरम स्थितियों पर अधिकतम होता है।"
+                },
+                {
+                  "en": "Find phase difference between two SHMs.",
+                  "hi": "दो सरल आवर्त गतियों के बीच कलांतर निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.oscillations.periodic-motion.core.periodic-motion-def",
+                "phy.motion-plane.circular-kinematics.core.uniform-circular-motion"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-2",
+                "neet-ug-2026:physics:unit-10:item-2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.oscillations.force-law",
+      "name": {
+        "en": "Force Law for Simple Harmonic Motion",
+        "hi": "सरल आवर्त गति के लिए बल का नियम"
+      },
+      "subtopics": [
+        {
+          "id": "phy.oscillations.force-law.core",
+          "name": {
+            "en": "Force Law for Simple Harmonic Motion",
+            "hi": "सरल आवर्त गति के लिए बल का नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.oscillations.force-law.core.spring-oscillation",
+              "name": {
+                "en": "Oscillations of a spring: restoring force and force constant",
+                "hi": "स्प्रिंग के दोलन : प्रत्यानयन बल एवं बल नियतांक"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "SHM arises when the restoring force is $F = -kx$; a mass m on a spring of force constant k oscillates with $T = 2\\pi\\sqrt{m/k}$.",
+                "hi": "सरल आवर्त गति तब होती है जब प्रत्यानयन बल $F = -kx$ हो; बल नियतांक k की स्प्रिंग पर द्रव्यमान m, $T = 2\\pi\\sqrt{m/k}$ से दोलन करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "From $F = -kx$, derive $T = 2\\pi\\sqrt{m/k}$.",
+                  "hi": "$F = -kx$ से $T = 2\\pi\\sqrt{m/k}$ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Find the effective force constant of springs in series and parallel.",
+                  "hi": "श्रेणी और समांतर क्रम में जुड़ी स्प्रिंगों का प्रभावी बल नियतांक निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.oscillations.shm.core.shm-equation",
+                "phy.work-energy-power.spring-energy.core.spring-potential-energy"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-3",
+                "neet-ug-2026:physics:unit-10:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.oscillations.shm-energy",
+      "name": {
+        "en": "Energy in Simple Harmonic Motion",
+        "hi": "सरल आवर्त गति में ऊर्जा"
+      },
+      "subtopics": [
+        {
+          "id": "phy.oscillations.shm-energy.core",
+          "name": {
+            "en": "Energy in Simple Harmonic Motion",
+            "hi": "सरल आवर्त गति में ऊर्जा"
+          },
+          "concepts": [
+            {
+              "id": "phy.oscillations.shm-energy.core.shm-energy-def",
+              "name": {
+                "en": "Kinetic and potential energy in SHM",
+                "hi": "सरल आवर्त गति में गतिज एवं स्थितिज ऊर्जा"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "In SHM, kinetic energy $k(A^{2} - x^{2})/2$ and potential energy $kx^{2}/2$ exchange while their sum $kA^{2}/2$ stays constant.",
+                "hi": "सरल आवर्त गति में गतिज ऊर्जा $k(A^{2} - x^{2})/2$ और स्थितिज ऊर्जा $kx^{2}/2$ आपस में बदलती रहती हैं जबकि उनका योग $kA^{2}/2$ नियत रहता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Sketch kinetic and potential energy against displacement and against time.",
+                  "hi": "विस्थापन और समय के सापेक्ष गतिज और स्थितिज ऊर्जा के ग्राफ़ बनाइए।"
+                },
+                {
+                  "en": "Show that the energies vary with twice the frequency of the motion.",
+                  "hi": "दिखाइए कि ऊर्जाएँ गति की दुगुनी आवृत्ति से बदलती हैं।"
+                }
+              ],
+              "prerequisites": [
+                "phy.oscillations.force-law.core.spring-oscillation"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-4",
+                "neet-ug-2026:physics:unit-10:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.oscillations.simple-pendulum",
+      "name": {
+        "en": "Some Systems Executing SHM: the Simple Pendulum",
+        "hi": "सरल आवर्त गति करने वाले कुछ निकाय : सरल लोलक"
+      },
+      "subtopics": [
+        {
+          "id": "phy.oscillations.simple-pendulum.core",
+          "name": {
+            "en": "Some Systems Executing SHM: the Simple Pendulum",
+            "hi": "सरल आवर्त गति करने वाले कुछ निकाय : सरल लोलक"
+          },
+          "concepts": [
+            {
+              "id": "phy.oscillations.simple-pendulum.core.simple-pendulum-period",
+              "name": {
+                "en": "Simple pendulum: derivation of its time period",
+                "hi": "सरल लोलक : आवर्तकाल का व्यंजक व्युत्पन्न करना"
+              },
+              "kind": "derivation",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "For small angular displacements the restoring torque on a pendulum bob is proportional to the angle, so it performs SHM with $T = 2\\pi\\sqrt{L/g}$.",
+                "hi": "छोटे कोणीय विस्थापन के लिए लोलक के गोलक पर प्रत्यानयन बल आघूर्ण कोण के अनुक्रमानुपाती होता है, इसलिए यह $T = 2\\pi\\sqrt{L/g}$ से सरल आवर्त गति करता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Using the small-angle approximation $\\sin \\theta \\approx \\theta$, derive $T = 2\\pi\\sqrt{L/g}$.",
+                  "hi": "छोटे कोण के सन्निकटन $\\sin \\theta \\approx \\theta$ से $T = 2\\pi\\sqrt{L/g}$ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "State that the period is independent of mass and amplitude for small swings, and explain the seconds pendulum.",
+                  "hi": "बताइए कि छोटे दोलनों के लिए आवर्तकाल द्रव्यमान और आयाम पर निर्भर नहीं करता, और सेकंड लोलक को समझाइए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.oscillations.shm.core.shm-equation",
+                "phy.rotational-motion.torque-angular-momentum.core.torque"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-10:item-5",
+                "neet-ug-2026:physics:unit-10:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part II, Ch 13 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph206.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph2 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph2ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xvi"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.4: Physics Unit 10, Oscillations and Waves"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.5: Physics Unit 10, OSCILLATIONS AND WAVES"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: periodic-motion (§13.2, khph2 contents prelims p.xvi), force-law (§13.6, khph2 contents prelims p.xvi), shm-energy (§13.7, khph2 contents prelims p.xvi). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/oscillations.json."
+}

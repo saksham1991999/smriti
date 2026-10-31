@@ -1,0 +1,504 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.potential-energy",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.potential-energy.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.potential-energy.core.potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A 2 kg bag is lifted 5 m. Taking $g = 10$ m/s², its gain in gravitational potential energy is",
+        "hi": "2 kg का थैला 5 m ऊपर उठाया जाता है। $g = 10$ m/s² लेकर उसकी गुरुत्वीय स्थितिज ऊर्जा में वृद्धि है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "100 J",
+            "hi": "100 J"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "10 J",
+            "hi": "10 J"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "50 J",
+            "hi": "50 J"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1000 J",
+            "hi": "1000 J"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$mgh$",
+          "hi": "$mgh$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Gain in potential energy is mgh.",
+          "hi": "स्थितिज ऊर्जा में वृद्धि mgh है।"
+        },
+        "steps": [
+          {
+            "en": "$\\Delta V = mgh = 2 \\times 10 \\times 5 = 100$ J",
+            "hi": "$\\Delta V = mgh = 2 \\times 10 \\times 5 = 100$ J"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The height was left out.",
+              "hi": "ऊँचाई छूट गई।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The mass was left out.",
+              "hi": "द्रव्यमान छूट गया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "An extra factor of 10 crept in.",
+              "hi": "10 का एक अतिरिक्त गुणक आ गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.potential-energy.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.potential-energy.core.potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The potential energy of a particle is $V(x) = (3x^2 - 2x)$ J. The force on it at $x = 1$ m is",
+        "hi": "एक कण की स्थितिज ऊर्जा $V(x) = (3x^2 - 2x)$ J है। $x = 1$ m पर उस पर बल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$-4$ N",
+            "hi": "$-4$ N"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$+4$ N",
+            "hi": "$+4$ N"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$+1$ N",
+            "hi": "$+1$ N"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$-1$ N",
+            "hi": "$-1$ N"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$F = -dV/dx$",
+          "hi": "$F = -dV/dx$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Force is minus the slope of V.",
+          "hi": "बल V की ढाल का ऋणात्मक है।"
+        },
+        "steps": [
+          {
+            "en": "$F = -\\frac{dV}{dx} = -(6x - 2) = -4$ N at $x = 1$ m",
+            "hi": "$F = -\\frac{dV}{dx} = -(6x - 2) = -4$ N, $x = 1$ m पर"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The minus sign was dropped.",
+              "hi": "ऋण चिह्न छूट गया।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is $V(1)$, an energy, not a force.",
+              "hi": "यह $V(1)$ है, एक ऊर्जा, बल नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is $-V(1)$, not the slope.",
+              "hi": "यह $-V(1)$ है, ढाल नहीं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.potential-energy.0003",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.potential-energy.core.potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For $V(x) = 2x^2$ J, the magnitude of the force on the particle at $x = 3$ m, in N, is",
+        "hi": "$V(x) = 2x^2$ J के लिए $x = 3$ m पर कण पर बल का परिमाण, N में, है"
+      },
+      "answer": {
+        "value": 12,
+        "unit": "N"
+      },
+      "hints": [
+        {
+          "en": "$|F| = |dV/dx|$",
+          "hi": "$|F| = |dV/dx|$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Differentiate V and take the size.",
+          "hi": "V का अवकलन करके परिमाण लीजिए।"
+        },
+        "steps": [
+          {
+            "en": "$F = -\\frac{dV}{dx} = -4x = -12$ N, so the magnitude is 12 N.",
+            "hi": "$F = -\\frac{dV}{dx} = -4x = -12$ N, अतः परिमाण 12 N है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Giving $V(3) = 18$ J, an energy, instead of the force.",
+              "hi": "बल के बजाय $V(3) = 18$ J, एक ऊर्जा, देना।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.potential-energy.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.potential-energy.core.potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball's potential energy is measured from the floor. If you measure it from the table top instead, then",
+        "hi": "एक गेंद की स्थितिज ऊर्जा फ़र्श से मापी जाती है। यदि आप इसे मेज़ की सतह से मापें, तो"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "all values of V shift by the same amount, and changes in V stay the same",
+            "hi": "V के सभी मान समान मात्रा से खिसकते हैं, और V के परिवर्तन वही रहते हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the force of gravity on the ball changes",
+            "hi": "गेंद पर गुरुत्व बल बदल जाता है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the ball's speed when it falls changes",
+            "hi": "गिरने पर गेंद की चाल बदल जाती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "potential energy can no longer be defined",
+            "hi": "स्थितिज ऊर्जा अब परिभाषित नहीं की जा सकती"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "What does adding a constant to V change?",
+          "hi": "V में नियतांक जोड़ने से क्या बदलता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The zero of potential energy is a free choice.",
+          "hi": "स्थितिज ऊर्जा का शून्य स्वतंत्र चुनाव है।"
+        },
+        "steps": [
+          {
+            "en": "Only differences in V enter physics, and they do not depend on the zero.",
+            "hi": "भौतिकी में केवल V के अंतर आते हैं, और वे शून्य पर निर्भर नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$F = -dV/dx$ is unchanged by adding a constant.",
+              "hi": "नियतांक जोड़ने से $F = -dV/dx$ नहीं बदलता।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The speed depends on the drop in V, which is unchanged.",
+              "hi": "चाल V की कमी पर निर्भर है, जो नहीं बदलती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Any fixed reference point works.",
+              "hi": "कोई भी नियत संदर्भ बिंदु चलता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.potential-energy.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.potential-energy.core.potential-energy",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A block is released from rest at the top of a smooth incline 5 m high. Taking $g = 10$ m/s², its speed at the bottom is",
+        "hi": "एक गुटका 5 m ऊँचे चिकने आनत तल के शीर्ष से विराम से छोड़ा जाता है। $g = 10$ m/s² लेकर तली पर उसकी चाल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 m/s, whatever the angle of the incline",
+            "hi": "10 m/s, आनत तल का कोण कुछ भी हो"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "10 m/s only if the incline is at $45°$",
+            "hi": "10 m/s केवल यदि आनत तल $45°$ पर हो"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 m/s",
+            "hi": "5 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "50 m/s",
+            "hi": "50 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Equate mgh to $\\frac{1}{2}mv^2$.",
+          "hi": "mgh को $\\frac{1}{2}mv^2$ के बराबर रखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The potential energy lost, mgh, all becomes kinetic energy.",
+          "hi": "खोई गई स्थितिज ऊर्जा mgh पूरी गतिज ऊर्जा बन जाती है।"
+        },
+        "steps": [
+          {
+            "en": "$v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 5} = 10$ m/s, independent of the angle.",
+            "hi": "$v = \\sqrt{2gh} = \\sqrt{2 \\times 10 \\times 5} = 10$ m/s, कोण से स्वतंत्र।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Only the height matters, not the slope.",
+              "hi": "केवल ऊँचाई मायने रखती है, ढलान नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the height in metres, not a speed.",
+              "hi": "यह मीटर में ऊँचाई है, चाल नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The square root was not taken.",
+              "hi": "वर्गमूल नहीं लिया गया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

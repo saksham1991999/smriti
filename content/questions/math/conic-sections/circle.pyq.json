@@ -1,0 +1,86 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.conic-sections.circle",
+  "questions": [
+    {
+      "id": "q.math.conic-sections.circle.9001",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "math.conic-sections.circle.core.circle-equations",
+          "weight": 0.6
+        },
+        {
+          "id": "math.straight-lines.point-line-distance.core.point-line-distance",
+          "weight": 0.4
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let a circle $C$ have its centre in the first quadrant, intersect the coordinate axes at exactly three points and cut off equal intercepts from the coordinate axes. If the length of the chord of $C$ on the line $x+y=1$ is $\\sqrt{14}$, then the square of the radius of $C$ is ______.",
+        "hi": "माना एक वृत्त $C$ का केंद्र प्रथम चतुर्थांश में है, यह निर्देशांक अक्षों को ठीक तीन बिंदुओं पर काटता है और निर्देशांक अक्षों पर समान अंतःखंड काटता है। यदि $C$ की वह जीवा, जो रेखा $x+y=1$ पर है, लंबाई में $\\sqrt{14}$ है, तो $C$ की त्रिज्या का वर्ग ______ है।"
+      },
+      "answer": {
+        "value": 8,
+        "unit": null
+      },
+      "solution": {
+        "feynman": {
+          "en": "Exactly three points on the axes with equal intercepts means the circle passes through the origin, with centre $(h,h)$ and radius$^2=2h^2$. Then use half-chord, distance and radius in a right triangle.",
+          "hi": "अक्षों पर ठीक तीन बिंदु और समान अंतःखंड का अर्थ है कि वृत्त मूलबिंदु से होकर जाता है, केंद्र $(h,h)$ और त्रिज्या$^2=2h^2$। फिर अर्ध-जीवा, दूरी और त्रिज्या का समकोण त्रिभुज लीजिए।"
+        },
+        "steps": [
+          {
+            "en": "Circle: $x^2+y^2-2hx-2hy=0$, $r^2=2h^2$.",
+            "hi": "वृत्त: $x^2+y^2-2hx-2hy=0$, $r^2=2h^2$।"
+          },
+          {
+            "en": "Distance from $(h,h)$ to $x+y=1$ is $\\frac{|2h-1|}{\\sqrt2}$, so $2h^2=\\frac{14}{4}+\\frac{(2h-1)^2}{2}$, giving $h=2$.",
+            "hi": "$(h,h)$ से $x+y=1$ की दूरी $\\frac{|2h-1|}{\\sqrt2}$ है, अतः $2h^2=\\frac{14}{4}+\\frac{(2h-1)^2}{2}$, जिससे $h=2$।"
+          },
+          {
+            "en": "$r^2=8$.",
+            "hi": "$r^2=8$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 150,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 24
+      }
+    }
+  ]
+}

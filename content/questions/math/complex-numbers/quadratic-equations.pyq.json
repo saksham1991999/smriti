@@ -1,0 +1,117 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "math.complex-numbers.quadratic-equations",
+  "questions": [
+    {
+      "id": "q.math.complex-numbers.quadratic-equations.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "math.complex-numbers.quadratic-equations.core.roots-coefficients",
+          "weight": 0.7
+        },
+        {
+          "id": "math.sequences-series.sequences.core.sequence-series-basics",
+          "weight": 0.3
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Let $\\alpha, \\alpha+2, \\alpha \\in \\mathbb{Z}$, be the roots of the quadratic equation $x(x+2)+(x+1)(x+3)+(x+2)(x+4)+\\dots+(x+n-1)(x+n+1)=4n$ for some $n \\in \\mathbb{N}$. Then $n+\\alpha$ is equal to :",
+        "hi": "माना $\\alpha, \\alpha+2, \\alpha \\in \\mathbb{Z}$, द्विघात समीकरण $x(x+2)+(x+1)(x+3)+(x+2)(x+4)+\\dots+(x+n-1)(x+n+1)=4n$ के मूल हैं, जहाँ $n \\in \\mathbb{N}$ है। तब $n+\\alpha$ बराबर है :"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$0$",
+            "hi": "$0$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2$",
+            "hi": "$2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$3$",
+            "hi": "$3$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Add up the $n$ products term by term to get one quadratic in $x$. Its two roots differ by $2$, so its discriminant must be exactly $4$; that fixes $n$, and the sum of roots then fixes $\\alpha$.",
+          "hi": "$n$ गुणनफलों को पद-दर-पद जोड़कर $x$ में एक द्विघात मिलता है। इसके दोनों मूलों का अंतर $2$ है, इसलिए विविक्तकर ठीक $4$ होना चाहिए; इससे $n$ मिलता है, और फिर मूलों के योग से $\\alpha$ मिलता है।"
+        },
+        "steps": [
+          {
+            "en": "Each term is $(x+k)(x+k+2)=x^2+(2k+2)x+k(k+2)$ for $k=0,\\dots,n-1$. Summing and dividing by $n$: $x^2+(n+1)x+\\frac{(n-1)(2n-1)}{6}+(n-1)-4=0$.",
+            "hi": "प्रत्येक पद $(x+k)(x+k+2)=x^2+(2k+2)x+k(k+2)$ है, जहाँ $k=0,\\dots,n-1$ है। जोड़कर $n$ से भाग देने पर: $x^2+(n+1)x+\\frac{(n-1)(2n-1)}{6}+(n-1)-4=0$।"
+          },
+          {
+            "en": "Roots differ by $2$, so the discriminant is $4$: $(n+1)^2-4\\left[\\frac{(n-1)(2n-1)}{6}+n-5\\right]=4$, which simplifies to $n^2=49$, so $n=7$.",
+            "hi": "मूलों का अंतर $2$ है, अतः विविक्तकर $4$ है: $(n+1)^2-4\\left[\\frac{(n-1)(2n-1)}{6}+n-5\\right]=4$, जो सरल होकर $n^2=49$ देता है, अतः $n=7$।"
+          },
+          {
+            "en": "Sum of roots: $2\\alpha+2=-(n+1)=-8$, so $\\alpha=-5$ and $n+\\alpha=2$.",
+            "hi": "मूलों का योग: $2\\alpha+2=-(n+1)=-8$, अतः $\\alpha=-5$ और $n+\\alpha=2$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 180,
+      "difficulty_estimate": "hard",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 1
+      }
+    }
+  ]
+}

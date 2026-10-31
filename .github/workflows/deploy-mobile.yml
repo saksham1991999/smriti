@@ -1,0 +1,118 @@
+# Mobile store builds with EAS (apps/mobile/eas.json, infra/eas). A mobile-v* tag builds every
+# variant with the production-<variant> profiles after CI has passed and the "production"
+# environment's reviewers approve; a manual run can build preview profiles or a subset of variants.
+# Builds run on EAS (--no-wait), and submission to the stores stays a separate, deliberate step
+# (eas submit). EXPO_PUBLIC_* values come from EAS environment variables, never from here.
+# Skips (with a notice) while the environment has no EXPO_TOKEN secret.
+name: Deploy mobile
+
+on:
+  push:
+    tags: ["mobile-v*"]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "production builds production-<variant>; staging builds preview-<variant>"
+        type: choice
+        options: [staging, production]
+        default: staging
+      variants:
+        description: "Space-separated variants (packages/config/variants)"
+        type: string
+        default: "all jee neet upsc ssc"
+      platform:
+        type: choice
+        options: [all, android, ios]
+        default: all
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  EAS_CLI_VERSION: "25.1.1"
+
+jobs:
+  gate:
+    uses: ./.github/workflows/deploy-gate.yml
+    with:
+      environment: ${{ inputs.environment || '' }}
+
+  plan:
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      variants: ${{ steps.plan.outputs.variants }}
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+      - id: plan
+        env:
+          REQUESTED: ${{ inputs.variants || '' }}
+        run: |
+          set -euo pipefail
+          known=$(ls packages/config/variants | sed 's/\.json$//' | tr '\n' ' ')
+          want="${REQUESTED:-$known}"
+          list=""
+          for v in $want; do
+            case " $known " in
+              *" $v "*) list="$list{\"id\":\"$v\",\"key\":\"$(echo "$v" | tr '[:lower:]' '[:upper:]')\"}," ;;
+              *) echo "::error::unknown variant $v (known: $known)"; exit 1 ;;
+            esac
+          done
+          echo "variants=[${list%,}]" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: EAS ${{ matrix.variant.id }} (${{ needs.gate.outputs.environment }})
+    needs: [gate, plan]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: ${{ fromJSON(needs.plan.outputs.variants) }}
+    environment:
+      name: ${{ needs.gate.outputs.environment }}
+    env:
+      # eas.json: production-<variant>, or staging-<variant> (the store app on internal tracks).
+      PROFILE: ${{ needs.gate.outputs.environment == 'production' && 'production' || 'staging' }}
+      PLATFORM: ${{ inputs.platform || 'all' }}
+      VARIANT: ${{ matrix.variant.id }}
+    steps:
+      - name: Secrets present
+        id: secrets
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "::notice::EXPO_TOKEN is not set; skipping the EAS build (docs/DEPLOY.md)"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ needs.gate.outputs.sha }}
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: pnpm/action-setup@v4.1.0
+      - if: steps.secrets.outputs.ready == 'true'
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      # app.config.ts is evaluated locally before upload, so the workspace must be installed.
+      - if: steps.secrets.outputs.ready == 'true'
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        if: steps.secrets.outputs.ready == 'true'
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          # One EAS project per variant (vars.EAS_PROJECT_ID_JEE and so on); app.config.ts reads it
+          # for extra.eas.projectId and updates.url.
+          EAS_PROJECT_ID: ${{ vars[format('EAS_PROJECT_ID_{0}', matrix.variant.key)] }}
+          APP_VARIANT: ${{ matrix.variant.id }}
+        run: npx --yes "eas-cli@${EAS_CLI_VERSION}" build --profile "${PROFILE}-${VARIANT}" --platform "$PLATFORM" --non-interactive --no-wait

@@ -1,0 +1,115 @@
+{
+  "schema": "sim@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "other",
+      "ref": "sims/ohms-law-circuit/manifest.json (the bundle's own manifest, version 1.0.1)",
+      "url": null
+    }
+  ],
+  "authored_by": "skill:sim-builder",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Content-side manifest for the existing bundle; concepts match the bundle's manifest.json and the current-electricity graph.",
+  "id": "ohms-law-circuit",
+  "version": "1.0.1",
+  "title": {
+    "en": "Ohm's law: simple circuit",
+    "hi": "ओम का नियम: सरल परिपथ"
+  },
+  "origin": "own",
+  "licence": "owned",
+  "attribution": null,
+  "entry": "index.html",
+  "bridge_version": 1,
+  "locales": [
+    "en",
+    "hi"
+  ],
+  "params_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "voltage": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 12,
+        "default": 3
+      },
+      "r1": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 60,
+        "default": 12
+      },
+      "r2": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 60,
+        "default": 12
+      },
+      "arrangement": {
+        "type": "string",
+        "enum": [
+          "single",
+          "series",
+          "parallel"
+        ],
+        "default": "single"
+      },
+      "switchOn": {
+        "type": "boolean",
+        "default": true
+      },
+      "internalResistance": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5,
+        "default": 0
+      }
+    }
+  },
+  "measurements": [
+    {
+      "name": "voltage",
+      "unit": "V",
+      "label": {
+        "en": "Battery voltage",
+        "hi": "बैटरी का विभवांतर"
+      }
+    },
+    {
+      "name": "resistance",
+      "unit": "Ω",
+      "label": {
+        "en": "Total resistance",
+        "hi": "कुल प्रतिरोध"
+      }
+    },
+    {
+      "name": "current",
+      "unit": "A",
+      "label": {
+        "en": "Current",
+        "hi": "विद्युत धारा"
+      }
+    },
+    {
+      "name": "terminal_voltage",
+      "unit": "V",
+      "label": {
+        "en": "Terminal voltage",
+        "hi": "टर्मिनल विभवांतर"
+      }
+    }
+  ],
+  "aspect": "4:3",
+  "size_bytes": 368054,
+  "supports_low_power": true,
+  "concepts": [
+    "phy.current-electricity.ohms-law.core.ohms-law-def",
+    "phy.current-electricity.resistor-combinations.core.resistors-series-parallel",
+    "phy.current-electricity.cells.core.emf-internal-resistance"
+  ]
+}

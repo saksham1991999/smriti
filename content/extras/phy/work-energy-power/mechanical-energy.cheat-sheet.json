@@ -1,0 +1,107 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "id": "cs.phy.work-energy-power.mechanical-energy",
+  "scope": "topic",
+  "topic": "phy.work-energy-power.mechanical-energy",
+  "title": {
+    "en": "Conservation of Mechanical Energy",
+    "hi": "यांत्रिक ऊर्जा का संरक्षण"
+  },
+  "concepts": [
+    "phy.work-energy-power.mechanical-energy.core.conservative-forces",
+    "phy.work-energy-power.mechanical-energy.core.mechanical-energy-conservation",
+    "phy.work-energy-power.mechanical-energy.core.vertical-circle"
+  ],
+  "key_ideas": [
+    {
+      "en": "Conservative forces: work depends only on the end points.",
+      "hi": "संरक्षी बल: कार्य केवल सिरे के बिंदुओं पर निर्भर।"
+    },
+    {
+      "en": "With only conservative forces working, $K + V$ stays constant.",
+      "hi": "केवल संरक्षी बल कार्य करें तो $K + V$ स्थिर रहता है।"
+    },
+    {
+      "en": "Vertical circle: energy conservation plus the centripetal condition at the top.",
+      "hi": "ऊर्ध्वाधर वृत्त: ऊर्जा संरक्षण और शीर्ष पर अभिकेंद्र शर्त।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Conservation",
+        "hi": "संरक्षण"
+      },
+      "latex": "K_i + V_i = K_f + V_f"
+    },
+    {
+      "name": {
+        "en": "With friction",
+        "hi": "घर्षण के साथ"
+      },
+      "latex": "E_f - E_i = W_{nc}"
+    },
+    {
+      "name": {
+        "en": "Free fall",
+        "hi": "मुक्त पतन"
+      },
+      "latex": "v_f = \\sqrt{2gH}"
+    },
+    {
+      "name": {
+        "en": "Vertical circle",
+        "hi": "ऊर्ध्वाधर वृत्त"
+      },
+      "latex": "v_{top} \\ge \\sqrt{gL},\\ v_{bottom} \\ge \\sqrt{5gL}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Mechanical energy is always conserved.",
+        "hi": "यांत्रिक ऊर्जा सदा संरक्षित रहती है।"
+      },
+      "correct": {
+        "en": "Only when the forces doing work are conservative.",
+        "hi": "केवल जब कार्य करने वाले बल संरक्षी हों।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "The tension in a pendulum string changes its energy.",
+        "hi": "लोलक की डोरी का तनाव उसकी ऊर्जा बदलता है।"
+      },
+      "correct": {
+        "en": "Tension is at right angles to the motion and does no work.",
+        "hi": "तनाव गति से समकोण पर है और कोई कार्य नहीं करता।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "To loop the loop the speed at the top can be zero.",
+        "hi": "पूरा चक्कर लगाने के लिए शीर्ष पर चाल शून्य हो सकती है।"
+      },
+      "correct": {
+        "en": "It must be at least $\\sqrt{gL}$, or the string goes slack.",
+        "hi": "यह कम से कम $\\sqrt{gL}$ होनी चाहिए, नहीं तो डोरी ढीली हो जाती है।"
+      }
+    }
+  ],
+  "diagram": "img.work-energy-power.swing",
+  "hi_source": "translation"
+}

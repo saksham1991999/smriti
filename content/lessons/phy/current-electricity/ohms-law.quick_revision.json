@@ -1,0 +1,104 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Physics Part I, Ch 3 Current Electricity (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/leph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 12 Bhautiki Part I (Hindi medium), Ch 3 Vidyut Dhara: Hindi terms",
+      "url": "https://ncert.nic.in/textbook/pdf/lhph103.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Quick Revision for this topic. Hindi written for this file; technical terms follow the NCERT Hindi-medium Bhautiki book (lhph103).",
+  "id": "phy.current-electricity.ohms-law:quick_revision",
+  "topic": "phy.current-electricity.ohms-law",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.current-electricity.ohms-law.core.ohms-law-def"
+  ],
+  "cards": [
+    {
+      "id": "phy.current-electricity.ohms-law:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.current-electricity.ohms-law"
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 3,
+      "question": "q.phy.current-electricity.ohms-law.0004"
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "$V = IR$, $R$ in ohm.",
+          "hi": "$V = IR$, $R$ ओम में।"
+        },
+        {
+          "en": "Diodes and GaAs do not obey Ohm's law.",
+          "hi": "डायोड और GaAs ओम के नियम का पालन नहीं करते।"
+        }
+      ]
+    },
+    {
+      "id": "phy.current-electricity.ohms-law:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.current-electricity.ohms-law.core.ohms-law-def"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Ohm's law is a fundamental law that every conductor obeys.",
+            "hi": "ओम का नियम मूल नियम है जिसका हर चालक पालन करता है।"
+          },
+          "correct": {
+            "en": "It holds for many materials, not all; diodes and GaAs deviate.",
+            "hi": "यह बहुत से पदार्थों पर लागू है, सब पर नहीं; डायोड और GaAs विचलित होते हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Changing $V$ in an ohmic wire changes $R = V/I$.",
+            "hi": "ओमीय तार में $V$ बदलने पर $R = V/I$ बदल जाता है।"
+          },
+          "correct": {
+            "en": "For an ohmic conductor at fixed temperature, $R$ stays the same; when $V$ changes, $I$ changes with it.",
+            "hi": "नियत ताप पर ओमीय चालक का $R$ वही रहता है; $V$ के साथ $I$ बदलता है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

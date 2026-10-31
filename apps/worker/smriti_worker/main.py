@@ -1,0 +1,152 @@
+"""arq worker settings, one class per queue (TRD §5 "Jobs").
+
+Run one process per queue:
+
+    uv run python -m smriti_worker                      # default queue (crons live here)
+    uv run python -m smriti_worker content-publish      # or ai, media, notifications, pdf
+    uv run arq smriti_worker.main.DefaultWorker         # the same through arq's own CLI
+
+The queue names come from ``smriti_api.services.jobs.arq_queue_name``, which the API's
+``ArqJobQueue`` uses to enqueue, so both sides always agree.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+from arq import cron
+from arq.connections import RedisSettings
+from smriti_api.core.config import get_settings
+from smriti_api.services.jobs import QUEUES, arq_queue_name
+
+from smriti_worker import jobs
+
+WorkerSettings = type
+
+
+def _settings(name: str, queue: str, functions: list[Any], **overrides: Any) -> WorkerSettings:
+    """arq reads only a settings class's own attributes (not inherited ones), so every
+    class gets the full set."""
+    attrs: dict[str, Any] = {
+        "queue_name": arq_queue_name(queue),
+        "functions": functions,
+        "redis_settings": RedisSettings.from_dsn(get_settings().redis_url),
+        "on_startup": jobs.startup,
+        "on_shutdown": jobs.shutdown,
+        "max_jobs": 10,
+        "job_timeout": 600,
+        "keep_result": 3600,
+        # A failed merge or purge is retried; every job is safe to run twice.
+        "max_tries": 3,
+        # The liveness key `python -m smriti_worker.health` reads (the container health check).
+        "health_check_interval": 60,
+        **overrides,
+    }
+    return type(name, (), attrs)
+
+
+DefaultWorker = _settings(
+    "DefaultWorker",
+    "default",
+    [
+        jobs.merge_guest,
+        jobs.purge_deleted_accounts,
+        jobs.nightly_rollup,
+        jobs.db_upkeep,
+        jobs.notify_dispatch,
+        jobs.notify_plan_web,
+        jobs.guardian_expire,
+        jobs.guardian_age_up,
+        jobs.trial_reminders,
+        jobs.media_sweep,
+        jobs.mocks_auto_submit,
+        jobs.live_mocks_tick,
+        jobs.fsrs_optimise,
+        jobs.irt_calibrate,
+        jobs.tutor_retention,
+        jobs.weak_area_alerts,
+        jobs.rhythm_estimates,
+        jobs.league_assign,
+        jobs.league_rollover,
+        jobs.duo_rollup,
+        jobs.duel_sweep,
+        jobs.squad_quests,
+        jobs.ping,
+    ],
+    cron_jobs=[
+        # Every hour, close yesterday for the timezones whose local midnight just passed.
+        cron(jobs.nightly_rollup, minute=5, run_at_startup=False, unique=True),
+        cron(jobs.purge_deleted_accounts, minute=20, unique=True),
+        # Partitions ahead and idle-guest cleanup when pg_cron is not installed.
+        cron(jobs.db_upkeep, hour=3, minute=0, unique=True),
+        # Notifications: the outbox every minute, web reminders every 15 minutes (TRD §12).
+        cron(jobs.notify_dispatch, second=0, unique=True),
+        cron(jobs.notify_plan_web, minute={0, 15, 30, 45}, second=5, unique=True),
+        # Guardian consent: lapsed requests hourly, the turning-18 check daily (auth flow §6.10).
+        cron(jobs.guardian_expire, minute=10, unique=True),
+        cron(jobs.guardian_age_up, hour=1, minute=30, unique=True),
+        # R33: the trial-ending reminder, hourly.
+        cron(jobs.trial_reminders, minute=40, unique=True),
+        # Image requests waiting for the media queue.
+        cron(jobs.media_sweep, minute={2, 32}, unique=True),
+        # Mocks: strict and live attempts past their deadline, every minute.
+        cron(jobs.mocks_auto_submit, second=30, unique=True),
+        # Live mocks (practice §6.11): start signal and clock fan-out, then frozen ranks.
+        cron(jobs.live_mocks_tick, second=0, unique=True),
+        # Data jobs on the analytics store (G-11), at night in India.
+        cron(jobs.fsrs_optimise, hour=22, minute=30, unique=True),
+        cron(jobs.irt_calibrate, weekday="sun", hour=23, minute=0, unique=True),
+        # Tutor: messages past ai.tutor_retention_days, daily.
+        cron(jobs.tutor_retention, hour=2, minute=15, unique=True),
+        # Learning science (TRD §9.6), nightly in India: weak-area alerts are queued for the
+        # next day's usual hour; the rhythm estimates feed sleep review and smart timing.
+        cron(jobs.rhythm_estimates, hour=20, minute=45, unique=True),
+        cron(jobs.weak_area_alerts, hour=21, minute=0, unique=True),
+        # Social (G-4): league placement hourly; the weekly close at Sunday 23:59 IST
+        # (18:30 UTC) with a retry an hour later; Duo days nightly after IST midnight; duels every minute.
+        cron(jobs.league_assign, minute=25, unique=True),
+        cron(jobs.league_rollover, weekday="sun", hour={18, 19}, minute=30, unique=True),
+        cron(jobs.duo_rollup, hour=19, minute=7, unique=True),
+        cron(jobs.duel_sweep, second=45, unique=True),
+        cron(jobs.squad_quests, minute=50, unique=True),
+        # Minors' shared decks still being checked (fail closed until a clear answer).
+        cron(jobs.deck_moderation, minute={3, 13, 23, 33, 43, 53}, unique=True),
+        # Parent mode: the Sunday report, enqueued at 13:00 UTC (18:30 IST) and held until
+        # 19:00 in each guardian's zone (me-money §6.7).
+        cron(jobs.parent_digest, weekday="sun", hour=13, minute=0, unique=True),
+    ],
+)
+ContentPublishWorker = _settings(
+    "ContentPublishWorker",
+    "content-publish",
+    [jobs.content_publish, jobs.ping],
+    max_jobs=1,  # publishes never overlap
+    job_timeout=jobs.CONTENT_PUBLISH_TIMEOUT_S + 60,
+    max_tries=1,
+)
+# The AI queue's jobs arrive with the tutor work (Agent B).
+AiWorker = _settings("AiWorker", "ai", [jobs.deck_moderation, jobs.ping])
+MediaWorker = _settings(
+    "MediaWorker",
+    "media",
+    [jobs.media_generate, jobs.tutor_image, jobs.ping],
+    max_jobs=4,
+    job_timeout=300,
+)
+NotificationsWorker = _settings(
+    "NotificationsWorker",
+    "notifications",
+    [jobs.notify_dispatch, jobs.parent_digest, jobs.ping],
+    max_tries=1,
+)
+PdfWorker = _settings("PdfWorker", "pdf", [jobs.render_pdf, jobs.ping], max_jobs=2)
+
+WORKERS: dict[str, WorkerSettings] = {
+    "default": DefaultWorker,
+    "ai": AiWorker,
+    "media": MediaWorker,
+    "notifications": NotificationsWorker,
+    "content-publish": ContentPublishWorker,
+    "pdf": PdfWorker,
+}
+assert set(WORKERS) == set(QUEUES), "every queue in smriti_api.services.jobs needs a worker"

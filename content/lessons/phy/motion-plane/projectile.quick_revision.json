@@ -1,0 +1,121 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph103 (summary and table, pp. 44-46): अदिश, सदिश, शीर्ष व पुच्छ, समांतर चतुर्भुज, क्रम-विनिमेय, साहचर्य, शून्य सदिश, एकांक सदिश, घटक, विश्लेषणात्मक विधि, स्थिति सदिश, प्रक्षेप्य, परवलय, अधिकतम ऊँचाई, क्षैतिज परास, एकसमान वृत्तीय गति, अभिकेंद्र त्वरण, कोणीय चाल, आवर्तकाल, आवृत्ति. Other wording is ours.",
+  "id": "phy.motion-plane.projectile:quick_revision",
+  "topic": "phy.motion-plane.projectile",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.motion-plane.projectile.core.projectile-motion"
+  ],
+  "cards": [
+    {
+      "id": "phy.motion-plane.projectile:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.motion-plane.projectile"
+    },
+    {
+      "id": "phy.motion-plane.projectile:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.projectile.0004"
+    },
+    {
+      "id": "phy.motion-plane.projectile:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 3,
+      "question": "q.phy.motion-plane.projectile.0005"
+    },
+    {
+      "id": "phy.motion-plane.projectile:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "At the top, the velocity is horizontal, $v_0\\cos\\theta_0$; the acceleration is still g downwards.",
+          "hi": "शीर्ष पर वेग क्षैतिज है, $v_0\\cos\\theta_0$; त्वरण अब भी नीचे की ओर g है।"
+        },
+        {
+          "en": "$R = v_0^2\\sin 2\\theta_0/g$, largest at 45°.",
+          "hi": "$R = v_0^2\\sin 2\\theta_0/g$, 45° पर सबसे अधिक।"
+        },
+        {
+          "en": "A horizontal throw falls in the same time as a dropped object from that height.",
+          "hi": "क्षैतिज फेंकी वस्तु उतनी ही ऊँचाई से छोड़ी गई वस्तु जितने समय में गिरती है।"
+        }
+      ]
+    },
+    {
+      "id": "phy.motion-plane.projectile:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.motion-plane.projectile.core.projectile-motion"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "At the highest point the velocity is zero.",
+            "hi": "सर्वोच्च बिंदु पर वेग शून्य होता है।"
+          },
+          "correct": {
+            "en": "Only the vertical part is zero; the horizontal part stays.",
+            "hi": "केवल ऊर्ध्वाधर भाग शून्य होता है; क्षैतिज भाग बना रहता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "At the highest point the acceleration is zero.",
+            "hi": "सर्वोच्च बिंदु पर त्वरण शून्य होता है।"
+          },
+          "correct": {
+            "en": "It is g downwards all the way.",
+            "hi": "यह पूरे पथ पर नीचे की ओर g है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A faster horizontal throw takes longer to land.",
+            "hi": "तेज़ क्षैतिज फेंक ज़मीन तक पहुँचने में अधिक समय लेती है।"
+          },
+          "correct": {
+            "en": "The falling time depends only on the height.",
+            "hi": "गिरने का समय केवल ऊँचाई पर निर्भर है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

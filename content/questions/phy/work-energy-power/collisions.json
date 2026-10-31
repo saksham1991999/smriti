@@ -1,0 +1,609 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 5 Work, Energy and Power (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph105.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 5 Karya, Urja aur Shakti: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph105.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 79-88"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph105 (text, summary and table, pp. 79-88): कार्य, ऊर्जा, शक्ति, अदिश (बिंदु) गुणनफल, क्रम-विनिमेय, वितरण नियम, गतिज ऊर्जा, कार्य-ऊर्जा प्रमेय, परिवर्ती बल, स्थितिज ऊर्जा, गुरुत्वीय स्थितिज ऊर्जा, संरक्षी बल, असंरक्षी बल, यांत्रिक ऊर्जा का संरक्षण, गोलक, हुक का नियम, स्प्रिंग नियतांक, दृढ़, नर्म (मृदु), औसत शक्ति, तात्क्षणिक शक्ति, अश्व शक्ति, किलोवाट घंटा, संघट्ट, प्रत्यास्थ संघट्ट, अप्रत्यास्थ संघट्ट, पूर्णतः अप्रत्यास्थ संघट्ट, एकविमीय, द्विविमीय, मंदक, प्रकीर्णन. Other wording is ours.",
+  "topic": "phy.work-energy-power.collisions",
+  "questions": [
+    {
+      "id": "q.phy.work-energy-power.collisions.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A ball moving at v hits an identical ball at rest head-on, and the collision is elastic. After it",
+        "hi": "v से चलती एक गेंद विरामावस्था की समान गेंद से सीधे टकराती है, और संघट्ट प्रत्यास्थ है। इसके बाद"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the first ball stops and the second moves at v",
+            "hi": "पहली गेंद रुक जाती है और दूसरी v से चलती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "both move together at $v/2$",
+            "hi": "दोनों साथ-साथ $v/2$ से चलती हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the first ball bounces back at v",
+            "hi": "पहली गेंद v से वापस उछलती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "both move at v in the same direction",
+            "hi": "दोनों एक ही दिशा में v से चलती हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Use the elastic formulas with $m_1 = m_2$.",
+          "hi": "$m_1 = m_2$ के साथ प्रत्यास्थ सूत्र लगाइए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Equal masses exchange velocities in a head-on elastic collision.",
+          "hi": "सीधे प्रत्यास्थ संघट्ट में समान द्रव्यमान वेग अदल-बदल लेते हैं।"
+        },
+        "steps": [
+          {
+            "en": "With $m_1 = m_2$: $v_{1f} = 0$ and $v_{2f} = v_{1i}$.",
+            "hi": "$m_1 = m_2$ के साथ: $v_{1f} = 0$ और $v_{2f} = v_{1i}$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the completely inelastic result, which loses kinetic energy.",
+              "hi": "यह पूर्णतः अप्रत्यास्थ परिणाम है, जिसमें गतिज ऊर्जा खोती है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That happens only when the target is much heavier.",
+              "hi": "यह केवल तब होता है जब लक्ष्य बहुत भारी हो।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That would double the momentum.",
+              "hi": "इससे संवेग दुगुना हो जाएगा।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.collisions.0002",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "A 1 kg ball moving at 6 m/s collides head-on and elastically with a 2 kg ball at rest. The speed of the 2 kg ball after the collision, in m/s, is",
+        "hi": "6 m/s से चलती 1 kg की गेंद विरामावस्था की 2 kg की गेंद से सीधे और प्रत्यास्थ रूप से टकराती है। संघट्ट के बाद 2 kg की गेंद की चाल, m/s में, है"
+      },
+      "answer": {
+        "value": 4,
+        "unit": "m/s"
+      },
+      "hints": [
+        {
+          "en": "$v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i}$",
+          "hi": "$v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i}$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Use the elastic-collision result for the target.",
+          "hi": "लक्ष्य के लिए प्रत्यास्थ संघट्ट का परिणाम लगाइए।"
+        },
+        "steps": [
+          {
+            "en": "$v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i} = \\frac{2 \\times 1}{3} \\times 6 = 4$ m/s",
+            "hi": "$v_{2f} = \\frac{2m_1}{m_1 + m_2}v_{1i} = \\frac{2 \\times 1}{3} \\times 6 = 4$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Treating it as completely inelastic gives 2 m/s.",
+              "hi": "इसे पूर्णतः अप्रत्यास्थ मानने पर 2 m/s आता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.collisions.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A body hits an identical body at rest, and they stick together. The fraction of the initial kinetic energy lost is",
+        "hi": "एक पिंड विरामावस्था के समान पिंड से टकराता है, और वे आपस में सट जाते हैं। प्रारंभिक गतिज ऊर्जा का कितना भाग खोता है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "1/2",
+            "hi": "1/2"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "1/4",
+            "hi": "1/4"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "3/4",
+            "hi": "3/4"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Momentum first, then kinetic energy.",
+          "hi": "पहले संवेग, फिर गतिज ऊर्जा।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The common speed is half, and the moving mass doubles.",
+          "hi": "उभयनिष्ठ चाल आधी है, और गतिमान द्रव्यमान दुगुना।"
+        },
+        "steps": [
+          {
+            "en": "$v_f = \\frac{v}{2}$; $K_f = \\frac{1}{2}(2m)\\frac{v^2}{4} = \\frac{1}{2}K_i$, so half is lost.",
+            "hi": "$v_f = \\frac{v}{2}$; $K_f = \\frac{1}{2}(2m)\\frac{v^2}{4} = \\frac{1}{2}K_i$, अतः आधी खोती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "1/4 is the fraction left if the doubled mass is forgotten, not the fraction lost.",
+              "hi": "1/4 वह भाग है जो दुगुने द्रव्यमान को भूलने पर बचता है, खोया भाग नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Kinetic energy is not conserved when bodies stick.",
+              "hi": "पिंड सटने पर गतिज ऊर्जा संरक्षित नहीं रहती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That forgets that the moving mass doubles.",
+              "hi": "यह भूलता है कि गतिमान द्रव्यमान दुगुना होता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.collisions.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A moving ball makes a glancing elastic collision with an identical ball at rest. Afterwards the angle between their directions of motion is",
+        "hi": "एक गतिमान गेंद विरामावस्था की समान गेंद से तिरछा प्रत्यास्थ संघट्ट करती है। बाद में उनकी गति की दिशाओं के बीच का कोण है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$90°$",
+            "hi": "$90°$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$45°$",
+            "hi": "$45°$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$180°$",
+            "hi": "$180°$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$60°$",
+            "hi": "$60°$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Compare the two squared equations.",
+          "hi": "दोनों वर्ग किए समीकरणों की तुलना कीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Momentum and energy together force a right angle for equal masses.",
+          "hi": "समान द्रव्यमानों के लिए संवेग और ऊर्जा मिलकर समकोण तय करते हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{v}_{1i} = \\vec{v}_{1f} + \\vec{v}_{2f}$ and $v_{1i}^2 = v_{1f}^2 + v_{2f}^2$ make $\\vec{v}_{1f}\\cdot\\vec{v}_{2f} = 0$.",
+            "hi": "$\\vec{v}_{1i} = \\vec{v}_{1f} + \\vec{v}_{2f}$ और $v_{1i}^2 = v_{1f}^2 + v_{2f}^2$ से $\\vec{v}_{1f}\\cdot\\vec{v}_{2f} = 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "$45°$ is each angle only in the symmetric case; the angle between them is still $90°$.",
+              "hi": "$45°$ केवल सममित स्थिति में हर कोण है; उनके बीच का कोण तब भी $90°$ है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Opposite directions would not conserve momentum here.",
+              "hi": "विपरीत दिशाओं में यहाँ संवेग संरक्षित नहीं होगा।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Nothing singles out $60°$.",
+              "hi": "$60°$ का कोई विशेष कारण नहीं है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.collisions.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which quantity is conserved in every collision between two bodies, with no external force?",
+        "hi": "बिना बाह्य बल के दो पिंडों के बीच हर संघट्ट में कौन-सी राशि संरक्षित रहती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Total linear momentum",
+            "hi": "कुल रेखीय संवेग"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "Total kinetic energy",
+            "hi": "कुल गतिज ऊर्जा"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "The speed of each body",
+            "hi": "हर पिंड की चाल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "The momentum of each body",
+            "hi": "हर पिंड का संवेग"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of the third law.",
+          "hi": "तृतीय नियम सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The impulses on the two bodies are equal and opposite.",
+          "hi": "दोनों पिंडों पर आवेग समान और विपरीत हैं।"
+        },
+        "steps": [
+          {
+            "en": "$\\Delta\\vec{p}_1 + \\Delta\\vec{p}_2 = 0$ by the third law.",
+            "hi": "तृतीय नियम से $\\Delta\\vec{p}_1 + \\Delta\\vec{p}_2 = 0$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Only in elastic collisions.",
+              "hi": "केवल प्रत्यास्थ संघट्ट में।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Speeds generally change.",
+              "hi": "चालें सामान्यतः बदलती हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Momentum passes from one body to the other.",
+              "hi": "संवेग एक पिंड से दूसरे में जाता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.work-energy-power.collisions.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.work-energy-power.collisions.core.elastic-inelastic-collisions",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A small ball moving at v hits a very heavy wall head-on, and the collision is elastic. Afterwards the ball",
+        "hi": "v से चलती एक छोटी गेंद एक बहुत भारी दीवार से सीधे टकराती है, और संघट्ट प्रत्यास्थ है। इसके बाद गेंद"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "rebounds with speed v",
+            "hi": "v चाल से वापस उछलती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "stops",
+            "hi": "रुक जाती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "rebounds with speed $v/2$",
+            "hi": "$v/2$ चाल से वापस उछलती है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "moves on with speed v",
+            "hi": "v चाल से आगे बढ़ती है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "In $v_{1f}$, let $m_2$ be very large.",
+          "hi": "$v_{1f}$ में $m_2$ को बहुत बड़ा मानिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "With $m_2 \\gg m_1$ the light body simply reverses.",
+          "hi": "$m_2 \\gg m_1$ होने पर हल्का पिंड बस उलट जाता है।"
+        },
+        "steps": [
+          {
+            "en": "$v_{1f} = \\frac{m_1 - m_2}{m_1 + m_2}v \\approx -v$, and the wall hardly moves.",
+            "hi": "$v_{1f} = \\frac{m_1 - m_2}{m_1 + m_2}v \\approx -v$, और दीवार लगभग नहीं हिलती।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That happens for equal masses.",
+              "hi": "यह समान द्रव्यमानों के लिए होता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "No kinetic energy is lost, so the speed is not halved.",
+              "hi": "कोई गतिज ऊर्जा नहीं खोती, इसलिए चाल आधी नहीं होती।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "It cannot pass through the wall.",
+              "hi": "यह दीवार के पार नहीं जा सकती।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

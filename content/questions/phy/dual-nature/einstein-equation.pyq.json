@@ -1,0 +1,109 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs.",
+  "hi_source": "translation",
+  "topic": "phy.dual-nature.einstein-equation",
+  "questions": [
+    {
+      "id": "q.phy.dual-nature.einstein-equation.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.dual-nature.einstein-equation.core.einstein-photoelectric",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For a certain metal, when monochromatic light of wavelength $\\lambda$ is incident, the stopping potential for photoelectrons is $3V_o$. When the same metal is illuminated by light of wavelength $2\\lambda$, then the stopping potential becomes $V_o$. The threshold wavelength for photoelectric emission for the given metal is $\\alpha\\lambda$. The value of $\\alpha$ is ______.",
+        "hi": "किसी धातु पर जब तरंगदैर्ध्य $\\lambda$ का एकवर्णी प्रकाश आपतित होता है, तो प्रकाश-इलेक्ट्रॉनों के लिए निरोधी विभव $3V_o$ है। जब उसी धातु को तरंगदैर्ध्य $2\\lambda$ के प्रकाश से प्रदीप्त किया जाता है, तो निरोधी विभव $V_o$ हो जाता है। दी गई धातु के लिए प्रकाश-विद्युत उत्सर्जन की देहली तरंगदैर्ध्य $\\alpha\\lambda$ है। $\\alpha$ का मान ______ है।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "$1$",
+            "hi": "$1$"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "$4$",
+            "hi": "$4$"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "$2$",
+            "hi": "$2$"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "$3$",
+            "hi": "$3$"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "Write Einstein's equation for both wavelengths and subtract to remove the work function; then the work function gives the threshold wavelength.",
+          "hi": "दोनों तरंगदैर्ध्यों के लिए आइंस्टाइन समीकरण लिखिए और घटाकर कार्य फलन हटाइए; फिर कार्य फलन से देहली तरंगदैर्ध्य मिलती है।"
+        },
+        "steps": [
+          {
+            "en": "$\\frac{hc}{\\lambda}-\\phi=3eV_o$ and $\\frac{hc}{2\\lambda}-\\phi=eV_o$. Subtracting: $eV_o=\\frac{hc}{4\\lambda}$.",
+            "hi": "$\\frac{hc}{\\lambda}-\\phi=3eV_o$ और $\\frac{hc}{2\\lambda}-\\phi=eV_o$। घटाने पर: $eV_o=\\frac{hc}{4\\lambda}$।"
+          },
+          {
+            "en": "$\\phi=\\frac{hc}{2\\lambda}-\\frac{hc}{4\\lambda}=\\frac{hc}{4\\lambda}$, so $\\lambda_0=4\\lambda$ and $\\alpha=4$.",
+            "hi": "$\\phi=\\frac{hc}{2\\lambda}-\\frac{hc}{4\\lambda}=\\frac{hc}{4\\lambda}$, अतः $\\lambda_0=4\\lambda$ और $\\alpha=4$।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 90,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 42
+      }
+    }
+  ]
+}

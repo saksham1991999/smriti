@@ -1,0 +1,101 @@
+{
+  "schema": "cheat_sheet@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Cheat sheet for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "id": "cs.phy.motion-straight-line.acceleration",
+  "scope": "topic",
+  "topic": "phy.motion-straight-line.acceleration",
+  "title": {
+    "en": "Acceleration",
+    "hi": "त्वरण"
+  },
+  "concepts": [
+    "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+  ],
+  "key_ideas": [
+    {
+      "en": "Acceleration is the rate of change of velocity: $a = dv/dt$, unit m s⁻².",
+      "hi": "त्वरण वेग परिवर्तन की दर है: $a = dv/dt$, मात्रक m s⁻²।"
+    },
+    {
+      "en": "Speeding up: a along v. Slowing down: a against v. The sign alone does not tell.",
+      "hi": "तेज़ होना: a, v की दिशा में। धीमा होना: a, v के विपरीत। केवल चिह्न यह नहीं बताता।"
+    },
+    {
+      "en": "Uniform a: x-t parabola, v-t inclined straight line.",
+      "hi": "एकसमान a: x-t परवलय, v-t आनत सरल रेखा।"
+    },
+    {
+      "en": "Area under v-t = displacement.",
+      "hi": "v-t के नीचे क्षेत्रफल = विस्थापन।"
+    }
+  ],
+  "formulas": [
+    {
+      "name": {
+        "en": "Average acceleration",
+        "hi": "औसत त्वरण"
+      },
+      "latex": "\\bar{a} = \\frac{v_2 - v_1}{t_2 - t_1}"
+    },
+    {
+      "name": {
+        "en": "Instantaneous acceleration",
+        "hi": "तात्क्षणिक त्वरण"
+      },
+      "latex": "a = \\frac{dv}{dt}"
+    }
+  ],
+  "mnemonics": [],
+  "traps": [
+    {
+      "mistake": {
+        "en": "Negative acceleration always means slowing down.",
+        "hi": "ऋणात्मक त्वरण का अर्थ सदा धीमा होना है।"
+      },
+      "correct": {
+        "en": "Only if the velocity is positive; a falling ball with up as positive speeds up.",
+        "hi": "केवल तब जब वेग धनात्मक हो; ऊपर को धनात्मक मानें तो गिरती गेंद तेज़ होती है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "At the highest point the acceleration is zero.",
+        "hi": "उच्चतम बिंदु पर त्वरण शून्य है।"
+      },
+      "correct": {
+        "en": "Velocity is zero there; acceleration is still g.",
+        "hi": "वहाँ वेग शून्य है; त्वरण अब भी g है।"
+      }
+    },
+    {
+      "mistake": {
+        "en": "A fast object has a large acceleration.",
+        "hi": "तेज़ वस्तु का त्वरण अधिक होता है।"
+      },
+      "correct": {
+        "en": "Acceleration depends on how fast velocity changes, not on velocity.",
+        "hi": "त्वरण इस पर निर्भर है कि वेग कितनी तेज़ी से बदलता है, वेग पर नहीं।"
+      }
+    }
+  ],
+  "diagram": "img.motion-straight-line.toy-car-track",
+  "hi_source": "translation"
+}

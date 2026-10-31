@@ -1,0 +1,313 @@
+{
+  "schema": "blueprint@1",
+  "exam_profile": "jee-main-2027",
+  "paper_code": "paper-1",
+  "version": 1,
+  "effective_from": "2026-10-24",
+  "verified_at": "2026-10-29",
+  "source": {
+    "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/202610241890224107.pdf",
+    "title": "Information Bulletin - Joint Entrance Examination (Main) - 2027",
+    "published": "2026-10-24",
+    "retrieved": "2026-10-29",
+    "pages": "printed pp.15-20 (Chapter 2: §2.1 mode, §2.2 medium, §2.3 scheme, §2.4 pattern, §2.4.1 MCQ, §2.4.2 numerical value questions, §2.5 duration), p.5-6 (timings), p.29 (reporting schedule), pp.30-31 (Chapter 8 instructions, §8.13 barred items, §8.17 rough sheets), pp.56-61 (Appendix III CBT Guidelines)"
+  },
+  "mode": "cbt",
+  "duration_min": 180,
+  "languages": [
+    "en",
+    "hi",
+    "as",
+    "bn",
+    "gu",
+    "kn",
+    "ml",
+    "mr",
+    "or",
+    "pa",
+    "ta",
+    "te",
+    "ur"
+  ],
+  "language_switch": "per_question",
+  "interface": "nta",
+  "interface_profile": {
+    "buttons": [
+      {
+        "action": "save_next",
+        "label": {
+          "en": "Save & Next",
+          "hi": "सेव करें और आगे बढ़ें"
+        }
+      },
+      {
+        "action": "mark_review_next",
+        "label": {
+          "en": "Mark for Review & Next",
+          "hi": "पुनर्विचार के लिए चिह्नित करें और आगे बढ़ें"
+        }
+      },
+      {
+        "action": "clear_response",
+        "label": {
+          "en": "Clear Response",
+          "hi": "उत्तर हटाएँ"
+        }
+      }
+    ],
+    "palette_states": [
+      {
+        "id": "not_visited",
+        "label": {
+          "en": "You have not visited the question yet.",
+          "hi": "आपने अभी तक प्रश्न नहीं देखा है।"
+        },
+        "colour_token": "mockPalette.notVisited",
+        "shape": "square"
+      },
+      {
+        "id": "not_answered",
+        "label": {
+          "en": "You have not answered the question.",
+          "hi": "आपने प्रश्न का उत्तर नहीं दिया है।"
+        },
+        "colour_token": "mockPalette.notAnswered",
+        "shape": "pentagon-down"
+      },
+      {
+        "id": "answered",
+        "label": {
+          "en": "You have answered the question.",
+          "hi": "आपने प्रश्न का उत्तर दे दिया है।"
+        },
+        "colour_token": "mockPalette.answered",
+        "shape": "pentagon-up"
+      },
+      {
+        "id": "marked",
+        "label": {
+          "en": "You have NOT answered the question, but have marked the question for review.",
+          "hi": "आपने प्रश्न का उत्तर नहीं दिया है, पर प्रश्न को पुनर्विचार के लिए चिह्नित किया है।"
+        },
+        "colour_token": "mockPalette.marked",
+        "shape": "circle"
+      },
+      {
+        "id": "answered_marked",
+        "label": {
+          "en": "The question(s) \"Answered and Marked for Review\" will be considered for evaluation.",
+          "hi": "\"उत्तर दिए गए और पुनर्विचार के लिए चिह्नित\" प्रश्नों का मूल्यांकन किया जाएगा।"
+        },
+        "colour_token": "mockPalette.answeredMarked",
+        "shape": "circle-tick"
+      }
+    ],
+    "save_requires_explicit_action": true,
+    "clear_keeps_mark": null,
+    "marked_answer_evaluated": true,
+    "keyboard_disabled_on_exam_day": true
+  },
+  "calculator": "none",
+  "section_navigation": "free",
+  "numeric_input": "virtual_keypad",
+  "question_count": 75,
+  "max_marks": 300,
+  "sections": [
+    {
+      "code": "math-a",
+      "title": {
+        "en": "Mathematics: Section A",
+        "hi": "गणित: खंड A"
+      },
+      "subject": "math",
+      "timer_min": null,
+      "question_count": 20,
+      "attempt_rule": {
+        "attempt_any": null
+      },
+      "question_types": [
+        "mcq_single"
+      ],
+      "marking": {
+        "mcq_single": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0
+        }
+      }
+    },
+    {
+      "code": "math-b",
+      "title": {
+        "en": "Mathematics: Section B",
+        "hi": "गणित: खंड B"
+      },
+      "subject": "math",
+      "timer_min": null,
+      "question_count": 5,
+      "attempt_rule": {
+        "attempt_any": null
+      },
+      "question_types": [
+        "integer"
+      ],
+      "marking": {
+        "integer": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0,
+          "tolerance": {
+            "abs": 0
+          }
+        }
+      }
+    },
+    {
+      "code": "phy-a",
+      "title": {
+        "en": "Physics: Section A",
+        "hi": "भौतिकी: खंड A"
+      },
+      "subject": "phy",
+      "timer_min": null,
+      "question_count": 20,
+      "attempt_rule": {
+        "attempt_any": null
+      },
+      "question_types": [
+        "mcq_single"
+      ],
+      "marking": {
+        "mcq_single": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0
+        }
+      }
+    },
+    {
+      "code": "phy-b",
+      "title": {
+        "en": "Physics: Section B",
+        "hi": "भौतिकी: खंड B"
+      },
+      "subject": "phy",
+      "timer_min": null,
+      "question_count": 5,
+      "attempt_rule": {
+        "attempt_any": null
+      },
+      "question_types": [
+        "integer"
+      ],
+      "marking": {
+        "integer": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0,
+          "tolerance": {
+            "abs": 0
+          }
+        }
+      }
+    },
+    {
+      "code": "chem-a",
+      "title": {
+        "en": "Chemistry: Section A",
+        "hi": "रसायन विज्ञान: खंड A"
+      },
+      "subject": "chem",
+      "timer_min": null,
+      "question_count": 20,
+      "attempt_rule": {
+        "attempt_any": null
+      },
+      "question_types": [
+        "mcq_single"
+      ],
+      "marking": {
+        "mcq_single": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0
+        }
+      }
+    },
+    {
+      "code": "chem-b",
+      "title": {
+        "en": "Chemistry: Section B",
+        "hi": "रसायन विज्ञान: खंड B"
+      },
+      "subject": "chem",
+      "timer_min": null,
+      "question_count": 5,
+      "attempt_rule": {
+        "attempt_any": null
+      },
+      "question_types": [
+        "integer"
+      ],
+      "marking": {
+        "integer": {
+          "correct": 4,
+          "wrong": -1,
+          "unattempted": 0,
+          "tolerance": {
+            "abs": 0
+          }
+        }
+      }
+    }
+  ],
+  "qualifying": {
+    "rule": null
+  },
+  "exam_day": {
+    "reporting_lead_min": 120
+  },
+  "accommodations": {
+    "extra_time_min_per_hour": 20,
+    "source_ref": "JEE (Main) 2027 bulletin §2.5, Note 2.5: not less than 20 minutes per hour for candidates eligible for a scribe"
+  },
+  "instructions": {
+    "en": "The paper has 75 questions in Mathematics, Physics and Chemistry, 25 per subject, for 300 marks in 180 minutes. Each subject has Section A (20 multiple-choice questions) and Section B (5 questions whose answer is a numerical value). Enter Section B answers as an integer using the on-screen keypad, rounded off to the nearest integer. Every question carries +4 for a correct answer and -1 for an incorrect answer in both sections; unanswered or marked-for-review-without-answer questions get 0. Questions that are answered and marked for review are evaluated. The clock runs on the server and the test submits itself when the timer reaches zero. You can move between sections and questions at any time, and change the question language between English and your chosen medium from the profile menu at the top right. Clicking a question number does not save your current answer: use Save & Next.",
+    "hi": "इस प्रश्न पत्र में गणित, भौतिकी और रसायन विज्ञान के 75 प्रश्न हैं, प्रत्येक विषय के 25 प्रश्न, कुल 300 अंक, समय 180 मिनट। प्रत्येक विषय में खंड A (20 बहुविकल्पीय प्रश्न) और खंड B (5 प्रश्न जिनका उत्तर एक संख्यात्मक मान है) हैं। खंड B का उत्तर ऑन-स्क्रीन कीपैड से पूर्णांक के रूप में, निकटतम पूर्णांक तक पूर्णांकित करके भरें। दोनों खंडों में सही उत्तर पर +4 और गलत उत्तर पर -1 अंक हैं; बिना उत्तर वाले या बिना उत्तर के पुनर्विचार के लिए चिह्नित प्रश्नों पर 0 अंक मिलते हैं। उत्तर दिए गए और पुनर्विचार के लिए चिह्नित प्रश्नों का मूल्यांकन होता है। घड़ी सर्वर पर चलती है और टाइमर शून्य होने पर परीक्षा अपने-आप जमा हो जाती है। आप किसी भी समय खंडों और प्रश्नों के बीच जा सकते हैं, और ऊपर दाईं ओर प्रोफ़ाइल मेनू से प्रश्नों की भाषा अंग्रेज़ी और अपने चुने माध्यम के बीच बदल सकते हैं। प्रश्न संख्या पर क्लिक करने से वर्तमान उत्तर सहेजा नहीं जाता: Save & Next का उपयोग करें।"
+  },
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "official",
+      "ref": "JEE (Main) 2027 Information Bulletin, Ch.2 and Appendix III",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/202610241890224107.pdf"
+    },
+    {
+      "kind": "official",
+      "ref": "Public Notice: Inviting Online Application Form for Joint Entrance Examination (Main) - 2027 (Session 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024390682350.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "p.2 (paper table and note on Sections A and B)",
+      "published": "2026-10-24"
+    }
+  ],
+  "authored_by": "skill:exam-blueprint",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "hi_source": "translation",
+  "open_questions": [
+    {
+      "field": null,
+      "question": "Order of subjects/sections on the live CBT screen is not stated in the bulletin."
+    },
+    {
+      "field": null,
+      "question": "Whether a negative value or a decimal point can be typed on the virtual keypad for Section B is not stated (the printed keypad image is a full on-screen keyboard)."
+    },
+    {
+      "field": "interface_profile.clear_keeps_mark",
+      "question": "The bulletin does not say whether Clear Response keeps a question's review mark (Appendix III)."
+    }
+  ],
+  "notes": "Mapping decisions:\n- language_switch per_question: the candidate can switch between English and the opted medium at any time from the profile menu (bulletin Appendix III General Instructions item 5; Note 2.2).\n- numeric_input virtual_keypad: 'using the mouse and the on-screen virtual numeric keypad' (bulletin §2.4).\n- exam_day.reporting_lead_min 120: 'report at the Examination Centre well in time i.e. 02 hours before the commencement' (bulletin §8.1).\n\nFields with no slot in blueprint@1, kept verbatim from the cited sources (JSON):\n{\n \"title\": {\n  \"en\": \"JEE (Main) 2027 Paper 1 (B.E./B.Tech.)\",\n  \"hi\": \"जेईई (मेन) 2027 पेपर 1 (बी.ई./बी.टेक.)\"\n },\n \"duration_rules\": {\n  \"pwbd_scribe_eligible_min\": 240,\n  \"compensatory_rule\": \"Not less than 20 minutes per hour of examination for candidates eligible for a scribe (bulletin §2.5, Note 2.5).\"\n },\n \"language_rules\": {\n  \"medium_choice\": \"Chosen in the application form; cannot be changed after the correction window closes (Note 2.2.1).\",\n  \"paper_is_bilingual\": \"The question paper is in English and the medium the candidate opted for; English alone is also an option (Note 2.2.2, §2.2 table).\",\n  \"availability\": {\n   \"en\": \"all centres in India and outside India\",\n   \"hi\": \"all centres in India\",\n   \"ur\": \"all centres in India\",\n   \"as\": \"centres in Assam\",\n   \"bn\": \"centres in West Bengal, Tripura, Andaman & Nicobar Islands\",\n   \"gu\": \"centres in Gujarat, Daman & Diu, Dadra & Nagar Haveli\",\n   \"kn\": \"centres in Karnataka\",\n   \"ml\": \"centres in Kerala and Lakshadweep\",\n   \"mr\": \"centres in Maharashtra\",\n   \"or\": \"centres in Odisha\",\n   \"pa\": \"based on present and permanent address in Punjab, Chandigarh and Delhi/New Delhi (including Faridabad, Ghaziabad, Gurugram, Noida/Greater Noida, Meerut)\",\n   \"ta\": \"centres in Tamil Nadu, Puducherry and Andaman & Nicobar Islands\",\n   \"te\": \"centres in Andhra Pradesh and Telangana\"\n  },\n  \"prevailing_version\": \"en\"\n },\n \"subject_totals\": [\n  {\n   \"subject\": \"math\",\n   \"questions\": 25,\n   \"marks\": 100\n  },\n  {\n   \"subject\": \"phy\",\n   \"questions\": 25,\n   \"marks\": 100\n  },\n  {\n   \"subject\": \"chem\",\n   \"questions\": 25,\n   \"marks\": 100\n  }\n ],\n \"key_anomaly_rules\": {\n  \"mcq_single\": [\n   \"If more than one option is found correct, +4 only to those who marked any of the correct options.\",\n   \"If all options are found correct, +4 to all who attempted the question.\",\n   \"If a question is dropped, full marks to all candidates who appeared in that shift.\"\n  ],\n  \"integer\": [\n   \"If a question is found incorrect or dropped, +4 to all candidates who appeared in that shift.\"\n  ],\n  \"source_ref\": \"§2.4.1, §2.4.2\"\n },\n \"scoring\": {\n  \"normalization\": \"nta_percentile\",\n  \"normalization_source_ref\": \"Appendix IV (printed pp.62-65)\",\n  \"merit\": \"Raw scores in Mathematics, Physics, Chemistry and total are converted to NTA scores; overall merit merges NTA scores of all shifts of both sessions (§2.4 item 4).\",\n  \"tie_break_order\": [\n   \"NTA score in Mathematics\",\n   \"NTA score in Physics\",\n   \"NTA score in Chemistry\",\n   \"Lower ratio of attempted incorrect to correct answers in all subjects\",\n   \"Lower ratio of attempted incorrect to correct answers in Mathematics\",\n   \"Lower ratio of attempted incorrect to correct answers in Physics\",\n   \"Lower ratio of attempted incorrect to correct answers in Chemistry\",\n   \"Same rank if still tied\"\n  ]\n },\n \"instructions_basis\": \"Summary in our own words of bulletin §2.4, §2.4.1, §2.4.2 and Appendix III; not the official screen text.\",\n \"notes\": [\n  \"Section B has 5 questions per subject and the bulletin states no 'attempt any' choice, so attempt_any is null and all 5 count (§2.4 table; Public Notice p.2).\",\n  \"The bulletin calls Section B 'questions for which the answer is a numerical value' but requires the integer value, rounded off to the nearest integer, entered on the virtual numeric keypad (§2.4 item 1, §2.4.2 item 5). Encoded as question type 'integer' with tolerance 0; the official name is kept in answer_format.\",\n  \"The bulletin does not mention an on-screen calculator; calculators are barred items (§8.13). Encoded as calculator 'none'.\",\n  \"The order in which subjects appear on screen is not stated. Sections are listed in the order of the bulletin's pattern table (Mathematics, Physics, Chemistry).\",\n  \"No sectional timers or section locks are stated; Appendix III item 14 allows moving between sections and questions at any time within the paper duration.\",\n  \"Palette colours and shapes are described from the symbol images printed on Appendix III pp.57 and 59; the bulletin text itself does not name the colours.\",\n  \"Candidates report 2 hours before the exam; gates close 30 minutes before; login to read instructions at 08:50 / 14:50 (§8.1, §8.3, Chapter 7 schedule p.29). Not used by the mock engine.\"\n ],\n \"changes_from_previous\": \"First blueprint for this profile in the repo; no previous version to compare.\",\n \"language_switch\": {\n  \"allowed\": true,\n  \"scope\": \"whole_paper\",\n  \"between\": [\n   \"en\",\n   \"opted_medium\"\n  ],\n  \"control\": \"profile_image_menu_top_right\",\n  \"source_ref\": \"Appendix III, General Instructions item 5; Note 2.2\"\n },\n \"interface_profile\": {\n  \"palette_position\": \"right\",\n  \"palette_collapsible\": true,\n  \"timer\": {\n   \"position\": \"top_right\",\n   \"kind\": \"countdown\",\n   \"server_clock\": true,\n   \"auto_submit_at_zero\": true,\n   \"manual_submit\": false\n  },\n  \"navigation_rules\": [\n   \"Clicking a question number in the palette does NOT save the answer to the current question (Appendix III item 8a).\",\n   \"Save & Next saves the answer and moves to the next question (item 8b).\",\n   \"Mark for Review & Next saves the answer, marks it for review and moves on (item 8c); without an answer it only marks for review (item 10).\",\n   \"An MCQ answer is deselected by clicking the chosen option again or Clear Response (item 9b).\",\n   \"Save & Next on the last question of a section moves to the first question of the next section (item 13).\",\n   \"Sections are shown on the top bar; the current section is highlighted (item 12). A section summary legend appears above the palette (item 15).\",\n   \"Scroll-to-bottom and scroll-to-top arrow buttons in the question area (item 7).\"\n  ],\n  \"answer_entry\": {\n   \"mcq\": \"mouse_click_option\",\n   \"numerical\": \"on_screen_virtual_keyboard\",\n   \"physical_keyboard\": \"disabled\"\n  },\n  \"accessibility_options\": [\n   \"dark_or_light_mode\",\n   \"console_font_size\",\n   \"cursor_trail\",\n   \"cursor_size\",\n   \"screen_magnifier\"\n  ],\n  \"rough_work\": \"Blank rough sheets and a ballpoint pen are provided at the centre and handed back at the end (§8.17; Appendix III item 21a).\",\n  \"source_ref\": \"Appendix III (CBT Guidelines), printed pp.56-61; palette symbol images on pp.57 and 59\"\n },\n \"sections\": {\n  \"math-a\": {\n   \"marking\": {\n    \"mcq_single\": {\n     \"marked_for_review_unanswered\": 0\n    }\n   }\n  },\n  \"math-b\": {\n   \"answer_format\": {\n    \"entry\": \"on_screen_virtual_numeric_keypad\",\n    \"value\": \"integer\",\n    \"rounding\": \"round_off_to_nearest_integer\",\n    \"constants\": \"use the constants given in the question, if any\"\n   },\n   \"marking\": {\n    \"integer\": {\n     \"marked_for_review_unanswered\": 0\n    }\n   }\n  },\n  \"phy-a\": {\n   \"marking\": {\n    \"mcq_single\": {\n     \"marked_for_review_unanswered\": 0\n    }\n   }\n  },\n  \"phy-b\": {\n   \"answer_format\": {\n    \"entry\": \"on_screen_virtual_numeric_keypad\",\n    \"value\": \"integer\",\n    \"rounding\": \"round_off_to_nearest_integer\",\n    \"constants\": \"use the constants given in the question, if any\"\n   },\n   \"marking\": {\n    \"integer\": {\n     \"marked_for_review_unanswered\": 0\n    }\n   }\n  },\n  \"chem-a\": {\n   \"marking\": {\n    \"mcq_single\": {\n     \"marked_for_review_unanswered\": 0\n    }\n   }\n  },\n  \"chem-b\": {\n   \"answer_format\": {\n    \"entry\": \"on_screen_virtual_numeric_keypad\",\n    \"value\": \"integer\",\n    \"rounding\": \"round_off_to_nearest_integer\",\n    \"constants\": \"use the constants given in the question, if any\"\n   },\n   \"marking\": {\n    \"integer\": {\n     \"marked_for_review_unanswered\": 0\n    }\n   }\n  }\n }\n}"
+}

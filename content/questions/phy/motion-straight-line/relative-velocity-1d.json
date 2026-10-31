@@ -1,0 +1,739 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 3 Motion in a Plane (2026-27 reprint), Points to Ponder",
+      "url": "https://ncert.nic.in/textbook/pdf/keph103.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Science, Exploration Grade 9, Ch 4 Describing Motion Around Us (2026)",
+      "url": "https://ncert.nic.in/textbook/pdf/iesc104.pdf",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "openstax",
+      "ref": "OpenStax University Physics Volume 1, §4.5 Relative Motion in One and Two Dimensions",
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-5-relative-motion-in-one-and-two-dimensions",
+      "retrieved": "2026-10-31"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 2 Saral Rekha mein Gati: Hindi terms (summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph102.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 22-23"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 2 Motion in a Straight Line (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph102.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section, example or point it rests on. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph102 (summary and table, pp. 22-23): विस्थापन, पथ-लंबाई, एकसमान गति, औसत वेग, औसत चाल, तात्क्षणिक वेग, त्वरण, प्रवणता, परवलय, शुद्धगतिक समीकरण, गुरुत्वजनित त्वरण. Other wording is ours.",
+  "topic": "phy.motion-straight-line.relative-velocity-1d",
+  "questions": [
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two cars move east on a straight road at 60 km/h and 40 km/h. The velocity of the faster car relative to the slower one is",
+        "hi": "सीधी सड़क पर दो कारें पूर्व की ओर 60 km/h और 40 km/h से चल रही हैं। धीमी कार के सापेक्ष तेज़ कार का वेग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "20 km/h east",
+            "hi": "20 km/h पूर्व"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "100 km/h east",
+            "hi": "100 km/h पूर्व"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "20 km/h west",
+            "hi": "20 km/h पश्चिम"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "zero",
+            "hi": "शून्य"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "$v_1 - v_2$",
+          "hi": "$v_1 - v_2$"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Same direction: subtract.",
+          "hi": "एक ही दिशा: घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "$v_{12} = 60 - 40 = +20$ km/h",
+            "hi": "$v_{12} = 60 - 40 = +20$ km/h"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Speeds add only for opposite directions.",
+              "hi": "चालें केवल विपरीत दिशाओं में जुड़ती हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the slower car relative to the faster.",
+              "hi": "यह तेज़ के सापेक्ष धीमी कार है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Their velocities differ.",
+              "hi": "उनके वेग अलग हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two trains on parallel tracks approach each other, each at 50 km/h with respect to the ground. The speed of one as seen by a passenger in the other is",
+        "hi": "समांतर पटरियों पर दो रेलगाड़ियाँ एक-दूसरे की ओर आ रही हैं, हर एक धरती के सापेक्ष 50 km/h से। एक रेलगाड़ी के यात्री को दूसरी की चाल दिखती है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "100 km/h",
+            "hi": "100 km/h"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "0",
+            "hi": "0"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "50 km/h",
+            "hi": "50 km/h"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "25 km/h",
+            "hi": "25 km/h"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Give one train a minus sign.",
+          "hi": "एक रेलगाड़ी को ऋण चिह्न दीजिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Opposite directions: the speeds add.",
+          "hi": "विपरीत दिशाएँ: चालें जुड़ती हैं।"
+        },
+        "steps": [
+          {
+            "en": "$v_{12} = 50 - (-50) = 100$ km/h",
+            "hi": "$v_{12} = 50 - (-50) = 100$ km/h"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Zero would mean they move together the same way.",
+              "hi": "शून्य का अर्थ होगा कि वे एक ही ओर साथ चल रही हैं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the speed with respect to the ground.",
+              "hi": "यह धरती के सापेक्ष चाल है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not what the signs give.",
+              "hi": "चिह्नों से यह नहीं आता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A police van moving at 10 m/s fires a bullet forward with a muzzle speed of 100 m/s relative to the van, at a car ahead moving away at 20 m/s in the same direction. The speed with which the bullet hits the car is",
+        "hi": "10 m/s से चलती पुलिस वैन वैन के सापेक्ष 100 m/s की नालमुख चाल से आगे की ओर गोली चलाती है, जो उसी दिशा में 20 m/s से दूर जाती आगे की कार पर लगती है। गोली कार से जिस चाल से टकराती है, वह है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "90 m/s",
+            "hi": "90 m/s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "110 m/s",
+            "hi": "110 m/s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "130 m/s",
+            "hi": "130 m/s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "80 m/s",
+            "hi": "80 m/s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Two steps: van to ground, ground to car.",
+          "hi": "दो चरण: वैन से धरती, धरती से कार।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Find the bullet's ground velocity, then subtract the car's.",
+          "hi": "गोली का धरती के सापेक्ष वेग निकालिए, फिर कार का घटाइए।"
+        },
+        "steps": [
+          {
+            "en": "Bullet relative to ground: $100 + 10 = 110$ m/s.",
+            "hi": "धरती के सापेक्ष गोली: $100 + 10 = 110$ m/s।"
+          },
+          {
+            "en": "Relative to the car: $110 - 20 = 90$ m/s.",
+            "hi": "कार के सापेक्ष: $110 - 20 = 90$ m/s।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That is the bullet's speed relative to the ground.",
+              "hi": "यह धरती के सापेक्ष गोली की चाल है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The car's velocity was added instead of subtracted.",
+              "hi": "कार का वेग घटाने के बजाय जोड़ दिया।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The van's velocity was ignored.",
+              "hi": "वैन का वेग छोड़ दिया।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0004",
+      "type": "integer",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "Two trains 150 m and 250 m long run on parallel tracks in opposite directions at 15 m/s and 25 m/s. How many seconds do they take to cross each other completely?",
+        "hi": "150 m और 250 m लंबी दो रेलगाड़ियाँ समांतर पटरियों पर विपरीत दिशाओं में 15 m/s और 25 m/s से चल रही हैं। एक-दूसरे को पूरी तरह पार करने में उन्हें कितने सेकंड लगते हैं?"
+      },
+      "answer": {
+        "value": 10,
+        "unit": null
+      },
+      "hints": [
+        {
+          "en": "Opposite directions add.",
+          "hi": "विपरीत दिशाएँ जुड़ती हैं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The gap to close is both lengths; the closing speed is the sum.",
+          "hi": "घटाई जाने वाली दूरी दोनों लंबाइयाँ है; पास आने की चाल योग है।"
+        },
+        "steps": [
+          {
+            "en": "Relative speed $= 15 + 25 = 40$ m/s; distance $= 150 + 250 = 400$ m.",
+            "hi": "आपेक्षिक चाल $= 15 + 25 = 40$ m/s; दूरी $= 150 + 250 = 400$ m।"
+          },
+          {
+            "en": "$t = \\frac{400}{40} = 10$ s",
+            "hi": "$t = \\frac{400}{40} = 10$ s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "why": {
+              "en": "Subtracting the speeds gives 40 s, as if they moved the same way.",
+              "hi": "चालें घटाने पर 40 s आता है, मानो वे एक ही ओर चल रही हों।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A passenger walks at 1 m/s towards the back of a train moving east at 15 m/s. Her velocity with respect to the ground is",
+        "hi": "पूर्व की ओर 15 m/s से चलती रेलगाड़ी में एक यात्री पीछे की ओर 1 m/s से चलती है। धरती के सापेक्ष उसका वेग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "14 m/s east",
+            "hi": "14 m/s पूर्व"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "16 m/s east",
+            "hi": "16 m/s पूर्व"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "14 m/s west",
+            "hi": "14 m/s पश्चिम"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "1 m/s west",
+            "hi": "1 m/s पश्चिम"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which frame is each number measured in?",
+          "hi": "हर संख्या किस तंत्र में मापी गई है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Her velocity relative to the train plus the train's velocity.",
+          "hi": "रेलगाड़ी के सापेक्ष उसका वेग धन रेलगाड़ी का वेग।"
+        },
+        "steps": [
+          {
+            "en": "East positive: $v = 15 + (-1) = +14$ m/s",
+            "hi": "पूर्व धनात्मक: $v = 15 + (-1) = +14$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Walking towards the back subtracts.",
+              "hi": "पीछे की ओर चलना घटाता है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "The train carries her east.",
+              "hi": "रेलगाड़ी उसे पूर्व की ओर ले जाती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is her velocity relative to the train.",
+              "hi": "यह रेलगाड़ी के सापेक्ष उसका वेग है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 40,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Two cars start together from the same point on a straight road at 10 m/s and 15 m/s in the same direction. After how long are they 100 m apart?",
+        "hi": "दो कारें सीधी सड़क पर एक ही बिंदु से साथ-साथ एक ही दिशा में 10 m/s और 15 m/s से चलती हैं। कितने समय बाद वे 100 m दूर होंगी?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "20 s",
+            "hi": "20 s"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4 s",
+            "hi": "4 s"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 s",
+            "hi": "10 s"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "40 s",
+            "hi": "40 s"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Watch from the slower car.",
+          "hi": "धीमी कार से देखिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The gap grows at the relative speed.",
+          "hi": "दूरी आपेक्षिक चाल से बढ़ती है।"
+        },
+        "steps": [
+          {
+            "en": "Relative speed $= 15 - 10 = 5$ m/s; $t = \\frac{100}{5} = 20$ s",
+            "hi": "आपेक्षिक चाल $= 15 - 10 = 5$ m/s; $t = \\frac{100}{5} = 20$ s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That uses the sum of the speeds.",
+              "hi": "इसमें चालों का योग लिया गया है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That uses only the slower car's speed.",
+              "hi": "इसमें केवल धीमी कार की चाल ली गई है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Not what the numbers give.",
+              "hi": "संख्याओं से यह नहीं आता।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.motion-straight-line.relative-velocity-1d.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.motion-straight-line.relative-velocity-1d.core.relative-velocity",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A boy in a train moving at 20 m/s throws a ball forward at 5 m/s relative to the train. The ball's velocity relative to the ground is",
+        "hi": "20 m/s से चलती रेलगाड़ी में एक लड़का गेंद को रेलगाड़ी के सापेक्ष 5 m/s से आगे फेंकता है। धरती के सापेक्ष गेंद का वेग है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "25 m/s forward",
+            "hi": "25 m/s आगे"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "15 m/s forward",
+            "hi": "15 m/s आगे"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "5 m/s forward",
+            "hi": "5 m/s आगे"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "20 m/s forward",
+            "hi": "20 m/s आगे"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Add the frame's velocity.",
+          "hi": "तंत्र का वेग जोड़िए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The ball keeps the train's velocity and adds its own.",
+          "hi": "गेंद रेलगाड़ी का वेग रखती है और अपना जोड़ती है।"
+        },
+        "steps": [
+          {
+            "en": "$v = 20 + 5 = 25$ m/s",
+            "hi": "$v = 20 + 5 = 25$ m/s"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "Thrown forward, not backward.",
+              "hi": "आगे फेंकी गई, पीछे नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is relative to the train.",
+              "hi": "यह रेलगाड़ी के सापेक्ष है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "That is the train alone.",
+              "hi": "यह केवल रेलगाड़ी है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

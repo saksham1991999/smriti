@@ -1,0 +1,850 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Biology, Ch 10 Cell Cycle and Cell Division (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/kebo110.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the NEET format, not copied from the NCERT exercises or any paper. Each solution cites the NCERT section it rests on. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khbo110) could not be retrieved, so a reviewer should check the terms.",
+  "topic": "bio.cell-cycle-division.cell-cycle",
+  "questions": [
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Human cells growing in culture divide approximately once every",
+        "hi": "संवर्धन में बढ़ती मानव कोशिकाएँ लगभग कितने समय में एक बार विभाजित होती हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "90 minutes",
+            "hi": "90 मिनट"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "24 hours",
+            "hi": "24 घंटे"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "1 hour",
+            "hi": "1 घंटा"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "one week",
+            "hi": "एक सप्ताह"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Think of one day.",
+          "hi": "एक दिन सोचिए।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "A day for the whole cycle; division itself is only about an hour of it.",
+          "hi": "पूरे चक्र के लिए एक दिन; विभाजन स्वयं उसमें से लगभग एक घंटा।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: human cells in culture divide once in approximately every 24 hours.",
+            "hi": "NCERT §10.1.1: संवर्धन में मानव कोशिकाएँ लगभग हर 24 घंटे में एक बार विभाजित होती हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "About 90 minutes is yeast's cycle.",
+              "hi": "लगभग 90 मिनट यीस्ट का चक्र है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "About an hour is the M phase alone.",
+              "hi": "लगभग एक घंटा केवल M प्रावस्था है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "NCERT gives about a day.",
+              "hi": "NCERT लगभग एक दिन बताती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A diploid cell has DNA content 2C and chromosome number 2n at G1. After S phase it has",
+        "hi": "एक द्विगुणित कोशिका में G1 पर DNA 2C और गुणसूत्र संख्या 2n है। S प्रावस्था के बाद इसमें होगा"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "4C and 4n",
+            "hi": "4C और 4n"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "4C and 2n",
+            "hi": "4C और 2n"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "2C and 4n",
+            "hi": "2C और 4n"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "2C and 2n",
+            "hi": "2C और 2n"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "C counts DNA, n counts chromosomes.",
+          "hi": "C DNA गिनता है, n गुणसूत्र।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Replication copies every chromosome, but each copy stays attached to its original, so you still count the same number of chromosomes.",
+          "hi": "प्रतिकृति हर गुणसूत्र की प्रतिलिपि बनाती है, पर हर प्रतिलिपि मूल से जुड़ी रहती है, इसलिए गुणसूत्र उतने ही गिने जाते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: in S phase DNA increases from 2C to 4C, but the chromosome number stays 2n.",
+            "hi": "NCERT §10.1.1: S प्रावस्था में DNA 2C से 4C हो जाता है, पर गुणसूत्र संख्या 2n रहती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "The chromosome number does not double.",
+              "hi": "गुणसूत्र संख्या दोगुनी नहीं होती।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It is the DNA that doubles, not the number.",
+              "hi": "दोगुना DNA होता है, संख्या नहीं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "S phase does double the DNA.",
+              "hi": "S प्रावस्था DNA को दोगुना करती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Cells that do not divide further exit G1 and enter",
+        "hi": "जो कोशिकाएँ आगे विभाजित नहीं होतीं वे G1 छोड़कर किसमें जाती हैं?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "S phase",
+            "hi": "S प्रावस्था"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "G2 phase",
+            "hi": "G2 प्रावस्था"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the quiescent stage G0",
+            "hi": "शांत अवस्था G0"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "M phase",
+            "hi": "M प्रावस्था"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Zero for no division.",
+          "hi": "शून्य, यानी विभाजन नहीं।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "They step out of the cycle into a waiting stage, still alive and working.",
+          "hi": "वे चक्र से बाहर एक प्रतीक्षा अवस्था में चली जाती हैं, जीवित और कार्यरत।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: cells that do not divide further exit G1 to enter an inactive stage called the quiescent stage (G0).",
+            "hi": "NCERT §10.1.1: आगे विभाजित न होने वाली कोशिकाएँ G1 छोड़कर एक निष्क्रिय अवस्था, शांत अवस्था (G0), में जाती हैं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "S phase is DNA replication, a step towards division.",
+              "hi": "S प्रावस्था DNA प्रतिकृति है, विभाजन की ओर एक चरण।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "G2 prepares for mitosis.",
+              "hi": "G2 समसूत्री विभाजन की तैयारी करती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "M phase is division itself.",
+              "hi": "M प्रावस्था स्वयं विभाजन है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "In animal cells, the centriole duplicates during",
+        "hi": "जंतु कोशिकाओं में तारकाय की प्रतिकृति किस दौरान बनती है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "G1 phase",
+            "hi": "G1 प्रावस्था"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "S phase",
+            "hi": "S प्रावस्था"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "prophase",
+            "hi": "पूर्वावस्था"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "telophase",
+            "hi": "अंत्यावस्था"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Same phase as DNA replication.",
+          "hi": "वही प्रावस्था जिसमें DNA प्रतिकृति होती है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "While the nucleus copies its DNA, the cytoplasm copies its centriole: both happen in S.",
+          "hi": "जब केंद्रक अपने DNA की प्रतिलिपि बनाता है, कोशिकाद्रव्य अपने तारकाय की: दोनों S में होते हैं।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: in animal cells, during S phase, DNA replication begins in the nucleus and the centriole duplicates in the cytoplasm.",
+            "hi": "NCERT §10.1.1: जंतु कोशिकाओं में S प्रावस्था के दौरान केंद्रक में DNA प्रतिकृति शुरू होती है और कोशिकाद्रव्य में तारकाय की प्रतिकृति बनती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "G1 has growth without replication.",
+              "hi": "G1 में वृद्धि है, प्रतिकृति नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "In prophase the already duplicated centrosomes move apart.",
+              "hi": "पूर्वावस्था में पहले से द्विगुणित तारककेंद्र दूर जाते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Telophase is the end of nuclear division.",
+              "hi": "अंत्यावस्था केंद्रक विभाजन का अंत है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0005",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Which statement about the cell cycle is correct?",
+        "hi": "कोशिका चक्र के बारे में कौन-सा कथन सही है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "Interphase takes less than half of the human cell cycle.",
+            "hi": "अंतरावस्था मानव कोशिका चक्र का आधे से कम समय लेती है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "DNA synthesis happens throughout the cell cycle.",
+            "hi": "DNA संश्लेषण पूरे कोशिका चक्र में होता है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "In animals, mitosis is seen only in diploid somatic cells, with exceptions such as male honey bees.",
+            "hi": "जंतुओं में समसूत्री विभाजन केवल द्विगुणित कायिक कोशिकाओं में दिखता है, नर मधुमक्खी जैसे अपवादों के साथ।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "Plants show mitosis only in diploid cells.",
+            "hi": "पौधों में समसूत्री विभाजन केवल द्विगुणित कोशिकाओं में होता है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Look for the one with an exception named.",
+          "hi": "वह कथन देखिए जिसमें अपवाद का नाम है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Male honey bees are haploid, yet their cells divide by mitosis: the textbook's exception.",
+          "hi": "नर मधुमक्खियाँ अगुणित हैं, फिर भी उनकी कोशिकाएँ समसूत्री विभाजन करती हैं: यही पाठ्यपुस्तक का अपवाद है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: in animals mitosis is seen in diploid somatic cells, with exceptions like male honey bees; plants show mitosis in haploid and diploid cells; interphase lasts more than 95%; DNA synthesis occurs only in one stage.",
+            "hi": "NCERT §10.1.1: जंतुओं में समसूत्री विभाजन द्विगुणित कायिक कोशिकाओं में, नर मधुमक्खी जैसे अपवादों के साथ; पौधों में अगुणित और द्विगुणित दोनों में; अंतरावस्था 95% से अधिक; DNA संश्लेषण केवल एक अवस्था में।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "Interphase lasts more than 95% of the cycle.",
+              "hi": "अंतरावस्था चक्र का 95% से अधिक समय लेती है।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "DNA is made only in S phase.",
+              "hi": "DNA केवल S प्रावस्था में बनता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Plants divide by mitosis in both haploid and diploid cells.",
+              "hi": "पौधे अगुणित और द्विगुणित दोनों कोशिकाओं में समसूत्री विभाजन करते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 60,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0006",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "During G2 phase",
+        "hi": "G2 प्रावस्था के दौरान"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "DNA replicates",
+            "hi": "DNA की प्रतिकृति बनती है"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "proteins are synthesised in preparation for mitosis while growth continues",
+            "hi": "समसूत्री विभाजन की तैयारी में प्रोटीन बनते हैं और वृद्धि जारी रहती है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the nuclear envelope disappears",
+            "hi": "केंद्रक आवरण लुप्त हो जाता है"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the cell leaves the cycle",
+            "hi": "कोशिका चक्र छोड़ देती है"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Gap 2 comes just before M.",
+          "hi": "अंतराल 2 ठीक M से पहले आता है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "G2 is the last stretch before division: the cell builds the proteins it will need.",
+          "hi": "G2 विभाजन से पहले का अंतिम चरण है: कोशिका आवश्यक प्रोटीन बनाती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: during G2 phase, proteins are synthesised in preparation for mitosis while cell growth continues.",
+            "hi": "NCERT §10.1.1: G2 प्रावस्था में समसूत्री विभाजन की तैयारी में प्रोटीन बनते हैं और कोशिका वृद्धि जारी रहती है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "That is S phase.",
+              "hi": "वह S प्रावस्था है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That happens by the end of prophase.",
+              "hi": "वह पूर्वावस्था के अंत तक होता है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Cells leave from G1 into G0.",
+              "hi": "कोशिकाएँ G1 से G0 में जाती हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0007",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "If a cell's DNA content after M phase is 2C, its DNA content at G2 is",
+        "hi": "यदि M प्रावस्था के बाद कोशिका का DNA 2C है, तो G2 पर इसका DNA होगा"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "C",
+            "hi": "C"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "2C",
+            "hi": "2C"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "4C",
+            "hi": "4C"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "8C",
+            "hi": "8C"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "c"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Where does G2 sit relative to S?",
+          "hi": "S के सापेक्ष G2 कहाँ है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The DNA was doubled in S and is not shared out until mitosis, so G2 still holds the doubled amount.",
+          "hi": "DNA S में दोगुना हुआ और समसूत्री विभाजन तक बँटता नहीं, इसलिए G2 में दोगुनी मात्रा ही रहती है।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: S phase doubles DNA from 2C to 4C; G2 follows S with no further division.",
+            "hi": "NCERT §10.1.1: S प्रावस्था DNA को 2C से 4C करती है; G2, S के बाद आती है और बीच में कोई विभाजन नहीं।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "a",
+            "why": {
+              "en": "C would be after a reduction, not in a mitotic cycle.",
+              "hi": "C न्यूनकारी विभाजन के बाद होगा, समसूत्री चक्र में नहीं।"
+            }
+          },
+          {
+            "option_id": "b",
+            "why": {
+              "en": "2C is at G1, before replication.",
+              "hi": "2C, G1 पर है, प्रतिकृति से पहले।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "DNA is replicated only once per cycle.",
+              "hi": "प्रति चक्र DNA की प्रतिकृति केवल एक बार बनती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 45,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.bio.cell-cycle-division.cell-cycle.0008",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "bio.cell-cycle-division.cell-cycle.core.cell-cycle-phases",
+          "weight": 1
+        }
+      ],
+      "depth": 3,
+      "exam_styles": [
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Yeast can progress through its cell cycle in about",
+        "hi": "यीस्ट अपना कोशिका चक्र लगभग कितने समय में पूरा कर सकता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "90 minutes",
+            "hi": "90 मिनट"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "24 hours",
+            "hi": "24 घंटे"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 minutes",
+            "hi": "10 मिनट"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "12 hours",
+            "hi": "12 घंटे"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Faster than human cells.",
+          "hi": "मानव कोशिकाओं से तेज़।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Yeast is much faster than human cells: an hour and a half.",
+          "hi": "यीस्ट मानव कोशिकाओं से बहुत तेज़ है: डेढ़ घंटा।"
+        },
+        "steps": [
+          {
+            "en": "NCERT §10.1.1: yeast can progress through the cell cycle in only about 90 minutes.",
+            "hi": "NCERT §10.1.1: यीस्ट लगभग केवल 90 मिनट में कोशिका चक्र पूरा कर सकता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "24 hours is human cells in culture.",
+              "hi": "24 घंटे संवर्धन में मानव कोशिकाओं का है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "NCERT gives about 90 minutes.",
+              "hi": "NCERT लगभग 90 मिनट बताती है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "NCERT gives about 90 minutes.",
+              "hi": "NCERT लगभग 90 मिनट बताती है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

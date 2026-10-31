@@ -1,0 +1,1242 @@
+{
+  "schema": "media-requests@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat (textbook pp.18-32), as read in the official NCERT CIET audiobook of the textbook",
+      "url": "https://ciet.ncert.gov.in/audio-book/118",
+      "retrieved": "2026-10-31",
+      "pages": "Chapter 3 track"
+    }
+  ],
+  "authored_by": "skill:visual-director",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Images generated with Agnes AI through the visual-director presets, reviewed against the checklist and content-qa. Provenance (prompts, hashes, rounds) is in tools/content-research/media/agnes-log.json. Delivered as WebP (3:2 at 1536x1024, 1:1 at 1024x1024); originals kept outside the repo. These images are for under-10s, so they stay generated until a person approves them (visual-director). Tiles are delivered on their pale tint background; they were not cut out. Narration and song audio stay requested until a voice is chosen (TRD D3), and the stroke-order guides need the Rive editor.",
+  "requests": [
+    {
+      "id": "img.mango-treat.page-01",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "the small striped palm squirrel sitting under a big mango tree and looking up as one ripe yellow mango drops from a branch",
+      "must_show": [
+        "one big mango tree",
+        "one ripe mango falling",
+        "the squirrel looking up"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "more than one squirrel"
+      ],
+      "alt": {
+        "en": "A little striped squirrel looks up at a ripe mango hanging from a big mango tree. Two small birds sit nearby.",
+        "hi": "धारियों वाली एक छोटी गिलहरी आम के बड़े पेड़ पर लटके पके आम को देख रही है। पास में दो छोटी चिड़ियाँ बैठी हैं।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "5fbc99af5a32358791b94aafd220e794b5a6cb3026ed1aef668ab7a0342fd1dd",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 113706,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-02",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "the small striped palm squirrel holding one big ripe yellow mango on the grass under a mango tree and happily nibbling it",
+      "must_show": [
+        "the squirrel eating one mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "birds",
+        "a second mango on the ground"
+      ],
+      "alt": {
+        "en": "The squirrel holds a big yellow mango and nibbles it on the grass.",
+        "hi": "गिलहरी घास पर बड़ा पीला आम पकड़कर कुतर रही है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "3992713016ab675b70dac9fb6ecc253e49ac79f45d9eaa84c225994953204502",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 59088,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-03",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a common myna, a brown bird with a yellow beak and yellow skin around the eye landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one myna, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A brown myna with a yellow beak stands by a big mango. The squirrel watches.",
+        "hi": "पीली चोंच वाली भूरी मैना एक बड़े आम के पास खड़ी है। गिलहरी देख रही है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "1cabfc3c4bd3eaa5dd84f0cf4023a5540ec6a78570063b18fa96467f47e26958",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 73112,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-04",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a green rose-ringed parakeet with a red beak landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one parrot, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A green parrot with a red beak lands on the mango. The squirrel looks on.",
+        "hi": "लाल चोंच वाला हरा तोता आम पर उतरता है। गिलहरी देख रही है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "b1dbf7aa70f878ba56560e9f77d9ae61a6ee06f4a84bbbaa838885ea178be00c",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 94446,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-05",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a small brown house sparrow landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one sparrow, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A little brown sparrow flutters down beside the mango and the squirrel.",
+        "hi": "एक छोटी भूरी गौरैया आम और गिलहरी के पास उतरती है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "c6d9d5012207ed39c3f1297bdec9d430ea750fe2f0af5f837bc79a692cb45ff6",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 79524,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-06",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a grey-necked house crow landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one crow, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A grey-necked crow walks up to the mango, next to the squirrel.",
+        "hi": "धूसर गर्दन वाला कौआ गिलहरी के पास आम की ओर आता है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "08bce8ad8de843d18dda09b579dde30d648bca74b5dd7e38c8d62535cf9604a3",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 80638,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-07",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a grey rock pigeon landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one pigeon, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A grey pigeon flies down to the mango while the squirrel and some small birds watch.",
+        "hi": "एक धूसर कबूतर आम के पास उड़कर आता है, गिलहरी और कुछ छोटी चिड़ियाँ देख रही हैं।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6f65035d36b76bd60e4b9539186d4bcb5c54a36f92abcbbdfb0736a1de3652db",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 91188,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-08",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a glossy black Asian koel with red eyes landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one koel, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A black koel with red eyes stands near a mango hanging low from the tree. The squirrel sits close by.",
+        "hi": "लाल आँखों वाली काली कोयल पेड़ से नीचे लटके आम के पास खड़ी है। गिलहरी पास बैठी है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "2683353085b56626e3f2c18f82845c0a5ce53f747ff1ca9751f70b53c2d6c636",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 103792,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-09",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "a white-throated kingfisher with bright blue wings and a long red beak landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one kingfisher, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A blue and white kingfisher with a long red beak lands on the mango beside the squirrel.",
+        "hi": "लंबी लाल चोंच वाला नीला-सफ़ेद किलकिला गिलहरी के पास आम पर उतरता है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e68900dee3f51aaf3b0a78e832e970694b820e095441ae96b3c7071909620405",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 86104,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-10",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "an Indian peacock with its long green tail feathers landing happily on the grass next to one big ripe yellow mango under a mango tree, close-up of the newcomer, cheerful and friendly",
+      "must_show": [
+        "one peacock, large and clearly visible",
+        "one ripe mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a flock",
+        "other birds in the foreground",
+        "people"
+      ],
+      "alt": {
+        "en": "A peacock with a long tail full of eye-spots walks up to the mango. The squirrel and other birds watch.",
+        "hi": "आँखों जैसे निशानों से भरी लंबी पूँछ वाला मोर आम के पास आता है। गिलहरी और दूसरी चिड़ियाँ देख रही हैं।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "07f4307d0352370602a7eeed12a8803c170c8e6128bb2242a1d7f834d205acff",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 107420,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-11",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "many ripe yellow mangoes dropping from a mango tree onto the grass while a squirrel and a few birds look up in delight",
+      "must_show": [
+        "lots of mangoes falling and lying on the grass",
+        "the squirrel and birds looking happy"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people"
+      ],
+      "alt": {
+        "en": "Many ripe mangoes hang on the tree and lie on the grass. The squirrel and three birds look at them happily.",
+        "hi": "पेड़ पर बहुत से पके आम लटक रहे हैं और घास पर पड़े हैं। गिलहरी और तीन चिड़ियाँ खुशी से उन्हें देख रही हैं।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "2622ed5769e3465c3f52df85f3afd7a848d2b78d3d758cc5b3e164d516131e2b",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 83422,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.page-12",
+      "kind": "image",
+      "preset": "storybook",
+      "subject_family": "maths",
+      "brief": "the small striped palm squirrel, a peacock, a parrot and other small birds sitting together in a friendly row on the grass under a mango tree, each holding or pecking its own ripe mango, a happy picnic",
+      "must_show": [
+        "every animal has its own mango",
+        "friendly sharing mood"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "people",
+        "fighting"
+      ],
+      "alt": {
+        "en": "The squirrel, a peacock, a parrot and small birds sit in a row under the tree, each holding its own mango.",
+        "hi": "गिलहरी, मोर, तोता और छोटी चिड़ियाँ पेड़ के नीचे एक पंक्ति में बैठे हैं, हर एक के पास अपना आम है।"
+      },
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "f6ee1396556ddb35030d1f08f856536043611e1fd9ba1051ad61fd36a9c1fa5f",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 103116,
+        "width": 1536,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.mango-one",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "exactly one single ripe yellow-orange mango with a small green leaf on its stem",
+      "must_show": [
+        "exactly one mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a second mango",
+        "a basket"
+      ],
+      "alt": {
+        "en": "One ripe mango with a green leaf.",
+        "hi": "हरी पत्ती वाला एक पका आम।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting",
+        "sg.math.mango-treat"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "89c4e7c1d2bcd0497d6fb96ea7326d649a532fc25fe0366b15b6cb97f61c9dbb",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 13206,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.mango-two",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "exactly two ripe yellow-orange mangoes side by side, clearly separate",
+      "must_show": [
+        "exactly two mangoes, no more"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a third mango",
+        "a basket"
+      ],
+      "alt": {
+        "en": "Two ripe mangoes side by side.",
+        "hi": "पास-पास रखे दो पके आम।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "be1a8892d47e1d5bec77b7f7b5a4e1e8c9b4ff412195ee356056e1229a4a5fa1",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 13704,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.mango-three",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "exactly three ripe yellow-orange mangoes in a neat row, clearly separate",
+      "must_show": [
+        "exactly three mangoes, no more"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a fourth mango",
+        "a basket"
+      ],
+      "alt": {
+        "en": "Three ripe mangoes in a row.",
+        "hi": "एक पंक्ति में तीन पके आम।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "1ec03121d2c0a0d3309e086ce85ad01aebd0c745be0b55da782bbbccaea0b552",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 17738,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.bird-one",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "exactly one cute small green parrot standing",
+      "must_show": [
+        "exactly one bird"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a second bird"
+      ],
+      "alt": {
+        "en": "One small green parrot with an orange face.",
+        "hi": "नारंगी चेहरे वाला एक छोटा हरा तोता।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "7cc5749a78018c293c43b4c3c3b4e75a4eaf23ec1025c35da7a952de3476a153",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 24936,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.bird-two",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "exactly two cute small green parrots standing side by side, clearly separate",
+      "must_show": [
+        "exactly two birds, no more"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a third bird"
+      ],
+      "alt": {
+        "en": "Two small green parrots side by side.",
+        "hi": "पास-पास खड़े दो छोटे हरे तोते।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "90c660a493abdbe15f82a4d9d0f5b3e62ddd5cea6c00d169a3e06c5c2eaab16a",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 27692,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.bird-three",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "exactly three cute small green parrots standing in a row, clearly separate",
+      "must_show": [
+        "exactly three birds, no more"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a fourth bird"
+      ],
+      "alt": {
+        "en": "Three small green parrots in a row.",
+        "hi": "एक पंक्ति में तीन छोटे हरे तोते।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "6133d3f10c1a84131c52174350670ca5f5728e677ce44077feae0c2d0ca709d8",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 28810,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.basket-few",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "a small woven bamboo basket holding just one ripe mango with lots of empty space inside",
+      "must_show": [
+        "the basket is almost empty",
+        "one mango"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos",
+        "a heap of mangoes"
+      ],
+      "alt": {
+        "en": "A woven basket with just one mango inside.",
+        "hi": "बुनी हुई टोकरी जिसमें बस एक आम है।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "e7c2b810f96be50898f4720a4cf1ab06d8f32fb0e5feea45fa249d49776ab718",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 59542,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "img.mango-treat.basket-full",
+      "kind": "image",
+      "preset": "sunny-object",
+      "subject_family": "maths",
+      "brief": "a woven bamboo basket heaped high and overflowing with many ripe yellow-orange mangoes",
+      "must_show": [
+        "the basket is overflowing with mangoes"
+      ],
+      "must_not_show": [
+        "text",
+        "letters",
+        "numbers",
+        "logos"
+      ],
+      "alt": {
+        "en": "A woven basket heaped high with mangoes.",
+        "hi": "आमों से ऊपर तक भरी बुनी हुई टोकरी।"
+      },
+      "used_by": [
+        "pl.math.mango-treat.counting"
+      ],
+      "status": "generated",
+      "rejected_reason": null,
+      "result": {
+        "sha256": "caf8fed79fcfc2433d6eeb0b527195b3c45167e962252827ce8eca1775939d21",
+        "asset_id": null,
+        "reused": false,
+        "mime": "image/webp",
+        "bytes": 63758,
+        "width": 1024,
+        "height": 1024,
+        "licence": "owned",
+        "attribution": null
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-01-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 1 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "Under a big mango tree, a little squirrel looks up at a ripe mango. Plop! Down it falls."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-01-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 1 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "आम के बड़े पेड़ के नीचे एक छोटी गिलहरी पके आम को देखती है। टप! आम नीचे गिर जाता है।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-02-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 2 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "The squirrel starts to eat. One friend is eating the mango. One!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-02-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 2 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "गिलहरी आम खाने लगती है। एक दोस्त आम खा रहा है। एक!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-03-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 3 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A myna comes. One and one more make two. Two friends eat the mango!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-03-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 3 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक मैना आती है। एक और एक, हो गए दो। दो दोस्त आम खाते हैं!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-04-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 4 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A parrot comes. Two and one more make three."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-04-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 4 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक तोता आता है। दो और एक, हो गए तीन।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-05-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 5 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A sparrow comes. Three and one more make four."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-05-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 5 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक गौरैया आती है। तीन और एक, हो गए चार।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-06-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 6 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A crow comes. Four and one more make five."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-06-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 6 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक कौआ आता है। चार और एक, हो गए पाँच।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-07-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 7 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A pigeon comes. Five and one more make six."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-07-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 7 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक कबूतर आता है। पाँच और एक, हो गए छह।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-08-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 8 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A koel comes. Six and one more make seven."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-08-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 8 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक कोयल आती है। छह और एक, हो गए सात।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-09-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 9 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "A kingfisher comes. Seven and one more make eight."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-09-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 9 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "एक किलकिला आता है। सात और एक, हो गए आठ।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-10-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 10 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "Last of all, a peacock comes. Eight and one more make nine. Nine friends eat the mango!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-10-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 10 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "सबसे आखिर में एक मोर आता है। आठ और एक, हो गए नौ। नौ दोस्त आम खाते हैं!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-11-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 11 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "Plop, plop, plop! Lots of mangoes fall. Now there are more mangoes than friends."
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-11-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 11 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "टप, टप, टप! बहुत सारे आम गिरते हैं। अब दोस्तों से ज़्यादा आम हैं।"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-12-en",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 12 of 'Mango Treat' for a class 1 child, in English. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "Each friend takes one mango. One mango for each friend: the same number of mangoes and friends! Yum!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.page-12-hi",
+      "kind": "audio_tts",
+      "brief": "Warm, slow narration of storybook page 12 of 'Mango Treat' for a class 1 child, in Hindi. Read exactly the transcript.",
+      "used_by": [
+        "sb.math.mango-treat.counting"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "हर दोस्त एक आम लेता है। हर दोस्त के लिए एक आम: आम और दोस्त बराबर! वाह, स्वाद!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.song-en",
+      "kind": "audio_song",
+      "brief": "A cheerful, steady counting chant in English for class 1, spoken rhythmically with a pause after each number so children can clap and show fingers. Lyrics exactly as the transcript.",
+      "used_by": [
+        "sg.math.mango-treat"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "en",
+      "transcript": {
+        "en": "Plop! A mango on the ground, One little squirrel, look what she found! One! One more comes, a myna. Two! One more comes, a parrot. Three! One more comes, a sparrow. Four! One more comes, a crow. Five! One more comes, a pigeon. Six! One more comes, a koel. Seven! One more comes, a kingfisher. Eight! One more comes, a peacock. Nine! Count with me and clap with me: One, two, three, four, five, Six, seven, eight and nine! Nine good friends, and mangoes fine!"
+      }
+    },
+    {
+      "id": "audio.mango-treat.song-hi",
+      "kind": "audio_song",
+      "brief": "A cheerful, steady counting chant in Hindi for class 1, spoken rhythmically with a pause after each number so children can clap and show fingers. Lyrics exactly as the transcript.",
+      "used_by": [
+        "sg.math.mango-treat"
+      ],
+      "status": "requested",
+      "result": null,
+      "locale": "hi",
+      "transcript": {
+        "hi": "टप! गिरा एक आम रसीला, एक गिलहरी ने उसे पाया। एक! एक और आई, मैना। दो! एक और आया, तोता। तीन! एक और आई, गौरैया। चार! एक और आया, कौआ। पाँच! एक और आया, कबूतर। छह! एक और आई, कोयल। सात! एक और आया, किलकिला। आठ! एक और आया, मोर। नौ! गिनो मेरे साथ, ताली बजाओ: एक, दो, तीन, चार, पाँच, छह, सात, आठ और नौ! नौ दोस्त और मीठे आम!"
+      }
+    },
+    {
+      "id": "anim.mango-treat.trace-1",
+      "kind": "animation_rive",
+      "brief": "Stroke-order guide for the numeral 1: a dot moves over the app's own font outline of 1 in the order taught in NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat: a diagonal line, then from its right end a vertical line, then a horizontal line at the end of the vertical line (p.25). No drawn glyph in the file (anim-maker).",
+      "used_by": [
+        "pl.math.mango-treat.numerals"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Start with a small slanting line, go straight down, then draw a line along the bottom.",
+        "hi": "पहले छोटी तिरछी रेखा, फिर सीधे नीचे, फिर नीचे एक लेटी रेखा।"
+      }
+    },
+    {
+      "id": "anim.mango-treat.trace-3",
+      "kind": "animation_rive",
+      "brief": "Stroke-order guide for the numeral 3: a dot moves over the app's own font outline of 3 in the order taught in NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat: a letter c facing left, and from its end another letter c facing left (p.25). No drawn glyph in the file (anim-maker).",
+      "used_by": [
+        "pl.math.mango-treat.numerals"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Make two little curves, one on top of the other, both open to the left.",
+        "hi": "दो छोटे घुमाव बनाओ, एक के ऊपर एक, दोनों बाईं ओर खुले।"
+      }
+    },
+    {
+      "id": "anim.mango-treat.trace-4",
+      "kind": "animation_rive",
+      "brief": "Stroke-order guide for the numeral 4: a dot moves over the app's own font outline of 4 in the order taught in NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat: a vertical line, from its end a horizontal line, then a vertical line that crosses the horizontal line (p.26). No drawn glyph in the file (anim-maker).",
+      "used_by": [
+        "pl.math.mango-treat.numerals"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Go straight down, then across, then draw a line down through it.",
+        "hi": "सीधे नीचे, फिर आड़ी रेखा, फिर उसे काटती हुई नीचे की रेखा।"
+      }
+    },
+    {
+      "id": "anim.mango-treat.trace-6",
+      "kind": "animation_rive",
+      "brief": "Stroke-order guide for the numeral 6: a dot moves over the app's own font outline of 6 in the order taught in NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat: a capital C, then its end joined back to the C to make a circle (p.26). No drawn glyph in the file (anim-maker).",
+      "used_by": [
+        "pl.math.mango-treat.numerals"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Draw a big curve like the letter C, then join its end round into a circle.",
+        "hi": "अंग्रेज़ी के C जैसा बड़ा घुमाव बनाओ, फिर उसके सिरे को घुमाकर गोला बना दो।"
+      }
+    },
+    {
+      "id": "anim.mango-treat.trace-7",
+      "kind": "animation_rive",
+      "brief": "Stroke-order guide for the numeral 7: a dot moves over the app's own font outline of 7 in the order taught in NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat: a horizontal line, then a diagonal line from its right end (p.27). No drawn glyph in the file (anim-maker).",
+      "used_by": [
+        "pl.math.mango-treat.numerals"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Draw a line across the top, then a slanting line down from its right end.",
+        "hi": "ऊपर आड़ी रेखा, फिर उसके दाएँ सिरे से नीचे तिरछी रेखा।"
+      }
+    },
+    {
+      "id": "anim.mango-treat.trace-9",
+      "kind": "animation_rive",
+      "brief": "Stroke-order guide for the numeral 9: a dot moves over the app's own font outline of 9 in the order taught in NCERT Class 1 Joyful Mathematics, Ch 3 Mango Treat: a circle, then a vertical line on its right side joined to the circle (p.27). No drawn glyph in the file (anim-maker).",
+      "used_by": [
+        "pl.math.mango-treat.numerals"
+      ],
+      "status": "requested",
+      "result": null,
+      "transcript": {
+        "en": "Draw a circle, then a straight line down on its right side.",
+        "hi": "एक गोला बनाओ, फिर उसके दाईं ओर नीचे सीधी रेखा।"
+      }
+    }
+  ],
+  "hi_source": "translation"
+}

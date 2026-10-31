@@ -1,0 +1,78 @@
+/* Pendulum scene. Token variables only. */
+
+.pendulum .support {
+  fill: var(--ink-muted);
+}
+
+.pendulum .pivot {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.pendulum .ruler-line,
+.pendulum .ruler-tick {
+  stroke: var(--ink-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.pendulum .ruler-label {
+  font-size: 11px;
+}
+
+.pendulum .length-mark {
+  stroke: var(--s-strong);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.pendulum .guide-rest {
+  stroke: var(--ink-muted);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 5;
+}
+
+.pendulum .guide-arc,
+.pendulum .guide-amp {
+  fill: none;
+  stroke: var(--ink-disabled);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 5;
+}
+
+.pendulum .angle-arc {
+  fill: none;
+  stroke: var(--f-maths-strong);
+  stroke-width: 2.5;
+}
+
+.pendulum .angle-label {
+  fill: var(--f-maths-text);
+}
+
+.pendulum .string {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.pendulum .bob {
+  fill: var(--s-strong);
+  stroke: var(--surface);
+  stroke-width: 3;
+}
+
+.pendulum .ghost {
+  fill: var(--s-strong);
+  opacity: 0.22;
+}
+
+.pendulum .trail-dot {
+  fill: var(--s-strong);
+}
+
+.pendulum .hit {
+  fill: transparent;
+  cursor: grab;
+}

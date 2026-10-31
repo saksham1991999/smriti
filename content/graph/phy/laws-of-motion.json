@@ -1,0 +1,490 @@
+{
+  "schema": "chapter@1",
+  "id": "phy.laws-of-motion",
+  "subject": "phy",
+  "unit": "phy.mechanics",
+  "name": {
+    "en": "Laws of Motion",
+    "hi": "गति के नियम"
+  },
+  "ncert_ref": "NCERT Class 11 Physics Part I, Ch 4",
+  "topics": [
+    {
+      "id": "phy.laws-of-motion.inertia-first-law",
+      "name": {
+        "en": "Inertia and Newton's First Law",
+        "hi": "जड़त्व एवं न्यूटन का प्रथम नियम"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.inertia-first-law.core",
+          "name": {
+            "en": "Inertia and Newton's First Law",
+            "hi": "जड़त्व एवं न्यूटन का प्रथम नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.inertia-first-law.core.newton-first-law",
+              "name": {
+                "en": "Inertia and Newton's first law",
+                "hi": "जड़त्व एवं न्यूटन का गति का प्रथम नियम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "A body stays at rest or in uniform straight-line motion unless an external force acts; this resistance to change of motion is inertia, measured by mass.",
+                "hi": "कोई वस्तु तब तक विराम में या एकसमान सरल रेखीय गति में रहती है जब तक उस पर बाह्य बल न लगे; गति-परिवर्तन के इस विरोध को जड़त्व कहते हैं, जिसका माप द्रव्यमान है।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain Galileo's argument against Aristotle's idea that force is needed to maintain motion.",
+                  "hi": "अरस्तू के इस विचार के विरुद्ध कि गति बनाए रखने के लिए बल चाहिए, गैलीलियो का तर्क समझाइए।"
+                },
+                {
+                  "en": "Give everyday examples of inertia of rest and inertia of motion.",
+                  "hi": "विराम के जड़त्व और गति के जड़त्व के दैनिक उदाहरण दीजिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-1",
+                "neet-ug-2026:physics:unit-3:item-1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.second-law",
+      "name": {
+        "en": "Newton's Second Law of Motion",
+        "hi": "न्यूटन का गति का द्वितीय नियम"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.second-law.core",
+          "name": {
+            "en": "Newton's Second Law of Motion",
+            "hi": "न्यूटन का गति का द्वितीय नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.second-law.core.momentum-second-law",
+              "name": {
+                "en": "Momentum and Newton's second law",
+                "hi": "संवेग एवं न्यूटन का द्वितीय नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Linear momentum is $p = mv$, and the net force on a body equals its rate of change of momentum, $F = dp/dt = ma$ for constant mass.",
+                "hi": "रेखीय संवेग $p = mv$ है, और किसी वस्तु पर नेट बल उसके संवेग परिवर्तन की दर के बराबर होता है, नियत द्रव्यमान के लिए $F = dp/dt = ma$।"
+              },
+              "key_points": [
+                {
+                  "en": "Apply $F = ma$ component-wise for forces in two dimensions.",
+                  "hi": "दो विमाओं में बलों के लिए $F = ma$ को घटकों में लागू कीजिए।"
+                },
+                {
+                  "en": "State that the second law includes the first law as the case $F = 0$.",
+                  "hi": "बताइए कि द्वितीय नियम में प्रथम नियम $F = 0$ की स्थिति के रूप में शामिल है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.inertia-first-law.core.newton-first-law",
+                "phy.motion-straight-line.acceleration.core.acceleration-graphs"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-2",
+                "neet-ug-2026:physics:unit-3:item-2"
+              ]
+            },
+            {
+              "id": "phy.laws-of-motion.second-law.core.impulse",
+              "name": {
+                "en": "Impulse",
+                "hi": "आवेग"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Impulse is force multiplied by the time it acts, equal to the change in momentum; large forces over short times are treated as impulsive.",
+                "hi": "आवेग बल और उसके कार्य करने के समय का गुणनफल है, जो संवेग में परिवर्तन के बराबर होता है; छोटे समय तक लगने वाले बड़े बलों को आवेगी माना जाता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Find impulse as the area under a force-time graph.",
+                  "hi": "बल-समय ग्राफ़ के नीचे के क्षेत्रफल से आवेग निकालिए।"
+                },
+                {
+                  "en": "Explain why catching a ball by pulling the hands back reduces the force.",
+                  "hi": "समझाइए कि गेंद पकड़ते समय हाथ पीछे खींचने से बल क्यों कम होता है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.second-law.core.momentum-second-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-2",
+                "neet-ug-2026:physics:unit-3:item-2"
+              ]
+            },
+            {
+              "id": "phy.laws-of-motion.second-law.core.free-body-diagrams",
+              "name": {
+                "en": "Solving problems with free-body diagrams",
+                "hi": "मुक्त पिंड आरेख से प्रश्न हल करना"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Mechanics problems are solved by isolating each body, drawing all forces on it, and applying the second law along chosen axes, as for blocks, pulleys and lifts.",
+                "hi": "यांत्रिकी के प्रश्न हर वस्तु को अलग करके, उस पर लगे सभी बल बनाकर और चुने गए अक्षों के अनुदिश द्वितीय नियम लगाकर हल किए जाते हैं, जैसे ब्लॉक, घिरनी और लिफ़्ट के प्रश्नों में।"
+              },
+              "key_points": [
+                {
+                  "en": "Draw a correct free-body diagram showing weight, normal reaction, tension and friction.",
+                  "hi": "भार, अभिलंब प्रतिक्रिया, तनाव और घर्षण दिखाते हुए सही मुक्त पिंड आरेख बनाइए।"
+                },
+                {
+                  "en": "Solve connected-body problems such as two blocks over a pulley and apparent weight in a lift.",
+                  "hi": "घिरनी पर दो ब्लॉक और लिफ़्ट में आभासी भार जैसे जुड़ी वस्तुओं के प्रश्न हल कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.second-law.core.momentum-second-law",
+                "phy.laws-of-motion.third-law.core.newton-third-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-2",
+                "neet-ug-2026:physics:unit-3:item-2",
+                "jee-main-2027:physics:unit-3:item-3",
+                "neet-ug-2026:physics:unit-3:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.third-law",
+      "name": {
+        "en": "Newton's Third Law of Motion",
+        "hi": "न्यूटन का गति का तृतीय नियम"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.third-law.core",
+          "name": {
+            "en": "Newton's Third Law of Motion",
+            "hi": "न्यूटन का गति का तृतीय नियम"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.third-law.core.newton-third-law",
+              "name": {
+                "en": "Newton's third law",
+                "hi": "न्यूटन का गति का तृतीय नियम"
+              },
+              "kind": "definition",
+              "intrinsic_depth": 1,
+              "summary": {
+                "en": "Forces always occur in pairs: the force of A on B is equal in magnitude and opposite in direction to the force of B on A, and the two act on different bodies.",
+                "hi": "बल सदैव जोड़ों में होते हैं: A द्वारा B पर लगाया बल, B द्वारा A पर लगाए बल के बराबर और विपरीत होता है, और दोनों अलग-अलग वस्तुओं पर लगते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Identify action-reaction pairs and explain why they do not cancel.",
+                  "hi": "क्रिया-प्रतिक्रिया जोड़ों को पहचानिए और समझाइए कि वे एक-दूसरे को निरस्त क्यों नहीं करते।"
+                },
+                {
+                  "en": "Apply the law to walking, rocket propulsion and recoil.",
+                  "hi": "इस नियम को चलने, रॉकेट प्रणोदन और प्रतिक्षेप पर लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-3",
+                "neet-ug-2026:physics:unit-3:item-3"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation",
+      "name": {
+        "en": "Conservation of Momentum",
+        "hi": "संवेग-संरक्षण"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.momentum-conservation.core",
+          "name": {
+            "en": "Conservation of Momentum",
+            "hi": "संवेग-संरक्षण"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law",
+              "name": {
+                "en": "Law of conservation of linear momentum",
+                "hi": "रेखीय संवेग संरक्षण का नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "When no net external force acts on a system, its total linear momentum stays constant, which follows from the second and third laws.",
+                "hi": "जब किसी निकाय पर कोई नेट बाह्य बल नहीं लगता, तो उसका कुल रेखीय संवेग नियत रहता है, जो द्वितीय और तृतीय नियम से निकलता है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive conservation of momentum for two interacting bodies from the third law.",
+                  "hi": "दो परस्पर क्रिया करती वस्तुओं के लिए तृतीय नियम से संवेग संरक्षण व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Apply it to recoil of a gun, explosions and bodies sticking together.",
+                  "hi": "इसे बंदूक के प्रतिक्षेप, विस्फोट और आपस में चिपकती वस्तुओं पर लागू कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.second-law.core.momentum-second-law",
+                "phy.laws-of-motion.third-law.core.newton-third-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-4",
+                "neet-ug-2026:physics:unit-3:item-4"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.equilibrium-particle",
+      "name": {
+        "en": "Equilibrium of a Particle",
+        "hi": "किसी कण की साम्यावस्था"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.equilibrium-particle.core",
+          "name": {
+            "en": "Equilibrium of a Particle",
+            "hi": "किसी कण की साम्यावस्था"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.equilibrium-particle.core.concurrent-forces-equilibrium",
+              "name": {
+                "en": "Equilibrium of concurrent forces",
+                "hi": "संगामी बलों की साम्यावस्था"
+              },
+              "kind": "skill",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "A particle is in equilibrium when the vector sum of the concurrent forces on it is zero, so the components along each axis sum to zero.",
+                "hi": "कोई कण साम्यावस्था में होता है जब उस पर लगे संगामी बलों का सदिश योग शून्य हो, यानी हर अक्ष के अनुदिश घटकों का योग शून्य हो।"
+              },
+              "key_points": [
+                {
+                  "en": "Solve three-force equilibrium problems using components or Lami's triangle of forces.",
+                  "hi": "घटकों या बलों के त्रिभुज की सहायता से तीन बलों की साम्यावस्था के प्रश्न हल कीजिए।"
+                },
+                {
+                  "en": "Find tensions in strings holding a suspended mass.",
+                  "hi": "लटके द्रव्यमान को थामने वाली डोरियों में तनाव निकालिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.vector-addition.core.vector-addition-laws",
+                "phy.laws-of-motion.inertia-first-law.core.newton-first-law"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-5",
+                "neet-ug-2026:physics:unit-3:item-5"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.friction",
+      "name": {
+        "en": "Common Forces in Mechanics: Friction",
+        "hi": "यांत्रिकी में सामान्य बल : घर्षण"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.friction.core",
+          "name": {
+            "en": "Common Forces in Mechanics: Friction",
+            "hi": "यांत्रिकी में सामान्य बल : घर्षण"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.friction.core.static-kinetic-friction",
+              "name": {
+                "en": "Static and kinetic friction and the laws of friction",
+                "hi": "स्थैतिक एवं गतिज घर्षण तथा घर्षण के नियम"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Friction opposes relative motion between surfaces; static friction adjusts up to a limit $\\mu_{s} N$, and kinetic friction $\\mu_{k} N$ acts once sliding begins, with $\\mu_{k}$ usually less than $\\mu_{s}$.",
+                "hi": "घर्षण सतहों के बीच आपेक्षिक गति का विरोध करता है; स्थैतिक घर्षण सीमा $\\mu_{s} N$ तक स्वयं समायोजित होता है, और फिसलन शुरू होने पर गतिज घर्षण $\\mu_{k} N$ लगता है, जहाँ $\\mu_{k}$ प्रायः $\\mu_{s}$ से कम होता है।"
+              },
+              "key_points": [
+                {
+                  "en": "State the laws: limiting friction is proportional to normal reaction and independent of apparent contact area.",
+                  "hi": "नियम बताइए: सीमांत घर्षण अभिलंब प्रतिक्रिया के अनुक्रमानुपाती होता है और स्पर्श के आभासी क्षेत्रफल पर निर्भर नहीं करता।"
+                },
+                {
+                  "en": "Solve block-on-incline problems, including the angle of repose $\\tan \\theta = \\mu_{s}$.",
+                  "hi": "आनत तल पर ब्लॉक के प्रश्न हल कीजिए, जिसमें विराम कोण $\\tan \\theta = \\mu_{s}$ शामिल है।"
+                },
+                {
+                  "en": "Classify contact forces in mechanics: normal reaction, tension, friction and spring force.",
+                  "hi": "यांत्रिकी के संपर्क बलों का वर्गीकरण कीजिए: अभिलंब प्रतिक्रिया, तनाव, घर्षण और स्प्रिंग बल।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.second-law.core.free-body-diagrams"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-6",
+                "neet-ug-2026:physics:unit-3:item-6"
+              ]
+            },
+            {
+              "id": "phy.laws-of-motion.friction.core.rolling-friction",
+              "name": {
+                "en": "Rolling friction and lubrication",
+                "hi": "लोटनिक घर्षण एवं स्नेहन"
+              },
+              "kind": "fact",
+              "intrinsic_depth": 2,
+              "summary": {
+                "en": "Rolling friction, which resists a body rolling on a surface, is much smaller than sliding friction, which is why wheels, ball bearings and lubricants reduce energy loss.",
+                "hi": "लोटनिक घर्षण, जो किसी सतह पर लुढ़कती वस्तु का विरोध करता है, सर्पी घर्षण से बहुत कम होता है, इसीलिए पहिए, बॉल बेयरिंग और स्नेहक ऊर्जा-हानि घटाते हैं।"
+              },
+              "key_points": [
+                {
+                  "en": "Explain why rolling friction is smaller than sliding friction.",
+                  "hi": "समझाइए कि लोटनिक घर्षण सर्पी घर्षण से कम क्यों होता है।"
+                },
+                {
+                  "en": "Describe ways of reducing friction and situations where friction is necessary.",
+                  "hi": "घर्षण कम करने के उपाय और वे स्थितियाँ बताइए जहाँ घर्षण आवश्यक है।"
+                }
+              ],
+              "prerequisites": [
+                "phy.laws-of-motion.friction.core.static-kinetic-friction"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-6",
+                "neet-ug-2026:physics:unit-3:item-6"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics",
+      "name": {
+        "en": "Circular Motion",
+        "hi": "वर्तुल (वृत्तीय) गति"
+      },
+      "subtopics": [
+        {
+          "id": "phy.laws-of-motion.circular-dynamics.core",
+          "name": {
+            "en": "Circular Motion",
+            "hi": "वर्तुल (वृत्तीय) गति"
+          },
+          "concepts": [
+            {
+              "id": "phy.laws-of-motion.circular-dynamics.core.centripetal-force",
+              "name": {
+                "en": "Centripetal force: vehicle on level and banked roads",
+                "hi": "अभिकेंद्र बल : समतल एवं ढालू सड़क पर वाहन"
+              },
+              "kind": "formula",
+              "intrinsic_depth": 3,
+              "summary": {
+                "en": "Uniform circular motion needs a net inward force $mv^{2}/r$; on a level road friction supplies it, and on a banked road the normal force helps, setting maximum safe speeds.",
+                "hi": "एकसमान वृत्तीय गति के लिए $mv^{2}/r$ का नेट अंतर्मुखी बल चाहिए; समतल सड़क पर यह घर्षण देता है, और ढालू सड़क पर अभिलंब बल भी सहायता करता है, जिससे अधिकतम सुरक्षित चाल तय होती है।"
+              },
+              "key_points": [
+                {
+                  "en": "Derive $v_{max} = \\sqrt{\\mu_{s} r g}$ for a level road.",
+                  "hi": "समतल सड़क के लिए $v_{max} = \\sqrt{\\mu_{s} r g}$ व्युत्पन्न कीजिए।"
+                },
+                {
+                  "en": "Derive the banked-road results, $v_{max} = \\sqrt{rg(\\mu_{s} + \\tan \\theta)/(1 - \\mu_{s} \\tan \\theta)}$ and the optimum speed $\\sqrt{rg \\tan \\theta}$.",
+                  "hi": "ढालू सड़क के परिणाम $v_{max} = \\sqrt{rg(\\mu_{s} + \\tan \\theta)/(1 - \\mu_{s} \\tan \\theta)}$ और इष्टतम चाल $\\sqrt{rg \\tan \\theta}$ व्युत्पन्न कीजिए।"
+                }
+              ],
+              "prerequisites": [
+                "phy.motion-plane.circular-kinematics.core.uniform-circular-motion",
+                "phy.laws-of-motion.friction.core.static-kinetic-friction"
+              ],
+              "related": [],
+              "syllabus_refs": [
+                "jee-main-2027:physics:unit-3:item-7",
+                "neet-ug-2026:physics:unit-3:item-7"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "draft",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Hindi-medium khph1 contents (chapter title)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph1ps.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "prelims p.xiii"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for JEE (Main) - 2027 (National Testing Agency, published 2026-10-24; linked from https://jeemain.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/10/20261024683680768.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.3: Physics Unit 3, Laws of Motion"
+    },
+    {
+      "kind": "official",
+      "ref": "Syllabus for NEET (UG)-2026 (NMC UGMEB public notice U-14023/19/NEET (UG Exam)/UGMEB dated 22 Dec 2025, uploaded by NTA 2026-01-08; linked from https://neet.nta.nic.in/)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37bc1ec1d9c3426357e69acd5bf320061/uploads/2026/01/202601081066816297.pdf",
+      "retrieved": "2026-10-29",
+      "pages": "PDF p.4: Physics Unit 3, LAWS OF MOTION"
+    }
+  ],
+  "authored_by": "skill:syllabus-mapper",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "NCERT class 11. Chapter name in Hindi: NCERT Hindi-medium contents page. Topic names in Hindi taken from the NCERT Hindi-medium contents: second-law (§4.5, khph1 contents prelims p.xiv), third-law (§4.6, khph1 contents prelims p.xiv), momentum-conservation (§4.7, khph1 contents prelims p.xiv), equilibrium-particle (§4.8, khph1 contents prelims p.xiv), circular-dynamics (§4.10, khph1 contents prelims p.xiv). Other topic, subtopic and concept text is written by skill:syllabus-mapper from the cited NCERT chapter and translated into Hindi. The NCERT section each concept teaches is recorded in coverage/inventory/phy/laws-of-motion.json."
+}

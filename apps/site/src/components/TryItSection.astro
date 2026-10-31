@@ -1,0 +1,62 @@
+---
+import Art from "./Art.astro";
+import TryLesson from "./TryLesson.astro";
+import type { Locale } from "../config/site";
+import type { TryLesson as TryLessonData } from "../content-index/schema";
+import { messages } from "../i18n";
+
+interface Props {
+  lang: Locale;
+  lesson: TryLessonData | null;
+  heading?: string;
+  exam?: string | undefined;
+}
+const { lang, lesson, heading, exam } = Astro.props;
+const m = messages(lang);
+---
+
+{
+  lesson && (
+    <section class="section try" id="try" aria-labelledby="try-title">
+      <div class="wrap try-grid">
+        <div class="section-head try-head">
+          <h2 id="try-title" class="t-display">
+            {heading ?? m.tryIt.heading}
+          </h2>
+          <p class="t-lead muted">{m.tryIt.sub}</p>
+          <Art name="dog-wave" lang={lang} decorative sizes="240px" class="try-art" />
+        </div>
+        <TryLesson lang={lang} lesson={lesson} exam={exam} />
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .try-grid {
+    display: grid;
+    gap: 8px;
+  }
+  .try-head {
+    margin-bottom: 16px;
+  }
+  .try-head :global(.try-art) {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .try-grid {
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .try-head {
+      position: sticky;
+      top: 100px;
+    }
+    .try-head :global(.try-art) {
+      display: block;
+      width: 220px;
+      margin-top: 16px;
+    }
+  }
+</style>

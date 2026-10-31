@@ -1,0 +1,113 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "pyq",
+      "ref": "NTA, JEE (Main) 2026 Session 2, B.E./B.Tech question paper 'B Tech 2nd Apr 2026 Shift 1' (English)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/202604092096865379.pdf",
+      "retrieved": "2026-10-30"
+    },
+    {
+      "kind": "official",
+      "ref": "NTA, JEE (Main) 2026 Session 2 final answer key of B.E./B.Tech on which result compiled, Exam Date 02.04.2026, Shift First (page 1)",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3f8e59f4b2fe7c5705bf878bbd494ccdf/uploads/2026/04/20260420409057044.pdf",
+      "retrieved": "2026-10-30"
+    }
+  ],
+  "authored_by": "skill:pyq-ingest",
+  "reviewed_by": null,
+  "updated": "2026-10-30",
+  "notes": "Previous-year questions from NTA's JEE (Main) 2026 paper of 2 April 2026, Shift 1 (B.E./B.Tech), ingested with pyq-ingest. Stems, options, statements and list items keep NTA's English wording exactly; NTA published this paper in English only, so the Hindi is our translation (hi_source: translation) and must be reviewed as such. Answers are NTA's final key (result-compiled, Session 2); our own solutions reach the same answer for every question in this file. Question ids 9001 and up mark ingested PYQs. Review before use: q.phy.semiconductor-electronics.zener.9001 (paper Q37) needs its figure img.semiconductor-electronics.pyq-zener-clipper, which is requested, not approved; it is mock-only so it never ships in a device bundle without the figure. q.phy.semiconductor-electronics.zener.9001 (paper Q37): The four options are circuit drawings in NTA's paper; the option texts here are our word descriptions of those drawings, not NTA's wording. A person must confirm them, and the figure request must be fulfilled, before this question is used.",
+  "hi_source": "translation",
+  "topic": "phy.semiconductor-electronics.zener",
+  "questions": [
+    {
+      "id": "q.phy.semiconductor-electronics.zener.9001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.semiconductor-electronics.zener.core.zener-regulator",
+          "weight": 0.5
+        },
+        {
+          "id": "phy.semiconductor-electronics.rectifier.core.diode-rectifier",
+          "weight": 0.5
+        }
+      ],
+      "depth": 4,
+      "exam_styles": [
+        "jee-main"
+      ],
+      "stem": {
+        "en": "For the given circuit (shown in part (A)) the time dependent input voltage $v_{in}(t)$ and corresponding output $v_o(t)$ are shown in part (B) and part (C), respectively. Identify the components that are used in the circuit between points $X$ and $Y$.",
+        "hi": "दिए गए परिपथ (भाग (A) में दर्शाया गया) के लिए समय पर निर्भर निवेशी वोल्टता $v_{in}(t)$ और संगत निर्गत $v_o(t)$ क्रमशः भाग (B) और भाग (C) में दर्शाए गए हैं। बिंदुओं $X$ और $Y$ के बीच परिपथ में प्रयुक्त अवयवों को पहचानिए।"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "From $X$ to $Y$: a resistor, then a p-n junction diode whose arrow points towards $X$.",
+            "hi": "$X$ से $Y$ तक: एक प्रतिरोधक, फिर एक p-n संधि डायोड जिसका तीर $X$ की ओर है।"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "From $X$ to $Y$: a p-n junction diode whose arrow points towards $X$, then a Zener diode whose arrow points towards $Y$.",
+            "hi": "$X$ से $Y$ तक: एक p-n संधि डायोड जिसका तीर $X$ की ओर है, फिर एक ज़ेनर डायोड जिसका तीर $Y$ की ओर है।"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "From $X$ to $Y$: a resistor, then a Zener diode whose arrow points towards $Y$.",
+            "hi": "$X$ से $Y$ तक: एक प्रतिरोधक, फिर एक ज़ेनर डायोड जिसका तीर $Y$ की ओर है।"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "From $X$ to $Y$: a p-n junction diode whose arrow points towards $X$, then a Zener diode whose arrow points towards $X$.",
+            "hi": "$X$ से $Y$ तक: एक p-n संधि डायोड जिसका तीर $X$ की ओर है, फिर एक ज़ेनर डायोड जिसका तीर $X$ की ओर है।"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "b"
+        ]
+      },
+      "solution": {
+        "feynman": {
+          "en": "The left branch (diode in series with the Zener) only conducts in the positive half and caps the output at $+5\\ \\mathrm{V}$. To cap the negative half at $-5\\ \\mathrm{V}$, the $X$-$Y$ block must be the mirror image: a diode that conducts only in the negative half, in series with a Zener that is then reverse biased.",
+          "hi": "बायीं शाखा (ज़ेनर के साथ श्रेणी में डायोड) केवल धनात्मक अर्धचक्र में चालन करती है और निर्गत को $+5\\ \\mathrm{V}$ पर सीमित करती है। ऋणात्मक अर्धचक्र को $-5\\ \\mathrm{V}$ पर सीमित करने के लिए $X$-$Y$ खंड उसका दर्पण-प्रतिबिंब होना चाहिए: एक डायोड जो केवल ऋणात्मक अर्धचक्र में चालन करे, और उसके साथ श्रेणी में एक ज़ेनर जो तब पश्च-अभिनत हो।"
+        },
+        "steps": [
+          {
+            "en": "Positive half: the branch diode is forward biased and the Zener breaks down, holding $v_o$ at $+5\\ \\mathrm{V}$; the $X$-$Y$ block must not conduct.",
+            "hi": "धनात्मक अर्धचक्र: शाखा का डायोड अग्र-अभिनत है और ज़ेनर भंजन में है, जो $v_o$ को $+5\\ \\mathrm{V}$ पर रखता है; $X$-$Y$ खंड को चालन नहीं करना चाहिए।"
+          },
+          {
+            "en": "Negative half ($Y$ above $X$): a diode pointing towards $X$ conducts, and a Zener pointing towards $Y$ is then reverse biased and breaks down at $5\\ \\mathrm{V}$, holding $v_o$ at $-5\\ \\mathrm{V}$.",
+            "hi": "ऋणात्मक अर्धचक्र ($Y$, $X$ से ऊँचे विभव पर): $X$ की ओर तीर वाला डायोड चालन करता है, और $Y$ की ओर तीर वाला ज़ेनर तब पश्च-अभिनत होकर $5\\ \\mathrm{V}$ पर भंजित होता है, जो $v_o$ को $-5\\ \\mathrm{V}$ पर रखता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": []
+      },
+      "ideal_time_s": 180,
+      "difficulty_estimate": "hard",
+      "media": "img.semiconductor-electronics.pyq-zener-clipper",
+      "use": [
+        "mock"
+      ],
+      "source": "pyq",
+      "pyq": {
+        "paper": "jee-main-2026-apr-02-s1",
+        "number": 37
+      }
+    }
+  ]
+}

@@ -319,3 +319,4 @@ async def test_notification_guardian_billing_and_media_jobs(ctx: dict[str, Any])
     assert isinstance(await jobs.trial_reminders(ctx), int)
     assert await jobs.render_pdf(ctx, str(uuid.uuid4())) == {"status": "skipped"}
     assert (await jobs.media_generate(ctx, str(uuid.uuid4())))["status"] == "skipped"
+    assert (await jobs.tutor_image(ctx, str(uuid.uuid4())))["status"] == "skipped"

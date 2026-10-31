@@ -3225,7 +3225,7 @@
         },
         "responses": {
           "200": {
-            "description": "Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done)",
+            "description": "Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done)",
             "content": { "text/event-stream": { "schema": { "type": "string" } } }
           },
           "422": {
@@ -3252,7 +3252,7 @@
         },
         "responses": {
           "200": {
-            "description": "Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done)",
+            "description": "Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done)",
             "content": { "text/event-stream": { "schema": { "type": "string" } } }
           },
           "422": {
@@ -3279,7 +3279,7 @@
         },
         "responses": {
           "200": {
-            "description": "Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done)",
+            "description": "Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done)",
             "content": { "text/event-stream": { "schema": { "type": "string" } } }
           },
           "422": {
@@ -3547,8 +3547,70 @@
         },
         "responses": {
           "200": {
-            "description": "Server-sent events (delta, replace, safety, citations, chips, quota, quota_exhausted, error, done)",
+            "description": "Server-sent events (delta, replace, safety, image_ready, image_pending, image_failed, citations, chips, quota, quota_exhausted, error, done)",
             "content": { "text/event-stream": { "schema": { "type": "string" } } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ai/generations/{generation_id}": {
+      "get": {
+        "tags": ["tutor"],
+        "summary": "A tutor picture: its status, and a short-lived signed link once ready",
+        "operationId": "get_generation_v1_ai_generations__generation_id__get",
+        "parameters": [
+          {
+            "name": "generation_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Generation Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/GenerationOut" } }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/ai/generations/{generation_id}/retry": {
+      "post": {
+        "tags": ["tutor"],
+        "summary": "[Try again] a failed tutor picture, once; never counts as a message",
+        "operationId": "retry_generation_v1_ai_generations__generation_id__retry_post",
+        "parameters": [
+          {
+            "name": "generation_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid", "title": "Generation Id" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/GenerationOut" } }
+            }
           },
           "422": {
             "description": "Validation Error",
@@ -12691,6 +12753,73 @@
         "title": "GenerateMock",
         "description": "MOCK-26 custom weak-area mock (Pro) or a timed chapter mock (counts as sectional, Q15)."
       },
+      "GenerationOut": {
+        "properties": {
+          "id": { "type": "string", "format": "uuid", "title": "Id" },
+          "kind": { "type": "string", "const": "image", "title": "Kind", "default": "image" },
+          "source": { "type": "string", "enum": ["tutor_chat", "voice_board"], "title": "Source" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "ready", "failed", "blocked"],
+            "title": "Status"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "policy",
+                  "busy",
+                  "ai_unavailable",
+                  "failed",
+                  "pro_required",
+                  "not_for_age",
+                  "limit_reached"
+                ]
+              },
+              { "type": "null" }
+            ],
+            "title": "Reason"
+          },
+          "origin": {
+            "anyOf": [
+              { "type": "string", "enum": ["index", "cache", "generated"] },
+              { "type": "null" }
+            ],
+            "title": "Origin",
+            "description": "An approved index image, a cached picture, or a new one"
+          },
+          "alt": { "type": "string", "title": "Alt" },
+          "locale": { "type": "string", "title": "Locale" },
+          "url": { "anyOf": [{ "type": "string" }, { "type": "null" }], "title": "Url" },
+          "url_expires_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Url Expires At"
+          },
+          "message_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Message Id"
+          },
+          "tutor_session_id": {
+            "anyOf": [{ "type": "string", "format": "uuid" }, { "type": "null" }],
+            "title": "Tutor Session Id"
+          },
+          "can_retry": {
+            "type": "boolean",
+            "title": "Can Retry",
+            "description": "[Try again] is offered once after a failure"
+          },
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "finished_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }],
+            "title": "Finished At"
+          }
+        },
+        "type": "object",
+        "required": ["id", "source", "status", "alt", "locale", "can_retry", "created_at"],
+        "title": "GenerationOut",
+        "description": "One tutor picture. Poll while ``pending`` (the SSE ``image_ready`` event may never reach a\nclosed sheet). ``url`` is a short-lived signed link, set only when ``ready``: ask again after\n``url_expires_at``."
+      },
       "GuardianLinkRequestOut": {
         "properties": {
           "id": { "type": "string", "format": "uuid", "title": "Id" },
@@ -13735,6 +13864,21 @@
         ],
         "title": "MergeStatus"
       },
+      "MessageImage": {
+        "properties": {
+          "generation_id": { "type": "string", "format": "uuid", "title": "Generation Id" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "ready", "failed", "blocked"],
+            "title": "Status"
+          },
+          "alt": { "type": "string", "title": "Alt" }
+        },
+        "type": "object",
+        "required": ["generation_id", "status", "alt"],
+        "title": "MessageImage",
+        "description": "A picture attached to a tutor answer; fetch the link from ``GET /v1/ai/generations/{id}``."
+      },
       "MessageIn": {
         "properties": {
           "client_message_id": { "type": "string", "format": "uuid", "title": "Client Message Id" },
@@ -13769,7 +13913,12 @@
             "type": "array",
             "title": "Citations"
           },
-          "created_at": { "type": "string", "format": "date-time", "title": "Created At" }
+          "created_at": { "type": "string", "format": "date-time", "title": "Created At" },
+          "images": {
+            "items": { "$ref": "#/components/schemas/MessageImage" },
+            "type": "array",
+            "title": "Images"
+          }
         },
         "type": "object",
         "required": ["id", "role", "content", "status", "created_at"],
@@ -17137,7 +17286,8 @@
               "show_formula",
               "queue_cards",
               "get_mastery",
-              "make_flashcard"
+              "make_flashcard",
+              "generate_image"
             ],
             "title": "Name"
           },
@@ -17157,7 +17307,8 @@
               "show_formula",
               "queue_cards",
               "get_mastery",
-              "make_flashcard"
+              "make_flashcard",
+              "generate_image"
             ],
             "title": "Name"
           },

@@ -44,6 +44,7 @@ from smriti_api.services import (
     social_duos,
     social_squads,
     tutor,
+    tutor_images,
     voice,
 )
 from smriti_api.services.analytics import LogAnalyticsSink
@@ -152,12 +153,15 @@ async def live_mocks_tick(ctx: Ctx) -> dict[str, int]:
 
 
 async def tutor_retention(ctx: Ctx) -> int:
-    """Tutor messages and voice transcripts older than ``ai.tutor_retention_days``."""
+    """Tutor messages, voice transcripts, doubt photos and tutor pictures older than
+    ``ai.tutor_retention_days``."""
     count = await tutor.purge_old_messages_job(_deps(ctx))
     # Voice sessions and their stored transcripts share the tutor's retention.
     count += await voice.purge_job(_deps(ctx))
     # Photo doubt: the photos and their recognised text, too (tutor-social §A10 step 8).
     count += await doubt_photo.purge_job(_deps(ctx))
+    # Tutor pictures ("Draw it", the voice board) and cached files no picture uses any more.
+    count += await tutor_images.purge_job(_deps(ctx))
     if count:
         log.info("tutor_messages_purged", count=count)
     return count
@@ -453,6 +457,11 @@ async def render_pdf(ctx: Ctx, export_id: str) -> dict[str, Any]:
 
 async def media_generate(ctx: Ctx, request_id: str) -> dict[str, str | None]:
     return await media.generate_job(_deps(ctx), request_id)
+
+
+async def tutor_image(ctx: Ctx, generation_id: str) -> dict[str, str]:
+    """A new tutor picture through the AI gateway's image tier (tutor-social §A5 step 6)."""
+    return await tutor_images.generate_job(_deps(ctx), generation_id)
 
 
 async def media_sweep(ctx: Ctx) -> int:

@@ -43,6 +43,7 @@ QUEUE_BY_JOB = {
     "content_publish": "content-publish",
     "render_pdf": "pdf",
     "media_generate": "media",
+    "tutor_image": "media",
     "notify_dispatch": "notifications",
 }
 
@@ -132,6 +133,7 @@ def job_registry() -> dict[str, JobFn]:
         social_duos,
         social_squads,
         tutor,
+        tutor_images,
     )
 
     return {
@@ -141,6 +143,7 @@ def job_registry() -> dict[str, JobFn]:
         "tutor_retention": tutor.purge_old_messages_job,
         "render_pdf": exports.render_export,
         "media_generate": media.generate_job,
+        "tutor_image": tutor_images.generate_job,
         "notify_dispatch": notify.dispatch_job,
         "league_assign": leagues.assign_job,
         "league_rollover": leagues.rollover_job,

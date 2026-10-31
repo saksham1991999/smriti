@@ -2,7 +2,8 @@
 
 Answers stream as server-sent events. Event types: ``session`` (ask endpoints only), ``delta``,
 ``replace``, ``safety`` (``crisis``, ``refusal``, ``redirect``, ``pii_removed``), ``citations``,
-``chips``, ``quota``, ``quota_exhausted``, ``error`` and ``done``.
+``chips``, ``quota``, ``quota_exhausted``, ``error`` and ``done``; "Draw it" answers add
+``image_ready``, ``image_pending`` or ``image_failed`` before ``citations``.
 """
 
 from __future__ import annotations
@@ -20,15 +21,16 @@ from smriti_api.core.deps import CurrentUser, IdempotencyKey, Services
 from smriti_api.core.errors import ApiError
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import tutor as t
-from smriti_api.services import content_reports, doubt_photo, tutor
+from smriti_api.schemas import tutor_images as ti
+from smriti_api.services import content_reports, doubt_photo, tutor, tutor_images
 
 router = APIRouter(prefix="/v1", tags=["tutor"])
 
 SessionId = Annotated[uuid.UUID, Path()]
 SSE_DOC: dict[int | str, dict[str, Any]] = {
     200: {
-        "description": "Server-sent events (delta, replace, safety, citations, chips, quota,"
-        " quota_exhausted, error, done)",
+        "description": "Server-sent events (delta, replace, safety, image_ready, image_pending,"
+        " image_failed, citations, chips, quota, quota_exhausted, error, done)",
         "content": {"text/event-stream": {"schema": {"type": "string"}}},
     }
 }
@@ -85,7 +87,7 @@ async def send_message(
     session_id: SessionId, body: t.MessageIn, services: Services, auth: CurrentUser
 ) -> StreamingResponse:
     plan = await tutor.prepare(services.db, services.ai, auth, session_id, body)
-    return _sse(tutor.stream(services.db, services.ai, auth, plan))
+    return _sse(tutor.stream(services.db, services.ai, auth, plan, tutor_images.env(services)))
 
 
 async def _with_session(
@@ -106,7 +108,11 @@ async def ask_card(body: t.AskCard, services: Services, auth: CurrentUser) -> St
     session_id, resumed = await tutor.open_for(services.db, auth, f"card:{body.card_id}", body.exam)
     plan = await tutor.prepare(services.db, services.ai, auth, session_id, body)
     return _sse(
-        _with_session(session_id, resumed, tutor.stream(services.db, services.ai, auth, plan))
+        _with_session(
+            session_id,
+            resumed,
+            tutor.stream(services.db, services.ai, auth, plan, tutor_images.env(services)),
+        )
     )
 
 
@@ -136,7 +142,11 @@ async def ask_question(
         answered_now=answered,
     )
     return _sse(
-        _with_session(session_id, resumed, tutor.stream(services.db, services.ai, auth, plan))
+        _with_session(
+            session_id,
+            resumed,
+            tutor.stream(services.db, services.ai, auth, plan, tutor_images.env(services)),
+        )
     )
 
 
@@ -274,5 +284,40 @@ async def solve_doubt_photo(
     session_id, resumed = await doubt_photo.open_solve(services.db, auth, photo_id, body)
     plan = await tutor.prepare(services.db, services.ai, auth, session_id, body)
     return _sse(
-        _with_session(session_id, resumed, tutor.stream(services.db, services.ai, auth, plan))
+        _with_session(
+            session_id,
+            resumed,
+            tutor.stream(services.db, services.ai, auth, plan, tutor_images.env(services)),
+        )
+    )
+
+
+# --- tutor pictures ("Draw it", the voice board) ------------------------------------------------
+
+GenerationId = Annotated[uuid.UUID, Path()]
+
+
+@router.get(
+    "/ai/generations/{generation_id}",
+    response_model=ti.GenerationOut,
+    summary="A tutor picture: its status, and a short-lived signed link once ready",
+)
+async def get_generation(
+    generation_id: GenerationId, services: Services, auth: CurrentUser
+) -> ti.GenerationOut:
+    return await tutor_images.get_generation(
+        services.db, tutor_images.env(services), auth.user_id, auth.claims, generation_id
+    )
+
+
+@router.post(
+    "/ai/generations/{generation_id}/retry",
+    response_model=ti.GenerationOut,
+    summary="[Try again] a failed tutor picture, once; never counts as a message",
+)
+async def retry_generation(
+    generation_id: GenerationId, services: Services, auth: CurrentUser
+) -> ti.GenerationOut:
+    return await tutor_images.retry(
+        services.db, tutor_images.env(services), auth.user_id, generation_id
     )

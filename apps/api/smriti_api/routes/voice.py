@@ -13,7 +13,7 @@ from smriti_api.core.errors import ApiError
 from smriti_api.integrations.storage import ObjectStorage
 from smriti_api.routes._idempotent import idempotent
 from smriti_api.schemas import voice as v
-from smriti_api.services import feynman, speech, voice
+from smriti_api.services import feynman, speech, tutor_images, voice
 
 router = APIRouter(prefix="/v1", tags=["voice"])
 
@@ -64,7 +64,15 @@ async def voice_tool(
     auth: CurrentUser,
     client: Client,
 ) -> v.ToolCallOut:
-    return await voice.relay_tool(services.db, auth, session_id, body, client.device_id)
+    return await voice.relay_tool(
+        services.db,
+        auth,
+        session_id,
+        body,
+        client.device_id,
+        ai=services.ai,
+        images=tutor_images.env(services),
+    )
 
 
 @router.post(

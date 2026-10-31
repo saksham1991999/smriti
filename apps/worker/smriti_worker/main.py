@@ -127,7 +127,11 @@ ContentPublishWorker = _settings(
 # The AI queue's jobs arrive with the tutor work (Agent B).
 AiWorker = _settings("AiWorker", "ai", [jobs.deck_moderation, jobs.ping])
 MediaWorker = _settings(
-    "MediaWorker", "media", [jobs.media_generate, jobs.ping], max_jobs=4, job_timeout=300
+    "MediaWorker",
+    "media",
+    [jobs.media_generate, jobs.tutor_image, jobs.ping],
+    max_jobs=4,
+    job_timeout=300,
 )
 NotificationsWorker = _settings(
     "NotificationsWorker",

@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.circular-dynamics:quick_revision",
+  "topic": "phy.laws-of-motion.circular-dynamics",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.laws-of-motion.circular-dynamics"
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.circular-dynamics.0004"
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 3,
+      "question": "q.phy.laws-of-motion.circular-dynamics.0002"
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Centripetal force is a role, not a new force.",
+          "hi": "अभिकेंद्र बल एक भूमिका है, नया बल नहीं।"
+        },
+        {
+          "en": "Banking raises the safe speed; at $v_o$ no friction is needed.",
+          "hi": "ढाल सुरक्षित चाल बढ़ाती है; $v_o$ पर घर्षण नहीं चाहिए।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.circular-dynamics:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.laws-of-motion.circular-dynamics.core.centripetal-force"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Centripetal force is an extra force to add to the diagram.",
+            "hi": "अभिकेंद्र बल आरेख में जोड़ा जाने वाला अतिरिक्त बल है।"
+          },
+          "correct": {
+            "en": "It is the net inward part of the real forces already there.",
+            "hi": "यह पहले से मौजूद वास्तविक बलों का नेट भीतरी भाग है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "A heavier car can take a level curve faster.",
+            "hi": "भारी कार समतल मोड़ तेज़ ले सकती है।"
+          },
+          "correct": {
+            "en": "$v_{max} = \\sqrt{\\mu_s R g}$ does not depend on mass.",
+            "hi": "$v_{max} = \\sqrt{\\mu_s R g}$ द्रव्यमान पर निर्भर नहीं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "On a merry-go-round an outward force acts on you.",
+            "hi": "झूला-चकरी पर आप पर बाहर की ओर बल लगता है।"
+          },
+          "correct": {
+            "en": "The real force is inward; outward is only the feeling.",
+            "hi": "वास्तविक बल भीतर की ओर है; बाहर केवल अनुभव है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

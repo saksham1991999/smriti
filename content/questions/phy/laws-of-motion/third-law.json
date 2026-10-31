@@ -1,0 +1,446 @@
+{
+  "schema": "questions@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    },
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Bhautiki Part I (Hindi medium), Ch 4 Gati ke Niyam: Hindi terms (text, summary and table)",
+      "url": "https://ncert.nic.in/textbook/pdf/khph104.pdf",
+      "retrieved": "2026-10-31",
+      "pages": "pp. 64-68"
+    }
+  ],
+  "authored_by": "skill:question-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Original questions in the JEE Main and NEET formats (integer-answer items are JEE Main only), not copied from the NCERT exercises or any paper. Each solution cites the NCERT section or example it rests on; questions that state g = 10 m/s² do so for round numbers. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "topic": "phy.laws-of-motion.third-law",
+  "questions": [
+    {
+      "id": "q.phy.laws-of-motion.third-law.0001",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.third-law.core.newton-third-law",
+          "weight": 1
+        }
+      ],
+      "depth": 1,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "Action and reaction forces",
+        "hi": "क्रिया और प्रतिक्रिया बल"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "act on different bodies",
+            "hi": "अलग-अलग पिंडों पर लगते हैं"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "act on the same body and cancel",
+            "hi": "एक ही पिंड पर लगते हैं और निरस्त होते हैं"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "differ in size",
+            "hi": "आकार में भिन्न होते हैं"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "act one after the other",
+            "hi": "एक के बाद एक लगते हैं"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Force on A by B, force on B by A.",
+          "hi": "B द्वारा A पर बल, A द्वारा B पर बल।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Each body pushes the other.",
+          "hi": "हर पिंड दूसरे को धकेलता है।"
+        },
+        "steps": [
+          {
+            "en": "$\\vec{F}_{AB}$ acts on A and $\\vec{F}_{BA}$ acts on B.",
+            "hi": "$\\vec{F}_{AB}$, A पर और $\\vec{F}_{BA}$, B पर लगता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "They are on different bodies, so they cannot cancel.",
+              "hi": "वे अलग पिंडों पर हैं, इसलिए निरस्त नहीं हो सकते।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "They are always equal in size.",
+              "hi": "वे सदा आकार में बराबर होते हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "They are simultaneous.",
+              "hi": "वे एक साथ होते हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 20,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.third-law.0002",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.third-law.core.newton-third-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "A book rests on a table. The reaction to the Earth's pull on the book (its weight) is",
+        "hi": "एक किताब मेज़ पर रखी है। किताब पर पृथ्वी के खिंचाव (उसके भार) की प्रतिक्रिया है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "the book's pull on the Earth",
+            "hi": "किताब द्वारा पृथ्वी पर खिंचाव"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the table's push on the book",
+            "hi": "किताब पर मेज़ का धक्का"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "the book's push on the table",
+            "hi": "मेज़ पर किताब का धक्का"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "the table's weight",
+            "hi": "मेज़ का भार"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Force on A by B, partner is force on B by A.",
+          "hi": "B द्वारा A पर बल का साथी A द्वारा B पर बल है।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "The partner of 'Earth on book' is 'book on Earth'.",
+          "hi": "'पृथ्वी द्वारा किताब पर' का साथी 'किताब द्वारा पृथ्वी पर' है।"
+        },
+        "steps": [
+          {
+            "en": "Swap the two bodies in the description of the force.",
+            "hi": "बल के वर्णन में दोनों पिंडों को अदल-बदल दीजिए।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That acts on the same body, the book; it balances the weight but is not its pair.",
+              "hi": "यह उसी पिंड, किताब, पर लगता है; यह भार को संतुलित करता है पर उसका युगल नहीं है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "That is the partner of the table's push on the book.",
+              "hi": "यह किताब पर मेज़ के धक्के का साथी है।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The table's weight is a different force altogether.",
+              "hi": "मेज़ का भार बिल्कुल अलग बल है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 30,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.third-law.0003",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.third-law.core.newton-third-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The Earth pulls a falling stone with a force of 10 N. The force the stone exerts on the Earth is",
+        "hi": "पृथ्वी एक गिरते पत्थर को 10 N बल से खींचती है। पत्थर पृथ्वी पर कितना बल लगाता है?"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "10 N, upwards",
+            "hi": "10 N, ऊपर की ओर"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "zero, as the stone is tiny",
+            "hi": "शून्य, क्योंकि पत्थर बहुत छोटा है"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "10 N, downwards",
+            "hi": "10 N, नीचे की ओर"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "much less than 10 N",
+            "hi": "10 N से बहुत कम"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Size of the force versus size of the effect.",
+          "hi": "बल का आकार बनाम प्रभाव का आकार।"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Equal and opposite, whatever the masses.",
+          "hi": "द्रव्यमान चाहे जो हों, समान और विपरीत।"
+        },
+        "steps": [
+          {
+            "en": "By the third law the stone pulls the Earth with 10 N towards itself, that is upwards.",
+            "hi": "तृतीय नियम से पत्थर पृथ्वी को अपनी ओर, यानी ऊपर की ओर, 10 N से खींचता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "The force is equal; only its effect on the massive Earth is tiny.",
+              "hi": "बल बराबर है; केवल भारी पृथ्वी पर उसका प्रभाव नगण्य है।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "It must be opposite to the Earth's pull.",
+              "hi": "यह पृथ्वी के खिंचाव के विपरीत होना चाहिए।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "The forces are equal in size.",
+              "hi": "बल आकार में बराबर हैं।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 25,
+      "difficulty_estimate": "easy",
+      "media": null,
+      "use": [
+        "practice",
+        "lesson"
+      ],
+      "source": "original"
+    },
+    {
+      "id": "q.phy.laws-of-motion.third-law.0004",
+      "type": "mcq_single",
+      "concepts": [
+        {
+          "id": "phy.laws-of-motion.third-law.core.newton-third-law",
+          "weight": 1
+        }
+      ],
+      "depth": 2,
+      "exam_styles": [
+        "jee-main",
+        "neet-ug"
+      ],
+      "stem": {
+        "en": "The external force that accelerates a person forwards when she starts walking is",
+        "hi": "चलना शुरू करते समय किसी व्यक्ति को आगे त्वरित करने वाला बाह्य बल है"
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": {
+            "en": "friction from the ground on her foot",
+            "hi": "उसके पैर पर ज़मीन का घर्षण"
+          }
+        },
+        {
+          "id": "b",
+          "text": {
+            "en": "the push of her foot on the ground",
+            "hi": "ज़मीन पर उसके पैर का धक्का"
+          }
+        },
+        {
+          "id": "c",
+          "text": {
+            "en": "her muscles' force on her body",
+            "hi": "उसके शरीर पर उसकी पेशियों का बल"
+          }
+        },
+        {
+          "id": "d",
+          "text": {
+            "en": "her weight",
+            "hi": "उसका भार"
+          }
+        }
+      ],
+      "answer": {
+        "option_ids": [
+          "a"
+        ]
+      },
+      "hints": [
+        {
+          "en": "Which force acts on her from outside?",
+          "hi": "उस पर बाहर से कौन-सा बल लगता है?"
+        }
+      ],
+      "solution": {
+        "feynman": {
+          "en": "Only a force from outside her body can accelerate her.",
+          "hi": "केवल शरीर के बाहर का बल ही उसे त्वरित कर सकता है।"
+        },
+        "steps": [
+          {
+            "en": "Her foot pushes back on the ground; by the third law the ground's friction pushes her forward.",
+            "hi": "उसका पैर ज़मीन को पीछे धकेलता है; तृतीय नियम से ज़मीन का घर्षण उसे आगे धकेलता है।"
+          }
+        ],
+        "shortcut": null,
+        "shortcut_fails_when": null,
+        "common_traps": [
+          {
+            "option_id": "b",
+            "why": {
+              "en": "That force acts on the ground, not on her.",
+              "hi": "यह बल ज़मीन पर लगता है, उस पर नहीं।"
+            }
+          },
+          {
+            "option_id": "c",
+            "why": {
+              "en": "Muscle forces are internal.",
+              "hi": "पेशी बल आंतरिक हैं।"
+            }
+          },
+          {
+            "option_id": "d",
+            "why": {
+              "en": "Weight acts downwards.",
+              "hi": "भार नीचे की ओर लगता है।"
+            }
+          }
+        ]
+      },
+      "ideal_time_s": 35,
+      "difficulty_estimate": "medium",
+      "media": null,
+      "use": [
+        "mock"
+      ],
+      "source": "original"
+    }
+  ],
+  "hi_source": "translation"
+}

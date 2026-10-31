@@ -1,0 +1,117 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 4 Laws of Motion (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph104.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms were checked against the NCERT Hindi-medium chapter khph104 (text, summary and table, pp. 64-68): जड़त्व, न्यूटन का गति का प्रथम/द्वितीय/तृतीय नियम, संवेग, आवेग, क्रिया-प्रतिक्रिया युगल, निकाय, संवेग संरक्षण, बल निर्देशक आरेख, अभिलंब बल, स्थैतिक घर्षण, गतिज घर्षण, घर्षण गुणांक, लोटनिक घर्षण, बॉल-बेयरिंग, स्नेहक, अभिकेंद्र बल, वर्तुल गति, समतल सड़क, ढालू सड़क, अनुकूलतम चाल. Other wording is ours.",
+  "id": "phy.laws-of-motion.momentum-conservation:quick_revision",
+  "topic": "phy.laws-of-motion.momentum-conservation",
+  "mode": "quick_revision",
+  "estimated_minutes": 3,
+  "min_depth": 1,
+  "max_depth": 3,
+  "concepts": [
+    "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+  ],
+  "cards": [
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.laws-of-motion.momentum-conservation"
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 2,
+      "question": "q.phy.laws-of-motion.momentum-conservation.0002"
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:qr:03",
+      "type": "question",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 3,
+      "question": "q.phy.laws-of-motion.momentum-conservation.0003"
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:qr:04",
+      "type": "summary",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Recoil: $m_b v_b + m_g v_g = 0$.",
+          "hi": "प्रतिक्षेप: $m_b v_b + m_g v_g = 0$।"
+        },
+        {
+          "en": "Bodies sticking together: $m_1 u_1 + m_2 u_2 = (m_1 + m_2)v$.",
+          "hi": "जुड़ने वाले पिंड: $m_1 u_1 + m_2 u_2 = (m_1 + m_2)v$।"
+        }
+      ]
+    },
+    {
+      "id": "phy.laws-of-motion.momentum-conservation:qr:05",
+      "type": "common_traps",
+      "concepts": [
+        "phy.laws-of-motion.momentum-conservation.core.momentum-conservation-law"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "Momentum is conserved only in elastic collisions.",
+            "hi": "संवेग केवल प्रत्यास्थ संघट्ट में संरक्षित रहता है।"
+          },
+          "correct": {
+            "en": "It is conserved in every collision of an isolated system.",
+            "hi": "विलगित निकाय के हर संघट्ट में संरक्षित रहता है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Adding speeds without signs.",
+            "hi": "चिह्नों के बिना चालें जोड़ना।"
+          },
+          "correct": {
+            "en": "Momentum is a vector; opposite directions take opposite signs.",
+            "hi": "संवेग सदिश है; विपरीत दिशाओं के चिह्न विपरीत होते हैं।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Using it when an external force acts.",
+            "hi": "बाह्य बल लगने पर भी इसका उपयोग करना।"
+          },
+          "correct": {
+            "en": "It holds only with no net external force.",
+            "hi": "यह केवल शून्य नेट बाह्य बल पर लागू होता है।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

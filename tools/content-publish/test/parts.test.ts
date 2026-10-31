@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -7,14 +8,17 @@ import { checkRoot } from "@smriti/content-schema/check";
 import { afterEach, describe, expect, it } from "vitest";
 
 import {
+  allowsUnapprovedMedia,
   applyPatch,
   buildSiteIndex,
   canonicalJson,
   diffBundles,
   hashed,
+  lenientMedia,
   MemoryStore,
   planProfile,
   publish,
+  PUBLISH_ENVIRONMENTS,
   R2Store,
   r2ConfigFromEnv,
   resolveMedia,
@@ -154,6 +158,53 @@ describe("media", () => {
     expect(ready.media.url).toMatch(/^assets\/[0-9a-f]{64}\.webp$/);
     expect(ready.asset?.sourcePath).toContain("design/mocks/assets");
   });
+
+  it("lets staging and local builds of real content ship unapproved media as unavailable, never production", () => {
+    expect(PUBLISH_ENVIRONMENTS).toEqual(["production", "staging", "local"]);
+    expect(allowsUnapprovedMedia("production", false)).toBe(false);
+    expect(allowsUnapprovedMedia("staging", false)).toBe(true);
+    expect(allowsUnapprovedMedia("local", false)).toBe(true);
+    expect(allowsUnapprovedMedia("production", true)).toBe(true); // fixtures (never published to production)
+
+    const set = loadSet();
+    const real = { set, repoRoot, fixture: false };
+    for (const env of ["staging", "local"] as const) {
+      const unapproved = new Map<string, string>();
+      const ctx = { ...real, allowUnapproved: allowsUnapprovedMedia(env, false), unapproved };
+      expect(lenientMedia(ctx)).toBe(true);
+      expect(resolveMedia("img.chapter-a.fx-pending", "en", ctx).media).toMatchObject({ status: "unavailable", url: null });
+      expect([...unapproved.keys()]).toEqual(["img.chapter-a.fx-pending"]);
+      // Leniency covers approval only: fixture-only source files stay refused.
+      expect(() => resolveMedia("img.ui.pet-cat-base", "en", ctx)).toThrow(/media_source_path/);
+    }
+    const strict = { ...real, allowUnapproved: allowsUnapprovedMedia("production", false), unapproved: new Map<string, string>() };
+    expect(lenientMedia(strict)).toBe(false);
+    expect(() => resolveMedia("img.chapter-a.fx-pending", "en", strict)).toThrow(/media_not_approved/);
+    expect(strict.unapproved.size).toBe(0);
+    // A context that does not say is strict.
+    expect(() => resolveMedia("img.chapter-a.fx-pending", "en", real)).toThrow(/media_not_approved/);
+  });
+});
+
+describe("cli", () => {
+  const run = (args: string[], env: Record<string, string> = {}) => {
+    const { CONTENT_PUBLISH_ENV: _drop, ...rest } = process.env;
+    return spawnSync("npx", ["tsx", "src/cli.ts", ...args], { cwd: join(repoRoot, "tools", "content-publish"), env: { ...rest, ...env }, encoding: "utf8" });
+  };
+
+  it("has no default environment and refuses the fixture course for production", () => {
+    const none = run(["--dry-run", "--root", "content/fixtures", "--report", tempDir()]);
+    expect(none.status).toBe(1);
+    expect(none.stderr).toMatch(/environment_required/);
+
+    const prod = run(["--dry-run", "--root", "content/fixtures", "--report", tempDir(), "--env", "production"]);
+    expect(prod.status).toBe(1);
+    expect(prod.stderr).toMatch(/fixture_production/);
+
+    const clash = run(["--dry-run", "--env", "local"], { CONTENT_PUBLISH_ENV: "production" });
+    expect(clash.status).toBe(1);
+    expect(clash.stderr).toMatch(/disagree/);
+  });
 });
 
 describe("patch format", () => {
@@ -232,7 +283,7 @@ describe("helpers and stores", () => {
 
   it("a memory target publishes the fixtures too (used by tests)", async () => {
     const store = new MemoryStore();
-    const report = await publish({ repoRoot, contentRoot: fixtures, store, reportDir: tempDir(), now: NOW });
+    const report = await publish({ repoRoot, contentRoot: fixtures, store, environment: "local", reportDir: tempDir(), now: NOW });
     expect(report.target).toBe("memory");
     expect(await store.exists("content", "site-index.json")).toBe(true);
   });

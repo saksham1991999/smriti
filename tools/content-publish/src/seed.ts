@@ -10,7 +10,7 @@ import type { BuiltBundle } from "./bundle.js";
 import { hashed } from "./canonical.js";
 import { PublishError } from "./errors.js";
 import { bundleKey } from "./manifest.js";
-import { type AssetFile, type MediaContext, resolveMedia } from "./media.js";
+import { type AssetFile, lenientMedia, type MediaContext, resolveMedia } from "./media.js";
 import type { ProfilePlan } from "./plan.js";
 
 export const DEFAULT_SEED_MAX_BYTES = 8 * 1024 * 1024;
@@ -98,7 +98,7 @@ export async function buildSeedPack(inp: SeedInputs): Promise<BuiltSeedPack> {
   for (const ref of spec.art) {
     const r = resolveMedia(ref, locale, inp.media);
     if (r.asset) assets.set(r.asset.key, r.asset);
-    else if (!inp.media.fixture) throw new PublishError("seed_art", `${ref} is not ready`);
+    else if (!lenientMedia(inp.media)) throw new PublishError("seed_art", `${ref} is not ready`);
   }
   for (const a of [...assets.values()].sort((x, y) => x.key.localeCompare(y.key))) {
     const data = await inp.readAsset(a);

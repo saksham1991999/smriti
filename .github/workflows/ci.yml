@@ -1,4 +1,6 @@
-# Workspace CI: lint, typecheck and test for every pnpm package, and the Python apps when they exist.
+# Workspace CI: env and content checks, lint, typecheck and unit tests for every pnpm package
+# (web Vitest, mobile Jest, packages), the web and site Playwright suites, and the Python apps
+# against Postgres and Redis built the same way as locally (scripts/dev/db.sh).
 name: CI
 
 on:
@@ -19,6 +21,10 @@ env:
   RUFF_VERSION: "0.13.3"
   MYPY_VERSION: "1.18.2"
   PYTEST_VERSION: "8.4.2"
+  # The Postgres and Redis the Python tests use: the same major versions and settings as
+  # scripts/dev/db.sh, on the ports the test conftests default to.
+  POSTGRES_IMAGE: postgres:16.13-bookworm
+  REDIS_IMAGE: redis:7.4.6-bookworm
 
 jobs:
   node:
@@ -36,9 +42,43 @@ jobs:
       - run: pnpm install --frozen-lockfile
       # Every env var the code reads is in an .env.example, and every listed name is read.
       - run: pnpm env:check
+      # Schemas, links and coverage for content/ (content.yml adds the publisher dry runs).
+      - run: pnpm content:check
       - run: pnpm lint
       - run: pnpm typecheck
+      # Every package's unit tests, including apps/web (Vitest) and apps/mobile (Jest).
       - run: pnpm test
+
+  e2e:
+    name: Playwright (web on the fake API, site smoke)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: pnpm/action-setup@v4.1.0
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Install Chromium
+        run: pnpm --filter @smriti/web exec playwright install --with-deps chromium
+      - name: Web e2e (fake API build)
+        run: pnpm --filter @smriti/web e2e
+      - name: Site build (fixture content index)
+        env:
+          CONTENT_INDEX_PATH: fixture
+        run: pnpm --filter @smriti/site build
+      - name: Site e2e
+        run: pnpm --filter @smriti/site test:e2e
+      - if: failure()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: playwright-traces
+          path: |
+            apps/web/test-results
+            apps/site/test-results
+          retention-days: 7
 
   python:
     name: uv sync, ruff, mypy, pytest (apps/api, apps/worker)
@@ -65,6 +105,35 @@ jobs:
       - if: steps.apps.outputs.dirs != ''
         name: uv sync
         run: uv sync --all-packages --all-groups
+      # Containers rather than `services:`, because services can't take Postgres flags.
+      - if: steps.apps.outputs.dirs != ''
+        name: Start Postgres and Redis
+        run: |
+          # psql and pg_isready for db.sh (the runner image normally has them).
+          if ! command -v psql >/dev/null || ! command -v pg_isready >/dev/null; then
+            sudo apt-get update -q && sudo apt-get install -y -q postgresql-client
+          fi
+          # The TCP check waits for the real server, not the entrypoint's socket-only init server.
+          docker run -d --name pg -p 127.0.0.1:54322:5432 \
+            -e POSTGRES_PASSWORD=postgres \
+            -e POSTGRES_INITDB_ARGS="--locale=C.UTF-8 --encoding=UTF8" \
+            "$POSTGRES_IMAGE" -c max_connections=200 -c fsync=off -c synchronous_commit=off -c timezone=UTC
+          docker run -d --name redis -p 127.0.0.1:56379:6379 "$REDIS_IMAGE" --save "" --appendonly no
+          for _ in $(seq 1 60); do
+            if pg_isready -h 127.0.0.1 -p 54322 -q && docker exec redis redis-cli ping >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs pg
+          exit 1
+      # The same build as `pnpm db:reset`: roles and auth shim, every migration, the seed.
+      - if: steps.apps.outputs.dirs != ''
+        name: Build the smriti and smriti_test databases
+        env:
+          SMRITI_DB_EXTERNAL: "1"
+          PGBIN: /usr/bin
+        run: bash scripts/dev/db.sh reset
       - if: steps.apps.outputs.dirs != ''
         name: ruff
         run: |

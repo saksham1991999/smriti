@@ -6,7 +6,7 @@ The table records what the code in `apps/mobile` and `apps/web` does today, not 
 
 **Status:** **Built** means the screen or feature works end to end against the API (or the fake API in dev and tests). **Partial** means it exists with gaps, listed in the notes. **Not built** means there is no screen yet. **n/a** means the feature is not meant for that platform.
 
-Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (`worktree-agent-a8c9fe7059bbdadfa`), the web column from the apps as merged into `claude/project-thread-vnixsy`. Mobile screens have been checked in the Expo web preview at 390 px and through Jest. They have not been run on a device: the Maestro flows in `apps/mobile/maestro` are written but have not been run.
+Last updated 31 Oct 2026. The mobile columns come from the mobile build branch (`worktree-agent-a8c9fe7059bbdadfa`), the web column from the apps as merged into `claude/project-thread-vnixsy`. Mobile screens have been checked in the Expo web preview at 390 px and through Jest. They have not been run on a device: the Maestro flows in `apps/mobile/maestro` are written but have not been run.
 
 ## Onboarding and accounts
 
@@ -31,8 +31,9 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Home (streak, hero, up next) | HOME-01 | Built | Built | Built | |
 | Today's plan card | HOME-02 | Not built | Not built | Not built | app-core has `buildLocalPlan`; mobile uses it only for the widgets so far. |
 | Little learner Home | HOME-06 | Not built | Not built | Not built | Rules are in app-core (`little/*`), behind `feature.little_learner`. |
-| Subject map | LRN-01 | Partial | Partial | Built | Mobile has the All, In progress and Not started filters; no Weak filter and no units yet. |
-| Chapter | LRN-02 | Partial | Partial | Built | Mobile has the topic rail, Practise, Chapter test (LRN-06 sheet), reviews by topic and Report. Not yet: test-out (LES-12), chapter download, reset progress, long-press. Web also has a topic page. |
+| Subject map | LRN-01 | Partial | Partial | Built | Mobile has the All, In progress and Not started filters, the Weak filter (shown once `learn.weak_filter_min_attempts` is set) and unit headers when the manifest names its units (today's manifests don't, so none show). Not yet: "Download subject" in the overflow and the Downloaded chip on chapter cards (the subject scope is in the LRN-15 sheet). |
+| Chapter | LRN-02 | Partial | Partial | Built | Mobile has the topic rail, Practise, Chapter test (LRN-06 sheet: Test out or Practise), reviews by topic, the long-press topic menu (Quick revision, Download, Mark as learned), Download for offline (LRN-15, Pro, chapter or subject, Wi-Fi only, both languages, remove), Reset progress and Report. Not yet: the LRN-06 mock card (mock cards carry no chapter id), resuming a Wi-Fi-only download in the background, and the "Manage downloads" link (no ME-21 screen). Test-out marks and resets are local only: the sync contract has no event for them. Web also has a topic page. |
+| Test out and its result | LES-12, LES-13 | Built | Built | Not built | Mobile runs lesson-core's check plan (one try, no hints), marks passed topics learned with `learned_via: test_out`, never marks a topic failed, and offers "Undo this". All checkable questions are used while `learn.test_out_questions_per_topic` is unset. |
 | Lesson player (Deep Dive) | LES-01 to LES-08 | Built | Built | Built | Mobile includes the not-found state (LES-11). |
 | Lesson end | LES-09 | Built | Built | Built | |
 
@@ -42,10 +43,10 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 |---|---|---|---|---|---|
 | Memory hub | MEM-01 | Built | Built | Not built | |
 | Comeback after a break | MEM-02 | Built | Built | Not built | |
-| Review session (FSRS) | MEM-03, MEM-04 | Built | Built | Built | Mobile can scope a session to one topic (from LRN-02). No undo yet. |
+| Review session (FSRS) | MEM-03, MEM-04 | Built | Built | Built | Mobile can scope a session to one topic (from LRN-02) and has Undo for the last rating: the rating is held on the device until the next rating, the end of the session, leaving or going to the background, so nothing is retracted from the outbox. |
 | Labs hub | LAB-01 | Built | Built | Built | Mobile shows per-lab progress and "Works offline" once a lab is downloaded. |
-| Lab detail and info | LAB-03, LAB-18 | Partial | Partial | Built | No mobile-data confirmation before a download yet: the network service does not report cellular. |
-| Lab player (sims) | LAB-04, LAB-06 | Partial | Partial | Built | Mobile runs the real sim bundles in `react-native-webview` through `sim-bridge` (`createWebViewHost`), downloaded to the device and cached for offline use (Pro). Tasks, check, hint, skip, readings table, reset, battery saver, slow-start and one restart after a crash. No full-screen mode yet. Not yet run on a device; the web preview runs the same screens through an iframe. |
+| Lab detail and info | LAB-03, LAB-18 | Built | Built | Built | Mobile asks before a download on mobile data when the lab is larger than `lab.confirm_download_mb`, and points to the lesson's explainer when the lab can't be fetched. |
+| Lab player (sims) | LAB-04, LAB-06 | Partial | Partial | Built | Mobile runs the real sim bundles in `react-native-webview` through `sim-bridge` (`createWebViewHost`), downloaded to the device and cached for offline use (Pro). Tasks, check, hint, skip, readings table, reset, battery saver, slow-start and one restart after a crash. Full screen keeps the running sim and puts the tasks in a side panel; the orientation unlock and rotate hint are not built yet. Not yet run on a device; the web preview runs the same screens through an iframe. |
 | Lab fallback and complete | LAB-05, LAB-07 | Built | Built | Built | |
 
 ## Practice
@@ -57,7 +58,7 @@ Last updated 30 Oct 2026. The mobile columns come from the mobile build branch (
 | Topic drill, session and summary | PRC-03 to PRC-06 | Built | Built | Built | Mobile includes the free-limit sheet (PRC-17). |
 | PYQ browser (hub, by chapter, by paper) | PRC-07 to PRC-10 | Built | Built | Not built | Mobile shows each PYQ's source (PRC-18). |
 | Daily challenge | PRC-11, PRC-12 | Built | Built | Not built | |
-| Share card | PRC-13 | Not built | Not built | Not built | Needs a view-capture and share dependency decision. |
+| Share card | PRC-13 | Built | Built | Not built | Mobile renders the card as a view and shares it as an image (`react-native-view-shot` and `expo-sharing`, both MIT). The card has no question text and nothing that identifies the student. The web preview uses the Web Share API or a download. |
 | Progress and analytics | PRC-14 | Partial | Partial | Not built | Mobile shows practice, mock trend and syllabus covered. Readiness, speed, confidence and mistake cards wait for an analytics API. |
 | Practice history | PRC-16 | Built | Built | Not built | |
 | Mock list | MOCK-01 | Built | Built | Built | Web shows the exam's mock on the runner's start screen. |

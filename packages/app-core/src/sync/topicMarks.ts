@@ -10,6 +10,12 @@ import type { SyncEventPayloads } from './types';
  *   check's (`learned_via: 'test_out'`).
  * - `chapter_reset`: LRN-02 "Reset chapter progress". Every topic of the chapter goes back to not
  *   started, whatever marked it; lesson positions go too. Review cards, XP and the streak stay.
+ * - `placement_checked` (v1.7): LES-13 after Find my level. The subject's earlier placement marks
+ *   that are still placement's, and that this check doesn't repeat, go back to not started (a redo
+ *   replaces them, learn §6.5); then each topic it pre-marks, if not started, becomes learned
+ *   with `learned_via: 'placement'`. Rows in progress or learned another way stay.
+ * - `lesson_completed` (a lesson mode, not `quick_check`): the topic becomes learned via lesson,
+ *   unless it is already learned; a placement mark becomes the lesson's (it is confirmed, v1.7).
  *
  * `applyTopicMark` is the rule both sides run: the device on its own rows, and the server on
  * `learn.topic_status`. Golden vector: `test-vectors/topic_marks.json` (checked by the API's
@@ -28,14 +34,22 @@ export interface TopicMarkRow {
 export type TopicMarkEvent =
   | { type: 'topic_tested_out'; payload: SyncEventPayloads['topic_tested_out'] }
   | { type: 'topic_test_out_undone'; payload: SyncEventPayloads['topic_test_out_undone'] }
-  | { type: 'chapter_reset'; payload: SyncEventPayloads['chapter_reset'] };
+  | { type: 'chapter_reset'; payload: SyncEventPayloads['chapter_reset'] }
+  | { type: 'placement_checked'; payload: SyncEventPayloads['placement_checked'] }
+  | { type: 'lesson_completed'; payload: Pick<SyncEventPayloads['lesson_completed'], 'topic_id' | 'mode'> };
 
 export interface TopicMarkContext {
   /** The topics of each chapter, from content (the server reads `content.topics`). */
   chapterTopics: Readonly<Record<string, readonly string[]>>;
   /** `topic_ids` of each applied `topic_tested_out`, by `check_id`. */
   checks: Record<string, readonly string[]>;
+  /** (v1.7) The topics of each subject, from content (the server joins chapters and topics). */
+  subjectTopics?: Readonly<Record<string, readonly string[]>>;
+  /** (v1.7) `topic_ids` of each applied `placement_checked`, by `check_id`. */
+  placements?: Record<string, readonly string[]>;
 }
+
+const LESSON_MODES: ReadonlySet<string> = new Set(['deep_dive', 'quick_revision', 'onboarding']);
 
 /** Why the server rejects a mark event, or null when it applies. */
 export type TopicMarkRejection = 'invalid_payload' | 'already_recorded' | null;
@@ -55,6 +69,32 @@ export function applyTopicMark(rows: Record<string, TopicMarkRow>, event: TopicM
       if (rows[t]?.status === 'learned') continue;
       rows[t] = { status: 'learned', learned_via: 'test_out' };
     }
+    return null;
+  }
+  if (event.type === 'placement_checked') {
+    const p = event.payload;
+    const subject = new Set(ctx.subjectTopics?.[p.subject_id] ?? []);
+    if (!subject.size || !p.topic_ids.every((t) => subject.has(t))) return 'invalid_payload';
+    const placements = (ctx.placements ??= {});
+    if (placements[p.check_id]) return 'already_recorded';
+    const keep = new Set(p.topic_ids);
+    placements[p.check_id] = [...keep];
+    for (const t of subject) {
+      const row = rows[t];
+      if (row?.status === 'learned' && row.learned_via === 'placement' && !keep.has(t)) rows[t] = { status: 'not_started', learned_via: null };
+    }
+    for (const t of keep) {
+      const row = rows[t];
+      if (!row || row.status === 'not_started') rows[t] = { status: 'learned', learned_via: 'placement' };
+    }
+    return null;
+  }
+  if (event.type === 'lesson_completed') {
+    const p = event.payload;
+    if (!LESSON_MODES.has(p.mode)) return null;
+    const row = rows[p.topic_id];
+    if (row?.status === 'learned' && row.learned_via !== 'placement') return null;
+    rows[p.topic_id] = { status: 'learned', learned_via: 'lesson' };
     return null;
   }
   if (event.type === 'topic_test_out_undone') {
@@ -93,6 +133,11 @@ export function topicTestOutUndonePayload(checkId: string, marks: readonly Topic
       previous_status: m.previous && m.previous.status !== 'learned' ? m.previous.status : null,
     })),
   };
+}
+
+/** LES-13 after Find my level: the topics it pre-marks (lesson-core `PlacementResult.premarkTopics`). */
+export function placementCheckedPayload(checkId: string, subjectId: string, premarkTopics: readonly string[]): SyncEventPayloads['placement_checked'] {
+  return { check_id: checkId, subject_id: subjectId, topic_ids: [...new Set(premarkTopics)] };
 }
 
 /** LRN-02 "Reset chapter progress". */

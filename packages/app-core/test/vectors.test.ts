@@ -49,6 +49,8 @@ import {
   type TopicMarkRow,
   applyTopicMark,
   chapterResetPayload,
+  placementCheckedPayload,
+  qualifiesDay,
   topicTestOutUndonePayload,
   topicTestedOutPayload,
 } from '../src';
@@ -359,5 +361,77 @@ describe('golden vectors', () => {
       return { name: step.name, type: step.event.type, payload: step.event.payload, expected: { accepted: code === null, code, rows: structuredClone(sorted) } };
     });
     golden('topic_marks', { version: 1, chapter_topics: ctx.chapterTopics, initial, cases });
+  });
+
+  it('placement_marks', () => {
+    // Find my level (sync contract v1.7, learn §6.5), in order, for one student: pre-marks, a
+    // redo that replaces unconfirmed marks, a lesson that confirms one, and the checks around
+    // Test out and chapter reset. The server must end each step with these rows and codes. The
+    // second chapter (fx.chapter-p) is added by the server test for this vector.
+    const subject = 'fx';
+    const ch1 = 'fx.chapter-a';
+    const ch2 = 'fx.chapter-p';
+    const [a, b, c] = ['a', 'b', 'c'].map((x) => `${ch1}.topic-${x}`) as [string, string, string];
+    const p1 = `${ch2}.topic-a`;
+    const p2 = `${ch2}.topic-b`;
+    const id = (n: number) => `0193a000-0000-7000-8000-0000000000${20 + n}`;
+    const initial: Record<string, TopicMarkRow> = { [c]: { status: 'in_progress', learned_via: null } };
+    const ctx: TopicMarkContext = {
+      chapterTopics: { [ch1]: [a, b, c, `${ch1}.topic-d`], [ch2]: [p1, p2] },
+      subjectTopics: { [subject]: [a, b, c, `${ch1}.topic-d`, p1, p2] },
+      checks: {},
+      placements: {},
+    };
+    const lesson = (topic: string, mode: 'deep_dive' | 'quick_check' = 'deep_dive') => ({ topic_id: topic, mode, cards_seen: 6, correct: 4, total: 4, ms_total: 300000 });
+    const steps: { name: string; event: TopicMarkEvent; payload?: Record<string, unknown> }[] = [
+      { name: 'Find my level pre-marks two chapters (and an in-progress topic stays)', event: { type: 'placement_checked', payload: placementCheckedPayload(id(1), subject, [a, p1, c]) } },
+      { name: 'the same check again', event: { type: 'placement_checked', payload: placementCheckedPayload(id(1), subject, [a]) } },
+      { name: 'a topic from another subject', event: { type: 'placement_checked', payload: placementCheckedPayload(id(2), subject, ['zz.chapter-x.topic-a']) } },
+      { name: 'an unknown subject', event: { type: 'placement_checked', payload: placementCheckedPayload(id(3), 'zz', []) } },
+      { name: 'a quick check does not confirm a mark', event: { type: 'lesson_completed', payload: lesson(p1, 'quick_check') }, payload: lesson(p1, 'quick_check') },
+      { name: 'a lesson confirms the first chapter\'s mark', event: { type: 'lesson_completed', payload: lesson(a) }, payload: lesson(a) },
+      { name: 'a Test out leaves a placement mark alone', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(id(4), ch2, [p1, p2]) } },
+      { name: 'a redo with nothing right takes back only unconfirmed marks', event: { type: 'placement_checked', payload: placementCheckedPayload(id(5), subject, []) } },
+      { name: 'a redo pre-marks again', event: { type: 'placement_checked', payload: placementCheckedPayload(id(6), subject, [b, p1]) } },
+      { name: 'Reset chapter progress clears placement marks too', event: { type: 'chapter_reset', payload: chapterResetPayload(ch1) } },
+    ];
+    const rows: Record<string, TopicMarkRow> = structuredClone(initial);
+    const cases = steps.map((step) => {
+      const code = applyTopicMark(rows, step.event, ctx);
+      const sorted = Object.fromEntries(Object.entries(rows).sort(([x], [y]) => x.localeCompare(y)));
+      return { name: step.name, type: step.event.type, payload: step.payload ?? step.event.payload, expected: { accepted: code === null, code, rows: structuredClone(sorted) } };
+    });
+    golden('placement_marks', { version: 1, subject_topics: ctx.subjectTopics, chapter_topics: ctx.chapterTopics, initial, cases });
+  });
+
+  it('test_out_streak', () => {
+    // Learn flow Q7: a passed Test out counts toward the streak as one lesson, on the local day it
+    // was sent, once per check. A repeated check, an undo and a chapter reset count nothing, and
+    // an undo never takes the day back.
+    const timeZone = 'Asia/Kolkata';
+    const chapter = 'fx.chapter-a';
+    const [a, b, c, d] = ['a', 'b', 'c', 'd'].map((x) => `${chapter}.topic-${x}`) as [string, string, string, string];
+    const ids = ['0193a000-0000-7000-8000-000000000011', '0193a000-0000-7000-8000-000000000012', '0193a000-0000-7000-8000-000000000013'] as const;
+    const steps: { name: string; at: string; event: TopicMarkEvent }[] = [
+      { name: 'only a Test out that day', at: '2026-10-28T05:00:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[0], chapter, [a, b]) } },
+      { name: 'the same check again', at: '2026-10-28T06:00:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[0], chapter, [a, b]) } },
+      { name: 'Undo this the next day', at: '2026-10-29T05:00:00.000Z', event: { type: 'topic_test_out_undone', payload: topicTestOutUndonePayload(ids[0], [{ topicId: a, previous: null }, { topicId: b, previous: null }]) } },
+      { name: 'and a chapter reset', at: '2026-10-29T05:30:00.000Z', event: { type: 'chapter_reset', payload: chapterResetPayload(chapter) } },
+      { name: 'two Test outs on one day', at: '2026-10-30T04:00:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[1], chapter, [c]) } },
+      { name: 'the second one', at: '2026-10-30T04:30:00.000Z', event: { type: 'topic_tested_out', payload: topicTestedOutPayload(ids[2], chapter, [d]) } },
+    ];
+    const rows: Record<string, TopicMarkRow> = {};
+    const ctx: TopicMarkContext = { chapterTopics: { [chapter]: [a, b, c, d] }, checks: {} };
+    const cases = steps.map((step) => {
+      const code = applyTopicMark(rows, step.event, ctx);
+      return { name: step.name, at: step.at, type: step.event.type, payload: step.event.payload, expected: { accepted: code === null, code } };
+    });
+    const accepted = cases.filter((x) => x.expected.accepted).map((x) => ({ type: x.type, occurred_at: x.at }));
+    const byDay = activityByDay(accepted, timeZone);
+    const days = ['2026-10-28', '2026-10-29', '2026-10-30'].map((day) => {
+      const activity = byDay.get(day as never) ?? { lessonsCompleted: 0, reviews: 0, mockSections: 0, dailyChallenge: false, rescueDone: false };
+      return { day, lessons_completed: activity.lessonsCompleted, qualified: qualifiesDay(activity) };
+    });
+    golden('test_out_streak', { version: 1, time_zone: timeZone, cases, days });
   });
 });

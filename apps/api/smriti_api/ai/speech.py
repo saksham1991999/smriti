@@ -7,6 +7,7 @@ The request shapes follow the providers' public HTTP APIs and must be confirmed 
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from datetime import UTC, datetime, timedelta
 
 import httpx
@@ -29,16 +30,33 @@ GEMINI_BASE = "https://generativelanguage.googleapis.com/v1alpha"
 class DeepgramTTSProvider:
     name = "deepgram"
 
-    def __init__(self, http: httpx.AsyncClient, api_key: str, model: str) -> None:
-        if not api_key or not model:
-            raise AIConfigError("DEEPGRAM_API_KEY and DEEPGRAM_TTS_MODEL are required")
+    def __init__(
+        self,
+        http: httpx.AsyncClient,
+        api_key: str,
+        model: str,
+        models_by_locale: Mapping[str, str] | None = None,
+    ) -> None:
+        self._by_locale = {k: v for k, v in (models_by_locale or {}).items() if v}
+        if not api_key or not (model or self._by_locale):
+            raise AIConfigError(
+                "DEEPGRAM_API_KEY and a voice (DEEPGRAM_TTS_MODEL_HI, DEEPGRAM_TTS_MODEL_EN or"
+                " DEEPGRAM_TTS_MODEL) are required"
+            )
         self._http = http
         self._key = api_key
         self._model = model
 
+    def model_for(self, locale: str) -> str:
+        """The voice for the request's language (DEEPGRAM_TTS_MODEL_<LANG>), else the fallback
+        DEEPGRAM_TTS_MODEL. Config only: a caller's ``voice`` never picks a model."""
+        model = self._by_locale.get(locale.split("-", 1)[0].lower()) or self._model
+        if not model:
+            raise AIConfigError(f"no Deepgram voice is configured for locale {locale}")
+        return model
+
     async def tts(self, text: str, *, voice: str | None, locale: str) -> AudioResult:
-        # The voice is DEEPGRAM_TTS_MODEL (config) only; a caller's ``voice`` never picks a model.
-        model = self._model
+        model = self.model_for(locale)
         resp = await self._http.post(
             DEEPGRAM_TTS_URL,
             params={"model": model, "encoding": "mp3"},

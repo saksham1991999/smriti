@@ -374,7 +374,7 @@ matching Railway environment.
 |---|---|---|
 | Agnes AI | `AGNES_AI_API_KEY`, `AGNES_BASE_URL`, `AI_TIER_TUTOR_MODEL`, `AI_TIER_CHEAP_MODEL`, `AI_TIER_AUTHOR_MODEL`, `AI_TIER_IMAGE_MODEL` | Model names live only in these variables, never in code. |
 | Gemini | `GEMINI_API_KEY`, `GEMINI_LIVE_MODEL` | Voice tutor. |
-| Deepgram | `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL`, `DEEPGRAM_STT_MODEL` | Check Hindi quality first (D3). |
+| Deepgram | `DEEPGRAM_API_KEY`, `DEEPGRAM_TTS_MODEL_HI`, `DEEPGRAM_TTS_MODEL_EN` (one Flux voice per language, R63), `DEEPGRAM_TTS_MODEL` (fallback), `DEEPGRAM_STT_MODEL` | Check Hindi quality first (D3). |
 | ClickHouse | `CLICKHOUSE_URL`, `CLICKHOUSE_USER`, `CLICKHOUSE_PASSWORD`, `CLICKHOUSE_DATABASE` | Create a user that can only insert and select in the events database. |
 | Grafana Cloud | `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` | The OTLP endpoint and its `Authorization=Basic <token>` header. Connect Grafana to ClickHouse with a read-only user. |
 | Sentry | `SENTRY_DSN` (api and worker), optionally `SENTRY_RELEASE` | Create a server project (or one each for api and worker, set per service), a web project and a mobile project. The web and mobile DSNs are `VITE_SENTRY_DSN` and `EXPO_PUBLIC_SENTRY_DSN`. Events carry only the internal user id: request bodies, cookies, auth headers, query strings, job arguments and email addresses are stripped before sending. |

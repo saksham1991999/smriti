@@ -42,6 +42,7 @@ EVENT_TYPES = (
     "topic_tested_out",
     "topic_test_out_undone",
     "chapter_reset",
+    "placement_checked",
 )
 
 SETTINGS_KEYS = (
@@ -343,6 +344,17 @@ class TopicTestOutUndone(_Payload):
     topics: Annotated[list[UndoneTopic], Field(min_length=1, max_length=100)]
 
 
+class PlacementChecked(_Payload):
+    """(v1.7) LES-13 after Find my level (learn §6.5): the topics the check pre-marks learned
+    (lesson-core ``PlacementResult.premarkTopics``, the first topic of each chapter answered right
+    and tagged Sure). A redo replaces the subject's earlier placement marks that no lesson has
+    confirmed since, so an empty list takes them all back."""
+
+    check_id: uuid.UUID
+    subject_id: Id
+    topic_ids: Annotated[list[Id], Field(max_length=100)]
+
+
 class ChapterReset(_Payload):
     """(v1.6) LRN-02 "Reset chapter progress" (X13): every topic of the chapter goes back to not
     started, whatever marked it learned. Review cards, XP and the streak stay."""
@@ -381,6 +393,7 @@ PAYLOAD_MODELS: dict[str, type[BaseModel]] = {
     "topic_tested_out": TopicTestedOut,
     "topic_test_out_undone": TopicTestOutUndone,
     "chapter_reset": ChapterReset,
+    "placement_checked": PlacementChecked,
 }
 
 

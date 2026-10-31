@@ -118,6 +118,8 @@ export interface SyncEventPayloads {
   };
   /** (v1.6) LRN-02 "Reset chapter progress" (`chapterResetPayload`). */
   chapter_reset: { chapter_id: string };
+  /** (v1.7) LES-13 after Find my level: the topics it pre-marks (`placementCheckedPayload`). */
+  placement_checked: { check_id: string; subject_id: string; topic_ids: string[] };
 }
 
 /** The activity kinds with a completion event (lesson-core `ActivityKind`). */
@@ -156,6 +158,7 @@ export const CONTRACT_V1_EVENT_TYPES = [
   'topic_tested_out',
   'topic_test_out_undone',
   'chapter_reset',
+  'placement_checked',
 ] as const satisfies readonly SyncEventType[];
 
 /**
@@ -175,6 +178,12 @@ export const CONTRACT_V15_EVENT_TYPES = ['palace_saved', 'palace_deleted'] as co
  * rejects them as `unknown_type`, so send them only to a v1.6 server.
  */
 export const CONTRACT_V16_EVENT_TYPES = ['topic_tested_out', 'topic_test_out_undone', 'chapter_reset'] as const satisfies readonly SyncEventType[];
+
+/**
+ * Events added in contract v1.7 (Find my level placement marks). A v1.6 server rejects them as
+ * `unknown_type`, so send them only to a v1.7 server.
+ */
+export const CONTRACT_V17_EVENT_TYPES = ['placement_checked'] as const satisfies readonly SyncEventType[];
 
 export interface WireEvent<T extends SyncEventType = SyncEventType> {
   event_id: string;

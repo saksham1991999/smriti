@@ -108,8 +108,10 @@ async def load_user_facts(session: AsyncSession, user_id: uuid.UUID) -> UserFact
 _AGG_SQL = text(
     """
     select
-      -- A little learner's story, song or play counts as a lesson (sync v1.4).
-      count(*) filter (where type in ('lesson_completed', 'activity_completed')) as lessons,
+      -- A little learner's story, song or play counts as a lesson (sync v1.4), and so does a
+      -- passed Test out, once per check (learn flow Q7, sync v1.6).
+      count(*) filter (where type in ('lesson_completed', 'activity_completed',
+                                      'topic_tested_out'))      as lessons,
       count(*) filter (where type = 'review_rated')              as reviews,
       count(*) filter (where type = 'mock_section_submitted')    as mocks,
       bool_or(type = 'daily_challenge_completed')                as challenge,

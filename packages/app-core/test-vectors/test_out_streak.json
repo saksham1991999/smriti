@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "time_zone": "Asia/Kolkata",
+  "cases": [
+    {
+      "name": "only a Test out that day",
+      "at": "2026-10-28T05:00:00.000Z",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000011",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-a",
+          "fx.chapter-a.topic-b"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null
+      }
+    },
+    {
+      "name": "the same check again",
+      "at": "2026-10-28T06:00:00.000Z",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000011",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-a",
+          "fx.chapter-a.topic-b"
+        ]
+      },
+      "expected": {
+        "accepted": false,
+        "code": "already_recorded"
+      }
+    },
+    {
+      "name": "Undo this the next day",
+      "at": "2026-10-29T05:00:00.000Z",
+      "type": "topic_test_out_undone",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000011",
+        "topics": [
+          {
+            "topic_id": "fx.chapter-a.topic-a",
+            "previous_status": null
+          },
+          {
+            "topic_id": "fx.chapter-a.topic-b",
+            "previous_status": null
+          }
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null
+      }
+    },
+    {
+      "name": "and a chapter reset",
+      "at": "2026-10-29T05:30:00.000Z",
+      "type": "chapter_reset",
+      "payload": {
+        "chapter_id": "fx.chapter-a"
+      },
+      "expected": {
+        "accepted": true,
+        "code": null
+      }
+    },
+    {
+      "name": "two Test outs on one day",
+      "at": "2026-10-30T04:00:00.000Z",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000012",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-c"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null
+      }
+    },
+    {
+      "name": "the second one",
+      "at": "2026-10-30T04:30:00.000Z",
+      "type": "topic_tested_out",
+      "payload": {
+        "check_id": "0193a000-0000-7000-8000-000000000013",
+        "kind": "test_out",
+        "chapter_id": "fx.chapter-a",
+        "topic_ids": [
+          "fx.chapter-a.topic-d"
+        ]
+      },
+      "expected": {
+        "accepted": true,
+        "code": null
+      }
+    }
+  ],
+  "days": [
+    {
+      "day": "2026-10-28",
+      "lessons_completed": 1,
+      "qualified": true
+    },
+    {
+      "day": "2026-10-29",
+      "lessons_completed": 0,
+      "qualified": false
+    },
+    {
+      "day": "2026-10-30",
+      "lessons_completed": 2,
+      "qualified": true
+    }
+  ]
+}

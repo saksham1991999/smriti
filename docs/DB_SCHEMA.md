@@ -163,6 +163,24 @@ create table app.guardian_consent_requests (     -- a teen (or a parent) asks; t
 );
 create index on app.guardian_consent_requests (learner_user_id, created_at desc);
 
+create table app.guardian_link_requests (        -- AUTH-27: a guardian asks to link an existing teen (auth flow §6.11)
+  id                  uuid primary key default gen_random_uuid(),
+  guardian_user_id    uuid not null references auth.users(id) on delete cascade,
+  learner_user_id     uuid references auth.users(id) on delete cascade,   -- set when the email or invite code matched, or when the teen claims the code
+  code_hash           text not null unique,     -- the code the teen claims; reused by the consent request opened on accept
+  target_email_hash   text,                     -- HMAC of the teen's email the guardian typed; never the address
+  scopes              text[] not null default '{account}',
+  status              text not null default 'pending'
+                        check (status in ('pending','accepted','declined','expired','cancelled')),
+  consent_request_id  uuid references app.guardian_consent_requests(id) on delete set null,  -- opened on accept (initiated_by = 'guardian')
+  evidence            jsonb not null default '{}',  -- the teen's accept: time, notice version, app version, platform, scopes shown
+  created_at          timestamptz not null default now(),
+  expires_at          timestamptz not null,     -- from auth.link_request_ttl_h
+  resolved_at         timestamptz
+);
+create unique index on app.guardian_link_requests (guardian_user_id, learner_user_id)
+  where status = 'pending' and learner_user_id is not null;
+
 create table app.guardian_consents (             -- the consent record (DPDP Rule 10)
   id                  uuid primary key default gen_random_uuid(),
   user_id             uuid not null references auth.users(id) on delete cascade,   -- the learner
@@ -1580,6 +1598,23 @@ create table ai.voice_sessions (
   transcript_key  text                              -- R2, private
 );
 
+create table ai.doubt_photos (                    -- photo doubt, AI-16 to AI-19 (migration 20261030200004)
+  id               uuid primary key default gen_random_uuid(),
+  user_id          uuid not null references auth.users(id) on delete cascade,
+  storage_key      text,                            -- R2 uploads, private; null once deleted; no user id in it
+  mime             text not null,                   -- image/jpeg, image/png, image/webp
+  bytes            integer not null,
+  status           text not null,                   -- read, unreadable, rejected, solved
+  reason           text,                            -- why a read failed: blurry, no_question, multiple, unreadable, not_study, personal, unsafe, ai_unavailable
+  question_text    text,                            -- the recognised question, editable by the student
+  subject          text,
+  exam_profile_id  text,
+  session_id       uuid references ai.tutor_sessions(id) on delete set null,   -- the AI-19 chat
+  revealed_at      timestamptz,                     -- "Show full solution"
+  created_at       timestamptz not null default now(),
+  deleted_at       timestamptz
+);                                                -- owner read; API writes; ai.tutor_retention_days
+
 create table ai.generations (                     -- every non-chat AI job, for cost and debugging
   id           uuid primary key default gen_random_uuid(),
   user_id      uuid references auth.users(id) on delete set null,   -- null for content jobs
@@ -1757,6 +1792,7 @@ Policy patterns (each uses `(select auth.uid())` so Postgres evaluates it once p
 | Owner insert, server read | `learn.content_reports`, `social.user_reports`, `ops.support_tickets` | `insert` with `with check (user_id = (select auth.uid()))` (or `reporter_id`); the owner reads their own rows; staff read through the service role. A report never exposes the reporter to the person or author reported |
 | Owner via parent | `learn.palace_rooms`, `palace_loci`, `learn.mock_answers` | `exists` on the parent row owned by the user |
 | Learner or guardian read, server write | `app.guardian_consents`, `app.guardian_links`, `app.parental_controls`, `app.time_requests` | `select` when `user_id` (or `learner_user_id`) `= (select auth.uid())` or `guardian_user_id = (select auth.uid())`. Writes only through the API's service-role functions after its checks (flow §6.10). |
+| Guardian or teen read, server write | `app.guardian_link_requests` | `select` when `guardian_user_id` or `learner_user_id` `= (select auth.uid())`. No write policies: the API creates, claims, accepts and declines after its checks (AUTH-27). |
 | Learner read, server write | `app.guardian_consent_requests` | `select` for the learner. A guardian reads a request only through the `security definer` function `app.consent_request_by_code(code)`, which checks the code hash, status and expiry and returns the learner's first name, pet name and pet species, the app variant and the scopes only. |
 | Guardian reads a managed child | Child's `learn.*`, `game.*` summaries (Parent mode, Phase 3) | Through `security definer` views filtered by an active `app.guardian_links` row. Notes, tutor chats and uploads are never in these views. |
 | Public read | `content.*` (published rows), `app.institutions` (active rows), `game.badges`, `quests`, `squad_quests`, `shop_items`, `collections` | `select` to `anon, authenticated` with a status filter |

@@ -1,0 +1,102 @@
+{
+  "schema": "lesson@1",
+  "status": "review",
+  "sources": [
+    {
+      "kind": "ncert",
+      "ref": "NCERT Class 11 Physics Part I, Ch 1 Units and Measurement (2026-27 reprint)",
+      "url": "https://ncert.nic.in/textbook/pdf/keph101.pdf",
+      "retrieved": "2026-10-29"
+    }
+  ],
+  "authored_by": "skill:lesson-author",
+  "reviewed_by": null,
+  "updated": "2026-10-31",
+  "notes": "Quick Revision for this topic. Hindi written for this file. Technical terms follow the graph's Hindi names and standard NCERT Hindi-medium usage; the Hindi-medium chapter (khph101) could not be retrieved, so a reviewer should check the terms.",
+  "id": "phy.units-measurement.dimensional-analysis:quick_revision",
+  "topic": "phy.units-measurement.dimensional-analysis",
+  "mode": "quick_revision",
+  "estimated_minutes": 2,
+  "min_depth": 1,
+  "max_depth": 4,
+  "concepts": [
+    "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses"
+  ],
+  "cards": [
+    {
+      "id": "phy.units-measurement.dimensional-analysis:qr:01",
+      "type": "cheat_sheet_ref",
+      "concepts": [
+        "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses"
+      ],
+      "depth": 1,
+      "sheet": "cs.phy.units-measurement.dimensional-analysis"
+    },
+    {
+      "id": "phy.units-measurement.dimensional-analysis:qr:02",
+      "type": "question",
+      "concepts": [
+        "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses"
+      ],
+      "depth": 4,
+      "question": "q.phy.units-measurement.dimensional-analysis.0003"
+    },
+    {
+      "id": "phy.units-measurement.dimensional-analysis:qr:03",
+      "type": "summary",
+      "concepts": [
+        "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses"
+      ],
+      "depth": 1,
+      "points": [
+        {
+          "en": "Homogeneity: add or equate only like dimensions.",
+          "hi": "समघातता: केवल समान विमाएँ जोड़िए या बराबर कीजिए।"
+        },
+        {
+          "en": "Dimensionally wrong means wrong; consistent does not mean right.",
+          "hi": "विमीय रूप से गलत अर्थात गलत; संगत का अर्थ सही नहीं।"
+        },
+        {
+          "en": "Cannot find pure numbers such as $2\\pi$.",
+          "hi": "$2\\pi$ जैसी शुद्ध संख्याएँ नहीं निकाल सकते।"
+        }
+      ]
+    },
+    {
+      "id": "phy.units-measurement.dimensional-analysis:qr:04",
+      "type": "common_traps",
+      "concepts": [
+        "phy.units-measurement.dimensional-analysis.core.dimensional-analysis-uses"
+      ],
+      "depth": 1,
+      "title": {
+        "en": "Common traps",
+        "hi": "आम गलतियाँ"
+      },
+      "traps": [
+        {
+          "mistake": {
+            "en": "A dimensionally consistent equation must be correct.",
+            "hi": "विमीय रूप से संगत समीकरण अवश्य सही है।"
+          },
+          "correct": {
+            "en": "It can still have the wrong number in front.",
+            "hi": "उसमें आगे की संख्या फिर भी गलत हो सकती है।"
+          }
+        },
+        {
+          "mistake": {
+            "en": "Dimensional analysis can handle $\\sin(\\omega t)$ inside a formula.",
+            "hi": "विमीय विश्लेषण सूत्र में $\\sin(\\omega t)$ संभाल सकता है।"
+          },
+          "correct": {
+            "en": "It can only demand that $\\omega t$ is dimensionless.",
+            "hi": "यह केवल इतना माँग सकता है कि $\\omega t$ विमाहीन हो।"
+          }
+        }
+      ]
+    }
+  ],
+  "hi_source": "translation"
+}

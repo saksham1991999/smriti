@@ -24,6 +24,7 @@ import {
   reduceSong,
   reduceStory,
   roundMoves,
+  traceCoverage,
   type SongAction,
   type SongState,
   STORY_AUTO_ADVANCE_MS,
@@ -303,5 +304,21 @@ describe("play", () => {
     p.feedback.try_again = "Wrong! Try harder";
     expect(() => planPlay(b, "pl.fx.topic-a", { bundleVersion: h })).toThrow(/not gentle/);
     expect(() => planSong(b, "pl.fx.topic-a", { bundleVersion: h })).toThrow(/not song@1/);
+  });
+});
+
+describe("trace coverage", () => {
+  // A 10 x 10 mask with one vertical bar of ink in column 4 (a stand-in for a rasterised "l").
+  const ink = Array.from({ length: 100 }, (_, i) => (i % 10 === 4 ? 1 : 0));
+  const mask = { width: 10, height: 10, ink };
+
+  it("measures the share of the glyph's ink the finger passed over", () => {
+    expect(traceCoverage(mask, [[{ x: 0.45, y: 0 }, { x: 0.45, y: 1 }]])).toBe(1);
+    expect(traceCoverage(mask, [[{ x: 0.45, y: 0 }, { x: 0.45, y: 0.5 }]])).toBeCloseTo(0.6, 5);
+    // A stroke far from the ink covers nothing; one tap covers only what is under the finger.
+    expect(traceCoverage(mask, [[{ x: 0.95, y: 0 }, { x: 0.95, y: 1 }]])).toBe(0);
+    expect(traceCoverage(mask, [[{ x: 0.45, y: 0.05 }]])).toBeCloseTo(0.1, 5);
+    expect(traceCoverage(mask, [])).toBe(0);
+    expect(traceCoverage({ width: 2, height: 2, ink: [0, 0, 0, 0] }, [])).toBe(1);
   });
 });

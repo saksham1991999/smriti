@@ -9,7 +9,10 @@
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { expect, test, type Page } from "@playwright/test";
+import { activateSubscription } from "../scripts/fake-razorpay.mjs";
 import { devGoogle, drill, finishFirstWin, onboard, playLesson, type Locale } from "./journey";
+
+const API = "http://127.0.0.1:8000";
 
 const OUT = process.env.SHOTS_DIR;
 const SIZES = [
@@ -29,7 +32,10 @@ async function shoot(page: Page, locale: Locale, screen: string) {
       await page.waitForTimeout(250);
       // Grow the window to the page's height so fixed bars sit at the bottom, as on a phone scroll.
       const height = await page.evaluate(() => document.documentElement.scrollHeight);
-      await page.setViewportSize({ width: size.width, height: Math.max(size.height, Math.min(height, 4000)) });
+      await page.setViewportSize({
+        width: size.width,
+        height: Math.max(size.height, Math.min(height, 4000)),
+      });
       await page.waitForTimeout(100);
       await page.screenshot({ path: join(dir, `${screen}-${size.width}-${theme}.png`) });
       await page.setViewportSize(size);
@@ -44,6 +50,23 @@ for (const locale of ["en", "hi"] as Locale[]) {
     test.skip(!OUT, "set SHOTS_DIR to take the screenshot matrix");
     test.setTimeout(600_000);
     await page.emulateMedia({ reducedMotion: "reduce" });
+    // The checkout's subscription and the user id, for the signed test webhook (PAY-08 -> PAY-09).
+    const seen: { userId: string | null; sub: { id: string; intro: boolean } | null } = {
+      userId: null,
+      sub: null,
+    };
+    page.on("response", async (r) => {
+      if (!r.url().startsWith(API) || r.status() !== 200) return;
+      const path = new URL(r.url()).pathname;
+      if (path === "/v1/sync/state") {
+        const body = (await r.json().catch(() => null)) as { profile?: { id: string } } | null;
+        if (body?.profile?.id) seen.userId = body.profile.id;
+      }
+      if (path === "/v1/billing/razorpay/subscription") {
+        const body = (await r.json()) as { subscription_id: string; intro: boolean };
+        seen.sub = { id: body.subscription_id, intro: body.intro };
+      }
+    });
 
     await page.goto("/");
     await expect(page).toHaveURL(/\/welcome/);
@@ -91,15 +114,32 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await page.getByTestId("drill-close").click();
     await drill(page);
 
-    await page.goto("/practice/mock");
-    await expect(page.locator("[data-testid=mock-06],[data-testid=mock-empty]")).toBeVisible();
-    if (await page.getByTestId("mock-06").isVisible()) {
-      await shoot(page, locale, "MOCK-06");
-      await page.getByTestId("mock-declaration").click();
-      await page.getByTestId("mock-begin").click();
-      await expect(page.getByTestId("mock-07")).toBeVisible();
-      await shoot(page, locale, "MOCK-07");
-    }
+    await page.goto("/practice/mocks");
+    await expect(page.getByTestId("mock-01")).toBeVisible();
+    await shoot(page, locale, "MOCK-01");
+    await page.getByTestId("mock-card-bp:fx-exam-2027:paper-1:section-a").click();
+    await expect(page.getByTestId("mock-06")).toBeVisible();
+    await shoot(page, locale, "MOCK-06");
+    await page.getByTestId("mock-declaration").click();
+    await page.getByTestId("mock-begin").click();
+    await expect(page.getByTestId("mock-07")).toBeVisible();
+    await page.getByTestId("mock-08").locator("[data-testid^=option-]").first().click();
+    await page.getByTestId("mock-save-next").click();
+    await expect(page.getByTestId("palette-1")).toHaveAttribute("data-state", "answered");
+    await shoot(page, locale, "MOCK-08");
+    await page.getByTestId("mock-submit").click();
+    await expect(page.getByTestId("mock-16")).toBeVisible();
+    await shoot(page, locale, "MOCK-16");
+    await page
+      .getByTestId("mock-16")
+      .getByRole("button", { name: /submit|सबमिट/i })
+      .last()
+      .click();
+    await expect(page.getByTestId("mock-19")).toBeVisible({ timeout: 30_000 });
+    await shoot(page, locale, "MOCK-19");
+    await page.getByTestId("mock-solutions").click();
+    await expect(page.getByTestId("mock-22")).toBeVisible();
+    await shoot(page, locale, "MOCK-22");
 
     await page.goto("/labs");
     await expect(page.getByTestId("lab-01")).toBeVisible();
@@ -129,6 +169,12 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await page.goto("/me/notifications");
     await expect(page.getByTestId("set-03")).toBeVisible();
     await shoot(page, locale, "SET-03");
+    await page.goto("/memory/decks");
+    await expect(page.getByTestId("mem-07")).toBeVisible();
+    await shoot(page, locale, "MEM-07");
+    await page.goto("/focus");
+    await expect(page.getByTestId("mem-28")).toBeVisible();
+    await shoot(page, locale, "MEM-28");
 
     await page.goto("/pro");
     await expect(page.getByTestId("pay-01")).toBeVisible();
@@ -139,7 +185,17 @@ for (const locale of ["en", "hi"] as Locale[]) {
     await shoot(page, locale, "PAY-06");
     await page.getByTestId("pay-06-cta").click();
     await page.getByTestId("fake-pay-approve").click();
-    await expect(page.getByTestId("pro-on")).toBeVisible();
+    await expect(page.getByTestId("pay-08")).toBeVisible();
+    await shoot(page, locale, "PAY-08");
+    await expect.poll(() => seen.sub !== null && seen.userId !== null).toBe(true);
+    if (!seen.sub || !seen.userId) throw new Error("no subscription or user id seen");
+    await activateSubscription({
+      api: API,
+      subscriptionId: seen.sub.id,
+      userId: seen.userId,
+      intro: seen.sub.intro,
+    });
+    await expect(page.getByTestId("pro-on")).toBeVisible({ timeout: 30_000 });
     await shoot(page, locale, "PAY-09");
     await page.getByTestId("pay-09-continue").click();
     await page.goto("/me/plan");

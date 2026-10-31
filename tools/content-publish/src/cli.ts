@@ -1,9 +1,13 @@
 /**
  * smriti content publisher.
  *
- *   tsx src/cli.ts [--root <content dir>] [--target local|r2] [--out <dir>] [--report <dir>]
- *                  [--now <ISO time>] [--keep-patches <n>] [--dry-run]
+ *   tsx src/cli.ts --env production|staging|local [--root <content dir>] [--target local|r2]
+ *                  [--out <dir>] [--report <dir>] [--now <ISO time>] [--keep-patches <n>] [--dry-run]
  *
+ * --env (or CONTENT_PUBLISH_ENV) is required and has no default. production stops on any media
+ *   that is not approved (media_not_approved); staging and local ship it as unavailable and list
+ *   each item as a warning, as fixture builds always have. The worker passes it from APP_ENV.
+ *   `publish:local` and `publish:fixtures` pass local; `publish:staging` passes staging.
  * --dry-run builds everything in memory and writes only metadata.sql and publish-report.json
  *   (to --report, or a temporary folder). CI uses it to prove a publish would succeed.
  * --target local (default) writes to --out (default tools/content-publish/out).
@@ -18,10 +22,12 @@ import { join, resolve } from "node:path";
 import { findRepoRoot } from "@smriti/content-schema/check";
 
 import { PublishError } from "./errors.js";
+import { isPublishEnvironment, PUBLISH_ENVIRONMENTS, type PublishEnvironment } from "./media.js";
 import { publish } from "./publish.js";
 import { LocalDirStore, MemoryStore, type ObjectStore, R2Store, r2ConfigFromEnv } from "./store.js";
 
 interface Args {
+  env: PublishEnvironment | null;
   root: string;
   target: "local" | "r2";
   out: string | null;
@@ -32,7 +38,7 @@ interface Args {
 }
 
 function parse(argv: string[]): Args {
-  const a: Args = { root: "content", target: "local", out: null, report: null, now: null, keepPatches: 3, dryRun: false };
+  const a: Args = { env: null, root: "content", target: "local", out: null, report: null, now: null, keepPatches: 3, dryRun: false };
   for (let i = 0; i < argv.length; i++) {
     const flag = argv[i];
     const next = () => {
@@ -40,7 +46,12 @@ function parse(argv: string[]): Args {
       if (v === undefined) throw new PublishError("usage", `${flag} needs a value`);
       return v;
     };
-    if (flag === "--root") a.root = next();
+    if (flag === "--env") {
+      const e = next();
+      if (!isPublishEnvironment(e)) throw new PublishError("usage", `--env is ${PUBLISH_ENVIRONMENTS.join(", ")}`);
+      if (a.env && a.env !== e) throw new PublishError("usage", `--env given twice (${a.env}, ${e})`);
+      a.env = e;
+    } else if (flag === "--root") a.root = next();
     else if (flag === "--target") {
       const t = next();
       if (t !== "local" && t !== "r2") throw new PublishError("usage", "--target is local or r2");
@@ -51,15 +62,24 @@ function parse(argv: string[]): Args {
     else if (flag === "--keep-patches") a.keepPatches = Number(next());
     else if (flag === "--dry-run") a.dryRun = true;
     else if (flag === "--help" || flag === "-h") {
-      console.log("content-publish [--root dir] [--target local|r2] [--out dir] [--report dir] [--now ISO] [--keep-patches n] [--dry-run]");
+      console.log("content-publish --env production|staging|local [--root dir] [--target local|r2] [--out dir] [--report dir] [--now ISO] [--keep-patches n] [--dry-run]");
       process.exit(0);
     } else throw new PublishError("usage", `unknown flag ${flag}`);
+  }
+  const fromEnv = process.env.CONTENT_PUBLISH_ENV;
+  if (fromEnv) {
+    if (!isPublishEnvironment(fromEnv)) throw new PublishError("usage", `CONTENT_PUBLISH_ENV is ${PUBLISH_ENVIRONMENTS.join(", ")}`);
+    if (a.env && a.env !== fromEnv) throw new PublishError("usage", `--env ${a.env} and CONTENT_PUBLISH_ENV=${fromEnv} disagree`);
+    a.env = fromEnv;
   }
   return a;
 }
 
 async function main(): Promise<void> {
   const args = parse(process.argv.slice(2));
+  if (!args.env) {
+    throw new PublishError("environment_required", `pass --env ${PUBLISH_ENVIRONMENTS.join("|")} (or CONTENT_PUBLISH_ENV); there is no default`);
+  }
   const repoRoot = findRepoRoot(process.cwd());
   const out = resolve(repoRoot, args.out ?? join("tools", "content-publish", "out"));
   const store: ObjectStore = args.dryRun
@@ -74,6 +94,7 @@ async function main(): Promise<void> {
     repoRoot,
     contentRoot: resolve(repoRoot, args.root),
     store,
+    environment: args.env,
     reportDir: args.dryRun
       ? resolve(repoRoot, args.report ?? mkdtempSync(join(tmpdir(), "content-publish-dry-run-")))
       : resolve(repoRoot, args.report ?? (args.target === "local" ? out : join("tools", "content-publish", "out"))),

@@ -24,7 +24,9 @@ pnpm stack --no-web       # API and worker only
    Postgres on port 54322 and Redis on port 56379, then applies `supabase/local/*.sql`, every migration
    and `supabase/seed.sql`.
 2. **Content.** Runs the real content publish (`@smriti/content-publish publish:local`) on `content/`
-   into `.dev/stack/content`. It then applies that folder's `metadata.sql` to the database and
+   into `.dev/stack/content`, as a local build (`--env local`): media that is not approved yet ships as
+   unavailable and is listed in `publish-report.json` (`unapproved_media` and the warnings); only
+   `--env production` refuses it. It then applies that folder's `metadata.sql` to the database and
    rebuilds `content.card_index` from the lesson files (`scripts/dev/card_index.py`), as the
    worker's `content_publish` job does.
 
@@ -66,6 +68,8 @@ Fakes in the local stack, all named as such in code:
 - the `fake` AI provider, unless you set another
 
 Postgres, Redis, the API, the worker, the job queue and the content are real.
+
+The Supabase Auth calls the local stack fakes (managed child identities, token hashes, the sign-up hook) still need one run against a real project: `docs/SUPABASE_SPIKE.md` lists each request and what to check.
 
 ## Smoke journey: `pnpm stack:smoke`
 

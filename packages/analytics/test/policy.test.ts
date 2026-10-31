@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { allowEvent, audienceFromAgeBand, stripForAudience, type EventDef, type PolicyContext } from '../src/index';
+import { allowEvent, CATALOGUE, audienceFromAgeBand, stripForAudience, type EventDef, type PolicyContext } from '../src/index';
 
 const learning: EventDef = { stream: 'learning', essential: false, areas: ['learn'], props: {} };
 const essential: EventDef = { stream: 'product', essential: true, areas: ['auth'], props: {} };
@@ -42,6 +42,9 @@ describe('allowEvent', () => {
     expect(allowEvent('lesson_completed', learning, c).ok).toBe(true);
     expect(allowEvent('home_viewed', product, c).ok).toBe(true);
     expect(allowEvent('storybook_completed', product, c).ok).toBe(true);
+    for (const name of ['song_completed', 'play_round_completed', 'play_completed']) {
+      expect(allowEvent(name, CATALOGUE[name as keyof typeof CATALOGUE], c).ok).toBe(true);
+    }
     expect(allowEvent('sign_in_started', essential, c)).toEqual({ ok: false, reason: 'little_learner_not_allowed' });
     expect(allowEvent('shop_opened', product, c)).toEqual({ ok: false, reason: 'little_learner_not_allowed' });
   });

@@ -117,6 +117,25 @@ async def quiet_far_away(services: AppServices, user_id: uuid.UUID) -> None:
         )
 
 
+def test_link_request_push_reads_the_auth_catalogue() -> None:
+    """AUTH-27: the push is the screen's own question, from the auth namespace, in EN and HI."""
+    payload = {"parent_first_name": "Asha", "request_id": "r1"}
+    title, body, link = notify.render(
+        "guardian_link_request", "AUTH-27.title", ctx("teen"), payload, "Smriti"
+    )
+    assert (title, body, link) == (
+        "Smriti",
+        "Link Asha as your guardian?",
+        "/guardian/link-requests/r1",
+    )
+    hi = ctx("teen")
+    hi.locale = "hi"
+    assert notify.render("guardian_link_request", "AUTH-27.title", hi, payload, "Smriti")[
+        1
+    ].startswith("Asha ")
+    assert decide("guardian_link_request", ctx("teen"), at_ist(12)).action == "send"
+
+
 # --- devices and prefs -------------------------------------------------------------------------
 
 

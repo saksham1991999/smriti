@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  activityByDay,
+  activityCompletedPayload,
+  activityCompletedXp,
+  activityDedupeKey,
   InMemoryStorage,
   ManualNetwork,
   ManualScheduler,
@@ -372,5 +376,42 @@ describe('applyServerState', () => {
     expect(await readSnapshotSection(storage, 'streak')).toBeUndefined();
     expect(await storage.topic_status.get('phy.kin')).toMatchObject({ status: 'learned', percent: 100 });
     expect(await readStateVersion(storage)).toBe(42);
+  });
+});
+
+describe('activity_completed (v1.4)', () => {
+  const completion = {
+    kind: 'play' as const,
+    activityId: 'play.x',
+    topicId: 't.x',
+    concepts: ['c.1', 'c.1', 'c.2'],
+    bundleVersion: 'v3',
+    locale: 'hi',
+    stars: 2.4,
+    msTotal: -5,
+    completedAt: Date.UTC(2026, 9, 30, 19, 0),
+  };
+  it('builds the wire payload from a lesson-core completion', () => {
+    expect(activityCompletedPayload(completion)).toEqual({
+      kind: 'play',
+      activity_id: 'play.x',
+      topic_id: 't.x',
+      concept_ids: ['c.1', 'c.2'],
+      bundle_version: 'v3',
+      locale: 'hi',
+      stars: 2,
+      ms_total: 0,
+      completed_at: '2026-10-30T19:00:00.000Z',
+    });
+    expect(() => activityCompletedPayload({ ...completion, locale: 'ta' })).toThrow(RangeError);
+  });
+  it('dedupes by local day, credits stars and counts as a lesson', () => {
+    const p = activityCompletedPayload(completion);
+    expect(activityDedupeKey(p, 'Asia/Kolkata')).toBe('play.x|v3|2026-10-31');
+    expect(activityDedupeKey(p, 'UTC')).toBe('play.x|v3|2026-10-30');
+    expect(activityCompletedXp(3)).toBe(3);
+    expect(activityCompletedXp(3, 2)).toBe(6);
+    const days = activityByDay([{ type: 'activity_completed', occurred_at: p.completed_at }], 'Asia/Kolkata');
+    expect(days.get('2026-10-31')?.lessonsCompleted).toBe(1);
   });
 });

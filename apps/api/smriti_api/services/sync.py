@@ -78,6 +78,7 @@ SECTIONS_BY_TYPE: dict[str, set[str]] = {
     "rescue_completed": {"plant"},
     "cards_queued": {"srs"},
     "comeback_plan_started": set(),
+    "activity_completed": {"topic_progress", "wallet"},
 }
 
 
@@ -513,6 +514,30 @@ async def _lesson_completed(ctx: BatchContext, event: s.SyncEventIn, p: BaseMode
             },
         )
         await _topic_status(ctx, p.topic_id, "learned", "lesson")
+
+
+async def _activity_completed(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
+    """(v1.4) A little learner's story, song or play: a completed lesson for the day's streak and
+    the path, once per activity, bundle version and local day of ``completed_at``."""
+    assert isinstance(p, s.ActivityCompleted)
+    if p.completed_at > ctx.now + MAX_FUTURE:
+        raise EventRejected("clock_skew", "completed_at is in the future")
+    day = p.completed_at.astimezone(event_zone(event.tz)).date()
+    seen = (
+        await ctx.session.execute(
+            text(
+                "select 1 from learn.sync_events where user_id = :u"
+                " and type = 'activity_completed' and status = 'applied'"
+                " and payload ->> 'activity_id' = :a and payload ->> 'bundle_version' = :b"
+                " and (cast(payload ->> 'completed_at' as timestamptz)"
+                "      at time zone coalesce(tz, 'UTC'))::date = :d limit 1"
+            ),
+            {"u": ctx.facts.user_id, "a": p.activity_id, "b": p.bundle_version, "d": day},
+        )
+    ).first()
+    if seen is not None:
+        raise EventRejected("already_recorded", "This activity is already recorded for that day")
+    await _topic_status(ctx, p.topic_id, "learned", "lesson")
 
 
 async def _answer_submitted(ctx: BatchContext, event: s.SyncEventIn, p: BaseModel) -> None:
@@ -1015,5 +1040,6 @@ _HANDLERS = {
     "rescue_completed": _noop,
     "cards_queued": _cards_queued,
     "comeback_plan_started": _noop,
+    "activity_completed": _activity_completed,
 }
 assert set(_HANDLERS) == set(s.PAYLOAD_MODELS)

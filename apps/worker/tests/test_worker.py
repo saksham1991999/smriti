@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from smriti_api.core.config import AppEnv
 from smriti_api.schemas.sync import SyncEventIn
 from smriti_api.services.jobs import QUEUE_BY_JOB, QUEUES, JobDeps, arq_queue_name
 from smriti_api.services.sync import apply_batch
@@ -212,8 +213,12 @@ def test_content_publish_command_prefers_the_env_override(
         "--dir",
         str(tmp_path),
         "run",
-        "publish:local",
+        "publish:run",
         "--",
+        "--env",
+        jobs.publish_environment(ctx["settings"]),
+        "--target",
+        "local",
         "--root",
         str(jobs.content_root()),
         "--report",
@@ -225,6 +230,24 @@ def test_content_publish_command_prefers_the_env_override(
         "tools/x.mjs",
         "--dry-run",
     ]
+
+
+def test_content_publish_always_names_the_environment(ctx: dict[str, Any], tmp_path: Path) -> None:
+    """The publisher has no default environment; production is passed explicitly (strict media)."""
+    (tmp_path / "package.json").write_text("{}")
+    expected = {
+        AppEnv.production: "production",
+        AppEnv.staging: "staging",
+        AppEnv.preview: "staging",
+        AppEnv.local: "local",
+        AppEnv.test: "local",
+    }
+    for app_env, publish_env in expected.items():
+        settings = ctx["settings"].model_copy(update={"app_env": app_env})
+        assert jobs.publish_environment(settings) == publish_env
+        cmd = jobs.content_publish_command(settings, tmp_path)
+        assert cmd is not None
+        assert cmd[cmd.index("--env") + 1] == publish_env
 
 
 async def test_a_job_the_api_enqueues_runs_on_the_worker() -> None:

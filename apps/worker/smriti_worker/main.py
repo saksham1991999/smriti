@@ -38,6 +38,8 @@ def _settings(name: str, queue: str, functions: list[Any], **overrides: Any) -> 
         "keep_result": 3600,
         # A failed merge or purge is retried; every job is safe to run twice.
         "max_tries": 3,
+        # The liveness key `python -m smriti_worker.health` reads (the container health check).
+        "health_check_interval": 60,
         **overrides,
     }
     return type(name, (), attrs)

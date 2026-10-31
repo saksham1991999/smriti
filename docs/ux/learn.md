@@ -1196,6 +1196,85 @@ Not used for: "Make it stick" (MEM-19 has its own gate, `memory_lock`), PDF expo
 
 ---
 
+### LRN-17 · Song player · little learner: Phase 3 (proposed, R59)
+**Purpose:** Sing a `song@1` rhyme or song along with the pet, with the words lit line by line and the actions to do. **Main action:** [Sing along].
+**Entry → exits:** HOME-06 song node → LES-08 little learner variant (a finished song is a path node done), close → HOME-06.
+
+**Layout (top to bottom):**
+1. Top bar (minimal): close `X` (48 target).
+2. Cover, 1:1 (`sunny-object` or `storybook`), 50% width, centred, from the song's `cover`.
+3. Title in `title`.
+4. Lyrics: one line per row in `heading` (20/30). The line being sung is in the subject `text` colour on the subject tint; the others in `inkMuted`. A line with an action shows the action icon (Phosphor, from the song's `actions[].icon`) and the cue beside it while it is sung.
+5. Bottom: [Sing along] primary 64 (`Play`), which becomes [Pause] (`PauseCircle`) while singing. After the end: the pet line, [Sing again] secondary (`ArrowCounterClockwise`) and [Done] primary.
+
+**Copy (little learner, तुम):**
+| Key | EN | HI |
+|---|---|---|
+| Sing along | Sing along | साथ में गाओ |
+| Pause | Pause | रुको |
+| Sing again | Sing again | फिर से गाओ |
+| Done | Done | हो गया |
+| Do this | Do this: {cue} | ऐसा करो: {cue} |
+| Song done | Yay! You sang it! | वाह! तुमने गा लिया! |
+| Not ready | This song is coming soon. | यह गाना जल्दी आएगा। |
+| Lyrics a11y | Words of the song | गाने के बोल |
+| Now singing a11y | Now singing: {line} | अभी गा रहे हैं: {line} |
+
+**Illustration slots:** cover from the song's `cover` request; alt from the request.
+
+**States:** default; singing; paused; ended; audio not ready (lyrics shown, [Sing along] disabled, "Not ready" line); untimed lyrics (no moving highlight, all lines in `ink`); offline (works when the bundle and audio are on the device, else LRN-16); reduced motion (the highlight changes without a slide); dark mode.
+
+**Accessibility:** lyrics are a list labelled "Words of the song"; the current line is announced politely as it changes; action icons carry the cue as their label; the audio has its transcript (the lyrics).
+
+**Analytics:** `screen_view` (`screen_id` = LRN-17), `song_completed`.
+
+---
+
+### LRN-18 · Play activity · little learner: Phase 3 (proposed, R59)
+**Purpose:** Play a `play@1` activity: one to six short rounds of tap, match, sort, drag or trace. No score, timer or fail state. **Main action:** the round itself, then [Next].
+**Entry → exits:** HOME-06 play node → LES-08 little learner variant, close → HOME-06.
+
+**Layout (top to bottom):**
+1. Top bar: close `X`, round dots (one per round, the current one filled; never a number on screen).
+2. Pet line with the round's prompt (read aloud once; speaker button 48 to hear it again).
+3. The round, with targets of 64 or more:
+   - **Tap:** a grid of picture tiles; tapping a right one marks it with a `Check` badge.
+   - **Match:** two columns of picture tiles; tap one on the left, then its partner on the right.
+   - **Sort:** the pictures in a row, the baskets below; tap a picture, then its basket.
+   - **Drag:** the scene image with the places marked as soft circles; drag a picture onto its place, or tap a picture and then the place.
+   - **Trace:** the letter in the app font, large and pale, on `surfaceSunken`; the child traces over it with a finger. [Start again] ghost and [All done] primary below.
+4. Feedback band under the round: the activity's success line (`successTint`, `Check`) or its try-again line (`surfaceSunken`, `ArrowCounterClockwise`), never red. After the second wrong move the round's hint shows in the pet line; after that the right move glows (the "Show me" state).
+5. After a round: the pet cheers with the success line and a [Next] primary 64 (`ArrowRight`). After the last round: "You got {n} stars!" and [Done].
+
+**Copy (little learner, तुम):**
+| Key | EN | HI |
+|---|---|---|
+| Round a11y | Game {n} of {total} | खेल {n} / {total} |
+| Hear again | Hear again | फिर से सुनो |
+| Next | Next | आगे |
+| Done | Done | हो गया |
+| Show me | Look here! | यहाँ देखो! |
+| Tap help | Tap the pictures | तस्वीरों पर टैप करो |
+| Match help | Tap a picture, then its partner | तस्वीर पर टैप करो, फिर उसकी जोड़ी पर |
+| Move help | Tap a picture, then where it goes | तस्वीर पर टैप करो, फिर वहाँ जहाँ वह जाएगी |
+| Trace help | Trace the letter with your finger | उँगली से अक्षर बनाओ |
+| Start again | Start again | फिर से शुरू करो |
+| All done | All done | बन गया |
+| Picked a11y | {label}, picked | {label}, चुना गया |
+| Placed a11y | {label}, done | {label}, हो गया |
+| Place a11y | {label}, put it here | {label}, यहाँ रखो |
+| Stars | You got {n} stars! | तुम्हें {n} सितारे मिले! |
+
+**Illustration slots:** tiles, buckets and the scene from the activity's image requests (`sunny-object`, `sunny-scene`); alt from each request; never text inside images. The trace letter is the app font, not an image.
+
+**States:** default; picked (a tile selected, waiting for its place); try again; hint; show me (guided); round won; activity done; media not ready (the label shows in a quiet tile); offline (works when the bundle is on the device, else LRN-16); reduced motion (no glow pulse or bounce, a static ring instead); dark mode.
+
+**Accessibility:** every tile, basket and place is a button labelled with its spoken label; every drag has the tap-then-tap alternative; the trace has [All done] so it never depends on a gesture alone; feedback lines are announced politely; colour is never the only signal (a `Check` badge marks right moves).
+
+**Analytics:** `screen_view` (`screen_id` = LRN-18), `play_round_completed`, `play_completed`.
+
+---
+
 ## LES
 
 ### LES-01 · Lesson player

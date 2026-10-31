@@ -639,9 +639,11 @@ async def _store(
 ) -> None:
     await session.execute(
         text(
+            # clock_timestamp, not the transaction's now(): a question and its reply written in
+            # one transaction must still sort in the order they were written.
             "insert into ai.tutor_messages (id, session_id, user_id, role, content, status, counted,"
-            " flagged, citations, tokens_out) values (:id, :s, :u, :r, :c, :st, :cnt, :f,"
-            " cast(:cit as jsonb), :to)"
+            " flagged, citations, tokens_out, created_at) values (:id, :s, :u, :r, :c, :st, :cnt,"
+            " :f, cast(:cit as jsonb), :to, clock_timestamp())"
         ),
         {
             "id": message_id,

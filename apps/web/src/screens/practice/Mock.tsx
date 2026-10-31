@@ -178,6 +178,8 @@ export function MockLobby() {
         to: "/practice/attempt/$attemptId",
         params: { attemptId: m.in_progress_attempt_id },
       });
+    if (m.kind === "live")
+      return void navigate({ to: "/practice/live/$mockId", params: { mockId: m.id } });
     void navigate({ to: "/practice/mock/$mockId", params: { mockId: m.id } });
   };
 

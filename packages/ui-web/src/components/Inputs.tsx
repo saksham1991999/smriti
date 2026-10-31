@@ -155,9 +155,9 @@ export function Switch({ checked, onCheckedChange, label, disabled, hideLabel, t
       disabled={disabled}
       data-testid={testID}
       onClick={() => onCheckedChange(!checked)}
-      className={cx("relative inline-flex min-h-12 items-center gap-3 text-label text-ink", focusRing, "rounded-xs", disabled && "opacity-60", className)}
+      className={cx("relative inline-flex min-h-12 items-center gap-3 text-start text-label text-ink", focusRing, "rounded-xs", disabled && "opacity-60", className)}
     >
-      {!hideLabel && <span>{label}</span>}
+      {!hideLabel && <span className="min-w-0">{label}</span>}
       <span aria-hidden className={cx("relative inline-block h-7 w-[46px] shrink-0 rounded-full transition-colors duration-fast", checked ? "bg-primary" : "bg-track ring-1 ring-inset ring-ink-disabled")}>
         <span className={cx("absolute top-[3px] size-[22px] rounded-full bg-surface shadow-card transition-[left] duration-fast ease-standard", checked ? "left-[21px]" : "left-[3px]")}>
           {checked && <Icon name="Check" size={16} color="primary" className="m-[3px]" />}

@@ -9,14 +9,13 @@
  */
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useNavigate, useParams, useSearch } from "@tanstack/react-router";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useAppStore } from "@smriti/app-core/react";
 import {
   Banner,
   Button,
   Card,
   Chip,
-  Dialog,
   Icon,
   Illustration,
   OptionCard,
@@ -38,18 +37,15 @@ import {
   declineConsent,
   guardianProblem,
   isScope,
-  listLearners,
   readRequestAsGuardian,
   scopeAllowed,
   useConsentFlow,
   useMyConsent,
   useRequestStatus,
-  withdrawScope,
   type ConsentDecision,
   type ConsentForGuardian,
   type GuardianProblem,
   type GuardianSession,
-  type Learner,
   type Scope,
 } from "../../lib/guardian";
 import type { MessageKey } from "@smriti/i18n";
@@ -1101,276 +1097,3 @@ export function GuardianLanding() {
   );
 }
 
-// ---------------------------------------------------------------------------------------------
-// AUTH-24 · Parent sign-in, then SET-14 parent dashboard (SET-17 consent rows per learner)
-// ---------------------------------------------------------------------------------------------
-
-const PARENT_KEY = "parent";
-
-export function ParentMode() {
-  const s = useServices();
-  const { t } = useI18n();
-  const navigate = useNavigate();
-  const online = useOnline();
-  const [stay, setStay] = useState(false);
-  // A parent who stayed signed in on this browser comes straight back to the dashboard.
-  const remembered = useMemo(() => createGuardianSession(s, { persist: true }), [s]);
-  const [g, setG] = useState<GuardianSession | null>(null);
-  const [checking, setChecking] = useState(true);
-  const [name, setName] = useState("");
-  useEffect(() => {
-    let live = true;
-    void remembered.auth
-      .getSession()
-      .catch(() => null)
-      .then((session) => {
-        if (!live) return;
-        if (session && !session.user.isAnonymous) {
-          setG(remembered);
-          s.analytics.track("parent_mode_opened", { entry: "device" });
-        }
-        setChecking(false);
-      });
-    return () => {
-      live = false;
-    };
-  }, [remembered, s]);
-
-  const exit = async () => {
-    if (g && g !== remembered) await g.signOut();
-    void navigate({ to: "/" });
-  };
-
-  if (checking) return <RouteLoading />;
-  if (g)
-    return (
-      <ParentDashboard
-        g={g}
-        name={name}
-        onExit={() => void exit()}
-        onSignOut={async () => {
-          await g.signOut();
-          setG(null);
-        }}
-      />
-    );
-
-  return (
-    <div
-      className="mx-auto flex min-h-dvh w-full max-w-[560px] flex-col gap-4 px-4 pb-6"
-      data-testid="auth-24"
-    >
-      <TopBar onBack={() => void navigate({ to: "/" })} />
-      <main id="main" className="flex flex-col gap-4">
-        <Text variant="caption" tone="muted" heading as="h2">
-          {t("auth:AUTH-24.kicker")}
-        </Text>
-        <Text variant="title" heading as="h1">
-          {t("auth:AUTH-24.title")}
-        </Text>
-        <Text>{t("me_money:SET-13.body")}</Text>
-        <GoogleIdentityStep
-          guardian
-          disabled={!online}
-          onIdentity={async (identity) => {
-            const session = stay ? remembered : createGuardianSession(s);
-            await session.signIn(identity);
-            setName(firstName(identity.name));
-            setG(session);
-            s.analytics.track("parent_signed_in", { entry: "set_gate", stay_signed_in: stay });
-            s.analytics.track("parent_mode_opened", { entry: "own_account" });
-            return null;
-          }}
-        />
-        <Switch
-          checked={stay}
-          onCheckedChange={setStay}
-          label={t("auth:AUTH-24.stay_signed_in")}
-          testID="parent-stay"
-        />
-        <Text variant="caption" tone="muted">
-          {t("auth:AUTH-24.child_note")}
-        </Text>
-        <TrustLine />
-        <Text variant="caption" tone="muted">
-          {t("auth:AUTH-01.legal_footer")}
-        </Text>
-      </main>
-    </div>
-  );
-}
-
-function ParentDashboard({
-  g,
-  name,
-  onExit,
-  onSignOut,
-}: {
-  g: GuardianSession;
-  name: string;
-  onExit: () => void;
-  onSignOut: () => Promise<void>;
-}) {
-  const { t } = useI18n();
-  const learners = useQuery({
-    queryKey: ["guardian", "learners", PARENT_KEY],
-    retry: false,
-    queryFn: () => listLearners(g),
-  });
-  return (
-    <div
-      className="mx-auto flex min-h-dvh w-full max-w-[960px] flex-col gap-4 px-4 pb-6"
-      data-testid="set-14"
-    >
-      <TopBar
-        title={t("me_money:SET-14.title")}
-        trailing={
-          <Button
-            variant="ghost"
-            size="sm"
-            label={t("me_money:SET-14.exit")}
-            onPress={onExit}
-            testID="parent-exit"
-          />
-        }
-      />
-      <main id="main" className="flex flex-col gap-4">
-        {name && (
-          <Text tone="muted">{t("auth:AUTH-20.signed_in_as", { guardian_first_name: name })}</Text>
-        )}
-        {learners.isPending ? (
-          <RouteLoading />
-        ) : learners.isError ? (
-          <Banner
-            tone="warning"
-            text={t("auth:AUTH-30.our_side_line")}
-            action={{ label: t("auth:AUTH-30.try_again"), onPress: () => void learners.refetch() }}
-          />
-        ) : learners.data.length === 0 ? (
-          <Card tone="sunken" testID="set-14-empty">
-            <Text>{t("me_money:SET-14.empty")}</Text>
-          </Card>
-        ) : (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {learners.data.map((l) => (
-              <LearnerCard
-                key={l.user_id}
-                g={g}
-                learner={l}
-                onChanged={() => void learners.refetch()}
-              />
-            ))}
-          </div>
-        )}
-        <Button
-          variant="ghost"
-          label={t("auth:WEB-07.parent_sign_out")}
-          onPress={() => void onSignOut()}
-          testID="parent-sign-out"
-        />
-      </main>
-    </div>
-  );
-}
-
-function LearnerCard({
-  g,
-  learner,
-  onChanged,
-}: {
-  g: GuardianSession;
-  learner: Learner;
-  onChanged: () => void;
-}) {
-  const s = useServices();
-  const { t, locale } = useI18n();
-  const online = useOnline();
-  const [confirm, setConfirm] = useState<Scope | null>(null);
-  const [busy, setBusy] = useState(false);
-  const child = firstName(learner.first_name) || t("auth:WEB-07.your_child");
-  const c = learner.consent && !learner.consent.revoked_at ? learner.consent : null;
-  const turnOff = async (scope: Scope) => {
-    if (!c) return;
-    setBusy(true);
-    try {
-      await withdrawScope(g, c.id, scope);
-      s.analytics.track("consent_withdrawn", { consent_type: scope });
-      onChanged();
-    } catch (err) {
-      s.logger.warn("guardian.withdraw_failed", { code: guardianProblem(err) });
-      toast.show(t("auth:AUTH-30.our_side_line"), { tone: "error" });
-    } finally {
-      setBusy(false);
-      setConfirm(null);
-    }
-  };
-  return (
-    <Card testID={`learner-${learner.user_id}`}>
-      <div className="flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <Icon name="UserCircle" size={32} color="primary" />
-          <Text variant="heading" heading as="h2" className="flex-1">
-            {child}
-          </Text>
-        </div>
-        <Text variant="label" heading as="h3">
-          {t("me_money:SET-17.title", { child })}
-        </Text>
-        <ul className="m-0 flex list-none flex-col gap-2 p-0">
-          {SCOPES.map((x) => {
-            const on = !!c && c.scopes.includes(x);
-            return (
-              <li
-                key={x}
-                className="flex min-h-12 items-center gap-3"
-                data-testid={`learner-scope-${x}`}
-                data-on={on}
-              >
-                <Icon name={SCOPE_ICON[x]} color={on ? "primary" : "inkMuted"} />
-                <span className="flex min-w-0 flex-1 flex-col">
-                  <Text variant="label">{t(SCOPE_NAME[x])}</Text>
-                  <Text variant="caption" tone="muted">
-                    {on && c
-                      ? t("me_money:SET-17.status_allowed", {
-                          date: formatDate(c.consented_at, locale, {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric",
-                          }),
-                        })
-                      : t("me_money:SET-17.status_not")}
-                  </Text>
-                </span>
-                {on && x !== "account" && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    label={t("me_money:SET-17.turn_off")}
-                    disabled={!online || busy}
-                    onPress={() => setConfirm(x)}
-                    testID={`learner-off-${x}`}
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <Dialog
-        open={confirm !== null}
-        onOpenChange={(o) => !o && setConfirm(null)}
-        title={
-          confirm ? t("me_money:SET-11.withdraw_title", { consent: t(SCOPE_NAME[confirm]) }) : ""
-        }
-        description={confirm ? t(`auth:AUTH-20.row_${confirm}.2` as MessageKey) : undefined}
-        confirm={{
-          label: t("me_money:SET-17.turn_off"),
-          onPress: () => confirm && void turnOff(confirm),
-          destructive: true,
-        }}
-        cancel={{ label: t("auth:AUTH-30.back"), onPress: () => setConfirm(null) }}
-        testID="learner-off-confirm"
-      />
-    </Card>
-  );
-}

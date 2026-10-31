@@ -81,6 +81,8 @@ export interface Services {
   billing: BillingProvider;
   logger: Logger;
   fakeApi: boolean;
+  /** The fake API's request hook (dev and e2e), for clients built later (the guardian session). */
+  interceptor?: RequestInterceptor;
   /** Where bundles and manifests are served: `{CDN_BASE_URL}/c/` (same origin /c/ in dev and e2e). */
   contentBaseUrl: string;
   /** Replaces the flags with the server's map from `GET /v1/config`. */
@@ -248,6 +250,7 @@ export async function createServices(opts: CreateServicesOptions = {}): Promise<
     billing: createBillingProvider({ fakeApi: Boolean(opts.interceptor), api, client }),
     logger,
     fakeApi: Boolean(opts.interceptor),
+    interceptor: opts.interceptor,
     contentBaseUrl: contentBase(env.CDN_BASE_URL),
     applyServerFlags(map) {
       flags = createFlags(map ?? {});

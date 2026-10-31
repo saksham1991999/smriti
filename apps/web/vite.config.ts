@@ -29,7 +29,31 @@ function noFakeApi(mode: string): Plugin {
   };
 }
 
-const FIXTURE_CONTENT = join(here, "..", "..", "tools", "content-publish", "out");
+/**
+ * Phosphor ships every icon in six weights, and every icon in the set lands in the first route.
+ * The icon contract (@smriti/tokens/ui, IconProps.weight) allows only bold, fill and regular, so
+ * the other three (thin, light, duotone) are dropped from each icon's weight map at build time.
+ * A weight that is missing renders nothing, so the contract and this list must change together.
+ */
+const ICON_WEIGHTS_DROPPED = ["thin", "light", "duotone"];
+function phosphorWeights(): Plugin {
+  const def = /[\\/]@phosphor-icons[\\/]react[\\/]dist[\\/]defs[\\/][^\\/]+\.es\.js$/;
+  const entry = new RegExp(`\\n  \\[\\n    "(?:${ICON_WEIGHTS_DROPPED.join("|")})",[\\s\\S]*?\\n  \\],?`, "g");
+  return {
+    name: "smriti-phosphor-weights",
+    enforce: "pre",
+    transform(code, id) {
+      if (!def.test(id)) return null;
+      const out = code.replace(entry, "");
+      if (!out.includes('"bold"') || !out.includes('"fill"') || !out.includes('"regular"')) {
+        this.error(`Unexpected Phosphor icon module layout: ${id}`);
+      }
+      return { code: out, map: null };
+    },
+  };
+}
+
+const FIXTURE_CONTENT =join(here, "..", "..", "tools", "content-publish", "out");
 const TYPES: Record<string, string> = { ".json": "application/json", ".webp": "image/webp", ".png": "image/png", ".svg": "image/svg+xml" };
 
 /**
@@ -78,6 +102,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     noFakeApi(mode),
+    phosphorWeights(),
     fixtureContent(mode),
     react(),
     tailwindcss(),

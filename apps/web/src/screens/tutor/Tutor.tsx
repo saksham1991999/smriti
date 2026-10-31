@@ -375,6 +375,15 @@ function TutorChat() {
           )}
         </span>
         <IconButton
+          icon="Microphone"
+          label={t("tutor_social:AI-07.voice_title", { pet_name: petName })}
+          onPress={() => {
+            close();
+            void navigate({ to: "/tutor/voice" });
+          }}
+          testID="tutor-voice"
+        />
+        <IconButton
           icon="Plus"
           label={t("tutor_social:AI-02.menu_new_chat")}
           onPress={() => setContext(null)}

@@ -243,6 +243,18 @@ export function Me() {
           testID="me-decks"
         />
         <SettingsRow
+          title={t("memory_labs:MEM-12.title")}
+          icon="MapPin"
+          onPress={() => void navigate({ to: "/memory/palaces" })}
+          testID="me-palaces"
+        />
+        <SettingsRow
+          title={t("memory_labs:MEM-25.title")}
+          icon="Target"
+          onPress={() => void navigate({ to: "/memory/insights" })}
+          testID="me-insights"
+        />
+        <SettingsRow
           title={t("memory_labs:MEM-28.title")}
           icon="Timer"
           onPress={() => void navigate({ to: "/focus" })}

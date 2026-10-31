@@ -216,6 +216,7 @@ export function TopicScreen() {
           </Card>
         )}
         <Button label={parts(t("learn:LRN-03.practise", { n: "" }))[0] ?? ""} variant="ghost" onPress={() => void navigate({ to: "/practice/drill/$topicId", params: { topicId: topic.id } })} testID="practise-topic" />
+        <Button label={t("learn:LRN-03.explain_back")} variant="ghost" onPress={() => void navigate({ to: "/tutor/feynman/$topicId", params: { topicId: topic.id } })} testID="explain-back" />
       </div>
     </div>
   );

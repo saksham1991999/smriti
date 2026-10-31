@@ -3,6 +3,7 @@ export { AppleLogoIcon } from "phosphor-react-native/src/icons/AppleLogo";
 export { ArrowCounterClockwiseIcon } from "phosphor-react-native/src/icons/ArrowCounterClockwise";
 export { ArrowDownIcon } from "phosphor-react-native/src/icons/ArrowDown";
 export { ArrowRightIcon } from "phosphor-react-native/src/icons/ArrowRight";
+export { ArrowUUpLeftIcon } from "phosphor-react-native/src/icons/ArrowUUpLeft";
 export { ArrowUpIcon } from "phosphor-react-native/src/icons/ArrowUp";
 export { ArrowsInIcon } from "phosphor-react-native/src/icons/ArrowsIn";
 export { ArrowsOutIcon } from "phosphor-react-native/src/icons/ArrowsOut";

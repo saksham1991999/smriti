@@ -5,6 +5,7 @@ export const iconNames = [
   "ArrowCounterClockwise",
   "ArrowDown",
   "ArrowRight",
+  "ArrowUUpLeft",
   "ArrowUp",
   "ArrowsIn",
   "ArrowsOut",
